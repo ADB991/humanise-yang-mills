@@ -1,0 +1,144 @@
+name: Sync published Lean source
+
+on:
+  # The upstream repository can send this event as soon as it publishes a
+  # revision.  See source/upstream-dispatch.yml for the companion workflow.
+  repository_dispatch:
+    types: [lean-source-published]
+  # This is deliberately only a fallback: a newly public repository cannot
+  # send a dispatch until it contains the companion workflow and its secret.
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: 'Optional upstream commit SHA or tag to import'
+        required: false
+        type: string
+
+# A source update changes the evidence on which proof units depend.  It must
+# therefore arrive as a reviewable PR, never as an unattended main-branch push.
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-published-lean-source
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UPSTREAM_URL: https://github.com/yang-mills-group/OpenAI-YM-20261028.git
+      # This is optional.  Set it only if the upstream repository is private.
+      UPSTREAM_READ_TOKEN: ${{ secrets.UPSTREAM_READ_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror the published source and pin its revision
+        id: mirror
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          remote="$UPSTREAM_URL"
+          if [[ -n "$UPSTREAM_READ_TOKEN" ]]; then
+            remote="https://x-access-token:${UPSTREAM_READ_TOKEN}@github.com/yang-mills-group/OpenAI-YM-20261028.git"
+          fi
+
+          # A scheduled run before the public release is an expected no-op.
+          if ! git ls-remote --exit-code "$remote" HEAD >/dev/null 2>&1; then
+            echo "The upstream repository is not reachable yet; nothing to import."
+            exit 0
+          fi
+
+          requested_ref="${{ inputs.revision }}"
+          if [[ -z "$requested_ref" && -f "$GITHUB_EVENT_PATH" ]]; then
+            requested_ref="$(jq -r '.client_payload.revision // empty' "$GITHUB_EVENT_PATH")"
+          fi
+
+          workdir="$(mktemp -d)"
+          trap 'rm -rf "$workdir"' EXIT
+          git clone --no-checkout --depth 1 "$remote" "$workdir/upstream"
+          if [[ -n "$requested_ref" ]]; then
+            git -C "$workdir/upstream" fetch --depth 1 origin "$requested_ref"
+            git -C "$workdir/upstream" checkout --detach FETCH_HEAD
+          else
+            git -C "$workdir/upstream" checkout --detach
+          fi
+
+          revision="$(git -C "$workdir/upstream" rev-parse HEAD)"
+          if [[ "$requested_ref" =~ ^[0-9a-f]{40}$ && "$requested_ref" != "$revision" ]]; then
+            echo "The requested commit was not fetched exactly: $requested_ref != $revision" >&2
+            exit 1
+          fi
+
+          rsync --archive --delete --exclude=.git "$workdir/upstream/" Lean/
+          test -f Lean/lean-toolchain
+          lean_toolchain="$(tr -d '\r\n' < Lean/lean-toolchain)"
+          test -n "$lean_toolchain"
+
+          license_path=""
+          for notice in LICENSE LICENSE.md LICENSE.txt COPYING COPYING.md COPYING.txt NOTICE NOTICE.md; do
+            if [[ -f "Lean/$notice" ]]; then
+              license_path="Lean/$notice"
+              break
+            fi
+          done
+          if [[ -z "$license_path" ]]; then
+            echo "No top-level licence notice was found in the published source." >&2
+            exit 1
+          fi
+
+          REVISION="$revision" LEAN_TOOLCHAIN="$lean_toolchain" LICENSE_PATH="$license_path" python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("source/upstream.json")
+          manifest = json.loads(path.read_text())
+          manifest.update({
+              "status": "imported",
+              "url": "https://github.com/yang-mills-group/OpenAI-YM-20261028",
+              "revision": os.environ["REVISION"],
+              "lean_toolchain": os.environ["LEAN_TOOLCHAIN"],
+              "project_root": "Lean",
+              "license": os.environ["LICENSE_PATH"],
+              # Final declarations are identified by the subsequent source audit.
+              "targets": [],
+          })
+          path.write_text(json.dumps(manifest, indent=2) + "\n")
+          PY
+
+          echo "revision=$revision" >> "$GITHUB_OUTPUT"
+
+      - name: Check the imported-source record
+        id: blueprint
+        continue-on-error: true
+        run: python3 scripts/check_blueprint.py
+
+      - name: Open or update the source-review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/sync-lean-source
+          delete-branch: true
+          commit-message: 'chore(source): sync Lean at ${{ steps.mirror.outputs.revision }}'
+          title: 'chore(source): sync published Lean source'
+          body: |
+            Automated mirror of `yang-mills-group/OpenAI-YM-20261028` at `${{ steps.mirror.outputs.revision }}`.
+
+            This PR deliberately does not claim that the source builds or that its final declarations have been audited. Before merge, follow `source/README.md`: retain build evidence, identify targets, and assess the effect of this revision on existing proof units and reviews.
+          add-paths: |
+            Lean
+            source/upstream.json
+
+      # Existing proof units deliberately pin their source revision.  The PR is
+      # still useful when that makes the checker fail: it exposes the required
+      # coordinated migration instead of silently leaving the mirror stale.
+      - name: Require source-migration review when blueprint checks fail
+        if: steps.blueprint.outcome == 'failure'
+        run: exit 1

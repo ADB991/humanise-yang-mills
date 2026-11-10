@@ -1,0 +1,35 @@
+# Copy this workflow to the upstream OpenAI-YM-20261028 repository before (or
+# immediately after) publishing it.  It tells the documentation repository to
+# prepare a review PR at every released or main-branch revision.
+name: Notify documentation repository of published Lean source
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+
+permissions: {}
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    env:
+      TARGET_REPOSITORY: hairer/humanise-yang-mills
+      # Fine-grained token: Contents write on TARGET_REPOSITORY only.
+      TARGET_DISPATCH_TOKEN: ${{ secrets.YM_DOCUMENTATION_DISPATCH_TOKEN }}
+    steps:
+      - name: Request a source-sync pull request
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$TARGET_DISPATCH_TOKEN"
+          revision='${{ github.event.release.tag_name || github.sha }}'
+          payload="$(jq -nc --arg revision "$revision" \
+            '{event_type: "lean-source-published", client_payload: {revision: $revision}}')"
+          curl --fail-with-body --request POST \
+            --header 'Accept: application/vnd.github+json' \
+            --header "Authorization: Bearer $TARGET_DISPATCH_TOKEN" \
+            --header 'X-GitHub-Api-Version: 2026-03-10' \
+            "https://api.github.com/repos/${TARGET_REPOSITORY}/dispatches" \
+            --data "$payload"

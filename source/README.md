@@ -3,6 +3,10 @@
 `upstream.json` is the source manifest. It currently records `awaiting-release`.
 No formalisation or successful build is implied by this scaffold.
 
+The repository is prepared to open a review PR when the upstream source becomes
+available; see [sync.md](sync.md). That mirror records provenance, but does not
+replace the import and audit steps below.
+
 ## Import procedure
 
 1. Put the complete upstream project under `Lean/`, preserving its directory
