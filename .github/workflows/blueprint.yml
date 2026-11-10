@@ -1,0 +1,24 @@
+name: Blueprint checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  blueprint:
+    name: Blueprint structure
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test collaboration invariants
+        run: python3 -m unittest discover -s tests
+      - name: Check blueprint records
+        run: python3 scripts/check_blueprint.py

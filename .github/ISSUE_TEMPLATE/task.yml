@@ -1,0 +1,66 @@
+name: Bounded contribution task
+description: Propose an audit, map, literature, proof exposition, review, integration, or tooling task.
+title: '[Task] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search issues, open PRs, and the blueprint for overlap first.
+        A coordinator must mark this task ready and confirm a claim before work starts.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Task kind
+      options:
+        - audit
+        - map
+        - literature
+        - explain
+        - review-lean
+        - review-math
+        - integrate
+        - tooling
+    validations:
+      required: true
+  - type: input
+    id: coordinator
+    attributes:
+      label: Proposed coordinator
+      description: A maintainer must confirm the grant authority for this issue.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Mathematical interface and source scope
+      description: Include the pinned revision, exact declaration names, and any existing unit ID. For infrastructure, say why source details do not apply.
+    validations:
+      required: true
+  - type: textarea
+    id: treatment
+    attributes:
+      label: Expository treatment and literature search
+      description: State whether to prove in detail, cite and apply, suppress formal scaffolding, or investigate. Link existing reference notes and searches, or explain why this does not apply.
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Owned outputs and exclusions
+      description: Name exact output paths and the boundary with neighbouring tasks.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Prerequisites and overlap search
+      description: Link prerequisite units/issues and related PRs, or explicitly state none.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: State the concrete deliverable, required evidence, and review needed to close this task.
+    validations:
+      required: true
