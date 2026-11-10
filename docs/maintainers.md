@@ -19,6 +19,9 @@
   higher on an organisation repository. See the [access guide](access.md).
 - Keep a small ready queue and invite a pilot group. Expand after reviewing one
   complete unit and adjusting the task size and proof standard.
+- Add a Project with saved views of the issue queue, following
+  [Projects and Agents](github-features.md). Keep hosted agent use optional and
+  test it on a bounded pilot before dispatching larger mathematical tasks.
 
 Suggested labels:
 

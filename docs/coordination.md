@@ -14,6 +14,11 @@ until it is published, and may not be merged into their branch.
 | Durable discoveries, failed approaches, resume notes | `Bots/notes/` |
 | Integrated exposition | `manuscript/` |
 
+Use a GitHub Project to display the issue queue through saved views. The existing
+issue labels and explicit claim grants remain authoritative. GitHub-hosted agent
+sessions are an optional execution route, with claims granted before launch.
+See [Projects and Agents](github-features.md) for setup and dispatch rules.
+
 ## Define tasks before distributing them
 
 Each issue names a coordinator, task type, source revision, exact declarations or

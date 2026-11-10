@@ -37,6 +37,10 @@ can check those reports and provide the merge approval. See
 For a private project, readers also need access. Organisation ownership permits
 read-only invitations; private personal repositories give collaborators write access.
 
+GitHub Project permissions are separate: dashboard coordinators need Project Write
+in addition to the relevant permissions on task issues. See the
+[Projects and Agents guide](github-features.md).
+
 ## Authenticate an agent
 
 Contributors sign in under their own accounts through their tool's GitHub connection
