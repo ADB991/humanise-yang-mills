@@ -25,6 +25,17 @@ The public requested volume sequence is `\varrho`; the period component of a
 general internal extraction order is `\tau`. They may be identified only in
 the explicit assembly step that constructs that order from the public request.
 
+The assembly in `YangMills.jointExistence` (`Lean/Solution.lean:4–10`) makes this
+conversion concrete. After choosing an internal family `\mathcal C` once, a
+requested strictly increasing `\varrho` becomes the internal order
+`a=(\mathrm{full},\varrho)`. The construction supplies a refinement order `q`;
+write `\sigma=q.per`. Then `(a.refine q).per=\varrho\circ\sigma`, while the
+public family is `YangMills.wilsonFamily \mathcal C` and the public hierarchy
+is `YangMills.hierarchy F Q` (`Lean/Construction.lean:15–25`). The Wilson
+convergence bridge uses the full mesh sequence for this refined period sequence
+(`Lean/Construction.lean:23`; `Lean/HierarchyBridge.lean:44–45`). A general
+internal period sequence is therefore not automatically the public request.
+
 Other source names can collide: `Reader` occurs in more than one namespace; `p` can be a period index, extraction order or unrelated parameter; `n` can be representation size or arity. Qualify the source name in the blueprint and choose a typed local symbol in prose. Reserve plain `\pi` for the mathematical constant. The word “phase” means the formal character parameter unless a separate result justifies a stronger physical use.
 
 A symbol is **local** when absent from the glossary. The author may use it within one unit after defining it, and should send a proposed shared entry to the glossary issue if another unit needs it. Authors must not edit the shared glossary while holding an unrelated proof-unit claim. A glossary entry marked unresolved is a question; do not convert it into a theorem hypothesis or an accepted normalisation by prose convention.
