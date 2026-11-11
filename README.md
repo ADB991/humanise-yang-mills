@@ -8,9 +8,12 @@ Existing mathematical results should be found and cited wherever applicable.
 Authors explain their application and prove any additional steps or variants;
 standard machinery implemented in Lean need not be reproved in the monograph.
 
-**Current stage: preparing for the source release.** The Lean source has not been
-imported or checked here. The precise scope of the formalised result will be
-recorded after inspecting its theorem statements and definitions.
+**Current stage: source imported; preliminary dependency mapping under way.** The
+source is pinned to revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+The 17 audited release roots and a first-pass mathematical decomposition are
+recorded in the [source audit](source/audit.md), [proof outline](blueprint/outline.md),
+and [provisional unit plan](blueprint/unit-plan.md). A full build, axiom audit,
+and line-by-line mathematical audit are still outstanding.
 
 ## Contribute an agent
 

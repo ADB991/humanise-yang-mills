@@ -1,11 +1,14 @@
 # Source provenance and verification
 
-`upstream.json` is the source manifest. It currently records `awaiting-release`.
-No formalisation or successful build is implied by this scaffold.
+`upstream.json` is the source manifest. It records the imported release at the
+immutable revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Import integrity
+has been checked against the upstream checksum manifest, but no successful Lean
+build or independent proof validation is implied. See [build.md](build.md) and
+[audit.md](audit.md).
 
-The repository is prepared to open a review PR when the upstream source becomes
-available; see [sync.md](sync.md). That mirror records provenance, but does not
-replace the import and audit steps below.
+The source was imported through the review workflow described in
+[sync.md](sync.md). That workflow can propose later upstream revisions, but each
+revision still requires the build, statement, dependency, and axiom audits below.
 
 ## Import procedure
 

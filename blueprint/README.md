@@ -1,9 +1,10 @@
 # Mathematical blueprint
 
 The blueprint connects the formal theorem to a readable mathematical argument.
-After the source audit, add `outline.md` for the main statements and their
-dependency structure, and `glossary.md` for agreed definitions and notation.
-These shared files are edited through dedicated tasks.
+The [first-pass outline](outline.md) records the main dependency structure, and
+the [provisional unit plan](unit-plan.md) turns the source clusters into proposed
+mathematical work packages. Add `glossary.md` through a dedicated task once its
+notation has been checked against the source and external map.
 
 The blueprint is the proof structure of a research monograph. Keep the full formal
 dependency inventory separately as source evidence. Only mathematical interfaces
