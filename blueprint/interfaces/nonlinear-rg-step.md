@@ -146,7 +146,8 @@ statements named, [G] for reachability). The four rows above are not all of
 the one-step estimates that feed the bundle. `Roof.employeesT`
 (`YM/MergeProof/Retreat.lean:31`) and `Roof.honey` (`.../Roof/Honey.lean:27`)
 build several fields from other theorems of the same shape, each conditional
-on a `Cash` bundle and none of them reaching any of the four anchors above:
+on a `Cash` bundle and, except `Yearling.sterling` (which reaches
+`Utopia.whittle`), none of them reaching any of the four anchors above:
 `Repeat.Brim.pressings` (`.../Brim/Level.lean:61`, for `pipes`),
 `ConnectedActivityE6.Blaze.March.takeover` and `Armada.ensemble` (for
 `jewels`), `Repeat.Yearling.sterling` (`.../Yearling/Garter.lean:34`, for
@@ -440,7 +441,7 @@ owner once this note is reviewed.
    | `conducts` | `Repeat.commissioning` (`YM/MergeProof/Serenity.lean:29`) | `JointLoad.capital` chain only |
    | `agenda` | hypothesis of `employeesT` (numerical) | — |
    | `range` | `Opera.conducts` | none |
-   | `pipes` | `Roof.pews` → `Roof.tapes` → `Brim.pressings` | none |
+   | `pipes` | `Roof.pews` → `Roof.tapes` → `Brim.pressings` | none (it reaches `SectorAffine.assembly`, #12 package 2) |
    | `peak` | `Height.season` | none |
    | `jewels` | `Height.haste` ← `Height.beneath` ← `March.takeover`, `Armada.ensemble` | none |
 
@@ -571,5 +572,11 @@ source of `WorksIn`; where the push identity is used; the consumers of
 smaller items marked "earlier draft" above. All cited names, kinds, paths and
 the four Contract 1 quantifier orders were confirmed. This check was run from
 the author's account and is **not** the independent correspondence review.
+
+**Graph recheck (2026-11-12).** Every reference-closure claim of this note
+was re-run with edges into `_private.` declarations followed, which the
+earlier scripts had dropped. One claim changed: `Yearling.sterling` reaches
+`Utopia.whittle`. The other reachability and non-reachability claims were
+reproduced.
 
 Agent assistance: Claude Code, directed by `mgubi`.
