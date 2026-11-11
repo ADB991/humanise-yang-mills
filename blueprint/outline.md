@@ -39,28 +39,28 @@ The proof architecture has one main spine and several focused release branches:
 
 ```mermaid
 flowchart TD
-  A[Lattice gauge theory and construction data]
-  B[Ultraviolet RG construction]
-  C[Uniform bounds and common Wilson family]
-  D[Infinite-volume subsequence]
-  E[Phase decomposition and OS reconstruction]
-  F[Ward identities and stress tensor]
-  G[Short-distance identification and interaction evidence]
-  H[OPE and contact extensions]
-  I[Public theorem assembly]
-  J[Concrete SU(2) specialization]
-  K[Perturbative position and parity branch]
-  L[Running-coupling proxy branch]
-  M[Sharp-Gram fixed-field branch]
+  A["Lattice gauge theory and construction data"]
+  B["Ultraviolet RG construction"]
+  C["Uniform bounds and common Wilson family"]
+  D["Infinite-volume subsequence"]
+  E["Phase decomposition and OS reconstruction"]
+  F["Ward identities and stress tensor"]
+  G["Short-distance identification and interaction evidence"]
+  H["OPE and contact extensions"]
+  I["Public theorem assembly"]
+  J["Concrete SU(2) specialization"]
+  K["Perturbative position and parity branch"]
+  L["Running-coupling proxy branch"]
+  M["Sharp-Gram fixed-field branch"]
 
   A --> B --> C --> D --> E --> F --> G --> I --> J
   D --> H --> I
   B --> K
   B --> L
   B --> M
-  K -.focused release headline.-> I
-  L -.focused release headline.-> I
-  M -.focused release headline.-> I
+  K -.-> I
+  L -.-> I
+  M -.-> I
 ```
 
 The dotted arrows indicate editorial association, not a verified formal dependency
