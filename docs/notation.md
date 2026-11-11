@@ -19,7 +19,7 @@ Use fully qualified declaration names and pinned source paths in the blueprint c
 
 ## Symbol and meaning conflicts
 
-The glossary reserves distinct prose symbols for the public Wilson family `\mathcal W`, the internal construction family `\mathcal C`, the Euclidean table `S`, and the public hierarchy `\mathcal T`. The quotient field `F_d` differs from the internal final package `\mathsf F`. The character measure `\nu_{\rm ph}` differs from the Wilson law `\mu_{N,p}^{\mathcal W}`. A short-distance radius `r_k` differs from lattice mesh `a_N`. A physical linear period `P_p` differs from the torus site count `\ell_{N,p}`. A reviewer should reject an argument that changes one of these meanings without a stated bridge.
+The glossary reserves distinct prose symbols for the public Wilson family `\mathcal W`, the internal construction family `\mathcal C`, the Euclidean table `S`, and the public hierarchy `\mathcal T`. The public field space `F_d` (a quotient field space in the constructed hierarchy) differs from the internal final package `\mathsf F`. The character measure `\nu_{\rm ph}` differs from the Wilson law `\mu_{N,p}^{\mathcal W}`. A short-distance radius `r_k` differs from lattice mesh `a_N`. A physical linear period `P_p` differs from the torus site count `\ell_{N,p}`. A reviewer should reject an argument that changes one of these meanings without a stated bridge.
 
 The public requested volume sequence is `\varrho`; the period component of a
 general internal extraction order is `\tau`. They may be identified only in
