@@ -48,23 +48,27 @@ Three levels of evidence are distinguished throughout:
    them [G]. The conceptual order is PU-09 → PU-10 (bundle) → PU-08 →
    PU-07 (reset) → PU-10 (program).
 4. **PU-09 is not one theorem.** It is four separately stated estimates with
-   different quantifier orders; a two-unit split is recommended below.
+   different quantifier orders [S]; a two-unit split is recommended below.
 5. **Part of III.10 is not in the step-program closure at all**: the
    integrated molecule estimate of III.10.3, the schedule statements of
    III.10.5 and the marker statements I01–I04 have other consumers [G].
+6. **The closure is conditional on a purchased schedule.** The hypothesis
+   `ThroughLaunch.PaidView` of `Roof.timberT` and `Roost.commerce` already
+   contains the scheduled energy bound `Pressure.Testing.Ringing`, the
+   Gaussian run hypothesis `Next.SectorChange.Cosmos`, `Stock.Priced` and the
+   start-up prices [E]. PU-10 therefore does not prove them; they are built
+   upstream by `ThroughLaunch.sailsV` [G].
+7. **The hypothesis bundle is the one-step estimates evaluated along the
+   schedule.** Every analytic field of `Roof.Sheltered` and `Roof.WorksIn`
+   that was unfolded (`Cadence` and four third-level predicates were not)
+   has the form "for each admissible stage pair and every coupling above the
+   entry coupling, a one-step statement holds" [E]; see the field table.
 
 ## Contract 1 — one-step estimates at fixed constants (candidate PU-09)
 
 **Role.** Large-field and irrelevant-term bounds for a single block step, with
 all schedule data fixed. Nothing here refers to a trajectory, a reset, or a
 curve of couplings.
-
-| Statement | Anchor | Evidence | Direct consumers in the closure [G] |
-| --- | --- | --- | --- |
-| Energy per seed (large-field action gap): `∀ P : Pressure.Teller G, P.Grants` | `YM.Next.Fluctuations.grants`, `YM/Next/FLUCTUATIONS/Grants.lean:24`; `YM.Pressure.Teller.Grants`, `YM/Pressure/Seeds.lean:129` | type [E]; `Grants` body not unfolded | `YM.Push.AbsoluteSums.Grant.order`, `YM.Push.SectorMeasure.points_grant`, `YM.Next.Fluctuations.pressure_queries` |
-| Activity bounds of one step (packets, logarithmic and warning letters, rooted Kotecký–Preiss sums) | `YM.ConnectedActivityE6.Target.issue`, `.../CONNECTED_ACTIVITY_JETS_E6/Issue.lean:94`; bundle `YM.ConnectedActivityE6.Cash`, `.../Batch.lean:82` | [G] | `Target.quotesTogether` (`.../IssuePlan.lean:53`) → `YM.ConnectedActivityE6.Planning.exists_floors` |
-| Coarse-field jets of the new letters | `YM.ConnectedActivityE6.Blaze.Silica.Utopia.whittle`, `.../CONNECTED_ACTIVITY_JETS_E6/Das.lean:49` | [G] | `YM.ConnectedActivityE6.Blaze.Flux.launch`, `Empire.prom`, `Empire.womb`, `Repeat.Alabaster.discover`, `Repeat.Daisy.timing` |
-| Gaussian sector of the step (Gram, defect, mean and source tickets; trigger tails) | `YM.PhysicalNext.JointLoad.capital` (`.../V9_JOINT_ENDPOINT_LOAD/Costs.lean:92`) → `.stage` (`.../Supply.lean:72`) → `.Clockwork.offer` (`.../Calendar.lean:75`) | [G]; chain order agrees with the #12 audit | `JointLoad.Clockwork.opened` |
 
 **Inputs.** Step data and tree gauge (III.1), free kernels and towers (III.3),
 polymer norms (III.5), stationary branch and matching (III.6–III.8), and the
@@ -74,12 +78,49 @@ and `.estimates` [G]. `YM.PhysicalNext.Repeat.Malachite.treasure`
 `SectorAffine.assembly`, lies on this side of the boundary: it is reached from
 `Roof.timberT` and not from `Rain.glazing` [G].
 
-**Outputs and uniformity.** According to the external outline, each estimate
-holds for all coarse reference couplings `x ≥ x₀` with `x₀` independent of
-period and volume, and the constants are chosen in the order `L`, then `W`,
-then `μ`, then per-patch window constants, then `x`. **This order was not
-re-derived from the elaborated statements here**; it is the first item for the
-correspondence reviewer.
+| Statement | Anchor | Evidence | Direct consumers in the closure [G] |
+| --- | --- | --- | --- |
+| Energy per seed (large-field action gap) | `YM.Next.Fluctuations.grants : ∀ P : Pressure.Teller G, P.Grants`, `YM/Next/FLUCTUATIONS/Grants.lean:24`; `YM.Pressure.Teller.Grants`, `.cash`, `.live`, `.Funds`, `YM/Pressure/Seeds.lean:89–131` | type [E], definitions [S] | `YM.Push.AbsoluteSums.Grant.order`, `YM.Push.SectorMeasure.points_grant`, `YM.Next.Fluctuations.pressure_queries` |
+| Activity bounds of one step | `YM.ConnectedActivityE6.Target.issue`, `.../CONNECTED_ACTIVITY_JETS_E6/Issue.lean:94`, with `Target.Order`, `GrantBodies`, `Invoices` (same file, 33–88); bundle `YM.ConnectedActivityE6.Cash`, `.../Batch.lean:82` | statement and the three structures [S]; `Cash` [G] | `Target.quotesTogether` (`.../IssuePlan.lean:53`) → `YM.ConnectedActivityE6.Planning.exists_floors` |
+| Coarse-field jets of the new letters | `YM.ConnectedActivityE6.Blaze.Silica.Utopia.whittle` and structure `Utopia`, `.../CONNECTED_ACTIVITY_JETS_E6/Das.lean:27–52` | [S] | `YM.ConnectedActivityE6.Blaze.Flux.launch`, `Empire.prom`, `Empire.womb`, `Repeat.Alabaster.discover`, `Repeat.Daisy.timing` |
+| Gaussian sector of the step | `YM.PhysicalNext.JointLoad.capital` and structures `Charges`, `Value`, `.../V9_JOINT_ENDPOINT_LOAD/Costs.lean:34–98`; then `.stage` (`.../Supply.lean:72`) → `.Clockwork.offer` (`.../Calendar.lean:75`) | `capital` [S]; `stage`, `offer` [G] | `JointLoad.Clockwork.opened` |
+
+**Statements and order of constants** [S].
+
+- *Energy.* `Grants`: `∃ i, ∀ L ≥ i, ∀ᶠ W, ∃ κ > 0, ∀ᶠ x,` for every step
+  `S` with block factor `L` and coarse side `c ≥ 100(1 + B(x))`, every tube
+  `T` with `P.Funds S T`, every forest, store `A`, fine field `U` in tree
+  gauge (`Stores.SliceSet`), tags `k` and coarse field `V` with
+  `Stores.Plot A U k V x W`:
+  `κ · t(β_F(x,L))² · ♯A ≤ A.assessed T x U (S.prediction U k) V`.
+  Here `B(x) = ⌈(log x)²⌉`, `β_F = x + b_G log L`,
+  `t(y) = y^{-1/2} exp((log log y)²)`. The constant `κ` is chosen after `L`
+  and `W`; the statement is deterministic.
+- *Activities.* `Target.issue`: `∃ n, ∀ L ≥ n, ∀ᶠ W, W > 0 ∧ ∃ μ > 0,` for
+  every patch `D` with the branch condition `∃ (o : Order G W) (C ≥ 0),
+  ∀ᶠ x,` for every step on `D` and tube with `Works P L x S T`:
+  `GrantBodies W x μ L R o C T`, and for every fine representation `K` with
+  `Intake P T x K` and every tube with `Stamp T`: `Invoices W x μ L R o C T K`.
+  `Invoices` contains the tree-graph test (`Buy`), the rooted sum (`Sales`)
+  for forced, logarithmic and warning letters, the packet bound with gain per
+  seed, and the catastrophe probability bound `≤ E^{|v|}`. Its proof starts
+  from `Grant.order P`, so this estimate depends on the energy bound.
+- *Jets.* `Utopia.whittle`: `∃ n, ∀ L ≥ n,` every patch `D` with branches,
+  order `i`, cutoff `χ`, `W > 0`, `μ > 0`, window constants `o`, functions
+  `v, w` of rate `-1/2` (`v` eventually nonnegative): `∃ C' ≥ 0` and `r` of
+  rate `0`, `∀ᶠ x,` for every step on `D` with `Stamp T`, every `R`, `C` and
+  **every bundle `H : Cash W x μ L Q o C T R`**, a structure
+  `Utopia H i (v x) (w x) (r x) C' χ` exists. It is conditional on a `Cash`
+  bundle, i.e. on the output of the previous item.
+- *Gaussian sector.* `capital`: for a patch `H` with branches, aperture
+  `B > 0`, cutoff `q` and `k, p : ℕ`, `∃ v : Charges, ∀ᶠ x,` for all
+  `0 < β ≤ 2β_F`, budget points of power `p` and threshold `t(x)`, funded
+  steps on `H` with `c ≥ 100(1 + B(x))`, and stores whose flags are the flags
+  of `V`: `Value v x (B·t(β_F)) T A F l V bp k q (coupling β)`.
+
+The orders agree with the external outline's Propositions III.10.1–10.4. In
+all four, the threshold in `x` is chosen last and no period, volume or cutoff
+index occurs.
 
 **Consumer.** All four statements are reached from `Roof.timberT` and from
 none of `Rain.glazing`, `Use.supplier`, `Roost.Factor.worksNow` [G].
@@ -94,8 +135,9 @@ none of `Rain.glazing`, `Use.supplier`, `Roost.Factor.worksNow` [G].
   the target data, the window constants and the Gaussian tail input, and the
   second is stated for bound bundles produced by the first. The `JointLoad`
   chain should be owned here as an *application* of #12's package 2, cited and
-  not reproved. This unit is large; whether it fits one agent session cannot
-  be decided before its statements are read ([G] only).
+  not reproved. This unit is large: the two statements have separate proofs,
+  and a further cut between them (activities; jets) is available if one
+  session cannot cover both.
 
 ## Contract 2 — pre-reset presentation of the blocked density (candidate PU-08)
 
@@ -178,6 +220,22 @@ continuity (`topped`, `varnish`, `blinking`).
 `Roof.Sheltered` for every admissible choice. `YM.PhysicalNext.Repeat.Roost.commerce`
 (`YM/MergeProof/Trading.lean:20`) calls it at `(1/16, 1/16, 1/8)` and adds
 `WorksIn` (via `Repeat.Yearling.batten`), `Use.Origins` and the offering.
+
+`PaidView` (`YM/MergeProof/Seaside.lean:62`) is a hypothesis, not an output
+[E]. Its field `ship` states that for all block-factor records above `v` and
+all block factors there is a stationary budget gap `η`, and for every
+admissible post-block cost, protection, tariff, floor `z` and delays there
+are boosted delays beyond which hold: start-up prices
+(`Further.StrongStartup.Prices`), `Stock.Priced`, the scheduled energy bound
+`Pressure.Testing.Ringing`, the Gaussian run hypothesis
+`Next.SectorChange.Cosmos`, and for every paid level system a budget, a
+prepared multi-source scope and a `ThroughLaunch.Torrent`. It is constructed
+by `ThroughLaunch.sailsV` (`YM/MergeProof/Seaside.lean:96`), which reaches
+`Fluctuations.pressure_pricing`, `Bid.pricing_order`, `Extra.Multi.pricing`,
+`Further.StrongStartup.prices` and `ThroughLaunch.developer`, and does not
+reach `Target.issue`, `Rain.glazing` or `Roost.commerce` [G]. So the energy
+bound enters the step twice: scheduled, through `PaidView`, and unscheduled,
+through `Target.issue` inside `timberT`.
 
 **Order of choice** [E], read off the alternation of quantifiers in `commerce`:
 
@@ -262,9 +320,13 @@ owner once this note is reviewed.
 - `Repeat.Daisy.timing` (integrated molecule bound, III.10.3): not reached
   from any spine declaration; consumed by `Repeat.Daisy.Charity.rocketsC` and
   `YM/FullVolume/Florid/`. Candidate for PU-13.
-- `RG.Supply.Wait.engine` and `Fluctuations.pressure_pricing` (III.10.5):
-  consumed by `YM.Pert.deeper` and `YM.Extra.Multi.pricing`, i.e. in building
-  the `Paid`/`PaidView` hypotheses. Candidate for BG-04 with III.2.
+- `Fluctuations.pressure_pricing` (III.10.5a): consumed by
+  `YM.Extra.Multi.pricing` and reached from `ThroughLaunch.sailsV`, the
+  constructor of `PaidView`. It is an *input* to PU-10, to be owned with the
+  schedule (BG-04, III.2) or with PU-09a as its scheduled corollary.
+- `RG.Supply.Wait.engine` (III.10.5b, divisible periods): consumed by
+  `YM.Pert.deeper`; not reached from `sailsV` or from the spine. Candidate for
+  BG-04.
 - `YM.Work.I01`, `I03`, `I04` (markers): not reached from the spine.
 - `YM.Work.H04.answer` (continuity of fusion): reached from `worksNow` but not
   from `glazing`; it belongs to the start-up side (PU-07).
@@ -274,22 +336,45 @@ owner once this note is reviewed.
 
 ## Obstructions and requested follow-up
 
-1. **The bundle is not yet a readable hypothesis list.** `Roof.Sheltered`
-   (`.../Roof/Income.lean:20`) has six fields — `Touring`, an exponent
-   agenda, `Opera.Treble`, `Roof.Pew`, `Height.Rich`, `Height.Tenement` — and
-   `Roof.WorksIn` (`.../Roof/Honey.lean:22`) four — `Boulevard.Pollened`,
-   `Yearling.Acre`, `Roof.Autumn`, `Pane.Planks`. Only the first level was
-   unfolded. `Touring` (`.../Venue.lean:41`) contains `Psalm.Stage.Cadence`,
-   `Psalm.Solo.Sustained`, `Use.Machine`, `Service.simpleOrigins`,
-   `Bid.Sworn` and `Receiving`; `Pew` quantifies `Roof.Verandah` and
-   `Tenement` quantifies `Height.Skill` over stage pairs and all `x` above the
-   entry coupling. Which nested field is an analytic estimate and which a
-   numerical inequality is **not established**. Until it is, the border
-   between PU-08's hypotheses and PU-10's proof obligations is a list of
-   names. *Requested follow-up audit:* unfold these certificates to
-   mathematical statements and map each to the Contract 1 estimate that
-   `timberT` uses for it.
-2. **Contract 1 statements are [G] only**, except the type of `grants`.
+1. **The bundle is unfolded to two levels only.** The table gives each field
+   of `Roof.Sheltered` (`.../Roof/Income.lean:20`) and `Roof.WorksIn`
+   (`.../Roof/Honey.lean:22`) as printed [E]. "Scheduled" means: for all
+   `j, i` with `StepStages j i` and all `x ≥ W.betaEntry j`, at block factor
+   `D.L j`.
+
+   | Field | Content at second level | Kind |
+   | --- | --- | --- |
+   | `conducts.hearing : Psalm.Stage.Cadence` | `Heir.Suite.Earlier`, `Clockwork.Funded`, `Heir.Suite.Offers`, `Folio.Secured`, `Psalm.Stage.Listens`, and `θ ≤ ε/32` | Gaussian-sector prices of the `JointLoad` chain; not unfolded |
+   | `conducts.sustains : Psalm.Solo.Sustained` | scheduled `Psalm.Solo.Reset` | not unfolded |
+   | `conducts.machine : Use.Machine` | recipe identity, shops, coverage, cubic gate, `PricedReset`, `Ringing`, `Cosmos` | reset numerics and scheduled energy bound |
+   | `conducts.starts` | `Progress.DirectedRecipe.Origins` | start-up curves |
+   | `conducts.full : Bid.Sworn` | the gauge quadratic form of every bed is invariant under the signed lattice moves | symmetry of the free kernels |
+   | `conducts.income.grow : Planning.Permits` | on the register `Planning.Purchase` | scheduled activity bundle; not unfolded |
+   | `conducts.income.earns` | scheduled `Cash.armK ≤ c · pair.strong(β_F, β)` for `β` in the band | numerical: forced weight within `forecastK` |
+   | `agenda` | support exponent `+3 ≤` earn rate and `≤ t`; halo `+5 ≤ r` | numerical |
+   | `range : Opera.Treble` | scheduled `(a + 3)/B(x) ≤ width/2` | numerical |
+   | `pipes : Roof.Pew` → `Roof.Verandah` | for every step with `Works`, every `Cash` bundle, budget point and `March.Captain` jet bundle: `Brim.Houses` at prices `c₂ · δE(x)` | scheduled analytic estimate, conditional on `Cash` |
+   | `peak : Height.Rich` | scheduled `1 ≤ X`, `X³ ≤ exp(mark)`, tree degree price `≤ 1/2`, and further clauses | numerical; read in part |
+   | `jewels : Height.Tenement` → `Height.Skill` | growth inequality, and for every step with `Works`, `Stamp` and `Cash` bundle: existence of a `Silica.Heavy` conduit and `March.Armada` with `collars · salary · 2 ≤ β_F^{wanting}` | scheduled analytic estimate with rate `-7/16` |
+   | `WorksIn.chip : Boulevard.Pollened` | scheduled `Boulevard.Portaged` | not unfolded |
+   | `WorksIn.year : Yearling.Acre` | scheduled `Yearling.Stargaze` | not unfolded |
+   | `WorksIn.terms : Roof.Autumn` | scheduled `Roof.pan`; shell and growth sizes | not unfolded; sizes numerical |
+   | `WorksIn.plaza : Pane.Planks` | scheduled `Pane.Morning` | not unfolded |
+
+   Two conclusions are safe. First, the analytic fields quantify over *all*
+   `Cash` bundles and all steps, so they are consequences of Contract 1
+   evaluated above the entry coupling, not new estimates on a trajectory.
+   Second, `conducts.full` is a genuine extra hypothesis on the kernels; the
+   external outline (§7, item 2) records its proof along the selected
+   trajectory as unchecked. *Remaining follow-up:* unfold the third-level
+   predicates named in the table and identify the lemma of `timberT`'s proof
+   (`Roof.employeesT`, `Roof.budgets`, `Height.beneath`, `Roof.faceting`,
+   `Roof.pockets`; `YM/MergeProof/Retreat.lean`) that yields each field. A
+   graph heuristic for this mapping was tried and was inconclusive, because
+   several certificates are carried as data rather than proved as theorems.
+2. **`Cash`, `JointLoad.stage` and `Clockwork.offer` remain [G]**; the other
+   Contract 1 statements were read in source, not all of their defining
+   predicates (`Works`, `Intake`, `Stamp`, `Sales`, `Buy`, `Ticket`).
 3. **Three closure variants are in the headline closure:** `Roost.commerce`
    (hypothesis `PaidView`; consumer `Repeat.Legato.expenders`),
    `Roost.companyK` (`ThroughLaunch.Perceived` and a `τ > 0`,
@@ -350,7 +435,15 @@ The build itself was not run or re-verified in this session.
 - Source read: `.../Rain/Glazing.lean` (whole file), `.../Roost/Foundry.lean`
   (whole file), `YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean`
   lines 14–95, `YM/MergeProof/Trading.lean` lines 15–40,
-  `YM/Pressure/Seeds.lean` lines 155–183.
+  `YM/MergeProof/Retreat.lean` lines 40–64, `YM/Pressure/Seeds.lean` lines
+  86–183, `.../CONNECTED_ACTIVITY_JETS_E6/Issue.lean` lines 25–110,
+  `.../CONNECTED_ACTIVITY_JETS_E6/Das.lean` lines 24–62,
+  `.../V9_JOINT_ENDPOINT_LOAD/Costs.lean` lines 30–100.
+- `lake env lean t4.lean`: `#print` of `Psalm.Stage.Cadence`,
+  `Psalm.Solo.Sustained`, `Receiving`, `Roof.Verandah`, `Height.Skill`,
+  `Boulevard.Pollened`, `Yearling.Acre`, `Roof.Autumn`, `Pane.Planks`,
+  `Bid.Sworn`, `Service.simpleOrigins`, `Register`, `Targets`, `Expenses`;
+  no errors.
 - **[G] graph.** `../OpenAI-YM/graph-compiled/{nodes,refs}.tsv` is an
   untracked local artifact of that checkout (170 498 nodes, 15 186 855
   reference rows, a `reached` flag for the headline closure). It is not part
@@ -366,9 +459,10 @@ The build itself was not run or re-verified in this session.
   20:56 UTC; `Bots/notes/` is empty. #12's merged audit was read for its
   consumer edges.
 
-**Not done:** no proof body other than those listed was read; the nested
-bundle certificates, the Contract 1 statements, `Return.grants` and
-`CouplingReset.program`'s proof were not inspected; no literature source was
-opened; the Lean project was not rebuilt.
+**Not done:** no proof body other than those listed was read; the
+third-level bundle predicates, `Cash`, `JointLoad.stage`, `Clockwork.offer`,
+`Return.grants`, `ThroughLaunch.sailsV` and the proof of
+`CouplingReset.program` were not inspected; no literature source was opened;
+the Lean project was not rebuilt.
 
 Agent assistance: Claude Code, directed by `mgubi`.
