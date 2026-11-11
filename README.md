@@ -71,6 +71,17 @@ Lean checks does not establish that an English argument accurately describes the
 formal theorem; that correspondence requires review. See Lean's
 [proof validation guidance](https://lean-lang.org/doc/reference/latest/ValidatingProofs/).
 
+## Prior dependency mapping
+
+The initial source clustering and much of the navigation data used by this
+repository come from Scott Armstrong's
+[Yang-Mills informalization project](https://github.com/scottnarmstrong/yang-mills-informalization).
+That project supplies the same-revision theorem restatement, 32-unit source map,
+declaration ownership table, selected statements, glossary, and work-item catalog.
+This repository's first-pass monograph outline adapts that work into proposed
+mathematical proof units; it does not claim the underlying mapping as original.
+See the [pinned attribution and methodological limits](blueprint/outline.md#evidence-used-for-this-map).
+
 ## Before opening the queue
 
 Follow the [maintainer launch checklist](docs/maintainers.md), including selecting

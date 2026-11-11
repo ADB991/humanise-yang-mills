@@ -6,6 +6,11 @@ the [provisional unit plan](unit-plan.md) turns the source clusters into propose
 mathematical work packages. Add `glossary.md` through a dedicated task once its
 notation has been checked against the source and external map.
 
+The source clusters are adapted from Scott Armstrong's
+[Yang-Mills informalization project](https://github.com/scottnarmstrong/yang-mills-informalization).
+Preserve that attribution in derivative maps, task descriptions, and published
+material that uses its unit boundaries, declaration assignments, or summaries.
+
 The blueprint is the proof structure of a research monograph. Keep the full formal
 dependency inventory separately as source evidence. Only mathematical interfaces
 that need explanation or proof become proof units; generated helpers and standard

@@ -1,8 +1,11 @@
 # Provisional proof-unit plan
 
-This plan turns the 32 source clusters in the external informalization map into
-mathematical work packages. The IDs below are temporary planning labels. Canonical
-`YM-<issue>` IDs are created only when bounded GitHub issues exist.
+This plan adapts the 32 source clusters developed in Scott Armstrong's
+[Yang-Mills informalization project](https://github.com/scottnarmstrong/yang-mills-informalization)
+into mathematical work packages for this monograph. The source map was inspected
+at commit `df12f710b78751b85ff907e6455bd65e3acb3b69`. The IDs below are temporary
+planning labels. Canonical `YM-<issue>` IDs are created only when bounded GitHub
+issues exist.
 
 One row should normally become one explanation issue, except where a literature
 task resolves the result or the split notes require finer interfaces. Dependencies

@@ -91,3 +91,7 @@ List human contributors and agent assistance in the PR and proof unit. Cite
 external mathematical sources precisely. Preserve upstream notices. The maintainer
 must select the project's code and exposition licences before soliciting public
 contributions; this scaffold does not make that choice on contributors' behalf.
+When using source clusters, declaration assignments, selected-statement summaries,
+or glossary material from Scott Armstrong's
+[Yang-Mills informalization project](https://github.com/scottnarmstrong/yang-mills-informalization),
+credit that project in the task, proof unit, or resulting manuscript note as appropriate.
