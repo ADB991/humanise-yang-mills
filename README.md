@@ -99,3 +99,11 @@ python3 -m unittest discover -s tests
 These checks validate metadata and review freshness. They do not compile Lean,
 verify English mathematics, or reserve tasks. No claim bot is installed; a
 designated coordinator confirms claims in issue comments.
+
+## Licence
+
+Except where another notice applies, original material in this repository is
+licensed under the [Creative Commons Attribution 4.0 International
+licence](LICENSE). The imported formalisation under `Lean/` retains its separate
+[upstream licence](Lean/LICENSE) and other notices; the root licence does not
+relicense that third-party material.
