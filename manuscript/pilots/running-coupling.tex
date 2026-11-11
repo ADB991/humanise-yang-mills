@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\begin{center}
+  \Large\bfseries The leading logarithmic law for the effective coupling
+\end{center}
+
+Let \(G\subset U(r_G)\) be a closed matrix subgroup, in the indicated
+unitary representation, with nonabelian simple real Lie algebra
+\(\mathfrak g\). Write
+\[
+    b_0(G)=\frac{11\,C_{\mathfrak g}}{48\pi^2},
+    \qquad
+    C_{\mathfrak g}
+      =-\frac{1}{\dim_{\mathbb R}\mathfrak g}
+        \sum_j \operatorname{Tr}_{\mathfrak g}
+             \bigl((\operatorname{ad}e_j)^2\bigr),
+\]
+where \((e_j)\) is an orthonormal basis of \(\mathfrak g\) for
+\(\langle X,Y\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(XY)\).
+Here \(\operatorname{Tr}_{\mathfrak g}\) is the real trace of an
+endomorphism of \(\mathfrak g\). Invariance of the matrix trace gives
+\(\langle[X,Y],Z\rangle=-\langle Y,[X,Z]\rangle\), so each
+\(\operatorname{ad}e_j\) is skew-adjoint. Consequently
+\(-\operatorname{Tr}_{\mathfrak g}((\operatorname{ad}e_j)^2)
+=\sum_\ell\|[e_j,e_\ell]\|^2\). Noncommutativity of \(\mathfrak g\)
+makes at least one term in the resulting double sum positive. In particular,
+\(b_0(G)>0\).
+
+\paragraph{Input from the lattice construction.}
+Fix a construction family \(\mathcal C\) satisfying the construction
+conditions. For \(N,p,m\in\mathbb N\) with \(m\le N\), let
+\(\beta_{N,p,m}\) be its action coefficient at stage \(m\) of the
+trajectory started at lattice level \(N\) and period index \(p\).
+The spacing at stage \(m\) is \(a_m=(\prod_{j<m}B_j)^{-1}\), where each
+block factor \(B_j\) is an integer at least \(3\). Thus
+\(s_m=\log(a_m^{-1})=\sum_{j<m}\log B_j\ge m\log 3\), so \(s_m\to+\infty\).
+The running estimate for the family provides a fixed reference intercept
+\(\bar\beta\) and, for every
+\(\eta>0\), a threshold \(m_0(\eta)\) such that
+\begin{equation}
+ \left|\beta_{N,p,m}-\bigl(\bar\beta+2b_0(G)s_m\bigr)\right|
+ \leq \eta s_m
+ \qquad
+ \bigl(m\geq m_0(\eta),\ N\geq m,\ p\in\mathbb N\bigr).
+ \label{eq:running}
+\end{equation}
+The threshold is uniform over the starting level and period index.
+We use the running estimate as an input to the comparison below.
+
+\begin{proposition}
+Let \(N,k:\mathbb N\to\mathbb N\) be arbitrary sequences with \(i\leq N(i)\)
+for all sufficiently large \(i\). For \(\beta_{N,p,m}>0\) set
+\(g_{N,p,m}=(\sqrt{\beta_{N,p,m}})^{-1}\). Then
+\(\beta_{N(i),k(i),i}>0\) for all sufficiently large \(i\), and
+\[
+  \lim_{i\to\infty}g_{N(i),k(i),i}\sqrt{\log(a_i^{-1})}
+  =\frac{1}{\sqrt{2b_0(G)}}.
+\]
+\end{proposition}
+
+\begin{proof}
+Fix \(\varepsilon>0\). Use \eqref{eq:running} with
+\(\eta=\varepsilon/2\), and take \(m\) large enough also to have \(s_m>0\)
+and \(\lvert\bar\beta\rvert/s_m<\varepsilon/2\). For every \(N\ge m\)
+and every \(p\), the triangle inequality yields
+\begin{align*}
+ \left|\frac{\beta_{N,p,m}}{s_m}-2b_0(G)\right|
+ &\leq \frac{\left|\beta_{N,p,m}
+              -\bigl(\bar\beta+2b_0(G)s_m\bigr)\right|}{s_m}
+       +\frac{|\bar\beta|}{s_m} \\
+ &< \varepsilon .
+\end{align*}
+The same threshold therefore works at \(m=i\), \(N=N(i)\), \(p=k(i)\)
+for all sufficiently large \(i\). It follows that
+\(\beta_{N(i),k(i),i}/s_i\to 2b_0(G)>0\), which also gives the asserted
+eventual positivity. On that tail both factors under square roots are
+positive and
+\[
+ g_{N(i),k(i),i}\sqrt{\log(a_i^{-1})}
+ =\left(\frac{\beta_{N(i),k(i),i}}{s_i}\right)^{-1/2}.
+\]
+The map \(x\mapsto x^{-1/2}\) is continuous on \((0,\infty)\), giving
+the limit.
+\end{proof}
+
+At \(N(i)=i\) the coefficient is the bare lattice action coefficient.
+For a general admissible \(N(i)\), the comparison concerns the coefficient
+read from the trajectory at spacing \(a_i\). Relating this inverse-square-root
+proxy to a coupling defined through a physical observable would require a
+separate matching theorem.
+
+\end{document}
