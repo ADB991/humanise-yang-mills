@@ -1,0 +1,45 @@
+def YM.Pert.Asymptotics.b0 : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (48 * Real.pi ^ 2)
+@YM.Pert.Asymptotics.b0_normalizes : ∀ {G : YM.Gauge}, 2 * YM.Pert.Asymptotics.b0 G = G.slopeConstant
+@YM.Pert.Asymptotics.zeroUp_bound : ∀ {G : YM.Gauge} (C : YM.Family G),
+  C.Makes →
+    ∀ {ε : ℝ},
+      0 < ε →
+        ∀ᶠ (m : ℕ) in Filter.atTop,
+          ∀ (N p : ℕ), m ≤ N → |C.path.β N p m / C.S.scale m - 2 * YM.Pert.Asymptotics.b0 G| < ε
+def YM.Pert.Asymptotics.regulatorRun : {G : YM.Gauge} → YM.Family G → ℕ → ℕ → ℕ → ℝ :=
+fun {G} C N p m => (√(C.path.β N p m))⁻¹
+@YM.Pert.Asymptotics.comparison : ∀ {G : YM.Gauge} {C : YM.Family G} {N k : ℕ → ℕ},
+  C.Makes →
+    G.Simple →
+      (∀ᶠ (i : ℕ) in Filter.atTop, i ≤ N i) →
+        Filter.Tendsto (fun i => YM.Pert.Asymptotics.regulatorRun C (N i) (k i) i * √(Real.log (C.S.a i)⁻¹))
+          Filter.atTop (nhds (√(2 * YM.Pert.Asymptotics.b0 G))⁻¹)
+def YM.RG.History.Running : {G : YM.Gauge} → YM.RG.History G → Prop :=
+fun {G} A =>
+  ∀ (ε : ℝ),
+    0 < ε → ∀ᶠ (m : ℕ) in Filter.atTop, ∀ (N p : ℕ), m ≤ N → |A.β N p m - A.levels.clock.hatBeta m| ≤ ε * A.S.scale m
+def YM.RG.Calendar.hatBeta : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.bar + G.slopeConstant * S.schedule.scale m
+@YM.Family.Makes.wilson : ∀ {G : YM.Gauge} {C : YM.Family G}, C.Makes → C.path.Selected
+@YM.RG.History.Selected.running : ∀ {G : YM.Gauge} {A : YM.RG.History G}, A.Selected → A.Running
+def YM.Schedule.a : YM.Schedule → ℕ → ℝ :=
+fun S m => (↑↑(S.denominator m))⁻¹
+def YM.Schedule.scale : YM.Schedule → ℕ → ℝ :=
+fun S m => Real.log (S.a m)⁻¹
+YM.Schedule.a_pos : ∀ (S : YM.Schedule) (m : ℕ), 0 < S.a m
+YM.Schedule.divergent : ∀ (S : YM.Schedule), Filter.Tendsto S.scale Filter.atTop Filter.atTop
+def YM.Gauge.Simple : YM.Gauge → Prop :=
+fun G =>
+  (∃ X ∈ G.lie, ∃ Y ∈ G.lie, X * Y - Y * X ≠ 0) ∧
+    ∀ I ≤ G.lie, (∀ X ∈ G.lie, ∀ Y ∈ I, X * Y - Y * X ∈ I) → I = ⊥ ∨ I = G.lie
+def YM.Gauge.casimir : YM.Gauge → ℝ :=
+fun G =>
+  have b := EuclideanSpace.basisFun G.ColorIndex ℝ;
+  (-∑ i, (LinearMap.trace ℝ G.Color) (G.ad (b i) ∘ₗ G.ad (b i))) / ↑G.lieDim
+def YM.Gauge.slopeConstant : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (24 * Real.pi ^ 2)
+@YM.Gauge.slopeConstant_pos : ∀ {G : YM.Gauge}, G.Simple → 0 < G.slopeConstant
+'YM.Pert.Asymptotics.b0_normalizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Pert.Asymptotics.zeroUp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Pert.Asymptotics.comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
