@@ -162,8 +162,13 @@ this does not assert differentiability of masks or sector decisions.
 **Hessian caution.** The selected `fog` is generally a symmetrized *windowed*
 inverse of the Gram, not definitionally the full inverse. `YM.AnalyticBridge.
 GaussianFieldAlignment.Agreements.exact` (`YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Agreements.lean`)
-proves equality with the full Gram inverse under an additional support-vanishing
-condition on that inverse. The inspected `Rows.guide` identifies the Gram as the
+takes `Q = Rows.gram T x V k (shots S x) A F` and requires all three
+hypotheses: `Q.PosDef`, `120 ≤ radiusB x`, and, for every `i,j`,
+`Q⁻¹ i j = 0` whenever `i` is outside the intersection
+`panels A F j ∩ mids A F x j`. It then concludes all three identities
+`fog A F T x V k = Q⁻¹`, `middle A F x T V k = Q⁻¹`, and
+`meanLog A F T x V k = middleLog A F x T V k`. These are sufficient conditions;
+the source does not assert they hold generally. The inspected `Rows.guide` identifies the Gram as the
 quadratic coefficient of the selected affine-square guide. It does not establish
 that this is the Hessian of the full effective action at its background. The latter
 identification remains open; the external summary also flags it as such.
@@ -171,12 +176,28 @@ identification remains open; the external summary also flags it as such.
 ## Determinants and consumer handoffs
 
 `YM.AnalyticBridge.RelativeLogdet.Priced` (`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Walls.lean`)
-requires a positive definite matrix, self-containing windows, nonnegative weighted
-rate and error parameter, and uniform resolvent, window-column, defect and excess
-Schur bounds. `YM.AnalyticBridge.RelativeLogdet.Priced.chains` (`Series.lean`)
-adds `q<1` and positive definiteness of the symmetrized window covariance and
-expresses `log det Q`, `log det Cw`, and `log det(1+Q*Cw-1)` as convergent
-local series. This is a relative/localisation result, distinct from `chartCost`.
+is a full hypothesis bundle for a finite index set, cost `D`, position map `p`,
+window family `W`, matrix `Q`, weighted rate `v`, bound `C`, and error `q`. It
+requires each index to lie in its own window, `Q.PosDef`, `1 ≤ C`, `v ≥ 0`,
+`q ≥ 0`, and the weighted row-and-column `D.Schur` bounds: `Q` at cost `C`;
+for every `u ≥ 0`, the full resolvent `(Q+uI)⁻¹` and the columnwise windowed
+inverse at cost `C/(1+u)`, and their defect `(Q+uI)*pie(W,Q,u)-I` at cost
+`q/(1+u)`; and `S = Q*Cw-I` at cost `q`, where `Cw=Schur.clouded W Q`.
+`YM.AnalyticBridge.RelativeLogdet.Priced.chains` (`Series.lean`) additionally
+requires `q<1` and `Cw.PosDef`. It states separately, with the source's local
+terms `letterBase`, `r` and `Round.ripple`,
+
+\[
+\begin{aligned}
+\log\det Q &= \sum_i\bigl(\mathrm{letterBase}_i+\sum_{n\ge0}r_{i,n}\bigr),\\
+\log\det C_w &= -\log\det Q + \sum_i\sum_{n\ge0}\mathrm{ripple}(S)_{n,i,i},\\
+\log\det(I+S) &= \sum_i\sum_{n\ge0}\mathrm{ripple}(S)_{n,i,i}.
+\end{aligned}
+\]
+
+The theorem also asserts summability of both series for each `i`; by definition
+`I+S=Q*Cw`, which need not be symmetric. This is a relative/localisation result,
+distinct from `chartCost`.
 The exact handoff from these hypotheses to the selected sector, including all
 normalisation signs and PU-11 overlap, is not yet checked.
 
@@ -382,3 +403,13 @@ on its `Counting.lean`, `sed -n '20,60p'` on
 '15,45p'` on its `RowStencil.lean`, and `sed -n '20,55p'` on
 `Lean/YM/Push/FREE_RESOLVENT/Weights.lean`, together with `rg -n` for `marks`,
 `positions`, `weight`, `coordRoot` and `jet`; all exited 0.
+
+Review correction: independently checked the two findings in [the issue #29
+review](https://github.com/hairer/humanise-yang-mills/pull/28#issuecomment-6802706031)
+against `Agreements.lean` lines 25–75, `RELATIVE_LOGDET_TRACE/Walls.lean`
+lines 75–100 and `Series.lean` lines 195–225 using bounded `sed -n` reads;
+`rg -n` found the attenuation, windowed inverse, defect and excess definitions
+in `Resolvent.lean` and `Walls.lean`. These commands passed. The review concerned
+the previous head `3706eff3e567455d66aefcc80db07cd2f65a1fe8` and SHA-256
+`f4b84e498629124c1e0ac4376abeb4b2cbc203041f41951c4aa54d02d0c138fc`;
+this material revision needs renewed correspondence review.
