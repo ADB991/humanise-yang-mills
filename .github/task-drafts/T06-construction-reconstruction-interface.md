@@ -52,7 +52,7 @@ synchronisation), and
 [#6](https://github.com/hairer/humanise-yang-mills/issues/6) (OS reconstruction
 literature) are accepted.
 
-Before granting a claim, search live issues/PRs and unit metadata for ownership of
+Before posting a self-claim, search live issues/PRs and unit metadata for ownership of
 the same declarations or shared outline rows.
 
 ## Acceptance criteria

@@ -1,15 +1,5 @@
-\documentclass{article}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage[margin=1in]{geometry}
-
-\newtheorem{proposition}{Proposition}
-
-\begin{document}
-
-\begin{center}
-  \Large\bfseries The leading logarithmic law for the effective coupling
-\end{center}
+\section{Logarithmic asymptotics of the running inverse coefficient}
+\label{sec:running-coefficient}
 
 Let \(G\subset U(r_G)\) be a closed matrix subgroup, in the indicated
 unitary representation, with nonabelian simple real Lie algebra
@@ -54,7 +44,35 @@ The running estimate for the family provides a fixed reference intercept
 The threshold is uniform over the starting level and period index.
 We use the running estimate as an input to the comparison below.
 
-\begin{proposition}
+\begin{proposition}[Uniform extraction]
+\label{prop:uniform-extraction}
+Let $s_m\to+\infty$, and let $A,c\in\mathbb R$ be fixed. Suppose the real
+coefficients $\beta_{N,p,m}$ satisfy, for every $\eta>0$, an estimate
+$|\beta_{N,p,m}-(A+cs_m)|\le\eta s_m$ for all sufficiently large $m$,
+uniformly over $N\ge m$ and $p\in\mathbb N$.
+Then for every $\varepsilon>0$, for all sufficiently large $m$ one has $s_m>0$
+and
+\[
+ \left|\frac{\beta_{N,p,m}}{s_m}-c\right|<\varepsilon
+ \qquad(N\ge m,\ p\in\mathbb N).
+\]
+\end{proposition}
+
+\begin{proof}
+Fix $\varepsilon>0$. Use the assumed estimate with $\eta=\varepsilon/2$,
+and enlarge its threshold so that $s_m>2(|A|+1)/\varepsilon>0$.
+Then, for every $N\ge m$ and $p$,
+\[
+ \left|\frac{\beta_{N,p,m}}{s_m}-c\right|
+ \le \frac{|\beta_{N,p,m}-(A+cs_m)|}{s_m}+\frac{|A|}{s_m}
+ \le\frac\varepsilon2+\frac{|A|}{s_m}<\varepsilon.
+\]
+Both thresholds are independent of $N,p$. No positivity assumption on $c$
+is used in this proposition.
+\end{proof}
+
+\begin{proposition}[Logarithmic asymptotic]
+\label{prop:running-asymptotic}
 Let \(N,k:\mathbb N\to\mathbb N\) be arbitrary sequences with \(i\leq N(i)\)
 for all sufficiently large \(i\). For \(\beta_{N,p,m}>0\) set
 \(g_{N,p,m}=(\sqrt{\beta_{N,p,m}})^{-1}\). Then
@@ -66,28 +84,34 @@ for all sufficiently large \(i\). For \(\beta_{N,p,m}>0\) set
 \end{proposition}
 
 \begin{proof}
-Fix \(\varepsilon>0\). Use \eqref{eq:running} with
-\(\eta=\varepsilon/2\), and take \(m\) large enough also to have \(s_m>0\)
-and \(\lvert\bar\beta\rvert/s_m<\varepsilon/2\). For every \(N\ge m\)
-and every \(p\), the triangle inequality yields
-\begin{align*}
- \left|\frac{\beta_{N,p,m}}{s_m}-2b_0(G)\right|
- &\leq \frac{\left|\beta_{N,p,m}
-              -\bigl(\bar\beta+2b_0(G)s_m\bigr)\right|}{s_m}
-       +\frac{|\bar\beta|}{s_m} \\
- &< \varepsilon .
-\end{align*}
-The same threshold therefore works at \(m=i\), \(N=N(i)\), \(p=k(i)\)
-for all sufficiently large \(i\). It follows that
-\(\beta_{N(i),k(i),i}/s_i\to 2b_0(G)>0\), which also gives the asserted
-eventual positivity. On that tail both factors under square roots are
-positive and
+Apply Proposition~\ref{prop:uniform-extraction} to \eqref{eq:running}, with
+$A=\bar\beta$ and $c=2b_0(G)>0$. For each $\varepsilon>0$, enlarge the
+resulting threshold until $i\le N(i)$ holds. Substituting
+$m=i$, $N=N(i)$ and $p=k(i)$ gives
 \[
- g_{N(i),k(i),i}\sqrt{\log(a_i^{-1})}
- =\left(\frac{\beta_{N(i),k(i),i}}{s_i}\right)^{-1/2}.
+ \left|\frac{\beta_{N(i),k(i),i}}{s_i}-c\right|<\varepsilon
 \]
-The map \(x\mapsto x^{-1/2}\) is continuous on \((0,\infty)\), giving
-the limit.
+for every subsequent $i$. Thus $x_i=\beta_{N(i),k(i),i}/s_i\to c$ on the
+tail where $s_i>0$. Taking $\varepsilon=c/2$ shows $x_i>c/2>0$ eventually;
+hence $\beta_{N(i),k(i),i}=s_ix_i>0$ there. No condition on the sequence $k$
+was needed, because the original threshold was uniform in $p$.
+
+On this positive tail the square-root limit rule
+\cite[Proposition~2.2.6]{lebl} gives $\sqrt{x_i}\to\sqrt c$.
+All denominator terms and their limit are nonzero, so the quotient rule
+\cite[Proposition~2.2.5(iv)]{lebl}, with constant numerator $1$, gives
+$1/\sqrt{x_i}\to1/\sqrt c$. Finally,
+\[
+ \frac1{\sqrt{x_i}}
+ =\frac{\sqrt{s_i}}{\sqrt{\beta_{N(i),k(i),i}}}
+ =g_{N(i),k(i),i}\sqrt{\log(a_i^{-1})}.
+\]
+The first identity follows by squaring the positive quantities
+$\sqrt{x_i}$ and $\sqrt{\beta_{N(i),k(i),i}}/\sqrt{s_i}$ and using uniqueness
+of the nonnegative square root. All expressions are interpreted on the
+positive tail and may be assigned arbitrary values at earlier indices:
+changing finitely many terms preserves convergence by enlarging each tolerance's
+threshold beyond those indices. This proves the stated limit.
 \end{proof}
 
 At \(N(i)=i\) the coefficient is the bare lattice action coefficient.
@@ -95,5 +119,3 @@ For a general admissible \(N(i)\), the comparison concerns the coefficient
 read from the trajectory at spacing \(a_i\). Relating this inverse-square-root
 proxy to a coupling defined through a physical observable would require a
 separate matching theorem.
-
-\end{document}

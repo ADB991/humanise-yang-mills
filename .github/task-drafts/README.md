@@ -2,10 +2,9 @@
 
 T01--T05 have been published as ready GitHub issues. The remaining files are
 issue-ready drafts for the next coordinated work wave; they are not claimable
-tasks. A draft becomes claimable only after a maintainer publishes it as a GitHub
-issue, names its coordinator, applies `status:ready`, and the coordinator posts an
-explicit `CLAIM GRANTED` comment as described in
-[`docs/coordination.md`](../../docs/coordination.md).
+tasks. Publish a draft as a GitHub issue with precise scope and satisfied
+prerequisites before self-claiming it under
+[`docs/coordination.md`](../../docs/coordination.md). No manual grant is required.
 
 The `T06`--`T08` labels below are temporary publishing references, not proof-unit
 IDs. For an explanation issue, the issue number determines the canonical
@@ -14,8 +13,8 @@ are the authoritative records for T01--T05.
 
 ## Before inviting public claims
 
-1. Confirm the proposed coordinator in every new issue. The drafts propose `@hairer`;
-   a delegated coordinator must be recorded by a maintainer before granting claims.
+1. Name a contact for scope questions and independent review in each issue;
+   contributors post and check their own claims.
 2. Check the live repository for overlapping issues and PRs, create the documented
    task/status labels if absent, and enable branch protection before accepting
    contributions. A code of conduct is also advisable before broad public outreach.
@@ -40,7 +39,7 @@ initial live ready queue.
 | [T05 / #6](https://github.com/hairer/humanise-yang-mills/issues/6) | literature | ready | Build a precise Osterwalder--Schrader reference checklist |
 | [T06](T06-construction-reconstruction-interface.md) | audit | blocked on #3, #4, #6 | Fix the PU-15--PU-19 mathematical interfaces |
 | [T07](T07-su2-pilot-proof-unit.md) | explain | blocked on #2, #3, #5 | Calibrate a small citation-heavy proof unit |
-| [T08](T08-running-coupling-pilot.md) | explain | blocked on #2, #3, #4 | Calibrate a small source-heavy proof unit |
+| [T08 / #22](https://github.com/hairer/humanise-yang-mills/issues/22) | explain | draft submitted | Canonical running-coefficient unit YM-000022 |
 
 Do not yet distribute the large nonlinear RG packages PU-08--PU-12. Their claimable
 boundaries depend on T06 and on lessons from the two pilot units. When a pilot draft

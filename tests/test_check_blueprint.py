@@ -16,6 +16,7 @@ class BlueprintChecks(unittest.TestCase):
         (self.root / "Lean").mkdir()
         (self.root / "Lean/Test.lean").write_text("-- Synthetic test fixture, not a proof.\n")
         (self.root / "source").mkdir()
+        (self.root / "manuscript").mkdir()
         (self.root / "blueprint/units").mkdir(parents=True)
         self.source = {
             "schema_version": 1, "status": "imported", "url": "https://example.org/source",
@@ -31,14 +32,16 @@ class BlueprintChecks(unittest.TestCase):
         unit_id = f"YM-{number:06d}"
         folder = self.root / "blueprint/units" / unit_id
         folder.mkdir()
-        (folder / "proof.md").write_text("# Synthetic fixture\n\nAn argument for testing metadata.\n")
+        (folder / "correspondence.md").write_text("# Synthetic fixture\n\nAn argument for testing metadata.\n")
         unit = {
             "id": unit_id, "title": "Synthetic fixture",
             "issue": f"https://github.com/hairer/humanise-yang-mills/issues/{number}",
             "source_revision": self.source["revision"], "status": "draft", "authors": ["alice"],
             "declarations": [{"name": name or f"Fixture.result{number}", "module": "Test", "path": "Lean/Test.lean"}],
+            "manuscript": [f"manuscript/{unit_id}.tex"],
             "depends_on": dependencies or [], "reviews": {"lean": None, "mathematics": None},
         }
+        (self.root / unit["manuscript"][0]).write_text("A synthetic mathematical statement.\n")
         self.save(unit)
         return unit
 
@@ -49,7 +52,7 @@ class BlueprintChecks(unittest.TestCase):
     def review(self, unit):
         folder = self.root / "blueprint/units" / unit["id"]
         (folder / "reviews").mkdir()
-        digest = fingerprint(unit, folder / "proof.md")
+        digest = fingerprint(unit, folder / "correspondence.md")
         for role in ("lean", "mathematics"):
             evidence = folder / "reviews" / f"{role}.md"
             evidence.write_text("Synthetic independent acceptance record.\n")
@@ -106,7 +109,7 @@ class BlueprintChecks(unittest.TestCase):
     def test_prose_change_invalidates_review(self):
         unit = self.add_unit()
         self.review(unit)
-        (self.root / "blueprint/units" / unit["id"] / "proof.md").write_text("Changed claim.\n")
+        (self.root / "blueprint/units" / unit["id"] / "correspondence.md").write_text("Changed claim.\n")
         with self.assertRaisesRegex(Invalid, "stale lean review"):
             validate(self.root)
 
@@ -151,6 +154,87 @@ class BlueprintChecks(unittest.TestCase):
             (folder / "reviews").symlink_to(moved, target_is_directory=True)
             with self.assertRaisesRegex(Invalid, "path must stay within"):
                 validate(self.root)
+
+
+    def test_manuscript_change_invalidates_review(self):
+        unit = self.add_unit()
+        self.review(unit)
+        (self.root / unit["manuscript"][0]).write_text("A different theorem.\n")
+        with self.assertRaisesRegex(Invalid, "stale lean review"):
+            validate(self.root)
+
+    def test_shared_support_changes_invalidate_review(self):
+        for filename in ("macros.tex", "references.bib"):
+            with self.subTest(filename=filename):
+                unit = self.add_unit(10 if filename.endswith("tex") else 11)
+                path = self.root / "manuscript" / filename
+                path.write_text("Original supporting content.\n")
+                unit["manuscript"].append(f"manuscript/{filename}")
+                self.save(unit)
+                self.review(unit)
+                path.write_text("Changed supporting content.\n")
+                with self.assertRaisesRegex(Invalid, "stale lean review"):
+                    validate(self.root)
+                path.write_text("Original supporting content.\n")
+
+    def test_manuscript_path_list_change_invalidates_review(self):
+        unit = self.add_unit()
+        self.review(unit)
+        (self.root / "manuscript/additional.tex").write_text("Another input.\n")
+        unit["manuscript"].append("manuscript/additional.tex")
+        self.save(unit)
+        with self.assertRaisesRegex(Invalid, "stale lean review"):
+            validate(self.root)
+
+    def test_missing_manuscript(self):
+        unit = self.add_unit()
+        (self.root / unit["manuscript"][0]).unlink()
+        with self.assertRaisesRegex(Invalid, "missing path"):
+            validate(self.root)
+
+    def test_manuscript_constraints(self):
+        unit = self.add_unit()
+        for paths, error in [([], "cannot be empty"),
+                             (["../outside.tex"], "repository-relative"),
+                             (["Lean/Test.lean"], "path must stay within"),
+                             (["manuscript/a.tex", "manuscript/a.tex"], "duplicate")]:
+            with self.subTest(paths=paths):
+                unit["manuscript"] = paths
+                self.save(unit)
+                with self.assertRaisesRegex(Invalid, error):
+                    validate(self.root)
+
+    def test_manuscript_symlink_cannot_escape(self):
+        unit = self.add_unit()
+        path = self.root / unit["manuscript"][0]
+        path.unlink()
+        path.symlink_to(self.root / "Lean/Test.lean")
+        with self.assertRaisesRegex(Invalid, "path must stay within"):
+            validate(self.root)
+
+    def test_manuscript_requires_tex_and_supported_formats(self):
+        unit = self.add_unit()
+        for filename, error in [("only.bib", "needs LaTeX"), ("proof.md", "expected .tex")]:
+            (self.root / "manuscript" / filename).write_text("Content.\n")
+            unit["manuscript"] = ["manuscript/" + filename]
+            self.save(unit)
+            with self.assertRaisesRegex(Invalid, error):
+                validate(self.root)
+
+    def test_empty_manuscript_rejected(self):
+        unit = self.add_unit()
+        (self.root / unit["manuscript"][0]).write_text(" \n")
+        with self.assertRaisesRegex(Invalid, "nonempty text"):
+            validate(self.root)
+
+    def test_rename_manuscript_invalidates_review(self):
+        unit = self.add_unit()
+        self.review(unit)
+        (self.root / unit["manuscript"][0]).rename(self.root / "manuscript/renamed.tex")
+        unit["manuscript"] = ["manuscript/renamed.tex"]
+        self.save(unit)
+        with self.assertRaisesRegex(Invalid, "stale lean review"):
+            validate(self.root)
 
 
 if __name__ == "__main__":

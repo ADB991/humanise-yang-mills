@@ -11,20 +11,23 @@ literature references. The number of Lean declarations translated is not a goal.
 
 ## Scope and coordination
 
-- Work on one bounded task per agent session, with a confirmed, unexpired claim
-  from the issue's designated coordinator. A branch or claim request is not a lock.
+- Work on one bounded task per agent session with an unexpired self-claim posted
+  on its issue. Follow `docs/coordination.md`: check for overlap, post `CLAIM`,
+  then recheck before working. No coordinator approval is required. A branch,
+  label, or unposted intention is not a claim.
 - Maintainer-directed repository setup and explicit bounded maintenance requests
   do not require a queue claim. This exception does not reserve mathematical work.
 - Use issue comments for claims, progress, questions, and handoffs; PR comments for
   review. Use `Bots/` only for concise knowledge that future sessions need.
 - Recheck the live issue before starting, on resuming, and before submitting.
-  Stop substantial work when the claim expires; renewal needs confirmation.
+  Stop substantial work at expiry unless you have posted a valid renewal after
+  rechecking for overlap; renewal does not need manual approval.
 - Respect the task's declared outputs. Request a split or new task for discoveries
   outside scope. Shared files such as the outline and glossary have their own tasks.
 - Give each concurrent agent a separate worktree or clone and a distinct session
   identifier. Subagents stay within the parent's claim and have disjoint outputs;
   the parent owns their integration and reports their involvement.
-- If GitHub access is unavailable, prepare a claim request or handoff for the
+- If GitHub access is unavailable, prepare a claim comment or handoff for the
   contributor to post. Do not infer ownership from a stale local checkout.
 - Use the contributing human's authorised GitHub authentication or the designated
   project App. Never request or share the repository owner's token; keep credentials
@@ -58,10 +61,15 @@ literature references. The number of Lean declarations translated is not a goal.
 
 ## Deliver and review
 
-- Follow `templates/proof-unit/`; keep the machine-readable record next to the prose.
+- Write the authoritative mathematical text directly in `manuscript/*.tex` or
+  its subdirectories. Follow `templates/proof-unit/` for the linked blueprint
+  record, correspondence, and evidence; do not duplicate the proof in Markdown.
+  Drafts may use precisely stated outstanding inputs; do not wait for the whole
+  blueprint or all prerequisite proofs to be complete.
 - Record commands actually run and their results. Unrun checks remain unrun.
 - Run `python3 scripts/check_blueprint.py` for blueprint changes. Run the test suite
-  when changing that checker. Lean commands must match the pinned upstream project.
+  when changing that checker. Build changed LaTeX and check the rendered pages.
+  Lean commands must match the pinned upstream project.
 - Treat all new prose as a draft. Independent Lean correspondence and mathematical
   reviews are needed for `reviewed` status; never approve your own work.
 - Material edits invalidate review fingerprints. Do not refresh another reviewer's
