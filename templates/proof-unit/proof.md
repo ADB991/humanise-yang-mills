@@ -6,7 +6,21 @@
 
 ## Definitions and notation
 
-<Meanings, conventions, and links to the glossary or prerequisite units.>
+<Use the canonical symbols in `blueprint/glossary.md` and follow
+`docs/notation.md`. In a copied unit, link them as `../../glossary.md` and
+`../../../docs/notation.md`. State the meanings,
+spaces, normalisations, limit/filter conventions, and quantifier scope needed
+here. Cite prerequisite units and source definitions. Do not infer meaning from
+a Lean name.>
+
+| Symbol in this unit | Meaning, space and normalisation | Inherited from | Local conversion or qualification |
+| --- | --- | --- | --- |
+| <symbol> | <typed mathematical meaning> | <glossary entry, prerequisite unit, or source declaration> | <none, or explicit map from another convention> |
+
+<Add rows for each new local symbol and each inherited symbol whose meaning is
+needed at a handoff. Distinguish public/internal objects, selected/mixed phases,
+and iterated/subsequential limits. Send proposed shared changes to the glossary's
+dedicated issue; do not edit it under this unit's claim.>
 
 ## Dependencies
 
