@@ -5,6 +5,7 @@
 - Human reviewer: <account>
 - Agent assistance: <tool and role, or none>
 - Content SHA-256: <output of the fingerprint command>
+- Manuscript files and labels: <check the complete manuscript list, including support files>
 - Source revision: <immutable revision>
 - Review task and PR: <links>
 - Outcome: <changes requested / accepted locally, conditional on stated dependencies>

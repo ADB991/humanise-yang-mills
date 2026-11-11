@@ -69,12 +69,12 @@ The fact that a session completed does not establish that its proof is acceptabl
 To launch a hosted task under the existing claim protocol:
 
 1. Select an unclaimed ready issue and identify the human responsible for the run.
-2. Request and obtain the coordinator's grant for a unique session identifier,
-   scope, and UTC expiry **before** assigning the issue to an agent or launching it.
-3. Supply the issue URL, grant URL, identifier, budget, and repository instructions
+2. Post a self-claim with a unique session identifier, scope and UTC expiry;
+   recheck for conflicting claims before assigning or launching the agent.
+3. Supply the issue URL, claim URL, identifier, budget, and repository instructions
    in the launch prompt. Record the resulting session URL on the issue.
-4. The responsible human monitors the session and ensures it stops or obtains a
-   renewal at expiry. The claim time is not a GitHub-enforced session timeout.
+4. The responsible human monitors the session and ensures it stops or posts a valid
+   renewal before expiry. The claim time is not a GitHub-enforced session timeout.
 5. Link the resulting PR or research artifact to the issue and apply the usual
    independent review requirements.
 

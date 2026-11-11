@@ -1,4 +1,9 @@
-# Evidence for YM-000022
+# Evidence for YM-000022 (original Markdown draft)
+
+This is the historical inspection record from PR #23. The mathematical text
+subsequently moved to LaTeX; see [the current correspondence](../correspondence.md)
+and [migration checks](latex-migration.md). References to `proof.md` below describe
+the version inspected then. The Lean source and retained axiom log are unchanged.
 
 Date: 11 November 2026. Parent session: `hairer-codex-cp03-20261111`.
 [Claim grant](https://github.com/hairer/humanise-yang-mills/issues/22#issuecomment-6800662148),

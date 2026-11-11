@@ -14,7 +14,7 @@
   branches to be up to date before merging, and dismiss stale approvals. This
   matters when two individually valid PRs claim the same declaration.
 - Create the labels below. Name coordinators in task issues and announce changes
-  of coordinator explicitly. Contributors can request assignments by commenting;
+  of coordinator explicitly. Contributors self-claim by commenting without manual approval;
   coordinators need collaborator access on a personal repository, or Triage or
   higher on an organisation repository. See the [access guide](access.md).
 - Keep a small ready queue and invite a pilot group. Expand after reviewing one
@@ -48,12 +48,12 @@ Do not invent theorem names or mathematical divisions before inspecting the sour
 | Identify reusable literature results | Checked references, matched hypotheses, and shared background notes | Identified mathematical interfaces |
 | Design the proof map | Conceptual units, literature interfaces, prerequisites, notation, and first ready issues | Statement audit; dependency data; initial literature search |
 | Develop a pilot proof unit | Detailed proof using applicable references, with independent Lean/mathematical reviews | Stable interface and a claim |
-| Assemble an initial chapter | Connected exposition with explicit dependency status | Reviewed pilot and adjacent units |
+| Assemble an initial chapter | LaTeX exposition with explicit dependency status | Precise local interfaces; inputs may remain draft |
 
 Static statement inspection can start while a central build runs. Avoid distributing
 hundreds of explanation tasks before the target statement and proof interfaces
-have been checked. Separate mapping and writing: many agents should reuse one
-dependency index instead of independently rediscovering the whole project.
+have been checked. Develop mapping and LaTeX writing together: reuse the shared dependency index
+and refine it as sections are written, without waiting for a complete blueprint.
 
 ## Build the index once
 

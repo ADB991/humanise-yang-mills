@@ -25,19 +25,20 @@ unit ID.
 
 Use T04's verified reference for the standard SU(2) simplicity fact and prove the
 project-specific matching and specialisation steps in detail. Write for the
-research monograph: ordinary mathematics in `proof.md`, with Lean correspondence
+research monograph: ordinary mathematics in manuscript LaTeX, with Lean correspondence
 and audit detail kept in the unit metadata and correspondence sections. Suppress
 only implementation scaffolding shown not to carry mathematical content.
 
 ## Owned outputs and exclusions
 
-- Own only `blueprint/units/YM-<this issue number>/`, created from
-  `templates/proof-unit/`.
+- Own `blueprint/units/YM-<this issue number>/` and
+  `manuscript/sections/su2-specialisation.tex`, using `templates/proof-unit/`.
+  Include the section in `manuscript/main.tex` as a bounded integration edit.
 - Cover the two named declarations and the bounded definitions/instances required
   to interpret their specialisation.
 - Depend on the audited generic public theorem as an interface; do not reproduce
   `YangMills.jointExistence`, the RG construction, or unrelated SU(2) background.
-- Do not edit shared outline, glossary, background, or manuscript files. Request a
+- Do not edit shared outline, glossary, background, or other manuscript files. Request a
   separate task for a discovered shared-file correction.
 
 ## Prerequisites and overlap search
@@ -47,13 +48,13 @@ build/axiom evidence,
 [#3](https://github.com/hairer/humanise-yang-mills/issues/3)'s statement audit,
 and [#5](https://github.com/hairer/humanise-yang-mills/issues/5)'s SU(2)
 literature note are accepted. Search live claims, PRs, existing unit metadata, and
-`Bots/notes/` before granting a claim.
+`Bots/notes/` before posting a self-claim.
 
 ## Acceptance criteria
 
 - `unit.json` names the exact source revision, owned declarations, dependencies,
   agent/human contributors, and current `draft` status.
-- `proof.md` states the concrete object and theorem exactly and gives every
+- The LaTeX section states the concrete object and theorem exactly and gives every
   project-specific step in the specialisation. The cited standard theorem has a
   precise locator and its hypotheses are checked.
 - The prose does not imply that simplicity supplies the generic Yang--Mills

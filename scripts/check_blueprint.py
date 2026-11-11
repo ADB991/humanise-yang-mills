@@ -67,12 +67,30 @@ def local_path(root, value, parent, context, directory=False):
     return result
 
 
-def fingerprint(unit, proof_path):
+def manuscript_paths(root, unit):
+    """Resolve explicitly recorded mathematical inputs, including shared support."""
+    texts(unit["manuscript"], f"{unit['id']} manuscript", nonempty=True)
+    paths = []
+    for value in unit["manuscript"]:
+        path = local_path(root, value, root / "manuscript", f"{unit['id']} manuscript")
+        require(path.suffix in (".tex", ".bib"), f"{unit['id']}: expected .tex or .bib manuscript input")
+        text(path.read_text(encoding="utf-8").strip(), f"{unit['id']} manuscript input")
+        paths.append(path)
+    require(any(path.suffix == ".tex" for path in paths), f"{unit['id']}: manuscript needs LaTeX text")
+    return paths
+
+
+def fingerprint(unit, correspondence_path, root=None):
     """Hash reviewable local content; statuses, credits, and approvals are excluded."""
     payload = {key: unit[key] for key in (
         "id", "title", "source_revision", "declarations", "depends_on"
     )}
-    payload["proof"] = proof_path.read_bytes().decode("utf-8")
+    root = Path(root).resolve() if root is not None else correspondence_path.resolve().parents[3]
+    payload["correspondence"] = correspondence_path.read_text(encoding="utf-8")
+    payload["manuscript"] = {
+        name: path.read_text(encoding="utf-8")
+        for name, path in zip(unit["manuscript"], manuscript_paths(root, unit))
+    }
     canonical = json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
@@ -110,7 +128,7 @@ def validate(root):
             continue
         require(folder.is_dir() and not folder.is_symlink(), f"{folder}: expected a unit directory")
         unit = record(folder / "unit.json")
-        fields(unit, "id title issue source_revision status authors declarations depends_on reviews", str(folder))
+        fields(unit, "id title issue source_revision status authors declarations depends_on manuscript reviews", str(folder))
         unit_id = unit["id"]
         require(isinstance(unit_id, str) and re.fullmatch(r"YM-[0-9]{6,}", unit_id),
                 f"{folder}: invalid unit ID")
@@ -137,9 +155,10 @@ def validate(root):
             require(name not in owners, f"{unit_id}: duplicate declaration ownership: {name} (also {owners.get(name)})")
             owners[name] = unit_id
 
-        proof_path = local_path(root, f"blueprint/units/{unit_id}/proof.md", folder, f"{unit_id} proof")
-        text(proof_path.read_text(encoding="utf-8").strip(), f"{unit_id} proof")
-        digest = fingerprint(unit, proof_path)
+        correspondence_path = local_path(root, f"blueprint/units/{unit_id}/correspondence.md", folder,
+                                         f"{unit_id} correspondence")
+        text(correspondence_path.read_text(encoding="utf-8").strip(), f"{unit_id} correspondence")
+        digest = fingerprint(unit, correspondence_path, root)
         fields(unit["reviews"], "lean mathematics", f"{unit_id} reviews")
         authors = {author.lstrip("@").casefold() for author in unit["authors"]}
         for role, review in unit["reviews"].items():
@@ -183,8 +202,11 @@ def main():
     try:
         if args.fingerprint:
             require(re.fullmatch(r"YM-[0-9]{6,}", args.fingerprint), "invalid unit ID")
-            folder = args.root / "blueprint/units" / args.fingerprint
-            print(fingerprint(record(folder / "unit.json"), folder / "proof.md"))
+            root = args.root.resolve()
+            folder = root / "blueprint/units" / args.fingerprint
+            correspondence_path = local_path(root, f"blueprint/units/{args.fingerprint}/correspondence.md",
+                                             folder, "correspondence")
+            print(fingerprint(record(folder / "unit.json"), correspondence_path, root))
         else:
             count = validate(args.root)
             print(f"Blueprint structure OK: {count} units. Lean and mathematics were not verified.")

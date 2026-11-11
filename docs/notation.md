@@ -1,10 +1,10 @@
 # Notation across proof units and chapters
 
-The [shared glossary](../blueprint/glossary.md) is the canonical notation register for this exposition. It is pinned to the imported source revision recorded in `source/upstream.json` and remains an author draft until independently reviewed. A proof unit states its mathematics in ordinary language, with source correspondence in the blueprint. A chapter may improve the prose, but must preserve the spaces, quantifiers, normalisations and limits established by its source unit.
+The [shared glossary](../blueprint/glossary.md) is the canonical notation register for this exposition. It is pinned to the imported source revision recorded in `source/upstream.json` and remains an author draft until independently reviewed. A proof unit states its mathematics directly in manuscript LaTeX, with source correspondence in the blueprint. Chapter integration edits that same text, preserving its spaces, quantifiers, normalisations and limits.
 
 ## Author contract
 
-At the start of each proof unit's **Definitions and notation** section, give a short crosswalk with these columns:
+Define notation at first use in the LaTeX text. In the blueprint unit's **Inputs and notation** section, keep a short crosswalk for the symbols needed at handoffs, with these columns:
 
 | Symbol used here | Meaning, space and normalisation | Origin | Local conversion or qualification |
 | --- | --- | --- | --- |

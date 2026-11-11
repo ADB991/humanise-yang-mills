@@ -9,22 +9,31 @@ until it is published, and may not be merged into their branch.
 | Scope, claim, expiry, progress, blockers, handoff | One task issue and its comments |
 | Proposed edits and review discussion | Pull request and its comments |
 | Cross-cutting question or policy decision | Dedicated issue, linked from affected tasks |
-| Accepted statements, dependencies, explanations | `blueprint/` |
+| Interfaces, dependencies, correspondence, review records | `blueprint/` |
 | Reusable literature results and source matches | `blueprint/background/` |
 | Durable discoveries, failed approaches, resume notes | `Bots/notes/` |
-| Integrated exposition | `manuscript/` |
+| Authoritative mathematical text, from first draft onward | `manuscript/` |
 
 Use a GitHub Project to display the issue queue through saved views. The existing
-issue labels and explicit claim grants remain authoritative. GitHub-hosted agent
-sessions are an optional execution route, with claims granted before launch.
+issue comments are authoritative; labels and assignments are summaries. GitHub-hosted
+agent sessions are optional, with a self-claim posted and checked before launch.
 See [Projects and Agents](github-features.md) for setup and dispatch rules.
 
 ## Define tasks before distributing them
 
 Each issue names a coordinator, task type, source revision, exact declarations or
 mathematical interface, owned output paths, prerequisites, and acceptance criteria.
-The coordinator checks existing issues, PRs, and proof-unit metadata for overlap
-before marking it ready. Reserve shared outline/glossary edits separately.
+The contributor preparing or claiming it checks existing issues, PRs, and proof-unit
+metadata for overlap. Any trusted contributor may publish a well-scoped task as
+ready when its stated prerequisites are satisfied; labels can be updated later by
+someone with permissions. Record readiness in the issue comment if necessary.
+A blocked or disputed scope must be resolved before claiming. Reserve shared
+outline/glossary edits separately. A coordinator helps resolve conflicts and
+organize review; ordinary claims do not require their permission.
+
+Writing starts directly in LaTeX once the local statement and input interfaces
+are precise. The entire proof map and all prerequisite proofs need not be complete.
+State outstanding mathematical inputs explicitly and track them in the blueprint.
 
 For mathematical tasks, specify the intended treatment: prove in detail, cite and
 apply an existing result, suppress formal scaffolding, or investigate an unresolved
@@ -50,45 +59,59 @@ can work on different units, and reviewers can work on finished units concurrent
 
 ## Claim protocol
 
-Initially, one designated coordinator serialises grants for each issue. The issue
-body names that coordinator; its creation and coordinator changes are confirmed
-by a repository maintainer. If another coordinator takes over, record the handover
-before granting further claims. Assignment and labels are useful summaries;
-the coordinator's explicit grant is authoritative.
+Contributors are trusted to claim bounded work themselves. No manual grant or
+renewal approval is required. Use this protocol:
 
-Request a claim in an issue comment:
+1. Read the issue, all comments, linked PRs, and overlapping tasks/outputs. Check
+   that the scope is ready and there is no unexpired claim on it. Inspect prior
+   work before taking over an expired or released claim.
+2. Post the following comment; its URL is the claim identifier:
 
 ```text
-CLAIM REQUEST
+CLAIM
 Session: <GitHub account>-<agent>-<unique suffix>
-Scope: <task and owned output paths>
-Until: <YYYY-MM-DD HH:MM UTC; normally within the next 24 hours>
+Scope: <task and exact owned output paths>
+Until: <YYYY-MM-DD HH:MM UTC; at most 24 hours from posting>
 Plan: <two or three sentences>
 ```
 
-The coordinator checks for overlap, then posts:
+3. Re-read the live issue and overlapping tasks immediately after posting. If no
+   conflicting earlier claim exists, begin. Update the assignee and `status:claimed`
+   label if you have permission; otherwise the comment suffices.
 
-```text
-CLAIM GRANTED
-Session: <exact session identifier>
-Scope: <agreed task and paths>
-Until: <YYYY-MM-DD HH:MM UTC>
-```
+The earliest valid claim comment wins an accidental race for overlapping scope,
+including across issues. Use GitHub's creation timestamp, breaking ties by numeric
+comment ID. The later claimant posts a release and chooses disjoint work. If the
+scope or ordering is ambiguous, pause the overlapping work and resolve it in the
+issues with the other contributor or coordinator. A GitHub comment is not an
+atomic lock; the post-claim recheck is essential. A label, branch, or old request
+alone never establishes ownership.
 
-The grant comment's URL is the claim identifier. The coordinator records the
-GitHub account as assignee and changes the label to `status:claimed`. A new grant
-must not overlap an existing unexpired grant. A claim request, a self-assignment,
-or the first comment on an issue does not authorise work by itself.
+Recheck on starting, resuming and submitting. Before expiry, the holder may post
+`CLAIM RENEWED`, naming the session, original claim URL, unchanged scope and a new
+UTC expiry at most 24 hours ahead, after checking for conflicts. After expiry,
+make a new claim and check for a successor first. A renewal cannot displace an
+intervening valid claim. Progress comments and draft PRs do not renew a claim.
+Keep the comment history; post corrections instead of silently editing expiries.
 
-Default claims last at most 24 hours. Workers recheck the issue on starting,
-resuming, and submitting, and stop at expiry. Renewal requires a new explicit
-grant before further work. Coordinators may reassign after expiry, or after the
-holder explicitly releases; do not revoke a live lease and immediately give the
-same work to someone else. Label an abandoned task ready only after that point.
+On completion, release, or inability to continue, post `CLAIM RELEASED` with the
+claim URL and a branch/PR handoff. Only claim work you can begin now. Do not take
+over a live claim without the holder's release. Review remains independent;
+self-claiming does not permit self-approval, merging, or publication.
 
-On release or completion, link the branch/PR and give a handoff. A draft PR
-preserves partial work but does not renew a lease. Coordinators inspect that work
-before assigning a successor. Only claim work you can begin now.
+If GitHub access is unavailable, have the contributor post the prepared comment
+and relay the live conflict check before substantial work. A local note is not a
+claim. Maintainer-directed setup and bounded maintenance remain exempt from the
+queue-claim requirement.
+
+### Transition from manual grants
+
+Existing unexpired grants retain their scope and expiry. Their holders can renew
+under this protocol. Pending `CLAIM REQUEST` comments do not silently become
+claims: post a new `CLAIM` and recheck. This repository-wide policy supersedes
+legacy instructions to wait for a coordinator's grant in existing issues and task
+drafts; their mathematical prerequisites, exclusions and acceptance criteria
+still apply. No retroactive change to claim ordering is implied.
 
 ## Keep communications useful
 
@@ -103,15 +126,11 @@ holder. Deliberately duplicated work, such as independent verification, must be
 labelled as such and budgeted explicitly. Do not have every agent rebuild the full
 project: share versioned audit logs and immutable build artifacts where supported.
 
-## Scaling the coordinator
+## Scaling coordination
 
-Begin with a small pilot and enough ready tasks for the next wave of contributors.
-Assign area coordinators as the mathematical decomposition stabilises, while
-keeping one grant authority per issue. This is human-confirmed coordination;
-there is no automatic lock or claim bot in this scaffold.
-
-If claim traffic becomes a bottleneck, add a bot that serialises requests, stores
-the granted session and expiry, rejects conflicting grants, and acknowledges
-renewals/releases. Specify and test those semantics before deployment. GitHub
-workflow concurrency alone is not a complete claim protocol. The bot should
-handle issue metadata without running contributor-supplied code with write access.
+Keep a small ready queue and assign area coordinators as the mathematical
+organization stabilizes. Coordinators resolve disputed overlaps, help split tasks,
+and arrange independent reviews; they are not an approval bottleneck for claims.
+There is no automatic claim bot. If concurrency makes manual conflict checks
+unreliable, add and test a bot that serializes self-claims without introducing
+per-claim human approval. GitHub workflow concurrency alone is not a lock.

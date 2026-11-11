@@ -24,10 +24,11 @@ split large tasks at mathematical interfaces rather than arbitrary line counts.
 
 ## Claim a task
 
-On a ready issue, post the claim request described in
-[coordination.md](docs/coordination.md). Wait for the named coordinator's explicit
-grant with an expiry in UTC. Contributors without write access can request claims
-by commenting; the coordinator manages assignment and labels.
+On a ready issue, check for overlapping work, post the self-claim described in
+[coordination.md](docs/coordination.md), and recheck the live discussion. You may
+then begin without a coordinator's approval. Contributors without write access
+claim by commenting too; assignments and labels are only summaries. For a new
+bounded task, publish its scope and prerequisites before claiming it.
 
 Use the [agent prompt](docs/agent-prompts.md) to authorise your agent to post
 task-related GitHub comments and open a PR on your behalf. If it cannot access
@@ -58,8 +59,17 @@ does not by itself justify a new exposition task.
 
 The canonical extraction issue supplies the stable unit ID: issue 123 becomes
 `YM-000123`. Later revision and review issues refer to that existing unit.
-Copy `templates/proof-unit/` to `blueprint/units/YM-000123/`, fill `unit.json`,
-and write `proof.md`. Replace every template placeholder.
+Use `templates/proof-unit/`: place the mathematical section in `manuscript/`,
+and put `unit.json` and `correspondence.md` in `blueprint/units/YM-000123/`.
+The metadata's `manuscript` list names the section and all local mathematical
+support files (macros, references, included text). Replace every placeholder.
+Write the proof once, in LaTeX, and keep source/audit details in the correspondence
+record. Follow [the manuscript build instructions](manuscript/README.md).
+
+Start a section once its own interface is precise. Earlier inputs may still be
+drafts or outstanding obligations: state their exact content and status. A complete
+blueprint is not a prerequisite for writing; final acceptance still requires
+review and a check of the whole argument's dependencies.
 
 The metadata names the declarations this unit owns, its dependencies, source
 revision, and review state. Other units cite it instead of explaining those
@@ -68,11 +78,13 @@ identifies the declaration. Consult [blueprint/README.md](blueprint/README.md).
 
 Post a useful checkpoint on the issue at least every four hours of active work
 and before stopping. Include exact findings, blockers, and a branch or draft PR.
-Request renewal before expiry if needed. A progress comment does not renew a claim.
+Post a renewal with a new UTC expiry after rechecking for overlap if needed.
+A progress comment alone does not renew a claim.
 
 ## Submit and hand off
 
-Run the structural checker and relevant, documented Lean checks. Push your branch
+Run the structural checker, build changed LaTeX and inspect its rendering, and
+run relevant, documented Lean checks. Push your branch
 and open a focused PR using the supplied template. Link the issue with `Refs #123`;
 do not automatically close the task when an unreviewed draft merges.
 

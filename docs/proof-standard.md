@@ -4,8 +4,11 @@ A proof unit provides the detailed proof of one coherent mathematical result or
 construction, using existing results wherever possible. The final output is a
 research monograph for mathematicians with the prerequisites stated in its outline.
 Readers should be able to check the argument without knowing Lean or consulting
-its tactic scripts. Use Markdown with LaTeX mathematics initially; keep the content
-modular so an integrated LaTeX manuscript can be produced later.
+its tactic scripts. Write the mathematical text directly in modular LaTeX files
+under `manuscript/`, from the first draft. Keep a linked blueprint record for
+correspondence, dependencies, questions and evidence, without copying the proof.
+Begin with precise local interfaces, even when upstream proofs are still pending;
+state those inputs and track their status. Do not wait for a complete blueprint.
 
 ## Proof detail and use of the literature
 
@@ -59,13 +62,22 @@ not remove its transitive dependencies from the formal source audit.
 
 ## Required content
 
+Items 1–4 belong in the authoritative LaTeX text. The blueprint's
+`correspondence.md` links its labels and records items 5–7, literature-search
+evidence and dependency status. Audit details need not interrupt the mathematics.
+The unit's `manuscript` list includes every local file supplying its mathematical
+text, notation or bibliography; the checker fingerprints those files as well as
+the correspondence. Reviewers check the list is complete, including nested inputs.
+A shared file change conservatively invalidates each unit that lists it.
+
 1. **Purpose and statement.** State the result and why it is needed. Spell out
    quantifiers, hypotheses, spaces, normalisations, and what the conclusion means.
-2. **Definitions and notation.** Identify the formal definitions and instances
-   that determine the meaning. Reuse the project's glossary and link dependencies.
+2. **Definitions and notation.** State the mathematical meanings, spaces and
+   conventions. Reuse the project's glossary; record the meaning-determining
+   formal definitions and instances in the blueprint crosswalk.
 3. **Dependencies.** Name previously established proof units and precise external
-   results, including hypotheses needed here. Link shared literature notes and
-   identify dependencies or reference matches still in draft.
+   results, including hypotheses needed here. State outstanding inputs explicitly;
+   keep links to shared literature notes and review status in the blueprint.
 4. **Argument.** Give the mathematical steps and their justification. Explain the
    key construction or estimate. Prove substantive steps in detail, invoking
    verified literature results where available and checking their applicability.

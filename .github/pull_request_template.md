@@ -2,7 +2,7 @@
 
 Refs #<task number>
 
-- Claim grant URL and session:
+- Claim comment URL and session (or maintainer-directed maintenance):
 - Unit IDs or other outputs:
 - Human contributors and agent assistance:
 

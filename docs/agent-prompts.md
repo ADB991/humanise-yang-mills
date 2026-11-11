@@ -20,16 +20,19 @@ Inspect the live issues and open PRs. Work on [ISSUE URL], or recommend one smal
 ready task suited to your capabilities if I have not specified an issue. Check
 for existing work before proposing anything new.
 
-You may post task-related claim requests, progress, questions, and handoffs under
-my account and open a draft pull request on my behalf. Wait for the designated
-coordinator's explicit, unexpired grant before substantial task work. If you
-cannot access GitHub, prepare the messages for me to post and wait for the grant.
-Do not treat a local Bots file or an unassigned issue as a claim.
+You may publish a bounded task when needed, post self-claims, renewals, progress,
+questions and handoffs under my account, and open a draft PR. Follow
+docs/coordination.md: check overlap, post CLAIM with scope/session/UTC expiry,
+then re-read the live discussion before starting. No manual approval is needed.
+If GitHub is unavailable, prepare the comment for me to post and relay the live
+conflict check. A local Bots file or unassigned issue is not a claim.
 
-After receiving the claim, use an isolated branch/worktree. Read only the relevant
+After recording and checking the claim, use an isolated branch/worktree. Read only the relevant
 source and expand through dependencies as needed. Preserve Lean/. Produce the
 agreed deliverable with precise source citations, mathematical reasoning, and
-explicit uncertainties. Follow the proof-unit template for explanation work.
+explicit uncertainties. Write mathematical text directly in manuscript LaTeX;
+use the proof-unit template for linked metadata and correspondence, not a second
+copy of the proof. State outstanding prerequisite interfaces explicitly.
 
 Aim for a research monograph with detailed proofs. Search the shared literature
 notes and original sources before developing a proof; prefer an applicable existing
@@ -54,8 +57,8 @@ review. Do not merge, publish, or approve your own contribution.
 ```text
 Review [UNIT ID / PR URL] for [LEAN CORRESPONDENCE / MATHEMATICAL VALIDITY].
 Read AGENTS.md, docs/proof-standard.md, the task discussion, and templates/review.md.
-I authorise task-related GitHub comments and a review submission. Obtain the
-review task's confirmed claim; use session [SESSION] and budget [LIMIT].
+I authorise task-related GitHub comments and a review submission. Self-claim the
+review task after overlap checks; use session [SESSION] and budget [LIMIT].
 
 Check the pinned source and the actual argument independently. Do not rely on the
 author's confidence or another agent's approval. Identify concrete errors, missing
@@ -78,8 +81,8 @@ responsibility for acceptance. Leave a concise handoff on the review issue.
 Help me coordinate [AREA] in humanise-yang-mills. Read the repository instructions,
 the source audit, the current proof map, and the live issues and PRs. I authorise
 you to create and update task issues and post coordination comments within this
-area. Only grant claims on issues where a maintainer has designated you as the
-coordinator. Do not merge PRs or publish mathematical conclusions.
+area. Contributors self-claim without manual grants; help resolve conflicts and
+organize review. Do not merge PRs or publish mathematical conclusions.
 
 Propose a small set of bounded tasks with exact interfaces, declarations, output
 paths, prerequisites, and acceptance criteria. Search for overlap first. Give
@@ -92,8 +95,8 @@ results and create shared reference notes. Do not distribute one translation tas
 per Lean helper. The output must give the full mathematical argument at research
 monograph level, with detailed proofs for steps not supplied by cited results.
 
-For your assigned issues, serialise claim grants, use explicit UTC expiries,
-track blockers, and preserve handoffs. Never grant overlapping live claims.
+For your assigned issues, monitor self-claims and UTC expiries, resolve accidental
+overlaps, track blockers, and preserve handoffs. Respect existing live claims.
 Assign independent review tasks when drafts are ready. Measure useful reviewed
 results and unresolved dependencies, not tokens spent or pages generated.
 ```
