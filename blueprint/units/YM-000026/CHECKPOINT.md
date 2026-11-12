@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 10:21 UTC
+# Collaborative checkpoint — 12 November 2026, 10:50 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -7,11 +7,12 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Draft PR: <https://github.com/hairer/humanise-yang-mills/pull/35>.
+- Draft PR: <https://github.com/hairer/humanise-yang-mills/pull/36>.
 - Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
-  your claim. Helper PRs target this branch; `main` does not contain the article.
+  your claim. Helper PRs target this branch. `main` contains the earlier
+  747-page checkpoint merged through PR #35; this branch continues that draft.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (767 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (783 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -44,11 +45,11 @@ trace Crown/Eve/weighted/construction arguments. The parent retains integration.
 
 The #26 claim remains valid until **2026-11-12 16:40 UTC**:
 
-- Parent: integration and the actual global weighted Gram, move and selected
-  source estimates feeding the all-compatible-palette warning construction.
-- `lattice_draft`: the all-period short-covariance cover. Actual small-window
-  estimates and their common-frame Gaussian prices have passed bounded review
-  and are integrated.
+- Parent: integration, native endpoint closure audit, and the free Maxwell
+  collar Ward producer. Global weighted Gram/move/source, short covariance and
+  coherent stress normalization now have bounded independent passes.
+- `lattice_draft`: actual same-history shrinking-shell economics and the
+  annular Ward-field representation, newly exposed by the refreshed blueprint.
 - `limits_draft`: guarded-curvature/read repairs and the all-Matched palette
   warning/Pupil proof. The latter consumes global weighted row estimates;
   a posed reader comparison alone does not supply it.
@@ -75,8 +76,13 @@ Each has a bounded independent pass at its explicitly retained hypotheses.
 The finite-rank argument now explicitly invokes the common-cell spectator
 estimate before its smearing argument.
 
-Uniform Dawn selection remains outside the PDF pending guard and short-cover
-production. The two unintegrated centered-budget and centered-production files
+This update adds the global actual row/source bounds, the common all-period
+short covariance, and the derivative/compact-jet/coherent-sign normalization
+argument. The free Maxwell collar Ward calculation has also passed bounded independent
+review and is included in this checkpoint. Physical annular Ward production
+remains in progress.
+
+Uniform Dawn selection remains outside the PDF pending guard production. The two unintegrated centered-budget and centered-production files
 are historical alternative-route drafts. Unfrozen work in agent clones is not
 represented as part of this PDF.
 
@@ -84,7 +90,8 @@ represented as part of this PDF.
 
 The working frontier includes quantitative reader production, all-compatible
 warning and same corrected-compiler purchases, the precise analytic inputs of the rank and comparison chapters,
-physical trace sensor/branch receipts, and a
+physical shrinking-annulus Ward representation and its propagation to actual
+translation/angular symmetry actions, trace sensor/branch receipts, and a
 complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
 questions; they do not establish every quantitative premise of every chapter.
 
@@ -106,13 +113,13 @@ expansion, package **all** unfinished mathematical, audit, review and editorial
 work into separate agent tasks, push that handoff, release parent scopes and stop
 both parent and subagents. The final pass is reserved for the maintainer's later
 request. This supersedes the earlier reset instruction. See `USAGE-HANDOFF.md`.
-Last check09:45UTC:58% remaining; next10:00UTC. No background monitor is installed.
+Last check10:45UTC:51% remaining; next11:00UTC. No background monitor is installed.
 
 ## Validation and provenance
 
 `python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
 mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds747 pages with no overfull boxes,
+-outdir=build manuscript/existence.tex` builds783 pages with no overfull boxes,
 undefined references or missing glyphs. New pages received sampled visual QA;
 exact commands, samples and earlier failed layout attempts are in `validation.md`.
 No fresh Lean build/axiom replay; inherited source evidence has its own limits.

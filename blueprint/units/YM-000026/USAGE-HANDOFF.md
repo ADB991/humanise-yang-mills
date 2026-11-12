@@ -20,6 +20,6 @@ final integration/editorial pass explicitly reserved for the user's later reques
 Reconcile live claims, release parent-owned scopes on handoff, link each package
 from the parent issue, and preserve unfinished drafts with honest status.
 
-Last check: 2026-11-12 10:15 UTC (11:15 Europe/Zurich), 55% weekly remaining;
-credits unchanged at 50413.0750500000; no reset available. Next check due 10:30 UTC.
+Last check: 2026-11-12 10:45 UTC (11:45 Europe/Zurich), 51% weekly remaining;
+credits unchanged at 50413.0750500000; no reset available. Next check due 11:00 UTC.
 This file records a working instruction, not an automated background monitor.

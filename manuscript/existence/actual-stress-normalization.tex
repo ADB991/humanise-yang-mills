@@ -1,0 +1,237 @@
+\section{One conserved stress tensor on the comparison curve}
+\label{sec:actual-stress-normalization}
+
+The reference stress tensor must keep its prescribed sign as the requested
+grades, derivative orders and configuration windows increase. We construct
+one physical tensor and one comparison curve with that property. The only
+subsequence taken below is a subsequence of the comparison parameter. The
+physical correlation table, and the cutoff extraction that produced it,
+remain fixed.
+
+Write $E_d$ for the reference grade-$d$ field space and $F_d$ for the
+physical one. Both have their given units, conjugations, signed coordinate
+actions and inclusions between grades. Their derivative maps are
+$\partial^0_{d,a}:E_d\to E_{d+1}$ and
+$\partial^1_{d,a}:F_d\to F_{d+1}$, where $a\in\{0,1,2,3\}$.
+Both correlation hierarchies are smooth, multilinear and faithful: a field
+whose separated tested correlations with every spectator word vanish is
+zero. Their units have expectation one and act as scalar insertions.
+We use the exact derivative identities for separated correlations, with
+derivative maps that annihilate units and respect reality and the signed
+coordinate action. All these spaces are finite-dimensional. A comparison curve consists of
+complex-linear isomorphisms $U_{k,d}:E_d\to F_d$ and positive radii
+$r_k$ strictly decreasing to zero. For each fixed grade, the maps
+eventually preserve the units, conjugations and signed actions; for
+each fixed pair of grades they eventually commute with the inclusions.
+These are the corrected comparison maps constructed in
+Section~\ref{sec:ex-lattice-trace-producer}.
+
+We retain the strength of their test estimate explicitly. If
+$\boldsymbol v=(v_1,\ldots,v_n)$ is any fixed tuple of reference fields,
+put
+\[
+ K_{k,\boldsymbol v}(x)
+ =S^1_{U_k\boldsymbol v}(r_kx)-S^0_{\boldsymbol v}(x).
+\]
+For every compact $Q\subset\operatorname{Conf}_n(\mathbb R^4)$ and
+$M>0$, the estimate is
+\begin{equation}\label{eq:stress-uniform-tests}
+ \sup_{\substack{f\in C_c^\infty,\ \operatorname{supp}f\subset Q\\
+                         \|f\|_\infty\le M}}
+       \left|\int f(x)K_{k,\boldsymbol v}(x)\,dx\right|
+                 \longrightarrow0.
+\end{equation}
+The kernels are smooth on configuration space. The short-test bound
+\eqref{eq:ex-lattice-trace-test-error} has precisely this uniformity:
+its right side depends on $M$ and the labels, not on derivatives of $f$.
+The finite slot expansions in the correction of the comparison maps
+preserve it. Indeed, each expansion has finitely many fixed label tuples;
+coefficients converging to zero multiply a fixed smooth kernel, whose
+integral is bounded by $M|Q|$ times its supremum on $Q$; bounded
+coefficients multiply errors satisfying \eqref{eq:stress-uniform-tests}.
+Thus we use the uniform short-test receipt, not merely convergence for
+each individual test.
+
+\subsection{Derivative transport and convergence on compact sets}
+Define the transported derivative
+\begin{equation}\label{eq:stress-transported-derivative}
+ A_{k,d,a}=r_k U_{k,d+1}^{-1}\partial^1_{d,a}U_{k,d}.
+\end{equation}
+It converges in operator norm to $\partial^0_{d,a}$. Here is the
+finite-dimensional argument, including why its argument need not be
+bounded in advance. Choose finitely many tested reference correlations
+which detect $E_{d+1}$, as in the separating-test argument of
+Section~\ref{sec:ex-lattice-trace-producer}. Let
+$L:E_{d+1}\to\mathbb C^q$ be their injective measurement map and
+$L_k$ the same measurements in the scaled physical table. On a finite
+basis, \eqref{eq:stress-uniform-tests} gives $L_k\to L$ in operator
+norm. Compactness of the unit sphere gives $c>0$ with
+$\|Lv\|\ge c\|v\|$, and hence eventually
+$\|L_kv\|\ge(c/2)\|v\|$.
+For each fixed $v\in E_d$, the chain rule and the derivative identity
+express each component of $L_k A_{k,d,a}v$ as a correlation tested
+against minus the corresponding derivative of the original test.
+Integration by parts has no boundary term because the test has compact
+support inside configuration space. The approach estimate therefore gives
+\[
+ L_k A_{k,d,a}v\longrightarrow L\partial^0_{d,a}v.
+\]
+Subtract $L_k\partial^0_{d,a}v$, which has the same limit, and use the
+lower bound for $L_k$. It follows that
+$A_{k,d,a}v\to\partial^0_{d,a}v$. Checking a finite basis proves the
+claimed operator-norm convergence.
+
+The approach estimate also holds when each label $v_i(k)$ converges to
+$v_i$. Expand the labels in fixed finite bases. The difference is a
+finite sum of bounded coefficients multiplying fixed-tuple errors, plus
+coefficients tending to zero multiplying fixed reference kernels.
+The same compact integral bound proves
+\eqref{eq:stress-uniform-tests} for this difference. Differentiating
+one position replaces its label by $A_{k,d,a}v_i(k)$, which converges
+to $\partial^0_{d,a}v_i$. Consequently this class of differences is
+closed under any fixed number of position derivatives.
+
+We give the compact convergence upgrade used here. Let $h_k$ be any
+such difference, let $\chi$ be a smooth compactly supported cutoff
+inside configuration space, and use the Fourier convention
+$\widehat g(\xi)=\int e^{-2\pi i\xi\cdot x}g(x)\,dx$.
+The tests $\chi(x)e^{-2\pi i\xi\cdot x}$ have one common support and
+supremum bound. Equation~\eqref{eq:stress-uniform-tests} therefore yields
+\[
+       \sup_\xi|\widehat{\chi h_k}(\xi)|\longrightarrow0.
+\]
+For any fixed coordinate $a$ and integer $b\ge0$, integration by
+parts and the product rule give
+\[
+ (2\pi i\xi_a)^b\widehat{\chi h_k}(\xi)
+ =\sum_{j=0}^b {b\choose j}
+       \widehat{(\partial_a^{b-j}\chi)(\partial_a^jh_k)}(\xi).
+\]
+Each term on the right tends uniformly to zero by derivative closure.
+In the dimension $D=4n>0$, choose $b>D$ and a coordinate with
+$|\xi_a|\ge|\xi|/\sqrt D$. Combining the finitely many coordinate
+bounds with the unweighted bound gives numbers $\epsilon_k\to0$ such
+that
+\[
+ |\widehat{\chi h_k}(\xi)|
+       \le C_b\epsilon_k(1+|\xi|)^{-b}.
+\]
+The right side is integrable. Fourier inversion for the smooth compactly
+supported function $\chi h_k$ gives
+$\|\chi h_k\|_\infty\to0$. Given a compact set in configuration
+space, choose $\chi=1$ on a neighborhood of it. Repeat the argument
+with every coordinate derivative of a fixed order; finite dimensionality
+then gives convergence in the corresponding derivative norm, uniformly
+on the compact set. At arity zero the space of configurations is a
+point and the assertion is the scalar approach estimate. We have proved
+compact convergence of all fixed jets, including at coordinate ties that
+are not collisions.
+
+\subsection{The physical conserved line}
+Let $K^0$ and $K^1$ be the real spaces of centered, symmetric,
+real, signed-covariant grade-four stress arrays in the reference and
+physical tables. Centering means that every entry has expectation zero.
+Let $V^0,V^1$ be the spaces of real, signed-covariant grade-five vector
+arrays, without imposing a centering condition, and
+write
+\[
+ (D^iB)_a=\sum_b\partial^i_{4,b}B_{ba}\qquad(i=0,1)
+\]
+for divergence. Assume the fixed reference tensor $J^0$ belongs to
+$K^0$, is nonzero and conserved, and that $D^0$ is onto with
+$\ker D^0=\mathbb R J^0$. These are the reference rank and
+normalization requirements; the low-grade rank calculation is
+Section~\ref{sec:ex-lattice-trace-free-rank}. The actual reference
+Ward normalization must be supplied for this same $J^0$.
+
+For all sufficiently large $k$, the centered map
+\[
+ C_kB=\operatorname{center}_1(U_{k,4}B):K^0\longrightarrow K^1
+\]
+is an isomorphism. Its inverse is
+$B\mapsto\operatorname{center}_0(U_{k,4}^{-1}B)$: the two scalar
+unit corrections cancel exactly, by the calculation in
+Section~\ref{sec:ex-lattice-trace-producer}. Unit preservation is
+essential; the two expectation functionals need not agree under $U_k$.
+The componentwise map $V_k:V^0\to V^1$ induced by $U_{k,5}$ is
+also an isomorphism. Define
+\[
+       B_k=V_k^{-1}r_kD^1 C_k:K^0\longrightarrow V^0.
+\]
+Derivatives annihilate scalar units, so
+$(B_kB)_a=\sum_b A_{k,4,b}B_{ba}$. Thus $B_k\to D^0$ in
+operator norm. Choose a linear right inverse $R:V^0\to K^0$ of
+the surjection $D^0$. Then $B_kR\to I$. For large $k$,
+$\|B_kR-I\|<1/2$, so $B_kR$ is injective and hence bijective
+in its finite-dimensional space. Therefore $B_k$ is onto.
+Conjugating by $C_k,V_k$ and dividing by $r_k>0$ shows that $D^1$
+is onto. The two pairs of spaces have equal dimensions, so
+rank--nullity gives
+\begin{equation}\label{eq:stress-physical-line}
+                  \dim_{\mathbb R}\ker D^1=1.
+\end{equation}
+
+\subsection{Fixing the normalization and sign once}
+Choose any $0\ne B\in\ker D^1$. In the full reference stress-array
+space, including scalar directions, put
+\[
+ b_k=U_{k,4}^{-1}(r_k^4B),\qquad
+ \xi_k=\frac{\|b_k\|}{\|J^0\|},\qquad
+                       \widetilde B_k=\xi_k^{-1}b_k.
+\]
+Invertibility and $r_k>0$ imply $\xi_k>0$; no uniform lower bound
+on $\xi_k$ is needed. We have
+$\|\widetilde B_k\|=\|J^0\|$. Compactness of this sphere supplies
+a strictly increasing subsequence on which $\widetilde B_k\to B_*$,
+with $\|B_*\|=\|J^0\|$. Restrict $U_k,r_k,\xi_k$ to that
+subsequence. All approach and eventual coherence statements persist.
+
+The limit $B_*$ has the reference symmetry, reality and signed
+covariance, since these are closed linear conditions. Its centering
+requires a separate check. The corresponding physical entry is
+\[
+ U_{k,4}\widetilde B_{k,ab}=\xi_k^{-1}r_k^4B_{ab},
+\]
+whose expectation is exactly zero for every $k$. Apply the moving-label
+compact convergence proved above at arity one and position zero.
+It identifies the limit of these expectations with
+$\mathbb E_0(B_{*,ab})$, proving that $B_*\in K^0$.
+Moreover the exact physical conservation law gives
+\[
+ \sum_b A_{k,4,b}\widetilde B_{k,ba}
+       =\xi_k^{-1}r_k^5 U_{k,5}^{-1}
+                        \left(\sum_b\partial^1_{4,b}B_{ba}\right)=0.
+\]
+Operator-norm convergence of $A_{k,4,b}$ and convergence of the
+balanced arrays imply $D^0B_*=0$. Thus $B_*=cJ^0$ for some real
+$c$. Equality of the nonzero norms gives $|c|=1$.
+Choose $J=B$ if $c=1$ and $J=-B$ if $c=-1$. This one choice gives
+\begin{equation}\label{eq:stress-fixed-normalization}
+ U_{k,4}^{-1}(\xi_k^{-1}r_k^4J_{ab})
+                      \longrightarrow J^0_{ab}\qquad(a,b=0,1,2,3).
+\end{equation}
+The physical tensor $J$ is nonzero, centered and conserved. The
+reference tensor has not been rescaled or changed to accommodate
+later requests.
+
+\subsection{All finite requests use tails of this curve}
+Fix an arity bound $N$, a grade bound $d$, a derivative order $m$ and
+$R\ge1$. For $n\le N$, use the compact window
+\[
+ Q_{n,R}=\{x:|x|\le R,\ |x_i-x_j|_\infty\ge R^{-1}
+                                      \text{ for }i\ne j\}.
+\]
+Choose a single tail on which the exact symmetry, unit and inclusion
+identities hold through grade $\max(d,4)$. There are only finitely
+many grades and pairs involved. On this tail the compact convergence
+argument gives, for every fixed tuple of grades at most $d$ and every
+$j\le m$, convergence of its $j$th derivative uniformly on $Q_{n,R}$.
+The tolerance threshold may depend on the tuple; no uniform bound over
+all labels is asserted. Equation~\eqref{eq:stress-fixed-normalization}
+holds on the same tail. Increasing the finite request only requires
+another tail of this single curve, with the same $J,J^0$ and positive
+normalization sequence. This proves the coherent comparison needed
+before the annular Ward identities are applied. The uniform test
+approach, exact derivative laws and reference conserved-line certificate
+remain its stated inputs; the normalization argument does not supply
+their analytic construction.
