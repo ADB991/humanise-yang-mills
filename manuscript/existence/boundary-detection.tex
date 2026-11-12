@@ -78,6 +78,106 @@ continuity. The empty-word value is one because the zero-insertion
 continuation is constantly one.
 \end{proof}
 
+The remaining hypothesis \eqref{eq:word-motion-input} of
+Proposition~\ref{prop:word-motion} concerns the Poincar\'e group. Let
+$g=(a,\Lambda)$ act on spacetime by $gX=\Lambda X+a$, with $\Lambda$
+proper orthochronous, and on tests by $P_gf=f\circ g^{-1}$, as in
+Lemma~\ref{lem:schwartz-motion}. Let $\rho$ be the label action of
+Proposition~\ref{prop:lorentz-label-descent}, on which translations act
+trivially. Define
+\[
+ g(v,f)=(\rho(\Lambda)v,P_gf)
+\]
+on letters, extend it letter by letter to words, and let it fix the empty
+word. The word construction uses the label involution $J$ of
+Section~\ref{ex-reflection}, the reflected conjugate. The following
+corollary assumes that this is the involution with which
+Proposition~\ref{prop:lorentz-label-descent} proves commutation, that is,
+the involution of Input~\ref{input:calibrated-actions}.
+
+\begin{corollary}[Poincar\'e invariance of the word kernel]
+\label{cor:word-motion-inputs}
+Assume the hypotheses of Theorem~\ref{thm:lorentz-covariance} for the
+action $\rho$ just described, and assume the identification of involutions
+just stated. Then $b\mapsto gb$ is an action of the Poincar\'e group on
+words, $(gb)^*=g(b^*)$, and
+\[
+ K(gb,gc)=K(b,c),\qquad g\longmapsto K(b,gc)\ \text{is continuous},
+\]
+for all words $b,c$. Thus \eqref{eq:word-motion-input} holds. The
+translation hypothesis of Proposition~\ref{prop:word-motion} is supplied,
+for every $t>0$, by Proposition~\ref{prop:heat-cups}.
+\end{corollary}
+\begin{proof}
+For $g,h$ in the Poincar\'e group,
+$P_g(P_hf)(X)=f(h^{-1}g^{-1}X)=P_{gh}f(X)$, the Lorentz part of $gh$ is
+the product of the Lorentz parts, and $\rho$ is a representation. Hence
+the letterwise rule is a group action on words, and $P_e$ and $\rho(I)$
+are identities.
+
+Proposition~\ref{prop:lorentz-label-descent} gives $J\rho(\Lambda)=\rho(\Lambda)J$.
+Since $P_g$ commutes with complex conjugation of tests,
+\[
+ (g(v,f))^*=(J\rho(\Lambda)v,\overline{P_gf})
+          =(\rho(\Lambda)Jv,P_g\overline f)=g\big((v,f)^*\big).
+\]
+The star of a word reverses the order of its letters and stars each letter.
+Reversal commutes with a letterwise action, so $(gb)^*=g(b^*)$ and
+$(gb)^*(gc)=g(b^*c)$.
+
+Now let $d=(v_1,f_1)\cdots(v_n,f_n)$ be any word and
+$F=\prod_if_i(X_i)$ its product test. The product of the moved tests is
+$\prod_i(P_gf_i)(X_i)=F(g^{-1}X_1,\ldots,g^{-1}X_n)$, the simultaneous
+pullback of $F$ by $g$. Write $g=(a,I)(0,\Lambda)$. The translation
+invariance and Lorentz covariance in Theorem~\ref{thm:lorentz-covariance}
+give
+\[
+ w(gd)=W_n(\rho(\Lambda)v)\big(P_{(a,I)}P_{(0,\Lambda)}F\big)
+      =W_n(\rho(\Lambda)v)\big(P_{(0,\Lambda)}F\big)=W_n(v)(F)=w(d).
+\]
+Applying this to $d=b^*c$ gives $K(gb,gc)=w(g(b^*c))=w(b^*c)=K(b,c)$.
+
+For continuity fix words $b$ of length $n$ and
+$c=(u_1,\varphi_1)\cdots(u_m,\varphi_m)$. All labels lie in one finite level $E_d$.
+Choose a basis $e_1,\ldots,e_N$ of $E_d$ and write
+$\rho(\Lambda)u_j=\sum_kr_{kj}(\Lambda)e_k$. The coefficients $r_{kj}$ are
+continuous, because $\rho$ is continuous on each finite level. Let
+$F_g$ be the joint test of $b^*(gc)$. It equals $F_e\circ\widetilde g^{-1}$,
+where $\widetilde g$ is the invertible affine map of the joint position
+space which acts by the identity on the first $n$ positions and by $g$ on
+each of the last $m$ positions. Multilinearity of $W_{n+m}$ in the labels
+gives
+\[
+ K(b,gc)=\sum_{k_1,\ldots,k_m}\Big(\prod_{j=1}^mr_{k_jj}(\Lambda)\Big)
+   W_{n+m}(Jv_n,\ldots,Jv_1,e_{k_1},\ldots,e_{k_m})(F_g),
+\]
+where $v_1,\ldots,v_n$ are the labels of $b$. Each fixed-label
+distribution is continuous on the joint Schwartz space. The proof of
+Lemma~\ref{lem:schwartz-motion} used only that the pulling-back maps range
+over a continuous family of invertible affine maps of the position space;
+it applies verbatim to $g\mapsto\widetilde g$ and shows that
+$g\mapsto F_g$ is continuous into the joint Schwartz space. The finite
+sum of products of continuous functions is continuous in $g$.
+
+The last statement is Proposition~\ref{prop:heat-cups}: for $g=(a,I)$
+the word action translates every test, and the heat vectors satisfy
+$h_t(\tau_ab)=T_E(a)h_t(b)$ for every $t>0$.
+\end{proof}
+
+The identification of involutions is a same-data requirement, not a
+convention. Let $\theta$ be the label action of the time reflection and
+$\kappa$ the real structure, so that the reflected conjugate is
+$J=\theta\kappa$. The time reflection conjugates the rotation in the
+time--$a$ plane to its inverse, so $\theta L_a\theta=-L_a$. If the
+Euclidean generators are real, $\kappa L_a\kappa=L_a$, antilinearity of
+$J$ gives
+\[
+ J(-iL_a)J^{-1}=i\,\theta L_a\theta=-iL_a,
+\]
+so $J$ commutes with the boost generators $K_a=-iL_a$, while $\kappa$ alone
+would anticommute with them. Both $\theta$ and $\kappa$ commute with spatial
+rotations.
+
 \begin{lemma}[A zero boundary has zero strict continuation]
 \label{lem:zero-boundary}
 Fix an ordered label tuple $v$. If $W_n(v)=0$ as a joint tempered
