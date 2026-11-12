@@ -67,9 +67,9 @@ produces the displayed difference formula.
 
 \begin{lemma}[Installation of strip receipts]
 \label{lem:ex-lattice-cross-atlas}
-Suppose $0\leq\sigma\leq\alpha$. If $T$ has strip cost $C/L^2$ at
-width $\alpha$ and every $\nabla_a^LT$ has strip cost $C/L^3$ at that
-width, then for every fixed pair of types $i,j$,
+Suppose $0\leq\sigma\leq\alpha$ and $C\geq0$. If $T$ has strip
+cost $C/L^2$ at width $\alpha$ and every $\nabla_a^LT$ has strip cost
+$C/L^3$ at that width, then for every fixed pair of types $i,j$,
 \begin{align*}
  \sum_y e^{\sigma d_L(x,y)}|\widehat T((x,i),(y,j))|
      &\leq e^{4\sigma}C L^{-2},\\
@@ -134,8 +134,8 @@ application here, from the weighted bounds just stated and Tonelli's theorem.
 \begin{lemma}[Sandwich atlas estimate]
 \label{lem:ex-lattice-sandwich-atlas}
 Suppose $I,J$ have nonnegative strip costs $C_I,C_J$ at width $\alpha$, and $K$ has
-per-label atlas bounds of order two with cost $Q$ at width $\sigma$.
-If $0\leq\sigma\leq\alpha$ and $L\geq1$, then $S$ has per-label order-two
+per-label atlas bounds of order two with nonnegative cost $Q$ at width
+$\sigma$. If $0\leq\sigma\leq\alpha$ and $L\geq1$, then $S$ has per-label order-two
 atlas bounds at width $\sigma$ with cost
 \[
  |F|\,|G|\,C_I C_J Q.
@@ -209,14 +209,64 @@ intermediate type sums each contribute one factor $|F|$. This yields exactly
 \eqref{eq:ex-lattice-atlas-cost} and all three asserted estimates.
 \end{proof}
 
+\begin{proposition}[Constant-column test for the constructed response]
+\label{prop:ex-lattice-response-travel}
+In Theorem~\ref{thm:ex-lattice-response-atlas}, suppose $T$ is the
+two-form wire tower of a flight with fixed admissible stages and positive
+kernel parameter. Then the sum of each response row over its output cover
+coordinate is independent of the input cover coordinate. More precisely,
+for fixed face labels $i,j$,
+\[
+ \sum_{y\in\mathcal C}K((x,i),(y,j))
+ =L^{-2}\sum_{b\in F}
+    \left(\sum_{u\in\mathcal C}I_f(i,b,u)\right)
+    \left(\sum_{v\in\mathcal C}I_c(b,j,v)\right).
+\]
+For every positive coarse side $n$, periodizing $K$ over the output fibre
+gives the finite carrier formed from these same fine and coarse bed rows and
+the tower installed between sides $Ln$ and $n$.
+\end{proposition}
+
+\begin{proof}
+The wire calculation at zero momentum in
+Section~\ref{sec:kernel-transport-identities} gives the identity matrix at
+the principal alias and zero at all other aliases. In the residue-symbol
+sum of Section~\ref{sec:ex-lattice-free-kernel-estimates}, the tower scaling
+therefore gives $L^{-2}I$ at zero momentum for every residue. The strip
+receipt makes the coefficient rows absolutely summable, so evaluating their
+Fourier series at zero yields the same value after taking real parts, since
+this zero-momentum matrix is real:
+\[
+ \sum_z T(r,i,j,z)=L^{-2}\delta_{ij},\qquad r\in\Lambda_L.
+\]
+The installation formula reindexes $z$ by $y-\rho_L(x)$, and the sum of
+each installed row is therefore the same $L^{-2}\delta_{ij}$, independently
+of $x$.
+
+Insert this identity in the sandwich formula. The two bed rows are
+translation invariant and absolutely summable; the atlas row bound makes
+the full triple sum absolutely convergent. Summing first in $y$ eliminates
+the tower's intermediate output label and gives the displayed product of
+the two bed-row sums. In particular the result does not depend on $x$.
+To identify the finite carrier, periodize the final output $y$ modulo $n$.
+Group the intermediate cover coordinate modulo $n$ and use absolute
+convergence to exchange the fibre sums. Each translation-invariant bed row
+then gives its finite convolution matrix, and the centered-residue
+decomposition gives the installed tower matrix. The resulting finite sum is
+exactly the matrix product of these three factors. This is the quotient-fibre
+calculation of Section~\ref{sec:ex-lattice-flat-step}, now applied to the
+two successive products. It works for every $n\geq1$ without a new
+period-dependent constant.
+\end{proof}
+
 \begin{remark}[What this estimate does not supply]
 The theorem starts with the weighted cross-kernel receipts for $T$ and its
-first differences. The RG construction must still prove these receipts,
-uniformly in the period, from its chosen cumulative kernels and defect
-factorization. At the public construction seam inspected here, this
-quantitative tower receipt is an input to the construction record; the local atlas
-calculation cannot replace it. Thus the theorem closes the passage from
-receipts to the hypotheses of the flat-sector propagation, but not the
-construction of the receipts themselves.
+first differences, and with the two bed-stencil receipts. The wire calculation
+in Sections~\ref{sec:ex-lattice-free-kernel-estimates}
+and~\ref{sec:ex-lattice-free-kernel-components} supplies a uniform tower
+receipt for the flights and fixed parameters stated there. Applying it here
+also requires identifying those flights and the installed tower with the
+chosen RG history and providing both bed bounds for the same data, uniformly
+in the period. The atlas calculation alone does not establish those matches.
 \label{rem:ex-lattice-atlas-open}
 \end{remark}

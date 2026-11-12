@@ -96,9 +96,9 @@ drain; the port blow-up below uses the indicated train side $M$.
 
 \begin{lemma}[Rail and box decay]
 \label{lem:ex-lattice-rail-alias-decay}
-There is a constant $B$ such that, for every odd $L\geq1$, every
-$p\in\mathcal Q_\eta$ with $\eta$ in a fixed sufficiently small cube, and
-every centered residue $l$,
+There are constants $B$ and $\eta_0>0$ such that, for every odd $L\geq1$,
+every $0<\eta\leq\eta_0$, every $p\in\mathcal Q_\eta$, and every
+centered residue $l$,
 \[
  |\operatorname{rail}_L(q_l^{(L)}(p)_a)|,
    |\operatorname{plank}_L(q_l^{(L)}(p)_a)|
@@ -129,19 +129,28 @@ zero defined by continuity. The identity
 then bounds the rail by a constant divided by
 $L|e^{iz}-1|$, hence by the stated inverse lift weight. The plank differs
 from the rail by a centered phase whose modulus is bounded on the same
-complex cube. At the zero alias, the real-frequency rail has a uniform
-positive lower bound on the contracted disk. The following quantitative
-continuation promotes it to a common complex cube, uniformly in the side.
-Suppose a holomorphic function has modulus at most $Cw$ on a cube of width
-$\eta$, with $w>0$, and modulus at least $cw$ on its real slice of width
-$\theta$. At a complex point $p$, let $y=\operatorname{Re}p$. The
-one-variable Schwarz estimate on a ball centered at $y$ gives
+complex cube. At the zero alias, for real $p_a$ with $|p_a|\leq R_0$, the same
+identity and the two-sided chip comparison give
+$|\operatorname{rail}_L(p_a/L)|\geq\ell/h$: apply the lower bound to
+$p_a$ and the upper bound to $p_a/L$, with the value at zero obtained by
+continuity. The following quantitative continuation promotes this lower
+bound to a common complex cube, uniformly in the side.
+Suppose $C,c,w,\eta,\theta>0$ and a holomorphic function has modulus at
+most $Cw$ on a cube of width $\eta$ and modulus at least $cw$ on its real
+slice of width $\theta$. At a complex point $p$, let $y=\operatorname{Re}p$. The
+one-variable Cauchy estimate along the complex line through $y$ and $p$ gives
 \[
   |f(p)-f(y)|\leq \frac{4Cw}{\eta}\,\|p-y\|_\infty
 \]
-provided $\|p-y\|_\infty\leq\eta/4$ and the ball lies in the original cube. Thus on
-the smaller cube of width
-$r=\min(\eta/4,\theta,c\eta/(8C))$ one has
+provided $\|p-y\|_\infty\leq\eta/4$ and the ball lies in the original cube.
+Indeed, for $d=\|p-y\|_\infty>0$ apply Cauchy's derivative bound to
+$g(z)=f(y+z(p-y)/d)$ on the disk $|z|<\eta/2$, where $|g|\leq Cw$.
+For $0\leq z\leq d$ the disk of radius $\eta/4$ around $z$ remains
+inside that domain, so $|g'(z)|\leq4Cw/\eta$; integrate from $0$ to $d$.
+The case $d=0$ is immediate. On the smaller cube of width
+$r=\min(\eta/4,\theta,c\eta/(8C))$, the radius-$\eta/2$ ball about
+$y$ lies in the original cube, and $y$ lies in the stated real slice.
+Consequently one has
 $|f(p)|\geq(c/2)w$. In particular the reciprocal is holomorphic there and
 bounded by $2/(cw)$. Applying this with $w=1$ to the zero-alias rail proves
 the asserted uniform reciprocal bound.
@@ -149,7 +158,8 @@ the asserted uniform reciprocal bound.
 
 \begin{lemma}[Principal plank estimate with unit coefficient]
 \label{lem:ex-lattice-principal-plank}
-If $M\leq L$, $z$ is real, and $L|z|\leq R_0$, then
+If $M$ and $L$ are positive integers with $M\leq L$, $z$ is real, and
+$L|z|\leq R_0$, then
 \[
  |\operatorname{plank}_M(z)|\geq
  \exp\bigl(-c_0 M/L\bigr).
@@ -288,7 +298,10 @@ The zero-root rail is at least $p_0$ and at most a uniform
 constant. Thus every directional drive and its two-sided lid have uniform
 upper and positive lower bounds there. At any alias, the train smooth upper
 bound is $C\Gamma_M(l)^{-j}$ and the rail is bounded, so the drive has that
-same weight.
+same weight. The same bound holds at $-q_l^{(M)}(p)$: for odd $M$,
+$-q_l^{(M)}(p)=q_{-l}^{(M)}(-p)$, the complex cube is invariant under
+$p\mapsto-p$, and $\Gamma_M(-l)=\Gamma_M(l)$. Thus a two-sided drive
+product has weight at most $C^2\Gamma_M(l)^{-2j}$.
 
 The divisor $d_M(p)$ satisfies, for real $p$ in the fixed disk,
 \[

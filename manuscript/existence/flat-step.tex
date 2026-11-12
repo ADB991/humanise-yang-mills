@@ -45,7 +45,8 @@ positions in $\mathcal C$ and both types in $I$. Define its folded cost by
  :=\sup_{(x,i)}\sum_{(v,j)\in\mathcal C\times I}
      |P((x,i),(v,j))|e^{\tau\operatorname{sep}(x,v)}.
 \]
-It is neutral when $\sum_{v\in\mathcal C}P((x,i),(v,j))=0$ for every
+The supremum is taken in $[0,\infty]$; in particular it is zero if the
+input label set is empty. The packet is neutral when $\sum_{v\in\mathcal C}P((x,i),(v,j))=0$ for every
 $x,i,j$. It is diagonally stationary when translating both cover positions
 by the same unit vector leaves each coefficient unchanged.
 
@@ -90,9 +91,10 @@ cover distance triangle inequality gives
  \leq a/L+\delta_L(v_k,z).
 \]
 For each path edge, the per-label difference row bound
-\eqref{eq:ex-lattice-flat-step-difference} (the negative edge has the same
-absolute value after translating its base point) therefore bounds its
-weighted row at center $x$ by $pL^{-3}e^{\sigma a/L}$. Telescoping the
+\eqref{eq:ex-lattice-flat-step-difference} applies at the initial endpoint
+for a positive edge and at the other endpoint for a negative edge, after
+reversing its sign. Both endpoints are at distance at most $a$ from $x$.
+Thus its weighted row at center $x$ is bounded by $pL^{-3}e^{\sigma a/L}$. Telescoping the
 coefficient difference and summing the $a$ edge bounds yields
 \[
  \sum_z |U((v,j),(z,l))-U((x,j),(z,l))|e^{\sigma\delta_L(x,z)}
@@ -204,8 +206,9 @@ and output side $n$, define its displayed finite matrix by
  (D_nK)((x,i),(y,j))
  :=\sum_{r\in\mathcal C}K((x,i),(\ell_n(y)+nr,j)).
 \]
-When the input side is $n_f$ and output side is $n_c$, $K$ matches a matrix $A$
-if
+This display is used only when its fibre sum converges absolutely. When the
+input side is $n_f$ and output side is $n_c$, $K$ matches a matrix $A$ if
+these fibre sums converge absolutely for every input and output index and
 \begin{equation}
  (D_{n_c}K)((x,i),(y,j))=A((\pi_{n_f}(x),i),(y,j))
  \quad\text{for every }(x,i)\in\mathcal C\times I,
@@ -254,8 +257,10 @@ $\mathcal C$ into the disjoint fibres $\pi_{n_c}^{-1}(w)$ and use the matching
 identity for $K$ on each fibre. This proves the exact finite-matrix product,
 including the sum over intermediate types.
 
-The transpose also has an exact matching rule. Suppose $n_f=Ln_c$ and $T$ is
-city-covariant at ratio $L$ and matches $M$ from side $n_f$ to side $n_c$. Then
+The transpose also has an exact matching rule. Suppose $n_f=Ln_c$, $T$ is
+city-covariant at ratio $L$ and matches $M$ from side $n_f$ to side $n_c$,
+and its rows and columns are absolutely summable for each fixed pair of types.
+The atlas bounds above supply this summability. Then
 $\operatorname{swap}T$, defined by
 $(\operatorname{swap}T)((x,j),(y,i))=T((y,i),(x,j))$, matches $M^{\mathsf T}$
 from side $n_c$ to side $n_f$. For fixed $x\in\mathcal C$ and $y\in\Lambda_{n_f}$, its display is
@@ -289,7 +294,17 @@ row atlas estimate implies $|U((v,j),(z,l))|\leq pL^{-2}$, and the folded
 bound implies $\sum_{v,j}|P((x,i),(v,j))|\leq r$. Hence
 $\sum_{v,j}|P((x,i),(v,j))U((v,j),(z,l))|\leq pL^{-2}r$.
 The outer sum against $\operatorname{swap}T$ is finite by the column atlas
-bound, summed over its $m$ input types. These same estimates justify Fubini.
+bound, summed over its $m$ input types. For the output-fibre rearrangement,
+fix $(y,k)$ and the final type $l$ and sum over all $z\in\mathcal C$ instead:
+\[
+ \sum_{x,i,v,j,z}|T((x,i),(y,k))P((x,i),(v,j))U((v,j),(z,l))|
+ \leq (m qL^2)\,r\,(pL^{-2})=m qpr.
+\]
+Here the row bound of $U$ is uniform in $(v,j)$, the folded packet bound
+is uniform in $(x,i)$, and the column bound of $T$ is summed over its $m$
+input types. Restricting $z$ to any periodization fibre only decreases the
+sum. This bound justifies Fubini for both applications below, including the
+sum over every representative of the final torus point.
 If $P^{\sharp}$ matches $A$, and $T,U$ match $M,N$, respectively, apply
 \eqref{eq:ex-lattice-flat-step-composition} first to $P^{\sharp}$ and $U$,
 then to $\operatorname{swap}T$ and that composition. The transpose calculation
@@ -308,7 +323,9 @@ $C_Y,C_H:E_{n_c}^2\to E_{n_f}^2$.
 
 Here are the exact identities used below and their derivations. The two
 one-step precision inputs share a blocking (coarse-averaging) map $B:E_{n_f}^1\to E_{n_c}^1$ and
-penalty coefficient $\kappa$. For the two histories they say
+a positive blocking penalty $\lambda$. Write $\kappa=\lambda^{-1}$ for its
+reciprocal, which is the coefficient in the dual identities. For the two
+histories they say
 \[
  Q_HM_A=B^{\mathsf T}Q_{H'},\quad BM_A=I-\kappa Q_{H'},\qquad
  Q_YN_A=B^{\mathsf T}Q_{Y'},\quad BN_A=I-\kappa Q_{Y'}.
@@ -417,6 +434,50 @@ Finally, using \eqref{eq:ex-lattice-flat-step-inherited},
 \]
 where the final equality is \eqref{eq:ex-lattice-flat-step-schur}. This proves
 the propagated curvature identity.\end{proof}
+
+At a fixed block size $L$, if the displayed hypotheses hold for every coarse
+period $n_c$ with the same $p,q,r,\tau,\sigma,\omega$ and type set, then the
+folded-cost bound holds uniformly in $n_c$. The proof made no additional choice
+or estimate depending on that period. The retained-horizon construction in
+Section~\ref{sec:ex-lattice-rg-horizon-geometry} supplies the two response
+atlases on its fixed adjacent stages; Proposition~\ref{prop:ex-lattice-response-travel}
+supplies the matching and travel assertions for the retained wire response.
+The remaining packet, floor, width and funding hypotheses must still be
+matched to the selected history.
+
+\begin{lemma}[The quadratic output is independent of the completion]
+\label{lem:ex-lattice-flat-same-output}
+Fix a level schedule, a cutoff $N$, and two admissible quadratic horizons
+with the same blocking geometry, blocking mean and penalty at each step.
+Suppose their
+terminal one-form precisions at level $N$ agree on every scheduled torus,
+and their adjacent steps obey the Schur hypotheses above. Then their
+one-form precisions agree at every level $i\leq N$ on every scheduled
+torus. If, at that level, their corresponding cover kernels have absolutely
+summable rows and both periodize to those finite precisions, and if the
+scheduled torus sides tend to infinity along the period index, the two
+cover kernels agree entry by entry.
+\end{lemma}
+
+\begin{proof}
+At level $N$ equality is the hypothesis. If the two fine precisions agree
+at level $i+1$, the mixed Schur identity
+\eqref{eq:ex-lattice-flat-step-schur} writes the difference of their coarse
+precisions as a left and right matrix multiple of that fine difference.
+It is therefore zero, even if the two transports are different. Backward
+induction proves the finite-torus assertion, separately for each period.
+
+For the cover assertion, fix an input and an output cover coordinate and
+their labels. In the periodization sum the input is wrapped to the finite
+torus, and the output is summed over the congruence class of its wrapped
+coordinate. As the side tends to infinity, each fixed cover point eventually
+belongs to that class exactly when it is the chosen output point. The
+absolute row sum is a summable bound independent of the period, so dominated
+convergence recovers the single cover coefficient from the finite matrix
+entries. The same argument applies to the second kernel. Those finite entries
+are equal by the first part, hence their limits are equal. No equality of
+the two curvature metrics, their square roots, or their transports is implied.
+\end{proof}
 
 \begin{remark}[Inputs still required from the RG construction]
 The proposition proves the one-step packet algebra and weighted estimate
