@@ -51,8 +51,9 @@ Induction and monotonicity give
 In particular $a_m\downarrow0$, and $e^{s_m}$ is the integer
 product of the first $m$ block lengths.
 
-Choose an initial coupling $\beta_*>1$ large enough to meet the
-first-stage entry requirement and to ensure $t(x)\le1$ for
+In this construction $d_j$ denotes the final entry threshold, including
+all the finite-stage enlargements described below. Choose an initial
+coupling $\beta_*>1$ with $\beta_*\ge d_{j_*}$, large enough that $t(x)\le1$ for
 $x\ge\beta_*$. This is possible since
 $t(x)=x^{-1/2}\exp((\log\log x)^2)\to0$. Set
 \[
@@ -87,7 +88,13 @@ by a fixed polynomial and hence is $o(e^s)$. Select $b_{j-j_*}$
 so that they hold whenever $s\ge b_{j-j_*}\log3$.
 The entry property of $J_0$ and the lower bound in
 \eqref{eq:common-scale-brackets} now give all these requirements
-at every step with $J(m+1)>j_*$.
+at every step with $J(m+1)>j_*$. On the first plateau,
+$J(m+1)=j_*$ and $\widehat\beta_m\ge\beta_*\ge d_{j_*}$.
+Consequently the coupling entrance $d_{J(m+1)}\le\widehat\beta_m$
+holds at every step, including $m=0$. The scale-entry and positive-scale
+requirements in \eqref{eq:common-stage-entries} are only imposed after
+that first plateau; the finite first-plateau volume requirements are paid
+by the period choice below.
 
 For the comparison interval at stage $j$, suppose its required
 window $w_j(s)$ is nonnegative and integer valued and $w_j(s)/s\to0$, and its
@@ -135,8 +142,8 @@ requests selected before constructing the sequence. Define
 \[
        E_j=1+\sum_{n=0}^j\sum_{i=0}^j|F_{n,i}|.
 \]
-Raise $d_j$ to at least $\exp(\exp E_j)$ before applying the
-preceding construction. Since
+Include $\exp(\exp E_j)$ in $d_j$ before choosing $\beta_*$
+and applying the preceding construction. Since
 $d_{J(m+1)}\le\widehat\beta_m$, monotonicity of the logarithm
 twice gives
 \[
@@ -152,7 +159,8 @@ The first index depends on $n$. We have not required that a finite
 stage pay infinitely many independent requests.
 
 There is also an all-stage form. For a prescribed real sequence
-$H_j$, replace $d_j$ by $\max(d_j,H_j)$. Then
+$H_j$, include $H_j$ in that same final maximum for $d_j$, again before
+choosing $\beta_*$. Then
 \begin{equation}\label{eq:common-allstage-payment}
                   H_{J(m+1)}\le\widehat\beta_m
 \end{equation}

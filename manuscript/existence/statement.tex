@@ -32,9 +32,13 @@ The lattice family consists of strictly increasing positive integer sequences
 \(O_{N,p,v}(x;U)\) indexed by tokens \(v\). The periodic lattice has
 \(P_pD_N\) sites along each axis and physical period \(P_p\).
 Section~\ref{ex-lattice} describes its Wilson probability measure and moments.
-Each insertion is continuous in \(U\). For each token a single finite
-integer-offset stencil controls the insertion at every spacing, period and
-placement. The running condition is
+We call the family \emph{regular} when its insertions are continuous in
+\(U\), invariant under every lattice gauge transformation, and uniformly
+local in the following precise sense. For each token \(v\) there is a finite
+stencil \(\Sigma_v\subset\mathbb Z^4\), independent of \(N,p,x\), such
+that two configurations agreeing on all links with both endpoints in
+\(x+\Sigma_v\), reduced modulo \(P_pD_N\), give the same insertion value.
+The fourth regularity condition is
 \begin{equation}\label{ex-running-input}
  \exists\sigma>0\quad\forall\varepsilon>0\quad\exists N_0\quad
  \forall N\ge N_0\quad\forall p:\qquad
@@ -74,7 +78,11 @@ permutation symmetric, and continuous in \(\chi\), with
 The mixed correlations are the Wilson limits. The selected correlations
 are the Euclidean correlations to be continued into the reconstructed theory.
 These two roles should be kept distinct even when the phase space has only
-one point.
+one point. At the level of this target, only the selected point is required
+to carry a reconstructed relativistic theory. The other points are required
+to satisfy the displayed correlation properties and the common
+operator-product estimates. Multilinearity of all these correlations in the
+graded fields is not an additional condition of the target.
 
 \begin{definition}[Reconstructed selected theory]\label{ex-reconstructed}
 The selected theory consists of a complex Hilbert space \(\mathcal H\),
@@ -105,9 +113,22 @@ continuation \(F_{\boldsymbol A}(\boldsymbol z;\boldsymbol x)\) on
 Euclidean times its value at \(z_i=it_i\) is
 \(S^{\chi_*}_{\boldsymbol A}((\boldsymbol x_i,t_i)_i)\).
 For every strictly increasing real height vector \(\boldsymbol h\) and
-every tuple of Schwartz tests, its integrals on
-\(z_i=t_i+i\epsilon h_i\) converge as \(\epsilon\downarrow0\) to the
-corresponding vacuum expectation of the smeared fields.
+all \(f_1,\ldots,f_n\in\mathcal S(\mathbb R^4)\),
+\begin{equation}\label{eq:public-selected-boundary}
+\begin{split}
+ \lim_{\epsilon\downarrow0}\int_{(\mathbb R^4)^n}
+ &F_{\boldsymbol A}\bigl((t_j+i\epsilon h_j)_j;
+                  (\boldsymbol x_j)_j\bigr)
+       \prod_{j=1}^n f_j(\boldsymbol x_j,t_j)\,
+                         d\boldsymbol x\,d\boldsymbol t\\
+ &=\langle\Omega,\Phi(A_1,f_1)\cdots\Phi(A_n,f_n)\Omega\rangle.
+\end{split}
+\end{equation}
+In this target clause the integral has value zero when its integrand is not
+Lebesgue integrable. Thus the clause prescribes a boundary limit without
+separately requiring absolute integrability at positive height. When ordinary
+integrals are used in the construction, their integrability must be supplied
+by the analytic estimates, as in Theorem~\ref{thm:joint-boundary}.
 \end{definition}
 
 The existence target is one regular Wilson family such that, for every
@@ -134,4 +155,7 @@ short-distance trace test, described in Section~\ref{ex-assembly}. These
 are additional obligations on the same hierarchy. The target concerns a
 theory of the constructed gauge-invariant observables; identifying a particular
 label with a separately prescribed physical observable requires its own
-construction argument.
+construction argument. In particular, the target does not specify a lattice
+formula for the insertions beyond regularity and convergence, or a
+stress-tensor identification for the grade-four field. Such identifications
+require the additional information retained by the detailed construction.
