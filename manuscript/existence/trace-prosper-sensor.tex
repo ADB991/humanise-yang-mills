@@ -1,0 +1,564 @@
+\section{The trace sensor and its weighted Ward limit}
+\label{sec:trace-prosper-sensor}
+
+Fix one selected family and a gauge group given as a closed subgroup of a
+finite-dimensional unitary group, whose real Lie algebra is nonabelian and
+simple. Let $E$ be the real
+finite-dimensional space of grade-five vector coefficient arrays obeying the
+reality and signed covariance conditions, and let $H$ be the corresponding
+reference vector table space. The free projection $f:E\to H$ applies the
+reference field projection in each vector component. Let $x\in E$ be the
+coefficient array of the free equation of motion. The free rank calculation
+in Section~\ref{sec:ex-lattice-trace-free-rank} gives $x\ne0$ and
+$\ker f=\mathbb R x$. To fix the free Ward normalization, write the raw
+equation-of-motion array as $J^{(3)}_b=\sum_{i,a}\langle F_{bi},\partial_a
+F_{ai}\rangle$, and let
+\[
+ (J^{(1)})_b=\sum_i\langle F_{bi},\partial_b F_{bi}\rangle,\qquad
+ (J^{(2)})_b=\sum_{i,j}\langle F_{ij},\partial_b F_{ij}\rangle.
+\]
+Here $F$ and $\partial F$ are the free curvature jet and its first derivative,
+and the inner product is the gauge-invariant real color inner product. Each
+array is real and invariant under the color action. For a coordinate
+reflection, every contracted index contributes its sign twice, leaving only
+the sign of the output index $b$; permutations merely relabel the sums. Thus
+each array has the required signed-vector covariance. These three arrays form
+a basis of the raw vector space. To see independence, choose
+a unit color vector and evaluate the zeroth component on three jets. In each,
+the only nonzero curvature pair, up to antisymmetry, is respectively $F_{12}$,
+$F_{01}$, and $F_{01}$. The nonzero derivative entries, again up to
+antisymmetry, are respectively
+\[
+ \begin{array}{c|l}
+ 1&\partial_0F_{12}=1,\quad \partial_1F_{20}=-\tfrac12,\quad
+       \partial_2F_{01}=-\tfrac12,\\
+ 2&\partial_0F_{01}=1,\quad \partial_2F_{21}=-1,\\
+ 3&\partial_0F_{01}=1.
+ \end{array}
+\]
+Each scalar stands for that scalar times the chosen color vector. These jets
+satisfy the Bianchi identity; for example a curvature jet $(F_{ab},K_{cab})$
+with $K_{cab}+K_{abc}+K_{bca}=0$ is realized by the polynomial potential
+$A_b(z)=\tfrac12z^aF_{ab}+\tfrac13z^az^cK_{cab}$. It is in radial gauge,
+since $z^bA_b(z)=0$ by antisymmetry in $a,b$. Its curl at the origin
+is $F_{ab}$, and its first curl derivative is
+\[
+ \partial_c(\partial_aA_b-\partial_bA_a)(0)
+ =\tfrac13(2K_{cab}-K_{abc}-K_{bca})=K_{cab},
+\]
+where the last equality uses the cyclic identity. Direct substitution gives
+the evaluation matrix
+\[
+ \begin{pmatrix}0&2&0\\1&2&0\\1&2&1\end{pmatrix}
+ \quad\text{for }(J^{(1)}_0,J^{(2)}_0,J^{(3)}_0).
+\]
+Its determinant is nonzero. The free-rank calculation gives the matching
+upper bound three for the raw vector dimension, so the arrays form a basis.
+The label-coordinate identification carries $x$ to $J^{(3)}$. Every raw vector
+therefore has unique real coordinates $(w_0,w_1,w_2)$ in the form
+\[
+ 2(w_0-w_2)J^{(1)}+(2w_1+\tfrac12w_2)J^{(2)}+w_2J^{(3)}.
+\]
+Indeed, the $J^{(3)}$ coefficient determines $w_2$, and the other two
+coefficients then determine $w_0$ and $w_1$.
+To see the Ward normalization, let $\mathcal I=\sum_{i,j}\langle F_{ij},F_{ij}\rangle$
+and consider the centered stress tensor with diagonal entries
+$T_{aa}=w_0\sum_i\langle F_{ai},F_{ai}\rangle+w_1\mathcal I$ and off-diagonal
+entries $T_{ab}=w_2\sum_i\langle F_{ai},F_{bi}\rangle$. Its divergence
+has the displayed raw-vector coordinates. Indeed the diagonal derivatives
+contribute $2w_0J^{(1)}+2w_1J^{(2)}$. For the off-diagonal term, first
+sum over all $a$. One product-rule term is $J^{(3)}$. For the other, write
+$B=\sum_{a,i}\langle F_{ai},\partial_aF_{bi}\rangle$. The cyclic Bianchi
+identity, antisymmetry, and interchange of $a,i$ give
+\[
+ B=\sum_{a,i}\langle F_{ai},\partial_bF_{ai}\rangle
+    -\sum_{a,i}\langle F_{ai},\partial_iF_{ab}\rangle
+  =J^{(2)}-B.
+\]
+Hence the two terms sum to $J^{(3)}+\tfrac12J^{(2)}$. Removing $a=b$
+subtracts $2J^{(1)}$.
+Its trace is $(w_0+4w_1)\mathcal I$. The scalar normalization is $\mathcal I/4$, and the
+free Ward functional $\rho:E\to\mathbb R$ is minus the coefficient of
+that scalar label in the trace. The label is nonzero, as seen by taking
+$F_{01}$ to be a unit color vector and the other independent curvature
+components to be zero. Hence $\rho=-4(w_0+4w_1)$ on the above coordinates. In
+particular $J^{(3)}$ has coordinates $(1,-\tfrac14,1)$ and $\rho(x)=0$.
+
+Let $k_i$ be the selected initial levels, with $k_i\to\infty$. Fix the
+reference level $j_0$ of the grade-five coefficient space. All finite-volume
+maps and estimates below are used at levels $j\ge j_0$; in particular,
+$k_i\ge j_0$ eventually. The running rate is
+$\widehat\beta_n=\bar\beta+\gamma\ell_n$, where $\gamma>0$,
+$\widehat\beta_n>1$, and the schedule scale $\ell_n\to\infty$. For a level
+$j$, let $q(j)>j$ be the first level whose logarithmic scale separation from
+$j$ is at least $(\log\widehat\beta_j)^{48}$, and put $n_i=q(k_i)$.
+Consequently $n_i\to\infty$,
+$\widehat\beta_{n_i}\to\infty$, and the positive weight
+\begin{equation}
+ \mathfrak a_i=\exp\!\left\{\frac15\bigl(\log\log\widehat\beta_{n_i}\bigr)^2\right\}
+ \longrightarrow\infty.
+ \label{eq:trace-sensor-weight}
+\end{equation}
+This is the $1/5$ age weight at the \emph{postselected} level $n_i$;
+it is not the reciprocal chart scale.
+
+We shall use the following clock and arch inputs. The schedule has natural
+block sizes $L_j$ and real increments $\ell_{j+1}-\ell_j=\log L_j$, with
+$L_j\ge3$ and, eventually,
+$L_j\le\log\widehat\beta_j$. The clock offset $\bar\beta$ and the arch
+scales $b_j$ are positive, and for every $\varepsilon>0$,
+\begin{equation}
+ |b_j-\widehat\beta_j|\le\varepsilon\ell_j
+ \quad\text{for all sufficiently large }j.
+ \label{eq:trace-sensor-clock-input}
+\end{equation}
+These are selected-run inputs. They imply the scale ratio needed below. Put
+$\chi=\widehat\beta_k$ and $g=(\log \chi)^{48}$, and let $q(k)=m+1$.
+By minimality, $\ell_m-\ell_k\le g$: if $m=k$ it is zero, and otherwise
+the preceding level has not reached the threshold. For large $k$,
+$\gamma g\le \chi$, so $\widehat\beta_m\le2\chi$. The last increment obeys
+\[
+ \ell_{m+1}-\ell_m=\log L_m\le L_m
+ \le\log\widehat\beta_m\le\log(2\chi)\le g.
+\]
+Consequently $0\le\ell_{q(k)}-\ell_k\le2g$, and therefore
+\[
+ \frac{\widehat\beta_{q(k)}}{\widehat\beta_k}
+ =1+\gamma\frac{\ell_{q(k)}-\ell_k}{\widehat\beta_k}
+ \longrightarrow1,
+\]
+because $(\log \chi)^{48}/\chi\to0$. Also
+$\widehat\beta_j=\bar\beta+\gamma\ell_j\ge\gamma\ell_j$, so
+\eqref{eq:trace-sensor-clock-input} gives $b_j/\widehat\beta_j\to1$.
+Since both $k_i$ and $n_i=q(k_i)$ tend to infinity,
+\begin{equation}
+ \frac{b_{k_i}}{b_{n_i}}\longrightarrow1.
+ \label{eq:trace-sensor-arch-ratio}
+\end{equation}
+
+Write $s_i:E\to H$ for the selected, normalized grade-five chart map. For
+one vector component let $\mathsf V$ be the complex coefficient space,
+$\mathcal F$ the reference field space and $S_5$ the selected
+interacting field space. The interacting projection is $P:\mathsf V\to
+S_5$, the scale-$i$ identification is a linear isomorphism
+$X_i:\mathcal F\to S_5$, and the selected terminal lift is
+$Y_i:\mathcal F\to\mathsf V$. Write $M_i:\mathsf V\to\mathsf V$
+for the invertible arch map at $n_i$, $t_i>0$ for the threshold there, and
+$\operatorname{core}:\mathsf V\to\mathsf V$ for the projection deleting
+the unit coordinate: if $e_0$ is the unit coordinate vector, then
+$\operatorname{core}v=v-v_0e_0$. These component maps are complex-linear; $s_i$ and $u_i$ act real-linearly on the
+corresponding covariant arrays. With arch scale $b_n>0$ and dilation radius $r_i>0$, set
+$c_i=b_{n_i}r_i^5$. On an eventual common tail, for each vector component
+indexed by $\alpha$,
+\begin{equation}
+ (s_i y)_\alpha=X_i^{-1}P(c_i t_i^2 M_i^{-1}y_\alpha),\qquad
+ (u_i h)_\alpha=c_i^{-1}t_i^{-2}\operatorname{core} M_iY_i h_\alpha.
+ \label{eq:trace-sensor-selected-formulas}
+\end{equation}
+The second formula is for the selected lift. Its well-definedness as a map
+into $E$ follows from the chart symmetries below. On the finitely many indices
+outside this tail, choose arbitrary real-linear maps $u_i:H\to E$. The limiting right inverse
+$U$ applies the fixed reference lift to each component. For that
+lift, the reference field is the quotient of the coefficient space by its
+free equation subspace $K$. For the finite signed-permutation group $\Gamma$,
+write $g z$ for the action on $z\in\mathsf V$ and equip $\mathsf V$
+with the Hermitian form
+\[
+ \langle z,w\rangle_*=\sum_{g\in\Gamma}\sum_a
+             \overline{(gz)_a}(gw)_a.
+\]
+It is positive definite because the identity term occurs. Reindexing the
+sum proves invariance under $\Gamma$; conjugation is antiunitary because
+it commutes with this action. The free equations are real and signed
+permutation equivariant; their vanishing subspace $K$ is therefore stable
+under these symmetries. Each quotient class has a
+unique representative in $K^\perp$, and taking that representative is a
+linear section intertwining the signed action and conjugation. Applied
+componentwise, it therefore maps $H$ into $E$ and satisfies $fU=\mathrm{id}_H$.
+These formulas use the same selected history and the same index $i$; the
+symbols $n_i$ and $b_n$ are as above (with $b_n$ denoting the arch scale).
+The following identities hold on a common tail. The first was just proved;
+the second is a terminal projection hypothesis, and the third follows from
+the chart symmetries as shown below:
+\begin{equation}
+ fU=\mathrm{id}_H,\qquad P Y_i=X_i,\qquad
+ \operatorname{core} M_iY_i h_\alpha=M_iY_i h_\alpha.
+ \label{eq:trace-sensor-chart}
+\end{equation}
+The last equality holds simultaneously for every $h\in H$ and every component
+$\alpha$. On the same tail, $Y_i$ and $M_i$ intertwine signed permutations
+and conjugation. Thus $M_iY_i$ carries real covariant arrays to real
+covariant arrays. Inversion of all four axes acts by $-1$ on each lifted
+component and fixes the unit coefficient, so that coefficient vanishes; the
+core deletes only that coefficient. This proves the last identity in
+\eqref{eq:trace-sensor-chart}. The scalar $c_i^{-1}t_i^{-2}$ is real, so the
+second formula in \eqref{eq:trace-sensor-selected-formulas} also defines a
+real-linear map $u_i:H\to E$. The chart identities imply, on this same tail,
+\begin{align*}
+ (s_i u_i h)_\alpha
+ &=X_i^{-1}P\!\left(c_it_i^2M_i^{-1}
+       (c_i^{-1}t_i^{-2}\operatorname{core}M_iY_i h_\alpha)\right)\\
+ &=X_i^{-1}P(Y_i h_\alpha)=h_\alpha.
+\end{align*}
+Thus $s_i u_i=\mathrm{id}_H$ eventually, uniformly over $h$. The construction
+of the chart and its symmetry and terminal projection properties are assumed
+here, not consequences of the limiting rank alone.
+
+We also record the quantitative inputs behind convergence of the selected
+right inverses. For any level $j$, write $\vartheta_j>0$ for its threshold,
+$M(j)$ for its arch map, and $W_j=\vartheta_j^{-2}\operatorname{core}M(j)$; thus $M_i=M(n_i)$
+and $t_i=\vartheta_{n_i}$. Let $|\cdot|_1$ be the sum of absolute values of the
+finite coefficient coordinates, and set
+\[
+ D_i=b_{k_i}r_i^5,\quad
+ \eta_i=\exp\!\left\{-\tfrac12(\log\log\widehat\beta_{k_i})^2\right\},
+ \quad
+ \delta_i=\exp\!\left\{-\tfrac25(\log\log\widehat\beta_{k_i})^2\right\}.
+\]
+Both $\eta_i$ and $\delta_i$ tend to zero. We derive from the finite-volume
+assumptions below the following estimates: for every fixed $h\in H$ and
+component $\alpha$, with $y_i=Y_i h_\alpha$ and $p=(Uh)_\alpha$, eventually
+\begin{align}
+ |W_{k_i}y_i-D_ip|_1&\le 2\eta_iD_i|p|_1,
+ \label{eq:trace-sensor-initial-price}\\
+ |W_{k_i}y_i-W_{n_i}y_i|_1&\le\delta_i|W_{n_i}y_i|_1.
+ \label{eq:trace-sensor-transport-price}
+\end{align}
+The first is the initial-level lift estimate; the second compares the same
+lift at the two levels. The finite-volume assumptions used to prove them remain
+part of the chart hypotheses, and the arch-scale ratio was derived above from
+the clock inputs.
+
+The finite-volume indices are pairs $\omega=(N,\nu)\in\mathbb N^2$,
+where $N$ is the mesh cutoff index and $\nu$ the period index. Fix one
+ultrafilter on these pairs containing both coordinate tails. The initial-level
+estimate follows from a finite-volume estimate on this ultrafilter. For each
+sufficiently large $i$, fixed $h$ and component $\alpha$, use the same $y_i$
+and $p$ as above. Suppose finite-volume coefficients $Z_i(\omega)$ and normalizations
+$B_i(\omega)$, positive on an ultrafilter-large set, satisfy
+\begin{equation}
+ |Z_i(\omega)-B_i(\omega)p|_1\le
+ 2\eta_i B_i(\omega)|p|_1
+ \quad\text{on an ultrafilter-large set},
+ \label{eq:trace-sensor-finite-price}
+\end{equation}
+and converge along that ultrafilter to $W_{k_i}y_i$ and $D_i$,
+respectively. These limits have a common source. Let $\operatorname{Col}_j(\omega)$
+be the finite-volume transport at level $j$. Assume that for each fixed
+admissible $j$, whenever $v(\omega)\to v$ along the selected ultrafilter,
+$\operatorname{Col}_j(\omega)v(\omega)\to M(j)v$; also assume the finite-volume
+running parameter at level $j$ tends to $b_j$. Write $\beta_i(\omega)$
+for that parameter at $k_i$. The selected finite-volume lift satisfies $\lambda_i(\omega)\to y_i$. The definitions give
+\[
+ Z_i(\omega)=\vartheta_{k_i}^{-2}\operatorname{core}\operatorname{Col}_{k_i}(\omega)\lambda_i(\omega),
+ \qquad B_i(\omega)=\beta_i(\omega)r_i^5.
+\]
+The two stated limits follow by continuity of $\operatorname{core}$, with $i$ fixed.
+The joint transport and lift convergence remain hypotheses; the
+finite-volume price follows from the tested-map estimates below.
+Continuity of the coefficient norm and the closedness of the inequality
+give \eqref{eq:trace-sensor-initial-price}. The ultrafilter limit is taken
+for each fixed $i$ before the limit $i\to\infty$.
+
+The finite-volume price has a useful decomposition into its tested-map and
+calibration inputs. Fix $i$ and $\omega=(N,\nu)$ with $N>k_i$; suppress both
+indices, and let $\mathsf A$ and $\mathsf T$ be the transported reference
+map and its tested approximation. They are complex-linear maps on the finite
+complex coefficient space and send the reference unit $\mathbf1$ to the
+unit coordinate vector $e_0$. Assume that $\mathsf A$ is injective and, for
+every input $v$,
+\begin{equation}
+ |\mathsf A v-\mathsf T v|_1\le\tfrac12|\mathsf A v|_1,
+ \qquad
+ |\mathsf A v-\mathsf T v|_1\le\eta_i|\mathsf A v|_1.
+ \label{eq:trace-sensor-tested-price}
+\end{equation}
+These are separate tested-map and relative-price estimates. The first also
+shows that $\mathsf T$ is injective: if $\mathsf T v=0$, then
+$|\mathsf A v|_1\le\tfrac12|\mathsf A v|_1$, so $\mathsf A v=0$
+and $v=0$. The two finite-dimensional coefficient spaces have the same
+dimension, hence $\mathsf T$ is invertible. For a given $v$, put
+$c=(\mathsf T v)_0\in\mathbb C$ and $v^\circ=v-c\mathbf1$. Then
+$\mathsf T v^\circ=\operatorname{core}\mathsf T v$ and
+$\operatorname{core}\mathsf A v^\circ=\operatorname{core}\mathsf A v$. The first bound in
+\eqref{eq:trace-sensor-tested-price} and the triangle inequality give
+$|\mathsf A v^\circ|_1\le2|\mathsf T v^\circ|_1$. Applying $\operatorname{core}$ to
+the second bound, and using its nonexpansiveness, yields
+\begin{equation}
+ |\operatorname{core}\mathsf A v-\operatorname{core}\mathsf T v|_1
+ \le2\eta_i|\operatorname{core}\mathsf T v|_1.
+ \label{eq:trace-sensor-centered-price}
+\end{equation}
+
+For the particular selected lift $v=\lambda_i(\omega)$, its definition
+identifies the tested image and finite-volume normalization. Write
+$d_{k_i}>0$ for the lattice spacing at $k_i$, put
+$\sigma_i=r_i/d_{k_i}$, and let $\beta_i(\omega)>0$ be the finite-volume
+running parameter. The transported reference map is
+$\mathsf A=d_{k_i}^{-5}\operatorname{Col}_{k_i}(\omega)$, which explains the
+normalization of $Z_i$ below. The vector covariance of $h$ makes each $h_\alpha$ odd
+under total inversion; the reference lift intertwines that action, so
+$p=(Uh)_\alpha$ is odd as well. We recall the short degree argument for
+the reference frame. Its basis elements are homogeneous in position degree
+and factor degree, and the only factor-degree-zero basis element is the unit. Each
+jet factor has position weight at least two; since the frame has degree at
+most five, a nonunit basis element has at most two factors. A one-factor
+invariant vanishes by the invariant-linear-form argument in the low-grade
+label calculation above. Thus every nonunit basis element has exactly two
+factors and position degree four or five. Total inversion acts on a homogeneous
+position-degree-$d$ label by $(-1)^d$: a jet of order $r$ has both inversion
+sign $(-1)^{r+2}$ and position weight $r+2$. Consequently every nonzero
+nonunit coordinate of the odd vector $p$ has position degree five and factor
+degree two. The identities used here are
+\begin{equation}
+ \operatorname{core}\mathsf T\lambda_i=\beta_i\vartheta_{k_i}^2\sigma_i^5p,\qquad
+ Z_i=\vartheta_{k_i}^{-2}d_{k_i}^5\operatorname{core}\mathsf A\lambda_i,\qquad
+ B_i=\beta_i r_i^5.
+ \label{eq:trace-sensor-finite-calibration}
+\end{equation}
+The first identity follows from the definition of the selected finite-volume
+lift and the grade-five scaling rule. Put
+$\xi=(\sqrt{\beta_i})^{-1}/\vartheta_{k_i}$. For a frame coordinate
+$\iota$ with position degree $d_\iota$ and factor degree $n_\iota$,
+define the position and factor dilations by
+\[
+ (\operatorname{Pos}_t v)_\iota=t^{d_\iota}v_\iota,\qquad
+ (\operatorname{Dil}_t v)_\iota=t^{n_\iota}v_\iota.
+\]
+For $t>0$, these coordinate formulas give
+$\operatorname{Dil}_t^{-1}=\operatorname{Dil}_{t^{-1}}$. On the selected
+tail, where $i\ge5$, the finite-volume lift is
+\[
+ \lambda_i=\mathsf T^{-1}\operatorname{Dil}_{\xi^{-1}}
+                    \operatorname{Pos}_{\sigma_i}p.
+\]
+Consequently $\operatorname{Dil}_\xi\mathsf T\lambda_i=\operatorname{Pos}_{\sigma_i}p$.
+The reference
+section $p$ is odd and has nonunit degree five, so this weight is
+$\sigma_i^5p$. On these nonunit coordinates the inverse coefficient
+dilation $\operatorname{Dil}_{\xi^{-1}}$ acts by $\xi^{-2}$. Applying that inverse
+and $\operatorname{core}$, with $\operatorname{core}p=p$, gives the first identity in
+\eqref{eq:trace-sensor-finite-calibration}, because
+$\xi^{-2}=\beta_i\vartheta_{k_i}^2$. This is an exact conversion of the
+lift and grading normalizations.
+The other two identities specify the actual normalization. Multiplying
+\eqref{eq:trace-sensor-centered-price} by
+$\vartheta_{k_i}^{-2}d_{k_i}^5$ and using $r_i=d_{k_i}\sigma_i$ gives exactly
+\eqref{eq:trace-sensor-finite-price}. Thus the tested-map estimates,
+selected-lift construction and finite-volume limits are the remaining
+inputs for the initial-level price, rather than an additional assumed
+sensor bound.
+
+For the one-step input, fix $i$, $h$ and $\alpha$ and write
+$N_i=n_i-k_i>0$. On a set belonging to the selected ultrafilter, suppose
+there are finite-volume coefficient-vector functions $z_j(\omega)$ for
+$k_i\le j\le n_i$, all formed from the same terminal label $y_i$, with
+\begin{equation}
+ |z_j(\omega)-z_{j+1}(\omega)|_1\le
+ \frac{\delta_i}{2N_i}|z_{j+1}(\omega)|_1
+ \quad(k_i\le j<n_i).
+ \label{eq:trace-sensor-step-input}
+\end{equation}
+Here $z_j(\omega)=\vartheta_j^{-2}\operatorname{core}\operatorname{Col}_j(\omega)y_i$. For each
+fixed $j$ in this finite interval, the joint transport input above, applied
+to the constant label $y_i$, gives the ultrafilter limit $W_jy_i$. We derive
+the one-step price below from the underlying residual and budget inputs, and
+now prove
+\eqref{eq:trace-sensor-transport-price} from it.
+
+Fix $\omega$ in that set and abbreviate $z_j=z_j(\omega)$. Put
+$a=\delta_i/N_i$. For large $i$ we have $\delta_i\le1$. Backward
+induction gives, for every $j$ in the interval,
+\[
+ |z_j-z_{n_i}|_1\le a(n_i-j)|z_{n_i}|_1.
+\]
+It is immediate at $j=n_i$. At the induction step, the bound at $j+1$
+and $aN_i\le1$ give $|z_{j+1}|_1\le2|z_{n_i}|_1$. The one-step input
+therefore bounds $|z_j-z_{j+1}|_1$ by $a|z_{n_i}|_1$, and the triangle
+inequality proves the next step. At $j=k_i$ this is
+$|z_{k_i}-z_{n_i}|_1\le\delta_i|z_{n_i}|_1$. Passing to the ultrafilter
+limit in the finite-dimensional coefficient space yields
+\eqref{eq:trace-sensor-transport-price}. The finite intersection over
+the interval is taken before this limit, for each fixed $i$; no uniform
+limit in $i$ or new choice of history is used.
+
+The one-step price follows from the following assumptions. Write
+$\widetilde z_j=\operatorname{Col}_j(\omega)y_i$ for the finite-volume
+coefficient before threshold normalization; thus
+$z_j=\vartheta_j^{-2}\operatorname{core}\widetilde z_j$. Let the
+deterministic block transport be
+$(\operatorname{Block}_j v)_\iota=L_j^{5-d_\iota}v_\iota$.
+For $a\in\mathbb R$ and level $j$, put
+\[
+ A_a(j)=\exp\!\left\{a(\log\log\widehat\beta_j)^2\right\},\qquad
+ g_j=\frac{2(1+C_{j+1})}{A_{1/2}(j+1)},
+\]
+where $C_j\ge0$ is the selected real column budget. The budget input is
+$C_j\le\log\widehat\beta_j$ eventually. For all levels in the interval,
+on the same ultrafilter-large set, assume
+\begin{align}
+ \frac{\vartheta_{j+1}}{\vartheta_j}&\le2, &
+ |\widetilde z_j-\operatorname{Dil}_{\vartheta_j/\vartheta_{j+1}}\operatorname{Block}_j\widetilde z_{j+1}|_1
+ &\le g_j|\operatorname{core}\widetilde z_{j+1}|_1.
+ \label{eq:trace-sensor-raw-step}
+\end{align}
+In the selected construction, for each fixed level $j$ the residual and
+threshold bounds hold for all sufficiently large $\nu$, uniformly in $N>j$
+and the terminal label. For fixed $i$, take the maximum
+of the finitely many period thresholds for $k_i\le j<n_i$ and also require
+$N\ge n_i$; their intersection belongs to the same ultrafilter. This
+justifies using one large set for the entire finite interval, without a
+uniform choice over $i$.
+
+The terminal label $y_i$ is
+odd under inversion of all axes, and the finite-volume transport preserves
+that inversion; hence every $\widetilde z_j$ is odd. The reference-frame classification
+used above therefore shows that a nonzero nonunit coordinate of $\widetilde z_{j+1}$ has
+position degree five and factor degree two. On a coordinate of position
+degree $d$, block transport multiplies by
+$L_j^{5-d}$; on one of factor degree $n$, coefficient dilation by $t$
+multiplies by $t^n$. Thus, on every nonunit coordinate of $\widetilde z_{j+1}$,
+the block factor is one and the dilation factor is
+$(\vartheta_j/\vartheta_{j+1})^2$. The core deletes the unit coordinate, so
+\begin{equation}
+ \operatorname{core}\operatorname{Dil}_{\vartheta_j/\vartheta_{j+1}}\operatorname{Block}_j\widetilde z_{j+1}
+ =\left(\frac{\vartheta_j}{\vartheta_{j+1}}\right)^2\operatorname{core}\widetilde z_{j+1}.
+ \label{eq:trace-sensor-grade-scaling}
+\end{equation}
+The core projection is nonexpansive in $|\cdot|_1$.
+Applying $\operatorname{core}$ to the residual and dividing by $\vartheta_j^2$ gives
+\[
+ |z_j-z_{j+1}|_1
+ \le g_j\left(\frac{\vartheta_{j+1}}{\vartheta_j}\right)^2|z_{j+1}|_1
+ \le4g_j|z_{j+1}|_1.
+\]
+We verify that
+$4g_j\le\delta_i/(2N_i)$ uniformly for $k_i\le j<n_i$ when $i$ is large.
+Put $\chi=\widehat\beta_{k_i}$. The clock estimates already proved imply
+$\widehat\beta_{n_i}\le2\chi$ eventually. Since each increment
+$\log L_j\ge1$, the overshoot bound gives $N_i\le2(\log \chi)^{48}$.
+For large $i$ we have $\chi\ge e$, so
+$t\mapsto\exp\{\tfrac12(\log\log t)^2\}$ is increasing for $t\ge\chi$.
+Monotonicity of the clock then gives $C_{j+1}\le2\log \chi$ and
+$A_{1/2}(j+1)\ge A_{1/2}(k_i)$ for large $i$. Therefore
+\[
+ 2N_i(4g_j)\le
+ \frac{32(\log \chi)^{48}(1+2\log \chi)}{A_{1/2}(k_i)}
+ \le A_{-2/5}(k_i)=\delta_i.
+\]
+The last inequality follows because every fixed power of $\log \chi$ is
+eventually bounded by $A_{1/10}(k_i)$: after taking logarithms this is
+linear versus quadratic growth in $\log\log \chi$. This proves
+\eqref{eq:trace-sensor-step-input}. The residual, preservation of oddness, threshold and column-budget bounds
+remain hypotheses; the degree classification, grade-scaling identity,
+price calculation and telescoping above prove their consequence.
+
+These estimates prove $u_i h\to Uh$. Indeed put
+$\mathsf L_i=D_i^{-1}W_{k_i}y_i$ and $\mathsf R_i=D_i^{-1}W_{n_i}y_i$.
+The first estimate gives $|\mathsf L_i-p|_1\le2\eta_i|p|_1$, and the second
+gives $|\mathsf L_i-\mathsf R_i|_1\le\delta_i|\mathsf R_i|_1$. For $\delta_i<1$, the triangle
+inequality gives $|\mathsf R_i|_1\le(1+2\eta_i)(1-\delta_i)^{-1}|p|_1$ and hence
+\[
+ |\mathsf R_i-p|_1\le\frac{2\eta_i+\delta_i}{1-\delta_i}|p|_1.
+\]
+Since $c_i=b_{n_i}r_i^5$, the formula for $u_i$ gives
+$(u_i h)_\alpha=(b_{k_i}/b_{n_i})\mathsf R_i$. Thus the component error is at
+most
+\[
+ \left(\left|\frac{b_{k_i}}{b_{n_i}}-1\right|
+ +\frac{b_{k_i}}{b_{n_i}}
+   \frac{2\eta_i+\delta_i}{1-\delta_i}\right)|p|_1,
+\]
+which tends to zero. There are finitely many components, so $u_i h\to Uh$
+in $E$; finite dimensionality upgrades this pointwise convergence to
+operator-norm convergence.
+
+\begin{proposition}[Selected trace sensor]
+\label{prop:trace-prosper-sensor}
+Assume the stated schedule increment, block-size and positive arch-scale
+inputs, \eqref{eq:trace-sensor-clock-input}, the selected chart formulas
+\eqref{eq:trace-sensor-selected-formulas} and identities
+\eqref{eq:trace-sensor-chart}, the stated signed-permutation and conjugation
+intertwining of the chart maps,
+and the tested-map, selected-lift and finite-volume normalization inputs
+described around \eqref{eq:trace-sensor-tested-price}--
+\eqref{eq:trace-sensor-finite-calibration}, the one-step input
+\eqref{eq:trace-sensor-raw-step}, and the stated oddness, joint convergence
+and column-budget inputs.
+Suppose a sequence $v_i\in E$
+satisfies, in the indicated norms,
+\begin{equation}
+ v_i\longrightarrow x,\qquad
+ \mathfrak a_i s_i(v_i)\longrightarrow0\ \text{in }H,\qquad
+ \mathfrak a_i\rho(v_i)\longrightarrow0\ \text{in }\mathbb R.
+ \label{eq:trace-sensor-marked}
+\end{equation}
+Then $s_i\to f$ in operator norm. Moreover there are linear functionals
+$\mu_i:H\to\mathbb R$ and $C\ge0$ such that, for all sufficiently large
+$i$, $|\mu_i(h)|\le C\|h\|$ for every $h\in H$, and for every
+$\varepsilon>0$, for all sufficiently large $i$,
+\begin{equation}
+ |\mathfrak a_i(\mu_i(s_i y)-\rho(y))|\le\varepsilon\|y\|
+ \quad\text{for every }y\in E.
+ \label{eq:trace-sensor-conclusion}
+\end{equation}
+The tail in the second assertion may depend on $\varepsilon$, but is uniform
+in $y$.
+\end{proposition}
+\begin{proof}
+Since $\mathfrak a_i>0$ and $\mathfrak a_i\to\infty$, the first weighted limit in
+\eqref{eq:trace-sensor-marked} implies $s_i(v_i)\to0$. Choose a linear
+functional $A:E\to\mathbb R$ for which
+$y=Uf(y)+A(y)x$ for every $y$: indeed $y-Uf(y)$ lies in $\ker f$, and its
+coefficient along the nonzero $x$ is linear. Define
+$T_i=u_i f+A\otimes v_i$. The chart and marked-vector limits imply
+$T_i\to\mathrm{id}_E$ in operator norm. For sufficiently large $i$, $T_i$
+is invertible and $T_i^{-1}\to\mathrm{id}_E$, by the geometric series for
+$\mathrm{id}_E-T_i$.
+
+On the common right-inverse tail,
+\[
+ s_iT_i y=f(y)+A(y)s_i(v_i).
+\]
+This also gives a bound without assuming the norms of $s_i$ in advance.
+Put $\epsilon_i=\|T_i-\mathrm{id}_E\|$; for $\epsilon_i<1$,
+\[
+ \|s_i-f\|\le
+ \frac{\|A\|\,\|s_i(v_i)\|+\|f\|\epsilon_i}{1-\epsilon_i}.
+\]
+Indeed subtract $fT_i$ from the displayed identity and multiply on the
+right by $T_i^{-1}$. Both terms in the numerator tend to zero, proving
+$s_i\to f$. Now apply the weighted rank-one
+receiver lemma (Lemma~\ref{lem:ex-lattice-trace-weighted-price}) with
+$(v_i,u_i,w_i,e_i)$ there equal to $(s_i,u_i,v_i,\mathfrak a_i)$ here. Its two
+weighted hypotheses are precisely the last two limits in
+\eqref{eq:trace-sensor-marked}; its other hypotheses follow from the
+preceding paragraph and \eqref{eq:trace-sensor-chart}. It gives
+$\mu_i=\rho u_i$ with bounded norms and
+$\|\mathfrak a_i(\mu_i s_i-\rho)\|_{E^*}\to0$. The definition of operator norm
+then gives \eqref{eq:trace-sensor-conclusion}, with one tail uniform in $y$.
+\end{proof}
+
+The marked-vector assumptions are separate analytic inputs. In the selected
+construction let $\mathsf q_j$ and $\mathsf w_j$ be the transported chosen and reference
+responses, and set $m_j=b_j^{-1}\mathsf q_j-\mathsf w_j$. The scalar assembly in
+Section~\ref{sec:ex-lattice-trace-weighted-estimates}, applied at the
+postselected levels and under its stated response, price and scale inputs, gives
+$m_{n_i}\to x$ and $\mathfrak a_i\rho(m_{n_i})\to0$. In particular, the
+scale comparison above and $\widehat\beta_{n_i}\to\infty$ give
+$b_{n_i}\ge1$ after discarding finitely many terms; the cited scalar
+calculation supplies $\mathfrak a_i/b_{n_i}\to0$.
+The distinct priced-mission argument in
+Lemma~\ref{lem:ex-trace-small-means} gives the stronger field estimate
+$\widehat\beta_{n_i}s_i(m_{n_i})\to0$, under its stated medium-core representation, oddness, response and scaling
+identities, detector and local-price bounds, and scalar rate input. For large $t$, $\tfrac15(\log\log t)^2\le\log t$,
+so $A_{1/5}(n_i)\le\widehat\beta_{n_i}$ eventually. Therefore
+\[
+ \|\mathfrak a_i s_i(m_{n_i})\|\le
+ \|\widehat\beta_{n_i}s_i(m_{n_i})\|\longrightarrow0.
+\]
+Thus the same selected medium supplies all three marked-vector limits in
+the proposition, subject to those two separate groups of inputs. The
+finite-volume price, selected-chart and probe estimates remain draft
+prerequisites. This proposition neither proves those producers nor asserts
+the full existence theorem.
