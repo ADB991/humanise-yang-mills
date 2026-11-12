@@ -56,7 +56,7 @@ recomputed, and every quantifier order was rechecked.
   `eq:ope-cutoff-discrepancy` "remains to be proved in the construction part". It is
   in fact the C05-internal construction `sec:reference-match`, under a scale-letter
   swap: reference chapters use (opening m, matching k), and the cutoff uses
-  (centered/opening k, matching m). An explicit dictionary was added. It was checked
+  (centered k, opened K(k), matching m; corrected in revision 2, see below). An explicit dictionary was added. It was checked
   against Lean `YM.OPE.funding` (Prices/Circuit.lean:64) and `YM.OPE.terminalAfford`
   (Prices/Circuit.lean:40), whose second conjunct is literally
   `eq:reference-match-afford` in the cutoff letters. `𝓜(z;k,m)` was only bounded,
@@ -75,7 +75,7 @@ recomputed, and every quantifier order was rechecked.
   that V bounds the q_k of the filtration chapter.
 - **R3 (editorial, `ope-cutoff.tex`).** In `eq:ope-group-weight`, ℓ is the
   connecting-cover bound, called `k` in `sec:ope-grouping`, where ℓ is the occupancy.
-  This is now stated, and λW_r is identified with the product of new mark weights.
+  This is now stated. (Revision 2: the first version wrongly called λW_r a product of new mark weights; λW_r is the new weight of the single old mark r, and the product over r∈A is 8W̃_A.)
 - **R4 (interface, `ope-cutoff.tex`).** The cover-rate condition
   `(ν_{i+1}+1)ℓ_i≤16√β̂_i` is the form in which C16 `ope-scale-purchases.tex` (O1) is
   used. With `A=101=ν+1` and `H_L=(1+L(B(x)+B(y)+1)²)⁴`, `eq:ope-pair-halo` gives
@@ -152,3 +152,39 @@ recomputed, and every quantifier order was rechecked.
 - **F7 (editorial, not changed).** `ope-filtration.tex` cites the C14 projection with
   a different letter (`A_c`) than its own (`p_c`). This is now bridged in prose.
   Unifying it is a G05 matter.
+
+## Revision 2: response to the independent review (PR #79)
+
+Session `ADB991-claude-20261112-3b89`, claim
+https://github.com/hairer/humanise-yang-mills/issues/46#issuecomment-6834951826.
+Review: `results/C05/review/{mathematics,lean}.md` on PR #79 (schmittj, at head
+`8b15d44`). Every finding was re-read against the chapter text; the Lean quotations in
+`lean.md` L1, L2, L5, L8 were spot-checked against the source (`YM/Euclid/Stress.lean`
+`Oriented`/`Laws`, `YM/Euclid/Table.lean` `RealSpin`/`Homogeneous`,
+`YM/RG/Masks.lean` `Healthy`/`flags`/`supBounds`, `YM/OPE/Grouping/Family.lean`
+`Permutes`/`CopyFamily`). Accepted in full unless stated.
+
+| Finding | Change |
+| --- | --- |
+| M1 / L1 | `ope-homogeneous.tex`: new standing assumption `eq:ope-mixed-covariance` (rotation covariance, translation invariance, reality of the mixed correlations), marked as an input not implied by the action laws. `ope-estimates.tex`: cited at the rotation step, the conjugated step and the translation step; `thm:ope-quantitative` now states it. The review's counterexample shows the hypothesis is necessary. Producer still unknown (edge `C03-to-C05-O4`). |
+| M2 / L3 | `handoff.md`: upper rate `τ` for `‖Q_n‖`, via `J_nV_n`. |
+| M3 | `ope-cutoff.tex`: λW_r is the new weight of one old mark; product over A is `8W̃_A`. |
+| M4 / L7 | `ope-phase-prices.tex`: the unreflected conjugation identity `eq:episode-conjugate` is cited as an input (conditional producer `ex-ordinary-reflection`); listed in `prop:ope-match-assembly`; ledger edge reopened. |
+| M5 / L7 | `ope-phase-prices.tex`: continuity in every character cited from `ex-phase-caps` with its conditions; listed in `prop:ope-match-assembly`. |
+| M6 / L2 | `reference-match.tex`: centred depth `J ≤ m` introduced; room condition `2(a_kR+T_k)<a_J` stated and `eq:actual-grid-factor` cited; `𝒱_m = t_m`, `M` centred J-cells, `S_0=exp((a_J/a_m)^4t_m+5)` displayed. |
+| L2 / L6 | `ope-cutoff.tex`: three-depth dictionary (centred k, opened K(k), matching m); returned label `Q_{N,p}=T_{N,p}b` stated; `correspondence.md` and `findings.md` R1 corrected. |
+| M7 / L5 | `ope-grouping-algebra.tex`: covariance hypotheses (a)–(d) stated, matching `Permutes`/`CopyFamily`; conclusion limited to coefficients in the copied family. |
+| M8 / L8 | `ope-filtration.tex`: local trial defined with fixed-stencil measurable gauge-invariant locality, literal translation, eventual continuity, a sup price and a derivative price on healthy configurations. The use at the literal observable is now explicitly conditional on the calibrated local-section bounds giving these properties. |
+| M9 / L9 | `ope-grid.tex`: `ex-raw-slot-identity` with phase compatibility named as input; slab regularity is a fellow consumer. |
+| M11 | `ope-estimates.tex`: threshold dependence stated (labels, D, M, η, c, ε, channel; not phase or positions). |
+| M12 / L9 | `ope-local-projection.tex`: `m ≥ t_d`, every `N_0>m`, every period. |
+| M13 / L10 | `ope-local-projection.tex`: `rem(Q) ≤ B` defined as `R+κ_m^{-1}F ≤ B` with one fixed `κ_m`. |
+| M14 / L10 | `ope-grouping.tex`: connected covering number named; `a=ν` and `ν ≥ 0` stated. Source support exponents are ≥ 100 in the purchases (e.g. `YM/Extension/UV/Canon/Bourse.lean` line 57), not re-derived for every call site. |
+| M15 | `ledger.md` row for the reference cone: terminal hypothesis and affordability conditions added. |
+| M16 | `ope-phase-prices.tex`: mesh factor `h` in the rounding. |
+| L11 | Author records: relative paths `../../../`, `YM.Work.G09.answer`/`cone_cost`/`cost_finest`. The errors in the canonical `ope-evidence.md` (`Reader.liftOne_affinity` is private; `ripe` namespace; missing `Oriented`/`RealSpin.real` note) and `local-projection-evidence.md` (non-existent `MergeProof/Blush` etc. paths; files are under `Lean/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`) are in read-only canonical records and are left to their owner. |
+| M10 / L4 | Not C05: the C16 sentence in `ope-history-service.tex` lines 150–155 should say "for each individual marker (cell, slot)". Passed to the C16 owner (#57). |
+| Review remark on `prop:ope-match-assembly` | It proves the Input for grids on the schedule meshes `a_{j_n}`; this is how `ope-grid` uses it. Not changed. |
+
+No displayed estimate, exponent or rate changed in this revision. Labels added:
+`eq:ope-mixed-covariance`. No label removed or renamed.

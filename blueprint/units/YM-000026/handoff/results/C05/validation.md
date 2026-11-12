@@ -37,6 +37,6 @@ check of chapters outside C05 beyond reading the cited producer statements.
 | `manuscript/existence/ope-estimates.tex` | 6ffbdcd702e5b097338182750dbf8af81fef644628e72f899bd98acffcfe0760 | unchanged |
 
 The start hashes of the unchanged files equal those of the independent local passes
-recorded in `../../ope-evidence.md`, so those passes still refer to the current text.
+recorded in `../../../ope-evidence.md`, so those passes still refer to the current text.
 The final hashes were computed after the last prose edit; the report files under
 `results/C05/` are not mathematical inputs and are not hashed here.

@@ -12,7 +12,7 @@ Session `ADB991-claude-20261112-0c65`. Branch `ADB991:claude/issue-46-0c65`, bas
   `input:ope-match`, `ope-grid` and `input:ope-raw-estimates`, to
   `thm:ope-quantitative`. It uses **one** finite-cutoff label `Q_n` per sequence index,
   the same fixed-m quota, the marked grids, interpolation, and the continuum
-  remainder. No subpower claim is made for `Q_n`: its whole-label norm has rate `qa`.
+  remainder. No subpower claim is made for `Q_n`: the whole-label bound is `‖Q_n‖ ≤ J_n V_n` with upper rates `qa` and `τ−qa`, hence upper rate `τ` (no exact rate; `Q_n` may vanish). [Corrected in revision 2; the first version wrongly said rate `qa`.]
   The scale-letter swap between the reference chapters and the cutoff accounting is
   written out and checked against Lean `YM.OPE.funding` and `YM.OPE.terminalAfford`.
 - Matched producer statements: C06 `eq:leaf-projection-allowance` →

@@ -61,9 +61,10 @@ new weights can be taken to be
 Here $\nu$ is the purchased support exponent and $\delta>0$ the local
 smallness parameter. The connecting-cover bound $\ell$ is the quantity
 written $k$ in Section~\ref{sec:ope-grouping}, where $\ell$ denotes
-instead the site occupancy; the factor $\lambda W_r$ is the product of the
-new weights $\delta^2W_ie^{-(\nu+1/2)k}/h$ of the old marks in a group,
-as computed at the end of that section. These statements also retain the exact marked
+instead the site occupancy. Each factor $\lambda W_r$ is the new weight
+$\delta^2W_re^{-(\nu+1/2)k}/h$ of the single old mark $r$, and their
+product over $r\in A$ is the numerator computed at the end of that
+section, so that $8\widetilde W_A=\prod_{r\in A}(\lambda W_r)$. These statements also retain the exact marked
 polynomial after regrouping, its covariance between copies, its
 integrability, and its permitted local representation. The analytic
 proofs of these two local representation estimates remain construction
@@ -144,8 +145,9 @@ Section~\ref{sec:ope-scale-purchases} is used: by
 $\lceil(\log x)^2\rceil$ and $\lceil(\log y)^2\rceil$ for the
 hatted couplings $x,y$ of the transition, the connecting cover is at
 most $16H_L(x,y)$, and (O1) with $A=101=\nu+1$ gives
-$(\nu+1)\ell_i\le16\sqrt{x}$. The identification of $x$ with
-$\widehat\beta_i$ at the transition used here is part of that supplier.
+$(\nu+1)\ell_i\le16\sqrt{x}$. At the transition from level $i$ the
+hatted couplings are $x=\widehat\beta_i$ and $y=\widehat\beta_{i+1}$,
+as displayed in Section~\ref{sec:ope-scale-purchases}.
 Since $\widehat\beta_i$ is an affine function of $s_i$ on the selected
 scale sequence (Section~\ref{sec:common-scale-selection}),
 $\sqrt{\widehat\beta_i}/s_i\to0$.
@@ -218,13 +220,16 @@ bound for it is a property of that schedule.
 The comparison producing \eqref{eq:ope-cutoff-discrepancy} is the
 matched construction of Section~\ref{sec:reference-match}. That section,
 like Sections~\ref{sec:reference-cone} and~\ref{sec:reference-difference},
-writes $m$ for the opening scale and $k$ for the matching scale. Here the
-opening scale is the centered level $k$, or its opened level $K(k)$, and
-the matching scale is $m$. The quantities correspond as follows.
+uses three depths: a centered depth $J$ (the replicated cells and the
+root test), an opening depth $m$ (start of the weight evolution) and a
+matching depth $k$. Here they are, respectively, the centered level $k$,
+its opened level $K(k)$, and $m$. The centered and opened levels are
+different in general: equal logarithmic rates do not identify them.
+The quantities correspond as follows.
 \begin{center}
 \begin{tabular}{ll}
 Section~\ref{sec:reference-match} & this section\\ \hline
-opening scale $m$, matching scale $k$ & $k$ (or $K(k)$), and $m$\\
+centered $J$, opening $m$, matching $k$ & $k$, $K(k)$, $m$\\
 degree $d$ & $q$\\
 coefficient field $Q$ with bound $c$ & terminal projection, $c=2P$\\
 column allowance $C_k$ & $\zeta_m$\\
@@ -232,11 +237,19 @@ $E\geq4(1+C_k)c$ & $E=4(1+\zeta_m)(2P)$\\
 opening weight $w$ & $z$\\
 gain $G=e^{(s_k-s_m)/8}$ & $G(m,k)$\\
 single-source allowance $\theta_m$ & $\vartheta_q(k)$\\
-cell price $S_0$ & $\mathcal S(k)$\\
-label $b$; quota $2E$; price $2S_0/w$ & $Q_{N,p}$; $V$; $A$
+cell price $S_0=\exp((a_J/a_m)^4t_m+5)$ & $\mathcal S(k)=\exp(u^4t_{K(k)}+5)$\\
+bare label $b$ & $b$\\
+quota $\mu(I_kb)\le2E$; price $2S_0/w$ & quota of $Q_{N,p}$ at $m$ $\le V$; $A$
 \end{tabular}
 \end{center}
-Under this dictionary \eqref{eq:reference-match-afford} is literally
+The label returned here is not the bare label $b$ itself but its image
+$Q_{N,p}=T_{N,p}b$ under the calibrated terminal identification $T_{N,p}$
+of the cutoff $(N,p)$, the reference label whose observable is
+$\mathcal O(b)$; its quota at the matching level is by definition
+$\mu(I_mT_{N,p}^{-1}Q_{N,p})=\mu(I_mb)$. Since $T_{N,p}$ depends on the
+cutoff, the compactness argument below is applied to the labels
+$Q_{N,p}$, not to $b$. Under this dictionary
+\eqref{eq:reference-match-afford} is literally
 \eqref{eq:ope-match-pay-two}. The coefficient field is the terminal
 projection of Section~\ref{sec:ope-local-projection} with grouped weight
 $X$ and projection allowance $\mathcal B_m$. Its coefficient-size and
@@ -365,7 +378,10 @@ propagation bound; the terminal local projection of
 Section~\ref{sec:ope-local-projection}; the comparison hypotheses of
 Section~\ref{sec:reference-match}; the schedule properties used in
 this section; the centered estimates and separated-cluster limit used in
-Section~\ref{sec:ope-phase-prices}; and the one-step triangular,
+Section~\ref{sec:ope-phase-prices}, together with the unreflected
+conjugation identity \eqref{eq:episode-conjugate} and the continuity of
+the correlations in every character phase
+(Proposition~\ref{ex-phase-caps}) used there; and the one-step triangular,
 calibrated column and local comparison and projection inputs of
 Section~\ref{sec:ope-filtration}. Then Input~\ref{input:ope-match} holds.
 In it the cluster arity is $|I|=h$, the mesh rate $d$ of the input is
