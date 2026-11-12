@@ -1173,3 +1173,14 @@ and actual shell production remain separate. No global closure is asserted.
 
 Fetched main at 454fcbb: maintainer merged PR36; no new source pin or additional
 blueprint notes since 5535cc1. Live issues26/33/34 rechecked; scopes unchanged.
+
+
+## 12 November: annulus and spectral Ward suppliers
+
+New canonical sections are actual-stress-annulus, physical-ward-packet-prices
+and physical-ward-stress-cone, with adjacent evidence files and bounded exact
+review records in reviews/draft-review.md. The annulus remains conditional on
+the actual ShellNode producer. The cone now supplies the seven spectral errors
+and exponent delta+4a, including -395, without presupposing full rotations.
+`endpoint-closure-ledger.md` records inspected public assembly identities and
+remaining same-data obligations. It is an author audit, not whole-proof closure.

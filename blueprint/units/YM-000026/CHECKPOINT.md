@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 11:35 UTC
+# Collaborative checkpoint — 12 November 2026, 11:58 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -7,12 +7,13 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Previous checkpoint PR #36 was merged; the branch contains the continued draft.
+- Previous checkpoint PR #38 was merged by the maintainer; continued draft PR
+  will be linked from issue #26 after this push.
 - Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
   your claim. Helper PRs target this branch. `main` contains the
-  809-page checkpoint merged through PR #36; this branch continues that draft.
+  821-page checkpoint merged through PR #38; this branch continues that draft.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (821 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (838 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -91,12 +92,14 @@ represented as part of this PDF.
 
 ## Remaining closure and editorial work
 
-The working frontier includes matching the retained paid local inputs to the
-same corrected-compiler history, actual physical shrinking-annulus Ward
-representation (held for substantive corrections), its physical charge
-propagation, trace sensor/branch receipts, and a
-complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
-questions; they do not establish every quantitative premise of every chapter.
+The working frontier includes the actual shell-node quantitative producer,
+physical Ward propagation (under correction/review), the distinct free
+polar-vector and internal-map classification, external trace sensor/branch
+receipts, and complete dependency/axiom/scope audits. The annular consequence,
+packet spectral prices and conservation-to-cone estimates now have bounded
+passes; their stated construction inputs still require the same-data joins.
+See `endpoint-closure-ledger.md` for inspected final calls and their exact
+retention requirements. This is not an exhaustive closure certificate.
 
 The public run uses the native preselected postnumeric period route.
 `Roll/Novena`, `Ebb`, `Ariva` and `Meridian` construct a different witness and
@@ -116,13 +119,13 @@ expansion, package **all** unfinished mathematical, audit, review and editorial
 work into separate agent tasks, push that handoff, release parent scopes and stop
 both parent and subagents. The final pass is reserved for the maintainer's later
 request. This supersedes the earlier reset instruction. See `USAGE-HANDOFF.md`.
-Last check10:58UTC:49% remaining; next11:13UTC. No background monitor is installed.
+Last check11:54UTC:42% remaining; next12:09UTC. No background monitor is installed.
 
 ## Validation and provenance
 
 `python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
 mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds821 pages with no overfull boxes,
+-outdir=build manuscript/existence.tex` builds838 pages with no overfull boxes,
 undefined references or missing glyphs. New pages received sampled visual QA;
 exact commands, samples and earlier failed layout attempts are in `validation.md`.
 No fresh Lean build/axiom replay; inherited source evidence has its own limits.
@@ -133,7 +136,12 @@ parent integration/independent reciprocal review where needed, in isolated clone
 Agent passes are not human acceptance. Scott Armstrong's informalization map
 was used for navigation, not as mathematical evidence; see the provenance record.
 
-The latest update supplies actual real phase-grid approximants, the C1–C8
-common-data local compiler application, and extreme-point Ward analyticity.
-Their exact retained dependencies and bounded reviews are recorded alongside
-the prose; the actual Ward packet/Track and shell-node producers remain open.
+The latest update supplies the conditional annular Ward representation,
+positive spectral packet prices and the conservation-to-diagonal-cone bound.
+The shell-node producer, free classifications and physical Ward propagation
+remain active. The new endpoint ledger records exact final call/data identities;
+it does not replace missing estimates or an independent whole-proof audit.
+
+Main was fetched at28d9c5e: the new Balaban gauge-averaging literature note is
+available there. Its reported lack of an applicable theorem match does not
+close an estimate here; no new literature substitution was made on that basis.
