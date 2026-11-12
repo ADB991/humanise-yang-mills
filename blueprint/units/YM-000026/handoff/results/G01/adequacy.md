@@ -1,6 +1,6 @@
 # G01 adequacy note: what `YangMills.JointExistence` ties to the Wilson measure
 
-Author draft, session `schmittj-claude-g01-20261112`, issue #58. **The mathematical argument in section (c) has not been formalised in Lean and has not been independently reviewed.** It was first proposed by an author-side cross-check (Codex `gpt-6-astra`, read-only); I then checked every clause below against the Lean source text myself. No Lean was elaborated, so statements about instances and Mathlib conventions are from source reading. Upstream source revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464` (the revision of the imported OpenAI project, not a commit of this repository), read in this repository at commit `b2f59c320ec41ad3485b495d4c4fe2b9af17957d`. Evidence labels as in `statement-ledger.md`: (S) read in source, (I) inference, (U) unresolved.
+Author draft, session `schmittj-claude-g01-20261112`, issue #58. **Update, 12 November 2026 (session `schmittj-claude-g01-formal-20261112`): the Proposition of section (c) has since been formalised and proved in Lean 4, and its unconditional consequence `YangMills.jointExistence_with_constant_insertions` compiles in the full project with axioms `propext`, `Classical.choice`, `Quot.sound` only; see `formal/README.md`. The prose below is the original paper argument and is kept as written; where it says "not formalised", read it with this update. The note as a whole has still not been independently reviewed.** The original status line follows. The mathematical argument in section (c) had, at the time of writing, not been formalised in Lean and not been independently reviewed. It was first proposed by an author-side cross-check (Codex `gpt-6-astra`, read-only); I then checked every clause below against the Lean source text myself. No Lean was elaborated, so statements about instances and Mathlib conventions are from source reading. Upstream source revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464` (the revision of the imported OpenAI project, not a commit of this repository), read in this repository at commit `b2f59c320ec41ad3485b495d4c4fe2b9af17957d`. Evidence labels as in `statement-ledger.md`: (S) read in source, (I) inference, (U) unresolved.
 
 This note concerns the strength of the public statement as a specification. It makes no claim about the correctness of the Lean proof, about the detailed theorem `YangMills.constructed`, or about the completeness of the manuscript.
 
@@ -31,7 +31,7 @@ So the clauses do interact. The construction in (c) shows that this interaction 
 
 ## (c) A witness with constant insertions
 
-**Not formalised; not independently reviewed.**
+**Formalised after this section was written (`formal/Adequacy.lean`, in the Variant form below; `formal/AdequacyFull.lean` for the constructed witness). Not independently reviewed.**
 
 **Proposition.** Let \(g\) be a gauge group and suppose there is a family \(C_0\) and a hierarchy \(T_0\) over \(C_0\) with the following properties, where \(S\) denotes `T₀.correlation (some T₀.selected)`.
 
