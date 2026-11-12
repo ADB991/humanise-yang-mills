@@ -1067,3 +1067,17 @@ passes but remain outside the PDF until their exact small-window/guard/short-cov
 inputs are integrated. This is not complete-proof certification. Source main has
 not changed since the previous blueprint check. See current CHECKPOINT and
 USAGE-HANDOFF for active assignments and the maintainer's stop condition.
+
+## 12 November, 10:21 UTC — actual reader, rank and relay checkpoint
+
+Integrated actual-reader-small-window-bridge and actual-reader-local-gaussian-prices;
+actual-rank-purchases; actual-equation-kernel-relay; actual-insertion-derivative-relay;
+public-run-binding. Their adjacent evidence files give the exact pinned declarations,
+normalizations and retained hypotheses. The independent agent recorded bounded
+source and mathematical passes, including explicit margins, two-floor resolvent,
+common readout, all-spectator planting, derivative shift purchase and actual native
+selector witness retention. Finite-rank-kernel-transport now explicitly invokes
+the source Lease.take spectator bridge; parent review records that consumer repair.
+The manuscripts remain drafts, with machine review fields unset. Actual global
+weighted row/source production, all-Matched Pupil, short covariance, guarded reader,
+external trace scopes and global dependency closure remain in progress.

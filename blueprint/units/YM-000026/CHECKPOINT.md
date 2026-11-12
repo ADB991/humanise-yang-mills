@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 09:45 UTC
+# Collaborative checkpoint — 12 November 2026, 10:21 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -11,7 +11,7 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 - Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
   your claim. Helper PRs target this branch; `main` does not contain the article.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (747 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (767 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -30,6 +30,9 @@ certificate. Recheck every interface used by a new argument.
 | [#33: trace sensor and weighted Ward limit](https://github.com/hairer/humanise-yang-mills/issues/33) | `YM.Trace.Terrace.springs`, `Prosper`, `TraceExtension/Terrace/Lease.lean` | `manuscript/existence/trace-prosper-sensor.tex` |
 | [#34: branch moments and trace washout](https://github.com/hairer/humanise-yang-mills/issues/34) | `YM.Trace.Shelves.nearing_h`, `muteP`, `TraceExtension/Shelves/Pear.lean` | `manuscript/existence/trace-branch-moments.tex` |
 
+Both tasks were claimed externally on 12 November, through 13 November 10:00 UTC.
+Recheck their live discussions; do not start duplicate work.
+
 They own separate `YM-000033/` and `YM-000034/` blueprint records and are excluded
 from the parent claim and all subagents. Check live issues before claiming;
 this file is not a lock. Follow the repository and contributing human's claim
@@ -41,18 +44,16 @@ trace Crown/Eve/weighted/construction arguments. The parent retains integration.
 
 The #26 claim remains valid until **2026-11-12 16:40 UTC**:
 
-- Parent: integration and targeted missing joins. Newly integrated owner-energy
-  and corrected-body proofs have bounded independent passes. Public-history
-  attachment and tree covariance are integrated too.
-- `lattice_draft`: actual small-window mean and inverse-column producer, then
-  the common short-covariance cover. The earlier small-window version was held
-  because it assumed the estimates to be proved and equated unequal matrices.
-  The repair follows the actual source residual and two-floor resolvent proof.
-- `limits_draft`: actual guarded-curvature/read and Gaussian-mask estimates;
-  repairs requested for field types, phases, drift, and the actual vector mask.
-  The separate all-compatible-palette warning/Pupil join is queued afterward.
-- `independent_review`: independent mathematical/source checks and a bounded
-  refresh of remaining public rank/kernel producer interfaces.
+- Parent: integration and the actual global weighted Gram, move and selected
+  source estimates feeding the all-compatible-palette warning construction.
+- `lattice_draft`: the all-period short-covariance cover. Actual small-window
+  estimates and their common-frame Gaussian prices have passed bounded review
+  and are integrated.
+- `limits_draft`: guarded-curvature/read repairs and the all-Matched palette
+  warning/Pupil proof. The latter consumes global weighted row estimates;
+  a posed reader comparison alone does not supply it.
+- `independent_review`: independent mathematical/source checks and a refresh of
+  the remaining supplier map after the rank, equation and derivative joins.
 
 Each agent uses a separate clone and disjoint outputs. Do not begin neighboring
 work without checking the live claim. Main input order, metadata, review logs
@@ -67,16 +68,23 @@ original-history attachment, harvested owner energy and corrected unmarked
 alphabet/body identity. Bounded independent reviews and exact fingerprints are
 in `reviews/`; all retain their explicitly stated input hypotheses.
 
-The local Gaussian-price and uniform Dawn-selection candidates are preserved
-outside the PDF. They pass only conditional review and await their actual
-small-window/guard/short-cover producers. The two unintegrated centered-budget
-and centered-production files are historical alternative-route drafts.
+This checkpoint also integrates actual small-window and local Gaussian prices,
+common rank purchases, equation-ideal transport through arbitrary spectators,
+insertion/derivative comparisons, and native selector witness retention.
+Each has a bounded independent pass at its explicitly retained hypotheses.
+The finite-rank argument now explicitly invokes the common-cell spectator
+estimate before its smearing argument.
+
+Uniform Dawn selection remains outside the PDF pending guard and short-cover
+production. The two unintegrated centered-budget and centered-production files
+are historical alternative-route drafts. Unfrozen work in agent clones is not
+represented as part of this PDF.
 
 ## Remaining closure and editorial work
 
 The working frontier includes quantitative reader production, all-compatible
-warning and same corrected-compiler purchases, common-history rank purchases,
-equation-kernel identification, physical trace sensor/branch receipts, and a
+warning and same corrected-compiler purchases, the precise analytic inputs of the rank and comparison chapters,
+physical trace sensor/branch receipts, and a
 complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
 questions; they do not establish every quantitative premise of every chapter.
 
