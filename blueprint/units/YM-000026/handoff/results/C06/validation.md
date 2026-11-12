@@ -40,4 +40,3 @@ Not run:
 Not run: Lean build or elaboration (Mathlib sources blocked by the sandbox);
 the two textbooks cited in `lem:branch-nearest-projection` were not
 opened (not reachable), so their locators are unverified.
-

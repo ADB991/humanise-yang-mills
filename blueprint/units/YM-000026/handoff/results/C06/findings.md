@@ -130,4 +130,3 @@ G05's notation contract decides them:
 - M7(a)–(h): all addressed (universal axial test; `B_c>0`, `B_f≤2B_c`; `ℓ_{a,i}` = path length + 4; `|z|_1`; transports from one `V` and its fine replica; `C=0` case; centre feedback by cross-reference). M7(g) (symbol `h`) left for G05 as N1.
 - M8: ledger corrected (I4 split into I4 and I4' with `projection-payment-producer.tex`; X1 → C02 `thm:ex-lattice-volant-supplier`; X2 candidate C07 `local-covariance.tex`, unchecked; X3 → C07 `warning-safety.tex`; X5 adds alignment; I3 order restriction; rows 29, 33, 77).
 - M9: not C06's to edit. C13 `actual-harvested-owner-energy.tex` should identify `c = C_1/L^2`; C11 `physical-reset-reorganization.tex` should not call the singleton-masked identity a specialization of `eq:local-atom-identity` (they differ by `(χ_{o_i} − χ_Y)P_i`); C07 `packet-annulus`/`local-mean` use `N_0 B_c d_c = 0`, not among the identities of `eq:unhit-flat-stack`.
-
