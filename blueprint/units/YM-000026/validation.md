@@ -321,3 +321,18 @@ overlap or oversized displays observed. Files under /private/tmp/ym-qa814 and
 /private/tmp/ym-qa821. Structural/whitespace checks run before commit.
 No Lean edits, fresh build or axiom replay. Independent agent reviews retain
 explicit hypotheses; full dependency closure and human acceptance remain open.
+
+## 2026-11-12 11:58 UTC — 838-page checkpoint
+
+Actual latexmk build succeeds after annulus/packet/cone integration. The final
+PDF is 4253672 bytes; log has no overfull boxes, undefined references or missing
+glyphs (checked separately before commit). Rendered pages744–761 at scale1300
+using pdftoppm, then inspected all18 pages on three contact sheets
+/private/tmp/ym838-contact-{0,1,2}.jpg. No clipping, overlap or oversized
+displays observed at overview resolution. Annulus display reflow received
+reviewer carry; packet's final cone cross-reference received bounded carry.
+Structural checker and whitespace check run before commit. Live issues26/33/34
+reread11:57UTC; scope unchanged. Main's Balaban literature note was located,
+without introducing a new literature substitution. Endpoint call ledger added
+as an author audit, not a global completion finding. No Lean edits, fresh build
+or axiom replay. Whole dependency closure and human acceptance remain open.

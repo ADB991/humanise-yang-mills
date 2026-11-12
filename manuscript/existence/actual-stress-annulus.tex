@@ -1,0 +1,434 @@
+% Draft unit for YM-000026.  Parent supplies theorem environments/macros.
+\section{The annular Ward field for the selected stress tensor}
+\label{sec:ex-lattice-actual-stress-annulus}
+
+This section proves the shrinking-annulus implication used by the public
+stress-tensor route.  Given the selected shell-node receipt, a finite linear
+combination of scale-covariant insertions that annihilates every field at one
+grade has vanishing flux on shrinking windows.  Finite-dimensional linear
+algebra then represents those fluxes by one field at that grade.  The
+production of the shell-node receipt is a separate quantitative obligation;
+it is not proved by the conditional argument below.
+
+Write $a_i$ for the physical spacing at level $i$ and
+$\lambda_i=\log(a_i^{-1})\to\infty$ for its logarithmic scale; thus
+$a_i=e^{-\lambda_i}$.  Write $B_i$ for its support radius, and
+\[
+  r_m=128 B_{m+1}^{2}a_{m+1}.
+\]
+The scale note used below says $r_m\to0$.  Let $\mathcal F_d$ denote the
+complex field space at grade $d$, and let $\tau_{I,D}:\mathcal F_D\to\mathbb C$
+be the tester associated with a watch $I$.  We write
+\[
+  \mathcal A_r=\{y\in\mathbb R^4:r/4<|y|<2r\},\qquad
+  \mathcal C_r=\{y\in\mathbb R^4:r/16<|y|<4r\}.
+\]
+The wider collar $\mathcal C_r$ is where the finite-volume shell correction is
+constructed; the desired annihilation is on $\mathcal A_r$.
+
+Concretely, $\tau_{I,D}(z)$ is the insertion functional obtained by placing
+the grade-$D$ field $z$ at the distinguished point of $I$ and retaining its
+other points and color labels as spectators.  The flux functional is the
+window integral of the stress insertion against the window gradient and the
+Killing field:
+\[
+ \operatorname{Flux}_{J}(\chi,U,I,v)
+ =-\int_{\mathbb R^4}\sum_{\mu,\nu=1}^4
+   \partial_\mu\chi(x)\,U_\nu(x-x_I)\,
+   (I)\!\operatorname{asked}(J_{\mu\nu},v)(x)\,dx,
+\]
+where $x_I$ is the distinguished point of the watch; all fluxes are thus
+written in coordinates centered at that point.  The sign is fixed by the
+flux convention in the stress conservation law.
+All insertions and integrals here are the selected-table quantities; the
+shell argument uses their stated continuity and local conservation
+properties.  The approximating counterterms below are the finite-volume
+objects.
+
+For a finite-volume cell system $\mathcal T$ and coupling $\beta$, the
+root-test of a configuration observable $F$ is
+\[
+ \operatorname{RT}_{\beta,\mathcal T}(F)
+ =\left|\mathbb E_\beta\prod_{u\in\mathcal T}F_u\right|^{1/|\mathcal T|},
+\]
+where $F_u$ is the prescribed translate of $F$ at cell $u$, with the source
+reflection conjugation when that cell is reflected.  The label norm
+$\|z\|_D$ below is the fixed coefficient norm of the grade-$D$ label space.
+
+For the exact shell costs, put
+\[
+ c_m=e^{\lambda_m/32},\quad
+ S(p_0,k)=\exp\!\left((a_{p_0}/a_k)^4\,\mathsf T_k+5\right),\quad
+ X_m=\exp\!\sqrt{\widehat\beta_{m+1}},
+\]
+where $\mathsf T_k$ is the treasury quantity at level $k$.  Let $V_m>0$ be
+the product of the two selected channel payments at levels $(j_m,m+1)$, and
+let $n_m$ be the number of columns at level $m$.  The counterterm budget is
+\[
+ e_m=32(1+n_m)a_{m+1}^{D}X_m/V_m.
+\]
+The quota conversion supplies a finite factor $Q_0$ for the fixed
+grade/threshold, so the correction label has coefficient norm at most
+$2Q_0e_m$ at annulus level $m$.  The root-test cost, in contrast, is the
+decaying quantity $2S(p_0,k)c_m^{-1}$.
+
+\subsection{The shell-node hypothesis}
+
+Fix grades $d,D,h\in\mathbb N$ with
+\begin{equation}\label{eq:ex-lattice-stress-grade}
+  D+h=d+4.
+\end{equation}
+We name the exact shell-node input consumed below.  This definition does not
+assert that the receipt has been produced from the public history.
+
+\begin{definition}[Shell-node receipt]
+\label{def:ex-lattice-shell-receipt}
+For fixed grades $d,D,h$ satisfying \eqref{eq:ex-lattice-stress-grade}, a
+fixed family and selected history have the shell-node receipt if there are
+$t>1$ and levels $j_m$, chosen before the opened levels, labels, or extraction
+order, such that
+\[
+ j_m\longrightarrow\infty,\qquad
+ \frac{\lambda_{j_m}}{\lambda_m}\longrightarrow t,
+\]
+and the scale note has the consequence
+\[
+                         \frac{\log r_m}{\lambda_m}\longrightarrow-1.
+\]
+For every fixed opened reference level $p_0$ and level $k$ with $p_0$ open at $k$ and
+with $k$ at least the reference threshold for grade $D$, every $v\in\mathcal F_d$,
+$T\in\mathcal F_4$, and extraction order $\mathfrak f$, there is $m_0$ such
+that for every $m\geq m_0$ and every fixed integer lattice anchor
+$x\in\mathrm{Cover}=\mathbb Z^4$ whose continuum location at level $j_m$
+lies in $\mathcal C_{r_m}$, there are a label sequence
+$z_x: \mathbb N\times\mathbb N\to\mathcal F_D$ and a constant $A'_m$ for which
+$\mathfrak f$-almost every $(N,q)$ has $p_0\leq N$ and
+\[
+  \|z_x(N,q)\|_D\leq2Q_0e_m,\qquad
+  \operatorname{RT}_{\beta,\mathcal T}(\text{fragment}(z_x(N,q)))
+       \leq A'_m:=2S(p_0,k)c_m^{-1}.
+\]
+The late filter set and sequence may depend on $x$; the numeric coefficient
+and root-test bounds do not.  The factor $Q_0$ is independent of volume,
+period, and collar point; the coefficient bound may depend on $m$ through
+$e_m$.  The finite extraction order may encode any fixed finite family of
+watches; the receipt is available for every such family, with its tester costs
+fixed before the eventual volume/period choice.
+The associated finite-volume fragment is the product of the grade-four
+insertion at the collar point and the grade-$d$ insertion at the selected
+point, multiplied by $r_m^h$, minus the grade-$D$ insertion $z_x$ at the
+selected point.  It lies in the prescribed chamber and has root-test norm
+bounded by the displayed cost.  No common late filter over the entire (growing)
+set of collar grid points is asserted.
+\end{definition}
+
+Here ``eventually'' is on the extraction filter over the volume and period
+variables, not a claim at each finite volume.  The source construction has two
+stages.  First, a two-channel counterterm construction builds the fragment.
+At the collar site $x$, its two factors are the
+base insertion and the rescaled grade-four insertion; their product is
+corrected by one grade-$D$ label.  The grade identity \eqref{eq:ex-lattice-stress-grade}
+is exactly what makes that correction have the requested degree.  The paid
+two-component insertion bounds its root-test cost, while the independent
+quota estimate bounds the correction label.  Second, the corner-to-shell
+argument supplies common numeric bounds for all collar anchors.  The late
+extraction event remains pointwise in the anchor; for a fixed interpolation
+stencil, one obtains a common event by intersecting the finitely many
+pointwise late events.  This does not assert one event for the entire growing
+collar.
+
+The source route proposes the following numerical gates for this input.  The
+economics choice is
+\[
+  t=1+\frac{1}{64(d+12)},
+\]
+with a subsequence $j_m$ for which $\lambda_{j_m}/\lambda_m\to t$.  The price
+estimate supplies, eventually, positivity and a small two-channel payment
+budget, together with the grade-$D$ correction-price bound.  In the source
+normalization its exponential denominator is $c_m=\exp(\lambda_m/32)$; at fixed
+opened $p_0,k$, $S(p_0,k)$ is fixed, so the root cost tends to zero.  The separate
+lightness estimate supplies both
+\[
+  32r_m\leq a_{p_0},\qquad
+  a_{m+1}\bigl(B_{m+1}^2+1+2\cdot1024 B_{m+1}^2\bigr)\leq a_{p_0}
+\]
+eventually.  These are used, respectively, for the collar/spacing margin and
+for the number of required coordinates in the opened chamber.  The corner
+lemma combines them with the same-history run, throw, root-room, and
+subsidized-payment bounds.  This draft does not prove that those source
+receipts imply the shell-node input above; that quantitative producer remains
+open.
+
+The implication below takes the defined shell-node receipt as an input
+on one fixed family.  It does not infer that receipt from the public
+extractor's record or change family, history, or scale sequence between the
+receipt and the stress law.
+
+\subsection{Vanishing against a finite tester annihilator}
+
+\begin{lemma}[shrinking-annulus annihilation]
+\label{lem:ex-lattice-annulus-annihilation}
+Let $S$ be the selected hierarchy, $V$ a derivative plan for $S$, and $J$ a
+stress conserved with respect to $V$ and the spin action of $S$.  Assume the
+lattice configurations used in the shell argument are dense in the separated
+configuration space and that the flux and tester functionals are continuous
+there.  Fix an opened reference level $p_0$ and level $k$ as in the shell-node
+receipt.  Take $v\in\mathcal F_d$, and let
+$U:\mathbb R^4\to\mathbb R^4$ be a smooth homogeneous Killing field of degree
+$p\in\mathbb N$, so $U(ry)=r^pU(y)$ for $r>0$.  Suppose both
+\begin{equation}\label{eq:ex-lattice-flux-grade}
+  D+(3+p)=d+4
+\end{equation}
+and \eqref{eq:ex-lattice-stress-grade} hold, and the shell-node receipt
+holds at $(p_0,k)$ for the finite family of watches
+$I_1,\ldots,I_s$.  Fix its witnessing scale ratio $t>1$.  For each watch
+$I_a$, the moving insertion is a component of the grade-four stress, so its
+initial tag degree is $q_a=4$; let $c_a$ be the total cloud degree of all
+spectators, including the fixed grade-$d$ insertion $v$.  Choose an integer $q_*\geq1$ so large
+that
+\[
+  q_a+q_*+2+c_a<q_*t
+  \quad (1\leq a\leq s).
+\]
+For $0\leq n\leq q_*$, let $H_{a,n,m}(y)$ denote the scalar insertion with
+the moving stress component of $J$ at $y$ raised $n$ times, with the watch's
+fixed grade-$d$ insertion $v$ and all other spectator labels held fixed.  Assume the quantitative
+separated-point bounds: for every sufficiently large $m$ and every
+$y\in\mathcal C_{r_m}$,
+\[
+ |H_{a,n,m}(y)|\leq C_a|y|^{-(q_a+n+2+c_a)},
+ \qquad 0\leq n\leq q_* ,
+\]
+where $C_a$ is independent of $m$ and $y$. In physical coordinates,
+\[
+ \partial_\ell H_{a,n,m}=H_{a,n+1,m}.
+\]
+Thus along the source chord
+$t\mapsto x+a_{j_m}t e_\ell$ the derivative is
+$a_{j_m}H_{a,n+1,m}$; the $n$th chain member is
+$a_{j_m}^{n}H_{a,n,m}(x+a_{j_m}t e_\ell)$.  These explicit quantitative estimates, rather than smoothness
+alone, are the local regularity input used below.  If
+$g_1,\ldots,g_s\in\mathbb C$ satisfy
+\begin{equation}\label{eq:ex-lattice-annulus-annihilator}
+  \sum_{a=1}^s g_a\tau_{I_a,D}(z)=0
+  \quad\hbox{for every }z\in\mathcal F_D,
+\end{equation}
+then, for any smooth windows $\chi_a$ valid at the respective watch
+configurations,
+\begin{equation}\label{eq:ex-lattice-annulus-flux-zero}
+  \sum_{a=1}^s g_a\,\operatorname{Flux}_{J}
+       (\chi_a,U,I_a,v)=0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Choose a smooth radial bump $\varphi$ on $\mathbb R^4$ which equals one on
+the ball of radius $1/2$ and vanishes outside the unit ball.  The selected
+watch configurations have their distinguished point at the origin and all
+other points separated from it.  Since $r_m\to0$, for all sufficiently large
+$m$ the rescaled bump $\varphi_m(y)=\varphi(y/r_m)$ is a valid window at every
+watch in the finite family, and no other insertion lies in its support.
+Conservation and the window-change identity therefore let us compute each
+flux using this same shrinking window.
+
+For each pair of tensor indices $i,j$, define
+\[
+  W_{ij}(y)=\partial_i\varphi(y)\,U_j(y),\qquad
+  G_{ij,m}(y)=W_{ij}(y)\,r_m^{3+p}
+       \sum_{a=1}^s g_a\,(I_a)\!\operatorname{asked}(J_{ij},v)(r_my).
+\]
+Each $W_{ij}$ is integrable and supported in the unit ball.  Its derivative
+vanishes near the origin, and the bump-support calculation places every point
+where $W_{ij}$ is nonzero in the annulus with radii between $r_m/4$ and
+$2r_m$ after scaling.  The annihilation argument below uses the shell
+estimate on the slightly wider collar, so endpoint conventions do not matter.
+
+For each $m$, the shell-node receipt has root-test tolerance
+\[
+  \epsilon_m=2S(p_0,k)c_m^{-1}\longrightarrow0.
+\]
+For this fixed $m$ the interpolation stencil uses only finitely many grid
+points.  Intersect the late filter sets supplied separately for those points;
+their finite intersection is still late.  The corresponding finite tuple of
+correction labels lies in a bounded subset of a finite-dimensional product
+space, so pass to one convergent subnet and take its coordinate limits.  This
+single extraction handles every stencil point and every watch in the finite
+family; no subsequence is chosen watch by watch.  The
+watch-cost limits identify each limiting tester with the corresponding
+rescaled product insertion, up to its paid error $A_a\epsilon_m$.  Summing
+with coefficients $g_a$, the limiting grade-$D$ terms cancel by
+\eqref{eq:ex-lattice-annulus-annihilator}; the remaining norm is at most
+$\epsilon_m\sum_a|g_a|A_a$.  Thus the grid error tends to zero.  Only this
+fixed finite family is used; no uniform bound over all watches is asserted.
+The one-coordinate Taylor argument described below transfers this grid error
+to the annulus.  The two grade relations give $h=3+p$.  Thus the expression
+multiplied by $W_{ij}$ is precisely the scale-corrected insertion that occurs
+after changing variables $x=r_my$ in the flux integral: the window gradient
+contributes $r_m^{-1}$, the homogeneous field contributes $r_m^p$, and
+Lebesgue measure contributes $r_m^4$.  Their product is $r_m^{3+p}$, and
+$h=d+4-D=3+p$.  Hence this is exactly the factor
+$r_m^h$ in the finite-tester estimate; there is no additional scaling factor.
+
+The absolute value of each rescaled component integral is bounded by the
+uniform shell error times $\int |W_{ij}|$.  There are only sixteen components,
+so summing over them still tends to zero.  The change-of-variables identity
+for the flux gives
+\[
+ \sum_a g_a\operatorname{Flux}_{J}(\varphi_m,U,I_a,v)
+   =-\sum_{i,j}\int_{\mathbb R^4}G_{ij,m}(y)\,dy.
+\]
+The left side is independent of $m$ by conservation and the support
+separation.  The right side tends to zero by the preceding integrable bound.
+Therefore that fixed left side is zero.  Replacing $\varphi_m$ by $\chi_a$
+uses the same window-change identity separately at each watch, proving
+\eqref{eq:ex-lattice-annulus-flux-zero}.\end{proof}
+
+The grid-to-annulus interpolation has an elementary quantitative form.  For
+$q\geq0$ and $P>0$, set
+\[
+ A_0(P)=1,\qquad A_{q+1}(P)=1+4P A_q(P).
+\]
+Suppose $f_0,\ldots,f_q:[-P,P]\to\mathbb C$ are differentiable with
+$f_i'=f_{i+1}$ for $i<q$, $|f_q|\leq\epsilon$ throughout the interval,
+and $|f_0(x_j)|\leq\epsilon$ at $2^q$ ordered points whose consecutive
+gaps are at least one.  Then
+\begin{equation}\label{eq:ex-lattice-annulus-interpolation}
+ \sup_{[-P,P]}|f_0|\leq2A_q(P)\epsilon.
+\end{equation}
+For the proof first take all functions real-valued.  Pair consecutive
+nodes.  The real mean-value theorem supplies an intermediate point at which
+$f_1$ is the difference quotient; its absolute value is at most
+$2\epsilon$ because the gap is at least one.  The $2^{q-1}$ intermediate
+points remain ordered with gaps at least one.  Induction applied to
+$f_1,\ldots,f_q$ bounds $|f_1|$ by $2A_{q-1}(P)\epsilon$.  Integrating from
+one original node to an arbitrary point costs at most $2P$ times that bound,
+and the value at the node costs at most $\epsilon$, giving
+$A_q(P)\epsilon$.  For complex functions apply this real estimate
+separately to real and imaginary parts.  Their two bounds imply the stated
+complex estimate, since $|z|\leq|\Re z|+|\Im z|$.
+
+The common-limit argument applies separately at each of the finitely many
+grid nodes in the interpolation stencil.  Its estimate is uniform in the
+node because the shell-node receipt and the watch-cost constants are uniform on
+the collar.  At those nodes the nonzero-coordinate condition places every
+watch in the generic region required by its cost-limit estimate.
+
+To pass from those grid points to an arbitrary point of the annulus, the
+derivative plan supplies the chains in
+\eqref{eq:ex-lattice-annulus-interpolation}.  Along a coordinate line,
+differentiating a disc insertion raises its first tag by one and multiplies
+by the level spacing.  Thus the $i$th chain member is the finite sum with
+first tag raised $i$ times and prefactor $a_{j_m}^i$, and its derivative is
+the next member.  Since $\lambda_{j_m}/\lambda_m\to t>1$ while $r_m$ has logarithmic spatial
+rate $-1$, the choice of $q_*$ above gives
+\[
+ q_a+q_*+2+c_a<q_*t,
+ \qquad\text{equivalently}\qquad
+ q_*(t-1)>q_a+2+c_a.
+\]
+The iterated derivative estimate gives a uniform top-derivative bound of the form
+\[
+ C a_{j_m}^{q_*}r_m^{-(q_a+q_*+2+c_a)},
+\]
+where $C$ is independent of $m$.  Its logarithm divided by $\lambda_m$
+tends to $-q_*t+(q_a+q_*+2+c_a)<0$, so the bound tends to zero.
+For the finite-node interpolation, induct over the set $K$ of axes not yet
+discretized.  On the next axis choose the nonzero shifted lattice coordinate
+provided by the one-dimensional stencil; leave the other coordinates fixed.
+At an intermediate stage only the already chosen coordinates are known to be
+nonzero.  At the final stage all four are nonzero, so the grid-point representation
+and genericity estimates apply.  Each coordinate move is at most $r_m/128$;
+therefore the total displacement is at most $|K|r_m/128\le r_m/32$, within
+the collar margin.  The collar-margin condition
+$\operatorname{arm}(q_*)a_{j_m}\leq r_m/128$ keeps each segment in the wider
+collar.  Applying \eqref{eq:ex-lattice-annulus-interpolation} successively
+in the four coordinates gives a fixed finite factor, independent of $m$.
+The grid error and the top derivative both tend to zero, proving uniform
+convergence on the annulus.  The constants depend on the finite family, the
+grade, and the chosen chain length, but not on $m$.
+
+\subsection{One field represents every flux}
+
+\begin{proposition}[annular flux representation]
+\label{prop:ex-lattice-annular-field}
+Assume the hypotheses of Lemma~\ref{lem:ex-lattice-annulus-annihilation},
+with the shell-node receipt available for every finite family of watches.  For each
+$v\in\mathcal F_d$ and each smooth homogeneous Killing field $U$ of degree
+$p$, there exists one field $b\in\mathcal F_D$ such that for every
+watch $I$, every compatible smooth window $\chi$, and every separated point
+configuration,
+\[
+  \operatorname{Flux}_{J}(\chi,U,I,v)=\tau_{I,D}(b).
+\]
+The same $b$ works for all configurations, windows, and watches.
+\end{proposition}
+
+\begin{proof}
+For a finite family $I_1,\ldots,I_s$, define linear maps
+\[
+  T:\mathcal F_D\to\mathbb C^s,
+  \quad T(z)=(\tau_{I_1,D}(z),\ldots,\tau_{I_s,D}(z)),
+  \qquad a=(\operatorname{Flux}_{J}(\chi_1,U,I_1,v),\ldots).
+\]
+Lemma~\ref{lem:ex-lattice-annulus-annihilation} says that every linear
+functional annihilating $\operatorname{range}T$ also annihilates $a$.
+In finite-dimensional linear algebra, a subspace is the common kernel of all
+linear functionals vanishing on it.  Hence $a\in\operatorname{range}T$ and
+there is $b$ with $T(b)=a$.  This is the finite-tester step; it does not presume an
+infinite-dimensional Riesz representation.
+
+Choose a finite faithful family of watches whose testers distinguish
+elements of $\mathcal F_D$.  Such a family exists because the complete family
+of watch evaluations separates fields, and a finite-dimensional field space
+has a finite subfamily of any separating family that still separates.  Apply
+the finite result to that family to obtain
+$b$.  For any further watch $I$, apply the result to the union of $I$ and the
+faithful family.  The shell-node receipt, assumed for every finite family of watches,
+applies to this union.  It gives $b'$.  On the faithful family, $b'$ and $b$ have
+the same tester values, so faithfulness implies $b'=b$.  Therefore the flux
+identity holds for $I$ as well.  This argument also handles every compatible
+window, since the window-change identity identifies its flux with the chosen
+window value.  Finally, the lattice configurations used above are dense
+among separated configurations.  Both flux and the tester/disc functional
+are continuous there, so the identity extends from those configurations to
+all separated point configurations.\end{proof}
+
+\subsection{Translation and rotation Ward maps}
+
+Apply Proposition~\ref{prop:ex-lattice-annular-field} first to each constant
+Killing field $U(y)=e_\mu$, of degree $p=0$, with output grade $D=d+1$.
+For every input grade $d$ and direction $\mu$ this gives a complex-linear map
+$P_{d,\mu}:\mathcal F_d\to\mathcal F_{d+1}$.  Linearity follows because
+both flux and the finite faithful tester map are linear; uniqueness on the
+faithful family makes the representing field linear in the input.  The
+translation identity identifies the front insertion of $P_{d,\mu}v$ with
+the stress flux.
+
+Next take the rotational Killing field $U(y)=Ky$, where $K$ is skew-symmetric.
+It is homogeneous of degree one, so the grade relation gives $D=d$.  The same
+construction yields maps $R_{d,K}:\mathcal F_d\to\mathcal F_d$ which are
+complex-linear in the field and real-linear in $K$, by linearity of the flux
+and uniqueness on the faithful testers.  The angular-flux identity follows
+in coordinates centered at each watch's distinguished point, as in the flux
+definition.  These two families are precisely the translation
+and rotation Ward maps; no additional stress tensor is selected in this
+step.
+
+\begin{remark}[public same-history application]
+\label{rem:ex-lattice-stress-public-binding}
+The public route keeps the relevant objects on the family selected by the
+run: the extraction, hierarchy, finite-volume laws, and conserved stress all
+come from that same record.  The endpoint then invokes the shell construction
+on this family.  The source correspondence is exact, but this unit does not
+prove that the selected history supplies the shell-node receipt defined
+above; the conditional Ward conclusion cannot be applied to the public stress
+until that producer is discharged.
+\end{remark}
+
+The argument proves finite-tester annihilation and the unique-field
+representation conditional on the shell-node receipt and the stated
+regularity/conservation data.  Producing that receipt from the selected
+history, including the paid local estimates and the finite-volume
+counterterm, remains open in this unit.  The source crosswalk is recorded in
+the companion evidence file; no published theorem is substituted for these
+project-specific quantitative estimates.

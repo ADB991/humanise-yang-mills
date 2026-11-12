@@ -1,0 +1,443 @@
+\section{Positive spectral estimates for the exterior packets}
+\label{sec:physical-ward-packet-prices}
+
+The exterior Ward argument uses spectral estimates before full rotation
+covariance has been proved. The spectral measure for one coordinate axis
+therefore cannot be identified with the spectral measure for another axis.
+The link between them will instead be the same tested correlation, with its
+reflection sign. We develop that link and the estimates it gives.
+
+Write $\epsilon_n=e^{-n}$. A sequence has exponent $\alpha$ if its norm
+is at most $C e^{\alpha n}$ for all sufficiently large $n$, for some fixed
+$C$. Constants and the starting index may depend on the fixed fields and
+test profiles. Finite sums preserve an exponent; products add exponents;
+and an estimate with exponent $\alpha$ also holds with any larger exponent.
+These rules follow directly from the triangle and product inequalities.
+
+A cluster below means a finite complex linear combination of field words
+at fixed, internally distinct positions. A cluster is \emph{on the
+$i$-hyperplane} if every point in every word has $i$th coordinate zero.
+It has reflection sign $\eta_i\in\{1,-1\}$ if reflection of its points
+and labels in that coordinate gives $\eta_i$ times the cluster.
+For each axis $i$, use its reflection-positive chamber and its joint
+translation spectral measure, as in the heat-vector construction. Denote
+the positive measure belonging to the cluster $A$ by $\mu_i^A$ and write
+$E=p_i$. It is supported on $E\geq0$. The positive-time weight makes it
+locally finite in energy, including on $0\leq E\leq1$; the measure itself
+need not have finite total mass.
+
+For completeness, this measure is obtained without an arbitrary boundary
+extension. Let $v_u$ be the chamber vector of $A$ translated by $u$ into
+the positive half-space, and let $\rho_u$ be its finite joint spectral
+measure. The commuting real-time group supplied by
+Section~\ref{sec:complex-heat}, together with the three spatial translation
+groups, has the joint measure of Section~\ref{sec:spectral-measure}; only
+its Euclidean application is used here. Set
+$d\mu_i^A=e^{2uE}d\rho_u$. For $v>u$, the semigroup relation
+$v_v=e^{-(v-u)H_i}v_u$ gives
+$d\rho_v=e^{-2(v-u)E}d\rho_u$, so the definition is independent of $u$.
+Two admissible placements are compared through their maximum. On $E\leq1$
+the multiplier is at most $e^{2u}$, proving the asserted finite mass there.
+
+The spectral input used here has the following precise form. If all the
+points of $A$ lie above $-u$ in coordinate $i$, then, for each $j\ne i$
+and $k\geq0$,
+\[
+ \int e^{-2uE}|p_j|^{2k}\,d\mu_i^A(p)<\infty
+\]
+when the inequalities at $-u$ are strict. If $A$ is on the $i$-hyperplane,
+there is, for each $j,k$, an integer $D$ such that
+\begin{equation}\label{eq:packet-polynomial-moment}
+ \int(1+E)^{-D}|p_j|^{2k}\,d\mu_i^A(p)<\infty.
+\end{equation}
+These assertions use only positive-time evolution, spatial translations,
+and the polynomial separated-point derivative bounds of the hierarchy.
+Here is the passage from those bounds to the second assertion. The Gram
+function of the translated positive-time cluster is a finite sum of
+separated correlations. Its $2k$th transverse derivative is bounded by
+$C t^{-D_0}$ when the reflected halves have distance $t\in(0,1]$.
+The positive spectral representation gives
+\[
+ \int e^{-tE}|p_j|^{2k}\,d\mu_i^A\leq C t^{-D_0}.
+\]
+To justify the moment before differentiating under the integral, take the
+$k$th forward difference of the translated vector. Its squared norm is
+the integral of $|e^{ihp_j}-1|^{2k}/|h|^{2k}$ against the damped measure.
+The iterated fundamental theorem of calculus bounds this squared norm by
+the corresponding $2k$th Gram derivative. Fatou gives the asserted moment
+bound. Dominated convergence, using $|e^{ix}-1|\leq |x|$, then gives the
+moment identity. Finally integrate the preceding bound against
+$t^{D_0}\,dt$ on $(0,1)$. For $E\geq0$,
+\[
+ \int_0^1t^{D_0}e^{-tE}\,dt
+ \geq \frac{e^{-1}}{D_0+1}(1+E)^{-D_0-1}.
+\]
+Tonelli proves \eqref{eq:packet-polynomial-moment}. For a cluster with a
+strict positive-time margin, the same finite-difference argument at that
+fixed margin gives the exponentially weighted statement.
+
+\subsection{Moment subtraction with a positive response}
+
+For a real smooth compactly supported profile $f$, put
+$f_s(x)=s^{-1}f(x/s)$, $s>0$. Choose once an even nonnegative smooth
+function $\varphi$, supported where $1\leq|x|\leq2$, with integral one.
+Let $L_j$, $0\leq j<m$, be the Lagrange polynomials for the nodes
+$(j+2)^2$. Define a correction $B_{m,s}f$ by
+\begin{equation}\label{eq:packet-correction}
+ B_{m,s}f=
+ \sum_{j<m}\sum_{k\geq0}[X^k]L_j\,
+       s^{-2k}\!\left(\int x^{2k}f(x)\,dx\right)
+       \bigl(x\mapsto x^{-2k}\varphi(x)\bigr)_{s(j+2)}.
+\end{equation}
+The second sum is finite. All correction profiles vanish near zero.
+Interpolation of the monomials $X^r$, $r<m$, shows that
+$R_{m,s}f=f-B_{m,s}f$ has zero moments of orders below $2m$ when $f$ is
+even. In fact the even moment of order $2r$ of a term with index $j,k$
+is $(s(j+2))^{2r}$ times the corresponding moment of
+$x^{-2k}\varphi$, multiplied by its coefficient. Summing the coefficients
+is exactly $\sum_j L_j(X)(j+2)^{2r}=X^r$; the odd moments vanish by parity.
+
+For an even real profile let $\mathcal Lf(E)$ be its temporal Laplace
+response in the spectral formula. With the Fourier normalization used
+there, for $E>0$ it is
+\[
+ \mathcal L f(E)=2E\int_{\mathbb R}\frac{f(x)}{x^2+E^2}\,dx.
+\]
+Set $M_{m,s}f=\mathcal L(R_{m,s}f)$. The rational interpolation identity
+\[
+ \frac1{x+y}-\sum_{j<m}\frac{L_j(x)}{(j+2)^2+y}
+ =\frac1{x+y}\prod_{j<m}\frac{(j+2)^2-x}{(j+2)^2+y}
+\]
+follows by multiplying by $x+y$: the two polynomials agree at the $m$
+nodes and at $x=-y$. Scaling and integrating it gives
+\begin{equation}\label{eq:packet-positive-kernel}
+ M_{m,s}f(E)=2E\int\!\!\int
+ \frac{\varphi(v)f(x)}{x^2+E^2}
+ \prod_{j<m}\frac{(sv(j+2))^2-x^2}{(sv(j+2))^2+E^2},dx\,dv.
+\end{equation}
+If $f\geq0$ and its support is in $[-s,s]$, every factor in this product
+lies between zero and one. The response is nonnegative. The identity and
+its bounds extend to $E=0$ by continuity of the Laplace response; this
+retains any spectral mass at zero.
+
+For fixed $m$ and $D\leq2m$, the same product gives, whenever $s\geq1$
+and the support of $f_w$ lies in $[-s,s]$,
+\begin{equation}\label{eq:packet-response-ceiling}
+ 0\leq M_{m,s}f_w(E)
+ \leq C_{m,f,D}(w^{-1}+s^D)(1+E)^{-D}.
+\end{equation}
+For $E\leq1$, bound $f_w$ by $w^{-1}\|f\|_\infty$ and use
+$\int(x^2+E^2)^{-1}dx=\pi/E$. For $E\geq1$, the product is at most
+$C_m\min(1,(s/E)^{2m})$. The remaining integral, after multiplication
+by $2E$, is bounded by $2\int f$ because $E\geq1$. These are the two
+terms in \eqref{eq:packet-response-ceiling}, with a larger fixed constant.
+Combining it with \eqref{eq:packet-polynomial-moment} gives
+\begin{equation}\label{eq:packet-response-moment}
+ \int M_{m,s}f_w(E)|p_j|^{2k}\,d\mu_i^A
+ \leq C(w^{-1}+s^D),
+\end{equation}
+where $D$ is chosen first and $m$ is then chosen sufficiently large.
+In particular $D$ does not grow with the subsequently chosen subtraction
+order $m$.
+The ordinary double integrals needed for the spectral representation are
+also absolutely integrable. Zero moments through order $2m-1$ imply
+$|\widehat{R_{m,s}f}(t)|\leq C|t|^{2m}$ near zero by Taylor's formula;
+away from zero it is Schwartz. Thus its absolute Laplace integral is
+at most $C'(1+E)^{-2m-1}$. Choose $2m+1\geq D$ and apply
+\eqref{eq:packet-polynomial-moment}. This justifies Fubini before using
+reflection-sign cancellation, rather than inferring it from a signed integral.
+
+
+There is also a lower bound. Take an even nonnegative profile $\chi$
+equal to one on $[-1,1]$ and supported in $[-2,2]$. For $s\geq1$
+containing the support of $\chi_w$,
+\begin{equation}\label{eq:packet-response-floor}
+ M_{m,s}\chi_w(E)\geq
+ 2^{-m}(E+w)^{-1}(1+E)^{-2m}\quad(E\geq0).
+\end{equation}
+Indeed each kernel factor is at least
+$\tfrac12(1+E)^{-2}$ on the indicated supports. In the remaining integral
+restrict $x$ to $[0,wE/(E+w)]$. There $\chi_w=w^{-1}$ and
+$x^2+E^2\leq2E^2$, which gives
+$2E\int\chi_w(x)/(x^2+E^2)\,dx\geq(E+w)^{-1}$.
+Continuity gives the endpoint $E=0$.
+
+\subsection{Changing the spectral axis by its reflection sign}
+
+For $Q\subset\{1,2,3,4\}$, $i\in Q$, and profiles $f_j$, write
+\[
+ P_i(h;f,Q)=\int\mathcal Lh(p_i)
+                   \prod_{j\in Q\setminus\{i\}}f_j(p_j)\,d\mu_i^A(p).
+\]
+We use this expression only when its absolute integrability has been
+established by \eqref{eq:packet-response-moment} or by a positive-time gap.
+If $A$ has opposite reflection signs at $i$ and $j$, testing the same
+cluster autocorrelation in those two axes gives
+\[
+ P_i(f_i;f,Q)=-P_j(f_j;f,Q).
+\]
+For the full set of axes this is the spectral representation of the same
+ordinary integral on the two sides; their signs differ by reflection.
+For a smaller $Q$, insert in each omitted coordinate the bounded profile
+$\chi(p/(N+1))$. It tends pointwise to one, and dominated convergence
+with the already integrable temporal response proves the stated identity.
+No relation between the two spectral measures has been assumed.
+
+Suppose $f_k\geq0$ and the residual responses of $f_i-b_i$ and $f_j-b_j$
+are nonnegative. Apply the identity to those two residuals and expand the
+two differences. Dropping the nonnegative full $j$-response gives
+\begin{equation}\label{eq:packet-axis-alternation}
+ P_i(f_i-b_i;f,Q)\leq
+ P_i(f_i-b_i;f[j\leftarrow b_j],Q)
+ +P_j(f_j-b_j;f[i\leftarrow b_i],Q).
+\end{equation}
+A signed correction on the right can be replaced by any pointwise
+nonnegative majorant, since all its other factors are nonnegative.
+
+Here is why this inequality buys arbitrarily small losses even if the
+original profile widths shrink exponentially. Suppose both reflection
+signs occur in $Q$, $A$ is on every hyperplane indexed by $Q$, and
+$w_j\leq0$. For every $\delta>0$, sufficiently high subtraction gives
+exponent $\delta$ for the residual response in axis $i$, with transverse
+profiles $(f_j)_{e^{w_jn}}$.
+
+We spell out the scale order. More generally allow $-K\leq w_j\leq a$,
+and designate a set $U\subset Q$ containing every axis whose width may
+shrink. Outside $U$ require $w_j\geq0$. There is a positive admissible
+correction exponent $a$. For $0\leq d\leq a$, $s\geq1$, require also
+$w_i\leq d$ and eventual containment of the scaled $i$-profile in
+$[-s e^{dn},s e^{dn}]$. Then this correction scale works after sufficiently
+many moments have been subtracted. If $U$ is empty, use \eqref{eq:packet-response-moment}
+with $k=0$. The transverse factors are uniformly bounded and the response
+has exponent $\max(-w_i,dD)$. Choose $aD<\delta$; the claim follows.
+
+For the induction, change from $i$ to an axis $j$ with the opposite sign
+and apply the already established estimate with shrinking set
+$U\setminus\{i\}$. Let $a'>0$ be its admissible correction exponent.
+Choose first a transverse moment $2k$ so large that
+\[
+ a'k>K\,|(Q\setminus\{i\})\setminus\{j\}|+\max(K,\delta).
+\]
+Choose the corresponding moment exponent $D$ in
+\eqref{eq:packet-response-moment}, and only then choose
+$0<a<a'$ with $aD<\delta$.
+The finite formula \eqref{eq:packet-correction} shows that the correction
+of $(f_i)_{e^{w_in}}$ at $s e^{dn}$ is dominated in absolute value by
+$g_{e^{dn}}$, for one fixed even nonnegative $g$ vanishing near zero:
+its coefficients are bounded since $w_i\leq d$, and their supports form
+a finite union of fixed annuli. Apply the induction hypothesis at axis
+$j$ to this corrected $i$-profile. This bounds the second term of
+\eqref{eq:packet-axis-alternation} with exponent $\delta$.
+
+The correction at axis $j$ is bounded by $h_{e^{a'n}}$ with fixed $h$
+vanishing near zero. Consequently
+\[
+ |h_{e^{a'n}}(p_j)|\leq C e^{-2ka'n}|p_j|^{2k}.
+\]
+The omitted normalization $e^{-a'n}$ only improves this bound because
+$a'>0$. Each other transverse factor costs at most $Ce^{Kn}$.
+Equation~\eqref{eq:packet-response-moment} now bounds the first term of
+\eqref{eq:packet-axis-alternation} with exponent at most
+\[
+ -2ka'+K\,|(Q\setminus\{i\})\setminus\{j\}|+
+       \max(-w_i,dD)<\delta.
+\]
+This proves the induction step. To arrange the finite induction, visit
+an axis of $U$ and then erase it; if its sign is the same as the present
+axis, first pass through an opposite-sign axis. Every such intermediate
+pass is allowed because both signs occur in $Q$. Each erasure reduces
+$|U|$, so the process ends. Moment orders and growing widths have been
+chosen in reverse order along this finite route, before $n$ tends to infinity.
+
+Apply this estimate after replacing $f_i$ by $\chi$ and its width by
+$e^{qn}$, $q<0$, and take a fixed correction scale ($d=0$).
+Equation~\eqref{eq:packet-response-floor}, restricted to $0\leq E\leq1$,
+proves the useful point estimate
+\begin{equation}\label{eq:packet-point-price}
+ \int_{E\leq1}\frac{\prod_{j\in Q\setminus\{i\}}
+       (f_j)_{e^{w_jn}}(p_j)}{E+e^{qn}}\,d\mu_i^A(p)
+       =O(e^{\delta n}).
+\end{equation}
+This holds for every $\delta>0$ and all nonnegative even compactly
+supported transverse profiles. The constants may depend on their shapes.
+
+\subsection{Keeping a genuine temporal gap}
+
+A collinear cluster is on each hyperplane perpendicular to its line,
+but need not be on the hyperplane perpendicular to the line itself.
+We cannot use arbitrarily small temporal displacements on that axis.
+Fix $u\geq0$ so that translating the cluster by $u$ places all its points
+strictly in the positive half-space. Set $c=\varphi*\varphi$ and
+$\Phi=\widehat c=(\widehat\varphi)^2$. Since $\varphi$ is real and
+even, $\Phi$ is nonnegative, even, rapidly decreasing, and $\Phi(0)=1$.
+Choose a smooth even cutoff $\zeta$ equal to one on $[-2u-1,2u+1]$
+and zero outside $[-2u-2,2u+2]$. Let $b_w$ be the real profile with
+Fourier transform $\zeta(t)\Phi(wt)$, and put $r_w=c_w-b_w$.
+Then
+\[
+ \widehat r_w(t)=(1-\zeta(t))\Phi(wt),\qquad
+ \mathcal Lr_w(E)=\int e^{-|t|E}(1-\zeta(t))\Phi(wt)\,dt\geq0.
+\]
+The transform vanishes on the required gap. Its response is bounded by
+$Cw^{-1}e^{-2uE}$. Also $\|b_w\|_\infty\leq C_u$ uniformly in $w$:
+Fourier inversion bounds it by a fixed multiple of the $L^1$ norm of
+$\zeta(t)\Phi(wt)$, and $\Phi$ is bounded.
+
+For all sufficiently small $w$, uniformly on $0\leq E\leq1$,
+\begin{equation}\label{eq:packet-gap-floor}
+ \mathcal Lr_w(E)\geq c_u(E+w)^{-1}.
+\end{equation}
+To see this, put $R=2u+2$ and choose $\gamma>0$ such that
+$\Phi(z)\geq1/2$ for $|z|\leq3\gamma$. Take $wR\leq\gamma$ and
+integrate over $R<t<R+\gamma/(E+w)$. On this interval $wt\leq2\gamma$,
+$Et\leq R+\gamma$, and $\zeta(t)=0$. Thus the integrand is at least
+$e^{-(R+\gamma)}/2$, and the interval has length $\gamma/(E+w)$.
+
+Suppose the remaining three axes have both reflection signs and contain
+an axis $j$ of sign opposite to the gap axis $i$. The preceding finite
+sign-change argument, applied only to those three axes, provides a growing
+subtraction scale $e^{a'n}$ at $j$, with any prescribed loss $\delta>0$.
+Use \eqref{eq:packet-axis-alternation} with $f_i=c_{e^{qn}}$,
+$b_i=b_{e^{qn}}$, and $q<0$. Its second term is bounded by the uniform
+constant $\|b_{e^{qn}}\|_\infty$ times that three-axis response; hence it
+has exponent $\delta$. Its first term contains the annular correction
+$h_{e^{a'n}}(p_j)$. For every fixed $k$,
+\[
+ \int\mathcal Lr_{e^{qn}}(E)|p_j|^{2k}\,d\mu_i^A
+ \leq C e^{-qn}\int e^{-2uE}|p_j|^{2k}\,d\mu_i^A.
+\]
+The last integral is finite. If the other transverse widths have
+$w_l\geq-K$, the first term therefore has exponent at most
+$-2ka'+K\,|(\{1,2,3,4\}\setminus\{i\})\setminus\{j\}|-q$.
+Choose $k$ large enough to make this at most $\delta$.
+Equation~\eqref{eq:packet-gap-floor} gives the point estimate with a
+genuine gap in axis $i$. The measures have stayed fixed throughout.
+
+More explicitly, let the cluster lie on a line in direction $l$, have
+both reflection signs among the axes other than $l$, and have an
+opposite-sign axis to $l$ among those axes. For arbitrary $w_j\leq0$,
+$q<0$ and nonnegative even compactly supported $f_j$, the full low-energy
+response in axis $i$ has exponent
+\begin{equation}\label{eq:packet-line-price}
+ \begin{cases}\delta,&i=l,\\ -w_l+\delta,&i\ne l.\end{cases}
+\end{equation}
+For $i=l$ this is the gap argument. Otherwise apply
+\eqref{eq:packet-point-price} with $Q$ the three axes other than $l$,
+then bound the remaining factor by
+$\|f_l\|_\infty e^{-w_ln}$. In the exterior application the profiles
+have shifted exponents $\nu_j=1+w_j$, where $w_l\geq-150$. Thus with
+$\delta=1$ the missing-axis exponent is $-\nu_l+1=-w_l\leq150$;
+the line-axis exponent is $1$. These bounds hold even when the resolvent
+regularizer is $e^{-3000n}$.
+
+\subsection{The exterior of the low spectral box}
+
+This part needs no subtraction or mixed-sign assumption. Fix complex
+Schwartz profiles $f_j$, exponents $w_j\geq-K$, and an axis $d$ with
+$w_d<0$. Assume $\widehat f_d$ vanishes on $(-1,1)$. Use the temporal
+profile $f_d(\,\cdot\,/e^{w_dn})$ and the transverse profiles
+$e^{-w_jn}f_j(\,\cdot\,/e^{w_jn})$. If $|b|=1$, their temporal response
+$L_n(E)$ satisfies
+\[
+ |L_n(E)|\leq \|\widehat f_d\|_1\exp(-E/e^{w_dn}),\qquad E\geq0.
+\]
+Indeed the Fourier transform of the temporal profile is
+$e^{w_dn}\widehat f_d(e^{w_dn}t)$, supported where
+$|t|\geq e^{-w_dn}$, with unchanged $L^1$ norm; the sign factor $b$
+has modulus one.
+
+Put
+\[
+ C_n=\{p:0\leq p_d\leq1,\quad
+                 |p_j|\leq e^{(1+w_j)n}\ (j\ne d)\}.
+\]
+The product of the three transverse factors is at most $Ce^{3Kn}$.
+Outside the indicated transverse box, at least one factor has normalized
+argument of size greater than $e^n$. Its Schwartz seminorm of order $r$
+therefore improves this to $C_r e^{(3K-r)n}$. Given any real $y$ and
+$R\geq0$, choose $r$ large enough. On $E\leq1$ this proves the bound
+$C e^{yn}e^{-RE}$ off $C_n$, with a harmless factor $e^R$.
+For $E\geq1$, exponential growth of $e^{-w_dn}$ gives, eventually,
+\[
+ e^{-E/e^{w_dn}}\leq e^{(y-3K)n}e^{-RE}.
+\]
+For example choose $n$ so that
+$e^{-w_dn}\geq R+|y-3K|n+1$ and use $E\geq1$.
+Thus the full packet satisfies
+\begin{equation}\label{eq:packet-exterior-price}
+ |\mathbf1_{C_n^c}(p)L_n(p_d)
+       \prod_{j\ne d}e^{-w_jn}f_j(p_j/e^{w_jn})|
+ \leq C e^{yn}e^{-Rp_d}.
+\end{equation}
+Choose $R$ large enough to place the two fixed clusters strictly inside
+the positive-time chamber. The exponentially weighted moment statement
+then makes the majorant integrable for each of the four positive measures
+in their polarization identity. Integrating and adding that finite identity
+proves exponent $y$ for the exterior cross response. In particular $y=-101$
+is available, without taking a boundary value at zero energy.
+
+The elementary zeroth response used inside $C_n$ is also explicit. If
+$1+w_j\geq-K$, then
+\[
+ \int_{E\leq1}\frac{\prod_{j\ne d}\chi_{e^{(1+w_j)n}}(p_j)}{E+1}
+                  \,d\mu_d^A(p)=O(e^{3Kn}).
+\]
+Each of three profiles is bounded by $\|\chi\|_\infty e^{Kn}$ and the
+remaining integral is finite. With $K=300$ the exponent is $900$.
+
+\subsection{The diagonal-stress estimate and its algebraic reduction}
+
+For every $\delta>0$, even nonnegative smooth compactly supported
+transverse profiles $f_j$, and $w_j\leq a\leq0$, the packet application
+also needs the improved diagonal-stress bound
+\begin{equation}\label{eq:packet-cone-required}
+ \int_{E\leq1}\frac{E e^{4an}}{(E+e^{an})^4}
+             \prod_{j\ne d}(f_j)_{e^{w_jn}}(p_j)\,d\mu_d^{J_{dd}}(p)
+       =O(e^{(\delta+4a)n}),\qquad w_j\leq a\leq0.
+\end{equation}
+It is a separate consequence of stress conservation, not of
+\eqref{eq:packet-point-price}. The following finite algebra explains the
+normalization in its proof. Put $w=e^{an}$ and keep one sufficiently large
+subtraction order $m$ fixed. The subtracted differences of profiles at
+widths $w$ and $2w$ give three real responses $F,G,H$ with
+$F\geq0$, $G\leq0$, $H\geq0$. Conservation and the fixed-band estimates
+are required to supply real sequences $A,B,V,W,R,T$ such that, with
+$x=\delta+2a$, each of
+\[
+ V-A,\quad W-4B,\quad R-V,\quad T-4W,\quad
+ F-(A-B),\quad G-(V-W),\quad H-(R-T)
+\]
+has exponent $x$. These are estimates on the same subtracted profiles.
+They imply $F=O(e^{xn})$: if $E_n$ is the sum of their absolute errors,
+then $G\leq0$ gives $A-4B\leq3E_n$ and $H\geq0$ gives
+$A-16B\geq-7E_n$. Hence $B\leq(10/12)E_n$ and
+$0\leq F\leq A-B+E_n\leq(13/2)E_n$.
+The constants can be enlarged freely; the exponent is unchanged.
+
+The positive response kernel of this difference has a lower bound
+$c_m E w^2/(E+w)^4$ on $0\leq E\leq1$. This follows directly from
+\eqref{eq:packet-positive-kernel}, at the fixed subtraction scale $s=8$.
+Write $\varphi_k(x)=x^{-2k}\varphi(x)$ and compare its widths $w$ and
+$2w$, with $0<w\leq1$. After scaling back to $x\in\operatorname{supp}
+\varphi$, the factor $(x^2w^2+E^2)^{-1}$ and every numerator of the
+product decrease when $w$ is replaced by $2w$. The denominators of the
+product do not change. Thus every such dyadic response is nonnegative.
+For $k=0$ and $E\leq1$, the product at $2wx$ is at least
+$2^{-m}2^{-2m}$. Furthermore, since $1\leq|x|\leq2$,
+\[
+ \frac1{w^2x^2+E^2}-\frac1{4w^2x^2+E^2}
+ \geq\frac{w^2}{400(E+w)^4}.
+\]
+Indeed the numerator of the difference is $3w^2x^2\geq w^2$, and
+its positive denominator is at most $400(E+w)^4$.
+Integrate against $\varphi(x)\varphi(v)$, both of integral one, and
+multiply by $2E$. The bound follows with
+$c_m=2\cdot2^{-3m}/400$; $E=0$ follows by continuity.
+Multiplying its integral bound
+by $c_m^{-1}w^2$ would give exactly
+\eqref{eq:packet-cone-required}, with exponent $\delta+4a$.
+For the intended choice $a=-99$, $\delta=1$, this is $-395$.
+Section~\ref{sec:physical-ward-stress-cone} proves the conservation and
+fixed-band estimates that produce these seven errors for the same stress
+profiles. Together with the reduction above, it supplies the stated cone
+bound used in the exterior packet argument.

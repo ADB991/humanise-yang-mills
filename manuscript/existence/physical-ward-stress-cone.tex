@@ -1,0 +1,284 @@
+\section{Conservation and the diagonal-stress spectral bound}
+\label{sec:physical-ward-stress-cone}
+
+We now supply the conservation estimates required in
+Section~\ref{sec:physical-ward-packet-prices}. The stress tensor $J_{ab}$
+is real, symmetric, conserved, and covariant under signed coordinate
+permutations. Its derivatives are the actual insertion derivatives of the
+same hierarchy. The argument requires neither full rotation covariance nor
+a value of a correlation at a collision.
+
+Write $K_{abcd}(x)=S(J_{ab}(x),J_{cd}(0))$ for $x\ne0$.
+Choose one positive integer $D$ large enough that these finitely many
+kernels and their first derivative kernels are bounded by
+$C\min(1,\|x\|_\infty)^{-D}$. Such an integer exists by the separated
+polynomial derivative bounds. In this section a test functional is required
+only on products $\prod_i h_i(x_i)$ of one-dimensional Schwartz functions.
+We do not assert a collision extension with additional positivity properties.
+
+\subsection{A symmetric extension and its contact terms}
+
+Choose compactly supported smooth functions $g_r$ with
+$g_r^{(k)}(0)=\delta_{rk}$ for $k<D+1$, and
+$g_r(-x)=(-1)^r g_r(x)$. For example use $x^r/r!$ times a fixed even
+cutoff equal to one near zero. Put
+$\Pi_D h=\sum_{r<D}h^{(r)}(0)g_r$. Define
+\[
+ R_{abcd}(h)=\int K_{abcd}(x)
+       \left(\prod_i h_i(x_i)-\prod_i\Pi_Dh_i(x_i)\right)dx.
+\]
+The difference of products is a finite telescoping sum, each of whose
+terms contains one factor vanishing to order $D$ at zero. Taylor's theorem
+bounds that factor by $C|x_i|^D\leq C\|x\|_\infty^D$ near zero.
+Thus the integrand is bounded there. Away from zero the kernel is bounded
+and each product is integrable. This proves absolute integrability and
+multilinearity. If one $h_i$ vanishes to order $D$, its Taylor projection
+is zero and $R(h)$ equals the ordinary integral of the kernel.
+
+Use the same cutoff in all four coordinates. The product subtraction
+commutes with signed coordinate permutations. The original kernel's tensor
+law, symmetry in each index pair and exchange of the two pairs therefore
+pass to $R$. Pair exchange uses translation, permutation of insertions and
+inversion $x\mapsto-x$; the rank-four tensor has positive inversion sign.
+
+Let $\Delta_{bcd}(h)=\sum_a R_{abcd}(h[a\leftarrow h_a'])$.
+If one factor $h_i$ vanishes to order $D+1$, integration by parts is
+legitimate and conservation gives $\Delta_{bcd}(h)=0$.
+Indeed the original test and each differentiated test cancel the stated
+collision powers; integrate first along a coordinate line whose transverse
+coordinates are nonzero, where the kernel is smooth, and then use Fubini.
+Those exceptional transverse coordinates have Lebesgue measure zero.
+The Schwartz decay and the same integrable bounds justify the integration
+by parts. This avoids imposing an unproved boundary value at the origin.
+
+Replacing the four factors successively by their Taylor projections of
+order $D+1$ now shows that $\Delta$ depends on finitely many jets at zero.
+We normalize its linear jets. Let $h^{(a)}$ have factor $g_1$ in coordinate
+$a$ and $g_0$ elsewhere, and set $c_{abcd}=\Delta_{bcd}(h^{(a)})$.
+Reflection of a coordinate appearing an odd number of times among
+$a,b,c,d$ changes this number's sign, so $c_{abcd}=0$ unless the indices
+occur in pairs. In the three possible pair patterns, coordinate permutation
+and symmetry in $c,d$ show
+$c_{abcd}=c_{bacd}=c_{cdab}$. For instance, the patterns $aabb$, $abab$
+and $abba$ reduce respectively to swapping the two coordinate names,
+swapping them followed by the last-pair symmetry, and those same two
+operations. Thus the correction
+\[
+ \widetilde R_{abcd}(h)=R_{abcd}(h)-c_{abcd}\prod_i h_i(0)
+\]
+retains all the stated tensor symmetries and all collision-free evaluations.
+Its divergence has zero linear jets. Inversion makes that divergence odd,
+so its jets of even total order are also zero. Its finite jet expansion
+therefore contains only total orders at least three.
+
+For real frequency profiles $f_i$ let
+$T_{abcd}(f)=\widetilde R_{abcd}((\widehat f_i)_i)$, and write $P_iT$
+for insertion of the multiplier $p_i$ in that frequency profile. Our
+Fourier convention is $(\widehat f)'=-i\widehat{pf}$. Consequently
+\[
+ Q_{bcd}=\sum_a P_aT_{abcd}
+\]
+is $i$ times the divergence functional. If all profile widths are
+$e^{w_in}$ with $w_i\leq a\leq0$, its finite jet expansion has exponent
+$3a$. Indeed a jet of multiorder $\alpha$ is a fixed coefficient times
+$\exp(n\sum_iw_i\alpha_i)$, and its total order is at least three.
+Multiplication by one extra frequency coordinate adds at most $a$ to this
+exponent. These are actual estimates for the normalized contact terms.
+
+\subsection{Fixing one frequency band}
+
+We need a second estimate: if the profile in axis $i$ is fixed, compactly
+supported and vanishes near zero, and the other widths are $e^{w_jn}$,
+$w_j\leq0$, then $T_{abcd}$ has every positive exponent $\delta$, provided
+the other profiles have the reflection parities of these four tensor indices.
+We give the details that make this estimate independent of a rotation law.
+
+First extend the positive subtraction argument to an odd temporal profile
+$f$. Define its correction by
+\[
+ B^{\rm odd}_{m,s}f(p)=p^{-1}B_{m,s}(pf)(p).
+\]
+The numerator vanishes near zero, so this is a smooth compactly supported
+function. The residual has all moments below $2m$ equal to zero: its even
+moments vanish by oddness, and each odd moment is an even moment of the
+ordinary residual of $pf$. For $E>0$ its signed Laplace response is
+\[
+ \mathcal L_{-1}(f-B^{\rm odd}_{m,s}f)(E)
+       =-2i\int\frac{R_{m,s}(pf)(p)}{p^2+E^2}\,dp.
+\]
+The positive-kernel formula still applies to the integral on the right.
+For fixed odd $f$, $|f(p)|\leq L|p|$ by the fundamental theorem of
+calculus. If its support is in $[-R,R]$, $R\geq1$, then
+$|p f_w(p)|\leq Lp^2/w^2$ on $|p|\leq Rw$.
+Every kernel factor is bounded by
+$C_{m,s}(1+E)^{-2m}$ in product. When $E\leq w$, use
+$p^2/(p^2+E^2)\leq1$; when $E\geq w$, use
+$p^2\leq R^2w^2$ and $(p^2+E^2)^{-1}\leq E^{-2}$.
+Integration over an interval of length $2Rw$ gives in both cases
+\[
+ |\mathcal L_{-1}(f_w-B^{\rm odd}_{m,s}f_w)(E)|
+ \leq C(E+w)^{-1}(1+E)^{-2m}.
+\]
+The positive lower bound in \eqref{eq:packet-response-floor} therefore
+majorizes this by $C'M_{m,s}\chi_w(E)$, uniformly for $0<w\leq1$ when
+$s$ contains the supports. The assertion at $E=0$ follows by continuity.
+For an even profile, choose an even nonnegative compactly supported
+majorant $g\geq|f|$ and use positivity on $g+f$ and $g-f$ instead.
+Thus either parity has a positive response majorant.
+
+For two clusters $A,B$, the common projection-valued measure gives a
+cross-measure estimate. If $|q|^2\leq uv$ with $u,v\geq0$, then
+\begin{equation}\label{eq:stress-cross-price}
+ |\mu_i^{B,A}(q)|\leq t\int u\,d\mu_i^B
+                       +t^{-1}\int v\,d\mu_i^A,\qquad t>0.
+\end{equation}
+To prove it, first use a common admissible positive-time placement.
+Relative to the sum of its two finite diagonal spectral measures, the
+$2\times2$ matrix of densities is positive almost everywhere: test its
+quadratic form on the countable dense set of vectors with rational real
+and imaginary parts. Its off-diagonal entry is therefore bounded by the
+geometric mean of the diagonal entries. Integrate, apply Cauchy--Schwarz
+and then $\sqrt{UV}\leq tU+t^{-1}V$. Exponential undamping multiplies all
+entries by the same positive function, so preserves the inequality.
+Truncation and absolute integrability justify its use for the responses
+here, including energy-zero atoms.
+
+Suppose each cluster has both reflection signs among the four axes and
+is on every coordinate hyperplane. In a chosen coordinate subtract enough
+moments from its frequency profile, using the even or odd correction
+according to the product of the two reflection signs. The previous
+majorant, the mixed-sign estimate of
+Section~\ref{sec:physical-ward-packet-prices} for each diagonal measure,
+and \eqref{eq:stress-cross-price} give exponent $\delta$ for the tested
+cross correlation. All transverse profiles can first be majorized by fixed
+even nonnegative profiles. There are only two diagonal measures and finitely
+many polarization integrability conditions, so choose the subtraction order
+after all of them. This proves the estimate with one subtracted coordinate.
+
+Now keep a profile in coordinate $i$ fixed and away from zero. At another
+coordinate $j$ split the shrinking profile into its moment-zero residual
+and its finite correction. The residual is controlled by the preceding
+estimate. Each correction is a finite linear combination of fixed annular
+profiles, with coefficients of exponent at most zero, since $w_j\leq0$.
+For odd parity the additional division by $p_j$ is harmless on those fixed
+annuli. Apply induction to the smaller set of shrinking coordinates in
+each correction term. At the base every profile is fixed, so the functional
+is constant. The correction order may depend on all profiles already fixed
+at that stage; only finitely many such choices occur. No uniform choice
+over an infinite family of profiles is required.
+
+To apply this to stress components, an off-diagonal component $J_{ab}$,
+$a\ne b$, already has both signs: it is odd in axes $a,b$ and even in
+the other two. A diagonal component is replaced by $D_iJ_{aa}$, which
+is odd in $i$ and even in the other axes. Move that derivative to the
+fixed $i$-profile by integration by parts, dividing that frequency profile
+by $p_i$. This is smooth because the profile vanishes near zero.
+The first and second insertions give respectively the factors $-i$ and
+$i$; doing both replacements composes these identities. Sufficiently many
+moments in the subtracted $j$-profile justify the ordinary integrals and
+integration by parts, as in the extension construction above.
+
+Choose representative insertion tokens for these field labels. Average
+over the four commuting reflection involutions with the desired signs.
+This finite projection leaves the represented field unchanged and produces
+actual clusters with those exact signs; their positions are still zero.
+The two modified stress labels thus satisfy the mixed-sign hypotheses.
+The preceding finite induction proves the asserted fixed-band estimate
+for the original extended stress functional, with the required transverse
+parities. It also applies after any fixed finite number of frequency
+multiplications, with their corresponding extra scale factors.
+
+\subsection{Three responses linked by conservation}
+
+Fix a spectral axis $i$. All functionals in this subsection refer to the
+same normalized extension. Define
+\begin{align*}
+ T_0&=T_{iiii},\\
+ T_1&=\sum_{a,j\ne i}P_jP_aT_{aiji},\\
+ T_2&=\sum_{a,b,c,j\ne i}P_jP_aP_bP_cT_{cj ab}.
+\end{align*}
+The indices in the last expression are grouped as the pairs $(c,j)$ and
+$(a,b)$. Symmetry in and between the pairs, and
+$Q_{bcd}=\sum_aP_aT_{abcd}$, give
+\begin{equation}\label{eq:stress-conservation-chain}
+ T_1=P_i^2T_0+C_1,\qquad T_2=P_i^2T_1+C_2.
+\end{equation}
+More explicitly,
+\[
+ C_1=\sum_{j\ne i}P_jQ_{iji}-P_iQ_{iii},\qquad
+ C_2=\sum_{j,a,b\ne i}P_jP_aP_bQ_{jab}
+                    -P_i\sum_{j,a\ne i}P_jP_aQ_{aji}.
+\]
+Expand the two divergence sums into their $i$ term and their remaining
+terms to verify these identities; commuting the frequency multipliers and
+exchanging the tensor pairs identifies the displayed $T_1,T_2$.
+When all four widths are at most $e^{an}$, the contact bounds above give
+exponents $4a$ and $6a$ for $C_1,C_2$, respectively.
+They also show that $C_1$ vanishes if the $i$-profile has zero moments
+through order $D+1$, and $C_2$ if it has zero moments through order $D+3$:
+multiplication shifts the required moment order by at most one or three.
+
+Fix $\delta>0$, $a\leq0$, and three even, nonnegative, smooth compactly
+supported transverse profiles $f_j$, $j\ne i$. Keep their shapes fixed,
+with width exponents $w_j\leq a$. The fixed-band result, with the $i$-profile fixed away
+from zero, gives exponents
+\[
+ \delta,\qquad\delta+2a,\qquad\delta+4a
+\]
+for $T_0,T_1,T_2$: their respective sums contain zero, two and four
+transverse frequency multipliers. The parity hypotheses hold because each
+multiplier flips the sign in its coordinate, cancelling the corresponding
+stress index sign.
+
+Let $w=e^{an}$ and $\varphi_k(p)=p^{-2k}\varphi(p)$ as in the previous
+section. Write $h_{p,w,k}=(\varphi_k)_{pw}$, for $p=1,2$, and define
+\[
+ A_{p,k}(n)=w^{-2k}\operatorname{Re}
+       T_k(f_1^{(n)},\ldots,h_{p,w,k},\ldots,f_4^{(n)}),
+       \qquad k=0,1,2.
+\]
+The temporal slot is $i$. Since $p_i^2h_{p,w,k+1}=(pw)^2h_{p,w,k}$,
+\eqref{eq:stress-conservation-chain} implies that both
+\[
+ A_{p,1}-p^2A_{p,0},\qquad A_{p,2}-p^2A_{p,1}
+\]
+have exponent $2a$, hence exponent $x=\delta+2a$.
+Here the normalized first defect costs $w^{-2}e^{4an}$, and the second
+costs $w^{-4}e^{6an}$, making the exponent explicit.
+
+Choose one subtraction order $m$ greater than all the finitely many moment
+orders just used. Replace $h_{1,w,k}-h_{2,w,k}$ by its moment-subtracted
+difference at scale $8$, and call its normalized real response $F_k$.
+The correction coefficients are differences of the moments at widths $w$
+and $2w$. Their constant moments cancel. Each remaining even moment has
+order at least two, so its coefficient has exponent at most $2a$.
+There are finitely many fixed correction profiles, all away from zero.
+Their fixed-band costs are $\delta+2ka$ for $T_k$, and the normalization
+$w^{-2k}$ removes the latter $2ka$. It follows that
+\[
+ F_k-(A_{1,k}-A_{2,k})=O(e^{xn}),\qquad k=0,1,2.
+\]
+No subtraction order is sent to infinity.
+
+The three signs are essential. Take the actual reflection-even cluster
+representing $J_{ii}$ and its positive spectral measure. For a sufficiently
+moment-zero temporal profile, the extension agrees with the ordinary
+spectral integral. The contact terms in
+\eqref{eq:stress-conservation-chain} vanish there; multiplication by
+$p_i^2$ inside the profile becomes multiplication by $-E^2$ in its Laplace
+response, by twice integrating by parts (the zero moments remove the
+boundary terms). Thus, writing $\Gamma_{m,w,k}(E)$ for the nonnegative
+dyadic response from the previous section,
+\[
+ F_k=\tau w^{-2k}\int(-E^2)^k\Gamma_{m,w,k}(E)
+             \prod_{j\ne i}(f_j)_{e^{w_jn}}(p_j)\,d\mu_i^{J_{ii}}(p),
+\]
+where $\tau>0$ is the fixed Fourier normalization. Hence $F_0\geq0$,
+$F_1\leq0$ and $F_2\geq0$.
+The four conservation defects and these three correction defects are
+exactly the seven errors in the algebraic estimate of
+Section~\ref{sec:physical-ward-packet-prices}. It gives
+$F_0=O(e^{(\delta+2a)n})$. The positive dyadic kernel lower bound and
+multiplication by $w^2$ now prove \eqref{eq:packet-cone-required}.
+In particular the choice $a=-99$, $\delta=1$ gives exponent $-395$ for
+the actual diagonal-stress measure, as required by the exterior packet.
