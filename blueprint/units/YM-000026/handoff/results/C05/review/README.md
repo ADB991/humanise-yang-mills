@@ -1,0 +1,21 @@
+# C05 independent review (agent review, no human acceptance)
+
+Scope: the fourteen C05 chapters in `manuscript/existence/` (ope-prescription, ope-grouping, ope-grouping-algebra, ope-singletons, ope-cutoff, ope-estimates, ope-homogeneous, ope-filtration, ope-grid, ope-local-projection, ope-phase-prices, reference-cone, reference-difference, reference-match; 3,299 lines) and the author reports in `results/C05/`, at the head `8b15d44` of author draft PR #72, source pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Issue #46, review session `schmittj-codex-c05-review-20261112`.
+
+Method: four read-only Codex `gpt-6-astra` passes by chapter group, each for mathematical validity and Lean correspondence; a Claude agent then re-checked every finding of the four reports against the LaTeX lines and the Lean text, re-derived `ope-cutoff`, `ope-estimates`, `reference-cone`, the arithmetic of `reference-match` and the proved steps of `ope-filtration`, checked every line added by PR #72, and compared `thm:ope-quantitative` with `YangMills.Hierarchy.OperatorProductExpansion`. No Lean command and no LaTeX build was run.
+
+Files: [mathematics.md](mathematics.md) (mathematical validity), [lean.md](lean.md) (Lean correspondence), [validation.md](validation.md) (commands run, reviewer findings rejected or downgraded).
+
+Outcome: changes requested. No wrong exponent, rate or displayed inequality was found, and the new `prop:ope-match-assembly` is a correct conditional assembly on one label \(Q_n\) with no subpower claim for it. Three results use hypotheses that the chapters do not state, PR #72 added one false sentence to the manuscript, and two statements in the author's records are wrong. All results remain conditional on the ledger's incoming edges. This is an agent review submitted under the account `schmittj`; it is not human acceptance and does not certify the chapters.
+
+Top findings:
+
+1. `ope-estimates.tex` 94–99, 173–175 and `ope-homogeneous.tex` 10–14: `thm:ope-quantitative` uses invariance of the mixed correlations under the \(O(4)\) action (and translation and reality laws) that is not among the stated hypotheses; with the printed hypotheses alone the implication fails (counterexample checked). The source has it as the explicit hypothesis `Oriented` of `YM.OPE.Orbits.discrepancy_spin`. Pre-existing (M1, L1).
+2. `ope-cutoff.tex` 64–66 (added by PR #72): "the factor \(\lambda W_r\) is the product of the new weights ... of the old marks in a group" is false; it is the new weight of one mark. No later step depends on it (M3).
+3. `results/C05/handoff.md` 15 (PR #72): "its whole-label norm has rate `qa`" is wrong; the bound \(\|Q_n\|\le J_nV_n\) has upper rate \(\tau\), and \(qa\) is the rate of \(J_n\). The manuscript is correct (M2, L3).
+4. `ope-phase-prices.tex` 151 and 177: the unreflected conjugation identity \(M(\bar w)=M(w)^*\) and continuity of the correlations in every character are used without being listed as inputs; both have conditional producers elsewhere. Pre-existing (M4, M5, L7).
+5. `reference-match.tex`: the room condition, the centred depth and \(\mathcal V_m\) are undefined; the dictionary added in `ope-cutoff.tex` and `correspondence.md` 16 merge the centred and the opened level, which the source keeps apart (`funding`, `bequeathed`). No rate is affected (M6, L2).
+6. Imprecisely stated inputs or hypotheses in `ope-grouping-algebra.tex` 187–196, `ope-filtration.tex` 242–259, `ope-grid.tex` 241–246, `ope-local-projection.tex` 19–21 and 37–38 (the last added by PR #72), `ope-estimates.tex` 209–211; ledger line 28 omits `eq:reference-terminal` (M7–M9, M11–M13, M15).
+7. Cross-package, owner C16: `ope-history-service.tex` 150–155 is ambiguous about which singleton coefficient is meant; the reviewer's ERROR label is not confirmed (M10, L4).
+
+Not reviewed: any producer of the incoming edges (C02, C03, C06, C12, C14, C16) beyond the quoted lines; the producers the author reports as not located (F2, F5); Lean elaboration and axioms; rendered pages; the live issue and PR discussion. `ope-prescription`, `ope-singletons`, `reference-difference`, the forest and bijection proofs of the grouping chapters, `lem:ope-homogeneous-projections` and `ope-grid.tex` 200–236 rest on a single agent reviewer's line-by-line report (table in `mathematics.md`).
