@@ -8,7 +8,8 @@ trajectory is selected.
 
 Fix a compact gauge group as in the construction, a clipping profile
 with direct coefficient $0<c_0\le1$, linear coefficient
-$0<c_1\le1/4$, and relaxation length $\lambda>0$. Write $q=1-c_0$.
+$0<c_1<c_0/16$, so that in particular $c_1\le1/4$, and relaxation
+length $\lambda>0$. Write $q=1-c_0$.
 For a plaquette holonomy $u$, put
 \[
  r(u)=\operatorname{chord}(u),\qquad
@@ -85,9 +86,15 @@ including equality in the health threshold.
 Choose the terminal path to have one row
 $\sqrt q\,k(u)$ at each elementary plaquette, quartic term $qQ_4$,
 and zero cubic and loop terms. Its zero-momentum metric is
-$c_0I+qI=I$. Its path supports have length four, and its only
+$c_0I+qI=I$. Each row slot is an elementary plaquette slot with empty
+walk, hence of length four in the path-length convention of
+Section~\ref{subsec:path-stationary-chart}. Each quartic atom has four
+such legs, all at the same plaquette, and therefore has length
+sixteen although its geometric support is a single plaquette. Its only
 nonzero quartic coefficients form a finite list. Hence at any fixed
-positive strip width their weighted path sums are finite. Choosing
+positive strip width $\sigma$ the weighted path sums are finite: the
+row sum is $\sqrt q\,e^{4\sigma}$ and the quartic sum is $e^{16\sigma}$
+times the finite sum of the absolute quartic coefficients. Choosing
 the stage path allowance above their maximum, and the column
 allowance above the prescribed factorial, supplies the startup
 profile before choosing block lengths. Its uncut principal action
@@ -314,17 +321,121 @@ as a function of $U$ is asserted.
 Pack the dictionary into the fixed terminal dictionary by its
 coupling-independent injection. Zero unused entries contribute
 neither cost nor logarithm, and every nonzero coefficient, support,
-inventory, and density is preserved. The finite gas grouping and
-its continuous summable bounds therefore give a continuous family
+inventory, and density is preserved. The finite gas grouping is the
+absorption of Section~\ref{sec:soft-log-fusion} applied to the packed
+packet activities with all logarithms equal to zero. It is applied to
+this same dictionary and these same coefficients, and it leaves the
+regular entries unchanged. Its continuity in $\beta$ is
+Lemma~\ref{lem:reset-absorption-continuity}: the first hypothesis is
+the fixed-address continuity just proved, and the second holds with
+the band-wide majorants $e^{-\kappa}e^{-\sigma|D|}$, of which only
+finitely many are nonzero on the fixed torus. Together with the
+grouped forced cost computed above, this gives a continuous family
 on $[\widehat\beta/2,2\widehat\beta]$ with exact Wilson density,
 regular allowance $\delta_E$ and grouped forced allowance
 $\delta_K$. Its scalar constant is zero and its coupling is
 the input parameter $\beta$.
 
-The revised common horizon has exactly the terminal path constructed
-above. For its default recipe there is no additional initial
-permission condition. The exact density and paid ingredients thus
-start the retained history at level $N$ and give its starter
-relation. This proves the initial-family assertion used in
-Section~\ref{sec:common-funded-history} for every $N,p$,
-including $N=0$.
+We collect the result, separating the numerical conditions from the
+two identifications with the history.
+
+\begin{proposition}[The terminal family]
+\label{prop:wilson-startup-family}
+Let $N$ be a level of the scale schedule and let its stage have clip
+$(c_0,c_1,\lambda)$ with $c_0\le1$, derivative order $K$, spatial
+power $P$ and support exponent $a$. Let $t$, $B$ and
+$\widehat\beta$ be the threshold, radius and reference coupling of
+level $N$, and $\delta_E,\delta_K$ its regular and forced allowances.
+Assume:
+\begin{enumerate}
+\item $B\ge2$ and the relaxation condition
+ \eqref{eq:startup-relaxation};
+\item $t\le t_0$, where $t_0$ is the threshold of
+ \eqref{eq:startup-residual-price} for $K,P$;
+\item the regular book \eqref{eq:startup-regular-book} with
+ $v=2\widehat\beta$ is at most $\delta_E$;
+\item there are $\sigma,\kappa,\gamma$ with $\kappa\ge0$ satisfying
+ \eqref{eq:startup-loan}--\eqref{eq:startup-margin} for
+ $l=\widehat\beta/2$, and
+ $e^{-\kappa}(e^{e^\gamma-1}-1)\le\delta_K$.
+\end{enumerate}
+Then for every period there is a family $F_\beta$,
+$\beta\in[\widehat\beta/2,2\widehat\beta]$, of representations at
+level $N$ in one fixed dictionary, such that: the path of $F_\beta$ is
+the startup path of this section in the stage clip; its coupling is
+$\beta$ and its vacuum constant is zero; its density is
+$e^{-\beta E_W}$ at every field; its regular and forced arrays have
+the locality, symmetry and jet properties listed above, with regular
+cost at most $\delta_E$ and forced cost at most $\delta_K$; and
+$\beta\mapsto F_\beta$ is continuous in the labelled regular and
+forced norms. Moreover the reserved labels are empty. The fixed
+terminal dictionary contains, for every regular address and every
+natural number, a reserved regular label with that address, and for
+every forced support with nonempty inventory and every natural
+number, a reserved forced label with that support and inventory;
+these lists do not depend on $\beta$. The regular and forced address
+lists of $F_\beta$ are those of the fixed dictionary, and the
+regular, respectively forced, coefficient of $F_\beta$ on every
+reserved label is zero.
+
+Suppose in addition that the stationary plan of the history has the
+startup path as its terminal path at $(N,N)$, as in
+Proposition~\ref{prop:terminal-replacement}, and that the recipe of
+the history is the default recipe built from that plan and schedule.
+Then every $F_\beta$ satisfies the retained-history conditions at
+level $N$ and the starter relation of that recipe.
+\end{proposition}
+\begin{proof}
+The first part was proved in the preceding subsections: condition (1)
+is used for the debt and its locality, (2) for the residual price,
+(3) for the regular budget on $0\le\beta\le2\widehat\beta$, and (4)
+for the packet majorant on $\beta\ge\widehat\beta/2$ and the grouped
+forced cost. The statement on reserved labels is a property of the
+fixed packing and grouping, valid for every dictionary and
+coefficient family to which they are applied. The packing injection
+takes its values among the unreserved labels, and every entry outside
+its image is zero. A reserved forced label is the group consisting of
+one reserved hard label alone. Every grouped label of the packed
+family consists of packed labels, so a reserved forced label is not
+among them, and every grouped entry outside the image of the packed
+family is zero. For the second part, the retained-history conditions at
+level $N$ are: the path is the terminal path of the plan, the clip
+and budget are those of level $N$, the arrays satisfy the stage
+bounds at the allowances $\delta_E,\delta_K$, the path satisfies its
+stage bounds, and the representation is a start of the recipe. The
+first is the assumed identity of paths; it is an equality of path
+data, which agreement of jets through order four would not give. The
+bounds are the first part and the path bounds of the plan. A start of
+the default recipe is a representation with coupling in the terminal
+band which is obtained by the fixed packing and grouping from some
+dictionary and coefficient family carrying a pre-absorption
+certificate at the stage allowances, whose raw density on the
+terminal path of the plan, multiplied by the exponential of its
+logarithmic corrections, is the Wilson density. Our pre-grouping
+dictionary and coefficients are such a witness: the regular book and
+the packet loan give the certificate, the logarithms are zero, and
+the raw density identity is the one proved above, for the terminal
+path by the assumed identity of paths. The default recipe imposes no
+further permission condition on a start. The starter relation is the
+same statement with the band condition recorded.
+\end{proof}
+
+The four numerical conditions hold on the actual schedule, at every
+level $N$ including $N=0$, for the following reason. The preceding
+subsection showed that for each fixed stage they hold for all
+sufficiently large $s=\log\widehat\beta$, with $t,B,\delta_E,\delta_K$
+the functions of $s$ displayed there. The resulting threshold depends
+only on the stage, so it can be imposed before the schedule is
+realized. The common selection must include it among the entry
+requirements of that stage; this inclusion is made in
+Section~\ref{sec:common-funded-history} and is an input here. Granting
+it, a paid schedule enters each stage beyond its entry requirement
+and has at every level the threshold, radius and allowances given by
+those functions of its reference coupling, so the four conditions
+hold at every level. No blocking step is involved in these
+conditions, so the case $N=0$ needs no separate argument. The identification of
+the terminal path is Proposition~\ref{prop:terminal-replacement}, and
+the recipe is fixed in Section~\ref{sec:common-funded-history}. With
+them the proposition gives the initial-family assertion used in
+Section~\ref{sec:common-funded-history} for every $N$ and every
+period.

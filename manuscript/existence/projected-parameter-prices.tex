@@ -22,10 +22,13 @@ regular local readings are smooth on healthy supports, and the
 support reserve fits inside half the path strip. Their ordinary
 rooted allowance, before the finite orientation average, is at
 most $y^{-7/16}$. These are the path inputs to the present
-argument. The parameter-dependent action and quadratic rows
-are multiplied by $\ell(t)^2$, while the other two row types
-are unchanged. Since $|\ell^2|_R\le(1+\delta)^2\le4$, their
-finite-test allowance at radius $R/2$ is at most four times
+argument. There are four types of path rows. The cubic and quartic
+path-atom rows carry the coupling as a factor, and are therefore
+multiplied by $\ell(t)^2$ along the parameter line. The low-path
+rows, whose coefficient is the path correction fixed along the line,
+and the quadratic loop-atom rows are unchanged. Since
+$|\ell^2|_R\le(1+\delta)^2\le4$ and $|1|_R=1$, the finite-test
+allowance of all four types at radius $R/2$ is at most four times
 the original allowance.
 
 Let $T_P>0$ be the fixed orientation and derivative allocation
@@ -92,7 +95,9 @@ its discrepancy. Put
 All operations in the formula for $g$ are finite linear
 operations on the densities. Hence a finite test commutes with
 that formula. Apply \eqref{eq:five-period-derivative-cost} to
-the tested auxiliary total densities. The result is the regular
+the tested auxiliary total densities; they are finite sums of the
+regular local readings, hence have the smoothness on healthy fields
+which that estimate requires. The result is the regular
 support price $M_{R/2}(\lambda)\mathcal O_z(p)$ at each anchor.
 Multiplying by the support weight gives
 $M_{R/2}(\lambda)\mathcal O_z(p)e^{b_*C_z}$.
@@ -106,8 +111,17 @@ This is a bound on the full derivative budget on each healthy
 support, not just on the sum of the array values.
 
 In the selected geometry, $s,z$ and all five auxiliary volumes
-have upper exponent zero; the cover bound $C_z$ is fixed by
-the halo and support construction. The derivative order and
+have upper exponent zero, and the cover bound $C_z$ is a constant.
+Explicitly, with $r$ the locality radius of the short density, the
+auxiliary sides are $2(w+i)$ with $w=4r+100(1+B)$, and $z=w+5$; here
+$r$ is bounded by a fixed multiple of $B$. Hence there is $C_b$,
+depending only on the fixed halo parameter of the target, on which
+$r$ depends, with $2z\le C_bB$ for
+$B\ge1$, and every neighbourhood $N_u(o)$ with $u\le2z$ is covered
+by at most $(2C_b+1)^4$ balls of radius $B$. Thus $C_z$ and the
+constant $C_{2z}$ used below may be taken equal to $(2C_b+1)^4$,
+independently of the scale. This is needed: a cover bound of upper
+exponent zero would not make $e^{b_*C_z}$ harmless. The derivative order and
 spatial weight power are fixed before the scale is increased.
 Consequently $A$ has upper exponent $-3/8$, and
 \begin{equation}\label{eq:projected-broad-bound}
@@ -169,20 +183,40 @@ allowances are evaluated at the
 same scale and the same reference band. The numerical payment
 chooses $\kappa\ge0$ so that, with
 \[
-                          I=e^\kappa\gamma+2H,
+             I=e^\kappa\gamma+2H,\qquad b_B=(2B+1)^4,
 \]
-the support-tree criterion at reserve one holds and
 \begin{equation}\label{eq:projected-fusion-payment}
-               H\le1,\qquad 4b_BI\le\tfrac12,
-                              \qquad 2e^{-\kappa}I\le\phi.
+               H\le1,\qquad b_BI\le1,
+                              \qquad e^{-\kappa}(e^I-1)\le\phi.
 \end{equation}
-These are the inflation, degree and return inequalities of the
-exponential payment argument in
-Section~\ref{sec:nonlinear-payment-selection}. Its hypotheses
-hold here: $H$ has negative upper exponent, while $\gamma$
-retains the compulsory exponentially small mark. The prescribed
-outgoing gain leaves the stated positive margin in that mark.
-The selected payment is uniform over the coupling band.
+These have the form of the three inequalities in
+\eqref{eq:nonlinear-payment}, with the output bound replaced by
+$\phi$; but the payment is made relative to $\phi$, as follows.
+Here $\phi=\phi(y,\beta)$ is the forced allowance of the chosen
+forecast at the coupling $\beta$ of the band. Two numerical inputs
+are used, for all sufficiently large $x$ and uniformly over the
+band:
+\begin{equation}\label{eq:projected-forecast-inputs}
+            \gamma\le\tfrac18\phi,\qquad \phi\,y^{1/16}\le1 .
+\end{equation}
+The first compares the compulsory exponentially small mark retained
+in $\gamma$ with the forecast; the second says that the forecast is
+itself small. Neither is proved in this section. Both belong to the
+purchase of the forecast, whose hard rate is fixed below a fraction
+of the coefficient of the mark before the delays are chosen.
+
+Given \eqref{eq:projected-forecast-inputs} and $\phi>0$, put
+$p=y^{1/16}$ and $\kappa=-\log(\phi p)\ge0$. Then
+$e^\kappa\gamma\le(8p)^{-1}$, so
+$I\le(8p)^{-1}+2H$. Since $H$ has upper exponent $-3/8$ and $b_B$
+has upper exponent zero, eventually $H\le y^{-1/8}\le1$ and
+$b_BI\le1$; in particular $I\le1$ and $e^I-1\le2I$. Finally
+\[
+ e^{-\kappa}(e^I-1)\le2\phi pI\le\phi\left(\tfrac14+4pH\right)
+                                              \le\phi,
+\]
+because $pH\le y^{-1/16}\le3/16$ eventually. The threshold does not
+depend on the coupling in the band, while $\kappa$ may.
 
 Here is why those inequalities pay the analytic coefficients,
 not only the real values. Give an old forced entry with series
@@ -210,11 +244,14 @@ Indeed each old forced factor contributes $e^{-\kappa}$;
 retaining just one of them only increases the bound since
 $\kappa\ge0$. The eligibility predicate for a component is
 independent of $t$, so it preserves the same majorant. The
-connected-set estimate, with rooted allowance $I$ and degree
-ratio at most $1/2$, gives the final rooted allowance
-$2e^{-\kappa}I\le\phi$. This proves a common coefficient
-majorant at radius $R/4$ for all configurations and all entries
-of the actual final forced array.
+distinct connected-set estimate \eqref{eq:ope-forest-price} with
+reserve one, used as in \eqref{eq:fusion-site-output}, applies to
+the constituent prices $F_l$: their rooted sum at exponent $b+2$ is
+at most $I$, and $b_BI\le1$. It bounds the rooted sum of
+$\prod_{l\in D}F_l$ at exponent $b+1$ by $e^I-1$. The final rooted
+allowance is therefore $e^{-\kappa}(e^I-1)\le\phi$. This proves a
+common coefficient majorant at radius $R/4$ for all configurations
+and all entries of the actual final forced array.
 
 The exact additive decomposition of
 Section~\ref{sec:five-period-localization} identifies these

@@ -35,8 +35,21 @@ actual regular and forced activity arrays with the prescribed
 weighted derivative and value prices. The embedding preserves
 distances. In particular, equality of evaluated gases alone is
 not the equivalence relation used here. Let $x_m$ denote the
-embedded array. The finite-history construction gives
-$\|x_m\|\le1/8$. For a terminal index $N$, write
+embedded array of the finite history with terminal index $N$, for
+$m\le N$; it also depends on $N$, and we write $x_{m,N}$ when this
+matters. We use $\|x_m\|\le1/8$ for every $m\le N$. At the terminal
+scale $m=N$ this is a hypothesis: there the array is that of the
+Wilson startup representation at the terminal coupling. The startup
+family of Proposition~\ref{prop:wilson-startup-family} has regular
+and forced costs at most the allowances $\delta_E$ and $\delta_K$,
+which in the normalized norm used here gives only $\|x_N\|\le1$. The
+hypothesis is the strengthened purchase in which these two costs are
+at most $4a\delta_E$ and $a\delta_K$ for some $a>0$ with
+$8a\le1/128$; then $\|x_N\|\le4a<1/8$. This strengthened startup
+purchase is an additional input of the present section. For $m<N$ it then follows by descending
+induction from the first bound in \eqref{eq:coupled-output-bounds}
+below, whose input condition $\|x_{m+1}\|\le1/8$ is the previous
+case. For a terminal index $N$, write
 \[
  x_m=F_{m,N}(\lambda_{m+1},x_{m+1}),\qquad
  q_m=Q_{m,N}(\lambda_{m+1},x_{m+1})\quad(m<N)
@@ -66,16 +79,35 @@ where $\alpha_{m,N}$ is the path correction, already convergent
 at each fixed $m$ by Section~\ref{sec:background-path-convergence}.
 
 We use the following precise continuity statement for the local
-transformation: if two sequences of terminal indices tend to infinity,
-their input normalized couplings have a common limit, and their
-actual input arrays are Cauchy with difference tending to zero in
-$\mathcal H_{m+1}$, then the differences of their output arrays and
-scalar corrections tend to zero. This statement concerns arbitrary
-allowed inputs, including the truncated histories constructed below.
-Its analytic content is the common-variable comparison of
+transformation at a fixed scale $m$ and period. Take two sequences of
+terminal indices tending to infinity and, for each index, an allowed
+input of the transition from $m+1$ to $m$ at that terminal index.
+If the input normalized couplings of the two sequences have a common
+limit, and their actual input arrays are Cauchy with difference
+tending to zero in $\mathcal H_{m+1}$, then the differences of their
+output arrays, in $\mathcal H_m$, and of their scalar corrections
+tend to zero. This statement concerns arbitrary allowed inputs,
+including the truncated histories constructed below. The output
+arrays are those of the actual transition outputs, in the fixed
+dictionary of scale $m$.
+
+This continuity statement is an input of the present section, not a
+consequence of it. Its premises on the background are the path limits
+of Section~\ref{sec:background-path-convergence}, the free-horizon
+limits of Section~\ref{sec:free-horizon-convergence} and the fixed
+dictionaries, all for the same history as the maps $F_{m,N}$ and
+$Q_{m,N}$. Its analytic content is the common-variable comparison of
 Section~\ref{sec:marked-kernel-convergence} without a mark, together
 with the weighted head-and-tail argument of
-Section~\ref{sec:local-source-stability}. Here is the precise tail implication. For a regular entry put
+Section~\ref{sec:local-source-stability}; the compensated estimates
+which that comparison needs on the actual inputs are those of
+Sections~\ref{sec:local-parameter-comparison},
+\ref{sec:finite-volume-parameter-continuity} and
+\ref{sec:parameter-comparison-suppliers}. The application to the
+selected history is made in Section~\ref{sec:selected-history-limits}.
+Two points of that application are specific to the present setting
+and are explained now. Here is the precise tail implication. For a
+regular entry put
 $b_f(i)=\sup_U|f_i^{\rm reg}(U)|$, with its actual mask, and for
 a forced entry put $b_f(i)=\sup_U|f_i^{\rm forced}(U)|$.
 Summing the site's paid budgets gives, separately for these two

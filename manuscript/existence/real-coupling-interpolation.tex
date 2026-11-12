@@ -211,7 +211,13 @@ nodes, such that, whenever $BR^kv\le1$,
                                       \le AR^k v d^i.
 \end{equation}
 In this formula the derivative is in the second variable and the
-series norm in the first.
+series norm in the first. The series norm refers to the polynomial
+extension: for each $y$ let $\widehat f(\cdot,y)$ be the polynomial of
+degree at most $k$ which agrees with $f(\cdot,y)$ on $[-1,1]$, and
+read \eqref{eq:real-small-series} for $e^{\widehat f}-1$. Its series
+represents $e^{f}-1$ at every $t\in[-1,1]$, which is where the
+finite tests are taken. Nothing is asserted about the values of $f$
+at parameters outside $[-1,1]$.
 
 To check the estimate, write $h=e^{f(s_r,\cdot)}-1$ at a fixed
 node. At $x$ we have $|h(x)|\le v\le1/2$ and
@@ -224,8 +230,11 @@ a term with $r\ge1$ factors of $h$ is bounded by a constant
 times $v^r d^i\le v d^i$. Hence
 $|D_u^if(s_r,\cdot)(x)|\le C_jv d^i$ at every node.
 
-Polynomial interpolation in $t$ is valid for every $y$ and so
-also after the indicated derivatives. The coefficient norm of
+Polynomial interpolation in $t$ at the nodes $s_r$ gives
+$\widehat f(t,y)=\sum_rf(s_r,y)\mathcal L_r(t)$ for every $y$ near
+$x$, with the Lagrange polynomials $\mathcal L_r$ of these nodes, and
+so also after the indicated derivatives. In the rest of the proof
+$f$ stands for $\widehat f$. The coefficient norm of
 any fixed degree-$k$ Lagrange basis polynomial at radius $R\ge1$
 is bounded by $R^k$ times its norm at radius one. It follows that
 \[
@@ -241,8 +250,10 @@ The finite sum gives \eqref{eq:real-small-series}, with $A$
 large enough for all $i\le j$. This proof also covers $d=0$:
 all positive derivatives then vanish.
 
-The incoming ordinary activity in the coupling family has degree
-at most two in this real parameter. Thus the radius cost in this
+The incoming ordinary logarithmic occurrence in the coupling family
+has degree at most two in this real parameter; the function to which
+\eqref{eq:real-small-series} is applied is its exponential minus
+one. Thus the radius cost in this
 last argument is $R^2$, with constants fixed by the derivative
 order. The local stock weight uses the preceding real-node
 argument instead, because its exponent need not be small.

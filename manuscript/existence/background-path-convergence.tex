@@ -14,11 +14,30 @@ coefficient arrays
 \]
 Here $a_m$ represents the quadratic loop correction, $b_m$ the cubic
 term, and $c_m$ the quartic term. Each array belongs to the selected
-closed subspace of its real coefficient Hilbert space. The selected
-subspace is the orthogonal complement of the kernel of all finite-period
-Taylor readouts. Consequently two selected arrays with the same
-readouts on every prescribed period are equal. This statement concerns
-the arrays themselves, not just their evaluation on one torus.
+closed subspace of its real coefficient Hilbert space, which is
+defined as follows. For $q=2,3,4$ let $H_{m,q}$ be the real Hilbert
+space of square-summable coefficient arrays of degree $q$, and let
+$A_{m,q}\subset H_{m,q}$ be its closed subspace of admissible arrays:
+those whose atoms satisfy the linear invariance conditions of the path
+bounds, together with the linear loop normalization conditions when
+$q=2$. Let $n_m(p)$, $p\ge0$, be the period sequence prescribed at
+scale $m$ by the schedule. For each $p$ let $T_{m,q,p}$ be the
+continuous linear map which sends an array to the degree-$q$ Taylor
+coefficient at zero of its path sum on the torus of side $n_m(p)$. Put
+\[
+ K_{m,q}=A_{m,q}\cap\bigcap_{p\ge0}\ker T_{m,q,p},
+ \qquad
+ A^{\rm sel}_{m,q}=A_{m,q}\cap K_{m,q}^{\perp}.
+\]
+This is the canonical choice of
+Section~\ref{subsec:path-vow-representatives}, with the admissible
+subspace and with the readouts on the prescribed periods only.
+Two selected arrays with the same readouts on every prescribed period
+are equal: their difference lies in $K_{m,q}$ and in $K_{m,q}^\perp$.
+This statement concerns the arrays themselves, not just their
+evaluation on one torus. The orthogonal complement of the common
+kernel in the whole space $H_{m,q}$ would not do: its elements need
+not be admissible.
 
 For $q=2,3,4$ and the fixed encoding width $w_{m,q}$, use the norm
 \[
@@ -37,6 +56,80 @@ $64s_{m+1,q}$, and keeps the other two arrays at their ordinary
 allowances. The same finite-step construction is available for every
 input in this domain. We use this actual extended domain below;
 existence for one selected input alone would not suffice.
+
+\subsection{The data and the statement}
+The convergence proof is an argument about given finite-step data.
+It does not construct them. We list what is used; every item refers
+to one scale schedule, one horizon of beds and towers, and one choice
+of chart, clipping data and post-cost constants.
+\begin{enumerate}
+\item \emph{Finite steps on the extended domain.} Let $m<N$, and let
+$R$ be a path whose one-form row is the root row of the bed at
+$(N,m+1)$, which is attached to that bed, and which satisfies the path
+bounds of scale $m+1$ with the row, cubic and quartic allowances and
+the loop allowance each multiplied by $64$. Then there are an output
+path $T$, a scalar $\alpha$ and stationary maps $\rho^{p,F}$, one for
+each period index $p$ and allowed forest $F$, with the following
+properties. The path $T$ has the root row of the bed at $(N,m)$, is
+attached to it and satisfies the ordinary path bounds of scale $m$.
+On every prescribed period and forest the price gap, stationarity and
+classical matching relations between $R$, $T$ and $\rho^{p,F}$ hold,
+and so does the one-loop comparison used below, with error at most
+$\Gamma e^{-cn_m(p)}$, with $\Gamma,c>0$ fixed at the stage. The scalar
+satisfies
+$|\alpha+\lambda_G\log L_m|+1\le D_{m+1}$, where $\lambda_G$ is the
+slope constant of the group and $D_{m+1}$ the drift allowance. The
+three nonlinear arrays of $T$ are encoded by selected arrays
+$a\in A^{\rm sel}_{m,2}$, $b\in A^{\rm sel}_{m,3}$,
+$c\in A^{\rm sel}_{m,4}$ whose Hilbert norms are at most the loop
+allowance, for $a$, and the path allowance, for $b$ and $c$.
+\item \emph{The actual history.} For every $N$ there are paths
+$R_{N,m}$, $m\le N$, scalars $\alpha_{N,m}$ and stationary maps
+$\rho^{p,F}_{N,m}$, $m<N$, forming the finite history of
+Section~\ref{sec:path-attachment-producer} with all its finite-cutoff
+path conditions. In particular each $R_{N,m}$ has the ordinary bounds
+and the root row of its bed, and for every $m<N$ the data
+$(R_{N,m+1},R_{N,m},\alpha_{N,m},\rho_{N,m})$ form a step with all
+the properties in the first item.
+\item \emph{Widths.} The three encoding widths at each scale are
+strictly larger than the paid path width, the loop allowance is at
+least one, and the root rows of the beds at each fixed scale have,
+for all large $N$, a strip bound at one width strictly larger than
+the paid path width.
+\item \emph{The horizon.} The beds and towers have their stagewise
+strip bounds, all-grade floors on every torus and transition
+identities, the sworn conditions hold on every prescribed period,
+and each of the ten retained bed and tower rows converges
+coefficientwise as $N\to\infty$ at fixed scale. Every blocking step
+satisfies the size conditions of the schedule relating its patch to
+its fine and coarse periods. The chart is the local-ratio chart of
+Section~\ref{sec:haar-chart}: the exponential map is injective on a
+ball of positive radius, and on it the normalized Haar measure has a
+positive real-analytic density, equal to one at the origin, times a
+positive scale. The color index set is nonempty.
+\end{enumerate}
+The first two items and the widths are outputs of the one-step
+analytic construction and of the finite backward assembly in
+Section~\ref{sec:path-attachment-producer}; the factor $64$ is the
+input allowance of Section~\ref{subsec:path-factor64-envelope}. The
+row convergence is Section~\ref{sec:free-horizon-convergence}. None of
+these is proved in the present section, and the application to the
+selected history, with the verification that the four items refer to
+the same objects, is made in Section~\ref{sec:selected-history-limits}.
+
+Under these hypotheses we prove the following. At every fixed scale
+$m$ there are a path $R_m$ with the ordinary path bounds, a scalar
+$\alpha_m$ and, for every period index and forest, a stationary germ
+$\rho^{p,F}_m$, such that as $N\to\infty$ along the whole sequence of
+cutoffs: every coefficient of the selected arrays of $R_{N,m}$
+converges to the corresponding coefficient of the selected arrays of
+$R_m$, with the Hilbert bounds of the first item retained;
+$\alpha_{N,m}\to\alpha_m$; and every derivative at zero of
+$\rho^{p,F}_{N,m}$ converges to that of $\rho^{p,F}_m$.
+The Hilbert bounds of the first item and its bound on $\alpha$ are
+what make the compactness step below possible. The weighted norms
+$\mathfrak n_{m,q}$ alone would not: their weights decay
+exponentially in the length.
 
 \subsection{The triangular affine identities}
 Fix the fine and coarse one-form rows. Consider three admissible
@@ -119,21 +212,74 @@ stationary germ. Its Hessian determinant and the coordinate
 Jacobian contribution are therefore the same. The remaining
 one-loop expression is the loop correction evaluated on that
 germ; it is linear in $a^{\rm in}$. Its quadratic jet is affine.
-The coarse one-loop decomposition has the form
+On the torus of side $n=n_m(p)$, with site set $\Lambda_n$, the
+coarse one-loop decomposition of the quadratic jet has the form
 \[
-                    \alpha Q_0+Q_a+\mathcal E,
+                    \alpha Q_{0,p}+Q_{a,p}+\mathcal E_p,
 \]
-where $Q_0$ is the common normalized quadratic row form, $Q_a$
-is the loop readout, and $\mathcal E$ is the finite-period error.
-The latter has the proved exponential bound in the period.
-Subtract the three decompositions. The all-period detection
-statement for the quadratic forms makes the remaining cover
-form zero. Its normalization functional takes the value one on
-$Q_0$ and zero on the selected loop subspace. Applying it gives
-the identity for $\alpha$. The residual loop readouts then vanish
-on every period; injectivity on the selected loop subspace gives
-the identity for $a^{\rm out}$. This identifies exactly where
-quadratic normalization and all-period detection enter the proof.
+where $Q_{0,p}$ is the quadratic form of the common normalized row,
+$Q_{a,p}=T_{m,2,p}a^{\rm out}$ is the loop readout, and
+$\mathcal E_p$ is the finite-period error. The error has the
+exponential bound of the finite step: on every pair of real plane
+waves whose amplitudes have entries of modulus at most one, its
+modulus is at most $|\Lambda_n|\Gamma e^{-cn}$. Form the
+combination, with coefficients $1,-(1-t),-t$, of the three
+decompositions indexed by $t,0,1$. The left sides cancel, because
+the quadratic jet of the one-loop expression is affine. With
+\[
+ \delta\alpha=\alpha_t-\alpha_0-t(\alpha_1-\alpha_0),\qquad
+ \delta a=a^{\rm out}_t-a^{\rm out}_0-t(a^{\rm out}_1-a^{\rm out}_0),
+\]
+the forms $G_p=\delta\alpha\,Q_{0,p}+Q_{\delta a,p}$ therefore
+satisfy the same plane-wave bound with $\Gamma$ replaced by
+$(2+2|t|)\Gamma$.
+
+Both families $Q_{0,p}$ and $Q_{a,p}$ are recorded by a symbol. By
+this we mean that there is a matrix-valued function of the momentum,
+holomorphic and bounded on a strip of positive width about the real
+momenta and independent of $p$, such that on every prescribed period
+the coefficient of the form on two complex plane waves is zero unless
+their momenta are opposite, and is then $|\Lambda_n|$ times the entry
+of the symbol at that momentum. For $Q_{0,p}$ the symbol is built
+from the common bed metric and its strip bound; for $Q_{a,p}$ it is
+the loop symbol of the path, linear in $a$, with the path width.
+Hence $G_p$ is recorded by
+$\widehat G=\delta\alpha\,\widehat Q_0+\widehat Q_{\delta a}$.
+
+The all-period detection statement is the following. \emph{Let
+forms $G_p$ on the prescribed periods be recorded by one symbol
+$\widehat G$ as above, and suppose their values on pairs of real
+plane waves with amplitude entries of modulus at most one are bounded
+by $|\Lambda_n|b_p$ with $b_p\to0$. Then $\widehat G$ vanishes at
+every real momentum, and $G_p=0$ for every $p$.} For the proof, a
+complex plane wave is a combination of two real ones with
+coefficients $1$ and $i$, so the recorded coefficients are at most
+$4|\Lambda_n|b_p$ and each symbol entry is at most $4b_p$ at every
+momentum of the torus of side $n_m(p)$. Fix a real momentum $k$.
+Since $n_m(p)\to\infty$, there are momenta $k_p$ of these tori
+converging to $k$ modulo the reciprocal lattice. Continuity of
+$\widehat G$ gives $\widehat G(k)=\lim_p\widehat G(k_p)=0$. The
+recorded coefficients of each $G_p$ are values of $\widehat G$ at
+real momenta, so they all vanish; plane waves span the complexified
+field space, whence $G_p=0$.
+
+Apply this to the forms $G_p$ above, with
+$b_p=(2+2|t|)\Gamma e^{-cn_m(p)}$. The normalization functional
+$\mathcal N$ is defined from the symbol alone. Fix a color index
+$i$, and let $c_i(\widehat Q)$ be the second-order Taylor coefficient
+at zero momentum, along the coordinate direction $0$, of the
+diagonal entry of the symbol with link direction $1$ and colors
+$i,i$; put $\mathcal N(\widehat Q)=2\operatorname{Re}c_i(\widehat Q)$.
+It is real linear. The normalized row has $c_i(\widehat Q_0)=1/2$,
+so $\mathcal N(\widehat Q_0)=1$, and $\mathcal N$ vanishes on the
+loop symbol of every array satisfying the loop normalization
+conditions. Applying it to $\widehat G=0$ gives $\delta\alpha=0$,
+which is the identity for $\alpha$. The residual loop readouts
+$Q_{\delta a,p}=T_{m,2,p}\delta a$ then vanish on every prescribed
+period, and $\delta a\in A^{\rm sel}_{m,2}$; injectivity on the
+selected loop subspace gives $\delta a=0$, the identity for
+$a^{\rm out}$. This identifies exactly where quadratic normalization
+and all-period detection enter the proof.
 
 \subsection{An enlarged input ball gives contraction}
 Choose one of the three arrays, subject to equality of its preceding
@@ -169,8 +315,11 @@ input domain is essential for this proof.
 
 \subsection{Passing finite histories to cluster histories}
 Fix any sequence of terminal cutoffs tending to infinity. At each
-fixed scale, the three coefficient arrays have uniformly bounded
-Hilbert norms and the scalar corrections $\alpha$ are bounded.
+fixed scale $m$, the three selected coefficient arrays of the
+step outputs have Hilbert norms at most the loop allowance and the
+path allowance, and $|\alpha_{N,m}|\le D_{m+1}+|\lambda_G\log L_m|$;
+both are part of the first hypothesis. These bounds do not depend on
+$N$.
 Enumerate the countably many scales and coefficient coordinates.
 Successive extraction in bounded real intervals, followed by the
 diagonal subsequence, gives convergence of all those coordinates
@@ -210,9 +359,12 @@ too. Thus the resulting cluster history satisfies the same local
 relations and paid output bounds as the finite histories.
 
 The input at scale $m$ equals the output at scale $m+1$ in these
-cluster histories: it is an exact finite-history identity on
-every sufficiently late cutoff, so coordinatewise passage to
-the limit preserves it. All periods and forests needed here
+cluster histories. Indeed the selected arrays of each path
+$R_{N,m+1}$ are chosen once and used in both of its occurrences, as
+the output of the step at $m+1$ and as the input of the step at $m$.
+The equality of input and output arrays is thus an exact
+finite-history identity for every $N>m+2$, and coordinatewise passage
+to the limit preserves it. All periods and forests needed here
 have already been fixed by the schedule. The derivative recursion
 defines their limiting stationary germs from the same limiting
 path; no independent subsequence is chosen for each germ.
@@ -264,7 +416,8 @@ and gives a further subsequence with the unique cluster limit,
 a contradiction. Thus the entire cutoff sequence converges.
 The strict-width argument upgrades its coefficientwise convergence
 to the weighted path convergence used for fixed-scale normalized
-moments. This closes that part of the fixed-scale input once the
-finite-step extended-domain construction, retained row horizon,
-and canonical all-period detection used above are supplied on
-the selected history.
+moments. This proves the statement of the second subsection. It is
+conditional on the four hypotheses listed there: the finite-step
+construction on the extended domain, the actual history, the widths
+and the retained row horizon must be supplied on the selected
+history.

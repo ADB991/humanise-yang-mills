@@ -21,7 +21,17 @@ may therefore be absorbed using a strict exponent reserve.
 The incoming sector is assumed to satisfy the local hypotheses of
 Sections~\ref{sec:activity-jet-assembly} and
 \ref{sec:gaussian-differentiation}, uniformly for all real points
-$|t|\le6R$ in the coupling band. The path, clipping rule, ordinary
+$|t|\le6R$ in the coupling band. Uniformity is meant in the
+following sense. The quantitative local data of those sections (the
+local jets of the four species, the safety inequality, the
+compensated chart and Jacobian bounds with their derivative scales,
+and the smoothness of the local Gaussian density) are given with one
+set of constants for the whole family, and not by a separate choice
+at each $t$. The order of choices is: first the lower bound on the
+block side; then the block side, the stage orders, the positive
+reserves and the other fixed data listed above; then one threshold
+in $x$, valid for all allowed periods, sectors and real parameter
+points. The path, clipping rule, ordinary
 and forced support dictionaries, and held fine configurations are
 common. The coupling is $\beta(t)=\beta_0\ell(t)^2$, where
 \eqref{eq:real-affine-band} holds. The incoming ordinary activity
@@ -117,8 +127,16 @@ The factor is paid by a support-exponent reserve of size $\alpha$.
 
 \subsection{The moment estimate after a finite parameter test}
 Let $A$ be a connected finite set of primitive labels. Denote its
-assigned union support by $S_A$, its nonnegative shape charge by
-$s_A$, and its warning set by $W_A$. Let $a_l\ge0$ be the common
+assigned union support by $S_A$ and its warning set by $W_A$. Its
+shape charge is the total cost of
+Section~\ref{sec:mixed-activity-prices},
+\[
+             s_A=\sum_{l\in A}\bigl(c_B(S_l)+d_l\bigr),
+\]
+where $S_l$ is the support of the label $l$ and $d_l\ge0$ its extra
+cost: the purchased fixed multiple of its number of seeds for a
+packet, and the purchased optional cost for an optional label. Let
+$a_l\ge0$ be the common
 primitive price for label $l$, with its warning gain included only
 after Gaussian integration. Put $P_A=1+s_A\ge1$. The estimates
 just proved, the compensated Jacobian estimates, and the product
@@ -186,14 +204,22 @@ actual coarse activity, including its derivatives. An inactive
 support gives the zero germ. All of these comparisons use the common
 support dictionary, not a parameter-dependent relabeling.
 
-The connected-set estimate for the enlarged primitive prices gives
+The mixed connected-set estimate \eqref{eq:mixed-reserved-tail}
+of Section~\ref{sec:mixed-activity-prices}, applied to the enlarged
+primitive prices, gives
 \begin{equation}\label{eq:sector-first-root}
        \sup_z\sum_{A:z\in S_A}p_Ae^{(E-\alpha)c_B(S_A)}
                                               \le\pi(x)u_{k+j}(x).
 \end{equation}
-Here $E$ is the incoming support exponent and $u_{k+j}$ is the
-connected primitive allowance with the displayed shape moment.
-It has upper exponent $-2/5$. To see the support bookkeeping,
+Here $E$ is the incoming support exponent. For an integer $n\ge0$,
+$u_n(x)$ denotes the connected allowance of the enlarged target with
+polynomial order $n$: the right side of \eqref{eq:mixed-ceiling} for
+that target, with no restriction on the label count, the total cost
+or the number of seeds. The vertex condition of that estimate is the
+purchase of the enlarged target made in the first subsection; the
+factor $P_A^{k+j}=(1+s_A)^{k+j}$ in $p_A$ is its polynomial in the
+total cost. The allowance $u_{k+j}$ has upper exponent $-2/5$. To see
+the support bookkeeping,
 the left side contains
 $e^{\alpha c_B(S_A)}e^{(E-\alpha)c_B(S_A)}
 =e^{Ec_B(S_A)}$. Thus the mixed connected-set estimate is applied
@@ -208,6 +234,16 @@ finite-test estimate with radius $R$. Section~\ref{sec:background-ray-estimates}
 gives radius $R/2$ and price $2p_A$, once $R\ge2$.
 The argument can first be applied to each scalar derivative;
 the fixed-order polarization bound controls the full derivative.
+The derivatives of the outgoing budget are iterated group increments
+in directions of norm at most the threshold $\theta$, whereas the
+local estimates are stated in the compensated charts. The passage
+between the two is part of the uniform local hypotheses: appending
+one such increment increases the controlled chart scale by at most a
+fixed multiple $c_v$ of the threshold scale, and the chart scale $v$
+is chosen with $jc_v\le v$, as in
+Section~\ref{sec:parameter-comparison-suppliers}. Thus the at most
+$j$ increments of a derivative of the budget stay inside the chart
+estimates used above.
 A logarithmic cluster with $q$ occurrences is a product of these
 primitive integrated activities times its Ursell coefficient
 and $1/q!$. Derivatives through order $j$ cost at most $q^j$.
@@ -270,8 +306,17 @@ For forced terms no coarse derivatives are required. The same
 finite-test and radius-halving argument gives ordinary constituent
 series prices with rooted allowance $2u_0(x)$ and forced
 constituent prices with rooted allowance
-$2u_0(x)e^{-M(x)}$. The nonnegative mark $M(x)$ is the compulsory
-warning gain. Form the exclusion-correction activities exactly as
+$2u_0(x)e^{-M(x)}$. The nonnegative mark $M(x)$ is the seed mark of
+the enlarged target: the mark per seed which the mixed estimate
+\eqref{eq:mixed-ceiling} extracts once for every seed of a
+component, and which is paid from the seed expense of the packet
+prices. It is available here because every forced
+constituent has a nonempty flag inventory, each flag supplies a
+seed in one of its packets, and hence its components contain at
+least one seed. It is distinct from the warning probability gain
+$\rho^{|W_A|}$, which has already been included in the primitive
+prices $a_l$ and is present in ordinary and forced constituents
+alike. Form the exclusion-correction activities exactly as
 in Section~\ref{sec:forced-exclusion}. Each is a finite product
 of forced factors and powers of regular cluster factors, with the
 same multiplicity factorials. Absolute coefficient norms multiply,
@@ -294,7 +339,7 @@ majorants $k_D$ satisfy
         \sup_z\sum_{D:z\in S_D}k_De^{e c_B(S_D)}
                             \le e^{-M(x)}\frac{Z(x)}{1-1/2}.
 \end{equation}
-This keeps the compulsory exponential gain through arbitrarily
+This keeps the compulsory exponential seed gain through arbitrarily
 many regular exclusion corrections. In particular, the parameter
 extension has not consumed that gain.
 
