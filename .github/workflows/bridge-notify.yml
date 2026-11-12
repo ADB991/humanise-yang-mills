@@ -1,0 +1,17 @@
+# Wakes the "Upstream bridge" workflow (on the default branch) when a request
+# lands in outbox/. Holds no secrets and does nothing else.
+name: Bridge notify
+
+on:
+  push:
+    branches: [ym-state]
+    paths: ['outbox/**']
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - run: echo "outbox changed; the upstream bridge will run"
