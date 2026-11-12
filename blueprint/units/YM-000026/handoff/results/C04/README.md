@@ -7,6 +7,11 @@ Claim: https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6825
 Basis: `codex/existence-monograph` at `9d11cca4644bad07126bfa372cc85fb120dee7ba`
 (mathematical snapshot `9b879ee6`). Source pin: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
 
+Revision 1: session `ADB991-claude-20261112-74c4`, claim
+https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6835732783,
+basis `codex/existence-monograph` at `d02fcb5`, answering the independent
+review in `review/` (PR #76). See the top of [handoff.md](handoff.md).
+
 This directory is the author side of C04. `review/` is reserved for the
 independent reviewer; nothing here is a review or an approval.
 

@@ -102,3 +102,32 @@ the C14 author should confirm this explicitly.
   `YM.Next.BOUNDARY.Stage.establishing` omits that hypothesis and its
   conclusion; `YM.Boundary.harvest` keeps it (`C.UniqueHeat`). G01 should
   check which one the public endpoint uses.
+
+## Revision 1: response to the independent review (PR #76)
+
+| Review item | Response |
+| --- | --- |
+| M1 locality cutoff | Accepted; sentence replaced by the product construction f_R=χ(X/R)f. |
+| M2 E4 producer | Accepted; edge renamed, `limits.tex` pointer removed, marked "producer statement not identified", with Lean anchors. |
+| M3 nonzero smeared field | Accepted; recorded on the C16 edge as a requirement on the hierarchy package. No chapter change. |
+| M4 coordinate order | Accepted; convention paragraph added in `complex-heat.tex`. |
+| M5 quantifier in `prop:word-motion` | Accepted. |
+| M6 statement of `prop:heat-cups` | Accepted; identity now in the statement. |
+| M7 producers of E3, E5, null equality; C14 split | Accepted; producers named by label (`ex-phase-slab-bounds`, `ex-slab-laws`, `ex-phase-dynamics`, `ex-individual-rotations`, `ex-no-new-null`); E5 split into E5a/E5b; C14 edge split into Euclidean-spectral and relativistic parts. The null-equality producer is a C03 chapter (`phase-fields.tex`), so the edge is renamed C03-to-C04-null-equality. |
+| M8 locality row | Accepted. |
+| M9 Williams locator | Agreed with the reviewer; shared bibliography, left to G03. |
+| M10 clarifications | All six adopted; for the last one `lem:schwartz-motion` is now stated for the whole affine group, which its proof already covered. |
+| L1, L2, L9 | Accepted in `correspondence.md`. |
+| L3, L4 | Accepted; written out in `correspondence.md` for the owner of `reconstruction-evidence.md`. |
+| L5 | Accepted; new edge E4b with producer `ex-phase-original-null`. |
+| L6 | Same as the fourier-support item of M10. |
+| L7 | Accepted; full edge statement copied, kept open. |
+| L8 | Same as M5. |
+
+New observation (for the coordinator): in the source the field union is
+realised as a submodule of functionals on exteriors (`YM.Table.Union`,
+`Lean/YM/Euclid/Union.lean` l.20–30), so injectivity of the level maps is
+`YM.Table.pin_inj`, while compatibility of correlations with the inclusions
+is the separate premise `YM.DiffPlan.Inclusions`. No manuscript chapter
+located in this revision constructs the levels, inclusions and union; E4 is
+therefore unowned.
