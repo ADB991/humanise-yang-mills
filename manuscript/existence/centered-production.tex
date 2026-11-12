@@ -1,0 +1,234 @@
+\section{Wilson density prices and the centered-budget producer}\label{ex-centered-production}
+
+We prove the finite-volume price inequality used in Section~\ref{ex-centered-budget-production}, then trace how the depth-dependent bill is converted into the uniform prefactor required by the centered-budget estimate. The remaining input is the construction of the lane's certificates from the renormalisation-group data; its exact interface is stated at the end.
+
+\subsection{The radial price estimate}
+
+Let $V$ be the finite set of lane markers. The marker algebra has basis $e_S$ indexed by subsets $S\subseteq V$, with
+\[
+ e_S e_T=\begin{cases}e_{S\cup T},&S\cap T=\varnothing,\\0,&S\cap T\ne\varnothing.\end{cases}
+\]
+Thus repeated markers are nilpotent. For positive weights $w_x$ put $\operatorname{toll}_w(S)=\prod_{x\in S}w_x$. For a polynomial $P=\sum_S c_S e_S$, define its weighted absolute price by
+\[
+ \operatorname{price}_w(P)=\sum_S |c_S|\operatorname{toll}_w(S).
+\]
+The same definition extends to absolutely summable series. The disjoint-union product makes price submultiplicative: only disjoint pairs contribute, and their tolls multiply exactly. If $P$ has zero coefficient at $e_\varnothing$, then $P^{|V|+1}=0$, since every nonzero product of $|V|+1$ nonempty marker modes would require more than $|V|$ distinct markers. Therefore the algebraic exponential is the finite sum
+\[
+ \operatorname{Pass}(P)=\sum_{k=0}^{|V|}\frac{P^k}{k!},
+\]
+and submultiplicativity gives
+\[
+ \operatorname{price}_w(\operatorname{Pass}(P))
+ \leq\sum_{k=0}^{|V|}\frac{\operatorname{price}_w(P)^k}{k!}
+ \leq e^{\operatorname{price}_w(P)}.
+\]
+
+At a stopping level, the overlay density has the following form. Its additional exponent is
+\[
+ E_{\mathrm{add}}(U)=\sum_{x\in V}u_x e_{\{x\}}+\sum_i r_i(U)e_{R_i},
+\]
+where $R_i\subseteq V$ is the nonempty ray marker mode, $u_x$ is the scalar coefficient of the one-marker mode $e_{\{x\}}$, and $r_i(U)$ is the ray coefficient masked to zero off its healthy support. The healthy-support majorant bounds $|r_i(U)|$ there. Its activity factor is
+\[
+ C(U)=\sum_{S\subset_{\mathrm{fin}}\mathbb N} \mathbf1_{\mathrm{adm}(S,U)}
+       \prod_{i\in S}\left(k_i(U)e_{\varnothing}+\sum_j h_{ij}(U)e_{M_{ij}}\right),
+\]
+Here $M_{ij}\subseteq V$ is the nonempty forced marker mode, $h_{ij}$ is its scalar coefficient, and $k_i$ is the real vacuum activity at site-index $i$ (it may have either sign); inadmissible subsets are omitted. Every term of $E_{\mathrm{add}}$ has nonempty marker support, so it has zero quiet coefficient and the preceding finite exponential applies. The full density is
+\[
+ D(U)=e^{E_0(U)}\,\operatorname{Pass}(E_{\mathrm{add}}(U))\,C(U),
+\]
+where $E_0$ is the vacuum Wilson exponent. The activity sector has nonempty forced supports, and the vacuum coefficients reproduce the vacuum evaluation when all marked interactions are removed.
+
+\begin{lemma}[Radial bounds control the absolute price]\label{ex-centered-radial-price}
+Suppose the lane is active, all density coefficients are measurable, and the radial pointwise and per-origin bounds hold with constants $u,c,\gamma,b_0$ as specified in Section~\ref{ex-centered-budget-production}. Each ray and forced interaction has nonempty support, and the vacuum activities satisfy their per-site absolute-value budget $\kappa$. Then, with $q=|V|$ and $s_0$ the number of lattice sites in the stopping torus,
+\[
+ \operatorname{price}_w(E_{\mathrm{add}})\leq q(u+c),\qquad
+ \operatorname{price}_w(C)\leq \exp(s_0\kappa+q\gamma b_0),
+\]
+and, if the vacuum exponent obeys $E_0(U)\leq\mathrm{scalar}+s_0\,\mathrm{exCost}$ pointwise,
+\[
+ \operatorname{price}_w(D)\leq
+ \exp\!\left(\mathrm{scalar}+s_0(\mathrm{exCost}+\kappa)+q(u+c+\gamma b_0)\right).
+ \label{ex-centered-density-price}
+\]
+\end{lemma}
+\begin{proof}
+First sum the ray charges over all markers. Every ray support is nonempty, so its nonnegative charge appears at least once in the sum over marker origins. The per-marker sum budget therefore bounds the total ray price by $q c$. Each local coefficient contributes at most $u$ by $w_x|u_x|\leq u$, so the local part costs at most $q u$. This gives the first inequality and absolute summability of the ray series.
+
+For each site-index $i$, its activity contains a vacuum term $k_i$ and a summable series of marked interactions $h_{ij}$. Lawfulness gives nonnegative majorants $v_i$ with $|k_i(U)|\leq v_i$ and $\sum_i v_i\leq s_0\kappa$. Each interaction has a nonempty forced support, so summing its charge over origins bounds its total weighted price by $q\gamma b_0$. Thus the activity prices are bounded by nonnegative summable numbers $f_i$, with $\sum_i f_i\leq s_0\kappa+q\gamma b_0$.
+
+For a finite set of site-indices, the weighted price of the sum over all subsets is at most the sum of all subset products of the nonnegative individual activity prices $f_i$. This sum is exactly $\prod_i(1+f_i)$, and
+\[
+ \prod_i(1+f_i)\leq\exp\!\left(\sum_i f_i\right),
+\]
+by $1+x\leq e^x$ for $x\geq0$. Admissibility only removes terms; hence the activity price is bounded as claimed. For countably many indices, apply this argument to finite truncations and pass to the increasing limit using the established summability.
+
+Submultiplicativity of weighted price and the exponential-series estimate now combine the additional exponent and activity factor. The pointwise bound on the vacuum exponential contributes $e^{\mathrm{scalar}+s_0\mathrm{exCost}}$. Multiplying the three bounds gives the final inequality.
+\end{proof}
+
+\begin{lemma}[Coefficient integration and vacuum normalization]\label{ex-centered-material-total}
+Let $\mu_0$ be the normalized product-Haar prior on the finite-volume edge variables, define $D_{\mathrm{vac}}(U)$ to be the quiet coefficient of the density, and let $Z=\int D_{\mathrm{vac}}\,d\mu_0$ be the vacuum partition function. The quiet-coefficient identity for the overlay density identifies $D_{\mathrm{vac}}$ with the vacuum evaluation. Suppose the Wilson density is lawful, its vacuum evaluation is nonnegative, and its exponent has the pointwise upper bound $E_0(U)\leq\mathrm{scalar}+s_0\,\mathrm{exCost}$. Then, for each mode $S$,
+\[
+ \left|\int (D(U))_S\,d\mu_0\right|
+ \leq \frac{\exp(\mathrm{scalar}+s_0(\mathrm{exCost}+\kappa)+q(u+c+\gamma b_0))}
+             {\operatorname{toll}_w(S)}.
+ \label{ex-centered-coefficient}
+\]
+If the vacuum coupling is $\beta\geq0$, the local cutoff is $0<s\leq s_{\mathrm{th}}$, and the vacuum exponent has the corresponding lower estimate on the no-flag set, then
+\[
+ Z\geq\exp\!\left(\mathrm{scalar}-s_0(\mathrm{exCost}+\beta\,\mathrm{base}(s))
+                 -4s_0\,d_G\log(16/s)\right),
+ \label{ex-centered-vacuum-lower}
+\]
+where $d_G=\dim_{\mathbb R}\mathfrak g_{\mathrm{mat}}$ is the real dimension of the gauge-matrix representation space. If $N_{\square}$ is the number of plaquette directions per site, $c_0$ the direct quadratic coefficient, and $A$ the path-action envelope, then $\mathrm{base}(s)=N_{\square}\bigl(c_0s^2/2+(As)^2/2\bigr)$ is the quadratic local vacuum price.
+\end{lemma}
+\begin{proof}
+The coefficient of a fixed mode is bounded by the full weighted absolute price divided by that mode's toll: this is the defining inequality $\operatorname{toll}_w(S)|(D)_S|\leq\operatorname{price}_w(D)$. Integrate this pointwise bound against the probability measure $\mu_0$ and apply Lemma~\ref{ex-centered-radial-price}. This proves the coefficient bound and integrability.
+
+For the lower bound, restrict the partition integral to the product event on which every edge variable lies in the small gauge ball of radius $s/4$. A path of length $k$ has group distance at most $ks/4$ by the triangle inequality, so every plaquette flag is zero when $s$ is below the prescribed threshold. On this event the vacuum activity is one, and the lower Wilson exponent estimate gives the integrand at least $\exp(\mathrm{scalar}-s_0(\mathrm{exCost}+\beta\,\mathrm{base}(s)))$. The single-edge small-ball bound is $(s/16)^{d_G}$; there are $4s_0$ edges in four dimensions. Independence of the product prior gives event measure at least $(s/16)^{4s_0d_G}$. Multiplying these bounds and writing $(s/16)^{4s_0d_G}=\exp(-4s_0d_G\log(16/s))$ proves the displayed inequality.
+\end{proof}
+
+\begin{theorem}[Finite-volume normalized lane price]\label{ex-centered-normalized-price}
+Under the hypotheses of Lemmas~\ref{ex-centered-radial-price} and~\ref{ex-centered-material-total}, the normalized expectation of an arbitrary mode $S$ satisfies
+\[
+ \frac{\left|\int(D(U))_S\,d\mu_0\right|}{Z}\,
+ \operatorname{toll}_w(S)
+ \leq \exp\!\left(s_0\left[2\,\mathrm{exCost}+\kappa+\beta\,\mathrm{base}(s)
+                       +4d_G\log(16/s)\right]+q(u+c+\gamma b_0)\right).
+ \label{ex-centered-final-bill}
+\]
+\end{theorem}
+\begin{proof}
+Multiply the coefficient bound by the toll and divide by the positive partition function lower bound. The scalar term cancels. The numerator contributes $\mathrm{scalar}+s_0(\mathrm{exCost}+\kappa)+q(u+c+\gamma b_0)$, and the reciprocal denominator contributes $-\mathrm{scalar}+s_0(\mathrm{exCost}+\beta\,\mathrm{base}(s)+4d_G\log(16/s))$. Adding these exponents gives the result.
+\end{proof}
+
+For a lane with $q=n$ markers in the full mode, constant marker weight $W$, grade $g$ at each marker, and stopping depth $r$, the full-mode toll is $W^n$. The transfer recursion identifies the normalized mode expectation with the lane moment. Its scalar blocking factor has norm $(a_r^g)^n$. Applying Theorem~\ref{ex-centered-normalized-price} therefore gives
+\[
+ (a_r^g)^n|M_{N,p}(U)|W^n\leq e^{\mathrm{FinalBill}},
+\]
+where
+\[
+ \mathrm{FinalBill}=s_0\left[2\,\mathrm{exCost}+\kappa+\beta\,\mathrm{base}(s)+4d_G\log(16/s)\right]
+                       +n(u+c+\gamma b_0).
+\]
+The selected finite-volume history has inverse coupling bounded by twice the stopping-scale reference coupling. The loop-price term is increasing in that coupling, and all remaining vacuum terms are nonnegative. Substituting this bound in the displayed final bill gives
+\[
+ \mathrm{FinalBill}\leq s_0\tau_r+n(u+c+\gamma b_0),\qquad
+ \tau_r=2(\delta_r+\mathrm{loopsPrice}_r)+\kappa_r
+       +\beta_r\,\mathrm{base}_r+4d_G\log(16/s_r),
+\]
+where $\delta_r$ is the stopping-scale allowance, $\kappa_r$ the forced-activity allowance, and $\beta_r:=2\widehat\beta_r$ is twice the stopping-scale reference coupling. This is precisely the per-site vacuum cost appearing in the finite-volume schedule. Since the four-dimensional site count obeys $s_0=n(a_m/a_r)^4$, this is exactly the lane price inequality (\ref{ex-centered-lane-price}). No state-space dimension factor appears; only the displayed vacuum small-ball penalty depends on the real dimension of the gauge-matrix representation space.
+
+\subsection{The stopping-depth bill and its scale conversion}
+
+A stopping-depth record consists of a stop $r_m\geq m$, a lane available at that stop, and constants $W_m>0,u_m,c_m,\gamma_m,b_m>0$. Its bill is
+\[
+ B_m=\left(\frac{a_m}{a_{r_m}}\right)^4\tau_{r_m}+u_m+c_m+\gamma_m b_m
+          +g\log\frac1{a_{r_m}}-\log W_m.
+\]
+The lane-to-root lemma says that the root norm is at most $e^{B_m}$. We now derive the exponent bound on $B_m$ from the price balance and coverage estimates that occur in the construction.
+
+Let $\sigma_i=\log(1/a_i)$, and let $p(i)\geq i$ be the opened scale selected by the schedule's interpolation rule. Write $\rho_i=a_i/a_{p(i)}=e^{\sigma_{p(i)}-\sigma_i}$. The price-balance estimate and the vacuum price estimate provide, for any $z>0$, eventually in $i$,
+\[
+ \rho_i^4\,\mathrm{fiat}_{p(i)}\leq z\sigma_{p(i)},\qquad
+ \tau_{p(i)}\leq\mathrm{fiat}_{p(i)}.
+\]
+The coverage certificate at the selected stop provides
+\[
+ u_i+c_i+\gamma_i b_i-\log W_i\leq z\sigma_{p(i)}.
+\]
+Because $\mathrm{fiat}_{p(i)}\geq1$ and $\log\rho_i\leq\rho_i^4\mathrm{fiat}_{p(i)}$, we also have
+\[
+ 0\leq\sigma_{p(i)}-\sigma_i\leq z\sigma_{p(i)}.
+\]
+Substitute these three bounds in the bill. The first radial/vacuum term and the coverage residual each cost at most $z\sigma_{p(i)}$, and the grade term is $g\sigma_i+g(\sigma_{p(i)}-\sigma_i)$. Hence
+\[
+ B_i\leq g\sigma_i+z(g+2)\sigma_{p(i)}.
+\]
+Choose $z=\min(\eta/4,\eta/(4(g+\eta)))$. Then $z\leq1/4$, so $\sigma_i\geq(1-z)\sigma_{p(i)}$. If $g\leq1$, use $z\leq\eta/4$ and $g+2\leq3$; if $g\geq1$, use $z\leq\eta/(4(g+\eta))$ and $g+2\leq3g$. In either case $z(g+2)/(1-z)\leq\eta$. Thus $B_i\leq(g+\eta)\sigma_i$ eventually.
+
+The selected scales satisfy $p(i)\geq i$, so they tend to infinity. The stated bounds enter as follows: the schedule's pay estimate gives the first inequality for every $z>0$; the vacuum price theorem gives $\tau_{p(i)}\leq\mathrm{fiat}_{p(i)}$; and the lane coverage estimate gives the second line. A finite initial set of depths is absorbed by the prefactor
+\[
+ A=\max\left(1,\max_{m_{\rm ref}\leq i<i_0}
+             \frac{e^{B_i}}{a_i^{-g-\eta}}\right).
+\]
+For all later $i$, the bill bound already gives ratio at most one. This is the finite-prefix step used in the marker-certificate argument; the precise order is: choose $z$ from $\eta$, then take the scale tail on which pay, vacuum-price, and coverage estimates all hold.
+
+\subsection{From records to the centered budget}
+
+A stop service certificate at input depth $m$ has four concrete consequences: $m\leq r_m$; for every sufficiently large volume $N$ and every period $p$ it supplies a lane from $r_m$ to $N$; the lane works through every intermediate slab and its stopping slab has the radial data used above; and its load/origin identities match the centered copies of the requested observable at the origin. The service tail in $N$ is common to all $p$ and to all labels in the prescribed bounded set. A record sequence with this service property and the bill estimate above is the exact output needed by the root-to-budget conversion.
+
+For each grade $g$, norm bound $R>0$, and exponent slack $\eta>0$, assume the producer supplies one sequence of stop records $m\mapsto(r_m,W_m,u_m,c_m,\gamma_m,b_m)$, independent of the observable label, period, and volume. For every depth $m\geq m_{\rm ref}$ it supplies a service certificate with one volume tail common to every period and every label in the norm ball. There is one depth $m_0$ such that $B_m\leq(g+\eta)\sigma_m$ for every $m\geq m_0$; the bills at each of the finitely many depths $m_{\rm ref}\leq m<m_0$ are finite and common to those labels. The preceding scale argument absorbs this finite prefix into one $A$, independent of period and volume. At every later depth the lane price theorem, Lemma~\ref{ex-centered-lane-bound}, and translation-to-all-sites lemma yield
+\[
+ \mathcal R_{\mathcal T_{m,p}}(F_x)\leq A a_m^{-g-\eta}
+\]
+for every site $x$, every period, and eventually in volume. The finite stencil fit gives chamber interiority at each site. This is precisely the universal-period centered estimate: after choosing $g,R,\eta$, one constant $A$ works for every depth beyond the grade reference, and for each such depth one volume tail works for all periods and bounded labels. Restricting this tail to any fixed period gives the fixed-period budget; keeping the universal period quantifier gives the expanding-period budget.
+
+The remaining producer input is the construction of these records from the Wilson/RG trajectory. In the source, it is packaged as the condition that for each grade and norm radius there is a ready and covering schedule of marker certificates. The argument above proves what that condition buys quantitatively; it does not infer ready/covering certificates from the existence of a Wilson trajectory alone.
+
+\subsection{Quantitative gates and the actual producer boundary}
+
+Two source estimates needed by the stop producer are elementary enough to give in full. The first converts geometric separation into cover price.
+
+\begin{lemma}[Price of a separated marker set]\label{ex-centered-cover-price}
+Let $S$ be a support with a cover by $D$ cells of radius $B$, where $B\geq8$. Suppose a ring traversal of these cells has length $N\leq D(4B+2)$, and that the traversal is $1$-Lipschitz in the torus distance. If $F$ is a set of at least two markers in $S$ whose pairwise distances are at least $B^2$, then
+\[
+ B|F|\leq64D.
+\]
+\end{lemma}
+\begin{proof}
+For each $x\in F$, choose a traversal time $t_x\leq N$ at which the traversal visits a cover cell within distance $B$ of $x$. Order the times. For two distinct markers $x,y$ with $t_x\leq t_y$, the triangle inequality and the $1$-Lipschitz property give
+\[
+ B^2\leq \operatorname{sep}(x,y)
+ \leq B+(t_y-t_x)+B,
+\]
+so consecutive ordered times are separated by at least $B^2-2B$. Hence $(|F|-1)(B^2-2B)\leq N$. Since $B\geq8$, we have $B^2-2B\geq3B^2/4$, and therefore $B^2/(B^2-2B)\leq4/3$. Also $N\geq B^2-2B\geq3B^2/4$, because $|F|\geq2$. It follows that
+\[
+ |F|B^2=(|F|-1)B^2+B^2\leq\frac43N+\frac43N\leq4N.
+\]
+Using the traversal-length bound, $4N\leq4D(4B+2)\leq64BD$ for $B\geq8$. Divide by $B>0$.
+\end{proof}
+
+The second estimate is the stop-width price. It identifies exactly why the accumulated column expense is sublinear, rather than treating that fact as a qualitative schedule property.
+
+\begin{lemma}[Sublinear width bill]\label{ex-centered-width-bill}
+Suppose $\sigma_i\to\infty$, $\sigma_{i+1}-\sigma_i=\log L_i$ with $L_i>1$, and $c_i\geq1$ are column counts satisfying, for every $\epsilon>0$, eventually
+\[
+ \log c_{i+1}\leq\frac{\epsilon}{2}\log L_i.
+\]
+Assume $\log\widehat\beta_i=o(\sigma_i)$ and that the derivative order $\nu_i$ satisfies $\nu_i!\leq c_i$. For fixed $\lambda>0$ and $\ell\in\mathbb N$, set
+\[
+ W_i=\frac{\widehat\beta_i^{-\ell/2}}
+ {\lambda c_i\prod_{j<i}c_{j+1}},\qquad w_i=\frac{W_i}{\nu_i!}.
+\]
+Then $5-\log w_i=o(\sigma_i)$.
+\end{lemma}
+\begin{proof}
+Fix $\epsilon>0$ and choose $J$ so that the increment bound holds for all $i\geq J$. Put $F_i=\sum_{j<i}\log c_{j+1}$. Telescoping the scale increments gives, for $i\geq J$,
+\[
+ F_i\leq F_J+\frac{\epsilon}{2}(\sigma_i-\sigma_J).
+\]
+Since $F_J$ and $\sigma_J$ are fixed and $\sigma_i\to\infty$, eventually $F_i\leq\epsilon\sigma_i$. For $i\geq1$, $\log c_i\leq F_i$; the factorial inequality gives $\log(\nu_i!)\leq\log c_i$. Thus
+\[
+ 5-\log w_i
+ =5+\log\lambda+\frac{\ell}{2}\log\widehat\beta_i
+   +\log c_i+F_i+\log(\nu_i!)
+ \leq5+\log\lambda+\frac{\ell}{2}\log\widehat\beta_i+3F_i.
+\]
+Divide by $\sigma_i$. The constant terms vanish in the limit, the $\widehat\beta_i$ term tends to zero by hypothesis, and $F_i/\sigma_i$ can be made arbitrarily small by the preceding argument. This proves the claim.
+\end{proof}
+
+Here is the exact unresolved production interface. A family-realization certificate supplies the physical local cylinder observables, translation/signed-coordinate/reality identities, locality, reference depths, stencil fit, and priced section bounds. The prepared-schedule certificate consists of a Tabs partition property, factorial column bounds, a derivative atlas at every scale, an adjacent-scale steepness inequality, and a shape inequality. The source obtains this package from a paid numerical schedule and the gates described in the evidence record; it is not supplied by the family-realization certificate. The cutoff-thickness input is an eventual-in-volume, uniform-in-period bound: there must be nonnegative numbers $k_i$ with $|K_i(U)|\leq k_i$ for all configurations and a summable support-charge estimate for the forced activity sector at the terminal scale. It does not follow from vacuum positivity alone.
+
+Most significantly, the offered-lane input already includes the physical step estimate. In mathematical notation, if $A,A'$ are the marker arrays at consecutive scales and $D$ is the grade map, it asserts for every positive weight family $w$ that
+\[
+ \operatorname{Spent}_{\rm entire}(A',w,0,\Delta_{i+1},\tfrac12g_{i+1}^2)
+ \Longrightarrow
+ \operatorname{Spent}_{\rm mixed}
+ \left(A,\left(\frac{w_x}{\operatorname{fee}_i(D_x)}\right)_x,
+ 1,\Delta_i,\operatorname{quote}_i\right).
+\]
+An offered lane also contains a terminal admissible birth expansion, the terminal product identity, the slab-by-slab transfer identities, aligned origin ancestry, and a ticket which separates all distinct marker origins. Its quantifiers are: for each grade and norm radius, one ticket constant works at every opened pair of coarse level and stop level; after a common sufficiently-large-volume threshold, every period and every label in the bounded ball has such a lane. Thus the raw estimate is not a consequence of the ticket or of formal exactness.
+
+The source's conditional consumer chain is precise: the multiscale lane estimate uses prepared atlas bounds and the cutoff thickness estimate to prove the terminal birth bound; it then inducts backwards, using the supplied raw step estimate and separated-origin geometry. The numerical support-price lemma above, factorial resale, ticket ancestry, and width-bill lemma yield radial stop data with constants $(1,2,2,1)$. The service and coverage predicates are then converted into eventual bill bounds by the price/pay argument proved earlier in this section. The source invokes this chain to pass from family realization, preparation, all-period thickness, and the offered-lane input to the centered estimate.
+
+This chapter proves the finite-volume density price, vacuum normalization, scale arithmetic, and the two displayed numerical lemmas. It does not prove the terminal birth estimate or the raw one-step estimate from the Wilson/RG trajectory. In the current source, the optional raw-step theorem is conditional on additional component trajectories, certified support/vertex bounds, and integration inputs; the actual offered-lane predicate itself includes the raw estimate. Construction of those lanes and the thickness bound is therefore a separate substantive producer obligation, not a compactness or transfer consequence. The exact source trace and next dependencies are recorded in the evidence file.

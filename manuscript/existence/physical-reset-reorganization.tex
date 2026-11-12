@@ -1,0 +1,336 @@
+\section{Reorganizing the actual return before resetting the coupling}
+\label{sec:physical-reset-reorganization}
+We now turn the local return into the particular activity family used
+in the scalar selection. This requires an identity on every field.
+The difference between a local quadratic counterterm and the clipped
+kinetic action has a contribution on unhealthy fields, which must
+remain in the forced gas.
+
+Fix the compact parameter interval, dictionary and local return of
+Section~\ref{sec:selected-nonlinear-offering}. Work first at one
+parameter value. Let $V=|\Lambda|$, let $0<t\le1$ be the coarse
+threshold, and write $f_i$ for its regular entries, anchored at $o_i$
+on supports $X_i$. Let $k_i$ be its forced entries. The budget has
+radius $B\ge2$, support exponent $b>0$, derivative order $q\in\mathbb N$, $q\ge2$,
+and spatial power $p\in\mathbb N$, $p\ge1$. The early regular majorants $u_i\ge0$ obey
+\begin{equation}\label{eq:reset-early-majorant}
+ \|f_i\|_{o_i,X_i}\le u_i,\qquad
+ \sum_{i:o_i=o}e^{(b+3)c_B(X_i)}u_i\le H
+                         \quad(o\in\Lambda),
+\end{equation}
+where $c_B$ is the covering number. The forced majorants obey the
+rooted hit bound at exponent $b+1$, of cost $w$. All entries transform
+under the same permutations of labels for translations and signed
+lattice symmetries. The selected path has width $\sigma>0$, row and
+higher-atom price $C$, and relaxation radius $r_c$ with
+\[
+             12\le r_c\sigma,\qquad (b+1)/B\le\sigma/4.
+\]
+Its clipping parameters satisfy the geometric conditions ensuring that
+the kept-row test is local in the radius-$B$ halo. These are the
+conditions already used for the actual clipped path. The torus side
+is greater than $20$.
+
+\subsection{The scalar coefficient extracted from the local Hessians}
+For each $i$ put $Z_i=X_i\cup\operatorname{halo}_2\{o_i\}$.
+On a nonwrapping $Z_i$, let $Q_i(a,d)$ be the coefficient of the
+Hessian of $f_i$ on affine fields with constant curvature in the
+plaquette directions $a,d$. The colour dependence is the invariant
+inner product: simplicity of the Lie algebra identifies every
+invariant bilinear form with a scalar multiple of it. Set $Q_i=0$
+when $Z_i$ wraps. This convention is preserved by the label symmetries.
+The Hessian estimates give
+\begin{equation}\label{eq:reset-projection-price}
+ t^2|Q_i(a,a)|\le u_i,\qquad t^2|Q_i(a,d)|\le3u_i.
+\end{equation}
+Indeed, test a unit colour vector on one affine curvature direction,
+scaled by $t$, for the first inequality. Its link size is bounded by
+$t\operatorname{dist}(e_-,o)$, hence by
+$t(1+\operatorname{dist}(e_-,o))^p$, so it is an admissible direction.
+For the second use the
+direction $t(A_a+A_d)/2$. Expanding its symmetric Hessian gives four
+times this diagonal test minus the two single-direction tests, divided
+by two. The derivative bounds give $(4+1+1)u_i/2=3u_i$.
+For wrapping supports the inequalities hold because $Q_i=0$.
+
+The series $Q_o(a,d)=\sum_{i:o_i=o}Q_i(a,d)$ converges absolutely
+by \eqref{eq:reset-early-majorant}. Reindexing the label series by a
+translation shows that $Q_o$ is independent of $o$. Reindexing by a
+reflection of an axis lying in exactly one of two distinct plaquette
+pairs changes the sign of the corresponding off-diagonal coefficient,
+so that coefficient is zero. An unsigned permutation carries any
+plaquette pair to any other, so all diagonal coefficients agree.
+Consequently there is one real number $\Delta$ with
+\begin{equation}\label{eq:reset-isotropic-coefficient}
+                   Q_o(a,d)=\Delta\,\delta_{ad},
+                       \qquad t^2|\Delta|\le H.
+\end{equation}
+The last bound uses the diagonal estimate in
+\eqref{eq:reset-projection-price} at a single anchor; no volume factor
+occurs.
+
+The curvature read in the counterterm is the signed clover. For an
+axis pair $a=(i,j)$, put
+\[
+ \phi_a(o,U)=\frac14\sum_{\epsilon,\eta\in\{\pm1\}}
+ \epsilon\eta\,\operatorname{curv}_G
+ \bigl(U(o;\epsilon e_i,\eta e_j,-\epsilon e_i,-\eta e_j)\bigr),
+\]
+where the argument is the holonomy of the indicated four-step loop
+based at $o$, and $\operatorname{curv}_G$ is the fixed normalized
+Lie-algebra projection. Each loop lies in the radius-two halo. A gauge
+transformation acts by the adjoint at $o$; a signed lattice symmetry
+permutes these four loops and their signs. This gives exactly the
+signed two-form transformation law at the common anchor. On the
+exponential line of an affine link field of constant curvature $w$,
+the derivative of each oriented loop's curvature at zero is
+$\epsilon\eta w_a$. The average therefore has derivative $w_a$,
+with no extra normalization factor. Define
+\[
+ P_i(U)=\frac12\sum_{a,d}Q_i(a,d)
+                  \langle\phi_a(o_i,U),\phi_d(o_i,U)\rangle,
+ \qquad r_i=f_i-f_i(1)-P_i.
+\]
+The affine Hessian of $r_i$ vanishes on nonwrapping supports, and
+$r_i(1)=0$. Write $\chi_X$ for the healthy-set indicator on $X$.
+Define the supported discrepancy
+\[
+ d_i=f_i(1)+\chi_{\{o_i\}}P_i-\chi_{X_i}f_i
+                                  +\chi_{Z_i}r_i.
+\]
+It vanishes when $Z_i$ is healthy. This is the exact masked splitting
+of Section~\ref{sec:local-splitting}, specialized to the quadratic
+projection and with the displayed sign convention. Put
+\[
+ c_0=\sum_i f_i(1),\quad D=\sum_i d_i,\quad
+ R_0=\sum_i\chi_{Z_i}r_i,\quad
+ h(U)=\frac12\sum_o\chi_{\{o\}}(U)\sum_a|\phi_a(o,U)|^2.
+\]
+All sums converge absolutely. For example each summand is bounded by
+a fixed multiple of $u_i$, and summing
+\eqref{eq:reset-early-majorant} over the finite set of anchors bounds
+$\sum_i u_i$ by $VH$. The isotropic coefficient identity now gives
+\begin{equation}\label{eq:reset-first-split}
+                \sum_i\chi_{X_i}f_i=c_0+\Delta h-D+R_0.
+\end{equation}
+The common singleton indicator at each anchor is essential to summing
+the quadratic counterterms before using isotropy.
+
+\subsection{Replacing the quadratic counterterm by the selected path}
+Write $\mathcal K$ for the actual clipped kinetic action and
+$\mathcal L$ for its loop part. The early return is
+\begin{equation}\label{eq:reset-early-density}
+ e^{V\tau-\beta\mathcal K(U)-\mathcal L(U)
+             -\sum_i\chi_{X_i}(U)f_i(U)-\alpha\mathcal Q(U)}
+                            \mathcal G(U).
+\end{equation}
+Here $\mathcal G$ is the early forced gas and $\mathcal Q$ is the
+masked low-channel presentation of the quadratic action. It includes
+the kept-row halo in each support. Thus it is specified before the
+reset; it is not the full kinetic action on arbitrary fields.
+
+We describe the needed identity channel by channel. A low channel
+is either a plaquette term or an ordered pair of entries in one row
+of the selected path. Denote its coefficient by $a_d$, its unmasked
+quadratic field by $P_d$, its local constant-curvature substitute by
+$Q_d$, and its actual clipped or kept field by $L_d$. For a row pair,
+\[
+ a_d=c_i c_j,\qquad
+ P_d=\tfrac12\langle\phi_i,\phi_j\rangle,
+ \qquad Q_d=\tfrac12\langle\phi_{a_i},\phi_{a_j}\rangle.
+\]
+The latter curvature reads are at the common anchor. For a plaquette,
+$a_d$ is the direct coefficient, $P_d$ is its plaquette action and
+$Q_d$ is half the squared local curvature. Let $Y_d$ be the union of
+the radius-$B$ anchor halo with the two walks when present. On its
+healthy set, $L_d=a_dP_d$. Define
+\begin{align*}
+ F_d&=\Delta a_d(Q_d-P_d),\\
+ J_d&=(\alpha+\Delta)L_d
+              -\Delta a_d\chi_{\{o\}}Q_d
+                    \quad\hbox{on the complement of the healthy set of }Y_d,
+\end{align*}
+and set $J_d=0$ on that healthy set. Directly in these two cases,
+\begin{equation}\label{eq:reset-low-identity}
+ (\alpha+\Delta)L_d+\chi_{Y_d}F_d
+   =\alpha\chi_{Y_d}a_dP_d
+                      +\Delta a_d\chi_{\{o\}}Q_d+J_d.
+\end{equation}
+This also proves that the discrepancy is supported on an unhealthy
+$Y_d$. No derivative of its indicator is needed.
+
+Average these identities over signed symmetries and sum over
+translations, with normalization $1/|\mathcal S|$ for the signed group
+$\mathcal S$. This normalization is applied to every channel, including
+its discrepancy. To identify the quadratic substitute, let $S(0)$ be the actual
+zero-momentum row matrix. Absolute row summability permits the
+row-pair sum to be regrouped as
+\[
+ \sum_d a_d Q_d(w)
+   =\tfrac12\{c_{\rm direct}\|w\|^2+\|S(0)w\|^2\}
+   =\tfrac12\|w\|^2.
+\]
+The second equality is the selected metric normalization
+$c_{\rm direct}I+S(0)^TS(0)=I$. Multiplying by the singleton healthy
+indicator and summing anchors gives $h$; the signed average preserves
+the squared norm of the clover. Thus the averaged sum of
+$a_d\chi_{\{o\}}Q_d$ is exactly $h$. The averaged sum of
+$\chi_{Y_d}a_dP_d$ is $\mathcal Q$.
+For every cubic or quartic path atom $A_d$, add the regular correction
+$-(\alpha+\Delta)A_d$ on its original mask. These atoms have zero
+affine Hessian because their curvature factors vanish at the identity
+and their degrees are at least three. Denote the complete averaged
+regular correction by $F$, and the averaged sum of $J_d$ by $J$.
+Since the low and high channels sum to $\mathcal K$, equation
+\eqref{eq:reset-low-identity} becomes
+\begin{equation}\label{eq:reset-path-identity}
+       (\alpha+\Delta)\mathcal K+F
+                              =\alpha\mathcal Q+\Delta h+J.
+\end{equation}
+The low correction also has zero affine Hessian: on an affine field
+at the identity, transport along each path has the same first
+curvature derivative as its constant-curvature substitute. Thus
+$Q_d-P_d$ has zero second derivative there. Polarization gives the
+mixed assertion. This argument is only used on nonwrapping supports,
+where the affine field and its walks have their specified lifts.
+
+Combining \eqref{eq:reset-first-split} and
+\eqref{eq:reset-path-identity} in \eqref{eq:reset-early-density} gives
+\begin{equation}\label{eq:reset-complete-density}
+ e^{V(\tau-c_0/V)-(\beta+\alpha+\Delta)\mathcal K
+                          -\mathcal L-(R_0+F)}
+                                     \mathcal G\,e^{D+J}.
+\end{equation}
+Every sign follows by substituting the two displayed identities.
+This equality holds even where $\mathcal G$ vanishes or changes sign.
+Absorb $D+J$ into that gas using the supported exponential construction
+of Section~\ref{sec:soft-log-fusion}. Its hypotheses hold because each
+discrepancy vanishes on its healthy support. This constructs the actual
+output at coupling $\beta+\alpha+\Delta$ and vacuum parameter
+$\tau-c_0/V$.
+
+\subsection{The regular and forced costs of this reorganization}
+We give the numerical bounds so that this identity is accompanied
+by estimates for its actual arrays. Let $C_{\rm pair}$ be the
+fixed ordered-derivative price for a pair of local curvatures, and put
+\[
+ C_{\rm sub}=2+\tfrac32|\mathcal A|^2C_{\rm pair},
+                  \qquad C_{\rm reset}=e^{81b}C_{\rm sub},
+\]
+where $\mathcal A$ is the six-element set of plaquette axes.
+Equation~\eqref{eq:reset-projection-price} and the product rule bound
+both the regular norm of $r_i$ and the value of $d_i$ by
+$C_{\rm sub}u_i$. The added radius-two halo increases the cover number
+by at most $81$, whence the regular cost is at most
+$C_{\rm reset}H$. Its hit cost, denoted $S(H)$, is the footprint
+payment with population radius $4B+2$, support increment $81$,
+input exponent $b+3$ and output exponent $b+1$. This is the explicit
+footprint sum of Section~\ref{subsec:ex-lattice-rg-crowd}; it is linear
+in $H$ and has only polynomial dependence on $B$ at fixed stage.
+
+Let $C_{\rm turn}$ be the ordered-derivative cost of a signed
+pullback. For the low and high channels let $L_0,L_1$ be their rooted
+regular sums after support weighting but before this pullback cost.
+Let $L_h$ be the low-channel hit sum, with the relaxation factor
+$e^{\ell_d/r_c}$ included. The channel estimates give
+\begin{align}
+ \|F_{\rm low}\|&\le C_{\rm turn}|\Delta|t^2L_0,\nonumber\\
+ \|F_{\rm high}\|&\le C_{\rm turn}|\alpha+\Delta|t^3L_1,
+                                                    \label{eq:reset-channel-costs}\\
+ \|J\|_{\rm hit}&\le
+ \left(2t|\alpha+\Delta|+\tfrac12C_{\rm pair}t^2|\Delta|\right)L_h.
+                                                        \nonumber
+\end{align}
+Here is the summability behind these costs. A low support satisfies
+$Bc_B(Y_d)\le85B+\ell_d$ and a high support satisfies
+$Bc_B(Y_d)\le9B+\ell_d$. The weighted row-pair sum is the product
+of the two weighted row sums, hence is bounded by $C^2$; the direct
+plaquette contribution adds its fixed coefficient. Derivatives of
+fixed order multiply these charges by a fixed polynomial in
+$1+\ell_d$. The inequality
+$(1+\ell)^k\le C_{k,\epsilon}e^{\epsilon\ell}$, obtained by
+maximizing $(1+x)^ke^{-\epsilon x}$ on $x\ge0$, pays this polynomial
+from half the width. The remaining half pays the support weight.
+For the hit sum, $r_c^{-1}\le\sigma/12$ and
+$(b+1)/B\le\sigma/4$ leave positive width for the rooted footprint
+sum. These statements hold term by term with absolute coefficients,
+so also for the countable channel sums.
+
+The low regular estimate in \eqref{eq:reset-channel-costs} follows
+from the two curvature factors in $P_d,Q_d$. For its discrepancy,
+the kept-row bound is
+$|L_d|\le2t e^{\ell_d/r_c}|a_d|$, and the singleton-masked
+substitute has size at most $C_{\rm pair}t^2/2$.
+The triangle inequality gives the third estimate. The high estimate
+uses $t^4\le t^3$ and the cubic and quartic path bounds.
+Finally \eqref{eq:reset-isotropic-coefficient} and $t\le1$ imply
+\[
+ |\alpha+\Delta|t^3\le |\alpha|t^3+H,
+ \qquad
+ 2t|\alpha+\Delta|+\tfrac12C_{\rm pair}t^2|\Delta|
+ \le2t(|\alpha|+H/t^2)+\tfrac12C_{\rm pair}H.
+\]
+Thus the full regular and soft costs are bounded respectively by
+\begin{align*}
+ E_{\rm new}&=C_{\rm reset}H+
+       C_{\rm turn}\{HL_0+(|\alpha|t^3+H)L_1\},\\
+ S_{\rm new}&=S(H)+
+       \{2t(|\alpha|+H/t^2)+\tfrac12C_{\rm pair}H\}L_h.
+\end{align*}
+The numerical purchases require $E_{\rm new}\le\delta$ and the
+hard/soft absorption inequalities for the pair $(w,S_{\rm new})$
+and target $\gamma$. The payment proved in
+Section~\ref{sec:nonlinear-payment-selection} gives those inequalities
+on the selected sufficiently late entries. The output therefore has
+regular cost $\delta$ and forced cost $\gamma$, with the original
+locality, symmetry and affine-Hessian conditions. These numerical
+purchases must be imposed on this same output budget.
+
+\subsection{The two healthy tests and the actual reset}
+Suppose the early cost obeys $H\le F/4$, where $F$ is the scalar
+fund used in Section~\ref{sec:coupling-reset-selection}. On a globally
+healthy field all masks are one and the early gas is one. The early
+density is consequently
+\[
+ H_x(U)=\exp\{V\tau-\beta\mathcal K(U)
+                         -\alpha\mathcal K_2(U)-\mathcal L(U)-E(U)\},
+ \qquad |E(U)|\le VH.
+\]
+Here $\mathcal K_2$ is the quadratic part and $E$ the early regular
+sum. At $U=1$, the three path terms vanish, so positivity is explicit
+and
+\[
+ \left|V^{-1}\log H_x(1)-\tau\right|\le H,\qquad
+ |E(U)-E(1)|\le2VH\le VF/2.
+\]
+The difference of the full kinetic action and its quadratic part has
+size at most $2VCt^3$: each cubic and quartic atom is bounded by its
+row charge times $t^3$ or $t^4$, respectively, and $t^4\le t^3$.
+The selected path construction bounds
+$|\alpha|\le A_j$, uniformly in cutoff and period, where
+$A_j$ is its drift bound plus $|s_G\log L_j|$ for the fixed stage.
+Purchase $2A_jCt^3\le F/2$. This is possible at each fixed stage since $t=x^{-1/2}e^{(\log\log x)^2}$, while $F$ is a
+positive stage constant times $x^{-11/10}$; their ratio tends to
+zero. Adding the two errors proves the precise surplus bound $VF$
+at the nontrivial healthy test. The vacuum error is bounded by $F/4$.
+
+The output arrays in \eqref{eq:reset-complete-density} depend on the
+computed $\Delta$, and are fixed while the trial dial varies. Their
+dial-motion cost is therefore zero. Their continuity in the original
+parameter follows from the common-dictionary comparison: the projection
+is linear and bounded by \eqref{eq:reset-projection-price}, its sum
+is absolutely controlled, and the remaining operations are sums,
+fixed pullbacks and the paid forced absorption. The scalar selection
+therefore applies to these arrays. Its residual is
+$(d-\Delta)\mathcal K(U_*)$, so the selected dial is exactly
+$\Delta$. Its vacuum value is exactly $\tau-c_0/V$ by
+\eqref{eq:reset-complete-density} at the identity.
+
+Finally retain this constructed family as the witness for the
+history step. The recipe conditions refer to its actual supports,
+normalized density identity, regular and forced bounds, and bound
+$t^2|\Delta|\le H$. They are supplied by the construction above and
+the separately purchased recipe permissions. Equality of densities
+by itself would not supply those permissions. Once the common funding
+provides them, this is the continuous one-step map used in the
+surviving-interval induction.

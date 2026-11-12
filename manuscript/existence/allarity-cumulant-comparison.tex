@@ -1,0 +1,224 @@
+\section{From calibrated Gaussian moments to cumulants}
+\label{sec:allarity-cumulant-comparison}
+
+The marked comparison uses all subsets of a finite insertion word. Its
+Gaussian calculation must therefore control products before taking the
+finite logarithm. We give the degree-dependent estimates with the powers
+used in the scale purchases. The covariance and calibration hypotheses
+are stated explicitly; their common-atlas construction is needed when
+this calculation is applied to the selected history.
+
+\subsection{A dimension-independent polynomial estimate}
+
+For a polynomial $p$ in finitely many commuting variables, write
+$|p|_1$ for the sum of the absolute values of its coefficients. It is
+submultiplicative: expand a product, apply the triangle inequality to
+each coefficient, and then sum over the two original monomial indices.
+Let $\mathcal W_{Q,\mu}$ be the Wick evaluation with symmetric
+covariance $Q$ and mean $\mu$. No positivity is needed in this algebraic
+calculation. The defining recurrence, for a product of $j$ coordinate
+variables, is
+\begin{equation}\label{eq:allarity-wick-recursion}
+ \mathcal W_{Q,\mu}(X_{i_1}\cdots X_{i_j})
+ =\mu_{i_1}\mathcal W_{Q,\mu}(X_{i_2}\cdots X_{i_j})
+  +\sum_{\ell=2}^j Q_{i_1i_\ell}
+       \mathcal W_{Q,\mu}\left(\prod_{a\ne1,\ell}X_{i_a}\right),
+\end{equation}
+with value one on the empty product. Repeated coordinate indices are
+allowed: their positions in this recurrence remain distinct.
+
+Assume $B\ge1$, $|\mu_i|\le B$ and $|Q_{ij}|\le B$ for every
+coordinate used. Define $C_d(B)=[2B(d+1)]^d$, including $C_0(B)=1$.
+Then every polynomial of degree at most $d$ satisfies
+\begin{equation}\label{eq:allarity-wick-bound}
+           |\mathcal W_{Q,\mu}(p)|\le |p|_1 C_d(B).
+\end{equation}
+If a second pair $(Q',\mu')$ obeys the same bounds and
+$|Q_{ij}-Q'_{ij}|,|\mu_i-\mu'_i|\le\varepsilon$, then
+\begin{equation}\label{eq:allarity-wick-difference}
+ |\mathcal W_{Q,\mu}(p)-\mathcal W_{Q',\mu'}(p)|
+                   \le |p|_1\varepsilon C_d(B).
+\end{equation}
+Here $\varepsilon\ge0$ can be arbitrary.
+
+We prove both estimates on monomials by simultaneous induction on the
+degree ceiling $d$. At degree zero their assertions are respectively
+$1\le1$ and $0\le\varepsilon$. For a nonempty monomial of degree at
+most $d+1$, the recurrence has one mean term and at most $d$ covariance
+terms. Every remaining product has degree at most $d$. Thus the first
+bound is at most $(d+1)B C_d(B)\le C_{d+1}(B)$.
+For a difference of terms use
+$ab-a'b'=a(b-b')+(a-a')b'$. The induction bounds its absolute value
+by $B\varepsilon C_d(B)+\varepsilon C_d(B)$, at most
+$2B\varepsilon C_d(B)$. Summing at most $d+1$ such terms gives
+$2B(d+1)\varepsilon C_d(B)\le\varepsilon C_{d+1}(B)$.
+The inequalities follow from
+$C_d(B)\le[2B(d+2)]^d$. The empty monomial satisfies both bounds
+at every degree ceiling. Finally expand $p$ in monomials and sum their
+absolute coefficients. This proves \eqref{eq:allarity-wick-bound}
+and \eqref{eq:allarity-wick-difference} without a factor depending on
+the number of coordinate variables.
+
+\subsection{Calibrated vertices and their products}
+
+Fix $n$ insertion slots, a common polynomial degree bound $k$, and
+possibly different grades $g_i$ for the slots. Here $n,k,g_i$ are
+nonnegative integers, and all error parameters $\xi,\varepsilon$ are
+nonnegative. After substituting the
+actual linear reader map, write $H_i$ for the polynomial of slot $i$.
+Let $F_i$ be its intended free polynomial, embedded in the physical
+coordinates of the same enlarged variable space. Suppose the grade
+truncation of $H_i$ through grade $g_i$ is exactly $F_i$.
+Every variable has a nonnegative integer grade. For $r\ge1$, write
+\[
+ |p|_{1,r}=\sum_\alpha |p_\alpha|r^{\operatorname{grade}(\alpha)}.
+\]
+Every monomial of $H_i-F_i$ has grade at least $g_i+1$, whence
+\begin{equation}\label{eq:allarity-grade-tail}
+ r^{g_i+1}|H_i-F_i|_1\le |H_i|_{1,r}.
+\end{equation}
+This uses the exact low-grade identity, so no difference of two large
+low-grade coefficients is being estimated.
+
+Suppose the incoming polynomial has coefficient norm at most $a_i$
+and degree at most $k$, and every substituted linear coordinate has
+weighted norm at most $b\ge1$. Expanding each monomial and using
+submultiplicativity gives $|H_i|_{1,r}\le a_i b^k$. Thus the purchase
+\[
+                    a_i b^k\le\xi r^{g_i+1}
+\]
+implies $|H_i-F_i|_1\le\xi$. Also assume $|F_i|_1\le A$, where
+$A\ge1$. Then $|H_i|_1\le A+\xi$.
+For a subset $I$ of slots, telescope the product one factor at a time.
+Every summand contains one difference $H_i-F_i$ and $|I|-1$ factors
+whose norm is at most $A+\xi$. Therefore
+\begin{equation}\label{eq:allarity-vertex-product}
+ \left|\prod_{i\in I}H_i-\prod_{i\in I}F_i\right|_1
+ \le |I|\xi(A+\xi)^{|I|-1}
+ \le n\xi(A+\xi)^n.
+\end{equation}
+For $I=\varnothing$ the difference is zero. Polynomial degrees are at
+most $nk$, both before and after substitution and truncation.
+
+The actual reader covariance and mean must be the pullbacks of a common
+pair $(Q,\mu)$ on the enlarged variable space. Substitution then commutes
+with Wick evaluation. To verify this, apply
+\eqref{eq:allarity-wick-recursion} to products of substituted linear
+forms. Their means are the linear pullbacks of $\mu$ and their pairings
+are the bilinear pullbacks of $Q$. Induction on the number of factors
+gives the identity on monomials; linearity gives it on all polynomials.
+This establishes the needed identity without changing Gaussian variables
+separately for each slot.
+
+Assume all entries of $(Q,\mu)$ are bounded by $B\ge1$, and its
+restriction to the physical coordinates is within $\varepsilon$ of
+the free covariance with zero mean, whose entries are also bounded by
+$B$. The $F_i$ involve only these physical coordinates. Insert and
+subtract the Wick evaluation of $\prod_{i\in I}F_i$ at $(Q,\mu)$.
+Equations \eqref{eq:allarity-wick-bound}--\eqref{eq:allarity-vertex-product}
+give, for every subset $I$,
+\begin{equation}\label{eq:allarity-moment-error}
+ \left|\mathcal W_{Q,\mu}\left(\prod_{i\in I}H_i\right)
+       -\mathcal W_{\rm free}\left(\prod_{i\in I}F_i\right)\right|
+ \le\{n\xi(A+\xi)^n+A^n\varepsilon\}\,C_{nk}(B).
+\end{equation}
+The unused residual coordinates do not enter the second term. They do
+enter the first term, and their bounds in $B$ cannot be omitted.
+
+\subsection{The scale powers that pay for the estimate}
+
+Put $H=\exp((\log\log s)^2)$ for the diverging monitor along the
+comparison scales, and choose
+\[
+ \lambda=\frac1{4(nk+k+1)},\qquad
+ B=H^\lambda,\qquad \xi=\varepsilon=H^{-2}.
+\]
+The parameter $s$ is taken sufficiently large that the logarithms are
+defined and $H\ge1$. Since $\lambda nk\le1/4$,
+\[
+ C_{nk}(B)\le [2(nk+1)]^{nk}H^{1/4}.
+\]
+The right side of \eqref{eq:allarity-moment-error} is therefore at most
+\[
+ [2(nk+1)]^{nk}\{n(A+1)^n+A^n\}H^{-7/4}
+                  \le H^{-3/2}
+\]
+for all sufficiently large $s$. The last threshold depends on the fixed
+word and degree bound. It is uniform over the finite volume and replicas
+once the preceding covariance and vertex hypotheses hold uniformly.
+
+For completeness, the grade-tail purchase follows from the same powers.
+If $r=H^b$, $a_i\le H^{b g_i+E}$, the linear-coordinate substitution
+cost is at most $H^\lambda$, and $b\ge0$, $b\ge E+3$, then
+\[
+ a_i(H^\lambda)^k
+   \le H^{b g_i+E+1/4}
+   \le H^{-2}H^{b(g_i+1)}.
+\]
+The first inequality uses $\lambda k\le1/4$; the second follows from
+$E+1/4\le b-2$. Thus every grade is treated at its own truncation
+level while the arity and polynomial degree determine the common
+Gaussian growth allowance.
+
+\subsection{Taking the finite logarithm}
+
+Use the squarefree algebra $\mathscr A_{\{1,\ldots,n\}}$ from
+Section~\ref{sec:allarity-planted-compiler}. For a polynomial $q$ with
+constant coefficient one, define
+\[
+ \log_*q=\sum_{j=1}^n\frac{(-1)^{j+1}}j(q-1)^j.
+\]
+Formal power-series identities truncated after degree $n$ give
+$\exp_*(\log_*q)=q$ and $\log_*(\exp_*P)=P$ for $P$ with zero
+constant coefficient. These identities can also be checked coefficientwise:
+all powers above $n$ vanish, so the usual one-variable formal identities
+in the nilpotent variable $q-1$ are finite identities here. In particular
+the cumulant polynomial is uniquely determined by the moment polynomial.
+
+We give an explicit local stability bound. Use the coefficient
+$\ell^1$ norm on this algebra. If $|q-1|_1,|q'-1|_1\le M$, the
+identity $u^j-v^j=\sum_{a=0}^{j-1}u^a(u-v)v^{j-1-a}$ yields
+\[
+ |\log_*q-\log_*q'|_1
+ \le\left(\sum_{j=1}^n M^{j-1}\right)|q-q'|_1.
+\]
+If the coefficientwise moment error is at most $H^{-3/2}$, then
+$|q-q'|_1\le2^nH^{-3/2}$. The free moment polynomial $q'$ varies
+continuously on the compact comparison window, which is contained in
+the distinct-point configuration domain, so its coefficient norm
+is bounded. The moment error then bounds $|q-1|_1$ as well. Consequently
+there is a constant $C$ for this fixed word and window such that
+\begin{equation}\label{eq:allarity-cumulant-error}
+ |\log_*q-\log_*q'|_1+H^{-3/2}
+                  \le(C+1)H^{-3/2}\le H^{-31/32}
+\end{equation}
+for all sufficiently large $s$. The source uses the coefficient maximum
+norm; the same conclusion follows from its being bounded by the
+$\ell^1$ norm. The finite factor $2^n$ is absorbed only after $n$ is fixed.
+
+On the actual intermediate Gaussian history, let $\mathcal S_{l,k}$
+be the successive linear substitution and Gaussian integration operator
+from level $k$ to level $l$. Define the moment polynomial by
+\[
+ q(z)=\sum_{I\subseteq\{1,\ldots,n\}}z_I\,
+      \mathcal S_{l,k}\left(\prod_{i\in I}P_i\right)(y).
+\]
+Its constant coefficient is one, since every substitution and normalized
+Gaussian integration preserves one. The connected polynomial obtained by
+the finite partition formula is $\log_*q$: expanding the displayed
+finite logarithm gives that partition formula directly, with coefficient
+$(-1)^{j-1}(j-1)!$ for a partition into $j$ nonempty blocks.
+Evaluation at the fixed intermediate field $y$ commutes with this finite
+polynomial formula. This is the exact cumulant used in the planted
+comparison. Therefore the moment estimate for the same reader
+covariance and mean implies \eqref{eq:allarity-cumulant-error} for it.
+
+If the planted local coefficient differs from this cumulant by at most
+$H^{-3/2}$, its sum with the compensating negative free cumulant is
+bounded by $H^{-31/32}$, by \eqref{eq:allarity-cumulant-error} and the
+triangle inequality. Signed copies and complex conjugation preserve
+these absolute coefficient bounds. This is the small initial remainder
+needed for the subsequent marked propagation. Its use still requires
+the local planted-coefficient error, the exact low-grade calibration,
+and the common reader covariance estimates at the displayed powers;
+they are not consequences of finite-dimensional logarithm continuity.

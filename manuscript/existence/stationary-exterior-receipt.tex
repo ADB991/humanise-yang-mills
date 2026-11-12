@@ -1,0 +1,323 @@
+\section{The retained stationary region and its exterior}
+\label{sec:stationary-exterior-receipt}
+The Gaussian comparison must describe a region of the actual fine
+configuration space. In particular, the fine-field cutoff must be
+one throughout that region. We establish this using the funded
+expansion to find a configuration with slack, then propagating the
+slack by a uniform Lipschitz estimate.
+
+\subsection{Coordinates and the normalized integral}
+Fix an auxiliary finite torus, a tree gauge, and the actual coarse
+field $V(x)$ in logarithmic coordinates $x\in X$. Let $Y$ be the
+Euclidean space of free fine logarithmic coordinates, $d=\dim Y$,
+and $N$ the number of free fine bonds. Its coordinate map is
+\[
+ {\cal D}_x(y)_i=\exp(y_i)\,V(x)^{\rm rep}_i.
+\]
+Here $y_i$ includes the fixed orthonormal identification with the
+Lie algebra, and tree bonds are restored by the gauge fixing. The space $X$
+uses the supremum norm on real color coordinates. The space $Y$
+uses its Euclidean norm for Gaussian integration; write
+$\|y\|_\infty$ for the supremum norm after forgetting that
+Euclidean norm. Thus $\|y\|_\infty\le\|y\|_2$. The combined
+chart norm is $\max(\|x\|_\infty,\|y\|_\infty)$.
+Write $\rho(x)$ for the actual stationary branch, $b=\beta^{-1/2}$,
+and
+\[
+ \mathcal S_x={\cal D}_x\bigl(\rho(x)+b\overline B_Y(0,D)\bigr).
+\]
+This is a compact measurable subset of the free configuration
+space. All Haar measures in this section are probability measures.
+
+The local Haar density of Section~\ref{sec:haar-chart} is
+$c_H J(y_i)$ on each free bond. Set
+\[
+ \psi(x,y)=\ell({\cal D}_x(y))-\sum_{i=1}^{N}\log J(y_i),
+ \qquad M(x)=D_y^2\phi(x,\rho(x)),
+\]
+where $\phi$ is the fine classical action plus the smoothing
+penalty, and $\ell$ is the fine loop correction. Assume that the
+stationary chart estimates hold on the region in question, with
+$M(x)>0$. Introduce
+\[
+ \Phi(x)=\beta\phi(x,\rho(x))+\psi(x,\rho(x))
+                         +\tfrac12\log\det M(x),\qquad
+ \Omega=\pi_\beta(\sqrt{2\pi}\,b)^d c_H^N,
+\]
+where $\pi_\beta>0$ is the smoothing-kernel prefactor.
+The tagged integrand of the pure push is
+\begin{equation}\label{eq:exterior-tag-integrand}
+ U_x(U)=\sum_k\pi_\beta\lambda_k(U)
+   e^{-\beta[ a(U)+n_k(U,V(x))]-\ell(U)}
+                    {\bf1}_{\{\text{fine field healthy}\}}.
+\end{equation}
+The nonnegative tag weights satisfy $\sum_k\lambda_k(U)=1$;
+a dead tag has zero weight. Tree-gauge integration identifies the
+pure push with $Z(x)=\int U_x\,dU$. The incoming density and kernel
+have integrable envelopes, so all restricted integrals below exist.
+
+Suppose every point of $\mathcal S_x$ is fine healthy, the whole
+logarithmic ball is inside the Haar chart, and all live tag actions
+there equal $\phi$. Then the product chart formula and the affine
+change $y=\rho(x)+bz$ give
+\begin{equation}\label{eq:exterior-exact-interior}
+       \int_{\mathcal S_x}U_x\,dU
+                  =\Omega e^{-\Phi(x)}R(b,x),
+\end{equation}
+with exactly the truncated integral $R$ of
+Section~\ref{sec:truncated-stationary-log}.
+Indeed the Jacobian is $b^dc_H^N\prod_iJ(y_i)$, the tag sum is
+one, and $\beta b^2=1$. The quadratic Gaussian factor contributes
+$(2\pi)^{d/2}(\det M(0))^{-1/2}$; its determinant and the relative
+determinant in the exponent defining $R$ combine to
+$(\det M(x))^{-1/2}$. The remaining exponent is precisely
+$-\Phi(x)$. No tag-count factor occurs. Injectivity of the Haar
+chart ensures that the inverse image of $\mathcal S_x$ within that
+chart is the chosen closed ball, so this change of variables also
+handles its boundary.
+
+\subsection{The energy cost outside the retained region}
+Let $\gamma>0$ be the stationary chart gap and put
+$\Delta=\gamma D^2/4$. On the common safe chart assume the fine
+Hessian satisfies $D_y^2\phi\ge(\gamma/2)I$.
+Stationarity and Taylor's integral formula then imply
+\begin{equation}\label{eq:exterior-convex-gap}
+ \phi(x,y)-\phi(x,\rho(x))
+          \ge\frac\gamma4\|y-\rho(x)\|^2.
+\end{equation}
+Here the safe chart is the inverse image of the closed combined
+coordinate supremum ball, while the displayed quadratic lower
+bound uses the Euclidean norm on $Y$. Both endpoints lie in that
+chart, and its convexity contains their entire joining segment.
+Consequently any point of that chart outside $\mathcal S_x$ pays
+at least $\Delta$ after multiplication by $\beta$.
+
+We also need to recognize chart points without presupposing that
+the fine field is in the chart. The tree-gauge geometric estimate
+supplies a constant $C_0$ such that an alive tag, fine plaquette
+distances at most $\delta$, and prediction-wire distances at most
+$\delta$ imply
+\[
+       \operatorname{dist}(U_i,V(x)^{\rm rep}_i)
+                       \le (C_0s+1)\delta
+\]
+for every free bond. Here $s$ bounds the number of plaquettes in
+the fixed local comparison box. The estimate follows by comparing
+that bond with its tree-gauge replica: the local filling contributes
+at most $s\delta$, its geometric comparison costs $C_0$, and the
+prediction wire contributes the final $\delta$.
+Choose logarithm-chart constants $r_0,C_{\log}>0$, so that distances
+at most $r_0$ have logarithms bounded by $C_{\log}$ times the
+distance. For a prescribed safe coordinate radius $r_s>0$, choose
+\[
+ \delta\le\min\left\{\frac{r_0}{C_0s+1},
+                    \frac{r_s}{C_{\log}(C_0s+1)}\right\}.
+\]
+Taking the logarithm of each relative free bond now yields
+$U={\cal D}_x(y)$ with $\|y\|_\infty\le r_s$. The coarse
+coordinates are already inside the safe radius. This argument uses
+the geometric comparison for alive tags only.
+
+Write $\tau$ for the fine health threshold, and suppose
+$\tau\le\delta$. Let $W\ge1$ bound all relevant site and coordinate
+counts. The path budgets on a healthy field give
+\[
+ |\ell(U)|\le W\Lambda\tau^2,\qquad
+ a(U)\ge-WC(\tau^3+\tau^4).
+\]
+The second bound uses the nonnegative quadratic part of the action
+and the absolute cubic and quartic budgets. Define
+\[
+ B_{\rm loop}=\beta C(\tau^3+\tau^4)+\Lambda\tau^2.
+\]
+Let $m_W$ bound $|\phi(x,\rho(x))|/\|x\|$ on the coarse chart,
+and let $p+t_W$ bound
+$|\Phi(x)-\beta\phi(x,\rho(x))|$. The latter consists of the
+loop/Haar bound $p$ and a log-determinant bound $t_W$.
+If a prediction wire exceeds $\delta$, its nonnegative smoothing
+penalty is at least $\kappa\delta^2/2$, where $\kappa>0$ is the
+kernel penalty constant. Assume
+\begin{equation}\label{eq:exterior-wire-reserve}
+            \beta m_W\|x\|+\Delta
+                              \le\beta\kappa\delta^2/2.
+\end{equation}
+For a healthy point outside $\mathcal S_x$, there are now two cases.
+If all prediction wires are small, the preceding chart-recognition
+argument and \eqref{eq:exterior-convex-gap} apply. Otherwise the
+large-wire penalty and \eqref{eq:exterior-wire-reserve} apply.
+In both cases the exponent in each live tag satisfies
+\[
+ -\beta[a(U)+n_k(U,V(x))]-\ell(U)
+           \le-\Phi(x)-\Delta+WB_{\rm loop}+p+t_W.
+\]
+Unhealthy fields and dead tags contribute zero. Summing the tag
+weights therefore proves a pointwise exterior bound.
+
+To express it in stationary units, put
+$m_H=c_H(\sqrt{2\pi}\,b)^{\dim\mathfrak g}$, so
+$\Omega=\pi_\beta m_H^N$, and define
+\begin{equation}\label{eq:exterior-exponent}
+       Y_*=-N\log m_H-\Delta+WB_{\rm loop}+p+t_W.
+\end{equation}
+Then
+\begin{equation}\label{eq:exterior-pointwise}
+ U_x(U)\le\Omega e^{-\Phi(x)}e^{Y_*}
+                              \quad(U\notin\mathcal S_x).
+\end{equation}
+Since the ambient Haar measure has mass one, the same bound holds
+for the exterior integral.
+
+\subsection{Finding one configuration with slack}
+Let $Z_{\rm sl}(x)$ denote the portion of the pure push allocated
+to the empty coarse and fine defect sector. The sector allocation
+has values between zero and one. Its nonzero support requires
+all fine plaquette distances to be at most $\tau/2$.
+The exact funded expansion of this sector is
+\[
+        Z_{\rm sl}(x)={\cal O}(x)\sum_I e_I(x),
+        \qquad e_\varnothing(x)=1,
+\]
+where ${\cal O}(x)>0$ is the same sector overhead as in the block
+integral, and the expansion gives
+$\sum_I|e_I(x)|\le e^\varepsilon$. These are the actual funded
+sector identities, with its fixed tree and allocation. They imply
+\begin{equation}\label{eq:exterior-slack-lower}
+ Z_{\rm sl}(x)\ge {\cal O}(x)(2-e^\varepsilon).
+\end{equation}
+To see the factor two, separate the empty term: the absolute sum
+of the remaining terms is at most $e^\varepsilon-1$, so their sum
+is at least $1-e^\varepsilon$. The expansion's absolute convergence
+justifies this separation. On the auxiliary volume, its rooted
+budget gives $\varepsilon=|\Lambda_c|\,o(x)$, with a negative upper
+exponent for $o$. Since $|\Lambda_c|$ has upper exponent zero,
+$e^\varepsilon\le3/2$ eventually.
+
+We compare ${\cal O}$ to the stationary normalization before using
+\eqref{eq:exterior-slack-lower}. On a healthy coarse field its exact
+formula is
+\[
+       {\cal O}=\Omega
+          \exp\{-\beta a_{{\rm coarse},2}(x)
+                            -\tfrac12\log\det A_0\}.
+\]
+Here $a_{{\rm coarse},2}$ is the coarse quadratic action and
+$A_0$ is the empty-sector covariance precision matrix. The funded
+matrix bound gives $\log\det A_0\le W a_*$. Classical matching
+through degree four, with fifth-derivative cost $K_5$, and the
+coarse cubic and quartic budgets give
+\[
+ |\phi(x,\rho(x))-a_{\rm coarse}(x)|\le WK_5\|x\|^5,
+ \quad |a_{\rm coarse}(x)-a_{{\rm coarse},2}(x)|
+                         \le WC'(\tau_c^3+\tau_c^4).
+\]
+Combining these inequalities with the bound $p+t_W$ yields
+\begin{equation}\label{eq:exterior-overhead-compare}
+ {\cal O}\ge\Omega e^{-\Phi-e_*},\qquad
+ e_*=\beta W[K_5\|x\|^5+C'(\tau_c^3+\tau_c^4)]
+                                    +p+t_W+Wa_*/2.
+\end{equation}
+If
+\begin{equation}\label{eq:exterior-two-reserves}
+       Y_*+e_*+2\le-\Delta/2,\qquad Y_*\le-\Delta/2,
+\end{equation}
+then the exterior upper bound is strictly less than
+$\tfrac12{\cal O}\le Z_{\rm sl}$, since $e^{-2}<1/2$.
+If $\mathcal S_x$ contained no point with all fine plaquettes at
+most $\tau/2$, the allocated integrand would vanish throughout
+$\mathcal S_x$. Outside it, that integrand is bounded by $U_x$.
+Its integral would consequently be bounded by the exterior upper
+bound, a contradiction. Thus there exists
+\[
+ U_0={\cal D}_x(\rho(x)+bz_0),\qquad \|z_0\|\le D,
+        \qquad\operatorname{toll}_i(U_0)\le\tau/2\quad\hbox{for all }i.
+\]
+This existence argument does not differentiate the fine cutoff.
+
+\subsection{Spreading the slack and choosing the parameters}
+The fine plaquette tolls are uniformly Lipschitz, with a constant
+$L_0>0$ independent of the auxiliary volume, on the combined
+coordinate supremum unit ball, with Lipschitz distance measured
+in that same norm. Indeed each plaquette contains four links;
+the uniform first-derivative estimate for a link, the product rule,
+and unitarity bound the derivative of its matrix holonomy. The
+reverse triangle inequality for the matrix norm then bounds the
+difference of tolls. Integrating that derivative along the joining
+segment proves the asserted Lipschitz estimate.
+
+Let $C_\rho$ be the supremum-coordinate Lipschitz bound for the stationary
+branch, with $\rho(0)=0$. For $\|y-x\|\le r$ and $\|z\|\le D$,
+the supremum distance between the combined coordinates of
+${\cal D}_y(\rho(y)+bz)$ and $U_0$ is at most
+\[
+                       (1+C_\rho)r+2bD.
+\]
+We used $\|z-z_0\|_\infty\le\|z-z_0\|_2\le2D$.
+Thus every such field is fine healthy provided
+\begin{equation}\label{eq:exterior-slack-propagation}
+                  L_0[(1+C_\rho)r+2bD]\le\tau/2.
+\end{equation}
+The two configurations lie in the coordinate unit ball under the
+radius conditions below. The same conditions place the entire
+region inside the Haar chart and inside the region where all tag
+actions coincide.
+
+Here are the simultaneous purchases used in the construction.
+The action constants $C,C'$ are fixed and nonnegative, while
+$\kappa,\gamma$ are fixed and positive. The constant $C_\rho$
+is fixed at this stage independently of the auxiliary volume.
+The loop budget obeys $0\le\Lambda\le2P_F$.
+Write $z=\beta_F$, $P_F$ for the fine monitor,
+$u=z^{-7/16}$ and $r=z^{-1}$, and take
+\[
+ \beta\in[z/2,2z],\qquad \tau=z^{-1/2}P_F,\qquad
+       D=d_0P_F,\qquad d_0=(16L_0)^{-1}.
+\]
+Every fixed polynomial in the auxiliary size parameter is
+$o(P_F^\epsilon)$ for every $\epsilon>0$; $P_F$ itself has upper
+exponent zero. These are the monitor's two distinct growth
+properties. Since $b\le2z^{-1/2}$,
+$2L_0bD\le\tau/4$, and
+$L_0(1+C_\rho)r\le\tau/4$ eventually. This proves
+\eqref{eq:exterior-slack-propagation}. Moreover
+$(1+C_\rho)u+uD$ tends to zero. It is eventually smaller than the
+fixed safe radii, the action-coincidence radius and one, while its
+fine-coordinate component times the Lie-coordinate norm cost is
+at most half the Haar-chart radius. Also $b<u$ and
+$\tau\le\delta$ eventually.
+
+The coefficients $m_W,t_W,W,a_*,K_5$ are bounded by fixed
+polynomials in the auxiliary size parameter. The stationary jet
+price has the more precise form
+\[
+                         p=p_0+p_1P_F,
+\]
+with both $p_0,p_1$ bounded by such polynomials: only the loop
+price contributes the linear monitor factor. Also
+$-N\log m_H$ is bounded above by a polynomial in that parameter,
+including its logarithmic coupling cost.
+The two action remainders
+$WB_{\rm loop}$ and
+$\beta W[K_5u^5+C'\tau_c^3+C'\tau_c^4]$
+tend to zero, for $\tau_c\le2\tau$.
+It follows that every positive term in $Y_*+\Delta+e_*+2$ is
+$o(P_F^2)$. Since $\Delta=\gamma d_0^2P_F^2/4$, both inequalities
+in \eqref{eq:exterior-two-reserves} hold eventually. Finally
+$m_Wu\to0$ and $\Delta/\beta\to0$, proving
+\eqref{eq:exterior-wire-reserve} uniformly for $\|x\|<u$.
+All these thresholds can be enlarged together at a fixed stage.
+
+We can now use \eqref{eq:exterior-exact-interior}: slack propagation
+has verified its cutoff condition on the entire retained region.
+Split the positive full integral into that region and its
+complement, and use \eqref{eq:exterior-pointwise} and
+\eqref{eq:exterior-two-reserves}. The result is
+\[
+ 0\le Z(y)-\Omega e^{-\Phi(y)}R(b,y)
+       \le\Omega e^{-\Phi(y)}\exp(-\gamma D^2/8)
+\]
+for every $\|y\|<u$ with $\|y-x\|\le r$, where the center $x$
+is coarse healthy. This is the exterior estimate required in
+Section~\ref{sec:pure-action-small-field}, on its full microscopic
+comparison ball. Its hypotheses retain the actual funded sector
+expansion, the stationary chart and Hessian estimates, and the
+classical matching for the same coefficient data.

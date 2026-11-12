@@ -1,0 +1,254 @@
+\section{Analytic prices from real coupling estimates}
+\label{sec:real-coupling-interpolation}
+The parameter estimates used for the background history have a useful
+feature: they are obtained from real configurations. The local weights
+contain exponentials whose exponents need not be bounded, and bounding
+their absolute values before using the real estimates would lose the
+required smallness. We prove the interpolation argument that avoids
+this loss. The real local estimates to which it is applied retain their
+full derivative and support weights.
+
+\subsection{An algebra of parameter series}
+For a real power series $f(t)=\sum_{r\ge0}f_rt^r$ and $R\ge1$, set
+\[
+                         |f|_R=\sum_{r\ge0}|f_r|R^r.
+\]
+Only series with finite displayed norm will be used. Their products
+are given by the absolutely convergent Cauchy product, and
+$|fg|_R\le |f|_R|g|_R$. Consequently
+$|\exp f|_R\le\exp(|f|_R)$. If the constant coefficient $f_0$
+is real, it is better to keep its sign:
+\begin{equation}\label{eq:real-series-exponential}
+                 |\exp f|_R\le e^{f_0}\exp(|f-f_0|_R).
+\end{equation}
+These assertions follow by summing the nonnegative absolute
+coefficient bounds for $\sum_{m\ge0}f^m/m!$; absolute convergence
+also identifies that series with the exponential on $[-R,R]$.
+For a finite real test $\lambda=\sum_ha_h\delta_{t_h}$,
+$|t_h|\le1$, put
+\[
+             M_R(\lambda)=\sup_{r\ge0}
+                          \left|\sum_h a_h(t_h/R)^r\right|.
+\]
+Termwise summation then gives
+\begin{equation}\label{eq:real-series-test}
+                    \left|\sum_h a_h f(t_h)\right|
+                                      \le |f|_R M_R(\lambda).
+\end{equation}
+Thus an absolute coefficient estimate supplies every finite-test
+estimate simultaneously.
+
+Fix a real normed space $E$, a point $x\in E$, and an integer $j\ge0$.
+For a $C^j$ function $V$ near $x$, write
+$D_u^iV(x)=\left.\frac{d^i}{ds^i}V(x+su)\right|_{s=0}$.
+A diagonal jet bound with amplitude $C$ and derivative scale $d$
+means $|D_u^iV(x)|\le C d^i$ for $0\le i\le j$ and
+$\|u\|\le1$. When $i=0$ we use $d^0=1$, including when $d=0$.
+The parameter estimates below hold for each such derivative, with
+one common amplitude. Conversion to full multilinear derivative
+norms uses the fixed finite-order polarization constants already
+included in the local derivative prices.
+
+\subsection{The larger real nodes}
+Let $\ell(t)=a+bt$, and suppose
+\begin{equation}\label{eq:real-affine-band}
+ R\ge1,\qquad 1\le a-6R|b|,\qquad
+ a+6R|b|\le1+\delta,\qquad \delta\le1.
+\end{equation}
+In particular $0\le\delta\le1$, and
+$1\le\ell(t)\le1+\delta$ whenever $|t|\le6R$.
+Set $p(t)=1-\ell(t)^2$. For every real $q$ define
+\[
+ A(q)=(1-a^2)q+2a|bq|R+b^2|q|R^2.
+\]
+By \eqref{eq:real-series-exponential},
+\begin{equation}\label{eq:real-exponent-price}
+             |\ell|_R\le1+\delta,\qquad
+             |\exp(pq)|_R\le e^{A(q)}.
+\end{equation}
+The first inequality uses $a\ge1$ and
+$a+R|b|\le a+6R|b|$. No estimate on $|q|$ is required.
+
+Choose $\sigma=-1$ if $qb\ge0$, and $\sigma=1$ otherwise. For
+$r=0,\ldots,2j$, put
+\[
+ u_r=3+\frac{r}{2j+1},\qquad \xi_r=\sigma u_r,
+                   \qquad t_r=R\xi_r.
+\]
+These are distinct real points in $[-6R,6R]$. At every one of them,
+\begin{equation}\label{eq:real-node-domination}
+                             A(q)\le p(t_r)q.
+\end{equation}
+Here is the sign-sensitive estimate. Put $d_*=R|b|$; then
+$a\ge1+6d_*$ and $qbR\sigma=-|q|d_*$. For any
+$3\le u\le6$, we have
+\[
+ 2ad_*+d_*^2\le3ad_*\le ad_*u
+                              \le2ad_*u-d_*^2u^2.
+\]
+The last inequality is $d_*u\le a$, multiplied by $d_*u$;
+the other two follow from $d_*\le a$ and $u\ge3$.
+Expanding $p(R\sigma u)q$, and using $q\le|q|$, now gives
+\[
+\begin{split}
+ p(R\sigma u)q
+  &=(1-a^2)q+2a|q|d_*u-qd_*^2u^2\\
+  &\ge(1-a^2)q+|q|(2ad_*u-d_*^2u^2)\ge A(q).
+\end{split}
+\]
+This proves \eqref{eq:real-node-domination} for either sign of $q$.
+
+\subsection{Interpolating the local weight with its derivatives}
+Let $L,\Gamma:E\to\mathbb R$ be $C^j$ near $x$, and let $n$ be a
+nonnegative integer. Consider
+\begin{equation}\label{eq:real-local-weight}
+             J(t,y)=L(y)\ell(t)^n e^{p(t)\Gamma(y)}.
+\end{equation}
+Choose the preceding nodes with $q=\Gamma(x)$. Suppose that at those
+$2j+1$ nodes the real local estimates give
+\begin{equation}\label{eq:real-node-jet}
+               |D_u^iJ(t_r,x)|\le C d^i
+ \quad(0\le i\le j,\ \|u\|\le1),
+                      \qquad C,d\ge0.
+\end{equation}
+There is a constant $K_j$, depending only on $j$, such that each
+function $t\mapsto D_u^iJ(t,x)$ has an absolutely convergent series
+with
+\begin{equation}\label{eq:real-local-series-price}
+             |D_u^iJ(\cdot,x)|_R
+                      \le K_j(1+\delta)^n C d^i.
+\end{equation}
+In particular this controls all finite tests by
+\eqref{eq:real-series-test}. The constant is independent of
+$a,b,R,n,C,d$ and of the value of $\Gamma(x)$.
+
+We prove the assertion, including the reason that only finitely many
+real nodes suffice. Differentiating along $x+su$ and factoring out
+the exponential gives
+\begin{equation}\label{eq:real-polynomial-jet}
+ D_u^iJ(t,x)=P_{i,u}(t)\ell(t)^n e^{p(t)\Gamma(x)},
+                           \qquad \deg P_{i,u}\le2i.
+\end{equation}
+Indeed, for the exponential alone its $i$th derivative is the
+exponential times a sum, over partitions of $\{1,\ldots,i\}$,
+of products $\prod_B p(t)D_u^{|B|}\Gamma(x)$. Each product has
+at most $i$ factors $p(t)$, each of degree two. Leibniz's rule
+with $L$ gives \eqref{eq:real-polynomial-jet}, also for $i=0$.
+No division by $L$ or by a derivative of $\Gamma$ occurs.
+
+Let $\mathcal L_r(z)$ be the Lagrange basis polynomials for the
+nodes $\xi_0,\ldots,\xi_{2j}$. Polynomial interpolation gives
+\[
+          P_{i,u}(t)=\sum_{r=0}^{2j}P_{i,u}(t_r)
+                                      \mathcal L_r(t/R).
+\]
+Define $K_j$ as the larger, for the two possible signs $\sigma$,
+of $\sum_r|\mathcal L_r|_1$. This is finite, since all the nodes
+are distinct. Also $|\mathcal L_r(\cdot/R)|_R
+=|\mathcal L_r|_1$. By \eqref{eq:real-node-jet},
+\eqref{eq:real-polynomial-jet}, and $\ell(t_r)^n\ge1$,
+\[
+        |P_{i,u}(t_r)|e^{p(t_r)q}\le C d^i.
+\]
+Multiplying each interpolation term by
+$\ell(t)^n e^{p(t)q}$ and using
+\eqref{eq:real-exponent-price} and
+\eqref{eq:real-node-domination}, its coefficient norm is at most
+\[
+ |P_{i,u}(t_r)|(1+\delta)^n e^{A(q)}
+                    |\mathcal L_r|_1
+       \le (1+\delta)^n C d^i|\mathcal L_r|_1.
+\]
+Summing proves \eqref{eq:real-local-series-price}. Notice that the
+node sign may depend on $\Gamma(x)$. Both sets of nodes belong to
+the same allowed real interval, and $K_j$ controls either choice;
+there is no need to differentiate the choice of sign.
+
+\subsection{The Gaussian density and the local support count}
+For a fixed Gaussian coordinate $z$, let $Q(z)\ge0$ be its quadratic
+energy in the reference density. Under the rescaling
+$z\mapsto\ell(t)z$ in $D$ real dimensions, the density ratio,
+including the Jacobian, is
+\[
+                 g(t,z)=\ell(t)^D e^{(1-\ell(t)^2)Q(z)}.
+\]
+The same argument, now with $q=Q(z)\ge0$, yields
+\begin{equation}\label{eq:real-gaussian-series-price}
+                              |g(\cdot,z)|_R\le(1+\delta)^D.
+\end{equation}
+Indeed \eqref{eq:real-node-domination} gives
+$A(q)\le p(t_r)q\le0$, since $\ell(t_r)\ge1$.
+The bound is uniform in $z$. Thus it can be multiplied into a
+local coefficient majorant before integration against the fixed
+reference Gaussian measure.
+
+In the local application, the exponent $n$ in
+\eqref{eq:real-local-weight} counts the seed coordinates actually
+present in the local weight, each with its color dimension. The
+Gaussian dimension $D$ is likewise that of the relevant marginal.
+These counts are determined by the local support; replacing them
+by the dimension of the entire torus would destroy a bound uniform
+in volume. The exact local change-of-density identity is used
+before applying \eqref{eq:real-gaussian-series-price}. The remaining
+support-dependent powers $(1+\delta)^{n+D}$ are included in the
+cover-price reserve.
+
+\subsection{Keeping the small amplitude of ordinary activities}
+There is a second, complementary estimate. Let
+$f:\mathbb R\times E\to\mathbb R$ be real-valued, and suppose that
+$t\mapsto f(t,y)$ is a polynomial of degree at most $k$ on
+$[-1,1]$ for every $y$, where $k$ is fixed. Choose distinct fixed
+nodes $s_0,\ldots,s_k\in[-1,1]$. Suppose that each $f(s_r,\cdot)$
+is $C^j$ near $x$ and that
+\begin{equation}\label{eq:real-small-activity}
+ |D_u^i(e^{f(s_r,\cdot)}-1)(x)|\le v d^i,
+                  \qquad 0\le v\le\tfrac12.
+\end{equation}
+There are constants $A,B\ge1$, depending only on $j,k$ and the
+nodes, such that, whenever $BR^kv\le1$,
+\begin{equation}\label{eq:real-small-series}
+        |D_u^i(e^{f(\cdot,\cdot)}-1)(x)|_R
+                                      \le AR^k v d^i.
+\end{equation}
+In this formula the derivative is in the second variable and the
+series norm in the first.
+
+To check the estimate, write $h=e^{f(s_r,\cdot)}-1$ at a fixed
+node. At $x$ we have $|h(x)|\le v\le1/2$ and
+$f(s_r,\cdot)=\log(1+h)$ near $x$. The zeroth derivative is
+bounded by $2v$, by integrating $1/(1+s)$ between $0$ and $h(x)$.
+For a positive-order derivative, the chain rule is a finite sum
+over partitions, with one derivative of $\log(1+s)$ and products
+of derivatives of $h$. The former is bounded on $[-1/2,1/2]$;
+a term with $r\ge1$ factors of $h$ is bounded by a constant
+times $v^r d^i\le v d^i$. Hence
+$|D_u^if(s_r,\cdot)(x)|\le C_jv d^i$ at every node.
+
+Polynomial interpolation in $t$ is valid for every $y$ and so
+also after the indicated derivatives. The coefficient norm of
+any fixed degree-$k$ Lagrange basis polynomial at radius $R\ge1$
+is bounded by $R^k$ times its norm at radius one. It follows that
+\[
+                  |D_u^if(\cdot,x)|_R\le C_*R^k v d^i.
+\]
+Choose $B\ge C_*$. Put $\varepsilon=C_*R^kv\le1$. In the
+Banach algebra of parameter series, the zeroth-order estimate
+$|e^f-1|_R\le e^\varepsilon-1\le e\varepsilon$ follows from
+the exponential series. For $i>0$, the same partition formula
+for derivatives of $e^f$ gives a factor $|e^f|_R\le e$ and
+products bounded by $\varepsilon^r d^i\le\varepsilon d^i$.
+The finite sum gives \eqref{eq:real-small-series}, with $A$
+large enough for all $i\le j$. This proof also covers $d=0$:
+all positive derivatives then vanish.
+
+The incoming ordinary activity in the coupling family has degree
+at most two in this real parameter. Thus the radius cost in this
+last argument is $R^2$, with constants fixed by the derivative
+order. The local stock weight uses the preceding real-node
+argument instead, because its exponent need not be small.
+Together with the local real jet estimates, the fixed Gaussian
+change of density, and the summable support prices, these two
+arguments provide the parameter estimates for the finite forest
+integrals. Summation over connected supports and the subsequent
+local projections still require their stated quantitative bounds;
+the interpolation proved here does not replace those bounds.

@@ -1,0 +1,225 @@
+\section{Supplying the common comparison estimates}
+\label{sec:parameter-comparison-suppliers}
+The preceding comparison arguments use one collection of local
+bounds for the base representation. We show how the local estimates
+already proved provide that collection, and how its parameters are
+chosen before a running representation is inserted. Constants in a
+fixed-volume continuity estimate may depend on that volume. The
+radius of the allowed coarse variations and the large-coupling
+threshold used for the construction have a stronger uniformity.
+
+Fix the branch data, a positive target support reserve, the derivative
+order $j$, the cutoff convention, and positive width and packet-energy
+parameters. The scale factor is taken above the common floor in the
+local activity and Gaussian estimates. Fix a coarse variation scale
+$v(x)\ge0$ of upper exponent $-1/2$. All estimates in this section
+refer to the same fine representation, sector, tags and held-field
+compensation.
+
+\subsection{Elementary factors and conditional packet actions}
+The construction in Section~\ref{sec:activity-jet-assembly} provides
+prices for the elementary compensated factors together with their
+support-dependent derivative scales. At the fixed derivative order,
+choose a positive spare support and extra-cost reserve $\delta$.
+If $s$ denotes the support-cover plus length charge, then
+$(1+s)^j\le C_{j,\delta}e^{\delta s}$ for $s\ge0$: the continuous
+function $(1+s)^je^{-\delta s}$ is bounded on $[0,\infty)$.
+Apply the weighted price estimate with this reserve before removing
+the weights. This pays the factor $r(x)^j(1+s)^j$ from the derivative
+scale and gives scale-one jet prices at every order through $j$.
+The warning catalogue is finite on the fixed torus and its finite
+jet prices can also be summed. To pass
+from a rooted weighted sum to its unweighted sum on a fixed torus,
+sum the rooted inequality over all its sites. Every nonzero factor
+has nonempty assigned support and is counted at least once; all
+removed support and extra-cost weights are at least one. The same
+argument applies to the base logarithmic prices. It gives both the
+finite total elementary price and the finite common bound on the
+absolute values of the real logarithms used in
+Section~\ref{sec:local-parameter-comparison}. The prices need not be
+small after this volume-dependent summation.
+
+There is a separate condition on the packet action: its differentiated
+bound is needed whenever the enforcement cutoff is not a zero germ.
+Write that cutoff as a finite product of its bond cutoffs. If any
+bond cutoff were zero on a neighborhood of the base point, the whole
+product would be zero there. Thus a nonzero packet germ makes every
+relevant bond cutoff a nonzero germ. The compensated cutoff estimates
+then bound the corresponding increments and their derivatives by
+\[
+                    s(x)+2a\tau(x),
+\]
+where $s$ has upper exponent $-1/2$ and $a>0$ is the fixed
+compensation radius parameter. The mean coordinates have the same
+upper exponent, by Section~\ref{sec:mean-action-jets}. Enlarge these
+bounds to one nonnegative function of upper exponent zero.
+
+The last subsection of Section~\ref{sec:mean-action-jets} applies to
+an arbitrary held fine field. Each local packet-action summand is
+a held fine action, a varying coarse action, or an extracted affine
+square. Its derivatives are bounded by the corresponding local
+constants there. For a packet with $s$ blocks, the number of such
+energy addresses is at most
+\[
+                  s\,b(200B+1)\,n_L,
+\]
+where $b(r)$ is the finite lattice-ball count at radius $r$ and $n_L$
+is the fixed number of fine energy addresses per coarse block.
+Summing the local jet bounds, including the far-field term, gives
+$A(x)s$ with one finite $A(x)\ge0$. The same bound holds on every
+admissible chart and for every held fine field. In particular this
+supplies the conditional packet-action estimate, without requiring
+smoothness of the fine input or an upper bound on its uncut energy.
+
+\subsection{Every read subset has the same polynomial bound}
+Let $I$ be any subset of fine bonds, including the empty subset.
+The projected covariance contains all colours of those bonds.
+Write $C_I(y)$ for this covariance and $w_I(y,z)$ for the compensated
+Gaussian coordinate. Its inverse exists by the common positive
+covariance estimate. The quadratic exponent is
+\[
+              q_I(y,z)=\tfrac12 w_I(y,z)^T C_I(y)^{-1}w_I(y,z).
+\]
+The inverse-matrix estimates and weighted matrix product estimates
+of Sections~\ref{sec:normalization-jets} and
+\ref{sec:gaussian-differentiation} apply to every principal read
+subset with the same row constants. This is where the projected
+covariance bounds, rather than merely positivity of the full
+covariance, are used.
+
+For clarity, the finite-dimensional multiplication giving the
+quadratic bound can be seen directly. Suppose the coordinate jets
+of $w_I$ are at most $W$, and the jets of the inverse matrix have
+row sums at most $B_r$ at order $r\le j$. A derivative of
+$w_I^TC_I^{-1}w_I$ distributes its ordered directions among three
+factors, giving at most $3^j$ terms. Sum the middle matrix row first.
+Each term is at most $|I|\dim\mathfrak g$ times
+$W^2\max_{r\le j}B_r$. The factor $1/2$ can be discarded in an upper
+bound. On the full torus the compensated-coordinate estimates give
+\[
+ W\le \left[1+g(\beta)^{-1}
+           \{s(x)+2A_{\rm mean}(x)\}\right]F_0(z)=V_0F_0(z),
+\]
+where $F_0$ uses every fine bond and colour and $V_0\ge1$ is finite.
+Since $|I|\dim\mathfrak g$ is bounded by the full Gaussian dimension,
+we obtain
+\begin{equation}\label{eq:comparison-quadratic-supplier}
+                 \|q_I\|_{j,y_0}\le C_*F_0(z)^2
+                         \quad\hbox{for every }I.
+\end{equation}
+All constants on the right are independent of the chosen subset.
+For $I=\varnothing$, the quadratic form is zero.
+
+The relative density compensation $K_I$ is the Jacobian from
+Section~\ref{sec:compensated-variation} times the Gaussian density
+ratio from Section~\ref{sec:gaussian-differentiation}. At the base
+point its value is one. The finite-order determinant and inverse
+estimates there give, for some integer $k$ and nonnegative finite
+$U(x)$, a derivative scale bounded by
+$U(x)F_I(z)^k$, where
+\[
+              F_I(z)=1+|I|\dim\mathfrak g
+                          +\sum_{(e,a)\in I\times\mathfrak g}|z_{e,a}|.
+\]
+In this expression the colour index means a fixed orthonormal basis.
+The bound uses only the prescribed derivative order, the local row
+prices and the compensation Jacobian bounds. Its polynomial degree
+is fixed before the subset is selected. Since $1\le F_I\le F_0$,
+\[
+ \max_{0\le r\le j}\{U(x)F_I(z)^k\}^r
+        \le(1+U(x))^jF_0(z)^{kj}.
+\]
+Together with \eqref{eq:comparison-quadratic-supplier}, this supplies
+\eqref{eq:local-parameter-density-input} simultaneously for all $I$,
+with $N=kj$ and
+$C_0=(1+U(x))^j+C_*$. The quadratic constant $C_*$ is allowed to
+depend on the torus and base coupling; no uniform volume bound is
+asserted for it.
+
+The same compensated map provides the held-field and protected-patch
+identities. The open-neighborhood envelope in
+Section~\ref{sec:gaussian-differentiation} justifies differentiation
+of its integrals. Thus the algebraic pointwise comparison uses the
+actual integrands to which that differentiation theorem applies.
+
+\subsection{Unrestricted packet values}
+The lower packet-energy bound in the seed estimates applies on the
+support of the packet mask. Adding the nonnegative far-field energy
+preserves this lower bound. At a fixed stage it gives
+$u\ge-E(x)s\ge-E(x)s_*$ in the notation of
+\eqref{eq:local-parameter-forced-packet}. The product of profile,
+charge and enforcement factors lies in $[0,1]$. Its remaining ticket
+factor is bounded by $\exp(|c_{\rm ticket}|s_*)$, so this number can
+be taken as $M_0$.
+
+Each condensation value has a finite base bound, and each local
+Haar-chart correction has a finite absolute bound. There are at most
+as many terms as fine bonds. The remaining normalization term is
+$-n_s\log m(\beta)$, again with $n_s$ no larger than that finite bond
+count. Their sum gives a finite $A_0$ bounding $v_\beta$ from above.
+Only this last normalization term changes between the compared
+representations; hence
+$|v_{\beta'}-v_\beta|\le n_*t$. These are exactly the hypotheses of
+the damping estimate already proved. Positive unbounded energies
+are controlled by $\beta'\ge\beta/2$ and require no further cutoff.
+
+\subsection{Choosing the common variation scale and thresholds}
+We spell out the quantifier order needed for a running history.
+The common scale-factor floor is chosen from the elementary-activity
+and Gaussian local estimates before the derivative order, cutoff
+convention and positive width parameters are supplied. For a scale
+factor above that floor and fixed branch data, the compensation
+chart has a fixed positive radius. Its protected-field requirement
+is eventually satisfied because $\tau(x)\to0$.
+
+The elementary activity estimate is applied at the prescribed scale
+$v(x)$ and the compensated-increment scale $s(x)$, both of upper
+exponent $-1/2$. The packet-action, Jacobian, density and quadratic
+estimates just established have eventual validity at those same
+scales. Take the intersection of their finitely many eventual
+conditions. This fixes one threshold in $x$ before the finite tori
+and the incoming representation are supplied. The associated
+constants and summable prices are then instantiated at that actual
+representation. In particular, a later fixed-volume comparison
+neighborhood may depend on its total prices and covariance, as the
+continuity proof permits.
+
+To combine this with the common integrated derivative estimate,
+choose a fixed $Z>0$ large enough for the normalized exponential
+coarse variations at derivative order $j$. Set
+\[
+                    t_0(x)=2\tau(x),\qquad
+                    v(x)=(j+1)Zt_0(x).
+\]
+This function is eventually positive and has upper exponent $-1/2$.
+The elementary inequality $jZt_0\le v$ pays the ordered variation
+directions. Apply both the local comparison construction and the
+integrated Gaussian estimate at this same $v$. The latter supplies
+the ordinary component price and derivative-scale data. The cluster
+budget construction, with the strictly positive target support
+reserve, then supplies the ordinary cluster criterion with its
+strict spare margin. All are evaluated at the same incoming data;
+no alternate representation is substituted between these steps.
+
+Finally, a schedule has only finitely many transitions at each fixed
+stage. Take the maximum of their scale-factor floors at that stage.
+After those factors are fixed, take a common upper threshold for the
+finitely many transition conditions, enlarge the stage entry coupling
+to that threshold, and preserve any earlier lower bound. Increasing
+entry couplings further preserves these conclusions. Consequently the comparison data and cluster margin are available
+uniformly for each already supplied transition satisfying the
+underlying sector, shell-access, protected-chart and incoming activity
+hypotheses. This selection does not construct those incoming data.
+
+For an application to a running curve one must also retain its
+renewed price bounds, the geometric bounds on the downward map,
+the admissible initial action, and the inequality
+$\operatorname{preExponent}/B\le\operatorname{width}/2$.
+The curve has the same clipping and path data and the same regular
+and forced dictionaries. Its displayed output must equal the
+constructed nonlinear output under the chosen dictionary
+identifications. With these hypotheses, the fixed-volume theorem
+applies to that actual output, giving regular jet and forced value
+control and its subsequential summable majorants. The construction
+of an entire history satisfying all these hypotheses remains a
+separate step.

@@ -1,0 +1,210 @@
+\section{The weighted support estimate for grouping}
+\label{sec:ope-grouping}
+The loss in \eqref{eq:ope-group-weight} pays for two effects. Moving
+several marks to a common representative enlarges the supports carrying
+them. Expanding the resulting product then creates connected unions
+of these enlarged supports. We prove the two counting estimates that
+control these operations. They apply to distinct activity labels; no
+claim about a logarithmic expansion with repeated labels is needed.
+
+\subsection{Connected unions with distinct labels}
+Let $X_i$ be finite supports in a four-dimensional periodic lattice,
+indexed by an arbitrary set, and let $c_M(X)$ be their covering number
+at a positive integer block size $M$. We use its elementary properties
+\[
+ |X|\leq(2M+1)^4c_M(X),\qquad
+ c_M(X\cup Y)\leq c_M(X)+c_M(Y)\quad\hbox{if }X\cap Y\ne\varnothing.
+\]
+Let $f_i\geq0$, $a\geq0$, $\gamma\geq0$, and suppose that, for every
+site $x$,
+\begin{equation}\label{eq:ope-hit-hypothesis}
+ \sum_{i:x\in X_i} f_i e^{(a+v)c_M(X_i)}\leq\gamma,
+ \qquad (2M+1)^4\gamma\leq v.
+\end{equation}
+All sums of nonnegative terms have their supremum-of-finite-sums
+meaning. A nonempty finite label set $A$ is connected when its
+intersection graph, with an edge for overlapping supports, is connected.
+Then
+\begin{equation}\label{eq:ope-forest-price}
+ \sum_{\substack{A\text{ finite, connected}\\x\in\bigcup_{i\in A}X_i}}
+ e^{a c_M(\bigcup_{i\in A}X_i)}\prod_{i\in A}f_i
+ \leq e^\gamma-1.
+\end{equation}
+
+We prove this by a finite recursion. For a finite set of allowed labels
+$D$ and a support $Y$, let $\mathcal P(D,Y)$ consist of all subsets
+of $D$ whose every connected component has a support meeting $Y$;
+the empty subset is included. Set
+\[
+ F(D,Y)=\sum_{A\in\mathcal P(D,Y)}\prod_{i\in A}p_i,
+ \qquad p_i=f_i e^{a c_M(X_i)}.
+\]
+The following inequality retains each label at most once:
+\begin{equation}\label{eq:ope-forest-recursion}
+ F(D,Y)\leq\prod_{\substack{i\in D\\X_i\cap Y\ne\varnothing}}
+       \bigl(1+p_iF(D\setminus\{i\},X_i)\bigr).
+\end{equation}
+To see it, choose for each connected component of $A$ one label whose
+support meets $Y$. Different components choose different labels.
+Deleting the chosen label leaves a set every one of whose connected
+components meets its support: follow a path to the deleted vertex
+in the old component. Record that remaining set at the chosen label,
+and record the empty option at every unchosen label. The union of the
+recorded sets with their chosen labels recovers $A$, so the encoding
+is injective. Its weight is exactly $\prod_{i\in A}p_i$. Expanding
+the product on the right of \eqref{eq:ope-forest-recursion} permits
+additional choices, possibly sharing labels between different options;
+all their weights are nonnegative. This proves the inequality without
+introducing factorial or ordering losses.
+
+Strong induction on $|D|$ gives
+\[
+ F(D,Y)\leq e^{|Y|\gamma}\leq e^{v c_M(Y)}.
+\]
+Indeed insert the induction bound in
+\eqref{eq:ope-forest-recursion} and use $1+r\leq e^r$:
+\[
+ F(D,Y)\leq
+ \exp\!\left(\sum_{\substack{i\in D\\X_i\cap Y\ne\varnothing}}
+           f_i e^{(a+v)c_M(X_i)}\right)
+ \leq e^{|Y|\gamma}.
+\]
+The last inequality sums \eqref{eq:ope-hit-hypothesis} over sites
+of $Y$; a support meeting $Y$ is counted at least once. The cardinality
+bound and \eqref{eq:ope-hit-hypothesis} prove the second inequality,
+which closes the induction. Now take $Y=\{x\}$ and remove the
+empty subset, whose weight is one. For a connected $A$, order its
+vertices so that each new support meets the preceding union; a
+spanning tree supplies such an order. Repeated covering subadditivity
+gives $c_M(\bigcup_{i\in A}X_i)\leq\sum_{i\in A}c_M(X_i)$.
+Thus each term in \eqref{eq:ope-forest-price} is bounded by its
+corresponding product of $p_i$. This proves the desired estimate
+for every finite family of connected sets: take $D$ to contain all
+their labels. Taking the supremum over finite families proves the
+full assertion and its absolute summability.
+
+\subsection{Paying for the new representative sites}
+Let a finite set of old marks $I$ be partitioned into groups $V$,
+with a chosen old mark in each group and a positive integer bound $h$
+on the group size. Write $r_i$ for the old site,
+$c_v$ for its group's representative site, and $\pi:I\to V$ for the
+partition. Assume that at most $h$ old marks belong to a group and
+at most $\ell$ old sites occur at any one lattice site. The same
+occupancy bound holds for the representatives, since their selected
+old marks are distinct. Suppose
+\[
+ c_M(\{r_i,c_{\pi(i)}\})\leq k.
+\]
+An activity indexed by $\alpha$ has a mark set $A_\alpha\subseteq I$
+and support $X_\alpha$ containing every $r_i$ for $i\in A_\alpha$.
+Enlarge it to
+\[
+ \widetilde X_\alpha=X_\alpha\cup
+              \{c_{\pi(i)}:i\in A_\alpha\}.
+\]
+Adding the pairs one at a time gives
+\begin{equation}\label{eq:ope-enlarged-cover}
+ c_M(\widetilde X_\alpha)
+       \leq c_M(X_\alpha)+k|A_\alpha|,
+\end{equation}
+because each pair meets the original support at $r_i$.
+For positive mark weights $w_i$ and $0<\eta\leq1$, put
+\[
+ \widetilde w_i=(\eta/h)w_i e^{-\sigma k},\qquad \sigma\geq0.
+\]
+For every nonnegative coefficient majorant $q_\alpha$,
+\begin{equation}\label{eq:ope-enlargement-price}
+ \left(\prod_{i\in A_\alpha}\widetilde w_i\right)q_\alpha
+ e^{\sigma c_M(\widetilde X_\alpha)}
+ \leq (\eta/h)^{|A_\alpha|}
+ \left(\prod_{i\in A_\alpha}w_i\right)q_\alpha
+ e^{\sigma c_M(X_\alpha)}.
+\end{equation}
+This follows immediately from \eqref{eq:ope-enlarged-cover}; the
+exponential price paid by each mark cancels its added connecting cover.
+
+We need a local summation version of this observation. Suppose $b,g\geq0$ and
+nonnegative quantities $F_\alpha$ have the bound
+$\sum_{\alpha:y\in X_\alpha}F_\alpha\leq g$ at every site.
+Suppose new weighted quantities $W_\alpha\geq0$ satisfy
+$W_\alpha\leq bF_\alpha$ for all $\alpha$, and the stronger
+$W_\alpha\leq(b/h)F_\alpha$ whenever $A_\alpha\ne\varnothing$.
+Then
+\begin{equation}\label{eq:ope-enlarged-hit}
+ \sum_{\alpha:y\in\widetilde X_\alpha}W_\alpha
+       \leq(1+\ell)bg.
+\end{equation}
+The old-support contribution is at most $bg$. If $y$ is a new site
+of $\widetilde X_\alpha$, some group $v$ has $c_v=y$ and some
+$i\in A_\alpha\cap\pi^{-1}(v)$ has $r_i\in X_\alpha$.
+Bound this contribution by summing over all such $v$ and all its old
+marks. For fixed $i$ the sum is at most $bg/h$; there are at most
+$h$ marks in that group, and at most $\ell$ groups at $y$.
+This proves \eqref{eq:ope-enlarged-hit}. Activities with no marks
+have no added representative sites and are accounted for entirely
+in the old-support contribution. This is why the factor $1/h$ is
+needed only for activities carrying marks.
+
+\subsection{The resulting local majorant}
+Take nonnegative budget constants $T,A,B$. There are three kinds of
+entries in the regrouping expansion. The
+first are singleton coefficients $u_i$, with $w_i|u_i|\leq T$.
+Their local sum, including the support weight, is at most
+$\ell T e^\sigma$, because $c_M(\{r_i\})\leq1$ and the occupancy
+is at most $\ell$. The second are the nonempty marked coefficients
+of the ordinary activity, whose local weighted sum is at most $A$.
+Together these have bound
+\[
+ g_0=\ell T e^\sigma+A.
+\]
+Both carry a nonempty mark set. Equation
+\eqref{eq:ope-enlargement-price} bounds their new weight by
+$\eta/h$ times the old weight. Applying
+\eqref{eq:ope-enlarged-hit} with $b=\eta$ gives
+$(1+\ell)\eta g_0$. Each entry is split into its healthy and unhealthy
+support cases by indicator functions. Each piece is bounded by the
+same coefficient majorant, so their combined bound is twice this.
+
+The third kind comprises the activity on flagged supports, including
+its zero-mark part. Let its original local weighted sum be at most
+$B$. For these entries \eqref{eq:ope-enlargement-price} gives a
+factor at most one in general, and at most $1/h$ for a nonempty mark
+set. Thus \eqref{eq:ope-enlarged-hit} with $b=1$ gives
+$(1+\ell)B$. The complete local majorant is therefore
+\begin{equation}\label{eq:ope-group-majorant}
+ \Gamma=2(1+\ell)\eta(\ell T e^\sigma+A)+(1+\ell)B.
+\end{equation}
+This bound is independent of the total number of cells and groups.
+
+Apply \eqref{eq:ope-forest-price} with support exponent
+$\sigma=\nu+v$, provided $(2M+1)^4\Gamma\leq v$.
+Every connected set of distinct entries then has local summed price
+at most $e^\Gamma-1$ with exponent $\nu$.
+For a component whose mark set is a union of complete groups, let
+$W_v=\prod_{i\in\pi^{-1}(v)}\widetilde w_i$.
+The product of its old mark weights is exactly the product of these
+$W_v$ over its new group marks. Distinct constituent entries have
+disjoint marks when their squarefree marker product is nonzero;
+there is no multiplicity correction in this equality. Each constituent-label set must yield at most one output entry across
+the ordinary and flagged kinds; its support and prescribed flag set
+are fixed by its constituents. This uniqueness is proved in
+Section~\ref{sec:ope-grouping-algebra}. Grouping the
+connected terms by their resulting support and group mark set, the
+triangle inequality preserves the local bound $e^\Gamma-1$.
+Restrictions to the healthy or prescribed-flag events only reduce
+the coefficient majorants. Thus both the ordinary and flagged
+connected arrays have this same bound.
+
+For \eqref{eq:ope-group-weight}, the old weights are $\delta W_i$,
+$\eta=\delta$, $\sigma=\nu+1/2$, and the maximum group size is $h$.
+The new weight of an old mark is precisely
+$\delta^2W_i e^{-(\nu+1/2)k}/h$.
+Their product over a group is the numerator in
+\eqref{eq:ope-group-weight}. The purchased smallness conditions are
+$(2M+1)^4\Gamma\leq1/2$ and $e^\Gamma-1\leq1$.
+They provide the claimed unit bound for both connected arrays before
+the subsequent factor $1/8$ is reserved for their local presentation.
+This proves the quantitative support and coefficient estimates used
+by regrouping. The exact polynomial decomposition, its gauge/locality
+properties and the local projection estimate are separate steps;
+these counting bounds do not by themselves establish those identities.

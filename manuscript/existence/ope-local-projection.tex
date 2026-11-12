@@ -1,0 +1,163 @@
+\section{The coefficient field at the last grouping scale}
+\label{sec:ope-local-projection}
+We connect the local-field representation to the degree-bounded
+coefficient field in the cutoff estimate. This step uses a projection
+estimate for one elementary insertion. We state its content explicitly
+and prove the extension to the whole grouped observable, including
+the normalization that determines its final price.
+
+Let $m+1$ and $m$ be adjacent fine and coarse scales, with mesh
+sizes $a_{m+1}=a_m/L$ and $L\ge1$. Fix a degree $d\ge0$.
+For every fine elementary insertion $M$ anchored at the origin,
+assume there is a coarse coefficient field $Q_M$ of degree at most
+$d$ with the prescribed locality and covariance format, satisfying
+\begin{equation}\label{eq:ope-leaf-projection}
+ \operatorname{dens}(Q_M)=L^d\mathcal T\operatorname{dens}(M),
+ \qquad |Q_M|_{\rm coeff}\le x\operatorname{cost}(M),
+ \qquad \operatorname{rem}(Q_M)\le x\operatorname{cost}(M),
+\end{equation}
+where $x\ge0$. Here the remainder bound is the weighted sum of
+the local regular remainder and the dominated forced remainder
+at this scale. Assume, in addition, the singleton transition
+expansion of Section~\ref{sec:local-transfer}: the fine expansion
+cost for this insertion is at most $2\operatorname{cost}(M)$,
+and its coarse response cost is at most
+$x\operatorname{cost}(M)$. The relation for the quoted profile
+has multiplier $L^d$, consistently with the first identity in
+\eqref{eq:ope-leaf-projection}. These statements concern the
+actual background transition and its actual coefficient fields;
+they are not an abstract polynomial approximation assumption.
+Their analytic proof remains an input here.
+
+\subsection{From one insertion to a grouped field}
+Suppose a grouped fine field has zero separately recorded constant
+and an elementary representation
+\[
+        (g,q)=\sum_j z_j\bigl(\operatorname{ord}(M_j),
+                              \operatorname{flag}(M_j)\bigr),
+       \qquad \sum_j|z_j|\operatorname{cost}(M_j)\le A,
+\]
+where the list is finite and every insertion is anchored at the
+origin. Choose $Q_j$ by \eqref{eq:ope-leaf-projection}, and let
+$Q=\sum_jz_jQ_j$. The sum means addition of coefficient vectors
+and of forced arrays, and concatenation of the regular remainder
+lists. Thus all locality and covariance conditions are preserved.
+The triangle inequality gives
+\begin{equation}\label{eq:ope-group-projection}
+       |Q|_{\rm coeff}\le xA,\qquad
+       \operatorname{rem}(Q)\le xA.
+\end{equation}
+For the regular remainder, multiply each majorant by $|z_j|$
+and sum its weighted costs. For the forced remainder, do the
+same for its uniformly summable majorants. These constructions
+prove the asserted bound without any cancellation of signed
+terms. Finite linearity of integration gives
+\[
+          \operatorname{dens}(Q)
+             =L^d\mathcal T\operatorname{coin}_R(g,q).
+\]
+Indeed the linear density of $(g,q)$ is the sum of the elementary
+densities with coefficients $z_j$, by the singleton formula
+\eqref{eq:ope-single-coin}. Each elementary density is required to be integrable under the
+fine Haar prior and in each transition slice, as in
+Section~\ref{sec:local-transfer}; the lawful representation and
+transition-kernel properties supply this in the application. Thus
+finite summation commutes with the transition integral. The empty list gives $Q=0$ and the same
+conclusion.
+
+The singleton transition expansions concatenate in precisely
+the same way. Their fine cost is at most $2A$ and their coarse
+response cost at most $xA$. Dividing the output field and its
+profile by $L^d$ changes the latter cost to $L^{-d}xA$, while
+the fine cost stays $2A$. The multiplier in the quoted-profile
+identity is now one. This is the normalization needed by the
+one-scale transport lemma.
+
+Require also that the whole marked input density is integrable
+under the fine prior and the transition slices; this is the
+hypothesis needed below for taking polynomial coefficients and
+regrouping through integration. Suppose the other grouped fields
+are translated, coordinate
+transformed or conjugated copies of $(g,q)$, with origins that
+are embeddings of their coarse origins. The transition commutes
+with these motions, and the coefficient-field format is stable
+under them. Apply the same motion to $L^{-d}Q$ in each cell.
+The quoted-profile expansions transform by relabelling the finite
+set of slots; their cost bounds remain $2A$ and $L^{-d}xA$.
+The singleton coefficient of the integrated marked density is
+the linear density of the corresponding transformed copy of
+$L^{-d}Q$: taking a coefficient commutes with integration, and
+the preceding density identity commutes with the motion. Thus
+the singleton-identification hypothesis of
+Section~\ref{sec:local-transfer} holds for every copied cell,
+with one and the same coefficient field $Q$.
+
+If the incoming mark weights $I_v$ satisfy
+\begin{equation}\label{eq:ope-projection-afford}
+                 2I_v(2A)\le1,\qquad
+                 I_vL^{-d}xA\le1,
+\end{equation}
+and the support, occupancy, numerical and new-weight hypotheses
+of that transport lemma hold, it follows that the integrated
+marked density has the required local representation with these
+coefficient fields and higher-array price one. This conclusion
+retains the entire marked density, not only its singleton
+coefficients.
+
+\subsection{The terminal price and physical normalization}
+At the terminal grouping stage, let $z>0$ be any lower bound
+for the common grouped weight supplied by the grouping induction.
+Section~\ref{sec:ope-singletons} gives $A=4/z$. Take $x\ge1$ and
+reduce the incoming weights to
+\[
+                             I_v=\frac{z}{16x}.
+\]
+They do not exceed the available grouped weight. Reducing positive
+weights decreases every higher coefficient price. Moreover
+\[
+       2I_v(2A)=\frac1x\le1,
+       \qquad I_vL^{-d}xA=\frac{L^{-d}}4\le1.
+\]
+This verifies \eqref{eq:ope-projection-afford}. If the outgoing
+weights obey $0<J_v\le\delta_m I_v$, where $\delta_m$ is the
+first reduction factor in the transport lemma, its final
+reweighting condition follows term by term: the product of the
+$J_v$ is at most the product of $\delta_m I_v$, and the allowed
+support exponential is at least one.
+
+We have obtained a coarse field $Q$ with both bounds at most
+$4x/z$, appearing in the density with prefactor $L^{-d}$.
+Define the physically normalized coefficient field
+\[
+                              Q'=a_{m+1}^dQ.
+\]
+Scaling multiplies its coefficient and remainder costs by the
+positive number $a_{m+1}^d$. Since
+\[
+                     a_m^{-d}a_{m+1}^d=L^{-d},
+\]
+this changes neither the ordinary singleton nor its flagged
+profile in the density. It only rewrites them with the standard
+physical prefactor $a_m^{-d}$. We obtain
+\begin{equation}\label{eq:ope-terminal-projection-price}
+      |Q'|_{\rm coeff},\;\operatorname{rem}(Q')
+                           \le a_{m+1}^d\frac{4x}{z}.
+\end{equation}
+This is the terminal projection price used in the cutoff
+accounting: take $z$ equal to its available grouping budget and
+$x$ equal to the elementary projection allowance.
+
+Finally, regrouping and backwards integration are compatible.
+The regrouping map reads the coefficient of the complete old
+group at each new mark; it is a linear map between finite-dimensional
+polynomial spaces. It therefore commutes with every integrable
+transition. At the finest scale, reading a complete group in
+the marked birth density gives the product of its constituent
+observables. An induction over the intervening transitions shows
+that the terminal reaped density is the backwards-integrated
+density of that product. Consequently the coefficient field in
+\eqref{eq:ope-terminal-projection-price} represents the intended
+cluster product through the same sequence of scales. This
+identifies the observable to which the cutoff price applies;
+the elementary estimate \eqref{eq:ope-leaf-projection} and the
+nonlinear transition estimate still require their own proofs.

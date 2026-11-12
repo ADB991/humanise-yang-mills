@@ -1,0 +1,184 @@
+\section{Paying for the affected comparison terms}
+\label{sec:seed-hit-comparison}
+The hit region consists of coarse plaquettes near the very large
+seeds. Its size is controlled by Section~\ref{sec:seed-geometry}.
+We now bound the comparison terms on this region, including the
+negative coarse energy of large plaquettes. The decisive distinction
+is between a small contribution at every tested row and a summable
+excess. The former may have constants depending on $L,W$; the latter
+must retain constants chosen before $L$.
+
+Keep the notation $s,t$ for coarse and fine thresholds, with $s\le2t$.
+Let $a,d$ be the kernel and guide constants in
+\eqref{eq:guide-allowance} and \eqref{eq:guide-maximum}. Let $D$ be
+the predictor-curvature constant in
+\eqref{eq:geometry-predictor-curvature}, and let $N$ bound the macro
+column count and the hit-region size. These constants are fixed
+before $L,W$. Write $g=\sqrt{p}$, where $p>0$ is the predictor
+penalty, and
+\[
+ u=\sqrt{a_f}+d,\qquad v_0=\sqrt{a_c}+d.
+\]
+Here $a_f,a_c$ are the direct quadratic coefficients. All kernels
+and fields below are real; a star denotes the physical Hilbert-space
+adjoint, after transport and truncation.
+
+\subsection{A small part and a summable excess}
+For a matrix $F_{ij}$ with operator-norm row bound $r$ and column
+bound $c$, suppose $\|z_i\|\le b+e_i$ on the inputs of the tested
+columns $j\in S$, with $b,e_i\ge0$. Then
+\begin{equation}\label{eq:hit-transpose}
+ \sum_{j\in S}\|(F^*z)_j\|\le |S|cb+r\sum_i e_i.
+\end{equation}
+Indeed $\|(F^*z)_j\|\le\sum_i\|F_{ij}\|\|z_i\|$ because an
+operator and its adjoint have the same norm. The constant part is
+bounded using the column sum. In the excess part exchange the two
+finite sums and enlarge $S$ to all columns; the row sum then gives
+$r\sum_i e_i$. Inputs outside the nonzero stencil need no estimate.
+
+For the unclipped two-component plaquette field $X$, define the excess
+\[
+ E^\sharp_p=\sqrt{a_0}E_p+\sum_q k_{pq}E_q,
+\]
+where $k$ is the nonnegative path matrix of
+\eqref{eq:guide-path-sums}. If $r(U_q)\le b+E_q$ on the local
+stencil, those bounds give, for either component $\varepsilon$,
+\begin{equation}\label{eq:hit-plotted}
+ \|X_{p,\varepsilon}\|\le(\sqrt{a_0}+d)b+E^\sharp_p,
+ \qquad \sum_{p,\varepsilon}E^\sharp_p
+        \le2(\sqrt{a_0}+d)\sum_pE_p.
+\end{equation}
+For the direct component use the curvature bound. For the path
+component use the row bound for the constant part. For the total
+excess use the column bound. The factor $2$ is the actual number of
+components, even though a sharper componentwise estimate is possible.
+
+Freeze the following excess arrays:
+\[
+ E_p=\mathbf1_{\{p\in\mathcal F,\ r(U_p)>t\}}r(U_p),\qquad
+ F_e=\mathbf1_{\{e\in\mathcal I\}}r(V_eQ_e^{-1}),\qquad
+ \mathcal B=L^{-2}\sum_pE_p+\sum_eF_e.
+\]
+The threshold in $E$ is $t$, and $F$ includes every listed predictor
+bond. The larger threshold $T$ is used only to count the hit region.
+The sector conditions give, throughout the radius-$5B$ neighbourhood,
+\begin{equation}\label{eq:hit-input-split}
+ r(U_p)\le t+E_p,\qquad r(V_eQ_e^{-1})\le2Wt+F_e.
+\end{equation}
+For a listed fine plaquette outside the excess set its chord is at
+most $t$; an unlisted one is at most $t/2$. Listed predictor bonds
+are included entirely in $F$, while unlisted ones are at most $2Wt$.
+
+Let $M_L=(2(J+7)L+1)^4N_p$ bound the number of lifted plaquettes in
+a macro box. Put
+\[
+ r_* =8W+DL^{-2}M_L,\qquad
+ H_p=\sum_{e\in\partial p}F_e+DL^{-2}\sum_qm(x_p,q)E_q,
+ \qquad H_*=4N_p+DN_pN.
+\]
+Equations \eqref{eq:geometry-predictor-curvature} and
+\eqref{eq:hit-input-split} imply
+\begin{equation}\label{eq:hit-coarse-split}
+ r(V_p)\le r_*t+H_p
+ \quad\text{in the radius-$3B$ neighbourhood},\qquad
+ \sum_pH_p\le H_*\mathcal B.
+\end{equation}
+For the local assertion, the four boundary bonds contribute $8Wt$
+and their excesses; the macro row contributes $DL^{-2}M_Lt$ and
+its excess. All input anchors remain within radius $5B$ once
+$B\ge N+1$, and the required nearby frames have positive weight.
+For the total assertion, each of the four boundary-bond maps, for a
+fixed plaquette orientation, is injective on the periodic lattice;
+thus its sum is at most $\sum_eF_e$. The macro column sum is at most
+$N$ for each fine plaquette, and summing over coarse plaquette
+orientations contributes $N_p$. Consequently
+\[
+ \sum_pH_p\le4N_p\sum_eF_e+DN_pN L^{-2}\sum_qE_q
+       \le H_*\mathcal B.
+\]
+In contrast to $r_*$, the coefficient $H_*$ is independent of $L,W$.
+
+\subsection{The two comparison rows}
+Let $S$ be the hit plaquettes, $m=|S|$, and
+$\widetilde S=S\times\{0,1\}$, so $|\widetilde S|=2m$. Put
+$Z_e=gF(V_eQ_e^{-1})$ for the predictor curvature field. The three
+norm totals entering the linear comparison satisfy
+\begin{align}
+ \sum_{j\in\widetilde S}\|(\Phi^*X_f)_j\|
+   &\le2m\,aL^2ut+2au\mathcal B,\label{eq:hit-fine}\\
+ \sum_{j\in\widetilde S}\|((\Phi')^*Z)_j\|
+   &\le2m\,ag(2Wt)+ag\mathcal B,\label{eq:hit-noise}\\
+ \sum_{j\in\widetilde S}\|(X_c)_j\|
+   &\le2m\,v_0r_*t+2v_0H_*\mathcal B.\label{eq:hit-coarse}
+\end{align}
+For \eqref{eq:hit-fine}, use \eqref{eq:hit-plotted} with $b=t$ and
+then \eqref{eq:hit-transpose} with row $a/L^2$ and column $aL^2$.
+The total excess is at most $2u\sum E$, giving
+$2auL^{-2}\sum E\le2au\mathcal B$. The two successive stencils
+extend the tested radius-$2B$ region first to radius $3B$ and then
+to radius $5B$, so the assumed local envelope is sufficient.
+For \eqref{eq:hit-noise}, use $\|Z_e\|\le g(2Wt+F_e)$ and the
+row and column bounds $a$ for $\Phi'$. For
+\eqref{eq:hit-coarse}, apply \eqref{eq:hit-plotted} to
+\eqref{eq:hit-coarse-split} and sum its excess. Again the stencil
+lies within the region where that inequality is valid.
+
+The linear comparison row is
+\[
+ L_p=\sum_{\varepsilon=0}^1
+  \langle v_{p,\varepsilon},
+       (\Phi^*X_f+ (\Phi')^*Z-X_c)_{p,\varepsilon}\rangle.
+\]
+By $\|v_j\|\le dt$ and Cauchy--Schwarz, the sum over $S$ is bounded
+below by $-dt$ times the sum of the three right sides above. The
+quadratic defect row is
+\[
+ D_p=\frac12\sum_{\varepsilon=0}^1
+  \left\langle v_j,
+    \bigl(\{1-\Phi^*\Phi-(\Phi')^*\Phi'-N^*N\}v\bigr)_j\right\rangle,
+ \qquad j=(p,\varepsilon).
+\]
+There is no assertion here that the bracket is zero at a curved
+field. From \eqref{eq:guide-maximum} and the column bounds,
+\[
+ \|\Phi^*\Phi v\|_\infty\le adt,\quad
+ \|(\Phi')^*\Phi'v\|_\infty\le adt,\quad
+ \|N^*Nv\|_\infty\le a^2dt.
+\]
+In the first inequality the factor $L^2$ in the column cancels the
+$L^{-2}$ in the guide bound. Thus
+\begin{equation}\label{eq:hit-defect}
+ D_p\ge-d_0t^2,\qquad d_0=d(d+ad+ad+a^2d).
+\end{equation}
+The factor $1/2$ cancels the two component slots.
+
+Let $\mathcal C_2$ be the coarse plaquettes in the outer region with
+chord greater than $\delta$. By Section~\ref{sec:seed-geometry},
+$\mathcal C_2\subset S$. Therefore
+\[
+ \sum_{p\in\mathcal C_2}r(V_p)\le mr_*t+H_*\mathcal B.
+\]
+Writing $\lambda_c$ for the coarse linear coefficient and using
+$s\le2t$, combine this with \eqref{eq:hit-fine}--\eqref{eq:hit-defect}
+to obtain
+\begin{equation}\label{eq:hit-final}
+ \sum_{p\in S}(L_p+D_p)
+ \ge\lambda_cs\sum_{p\in\mathcal C_2}r(V_p)
+       -C_1t\mathcal B-Z_0t^2m,
+\end{equation}
+where the explicit nonnegative constants are
+\[
+ \begin{split}
+ C_1&=d(2au+ag+2v_0H_*)+2\lambda_cH_*,\\
+ Z_0&=2d\{aL^2u+2agW+v_0r_*\}+d_0+2\lambda_cr_*.
+ \end{split}
+\]
+This is just addition of the bounds; in particular $C_1$ is chosen
+before $L,W$, while $Z_0$ may depend on them. The geometric estimate
+$m\le NB^4d_A$ now changes the last term into
+$-Zt^2B^4d_A$, with $Z=NZ_0+1$. Since
+$\mathcal B=L^{-2}\sum_{\mathcal S}r(U_p)+\sum_{\mathcal I}r(V_eQ_e^{-1})$,
+\eqref{eq:hit-final} is the hit-region input used in
+Section~\ref{sec:seed-energy}. Its proof retains the two distinct
+thresholds and all transposed-kernel multiplicities. The unhit-region
+comparison still requires the local flat-field approximation.

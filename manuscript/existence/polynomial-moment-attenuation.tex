@@ -1,0 +1,300 @@
+\section{Polynomial moments and decay of irrelevant insertions}
+\label{sec:polynomial-moment-attenuation}
+The subtraction in Section~\ref{sec:local-splitting} removes the
+low-order holonomy tests of an insertion. We now explain why this
+improves its coarse-to-fine estimate. The argument has two parts:
+a qualitative implication from holonomy tests to polynomial moments,
+and a quantitative decomposition of the actual interpolating field.
+Both use the same centered lattice lift as the local subtraction.
+
+\subsection{From holonomy tests to polynomial moments}
+Let $X$ be a nonwrapping support about $o$ on a torus of side at
+least two. Let $f$ be local on $X$, gauge invariant, and $C^d$ in
+logarithmic coordinates near the identity. Suppose that every
+holonomy test through degree $d$ vanishes:
+\begin{equation}\label{eq:moment-test-null}
+ \left.\frac{d^j}{dt^j} f(H_o(J,t))\right|_{t=0}=0,
+                   \qquad 0\le j\le d,\quad\hbox{every }J.
+\end{equation}
+Tests with a larger available cutoff are allowed; only degrees
+through $d$ enter the argument. For $a\ge1$ let $\mathcal M_a$
+be the space of link fields screened to the links with both
+endpoints in $X$, whose value on a link in direction $i$ is a
+polynomial of degree at most $a-1$ in
+$x=\operatorname{lift}(e_--o)$. We claim that
+\begin{equation}\label{eq:polynomial-moment-null}
+ D^m(f\circ\exp)(0)[v_1,\ldots,v_m]=0
+ \quad\text{if }v_i|_X\in\mathcal M_{a_i},\quad
+ a_i\ge1,\quad\sum_i a_i\le d.
+\end{equation}
+The restriction means screening the link field, not restricting
+its support before applying the coarse-to-fine map.
+
+Here are the details of the change of coordinates behind this
+claim. Introduce a site gauge parameter $q$ and the finite list
+$J$ of radial connection coefficients of weights $2,3,\ldots$.
+For each link set
+\[
+ \Psi(q,J)_e=
+ \log\bigl(e^{q(e_-)}H_o(J,1)_e e^{-q(e_+)}\bigr)
+\]
+on the links tested by $X$, and set it to zero elsewhere. This
+is an analytic germ with $\Psi(0)=0$. The endpoint map is analytic
+by the integral-equation argument in Section~\ref{sec:local-splitting}.
+Locality and gauge invariance give, as germs,
+\begin{equation}\label{eq:moment-gauge-germ}
+            (f\circ\exp)\circ\Psi(q,J)=f(H_o(J,1)).
+\end{equation}
+The identity uses only tested links and a finite common chart.
+
+Give a direction $(q,J)$ filtration degree $a$ when $q$ is
+polynomial of degree at most $a$ on $X$ and the components of
+$J$ of weight greater than $a$ vanish. Denote this space by
+$\mathcal K_a$. The following two properties hold:
+\begin{align}
+ D\Psi(0)\mathcal K_a&=\mathcal M_a,
+       &&1\le a\le d,\label{eq:moment-surjection}\\
+ D^r\Psi(0)[u_1,\ldots,u_r]&\in\mathcal M_{\sum_i a_i},
+       &&u_i\in\mathcal K_{a_i},\ r\ge1.
+       \label{eq:moment-filtration}
+\end{align}
+We prove them, since the nonlinear coordinate change matters.
+
+For the first property the linearized link is
+\[
+ D\Psi(0)(q,J)_{(x,i)}
+       =q(x)-q(x+e_i)+\int_0^1 A_J(x+se_i)(e_i)\,ds.
+\]
+Nonwrapping and side at least two identify the centered lift at
+the endpoint with $x+e_i$. Every constant one-form is the gradient
+of a linear site polynomial, so it occurs with $J=0$. For a
+homogeneous polynomial one-form $Q$ of degree $k\ge1$, put
+\[
+ r(x)=\frac1{k+1}\sum_i x_iQ_i(x),\qquad K_i=Q_i-\partial_i r.
+\]
+Euler's identity gives $\sum_i x_iK_i(x)=0$. Thus $K$ is precisely
+an admissible radial connection coefficient of weight $k+1$.
+Taking $q=-r$ and that coefficient gives the link average of $Q$.
+The difference between this average and $Q_i(x)$ has degree at
+most $k-1$: expand $Q_i(x+se_i)$ as a polynomial in $s$, and
+observe that its constant term is $Q_i(x)$. Induction on the
+degree supplies the difference by lower-weight parameters.
+Splitting a general polynomial into homogeneous parts proves
+\eqref{eq:moment-surjection}.
+
+For \eqref{eq:moment-filtration}, write the link germ in variables
+\[
+     q(x),\qquad q(x+e_i)-q(x),\qquad A_J(x+se_i).
+\]
+For a direction of degree $a$, the first expression has degree
+at most $a$ in $x$, and each of the other two has degree at most
+$a-1$. When both of the latter expressions vanish, the link germ
+is identically zero, since $e^{q(x)}1e^{-q(x)}=1$. Expand any
+multilinear derivative according to these three components in
+each argument. The term using only the first components vanishes.
+Every remaining term contains a component with a one-degree
+loss; its degree is at most $\sum_i a_i-1$. Screening completes
+\eqref{eq:moment-filtration}.
+
+Equation~\eqref{eq:moment-test-null} implies that all mixed
+derivatives of the right side of \eqref{eq:moment-gauge-germ}
+with total filtration weight at most $d$ vanish. To verify this
+precisely, take its Taylor polynomial through ordinary degree
+$d$ in the finite coordinates $J$. Substitute the weighted
+scaling $J_a\mapsto t^aJ_a$. The coefficient of every $t^j$,
+$j\le d$, is zero for all $J$, by \eqref{eq:moment-test-null}.
+Each such coefficient is a polynomial, hence all its monomial
+coefficients vanish. Polarization gives the asserted mixed
+derivatives. Gauge-coordinate derivatives vanish because the
+right side is independent of $q$.
+
+Apply the chain rule to the left side of
+\eqref{eq:moment-gauge-germ}. Induct on the number $m$ of
+arguments in \eqref{eq:polynomial-moment-null}, lifting each
+$v_i$ to $u_i\in\mathcal K_{a_i}$ by
+\eqref{eq:moment-surjection}. The partition into singletons
+contributes exactly the desired derivative of $f\circ\exp$.
+Every other partition has fewer than $m$ blocks; by
+\eqref{eq:moment-filtration}, its arguments have the block
+weights, whose sum is still $\sum_i a_i$. The induction hypothesis
+kills all these terms. The whole derivative of the composite
+is zero, so the singleton term is zero too. The case $m=0$ is
+$f(1)=0$. Finally, locality makes $f\circ\exp$ equal to its
+composition with the linear screening map. Differentiating that
+identity allows unscreened directions whose restrictions have
+the stated polynomial form. This proves
+\eqref{eq:polynomial-moment-null}.
+
+\subsection{A discrete Taylor decomposition on the cover}
+Write $|x|_1=\sum_{i=1}^4|x_i|$ for $x\in\mathbb Z^4$ and
+$\Delta_i v(x)=v(x+e_i)-v(x)$. For a word $w$ in the four
+axes let $\Delta_w$ be the corresponding iterated difference.
+Suppose $d,p\in\mathbb N$, $L\ge1$, $p\ge d$, $M\ge0$,
+$\theta>0$, and a colour-valued cover field $v$
+satisfies
+\begin{equation}\label{eq:moment-drift}
+ \|\Delta_wv(x)\|\le M\theta L^{-1-|w|}
+                       (1+|x|_1/L)^p,
+                  \qquad |w|\le d.
+\end{equation}
+There are polynomial pieces $P_j$, $0\le j<d$, and a remainder
+$R_d$ such that
+\begin{equation}\label{eq:moment-newton}
+ v(x)=\sum_{j<d}P_j(x)+R_d(x),\qquad
+ \begin{cases}
+ \deg P_j\le j,\\
+ \|P_j(x)\|\le C_{d,p}M\theta L^{-j-1}(1+|x|_1)^p,\\
+ \|R_d(x)\|\le C_{d,p}M\theta L^{-d-1}(1+|x|_1)^p.
+ \end{cases}
+\end{equation}
+The constant precedes the choice of $L$ and of the period.
+
+For completeness use the total-degree Newton polynomials
+\[
+ P_j(x)=\sum_{|\alpha|=j}\binom{x}{\alpha}\Delta^\alpha v(0),
+ \qquad
+ \binom{x}{\alpha}=\prod_{i=1}^4
+       \frac{x_i(x_i-1)\cdots(x_i-\alpha_i+1)}{\alpha_i!}.
+\]
+These formulas are polynomial identities for real $x$, so allow
+negative lattice offsets. The identity
+$\binom{t+1}{a}-\binom ta=\binom t{a-1}$ implies
+\[
+ \Delta_i P_{j+1}(v)=P_j(\Delta_i v),\qquad
+ P_j(v)(0)=0\ (j>0).
+\]
+They are also the polynomials obtained by the recursion
+\[
+ P_{j+1}(v)(x)=(j+1)^{-1}\sum_i x_iP_j(\Delta_i v)(x-e_i).
+\]
+To check this, expand the falling factorials and use $\sum_i\alpha_i=j+1$.
+Their coefficients give
+\[
+ \|P_j(x)\|\le c_jM\theta L^{-j-1}(1+|x|_1)^j,
+                         \qquad c_j=[4(j+1)]^j.
+\]
+Indeed each falling-factorial factor is bounded by
+$(1+|x|_1+j)^j$, while summing the reciprocal factorials at
+fixed degree contributes $4^j/j!\le4^j$.
+
+If $|x|_1\le L$, all differences of order $d$ in the ball of
+radius $L$ are at most $2^pM\theta L^{-d-1}$. The remainder
+$R_d=v-\sum_{j<d}P_j$ is zero at zero for $d>0$, and
+$\Delta_iR_d(v)=R_{d-1}(\Delta_i v)$. Induction on $d$,
+followed by summation along a shortest signed coordinate path
+from zero to $x$, gives
+\[
+ \|R_d(x)\|\le2^pM\theta L^{-d-1}(1+|x|_1)^d.
+\]
+For a negative step the forward difference is evaluated at the
+new endpoint, which still lies in the same ball. Thus this
+summation does not assume positive offsets. Since $p\ge d$,
+it is bounded by the remainder in \eqref{eq:moment-newton}.
+If $|x|_1>L$, then
+\[
+ (1+|x|_1/L)^p\le2^p L^{-p}(1+|x|_1)^p
+\]
+and, for $j<d$,
+$L^{d-j}\le(1+|x|_1)^{d-j}$. Apply these inequalities to
+\eqref{eq:moment-drift} with the empty word and to the piece
+bounds, then use $R_d=v-\sum_{j<d}P_j$. This gives
+\eqref{eq:moment-newton} with
+$C_{d,p}=2^p+\sum_{j<d}c_j$. When $d=0$ only the remainder
+is present, and the original bound suffices.
+
+Evaluate these pieces at the actual centered lift on the torus.
+The lift satisfies $|\operatorname{lift}(y-o)|_1\le
+4\operatorname{dist}(y,o)$. Multiplying the constant by $4^p$
+therefore gives a global decomposition into $d$ polynomial
+pieces and a last remainder. The screened $j$th piece belongs
+to $\mathcal M_{j+1}$. Nothing is required of the polynomial
+behavior of the last remainder, including across the lift boundary.
+
+\subsection{Applying the decomposition to the actual kernel}
+The coarse-to-fine linear field is the installed $A_0$ kernel,
+with the physical normalization of Section~\ref{sec:kernel-transport-identities}.
+Its iterated spatial differences obey the strip estimates
+\[
+ \|\Delta_w A_0\|_\alpha\le A L^{-1-|w|},
+                                      \qquad |w|\le d.
+\]
+These are the $A_0$ difference bounds in
+Section~\ref{sec:curvature-horizon-producer}; no such assertion
+about all the other tower blocks is needed here. If a coarse
+input obeys $\|u(y)\|\le\theta(1+\operatorname{dist}(y,o_c))^p$,
+where $o_c$ is the parent of the chosen fine anchor $o$, use the
+installed row at $o+\operatorname{wrap}(x)$. Its summation addresses
+are the parent of this site plus $\operatorname{wrap}(z)$, where
+$z$ is the cover displacement in that residue row. The parent
+map can cross a block boundary; its centered residue changes at
+the same time. The coordinate division with remainder gives
+\[
+ 1+\operatorname{dist}\bigl(\operatorname{parent}
+ (o+\operatorname{wrap}(x))+\operatorname{wrap}(z),o_c\bigr)
+ \le3(1+|x|_1/L)(1+|z|_1).
+\]
+Indeed in each coordinate the parent displacement is the integer
+quotient of $x$ plus a residue correction of absolute value at
+most one; periodic distance can only decrease this bound. Taking
+the maximum of the coordinate bounds and then adding the cover
+shift gives the displayed factor three. Taking absolute values
+in the convolution now costs $3^p(1+|x|_1/L)^p$ times the strip
+row sum with the additional weight $(1+|z|_1)^p$. The inequality
+$(1+t)^p\le C_{p,\alpha}e^{\alpha t}$ absorbs that weight into
+the available strip estimate. Sum also over the fixed form types.
+Differences can
+be taken on the row before summation by absolute convergence;
+the installed odd-block carry identifies them with the cover
+forward differences. We obtain \eqref{eq:moment-drift}, with
+$M$ depending only on $A,\alpha,p$ and the fixed component count.
+The preceding decomposition therefore applies to this actual
+field, uniformly in the lattice size and block factor.
+
+\subsection{Quantitative cancellation and displacement}
+Let $\|\cdot\|_P$ denote the direction norm
+\[
+ \|v\|_P=\sup_e
+ \frac{\|v_e\|}{\theta(1+\operatorname{dist}(o,e_-))^p}.
+\]
+Say that a direction admits a graded decomposition at scale
+$0\le\xi\le1$ and cost $C\ge1$ if
+\[
+ v=\sum_{a=1}^{d+1}v_a,\qquad
+ \|v_a\|_P\le C\xi^a,\qquad
+                   v_a|_X\in\mathcal M_a\quad(a\le d).
+\]
+The preceding construction gives this property with $\xi=L^{-1}$.
+Suppose the regular derivative bound of $F=f\circ\exp$ is
+\begin{equation}\label{eq:moment-regular-bound}
+ |D^mF(b)[v_1,\ldots,v_m]|
+           \le Q\tau\prod_i\|v_i\|_P,
+                                      \qquad m\le n,
+\end{equation}
+on the logarithmic region used below, with $n\ge d+1$.
+Here $Q$ is the fixed conversion constant from the local
+regularity norm, and $\tau$ is its price. The chart and health
+conditions in that norm are retained in
+\eqref{eq:moment-regular-bound}.
+
+At zero, expand each argument into its $d+1$ pieces. All terms
+of total weight at most $d$ vanish by
+\eqref{eq:polynomial-moment-null}. Every remaining term has a
+factor at most $C^m\xi^{d+1}$. There are $(d+1)^m$ terms.
+For $m\le n$ this proves
+\[
+ |D^mF(0)[v_1,\ldots,v_m]|
+             \le Q\tau((d+1)C)^n\xi^{d+1}=:S.
+\]
+Now let the displacement $b$ have the same decomposition, and
+suppose that the segment $tb$, $0\le t\le1$, remains in the
+healthy logarithmic region, with the tested links and direction
+widths bounded by one as required by the regular norm. At order
+$n$, \eqref{eq:moment-regular-bound} bounds the derivative on
+this segment by $S$, since each argument has norm at most
+$(d+1)C\xi$ and $n\ge d+1$. If the order-$m+1$ derivative is
+bounded there by $(n-m)S$, the fundamental theorem of calculus
+applied to $t\mapsto D^mF(tb)[v_1,\ldots,v_m]$ bounds its
+change from zero by $(n-m)S$. Its value at zero is at most $S$.
+Descending induction gives the uniform bound $(n+1)S$ at every
+order through $n$. This proves the attenuation after displacement;
+it does not require differentiating the health indicator.

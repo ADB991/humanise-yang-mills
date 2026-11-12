@@ -1,0 +1,196 @@
+\section{The marked observable at the terminal level}
+\label{sec:terminal-marked-construction}
+The terminal vacuum construction must also carry each local field and
+its forced profile. We give this construction before propagating the
+field down the selected history. All activities, supports and predicates
+in this section belong to that history.
+
+\subsection{Reserved addresses and the missing part of the field}
+Fix a grade $d$, a cutoff $N$ and a period $p$. Write $R$ for the
+terminal representation, $F$ for its grade-$d$ coefficient frame,
+$S$ for its sound local section, $o=0$ for its origin, $Y$ for its
+footprint and $0<\theta\le1$ for its threshold. The forced activities are
+$K_i$, with supports $X_i$ and nonempty inventories $I_i\subseteq X_i$.
+Their eligibility requires both the prescribed flags on $X_i$ and the
+original additional predicate. A compatible collection has pairwise
+disjoint supports, and its inventories cover exactly the flagged sites.
+
+The activity dictionary used in the startup and return constructions
+has, for every pair $I\subseteq X$ with $I\ne\varnothing$, an infinite
+sequence of reserved addresses. The address indexed by $(X,I,j)$ has
+support $X$, inventory $I$, and zero activity. Its additional predicate
+is precisely the condition that the flagged sites in $X$ equal $I$.
+Here is why these properties survive the construction. The dictionary
+embeds the old hard labels in one set of coordinates and reserves a
+disjoint set for every shape $(X,I)$. The new connected objects encode
+finite sets of these coordinates. A reserved singleton cannot be an
+image of an old object: that would put its reserved coordinate in the
+old coordinate embedding. Its coefficient therefore remains zero.
+Reading a singleton recovers exactly its support and inventory; its
+eligibility test is the original test for that one shape. This is the
+same operation in startup and every return. In particular it supplies
+the reserved addresses in the actual selected terminal representation.
+
+We use these addresses to encode a finite compatible nonempty family
+$b$ of old forced labels whose supports all meet $Y$. Put
+\[
+ T_b=Y\cup\bigcup_{i\in b}X_i,\qquad
+ I_b=\bigcup_{i\in b}I_i.
+\]
+Choose the reserved address $s(b)$ for shape $(T_b,I_b)$, with serial
+number encoding $(d,b)$. This is injective in $b$. No old activity is
+overwritten: $K_{s(b)}=0$ before the marked coefficient is installed.
+
+For $v\in F$ let $P_v$ be the primary, masked part of the section, and
+let
+\[
+ f_v(U)=S(\theta^{-1}\mathbin{\cdot_F}v)(o,U)-P_v(U).
+ \label{eq:terminal-supplement}
+\]
+Here $\cdot_F$ is the graded dilation: on a coordinate of degree $r$
+it multiplies by $\theta^{-r}$. The primary part retains the vacuum
+coordinate everywhere and the scaled nonvacuum part on healthy
+configurations. Hence $f_v=0$ when $Y$ is healthy; otherwise it equals
+the scaled nonvacuum section. The map $v\mapsto f_v$ is complex-linear,
+measurable, gauge invariant, and depends only on the field and flags in
+$Y$. These assertions follow directly from the corresponding properties
+of the sound section and the mask. If $q$ is the maximum coordinate
+degree and each axis section has modulus at most $C_d\ge1$, then
+\[
+ |f_v(U)|\le C_d\theta^{-q}\|\operatorname{core}v\|_1.
+ \tag{T1}
+\]
+Indeed expand the nonvacuum coefficient in the finite axis basis and
+use $0<\theta\le1$, so $\theta^{-r}\le\theta^{-q}$ for every axis.
+
+Define the new forced coefficient at $s(b)$ by
+\[
+ J_v(s(b),U)=\mathbf1_{\{T_b\cap\operatorname{flags}(U)=I_b\}}
+                f_v(U)\prod_{i\in b}K_i(U),
+ \tag{T2}
+\]
+and set it to zero at all other addresses. Its support and inventory
+are exactly $T_b,I_b$. When it is nonzero, the indicator ensures the
+original additional predicate of the reserved address. Old factors
+$K_i$ retain all their own predicates. The dependence, invariance and
+measurability requirements thus hold on the original dictionary.
+The marked coefficient has lead $v$, zero regular correction, and
+forced part $J_v$.
+
+\subsection{The exact density and forced profile}
+Consider an old compatible collection $c$ at a configuration where
+$f_v(U)\ne0$. Split it uniquely into the labels meeting $Y$ and the
+labels disjoint from $Y$:
+\[
+ b=\{i\in c:X_i\cap Y\ne\varnothing\},\qquad r=c\setminus b.
+\]
+The set $b$ is nonempty. Indeed $Y$ is then not healthy, and a flagged
+site of $Y$ lies in some inventory of $c$, hence in its support.
+Replace $b$ by $s(b)$ and leave $r$ unchanged. The result is compatible:
+its old remaining supports are disjoint from $Y$ and from all supports
+in $b$, hence from $T_b$. Inventories still cover exactly the same
+flags. Conversely, from a compatible marked collection containing
+$s(b)$, replace that address by $b$. Its other supports are disjoint
+from $T_b$, so this inverse restores precisely the original collection.
+These two operations are inverse before any summation.
+
+For each paired term, (T2) times its remaining old activity factors is
+$f_v(U)$ times the original product. The following absolute estimate
+justifies summing these identities. Suppose $k_i\ge0$ majorizes
+$|K_i|$ and has the actual weighted site bound
+\[
+ \sum_{i:x\in X_i} M(X_i)k_i\le w,
+ \qquad M(X)=\exp\{E\,\operatorname{cover}_B(X)\},
+ \tag{T3}
+\]
+where $E\ge0$ is the purchased support exponent. Because every $X_i$ in
+$b$ meets $Y$, the connected covering inequality gives
+\[
+ M(T_b)\prod_{i\in b}k_i\le M(Y)\prod_{i\in b}M(X_i)k_i.
+\]
+Moreover the sum of $M(X_i)k_i$ over labels meeting $Y$ is at most
+$|Y|w$: sum (T3) over $x\in Y$. For every finite set of such labels,
+the sum of products over its nonempty subsets is
+$\prod_i(1+M(X_i)k_i)-1\le e^{|Y|w}-1$.
+Increasing the finite sets and using nonnegativity proves
+\[
+ \sum_b M(T_b)\sup_U|J_v(s(b),U)|
+ \le C_d\theta^{-q}\|\operatorname{core}v\|_1
+             M(Y)(e^{|Y|w}-1).
+ \tag{T4}
+\]
+Dropping the compatibility restrictions only enlarges this bound.
+It supplies a summable majorant for the new coefficients. The lawful
+old gas bounds supply the remaining dressing majorants, so the
+regrouping above is absolutely convergent. Its sum is exactly $f_v$
+times the old gas. Adding the primary contribution proves the pointwise
+identity
+\[
+ \operatorname{density}(v)(U)
+   =R(U)S(\theta^{-1}\mathbin{\cdot_F}v)(0,U)
+   =a_N^d R(U)\,\mathrm{initial}_{N,p}(v)(U).
+ \tag{T5}
+\]
+The last equality is the definition of the physical normalization of
+$\mathrm{initial}$.
+
+There is also an identity before multiplication by the unmarked gas.
+Group the forced coefficients according to their support and inventory.
+The address $s(b)$ contributes exactly the expression in (T2), and
+all addresses outside its image contribute zero. The bijection between
+$b$ and the finite compatible families meeting $Y$ identifies this
+profile with the attachment of the singleton response $f_v$ on $Y$.
+This is the forced-profile identity needed by the adjacent transfer
+construction. It follows from equality of the individual products and
+the summable majorant (T4), not from the density identity (T5).
+
+The footprint, graded dilation and healthy mask commute with signed
+lattice motions. The sound section also commutes with the independent
+complex-conjugation action. Therefore $f_v$ transforms into
+$f_{g\cdot v}$, with the same scalar conjugation when appropriate.
+Reindexing the compatible collections preserves their supports and
+inventories and proves the same covariance for the attached profile.
+No equivariant choice of the serial numbers is needed: the profile
+sums over addresses. The density, coefficient index and forced profile
+thus have the common motion covariance required at terminal birth.
+
+\subsection{Paying the birth cost before choosing the history}
+It remains to pay the factor in (T4), uniformly in the period. The
+axis bound $C_d$ comes from the fixed finite local section. Its stencil
+has cardinality at most a fixed $R_d$, and, once the cover radius
+contains that stencil, $\operatorname{cover}_B(Y)\le1$. Thus the fee is
+at most
+\[
+ C_d\theta^{-q}e^E(e^{R_dw}-1).
+ \tag{T6}
+\]
+On a fixed profile stage, $E,C_d,R_d,q$ are fixed. For the hatted
+coupling $x$ the chosen threshold satisfies $\theta^{-1}\le x$ once
+$x\ge1$, and the forced allowance is
+\[
+ w(x)=\exp\{-\exp((\log\log x)^2/5)\},\qquad 0<w(x)\le1.
+\]
+For each fixed integer $n$, $\sqrt{w(x)}x^n\to0$. To see this, put
+$u=\log\log x$. The logarithm of that product is
+$-\tfrac12e^{u^2/5}+ne^u$, which tends to $-\infty$ because
+$e^{u^2/5-u}\to\infty$. Also
+$e^z-1\le ze^z$ for $z\ge0$, by integration of $e^t$ over $[0,z]$.
+Consequently (T6) is at most
+\[
+ K_dx^qw(x),\qquad K_d=C_de^ER_de^{R_d}.
+\]
+Choose $x\ge\max(1,K_d)$ and
+$\sqrt{w(x)}x^{q+1}\le1$. Then this last expression is at most
+$\sqrt{w(x)}$. This proves the terminal remainder bound with charge
+$\|\operatorname{core}v\|_1$, uniformly in $N,p$ at this profile stage.
+
+At stage $j$ there are only finitely many grades and earlier profiles
+through $j$. Take a common maximum of their fee thresholds and stencil
+fit thresholds, then take running maxima in $j$. Include this delay
+among the purchases of Section~\ref{sec:common-observable-purchases}
+before applying the common scale selection. At level $m$, both its
+grade $d\le J(m)$ and its actual profile index $J(m)$ lie in the
+finite list purchased at $J(m+1)$. The fee therefore fits at every
+admitted terminal level, on the same selected scale sequence. With
+(T1)--(T5), this supplies the terminal marked data and all of their
+bounds for the backward transfer construction.

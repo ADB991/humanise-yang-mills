@@ -1,0 +1,230 @@
+\section{Parameter estimates after the local projection}
+\label{sec:projected-parameter-prices}
+We transfer the estimates of Section~\ref{sec:sector-analytic-prices}
+to the actual ordinary and forced arrays after localization. All
+finite tests below use the common parameter family, and every local
+cutoff is applied to its original fixed support. We retain the
+compatibility and local-generation identities specified in
+Section~\ref{sec:five-period-localization}.
+
+The ordinary budget below is anchored: at site $o$ it sums the
+nonnegative derivative prices of entries whose assigned anchor is $o$,
+with their exponential support weights. The forced budget sums all
+supports containing the site. The sector bounds imply the anchored
+ordinary bounds by restricting their support sums to the assigned anchors.
+
+Let $P$ be the outgoing derivative budget, with derivative order
+$j$, spatial weight power $m$, radius $B$, threshold $\theta$ and
+support exponent $b$. Put $b_*=b+3$. Let
+$y=\beta_f(x)$ and $R=y^{1/256}$, as before. Assume the path
+rows have their purchased strip and coefficient bounds, their
+regular local readings are smooth on healthy supports, and the
+support reserve fits inside half the path strip. Their ordinary
+rooted allowance, before the finite orientation average, is at
+most $y^{-7/16}$. These are the path inputs to the present
+argument. The parameter-dependent action and quadratic rows
+are multiplied by $\ell(t)^2$, while the other two row types
+are unchanged. Since $|\ell^2|_R\le(1+\delta)^2\le4$, their
+finite-test allowance at radius $R/2$ is at most four times
+the original allowance.
+
+Let $T_P>0$ be the fixed orientation and derivative allocation
+cost. Combining the path terms and the sector logarithmic terms,
+and applying that allocation, gives the price
+\begin{equation}\label{eq:projected-initial-price}
+                    W(x)=T_P\{y^{-3/8}+4y^{-7/16}\}.
+\end{equation}
+For every finite test $\lambda$, the ordinary family has rooted
+derivative price $M_{R/2}(\lambda)W(x)$ at exponent $b_*$.
+A fixed finite short-support panel may be removed from this
+family with the same bound: keep the original nonnegative price
+on the retained addresses and put zero on the deleted ones.
+Neither the parameter dictionary nor its support sets change.
+This observation includes every finite truncation used in the
+short-density construction, with no dependence of $W$ on the
+truncation order.
+
+\subsection{Allocating and testing the auxiliary densities}
+For the five auxiliary periods $\Lambda_i$ of
+Section~\ref{sec:five-period-localization}, form the same
+finite-panel local densities $f_i(q,U)$. The nonnegative
+allocation coefficients are bounded by one, sum to one over
+$q$, and only assign an entry to anchors in its prescribed
+neighbourhood. Write $s$ for the radius of that neighbourhood
+and $b_s=(2s+1)^4$.
+
+For a tested density at a fixed site $q$, take absolute values
+in its allocation formula. Each nonzero entry is assigned to
+an anchor within $N_s(q)$. Summing first over those anchors
+and then using the rooted bound gives
+\begin{equation}\label{eq:projected-local-test}
+  \left|\sum_h a_h f_i(t_h,q,U)\right|
+                         \le M_{R/2}(\lambda)b_sW(x)
+\end{equation}
+on globally healthy $U$. The same estimate holds for the
+masked panel on an arbitrary field: outside its healthy support
+an entry is zero. Here the mask is independent of the parameter,
+so testing commutes with masking.
+
+The total auxiliary density is exactly the sum of the panel
+entries, since the allocations sum to one. Summing the derivative
+prices over anchors therefore bounds its derivatives by
+\[ |\Lambda_i|W(x)M_{R/2}(\lambda). \]
+Subtracting its value at the
+identity field costs at most twice that amount, uniformly through
+derivative order $j$; positive derivatives of the subtracted
+constant vanish. Thus the two probe prices needed below are
+\begin{equation}\label{eq:projected-probe-prices}
+                     p_i=2|\Lambda_i|W(x),\qquad q_i=b_sW(x).
+\end{equation}
+The first bounds derivatives of the centered total density;
+the second bounds each uncentered local density on healthy fields.
+The identity field is healthy because its plaquette holonomies
+are all the identity and $\theta>0$.
+
+\subsection{The ordinary output price}
+Let $g(t,o,U)$ be the five-period local density and $d(t,o,U)$
+its discrepancy. Put
+\[
+ \mathcal O_z(p)=\sum_{i=0}^4|c_i|\,2^j(1+z)^{mj}p_i,
+ \qquad C_z\ge\sup_o c_B(N_z(o)).
+\]
+All operations in the formula for $g$ are finite linear
+operations on the densities. Hence a finite test commutes with
+that formula. Apply \eqref{eq:five-period-derivative-cost} to
+the tested auxiliary total densities. The result is the regular
+support price $M_{R/2}(\lambda)\mathcal O_z(p)$ at each anchor.
+Multiplying by the support weight gives
+$M_{R/2}(\lambda)\mathcal O_z(p)e^{b_*C_z}$.
+The existing complementary panel has price
+$M_{R/2}(\lambda)W(x)$. After the orientation allocation,
+the total ordinary output price is therefore
+\begin{equation}\label{eq:projected-ordinary-price}
+       A(x)=W(x)+T_P\mathcal O_z(p)e^{b_*C_z}.
+\end{equation}
+This is a bound on the full derivative budget on each healthy
+support, not just on the sum of the array values.
+
+In the selected geometry, $s,z$ and all five auxiliary volumes
+have upper exponent zero; the cover bound $C_z$ is fixed by
+the halo and support construction. The derivative order and
+spatial weight power are fixed before the scale is increased.
+Consequently $A$ has upper exponent $-3/8$, and
+\begin{equation}\label{eq:projected-broad-bound}
+                                A(x)\le y^{-1/4}
+\end{equation}
+eventually. The strict exponent gap absorbs every fixed
+orientation constant and every factor of upper exponent zero.
+This is the broad ordinary bound used in the finite-test
+sharpening of Section~\ref{sec:background-test-prices}; its
+radius is $R/2=y^{1/256}/2$.
+
+\subsection{A common series majorant for the discrepancy}
+A discrepancy value is the difference between the allocated
+masked panel, its identity-field constant, and the shifted
+masked auxiliary sum. Applying \eqref{eq:projected-local-test}
+to the first two terms gives $2b_sW(x)M_{R/2}(\lambda)$.
+For the last term, each centered auxiliary local value is bounded
+by $2q_iM_{R/2}(\lambda)$ when its mask is one, since the folded
+field is then globally healthy. It is zero when its mask is zero.
+Hence, for every field $U$ and anchor $o$,
+\[
+ \left|\sum_h a_h d(t_h,o,U)\right|
+ \le M_{R/2}(\lambda)
+      \left\{2b_sW(x)+\sum_{i=0}^4|c_i||\Lambda_i|\,2q_i\right\}.
+\]
+Write $D$ for the expression in braces. The finite-test functional
+argument gives coefficients $d_n(o,U)$ satisfying
+$|d_n(o,U)|\le D(2/R)^n$ for every $U$, with the same $D$.
+Therefore $D(2/R)^n$ is a common coefficientwise envelope; its
+weighted sum at radius $R/4$ is $\sum_nD2^{-n}=2D$. Thus
+\begin{equation}\label{eq:projected-discrepancy-value}
+ |d(\cdot,o,U)|_{R/4}\le a(x),\qquad
+ a(x)=2\left\{2b_sW(x)+\sum_{i=0}^4|c_i||\Lambda_i|\,2q_i\right\}.
+\end{equation}
+This bound is uniform in $U$, and $R\ge4$ eventually. In
+particular there is one coefficient majorant for the discrepancy
+at each fixed support. The sum over orientation copies uses the
+normalized finite orientation average; for values it has norm
+one. Assigning each copy its actual averaging weight and counting
+the anchors whose radius-$2z$ support contains a root gives the
+rooted price
+\begin{equation}\label{eq:projected-discrepancy-root}
+                H(x)=(4z+1)^4 a(x)e^{(b+2)C_{2z}},
+                  \qquad C_{2z}\ge\sup_o c_B(N_{2z}(o)).
+\end{equation}
+This has upper exponent $-3/8$. The signs of the discrepancy
+are retained in the functions; they disappear only in this
+nonnegative bound.
+
+\subsection{Fusing the discrepancy with the forced array}
+Let $\gamma(x)$ be the forced series allowance supplied by
+\eqref{eq:sector-forced-final}, and let $\phi(x)$ be the
+prescribed outgoing forced allowance. Use the sector allowance
+$\gamma$ at support exponent $b+2$, weakening its available
+$b+3$ bound. The discrepancy allowance $H$ is also at exponent
+$b+2$. The final forced bound will have exponent $b+1$, since
+the connected-set estimate consumes the reserve of one. Both
+allowances are evaluated at the
+same scale and the same reference band. The numerical payment
+chooses $\kappa\ge0$ so that, with
+\[
+                          I=e^\kappa\gamma+2H,
+\]
+the support-tree criterion at reserve one holds and
+\begin{equation}\label{eq:projected-fusion-payment}
+               H\le1,\qquad 4b_BI\le\tfrac12,
+                              \qquad 2e^{-\kappa}I\le\phi.
+\end{equation}
+These are the inflation, degree and return inequalities of the
+exponential payment argument in
+Section~\ref{sec:nonlinear-payment-selection}. Its hypotheses
+hold here: $H$ has negative upper exponent, while $\gamma$
+retains the compulsory exponentially small mark. The prescribed
+outgoing gain leaves the stated positive margin in that mark.
+The selected payment is uniform over the coupling band.
+
+Here is why those inequalities pay the analytic coefficients,
+not only the real values. Give an old forced entry with series
+majorant $k_l$ the inflated price $e^\kappa k_l$, and give a
+discrepancy entry with series price $h_l$ the price $2h_l$.
+A nonempty support and the rooted bound imply $h_l\le H\le1$.
+The coefficient algebra therefore gives
+\[
+                 |e^{-d_l}-1|_{R/4}
+                     \le e^{h_l}-1\le2h_l.
+\]
+The last inequality holds on $[0,1]$, for example by convexity
+of the exponential between its endpoint values and $e-1<2$.
+Every final forced component contains at least one old forced
+entry. Its exact product of the old forced factors and the
+exponential-minus-one discrepancy factors consequently has
+series norm at most
+\[
+                 e^{-\kappa}\prod_{l\in D} F_l,
+ \qquad F_l=\begin{cases}e^\kappa k_l,&l\text{ old forced},\\
+                              2h_l,&l\text{ discrepancy}.
+             \end{cases}
+\]
+Indeed each old forced factor contributes $e^{-\kappa}$;
+retaining just one of them only increases the bound since
+$\kappa\ge0$. The eligibility predicate for a component is
+independent of $t$, so it preserves the same majorant. The
+connected-set estimate, with rooted allowance $I$ and degree
+ratio at most $1/2$, gives the final rooted allowance
+$2e^{-\kappa}I\le\phi$. This proves a common coefficient
+majorant at radius $R/4$ for all configurations and all entries
+of the actual final forced array.
+
+The exact additive decomposition of
+Section~\ref{sec:five-period-localization} identifies these
+ordinary and forced outputs with the selected one-step source.
+Their dictionary is fixed by the common path and incoming
+supports. The auxiliary test representations may be used outside
+$[-1,1]$ to provide the real-node bounds, but on $[-1,1]$ they
+agree with the given parameter family. Thus all the finite tests
+and series recoveries above concern that same family. The ordinary
+bound \eqref{eq:projected-broad-bound} and the forced common
+majorant are precisely the two broad analytic inputs retained in
+Section~\ref{sec:background-test-prices}. Construction of the
+funded path and its real-sector hypotheses remains separate.

@@ -1,0 +1,147 @@
+\section{Joint tests and survival of field labels}
+\label{sec:boundary-detection}
+Two details complete the common-domain reconstruction, apart from locality
+and the momentum projection measure. First, the joint tempered distributions
+supply the test-function continuity used in the word construction. Second,
+a label detectable by Euclidean correlations remains detectable after
+continuation to real time. The latter uses the full-tube construction and
+its identification with the ordered-time function; no pointwise boundary
+values of the fields are required.
+
+\begin{lemma}\label{lem:tensor-tests}
+The finite linear span of functions
+$\prod_{i=1}^n f_i(X_i)$, $f_i\in\mathscr S(\mathbb R^4)$, is dense in
+$\mathscr S((\mathbb R^4)^n)$. The product map from the $n$ test spaces
+into the joint test space is continuous multilinear.
+\end{lemma}
+\begin{proof}
+Every joint derivative of a product separates into the corresponding
+single-slot derivatives. Also
+$1+|X|\leq\prod_i(1+|X_i|)$ up to a fixed constant depending on $n$.
+Thus each weighted derivative supremum of the product is bounded by a
+constant times a product of single-slot Schwartz seminorms. This proves
+continuous multilinearity.
+
+For density, compactly supported smooth joint tests are already dense by
+the cutoff argument in Proposition~\ref{prop:boost-ward}. Fix such a test
+$f$, and choose single-slot smooth compact cutoffs $\chi_i$ with product
+$\chi(X)=\prod_i\chi_i(X_i)$ equal to one on $\operatorname{supp}f$.
+Let $\eta_R$ be a smooth compact frequency cutoff approaching one. Fourier
+inversion on Schwartz space gives
+\[
+ f_R=\chi\,\mathcal F^{-1}(\eta_R\widehat f)\longrightarrow\chi f=f
+\]
+in Schwartz space. Here the Fourier transform and its inverse are continuous
+inverse maps on that space, with the convention of
+Section~\ref{sec:fourier-support}; see \cite[Theorem 1.3, p.22]{Melrose}.
+Multiplication by the fixed compact cutoff is continuous by the Leibniz rule.
+
+For fixed $R$, put $g=\eta_R\widehat f$. Fourier inversion writes
+\[
+ f_R(X)=(2\pi)^{-4n}\int_{\operatorname{supp}g}
+       g(p)\prod_i\big[\chi_i(X_i)e^{ip_i\cdot X_i}\big],dp.
+\]
+This integral is a limit in Schwartz space of finite sums of its displayed
+product tests. To verify that assertion explicitly, enclose the compact
+frequency support in a box and use ordinary rectangular Riemann sums.
+All summands and the integral have the fixed compact position support
+$\operatorname{supp}\chi$. On the product of that support with the
+frequency box, every position derivative of the integrand is continuous,
+hence uniformly continuous. The error in each weighted derivative
+supremum is bounded by the frequency-box volume times its uniform modulus
+of continuity at the partition diameter, times the maximum position weight
+on the compact support. It tends to zero. Thus the same sequence of
+partitions converges in every Schwartz seminorm. Each Riemann sum belongs
+to the stated span, so does $f_R$ in its closure, and taking $R\to\infty$
+proves density. For $n=0$ the joint space is one-dimensional and the empty
+product one already spans it.
+\end{proof}
+
+\begin{corollary}\label{cor:word-test-inputs}
+For the jointly tempered distributions constructed in
+Theorem~\ref{thm:joint-boundary}, the word functional is separately linear
+in every label and test. Its mixed Gram expressions
+\[
+ (f,g)\longmapsto K((v,f)b,(u,g)c)
+\]
+are jointly continuous. Thus these parts of
+Input~\ref{input:word-boundary} follow from the construction.
+\end{corollary}
+\begin{proof}
+Multilinearity follows by composing the label-multilinear distribution
+with the multilinear product test. In the Gram expression the first
+variable occurs as $\overline f$ in a fixed slot and the second as $g$
+in another fixed slot; all other factors and labels are fixed. Conjugation
+is continuous on Schwartz space. Lemma~\ref{lem:tensor-tests} and continuity
+of the fixed-label distribution therefore give the asserted joint
+continuity. The empty-word value is one because the zero-insertion
+continuation is constantly one.
+\end{proof}
+
+\begin{lemma}[A zero boundary has zero strict continuation]
+\label{lem:zero-boundary}
+Fix an ordered label tuple $v$. If $W_n(v)=0$ as a joint tempered
+distribution, then $F_n(t+iy,x;v)=0$ for every strictly ordered height tuple
+$y$ and every real position tuple $(t,x)$.
+\end{lemma}
+\begin{proof}
+The full-tube function is defined by
+$H_n(v;z)=(2\pi)^{-4n}\widehat W_n(v)(L_z)$.
+It is therefore identically zero if $W_n(v)=0$. Proposition~\ref{prop:tube-identification}
+identifies its restriction at $z=X+i d(y)$ with the ordered-time function
+for every strictly ordered $y$. This proves the assertion.
+\end{proof}
+
+Let $T$ denote the selected Euclidean hierarchy. At each finite raw label
+level, its null space consists of labels whose insertion vanishes in every
+distinct-point correlation with arbitrary exterior labels. Assume the
+selected and original null spaces agree at every level, as established by
+the detector argument when its moment and rank hypotheses are supplied.
+Assume also the finite-level quotient embeddings into the union are
+injective and every union label has a finite-level representative.
+
+\begin{proposition}[Boundary detection]\label{prop:boundary-detection}
+If a union label $v$ satisfies
+\[
+ w(b(v,f)c)=0
+\]
+for every pair of exterior words $b,c$ and every single-slot Schwartz test
+$f$, then $v=0$. Consequently every nonzero label defines a nonzero smeared
+field operator in Proposition~\ref{prop:word-fields}.
+\end{proposition}
+\begin{proof}
+Take any ordered tuple of labels containing $v$, at any slot. The
+assumption says that its joint distribution vanishes on every product
+test: group the factors before the distinguished slot into $b$, and those
+after it into $c$. Lemma~\ref{lem:tensor-tests} and tempered continuity
+therefore make that entire joint distribution zero. By
+Lemma~\ref{lem:zero-boundary}, its strict-time continuation is zero.
+At real times zero, the pure-imaginary identity gives zero for the
+corresponding selected Euclidean correlation whenever the Euclidean times
+are strictly increasing.
+
+For arbitrary positions with pairwise distinct time coordinates, sort
+them by time. The label tuple is permuted with the positions and still
+contains $v$, so the preceding zero-distribution argument applies to the
+sorted tuple. Euclidean permutation symmetry transfers its zero value
+back to the original ordering. Such position tuples are dense in the
+full configuration space of distinct points: perturb the finitely many
+time coordinates by distinct arbitrarily small amounts, avoiding the
+finitely many equality hyperplanes. Openness of the distinct-point
+configuration space keeps all points distinct during a sufficiently small
+perturbation. Continuity of the Euclidean correlations extends the zero
+value to every configuration, including those with time ties.
+
+Represent $v$ by a finite-level raw label. The preceding conclusion,
+with arbitrary raw exterior labels projected into the union, is exactly
+the all-exterior null criterion for that label in $T$. Equality of selected
+and original null spaces makes its original quotient class zero. Its
+union image is $v$, so $v=0$. This proves the detection premise of
+Proposition~\ref{prop:word-locality}; that proposition then supplies the
+nonzero smeared operator for every nonzero label.
+\end{proof}
+
+This argument closes the boundary-detection step conditional on the already
+specified equality of Euclidean null spaces. The estimate and finite-rank
+inputs establishing that equality remain part of the quantitative phase
+construction.

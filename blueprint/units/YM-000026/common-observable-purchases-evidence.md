@@ -1,0 +1,16 @@
+# Common observable purchases — draft crosswalk
+
+Pinned source: 3456e5e75cf8d4cd558955a5c7638fba2d68f464. Parent session hairer-codex-existence-20261111. This is a reuse/application proof of already drafted analytic estimates; independent review pending.
+
+Inspected source and meanings:
+- YM.ConnectedActivityE6.Empire.Candy, candidates, Lean/YM/FullVolume/Sector/Ruins.lean: actual common-dictionary ordinary derivative test at radius fire/2 and pottery=betaF^(−3/8), forced common series, support reserve (Q.exp−e)/4, constituent rate −2/5. Corresponds to sector-analytic-prices, real-coupling-interpolation; no separately assumed Candy.
+- YM.PhysicalNext.Repeat.Jams.colorful, requirements, wind, brimP, baseP, potP, abundantP, wind_bills, pot_bills, abundant_bills, popcorn, Slot, degrees, Lean/YM/FullVolume/Sym/Prices.lean: all volume/anchor costs polynomial in radius, fixed cover ticket, rate −3/8, relaxed −1/4 and −1/8, forecast hard ≤mu/16.
+- YM.PhysicalNext.Repeat.Jams.sphere, ball_on, cold, show_width, reunite, profits, Lean/YM/FullVolume/Sym/Purse.lean; Jams.Savvy, scraps, qualifiedL, Sym/Shorn.lean; reset finite-test variants Sym/Badge.lean: canonical background-test-prices proves degree 300 / power 301 interpolation and reset/forced norm bounds. Not a new interpolation proof.
+- YM.ConnectedActivityE6.Empire.ProperPlot, prom, Lean/YM/FullVolume/E6/Proper.lean; YM.ConnectedActivityE6.Blaze.March.Bank, Station, patrol, E6/Gest.lean; YM.PhysicalNext.Repeat.Jams.Zoo, safari, herds, supplies, Wild, Auvi/Entries.lean: common local derivative constants and bank before actual Works/Stamp/Cash, using v=(j+1)Z*2fiery, fixed-order differentiation and Armada majorants. canonical parameter-comparison-suppliers includes arbitrary held fields, every principal read subset, warning cutoffs, renewed summation reserve. Review must verify this exact reuse covers Station fields.
+- YM.PhysicalNext.Repeat.Legato.Bandage in PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Stage/Iris.lean; Pitch/pose/Pads/cymbals in Circlet/Gongs; Hue/burst/Decked/chords in Circlet/Blare; Cub.MainTest/motions in Cub/Direction; Graces.Comply/compass in Graces/Aspire, Moms/correspond in Crowns, Cruise/reacts in Maya. Primary and Mercury local comparisons are retained at exact same charts. Mercury trove mapping is being checked by lattice agent independently.
+- Mallow.Minty/scarce in MergeProof/Groom.lean; Hymen/shopping/AccordV/swelling/harpo in MergeProof/North/Tibetan.lean: already proved projection-payment-producer and nonlinear-payment-selection/finite-menu-history-handoff.
+- YM.PhysicalNext.Repeat.Legato.expensesAK, radarsK, Lean/YM/FullVolume/Roll/Racks.lean: finite maxima of floors before L; successive eventual requests after protection; all same directed B and factor. Initial companyK is Roll/Linger.lean; stronger stationary data retained.
+
+Not yet claimed: complete FullVolume.rampant/trident, global marked portfolio/rank and all same-family service fields. Those are next binding task. The final paragraph states this boundary.
+
+Commands: targeted sed/cat/rg on these paths and canonical manuscripts. No Lean build or axiom replay; no source modifications. No LaTeX build for this draft yet.

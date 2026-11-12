@@ -1,0 +1,378 @@
+\section{The local annular remainder}
+\label{sec:packet-annulus}
+This section proves the annular estimate used in
+Section~\ref{sec:packet-estimates}. The comparison is made before
+Gaussian integration, on the actual fine configuration, coarse
+configuration and predictor tags. In particular, removing a remote
+cutoff does not permit us to replace the predictor by a newly chosen
+one. The argument needs only the local conditions stated below.
+
+Fix the block length $L$, the predictor patch, the positive direct
+coefficients $a_f,a_c$, and the predictor penalty $p>0$. Retain the
+exponent convention of Section~\ref{sec:packet-estimates}, with large
+parameter $h=h(x)$. Put $t=P(h)/\sqrt h$, let $s$ be the coarse
+threshold, and let $B$ and $R$ be the shell and truncation radii.
+We use $s\le2t$, $R=\lfloor B/100000\rfloor$, and the eventual
+geometric inequalities
+\[
+ 100(1+B)\le c,\qquad
+ 10000(\rho+R_{\rm macro}+L+10)\le B,
+\]
+where $c$ is the coarse period and $\rho$ the predictor reach.
+Both $B$ and $R$ have upper exponent zero, whereas
+$e^{-\sigma R}$ has every negative upper exponent for fixed
+$\sigma>0$. These properties follow from $B\asymp(\log x)^2$.
+All thresholds in this section are chosen after the fixed local data;
+all estimates are uniform in $c$.
+
+The incoming linear data are the path and kernel bounds of
+Section~\ref{sec:seed-guides}, the flat identities of
+\eqref{eq:unhit-flat-stack}, and the additional orthogonality
+\begin{equation}\label{eq:annulus-null-row}
+ N_0B_cd_c=0.
+\end{equation}
+The last identity is the null-row part of the same flat decomposition.
+Its construction, like that of the flat identities, belongs to the
+flat-stack input. We will identify exactly where it is used.
+
+\subsection{A common local chart}
+Call a coarse patch clean when no coarse flag occurs there. On a
+clean patch every plaquette chord is at most $s$. The axial gauge
+argument in Section~\ref{sec:seed-tree-patch}, applied on a box of
+radius $d+1$ with $d\le32B$, gives a gauge in which the bond chords
+on the smaller box are bounded by
+\[
+ u_0=16\{2(32B+1)+1\}^{5}N_{\rm plaq}(2t).
+\]
+Thus $u_0$ has upper exponent $-1/2$. For large $x$ these bonds
+are in the logarithm chart. Take their logarithms and set all other
+bond logarithms to zero. This gives a full array $b$ with
+$\|b\|_\infty\le C u_0$ whose exponential agrees with the gauged
+coarse configuration on the required patch. No assertion about the
+coarse configuration outside that patch is needed.
+
+Write $V^\uparrow$ for the block replica of $V$. Suppose, on a
+patch about $o$, the fine configuration and a colour array $u$
+satisfy
+\begin{equation}\label{eq:annulus-graft}
+ U_e=\exp(u_e)V^\uparrow_e,\qquad \|u_e\|\le w(x),
+\end{equation}
+where $w\ge0$ has upper exponent $-1/2$. Under the block-constant
+lift of the coarse gauge, $u_e$ is conjugated at its initial point;
+its norm is unchanged. Since a replica bond is either the identity
+or one coarse bond, the chord triangle inequality gives
+\[
+ r(U_e)\le Cw+Cu_0.
+\]
+Consequently both fields have small bonds in this same gauge, with
+a bound $H(x)\ge w(x)$ of upper exponent $-1/2$. The coarse
+logarithm extension also has norm at most $H$ after enlarging $H$.
+
+For any prescribed $\delta>0$, all predictor reads on a sufficiently
+small such patch lie in the minimizing branch and have chord at
+most $\delta$. Here is the uniformity argument. At the identity
+configuration the normalized minimizing frames and the best
+connector are the identity. Their continuity was proved in
+Section~\ref{sec:predictor-branch}. The branch inequalities are
+strict there. The finitely many frame tags, connector tags and axes
+therefore have a common neighbourhood on which these inequalities
+hold and the predictor chord is less than $\delta$.
+In the product topology on cover configurations, this neighbourhood
+contains a cylinder restricting finitely many bonds. Enclose these
+bonds in one fixed patch and choose one positive chord radius for
+all of them. Every torus configuration whose lifted patch satisfies
+these restrictions belongs to the same neighbourhood, independently
+of its period. For large $x$ the patch fits within $B/2$ and its
+bonds satisfy the restrictions. In particular, the normalized tag
+likelihoods are exactly one there: each tag has probability the
+reciprocal of the number of tags in the minimizing branch.
+The four-link triangle inequality also makes every touched fine
+plaquette chord at most $\delta$. These statements hold for the
+original tags, including tags retained after remote masks were erased.
+
+\subsection{Affine approximation at the actual coarse field}
+Let $\mathcal C(U,V)$ be the row field consisting of the two fine
+curvature rows and the predictor row:
+\[
+ \mathcal C(U,V)=\bigl(X_f(U),\sqrt p\,F(VQ(U)^{-1})\bigr).
+\]
+Here $X_f$ includes the truncated path row and the direct curvature
+row, and $Q$ is the actual predictor. Each row norm is the physical
+colour norm at one address; an array norm is its supremum over
+addresses. No whole-volume Euclidean norm is used in these estimates. Its full linearization is
+\[
+ \mathcal C^0(a,b)
+   =\bigl(B_fd_fa,\sqrt p\,(b-\mathcal Qa)\bigr).
+\]
+The chart estimates of Section~\ref{sec:seed-unhit-comparison}
+give, for $\|a\|,\|b\|\le H$,
+\begin{equation}\label{eq:annulus-origin-error}
+ \|\mathcal C^0(a,b)\|_\infty\le C H,\qquad
+ \|\mathcal C(e^a,e^b)-\mathcal C^0(a,b)\|_\infty
+ \le C H\{(1+R)H+e^{-\sigma R}\}.
+\end{equation}
+The predictor term has a quadratic error; the path row has the
+displayed additional truncation error. The right side has upper
+exponent $-1$.
+
+Define $A_\infty a=\mathcal C^0(a,0)$, and let $A_R$ be its
+truncated version. Absolute exponential summability of the path
+coefficients and the four-bond curl estimate give
+\begin{equation}\label{eq:annulus-linear-rows}
+ \|A_\infty a\|_\infty+\|A_Ra\|_\infty\le C\|a\|_\infty,
+ \qquad
+ \|(A_\infty-A_R)a\|_\infty
+ \le C\|a\|_\infty e^{-\sigma R}.
+\end{equation}
+Indeed, each face curl has norm at most $4\|a\|_\infty$.
+For a discarded path of length $\ell>R$, insert
+$e^{-\sigma R}e^{\sigma\ell}\ge1$ into its absolute coefficient
+bound and sum. The predictor part is local and is not truncated.
+
+Let $A_R^V$ be the actual transported row: input colours are
+parallel transported along the prescribed coarse routes before the
+same cut linear row is applied. If the coarse bonds along these
+routes have chord at most $h_0$, and the routes have length at most
+$d$, then
+\begin{equation}\label{eq:annulus-transport-error}
+ \|(A_R^V-A_R)v\|\le
+ 2C D_{\rm col}\,d h_0\,\|v\|_\infty.
+\end{equation}
+The route product has chord at most $dh_0$ by the triangle
+inequality. The bound
+$\|\operatorname{Ad}(g)-1\|\le2D_{\rm col}r(g)$ then bounds
+each changed input, and \eqref{eq:annulus-linear-rows} bounds the
+resulting row. Only inputs within distance $R+\rho+4$ occur;
+$4(R+\rho+4)\le d$ ensures the routes remain in the controlled
+patch. One may set all other input differences to zero to apply
+the supremum-norm bound.
+
+We claim that, under \eqref{eq:annulus-graft} on a clean patch of
+radius $B/2$, there are nonnegative functions $M,E$, of upper
+exponents $-1/2$ and $-1$ respectively, such that at its central row
+\begin{equation}\label{eq:annulus-affine-error}
+ \|\mathcal C(U,V)\|\le M,\qquad
+ \|\mathcal C(U,V)-\mathcal C(V^\uparrow,V)-A_R^Vu\|\le E.
+\end{equation}
+To prove this, work in the common gauge above and restrict to the
+smaller radius $d=\lfloor B/4\rfloor$. Extend $u$ by zero outside
+this patch, obtaining $v$ with $\|v\|_\infty\le H$. Let $a$ be
+the linear replica of the coarse logarithm extension $b$; then
+$\|a\|_\infty\le H$ and $e^a=(e^b)^\uparrow$.
+
+The local product logarithm satisfies
+\[
+ e^{w_e}=e^{v_e}e^{a_e},\qquad
+ \|w-(v+a)\|_\infty\le JH^2,\qquad
+ \|w\|_\infty\le J'H.
+\]
+For completeness, $(v,a)\mapsto\log(e^ve^a)$ is analytic near
+zero, vanishes at zero and has derivative $(v,a)\mapsto v+a$.
+Integrate its second derivative on a smaller closed ball to obtain
+the quadratic remainder. The first-derivative bound gives the last
+inequality, bond by bond, with constants independent of the number
+of bonds. Locality identifies the actual central rows with those
+at $(e^w,e^b)$ and $(e^a,e^b)$.
+
+Put $z=\mathcal C^0(w,b)$ and $z_0=\mathcal C^0(a,b)$.
+Linearity gives the exact decomposition
+\begin{align*}
+ \mathcal C(U,V)-\mathcal C(V^\uparrow,V)-A_R^Vu
+ ={}&\mathcal C(U,V)-z+A_\infty(w-v-a)\\
+ &+z_0-\mathcal C(V^\uparrow,V)
+ +(A_\infty-A_R)v+(A_R-A_R^V)v.
+\end{align*}
+The equality uses locality to replace $u$ by $v$ in the transported
+row. Equations \eqref{eq:annulus-origin-error}--
+\eqref{eq:annulus-transport-error} bound these five terms by
+\[
+ 2E_0+CJH^2+CH e^{-\sigma R}+C'BH^2,
+\]
+where $E_0$ has upper exponent $-1$. This proves the error bound
+in \eqref{eq:annulus-affine-error}; the bound on the row itself
+follows from its linear bound plus $E_0$. Gauge covariance of all
+three actual rows and invariance of the colour norm return the
+estimate to the original gauge.
+
+\subsection{Subtracting the selected squares}
+Let $g$ be the coarse guide row and assume the already established
+guide bound $\|g\|\le A t$. Define the actual and affine residuals
+\[
+ v=\mathcal C(U,V)-g,\qquad
+ v_0=\mathcal C(V^\uparrow,V)-g+A_R^Vu.
+\]
+They satisfy $\|v\|\le m=M+At$ and $\|v-v_0\|\le E$.
+The elementary identity for a difference of squares implies
+\begin{equation}\label{eq:annulus-square-error}
+ \left|\frac{\|v\|^2}{2}-\frac{\|v_0\|^2}{2}\right|
+ \le Z:=\frac{E(2m+E)}2.
+\end{equation}
+Indeed $|\|v\|-\|v_0\||\le E$ and
+$\|v_0\|\le m+E$. Hence $Z$ has upper exponent $-3/2$.
+
+Write $\operatorname{flaw}(q)=(r(q)^2-\|F(q)\|^2)/2$.
+The curvature argument in Section~\ref{sec:seed-energy} gives
+\[
+ 0\le\operatorname{flaw}(q)\le K r(q)^4/2,
+ \qquad \|F(q)\|^2\ge3r(q)^2/4
+\]
+for small $r(q)$. The branch and plaquette bounds above put the
+required arguments in this neighbourhood. Since the appropriate
+direct component of $\mathcal C$ has norm at most $M$,
+\[
+ r(q_f)\le2M/\sqrt{a_f},\qquad
+ r(q_I)\le2M/\sqrt p.
+\]
+Thus their flaw contributions are bounded by
+\[
+ X=a_f(K/2)(2M/\sqrt{a_f})^4,
+ \qquad Y=p(K/2)(2M/\sqrt p)^4,
+\]
+both of upper exponent $-2$.
+
+On a kept fine row below its threshold the fine energy is exactly
+\[
+ a_f\operatorname{flaw}(q_f)
+       +\frac12\sum_{j=0}^1\|v_{f,j}\|^2.
+\]
+Expand the squares to verify this: their cross terms are the
+guide pairings, and their direct curvature square together with
+$a_f\operatorname{flaw}$ restores $a_fr(q_f)^2/2$.
+The predictor energy has, without a kept condition, the exact form
+\[
+ p\operatorname{flaw}(q_I)+\|v_I\|^2/2.
+\]
+It follows from \eqref{eq:annulus-square-error} that subtracting
+the two affine fine squares costs at most $X+2Z$ in absolute
+value, and subtracting the predictor square costs at most $Y+Z$.
+One common nonnegative bound is $X+Y+2Z$, of upper exponent
+$-3/2$. At an unselected fine or predictor address no square is
+subtracted. Its corresponding displayed energy is nonnegative.
+This gives the required one-sided bound there, without asserting
+an absolute bound on an unselected row.
+
+\subsection{The remaining coarse rows}
+Three further terms occur in the assigned energy. First, on a
+coarse plaquette with $r\le s$, the coarse counterterm is
+\[
+ \frac{a_c}{2}\{\|F(q)\|^2-r(q)^2\}.
+\]
+It is nonpositive and its absolute value is at most
+$a_cKs^4/2$, of upper exponent $-2$.
+
+Second, consider a guide kernel $K(V)$ at one central row.
+On the clean patch its clipped coarse field agrees with the ordinary
+truncated curvature field at every address touched by this row:
+the curvature is below threshold, and the exponential kept test is
+automatic outside the smaller radius where it needs checking.
+Kernel locality and the local agreement $V=e^b$ then give the
+exact central-row equality
+\[
+ [K(V)\operatorname{vision}(V)]_i=[K(e^b)X_c(e^b)]_i.
+\]
+This equality is taken before any supremum norm is used. Add and
+subtract $K(e^b)X_c^0(b)$ to obtain
+\[
+ \bigl\|[K(V)\operatorname{vision}(V)-K_0X_c^0(b)]_i\bigr\|
+ \le C\|X_c(e^b)-X_c^0(b)\|_\infty
+       +C\omega(R,H)\|X_c^0(b)\|_\infty,
+\]
+where $\omega(R,H)=(1+R)H+e^{-\tau R}$. The row bounds in
+\eqref{eq:unhit-kernel-near} justify this inequality. The globally
+small extension $b$ permits both supremum estimates on the right;
+no global bound on the original $V$ is required. The right side has
+upper exponent $-1$. For the null row $K=N$, its full linear
+comparator vanishes by \eqref{eq:annulus-null-row}. The null
+energy, half the square of this row, consequently has upper
+exponent $-2$. This is the only extra flat identity used here.
+
+Finally, the linear and quadratic mismatch rows are precisely the
+gaps estimated in \eqref{eq:unhit-global}. The common local gauge
+and locality argument used there apply to the present grafted
+configuration, with smallness bound $H$ of upper exponent $-1/2$.
+Pairing the linear gap with a guide of size $At$ gives at most
+$At\,CH\omega(R,H)$ for each of the two fine-row channels.
+Pairing the quadratic gap with that guide gives at most
+$At\,CAt\,\omega(R,H)/2$ per channel. Hence their combined
+absolute cost is at most
+\[
+ 2At\,CH\omega(R,H)+(At)^2C\omega(R,H),
+\]
+of upper exponent $-3/2$. Adding all row costs gives one
+nonnegative function $r(x)$ of upper exponent $-3/2$.
+
+\subsection{The protected annulus of an actual packet}
+We verify the local hypotheses on the packet itself. Its fine
+configuration is formed in a fixed tree slice. On active free
+bonds it is $\exp(u_e)V^\uparrow_e$; on frozen free bonds it is
+the fixed slice value $Y_e$; on tree bonds it is the identity.
+Let $K>0$ be a fixed shell constant and define
+\[
+ \ell_K(q)=\chi\bigl((r(q)/(Kt))^2\bigr)\log q,
+\]
+where the smooth cutoff equals one for $r(q)\le Kt$ and vanishes
+for $r(q)\ge2Kt$. The local logarithm estimate gives
+$\|\ell_K(q)\|\le2\gamma Kt$ everywhere. This assertion
+also holds outside the chart because the cutoff is zero there;
+choose $x$ so that the closed ball $r(q)\le2Kt$ lies in the
+logarithm chart. The resulting map is smooth wherever its group
+argument varies smoothly, by the same two local cases.
+
+Define the actual colour signal $\widetilde u$ to be $u$ on
+active bonds, $\ell_K(Y_e(V^\uparrow_e)^{-1})$ on frozen free
+bonds, and zero on tree bonds. On a weak interior patch the
+fine plaquettes have chord at most $t/2$, the predictor mismatch
+at most $2Wt$, and the selected frames have positive likelihood.
+The tree comparison \eqref{eq:tree-shell} then gives
+\[
+ r(U_e(V^\uparrow_e)^{-1})
+ \le Kt,\qquad K=C\,N_{\rm macro}/2+2W,
+\]
+where $N_{\rm macro}$ counts the fine plaquettes in the fixed
+macro patch. The frozen cutoff is therefore one and its logarithm
+exponentiates to the original mismatch. On tree bonds both
+$U_e$ and $V^\uparrow_e$ are the identity. Thus on this patch
+\[
+ U_e=\exp(\widetilde u_e)V^\uparrow_e.
+\]
+If the active variables there obey $\|u_e\|\le w(x)$ and
+$2\gamma Kt\le w(x)$, the signal obeys the same bound on all
+bonds. This proves \eqref{eq:annulus-graft} for the actual signal.
+
+Let $A$ be the packet's seed set, and consider an energy address
+whose coarse anchor belongs to its $200B$ neighbourhood but not
+its $2B$ neighbourhood. Retain the weak fine, predictor and coarse
+flag conditions through $300B$, and the bounds on active variables
+through $304B$. For a bond within $B$ of this anchor, its
+$B/4$ interior patch lies within the $300B$ neighbourhood and
+outside the seeds. This follows from the triangle inequality:
+the outer distance is at most $201B+B/4<300B$, whereas entering
+the seeds would put the anchor within $B+B/4<2B$ of them.
+The retained conditions therefore give the weak interior just used.
+The active-variable condition is available since $201B<304B$.
+The same argument supplies a clean coarse patch at the anchor.
+
+Signed changes of orientation preserve these conclusions, allowing
+one additional bond of radius for reversed bonds. Norms are
+unchanged by the associated conjugations. Finally, the fine kept
+test holds on this annulus: a plaquette whose test is nontrivial
+has distance at most $B/25$ by the exponential threshold bound;
+the weak interior makes its chord at most $t/2\le
+t e^{\operatorname{dist}/r_0}$. At all other plaquettes the
+right side is at least the universal chord bound $2$.
+Thus the actual fine energy equals the square expression used above,
+including at threshold equality.
+
+At every selected address the extracted affine square is the square
+of the actual signal row with the same tags, orientations and coarse
+field. At every unselected address it is zero. We have therefore
+proved, on the protected annulus,
+\begin{equation}\label{eq:annulus-final}
+ \text{actual assigned energy at the address}\ \ge-r(x).
+\end{equation}
+Here $r\ge0$ has upper exponent $-3/2$.
+Summing over its at most $C B^4$ addresses per seed and averaging
+over the signed channels gives exactly the annular input of
+\eqref{eq:packet-assigned-energy}. This proves the value estimate;
+derivative bounds for the density, covariance and chart factors
+remain separate inputs to the packet jet estimate.

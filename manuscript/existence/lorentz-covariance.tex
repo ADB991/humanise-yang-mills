@@ -1,0 +1,209 @@
+\section{From Euclidean rotations to Lorentz covariance}
+\label{sec:lorentz-covariance}
+This section proves covariance of the boundary distributions from the
+Euclidean rotation identities, retaining the same field labels. The
+finite-dimensional Lorentz action on those labels must first be available.
+We state its required compatibility explicitly rather than identify it with
+an arbitrary representation having the same dimension.
+
+On each finite level let $R$ be the Euclidean rotation representation, and
+write $L_a$ for its infinitesimal generator in the plane consisting of time
+and spatial coordinate $a$. Our convention for the coordinate generator is
+\[
+ \mathcal R_a=\sum_i\left(x_i^a\partial_{y_i}
+                                  -y_i\partial_{x_i^a}\right).
+\]
+Assume $R$ acts compatibly under the inclusions of field levels, and the
+smooth Euclidean correlation $S(v;X)$ obeys simultaneous rotation covariance.
+Differentiating it gives
+\begin{equation}\label{eq:euclid-infinitesimal}
+ \mathcal R_aS(v;X)=-\sum_i S(v_1,\ldots,L_av_i,\ldots,v_n;X).
+\end{equation}
+Indeed, covariance says $S(v;R_tX)=S(R_{-t}v;X)$; the ordinary chain rule on
+positions and the finite multilinear expansion on labels give the displayed
+formula. This is applied only at distinct Euclidean positions.
+
+Suppose also that the proper orthochronous Lorentz group has a representation
+$\rho$ on the field union preserving every finite level, continuous there,
+compatible with the inclusions, and agreeing with $R$ on spatial rotations.
+For the coordinate boost $B_a(s)$, with coordinate infinitesimal generator
+$x^a\partial_t+t\partial_{x^a}$, require
+\begin{equation}\label{eq:label-boost-input}
+ \left.\frac{d}{ds}\rho(B_a(s))v\right|_{s=0}=-iL_av.
+\end{equation}
+Proposition~\ref{prop:lorentz-label-descent} supplies this action from the
+calibrated finite-level actions. Their construction remains an explicit
+earlier input. Set $K_a=-iL_a$.
+
+\begin{proposition}[The tested boost identity]\label{prop:boost-ward}
+For strictly ordered $y$ and any joint Schwartz test $f$,
+\begin{equation}\label{eq:boost-interior}
+ \sum_i\psi_y(v_1,\ldots,K_av_i,\ldots,v_n;f)
+  =\psi_y\left(v;\sum_i
+       [x_i^a\partial_{t_i}+(t_i+iy_i)\partial_{x_i^a}]f\right).
+\end{equation}
+Consequently the boundary distributions satisfy
+\begin{equation}\label{eq:boost-boundary}
+ \sum_i W_n(v_1,\ldots,K_av_i,\ldots,v_n)(f)
+  =W_n(v)(\mathcal B_af),\qquad
+ \mathcal B_a=\sum_i(x_i^a\partial_{t_i}+t_i\partial_{x_i^a}).
+\end{equation}
+\end{proposition}
+\begin{proof}
+First suppose $f$ has compact support $C$. For a complex parameter $c$ put
+$z_i(c)=iy_i+ct_i$ and
+\[
+ F_c(v;X)=F_n(z(c),x;v),\qquad
+ T_c f=\sum_i[x_i^a\partial_{t_i}+c z_i(c)\partial_{x_i^a}]f.
+\]
+Let $D$ consist of parameters for which $z(c)$ has strictly ordered
+imaginary parts for every $X\in C$. This is an open convex set containing
+the real axis: its constraints are affine strict inequalities in
+$\operatorname{Im}c$, and compactness of $C$ makes their margins uniform
+near each admissible parameter. Consider the integral
+\[
+ H(c)=\int_C\left[F_c(v;X)T_cf(X)
+       -c\sum_iF_c(v_1,\ldots,K_av_i,\ldots,v_n;X)f(X)\right]dX.
+\]
+It is holomorphic on $D$. In fact the integrand is jointly continuous on
+$D\times C$ and holomorphic in $c$ for every $X$; on each compact subdisc,
+Cauchy's formula gives uniformly bounded derivatives, so differentiation
+under this finite-volume integral is justified.
+
+At $c=i\sigma$, put $Y_i=y_i+\sigma t_i$. All these heights are strictly
+ordered on a neighborhood of $C$, and $F_{i\sigma}(v;X)=S(v;(x,Y))$.
+The real vector field
+\[
+ A_\sigma=\sum_i\left[x_i^a\partial_{t_i}
+                      -\sigma(y_i+\sigma t_i)\partial_{x_i^a}\right]
+\]
+is divergence free. Under the map $(t,x)\mapsto(Y,x)$ it becomes
+$\sigma\mathcal R_a$. Thus \eqref{eq:euclid-infinitesimal} gives
+\[
+ A_\sigma F_{i\sigma}(v;X)
+       =-\sigma\sum_iS(v_1,\ldots,L_av_i,\ldots,v_n;(x,Y))
+       =-i\sigma\sum_i F_{i\sigma}(v_1,\ldots,K_av_i,\ldots,v_n;X).
+\]
+Also $T_{i\sigma}f=A_\sigma f$. The integrand of $H(i\sigma)$ is
+therefore $A_\sigma(F_{i\sigma}(v;X)f(X))$, whose integral is zero.
+The product is smooth near $C$ and zero off $C$, so its extension by zero
+is a smooth compactly supported function; no regularity of the continued
+function at positions outside that neighborhood is being assumed.
+The identity theorem on the connected set $D$ now gives $H(1)=0$,
+which is \eqref{eq:boost-interior} for compactly supported tests.
+
+To pass to Schwartz tests, choose a smooth cutoff $\chi(X/R)$ equal to
+one near zero. Then $\chi(X/R)f\to f$ in every Schwartz seminorm: on the
+outside region use one extra polynomial decay weight, and for each
+positive-order derivative of the cutoff use its factor $R^{-1}$ or a
+higher inverse power and the same tail estimate. At fixed strictly ordered
+$y$, every $\psi_y$ is continuous on Schwartz space, and all coordinate
+multiplications and derivatives in \eqref{eq:boost-interior} are continuous
+there. The compact-test identity consequently extends to $f$.
+
+Finally take the full ordered-height limit $y\to0$. The test on the
+right is $\mathcal B_af+\sum_i iy_i\partial_{x_i^a}f$. Each fixed-test
+pairing $\psi_y(v;\partial_{x_i^a}f)$ has a finite boundary limit, so
+multiplication by $y_i$ makes the correction tend to zero. All other terms
+have their specified joint boundary limits, proving
+\eqref{eq:boost-boundary}.
+\end{proof}
+
+\begin{lemma}[Affine pullback of tests]\label{lem:schwartz-motion}
+The action $P_gf(X)=f(g^{-1}X)$ of the Poincar\'e group, acting on all
+positions at once, is continuous in the Schwartz topology. For coordinate
+boosts,
+\[
+ \left.\frac{d}{ds}P_{B_a(s)}f\right|_{s=0}=-\mathcal B_af
+\]
+in that topology.
+\end{lemma}
+\begin{proof}
+On a compact neighborhood of a fixed invertible affine map, its linear
+part and inverse have uniformly bounded norms and its translation is
+bounded. Hence $1+|X|$ and $1+|g^{-1}X|$ are comparable uniformly there.
+The chain rule expresses every derivative of $f\circ g^{-1}$ as a finite
+sum of derivatives of $f$ at $g^{-1}X$ times products of matrix entries.
+Each weighted supremum seminorm is therefore bounded by finitely many
+Schwartz seminorms of $f$, uniformly on that neighborhood.
+
+For continuity, split the supremum into a fixed ball and its complement.
+On the ball, uniform continuity of each derivative and continuous variation
+of the matrix coefficients give convergence. On the complement, the
+comparison of weights and one extra decay seminorm make the tail uniformly
+small. This proves continuity in every seminorm.
+For the boost derivative, the pointwise chain rule at zero gives
+$-\mathcal B_af$. To justify the same derivative in Schwartz space, use
+Taylor's formula along the smooth curve of invertible matrices
+$B_a(-s)$. Its second derivative acts on $f$ as a finite sum of first and
+second derivatives composed with $B_a(-s)$, multiplied by coefficients
+polynomial in $X$ of degree at most two. The preceding weight comparison
+bounds every seminorm of this second derivative uniformly for $s$ in a
+small compact interval. The integral Taylor remainder is therefore
+$O(s^2)$ in each seminorm, proving the stated derivative.
+\end{proof}
+
+\begin{theorem}\label{thm:lorentz-covariance}
+Under the Euclidean covariance and compatible label-action hypotheses above,
+the boundary distributions satisfy
+\[
+ W_n(\rho(\Lambda)v_1,\ldots,\rho(\Lambda)v_n)(P_\Lambda f)
+          =W_n(v)(f)
+\]
+for every proper orthochronous Lorentz transformation $\Lambda$.
+They are also invariant under common spacetime translations.
+\end{theorem}
+\begin{proof}
+For a fixed coordinate boost set
+\[
+ A(s)=W_n(\rho(B_a(s))v_1,\ldots,\rho(B_a(s))v_n)
+                                           (P_{B_a(s)}f).
+\]
+Put the finitely many labels in one common finite level. Expanding them in
+a finite basis expresses $A(s)$ as a finite sum of smooth scalar
+coefficients times fixed-label distributions applied to the moving test.
+The label coefficients are smooth along the boost: its group law and
+the derivative at zero give the linear differential equation
+$\rho(B_a(s))' = \rho(B_a(s))K_a$ on each finite level.
+Thus Lemma~\ref{lem:schwartz-motion} and
+\eqref{eq:label-boost-input} justify the ordinary product rule at zero.
+Its label terms are the left side of \eqref{eq:boost-boundary}, and its
+test term is the negative of the right side. Hence $A'(0)=0$.
+The representation laws for labels and pullbacks give the same calculation
+at any $s$, using the labels and test already moved by $B_a(s)$.
+Therefore $A'(s)=0$ everywhere and $A(s)=A(0)$.
+
+Spatial rotations and common spatial translations are inherited by the
+strict-time continuation from their Euclidean identities. To check this
+without an assumption of holomorphy in spatial coordinates, fix all real
+positions, compare the two scalar continued expressions, and replace each
+time by $iy_i+ct_i$. Both sides are holomorphic on an open strip about the
+real axis and agree for $c=i\sigma$ near zero by Euclidean covariance.
+The identity theorem gives equality at $c=1$.
+For a common real-time translation $b$, compare times
+$iy_i+c(t_i+b)$ on one side with $iy_i+ct_i$ on the other. Their gaps
+agree, and at $c=i\sigma$ they differ by the common Euclidean time
+translation $\sigma b$. The same proof applies. Changing variables in the
+joint test integrals, with unit absolute Jacobian, and taking boundary
+limits gives spatial-rotation covariance and translation invariance of $W$.
+
+Finally these spatial rotations and coordinate boosts generate the proper
+orthochronous Lorentz group. Here is a direct verification. Given
+$\Lambda$, its image $q=\Lambda e_0$ is future timelike with Minkowski
+norm squared one. A boost in coordinate $a$ with rapidity
+$-\operatorname{artanh}(q^a/q^0)$ makes that spatial component zero;
+$|q^a|<q^0$ ensures the parameter exists. It leaves the other spatial
+components unchanged. Three such boosts produce a vector with zero spatial
+part and positive time component, necessarily $e_0$. Their product $B$
+therefore makes $B\Lambda$ fix $e_0$. Preservation of the Minkowski form
+then shows that $B\Lambda$ preserves its spatial orthogonal complement
+and is orthogonal on it; determinant one makes its spatial part a rotation.
+Thus $\Lambda$ is a product of coordinate boosts and a spatial rotation.
+Covariance is closed under products and inverses by the representation
+laws, proving the assertion for every $\Lambda$.
+\end{proof}
+
+Together with Corollary~\ref{cor:cone-support}, this gives the full forward
+suffix-cone support of the boundary distributions, conditional only on the
+specified compatible Lorentz action and the previously stated Euclidean
+construction inputs. It does not yet prove spacelike commutativity.

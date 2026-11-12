@@ -1,0 +1,149 @@
+\section{Transporting the pole coefficient through the block bridge}
+\label{sec:ex-quadratic-pole-transport}
+
+The annulus calculation concerns a fine-lattice determinant, whereas
+the stationary output uses its pullback to coarse fields. We prove
+that their leading quadratic coefficients agree. This uses both
+quadratic matching equations for the selected bridge, including its
+normalization at zero momentum.
+
+Let $\Pi_f$ be a common quadratic picture for the fine pole functional
+\[
+ P_f(x)=\frac12\log\det\left(K(x)+d(x)d(x)^*
+                         +\sum_a s_a^*C(x)s_a\right)
+                      -\log\det\left(d(x)^*d(x)+C(x)\right).
+\]
+The notation is that of
+Section~\ref{sec:ex-stationary-determinant-prices}. Suppose its
+finite-volume recording error is at most the fine site cardinality
+times $e_m$, with $e_m\to0$ along the selected periods. Let $\Pi_c$
+be the common picture of the same functions pulled back by the
+installed linear bridge $W$, with coarse per-site errors tending
+to zero. Both pictures are holomorphic on positive strips. Fix the
+block side $L$ throughout the argument.
+
+The block determinant matrix $M_{\rm rank}$ is the direct sum of the
+fine pole matrix and an identity on coarse scalar coordinates,
+after the coordinate permutation separating the two kinds of
+variables. Thus its determinant equals the fine pole determinant.
+The scalar determinant is the same in both presentations. The
+Fourier matrix identities proved above therefore identify the
+coarse rank picture with the picture of $P_f\circ W$; this is
+an equality for the actual selected finite-volume functions.
+
+The pole function is invariant under local gauge changes, constant
+color rotations and unsigned coordinate permutations. For gauge changes this
+follows by conjugating every factor: the fine Hessian in left
+coordinates, the covariant difference, its resolvent regulator and
+the component maps all transform by the corresponding orthogonal
+adjoint actions. Determinants are unchanged. The same argument,
+with coordinate permutations whose direction signs are all positive,
+proves this permutation invariance. Its first derivative at zero vanishes by the
+simple-color argument in
+Section~\ref{sec:ex-thermal-contact-cancellation}.
+Passing the finite-volume identities to the common picture, as in
+Section~\ref{sec:stationary-output-construction}, shows that its
+bilinear matrix $S(p)$ has both Ward identities
+\[
+ S(p)d_0(p)=0,\qquad d_0(-p)^T S(p)=0,
+\]
+The first-order part of the Ward identities forces $S(0)=0$.
+To prove that the linear part also vanishes, fix the two color indices
+and write it as $S_{ab}(p)=\sum_c T_{ab,c}p_c+O(|p|^2)$.
+The two Ward identities, at quadratic order, give
+\[
+ T_{ab,b}=T_{ab,a}=0,\qquad T_{ab,c}+T_{ac,b}=0.
+\]
+These equations also kill the case $a=b$: then
+$T_{aa,c}=-T_{ac,a}=0$. If $a,b,c$ are distinct, the unsigned
+permutation interchanging $b,c$ and fixing $a$ gives
+$T_{ab,c}=T_{ac,b}$; the displayed antisymmetry makes both zero.
+All repeated-index cases are already zero. Thus $S$ vanishes to
+order at least two. This uses only unsigned permutations; no
+reflection symmetry of the pole functional is assumed. The
+finite-volume errors disappear after division by the site
+cardinality. No rate uniform in $L$ is used in this step.
+
+Write $H(p)$ for the bilinear matrix of $\Pi_c$ and $N_l(p)$
+for the fine alias amplitudes of $W$. The finite-wave expansion
+from Section~\ref{sec:inherited-loop-transport} gives
+\begin{equation}\label{eq:ex-pole-alias-pullback}
+ H(p)=L^4\sum_l N_{-l}(-p)^T S(k_l(p))N_l(p),
+                  \qquad k_l(p)=\mu(p+2\pi l).
+\end{equation}
+We spell out the role of errors here. A pulled-back coordinate wave
+is a finite sum of fine alias waves with amplitudes $N_l(p)$.
+For fixed $L$, these amplitudes remain bounded as the real momentum
+approaches a specified value. Multilinearity bounds the error on
+each pair by the original per-site error times the finite sum of
+the products of its amplitudes. The ratio of fine to coarse site
+cardinalities is $L^4$. Hence the error still tends to zero.
+Opposite aliases are the only surviving pairs, by fine translation
+invariance; all other pairs tend to zero. Continuity and a dense
+sequence of external grid momenta prove
+\eqref{eq:ex-pole-alias-pullback} at every real momentum.
+
+For $l\ne0$, the transverse projection of $N_l(p)$ has order two
+at $p=0$, by the all-period kinetic floor and the primal matching
+equation proved in
+Section~\ref{sec:inherited-loop-transport}. The two Ward
+identities of $S$ remove the longitudinal parts of both amplitudes.
+Thus every nonprincipal term of
+\eqref{eq:ex-pole-alias-pullback} has order at least four. This
+argument does not require $S$ to vanish at the nonprincipal alias.
+
+It remains to determine the principal amplitude at zero. The dual
+matching equation is
+\[
+                  Q(p)\Phi(p)=I-\kappa^{-1}K_c(p).
+\]
+Since $K_c(0)=0$, its value at zero is $Q(0)\Phi(0)=I$.
+Each nonprincipal alias amplitude at zero is a pure gauge vector,
+because its transverse projection vanishes there. The block mean
+commutes with the gauge difference, so it maps this vector to a
+coarse gradient at momentum zero, which is zero. Hence those
+aliases contribute nothing to $Q(0)\Phi(0)$. On the principal
+constant alias, the normalized transverse weights sum to one and
+the straight block path has $L$ edges; therefore the mean acts
+as multiplication by $L$. We conclude
+\begin{equation}\label{eq:ex-principal-amplitude}
+                              N_0(0)=\mu I.
+\end{equation}
+In particular this normalization is a consequence of the actual
+two matching equations, rather than a choice of Fourier convention
+made after the comparison.
+
+Analyticity gives $N_0(p)=\mu I+O(|p|)$. Since $S$ vanishes
+to order two and $k_0(p)=\mu p$, expanding the two principal
+amplitudes yields
+\[
+             H(p)-L^4\mu^2S(\mu p)=O(|p|^3)
+\]
+along every ray. The nonprincipal terms have already been shown
+to be of order four. If $S_2$ is the homogeneous quadratic term
+of $S$, the quadratic term of the expression on the right is
+\[
+                        L^4\mu^2\mu^2S_2(p)=S_2(p).
+\]
+Thus $H$ and $S$ have identical quadratic Taylor terms, and in
+particular identical drift coefficients in every color component.
+
+Apply this result with the fine pole picture supplied by the
+annulus estimates and the coarse rank picture supplied by the
+determinant trace formula. The latter's leading coefficient equals
+the former's. The contact cancellation and the dimension-free
+core-versus-rank estimate then show that the actual thermal drift
+differs from the fine annulus drift by a bounded amount, with the
+bound fixed before $L$. Consequently a fine estimate
+\[
+       |\alpha_f+b_G\log L|\leq N
+\]
+gives
+\[
+       |\alpha_{\rm thermal}+b_G\log L|
+       \leq N+C_{\rm cmp},
+\]
+where $C_{\rm cmp}$ is the Cauchy coefficient bound from the
+uniform determinant comparison. The fine annulus estimate itself,
+including its common finite-volume recording, remains the input
+named at the start of this application.

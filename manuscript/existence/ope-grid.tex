@@ -1,0 +1,287 @@
+\section{From a matched local field to the raw OPE}
+\label{sec:ope-grid}
+The raw comparison in Input~\ref{input:ope-raw-estimates} is obtained in
+three steps. At a fine lattice configuration the product is replaced by a
+single local field of a sufficiently high degree. The finite tests defining
+the prescription then identify its low-degree coefficients. Finally,
+derivatives with respect to the cluster positions extend the estimate from
+the lattice to every separated configuration. The last step uses the
+filtration: taking a derivative increases the field degree by one.
+
+We use upper rates as in Section~\ref{sec:ope-estimates}, with any sequence
+$t_n\to\infty$. A cluster $X_n=(x_{i,n})_{i\in I}$ is at scale $x>0$
+if $\max_i|x_{i,n}|$ has upper rate $-x$ and, for every $\delta>0$,
+\[
+ |x_{i,n}-x_{j,n}|>e^{-(x+\delta)t_n}\quad(i\ne j)
+ \quad\hbox{eventually}.
+\]
+These conditions tolerate factors with zero logarithmic rate. In particular,
+they include every cluster of radius $Mr_n$ and separation $\eta r_n$,
+where $t_n=-\log r_n$. Spectators in this section remain a fixed positive
+distance from the origin and one another, although their positions and
+phases can vary with $n$.
+
+\subsection{Intermediate scales and generic grids}
+Write $a_k$ for the mesh and $s_k=\log(1/a_k)$ for its logarithmic scale.
+The following elementary consequence of the mesh schedule will be useful.
+Suppose $s_k$ is strictly increasing, tends to infinity, and
+$s_{k+1}/s_k\to1$. Then for every $d>0$ and every $t_n\to\infty$
+there are integers $j_n\to\infty$ such that $s_{j_n}/t_n\to d$.
+Indeed choose the first $j_n$ with $s_{j_n}>dt_n$. Eventually $j_n>0$,
+and
+\[
+ s_{j_n-1}\leq dt_n<s_{j_n},\qquad
+ 1<\frac{s_{j_n}}{dt_n}\leq\frac{s_{j_n}}{s_{j_n-1}}\longrightarrow1.
+\]
+The zero-rate variant follows by replacing $dt_n$ with $\sqrt{t_n}$.
+The gentle-mesh condition used in the construction gives exactly the
+ratio property, since $s_{k+1}-s_k=\log L_k=o(s_k)$.
+The proof here uses that condition; its production for the chosen
+trajectory remains part of the construction estimates.
+
+A configuration is \emph{coordinate-generic} if, for each of the four
+coordinates separately, the coordinates of its distinct points are
+pairwise different. Such configurations can approximate arbitrary ones
+at the mesh scale with a bound independent of their location. To see
+this, enumerate $I$ by $0,\ldots,N-1$, set $K=N+1$, and for mesh $h>0$
+put
+\[
+ y_{i,\mu}=h\left(K\left\lfloor\frac{x_{i,\mu}}{hK}\right\rfloor+i\right),
+       \qquad \mu=1,\ldots,4.
+\]
+Different point indices have different residues modulo $K$, so each
+coordinate is injective. The floor inequality and $0\leq i<K$ give
+$|y_{i,\mu}-x_{i,\mu}|\leq hK$, hence
+\begin{equation}\label{eq:ope-grid-round}
+ \max_i|y_i-x_i|\leq2Kh.
+\end{equation}
+This is the empty-exterior version of the grid construction; no claim is
+made that it preserves coordinate distances from fixed exterior points.
+Only ordinary Euclidean separation of the full configuration is needed
+below.
+
+If $h_n=e^{-dt_n+o(t_n)}$ with $d>x$, the rounded cluster and every
+configuration in the closed ball
+\[
+ B_n=\{Z:\|Z-X_n\|\leq\|Y_n-X_n\|\}
+\]
+remain at scale $x$, using the maximum of the Euclidean norms on the
+configuration space. Here is the separation check. Given $\delta>0$,
+choose $0<\epsilon<\delta$ with $x+\epsilon<d$ and use the original
+separation at exponent $x+\epsilon$. The displacement has strictly
+smaller exponential order, so eventually twice its norm is at most half
+that separation. Thus the perturbed separation is at least
+$\tfrac12e^{-(x+\epsilon)t_n}>e^{-(x+\delta)t_n}$. The radius bound
+follows from the triangle inequality. Fixed exterior clearances also
+persist, because these clusters tend to the origin.
+
+\subsection{Reading a high-degree match}
+We state the still needed quantitative local matching input precisely.
+All fields and tests in it belong to the same extracted hierarchy and
+the prescription already constructed in Section~\ref{sec:ope-prescription}.
+For a cluster label list $p$, write $w(p)=\sum_i\deg p_i$ and
+\[
+ \tau(p;a,d)=d\,w(p)+4|I|(d-a).
+\]
+The second term is the four-dimensional volume cost of the local
+matching estimate.
+
+\begin{assumption}[Local matching estimates]\label{input:ope-match}
+Fix $0<b<a<x<d$, a nonempty cluster label list $p$, a
+coordinate-generic configuration sequence $X_n$ on meshes of logarithmic
+rate $d$, at cluster scale $x$, and an integer $q\geq0$.
+There are degree-$q$ local labels $Q_n$, and nonnegative budgets $A_n,V_n$,
+with upper rates
+\[
+ A_n:\quad\tau(p;a,d)-(q+\tfrac1{16})(a-b),\qquad
+ V_n:\quad\tau(p;a,d)-qa,
+\]
+with the following properties. The discrepancy between the cluster
+product and $Q_n$ inserted at the origin, tested against any fixed
+spectator label list at fixed positive clearance, has upper rate at
+most that of $A_n$, uniformly along every choice of phase and exterior
+configuration. The same is true for the mixed state and the finite tests
+of the prescription. The labels obey
+\begin{equation}\label{eq:ope-match-norm}
+ \|Q_n\|\leq J_n V_n,\qquad J_n\text{ has upper rate }qa.
+\end{equation}
+For each $1\leq m\leq q$ there are $z_{m,n}$ in the label space of
+degree $q$ whose physical classes lie in the included space $E_{m-1}$,
+and
+\begin{equation}\label{eq:ope-match-distance}
+ \|Q_n-z_{m,n}\|\leq F_{m,n}V_n,
+ \qquad F_{m,n}\text{ has upper rate }(q-m)a.
+\end{equation}
+All norms here are fixed finite-dimensional label norms. The original
+labels $Q_n$, before passing to their physical classes, satisfy these
+bounds. The estimates hold for every fixed cluster label list, including
+lists formed by differentiating its fields.
+\end{assumption}
+In the source the same $Q_n$ arises as a finite-dimensional sublimit of
+cutoff matches, retaining their local discrepancy and quota bounds.
+The individual channel estimate below is essential: a bound on the
+whole degree-$q$ label would lose the powers that distinguish low and
+high channels. Input~\ref{input:ope-match} has not yet been derived here
+from the finite Wilson law.
+
+Let $f_{\alpha,n}$ denote the raw coefficient of the product and let
+$v_{\alpha,n}=b_\alpha([Q_n])$ be the coefficient of its matched field,
+where $b_\alpha$ is the fixed functional of the prescription and
+$m=|\alpha|\leq q$. Then
+\begin{equation}\label{eq:ope-match-grade}
+ v_{\alpha,n}\text{ has upper rate }\tau(p;a,d)-ma.
+\end{equation}
+For $m=0$, apply the fixed linear functional to
+\eqref{eq:ope-match-norm}. For $m>0$, coherence of the prescription
+implies $b_\alpha([z_{m,n}])=0$: this detector kills every field of degree
+less than $m$. Hence
+\[
+ |v_{\alpha,n}|=|b_\alpha([Q_n-z_{m,n}])|
+       \leq \|b_\alpha\circ\pi_q\|\,\|Q_n-z_{m,n}\|,
+\]
+where $\pi_q$ is the quotient map. Combining
+\eqref{eq:ope-match-distance} with the rate of $V_n$ proves
+\eqref{eq:ope-match-grade}.
+
+Each raw coefficient is a finite linear combination of exterior tests.
+Applying the discrepancy part of Input~\ref{input:ope-match} to those
+tests therefore gives
+\begin{equation}\label{eq:ope-match-detector}
+ f_{\alpha,n}-v_{\alpha,n}\text{ has upper rate }
+                  \tau(p;a,d)-(q+\tfrac1{16})(a-b).
+\end{equation}
+For a specified output degree $m$, choose $q\geq m$ so large that
+$(q+\tfrac1{16})(a-b)\geq(m+1)a$. Then
+\eqref{eq:ope-match-grade} and \eqref{eq:ope-match-detector} show that
+$f_{\alpha,n}$ has upper rate $\tau(p;a,d)-ma$.
+
+The analogous remainder argument retains the entire product correlation.
+Let $\ell_n$ be the functional obtained by inserting a field at the origin
+beside the chosen spectators. Assume, as furnished by the separated
+correlation estimate, that $\ell_n(u)$ has upper rate zero for every fixed
+field $u$ and every phase sequence. To truncate at $D$, choose $q\geq D$
+with $(q+\tfrac1{16})(a-b)\geq(D+1)a$. Exact reconstruction of $[Q_n]$
+by its prescription coefficients gives
+\begin{align}
+ S_{\chi_n}(p,z;X_n,Y_n)-\ell_n(H_D(X_n,p;0))
+ &=\bigl[S_{\chi_n}(p,z;X_n,Y_n)-\ell_n([Q_n])\bigr]\nonumber\\
+ &\quad+\sum_{|\alpha|\leq D}(v_{\alpha,n}-f_{\alpha,n})
+                            \ell_n(u_\alpha)\nonumber\\
+ &\quad+\sum_{D<|\alpha|\leq q}v_{\alpha,n}\ell_n(u_\alpha).
+ \label{eq:ope-match-remainder}
+\end{align}
+The first term and each low-channel difference have upper rate at most
+$\tau(p;a,d)-(D+1)a$. Each high channel has that rate as well, by
+\eqref{eq:ope-match-grade}, because $a>0$ and $|\alpha|\geq D+1$.
+The sums are finite. This proves the raw grid remainder estimate with
+upper rate $\tau(p;a,d)-(D+1)a$. The matching label may depend on $q$;
+the raw coefficients and the truncation on the left do not.
+
+\subsection{Interpolation by descending through the grading}
+We give the interpolation argument explicitly. Suppose functions
+$h_n(p,X)$ are indexed by finite field lists of the same length, with
+integer total degree $w(p)$. Assume that for every scale-$x$ sequence:
+\begin{enumerate}
+\item $h_n(p,X_n)$ has a rough upper rate $xw(p)+c$;
+\item on every coordinate-generic grid sequence of logarithmic mesh rate
+$d>x$, it has upper rate $dw(p)+e$;
+\item it is eventually differentiable along each such sequence, with identity
+\[\partial_{i,\mu}h_n(p,X_n)=h_n(p',X_n).\]
+Here $p'$ is obtained by differentiating the corresponding field, so
+$w(p')=w(p)+1$.
+\end{enumerate}
+The constants $c,e$ are independent of $p$; they may depend on fixed
+truncation and exterior data. Then at every scale-$x$ sequence the
+improved upper rate is $dw(p)+e$.
+
+Choose an integer $N\geq0$ with $(d-x)N\geq c-e$. We prove by induction
+on $k\geq0$ that the improved rate holds whenever $N\leq w(p)+k$.
+For $k=0$ the rough rate is already no larger than the improved one.
+For the induction step round $X_n$ to $Y_n$ by
+\eqref{eq:ope-grid-round}. Every choice $Z_n\in B_n$ stays at scale $x$.
+The induction hypothesis applied to the differentiated lists shows that
+each coordinate derivative at $Z_n$ has upper rate
+$d(w(p)+1)+e$. In the fixed finite-dimensional configuration space,
+\[
+ \|Dh_n(p,Z_n)\|\leq\sum_{i,\mu}
+                       |\partial_{i,\mu}h_n(p,Z_n)|,
+\]
+so the derivative norm has that rate too.
+
+These bounds and differentiability hold eventually uniformly on $B_n$.
+For any specified positive slack, failure would give infinitely many
+indices with a bad point; choosing a bad point there and the center
+elsewhere produces a sequence $Z_n\in B_n$ contradicting the corresponding
+eventual assertions. The mean-value inequality on the convex ball thus
+gives
+\[
+ |h_n(p,Y_n)-h_n(p,X_n)|
+ \leq\sup_{Z\in B_n}\|Dh_n(p,Z)\|\,\|Y_n-X_n\|.
+\]
+The displacement has upper rate $-d$, so the difference has upper rate
+$dw(p)+e$. The grid value has the same rate, which proves the induction
+step. Taking $k=N$ covers every field list. Only finitely many derivative
+levels are used for any one application, although the assumptions must be
+available at every finite degree.
+
+For clarity, the mean-value inequality here needs no continuity of the
+derivative. On each segment in $B_n$, differentiability implies
+continuity, and the scalar mean-value theorem applied to real projections
+of the complex-valued function bounds its increment by the derivative
+bound times the segment length. The finite-dimensional operator estimate
+above follows by expanding a vector in its coordinate basis and applying
+the triangle inequality.
+
+\subsection{Removing the intermediate-scale losses}
+The differentiability identities needed for this interpolation are exactly
+the derivative-field identities of the hierarchy. They persist under
+finite linear combinations of detector tests and under subtraction of
+the finite raw truncation. At a separated configuration its neighborhood
+remains separated, so the totalized values away from that neighborhood
+play no role in differentiation.
+
+Suppose the rough separated correlation estimates give upper rate $xw(p)$
+for the cluster with fixed-clearance spectators, uniformly in the phase.
+They give the same rate for each raw coefficient, since its detector list
+is fixed and finite. A finite truncation also has rough rate $xw(p)$:
+its coefficient has that rate and each fixed single-field spectator
+insertion has rate zero. Therefore both the raw coefficient and the raw
+discrepancy satisfy the rough interpolation bound with $c=0$.
+
+For a coefficient of degree $m$, the grid bound just proved is
+\[
+ dw(p)+4|I|(d-a)-ma.
+\]
+Use interpolation with $e=4|I|(d-a)-ma$ to obtain this bound at all
+scale-$x$ clusters. For a remainder through degree $D$, use instead
+$e=4|I|(d-a)-(D+1)a$. These offsets do not change when a cluster field is
+differentiated, as required by the induction.
+
+Now set $a=x-\epsilon$, $d=x+\epsilon$, and $b=a/2$, with
+$0<\epsilon<x$. The mesh schedule supplies all three intermediate levels.
+The resulting coefficient upper rate is
+\[
+ (w(p)-m)x+\epsilon\bigl(w(p)+8|I|+m\bigr),
+\]
+and the remainder upper rate is
+\[
+ (w(p)-D-1)x+\epsilon\bigl(w(p)+8|I|+D+1\bigr).
+\]
+Given any desired positive slack above the limiting exponent, choose
+$\epsilon$ small enough that the displayed excess is less than half the
+slack, then use the remaining half in the upper-rate bound. This proves
+rates $(w(p)-m)x$ and $(w(p)-D-1)x$, respectively. No uniformity of the
+intermediate constructions as $\epsilon\to0$ is needed.
+
+Translating the cluster center to the origin preserves all distances and
+the complete correlation. The raw coefficients use relative positions,
+so the same estimates hold at arbitrary centers. If the cluster is empty,
+its product is the identity. Exact reconstruction of that degree-zero
+field makes every raw truncation exact; positive-degree detectors
+annihilate it, and degree-zero coefficients are constant. Thus this case
+also satisfies the stated rates. Taking $x=1$ proves
+Input~\ref{input:ope-raw-estimates}, conditional on
+Input~\ref{input:ope-match}, the rough separated correlation estimates,
+and the derivative identities already described. The remaining task is
+to produce those matching and correlation estimates for the actual
+Wilson trajectory.

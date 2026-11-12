@@ -1,0 +1,244 @@
+\section{Prices for packets and marked connected components}
+\label{sec:mixed-activity-prices}
+The vertex bound used in Section~\ref{sec:cluster-expansion} combines
+two populations: mandatory defect packets and optional local activities.
+We prove the counting and reserve estimates for this combination, then
+show how a single insertion is added to its actual alphabet. The analytic
+bound on the weight of one packet remains a separate input.
+
+\subsection{Counting physical defect packets}
+Fix a block ratio $L\ge3$ and nonnegative integers $\ell,B$. A seed is a fine plaquette, a coarse
+oriented bond, or a coarse site. These are distinct types even when
+they have the same location. Each seed has a coarse anchor and a
+finite set of points within max-distance one of its anchor. For a
+plaquette these points are the coarse parents of its touched fine
+sites; for a bond they are its two endpoints; for a site it is the
+site itself. For the plaquette, the parent-distance estimate is
+$L\,\operatorname{dist}(\operatorname{parent}(x),\operatorname{parent}(y))\le L+2$.
+Since the distance is integral and $L\ge3$, it is at most one. The halo of radius $\ell B$ around these points is its
+support, contained in the ball of radius $\ell B+1$ about the anchor.
+A packet is a nonempty finite set of seeds whose halo intersection
+graph is connected. Its support is the union of these halos, and
+its size $n$ is the number of typed seeds.
+
+The number of seeds with anchors in a set $Y$ is at most $T_L|Y|$,
+where
+\[
+        T_L=L^4\#\{\text{plaquette axes}\}+4+1.
+\]
+The fine site is determined by its coarse parent and one of $L^4$
+residues, which proves the plaquette count; the two other counts are
+immediate. Consequently at most
+\[
+ H=(2(\ell B+1)+1)^4T_L
+\]
+seed halos can contain a given site. If two halos overlap, their
+anchors have distance at most $2(\ell B+1)$, so each seed has at most
+\[
+                   D=(4(\ell B+1)+1)^4T_L\ge1
+\]
+possible neighboring seeds. These bounds remain valid when balls wrap
+around the periodic lattice, since wrapping only decreases the number
+of distinct sites.
+
+There are at most $HD^{2n}$ packets of size $n$ containing a fixed
+site in their support. To prove this, choose a seed whose halo contains
+that site; there are at most $H$ choices. A connected $n$-seed packet
+has a spanning tree. Traversing every tree edge out and back gives a
+walk of length $2(n-1)$, starting at the chosen seed, whose visited
+set is exactly the packet. There are at most $D^{2(n-1)}$ such walks.
+Different visited sets cannot come from the same walk, so this counts
+packets without an injectivity assumption on their placements.
+Enlarging the bound to $HD^{2n}$ also covers $n=1$ uniformly. There
+is no packet with $n=0$.
+
+A single halo has $B$-cover number at most
+$s_\ell=(2\ell+3)^4$. For $B\ge1$ it lies in the ball of radius
+$(\ell+1)B$, tiled by $B$-balls with centers on the $B$-spaced grid;
+there are at most $(2\ell+3)^4$ centers, forming a connected grid.
+For $B=0$ use at most $3^4\le s_\ell$ singleton centers. Covering
+subadditivity along a spanning tree therefore bounds a packet's
+cover number by $ns_\ell$.
+
+Suppose its nonnegative weight obeys the analytic estimate
+\begin{equation}\label{eq:mixed-packet-analytic}
+                  p_A\le C\exp((s-g)n(A)),\qquad C\ge0,
+\end{equation}
+where $s$ is the expense per seed and $g$ the gain per seed. For a
+support exponent $h\ge0$, put
+\[
+                   q_p=D^2\exp(s-g+hs_\ell).
+\]
+If $q_p\le r_p<1$, multiplication by the support weight, the packet
+count, and a geometric sum give
+\begin{equation}\label{eq:mixed-packet-hit}
+ \sum_{\substack{A:\,x\in X_A\\n(A)\ge n_0}}
+                  p_Ae^{h c(X_A)}
+          \le HC\frac{r_p^{\max(1,n_0)}}{1-r_p}.
+\end{equation}
+Indeed the summand at fixed size $n$ is at most $HCq_p^n$.
+The lower limit is $\max(1,n_0)$ because packets are nonempty.
+This explains the single-seed extraction in the packet price.
+If a packet has several analytic variants, the hypothesis
+\eqref{eq:mixed-packet-analytic} must bound their \emph{sum} at that
+packet. It cannot be applied separately to every variant for free.
+A variant with smaller support has no larger support price and is
+handled by the same fiberwise summation.
+
+\subsection{Reserving the cost of a whole component}
+Let $f_i\ge0$ be weights on a combined alphabet, with supports $X_i$,
+extra nonnegative costs $d_i$, and nonnegative marks $e_i$. Define
+\[
+ \widetilde f_i=f_i\exp(2\varepsilon d_i+e_i),\qquad
+ D(A)=\sum_{i\in A}(c(X_i)+d_i),\qquad E(A)=\sum_{i\in A}e_i,
+\]
+where $\varepsilon>0$. Assume the vertex condition
+\eqref{eq:cluster-vertex-input} holds for $\widetilde f$ with support
+exponent $a+2\varepsilon$, site price $\gamma$, tree reserve $\delta$
+and tail ratio $q$. We will use the same tree bound for distinct
+connected sets.
+
+For each connected finite set $A$ containing a root label $i$, choose
+a spanning tree rooted at $i$. If $|A|-1=m$, the $m!$ enumerations
+of its other labels give $m!$ different numbered trees. Their weights
+in \eqref{eq:cluster-forest-bound} each contain $1/m!$. Thus the
+sum over distinct sets and their chosen trees is bounded by the full
+numbered tree sum. Choose a root whose support contains $x$, or
+bound by the sum over all such roots. The rooted bound established
+in Section~\ref{sec:cluster-expansion}, followed by the geometric
+sum in $m$, proves
+\begin{equation}\label{eq:mixed-distinct-tail}
+ \sum_{\substack{A\ {\rm connected},\ x\in\cup_{i\in A}X_i\\|A|-1\ge m}}
+                   \prod_{i\in A}\widetilde f_i
+                                 e^{(a+2\varepsilon)c(X_i)}
+                        \le\frac{\gamma q^m}{1-q}.
+\end{equation}
+No logarithmic coefficient is present in this distinct-set estimate.
+
+Let $k,m\ge0$ be integers and restrict the sets further by
+$D(A)\ge T$ and $E(A)\ge U$, where $T,U$ are real. The elementary
+polynomial estimate is
+\[
+ (1+D)^k\le P_{\varepsilon,k}e^{\varepsilon D},\qquad
+              P_{\varepsilon,k}=\varepsilon^{-k}k!e^\varepsilon
+                         \quad(D\ge0).
+\]
+Since $D\ge T$ and $E\ge U$,
+\[
+ e^{\varepsilon D}
+       \le e^{-\varepsilon T-U}e^{2\varepsilon D+E}.
+\]
+For connected $A$ we also have $c(\cup_iX_i)\le\sum_ic(X_i)$.
+Multiplying these inequalities, and then using
+\eqref{eq:mixed-distinct-tail}, proves
+\begin{equation}\label{eq:mixed-reserved-tail}
+ \sum_A\left(\prod_{i\in A}f_i\right)(1+D(A))^k
+                                      e^{a c(\cup_{i\in A}X_i)}
+ \le P_{\varepsilon,k}e^{-\varepsilon T-U}
+                                      \frac{\gamma q^m}{1-q}.
+\end{equation}
+The sum on the left has all the preceding connectedness, site,
+cardinality, cost and mark restrictions. The two reserves have
+separate uses: one pays the polynomial, and the other leaves the
+explicit tail $e^{-\varepsilon T}$.
+
+\subsection{Combining the two vertex populations}
+For an optional label take its original weight $w_i$, extra cost
+$d_i\ge0$ and no mark. Assume its site estimate with the full head
+exponent $h=a+2\varepsilon+\delta$ is
+\[
+        \sup_x\sum_{i:x\in X_i}
+             w_i e^{2\varepsilon d_i}e^{h c(X_i)}\le\Gamma_o.
+\]
+For a packet of size $n$, set extra cost $bn$ and mark $\mu n$,
+where $b,\mu\ge0$. Its modified weight is
+$p_Ae^{(2\varepsilon b+\mu)n}$. Thus
+\eqref{eq:mixed-packet-hit} applies with seed expense replaced by
+$s+2\varepsilon b+\mu$, leaving the analytic packet bound
+\eqref{eq:mixed-packet-analytic} unchanged. If the resulting packet
+site price is $\Gamma_p$, the combined alphabet has site price at
+most $\Gamma_p+\Gamma_o$. Choose $\gamma>0$ with
+\[
+               \Gamma_p+\Gamma_o\le\gamma,
+                       \qquad 4h_B\gamma/\delta\le q<1.
+\]
+This is exactly the vertex condition needed for
+\eqref{eq:mixed-reserved-tail}.
+
+If the allowed component contains at least $r$ seeds in total,
+then $E(A)\ge\mu r$. Hence the right-hand side becomes
+\begin{equation}\label{eq:mixed-ceiling}
+       P_{\varepsilon,k}e^{-\varepsilon T-\mu r}
+                                \frac{\gamma q^m}{1-q}.
+\end{equation}
+This bound controls simultaneously excess label count $m$, polynomial
+order $k$, minimum seed count $r$, and minimum total cost $T$.
+In particular, $r=1$ may be used only for components known to contain
+a mandatory packet. The support of an output may be smaller than
+the component support. Summing all output majorants over each
+component fiber first, a bound by $C_0$ times its component price
+gives $C_0$ times \eqref{eq:mixed-ceiling}, by support monotonicity
+and nonnegative summation. This is the required rule for summing
+analytic variants without losing their multiplicities.
+
+\subsection{Adding a normalized elementary insertion}
+The insertion changes one optional label already present in the
+alphabet. Its fine support has cover number $c_f$, support exponent
+$\nu_f$, and original scalar majorant $w\ge0$. Let $g>0$ denote
+the normalization gain and set
+\[
+             j=g e^{-(\nu_f-\varepsilon)c_f},\qquad
+             D=\frac{w e^{\nu_f c_f}e^{-\varepsilon c_f}}g.
+\]
+Then $Dj=w$ exactly. Thus $D$ is the insertion debt and $j$ the
+normalized vertex weight, not two independent prices.
+
+Let $X_*$ be this label's actual coarse footprint, and suppose its
+projection geometry gives
+\begin{equation}\label{eq:mixed-marked-footprint}
+             h c(X_*)\le hP+\varepsilon c_f,
+                       \qquad \nu_f\ge4\varepsilon,
+\end{equation}
+where $h=a+2\varepsilon+\delta$ is the head exponent and $P$ the
+fixed halo constant. Its extra cost is $c_f$. Therefore
+\[
+ j e^{2\varepsilon c_f}e^{h c(X_*)}
+    \le g\exp\{hP+(4\varepsilon-\nu_f)c_f\}
+    \le g e^{hP}=:R_*.
+\]
+At a fixed site there is just this one modified label. Replacing its
+old nonnegative weight by $j$ thus increases the optional site bound
+by at most $R_*$. This follows even if $j$ is smaller than the old
+weight, by bounding the new array by the old array plus the single
+new entry. Set the new optional price and total vertex price to
+\[
+                   \Gamma_o'=\Gamma_o+R_*,\qquad
+                                  \gamma'=\gamma+R_*.
+\]
+The packet estimates are unchanged. Once
+$4h_B\gamma'/\delta\le q'<1$, the preceding mixed-component bound
+applies to the modified alphabet with these prices. Retaining only
+components containing the marked label decreases each nonnegative
+sum. This produces the marked-molecule estimate used for the
+order-zero tail in Section~\ref{sec:leaf-expansion}.
+
+For the actual projected footprint the sufficient geometric condition
+is $h(10P/L)\le\varepsilon$, together with the comparison of fine
+and coarse cover radii. Indeed the projected cover estimate is
+$c(X_*)\le P+(10P/L)c_f$, which gives
+\eqref{eq:mixed-marked-footprint}. The fixed block ratio is chosen
+large enough for this condition before the coupling is increased.
+If $g$ and $\gamma$ have negative upper exponent $q_*<0$ in the
+fine coupling, then $R_*=g e^{hP}$ and $\gamma'$ have the same upper
+exponent, with $L$ and the halo constants fixed. The factor $h_B$
+has upper exponent zero. The degree price therefore has upper
+exponent $q_*$, and is eventually bounded by the strictly larger
+power $H^{q_*/2}$, which tends to zero. This proves affordability
+of the augmented tree price under precisely these rate and geometric
+inputs.
+
+The combinatorial part of the mixed and marked estimates is now
+proved. The remaining analytic input is the packet weight bound
+\eqref{eq:mixed-packet-analytic}, including all its variants, together
+with the optional activity site bound and the quoted projection and
+rate estimates on the actual selected block step.

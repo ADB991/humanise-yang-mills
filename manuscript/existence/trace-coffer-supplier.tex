@@ -1,0 +1,268 @@
+% Atomic-response to finite-volume Bill transfer and Coffer price conversion.
+\section{Atomic responses and the finite-volume root price}
+\label{sec:ex-lattice-trace-coffer-supplier}
+
+This section records the actual transfer used by the public trace supplier.
+There are two distinct operations. An atomic response first becomes a
+finite-volume response with a root-price estimate. The price estimate is
+then converted into the two components of a Bill. We give the conversions
+and the quantitative endpoint of the Coffer argument, while keeping the
+upstream response, paid-price, and price-duality receipts explicit.
+
+\subsection{From an atomic response to the Coffer input}
+
+Let \(X\) be an order-zero coefficient at scale \(k\), \(g\) its local field,
+and \(Z=\widehat\beta_k\). Write \(x_X\) for its coordinate, \(X^{\rm f}\) for its forced part, and \(D_X\) for its density. The atomic certificate supplies a nonnegative
+remainder allowance \(s\), a response \(L\) with attainment cost \(e\), and
+the identities
+\begin{align}
+ \|x_X\|_{\rm coeff}+s&\leq q, \label{eq:ex-trace-atomd-charge}\\
+ \operatorname{profile}(X^{\rm f})&=\operatorname{hook}(L),\\
+ D_X(U)&=\operatorname{eval}(U)\,g(U).
+ \label{eq:ex-trace-atomd-data}
+\end{align}
+The remainder bound is measured at scale \(k\), at order zero and with
+tolerance \(\sqrt{\operatorname{forcedAllowance}_k}\); the response has
+\(\operatorname{Attainment}(L)=e\). Set
+\(u=\operatorname{alto}_{k,d}\), the inverse field dilation, and \(G'=ug\).
+Multiplying the density identity by \(u\) gives
+\[
+ uD_X(U)=\operatorname{eval}(U)G'(U).
+\]
+Thus the atomic response becomes the Coffer input, with unchanged format,
+remainder and forced-profile data.
+
+The selected atomic charge budget satisfies
+\begin{equation}
+ 4(1+c_k)q\leq Z^3,
+ \label{eq:ex-trace-coffer-budget}
+\end{equation}
+where \(c_k\) is the number of coefficient columns at scale \(k\). Hence
+\[
+ 4(1+c_k)(\|x_X\|_{\rm coeff}+s)\leq Z^3.
+\]
+The second needed comparison is \(Z\operatorname{fly}_d(k)\leq Z^2\),
+using \(\operatorname{fly}_d(k)\leq Z\) and \(Z\geq1\). The price construction
+chooses the atomic charge allowance so both comparisons hold.
+
+The endpoint price-duality estimate used below has the following exact
+meaning. A response duet \(P\) runs from a level \(\ell\) to \(k\leq N\)
+in the same selected history. At each intermediate level its coefficient
+has admissible order-zero format and remainder bound; its marked site is the
+spatial origin and these sites are related by the one-step scale map. The
+coefficient and cost changes satisfy the paid direction inequality, and
+the densities satisfy the exact one-step transfer identity. Its left
+endpoint coefficient vector is zero, and its terminal cost obeys the
+spread estimate
+\[
+ \operatorname{cost}_k\leq
+ w+c_k\bigl(w+\|P_k.x\|_{\rm coeff}\bigr),\qquad w\geq0.
+\]
+Write \(\kappa_k>0\) for the square root of the level-\(k\) monitor.
+For every such paid comparison the endpoint estimate is
+\begin{equation}
+ \kappa_k\,\|P_k.x\|_{\rm coeff}
+ \leq4(1+c_k)w.
+ \label{eq:ex-trace-sharp-read}
+\end{equation}
+The zero in the left-end condition is a coefficient vector; the marked sites
+are at the spatial origin, not zero-valued observations. The finite recurrence
+and adjacent-level estimate are given in
+Section~\ref{sec:ex-lattice-trace-price-recurrence}. The paid-cone estimate is supplied by the canonical argument in
+Section~\ref{sec:reference-cone}, under its explicit direction, room, bank,
+and endpoint-spread assumptions. None of these bounds follows from the atomic
+response alone.
+
+\subsection{The finite Coffer transfer}
+
+We keep the source parameters distinct. Write \(c_k\) for the number of
+coefficient columns at level \(k\). Let \(X\) be the input coefficient, \(S\) its remainder budget,
+\(E\) the paid response and \(e\) its attainment cost, and
+\(\zeta_i>0\) its payment allowance. Let \(a\in(0,1]\) be the mask fraction,
+\(v'\geq0\) the forced-allowance budget, and \(q,B>0\) two coefficient budgets.
+The actual Coffer hypotheses include
+\begin{equation}
+ \|x_X\|_{\rm coeff}+S\leq q,\qquad
+ 4(1+c_k)q\leq B,\qquad e\zeta_k\leq v'B.
+ \label{eq:ex-trace-coffer-inputs}
+\end{equation}
+They also include exact coefficient format, remainder, payment, density and
+forced-profile identities; scale growth and one-step response receipts; and
+the melting condition. If \(B_k\) is the spatial-spacing parameter of the
+scale budget and \(R_k=\operatorname{siteFactor}(B_k)\), the latter requires
+support exponent at least four and
+\[
+ t=\operatorname{forcedAllowance}_k
+  +R_k\sqrt{\operatorname{forcedAllowance}_k}+a+R_kv',\qquad
+ (2B_k+1)^4t\leq3,\qquad e^t-1\leq1.
+\]
+Here \(B_k\) is not the coefficient budget \(B\) in
+\eqref{eq:ex-trace-coffer-inputs}.
+
+For \(J\leq m<k<N\), let \(\operatorname{gain}(k,m)>0\) denote the
+scale gain from \(m\) to \(k\). The output weight is
+\begin{equation}
+ w_m=a\,\frac{\zeta_m/2}
+ {\|\operatorname{alto}_{m,d}\|(B/\operatorname{gain}(k,m))}.
+ \label{eq:ex-trace-coffer-weight}
+\end{equation}
+
+For clarity, if \(\mathcal T_J\) is the set of reflected scale-\(J\) cells
+in the volume-\(N\) tiling and \(K=|\mathcal T_J|\), with \(\mu_{N,p}\) the normalized Wilson measure, the root functional is
+\[
+ \operatorname{root}_{J,N,p}(F)=
+ \left\|\int\prod_{x\in\mathcal T_J}
+       \operatorname{copy}_x(F)(U)\,d\mu_{N,p}(U)\right\|^{1/K}.
+\]
+Here \(\operatorname{copy}_x(F)\) evaluates \(F\) on the translated
+reflection half of the configuration; when that reflection reverses
+orientation it also complex-conjugates the value. This is the
+reflection-positive tiling functional, with its \(K\)th-root normalization.
+
+Assume \(N>k\), the reference grade is no larger than \(m\), and the
+scale-\(J\)-to-\(m\) window is open. The response data are an admissible
+sequence of coefficient voices from the reference level through \(N\), an
+admissible top coefficient, an exact paid response identity between each
+adjacent pair, and the terminal forced-profile identity. The input field
+has the format, remainder, attainment, and density identities stated above.
+Assume also the melting and payment inequalities, the endpoint estimate
+\eqref{eq:ex-trace-sharp-read}, and the room and interiority conditions
+from \(J\) to \(k\). Put
+\[
+ \widetilde G'=\operatorname{back}_{k\to N}G'.
+\]
+Under these hypotheses the finite construction returns a label \(b\) with
+two estimates:
+\begin{align}
+ b'\,\|x_X-\mathcal C_k(b)\|_{\rm coeff}
+   &\leq 4(1+c_k)q, \label{eq:ex-trace-coffer-column}\\
+ \operatorname{root}_{J,N,p}(\widetilde G'-\mathcal O_{N,p}b)
+   &\leq \frac{\operatorname{stakes}(J,m)}{w_m}.
+ \label{eq:ex-trace-coffer-root}
+\end{align}
+Here \(b'\) is the endpoint price-duality constant, \(\mathcal C_k(b)\)
+is the scale-\(k\) response column of \(b\), and
+\(\operatorname{root}_{J,N,p}\) is the reflection-positive root functional
+on the volume-\(N\) field, defined using the scale-\(J\) tiling. In this application the endpoint constant $b'$ is $\kappa_k$.
+
+For the column estimate, apply the signed reference-difference construction
+of Section~\ref{sec:reference-difference} to the Coffer coefficient field
+\(X\) at terminal level \(k\), with its remainder bound \(S\) and total
+charge \(q\). The construction assumes one fixed background history and
+calibrated primary fields \(\mathcal P_i(v)\) whose coefficient is
+\(I_i v\), together with the bank and column inequalities
+\eqref{eq:reference-bank} and the exact degree-\(d\) density transition.
+At each backward step it first transports the current zero-coefficient
+remainder by the zero-coordinate transition
+\eqref{eq:reference-zero-transition}; it then subtracts the primary field
+with the resulting coefficient, so that the new remainder again has
+coefficient zero. Linearity cancels the two primary densities exactly, and
+the zero-coordinate transition supplies the density of the transported
+remainder. The paid direction and remainder estimates
+\eqref{eq:reference-direction} apply to the resulting signed difference,
+not to an unsigned estimate obtained by subtracting costs.
+
+The top family has terminal charge at most \(q\), since
+\(\|x_X\|_{\rm coeff}+S\le q\). Choose its single reference label by
+setting the left endpoint coefficient to zero. The output is precisely
+\eqref{eq:reference-produced-difference}: for the chosen label \(b\), the
+terminal coefficient is \(x_X-\mathcal C_k(b)\), the terminal density is
+\(D_X-D_{\mathcal P_k(b)}\), and the left endpoint coefficient vector
+vanishes. Every intermediate field and the selected reference field are
+evaluated against the same finest volume and background history; this is
+what permits the exact density cancellation. At the terminal level the reference construction also retains its spread
+bound \(r_k\le q+c_k(q+\|Z_k.x\|_{\rm coeff})\), the precise spread
+condition in the Woke duet. Thus it applies \(\operatorname{SharpRead}\)
+with budget \(w=q\). The stronger full terminal estimate in
+\eqref{eq:reference-produced-difference}, with \(C_k=c_k\), gives
+\(r_k+\|Z_k.x\|_{\rm coeff}\le4(1+c_k)q\); this is the coarse
+transport budget used by the subsequent construction. The signed dualization
+then gives the zero-site paid-response duet required by SharpRead, and its
+endpoint inequality is exactly \eqref{eq:ex-trace-coffer-column}. Here zero refers to the left coefficient
+vector and to the duet's marked spatial site being the origin. It does not
+assert that the observed field values vanish.
+For the rooted estimate, the same dual chain is planted once at each site of
+the finite scale-\(J\) census. The construction couples each translated
+negative endpoint to the local lens response, then propagates the resulting
+polynomial to level \(m\). Its site-supported and box-supported parts have weighted absolute sums
+bounded by $2$ and $1$, respectively; each box term carries one unit of
+support cost. The planted coefficient is
+the moment in the root functional: integrating it against the level-\(m\)
+reference measure gives the volume-\(N\) Wilson partition function times
+the normalized moment. This identity follows at each transfer from
+normalization of the transition kernel and the exact response-density
+identity, and at the terminal level from the definition of the marked
+coefficient.
+
+The polynomial-price calculation behind the finite-gas estimate is as
+follows. For a finite census polynomial \(Q\), write
+\[
+ \mathcal P_w(Q)=\sum_s\operatorname{toll}(w,s)\|Q_s\|
+\]
+for its weighted absolute coefficient sum. The price is submultiplicative.
+For box terms \(K_p\), the finite sum over disjoint-support patterns obeys
+\[
+ \mathcal P_w(\operatorname{field}(K))
+ \leq\prod_p(1+\mathcal P_w(K_p))
+ \leq\exp\!\left(\sum_p\mathcal P_w(K_p)\right),
+\]
+because each pattern's product price is at most the product of its factors
+and \(1+x\leq e^x\). The same submultiplicativity, applied term by term to
+the finite truncated exponential, gives
+\(\mathcal P_w(\operatorname{pass}(Q))\leq e^{\mathcal P_w(Q)}\).
+The site and box absolute-sum receipts contribute \(2K\) and \(K\) to the
+exponent. The remaining term is the \(2fK\) contribution in the planted
+price estimate at \(f=1\).
+
+By construction, the integral of the selected coefficient equals the
+volume-\(N\) Wilson partition function times the normalized moment \(M\).
+The partition function is positive. Dividing by it and using the finite
+volume denominator bound yields
+\begin{equation}
+ |M|\,\operatorname{toll}(w,\mathfrak s)
+ \leq \exp\!\left(|\Lambda_m|\operatorname{Treasury}(m)
+                         +K(2+1+2)\right).
+ \label{eq:ex-trace-spiker}
+\end{equation}
+This is an absolute-value estimate and does not use cancellation. Its
+hypotheses include the response construction's support-cost and moment
+identity receipts.
+
+In the Coffer application all site weights equal \(w_m\), so
+\(\operatorname{toll}(w,\mathfrak s)=w_m^K\). The tiling identity is
+\[
+ |\Lambda_m|=K\left(\frac{A_J}{A_m}\right)^4.
+\]
+Taking the positive \(K\)-th root of \eqref{eq:ex-trace-spiker} yields
+\[
+ |M|^{1/K}\leq
+ \frac{\exp((A_J/A_m)^4\operatorname{Treasury}(m)+5)}{w_m}
+ =\frac{\operatorname{stakes}(J,m)}{w_m},
+\]
+which is \eqref{eq:ex-trace-coffer-root}. The moment identity is needed to
+identify this \(M\) with the desired rooted observable.
+
+\subsection{Using the output in the Bill}
+
+The Bill is evaluated on the inflated field \(G'=u g\). Its root error is
+\(\widetilde G'-\mathcal O_{N,p}b\), where
+\(\widetilde G'=\operatorname{back}_{k\to N}G'\). In the Bill specialization, \(a=Z^{-1}\), \(v'=Z^{-1}\), \(B=Z^3\), and \(e=Z\), while \(\zeta_i=\operatorname{fly}_d(i)\) at each scale. Thus the payment condition is \(e\zeta_k=Z\operatorname{fly}_d(k)\leq Z^2=v'B\). The gas weight
+from \eqref{eq:ex-trace-coffer-weight} is
+\[
+ w_{\rm gas}=Z^{-1}
+ \frac{\operatorname{fly}_d(m)/2}
+ {\|\operatorname{alto}_{m,d}\|(Z^3/\operatorname{gain}(k,m))}.
+\]
+The factor $Z^{-1}$ is the mask fraction $a$ in the Coffer input, so this is
+exactly the native Bill denominator. Its norm entry follows from the atomic charge and the unit
+scale allowance. Its bias entry combines
+\eqref{eq:ex-trace-coffer-column} with the separately calibrated
+response-column estimate; the paid-response price estimate in
+Section~\ref{sec:ex-lattice-trace-bill-prices} bounds the resulting
+quantity by \(\operatorname{threshold}(k)^2\operatorname{AgeK}_k(-1/4)\).
+
+The outstanding suppliers are the atomic response, the endpoint
+price-duality recurrence, and the local action and occupancy estimates
+which construct the site/box expansion and its absolute-value envelope.
+The argument above spells out the numerical transfer once those receipts
+are supplied; it does not claim to have proved those producers.

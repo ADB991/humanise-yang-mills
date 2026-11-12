@@ -1,0 +1,175 @@
+\section{Purchasing the nonlinear estimates on one scale sequence}
+\label{sec:nonlinear-payment-selection}
+The nonlinear estimates above are uniform in the finite torus once
+the block size, derivative orders and stage parameters have been
+fixed. We now choose coupling thresholds that pay them together.
+In particular, the marked and unmarked constructions can use the
+same transition. The two logarithmic corrections absorbed into the
+forced gas require two successive payments; both are included.
+
+\subsection{An elementary exponential payment}
+Let $\beta_f(x)=x+c_L$, with fixed $c_L>0$, let
+$B(x)=\lceil(\log x)^2\rceil$, and let $P_f(x)$ be the shifted
+fine monitor. For $C>0$ put
+\[
+             \tau_C(x)=\exp\{-CP_f(x)^2/2\}.
+\]
+Fix $D_0>0$ and a function $f$ of negative upper exponent. For all
+sufficiently large $x$, the following assertion holds simultaneously
+for every pair $a,b\ge0$ such that
+\[
+             a\le D_0 e^{-CP_f(x)^2},\qquad b\le f(x).
+\]
+There is $\kappa\ge0$ with
+\begin{equation}\label{eq:nonlinear-payment}
+ \begin{gathered}
+ b\le1,\qquad (2B+1)^4 I\le1,\qquad
+ e^{-\kappa}(e^I-1)\le2\tau_C(x),\\
+                    I=e^\kappa a+2b.
+ \end{gathered}
+\end{equation}
+Take $\kappa=CP_f(x)^2/2$. Then
+$e^\kappa a\le D_0\tau_C(x)$, so
+\[
+          (2B+1)^4I\le(2B+1)^4(D_0\tau_C+2f).
+\]
+The right side tends to zero. Indeed the geometric factor has
+upper exponent zero, $f$ has negative upper exponent, and
+$\tau_C$ has every negative upper exponent by the monitor estimate.
+The same choice of threshold gives $b\le1$ and the middle inequality
+of \eqref{eq:nonlinear-payment}. Since $(2B+1)^4\ge1$, also
+$0\le I\le1$. Convexity of the exponential on $[0,1]$ gives
+$e^I-1\le(e-1)I\le2I\le2$. Multiplication by
+$e^{-\kappa}=\tau_C$ proves the last inequality.
+These are exactly the smallness and output-price conditions for
+the forced-gas absorption in Section~\ref{sec:soft-log-fusion}.
+The threshold depends on $C,D_0,f,L$, but not on $a,b$.
+
+\subsection{The two soft correction prices}
+We verify the negative power needed in the second payment.
+Fix a stage, including its derivative order, spatial weight,
+support exponent, path widths and path prices. Let $t\in(0,1]$
+be its threshold and $B$ its radius. Let $\alpha$ be the coupling
+reset, with $|\alpha|\le A$, where $A\ge0$ is fixed after the
+block length has been chosen. If the regular remainder allowance
+is $0\le H\le t^2$, the reset's boundary-hit coefficient is
+\[
+       h_{\rm hit}=2t\left(|\alpha|+H/t^2\right)
+                                      +\tfrac12 H C_{\rm pair}.
+\]
+Here $C_{\rm pair}\ge0$ depends only on the fixed derivative
+orders. Since $H\le t^2\le t$,
+\[
+       h_{\rm hit}\le[2(A+1)+C_{\rm pair}/2]t.
+\]
+
+There are two correction families, with the support reserve used
+for the first absorption and the larger reserve used for the second.
+For either family let $R_0,K_0\ge0$ be respectively its reset and
+path prices computed at radius one. The rooted footprint sum gives
+\[
+ R(B,H)\le R_0(1+B)^4H,\qquad
+                         K(B)\le K_0(1+B)^4.
+\]
+To see the radius dependence explicitly, its footprint population
+is a fixed nonnegative multiple of either $(2B+1)^4$ or
+$(8B+5)^4$. The inequalities
+$2B+1\le3(1+B)$ and $8B+5\le13(1+B)$ compare them with their
+radius-one values. All remaining factors are fixed: exponential
+support charges, inverse positive width powers and the convergent
+geometric series for the unused width reserve. The same calculation
+works with the larger reserve, using its smaller positive width.
+Thus the total soft price satisfies
+\begin{equation}\label{eq:nonlinear-soft-price}
+ R(B,H)+h_{\rm hit}K(B)
+ \le C_A(1+B)^4t,\qquad
+ C_A=R_0+[2(A+1)+C_{\rm pair}/2]K_0.
+\end{equation}
+These constants are selected separately for the two families.
+
+At coupling $x$, take
+\[
+ t(x)=x^{-1/2}\exp((\log\log x)^2),\qquad
+ H(x)=c_{\rm st}x^{-11/10},\qquad 0<c_{\rm st}\le1/64.
+\]
+For all sufficiently large $x$, we have $t(x)\le1$.
+For $x>1$ we also have $H\le x^{-1}\le t^2$, so the preceding
+calculation applies eventually. Moreover, for any fixed constant $C_A$,
+\[
+ C_A(1+B(x))^4t(x)\le\beta_f(x)^{-1/4}
+\]
+eventually. Divide the left side by $x^{-1/4}$ and take logarithms:
+the variable terms are
+$4\log(1+\lceil(\log x)^2\rceil)+(\log\log x)^2-
+\tfrac14\log x$, which tend to minus infinity. Finally
+$\beta_f(x)/x\to1$, so the same assertion holds with the shifted
+scale. This proves the required soft bound uniformly for
+$|\alpha|\le A$, both derivative budgets and both finite-volume
+families.
+
+The first hard price of the nonlinear expansion is at most
+$\exp(-\mu P_f^2/4)$, with $\mu>0$. Its accompanying soft price
+is at most $\beta_f^{-1/8}$. In the multiple-insertion version it
+is at most $C_{\rm cov}\beta_f^{-1/8}$, where the positive constant
+$C_{\rm cov}$ depends only on the fixed enlargement depth. Both
+have negative upper exponent. Apply
+\eqref{eq:nonlinear-payment} with $C=\mu/4$, $D_0=1$ to obtain
+the first output bound
+\[
+                     2e^{-\mu P_f^2/8}.
+\]
+Use this as the hard price for the second correction, whose soft
+price is bounded by \eqref{eq:nonlinear-soft-price}. A second
+application with $C=\mu/8$, $D_0=2$ gives
+\begin{equation}\label{eq:nonlinear-two-payments}
+          2e^{-\mu P_f^2/8}\quad\longmapsto\quad
+                         2e^{-\mu P_f^2/16}.
+\end{equation}
+These are the two successive forced allowances used in the
+nonlinear transition, including the larger-reserve correction.
+All inequalities use the same value of $x$.
+
+\subsection{Choosing thresholds without changing the transition}
+The marked construction first chooses a sufficiently large block
+size to pay its footprint conversion. For that fixed block and
+fixed stage orders, Sections~\ref{sec:marked-activity-jets}
+and~\ref{sec:leaf-expansion} give a threshold beyond which the
+local marked derivatives, the two connected expansions and their
+tail estimates hold. The chart transport radius is chosen before
+this threshold; the microscopic fluctuation threshold tends to
+zero and eventually fits inside it. The Gaussian and all-species
+estimates are uniform in the finite torus and in the insertion,
+so these choices do not depend on either of them.
+
+There are finitely many permitted target stages at each current
+stage $j$. For each such pair $(j,i)$, choose the block-size floor
+given by the marked construction and take their finite maximum.
+Choose the actual block size $L_j$ above that floor. Only after
+$L_j$ is fixed do we choose the coupling thresholds needed for
+\eqref{eq:nonlinear-payment}, \eqref{eq:nonlinear-soft-price}
+and the fixed-order marked estimates. This order permits their
+constants to depend on the actual block length and reset bound.
+
+More explicitly, let $d_j$ be a previously chosen entry threshold,
+and let $r_{j,i}$ be the threshold for all the requirements at
+transition $(j,i)$. Replace it by
+\begin{equation}\label{eq:nonlinear-entry-max}
+ d'_j=\max\left(d_j,\max_{i\ {\rm permitted\ at}\ j}r_{j,i}\right).
+\end{equation}
+For any later thresholds $d''_j\ge d'_j$ and every $x\ge d''_j$,
+all the requirements still hold. This is immediate from
+$x\ge d'_j\ge r_{j,i}$; the other selected data, including the
+block sizes and the transition maps, are unchanged. Applying
+\eqref{eq:nonlinear-entry-max} successively to the ordinary and
+the larger-reserve multiple-insertion requirements gives one set
+of thresholds satisfying both. No uniform maximum over all
+orders or all stages is needed.
+
+Consequently the numerical arrival conditions previously required
+by constructions with one or several insertions and by the
+centered construction can be imposed simultaneously on the same selected
+scale sequence. This is a purchase of their actual displayed
+estimates. The construction of the underlying funded Gaussian
+data and the subsequent coefficient and normalization identities
+remain the respective analytic and algebraic steps already
+separated in those arguments.

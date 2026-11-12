@@ -1,0 +1,167 @@
+\section{Regularity and bounded insertions in the component theories}
+\label{ex-phase-regularity}
+
+Several hypotheses in the selection theorem can now be supplied from the
+unselected operator estimates. Assume in this section that
+\eqref{ex-all-copy-bound} and \eqref{ex-raw-slot-identity} hold for the
+unselected theory, and that its correlations are multilinear and
+permutation symmetric. By Corollary~\ref{ex-norm-separable}, the
+representing probability of Proposition~\ref{ex-character-measure}
+is then available.
+
+\begin{proposition}[Smoothness and caps in every character]
+\label{ex-phase-caps}
+The whole-word functions \(S_\chi\) are multilinear in the raw labels,
+permutation symmetric, and smooth on distinct-point configurations.
+They obey the slot derivative identity \eqref{ex-raw-slot-identity}.
+For every grade bound \(D\) and label norm bound \(R\), the constants
+\(C,K\) in \eqref{ex-all-copy-bound} also give
+\begin{equation}\label{ex-phase-zeroth-cap}
+ |S_\chi(w)|\le C^n(n/r)^{Kn}
+\end{equation}
+for all \(\chi\), all words with these label bounds, and
+\(0<r\le1\) with pairwise sup-norm separations at least \(r\).
+For every fixed label tuple and derivative order \(q\), there are
+\(C_q\ge0\) and \(A_q\in\mathbb N\), independent of \(\chi\)
+and the positions, such that
+\[
+ \|D^qS_{\chi,\boldsymbol v}(x)\|\le C_qr^{-A_q}
+\]
+on the same separated configurations.
+\end{proposition}
+\begin{proof}
+Multilinearity of slab operators was proved in the norm-separability
+argument. Their permutation symmetry follows by the same dense
+matrix-element test, using scalar permutation symmetry. Compression and
+the linear character preserve both identities. For local smoothness,
+fix a distinct configuration, translate it into a slab, and keep the
+translation and width fixed in a small neighborhood. Proposition
+\ref{ex-smooth-slabs} gives smoothness of the operator-valued map and
+its slot derivative formula. Compression is bounded linear, and the
+character is bounded linear on \(\mathcal A\); their composition gives
+the same statements for \(S_\chi\). Equivalently one may extend the
+character to the ambient operator space by Hahn--Banach before composing;
+the extension agrees on every compressed word and its derivatives.
+
+To obtain \eqref{ex-phase-zeroth-cap}, translate a given word into a
+slab with one unit of padding at each time boundary. Translation leaves
+all pairwise separations unchanged, and the boundary padding is at least
+\(r\). Contractivity of characters and of orthogonal compression gives
+\[
+ |S_\chi(w)|=|\chi(M(w))|\le\|M(w)\|\le\|A_d(w)\|
+ \le C^n(n/r)^{Kn}.
+\]
+For the empty word use normalization. For nonzero arity, iterate the slot
+derivative formula \(q\) times. There are finitely many resulting label
+tuples, one for each sequence of \(q\) coordinate directions. Their
+grades and raw-label norms have finite maxima, so apply
+\eqref{ex-phase-zeroth-cap} with these maxima. Expand the real
+\(q\)-linear derivative in the standard coordinate basis of
+\(\mathbb R^{4n}\). On unit arguments every coordinate coefficient
+has absolute value at most one, so its operator norm is bounded by the
+sum of the absolute values of its at most \((4n)^q\) entries.
+This yields the claimed constants and the integer exponent \(A_q=Kn\)
+for the enlarged label bounds. At arity zero the function is constant
+one, with all positive-order derivatives zero.
+\end{proof}
+
+\begin{corollary}[Phase Hilbert spaces and selection]\label{ex-phase-dynamics}
+Every character table has the Hilbert space and strongly continuous
+contraction semigroup of Section~\ref{ex-reflection}. The common
+countable family in Lemma~\ref{ex-phase-horizon} exists. Consequently
+Theorem~\ref{ex-pure-ground} applies, giving a phase whose time-invariant
+subspace is exactly its vacuum line.
+\end{corollary}
+\begin{proof}
+Normalization, translation invariance and time reflection positivity
+were proved after \eqref{ex-phase-word}. The adjoint identity
+\(M(\theta w)=M(w)^*\) gives
+\(S_\chi(\theta w)=\overline{S_\chi(w)}\). For a word in arbitrary
+position, this operator identity follows by translating it into a slab,
+using its opposite word there and the slab adjoint identity, and then
+using placement independence of \(M\). Proposition~\ref{ex-phase-caps}
+supplies permutation symmetry, continuity and the separated zeroth-order
+bound. Lemma~\ref{ex-cap-proof} gives the boundedness under separating
+translations required in \eqref{ex-cap}. All hypotheses of the
+Hilbert-space and contraction construction are therefore met for each
+\(S_\chi\). Multilinearity, finite-dimensional raw-label spaces and
+continuity give the common countable dense span by
+Lemma~\ref{ex-phase-horizon}. The selection theorem now applies.
+\end{proof}
+
+\begin{lemma}[Smeared reflection positivity]\label{ex-phase-smeared-rp}
+For any correlation table with continuous distinct-point correlations
+and point reflection positivity, the reflection form is nonnegative
+on smooth compactly supported positive-time configuration tests.
+\end{lemma}
+\begin{proof}
+For one fixed label tuple, the map \(x\mapsto[w(x)]\) into the GNS
+space is norm-continuous on positive-time distinct-point configurations.
+Indeed its squared norm difference is a finite combination of continuous
+Gram entries, as in Lemma~\ref{ex-phase-horizon}. On the compact support
+of a test \(\varphi\), it is bounded and its image is a separable
+compact set. Hence the compactly supported continuous vector function
+\(\varphi(x)[w(x)]\) is Bochner integrable. Denote its integral by
+\(\Psi_\varphi\). For two such tests, continuity of the inner product
+and Fubini give
+\[
+ \langle\Psi_\varphi,\Psi_\psi\rangle
+ =\iint\overline{\varphi(x)}\psi(y)
+      S((\theta w(x))w(y))\,dx\,dy.
+\]
+The scalar integrand is absolutely integrable: on the product of the
+two compact supports the two reflected halves have a positive time gap,
+each half has internally distinct points, and the continuous kernel is
+bounded. Different arities and labels cause no change to this argument;
+each pair has its own compact product support. The empty word uses the
+one-point zero-dimensional configuration space. A finite combination of
+tests has reflection form \(\|\sum_i c_i\Psi_{\varphi_i}\|^2\ge0\).
+\end{proof}
+
+\begin{proposition}[Slab bounds survive character selection]
+\label{ex-phase-slab-bounds}
+Let \(A_{\chi,d}(w)\) denote insertion in the Hilbert space of a
+character table. Such an operator exists for every slab word, and
+\[
+ \|A_{\chi,d}(w)\|\le\|A_d(w)\|.
+\]
+In particular the uniform bound \eqref{ex-all-copy-bound} holds in every
+phase with the same constants. Its slab operators are smooth in operator
+norm and obey the same slot derivative identities.
+\end{proposition}
+\begin{proof}
+Let \(a=A_d(w)\) in the unselected Hilbert space and put
+\(c=\|a\|\). For a positive word \(v\), let
+\(v_n=(I_{w^\sharp}I_w)^nv\). The maps
+\(X(v):\mathcal H_0\to\mathcal H\) from Section~\ref{ex-phases}
+satisfy
+\[
+ X(I_wv)=aX(v),\qquad X(v_n)=(a^*a)^nX(v).
+\]
+The first equality is the slab concatenation law restricted to
+\(\mathcal H_0\); the second follows by induction and the adjoint
+law. Therefore \(\|X(v_n)\|\le c^{2n}\|X(v)\|\).
+For any \(D>c\), the character Gram identity gives
+\[
+ \|[v_n]_\chi\|^2
+ =\chi\bigl(M((\theta v_n)v_n)\bigr)
+ =\chi\bigl(X(v_n)^*X(v_n)\bigr)
+ \le\|X(v)\|^2D^{4n}.
+\]
+Here \(X(v_n)^*X(v_n)\in\mathcal A\) by its equality with the
+compressed whole-word operator, and the character bound applies in
+that algebra. Lemma~\ref{ex-train-bound} produces a phase insertion
+operator with norm at most \(D\). These operators are all identical:
+their action on every positive word is prescribed, and the word span is
+dense. Taking the infimum over \(D>c\) proves the bound \(c\), also
+when \(c=0\). The unselected uniform estimate therefore transfers.
+The character slot identities were proved in Proposition~\ref{ex-phase-caps};
+applying Proposition~\ref{ex-smooth-slabs} inside the phase Hilbert space
+proves its operator smoothness and derivative formulas.
+\end{proof}
+
+These results construct the time-axis Euclidean component theories from
+the unselected slab and differential estimates. Full orthogonal covariance
+of each character, and ordinary conjugation separately from reflected
+conjugation, still require the reflection-transport argument. Equality of
+null spaces requires the detector inputs in Section~\ref{ex-phase-fields}.

@@ -1,0 +1,331 @@
+% Quantitative receivers for the selected trace chart.
+\section{Weighted price control for the trace receiver}
+\label{sec:ex-lattice-trace-weighted-estimates}
+
+This section proves the scalar combination of the response estimates that
+feeds the rank-one receiver lemma
+\ref{lem:ex-lattice-trace-weighted-price}. It isolates the field decay,
+unweighted price convergence, and weighted price convergence that the
+finite-volume producer must furnish. It does not assume the receiver itself
+or suppress those three estimates into a single unnamed bound.
+
+\begin{lemma}[Weighted price from a rank-one approximate kernel]
+\label{lem:ex-lattice-trace-weighted-price}
+Let $E$ and $H$ be finite-dimensional real normed spaces. Let
+$f:E\to H$ and $U:H\to E$ be linear, with $fU=\mathrm{id}_H$ and
+$\ker f=\mathbb R x$ for some $x\ne0$. Suppose linear maps
+$v_i:E\to H$ and $u_i:H\to E$ satisfy
+\[
+ v_i\longrightarrow f,\qquad u_i\longrightarrow U,
+ \qquad v_i u_i=\mathrm{id}_H\quad\text{eventually}.
+\]
+Let $w_i\to x$, let $e_i\in\mathbb R$, and let $\rho:E\to\mathbb R$
+be a fixed linear functional. If
+\[
+ e_i v_i(w_i)\longrightarrow0\quad\text{in }H,
+ \qquad e_i\rho(w_i)\longrightarrow0,
+\]
+then there are linear functionals $\mu_i:H\to\mathbb R$ with uniformly
+bounded operator norms and
+\[
+ \bigl\|e_i(\mu_i v_i-\rho)\bigr\|_{E^*}\longrightarrow0.
+\]
+\end{lemma}
+\begin{proof}
+Choose a linear functional $\lambda:E\to\mathbb R$ with $\lambda(x)=1$,
+by extending $x$ to a basis. Define
+\[
+ A(y)=\lambda\bigl(y-Uf(y)\bigr).
+\]
+Since $f(y-Uf(y))=0$, the kernel assumption gives
+$y-Uf(y)=a x$ for some scalar $a$. Applying $\lambda$ shows $a=A(y)$,
+and therefore
+\[
+ y=Uf(y)+A(y)x. \tag{*}
+\]
+Set $V_i=u_i f+A\otimes w_i$, where
+$(A\otimes w_i)(y)=A(y)w_i$. The convergence of $u_i$ and $w_i$ implies
+$V_i-\mathrm{id}_E=(u_i-U)f+A\otimes(w_i-x)$, by (*). The right side
+tends to zero in operator norm. Once $\|V_i-\mathrm{id}_E\|<1$, the
+Neumann series gives an inverse and
+\[
+ \|V_i^{-1}-\mathrm{id}_E\|
+ \leq \frac{\|V_i-\mathrm{id}_E\|}{1-\|V_i-\mathrm{id}_E\|},
+\]
+so $V_i^{-1}\to\mathrm{id}_E$.
+
+Put $\mu_i=\rho u_i$. These functionals have bounded norms because
+$u_i\to U$. For $y\in E$, the exact identity $v_i u_i=\mathrm{id}_H$
+gives
+\begin{align*}
+ e_i(\mu_i v_i-\rho)(V_i y)
+ &=e_i\rho\bigl(u_i v_i(u_i f(y)+A(y)w_i)-u_i f(y)-A(y)w_i\bigr)\\
+ &=A(y)\,e_i\bigl(\rho(u_i v_i(w_i))-\rho(w_i)\bigr).
+\end{align*}
+The first term inside the final difference vanishes after weighting,
+because
+\[
+ e_i\rho(u_i v_i(w_i))=\rho(u_i(e_i v_i(w_i)))
+\]
+and $\rho u_i$ is uniformly bounded. The second term vanishes by hypothesis. Thus the
+left side tends to zero for every fixed $y$. In finite dimension,
+convergence on a basis implies operator-norm convergence, so
+$e_i(\mu_i v_i-\rho)V_i\to0$. Multiplication by
+$V_i^{-1}\to\mathrm{id}_E$ gives
+$e_i(\mu_i v_i-\rho)\to0$ in operator norm.
+\end{proof}
+
+Let $E$ be a finite-dimensional real normed space, $H$ a finite-dimensional
+real normed space, $s_i:E\to H$ linear maps, and $\rho:E\to\mathbb R$ a
+fixed linear functional. Let $x\in E$ satisfy $\rho(x)=0$. For each $i$,
+let $b_i\ge1$ with $b_i\to\infty$, let $q_i,r_i\in E$, and let
+$e_i\ge0$. Define
+\[
+ m_i=b_i^{-1}q_i-r_i.
+\]
+Assume
+\begin{align}
+ b_i^{-1}q_i&\longrightarrow0,
+ &\sup_i|\rho(q_i)|&<\infty,
+ &r_i&\longrightarrow -x,
+ \label{eq:ex-lattice-trace-response-limit}\\
+ e_i/b_i&\longrightarrow0,
+ &e_i\rho(r_i+x)&\longrightarrow0,
+ &b_i s_i(m_i)&\longrightarrow0\quad\text{in }H.
+ \label{eq:ex-lattice-trace-response-weighted}
+\end{align}
+
+\begin{lemma}[The medium has both weighted null limits]
+\label{lem:ex-lattice-trace-medium-receipts}
+Under \eqref{eq:ex-lattice-trace-response-limit}--
+\eqref{eq:ex-lattice-trace-response-weighted},
+\[
+ m_i\longrightarrow x,\qquad
+ e_i\rho(m_i)\longrightarrow0,\qquad
+ e_i s_i(m_i)\longrightarrow0.
+\]
+\end{lemma}
+\begin{proof}
+Since $b_i^{-1}q_i\to0$ and $r_i\to-x$,
+$m_i=b_i^{-1}q_i-r_i\to x$. Since $\rho(x)=0$,
+\[
+ e_i\rho(m_i)=(e_i/b_i)\rho(q_i)-e_i\rho(r_i+x).
+\]
+The first term tends to zero by boundedness of $\rho(q_i)$ and
+$e_i/b_i\to0$, and the second by hypothesis. Also $e_i/b_i\le1$
+eventually, so
+\[
+ \|e_i s_i(m_i)\|=(e_i/b_i)\|b_i s_i(m_i)\|
+ \le\|b_i s_i(m_i)\|\longrightarrow0.
+\]
+\end{proof}
+
+All sequences in the source application below are already reindexed by a
+selected level $k_i\to\infty$: $b_i$ is the
+arch scale at level $k_i$, $q_i$ and $r_i$ are the chosen and reference
+responses there, and $s_i$ is the chart at index $i$. This reindexing matters:
+the source does not assert the field-decay estimate at every unreindexed
+level. Write $p_i=\widehat\beta_{k_i}$ and
+$A_a(i)=\exp(a(\log\log p_i)^2)$. The source-specific weight is
+$e_i=A_{1/5}(i)$ at this selected level. The next subsection proves
+$e_i/b_i\to0$ and
+$e_i\le p_i$. The field input is supplied with weight $p_i$; since
+$b_i\le2p_i$, this gives $b_i s_i(m_i)\to0$ as required above.
+
+In the selected construction, $E$ is the real signed-equivariant space of
+grade-five coefficient arrays, $x$ is its nonzero equation-of-motion
+direction, and $\rho$ is the free scalar price. The vectors $q_i$ and
+$r_i$ are respectively the transported chosen response and the transported
+reference response. Their combination $m_i=b_i^{-1}q_i-r_i$ is the
+medium used to build a response functional. The scale $b_i$ is the positive
+arch scale along the selected chart. Boundedness of $\rho(q_i)$ follows from the unweighted Ward-price limit;
+the weighted estimate on $\rho(r_i+x)$ is the scale-resolved
+reference-price comparison; and the last estimate is the field decay of
+the medium.
+
+Combining Lemma~\ref{lem:ex-lattice-trace-medium-receipts} with
+Lemma~\ref{lem:ex-lattice-trace-weighted-price}, under the chart hypotheses
+$s_i\to f$, $u_i\to U$, $fU=\mathrm{id}$, $\ker f=\mathbb Rx$ with
+$x\ne0$, and $s_i u_i=\mathrm{id}$ eventually, gives bounded linear
+functionals $\mu_i:H\to\mathbb R$ and
+\[
+ \sup_i\|\mu_i\|<\infty,
+ \qquad
+ \bigl\|e_i(\mu_i s_i-\rho)\bigr\|_{E^*}\longrightarrow0.
+\]
+This is the response-price estimate used by the two-direction trace
+correction. The displayed deduction is complete; its chart and response
+estimates are the separate producer obligations listed in the audit.
+
+\subsection{The source rate and medium calculation}
+\label{subsec:ex-lattice-trace-source-rate}
+
+For the already selected levels $k_i\to\infty$, write
+$p_i=\widehat\beta_{k_i}$ for the running positive rate and $b_i$ for the
+arch scale at $k_i$. The scale comparison used by the construction is
+\begin{equation}
+ \frac12p_i\le b_i\le 2p_i,\qquad p_i\longrightarrow\infty.
+ \label{eq:ex-lattice-trace-arch-comparison}
+\end{equation}
+The age weights are $A_a(i)=\exp(a(\log\log p_i)^2)$. They satisfy
+\begin{equation}
+ A_a(i)A_c(i)=A_{a+c}(i),\qquad
+ A_a(i)\le p_i^\delta\quad\text{eventually for every fixed }a\in\mathbb R
+ \text{ and every }\delta>0.
+ \label{eq:ex-lattice-trace-age-rules}
+\end{equation}
+For the second relation, take logarithms. Since
+$(\log\log p)^2=o(\log p)$, eventually
+$|a|(\log\log p_i)^2\le\delta\log p_i$. Exponentiation gives the bound.
+Also $A_a(i)\to0$ directly for $a<0$, since
+$(\log\log p_i)^2\to\infty$.
+
+In particular, for $a\in\{1/6,1/5\}$,
+\begin{equation}
+ 0\le \frac{A_a(i)}{b_i}
+ \le 2p_i^{a-1}\longrightarrow0.
+ \label{eq:ex-lattice-trace-age-over-arch}
+\end{equation}
+The same argument gives $A_a(i)\le p_i$ eventually, so an estimate with
+weight $p_i$ implies the corresponding estimate with weight $A_{1/5}(i)$.
+
+Here is the scalar deduction from the response and reference receipts. Let
+$q_i$ be the transported chosen response and $w_i$ the transported reference response. The local response estimate and the
+separated flux limit have the form
+\begin{equation}
+ \|q_i\|\le C A_{1/6}(i),\qquad
+ \rho(q_i)\longrightarrow-\kappa,
+ \label{eq:ex-lattice-trace-response-inputs-source}
+\end{equation}
+while the reference chart and the reference-price comparison give
+\begin{equation}
+ w_i\longrightarrow -x,\qquad \rho(x)=0,\qquad
+ A_{1/5}(i)\rho(w_i)\longrightarrow0.
+ \label{eq:ex-lattice-trace-reference-inputs-source}
+\end{equation}
+Define $m_i=b_i^{-1}q_i-w_i$. Then
+\[
+ \|b_i^{-1}q_i\|\le 2C p_i^{-5/6}\longrightarrow0,
+\]
+so $m_i\to x$. Since $\rho(q_i)$ converges it is bounded, and
+\[
+ A_{1/5}(i)\rho(m_i)
+ =\frac{A_{1/5}(i)}{b_i}\rho(q_i)
+   -A_{1/5}(i)\rho(w_i)\longrightarrow0
+\]
+by \eqref{eq:ex-lattice-trace-age-over-arch} and
+\eqref{eq:ex-lattice-trace-reference-inputs-source}. Finally, if the local
+field estimate is $p_i\,s_i(m_i)\to0$, then
+$A_{1/5}(i)\le p_i$ gives $A_{1/5}(i)s_i(m_i)\to0$. These are exactly
+the three limits consumed by the rank-one approximate-kernel lemma; the
+remaining price-receiver construction is its finite-dimensional argument,
+not another analytic estimate.
+
+The source establishes the arch comparison from positivity of the arch
+scale and the two-sided scale control. It obtains the local response
+estimate from a priced local charge inequality, transfers it through the
+finite-volume separation limit, and gets the reference-price estimate from
+the calibrated reference chart. Those three analytic inputs are not proved
+by the scalar calculation above. Their declarations and proof boundaries are
+listed in the adjacent evidence record.
+
+\subsection{How the two weighted receipts are assembled}
+\label{subsec:ex-lattice-trace-weighted-assembly}
+
+The weighted price receipt for the medium uses only the response-price
+limit, the reference-price cancellation, and the age-rate comparison just
+proved. It is therefore useful to distinguish it from the stronger source
+estimate that supplies the weighted field image. If $\rho(q_i)\to-\kappa$,
+then $|\rho(q_i)|\le M$ eventually for some $M$; thus
+\[
+ \left|\frac{A_{1/5}(i)}{b_i}\rho(q_i)\right|
+ \le 2M p_i^{-4/5}\longrightarrow0.
+\]
+No weighted convergence rate for the response flux itself is needed here.
+The separate reference-chart estimate is the cancellation
+\[
+                         A_{1/5}(i)\rho(w_i)\to0.
+\] This identifies the precise roles of the two
+source limits and avoids conflating a field-size estimate with a price
+estimate.
+
+For the field image, the construction proves the stronger statement
+$p_i s_i(m_i)\to0$ in the finite-dimensional chart norm. The transfer to
+the weaker age weight is the monotonicity estimate
+$A_{1/5}(i)\le p_i$; there is no loss from summing over a basis because the
+chart is a fixed finite-dimensional operator. The bound
+$\|q_i\|=O(A_{1/6}(i))$ alone proves only $m_i\to x$ and does not imply this
+field estimate. The latter is supplied by the local pricing argument and
+its finite-volume passage.
+
+\subsection{Source route and exact remaining estimates}
+\label{subsec:ex-lattice-trace-weighted-route}
+
+The response-size and response-flux limits above follow from a concrete
+separation argument. Let $\mathcal T$ be the linear map from the transported
+finite-volume coefficient field to the grade-five response, and let
+$\lambda$ be the flux functional on the transported fields. On the limiting
+field, their compatibility is $\rho(\mathcal T v_i)=\lambda(v_i)$. At fixed
+level $i$, write $v_i(p)$ for the finite-volume transported field indexed by the
+configuration parameter $p$. The local charged-configuration estimate
+gives, on a set in the separation ultrafilter,
+\begin{align}
+ \|\mathcal T v_i(p)\|&\le C_TA_{1/6}(i),\\
+ |\lambda(v_i(p))+\kappa|&\le
+ C_1A_{-1/4}(i)+C_2A_{-1}(i)
+       +\frac{p_i^{-30}+p_i^{-100}}{12}.
+ \label{eq:ex-lattice-trace-finite-response-price}
+\end{align}
+Here $C_T,C_1,C_2$ are fixed constants from the finite-dimensional
+coefficient, response, and flux maps. The first line is the field-cost part
+of the estimate; the second is the flux-price part.
+The transported field converges along that ultrafilter to the infinite
+volume field $v_i$. Since $\mathcal T$ and $\lambda$ are continuous linear
+maps, the inequalities pass to their limits. Therefore
+$q_i=\mathcal T v_i$ satisfies the response norm bound and
+$\rho(q_i)=\lambda(v_i)\to-\kappa$. Every term on the right tends to zero by
+\eqref{eq:ex-lattice-trace-age-rules}, proving
+\eqref{eq:ex-lattice-trace-response-inputs-source}.
+
+In the source, the finite-volume inequalities in
+\eqref{eq:ex-lattice-trace-finite-response-price} are obtained by applying
+the local charged-configuration bound to each typical configuration and
+using the transported-field error estimate. The latter is bounded by
+$A_{-1/4}$; the local flux estimate contributes
+$4A_{-1}$ and the two inverse-power costs. Thus the ultrafilter passage is
+an ordinary continuity argument; all quantitative work lies in the local
+charge bound and its field-transport error estimate. Their exact source
+declarations are recorded in the evidence table.
+
+For the weighted reference-price estimate, let $c_i(p)$ be the calibrated
+finite-volume probe and $v_i(p)$ the transported field. The calibration
+gives $\rho(\mathcal T c_i(p))=\rho(-x)=0$, while the transport estimate
+gives $\|v_i(p)-c_i(p)\|\le C A_{-1/4}(i)$ on an ultrafilter-large set.
+Continuity therefore implies
+\[
+ |\rho(\mathcal T v_i(p))|
+ \le \|\rho\|\,\|\mathcal T\| C A_{-1/4}(i).
+\]
+Passing to the ultrafilter limit gives the same bound for $|\rho(w_i)|$.
+Multiplication by $A_{1/5}$ gives a quantity tending to zero because
+$A_{1/5}A_{-1/4}=A_{-1/20}\to0$. This uses only a rate for the difference
+between the transported field and the calibrated probe; it does not assert
+that the probe itself converges at that rate.
+
+The remaining chart-field input required by the general lemma is the exact
+limit
+\begin{equation}
+ p_i\,s_i(m_i)\longrightarrow0.
+ \label{eq:ex-lattice-trace-chart-field-decay}
+\end{equation}
+It is independent of the response-size and flux estimates above. To produce
+it, the source constructs finite-volume labels whose one-point expectations
+converge to the target core field, obtains local price bounds for each fixed
+grade-four test, and uses derivative and orientation compatibility to pass
+the bounds to a finite basis of the chart target. Finite dimensionality then
+converts those basis estimates to the displayed chart-norm limit. The
+finite-volume label existence, local price bounds, chart scaling identity,
+and compatibility identities are analytic inputs to this step; no claim
+that they follow from the scalar rate calculation is made here. Their exact
+declarations and the source's application route are recorded only in the
+evidence file.

@@ -1,0 +1,202 @@
+\section{One scale sequence for all the estimates}
+\label{sec:common-scale-selection}
+The estimates are indexed by finite stages, while the final theory
+requires arbitrarily high orders. We choose a slowly advancing
+stage map so that every fixed stage eventually appears, with enough
+time to satisfy its comparison estimates. The same choice also
+pays the numerical requests made after the block lengths have
+been selected.
+
+\subsection{A slowly advancing sequence with long constant intervals}
+Let $b_j,c_j$ be arbitrary nonnegative integers. Define recursively
+\[
+ A_0=0,\qquad k_j=c_j+2A_j+1,\qquad
+                       A_{j+1}=A_j+b_{j+1}+2k_j+1.
+\]
+The $A_j$ are strictly increasing and tend to infinity. Define
+$J_0(m)=j$ when $A_j\le m<A_{j+1}$. These half-open intervals
+partition the nonnegative integers. Then $J_0$ is nondecreasing,
+$J_0(0)=J_0(1)=0$, and
+\[
+ J_0(m+1)\le J_0(m)+1,\qquad J_0(m)\longrightarrow\infty.
+\]
+The increment bound holds because an integer step can cross at
+most one of the distinct integer endpoints. The divergence follows
+from $m\ge A_j\Rightarrow J_0(m)\ge j$.
+
+If $J_0(m+1)=j>0$, then $A_j\le m+1$ and
+$A_j\ge b_j+1$, so $b_j\le m$. Also $k_j\ge c_j$, and the
+whole interval
+\begin{equation}\label{eq:common-long-plateau}
+       k_j-\lfloor k_j/2\rfloor\le m
+                        \le k_j+\lfloor k_j/2\rfloor
+\end{equation}
+lies in $[A_j,A_{j+1})$: its lower endpoint is at least $A_j$
+because $k_j\ge2A_j+1$, and its upper endpoint is at most
+$2k_j<A_{j+1}$. Thus $J_0=j$ throughout this interval. This
+explicit recursion simultaneously postpones entry to every stage
+and gives that stage a prescribed long comparison interval.
+
+\subsection{Physical scales, entry requirements and periods}
+Let $L_j\ge3$ be the selected nondecreasing odd block lengths,
+and let $j_*$ be the first stage. Put
+\[
+ J(m)=j_*+J_0(m),\qquad s_0=0,\qquad
+ s_{m+1}=s_m+\log L_{J(m+1)},\qquad a_m=e^{-s_m}.
+\]
+Induction and monotonicity give
+\begin{equation}\label{eq:common-scale-brackets}
+         m\log3\le s_m\le m\log L_{J(m)}.
+\end{equation}
+In particular $a_m\downarrow0$, and $e^{s_m}$ is the integer
+product of the first $m$ block lengths.
+
+Choose an initial coupling $\beta_*>1$ large enough to meet the
+first-stage entry requirement and to ensure $t(x)\le1$ for
+$x\ge\beta_*$. This is possible since
+$t(x)=x^{-1/2}\exp((\log\log x)^2)\to0$. Set
+\[
+                 \widehat\beta_m=\beta_*+s_Gs_m,
+                       \qquad s_G>0.
+\]
+For each fixed stage $j>j_*$ there are only finitely many entry
+and comparison bounds. Require, at sufficiently large $s$,
+\begin{equation}\label{eq:common-stage-entries}
+ \begin{gathered}
+ d_j\le\beta_*+s_Gs,\qquad e_j(\beta_*)\le s,\qquad s>0,\\
+ \log L_j\le s/j,\qquad V_j(s)\le e^s.
+ \end{gathered}
+\end{equation}
+Here $d_j$ is the coupling entry, $e_j$ the scale entry, and the
+finite-volume requirement is
+\[
+ V_j(s)=h_j(1+B(s)+B_j^+(s))^{r_j}
+             +100(B(s)+1)+100((j+3)L_j+1),
+\]
+with nonnegative integers $h_j,r_j$ and
+\[
+ B(s)=\left\lceil\log^2(\beta_*+s_Gs)\right\rceil,
+ \qquad
+ B_j^+(s)=\left\lceil
+       \log^2(\beta_*+s_G(s+\log L_j))\right\rceil.
+\]
+All inequalities in \eqref{eq:common-stage-entries} hold eventually.
+The first four follow from positive linear growth in $s$; for the
+last, both ceiling functions are $O(s)$, so $V_j(s)$ is bounded
+by a fixed polynomial and hence is $o(e^s)$. Select $b_{j-j_*}$
+so that they hold whenever $s\ge b_{j-j_*}\log3$.
+The entry property of $J_0$ and the lower bound in
+\eqref{eq:common-scale-brackets} now give all these requirements
+at every step with $J(m+1)>j_*$.
+
+For the comparison interval at stage $j$, suppose its required
+window $w_j(s)$ is nonnegative and integer valued and $w_j(s)/s\to0$, and its
+minimum scale is $r_j^0$. Choose $c_{j-j_*}$ so large that
+\[
+ r_j^0\le s,\qquad w_j(s)\le\lfloor k/2\rfloor
+\]
+whenever $k\ge c_{j-j_*}$ and
+$k\log3\le s\le k\log L_j$. Such a choice exists because
+eventually $w_j(s)/s\le(2\log L_j)^{-1}$.
+At the center $k=k_{j-j_*}$ of
+\eqref{eq:common-long-plateau}, \eqref{eq:common-scale-brackets}
+gives precisely these scale bounds. Thus the whole requested
+window around $k$ stays at stage $j$.
+
+Only finitely many mesh steps remain in the first plateau.
+Choose an integer $M$ at least their finitely many values
+$V_{j_*}(s_m)$ and at least the required minimum physical period.
+Use periods
+\[
+                       P_p=4(M+p+1).
+\]
+The lattice side at level $m$ is $P_p e^{s_m}$. On the first
+plateau it pays $V_{j_*}(s_m)$ by the choice of $M$. At every
+later step it pays $V_{J(m+1)}(s_m)$ because that quantity is at
+most $e^{s_m}$. The three summands of $V_j$ pay respectively the
+specified volume, coarse-cover and fine-patch requirements.
+
+The periods increase strictly and have arbitrarily late multiples
+of every positive integer $c$. Indeed, given $z$, take
+$p=c(M+z+1)-(M+1)$. Then $p\ge z$ and
+$P_p=4c(M+z+1)$. Finally
+\[
+ 0\le\frac{\log L_{J(m+1)}}{s_m}\le\frac1{J(m+1)}
+                           \longrightarrow0
+\]
+after the first plateau, by \eqref{eq:common-stage-entries}.
+Thus the relative logarithmic mesh increment tends to zero as
+required. The stage profiles, block lengths and kernel have all
+been retained; the new choices are their scheduling and periods.
+
+\subsection{Countably many requests on that same sequence}
+Let $F_{n,i}\in\mathbb R$ be a countable family of numerical
+requests selected before constructing the sequence. Define
+\[
+       E_j=1+\sum_{n=0}^j\sum_{i=0}^j|F_{n,i}|.
+\]
+Raise $d_j$ to at least $\exp(\exp E_j)$ before applying the
+preceding construction. Since
+$d_{J(m+1)}\le\widehat\beta_m$, monotonicity of the logarithm
+twice gives
+\[
+                 E_{J(m+1)}\le\log\log\widehat\beta_m.
+\]
+For fixed $n$, the divergence of $J$ supplies a first index after
+which $n\le J(m+1)$. At every such $m$ and every $i\le J(m+1)$,
+\begin{equation}\label{eq:common-countable-payment}
+ |F_{n,i}|\le E_{J(m+1)}
+                     \le1+\log\log\widehat\beta_m.
+\end{equation}
+The first index depends on $n$. We have not required that a finite
+stage pay infinitely many independent requests.
+
+There is also an all-stage form. For a prescribed real sequence
+$H_j$, replace $d_j$ by $\max(d_j,H_j)$. Then
+\begin{equation}\label{eq:common-allstage-payment}
+                  H_{J(m+1)}\le\widehat\beta_m
+\end{equation}
+for every $m$, including zero. Both conclusions persist on every
+realization paying enlarged entry thresholds, because their proofs
+use only a lower bound on the threshold actually paid. Combining
+finitely many such purchases before choosing the realization
+therefore retains every earlier conclusion.
+
+\subsection{Selecting the lengths before their numerical costs}
+The ordering of choices is essential. First fix the stage profiles,
+the original kernel, the row-price families and their secondary
+widths. Their analytic suppliers give integer block-size floors.
+Take the pointwise maximum of the original floor, the flat and
+dual support floors, the curvature floor, the comparison floors,
+and the treasury and period floors. A nondecreasing odd sequence
+$L_j$ above these floors exists: choose each $L_j$ above the
+current finite maximum and above $L_{j-1}$. These choices precede
+any numerical request that depends on $L_j$.
+
+With the lengths now fixed, form the actual post-length numerical
+costs. If two constructions require $H_j^{(1)}$ and $H_j^{(2)}$,
+pay $H_j=\max(H_j^{(1)},H_j^{(2)})$ by
+\eqref{eq:common-allstage-payment}. Their countable refinements,
+as well as the previously selected inverse-width requests, are
+paid by \eqref{eq:common-countable-payment}. Add the nonlinear
+entry requirements of Section~\ref{sec:nonlinear-payment-selection}
+and every other selected finite-stage threshold before constructing
+$J$ and $\widehat\beta$. Every realization paying these enlarged
+thresholds preserves all the earlier purchases by the preceding
+monotonicity argument.
+
+Every step then uses the original length $L_{J(m+1)}$, so its
+actual finite patch is exactly the patch for which the post-length
+cost was computed. In particular a bound of the form
+$e^{H_j}\le\widehat\beta_m$ yields
+$H_j\le\log\widehat\beta_m$ on that patch; no estimate for a
+different block can be substituted. A maximum floor gives each
+of its component floors, and a maximum post-length cost gives
+each component cost. Applying the native analytic suppliers to
+these inequalities therefore supplies their conclusions on the
+same original levels and quadratic horizon.
+
+This proves the scheduling and numerical selection step. The
+analytic hypotheses of those suppliers, and the sublinear window
+bounds used above, are still the specific estimates established
+in their own sections. Numerical selection does not replace them.

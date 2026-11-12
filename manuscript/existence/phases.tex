@@ -1,0 +1,285 @@
+\section{The algebra of time-invariant observables}
+\label{ex-phases}
+
+The Hilbert space constructed from an unselected correlation table need not
+have a one-dimensional vacuum space. We first identify the whole subspace
+left fixed by time evolution. Compressed slab observables on this subspace
+will then distinguish its phases. Throughout this section the hypotheses
+of Theorem~\ref{ex-euclidean-semigroup} remain in force. We write
+\(\mathcal H=\mathcal H_E\) and \(\Omega=\Omega_E\). In this section \(e_0\) denotes the chosen time axis and \(x_0\) its coordinate; this local notation does not change the earlier coordinate ordering.
+
+\begin{proposition}[The large-time projection]\label{ex-ground-projection}
+The subspace
+\[
+ \mathcal H_0=\{v\in\mathcal H:E_tv=v\text{ for every }t\ge0\}
+\]
+is closed. If \(P_0\) denotes its orthogonal projection, then
+\(E_tv\to P_0v\) in norm as \(t\to\infty\), for every \(v\in\mathcal H\).
+\end{proposition}
+\begin{proof}
+Each \(E_t-I\) is continuous, so its kernel is closed; their intersection
+is \(\mathcal H_0\). Fix \(v\). Contractivity and the semigroup law show
+that \(a(t)=\|E_tv\|^2\) decreases to its nonnegative infimum \(\ell\).
+Self-adjointness gives, for \(s\le t\),
+\[
+ \langle E_sv,E_tv\rangle
+ =\langle v,E_{s+t}v\rangle
+ =\|E_{(s+t)/2}v\|^2.
+\]
+The scalar on the right is real. Consequently
+\[
+ \|E_sv-E_tv\|^2
+ =a(s)+a(t)-2a((s+t)/2)\le a(s)-a(t)\le a(s)-\ell.
+\]
+For large \(s,t\) this tends to zero, after exchanging \(s,t\) if
+necessary. Completeness gives a norm limit \(v_0\). For fixed \(r\ge0\),
+continuity of \(E_r\) and \(E_rE_t=E_{r+t}\) give \(E_rv_0=v_0\).
+For \(z\in\mathcal H_0\), self-adjointness gives
+\(\langle E_tv,z\rangle=\langle v,E_tz\rangle=\langle v,z\rangle\).
+Passing to the limit shows \(v-v_0\perp\mathcal H_0\). These two
+properties characterize the orthogonal projection, so \(v_0=P_0v\).
+\end{proof}
+
+We next explain the analytic estimate needed to insert an entire word as a
+bounded operator. A word \(w\) lies in a slab of width \(d>0\) if all its
+points are distinct and have time coordinates in \((0,d)\). For a positive
+word \(v\), put
+\[
+ I_wv=w\,\tau_dv,\qquad w^\sharp=\tau_d\theta w.
+\]
+Both are positive words, and \(w^\sharp\) lies in the same slab. Let
+\(I_w\) also denote the linear map on finite formal word sums. Translation
+invariance and reflection give
+\begin{equation}\label{ex-slab-formal-adjoint}
+ \langle[I_wc],[b]\rangle=\langle[c],[I_{w^\sharp}b]\rangle.
+\end{equation}
+Indeed, translating the configuration
+\(\theta(w\tau_dv)\,u=(\tau_{-d}\theta v)(\theta w)u\)
+by \(d\) gives \((\theta v)(\tau_d\theta w)(\tau_du)\), the
+configuration in the right-hand pairing. This proves the identity on
+words and then on finite sums.
+
+\begin{lemma}[From repeated insertion to a bounded operator]
+\label{ex-train-bound}
+Fix a slab word \(w\) and \(D>0\). Suppose that for every positive word
+\(v\) there is \(B_v\ge0\) such that
+\begin{equation}\label{ex-train-input}
+ \bigl\|[(I_{w^\sharp}I_w)^nv]\bigr\|^2\le B_vD^{4n}
+ \quad(n=0,1,2,\ldots).
+\end{equation}
+There is a unique bounded operator \(A_d(w)\) on \(\mathcal H\) with
+\(A_d(w)[v]=[w\tau_dv]\); it satisfies \(\|A_d(w)\|\le D\).
+\end{lemma}
+\begin{proof}
+Write \(T=I_{w^\sharp}I_w\) on formal sums and \(Xc=[c]\).
+The triangle inequality and \eqref{ex-train-input} imply, for
+\(c=\sum_vc_vv\),
+\[
+ \|XT^nc\|\le C_cD^{2n},\qquad C_c=\sum_v|c_v|\sqrt{B_v}<\infty.
+\]
+Equation~\eqref{ex-slab-formal-adjoint} shows that \(T\) is symmetric
+for the possibly degenerate form induced by \(X\). Repeatedly moving
+\(T\) across the inner product therefore gives
+\(\|XT^nc\|^2=\langle Xc,XT^{2n}c\rangle\).
+Put \(b_n=D^{-2n}\|XT^nc\|\) and \(M=\sup_{n\ge0}b_n<\infty\).
+Cauchy--Schwarz gives \(b_n^2\le\|Xc\|b_{2n}\le\|Xc\|M\).
+Taking the supremum yields \(M^2\le\|Xc\|M\), hence \(M\le\|Xc\|\).
+Finally,
+\[
+ \|XI_wc\|^2=|\langle Xc,XTc\rangle|
+ \le\|Xc\|\|XTc\|\le D^2\|Xc\|^2.
+\]
+Thus insertion respects the null space and induces a bounded operator on
+the quotient. Its unique extension to the completion has the asserted
+norm and action. Uniqueness follows from density of the word span.
+\end{proof}
+
+The estimate in \eqref{ex-train-input} concerns arbitrarily long repeated
+words; the constants \(B_v\) may depend on the exterior word. Bounds for
+each fixed correlation order alone do not supply this estimate. Its
+production from the lattice construction remains an input at this stage.
+Assume henceforth that it holds, with some \(D\), for every slab word.
+The resulting operators obey
+\begin{align}
+ A_d(\varnothing)&=E_d,\label{ex-slab-laws}\\
+ A_{d+e}(w\tau_dv)&=A_d(w)A_e(v),\notag\\
+ A_d(w)^*&=A_d(w^\sharp),\notag\\
+ A_{d+r}(w)&=A_d(w)E_r,\qquad
+ A_{r+d}(\tau_rw)=E_rA_d(w).\notag
+\end{align}
+Here each word lies in its indicated slab and \(r\ge0\).
+The first, second and last two identities follow by applying both sides
+to a positive word and concatenating and translating its entries.
+The adjoint identity follows from \eqref{ex-slab-formal-adjoint}.
+All extend from the dense word span by boundedness. Spatial translation
+also gives
+\(U_yA_d(w)=A_d(w+y)U_y\), by the same calculation on words.
+
+\subsection{Spatial invariance of the ground space}
+Assume now full orthogonal covariance of the correlation table: there is
+an action on quotient field labels such that, for every \(K\in O(4)\) and every
+distinct-point word \(w\), the jointly rotated word \(Kw\) satisfies
+\(S(Kw)=S(w)\). Rotation includes this label action in what follows. To evaluate a rotated word, project each raw label to its field class, rotate that class, and choose a raw representative. Correlations are independent of that choice. No group action on the chosen raw representatives is assumed.
+This is stronger than covariance under signed coordinate permutations.
+
+\begin{lemma}\label{ex-ground-spatial}
+Every \(v\in\mathcal H_0\) is fixed by all spatial translations.
+\end{lemma}
+\begin{proof}
+For two distinct-point words \(p,q\), set
+\(F_{p,q}(x)=S(p(q+x))\) whenever the two clusters are disjoint.
+Translate \(\theta p\) and \(q\) separately far enough in positive
+time to obtain positive words \(v,w\). If the translation amounts are
+\(r,s\), then, whenever \(x_0\ge r+s\), translation invariance gives
+\begin{equation}\label{ex-separated-pair}
+ F_{p,q}(x)=\langle[v],U_{x_\perp}E_{x_0-r-s}[w]\rangle,
+ \qquad x_\perp=x-x_0e_0.
+\end{equation}
+The time separation also ensures that the two clusters are disjoint.
+For any fixed \(h\in\mathbb R\) and any path \(x(t)\) with
+\(x_0(t)\to\infty\), it follows that
+\begin{equation}\label{ex-normal-shift}
+ F_{p,q}(x(t)+he_0)-F_{p,q}(x(t))\longrightarrow0.
+\end{equation}
+Indeed, the difference of the two heat-evolved vectors in
+\eqref{ex-separated-pair} tends to zero by
+Proposition~\ref{ex-ground-projection}; the spatial unitary has norm one,
+even when \(x_\perp(t)\) varies without bound.
+
+If \(b_0>0\), choose an orthogonal map \(K\) taking
+\(b\) to \(|b|e_0\). Orthogonality implies
+\((Ke_0)_0=b_0/|b|>0\). Rotate both clusters and apply
+\eqref{ex-normal-shift} along the path \(tKe_0\), whose time
+coordinate tends to infinity. Covariance gives
+\[
+ F_{p,q}(te_0+b)-F_{p,q}(te_0)\longrightarrow0.
+\]
+For a spatial \(y\), take \(b=y+e_0\) and subtract
+\eqref{ex-normal-shift} along \(x(t)=te_0+y\), with \(h=1\).
+We obtain \(F_{p,q}(te_0+y)-F_{p,q}(te_0)\to0\).
+Apply this with \(p=\theta v,q=w\) for positive words. The two
+correlations are \(\langle[v],U_yE_t[w]\rangle\) and
+\(\langle[v],E_t[w]\rangle\). Their limits show
+\(\langle[v],(U_y-I)P_0[w]\rangle=0\).
+Density of word vectors first gives \((U_y-I)P_0[w]=0\) and then
+\((U_y-I)P_0=0\). Since \(P_0\) is the identity on \(\mathcal H_0\),
+the conclusion follows.
+\end{proof}
+
+\subsection{Compression and separation of clusters}
+For a slab word define
+\(M(w)=P_0A_d(w)|_{\mathcal H_0}\). The width is immaterial:
+increasing it appends an \(E_r\), which is the identity on
+\(\mathcal H_0\); two widths can be compared with their sum.
+Likewise a positive time shift inserts \(E_r\) on the left, and
+\(P_0E_r=P_0\). Spatial shifts give the same operator by
+Lemma~\ref{ex-ground-spatial} and spatial covariance. For a negative
+time shift, reverse the comparison. Every finite distinct-point word can
+be translated into a slab. Thus \(M(w)\) is well-defined for every such
+word, independent of both the placement and width, and
+\begin{equation}\label{ex-compression-values}
+ M(w+b)=M(w),\qquad
+ \langle\Omega,M(w)\Omega\rangle=S(w).
+\end{equation}
+The latter follows from \(A_d(w)\Omega=[w]\) after a slab placement,
+\(P_0\Omega=\Omega\), and translation invariance.
+
+For a positive word also put \(X(w)=A_d(w)|_{\mathcal H_0}\), as a map
+into \(\mathcal H\). Width independence follows as above, and
+\[
+ X(w)\Omega=[w],\qquad M(w)\Omega=P_0[w],\qquad
+ M((\theta v)w)=X(v)^*X(w).
+\]
+For the last identity, place the reflected word into the slab of width
+\(d\), append the word \(w\) in a subsequent slab of width \(e\),
+and use the concatenation and adjoint identities in
+\eqref{ex-slab-laws}. Compression then gives exactly the displayed
+product. In particular \(M(\theta v)=M(v)^*\). This also shows that
+the generators are closed under adjoints, after translation into slabs.
+
+\begin{lemma}[Separated-cluster limit]\label{ex-cluster-train}
+Let \(w_1,\ldots,w_m\) be words with distinct points. Suppose
+\(b_1(n),\ldots,b_m(n)\in\mathbb R^4\) satisfy
+\((b_{j+1}(n)-b_j(n))_0\to\infty\) for \(j<m\). Then
+\[
+ S((w_1+b_1(n))\cdots(w_m+b_m(n)))
+ \longrightarrow\langle\Omega,M(w_1)\cdots M(w_m)\Omega\rangle.
+\]
+The concatenated words have distinct points for all sufficiently large \(n\).
+\end{lemma}
+\begin{proof}
+Fixed translations of individual words, compensated in their \(b_j\),
+preserve the assertion and the gap condition. Make all words positive.
+We prove a stronger vector limit by induction from the last cluster:
+after translating the concatenation so that its first cluster has its
+original position, its vector tends to
+\(X(w_1)M(w_2)\cdots M(w_m)\Omega\).
+For one cluster this is \(X(w_1)\Omega=[w_1]\).
+
+Choose a slab width \(d\) for \(w_1\). Write the displacement of the
+second cluster relative to the first as \(g_ne_0+y_n\), with \(y_n\)
+spatial. Eventually \(g_n>d\). If \(z_n\) is the positive word vector
+of the remaining clusters relative to the second, the whole vector is
+\(A_d(w_1)U_{y_n}E_{g_n-d}z_n\).
+By induction \(z_n\to z=X(w_2)M(w_3)\cdots M(w_m)\Omega\).
+The estimates
+\[
+ \|U_{y_n}E_{g_n-d}z_n-P_0z\|
+ \le\|z_n-z\|+\|E_{g_n-d}z-P_0z\|\longrightarrow0
+\]
+use contraction, unitarity and \(U_{y_n}P_0z=P_0z\). Boundedness of
+\(A_d(w_1)\) proves the vector limit. The same induction shows positivity
+and distinctness eventually, since the successive time gaps tend to
+infinity. Pairing the vector limit with \(\Omega\), and using translation
+invariance and \(P_0\Omega=\Omega\), proves the scalar assertion.
+The empty list has correlation one and needs no induction.
+\end{proof}
+
+\begin{proposition}[Commutativity]\label{ex-ground-commutative}
+The norm-closed unital star algebra \(\mathcal A\subset B(\mathcal H_0)\)
+generated by the \(M(w)\) is commutative, and \(\Omega\) is cyclic and
+separating for \(\mathcal A\).
+\end{proposition}
+\begin{proof}
+Write \(F(w_1,\ldots,w_m)=\langle\Omega,\prod_jM(w_j)\Omega\rangle\),
+in the indicated order. If \(b_0>0\) and \((Kb)_0>0\), place the
+clusters at \(jnb\), rotate the configuration by \(K\), and use
+Lemma~\ref{ex-cluster-train} before and after rotation. Covariance gives
+\(F(w_1,\ldots,w_m)=F(Kw_1,\ldots,Kw_m)\).
+
+To exchange the middle two of four words, use one spatial axis \(e_1\)
+and displace the four clusters by
+\[
+ 0,\quad n(e_0+2e_1),\quad n(2e_0+e_1),\quad3n(e_0+e_1).
+\]
+They are ordered by time as written. Interchange \(e_0,e_1\) by an
+orthogonal map \(K\). The resulting time order is first, third, second,
+fourth. Permutation symmetry of distinct-point correlations and the
+cluster limit give
+\(F(x,y,w,z)=F(Kx,Kw,Ky,Kz)\).
+Use the preceding rotation identity with \(b=e_0+e_1\), fixed by \(K\),
+to conclude \(F(x,y,w,z)=F(x,w,y,z)\).
+
+The vectors \(M(v)\Omega=P_0[v]\), for positive words \(v\), have
+dense linear span in \(\mathcal H_0\): approximate any vector in
+\(\mathcal H_0\) by word sums in \(\mathcal H\) and apply \(P_0\).
+For two generators, their commutator has zero matrix elements between
+these dense vectors, since
+\[
+ \langle M(u)\Omega,[M(w),M(z)]M(v)\Omega\rangle
+ =F(\theta u,w,z,v)-F(\theta u,z,w,v)=0.
+\]
+The commutator is bounded, hence is zero. The generators and their
+adjoints therefore commute; polynomial approximation and continuity of
+multiplication show that their norm closure is commutative. The same
+density proves cyclicity. If \(A\Omega=0\), then
+\(AB\Omega=BA\Omega=0\) for every \(B\in\mathcal A\).
+Cyclicity and boundedness give \(A=0\), which is separation.
+\end{proof}
+
+This proves commutativity from the displayed slab and covariance inputs.
+The next construction must establish norm separability of \(\mathcal A\),
+represent the vacuum state on its compact character space, and show that
+each resulting whole-word correlation table retains the required
+regularity, null spaces and field identities. Those conclusions are not
+part of Proposition~\ref{ex-ground-commutative}.

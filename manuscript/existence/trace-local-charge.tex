@@ -1,0 +1,93 @@
+% Local charged-configuration estimate used in the trace response bound.
+\section{The local charged-configuration estimate}
+\label{sec:ex-lattice-trace-local-charge}
+
+We isolate the finite-volume algebra that turns a charged configuration
+into a bounded field and a priced response. This is the local step used
+before the separation-limit passage. Its quantitative premises are stated
+as component bounds, so the proof does not hide the estimate inside a
+single named receipt.
+
+For $t>e$, put
+\[
+ W_a(t)=\exp\bigl(a(\log\log t)^2\bigr),
+ \qquad c(t)=t^{-30}.
+\]
+Then $W_a(t)W_b(t)=W_{a+b}(t)$, $W_{-1}(t)\to0$, and $c(t)\to0$ as
+$t\to\infty$.
+
+Let $I$ be a finite set of lattice directions, $Y$ a finite-dimensional
+real normed coefficient space, and let $\ell:Y^I\to\mathbb R$ be a
+continuous linear flux functional. Let $s:Y^I\to[0,\infty)$ be the source coefficient size, satisfying
+$\|A\|_\infty\le s(A)$ for every coefficient array $A$. Write
+$\sigma=\theta^{-2}$ with $\theta>0$ for the local normalization. The
+nonlinear local coefficient map has already been evaluated in the arrays
+$B',K',D'\in Y^I$; these are outputs of that local construction, not images
+under the core linear projection. Let $X,W,E,L\in Y^I$. Assume the exact
+charged-configuration decomposition
+\begin{equation}
+ X=W+B'-K'+D'+E+L,
+ \label{eq:ex-lattice-charge-decomposition}
+\end{equation}
+and the following local coefficient and flux receipts at scale $t$:
+\begin{align}
+ s(X)&\le\theta^2 W_{1/6}(t),
+ \label{eq:ex-lattice-charge-size-input}\\
+ \ell(\sigma K')&=0,
+ &\ell(\sigma B')&=h/12,
+ &|h-m|&\le c(t),
+ \label{eq:ex-lattice-charge-price-identities}\\
+ s(W)&\le\theta^2 W_{-1}(t),
+ &s(D')&\le\theta^2 W_{-1}(t),
+ \label{eq:ex-lattice-charge-error-one}\\
+ s(E)&\le\theta^2 W_{-1}(t),
+ &s(L)&\le\theta^2 W_{-1}(t).
+ \label{eq:ex-lattice-charge-error-two}
+\end{align}
+Here $h$ is the finite-volume charge extracted from the distinguished
+component, and $m$ is its target price. These are coefficient-size receipts
+after the local map has been evaluated. No norm contraction of the nonlinear
+map is assumed.
+
+\begin{proposition}[Local field and flux bounds]
+\label{prop:ex-lattice-charge-bounds}
+Under the displayed assumptions,
+\[
+ \|\sigma X\|_\infty\le W_{1/6}(t),
+ \qquad
+ \left|\ell(\sigma X)-\frac m{12}\right|
+ \le4\|\ell\|W_{-1}(t)+\frac{c(t)}{12}.
+\]
+\end{proposition}
+\begin{proof}
+The field bound follows from the size domination and
+\eqref{eq:ex-lattice-charge-size-input}:
+\[
+ \|\sigma X\|_\infty\le\sigma s(X)=\theta^{-2}s(X)\le W_{1/6}(t).
+\]
+For the price, apply $\ell$ to the decomposition in
+\eqref{eq:ex-lattice-charge-decomposition}. The $K'$ term vanishes and the
+$B'$ term is $h/12$. Therefore
+\[
+ \ell(\sigma X)-\frac m{12}
+ =\ell(\sigma W)+\ell(\sigma D')
+   +\ell(\sigma E)+\ell(\sigma L)+\frac{h-m}{12}.
+\]
+For any array $A$, continuity gives
+$|\ell(\sigma A)|\le\|\ell\|\sigma\|A\|_\infty\le\|\ell\|\theta^{-2}s(A)$. The triangle
+inequality and
+\eqref{eq:ex-lattice-charge-price-identities}--
+\eqref{eq:ex-lattice-charge-error-two} give the claimed bound. There are
+four error terms, so the coefficient is exactly four; no direction-count
+factor is introduced because $s$ bounds the full array norm.
+\end{proof}
+
+In the selected trace response, $m/12$ is the target flux $-\kappa$.
+Consequently the local bound proves a response-size estimate tending to
+zero after division by the arch scale and an unweighted flux limit, provided
+$t\to\infty$ along the selected configurations and the displayed component
+receipts hold. The remaining passage from typical finite-volume
+configurations to their separated limit is an ordinary continuity
+argument, as recorded in the weighted-estimate section. The component
+receipts themselves are separate finite-volume producer statements; this
+proposition does not prove them from the charged-configuration hypotheses.

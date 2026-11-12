@@ -1,0 +1,158 @@
+\section{Kernel sums and the bounded guide fields}
+\label{sec:seed-guides}
+The energy argument uses kernels after parallel transport, truncation
+and periodization. We derive their row and column bounds from the
+cover estimates, and then bound the clipped guide fields. The inputs
+are the tower strip bounds and the exponentially summable path
+expansions at the two adjacent stages. The passage to the physical
+kernels does not require a small-field assumption.
+
+\subsection{Counting types before periodization}
+Let $K_{ab}(z)$ be a scalar cover kernel, with finite type sets
+$\mathcal A,\mathcal B$, satisfying, for every fixed pair of types,
+\[
+ \sum_{z\in\mathbb Z^4}|K_{ab}(z)|e^{\eta|z|}\le C,
+ \qquad \eta\ge0.
+\]
+A physical entry from $(x,a)$ to $(y,b)$ is a sum of selected terms
+$K_{ab}(z)\operatorname{Ad}(U_{\gamma_{x,z}})$ with
+$y=x+\operatorname{wrap}(z)$. Adjoint transport is an isometry of the
+real colour space, including along winding paths, so the operator
+norm of each term is at most $|K_{ab}(z)|$. Absolute convergence
+therefore permits the following rearrangements:
+\begin{equation}\label{eq:guide-periodic-rows}
+ \sup_{x,a}\sum_{y,b}\|F_{(x,a),(y,b)}\|\le|\mathcal B|C,
+ \qquad
+ \sup_{y,b}\sum_{x,a}\|F_{(x,a),(y,b)}\|\le|\mathcal A|C.
+\end{equation}
+For the first, fix $z,b$: exactly one $y$ can contribute. For the
+second, fix $z,a$: exactly one $x=y-\operatorname{wrap}(z)$ can
+contribute. Dropping the truncation only increases the absolute sum.
+Thus different lifts of one periodic displacement are all paid.
+
+The wide kernel $\Phi$ has fine doubled plaquette rows and
+coarse doubled plaquette columns. In coarse coordinates a fine type
+includes its residue in the block. There are $L^4$ residues. Its
+fixed-type strip cost is $C/L^2$, so
+\eqref{eq:guide-periodic-rows} gives, after absorbing only fixed
+orientation counts,
+\begin{equation}\label{eq:guide-allowance}
+ \begin{array}{c|cc}
+ &\text{row sum}&\text{column sum}\\ \hline
+ \Phi&a/L^2&aL^2\\
+ \Phi'&a&a\\
+ N&a&a
+ \end{array}
+\end{equation}
+with $a$ fixed before $L$. Here $\Phi'$ has predictor-bond rows and coarse doubled-plaquette
+columns; $N$ has auxiliary coarse rows and the same columns. Their fixed-type strip costs are bounded
+independently of $L$. The tower estimates provide precisely these
+three strip inputs; no residue factor is present in the narrow two
+kernels. In particular the column bound for $\Phi$ cannot be replaced
+by its row bound.
+
+All three kernels are cut at path length at most
+$R_0=\lfloor B/100000\rfloor$ in fine units. The endpoint of the
+wide path beginning at a fine site of residue $r$ and ending at
+coarse displacement $z$ is the embedded coarse point at parent plus
+$z$: this is the path from $r$ to $Lz$ on the cover, reduced modulo
+the fine period. The parent changes by at most one coarse step on
+every fine bond. For the narrow paths the ordinary endpoint bound
+applies. Thus every nonzero entry has anchor separation at most
+$B/50$ in coarse units. This is an incidence assertion for these
+kernels, and does not bound all auxiliary reads of a larger operation.
+
+\subsection{Absolute path expansions and their transposes}
+At one stage write the path expansion of a plaquette field in the form
+\[
+ \ell_p(U)=\sum_{i\ge0}c_{a,i}\,
+       \operatorname{Ad}(U_{\gamma_{p,i}})F(U_{p+s_{a,i}}),
+ \qquad p=(x,a).
+\]
+The label $i$ includes the target plaquette orientation and the
+transport path. Its length $\ell_{a,i}$ bounds the distance from $x$
+to the target anchor. The stage input is
+\begin{equation}\label{eq:guide-path-input}
+ \sum_i|c_{a,i}|e^{\sigma\ell_{a,i}}\le P,
+ \qquad \sigma>0,\quad P>0,
+\end{equation}
+uniformly in $a$, with clipping relaxation radius $r_0>0$ satisfying
+$\sigma r_0\ge1$. Both stages have such bounds, with constants fixed
+before the step side $L$. We retain the full label set when different
+labels land at the same periodic plaquette.
+
+Keep terms with $d\ell_{a,i}\le R_0$, where $d=1$ on the fine stage
+and $d=L$ on the coarse stage. Let $\ell_p^{\rm cut}$ be their sum
+and let
+\[
+ k_{pu}=\sum_{\substack{i:d\ell_{a,i}\le R_0\\p+s_{a,i}=u}}
+                  |c_{a,i}|.
+\]
+Absolute convergence follows from \eqref{eq:guide-path-input}.
+The curvature bound $\|F(U_u)\|\le r(U_u)$ gives
+\begin{equation}\label{eq:guide-path-sums}
+ \|\ell_p^{\rm cut}(U)\|\le\sum_u k_{pu}r(U_u),\quad
+ \sum_u k_{pu}\le P,\quad \sum_p k_{pu}\le N_pP.
+\end{equation}
+For the column bound, fix an input orientation $a$ and a label $i$.
+Translation by its offset is a permutation of the periodic sites,
+so at most one anchor can land at the specified $u$. Sum first over
+labels and then over the $N_p$ possible input orientations. This
+argument also explains why merging repeated targets before taking
+absolute values would not justify the bound.
+
+A retained site satisfies
+$r(U_u)\le t\exp\{d(p,u)/r_0\}$ for every target $u$. Since
+$d(p,u)\le\ell_{a,i}$ and $1/r_0\le\sigma$,
+\eqref{eq:guide-path-input} implies
+\begin{equation}\label{eq:guide-kept}
+ \|\ell_p^{\rm cut}(U)\|\le Pt.
+\end{equation}
+The direct component is $\sqrt{a_0}F(U_p)$, where $a_0>0$ is the
+stage quadratic coefficient. Its clipped version multiplies it by
+$\min\{1,t/r(U_p)\}$, with multiplier $1$ at zero. Its norm is at
+most $\sqrt{a_0}t$. The second component is
+$\ell_p^{\rm cut}$ at retained sites and zero at discarded sites.
+Thus the two-component clipped field $v$ satisfies the pointwise
+bound
+\begin{equation}\label{eq:guide-clipped}
+ \|v_{p,\varepsilon}\|\le A_0t,
+ \qquad A_0=(N_p+1)P+\sqrt{a_0}.
+\end{equation}
+This same $A_0$ bounds both row and column sums in
+\eqref{eq:guide-path-sums}.
+
+The selected and discarded rows have the locality needed for the
+energy proof. For a cut path, the parent separation is at most its
+length plus one, hence at most $R_0+1$. A witness to discarding at
+lattice distance $k$ obeys $t e^{k/r_0}<r(U_u)\le2$. For
+$t=P(h)/\sqrt h\ge h^{-1/2}$ this implies
+$k<r_0\log(2\sqrt h)$. With $h=x+c_L$, $c_L$ fixed, this is at most
+$r_0\log x$ eventually. Since $B=\lceil(\log x)^2\rceil$, both
+$R_0+1$ and $k+1$ are at most $B/50$ eventually. The parent map
+increases distances by at most one when compared with fine lattice
+distance; therefore these bounds give the asserted coarse anchor
+locality too. All tails are uniform in the period.
+
+Finally let $s=t(x)$ be the coarse threshold and $t=t(x+c_L)$ the
+fine threshold. The shift $c_L$ is nonnegative: its group factor is
+a positive multiple of a sum of squares of adjoint matrix entries,
+and $\log L\ge0$. For large $x$, $s\le2t$: the numerator
+$P(x)=\exp\{(\log\log x)^2\}$ is increasing once $\log x\ge1$,
+and $\sqrt{x+c_L}\le2\sqrt x$ for $x\ge c_L$.
+Choose $A$ larger than the two stage constants $A_0$. Then
+\eqref{eq:guide-clipped}, applied on the coarse stage, and
+\eqref{eq:guide-allowance} imply
+\begin{equation}\label{eq:guide-maximum}
+ \|v_j\|\le dt,\qquad
+ \|(\Phi v)_i\|\le dL^{-2}t,\qquad
+ \|(\Phi'v)_b\|\le dt,
+ \qquad d=2A(1+a).
+\end{equation}
+Indeed a matrix with operator-norm row sum $r$ sends a field bounded
+by $u$ to a field bounded by $ru$. These are exactly the guide bounds
+used for the fine and predictor energy rows in
+Section~\ref{sec:seed-energy}, with constants fixed before $L,W$.
+The derivation uses the stated tower and path-expansion inputs; the
+construction of the path expansions remains a separate input to be
+proved below.

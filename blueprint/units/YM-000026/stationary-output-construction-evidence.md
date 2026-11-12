@@ -1,0 +1,17 @@
+# Stationary output construction — draft correspondence
+
+Pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; parent session hairer-codex-existence-20261111.
+Output `manuscript/existence/stationary-output-construction.tex`, initial SHA256 `1304e0153a9d492a7a9d1aa0cb660714d0033d18151171bec5aeedbc44c61cad`.
+
+Inspected declarations (namespace `YM.Stationary` unless otherwise stated):
+- `Lean/YM/Next/STATIONARY/Lift/Pathways.lean`: `Recorded`, `relay_ext`, `volume_wave`, `notesPath`, `total_ink`, `ink_beat` — normalized scalar Taylor coefficient, exact counting volume and finite Fourier spanning.
+- `Lean/YM/Next/STATIONARY/Lift/Ward.lean`: `colors_align`, `harvest`, `withdrew`, with their immediate finite Ward and symmetry inputs. Common torus recording with per-volume error tending to zero gives continuous Ward/reality/colour data; convex permutation and orientation averages preserve the original coefficient error.
+- `Lean/YM/Next/STATIONARY/Shape/ClassicalMatch.lean`: `all_ages`, `orbit_cost`, `Pointwise`, `low_columns`, `box_unit`, `orbit_gate`, `assembly`. Existing soft-curvature/row-price chapters supply atom and row pictures. The new unit expands actual cubic removal followed by subtracting that cubic family's fourth coefficient before quartic removal. Output classical action excludes the loop term.
+- `Lean/YM/Next/STATIONARY/Films/LeadingRay.lean`: `tributing`, `TributeColor.crop_edict`, `iris_resonant`, `true_tip`, `true_tone`, `rite_axis`, `vanish`, `tip_fuel`, `subtract_fee`, `alphaPay`. The proof reproduces linear Ward/permutation cancellation, colour-simplicity transverse detection, signed reflection parity, the last mixed coefficient killed by Ward, and odd cubic cancellation. Quadratic action unit is 1/2; selected scalar is twice the real normalized coefficient.
+- `Lean/YM/Next/STATIONARY/Loops/Curvature.lean`: `point_quiet`, `reach_symbol`, `live_wave`, `draft_pipe`, `violet`, `achieved`, `color_pipe`. Same common coarse bed/path construction, exact classical derivatives through degree four, invariant moment-zero loop and scalar response; real-wave conversion constant is 2*(#Loc G 1)^2, including arbitrary momenta. Retains common response-picture and inherited-order-four inputs, not a closure claim for their producers.
+
+The symmetry arguments apply to leading homogeneous terms only after lower terms vanish; reflected-edge phases must not be dropped from full symbols. The common picture convention is complex multilinear, not Hermitian, and counting site volume, not probability-normalized Haar volume. A positive-degree lower jet condition suffices in `withdrew`, not equality of constant values. The quadratic case obtains its first-jet condition from gauge simplicity.
+
+Literature/canonical reuse: the elementary invariant symmetric bilinear-form argument is the self-adjoint part of the existing `trace-free-rank.tex` colour argument. The quantitative multileg source proof is now canonical in `multileg-curvature-lift.tex`; this unit cites it, not an unverified external lattice-cohomology theorem. Atom and row analytic price producers are canonical earlier chapters. No external theorem is newly assumed here.
+
+Commands actually run: targeted `sed` and `rg` on the listed source files and existing manuscript sections; SHA256 captured. No Lean source edits/build/axiom replay. New prose remains draft pending independent review. Remaining common-picture/transition producers explicitly retained in the last paragraph.

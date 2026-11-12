@@ -1,0 +1,272 @@
+\section{The volume cost of the rank tests}
+\label{sec:rank-root-normalization}
+
+The replicated rank tests require the correct power of the coupling in
+both the numerator and the partition function. We prove the finite-torus
+estimate with that power. Write $D=\dim_{\mathbb R}\mathfrak g$, $\mu_G$
+for probability Haar measure, and $\chi(u)$ for the normalized chord of
+$u\in G$ used in the action. Thus $\chi(1)=0$, it is unchanged by
+inversion and conjugation, and $\chi(uv)\le\chi(u)+\chi(v)$.
+
+\subsection{Haar bounds in the physical dimension}
+
+There are constants $0<c_-\le1\le c_+<\infty$, depending only on $G$,
+such that
+\begin{align}
+ \mu_G\{\chi(u)\le r/4\}&\ge c_-r^D &&(0<r\le1),
+       \label{eq:rank-haar-low}\\
+ \int_G e^{-\chi(u)/t}\,d\mu_G(u)&\le c_+t^D &&(t>0).
+       \label{eq:rank-haar-high}
+\end{align}
+To see this, use the actual Haar chart of Section~\ref{sec:haar-chart}.
+Its density is bounded above and below by positive constants near zero.
+Differentiability of the represented exponential, together with the
+normalization of the colour norm, gives, after shrinking the chart,
+\[
+ \tfrac12\|z\|\le\chi(\exp z)\le2\|z\|.
+\]
+A sufficiently small chord ball is contained in that chart: the faithful
+matrix embedding induces the topology of the compact group. Comparison
+with Euclidean balls of radii $r/2$ and $3r$ therefore gives
+$a r^D\le\mu_G\{\chi\le r\}\le b r^D$ for $0<r\le r_0$.
+For $r\in[r_0,1]$ the lower bound extends by monotonicity after decreasing
+$a$. The upper bound extends to all $r>0$ by the total mass bound one,
+after increasing $b$.
+
+For $k\ge0$, on $kt\le\chi(u)<(k+1)t$ the integrand in
+\eqref{eq:rank-haar-high} is at most $e^{-k}$. Summing over these
+measurable shells bounds the integral by
+\[
+ b t^D\sum_{k=0}^\infty e^{-k}(k+1)^D.
+\]
+The series converges, since its successive-term ratio tends to $e^{-1}$.
+This proves the upper bound; rescaling the lower bound by $1/4$ proves
+\eqref{eq:rank-haar-low}. The proof also covers $D=0$: powers of positive
+radii are then one. No connectedness of $G$ is needed.
+
+\subsection{An axial tree and the four unintegrated links}
+
+Let $\Lambda=(\mathbb Z/L\mathbb Z)^4$, $L>1$, and $V=|\Lambda|$.
+Represent each coordinate by $0,\ldots,L-1$. For $x\ne0$ let $p(x)$
+be its largest nonzero coordinate index. Join $x$ to $x-e_{p(x)}$.
+The sum of the coordinate representatives strictly decreases on every
+such edge, so these edges form a tree rooted at zero. The tree has
+$V-1$ positive links; there are $4V$ positive links altogether. Thus
+there are $3V+1$ free links after fixing the tree links to one.
+
+For completeness, tree gauge fixing preserves the integral of a
+gauge-invariant integrable function. Integrate successively from the
+leaves of the tree. At a leaf, use its tree link as the gauge variable
+at that vertex and multiply all its other incident links by that
+variable or its inverse. Conditional on the other links, these changes
+preserve their Haar measures. The tree link becomes one, and the
+remaining gauge variable integrates to one. Induction removes all
+$V-1$ tree variables. This proves the identity with product probability
+Haar measure on the free links, including for a disconnected group.
+
+Keep also the four links $(-e_i,i)$, one wrap link in each direction.
+They are free, distinct, and are not in the tree. We now associate a
+different plaquette to each of the other $3V-3$ free links so that their
+integrals can be performed successively. Here is an explicit ordering,
+which also deals with wrap links. Set $p(0)=0$, and for a positive
+link $e=(x,i)$ put
+\[
+ t(e)=\max(i,p(x)),\qquad
+ \pi(e)=\bigl(t(e),\,\mathbf1_{\{i=t(e)\}},\,
+                   \textstyle\sum_jx_j\bigr),
+\]
+ordered lexicographically.
+
+If $i<t(e)=t$, choose the plaquette based at $x-e_t$ in directions
+$(i,t)$. Its $i$-link at $x$ is $e$. Its two $t$-links are tree links,
+because $x_t\ne0$ and every coordinate above $t$ vanishes. Its remaining
+$i$-link has smaller tier or the same tier and smaller coordinate sum.
+It therefore has smaller priority whenever it is free.
+
+If $i=t(e)$ and $e$ is free, then $x_i=L-1$ and all coordinates above
+$i$ vanish: otherwise it is a tree link. Put $w=x+e_i$. Since $e$ is
+not the retained wrap link, $w\ne0$. Let $j=p(w)<i$ and choose the
+plaquette based at $x-e_j$ in directions $(j,i)$. Its $i$-link at $x$
+is $e$. The $j$-link based at $w-e_j$ is a tree link. The other
+$j$-link has smaller tier or has the same tier with second priority
+coordinate zero. The remaining $i$-link has the same tier and second
+coordinate but smaller coordinate sum, since $x_j\ne0$. Thus again
+every other free link on this plaquette has smaller priority.
+
+The chosen plaquettes are distinct. If two links shared a chosen
+plaquette, each would have smaller priority than the other. Moreover,
+a maximal-priority remaining link occurs in no plaquette chosen for
+another remaining link. With all other links fixed, its own plaquette
+holonomy has the form $aub$ or $au^{-1}b$, so its distribution is Haar.
+Fubini and descending induction therefore show that for continuous
+$F:G\to[0,1]$,
+\begin{equation}\label{eq:rank-plaquette-elimination}
+ \int \prod_{p\text{ plaquette}}F(U(\partial p))\,d\mu(U)
+       \le\left(\int_GF\,d\mu_G\right)^{3V-3}.
+\end{equation}
+Indeed discard all unchosen factors, which are at most one, and then
+integrate the chosen factors in that order. The four edges of a
+plaquette are distinct for $L>1$, including $L=2$; thus each integration
+uses its selected variable exactly once, possibly inverted.
+
+\subsection{The normalized estimate}
+
+Consider a lawful representation $R$ on this torus, with gauge-invariant
+path action and activities, and with nonnegative density,
+coupling $\beta$, threshold $\theta\le1$, scalar exponent $\sigma$, and
+clip constants satisfying $0<c_{\rm lin}<c_{\rm dir}/16$.
+The path and activity bounds below are the bounds of that same
+representation. These assumptions ensure that its density and the
+action bounds used in tree gauge fixing are gauge invariant. Put
+\[
+ g=\beta^{-1/2},\quad 0<g\le\theta,\quad
+ c=\min(1,c_{\rm lin}),\quad
+ b(g)=N_{\mathcal A}\bigl(c_{\rm dir}g^2/2+(Ag)^2/2\bigr).
+\]
+Here $A$ bounds the linear curvature rows, and $N_{\mathcal A}$ is the
+number of positive plaquette types. Let $r$ be the per-site bound for
+the additive remainder and the cubic, quartic and loop terms. Those
+bounds, with their actual support weights, give
+\begin{align}
+ \operatorname{exponent}_R(U)&\ge\sigma-V\{r+\beta b(g)\}
+       &&\text{if every link has chord at most }g/4,
+       \label{eq:rank-action-low}\\
+ \operatorname{exponent}_R(U)&\le\sigma+V(r+N_{\mathcal A})
+                  -\sum_p\frac{\chi(U(\partial p))}{g/c}.
+       \label{eq:rank-action-high}
+\end{align}
+Here is the local verification of these two uses of the path bounds.
+On the small-link set, every plaquette has chord at most $g$, all flags
+vanish, and each linear curvature row has norm at most $Ag$ by its
+absolute row bound. Summing its squared contribution and the direct
+plaquette contribution gives $Vb(g)$. The other terms have absolute
+sum at most $Vr$.
+For the upper estimate put $a=\chi(U(\partial p))$. The clipped direct
+term obeys
+\[
+             ca/g-1\le\beta\,\operatorname{clipped}(a).
+\]
+In the quadratic region this follows from
+$c(a/g-1)^2\ge0$, $c\le1$, and $c\le c_{\rm dir}$.
+In the linear region use $c\le c_{\rm lin}$, $g\le\theta$ and
+$\beta g^2=1$. The other quadratic row term is nonnegative.
+The sum over plaquettes is unchanged by signed motions; hence averaging
+over them preserves this lower bound on the path action. Subtracting
+the remaining action and additive terms at their absolute bound gives
+\eqref{eq:rank-action-high}.
+
+Gauge-fix the axial tree and restrict its $3V+1$ free links to
+$\{\chi\le g/4\}$. The tree links are one, so
+\eqref{eq:rank-action-low} applies. All flags vanish there, and the
+forced gas equals one. Nonnegativity on the complement and
+\eqref{eq:rank-haar-low} yield the strictly positive bound
+\begin{equation}\label{eq:rank-partition}
+ Z_R:=\int R\,d\mu\ge
+ e^{\sigma-V(r+\beta b(g))}(c_-g^D)^{3V+1}.
+\end{equation}
+Now let $f$ be an integrable complex function, $z\ge0$, and suppose
+\[
+ z|f(U)|\le e^{\operatorname{exponent}_R(U)+VX}.
+\]
+Using \eqref{eq:rank-action-high}, then
+\eqref{eq:rank-plaquette-elimination} and
+\eqref{eq:rank-haar-high}, gives
+\[
+ z\left|\int f\,d\mu\right|
+ \le e^{\sigma+V(r+N_{\mathcal A}+X)}
+             \{c_+(g/c)^D\}^{3V-3}.
+\]
+Define $h=\log c_+-D\log c\ge0$ and
+\[
+ P_R(X)=2r+N_{\mathcal A}+\beta b(g)+X+3h-4\log c_-.
+\]
+Division by \eqref{eq:rank-partition} gives
+\begin{equation}\label{eq:rank-ratio}
+ \frac{z|\int f\,d\mu|}{Z_R}
+       \le \exp\{VP_R(X)-4D\log g\}.
+\end{equation}
+To check the constants, the powers of $g^D$ differ by exactly four.
+Also $(3V-3)h\le3Vh$ and
+$-(3V+1)\log c_-\le-4V\log c_-$, since $V\ge1$ and
+$\log c_-\le0$. These are the only enlargements in this division.
+
+The same estimate holds for the auxiliary history of
+Section~\ref{sec:restarted-rank-history}. If its additive terms have
+value bound $\delta$ per site, delete them temporarily to obtain $R^0$.
+Then $e^{-V\delta}R^0\le R\le e^{V\delta}R^0$ because $R\ge0$,
+and $R^0=e^ER\ge0$. Apply the preceding estimate to $R^0$ with
+numerator expense $X+\delta$, and use
+$Z_{R^0}\le e^{V\delta}Z_R$. The extra numerator and denominator
+expenses total $2V\delta$. This is exactly the contribution of
+$\delta$ to $2r$ in $P_R$. Derivative estimates on those auxiliary
+additive terms are not needed.
+
+\subsection{Taking the replica root}
+
+Let a terminal tiling have $q$ cells, and push its full marked density
+to a torus with exactly $q$ sites along the auxiliary history. The
+unnormalized scalar integral remains the original partition function
+$Z$. Suppose each coefficient of the pushed marked density has the
+local estimate needed above with coefficient price $a^{q|I|}$ and
+per-site expense $X\le1+M$, where $M$ is the maximum number of markers
+per cell and $I\ne\varnothing$ is the chosen marker subset. The signed
+orientation copies use conjugation on the reversed cells. Thus the
+coefficient carrying $I$ in every cell is exactly $Z$ times the
+replicated Wilson expectation. Equation~\eqref{eq:rank-ratio} gives
+\[
+ a^{q|I|}|\mathbb E(\text{replicated coefficient})|
+       \le e^{qP_R(X)-4D\log g}.
+\]
+Taking the positive $q$th root proves
+\begin{equation}\label{eq:rank-root}
+ \|\text{coefficient }I\|_{\rm root}
+ \le\frac{\exp\{P_R(X)-4D\log g/q\}}{a^{|I|}}.
+\end{equation}
+This retains the finite-volume harmonic correction $-4D\log g/q$.
+
+The clock buys this last expense uniformly in the period. At an output
+level $m$, $\beta\le4\widehat\beta_m$, so
+$-4D\log g=2D\log\beta\le8D\widehat\beta_m$.
+The clock coupling grows linearly in its logarithmic spatial scale,
+whereas the minimal torus site count grows at least exponentially in
+that scale. Consequently $8D\widehat\beta_m/q\le1$ eventually, even
+at the smallest period. For the remaining terms, use the same clip and row bound $A$ as the
+clock stage, and suppose
+\[
+ \theta_R\le\theta_{\rm clock},\qquad
+ \Lambda\le\Lambda_{\rm clock},\qquad \delta\le1.
+\]
+The late-scale purchases are
+\[
+ \widehat\beta_m\theta_{\rm clock}^{3}\le1,\qquad
+ \widehat\beta_m\theta_{\rm clock}^{4}\le1,\qquad
+ \Lambda_{\rm clock}\theta_{\rm clock}^{2}\le1.
+\]
+Consequently the actual remainder bound satisfies
+\[
+ r=\delta+\beta(A\theta_R^3+A\theta_R^4)
+                     +\Lambda\theta_R^2
+       \le1+8A+1,
+ \qquad
+ \beta b(g)=\frac{N_{\mathcal A}}2(c_{\rm dir}+A^2).
+\]
+With $X\le1+M$, a fixed stage ticket bounding $P_R(X)+1$ is therefore
+\[
+ T_M=2(1+8A+1)+N_{\mathcal A}
+       +\frac{N_{\mathcal A}}2(c_{\rm dir}+A^2)
+       +(1+M)+3h-4\log c_-+1.
+\]
+The final $1$ pays for the harmonic correction, rather than enlarging
+an already spent ticket. Choose the comparison depth $k$ on a
+constant-profile interval and purchase
+\[
+ T_M\le I_k=\frac{\log \mathcal M_k}{16M},
+\]
+where $\mathcal M_k$ is the diverging clock monitor. This is a
+post-block-length scale delay. Set $a=e^{2I_k}$. Since $|I|\ge1$,
+\eqref{eq:rank-root} is at most $e^{I_k}/a=e^{-I_k}\to0$.
+For the rank detectors $M=2$. These estimates apply to the one-point
+and corrected two-point coefficients themselves. The local marked
+construction must supply their displayed coefficient price on the
+same auxiliary density; no estimate for a different denominator is
+used here.

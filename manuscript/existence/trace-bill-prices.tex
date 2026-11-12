@@ -1,0 +1,143 @@
+% Scalar price of the finite-volume Bill response and its root receipt.
+\section{The paid-response price bound}
+\label{sec:ex-lattice-trace-bill-prices}
+
+We compute the quantitative root-price bound attached to a paid finite-volume
+response. This is the numerical input used for the two component errors in
+Section~\ref{sec:ex-lattice-trace-probe-assembly}. The computation has two
+parts: a coefficient-size estimate from the paid label and its approximation
+receipt, and a negative-rate bound on the native root price.
+
+For each frame index $i$, set
+\[
+ J_i=\operatorname{basin}(i),\qquad K_i=\operatorname{summit}(i),
+ \qquad t_i=\widehat\beta_{K_i},\qquad
+ v_i=\left(\frac{A_i}{A_{J_i}}\right)^d,
+ \qquad f_i=\operatorname{fly}_d(J_i),
+\]
+where $A_j$ is the field dilation at level $j$. Let $s_i$ be the local
+stake price and $\gamma_i$ the gain from level $K_i$ down to $J_i$. The
+source's native root allowance for a grade-$d$ response has the exact form
+\begin{equation}
+ n_{d,i}=\frac{s_i}{t_i^{-1}\left(
+     \dfrac{f_i/2}{A_{J_i}^{-d}(t_i^3/\gamma_i)}\right)}.
+ \label{eq:ex-trace-native-price}
+\end{equation}
+The norm of the inverse grade-$d$ dilation is $A_{J_i}^{-d}$, which is the
+factor appearing in this expression. Simplifying gives
+\begin{equation}
+ A_i^d n_{d,i}
+   =\frac{2s_i v_i t_i^4}{f_i\gamma_i}.
+ \label{eq:ex-trace-priced-native}
+\end{equation}
+Indeed, the denominator in \eqref{eq:ex-trace-native-price} is
+$f_i\gamma_i A_{J_i}^d/(2t_i^4)$, and $A_i^d/A_{J_i}^d=v_i$.
+Throughout this calculation the scale receipts ensure
+$A_i,A_{J_i},t_i,f_i,\gamma_i>0$ and $G_i\to\infty$.
+
+The scalar rate receipts are expressed by tickets. For a positive sequence
+$F_i$, a rate-zero ticket means that for every $\epsilon>0$, eventually
+$0\leq F_i\leq\exp(\epsilon G_i)$, where
+$G_i=\operatorname{Gate}(\widehat\beta_i)$. If two sequences have tickets
+of rates $\alpha$ and $\alpha'$, their product has rate $\alpha+\alpha'$:
+choose the two ticket bounds at exponent $\alpha+\eta$ and
+$\alpha'+\eta$, multiply them, and then let $2\eta$ be smaller than the
+requested excess over $\alpha+\alpha'$. Nonnegative sums of equal-rate
+sequences retain that rate by the same argument and the elementary bound
+$u+v\leq2\max(u,v)$.
+
+The scale hypotheses supply the following rate-zero tickets:
+\[
+ s_i,\qquad v_i,\qquad t_i^4,\qquad f_i^{-1}.
+\]
+The first is the stake receipt. The second is the dilation-ratio receipt at
+the selected basin. The third is the scale-at-summit receipt. For the fourth,
+$J_i\leq K_i$ and the inverse-flux receipt applies to the flight scale at
+$J_i$. Multiplication, including the constant factor $2$, therefore gives
+a rate-zero ticket for
+\[
+ B_i=\frac{2s_i v_i t_i^4}{f_i}.
+\]
+The gain estimate supplies eventually
+$\tau_i(500)\leq\gamma_i$, where
+\[
+ \tau_i(q)=\exp\!\left(\frac{q}{10^4}G_i\right).
+\]
+The ticket bound at exponent $70/10^4$ gives $B_i\leq\tau_i(70)$
+eventually. Dividing by the gain and using multiplicativity yields
+\begin{equation}
+ A_i^d n_{d,i}=B_i/\gamma_i
+   \leq\tau_i(70)/\tau_i(500)=\tau_i(-430).
+ \label{eq:ex-trace-native-rate}
+\end{equation}
+This proves the exact negative-rate price needed below for all sufficiently
+large $i$.
+
+\begin{lemma}[Column size from a paid label]
+\label{lem:ex-trace-bill-column-size}
+Suppose a grade-$d$ paid label $y$ satisfies
+\[
+ \|y\|_{\mathrm{coeff}}\leq1,\qquad
+ \|y-\operatorname{Col}(x)\|_{\mathrm{coeff}}
+      \leq\vartheta_K^2\,\operatorname{Age}_K(-1/4),
+\]
+where the selected threshold obeys $0<\vartheta_K\leq1$ and
+$\operatorname{Age}_K(-1/4)\leq1$. Then
+\[
+ \|\operatorname{Col}(x)\|_{\mathrm{coeff}}\leq2.
+\]
+\end{lemma}
+\begin{proof}
+The triangle inequality gives
+\[
+ \|\operatorname{Col}(x)\|_{\mathrm{coeff}}
+   \leq\|y\|_{\mathrm{coeff}}
+       +\|\operatorname{Col}(x)-y\|_{\mathrm{coeff}}
+   \leq1+\vartheta_K^2\operatorname{Age}_K(-1/4)\leq2.
+\]
+\end{proof}
+
+\begin{proposition}[Paid label yields the scaled component price]
+\label{prop:ex-trace-bill-root-price}
+Let $g$ be an admissible finite-volume observable and let $y,x$ be a paid
+grade-$d$ label pair satisfying the hypotheses of
+Lemma~\ref{lem:ex-trace-bill-column-size}. Assume its paid root receipt
+states, for every allowed window and whenever $g$ is interior, that
+\[
+ \mathcal R_{i,p}\!\left(
+   \mathcal B\bigl(A_{K_i}^{-d}g\bigr)-\mathcal O(x)\right)
+       \leq n_{d,i}.
+\]
+Then the paid column has size at most $2$. For
+$q_i=(A_i/A_{K_i})^d$, linearity and homogeneity give the scaled error
+bound
+\[
+ \mathcal R_{i,p}\!\left(
+   \mathcal B(q_i g)-\mathcal O(A_i^d x)\right)
+      \leq\tau_i(-430).
+\]
+For all sufficiently large $i$, this is the paid-component error used in the
+probe assembly, uniformly over the allowed windows and observables.
+\end{proposition}
+\begin{proof}
+The coefficient conclusion is Lemma~\ref{lem:ex-trace-bill-column-size}.
+The inverse dilation satisfies $q_i g=A_i^d(A_{K_i}^{-d}g)$. By
+real-linearity of the finite-volume observation and pullback,
+\[
+ \mathcal B(q_i g)-\mathcal O(A_i^d x)
+   =A_i^d\left(\mathcal B(A_{K_i}^{-d}g)-\mathcal O(x)\right).
+\]
+Since $A_i>0$, homogeneity of the root seminorm and the assumed paid receipt
+bound this by $A_i^d n_{d,i}$. Equation~\eqref{eq:ex-trace-native-rate}
+then gives the stated $\tau_i(-430)$ bound, uniformly over all allowed
+windows and observables.
+\end{proof}
+
+The label-producing receipt is obtained in the source from a funded atomic
+activity and a scale-dependent resource transfer. The mathematical inputs
+are not just a coefficient bound: the atomic activity carries a bounded
+charge, a paid profile, and a density identity; its finite-volume conversion
+also uses the price-duality estimate against every allowed test. The source
+construction of those atomic and dual-price inputs remains part of the full
+trace supplier. This section discharges the coefficient and rate arithmetic
+once they are available.

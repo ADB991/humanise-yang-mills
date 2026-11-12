@@ -1,0 +1,336 @@
+\section{A fixed marked section and its calibration budgets}
+\label{sec:ex-marked-portfolio-calibration}
+
+The marked finite-volume route needs a single local section at each label
+degree. That section must be chosen before the volume, cutoff, or derivative
+budget is known. It must also price every later derivative request at that
+degree. We construct that section first, then show how the schedule selects
+its budgets and how the approximate field change is made invertible.
+
+\subsection{One section for every later derivative budget}
+
+Let $H$ be the fixed holomorphic gauge action. At a fixed degree $d$, let
+$E_d$ be a finite-dimensional complex label space with a real homogeneous
+basis $(e_j)_{j\in J_d}$. The basis contains the unit and has grades
+$(r_j,s_j)$ with $r_j\leq d$. The algebra used here is not filtered by raw
+link-entry count. Let $\mathfrak S$ be the collection of based and
+transported curvature slots on the cover lattice, let $I$ be the real
+color-coordinate basis, and put $\mathrm{Chip}=\mathfrak S\times I$.
+For $c=(S,a)\in\mathrm{Chip}$ let $x_c(U)$ be color coordinate $a$ of
+curvature slot $S$ at configuration $U$. Define $\mathcal P_{\geq s}$ as
+the complex span of the finite products $\prod_{\nu=1}^m x_{c_\nu}$ with
+$m\geq s$. Thus one factor means one curvature-coordinate slot, even
+though it is itself polynomial in link entries. This is the source
+filtration called $\mathrm{Powered}$.
+
+The input to the section construction is an imprint: linear maps
+$A_d:E_d\to E_d$ and $B_d:E_d\to\mathcal P_{\geq0}$ with unit normalization
+$A_d1=1$, $B_d1=1$, gauge invariance of $B_dp$,
+$\operatorname{Forms}(H,d,B_dp,A_dp)$, and $B_dp\in\operatorname{Micro}$
+whenever $p$ belongs to the equation ideal, together with the campaign's
+exact-action identity. They also have
+the following filtration clauses. If $p$ has grade at least $(r,s)$,
+then $A_dp-p$ has strictly larger source stamp
+\[
+                         \operatorname{st}(r,s)=(s,r)
+\]
+in lexicographic order, and $B_dp\in\mathcal P_{\geq s}$. The order is
+lexicographic in the displayed order, so increasing the stamp never lowers
+the factor coordinate $s$. In addition, $A_d$ and $B_d$ each commute with
+the signed-coordinate action and the real structure; equivariance of only
+$B_d$ would not suffice to pass it through $A_d^{-1}$. A campaign without
+these two equivariances is turned into such an imprint by the finite group
+and conjugation averages described in the source; the campaign producer
+itself is a separate input to this local theorem.
+
+For clarity, the symmetrization just mentioned is finite-dimensional. If
+$\Phi_s$ is the joint signed action on labels and fields, and $\mathfrak c$
+is the joint real-conjugation involution, put
+\[
+ F_0=\frac1{|\mathcal S|}\sum_{s\in\mathcal S}
+       \Phi_s\,F\,\theta_{s^{-1}},\qquad
+ F_1=\frac12\bigl(F_0+\mathfrak c F_0\mathfrak c\bigr),
+\]
+where $\mathcal S$ is the signed-coordinate group. Each summand is still a
+campaign: the grade is preserved, the correction remains strictly above
+its source stamp, the field remains in $\mathcal P_{\geq s}$, and the unit
+and exact action identities are preserved. A finite average preserves
+these linear conditions. Reindexing the first sum by left multiplication
+shows that $F_0$ commutes with every signed action; the involution identity
+$\mathfrak c^2=1$ shows $F_1$ commutes with conjugation, and the two
+actions commute, so both equivariances hold for $F_1$. Both averages fix
+the unit. This is the mathematical content of passing from a campaign to
+an imprint; the existence of the unsymmetrized campaign from the action is
+not reproved in this section.
+
+\begin{theorem}[Fixed-stencil marked portfolio from an imprint]
+\label{thm:ex-marked-portfolio-section}
+Given an imprint on $E_d$, there are a finite centered stencil $S_d$, a linear section
+\[
+       T_d:E_d\longrightarrow\mathbb C[\text{link entries on }S_d],
+\]
+and an invertible linear regrading $R_d:E_d\to E_d$ such that
+\begin{enumerate}
+\item $0\in S_d$ and $S_d$ is invariant under signed coordinate
+  permutations;
+\item evaluating $T_d$ at the coordinates of $R_dp$ on every link field
+  gives $B_dp$ exactly;
+\item $T_d$ is gauge invariant, has the correct unit, is compatible with
+  signed pullbacks and conjugation, and has the prescribed action
+  projection;
+\item each basis entry has a finite pose supported in $S_d$ whose degree
+  is at least $s_j$;
+\item for every derivative order $k$ and power $P$, there is a finite
+  number $C_{d,k,P}$ such that each basis entry has source rate
+  $C_{d,k,P}$ at factor degree $s_j$. This is a bound on the healthy part
+  of the translated stencil, for every budget point of order $k$ and
+  power $P$, torus, anchor, and tested direction list allowed by that
+  budget point.
+\end{enumerate}
+The section and stencil depend on $d$ and the fixed action/frame only;
+they do not depend on $k,P$, torus size, or cutoff.
+\end{theorem}
+\begin{proof}
+First invert the triangular regrading. On the finite grade decomposition,
+the condition that $A_dp-p$ has strictly higher grade makes $A_d$ an
+upper-triangular block matrix with identity diagonal. Back substitution
+solves $A_dx=y$ grade by grade: at the lowest grade, $x$ has the same
+component as $y$; after subtracting that component, the next grade is
+solved in the same way. Finiteness of the grade set makes this process
+terminate and gives a unique $x$. Thus $R_d=A_d$ is invertible, and the
+same induction shows that its inverse preserves the lower grade bound.
+
+For each basis vector set $f_j=B_d(R_d^{-1}e_j)$. By the filtration
+property, $f_j$ is a finite linear combination of monomials, each with at
+least $s_j$ curvature-coordinate factors. Each monomial uses only a
+finite list of slots. A product is represented by concatenating its two
+lists of slots. A sum is represented
+by taking the disjoint union of the lists and adding the corresponding
+polynomials. The empty list represents constants. Induction over the
+finite monomial expansion therefore gives, for each $j$, a finite slot
+list and a pose polynomial of degree at least $s_j$ realizing $f_j$.
+
+There are only finitely many basis vectors. The union of their slot
+stencils is finite, so choose a centered box containing it. Enlarge the
+box symmetrically if needed; this preserves containment and makes the
+stencil invariant under signed coordinate permutations. On this one box,
+the polynomial realization is constructed for every basis vector. Extend
+these values linearly from the basis to define $T_d$. Linearity gives the
+exact evaluation identity for every $p$, not merely for basis labels.
+
+The evaluation identities also transfer all structure. Gauge invariance,
+the unit normalization, signed covariance, conjugation reality, and the
+action-projection condition are the corresponding properties of $B_d$.
+Because evaluation agrees on the entire basis, the section has these
+properties on all labels. The basis poses give the common-support and
+degree witnesses.
+
+It remains to show the derivative budgets for all later queries. The
+source rate statement is localized: for a stencil $S$, order $k$, power
+$P$, side $n$, and anchor $o$, it controls derivatives after expansion
+at $o$ on $\mathrm{Healthy}(\theta,S+o)$, for direction lists obeying
+the budget point's direction bound at $o$. The extra derivative-rate
+parameter here is zero, so the threshold factor remains exactly
+$\theta^s$ at every tested derivative order.
+Each color-coordinate curvature slot has rate degree one by the local
+slot estimate. For a binary product, the product rule gives at most $2^k$
+terms at order $k$. Iterating over a product of $m$ factors gives at most
+$m^k$ terms; in each pose the number $m$ is fixed, so this changes only its
+finite constant. Factor degrees add under multiplication. Hence a monomial of
+at least $s_j$ chips has rate degree at least
+$s_j$. Finite sums add their constants, and lowering a rate from a larger
+degree to $s_j$ is valid because $0<\theta\leq1$. Applying this to the
+finite pose expansion of each basis field gives one finite constant
+$c_j(k,P)$ for the exact localized rate above. Summing basis estimates
+with coefficient moduli gives the linear price for arbitrary labels. No
+uniformity in $d,k$, or $P$ is claimed.
+\end{proof}
+
+The last item is the currency furnished by the finite section. In the
+application, the profile at stage $i$ requests the particular order
+$k_i$ and power $P_i$ appearing in that profile. For each $d\leq i$, choose
+one available amount $a_{di}\geq0$ for this request. It remains a valid
+credit after replacing a negative amount by zero, since all budgets are
+nonnegative. The section is not rebuilt when these requests change.
+
+\subsection{Buying all stage and degree conditions}
+
+For a stage $i$, let $c_i$ be its column count, let $q_d$ be the stencil
+size of the chosen section together with the fixed local section, and let
+$s_i$ be its support exponent. The source sphere price is
+\[
+ \mathsf S_i(q_d,a)=2+e^{81s_i}(a+c_i+2q_d).
+\]
+For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere price,
+and the coefficient $2(1+c_i)$ are finite. The stencil's orbit cost is
+finite, so its sliver
+\[
+       \delta_d=\frac{1}{2\,\mathcal O_d^2}
+\]
+is strictly positive. Since the volume purse is
+$\mathsf P(L)=L^{1/8}\to\infty$, choose an integer $n_{di}$ such that
+\[
+ 2(1+c_i)\mathsf S_i(q_d,a_{di})
+       \leq \mathsf P(L)\delta_d\qquad(L\geq n_{di}).
+\]
+The credit clause and nonnegativity hold at every such $L$. Separately,
+for each $j$ choose $v_j$ so that
+\[
+       (1+2c_j)\,\mathsf D(L)\leq\overline{\mathsf P}(L)
+                  \qquad(L\geq v_j),
+\]
+where the source door toll and purse are
+$\mathsf D(L)=\mathrm{rate}(L)=L^{-2/5}$ and
+$\overline{\mathsf P}(L)=\mathrm{barunit}(L)=L^{-3/8}$. Their ratio is
+$L^{-1/40}$, so the inequality holds once $L^{1/40}\geq1+2c_j$. For a fixed stage $i$, take
+the maximum of the finitely many $n_{di}$ with $d\leq i$ and $v_j$ with
+$j\leq i$. This single threshold $n_i$ proves all clauses required at
+stage $i$ simultaneously. The resulting nonnegative table $a_{di}$ and
+thresholds $n_i$ are exactly the same section's all-stage purchase data.
+
+The later delayed budget has a similar finite-threshold argument. Write
+$\beta_F(x,L)=x+b_L$, where $b_L$ is the fixed logarithmic scale shift,
+and write $w_d$ for the positive power in the reciprocal tail
+$\mathsf f_d(x)=x^{-w_d}$. For fixed $L,d$, and all sufficiently large
+$x$, one has $0\leq b_L\leq x$ and hence $y=x+b_L\leq2x$. The tail
+comparison needed by the delay is equivalent, after multiplying by the
+positive denominators, to
+\[
+       L^{d+1} y^{w_d}\leq yx^{w_d}.
+\]
+The left side is at most $L^{d+1}2^{w_d}x^{w_d}$, which is at most the
+right side once $x\geq L^{d+1}2^{w_d}$. The remaining conditions at a fixed
+stage-profile pair are just that $x$ exceed the fixed profile cost and
+the finitely many credits requested at degrees $d$ below that profile.
+They therefore hold eventually as well. For a fixed stage, only that
+stage and its adjacent predecessor are tested; the conjunction is finite.
+Choose a threshold for every stage and replace these thresholds by their
+prefix maxima, also taking the maximum with the original entrance delay.
+The new entrance delay is monotone, dominates the old one, and satisfies
+every adjacent-stage inequality whenever the actual delay exceeds it.
+This proves the delay calibration rather than assuming a single threshold
+works for all stages at once.
+
+At the selected history caller, these are the three eventual conditions
+needed by the marked budget package. For each fixed degree $d$, the section
+credit is queried at the profile of the actual stage $J(N)$. The strict
+reference-depth margin implies $d\leq J(N)$ for all sufficiently large
+$N$. The purchased stage table supplies the credit and flight inequality
+at that stage, evaluated at its preceding block side. The delay purchase
+supplies the allowance comparison: evaluate its adjacent-stage estimate
+at the selected entrance value and use the schedule identity
+\[
+ \widehat\beta_{i+1}=\beta_F(\widehat\beta_i,L_i)
+       =\widehat\beta_i+G.\mathrm{slopeConstant}\log L_i.
+\]
+The resulting amount is nonnegative and no larger than the new running
+allowance. Thus, at every sufficiently late stage for this fixed degree,
+there are simultaneously a valid derivative credit, the allowance bound,
+and the sphere/flight bound. These are exactly the three fields of the
+marked budget package used by the selected field-calibration call. It uses
+the same portfolio section throughout: the delay changes available budget,
+not the section or its stencil.
+
+\subsection{A small coordinate error gives an invertible calibration}
+
+The section is now fixed. At a given cutoff, the field calculation
+produces, for each coefficient basis vector $e_j$, a proposed correction
+$u_j$ satisfying
+\[
+        \|e_j-u_j\|_1\leq\delta_d,
+\]
+where $\|x\|_1$ is the sum of the absolute values of the finitely many
+coordinates and $\delta_d=(2\mathcal O_d^2)^{-1}$. The required linear
+calibration is not inferred from columnwise closeness alone; the factor
+$\mathcal O_d$ accounts for the finite symmetry and the change from the
+coordinate basis to the section's coefficient coordinates.
+
+\begin{lemma}[Robust finite-dimensional calibration]
+\label{lem:ex-marked-calibration-inverse}
+Let $E$ be the coefficient space of the chosen frame, with its $\ell^1$
+norm. Let $\mathcal O\geq1$ bound both the sum of the chip coefficients
+and the $\ell^1$ norm of each symmetry action on the frame. For columns
+$u_j$, define the source repainting map by
+\[
+ D x=\sum_{(g,j)}\chi_{g,j}(x)\,\rho_g u_j,
+ \qquad
+ x=\sum_{(g,j)}\chi_{g,j}(x)\,\rho_g e_j,
+\]
+where $g$ ranges over the finite signed/conjugation symmetry list,
+$\rho_g$ is its action on the coefficient frame, and the fixed complex-
+linear chip coefficients obey
+$\sum_{g,j}|\chi_{g,j}(x)|\leq\mathcal O\|x\|_1$.
+If $\|e_j-u_j\|_1\leq(2\mathcal O^2)^{-1}$ for every basis vector,
+then $D$ is invertible and $\|D^{-1}\|_{1\to1}\leq2$.
+\end{lemma}
+\begin{proof}
+Subtracting the two repainting formulas gives
+$(I-D)x=\sum_{g,j}\chi_{g,j}(x)\rho_g(e_j-u_j)$.
+The sum of chip moduli is at most $\mathcal O\|x\|_1$, and applying
+the symmetry to a column error costs at most another factor $\mathcal O$.
+Consequently
+\[
+       \|(I-D)x\|_1\leq\mathcal O^2\delta_d\|x\|_1
+                         =\tfrac12\|x\|_1.
+\]
+The triangle inequality gives $\|Dx\|_1\geq\frac12\|x\|_1$;
+therefore $D$ is injective. Since $E$ is finite dimensional, it is
+surjective and invertible. The same lower bound with $x=D^{-1}y$ gives
+$\|D^{-1}y\|_1\leq2\|y\|_1$.
+\end{proof}
+
+\subsection{Application to the selected field calibration}
+
+For a cutoff and mark, let $V_d$ be the fixed section above. The selected
+field package supplies an eventual nonnegative credit $b_N$ for the
+profile's derivative order and power, with $b_N$ no larger than the
+available running allowance. It also supplies the flight inequality
+\[
+ 2(1+c_N)\mathsf S_N(q_d,b_N)
+       \leq\mathsf P(L_{N-1})\delta_d,
+\]
+and the local spread/insertion data. These exact conditions are the
+preconditions for the finite field-calibration step. That step first
+constructs one approximate column $u_j$ for each frame basis vector with
+the sliver error above, then applies Lemma~\ref{lem:ex-marked-calibration-inverse}
+to the whole coefficient map. Its inverse norm is at most $2$ and its
+repainted columns agree exactly with the selected field change. The
+coefficient error is thus removed by one invertible linear regrading,
+shared by all labels at this cutoff.
+
+The price attached to each constructed column is the explicit schedule
+amount
+\[
+ E_N=4(1+c_N)\mathsf S_N(q_d,b_N)
+    +e^{81(s_N+2)}\mathsf Z_N\,\zeta_{d,N}\,u_N^{-1},
+\qquad
+ \mathsf Z_N=\bigl(\mathsf C(V_d)+2\mathsf C(V_d^{\rm loc})\bigr)
+                  \mathsf N_{d,N},
+\]
+where $\mathsf C$ denotes the fixed derivative price of a local section
+and $\mathsf N_{d,N}$ the number of active sites in the selected
+insertion region. The first summand pays the local stencil and sphere
+terms; the second pays the activity term after the reserve factor
+$\zeta_{d,N}/u_N$. The same bound controls the marked matter estimate for
+all earlier opened scales and all signed motions, because those motions
+are included in the orbit cost and the local price.
+
+For a fixed degree, the slow-growth assertion uses all the source
+components, not just the flight inequality. The running credit is bounded
+eventually by $\widehat\beta_N$ by the Braze hymn; the cutoff profile and
+the schedule give a slow bound for $\widehat\beta_N$ and for the column
+count. The scale estimate for the profile gives a slow bound for
+$\exp(81(s_N+2))$. The number of insertion sites is bounded by the finite
+seat count, whose slow bound follows from the tab schedule. Finally the
+Fridge estimates give the required slow bounds for $\zeta_{d,N}$ and
+$u_N^{-1}$. Since the class of slow sequences is closed under finite sums
+and products, each summand in $E_N$ is slow and hence so is $E_N$. Omitting
+either of the Fridge bounds would not justify this conclusion.
+
+The section theorem and stage/delay arguments above prove the fixed-stencil
+portfolio, all later credit requests, and the schedule's three eventual
+field-budget inputs. The local invitation and field-spread estimates used
+after that point remain separate substantive suppliers; they do not follow
+from existence of the section or from the inverse lemma. Their source
+declarations, actual selected caller, and remaining estimate boundary are
+listed in the evidence file.

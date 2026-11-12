@@ -1,0 +1,358 @@
+\section{Construction of the finite precision tower}
+\label{sec:ex-lattice-rg-horizon-geometry}
+
+This section explains the finite-dimensional algebra that turns the selected
+quadratic beds and their curvature factor into an exact Wilson tower. It also
+records how the beds and towers are produced on the actual schedule. All
+matrices act on finite real torus spaces; there is no limiting or spectral
+argument in the tower identities.
+
+\subsection{The exact finite-torus block identity}
+\label{subsec:ex-lattice-rg-roll}
+
+Let $\mathcal E_f^r$ and $\mathcal E_c^r$ be the real coordinate spaces of
+r-form labels on the fine and coarse tori. The first coboundaries are
+$D_f: \mathcal E_f^1\to\mathcal E_f^2$ and
+$D_c: \mathcal E_c^1\to\mathcal E_c^2$; the next coarse coboundary is
+$d_2: \mathcal E_c^2\to\mathcal E_c^3$, with $d_2D_c=0$. Let
+$J: \mathcal E_f^2\to\mathcal Y_f$ and
+$J': \mathcal E_c^2\to\mathcal Y_c$ be the full precision-factor maps
+for the fine and coarse beds, respectively, and write
+\[
+ W=J^{\mathsf T}J,\qquad W'=J'^{\mathsf T}J',\qquad
+ R=W^{-1},\qquad R'=(W')^{-1}.
+\]
+Assume $W,W'$ are symmetric and the displayed inverses exist. Let $T$ be
+the installed two-form transport $T:\mathcal E_c^2\to\mathcal E_f^2$,
+and let $A_0:\mathcal E_c^1\to\mathcal E_f^1$ be the selected one-form
+transport. The conditional mean $\overline T:\mathcal E_f^1\to\mathcal E_c^1$
+and these transports satisfy
+\begin{equation}
+ T^{\mathsf T}D_f=D_c\overline T,
+ \qquad TW'D_c=WD_fA_0,
+ \label{eq:ex-lattice-horizon-diagonal}
+\end{equation}
+where $W$ and $R$ act on $\mathcal E_f^2$, while $W'$ and $R'$
+act on $\mathcal E_c^2$. Put $s=\sqrt{k}$, with $k>0$.
+
+Define the curvature remainder by
+\begin{equation}
+ Z=R'-T^{\mathsf T}RT-k^{-1}D_cD_c^{\mathsf T}.
+ \label{eq:ex-lattice-horizon-defect}
+\end{equation}
+Suppose this remainder has the curvature factorization
+\begin{equation}
+ W'ZW'=d_2^{\mathsf T}P^{\mathsf T}P d_2.
+ \label{eq:ex-lattice-horizon-bleep}
+\end{equation}
+Let $P:\mathcal E_c^3\to\mathcal E_c^3$ be a real matrix with the
+curvature factorization above. Define the coarse projection and its
+curvature image by
+\[
+ \Pi=J'R'J'^{\mathsf T},\qquad
+ X=P d_2R'J'^{\mathsf T}.
+\]
+The three blocks in the tower are
+\begin{equation}
+ M_F=JRTJ'^{\mathsf T},\qquad
+ M_N=s^{-1}D_c^{\mathsf T}J'^{\mathsf T},\qquad
+ M_O=\begin{bmatrix}I-\Pi\\X\end{bmatrix}.
+ \label{eq:ex-lattice-horizon-blocks}
+\end{equation}
+
+\begin{proposition}[Exact block completion]
+\label{prop:ex-lattice-horizon-roll}
+Assume the inverses and factorization above exist and the two transport
+identities \eqref{eq:ex-lattice-horizon-diagonal} hold. Then the blocks in
+\eqref{eq:ex-lattice-horizon-blocks} satisfy
+\begin{align}
+ M_F^{\mathsf T}M_F+M_N^{\mathsf T}M_N+M_O^{\mathsf T}M_O&=I,
+ \label{eq:ex-lattice-horizon-gram}\\
+ sM_N^{\mathsf T}&=J'D_c,
+ \label{eq:ex-lattice-horizon-normal}\\
+ M_FJ'D_c&=JD_fA_0,
+ \label{eq:ex-lattice-horizon-primal}\\
+ M_NJ'D_c&=s^{-1}D_c^{\mathsf T}W'D_c,
+ \label{eq:ex-lattice-horizon-kinetic}\\
+ M_OJ'D_c&=0,
+ \label{eq:ex-lattice-horizon-image}\\
+ M_F^{\mathsf T}JD_f+M_N^{\mathsf T}(-s\,\overline T)&=0.
+ \label{eq:ex-lattice-horizon-orthogonal}
+\end{align}
+The three blocks have common domain $\mathcal Y_c$ and respective ranges
+$\mathcal Y_f$, $\mathcal E_c^1$, and $\mathcal Y_c\oplus\mathcal E_c^3$.
+\end{proposition}
+
+\begin{proof}
+The inverse of a symmetric invertible real matrix is symmetric. Indeed,
+from $WR=I$ and $W^{\mathsf T}=W$ we obtain $R^{\mathsf T}W=I$, hence
+$R^{\mathsf T}=R^{\mathsf T}(WR)=(R^{\mathsf T}W)R=R$; the same argument
+applies to $R'$.
+
+The matrix $\Pi$ is the orthogonal projection onto the range of $J'$.
+First,
+\[
+ \Pi^{\mathsf T}=J'R'J'^{\mathsf T}=\Pi.
+\]
+Second,
+\[
+ \Pi^2=J'R'(J'^{\mathsf T}J')R'J'^{\mathsf T}
+       =J'R'W'R'J'^{\mathsf T}=\Pi,
+ \qquad \Pi J'=J'R'W'=J'.
+\]
+
+For the curvature block, substitute \eqref{eq:ex-lattice-horizon-bleep}:
+\begin{align*}
+ X^{\mathsf T}X
+ &=J'R'd_2^{\mathsf T}P^{\mathsf T}P d_2R'J'^{\mathsf T}\\
+ &=J'R'(W'ZW')R'J'^{\mathsf T}
+  =J'ZJ'^{\mathsf T}.
+\end{align*}
+The two middle factors cancel because $R'W'=W'R'=I$. The other two
+Gram terms are
+\[
+ M_F^{\mathsf T}M_F=J'T^{\mathsf T}RTJ'^{\mathsf T},
+ \qquad
+ M_N^{\mathsf T}M_N=J'(k^{-1}D_cD_c^{\mathsf T})J'^{\mathsf T}.
+\]
+By \eqref{eq:ex-lattice-horizon-defect},
+$T^{\mathsf T}RT+k^{-1}D_cD_c^{\mathsf T}+Z=R'.$
+Consequently the sum of the three block Gram matrices is
+\[
+ J'R'J'^{\mathsf T}+(I-\Pi)^{\mathsf T}(I-\Pi)
+ =\Pi+I-\Pi=I,
+\]
+using $\Pi^{\mathsf T}=\Pi$ and $\Pi^2=\Pi$. This proves \eqref{eq:ex-lattice-horizon-gram} as an identity on the full
+coarse augmented row space $\mathcal Y_c$; no restriction to the range of
+$J'$ is made.
+
+The remaining formulas are direct consequences of the block definitions
+and \eqref{eq:ex-lattice-horizon-diagonal}. Since $s^2=k$,
+$sM_N^{\mathsf T}=J'D_c$. For the fine transport,
+\[
+ M_FJ'D_c=JRT(J'^{\mathsf T}J')D_c
+ =JR(TW'D_c)=JR(WD_fA_0)=JD_fA_0.
+\]
+For the normal block,
+\[
+ M_NJ'D_c=s^{-1}D_c^{\mathsf T}W'D_c.
+\]
+For the image block, its first component is
+$(I-\Pi)J'D_c=0$, since $\Pi J'=J'.$ Its second component is
+\[
+ XJ'D_c=Pd_2R'J'^{\mathsf T}J'D_c
+       =Pd_2R'W'D_c=Pd_2D_c=0,
+\]
+using $R'W'=I$ and $d_2D_c=0$. This proves
+\eqref{eq:ex-lattice-horizon-image}.
+
+Finally, the transpose of $M_F$ gives
+\[
+ M_F^{\mathsf T}JD_f
+ =J'T^{\mathsf T}R(J^{\mathsf T}J)D_f
+ =J'T^{\mathsf T}D_f.
+\]
+By $T^{\mathsf T}D_f=D_c\overline T$, this is
+$J'D_c\overline T$. Meanwhile
+$M_N^{\mathsf T}(s\overline T)=J'D_c\overline T$.
+The two terms therefore cancel with the sign in
+\eqref{eq:ex-lattice-horizon-orthogonal}. This proves the orthogonality
+identity.
+\end{proof}
+
+\subsection{The selected schedule, its beds, and the tower estimates}
+\label{subsec:ex-lattice-horizon-producer}
+
+The schedule input is a family of priced bed and flight receipts. At each
+integer scale $j\geq4$, for every allowed direct precision $p_{\rm direct}
+\leq\gamma_j$ and every train of order $j$, the bottom receipt supplies a
+bed whose four precision rows are fixed as above, whose five rows have the
+stated weighted strip costs, whose floors hold on every torus side, and
+whose real precision is sworn positive. It also makes the top bed's
+diagonal the identity. For every admissible adjacent pair of orders
+$j,t$ (with $t=j$ or $t+1=j$), the flight receipt supplies donated
+unmodified primal/two-form transports with the order-$j-2$ difference
+bounds, together with a curvature factor of the stated strip cost and
+positive lower quadratic bound. The block-length credit requires the
+separately selected lower bound on $L$ before its quadratic floor is used.
+These receipts are obtained by the one-flight frontier and the uniform bed
+pricing; they are construction inputs here, not conclusions of the block
+algebra.
+
+Fix the actual level schedule $A$ and a terminal cutoff $N$. Its train at
+level $N$ is the constant top train. Descending one level, use the flight
+whose wing is the train already constructed at level $i+1$ and whose land
+is the train at level $i$. Thus, for every $i<N$, the level-$i$ train is the landing train of the
+flight whose wing is the already defined train at level $i+1$. This uses
+the actual adjacent block at level $i$; no second schedule is selected.
+
+The bed at each $(N,i)$ is first constructed for the corresponding train.
+The source bed proposition fixes its four precision rows to the train's
+pulse, dual pulse, amended precision and amended inverse. It constructs the
+remaining root row as a square factor of the positive remainder. The
+finite-volume root matrix is the vertical stack
+\[
+ J_p=\begin{bmatrix}\sqrt{p_{\mathrm{direct}}}I\\F\end{bmatrix},
+ \qquad J_p^{\mathsf T}J_p
+   =p_{\mathrm{direct}}I+F^{\mathsf T}F.
+\]
+This identity follows by splitting the row index of the product into its
+two disjoint blocks. The lower root factor is obtained from the finite
+matrix square-factor receipt, so the equality holds at every torus side
+and includes the zero modes. The floor receipt then gives symmetry,
+inverse identities and the uniform quadratic form bounds required of a
+bed.
+
+For a step $i<N$, the flight's donated primal and two-form transports are
+the source towers' $A_0$ and $T$. The tangent identities give
+\[
+ T^{\mathsf T}D_f=D_c\overline T,
+ \qquad TW'D_c=WD_fA_0,
+\]
+where $W,W'$ are the actual adjacent bed metrics and the overline is the
+flight's prescribed conditional mean. The flight's rebase receipt supplies
+the curvature factorization of the remainder $Z$ in
+\eqref{eq:ex-lattice-horizon-defect}. Therefore the preceding block
+proposition applies to these actual adjacent beds, not just to an abstract
+pair of positive matrices.
+
+The source tower-price theorem also supplies explicit uniform strip costs.
+Here is the finite matrix bookkeeping behind that assertion. Let $\alpha$
+be the common strip width after narrowing the two bed widths and donated
+width; write $\Omega,\Omega'$ for the two bed costs, $V$ for the curvature
+factor cost, $L$ for the odd block side, $X$ for the maximum difference
+order, $k>0$ for the penalty, and $n_r=|\mathrm{TypeFace}(r)|$ for the
+number of $r$-form labels. Put
+\begin{align*}
+ A&=\max\{\|\sqrt{p_{\rm direct}}\|,\Omega\},
+ &B&=\max\{\|\sqrt{q_{\rm direct}}\|,\Omega'\},\\
+ C_A&=n_2 A\Omega,& C_B&=n_2B\Omega',&
+ C_L&=n_2 C_A\Omega,& C_F&=n_2C_LB,\\
+ C_{N}&=k^{-1/2}n_2D_1B,&
+ C_{\rm proj}&=n_2C_BB,&
+ C_{\rm up}&=n_3VD_2,& C_X&=n_2C_{\rm up}\Omega',\\
+ C_O&=\max\{1+C_{\rm proj},n_2C_XB\},&
+ M_0&=\max\{\Omega,C_F,C_N,C_O\},
+\end{align*}
+where
+\[
+ D_r=\sum_{a\in\mathrm{TypeFace}(r+1)}
+       \sum_{b\in\mathrm{TypeFace}(r)}
+       \sum_{z\in\mathrm{supp}(\delta_r)}
+       e^{\alpha|z|_1}\| (\delta_r)_{ab}(z)\|,
+ \qquad r=1,2,
+\]
+is the finite stencil cost of the $r$th coboundary, where for a cover
+displacement $z$ we set $|z|_1=\sum_{j=1}^4|z_j|$. For ordinary cover convolution, the basic weighted row bound can be
+checked entrywise. If $C_{ij}=\sum_b A_{ib}*B_{bj}$
+is the routed cover convolution and the weighted absolute sums of each
+entry of $A$ and $B$ are at most $a_{ib}$ and $b_{bj}$, then
+\[
+ \sum_z e^{\alpha|z|_1}|C_{ij}(z)|
+ \leq \sum_b a_{ib}b_{bj}.
+\]
+Indeed, write each convolution coefficient as a sum over $x+y=z$, apply
+the triangle inequality, use $|x+y|_1\leq|x|_1+|y|_1$, and factor the two
+nonnegative sums over $x$ and $y$. Summing the intermediate label $b$
+then gives the finite cardinality factor in the strip estimate. Each $n_2$
+factor below is this count for a two-form intermediate label; $n_3$ counts
+the three-form labels in the curvature factor. A finite coboundary stencil
+contributes $D_r$.
+The fine-to-coarse composition uses a mixed version of this estimate.
+Fix a fine residue $r$ and a fine cover displacement $a$. There is a unique
+coarse displacement $\kappa(r,a)$ and a new fine residue
+$r'=\operatorname{wrap}(\operatorname{lift}r+a)$ such that
+\[
+ \operatorname{lift}r+a=\operatorname{lift}r'+L\kappa(r,a).
+\]
+Coordinatewise, put $u=\operatorname{lift}r$, $v=\operatorname{lift}r'$, and
+$n=L$. Both representatives lie in the centered interval, so
+$|u-v|\leq n-1$. The displayed identity yields
+$n|\kappa_i|\leq |a_i|+n-1$. If $|\kappa_i|>|a_i|$, integrality gives
+$|\kappa_i|\geq|a_i|+1$, hence
+$n|\kappa_i|\geq n|a_i|+n\geq |a_i|+n$, a contradiction. Thus
+$|\kappa(r,a)|_1\leq|a|_1$. In the mixed composition, each $a$ selects
+exactly the single residue $r'$ above, and its coarse shift is
+$\kappa(r,a)$. Apply the routed-convolution estimate at this fixed residue;
+summing the finite intermediate form label costs $n_2$, with no sum over
+all possible residues. This is the $C_L=n_2C_A\Omega$ bound, uniform in
+$L$.
+
+The fine factor $JR$ has cost $C_A$. Its mixed composition with $T$ has
+cost $C_L$, and the final composition with $J'^{\mathsf T}$ has cost
+$C_F$; the normal block has cost $C_N$; the projection and curvature rows have
+costs $C_{\rm proj},C_X$, respectively. Stacking the projection complement
+and curvature rows gives $C_O$. These are precisely the products in the
+displayed formulas; the explicit factor $L^{-2}$ in the donated two-form
+strip is retained separately. The resulting tower has
+\[
+ M_N,M_O\text{ strip-cost at most }M_0,
+ \qquad M_F\text{ strip-cost at most }M_0L^{-2},
+\]
+and its $r$th iterated primal and two-form differences have costs at most
+$M_0L^{-(1+r)}$ and $M_0L^{-(2+r)}$ for $0\le r\le X$. These latter
+bounds are inherited unchanged from the donated tower: the block construction
+retains its $A_0,T$ rows, whose input receipts already include every
+iterated difference bound through order $X$.
+
+For completeness, the construction has two distinct stages. First, the
+schedule supplies a bed for every $(N,i)$ and the recursively defined
+flight supplies its one-step data. The bed and hop receipts together with
+the exact block proposition above give a horizon with row, floor, crossing,
+and roll data. Second, the finite tower-price construction narrows widths
+and increases costs, while retaining the original $A_0,T$ rows; the new
+rows $M_F,M_N,M_O$ are the block completion just proved. The construction theorem performs this on the actual level object and retains the
+same bed family and the actual primal and two-form transports. In
+particular its retained-horizon equality is equality of the bed families;
+its tower equality preserves the $A_0,T$ rows used by the schedule.
+
+The source contract's remaining numerical receipts are explicit: the
+chosen price functions bound the bed strip widths/costs, floor constants,
+iterated tower costs, and the one-step crossing and roll identities at all
+$N,i$ and finite torus sides. The top bed is the unit diagonal because the
+top train is constant. These are exactly the fields of the horizon contract;
+they are not consequences of the block identity alone. In the public
+construction the level schedule and these receipts are attached to the
+preselected run, as stated next.
+
+\subsection{Actual path data and the public binding}
+\label{subsec:ex-lattice-horizon-path}
+
+Path data enter through the selected history of that run. Fix a finite
+torus, a plaquette face $b$, and a one-form variation $a$. For a path slot
+with coefficient $c_{b i}$, cover offset $y_{b i}$, and plaquette label
+$p_{b i}$, its physical face is the translate $b+y_{b i}$ modulo the
+torus. Define the path linear response by the absolutely convergent sum
+$\ell_{\mathrm{path}}(b,a)=\sum_i c_{b i}\,d_1a(b+y_{b i},p_{b i})$. The attachment identity says that, after
+summing all path coefficients with fixed $(p,y)$, one obtains the
+corresponding cover entry of the root row. The weighted row bound implies
+absolute summability of the path coefficients: its exponential weight is
+at least one. It also implies absolute summability after multiplying by
+the bounded face curl of $a$. Therefore we may first group the path sum
+by physical face, and then sum over the finite set of torus faces.
+Let $F_W$ be the actual roots block in the selected bed factorization,
+acting on periodic two-form fields. Periodizing the cover entries by the
+attachment identity gives, for each color component $q$,
+\[
+ (\ell_{\mathrm{path}}(b,a))_q=\bigl[F_W((d_1a)_q)\bigr](b),
+\]
+where $F_W$ is the actual root matrix on the torus and $d_1a$ is the
+finite-torus coboundary. The right side is a finite matrix-vector
+product. This is the entrywise path-to-root identity used in the physical
+quadratic-form computation; the absolute bound justifies the only
+infinite regrouping.
+
+For the selected RG history, the construction receipt gives the attachment
+identity for every cutoff $N$, level $i\leq N$, and period label $p$,
+between the bed $H_{N,i}$ and the path at that same history, cutoff, level,
+and period. The public adapter carries the original levels and retained
+horizon into the component theorem; it does not choose another schedule.
+Thus the path-to-root identity above applies to the same bed rows that
+enter the tower calculation. The weighted row bound is an additional
+priced path input: it is what supplies absolute summability, and is not
+concluded from attachment alone.
+
+The matrix identities proved here discharge the tower side of the
+selected construction. The path attachment and absolute bounds are
+separate receipts of the selected path history, and are kept explicit in
+the source crosswalk rather than inferred from the matrix bounds alone.

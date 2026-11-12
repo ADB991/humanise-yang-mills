@@ -1,0 +1,333 @@
+\section{Transporting a local representation through one scale}
+\label{sec:local-transfer}
+We now explain the common transport argument used by the centered
+estimate and the local OPE construction. Its analytic input is a
+bound for integrating finitely many elementary insertions against
+one fixed background transition. The argument below turns that
+bound into a transition for arbitrary local fields represented by
+absolutely summable elementary insertions. It also restores the
+prescribed singleton profiles after integration. The same background
+transition is used throughout.
+
+\subsection{From an anchored estimate to a site estimate}
+The first estimate accounts for summing over all named sources.
+Write
+\[
+             S_M=e\{2(16M+9)\}^4.
+\]
+Suppose at most $N$ marks are anchored at any one site. Let
+$X_i$ be supports, $A_i$ their nonempty sets of marks, and
+$f_i\ge0$. Every $i$ with $f_i>0$ is assumed to have some
+$v\in A_i$ with $o_v\in X_i$. If
+\[
+       \sum_{i:v\in A_i}e^{(a+1)c_M(X_i)}f_i\le c
+                         \quad\text{for every }v,
+\]
+where $c\ge0$, then
+\begin{equation}\label{eq:transfer-root-hit}
+       \sum_{i:x\in X_i}e^{a c_M(X_i)}f_i\le NS_Mc
+                         \quad\text{for every }x.
+\end{equation}
+Indeed, the defining connected-cover bound gives, for $x,y\in X$,
+\[
+       \operatorname{dist}(x,y)\le(4M+2)c_M(X)+2M.
+\]
+Hence a term on the left of \eqref{eq:transfer-root-hit} is at most
+\[
+ \sum_{v\in A_i}
+ e^{1-\operatorname{dist}(x,o_v)/(4M+2)}
+                         e^{(a+1)c_M(X_i)}f_i.
+\]
+Retain the anchored $v$ to verify this inequality; all other terms
+are nonnegative. Sum first over $i$, use the anchored bound, and
+then the occupancy bound. It remains to check
+\[
+ \sum_y e^{-\operatorname{dist}(x,y)/(4M+2)}
+                  \le\{2(16M+9)\}^4.
+\]
+Lift $y-x$ to its minimal integer representative. These lifts are
+distinct, and their $\ell^1$ norm is at most four times their
+periodic maximum distance. With $b=1/(4(4M+2))$, the sum is
+therefore bounded by
+\[
+ \sum_{z\in\mathbb Z^4}e^{-b|z|_1}
+ =\left(1+\frac2{e^b-1}\right)^4
+ \le\{2(1+b)/b\}^4=\{2(16M+9)\}^4.
+\]
+This proves the estimate, uniformly in the period. The argument
+also proves summability for countable activity families by bounding
+every finite subsum.
+
+\subsection{Preparing a finite family of insertions}
+Consider a fine representation $R$ and a coarse representation $E$.
+Let $\mathcal T$ be their block-integration operator. For a fine
+elementary insertion $M$, write $\mathcal Q(M)$ for its quoted
+coarse flagged profile. We assume this map is real linear under
+absolutely summable combinations in a fixed slot, with a uniform
+bound by the elementary insertion cost. These are properties of
+the fixed transition; their analytic construction is not being
+asserted here.
+
+For each mark $v$, suppose we have an anchored expansion, using
+only finitely many distinct slots but possibly countably many
+functions in each slot,
+\begin{align*}
+ g_v-u_v&=\sum_j z_{vj}\,\operatorname{ord}(M_{vj}),&
+ q_v&=\sum_j z_{vj}\,\operatorname{flag}(M_{vj}),\\
+ q'_v&=\sum_j z_{vj}\,\mathcal Q(M_{vj})
+                                      +\mathcal H_E(\psi_v).
+\end{align*}
+Here $\sum_j|z_{vj}|\operatorname{cost}(M_{vj})\le y_v$,
+and $\psi_v(X,U)$ is a coarse response anchored at the parent of
+$o_v$. It has local dependence, is measurable and gauge invariant,
+and vanishes when $X$ is healthy. Its cost hypothesis is
+\begin{equation}\label{eq:transfer-response-budget}
+ \sum_X e^{(p+1)c_{M_E}(X)}w_v\sup_U|\psi_v(X,U)|\le W.
+\end{equation}
+An available majorant can replace the displayed supremum. The
+operator $\mathcal H_E$ will be described below. The constant
+$u_v$ is outside the priced sum.
+
+Compress the countable sum separately in each slot. Its real and
+imaginary parts converge uniformly, since their absolute values
+are bounded by the summable insertion weights. The sums are real
+measurable local gauge-invariant functions in that same slot.
+Their bounds are the respective sums of absolute coefficient
+weights. Thus two real insertions, multiplied by $1$ and $\mathrm i$,
+replace the whole complex series. Both the old profiles and their
+quoted profiles are preserved, by the assumed continuity and
+linearity. The resulting finite list for mark $v$ has weighted
+cost at most $2w_vy_v$. If $2w_vy_v\le d_0$ and the fine-site
+occupancy is at most $N_f$, \eqref{eq:transfer-root-hit} bounds its
+site price at exponent $a$ by $N_fS_{M_R}d_0$, provided
+$a+1\le\nu_R$.
+
+Suppose the higher ordinary and flagged arrays in the fine local
+representation each have site price at most $q$ at exponent $a$.
+The real/imaginary construction of Section~\ref{sec:ope-singletons},
+now applied to every coefficient of order at least two, represents
+them by finite elementary insertions at total site price at most
+$4q$. The unused-slot property is used here. Combining the two
+lists gives a finite list with price
+\begin{equation}\label{eq:transfer-inventory-cost}
+                       T=N_fS_{M_R}d_0+4q.
+\end{equation}
+Its ordinary sum is $\sum_v(g_v-u_v)e_{\{v\}}+H$,
+and its flagged sum is $\sum_vq_ve_{\{v\}}+K$, where $H,K$
+are the higher arrays. All marks of each insertion lie in its support.
+
+The elementary integration input takes a family of linear slot
+insertions. To turn the exponential insertions in the last display
+into that form, adjoin, at each ordinary slot, the product of every
+compatible set of at least two members of the list. Compatibility
+means that their mark sets are disjoint and their union is an
+allowed monomial. Keep all original members. The added product
+uses the same slot and support, and its price is the product of
+the constituent prices. No product is added to a flagged slot.
+
+This operation has price at most
+\begin{equation}\label{eq:transfer-expanded-cost}
+                              T+e^TT.
+\end{equation}
+To verify it, let $r_j\ge0$ be the product of the marker toll,
+the modulus of the complex coefficient, and the elementary
+supremum-norm weight, excluding the support exponential
+$e^{a c_M(X)}$. For one ordinary slot put $s=\sum_jr_j$. Because every member has at least one
+mark in that support and $a\ge0$, the site bound at any point of
+the support implies $s\le T$. The sum of the product prices of
+all nonempty subsets is at most
+\[
+       \prod_j(1+r_j)-1\le e^s-1\le se^s\le e^Ts.
+\]
+The added compatible subsets of size at least two form a subfamily.
+Multiplying by the support exponential and summing over distinct
+slots meeting a given site gives at most $e^TT$. Adding the
+original price proves \eqref{eq:transfer-expanded-cost}.
+
+The density identity is exact. For each ordinary slot, the sum
+of all the compatible products is its squarefree exponential
+minus one: expand $\prod_j(1+m_j)=\exp(\sum_jm_j)$, where each
+nonempty monomial $m_j$ has square zero. Terms with incompatible
+marks vanish in the algebra. Thus replacing the exponential at
+that slot by one plus the expanded list changes no coefficient.
+Flagged slots have not changed. Denote the resulting elementary
+density by $\mathcal E$. The fine density $X$ satisfies
+\begin{equation}\label{eq:transfer-elementary-identity}
+             X=\exp\left(\sum_vu_ve_{\{v\}}\right)\mathcal E.
+\end{equation}
+Every added insertion has at least two marks, so the sum of quoted
+singleton profiles is still $q'_v-\mathcal H_E(\psi_v)$.
+
+\subsection{Absorbing the coarse response}
+We state explicitly the nonlinear integration input used at this
+point. For every prepared finite list of price at most $M_*$,
+the operator $\mathcal T$ produces ordinary and flagged arrays
+$\widehat F,\widehat K$, with the support and eligibility properties
+of Section~\ref{sec:ope-singletons}, and
+\begin{equation}\label{eq:transfer-nonlinear-input}
+ \mathcal T\mathcal E
+       =e^{E_E}\exp\left(\sum_X\widehat F_X\right)
+                                       \mathcal G(\widehat K).
+\end{equation}
+The ordinary array has no constant term and site price at most
+$k$ at exponent $t+\eta$; the flagged array has site price at
+most $u$ at exponent $p$. Its vacuum coefficient is the coarse
+background profile, and its singleton coefficient is precisely
+the sum of the quoted singleton insertions. This estimate is
+required uniformly in the finite list and period, subject to the
+specified parent-site occupancy. Its production is a separate
+analytic obligation.
+
+Assume $T+e^TT\le M_*$. Require also that every prepared
+elementary density is integrable under the fine prior and in
+each transition slice. The lawful background representation and
+its transition-kernel property supply these integrability
+conditions in the application. Integration is componentwise on the
+finite-dimensional polynomial algebra, so its continuous linear
+maps commute with an integrable transition. In particular the
+constant polynomial exponential in
+\eqref{eq:transfer-elementary-identity} can be pulled out. We
+obtain the same representation as
+\eqref{eq:transfer-nonlinear-input}, with exponent
+$P=\sum_vu_ve_{\{v\}}+\sum_X\widehat F_X$.
+
+Set $J(U)=\sum_{v,X}\psi_v(X,U)e_{\{v\}}$. We next move $J$
+from the ordinary exponent into the flagged array, without changing
+the density. In a term of
+\[
+                   \mathcal G(\widehat K)\exp(J),
+\]
+regard each selected flagged pair and each selected response
+insertion $(v,X)$ as a vertex, and join vertices whose supports
+overlap. Every nonzero response insertion meets a flag, because it
+vanishes on healthy supports. That flag is covered by a selected
+flagged pair in the gas term. Hence every connected component
+contains a flagged vertex. Within a component the flagged supports
+are disjoint; give the component the union support and the union
+of their flag sets. Define $\overline K$ as the sum of these
+component products with that output pair, retaining its required
+flag indicator. Every flag in a response support is covered by
+an old flagged vertex meeting that support, hence by a vertex
+in the same component. Thus the component flag set is exactly
+the set of flags in its union support.
+
+Connected-component decomposition is a bijection on nonzero
+terms. In the forward direction, different components have disjoint
+supports and their flag sets cover all flags. In the reverse
+direction, the constituent vertices of components with disjoint
+output supports cannot coincide or acquire a new overlap edge.
+Their union recovers the original selection. The products of their
+coefficients agree. Thus
+\begin{equation}\label{eq:transfer-closure}
+       \mathcal G(\overline K)=\mathcal G(\widehat K)\exp(J),
+ \qquad e^P\mathcal G(\widehat K)
+                           =e^{P-J}\mathcal G(\overline K).
+\end{equation}
+All these expansions are finite in support and mark indices.
+
+With no response vertex a connected component is a single old
+flagged vertex, since old flagged supports are disjoint. This
+proves preservation of the vacuum. With exactly one response
+vertex $(v,X)$, every flagged vertex in its component meets $X$:
+there are no edges between distinct flagged vertices, so any path
+to the response must be a direct edge. Let
+$\Pi_E(X;Y,Z;U)$ be the sum of products of the background flagged
+activities over these nonempty, pairwise-disjoint collections
+meeting $X$, with union support $Y$ after adjoining $X$ and union
+flag set $Z$, including the output flag indicator. Then
+\[
+ \mathcal H_E(\psi_v)(Y,Z;U)
+                  =\sum_X\psi_v(X,U)\Pi_E(X;Y,Z;U).
+\]
+This defines the operator in the transition expansion above.
+Two or more response vertices have degree at least two and cannot
+contribute a singleton. Therefore
+\[
+ [e_{\{v\}}]\overline K
+       =[e_{\{v\}}]\widehat K+\mathcal H_E(\psi_v)=q'_v.
+\]
+Replacing the background profiles in $\Pi_E$ by their countable
+indexed sums is justified by absolute convergence, bounded by
+the product of $1+|k_j^0|$, as in
+\eqref{eq:ope-single-coin}.
+
+The response insertions have site price at most
+$N_cS_{M_E}W$ at exponent $p$, by
+\eqref{eq:transfer-response-budget} and
+\eqref{eq:transfer-root-hit}, where $N_c$ is the parent-site
+occupancy. Put
+\[
+                              A=u+N_cS_{M_E}W.
+\]
+If
+\begin{equation}\label{eq:transfer-closure-budget}
+ t+\eta\ge0,\qquad
+               (2M_E+1)^4A\le p-(t+\eta),
+\end{equation}
+the connected-support estimate \eqref{eq:ope-forest-price} bounds
+the site price of $\overline K$ at exponent $t+\eta$ by $e^A-1$.
+Its coefficients are products of old coefficient majorants, and
+the map from a constituent set to its output pair is unique;
+thus the counting lemma applies without a multiplicity factor.
+The ordinary higher coefficients retain price $k$, since $J$ is
+linear. Local dependence, gauge invariance, measurability and the
+flag condition follow from finite products and support-local flag
+indicators.
+
+Finally suppose the singleton coefficient of the actual integrated
+density has already been identified as the linear density of a
+prescribed pair $(g'_v,k'_v)$, with $k'_v$ dominated and profile
+$q'_v$. Assume the coarse unmarked density is nonzero. The
+uniqueness following \eqref{eq:ope-single-coin} identifies the
+ordinary singleton of $P-J$ with $g'_v$. Removing all coefficients
+of degree zero and one now yields a local representation with
+these prescribed fields, with ordinary price $k$ and flagged price
+$e^A-1$ at exponent $t+\eta$.
+
+\subsection{Changing the mark weights}
+The final operation pays for changing weights. Suppose $w_v,w'_v>0$
+and for every allowed monomial $B$ with $|B|\ge2$ supported in $X$,
+\begin{equation}\label{eq:transfer-reweight}
+       \prod_{v\in B}w'_v
+           \le a_*\prod_{v\in B}w_v\,e^{\eta c_{M_E}(X)},
+                         \qquad a_*\ge0.
+\end{equation}
+Multiply this inequality by each coefficient majorant and sum.
+It changes an exponent-$t+\eta$ price $C$ into an exponent-$t$
+price at most $a_*C$. Hence the transported representation has
+both higher-array prices bounded by $g$ whenever
+\[
+                       a_*k\le g,\qquad a_*(e^A-1)\le g.
+\]
+
+Here is the specialization used in the scale induction. Start
+with weights $I_v>0$, higher-array price $1$, and exponent at least
+$\nu_R-4$. Choose $0<d\le1$ and first reduce the weights to
+$w_v=dI_v$. A monomial with at least two marks acquires the factor
+$d^{|B|}\le d$, so the higher-array price becomes $q=d$.
+Suppose the singleton transition costs obey
+$2I_vy_v\le1$ and $I_vr_v\le1$, with response cost $r_v$ measured
+at the full coarse exponent plus two. After multiplying by $w_v$,
+the fine singleton budget is $d_0=d$ and the response budget is
+$W=d$ at $p=\nu_E+1$.
+
+Assume $\nu_R,\nu_E\ge100$, and write $N$ for a bound on both
+occupancies. The two numerical conditions are
+\begin{align}
+ T&=NS_{M_R}d+4d,& T+e^TT&\le M_*,\label{eq:transfer-duty}\\
+ A&=u+NS_{M_E}d,& (2M_E+1)^4A&\le\tfrac12,
+                         &e^A-1&\le1.\notag
+\end{align}
+Use the nonlinear input with fine exponent $\nu_R-4$, ordinary
+output exponent $\nu_E+1/2$ and price $1$, and flagged output
+exponent $\nu_E+1$ and price $u$. The fine anchored estimate
+requires only $\nu_R-3\le\nu_R$, and all exponents used for
+support counting are nonnegative. Equation~\eqref{eq:transfer-duty}
+therefore verifies \eqref{eq:transfer-closure-budget} with
+$t=\nu_E$ and $\eta=1/2$. Any new weights satisfying
+\eqref{eq:transfer-reweight} with $a_*=1$ give a coarse local
+representation at exponent $\nu_E$ and price $1$.
+This proves the one-scale propagation from the stated elementary
+transition estimate and singleton transition expansions. It does
+not replace the proof of that analytic estimate or the construction
+of those expansions.

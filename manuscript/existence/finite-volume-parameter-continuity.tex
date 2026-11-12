@@ -1,0 +1,226 @@
+\section{Continuity of the nonlinear output on a fixed torus}
+\label{sec:finite-volume-parameter-continuity}
+The nonlinear step must vary continuously with its incoming coupling
+and activity array. This assertion concerns the actual array in a
+fixed support dictionary. Equality of the evaluated gas would be
+insufficient. The constants in this section may depend on the fixed
+torus; uniform small prices for the scale construction are established
+separately.
+
+\subsection{Which data are held fixed}
+Consider two incoming representations $R,R'$ on the same fine torus.
+They have the same regular and forced addresses, thresholds, clipping
+convention and path data. Write $\beta,\beta'>0$ for their couplings.
+Their regular and forced activity differences have nonnegative
+amplitudes $a_i,b_i$ with
+\[
+                  \sum_i a_i\le t,\qquad \sum_i b_i\le t.
+\]
+The regular differences here are differences of the actual masked
+occurrences. Their supports and healthy masks agree exactly.
+Let $g(\beta)=\beta^{-1/2}$ and put
+$\lambda=g(\beta)/g(\beta')>0$. The remaining comparison conditions
+are
+\begin{equation}\label{eq:parameter-close-input}
+ |\lambda^2-1|\le t,\quad |\beta'-\beta|\le t,\quad
+ |\log m(\beta')-\log m(\beta)|\le t,
+ \qquad 0<t\le\min(1/4,\beta/2),
+\end{equation}
+where $m(\beta)>0$ is the fixed local Haar-chart normalizing factor.
+All forests, tags, component labels and output address identifications
+are retained. In particular, their compatibility and eligibility
+conditions agree under the identity on elementary labels.
+
+For a continuous incoming curve these conditions hold locally for
+arbitrarily small $t$. The activity conditions follow from its array
+continuity; multiplication by the fixed healthy mask preserves the
+value difference and makes both occurrences zero off that mask.
+The scalar conditions follow from continuity of the positive coupling,
+its inverse square root, and the logarithm of $m$. This observation
+uses the same path throughout the curve.
+
+\subsection{A Gaussian rescaling estimate}
+We explain why changing the coupling does not require differentiating
+the incoming measurable activities. On one fixed Gaussian space of
+dimension $d$, with positive precision matrix $Q$, put
+\[
+ p(z)=c_Q e^{-z^TQz/2},\qquad
+ J_\lambda(z)=\lambda^d\frac{p(\lambda z)}{p(z)}.
+\]
+Then for every integrable function $F$,
+\begin{equation}\label{eq:parameter-gaussian-rescale}
+       \int F(z)\,d\gamma_Q(z)
+       =\int J_\lambda(z)F(\lambda z)\,d\gamma_Q(z).
+\end{equation}
+This is the ordinary change of variables $w=\lambda z$. The Haar
+factor, when present, is left unchanged. Since
+$g(\beta')\lambda=g(\beta)$, the rescaled incoming field has the
+same physical noise; the corresponding compensation map keeps the
+original insertion values fixed.
+
+For $|\lambda^2-1|\le t\le1/4$, we have $\lambda\ge1/2$ and
+$|\log\lambda|\le t$. Consequently
+\[
+ |\log J_\lambda(z)|\le
+                      t\{d+\tfrac12\|Q\|\,|z|^2\}.
+\]
+Let $F_0(z)=1+d+\sum_{r=1}^d|z_r|$ and choose a finite constant
+$C_Q$ such that the braces are at most $C_QF_0(z)^2$.
+The inequality $|u-1|\le(1+u)|\log u|$ for $u>0$ follows by
+integrating $e^s$ between $0$ and $\log u$. Thus
+\[
+ |J_\lambda-1|\le t C_Q(1+J_\lambda)F_0^2.
+\]
+All polynomial moments of $F_0$ are finite, by the finite Gaussian
+moment argument. If $M_k=\int F_0^k\,d\gamma_Q$, then
+\eqref{eq:parameter-gaussian-rescale} and
+$F_0(\lambda^{-1}z)\le2F_0(z)$ give
+\begin{align}
+ \int J_\lambda F_0^k\,d\gamma_Q&\le2^kM_k,
+ \int |J_\lambda-1|F_0^k\,d\gamma_Q
+                   &\le t C_Q(1+2^{k+2})M_{k+2}.
+ \label{eq:parameter-gaussian-moment-difference}
+\end{align}
+The same estimates hold for the full finite collection of Gaussian
+read coordinates and the product with normalized Haar measure.
+No smaller marginal is substituted when the parameter changes.
+
+Here is the precise pointwise input needed to integrate local jet
+differences. Fix integers $j,k\ge0$. For every component $P$, suppose its compensated
+integrands $f_P,f_P'$ have, on each admissible local variation, the
+bound
+\begin{equation}\label{eq:parameter-integrand-difference}
+ \|J_\lambda f_P'(\cdot,\lambda z)-f_P(\cdot,z)\|_{J^j}
+ \le t c_P F_0(z)^k
+                 \{J_\lambda(z)+t^{-1}|J_\lambda(z)-1|+1\},
+ \qquad \sum_P c_P\le C.
+\end{equation}
+Here $c_P\ge0$. The constants and $k$ are common to the neighboring representation
+and to the forests and tags on this fixed torus. This is the
+pointwise compensated comparison estimate, a stronger input than
+individual boundedness of the two integrands. Its role is explicit:
+\eqref{eq:parameter-gaussian-moment-difference} gives uniform integral bounds. For a pointwise dominator, use
+\[
+ J_\lambda(z)\le(5/4)^{d/2}\exp(z^TQz/8).
+\]
+Together with $t^{-1}|J_\lambda-1|\le C_Q(1+J_\lambda)F_0^2$,
+this bounds the integrand after division by $t$ by a fixed polynomial
+times $1+\exp(z^TQz/8)$. Multiplying by the Gaussian density leaves
+a decaying exponential $\exp(-3z^TQz/8)$, so this dominator is
+integrable. Integration
+and the derivative identities of
+Section~\ref{sec:gaussian-differentiation} give
+\begin{equation}\label{eq:parameter-component-difference}
+ \|F_P'-F_P\|_{J^j}\le t C_1c_P,
+                         \qquad \sum_P C_1c_P\le C_1C.
+\end{equation}
+For example one may take
+$C_1=(1+2^k)M_k+C_Q(1+2^{k+2})M_{k+2}$.
+The same bound survives normalized forest and tag averaging and
+the common local extension, since their germs agree on the healthy
+domain. The construction of \eqref{eq:parameter-integrand-difference}
+from the individual logarithmic, packet and compensation factors
+remains a separate local estimate; it is not inferred merely from
+continuity of the scalar coupling.
+
+\subsection{A summable difference through the cluster logarithm}
+We prove the summation step rather than interchange an infinite
+series with a limit without a common bound. Write $u_P\ge0$ for
+component jet prices. Fix a target support exponent $a\ge0$; the cluster comparison itself also holds for arbitrary real $a$. Suppose the ordinary cluster criterion holds
+for $2^ju_P$, with reserve $\delta>0$, root price $\gamma>0$ and
+ratio $1/2$. Suppose component differences have prices $t d_P$,
+where $d_P\ge0$ and $\sum_P d_P\le C$. On the fixed torus let
+\[
+ K_0=\sum_{Y\subseteq\Lambda}e^{(a+\delta)c(Y)},
+ \qquad
+ \kappa=\frac{\gamma}{2K_0 2^j(1+C)}>0.
+\]
+The finite sum includes every possible support. For every root, the
+additional vertex budget from $2^j\kappa d_P$ is at most
+$K_0 2^j\kappa C\le\gamma/2$. The augmented prices
+$2^j(u_P+\kappa d_P)$ therefore satisfy the cluster criterion with
+root price $3\gamma/2$ and ratio $3/4$: the degree quantity is linear
+in the root price. This chooses one neighborhood size $\kappa$
+after the torus and old criterion are fixed.
+
+For $0\le t\le\kappa$, set $\theta=t/\kappa\le1$. The finite product
+identity gives, in the joint jet bounds,
+\begin{equation}\label{eq:parameter-product-difference}
+ \left\|\prod_{r=1}^qF_{P_r}'-\prod_{r=1}^qF_{P_r}\right\|_{J^j}
+ \le\theta(1+q)^j
+       \left\{\prod_{r=1}^q(u_{P_r}+\kappa d_{P_r})
+                                  -\prod_{r=1}^q u_{P_r}\right\}.
+\end{equation}
+To verify it, expand each $F_P'=F_P+(F_P'-F_P)$. Every nonempty
+subset of difference factors contains at least one factor $\theta$;
+its higher powers are bounded by $\theta$. At derivative order $r$
+there are $q^r$ assignments to the factors, bounded by $(1+q)^j$.
+Summing the nonempty subsets gives exactly the difference of the
+positive products on the right. Repeated component labels are still
+distinct positions in this calculation.
+
+Since $1+q\le2^q$ for $q\ge1$, the derivative factor is paid by
+$2^j$ per component. Multiply by the absolute Ursell coefficient
+and its factorial normalization, then use the augmented cluster
+criterion. Summing rooted bounds over all $|\Lambda|$ sites bounds
+the unrooted sum, because every nonzero cluster has nonempty support.
+Thus cluster differences have nonnegative prices $t e_\Gamma$ with
+\[
+ \sum_\Gamma e_\Gamma
+       \le\kappa^{-1}|\Lambda|\frac{3\gamma/2}{1-3/4}.
+\]
+This estimate uses the original cluster criterion with a paid
+perturbation margin; no new uniform small-price theorem for the
+neighboring representation has been assumed.
+
+\subsection{Forced products and the output array}
+The same product calculation applies to the forced exponential
+expansion. If its component values have summable bounds $h_i$ and
+differences bounded by $t d_i$, with $0\le t\le1$, then a finite
+multiplicity vector $\nu$ satisfies
+\[
+ \left|\prod_i\frac{(F_i')^{\nu_i}}{\nu_i!}
+             -\prod_i\frac{F_i^{\nu_i}}{\nu_i!}\right|
+       \le t\prod_i\frac{(h_i+d_i)^{\nu_i}}{\nu_i!}.
+\]
+Indeed apply the same difference-of-products argument to repeated
+factors and divide by their positive factorials. Summing over all
+finite multiplicity vectors yields
+\[
+ \sum_\nu\prod_i\frac{(h_i+d_i)^{\nu_i}}{\nu_i!}
+                         =\exp\!\left(\sum_i(h_i+d_i)\right),
+\]
+by finite products of the exponential series followed by monotone
+convergence. Compatibility or eligibility conditions only remove
+terms; they agree under the fixed address identification. This proves
+a summable forced difference bound.
+
+The remaining fixed path terms are affine in the coupling. If
+$S_i(\beta)$ is such a term, then
+$S_i(\beta)-S_i(\beta')=(\beta-\beta')\{S_i(1)-S_i(0)\}$.
+Their two summable derivative prices therefore bound the difference
+by $t$ times a summable array. A finite symmetry average preserves
+summability after its explicit fixed derivative factor. Any support
+weight $e^{Ac(Y)}$ on this fixed torus is at most $e^{A|\Lambda|}$,
+and moving an anchor costs at most a fixed power of
+$1+\operatorname{diam}\Lambda$. Hence all these operations convert
+the preceding sums into the prescribed regular array budget in the jet norm and forced array
+budget in the value supremum norm, bounded by $Kt$ for a finite $K$ depending on the base
+representation and torus.
+
+This also supplies the common majorant needed along a subsequence.
+If input parameters $x_n$ tend to $x$, select an increasing subsequence
+$n_k$ for which the output differences from $x$ have summable
+nonnegative prices $d_{k,i}$ with $\sum_i d_{k,i}\le2^{-k}$.
+If $h_i$ majorizes the output at $x$, put
+\[
+                         H_i=h_i+\sum_k d_{k,i}.
+\]
+Tonelli's theorem gives $\sum_iH_i<\infty$, and the triangle
+inequality shows that $H_i$ bounds both the output at $x$ and all
+outputs on this subsequence, component by component in the required
+jet or value norm. The regular and forced arrays are treated
+separately in this construction. It proves the required continuity
+and subsequential domination in the common dictionary, conditional
+on the local compensated difference estimate
+\eqref{eq:parameter-integrand-difference} and its forced counterpart.

@@ -1,0 +1,326 @@
+\section{Convergence of correlations along the full mesh sequence}
+\label{sec:fullmesh-correlation-cauchy}
+We now pass from convergence of the local data at each fixed level to
+convergence of the finite-volume correlations themselves. The two limits
+are different: a terminal correlation contains interactions involving
+several marked insertions, whereas the fixed-level convergence theorem
+controls the single-insertion coefficients and their forced profiles.
+The missing estimate makes the effect of the former interactions small
+at a sufficiently fine intermediate level, uniformly in the terminal
+cutoff.
+
+Fix a period $p$, a finite set $V$ of marked insertions, their grades
+$d_i$, coefficient vectors $z_i$, and one of the modes $S$ of their
+finite marker algebra. Throughout the argument the history, the local
+fields, and the transfer maps belong to the one selected family.
+At cutoff $N$, let $R_{N,m}$ be its representation at level $m\le N$.
+Its product-Haar prior is denoted by $\mu_{m,p}$, and the positive
+terminal Wilson partition function by $Z_{N,p}$. The transferred
+polynomial density $X_{N,m}$ satisfies the exact identities
+\[
+ X_{N,m}=\mathcal T_{N,m}X_{N,m+1},\qquad
+ \int X_{N,m}\,d\mu_{m,p}
+       =\int X_{N,m+1}\,d\mu_{m+1,p}.
+\]
+Here $\mathcal T_{N,m}$ is the actual gauge-covariant transfer at the
+coupling of $R_{N,m+1}$; it is applied coefficient by coefficient.
+The integral of the coefficient of mode $S$, divided by $Z_{N,p}$, is the correlation
+under consideration. In particular all normalizations in this section
+use the same partition function.
+
+\subsection{The fixed-level data and their uniform bounds}
+At level $m$ write $\Phi_{N,m,i}(U)$ for the single-insertion term in
+the exponent and $\omega_{N,m,i}(Q,U)$ for its forced profile, where
+$Q$ records a support together with its exact set of flagged sites.
+Both include the field's scaling factor, its translated origin, and
+its prescribed motion. These are the actual transferred fields of
+Section~\ref{sec:selected-history-limits}.
+
+For every fixed $m$ above the entry levels of the finitely many grades,
+the fixed-level comparison supplies uniform Cauchy convergence in $U$
+of each $\Phi_{N,m,i}$ and each $\omega_{N,m,i}(Q,\cdot)$, and
+eventual uniform boundedness. This assertion uses both parts of that
+comparison. The finite-dimensional principal coefficient vectors are
+Cauchy. The captured remainder vectors are Cauchy in the local norm
+which controls their evaluation uniformly in $U$. Evaluation, translation,
+and the fixed motion preserve these bounds. The local masks are the
+same at this fixed level for every sufficiently large $N$, so
+multiplying by a mask preserves uniform Cauchy convergence even if
+the mask is discontinuous. The selected paths agree with the stationary
+paths of the common horizon; their larger-width convergence supplies
+the path part of the vacuum comparison. The fixed-level activity
+comparison supplies its remaining part.
+
+Here and below finite initial segments cause no difficulty. A Cauchy
+sequence of coefficient vectors is bounded, including its finite initial
+segment. Since the coefficient price is a continuous seminorm times
+the fixed scaling factor, there is a number $A_i$ such that the actual
+paid coefficient of insertion $i$ at a fixed root $r$ is at most $A_i$
+for every cutoff. Choose
+\begin{equation}\label{eq:fullmesh-root-weights}
+ w_i=\frac{\zeta_{d_i}(r)}{|A_i|+1}>0,
+\end{equation}
+where $\zeta_d(r)>0$ is the available single-insertion allowance.
+Then $w_i$ times that paid coefficient is at most $\zeta_{d_i}(r)$.
+The root $r$ is chosen after the finite list of grades, so these
+allowances are positive there.
+
+For later use, at any fixed level $m$ and for any fixed positive
+weights $v_i$, there exist $x_m,y_m\ge0$, independent of all
+sufficiently large $N$, such that
+\begin{equation}\label{eq:fullmesh-vault}
+ v_i|\Phi_{N,m,i}(U)|\le x_m,\qquad
+ \sum_Q v_i|\omega_{N,m,i}(Q,U)|\le y_m
+ \quad(i\in V).
+\end{equation}
+Indeed, take eventual bounds $a_i$ and $b_{i,Q}$ for these functions
+and put $x_m=\sum_i v_i|a_i|$ and
+$y_m=\sum_{i,Q}v_i|b_{i,Q}|$. There are only finitely many supports
+and flag inventories on the fixed torus. Taking the maximum of the
+finitely many entry thresholds proves both inequalities simultaneously.
+Measurability follows from the continuous local functions, measurable
+masks and absolutely summable forced series in their construction.
+
+\subsection{Separating the higher marker terms}
+Write $\mathsf M(\Phi)=\sum_i\Phi_i e_{\{i\}}$ for the
+single-marker polynomial. With the level and cutoff suppressed, the
+transferred density has the exact form
+\begin{equation}\label{eq:fullmesh-restore}
+ \begin{split}
+ \mathcal R(H,K)(U)={}&e^{R.\mathrm{exponent}(U)}
+ \operatorname{Pass}\!\left(\mathsf M(\Phi(U))+\sum_P H_P(U)\right)
+ \\ &{}\times \mathcal F\!\left(\overline R_Q(U)+\mathsf M(\omega(Q,U))+K_Q(U);
+                         \mathrm{flags}(U)\right).
+ \end{split}
+\end{equation}
+The finite nilpotent exponential $\operatorname{Pass}$ was defined in
+Section~\ref{ex-centered-construction}. In this formula
+$\overline R_Q$ is the vacuum forced profile. For an inventory $F$,
+$\mathcal F(A;F)$ is the sum of $\prod_{Q\in\mathcal Q}A_Q$ over
+families $\mathcal Q$ with disjoint supports whose flag inventories
+have union $F$. This is a finite sum on the fixed torus.
+Every nonzero mode in $H_P$ or $K_Q$ contains at least two markers.
+Its marker origins lie in its support. The functions $H_P$ vanish
+off the healthy set of $P$; the functions $K_Q$ vanish unless the
+flag inventory is exactly that specified by $Q$. Both are local,
+gauge-invariant and measurable.
+
+For positive marker weights $v_i$, use the weighted coefficient price
+of Section~\ref{ex-centered-construction}. The higher terms have
+nonnegative majorants $a_P$ and $b_Q$ bounding this price uniformly
+in the field. Their rooted support budgets, with weight
+$e^{e_m\operatorname{cov}_{B_m}(P)}$, are at most one, for both
+$H$ and $K$. Here $e_m$ is the level's support exponent,
+$B_m$ its support scale and $\operatorname{cov}_{B_m}$ the cover
+number already used in those budgets.
+
+We explain why these statements concern the actual density. The
+centered terminal construction gives \eqref{eq:fullmesh-restore} at
+level $N$ with exponent $e_N-3$. Its price uses
+\[
+ c_N=\kappa_N+r_N\operatorname{siteFactor}(B_N)u_N,
+ \qquad (2B_N+1)^4c_N\le3,\qquad e^{c_N}-1\le1,
+\]
+where $r_N$ is the allowed number of origins per site, $\kappa_N$
+the vacuum forced allowance and $u_N$ the terminal insertion cost.
+These are the terminal estimates in the centered birth construction.
+At a step $m+1\to m$, the purchased finite-menu estimate accepts
+support exponent $e_{m+1}-4$ and produces the full exponent $e_m$.
+The incoming exponent is sufficient, including at $m+1=N$, because
+$e_N-4\le e_N-3$. The one-insertion transfer identities identify
+its single-marker coefficients with the actual $\Phi_{N,m,i}$ and
+$\omega_{N,m,i}$; they are not replaced by estimates. The local
+transfer ledger and the occupancy budget then give precisely the
+higher-term majorants above. Integrability propagates through the
+same transfer. Backward induction proves the assertion at every
+$m<N$.
+
+The hypotheses for this induction are the funded finite-menu service
+of Section~\ref{sec:finite-menu-history-handoff} and the centered
+service of Section~\ref{ex-centered-public-service}. Their
+single-insertion component is obtained as follows. At the root use
+\eqref{eq:fullmesh-root-weights}, and propagate weights by
+$v_i(m+1)=\varphi_m v_i(m)$. The centered scale estimates give
+\[
+ 0<\varphi_m,\quad 0<\delta_m,\quad
+ 1\le\delta_m\varphi_m e^{B_m/128},\quad
+ B_{m+1}^2\le L_m B_m^2,\quad B_m\ge8,\quad e_m\ge4.
+\]
+The actual single-insertion transfer estimate and its coefficient
+price recursion propagate the root inequality to every later level.
+The terminal local section has cover number at most one and its
+purchased coefficient bound. The coefficient generators in that
+estimate therefore give the terminal insertion, the exact
+single-insertion recursion, and its local finite transfer ledgers.
+Summing their forced coefficients by support and exact flag inventory
+returns the original $\omega_{N,m,i}$: this is the defining profile
+identity, not a change of the fields. The remaining applicability
+conditions are the funded common service and the convergence
+comparisons just described; their simultaneous production is required
+in the common-family assembly.
+
+\subsection{Removing the higher terms at a fine intermediate level}
+Suppose distinct origins at level $j$ are separated by at least $B_j^2$
+in the lattice metric. A support of a nonzero higher term contains
+at least two such origins. The cover estimate of
+Section~\ref{ex-centered-construction} gives
+\[
+ B_j\le64\operatorname{cov}_{B_j}(P).
+\]
+Put $S_j=e^{B_j/64}$. For $|z|\le S_j$, replace $H,K$ by $zH,zK$.
+The support and flag conditions are unchanged. The price majorant
+of a nonzero term is multiplied by $|z|$, and
+\begin{equation}\label{eq:fullmesh-inflation}
+ |z|e^{(e_j-2)\operatorname{cov}_{B_j}(P)}
+ \le e^{\operatorname{cov}_{B_j}(P)}
+           e^{(e_j-2)\operatorname{cov}_{B_j}(P)}
+ \le e^{e_j\operatorname{cov}_{B_j}(P)}.
+\end{equation}
+Zero terms retain the zero majorant. Thus the inflated density has
+the same cost one at exponent $e_j-2$. Its single-insertion terms
+are unchanged. Transport it from $j$ down to a fixed root $r<j$.
+The first transfer accepts it since $e_j-4\le e_j-2$; subsequent
+steps again have the full exponent. The preceding induction therefore
+applies, with the same root single-insertion terms and weights.
+
+For clarity, separation also supplies the weight reservation needed
+in this transport. If a mode contains $q\ge2$ distinct origins, the
+stronger cover estimate is $B_m q\le64\operatorname{cov}_{B_m}(P)$.
+Changing each marker weight by at most $e^{B_m/128}$ multiplies its
+toll by at most $e^{\operatorname{cov}_{B_m}(P)/2}$. This pays the
+half-unit reservation in the finite-menu transfer. The identities
+between parent origins preserve occupancy, and
+$B_{m+1}^2\le L_mB_m^2$ preserves separation under the exact
+lattice embeddings. These observations verify the geometric
+conditions at every step of the transport.
+
+Let $X_{N,j}=\mathcal R(H,K)$ be the actual density at $j<N$, and
+set
+\[
+ F_N(z)=\frac1{Z_{N,p}}
+   \int\bigl(\mathcal R(zH,zK)(U)\bigr)_S\,d\mu_{j,p}(U).
+\]
+This is holomorphic in $z$. Indeed, the marker algebra is nilpotent
+and the inventory sum finite, so the expression is a polynomial in
+$z$ with measurable coefficients. The price bounds give integrable
+coefficient majorants on every smaller disk. At the root, let
+$x_r,y_r$ be the eventual bounds \eqref{eq:fullmesh-vault} with
+weights $w_i$. The normalized density estimate proved in
+Section~\ref{ex-centered-construction} gives
+\begin{equation}\label{eq:fullmesh-root-bound}
+ |F_N(z)|\le C_r:=
+ \frac{\exp\{ |\Lambda_{r,p}|\tau_r+|V|(x_r+y_r+2)\}}
+ {\operatorname{toll}_w(S)}\qquad(|z|<S_j).
+\end{equation}
+To apply it, transfer the inflated density to $r$. Its integral and
+its vacuum normalization remain exactly those above. The support
+budgets at $r$ are one, and its single-insertion data have the root
+bounds $x_r,y_r$. This proves \eqref{eq:fullmesh-root-bound} with
+a constant independent of $j$ and of all sufficiently large $N$.
+The bounds at $j$ needed for integrability may depend on $j$; they
+do not enter $C_r$.
+
+If $S_j>2$, Cauchy's estimate bounds $|F_N'(z)|$ by $2C_r/S_j$
+for $|z|\le1$: the closed disk of radius $S_j/2$ about such a
+point lies in $|z|<S_j$. Integrating the derivative on $[0,1]$
+therefore gives
+\begin{equation}\label{eq:fullmesh-omission}
+ \left|\frac1{Z_{N,p}}\int(X_{N,j})_S\,d\mu_{j,p}
+       -\frac1{Z_{N,p}}\int(\mathcal R(0,0))_S\,d\mu_{j,p}\right|
+ \le2C_r e^{-B_j/64}.
+\end{equation}
+The first term is the original terminal correlation. Only the terms
+with at least two markers were erased in the second term.
+
+\subsection{Cauchy convergence of the erased expression}
+Fix $j$. Remove the scalar normalization from the representation and
+put
+\[
+ D_{N,j}(U)=e^{-R_{N,j}.\mathrm{scalar}}\mathcal R(0,0)(U),
+ \qquad
+ \ell_{N,j}=e^{-R_{N,j}.\mathrm{scalar}}Z_{N,p}.
+\]
+The second term in \eqref{eq:fullmesh-omission} is exactly
+$\int(D_{N,j})_S\,d\mu_{j,p}/\ell_{N,j}$; the exponential
+scalar cancels. The fixed-level vacuum estimate gives a number
+$a_{j,p}>0$ with $\ell_{N,j}\ge a_{j,p}$ eventually, and the
+fixed-level convergence theorem gives Cauchy convergence of
+$\ell_{N,j}$.
+
+The functions $(D_{N,j})_S$ are uniformly Cauchy and eventually
+uniformly bounded. To see this directly from
+\eqref{eq:fullmesh-restore}, combine the fixed-level vacuum, activity,
+single-insertion and forced-profile comparisons. There are finitely
+many coordinates on the fixed torus. Finite products, sums and the
+nilpotent exponential are continuous functions of those coordinates,
+uniformly continuous on the compact closures of their bounded ranges.
+Fixed masks can be kept in every term, as noted earlier. These
+operations consequently preserve uniform Cauchy convergence.
+As the prior is a probability measure,
+\[
+ \left|\int(D_{N,j})_S\,d\mu_{j,p}
+            -\int(D_{M,j})_S\,d\mu_{j,p}\right|
+ \le\sup_U|(D_{N,j}(U)-D_{M,j}(U))_S|\longrightarrow0.
+\]
+The numerator is Cauchy and the denominator has a positive limit,
+so their ratio is Cauchy as well.
+
+Now $B_j\to\infty$. Given $\varepsilon>0$, first choose a fixed
+$j>r$ with $S_j>2$ and $2C_re^{-B_j/64}<\varepsilon/4$.
+At this fixed $j$ the erased expressions differ by less than
+$\varepsilon/4$ for sufficiently large cutoffs $N,M>j$.
+Equation~\eqref{eq:fullmesh-omission} and the triangle inequality
+bound the difference of the original correlations by
+$3\varepsilon/4<\varepsilon$. This proves Cauchy convergence along
+the full cutoff sequence, without choosing an additional subsequence.
+
+\subsection{From nested-grid points to all distinct configurations}
+It remains to supply the separated origins used above and to pass
+to general points. Call a physical point ancestral if it lies on the
+mesh at some level. Integer block lengths imply that it lies on every
+finer mesh, and its addresses obey the exact embedding identity.
+Ancestral configurations are dense: round each coordinate to the
+nearest mesh point and use $a_m\to0$.
+
+For a fixed ancestral configuration of distinct points on the period
+$p$ torus, let $\eta>0$ be its minimum pairwise physical separation.
+For zero or one insertion take any $\eta>0$ instead.
+Its lattice separation at level $m$ is at least $\eta/a_m$.
+The chosen schedule satisfies $a_mB_m^2\to0$.
+Here is the quantitative reason for this limit.
+Its support-scale estimate eventually gives $B_{m+1}^2\le2B_m^2$,
+whereas the block lengths satisfy $L_m\ge3$ and
+$a_{m+1}=a_m/L_m$. Thus $a_{m+1}B_{m+1}^2\le
+(2/3)a_mB_m^2$ on a tail; iteration proves the limit.
+Choose a common root after all entry levels and after
+$a_mB_m^2\le\eta$ holds on that tail. The origins are then
+separated by $B_m^2$ at every later level. They are distinct at the
+root, so occupancy there is one, within the purchased occupancy
+schedule. This verifies all geometric conditions for the preceding
+Cauchy argument.
+
+Finally apply the all-period finite-difference bounds of
+Section~\ref{sec:ex-fullmesh-fixedbounds}. They give local boundedness and an eventual common modulus on
+$\mathrm{NoHit}_p$, the open set of configurations distinct modulo the
+physical period. The rounded lattice readouts need not themselves be
+continuous; their mesh errors tend to zero. The explicit local bound is
+$C(|x-y|+2d a_N)$ for a fixed finite coordinate dimension $d$,
+so one first chooses $|x-y|$ small and then the mesh tail. Cauchy convergence on the dense ancestral set in this domain extends
+to locally uniform convergence there: cover a compact set by finitely
+many neighborhoods with a common equicontinuity modulus, choose an
+ancestral point in each, and use the triangle inequality between each
+point and its chosen center. The corresponding higher difference
+bounds give the smooth limiting correlations by the argument of
+Section~\ref{ex-smooth-limits}. Restriction to the ordered Euclidean
+configuration domain gives the stated position-space ultraviolet
+limit.
+
+In applying this result to the selected construction, the cutoff
+parameter is $N$ itself and every branch is the history chosen by the
+same shooting construction. The alignment identities identify its
+paths with the common horizon; the selected transfer maps and their
+based local sections identify all of the $\Phi$ and $\omega$ above.
+The common centered service supplies the root allowances and their
+positive tails, the transfer ledgers, and the scale estimates.
+These identifications are part of the common-family assembly: a
+service on a different history would not establish the result here.

@@ -1,0 +1,186 @@
+\section{Absorbing localized logarithms into the forced gas}
+\label{sec:soft-log-fusion}
+The two exponential shifts in \eqref{eq:leaf-tilted-identity} arise
+from an exact regrouping of the forced activities with localized
+logarithms. We prove this regrouping, including its flag constraints
+and the derivative price needed for a tilted family.
+
+All activities and logarithms in this section are real valued.
+Fix a coarse configuration $U$ and let $F(U)$ be its set of flagged
+sites. A hard activity $K_i(U)$ has a nonempty support $X_i$,
+a nonempty inventory $I_i\subseteq X_i$, and a fixed eligibility
+condition. The hard factors and their eligibility predicates are
+measurable, gauge invariant and local on $X_i$, with the same
+final-flag convention as the logarithms below. Nonzero hard values
+satisfy their eligibility condition. The hard gas
+sums over finite families $A$ of pairwise disjoint supports with
+$\bigcup_{i\in A}I_i=F(U)$:
+\[
+                    G(U)=\sum_{A\ {\rm admissible}}\prod_{i\in A}K_i(U).
+\]
+The empty family is allowed precisely when $F(U)=\varnothing$.
+Each logarithmic term $\ell_j(U)$ has nonempty support $Y_j$,
+is measurable and gauge invariant, and is local with the same
+threshold convention as the hard activities. Assume
+\begin{equation}\label{eq:fusion-vanishing}
+                  Y_j\cap F(U)=\varnothing\ \Longrightarrow\ \ell_j(U)=0.
+\end{equation}
+Suppose there are summable uniform majorants for both $K_i$ and
+$\ell_j$. These hypotheses will also imply absolute convergence of
+the new gas; it need not be assumed separately.
+
+Use a disjoint union of the hard and logarithmic labels, assigning
+the factors
+\[
+                        r_i=K_i,\qquad r_j=e^{\ell_j}-1
+\]
+and the supports $X_i$, $Y_j$, respectively. A new activity label
+$C$ is a finite connected set of these labels which contains at
+least one hard label and whose hard supports are pairwise disjoint.
+Write $Z_C$ for the union of all its supports and
+$J_C=\bigcup_{i\in C\ {\rm hard}}I_i$ for its inventory. The new
+activity is
+\begin{equation}\label{eq:fusion-new-activity}
+ \widehat K_C(U)=
+ \mathbf1_{\{Z_C\cap F(U)=J_C\}}
+ \mathbf1_{\{\text{all hard labels in }C\text{ are eligible at }U\}}
+                         \prod_{v\in C}r_v(U).
+\end{equation}
+Its support and inventory are fixed by $C$ before $U$ is chosen.
+Its inventory is nonempty. The extra eligibility test is exactly
+the conjunction of the original tests, not a relaxed test. The
+new gas $\widehat G$ uses pairwise disjoint $Z_C$ and exact coverage
+of $F(U)$ by the $J_C$.
+
+\subsection{The exact compatible-family bijection}
+The claimed identity is
+\begin{equation}\label{eq:fusion-gas-identity}
+                     \widehat G(U)=G(U)\exp\left(\sum_j\ell_j(U)\right).
+\end{equation}
+First expand the right side as a sum over a finite admissible hard
+family $A$ and a finite set $B$ of logarithmic labels:
+\begin{equation}\label{eq:fusion-expanded}
+               \sum_{A\ {\rm admissible}}\sum_{B\ {\rm finite}}
+                    \prod_{i\in A}K_i(U)\prod_{j\in B}(e^{\ell_j(U)}-1).
+\end{equation}
+To justify this, absolute summability of $\ell_j(U)$ implies absolute
+summability of $e^{\ell_j(U)}-1$. Outside finitely many indices
+$|\ell_j(U)|\le1$, and $|e^x-1|\le2|x|$ there. Finite products
+$\prod_j[1+(e^{\ell_j}-1)]$ equal the corresponding exponentials;
+their expansions converge absolutely, dominated by
+$\prod_j(1+|e^{\ell_j}-1|)$. Passing to the limit proves the
+logarithmic part of \eqref{eq:fusion-expanded}. The hard sum is
+absolutely dominated by $\prod_i(1+|K_i|)$, so the double sum is
+also absolutely convergent.
+
+Consider a nonzero term of \eqref{eq:fusion-expanded} and split
+$A\sqcup B$ into connected components of its support intersection
+graph. Every component contains a hard label. In fact, if it contains
+a logarithmic label $j$, its nonzero factor implies $\ell_j(U)\ne0$.
+By \eqref{eq:fusion-vanishing}, some flagged site lies in $Y_j$.
+Exact coverage of all flags by the old hard inventories places that
+site in some $I_i$, $i\in A$. Since $I_i\subseteq X_i$, the labels
+$i,j$ have overlapping supports and lie in the same component.
+Each component is therefore an allowed new label.
+
+Distinct components have disjoint supports. For a component $C$,
+any flag in $Z_C$ belongs to an old inventory $I_i$; its hard support
+then meets $Z_C$ and so $i$ lies in $C$. Conversely every $I_i$ in
+$C$ consists of flags and lies in $Z_C$. Thus $Z_C\cap F(U)=J_C$.
+Every old hard factor in the nonzero term is eligible. The product
+of the new activities over the components consequently equals the
+original term, and their inventories cover $F(U)$.
+
+Conversely, take an admissible new family with nonzero product and
+flatten its labels. Within each component the old hard supports
+are disjoint by definition; between components they are disjoint
+because the whole component supports are disjoint. The old hard
+inventories cover $F(U)$, and the local eligibility indicators in
+\eqref{eq:fusion-new-activity} equal one. Flattening therefore gives
+an admissible hard family and a finite set of logarithmic labels.
+No label is duplicated between components, because its support is
+nonempty and would otherwise meet both disjoint component supports.
+The connected components of the flattened support graph are exactly
+the original new labels. This proves that flattening and taking
+components are inverse on nonzero terms.
+
+The identity follows by this weight-preserving bijection and absolute
+convergence of \eqref{eq:fusion-expanded}. In particular the bijection
+transports its absolute sum to that of the new gas. It also includes
+the empty-family case: when there are no flags, every logarithm
+vanishes and no nonzero new component can occur.
+
+The new activities have the required locality and symmetry. Products
+inherit gauge invariance; flags and all old eligibility predicates
+are gauge invariant, so the two indicators are also invariant.
+Measurability follows from measurable predicates and finite products.
+For locality on $Z_C$, agreement of the configurations and their
+flag data there gives agreement on every constituent support and
+on every eligibility test. Finally the first indicator enforces
+exact local inventory equality. These arguments apply to the
+original addresses and predicates throughout.
+
+\subsection{Preserving the derivative allowance}
+Now let the hard factors be $K_i(\theta,U)$, with the logarithmic
+terms independent of $\theta$. All addresses and eligibility tests
+remain fixed. Let $D\ge0$, and suppose the hard factors have the
+joint bound of \eqref{eq:leaf-joint-bound} with majorants $p_i$ on
+$|\theta|D\le1$, and are independent of $\theta$ whenever their
+support does not contain a fixed anchor $o$. Suppose also that
+$|\ell_j(U)|\le v_j\le1$, and, for an exponent $u\ge0$,
+\begin{equation}\label{eq:fusion-site-inputs}
+ \sup_x\sum_{i:x\in X_i}p_i e^{(u+1)c(X_i)}\le b,
+ \qquad
+ \sup_x\sum_{j:x\in Y_j}v_j e^{(u+1)c(Y_j)}\le w.
+\end{equation}
+Choose $\kappa\ge0$ and define inflated constituent prices
+\[
+          a_i=e^\kappa p_i\quad(i\ {\rm hard}),\qquad
+          a_j=2v_j\quad(j\ {\rm logarithmic}),\qquad
+                              \Gamma=e^\kappa b+2w.
+\]
+For a logarithmic factor the constant joint bound is $2v_j$.
+For a hard factor the joint bound is $e^{-\kappa}a_i$.
+By the product rule for joint bounds, the product in a new label $C$
+has joint bound
+\[
+ e^{-\kappa\#\{i\in C:\ i\ {\rm hard}\}}\prod_{v\in C}a_v
+                           \le e^{-\kappa}\prod_{v\in C}a_v=:p_C.
+\]
+The two indicators in \eqref{eq:fusion-new-activity} are independent
+of $\theta$, so the same bound holds for $\widehat K_C$.
+It is independent of $\theta$ outside the anchor support as well:
+if $o\notin Z_C$, each hard constituent is independent of $\theta$.
+
+The constituent site price at exponent $u+1$ is at most $\Gamma$.
+If $h_B\Gamma\le1$, the distinct connected-set estimate
+\eqref{eq:ope-forest-price}, with reserve one, gives
+\begin{equation}\label{eq:fusion-site-output}
+       \sup_x\sum_{C:x\in Z_C}p_Ce^{u c(Z_C)}
+                           \le e^{-\kappa}(e^\Gamma-1).
+\end{equation}
+Restricting to labels with nonempty hard part and separated hard
+supports only decreases the nonnegative sum. Thus an allowance $A$
+is sufficient whenever
+\[
+                    e^{-\kappa}(e^\Gamma-1)\le A.
+\]
+All the properties in \eqref{eq:leaf-season-bounds} are preserved,
+with the same anchor and insertion debt $D$ and with new site price
+$A$. Applying Section~\ref{sec:leaf-expansion} then gives marked
+forced cost $DA$ on the fused alphabet. The original derivative
+parameter is never rescaled when a logarithmic contribution is
+absorbed.
+
+For uniform absolute convergence in this argument, the finite lattice
+and nonempty supports imply summability of $p_i$ and $v_j$ from
+\eqref{eq:fusion-site-inputs}. The same estimate and
+\eqref{eq:fusion-site-output} give summability of $p_C$. Thus the
+scalar bijection, the parameter derivatives, and the site bounds
+refer to the same series. Applying this construction successively
+to the two localized logarithmic corrections proves the two gas
+shift identities used in \eqref{eq:leaf-tilted-identity}, provided
+their actual corrections satisfy \eqref{eq:fusion-vanishing}, the
+fixed-address conditions and the purchased bounds above. Producing
+those corrections from the nonlinear block integral, and paying these
+inequalities on the selected history, remain the analytic inputs.

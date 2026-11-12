@@ -1,0 +1,153 @@
+\section{Symmetries of the selected stationary germs}
+\label{sec:stationary-germ-symmetry}
+The Taylor construction of the output action uses the symmetries of
+three finite-volume functions: the classical stationary value, the
+completed determinant correction, and the inherited loop evaluated on
+the stationary fine field. We prove these symmetries for the selected
+stationary branch. In particular the determinant argument includes the
+moving frame and its regularization.
+
+Fix a block step, its spanning forest, a positive regulator $\mu$, and
+the analytic stationary branch $U(V)$ in the original rooted tree
+chart. The price gap is strictly positive. Write $t$ for a choice of
+block representatives. For a coarse field $V$ and a joint fine field
+and frame $U$, let $S_t(V,U)$ be the classical action with the blocking
+penalty. Let $H_t(V,U)$ be its Hessian in the joint left coordinates,
+and let $F_t(U)$ be the completed gauge-fixing derivative. In the
+notation of the determinant construction, put
+\[
+ M_t(V,U)=H_t(V,U)+F_t(U)^*F_t(U),\qquad
+ \mathcal B_t(V,U)=\tfrac12\log\det M_t(V,U)
+                                      -\log\det\Gamma(U).
+\]
+Here $\Gamma(U)=d_U^*d_U+C_\mu(U)$ is the same scalar gauge-orbit
+operator, with $C_\mu=\mu^2P_\mu^9$. All matrices in this section
+are real. The positive price gap and positive regulator make the
+relevant determinants positive near the stationary origin, so these
+expressions define analytic real germs there.
+
+\subsection{Transport of the completed determinant}
+A fine gauge transformation $k$ and coarse gauge transformation $u$
+act on the joint field and frame. Their tangent maps in joint,
+fine-link and scalar coordinates are orthogonal: they are products
+of adjoint colour rotations and coordinate permutations. Denote the
+joint tangent map by $T$ and the scalar map by $A$. Equivariance of
+the block ribbon and of its frame logarithm gives
+\[
+                  F_t(U')T=AF_t(U).
+\]
+We verify why this identity includes both parts of the gauge fixing.
+For its frame part, the logarithm near the identity obeys
+$\log(khk^{-1})=\operatorname{Ad}_k\log h$; differentiating the
+block-frame identity gives the intertwining of its derivative. For
+its link part, the covariant difference intertwines the scalar and
+link adjoint maps, and transposition gives the corresponding identity
+for the adjoint difference. The scalar resolvent and hence its ninth
+power intertwine because multiplication and inversion preserve an
+intertwining relation. These are the two summands of $F_t$.
+
+The classical action is gauge invariant. In left increment coordinates
+the transformed action composed with $T$ equals the original action
+near the increment origin. Twice differentiating this identity yields
+\[
+ T^*H_t(V',U')T=H_t(V,U).
+\]
+There is no derivative of $T$ in this calculation: the base fields
+are fixed while differentiating the increment variable. Combining
+this congruence with the gauge-fixing identity and $A^*A=I$ gives
+\[
+ T^*M_t(V',U')T=M_t(V,U).
+\]
+Similarly $\Gamma(U')$ is orthogonally conjugate to $\Gamma(U)$.
+Taking determinants and using $(\det T)^2=(\det A)^2=1$ proves
+\begin{equation}\label{eq:stationary-germ-gauge-det}
+                   \mathcal B_t(V',U')=\mathcal B_t(V,U).
+\end{equation}
+The same transformation preserves $S_t$ and the inherited loop.
+
+Signed lattice transformations require a slightly different tangent
+map. For a transformed link $e$, let $e'$ be the original link it
+reads. If its orientation is preserved, the tangent reads $X_{e'}$;
+if reversed, it reads $-\operatorname{Ad}_{U_{e'}^{-1}}X_{e'}$.
+This map is orthogonal and satisfies the exact increment identity
+\[
+ s^*(\exp(X)U)=\exp(T_UX)\,s^*U.
+\]
+The scalar tangent is the coordinate permutation; the joint tangent
+also includes the corresponding frame permutation. The block
+representative changes from $t$ to the transported choice $r$.
+Equivariance of the ribbon, frame logarithm and covariant difference
+therefore gives, with these tangent maps,
+\[
+ F_t(s^*U)T_U=AF_r(U),\qquad
+ T_U^*H_t(s^*V,s^*U)T_U=H_r(V,U).
+\]
+For the penalty term this uses invariance of the group price under
+inversion and conjugation: reversing both links in its relative
+product leaves its price unchanged. The same resolvent argument
+handles $C_\mu$. Taking determinants as above gives
+\begin{equation}\label{eq:stationary-germ-signed-det}
+                    \mathcal B_t(s^*V,s^*U)=\mathcal B_r(V,U).
+\end{equation}
+This is the completed moving determinant. It does not assert full
+signed covariance of the separate auxiliary fine-lattice pole symbol.
+
+\subsection{Returning a moved solution to the original chart}
+A transformed stationary solution need not lie in the original tree
+chart. Gauge it back using the tree gauge map. This map is analytic
+near the trivial joint field, sends that field to itself, and leaves
+the coarse input fixed when the coarse gauge transformation is the
+identity. The transformed stationarity equation is still zero:
+under the invertible tangent map its first derivative is the original
+zero first derivative. The local uniqueness in the original chart,
+proved by the stationary implicit-function construction, now identifies
+the regauged solution with the selected solution at the transformed
+coarse input. We use uniqueness only in that chart.
+
+The classical value, the determinant correction by
+\eqref{eq:stationary-germ-gauge-det}, and the inherited loop are
+unchanged by this regauging. Consequently their values along any
+analytic stationary probe through the trivial field equal their
+values on the selected branch at that probe's coarse input. The
+argument also applies to parameter-dependent gauge transformations:
+freeze the parameter when comparing the action and matrices, and
+then use analyticity and the local branch uniqueness on a common
+neighborhood.
+
+We must also remove the changed representative $r$ in
+\eqref{eq:stationary-germ-signed-det}. The tested classical actions
+for $t$ and $r$ agree as germs in both the coarse and tree-chart
+variables, by the local branch construction of
+Section~\ref{sec:stationary-action-prices}. Therefore their
+stationary values and their tree-chart Hessians agree. The moving
+Haar identity of Section~\ref{sec:ex-thermal-contact-cancellation}
+expresses each thermal value as that tree Hessian determinant with
+the same Haar factor, or equivalently as the same inherited loop
+plus $\mathcal B_t$ or $\mathcal B_r$. Equality of the tree Hessians
+and cancellation of the common inherited loop give equality of
+$\mathcal B_t$ and $\mathcal B_r$ along the selected branch. Thus
+both tested functions are independent of the representative as germs.
+This uses equality on a neighborhood of the moving stationary point,
+which follows from equality of the joint germs; equality at the
+stationary value alone would not identify their Hessians.
+
+\subsection{The identities used by the Taylor coefficients}
+Apply the preceding argument first to a signed lattice transformation,
+then to constant colour conjugation, and finally to a small variable
+coarse gauge transformation. For the last operation the transformed
+coarse logarithm is its actual nonlinear gauge action; transform the
+joint frame accordingly and gauge the resulting stationary solution
+back to the original chart. Each of the three analytic stationary
+functions is unchanged as a germ under all these operations. The
+inherited loop has the same invariances directly from its gauge
+invariant atoms and finite signed average.
+
+Differentiating these germ identities supplies the signed and colour
+symmetries and the nonlinear gauge identities of the finite-volume
+Taylor coefficients in
+Section~\ref{sec:stationary-output-construction}. When the lower
+positive-degree coefficients vanish, the differentiated nonlinear
+gauge identity reduces to its leading linear Ward identity, as proved
+there. All three functions here use the same stationary branch,
+regulator and finite torus; no symmetry claim is imported from a
+separately chosen stationary solution.

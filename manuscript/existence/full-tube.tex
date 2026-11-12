@@ -1,0 +1,262 @@
+\section{Continuation to the full spacetime tube}
+\label{sec:full-tube}
+The ordered complex-time functions constructed earlier are holomorphic in
+the time variables. Locality needs a larger domain: the spatial variables
+must also become complex. We construct this continuation from the spectral
+support of the boundary distributions. A smooth cutoff near that support
+makes the Fourier--Laplace expression an actual Schwartz test. Keeping the
+cutoff also permits limits in which some imaginary gaps lie on the boundary
+of the forward cone.
+
+Fix $n$ and set $D=4n$. All coordinates in this section are absolute
+coordinates in $\mathbb R^D$, rather than relative coordinates. Write
+\begin{align*}
+ K_n&=\left\{p:\sum_i p_i=0,\quad
+                  \sum_{i=j}^n p_i\in\overline V_+\ (2\leq j\leq n)\right\},\\
+ C_n&=\{y:y_{i+1}-y_i\in\overline V_+\ (1\leq i<n)\},\\
+ C_n^\circ&=\{y:y_{i+1}-y_i\in V_+\ (1\leq i<n)\},
+ \qquad V_+=\{q:q^0>|\mathbf q|\}.
+\end{align*}
+The superscript on $C_n^\circ$ denotes the strict-gap set, which is open
+in the full space. For $n=0$ or $1$ the gap conditions are vacuous.
+The tube is $\mathcal T_n=\mathbb R^D+iC_n^\circ$.
+By Corollary~\ref{cor:cone-support} and
+Theorem~\ref{thm:lorentz-covariance}, the distribution
+$\widehat W_n(v)$ has support in $K_n$, under the hypotheses stated there.
+
+\begin{lemma}[Dual positivity and a strict margin]\label{lem:tube-margin}
+If $p\in K_n$ and $y\in C_n$, then $p\cdot y\geq0$.
+For each $y\in C_n^\circ$ there are $c>0$ and a neighborhood $N$ of
+$y$ such that
+\[
+ p\cdot u\geq c|p|\qquad(p\in K_n,\ u\in N).
+\]
+\end{lemma}
+\begin{proof}
+Put $q_j=\sum_{i=j}^n p_i$. The zero total momentum and telescoping give
+\[
+ p\cdot y=\sum_{j=2}^n q_j\cdot(y_j-y_{j-1}).
+\]
+The Euclidean pairing of two forward-cone vectors is nonnegative:
+$a\cdot b=a^0b^0+\mathbf a\cdot\mathbf b
+\geq a^0b^0-|\mathbf a||\mathbf b|\geq0$.
+This proves the first assertion. Choose $r>0$ with
+$B(y,r)\subseteq C_n^\circ$, and put $c=r/2$.
+For $u\in B(y,r/2)$ and $p\ne0$, the point
+$u-cp/|p|$ belongs to $B(y,r)$ and hence to $C_n$.
+Applying the first assertion to this point gives
+$p\cdot u-c|p|\geq0$. The case $p=0$ is immediate.
+This argument also covers the vacuous gap cases, where $K_n=\{0\}$.
+\end{proof}
+
+\subsection{A smooth cutoff and closed imaginary shifts}
+Let $K_n^{(a)}=\{p:\operatorname{dist}(p,K_n)<a\}$.
+Choose a nonnegative smooth bump $\rho$, supported in $B(0,1/2)$,
+with integral one, and define
+\[
+ \chi=\rho*\mathbf1_{K_n^{(2)}}.
+\]
+Then $0\leq\chi\leq1$, $\chi=1$ on $K_n^{(1)}$, and
+$\operatorname{supp}\chi\subseteq K_n^{(3)}$, with support understood
+as closed support. Indeed, for $p\in K_n^{(1)}$ every point $p-q$ with
+$q\in\operatorname{supp}\rho$ has distance less than $3/2$ from $K_n$;
+the convolution therefore integrates the constant one. Nonzero values
+require distance less than $5/2$ from $K_n$, and their closure still has
+distance at most $5/2<3$.
+Every derivative is globally bounded, since
+\[
+ \partial^\alpha\chi=(\partial^\alpha\rho)*\mathbf1_{K_n^{(2)}},
+ \qquad \|\partial^\alpha\chi\|_\infty
+             \leq\|\partial^\alpha\rho\|_1.
+\]
+Differentiating the compactly supported convolution proves smoothness:
+difference quotients of the smooth factor converge in $L^1$, so their
+convolutions with the bounded indicator converge uniformly. In dimension
+zero simply take $\chi=1$.
+
+For $y\in C_n$ set $a_y(p)=e^{-y\cdot p}\chi(p)$.
+This is a smooth multiplier of Schwartz space. More precisely, for every
+$R$ and multi-index $\alpha$ there is a finite constant $A_{R,\alpha}$
+such that
+\begin{equation}\label{eq:closed-damper-bound}
+ \sup_p|\partial^\alpha a_y(p)|\leq A_{R,\alpha}
+       \qquad(y\in C_n,\ |y|\leq R).
+\end{equation}
+On the closed support of $\chi$ choose $q\in K_n$ with $|p-q|<3$.
+Dual positivity gives $-y\cdot p\leq3|y|$. Each derivative of the
+exponential adds a product of components of $y$, while derivatives of
+$\chi$ are bounded. Leibniz's rule proves
+\eqref{eq:closed-damper-bound}; outside that support all derivatives of
+$a_y$ vanish.
+
+For each $f\in\mathscr S$, the map $y\mapsto a_yf$ is continuous from
+$C_n$ to $\mathscr S$. On a compact frequency ball this follows uniformly
+for every derivative from the explicit smooth formula. Outside a large
+ball, the uniform derivative bounds and Leibniz's rule bound a seminorm
+of weight $k$ by a constant times $(1+|p|)^{-1}$ times finitely many
+seminorms of $f$ of weight $k+1$. The tail is therefore uniformly small.
+Combining the compact and tail estimates proves convergence in every
+Schwartz seminorm, including at closed-cone boundary shifts.
+
+For a fixed label tuple abbreviate $w=\widehat W_n(v)$ and define a
+tempered distribution $W_y$ by
+\begin{equation}\label{eq:partial-damping}
+ W_y(f)=w(a_y\check f),\qquad
+ \check f(p)=(2\pi)^{-D}\int e^{ip\cdot x}f(x)\,dx.
+\end{equation}
+The preceding continuity shows that $W_y(f)$ is continuous in
+$y\in C_n$. Moreover $W_0=W_n(v)$. To see this, multiplication by
+$\chi$ leaves $w$ unchanged because $\chi=1$ on a neighborhood of
+its support. The support assertion applies to Schwartz tests as well as
+compact tests: multiply a test vanishing near the support by compact
+cutoffs, apply distributional support, and pass to the Schwartz limit.
+Fourier inversion now gives $w(\check f)=W_n(v)(f)$.
+
+\subsection{The holomorphic Fourier--Laplace expression}
+For $z=x+iy\in\mathcal T_n$ define
+\[
+ L_z(p)=e^{ip\cdot z}\chi(p),\qquad
+ H_n(v;z)=(2\pi)^{-D}w(L_z).
+\]
+Here $p\cdot z$ is the complex bilinear extension of the Euclidean
+pairing, with no conjugation. The test $L_z$ is in $\mathscr S$.
+In fact, the margin lemma at $y$ and the distance-three support property
+give, on $\operatorname{supp}\chi$,
+\[
+ -y\cdot p\leq3(|y|+c)-c|p|.
+\]
+To obtain this, choose $q\in K_n$ with $|p-q|<3$, use
+$y\cdot q\geq c|q|$, and $|q|\geq|p|-3$.
+Frequency derivatives of $L_z$ only introduce bounded derivatives of
+$\chi$ and powers of the fixed vector $z$. They consequently have
+exponential decay. The same estimates hold in a sufficiently small
+neighborhood of $z$, with a common positive decay rate.
+
+\begin{proposition}\label{prop:full-tube-holomorphic}
+The map $z\mapsto L_z$ is complex differentiable into Schwartz space,
+with derivative $h\mapsto i(p\cdot h)L_z(p)$. Consequently
+$H_n(v;z)$ is holomorphic jointly in all $D$ complex coordinates.
+For each fixed $y\in C_n^\circ$ it grows at most polynomially in $x$,
+and for every $f\in\mathscr S$,
+\begin{equation}\label{eq:tube-integral}
+ W_y(f)=\int H_n(v;x+iy)f(x)\,dx,
+\end{equation}
+with an absolutely convergent integral.
+\end{proposition}
+\begin{proof}
+The difference from the proposed derivative is
+\[
+ L_{z+h}-L_z-i(p\cdot h)L_z
+ =L_z\big(e^{ip\cdot h}-1-ip\cdot h\big).
+\]
+For $|h|\leq1$, every fixed-order frequency derivative of the factor
+in parentheses has absolute value at most
+$C_\alpha |h|^2(1+|p|)^2e^{|h||p|}$.
+At derivative order zero use
+$|e^u-1-u|\leq|u|^2e^{|u|}$; at order one use
+$|e^u-1|\leq|u|e^{|u|}$; at higher orders differentiate the exponential,
+which contributes at least two factors of $h$. These inequalities follow
+directly from its power series. Choose $|h|<c/2$. Leibniz's rule and the
+exponential decay of $L_z$ show that the remainder is $O(|h|^2)$ in
+each Schwartz seminorm. The derivative map is continuous from the
+finite-dimensional parameter space into $\mathscr S$, since multiplication
+by each frequency coordinate is continuous. Composition with the continuous
+linear functional $w$ proves complex differentiability of $H_n$;
+in finite complex dimension this gives holomorphy.
+
+For fixed $y$, put $g(p)=a_y(p)=L_{iy}(p)$. Modulation becomes translation
+under Fourier transformation:
+\[
+ \widehat{L_{x+iy}}(u)=\widehat g(u-x).
+\]
+For $s_{k,j}(h)=\sup_u |u|^k\|D^j h(u)\|$, the triangle inequality
+gives the explicit translation bound
+\[
+ s_{k,j}(h(\,\cdot-x))
+ \leq2^k\big(s_{k,j}(h)+|x|^k s_{0,j}(h)\big).
+\]
+A continuous linear functional on Schwartz space is bounded by finitely
+many such seminorms. Fourier inversion and the displayed bound therefore
+bound $|w(L_{x+iy})|$ by a polynomial in $|x|$. Translation is continuous
+in Schwartz space: its derivatives converge uniformly on compact sets,
+and the same bound with one extra decay weight controls the tails.
+Thus the integrand in \eqref{eq:tube-integral} is continuous and absolutely
+integrable for every Schwartz $f$.
+
+First let $f$ be compactly supported. Fourier inversion, pointwise in $p$,
+gives
+\[
+ a_y(p)\check f(p)
+  =(2\pi)^{-D}\int f(x)L_{x+iy}(p)\,dx.
+\]
+This integral can be passed through $w$ in the Schwartz topology.
+For an explicit justification take Riemann sums in a box containing the
+support of $f$. The integrand is continuous into Schwartz space and has
+compact parameter support. For each seminorm the error is bounded by
+the box volume times its uniform modulus of continuity in that seminorm.
+The sums therefore converge in every seminorm to the displayed function;
+continuity of $w$ gives \eqref{eq:tube-integral}. For general $f$, use
+$f_R=\kappa(x/R)f$ with $0\leq\kappa\leq1$ and $\kappa=1$ near zero.
+Then $f_R\to f$ in Schwartz space, while polynomial growth gives an
+integrable majorant for $|H_n(v;x+iy)f_R(x)|$ independent of $R$.
+Continuity on the left and dominated convergence on the right finish
+the proof.
+\end{proof}
+
+\begin{proposition}[Identification with the ordered-time function]
+\label{prop:tube-identification}
+For strictly increasing scalar heights $y_1<\cdots<y_n$,
+\[
+ H_n(v;X+i d(y))=F_n(t+iy,x;v),
+ \qquad X=((t_1,x_1),\ldots,(t_n,x_n)).
+\]
+For any $Y\in C_n$, the integrals of $H_n(v;X+iY')f(X)$ converge to
+$W_Y(f)$ as $Y'\to Y$ through $C_n^\circ$.
+\end{proposition}
+\begin{proof}
+At fixed strict scalar heights, $\psi_y$ is a tempered distribution by
+the uniform real-position bound on $F_n$. Let $h$ be a compactly supported
+smooth frequency test. Since $\chi=1$ near $K_n$ and $w$ is supported
+there, the exponential testing identity gives
+\[
+ w(a_{d(y)}h)=w(e^{-d(y)\cdot p}h)
+            =\psi_y(\widehat h).
+\]
+Both sides are continuous in $h$ on Schwartz space. Compact-test density
+therefore extends this equality to every $h\in\mathscr S$.
+Apply inverse Fourier transformation: $W_{d(y)}=\psi_y$.
+Equation~\eqref{eq:tube-integral} now identifies the integrals of the
+two proposed continuous functions against every Schwartz test. They agree
+pointwise: a nonzero difference would have, after a constant phase change,
+strictly positive real part on a ball and would be detected by a
+nonnegative smooth bump there. The final boundary statement follows from
+\eqref{eq:tube-integral} and continuity of $W_{Y'}(f)$ on $C_n$.
+\end{proof}
+
+\begin{proposition}[Lorentz covariance in the tube]\label{prop:tube-covariance}
+For every proper orthochronous Lorentz matrix $\Lambda$,
+\[
+ H_n(v;z)=H_n(\rho(\Lambda)v;\Lambda z)
+          \qquad(z\in\mathcal T_n).
+\]
+The action is simultaneous on all slots.
+\end{proposition}
+\begin{proof}
+The matrix $\Lambda$ preserves strict forward gaps, so $\Lambda z$ is
+in the tube. Its dual $A=\Lambda^{-T}$ preserves $K_n$, because it is
+again proper orthochronous and preserves total momentum and suffix cones.
+The Fourier form of Theorem~\ref{thm:lorentz-covariance}, obtained by
+the change of variables of determinant one, is
+\[
+ \widehat W_n(\rho(\Lambda)v)(h\circ A^{-1})
+       =\widehat W_n(v)(h).
+\]
+The two Schwartz functions $L_z$ and $L_{\Lambda z}\circ A$ agree
+near $K_n$. Indeed their exponential factors agree because
+$(Ap)\cdot(\Lambda z)=p\cdot z$. At each $p\in K_n$, both cutoffs
+are one on the neighborhood
+$B(p,1)\cap A^{-1}B(Ap,1)$. Their difference therefore vanishes near
+the support of $w$. Apply the Fourier covariance identity to
+$h=L_{\Lambda z}\circ A$, discard this vanishing difference, and multiply
+by $(2\pi)^{-D}$. This is exactly the claimed equality.
+\end{proof}

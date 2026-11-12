@@ -1,0 +1,285 @@
+\section{The trace coefficient and the passage to all radii}
+\label{sec:trace-asymptotic}
+Two different normalizations enter the trace asymptotic. Translation Ward
+identities fix the amplitude of the stress tensor, while the running Wilson
+coefficient fixes the logarithmic scale. After those normalizations, the
+numerical coefficient comes from a free curvature contraction. Finally one
+must remove the rounded positions and the chosen sequence of scales. We
+separate these operations because none can be replaced by choosing a
+convenient normalization of the trace after the fact.
+
+\subsection{The free scalar contraction}
+Put $N=\dim_{\mathbb R}\mathfrak g$ and use an orthonormal color basis.
+The reference potential covariance in four Euclidean dimensions is
+$\delta^{AB}\delta_{ab}D(x)$, where
+\[
+ D(x)=\frac1{4\pi^2|x|^2},\qquad x\neq0.
+\]
+Indices $a,b,i,j$ range over the four coordinate directions and $A,B$
+over the $N$ colors. The curvature covariance obtained by differentiating
+this potential is $\delta^{AB}C_{abij}(x)$. Explicitly,
+\begin{align*}
+ C_{abij}(x)={}&-\delta_{bj}\partial_a\partial_iD(x)
+       +\delta_{bi}\partial_a\partial_jD(x)\\
+       &+\delta_{aj}\partial_b\partial_iD(x)
+       -\delta_{ai}\partial_b\partial_jD(x).
+\end{align*}
+Write $r=|x|$ and $H_{ai}=\delta_{ai}-2x_ax_i/r^2$. Differentiating
+$D$ gives
+\[
+ \partial_a\partial_iD(x)
+   =\frac1{4\pi^2}(-2\delta_{ai}r^{-4}+8x_ax_ir^{-6}),
+ \qquad
+ C_{abij}(x)=\frac{H_{ai}H_{bj}-H_{aj}H_{bi}}{\pi^2r^4}.
+\]
+For the second identity expand the products of $H$. Their quartic terms
+cancel, leaving exactly the four second-derivative terms above.
+Moreover $H=I-2uu^{\mathsf T}$ for the unit vector $u=x/r$, hence
+$HH^{\mathsf T}=I$. It follows that
+\begin{align*}
+ \sum_{i,j}(H_{ai}H_{bj}-H_{aj}H_{bi})^2
+ &=2\Bigl(\sum_iH_{ai}^2\Bigr)
+       \Bigl(\sum_jH_{bj}^2\Bigr)
+       -2\Bigl(\sum_iH_{ai}H_{bi}\Bigr)^2\\
+ &=2-2\delta_{ab}.
+\end{align*}
+Summing over the sixteen ordered pairs $(a,b)$ gives $24$.
+
+The reference scalar is
+\[
+ O(x)=\frac14\sum_{A,a,b}:F_{ab}^A(x)F_{ab}^A(x):,
+\]
+where the sum is over ordered coordinate pairs. Here the colons mean the
+quadratic Wick field: in its two-point function only contractions between
+the two different positions are included. There are exactly two such
+pairings. Color contraction gives
+$\sum_{A,B}(\delta^{AB})^2=N$, and therefore
+\begin{equation}\label{eq:trace-free-scalar}
+ \langle O(x)O(0)\rangle_0
+ =\frac{2N}{16}\sum_{a,b,i,j}C_{abij}(x)^2
+ =\frac{3N}{\pi^4|x|^8}.
+\end{equation}
+This computation uses the stated reference covariance and Wick rule; the
+identification of the constructed reference hierarchy with those data is
+an earlier construction requirement. The factor $1/4$ and the use of ordered
+pairs are essential to the coefficient.
+
+\subsection{Fixing the physical stress amplitude}
+Here is the finite-dimensional step that prevents an arbitrary scalar
+multiple of the stress tensor from entering the answer. All vector spaces
+in this paragraph are real, including the real spaces of self-adjoint
+tensor fields. Let $\mathcal K$ be the space of centered symmetric tensors
+with the required rotation symmetry, let $\mathcal V$ be the space in
+which their divergences lie, and let
+$D:\mathcal K\to\mathcal V$ be the divergence map. The reference theory
+has corresponding spaces $\mathcal K_0,\mathcal V_0$ and divergence $D_0$.
+The following precise finite-dimensional data are supplied by the stress
+comparison estimates: $D_0$ is onto, $\dim\ker D_0=1$,
+$\dim\mathcal K=\dim\mathcal K_0$, $\dim\mathcal V=\dim\mathcal V_0$,
+and there is a surjective map
+$Q:\mathcal K\to\mathcal V_0$ with $\ker Q=\ker D$.
+Rank--nullity then gives
+\begin{equation}\label{eq:trace-conserved-rank}
+ \dim\ker D=\dim\mathcal K-\dim\mathcal V_0
+           =\dim\mathcal K_0-\dim\mathcal V_0=1.
+\end{equation}
+In the construction the surjectivity of $Q$ is obtained from a surjective
+finite-dimensional comparison composed with a test map into $\mathcal K$;
+a surjective composition is sufficient to make $Q$ itself surjective.
+The asserted comparison and kernel equality remain quantitative inputs here.
+
+Let $R\in\ker D$ be the physical centered stress tensor. At scales
+$r_i>0$ let $U_i$ be the calibrated isomorphism from reference grade-four
+fields to interacting grade-four fields. On tensors set
+\[
+ Y_i(T)_{ab}=r_i^4U_i^{-1}(T_{ab}).
+\]
+Suppose the comparison construction supplies eventually conserved tensors
+$T_i\in\mathcal K$ and positive numbers $B_i$ with
+\begin{equation}\label{eq:trace-trial-stress}
+ Y_i(T_i)\longrightarrow R_0,\qquad
+ B_i\operatorname{tr}Y_i(T_i)\longrightarrow4d_2O.
+\end{equation}
+The normalization test is a shell flux functional $\ell_i$ on tensors.
+For example, fixing a separated spectator configuration $x$, a smooth
+cutoff $\chi$ equal to one near that configuration, a direction $b$, and
+one distinguished field $v$, its form is
+\[
+ \ell_i(T)=-r_i\sum_a\int(\partial_a\chi_i)(z)
+   S_{T_{ab},v_i,\boldsymbol q_i}(z,r_ix)\,dz,
+ \qquad \chi_i(z)=\chi(z/r_i).
+\]
+The derivatives of $\chi_i$ are supported away from the spectators, so the
+integrals involve separated correlations. The translation Ward identity
+for the physical tensor identifies this with a derivative insertion.
+The needed convergence of that insertion and of the comparison shell
+integral has the following exact consequence:
+\begin{equation}\label{eq:trace-flux-test}
+ \ell_i(R)\longrightarrow y\neq0,
+ \qquad \ell_i(T_i)\longrightarrow y.
+\end{equation}
+The same nonzero $y$ occurs because $R_0$ has the reference translation
+Ward identity. The existence of a detecting reference derivative field,
+and the jet estimates justifying these two limits, are part of the stress
+comparison input, rather than consequences of rank--nullity.
+
+\begin{lemma}\label{lem:trace-normalized-stress}
+Equations \eqref{eq:trace-conserved-rank}--\eqref{eq:trace-flux-test} imply
+\[
+ Y_i(R)\longrightarrow R_0,\qquad
+ B_i\operatorname{tr}Y_i(R)\longrightarrow4d_2O.
+\]
+\end{lemma}
+\begin{proof}
+The first limit in \eqref{eq:trace-flux-test} implies $R\neq0$.
+Since the conserved space is one-dimensional, eventually $T_i=c_iR$
+for a real scalar $c_i$. Linearity of $\ell_i$ gives
+$c_i\ell_i(R)=\ell_i(T_i)$. For large $i$ the denominator $\ell_i(R)$
+is nonzero, and the two limits give $c_i\to y/y=1$. In particular $c_i$
+is eventually nonzero and $c_i^{-1}\to1$. Multiply both limits in
+\eqref{eq:trace-trial-stress} by $c_i^{-1}$ and use linearity of $Y_i$
+and of the trace. This yields exactly the asserted limits.
+\end{proof}
+
+Centering the trace in the chosen phase can differ from tracing the
+mixed-state-centered tensor $R$ by a fixed multiple $c\mathbf1$ of the
+unit. If $U_i\mathbf1_0=\mathbf1$ eventually and $B_ir_i^4\to0$, then
+\[
+ U_i^{-1}(B_ir_i^4c\mathbf1)=B_ir_i^4c\mathbf1_0\longrightarrow0.
+\]
+Consequently the selected centered trace $\Theta$ has the same limit
+\begin{equation}\label{eq:trace-moving-label}
+ a_i:=U_i^{-1}(B_ir_i^4\Theta)\longrightarrow4d_2O.
+\end{equation}
+The identities above explain how the physical Ward normalization, rather
+than a later rescaling of $\Theta$, determines this coefficient.
+
+\subsection{Rounded correlations and moving labels}
+We next state exactly the remaining approximation data used to pass from
+\eqref{eq:trace-moving-label} to the trace asymptotic. Write
+$S_\chi(v,w;x_0,x_1)$ for the selected two-point function and
+$S_0(v,w;x_0,x_1)$ for the reference one. Both are bilinear in the field
+labels. The selected centered trace is a scalar under Euclidean rotations,
+and translations preserve its correlations. Thus its two-point function
+has the form
+\begin{equation}\label{eq:trace-radial}
+ S_\chi(\Theta,\Theta;x_0,x_1)=T(|x_0-x_1|)
+       \quad(x_0\neq x_1).
+\end{equation}
+To justify this reduction, an orthogonal map sends the nonzero difference
+$x_0-x_1$ to $-|x_0-x_1|e_0$; equal-length vectors are related by a
+reflection, with the identity covering equality. A translation then sends
+the two points to $-te_0/2,te_0/2$, where $t=|x_0-x_1|$.
+Covariance and the scalar transformation law of $\Theta$ give
+\eqref{eq:trace-radial}.
+
+\begin{assumption}[Trace comparison along scales]\label{input:trace-scales}
+For every sequence $s_n>0$ tending to zero there is a subsequence
+$r_i=s_{n_i}$, with $n_i$ strictly increasing, and comparison data with
+the following properties. The maps $U_i$ and numbers $B_i>0$ satisfy
+\eqref{eq:trace-moving-label} and
+\[
+ \frac{\log(r_i^{-1})}{B_i}\longrightarrow\frac1{2b_0},\qquad
+ b_0=\frac{11C_{\mathfrak g}}{48\pi^2}>0,\qquad d_2=-\frac{b_0}{2},
+\]
+where $C_{\mathfrak g}>0$ is the adjoint Casimir in the fixed normalization.
+There are rounded configurations $q_i(x)\to x$ and errors
+$\varepsilon_i\to0$. Let $E_0$ be the reference grade-four field space
+and fix its finite basis $(e_\alpha)$. At every coordinatewise separated
+configuration $x$ in the interior of the comparison window, eventually
+\begin{align}
+ &\bigl|S_\chi(U_ie_\alpha,U_ie_\beta;r_iq_i(x))
+                    -S_0(e_\alpha,e_\beta;q_i(x))\bigr|\nonumber\\
+ &\hspace{30mm}\leq\varepsilon_i\bigl(1+M_{\alpha\beta}(q_i(x))\bigr),
+ \label{eq:trace-basis-error}
+\end{align}
+where $M_{\alpha\beta}$ is continuous near $x$. The reference correlations
+are continuous there. The comparison window includes a neighborhood of
+$x(t)=(0,(t/2,t/2,t/2,t/2))$ for each $1/2<t<2$.
+\end{assumption}
+This input is the ultraviolet and stress comparison problem. The positive
+trace spectral measure and its Laplace formula are supplied by
+Section~\ref{sec:trace-spectrum} for the same reconstructed centered trace.
+We have not inferred the comparison estimates from compactness.
+
+\begin{lemma}\label{lem:trace-moving-correlation}
+Under Input~\ref{input:trace-scales}, for each eligible fixed $x$,
+\[
+ r_i^8\log^2(r_i^{-1})T(r_i|q_i(x)_0-q_i(x)_1|)
+       \longrightarrow \frac{A}{|x_0-x_1|^8},
+ \qquad A=\frac{3N}{\pi^4}.
+\]
+\end{lemma}
+\begin{proof}
+The right side of \eqref{eq:trace-basis-error} tends to zero, since
+$M_{\alpha\beta}(q_i(x))$ converges and is therefore bounded.
+Continuity of $S_0$ gives convergence of the left correlation to
+$S_0(e_\alpha,e_\beta;x)$. This also holds for convergent, varying labels:
+expand each of them in the fixed finite basis. Every coordinate converges,
+and bilinearity expresses the correlation as a finite sum of products of
+two coordinates and one of the convergent basis correlations. In particular,
+\eqref{eq:trace-moving-label} gives
+\[
+ S_\chi(U_ia_i,U_ia_i;r_iq_i(x))
+ \longrightarrow (4d_2)^2 S_0(O,O;x).
+\]
+The definition of $a_i$, bilinearity and \eqref{eq:trace-radial} identify
+the expression on the left with
+$B_i^2r_i^8T(r_i|q_i(x)_0-q_i(x)_1|)$.
+Multiply by $(\log(r_i^{-1})/B_i)^2$ and use
+\eqref{eq:trace-free-scalar}. The limiting coefficient is
+\[
+ \frac{(4d_2)^2}{(2b_0)^2}\frac{3N}{\pi^4}
+       =\frac{12d_2^2N}{b_0^2\pi^4}
+       =\frac{3N}{\pi^4}.
+\]
+All divisions are legitimate since $b_0>0$ and $B_i>0$.
+\end{proof}
+
+\subsection{Removing rounding and subsequences}
+The rounded separation need not equal the intended radius. Pointwise
+convergence at rounded arguments alone does not identify $T(r_i)$.
+The positive spectral representation resolves this: $T$ is real,
+nonnegative and decreasing, because $e^{-tp_0}$ has those properties for
+each $p_0\geq0$. Integrability at the smaller positive time permits the
+comparison under the integral.
+
+\begin{theorem}\label{thm:trace-asymptotic}
+Input~\ref{input:trace-scales}, with the reference normalization above,
+implies
+\[
+ \lim_{r\downarrow0}r^8\log^2(r^{-1})T(r)=\frac{3N}{\pi^4}>0.
+\]
+\end{theorem}
+\begin{proof}
+First fix any one comparison subsequence $r_i$. Let
+$c_i=r_i^8\log^2(r_i^{-1})\geq0$. For $1/2<t<2$ take the configuration
+$x(t)$ in the input. Its Euclidean separation is exactly $t$, all four
+coordinate separations are nonzero, and
+$w_i(t):=|q_i(x(t))_0-q_i(x(t))_1|\to t$.
+Lemma~\ref{lem:trace-moving-correlation} gives
+\[
+ c_iT(r_iw_i(t))\longrightarrow A/t^8.
+\]
+If $t>1$, eventually $w_i(t)>1$, so monotonicity yields
+$c_iT(r_i)\geq c_iT(r_iw_i(t))$. If $t<1$, eventually
+$0<w_i(t)<1$ and the reverse inequality holds. Given $\epsilon>0$,
+choose $t_+>1$ and $t_-<1$ sufficiently close to one that
+$|A/t_\pm^8-A|<\epsilon/2$. For all sufficiently large $i$, the two
+comparison values are within $\epsilon/2$ of their limits. They bound
+$c_iT(r_i)$ between $A-\epsilon$ and $A+\epsilon$. Thus
+$c_iT(r_i)\to A$.
+
+To obtain the limit at all positive radii, suppose it failed. There would
+be $\epsilon>0$ and a sequence $s_n\in(0,1/n)$, $n\geq1$, for which
+$|s_n^8\log^2(s_n^{-1})T(s_n)-A|\geq\epsilon$ for every $n$.
+Input~\ref{input:trace-scales} supplies a comparison subsequence of this
+same sequence. The preceding argument makes its weighted values converge
+to $A$, contradicting that inequality. Finally $N>0$ for the nonabelian
+simple Lie algebra under consideration, so $A>0$.
+\end{proof}
+Combining this theorem with Theorem~\ref{thm:profile-exclusion} proves the
+finite-profile exclusion from the same trace comparison input. The rank,
+Ward, approximation and scale-selection estimates identified above still
+need to be supplied by the construction; the algebraic and limiting
+passages do not replace them.

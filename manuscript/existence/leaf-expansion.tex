@@ -1,0 +1,299 @@
+\section{Differentiating the nonlinear insertion expansion}
+\label{sec:leaf-expansion}
+The elementary insertion is obtained by differentiating a real tilt of the
+same nonlinear block integral used for the background. This matters for two
+reasons. The background normalization must cancel exactly, and the derivative
+of the gas must retain the original activity addresses. We first prove the
+summation argument which makes this differentiation legitimate, then account
+for the nonprincipal terms.
+
+\subsection{A joint bound for values and derivatives}
+Fix a number $D\ge0$ and an open interval $I$ containing zero. For a
+differentiable real function $f$ and a nonnegative number $p$, say that
+$f$ has joint bound $p$ at $\theta$ if there are $a,b\ge0$ with
+\begin{equation}\label{eq:leaf-joint-bound}
+ a+b\le p,\qquad |f(\theta)|\le a,\qquad
+                         |f'(\theta)|\le Db.
+\end{equation}
+The witnesses $a,b$ may depend on $\theta$. This is stronger than
+bounding the value by $p$ and the derivative by $Dp$ separately. Its
+advantage is that products have no extra factor equal to their degree.
+Indeed, if $f_1,f_2$ have witnesses $(a_1,b_1),(a_2,b_2)$, take
+\[
+       a=a_1a_2,\qquad b=a_1b_2+b_1a_2.
+\]
+The product rule gives the required value and derivative bounds, and
+$a+b\le(a_1+b_1)(a_2+b_2)\le p_1p_2$. Induction gives joint
+bound $\prod_{j\in q}p_j$ for any finite product. A constant multiplier
+$c$ multiplies the bound by $|c|$. These statements include $D=0$.
+For the affine tilt $f+\theta g$, if $|f|\le a$, $|g|\le Db$ and
+$|\theta|D\le1$, the witnesses $(a+b,b)$ give joint bound $a+2b$.
+
+Here is the precise infinite-sum consequence. Suppose $f_i$ is
+differentiable on $I$ and has joint bound $p_i$ at every point of $I$,
+where $\sum_i p_i<\infty$. Both $\sum_i f_i(\theta)$ and
+$\sum_i f_i'(\theta)$ converge absolutely. For a closed segment
+joining $\theta$ and $\theta+h$ inside $I$, the mean value theorem gives
+\[
+ \left|\frac{f_i(\theta+h)-f_i(\theta)}h\right|\le Dp_i.
+\]
+Dominated convergence on the counting measure therefore yields
+\begin{equation}\label{eq:leaf-differentiate-sum}
+             \frac{d}{d\theta}\sum_i f_i(\theta)
+                         =\sum_i f_i'(\theta).
+\end{equation}
+This proof needs no continuity of the individual derivatives. It also
+shows that the choice of an enumeration of the countable index set has
+no effect on the result.
+
+\subsection{The gas derivative and its support}
+Work on a fixed finite coarse lattice $\Lambda$. Let $A_j\ne\varnothing$
+be the support of forced activity $j\in\mathbb N$. The ordinary
+activities, the support and inventory of each forced activity, and the
+admissibility test are held fixed. Only the values $K_j$ change, along
+a real family $F_j(\theta,U)$, with $F_j(0,U)=K_j(U)$.
+Assume that, for $|\theta|D\le1$, these are measurable,
+gauge invariant forced activities with the same locality and flag
+conditions as $K_j$. Also assume
+\begin{equation}\label{eq:leaf-season-bounds}
+ \begin{split}
+ &F_j(\theta,\cdot)=F_j(0,\cdot)\quad\hbox{if }o\notin A_j,\\
+ &F_j(\cdot,U)\text{ has joint bound }p_j\ge0,\\
+ &\sup_{x\in\Lambda}\sum_{j:x\in A_j}p_j e^{u C_B(A_j)}\le s,
+                         \qquad u\ge0.
+ \end{split}
+\end{equation}
+The middle line is required on an open neighborhood of zero contained
+in $\{|\theta|D\le1\}$, for every $U$. Such a neighborhood exists
+also when $D=0$. Since each support is nonempty,
+\[
+                  \sum_jp_j\le |\Lambda|s<\infty.
+\]
+For a finite family $q$ put $p_q=\prod_{j\in q}p_j$.
+Expanding finite products and taking increasing finite subsets of
+$\mathbb N$ proves
+\[
+       \sum_{q\subset\mathbb N\ {
+m finite}}p_q
+              =\prod_j(1+p_j)\le\exp\Bigl(\sum_jp_j\Bigr)<\infty.
+\]
+For fixed $U$, admissibility does not depend on $\theta$. Thus each
+admissible product $\prod_{j\in q}F_j(\theta,U)$ has joint bound
+$p_q$, and an inadmissible term is zero. Equation~\eqref{eq:leaf-differentiate-sum}
+now proves that the gas derivative at zero is
+\begin{equation}\label{eq:leaf-gas-derivative}
+ \mathcal G^{[1]}(k)(U)
+ =\sum_{q\ {\rm admissible}}\sum_{j\in q}
+             k_j(U)\prod_{\ell\in q\setminus\{j\}}K_\ell(U),
+ \qquad k_j(U)=\left.\partial_\theta F_j(\theta,U)\right|_0.
+\end{equation}
+There is also absolute convergence before the marked index is summed.
+For joint-bound witnesses $a_j,b_j$ at zero,
+\[
+ \sum_{j\in q}|F_j'(0,U)|\prod_{\ell\ne j}|K_\ell(U)|
+ \le D\sum_{j\in q}b_j\prod_{\ell\ne j}a_\ell
+ \le D\prod_{j\in q}(a_j+b_j)\le Dp_q.
+\]
+The middle inequality keeps just the terms with exactly one $b$ in
+the product expansion. Summing over $q$ proves absolute convergence
+of the full pointed series. This is the marked gas on the original addresses.
+
+The marked family retains all required structural properties.
+If $o\notin A_j$, its derivative is zero by the first line of
+\eqref{eq:leaf-season-bounds}. Wherever the flag condition requires
+$F_j(\theta,U)=0$, it also requires $k_j(U)=0$. Gauge invariance and
+locality follow by differentiating the corresponding equalities in
+$\theta$. Measurability follows by choosing any nonzero sequence
+$\theta_n\to0$ in the permitted interval and writing $k_j$ as the
+pointwise limit of measurable difference quotients. Finally,
+\[
+ |k_j(U)|\le Dp_j\,\mathbf1_{\{o\in A_j\}},\qquad
+ \sum_j Dp_j\mathbf1_{\{o\in A_j\}}e^{uC_B(A_j)}\le Ds.
+\]
+This proves the flagged cost \eqref{eq:leaf-flag-input}, with exactly
+the insertion debt $D$ and the site bound $s$ in
+\eqref{eq:leaf-season-bounds}. Complexification preserves the same
+majorant.
+
+\subsection{The logarithmic derivative and the exact raw identity}
+The localized regular terms arise from the logarithm of the positive
+normalization. Write this normalization as
+\[
+ a(\theta,U)=\exp\left(\sum_i\ell_i(\theta,U)\right),
+                 \qquad a_0(U)=a(0,U)>0.
+\]
+Suppose that each logarithmic term has a summable joint majorant,
+uniformly for $\theta$ near zero, and that its derivative is the
+localized insertion
+\[
+               \ell_i'(0,U)=\chi_{X_i}(U)h_i(U).
+\]
+The product bound above applies, in particular, to each connected
+cluster term $c\prod_j f_j(\theta)/r!$: its majorant is
+$|c|\prod_jp_j/r!$. Thus an absolutely summable connected-cluster
+majorant justifies differentiating the logarithmic expansion.
+Equation~\eqref{eq:leaf-differentiate-sum} and the chain rule give
+\begin{equation}\label{eq:leaf-log-derivative}
+      a'(0,U)=a_0(U)z(U),\qquad
+                 z(U)=\sum_i\chi_{X_i}(U)h_i(U).
+\end{equation}
+
+The exact tilted block identity, after the two activity regroupings,
+has the form
+\begin{equation}\label{eq:leaf-tilted-identity}
+ \mathcal T\rho_{\rm fine}(U)+\theta\mathcal T f(U)
+       =e^{E(U)}\frac{a(\theta,U)}{a_0(U)}\,b(\theta,U),
+ \qquad b(0,U)=\mathcal G(K)(U),
+\end{equation}
+where $b$ is the gas of $F(\theta)$. All quantities use the same
+background and history. This identity is required for the actual block
+integral, for $|\theta|D\le1$. Differentiating it, using
+\eqref{eq:leaf-gas-derivative} and \eqref{eq:leaf-log-derivative}, yields
+\[
+ \mathcal T f(U)
+ =e^{E(U)}\mathcal G(K)(U)z(U)
+                      +e^{E(U)}\mathcal G^{[1]}(k)(U).
+\]
+As $\rho_{\rm coarse}=e^E\mathcal G(K)$, this is exactly
+\eqref{eq:leaf-raw-identity}. In particular, the derivative of the
+normalization is multiplied by the full coarse density. Omitting
+$a_0^{-1}$ before differentiation would give an incorrect factor.
+
+The normalization cancellation in \eqref{eq:leaf-tilted-identity}
+is algebraic, but uses exact identities. To spell it out, let $G_\theta$
+be the gas before the two regroupings, whose logarithmic shifts are
+$R$ and $S$. Their identities read
+\[
+ b(\theta)=G_\theta e^{R+S},\qquad
+ e^{E+R+S}=h a_0,\qquad
+ h a(\theta)G_\theta=\mathcal T\rho_{\rm fine}+\theta\mathcal T f.
+\]
+Substitution proves \eqref{eq:leaf-tilted-identity}. The two exact gas regroupings and their numerical majorants are
+inputs here, as is the exact block expansion in the last identity.
+Their application must retain the same support, inventory and flag
+data. The scalar differentiation argument does not
+by itself establish the additional transferred singleton-profile
+identity required in Section~\ref{sec:leaf-transfer}.
+
+\subsection{Separating the principal term from the tail}
+Here is the quantitative bookkeeping for the nonprincipal regular
+terms. It identifies precisely which connected estimates are needed.
+Let $j$ be the derivative order, $p$ the spatial weight exponent,
+$B$ the cover radius, and $a\ge0$, $e>0$ the support exponent and its
+reserve. Put
+\[
+ r=pj,\qquad \Phi(C)=[\sigma(1+C)]^r,\qquad
+ P_{e,r}=e^{-r}r!\exp(e),\qquad
+                          A_{e,r}=\sigma^r P_{e,r},
+\]
+where $\sigma=4(2B+1)>0$ and $e^{-r}$ denotes the inverse power of
+the reserve $e$. The exponential series gives
+$[e(1+C)]^r/r!\le\exp(e(1+C))$ for $C\ge0$. Consequently
+\begin{equation}\label{eq:leaf-polynomial-reserve}
+                 \Phi(C)e^{aC}\le A_{e,r}e^{(a+e)C}.
+\end{equation}
+
+The localized logarithmic terms have a nonnegative integer order.
+An order-zero term corresponds to a single thin molecule; the higher
+orders are connected clusters. Terms which do not contain the insertion
+vanish. The remaining terms have supports containing the chosen
+anchor $o$. Write $C_i$ for their cover numbers and $\omega_i\ge0$
+for their cluster majorants. Suppose the connected estimate gives,
+for every $z\ge0$ and every site $x$,
+\begin{equation}\label{eq:leaf-cluster-tail}
+ \sum_{i:\,x\in X_i,\,\operatorname{ord}(i)\ge z}
+              \omega_i e^{(a+e)C_i}
+                      \le t\gamma^z(1-\gamma)^{-1},
+                        \qquad 0\le\gamma<1.
+\end{equation}
+For positive-order terms the derivative estimate is
+$\|h_i\|\le D\omega_i\Phi(C_i)$. Keeping only terms containing the
+insertion, using $o\in X_i$, and applying
+\eqref{eq:leaf-polynomial-reserve} and
+\eqref{eq:leaf-cluster-tail} at $z=1$ gives the total bound
+\begin{equation}\label{eq:leaf-positive-tail}
+ \sum_{\operatorname{ord}(i)\ge1}e^{aC_i}\|h_i\|
+                   \le D A_{e,r}\,t\gamma(1-\gamma)^{-1}.
+\end{equation}
+
+Order zero must be treated separately, because its single-insertion
+molecule is the principal term. If an order-zero molecule containing
+the insertion is not principal, it has at least two elements. Indeed,
+a singleton containing the marked element consists exactly of that
+element. Thus its excess cardinality is at least one. Let $v_i$ be
+its nonnegative marked-molecule majorant, with the restriction that
+excess cardinality is at least one. The mixed marked estimate needed
+here is
+\[
+       \sup_x\sum_{i:\,x\in X_i}v_i e^{(a+e)C_i}\le C_1.
+\]
+Assume the order-zero derivative bound
+$\|h_i\|\le D B_*v_i\Phi(C_i)$ for a nonnegative derivative price
+$B_*$. The molecule-to-order-zero-cluster map is injective, so no
+multiplicity is lost in the sum. Applying the reserve inequality and
+the site estimate at $o$ proves
+\[
+ \sum_{\substack{\operatorname{ord}(i)=0\\i\ {\rm nonprincipal}}}
+                  e^{aC_i}\|h_i\|\le D B_* A_{e,r} C_1.
+\]
+Together with \eqref{eq:leaf-positive-tail}, this gives
+\begin{equation}\label{eq:leaf-tail-produced}
+ M\le D A_{e,r}\left(B_*C_1+\frac{t\gamma}{1-\gamma}\right).
+\end{equation}
+To obtain the reserved mass of Section~\ref{sec:leaf-transfer}, take
+$a$ at least its reserved support exponent. The same calculation with
+a larger $a$ continues to apply if the displayed estimates have that
+reserve.
+
+In the actual insertion normalization,
+$D=m\exp(-\varepsilon C_{\rm fine})/g$, where $g>0$ is the gain and
+$\varepsilon>0$ is the fine support reserve. Therefore, defining
+\[
+ T_{\rm tail}=\frac{A_{e,r}}g
+                   \left(B_*C_1+\frac{t\gamma}{1-\gamma}\right),
+\]
+we have $M\le m e^{-\varepsilon C_{\rm fine}}T_{\rm tail}$.
+This accounts for both the support decay and the normalization gain;
+they are not independent assumptions on $M$.
+
+\subsection{The strict power reserve}
+For completeness, the tail comparison used in choosing the coupling
+can be verified directly from the price exponents. Write
+$H(x)=\beta_{\rm fine}(x)$, with $H(x)\to\infty$. A function has
+upper exponent $q$ if for every $v>q$, eventually
+$|f(x)|\le H(x)^v$. Products add upper exponents and sums with the
+same upper exponent retain it: use half the available exponent margin
+in each bound and absorb the fixed factor two into the remaining
+power of $H$. Fixed powers of a function with upper exponent zero
+still have upper exponent zero.
+
+Let $q<0$ be the connected-expansion exponent. The prices used above
+have the following exponents, with $L$, derivative orders and $e$
+fixed before $x$ is taken large:
+\[
+\begin{array}{c|cccccc}
+\text{price}&A_{e,r}&B_*&C_1&t&\gamma&g^{-1}\\ \hline
+\text{upper exponent}&0&0&3q/2&q&q/2&-q.
+\end{array}
+\]
+Here $\gamma=H^{q/2}$ and $g=H^q$; hence eventually
+$0\le\gamma\le1/2$ and $(1-\gamma)^{-1}\le2$. Both terms defining
+$T_{\rm tail}$ consequently have upper exponent $q/2$.
+Since $q/2<q/4$, the definition gives, eventually,
+\begin{equation}\label{eq:leaf-tail-power}
+                 T_{\rm tail}\le H^{q/4},\qquad
+          M\le m e^{-\varepsilon C_{\rm fine}}H^{q/4}.
+\end{equation}
+This is a strict exponent comparison. An upper exponent zero by itself
+would not justify paying a price from a fixed power of $\log H$.
+
+Sections~\ref{sec:cluster-expansion} and~\ref{sec:mixed-activity-prices}
+prove the connected and mixed site estimates from their vertex prices;
+Section~\ref{sec:soft-log-fusion} proves the two gas regrouping identities
+under their exact flag and reserve hypotheses. The remaining analytic
+work is to construct the actual tilted block expansion, establish its
+vertex prices and localized derivative estimates, and purchase all
+these bounds and their stated upper exponents on the selected history.
+With those inputs, the differentiation, flagged cost, nonprincipal
+tail accounting and strict-power comparison above supply the
+corresponding inputs to the elementary projection estimate.

@@ -1,0 +1,205 @@
+\section{Cumulative transport and the actual Gaussian comparison}
+\label{sec:actual-covariance-transport}
+
+We prove the low-frequency transport bounds on the same atlas as
+Section~\ref{sec:actual-covariance-fourier-window}. Write $\kappa_i$
+for its original real curvature covariance and $\Psi_i$ for the
+installed map from level $i$ to level $i+1$, with the identity on
+colour coordinates. Installation sums all periodic images of the
+cover row. Fix a comparison order $d\ge1$ and a plateau of smoothing
+order $J$ with $d-1\le J-2$.
+
+\subsection{Moving differences through an actual step}
+
+For a word $w$ of $j\le d-1$ coordinate directions, the selected
+transport has a real quotient row $Q_w$ satisfying
+\begin{equation}\label{eq:actual-transport-difference}
+ \Delta_w\Psi_i=Q_w\Delta_w,\qquad
+ \sup_x\sum_y|Q_w(x,y)|\le R L_i^{-j-2},
+\end{equation}
+where $L_i=a_i/a_{i+1}$ and $R\ge1$ depends only on the kernel
+penalty and adjacent smoothing orders. The quotient needs proof;
+a bound on the left side alone would not suffice.
+
+Theorem~\ref{thm:ex-lattice-wire-tower-strip}, applied to the actual
+pulse-multiplied curvature column, gives its differentiated row
+strip cost $C L_i^{-j-2}$. The original pulse's strip cost simply
+multiplies the established column cost. To move coarse differences
+to the right, divide the symbol successively by $e^{ip_a}-1$.
+The division is regular on the real principal cube before summing
+aliases. On the principal alias use
+\[
+ e^{ip_a/L_i}-1=
+ \frac{e^{ip_a}-1}{L_i\operatorname{rail}_{L_i}(p_a/L_i)}.
+\]
+The denominator has a positive lower bound by the principal rail
+estimate. On a nonprincipal alias $q=(p+2\pi l)/L_i$, the column
+contains the box filter $A(q)^J$. The geometric-series identity is
+\[
+ (e^{iq_a}-1)A(q)=(e^{ip_a}-1)s_a(q),
+\]
+where $s_a$ is a product of the other coordinate box filters and a
+phase, divided by $L_i$. For $j$ directions use $j$ box factors.
+The remaining power $A^{J-j}$ has nonnegative degree. The remaining
+multiplier is continuous by the nonprincipal denominator bounds
+already proved. Thus the full differentiated symbol has a continuous
+quotient by the product of all coarse differences.
+
+A coefficientwise division also preserves a narrower strip bound.
+In one coordinate use the exact finite identity
+\[
+ \frac{e^{inp_a}-1}{e^{ip_a}-1}
+ =\begin{cases}
+ \sum_{h=0}^{n-1}e^{ihp_a},&n>0,\\
+ -\sum_{h=n}^{-1}e^{ihp_a},&n<0,\\
+ 0,&n=0.
+ \end{cases}
+\]
+There are $|n|$ terms with no greater displacement. Reducing width
+$\sigma$ to $\sigma/2$ costs at most $2/\sigma$, since
+$|n|e^{\sigma|n|/2}\le(2/\sigma)e^{\sigma|n|}$.
+This divides the symbol minus its value on $p_a=0$; that value
+vanishes by the preceding divisibility. Equality off the coordinate
+hyperplane extends to it by continuity. Repeat along $w$;
+divisibility by the remaining factors survives at each step.
+There are finitely many words of length at most $d-1$, so one
+narrower strip and one cost work for all. The scalar factor
+$L_i^{-j-2}$ is unchanged. Periodization and the triangle inequality
+turn this cover bound into an absolute row bound; the sum over the
+six two-form types contributes their cardinality. This proves
+\eqref{eq:actual-transport-difference} with a cost chosen before $L_i$.
+
+Closedness is preserved on all cochains, including harmonic ones.
+Write the actual step as $B_f T H_c$, using reciprocal pulse $B$
+and pulse $H$. Its exterior transport $C$ satisfies
+\[
+ C d_cB_c=d_fB_fT,\qquad B_cH_c=I.
+\]
+Multiplying by $H_c$ gives $d_f\Psi_i=Cd_c$. No global exactness
+of the input cochain is required. Reality follows from the real
+cover coefficients.
+
+\subsection{Absolute rows of a product}
+
+For $\ell\le k$ put $m=k-\ell$,
+$\mathcal L=\Psi_{k-1}\cdots\Psi_\ell$ and
+$S=a_\ell/a_k=\prod_{i=\ell}^{k-1}L_i$.
+If every $j$th difference of $f$ is bounded by $v$, iteration gives
+\[
+       \|\Delta_w\mathcal Lf\|_\infty
+                           \le R^mS^{-j-2}v.
+\]
+This holds for arbitrary real $f$. For a specified output row,
+take $f(y)$ to be the sign of $\Delta_w\mathcal L(x,y)$, using
+zero when that entry vanishes. Then $|f|\le1$ and every $j$th
+difference has absolute value at most $2^j$. Consequently
+\begin{equation}\label{eq:actual-cumulative-row}
+ S^{j+2}\sum_y|\Delta_w\mathcal L(x,y)|\le R^m2^d.
+\end{equation}
+The sign test need not be closed. Reality and preservation of
+closedness pass separately to the product.
+
+Fix $b\ge6$ and $a>0$. After $R$, choose a plateau block length
+$L>1$ so that $4(b+2)\log R\le a\log L$. With
+$m=\lceil(b+2)\log H/\log L\rceil$ we have
+\[
+ R^m\le RH^{a/4}\le H^{a/2},\qquad R^m2^d\le H^a
+\]
+eventually. The second inequality absorbs fixed $2^d$ into
+$H^{a/2}$. Also $S=L^m\ge H^{b+2}$.
+The original covariance entries have a fixed bound $C_J$ uniform
+in period, by summing the bounded curvature multiplier over its
+normalized finite Fourier grid. Paying $C_J\le H^a$, and writing
+$P=H^a$, gives
+\begin{equation}\label{eq:actual-low-data}
+ S^{j+2}\sum_y|\Delta_w\mathcal L(x,y)|\le P,
+                  \qquad |\kappa_\ell(y,z)|\le P.
+\end{equation}
+One finite table of costs is selected before the block length,
+then its clearance threshold. On the allowed plateau the prescribed
+number of steps is exactly $m$. All estimates therefore concern
+the same chosen level and history, uniformly in period.
+
+\subsection{Mean and covariance after normal ordering}
+
+For a real closed coarse cochain $u$ with $\|u\|_\infty\le P$,
+set $\mu=\mathcal Lu$ and
+$B=\mathcal L\kappa_\ell\mathcal L^{\mathsf T}$.
+Finite summation gives
+\begin{align}\label{eq:actual-low-moments}
+ S^{j+2}|\Delta_w\mu(x)|&\le P^2,\\
+ S^{j+2}S^{h+2}|\Delta_w^x\Delta_v^yB(x,y)|&\le P^3.
+ \notag
+\end{align}
+For the second inequality bound each covariance entry by $P$;
+the remaining double sum factors into the absolute row sums of
+\eqref{eq:actual-low-data}. The mean and both covariance arguments
+are closed, by the original closedness and its preservation.
+
+Use $r=H^b$, $a=\lambda/4$, $0<\lambda\le1/4$, and the purchased
+condition $S\ge rH^2$. For $j\ge0$,
+$r^{j+2}H^4\le S^{j+2}$. Hence the weighted means are at most
+$H^{-4}P^2\le H^{-3}$. Retaining only one factor $H^{-4}$ for
+the covariance gives the convenient bound
+\begin{equation}\label{eq:actual-low-error}
+ r^{j+h+4}|\Delta_w^x\Delta_v^yB(x,y)|
+                              \le H^{-4+3\lambda/4}.
+\end{equation}
+
+Fix distinct continuum positions $x_i$ and their selected rounded
+lattice centres $z_i$ at magnification $r$. Required offsets have
+subpower size in $H$, so normalized pair displacements stay in
+compact sets away from zero. The free covariance and the finitely
+many derivatives used here are bounded on these sets.
+For an off-diagonal pair, multiply
+\eqref{eq:actual-native-model} by $r^{j+h+4}$.
+The singular error is at most $CH/r=CH^{1-b}\le H^{-4}/2$
+eventually, since $b\ge6$. The period error is bounded by a fixed
+power of $H$ divided by the lattice side. The selected mesh estimates
+make it at most $H^{-4}/2$ eventually, uniformly in physical period.
+Thus the scaled error is at most $H^{-4}$, and the scaled covariance
+is bounded by $H^{\lambda/8}$ eventually.
+
+Let $K^0_{ij}$ be the polynomial test-cochain covariance built
+from the free jet covariance at $z_i/r$. For both derivative orders
+$j,h\le d-2$, at the origins its
+weighted differences differ from the corresponding free curvature
+derivatives by at most $H^{-4}$. Indeed a difference of order $j$
+kills test cochains of degree less than $j$, and the degree-$j$
+term recovers its homogeneous curvature tensor exactly. Terms of
+degree $q>j$ carry $r^{j-q}\le r^{-1}$. Expanding the finite
+covariance matrix in the jet basis bounds the total error by
+$C/r\le H^{-4}$ eventually. The coefficient constants are fixed
+and the free entries are bounded on the compact configuration set.
+If one endpoint has order $d-1$, its derivative of $K^0_{ij}$
+is zero, since all test cochains have degree at most $d-2$.
+Set $K^0_{ii}=0$, in accordance with free normal ordering.
+
+The actual normal-ordered covariance is
+\begin{equation}\label{eq:actual-normalordered-covariance}
+ \Gamma_{ij}(s,t)=\mathbf1_{i\ne j}
+   \kappa_k(z_i+s,z_j+t)-B(z_i+s,z_j+t).
+\end{equation}
+Its diagonal is $-B$, generally nonzero. At origins with both
+$j,h\le d-2$, the two
+comparison errors and \eqref{eq:actual-low-error} give
+\[
+ r^{j+h+4}|\Delta_w^s\Delta_v^t(\Gamma_{ij}-K^0_{ij})(0,0)|
+ \le2H^{-4}+H^{-4+3\lambda/4}\le H^{-3}
+\]
+eventually; only the last term is needed on the diagonal. For $d=1$
+this range of origin derivatives is empty.
+At a top-order endpoint the polynomial comparison vanishes and
+\[
+ H^{\lambda/8}+H^{-4+3\lambda/4}\le H^{\lambda/4}=P.
+\]
+These, with the mean and closedness bounds, are precisely the
+finite-reading estimates with $P=H^{\lambda/4}$ and $E=H^{-3}$
+used in Section~\ref{sec:allarity-coordinate-calibration}.
+They hold uniformly over the admitted closed real coarse backgrounds.
+Positive semidefiniteness of $\Gamma$ is not assumed.
+
+Application must retain the purchased plateau and clearance conditions
+and the identification of this atlas with the actual reader law.
+These belong to the common history and reader construction; an
+arbitrary symmetric model cannot replace that identification.

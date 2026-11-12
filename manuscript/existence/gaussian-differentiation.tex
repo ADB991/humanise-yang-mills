@@ -1,0 +1,270 @@
+\section{Differentiating the projected Gaussian integrals}
+\label{sec:gaussian-differentiation}
+The Gaussian used in a local activity varies with the coarse field.
+Differentiating its expectation therefore involves both the activity
+and the Gaussian density. We first reduce to the coordinates read by
+that activity, and then use the compensated change of variables to
+put all nearby integrals on one reference probability space.
+
+\subsection{Projection and the relative density}
+Let $C$ be the positive covariance of
+Section~\ref{sec:local-covariance}, in counting colour coordinates.
+For a finite coordinate set $I$, let $C_I$ denote its principal
+submatrix. Projection of the centered Gaussian with covariance $C$
+is the centered Gaussian with covariance $C_I$. Indeed its
+characteristic function at $\xi\in\mathbb R^I$ is
+$\exp(-\langle\xi,C_I\xi\rangle/2)$, by extending $\xi$ by
+zero. A function depending only on these coordinates can therefore
+be integrated against this marginal; the other coordinates need
+not be independent. The marginal density is
+\begin{equation}\label{eq:gaussian-local-density}
+ p_C(z)=(2\pi)^{-N/2}
+   \exp\{-\tfrac12\log\det C-\tfrac12 z^TC^{-1}z\},
+ \qquad N=|I|,
+\end{equation}
+where here and below $C$ denotes the projected covariance when
+there is no ambiguity. Positivity of a principal submatrix follows
+by extending a nonzero vector by zero. Formula
+\eqref{eq:gaussian-local-density} follows by diagonalizing $C$ and
+changing variables in the product of $N$ one-dimensional standard
+Gaussian densities. It is also valid in dimension zero, with
+determinant and density equal to one.
+
+Fix a base coarse parameter $y_0$ and write $C_0=C(y_0)$. For fixed
+frozen Haar variables, the compensated transformation induces a
+diffeomorphism $T_y$ of the $I$ coordinates with $T_{y_0}z=z$ and
+positive Jacobian $J_y(z)$. The exact expectation identity is
+\begin{equation}\label{eq:gaussian-relative-identity}
+ \int F_y(w)p_{C(y)}(w)\,dw
+ =\int J_y(z)\frac{p_{C(y)}(T_yz)}{p_{C_0}(z)}
+                  F_y(T_yz)\,d\gamma_{C_0}(z).
+\end{equation}
+The positive reference density cancels, leaving the ordinary
+change-of-variables formula on the right. The set $I$ includes all
+colours of every bond in the activity's enlarged read support.
+The transformation acts bond by bond, and both it and its Jacobian
+on $I$ depend only on the old coordinates in $I$. Locality therefore
+identifies the transformed marginal integrand with the original
+activity evaluated on the transformed full field. This explains
+why the determinant in this formula is $\det C_I$, rather than the
+determinant of the covariance on the full torus.
+
+\subsection{Polynomial rank costs at the base point}
+There is a useful finite-order improvement over estimating a full
+determinant by its permutation expansion. If $A(y_0)=0$ is an
+$N\times N$ matrix, multilinearity in the rows gives
+\begin{equation}\label{eq:gaussian-small-minors}
+ \det(1+A(y))=\sum_{J\subseteq\{1,\ldots,N\}}\det A_J(y).
+\end{equation}
+To verify the formula, in each row choose either the row of $A$
+or the corresponding identity row. The identity rows force their
+columns, leaving precisely the principal minor on the chosen set.
+Every term of $\det A_J$ is a product of $|J|$ functions vanishing
+at $y_0$. Its derivatives of order less than $|J|$ vanish, because
+at least one factor receives no derivative. Thus derivatives through
+order $j$ in \eqref{eq:gaussian-small-minors} use only $|J|\le j$.
+
+Suppose every entry belongs to $\mathcal B_j(v,1;y_0)$, with
+$v\ge0$. A minor of size $r\le j$ has at most $r!$ permutation
+terms. The product rule bounds each term by amplitude
+$(1+v)^j$ and derivative scale $j$. There are at most
+$(j+1)(1+N)^j$ subsets of size at most $j$, since
+$\binom Nr\le N^r$. Consequently
+\[
+ \det(1+A)\in
+ \mathcal B_j\bigl((j+1)(1+N)^j j!(1+v)^j,j;y_0\bigr).
+\]
+For $j=0$ this just states the value one.
+
+Apply this to $A(y)=C(y)C_0^{-1}-1$. Weighted row bounds for the
+derivatives of $C$ and for $C_0^{-1}$ supply the required entry
+bounds by matrix multiplication. Since
+\[
+ \log\det C(y)-\log\det C_0
+       =\log\det(1+A(y))
+\]
+near $y_0$, composition with the logarithm near one gives a
+derivative bound polynomial in $N$, at each fixed order. The
+inverse-matrix estimates of Section~\ref{sec:normalization-jets}
+similarly control $C(y)^{-1}$. If each coordinate of $T_yz$ has
+derivatives bounded by $W$ at $y_0$, the product rule applied to
+$(T_yz)^TC(y)^{-1}(T_yz)$ adds a factor at most $N$ times the
+inverse row price and a fixed-order polynomial in the derivative
+scales and $W$.
+
+Subtract the value of that quadratic form at $y_0$ and combine it
+with the relative log determinant. The exponent is zero at $y_0$.
+The exponential partition formula from
+Section~\ref{sec:packet-estimates} proves a relative-density bound
+of amplitude one and a derivative scale polynomial in $N$ and
+these prices. This is a finite-rank derivative estimate at the
+base point. It does not yet justify taking derivatives under an
+integral over unbounded $z$.
+
+\subsection{An integrable bound on one open neighbourhood}
+We prove the additional assertion needed for that interchange.
+Let $y$ range over a finite-dimensional real parameter space and
+let $C(y)$ be a $C^j$ family of symmetric matrices near $y_0$,
+with $C_0$ positive definite. Suppose
+\[
+ C_0^{-1}\ge\lambda 1,\qquad\lambda>0.
+\]
+Let $z$ be an arbitrary sample and let $w_z(y)$ be a family of
+$C^j$ maps such that, on one neighbourhood of $y_0$, uniformly in
+$z$ and in any auxiliary frozen variables,
+\begin{equation}\label{eq:gaussian-bounded-displacement}
+ w_z(y)-z\in\mathcal B_j(B,1;y),\qquad B\ge0.
+\end{equation}
+Then there is a nonnegative function $M$, integrable for
+$\gamma_{C_0}$, which bounds every derivative through order $j$ of
+$p_{C(y)}(w_z(y))/p_{C_0}(z)$ on a possibly smaller common
+neighbourhood.
+
+By continuity and finite dimension, shrink the neighbourhood so
+that $C(y)$ is positive definite and
+$C(y)^{-1}\ge(\lambda/2)1$. For an explicit verification of the
+last inequality, make every entry of $C(y)^{-1}-C_0^{-1}$ at most
+$\lambda/(2(1+N))$ in absolute value. Its row and column sums are
+at most $\lambda/2$, so its quadratic form is bounded in absolute
+value by $(\lambda/2)\|z\|^2$. On a smaller closed neighbourhood,
+all required derivatives of $C^{-1}$ and $\log\det C$ have finite
+bounds. These bounds may depend on $N$ and the fixed period.
+
+The derivatives of $w_z$ have amplitude at most $B+\|z\|$.
+Thus the logarithm of the numerator has derivatives bounded by
+$K(1+\|z\|)^2$ for a fixed $K$. Moreover
+\[
+ \|z\|^2\le2\|w_z(y)\|^2+2B^2,
+\]
+and hence
+\[
+ -\tfrac12\log\det C(y)
+       -\tfrac12 w_z(y)^TC(y)^{-1}w_z(y)
+ \le K_0+\lambda B^2/4-\lambda\|z\|^2/8.
+\]
+The repeated exponential chain rule now bounds every derivative
+through order $j$ of the relative density by
+\begin{equation}\label{eq:gaussian-open-envelope}
+ M(z)=K_1\frac{e^{-\lambda\|z\|^2/8}
+                         (1+\|z\|)^{2j}}{p_{C_0}(z)}.
+\end{equation}
+This is integrable against $\gamma_{C_0}$: multiplication by its
+density cancels the denominator, and a polynomial times a strictly
+decaying Gaussian is integrable in finite dimension. Explicitly,
+$(1+t)^{2j}\le e^{2jt}$ for $t\ge0$, and completing the square
+absorbs $2jt$ into half the negative quadratic exponent. The
+remaining integral factors into $N$ finite one-dimensional Gaussian
+integrals. The same proof works when $z$ is a measurable function
+of a larger probability space with law $\gamma_{C_0}$.
+
+\subsection{Why the activity satisfies the neighbourhood hypotheses}
+For the compensated map of
+Section~\ref{sec:compensated-variation}, write
+$u_0=\nu_0+\beta^{-1/2}z$ and
+$F_M(u)=u+\psi(M,u)$. Its displacement in Gaussian coordinates is
+\begin{equation}\label{eq:gaussian-compensated-displacement}
+ T_yz-z=\sqrt\beta\,
+   \{\psi(M(y),u_0)+\nu_0-\nu(y)\}.
+\end{equation}
+Here the fixed coupling satisfies $\beta>0$. The perturbation
+$\psi$ and all its parameter derivatives are uniformly bounded
+for all $u_0$: outside the fixed radius-$2d$ ball it is zero, and
+inside that ball compactness applies. The unmasked mean and its
+derivatives are bounded on a common neighbourhood uniformly in
+the frozen Haar variables. Indeed the frozen cut logarithms are
+bounded smooth functions of the coarse variation; the finitely
+many source sums, row matrices and principal inverses have uniform
+derivative bounds there. All principal determinants stay nonzero
+after one common shrink. Formula
+\eqref{eq:gaussian-compensated-displacement} proves
+\eqref{eq:gaussian-bounded-displacement}. The same compact argument
+and the finite product rule bound the Jacobian derivatives uniformly.
+
+The remaining activity integrand also has bounded derivatives on
+one neighbourhood, uniformly in the Gaussian sample. The required
+localization is worth spelling out. Compare two fluctuation arrays
+$u,\widetilde u$ such that at each bond either they agree or both
+have norm greater than $4a\tau$. Every cutoff of width at most
+$2a\tau$ is then equal on the two arrays, and if that cutoff is
+nonzero the arrays agree at that bond. A masked chart logarithm
+therefore agrees as well. A packet's nonzero protected product
+forces agreement throughout its $304B$ region, which contains the
+read stencils of all its $200B$ action terms. Thus its logarithmic
+exponent and its complete value agree.
+
+For a linear Gaussian ratio term, the score vanishes on inactive
+bonds and its hot endpoint carries the doubled cutoff. For a
+quadratic ratio term, every nonzero matrix itinerary has two hot
+endpoints. To check this, $AC-1$ is zero if either coordinate is
+inactive, since both $A$ and $C$ equal the identity on that
+coordinate. In a product of copies of $-(AC-1)$ followed by $A$,
+the first nonzero factor forces the initial endpoint hot, and the
+last factor cannot join a hot coordinate to an inactive one.
+Both endpoint cutoffs therefore force equality of the coordinates
+actually used by the quadratic term. This argument holds nearby
+as long as the principal inverses exist; it does not require the
+nearby point to satisfy the original sector inequalities.
+
+It follows that every fixed activity factor is unchanged when
+large initial fluctuation coordinates are replaced by bounded
+ones, provided this comparison is made through the compensated
+map and the fine field is held fixed. Use radial truncation at
+radius $3d$: it leaves the radius-$2d$ ball unchanged. Outside
+that ball $F_M$ is the identity; both the old and truncated
+coordinates then remain beyond the cutoff threshold, since
+$8a\tau\le d/2$. Inside it, the coordinates agree. The resulting
+bounded input family has uniform parameter derivatives by the
+compact chart construction. The frozen fine factors remain merely
+bounded measurable functions: their regular activities, forced
+activities, likelihoods and contractions use the supplied
+finite-volume bounds for the chosen labels. No differentiation
+of these frozen factors is required.
+
+For each fixed finite product of activity factors, finite sums,
+products and smooth compositions on bounded sets now give a
+common bound on all derivatives through order $j$. The local
+action, normalization and chart functions used here are the
+unmasked smooth extensions already constructed. Hard selection
+indicators are fixed. Together with
+\eqref{eq:gaussian-open-envelope} and the Jacobian bound, this
+gives an integrable envelope for the entire right-hand side of
+\eqref{eq:gaussian-relative-identity}, also after integrating the
+frozen variables against their Haar probability law.
+
+\subsection{Interchange and quantitative use}
+Here is the precise final differentiation argument. Suppose
+$G(y,\omega)$ is measurable in $\omega$, $C^j$ in $y$ on an open
+neighbourhood, and for each $r\le j$ its $r$th derivative is
+bounded there by an integrable function $M_r(\omega)$.
+Then
+\begin{equation}\label{eq:gaussian-differentiate-integral}
+ D^r\int G(y,\omega)\,d\mu(\omega)
+       =\int D_y^rG(y,\omega)\,d\mu(\omega),\qquad r\le j.
+\end{equation}
+Derivative measurability follows in a fixed finite basis by taking
+limits of difference quotients of measurable functions. Dominated
+convergence first gives continuity of each derivative integral.
+For the induction step, the fundamental theorem of calculus on a
+short parameter segment writes its difference quotient as the
+integral of the next derivative along that segment. The bound
+$M_{r+1}$ permits dominated convergence as the segment shrinks.
+Starting at order zero proves the derivative identity and its
+continuity successively through order $j$.
+
+Apply this to the common reference expression above. It proves
+smoothness of each projected activity integral. If a sharper
+estimate at the base point gives
+$G(\cdot,\omega)\in\mathcal B_j(q(\omega),D;y_0)$ and
+$\int q\,d\mu\le Q$, then
+\eqref{eq:gaussian-differentiate-integral} and the triangle
+inequality give
+\[
+ \int G(\cdot,\omega)\,d\mu(\omega)
+            \in\mathcal B_j(Q,D;y_0).
+\]
+The neighbourhood envelope establishes the validity of
+differentiation; the sharper moment estimate supplies its
+period-independent price. Those moment estimates must be paid
+separately. In particular the period-dependent constants used to
+justify \eqref{eq:gaussian-differentiate-integral} are never used
+as uniform renormalization bounds.

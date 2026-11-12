@@ -1,0 +1,142 @@
+% From the selected finite-volume mission to its limiting local price.
+\section{From finite-volume mileage to the selected chart price}
+\label{sec:ex-lattice-trace-mission-price}
+
+This section proves the passage from the selected finite-volume mission to
+its local price in the limiting table. The finite-volume separation estimate
+of Proposition~\ref{prop:ex-lattice-finite-volume-pairing} supplies the
+numerical bound used by the mileage argument. The mission's funded probe,
+its local approximations, and the selected chart convergence are stated
+explicitly below; this section does not claim to produce those analytic
+receipts.
+
+Write $i$ for the scale parameter, $j_i$ for its selected frame level,
+and $k_i=\operatorname{summit}(j_i)$ for the associated volume scale. Let $a_i>0$ be the field scale,
+$b_i>0$ the zoom factor, and $r_i=a_i b_i$ the physical insertion scale.
+Let $\mathcal L$ be the ultrafilter on finite-volume indices $p=(N,s)$ used
+by the construction, and define
+\[
+ \tau_i(q)=\exp\!\left(\frac{q}{10^4}
+      (\log\widehat\beta_{j_i})^{48}\right).
+\]
+A mission consists of arrays $t_i(p)$ and $x_i$ such that, for all
+sufficiently large $i$, $t_i(p)\to x_i$ along $\mathcal L$. Moreover,
+there is one fixed integer $m$ such that for all sufficiently large $i$ and
+for $\mathcal L$-almost every $p=(N,s)$, a probe of complexity at most
+$m$, based at level $j_i$, has marked grade-five field $a_i^5t_i(p)$.
+For such a probe, its measured marker $P$ has coefficient size at most
+$a_i^5\widehat\beta_{k_i}^{m}$ and is odd under the central signed
+inversion. Its toll receipt supplies a bounded local observable $U$ whose
+pullback to the finite-volume chamber is interior and whose root error
+relative to $P$ is at most $\tau_i(-200)$. For every pair of distinct
+coarse sites $x,z$, it also supplies the bound
+\[
+ |\mathbb E_{i,p}[\widetilde U(x)\widetilde g(z)]|\leq\tau_i(-200),
+\]
+where tildes denote pullback to the finite-volume chamber. Here $g$ is any
+coarse test whose pointwise absolute value is at most $\tau_i(150000)$,
+which is interior to the fixed grade-four locality window, and whose
+pullback is chamber-interior, provided that the window fits in the
+available room at frame level $j_i$ inside the volume at scale $k_i$. For
+the selected grade-four insertion, a localization receipt supplies a local
+approximation $V$ with root error at most $\tau_i(-300)$ and bounds for
+the two measured root costs. These are the quantitative inputs consumed
+by the finite-volume mileage estimate; their construction remains an
+upstream obligation.
+
+Fix a reference grade-four field $w$. Let $H_{i,p}(w)$ be its finite-height
+insertion approximant, which is a raw grade-four label. The selected
+hierarchy receipt asserts $H_{i,p}(w)\to y_i(w)$ along $\mathcal L$, where
+$y_i(w)$ is the limiting raw field and $\pi_4 y_i(w)=U_i^{(4)}w$. It also
+ensures, on an
+$\mathcal L$-large set, that the finite transfer is admissible, the marker
+and insertion lie in the same reflection chamber, and the two coarse sites
+are distinct. Let $\xi_i$ be the cover vector with first component $\lceil b_i\rceil$
+and every other component $1$. Set $z_i=b_i^{-1}\xi_i$ componentwise.
+The scale relation $r_i=a_i b_i$ gives $r_i z_i=a_i\xi_i$. Thus the
+physical measurement point has the two cover coordinates
+\[
+ \ell_i=(\xi_i,0).
+\]
+The separation receipt for these coordinates supplies the distinct-site
+hypothesis.
+
+Set $\Theta_i=\tau_i(-100)$.
+\begin{proposition}[Mission-to-chart price transfer]
+\label{prop:ex-trace-mission-price-transfer}
+Fix $w$. Assume the mission properties above. Assume that for all
+sufficiently large $i$ and $\mathcal L$-almost every finite-volume index
+$p$, mileage applies to the probe and insertion and gives
+\begin{equation}
+ \left|\mathbb E_{i,p}\!\left[
+   A_{i,p}(a_i^5t_i(p);x_i^*)\,B_{i,p}(H_{i,p}(w);y_i^*)
+                 \right]\right|\leq\Theta_i.
+ \label{eq:ex-trace-mission-finite-price}
+\end{equation}
+Here $\mathbb E_{i,p}$ is the normalized finite-volume expectation,
+$A_{i,p}$ and $B_{i,p}$ are the measured grade-five and grade-four
+observables at the two distinct sites $x_i^*,y_i^*$ determined by $\ell_i$.
+Assume the selected-table limit theorem:
+whenever $u_p\to u$ and $v_p\to v$ along $\mathcal L$,
+\begin{equation}
+ \mathbb E_{i,p}[A_{i,p}(u_p;x_i^*)B_{i,p}(v_p;y_i^*)]
+   \longrightarrow \mathcal M_i(\pi_5u,\pi_4v),
+ \label{eq:ex-trace-mission-table-limit}
+\end{equation}
+where $\pi_d$ is the limiting projection in grade $d$ and $\mathcal M_i$
+is the selected table's two-entry pairing at the scale-$r_i$ point.
+Then, for all sufficiently large $i$ (with threshold allowed to depend on
+$w$),
+\[
+ \left|\mathcal M_i\!\left(a_i^5\pi_5x_i,\ U_i^{(4)}w\right)\right|
+      \leq\Theta_i.
+\]
+\end{proposition}
+\begin{proof}
+Fix a sufficiently large $i$ for which the mission, mileage, and chart
+receipts hold. The set on which the probe and finite-volume insertion
+conditions hold belongs to $\mathcal L$. On this set,
+\eqref{eq:ex-trace-mission-finite-price} places every finite expectation in
+the closed disk of radius $\Theta_i$. Mission convergence gives
+$a_i^5t_i(p)\to a_i^5x_i$, and the chart receipt gives
+$H_{i,p}(w)\to y_i(w)$ with $\pi_4y_i(w)=U_i^{(4)}w$. Applying
+\eqref{eq:ex-trace-mission-table-limit} shows that the finite expectations
+converge to $\mathcal M_i(a_i^5\pi_5x_i,U_i^{(4)}w)$; linearity of $\pi_5$
+was used to take the fixed scalar $a_i^5$ outside. Since the disk is
+closed, the limit satisfies the same bound. This proves the proposition.
+\end{proof}
+
+\subsection{The finite-volume mileage receipt}
+
+The error scale is multiplicative:
+$\tau_i(q)\tau_i(q')=\tau_i(q+q')$, and it is increasing in $q$. In the
+finite-volume estimate, both measured markers have root cost at most
+$\tau_i(5)$. The probe approximation contributes root error
+$\tau_i(-200)$ and separated-site price $\tau_i(-200)$; the local
+insertion approximation contributes root error $\tau_i(-300)$. The
+reflection-positive product bound controls the two cross terms by products
+of root costs. Bilinearity gives the exact decomposition
+\[
+ \langle P,Q\rangle=\langle U,V\rangle
+   +\langle P,Q-V\rangle+\langle P-U,V\rangle.
+\]
+The three terms are bounded respectively by
+\[
+ \tau_i(-200),\qquad \tau_i(5)\tau_i(-300)=\tau_i(-295),\qquad
+ \tau_i(-200)(\tau_i(5)+\tau_i(-300))
+      =\tau_i(-195)+\tau_i(-500).
+\]
+Thus the sum is at most $4\tau_i(-195)$. The selected growth receipt gives
+$4\leq\tau_i(1)$ eventually, hence
+$4\tau_i(-195)\leq\tau_i(-194)\leq\tau_i(-100)$.
+Proposition~\ref{prop:ex-lattice-finite-volume-pairing} proves this
+three-term estimate from the explicit root and reflection-positive bounds.
+The remaining hard content is construction of the probe, local
+approximation, and root-cost receipts at the selected scales.
+
+In the source route, the finite-cover construction produces the mission's
+fixed-complexity probe, while convergence of the selected core field
+produces its limiting value. The limit transfer above is complete once
+those receipts are supplied. Producing the funded cover, the probe witness,
+and the quantitative localization receipts remains part of the larger
+construction.

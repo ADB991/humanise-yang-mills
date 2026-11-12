@@ -1,0 +1,29 @@
+# Public selected service producer: evidence
+
+Status: author draft; independent mathematical and source-correspondence review pending. Source revision: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+
+## Scope
+
+The prose is `manuscript/existence/centered-public-service.tex`. It follows the public selected-run path that supplies the per-period service receipt used by `tentF` and the finite-volume moment bound. It proves the finite field assembly from same-history receipts. It does not claim to rederive the upstream bought run, tariff, spring, or all nonlinear coupon inequalities.
+
+## Source correspondence
+
+| Assertion | Source declarations and files | Notes |
+|---|---|---|
+| The selected run carries one trail and a purchased same-history record | `YM.PhysicalNext.Repeat.Legato.Run`; `Run.ramp`; `YM.PhysicalNext.Repeat.Legato.Run.again`; `Lean/YM/FullVolume/Cross.lean` | `Run.ramp` obtains the purchased alloy/campaign and calls `Bandage.squad` once for its selected trail, thresholds, transfer stories, doors, Makes, climbing doors, and Freight records. `Run.again` calls `Forge.ahead` using this same purchased tuple, then stores its `Ties` output and weak specifications. |
+| The funded-history producer returns Scrim/Geyser on the same selected object | `YM.PhysicalNext.Repeat.Legato.ahead`; `YM.PhysicalNext.Repeat.Legato.Unlatched`; `Lean/YM/FullVolume/Forge.lean`, `Unlatch.lean` | The actual `Ahead` field is the `Unlatched` record. The output of `Forge.ahead` includes `Scrim`, whose `costs` field is `Geyser`, together with tabs, Fridge, portfolios, and purchases. In `ahead`, the local completion/reception proof is unpacked and assembled into same-run aroma and orderwise weak completion; the Scrim field is passed unchanged. This is the source boundary for the paid Geyser receipt. |
+| Geyser to Ponds conversion | `YM.MergeProof.Geyser.pond`; `YM.PhysicalNext.Repeat.Legato.Campaign.ponds`; `Lean/YM/FullVolume/Fields/Pond.lean`, `Lean/YM/FullVolume/Shroud/Pool.lean` | `Geyser.pond` copies room, bank, Brine, monotonicity, height, and terminal-music clauses into `Ponds`, extending initial Brine to the requested reference by reindexing. The public `Campaign.ponds` construction makes the retention clause at each scale from `glassDoor`, the selected tariff and field exponents; it attaches room/bank budgets, `evaporates` for Brine, monotonicity, and the gradewise height/Freight fields from the selected purchase. |
+| Retention and local doors | `YM.PhysicalNext.Repeat.Legato.Bandage.glassDoor`; `YM.MergeProof.Stove.escape`; `Lean/YM/FullVolume/Shroud/WAx.lean`, `Lean/YM/MergeProof/Stove.lean` | `glassDoor` converts the same local realization and tariff into the finite Volant ticket and Duty record, using the two endpoint support-exponent lower bounds. `Stove.escape` supplies Moonlit history from the selected nest, Minty conditions, high exponents, and climbing doors. The monograph treats those selected inputs as records from the funded package, then explains their exact use in the retention field. |
+| Ponds fields are consumed by the moment producer | `YM.MergeProof.Ponds.past`; `YM.MergeProof.Accent.occursT`; `YM.MergeProof.Accent.tentF`; `Lean/YM/FullVolume/Fields/Pond.lean`, `Lean/YM/FullVolume/Dusk/Placed.lean`, `Tackle.lean` | `Ponds.past` combines the gradewise Freightage, Fiesta, Cherry, Banks, Brine, and geometry inputs to produce the labelwise Nectar service. `occursT` calls `Ponds.past`, obtains servedness using `Frost.upper`, uses `punctual` for weighted coefficient/activity response, and applies `vista` for finite backward moment transfer. `tentF` gets migration, occupancy, and Drake data from the opened-copy construction and calls `occursT`. |
+| Full public root-test package | `YM.PhysicalNext.Repeat.Legato.Campaign.ridgeT`; `YM.MergeProof.Accent.oboes`; `YM.MergeProof.puddingR`; `Lean/YM/FullVolume/Dusk/Cargo.lean`, `Graff.lean`, `Mauve.lean` | `ridgeT` constructs `Mauve.costs` by invoking `Campaign.ponds` for every period/reference/volume; its other fields are the selected late thresholds, `Scrim` rates, Fridge, and mark portfolios. `oboes` uses these costs and the selected schedule to produce the uniform root-test bound (`Wcmain`). `puddingR` then converts that bound and the same selected root receipts into a representative label/root-error statement. |
+
+## Explicit upstream boundary
+
+The purchased `Ahead`/`Unlatched` record is the actual source of the `Scrim`/`Geyser` data used by this route. Its input includes the selected alloy purchase, transition tariff, delayed scale choices, same-trail Makes, climbing doors, and Freight records. The finite record assembly above does not prove those purchases or the analytic ticket estimates in isolation. The separate finite response, local-transfer, geometry, and birth-receipt units detail their corresponding downstream uses and exact hypotheses. Further derivation of any upstream `Unlatched` field belongs to the selected-run producer path, not to an unselected auxiliary construction.
+
+## Checks
+
+- Inspected only the selected run, same-history producer, and immediate Ponds/moment consumers named above; no Lean files were changed and no Lean build was run.
+- No literature citation is applicable to this finite project-specific packaging step.
+- The combined temporary wrapper `/tmp/ym-centered-fragment.tex` compiled with `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/ym-centered-fragment-build /tmp/ym-centered-fragment.tex`, producing 38 pages. Pages 37–38, containing this service and local-price argument, were rendered and inspected. Eleven unresolved references come from omitted OPE, lattice rate/step, and column-subpower units; the only overfull box is in the separate lattice chapter.
+- The blueprint checker remains subject to the shared parent-owned `blueprint/units/YM-000026/unit.json` record, which is absent in this worktree.

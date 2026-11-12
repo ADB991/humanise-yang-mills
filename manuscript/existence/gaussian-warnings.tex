@@ -1,0 +1,286 @@
+\section{Simultaneous Gaussian warnings and integrated activities}
+\label{sec:gaussian-warnings}
+
+The expansion contains factors which are small only after integration.
+A warning factor, for example, need not be small on a configuration
+with a large fluctuation. What is small is the probability that all
+warnings in a given term are present. Their fluctuations are correlated,
+and several warnings may be witnessed by the same Gaussian coordinate.
+We first account for both effects explicitly.
+
+\subsection{A bound for correlated coordinates}
+Let $I$ be a finite coordinate set, and let $Z$ be a centred real Gaussian
+vector with covariance matrix $A$. Suppose
+\begin{equation}\label{eq:warning-covariance}
+ A\ge0,\qquad v^{\mathsf T}Av\le M\sum_{i\in I}v_i^2
+ \quad(v\in\mathbb R^I),\qquad M\ge0.
+\end{equation}
+The covariance may be singular. For $J\subseteq I$, $t\in\mathbb R$
+and $s\ge0$,
+\begin{equation}\label{eq:warning-rectangle}
+ \mathbb P\{|Z_i|\ge t\text{ for every }i\in J\}
+ \le 2^{|J|}\exp\{(-st+Ms^2/2)|J|\}.
+\end{equation}
+Indeed, for each choice of signs $\epsilon_i\in\{-1,1\}$ on $J$, put
+$v_i=\epsilon_i$ on $J$ and $v_i=0$ elsewhere. On the corresponding
+orthant event, $v\cdot Z\ge t|J|$. The Gaussian exponential identity gives
+\[
+ \mathbb E e^{s v\cdot Z}
+ =e^{s^2v^{\mathsf T}Av/2}
+ \le e^{Ms^2|J|/2}.
+\]
+For completeness, write $Z=A^{1/2}G$ with $G$ a vector of independent
+standard real Gaussians. In each coordinate, completing the square in
+$(2\pi)^{-1/2}\int e^{hu-u^2/2}\,du$ gives $e^{h^2/2}$;
+multiplication proves the identity, including zero eigenvalues of $A$.
+Markov's inequality applied to $e^{s v\cdot Z}$ bounds one orthant by
+$e^{(-st+Ms^2/2)|J|}$, and the union of the $2^{|J|}$ orthants contains
+the event in \eqref{eq:warning-rectangle}. This also proves the formula
+when $J$ is empty.
+
+Let $\Lambda$ be the coarse periodic lattice, with its lattice distance.
+Write
+\[
+ b_D=(2D+1)^4.
+\]
+Every ball of radius $D$ has at most $b_D$ sites, including on small
+periods where some representatives coincide. Assign each Gaussian
+coordinate a site $g(i)\in\Lambda$, with at most $p$ coordinates at any
+site. Warning addresses form a finite set $K$, with site map
+$o:K\to\Lambda$ and at most $m$ addresses at any site. For a set
+$X\subseteq K$, define
+\[
+ \mathcal C(X;t,D)=
+ \{z:\ \forall a\in X\ \exists i\in I,
+       \ d(o(a),g(i))\le D,\quad |z_i|\ge t\}.
+\]
+These are measurable sets, being finite intersections of finite unions
+of closed coordinate inequalities.
+
+\begin{proposition}\label{prop:warning-crowding}
+If $H\ge0$ and
+\begin{equation}\label{eq:warning-threshold}
+ M/2+H b_Dm\le t,
+\end{equation}
+then
+\begin{equation}\label{eq:warning-joint}
+ \mathbb P\{Z\in\mathcal C(X;t,D)\}
+ \le (2b_Dp\,e^{-H})^{|X|}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For each warning in $X$, choose a witnessing coordinate within distance
+$D$. There are at most $(b_Dp)^{|X|}$ such assignments. For one assignment,
+let $J$ be the set of distinct coordinates chosen. Then $|J|\le|X|$.
+Conversely, any fixed chosen coordinate can witness at most $b_Dm$
+addresses, since all such addresses lie within distance $D$ of its site.
+Thus $|X|\le b_Dm|J|$. Applying \eqref{eq:warning-rectangle} with $s=1$,
+the event belonging to this assignment has probability at most
+\[
+ 2^{|J|}e^{(-t+M/2)|J|}
+ \le 2^{|X|}e^{-Hb_Dm|J|}
+ \le 2^{|X|}e^{-H|X|}.
+\]
+The union bound over assignments proves the assertion. If a warning
+has no possible coordinate, its event is empty; the empty set of
+warnings has probability one. Thus no nonemptiness exception is needed.
+\end{proof}
+
+\subsection{The scales used for warnings}
+Fix the block length $L$. Let $h=h(x)=\widehat\beta_f$ be the fine
+reference coupling, so that $h=x+c_L$ for a constant $c_L$ depending
+on the fixed group and block length. For sufficiently large $x$, put
+\begin{equation}\label{eq:warning-scales}
+ B=\lceil(\log x)^2\rceil,\qquad
+ P=\exp\{(\log\log h)^2\},\qquad
+ d=1+B+(\log h)^2,\qquad \tau=P/\sqrt h.
+\end{equation}
+The actual fine coupling satisfies $h/2\le\beta\le2h$.
+The fluctuation is written
+$\mu+\beta^{-1/2}\operatorname{erect}(Z)$; $\mu$ is its mean and
+$\operatorname{erect}$ identifies colour coordinates with bond variables.
+For a fixed $\xi>0$, the coordinate warning threshold is
+\[
+ t=\xi\tau\sqrt\beta\ge \xi P/2.
+\]
+The weaker constant $1/2$ is convenient and follows from
+$\sqrt\beta\ge\sqrt h/2$.
+
+For the actual warning alphabet, its density per coarse site is bounded
+by the fixed integer
+\[
+ m=L^4\#\{\text{plaquette axes}\}
+       +2\#\{\text{axes}\}+1+L^4
+       +L^4\#\{\text{axes}\}.
+\]
+The five first types are fine plaquette masks, coarse bond masks,
+coarse bond likelihoods, coarse site likelihoods, and fine site
+contractions; the last type is a fine bond cutoff. The coordinate
+density $p$ is the fixed bound for the tubular colour coordinates.
+Both bounds count distinct addresses, including different types at the
+same site.
+
+Suppose that the physical covariance satisfies
+\eqref{eq:warning-covariance} with a constant $M$ independent of the
+period and of $x$. Set $D=2B$, $\varepsilon=\xi/4$, and
+\begin{equation}\label{eq:warning-price}
+ E(x)=2b_{2B}p\exp\{-\varepsilon\sqrt P\}.
+\end{equation}
+Then, for all sufficiently large $x$, uniformly in the period and
+in $X$,
+\begin{equation}\label{eq:warning-actual-price}
+ \mathbb P\{Z\in\mathcal C(X;t,2B)\}\le E(x)^{|X|}.
+\end{equation}
+Here is the scale comparison needed to justify this assertion. First
+$d\le7(\log h)^2$ eventually, since $h=x+c_L$, $\log x\le2\log h$
+eventually, and $B<(\log x)^2+1$. For every fixed $a>0$, integer
+$r\ge0$ and constant $C\ge0$,
+\begin{equation}\label{eq:warning-monitor-pays}
+ C d^r\le P^a\quad\hbox{eventually}.
+\end{equation}
+Taking logarithms, it suffices to compare a constant plus
+$2r\log\log h$ with $a(\log\log h)^2$; the latter dominates.
+Since $b_{2B}m$ is bounded by a fixed multiple of $d^4$,
+\eqref{eq:warning-monitor-pays} implies
+$b_{2B}m\le\sqrt P$ and $M/2\le\varepsilon P$ eventually. Consequently
+\[
+ M/2+\varepsilon\sqrt P\,b_{2B}m
+ \le2\varepsilon P=\xi P/2\le t.
+\]
+Proposition~\ref{prop:warning-crowding}, with $H=\varepsilon\sqrt P$,
+gives \eqref{eq:warning-actual-price}.
+
+In fact $E$ decays faster than every negative power of $h$. To see this,
+write $y=\log\log h$. Then $\log h=e^y$ and
+$\sqrt P=e^{y^2/2}$. For each $N>0$,
+\[
+ \varepsilon e^{y^2/2}-N e^y-\log(2pb_{2B})\longrightarrow+\infty,
+\]
+because $\log b_{2B}=O(y)$ and $e^{y^2/2}/e^y\to\infty$.
+Thus $E(x)\le h^{-N}$ eventually. The thresholds may depend on
+$L,\xi,M,p,m,N$; they do not depend on the lattice period.
+
+\subsection{Why a nonzero warning forces an excursion}
+We spell out the deterministic step used to connect the preceding
+probability estimate with the actual factors. Let $q$ be the number of
+colour coordinates on one bond. On the event that all coordinates
+within distance $B$ of a site obey $|Z_i|\le\xi\tau\sqrt\beta$,
+\[
+ \|\beta^{-1/2}\operatorname{erect}(Z)_b\|\le q\xi\tau,
+ \qquad
+ \|\mu_b+\beta^{-1/2}\operatorname{erect}(Z)_b\|
+       \le (C+q\xi)\tau
+\]
+for the bonds in question, provided $\|\mu_b\|\le C\tau$ there.
+The first inequality follows by the triangle inequality in an
+orthonormal colour basis; it does not require a sharp Euclidean bound.
+Choose $q\xi\le1$ and an outer cutoff plateau $a\ge C+1$.
+The bond cutoff is then identically one throughout this smaller event.
+
+The remaining masks use the corresponding fine and predictor
+estimates. In the source construction these estimates supply, outside
+the enlarged seed region, a local error bound $\delta\tau$ for each
+fine or predictor reading, together with the guide bounds
+$A\tau/L^2$ and $A\tau$, respectively. The local error has three
+parts: the mean error, the change under the controlled fluctuation,
+and the nonlinear remainder. Each is bounded by $\delta\tau/3$.
+If the positive quadratic constants of the fine action and predictor
+penalty are $c_f,c_p$, the resulting bounds are
+\begin{equation}\label{eq:warning-plateau}
+ \text{fine reading}\le \frac{2}{\sqrt{c_f}}(A/L^2+\delta)\tau,
+ \qquad
+ \text{predictor reading}\le \frac{2}{\sqrt{c_p}}(A+\delta)\tau.
+\end{equation}
+Choose $\delta=\sqrt{c_f}/32$, then $L$ large enough that
+$A/L^2\le\delta$, and finally
+$W>(2/\sqrt{c_p})(A+\delta)$. The first coefficient in
+\eqref{eq:warning-plateau} is at most $1/8<1/4$, and the second is
+strictly less than $W$. The corresponding fine and predictor masks
+therefore equal one; the local likelihood factors also equal one by
+the same local plateau estimates. Taking $\xi$ smaller if necessary
+bounds the linear fluctuation error by $\delta\tau/3$; the two
+remaining errors are eventually below $\delta\tau/3$ by their
+strictly smaller scale estimates.
+
+A warning factor is either a bounded cutoff times one of these
+factors minus one, or a bond cutoff minus one. Factors inside their
+compulsory seed region are defined to be zero. Hence, under the
+stated local estimates, a nonzero warning at an address implies a
+coordinate excursion within distance $2B$ of its assigned site.
+The local estimates producing \eqref{eq:warning-plateau}, and the
+uniform physical covariance bound, remain explicit analytic inputs
+here. The probability and integration arguments do not assume or
+replace their production.
+
+\subsection{Integration before multiplication of prices}
+Fix a tree sector. Its integration variables are a Haar variable $Y$
+and the single Gaussian vector $Z$ above. Their reference measure
+$\nu(dY)\gamma_A(dZ)$ is a product of probability measures. All factors
+in a term are evaluated at the same $(Y,Z)$.
+
+A term is indexed by a finite set $S$ of distinct vertices of four
+types: connected packets, forced activities, exponential logarithmic
+corrections, and warnings. Assume these factors are measurable and
+satisfy the following uniform pointwise bounds:
+\[
+ \begin{array}{c|c}
+ \text{vertex }i&|f_i(Y,Z)|\le c_i\\ \hline
+ \text{packet with }n_i\text{ seeds}&
+      C_0 e^{(s-g)n_i}\\
+ \text{forced activity }i&v_i\\
+ \text{logarithmic correction }i&w_i\\
+ \text{warning }i&T
+ \end{array}
+\]
+Here all displayed prices are nonnegative. The price $w_i$ bounds the
+actual factor $e^{\ell_i}-1$ as well as the logarithmic quantity when
+that additional estimate is used elsewhere. A disconnected packet is
+assigned factor and price zero. Write $X(S)$ for the distinct warning
+addresses in $S$. Suppose each individual nonzero warning forces its
+coordinate excursion, as established under the local inputs above.
+Thus for every finite $S$, a nonzero product forces
+$Z\in\mathcal C(X(S);t,2B)$.
+Then
+\begin{equation}\label{eq:warning-sector-mass}
+ \int\left|\prod_{i\in S}f_i(Y,Z)\right|\,d\nu\,d\gamma_A
+ \le \prod_{i\in S}\widetilde c_i,
+ \qquad
+ \widetilde c_i=
+ \begin{cases}E(x)T,&i\text{ a warning},\\c_i,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+Indeed the integrand is bounded by
+$\mathbf1_{\mathcal C(X(S);t,2B)}(Z)\prod_{i\in S}c_i$.
+It is integrable, being measurable and uniformly bounded on a
+probability space. Fubini's theorem and
+\eqref{eq:warning-actual-price} give a bound
+$E(x)^{|X(S)|}\prod c_i$, which is exactly the right-hand side of
+\eqref{eq:warning-sector-mass}. In particular, no product of marginal
+warning probabilities has been used.
+
+The same calculation covers one marked insertion. Let its distinguished
+vertex be $i_*$ and let its measurable factor $F_*$ satisfy
+$|F_*|\le w_*$. Multiply it by a cutoff taking values in $[0,1]$.
+Define the marked term to be zero unless $i_*\in S$, and otherwise
+replace $f_{i_*}$ by this cutoff times $F_*$. Applying
+\eqref{eq:warning-sector-mass} to $S\setminus\{i_*\}$ gives
+\begin{equation}\label{eq:warning-marked-mass}
+ \int |\text{marked term}|\,d\nu\,d\gamma_A
+ \le \mathbf1_{\{i_*\in S\}}w_*
+       \prod_{i\in S\setminus\{i_*\}}\widetilde c_i.
+\end{equation}
+If the removed vertex was a warning, its probability price is removed
+as well. The remaining warnings alone are used in the event bound.
+This is the marked vertex price required for the connected sums of
+Section~\ref{sec:mixed-activity-prices}.
+
+For the actual factors one may take
+$T=1+\#\{\text{frame tags}\}+\#\{\text{point tags}\}$.
+Indeed the unmodified mask or likelihood lies in $[0,T]$, the enforcing
+cutoff lies in $[0,1]$, and $T\ge1$, so its cutoff times the difference
+from one has absolute value at most $T$. A bond cutoff minus one is
+bounded by one. Thus the small warning price in
+\eqref{eq:warning-sector-mass} is supplied by the proved Gaussian
+estimate. The packet, forced, and logarithmic pointwise bounds in the
+table are separate analytic obligations; \eqref{eq:warning-sector-mass}
+is the precise passage from those bounds to integrated vertex products.

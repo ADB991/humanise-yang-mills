@@ -1,0 +1,223 @@
+\section{Regrouping the exclusion correction}
+\label{sec:forced-exclusion}
+The regular gas in \eqref{eq:forest-regular-separated} has been
+extracted, but the forced family still carries its exclusion factor.
+We now put this factor into local forced activities. The factorials
+and signs of the repeated logarithmic terms are retained throughout.
+
+Fix a coarse configuration $V$. Continue to write $k_j$ for a forced
+activity with support $Y_j$ and nonempty inventory $I_j\subseteq Y_j$,
+and $c_\Gamma$ for a regular logarithmic cluster term with nonempty
+support $X_\Gamma$. We have summable majorants
+\[
+ |k_j|\le p_j,\qquad |c_\Gamma|\le q_\Gamma,\qquad
+                  \sum_jp_j+\sum_\Gamma q_\Gamma<\infty.
+\]
+These follow on a finite lattice from the previously purchased rooted
+bounds. Here $q_\Gamma$ is specifically the absolute Ursell coefficient
+divided by the tuple factorial, multiplied by the purchased regular
+constituent prices. Thus the rooted cluster estimates apply to this
+majorant itself, not merely to $|c_\Gamma|$.
+All component addresses, support sets and eligibility tests
+are fixed before their values at $V$ are evaluated.
+
+For a finite admissible forced family $A$, the exclusion correction
+has the absolutely convergent expansion
+\begin{equation}\label{eq:exclusion-multiplicities}
+ e^{-P_{Y_A}}=
+ \sum_{\substack{n:\ \text{finite support in the cluster alphabet}\\
+                n_\Gamma>0\Rightarrow X_\Gamma\cap Y_A\ne\varnothing}}
+               \prod_{\Gamma:n_\Gamma>0}
+                                   \frac{(-c_\Gamma)^{n_\Gamma}}{n_\Gamma!},
+ \qquad n_\Gamma\in\mathbb N.
+\end{equation}
+For a finite cluster alphabet this is the product of the ordinary
+exponential series. For the whole alphabet, the sum of the absolute
+products is at most $\exp(\sum_\Gamma q_\Gamma)$; increasing finite
+subsets and dominated convergence prove the identity. Moreover the
+sum after multiplication by $\prod_{j\in A}k_j$ and summation over
+$A$ is absolutely dominated by
+\begin{equation}\label{eq:exclusion-absolute}
+                 \prod_j(1+p_j)\exp\left(\sum_\Gamma q_\Gamma\right).
+\end{equation}
+The restriction that every retained cluster meet $Y_A$ is essential:
+the correction deletes exactly those regular clusters.
+
+A finite decorated family consists of a finite set of forced labels
+and a finite set of cluster labels, with a positive integer multiplicity
+attached to each cluster label. Give a forced label its support $Y_j$
+and multiplicity one, and a cluster label its support $X_\Gamma$.
+Its graph has one vertex per distinct label, with edges for intersecting
+supports. A new forced label $D$ is a connected decorated family
+such that the old forced supports are pairwise disjoint and every
+cluster support meets the union of the old forced supports in $D$.
+Write $Z_D$ for its union support and
+$I_D=\bigcup_{j\in D\ {\rm forced}}I_j$ for its inventory. In
+particular $D$ contains a forced label and $I_D\ne\varnothing$.
+
+Define its value by
+\begin{equation}\label{eq:exclusion-new-value}
+ \widetilde k_D(V)=
+  \mathbf1_{\{\operatorname{Flags}(V)\cap Z_D=I_D\}}
+  \mathbf1_{\{\text{the old local eligibility tests hold}\}}
+       \prod_{j\in D\ {\rm forced}}k_j(V)
+       \prod_{\Gamma\in D\ {\rm cluster}}
+                           \frac{(-c_\Gamma(V))^{n_\Gamma}}{n_\Gamma!}.
+\end{equation}
+The cluster label itself already includes its original tuple
+factorial in $c_\Gamma$. The additional $n_\Gamma!$ belongs to the
+exponential in \eqref{eq:exclusion-multiplicities}; these are two
+different factorials.
+
+Consider a nonzero term in the expansion for $(A,n)$. Split its
+support graph into connected components. Every retained cluster
+meets a forced support in $A$, and that forced label is in its
+component. Thus each component is a new forced label as just
+defined. Its inventory equals the flags inside its union support:
+a flag there belongs to some old inventory because $A$ covers all
+flags, and the corresponding old forced support meets this component,
+so belongs to it. The reverse inclusion follows from the original
+inventory condition. Old eligibility tests hold for each nonzero
+factor. Hence the product of \eqref{eq:exclusion-new-value} over the
+components equals the original term, with every sign and factorial.
+
+Conversely, flatten a finite compatible family of new labels whose
+inventories cover all flags and whose product is nonzero. Its old
+forced labels are pairwise compatible, both within and between the
+new labels. They satisfy all eligibility and exact flag-coverage
+conditions. A cluster label cannot occur in two new components:
+its nonempty support would intersect both of their supposedly
+disjoint union supports. Its multiplicity is therefore recovered
+unambiguously. Each retained cluster meets a forced support in its
+own component, as required in \eqref{eq:exclusion-multiplicities}.
+The connected components of the flattened graph are exactly the
+original new labels. Flattening and taking components are inverse.
+
+This weight-preserving bijection and \eqref{eq:exclusion-absolute}
+give
+\begin{equation}\label{eq:exclusion-output-gas}
+ (\mathcal BR)(V)=\mathscr O(V)
+   \exp\left(\sum_\Gamma c_\Gamma(V)\right)
+   \sum_{\substack{\mathcal D\ {\rm finite,\ compatible}\\
+                    \bigcup_{D\in\mathcal D}I_D=\operatorname{Flags}(V)}}
+                                      \prod_{D\in\mathcal D}\widetilde k_D(V).
+\end{equation}
+If there are no flags, no nonzero forced component is possible and
+the empty family contributes one. If there are flags, every nonzero
+component has a nonempty inventory. This is the required separation
+into a regular exponential and a forced gas.
+
+The new values are measurable and gauge invariant: each factor and
+eligibility predicate is, and the products are finite. They use only
+the final coarse field and its flags on $Z_D$, by locality of the
+constituents and of the inventory test. Under a signed lattice
+transformation the old labels and the cluster occurrence tuples are
+permuted, with their multiplicities unchanged. Thus the value,
+support and inventory transform together. A common countable
+enumeration may then be chosen for the new labels, assigning zero
+to any unused addresses. Such an enumeration only reindexes the
+absolutely convergent gas and changes none of its values or support
+conditions.
+
+For later bounds the same construction has the explicit nonnegative
+majorant
+\begin{equation}\label{eq:exclusion-output-price}
+           \widetilde p_D=
+              \prod_{j\in D\ {\rm forced}}p_j
+              \prod_{\Gamma\in D\ {\rm cluster}}
+                                      \frac{q_\Gamma^{n_\Gamma}}{n_\Gamma!}.
+\end{equation}
+Taking absolute values in \eqref{eq:exclusion-new-value} proves the
+bound by \eqref{eq:exclusion-output-price}. We next prove the uniform
+rooted estimate for these majorants.
+
+\subsection{Keeping one compulsory gain through the second expansion}
+Let $a\ge0$ be the desired support exponent and $\varepsilon>0$ a
+reserve. Suppose the regular constituent prices obey the cluster
+criterion at support exponent $a+\varepsilon$, rooted allowance
+$u>0$ and tail ratio $1/2$. Suppose also that the old forced prices
+obey
+\[
+ \sup_x\sum_{j:x\in Y_j}p_j e^{(a+\varepsilon)c_B(Y_j)}
+                                                   \le u e^{-M},
+                      \qquad M\ge0.
+\]
+The regular cluster bound then gives
+\[
+ \sup_x\sum_{\Gamma:x\in X_\Gamma}
+                   q_\Gamma e^{(a+\varepsilon)c_B(X_\Gamma)}\le2u.
+\]
+Set $\eta=20u$ and assume
+\begin{equation}\label{eq:exclusion-second-smallness}
+       \eta\le\tfrac12,\qquad
+       \frac{4b_B\eta}{\varepsilon}\le\tfrac12,
+                              \qquad b_B=(2B+1)^4.
+\end{equation}
+The second inequality is the explicit connected-tree degree bound
+of Section~\ref{sec:cluster-expansion}.
+
+We prove that, for every site $x$ and integer $m\ge0$,
+\begin{equation}\label{eq:exclusion-rooted-final}
+ \sum_{\substack{D:\,x\in Z_D\\ |D|_{\rm copies}\ge m}}
+              \widetilde p_D e^{a c_B(Z_D)}
+                         \le 2^{-m}e^{-M}\,2\eta.
+\end{equation}
+For an upper bound forget the old compatibility tests, allow forced
+labels to repeat as well, and retain only connectedness and the
+presence of at least one forced label. On the resulting combined
+alphabet put $w_j=p_j$, $w_\Gamma=q_\Gamma$, and give each forced
+occurrence a mark $M$, each regular occurrence a mark zero.
+Inflate a price to
+\[
+             v_i=2w_i e^{e_i},\qquad e_j=M,\quad e_\Gamma=0.
+\]
+The rooted bound for $2v_i$ at exponent $a+\varepsilon$ is at most
+$4e^Mue^{-M}+4(2u)=12u\le\eta$. Thus these prices meet the
+distinct connected-set criterion with allowance $\eta$ and tail
+ratio $1/2$, by \eqref{eq:exclusion-second-smallness}.
+
+To include multiplicities, first charge the desired support weight
+to each occurrence by setting $v_i'=v_i e^{a c_B(X_i)}$, with $X_i$
+denoting either kind of support. Since $X_i\ne\varnothing$, choose
+a site in $X_i$ and use the single term of the rooted bound for
+$2v_i$ to obtain $v_i'\le\eta\le1/2$. For a fixed distinct set of
+labels $S$, summing all positive multiplicities gives
+\[
+ \sum_{(n_i\ge1)_{i\in S}}\prod_{i\in S}\frac{(v_i')^{n_i}}{n_i!}
+       \le\prod_{i\in S}\sum_{n\ge1}v_i'(1/2)^{n-1}
+       =\prod_{i\in S}2v_i'.
+\]
+Here we used $n!\ge1$ and $v_i'\le1/2$. Connectedness depends only
+on the distinct supports, so the distinct connected-set bound now
+shows that the sum over all rooted connected multiplicity families
+is at most $\eta/(1-1/2)=2\eta$. Cover subadditivity on a connected
+set gives
+$c_B(\bigcup_{i\in S}X_i)\le\sum_{i\in S}c_B(X_i)
+\le\sum_i n_i c_B(X_i)$, justifying the charge per occurrence.
+
+Finally the inflated product differs from the original one by
+$2^{\sum_i n_i}\exp(\sum_i n_i e_i)$. For a retained family these
+two factors are at least $2^m$ and $e^M$, respectively. Extracting
+them proves \eqref{eq:exclusion-rooted-final}. Restricting back to
+the actual new labels only decreases the nonnegative sum. This
+argument preserves a compulsory gain even after arbitrary repeated
+regular corrections have been attached.
+
+In the selected scale estimates, $u(x)$ has a fixed negative upper
+exponent and $B(x)$ has upper exponent zero. Both inequalities in
+\eqref{eq:exclusion-second-smallness}, and the first regular degree
+bound with its own fixed positive reserve, therefore hold eventually.
+The compulsory mark is
+\[
+                M(x)=\frac{\mu}{4}\operatorname{fineMonitor}(x)^2,
+                            \qquad \mu>0.
+\]
+Thus \eqref{eq:exclusion-rooted-final} is precisely
+$40u(x)2^{-m}e^{-M(x)}$. It pays every fixed outgoing gain
+$\exp(-A_0 P(x)^\delta)$ with $A_0\ge0$ and $0\le\delta<2$,
+where $P(x)=\exp((\log\log x)^2)$ is the unshifted monitor.
+Indeed $P(x)\le\operatorname{fineMonitor}(x)$ eventually, the ratio
+$\operatorname{fineMonitor}(x)^\delta/
+\operatorname{fineMonitor}(x)^2$ tends to zero, and $40u(x)2^{-m}\le1$
+eventually. This proves the outgoing forced allowance from the
+incoming regular/forced prices, with the same scale and history.

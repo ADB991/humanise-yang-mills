@@ -1,0 +1,168 @@
+\section{Positive energy and the joint momentum measure}
+\label{sec:spectral-measure}
+The Fourier support of the vacuum distributions and the spectrum of the
+translation operators are different assertions. We now prove the latter.
+The essential analytic fact is elementary: a positive finite measure whose
+Fourier transform extends boundedly to the upper half-plane cannot charge
+negative frequencies. Positivity is what makes a Gaussian probe detect
+such a charge without cancellation.
+
+We use the spectral theorem for strongly continuous unitary representations
+of locally compact abelian groups, in the form of the SNAG theorem
+\cite[Theorem D.3.1, p.397]{BHV}. Applied to a strongly continuous unitary
+representation $T$ of $\mathbb R^4$, it supplies a unique regular
+projection-valued measure $P$ on $\mathbb R^4$ with
+\begin{equation}\label{eq:snag-convention}
+ T(a)=\int e^{ip\cdot a}\,dP(p),\qquad P(\mathbb R^4)=I.
+\end{equation}
+Here we identify the character indexed by $p$ with $a\mapsto e^{ip\cdot a}$;
+the pairing is Euclidean, as in Section~\ref{sec:fourier-support}.
+The hypotheses hold for the translation representation constructed in
+Proposition~\ref{prop:word-motion}, and for its Euclidean counterpart in
+Section~\ref{sec:complex-heat}. In particular, continuity is strong operator
+continuity, not operator-norm continuity. For each vector $v$,
+$\mu_v(B)=\langle v,P(B)v\rangle$ is a positive regular finite measure,
+of mass $\|v\|^2$, with characteristic function $\langle v,T(a)v\rangle$.
+
+\begin{lemma}[A bounded upper-half-plane extension]\label{lem:paley-positive}
+Let $\mu$ be a positive finite Borel measure on $\mathbb R^d$, and let
+$\ell:\mathbb R^d\to\mathbb R$ be continuous. Suppose a function $F$ is
+continuous on $\operatorname{Im}z\geq0$, holomorphic on
+$\operatorname{Im}z>0$, bounded there by $C$, and satisfies
+\[
+ F(t)=\int e^{it\ell(p)}\,d\mu(p)\qquad(t\in\mathbb R).
+\]
+Then $\operatorname{supp}\mu\subseteq\{p:\ell(p)\geq0\}$.
+\end{lemma}
+\begin{proof}
+Fix $\varepsilon>0$, $b\in\mathbb R$ and $s\geq0$. Multiply $F(z)$ by
+$\exp(-ibz-\varepsilon z^2)$ and integrate around the rectangle with
+corners $-R,R,R+is,-R+is$. Cauchy's theorem applies: the function is
+continuous on the rectangle and holomorphic in its interior. One can
+also apply the theorem above height $\delta>0$ and let $\delta\downarrow0$;
+continuity on each compact rectangle justifies that limit.
+On either vertical edge the magnitude is at most
+$C\exp(-\varepsilon R^2+|b|s+\varepsilon s^2)$.
+The vertical integrals tend to zero. The horizontal integrals converge
+absolutely, since at height $u$ the common majorant is
+$C\exp(-\varepsilon t^2+bu+\varepsilon u^2)$.
+Consequently the integrals along heights zero and $s$ agree, and
+\begin{equation}\label{eq:gaussian-shift-bound}
+ \left|\int_{\mathbb R}F(t)e^{-ibt-\varepsilon t^2}\,dt\right|
+ \leq C\sqrt{\frac\pi\varepsilon}\,
+                e^{bs+\varepsilon s^2}.
+\end{equation}
+
+Fubini applies to the boundary integral because $\mu$ is finite and
+$e^{-\varepsilon t^2}$ is integrable. The Gaussian transform gives
+\[
+ \int_{\mathbb R}e^{it(\ell(p)-b)-\varepsilon t^2}\,dt
+ =\sqrt{\frac\pi\varepsilon}\,
+       e^{-(\ell(p)-b)^2/(4\varepsilon)}.
+\]
+For completeness, if $G(a)=\int e^{iat-\varepsilon t^2}\,dt$,
+differentiation under the integral and integration by parts give
+$G'(a)=-aG(a)/(2\varepsilon)$. The value
+$G(0)=\sqrt{\pi/\varepsilon}$ follows by squaring the Gaussian integral
+and using polar coordinates. Solving this differential equation proves
+the formula with its stated normalization.
+
+Suppose $p_0\in\operatorname{supp}\mu$ and $b=\ell(p_0)<0$.
+In \eqref{eq:gaussian-shift-bound} choose $s=-b/(2\varepsilon)$ and
+cancel the positive factor $\sqrt{\pi/\varepsilon}$. Positivity of the
+resulting integral yields
+\[
+ \int e^{-(\ell(p)-b)^2/(4\varepsilon)}\,d\mu(p)
+ \leq C e^{-b^2/(4\varepsilon)}.
+\]
+The open neighborhood
+$A=\{p:(\ell(p)-b)^2<b^2/4\}$ of $p_0$ has mass $m>0$.
+Its contribution to the left side is at least
+$m e^{-b^2/(16\varepsilon)}$. Hence
+$m\leq C e^{-3b^2/(16\varepsilon)}$ for every $\varepsilon>0$.
+Letting $\varepsilon\downarrow0$ is a contradiction.
+\end{proof}
+
+Apply the lemma first on the Euclidean Hilbert space. Write
+$T_E(t,\mathbf x)=V(t)U_E(\mathbf x)$ for its joint translations,
+where $V$ is the unitary time group of Proposition~\ref{prop:complex-heat}.
+For $v\in\mathcal H_E$ define
+\[
+ F_v(t+is)=\langle v,V(t)E_s v\rangle\qquad(s\geq0).
+\]
+This function is continuous on the closed upper half-plane by strong
+continuity and the uniform operator bounds. On its interior it equals
+$\langle v,E(-iz)v\rangle$, so is holomorphic and bounded by $\|v\|^2$.
+Its boundary is the characteristic function of the time coordinate of
+the joint measure $\mu^E_v$. The lemma gives
+\begin{equation}\label{eq:euclidean-positive-energy}
+ \operatorname{supp}\mu^E_v\subseteq\{p:p^0\geq0\}.
+\end{equation}
+Spatial covariance is not used in this step.
+
+\begin{theorem}[Forward spectrum and the unique vacuum]\label{thm:field-spectrum}
+Suppose the word construction has a strongly continuous Poincar\'e
+representation $U$ with proper orthochronous Lorentz part, and an isometric
+translation intertwiner $V:\mathcal H\to\mathcal H_E$ as in
+Proposition~\ref{prop:word-motion}. Then its joint momentum measure satisfies
+\[
+ P(\mathbb R^4\setminus\overline V_+)=0,
+ \qquad \overline V_+=\{p:p^0\geq|\mathbf p|\}.
+\]
+If the heat-fixed subspace of $\mathcal H_E$ is
+$\mathbb C\Omega_E$, then the vectors fixed by all translations on
+$\mathcal H$ are exactly $\mathbb C\Omega$.
+\end{theorem}
+\begin{proof}
+The intertwining identity and isometry give
+\[
+ \langle v,U(a)v\rangle
+ =\langle Vv,T_E(a)Vv\rangle.
+\]
+Thus $\mu_v$ and $\mu^E_{Vv}$ have equal characteristic functions and
+are equal measures. Here is the measure-uniqueness step explicitly.
+For any Schwartz function $f$, Fourier inversion and Fubini express its
+integral against a finite measure in terms of that characteristic
+function; Fubini follows from integrability of $\widehat f$.
+The two measures therefore agree on all smooth compactly supported tests.
+Continuous compactly supported tests are uniformly approximated, in a
+fixed compact neighborhood of their supports, by smooth mollifications.
+They too have equal integrals. Uniqueness for regular measures then gives
+equality, by the Riesz representation theorem. In particular every
+$\mu_v$ obeys \eqref{eq:euclidean-positive-energy}.
+
+For a Lorentz matrix $\Lambda$, covariance of translations implies
+\[
+ \mu_{U(\Lambda)v}=(\Lambda^{-T})_*\mu_v.
+\]
+Indeed the characteristic function of the left side at $a$ equals
+$\langle v,U(\Lambda^{-1}a)v\rangle$, which is that of the right side.
+The preceding uniqueness argument applies again. A homeomorphism carries
+the support of a measure to the support of its pushforward: every
+neighborhood of the image has a preimage neighborhood of positive measure,
+and the converse follows by its inverse. It follows that, for any
+$p\in\operatorname{supp}\mu_v$,
+\[
+ (\Lambda^{-T}p)^0\geq0\quad\hbox{for every proper orthochronous }\Lambda.
+\]
+The dual matrices $\Lambda^{-T}=\eta\Lambda\eta$, with
+$\eta=\operatorname{diag}(1,-1,-1,-1)$, range over the same group.
+The identity gives $p^0\geq0$. If $|\mathbf p|>p^0$, take a boost in the
+direction $\mathbf p/|\mathbf p|$ with positive rapidity $r$ such that
+$\tanh r>p^0/|\mathbf p|$. Its time coordinate is
+$p^0\cosh r-|\mathbf p|\sinh r<0$, a contradiction. Thus every
+$\mu_v$ is supported in $\overline V_+$.
+The complement of the support of a finite Borel measure on $\mathbb R^4$
+has measure zero: it is a union of a countable collection of zero-measure
+basis neighborhoods. Hence $\mu_v(\overline V_+^c)=0$ for every $v$.
+Since $P(B)$ is an orthogonal projection,
+$\|P(B)v\|^2=\mu_v(B)$, which proves the asserted operator identity.
+
+Finally let $v$ be translation invariant. Its image $Vv$ is fixed by all
+Euclidean real-time translations. The fixed-vector equivalence proved in
+Section~\ref{sec:complex-heat} makes it heat fixed. Therefore
+$Vv=c\Omega_E=V(c\Omega)$; injectivity of the isometry gives
+$v=c\Omega$. The converse follows from vacuum invariance. This proves
+uniqueness under the stated heat hypothesis, and makes no spectral-gap
+assertion.
+\end{proof}

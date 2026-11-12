@@ -1,0 +1,338 @@
+\section{Convergence at a fixed scale and normalization}
+\label{sec:fixed-rung-convergence}
+The full-mesh argument in Section~\ref{ex-public-same-run-cauchy}
+compares the final observable with one at a fixed intermediate scale.
+We now prove the convergence mechanism at that scale. The period and
+the intermediate scale are fixed throughout; the terminal scale tends
+to infinity. In particular the configuration space in each convergence
+statement below is one fixed finite torus.
+
+\subsection{Contraction of the remainder graph}
+At scale $m$, keep every regular support and forced address in one
+fixed dictionary. Let $E_m$ be its vector space of admissible remainder
+arrays, with the seminorm obtained by minimizing their total regular
+mass plus $\kappa_m^{-1}$ times their forced mass. The regular mass
+uses the prescribed derivative bounds. This seminorm retains the
+actual arrays; quotienting by equality of their gas evaluations is
+not part of its definition. The elementary sum and scaling estimates
+give its triangle inequality and absolute homogeneity. Evaluation of
+the masked ordinary sum has norm at most one, and evaluation of any
+forced support--inventory profile has norm at most $\kappa_m$.
+For example,
+\[
+ \left|\sum_a\chi_{X_a}r_a(U)\right|
+ \le\sum_a\|r_a\|_{X_a}\le\|r\|_{E_m},\qquad
+ |\mathcal P(r_{\rm forced})(b,U)|\le\kappa_m\|r\|_{E_m}.
+\]
+To justify the last inequalities when the infimum defines the norm,
+first use any admissible majorant within $\varepsilon$ of the infimum
+and let $\varepsilon\downarrow0$. The same estimates applied to a
+difference give uniform Lipschitz bounds on these evaluation maps.
+The absolutely summable majorants justify subtracting the series.
+
+Represent a linear family of remainders by a map
+$G:F_d\to E_m$ with
+\[
+                  \|Gv\|_{E_m}\le s_m\|\operatorname{core}v\|_1,
+                  \qquad s_m\ge1.
+\]
+Two such maps are within $a\ge0$ if
+\[
+             \|(G-H)v\|_{E_m}\le a s_m\|v\|_1
+                         \quad\hbox{for every }v.
+\]
+This relation is symmetric, has the additive triangle property,
+and any two allowed graphs are within $2$.
+
+One step produces from $G$ a coarse graph $\Phi G$ and an
+invertible coefficient map $I_G$. Before reparametrizing by the
+coarse coefficient, write its remainder map as
+$J_G=(\Phi G)I_G$. The paid regular and forced estimates of
+Section~\ref{sec:three-port-history}, applied to differences of
+insertions on the same supports, give
+\begin{equation}\label{eq:fixed-rung-difference}
+ \begin{split}
+ \|(I_G-I_H)v\|_1&\le \eta a s_{m+1}C_{\rm orb}\|v\|_1,\\
+ \|(J_G-J_H)v\|_{E_m}&\le \eta a s_{m+1}C_{\rm orb}\|v\|_1
+ \end{split}
+\end{equation}
+when $G,H$ are within $a$. Here the same raw supports are used in
+the two expansions. Subtraction cancels their primary insertion.
+The ordinary integral and the marked singleton derivative are linear
+in the remaining insertion; local subtraction uses the same linear
+section. Thus the difference has the price of the difference of the
+inputs. If representatives are chosen through derivative majorants,
+the bound is obtained with those majorants and then their infimum.
+Finite motion averaging costs $C_{\rm orb}$, exactly as in the
+weighted sum in Section~\ref{ex-selected-linear-interpolation}.
+This explains why one must retain the common slots and supports.
+
+The same one-step estimate gives
+$\|I_G^{-1}v\|_1\le s_{m+1}\|v\|_1$.
+Put $\delta=\eta s_{m+1}C_{\rm orb}$ and let $b=L^{-3/8}$.
+The schedule's two relevant payments are
+\[
+              \delta\le b,\qquad 4s_{m+1}b\le1.
+\]
+The second follows from its bank inequality: if $q=L^{1/8}\ge1$,
+that inequality gives $4s_{m+1}\le q$, while $b=q^{-3}$.
+For a coarse vector $x$, set $y=I_G^{-1}x$. Then
+\begin{align*}
+ \|(\Phi G-\Phi H)x\|_{E_m}
+ &\le\|(J_G-J_H)y\|_{E_m}
+       +\|\Phi H(I_Hy-x)\|_{E_m}\\
+ &\le(1+s_m)\delta a\|y\|_1\\
+ &\le(1+s_m)\delta a s_{m+1}\|x\|_1
+ \le \tfrac12 a s_m\|x\|_1.
+\end{align*}
+Thus the coarse graphs are within $a/2$. This contraction acts on
+the complete regular and forced remainder, after reparametrizing
+by its actual coefficient map.
+
+\subsection{Forgetting the terminal graph}
+Write $G_{m,N}$ for the selected graph at scale $m$ in the history
+with terminal index $N$. For each fixed $m$, let $\Phi_{m,N}$
+be its one-step map. Retain the following precise local stability
+input: for every fixed admissible graph $H$, the graphs
+$\Phi_{m,N}H$ are Cauchy in the preceding ``within'' relation,
+and their coefficient maps $I_{m,N,H}$ are Cauchy in operator
+norm. Their dependence on $H$ has the uniform bounds just proved.
+This is a statement about the selected adjacent-scale kernels and
+their marked derivatives; the contraction alone does not imply it.
+
+First, if $H_N$ is Cauchy, then $\Phi_{m,N}H_N$ is Cauchy.
+For a prescribed small error, fix a sufficiently late $N_0$.
+Compare $\Phi_{m,N}H_N$ with $\Phi_{m,N}H_{N_0}$ using contraction,
+compare the latter at two terminal indices using fixed-input
+stability, and compare back to $\Phi_{m,M}H_M$. The two outside
+errors are half the corresponding input errors. The identical
+three-term comparison with
+\eqref{eq:fixed-rung-difference} proves that
+$I_{m,N,H_N}$ is Cauchy.
+
+For a fixed integer $h\ge0$, replace $G_{m+h,N}$ by one fixed
+admissible graph and propagate it downward through $h$ steps.
+The resulting graph $V_{m,N}^{(h)}$ is Cauchy by the preceding
+paragraph and finite induction. The exact history recursion and
+the bound $2$ on any initial graph difference imply
+\[
+                       G_{m,N}\text{ is within }2^{1-h}
+                                      \text{ of }V_{m,N}^{(h)}
+\]
+for all sufficiently large $N$. Given $\varepsilon>0$, choose
+$h$ so that $2^{1-h}<\varepsilon/4$, and then use the Cauchy
+property of $V^{(h)}$. The triangle inequality proves that
+$G_{m,N}$ is Cauchy. Only a finite number of levels is used for
+each error tolerance; no infinite product of inverse maps occurs.
+
+Now fix the label $y$ at its reference scale $r$. Its coefficient
+at that scale is exactly $y$, because the terminal coefficient
+is normalized by the inverse of its readout at $r$. For each
+fixed $m\ge r$, let $x_{m,N}$ be the resulting coefficient.
+The history relation is
+\[
+             x_{m,N}=I_{m,N,G_{m+1,N}}x_{m+1,N}.
+\]
+Suppose $x_N=S_N y_N$ is Cauchy, $S_N$ is Cauchy in operator
+norm, and $\|S_N^{-1}\|\le b$. Then $y_N$ is bounded and
+\[
+ \|y_N-y_M\|_1
+ \le b\bigl(\|x_N-x_M\|_1+\|S_M-S_N\|\,\|y_M\|_1\bigr)
+                         \longrightarrow0.
+\]
+Starting with the constant reference coefficient, finite induction
+therefore proves that $x_{m,N}$ is Cauchy at every fixed $m$.
+Moreover
+\[
+ G_{m,N}x_{m,N}-G_{m,M}x_{m,M}
+ =G_{m,N}(x_{m,N}-x_{m,M})
+                  +(G_{m,N}-G_{m,M})x_{m,M}
+\]
+is Cauchy in $E_m$. This proves convergence of the coefficient and Cauchyness of the full
+remainder data in $E_m$ at the fixed scale, conditional only
+on the specified adjacent-scale stability input and its paid
+history realization. Their coefficient norms are bounded for
+all terminal indices; finitely many indices before the eventual
+recursion can be included by enlarging the bound.
+
+\subsection{Uniform convergence of the inserted functions}
+The primary exponential-entry map is linear in $x_{m,N}$ and
+uniformly bounded on the fixed finite torus. Indeed each of its
+finitely many local-section columns is continuous on the compact
+gauge configuration space; multiplication by its fixed mask
+preserves its supremum bound. Expanding in the coefficient basis
+therefore bounds its difference by $C\|x_{m,N}-x_{m,M}\|_1$.
+The ordinary remainder and each forced profile are uniformly
+Cauchy by their evaluation bounds in the first subsection.
+Adding them proves that the exponential entries and forced
+profiles of the inserted fields are uniformly Cauchy over all
+configurations. Their bounded scalar-valued function spaces are complete,
+so they have uniform limits; no completeness of $E_m$ is needed. This proof permits discontinuous masks: their
+supports and thresholds are fixed at this scale. Translation,
+signed coordinate motion and conjugation preserve the conclusion.
+The fixed physical scaling factor does too.
+
+For a finite set of inserted labels all these statements hold
+on one common tail. Their coefficient prices have finite bounds
+$M_i$. Given positive allotted prices $\zeta_i$, take
+$w_i=\zeta_i/(|M_i|+1)>0$. Then $w_i$ times the actual coefficient
+price is at most $\zeta_i$, uniformly in terminal index. This is
+the positive weight choice used in the fixed-rung vault of
+Section~\ref{ex-public-same-run-cauchy}.
+
+\subsection{Convergence of the background density}
+We spell out the background convergence needed for the same
+normalized moments. At the fixed scale retain common path stencils
+and activity addresses. Suppose the path coefficients converge in
+the weighted sums of their differences: for one $v>0$,
+\[
+ \sum_a|c_{N,a}-c_a|e^{v\operatorname{length}(a)}\longrightarrow0
+\]
+for each one-form row, and the analogous atom-budget sums tend to
+zero for the quadratic loop, cubic and quartic arrays. All paths
+have the common bounds of the construction. Suppose also that the
+couplings $\beta_N$ are Cauchy, and the background activity arrays
+are Cauchy in their common norm of rooted ordinary and forced
+masses. These are the precise background inputs used here.
+
+The path convergence gives uniform convergence of the action on
+the fixed configuration space. To see this directly, each transported
+curvature in a row has norm at most $2$, so a row difference is
+at most twice its coefficient-difference budget. A degree-$q$
+atom difference, with the same stencil, is at most $2^q$ times
+its coefficient budget. The masks are identical for the two
+terms and hence do not add an error. The common path bounds
+bound all row values uniformly; consequently
+$|\|u\|^2-\|w\|^2|\le(\|u\|+\|w\|)\|u-w\|$
+treats the quadratic row action. There are finitely many sites,
+plaquette directions and signed motions. Summing their estimates,
+and using boundedness and convergence of $\beta_N$, proves the
+assertion for the full symmetrized action.
+
+For the activity arrays, sum a rooted budget over the finitely
+many sites. Every ordinary term has its designated site, and
+every forced term has a nonempty marked support, so each term
+is counted at least once. If $V$ is the number of sites and
+$b,k$ are the fixed two activity prices, the resulting uniform
+evaluation bounds are $Vb\|A\|$ for the ordinary sum and
+$Vk\|A\|$ for a forced profile. Applied to differences, these
+give uniform convergence of the ordinary activity sum and every
+support--inventory profile. The fixed torus has finitely many
+such profiles. Its gas is a finite sum over compatible subsets
+of these profiles, each multiplied by the fixed flag indicator.
+It therefore converges uniformly as well. This finite profile
+description does not require the original activity list to be
+finite; its regrouping was justified by the absolute budgets.
+
+Write the full density as $\rho_N$ and its scalar term as $s_N$.
+Its scalar-stripped density
+\[
+                         \widetilde\rho_N=e^{-s_N}\rho_N
+\]
+is the product of the gas and the exponential of minus the
+path action and ordinary activity sum. All exponent arguments
+are uniformly bounded on a tail. Exponentiation is uniformly
+continuous on that bounded interval, so the stripped density
+is uniformly Cauchy. Its integral $Z_N^0$ against the probability
+Haar prior is Cauchy, since
+\[
+       |Z_N^0-Z_M^0|\le\sup_U
+                         |\widetilde\rho_N(U)-\widetilde\rho_M(U)|.
+\]
+
+The weighted path convergence just used follows from coefficientwise
+convergence at a strictly larger exponential width. Here is the
+useful precise implication. If $v<w$, the row coefficients at width
+$w$ have a common budget $B$, and each coefficient converges, then
+\[
+ |c_{N,a}-c_a|e^{v\operatorname{length}(a)}
+       \le2B e^{-(w-v)\operatorname{length}(a)}.
+\]
+Here the canonical row index enumerates a plaquette direction and a
+vector $x\in\mathbb Z^4$; its chosen coordinate path has length
+$|x|_1+4$. Consequently, for every $\delta>0$,
+\[
+ \sum_a e^{-\delta\operatorname{length}(a)}
+ =|\mathcal A|e^{-4\delta}
+       \left(\frac{1+e^{-\delta}}{1-e^{-\delta}}\right)^4<\infty,
+\]
+where $\mathcal A$ is the finite set of plaquette directions.
+This is a sum over the chosen coordinate paths, not over all walks.
+Dominated convergence for series gives convergence of the whole
+row difference budget.
+
+For an atom of degree $q=2,3,4$, the canonical index enumerates
+$q$ plaquette directions and $q-1$ displacement vectors. The total
+length is $\ell=\sum_{j=1}^{q-1}|x_j|_1+4q$. Its coefficients have
+the form $e^{-w\ell}C_N(a,\nu)$, where $\nu$ runs through the
+finite color multi-indices. The coefficient arrays $C_N$ converge
+coordinatewise and have a common Hilbert norm bound $B$; finite
+partial sums give the same bound for their limit $C$. The atom
+difference budget at width $v<w$ is exactly
+\[
+ \sum_{a,\nu}e^{-(w-v)\ell(a)}|C_N(a,\nu)-C(a,\nu)|.
+\]
+Each summand is at most $2B e^{-(w-v)\ell(a)}$. Summing this
+majorant gives a finite multiple of
+\[
+ e^{-4q(w-v)}\left(\frac{1+e^{-(w-v)}}{1-e^{-(w-v)}}\right)^{4(q-1)}.
+\]
+A second application of dominated convergence proves the required
+atom-budget convergence. Choose $v$ strictly between the paid
+width and the minimum of the larger row and three atom widths.
+All four conclusions then hold at this one width, on a common
+tail. It is essential that these are the same canonical stencils;
+convergence of an unrelated finite-volume matrix is insufficient.
+
+\subsection{A positive limit of the partition functions}
+Positivity of each $Z_N^0$ alone would not suffice. We need one
+strictly positive lower bound independent of $N$. Let $\theta$
+be the fixed scale's small-field threshold, let $H=2\widehat\beta_m$
+be the common upper bound on its coupling, and let $F,T$ be the
+ordinary and loop allowances there. With $A$ the path price and
+$\mathcal C$ its quadratic clipping data, set
+\[
+ K=V\{F+\operatorname{loopsPrice}(\theta,H,A,T)
+                 +H\operatorname{baseBudget}(\mathcal C,A,\theta)\}.
+\]
+These quantities are finite and fixed while $N$ varies. The
+small-link-ball proof in Section~\ref{ex-centered-construction}
+gives
+\begin{equation}\label{eq:fixed-rung-partition-positive}
+ Z_N^0\ge a_m:=
+ \exp\{-K-|E_m^{\rm bond}|d_G\log(16/\theta)\}>0.
+\end{equation}
+Here $E_m^{\rm bond}$ is the finite set of positive bonds, not the
+remainder space, and $d_G$ is the ambient real matrix dimension.
+The bound follows by taking every link in the ball of chord radius
+$\theta/4$: all flags vanish, the action is bounded by $K$, and
+the product Haar probability is at least
+$(\theta/16)^{|E_m^{\rm bond}|d_G}$. Nonnegativity of the full
+selected density permits restriction of its integral to this event.
+The scalar factor cancels in $Z_N^0$. Replacing $\beta_N$ by $H$
+only increases the nonnegative action bound. Thus the Cauchy limit
+$Z^0$ satisfies $Z^0\ge a_m>0$.
+
+Finally let $P_{N,i}(U)$ and $F_{N,i,b}(U)$ be the inserted
+exponential entries and forced profiles already shown uniformly
+Cauchy. Fix a finite census algebra, whose nonconstant generators
+are nilpotent. The scalar-stripped restored polynomial is
+\[
+ e^{-\text{path action}_N-\text{ordinary sum}_N}
+ \exp_{\rm nil}\!\left(\sum_i t_iP_{N,i}\right)
+ \mathcal G\!\left(\text{background profiles}_N
+                                  +\sum_i t_iF_{N,i}\right).
+\]
+The nilpotent exponential and the grouped gas are finite
+polynomials in their entries. Hence every mode is uniformly
+Cauchy and bounded. Their measurability follows from that of
+the local sections, masks and coefficient arrays and from the
+absolutely convergent groupings. Their Haar integrals are Cauchy.
+Dividing by $Z_N^0\to Z^0>0$ proves convergence of each normalized
+fixed-scale mode. The scalar-stripping identity identifies this
+ratio with the actual restored history moment, since its numerator
+and partition function contain the identical factor $e^{-s_N}$.
+This proves the fixed-rung convergence required by the full-mesh
+comparison, under the stated selected branch and background
+convergence inputs. Their production must still be established
+for the same funded history.

@@ -1,0 +1,315 @@
+% Rate conversion and scale selection in the small-support regular source.
+\section{Rate conversion and the local scale budget}
+\label{sec:ex-lattice-trace-local-rate-selection}
+
+This section records the quantitative selection after the Fourier-tail and
+jet comparison in Section~\ref{sec:ex-lattice-trace-row-jet-estimates}.
+It proves the finite-rate summation used to select the probe estimate and the
+scalar domination used to choose the local chart budget. The strip, growth,
+weighted-vanishing, chart, and support receipts themselves remain the inputs
+identified in that section; the evidence record supplies the source crosswalk.
+
+Fix the block side \(L\). Write
+\[
+ \begin{gathered}
+ H(x)=\operatorname{fineMonitor}(x),\quad \chi(x)=\sqrt{H(x)},\quad
+ \beta(x)=\beta_F(x),\\
+ R(x)=\operatorname{radiusD}(x),\quad
+ \rho(x)=\operatorname{reach}(x),\quad b(x)=\operatorname{radiusB}(x).
+ \end{gathered}
+\]
+For fixed \(L\), these are
+\[
+ \begin{gathered}
+ \beta(x)=x+c_L,\quad b(x)=\lceil(\log x)^2\rceil,\\
+ R(x)=b(x)(4b(x)+2)+2b(x),\quad \rho(x)=45(1+b(x)),\\
+ \operatorname{depthW}_L(R)=L(R+2),
+ \end{gathered}
+\]
+where \(c_L\) is fixed. Here \(H(x)=\exp((\log\log\beta(x))^2)\), so \(H\ge1\),
+\(H\to\infty\), and \(\chi\) is the monitor factor in the priced
+conclusion. For a function \(f\), write \(f\in\mathcal R_a\) if for
+all \(v>a\) one has eventually \(|f(x)|\le\beta(x)^v\). This is the
+source's strict-power rate convention. Finite sums preserve a common rate,
+products add rates, and \(\chi\in\mathcal R_0\).
+
+\begin{lemma}[The exponential tail pays the finite probe]
+\label{lem:ex-lattice-tail-pays-probe}
+Let \(d\in\mathbb N\), \(\sigma>0\), and let \(K,M\) and the priced
+local derivative bound \(\Phi\) be fixed nonnegative constants. Let
+\(\delta_k(x)\) and \(C_1(x)\) be the quantities of
+(\ref{eq:ex-lattice-local-delta})--(\ref{eq:ex-lattice-local-C1}), with
+\(b=\rho(x)\) and \(m=R(x)\). Set
+\[
+ E(x)=\sum_{k=0}^{d}\delta_k(x),\qquad
+ Z_d(x)=\sum_{j=0}^{d}\#\operatorname{Part}^{\mathrm{ord}}(j)\,2^j
+       E(x)C_1(x)^j\,\Phi.
+ \tag{12}\label{eq:ex-lattice-tail-probe-sum}
+\]
+Then \(Z_d\in\mathcal R_{-1}\), and consequently
+\[
+                 \chi(x)Z_d(x)\longrightarrow0.
+ \tag{13}\label{eq:ex-lattice-tail-probe-price}
+\]
+In particular, for every \(y>0\), eventually
+\(Z_d(x)\le y/\chi(x)\). If the local receipts of
+Proposition~\ref{prop:ex-lattice-strip-to-probe} hold and
+\(E(x)\le C_1(x)\), every derivative order \(j\le d\) of the selected
+probe is bounded by \(Z_d(x)t\), where \(t\) is the test amplitude and
+the price factor \(\Phi\) has already been included in \(Z_d\).
+\end{lemma}
+\begin{proof}
+By the polynomial geometry receipts, \(R\) and the lift-size polynomial
+\((1+4L(R+2))^{dk}\) have rate zero. The width cost and all other factors
+in \(\delta_k\), apart from \(\exp(-\sigma\rho(x)/2)\), are fixed constants
+or rate-zero polynomial factors. The reach cutoff has every negative rate:
+for each \(a>0\), eventually \(\exp(-\sigma\rho(x)/2)\le\beta^{-a}\).
+Thus each \(\delta_k\), and their finite sum \(E\), have rate \(-1\)
+(the stronger arbitrary negative rate is more than needed). The finite sum
+in \(C_1\) has rate zero. By the product and finite-sum rules,
+\(Z_d\in\mathcal R_{-1}\).
+
+Since \(\chi\in\mathcal R_0\), their product has rate \(-1\). The
+strict-power definition then implies convergence to zero: choose any
+exponent \(v\) strictly between \(-1\) and \(0\); eventually
+\(|\chi Z_d|\le\beta^v\), and \(\beta\to\infty\). This proves (13)
+and the stated eventual price bound. The final assertion follows by
+applying Proposition~\ref{prop:ex-lattice-strip-to-probe} at each order and
+bounding its finite ordered-partition sum by (12).
+\end{proof}
+
+\paragraph{Actual finite-rate receipts.}
+In the construction the polynomial direction-growth constants are
+\[
+ h_k(x)=4K M\,C_{dk}(\sigma)\bigl(1+4L(R(x)+2)\bigr)^{dk},\qquad
+ C_1(x)=1+\sum_{k=0}^d h_k(x).
+\]
+The error at order \(k\) is
+\[
+ \delta_k(x)=8KM e^{-\sigma \rho(x)/2}
+   (1+4R(x))^{dk}C_{dk}(\sigma/2).
+\]
+These formulas retain the source's factor four from the four edge
+components and the additional factor two from the two input arrays. The
+coefficient \(E(x)\) is required to be at most \(C_1(x)\) before applying
+the finite multilinear comparison. This is a separate eventual estimate;
+it follows because \(E\in\mathcal R_{-1}\) and \(C_1\ge1\).
+
+\begin{proposition}[The selected local budget]
+\label{prop:ex-lattice-selected-local-budget}
+Fix natural numbers \(n,p,r\), a fixed positive integer block side \(L\), and the admissible data \(C,D\) of the selected source chart. For
+\(x\) large, define the covering and response quantities
+\begin{align*}
+ P_*(x)&=(2\,\operatorname{depthW}_L(R(x))+1)^4,\\
+ B_*(x)&=(r+48)(1+b(x))(1+P_*(x)),\\
+ A_*(x)&=\operatorname{boost}_{C,D,L}\,B_*(x)^{\,8+2p+2pn}
+                 +\frac{16}{D.\varepsilon},\\
+ S_*(x)&=\operatorname{clinicFee}(n,D.Q)
+              \bigl(2C.C(1+R(x))^p\bigr)^2,\\
+ U_*(x)&=(A_*(x)+S_*(x))\,\operatorname{fiery}(x)
+                 +\frac{2A_*(x)+2}{H(x)},\\
+ K_*(x)&=1+\operatorname{guests}_{G,D,K}(n+1,L)
+                      B_*(x)^{\,4(1+4(n+1))}.
+\end{align*}
+These abbreviations use the exact source coefficients
+\[
+\begin{aligned}
+ s_L&=1+16\,\#\operatorname{Co}(L,\mathrm{Axis}\times\mathrm{Color}),\\
+ b_0&=(\operatorname{clinicFee}(n,D.Q)+C.M)(2C.C)^2,\\
+ \operatorname{boost}_{C,D,L}&=b_0+(b_0+1)L^3
+                     +2n s_L^2(D.Z+1)D.Z,\\
+ \operatorname{guests}_{G,D,K}(q,L)&=2s_L^{1+4q}
+                     \operatorname{inflate}_{4q}(D.K^{-1}/8),\\
+ \operatorname{meter}(h,D.K,m)&=2(1+h)^{m+1}
+                     \operatorname{inflate}_{m}(D.K^{-1}/8).
+\end{aligned}
+\tag{14a}\label{eq:ex-lattice-scale-coefficients}
+\]
+Here \(h\) is the number of heads and
+\(\operatorname{inflate}_m(v)=(1+m/v)^m\) is the Gaussian moment
+inflation factor. Assume \(D.\varepsilon>0\), \(D.K>0\), nonnegative
+fee and moment parameters, and \(C.C\ge1\). The scalar cost terms below
+are nonnegative by admissibility. The source clock is linear for \(t\ge0\);
+write \(c_{\mathrm{clock}}=\operatorname{clocks}(1)\ge0\).
+Assume the fixed record and chart parameters are admissible, and let
+\(\beta\ge\beta(x)/2\). Suppose the support and budget satisfy
+\[
+ \begin{gathered}
+ B.\mathrm{threshold}=\operatorname{fiery}(x),\quad
+ 0\le P.\mathrm{threshold}\le2B.\mathrm{threshold},\\
+ B.B\le2b(x),\quad P.\mathrm{power}=p,\quad
+ \operatorname{coverNumber}(B.B,X)\le P_*(x).
+ \end{gathered}
+ \tag{14}\label{eq:ex-lattice-budget-support}
+\]
+Put \(F_0=B.\mathrm{threshold}\), \(u=\beta^{-1/2}\),
+\(v_\rho=C.C\,P.\mathrm{threshold}(1+\rho(x))^p\),
+\(v_R=C.C\,P.\mathrm{threshold}(1+R(x))^p\),
+\(h=\operatorname{heads}(B,X)\), and
+\(\operatorname{cup}=D.Z(1+\operatorname{scope}(B,X,r,x))^{pn}\).
+Define the displayed scalar cost by
+\[
+\begin{aligned}
+ F(x)={}&(\operatorname{clinicFee}(n,D.Q)+C.M)v_\rho^2
+       (2+\operatorname{breadth}(B,X))^{pn}/F_0\\
+ &+\frac{\operatorname{clinicFee}(n,D.Q)v_\rho^2+u}{F_0}L^3\\
+ &+n(2F_0)h^2(\operatorname{cup}+1)\operatorname{cup}\\
+ &+\frac{16}{D.\varepsilon}(F_0+u/F_0)\\
+ &+\frac{\operatorname{clinicFee}(n,D.Q)v_R^2+u}{F_0}.
+\end{aligned}
+\tag{14b}\label{eq:ex-lattice-explicit-local-cost}
+\]
+This is the response-plus-paint cost used by the local chart construction.
+It satisfies,
+eventually in \(x\),
+\[
+ 0\le F(x)\le U_*(x),\qquad
+ \operatorname{meter}(\operatorname{heads}(B,X),D.K,4(n+1))\le K_*(x),
+ \tag{15}\label{eq:ex-lattice-budget-majorants}
+\]
+and
+\[
+ \chi(x)U_*(x)K_*(x)\longrightarrow0.
+ \tag{16}\label{eq:ex-lattice-budget-small}
+\]
+Consequently, for every \(y>0\), eventually and uniformly in all data
+satisfying (14),
+\[
+ F(x)\le1,\qquad
+ \operatorname{clocks}(t)F(x)\operatorname{meter}(\operatorname{heads}(B,X),D.K,4(n+1))
+       \le \frac{y}{\chi(x)}t\quad(t\ge0).
+ \tag{17}\label{eq:ex-lattice-budget-output}
+\]
+This is the scalar estimate consumed by the local regular-source branch.
+\end{proposition}
+\begin{proof}
+We give the domination and limiting arguments separately. First, the cover
+formula gives
+\[
+ 1+\rho(x)\le B_*(x),\quad
+ 2+\operatorname{breadth}(B,X)\le B_*(x),\quad
+ 1+\operatorname{scope}(B,X,r,x)\le B_*(x).
+ \tag{18}\label{eq:ex-lattice-budget-cover}
+\]
+Write \(a=b(x)\) and \(q=\operatorname{coverNumber}(B.B,X)\). The
+definitions give
+\[
+ \operatorname{breadth}(B,X)=q(4B.B+2)+2B.B+8
+       \le q(8a+2)+4a+8,
+ \quad \operatorname{scope}=r a+\operatorname{breadth}+1.
+\]
+With \(S_X=(r+48)(1+a)(1+q)\), direct expansion, using \(a,q,r\ge0\),
+gives \(1+45(1+a)\le S_X\),
+\(2+q(8a+2)+4a+8\le S_X\), and
+\(r a+q(8a+2)+4a+10\le S_X\). These are (18) with \(S_X\) in place
+of \(B_*\). Since \(q\le P_*\) and the bulk formula is increasing in
+its cover-count argument, \(S_X\le B_*\); hence (18) follows.
+
+Put \(F_0=B.\mathrm{threshold}\), \(u=gStep(\beta)=\beta^{-1/2}\),
+and \(S_X=\operatorname{bulk}(\operatorname{coverNumber}(B.B,X),r,x)\).
+Since \(F_0=\beta(x)^{-1/2}H(x)\), (14) yields
+\[
+ \frac{u}{F_0}
+ =\frac{1}{H(x)}\sqrt{\frac{\beta(x)}{\beta}}
+ \le\frac{\sqrt2}{H(x)}\le\frac{2}{H(x)}.
+ \tag{19}\label{eq:ex-lattice-u-over-F}
+\]
+The cover inequalities (18) and \(P.\mathrm{threshold}\le2F_0\)
+give
+\[
+ \operatorname{loom}(P,\rho(x),C.C)\le
+             2C.C F_0 S_X^p.
+ \tag{20}\label{eq:ex-lattice-loom-bound}
+\]
+Put \(t=F_0\) and \(v=\operatorname{loom}(P,\rho(x),C.C)\). The loom is
+\(C.C\,P.\mathrm{threshold}(1+\rho(x))^p\); (18) and
+\(P.\mathrm{threshold}\le2t\) give \(v\le2C.CtS_X^p\). The segment
+term is \((\operatorname{clinicFee}+C.M)v^2\operatorname{heft}/t\),
+where \(\operatorname{heft}=(2+\operatorname{breadth})^{pn}\le
+S_X^{pn}\). Thus, with
+\(b_0=(\operatorname{clinicFee}+C.M)(2C.C)^2\),
+\[
+ \operatorname{segment}\le b_0 t S_X^{2p+pn}
+       \le b_0\zeta(B,u)S_X^{8+2p+2pn}.
+\]
+The tranche term is
+\(((\operatorname{clinicFee}v^2+u)/t)L^3\). Its first numerator part
+is bounded by \(b_0tS_X^{2p}\); its second is \(u/t\). Since
+\(t\le\zeta(B,u)=t+u/t\), \(S_X\ge1\), and
+\(2p\le8+2p+2pn\), this gives
+\(\operatorname{tranche}\le(b_0+1)L^3\zeta(B,u)
+S_X^{8+2p+2pn}\).
+
+For the scratch term, its exact factors are
+\(n(2t)\operatorname{heads}^2(\operatorname{cup}+1)\operatorname{cup}\),
+where \(\operatorname{cup}=D.Z(1+\operatorname{scope})^{pn}\).
+The head count is
+\((2\operatorname{scope}+1)^4\#\operatorname{Co}(L,\mathrm{Axis}\times
+\mathrm{Color})\). From (18),
+\(1+\operatorname{heads}\le s_LS_X^4\), with
+\(s_L=1+16\#\operatorname{Co}(L,\mathrm{Axis}\times\mathrm{Color})\).
+Also \(\operatorname{cup}\le D.ZS_X^{pn}\) and
+\(\operatorname{cup}+1\le(D.Z+1)S_X^{pn}\). Replacing \(t\) by
+\(\zeta(B,u)\) therefore gives
+\[
+ \operatorname{scratch}\le
+ 2n s_L^2(D.Z+1)D.Z\,\zeta(B,u)S_X^{8+2pn}.
+\]
+Adding these three bounds gives the coefficient
+\(\operatorname{boost}=b_0+(b_0+1)L^3+2n s_L^2(D.Z+1)D.Z\).
+Since \(\operatorname{opal}=\operatorname{rust}+(16/D.\varepsilon)\zeta\),
+and \(S_X\ge1\),
+\[
+ \operatorname{opal}\le A_*(x)(F_0+u/F_0).
+ \tag{21}\label{eq:ex-lattice-opal-bound}
+\]
+The paint term is evaluated with the loom at \(R(x)\), not at the reach.
+Its direction is
+\(v_R=C.C\,P.\mathrm{threshold}(1+R(x))^p\le
+2C.CF_0(1+R(x))^p\). Squaring this inequality and dividing by \(F_0>0\)
+gives \(\operatorname{clinicFee}(n,D.Q)v_R^2/F_0\le S_*(x)F_0\).
+The remaining paint term is \(u/F_0\). Thus the paint contribution is bounded by
+\[
+ \operatorname{paintW}\le S_*(x)F_0+u/F_0.
+ \tag{22}\label{eq:ex-lattice-paint-bound}
+\]
+Equations (19)--(22) give \(F\le U_*\).
+
+The head-count moment estimate follows by inserting
+\(1+\operatorname{heads}\le s_LS_X^4\) into the explicit moment formula
+(14a): for \(m=4(n+1)\),
+\[
+ \operatorname{meter}(\operatorname{heads}(B,X),D.K,4(n+1))
+ \le \operatorname{guests}_{G,D,K}(n+1,L)S_X^{4(1+4(n+1))}
+ \le K_*(x).
+ \tag{23}\label{eq:ex-lattice-head-moment}
+\]
+
+For the limit, \(B_*,A_*,S_*,K_*\) are fixed polynomials in
+\(1+\operatorname{radiusB}(x)\), hence have rate zero and are subpower
+relative to \(H\). Indeed \(\operatorname{radiusB}(x)\le
+1+(\log x)^2\), while \(\beta(x)=x+O(1)\) for fixed \(L\), and
+\(\log H=(\log\log\beta)^2\); the logarithm of any such fixed
+polynomial is \(O(\log\log\beta)=o(\log H)\). Thus for each \(\eta>0\),
+eventually each nonnegative polynomial factor \(Q\) here satisfies
+\(Q\le H^\eta\). The first term in \(\chi U_*K_*\) has rate
+\(-1/2\), since \(\operatorname{fiery}=H/\sqrt{\beta}\) and all other
+factors have rate zero. For the second term choose the subpower bounds
+\(A_*+1\le2H^{1/8}\), \(K_*\le H^{1/8}\); then
+\[
+ \chi\,\frac{(2A_*+2)K_*}{H}
+ \le4H^{1/2+1/8+1/8-1}=4H^{-1/4}\longrightarrow0.
+\]
+This proves (16). Also \(H\ge1\), \(K_*\ge1\), and \(F\le U_*\), so
+\(F\le\chi U_*K_*\); (16) makes this at most one eventually. Finally
+\(\operatorname{clocks}(t)=t\operatorname{clocks}(1)\) for \(t\ge0\).
+Choose \(d_*=1+\operatorname{clocks}(1)\). From (16), eventually
+\(d_*\chi U_*K_*\le y\), and (15) proves the second inequality in (17).
+\end{proof}
+
+The bound is conditional only on the selected local chart and support
+inequalities (14); the source crosswalk identifies the already-proved
+support-cover, rust, and Gaussian-moment estimates whose algebra is expanded
+above. It does not produce the separate strip, field-growth, weighted
+vanishing, same-history, or healthy-chart receipts required to enter this
+local branch.

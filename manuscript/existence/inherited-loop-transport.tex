@@ -1,0 +1,218 @@
+\section{Transporting the inherited loop response}
+\label{sec:inherited-loop-transport}
+The loop term entering a stationary step already has zero total
+coefficient and zero first displacement moments. These cancellations
+make its quadratic momentum picture vanish to fourth order. We
+prove that the stationary pullback retains this order and gains
+$L^{-2}$ in its strip bound, where $L$ is the blocking side.
+The order statement and the quantitative strip statement require
+different arguments.
+
+\subsection{The fine-lattice picture}
+Group the loop coefficients by the two plaquette directions, the
+two colour indices, and the relative displacement $z$ of their
+bases. Denote the resulting real coefficient array by $r(z)$.
+Its exponential norm is bounded by the loop budget $\Lambda$:
+the norm of the relative displacement is no greater than the sum
+of the two slot lengths. Absolute summability permits grouping
+all atoms with the same displacement. The path's moment identities
+give
+\[
+                         \sum_zr(z)=0,\qquad \sum_z z_a r(z)=0.
+\]
+Consequently its Fourier series $\widehat r(p)$ vanishes to order
+two at zero. The quadratic coefficient of the loop action is the
+sum over face indices of
+\begin{equation}\label{eq:inherited-fine-symbol}
+                  d_1(-p)^{\mathsf T}\widehat r(p)d_1(p),
+\end{equation}
+with its two field arguments symmetrized and its lattice
+orientations averaged. Each curl vanishes to first order.
+Thus every component of the resulting common picture $S$ has
+order four. Its strip bound is at most $C_\tau\Lambda$ at the
+original path width $\tau>0$: each curl entry costs at most
+$4(e^\tau+1)$, there are finitely many face pairs, and the signed
+orientation average has the fixed reflection cost already estimated
+in Proposition~\ref{prop:ex-atom-stream-picture}.
+
+Formula \eqref{eq:inherited-fine-symbol} records the actual
+finite-volume quadratic coefficient. At zero total momentum, the
+two slot offsets appear only through their relative displacement;
+the anchor sum gives the number of fine sites. At nonzero total
+momentum it is zero. This verifies the identity before taking a
+large-volume limit. Invariance and the finite Ward identity give
+\begin{equation}\label{eq:inherited-transverse}
+                  S(p)d_0(p)=0,\qquad d_0(-p)^{\mathsf T}S(p)=0.
+\end{equation}
+All tensors below use this unconjugated bilinear convention. On
+real momenta, $d_0(-p)^{\mathsf T}=d_0(p)^*$.
+
+\subsection{A strip bound with four finite differences}
+Put $\mu=L^{-1}$. Let $X$ be the derivative of the stationary
+chart, represented by a common coarse-to-fine Fourier bridge.
+Assume that, on a fixed positive coarse strip of width $\sigma$,
+its fine differences of order $j\le2$ obey the bounds
+\begin{equation}\label{eq:inherited-bridge-price}
+                      |\Delta^j X|\le D\mu^{1+j}.
+\end{equation}
+These are the bridge bounds supplied by the stationary chart.
+
+Apply the finite-difference division of
+Lemma~\ref{lem:ex-soft-factorization} to the order-four picture
+$S$. It writes $S$ as a finite sum of products of four symbols
+$e^{ip_a}-1$ times Fourier series having a common exponential
+budget $C\Lambda$ on a positive width $w$ depending on $\tau$.
+Distribute two differences to each of the two field arguments.
+Moving a difference from momentum $p$ to $-p$ uses
+\[
+                      q_a(p)=-e^{ip_a}q_a(-p).
+\]
+The extra phase is a unit lattice translation of the remaining
+coefficient; its cost is absorbed in $C$. Thus every term has
+exactly two differences on each bridge leg.
+
+Pull this representation back by $X$. On a smaller fixed coarse
+strip, choose it narrow enough that all fine phases lie in the
+coefficient strip, in particular $\mu\sigma\le w$. The
+exponentially weighted coefficient sum bounds every displaced
+contraction uniformly. For each pair of legs,
+\eqref{eq:inherited-bridge-price} contributes
+\[
+                         D^2\mu^3\mu^3=D^2\mu^6.
+\]
+Summing the fine anchor within one coarse block contributes
+$L^4=\mu^{-4}$. Hence the complete common coarse picture $H$
+has, on a positive width $\sigma'$ depending only on $\sigma$,
+component bound
+\begin{equation}\label{eq:inherited-strip-gain}
+                              |H|_{\sigma'}\le C'\Lambda\mu^2.
+\end{equation}
+The finite numbers of colour, direction, and difference addresses
+are included in $C'$, which depends on the fixed widths and $D$,
+not on $L$, the torus, or $\Lambda$. Normal convergence of the
+coefficient sums proves holomorphy. Their covariance under
+integer momentum shifts and that of $X$ prove periodicity of the
+common picture. Expanding the same absolutely convergent sums
+on a finite torus gives its exact recording identity for the
+linear pullback of the fine loop action.
+
+The nonlinear stationary pullback has the same second derivative.
+Indeed the fine loop action $V$ has $DV(0)=0$, and the stationary
+map $\psi$ satisfies $\psi(0)=0$ and $D\psi(0)=X$. The chain rule
+therefore reads
+\[
+ D^2(V\circ\psi)(0)[a,b]
+       =D^2V(0)[Xa,Xb]+DV(0)[D^2\psi(0)[a,b]]
+       =D^2V(0)[Xa,Xb].
+\]
+The coordinate and tree-gauge maps identify these with the actual
+inherited response; changes of allowed tags agree as germs.
+Thus $H$ records that response, with no additional error.
+
+\subsection{The alias formula and the coarse--fine equation}
+To prove the order at zero, use the real-momentum alias
+representation. For $l\in(\mathbb Z/L\mathbb Z)^4$, let
+\[
+                    k_l(p)=\frac{p+2\pi l}{L}
+\]
+with any fixed integer representatives; periodicity removes the
+choice of representatives. Let $N_l(p)$ be the alias component
+of $X$ in the normalization for which a coarse unit wave pulls
+back into fine waves of amplitudes $N_l(p)$. With the source
+normalization of these amplitudes the common picture satisfies
+\begin{equation}\label{eq:inherited-alias}
+ H_{ab}(p)=L^4\sum_l
+     N_{-l}(-p)_a^{\mathsf T}S(k_l(p))N_l(p)_b.
+\end{equation}
+For clarity, this equality follows first at each finite coarse
+Fourier grid. Expand both pulled-back waves in the finite set
+of aliases. Fine translation invariance kills every pair except
+opposite aliases; the ratio of fine to coarse site counts is
+$L^4$. Approximate an arbitrary real $p$ along grids whose side
+lengths tend to infinity. The bridge and both common pictures
+are continuous and the alias set is finite, so the identity
+passes to every real $p$. The same argument works with
+per-volume errors tending to zero. Here both recording identities
+are exact.
+
+Write $K_f(k)=d_1(k)^*B(k)d_1(k)$ for the fine Gaussian form and
+$K_c(p)$ for the coarse one. The stationary Hessian equations
+imply, in the block Fourier coordinates,
+\begin{equation}\label{eq:inherited-primal}
+          K_f(k_l(p))N_l(p)_a=A_l(p)K_c(p)e_a,
+\end{equation}
+where $A_l(p)$ is the corresponding component of the adjoint
+block-mean map and the inverse block Fourier change of coordinates.
+It is analytic near zero for fixed $L$. To obtain
+\eqref{eq:inherited-primal}, differentiate the stationary equation,
+which gives $K_f X=Q^*K_c$, and diagonalize the fine Gaussian form
+in its alias blocks. This identity also follows on arbitrary real
+momenta from its exact finite-grid versions by the preceding
+density argument. Since $K_c$ contains a curl on each side,
+\[
+                             K_c(p)=O(|p|^2).
+\]
+
+\subsection{Suppressing the nonprincipal aliases}
+Fix $l\ne0$ and real $p$ near zero. Then $k=k_l(p)$ stays away
+from zero modulo $2\pi$. Let $D(k)=d_0(k)$ and
+$\omega(k)=\sum_a|q_a(k)|^2>0$. Project the bridge component
+off its longitudinal part:
+\[
+ N_l^{\perp}(p)
+    =\left(I-D(k)\omega(k)^{-1}D(k)^*\right)N_l(p).
+\]
+The matrix $D(k)^*D(k)$ is $\omega(k)I$ on colours, so
+$D(k)^*N_l^{\perp}(p)=0$. The fine kinetic form kills pure
+gauge vectors. Combining this fact with
+\eqref{eq:inherited-primal} gives
+\begin{equation}\label{eq:inherited-elliptic-alias}
+     \bigl(K_f(k)+D(k)D(k)^*\bigr)N_l^{\perp}(p)
+                           =A_l(p)K_c(p).
+\end{equation}
+
+The matrix on the left is invertible at $p=0$. Here the fine
+floor is required for the same bed on every finite period, with
+one positive lower constant. Passing its Fourier inequality to
+real frequencies gives
+\[
+       \langle v,K_f(k)v\rangle\ge c\|d_1(k)v\|^2,
+                                  \qquad c>0.
+\]
+The coordinate exterior identity is
+\[
+        \|d_1(k)v\|^2+\|D(k)^*v\|^2=\omega(k)\|v\|^2.
+\]
+It follows either by expanding both squares or from the
+anticommutation of exterior multiplication and contraction.
+A vector in the kernel of $K_f(k)+D(k)D(k)^*$ must make both
+nonnegative terms zero, and hence must be zero. Finite
+dimensionality gives invertibility. The matrix depends
+continuously on $p$, so its inverse is bounded near zero for
+this fixed $l,L$. Equation~\eqref{eq:inherited-elliptic-alias}
+now proves
+\[
+                              N_l^{\perp}(p)=O(|p|^2).
+\]
+This is a qualitative order statement. No uniform lower bound
+in $L$ is asserted for this inverse.
+
+The Ward identities \eqref{eq:inherited-transverse} permit
+replacing both $N$ factors in each alias term of
+\eqref{eq:inherited-alias} by their transverse projections.
+For $l\ne0$, each contributes order two; $S(k_l(p))$ is bounded
+near $p=0$. Every nonprincipal term therefore has order four.
+For the principal alias, $k_0(p)=\mu p$, and $S(\mu p)$ already
+has order four. Its two bridge factors are analytic and bounded
+near zero. This term has order four as well. There are finitely
+many aliases, and multiplication by the fixed factor $L^4$
+does not change Taylor order. Hence $H$ has order four.
+
+Together with \eqref{eq:inherited-strip-gain} and the exact
+recording identity, this supplies the inherited loop picture
+used in Section~\ref{sec:stationary-output-construction}.
+Its strip bound is uniform in the blocking side under the stated
+bridge prices; its order-four property uses the all-period floor
+and the exact coarse--fine stationary equation. In particular it
+does not assume that the longitudinal alias amplitudes themselves
+are small.

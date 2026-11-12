@@ -1,0 +1,191 @@
+\section{Applying the convergence estimates to the selected histories}
+\label{sec:selected-history-limits}
+The preceding convergence arguments concern particular arrays, paths and
+stationary branches. We now identify these objects along one construction.
+This identification is needed because equality of the actions at one
+period would not identify their coefficient arrays, and because a
+cutoff-dependent change of the top boundary need not preserve a limit
+unless it eventually leaves each fixed scale unchanged.
+
+\subsection{One simultaneous stationary construction}
+Fix the scale schedule, clipping data and coordinate conventions. Denote
+the terminal cutoff by $N$ and the scale by $m\le N$. The finite
+stationary construction of Section~\ref{sec:path-attachment-producer}
+gives paths $R_{N,m}$, scalar corrections $\alpha_{N,m}$ and stationary
+maps $\rho_{N,m}^{p,F}$, where $p$ is a period and $F$ an allowed forest.
+All these objects are chosen together. Their one-step identities use
+$R_{N,m+1}$ as input and $R_{N,m}$ as output. The path bounds hold at
+the prescribed scale widths and allowances.
+
+For the convergence assertion we use the strengthened version of this
+construction. At scale $m$ it fixes three coefficient Hilbert spaces,
+with encoding widths $\delta_{m,2},\delta_{m,3},\delta_{m,4}$ strictly
+larger than the paid width $w_m$. The nonlinear path terms are encoded
+in their canonical selected subspaces. It also supplies the following
+uniformity: every admissible replacement of the input path with the
+same attached row and with all path and loop allowances enlarged by
+$64$ has an output in these same selected spaces, at the ordinary
+output allowances. The output has the same classical and thermal
+matching identities on every period and forest. Finally, the underlying
+free horizon converges at each scale in all of its retained components,
+and the root rows have an eventual bound at some width $v_m>w_m$.
+These are the extended-domain, canonical-readout and retained-horizon
+hypotheses used in Section~\ref{sec:background-path-convergence}.
+They belong to the one-step analytic construction; neither finite
+backward induction nor the argument below supplies them.
+
+Here is why its coefficient representation is the one needed in that
+section. Select the three coefficient arrays of each path once, at
+$(N,m)$, and use that same selection in every occurrence of the path.
+For $m+2<N$, the input arrays of the step at $m$ are then exactly the
+output arrays of the step at $m+1$. The row at either occurrence is
+also the same attached root row. Thus the input/output equality holds
+in the coefficient spaces, before taking any limit. The one-step
+identities and bounds are available for all these chosen arrays.
+For a replacement of one array the other arrays remain fixed; their
+closed linear constraints and their separate budgets are preserved.
+The enlarged input domain therefore supplies exactly the additional
+steps used in the contraction argument.
+
+Apply Section~\ref{sec:background-path-convergence} to these data.
+At every fixed scale there are one limiting path $R_m$ and one
+scalar $\alpha_m$ such that every coefficient of $R_{N,m}$ converges
+to the corresponding coefficient of $R_m$, and
+$\alpha_{N,m}\to\alpha_m$. The limiting path has the original paid
+bounds. For every fixed period, forest and derivative order $r$,
+\begin{equation}\label{eq:selected-stationary-limit}
+ D^r\rho_{N,m}^{p,F}(0)\longrightarrow D^r\rho_m^{p,F}(0).
+\end{equation}
+The limiting stationary germ is determined by $R_{m+1}$, its retained
+quadratic data and its forest. Its Hessian is positive with the same
+lower bound. Consequently no choice of a new subsequence for a forest
+or derivative order is involved in \eqref{eq:selected-stationary-limit}.
+The scalar limit is the one obtained from these same paths and thermal
+identities.
+
+\subsection{A single width for all four coefficient families}
+The common dictionaries are part of the conclusion just obtained.
+Write $r_{N,m}(a)$ and $r_m(a)$ for row coefficients on the canonical
+row dictionary, and $c_{N,m,q}(a,\nu)$ and $c_{m,q}(a,\nu)$ for the
+actual, exponentially encoded coefficients of the atoms of degree
+$q=2,3,4$. Their supports, lengths $\ell(a)$ and color multi-indices
+$\nu$ are independent of $N$ on a tail. Choose
+\[
+ w_m<\widetilde w_m<
+ \min\{v_m,\delta_{m,2},\delta_{m,3},\delta_{m,4}\}.
+\]
+Then, for every $\varepsilon>0$, all sufficiently large $N$ satisfy
+\begin{align}
+ \sum_a |r_{N,m}(a)-r_m(a)|e^{\widetilde w_m\ell(a)}
+       &\le\varepsilon,\label{eq:selected-row-width}\\
+ \sum_{a,\nu}|c_{N,m,q}(a,\nu)-c_{m,q}(a,\nu)|
+                         e^{\widetilde w_m\ell(a)}
+       &\le\varepsilon\qquad(q=2,3,4).
+ \label{eq:selected-atom-width}
+\end{align}
+For the row statement one may either sum the finitely many plaquette
+directions or impose the estimate separately on each; shrinking the
+requested $\varepsilon$ by their number gives the displayed version.
+
+For completeness, the two tail bounds that permit this simultaneous
+choice are different. If the row budget at $v_m$ is $B_m$, its
+coefficient difference at the smaller width is bounded by
+\[2B_m e^{-(v_m-\widetilde w_m)\ell(a)}.\]
+For an atom, remove its
+encoding factor $e^{-\delta_{m,q}\ell(a)}$. The resulting coefficient
+arrays have a common Hilbert bound $C_{m,q}$, so their individual
+differences have absolute value at most $2C_{m,q}$. Their weighted
+majorant is therefore
+$2C_{m,q}e^{-(\delta_{m,q}-\widetilde w_m)\ell(a)}$.
+Both majorants are summable on the canonical dictionaries by the
+geometric sums in Section~\ref{sec:fixed-rung-convergence}. The
+coordinate limits and a finite-head, summable-tail argument prove
+\eqref{eq:selected-row-width}--\eqref{eq:selected-atom-width}.
+There are only four families and finitely many row directions, so
+their eventual estimates hold on one tail. This gives one path
+limit with one strictly larger width, as required in the local
+integral comparison.
+
+\subsection{Changing the terminal normalization}
+The final Wilson normalization replaces the top path at $m=N$.
+Let $\widetilde R_{N,m}$, $\widetilde\alpha_{N,m}$ and
+$\widetilde\rho_{N,m}^{p,F}$ denote the resulting data. The change
+of coordinates retains the exact identities
+\begin{align*}
+ \widetilde R_{N,m}&=R_{N,m}&& (m<N),\\
+ \widetilde\alpha_{N,m}&=\alpha_{N,m}&&\text{for all }N,m,\\
+ \widetilde\rho_{N,m}^{p,F}&=\rho_{N,m}^{p,F}&&(m+1<N).
+\end{align*}
+It also leaves the free bed unchanged for $m<N$ and the entire
+associated tower unchanged for $m+1<N$; its transport row is
+unchanged already for $m<N$. These are identities of the maps and
+coefficient data, not merely equalities of their evaluated actions.
+
+For fixed $m$, all the identities hold once $N>m+1$. Deleting this
+finite initial segment changes none of the limits above, none of
+the eventual larger-width bounds and none of the retained free
+horizon limits. Equality of the stationary maps gives equality of
+every derivative at zero. Thus the final normalized construction
+has exactly the same $R_m$, $\alpha_m$ and stationary jets. In
+particular, replacing the terminal path has not introduced a second
+background for the activity estimates.
+
+\subsection{The activity and coupling limits on this background}
+Fix a period $p$. The regular supports, forced inventories and norms
+at scale $m$ depend on the fixed scale and period, not on $N$.
+Embed their actual arrays into the one completion $\mathcal H_{m,p}$
+of Section~\ref{sec:coupled-background-convergence}. The representative
+of each finite history has exactly its prescribed activities; the
+embedding is the same one used in the finite-test estimates. Its
+norm is at most $1/8$. At every retained scale its path is
+$\widetilde R_{N,m}$, by the construction's input/output identities.
+The scalar in its coupling recursion is
+$\widetilde\alpha_{N,m}$, not a newly chosen correction.
+
+The finite real-test estimates and their ray consequence in
+Section~\ref{sec:background-ray-estimates} give the two one-step
+comparison bounds in
+\eqref{eq:coupled-activity-step}--\eqref{eq:coupled-cost-step}.
+Their constants are $8/128$ for the activity and $4s_m$ for the
+scalar correction. The entry-threshold calculation at the end of
+Section~\ref{sec:coupled-background-convergence} gives
+$\sum_{j<m}s_j\le B_m/128$ for these same allowances. The
+larger-width path limit above, the convergent stationary jets and
+the retained free horizon supply the background data in the
+common-variable comparison. The compensated parameter estimates
+of Sections~\ref{sec:local-parameter-comparison} and
+\ref{sec:finite-volume-parameter-continuity}, with the suppliers
+of Section~\ref{sec:parameter-comparison-suppliers}, then give its
+local continuity, including the projected scalar output. Each
+application retains the funded transition and output identities
+stated there. This continuity applies also to the admissible
+auxiliary histories with a prescribed coupling script and zero
+terminal activity, since the same one-step construction is
+available for every input in its allowed ball.
+
+All hypotheses of Section~\ref{sec:coupled-background-convergence}
+are therefore on one and the same family. For any terminal sequence
+$N\to\infty$ and any corresponding finite trajectories whose bottom
+couplings tend to $b$, there are, at every fixed $m,p$, limits
+\[
+ \beta_{N,m}\longrightarrow\beta_m,\qquad
+ x_{N,m}\longrightarrow x_m\ \text{in }\mathcal H_{m,p},\qquad
+ q_{N,m}\longrightarrow q_m.
+\]
+Here $q_{N,m}$ is the scalar activity correction, distinguished from
+the path correction $\alpha_{N,m}$. They obey
+\[
+                \beta_m-\beta_{m+1}-\alpha_m=q_m.
+\]
+Two sequences with the same bottom limit $b$ give the same limits:
+interleave them, whose terminal indices still tend to infinity,
+and apply the same uniqueness proof. No compactness of a ball in
+$\mathcal H_{m,p}$ is used. The norm convergence and the positive
+partition lower bound in Section~\ref{sec:fixed-rung-convergence}
+now apply to the actual normalized densities at that scale.
+
+This application retains the strengthened stationary construction,
+its convergent free horizon and the funded nonlinear transition.
+The argument establishes compatibility of their consequences; the
+analytic production of these inputs remains the responsibility of
+the corresponding construction estimates.

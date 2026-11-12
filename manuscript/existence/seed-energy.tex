@@ -1,0 +1,333 @@
+\section{The energy gain assigned to defect seeds}
+\label{sec:seed-energy}
+The exponential gain in Section~\ref{sec:packet-estimates} comes from
+a lower bound on the energy assigned to a finite set of defects. Fine
+plaquette defects, predictor defects and coarse flags require different
+arguments. In particular, some coarse terms can be negative. The proof
+retains a reserve from the very large fine and predictor defects to pay
+for these terms. We give the local algebra and the final allocation,
+keeping the geometric and local comparison inputs explicit.
+
+\subsection{A quartic bound for the curvature defect}
+Use the real Frobenius inner product in the defining unitary matrix
+representation of the group. Write $\mathfrak g$ for its tangent space
+at the identity and $\Pi$ for orthogonal projection onto $\mathfrak g$.
+Let $D>0$ be the colour normalization, so that
+\[
+ \|U-1\|=D\,r(U),\qquad
+ \|\operatorname{col}(v)\|=D\|v\|.
+\]
+Here $r(U)$ is the group chord and $\operatorname{col}$ is the
+isometric identification up to the factor $D$. The curvature coordinate
+$F(U)$ is obtained by projecting $(U-U^*)/2$ onto $\mathfrak g$.
+Since the Hermitian part of $U-1$ is orthogonal, for the real Frobenius
+inner product, to every skew-Hermitian matrix,
+\[
+ \operatorname{col}(F(U))=\Pi(U-1).
+\]
+To check the orthogonality, if $H^*=H$ and $X^*=-X$, cyclicity of the
+trace shows that $\operatorname{Re}\operatorname{tr}(HX^*)$ is its own
+negative. Pythagoras therefore gives the exact identity
+\begin{equation}\label{eq:seed-normal-defect}
+ D^2\{r(U)^2-\|F(U)\|^2\}
+       =\|(1-\Pi)(U-1)\|^2.
+\end{equation}
+In particular $\|F(U)\|\le r(U)$ for every group element.
+
+The local tubular projection in the group data is analytic, equals
+the identity on the group near $1$, and has derivative $\Pi$ at $1$.
+Taylor's formula on a sufficiently small ambient ball consequently
+gives
+\[
+ \|(1-\Pi)(U-1)\|\le C\|U-1\|^2
+\]
+for nearby group elements. Explicitly, bound the second derivative of
+the projection on a smaller closed ball and integrate its second-order
+Taylor remainder along the segment from $1$ to $U$. This proves the
+inequality with one constant $C>0$. Combining it with
+\eqref{eq:seed-normal-defect} gives constants $K,\delta>0$, depending
+only on the group data, such that
+\begin{equation}\label{eq:seed-curvature-bound}
+ r^2-Kr^4\le\|F(U)\|^2\le r^2,
+ \qquad \tfrac34r^2\le\|F(U)\|^2
+ \quad\text{when }r=r(U)\le\delta.
+\end{equation}
+One can take $K=C^2D^2$ and decrease $\delta$ until $K\delta^2\le1/4$.
+Thus the nonnegative defect
+$\mathfrak f(U)=(r(U)^2-\|F(U)\|^2)/2$ is at most $Kr(U)^4/2$
+in that neighbourhood.
+
+This proves the group estimate needed for the coarse energy row.
+Let $a_c>0$ be its quadratic coefficient and $\lambda_c>0$ its linear
+coefficient, with $\lambda_c\le a_c/8$. At coarse threshold $s\ge0$,
+the clipping function and the radial attenuation are
+\[
+ q_s(r)=\begin{cases}a_c r^2/2,&r\le s,\\\lambda_c sr,&r>s,\end{cases}
+ \qquad
+ \alpha_s(r)=\begin{cases}1,&r=0,\\\min\{1,s/r\},&r>0.\end{cases}
+\]
+Cancellation of the other coarse quadratic components gives the row
+\begin{equation}\label{eq:seed-coarse-row}
+ C_s(U)=a_c(\alpha_s-\alpha_s^2/2)\|F(U)\|^2-q_s(r(U)).
+\end{equation}
+For $0\le s\le\delta$ this has three useful bounds:
+\begin{equation}\label{eq:seed-three-ranges}
+ \begin{array}{ll}
+ r\le s:& C_s(U)\ge-B_0s^4,\quad B_0=a_cK/2,\\
+ s<r\le\delta:&C_s(U)\ge(a_c/4)sr,\\
+ r>\delta:&C_s(U)\ge-\lambda_c sr.
+ \end{array}
+\end{equation}
+For the first, $\alpha_s=1$ and use the quartic defect. In the other
+two ranges $\alpha_s=s/r\in[0,1]$, so
+$\alpha_s-\alpha_s^2/2\ge s/(2r)$. In the middle range this gives
+$C_s\ge(3a_c/8-\lambda_c)sr\ge a_csr/4$; in the last range drop the
+nonnegative curvature term. These arguments include $s=0$.
+
+\subsection{The fine row and the discarded quadratic component}
+Let the fine threshold be $t>0$. Write $a_f,\lambda_f>0$ for the fine
+quadratic and linear coefficients, and let $r_i$ be the fine plaquette
+chords. The direct part of its energy row is
+\[
+ D_i=q_t(r_i)+\tfrac12\|v_i\|^2-\langle v_i,y_i\rangle,
+ \qquad \|y_i\|\le\sqrt{a_f}\,r_i,
+\]
+where $q_t$ uses coefficients $a_f,\lambda_f$. The second part is
+\[
+ H_i=\mathbf1_{\{i\text{ retained}\}}\tfrac12\|u_i\|^2
+       +\tfrac12\|v'_i\|^2-\langle v'_i,u_i\rangle.
+\]
+Their sum is the fine row. The guide bounds are
+$\|v_i\|,\|v'_i\|\le\epsilon t$, with
+$\epsilon=C/L^2$. The guide constant $C\ge0$, the coefficients $a_f,\lambda_f>0$,
+and the fine clipping radius $R>0$ are fixed before $L$ is chosen.
+
+Let $\mathcal F$ be the listed fine defects and
+$\mathcal S=\{i\in\mathcal F:r_i>t\}$ their large part. The local
+sector conditions ensure $r_i\ge t/4$ on $\mathcal F$ and
+$r_i\le t/2$ on unlisted plaquettes in the relevant neighbourhood.
+For $r_i\le t$, Cauchy--Schwarz gives
+\[
+ D_i\ge\tfrac12(\sqrt{a_f}\,r_i-\|v_i\|)^2\ge0.
+\]
+If additionally $i\in\mathcal F\setminus\mathcal S$ and
+$\epsilon\le\sqrt{a_f}/8$, the last square is at least
+$a_ft^2/128$. For $i\in\mathcal S$, the linear part of the clipping
+and $\epsilon\sqrt{a_f}\le\lambda_f/4$ give
+$D_i\ge(3\lambda_f/4)tr_i$. Summing over the fine rows in the
+$2B$ neighbourhood of the seeds therefore gives
+\begin{equation}\label{eq:seed-direct-income}
+ \sum_i D_i\ge \frac{3\lambda_f}{4}t\sum_{i\in\mathcal S}r_i
+             +\frac{a_f}{128}t^2|\mathcal F\setminus\mathcal S|.
+\end{equation}
+
+The second component is nonnegative on retained rows, since there it
+is $\|u_i-v'_i\|^2/2$. It is not necessarily nonnegative on discarded
+rows. We count these rows on the original fine lattice. A discarded
+row at $i$ has a witness $j$ with
+\[
+ t\exp\{d(i,j)/R\}<r_j.
+\]
+The finite-range locality conditions ensure that each such witness
+belongs to $\mathcal S$. For $y\ge1$, the number of fine plaquette
+addresses within distance $R\log y$ of a point is at most
+\[
+ C_R y,\qquad C_R=(8R+1)^4\#\{\text{plaquette axes}\}.
+\]
+Indeed $1+(\log y)/4\le y^{1/4}$ implies
+$2R\log y+1\le(8R+1)y^{1/4}$, and the lattice ball has at most
+$(2\lfloor R\log y\rfloor+1)^4$ sites. A union bound over witnesses
+therefore gives, for the discarded set $\mathcal D$,
+\begin{equation}\label{eq:seed-discarded-count}
+ t|\mathcal D|\le C_R\sum_{j\in\mathcal S}r_j.
+\end{equation}
+There is no factor $L^4$ in this count.
+
+For the shortened path field $u_i$, use the nonnegative finite-range
+coefficient matrix $k_{ij}$, whose row and column sums are at most
+$C$ and which satisfies $\|u_i\|\le\sum_j k_{ij}r_j$.
+Locality and the sector conditions imply $r_j\le t$ for a contributing
+$j$ outside $\mathcal S$. Thus
+\[
+ \|u_i\|\le Ct+\sum_{j\in\mathcal S}k_{ij}r_j,
+ \qquad
+ \sum_{i\in\mathcal D}\|u_i\|
+       \le C(C_R+1)\sum_{j\in\mathcal S}r_j.
+\]
+The second inequality uses \eqref{eq:seed-discarded-count} for the
+constant part and the column bound for the large part. Since
+$H_i\ge-\epsilon t\|u_i\|$ on discarded rows, choosing $L$ so large
+that $\epsilon C(C_R+1)\le\lambda_f/4$ and combining with
+\eqref{eq:seed-direct-income} proves
+\begin{equation}\label{eq:seed-fine-income}
+ F_A:=\sum_i(D_i+H_i)
+ \ge \frac{\lambda_f}{2}t\sum_{i\in\mathcal S}r_i
+             +d_f t^2|\mathcal F\setminus\mathcal S|,
+ \qquad d_f=a_f/128>0.
+\end{equation}
+The geometric row and column estimates and the guide bound used here
+are explicit inputs; the discarded-row argument shows precisely how
+they enter the energy estimate.
+
+For predictor defects the argument is simpler. Let $p>0$ be the
+predictor penalty and $z_i$ its bond chord. A predictor energy row is
+at least $(\sqrt p\,z_i-\|w_i\|)^2/2$, with $\|w_i\|\le Ct$.
+On each listed predictor defect $i\in\mathcal I$, the sector condition
+is $z_i\ge Wt$. Choose $W$ after $L$ so that $C\le\sqrt p\,W/2$.
+The unlisted rows are nonnegative, and hence
+\begin{equation}\label{eq:seed-predictor-income}
+ I_A\ge \frac{p}{8}\sum_{i\in\mathcal I}z_i^2.
+\end{equation}
+
+\subsection{The reserve for very large defects}
+Let $T\ge t$ be a larger threshold and put
+\[
+ \mathcal F_T=\{i\in\mathcal F:r_i>T\},\quad
+ \mathcal I_T=\{i\in\mathcal I:z_i>T\},\quad
+ d_A=|\mathcal F_T|+|\mathcal I_T|.
+\]
+The use of $T$ here does not change the seed set. Let $m\ge0$ satisfy
+\[
+ m\le\lambda_f/8,\qquad m\le d_f,\qquad m\le p/32.
+\]
+If $c_F\le\lambda_f/4$, then \eqref{eq:seed-fine-income} implies
+\begin{equation}\label{eq:seed-fine-reserve}
+ F_A\ge mt^2|\mathcal F|+mtT|\mathcal F_T|
+                     +c_Ft\sum_{i\in\mathcal S}r_i.
+\end{equation}
+To check this, both $t|\mathcal S|$ and $T|\mathcal F_T|$ are at
+most $\sum_{\mathcal S}r_i$. Their two charges and the $c_F$ charge
+use at most $(2m+c_F)t\sum_{\mathcal S}r_i\le
+(\lambda_f/2)t\sum_{\mathcal S}r_i$. The remaining fine seeds are
+paid by $d_ft^2$.
+
+Similarly suppose $W\ge1$ and $C_1\le pW/16$. Then
+\eqref{eq:seed-predictor-income} implies
+\begin{equation}\label{eq:seed-predictor-reserve}
+ I_A\ge mt^2|\mathcal I|+mtT|\mathcal I_T|
+                         +C_1t\sum_{i\in\mathcal I}z_i.
+\end{equation}
+Indeed $z_i\ge Wt\ge t$ on every listed bond, so
+$t^2|\mathcal I|\le\sum z_i^2$ and
+$tT|\mathcal I_T|\le\sum z_i^2$. Also
+$C_1t z_i\le(p/16)z_i^2$. The two first charges use at most
+$2m\sum z_i^2\le(p/16)\sum z_i^2$, leaving the required linear
+charge within the total $p/8$.
+
+\subsection{Coarse flags and the affected region}
+Let $\mathcal O$ be the coarse plaquette rows in the $2B$ neighbourhood
+of all seeds, and let $\mathcal H\subseteq\mathcal O$ be the rows
+affected by a very large defect. Split the coarse plaquettes into
+\[
+ \mathcal C_0=\{r_i\le s\},\quad
+ \mathcal C_1=\{s<r_i\le\delta\},\quad
+ \mathcal C_2=\{r_i>\delta\},
+ \qquad i\in\mathcal O.
+\]
+The geometry supplies a constant $K_0$, fixed before $L,W$, such that
+\begin{equation}\label{eq:seed-geometric-counts}
+ \mathcal C_2\subseteq\mathcal H,\quad
+ |\mathcal C_2|\le K_0d_A,\quad
+ n_g\le4(|\mathcal C_1|+K_0d_A),\quad
+ |\mathcal O|\le K_0B^4 n,
+\end{equation}
+where $n_g$ is the number of coarse flag seeds and
+$n=|\mathcal F|+|\mathcal I|+n_g$ is the total number of seeds.
+These are the precise geometric counting inputs used below.
+For $t\le2s$ and $m\le a_c/64$, the middle bound in
+\eqref{eq:seed-three-ranges} gives at least $4mt^2$ on each row of
+$\mathcal C_1$. Summing all three ranges yields
+\begin{equation}\label{eq:seed-coarse-reserve}
+ C_A\ge4mt^2|\mathcal C_1|
+       -\lambda_c s\sum_{i\in\mathcal C_2}r_i
+       -B_0s^4|\mathcal O|.
+\end{equation}
+
+The remaining two comparison rows, denoted together by $L_A$, are
+split over $\mathcal H$ and its complement. Their local estimates
+have the form
+\begin{align}
+ L_{\mathcal H}&\ge\lambda_c s\sum_{i\in\mathcal C_2}r_i
+ -\frac{C_1}{L^2}t\sum_{i\in\mathcal S}r_i
+ -C_1t\sum_{i\in\mathcal I}z_i-Zt^2B^4d_A,
+ \label{eq:seed-hit-input}\\
+ L_{\mathcal O\setminus\mathcal H}&\ge-\eta t^2 n.
+ \label{eq:seed-unhit-input}
+\end{align}
+The constant $C_1$ is fixed before $L,W$, whereas $Z$ may depend on
+both. The second estimate is available for every fixed $\eta>0$ by
+taking $x$ sufficiently large after the other parameters. The row
+estimates producing these inequalities remain inputs here. The
+positive normalization row, denoted $N_A$, satisfies $N_A\ge0$.
+The total assigned energy is exactly
+$F_A+I_A+C_A+N_A+L_{\mathcal H}+L_{\mathcal O\setminus\mathcal H}$.
+
+Choose $L$ large enough for the fine estimate and
+$C_1/L^2\le\lambda_f/4$, and $W$ large enough for the predictor
+estimate, $W\ge1$ and $C_1\le pW/16$. Choose
+\[
+ 0<m\le\min\{\lambda_f/8,d_f,p/32,a_c/64\},\qquad \eta=m/4.
+\]
+Suppose finally that
+\begin{equation}\label{eq:seed-final-smallness}
+ (4mK_0+ZB^4)t^2\le mtT,
+ \qquad B_0s^4K_0B^4\le(m/4)t^2.
+\end{equation}
+Adding \eqref{eq:seed-fine-reserve}--\eqref{eq:seed-unhit-input}
+cancels the three explicit linear expenses. The first inequality in
+\eqref{eq:seed-final-smallness} leaves $4mK_0t^2d_A$ from the
+very-large-defect reserve, and the second pays the small coarse rows.
+Thus the assigned energy is at least
+\[
+ mt^2(|\mathcal F|+|\mathcal I|)
+ +4mt^2(|\mathcal C_1|+K_0d_A)-\tfrac m4t^2n-\tfrac m4t^2n
+ \ge\tfrac m2t^2n.
+\]
+The last step is the flag count in \eqref{eq:seed-geometric-counts}.
+This is the required positive gain per seed, with $\mu=m/2$.
+
+\subsection{The order of choices and orientation average}
+For the actual thresholds put
+\[
+ t=\frac{P(h)}{\sqrt h},\qquad
+ s=\frac{P(x)}{\sqrt x},\qquad
+ T=h^{-49/100},\qquad h=x+c_L.
+\]
+As $x\to\infty$ at fixed $L$,
+\[
+ s\to0,\quad t/s\to1,\quad
+ B^r\,t/T\to0,\quad B^r s\to0
+ \quad\text{for every fixed }r\ge0.
+\]
+For the ratio $t/s$, subtract the logarithms:
+$\log t=(\log\log h)^2-\frac12\log h$ and the corresponding formula
+at $x$. Their difference tends to zero under a fixed shift, by the
+mean value theorem, since the derivative of
+$(\log\log x)^2-\frac12\log x$ tends to zero. The other statements
+follow from $B$ and $P$ growing slower than every positive power,
+using $-1/2+49/100=-1/100$ for $t/T$.
+It follows that $0<s\le\delta$, $t\le2s$, $t\le T$, and both
+inequalities \eqref{eq:seed-final-smallness} hold eventually. For the
+second, divide by $t^2$ and use $s/t\to1$ and $B^4s^2\to0$.
+All choices have therefore been made in the order
+\[
+ \text{fixed group and row data}\ ;\ L\text{ large}\ ;\
+ W\text{ large}\ ;\ \mu>0\ ;\ x\text{ large},
+\]
+with no dependence on the lattice period in the last threshold.
+
+The packet construction uses an average of the assigned energies over
+signed coordinate transformations. Here the block side is odd, so
+the parent map commutes with the signed coordinate action. We use
+the patch's signed covariance laws for the predictor and the local
+likelihoods. Turn the tree, seed set and tag array together with the fields. Tree edges remain equal to the group
+identity; the predictor and likelihood transform covariantly; distances,
+chords and the number of seeds are preserved. The local sector
+conditions, including the strict positivity of the retained site
+likelihoods, therefore hold in every transformed channel. Applying the
+same energy bound there and averaging with normalized weights yields
+$Q_A^{\rm core}\ge\mu t^2n$. This supplies the core input to
+\eqref{eq:packet-assigned-energy} once the geometric, guide and
+comparison inputs specified in this section have been established.
+The average is of energies on transformed copies of the same data;
+there is no independent choice of trees or tags between channels.

@@ -1,0 +1,322 @@
+\section{Gauge comparison and the geometry of large defects}
+\label{sec:seed-geometry}
+We now prove the geometric estimates used in the seed energy bound.
+The essential analytic point is a first-power estimate for the actual
+coarse predictor. It must hold on both branches of its definition and
+for every output with positive weight. Small-field uniqueness alone
+would not give the estimate needed here.
+
+Write $r(g)=D^{-1}\|g-1\|$ for the normalized matrix chord. Thus
+$r\le2$, $r(g^{-1})=r(g)$, $r$ is conjugation invariant, and
+$r(gh)\le r(g)+r(h)$. For a finite lattice box $X$, let
+\[
+ E_X(U)=\sum_{\substack{(x,a)\\x,x+e_a\in X}}r(U_{x,a}),\qquad
+ F_X(U)=\sum_{\substack{(x,p)\\\text{all corners in }X}}r(U_p).
+\]
+The sums include positive bonds and one orientation for each plaquette.
+All boxes in the first part of the argument lie in the covering lattice
+$\mathbb Z^4$; periodic multiplicities will be restored at the end.
+
+\subsection{An axial gauge with a first-power bound}
+For the box of radius $R$, with side $q=2R+1$, there is a coordinate
+path gauge $H$ such that
+\begin{equation}\label{eq:geometry-axial}
+ E_X(H\cdot U)\le16q F_X(U).
+\end{equation}
+Here the gauge at $x$ is parallel transport from a suitable base point
+to $x$, moving along the coordinates in a prescribed order. We prove
+more generally the bound $4kqF_X$ on a $k$-dimensional coordinate slab.
+It is zero on a one-point slab. Suppose the assertion holds in $k$
+dimensions and add a coordinate $j$. Choose a slice perpendicular to
+$j$ with least plaquette sum; its sum is at most $F_X/q$, since the
+plaquettes in different slices are distinct. Choose the base point
+there by induction, and extend the paths by moving last along $j$.
+All $j$-bonds in the resulting gauge are the identity.
+
+For a transverse bond, two neighbouring slice values differ in chord
+by at most the chord of the plaquette between them. Indeed, with the
+two vertical bonds equal to $1$, that plaquette is $ab^{-1}$, and
+$|r(a)-r(b)|\le r(ab^{-1})$. Summing over the transverse directions
+costs at most four times the plaquette sum between the slices.
+Telescoping in $j$ shows that the bond sums of any two slices differ
+by at most $4F_X$. The total bond sum is consequently at most
+\[
+ q\left(4kq\frac{F_X}{q}+4F_X\right)=4(k+1)qF_X.
+\]
+This proves \eqref{eq:geometry-axial}, with the required coordinate
+path form of the gauge. In particular the fallback rule which permits
+axial gauges with bound $K_{\rm ax}qF_X$ has an eligible choice whenever
+$K_{\rm ax}\ge16$.
+
+We also need a path counting estimate. If $N=|X|$, then for any fixed
+coordinate order,
+\begin{equation}\label{eq:geometry-path-count}
+ \sum_{x,y\in X}r(U_{x\to y})\le4Nq E_X(U).
+\end{equation}
+For each coordinate segment use the sum of the bond chords on its
+coordinate line. During that segment the other coordinates are taken
+from either $x$ or $y$, according to whether they have already been
+changed. Exchanging these coordinate slots between the two endpoints
+is a bijection of $X\times X$. Thus the mixed point is uniformly
+distributed when the endpoints are uniformly distributed. Averaging
+the sum over its coordinate line gives $qE_{X,a}/N$, where $E_{X,a}$
+is the bond sum in direction $a$. Bounding each of the at most four
+segments by $qE_X/N$ and multiplying by $N^2$ proves
+\eqref{eq:geometry-path-count}. Reversed segments have the same bound
+because the chord is invariant under inversion.
+
+\subsection{Synchronizing minimizing frames}
+Let $I$ and $A$ be nonempty finite sets, and suppose
+$W_{ij\alpha}\in G$, with $W_{ii\alpha}=1$ and
+$W_{ji\bar\alpha}=W_{ij\alpha}^{-1}$ for a permutation
+$\alpha\mapsto\bar\alpha$ of $A$. A minimizing frame $h:I\to G$
+minimizes
+\[
+ \mathcal E(h)=\mathop{\rm av}_{i,j,\alpha}
+       \tfrac12 r(h_iW_{ij\alpha}h_j^{-1})^2.
+\]
+Such a minimum exists by compactness. Put
+\[
+ b_i=\mathop{\rm av}_{j,\alpha}r(W_{ij\alpha}),\qquad
+ b=\mathop{\rm av}_i b_i.
+\]
+There is a constant $C_G$, independent of both finite sets and of $W$,
+such that some $c\in G$ satisfies
+\begin{equation}\label{eq:geometry-cluster}
+ \mathop{\rm av}_i r(h_ic^{-1})\le C_G b.
+\end{equation}
+
+Here are the details which improve the square-root estimate to this
+first-power bound. Comparison with the constant frame gives
+$\mathcal E(h)\le b$, since $r^2/2\le r$. The triangle inequality and
+$(u+v)^2\le2u^2+2v^2$ therefore give
+\begin{equation}\label{eq:geometry-pair-square}
+ \mathop{\rm av}_{i,j}\|h_i-h_j\|^2\le8D^2b.
+\end{equation}
+Write $m=\mathop{\rm av}_j h_j$ for the matrix centroid and
+$m_i=\mathop{\rm av}_{j,\alpha}h_jW_{ij\alpha}^{-1}$ for its local
+replacement. Then
+\begin{equation}\label{eq:geometry-feedback}
+ \|m_i-m\|\le Db_i,
+ \qquad h_i\text{ is a nearest group element to }m_i.
+\end{equation}
+The norm bound follows by averaging matrix differences. For the second
+assertion, change only $h_i$ in the minimizing energy. The two
+ off-diagonal parts have equal costs by the reversal identity. The
+ diagonal term in the actual energy remains zero. Freezing its second
+ endpoint would add the nonnegative term
+$r(kh_i^{-1})^2/2$, which is zero at $k=h_i$; hence $h_i$ also minimizes
+the full frozen-neighbour cost. Expanding the squared Frobenius norms
+shows that this is exactly nearest-point minimization for $m_i$.
+
+The local tubular projection of the group has derivative the
+orthogonal tangent projection at $1$. On a sufficiently small ambient
+ball its derivative has norm at most $2$. Shrinking the ball also
+ensures that every nearest point is this local projection. Thus choose
+$\delta>0$ so that two matrices in the $\delta$-ball have nearest
+points at distance at most twice their distance. This also follows
+directly from the first-order nearest-point estimate used for the
+group data. Set
+\[
+ \sigma=\frac{(\delta/2)^2}{8D^2},\qquad a=\frac{\delta}{2D}.
+\]
+If $b<\sigma$, choose $c$ nearest to $m$ and rotate the frame by
+$c^{-1}$. In the rotated coordinates $1$ is nearest to its centroid.
+Choose $k$ whose mean squared distance to the frame is at most the
+double average in \eqref{eq:geometry-pair-square}. Jensen's inequality
+and the nearest-point property give
+\[
+ \|m-1\|^2\le\|m-h_k\|^2
+ \le\mathop{\rm av}_j\|h_j-h_k\|^2< (\delta/2)^2.
+\]
+For $b_i<a$, \eqref{eq:geometry-feedback} puts $m_i$ in the
+$\delta$-ball and gives $Dr(h_i)\le2Db_i$. For $b_i\ge a$ use
+$r(h_i)\le2\le2b_i/a$. Averaging proves the desired inequality in
+this case. If $b\ge\sigma$, simply use the bound $2\le2b/\sigma$.
+Thus \eqref{eq:geometry-cluster} holds with
+$C_G=\max\{2,2/a,2/\sigma\}$. Left and right rotations give the same
+chord, by conjugation invariance.
+
+Apply this to the coordinate path transports on a patch $X$ of side
+$q$. The path orders supply $A$, with reversed orders supplying the
+involution above. If $f$ is the actual minimizing frame and $H$ is any
+comparison gauge, then $h_i=f_iH_i^{-1}$ minimizes the path cost for
+$H\cdot U$. This follows by substituting into every path product;
+normalizing a competitor at the patch centre is harmless because a
+common left rotation preserves the cost. Equations
+\eqref{eq:geometry-path-count} and \eqref{eq:geometry-cluster} yield
+\[
+ \sum_{i\in X}r(c^{-1}f_iH_i^{-1})\le4C_Gq E_X(H\cdot U).
+\]
+For an active fallback frame, eligibility instead gives
+$E_X(f\cdot U)\le K_{\rm ax}qF_X(U)$. The pure-gauge discrepancy
+$d_i=f_iH_i^{-1}$ satisfies
+\[
+ E_X(d\cdot1)\le E_X(f\cdot U)+E_X(H\cdot U).
+\]
+This is the bondwise triangle inequality, with conjugation removing
+$H\cdot U$. Its path transport from $i$ to $j$ is $d_id_j^{-1}$.
+Average \eqref{eq:geometry-path-count} over $j$ and select one $j$
+whose sum is no larger than the average. Taking $c=d_j$ proves the
+same conclusion with the added axial term. Both branches therefore
+satisfy, for $A_G=\max\{4C_G,4\}$,
+\begin{equation}\label{eq:geometry-frame}
+ \sum_{i\in X}r(c^{-1}f_iH_i^{-1})
+ \le A_G q\{E_X(H\cdot U)+K_{\rm ax}qF_X(U)\}.
+\end{equation}
+Only positivity of the selected frame weight is required; the
+fallback assertion would be false for an ineligible tag.
+
+\subsection{The actual coarse predictor}
+Fix the smoothing order $J\ge4$ and the kernel constants. The odd block
+side $L$ may vary. The patch has radius $(J+3)L$, and the macro box
+has radius $(J+7)L$. Fix a coarse site $x$, lift the field around $Lx$
+to this macro box, and write $P_x$ for its plaquette chord sum.
+All translated patches at coarse offsets in the radius-two box lie
+inside the macro box. Their connecting straight paths of length $L$
+lie there as well.
+
+By \eqref{eq:geometry-axial} choose a macro gauge $H$ with
+$E_{\rm macro}(H\cdot U)\le D_0 LP_x$, where $D_0$ depends only on
+$J$. Applying \eqref{eq:geometry-frame} on each translated patch gives
+constants $c_y\in G$ with
+\begin{equation}\label{eq:geometry-macro-frame}
+ \sum_i r(c_y^{-1}f_{x+y}(i)H_{i+Ly}^{-1})\le C_0L^2P_x.
+\end{equation}
+Indeed each patch side is at most a constant times $L$, and its bond
+and plaquette sums are bounded by the macro sums. The constants
+$C_0,D_0$ are fixed before choosing $L$.
+
+The patch weights $w_i$ are the distribution of the sum of $J$
+independent uniform points in the small box of side $L$. They obey
+\begin{equation}\label{eq:geometry-light}
+ w_i\le L^{-4}.
+\end{equation}
+Condition on all but the first point. For a prescribed sum there is
+at most one possible first point, among $L^4$ equiprobable choices.
+This proves \eqref{eq:geometry-light}, including coincidences among
+different tuples of points.
+
+For a coarse bond from $x+y$ to $x+y+e_a$, let $Y_i$ be its connector
+in the two selected frames. Gauging the middle straight path by $H$
+expresses $c_y^{-1}Y_ic_{y+e_a}$ as the product of the two frame
+errors and that path transport. At each of its $L$ steps, translation
+of $i$ is injective; hence the sum of the path chords is at most
+$L E_{\rm macro}(H\cdot U)$. Equations
+\eqref{eq:geometry-macro-frame} and \eqref{eq:geometry-light} give
+\begin{equation}\label{eq:geometry-connector}
+ \sum_i w_i r(c_y^{-1}Y_ic_{y+e_a})
+       \le(2C_0+D_0)L^{-2}P_x.
+\end{equation}
+
+The predictor $Q$ either minimizes the weighted squared chord to the
+connectors, or selects a connector when that minimum is at least the
+fixed positive cutoff $\zeta$. For every group element $b$ its output
+satisfies
+\[
+ r(Qb^{-1})\le2\max\{1,\zeta^{-1}\}\sum_iw_i r(Y_ib^{-1}).
+\]
+On the minimizing branch, $Q$ is nearest to the weighted matrix
+centroid; comparison with $b$ and two triangle inequalities prove the
+factor $2$. On the other branch,
+$\zeta\le\sum_iw_i r(Y_ib^{-1})^2/2\le\sum_iw_i r(Y_ib^{-1})$,
+while $r(Qb^{-1})\le2$. This proves the claim for every output tag.
+Using $b=c_yc_{y+e_a}^{-1}$ in \eqref{eq:geometry-connector} bounds
+each gauged coarse bond by $C_1L^{-2}P_x$. The four corner gauges
+cancel around a plaquette, so
+\begin{equation}\label{eq:geometry-predictor-curvature}
+ r(Q_p)\le C L^{-2}P_x,\qquad
+ r(V_p)\le\sum_{e\in\partial p}r(V_eQ_e^{-1})+C L^{-2}P_x,
+ \quad C=4C_1.
+\end{equation}
+The second inequality follows by replacing the four factors of the
+plaquette one at a time, conjugating the intervening products.
+No smallness assumption on $U$ was used. The hypothesis is that the
+frames at the radius-two coarse offsets have positive weight.
+
+\subsection{Periodic multiplicity and the large-defect witness}
+On a periodic lattice, let $m(x,p)$ count the lifts of the fine
+plaquette $p$ wholly contained in the macro box centred at $Lx$.
+Then, with $r_p=r(U_p)$,
+\begin{equation}\label{eq:geometry-port}
+ P_x=\sum_p m(x,p)r_p.
+\end{equation}
+This equality counts lifts, not merely distinct periodic plaquettes.
+If the fine period is greater than $2(J+7)L$, different anchors in
+one macro box cannot wrap to the same point, and $m(x,p)\le1$.
+Furthermore, if $m(x,p)>0$, the coarse parent of $p$ lies at periodic
+sup distance at most $R=J+8$ from $x$: the fine anchor is within
+$(J+7)L$ of $Lx$, its distance to its block centre is at most $L/2$,
+and distances between embedded coarse sites are $L$ times their
+coarse distances. Consequently, under the same nonwrapping condition,
+\begin{equation}\label{eq:geometry-port-column}
+ \sum_xm(x,p)\le(2R+1)^4.
+\end{equation}
+The periodic ball bound holds even when the ball wraps, since reducing
+an integer box modulo the period is surjective onto that ball.
+
+A seed collection consists of fine plaquettes $\mathcal F$, coarse
+predictor bonds $\mathcal I$ and coarse flags $\mathcal G$. Its size
+is $n=|\mathcal F|+|\mathcal I|+|\mathcal G|$. Associate to it the
+coarse parents of the fine plaquette corners, the endpoints of the
+predictor bonds and the flag sites. Their union has size at most
+$4n$. A radius-$b$ neighbourhood of this union therefore contains at
+most
+\[
+ v(b)n,\qquad v(b)=4(2b+1)^4 N_p,
+\]
+coarse plaquette addresses, where $N_p$ is the number of plaquette
+orientations. For $B\ge1$, $v(2B)\le v(2)B^4$. This proves the
+outer-region bound used in Section~\ref{sec:seed-energy}.
+
+Let $t$ be the fine threshold, $T$ the very large threshold, and $W$
+the predictor cutoff parameter. Retain the seeds in $\mathcal F$
+with $r_p>T$ and those in $\mathcal I$ with
+$r(V_eQ_e^{-1})>T$, and discard the flags. Call this collection the
+very large seeds, of size $d_A$. The local sector conditions say
+that, in the radius-$5B$ seed neighbourhood, unlisted fine chords
+are at most $t/2$, unlisted predictor chords at most $2Wt$, and all
+selected frame weights are positive.
+
+Suppose
+\begin{equation}\label{eq:geometry-witness-conditions}
+ R\le\lfloor4B/5\rfloor,\quad t/2\le T,\quad2Wt\le T,\quad
+ \left(4+CL^{-2}(2(J+7)L+1)^4N_p\right)T\le\delta.
+\end{equation}
+Then every coarse plaquette of chord greater than $\delta$ whose
+anchor lies in the radius-$2B$ seed neighbourhood is within distance
+$R$ of a very large seed. To prove this, suppose no such seed exists.
+Every fine plaquette counted by $P_x$ has parent within $R$ of $x$.
+If listed, its chord is at most $T$, or it would be a witness; if
+unlisted, its chord is at most $t/2\le T$. The same reasoning applies
+to the four predictor discrepancies, using $2Wt\le T$. All these
+addresses and the required radius-two frames lie in the radius-$5B$
+neighbourhood, since $x$ starts within $2B$ and the added radii are
+at most $3B$. Thus \eqref{eq:geometry-predictor-curvature} applies and
+gives $r(V_p)\le\delta$, a contradiction.
+
+It follows that these large coarse plaquettes belong to the hit
+region, defined using the radius-$\lfloor4B/5\rfloor$ neighbourhood
+of the very large seeds, and their number is at most $v(R)d_A$.
+The whole hit region has at most $v(2)B^4d_A$ plaquettes. A coarse
+flag is, by definition, a corner of a coarse plaquette with chord
+above the coarse threshold $s$; each such plaquette has at most four
+corners. Hence
+\[
+ |\mathcal G|\le4\#\{p\text{ in the outer region}:r(V_p)>s\}.
+\]
+Splitting these plaquettes at $\delta$ gives precisely the flag count
+and the $K_0d_A$ large-plaquette count used in the energy allocation.
+
+All constants in these geometric counts can be chosen before $L$
+and $W$: take, for example,
+$K_0=v(R)+v(2)+R+(2R+1)^4$. For each fixed $L,W$, the conditions
+\eqref{eq:geometry-witness-conditions} hold eventually along the
+coupling parameter. Indeed $B\to\infty$, $T=h^{-49/100}\to0$, and
+$t/T=P(h)h^{-1/100}\to0$, by the threshold estimates already proved.
+The allowed coarse periods are at least $100(1+B)$, which also
+ensures the nonwrapping condition for the macro box. Thus the
+geometric constants are independent of both the volume and the
+subsequent choice of block side. The guide bounds and the hit and
+unhit energy comparison estimates are separate analytic inputs;
+this argument establishes the geometric part of their allocation.

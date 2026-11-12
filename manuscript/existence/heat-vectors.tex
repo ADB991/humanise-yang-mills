@@ -1,0 +1,152 @@
+\section{The heat-vector bridge}
+\label{sec:heat-vectors}
+We now supply the independent-height Gram limit in
+Input~\ref{input:word-boundary} from the joint boundary theorem. Throughout
+this section the complex heat and slab properties used in
+Section~\ref{sec:analytic-boundary} are retained. The involution $J$ is the
+one induced on the field union by Euclidean time reflection and conjugation.
+This identification is essential in the Gram formula below.
+
+For $0<y_1<\cdots<y_n$, real positions $X_i=(t_i,x_i)$, and an admissible
+width $p$ satisfying $4p<y_1$ and $4p<y_j-y_i$ for $i<j$, define
+\begin{multline}\label{eq:point-heat-vector}
+ Q_{p,y}(X;v)=E(-i(t_1+iy_1)-p)U(x_1)B_p(v_1)\\
+ {}\cdot R_p(t_2-t_1+i(y_2-y_1),x_2-x_1)B_p(v_2)\cdots
+ R_p(t_n-t_{n-1}+i(y_n-y_{n-1}),x_n-x_{n-1})B_p(v_n)\Omega_E.
+\end{multline}
+The empty tuple gives $\Omega_E$. The subtraction in the first complex
+heat time is $p$, whereas that between two insertions is $2p$.
+Each complex heat factor is a contraction, so
+\begin{equation}\label{eq:point-heat-bound}
+ \|Q_{p,y}(X;v)\|\leq\prod_i\|B_p(v_i)\|.
+\end{equation}
+For fixed $p,y,v$ this vector is continuous in $X$, by the same successive
+strong-continuity argument used for \eqref{eq:continued-matrix}. Consequently
+$f(X)Q_{p,y}(X;v)$ is Bochner integrable for every joint Schwartz test $f$.
+To justify strong measurability without a global separability assumption on
+the Hilbert space, its continuous image of the separable position space is
+separable. The bound \eqref{eq:point-heat-bound} then gives the integrable
+majorant $|f(X)|\prod_i\|B_p(v_i)\|$.
+
+\begin{lemma}[Mixed Gram identity]\label{lem:mixed-heat-gram}
+For positive strictly ordered height tuples $y,z$, separately admissible
+widths $p,q$, positions $X,Y$ and labels $v,u$, put
+\[
+ \widehat y=(-y_n,\ldots,-y_1,z_1,\ldots,z_m),\quad
+ \widehat X=(X_n,\ldots,X_1,Y_1,\ldots,Y_m),\quad
+ \widehat v=(Jv_n,\ldots,Jv_1,u_1,\ldots,u_m).
+\]
+Then
+\begin{equation}\label{eq:point-gram-continuation}
+ \langle Q_{p,y}(X;v),Q_{q,z}(Y;u)\rangle
+   =F_{n+m}(\widehat t+i\widehat y,\widehat x;\widehat v).
+\end{equation}
+Here $\widehat t,\widehat x$ are the real time and spatial parts of
+$\widehat X$. The real positions in the first tuple are reversed in order;
+their real time coordinates are not negated.
+\end{lemma}
+\begin{proof}
+When all real time coordinates are zero, the vector in
+\eqref{eq:point-heat-vector} is the Euclidean word vector with insertions
+$(x_i,y_i)$ and labels $v_i$. This follows directly by induction from the
+right: a centered insertion adds its point at height $p$, the preceding
+positive heat interval supplies the missing distance, and the spatial
+translation changes the common reference point. More explicitly, with a
+preceding reference $(X_0,Y_0)$ and preceding half-width $q_0$, the partial
+vector has points
+$(x_i-X_0,y_i-Y_0-q_0)$. The recursion uses first heat time
+$y_1-Y_0-q_0-p$; after insertion it produces the same formula with the
+first point included. Taking $q_0=0$ and $(X_0,Y_0)=0$ gives the stated
+word. Pairing the two Euclidean words reflects the first tuple in time and
+applies $J$ to its labels. Permutation symmetry allows its reversed order,
+and the imaginary-time identity of Lemma~\ref{lem:continued-matrix} proves
+\eqref{eq:point-gram-continuation} in this case. This argument does not
+require equal widths $p,q$.
+
+For arbitrary fixed real positions, introduce one complex parameter $c$.
+In the first vector replace its times by $iy_i+c t_i$, and in the second
+by $iz_j+c s_j$. Call the resulting holomorphic vector functions $A(c)$
+and $B(c)$. Since all clearance inequalities are strict and there are only
+finitely many of them, there is a $\delta>0$ such that these vectors are
+well-defined on $|\operatorname{Im}c|<\delta$. The same strip works for
+$A(\overline c)$, after decreasing $\delta$ if necessary. The scalar
+function
+\[
+ c\longmapsto\langle A(\overline c),B(c)\rangle
+\]
+is holomorphic: expand the difference quotient and use antilinearity in
+the first argument, which cancels the conjugation of its increment.
+Its proposed right side is $F$ at times
+$i\widehat y+c\widehat t$, with the fixed combined spatial tuple.
+This too is holomorphic on a sufficiently small horizontal strip; its
+heights are the concatenation of the reversed negatives of
+$y_i-(\operatorname{Im}c)t_i$ and the tuple
+$z_j+(\operatorname{Im}c)s_j$, and remain strictly ordered there.
+
+At $c=i\tau$ near zero, both vectors have purely imaginary times, with
+these modified positive height tuples. The already proved Euclidean
+identity therefore equates the two scalar functions. The identity theorem
+on the connected strip extends equality to $c=1$. This is the desired
+identity with arbitrary real positions. Empty tuples cause no difficulty:
+their vector is the fixed vacuum and the same argument applies.
+\end{proof}
+
+For a word $b=((v_1,f_1),\ldots,(v_n,f_n))$, choose
+\[
+ y(t)=(t,2t,\ldots,nt),\qquad p(t)=\tfrac18\min(t,1),\quad t>0,
+\]
+and define
+\[
+ h_t(b)=\int\Big(\prod_i f_i(X_i)\Big)
+                  Q_{p(t),y(t)}(X;v)\,dX.
+\]
+The clearance conditions hold for every $t>0$, and the fixed-height bound
+above proves integrability. No uniform pointwise bound as $t\downarrow0$
+is asserted or needed.
+
+\begin{proposition}\label{prop:heat-cups}
+These vectors satisfy \eqref{eq:independent-heat-gram} for the boundary
+functional of Theorem~\ref{thm:joint-boundary}, and $h_t(1)=\Omega_E$.
+They also intertwine real translations of all tests with the Euclidean
+real-time translation representation.
+\end{proposition}
+\begin{proof}
+For words $b,c$ of lengths $n,m$, use
+Lemma~\ref{lem:mixed-heat-gram} inside the scalar product of their
+Bochner integrals. The integrand is absolutely integrable on the product
+space: its absolute value is bounded by the product of the two integrable
+scalar test magnitudes times the two fixed-height bounds
+\eqref{eq:point-heat-bound}. Fubini and the coordinate permutation
+$(X,Y)\mapsto(X_n,\ldots,X_1,Y_1,\ldots,Y_m)$ therefore give
+\[
+ \langle h_s(b),h_t(c)\rangle
+ =\psi_{(-ns,\ldots,-s,t,\ldots,mt)}(f_{b^*c}),
+\]
+with labels $(Jv_n,\ldots,Jv_1,u_1,\ldots,u_m)$ and joint product test
+$f_{b^*c}$, whose first factors are the reversed conjugates of the tests
+in $b$. The displayed heights are strictly ordered for every $s,t>0$
+and approach zero as the two parameters independently approach zero.
+Theorem~\ref{thm:joint-boundary} gives the limit $w(b^*c)=K(b,c)$.
+The zero-dimensional integral for the empty word is the vacuum itself.
+
+For translations write $T_E(a)=E(-ia^0)U(\mathbf a)$, where the
+imaginary-axis values of $E$ denote its strongly continuous unitary boundary
+values. These boundary values and their law with the interior extension are
+part of the complex heat extension used here. Translating all real
+positions by $a$ leaves all differences in
+\eqref{eq:point-heat-vector} unchanged; its first factor changes by the
+commuting factor $T_E(a)$. Hence
+\[
+ Q_{p,y}(X+a;v)=T_E(a)Q_{p,y}(X;v).
+\]
+For the empty word the same assertion follows from translation invariance
+of the vacuum. Substitute $X\mapsto X+a$ in the integral with translated
+tests $f_i(\,\cdot-a)$ and move the bounded operator $T_E(a)$ outside the
+Bochner integral. This proves the translation identity for every $t>0$.
+\end{proof}
+
+Thus the heat-vector limit required for positivity and for the isometric
+embedding of Proposition~\ref{prop:word-motion} follows from the slab
+bounds and complex heat extension. Lorentz covariance, spacelike locality,
+and retention of nonzero labels at the boundary are distinct remaining
+steps; they have not been inferred from the Gram identity.

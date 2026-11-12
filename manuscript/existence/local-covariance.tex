@@ -1,0 +1,287 @@
+\section{Local inverses and Gaussian normalization}
+\label{sec:local-covariance}
+The Gaussian covariance used in the expansion is assembled from local
+principal inverses. It is not the full inverse of the precision matrix.
+We prove its positivity, estimate the resulting error, and express the
+normalization through local terms and convergent correction series.
+This follows the real interpolation from the identity used in the
+construction.
+
+Let $I$ be a finite coordinate set, with anchors $a_i$ on a coarse
+four-dimensional torus. Assume at most $m$ coordinates have any
+given anchor. For a real matrix $T$ define
+\[
+ \|T\|_\eta=\max\left\{
+ \sup_i\sum_j e^{\eta\operatorname{dist}(a_i,a_j)}|T_{ij}|,
+ \sup_j\sum_i e^{\eta\operatorname{dist}(a_i,a_j)}|T_{ij}|
+ \right\}.
+\]
+On an empty coordinate set both suprema are zero. The triangle
+inequality for distance and an interchange of finite sums give
+$\|ST\|_\eta\le\|S\|_\eta\|T\|_\eta$ for $\eta\ge0$.
+Transposition preserves this norm, and decreasing $\eta$ cannot
+increase it. It dominates the Euclidean operator norm by the
+row-and-column Cauchy--Schwarz estimate used above.
+
+Let $A=A^*$ and suppose
+\begin{equation}\label{eq:covariance-data}
+ A\ge r1,\qquad \|A\|_\eta\le Q,
+ \qquad 0<r\le1,\quad Q\ge1,\quad\eta>0.
+\end{equation}
+Section~\ref{sec:sector-gram} supplies these constants for the
+actual completed sector precision, after fixing $L$ and then
+taking the large parameter sufficiently large. Every principal
+submatrix has the same lower bound and weighted estimate: extend
+a test vector by zero for the first assertion, and restrict the
+nonnegative row and column sums for the second.
+
+\subsection{Exponential decay of the inverse}
+Set
+\[
+ \theta=\min\{1,r/(2Q)\},\qquad \gamma=\theta\eta,
+ \qquad c_0=\min\{1,r/2\}.
+\]
+For every $u\ge0$, the matrix $A+u1$ is invertible and
+\begin{equation}\label{eq:covariance-entry}
+ e^{\gamma\operatorname{dist}(a_i,a_j)}
+       |(A+u1)^{-1}_{ij}|\le\{c_0(1+u)\}^{-1}.
+\end{equation}
+We give the weighted argument, which is uniform in the number of
+coordinates. Fix $j$ and put
+$s_i=e^{\gamma\operatorname{dist}(a_i,a_j)}$.
+For $0\le\theta\le1$ and $|v|\le\theta D$ with $D\ge0$,
+convexity of the exponential gives
+\[
+ |e^v-1|\le\theta e^D.
+\]
+For positive $v$, use
+$e^{\theta D}\le1+\theta(e^D-1)$; for negative $v$, use
+$1-e^v\le e^{-v}-1$. The reverse triangle inequality for
+distances now implies
+\[
+ |s_i/s_k-1|\le\theta e^{\eta\operatorname{dist}(a_i,a_k)}.
+\]
+Conjugate $A+u1$ by the positive diagonal matrix with entries
+$s_i$. Its difference $F$ from $A+u1$ has entries
+$(A+u1)_{ik}(s_i/s_k-1)$. The diagonal contribution is zero,
+so both absolute row and column sums of $F$ are at most
+$\theta Q\le r/2$. Thus
+$|\langle w,Fw\rangle|\le(r/2)\|w\|_2^2$.
+
+Let $y=(A+u1)^{-1}e_j$ and $w_i=s_i y_i$. The conjugated
+equation is $(A+u1+F)w=e_j$, since $s_j=1$.
+It follows that
+\[
+ (r/2+u)\|w\|_2^2\le w_j
+ \le\|w\|_2.
+\]
+If $w\ne0$, division gives
+$\|w\|_2\le(r/2+u)^{-1}\le\{c_0(1+u)\}^{-1}$;
+the case $w=0$ is immediate. Each $|w_i|$ is bounded by this
+norm, proving \eqref{eq:covariance-entry}. Positive definiteness
+gave invertibility before this computation. The same proof applies
+to every principal submatrix.
+
+Put $k=\gamma/3$ and
+\[
+ S=c_0^{-1}mP_0(\gamma-2k),\qquad
+ P_0(t)=\sum_{n\ge0}(2n+1)^4e^{-tn}.
+\]
+Summing \eqref{eq:covariance-entry} at $u=0$ with weight
+$e^{2k\operatorname{dist}}$ gives $\|A^{-1}\|_{2k}\le S$.
+The summation uses the anchor multiplicity $m$ and the same
+distance-shell count as in Section~\ref{sec:sector-gram}.
+
+\subsection{Principal windows and their error}
+For each coordinate $j$, choose a window $W_j$ containing every
+coordinate within distance $B$ of $a_j$ and no coordinate farther
+than $B+2$. Define $P$ by its columns:
+\[
+ P_{ij}=\begin{cases}
+ (A_{W_j}^{-1})_{ij},&i\in W_j,\\
+ 0,&i\notin W_j.
+ \end{cases}
+\]
+Indices inside a window mean the corresponding principal coordinates.
+All these inverses exist by \eqref{eq:covariance-data}. Applying
+\eqref{eq:covariance-entry} separately to each column yields the
+same pointwise exponential bound for $P$, hence
+$\|P\|_{2k}\le S$. This also controls column sums even though
+the windows vary with the column.
+
+Let $E=AP-1$. If $i\in W_j$, the principal inverse equation
+gives $E_{ij}=0$: the column $P_{\cdot j}$ is zero outside
+$W_j$, so the full product at $i$ is exactly the principal product.
+In particular $E_{ij}=0$ when the anchor distance is at most $B$.
+The product bound gives $\|E\|_{2k}\le QS+1$.
+On its remaining entries the weight can be reduced from $2k$ to
+$k$ at cost $e^{-kB}$. Therefore
+\begin{equation}\label{eq:window-error}
+ \|E\|_k\le\epsilon_B:=e^{-kB}(QS+1),\qquad
+ \|P-A^{-1}\|_k\le S\epsilon_B.
+\end{equation}
+The second inequality uses the exact identity
+$P-A^{-1}=A^{-1}E$. Notice the order of the factors.
+
+The physical covariance is the symmetric matrix
+\begin{equation}\label{eq:local-covariance}
+ C=\tfrac12(P+P^*).
+\end{equation}
+Symmetry of $A^{-1}$ and \eqref{eq:window-error} give
+\[
+ \|C\|_k\le S,\qquad
+ \|C-A^{-1}\|_k\le\delta_B:=S\epsilon_B,
+ \qquad \|AC-1\|_k\le Q\delta_B.
+\]
+The upper bound $A\le Q1$ implies $A^{-1}\ge Q^{-1}1$.
+It can also be checked directly: for $w=A^{-1}v$ and
+$x=Q^{-1}v$, positivity of
+$\langle w-x,A(w-x)\rangle$ and
+$\langle x,Ax\rangle\le Q\|x\|^2$ give
+$\langle v,A^{-1}v\rangle\ge Q^{-1}\|v\|^2$.
+Consequently, once $\delta_B\le1/(2Q)$,
+\begin{equation}\label{eq:local-covariance-floor}
+ C\ge(2Q)^{-1}1.
+\end{equation}
+The actual bond windows are colour independent: a coordinate belongs
+to $W_j$ when some coarse endpoint of its bond is within $B$ of
+some endpoint of the bond of $j$. Each endpoint is within one
+of its bond's parent anchor. This proves the required $B$ and
+$B+2$ bounds and shows that complete colour blocks occur together.
+The matrix $C$ has range at most $B+2$. Its closeness to $A^{-1}$
+is a conclusion of the preceding estimates, not a replacement of
+one matrix by the other.
+
+For the sector precision, inactive rows and columns of $A$ are
+those of the identity. This property passes to every principal
+inverse, hence to $P$ and $C$. Also $M^*b$ vanishes on inactive
+coordinates, so the chosen local mean $-P^*M^*b$ vanishes there.
+These observations justify restricting the local Gaussian to the
+active coordinates without changing its physical entries.
+
+\subsection{Ordered inverse series}
+If a matrix $E$ satisfies $\|E\|_k\le\epsilon<1$, then
+\[
+ (1+E)^{-1}=\sum_{n=0}^\infty(-E)^n.
+\]
+Indeed the partial geometric identity has remainder $(-E)^N$,
+whose norm tends to zero; the series converges absolutely in the
+finite matrix space. For $E=AP-1$ this gives
+\begin{equation}\label{eq:local-inverse-series}
+ A^{-1}=\sum_{n\ge0}P(-E)^n.
+\end{equation}
+For $D=AC-1$ the corresponding identity is
+\begin{equation}\label{eq:covariance-inverse-series}
+ C^{-1}=\sum_{n\ge0}(-D)^nA,
+ \qquad C^{-1}-A=\sum_{n\ge0}(-D)^{n+1}A.
+\end{equation}
+Multiply these formulas by $A$ on the left and by $C$ on the
+right, respectively, to verify them. No commutation of $P$, $C$
+and $A$ is asserted. Since $B\asymp(\log x)^2$ and $k>0$ is
+fixed after $L$, $\epsilon_B$ and $\delta_B$ have every negative
+upper exponent. Both convergence conditions can thus be met on
+one sufficiently late tail, uniformly over sectors and periods.
+
+\subsection{Logarithms as local terms and correction series}
+For $0\le s\le1$ put $A_s=1+s(A-1)$. The hypotheses
+\eqref{eq:covariance-data} hold for $A_s$ with the same
+$r,Q,\eta$, since $r\le1\le Q$. Let $P_s$ be its window
+inverse and $E_s=A_sP_s-1$. All bounds above are uniform in $s$.
+Define the local diagonal terms and their correction terms by
+\[
+ \ell_i=\int_0^1[(A-1)P_s]_{ii}\,ds,
+ \qquad
+ \ell_{i,n}=\int_0^1[(A-1)P_s(-E_s)^n]_{ii}\,ds.
+\]
+Thus $\ell_i=\ell_{i,0}$. We have the exact identity
+\begin{equation}\label{eq:local-logdet}
+ \log\det A=\sum_i\ell_i+
+                   \sum_i\sum_{n\ge1}\ell_{i,n}.
+\end{equation}
+To justify it, the determinant's linear term at the identity is
+the trace, as follows by expanding the finite determinant by
+permutations. Factoring
+\[
+ A_{s+t}=(1+t(A-1)A_s^{-1})A_s
+\]
+therefore gives
+$\frac{d}{ds}\log\det A_s=
+\operatorname{tr}((A-1)A_s^{-1})$.
+All $A_s$ are positive definite. Their inverses and principal
+inverses vary continuously, by the adjugate formula and the
+nonvanishing determinant. Integrate the derivative from zero to
+one and substitute \eqref{eq:local-inverse-series}. Its diagonal
+terms are bounded, uniformly in $s$, by
+$(Q+1)S\epsilon_B^n$. This summable geometric bound justifies
+termwise integration for each $i$. The coordinate sum is finite.
+In particular,
+\[
+ |\ell_i|\le(Q+1)S,\qquad
+ \sum_{n\ge1}|\ell_{i,n}|
+ \le\frac{(Q+1)S\epsilon_B}{1-\epsilon_B}.
+\]
+These are per-coordinate bounds. Summing them over the entire
+torus introduces its coordinate count; it does not yield a
+per-seed estimate without the further support assignment.
+
+There is a second determinant correction for the covariance $C$.
+With $D=AC-1$ and $\|D\|_k<1$, the path $1+sD$ is invertible
+for $s\in[0,1]$ by its Neumann series. Its real determinant
+starts at one and never vanishes, so it remains positive.
+The same determinant derivative and geometric domination give
+\begin{equation}\label{eq:covariance-logdet}
+ \log\det A+\log\det C
+ =\sum_i\sum_{n\ge0}\int_0^1[D(-sD)^n]_{ii}\,ds.
+\end{equation}
+Here $1+D=AC$ and both $A,C$ have positive determinant, so
+multiplicativity of the determinant justifies the sum of logarithms.
+Although $D$ need not be symmetric, no spectral logarithm of $D$
+is used. The integral of its $n$th term is
+$(-1)^n(D^{n+1})_{ii}/(n+1)$, with absolute value at most
+$\|D\|_k^{n+1}/(n+1)$.
+
+\subsection{Local comparison of normalization terms}
+For a physical bond $v$, group its colour coordinates and set
+$J_v(A)=\sum_{i:\,i\text{ lies over }v}\ell_i$.
+The term $\ell_i$ reads only the principal window $W_i$:
+\[
+ [(A-1)P_s]_{ii}
+ =[(A_{W_i}-1)(1+s(A_{W_i}-1))^{-1}]_{ii}.
+\]
+This follows because column $i$ of $P_s$ vanishes outside $W_i$.
+Suppose $A$ and $Z$ both satisfy \eqref{eq:covariance-data},
+use the same windows, and differ entrywise by at most $e$ on
+$W_i\times W_i$. The window has at most
+$\Delta=m(2B+5)^4$ coordinates. Thus the unweighted row and
+column norms of $A_{W_i}-Z_{W_i}$ are at most $\Delta e$.
+The same bound holds for the difference of their interpolants.
+The inverse identity, with its order retained, is
+\[
+ (Z_s)_{W_i}^{-1}-(A_s)_{W_i}^{-1}
+ =(Z_s)_{W_i}^{-1}
+       ((A_s)_{W_i}-(Z_s)_{W_i})(A_s)_{W_i}^{-1}.
+\]
+Each inverse has row-and-column norm at most $S$. Splitting
+the difference of the two local products into a difference of
+first factors and a difference of inverses bounds its norm by
+\[
+ \{S+(Q+1)S^2\}\Delta e.
+\]
+Integration and the colour sum give
+\begin{equation}\label{eq:local-log-comparison}
+ |J_v(A)-J_v(Z)|
+ \le q_{\rm col}\{S+(Q+1)S^2\}\Delta e,
+\end{equation}
+provided the entrywise hypothesis holds on the window for each
+colour over $v$.
+
+Finally $J_v$ is invariant under bondwise orthogonal changes of
+colour frame. The windows contain whole colour blocks, so such
+a change restricts to an orthogonal matrix on every window and
+commutes with the projection onto the colours over $v$.
+Principal interpolants and their inverses are conjugated by this
+matrix. The sum of diagonal entries over $v$ is the trace after
+that projection; cyclicity of the finite trace proves invariance
+before integration. This is why one compares the whole colour
+trace, rather than assigning independent gauge-invariant meanings
+to its individual diagonal terms.

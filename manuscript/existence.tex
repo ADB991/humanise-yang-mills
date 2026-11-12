@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{2.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2.8em}{3.4em}}
+\makeatother
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{assumption}[proposition]{Input}
+\theoremstyle{remark}
+\newtheorem{remark}[proposition]{Remark}
+\title{The four-dimensional Yang--Mills construction\\
+\large Foundations and the existence argument}
+\author{Humanise Yang--Mills contributors}
+\date{Working draft, 11 November 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} This is an incomplete draft of the existence argument.
+Local results below have proofs from their displayed hypotheses. The construction
+estimates and the quantitative inputs to the phase, symmetry and ultraviolet
+arguments still require proofs before the final existence statement can be
+asserted on the basis of this article. The conditional reconstruction is
+developed below, including locality and the spectral condition. Outstanding
+inputs are stated explicitly. All prose remains a draft pending independent
+human mathematical and source-correspondence review.
+\tableofcontents
+\input{existence/statement}
+\input{existence/lattice}
+\input{existence/atlas-estimates}
+\input{existence/flat-step}
+\input{existence/flat-estimate}
+\input{existence/free-kernel-estimates}
+\input{existence/free-kernel-components}
+\input{existence/kernel-transport-identities}
+\input{existence/positive-row-producer}
+\input{existence/rg-horizon-geometry}
+\input{existence/curvature-horizon-producer}
+\input{existence/quadratic-lattice-symmetry}
+\input{existence/rg-construction}
+\input{existence/rg-multisource}
+\input{existence/rg-menu-jets}
+\input{existence/rg-price-receipts}
+\input{existence/finite-menu-history-handoff}
+\input{existence/centered-estimates}
+\input{existence/centered-construction}
+\input{existence/centered-freight-producer}
+\input{existence/centered-geometry-producer}
+\input{existence/centered-birth-receipt}
+\input{existence/centered-geyser-scale-estimates}
+\input{existence/centered-public-service}
+\input{existence/fullmesh-correlation-cauchy}
+\input{existence/limits}
+\input{existence/smooth-limits}
+\input{existence/fullmesh-fixedbounds-producer}
+\input{existence/phase-quantitative-producer}
+\input{existence/reflection}
+\input{existence/phases}
+\input{existence/slab-regularity}
+\input{existence/phase-selection}
+\input{existence/phase-regularity}
+\input{existence/reflection-transport}
+\input{existence/phase-fields}
+\input{existence/complex-heat}
+\input{existence/analytic-boundary}
+\input{existence/fourier-support}
+\input{existence/label-descent}
+\input{existence/lorentz-covariance}
+\input{existence/full-tube}
+\input{existence/heat-vectors}
+\input{existence/reconstruction}
+\input{existence/boundary-detection}
+\input{existence/spectral-measure}
+\input{existence/locality}
+\input{existence/ope-prescription}
+\input{existence/ope-homogeneous}
+\input{existence/ope-phase-prices}
+\input{existence/ope-filtration}
+\input{existence/ope-grouping}
+\input{existence/ope-grouping-algebra}
+\input{existence/ope-singletons}
+\input{existence/local-transfer}
+\input{existence/local-splitting}
+\input{existence/local-sections}
+\input{existence/polynomial-moment-attenuation}
+\input{existence/leaf-transfer}
+\input{existence/cluster-expansion}
+\input{existence/mixed-activity-prices}
+\input{existence/gaussian-warnings}
+\input{existence/seed-geometry}
+\input{existence/seed-guides}
+\input{existence/seed-hit-comparison}
+\input{existence/seed-tree-patch}
+\input{existence/predictor-branch}
+\input{existence/seed-unhit-comparison}
+\input{existence/seed-energy}
+\input{existence/packet-annulus}
+\input{existence/sector-gram}
+\input{existence/local-covariance}
+\input{existence/local-mean}
+\input{existence/warning-safety}
+\input{existence/haar-chart}
+\input{existence/normalization-jets}
+\input{existence/compensated-variation}
+\input{existence/mean-action-jets}
+\input{existence/remote-action-jets}
+\input{existence/itinerary-prices}
+\input{existence/inherited-activity-prices}
+\input{existence/packet-estimates}
+\input{existence/gaussian-differentiation}
+\input{existence/gaussian-moment-prices}
+\input{existence/activity-jet-assembly}
+\input{existence/gaussian-reassembly}
+\input{existence/forest-average-log}
+\input{existence/forced-exclusion}
+\input{existence/soft-log-fusion}
+\input{existence/marked-block-integral}
+\input{existence/marked-activity-jets}
+\input{existence/leaf-expansion}
+\input{existence/projection-payment-producer}
+\input{existence/principal-gaussian-comparison}
+\input{existence/principal-comparison-jets}
+\input{existence/principal-reference-attenuation}
+\input{existence/nonlinear-singleton-inheritance}
+\input{existence/high-degree-cluster-prices}
+\input{existence/local-parameter-comparison}
+\input{existence/finite-volume-parameter-continuity}
+\input{existence/parameter-comparison-suppliers}
+\input{existence/small-field-budget-selection}
+\input{existence/stationary-action-prices}
+\input{existence/uniform-stationary-chart}
+\input{existence/truncated-stationary-log}
+\input{existence/stationary-exterior-receipt}
+\input{existence/pure-action-small-field}
+\input{existence/healthy-boundary-jets}
+\input{existence/regular-principal-producer}
+\input{existence/primary-calibration-producer}
+\input{existence/heading-history-handoff}
+\input{existence/local-source-stability}
+\input{existence/marked-kernel-convergence}
+\input{existence/fixed-rung-convergence}
+\input{existence/wilson-vacuum-price}
+\input{existence/row-quadratic-price}
+\input{existence/soft-curvature-receipts}
+\input{existence/multileg-curvature-lift}
+\input{existence/weighted-frame-penalty}
+\input{existence/weighted-stationary-inverses}
+\input{existence/selected-stationary-linear-data}
+\input{existence/selected-kinetic-response}
+\input{existence/stationary-determinant-prices}
+\input{existence/thermal-contact-cancellation}
+\input{existence/classical-stationary-vertices}
+\input{existence/annulus-fleet-face-estimates}
+\input{existence/annulus-two-wave-estimates}
+\input{existence/annulus-recording-yield}
+\input{existence/annulus-same-data-binding}
+\input{existence/stationary-germ-symmetry}
+\input{existence/stationary-output-construction}
+\input{existence/inherited-loop-transport}
+\input{existence/quadratic-pole-transport}
+\input{existence/free-horizon-convergence}
+\input{existence/path-attachment-producer}
+\input{existence/background-path-convergence}
+\input{existence/real-coupling-interpolation}
+\input{existence/sector-analytic-prices}
+\input{existence/five-period-localization}
+\input{existence/projected-parameter-prices}
+\input{existence/background-test-prices}
+\input{existence/background-ray-estimates}
+\input{existence/coupled-background-convergence}
+\input{existence/selected-nonlinear-offering}
+\input{existence/physical-reset-reorganization}
+\input{existence/coupling-reset-selection}
+\input{existence/surviving-interval-shooting}
+\input{existence/terminal-normalization-transfer}
+\input{existence/wilson-startup-construction}
+\input{existence/common-funded-history}
+\input{existence/common-observable-purchases}
+\input{existence/marked-campaign-producer}
+\input{existence/marked-portfolio-calibration}
+\input{existence/terminal-marked-construction}
+\input{existence/marked-field-local-estimates}
+\input{existence/selected-centered-service}
+\input{existence/restarted-rank-history}
+\input{existence/allarity-planted-compiler}
+\input{existence/actual-covariance-fourier-window}
+\input{existence/actual-covariance-transport}
+\input{existence/allarity-coordinate-calibration}
+\input{existence/allarity-cumulant-comparison}
+\input{existence/allarity-marked-propagation}
+\input{existence/rank-root-normalization}
+\input{existence/three-panel-weak-comparison}
+\input{existence/selected-history-limits}
+\input{existence/ope-local-projection}
+\input{existence/reference-cone}
+\input{existence/reference-difference}
+\input{existence/reference-match}
+\input{existence/ope-cutoff}
+\input{existence/ope-grid}
+\input{existence/ope-estimates}
+\input{existence/trace-free-rank}
+\input{existence/all-grade-free-detectors}
+\input{existence/finite-rank-kernel-transport}
+\input{existence/trace-calibration-producer}
+\input{existence/trace-firesky-gallery}
+\input{existence/trace-small-means}
+\input{existence/trace-crown-buffer}
+\input{existence/trace-price-recurrence}
+\input{existence/trace-local-paid-budgets}
+\input{existence/trace-local-rate-selection}
+\input{existence/trace-medal-prices}
+\input{existence/trace-eve-producer}
+\input{existence/trace-row-jet-estimates}
+\input{existence/trace-regular-atom}
+\input{existence/trace-coffer-supplier}
+\input{existence/trace-bill-prices}
+\input{existence/trace-probe-assembly}
+\input{existence/trace-mission-price}
+\input{existence/trace-spectrum}
+\input{existence/trace-profiles}
+\input{existence/trace-asymptotic}
+\input{existence/trace-weighted-estimates}
+\input{existence/trace-local-pairing}
+\input{existence/trace-local-charge}
+\input{existence/nonlinear-payment-selection}
+\input{existence/common-scale-selection}
+\input{existence/ope-scale-purchases}
+\input{existence/ope-history-service}
+\input{existence/assembly}
+\begin{thebibliography}{9}
+\bibitem{OS75} K. Osterwalder and R. Schrader,
+\emph{Axioms for Euclidean Green's functions II},
+Communications in Mathematical Physics \textbf{42} (1975), 281--305,
+especially \S IV.1, pp. 287--288.
+\bibitem{Williams} D. P. Williams,
+\emph{A (Very) Short Course on $C^*$-Algebras},
+lecture notes, 14 February 2024, Theorem 2.13, pp. 29--31.
+\url{https://math.dartmouth.edu/~dana/bookspapers/cstar.pdf}.
+\bibitem{Sawyer} E. T. Sawyer,
+\emph{Lecture Notes in Advanced Real Analysis},
+McMaster University, Chapter 6, Theorem 32, p. 78.
+\url{https://math.mcmaster.ca/~sawyer/Publications/Advanced_Real_Analysis.pdf}.
+\bibitem{Melrose} R. B. Melrose,
+\emph{Introduction to Microlocal Analysis}, Chapter 1,
+``Tempered distributions and the Fourier transform,''
+\S1.7, Theorem 1.3, pp.21--22.
+\url{https://math.mit.edu/~rbm/iml/Chapter1.pdf}.
+\bibitem{BHV} B. Bekka, P. de la Harpe and A. Valette,
+\emph{Kazhdan's Property (T)}, author manuscript, 23 February 2007,
+Appendix D.3, Theorem D.3.1, p.397.
+\url{https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,127 @@
+\section{The finite-volume and annulus estimates use one response}
+\label{sec:ex-annulus-same-data}
+
+The finite-volume recording and the annulus bound must be attached to the
+same analytic response. This is a short compatibility step, but it prevents
+an invalid substitution of a different family after taking the Fourier
+limit. We state the join explicitly.
+
+Fix a simple gauge group, a clip and path, a bed, and a sequence of torus
+sides tending to infinity. Let $W$ be one fee-bounded analytic Wilson
+response with its exact Wilson tickets at those sides. Let $Q$ be one
+fee-bounded correction response, with soft orders three, two, and one in
+its zero-, one-, and two-mark layers, whose tickets at every chosen side
+are the finite-action tickets minus the Wilson tickets. Assume the bed
+floor, metric-strip bound, attachment, and sworn bounds required by the
+finite determinant test hold for this same bed and path at every side.
+Assume the Wilson reference is grey, meaning that its Wilson tickets are
+the exact Taylor tickets of the finite Wilson action. Finally, assume the
+selected local-frame family has the common finite-volume action and frame
+data used in the face estimates of Section~\ref{sec:ex-annulus-fleet-faces}.
+Assume $W$ and $Q$ have a common positive response strip width $\eta$ and
+finite fee fixed before the odd side $L$ is chosen. This is the width used
+for the uniform radial constants; it is distinct from the possibly smaller
+strip $z_L$ of the regulated recording kernel.
+For the logarithmic estimate, fix $0<\mu\leq1$ before applying the radial
+bound, with $\mu=L^{-1}$ for the requested odd side $L$. The Wilson fee,
+correction fee, floor parameter, and metric bound are common to the family;
+the bed, clip, and side sequence are the same in the recording and face
+estimates. The strip width and bound for the recorded kernel may depend on
+this fixed $L$.
+
+\begin{lemma}[Same-response compatibility]
+\label{lem:ex-annulus-same-data}
+Under these assumptions set $F=Q+W$. Then the following conclusions concern
+this one $F$ and the same selected data:
+
+\begin{enumerate}
+\item For every chosen torus side, the zero-, one-, and two-mark tickets
+  of $F$ are exactly the corresponding finite-action tickets. These are
+  the three marked response layers used to identify the action variations
+  in the finite test. If the regulated rank and
+  reference matrices have their positive floors, the finite pole test is
+  their logarithmic-determinant difference, and its conserving mixed
+  coefficient is the site count times the normalized mesh mean of the
+  shifted-fiber kernel of $F$.
+\item The analytic kernel obtained from those shifted-fiber coefficients
+  is independent of the torus side. Define the analytic picture by
+  \[
+    \mathcal Y_{ij}(p)=\frac12\int_{\mathbb T^4}F_{ij}(p,q)\,dq,
+  \]
+  with normalized Haar measure. Its mixed two-leg coefficient is
+  $2\mathcal Y_{ij}$, so the finite-volume realization at a conserving
+  pair is $n_i^4\,2\mathcal Y_{ij}$. If the common kernel has bound $K$ on
+  a strip of width $z>0$, this picture satisfies the recorded estimate
+  \[
+    \operatorname{Err}_{n_i}(\mathcal Y,\mathcal P_{n_i};
+       \mathfrak r(z,K)e^{-zn_i/4})
+  \]
+  for every chosen side $n_i$.
+\item For each color $c$, the radial bounds obtained from the same
+  local-frame family and the same Wilson reference give
+  \[
+    |\alpha_c(\mathcal Y)+\lambda_G\log\mu^{-1}|\leq D_0.
+  \]
+  Here $D_0$ is fixed before the odd side parameter is chosen, while the
+  strip constants $z,K$ and hence the recording error may depend on $L$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The fee bounds on $Q$ and $W$ restrict to their common smaller strip and add.
+The exact response identities add as well: at each chosen side the zero-,
+one-, and two-mark ticket of $Q$ is the finite-action ticket minus the
+Wilson ticket, while the corresponding ticket of $W$ is the Wilson ticket.
+Hence these three tickets of $F$ are exactly the finite-action tickets.
+The order-zero remainder construction fixes the normalization; no extra
+factor of the number of sites is inserted here.
+
+For each side, the positive floors make the two determinant matrices
+invertible at zero. Differentiating their logarithmic determinants gives
+one direct second variation and the single ordered product of first
+variations for each specified ordered pair. The ticket identity therefore
+identifies that finite mixed coefficient with the conserving mesh sum of
+the common shifted-fiber kernel. Nonconserving entries vanish by momentum
+conservation. The fiber trace contributes a site count exactly once. The
+uniform strip bound is shared by all sides because the same $F$ is used.
+The full-mesh Fourier estimate of Lemma~\ref{lem:ex-pole-recording} now
+applies to these exact finite identities, giving the displayed error at
+every side, without a subsequence extraction.
+
+For the third conclusion, apply the all-centered and shell face estimates
+to the same selected local-frame family. The interacting and regulated
+reference paths are the ones formed from $F$ and the fixed Wilson response;
+the shell comparison uses the same bed and only momenta with positive
+unregulated scale. The resulting two radial estimates are uniform in the
+color and were fixed before choosing the odd side. Integrating over the
+inner ball, the annulus, and the part outside the unit ball gives the
+logarithmic estimate by Lemma~\ref{lem:path-radial-log}. The analytic
+coefficient in that integral is $\alpha_c(\mathcal Y)$ for the picture
+defined above: both it and the finite recorded coefficients are obtained
+from the same shifted-fiber kernel, with the factor $1/2$ canceled by the
+two-leg mixed derivative. This proves that the finite recording and the
+radial drift belong to one response.
+\end{proof}
+
+\paragraph{Selected construction of the common data.}
+In the selected construction, the baseline $W$ is the fee-bounded Wilson
+response. The correction $Q$ is the response produced from the attached
+path and bed. Its finite tickets are the difference between the intended
+action and the Wilson action. Combining them before evaluating any side
+gives $F=Q+W$. The fee, ticket, floor, and metric conditions used above
+are all on this combined response and the original selected bed.
+
+The local-frame bounds are produced from that same Wilson reference: the
+finite-volume vector and ghost responses, together with their one-leg and
+two-leg extensions, are obtained from one family of local frames. The
+all-centered estimate is applied at scale $|x|+\mu$; the shell estimate is
+applied to the restriction $\mu\leq|x|$, where the unregulated reference
+inverse exists. The two applications give the upper face and the lower
+face-minus-halo price, respectively. These are precisely the hypotheses
+used in the preceding face calculation; no change of bed, reference, or
+finite-volume sequence is made between the face estimates and the ticket
+identity.
+
+In source terms, this is the composition of the Wilson baseline, the
+path correction, ticket addition, finite determinant recording, and
+uniform radial evaluation. The declaration-level correspondence and the
+exact shared-object audit are in the companion evidence record.

@@ -1,0 +1,345 @@
+\section{Triangular transport and the physical filtration}
+\label{sec:ope-filtration}
+The distance estimate in \eqref{eq:ope-match-distance} concerns the
+physical filtration. A bare coefficient of low engineering degree need
+not stay in the corresponding coordinate plane under renormalization.
+We first estimate its transported plane, then identify limits of that
+plane by their correlations. The two parts use different information:
+triangular estimates for the first, and the comparison of local
+observables for the second.
+
+\subsection{Expansion of the low coordinates}
+Fix a degree $d$, its finite coefficient space $F$, and an integer
+$0\leq e<d$. Each coordinate has an engineering weight in $\{0,\ldots,d\}$.
+Write $\mu(v)=\sum_\alpha|v_\alpha|$ and let $P$ retain the coordinates
+of weight at most $e$. For a block ratio $L\geq1$, let
+\[
+ (D_Lv)_\alpha=L^{d-\deg\alpha}v_\alpha.
+\]
+Thus $P$ commutes with $D_L$ and
+\begin{equation}\label{eq:ope-dilation-split}
+ \mu(PD_Lv)\geq L^{d-e}\mu(Pv),\qquad
+ \mu((1-P)D_Lv)\leq L^{d-e-1}\mu(v).
+\end{equation}
+Both inequalities follow by summing the coordinate inequalities.
+
+Here is the exact one-step input needed from the calibrated construction.
+At consecutive levels $i+1,i$, the readouts of the same bare vector are
+$a,b$. There is an invertible linear map $B$ preserving $\ker P$, with
+\[
+ \mu(Bv),\ \mu(B^{-1}v)\leq K\mu(v),\qquad
+ \mu(b-BD_La)\leq\epsilon\mu(a).
+\]
+The last estimate follows in the construction from the stronger bound
+with the nonconstant-coordinate part of $a$ on the right. Its numerical
+conditions are
+\begin{equation}\label{eq:ope-triangle-numbers}
+ K\geq1,\quad s_0,s\geq64K^2,\quad s\leq L,\quad
+ \epsilon\geq0,\quad 2K\epsilon(1+s)\leq1.
+\end{equation}
+Here $s_0=\zeta_i$ and $s=\zeta_{i+1}$ are the column allowances.
+These triangular estimates concern the actual readouts, including their
+nonlinear corrections. Their production is still a construction input.
+
+Since $B$ maps the finite-dimensional space $\ker P$ injectively into
+itself, it maps it onto itself. Its inverse therefore also preserves
+$\ker P$. Applying this observation to $Bv-PBv$ gives
+\begin{equation}\label{eq:ope-low-inverse}
+ \mu(Pv)=\mu(PB^{-1}PBv)\leq K\mu(PBv).
+\end{equation}
+Suppose now that $\mu(a)\leq s\mu(Pa)$, and set $Y=\mu(PD_La)$.
+By \eqref{eq:ope-dilation-split} and $s\leq L$,
+\[
+ \mu(D_La)\leq Y+L^{d-e-1}s\mu(Pa)\leq2Y,
+ \qquad \mu(a)\leq sY.
+\]
+The error $E=\mu(b-BD_La)$ consequently satisfies
+$2KE\leq Y$. On the other hand, \eqref{eq:ope-low-inverse} gives
+$Y\leq K(\mu(Pb)+E)$, so $Y\leq2K\mu(Pb)$. It follows that
+\begin{equation}\label{eq:ope-cone-step}
+ \mu(b)\leq3KY\leq6K^2\mu(Pb)\leq s_0\mu(Pb),\qquad
+ L^{d-e}\mu(Pa)\leq s\mu(Pb).
+\end{equation}
+If instead $Pa=0$, \eqref{eq:ope-dilation-split}, $\epsilon\leq1$,
+and $\mu(a)\leq\mu(D_La)$ give
+\begin{equation}\label{eq:ope-transverse-step}
+ \mu(b)\leq(K+1)\mu(D_La)
+       \leq sL^{d-e-1}\mu(a).
+\end{equation}
+The lost power of $L$ distinguishes the transverse estimate from the
+expansion of the low coordinates.
+
+\subsection{Subtracting the transported low plane}
+Fix a finest level $N$, a period, and a reference level $U\leq N$.
+Let $T_k:F\to F$ be the linear readout at level $k$, for $U\leq k\leq N$.
+Thus $T_N=1$ and $T_U=K_N$, where $K_N$ is the invertible map to
+reference coefficients. For each adjacent pair assume the preceding
+one-step estimates, with $a_k=L_ka_{k+1}$ for the meshes. Define
+\[
+ J_k=\prod_{i<k}\zeta_{i+1},\qquad
+ H_k=\prod_{i<k}(1+\zeta_i)\zeta_{i+1}.
+\]
+All these factors are at least one. If $Pv=v$, backward induction in
+\eqref{eq:ope-cone-step} gives
+\begin{equation}\label{eq:ope-plane-expansion}
+ \mu(T_kv)\leq\zeta_k\mu(PT_kv),\qquad
+ J_k(a_k/a_N)^{d-e}\mu(v)\leq J_N\mu(PT_kv).
+\end{equation}
+For the second inequality, multiply the one-step lower expansion by
+$J_i$, use $J_{i+1}=\zeta_{i+1}J_i$, and telescope the mesh ratios.
+The terminal equality $T_Nv=v$ starts both inductions.
+
+In particular $PT_k$ restricted to $\operatorname{ran}P$ is injective.
+Its domain and codomain have equal finite dimension, so it is onto.
+For any $y\in F$ choose $v\in\operatorname{ran}P$ with
+$PT_kv=PT_ky$. The first bound in \eqref{eq:ope-plane-expansion} shows
+\begin{equation}\label{eq:ope-plane-cancel}
+ PT_k(y-v)=0,\qquad
+ \mu(T_k(y-v))\leq(1+\zeta_k)\mu(T_ky).
+\end{equation}
+This cancellation must be repeated after each step: the fixed coordinate
+complement is not asserted to be invariant under the exact readouts.
+If $PT_{i+1}y=0$, first apply \eqref{eq:ope-transverse-step}, then
+\eqref{eq:ope-plane-cancel} at level $i$. The cost is
+$(1+\zeta_i)\zeta_{i+1}L_i^{d-e-1}$.
+Induction therefore gives, whenever $U\leq k\leq j\leq N$ and
+$PT_jy=0$, a $v\in\operatorname{ran}P$ such that
+\[
+ PT_k(y-v)=0,\qquad
+ H_k\mu(T_k(y-v))\leq
+ H_j(a_k/a_j)^{d-e-1}\mu(T_jy).
+\]
+At an induction step add the newly subtracted low vector to the old
+one; their sum remains in $\operatorname{ran}P$. The recurrence for
+$H_k$ and the identity $a_i=L_ia_{i+1}$ give the displayed product.
+
+Cancel first at level $k$, then transport to $U$, and discard the
+factor $H_U\geq1$. For every reference vector $x$ this yields a vector
+$y$ in the transported plane $K_N\operatorname{ran}P$ with
+\begin{equation}\label{eq:ope-transport-distance}
+ \|x-y\|\leq F_{k,d,e}\,q_k(x),\qquad
+ F_{k,d,e}=H_k(1+\zeta_k)(a_U/a_k)^{d-e-1},
+\end{equation}
+where $q_k(x)=\mu(T_kK_N^{-1}x)$, and the reference norm is chosen so
+that $\|z\|\leq\mu(z)$. Indeed apply the preceding result to
+$K_N^{-1}x$ and use $T_U=K_N$.
+For comparison, the calibrated bound
+$q_i(x)\leq\zeta_{i+1}L_i^d q_{i+1}(x)$ gives by forward induction
+\begin{equation}\label{eq:ope-whole-distance}
+ \|x\|\leq J_k(a_U/a_k)^d q_k(x).
+\end{equation}
+At $U$ use $q_U(x)=\mu(x)$ and $J_U\geq1$; the recurrence for $J$
+and the mesh identity give each subsequent step.
+
+\subsection{Subpower calibration and smeared discrepancies}
+\label{ex-column-subpower}
+The cumulative column factor used above is subpower for a precise
+reason. Put $s_i=\log(1/a_i)\geq0$ and
+$C_N=\sum_{i<N}\log\zeta_{i+1}=\log J_N$.
+The schedule provides numbers $h_i\to\infty$ and the bound
+\[
+ 0\leq\log\zeta_{i+1}\leq h_i^{-2}\log L_i,
+ \qquad s_{i+1}-s_i=\log L_i>0.
+\]
+The first inequality follows also when the scheduled logarithmic cost
+contains other nonnegative charges, since it then dominates
+$\log\zeta_{i+1}$. Given $\epsilon>0$, choose $k$ so that
+$h_i^{-2}\leq\epsilon/2$ for $i\geq k$. Telescoping gives
+\[
+ C_N\leq C_k+\tfrac\epsilon2(s_N-s_k)\leq C_k+\tfrac\epsilon2s_N.
+\]
+Eventually $C_k\leq\epsilon s_N/2$, because $s_N\to\infty$.
+Thus $C_N=o(s_N)$. In particular $J_N$ has logarithmic rate zero;
+so does $\zeta_N$, since $1\leq\zeta_N\leq J_N$ for $N\geq1$.
+
+The calibrated reverse estimate is
+\[
+ \mu(T_{i+1}K_N^{-1}x)\leq\zeta_{i+1}\mu(T_iK_N^{-1}x).
+\]
+Starting at $T_UK_N^{-1}x=x$ and enlarging the product to the full
+prefix gives
+$\mu(T_iK_N^{-1}x)\leq J_i\mu(x)$.
+At $i=N$, therefore,
+\[
+ \|K_N^{-1}x\|\leq J_N\mu(x)
+            \leq J_N\,\dim(F)\,\|x\|,
+\]
+using the coordinate supremum norm for the last inequality. For every
+fixed radius $R$ and $\epsilon>0$, both $J_N$ and
+$\dim(F)R$ are eventually bounded by $e^{\epsilon s_N/2}$.
+Consequently
+\begin{equation}\label{eq:ope-bounded-bare}
+ \sup_p\sup_{\|x\|\leq R}\|K_{N,p}^{-1}x\|
+       \leq e^{\epsilon s_N}
+ \quad\hbox{eventually in }N.
+\end{equation}
+The same estimate applies to any bounded family along the ordered
+cutoff filter. The calibration inequalities are uniform in the period;
+no new period extraction is needed.
+
+We will also use the following passage from separated lattice bounds
+to smeared tests. Let a trial $Z_{N,p}$ replace one distinguished field
+in an $n$-point correlation, and suppose that, for each fixed spectator
+list and every $\delta>0$, its correlation has absolute value at most
+$A_\delta|r_{N,p}|$ whenever all physical pairwise separations are at
+least $\delta$. Assume $r_{N,p}\to0$ along the ordered cutoff filter.
+For every smooth test $\varphi$ compactly supported in the separated
+configuration space, the corresponding lattice sum, with the factor
+$a_N^{4n}$, tends to zero.
+
+Indeed the test support $K$ is compact and has positive distance from
+every pairwise diagonal. Choose a smaller clearance $\delta>0$.
+For sufficiently large periods, its lattice representatives have that
+clearance also in the periodic metric: a bounded set does not meet a
+periodic translate of itself near a diagonal. Express the weighted
+lattice sum exactly as the integral of its piecewise constant function
+on the mesh cells in the fundamental region. A nonzero cell value has
+its corner in $K$. The cell diameter tends to zero, so every such cell
+lies in a fixed compact enlargement $B$ of $K$. The absolute value of
+the step function is at most
+\[
+ \boldsymbol1_B\,\|\varphi\|_\infty A_\delta |r_{N,p}|.
+\]
+Its integral is bounded by
+$|B|\|\varphi\|_\infty A_\delta |r_{N,p}|$, which tends to zero.
+This is a norm estimate on the same ordered filter, not an interchange
+of mesh and volume limits. Coordinate ties do not cause a problem:
+the test support is separated in the Euclidean sense, and one
+separating coordinate for each pair suffices to control its periodic
+separation.
+
+\subsection{Identifying the limiting plane by tests}
+We spell out the finite-dimensional limit argument, since convergence
+of the moving planes themselves is neither needed nor asserted.
+Let $V$ be a finite-dimensional complex normed space, $p_c$ projections
+converging in operator norm to a projection $p$, and $f_{\theta,c}$
+linear functionals converging in norm to $f_\theta$, one for each test
+$\theta$. Assume
+\begin{equation}\label{eq:ope-test-kernel}
+ \ker p=\bigcap_\theta\ker f_\theta.
+\end{equation}
+The index $c$ tends along any nontrivial filter. Suppose vectors $u_c$
+satisfy, for every $\theta$,
+\begin{equation}\label{eq:ope-normalized-tests}
+ f_{\theta,c}(u_c)\longrightarrow M_\theta,\qquad
+ \frac{f_{\theta,c}(u_c-p_cu_c)}{1+\|p_cu_c\|}\longrightarrow0.
+\end{equation}
+Then there is $u\in\operatorname{ran}p$ with
+$f_\theta(u)=M_\theta$ for all $\theta$.
+
+To prove this, put $b_c=(1+\|p_cu_c\|)^{-1}$ and $z_c=b_cp_cu_c$.
+The pairs $(b_c,z_c)$ lie in the compact set $[0,1]\times\overline B_1$.
+Along a finer nontrivial filter they converge to $(b,z)$, with
+$b+\|z\|=1$. Since $p_cz_c=z_c$, convergence of the projectors gives
+$pz=z$. Equations \eqref{eq:ope-normalized-tests} imply
+$f_\theta(z)=bM_\theta$. If $b=0$, \eqref{eq:ope-test-kernel} forces
+$pz=0$, hence $z=0$, contradicting $b+\|z\|=1$. Thus $b>0$ and
+$u=b^{-1}z$ proves the claim. There is only one compact extraction;
+the limits for every test pass to its refinement. No extraction indexed
+by the tests is used.
+
+Here is how the required hypotheses arise for the transported plane.
+We make explicit the remaining comparison input. A local trial at degree
+$e$ is an observable with fixed finite support whose product with $a_N^e$
+has subpower group supremum and subpower bounds for the prescribed
+left derivatives, uniformly in its lattice origin. Here the derivative
+order, spatial weight power and direction threshold are the purchased
+cutoff-dependent parameters: the bound holds simultaneously for every
+ordered left derivative of length at most that cutoff's purchased order,
+with directions satisfying its weighted threshold. Bounds only for each
+fixed derivative order would not suffice. The local comparison
+construction supplies degree-$e$ labels $u_c$ with subpower bare norm,
+whose difference from that trial has a centered price tending to zero.
+It also supplies the projections $p_c\to p$ of
+\eqref{eq:ope-test-kernel}. Labels in $\ker p_c$ with subpower bare norm
+have vanishing tested correlations. Bounded reference labels have
+subpower bare norm by \eqref{eq:ope-bounded-bare}. The local comparison
+and projection assertions are substantive inputs still to be proved
+from the construction. All statements use
+the same ordered cutoff filter.
+
+For clarity, these inputs imply the second limit in
+\eqref{eq:ope-normalized-tests} without assuming $u_c$ bounded.
+Multiplication by $b_c=(1+\|p_cu_c\|)^{-1}\leq1$ preserves subpower
+bare norm. The vectors $b_cp_cu_c$ are bounded, so also have subpower
+bare norm. Their difference $b_c(u_c-p_cu_c)$ consequently has
+subpower bare norm and belongs to $\ker p_c$, because $p_c^2=p_c$.
+The vanishing-test assertion gives exactly the normalized residual
+limit. The first limit follows by comparing the trial with $u_c$:
+the centered estimate gives a separated correlation bound by a
+constant times the price, and the step-integral estimate just proved
+sends this bound to zero in every smeared correlation. Linearity here is legitimate at finite cutoff,
+since the trials are bounded measurable functions and the remaining
+fields are continuous on the compact configuration space.
+
+It remains to check the degree of a bounded transported low vector
+$v_c\in K_N\operatorname{ran}P$. Write $x_c=K_N^{-1}v_c$.
+Taking $k=U$ in \eqref{eq:ope-plane-expansion} gives
+\[
+ a_N^{-(d-e)}\|x_c\|
+ \leq a_U^{-(d-e)}J_N\mu(v_c).
+\]
+Section~\ref{ex-column-subpower} gives zero logarithmic rate for $J_N$. Thus the bare
+coefficients of $w_c=a_N^{-(d-e)}v_c$ have subpower norm.
+The calibrated local-section bounds give subpower prices for
+$a_N^d\mathcal O_d(w_c)$. By linearity,
+\[
+ a_N^d\mathcal O_d(w_c)=a_N^e\mathcal O_d(v_c).
+\]
+The same literal observable is therefore an admissible degree-$e$
+trial, with its original finite support. If $v_c\to v$ along a
+refinement, its tested correlations converge to those of the reference
+label $v$: convergence of linear tests on a fixed basis is convergence
+in operator norm. Apply the preceding comparison and compact argument
+to obtain a degree-$e$ label having all the same smeared correlations.
+The smooth correlation kernels consequently agree: their difference
+integrates to zero against every compactly supported smooth test on
+the separated configuration domain, hence vanishes there. By the
+physical null-space definition, the class of $v$ belongs to $E_e$.
+
+Only boundedness and low-plane membership on the refined filter are
+needed. To apply comparison inputs stated on the original filter,
+replace $v_c$ by zero whenever either $\|v_c\|>\|v\|+1$ or low-plane
+membership fails. This modified family is bounded and in the plane
+on the original filter, and equals $v_c$ eventually on the refinement.
+It has the same limit and the same limiting correlations there.
+
+\subsection{The distance estimate after extraction}
+Suppose reference labels $v_c\to v$ on a refinement of the ordered
+cutoff filter and $q_k(v_c)\leq V$ eventually, with $k$ fixed.
+Choose $y_c\in K_N\operatorname{ran}P$ by
+\eqref{eq:ope-transport-distance}. They are eventually bounded, because
+$\|y_c\|\leq\|v_c\|+F_{k,d,e}V$. Extract a further nontrivial filter
+on which $y_c\to y$. The preceding argument puts $[y]$ in $E_e$,
+and continuity of the norm gives
+\begin{equation}\label{eq:ope-physical-distance}
+ [y]\in E_e,\qquad \|v-y\|\leq F_{k,d,e}V.
+\end{equation}
+The whole-vector bound \eqref{eq:ope-whole-distance} passes to the
+limit directly. Both estimates hold for the same limit $v$; only the
+auxiliary approximant $y$ requires a further extraction.
+
+Finally these finite-scale factors have the advertised rates. By Section~\ref{ex-column-subpower},
+$\log J_k=o(s_k)$ and $\log\zeta_k=o(s_k)$, where
+$s_k=\log(1/a_k)$. The column allowances also satisfy $\zeta_k\geq2$.
+In fact
+\[
+ H_k\zeta_k\leq J_k^3\zeta_0.
+\]
+This holds at $k=0$. For the induction step use
+$1+\zeta_k\leq\zeta_k\zeta_{k+1}$ and the recurrences for $H,J$:
+\[
+ H_{k+1}\zeta_{k+1}
+ \leq H_k\zeta_k\zeta_{k+1}^3
+ \leq J_k^3\zeta_0\zeta_{k+1}^3
+ =J_{k+1}^3\zeta_0.
+\]
+Thus $H_k$ also has zero logarithmic rate. If $k_n\to\infty$, $t_n\to+\infty$, and $s_{k_n}/t_n\to a$,
+then $F_{k_n,d,e}$ has rate $(d-e-1)a$, while the factor in
+\eqref{eq:ope-whole-distance} has rate $da$.
+Taking $d=q$ and $e=m-1$ proves precisely the factors in
+\eqref{eq:ope-match-norm}--\eqref{eq:ope-match-distance}, once a
+cutoff match with quota $V_n$ and convergent reference labels has been
+produced. This argument preserves the exact reference labels and
+physical filtration; it does not require convergence of the individual
+renormalization matrices.

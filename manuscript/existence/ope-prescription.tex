@@ -1,0 +1,189 @@
+\section{One field prescription for every truncation degree}
+\label{sec:ope-prescription}
+An operator-product expansion must use the same coefficients when its
+truncation degree changes. Choosing a new basis independently at each
+finite degree would not ensure this. We construct a single compatible
+system of fields and finite correlation tests, one degree at a time.
+The tests are fixed before choosing the cluster geometry or its spectators.
+
+Let $E_n$ be the finite-dimensional complex space of physical fields through
+degree $n$. Denote its injective inclusion maps by
+$\iota_{mn}:E_m\to E_n$, $m\leq n$, with
+$\iota_{nn}=I$ and $\iota_{nk}\iota_{mn}=\iota_{mk}$.
+These are the physical filtration maps, so inserting a field and its image
+in a higher degree gives the same separated correlations.
+
+An exterior test $\lambda$ consists of finitely many fixed spectator labels
+and a separated configuration including a distinguished first position.
+Inserting $v\in E_n$ at that first position and evaluating the mixed
+Euclidean correlation defines a linear functional $\lambda_n(v)$.
+The physical field quotient has been defined by vanishing of all such
+correlations. Thus these functionals separate $E_n$:
+\begin{equation}\label{eq:ope-detector-separation}
+ [\lambda_n(v)=0\text{ for every exterior test }\lambda]\ \Longrightarrow\ v=0.
+\end{equation}
+Their compatibility with filtration is
+$\lambda_n\iota_{mn}=\lambda_m$. For a finite linear combination
+$b=\sum_{\lambda\in F}b_\lambda\lambda$ use the notation
+$b_n=\sum_{\lambda\in F}b_\lambda\lambda_n$. The same finite combination
+then defines a test on every level.
+
+\begin{lemma}\label{lem:ope-detector-span}
+Every linear functional on $E_n$ is $b_n$ for some finite combination $b$
+of exterior tests.
+\end{lemma}
+\begin{proof}
+Let $V$ be the span of the exterior functionals inside $E_n^*$.
+If $V$ were proper, a basis of $V$ would consist of fewer than $\dim E_n$
+functionals. The linear map from $E_n$ to their coordinate values would
+then have a nonzero kernel, by rank--nullity. A nonzero vector in that
+kernel would be annihilated by all of $V$, hence by every exterior test,
+contrary to \eqref{eq:ope-detector-separation}. Therefore $V=E_n^*$.
+Membership in a span means a finite linear combination, as required.
+\end{proof}
+
+Put $E_{-1}=0$ and
+$d_n=\dim(E_n/\iota_{n-1,n}E_{n-1})$, where the denominator is zero
+when $n=0$. A channel is a pair $\alpha=(n,j)$ with $1\leq j\leq d_n$;
+its degree is $|\alpha|=n$. We seek fields $u_\alpha\in E_{|\alpha|}$
+and finite exterior tests $b_\alpha$ such that, for every $n$,
+\begin{equation}\label{eq:ope-biorthogonal}
+ b_{\alpha,n}(\iota_{|\beta|,n}u_\beta)=\delta_{\alpha\beta}
+       \quad(|\alpha|,|\beta|\leq n),
+\end{equation}
+and
+\begin{equation}\label{eq:ope-rebuild}
+ v=\sum_{|\alpha|\leq n}b_{\alpha,n}(v)
+                       \iota_{|\alpha|,n}u_\alpha\qquad(v\in E_n).
+\end{equation}
+The sums contain finitely many channels. No assertion of a convergent
+infinite expansion is involved.
+
+\begin{proposition}\label{prop:ope-prescription}
+There is one choice of all the fields $u_\alpha$ and tests $b_\alpha$
+satisfying \eqref{eq:ope-biorthogonal} and \eqref{eq:ope-rebuild}
+simultaneously for every $n$. Moreover
+$b_{\alpha,m}=0$ whenever $m<|\alpha|$.
+\end{proposition}
+\begin{proof}
+At degree zero choose a basis of $E_0$ and represent each coordinate
+functional by a finite exterior test, using
+Lemma~\ref{lem:ope-detector-span}. The two identities are then the usual
+basis identities.
+
+Suppose the fields and tests through degree $n$ have been chosen.
+Write $R=\iota_{n,n+1}$, let $q:E_{n+1}\to E_{n+1}/R(E_n)$ be the
+quotient map, and set
+\[
+ Bv=\sum_{|\alpha|\leq n}b_{\alpha,n+1}(v)
+                           \iota_{|\alpha|,n}u_\alpha.
+\]
+Test compatibility and \eqref{eq:ope-rebuild} give $BR=I_{E_n}$.
+Choose a linear right inverse $S$ of $q$; it exists by lifting a finite
+basis of the quotient. Correct this arbitrary lift by putting
+\[
+ F=S-RBS.
+\]
+Then $qF=I$ and $BF=0$. The old tests vanish on the new image $F$.
+Indeed \eqref{eq:ope-biorthogonal} gives
+$b_{\alpha,n}B=b_{\alpha,n+1}$ for every old channel $\alpha$, so
+$b_{\alpha,n+1}F=b_{\alpha,n}BF=0$.
+
+Every $v\in E_{n+1}$ has the exact decomposition
+\begin{equation}\label{eq:ope-quotient-split}
+ v=Fqv+RBv.
+\end{equation}
+To prove it, $q(v-Fqv)=0$ implies $v-Fqv=Ra$ for some $a\in E_n$.
+Applying $B$ and using $BF=0$, $BR=I$ gives $a=Bv$.
+Now choose a basis $(e_j)$ of the quotient. The new fields are $Fe_j$.
+For each new channel choose a finite exterior test representing
+$e_j^*q$ on $E_{n+1}$. Leave every old field and every old test unchanged.
+The new tests annihilate $R(E_n)$, are dual to the new fields because
+$qF=I$, and the old tests annihilate the new fields as just proved.
+Old fields and tests retain their mutual duality by compatibility.
+This proves all four old/new cases of \eqref{eq:ope-biorthogonal}.
+Expanding the two terms in \eqref{eq:ope-quotient-split} proves
+\eqref{eq:ope-rebuild} at degree $n+1$.
+
+Iterate. A channel and its finite test, once chosen, never change.
+Their value in the resulting infinite list is the one fixed at their birth
+degree. Any identity at degree $n$ involves only the finitely many channels
+already fixed by stage $n$, so it remains valid in the final list.
+Finally take $m<|\alpha|$ and expand $v\in E_m$ using
+\eqref{eq:ope-rebuild}. Lift that identity to degree $|\alpha|$ and apply
+$b_\alpha$. Biorthogonality makes every term zero, because all its
+channels have degree at most $m$. Compatibility then gives
+$b_{\alpha,m}(v)=0$.
+\end{proof}
+The subtraction $RBS$ is the reason this construction works at all degrees.
+It places every new quotient lift in the exact kernels of all old tests,
+while retaining the old tests as actual finite correlation evaluations.
+
+\subsection{Testing a product at the cluster center}
+For each exterior test $\lambda$, translate its distinguished position to
+zero. Write its other positions as $z_{\lambda,j}$ and its spectator
+labels as $w_{\lambda,j}$. These positions are pairwise distinct and none
+is zero. For a cluster of fields $v_i$ at $x_i$ and center $o$, define
+\[
+ \mathcal R_\lambda(\boldsymbol x,\boldsymbol v;o)
+ =S_{\mathrm{mix}}\bigl((v_i,x_i-o)_i,
+                         (w_{\lambda,j},z_{\lambda,j})_j\bigr)
+\]
+when the combined configuration is separated, and assign value zero
+otherwise. This convention gives a function everywhere; every asymptotic
+use below is in its separated region. Define
+\begin{equation}\label{eq:ope-raw-coefficient}
+ c_\alpha^{\mathrm{raw}}(\boldsymbol x,\boldsymbol v;o)
+       =\sum_{\lambda\in\operatorname{supp}b_\alpha}
+                  b_{\alpha,\lambda}
+                  \mathcal R_\lambda(\boldsymbol x,\boldsymbol v;o),
+\end{equation}
+and the finite field-valued expression
+\begin{equation}\label{eq:ope-raw-shadow}
+ H_n(\boldsymbol x,\boldsymbol v;o)
+   =\sum_{|\alpha|\leq n}
+       c_\alpha^{\mathrm{raw}}(\boldsymbol x,\boldsymbol v;o)
+                                      \iota_{|\alpha|,n}u_\alpha.
+\end{equation}
+Each coefficient is fixed independently of the truncation degree, the
+phase, or any later choice of exterior spectators. It is multilinear in
+the cluster labels on its separated region. The separation condition
+depends only on positions, so the zero extension is multilinear as well.
+Permutation symmetry of the correlations gives simultaneous permutation
+symmetry in cluster positions and labels. Simultaneous translation of the
+cluster and center leaves their differences unchanged.
+
+For a single field $v\in E_m$ placed at $o$, translation invariance and
+the definition of the exterior test give
+\[
+ c_\alpha^{\mathrm{raw}}((o),(v);o)=b_{\alpha,m}(v).
+\]
+All the detector configurations in this evaluation are separated. Hence,
+for $m\leq n$, \eqref{eq:ope-rebuild} implies
+\begin{equation}\label{eq:ope-raw-single}
+ H_n((o),(v);o)=\iota_{mn}v.
+\end{equation}
+The same testing operation is compatible with replacing any input field
+by its filtration image, since separated correlations have that
+compatibility.
+
+For every fixed finite list of coefficients there is a common positive
+detector clearance. To see this, take the minimum of the finitely many
+nonzero lengths $|z_{\lambda,j}|$ occurring in their finite test supports;
+if there are no spectator positions, there is no such restriction.
+If $|x_i-o|$ is less than half that minimum, no cluster point can meet a
+detector position. Distinctness among cluster points and among detector
+points supplies the remaining separation conditions. The same argument
+works after any orthogonal rotation of the relative cluster, because
+rotations preserve $|x_i-o|$. Smoothness of the mixed correlations on
+separated configurations makes each such finite coefficient collection
+smooth on this common region. This is a finite-degree statement; it gives
+no uniform clearance for infinitely many degrees.
+
+The raw expressions above do not yet have the required rotational and
+reality properties, because the finite tests were chosen by linear
+algebra. Averaging the field-valued expression over $O(4)$ and symmetrizing
+conjugation supplies those properties. The subsequent homogeneous
+projection must be made using these averaged tests themselves, so that
+its lower-degree components agree exactly. These operations and their
+quantitative error estimates are the next steps of the OPE construction.

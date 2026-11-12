@@ -1,0 +1,142 @@
+\section{Complex heat time and real-time translations}
+\label{sec:complex-heat}
+The complex heat extension used in the boundary argument can be constructed
+from the real Euclidean semigroup alone. This also fixes the sign of the
+real-time translation group. Let $(E_t)_{t\geq0}$ be a strongly continuous
+semigroup of self-adjoint contractions on a complex Hilbert space, with
+$E_0=I$. Each $E_t$ is positive because $E_t=E_{t/2}^2$.
+
+We use continuous functional calculus for a bounded self-adjoint operator:
+continuous scalar functions on its spectrum act as a unital isometric
+star homomorphism, with the usual composition rule. This is the
+self-adjoint instance of the continuous calculus in \cite[Theorem 2.19]{Williams}.
+All uses below are for a positive contraction and scalar functions continuous
+at zero; an imaginary power at zero is never inserted into this calculus.
+
+\begin{proposition}\label{prop:complex-heat}
+There is a holomorphic operator-valued function $E(z)$ on
+$\operatorname{Re}z>0$ such that
+\[
+ \|E(z)\|\leq1,\quad E(z+w)=E(z)E(w),\quad
+ E(z)^*=E(\overline z),\quad E(t)=E_t\quad(t>0).
+\]
+Each $E_t$, $t>0$, is injective and has dense range. There is a strongly
+continuous unitary group $V(t)$, $t\in\mathbb R$, characterized by
+\begin{equation}\label{eq:complex-heat-edge}
+ V(t)E(z)=E(z)V(t)=E(z-it)\qquad(\operatorname{Re}z>0).
+\end{equation}
+Every bounded operator commuting with all $E_t$ commutes with $E(z)$ and
+$V(t)$. If $E_t\Omega=\Omega$ for all $t$, then
+$E(z)\Omega=V(t)\Omega=\Omega$.
+\end{proposition}
+\begin{proof}
+Put $A=E_1$. Its spectrum is contained in $[0,1]$: positivity excludes
+negative spectrum and the contraction bound excludes values above one.
+For $\operatorname{Re}z>0$, define
+\[
+ f_z(\lambda)=\begin{cases}\exp(z\log\lambda),&\lambda>0,\\0,&\lambda=0,\end{cases}
+ \qquad E(z)=f_z(A).
+\]
+This scalar function is continuous at zero and has magnitude at most one.
+The norm bound, product law, and adjoint identity follow from the calculus.
+Holomorphy holds in the uniform norm on the scalar functions, hence in
+operator norm. Indeed, on a compact neighborhood of any such $z$ choose
+$\delta>0$ with $\operatorname{Re}z\geq2\delta$. The functions
+$\lambda^\delta|\log\lambda|^j$ are bounded on $(0,1]$ and tend to zero at
+zero for each fixed $j$. Taylor's formula for the scalar exponential then
+gives, uniformly in $\lambda\in[0,1]$ and for sufficiently small $h$,
+\[
+ |f_{z+h}(\lambda)-f_z(\lambda)-h\lambda^z\log\lambda|
+ \leq C_\delta |h|^2.
+\]
+At zero the derivative is defined to be zero. This proves complex
+differentiability into the continuous-function space.
+
+For a positive integer $n$, put $B=E_{1/n}$. The semigroup law gives
+$B^n=A$. Functional calculus on the positive operator $B$ yields
+$(B^n)^{1/n}=B$, because $(\lambda^n)^{1/n}=\lambda$ for
+$\lambda\geq0$. The composition rule thus gives
+$E(p/n)=A^{p/n}=B^p=E_{p/n}$ for positive integers $p,n$.
+Approximate any positive real $t$ by positive rationals. Operator-norm
+continuity of $E(z)$ and strong continuity of the original semigroup show,
+after application to each vector, that $E(t)=E_t$.
+
+If $E_tx=0$, then
+$\|E_{t/2}x\|^2=\langle x,E_tx\rangle=0$.
+Iteration gives $E_{t/2^n}x=0$ for every $n$, and strong continuity at zero
+implies $x=0$. Self-adjointness then gives dense range, since the orthogonal
+complement of the range is the kernel of the adjoint.
+For real $t$ and $r>0$, the product and adjoint identities imply
+\[
+ E(r-it)^*E(r-it)=E(2r)=E_r^*E_r,
+ \qquad \|E(r-it)x\|=\|E_rx\|.
+\]
+Define an isometry initially on the dense range of $A$ by
+$V(t)Ax=E(1-it)x$. Injectivity of $A$ makes the definition unambiguous;
+the displayed norm identity extends it uniquely to an isometry of the
+whole Hilbert space.
+
+For $\operatorname{Re}z>0$, both equalities in
+\eqref{eq:complex-heat-edge} may be checked on $Ax$. For example,
+\[
+ V(t)E(z)Ax=V(t)AE(z)x=E(1-it)E(z)x
+            =E(z-it)Ax.
+\]
+The other order is identical. Thus these are bounded-operator identities.
+In particular, on $Ax$,
+\[
+ V(t)V(s)Ax=V(t)E(1-is)x=E(1-i(s+t))x=V(t+s)Ax.
+\]
+Density proves the group law. Since $V(0)=I$, each isometry has inverse
+$V(-t)$ and is unitary. For $Ax$, the orbit is continuous by holomorphy
+of $E(1-it)$; approximation by the dense range of $A$, with the unitary
+norm bound on both sides, proves strong continuity for every vector.
+
+Commutation with $A$ implies commutation with every continuous function of
+$A$: approximate such a function uniformly on its real spectrum by
+polynomials. Thus a bounded operator commuting with all $E_t$ commutes
+with $E(z)$. Checking on $Ax$ then gives commutation with $V(t)$.
+Finally $A\Omega=\Omega$ implies $f(A)\Omega=f(1)\Omega$, first for
+polynomials and then for continuous $f$. Apply this to $f_z$ and then the
+definition of $V(t)$ to obtain the vacuum assertions.
+\end{proof}
+
+Suppose now that spatial translations $U(x)$ form a strongly continuous
+unitary representation commuting with the heat semigroup and fixing
+$\Omega_E$. The proposition
+defines a strongly continuous unitary representation of all real translations,
+\[
+ T_E(a^0,\mathbf a)=V(a^0)U(\mathbf a).
+\]
+The group law follows from commutation. Joint strong continuity follows by
+adding and subtracting $V(a^0)U(\mathbf b)\xi$ and using the unitary norms.
+Moreover $E(\varepsilon-it)\xi=V(t)E_\varepsilon\xi\to V(t)\xi$ as
+$\varepsilon\downarrow0$, which justifies the boundary notation $E(-it)$
+used in the heat-vector chapter. No operator-norm continuity at the boundary
+is required.
+
+\begin{lemma}\label{lem:time-fixed-heat}
+The vectors fixed by every $V(t)$ are exactly the vectors fixed by every
+$E_s$. Consequently, if the selected heat ground space is
+$\mathbb C\Omega_E$, the same is true of the subspace fixed by all real
+translations.
+\end{lemma}
+\begin{proof}
+A heat-fixed vector satisfies $A\xi=\xi$, so functional calculus and the
+definition of $V$ give $V(t)\xi=\xi$. Conversely suppose $V(t)\xi=\xi$.
+The holomorphic vector function $g(z)=E(z)\xi$ satisfies
+$g(z-it)=E(z)V(t)\xi=g(z)$. Its derivative in the imaginary direction is
+zero; complex differentiability therefore makes its full derivative zero.
+It is constant on the connected right half-plane. Since
+$E_s\xi\to\xi$ as $s\downarrow0$, this constant is $\xi$.
+A vector invariant under all translations is, in particular, invariant under
+$V(t)$, and hence belongs to the heat ground space. The vacuum itself is
+translation-invariant, which proves the last assertion.
+\end{proof}
+
+Combining this lemma with the isometric translation intertwiner in
+Proposition~\ref{prop:word-motion} proves uniqueness of the invariant vacuum
+in the reconstructed field Hilbert space: an invariant $\xi$ maps to
+$c\Omega_E=V(c\Omega)$, and injectivity of the intertwiner gives
+$\xi=c\Omega$. Here the intertwiner denoted $V$ in that proposition is a
+different map from the one-parameter group used in this section.

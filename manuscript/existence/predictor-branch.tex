@@ -1,0 +1,215 @@
+\section{The minimizing branches and the predictor derivative}
+\label{sec:predictor-branch}
+We establish the branch properties used in the local comparison.
+The cutoffs for uniqueness can be chosen using only the group, before
+choosing a patch. Analyticity near the identity is then a local
+finite-dimensional statement, and its derivative includes the root
+normalization explicitly.
+
+\subsection{Uniform uniqueness of minimizing frames}
+Use the finite path family $W_{ij\alpha}$ and minimizing energy from
+Section~\ref{sec:seed-geometry}. Regard group elements as matrices,
+and let $\Pi$ be the orthogonal projection onto the Lie algebra.
+The analytic nearest-point projection $\pi$ near $1$ has
+$D\pi(1)=\Pi$. By continuity of its derivative, for a sufficiently
+small convex ball and all $A,B$ in that ball,
+\begin{equation}\label{eq:branch-projection}
+ \|\pi(A)-\pi(B)-\Pi(A-B)\|\le\tfrac14\|A-B\|.
+\end{equation}
+This follows by integrating $D\pi-\Pi$ along the segment. Choose
+$\delta>0$ for such a ball, and choose
+$0<\varepsilon\le\min\{\delta/4,1/4\}$. Suppose
+\[
+ \|W_{ij\alpha}-1\|\le\varepsilon
+ \quad\text{for every }i,j,\alpha.
+\]
+We claim that any two minimizing frames differ by a common left
+multiplication, independently of the number of points or paths.
+
+Comparison with the constant frame and the squared triangle
+inequality give
+\[
+ \mathop{\rm av}_{i,j}\|h_i-h_j\|^2\le4\varepsilon^2.
+\]
+For clarity, the mean squared transported discrepancy
+$\|h_iW_{ij\alpha}-h_j\|^2$ is at most $\varepsilon^2$ by
+minimality. Each untransported discrepancy squared is at most twice
+this term plus $2\varepsilon^2$; averaging gives the claim.
+Rotate each minimizing frame separately so that $1$ is nearest to
+its centroid $m$. Choosing a point with mean squared distance no
+larger than the double average and applying Jensen gives
+$\|m-1\|\le2\varepsilon$. Its feedback matrix
+$m_i=\mathop{\rm av}_{j,\alpha}h_jW_{ij\alpha}^{-1}$ satisfies
+$\|m_i-m\|\le\varepsilon$, so $\|m_i-1\|\le3\varepsilon<\delta$.
+The self-consistency proved in \eqref{eq:geometry-feedback} therefore
+identifies $h_i=\pi(m_i)$.
+
+Let $h,k$ be the two rotated minimizers and set
+$v=\max_i\|h_i-k_i\|$. Their feedback differences $D_i$ satisfy
+\[
+ \|D_i\|\le v,\qquad
+ \|D_i-(m_h-m_k)\|\le v\varepsilon.
+\]
+The first follows by averaging and unitary invariance. For the second,
+subtract the centroid difference to obtain the average of
+$(h_j-k_j)(W_{ij\alpha}^{-1}-1)$ and use the matrix product bound.
+Since $1$ is nearest to each centroid,
+$\Pi(m_h-1)=\Pi(m_k-1)=0$: differentiate squared distance along
+$\exp(tX)$ for each tangent vector $X$. Thus
+$\|\Pi D_i\|\le v\varepsilon$. At an index attaining the maximum,
+\eqref{eq:branch-projection} yields
+\[
+ v\le v\varepsilon+\tfrac14v\le\tfrac12v,
+\]
+so $v=0$. Undoing the rotations proves uniqueness up to a common
+left multiplier. If both frames are normalized at their centre,
+that multiplier is $1$.
+
+The actual frame branch tests that every coordinate path transport,
+after one of its rooted axial gauges, has chord less than a fixed
+cutoff. Take this cutoff at most $\varepsilon/D$. Choose one of
+those axial gauges; the resulting $W$ satisfies the preceding matrix
+bound. Changing variables by that gauge in the minimizing energy
+proves uniqueness of the normalized frame on the entire tested
+branch. These cutoffs do not depend on the patch size or smoothing
+order. At the identity all tested chords vanish, so this branch is
+an open neighbourhood of the identity field.
+
+For the predictor branch, let $w_i\ge0$, $\sum_iw_i=1$, and let
+$m=\sum_iw_iY_i$. Expanding the squares shows that minimizing
+$\sum_iw_i r(Y_iu^{-1})^2/2$ is equivalent to choosing a nearest
+group element to $m$. If the weighted cost at some $u$ is less than
+$\zeta$, Jensen gives
+\[
+ \|m-u\|^2\le\sum_iw_i\|Y_i-u\|^2<2D^2\zeta.
+\]
+The group has a uniform nearest-point tube, obtained from the local
+tube by left translation. Choose $\zeta$ so that
+$\sqrt{2D^2\zeta}$ is smaller than its radius. Then the predictor
+minimum is unique on its tested branch, uniformly over all finite
+weight distributions. Finally the fallback frame rule has an
+eligible choice by \eqref{eq:geometry-axial} with axial factor $16$.
+Together these facts construct the required branch constants for any
+fixed positive predictor penalty.
+
+\subsection{Analyticity of the normalized frame}
+Fix a patch and a finite torus for the moment. Write $a$ for the
+fine logarithmic bond field and $h_i(a)$ for the actual frame
+matrices. At $a=0$ they are all $1$. The chosen minimizer is
+continuous on the uniqueness branch. To verify this without assuming
+regularity of a choice function, consider a convergent sequence of
+input fields. Compactness of the finite product of groups gives a
+convergent subsequence of any sequence of minimizers. Continuity of
+the energy and the centre constraint makes every limit a minimizer
+at the limiting field. Uniqueness makes that limit the selected
+one. A sequence staying outside a fixed neighbourhood of that value
+would contradict this argument, which proves continuity.
+
+Let $o$ be the patch centre and let $W_{ij\alpha}(a)$ be its actual
+coordinate path transports. Define an ambient matrix-valued system
+\[
+ \mathcal F_i(a,H)=
+ \begin{cases}
+ H_o-1,&i=o,\\
+ H_i-\pi\bigl(\mathop{\rm av}_{j,\alpha}
+                     H_jW_{ij\alpha}(a)^{-1}\bigr),&i\ne o.
+ \end{cases}
+\]
+It is analytic near $(0,\mathbf1)$. Continuity of the actual frame
+and its feedback, together with self-consistency, shows that
+$\mathcal F(a,h(a))=0$ near zero. The derivative in the ambient
+frame variable is
+\[
+ (\mathcal D v)_o=v_o,\qquad
+ (\mathcal D v)_i=v_i-\Pi\bar v\quad(i\ne o),
+ \qquad \bar v=\mathop{\rm av}_jv_j.
+\]
+It is invertible. Indeed if $\mathcal Dv=0$, put $A=\Pi\bar v$.
+Then $v_o=0$ and $v_i=A$ for $i\ne o$. If the patch has $n$ points,
+$\bar v=(n-1)A/n$, so applying $\Pi$ gives $A=(n-1)A/n$ and
+$A=0$. The derivative is an injective endomorphism of a finite
+-dimensional space and is therefore bijective. The analytic implicit
+function theorem gives a unique analytic local solution. Continuity
+places the actual frame in that local solution neighbourhood, so
+$h(a)$ is analytic. This argument works in ambient matrices; it does
+not require choosing coordinates for a complement at every frame.
+
+\subsection{The root correction in the derivative}
+For a Lie-algebra-valued bond perturbation $a$, write
+$\int_\gamma a$ for its signed sum along a path. Define
+\[
+ \tau_y(i;a)=-\mathop{\rm av}_{j,\alpha}
+                 \int_{i\to j,\alpha}a,
+\]
+where the paths are in the patch centred at the coarse site $y$.
+Differentiate the feedback equation at zero. If
+$\dot h_i$ is the matrix derivative and $\overline{\dot h}$ its
+uniform average, differentiation of the inverse transport gives
+\[
+ \dot h_i=\Pi\overline{\dot h}+\operatorname{col}(\tau_y(i;a)).
+\]
+The feedback identity holds also at the centre. Since the normalized
+frame has $h_o(a)=1$, its centre derivative is zero. Subtraction
+therefore yields
+\begin{equation}\label{eq:branch-frame-derivative}
+ \dot h_i=\operatorname{col}\{\tau_y(i;a)-\tau_y(o;a)\}.
+\end{equation}
+In particular the frame derivative uses uniform averages over patch
+points and path orders, before the separate connector weights enter.
+
+For a coarse bond $e=(y,b)$, the connector at patch point $i$ consists
+of its frame at $y$, the length-$L$ fine path, and the inverse frame
+at $y+e_b$. Its colour derivative is consequently
+\[
+ \tau_y(i;a)-\tau_y(o;a)
+ +\int_{y+i\to y+i+Le_b}a
+ -\tau_{y+e_b}(i;a)+\tau_{y+e_b}(o;a).
+\]
+At zero all connectors equal $1$. Nearby the predictor is on its
+minimizing branch and equals $\pi$ of their weighted matrix centroid.
+This follows from the weighted nearest-point identity above; the
+branch remains open since its minimum cost is at most the continuous
+cost of comparison with $1$, which vanishes at zero. Thus the
+predictor is analytic near zero. The derivative of $\pi$ is $\Pi$,
+which fixes the above colour derivatives, so the predictor derivative
+is their weighted sum.
+
+Define the bond averaging map and the site correction by
+\[
+ \begin{split}
+ (\mathcal Aa)_{y,b}
+   &=\sum_iw_i\int_{y+i\to y+i+Le_b}a,\\
+ (\mathcal Ra)_y&=\tau_y(o;a)-\sum_iw_i\tau_y(i;a).
+ \end{split}
+\]
+The weighted connector derivative is exactly
+\begin{equation}\label{eq:branch-probe}
+ \mathcal Qa=\mathcal Aa+d_c^{(0)}\mathcal Ra.
+\end{equation}
+The sign is determined by the subtraction of the frame at the final
+endpoint: the remaining root terms are
+$(\mathcal Ra)_{y+e_b}-(\mathcal Ra)_y$.
+For a fine gradient $a=d_f^{(0)}v$, path sums telescope, giving
+\[
+ (\mathcal R d_f^{(0)}v)_y
+       =v(Ly)-\sum_iw_i v(Ly+i),\qquad
+ \mathcal Qd_f^{(0)}v=d_c^{(0)}\{v(Ly)\}_y.
+\]
+This checks the root normalization directly. Equations
+\eqref{eq:branch-frame-derivative} and \eqref{eq:branch-probe} prove
+the analytic predictor law and derivative used in
+Section~\ref{sec:seed-unhit-comparison}. Its transplantation argument
+then supplies a uniform fixed-patch Taylor radius for all periods.
+
+The covariance needed there follows from the same definitions.
+A gauge change turns a frame into
+$f'_i=g_o f_i g_i^{-1}$. On a minimizing branch it preserves the
+energy and centre normalization, so uniqueness identifies this with
+the selected frame; on a fallback branch the identity follows by
+telescoping its rooted paths. Connector endpoint factors then reduce
+to $g_{Ly}Y_i g_{L(y+e_b)}^{-1}$. The weighted cost is invariant under
+this change of variables. Uniqueness identifies the minimizing
+predictor, and direct substitution handles a selected connector on
+the other branch. The original tags are retained in a gauge change.
+These identities give the block-constant covariance used in the
+unhit comparison.

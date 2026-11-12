@@ -1,0 +1,178 @@
+\section{Ordinary reflections and covariance of individual phases}
+\label{ex-reflection-transport}
+
+Reflected conjugation is built into the Hilbert inner product. Ordinary
+reflection, which acts complex-linearly on labels, is a different
+operation. Proving that it fixes each compressed observable is the extra
+step needed to obtain orthogonal covariance in each character separately.
+We denote ordinary time reflection by \(\rho\); thus \(\theta\)
+also conjugates labels and reverses the word, whereas \(\rho\) does
+neither. Permutation symmetry makes the reversal immaterial to \(M\).
+
+\begin{lemma}[Positivity from bounded real approximations]
+\label{ex-replicated-positivity}
+Suppose real numbers \(b_t(i,j)\), for integers \(i<j\), satisfy
+\(b_t(i,j)\to a\) as \(t\to\infty\), with the same limit \(a\)
+for every pair. Suppose there are \(\epsilon_k\ge0\) tending to zero
+and finite \(R_k\ge0\) with the following property. For every \(k\)
+and finite \(m\), for all sufficiently large \(t\) there exist
+simultaneous real random variables \(X_1,\ldots,X_m\), possibly on
+cutoff-dependent probability spaces, such that eventually in the ordered
+cutoff limit
+\[
+ |X_i|\le R_k,\qquad
+ \mathbb E(X_iX_j)\le b_{\mathrm{cut},t}(i,j)+\epsilon_k
+ \quad(i<j),
+\]
+where \(b_{\mathrm{cut},t}(i,j)\to b_t(i,j)\) in that cutoff limit.
+Then \(a\ge0\).
+\end{lemma}
+\begin{proof}
+The variables are bounded and measurable, so their products are integrable.
+Nonnegativity of a square gives
+\[
+ 0\le\mathbb E\left(\sum_{i=1}^mX_i\right)^2
+ \le mR_k^2+2\sum_{i<j}
+       \bigl(b_{\mathrm{cut},t}(i,j)+\epsilon_k\bigr).
+\]
+For fixed \(k,m,t\), all eventual conditions can be imposed together:
+only finitely many variables and pairs occur. Remove the cutoff in the
+specified order, then send \(t\to\infty\), obtaining
+\(0\le mR_k^2+m(m-1)(a+\epsilon_k)\).
+For \(m\ge2\), divide by \(m(m-1)\) and send \(m\to\infty\).
+This yields \(a+\epsilon_k\ge0\). Now send \(k\to\infty\).
+The order of these limits matters: \(R_k\) may diverge as \(k\) grows.
+\end{proof}
+
+The lattice construction applies the lemma to a real-labelled word
+\(w\) at an internally generic grid configuration, minus its ordinary reflection. Translate several copies along
+one vector with strictly positive coordinates, spacing the \(i\)-th
+copy by \(it\) times that vector. For fixed distinct copies and large
+\(t\), their combined configurations are generic in every coordinate.
+The covariance to be approximated is the four-term expression
+\[
+ S(w_iw_j)-S(w_i(\rho w)_j)
+ -S((\rho w)_iw_j)+S((\rho w)_i(\rho w)_j),
+\]
+or its real part. By Lemma~\ref{ex-cluster-train}, its large-separation
+limit is
+\begin{equation}\label{ex-reflection-square}
+ a=\operatorname{Re}\langle\Omega,
+       (M(w)-M(\rho w))^2\Omega\rangle.
+\end{equation}
+The input required here is the existence of the bounded real variables
+in Lemma~\ref{ex-replicated-positivity}, with errors independent of the
+number and offsets of copies. Ordinary positivity of a Wilson
+probability measure supplies the nonnegative square once these
+simultaneous approximations are available; it does not supply the
+approximations or their uniform error bounds.
+
+\begin{proposition}[Ordinary reflection fixes compressed words]
+\label{ex-ordinary-reflection}
+Assume the bounded real approximation property just described holds on
+a dense set of internally generic grid configurations for each tuple of real basis labels.
+Assume the norm-regularity hypotheses of Section~\ref{ex-slab-regularity}
+and that each raw label space has a basis fixed by conjugation.
+Then \(M(\rho w)=M(w)\) for every distinct-point word.
+\end{proposition}
+\begin{proof}
+First take a real basis-labelled word at an admitted configuration.
+Since its labels are fixed by conjugation, permutation symmetry and the
+adjoint identity give \(M(\rho w)=M(\theta w)=M(w)^*\).
+Thus \(D=M(w)-M(\rho w)\) satisfies \(D^*=-D\). The previous lemma
+and \eqref{ex-reflection-square} imply
+\[
+ 0\le\operatorname{Re}\langle\Omega,D^2\Omega\rangle
+ =-\|D\Omega\|^2.
+\]
+Hence \(D\Omega=0\), and separation of \(\Omega\) for
+\(\mathcal A\) gives \(D=0\). Norm continuity of compressed words
+and their reflected words extends the identity from the dense admitted
+configurations to all distinct configurations for these basis labels.
+Both \(M\) and ordinary reflection are complex-multilinear in the
+labels. Expanding an arbitrary tuple in the real basis therefore extends
+the equality to every tuple of complex labels.
+\end{proof}
+
+We make explicit one other algebraic point used below. Define a null
+raw label to be one whose insertion gives zero correlation with every
+finite list of exterior insertions at distinct points. A slab operator
+containing a null label is zero: pair it with two arbitrary word vectors,
+use the null-label property on the resulting whole correlation, and use
+density. Consequently \(M(w)\) depends only on the quotient classes of
+its labels. Assume that the orthogonal action on those classes is an
+actual group action and agrees, for signed coordinate transformations,
+with the raw signed-label action after projection. These are the precise
+compatibilities used when composing rotations below.
+
+\begin{proposition}[Orthogonal covariance in each character]
+\label{ex-individual-rotations}
+Under these compatibilities and Proposition~\ref{ex-ordinary-reflection},
+\(M(Kw)=M(w)\) for every \(K\in O(4)\) and distinct-point word \(w\).
+Thus \(S_\chi(Kw)=S_\chi(w)\) for every character.
+\end{proposition}
+\begin{proof}
+Write \(F(p,w)=\langle\Omega,M(p)M(w)\Omega\rangle\).
+We first show simultaneous invariance
+\begin{equation}\label{ex-pair-rotations}
+ F(Kp,Kw)=F(p,w)\qquad(K\in O(4)).
+\end{equation}
+The cluster argument in Proposition~\ref{ex-ground-commutative} already
+proves this whenever there exists a vector \(b\) with \(b_0>0\) and
+\((Kb)_0>0\). Put \(a=(Ke_0)_0\). If \(a>-1\), choose
+\(b=e_0+K^{-1}e_0\); orthogonality gives
+\(b_0=(Kb)_0=1+a>0\). If \(a=-1\), then
+\((\rho Ke_0)_0=1\), so the argument applies to \(\rho K\).
+Individual invariance under \(\rho\) removes the extra reflection
+from each factor and again gives \eqref{ex-pair-rotations}.
+
+For any \(J\in O(4)\), rotate a pair backwards by \(J^{-1}\),
+apply ordinary reflection to its second factor alone, and rotate forwards
+by \(J\). Equation~\eqref{ex-pair-rotations} gives
+\[
+ F(p,w)=F(J^{-1}p,J^{-1}w)
+       =F(J^{-1}p,\rho J^{-1}w)
+       =F(p,J\rho J^{-1}w).
+\]
+There is no ambiguity from raw representatives, by quotient independence.
+Pair values separate compressed operators: if \(F(p,w)=F(p,z)\) for
+every \(p\), replace \(p\) by \(\theta v\) to obtain
+\[
+ \langle M(v)\Omega,(M(w)-M(z))\Omega\rangle=0.
+\]
+The linear span of \(M(v)\Omega\) is dense in \(\mathcal H_0\),
+so \((M(w)-M(z))\Omega=0\); separation gives \(M(w)=M(z)\).
+Thus \(M\) is individually invariant under every conjugate
+\(J\rho J^{-1}\).
+
+These conjugates are all hyperplane reflections: map \(e_0\) to any
+chosen unit normal by an orthogonal map. For completeness, hyperplane
+reflections generate \(O(d)\). Given an orthogonal map \(K\), if
+\(Ke_1\ne e_1\), reflection in the hyperplane normal to
+\(Ke_1-e_1\) sends \(Ke_1\) to \(e_1\); this follows immediately
+from the reflection formula and \(|Ke_1|=|e_1|=1\). Composing with
+this reflection gives a map fixing \(e_1\). It preserves
+\(e_1^\perp\), and induction on dimension writes its restriction as
+a product of reflections there, extended to fix \(e_1\). If it already
+fixes \(e_1\), start with that restriction. Dimension zero is trivial.
+Invariance under products follows from the group action on quotient
+labels. This proves individual invariance under every orthogonal map,
+and evaluation by a character gives the asserted phase covariance.
+\end{proof}
+
+Ordinary conjugation now follows as well. Since \(\theta w\) is a
+permutation of \(\rho\overline w\),
+\[
+ S_\chi(\overline w)=S_\chi(\rho\overline w)
+ =S_\chi(\theta w)=\overline{S_\chi(w)}.
+\]
+Signed coordinate covariance follows from the compatibility of the
+quotient action with the raw signed action. Transporting time-axis
+reflection positivity by signed permutations gives reflection positivity
+about every coordinate axis: choose a signed permutation taking that
+axis to the time axis, rotate each positive word and its labels, and use
+covariance and the conjugation compatibility in the Gram matrix.
+Lemma~\ref{ex-phase-smeared-rp} then supplies the corresponding smeared
+positivity. The unproved quantitative input in this chapter is the
+bounded real approximation property on arbitrarily fine generic grids;
+its uniformity over finitely many replicated copies is indispensable.

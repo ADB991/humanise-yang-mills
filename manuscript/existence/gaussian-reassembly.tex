@@ -1,0 +1,291 @@
+\section{Recovering the block integral from the activities}
+\label{sec:gaussian-reassembly}
+The preceding estimates concern a dictionary of local factors. We now
+verify that its absolutely convergent sum is the original block integral.
+This verification fixes the scalar normalization and the incidence conditions
+before any logarithm of a gas is taken. Throughout, fix the coarse field,
+forest, allocation of seeds, and tag array. The funded sector hypotheses,
+the chart-access conclusion and the locality statements used in the preceding
+sections are retained. In particular, all precisions are positive, the
+covariance has its specified finite range, and the same assigned supports
+include every variable read by their factors.
+
+\subsection{The Gaussian density and the scalar factor}
+Write $A$ for the completed sector precision, $A_0$ for its flat reference,
+and $C$ for the localized covariance. All three act on the full real
+coordinate space, of dimension $D$. Let $q$ be the colour dimension,
+$N$ the number of free forest bonds, and $n$ the number of active free
+bonds. The other $N-n$ free bonds are integrated in their original Haar
+coordinates. Put
+\[
+ g=\beta^{-1/2},\qquad b=\sqrt{2\pi},\qquad
+ m=c_{\rm H}(bg)^q,
+\]
+where $c_{\rm H}>0$ is the constant in the local probability-Haar
+density of Section~\ref{sec:haar-chart}. With $u=\mu+gz$, the reference
+Gaussian has density
+\begin{equation}\label{eq:reassembly-gaussian-density}
+ \vartheta_C(z)=b^{-D}
+       \exp\left(-\tfrac12\log\det C-\tfrac12 z^TC^{-1}z\right).
+\end{equation}
+Inactive coordinates are completed by independent standard Gaussians.
+Their energy is $\mathscr G(z)=\frac12\sum_{i\ {\rm inactive}}z_i^2$.
+There are $D-nq$ such coordinates, including the tree coordinates.
+Consequently the change of variables in the active Haar coordinates,
+with the dummy Gaussian integrals inserted, gives the multiplier
+\begin{equation}\label{eq:reassembly-jacobian}
+ b^{-(D-nq)}g^{nq}c_{\rm H}^{n}
+       \exp\left(-\mathscr G(z)+\sum_{e\ {\rm active}}j_e(u)\right).
+\end{equation}
+Here $j_e$ is the localized logarithmic Haar correction; its auxiliary
+cutoff agrees with the actual correction wherever the smaller chart mask
+is nonzero. The constant in \eqref{eq:reassembly-jacobian} is exactly
+\begin{equation}\label{eq:reassembly-count}
+ b^{-D}m^N\exp(-(N-n)\log m).
+\end{equation}
+Indeed the right side is $b^{-D}m^n=b^{-(D-nq)}g^{nq}c_{\rm H}^n$.
+This uses $n+(N-n)=N$, not the number of active coordinates as a
+substitute for the number of free bonds.
+
+The dummy insertion is exact even though the active integrand depends
+on the remaining Haar coordinates. Split the latter product measure
+into active and inactive free bonds and freeze the inactive variables.
+The active affine substitution has Jacobian $g^{nq}$. In the orthogonal
+coordinate decomposition into active and dummy real variables, the
+dummy density integrates to one. Fubini therefore proves the identity
+for each fixed inactive configuration and then for its Haar integral.
+Chart access guarantees that the nonzero original integrand is covered
+by this substitution; the smaller mask can be inserted there with value
+one. No assertion that the entire Haar group lies in one chart is used.
+
+Let $\mathscr L$ denote the original positive prefactor: it is the
+noise normalization times $\exp(v|\Lambda_f|)$ times the coarse-field
+scalar extracted from the inherited exponent. The scalar retained
+outside all activities is
+\begin{equation}\label{eq:reassembly-overhead}
+                 \mathscr O=\mathscr L\,m^N(\det A_0)^{-1/2}>0.
+\end{equation}
+The flat reference uses the very same forest. Its determinant is not
+replaced by a componentwise determinant, nor is \eqref{eq:reassembly-overhead}
+charged to every component.
+
+\subsection{Restoring the masks and the exponent}
+We spell out the cancellations that identify the density. Let
+$\mathscr E(u)$ be the whole quadratic-plus-remainder block energy,
+and let $r_j(u)$ be the inherited logarithms. Let $d_p(u)$ be the
+individual nonlinear remainders, so the signed channel average satisfies
+\[
+          \mathscr E(u)=\langle\textstyle\sum_p d_p(u)\rangle
+                                      +Q(u),
+\]
+where $Q(u)=\frac12\|Mu+b_{\rm row}\|^2$ is the physical quadratic
+expression. The selected row matrix $M$ has zero inactive columns;
+$A=M^TM+I_{\rm inactive}$ and $\ell=M^Tb_{\rm row}$. The inactive
+coordinates of $\mu$ and $\ell$ are zero. This is the rowwise square expansion used in
+Sections~\ref{sec:mean-action-jets} and \ref{sec:remote-action-jets}:
+each row is assigned either to its seed neighbourhood or to the remote
+remainder, with no omitted row. Write $c_e=\frac12(J_e(A_0)-J_e(A))$
+for the local normalization correction.
+
+The compulsory packet exponent, summed over the packet layout, is
+\begin{equation}\label{eq:reassembly-packet-log}
+ s(u)=-\beta\bigl(D_{\rm near}(u)+Q_{\rm seed}(\mu)\bigr)
+       +\sum_{e\ {\rm near}}c_e+\sum_{e\ {\rm near}}j_e(u)
+       -(N-n)\log m.
+\end{equation}
+Here $D_{\rm near}(u)$ is the signed average of $d_p(u)$ over the
+posted rows at radius $200B$, and $Q_{\rm seed}(\mu)$ is the signed
+average of the extracted row squares at $\mu$ over those same posted
+rows. They are not complementary row sets. The two occurrences of
+``near'' in the following local sums use their respective radii, $200B$
+and $304B$; they are different sets. The packet layout uses disjoint
+halos of radius at least $500B$, so all reads through $304B$, including
+the extra two lattice steps, belong to a unique packet. Thus summing
+the packet exponents gives exactly \eqref{eq:reassembly-packet-log}.
+Likewise the packet products reproduce the compulsory likelihoods,
+flag tests and chart masks once each. A test whose location belongs to
+a packet has the same seed membership in that packet as in the full
+allocation: a seed changing the test would meet that packet's halo,
+and hence would lie in the same component.
+
+Let $f_i(z)$ be the optional logarithms in the complete dictionary.
+On the nonzero smaller chart mask their sum is
+\begin{align}
+ \sum_i f_i(z)={}&\sum_j r_j(u)+\sum_p h_p(u)
+                +\sum_{e\ {\rm remote}}c_e
+                +\sum_{e\ {\rm remote}}j_e(u)+\mathscr R(z),
+                                                        \label{eq:reassembly-logs}\\
+ \mathscr R(z)={}&\tfrac12(\log\det C+\log\det A_0)
+           -\sum_e c_e+z^T\widehat h
+                       +\tfrac12z^T(C^{-1}-A)z.\nonumber
+\end{align}
+The remote index sets here are the exact complements of the two near
+sets above. The determinant and inverse series giving $\mathscr R$
+are those of Sections~\ref{sec:local-covariance} and
+\ref{sec:itinerary-prices}. Their three determinant contributions are
+\[
+ -\tfrac12(\log\det A-\sum_eJ_e(A)),\quad
+ \tfrac12(\log\det A_0-\sum_eJ_e(A_0)),\quad
+ \tfrac12(\log\det A+\log\det C).
+\]
+Their sum is the determinant part of $\mathscr R$. The linear
+itineraries sum to $z^T\widehat h$ and the quadratic itineraries sum
+to $\frac12z^T(C^{-1}-A)z$. Their endpoint protectors equal one on
+the smaller full mask. Absolute summability was proved before this
+recombination, so these are identities of convergent series.
+
+The remote action terms obey
+\begin{equation}\label{eq:reassembly-remote-cancel}
+ \sum_p h_p(u)-\beta\bigl(D_{\rm near}(u)+Q_{\rm seed}(\mu)\bigr)
+       =-\beta\bigl(\langle\textstyle\sum_pd_p(u)\rangle+Q(\mu)\bigr).
+\end{equation}
+For a near row this follows from its assigned debit and mean-square
+term. For a remote row it is precisely the unmasked local-square
+identity: its protecting cutoff equals one on the smaller full mask.
+Summing first over rows and then over the finite signed channels proves
+\eqref{eq:reassembly-remote-cancel}, including rows with zero factors.
+
+Finally, if $\ell$ is the linear coefficient of $Q$, then
+$\widehat h=-g^{-1}(A\mu+\ell)$ and $\beta g^2=1$ give
+\begin{equation}\label{eq:reassembly-square-cancel}
+ -\beta Q(u)-\mathscr G(z)
+ =-\beta Q(\mu)+z^T\widehat h
+     +\tfrac12z^T(C^{-1}-A)z-\tfrac12z^TC^{-1}z.
+\end{equation}
+To verify this, expand $Q(\mu+gz)$, use that the inactive mean and
+linear coefficient vanish, and add the inactive identity quadratic
+form supplied by $\mathscr G$. This is an algebraic identity, valid
+also where the masks vanish.
+
+Combining \eqref{eq:reassembly-packet-log}--\eqref{eq:reassembly-square-cancel}
+cancels both local sums $\sum c_e$ and both full determinants. It gives
+\begin{align}
+ &-\tfrac12\log\det A_0+s(u)+\sum_i f_i(z)
+             -\tfrac12\log\det C-\tfrac12z^TC^{-1}z\nonumber\\
+ &\qquad=\sum_jr_j(u)-\beta\mathscr E(u)-\mathscr G(z)
+          +\sum_{e\ {\rm active}}j_e(u)-(N-n)\log m.
+                                                    \label{eq:reassembly-exponents}
+\end{align}
+Multiplication by $b^{-D}m^N\mathscr L$ and
+\eqref{eq:reassembly-count} now recover the exact original density
+and its Haar Jacobian.
+
+There is also a finite product identity for the masks. Write $a_p$
+for a compulsory test and $w_p$ for its optional warning. At a
+compulsory position $w_p=0$ and its packet supplies $a_p$; at every
+other position the optional factor is $1+w_p=a_p$ on the smaller
+full mask. The auxiliary mask warnings restore that full mask from
+the packet masks. If it vanishes, the entire product on both sides
+is zero. If it is nonzero, every doubled mask is one and the preceding
+identities apply literally. The complete product of physical tag
+likelihoods equals the number of tag choices times the original
+normalized likelihood. Thus a single factor $|\mathcal T|^{-1}$,
+where $\mathcal T$ is the tag-array space, remains outside the product.
+This is the uniform tag average, not a new likelihood for each use
+of a tag.
+
+\subsection{Absolute expansion and return to probability Haar}
+Fix a finite old forced-label set $K$ and a packet layout $\mathcal P$.
+For finite sets $I$ of logarithmic labels and $J$ of warning labels,
+the expanded integrand is
+\begin{equation}\label{eq:reassembly-molecule}
+ \Phi_{K,I,J}
+  =\prod_{P\in\mathcal P}P(u)\prod_{k\in K}K_k(u)
+       \prod_{i\in I}(e^{f_i(z)}-1)\prod_{j\in J}w_j(u).
+\end{equation}
+The four alphabets form a disjoint union; coincident physical locations
+do not identify their labels. On the finite lattice the nonempty
+supports and rooted price bounds imply $\sum_i p_i<\infty$ for the
+whole alphabet. Separately, the all-argument logarithm estimates of
+Sections~\ref{sec:remote-action-jets}--\ref{sec:inherited-activity-prices}
+give envelopes $|f_i(z)|\le a_i$ with $\sum_i a_i<\infty$. Their
+endpoint cutoffs are retained in this assertion. Thus
+$\sum_i|f_i(z)|<\infty$, and
+\[
+ \exp\left(\sum_i f_i(z)\right)
+                  =\sum_{I\ {\rm finite}}\prod_{i\in I}(e^{f_i(z)}-1).
+\]
+For a proof, exhaust the countable alphabet by finite subsets and
+expand each finite product. Absolute convergence follows from
+$\sum_i|e^{f_i}-1|<\infty$: outside finitely many indices,
+$|e^{f_i}-1|\le2|f_i|$. The warning alphabet is finite and its
+expansion is the ordinary identity for $\prod_j(1+w_j)$.
+
+The Gaussian moment estimate gives, with the original probability
+Haar variables $y$ retained,
+\[
+ \int|\Phi_{K,I,J}(y,z)|\,d\nu_F(y)\,d\gamma_C(z)
+                         \le\prod_{v\in\mathcal P\sqcup K\sqcup I\sqcup J}p_v.
+\]
+Summing the right side over all finite label sets gives at most
+$\prod_v(1+p_v)\le\exp(\sum_vp_v)$. Distinct triples $(K,I,J)$
+give distinct label sets. Tonelli applied to the absolute values
+therefore justifies every exchange between these sums and integrals.
+The same argument covers the subsequent finite sum over seed
+allocations and tag arrays. There is no division by the value of a
+vacuum or flagged term.
+
+An allocation contributes only when its flags match the coarse field,
+the old forced labels are admissible, and their inventories have the
+required incidence with the seeds. These conditions are necessary for
+a nonzero original integrand: the profile enforces its exact flags,
+and a nonzero old gas term enforces its admissibility and incidence.
+Set the entire integral to zero when any condition fails. On a valid
+allocation the density calculation above applies; on an invalid one
+both sides vanish. Hence the absolutely convergent sum, multiplied by
+$|\mathcal T|^{-1}\mathscr O$, equals the original contribution for
+the fixed tags and seed allocation. Summing the old forced sets,
+then the tags and seed allocations, recovers the probability-Haar
+block push with scalar factor \eqref{eq:reassembly-overhead}.
+
+\subsection{Factorization into connected activities}
+It remains to show that the integral of a molecule factors over
+its connected components. Connectivity is defined by intersection
+of the full assigned supports. For fixed tags, different components
+read disjoint Haar coordinates. Their Gaussian coordinates may be
+larger than their physical read sets; the assigned supports include
+the prescribed covariance buffer. If two components have disjoint
+assigned supports, any two Gaussian coordinates read by them are
+farther apart than the range of $C$. Their cross covariance is zero.
+The Gaussian characteristic function consequently splits into the
+product of its component characteristic functions, proving independence
+of these coordinate projections. It follows that the Gaussian integral
+of the product factors. The remaining product-Haar integral factors
+by its disjoint read sets. All integrands are measurable and integrable
+by the preceding absolute bounds.
+
+Lastly average over the tags. A component integral depends only on
+the site tags and on the bond tags anchored in its assigned support.
+These coordinate sets are disjoint for different components. The
+uniform measure on tag arrays is a product measure, so averaging first
+the bond tags and then the site tags proves the same factorization
+for the averaged integrals. Averages are taken after each component
+has been identified, using the common original tag space.
+
+For each connected label set $M$, define its activity $a_M(V)$ by
+this averaged integral with the exact local incidence tests: its
+inventory must equal the flags of $V$ inside its assigned support,
+and all its forced-label and packet tests must hold. The integral
+uses the globally flagged sector with the same local data. Locality
+shows that its value agrees with the restriction of the full
+allocation: on this support the seeds, tags, forced labels and coarse
+field coincide. The flags outside the support cannot change its value.
+
+Taking connected components and taking their union are inverse on
+admissible label families. Indeed every label has nonempty support,
+so distinct components cannot share a label. Their supports are
+disjoint by definition. Exact global flag coverage is equivalent to
+exact local inventory equality in each component together with
+coverage by all inventories. This proves the weight-preserving
+factorization, including the empty family. Reindexing the absolutely
+convergent sum gives
+\begin{equation}\label{eq:reassembly-block-gas}
+ (\mathcal B R)(V)=\mathscr O(V)
+   \sum_{\substack{\mathcal A\ {\rm finite,\ compatible}\\
+                     \bigcup_{M\in\mathcal A}I_M=\operatorname{Flags}(V)}}
+                         \prod_{M\in\mathcal A}a_M(V).
+\end{equation}
+Thus the local prices bound an exact representation of the original
+block push. The later separation of flag-free logarithms and the
+iteration of the resulting bounds still use their stated construction
+inputs; neither follows merely from \eqref{eq:reassembly-block-gas}.

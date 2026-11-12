@@ -1,0 +1,223 @@
+\section{Weighted derivatives of the centered block frame}
+\label{sec:ex-weighted-frame-penalty}
+
+The penalty estimate in Section~\ref{sec:ex-classical-stationary-vertices}
+requires uniformity as the block side increases. Here the averaging in
+the frame construction is essential. We prove the weighted derivative
+bound at the identity, retaining the same minimizing frame and predictor
+as in Section~\ref{sec:predictor-branch}.
+
+\subsection{A calculus on finite probability spaces}
+For a probability measure $\nu$ on a finite set, define
+\[
+ \|f\|_{\nu,0}=\max|f|,\qquad
+ \|f\|_{\nu,1}=\left(\sum\nu|f|^2\right)^{1/2},\qquad
+ \|f\|_{\nu,2}=\sum\nu|f|.
+\]
+An input direction has charge zero, one or two. A family of smooth maps
+has derivative bound $C$ through order $n$ if every derivative of order
+$1\leq k\leq n$, evaluated on admissible directions of charges $b_i$
+with $\sum b_i\leq2$, has norm at most $C$ in the output norm of charge
+$\sum b_i$. Zeroth derivatives are specified separately.
+Products add charges. The only nontrivial product rule for these norms
+is $L^2\cdot L^2\subset L^1$, which is Cauchy--Schwarz. Averaging over
+one variable contracts each norm by the triangle inequality or Jensen's
+inequality. If $\nu'\leq H\nu$ with $H\geq1$, changing the measure
+costs at most $H$ in all three norms.
+
+These observations give quantitative product and composition rules.
+For a fixed smooth finite-dimensional map $F$ at $z$, set
+\[
+ \mathcal C_{n,F,z}(C)
+   =\sum_{k=1}^n\ \sum_{\pi\in\mathcal P_k}
+                   \|D^{|\pi|}F(z)\|C^{|\pi|},
+\]
+where $\mathcal P_k$ is the set of partitions of $\{1,\ldots,k\}$.
+If $f(0)=z$ and $f$ has derivative bound $C$ through order $n$, the
+partition chain rule and the preceding product inequalities bound
+$F\circ f$ by $\mathcal C_{n,F,z}(C)$. Each differentiated direction
+appears once, so the sum of charges is unchanged. If $DF(z)=0$, the
+same chain rule bounds the derivative of order $n+1$ using derivatives
+of $f$ only through order $n$: the excluded single-block partition is
+the only one that would contain $D^{n+1}f$.
+
+\subsection{Long paths with small link derivatives}
+Suppose each link matrix equals $1$ at the origin and has derivative
+bound $\mu C$ through a fixed target order $N$, where $0<\mu\leq1$. A path contains
+at most $K/\mu$ links, with $K$ fixed. Its ordered product has a bound
+depending on $K,C,N$ only. The following induction proves this without
+an exponential loss in the number of links.
+
+For $0\leq n<N$, assume all partial products have derivatives through order $n$ bounded
+by $Q_n$, independently of path length. Write a new factor as $1+v$
+and a partial product as $1+u$, where $u(0)=v(0)=0$. In the derivative
+of order $n+1$ of $uv$, both factors have positive derivative order.
+Thus derivatives of $u$ only through order $n$ occur, while every term
+has a factor $\mu$ from a derivative of $v$. The finite Leibniz sum is
+bounded by $\mu R_n(Q_n,C)$, for a polynomial $R_n$ depending only on
+$n$ and the matrix multiplication norm. The new factor alone contributes
+at most $\mu C$. Starting with the empty product and adding at most
+$K/\mu$ factors bounds the derivative of order $n+1$ by
+$K(C+R_n(Q_n,C))$. Taking its sum with $Q_n$ defines a common bound
+$Q_{n+1}$. The induction begins at order zero, where every partial
+product has value $1$.
+
+Apply this on the enlarged block $\mathcal B$ of radius $(J+3)L$.
+For pairs of endpoints, a coordinate path has four straight pieces,
+each of length at most $2(J+3)L$. At a fixed position along one piece,
+the link read is a translate of the coordinatewise splice of the two
+endpoints. Swapping the corresponding endpoint coordinates is a
+bijection of $\mathcal B\times\mathcal B$ and preserves its uniform
+measure. A translate restricted to reads inside $\mathcal B$ is
+injective; reads outside the path contribute the constant identity.
+Splitting positive and negative directions costs at most two; inverse
+link matrices are adjoints and have the same derivative norms.
+Consequently the preceding link estimate applies on the pair space,
+with a constant independent of $L$. Multiplying the four pieces and
+averaging the finitely many coordinate orders gives uniform derivative
+bounds for $E_{xy}$, defined as the average of the adjoint (equivalently, inverse)
+of the transport along $x\to y$, with $E_{xy}(0)=1$.
+
+\subsection{Eliminating the center of the frame}
+Let $F_x$ be the matrix of the minimizing frame after recentering by
+the nearest group element to its weighted mean. Let $\nu$ be the uniform
+measure on $\mathcal B$, and $\omega$ the actual smoothing probability
+used for this recentering. The latter is the distribution of the sum of
+$J$ independent uniform half-block points. Its reduction modulo $L$ is
+uniform: fix all summands except the first and sum the first over its
+complete residue system. Hence
+\[
+ \omega(x)\leq L^{-4},\qquad
+          \omega(x)\leq H_J\nu(x),
+\]
+where $H_J$ is a fixed upper bound for $|\mathcal B|/L^4$.
+This proves the measure comparison needed below with no assumption that
+$\omega$ itself is uniform on $\mathcal B$.
+
+Let $\mathcal F$ denote the matrix-valued nearest-group map near $1$,
+let $\Pi=D\mathcal F(1)$ be the orthogonal projection onto the Lie
+algebra, and put $R(z)=\mathcal F(z)-\Pi z$. Then $DR(1)=0$.
+Define
+\[
+ J_0=\sum_y\nu(y)F_y,\qquad
+ B_x=\sum_y\nu(y)F_y(E_{xy}-1),\qquad T_x=J_0+B_x.
+\]
+The frame equation and its normalization are
+\begin{equation}\label{eq:ex-centered-frame-equations}
+       F_x=\mathcal F(T_x),\qquad
+       \sum_x\omega(x)\Pi F_x=\Pi1.
+\end{equation}
+Indeed, minimization at each frame coordinate says that it is the
+nearest group element to the average of the transported other frame
+coordinates. At the identity this average is $1$, so the smooth nearest
+map applies in a neighborhood. Common left multiplication by the
+recentering group element preserves the minimizing equation. The
+nearest-point normal equation for that recentering element gives the
+second equality in \eqref{eq:ex-centered-frame-equations}.
+Existence and smoothness near the identity are those of the selected
+minimizer already constructed; only its uniform derivatives are at
+issue here.
+
+Put $S_x=\Pi B_x+R(T_x)$. Since $\Pi^2=\Pi$, the two equations imply
+the exact identity
+\begin{equation}\label{eq:ex-centered-frame-elimination}
+        F_x=\Pi1-\sum_y\omega(y)\Pi S_y+S_x.
+\end{equation}
+To check it, first write $F_x=\Pi J_0+S_x$. Apply $\Pi$, average with
+$\omega$, and solve for the constant $\Pi J_0$ using the normalization.
+This is the step that removes the derivative of the unknown center.
+
+We now induct on derivative order. Suppose derivatives of $F$ through
+order $n$ have uniform bound $A_n$. The transport $E$ has derivatives
+through order $n+1$ bounded by a fixed $D_{n+1}$. In differentiating
+$F_y(E_{xy}-1)$ to order $n+1$, the term with $D^{n+1}F_y$ vanishes
+because $E_{xy}(0)-1=0$. Every remaining term is bounded by the product
+rules, and averaging in $y$ gives a bound for $B_x$ through order
+$n+1$. It follows that $T_x$ is bounded through order $n$.
+Since $DR(1)=0$, the composition rule above bounds $R(T_x)$ through
+order $n+1$ using only those derivatives. Thus $S_x$ has a bound
+$A'_n$, depending only on $A_n,D_{n+1},G,n$. Equation
+\eqref{eq:ex-centered-frame-elimination} now bounds $F_x$ through order
+$n+1$ by $(1+H_J)A'_n$. The induction starts at order zero, with
+$F_x(0)=1$. Every constant depends on $G,J,n$ and the incoming link
+price, but not on $L$. In particular no inverse of a rooted-frame
+counting-norm Hessian has been inserted into this argument.
+
+\subsection{The predictor and penalty}
+The connector for a coarse direction consists of the centered frame
+at one endpoint, a straight path of length $L$, and the inverse centered
+frame at the translated endpoint. Use a padded box of radius $(J+5)L$
+for the link fields. Translation from either endpoint patch into this
+box is injective, and the ratio of the two normalized counting measures
+is bounded in terms of $J$ only. The long-path argument and the frame
+induction therefore give uniform derivative bounds for the connector.
+Changing its average to the smoothing probability costs $H_J$.
+Composing the resulting matrix average, whose value is $1$, with
+$\mathcal F$ bounds the actual predictor through order $n$. The strict
+local predictor test identifies this expression with every selected
+tag near the identity, as in Section~\ref{sec:stationary-action-prices}.
+
+Next apply the fixed group exponential, multiplication, adjoint and
+nearest-group maps. The fine-link directions
+have norm at most $\mu C$ on the padded box, while the finitely many
+coarse and gauge coordinates have norm at most $C$. Composition with
+an exponential preserves a factor $\mu$ in every positive fine-link
+derivative: each chain-rule term contains $\mu^k$, $k\geq1$, and
+$\mu^k\leq\mu$. Thus these are precisely the link bounds used above.
+The penalty in one direction is the fixed smooth function
+\[
+             Z\longmapsto \frac{k}{2c_G^2}\|Z-1\|^2
+\]
+of the coarse group element times the inverse predictor; $k$ is the
+penalty coefficient and $c_G$ the fixed color normalization.
+The finite composition rule now gives its derivative bound $B_n$.
+All constants were selected before $L$. Summing the four directions
+and complexifying gives \eqref{eq:ex-vertex-penalty-price}.
+
+\subsection{Verification for the Fourier legs}
+We finally check the weighted stencil hypotheses just used. Write
+$k_l(p)=(p+2\pi l)/L$, and let $P(p)$ be the normalized block Fourier
+matrix, whose entries have magnitude $L^{-2}$ at real $p$. The weighted
+norm of a fine block vector $u$ is
+\[
+ \|u\|_p^2=\sum_l h_l(p)^2
+                 |(P(p)^{-1}u)_l|^2,\qquad
+ h_l(p)=\bigl(|q(\operatorname{Re}k_l(p))|^2+\mu^2\bigr)^{1/2}.
+\]
+Here $q_a(k)=e^{ik_a}-1$; color components are included in the sum.
+On the strip of width one, $P(p)$ and its inverse have Euclidean
+operator norms at most $e^4$: factor them into the unitary real Fourier
+matrix and diagonal imaginary phases. Since $h_l\geq\mu$, a unit
+weighted vector satisfies $\|u\|_{\ell^2}\leq e^4\mu^{-1}$.
+Dividing by $L^2$ gives its normalized block $L^2$ bound $e^4\mu$.
+Also
+\[
+ |q_a(k_l(p))|\leq5h_l(p).
+\]
+For this last inequality, split the symbol into its real-momentum value
+and its change in the imaginary direction. The latter is at most
+$4\mu$ on this strip by $|e^z-1|\leq e^{|z|}|z|$ and $\mu\leq1$;
+the former is at most $h_l$. Fourier multiplication therefore bounds
+one fine difference in unnormalized $\ell^2$ by $5e^4$, and in
+normalized $L^2$ by $5e^4\mu^2$. These are exactly the one-internal-leg
+bounds used in Section~\ref{sec:ex-classical-stationary-vertices}.
+The auxiliary scalar part of the internal norm is ordinary Euclidean,
+so its coordinates are bounded by one. Smooth bridge coordinate legs
+satisfy the required supremum bounds by
+\eqref{eq:ex-vertex-cruise}, with a fixed color-dimension factor when
+components are combined into a vector.
+
+To extend a block Fourier vector to the padded stencil, write
+$z=\bar z+Lr(z)$, where $\bar z$ is the chosen residue representative.
+Throughout the padded box, $|r(z)|_1\leq4+4(J+5)$.
+The extension is $e^{ip\cdot r(z)}u(\bar z)$, whose phase is bounded by
+$\exp(4+4(J+5))$. The map $z\mapsto(r(z),\bar z)$ is injective, and
+$r(z)$ ranges over a fixed finite set depending only on $J$. Comparing
+normalized counting measures therefore costs another constant depending
+only on $J$. The fine field retains its factor $\mu$ in the appropriate
+supremum or normalized $L^2$ norm. Coarse stencil shifts are at most one
+step and cost at most $e$; taking real or imaginary parts only decreases
+the coordinate norms. This verifies every fine, coarse and gauge stencil
+bound used to obtain $B_n$ and closes the weighted penalty and internal
+Fourier inputs of the preceding section. The quantitative smooth bridge
+bound \eqref{eq:ex-vertex-cruise} is the remaining independent input.

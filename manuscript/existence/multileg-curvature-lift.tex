@@ -1,0 +1,333 @@
+\section{From Ward identities to invariant curvature coefficients}
+\label{sec:multileg-curvature-lift}
+The leading Taylor terms of a gauge-invariant action satisfy a
+Ward identity in every field argument. We now turn these identities
+into an exponentially summable expansion in curvature variables.
+The momenta of the arguments are constrained to sum to zero, so
+one cannot simply apply independent one-variable divisions to all
+of them. The following construction resolves that dependence before
+choosing the invariant, real coefficients of the path expansion.
+
+\subsection{A single exterior division with auxiliary constraints}
+Put $q_a(p)=e^{ip_a}-1$. On alternating coordinate tensors in four
+dimensions let $E_a$ denote exterior multiplication by the $a$th
+basis vector and let $\iota_a=E_a^{\mathsf T}$. Write
+\[
+ \delta(p)=\sum_{a=1}^4 q_a(p)\iota_a.
+\]
+Thus $\delta$ lowers exterior degree by one and $\delta^2=0$.
+Tensor factors other than the one on which this operator acts
+are coefficient spaces. Operators on distinct factors commute.
+All transposes here are algebraic transposes, without complex
+conjugation. This convention is appropriate for the multilinear
+Taylor coefficients of a scalar action.
+
+A periodic coefficient on $d$ complex momentum coordinates has
+strip bound $(\sigma,A)$ if it is holomorphic on
+$|\operatorname{Im}p_j|<\sigma$ and has absolute value at most $A$
+there. Tensor bounds mean this entry by entry. Say that it has
+order $s$ at zero if its restriction to each real ray $p=tu$ is
+$O(t^s)$ as $t\to0$. For an analytic function this is equivalent
+to the vanishing of all homogeneous Taylor polynomials of degree
+less than $s$: restrict the Taylor expansion to each ray and use
+that a polynomial vanishing on every real vector is zero.
+
+The division from Section~\ref{sec:curvature-horizon-producer}
+has the following strip version. For each coordinate $j$, there
+is a periodic holomorphic $D_j f$ such that
+\begin{equation}\label{eq:multileg-division}
+ (e^{ip_j}-1)D_jf(p)=f(p)-f(p|_{p_j=0}),
+ \qquad
+ |D_jf|_{\sigma/4}\le A\,d_\sigma,
+\end{equation}
+where one may take
+\[
+ d_\sigma=\frac4\sigma
+       \left(\frac{2(1+\sigma/4)}{\sigma/4}\right)^d.
+\]
+Indeed, Fourier expansion gives coefficients $\widehat f(z)$ with
+\[
+ \sum_z e^{(\sigma/2)|z|_1}|\widehat f(z)|
+ \le A\left(\frac{2(1+\sigma/4)}{\sigma/4}\right)^d.
+\]
+Replace each monomial in coordinate $j$ by the finite geometric
+sum displayed in that earlier section. It has at most $|z|_1$
+terms, all with displacement norm at most $|z|_1$. On the smaller
+strip its absolute value is at most
+$|z|_1e^{(\sigma/4)|z|_1}$, which is bounded by
+$(4/\sigma)e^{(\sigma/2)|z|_1}$. This proves normal convergence,
+the bound, and the identity, including the zeros of the divisor.
+If $f$ has order $s$, this division has order at least
+$\max(s-1,0)$. To verify this, the right side of
+\eqref{eq:multileg-division} has order $s$, while the lowest
+nonzero homogeneous term of the divisor is $ip_j$. A nonzero
+lowest homogeneous term of the quotient therefore gains exactly
+one degree upon multiplication.
+
+Suppose a tensor $f$ of exterior degree $r$ is a cycle,
+$\delta f=0$. Set $f_0=f|_{p_a=0}$ and
+\[
+ B_a=E_aD_af,\qquad R_a=(I-E_a\iota_a)f_0.
+\]
+The Cartan identity $\delta E_a+E_a\delta=q_a I$ gives
+\begin{equation}\label{eq:multileg-axis}
+                  f=\delta B_a+R_a.
+\end{equation}
+For example, where $q_a\ne0$ the cycle identities for $f$ and
+$f_0$ imply $\delta D_af=-\iota_af_0$; substitution gives the
+displayed formula. Continuity extends it to $q_a=0$.
+The residual is still a cycle, has zero entries on faces containing
+$a$, and evaluates all other entries at $p_a=0$.
+Successive residual operations in the four coordinates therefore
+leave zero when $r>0$. When $r=0$, they leave the value at $p=0$,
+so the same conclusion holds if that value vanishes. Adding the
+four lifts proves the following fact.
+
+\begin{lemma}\label{lem:multileg-single}
+Let $r,s\in\mathbb N$. Let $f$ have strip bound $(\sigma,A)$,
+order $s$, and exterior degree $r$. Assume $\delta f=0$ and either $r>0$ or $f|_{p=0}=0$.
+Then $f=\delta B$, where $B$ has degree $r+1$, strip bound
+$(\sigma/4,4Ad_\sigma)$, and order at least $\max(s-1,0)$.
+Here other momentum coordinates may remain as parameters, and
+$p=0$ in the degree-zero hypothesis means only that the four
+coordinates of the divided momentum vanish.
+
+If, in addition, for each exterior component the vector of
+coefficients in the other tensor factors belongs to a fixed
+linear subspace of that other-factor coefficient space, depending
+only on the other momenta, the same membership holds separately
+for every exterior component of $B$ at every real momentum.
+\end{lemma}
+\begin{proof}
+Only the last assertion remains. Away from $q_a=0$, the quotient
+in \eqref{eq:multileg-division} is a scalar multiple of the
+difference of two vectors in that subspace. On $q_a=0$, vary just
+$p_a$ and take the limit. The subspace is fixed during this limit
+and is closed, since the coefficient space is finite dimensional.
+Exterior multiplication, subtraction, and coordinate restriction
+preserve membership as well. Thus each of the four lifts and
+their sum preserve the constraint. Each residual retains the
+original strip bound and order; summing four lifts accounts for
+the factor four, with only one loss of Taylor order.
+\end{proof}
+
+\subsection{Restoring the dependent momentum constraint}
+There are $t$ independent momenta $p_1,\ldots,p_t\in\mathbb C^4$,
+and we set $p_0=-\sum_{j=1}^t p_j$. Write $\delta_j=\delta(p_j)$
+acting on tensor factor $j$. A Ward identity on that factor is
+$\delta_j f=0$. We first allow the zeroth factor to have degree
+$r+1$ and all independent factors to have degree one.
+
+One can solve the zeroth-factor cycle while preserving all Ward
+identities except, provisionally, the first. Exchange $p_1$ and
+$p_0$ by the linear involution
+\[
+ (p_1,p_2,\ldots,p_t)\longmapsto
+             (-p_1-\cdots-p_t,p_2,\ldots,p_t).
+\]
+It preserves the integer periodicity lattice and sends a sufficiently
+narrow strip into the original strip; width $\sigma/(t+1)$ is
+sufficient for $t\ge1$. Apply Lemma~\ref{lem:multileg-single}
+in the new first variable and exchange back. The Ward subspaces
+for factors $2,\ldots,t$ do not depend on this variable, so they
+are retained. The cost is a fixed multiple of the old cost,
+the width remains strictly positive, and Taylor order drops by
+at most one. Denote this operation simply as a zeroth-factor lift.
+Likewise, if a coefficient has no first tensor factor and vanishes
+when $p_1=0$, the degree-zero case of the lemma adds a degree-one
+first factor whose contraction is the original coefficient,
+while retaining the remaining Ward identities.
+
+\begin{lemma}[Dimension shift]\label{lem:multileg-shift}
+Fix $t,r\ge0$ with $r+1+2t>4$ and $\sigma>0$.
+There are $\eta>0$ and $K<\infty$, depending only on these data,
+such that the following holds for every $A\ge0$.
+If $u$ has strip bound $(\sigma,A)$, degrees
+$(r+1,1,\ldots,1)$, and $\delta_j u=0$ for $j=0,\ldots,t$,
+there is $v$ of degrees $(r+2,1,\ldots,1)$ with strip bound
+$(\eta,KA)$ satisfying
+\[
+                 \delta_0v=u,\qquad \delta_jv=0\quad(1\le j\le t).
+\]
+\end{lemma}
+\begin{proof}
+Induct on $t$, allowing $r$ to vary. At $t=0$ the degree $r+1$
+exceeds four, so $u=0$ and one takes $v=0$.
+For $t\ge1$, first lift the zeroth cycle, temporarily forgetting
+the first Ward identity. This gives $X$ with $\delta_0X=u$
+and all remaining Ward identities. Contract its first factor:
+\[
+                  V=\delta_1X,\qquad \delta_0V=\delta_1u=0.
+\]
+A second zeroth-factor lift gives $Y$ of zeroth degree $r+3$
+with $\delta_0Y=V$ and the remaining Ward identities.
+Restrict $Y$ to $p_1=0$, obtaining $Z$. Since $q(0)=0$,
+$V|_{p_1=0}=0$, so $Z$ is a zeroth-factor cycle in $t-1$
+independent variables. Its zeroth degree is $r+3$, and
+\[
+                  r+3+2(t-1)=r+1+2t>4.
+\]
+The induction hypothesis gives $W$ of degree $r+4$ with
+$\delta_0W=Z$, retaining every remaining Ward identity.
+Extend $W$ constantly in $p_1$, writing the extension as $W'$,
+and set
+\[
+                         L=Y-\delta_0W'.
+\]
+Here $\delta_0$ uses the full momentum $-p_1-\cdots-p_t$.
+Thus $\delta_0L=V$ by $\delta_0^2=0$, while $L|_{p_1=0}=0$
+by the induction identity. The degree-zero first-factor lift
+now gives $F$ with $\delta_1F=L$ and all remaining Ward
+identities. Finally put $v=X-\delta_0F$. Commutation on distinct
+factors gives
+\[
+ \delta_0v=u,\qquad
+ \delta_1v=V-\delta_0L=0.
+\]
+The other identities hold term by term. All operations are finite
+sums, fixed linear changes of variables, restrictions, exterior
+contractions, and the lifts already bounded above. At each stage
+choose a smaller positive common width. Their number is determined
+by $t,r$, and every bound remains linear in $A$. This gives $\eta$
+and $K$ before the particular input tensor is chosen.
+\end{proof}
+
+Take now a tensor $f$ with $t+1\ge3$ degree-one factors and all
+Ward identities. The dimension-shift lemma with $r=0$ lifts
+factor zero while preserving the independent identities. Lift
+each independent factor in turn by Lemma~\ref{lem:multileg-single}.
+At each step the identities in the remaining factors are auxiliary
+subspaces independent of the divided momentum; the already lifted
+indices are just finite coefficient indices. We obtain $g$ with
+all factors of degree two such that
+\begin{equation}\label{eq:multileg-all-curls}
+ f(p_1,\ldots,p_t)=\delta_0\delta_1\cdots\delta_t
+                           g(p_1,\ldots,p_t).
+\end{equation}
+Its strip width and cost multiplier depend only on the original
+width and the number of factors. In particular the cubic and
+quartic applications have constants independent of the torus.
+
+\subsection{The quadratic case and retained moments}
+For two factors the dimension inequality fails. Suppose instead
+that $f(p)$ has both Ward identities at momenta $(-p,p)$ and
+order $s+2$ at zero. The preceding construction can be shortened
+in a way that retains precisely $s$ orders after both lifts.
+Lift factor zero to obtain $X$ of degrees $(2,1)$ and order
+$s+1$, with $\delta_0X=f$. The contraction
+$V=\delta_1X$ has order $s+2$, since the contraction symbol
+vanishes to first order. It is a zeroth-factor cycle.
+Lift it to obtain $Y$ of zeroth degree three and order $s+1$
+with $\delta_0Y=V$.
+
+There are no other momenta now. Hence $Y|_{p=0}=0$, and the
+degree-zero first-factor lift gives $D$ of degrees $(3,1)$,
+order $s$, and $\delta_1D=Y$. Set $Z=X-\delta_0D$.
+Then
+\[
+       \delta_0Z=f,\qquad \delta_1Z=0,
+                   \qquad Z\text{ has order }s+1.
+\]
+One last first-factor lift gives $g$ of degrees $(2,2)$ and
+order $s$, with $\delta_0\delta_1g=f$. All bounds remain linear
+in the initial strip cost, with a positive width chosen before
+$f$ and $s$. For the loop remainder we use $s=2$: fourth-order
+vanishing of the potential coefficient yields second-order
+vanishing of its curvature coefficient.
+
+\subsection{Real coefficients and invariance at each placement}
+Fix a real orthonormal basis of the finite-dimensional Lie algebra.
+The tensors now also have one colour index for each field factor.
+Assume the original tensor satisfies
+\[
+             \overline{f(-p)}=f(p)
+                 \quad\text{for real independent momenta }p,
+\]
+and that its real and imaginary colour tensors are invariant
+under the simultaneous adjoint action of the gauge group.
+The exterior lifts need not respect these properties, so we
+restore them explicitly.
+
+For each entry of $g$, take the real part of its Fourier
+coefficients. The resulting real coefficient array has symbol
+\[
+                   g_{\mathbb R}(p)
+                      =\tfrac12\bigl(g(p)+\overline{g(-p)}\bigr).
+\]
+Since $\overline{q(-p)}=q(p)$ for real $p$, contraction of
+$g_{\mathbb R}$ is still $f$. If $g$ has order $s$, so does
+$g_{\mathbb R}$. Fourier coefficient estimates on a smaller strip
+give an exponentially weighted summation bound. More precisely,
+from strip width $w$ and entry bound $B$ one obtains width $w/2$
+and bound
+\[
+ B\left(\frac{2(1+w/4)}{w/4}\right)^{4t}.
+\]
+
+Let $\mathcal I$ be the subspace of invariant real colour tensors,
+and choose a fixed linear projection $P$ onto $\mathcal I$.
+Apply $P$ separately at each tuple of face directions and each
+tuple of lattice displacements. This gives real coefficients
+$R_{\mathbf a,\mathbf c}(z)$ that are invariant at every such
+placement. Exterior contractions do not act on colour indices,
+so they commute with $P$. Since $P$ fixes the real and imaginary
+parts of $f$, the reconstructed potential coefficient remains
+$f$. The weighted bound is multiplied by at most
+\[
+                         \sum_{i,j}|P_{ij}|<\infty.
+\]
+This is a fixed finite-dimensional projection; no assertion that
+its norm is one is needed. It also preserves each retained order
+of vanishing. Thus, for some $\eta>0$ and $C<\infty$ fixed by
+width, arity, and gauge group, every face and colour entry obeys
+\begin{equation}\label{eq:multileg-real-budget}
+             \sum_{z\in\mathbb Z^{4t}}
+                  e^{\eta|z|_1}|R_{\mathbf a,\mathbf c}(z)|\le CA.
+\end{equation}
+
+For two factors with retained order two, these coefficients have
+both zero total mass and zero first moments, entry by entry:
+\begin{equation}\label{eq:multileg-moments}
+             \sum_z R(z)=0,\qquad \sum_z z_aR(z)=0
+                                      \quad(a=1,\ldots,4).
+\end{equation}
+Indeed the symbol at zero is the first sum. Exponential summability
+implies $\sum_z |z|_1|R(z)|<\infty$, so its derivative along the
+$a$th real momentum coordinate is $i\sum_z z_aR(z)$. The symbol's
+value and first derivatives vanish by its retained second order.
+This proves both identities with absolute convergence.
+
+\subsection{The invariant path expansion}
+For each tuple $(\mathbf a,z)$ of oriented coordinate plaquettes
+and displacements, put the zeroth plaquette at the origin and
+plaquette $j$ at $z_j\in\mathbb Z^4$ for $1\le j\le t$.
+Use the coefficient colour tensor $R_{\mathbf a,\cdot}(z)$ for
+this atom. It is invariant by the preceding construction.
+In the path convention of Section~\ref{sec:path-attachment-producer},
+the atom's length is exactly
+\[
+                           |z|_1+4(t+1).
+\]
+The four edges of every plaquette, including the anchored one,
+contribute to this length. Summing the weighted absolute
+coefficients over the finite face and colour index sets and over
+all displacements gives total atom budget at most
+\[
+ CA\,\#\{\text{face tuples}\}\,
+       \#\{\text{colour tuples}\}\,e^{4\eta(t+1)}.
+\]
+An enumeration of this countable family changes neither its sum
+nor its budget. In the two-factor case, filtering the enumeration
+by a fixed pair of face directions and a fixed colour tuple
+turns \eqref{eq:multileg-moments} into the required zero total
+loop coefficient and zero first moment of the relative displacement
+of the two legs. The latter displacement is $z_1-0$.
+
+The potential coefficient reconstructed from these atoms is
+exactly \eqref{eq:multileg-all-curls}, with the two-factor version
+proved separately above. Absolute convergence permits
+periodization and evaluation on every finite torus. This result
+constructs the invariant coefficients from the specified analytic
+Ward data. The subsequent stationary action calculation must
+still supply those data, their vanishing orders, and the scalar
+normalization of the recorded Taylor terms.

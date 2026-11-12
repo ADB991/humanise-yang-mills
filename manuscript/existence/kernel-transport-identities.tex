@@ -1,0 +1,276 @@
+\section{The exact identities of the original transport kernels}
+\label{sec:kernel-transport-identities}
+We now identify the kernels estimated in the preceding sections with
+the transports used in the quadratic construction. This also accounts
+for the harmonic mode. Throughout this section $k>0$, the block side
+$L$ is odd and at least three, and the adjacent train orders $j,t$
+satisfy $4\le t\le j\le t+1$.
+
+\subsection{Covariance recursion and exterior algebra}
+Fix a nonzero real coarse momentum $p$ in the common real cube
+containing the Brillouin cube, and write $q_l=(p+2\pi l)/L$
+for its centered aliases. In the following formulas the fine exterior
+symbol is rescaled: $\delta_r=Ld_r(q_l)$, whereas $d_r=d_r(p)$
+is the coarse symbol. Stars denote Hermitian adjoints at these real
+momenta. Let $H_l,H$ be the fine and coarse two-form pulse symbols.
+Let $D_l$ be the diagonal matrix with entries $L^{-2}D_{f,a}(q_l)$,
+and $D$ the diagonal matrix with entries $D_{c,a}(p)$, where
+$D_{v,a}$ is the propagated one-form covariance from
+Section~\ref{sec:ex-lattice-free-kernel-components}.
+Set
+\[
+ x=d_0,\quad x_l=\delta_0,\quad
+ R=d_1^*Hd_1,\quad R_l=\delta_1^*H_l\delta_1.
+\]
+All diagonal entries of $D,D_l$ are positive. Put
+\[
+ \rho=x^*D^{-1}x,\quad
+ \pi=\rho^{-1}x^*D^{-1},\quad
+ c=\rho^{-1}D^{-1}x.
+\]
+The corresponding fine objects have subscript $l$. The pulse formula
+is $H=\rho^{-1}\bigwedge^2D^{-1}$; with the stated scaling,
+$H_l=\rho_l^{-1}\bigwedge^2D_l^{-1}$ as well. Consequently
+\begin{equation}\label{eq:transport-rotor}
+ R=D^{-1}-\rho^{-1}D^{-1}xx^*D^{-1},\qquad
+ DR=I-x\pi,\qquad RD=I-cx^*.
+\end{equation}
+For completeness, if $D^{-1}=\operatorname{diag}(f_a)$, the
+diagonal entry of $d_1^*(\bigwedge^2D^{-1})d_1$ at $a$ is
+$f_a\sum_{b\ne a}f_b|x_b|^2$, and its off-diagonal entry at
+$(a,b)$ is $-f_af_bx_a\overline{x_b}$. Division by
+$\rho=\sum_bf_b|x_b|^2$ proves the first equality; multiplication
+by $D$ proves the other two. In particular $Rx=0$ and $x^*R=0$.
+
+Let $m_l$ be the patch mass filter at $q_l$ and define
+\[
+ F_{r,l}=m_l\bigwedge^r\operatorname{diag}
+                 (\operatorname{rail}_L(q_{l,a})).
+\]
+The geometric-series identity
+$L\operatorname{rail}_L(q_{l,a})(e^{iq_{l,a}}-1)=e^{ip_a}-1$
+gives
+\begin{equation}\label{eq:transport-filter-chain}
+ F_{r+1,l}\delta_r=d_rF_{r,l}.
+\end{equation}
+The covariance recursion is
+\begin{equation}\label{eq:transport-covariance-recursion}
+                  \sum_l F_{1,l}D_lF_{1,l}^*=D-k^{-1}I.
+\end{equation}
+Here the sum is a sum over all $L^4$ aliases, with no averaging
+factor. To verify the normalization and the recursion, the feed of a
+train of total side $M$ is
+\[
+ M^{-2}\sum_{u\in\Lambda_M}
+ |\operatorname{drive}_{v,a}(q_u)|^2 f(q_u).
+\]
+On appending a block, its drive is the old drive times the new
+patch filter evaluated at the old rescaled momentum. Decomposing a
+residue modulo $LM$ into its residues modulo $L$ and $M$ therefore
+turns this feed into the successive two feeds: the factors are
+$(LM)^{-2}=L^{-2}M^{-2}$, and the summands agree by periodicity.
+The noise-prefix list of the new train consists of its new unit
+prefix and the old prefixes with the block appended. Thus its noise
+feed is one plus the patch feed of the old noise. Applying these two
+facts to the free covariance and to each earlier independent noise
+gives $D_{c,a}=k^{-1}+\operatorname{slide}_aD_{f,a}$.
+The diagonal entries of \eqref{eq:transport-covariance-recursion}
+are precisely this equality. All off-diagonal entries vanish.
+
+\subsection{The two punctured transport formulas}
+Define scalars
+\[
+ a=\sum_l |m_l|^2\operatorname{tr}D_l,\qquad
+ e_l=\overline{m_l}\operatorname{tr}D_l/a,
+ \qquad y_l=|m_l|^2\rho/\rho_l.
+\]
+The principal mass filter is nonzero on the real cube. Since each
+$D_l$ is positive, its contribution shows $a>0$. In particular
+\begin{equation}\label{eq:transport-weight-sum}
+                              \sum_l e_lm_l=1.
+\end{equation}
+The source constructs the following rescaled columns:
+\begin{align}
+ \mathcal A_l&=D_lF_{1,l}^*R+e_lx_l\pi,
+                                      \label{eq:transport-A}\\
+ \mathcal T_l&=H_l\delta_1D_lF_{1,l}^*d_1^*
+                    +y_lF_{2,l}^*(I-C),
+ & C&=Hd_1Dd_1^*.                    \label{eq:transport-T}
+\end{align}
+The complement $I-C$ is part of the two-form transport; it cannot
+be discarded merely because it vanishes on weighted exact forms.
+Indeed \eqref{eq:transport-rotor} and $d_1x=0$ imply
+\[
+ RDd_1^*=d_1^*,\qquad d_1DR=d_1,
+ \qquad d_1^*(I-C)=0,\qquad (I-C)Hd_1=0.
+\]
+Also, the adjoint of \eqref{eq:transport-filter-chain} gives
+$x_l^*F_{1,l}^*d_1^*=0$. These identities prove
+\begin{equation}\label{eq:transport-punctured-three}
+ R_l\mathcal A_l=F_{1,l}^*R,\qquad
+ \delta_1^*\mathcal T_l=F_{1,l}^*d_1^*,\qquad
+ \mathcal T_lHd_1=H_l\delta_1\mathcal A_l.
+\end{equation}
+Here are the cancellations explicitly. The second term in
+$R_l\mathcal A_l$ vanishes because $R_lx_l=0$; in the first,
+$R_lD_l=I-c_lx_l^*$ and $x_l^*F_{1,l}^*R=0$.
+For the second identity the first term is
+$R_lD_lF_{1,l}^*d_1^*=F_{1,l}^*d_1^*$, while the second is
+$y_lF_{1,l}^*d_1^*(I-C)=0$.
+For the third identity the complement term vanishes by
+$(I-C)Hd_1=0$, and the remaining term is
+$H_l\delta_1D_lF_{1,l}^*R$. The other side equals this
+because $\delta_1x_l=0$.
+
+Finally \eqref{eq:transport-filter-chain} at degree zero,
+\eqref{eq:transport-weight-sum}, and
+\eqref{eq:transport-covariance-recursion} give
+\begin{align}
+ \sum_l F_{1,l}\mathcal A_l
+  &=(D-k^{-1}I)R+x\pi\notag\\
+  &=I-k^{-1}R.                       \label{eq:transport-alias-sum}
+\end{align}
+This is the identity that incorporates the new Gaussian noise.
+
+\subsection{Removing the puncture without changing the kernels}
+We check that these formulas are the analytic columns whose bounds
+were proved earlier. In this continuation every real-momentum
+adjoint is written as transposition after reflection $p\mapsto-p$;
+for example, $|m(p)|^2$ continues as $m(p)m(-p)$.
+For an alias-indexed factor the reflection is $q_l\mapsto-q_l$,
+equivalently $(p,l)\mapsto(-p,-l)$.
+Thus none of the complex-momentum formulas below uses literal
+complex conjugation of its variable. Let $s$ be the coarse divisor, $b_a$ the
+coarse bulb and $b_{l,a}$ the fine bulb. Write $q_0=p/L$ and
+$u_a=\operatorname{tail}_a$, including the current noise. Splitting
+the covariance recursion into its principal alias and the other
+aliases gives
+\begin{equation}\label{eq:transport-bulb-split}
+ b_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}+su_a.
+\end{equation}
+For $p\ne0$ this follows by multiplying
+$D_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}/s+u_a$
+by $s$. Both sides of \eqref{eq:transport-bulb-split} are
+continuous, so it holds at zero as well.
+
+For the one-form column put $B_l=D_lF_{1,l}^*D^{-1}$ and
+define $r_{l,a}$ by $B_lx=\operatorname{diag}(r_{l,a})x_l$.
+Entrywise,
+\[
+ r_{l,a}=\overline{m_l}(D_l)_{aa}
+        |\operatorname{rail}_L(q_{l,a})|^2/D_{aa}.
+\]
+Using \eqref{eq:transport-rotor} in \eqref{eq:transport-A} gives
+\[
+ \mathcal A_l=B_l+
+                 \operatorname{diag}(e_l-r_{l,a})x_l\pi.
+\]
+Now $D^{-1}=s\operatorname{diag}(b_a^{-1})$ and
+$\pi=s^{-1}\sigma$, where
+$\sigma=(\operatorname{bend}_c)^{-1}
+ x^*\operatorname{diag}(b_a^{-1})$ is analytic.
+For a nonprincipal alias, $D_l$ has the regular port formula;
+thus $e_l-r_{l,a}=s g_{l,a}$ with
+\[
+ g_{l,a}=\overline{m_l}
+ \left(\frac{\operatorname{tr}D_l}{sa}
+             -\frac{(D_l)_{aa}|\operatorname{rail}_L(q_{l,a})|^2}{b_a}
+ \right).
+\]
+For the principal alias let $h$ be the sum of the nonprincipal
+terms in $a$. Then $sa=|m_0|^2\sum_a b_{0,a}+sh$, and
+\eqref{eq:transport-bulb-split} instead gives the regular formula
+\[
+       g_{0,a}=m_0^{-1}\left(\frac{u_a}{b_a}-\frac{h}{sa}\right).
+\]
+These are exactly the principal and nonprincipal gain formulas.
+The denominators $b_a$, $sa$, and $m_0$ have the common analytic
+lower bounds established in the component estimates. Consequently
+\[
+                \mathcal A_l=B_l+
+                              \operatorname{diag}(g_{l,a})x_l\sigma
+\]
+is the already estimated analytic column, including at the origin.
+
+For the two-form column, at a nonprincipal alias write
+$\lambda_l=|m_l|^2\operatorname{bend}_c/\operatorname{portR}_l$.
+Then $y_l=s^2\lambda_l$ and
+\[
+ s^2(I-C)=s^2I-sHd_1\operatorname{diag}(b_a)d_1^*.
+\]
+Substitution in \eqref{eq:transport-T} is exactly the regular
+nonprincipal wire formula. At the principal alias set
+$J=F_{2,0}^{-1}$, $U=\operatorname{diag}(u_a)$,
+$M=\operatorname{diag}(b_a)$, and $z_a=u_a/b_a$.
+The inverse exists on the common cube. The exterior chain rule
+and the principal covariance split give
+\[
+ \delta_1=Jd_1F_{1,0},\qquad
+ F_{1,0}D_0F_{1,0}^*=D-U.
+\]
+The cancellation needed for the apparent remaining pole is
+\begin{equation}\label{eq:transport-brace-cancellation}
+ s\mathcal B=H_0-y_0F_{2,0}^*HF_{2,0},\qquad
+ \mathcal B=H_0\left(\operatorname{diag}_{\{a,b\}}(z_a+z_b)
+                                  -s\bigwedge^2\operatorname{diag}(z_a)\right).
+\end{equation}
+To verify it, put
+$Z_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}/b_a
+=1-sz_a$ by \eqref{eq:transport-bulb-split}.
+The pulse formula shows
+$y_0F_{2,0}^*HF_{2,0}=H_0\bigwedge^2\operatorname{diag}(Z_a)$:
+on a face $\{a,b\}$ both sides have the same product of its two
+diagonal entries and the same scalar bend ratio.
+Finally $1-(1-sz_a)(1-sz_b)=s(z_a+z_b-sz_az_b)$ proves
+\eqref{eq:transport-brace-cancellation} entrywise.
+
+Using $M=sD$, the principal expression therefore becomes
+\begin{equation}\label{eq:transport-principal-wire}
+ \mathcal T_0=y_0F_{2,0}^*
+               +(\mathcal B Jd_1M-H_0Jd_1U)d_1^*.
+\end{equation}
+Indeed its second term expands to
+$H_0Jd_1(D-U)d_1^*-y_0F_{2,0}^*Hd_1Dd_1^*$,
+which is \eqref{eq:transport-T} after the two chain identities.
+All factors in \eqref{eq:transport-principal-wire} have the
+analytic bounds already proved. This verifies agreement with the
+principal wire as well as the nonprincipal one.
+
+At $p=0$ the principal analytic columns have values
+$\mathcal A_0=I$ and $\mathcal T_0=I$: the bulbs, bends,
+rails, and principal filter have value one and the exterior
+symbols vanish. For $l\ne0$ the patch mass filter vanishes at
+$q_l(0)$. Indeed some nonzero alias coordinate has a nontrivial
+$L$th root of unity, and the geometric-series rail vanishes
+there; the patch mass contains a positive power of its squared
+modulus. The nonprincipal one-form column is zero because both
+its leading term and gain contain that filter. The two-form
+column is zero because its first term contains $d_1(0)^*=0$
+and its other term contains the mass filter. Thus
+\eqref{eq:transport-punctured-three} and
+\eqref{eq:transport-alias-sum} also hold at $p=0$.
+
+\subsection{Returning to physical counting measure}
+The installed one-form and two-form columns at alias $l$ are
+$L^{-1}\mathcal A_l$ and $L^{-2}\mathcal T_l$.
+The block mean $Q$ is the alias row with columns $LF_{1,l}$.
+In physical counting measure the adjoint alias column of $Q$
+is $L^{-3}F_{1,l}^*$: the factor $L$ is multiplied by the
+coarse-to-fine volume ratio $L^{-4}$. Since
+$\delta_r=Ld_r(q_l)$, the second and third identities in
+\eqref{eq:transport-punctured-three} become respectively
+\[
+ d_{1,f}^*T=Q^*d_{1,c}^*,\qquad
+                 TH_cd_{1,c}=H_fd_{1,f}A_0.
+\]
+The alias sum becomes $QA_0=I-k^{-1}d_{1,c}^*H_cd_{1,c}$.
+Fourier diagonalization on each finite torus now gives the real
+matrix identities
+\begin{equation}\label{eq:transport-installed-identities}
+ T^{\mathsf T}d_{1,f}=d_{1,c}Q,\qquad
+ TH_cd_{1,c}=H_fd_{1,f}A_0,\qquad
+ QA_0=I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}.
+\end{equation}
+This argument includes every finite period, including the one-site
+period, and uses the Fourier coefficients of the original analytic
+columns. No new choice of transport has been made.

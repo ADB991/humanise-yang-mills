@@ -1,0 +1,255 @@
+\section{Local normalization and its derivatives}
+\label{sec:normalization-jets}
+The local scalar correction is a difference between the actual sector
+and its flat reference. The reference uses the same forest, tags,
+cutoff radius and windows; its coarse field is the identity and its
+seed sets are empty. Write $A^\circ$ for its completed precision
+matrix. With the local colour trace $J_e(A)$ of
+Section~\ref{sec:local-covariance}, the correction at a physical bond is
+\begin{equation}\label{eq:normalization-correction}
+ c_e=\frac12\{J_e(A^\circ)-J_e(A)\}.
+\end{equation}
+We first establish its scalar bounds and then differentiate the actual
+window formula. A bound on the full determinant would not provide
+these local estimates.
+
+\subsection{Uniform and remote scalar bounds}
+Let $\|A\|_\eta,\|A^\circ\|_\eta\le Q$ and let $S$ be the
+uniform row and column bound for every principal inverse along
+$A_s=1+s(A-1)$ and the corresponding flat interpolation, $0\le s\le1$.
+The local formula is
+\[
+ J_e(A)=\sum_{\alpha=1}^q\int_0^1
+       [(A-1)P_s]_{(e,\alpha),(e,\alpha)}\,ds.
+\]
+Thus $|J_e(A)|\le q(Q+1)S$, and the same holds for $A^\circ$.
+By \eqref{eq:normalization-correction},
+\begin{equation}\label{eq:normalization-uniform}
+ |c_e|\le q(Q+1)S.
+\end{equation}
+Both precisions meet the hypotheses of the Gram estimate: the flat
+reference has no flags, and gauge transformations preserve the flags
+of the actual sector. Hence the same post-$L$ constants can be used
+for the actual, flat and gauge-transformed sectors.
+
+If the anchor of $e$ is farther than $30B$ from the seeds, choose a
+single gauge making the coarse bond chords at most $Cw(x)$ on the
+radius-$6B$ ball, as in \eqref{eq:mean-common-log}. Here $w$ has
+upper exponent $-1/2$. For any coordinate in the window of
+$(e,\alpha)$, its anchor lies within $B+2$ of that of $e$.
+On these coordinates the inactive diagonal of the gauged sector
+agrees with the flat reference: exactly the tree bonds are inactive.
+If an entry of the selected row matrix meets such a coordinate,
+either its row anchor lies within $B/4$ or both entries are zero.
+In the former case that row is selected in both sectors. The gauge
+transport comparison, applied to the same unit coordinate input,
+gives
+\[
+ |M'_{pi}-M^\circ_{pi}|\le d(x),\qquad
+ d(x)=C_1(B+1)w(x).
+\]
+The same estimate holds for the other tested coordinate. All transport
+paths lie in the common $6B$ hull. Expanding the two products in the
+Gram entry gives
+\[
+ |M'_{pi}M'_{pj}-M^\circ_{pi}M^\circ_{pj}|
+ \le d(x)|M'_{pj}|+d(x)|M^\circ_{pi}|.
+\]
+Sum over $p$ and use the column bound $Y$ for both row matrices:
+\begin{equation}\label{eq:normalization-plate-near}
+ |A'_{ij}-A^\circ_{ij}|\le2Yd(x)=:\delta(x)
+ \quad\hbox{on each tested principal window}.
+\end{equation}
+No count of all rows enters this bound.
+
+The window contains at most $\Delta_B=m(2B+5)^4$ coordinates.
+The local resolvent comparison of
+Section~\ref{sec:local-covariance} now yields
+\[
+ |J_e(A')-J_e(A^\circ)|
+ \le q\{S+(Q+1)S^2\}\Delta_B\delta(x).
+\]
+The complete colour trace is gauge invariant; the endpoint windows
+are invariant under colour rotations. Therefore $J_e(A')=J_e(A)$,
+and
+\begin{equation}\label{eq:normalization-remote}
+ |c_e|\le q\{S+(Q+1)S^2\}\Delta_B\delta(x)
+       =:a_0(x),\qquad d(e,\text{seeds})>30B.
+\end{equation}
+We dropped a harmless factor $1/2$. Since $B$ has upper exponent
+zero, $a_0$ has upper exponent $-1/2$.
+
+\subsection{Matrix derivative bounds with spatial weights}
+For a $C^k$ matrix-valued map $A(y)$ near $y_0$, a convenient
+quantitative statement, for $f,v,\gamma\ge0$, is the existence of a nonnegative matrix $H$
+such that
+\begin{equation}\label{eq:matrix-jet-envelope}
+ \|D^r A_{ij}(y_0)\|\le H_{ij}v^r\quad(0\le r\le k),
+ \qquad \|H\|_\gamma\le f.
+\end{equation}
+The norm on the right is the maximum of the weighted row and column
+sums. Thus it controls a common entrywise majorant of all jets, not
+just the norm of each derivative separately. If $A$ and $B$ have
+bounds $(f,v)$ and $(g,z)$ with $g,z\ge0$, Leibniz's rule gives the envelope $HK$
+for their product with bounds $(fg,v+z)$: the binomial sum is
+$(v+z)^r$, and the triangle inequality for distance proves
+$\|HK\|_\gamma\le\|H\|_\gamma\|K\|_\gamma$.
+Addition, transpose and restriction to a principal set preserve the
+corresponding bounds. These operations introduce no volume factor.
+
+Suppose $A(y_0)$ is invertible and its inverse has weighted price
+$g$. Set $F=A(y_0)^{-1}$ and $V(y)=1-FA(y)$. Then $V(y_0)=0$,
+and, wherever $A(y)$ is invertible,
+\begin{equation}\label{eq:inverse-finite-jet}
+ A(y)^{-1}=\sum_{r=0}^k V(y)^rF+V(y)^{k+1}A(y)^{-1}.
+\end{equation}
+Multiplying the finite geometric identity on the right by $A(y)^{-1}$
+proves this without commuting any factors. Invertibility holds on a
+neighbourhood by continuity of the determinant. The inverse is $C^k$
+there by the adjugate formula. Every derivative of order at most $k$
+of $V^{k+1}$ vanishes at $y_0$: in each Leibniz term at least one of
+the $k+1$ factors is undifferentiated and equals zero. The remainder
+in \eqref{eq:inverse-finite-jet} consequently has zero jets through
+order $k$.
+
+The envelope for $V$ has bounds $(1+fg,v)$. Applying the product
+rules to the finite sum proves an inverse envelope with bounds
+\begin{equation}\label{eq:inverse-jet-price}
+ T_k(f,g)=\sum_{r=0}^k(1+fg)^r g,\qquad kv.
+\end{equation}
+Only the inverse at the base point was priced. A uniform inverse
+bound on an entire neighbourhood was not assumed.
+
+Apply this argument separately in every prescribed principal window.
+Each restriction of $A(y)$ retains the envelope $(f,v)$, and each
+base inverse has weighted price $S$. Its $(i,j)$ entry has majorant
+$T_k(f,S)e^{-\gamma d(i,j)}$. Padding it by zero outside the window
+gives a common envelope for $P(y)$, because window membership is fixed.
+Both its row and column sums are bounded by
+\begin{equation}\label{eq:pad-jet-price}
+ F_B=\Delta_B T_k(f,S),\qquad\hbox{with derivative scale }kv.
+\end{equation}
+For the row bound, even though different columns use different
+windows, any nonzero entry has $d(i,j)\le B+2$, and there are at
+most $\Delta_B$ such $j$. The same count proves the column bound.
+
+The error $A(y)P(y)-1$ vanishes, as a germ, whenever $d(i,j)\le B$.
+Indeed each such coordinate belongs to the window, and its principal
+inverse solves the corresponding row equation for all nearby $y$.
+Erasing these zero jets and decreasing the spatial weight from
+$\gamma$ to $\gamma/2$ gives an envelope with price
+\begin{equation}\label{eq:inverse-error-jets}
+ e^{-\gamma B/2}(fF_B+1),\qquad
+ \hbox{derivative scale }v+kv.
+\end{equation}
+This is the differentiated version of the boundary error. Multiplying
+by the full inverse envelope also prices $P-A^{-1}$; taking the
+symmetric part and then multiplying by $A$ prices the covariance
+defect $A(P+P^*)/2-1$. For fixed $k$ all these prices are a polynomial
+in $B$ times $e^{-\gamma B/2}$, hence have every prescribed negative
+upper exponent. The derivative scales are fixed multiples of $v$.
+
+\subsection{The actual sector matrix supplies the premise}
+Freeze the seeds, tree, tags, windows and active sets while varying
+the coarse field $U(y)$. Suppose every link matrix has jets
+\[
+ \|D^r U_e(y_0)\|_{\rm F}\le R_G v^r,
+ \qquad R_G=\sqrt{\dim(\text{matrix representation})},
+ \quad0\le r\le k.
+\]
+The same bound holds for inverses by taking the adjoint, for signed
+pullbacks, and for replicas. Constant gauge transformations preserve
+it by unitary invariance of the Frobenius norm.
+
+A product along a walk of length $n$ has amplitude $R_G$ and
+derivative scale $nR_Gv$. To verify the absence of an exponential
+amplitude, split its first factor as $U(y_0)+(U(y)-U(y_0))$.
+Multiplication by $U(y_0)$ is an isometry; in every positive-order
+term from the difference, its bound $R_Gv^r$ is at most
+$(R_Gv)^r$. The binomial formula therefore adds $R_Gv$ to the
+derivative scale while preserving the amplitude of the remaining
+product. Induction proves the claim, including inverse letters and
+repeated physical links.
+
+For the selected sector row matrix, a single coordinate input is
+transported from its physical bond to the row anchor. The coordinate
+path has length at most $4B$. A reversed signed bond adds its replica
+adjoint, whose derivative scale is $2v$. The two sides of the
+transported adjoint add twice the path scale. Thus the transported
+input has fixed amplitude and derivative scale
+\begin{equation}\label{eq:normalization-kernel-growth}
+ z=8BR_Gv+2v.
+\end{equation}
+The remaining cut flat row is a fixed linear map. The weighted impulse
+estimate from Section~\ref{sec:sector-gram}, before periodization,
+bounds its operator norm by $C e^{-\eta d(p,i)}$. The extra one-step
+shift from a reversed bond is absorbed into this fixed $C$. Hence
+\[
+ \|D^rM_{pi}(y_0)\|\le C e^{-\eta d(p,i)}z^r.
+\]
+Inactive columns, unselected rows and entries outside the cutoff are
+identically zero throughout the variation; their indicators are not
+differentiated.
+
+For $0<\gamma<\eta$, sum the displayed envelope using the bounded
+number of row and column coordinates per coarse site. The shell sum
+$\sum_{n\ge0}(2n+1)^4e^{-(\eta-\gamma)n}$ is finite. It follows
+that $M$ has an envelope $(C_\gamma,z)$, with $C_\gamma$ independent
+of the volume and of $B$. The identity
+$A=M^*M+\Pi_{\rm inactive}$ therefore supplies
+\eqref{eq:matrix-jet-envelope} with
+\[
+ f=C_\gamma^2+1,\qquad v_A=2z.
+\]
+The inactive projection is constant. If the incoming link scale $v$
+has upper exponent $-1/2$, so do $z$ and $v_A$.
+
+\subsection{Differentiating the local logarithmic trace}
+Choose $\gamma$ also below the retained inverse width. The glide
+$A_s(y)=1+s(A(y)-1)$ has envelope $(f+2,v_A)$ uniformly for
+$0\le s\le1$. Its principal inverses at $y_0$ satisfy the same
+uniform price $S$ as before. Multiplication by $A(y)-1$ and
+\eqref{eq:pad-jet-price} consequently give, for every local diagonal
+entry, the amplitude
+\[
+ (f+1)\Delta_BT_k(f+2,S)
+\]
+and derivative scale $(k+1)v_A$, uniformly in $s$.
+
+To justify differentiation under the integral, note that the
+principal determinants are nonzero at every $(y_0,s)$ on the compact
+interval. There are finitely many windows. Joint continuity gives
+one neighbourhood of $y_0$ on which all these determinants remain
+nonzero for all $s\in[0,1]$. The adjugate formula makes the integrand
+jointly $C^k$ there. On a smaller closed parameter ball times the
+interval, all derivatives are bounded by compactness. Difference
+quotients and the fundamental theorem of calculus, followed by
+dominated convergence, now permit differentiation under the integral,
+successively through order $k$. For this argument the variation space
+is finite dimensional, as it is for each finite-volume field variation.
+The local bounds at $y_0$ are unaffected by the auxiliary compactness
+bound. Summing the $q$ colour entries proves
+\begin{equation}\label{eq:normalization-log-jets}
+ \|D^rJ_e(A(y_0))\|
+ \le q(f+1)\Delta_BT_k(f+2,S)\{(k+1)v_A\}^r,
+ \quad0\le r\le k.
+\end{equation}
+
+The flat-reference term in \eqref{eq:normalization-correction} is
+constant in $y$. Combining its scalar bound with
+\eqref{eq:normalization-log-jets}, and enlarging the harmless factor
+$1/2$, gives an envelope for $c_e(y)$ with amplitude $b(x)$ of upper
+exponent zero and derivative scale $z_1(x)$ of upper exponent $-1/2$.
+It follows that all its jets are bounded by
+$b(x)(1+z_1(x))^k$, again of upper exponent zero. At a remote bond
+we can do better: its value is at most $a_0(x)$ by
+\eqref{eq:normalization-remote}, while for positive orders, once
+$0\le z_1\le1$,
+\[
+ \|D^r c_e(y_0)\|\le b(x)z_1(x)^r\le b(x)z_1(x).
+\]
+Thus the common bound $a_0+bz_1$, of upper exponent $-1/2$, controls
+all jets through order $k$ at remote bonds. This obtains small
+normalization jets without differentiating a chosen local gauge.
+The needed link variation and its coherent Gaussian compensation
+remain distinct inputs to the eventual packet variation.

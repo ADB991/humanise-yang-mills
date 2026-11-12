@@ -1,0 +1,145 @@
+\section{The selected bridge and gauge-fixing map}
+\label{sec:ex-selected-stationary-linear-data}
+
+The preceding estimates must be supplied on the actual retained horizon.
+We verify two identifications: the fine-difference bounds of its linear
+stationary bridge, and the exact gauge identity of its fluctuation matrix.
+
+\subsection{The unchanged one-form transport}
+Let $A_0$ be the one-form transport of the retained tower at a fixed
+adjacent pair of scales. The construction in
+Section~\ref{sec:curvature-horizon-producer} retains this row unchanged;
+only the curvature completion rows are replaced. Apply
+Theorem~\ref{thm:ex-lattice-wire-tower-strip} with $e=1$. The schedule
+has $j\geq4$, so every difference word $u$ of length at most two is
+covered. Its actual Laurent row satisfies
+\[
+       \sum_z e^{w|z|_1}|(\nabla^u A_0)(z)|
+                         \leq D L^{-1-|u|}.
+\]
+The constants have already been chosen uniformly over the horizon.
+The price enlargement used in the retained construction can only
+increase $D$ and narrow $w$.
+
+Define $\Phi(p)$ by Fourier evaluation of $A_0$, with the color identity
+on its color factor. Fourier evaluation commutes with a cover difference,
+including its centered carry: this is exactly the residue-difference
+identity in the proof of the cited theorem. Thus, for a coordinate leg,
+\[
+       |\nabla^u\Phi(p)e_a(z)|\leq D L^{-1-|u|}
+                      \qquad (p\in\operatorname{strip}(w),\ |u|\leq2).
+\]
+Absolute exponential summability gives holomorphy and periodicity on the
+strip. Restriction to a smaller width preserves every bound. This proves
+\eqref{eq:ex-vertex-cruise} for the selected bridge and supplies the
+identical hypothesis in the inherited-loop estimate.
+
+We must also identify this row with the derivative of the stationary
+representative used below. Write $W=A_0$ in finite-volume coordinates.
+In the original tree gauge chart the positive internal Hessian gives a
+unique local stationary branch. Its fine tangent is not $W$ itself:
+straightening up the tree adds an infinitesimal gauge transformation,
+so it is
+\[
+                         E=W+d_0K,
+\]
+where $K$ is the linear tree-straightening map. Gauge this branch back
+by the group exponential of $Kx$. The derivative of the resulting fine
+field is $E-d_0K=W$. At a block root the straightening identity reads
+$K_{\rm root}=-\operatorname{fixRoot}W$. The derivative of the rooted
+frame is $-\operatorname{fixRoot}W$ as well; multiplication by the inverse
+root gauge factor cancels it. Thus recentering the gauged-back branch
+gives the joint derivative $(W,0)$. Gauge covariance preserves its
+stationarity. We use uniqueness only in the original tree chart:
+the centered merit on the full joint space has gauge null directions.
+Finite Fourier inversion now identifies this actual derivative on every
+torus grid with $\Phi$. Hence the difference bounds above concern the
+selected stationary representative.
+
+\subsection{The exact gauge identity}
+Work first on one finite torus. Let $d$ be the infinitesimal fine gauge
+action at the identity, in the sign convention of the joint action,
+and let $\mathcal R$ be its expression in centered block coordinates.
+Its two components are $(-d_0a,-Ja)$ as in the preceding section.
+Let $X$ be the negative right logarithmic derivative of the frame in
+these coordinates, and let $C_\mu$ be the positive regulator with scalar
+symbol $c_\mu$. The linear gauge-fixing map is
+\[
+                         F=d^*\operatorname{pr}_{\rm fine}+C_\mu X.
+\]
+For a gauge curve through the identity, frame covariance gives its frame
+ratio as the inverse gauge transformation. Applying the negative right
+logarithm therefore returns exactly the gauge parameter near zero.
+Differentiating this identity gives $X\mathcal R=I$, after expressing
+the gauge tangent in the same coordinates. Also the fine component of
+the gauge tangent is $d$. Consequently
+\begin{equation}\label{eq:ex-actual-gauge-identity}
+                           F\mathcal R=d^*d+C_\mu=\Gamma_\mu.
+\end{equation}
+
+There is a coordinate issue in this calculation. The rooted gauge
+coordinates and the centered coordinates are related by a triangular
+change whose derivative is
+\[
+                  (u,r)\longmapsto(u,r+K_0u),
+\]
+where $K_0$ is the derivative of the recentering frame. The frame
+covariance identity gives $K_0d_0a=a_{\rm root}-Ja$.
+It follows by substitution that this triangular derivative sends the
+centered gauge tangent to the rooted gauge tangent. The fine projection
+is unchanged. The chain rule sends $X$ to its product with that same
+triangular derivative, so both sides of
+\eqref{eq:ex-actual-gauge-identity} remain identical. This verifies the
+identity in the centered chart used for the estimates, including its
+sign; it would be incorrect to combine the rooted $X$ with a centered
+$\mathcal R$ without this change.
+
+Fourier transformation yields the identity on every torus grid. The
+symbols are common to the unbounded family of periods, by the local
+stencil construction. They therefore agree at every real momentum by
+density and at every complex momentum in their common strip by analytic
+uniqueness. For real momentum, the Fourier symbol of each real finite-volume
+matrix satisfies $F(-p)=\overline{F(p)}$. This applies to the frame
+linearization, the fine difference, and the real regulator, hence to
+$F$ itself. Density of the common finite Fourier grids gives this
+identity at every real momentum, and therefore $F(-p)^T=F(p)^*$ there.
+Thus the bilinear holomorphic continuation used below agrees with the
+positive Hermitian square on the real slice.
+The same argument identifies the constant stationary matrix
+with $\mathcal G+F(-p)^TF(p)$: the fine action contributes its attached
+kinetic form, the block penalty contributes $\kappa N(-p)^TN(p)$, and
+the gauge-fixing term contributes the displayed square. Each is the
+Hessian of the corresponding term of the same action at its identity.
+
+\subsection{The uniform bound for the gauge-fixing map}
+For a unit vector in $W_p$, the fine derivative term $d^*u$ is bounded
+in unnormalized Euclidean norm by a constant depending only on $G$,
+by the Fourier multiplier estimate in
+Section~\ref{sec:ex-weighted-frame-penalty}. The frame derivative $Xv$
+has normalized block $L^2$ norm at most a constant, by the centered-frame
+induction, restriction to one residue block, and the finite coordinate
+operations defining its logarithm. Restriction from the padded patch
+to this block costs a bounded ratio of volumes. Its unnormalized
+Euclidean norm is therefore at most $C L^2$.
+On the fixed small coarse strip the regulator has Euclidean operator
+norm at most $C'\mu^2$: its alias symbol is
+$\mu^2(\mu^2/(\omega+\mu^2))^9$, with the denominator estimate of the
+preceding section, and the two Fourier conjugations have uniformly
+bounded norms. Hence
+\[
+                       |C_\mu Xv|\leq C'C\mu^2L^2=C'C.
+\]
+Adding the fine derivative term gives the required bound $|Fv|\leq D$,
+with $D$ fixed before $L$. The same stencil construction is holomorphic
+and periodic in the external momentum, since it uses only linear Fourier
+legs in finite real derivatives at the identity and the holomorphic
+regulator symbol. This proves both parts of
+\eqref{eq:ex-gauge-fixing-receipt} for the selected data.
+
+The inverse estimates of
+Section~\ref{sec:ex-weighted-stationary-inverses} now apply to the actual
+common stationary matrix. At the origin the two stationary matrix
+presentations used for the action and its comparison have this same
+matrix. Their inverse bounds consequently use the same width and cost;
+no bound for their positive-order derivatives is asserted by this
+constant-matrix identification.

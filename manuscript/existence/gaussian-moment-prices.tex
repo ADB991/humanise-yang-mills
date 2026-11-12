@@ -1,0 +1,179 @@
+\section{Uniform moment prices after changing Gaussian coordinates}
+\label{sec:gaussian-moment-prices}
+We now estimate the polynomial in the Gaussian sample introduced
+by differentiation of the projected density. The covariance may
+couple every coordinate to every other coordinate. Only its
+uniform diagonal bound is needed for this step.
+
+\subsection{A polynomial moment bound without independence}
+Let $Z$ be a centered Gaussian vector with covariance $C\ge0$ and
+$C_{ii}\le b$. Each coordinate has exponential moment
+\[
+ \mathbb E e^{tZ_i}=e^{C_{ii}t^2/2}\le e^{bt^2/2}.
+\]
+This follows directly by completing the square in its one-dimensional
+Gaussian law, including the zero-variance case. For an integer
+$r\ge0$,
+\[
+ (1+|z|)^r\le e^{r|z|}\le e^{rz}+e^{-rz}.
+\]
+Hence
+\begin{equation}\label{eq:moment-coordinate}
+ \mathbb E(1+|Z_i|)^r\le2e^{br^2/2}.
+\end{equation}
+
+Let $I$ be a set of physical bonds, let $I_{\rm col}$ contain all
+their colour coordinates, and put $n=|I|$, $N=|I_{\rm col}|$.
+Define
+\[
+ F_I(z)=1+n+N+\sum_{i\in I_{\rm col}}|z_i|,
+ \qquad Y_I=1+n+2N.
+\]
+Then
+\begin{equation}\label{eq:moment-face}
+ \mathbb E F_I(Z)^r\le
+ Y_I^r\{1+2Ne^{br^2/2}\}.
+\end{equation}
+For nonempty $I_{\rm col}$ choose a coordinate at which $|z_i|$
+is maximal. The definition gives $F_I(z)\le Y_I(1+|z_i|)$, and
+therefore
+\[
+ F_I(z)^r\le Y_I^r
+       \left(1+\sum_{i\in I_{\rm col}}(1+|z_i|)^r\right).
+\]
+For an empty coordinate set the same inequality is immediate.
+Take expectations and use \eqref{eq:moment-coordinate}. In
+particular all these moments are integrable. This argument uses
+one-coordinate marginals and a finite sum, without factoring a
+joint moment.
+
+For the local covariance, the weighted matrix bounds of
+Section~\ref{sec:local-covariance} supply a fixed $b$, independent
+of the period. Suppose an activity has nonnegative support price
+$s$, equal to the sum of its covering numbers and nonnegative
+length charges. A cover by radius-$B$ balls gives
+\[
+ |\operatorname{supp}|\le s\,b_B,\qquad
+ |I|\le s\,b_B\rho_L,\qquad N=q|I|,
+\]
+where $q$ is the colour dimension and $\rho_L$ the fixed bond
+density. The first inequality follows by summing the covering
+balls over all factors; overlaps can only decrease the union.
+The second uses that every bond of $I$ has its anchor in that union.
+Since $b_B$ has upper exponent zero, \eqref{eq:moment-face} implies,
+for every fixed $r$,
+\begin{equation}\label{eq:moment-support}
+ \mathbb E F_I(Z)^r\le A_r(x)(1+s)^{m_r},
+\end{equation}
+for an integer $m_r$ and a nonnegative $A_r$ of upper exponent
+zero. Indeed insert the displayed bounds for $n,N$ into
+\eqref{eq:moment-face} and expand the resulting fixed polynomial.
+
+\subsection{The derivative of the density and Jacobian}
+At the base parameter the compensated transformation is the identity.
+The coordinate derivative bound following from
+\eqref{eq:gaussian-compensated-displacement} is
+\[
+ \|D^r(T_yz)_i|_{y=y_0}\|
+ \le\sqrt\beta\{u(x)+2m(x)\}+F_I(z),\qquad0\le r\le j,
+\]
+where $u,m$ bound respectively the compensation increment and mean
+derivatives and have upper exponent $-1/2$. For the value, use
+$|z_i|\le F_I(z)$; for positive orders differentiate the
+compensated displacement. As $\beta\le2h$, the first term has
+upper exponent zero.
+
+The principal covariance and its inverse inherit the weighted
+derivative bounds proved earlier. The finite-order relative
+determinant argument of Section~\ref{sec:gaussian-differentiation}
+therefore gives a derivative scale polynomial in $N$,
+$F_I(z)$ and functions of upper exponent zero. The Jacobian is
+a product of $n$ one-bond factors. Each has value one at the base
+parameter and derivative scale of upper exponent zero, by
+Section~\ref{sec:compensated-variation}. Its product has amplitude
+one and the sum of these scales. Since $1,n,N,|z_i|\le F_I(z)$,
+every term of the fixed polynomial is bounded by one common
+power of $F_I(z)$. We obtain an integer $k$ and a nonnegative
+$D(x)$ of upper exponent zero such that the complete density
+ratio times Jacobian, denoted $R_y(z)$, satisfies
+\begin{equation}\label{eq:moment-ratio-jets}
+ R_{\cdot}(z)\in\mathcal B_j(1,D(x)F_I(z)^k;y_0).
+\end{equation}
+The exponent $k$ depends on the derivative order and fixed
+construction data, not on the support size or period.
+
+\subsection{Retaining the warning gain under integration}
+Consider a finite product of local activity factors indexed by
+$\mathcal P$. Write $t_i\ge0$ for their pointwise prices and
+$s$ for their total support price. Suppose their proved local
+derivative estimates, under the coherent variation, give
+\begin{equation}\label{eq:moment-activity-premise}
+ \Phi_{\cdot}(z)\in
+ \mathcal B_j\left(\mathbf1_{\mathcal E}(z)
+                   \prod_{i\in\mathcal P}t_i,\,2r(x)s;y_0\right),
+ \qquad r\ge1,
+\end{equation}
+where $r$ has upper exponent zero and $\mathcal E$ is the joint
+warning event for the $m$ warning factors. The displayed estimate
+implies that all derivatives through order $j$ vanish outside
+$\mathcal E$. In this application the stronger local-vanishing
+property holds: an unsatisfied warning factor is zero on a
+neighbourhood of $y_0$, as in the closed-support argument for
+packet masks. For the
+other factors, their derivative scales add: each nonzero supported
+factor has covering number at least one, so its unit scale and
+length scale together cost at most twice its assigned support
+price. This proves the factor $2s$ in
+\eqref{eq:moment-activity-premise} from the individual bounds.
+The individual estimates for all species remain necessary inputs
+to this product step.
+
+Multiply \eqref{eq:moment-activity-premise} by
+\eqref{eq:moment-ratio-jets}. Since $F_I\ge1$ and $1+s\ge1$,
+\[
+ 1+DF_I^k+2rs\le(1+D+2r)(1+s)F_I^k.
+\]
+Converting to derivative scale one therefore bounds all derivatives
+through order $j$ of the transformed integrand by
+\begin{equation}\label{eq:moment-integrand-price}
+ \mathbf1_{\mathcal E}(z)
+ \left(\prod_{i\in\mathcal P}t_i\right)
+ (1+D+2r)^j(1+s)^jF_I(z)^{kj}.
+\end{equation}
+
+Suppose the simultaneous-warning estimate of
+Section~\ref{sec:gaussian-warnings} gives
+$\mathbb P(\mathcal E)\le\rho^{2m}$ with $\rho\ge0$.
+By Cauchy--Schwarz and \eqref{eq:moment-support} at order $2kj$,
+\[
+ \mathbb E\bigl[\mathbf1_{\mathcal E}F_I^{kj}\bigr]
+ \le\mathbb P(\mathcal E)^{1/2}
+             (\mathbb EF_I^{2kj})^{1/2}
+ \le E(x)(1+s)^a\rho^m,
+\]
+for a nonnegative upper-exponent-zero function $E$ and an integer
+$a$. For example replace the square root of the moment bound by
+$(1+A_{2kj})(1+s)^{m_{2kj}}$. This also proves integrability of
+\eqref{eq:moment-integrand-price}. Integrating any frozen Haar
+variables adds no factor, since their total mass is one and the
+estimate is uniform in them.
+
+Consequently the integrated derivatives obey
+\begin{equation}\label{eq:moment-final-price}
+ \left\|D^r\int R_y\Phi_y\,d\mu\bigg|_{y=y_0}\right\|
+ \le E(x)(1+D+2r(x))^j(1+s)^{a+j}
+               \rho^m\prod_{i\in\mathcal P}t_i,
+ \qquad 0\le r\le j.
+\end{equation}
+The derivative interchange is justified by the separate common
+neighbourhood bound of
+Section~\ref{sec:gaussian-differentiation}. Absorb one factor
+$\rho$ into the price of each warning factor. The right-hand side
+then has exactly the product-price form used by the connected
+support summation, with one fixed polynomial in $1+s$. The
+support-price estimate of Section~\ref{sec:mixed-activity-prices}
+allows such a fixed polynomial through its exponential reserve.
+Thus Gaussian differentiation preserves the available warning
+gain while adding only upper-exponent-zero and polynomial support
+costs. No independence of warning events or Gaussian coordinates
+has been used.

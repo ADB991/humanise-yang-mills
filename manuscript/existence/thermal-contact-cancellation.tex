@@ -1,0 +1,269 @@
+\section{The thermal determinant and its contact term}
+\label{sec:ex-thermal-contact-cancellation}
+
+We now relate the determinant matrices to the stationary integral and
+show that replacing the full penalty Hessian by its constraint pullback
+does not alter the leading quadratic coefficient. We retain the actual
+stationary branch, predictor and tree gauge from the preceding sections.
+The group has nonabelian simple real Lie algebra. The finite-volume
+stationary Hessian gap and the predictor branch hypotheses remain in
+force. We also retain the exact matching of the incoming and outgoing
+quadratic forms with the selected bridge; in particular its constraint
+map obeys $QW=I-\kappa^{-1}K_c$ for the selected outgoing kinetic
+matrix $K_c$. Stationarity and the gap alone do not identify an
+independently chosen outgoing matrix. All identities below concern
+germs at the trivial field.
+
+\subsection{The Haar factor in tree coordinates}
+Let $y$ denote the free tree-gauge coordinates of a stationary point,
+and let $j(y)>0$ be the product of their Haar density ratios, normalized
+by $j(0)=1$. Define the left-increment coordinate map, componentwise, by
+\[
+ s_y(z)=\log\bigl(\exp(z)\exp(y)^{-1}\bigr),\qquad s_y(y)=0.
+\]
+It is a local diffeomorphism. Right invariance of probability Haar
+measure and the ordinary change-of-variables formula give
+\[
+                       j(z)=|\det Ds_y(z)|j(s_y(z))
+\]
+on the common coordinate neighborhood. For completeness, apply both
+change-of-variables formulas to any compact subset of that neighborhood.
+The two continuous positive densities have equal integrals over every
+such set. If they differed at a point, continuity would give a closed
+ball of positive Lebesgue measure on which one density is strictly
+larger, contradicting that equality. Evaluating at $z=y$ yields
+\begin{equation}\label{eq:ex-haar-left-jacobian}
+                         j(y)=|\det Ds_y(y)|.
+\end{equation}
+Thus the Haar density cannot be discarded when the stationary point
+moves away from zero.
+
+Let $H$ be the Hessian of the joint action in left coordinates at a
+stationary configuration, let $R$ be its fine gauge-tangent matrix,
+and let $P$ insert the free tree increments. Gauge invariance and
+stationarity give $HR=0$; $H$ is symmetric. The square matrix
+$S=[R\ P]$ has $\det(S)^2=1$ in the physical counting bases.
+To verify this last assertion, order the fine vertices by tree
+height, assigning to a nonroot vertex its upward tree edge and to
+a root its coarse scalar coordinate. On the tree edges the gauge
+variation is the signed difference between the vertex and its parent,
+because those edge variables equal the identity. At a root it is
+minus the root gauge parameter. The resulting gauge block is
+triangular, with diagonal entries $\pm1$. The free-increment block
+is the identity, and the other upper block is zero. Hence the
+squared determinant is one, regardless of the free edge variables.
+
+Let $L$ be the gauge-fixing derivative and $\Gamma=LR$ the positive
+scalar gauge matrix. Set $C=P^THP$ and $B=LP$. Direct multiplication
+gives
+\[
+ S^T(H+L^TL)S=
+ \begin{pmatrix}\Gamma&B\\0&I\end{pmatrix}^{\!T}
+ \begin{pmatrix}I&0\\0&C\end{pmatrix}
+ \begin{pmatrix}\Gamma&B\\0&I\end{pmatrix}.
+\]
+Consequently
+\begin{equation}\label{eq:ex-gauge-det-factorization}
+                  \det(H+L^TL)=\det(\Gamma)^2\det C.
+\end{equation}
+The tree-chart Hessian $H_{\rm tree}$ is
+$Ds_y(y)^T C Ds_y(y)$: the additional second-derivative term in
+the chain rule vanishes by stationarity. Combining this with
+\eqref{eq:ex-haar-left-jacobian} proves
+\[
+ j(y)^2\det M_{\rm act}=\det H_{\rm tree}\det\Gamma^2.
+\]
+The tree gap, positive Haar density, and positive scalar determinant
+show that every determinant inside the logarithms is positive near
+the origin. Thus
+\begin{equation}\label{eq:ex-thermal-determinant}
+ \frac12\log\det H_{\rm tree}-\log j(y)
+       =\frac12\log\det M_{\rm act}-\log\det\Gamma.
+\end{equation}
+Adding the inherited loop gives the thermal term of the stationary
+Gaussian integral with exactly its original normalization.
+
+\subsection{Replacing the stationary graph by its linear tangent}
+Write $\zeta(x)$ for the actual centered stationary representative.
+Section~\ref{sec:ex-selected-stationary-linear-data} gives
+$\zeta(0)=0$ and $D\zeta(0)x=(Wx,0)$.
+Each scalar logarithmic determinant under consideration is invariant
+under simultaneous constant color rotation in the coarse, fine and
+scalar coordinates. Indeed these rotations act orthogonally; they
+conjugate the Hessian and the scalar gauge matrix. The centered-frame
+change is equivariant because group multiplication, the nearest-group
+map and the logarithm are equivariant under conjugation.
+
+An invariant linear functional on one copy of the Lie algebra is zero.
+Its derivative along $\operatorname{Ad}(\exp ta)b$ annihilates every
+bracket $[a,b]$. The derived algebra is a nonzero ideal and therefore
+is the whole algebra by nonabelian simplicity. Applying this argument
+to each coordinate proves that the first derivative of each invariant
+scalar function vanishes at zero. The second-derivative chain rule
+therefore gives
+\[
+ D^2\bigl(f(x,\zeta(x))\bigr)_{x=0}[u,v]
+   =D^2f(0)[(u,Wu,0),(v,Wv,0)].
+\]
+This is why the linear external legs used in the Fourier matrix
+calculus compute the thermal Hessian of the actual nonlinear branch.
+There is no assertion that the nonlinear branches themselves coincide.
+
+Rooted and centered internal increments are related by a triangular
+coordinate change with determinant one. On shell the full Hessians
+transform by congruence; the constraint-pullback Hessian does so even
+off shell. Hence this change preserves their determinants in the
+calculations below. Gauge changes preserve the same determinants by
+orthogonal congruence. These observations justify working in rooted
+coordinates for the contact calculation and centered coordinates for
+the uniform estimates.
+
+\subsection{The finite-volume contact identity}
+Let $w_x(v)$ be the logarithmic change of the block predictor when an
+internal left increment $v$ is applied at background $x$; $w_x(0)=0$.
+Let $b(x)$ be the gradient, with respect to this predictor increment,
+of the coarse penalty. Write $A(x)=M_{\rm core}(x)$ in rooted
+coordinates and define
+\[
+ S_x(a)_{ij}=\langle a,D_v^2w_x(0)[e_i,e_j]\rangle,
+ \qquad Z(x)=S_x(b(x)).
+\]
+The Hessian chain rule for the penalty says exactly
+\[
+                         M_{\rm act}(x)=A(x)+Z(x).
+\]
+It separates the pullback of the penalty Hessian from the gradient
+of the penalty paired with the second derivative of its constraint.
+At zero $b(0)=0$, and hence $Z(0)=0$.
+
+Define a coarse vector $Y(x)$ by
+\[
+ \langle a,Y(x)\rangle=\operatorname{tr}\bigl(A(x)^{-1}S_x(a)\bigr).
+\]
+It is analytic for this fixed finite volume. Gauge covariance follows
+directly from this formula: the internal matrices transform by the
+same congruence and the predictor output by the coarse adjoint action,
+so cyclicity of trace gives the coarse adjoint action on $Y$.
+At zero each component of $Y(0)$ is fixed by constant color rotations
+and is therefore zero. This also follows by differentiating the adjoint
+action: an invariant vector is central, and a nonabelian simple Lie
+algebra has zero center.
+
+Let $K_c$ be the coarse kinetic matrix and put $J=-K_c$. The exact
+linear bridge identity is
+\[
+                   QW=I-\kappa^{-1}K_c.
+\]
+The quadratic penalty at the identity is
+$\frac\kappa2|x-z|^2$. Its gradient in $z$ has derivative
+$\kappa(z-x)$. Applying the bridge identity therefore gives
+\begin{equation}\label{eq:ex-penalty-gradient-derivative}
+                              Db(0)=J.
+\end{equation}
+Along the stationary graph this remains the same derivative, because
+its tangent is $W$. In particular $DZ(0)u=S_0(Ju)$.
+
+The identity $\det(A+Z)=\det A\det(1+A^{-1}Z)$ and $Z(0)=0$
+give, through second order,
+\[
+ \log\det(A+Z)-\log\det A
+ =\operatorname{tr}(A^{-1}Z)
+             -\tfrac12\operatorname{tr}(A^{-1}ZA^{-1}Z)+O(|x|^3).
+\]
+Since $\operatorname{tr}(A^{-1}Z)=\langle b,Y\rangle$ and
+$b(0)=Y(0)=0$, differentiation gives the exact identity
+\begin{align}
+ D^2(\log\det M_{\rm act}-\log\det M_{\rm core})(0)[u,v]
+ &=\langle Ju,DY(0)v\rangle+\langle Jv,DY(0)u\rangle\notag\\
+ &\quad-\operatorname{tr}\bigl(A(0)^{-1}S_0(Ju)
+                         A(0)^{-1}S_0(Jv)\bigr).
+ \label{eq:ex-contact-hessian}
+\end{align}
+The first two terms include the derivative of the inverse matrix;
+it has not been dropped. The vanishing of $Y(0)$ is what removes
+the term involving the second derivative of $b$.
+
+There is also a Ward identity
+\begin{equation}\label{eq:ex-contact-ward}
+                             DY(0)d_ca=0
+\end{equation}
+for every coarse scalar field $a$. To prove it on the actual branch,
+gauge the trivial stationary configuration by $\exp(ta)$ at coarse
+sites, then restore tree gauge. Gauge invariance preserves stationarity;
+uniqueness in the tree chart identifies the restored configuration with
+the selected stationary branch on this curve. The coarse field has
+tangent $-d_ca$. Covariance of $Y$ and $Y(0)=0$ show that $Y$ vanishes
+along the curve. Differentiation gives
+\eqref{eq:ex-contact-ward}. Replacing the branch by its linear tangent
+does not alter $DY(0)$, by the first-derivative chain rule. This proves
+the identity including the zero modes of the coarse difference.
+
+\subsection{Passing the identity to the common momentum picture}
+Fix $L$ for this paragraph. The rooted frame and its change to centered
+coordinates are analytic finite stencils. The inverse of $A_0$ is
+holomorphic on a fixed strip. These facts construct a common
+holomorphic matrix kernel for
+$A(x)^{-1}S_x(a)$ and for its square, with two kinds of external
+legs: a coarse background leg and a separate coarse test leg $a$.
+Indeed express $S_x(a)$ using the second derivative of the local
+predictor, conjugate the centered inverse by the triangular change,
+and multiply. Every factor has the same finite-volume Fourier
+representation; products and inverse derivatives preserve it.
+Only a finite bound for this fixed $L$ is required here.
+
+Take normalized traces per coarse site. Finite Fourier inversion
+identifies them with averages of the common kernels over the internal
+momentum grid. Holomorphy on a smaller strip bounds the Fourier
+coefficients exponentially, so these averages converge to the torus
+integral, uniformly for real external momentum. The same convergence
+holds when an external momentum varies along grid points approaching
+a prescribed real momentum: subtract the limiting integral at that
+grid point and use its continuity. Thus both the finite-volume
+contact identity and its Ward identity pass to all real momenta
+along any divergent family of coarse periods.
+
+Denote the resulting mixed background/test trace kernel by
+$M_{ij}(p)$, and the second test/test derivative kernel of the trace of the square
+by $B_{ij}(p)$. Explicitly, at zero background its finite-volume
+bilinear value on test fields $a,b$ is
+\[
+       2\operatorname{tr}\bigl(A(0)^{-1}S_0(a)A(0)^{-1}S_0(b)\bigr).
+\]
+Thus $B$ includes both ordered cross terms.
+They are analytic near zero. The Ward identity says
+\[
+                    \sum_i(d_c(-p)a)_iM_{ij}(p)=0.
+\]
+Fix a component $i=(\nu,\alpha)$ and take $a$ in color $\alpha$
+and $p=t e_\nu$. Only that directional difference survives, giving
+$q_\nu(-te_\nu)M_{ij}(te_\nu)=0$. The first factor is nonzero
+for all sufficiently small nonzero real $t$. Continuity gives
+$M_{ij}(0)=0$. Analyticity then implies
+$M_{ij}(p)=O(|p|)$ along every ray, not just that coordinate ray.
+
+For a fixed external component $a$, put
+$x_j(p)=(-K_c(p)e_a)_j$. Since
+$K_c(p)=d_1(-p)^TH_c(p)d_1(p)$ with $H_c$ analytic,
+$x_j(p)=O(|p|^2)$. The infinite-volume version of
+\eqref{eq:ex-contact-hessian}, including the factor one half in
+the thermal determinant, has diagonal density
+\[
+ \frac12\left[W(p)+W(-p)-\frac12V(p)\right],\qquad
+ W(p)=\sum_jx_j(p)M_{aj}(p),\quad
+ V(p)=\sum_{i,j}x_i(-p)x_j(p)B_{ij}(p).
+\]
+The factor $1/2$ in front of $V$ arises because the second derivative
+of the trace of the square contains the two equal cross terms.
+Now $W$ has ray order at least three and $V$ has ray order at
+least four. Their sum therefore has zero quadratic Taylor
+coefficient. Passing from a Hessian density to the normalized
+quadratic picture introduces one more factor $1/2$ and preserves
+this vanishing.
+
+We have proved that the thermal action and the core determinant have
+the same leading quadratic coefficient. Combining this exact
+cancellation with the uniform core-versus-rank bound from
+Section~\ref{sec:ex-stationary-determinant-prices} bounds their
+remaining coefficient difference by Cauchy's inequality on the
+common strip. The qualitative rooted-frame constants used in the
+vanishing argument do not enter that uniform comparison bound.

@@ -1,0 +1,710 @@
+\section{Soft response of the cubic and quartic curvature terms}
+\label{sec:ex-soft-curvature-receipts}
+
+This section supplies the order-two and order-three response estimates used
+by the selected one-loop route. The argument has two parts. First, the
+absolute path budgets give common analytic pictures for the cubic and
+quartic terms, uniformly over the volume sequence. Second, a finite
+gauge-variation identity removes the unwanted low-momentum coefficients.
+The latter step is needed: analyticity and an absolute activity bound alone
+do not imply the extra powers of momentum.
+
+\subsection{Summable local atoms and their coefficient pictures}
+
+An atom of degree $r$ consists of $r$ transported curvature slots and a
+finite coefficient array $c_\alpha$, where $\alpha$ records one color
+coordinate for each slot. Write $d(a)$ for the sum of the slot lengths and
+\[
+   b_\sigma(a)=\sum_\alpha |c_\alpha|e^{\sigma d(a)}.
+\]
+The corresponding local function is the polynomial in those $r$ slot
+values. For a sequence $a_i$, its absolute activity budget is
+\[
+   \sum_i b_\sigma(a_i)\leq A.
+\]
+Gauge invariance means that simultaneous adjoint rotation of all slot
+arguments leaves each polynomial unchanged. These are precisely the two
+properties of the cubic and quartic streams used below.
+
+\begin{proposition}[Uniform coefficient picture for an atom stream]
+\label{prop:ex-atom-stream-picture}
+Fix $r,t\in\mathbb N$, $r\leq4$, and $\sigma>0$. There are constants
+$\eta_{r,t}>0$ and $C_{r,t}<\infty$, depending only on $G,r,t,\sigma$,
+such that the following holds. If $\sum_i b_\sigma(a_i)\leq A$, then the
+translation sum of the local atom functions has an exact order-$(t+1)$
+Fourier coefficient picture $P_{r,t}$. Its components are holomorphic on
+the independent momentum strip of width $\eta_{r,t}$, have uniform bound
+\[
+       \|P_{r,t}\|_{\eta_{r,t}}\leq A C_{r,t},
+\]
+and represent the finite-volume Taylor coefficient on every torus. At
+nonzero total momentum the coefficient vanishes; at zero total momentum it
+is the torus cardinality times the picture value. The bound is independent
+of the torus side and of the number of atoms.
+
+If the atoms are gauge invariant, the same conclusion holds for their
+orientation-averaged action, with the price multiplied by
+\[
+       \exp((t+1)^2\eta_{r,t}).
+\]
+\end{proposition}
+
+\begin{proof}
+The one-slot estimate in the proof of
+Proposition~\ref{prop:ex-row-quadratic-price} gives, on one common complex
+ball about the physical identity, a bound
+\[
+       |s_{\nu,\alpha_\nu}(z)|
+       \leq S_G e^{(\sigma/2)\ell_\nu}.
+\]
+It was obtained from the complexified skew-color projection of the forward
+slot string minus its reverse; thus it applies to the real color
+coordinates and their complex-linear extension. Multiplying the $r$ slot
+bounds and summing the coefficient magnitudes gives
+\[
+       |a_i^{\mathbb C}(z)|
+       \leq S_G^r b_{\sigma/2}(a_i).
+\]
+The complex extension is entire in the finitely many link variables in the
+atom's stencil. Cauchy's derivative estimate on nested balls of radii
+$R,R/2,\ldots,R/2^{t+1}$ bounds the normalized order-$(t+1)$ derivative by
+\[
+ b_{\sigma/2}(a_i)S_G^r
+       \frac{\operatorname{circleTax}(R,t+1)}{(t+1)!}.
+\]
+Here $\operatorname{circleTax}(R,0)=1$ and
+$\operatorname{circleTax}(R,k+1)=\operatorname{circleTax}(R,k)/(R/2^{k+1})$;
+the factorial is the Taylor coefficient normalization.
+
+The local coefficient picture inserts one Fourier character for each of
+the $t+1$ differentiated slots. A slot support lies in the four-dimensional
+box of radius at most $d(a_i)$. On a momentum strip of width $\eta$, the
+imaginary part of each plotted momentum is bounded coordinatewise by
+$(t+1)\eta$. Hence the product of the $t+1$ characters is bounded by
+\[
+       \exp\bigl(4(t+1)^2\eta d(a_i)\bigr).
+\]
+Choose $\eta=\sigma/(8(t+1)^2)$, so
+$4(t+1)^2\eta=\sigma/2$. The resulting term price is bounded by
+\[
+ b_{\sigma/2}(a_i) S_G^r
+ \frac{\operatorname{circleTax}(R,t+1)}{(t+1)!}
+ e^{(\sigma/2)d(a_i)}
+ = C_{r,t} b_\sigma(a_i),
+\]
+where $C_{r,t}=S_G^r\operatorname{circleTax}(R,t+1)/(t+1)!$.
+Thus the coefficient pictures form a normally convergent series on every
+smaller strip. The same majorant on the common complex link ball permits
+termwise differentiation of the atom series before extracting any
+momentum coefficient. This proves analyticity and the claimed uniform
+bound.
+
+For the finite-volume identity, translate the local atom over all anchors.
+The sum of its characters is the finite-torus character sum: it is zero
+unless the total momentum is zero, and equals the number of sites when the
+total momentum is zero. The local picture is defined on a cover box large
+enough to contain the stencil, then pulled back by the wrapping map. This
+keeps the identity exact even on small tori where different cover points
+wrap to the same link. Absolute summability just proved permits exchanging
+the atom sum, derivative, and finite anchor sum.
+
+For an orientation $s$, the picture transforms by multiplying the $t+1$
+reflected-character fees and evaluating the original picture at the
+inverse-permuted direction labels and transformed independent momenta.
+Each fee has strip price at most $e^{(t+1)\eta}$, because its plotted
+momentum has coordinatewise imaginary parts bounded by $(t+1)\eta$.
+The product therefore costs at most $e^{(t+1)^2\eta}$. The normalized
+finite orientation average preserves this bound by the triangle
+inequality, and its coefficient identity is the average of the exact
+finite-volume identities. This proves the final assertion.
+\end{proof}
+
+\subsection{The finite gauge-variation identity}
+
+A coefficient picture of order $t$ records the normalized $(t+1)$st
+Taylor coefficient. For an external color word $v$, color run $a$, and
+independent momentum tuple $p$, its one-leg contraction at leg $j$ is
+\[
+ (\mathcal C_jP)_{v,a}(p)=
+   \sum_{\mu\in\mathcal A}q(p_j,\mu)
+       P_{v,\operatorname{update}(a,j,\mu)}(p),
+ \qquad q(p_j,\mu)=e^{ip_{j,\mu}}-1,
+\]
+where $\mathcal A$ is the finite set of spatial axes. The color word
+$v$ is held fixed; the sum is over the spatial difference axis.
+
+\begin{lemma}[Ward partition identity]
+\label{lem:ex-ward-partition}
+Let $m_k\to\infty$, and let $F_k$ be real analytic, gauge invariant
+actions with $DF_k(0)=0$. Suppose an order-$t$ picture $P$ is uniformly
+bounded on a momentum strip and records the $(t+1)$st coefficient of
+$F_k$ exactly on every torus. Suppose further that for each
+$b=2,\ldots,t$ there is a uniformly bounded order-$(b-1)$ picture
+recording the $b$th coefficient, with each of its entries of ray order
+at least $s$. Then each contraction $\mathcal C_jP$ has ray order at
+least $s$.
+\end{lemma}
+
+\begin{proof}
+Differentiate the composition of $F_k$ with the infinitesimal gauge
+change $t+1$ times. The chain rule is the finite sum over ordered set
+partitions of the $t+1$ slots. Gauge invariance makes this sum zero:
+the pure-gauge bundle has no component in the distinguished gauge
+coordinate. The all-singleton partition is, by the exact coefficient
+record, $-|\Lambda_{m_k}|(t+1)!\,\mathcal C_jP$. The factor
+$q(p_j,\mu)$ is precisely the Fourier multiplier of the one-link
+difference in the distinguished slot. The one-block term vanishes since
+$DF_k(0)=0$.
+
+For a partition with $b$ blocks, $2\leq b\leq t$, the lower recorded
+picture has order $b-1$ because it records the $b$th derivative. Its
+arguments are the sums of the external momenta in the corresponding
+blocks. The chain-rule contribution is a finite sum of products of this
+picture entry and continuous block-derivative coefficients; it therefore
+has ray order at least $s$. Thus on the finite period mesh the
+contraction is a finite sum of such lower terms divided by the positive
+factor $|\Lambda_{m_k}|(t+1)!$. Every real momentum tuple is a limit of
+zero-total-momentum mesh tuples: round the $t$ independent momenta to the
+period mesh, and set the remaining momentum (the first, distinguished
+leg) to their negative sum, retaining the integer winding in the momentum
+lift. Exact recording gives the same factor $|\Lambda_{m_k}|$ in the top
+and each lower coefficient. Cancel this common volume factor in the
+finite-mesh identity before passing to the limit. The lower terms are
+continuous, so the identity passes to every real tuple. Their finite sum
+has ray order $s$, proving the claim.
+\end{proof}
+
+\begin{lemma}[Recovering powers from the contracted kernel]
+\label{lem:ex-ward-rays}
+Assume the picture entries are analytic at zero. For every fixed color
+word and run with at least one independent momentum variable, contractions
+of ray order at least two imply that each entry has ray order at least
+one. If the contractions have ray order at least three and there are at
+least two independent momentum blocks (equivalently, at least three
+external legs), then each entry has ray order at least two.
+\end{lemma}
+
+\begin{proof}
+The first-order expansion $q(\lambda p_j,\mu)=i\lambda p_{j,\mu}
++O(\lambda^2)$ shows, after dividing a contraction of order two by
+$\lambda$, that
+\[
+ \sum_{\mu\in\mathcal A}p_{j,\mu}
+ P_{v,\operatorname{update}(a,j,\mu)}(0)=0.
+\]
+Choose $p$ supported at the unique axis which updates $a_j$ back to
+itself. Then $P_{v,a}(0)=0$. Analyticity gives ray order one.
+
+For a contraction of order three, the next coefficient, using that
+constant terms vanish, is
+\[
+ \sum_{\mu\in\mathcal A}p_{j,\mu}
+ D P_{v,\operatorname{update}(a,j,\mu)}(0)[p]=0. \tag{WR}
+\]
+Fix leg $j$ and a vector $w$ whose $j$th block is zero. Let $q$ be the
+coordinate unit vector on leg $j$ at the axis that updates $a_j$ back
+to itself. Evaluate (WR) at $q+w$ and subtract its value at $q$. Only
+the selected axis remains, giving
+$DP_{v,a}(0)[w]=0$. The equation at $q$ also gives
+$DP_{v,a}(0)[q]=0$. Thus the derivative vanishes on all vectors
+transverse to leg $j$. With two distinct legs, split any vector into a
+part supported on the first and a part with that leg zero; apply the
+transverse conclusion using the other leg for the first part and the
+first leg for the second. The full differential vanishes. Together with
+the vanishing constant term, this gives ray order two.
+\end{proof}
+
+\subsection{Cubic and quartic terms}
+
+Let $A^{(3)}_i$ and $A^{(4)}_i$ be gauge-invariant atom streams of degrees
+three and four, each with activity budget at most $A$ at width $\sigma$.
+Write $T_r$ for their finite signed-orientation-averaged translation sums.
+
+\begin{proposition}[Two soft pictures for the curvature sum]
+\label{prop:ex-extra-curves}
+If $m_k\to\infty$, there are $\eta_*>0$ and $K_*<\infty$, depending
+only on $G,\sigma$, such that
+\[
+        F_k=T_3(m_k)+T_4(m_k)
+\]
+has exact recorded pictures $P_2$ of order $2$ and $P_3$ of order $3$ with
+uniform price at most $A K_*$. The first picture has vanishing order $2$;
+the second has vanishing order $1$. The functions $F_k$ are analytic,
+gauge invariant, and vanish to order at least three at zero.
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:ex-atom-stream-picture} to each of the four
+choices
+\[
+       (r,t)=(3,2),(3,3),(4,2),(4,3).
+\]
+For each fixed $t$, add the degree-three and degree-four pictures. Their
+recording identities add exactly, and their prices add. Choose the minimum
+of their four positive widths and the sum of their four finite price
+constants; this yields one $\eta_*$ and one $K_*$, uniform over the stream
+and all periods.
+
+The individual atom series vanish to at least their degree at zero, because
+each transported curvature slot vanishes there. Absolute convergence of
+the differentiated series preserves these vanishing orders, so $F_k$ has
+order at least three. Gauge invariance is preserved by the finite
+orientation average. The zero picture records its second Taylor
+coefficient, and the zero first derivative is automatic. Thus the
+order-two picture supplies the lower-order coefficient needed for the
+order-three Ward argument.
+
+Apply Lemma~\ref{lem:ex-ward-partition} with $t=2$ to the order-two
+picture. The zero lower coefficient and the order-three vanishing of
+$F_k$ give contractions of order three. Lemma~\ref{lem:ex-ward-rays}
+then upgrades the order-two picture to vanishing order two. For the
+order-three picture, apply Lemma~\ref{lem:ex-ward-partition} with $t=3$;
+the zero second coefficient and the order-two picture just obtained supply
+the lower-order data at block lengths two and three. The contractions
+vanish to order two, and Lemma~\ref{lem:ex-ward-rays} gives vanishing
+order one for the order-three picture. These are the two claimed Ray
+orders.
+\end{proof}
+
+\subsection{The curvature stream and the Wilson subtraction}
+
+For a path family $R$, write
+\[
+  C_k=\sum_{i\geq0}\operatorname{turn}(R^{(3)}_i)(m_k)
+      +\sum_{i\geq0}\operatorname{turn}(R^{(4)}_i)(m_k),
+  \qquad
+  I_k=\operatorname{intended}(p,R;m_k),\quad W_k=\operatorname{Wilson}(m_k).
+\]
+The path bounds provide the cubic and quartic activity budgets at most
+$A$ and their gauge invariance. The curvature part satisfies
+$I_k=J_k+C_k$, where $J_k$ is the quadratic path action.
+
+\begin{proposition}[Curvature stream pictures]
+\label{prop:ex-veneer}
+Assume the cubic and quartic budgets and invariance just stated. There are
+constants $\eta_c>0$, $K_c<\infty$ such that for $k=1,2,3$ the curvature
+sequence $C_k$ has a priced, exactly recorded picture of order $k$,
+vanishing order $4-k$, with price at most $A K_c$.
+\end{proposition}
+
+\begin{proof}
+Proposition~\ref{prop:ex-extra-curves} supplies the order-two and
+order-three pictures. For order two its vanishing order is two, as
+required. For order three its vanishing order is one. The order-one
+picture is identically zero: $C_k$ vanishes to third order, so its second
+Taylor coefficient is zero. The recorded error is therefore zero, its
+price is zero, and it has any positive vanishing order. Taking the common
+minimum width and the maximum of the two prices proves the assertion.
+\end{proof}
+
+Now impose the selected metric hypotheses: a bed $B$ is attached to $R$;
+its metric row is bounded on a strip of width $\sigma$ and price $C$;
+the metric floor bound holds at every torus side and the sworn condition
+holds at each selected side $m_k$. The following estimates are the only uses of these
+assumptions. The metric-slot picture has price
+$b_0=\operatorname{bedCharge}(\sigma,C)$ and records the quadratic
+coefficient of $J_k$. The unit leader has price
+$b_1=\operatorname{bedCharge}(\sigma,1)$ and records the Wilson
+coefficient. The floor-start condition gives the zero-momentum normalization
+$B(0)=I$. The sworn identity and the attached-path Hessian identity
+identify the actual quadratic coefficient of $J_k$ with the metric-slot
+picture. In Fourier variables, the difference of the two quadratic
+pictures has the form
+\[
+       \widehat{\operatorname{curl}}(p)^*
+       (B(p)-I)\widehat{\operatorname{curl}}(p).
+\]
+Each curl factor is a one-link difference and is $O(|p|)$; analyticity
+and $B(0)=I$ give $B(p)-I=O(|p|)$. Their product therefore has ray
+order three. This is the order-one picture for $J_k-W_k$, with price
+$b_0+b_1$. The higher column pictures are supplied by
+Proposition~\ref{prop:ex-row-quadratic-price}; they record the third and
+fourth coefficients of $J_k$. The bound
+$\operatorname{bedCharge}(\sigma,D)$ is the product of the two face
+counts and the elementary exponential strip bound for the two slot
+factors, so it is independent of the torus side.
+
+The row estimate of Proposition~\ref{prop:ex-row-quadratic-price}, with
+its signed average, supplies priced pictures for $J_k$ at orders two and
+three. Proposition~\ref{prop:ex-wilson-stream} supplies the corresponding
+Wilson pictures at both orders, with price constants $X_2,X_3$ and
+positive width one. Subtracting pictures preserves exact recording and
+adds their prices.
+
+\begin{proposition}[The selected Wilson-subtracted response]
+\label{prop:ex-greyson}
+Assume that $R$ has path bounds $(\tau,A,\Lambda)$. Its attached bed has
+metric strip bound $(\sigma,C)$, the floor holds at every torus side, and
+the sworn condition holds at each $m_k$. Also suppose
+\[
+                    0\leq p.\mathrm{direct}\leq Z.
+\]
+Then there are $s>0$ and $M<\infty$, uniform in the sequence and path,
+such that $I_k-W_k$ has exact recorded pictures of orders $j=1,2,3$,
+each priced at width $s$ and price $M$, with vanishing order $4-j$.
+One valid price is
+\[
+ M=\operatorname{bedCharge}(\sigma,C)+\operatorname{bedCharge}(\sigma,1)
+      +P_2+P_3+X_2+X_3+A K_c,
+\]
+where $P_2,P_3$ are the two row-action prices from
+Proposition~\ref{prop:ex-row-quadratic-price}, and $K_c$ is from
+Proposition~\ref{prop:ex-veneer}. One valid width is the minimum of
+$\sigma$, $1$, the two row widths, and $\eta_c$.
+\end{proposition}
+
+\begin{proof}
+Set $F_k=J_k-W_k$. Let $S_1$ be the metric-slot picture minus the unit
+leader picture. It records the second Taylor coefficient of $F_k$, has
+price $b_0+b_1$, and has vanishing order three by the floor and zero-metric
+normalization. In the notation of the Ward lemma it is the lower picture
+of order one for $F_k$. Let $S_2$ be the row picture for $J_k$ minus the
+order-two Wilson picture, and let $S_3$ be the order-three row picture
+minus the order-three Wilson picture. They exactly record the third and
+fourth Taylor coefficients of $F_k$ and have prices at most $P_2+X_2$
+and $P_3+X_3$.
+
+The action $F_k$ is gauge invariant and has zero first derivative. For
+$t=2$, apply Lemma~\ref{lem:ex-ward-partition} to $S_2$, with the single
+lower picture $S_1$; the resulting contraction has vanishing order three,
+and Lemma~\ref{lem:ex-ward-rays} gives vanishing order two for $S_2$.
+For $t=3$, apply the partition lemma to $S_3$, using $S_1$ and the now
+improved $S_2$ at its two lower block counts. The contraction has
+vanishing order two, so the same recovery lemma gives vanishing order one
+for $S_3$. This supplies the exact three records and prices required for
+$F_k$.
+
+The cubic and quartic terms $C_k$ have the order-one, order-two, and
+order-three pictures of Proposition~\ref{prop:ex-veneer}. Add the
+order-$j$ picture of $C_k$ to the order-$j$ picture of $F_k$ for each
+$j=1,2,3$. The sum records
+$F_k+C_k=I_k-W_k$ exactly. Its price is bounded by the displayed $M$,
+and its vanishing order is at least $4-j$, since the order of a sum is
+at least the minimum order of its summands. Taking the common minimum
+strip width gives $s$.
+\end{proof}
+
+\subsection{From coefficient pictures to local response arrays}
+
+We state the finite conversion in its concrete two-sided form. For
+$j=1,2,3$, a coefficient picture $P_j$ records exactly the normalized
+$(j+1)$st derivative of $U_m$ on every finite torus. It is uniformly
+priced at width $s$ if each entry is holomorphic and bounded by the same
+constant on the independent-momentum strip of width $s$. It has ray
+order $r$ if, on every real ray through zero, each entry is
+$O(|\lambda|^r)$. For an analytic entry this means every Taylor
+homogeneous polynomial below degree $r$ vanishes: evaluating that
+polynomial on each real direction gives zero, hence the polynomial is
+identically zero. Thus ray order $r$ supplies exactly the
+Taylor-vanishing hypothesis used in Lemma~\ref{lem:ex-soft-factorization}.
+The required input at level $j$ is ray order $3-j$.
+
+For $n=0,1,2$, an external color address is an $(n+2)$-tuple of
+one-link color-coordinate labels, each a pair consisting of a spatial
+axis and a Lie-color basis index. The multilinear test fields $w_r$
+carry the corresponding link and site dependence.
+The stitch address set $\mathsf{St}_n$ is the set of ordered
+$(2-n)$-tuples from $\{0,\ldots,n\}\times\mathcal A$. The fixed rule
+$\ell_n$ routes each key $(r,\mu)$ to its assigned response leg and axis:
+for $n=0$ the two keys are routed to legs zero and one; for $n=1$ its
+single key $(r,\mu)$ is routed to leg $r+1$; and for $n=2$ there are no
+keys. Let $\mathsf{Shift}_n$ be the integer lattice on the $(n+1)$
+independent momentum-axis coordinates. A response
+array is a map
+\[
+ F_n:\mathsf{Color}_{n+2}\times\mathsf{St}_n\times
+       \mathsf{Shift}_n\longrightarrow\mathbb C.
+\]
+Its width at $\eta$ is the supremum, over the finite color and stitch
+addresses, of
+\[
+ \sum_{z\in\mathsf{Shift}_n}e^{\eta|z|_1}|F_n(b,i,z)|.
+\]
+The stitched Fourier picture is
+\[
+ \widetilde Q_n(b,p)=\sum_{i\in\mathsf{St}_n}
+  \left(\prod_{r=0}^{n+1}\prod_{e\in\ell_n(i)_r}
+       (e^{i\,\mathrm{plot}_r(p)\cdot e}-1)\right)
+       \sum_z F_n(b,i,z)e^{ip\cdot z}.
+ \tag{SR1}
+\]
+Here $\mathrm{plot}_r(p)$ are the $n+2$ external momenta: the first is
+minus the sum of the $n+1$ independent momenta, and the remaining ones
+are those independent momenta in order. For $n=0$ the two listed
+differences are distributed one per leg; for $n=1$ there is one
+difference, and for $n=2$ there are none.
+
+To state the response identity, split a link fluctuation into two
+species $x_+,x_-$ and write
+$\mathsf D_m(x)=\operatorname{content}(\operatorname{input}(x_+)
+\operatorname{input}(x_-))$. Let $v_n$ put species $-$ in the first $n$
+slots and species $+$ in the final two. Let $\mathcal R_{n,m}(U_m)$ be the $(n+2)$-linear derivative of
+$U_m\circ\mathsf D_m$ at zero, restricted to those species in that
+order; it is a tensor whose components are indexed by external color
+addresses $b$. For a list of axes $\ell=(e_1,\ldots,e_r)$, let
+$\Delta_\ell=(T_{e_1}-I)\cdots(T_{e_r}-I)$ be the corresponding product
+of translated one-link differences. For a test tuple $w=(w_0,\ldots,w_{n+1})$,
+define
+\[
+ \operatorname{Local}_{m,\ell_n(i)}(F_n(b,i,\cdot))[w]
+ =\sum_z F_n(b,i,z)\sum_{x\in\Lambda_m}
+   \prod_{r=0}^{n+1}
+   (\Delta_{\ell_n(i)_r}w_r)
+      (x+\operatorname{wrap}_m(\operatorname{lane}_r(z)),b_r).
+\]
+Here $\operatorname{lane}_0(z)=0$, while $\operatorname{lane}_r(z)$ for
+$r\geq1$ is the shift in the $(r-1)$st independent momentum coordinate.
+The width bound makes the Laurent sum absolutely convergent. The response
+identity required below is componentwise and multilinear:
+\[
+ (\mathcal R_{n,m}(U_m))_b[w]
+   =\sum_{i\in\mathsf{St}_n}
+       \operatorname{Local}_{m,\ell_n(i)}(F_n(b,i,\cdot))[w]
+       \qquad(b\in\mathsf{Color}_{n+2}).
+ \tag{SR2}
+\]
+\begin{lemma}[Finite difference division]
+\label{lem:ex-soft-factorization}
+Let $E$ be a finite set of phase coordinates. Suppose $f$ is $2\pi$-periodic in each coordinate and holomorphic,
+bounded by $A$ on a strip of width $s>0$, and its Taylor expansion at zero
+has no terms of degree below $q$. Then on a narrower strip it has a finite
+representation
+\[
+ f(p)=\sum_{(a_1,\ldots,a_q)\in E^q}
+        \prod_{r=1}^q(e^{ip_{a_r}}-1)\,g_{a_1,\ldots,a_q}(p),
+\]
+where the residual functions are holomorphic on width at least
+$s/2^q$ and uniformly bounded there by $A C(E,q,s)$. For $q=0$ take the
+one-term representation $g=f$.
+\end{lemma}
+
+\begin{proof}
+For $J\subseteq E$, write $p^{[J]}$ for $p$ with the coordinates in $J$
+set to zero. For each $a$, periodicity implies that
+$f(p)-f(p^{[\{a\}]})$ vanishes whenever $p_a\in2\pi\mathbb Z$.
+Consequently it is divisible, as a holomorphic periodic function, by
+$d_a(p)=e^{ip_a}-1$. The quotient is removable at every zero. On a
+fundamental real period cell, away from fixed neighborhoods of these
+zeros the denominator is bounded below; inside those neighborhoods the
+quotient is bounded by Cauchy's estimate on a narrower strip. Thus
+\[
+ f(p)-f(p^{[\{a\}]})=d_a(p)g_a(p)
+\]
+with a uniform bound for $g_a$. In the telescoping identity over $J$,
+replace $f$ at each step by the function with the previously selected
+coordinates staged to zero. Each corresponding quotient lowers the
+vanishing order by one. Induction on $q$ applied to these residuals
+therefore yields the displayed finite sum. At most $|E|^q$ terms occur;
+at each division, Cauchy's estimate on the current strip of width $r$
+bounds the quotient on width $r/2$; after $q$ divisions the residual
+strip has width $s/2^q$. Each step multiplies the bound by a constant
+depending only on $E,q,s$. The fully
+staged term is zero by the order-$q$ hypothesis. This proves the result.
+\end{proof}
+
+For the local response array, the number of factors is $q=2-n$, not
+$n$. If $n=1,2$, apply the factorization to every picture entry with
+$q=2-n$ differences and place them on the prescribed stitch legs. For
+$n=0$, two factors are required, one on each of the two response legs.
+The division first gives the two factors in the single independent
+momentum; the second is moved to the other leg by the exact identity
+\[
+ q(p,\mu)=-\operatorname{mode}(p,\operatorname{step}\mu)q(-p,\mu).
+\]
+The phase is absorbed into the Laurent coefficient, with its strip cost
+included in the constant. Thus this construction yields precisely the
+three stitch patterns: two factors for $n=0$, one for $n=1$, and none for
+$n=2$.
+
+To control the Laurent width, let $g$ be one residual, bounded by $B$
+on a strip of width $\eta$. Shifting the contour in each periodic
+coordinate gives $|\widehat g(\nu)|\leq B e^{-\eta|\nu|_1}$. At width
+$\eta/2$,
+\[
+ \sum_{\nu}e^{(\eta/2)|\nu|_1}|\widehat g(\nu)|
+ \leq B\left(\sum_{k\in\mathbb Z}e^{-(\eta/2)|k|}\right)^{|E|}
+ =B\left(1+\frac{2}{e^{\eta/2}-1}\right)^{|E|}.
+\]
+Thus each residual defines a Laurent entry with a quantitative width
+bound; summing the at most $|E|^q$ residuals multiplies it by that finite
+factor. This is the coefficient-norm estimate used in the array
+construction.
+
+We now verify the response identity and its price using the actual
+mixed-field composition. Let $D(x)$ be the local map which forms the
+product of the two split fields and then takes its logarithmic link
+coordinate. For a Boolean word $v$ on the external slots, the response
+of $U_m$ is the corresponding mixed derivative of $U_m\circ D$ at zero.
+At level $n$, the word has $n$ entries of the first species followed by
+two entries of the second species; its length is $n+2$.
+
+For a set partition $\pi$ of these $n+2$ slots into $b$ nonempty blocks,
+order the blocks canonically by their least slot. The chain rule gives
+the derivative of $U_m$ of order $b$ evaluated at the sums of external
+momenta in the blocks, multiplied by the derivatives of $D$ on each
+block. The single-block term is zero because $DU_m(0)=0$. For
+$2\leq b\leq n+2$, the action coefficient has picture order $b-1$.
+Its available ray order is $3-(b-1)=4-b$, which is at least
+$2-n$. Thus every term in the mixed response picture has ray order
+$2-n$ and is analytic on a common narrower strip.
+
+More explicitly, for a partition $\pi$ and a basis phase assignment $w$,
+the corresponding mixed coefficient is
+\[
+ b!\sum_{a_1,\ldots,a_b}
+       \left(\prod_{r=1}^{b}c_{\pi,r}(a_r;w_r)\right)
+       P_{b-1}\bigl(a_1,\ldots,a_b;
+            \textstyle\sum_{j\in \pi_1}p_j,\ldots,
+                      \sum_{j\in \pi_b}p_j\bigr),
+\]
+where $c_{\pi,r}(a_r;w_r)$ is the coordinate coefficient of the derivative
+of $D$ on block $r$. The factorial is the normalization between the
+symmetric derivative picture and the raw $b$th action derivative; it does
+not enumerate permutations of the blocks. If the input pictures are
+bounded by $A$, its absolute price is
+bounded by
+\[
+ A b!\sum_{a_1,\ldots,a_b}
+       \prod_{r=1}^{b}|c_{\pi,r}(a_r;w_r)|.
+\]
+Summing the absolute coefficient multiplier (the displayed sum without
+the input price $A$) over partitions, color basis labels, and phase basis
+labels defines the response constant $P_n$.
+These coefficients are uniformly finite: the map $\mathsf D_m$ is the
+same pointwise product-and-log map on each link. On a fixed identity
+neighborhood in the finite-dimensional gauge group, this map is analytic
+and bounded. Cauchy's estimate on a smaller ball bounds every derivative
+of order at most four by a constant depending only on the group and the
+order. The number of partitions and color/phase labels is finite, so
+$P_n<\infty$ independently of $m$.
+The common analytic strip for the mixed picture can be chosen as
+\[
+       s_n=\frac{s}{(n+3)^2}.
+\]
+Every independent external momentum has imaginary coordinates at most
+$s_n$, and the missing momentum, their negative sum, has coordinates at
+most $(n+1)s_n$. A block sum of at most $n+2$ external momenta therefore
+has imaginary coordinates at most $(n+2)(n+1)s_n<s$. Thus the input
+pictures can be evaluated at every block sum. The mixed picture is
+bounded by $A P_n$ on width $s_n$ when the input picture prices are at
+most $A$.
+
+For each entry of the mixed picture $\widetilde Q_n$, finite difference
+division now produces the prescribed $2-n$ stitch factors and residual
+functions on width $d_n=s_n/2^{2-n}$. Shifting each contour within the
+smaller strip of width $d_n/2$ gives Laurent coefficients bounded by
+$B e^{-(d_n/2)|z|_1}$ when the residual supremum is $B$. At array width
+$d_n/4$, their weighted sum is bounded by
+\[
+ B\left(1+\frac{2}{e^{d_n/4}-1}\right)^{D_n},
+\]
+where $D_n$ is the finite number of independent Laurent coordinates.
+The number of partitions and addresses is finite, so all residuals
+assemble into a response array of width at most $A C_n$ for a constant
+$C_n$ depending only on the finite labels and input width.
+
+To check exactness, evaluate the factorization on a finite torus. Each
+Laurent term is absolutely summable by its weighted width. Its spatial
+translation sum is a finite character sum; orthogonality makes it zero
+unless total momentum is zero, in which case it equals the number of
+sites. The coefficient picture recording identity then identifies the
+sum with the mixed derivative of $U_m\circ D$. This is the exact
+finite-volume response identity, not only equality of Taylor polynomials.
+
+\begin{proposition}[Three-level response arrays]
+\label{prop:ex-three-level-conversion}
+Let $U_m$ be real analytic, with $U_m(0)=0$ and $DU_m(0)=0$. Suppose it
+has exact coefficient pictures $P_j$ at orders $j=1,2,3$, whose entries
+are $2\pi$-periodic in each phase coordinate, bounded on one common strip
+of width $s>0$, and have ray orders at least $3-j$. Then there
+are a common positive strip
+width $\eta_*$ and a finite constant $C_*$ such that the response arrays
+at levels $n=0,1,2$ satisfy (SR1), the exact finite-period response
+identity, and width at most $C_*$ times the sum of the three input
+picture prices, uniformly in $m$.
+\end{proposition}
+
+\begin{proof}
+For each $n$, first form the mixed picture $\widetilde Q_n$ by the
+ordered-partition chain rule. Every term is the input picture
+$P_{|b|-1}$ at the block-summed momenta, multiplied by the block
+coefficients. The one-block term is zero. Since $P_{|b|-1}$ has ray
+order $4-|b|\geq2-n$, the mixed picture has ray order $2-n$. Apply the
+finite difference lemma to $\widetilde Q_n$ with $q=2-n$ and assign the
+factors to the prescribed legs; for the two-leg split use the phase
+identity above. The finite character sum proves the response identity.
+The Laurent estimate bounds the width. For each $n=0,1,2$, let $C_n$ be the finite price multiplier from the
+ordered-partition and division construction, including the Laurent
+coefficient sum. For the common input strip $s$, the mixed-picture strip at
+level $n$ is $s_n=s/(n+3)^2$, and the residual strip is
+$d_n=s_n/2^{2-n}$. Choose
+\[
+ \eta_* =\min_{0\leq n\leq2}(d_n/4),\qquad
+ C_*=C_0+C_1+C_2.
+\]
+Then all arrays have width at most $C_*$ times the sum of the three input
+picture prices. These finite constants and the positive width are
+independent of the period and action.
+\end{proof}
+
+The division and response construction above outputs an array of exactly
+this type. The factorization proves (SR1) entrywise. The finite-volume
+character identity proves (SR2); Laurent absolute convergence justifies
+the sum over shifts. Thus the exact response is supplied at each finite
+period, not merely in the limiting Taylor series.
+
+Apply the conversion to $I_m=(I_m-W_m)+W_m$. Proposition
+\ref{prop:ex-greyson} supplies pictures with ray orders $3,2,1$ at
+orders $1,2,3$. The Wilson pictures have ray orders $2,1,0$, so the sums
+have the required orders $2,1,0$. Their exact records and prices add.
+The value and first derivative of $I_m$ vanish by the quadratic
+normalization and cubic vanishing of the curvature part. We obtain three
+uniformly priced response arrays.
+Let $M_g$ denote the displayed price in Proposition~\ref{prop:ex-greyson},
+and let $P_W$ be the sum of the leader and the two higher Wilson picture
+prices. The common array width is bounded by
+$K=3C_*(M_g+P_W)$.
+
+Define the mockup width property by the common Laurent bound above at each
+level $n\leq2$, and define its response property to be (SR2) at every
+such level. Then the theorem below supplies both properties, conventionally
+called the width and exact-response requirements for the three mockups.
+
+\begin{theorem}[Selected soft-response arrays]
+\label{thm:ex-soft-response-mockups}
+Fix $\sigma>0$, $M,Z,A\geq0$, $\tau>0$, and $\varepsilon\in\mathbb R$. There are
+$\eta>0$ and $K<\infty$ such that for every divergent period sequence
+$m_k$, clip $p$, path family $R$, attached bed $B$, and $\Lambda\geq0$
+satisfying
+\[
+ p.\mathrm{direct}\leq Z,\quad R.\mathrm{Bounds}(p,\tau,A,\Lambda),\quad
+ B\text{ attached to }R,\quad B.\mathrm{metric.strip}(\sigma,M),
+\]
+with $\mathrm{Floor}(B,p,n,\varepsilon,M)$ for every torus side $n$,
+and the sworn metric identity at each selected side $m_k$. Put
+$U_{m_k}=\operatorname{intended}(p,R;m_k)$. Then these actions admit arrays
+$F_0,F_1,F_2$ of width at most $K$ satisfying (SR1) and (SR2) on every
+period. Set $F_n=0$ for $n>2$. One may take $K=3C_*(M_g+P_W)$, where $M_g$ is the price displayed in
+Proposition~\ref{prop:ex-greyson}, $P_W$ is the finite Wilson picture
+price, and $C_*$ is the finite response-array multiplier above. The
+constants $\eta,K$ depend only on the listed scalar bounds and the fixed
+gauge and finite coordinate sets.
+\end{theorem}
+
+\begin{proof}
+The Wilson-subtracted proposition supplies order-$j$ pictures of ray
+orders $4-j$, for $j=1,2,3$. The Wilson pictures have ray orders
+$3-j$. Their sums therefore have the required ray orders $3-j$. Prices
+and exact recording identities add. The quadratic normalization and the
+cubic vanishing of the curvature part give $U_m(0)=0$ and
+$DU_m(0)=0$. Apply Proposition~\ref{prop:ex-three-level-conversion}.
+Its finite constants depend only on the listed bounds and the finite
+color, phase, and stitch sets, so the common width and price are uniform
+in the path, period, and selected action.
+\end{proof}
+
+\paragraph{Scope.}
+This section proves the uniform atom, Ward, and Wilson-subtracted
+coefficient estimates, together with the finite division and the exact
+stitched response identity. The dependence of downstream applications on
+the displayed metric, floor, and sworn hypotheses remains as stated.

@@ -1,0 +1,232 @@
+\section{Spacelike exchange and locality}
+\label{sec:locality}
+We prove that exchanging two adjacent spacelike-separated insertions does
+not change the boundary distribution. The argument keeps all the other
+insertions present. It first makes the two tube functions analytic near a
+partial boundary with one tied imaginary-time gap. Euclidean symmetry
+identifies their germs when the real times vanish. Analytic continuation
+along a path then identifies them at arbitrary spacelike configurations.
+Finally their partial boundary distributions agree, and the remaining
+imaginary heights can be removed.
+
+Fix adjacent slots $i,j=i+1$ and let $\sigma$ exchange them. It acts on
+tuples of labels, real points and complex points by the same permutation.
+Put
+\[
+ O_{ij}=\{X:X_j-X_i\text{ is spacelike}\}
+       =\{X:|X_j^0-X_i^0|<|\mathbf X_j-\mathbf X_i|\}.
+\]
+Choose scalar heights $y$ with $y_i=y_j$ and with every other ordered
+pair strictly increasing. Then $d(y)\in C_n$ and $\sigma d(y)=d(y)$.
+The point $X+i d(y)$ lies in the closures of both $\mathcal T_n$ and
+$\sigma^{-1}\mathcal T_n$: strictly separate the tied heights in the
+appropriate order by arbitrarily small amounts. The functions to be
+compared are
+\[
+ z\longmapsto H_n(v;z),\qquad
+ z\longmapsto H_n(v\circ\sigma;\sigma z).
+\]
+
+\subsection{Small imaginary boosts enter both tubes}
+For a spatial unit vector $e$, write, in time-first coordinates,
+\[
+ C_e(t,\mathbf x)=(e\cdot\mathbf x,te),\qquad
+ P_e(t,\mathbf x)=(t,(e\cdot\mathbf x)e).
+\]
+The boost and its entire complex extension are
+$B_e(z)=I+\sinh z\,C_e+(\cosh z-1)P_e$.
+For a spacelike vector $a$, the choice
+$e=\mathbf a/|\mathbf a|$ gives
+$C_ea=(|\mathbf a|,a^0e)\in V_+$.
+
+\begin{lemma}\label{lem:imaginary-boost-path}
+For $X\in O_{ij}$ and $q=X+i d(y)$ there are $e$ and $\tau>0$ such that
+$B_e(i\tau)q\in\mathcal T_n$ and
+$\sigma B_e(-i\tau)q\in\mathcal T_n$.
+Moreover, for all $z$ sufficiently close to $q$ in $\mathcal T_n$,
+$B_e(ib)z\in\mathcal T_n$ for every $0\leq b\leq\tau$.
+For all $z$ sufficiently close to $q$ in $\sigma^{-1}\mathcal T_n$,
+$\sigma B_e(-ib)z\in\mathcal T_n$ throughout the same interval.
+\end{lemma}
+\begin{proof}
+Take $e$ from the spacelike difference $X_j-X_i$ as above.
+For any adjacent difference $z_{k+1}-z_k$, write its real and imaginary
+parts as $x$ and $Y$. The imaginary part after the positive imaginary
+boost is
+\begin{equation}\label{eq:boost-imaginary-gap}
+ Y+\sin b\,C_ex+(\cos b-1)P_eY.
+\end{equation}
+At $q$, every gap other than $(i,j)$ has $Y\in V_+$. By openness and
+continuity those finitely many transformed gaps remain in $V_+$ for
+$(b,z)$ in a product neighborhood of $(0,q)$.
+At the distinguished gap $Y=0$ and $C_ex\in V_+$. For small $b$ rewrite
+\eqref{eq:boost-imaginary-gap} as
+\[
+ Y+\sin b\left(C_ex-\frac{\sin b}{1+\cos b}P_eY\right).
+\]
+The bracket is continuous near $(0,q)$ and lies in $V_+$ there, after
+shrinking the neighborhood. For $0<b<\pi$, the sine is positive.
+If $Y\in\overline V_+$, the sum is strictly in $V_+$: the spatial
+triangle inequality shows that a closed forward-cone vector plus a
+positive multiple of a strict one is strict.
+
+For the negative boost followed by the exchange, the original tied gap
+is reversed and the sine changes sign. Its inward vector is again
+$C_e(X_j-X_i)$. All other imaginary gaps at $q$ remain strictly forward,
+since the tied heights agree and are the only tie. The same neighborhood
+argument applies. Take a common product neighborhood for both orientations
+and all gaps, and choose $\tau>0$ inside its positive parameter interval.
+At $q$ the closed-gap condition gives the two strict endpoints. At nearby
+interior points it gives strictness for $b>0$, while $b=0$ follows from
+membership in the relevant original tube. This proves the asserted
+uniform path property, including its endpoint at zero.
+\end{proof}
+
+\subsection{Holomorphic germs across the tied gap}
+The labels in any finite tuple lie in one common finite-dimensional level.
+On that level the continuous representation $r\mapsto\rho(B_e(r))$
+has an entire extension. Here is the elementary argument, which uses
+operator-norm continuity only in this finite-dimensional space.
+For a continuous one-parameter group $R(r)$ in its matrix algebra, put
+$A(t)=\int_0^tR(s)\,ds$. Then $A(t)/t\to I$ as $t\to0$, so $A(a)$
+is invertible for a sufficiently small nonzero $a$. The group law gives
+\[
+ R(t)A(a)=A(t+a)-A(t).
+\]
+The right side is continuously differentiable. Thus $R$ is differentiable;
+differentiating the group law gives $R'(t)=R(t)K$, $K=R'(0)$.
+The derivative of $R(t)e^{-tK}$ is zero and its value at zero is $I$.
+Therefore $R(t)=e^{tK}$, and $R(z)=e^{zK}$ is the required entire extension.
+This construction is compatible with the finite-level inclusions, since
+the real representations are compatible and the identity theorem extends
+their equality to complex parameters.
+
+For a point $q$ and parameters supplied by
+Lemma~\ref{lem:imaginary-boost-path}, define near $q$
+\begin{align*}
+ A_q(z)&=H_n(R(i\tau)v;B_e(i\tau)z),\\
+ B_q(z)&=H_n(R(-i\tau)(v\circ\sigma);\sigma B_e(-i\tau)z).
+\end{align*}
+They are holomorphic in a neighborhood of $q$, because their arguments
+at $q$ lie strictly in the tube. They extend the respective original
+tube functions. To prove this for $A_q$, fix a nearby
+$z\in\mathcal T_n$ for which the entire path stays in the tube.
+The function of one complex parameter
+\[
+ \zeta\longmapsto H_n(R(\zeta)v;B_e(\zeta)z)
+\]
+is holomorphic on an open neighborhood of the segment $i[0,\tau]$.
+Moving labels cause no difficulty: expansion in a basis of the common
+finite level makes the expression a finite sum of holomorphic coefficients
+times the fixed-label holomorphic tube functions. For real $\zeta$ near
+zero the expression equals $H_n(v;z)$ by tube covariance. The identity
+theorem on the connected component containing the segment makes it constant
+along that segment. Its value at $i\tau$ proves the assertion.
+The same proof with the negative segment and the exchange gives the
+assertion for $B_q$.
+
+Such a germ is uniquely determined by its original tube function. Indeed,
+two candidate germs are holomorphic on a common ball about $q$ and agree
+on the intersection of that ball with the relevant open tube. This
+intersection contains a nonempty open set because $q$ is in the tube's
+closure. The identity theorem on the ball makes the germs equal.
+
+\begin{lemma}[Equality on the Euclidean slice]\label{lem:euclidean-germs}
+If every real time coordinate of $X$ is zero, then the germs $A_q$ and
+$B_q$ coincide at $q=X+i d(y)$.
+\end{lemma}
+\begin{proof}
+Let $M$ be the real-linear Wick map that sends Euclidean time to imaginary
+time and leaves spatial coordinates real. Put
+$p=((y_k,\mathbf X_k))_{k=1}^n$, so $Mp=q$.
+This is a distinct-point Euclidean configuration. All pairs other than
+$(i,j)$ have different time coordinates, and the distinguished pair has
+different spatial coordinates because its real separation is spacelike.
+The Euclidean correlation $S_v$ is consequently smooth near $p$.
+
+On the open side where the Euclidean times are strictly ordered,
+$A_q\circ M=S_v$ near $p$, by the tube restriction and pure-imaginary
+identification. On the open side where their exchanged tuple is strictly
+ordered, $B_q\circ M=S_v$, using Euclidean permutation symmetry as well.
+The point $p$ is in the closure of each side. Differentiate the respective
+identities on their open sides. For each order, continuity of the
+derivatives up to $p$ shows that the two real derivatives at $p$ both
+equal the corresponding derivative of $S_v$.
+
+The image of $M$ spans the full complex coordinate space over $\mathbb C$:
+each spatial basis vector is already in the image, and each time basis
+vector is $-i$ times an image vector. By the chain rule the real derivatives
+just compared are the restrictions of the complex multilinear derivatives
+of $A_q$ and $B_q$ to this image. Complex multilinearity and spanning make
+all their full complex derivatives equal. Their convergent local power
+series therefore agree. This proves equality of germs, rather than merely
+equality of values on the Euclidean slice.
+\end{proof}
+
+The equality propagates to every $X\in O_{ij}$. Keep its spatial coordinates
+fixed and multiply all its real time coordinates by $s\in[0,1]$.
+The distinguished separation remains spacelike throughout. Along
+$q(s)=((sX_k^0,\mathbf X_k))_k+i d(y)$ both germs exist, and both
+underlying tubes have $q(s)$ in their closures.
+Germ equality is locally constant in $s$. To verify this, choose a common
+ball where the two germs at $q(s_0)$ are holomorphic and extend their
+original tube functions. For $s$ near $s_0$, uniqueness of germs identifies
+the germs at $q(s)$ with these same functions. The identity theorem on
+the ball says that equality near either point is equivalent to equality
+near the other. Thus the set of parameters with equal germs and its
+complement are both open in $[0,1]$. Connectedness and
+Lemma~\ref{lem:euclidean-germs} at $s=0$ give equality at $s=1$.
+
+\subsection{From germs to boundary distributions}
+Let $W_{d(y),v}$ denote the partial boundary distribution
+\eqref{eq:partial-damping}. Near a given $X\in O_{ij}$ it is represented
+by the germ $A_q$ at the partial height:
+\begin{equation}\label{eq:germ-boundary-integral}
+ W_{d(y),v}(f)=\int A_q(Z+i d(y))f(Z)\,dZ
+\end{equation}
+for compactly supported smooth $f$ in a sufficiently small ball about $X$.
+Indeed, choose a smaller product neighborhood of $(X,d(y))$ on which
+the germ is bounded and agrees with the tube function at interior heights.
+For $Y\to d(y)$ through $C_n^\circ$, its integrals against $f$ converge
+to the displayed integral by dominated convergence, using a constant times
+$|f|$ as majorant. The tube boundary theorem identifies the same limit
+with $W_{d(y),v}(f)$. Applying this argument to the exchanged tube, and
+changing variables by the coordinate permutation of absolute Jacobian one,
+gives the analogous formula for
+$W_{\sigma d(y),v\circ\sigma}(f\circ\sigma)$ with germ $B_q$.
+Since these germs agree, the two distributions agree locally on $O_{ij}$.
+
+They agree on every Schwartz test whose closed support is contained in
+$O_{ij}$. For compact support, cover it by finitely many of the local
+balls and apply a smooth partition of unity. For arbitrary Schwartz
+support contained in this open set, multiply by compact cutoffs approaching
+one in the Schwartz topology; their supports remain in $O_{ij}$ and
+continuity passes the equality to the limit.
+
+\begin{theorem}[Adjacent spacelike exchange]\label{thm:spacelike-exchange}
+For every joint Schwartz test $f$ supported in $O_{ij}$,
+\[
+ W_n(v)(f)=W_n(v\circ\sigma)(f\circ\sigma).
+\]
+Consequently the reconstructed field operators commute on their common
+domain whenever their test functions have mutually spacelike supports.
+\end{theorem}
+\begin{proof}
+There is a sequence of tied profiles of the kind used above tending to zero.
+For example, with slots numbered $1,\ldots,n$, take
+$y_k^{(m)}=a_k/(m+1)$ where $a_k=k$ except $a_j=i$.
+All other ordered pairs have positive gaps, and the exchanged profile is
+unchanged. The preceding partial-distribution equality holds for each $m$.
+Continuity on the closed shift set, and $W_0=W_n(v)$, give the asserted
+equality by letting $m\to\infty$.
+
+For the operator conclusion take any two exterior words and place the
+two test functions $f_i,f_j$ between them. The closed support of their
+joint product test is contained in the inverse image of
+$\operatorname{supp}f_i\times\operatorname{supp}f_j$ under the two
+coordinate projections: wherever either factor vanishes on a neighborhood,
+so does the product. Mutually spacelike supports therefore put that joint
+support in $O_{ij}$. The distributional identity exchanges exactly these
+two letters and retains all spectators. Proposition~\ref{prop:word-locality}
+now proves that the commutator vanishes on $\mathcal D$.
+\end{proof}

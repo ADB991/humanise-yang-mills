@@ -1,0 +1,330 @@
+\section{From a seed energy gain to packet estimates}
+\label{sec:packet-estimates}
+We now supply the passage from local energy and chart estimates to the
+packet price used in Section~\ref{sec:mixed-activity-prices}. There are
+three distinct costs. Extending the energy from a seed core to its full
+support introduces a small annular error. The density and normalization
+factors introduce a polynomial logarithmic expense. Differentiating the
+packet introduces a further polynomial factor. All three are paid from
+the same energy gain per seed.
+
+Keep the scales $h,P,d,\tau,B$ of
+\eqref{eq:warning-scales}, and fix the block length, chart, shell width
+and all other local parameters before sending $x$ to infinity. All
+constants below are independent of the lattice period. For clarity,
+say that $r(x)$ has upper exponent $a$ if, for every $b>a$,
+$|r(x)|\le h(x)^b$ eventually. This permits subpower losses. Products
+add upper exponents, and a fixed finite sum preserves a common upper
+exponent: in each case choose a strictly smaller exponent than the
+one finally required and absorb fixed constants using $h\to\infty$.
+In particular $B$, $d$ and every fixed real power of $P$ have upper
+exponent zero, while $\tau$ has upper exponent $-1/2$.
+
+\subsection{Extending a core energy bound}
+Consider a packet with $n$ seeds. In each signed channel let
+$D_2\subseteq D_{200}$ be the sets of local energy addresses within
+$2B$ and $200B$ of its seeds. Their sizes satisfy
+\[
+ |D_{200}|\le n\,b_{200B+1}\,s_L,
+\]
+where $s_L$ bounds the number of local energy addresses per coarse
+site. Let $e_p$ be the assigned energy at address $p$ in that channel.
+Suppose the core energy is $\sum_{p\in D_2}e_p$ and the annular terms
+satisfy $e_p\ge-r(x)$ on $D_{200}\setminus D_2$, with $r(x)\ge0$.
+Then
+\[
+ \sum_{p\in D_{200}}e_p
+ \ge\sum_{p\in D_2}e_p-r(x)b_{200B+1}s_L n.
+\]
+Average this inequality over signed channels with their normalized
+weights. If the averaged core energy is at least $\mu\tau^2n$, the
+averaged extended energy $Q_A$ obeys
+\begin{equation}\label{eq:packet-assigned-energy}
+ Q_A\ge(\mu\tau^2-E(x))n,
+ \qquad E(x)=r(x)b_{200B+1}s_L.
+\end{equation}
+No energy gain from one channel is multiplied by a factor from another:
+the average is taken on the common configuration and common packet.
+
+The local inputs in this application are a positive seed charge
+$\mu$, the displayed core bound, and an annular remainder with upper
+exponent $-3/2$. The latter is proved in
+Section~\ref{sec:packet-annulus} by comparing the fine and predictor
+energies with their extracted affine squares. On an address where no quadratic term
+was extracted, the fine and predictor energies are nonnegative;
+only the one-sided lower bound is needed there. On selected addresses,
+the local Taylor estimates bound the difference from the extracted
+quadratic energy in absolute value. The protected $304B$ fluctuation
+region and the $300B$ mask conditions allow those local estimates to
+be used throughout the $200B\setminus2B$ annulus. Multiplying $r$ by the
+fixed-density ball count preserves its upper exponent, so $E$ also
+has upper exponent $-3/2$.
+
+\subsection{The packet density and its normalization}
+Let $A$ denote the packet. Its logarithmic density has the form
+\begin{equation}\label{eq:packet-log-density}
+ \Phi_A=-\beta(Q_A+Q_A^{\rm mean})
+       +\sum_{i\in V_{200}(A)}c_i
+       +\sum_{i\in V_{304}(A)}j_i
+       -N_A\log m_\beta.
+\end{equation}
+Here $Q_A^{\rm mean}\ge0$ is the extracted mean-square contribution;
+$c_i$ are the local Gaussian normalization corrections; $j_i$ are the
+protected chart corrections; and $N_A$ counts the free chart bonds
+within distance $10B$ of the packet. The bond sets and this count
+satisfy, with constants fixed at $L$,
+\[
+ |V_{200}(A)|\le C_{200}d^4n,\qquad
+ |V_{304}(A)|\le C_{304}d^4n,\qquad
+ N_A\le C_{10}d^4n.
+\]
+Cover each seed neighbourhood by a lattice ball. There are
+$L^4\#\{\text{axes}\}$ fine bonds per coarse site, so summing these
+bounds over seeds gives the claimed counts. Overlaps reduce the count.
+
+The one-bond Gaussian normalization is
+\[
+ m_\beta=c_{\rm chart}(\sqrt{2\pi}\,\beta^{-1/2})^q,
+ \qquad c_{\rm chart}>0,
+\]
+where $q$ is the colour dimension. Thus
+\[
+ -\log m_\beta
+ =-\log c_{\rm chart}-\frac q2\log(2\pi)
+                        +\frac q2\log\beta
+ \le C_{\rm norm}d
+\]
+for $0<\beta\le2h$ and sufficiently large $x$. The bound holds even
+when $\beta$ is very small, since only an upper bound on $\log\beta$
+is used. Suppose also $|c_i|\le C_{\rm cov}$, $|j_i|\le1$, and that
+the likelihood-ticket product is bounded by
+$\exp(C_{\rm tag}d^4n)$. These are uniform local analytic bounds.
+The other packet masks, enforcement factors and contractions take
+values in $[0,1]$. Dropping the nonpositive mean-square term in
+\eqref{eq:packet-log-density}, and using $d\ge1$, gives
+\begin{equation}\label{eq:packet-normalization}
+ \Phi_A+C_{\rm tag}d^4n
+ \le-\beta Q_A+K d^5 n
+\end{equation}
+for a fixed $K\ge0$.
+
+Here the ticket bound follows directly from the normalized tag
+probabilities. Let $N_f$ and $N_p$ be the numbers of frame and
+predictor tags in the fixed patch. A site likelihood is $N_f$ times
+its tag probability, and a bond likelihood is $N_p$ times its tag
+probability. The probabilities are nonnegative and at most one:
+in the minimizing frame branch they are uniform on the nonempty
+set of minimizers, in the fallback branch they are uniform on all
+tags, and the predictor weights are nonnegative with sum one.
+Thus each likelihood is at most $N_f\le e^{N_f}$ or
+$N_p\le e^{N_p}$, respectively. The radius-$r$ seed neighbourhood
+contains at most $n b_{r+1}$ sites, and the bonds incident to it
+number at most $n b_{r+2}\#\{\mathrm{axes}\}$. Multiplying one
+factor at each such physical site and bond gives
+\[
+ \mathrm{tickets}_r\le
+ \exp\!\left[n\{b_{r+1}N_f+
+ b_{r+2}\#\{\mathrm{axes}\}N_p\}\right].
+\]
+For $r=300B$ this is the asserted $\exp(C_{\rm tag}d^4n)$
+bound. A tag used by several local tests is still charged only once
+in this product. There is no independent tag resampling at each use.
+
+A packet is set to zero if its seed and local flag conditions fail.
+When its value is nonzero, every retained mask is nonzero. The mask
+support conditions then give the local hypotheses of
+\eqref{eq:packet-assigned-energy}, including the control of the hot
+fluctuation bonds. Therefore
+\[
+ |\mathcal P_A|
+ \le\exp\{\Phi_A+C_{\rm tag}d^4n\}
+ \le\exp\{((K d^5+\beta E)-\beta\mu\tau^2)n\}.
+\]
+Since $\beta\le2h$ and $E$ has upper exponent $-3/2$, the product
+$\beta E$ tends to zero and is eventually at most $1\le d^5$.
+We have proved
+\begin{equation}\label{eq:packet-value-price}
+ |\mathcal P_A|\le
+ \exp\{(C d^5-\beta\mu\tau^2)n\},\qquad C=K+1.
+\end{equation}
+The estimate also holds for packets which vanish, since its right-hand
+side is positive. This argument retains the Gaussian normalization
+$m_\beta$; it does not replace the original density by an unnormalized
+free density.
+
+\subsection{Derivatives at the edge of a mask}
+For a $C^j$ map $F$ defined near a point $y$ in a finite-dimensional
+real normed space, write
+\[
+ F\in\mathcal B_j(U,v;y)
+ \quad\hbox{if}\quad
+ \|D^kF(y)\|\le Uv^k\quad(0\le k\le j),
+ \qquad U,v\ge0.
+\]
+The zero-order bound is included. The product rule implies
+\begin{equation}\label{eq:packet-derivative-product}
+ F\in\mathcal B_j(U,v;y),\quad G\in\mathcal B_j(V,w;y)
+ \ \Longrightarrow\ FG\in\mathcal B_j(UV,v+w;y).
+\end{equation}
+Indeed the norm of the $k$th derivative is bounded by
+$UV\sum_{r=0}^k\binom kr v^rw^{k-r}=UV(v+w)^k$.
+Repeated application gives a product bound with multiplied amplitudes
+and added derivative scales.
+
+For the packet variation, the underlying fine configuration in its
+mask and likelihood factors is held fixed; the coarse field and its
+compensating fluctuation vary coherently. This matters at the boundary
+of a cutoff. If any of the retained mask products is identically zero
+on a neighbourhood of $y$, the packet and all its derivatives through
+order $j$ vanish at $y$. In the complementary case, every relevant
+individual mask has points of nonzero value arbitrarily close to $y$.
+Continuity of its argument therefore places that argument in the
+\emph{closed} support of the mask at $y$. For example, a cutoff which
+vanishes when $\|u\|>2a\tau$ implies $\|u(y)\|\le2a\tau$ in this
+case. The same argument gives the closed fine and predictor threshold
+inequalities. It does not claim that the mask value at $y$ is nonzero.
+The scalar estimate \eqref{eq:packet-normalization} and the core
+estimate must hold on these closed conditions; this is the closed
+support version of the local input used below.
+
+Separate the varied packet as $e^{\phi(v)}H(v)$, apart from its fixed
+seed-eligibility indicator. The local differentiated estimates give
+\begin{equation}\label{eq:packet-local-jet-inputs}
+ \begin{split}
+ \phi-\phi(y)&\in\mathcal B_j(b(x)n,1;y),\\
+ H&\in\mathcal B_j(e^{\ell n},c(x)n;y),\\
+ e^{\phi(y)+\ell n}&\le e^{(C d^5-g)n},
+       \qquad g=\beta\mu\tau^2,
+ \end{split}
+\end{equation}
+where $b,c\ge0$, $b$ has upper exponent $1$ and $c$ upper exponent
+zero. Here $\ell$ is the ticket expense per seed. The first bound is
+\eqref{eq:action-packet-log-jets}. To check the bound for $H$, first
+consider a coarse noise cutoff. Its argument is the squared chord
+of $V_e Q(U)_e^{-1}$ divided by $(W\tau)^2$, with $W>0$ fixed
+and $U$ held fixed. If the chord is strictly larger than $2W\tau$,
+the inner cutoff is locally zero. Otherwise the normalized matrix
+displacement has bounded value and derivatives of upper exponent
+zero: its positive derivatives are bounded using $v/\tau$, where
+$v$ has upper exponent $-1/2$ and $\tau^{-1}$ has upper exponent
+$1/2$. Composition with the fixed smooth cutoff on $[0,4]$ gives
+derivative scale of upper exponent zero. Its value is in $[0,1]$.
+The complementary cutoff $1-\chi$ has the same property: its value
+is still at most one, and its positive derivatives differ only by
+a sign. At a boundary point use the closed chord inequality, as
+above. A fixed enlargement of the derivative scale absorbs the
+finite-order composition constants while keeping amplitude one.
+
+The protected bond cutoffs have the corresponding bound by
+Section~\ref{sec:haar-chart} and the compensated increment estimate.
+Fine masks, contractions and likelihoods evaluated at the held fine
+configuration are constants. The first two have absolute value at
+most one; the product of likelihoods has the stated bound
+$e^{\ell n}$. Apply \eqref{eq:packet-derivative-product} to all these
+factors. There are at most $n b_{300B+2}\#\{\mathrm{axes}\}$ coarse
+noise cutoffs and $n b_{304B+2}\rho_L$ protected bond cutoffs,
+where $\rho_L$ is the fine-bond density. Their derivative scales
+add, giving $c(x)n$ with upper exponent zero, as asserted.
+The last inequality in
+\eqref{eq:packet-local-jet-inputs} is the closed support version just
+explained. Thus the differentiated local action, covariance and chart
+bounds proved in the preceding sections supply the required estimates.
+
+We give the remaining derivative calculation. The repeated chain rule
+for $e^\phi$ has one term for each partition $\pi$ of the $k$ derivative
+arguments:
+\[
+ D^k(e^\phi)(y)[v_1,\ldots,v_k]
+ =e^{\phi(y)}\sum_\pi\prod_{C\in\pi}
+ D^{|C|}\phi(y)[v_i:i\in C].
+\]
+This identity follows by induction: differentiation either adds the
+new argument as a singleton block or inserts it into one existing
+block. Each partition appears exactly once. There are at most $k!$
+partitions: send each partition to the permutation whose cycles list
+each block in increasing order. This map is injective. For unit
+arguments, \eqref{eq:packet-local-jet-inputs} therefore gives, for
+$1\le k\le j$,
+\[
+ \|D^k(e^\phi)(y)\|
+ \le e^{\phi(y)}k!(1+bn)^k
+ \le e^{\phi(y)}\{J_j(1+bn)\}^k,
+ \qquad J_j=\max\{1,j!\}.
+\]
+The zero-order bound is equality. Using
+\eqref{eq:packet-derivative-product} and $n\ge1$, the packet belongs to
+\[
+ \mathcal B_j\bigl(e^{(C d^5-g)n},a(x)n;y\bigr),
+ \qquad a(x)=J_j(1+b(x))+c(x).
+\]
+The function $a$ has upper exponent $1$, so $a(x)\le h^2$ eventually.
+As $d\ge1$ and $d\ge\log h$ eventually, for $n\ge1$,
+\[
+ a(x)\le e^{2d^5n},\qquad n\le e^{d^5n},\qquad
+ (a(x)n)^j\le e^{3j d^5n}.
+\]
+Enlarge $a$ to at least one if necessary. Every derivative of order
+at most $j$ is now bounded by the same number:
+\begin{equation}\label{eq:packet-jet-price}
+ \|D^k\mathcal P_A(y)\|
+ \le\exp\{((C+3j)d^5-g)n\},\qquad 0\le k\le j.
+\end{equation}
+Thus finite differentiation changes the fixed coefficient of the
+logarithmic expense; it does not consume a fixed fraction of the
+energy gain. This argument applies separately at every point of the
+allowed variation, with the same constants.
+
+\subsection{Absorbing the expense and the packet count}
+Here is the quantitative comparison used to turn these estimates into
+small connected-support prices. Suppose $\mu>0$ and
+$\beta\ge u h$ for some fixed $u>0$. Define
+\[
+ M=\mu u P^2,\qquad q_*=e^{-M/2}.
+\]
+Since $h\tau^2=P^2$, the gain satisfies $g=\beta\mu\tau^2\ge M$.
+For any fixed $D\ge0$, integer $r\ge0$ and $z<2$, the monitor
+comparison \eqref{eq:warning-monitor-pays} gives
+\begin{equation}\label{eq:packet-expense-absorption}
+ Dd^rP^z\le M/16
+ \quad\hbox{eventually}.
+\end{equation}
+Indeed apply that comparison with exponent $2-z$ and coefficient
+$16D/(\mu u)$, and multiply by $\mu uP^z/16$.
+
+Fix a packet support radius parameter $\ell$ and a support exponent
+$\alpha\ge0$. Let $H_B$ and $D_B$ be the root and adjacency counts
+from Section~\ref{sec:mixed-activity-prices}, and let $c_\ell$ be its
+cover cost per seed. All are polynomial in $B$ except the fixed
+$c_\ell$. Consequently, for sufficiently large $x$,
+\[
+ H_B\le e^{M/16},\qquad D_B^2\le e^{M/16},\qquad
+ \alpha c_\ell\le M/16,\qquad 2\le M/16.
+\]
+For example, bound both counts by fixed powers of $d$, use
+\eqref{eq:packet-expense-absorption}, and then $t\le e^t$.
+Consider a nonnegative packet price
+$C_0e^{(s-g)n}$ satisfying
+\[
+ s\le Dd^rP^z,\qquad 0\le C_0\le e^{Dd^rP^z}.
+\]
+Then $C_0\le e^{M/16}$ and the counting ratio obeys
+\[
+ D_B^2e^{s-g+\alpha c_\ell}
+ \le e^{M/16+M/16-M+M/16}\le q_*.
+\]
+In particular $q_*\le1/2$. The packet counting estimate already proved
+therefore bounds the site sum over packets with at least $n_0$ seeds by
+\[
+ H_BC_0\frac{q_*^{\max(1,n_0)}}{1-q_*}
+ \le\exp\{-M\max(1,n_0)/4\}.
+\]
+To verify the last inequality, put $r_0=\max(1,n_0)$. Since
+$(1-q_*)^{-1}\le2\le e^{M/16}$, its logarithm is bounded above by
+$3M/16-Mr_0/2\le-Mr_0/4$.
+This applies to \eqref{eq:packet-value-price} and
+\eqref{eq:packet-jet-price} with $z=0$ and $r=5$. Hence once the
+stated local energy, chart and derivative inputs have been established,
+their full packet and support sums are small uniformly in the period.
+The scalar comparison selects a threshold after all fixed constants;
+it does not by itself construct the schedule that reaches that
+threshold at each renormalization step.

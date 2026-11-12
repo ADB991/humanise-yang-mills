@@ -1,0 +1,7 @@
+# Parent independent bounded review
+
+Reviewed manuscript finite-rank-kernel-transport.tex SHA256 7a871ac8d2f45cd5d56b0978a58ec68830571f00cf2eed557e42642daa4235da, evidence SHA256 5417919636bbf84780ee6797c9f0bffdf50fb80d9d1819663efc7c4d64a93201. Author: independent_review subagent; reviewer: parent integration agent. Source pin3456e5e75cf8d4cd558955a5c7638fba2d68f464.
+
+Bounded pass. Read prose and correspondence; checked Push/RELAY_MARK/Step, Next/RANK/Monitors, Work/D04 marked_silent, MergeProof/Thrush drumroll/thrush against the main arguments. Averaged maps remain projections because they kill U and differ from identity into U; norm bound independent of U. Checked two-stage compact extraction, including explicit nested-subsequence membership correction. All-test kernel versus finite measurements distinguished. Source local equation and purchases remain hypotheses. Stable kernel dimension proof works for nonorthogonal idempotents; finite rank count uses a frequent subset intersected with eventual dimension stability. Conjugator identities Y-I=(2T-I)(A-T), YA=TY hold without commutation of A,T; one late calibrated isomorphism suffices. Quotient real/signed symmetry proof checks.
+
+No global acceptance or human review. Does not produce Market.Purchases, Scotia, Cleaner or derivative hierarchy. No Lean/TeX checks run for this review; structural/PDF checks separate. Machine review metadata remains null.

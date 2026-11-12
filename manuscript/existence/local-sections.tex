@@ -1,0 +1,205 @@
+\section{Constructing the local polynomial sections}
+\label{sec:local-sections}
+We now construct the fixed section and its price used in
+Section~\ref{sec:local-splitting}. The construction uses a finite
+collection of based, transported plaquettes. The finite collection
+and all constants are chosen before the lattice period and threshold.
+
+\subsection{A finite sampler for radial jets}
+Let $\mathcal J_d$ be the finite-dimensional real space of radial
+connection jets $A=(A_0,\ldots,A_{d-2})$. Here $A_j$ is a homogeneous
+one-form of polynomial degree $j+1$ satisfying the radial identity
+$\sum_i x_iA_{j,i}(x)=0$. It is this radial description of curvature
+jets that underlies the label space. If $d<2$, the space is zero.
+For a lattice path from the origin to $x$ and an oriented plaquette
+at $x$, let $s(U)$ be the Lie-algebra curvature of that plaquette,
+transported back to the origin. Its value is zero at the identity.
+Define the sampler $S_s(A)$ by evaluating $s$ on the test holonomy
+of the truncated radial connection $A$ at scale one.
+
+The endpoint argument in Section~\ref{sec:local-splitting} shows
+that $S_s$ is analytic near zero. Differentiating the link integral
+equation at the zero connection gives the line integral of $A$.
+At the identity, the derivative of a product is the sum of its
+factor derivatives, and inversion changes their signs. The derivative
+of transported plaquette curvature is consequently
+\[
+ DS_s(0)A=\oint_{\partial\square_{x,ij}}
+                          \sum_{l=0}^{d-2}A_l.
+\]
+Transport along the based path contributes nothing to this derivative:
+it conjugates a curvature whose value at zero is zero. The Lie
+projection of the linearized plaquette is its Lie-algebra value.
+
+These linear samplers jointly separate $\mathcal J_d$. To see this,
+for a homogeneous $A_l$ write
+\[
+ N_l(x,h)=\int_0^1\!\int_0^1
+   \partial_i A_{l,j}(x+hs e_j+hr e_i)\,dr\,ds
+ -\int_0^1\!\int_0^1
+   \partial_j A_{l,i}(x+hs e_i+hr e_j)\,dr\,ds.
+\]
+The fundamental theorem of calculus identifies the unit-square
+circulation with $N_l(x,1)$. Also
+$N_l(hx,h)=h^lN_l(x,1)$ and
+$N_l(x,0)=\partial_i A_{l,j}(x)-\partial_j A_{l,i}(x)$.
+Suppose all sampled circulations vanish. If $k$ is the largest
+remaining degree, multiply the identity at an integer point $z$
+by $h^k$ and use homogeneity to get
+\[
+                       \sum_{l=0}^k h^{k-l}N_l(hz,h)=0.
+\]
+For any real $x$, choose integer $z_h$ with $hz_h\to x$ as
+$h\downarrow0$. Continuity gives $N_k(x,0)=0$. Thus $dA_k=0$.
+The radial identity and Euler's identity give, componentwise,
+\[
+ \sum_i x_i(\partial_i A_{k,j}-\partial_j A_{k,i})
+                                      =(k+2)A_{k,j}.
+\]
+Indeed the first term is $(k+1)A_{k,j}$, and differentiation of
+$\sum_i x_iA_{k,i}=0$ makes the second term $-A_{k,j}$.
+Hence $A_k=0$. Descending induction proves $A=0$.
+
+A finite subcollection already separates. Start with the whole
+space as the common kernel. If that kernel is nonzero, one of the
+samplers is nonzero on a vector in it; adding that sampler strictly
+reduces the kernel dimension. After finitely many steps the kernel
+is zero. Fix the resulting slots $s_1,\ldots,s_m$ and the analytic
+map $S=(S_{s_1},\ldots,S_{s_m})$ into the panel of $m$ Lie-algebra
+values. Its derivative $D=DS(0)$ is injective.
+
+\subsection{Equivariant recovery and polynomial substitution}
+The panel has its invariant Euclidean inner product. Constant gauge
+transformations act orthogonally there, preserve $\operatorname{ran}D$,
+and intertwine $D$ with their action on $\mathcal J_d$.
+Let $\pi$ be orthogonal projection onto $\operatorname{ran}D$ and
+put $C=D^{-1}\pi$. The range and its orthogonal complement are
+invariant, so $C$ is equivariant and $CD=I$.
+The analytic inverse function theorem applied to $CS$ at zero gives
+an analytic local inverse $g$. Set $F=gC$. Then
+\[
+                     F(0)=0,\qquad F(S(A))=A
+\]
+near zero. For each fixed gauge transformation, equivariance of
+$CS$ and uniqueness of its local inverse imply equivariance of
+$F$ as germs. This assertion needs no common invariant neighborhood
+for all transformations simultaneously.
+
+Let $T_dF$ be the Taylor polynomial of this one recovery map through
+ordinary degree $d$. It is equivariant: differentiate the germ identity
+$F(Rx)=R'F(x)$ at zero, and use linearity of $R,R'$ in each Taylor
+coefficient. It has zero constant term. For each real homogeneous
+basis label $p_\alpha$ define a polynomial in panel coordinates by
+\[
+                            P_\alpha(x)=p_\alpha(T_dF(x)).
+\]
+It is gauge invariant and real valued on real panels, and $P_0=1$.
+If $p_\alpha$ has $r_\alpha$ curvature factors, every monomial of
+$P_\alpha$ has ordinary panel degree at least $r_\alpha$:
+each substituted coordinate has zero constant term, so each of the
+$r_\alpha$ factors contributes at least one panel coordinate.
+No deletion of higher-degree terms after substitution is necessary.
+
+These polynomials read the correct jets. Along the radial curve
+$A(h)=h\cdot J$, put $W(h)=S(A(h))$. It is smooth and $W(0)=0$.
+The Taylor polynomial $T_dF$ and $F$ have identical derivatives
+through order $d$ at zero, so their compositions with $W$ do too.
+Since $F(W(h))=A(h)$ near zero, composition with the polynomial
+$p_\alpha$ gives
+\[
+ P_\alpha\bigl(s_1(H(J,h)),\ldots,s_m(H(J,h))\bigr)
+           \quad\hbox{and}\quad p_\alpha(h\cdot J)
+\]
+the same derivatives through order $d$.
+Linearly extending the $P_\alpha$ therefore gives a local section
+$T_0$ of every label in $V_d$ at the level of test jets.
+
+\subsection{Lattice symmetry and a common stencil}
+Let $\mathcal H$ be the finite group of signed coordinate
+permutations. For its action $\rho$ on labels, define
+\begin{equation}\label{eq:local-section-average}
+     T(v)(U)=\frac1{|\mathcal H|}\sum_{s\in\mathcal H}
+                       T_0(\rho(s^{-1})v)(\operatorname{pull}_sU).
+\end{equation}
+The test holonomy transforms by the inverse tensor action.
+This can be checked directly in the link equation. Positive
+coordinate changes transport its coefficient. For a reversed link,
+if $u'=uA$, then $u(1)^{-1}u(1-h)$ solves the reversed equation
+with coefficient $-A(1-h)$ and starts at the identity. Uniqueness
+identifies its endpoint with the inverse link. Constant conjugation
+likewise conjugates the solution of the equation. These identities
+prove the stated tensor and gauge transformation laws of the sampler.
+
+It follows that each summand of \eqref{eq:local-section-average}
+has label $v$. Their average does also. Reindexing the finite group
+proves the signed-permutation covariance
+$T(v)(\operatorname{pull}_sU)=T(\rho(s)v)(U)$. Its unit
+is one, and it commutes with ordinary conjugation because the basis
+labels and the initial panel polynomials are real. Each transported
+plaquette transforms into another transported plaquette, possibly
+with a minus sign from reversing its orientation. Take the finite
+union of the slots in all these terms and enclose their paths and
+plaquettes in a centered box $Y$.
+
+The average remains polynomial in this common finite list of slots.
+Replacing a slot by a signed slot changes no monomial degree.
+Moreover $\rho(s)$ preserves the number of curvature factors in
+a homogeneous label. Thus the polynomial representing the column
+$T(e_\alpha)$ still has no terms of panel degree below $r_\alpha$.
+Each slot is itself a polynomial in the positive-link matrix entries
+and their conjugates: use matrix multiplication for the path and
+plaquette, conjugate transpose for inverse links, and the real-linear
+Lie projection of $(M-M^*)/2$ for curvature. A real-linear matrix
+functional is a linear combination of real and imaginary entry
+parts, each a linear combination of entries and their conjugates.
+Therefore $T$ is a genuine finite polynomial cylinder on $Y$.
+
+\subsection{Threshold prices at every period}
+Fix derivative order $q$ and spatial power $p$. For any period,
+anchor $o$ and allowed direction $A$, a link from the fixed stencil
+satisfies $|A(e)|\le C_Yt$, since its torus distance from $o$ is
+at most the size of its chosen covering-space position. An ordered
+left derivative of a positive-link matrix for the list
+$(A_1,\ldots,A_k)$ is exactly
+$\operatorname{col}(A_k(e))\cdots\operatorname{col}(A_1(e))U_e$,
+where $\operatorname{col}$ is the Lie-algebra matrix representation. The inverse link is its conjugate transpose.
+Consequently all derivatives of order $k\le q$ of any fixed path
+matrix are bounded by $C t^k$, uniformly in the period and $t$.
+The product rule has finitely many terms, and compactness of the
+matrix group bounds the undifferentiated factors. Smoothness holds
+globally in exponential coordinates.
+
+The same derivative bound holds for each transported plaquette
+slot. At order zero a stronger estimate comes from health:
+on a configuration healthy on the projected stencil, the plaquette
+curvature has norm at most $t$, and parallel transport preserves
+that norm. At every positive order $k$, the previous bound is at
+most $Ct$ because $0<t\le1$. Thus each slot and each of its tested
+derivatives through order $q$ has norm at most $C t$ on that
+healthy set. This also holds when the stencil wraps: the path
+identities and the bound on torus distance still apply.
+
+Apply the ordered product rule to a monomial with $r$ slot factors.
+Each term assigns the derivatives to those factors in their original
+orders. Every factor, including those receiving no derivative,
+contributes a bound $C_it$. The monomial is therefore bounded by
+$C t^r$ through order $q$. Finite summation and $t\le1$ give
+\begin{equation}\label{eq:local-section-column-price}
+            \|T(e_\alpha)\|_{o,Y}\le C_{d,q,p}t^{r_\alpha}.
+\end{equation}
+This proves both regularity and the exact factor-count threshold
+power of the constructed section. Multiplying its column
+coefficients by $t^{-r_\alpha}$ and using the triangle inequality
+yields \eqref{eq:local-section-price} with $w=C_{d,q,p}$.
+
+All choices are independent of the period and threshold. They can
+also be priced before choosing a scale: for an integer $D$, choose
+one bound for each triple $d,q,p\le D$ and set
+\[
+     w_D=1+\sum_{d,q,p\le D}\max(0,C_{d,q,p}).
+\]
+It bounds every requested price in this finite range. The stencil
+fits whenever the side exceeds
+$\max_{x\in Y,i}20(|x_i|+1)$. These are fixed local requirements
+for the later calendar to satisfy. The construction here supplies
+the section and its uniform price; it does not choose that calendar.

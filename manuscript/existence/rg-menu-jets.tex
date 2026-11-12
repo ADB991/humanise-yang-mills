@@ -1,0 +1,83 @@
+\section{The single-menu derivative supplies the field jet}
+\label{sec:ex-lattice-menu-jets}
+\label{subsec:ex-lattice-menu-jet-proof}
+
+Fix one selected step and its finite menu family indexed by $i\in I$. Let
+$M_i$ be the leaf attached to menu $i$, let $r_i\geq0$ be its tuning weight,
+and let $\phi_i$ be its charged fee. The selected menu profile has
+$r_i=\phi_i$. For each activity label $j$ and configuration $U$, let
+$K(t,F)_j(U)$ be the final response code with switch parameter $t$ and
+selected menu set $F\subseteq I$. The activity payment supplies a score
+family $g_{j,U,t}(A)$ satisfying
+\begin{equation}
+ K(t,F)_j(U)=\sum_{A\subseteq F}t^{|A|}g_{j,U,t}(A),\qquad
+ |g_{j,U,t}(A)|\leq b_{j,U}(A),\qquad
+ \sum_{A\subseteq I}b_{j,U}(A)<\infty,
+ \label{eq:ex-lattice-menu-score}
+\end{equation}
+with each score converging as $t\downarrow0$. The exact selected
+interpolation identities are
+\begin{equation}
+ K(t,\varnothing)_j(U)=P_i(0)_j(U),\qquad
+ K(t,\{i\})_j(U)=P_i(r_i t)_j(U),
+ \label{eq:ex-lattice-menu-singleton-path}
+\end{equation}
+where $P_i(\theta)$ is the final response produced from the single leaf
+$M_i$ at amplitude $\theta$. These are not approximations: with no active
+switch the selected color is the vacuum color, and with just switch $i$ its
+color is the single-leaf color at amplitude $r_i t$.
+
+The path $P_i$ is differentiable at zero. Before the last branch, its
+color has the form $c+\theta a$ for fixed $c,a$, so every activity entry
+is affine in $\theta$. Each selected fragrance entry is a finite product
+of such entries, raised to fixed integer powers and divided by a fixed
+factorial. If $f_1,\ldots,f_N$ are differentiable at zero, then
+\[
+ \left(\prod_{k=1}^N f_k\right)'(0)
+   =\sum_{k=1}^N f_k'(0)\prod_{\ell\ne k}f_\ell(0),
+\]
+by repeated use of the product rule. The final response at a fixed activity
+coordinate is itself a product over a finite set of labels; branches outside
+the selected address range are identically zero, and branches inside it are
+these finite products. Thus every coordinate $P_i(\theta)_j(U)$ is
+differentiable at zero. Denote its derivative by
+\[
+ D_{i,j}(U)=\left.\frac{d}{d\theta}P_i(\theta)_j(U)\right|_{\theta=0}.
+\]
+This is exactly the hinge of the selected gauge door, since that door is
+defined by differentiating the same one-leaf final response.
+
+For completeness, the score extraction from \eqref{eq:ex-lattice-menu-score}
+is triangular. For $t>0$ and any $F\subseteq I$,
+\[
+ g_{j,U,t}(F)=t^{-|F|}\left(K(t,F)_j(U)
+       -\sum_{A\subsetneq F}t^{|A|}g_{j,U,t}(A)\right).
+\]
+Induction on $|F|$ therefore shows that all scores are uniquely determined
+by the switched values. The payment model also gives convergence to the
+zero-parameter score; the uniform summable majorant in
+\eqref{eq:ex-lattice-menu-score} permits passage to that limit.
+
+Take $F=\{i\}$. From \eqref{eq:ex-lattice-menu-score},
+\[
+ K(t,\{i\})_j(U)=g_{j,U,t}(\varnothing)
+                      +t\,g_{j,U,t}(\{i\}).
+\]
+At $F=\varnothing$ the same representation gives
+$K(t,\varnothing)_j(U)=g_{j,U,t}(\varnothing)$. Subtract these equations
+and use \eqref{eq:ex-lattice-menu-singleton-path}:
+\[
+ t\,g_{j,U,t}(\{i\})=P_i(r_i t)_j(U)-P_i(0)_j(U).
+\]
+Dividing by $t$ and letting $t\downarrow0$, differentiability at zero
+implies
+\begin{equation}
+ \lim_{t\downarrow0}g_{j,U,t}(\{i\})=r_iD_{i,j}(U)
+       =\phi_iD_{i,j}(U).
+ \label{eq:ex-lattice-menu-jet-proof}
+\end{equation}
+This is the exact menu-to-field jet identity required in
+Section~\ref{subsec:ex-lattice-rg-canopy}. It supplies the fee-weighted
+hinge for each menu separately; the subsequent finite marker-algebra
+calculation and absolutely convergent barcode sum produce the per-box
+singleton coefficient.

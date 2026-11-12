@@ -1,0 +1,154 @@
+% Quantitative source calculation for the legacy weighted response limit.
+\subsection{A priced mission forces the weighted response to vanish}
+\label{subsec:ex-trace-small-means}
+
+This subsection records the quantitative argument behind the weighted
+field-image estimate used by the trace receiver. It exposes the local price,
+scale, and detector inputs. It does not derive the mission's local price
+bound from the finite-volume estimates.
+
+Let $S$ be the selected interacting table, and let
+$\mathcal U_i^{(d)}:E_d\to S_d$ be its scale chart from the reference grade
+space $E_d$ into the selected grade space $S_d$. Let $\mathcal V$ be the
+finite-dimensional real vector space of signed-equivariant grade-five
+response arrays (the source's one-point response table), and let
+$s_i$ be the real-linear normalized response map into $\mathcal V$. Write $j_i$ for the
+selected frame level and $k_i$ for its associated scale index. The source
+uses two distinct positive scales:
+\[
+ z_i=\widehat\beta_{k_i},\qquad \zeta_i=Z.\beta(k_i).
+\]
+The first, $z_i$, appears in the polynomial weight and rate estimate; the
+second, $\zeta_i$, is the Arch scale in the medium and cancels from the
+response identity below. Let $a_i$ be the field dilation at level $j_i$,
+$b_i$ the frame scale, $m_i$ the frame cap, and $r_i$ the physical dilation.
+The selected scale relations are
+\[
+ r_i=a_ib_i,\qquad 0<b_i\leq m_i,
+ \qquad m_i=\operatorname{tiltcap}(j_i).
+\]
+Let $v_i$ be the selected medium and $x_i$ its core field. Its exact core
+representation is
+\begin{equation}
+ v_i(\alpha)=\zeta_i^{-1}\mathcal E_{k_i}(x_i(\alpha))
+ \qquad(\alpha\in\mathrm{Axis}),
+ \label{eq:ex-trace-medium-core}
+\end{equation}
+where $\mathcal E_k$ is the source's core-to-strip map. The response
+normalization is
+\begin{equation}
+ \mathcal U_i^{(5)}((s_i(v))_\alpha)
+       =\mathcal V_i(v_\alpha),
+ \label{eq:ex-trace-spun-response}
+\end{equation}
+where $\mathcal V_i=\operatorname{Vault}(S,Z,5,k_i,c_i)$ is the grade-five
+strip evaluation at scale index $k_i$ with crown normalization $c_i$. For $x$ odd
+under central signed inversion, meaning
+$F(\operatorname{archV})x=-x$, the exact scaling identity is
+\begin{equation}
+ \mathcal V_i(\mathcal E_{k_i}(x))
+   =c_i P_5x,
+ \qquad c_i=\zeta_i(a_i b_i)^5,
+ \label{eq:ex-trace-night-scaling}
+\end{equation}
+where $P_5=S.\operatorname{project}_5$ maps raw grade-five labels into
+$S_5$. These are exact
+source identities, not consequences of the estimate below.
+
+For a reference grade-four field $w\in E_4$, let $\lambda_{i,w}(Y)$ be the
+tested two-point pairing of $\mathcal U_i^{(5)}(Y_0)$ with
+$\mathcal U_i^{(4)}w$, at the shrinking point $r_i\zeta_i^{\mathrm{pt}}$.
+Denote this pairing on explicitly supplied grade-five and grade-four entries
+by $\mathfrak p_{i,w}$. The local price input is the bound
+\begin{equation}
+ \left|\mathfrak p_{i,w}
+       (a_i^5P_5x_i(0),\mathcal U_i^{(4)}w)\right|
+ \leq \Theta_i,
+ \quad\text{eventually in }i\text{ for each fixed }w,
+ \label{eq:ex-trace-small-means-price}
+\end{equation}
+where $\Theta_i$ is the positive local price allowance. The source proves
+this receipt from the priced mission and its finite-volume mileage
+estimate; it remains an upstream input here.
+
+The selected chart hierarchy and its derivative/orientation identities
+supply a finite detector. There are fixed reference fields
+$w_1,\ldots,w_m\in E_4$ such that the limiting pairings define an injective
+linear map
+\[
+ \Lambda(y)=(\lambda_{w_r}(y))_{r=1}^m:
+       \mathcal V\longrightarrow\mathbb C^m.
+\]
+The scale-dependent maps $\Lambda_i(y)=(\lambda_{i,w_r}(y))_{r=1}^m$
+converge to $\Lambda$ in operator norm. The full family of grade-four
+insertions separates the signed-equivariant response arrays; choose a
+finite separating subfamily and use the selected chart and shrinking-point
+convergence for those tests. If $\mathcal V\neq\{0\}$, injectivity gives a
+positive minimum norm on its unit sphere. Thus some $c>0$ satisfies
+\begin{equation}
+ \|\Lambda_i y\|\geq c\|y\|
+ \qquad\text{for all sufficiently large }i\text{ and every }y\in\mathcal V.
+ \label{eq:ex-trace-small-means-detector}
+\end{equation}
+For $\mathcal V=\{0\}$ the desired conclusion is immediate. The
+separation and convergence receipts, not finite dimensionality alone, are
+the detector inputs.
+
+The scalar rate input is
+\begin{equation}
+ z_i^p m_i^5\Theta_i\longrightarrow0
+ \qquad\text{for each fixed integer }p\geq0.
+ \label{eq:ex-trace-small-means-rate}
+\end{equation}
+In the selected source, this follows by multiplying three rate tickets:
+the rate of $z_i$ is bounded by the zero-rate ticket for the scale at the
+summit of $j_i$; $m_i$ has a zero-rate fifth-power ticket; and $\Theta_i$
+has rate $-100\delta$, with the fixed source constant $\delta=10^{-4}$.
+Ticket products add rates, so for fixed $p$ the product has negative rate
+$-100\delta<0$ and tends to zero. The stage comparison bounds $z_i$ by the
+summit scale. These scalar receipts are listed with their exact source
+declarations in the evidence file.
+
+\begin{lemma}[Weighted field decay from the priced mission]
+\label{lem:ex-trace-small-means}
+Assume \eqref{eq:ex-trace-medium-core}--\eqref{eq:ex-trace-small-means-rate},
+the night condition for $x_i(0)$, the response identity
+\eqref{eq:ex-trace-spun-response}, the price bound
+\eqref{eq:ex-trace-small-means-price}, and the detector bound
+\eqref{eq:ex-trace-small-means-detector}. Then, for each fixed integer
+$p\geq0$,
+\[
+ z_i^p s_i(v_i)\longrightarrow0\quad\text{in }\mathcal V.
+\]
+\end{lemma}
+\begin{proof}
+Set $Y_i=z_i^p s_i(v_i)\in\mathcal V$. By the medium representation,
+response normalization, and night scaling,
+\[
+ \mathcal U_i^{(5)}((Y_i)_0)
+ =z_i^p\zeta_i^{-1}c_iP_5x_i(0)
+ =z_i^p(a_i b_i)^5P_5x_i(0).
+\]
+The Arch scale $\zeta_i$ cancels; it is distinct from the polynomial weight
+$z_i$. Linearity in the grade-five entry gives, for each detector field
+$w_r$,
+\[
+ \lambda_{i,w_r}(Y_i)
+ =z_i^p b_i^5\mathfrak p_{i,w_r}
+      (a_i^5P_5x_i(0),\mathcal U_i^{(4)}w_r).
+\]
+The local price bound and $b_i\leq m_i$ imply
+\[
+ \|\Lambda_iY_i\|
+ \leq \sqrt m\,z_i^p m_i^5\Theta_i\longrightarrow0.
+\]
+The detector lower bound gives $\|Y_i\|\leq c^{-1}\|\Lambda_iY_i\|\to0$.
+This proves the desired limit in the full finite-dimensional response
+space.
+\end{proof}
+
+The source applies this lemma to its selected medium. The proof identifies
+the mechanism: the powered local price controls finitely many separating
+coordinates, and the negative rate forces each coordinate to zero. The
+uniform local price receipt, mission construction, and detector convergence
+still depend on the selected finite-volume funding and chart construction.

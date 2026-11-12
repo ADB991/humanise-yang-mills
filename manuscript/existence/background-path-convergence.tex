@@ -1,0 +1,270 @@
+\section{Uniqueness of the limiting background paths}
+\label{sec:background-path-convergence}
+The path coefficients require their own convergence argument. Uniform
+bounds give convergent subsequences, but do not identify their limits.
+The identification uses the order of the Taylor coefficients in the
+stationary action: first the cubic term, then the quartic term, and
+finally the quadratic loop correction. We explain both the finite-step
+comparison and the passage from subsequences to the whole sequence.
+
+At each scale $m$ write a path as its prescribed one-form row and three
+coefficient arrays
+\[
+                    (a_m,b_m,c_m).
+\]
+Here $a_m$ represents the quadratic loop correction, $b_m$ the cubic
+term, and $c_m$ the quartic term. Each array belongs to the selected
+closed subspace of its real coefficient Hilbert space. The selected
+subspace is the orthogonal complement of the kernel of all finite-period
+Taylor readouts. Consequently two selected arrays with the same
+readouts on every prescribed period are equal. This statement concerns
+the arrays themselves, not just their evaluation on one torus.
+
+For $q=2,3,4$ and the fixed encoding width $w_{m,q}$, use the norm
+\[
+ \mathfrak n_{m,q}(C)
+   =\sum_{a,\nu}e^{-(w_{m,q}-v_m)\ell(a)}|C(a,\nu)|,
+ \qquad w_{m,q}>v_m.
+\]
+Here $v_m$ is the paid path width, and the canonical lengths and finite
+color index $\nu$ are as in Section~\ref{sec:fixed-rung-convergence}.
+All weights are strictly positive. Thus this expression is a norm on
+the coefficient space on which it is finite; homogeneity and the
+triangle inequality follow term by term. Let $s_{m,q}>0$ be its paid
+allowance. The ordinary outputs satisfy
+$\mathfrak n_{m,q}\le s_{m,q}$. The extended input domain permits
+$64s_{m+1,q}$, and keeps the other two arrays at their ordinary
+allowances. The same finite-step construction is available for every
+input in this domain. We use this actual extended domain below;
+existence for one selected input alone would not suffice.
+
+\subsection{The triangular affine identities}
+Fix the fine and coarse one-form rows. Consider three admissible
+finite-step inputs and outputs, indexed by $0,1,t$, with the same
+rows and the same forest, coordinates and normalization conventions.
+The following identities hold whenever the indicated interpolation
+is admissible:
+\begin{align}
+ b^{\rm in}_t=b^{\rm in}_0+t(b^{\rm in}_1-b^{\rm in}_0)
+ &\ \Longrightarrow\
+ b^{\rm out}_t=b^{\rm out}_0+t(b^{\rm out}_1-b^{\rm out}_0),
+ \label{eq:background-cubic-affine}\\
+ c^{\rm in}_t=c^{\rm in}_0+t(c^{\rm in}_1-c^{\rm in}_0)
+ &\ \Longrightarrow\
+ c^{\rm out}_t=c^{\rm out}_0+t(c^{\rm out}_1-c^{\rm out}_0),
+ \label{eq:background-quartic-affine}\\
+ a^{\rm in}_t=a^{\rm in}_0+t(a^{\rm in}_1-a^{\rm in}_0)
+ &\ \Longrightarrow\
+ \begin{cases}
+ a^{\rm out}_t=a^{\rm out}_0+t(a^{\rm out}_1-a^{\rm out}_0),\\
+ \alpha_t=\alpha_0+t(\alpha_1-\alpha_0).
+ \end{cases}
+ \label{eq:background-loop-affine}
+\end{align}
+In \eqref{eq:background-quartic-affine} the three input cubic arrays
+must agree. In \eqref{eq:background-loop-affine} both their cubic
+and quartic arrays must agree. No equality of those arrays is needed
+in \eqref{eq:background-cubic-affine}.
+
+Here is the stationary-action argument for the first two identities.
+In finite-dimensional chart coordinates let $S(x,y)$ be the analytic
+action, $y=\psi(x)$ its stationary graph, and
+$S_{yy}(0,0)=H$ its invertible Hessian in the eliminated coordinates.
+All these stationary graphs have $\psi(0)=0$. Write $z(x)=(x,\psi(x))$.
+Differentiating $S_y(x,\psi(x))=0$ once determines $D\psi(0)$
+from the common quadratic jet of $S$. Repeated differentiation
+determines each next derivative by an equation
+\[
+ H D^r\psi(0)=-R_r,
+\]
+where $R_r$ is a finite sum of contractions of derivatives of $S$
+of order at most $r+1$ and derivatives of $\psi$ of order less
+than $r$. This follows directly by the multivariable chain rule:
+the only term containing $D^r\psi$ is obtained by differentiating
+the $y$ argument of $S_y$ once and the graph $r$ times.
+
+Suppose three actions have the same jet through order $r$, with
+$r=2$ or $3$, and their order-$(r+1)$ jets have the displayed
+affine relation. Their graph jets through order $r-1$ agree.
+In $D^{r+1}(S\circ z)(0)$, terms containing a single highest
+graph derivative cancel by stationarity. Terms containing
+$D^r z$ pair with $D^2S$ and $Dz$ and vanish by the derivative
+of stationarity, since $D^r z$ is vertical. All remaining terms
+involve the common lower jets, except the single term
+\[
+                       D^{r+1}S(0)(Dz(0),\ldots,Dz(0)).
+\]
+It follows that the reduced order-$(r+1)$ jet has the same affine
+relation. Equivalently, one may subtract the three chain-rule
+expansions: every common lower-jet term cancels, and the displayed
+term is the only possible difference.
+
+Cubic path terms vanish through order two, and quartic terms
+through order three. The quadratic action depends only on the
+common row. Thus the preceding calculation with $r=2$ proves
+the affine cubic identity for the reduced actions. The finite-step
+classical matching equates these jets with the coarse path jets.
+Subtracting their common coarse-row contribution and using the
+injectivity of the selected cubic readout gives
+\eqref{eq:background-cubic-affine}. If the input cubic arrays
+agree, this identity first makes the output cubic arrays agree.
+The calculation with $r=3$ then applies; subtracting the common
+coarse-row and cubic contributions gives
+\eqref{eq:background-quartic-affine} by the quartic readout.
+
+For the loop identity the classical action, including its cubic
+and quartic terms, is the same for all three inputs. The implicit
+function theorem and the invertibility of $H$ give the same
+stationary germ. Its Hessian determinant and the coordinate
+Jacobian contribution are therefore the same. The remaining
+one-loop expression is the loop correction evaluated on that
+germ; it is linear in $a^{\rm in}$. Its quadratic jet is affine.
+The coarse one-loop decomposition has the form
+\[
+                    \alpha Q_0+Q_a+\mathcal E,
+\]
+where $Q_0$ is the common normalized quadratic row form, $Q_a$
+is the loop readout, and $\mathcal E$ is the finite-period error.
+The latter has the proved exponential bound in the period.
+Subtract the three decompositions. The all-period detection
+statement for the quadratic forms makes the remaining cover
+form zero. Its normalization functional takes the value one on
+$Q_0$ and zero on the selected loop subspace. Applying it gives
+the identity for $\alpha$. The residual loop readouts then vanish
+on every period; injectivity on the selected loop subspace gives
+the identity for $a^{\rm out}$. This identifies exactly where
+quadratic normalization and all-period detection enter the proof.
+
+\subsection{An enlarged input ball gives contraction}
+Choose one of the three arrays, subject to equality of its preceding
+arrays in the order $b,c,a$. Write $s'=s_{m+1,q}$ and $s=s_{m,q}$.
+Let $x,y$ be two ordinary inputs and put
+$z=\mathfrak n_{m+1,q}(y-x)$. If $z=0$, then $x=y$, and the
+affine identity at parameter zero gives equal selected outputs.
+If $z>0$, use the real parameter
+\[
+                        t=32s'/z.
+\]
+The replacement $x+t(y-x)$ has norm at most
+\[
+             \mathfrak n_{m+1,q}(x)+tz\le33s'\le64s'.
+\]
+Keeping the other two arrays fixed preserves their invariant
+subspaces and bounds. In the loop case it also preserves the
+linear loop normalization constraints. Thus this is an allowed
+extended input. Its output and that of $x$ both have norm at
+most $s$. By the affine identity, their difference is $t$ times
+the difference of the original two outputs. Hence
+\[
+ t\mathfrak n_{m,q}(y^{\rm out}-x^{\rm out})\le2s,
+ \qquad
+ \frac{\mathfrak n_{m,q}(y^{\rm out}-x^{\rm out})}{s}
+       \le\frac1{16}\frac{z}{s'}
+       \le\frac14\frac{z}{s'}.
+\tag{$\ast$}\label{eq:background-contraction}
+\]
+We retain the weaker factor $1/4$ used in the history argument.
+The extrapolated parameter need not lie in $[0,1]$; the extended
+input domain is essential for this proof.
+
+\subsection{Passing finite histories to cluster histories}
+Fix any sequence of terminal cutoffs tending to infinity. At each
+fixed scale, the three coefficient arrays have uniformly bounded
+Hilbert norms and the scalar corrections $\alpha$ are bounded.
+Enumerate the countably many scales and coefficient coordinates.
+Successive extraction in bounded real intervals, followed by the
+diagonal subsequence, gives convergence of all those coordinates
+and all scalars at once. Finite sums of coordinate squares show
+that each limiting array has the same Hilbert bound. A closed
+linear constraint is retained: for a test vector in its orthogonal
+complement, approximate by a finite-coordinate vector; the uniform
+Hilbert bound controls the omitted inner product. Thus the limits
+remain in the selected subspaces.
+
+The one-form rows have their common limit from the retained kernel
+horizon. The width argument in
+Section~\ref{sec:fixed-rung-convergence} gives convergence of
+the path sums at every smaller width. It also gives convergence
+of every finite chart derivative. Indeed, on a sufficiently
+small complex chart ball each length-$\ell$ path and each fixed
+derivative costs a polynomial in $\ell$ times $e^{\epsilon\ell}$.
+Choose $\epsilon$ smaller than the available width difference;
+the remaining exponential factor sums the polynomial. Termwise
+differentiation is then justified by uniform absolute convergence.
+
+The limiting eliminated Hessian obeys the same positive lower
+bound, by passage to the limit in its quadratic form. The analytic
+implicit function theorem supplies a stationary germ for the
+limiting action. The derivative recursion above proves convergence
+of every derivative of the finite stationary germs: inversion
+of the finite Hessian is continuous on the matrices with this
+common lower bound, and each $R_r$ is a finite expression in
+previously convergent derivatives. The limits also have the same
+classical matching through degree four. For the one-loop expression,
+the derivatives of $\log\det H$ are finite sums of products of
+$H^{-1}$ and derivatives of $H$. The positive lower bound and
+the same recursion therefore give convergence of its quadratic
+jet, including the fixed coordinate Jacobian. All finite-period
+error inequalities pass to the limit. The row normalization does
+too. Thus the resulting cluster history satisfies the same local
+relations and paid output bounds as the finite histories.
+
+The input at scale $m$ equals the output at scale $m+1$ in these
+cluster histories: it is an exact finite-history identity on
+every sufficiently late cutoff, so coordinatewise passage to
+the limit preserves it. All periods and forests needed here
+have already been fixed by the schedule. The derivative recursion
+defines their limiting stationary germs from the same limiting
+path; no independent subsequence is chosen for each germ.
+
+\subsection{Comparison of two cluster histories}
+Let $F$ and $H$ be two cluster histories with the same retained
+row horizon. A finite-step comparison cannot simply be applied
+to them as if they came from the same finite cutoff. Instead fix
+a scale and an array type, with its preceding input arrays equal.
+Take finite steps tending to $F$, and replace just this array in
+each fine input by the corresponding array of $H$. The replacement
+is an ordinary admissible input: the bounds and linear invariance
+constraints hold separately for its three arrays. Construct its
+output at that very same cutoff. Extract a further subsequence
+for these modified outputs and their scalar corrections.
+
+The preceding limit argument gives a valid cluster step. Its
+chosen input array is that of $H$, and its preceding arrays are
+also those of $H$. The affine identity at parameter zero shows
+that its chosen output array equals that of $H$. Apply
+\eqref{eq:background-contraction} before taking the subsequence
+limit. The weighted norms of the differences converge by the
+strict-width dominated convergence argument. We obtain
+\[
+ g_m\le\tfrac14 g_{m+1},\qquad
+ g_m:=\frac{\mathfrak n_{m,q}(H_m-F_m)}{s_{m,q}},
+                  \qquad 0\le g_m\le2.
+\]
+Iteration gives $g_m\le2\,4^{-h}$ for every integer $h\ge0$;
+hence $g_m=0$. Apply this first to the cubic arrays at every
+scale, which require no preceding equality. Then apply it to
+the quartic arrays, using the cubic equality just obtained.
+Finally apply it to the loop arrays, using both equalities.
+All three arrays in the two cluster histories agree.
+
+Their rows already agree, so their full input and output paths
+agree. The loop identity at parameter zero identifies their
+scalar corrections. Uniqueness of the stationary germ identifies
+all its derivatives for every fixed forest and period. We have
+therefore proved uniqueness of the entire cluster history,
+including the scalar and stationary data needed in the next
+scale comparison.
+
+If the original sequence failed to converge to this history in
+any one coordinate, scalar, or fixed chart derivative, a
+subsequence would stay outside some neighborhood of its asserted
+limit. The compactness construction applies to that subsequence
+and gives a further subsequence with the unique cluster limit,
+a contradiction. Thus the entire cutoff sequence converges.
+The strict-width argument upgrades its coefficientwise convergence
+to the weighted path convergence used for fixed-scale normalized
+moments. This closes that part of the fixed-scale input once the
+finite-step extended-domain construction, retained row horizon,
+and canonical all-period detection used above are supplied on
+the selected history.

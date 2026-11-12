@@ -1,0 +1,469 @@
+% Finite-scale producer for the neutral flat curvature representative.
+\section{Finite-scale propagation of the neutral curvature representative}
+\label{sec:ex-lattice-rg-construction}
+
+This section records the finite-scale construction that supplies the scalar
+recurrence used in Section~\ref{sec:ex-lattice-flat-rate}. It starts from a
+terminal difference of two quadratic precisions, propagates a representative
+of that difference modulo linear-curvature null directions, and controls its
+cost at every earlier level. The one-step operation is the local Schur and
+matching argument of Section~\ref{sec:ex-lattice-flat-step}; the present
+section supplies its actual finite-history inputs and closes the resulting
+recurrence. No limiting argument is used here.
+
+\subsection{Data on a finite interval of levels}
+
+For each $x$ in an index set $X$, fix one schedule, a measuring level
+$k_x$, and finite indices $i_0(x)\leq N_x\leq n_x$. In formulas for one
+fixed $x$, suppress its subscript and write
+\[
+ J_i=J(i),\qquad L_i=|\text{block at step }i|,\qquad
+ t_i=\log a_i^{-1},\qquad \Omega_i=\Omega(J_i),\qquad
+ \sigma_i=w(J_i),
+\]
+where $a_i$ is the positive length at level $i$. The schedule identities are
+\[
+ t_{i+1}-t_i=\log L_i,\qquad L_i\geq3.
+\]
+Let $\mathcal F$ be the finite set of face labels and put $m=|\mathcal F|$.
+For a horizon metric $H$ at a torus side $c$, let $D_c$ be the discrete
+exterior derivative from one-cochains to two-cochains and write its
+quadratic precision as
+\[
+ \mathscr Q(H,c)=D_c^{\mathsf T}H_cD_c,
+\]
+where $H_c$ is the finite matrix obtained from the metric by periodization.
+The packets below represent differences of these forms by periodizing a
+cover curvature matrix between the two copies of $D_c$.
+The scale allotment for adjacent levels and its one-step null correction are
+\begin{equation}
+ \mathcal A_i=m^2e^4\Omega_{i+1}^{2}\Omega_i,
+ \qquad
+ \nu_i(u)=\frac{2m^2\mathcal A_i^{2}}{uL_i}\quad(u>0).
+ \label{eq:ex-lattice-rg-coin}
+\end{equation}
+These quantities are nonnegative. Indeed, the row bounds on each quadratic
+precision imply $\Omega_i\geq0$. The expression $\mathcal A_i$ is the
+allotment entering the two order-two response-kernel estimates. The factor
+$m^2$ in $\nu_i$ counts the two finite face labels; the factor $L_i^{-1}$
+and the factor $2/u$ are the centered null-packet correction.
+
+Assume the following finite data.
+
+\begin{enumerate}
+\item For every member $x$ of an index set $X$, there is a horizon of
+quadratic precisions $H_x(N,i)$, with row bounds at widths
+$\alpha(J_i)$ and costs $\Omega_i$. These bounds include the diagonal,
+crossing, and torus-floor estimates used in the one-step lemma. For every
+$i_0(x)\leq i<N_x$, the actual Wilson tower precision at $(N_x,i)$ equals
+the order-two precision of the flight from level $i+1$ to level $i$.
+\item There is a positive width curve $w$, with
+$w(k)\leq\alpha(k)$, such that for every $i<N$,
+\begin{equation}
+ \sigma_i\leq\min\{1,\alpha(J_i),\alpha(J_{i+1})\},\qquad
+ 2\sigma_i\leq L_i\sigma_{i+1},\qquad
+ \nu_i(\sigma_{i+1})\leq
+ \exp\bigl(-\theta(t_{i+1}-t_i)\bigr)
+ \label{eq:ex-lattice-rg-funding}
+\end{equation}
+for one fixed $\theta>0$.
+\item The terminal allowance
+$T_{x,N}=2m\Omega_N$ has a uniform polynomial age bound
+\begin{equation}
+ T_{x,N}\leq A_0\,\mathfrak a_x(N)^d,
+ \qquad
+ \mathfrak a_x(i)=2+Z_x+|t_i-t_{k_x}|,
+ \label{eq:ex-lattice-rg-topcap}
+\end{equation}
+with $Z_x\geq0$, integer $d\geq0$, and $A_0\geq0$ independent of
+$x,N,n$.
+\end{enumerate}
+
+The first two items are the complete inputs represented by the plan and
+funding conditions below. The first inequality in
+\eqref{eq:ex-lattice-rg-funding} keeps all response kernels inside both
+adjacent analytic widths. The second is the block-folding requirement. The
+third pays the exact one-step null-packet cost.
+
+\subsection{Production of the funded width and top allowance}
+\label{subsec:ex-lattice-rg-funded-producer}
+
+For a map price $X$, put
+\[
+ \omega_j=\min\{1,\alpha_X(j),\alpha_X(j+1)\},\qquad
+ A_X(j,u)=m^2e^4\Omega_X(j)^2\Omega_X(u),
+\]
+\[
+ b_X(j,u)=m A_X(j,u)\left(m\frac{2}{\omega_j}A_X(j,u)\right)
+       =\frac{2m^2A_X(j,u)^2}{\omega_j}.
+\]
+\[
+ E_X(j)=\left\lceil\frac{2}{\omega_j}+b_X(j,j)^2+b_X(j,j-1)^2\right\rceil.
+\]
+These are the source's entrance ticket and two adjacent row prices. The
+schedule satisfies $J_{i+1}=J_i$ or $J_i+1$. Suppose the selected floors
+give $E_X(J_{i+1})\leq L_i$ and the delay receipt gives
+$\Omega_X(J_i)\leq\log\widehat\beta_i$. Then the world width is
+$w(j)=\omega_j$ and $\theta=1/2$.
+
+The width is positive, at most one, and no larger than $\alpha_X$. If the
+stage rises, its bridge width is exactly $\omega_{J_i}$; if the stage stays
+fixed, the bridge is $\min\{1,\alpha_X(J_i)\}\geq\omega_{J_i}$. The
+entrance summand $2/\omega_{J_{i+1}}$ implies
+$L_i\omega_{J_{i+1}}\geq2$, while $w(J_i)\leq1$, proving
+$2w(J_i)\leq L_iw(J_{i+1})$.
+
+Since $J_i$ is either $J_{i+1}$ or its predecessor,
+$b_X(J_{i+1},J_i)^2\leq L_i$. The quote, by the definitions of allotment
+and neutral coin, is exactly
+\[
+ \operatorname{quote}_i(w(J_{i+1}))
+ =\frac{2m^2A_X(J_{i+1},J_i)^2}{w(J_{i+1})L_i}
+ =\frac{b_X(J_{i+1},J_i)}{L_i}
+ \leq L_i^{-1/2}
+ =e^{-(t_{i+1}-t_i)/2}.
+\]
+This proves the paid condition and fixes its exponent from the actual
+entrance-price formula.
+
+For the top allowance let $s_G>0$ be the gauge slope constant and choose
+$Z_x=3+\log\widehat\beta_{k_x}$. The selected spacing hypothesis includes $\widehat\beta_{k_x}>1$;
+therefore $Z_x=3+\log\widehat\beta_{k_x}\geq0$. The schedule's
+delayed-scale inequality and $\log r\leq r-1$ imply
+$\log\widehat\beta_i\leq\log\widehat\beta_{k_x}
++s_G|t_i-t_{k_x}|$. Consequently
+\[
+ \Omega_X(J_i)\leq(1+s_G)(2+Z_x+|t_i-t_{k_x}|).
+\]
+As $T_{x,N}=2m\Omega_X(J_N)$, the top cap holds with degree one and
+constant $2m(1+s_G)$. Thus the full funding conclusion follows from
+the selected integer entrance floor and the post-length delay, rather than
+being an independent large-scale assumption.
+
+\subsection{Production of the horizon rows and exact tower identity}
+\label{subsec:ex-lattice-rg-horizon-producer}
+
+The selected public route supplies a horizon and an exact carrier identity,
+but their local row construction is a separate producer obligation. The
+source route retains finite-period rows, adds a Gram correction preserving
+the curl action, takes square roots on a common smaller strip, and checks the
+resulting block identities including harmonic modes. This paragraph records
+that route and does not treat those operations as proved here. The exact
+mathematical input consumed below is: for every $x,N,i$, a positive horizon
+metric with the stated diagonal, crossing, floor and row bounds, and an
+identity of its tower curvature with the order-two flight from $i+1$ to $i$
+on every required finite torus. Producing these horizons and verifying the
+Gram, root, and harmonic identities remains an open construction step in
+this chapter. The native component recipe retains the same schedule when
+binding these receipts to the selected run.
+\subsection{The selected run's nonlinear one-step supplier}
+\label{subsec:ex-lattice-volant-producer}
+
+At the selected adjacent levels, let $L$ be the block side, $\beta$ the
+lower scale, $B_0,B_1$ the lower and upper budget radii, $\mu$ the shape
+strength, and $Q$ the menu target. The shipment tariff is
+\begin{equation}
+ N\,\operatorname{siteFactor}(B_0)
+ \exp\!\left((Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)\right)a
+ \leq \operatorname{ribbon}(Q,L,\beta),
+ \label{eq:ex-lattice-volant-tariff}
+\end{equation}
+where $N$ is the occupancy count and $a$ is the available shipment amount.
+The second-row allotment is
+\begin{equation}
+ \mathfrak s(\mu,L,\beta)
+ =2\exp\!\left(-\frac{\mu}{16}\Delta_{G,L}(\beta)^2\right),
+ \label{eq:ex-lattice-volant-straw}
+\end{equation}
+with $\Delta_{G,L}$ the fine-scale monitor.
+
+The selected response produces ungrouped terms $A_i(U)$ and $D_i(U)$,
+with support indices $s(i)$ and $p(i)$, respectively. Let $a_i,d_i\geq0$
+be summable majorants for their weighted prices, and let $S_i,T_i$ be
+their support sets. The precise paid inputs are
+\begin{align}
+ \operatorname{price}_r(A_i(U))&\leq a_i,&
+ \sum_{i:z\in S_i}a_i e^{(b+1/2)\operatorname{coverNumber}(B_0,S_i)}&\leq1,
+ \label{eq:ex-lattice-volant-first-ledger}\\
+ \operatorname{price}_r(D_i(U))&\leq d_i,&
+ \sum_{i:z\in T_i}d_i e^{(b+1)\operatorname{coverNumber}(B_0,T_i)}&\leq
+       \mathfrak s(\mu,L,\beta).
+ \label{eq:ex-lattice-volant-second-ledger}
+\end{align}
+Every $A_i$ has zero quiet coefficient and is supported in the assigned
+support $S_i=s(i)$. Every $D_i$ is supported in the full box support
+$T_i=p(i).1$ and in the prescribed threshold shell. Thus the cover weights
+in the ledgers are the supports used by the resulting families themselves.
+The selected response receipts
+also give, for every box $p$ and configuration $U$,
+\begin{align}
+ \sum_{i:p(i)=p}[D_i(U)]_{\varnothing}&=\operatorname{profile}_p(U),
+ \label{eq:ex-lattice-volant-quiet}\\
+ \sum_{i:p(i)=p}[D_i(U)]_j&=\sum_l\operatorname{owl}(q_l)_j(p,U),
+ \label{eq:ex-lattice-volant-field}
+\end{align}
+and the ungrouped expenditure identity
+\begin{equation}
+ \mathcal D(\mathcal E)(U)=e^{E(U)}\operatorname{pass}\!\left(\sum_i A_i(U)\right)
+ *\operatorname{field}\!\left((\sum_{i:p(i)=p}D_i(U))_p,
+                            \operatorname{flags}(U)\right).
+ \label{eq:ex-lattice-volant-play}
+\end{equation}
+The field coefficient identity is for each box $p$ and singleton mode $j$;
+higher coefficients are the full products in the field polynomial.
+
+\begin{theorem}[Paid menu assembly and shipment conversion]
+\label{thm:ex-lattice-volant-supplier}
+Assume the selected history provides the ungrouped paid terms and exact
+identities above, at lower exponent $b$ and upper exponent $e_1\geq100$.
+Assume the menu offer has exponent $e_1-4$ and allowance $a$, and that the
+birth estimate, foam, and radius hypotheses stated in the proof hold. Then
+the grouped families
+\[
+ F_s(U)=\sum_{i:s(i)=s}A_i(U),\qquad
+ K_p(U)=\sum_{i:p(i)=p}D_i(U)
+\]
+have the same rooted budgets as the ungrouped families, retain the support
+and shell conditions, and satisfy the per-box quiet and singleton identities
+and the push identity in \eqref{eq:ex-lattice-volant-quiet}--
+\eqref{eq:ex-lattice-volant-play}. The selected door, tuning, and
+slot-separation conditions are retained. The producers of the paid
+terms are treated separately in Section~\ref{sec:ex-lattice-rg-multisource};
+this theorem proves their tariff conversion and assembly.
+\end{theorem}
+
+\begin{proof}
+For menu $i$, write $n_i^{\mathrm{birth}}$ for the cover number of its
+birth region at radius $B_0$ and $n_i^{\mathrm{crest}}$ for the cover
+number of its crest at radius $B_1$. The selected birth estimate is
+\[
+ (Q.\mathrm{relative}+1)n_i^{\mathrm{birth}}
+ \leq (Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)
+       +\frac54\varepsilon_Q n_i^{\mathrm{crest}}.
+\]
+Here $\varepsilon_Q>0$. Let $w_i$ be the menu wage, equal to its intrinsic
+profit times its total menu fee, and set
+$f_i=w_i\exp(2\varepsilon_Q n_i^{\mathrm{crest}})$. Foam at scale $L$,
+$B_1\leq2B_0$, $Q.\mathrm{relative}\geq4$, and the profile hypotheses
+give $4\varepsilon_Q<e_1$. Hence
+\[
+ \frac{13}{4}\varepsilon_Q<\frac{13}{16}e_1\leq e_1-4,
+\]
+where the last inequality follows from $e_1\geq100$. Adding the wage
+weight to the birth estimate gives
+\[
+ e^{(Q.\mathrm{relative}+1)n_i^{\mathrm{birth}}} f_i
+ \leq e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}
+       w_i e^{(e_1-4)n_i^{\mathrm{crest}}}.
+\]
+For every named marker $v$, the offer gives
+$\sum_{i:v\in A_i}w_i e^{(e_1-4)n_i^{\mathrm{crest}}}\leq a$,
+where $A_i$ is the set of available named origins for menu $i$. Choose, for each positive wage, a named origin in the
+menu mode whose parent image lies in that menu's birth region. The birth
+estimate and the displayed $13\varepsilon_Q/4$ margin transfer the offer
+to a rooted budget on birth regions, with exponent
+$Q.\mathrm{relative}+1$ and budget
+$c=\exp((Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5))a$.
+Apply the rooted projection estimate: if the origin family has occupancy at
+most $N$ at each parent site and every positive-wage mode has one such
+origin in its birth support, then lowering the rooted exponent by one gives
+\begin{equation}
+ \sum_{i:z\in\mathrm{birth}_i}f_i
+       e^{Q.\mathrm{relative}\,\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}
+ \leq N\operatorname{siteFactor}(B_0)c
+ \leq\operatorname{ribbon}(Q,L,\beta).
+ \label{eq:ex-lattice-volant-root-lift}
+\end{equation}
+The final inequality is exactly the purchased tariff
+\eqref{eq:ex-lattice-volant-tariff}; the tariff is an input from the
+schedule. Zero-wage terms contribute nothing.
+
+Now group terms by their support and box indices. The first ledger already
+uses exactly the supports $S_i=s(i)$, and the second uses exactly the box
+supports $T_i=p(i).1$. By the triangle
+inequality,
+$\operatorname{price}_r(F_s(U))\leq\sum_{i:s(i)=s}a_i$ and
+$\operatorname{price}_r(K_p(U))\leq\sum_{i:p(i)=p}d_i$. Summing these
+bounds over fibers at a fixed site gives exactly the two budgets in
+\eqref{eq:ex-lattice-volant-first-ledger}--
+\eqref{eq:ex-lattice-volant-second-ledger}. Tonelli's theorem applies
+because the majorants are nonnegative and summable. Absolute convergence
+allows each finite marker coefficient to be grouped termwise, proving the
+per-box quiet and singleton identities.
+
+The pass is a finite coefficient operation and commutes with the absolutely
+convergent grouping of $A_i$. The field operation is a finite sum of finite
+products on the marker algebra and likewise commutes with grouping the
+$D_i$ by box. Substituting both regroupings into the ungrouped expenditure
+identity gives the stated push identity, including the exponential scalar
+and the pass of $\sum_sF_s$. All support conditions pass to the unions
+within each fiber. This proves the assembly without assuming the grouped
+conclusion as an input.
+\end{proof}
+
+\subsection{The terminal representative}
+
+\begin{lemma}[Terminal neutral representative]
+\label{lem:ex-lattice-rg-terminal}
+Let $H_x$ satisfy the row and floor bounds at level $N$, and suppose
+$0<\sigma_N\leq\alpha(J_N)$. There is a summable, translation-covariant packet $B_N$ which is
+neutral, has folded cost at most $T_{x,N}$ at width $\sigma_N$, and represents
+\[
+ \mathscr Q(H_x(n,N),c)-\mathscr Q(H_x(N,N),c)
+\]
+as a linear-curvature quadratic form on every torus side $c$ occurring at
+level $N$.
+\end{lemma}
+
+\begin{proof}
+Set $Y=H_x(n,N)$ and $Z=H_x(N,N)$, and define the packet by subtracting
+their saddle kernels entrywise. The row bounds give the two floor
+inequalities with the common parameter $\Omega_N$ and width $\sigma_N$.
+For each metric row $R$, its saddle kernel is the plain translation-invariant
+kernel evaluated on a constant output position. A strip bound of width
+$\sigma_N$ and cost $\Omega_N$ makes this saddle packet's folded norm at
+most $m\Omega_N$: sum first over the cover position and use the strip bound
+for each of the $m$ output labels. The triangle inequality therefore bounds
+the difference packet by $m(\Omega_N+\Omega_N)=T_{x,N}$. Translation
+covariance follows from translation invariance of each plain kernel.
+
+For neutrality, fix the root position and output face label and sum the
+packet over the cover. Absolute convergence follows from the folded bound.
+Each saddle sum is the zero-frequency row sum of its metric. The floor
+condition pins both metric zero modes to the same identity matrix; hence
+their row sums agree and the difference sum is zero. Finally, on each torus
+side $c$, periodizing the packet gives the difference of the two metric
+matrices. Each floor identifies its metric with the quadratic form obtained
+from its full map, so subtracting the identities represents the precision
+difference by the exterior derivative of the difference of those finite
+curvature matrices. This proves the claim without inverting the curl
+precision; the identity holds on the tested curvature form including its
+harmonic zero mode.
+\end{proof}
+
+\subsection{One backward step and the actual kernel inputs}
+
+\begin{lemma}[One-step predecessor]
+\label{lem:ex-lattice-rg-one-step}
+Fix $i<N$ and assume a packet $B_{i+1}$ represents the difference
+$\mathscr Q(H_x(n,i+1),c)-\mathscr Q(H_x(N,i+1),c)$ on every required torus side. Suppose
+the two order-two response kernels for the histories $n$ and $N$ have
+common exponential width
+\[
+ \omega_i=\min\{1,\alpha(J_i),\alpha(J_{i+1})\}
+\]
+and cost $\mathcal A_i$, satisfy the city and matching identities with
+the corresponding tower carriers, and the response kernel used for the
+coarser history is a travelling kernel. Denote the finer-history response
+by $T_i$ and the coarser-history response by $U_i$. If $B_{i+1}$ is neutral and
+translation covariant and has folded cost $p\geq0$ at width
+$u=\sigma_{i+1}$, then the composed packet
+\[
+ B_i=B_{i+1}\star(T_i,U_i)
+\]
+is neutral and translation covariant, represents the quadratic-precision
+difference at level $i$ on every required torus side, and has folded cost
+at width $\sigma_i$ at most $\nu_i(u)p$.
+\end{lemma}
+
+\begin{proof}
+The two kernels are the responses obtained by composing the inverse
+precision at the fine level $i+1$, the installed Wilson tower from $i+1$
+to $i$, and the metric at the coarse level $i$, once for cutoff $n$ and
+once for cutoff $N$. The deep
+order-two tower estimate and the two adjacent precision row estimates give
+their order-two atlas bounds. The priced atlas initially contains
+$e^{4\omega_i}\Omega_{i+1}$ in its high-side entry; since
+$0\leq\omega_i\leq1$, enlarging this to $e^4\Omega_{i+1}$ gives exactly
+the allotment $\mathcal A_i$ in \eqref{eq:ex-lattice-rg-coin}.
+The crossing identities for the actual towers give the required matches
+with their periodized carrier maps. The response composition has the city
+law because each factor has its own translation law and these laws add
+under convolution. The widths are $\omega_i$ for both responses.
+
+For the remaining travel condition, the Wilson tower's zero-alias column
+is the toll-$L_i$ identity, namely $L_i^{-2}I$. Periodicity then gives a
+position-independent column sum for the installed tower; this scalar
+normalization is sufficient for the travel product. The fine cross-row bound
+and the inverse-precision row bound make the two preceding convolutions
+absolutely summable; absolute convergence permits changing their order.
+The sum of a convolution of two travelling kernels is the product of their
+position-independent row sums, so the full coarser response is travelling.
+These are precisely the finite matching, city, and travel hypotheses in
+Section~\ref{sec:ex-lattice-flat-step}; applying its proved Schur and
+weighted-packet estimate gives the asserted identities and cost
+$\nu_i(u)p$. The width, positivity, and folding assumptions in
+\eqref{eq:ex-lattice-rg-funding} are exactly that lemma's remaining
+hypotheses.
+\end{proof}
+
+\subsection{Backward induction and the scalar rate}
+
+\begin{theorem}[Uniform finite-interval flat-sector bound]
+\label{thm:ex-lattice-rg-construction}
+Suppose the terminal and one-step hypotheses above hold for every
+$x\in X$ and every finite interval $N\leq n$. There are nonnegative
+constants $A_1$ and an integer $d_1$, and an exponent $c_1>0$, independent
+of $x,N,n$, and packets $B_i$ for all $i\in[i_0(x),N_x]$, such that
+each $B_i$ is neutral and translation covariant, represents
+$\mathscr Q(H_x(n,i),c)-\mathscr Q(H_x(N,i),c)$ on all required torus sides, and has folded
+cost
+\[
+ \|B_i\|_{\sigma_i,\mathrm{fold}}
+ \leq A_1\,\mathfrak a_x(i)^{d_1}
+       \left(\frac{a_N}{a_i}\right)^{c_1}.
+ \]
+\end{theorem}
+
+\begin{proof}
+Define the nonnegative allowance recursively by
+\[
+ C_N=T_{x,N},\qquad
+ C_i=C_{i+1}\exp\bigl(-\theta(t_{i+1}-t_i)\bigr)
+ \quad(i<N).
+\]
+At $i=N$, the terminal lemma constructs $B_N$ with cost at most $C_N$.
+If $B_{i+1}$ has cost at most $C_{i+1}$, the one-step lemma and the
+funding inequality give
+\[
+ \|B_i\|_{\sigma_i,\mathrm{fold}}
+ \leq\nu_i(\sigma_{i+1})C_{i+1}
+ \leq C_{i+1}\exp\bigl(-\theta(t_{i+1}-t_i)\bigr)=C_i.
+\]
+Neutrality, covariance, and the tested curvature identity are inherited
+from the one-step lemma. Backward induction therefore constructs all
+packets and proves their costs are bounded by $C_i$.
+
+For each fixed $x$, the schedule times have gaps
+$\Delta_i=t_{i+1}-t_i=\log L_i\geq\log3$. The scalar estimate of
+Section~\ref{sec:ex-lattice-flat-rate}, applied on this finite interval
+with terminal value $C_N$, zero interior source, source decay exponent
+$c_0=\theta$, and the age
+$R+Z_x+|t_i-t_{k_x}|$, converts the terminal polynomial bound
+\eqref{eq:ex-lattice-rg-topcap} and the exact recurrence for $C_i$ into
+\[
+ C_i\leq A_1\bigl(2+Z_x+|t_i-t_{k_x}|\bigr)^{d_1}
+       e^{-c_1(t_N-t_i)}.
+\]
+The scalar estimate gives $c_1=\theta/2$ and $d_1=d$. The fixed $R$ in
+that estimate is absorbed into the age because
+$2+Z_x+|t_i-t_{k_x}|\geq2$. The constants are independent of $x$ and
+of the interval length. Since $e^{-(t_N-t_i)}=a_N/a_i$, this is the
+claimed bound.
+\end{proof}
+
+\begin{remark}[Role in the selected construction]
+\label{rem:ex-lattice-rg-public-route}
+This finite-scale producer is the one used by the flat supply in the
+selected construction. The public route first selects the Wilson run with
+treasury and period funding and retains its original sheet, quote, and
+post-length payments. Its native component choice includes the flat
+entrance supplier. Realization applies that supplier to the very same
+selected schedule and horizon. The flat entrance supplier obtains an
+admissible spacing schedule and invokes the finite-history supplier whose
+meshing step uses the world construction proved above. This chapter
+discharges that row-level producer conditional on the stated funding,
+response-kernel, tower-matching, and cost hypotheses. Their origin in the
+complete public construction remains tracked in the accompanying audit;
+the present theorem alone is not the final continuum or moment limit.
+\end{remark}

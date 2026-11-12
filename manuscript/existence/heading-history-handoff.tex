@@ -1,0 +1,378 @@
+\section{Polynomial transport and the invertible coefficient map}
+\label{sec:heading-history-handoff}
+The primary comparison of Section~\ref{sec:primary-calibration-producer}
+uses a particular coefficient map. We prove the two-sided bound needed
+to iterate it, and then combine the primary, regular and forced
+insertions on one transition. The coefficient norm throughout is the
+sum of the absolute values of the coordinates.
+
+\subsection{Exact polynomial transport on the cover}
+Fix the positive blocking penalty $k>0$. Let $L$ be the block side,
+$u=L^{-1}$, and let $j,t\ge4$ be the
+adjacent fine and coarse kernel levels. Write $A_x^{ab}(z)$ for the
+real one-form transport row at the fine site $x$, with output direction
+$a$, input direction $b$, and coarse displacement $z$. The actual
+input site in this row is $\lfloor x/L\rfloor+z$; the floor here
+means the centered block quotient. The strip estimate gives constants
+$\sigma,C>0$, selected before $L$, such that
+\[
+ \sum_z |A_0^{ab}(z)|e^{\sigma|z|_1}\le Cu.
+\]
+The analogous rows at other residues are exponentially summable too.
+We first show that, for every vector-valued polynomial $p$ of degree
+less than $j$,
+\begin{equation}\label{eq:heading-polynomial-row}
+ (Ap)(x)_a=\sum_b\sum_z A_0^{ab}(z)p_b(ux+z).
+\end{equation}
+This is an exact identity, including for $x$ outside the central block.
+
+Here are the low-frequency details. Denote the analytic alias column
+of Section~\ref{sec:kernel-transport-identities} by $\mathcal A_l(q)$,
+in its rescaled one-form convention. Fourier reconstruction and
+$x=L\lfloor x/L\rfloor+\operatorname{rem}(x)$ give
+\[
+ e^{iq\cdot\lfloor x/L\rfloor}\widehat A_x^{ab}(q)
+ =u\sum_l e^{i(q+2\pi l)\cdot x/L}\mathcal A_l(q)_{ab}.
+\]
+For a nonzero alias $l$, both terms in the regular one-form formula
+have the factor
+\[
+ z_l(q)^j,\qquad
+ z_l(q)=\operatorname{area}_L(-(q+2\pi l)/L),\qquad z_l(0)=0.
+\]
+Indeed the transposed filter contains the $j$th power of this area
+factor, and the nonprincipal gain contains the same factor. Removing
+it leaves the analytic port, rail and gain factors from the component
+estimates. Their denominators are nonzero at the origin. Thus
+$\mathcal A_l=z_l^j F_l$ with $F_l$ analytic there. Every derivative
+of order less than $j$ of this term, even after multiplication by
+the displayed exponential, vanishes at zero: in the product of $j$
+vanishing factors some factor remains undifferentiated. The principal
+column has $\mathcal A_0(0)=I$, obtained by the regular principal
+formula at zero. In particular
+\begin{equation}\label{eq:heading-row-mass}
+                       \sum_z A_0^{ab}(z)=u\delta_{ab}.
+\end{equation}
+
+Restrict $q$ to $s\xi$ for a real covector $\xi$, and differentiate
+$r<j$ times in $s$. Exponential summability justifies differentiation
+of the Fourier series: its differentiated terms are bounded by a
+polynomial in $|z|_1$ times the summable exponential. All nonprincipal
+aliases disappear. Comparing the resulting principal expression at
+$x$ and at zero, after inserting $e^{is\xi(ux)}$ at zero, gives
+\[
+ \sum_z A_x^{ab}(z)\xi(\lfloor x/L\rfloor+z)^r
+       =\sum_z A_0^{ab}(z)\xi(ux+z)^r.
+\]
+Polarization of the symmetric $r$-linear forms gives the same identity
+for products of $r$ possibly different covectors. Such products span
+the homogeneous polynomials. Summing the homogeneous parts and the
+finitely many colour coordinates proves
+\eqref{eq:heading-polynomial-row}.
+
+Let $p$ now have homogeneous degree $r<j$. Expanding $p(ux+z)$
+multilinearly, a term containing $s$ copies of $x$ has a factor $u^s$.
+Its remaining $r-s$ factors are bounded by a constant times
+$(1+|z|_1)^{r-s}$. Consequently its coefficient tensor has norm at most
+\[
+ C_r\|p\|u^{s+1},\qquad 0\le s\le r.
+\]
+The constants are independent of $L$: use
+$\sup_{v\ge0}(1+v)^{r-s}e^{-\sigma v}<\infty$ and the row bound.
+Passing from diagonal polynomial values to symmetric tensor norms
+costs only a fixed finite-dimensional constant. This follows by
+compactness of the tensor unit sphere and injectivity of the diagonal
+map, or directly by polarization. The degree-$r$ term is exactly
+$u^{r+1}p(x)$ by \eqref{eq:heading-row-mass}. Adding homogeneous
+parts proves that, if $\deg p<a\le j$, then
+\begin{equation}\label{eq:heading-polynomial-leading}
+ \deg(Ap)<a,\qquad \deg(Ap-u^a p)<a-1,
+\end{equation}
+and the degree-$s$ output tensor is bounded by
+$C_a u^{s+1}$ times the sum of the input tensor norms.
+Lower-degree input terms do not affect the asserted highest-degree
+identity.
+
+\subsection{The two gradings of the primary matrix}
+Let $e_i$ be the canonical coordinate basis of the degree-$d$ frame,
+with $e_0$ the unit, and write $(g_i,\ell_i)$ for spatial grade and
+field-amplitude grade. Both lie between zero and $d$. Let $R$ be the
+unscaled polynomial coefficient transport used in
+Section~\ref{sec:primary-calibration-producer}. We claim
+\begin{align}
+ R_{bi}&=u^{g_i}\delta_{bi} &&(g_b\le g_i),
+                          \label{eq:heading-triangular-receipt}\\
+ R_{bi}&=0 &&(\ell_b<\ell_i),\qquad
+ |R_{bi}|\le D u^{g_i}.    \label{eq:heading-receipt-price}
+\end{align}
+Here $D\ge1$ is chosen before $L$, for the fixed frame and kernel
+levels, and we assume $d\le j$.
+
+To verify the first identity, differentiate the local holonomy
+display in directions of engineering weights $w_1,\ldots,w_n$.
+A block of a chain-rule partition has weight
+$a=\sum_{r\text{ in block}}w_r$. Its unsmoothed potential is
+polynomial of degree less than $a$. By
+\eqref{eq:heading-polynomial-leading}, the smoothed potential is
+$u^a$ times that potential plus a polynomial of degree less than
+$a-1$. Expand the outer multilinear derivative of the $i$th section
+in these sums. If the total weight is at most $g_i$, every term using
+one lower-degree correction has weight strictly below $g_i$ and
+vanishes by the primary section's lower-grade cancellation: its
+multilinear derivative is zero on polynomial tuples of total
+engineering weight less than $g_i$. Indeed its local-section tests
+read the homogeneous label $e_i$, so all smaller spatial grades
+vanish (Section~\ref{sec:local-sections}); the filtered
+gauge-coordinate argument of
+Section~\ref{sec:polynomial-moment-attenuation} then gives exactly
+this lower-weight assertion. No vanishing of its grade-$g_i$ test
+is claimed. The remaining term
+has factor $u^{\sum_r w_r}$. The unsmoothed section reads exactly
+$e_i$, by the defining local-section identity. Extracting its
+homogeneous part of output bidegree $(g_b,\ell_b)$ proves
+\eqref{eq:heading-triangular-receipt}. This also covers order zero.
+
+For the second identity, the section has ordinary derivatives zero
+through order $\ell_i-1$ at the flat field. In a derivative of total
+order less than $\ell_i$ of its composition, the outer derivative
+has no more arguments than that total order. It therefore vanishes.
+This proves the amplitude-grade restriction, regardless of spatial
+grade.
+
+For the uniform bound, use the homogeneous decomposition following
+\eqref{eq:heading-polynomial-leading} in every inner block of the
+chain rule. A term of polynomial degree $s$ in that block has weight
+$s+1$ and coefficient norm at most $C u^{s+1}$. Expand the outer
+multilinear derivative. Terms whose weights sum to less than $g_i$
+vanish; every other term has a factor at most $u^{g_i}$, since
+$0<u\le1$. The fixed stencil, bounded derivative order and finite
+partition set give a constant for each polynomial test. A finite
+family of these tests controls the coefficient norm, as proved in
+Section~\ref{sec:local-splitting}. Taking the maximum over the
+finitely many columns and tests proves the last inequality in
+\eqref{eq:heading-receipt-price}.
+
+Let $f,c\in(0,1]$ be the fine and coarse small-field thresholds,
+with $c/f\le\pi$ and $f/c\le\pi$, where $\pi\ge1$. The actual
+coefficient map $B$ has entries
+\[
+                      B_{bi}=c^{\ell_b}f^{-\ell_i}L^{g_i}R_{bi}.
+\]
+If $\ell_b\ge\ell_i$, then
+$c^{\ell_b}/f^{\ell_i}\le(c/f)^{\ell_i}\le\pi^d$; otherwise
+the entry is zero. Set $a=\pi^dD$. We have
+\[
+ a\ge1,\qquad |B_{bi}|\le a,\qquad
+ |B_{ii}|=(c/f)^{\ell_i}\ge a^{-1},
+\]
+and an off-diagonal nonzero entry requires $g_i<g_b$.
+The unit is fixed. The actual polynomial transport commutes with
+signed coordinate motions and conjugation: change variables in its
+absolutely convergent real kernel sum, use the covariance of the
+local section, and then take its finite jet. The three diagonal
+scalings in $B$ preserve those actions because the bidegrees do.
+
+\subsection{A bound for the inverse without a perturbative assumption}
+Let $n$ be the number of coordinates and put $K=a+na^2\ge1$.
+For $y=Bv$, induction on the grade proves
+\[
+                |v_i|\le K^r\|y\|_1\quad(g_i<r).
+\]
+The claim is empty for $r=0$. If $g_i<r+1$, the other nonzero
+entries in row $i$ come from grades less than $g_i$, hence less
+than $r$. Isolating the diagonal entry and applying the induction
+hypothesis gives
+\[
+ |v_i|\le a\left(|y_i|+\sum_{b\ne i}|B_{ib}v_b|\right)
+ \le a\|y\|_1+na^2K^r\|y\|_1
+ \le K^{r+1}\|y\|_1.
+\]
+Summing with $r=d+1$, and bounding the forward map row by row, yields
+\begin{equation}\label{eq:heading-both-prices}
+ \|Bv\|_1\le C_B\|v\|_1,
+ \qquad \|v\|_1\le C_B\|Bv\|_1,
+ \qquad C_B=n(a+na^2)^{d+1}.
+\end{equation}
+Thus $B$ is injective and, in this finite-dimensional space,
+bijective. Substituting $v=B^{-1}w$ gives the same bound for its
+inverse. The unit column and grade-zero row show also that $B$
+commutes with deletion of the unit coordinate, denoted by
+$\operatorname{core}$. In particular this argument requires no
+smallness of the off-diagonal entries.
+
+\section{Three elementary insertions on one history transition}
+\label{sec:three-port-history}
+Fix one funded interpolating transition, its point on the interpolation
+interval, and its fine and coarse representations $R_f,R_c$.
+Retain the actual local slots and their support and inventory
+identifications. The marked derivative fixes one map $\mathcal D$
+from real elementary insertions to coarse forced arrays, as in
+Section~\ref{sec:projection-payment-producer}. The equalities
+identifying $R_f,R_c$ with adjacent entries of the chosen history
+are part of these data. None of the selections below changes that
+transition or its input and output representations.
+
+Write $\mathcal T$ for its density transfer, $v=L^d$ for the
+physical factor, $\eta=L^{-2/5}$ for its small error allowance,
+and $\kappa_f,\kappa_c$ for the square roots of the fine and coarse
+forced allowances. They satisfy $0<\kappa_f,\kappa_c\le1$.
+For a support $X$ and majorant $h\ge0$, its fine mass is
+\[
+ m_f(X,h)=e^{b_f C_{B_f}(X)}h.
+\]
+The frame's finite motion price is $C_{\rm orb}\ge1$. Let $C$
+be the selected coefficient allowance, at least the price $C_B$
+in \eqref{eq:heading-both-prices} and the graded remainder price
+in the primary estimate. All these choices precede the final
+coupling threshold.
+
+\subsection{Keeping the three exact identities}
+For an inserted density $F$, the local splitting constructs a
+coefficient field $Q$ and a response $\psi$ such that
+\begin{equation}\label{eq:history-three-identities}
+ \begin{split}
+ \operatorname{dens}(Q)&=v\mathcal T F,\\
+ \alpha&=\sum_r z_r\operatorname{ord}(M_r),\qquad
+ \omega=\sum_r z_r\operatorname{flag}(M_r),\\
+ \mathcal P_c(Q_{\rm forced})-\operatorname{hook}(\psi)
+       &=v\sum_r z_r\mathcal P_c(\mathcal D M_r).
+ \end{split}
+\end{equation}
+Here $\alpha$ is the input exponential entry, $\omega$ its input
+forced profile, $M_r$ are real elementary insertions, and
+$\mathcal P_c$ groups output coefficients with the same support and
+inventory. The ordinary and flagged entries are separate functions;
+the density combines them with the background density and gas.
+The first identity follows from the actual integral expansion and
+the exact subtraction identity of Section~\ref{sec:local-splitting}.
+The last is the retained singleton identity
+\eqref{eq:projection-profile-retained}. The middle identities simply
+specify the input decomposition; they are not inferred from the
+first.
+
+For a complex elementary insertion use its real and imaginary
+parts with the same majorant, and coefficients $1,i$. Their input
+cost is at most twice their common mass. The response $\psi$ is
+supported on sets containing the origin, is local, gauge invariant
+and measurable, and vanishes on healthy configurations of its
+support. If its reserved mass bound is $a_0$, the local splitting
+supplies remainder budgets $a_1,a_2\ge0$ with
+\[
+ \operatorname{rem}_{\kappa_c}(Q)\le a_1+a_2,
+ \qquad C_{\rm turn}a_1+a_2\le r,
+ \qquad a_0\le a_1\le r,
+\]
+where $C_{\rm turn}\ge1$. More precisely the first two budgets
+retain the separate ordinary and forced estimates, so the same
+bound $r$ holds after the allowed finite motions. These assertions
+are the summation and support-join bounds already proved in the
+local splitting; the response is the sum of its rebates. Absolute
+majorants justify both its grouping by support and the profile
+identity in \eqref{eq:history-three-identities}.
+
+\subsection{The three choices and their prices}
+For the primary insertion with coordinate $e_i$, $i\ne0$, take
+its local section on the canonical stencil. Its exponential entry
+is its masked section, its input forced profile is zero, and its
+density is that entry times the fine background density. The
+small-error and graded remainder estimates of
+Section~\ref{sec:primary-calibration-producer}, followed by the
+same local splitting, give
+\[
+ C_{\rm orb}\|Q.x-BL^{d-g}e_i\|_1
+       \le\eta\|\operatorname{core}e_i\|_1,
+ \qquad r=C\|L^{d-g}\operatorname{core}e_i\|_1.
+\]
+The diagonal notation $L^{d-g}$ acts coordinatewise. Let $\tau_f$
+be the common fine local-section derivative bound. Its stencil is
+contained in one $B_f$-covering set once the selected geometric
+floor is met. Thus its input mass is at most $e^{b_f}\tau_f$.
+Both real components therefore fit the common input allowance
+\begin{equation}\label{eq:history-common-waybill}
+                            t_f=2e^{b_f}\tau_f.
+\end{equation}
+This allowance is independent of the coordinate.
+
+For a regular insertion $f$ on $X\ni0$, assume the local regularity,
+gauge invariance and vanishing holonomy tests through degree $d$,
+with the prescribed derivative and spatial-weight bound $h$.
+Its input exponential entry is $\chi_X f$, its forced profile is
+zero, and its density is $\rho_f\chi_X f$. Put $m=m_f(X,h)$.
+Section~\ref{sec:regular-principal-producer} pays its principal
+term; the nonprincipal and forced payments are those of
+Section~\ref{sec:projection-payment-producer}. The split field
+therefore satisfies
+\[
+          C_{\rm orb}\|Q.x\|_1\le\eta m,
+          \qquad r=\eta m,
+          \qquad\text{input allowance }2m.
+\]
+All three equalities in \eqref{eq:history-three-identities} use
+this same masked insertion.
+
+For an allowed forced slot $s$, let $f\ne0$ be its local,
+gauge-invariant measurable insertion, with the slot's support
+and eligibility conditions, $|f|\le h$, and origin in its support.
+Put $m=m_f(X_s,h)$. Its exponential entry is zero. Its input
+profile equals $f$ at the original support--inventory address
+and zero at every other address. It has no ordinary principal
+cluster: the marked slot is flagged, whereas that cluster requires
+an ordinary insertion. The nonprincipal and forced prices thus
+give the zero-leading-coefficient bound without a principal bill.
+The fine forced norm charges this insertion by $m/\kappa_f$.
+Since $0<\kappa_f\le1$, enlarging the already paid bound
+$\eta m$ gives the required form
+\begin{equation}\label{eq:history-forced-price}
+ C_{\rm orb}\|Q.x\|_1\le\eta m/\kappa_f,
+ \qquad r=\eta m/\kappa_f,
+ \qquad\text{input allowance }2m.
+\end{equation}
+The input allowance remains $2m$; it is not multiplied by
+$\kappa_f^{-1}$. The output remainder uses $\kappa_c$ through
+the local splitting. The two square roots serve different roles.
+For $f=0$ take zero fields and zero response, so no support
+claim for a nonzero insertion is needed.
+
+\subsection{One finite set of insertion types for every grade}
+On the fixed finite fine torus, form a set containing the ordinary
+slot selected for every support containing the origin. Adjoin the
+forced slots selected by the retained slot realization for all
+support--inventory tags. Both indexing sets are finite, so their
+union is finite even if different indices select the same slot.
+This set contains all three input types above. It depends on the
+representation and its slot realization, not on the coefficient
+vector later to be transported.
+
+The map $\mathcal D$ was fixed before choosing the degree $d$.
+For each $d$ with $d+3$ at most the coarse kernel level, apply the
+three estimates and \eqref{eq:heading-both-prices} with its own
+frame. Its common allowance is \eqref{eq:history-common-waybill},
+using the stage's local-section price, which bounds all those
+grades. The exact history identifications replace the interpolating
+input and output by $R_{N,m+1}$ and $R_{N,m}$ in every equality.
+This is substitution in fixed maps; it selects no new transition.
+The transition remains sound because its unmarked density identity,
+singleton derivative and motion identities were established for
+this interpolating point.
+
+Finally the common scale payments give, with $s_f$ the fine column
+allowance and $K_f$ the next coefficient budget,
+\[
+ \eta(1+s_f)C_{\rm orb}\le L^{-3/8},\qquad
+ (C+\eta s_f)C_{\rm orb}\le K_f.
+\]
+These are exactly the two purchase inequalities in
+\eqref{eq:ex-interpolation-buy}. Together with the selected bank
+and room bounds there, they allow
+Proposition~\ref{prop:ex-selected-interpolation} to combine all
+columns into one linear coefficient family. At a fixed stage there
+are only finitely many permitted earlier stages and grades. Taking
+the maximum of their coupling thresholds supplies all these
+estimates simultaneously, and any subsequent increase of those
+thresholds preserves them.
+
+This proves the three elementary estimates, the inverse-map bound,
+and their common-history use relative to the retained funded
+interpolation, its slot realization and the common scale payments.
+The construction of those nonlinear interpolation data remains the
+separate path-construction problem.

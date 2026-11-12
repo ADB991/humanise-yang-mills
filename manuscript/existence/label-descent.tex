@@ -1,0 +1,98 @@
+\section{Compatibility of the Lorentz action across field levels}
+\label{sec:label-descent}
+The continuation argument uses one Lorentz action on the union of the field
+spaces. Constructing an action separately at every finite level would not
+be enough: the changes of basis used to compare with the free theory need
+not commute with the inclusions. The compatibility is instead proved from
+the Euclidean action and the infinitesimal boost relation.
+
+Write $E_d$ for the interacting finite-dimensional complex field space and
+$\iota_{de}:E_d\to E_e$, $d\leq e$, for its injective inclusions. Let
+$E_d^0$ be the corresponding reference spaces. The following input isolates
+the finite-level comparison produced by the calibration argument.
+\begin{assumption}[Calibrated finite-level actions]\label{input:calibrated-actions}
+For each $d$ there is a complex-linear isomorphism $Q_d:E_d^0\to E_d$.
+The reference spaces carry continuous representations $R_d^0$ of $O(4)$
+and $T_d^0$ of the proper orthochronous Lorentz group. For each spatial
+coordinate $a$, their generators satisfy
+\[
+ \left.\frac{d}{dt}T_d^0(B_a(t))\right|_{t=0}=-iL_{d,a}^0,
+\]
+where $L_{d,a}^0$ is the generator of the Euclidean time--$a$ plane
+rotation, with the conventions of Section~\ref{sec:lorentz-covariance}.
+On spatial rotations the two reference actions agree. Define
+$R_d(g)=Q_dR_d^0(g)Q_d^{-1}$ and let $L_{d,a}$ be its indicated
+Euclidean generator. These actions satisfy
+\[
+ R_e(g)\iota_{de}=\iota_{de}R_d(g),\qquad
+ L_{d,a}Q_d=Q_dL_{d,a}^0.
+\]
+There are antilinear involutions $J_d,J_d^0$, compatible with inclusions,
+such that $J_dQ_d=Q_dJ_d^0$ and $J_d^0$ commutes with $T_d^0$.
+The inclusions form a directed system and the field union is its algebraic
+direct limit.
+\end{assumption}
+The comparison maps $Q_d$ are the same maps that define $R_d$; a fresh
+choice at the Lorentz stage would not justify the displayed generator
+identity. Production of these maps and the reference actions is separate
+from the compatibility proof below.
+
+\begin{proposition}\label{prop:lorentz-label-descent}
+Under Input~\ref{input:calibrated-actions}, the finite-level representations
+\[
+ T_d(\Lambda)=Q_dT_d^0(\Lambda)Q_d^{-1}
+\]
+commute with all inclusions. They therefore induce one representation
+$T$ on the field union, continuous on each finite level. Its spatial
+action is the Euclidean one, its boost generator on $E_d$ is
+$-iL_{d,a}$, and it commutes with the induced involution $J$.
+\end{proposition}
+\begin{proof}
+Conjugation immediately gives the representation laws and continuity on
+each level. Differentiation at zero, using the fixed linear map $Q_d$,
+gives the boost generator $K_{d,a}=-iL_{d,a}$. Differentiating the
+Euclidean inclusion law along its plane rotation gives
+\[
+ L_{e,a}\iota_{de}=\iota_{de}L_{d,a},
+ \qquad K_{e,a}\iota_{de}=\iota_{de}K_{d,a}.
+\]
+For $v\in E_d$, the two curves
+\[
+ f(t)=T_e(B_a(t))\iota_{de}v,\qquad
+ g(t)=\iota_{de}T_d(B_a(t))v
+\]
+have the same initial value and solve $h'=K_{e,a}h$. The derivative at
+arbitrary $t$ follows from the group law by translating the parameter in
+the derivative at zero; for $g$ use the generator intertwining just proved.
+Uniqueness of this constant-coefficient equation can be seen directly:
+the derivative of $e^{-tK_{e,a}}(f(t)-g(t))$ is zero, and its value at
+zero is zero. Hence the inclusion commutes with every coordinate boost.
+
+It commutes with each spatial rotation because the transported spatial
+action is $R_d$ and the Euclidean inclusion law already holds.
+For fixed $d,e$, the transformations commuting with $\iota_{de}$ form
+a subgroup. Products follow by two substitutions. For inverses, if
+$T_e(\Lambda)\iota_{de}=\iota_{de}T_d(\Lambda)$, multiply on the left
+and right by the respective inverse transformations. Spatial rotations
+and coordinate boosts generate the full proper orthochronous group, by
+the explicit reduction of $\Lambda e_0$ in the proof of
+Theorem~\ref{thm:lorentz-covariance}. Thus every transformation commutes
+with the inclusions. Notice that this argument has not asserted any
+compatibility of the maps $Q_d$ themselves.
+
+Define the action on a union element represented by $v\in E_d$ to be
+represented by $T_d(\Lambda)v$. If another representative lies in $E_e$,
+pass to a common higher level; the inclusion compatibility proves the
+same resulting class. This proves well-definedness. Linearity and the
+group laws hold after putting finitely many representatives in a common
+level, and the inverse action is that of $\Lambda^{-1}$. The asserted
+spatial and derivative identities follow in the same way. Finally
+\[
+ J_dT_d(\Lambda)Q_dv
+ =Q_dJ_d^0T_d^0(\Lambda)v
+ =Q_dT_d^0(\Lambda)J_d^0v
+ =T_d(\Lambda)J_dQ_dv.
+\]
+Surjectivity of $Q_d$ and compatibility of the involutions prove
+commutation with $J$ on the union.
+\end{proof}

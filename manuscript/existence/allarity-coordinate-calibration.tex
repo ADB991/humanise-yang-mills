@@ -1,0 +1,266 @@
+\section{One coordinate system for the finite Gaussian comparison}
+\label{sec:allarity-coordinate-calibration}
+
+The moment estimate in Section~\ref{sec:allarity-cumulant-comparison}
+requires a common space containing both the physical jet coordinates
+and the discarded higher-order information. We construct that space
+from finite lattice readings. The covariance may be indefinite after
+normal ordering; only its symmetry is used in this construction.
+
+\subsection{Recovering polynomial curvature coordinates from differences}
+
+Write $\Delta_a f(x)=f(x+e_a)-f(x)$ on $\mathbb Z^4$. A real
+curvature cochain is specified on positively oriented plaquettes and
+colour coordinates and extended antisymmetrically to all ordered
+pairs of axes. We call it closed when
+\[
+                \Delta_a f_{bc}+\Delta_b f_{ca}
+                                  +\Delta_c f_{ab}=0.
+\]
+For an integer $d\ge0$, let $K_d$ index a basis of the radial
+polynomial connection jets whose curvature degree $j$ satisfies
+$j+2\le d$. Its basis element has grade $g_\alpha=j+2$.
+Let $t_\alpha$ be its lattice plaquette cochain, obtained by
+integrating the polynomial connection along each edge and taking its
+discrete curl. These are the polynomial test cochains of the local
+section construction. They are closed. Differences of order greater
+than $j$ vanish, while order-$j$ differences at zero are the
+components of $j!$ times the homogeneous curvature tensor. Edge
+integration does not change this highest homogeneous term.
+
+For clarity, the finite sampling argument needs only closedness,
+not the divergence equation. Given a closed cochain, its order-$j$
+differences at zero form a symmetric derivative tensor. Applying
+the closedness equation after any $j-1$ differences gives the
+cyclic identity for this tensor. It therefore defines a homogeneous
+closed polynomial two-form. For $j=0$ this assertion just says that
+the tensor is antisymmetric. The radial primitive is obtained by
+contracting this two-form with the position vector and dividing by
+$j+2$, as in the local jet construction. Its curl is the given
+two-form. Thus these highest-order readings are those of a radial
+polynomial connection jet.
+
+The map from the span of the $t_\alpha$ of curvature degree at
+least $q$ to all origin differences of orders $q,\ldots,d-2$
+is injective. Indeed, take the largest degree with a nonzero
+coefficient. The differences of that order kill all smaller
+degrees and recover its full curvature tensor. Vanishing of those
+readings forces that radial connection jet, hence its basis
+coefficients, to be zero. Descend through the finite list of
+degrees. The same descent, now subtracting the recovered top-degree
+test cochain, shows that the origin readings through order $d-2$
+of every closed cochain are matched by a unique linear combination
+of the $t_\alpha$.
+
+Choose a linear left inverse of each of these finite injective
+sampling maps. For a key $\alpha$ of curvature degree $j$, use the
+left inverse involving only differences of orders at least $j$.
+This gives a real functional $\ell_\alpha$ which is a finite
+linear combination of origin differences, with
+\begin{equation}\label{eq:allarity-dual-cochain}
+ \ell_\alpha(t_\beta)=\delta_{\alpha\beta},\qquad
+ \Pi_df=\sum_{\alpha\in K_d}\ell_\alpha(f)t_\alpha.
+\end{equation}
+For closed $f$, $\Pi_df$ has exactly its origin differences through
+order $d-2$. Compatibility of the different left inverses follows
+from uniqueness of the full expansion just proved: restriction to
+orders at least $j$ deletes all lower-degree test cochains, and
+the left inverse therefore recovers the same remaining coefficients.
+The functionals are defined on arbitrary cochains; the matching
+assertion is only used for closed ones.
+
+Let $c_\alpha$ be the sum of the absolute values of the coefficients
+of $\ell_\alpha$ in its difference representation, and choose
+$C_d\ge1$ with $c_\alpha\le C_d$ for every key. This is a finite
+constant, selected before any comparison scale or stencil radius.
+
+\subsection{Residual coordinates and their bounds}
+
+Fix a finite set $S$ of addresses, all with lattice distance
+$|x|_1\le M$, where $M$ is a nonnegative integer, and a radius $r\ge1$.
+For a cochain $f$ define
+\begin{align*}
+ L_\alpha f&=r^{g_\alpha}\ell_\alpha(f),\qquad \alpha\in K_d,\\
+ L_z f&=r^{d+1}(f-\Pi_df)(z),\qquad z\in S.
+\end{align*}
+The coordinate set is the disjoint union $K_d\sqcup S$. Every
+functional $L$ uses only finitely many values, since a finite
+difference does so. For every $z\in S$ there is the exact identity
+\begin{equation}\label{eq:allarity-coordinate-reconstruction}
+ f(z)=\sum_{\alpha\in K_d}r^{-g_\alpha}t_\alpha(z)L_\alpha f
+                                      +r^{-(d+1)}L_zf.
+\end{equation}
+It is simply the definition of $f-\Pi_df$ and holds even when $f$
+is not closed.
+
+Put $q=\max(d-1,0)$. Suppose a closed $f$ has the weighted
+origin bounds
+\[
+ r^{j+2}|\Delta_w f(0)|\le P\quad(j=|w|\le d-2)
+\]
+and the weighted top-difference bounds
+\[
+ r^{q+2}|\Delta_w f(x)|\le P
+             \quad(|w|=q,\ |x|_1\le M).
+\]
+All plaquette and colour components are included. Assume $P\ge0$.
+For physical coordinates, $g_\alpha\le j+2$ for every difference
+entering $\ell_\alpha$, so
+$|L_\alpha f|\le Pc_\alpha$.
+
+For the residual bound set $h=f-\Pi_df$. Its origin differences
+below order $q$ vanish, and its order-$q$ differences equal those
+of $f$, since $\Pi_df$ has degree at most $d-2$. If $d=0$ or $1$,
+the key set is empty and the last assertion just means $h=f$.
+An elementary discrete remainder estimate gives
+\[
+ |h(z)|\le M^q\sup_{|w|=q,\ |x|_1\le M}|\Delta_w h(x)|.
+\]
+To prove it, descend from order $q$ to zero. At each lower order
+the relevant difference is zero at the origin. Sum its first
+differences along a shortest signed coordinate path to $z$.
+The path has at most $M$ edges and stays inside the ball. A
+negative step uses the forward difference at the new endpoint.
+Each descent therefore multiplies the bound by at most $M$.
+At $q=0$ no descent is required, with $M^0=1$.
+Since $d+1\le q+2$ and $r\ge1$, we obtain
+\begin{equation}\label{eq:allarity-coordinate-bounds}
+ |L_\alpha f|\le PC_d,\qquad |L_zf|\le PM^q.
+\end{equation}
+If the weighted origin differences instead have bound $E\ge0$,
+the physical coordinates satisfy the sharper bound $EC_d$.
+
+Apply the same argument at both ends of a kernel $K(z,w)$ whose
+rows and columns are closed. If its mixed weighted readings of
+the preceding types are bounded by $P$, and the origin--origin
+ones by $E$, then, for $T\ge\max(C_d,M^q)$,
+\begin{equation}\label{eq:allarity-two-reader-bounds}
+ |(L_a\otimes L_b)K|\le PT^2,\qquad
+ |(L_\alpha\otimes L_\beta)K|\le ET^2.
+\end{equation}
+Indeed fix one difference at the first endpoint, divide its bound
+by its positive weight, and apply
+\eqref{eq:allarity-coordinate-bounds} at the second endpoint.
+Apply it again at the first. The endpoint operations commute
+because both are finite linear combinations of evaluations.
+Closedness is preserved under these finite linear combinations.
+This justifies both applications, including residual coordinates.
+
+\subsection{The exact free block and the common covariance}
+
+Fix a separated configuration of $n$ insertion points. Let
+$F_{i\alpha,j\beta}$ be its free covariance in the radial jet
+coordinates. This is a real symmetric matrix: the underlying
+free kernel and the change to these coordinates are real. Normal
+ordering sets its same-insertion block to zero. Define the reference
+cochain kernel
+\[
+ K^0_{ij}(z,w)=\sum_{\alpha,\beta\in K_d}
+ F_{i\alpha,j\beta}\,
+ r^{-g_\alpha}t_\alpha(z)\,
+ r^{-g_\beta}t_\beta(w).
+\]
+Its rows and columns are closed. Equation~\eqref{eq:allarity-dual-cochain}
+shows that its matrix under the $L$ coordinates is exactly $F$
+on the physical block and zero whenever either coordinate is
+residual. This is an exact identity, not a small-error statement.
+
+Let $\Gamma_{ij}$ be the actual symmetric cochain kernel and
+$\mu_i$ its actual mean. Suppose the means obey the two bounds
+of the previous subsection with constants $P,E$, and
+$\Gamma_{ij}-K^0_{ij}$ obeys their two-endpoint versions. Define
+one enlarged mean and covariance by
+\[
+ m_{ia}=L_a\mu_i,\qquad
+ Q_{ia,jb}=(L_a\otimes L_b)\Gamma_{ij}.
+\]
+If $T\ge\max(C_d,M^q)$, their entries satisfy
+\begin{gather*}
+ |m_{ia}|\le PT,\qquad |m_{i\alpha}|\le ET,\\
+ |Q_{ia,jb}-F^{\rm ext}_{ia,jb}|\le PT^2,\qquad
+ |Q_{i\alpha,j\beta}-F_{i\alpha,j\beta}|\le ET^2,
+\end{gather*}
+where $F^{\rm ext}$ has zero residual rows and columns. Consequently,
+if
+\begin{gather}\label{eq:allarity-meridian-purchases}
+ B\ge1,\quad PT\le B,\quad PT^2\le B,\quad
+ |F_{i\alpha,j\beta}|+PT^2\le B,\\
+ ET\le\varepsilon,\qquad ET^2\le\varepsilon,
+\end{gather}
+all enlarged entries are bounded by $B$, while the physical
+block and mean are within $\varepsilon$ of $(F,0)$.
+Applying \eqref{eq:allarity-coordinate-reconstruction} at one and
+at both endpoints proves that the actual stencil mean and covariance
+are the linear and bilinear pullbacks of $(m,Q)$. This gives the
+common pullback required for every slot and every subset in the
+moment comparison.
+
+Here are the purchases used there. Let $H\to\infty$ be its monitor,
+$0<\lambda\le1/4$, and set
+\[
+ T=P=H^{\lambda/4},\quad E=H^{-3},\quad
+ B=H^\lambda,\quad\varepsilon=H^{-2}.
+\]
+The stencil radius has subpower growth, so $M^q\le T$ eventually;
+also $C_d\le T$. Then $PT^2=H^{3\lambda/4}\le B/2$
+eventually, while $PT\le PT^2$ since $T\ge1$.
+The exponents $-3+\lambda/4$ and $-3+\lambda/2$ are at most $-2$,
+which proves the two error inequalities. On a compact separated
+configuration set the finitely many free entries are bounded by
+continuity of the differentiated kernel; the same bound holds for
+the rounded configurations eventually. Thus $|F|\le B/2$
+eventually and all of \eqref{eq:allarity-meridian-purchases} holds.
+
+\subsection{The calibrated polynomial price}
+
+The actual polynomial map on a fixed grade space has a coefficient
+bound of the form
+\[
+ |\mathcal H u|_1\le H\,|\operatorname{awake}(u)|_1,
+ \qquad |\operatorname{awake}(u)|_1\le2|Tu|_1.
+\]
+Here $T$ is its tested coefficient map, and $\operatorname{awake}$
+is the coefficient vector in the retained common normalization.
+For a target label $v$ of grade at most $d$, the calibration equation
+is
+\[
+                D_aTu=\operatorname{weight}_r v,
+        \qquad a>0,\quad a^{-1}\le2H,\quad r=H^b\ge1.
+\]
+$D_a$ multiplies a basis coordinate by $a$ to its connection degree;
+$\operatorname{weight}_r$ multiplies it by $r$ to its grade.
+Let $q_*$ be the maximum connection degree in the fixed frame.
+Coordinatewise inversion gives
+\[
+ |Tu|_1\le(2H)^{q_*}r^d|v|_1,
+ \qquad |\mathcal H u|_1
+          \le2^{q_*+1}|v|_1H^{bd+q_*+1}
+          \le H^{bd+q_*+2}
+\]
+eventually. The last threshold depends on the fixed target label,
+and can be taken uniformly on a fixed bounded set of labels.
+It is uniform in the cutoff and period when the displayed input
+bounds are uniform. The finite loss $q_*+2$ is chosen before the
+amplification exponent $b$.
+
+Finally the weighted norm of the reconstruction coordinate at
+$z\in S$ is exactly
+\[
+       \sum_{\alpha\in K_d}|t_\alpha(z)|+1.
+\]
+The powers $r^{-g_\alpha}$ and $r^{-(d+1)}$ cancel their variable
+weights. Each $t_\alpha$ is a polynomial of fixed degree at most
+$d-2$, so this expression is at most a fixed multiple of
+$(1+M)^d+1$. It has subpower growth in $H$. Hence it is eventually
+at most $H^\lambda$. If the exact calibrated low-grade identity
+and the fixed polynomial degree bound $k$ hold, the weighted tail
+estimate of Section~\ref{sec:allarity-cumulant-comparison} applies
+with these very coordinates and this coefficient price. Choosing
+$b\ge(q_*+2)+3$ leaves its required factor $H^{-2}$.
+
+The construction above proves the coordinate and price conversion.
+Its application still requires the actual closed-kernel and mean
+difference estimates on the selected atlas, and the exact low-grade
+identity for its polynomial map. Those data must refer to the same
+readers as the joint Gaussian model. The coordinate conversion
+does not obtain them from covariance symmetry alone.

@@ -1,0 +1,635 @@
+\section{Priced local families give the three face estimates}
+\label{sec:ex-annulus-fleet-faces}
+
+We derive the upper-face bound, the full lower-face bound, and the
+lower-face-minus-halo bound used in the annulus estimate. The proof is the
+local price calculation in the selected construction. We then verify the
+scale and data choices for the two populations used by the annulus: all
+centered configurations and the regulator-thin shell. We derive the
+selected row's contact identities and the scale-weighted face prices,
+including the separate shell restriction required by the unregulated
+reference inverses.
+
+\subsection{Derivative prices}
+
+For analytic matrix paths $M_i(t)$ near $t=0$, with values in a fixed
+finite-dimensional matrix space of dimension $d$, write
+\[
+ \mathsf P_{r}(M;C)\quad\Longleftrightarrow\quad
+ M_i\text{ is analytic near }0\text{ and }
+ r_i^j\,\|M_i^{(j)}(0)\|_{\mathrm{op}}\leq C
+ \quad(j=0,1,2),
+ \tag{F1}
+\]
+uniformly in the index $i$. Here $\|\cdot\|_{\mathrm{op}}$ is the
+Euclidean operator norm; it is submultiplicative, and
+$|\operatorname{tr}M|\leq d\|M\|_{\mathrm{op}}$, where $d$ is the matrix
+dimension. Constants may be enlarged by a fixed factor without changing
+the notation.
+
+The elementary rules used below are as follows. If $M,N$ have prices
+$(r,C)$ and $(r,D)$, then $M+N$ has price $(r,C+D)$ and $MN$ has price
+$(r,4CD)$. For the product, the zeroth and first derivatives are the
+ordinary product rule; the second derivative has four terms, each bounded
+by submultiplicativity and the corresponding two price bounds. If $a>0$
+and $C,D\geq0$, $M(0)$ is invertible and
+$\|M(0)^{-1}\|_{\mathrm{op}}\leq D/a$, while $M$ has price $(r,aC)$,
+differentiating $M^{-1}M=I$ once and twice gives
+\[
+ \mathsf P_r(M^{-1};\mathcal I(C,D)/a),\qquad
+ \mathcal I(C,D)=D+2CD^2+2C^2D^3.
+ \tag{F2}
+\]
+Indeed, $(M^{-1})'=-M^{-1}M'M^{-1}$ and
+$(M^{-1})''=2M^{-1}M'M^{-1}M'M^{-1}-M^{-1}M''M^{-1}$;
+submultiplicativity bounds the terms by the three summands in (F2).
+Finally,
+\[
+ \mathsf P_r(M;C r_i^{-2})
+ \ \Longrightarrow
+ |(\operatorname{tr}M_i)''(0)|\leq dC r_i^{-4},
+ \tag{F3}
+\]
+by the $j=2$ case of (F1) and the trace inequality. These are the
+finite-dimensional price rules underlying the estimates below.
+
+\subsection{Upper, lower, and halo faces}
+
+For each configuration $i$, let $x_i$ be its background, $e_i$ its
+boost, $\mu_i>0$ its regulator and $T_i>0$ its scale. The local geometry
+used here is
+\[
+ \|e_i\|\leq1,\qquad \|x_i\|\leq T_i\leq r_*,\qquad
+ 0<\mu_i\leq T_i.
+ \tag{F4}
+\]
+Let $S_i$ denote the total stationary denominator (interacting plus
+reference), and let $J_i$ and $J_i^{\rm ref}$ be the two two-leg arch
+insertions. Write $K_{0,i}=S_i(0)^{-1}$ for the inverse at the
+unshifted background and $K_{1,i}(t)$ for the inverse at the displaced
+background $x_i+t e_i$. Write $D_{0,i}$ and $D_{1,i}(t)$ for the
+corresponding free/reference inverses. The unshifted inverse is constant
+in $t$; the shifted inverse varies. With $B_i^-,B_i^+$ the displaced
+insertion legs, define the scalar upper and lower faces by
+\[
+ U_i(t)=\operatorname{tr}\left[K_{0,i}(J_i(t)+J_i^{\rm ref}(t))\right],\qquad
+ L_i(t)=\operatorname{tr}\left[K_{0,i}B_i^-(t)K_{1,i}(t)B_i^+(t)\right].
+ \tag{F5}
+\]
+The halo is $H_i(t)=\operatorname{tr}[D_{0,i}\widetilde B_i^-(t)
+D_{1,i}(t)\widetilde B_i^+(t)]$, with the four factors the
+corresponding free/reference values. Thus it replaces both inverses and
+both legs.
+
+The selected row transfer yields the following prices, with one constant
+$C_0\geq0$ independent of $i$:
+\begin{align}
+ &\mathsf P_{T_i}(K_{0,i};C_0T_i^{-2}),\quad
+   \mathsf P_{T_i}(K_{1,i};C_0T_i^{-2}), \label{F6a}\\
+ &\mathsf P_{T_i}(J_i^{\rm ref};C_0\mu_i^2T_i^{-2}),
+ \qquad \mathsf P_{1}(J_i;C_0), \label{F6b}\\
+ &\mathsf P_{T_i}(B_i^\pm;C_0T_i), \label{F6c}\\
+ &\mathsf P_{T_i}(K_{0,i}-D_{0,i};C_0\,\delta_iT_i^{-2}),\quad
+   \mathsf P_{T_i}(D_{0,i};C_0T_i^{-2}),\notag\\
+ &
+   \mathsf P_{T_i}(D_{1,i};C_0T_i^{-2}),\quad
+   \mathsf P_{T_i}(K_{1,i}-D_{1,i};
+                    C_0\,\delta_iT_i^{-2}),\notag\\
+ &\mathsf P_{T_i}(B_i^\pm-\widetilde B_i^\pm;
+                      C_0\,\delta_iT_i),\label{F6d}
+\end{align}
+where $C_0\geq0$ and $\delta_i=T_i+\mu_i^2/T_i^2$. The tilded factors are the
+reference/halo factors just described. Also
+$\|K_{0,i}\|_{\mathrm{op}}\leq C_0T_i^{-2}$. The ordinary face prices
+(F6a)--(F6c) apply to the all-centered population. The extra differences
+(F6d) are required only on the shell $\mu_i\leq T_i=\|x_i\|_2$; at the
+center $x_i=0$ the unregulated halo inverse need not exist.
+The derivation from this same selected row and the reference field is given
+below; in particular, the free inverses in (F6d) are used only on the shell.
+
+\begin{proposition}[Face estimates]
+\label{prop:ex-fleet-face-bounds}
+Under (F4)--(F6c), there are constants $A,B,C\geq0$, independent of
+$i$, such that
+\[
+ |U_i''(0)|\leq \frac{A}{T_i^2}
+              +B\frac{\mu_i^2}{T_i^6},\qquad
+ |L_i''(0)|\leq\frac{C}{T_i^4},
+ \tag{F7}
+\]
+and, whenever the additional shell prices (F6d) hold,
+\[
+ |L_i''(0)-H_i''(0)|\leq C\frac{\delta_i}{T_i^4}.
+ \tag{F8}
+\]
+\end{proposition}
+\begin{proof}
+For the reference part of the upper face, (F6a)--(F6b) and the product
+rule give price $C\mu_i^2/T_i^4$ at scale $T_i$. By (F3), its second
+derivative is at most $C\mu_i^2/T_i^6$. For the interacting part,
+$S_i(0)^{-1}$ is constant in $t$ and has norm at most $C_0/T_i^2$;
+combine this with the unit-scale price of $J_i$ and apply the trace
+bound at unit scale. This gives $A/T_i^2$. Adding proves the first
+inequality in (F7).
+
+The lower-face package supplies price $C/T_i^2$ at scale $T_i$ for the
+four-factor product in (F5): each inverse has price proportional to
+$T_i^{-2}$ and each displaced leg has price proportional to $T_i$.
+Applying (F3) yields $C/T_i^4$, proving the second inequality.
+
+For the difference estimate, assume in addition (F6d), as is valid on the
+shell. Since $T_i\leq r_*$ and $\mu_i\leq T_i$, we have
+$\delta_i\leq r_*+1$. The sum rule for prices and (F6c)--(F6d) therefore
+give each tilded leg the ordinary price
+$\mathsf P_{T_i}(\widetilde B_i^\pm;C_1T_i)$, with $C_1$ depending only
+on $C_0$ and $r_*$. Use the exact ordered telescoping identity
+\[
+ \begin{aligned}
+ A_1A_2A_3A_4-B_1B_2B_3B_4
+ &= (A_1-B_1)A_2A_3A_4+B_1(A_2-B_2)A_3A_4\\
+ &\quad+B_1B_2(A_3-B_3)A_4+B_1B_2B_3(A_4-B_4).
+ \end{aligned}
+ \tag{F9}
+\]
+Both inverse differences, at the unshifted and shifted legs, have price
+$C\delta_i/T_i^2$ by (F6d); the leg differences have price
+$C\delta_iT_i$ by (F6d). The remaining inverse factors cost $C/T_i^2$ and the remaining legs
+cost $CT_i$. In each of the four summands the product rule therefore
+gives price at most $C\delta_i/T_i^2$ at scale $T_i$. Apply (F3) to
+the trace of their sum. Its second derivative is bounded by
+$C\delta_i/T_i^4$, as claimed.
+\end{proof}
+
+\subsection{The Hstar populations and the two scale choices}
+
+Let $G$ be simple and fix the reference family, positive regulator fee,
+grey bound, and local row data. An Orion datum supplies a centered track
+$x$, regulator $\mu$, color $c$, bed, clip and a local family $l$;
+the row condition is imposed on the combined family $l+V$. An Hstar
+datum is such an Orion datum together with the condition that $x$ lies in
+the closed centered box. The selected population uses the axial mark
+$(1,c)$ and the unit axial boost $e_0$.
+
+For each selected row, the path bounds give caps for the tab, the
+one-leg insertions, and the two-leg insertion, together with the two
+soft contacts. The regulated reference path supplies its own bounds.
+Combining the paths gives the total stationary denominator and its
+scale-$T^2$ lower bound. The derivation of (F6) below shows explicitly
+how these data yield the required prices. In particular, no
+scale-weighted estimate is inferred from analyticity alone: the rates
+come from the path budget, its one-leg weight $T^{-1}$, and its two-leg
+weight $T^{-2}$; the extra shell estimates use subtraction identities.
+
+For a centered-box track, each coordinate has modulus at most $\pi$,
+so $\|x\|_2\leq\sqrt{4\pi^2}=2\pi$; the regulator satisfies
+$0<\mu\leq1$. The
+all-centered scale is
+\[
+ T=\|x\|_2+\mu,
+ \qquad 0<T\leq1+2\pi=:r_*.
+ \tag{F10}
+\]
+Thus (F4) holds and (F7)'s upper estimate gives the first two-wave
+bound after combining it with the lower-face estimate. On the shell
+$\mu\leq\|x\|_2$, reset the scale to
+$T=\|x\|_2$. Then $0<\mu\leq T\leq r_*$, and the same package gives
+both the upper estimate and (F8). Use the low-face identity of
+Proposition~\ref{prop:ex-two-wave} to replace the halo by the continuum
+pole. Since $T\leq r_*$,
+\[
+ T^{-2}\leq r_*T^{-3},\qquad T^{-2}\leq r_*^2T^{-4},\qquad
+ \frac{\mu^2}{T^6}\leq\frac1{T^4},\qquad
+ \frac{\delta}{T^4}=\frac1{T^3}+\frac{\mu^2}{T^6}.
+\]
+Indeed, the response is half the difference of interacting and reference
+upper-minus-lower traces. The upper estimate and lower-face estimate in
+(F7), with $\mu\leq T$, therefore give $|\kappa(x)|\leq aT^{-4}$.
+For the shell discrepancy, the exact algebra is
+\[
+ \kappa(x)-\Pi_G(x)
+ =\frac12\left(\frac12U_I''-U_R''
+                  +(L_R''-H_R'')-\frac12(L_I''-H_I'')\right),
+ \tag{F12}
+\]
+where the reference/interacting halo combination is the pole identity
+in Proposition~\ref{prop:ex-two-wave}. The two upper terms are bounded by
+$C/T^2+C\mu^2/T^6$, and the lower remainders by $C\delta/T^4$;
+the displayed scale inequalities give the two powers in (F11).
+Enlarge constants once to cover the bounded part of the centered box
+outside the unit ball. We obtain constants $a,b$ independent of $x$ and
+$\mu$ such that
+\[
+ |\kappa(x)|\leq a(\|x\|_2+\mu)^{-4},\qquad
+ |\kappa(x)-\Pi_G(x)|\leq b\|x\|_2^{-3}
+      +b\mu^2\|x\|_2^{-6}\quad(\mu\leq\|x\|_2\leq1).
+ \tag{F11}
+\]
+These are the uniform local estimates consumed in
+Section~\ref{sec:ex-annulus-two-wave}.
+
+\subsection{The local row bridge to the interacting family}
+
+Here are the exact row identities behind the local contact conditions.
+For a selected bed $B_i$, write $M_i(p)=B_i.\mathrm{metric}(p)$ and let
+$M_*(p)$ be the constant leader metric. Let $D(p)$ be the first edge
+symbol, with components $q_\nu(p)$, and let $A_0(p)$ be the zero-form
+symbol. The color-diagonal projection of the direction matrix is denoted
+by $\mathsf T$. Put
+\[
+ G_i(p)=\text{the two-point row of the interacting film},\qquad
+ J_{i,b}(p,k)=\text{its marked two-leg row}.
+\]
+For the selected construction, the row package has a common analytic
+strip and fee bound; it satisfies the denominator matching identity
+\[
+  (\text{interacting film}+\text{regulator film})_{\rm tab}(p)
+       =\text{the bed denominator}(p),
+\tag{F13}
+\]
+the all-grade floor (in particular, the grade-one normalization
+$M_i(0)=M_*(0)$), the local action soft order-three condition, and the
+vacuum matching condition (the color-diagonal vacuum row equals the
+finite Wilson row). These properties all concern the same selected bed
+and the same combined local row. The regulator satisfies $0<\mu\leq1$
+and its tab is the scalar multiple $s_\mu(p)I$ on the strip. They are
+properties of the selected row package, rather than consequences of
+analyticity alone.
+
+Let $\omega(p)=\sum_\nu q_\nu(-p)q_\nu(p)$. The exact row and free
+identities use the color-diagonal extension
+$\mathsf T(A)_{(i,c),(j,d)}=\mathbf 1_{c=d}A_{ij}$ of a direction
+matrix; this extension preserves matrix sums and products. They are
+\[
+ G_i(p)-|p|^2I
+   =\mathsf T\!\left[P_1(-p)^T(M_i(p)-M_*(p))P_1(p)\right]
+       +(\omega(p)-|p|^2)I,
+\tag{F14}
+\]
+\[
+ J_{i,b}(p,k)-v_b(p,k)
+   =J_{i,b}^{\rm loc}(p,k)
+       +\bigl(J_{i,b}^{\rm vac}(p,k)-v_b(p,k)\bigr),
+\tag{F15}
+\]
+and
+\[
+\mathsf T\!\left[P_1(-p)^TM_*(p)P_1(p)
+                +P_0(p)P_0(-p)^T\right]=\omega(p)I.
+\tag{F16}
+\]
+Here $v_b$ is the linear vector insertion determined by the first radial
+coefficient of the vacuum marked row.
+
+\begin{proof}[Derivation of (F14)--(F16)]
+Write $P_0(p)$ and $P_1(p)$ for the zero-form and first-edge symbols, so
+$A_0=P_0$ and $D=P_1$. The selected denominator matching equates the
+tab of the interacting film plus its regulator film to the prescribed
+bed denominator. The two sides expand as
+\[
+ \begin{split}
+ (\mathrm{interacting}+\mathrm{regulator})_{\rm tab}(p)
+   &=G_i(p)+s_\mu(p)I,\\
+ (\mathrm{bed\ denominator})(p)
+   &=\mathsf T\!\left[P_1(-p)^TM_i(p)P_1(p)
+           +P_0(p)P_0(-p)^T\right]+s_\mu(p)I.
+ \end{split}
+\]
+The regulator tab is scalar on the slot space, so equality cancels that
+term entrywise and gives, on real momenta,
+\[
+ G_i(p)=\mathsf T\!\left[P_1(-p)^TM_i(p)P_1(p)
+                    +P_0(p)P_0(-p)^T\right].
+\]
+The first summand is the metric cross product; the second is the zero-form
+product. The cancellation is exact, so it introduces no regulator
+remainder. For the leader bed, the degree-zero exterior identity gives
+\[
+ \mathsf T\!\left[P_1(-p)^TM_*(p)P_1(p)
+              +P_0(p)P_0(-p)^T\right]=\omega(p)I.
+\]
+Indeed, expand the first product by direction. The longitudinal rank-one
+part of the zero-form product cancels the complementary part of the
+first-edge product, leaving $\sum_\nu q_\nu(-p)q_\nu(p)$ times the
+identity. The exact degree-zero exterior identity is
+$P_0(p)P_0(-p)^T+P_1(-p)^TM_*P_1(p)=\omega(p)I$,
+since $\omega(p)=\sum_\nu q_\nu(-p)q_\nu(p)$ by definition. Since
+$M_*$ is the constant identity metric, this proves
+(F16). Subtracting the
+leader identity from the row-to-film identity proves (F14), with the
+lattice-dispersion term $\omega(p)-|p|^2$ retained explicitly.
+
+For the marked row, the local film is the sum of the selected local
+action and the fixed free quadratic film. Linearity of the marked
+coefficient gives (F15). The soft-3 hypothesis assigns radial order two
+to the one-mark layer; composing that layer with the linear two-momentum
+map gives the required second-order vanishing. The vacuum term is identified by grey
+matching with the Wilson three-leg coefficient. Write $\tau(u)_a=iu_a$
+and denote the color structure coefficient by $c_{bxy}$. Differentiating
+the three plaquette placements gives its first radial coefficient
+\[
+ [-(2\tau(k)_a+\tau(p)_a)\delta_{ij}
+   +(\tau(k)_j+2\tau(p)_j)\delta_{ia}
+   +(\tau(k)_i-\tau(p)_i)\delta_{ja}]c_{bxy}.
+\]
+Each placement contributes one of the terms in the defining plaquette
+coefficient; summing the two orientations and using
+$\tau(k+p)=\tau(k)+\tau(p)$ gives this formula. The fixed free-film
+marked coefficient has first radial coefficient
+\[
+ [-\tau(k)_j\delta_{ia}-\tau(k+p)_i\delta_{ja}]c_{bxy}.
+\]
+Adding these expressions and simplifying gives
+\[
+ v_{b,ij}(p,k)=
+ [-(2\tau(k)_a+\tau(p)_a)\delta_{ij}
+      +2\tau(p)_j\delta_{ia}-2\tau(p)_i\delta_{ja}]c_{bxy}.
+\]
+This is homogeneous of degree one. Thus the vacuum marked row minus
+$v_b$ has zero value and zero first radial coefficient; analyticity
+implies that it has radial order at least two. With the soft local term,
+(F15) has the required quadratic contact. The common strip bounds then
+give uniform compact derivative bounds by Cauchy's formula.
+\end{proof}
+
+\begin{lemma}[Row data give the priced insertion family]
+\label{lem:ex-row-to-floe}
+For a bounded family of selected rows with the common strip/fee bounds,
+denominator matching, all-grade floor, soft order-three local action and grey
+vacuum matching just described, the interacting film has uniform
+compact derivative prices through order three. Its two-point row has a
+cubic radial remainder after subtraction of $|p|^2I$, and its marked
+row has a quadratic radial remainder after subtraction of $v_b$.
+Consequently it supplies the compact caps and the two contact orders
+used in the ordinary (non-halo) part of (F6b)--(F6c).
+\end{lemma}
+\begin{proof}
+For each row layer and each fixed pair of matrix entries, the common
+strip fee and Cauchy's estimate bound derivatives of every fixed order
+on a compact real ball. The tab, spot and arch are fixed finite linear
+combinations of these entries after fixed linear maps of momentum; the
+chain rule therefore gives uniform compact derivative caps through the
+orders used here. A finite sum of these caps bounds the matrix operator
+norm, since the matrix dimension is fixed.
+
+For the two-point contact, (F14) and the grade-one floor give
+$M_i(0)-M_*(0)=0$. Analyticity makes this metric difference $O(|p|)$.
+Each edge symbol vanishes linearly, $q_\nu(p)=ip_\nu+O(|p|^2)$, so the
+metric term in (F14) is $O(|p|^3)$. Expanding each product
+$q_\nu(-p)q_\nu(p)$ shows $\omega(p)-|p|^2=O(|p|^3)$ as well.
+
+For the marked row, the local soft condition contributes $O((|p|+|k|)^2)$
+and the vacuum-minus-$v_b$ term has the same order by the preceding
+first-coefficient calculation. Thus (F15) has quadratic contact.
+To convert these radial orders into derivative prices, note that if an
+analytic scalar entry $g$ has radial order at least $m$, then each
+homogeneous Taylor polynomial of degree $j<m$ vanishes on every real
+direction and hence vanishes identically. Taylor's formula with integral
+remainder applied to $D^n g$ on the segment from $0$ to the base point
+$a$ gives
+\[
+ \|D^n g(a)\|\leq K\|a\|^{m-n}/(m-n)!,\qquad n<m,
+\]
+when the $m$th derivative is bounded by $K$ on that segment. For
+$\|a\|\leq T$, this gives $T^n\|D^ng(a)\|\leq KT^m$. At orders
+above the contact order use the compact derivative cap and the uniform
+upper bound $T\leq r_*$. This proves the local compact and contact
+prices. The trajectory-price argument below derives the total-field
+prices in (F6a) and the shell-separation prices in (F6d) from these
+contacts and the reference path budgets.
+\end{proof}
+
+\paragraph{Hstar to the local row package.}
+For every Hstar datum the associated Orion datum contains one selected
+bed, clip, regulator, and local action. Its denominator matching field is
+the identity
+(F13), its fee field supplies the uniform analytic strip, and its
+all-grade floor supplies the grade-one normalization. Its local soft
+field is soft order three. Applying this row argument to the single
+combined family $l+V$ gives the interacting row used by the annulus.
+The common free reference is the quadratic film. If the external vacuum
+$V$ is grey and has the required fees, the finite-volume Wilson matching
+above identifies its marked vertex and hence its linear term. These
+statements establish the row contacts from the selected Hstar data. The
+scalar regulator term and its positive floor are then included in the
+total denominator; the next price calculation uses the free comparison
+only on the shell, where its inverse exists.
+
+Assume $\epsilon>0$, as in the selected floor package. The denominator
+lower bound is also tied to this same bed. At a real momentum $p$, write
+\[
+ D_i^{\rm bed}(p)=
+ \mathsf T\!\left[P_1(-p)^TM_i(p)P_1(p)
+       +P_0(p)P_0(-p)^T\right]+s_\mu(p)I
+\]
+for the denominator matrix in (F13). If
+$\mathrm{peb}(p,\mu)$ denotes the positive quadratic weight, the cold
+geometry gives
+\[
+ T^2\leq64\,\mathrm{peb}(p,\mu).
+\]
+The bed-floor estimate for this matrix gives
+\[
+ \frac{\min(\epsilon,1)}{2^{10}}\,\mathrm{peb}(p,\mu)\|z\|^2
+       \leq \operatorname{Re}\langle z,\mathrm{dais}(p)z\rangle.
+\]
+Using the denominator matching to identify this matrix with the selected
+total denominator, we obtain
+\[
+ cT^2\|z\|^2\leq
+   \operatorname{Re}\langle z,S_i(0)z\rangle,
+ \qquad c=\frac{\min(\epsilon,1)}{2^{16}}.
+\]
+The same cold lower bound and the free reference floor give the ghost
+denominator bound with $c=2^{-16}$. For either square matrix $S$, the
+coercive estimate implies
+$cT^2\|z\|^2\leq\operatorname{Re}\langle z,Sz\rangle
+\leq\|z\|\,\|Sz\|$. Hence $\|Sz\|\geq cT^2\|z\|$; in finite
+dimension this makes $S$ invertible with
+$\|S^{-1}\|_{\mathrm{op}}\leq(cT^2)^{-1}$.
+
+\paragraph{Trajectory prices.}
+We derive (F6) from the row contacts and the regulated reference field.
+At scale $T_i$, a path estimate with tab budget $L_i$ consists of three
+component bounds. The tab derivatives satisfy
+$T_i^j\|M_i^{(j)}(0)\|_{\mathrm{op}}\leq C L_i$ for $j=0,1,2$; the
+one-leg slot has budget $L_i/T_i$, and the two-leg arch has budget
+$L_i/T_i^2$. These are separate components of the path estimate; the
+spot and arch bounds do not follow from the tab bound alone. For the interacting row,
+the compact derivative caps come from the common strip and selected
+fees. Along $x_i+t e_i$, each derivative is a momentum derivative
+contracted with $e_i$, whose norm is at most one. If an analytic entry
+has radial order $m$, all Taylor tensors of degree below $m$ vanish:
+their diagonal polynomial vanishes in every real direction, hence the
+polynomial itself is zero. Taylor's integral remainder applied to its
+$j$th derivative therefore bounds it by $C\|x_i\|^{m-j}$ for $j<m$;
+for $j=m$ use the compact derivative cap. Since $\|x_i\|\leq T_i\leq
+r_*$, this gives the path budget $C T_i^m$ for $j\leq m$. Thus the
+trajectory transfer with tab budget $L_i$ gives
+\[
+ \mathsf P_{T_i}(\text{tab};C L_i),\qquad
+ \mathsf P_{T_i}(\text{spot};C L_i/T_i),\qquad
+ \mathsf P_{T_i}(\text{arch};C L_i/T_i^2).
+ \tag{F17}
+\]
+Thus the interacting transfer uses $L_i=T_i^2$, while the regulated
+reference transfer uses $L_i=\mu_i^2$.
+
+For the interacting row, (F14) says the tab is $|p|^2I+O(|p|^3)$;
+therefore its path has tab budget $C T_i^2$. For a marked leg, (F15)
+says it is the linear vector term plus a quadratic remainder. Along the
+path, the linear term has size $O(T_i)$, first derivative $O(1)$, and
+zero second derivative. The quadratic remainder has
+$T_i^j$-weighted $j$th derivative $O(T_i^2)$ for $j=0,1,2$; since
+$T_i\leq r_*$, this is at most $O(T_i)$. Thus the leg has budget
+$C T_i$. The
+uniform arch cap gives budget $C$ at unit scale. The regulated reference
+field has the following three trajectory budgets, which we derive from
+its actual construction below:
+\[
+  C\mu_i^2,\qquad C\frac{\mu_i^2}{T_i},\qquad
+  C\frac{\mu_i^2}{T_i^2}.
+\]
+These weights follow from its construction. Begin with the massive free
+film, the free Wilson film plus $\mu_i^2 I$. The free Wilson path has
+tab budget $T_i^2$: its tab has a quadratic zero, while its compact
+derivatives are uniformly bounded. Its marked leg has a linear first
+term and a quadratic remainder, hence budget $T_i$; its two-leg arch
+has a uniform unit-scale cap. The added constant mass has tab budget
+$T_i^2$ since $\mu_i\leq T_i$, and has zero spot and arch. The massive
+film therefore has the three-component path budgets $T_i^2,T_i,1$. Its
+scalar tab is the free
+dispersion plus $\mu_i^2$; the cold geometric inequality bounds it below
+by $T_i^2/64$. Thus its inverse has norm at most $64T_i^{-2}$ and its
+inverse path has tab budget $T_i^{-2}$. If $C=A^{-1}$, $B_i$ is the
+original one-leg slot, and $D_{ij}$ is the original two-leg slot, the
+inverse film's insertion formulas, with $\widehat B_i$ and
+$\widehat D_{ij}$ denoting the inverse film's slots, are
+\[
+ \widehat B_i(p,q)=-C(q+p)B_i(p,q)C(q),
+\]
+\[
+ \widehat D_{ij}(p,q,r)=-\bigl[\widehat B_j(q,r+p)B_i(p,r)
+       +\widehat B_i(p,r+q)B_j(q,r)
+       +C(r+p+q)D_{ij}(p,q,r)\bigr]C(r).
+\]
+The one-leg term has size $T_i^{-2}\,T_i\,T_i^{-2}=T_i^{-3}$.
+Each of the three two-leg summands has size $T_i^{-4}$: the first two
+use $T_i^{-3}\,T_i\,T_i^{-2}$, and the last uses
+$T_i^{-2}\,1\,T_i^{-2}$. Thus the inverse film has tab, one-leg, and
+two-leg budgets $T_i^{-2}$, $T_i^{-3}$, and $T_i^{-4}$. The reference
+construction multiplies this inverse film by $\mu_i^2$, giving budgets
+$\mu_i^2/T_i^2$, $\mu_i^2/T_i^3$, and $\mu_i^2/T_i^4$. The same
+prices hold for derivatives of orders $j=0,1,2$ along every front or
+rear path: apply the product rule to each displayed slot formula and use
+the corresponding Week estimate for each differentiated factor. The
+shifted momenta have path velocities among $e_i,-e_i$ and their sums,
+whose norms are bounded by $2$; this changes only fixed constants. Each
+derivative of total order $j$ costs $T_i^{-j}$, which is canceled by
+the $T_i^j$ factor in the path price. Since
+$\mu_i^2/T_i^2\leq1$, the inverse-reference film has the Week estimate
+with tab budget $1$, and consequently spot and arch budgets
+$T_i^{-1}$ and $T_i^{-2}$.
+
+The reference insertion is formed from nine copies of this
+inverse-reference film and then weighted by $\mu_i^2$. For two films
+with tab/spot/arch budgets $(L,L/T,L/T^2)$ and $(M,M/T,M/T^2)$, the
+product has tab budget $LM$. Its spot formula has two summands, each
+bounded by $LM/T$; its arch formula has four summands, each bounded by
+$LM/T^2$. Iterating through the nine factors changes only fixed
+numerical constants: the tab, spot, and arch rates remain $1$, $T_i^{-1}$,
+and $T_i^{-2}$. The final weight gives $\mu_i^2$,
+$\mu_i^2/T_i$, and $\mu_i^2/T_i^2$.
+Each directional sandwich in the free reference row has constant
+unit-budget factors on both sides, so it preserves these prices.
+Summing the four directions changes only the common constant. This
+proves the displayed reference budgets from the field construction.
+
+Because $\mu_i\leq T_i$, adding the local and reference tab budgets gives
+$C(T_i^2+\mu_i^2)\leq 2C T_i^2$. The total denominator has the same
+$T_i^2$ tab budget on both the unshifted and boosted path. The bed floor
+proved above gives its inverse norm at $t=0$ at most $C/T_i^2$.
+Differentiating the inverse with (F2) gives both inverse prices in
+(F6a). The reference arch budget is exactly $C\mu_i^2/T_i^2$, and the
+interacting arch has unit-scale budget $C$, proving (F6b). The two total
+marked legs have budget at most
+$C(T_i+\mu_i^2/T_i)\leq2C T_i$, which proves (F6c). All constants here
+are uniform over the selected Hstar family because the fees, compact
+caps, regulator bound, floor constant and centered-box radius are uniform.
+
+On the shell, set $T_i=\|x_i\|_2>0$. The unregulated reference
+denominator along the path is
+\[
+ R_i(t)=\|x_i+t e_i\|_2^2 I,
+ \qquad R_i(0)=T_i^2I.
+\]
+Its path budget is $C T_i^2$ and its inverse has price $C/T_i^2$ by
+(F2). Let $S_i(t)$ be the total regulated denominator. Its difference
+from $R_i$ splits into the local tab minus the free quadratic tab, which
+has budget $C T_i^3$ by (F14), and the regulator tab, which has budget
+$C\mu_i^2$. Thus
+\[
+ \mathsf P_{T_i}(S_i-R_i;C(T_i^3+\mu_i^2))
+ =\mathsf P_{T_i}(S_i-R_i;C\delta_iT_i^2).
+\]
+Both inverse paths have price $C/T_i^2$; the identity
+\[
+ S_i^{-1}-R_i^{-1}=-S_i^{-1}(S_i-R_i)R_i^{-1}
+\]
+and the product rule therefore give the two inverse differences in (F6d)
+with price $C\delta_i/T_i^2$.
+
+For the marked legs, subtract the unregulated free leg. The local marked
+row and the free Wilson row have the same linear vector coefficient by
+the explicit coefficient calculation above. Their difference has
+radial order two. Hence the local marked row minus the halo leg has
+price $C T_i^2$ along the shell path. The regulated reference leg has
+the one-leg budget $C\mu_i^2/T_i$ from its path spot component. Since
+\[
+ T_i^2\leq\delta_iT_i,
+ \qquad \frac{\mu_i^2}{T_i}\leq\delta_iT_i,
+\]
+their sum has price $C\delta_iT_i$, proving the leg part of (F6d).
+This derivation requires $T_i>0$ and is used only on the shell. At
+$x_i=0$ the unregulated reference path is singular, so no halo inverse is
+asserted there.
+
+\subsection{Uniform path bounds from the selected records}
+
+For completeness, we describe how the path hypotheses used above are
+obtained uniformly for the selected family. Each selected local action
+has the same fee bound and positive strip width, and the external vacuum
+has its own common fee bound on that strip. Their sum therefore has a
+uniform fee bound. Cauchy's integral formula on a smaller common strip
+bounds every fixed momentum derivative of each matrix entry uniformly;
+for the tab use derivatives through order three, and for the spot and
+arch through order two. The momentum maps entering the three components
+are fixed linear maps, so the chain rule multiplies these estimates only
+by their fixed operator norms. The matrix dimension is fixed, hence the
+entrywise bounds imply operator-norm bounds. The additional fixed free
+film is a finite polynomial and has uniform derivative bounds on the
+centered box. Adding it gives the compact path caps used in (F17).
+
+The selected action's soft hypothesis is componentwise: its unmarked
+layer vanishes to radial order three, its one-mark layer to order two,
+and its two-mark layer to order one. The local marked insertion uses the
+one-mark layer composed with a linear two-momentum map, so it has the
+second-order vanishing required for the local contact. The grey vacuum's
+marked row has the same linear term as the free Wilson row: the three
+plaquette placements give the displayed coefficient
+$v_b$, and the fixed free-film term supplies the complementary part.
+Their difference has order two. Thus the selected combined row has
+exactly the tab and marked-leg contacts used in (F14)--(F15), with
+uniform compact caps.
+
+Finally, the reference field is constructed from the same regulator
+$\mu$. Its trajectory tab budget is $\mu^2$, and its two other
+components carry the factors $T^{-1}$ and $T^{-2}$. The local field has
+tab budget $T^2$. Since $\mu\leq T$, their sum has tab budget at most
+$2T^2$. The selected House floor and the cold geometric bound give the
+total tab a coercive lower bound $cT^2$; the elementary inverse
+calculation preceding (F17) then yields the inverse estimates for both
+the unshifted and boosted paths. On the shell, the free comparison is
+positive because $T=\|x\|_2>0$, and the same uniform strip/cap constants
+apply after resetting the scale. This verifies that the family-level
+path bounds used in the face proof are common to all selected rows and
+all regulators in the stated range.

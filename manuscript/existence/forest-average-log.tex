@@ -1,0 +1,233 @@
+\section{Averaging the forests and separating the regular gas}
+\label{sec:forest-average-log}
+The exact block gas of Section~\ref{sec:gaussian-reassembly} was
+constructed with a fixed forest. To restore the lattice symmetries we
+average over forests before taking the logarithm of the flag-free gas.
+We first show that this operation leaves the scalar normalization
+unchanged, and then choose an average compatible with local factorization.
+
+\subsection{The flat determinant is independent of the forest}
+Every block forest has one outgoing edge from each nonroot vertex,
+directed towards the root. Distinct nonroot vertices give distinct
+unoriented positive-bond representatives of these edges. If two
+outgoing edges represented the same bond with opposite orientations,
+the forest height would strictly decrease in both directions, which
+is impossible. Thus the tree bonds are in bijection with the nonroot
+vertices. In particular all forests have the same number of tree
+bonds and the same number $N$ of free bonds.
+
+Let $F,H$ be two forests and choose a bijection $t$ between their
+tree bonds. We construct an integer change of basis on all bond
+coordinates, including the dummy tree coordinates. For a bond
+cochain $u$, let $D_Fu$ set its $F$-tree coordinates to zero. Let
+$\alpha_Fu(x)$ be the signed sum of $u$ along the forest path from
+$x$ to its block root, and put
+\[
+                 B_Fu=u+\nabla\alpha_Fu.
+\]
+Telescoping along a path proves the following four facts:
+$B_Fu$ is zero on the $F$-tree bonds; $B_Fu=u$ if $u$ was already
+zero there; $\alpha_Fu$ is zero at each root; and
+$B_F\nabla v=0$ when $v$ is zero at all roots. These assertions hold
+over any abelian group, since they involve only signed sums.
+
+Define $T_{FH}u$ on the $H$-tree bonds by transporting the old
+$F$-tree coordinates through $t$, and on the other bonds by
+$B_H D_Fu$. Then
+\[
+                    D_HT_{FH}u=B_HD_Fu.
+\]
+The reverse construction uses $t^{-1}$. On tree coordinates it
+plainly recovers $u$. On the complementary coordinates,
+\[
+ B_FD_HT_{FH}u
+   =B_F(D_Fu+\nabla\alpha_HD_Fu)=B_FD_Fu=D_Fu,
+\]
+because $\alpha_HD_Fu$ vanishes at the roots. Thus $T_{HF}T_{FH}=1$;
+reversing the argument gives the other inverse identity. Its matrix
+and inverse have integer entries. Their integer determinants multiply
+to one, so $|\det T_{FH}|=1$. Apply this same construction to every
+colour coordinate.
+
+Let $M_F,M_H$ be the flat selected row matrices, and let $D_F^0,D_H^0$
+be the diagonal projections onto their tree coordinates. Flat rows
+annihilate gradients of root-zero functions. For a fine row this is
+the telescoping identity around its plaquette, preserved by each
+linear path coefficient. For a predictor row the coarse sampling
+operator sends a gradient to the coarse gradient of its root values;
+these values are zero. Signed coordinate changes preserve gradients,
+so the statement holds simultaneously in all signed channels. Hence
+\[
+                 M_HT_{FH}=M_F,
+        \qquad T_{FH}^TD_H^0T_{FH}=D_F^0.
+\]
+The second identity follows because the tree coordinates are simply
+permuted. For the completed flat precisions we obtain
+\[
+ A_F^0=M_F^TM_F+D_F^0=T_{FH}^TA_H^0T_{FH},
+                      \qquad \det A_F^0=\det A_H^0.
+\]
+Together with the common free-bond count, this proves that the scalar
+$\mathscr O$ in \eqref{eq:reassembly-overhead} is forest independent.
+
+\subsection{An independent choice at each coarse site}
+There are finitely many allowed forests on a finite torus: each
+vertex chooses one of finitely many oriented neighbouring edges and
+one of finitely many heights. The set is nonempty by the block-tree
+construction. At each coarse site $x$, choose independently a uniform
+forest $F_x$ from this finite set. On the block with root $x$, use
+only the restriction of $F_x$. The assembled object is a valid
+forest, since each original forest edge remains in its parent block
+and its height decreases along that edge. Repeated global forest
+choices producing the same assembled forest cause no difficulty;
+the average is defined on the product space of choices.
+
+For a connected component $M$, its integrated activity depends on
+these choices only at coarse sites in its full assigned support
+$X_M$. This follows from the local reads of the rows, inverse
+windows, tags and chart factors: agreement of the tree edges in
+that support gives equality of each such read and of its Gaussian
+marginal. To compare the Haar factors, realize both local charts as
+pullbacks of the same full product Haar measure; agreement of the
+principal Gaussian marginals then gives equality of the integrals.
+In particular changing a forest outside $X_M$ does not
+alter the component integral. Compatible components have disjoint
+$X_M$. Independence of the site choices therefore gives
+\begin{equation}\label{eq:forest-product-average}
+ \mathbb E_F\prod_{M\in\mathcal A}a_M^F(V)
+                    =\prod_{M\in\mathcal A}\mathbb E_Fa_M^F(V).
+\end{equation}
+This is the factorization of a product measure over disjoint
+coordinate sets; it does not hold for an arbitrary average over
+one global forest.
+
+Set $\bar a_M(V)=\mathbb E_Fa_M^F(V)$. The bounds on $a_M^F$ are
+uniform in $F$, so the same prices bound $\bar a_M$. The finite
+average commutes with the absolutely convergent gas sum, and the
+forest-independent $\mathscr O$ factors out. Thus
+\eqref{eq:reassembly-block-gas} holds with $\bar a_M$ in place of
+$a_M^F$. A signed lattice transformation permutes the site choices
+and transforms every chosen forest by a bijection. Its product
+uniform measure is unchanged. The covariance of the individual
+sector formulas consequently gives the same covariance for
+$\bar a_M$, with the original transformed activity addresses.
+
+\subsection{The cost of excluding regular activities}
+Separate the connected labels into regular labels $i$ with empty
+inventory and forced labels $j$ with nonempty inventory. Write their
+values as $w_i(V)$ and $k_j(V)$, and their supports as $X_i,Y_j$.
+A nonzero regular value has no flag in its support. Fix a compatible
+finite forced family $A$ whose inventories cover all flags, and put
+$Y_A=\bigcup_{j\in A}Y_j$. The remaining sum is the regular gas
+restricted to labels whose supports avoid $Y_A$:
+\begin{equation}\label{eq:forest-forced-first}
+ (\mathcal BR)(V)=\mathscr O(V)
+       \sum_{A\ {\rm admissible}}\prod_{j\in A}k_j(V)\,Z_{Y_A}(V).
+\end{equation}
+The reindexing is exact: a compatible family splits uniquely into
+its regular and forced parts, and cross compatibility means precisely
+$X_i\cap Y_A=\varnothing$ for every retained regular label.
+Absolute convergence justifies summing in this order.
+
+Assume the regular prices satisfy the connected-cluster bound of
+Section~\ref{sec:cluster-expansion}, with nonnegative support weight,
+rooted allowance $\gamma$ and tail ratio $q_0<1$. Let $c_\Gamma$ be
+the corresponding logarithmic term, indexed by a finite ordered
+tuple of occurrences, with its Ursell coefficient divided by the
+tuple factorial. Labels may repeat in this tuple. Then
+\[
+                    Z=\exp\left(\sum_\Gamma c_\Gamma\right)>0.
+\]
+For a finite set $Y$ define
+\[
+        P_Y=\sum_{\Gamma:\,X_\Gamma\cap Y\ne\varnothing}c_\Gamma,
+               \qquad X_\Gamma=\bigcup_{i\in\Gamma}X_i.
+\]
+Deleting labels that meet $Y$ replaces $c_\Gamma$ by zero precisely
+when its union support meets $Y$. Otherwise it leaves the term
+unchanged. The same absolute majorant applies to the deleted gas.
+Subtracting the two absolutely convergent logarithmic series yields
+\begin{equation}\label{eq:forest-deletion-ratio}
+                         Z_Y=Z e^{-P_Y}.
+\end{equation}
+The rooted cluster estimate, summed over $x\in Y$, gives
+\begin{equation}\label{eq:forest-deletion-price}
+ \sum_{\substack{\Gamma:\,X_\Gamma\cap Y\ne\varnothing\\
+                       |\Gamma|-1\ge m}}|c_\Gamma|
+          \le |Y|\frac{\gamma q_0^m}{1-q_0}.
+\end{equation}
+Indeed each term on the left is counted by at least one site of
+$Y\cap X_\Gamma$; overcounting is harmless in this nonnegative sum.
+In particular, with $C_Y=|Y|\gamma/(1-q_0)$,
+\[
+                Ze^{-C_Y}\le Z_Y\le Ze^{C_Y}.
+\]
+The correction $P_Y$ retains its actual sign; only its absolute
+estimate uses $C_Y$. Combining \eqref{eq:forest-forced-first} and
+\eqref{eq:forest-deletion-ratio} gives the exact separation
+\begin{equation}\label{eq:forest-regular-separated}
+ (\mathcal BR)(V)=\mathscr O(V)Z(V)
+       \sum_{A\ {\rm admissible}}\prod_{j\in A}k_j(V)e^{-P_{Y_A}(V)}.
+\end{equation}
+For each fixed $A$, the ratio is finite and positive. The original
+absolute family sum implies absolute summability of this outer
+series: its term is exactly the signed forced product times the
+restricted regular gas, whose absolute value is bounded by the
+corresponding sum of absolute original terms. No volume-independent
+bound on the extensive scalar $Z$ is asserted.
+
+\subsection{Local regular functions and their derivatives}
+For each regular component, the integrated construction gives a
+measurable local extension $f_i$, smooth through the purchased finite
+order at configurations healthy on $X_i$, with
+\[
+w_i(V)=\mathbf1_{\{X_i\cap\operatorname{Flags}(V)=\varnothing\}}f_i(V).
+\]
+The forest average preserves locality, gauge invariance, measurability
+and each uniform derivative bound, by linearity and the triangle
+inequality for the finite average. For a cluster tuple
+$\Gamma=(i_1,\ldots,i_n)$, define
+\[
+ F_\Gamma(V)=\frac{u(i_1,\ldots,i_n)}{n!}
+                                      \prod_{r=1}^n f_{i_r}(V).
+\]
+Then
+\begin{equation}\label{eq:forest-cluster-mask}
+ c_\Gamma(V)=
+ \mathbf1_{\{X_\Gamma\cap\operatorname{Flags}(V)=\varnothing\}}
+                                                    F_\Gamma(V).
+\end{equation}
+If the union is healthy, every constituent mask is one. If it is
+not, a flagged site belongs to some constituent support, so that
+factor vanishes. This proves the equality even for repeated labels.
+
+Suppose the local extension of the $r$th occurrence has derivatives
+through order $j$ bounded by $p_{i_r}$ at derivative scale one at
+configurations healthy on its support. Restrict throughout the
+following derivative estimates to configurations healthy on
+$X_\Gamma$; every constituent hypothesis then holds.
+Leibniz's formula gives product amplitude $\prod_rp_{i_r}$ at
+derivative scale $n$. Thus its derivatives through order $j$ are
+bounded by
+\[
+        \frac{|u(i_1,\ldots,i_n)|}{n!}
+                    (1+n)^j\prod_rp_{i_r}
+       \le\frac{|u(i_1,\ldots,i_n)|}{n!}
+                                      \prod_r(2^jp_{i_r}),
+\]
+since $1+n\le2^n$ for $n\ge1$. Buying the regular cluster bound
+with the inflated prices $2^jp_i$ therefore pays these derivatives
+on the same union support. A spatial derivative weight is also local:
+from any anchor in $X_\Gamma$, the connected-cover diameter bound
+places every read within a fixed multiple of
+$(B+1)(1+\operatorname{cover}_B X_\Gamma)$. Its polynomial cost is
+paid by the reserved exponential support weight as in
+Section~\ref{sec:mixed-activity-prices}.
+
+Equations~\eqref{eq:forest-regular-separated} and
+\eqref{eq:forest-cluster-mask} supply the regular logarithm and the
+exact exclusion correction of the nonlinear step. The exclusion
+exponential must still be regrouped with the forced labels using
+its occurrence multiplicities; it cannot be dropped or replaced by
+an independent probability. Its quantitative allowance is the
+rooted price \eqref{eq:forest-deletion-price}.

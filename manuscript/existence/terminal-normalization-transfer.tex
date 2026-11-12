@@ -1,0 +1,174 @@
+\section{Installing the terminal Wilson normalization}
+\label{sec:terminal-normalization-transfer}
+The preceding startup construction uses a particularly simple terminal
+path. We must install it in the common horizon while preserving the
+stationary estimates used at the next step. Agreement through fourth
+order suffices for the required classical and one-loop coefficients;
+it does not identify the full nonlinear stationary maps.
+
+\subsection{Transporting the terminal quadratic columns}
+Write the old terminal full column, at any period, as
+\[
+ A=\begin{pmatrix}\sqrt{c_0}I\\ R\end{pmatrix},
+ \qquad E=\begin{pmatrix}I\\0\end{pmatrix},\qquad Z=A+E.
+\]
+The terminal metric identity says $A^*A\,d=d$, where $d$ is the
+lattice exterior derivative on one-forms. Since $E^*A=A^*E=
+\sqrt{c_0}I$, it implies
+\[
+                  Z^*Ad=Z^*Ed.
+\]
+Moreover
+\[
+ Z^*Z=(1+\sqrt{c_0})^2I+R^*R
+\]
+is positive definite. Put
+\[
+ P=Z(Z^*Z)^{-1}Z^*,\qquad U=2P-I.
+\]
+Direct multiplication gives $P^*=P$, $P^2=P$ and $U^*U=I$.
+Also $P(Ad+Ed)=Ad+Ed$ and $PAd=PEd$, whence
+\[
+                            UAd=Ed.
+\]
+Construct the analogous reflection $U_0$ for the desired terminal
+column
+$A_0=(\sqrt{c_0}I,\sqrt{1-c_0}I)^{\mathsf T}$.
+Then $X=U_0^*U$ is an isometry and $XAd=A_0d$.
+
+These are periodizations of common exponentially decaying kernels.
+To check the uniform estimate, suppose the old row kernel has an
+exponentially weighted absolute coefficient bound at width $\eta>0$.
+Its Fourier symbol and reflected transpose are holomorphic on a
+smaller strip. On the real torus the Gram matrix is bounded below
+by $(1+\sqrt{c_0})^2I$. The coefficient bound controls uniformly
+the change of its symbol under a small imaginary displacement.
+Choose a smaller positive width so that this change has operator
+norm at most half that lower bound. The Neumann series then
+constructs a holomorphic inverse on the whole smaller strip,
+bounded by $2/(1+\sqrt{c_0})^2$. Fourier coefficient estimates on
+a further smaller strip give an exponentially weighted absolute
+sum: shift the contour in each coordinate in the sign of the
+Fourier index and sum the resulting geometric series. Matrix
+dimension is fixed by the row types, so these constants are
+independent of period and block length. Multiplication and
+transposition give the same kind of bound for $U,U_0,X$.
+This is the strip inverse argument used for the free kernels.
+
+Modify only the finest transfer column $m_f$, replacing it by
+$Xm_f$. Since $X^*X=I$, its Gram matrix is unchanged. Its mixed
+identity with the terminal curvature column is unchanged after
+replacing that column by $A_0$, because $XAd=A_0d$.
+The other transfer columns, including the mean column and the
+transport matrix, are unchanged. Thus all quadratic transport and
+orthogonality identities remain valid. The exponential bounds for
+the modified column follow by convolution of its old bound with
+the bound for $X$. There is only this one modification at the
+terminal step, so its cost does not accumulate along the history.
+
+At each stage choose the new strip width below both the original
+width and the width just obtained; choose the new upper price above
+one, the old price and this convolution price; and choose the new
+lower price below one and the old lower price. These choices depend
+only on the stage profiles and old kernel prices. They precede the
+block lengths, delays and realization. The resulting horizon agrees
+with the old one below its terminal level, its towers agree when
+$m+1<N$, and their mean and transport columns agree also at
+$m+1=N$. Its terminal direct metric is the identity. This proves
+the revised-horizon assertions used in
+Section~\ref{sec:common-funded-history}.
+
+\subsection{Finite jets of stationary values}
+We record the analytic calculation controlling the change of path.
+Let $F,G:X\times Y\to\mathbb R$ be analytic germs at zero on
+finite-dimensional real spaces. Suppose their derivatives through
+order $k+1$ agree. Let $u,v:X\to Y$ be analytic germs with
+$u(0)=v(0)=0$ and
+\[
+ D_YF(x,u(x))=0,\qquad D_YG(x,v(x))=0.
+\]
+Assume the vertical Hessian of $F$ at zero is invertible.
+Then the graphs $(x,u(x))$ and $(x,v(x))$ agree through order $k$,
+and the stationary values $F(x,u(x))$, $G(x,v(x))$ agree through
+order $k+1$.
+
+To prove the graph assertion, use the analytic local diffeomorphism
+\[
+                  \Psi_F(x,y)=(x,D_YF(x,y)).
+\]
+Its derivative is block triangular with invertible diagonal blocks
+$I$ and $D_Y^2F(0)$. The corresponding map $\Psi_G$ has the same
+jets through order $k$. On the two stationary graphs these maps
+both equal $(x,0)$. Composing their jet identities with the local
+inverse of $\Psi_F$ proves equality of graph jets through order
+$k$. On a stationary graph the chain rule reduces to
+\[
+ D\bigl[F(x,u(x))\bigr]=D_XF(x,u(x)),
+\]
+because the vertical derivative vanishes. The right sides for
+$F,u$ and $G,v$ agree through order $k$, using the graph identity
+and the derivative jets of $F,G$. Their values at zero also agree.
+This proves equality of stationary-value jets through order $k+1$.
+
+In the application $k=3$. The old terminal action and the new
+startup action both match the Wilson action through order four,
+by their terminal normalization and
+Section~\ref{sec:wilson-startup-construction}. This matching holds
+after substitution of the real fine-field chart on each forest
+slice. Indeed that chart is analytic and sends zero to the
+identity field; compose the matched real jets with its local
+logarithm. The noise term is identical in the two tested actions,
+so adding it preserves the matching.
+
+The vertical Hessians at zero are equal, hence the old positive
+gap is preserved exactly. The analytic implicit function theorem
+constructs the new critical graph. Near zero the tested-action
+germs are independent of the branch tag under the chosen kernel's
+branch hypothesis; thus this one graph solves every tested
+critical equation. Its first derivative agrees with the old graph,
+so it has the same linear mean. The preceding calculation also
+preserves the classical stationary-value jets through order four.
+This is the precise classical matching required by the outgoing
+coarse path, which is left unchanged.
+
+\subsection{The one-loop coefficient and retained limits}
+The vertical Hessian matrices of the two tested actions have
+matching jets through order two, since their actions match through
+order four. The determinant is a finite polynomial in matrix
+entries, so the determinants have matching two-jets. Composing
+with the stationary graphs preserves this matching: the graphs
+agree through order three, more than is needed here. Their
+positive determinant at zero allows the real logarithm.
+
+The Haar correction is a finite product of the same local chart
+Jacobian $J$ along the vertical graph coordinates. Since $J$ is
+analytic near zero and $J(0)=1$, these products and their
+logarithms also have matching two-jets. Both terminal loop
+potentials are zero. It follows that the two thermal functions
+\[
+ \frac12\log\det D_Y^2F(x,u(x))
+       -\log\!\prod_b J(u(x)_b)
+\]
+and its counterpart for $G,v$ have identical Hessians at zero.
+The finite-period wave estimate depends on these Hessians and the
+unchanged outgoing classical data. Its bound is therefore
+preserved with exactly the old scalar correction, gap and
+tolerance. Positivity near the new stationary graph follows from
+continuity and its positive definite Hessian at zero.
+
+Apply this construction only at $m+1=N$; at every lower step keep
+the old graph, path and scalar correction. The new terminal path
+is the startup path, while
+\[
+ R^{\rm new}_{N,m}=R^{\rm old}_{N,m}\quad(m<N),\qquad
+ \alpha^{\rm new}_{N,m}=\alpha^{\rm old}_{N,m},
+ \qquad u^{\rm new}_{N,m}=u^{\rm old}_{N,m}\quad(m+1<N).
+\]
+The matching argument above supplies all stationary conditions at
+the changed step. The revised quadratic horizon supplies its same
+linear guess and all-period kernel identities. For every fixed
+level, the changed data consequently agree with the old data on
+a tail of cutoffs. Their fixed-level limits and eventual
+extended-domain bounds persist by this exact tail equality.
+The new terminal graph need not have the old graph's complete
+analytic expansion, and no such assertion is used.
