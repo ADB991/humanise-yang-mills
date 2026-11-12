@@ -22,7 +22,14 @@ retained next-step conditions. The adjacent coupling bound has the form
  |\beta_{i+1}-\beta_i-s\log L_i|\le\varepsilon_{i+1},
  \qquad \varepsilon_{i+1}\le\tfrac{s}{4}\log L_i.
 \end{equation}
-Here $\varepsilon_i\ge0$. These are bounds on the actual returned representations.
+Here $\varepsilon_{i+1}\ge0$ is the drift allowance of the stage
+which the fixed schedule assigns to level $i+1$; it is a stage
+constant, chosen before the block lengths. The first inequality is a
+bound on the actual returned representations: it combines the stage
+bound for the scalar shift $\alpha_{N,i}$ with the purchased reset
+width of the preceding section. The second inequality is a property
+of the schedule, whose block sides are chosen after the stage drift
+allowances.
 
 \subsection{Restricting a curve without crossing a barrier}
 We first record the elementary interval argument. Let $f$ be continuous
@@ -119,11 +126,16 @@ selected cutoff $N\ge i$ and period,
 \begin{equation}\label{eq:shoot-running-error}
             |\beta_i-\widehat\beta_i|\le E_i+|b-\bar\beta|.
 \end{equation}
-The later stage purchases give the more precise ratio bound
-\[
+Let $J_i$ denote the stage assigned to level $i$ by the fixed
+schedule. The schedule has two further properties, which are inputs
+here: the stages are unbounded along the levels, and the block side
+of each stage is chosen so large, after its drift allowance, that
+\begin{equation}\label{eq:shoot-drift-ratio}
  \frac{\varepsilon_{i+1}}{\log L_i}\le J_{i+1}^{-2},
                   \qquad J_i\longrightarrow\infty.
-\]
+\end{equation}
+The allowances $\varepsilon_{i+1}$ are the same as in
+\eqref{eq:shoot-adjacent-drift}.
 Fix $\epsilon>0$ and choose $j$ so that $J_{i+1}^{-2}\le\epsilon/2$
 for $i\ge j$. Then
 \[

@@ -71,13 +71,28 @@ At one adjacent pair of scales, retain the actual common dictionary
 of regular and forced arrays. Its norm is the maximum of the
 normalized regular and forced budgets, with all the fixed symmetry
 and support constraints retained. Finite linear combinations remain
-in this vector space. Suppose a line of allowed inputs has normalized
-coupling $\lambda+t\mu$ and activity array $x+ty$, $|t|\le1$.
-Let $F(t)$ be its selected output array in the completion and
-$Q(t)$ its scalar coupling correction.
+in this vector space. Fix the transition from the fine scale $m+1$
+to the coarse scale $m$ at one terminal index, the reference coupling
+$\widehat\beta=\widehat\beta_{m+1}$ of the fine scale, and
+$w=\widehat\beta^{-1/32}$. A line of inputs has normalized coupling
+$\lambda+t\mu$ and activity array $x+ty$, $|t|\le1$. We call it
+admissible if
+\begin{equation}\label{eq:background-ray-admissible}
+ \frac{33}{40}\le w\lambda\le\frac{47}{40},\qquad |\mu|\le1,\qquad
+ \|x+ty\|\le1\quad(-1\le t\le1).
+\end{equation}
+The condition on the direction $\mu$ is separate from the first
+one: for $w$ below the purchased threshold, the two together keep the
+coupling of every point of the line inside the paid band of the fine
+scale, where the transition is defined. For an admissible line let
+$F(t)$ be its selected output array in the completion and $Q(t)$ its
+scalar coupling correction.
 
-The exact finite-test receipts used here are the following. For
-any finite weights $a_j$ and points $t_j$, write
+The exact finite-test receipts used here are the following. They are
+required for every admissible line, with constants $d\ge0$ and
+$f_m\ge0$ fixed before the line: $d$ is the normalized activity
+allowance and $f_m$ the scalar allowance of the step from $m+1$ to
+$m$. For any finite weights $a_j$ and points $t_j\in[-1,1]$, write
 \[
  \eta_r=\sup_{n\ge0}\left|\sum_j a_j(t_j/r)^n\right|.
 \]
@@ -140,7 +155,8 @@ For any $0<\varepsilon\le1$, take the line
 $z+t(z'-z)/\varepsilon$, $|t|\le1$. Its coupling direction is
 zero and its activity direction has seminorm zero. Every point
 therefore has the same activity norm as $z$, at most $1/8$,
-so the line is admissible. Its value at $t=\varepsilon$ is $z'$.
+so the line satisfies \eqref{eq:background-ray-admissible}. Its
+value at $t=\varepsilon$ is $z'$.
 Equation~\eqref{eq:ray-increment} bounds the output differences
 by $d\varepsilon/(q/2-\varepsilon)$ and
 $f_m\varepsilon/(q-\varepsilon)$, respectively. Letting
@@ -150,9 +166,11 @@ respects the seminorm kernel; it does not identify regular
 representatives on unhealthy configurations.
 
 For $0<h\le1/4$, set $v=(z'-z)/(4h)$. Its norm is $1/4$,
-and the full line $z+tv$, $|t|\le1$, is allowed. Its activity
-norm is at most $1/8+1/4<1$. Its normalized coupling lies in
-the broader interval
+and the full line $z+tv$, $|t|\le1$, is admissible in the sense of
+\eqref{eq:background-ray-admissible}: its base point lies in the
+narrower coupling interval, its coupling direction satisfies
+$|v_1|\le1/4$, and its activity norm is at most $1/8+1/4<1$. In fact
+its normalized coupling lies in the broader interval
 \[
                    33/40\le w(\lambda+tv_1)\le47/40,
 \]

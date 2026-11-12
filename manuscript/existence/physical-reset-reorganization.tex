@@ -26,18 +26,101 @@ higher-atom price $C$, and relaxation radius $r_c$ with
 \[
              12\le r_c\sigma,\qquad (b+1)/B\le\sigma/4.
 \]
-Its clipping parameters satisfy the geometric conditions ensuring that
-the kept-row test is local in the radius-$B$ halo. These are the
-conditions already used for the actual clipped path. The torus side
-is greater than $20$.
+Write $c_{\rm direct}$ for the direct coefficient of the clip. The
+clipping parameters satisfy
+\begin{equation}\label{eq:reset-clip-conditions}
+ c_{\rm direct}\le1,\qquad 2\le t\,e^{(B-2)/r_c}.
+\end{equation}
+The first inequality is a consequence of the metric normalization
+of the selected path recalled below. The second makes the kept-row
+test local. Recall that the row at an anchor $o$ is kept when every
+plaquette $q$ has chord at most
+$t\exp(\operatorname{dist}(o,q)/r_c)$. Chords are at most $2$, so
+\eqref{eq:reset-clip-conditions} makes this requirement automatic
+for every plaquette at distance at least $B-2$ from $o$. The
+remaining plaquettes have all four corners in the radius-$B$ halo of
+$o$. Hence the test depends only on the field in that halo, and it
+holds whenever the halo is healthy, because the chords read there are
+then at most $t$. These are the conditions already used for the
+actual clipped path. The torus side is greater than $20$.
 
 \subsection{The scalar coefficient extracted from the local Hessians}
+We first record how the Hessian of a regular entry acts on affine
+fields. Let $f$ be a regular entry on a support $X$ which is
+nonwrapping at its anchor $o$, and let $D^2f$ denote the second
+derivative at zero of $A\mapsto f(\exp A)$, where $A$ runs over
+Lie-algebra valued link fields. An affine field anchored at $o$ is
+a link field
+\[
+ A_j(x)=a_j+\sum_k(x-o)_k\,b_{jk},
+\]
+with Lie-algebra coefficients $a_j,b_{jk}$; the difference $x-o$ is
+read in $\mathbb Z^4$, which is unambiguous on a nonwrapping support.
+Its curl is the constant two-form $w_{jk}=b_{kj}-b_{jk}$, $j<k$.
+We claim that $D^2f(A,A')$, for two affine fields, depends only on
+their curls. There are four steps.
+
+First, $Df=0$ at the identity. A constant gauge transformation acts
+on link directions by the adjoint action on every link. Invariance
+of $f$ makes the restriction of $Df$ to one link an invariant linear
+functional on the Lie algebra. Such a functional vanishes on
+commutators, and a simple Lie algebra is spanned by its commutators.
+
+Second, $D^2f(\nabla\phi,u)=0$ for every Lie-algebra valued site
+function $\phi$ and every direction $u$, where
+$(\nabla\phi)_j(x)=\phi(x+e_j)-\phi(x)$. Indeed, let $g_s$ be the
+gauge transformation $x\mapsto\exp(-s\phi(x))$. Near zero the field
+$g_s\cdot\exp A$ has a smooth logarithm $c(A,s)$ with $c(0,0)=0$ and
+derivative $(A,s)\mapsto A+s\nabla\phi$ there. Gauge invariance
+says $f(\exp c(A,s))=f(\exp A)$. Differentiate this identity twice
+at zero. Since $Df=0$ at the identity, the second derivative of the
+chart $c$ does not enter, and
+\[
+ D^2f(A+s\nabla\phi,A'+s'\nabla\phi)=D^2f(A,A')
+\]
+for all $(A,s)$ and $(A',s')$. Take $(A,s)=(0,1)$ and
+$(A',s')=(u,0)$.
+
+Third, $D^2f$ is symmetric, and $D^2f(A,A')$ is unchanged when $A$
+or $A'$ is modified on links not contained in $X$, since $f$ reads
+only the links of $X$.
+
+Fourth, on a nonwrapping support a curl-free affine field is a
+lattice gradient. If $b_{jk}=b_{kj}$, put
+\[
+ \phi(x)=\sum_j(x-o)_j\bigl(a_j-\tfrac12b_{jj}\bigr)
+       +\tfrac12\sum_{j,k}(x-o)_j(x-o)_kb_{jk}.
+\]
+Then $\phi(x+e_d)-\phi(x)=a_d-\tfrac12b_{dd}
++\tfrac12\bigl(2\sum_k(x-o)_kb_{dk}+b_{dd}\bigr)=A_d(x)$ on every
+link of the support.
+
+Now let $A,\widetilde A$ be affine fields with the same curl. Their
+difference is a curl-free affine field, hence agrees on the links of
+$X$ with a gradient. The second and third steps give
+$D^2f(A,u)=D^2f(\widetilde A,u)$ for every $u$, and symmetry gives
+the same statement in the second argument. This proves the claim.
+
+For a plaquette pair $a=(i,j)$, $i<j$, and a Lie-algebra element
+$v$, let $W_a(v)$ be the affine field whose links in direction $j$
+have the value $(x-o)_iv$ and whose other links vanish. Its curl is
+$v$ in the plane $a$ and zero in the other planes. Every affine field
+with curl $w$ therefore has the same curl as $\sum_aW_a(w_a)$.
+The bilinear form $(v,v')\mapsto D^2f(W_a(v),W_d(v'))$ is invariant
+under the adjoint action, by constant gauge invariance. Simplicity
+of the Lie algebra identifies every
+invariant bilinear form with a scalar multiple of the invariant
+inner product. Hence there are real numbers $Q_f(a,d)$ with
+\begin{equation}\label{eq:reset-affine-hessian}
+ D^2f(A,A')=\sum_{a,d}Q_f(a,d)\langle w_a,w'_d\rangle
+\end{equation}
+for all affine fields $A,A'$ anchored at $o$, with curls $w,w'$.
+Symmetry of the Hessian gives $Q_f(a,d)=Q_f(d,a)$.
+
 For each $i$ put $Z_i=X_i\cup\operatorname{halo}_2\{o_i\}$.
-On a nonwrapping $Z_i$, let $Q_i(a,d)$ be the coefficient of the
-Hessian of $f_i$ on affine fields with constant curvature in the
-plaquette directions $a,d$. The colour dependence is the invariant
-inner product: simplicity of the Lie algebra identifies every
-invariant bilinear form with a scalar multiple of it. Set $Q_i=0$
+On a nonwrapping $Z_i$, let $Q_i(a,d)=Q_{f_i}(a,d)$ be the
+coefficient in \eqref{eq:reset-affine-hessian} for the entry $f_i$
+and its anchor $o_i$. Set $Q_i=0$
 when $Z_i$ wraps. This convention is preserved by the label symmetries.
 The Hessian estimates give
 \begin{equation}\label{eq:reset-projection-price}
@@ -91,16 +174,41 @@ with no extra normalization factor. Define
                   \langle\phi_a(o_i,U),\phi_d(o_i,U)\rangle,
  \qquad r_i=f_i-f_i(1)-P_i.
 \]
-The affine Hessian of $r_i$ vanishes on nonwrapping supports, and
-$r_i(1)=0$. Write $\chi_X$ for the healthy-set indicator on $X$.
+The affine Hessian of $r_i$ vanishes when $Z_i$ is nonwrapping, and
+$r_i(1)=0$. To see the first assertion, let $A,A'$ be affine fields
+anchored at $o_i$, with curls $w,w'$. Each $\phi_a(o_i,\cdot)$
+vanishes at the identity and has derivative $w_a$ along $A$, as just
+shown. The product rule and $Q_i(a,d)=Q_i(d,a)$ give
+\[
+ D^2P_i(A,A')=\sum_{a,d}Q_i(a,d)\langle w_a,w'_d\rangle .
+\]
+By \eqref{eq:reset-affine-hessian} this equals $D^2f_i(A,A')$, and
+the constant $f_i(1)$ has zero Hessian. Hence $D^2r_i(A,A')=0$.
+No assertion is made for wrapping $Z_i$, where $Q_i=0$.
+
+Write $\chi_X$ for the healthy-set indicator on $X$. A site is
+unflagged precisely when every plaquette having it as a corner is
+healthy. In particular $\chi_{\{o_i\}}=1$ makes the four clover
+plaquettes at $o_i$ healthy.
 Define the supported discrepancy
 \[
  d_i=f_i(1)+\chi_{\{o_i\}}P_i-\chi_{X_i}f_i
                                   +\chi_{Z_i}r_i.
 \]
-It vanishes when $Z_i$ is healthy. This is the exact masked splitting
-of Section~\ref{sec:local-splitting}, specialized to the quadratic
-projection and with the displayed sign convention. Put
+It vanishes when $Z_i$ is healthy: all three indicators then equal
+one, and the four terms cancel by the definition of $r_i$. When
+$Z_i$ is not healthy the last term is absent. In both cases
+\[
+ \chi_{X_i}f_i=f_i(1)+\chi_{\{o_i\}}P_i-d_i+\chi_{Z_i}r_i .
+\]
+This has the form of the masked splitting of
+Section~\ref{sec:local-splitting}, but it is not a special case of
+that identity. There the extracted section is masked by the health
+of the stencil on which it is supported. Here the quadratic
+counterterm is masked by the health of the single anchor $o_i$,
+which is what allows the counterterms of all entries with a common
+anchor to be summed below. The displayed identity is therefore
+verified directly, as was just done. Put
 \[
  c_0=\sum_i f_i(1),\quad D=\sum_i d_i,\quad
  R_0=\sum_i\chi_{Z_i}r_i,\quad
@@ -224,8 +332,15 @@ $C_{\rm sub}u_i$. The added radius-two halo increases the cover number
 by at most $81$, whence the regular cost is at most
 $C_{\rm reset}H$. Its hit cost, denoted $S(H)$, is the footprint
 payment with population radius $4B+2$, support increment $81$,
-input exponent $b+3$ and output exponent $b+1$. This is the explicit
-footprint sum of Section~\ref{subsec:ex-lattice-rg-crowd}; it is linear
+input exponent $b+3$ and output exponent $b+1$. In the notation of
+the explicit footprint price $\mathcal P$ of
+Section~\ref{subsec:ex-lattice-rg-crowd},
+\[
+ S(H)=\mathcal P(1,4B+2,0,1,C_{\rm sub},H,b+1,81).
+\]
+This is the ordinary application, at exponent $b+1$ and width
+reserve one; it is not the raised application displayed in that
+section. It is linear
 in $H$ and has only polynomial dependence on $B$ at fixed stage.
 
 Let $C_{\rm turn}$ be the ordered-derivative cost of a signed
@@ -277,14 +392,200 @@ Thus the full regular and soft costs are bounded respectively by
  S_{\rm new}&=S(H)+
        \{2t(|\alpha|+H/t^2)+\tfrac12C_{\rm pair}H\}L_h.
 \end{align*}
-The numerical purchases require $E_{\rm new}\le\delta$ and the
-hard/soft absorption inequalities for the pair $(w,S_{\rm new})$
-and target $\gamma$. The payment proved in
-Section~\ref{sec:nonlinear-payment-selection} gives those inequalities
-on the selected sufficiently late entries. The output therefore has
+The reorganization requires two numerical purchases for its output
+allowances $\delta$ and $\gamma$. The regular one is
+$E_{\rm new}\le\delta$. The forced one asks for numbers
+$\mu,\kappa\ge0$ with
+\begin{equation}\label{eq:reset-forced-purchase}
+ S_{\rm new}\le\mu\le1,\qquad
+ (2B+1)^4I\le1,\qquad
+ e^{-\kappa}(e^{I}-1)\le\gamma,\qquad I=e^\kappa w+2\mu .
+\end{equation}
+These are the hard/soft absorption inequalities
+\eqref{eq:nonlinear-payment} for the pair $(w,\mu)$ and target
+$\gamma$. Under them the output has
 regular cost $\delta$ and forced cost $\gamma$, with the original
 locality, symmetry and affine-Hessian conditions. These numerical
 purchases must be imposed on this same output budget.
+
+\subsection{The stage constants and the early allocation}
+The regular purchase is obtained by fixing in advance how small the
+early price $H$ must be. The coefficients
+$C_{\rm reset},C_{\rm turn},L_0,L_1$ depend only on the derivative
+order, spatial power, support exponent, clip, width and path price
+of the output stage. They do not depend on the radius $B$ or the
+threshold $t$: the cover-number increments $81$, $85$, $9$ and the
+polynomial derivative factors above were bounded without reference
+to either. Put
+\begin{equation}\label{eq:reset-stage-constants}
+ B^{\rm reset}=C_{\rm reset}+C_{\rm turn}(L_0+L_1),\qquad
+ v^{\rm reset}=C_{\rm turn}L_1,\qquad
+ c^{\rm reset}=\frac1{64(1+B^{\rm reset})}.
+\end{equation}
+Collecting the coefficients of $H$ and of $|\alpha|t^3$ in the
+display for $E_{\rm new}$ gives the identity
+\[
+ E_{\rm new}=B^{\rm reset}H+v^{\rm reset}|\alpha|t^3 .
+\]
+Since $B^{\rm reset}\ge0$,
+\begin{equation}\label{eq:reset-credit-bounds}
+ 0<c^{\rm reset}\le\frac1{64},\qquad
+ B^{\rm reset}c^{\rm reset}\le\frac1{64}.
+\end{equation}
+Now let $\delta_E>0$ be the regular allowance of the output level,
+and let $A\ge0$. Suppose
+\begin{equation}\label{eq:reset-allocation}
+ H=c^{\rm reset}\delta_E,\qquad |\alpha|\le A,\qquad
+ 64\,v^{\rm reset}A\,t^3\le\delta_E .
+\end{equation}
+Then \eqref{eq:reset-credit-bounds} gives
+\[
+ E_{\rm new}\le\frac{\delta_E}{64}+\frac{\delta_E}{64}
+           =\frac{\delta_E}{32}.
+\]
+Thus the regular purchase holds with $\delta=\delta_E/32$. The first
+condition in \eqref{eq:reset-allocation} is an allocation: it is the
+fraction of the output allowance which the local return of
+Section~\ref{sec:selected-nonlinear-offering} is asked to meet, and
+is the constant called $c_{\rm st}$ there. It is a choice made
+before the block length, not a consequence of the reorganization.
+The third condition is a stage-entry purchase. With the uniform
+bound $A=A_j$ of the next subsection and
+$t=x^{-1/2}e^{(\log\log x)^2}$, $\delta_E=x^{-11/10}$, the ratio
+$t^3/\delta_E=x^{-2/5}e^{3(\log\log x)^2}$ tends to zero, so the
+condition holds beyond an entry threshold depending on the stage
+and on the block length through $A_j$.
+
+Section~\ref{sec:nonlinear-payment-selection} proves the soft-price
+estimate \eqref{eq:nonlinear-soft-price}, which bounds $S_{\rm new}$
+by a stage constant times $(1+B)^4t$ when $|\alpha|\le A$ and
+$H\le t^2$, and the elementary payment \eqref{eq:nonlinear-payment}.
+It does not contain the regular inequality $E_{\rm new}\le\delta$;
+that is the allocation just described. The comparison of
+$H,\delta,\gamma$ with the prices of the selected recipe is proved in
+Section~\ref{sec:common-funded-history}. The instantiation of
+\eqref{eq:reset-forced-purchase} at the particular forecast pair
+$(w,\gamma)$ of the selected history remains an input here: it
+requires witnesses $\mu,\kappa$ satisfying all its inequalities for
+that pair. Section~\ref{sec:common-funded-history} describes this
+purchase in words but does not exhibit the witnesses. The present
+section is conditional on \eqref{eq:reset-allocation} and
+\eqref{eq:reset-forced-purchase}.
+
+\subsection{Continuity in the parameter}
+Let the parameter $y$ range over the compact interval $T$ fixed at
+the start, and write $f_i(y),k_i(y),\Delta(y)$ for the early arrays
+and the extracted coefficient. The output arrays must be continuous
+in $y$ in the labelled regular and forced norms. This does not follow
+from continuity of finitely many operations, because the forced
+absorption involves infinitely many labels. We use the two
+comparison properties of the early arrays supplied by
+Section~\ref{sec:selected-nonlinear-offering}, both in the one
+dictionary fixed there:
+\begin{itemize}
+\item for every $y\in T$ and every label, the regular entry
+ $f_i(y')$ converges to $f_i(y)$ in its regular norm, and the forced
+ entry $k_i(y')$ converges to $k_i(y)$ uniformly in the field, as
+ $y'\to y$ in $T$;
+\item every sequence in $T$ converging to $y$ has a subsequence along
+ which the regular norms of the $f_i$ and the suprema of the $k_i$
+ have summable majorants $e_i,h_i$ common to the subsequence and its
+ limit.
+\end{itemize}
+On the fixed finite torus every support has cover number at most the
+number of sites, so the support weights are bounded and plain
+summability of majorants is all that is needed below.
+The first step is the absorption itself.
+
+\begin{lemma}[Continuity of the forced absorption at a fixed period]
+\label{lem:reset-absorption-continuity}
+Fix a finite torus, a radius $B$, a support exponent $b$, and one
+dictionary of hard labels $i$ and logarithmic labels $j$ as in
+Section~\ref{sec:soft-log-fusion}, with supports, inventories and
+eligibility tests independent of a parameter $y\in T\subseteq
+\mathbb R$. Let $K_i(y,\cdot)$ and $\ell_j(y,\cdot)$ be the hard
+factors and logarithms. Assume:
+\begin{enumerate}
+\item for every label and every $y\in T$,
+ $\sup_U|K_i(y',U)-K_i(y,U)|\to0$ and
+ $\sup_U|\ell_j(y',U)-\ell_j(y,U)|\to0$ as $y'\to y$ in $T$;
+\item there are numbers $p_i,v_j\ge0$, independent of $y$, with
+ $|K_i(y,U)|\le p_i$ and $|\ell_j(y,U)|\le v_j$ for all $y\in T$ and
+ all fields $U$, and with $\sum_ip_i+\sum_jv_j<\infty$.
+\end{enumerate}
+Then the absorbed activities $\widehat K_C(y,\cdot)$ of
+\eqref{eq:fusion-new-activity} satisfy
+\[
+ \sum_Ce^{b\,c_B(Z_C)}\sup_U
+ \bigl|\widehat K_C(y',U)-\widehat K_C(y,U)\bigr|\longrightarrow0
+ \qquad(y'\to y\ \hbox{in }T).
+\]
+\end{lemma}
+\begin{proof}
+At every field, $\widehat K_C(y,U)$ is the product of two indicators
+that do not depend on $y$ and of the finitely many factors
+$r_v(y,U)$, $v\in C$, where $r_i=K_i$ and $r_j=e^{\ell_j}-1$.
+Put $a_i=p_i$ and $a_j=e^{v_j}-1$. Each factor is bounded by $a_v$
+uniformly in $y$ and $U$, because $|e^x-1|\le e^{|x|}-1$, and by the
+first hypothesis each factor converges uniformly in $U$. Writing the
+difference of two finite products as a telescoping sum shows that
+each term of the series tends to zero. Each term is at most
+$2e^{b|\Lambda|}\prod_{v\in C}a_v$, since a cover number is at most
+the number $|\Lambda|$ of sites. The numbers $a_v$ are summable:
+$a_j\le v_je^{v_j}$ and the $v_j$ are bounded. The labels $C$ are
+finite sets of constituent labels, so
+\[
+ \sum_C\prod_{v\in C}a_v\le\prod_v(1+a_v)-1
+                       \le\exp\Bigl(\sum_va_v\Bigr)-1<\infty .
+\]
+Dominated convergence for series gives the claim.
+\end{proof}
+
+The bound obtained in this proof depends on the number of sites. It
+is used only for continuity at a fixed period, never as a
+volume-independent price. The volume-independent forced cost of the
+output is the separate estimate \eqref{eq:fusion-site-output}, paid
+by \eqref{eq:reset-forced-purchase}.
+
+We apply the lemma as follows. First, $\Delta$ is continuous on $T$.
+The difference of two early arrays in the same dictionary is again a
+family of regular entries, and the projection is linear. Applying
+\eqref{eq:reset-isotropic-coefficient} to the difference gives
+$t^2|\Delta(y')-\Delta(y)|\le d$ whenever the regular norms of the
+differences $f_i(y')-f_i(y)$ have majorants whose support-weighted
+sum over all labels is at most $d$. Such a $d$ can be taken
+arbitrarily small for $y'$ near $y$: otherwise there would be a
+sequence $y_n\to y$ along which this fails, and on its dominated
+subsequence the entrywise convergence and the common summable
+majorant $2e_i$ would give a contradiction by dominated convergence.
+
+Second, every output entry depends continuously on $y$. The entries
+$r_i$ and $d_i$ are linear in $f_i$, with norm at most $C_{\rm sub}$
+times that of $f_i$, so they inherit the entrywise convergence. The
+path corrections $F_d$ and $J_d$ are fixed functions multiplied by
+$\Delta$ or by $\alpha+\Delta$, so they are continuous because
+$\Delta$ is.
+
+Third, let $y_n\to y$ and pass to the subsequence with common early
+majorants $e_i,h_i$. Along it $|\Delta(y_n)|\le|\Delta(y)|+1$
+eventually. The output regular and logarithmic entries then have the
+common summable majorants $C_{\rm sub}e_i$ for the subtracted entries
+and the channel bounds of \eqref{eq:reset-channel-costs} with
+$|\Delta|$ replaced by $|\Delta(y)|+1$ for the path entries; the hard
+entries keep the majorants $h_i$. Summability of the channel
+bounds is the summability established after
+\eqref{eq:reset-channel-costs}, which did not use the size of
+$\Delta$.
+
+Fourth, on this subsequence together with its limit point the
+hypotheses of Lemma~\ref{lem:reset-absorption-continuity} hold: the
+first by the second step, the second by the third step. The regular output
+entries are not changed by the absorption, and their weighted
+difference sums tend to zero by the same dominated convergence.
+Hence the full output arrays converge along the subsequence. Since
+every sequence converging to $y$ has such a subsequence, the output
+arrays are continuous at $y$: a sequence violating continuity would
+have a dominated subsequence still violating it.
 
 \subsection{The two healthy tests and the actual reset}
 Suppose the early cost obeys $H\le F/4$, where $F$ is the scalar
@@ -317,10 +618,7 @@ at the nontrivial healthy test. The vacuum error is bounded by $F/4$.
 The output arrays in \eqref{eq:reset-complete-density} depend on the
 computed $\Delta$, and are fixed while the trial dial varies. Their
 dial-motion cost is therefore zero. Their continuity in the original
-parameter follows from the common-dictionary comparison: the projection
-is linear and bounded by \eqref{eq:reset-projection-price}, its sum
-is absolutely controlled, and the remaining operations are sums,
-fixed pullbacks and the paid forced absorption. The scalar selection
+parameter was proved in the preceding subsection. The scalar selection
 therefore applies to these arrays. Its residual is
 $(d-\Delta)\mathcal K(U_*)$, so the selected dial is exactly
 $\Delta$. Its vacuum value is exactly $\tau-c_0/V$ by

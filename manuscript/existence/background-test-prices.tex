@@ -14,7 +14,14 @@ triangle inequality and absolute homogeneity. A budget defined as
 an infimum over admissible summable majorants has these properties:
 add or scale the majorants and then take their infima. The argument
 below equally applies by retaining the majorants themselves.
-For a finite real signed measure $\lambda$ on $[-1,1]$, set
+A finite test is a finitely supported real signed measure on
+$[-1,1]$,
+\[
+ \lambda=\sum_{h=1}^{h_0}a_h\delta_{t_h},\qquad a_h\in\mathbb R,
+ \quad t_h\in[-1,1],
+\]
+and for a function $G$ on $[-1,1]$ with values in a real vector
+space we write $\int G\,d\lambda=\sum_ha_hG(t_h)$. Set
 \[
  M_r(\lambda)=\sup_{n\ge0}\left|\int(t/r)^n\,d\lambda(t)\right|,
                     \qquad r\ge1.
@@ -24,7 +31,8 @@ Let $F:[-1,1]\to\mathcal E$. Suppose
  \mathcal N\left(\int F\,d\lambda\right)\le B M_v(\lambda),
  \qquad \mathcal N(F(t))\le b\quad(-1\le t\le1),
 \]
-where $1\le q\le v$ and $b,B\ge0$. The integrals here are finite
+where $1\le q\le v$ and $b,B\ge0$, the first bound being assumed
+for every finite test $\lambda$. The integrals here are finite
 linear combinations; no measurability of $F$ is required.
 For each integer $k\ge0$, a constant $U=U(k,q)\ge0$, independent
 of the family, its dictionary and its volume, gives
@@ -82,6 +90,28 @@ upper exponent at most $-23/20$: concretely, for every
 $\epsilon>0$, $|R(x)|\le C_\epsilon y^{-23/20+\epsilon}$
 eventually. This estimate comprises the local comparison and
 truncation errors; it is separate from the broad analytic bound.
+For the selected one-step source it is the regular budget proved in
+Section~\ref{sec:selected-nonlinear-offering}. There the principal
+and complementary regular prices are purchased as $E/16$ and
+$2E/16$, with $E=C_{\rm st}x^{-11/10}$; here they are purchased with
+the fraction $t\le1/16$ in place of $1/16$; the smaller regular
+reserve is the one permitted in
+Section~\ref{sec:common-funded-history} and is chosen before the
+entry delays. The offering section states its budget only for the
+fraction $1/16$. Its proof uses the principal and complementary
+prices only through their sum in the truncation bound
+\eqref{eq:selected-offer-truncation}, so with the hypotheses $tE$
+and $2tE$ the same proof gives the leading term
+$3tC_{\rm st}x^{-11/10}$ in place of $3E/16$. The other terms of
+that budget are unchanged: in the notation of that section,
+\[
+          R=C_{\rm turn}g+g+C_{\rm turn}c'e^{A_cM},
+          \qquad g=y^{-23/20},
+\]
+where $c'$ is the price of the folded counterterms. Both $g$ and
+$c'$ have upper exponent $-23/20$, and $C_{\rm turn}$, $A_c$, $M$
+are fixed at the stage. The bound holds at every point of the
+parameter line, for the raw family in its one common dictionary.
 
 Fix $q\ge2$ and $s>0$, take $k=300$ in
 \eqref{eq:background-sharp-test}, and choose $t$ small enough that
@@ -106,7 +136,7 @@ the condition $q\le v(x)$ also holds beyond that threshold.
 \subsection{The reset and the final regular price}
 The reset and local Taylor subtraction are linear in the raw
 logarithmic family and in its extracted coupling coefficient.
-On a fixed stage, the exact regular output price has the form
+On a fixed stage, the regular output price is at most
 \begin{equation}\label{eq:background-regular-price}
                    C_0 H+C_1|\alpha|\theta(x)^3,
 \end{equation}
@@ -117,12 +147,32 @@ threshold. The two constants collect respectively the reset,
 low-path and high-path derivative prices, and the high-path
 remainder. This is the same local subtraction estimate used in
 the nonlinear transition, applied to a finite linear combination
-before taking its majorant.
+before taking its majorant. It is the regular cost $E_{\rm new}$ of
+Section~\ref{sec:physical-reset-reorganization}, with the threshold
+of that section equal to $\theta(x)$: in the notation of
+\eqref{eq:reset-stage-constants},
+\[
+ C_0=B^{\rm reset}=C_{\rm reset}+C_{\rm turn}(L_0+L_1),\qquad
+ C_1=v^{\rm reset}=C_{\rm turn}L_1.
+\]
+The estimate is used under the hypotheses of that section, for the
+path, clipping data and outgoing budget of the transition under
+consideration. The path satisfies its paid bounds at the path width
+$\sigma$. The relaxation radius $r_c$ of the clipping data and the
+support exponent $b$ and radius $B$ of the budget satisfy
+$12\le r_c\sigma$ and $(b+1)/B\le\sigma/4$. The direct clipping
+coefficient is at most one, $B\ge2$, and
+$2\le\theta(x)e^{(B-2)/r_c}$, as in \eqref{eq:reset-clip-conditions}.
+The group is simple. The path correction $\alpha$ is one fixed number along the
+whole parameter line, with $|\alpha|\le A$. With these data the
+constants $C_0,C_1$ depend only on the stage.
 
 The stage conversion constant is selected as
 \[
                  C_{\rm st}=\frac1{64(1+C_0)}.
 \]
+This is the allocation $c^{\rm reset}$ of
+\eqref{eq:reset-stage-constants}.
 It is positive and satisfies both $C_{\rm st}\le1/64$ and
 $C_0C_{\rm st}\le1/64$. Fix $d>0$, take $0<s\le d$ in
 \eqref{eq:background-pre-reset-price}, and retain the fixed
@@ -146,7 +196,7 @@ Dividing by the positive regular normalization gives the regular
 part of \eqref{eq:background-ray-tests}.
 The scalar coupling coefficient is a bounded linear projection
 of the raw family, with price $H/\theta(x)^2$. Consequently its
-finite-test price is exactly the scalar allowance
+finite-test price is at most the scalar allowance
 $f_m=sC_{\rm st}x^{-11/10}/\theta(x)^2$ used there.
 
 \subsection{The forced price and the remaining analytic input}
@@ -212,11 +262,33 @@ their coefficients obey convolution, and the sum of coefficient
 norms of a product is bounded by the product of the corresponding
 sums. The proof is Tonelli's theorem for the nonnegative coefficient
 majorants. Thus the forced absorption argument of
-Section~\ref{sec:nonlinear-payment-selection} applies also to
+Section~\ref{sec:soft-log-fusion} applies also to
 these parameter coefficient prices, with the same enlarged
 support reserve and the same scalar parameter $\kappa$.
-It gives a forced output price at most $d$ times the prescribed
-forced normalization after increasing the entry threshold.
+Its inputs are the following. The hard price $a_{\rm h}$ is the
+common coefficient majorant of the raw forced family at radius $q/2$
+and support exponent $b+1$, where $b$ is the outgoing support
+exponent. The soft price is any $c_{\rm s}\ge2S$, where $S$ is the
+soft cost $S_{\rm new}$ of
+Section~\ref{sec:physical-reset-reorganization} at the raw price $H$
+and the fixed correction $\alpha$; the factor two is the radius loss
+just proved. If $K_m>0$ denotes the prescribed forced normalization
+and $\kappa\ge0$ satisfies
+\begin{equation}\label{eq:background-forced-payment}
+ c_{\rm s}\le1,\qquad (2B+1)^4I\le1,\qquad
+ e^{-\kappa}(e^I-1)\le dK_m,\qquad I=e^\kappa a_{\rm h}+2c_{\rm s},
+\end{equation}
+then the final forced array has one common coefficient majorant at
+radius $q/2$ and exponent $b$ with rooted price at most $dK_m$.
+The existence of such a $\kappa$ at every sufficiently late entry,
+uniformly over the coupling band, is a numerical input of this
+section and is not derived here. It is a payment of the same kind
+as \eqref{eq:nonlinear-payment}, but it is not a consequence of that
+statement alone: the hard price $a_{\rm h}$ is the forecast
+allowance reached in Section~\ref{sec:projected-parameter-prices},
+and the payment uses the purchased gap between the exponential rate
+of that forecast and the smaller rate of the output normalization
+$K_m$.
 The test inequality follows by applying each finite moment test
 to the absolutely summable coefficient series. This supplies the
 forced clause of \eqref{eq:background-ray-tests} whenever the

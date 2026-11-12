@@ -49,8 +49,11 @@ error; no passage to a limit in $i$ is part of this assertion.
 
 The selected producer of this estimate is the theorem $\mathrm{pouring}$.
 Its proof first obtains a Wilson reference $H$ with positive strip width and
-finite fee from $\mathrm{vintageWilson}$. The three Wilson jets used in the
-construction are exactly orders one, two, and three; the order-zero
+finite fee from $\mathrm{vintageWilson}$. The three Wilson responses used
+in the construction record the normalized Taylor coefficients of the
+Wilson action of orders two, three, and four; their picture indices are
+one, two, and three, a picture of index $t$ being recorded against the
+Taylor coefficient of order $t+1$. The order-zero
 remainder construction $\mathrm{jig}$ turns them into a single reference
 whose fee controls all required jets. Next, $\mathrm{saunter}$ constructs
 a second fee-controlled series $V$ for the difference between the desired
@@ -148,8 +151,23 @@ positive Hessian gap, critical chart, and installed-matrix approximation
 enter the later path theorem as supplied data, but their source is an
 implicit-function argument, not an additional limit assumption.
 
+Throughout this subsection a kernel choice with penalty
+$K_{\rm pen}>0$, an odd blocking side $L$ and a phase $j$ are fixed, and
+$R_{\rm macro}=(j+3)\ell+4\ell$ denotes the macro radius, where
+$\ell=L.\mathrm{val}$. A one-step datum consists of a coarse side $c$
+and a fine side $f=c\ell$ together with the blocking maps of the kernel.
+It is called larger when its patch satisfies the branch compatibility
+hypothesis of the kernel and
+\[
+ 100R_{\rm macro}\le f,\qquad 1<c .
+\]
+All statements below are for a larger one-step datum, an allowed forest
+$F$ of its blocking ratio, and a local choice at the parent of each fine
+edge. Configurations are taken in the forest slice, and forest directions
+are extended by zero on the tree edges.
+
 Start with the planted comparison for a coarse site $i$ and a fine edge
-$e=(x,a)$. Let $L$ be the blocking side and write $\ell=L.\mathrm{val}$;
+$e=(x,a)$, where $i$ is the parent of $e$. Write $\ell=L.\mathrm{val}$ as above;
 let $p_i$ be the planted root frame and $P_i$ the local predictor. The
 planting estimates give nonnegative constants $C_0,D_0$ and, with
 \[
@@ -197,7 +215,8 @@ where the source coefficients are exactly
 \]
 with $X$ the fixed patch-offset set and $C$ the edge-comparison constant.
 Thus $\ell$ is the blocking side cardinality, not the coarse torus side.
-Here $\mathcal D$ is the squared physical color derivative and
+Here $v$ is a forest direction, extended by zero on the tree edges,
+$\mathcal D$ is the squared physical color derivative and
 $\mathcal P$ the squared predictor penalty. The finite-volume Hessian
 identity expresses the tested Hessian as the target metric form plus
 $\mathrm{penalty}\,\mathcal P(v)$; the floor bounds the first term below
@@ -232,8 +251,11 @@ $(0,0)$, $F=0$ and $D F=0$. The price gap implies that the vertical Hessian
 $D_z^2F(0,0)$ is positive definite, hence invertible in the finite
 dimensional forest space. The implicit-function theorem applied to
 $D_zF(x,z)=0$ gives a smooth branch $z=\rho(x)$ with $\rho(0)=0$.
-All local choices define the same tested-action germ on the branch, so the
-same $\rho$ is critical for each of them.
+By the branch compatibility hypothesis, the tested actions for any two
+local choices agree on a neighborhood of $(0,0)$ in the full variables
+$(x,z)$, not merely on the graph of $\rho$. Their vertical derivatives
+therefore agree near zero, so the same $\rho$ is critical for each
+local choice.
 
 Fourth, differentiate the stationarity equation at zero:
 \[
@@ -249,9 +271,24 @@ $D\rho(0)x=\mathrm{relative}(W,x)$, the guessed-chart identity. Finally,
 the chain rule at the stationary branch removes the term involving
 $D_zF(0,0)$; the same comptroller formula and the diagonal tower identity
 give the target bed metric as the Hessian of the reduced action. This is the
-heat identity. These arguments prove the fixed-period stationarity, installed-tangent, and
-reduced-Hessian identities used by the transition; they do not assert that
-their neighborhoods or Hessian gaps are uniform in the period.
+heat identity: for every local choice, the tested action along $\rho$
+and one half of the kinetic quadratic form of the coarse bed metric
+are both real-analytic at the origin and have the same second
+derivative there. It is an equality, not an estimate. These arguments prove the fixed-period stationarity,
+installed-tangent, and reduced-Hessian identities used by the transition.
+
+The uniformity is as follows. The number $\eta$ displayed above depends
+only on the kernel, the blocking side $L$, the phase $j$ and the floor
+constant $a$: the factors $\beta_\ell,\gamma_\ell$ involve only $L$, the
+patch-offset set $X$ of radius $R_{\rm macro}$ and the edge-comparison
+constant $C$ of the planting estimate, which is itself chosen for
+$(L,j)$ and the kernel. Hence the same $\eta$ is a gap for every larger
+one-step datum with these $L,j$ and kernel, every coarse side, every
+forest, and every bed, clip and path satisfying the hypotheses. In
+particular it is uniform in the period. By contrast the neighborhoods
+of the origin on which the implicit-function theorem gives the branch
+$\rho$ may depend on the finite volume, and no uniformity is asserted
+for them.
 
 The exact interface for the one-step construction is the following. Fix a
 kernel choice, a phase $J$, positive $\varepsilon,w,\delta$, and
@@ -267,16 +304,17 @@ and beds/towers, the following hypotheses are required:
 \begin{itemize}
 \item an armada whose every constituent step is a larger step, and the
   two bed hulls (metric and root strip bounds, floors, and sworn conditions);
-\item a path $R$ attached to the coarse bed with
-  $R.\mathrm{Bounds}(p,\tau,A,\Lambda)$, the diagonal two-scale trial,
-  and the stated header/energy bounds;
+\item an incoming path $R$ attached to the fine bed $B$, with
+  $R.\mathrm{Bounds}(p,\tau,A,\Lambda)$ for the fine clip $p$, the
+  diagonal two-scale trial of the fine bed $B$, the coarse bed $T$ and
+  the tower, and the stated header bounds on the installed tower column;
 \item for each forest chart $F_i$, the exact receipts
   \[
   \mathrm{PriceGap}(F_i,p,R,\eta),\qquad
   \mathrm{Critical}(F_i,p,R,\rho_i),\qquad
   \mathrm{Guessed}(F_i,W_i,\rho_i),
   \]
-  and the heat bound;
+  and the heat identity for the coarse bed $T$;
 \item the local-ratio chart and the specified direct-coefficient cutoffs
   for both clips. The annulus picture is produced inside this proof from
   $\mathrm{HorizCalc}$; it is not an additional input.
@@ -306,16 +344,56 @@ The one-step construction gives a path $Y$ and scalar $\alpha$ with
  Y.\mathrm{row}=\mathrm{rowPath}(T),\qquad
  \mathrm{Attached}(T,Y),
 \]
-and all four source components of $Y.\mathrm{Bounds}$ obey the requested
+for the coarse bed $T$ and the coarse clip $q$; thus the output path is
+attached to the coarse bed, while the incoming path was attached to the
+fine bed. All four source components of $Y.\mathrm{Bounds}(q,\eta',A',
+\Lambda')$ obey the requested
 row/loop/cubic/quartic budgets whenever
 $0<\eta'\leq s$, $\kappa\leq A'$, $\Lambda_0(L)\leq\Lambda'$ and
-$\Lambda/128\leq\Lambda'$. It also gives
+$\Lambda/128\leq\Lambda'$. Under the same four conditions the loop,
+cubic and quartic coefficient arrays of $Y$ are the images, under the
+fixed encodings of the reel $R_1$, of elements $Q,P,W$ of its three
+canonical coefficient subspaces for the coarse side sequence, with
 \[
- |\alpha+\lambda_G\log L|+1\leq D_1.
+ \|Q\|\le\Lambda',\qquad\|P\|\le A',\qquad\|W\|\le A' .
 \]
+The reel consists of three coefficient Hilbert spaces with encoding
+widths $\delta_2,\delta_3,\delta_4$, and $R_1.\mathrm{Price}(s)$ means
+that $s$ is strictly smaller than each of them. The canonical subspaces
+are the orthogonal complements constructed in
+Section~\ref{subsec:path-vow-representatives}. The construction also gives
+\[
+ |\alpha+\lambda_G\log L|+1\leq d,
+\]
+with the number $d$ chosen above.
 It gives the order-four classical matching identity and, whenever
 $\beta(L)\leq\Theta$ and $c'\leq\gamma$, the finite-cutoff bound with
-amplitude $\Theta$ and decay rate $c'$. The proof constructs the classical
+amplitude $\Theta$ and decay rate $c'$. The latter is the following
+statement at every index $i$, for the coarse side $c=m_i$ and the forest
+$F_i$. The vertical Hessian determinant of the tested action is positive
+along $\rho_i$ near the origin. The thermal function
+\[
+ \vartheta(x)=\mathcal L_R(x,\rho_i(x))
+   +\tfrac12\log\det D_z^2\mathcal T(x,\rho_i(x))
+   -\log\prod_b J(\rho_i(x)_b),
+\]
+formed with the loop term $\mathcal L_R$ of the incoming path, the
+tested action $\mathcal T$ and the Jacobian $J$ of the local-ratio
+chart, is real-analytic at the origin, and so is the outgoing
+comparison function $\alpha\,\mathcal K_{2,Y}+\mathcal L_Y$ built from
+the quadratic term and the loop term of $Y$ in the coarse clip. For
+every local choice, every two coarse sites and every two polarization
+amplitudes with complex entries of modulus at most one, the second
+derivatives at the origin of these two functions on the corresponding
+pair of real plane-wave directions differ by at most
+\[
+ |\operatorname{Site}(c)|\,\Theta\,e^{-c'c}.
+\]
+The order of the choices matters: the reel, $\kappa$ and $s$ are chosen
+before $\tau,A$; the numbers $d,\gamma,u$ and the functions
+$\beta,\Lambda_0$ after them; and the path $Y$ and the scalar $\alpha$
+only after the incoming path, beds, tower and stationary data are
+fixed. The proof constructs the classical
 match by reducing the tested action to the new pole test and invoking
 fourth-order exactness of the local response; the exponential estimate
 comes from the funded Fourier ticket and the exponential rate comparison
@@ -370,8 +448,9 @@ not equality of their unsmeared tests.
 The hypotheses used in this transfer are the ones present in the selected
 rank/pole comparison: $X$ is analytic and has the required uniform strip;
 the same matrix maps satisfy the exact coarse-to-fine premise; both metric
-rows have their stated strip bounds; the coarse row has the required floor,
-attachment, and sworn conditions; the rank response is screened; the
+rows have their stated strip bounds; the fine bed has the required floor
+and sworn conditions and the incoming path is attached to it; the rank
+response is screened; the
 cofinal recorded errors tend to zero; and the period meshes are related by
 the source's injective replication map. These assumptions give the
 normalized pulled-back recording and the noise-free alias identity. For the
@@ -437,7 +516,14 @@ exponentially weighted row sum is bounded by
  \leq \mathrm{rowPrice}(w,M),\qquad s'\leq w,
 \]
 because a row entry at offset $y$ is charged by the bed root strip and the
-walk used to encode the slot has length $|y|_1+4$. The remaining three
+walk used to encode the slot has length $|y|_1+4$. The length convention
+is the following. A slot consists of a walk $w$ on the cover and a
+plaquette type; its length is $|w|+4$, the four counting the edges of
+its plaquette. An atom with $r$ legs is an $r$-tuple of slots, and its
+length is the sum of the lengths of its legs. Thus an atom whose legs
+have walks of total length $|z|_1$ has length $|z|_1+4r$, and the
+weight of an atom at width $\sigma$ is $e^{\sigma}$ to the power of
+this length. The remaining three
 components are the loop, cubic, and quartic atom families constructed by
 the response step. Their weighted absolute budgets are separately bounded
 by the three output prices; invariance, zero loop jets, and exact metric
@@ -460,19 +546,29 @@ finite-cutoff exponential-rate comparison used in the one-step conclusion.
 The source path budget is built in degree-specific steps. First, the blank
 row path copies the target bed roots; if those roots have strip price $M$,
 its row budget is $\mathrm{rowPrice}(w,M)=|\mathrm{PlaqAxes}|M e^{4w}$.
-Second, local determinant response supplies cubic and quartic coefficients.
-If the cubic response price is $A'$, the quartic response price is $C'$, and
-the determinant correction is paid at price $D_*$, the source jet estimates
-give the exact price bounds
+Second, the cubic and quartic coefficients are those of the classical
+action restricted to its stationary graph, that is, of the tested action
+along the critical chart; no determinant enters them. The cubic
+coefficient is the cubic response of the tested action divided by $3!$.
+The quartic coefficient is the quartic response, minus the three
+contractions of two cubic responses through the inverse of the vertical
+Hessian, one for each pairing of the four external legs, divided by
+$4!$. This is the usual formula for the fourth derivative of a
+stationary value.
+If the cubic response price is $A'$, the quartic response price is $C'$,
+and the inverse vertical Hessian is bounded at price $D_*$, the source
+jet estimates give the price bounds
 \[
  \frac{A'}{3!},\qquad
  \frac{C'+3A'D_*A'}{4!}.
 \]
 The factors $3$ and $3!$, $4!$ arise from the three pairings of four
-derivatives and the Taylor factorials. In the determinant calculation the
-cubic response is paired with the determinant correction in each of three
-channels; each product is bounded by $A'D_*A'$. These coefficients are recorded against the
-third- and fourth-order Taylor jets, respectively. Third, the loop correction
+derivatives and the Taylor factorials; each contraction is bounded by
+$A'D_*A'$. These coefficients are recorded against the
+third- and fourth-order Taylor coefficients of the tested action along
+the critical chart, respectively. The determinant of the vertical
+Hessian enters only the one-loop thermal function, hence the loop
+correction below. Third, the loop correction
 is obtained from the Fourier coefficient of the quadratic response after
 subtracting its scalar quadratic term. The row path and these three atom
 families are assembled into one path. Its metric identity follows from the
@@ -593,15 +689,21 @@ not an output estimate obtained from a smaller path. At the selected level,
 $A'_j$ is the profile path price, so the row, cubic, and quartic incoming
 budgets are $64\,\mathrm{paths}_j$. The loop halo is separately defined with
 budget $64\,\mathrm{loopCap}_j$. The source's scale schedule verifies the
-loop charges used by the transition: if $L_j$ is the side at output level
-$j$ and $m$ its preceding level, the side-dependent threshold satisfies
-$W_j(L_j)\leq\mathrm{loopCap}_m$, and
+loop charges used by the transition. For the transition from level
+$m+1$ to level $m$, let $j=J_{m+1}$ be the stage of the incoming level
+and $L_j$ the block side selected at stage $j$; the stage of the output
+level is $J_m\in\{j,j-1\}$. The side-dependent threshold $W_j$ of the
+one-step construction at stage $j$, namely the function $\Lambda_0$ of
+its interface, and the loop capacities satisfy
 \[
+ W_j(L_j)\leq\mathrm{loopCap}_m,\qquad
  \frac{64\,\mathrm{loopCap}_{m+1}}{128}
       =\frac{\mathrm{loopCap}_{m+1}}2
-      \leq\mathrm{loopCap}_m.
+      \leq\mathrm{loopCap}_m,\qquad 1\le\mathrm{loopCap}_m .
 \]
-The inequality follows from the schedule's loop-capacity condition. An
+Thus the threshold is indexed by the incoming stage and the capacity by
+the output level. These three inequalities are properties of the scale
+schedule; they are inputs here. An
 incoming path with ordinary profile bounds already satisfies the halo bounds
 by componentwise monotonicity, since each budget is nonnegative and
 $1\leq64$. That monotonicity only converts an already constructed path; the
@@ -625,13 +727,21 @@ $Y_{j,i}$. Define the common scale width and bound by
 \]
 Taking minima and maxima preserves positivity and nonnegativity. At either
 adjacent index $j\in\{i,i+1\}$, one has $s_i\leq w_{j,i}$ and
-$A_{j,i}\leq A_i$. Thus the same path package works at both ends of the
-transition. Its common price is the maximum of the two one-step prices, and
-its common cutoff rate is the minimum of the two one-step rates. This finite
+$A_{j,i}\leq A_i$. Thus both adjacent-stage one-step constructions meet
+the common width and price requirements of output stage $i$. For each
+actual transition the construction of the corresponding stage pair is
+applied to its fixed incoming path and quadratic data. The extrema
+unify the admissible parameters; they do not assert that the paths
+returned by the two constructions coincide. The common price is the
+maximum of the two one-step prices, and
+the common cutoff rate is the minimum of the two one-step rates. This finite
 neighbor maximum/minimum is the entire unification step in the global
 construction; no limit in the scale index is taken here.
 
-The next finite construction is where attached paths are assembled. Assume
+The next finite construction is where attached paths are assembled.
+Branch rows and admissible paths are defined in
+Definition~\ref{def:path-admissible}, and the transition rule on the actual
+history is constructed in Proposition~\ref{prop:path-retained-plan}. Assume
 that for each terminal index $N$ there is a branch row $R_N$, and for each
 $m<N$ there is a transition rule which, from any admissible path at $m+1$,
 returns a path at $m$, an amplitude $\alpha_m$, and a stationary coefficient
@@ -651,6 +761,272 @@ obtains one finite-history path object satisfying all finite-cutoff path
 conditions, with every cutoff retained on the same horizon. This argument is not a compactness extraction
 and does not choose a different horizon at different cutoffs. It is the
 finite descending construction furnished by the transition rule.
+
+\subsection{The stationary plan on the retained horizon}
+\label{subsec:path-retained-plan}
+
+The finite descent above is conditional on a branch row and a transition
+rule. We now state what these are on the actual history and how the
+transition rule is obtained there. This is the statement consumed by the
+later sections; its three analytic inputs are named explicitly.
+
+Fix the scale schedule $a$. For a level $m$ write $J_m$ for its stage,
+$p_m,\sigma_m,A_m$ for the clip, width and path allowance of the stage
+profile, $\mathrm{loopCap}_m$ for the loop capacity, $L_m$ for the
+block side from level $m+1$ to level $m$, and $n_{m,t}$ for the torus
+side at level $m$ and period index $t$. A horizon $V$ assigns a bed
+$V.H(N,m)$ to $m\le N$ and a tower $V.T(N,m)$ to $m<N$. Fix also a
+local-ratio chart $O$ and post costs: positive numbers
+$\eta_j,\Gamma_j,c_j$ for each stage $j$.
+
+\begin{definition}[Admissible paths and branch rows]
+\label{def:path-admissible}
+A path $R$ is admissible at $(N,m)$, $m\le N$, if its row component is
+the root row of the bed $V.H(N,m)$ in the walk encoding of the row-price
+estimate above, if $\mathrm{Attached}(V.H(N,m),R)$, and if
+$R.\mathrm{Bounds}(p_m,\sigma_m,A_m,\mathrm{loopCap}_m)$. A branch row
+at $N$ is a path $R$, admissible at $(N,N)$, such that at every period
+the main action of $R$ in the clip $p_N$ and the Wilson action have
+equal derivatives of every order $j\le4$ at the identity field, and
+such that every loop coefficient of $R$ vanishes.
+\end{definition}
+
+\begin{definition}[Stationary plan]
+\label{def:path-plan}
+A stationary plan on $V$ consists of paths $R_{N,m}$ for $m\le N$,
+numbers $\alpha_{N,m}$ for $m<N$, and maps $\rho_{N,m}^{t,F}$ for
+$m<N$, every period index $t$ and every allowed forest $F$ of the
+one-step datum from level $m+1$ to level $m$ at period $t$. It is
+planned at the given post costs if the following hold for all $N$.
+\begin{enumerate}
+\item For $m\le N$ the path $R_{N,m}$ is attached to $V.H(N,m)$ and
+ satisfies
+ \[
+ R_{N,m}.\mathrm{Bounds}(p_m,\sigma_m,A_m,\mathrm{loopCap}_m).
+ \]
+\item The terminal path $R_{N,N}$ has the Wilson derivatives of every
+ order $j\le4$ at every period, and all its loop coefficients vanish.
+\item For $m<N$ and all $t,F$, with $\rho=\rho_{N,m}^{t,F}$ and
+ $j=J_{m+1}$:
+ \[
+ \mathrm{PriceGap}(F,p_{m+1},R_{N,m+1},\eta_j),\quad
+ \mathrm{Critical}(F,p_{m+1},R_{N,m+1},\rho),\quad
+ \mathrm{Guessed}(F,W,\rho),
+ \]
+ where $W$ is the installed matrix of the tower $V.T(N,m)$, and
+ \[
+ \mathrm{ClassicalMatch}(F,p_{m+1},p_m,R_{N,m+1},R_{N,m},\rho).
+ \]
+\item For $m<N$, $|\alpha_{N,m}+\lambda_G\log L_m|+1$ is at most the
+ drift allowance of stage $J_{m+1}$.
+\item For $m<N$ and all $t,F$, the finite-cutoff bound of the one-step
+ interface holds for the incoming path $R_{N,m+1}$, the outgoing path
+ $R_{N,m}$, the scalar $\alpha_{N,m}$, the chart $O$ and the map
+ $\rho_{N,m}^{t,F}$, with the bound
+ $|\operatorname{Site}(n_{m,t})|\,\Gamma_j\,\mathrm{loopCap}_{m+1}
+ \,e^{-c_jn_{m,t}}$, $j=J_{m+1}$.
+\end{enumerate}
+\end{definition}
+
+The paths of a plan are used twice: $R_{N,m+1}$ is the incoming path of
+the step to level $m$ and the outgoing path of the step from level
+$m+2$. It is one path with one choice of coefficient arrays.
+
+The proposition below has three inputs which are not proved in this
+section.
+\begin{itemize}
+\item[(A)] \emph{The annulus estimate.} $\mathrm{HorizCalc}(G,\sigma,
+ \varepsilon,C,Z,\tau,A)$ holds for all $\sigma,\varepsilon,\tau>0$
+ and $C,Z,A\ge0$. Its producer was described after the definition of
+ $\mathrm{HorizCalc}$.
+\item[(B)] \emph{The one-step construction} with the interface stated
+ in Section~\ref{subsec:path-stationary-chart}, for every stage pair
+ $(j,i)$ with $j=i$ or $j=i+1$, and the terminal base path: for every
+ stage, every bed with the root strip bound, the floors and sworn
+ conditions of that stage and with diagonal equal to the identity at
+ the tested periods, and every clip within the stage's direct bound,
+ there is a path whose row is the root row of the bed, which is
+ attached to the bed, has zero loop coefficients, satisfies the path
+ bounds at every width below and every price above fixed stage
+ values, and has the Wilson derivatives of orders $j\le4$ at the
+ tested periods. We also include here the forest-independence of the
+ stationary data, stated in the proof below.
+\item[(C)] \emph{The quadratic horizons.} A free horizon $X$ and a
+ retained horizon $V$ on the schedule $a$, and kernel prices
+ $(\alpha_j,\Omega_j,\eta^0_j)$, such that $V$ has the same beds as
+ $X$ and, for $m<N$, the same installed column and the same transport
+ column in its towers; and such that $X$ satisfies, for $m\le N$: the
+ metric and root strip bounds of $X.H(N,m)$ at width $\alpha_{J_m}$
+ and price $\Omega_{J_m}$; the floor of $X.H(N,m)$ in the clip $p_m$
+ with constant $\eta^0_{J_m}$ at every torus side; the sworn condition
+ at every torus side; the identity $\operatorname{diag}X.H(N,N)=1$ at
+ every side; and for $m<N$ the header bounds of the tower $X.T(N,m)$
+ and the diagonal two-scale trial of $X.H(N,m+1)$, $X.H(N,m)$,
+ $X.T(N,m)$ at every period.
+\end{itemize}
+The conditions on $X$ in (C) are the bed and flight receipts of the
+quadratic construction of
+Section~\ref{subsec:ex-lattice-horizon-producer}. The retained horizon
+is formed from $X$ in Section~\ref{sec:common-funded-history}, where
+$X$ and $V$ are called $M^0$ and $M^1$. Convergence along the cutoff
+is not a consequence of (C): the conditions there do not determine
+the remaining tower blocks. For the particular horizons constructed
+jointly with their curvature roots it is proved in
+Section~\ref{sec:free-horizon-convergence}; the present proposition
+does not use it.
+
+\begin{proposition}[Stationary plan on the retained horizon]
+\label{prop:path-retained-plan}
+Assume the gauge group is simple and \textup{(A)}, \textup{(B)} hold.
+Fix a kernel choice, kernel prices, and bounds $Z_j\ge0$ for the
+direct clip coefficients of the stages. There are stage widths
+$\bar\sigma_j>0$ and stage path prices $\bar A_j\ge0$ such that, for
+all stage widths $0<\sigma_j\le\bar\sigma_j$ and path allowances
+$A_j\ge\bar A_j$, there are drift bounds $d_j\ge0$, rates
+$\gamma_j>0$ and block-side floors $u_j$ with the following property.
+Let the stage profiles have these widths and path allowances, drift
+allowances at least $d_j$, block-side floors at least $u_j$ and direct
+clip coefficients at most $Z_j$. Then, once the block sides
+are chosen, there are positive gaps $\eta_j$ and volume thresholds, and
+once the protection data are chosen there are entry delays, such that
+for every paid schedule $a$ beyond these thresholds and delays, every
+post costs with $\eta_j$ the given gaps, $\Gamma_j\ge1$ and
+$c_j\le\gamma_j$, all horizons $X,V$ as in \textup{(C)} and every
+local-ratio chart $O$, the following hold.
+\begin{enumerate}
+\item There is a stationary plan $(R_{N,m},\alpha_{N,m},\rho_{N,m}^{t,F})$
+ on $V$, planned at the post costs in the sense of
+ Definition~\ref{def:path-plan}. Every $R_{N,m}$ is admissible at
+ $(N,m)$; in particular its row is the root row of $V.H(N,m)$. The
+ finite-cutoff bound holds even with the factor $\mathrm{loopCap}_{m+1}$
+ replaced by one.
+\item For every level $m$ there is a reel, fixed before the cutoff and
+ the period, whose three encoding widths are strictly larger than
+ $\sigma_m$, such that for all $N>m$ the loop, cubic and quartic arrays
+ of $R_{N,m}$ are the encodings of elements of its three canonical
+ coefficient subspaces for the side sequence $t\mapsto n_{m,t}$, of
+ norms at most $\mathrm{loopCap}_m$, $A_m$, $A_m$ respectively.
+\item \emph{Extended domain.} Let $m<N$ and let $R$ be any path
+ attached to $V.H(N,m+1)$ with
+ \[
+ R.\mathrm{Bounds}(p_{m+1},\sigma_{m+1},64A_{m+1},
+ 64\,\mathrm{loopCap}_{m+1}).
+ \]
+ Then there are a path $D$ admissible at
+ $(N,m)$, a scalar and stationary maps satisfying items \textup{(3)--(5)}
+ of Definition~\ref{def:path-plan} with $R$ as incoming and $D$ as
+ outgoing path, and the arrays of $D$ lie in the canonical subspaces of
+ the same reel with the same norm bounds as in the previous item.
+\item For every level $m$ there are $v_m>\sigma_m$ and $C_m$ such that
+ the root row of $V.H(N,m)$ has the strip bound at width $v_m$ and
+ price $C_m$ for all sufficiently large $N$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+The stage widths and prices are those of
+Section~\ref{subsec:path-factor64-envelope}. Let $b_i>0$ and
+$E_i\ge0$ be the width ceiling and price floor of the terminal base
+path of \textup{(B)} at stage $i$, and let $w_{j,i},v_{j,i}$ be the
+widths and price thresholds of the one-step constructions for the
+stage pairs $j\in\{i,i+1\}$. As there, put
+$s_i=\min(b_i,w_{i,i},w_{i+1,i})$ and
+$A_i=\max(E_i,v_{i,i},v_{i+1,i})$, and take
+$\bar\sigma_i=\min(s_i,\alpha_i/2)$ and $\bar A_i=A_i$. Thus
+every admitted width is at most $b_i$ and every admitted allowance
+at least $E_i$, as the terminal rows require; and they are at most
+$w_{j,i}$ and at least $v_{j,i}$ respectively, as the transitions
+require.
+The one-step constructions are called with incoming allowance
+$64A_j$, which gives $d_j,u_j$, rates $\gamma'_j>0$ and the functions
+$\beta_j,\Lambda_{0,j}$ of the block side; the rates of the
+statement are $\gamma_j=\gamma'_j/2$. The gaps
+$\eta_j$ are those of Section~\ref{subsec:path-stationary-chart} for
+the block side $L_j$, the phase $j$, the kernel and the floor constant
+$\eta^0_j$. The volume threshold at stage $j$ is the maximum of
+$100(j+7)$ and of a coarse side beyond which
+$\beta_j(L_j)e^{-\gamma'_jn}\le e^{-\gamma_jn}$. The entry delays are those beyond which the three
+loop-capacity inequalities of
+Section~\ref{subsec:path-factor64-envelope} hold.
+
+\emph{Terminal rows.} By \textup{(C)} the bed $V.H(N,N)=X.H(N,N)$ has
+the root strip bound, floors, sworn condition and identity diagonal.
+The base path of \textup{(B)} at stage $J_N$, taken at width $\sigma_N$,
+price $A_N$ and loop allowance $\mathrm{loopCap}_N\ge1$, is therefore a
+branch row at $N$.
+
+\emph{The transition rule.} Let $m<N$, put $j=J_{m+1}$ and $i=J_m$, so
+$j\in\{i,i+1\}$, and let $R$ be attached to the fine bed
+$B=V.H(N,m+1)$ with the factor-$64$ bounds of item (3). We verify the
+hypotheses of the one-step construction of the stage pair $(j,i)$ for
+the fine bed $B$, the coarse bed $T=V.H(N,m)$, the tower $V.T(N,m)$,
+the fine and coarse clips $p_{m+1},p_m$, and the one-step data at all
+period indices $t$, whose coarse and fine sides are $n_{m,t}$ and
+$n_{m+1,t}$. The paid schedule gives that the block side is $L_j$, the
+phase is $j$, the block side is at least $u_j$, and the sides
+$n_{m,t}$ tend to infinity with $t$. The volume threshold makes every
+one-step datum larger. The two bed hulls, namely the metric and root
+strip bounds, all floors and all sworn conditions of $B$ and of $T$,
+are \textup{(C)} at levels $m+1$ and $m$; here the beds of $V$ are
+those of $X$. The header bounds and the diagonal two-scale trial at
+every period are \textup{(C)} as well, since they involve only the
+beds and the installed and transport columns, which $V$ and $X$ share.
+For every $t$ and every forest $F$, the chart receipts of
+Section~\ref{subsec:path-stationary-chart}, applied to $B$, $T$, the
+tower and $R$, give $\mathrm{PriceGap}(F,p_{m+1},R,\eta_j)$ and a map
+$\rho^{t,F}$ with the critical, guessed and heat properties; their
+hypotheses are the diagonal trial, the floor of $B$, the bounds and
+attachment of $R$, the sworn condition of $B$ and the floor of $T$.
+Choose one forest $F_t$ for each $t$. All hypotheses of the one-step
+interface now hold with $\Lambda=64\,\mathrm{loopCap}_{m+1}\ge1$. It
+returns a path $D$ and a scalar $\alpha$ with
+$D.\mathrm{row}$ the root row of $T$ and $\mathrm{Attached}(T,D)$. By
+the choice of the stage widths and prices and the first two
+loop-capacity inequalities, the conditions
+$\sigma_m\le s_i$, $\kappa\le A_m$, $\Lambda_{0,j}(L_j)\le
+\mathrm{loopCap}_m$ and $64\,\mathrm{loopCap}_{m+1}/128\le
+\mathrm{loopCap}_m$ hold, so $D$ satisfies
+$D.\mathrm{Bounds}(p_m,\sigma_m,A_m,\mathrm{loopCap}_m)$ and has the
+canonical representatives of item (2). Hence $D$ is admissible at
+$(N,m)$. The scalar satisfies the drift bound because $d_j$ is at most
+the drift allowance.
+
+The one-step construction gives the classical match and the
+finite-cutoff bound only for the chosen forests $F_t$. They hold for
+every forest by the forest-independence of the stationary data: for
+two allowed forests $F,F'$ of a larger one-step datum, with critical
+maps $\rho,\rho'$ and positive gaps for the same path, the tested
+actions along $\rho$ and along $\rho'$ agree near the origin for every
+local choice, and the two thermal functions differ by a constant near
+the origin. The first statement transfers the classical match, whose
+right side does not involve the forest. The second transfers the
+finite-cutoff bound, which concerns second derivatives; positivity of
+the determinant and analyticity of the thermal function hold for every
+forest by the gap. This forest-independence is the part of input
+\textup{(B)} announced above; it is not proved here. Finally the amplitude
+$\beta_j(L_j)$ and rate $\gamma'_j$ are replaced by $\Gamma_j\ge1$ and
+$c_j\le\gamma_j$ using the volume threshold. This proves item (3), with the
+factor one in the finite-cutoff bound.
+
+\emph{Assembly.} An admissible path at $(N,m+1)$ satisfies the
+factor-$64$ bounds, since all budgets are nonnegative and
+$\mathrm{loopCap}_{m+1}\ge1$. The finite downward induction of the
+preceding subsection, started from the branch row and using the
+transition rule just constructed, gives for each $N$ the paths
+$R_{N,m}$, scalars and maps of item (1) together with item (2). The
+conditions of Definition~\ref{def:path-plan} are the recorded outputs
+of the steps; the finite-cutoff bound is weakened by the factor
+$\mathrm{loopCap}_{m+1}\ge1$. Item (4) holds with $v_m=\alpha_{J_m}$
+and $C_m=\Omega_{J_m}$, by the root strip bound in \textup{(C)} and
+$\sigma_m\le\alpha_{J_m}/2<\alpha_{J_m}$; it holds for every $N>m$.
+\end{proof}
+
+The proposition produces, on the retained horizon itself, the attached
+paths with their bounds, and consumes the floors, sworn conditions,
+metric strips and clip bounds of that same horizon. It is a statement
+about global path attachment. It does not by itself give the local
+two-bed statement used in the nonlinear step, which also requires the
+roll identities and is constructed from the same horizon and paths in
+Section~\ref{sec:ex-lattice-selected-course-binding}.
 
 \subsection{Selected cutoff limits}
 The ten retained bed and tower row families must converge on the lattice
@@ -674,6 +1050,9 @@ Section~\ref{sec:free-horizon-convergence}. It does not rederive the annulus
 producer's analytic Fourier estimates or the full multicomponent one-step
 flux construction from its recorded trial, price-gap, and curvature inputs.
 Those quantitative estimates are the exact remaining analytic input to this
-chapter; the evidence ledger identifies their declarations and the selected
-callers. No new extraction or unannounced subsequence is used in the
+chapter. They are inputs \textup{(A)} and \textup{(B)} of
+Proposition~\ref{prop:path-retained-plan}, which applies them to the
+retained horizon of input \textup{(C)} and produces the attached paths,
+their bounds and the stationary data on that same horizon. The evidence
+ledger identifies their declarations and the selected callers. No new extraction or unannounced subsequence is used in the
 finite-history assembly.
