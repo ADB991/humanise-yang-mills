@@ -1,0 +1,1120 @@
+% Issue 34: the selected-scale branch receipts; integration is owned elsewhere.
+\section{Branch moments and trace washout}
+\label{sec:ex-trace-branch-moments}
+
+Fix a closed subgroup of a finite-dimensional unitary group whose real Lie
+algebra is nonabelian and simple; the group itself may be disconnected.
+Work on one selected history and with the same three tensor families and
+chart as in the physical stress construction.
+All spaces below are finite dimensional. The four coordinate axes form the
+set $I=\{0,1,2,3\}$.
+Let $E_4$ be the complex space of grade-four labels, let $\mathcal F_4^{\mathrm{int}}$
+be the grade-four field space of the selected interacting table, and let
+$\mathcal F_4^0$ be that of the standard table. The maps are complex linear
+unless stated otherwise. Write $\pi:E_4\to\mathcal F_4^{\mathrm{int}}$ and
+$\pi_0:E_4\to\mathcal F_4^0$ for the projections, $\mathfrak c$ and
+$\mathfrak c_0$ for centering, and $\mathbf 1_4,\mathbf1_4^0$ for the
+corresponding unit fields. Thus
+$\mathfrak c f=f-\langle f\rangle\mathbf1_4$. The centering map is
+idempotent and its range is the space of centered fields, using the table
+unit law $\langle\mathbf1_4\rangle=1$; the standard table has the same
+unit law.
+
+The branch set is $\{0,-,+\}$: $0$ is the principal branch, $-$ is the
+false correction and $+$ is the true correction. In the underlying
+finite-volume construction these are respectively the selected principal
+field and the two fixed correction fields. To specify the choice, let
+$J_{ac},Q_d,H_{acd}$ be the selected tensor, trace-current and antisymmetry
+fields at a finite volume. Let a superscript $[r]$ denote the same finite
+localization of each field and let $\nabla_d$ be the forward lattice
+difference. At localization radius $r$ the principal field is
+\[
+ J^0_{ac}=\begin{cases}
+ \sum_d\nabla_d Q_d^{[r]}-\sum_{j\ne0}J_{jj}^{[r]},&a=c=0,\\
+ J_{ca}^{[r]}-\sum_d\nabla_d H_{cad}^{[r]},&c<a,\\
+ J_{ac}^{[r]},&\text{otherwise}.
+ \end{cases}
+\]
+At scale $k$ the principal field's common localization radius is
+$\varrho_k=1000\lceil(\log\widehat\beta_k)^2\rceil$, where $\widehat\beta_k$
+is the positive clock introduced below; here $r=\varrho_k$. In particular $\sum_aJ^0_{aa}=\sum_d\nabla_dQ_d^{[r]}$ exactly. For the two
+corrections, let $B_{ad,cd}$ be the real inner product of the two lattice
+curvatures with the common index $d$, evaluated at the same lattice site.
+Their components are
+\[
+ J^-_{ac}=\begin{cases}0,&a=c,\\\sum_d B_{ad,cd},&a\ne c,\end{cases}
+ \qquad
+ J^+_{ac}=\begin{cases}\frac14\sum_{j,d}B_{jd,jd},&a=c,\\
+ 0,&a\ne c.\end{cases}
+\]
+These formulas are translated from the origin to the relevant lattice site.
+The three branches use the same extraction ultrafilter, finite-volume
+choices and scale history, with no new subsequence; their recorded labels may
+differ. At scale $k$, let $x^b_k(a,c)\in E_4$ be the recorded
+label of $J^b_{ac}$, with $a,c\in I$. Let $\mathsf R$ be the
+real-linear finite signed-symmetry average on arrays of labels and set
+\[
+ \operatorname{sym}(x)_{ac}=\tfrac12(x_{ac}+x_{ca}),\qquad
+ t^b_k=\mathfrak c\,\pi\mathsf R\operatorname{sym}(x^b_k).
+\]
+The notation means componentwise application of $\pi$ and $\mathfrak c$.
+The symmetry average permutes the axes and applies the corresponding label
+map, with the two tensor signs; it includes the real-structure average.
+Its normalized weights sum to one. The table projection intertwines these
+label motions with the corresponding real-linear field motions, and those
+field motions are fixed, bounded maps. In particular, for a diagonal trace,
+reindexing the axes cancels the squared signs. Put
+$\operatorname{tr}t=\sum_{a\in I}t_{aa}$.
+
+For a triple $w=(w_1,w_2,w_3)\in\mathbb R^3$, define the label-valued
+material tensor by
+\begin{equation}
+ \mathcal S(w)_{ac}=\begin{cases}
+ w_1\sum_j P_{aj,aj}+w_2\sum_{i,j}P_{ij,ij},&a=c,\\
+ w_3\sum_j P_{aj,cj},&a\ne c,
+ \end{cases}
+ \qquad
+ M(w)_{ac}=\pi_0\mathcal S(w)_{ac}.
+ \label{eq:ex-branch-material}
+\end{equation}
+Here $P_{ij,kl}\in E_4$ is the coordinate representative of the label
+whose value on a Taylor jet is the real color inner product
+$\langle F_{ij},F_{kl}\rangle$; no additional factor is included. The
+axis sums are ordered. There is no
+scalar-unit term in \eqref{eq:ex-branch-material}; the full four-component
+coefficient is $(0,w_1,w_2,w_3)$. The map $w\mapsto\mathcal S(w)$ is
+injective. To see this, let $v$ be a nonzero real color vector. On a jet
+with only $F_{01}=v$ and $F_{10}=-v$, the $(2,2)$ and $(0,0)$ entries
+are respectively $2w_2\langle v,v\rangle$ and
+$(w_1+2w_2)\langle v,v\rangle$; if the tensor is zero, $w_2=w_1=0$.
+On a jet with $F_{02}=F_{12}=v$ and their antisymmetric partners, its
+$(0,1)$ entry is $w_3\langle v,v\rangle$, so $w_3=0$. Exchange of the
+curvature pairs shows $\mathcal S(w)_{ac}=\mathcal S(w)_{ca}$. A signed
+permutation sends $F_{ij}$ to $\epsilon_i\epsilon_jF_{\sigma(i)\sigma(j)}$.
+In a contracted pair the repeated sign squares to one, and reindexing the
+sums gives the two tensor signs. The diagonal terms transform likewise, and
+both the curvature-pair labels and real coefficients are fixed by the real structure. Thus the signed and real
+symmetry average fixes $\mathcal S(w)$. The branch coefficients are
+\begin{equation}
+ w^0=(-1,\tfrac14,-1),\qquad
+ w^-=(0,0,1),\qquad w^+=(0,\tfrac14,0).
+ \label{eq:ex-branch-coefficients}
+\end{equation}
+Define the normalized scalar field
+$\mathcal O=\pi_0(\tfrac14\sum_{i,j}P_{ij,ij})$. Taking the four
+diagonal entries in \eqref{eq:ex-branch-material} gives, for every $w$,
+\begin{equation}
+ \operatorname{tr} M(w)=4(w_1+4w_2)\mathcal O.
+ \label{eq:ex-branch-material-trace}
+\end{equation}
+Consequently
+\begin{equation}
+ \operatorname{tr}M(w^0)=\operatorname{tr}M(w^-)=0,\qquad
+ \operatorname{tr}M(w^+)=4\mathcal O.
+ \label{eq:ex-branch-three-traces}
+\end{equation}
+We use the standard-table one-point fact that each curvature-pair label
+has expectation zero and the unit has expectation one. In the free table
+the pair labels are Wick ordered. Thus the expectation of each
+$M(w)_{ac}$ is zero because its unit coefficient is zero.
+Hence $\mathfrak c_0\pi_0\mathcal S(w)=M(w)$.
+
+Let $k_i$ be the selected level, tending to infinity with the chart index
+$i$, and let $\widehat\beta_k>0$ and $a_k>0$ be its inverse-coupling clock
+and mesh. Denote by $B_k:E_4\to E_4$ the selected transport, by $U_i:\mathcal F_4^0\to\mathcal F_4^{\mathrm{int}}$
+the chart isomorphism, and by $\omega_i>0$ its grade-four normalization factor. Explicitly
+$\omega_i=\beta_Z(k_i)r_i^4$, where $r_i$ is the chart radius and $\beta_Z$ is
+the associated effective coupling. More explicitly, if $A_k$ is the selected label
+automorphism of $E_4$, $K$ is the core projection and $\vartheta_k>0$ is
+the threshold, then
+\[
+ B_k=\vartheta_k^{-2}K A_k,\qquad
+ V_{k,c}=\pi\, (c\vartheta_k^2 A_k^{-1}).
+\]
+The centered moment map and the scaled field map are
+\begin{equation}
+ \mathsf M_i=U_i^{-1}\mathfrak c V_{k_i,\omega_i}:E_4\to\mathcal F_4^0,
+ \qquad \mathsf P_i=\omega_iU_i^{-1}:\mathcal F_4^{\mathrm{int}}\to\mathcal F_4^0.
+ \label{eq:ex-branch-moment-map}
+\end{equation}
+The transport and chart normalization give, for all sufficiently large $i$,
+\begin{equation}
+ \mathsf M_i B_{k_i}x=\mathsf P_i\mathfrak c\pi x
+ \quad(x\in E_4).
+ \label{eq:ex-branch-chart-identity}
+\end{equation}
+To see the normalization, $V_{k,c}B_kx=c\pi A_k^{-1}KA_kx$.
+The difference between $A_k^{-1}KA_kx$ and $x$ is a multiple of
+$A_k^{-1}e_0$, where $e_0$ is the scalar coordinate label. At the selected
+cutoff $A_k$ sends the reference unit label to $a_k^4e_0$. The reference
+unit projects to $\mathbf1_4$, so $\pi A_k^{-1}e_0=a_k^{-4}\mathbf1_4$
+and centering removes the difference. Applying $U_i^{-1}$ yields the identity.
+The cutoff after which this holds is fixed before taking $i\to\infty$.
+Let $W^b_k=\mathsf R(B_kx^b_k)$, componentwise, and
+$W^b=\mathcal S(w^b)$.
+The following are the incoming chart limits, stated in their actual
+limit order:
+\begin{align}
+ W^b_k&\longrightarrow W^b &&(k\to\infty,\ b=0,-,+),
+ \label{eq:ex-branch-coefficient-input}\\
+ \mathsf M_i&\longrightarrow \mathsf M_\infty:=\mathfrak c_0\pi_0
+ &&\text{in operator norm as }i\to\infty.
+ \label{eq:ex-branch-moment-input}
+\end{align}
+These limits depend on the selected finite-volume transport and chart
+estimates. In the first, the separation-ultrafilter limit is taken at fixed
+$k$ before $k\to\infty$.
+The existing weighted-estimate construction uses the same reference
+coefficient limit, and its quantitative inputs remain subject to the gaps
+recorded there. We record the actual finite-volume passage yielding
+\eqref{eq:ex-branch-coefficient-input}. Let $T:\mathbb R^3\to
+E_4^{I\times I}$ send $w$ to $\mathcal S(w)$. For each $k$ let
+$R_k(u)$ be the recorded finite-volume coefficient array before symmetry
+averaging and $C^b_k(u)$ the corresponding finite-volume branch
+coefficient, with $u$ the separation parameter. Equip these arrays with
+the finite-product supremum norm induced by the coordinate norm.
+The incoming estimates say that the nonnegative loss
+\[
+ \delta_k=\exp\!\left[-\tfrac14(\log\log\widehat\beta_k)^2\right]
+\]
+satisfies, eventually in $k$ and on an ultrafilter-large set of $u$,
+\[
+ \|R_k(u)-C^b_k(u)\|\le\delta_k.
+\]
+The threshold normalization explains this loss. For one component, let
+$z$ be its local coefficient, $\xi$ its purchased readout, $\Gamma$ the
+finite-volume column map, and $v$ the purchased label. The local pricing
+and zero-scalar identities give $\xi=\vartheta_k^2z$ and $Kz=z$; the
+purchased bias says
+$\|\xi-\Gamma v\|_{\rm c}\le\vartheta_k^2\delta_k$, with
+$\vartheta_k>0$. The recorded coefficient is
+$\vartheta_k^{-2}K\Gamma v$. Write $\|\cdot\|_{\rm c}$ for the sum of
+the absolute coordinate values. Since $K$ contracts the coordinate supremum
+norm and that norm is bounded by $\|\cdot\|_{\rm c}$,
+the bias gives
+\[
+ \|z-\vartheta_k^{-2}K\Gamma v\|_\infty
+ \le\vartheta_k^{-2}\|\xi-\Gamma v\|_{\rm c}\le\delta_k.
+\]
+Taking the maximum over the finitely many components gives the displayed
+array estimate. The weighted readout acts on each coordinate by the
+threshold raised to its color-factor count. The simple-group low-grade
+classification gives count two at every non-scalar coordinate; the scalar
+coordinate of $z$ is its zero-jet evaluation, which equals the observable's
+value at the identity and vanishes for these branches. Thus the weighted-readout definition gives
+$\xi=\vartheta_k^2z$ coordinate by coordinate. The local identification
+of this weighted readout, the zero-jet reading, and the purchased bias are
+inputs here.
+The selected clock tends to infinity, so $\delta_k\to0$: its logarithm is
+minus one quarter of a quantity tending to infinity. Also, for each $\varepsilon>0$, eventually in $k$ and on an
+ultrafilter-large set of $u$ there is $w=w(k,u)$ with
+$\|w-w^b\|\le\varepsilon$ and $\mathsf R C^b_k(u)=T w$. The two
+correction branches use their displayed coefficient triples exactly;
+the principal coefficient is controlled only asymptotically. Finally,
+at every sufficiently large fixed $k$ the ultrafilter limit of
+$\mathsf R R_k(u)$ is the previously defined $W^b_k$.
+
+Intersecting the two large sets at fixed $k$ gives
+\[
+ \|\mathsf R R_k(u)-T w^b\|
+ \le \|\mathsf R\|\delta_k+\|T\|\varepsilon.
+\]
+The norm is continuous and the displayed closed ball is preserved by the
+ultrafilter limit, so the same bound holds with $W^b_k$ on the left.
+First let $k\to\infty$, then let $\varepsilon\downarrow0$: this proves
+\eqref{eq:ex-branch-coefficient-input}. The purchased bias and the existence
+of the finite-volume coefficient witnesses are retained inputs; this
+finite-dimensional passage does not construct them.
+
+The principal witness can be obtained from the local projection and the
+canonical stress classification, subject to the following local inputs.
+Assume the coefficient projection is linear on the finite sums below and
+annihilates each forward difference of the localized trace and
+antisymmetry currents. Assume also that the local principal coefficients
+have zero scalar coordinate. The exact finite-volume antisymmetry identity
+expresses each difference between transposed entries as a sum of those
+forward differences. Their projected coefficients therefore form a
+symmetric array. Its finite signed and real-structure average is a real
+covariant symmetric tensor with zero scalar coordinate. The free stress
+classification in Section~\ref{sec:ex-lattice-trace-free-rank} expresses it
+as $T w$ for a triple $w$, giving the required witness. The trace-current
+identity and the same vanishing give $\operatorname{tr}Tw=0$; evaluation on
+a nonzero $01$ curvature jet yields $w_1+4w_2=0$. This exact local constraint
+does not give a rate for the recorded field trace. The difference-projection
+identity follows from the local affine-test identity: translating an affine test changes its potential by an infinitesimal
+gauge term. The current's first variation at the identity vanishes: global
+gauge invariance makes its restriction to each link an invariant linear
+functional on the simple color algebra. Such a functional annihilates all
+brackets, which span the nonabelian simple algebra, so it is zero. Differentiating gauge
+invariance at the identity then shows that the Hessian annihilates an
+infinitesimal gauge direction in either argument: the mixed derivative of
+the gauge action is multiplied by the already vanishing first variation.
+This also uses the local
+realization of the gauge term on the nonwrapping support.
+The Hessian therefore agrees on the original and translated affine tests.
+The forward difference consequently has zero Hessian on each such test
+direction paired with itself. Its value at the identity is also zero, and the
+grade-four jet-reading identity makes every jet evaluation of its local
+coefficient zero; the coefficient itself is zero. This application uses the affine translation
+identity, local regularity and nonwrapping of its designated neighborhood,
+Taylor order at least four, side length at least $40$, and the selected local
+certificates for the antisymmetry currents and their differences. In the selected
+construction the same finite-volume certificate supplies these local current and
+difference bounds for every axis on a common ultrafilter-large set at each
+sufficiently large scale. The existence of those choices and their local
+bounds remains an input here; the finite-dimensional classification does
+not itself produce them.
+
+For the principal branch, the closeness of these witnesses has a useful
+sequential reduction. Let $t_n\to\infty$ be any sequence of inverse
+couplings and let the finite-volume data be admissible at each $t_n$, with
+side length tending to infinity, the prescribed nonwrapping neighborhood,
+and Taylor order at least four. The local comparison supplies two Hessian
+estimates for each fixed pair of the finitely supported elementary test
+directions of total degree at most four. Fixing a pair of tensor indices, let $Q_n$ be the corresponding
+unmodified local observable and $\widetilde Q_n$ its principal
+modification; their second derivatives on those directions differ by at most $16t_n^{-30}$, while the derivative of $Q_n$ differs
+from the prescribed limiting bilinear form by at most $t_n^{-100}$. For
+the first bound, write the Hessian of $Q_n-\widetilde Q_n$ in lattice
+coordinates. If $r_i$ is the distance weight of coordinate $i$, each
+elementary direction has $|v_i|\le4(1+r_i)^2$. Thus the product of
+coordinates from the two directions is at most $16(1+\max(r_i,r_j))^4$.
+The weighted Hessian coefficient sum controlling the modification dominates this polynomial
+weight and is at most $t_n^{-30}$; summing the coordinate expansion gives
+the factor $16$. The weighted coefficient estimate and the elementary
+direction bound are the local inputs used here. The
+canonical quadratic stencil has derivatives converging to that same form
+as the side length grows. Thus the corresponding derivative of
+$\widetilde Q_n$ and that of the canonical stencil have the same limit. These estimates use the local regularity and
+comparison inputs and are not consequences of the later field limit.
+
+The resulting Taylor-coefficient convergence follows as follows. A
+first-order jet produces a lattice test direction which is a finite linear
+combination of those elementary directions. Bilinearity and the preceding
+bounds therefore give convergence of the second derivative on this test
+direction paired with itself. The grade-four jet-reading identity expresses
+the label evaluated at a jet as the observable's value at the identity
+plus one half of this second derivative. For the principal observable the
+identity value is zero, and the same identity for the canonical stencil
+identifies the limit with the evaluation of the canonical stress label.
+This uses the jet-reading and canonical-stencil identities under the
+simple-group, regularity, nonwrapping and order hypotheses; they are
+external inputs here. The jet evaluations separate the finite-dimensional
+label space, so finitely many of them already separate it. Their joint
+linear map has a continuous left inverse onto its image. Consequently the
+unsymmetrized coefficient array $C_n$ tends entrywise to $T w^0$.
+The limiting material array is fixed by the finite symmetry average, so
+$\mathsf R C_n\to T w^0$. If $w_n$ is any associated coefficient witness
+with $\mathsf R C_n=T w_n$, then $w_n\to w^0$. Indeed, the material coefficient map is injective by the curvature-jet
+calculation above; choose a fixed linear left inverse on its finite-dimensional
+range and apply it to the convergence.
+
+This sequential statement yields the eventual uniform estimate required
+above. Otherwise, for some $\varepsilon>0$, choose counterexamples with
+$t_n\ge n$ and $\|w_n-w^0\|\ge\varepsilon$. Their admissible side length
+$N_n$ satisfies $N_n>20(H(t_n)+10)$, with $H$ the neighborhood radius
+defined below. Since $H(t_n)\to\infty$, the chosen data meet the sequential
+hypotheses. The preceding convergence is a contradiction.
+The local projection certificates, weighted Hessian bound, unmodified
+Hessian comparison, jet-reading identities and neighborhood-size growth
+are retained inputs. For the two correction branches the coefficient
+identities follow directly from their finite-volume curvature products. The curvature
+vanishes at the identity configuration, so for a lattice test direction
+$v$,
+\[
+ \tfrac12D^2\langle F_{ij},F_{kl}\rangle_{1}[v,v]
+ =\langle DF_{ij}(1)[v],DF_{kl}(1)[v]\rangle.
+\]
+On the affine test associated with a degree-zero radial jet, the two
+linearized lattice curvatures are exactly the corresponding components of
+that jet, provided the test stencil is nonwrapping. The grade-four
+jet-reading identity then identifies this Hessian with $P_{ij,kl}$.
+Taking the displayed finite sums gives $w^-=(0,0,1)$ and
+$w^+=(0,\tfrac14,0)$ entry by entry, including their zero entries. Their
+material tensors are invariant under the finite tensor-symmetry average,
+so the same identities hold after that average. This uses the local
+curvature-stencil and jet-reading identities as inputs and does not infer
+an exact finite-volume equality from a continuum limit.
+
+The same local identities give a useful, but slower, trace estimate. For
+$b\in\{0,-\}$ the trace of $\mathsf R C^b_k(u)$ is zero on the relevant
+large set: for $b=0$ this is the exact local constraint above, and for
+$b=-$ it follows from the zero diagonal. Applying the finite trace map to
+$\mathsf R(R_k(u)-C^b_k(u))$ and then taking the fixed-scale ultrafilter
+limit gives
+\[
+ \|\operatorname{tr}W^b_k\|\le4\|\mathsf R\|\delta_k
+\qquad(b=0,-).
+\]
+The factor four counts the diagonal entries. This does not prove the weighted trace limit:
+for each fixed $p>0$, $\widehat\beta_k^p\delta_k\to\infty$. Indeed, for
+$y=\log\widehat\beta_k$, the bound $\log y\le4y^{1/4}$ makes the logarithm
+of this product at least $py-4\sqrt y\to\infty$. On the other hand,
+$(\log\widehat\beta_k)^m\delta_k\to0$ for every fixed $m\in\mathbb N$, since its
+logarithm is $m\log y-(\log y)^2/4$. The fast recording argument below
+supplies a stronger estimate.
+
+The moment-map convergence is a separate grade-four chart
+input: the normalized transported lift tends to the core projection, the
+scalar complement is annihilated by centering, and the chart expectations
+converge. On the finite-dimensional label space, these statements give
+operator-norm convergence. We spell out the selected two-scale passage
+behind the normalized lift. Let $m_i$ be the selected initial level,
+so $m_i\to\infty$, and let $k_i$ be its prescribed summit. The simple
+group's grade-four reference projection is an isomorphism. To see this,
+use the low-grade decomposition in Section~\ref{sec:ex-lattice-trace-free-rank}:
+after the invariant linear terms vanish, a grade-four label is a constant
+plus a quadratic expression depending only on its degree-zero radial jet.
+Every such jet is realized by a constant-curvature affine Maxwell solution:
+for prescribed antisymmetric $F_{ab}$ take
+$A_b(x)=\frac12\sum_a F_{ab}x_a$. Its curvature is $F$, and all curvature
+derivatives, including the Maxwell divergence, vanish. A label in the free
+equation ideal therefore vanishes on every degree-zero jet and hence on every jet. The
+standard table identifies the kernel of its projection with that equation
+ideal, an earlier free-table input. The kernel is zero, and the projection
+is onto by construction. In particular $\mathcal O\ne0$: on an affine
+Maxwell solution with $F_{01}=v$, $F_{10}=-v$ and all other curvature
+components zero, its unprojected label evaluates to $\tfrac12\langle v,v\rangle>0$
+for any nonzero color vector $v$. Injectivity preserves its nonvanishing.
+All three material tensors are nonzero: every $w^b\ne0$, and both the
+material coefficient map and $\pi_0$ are injective. In particular the
+false material tensor is nonzero although its trace vanishes by
+\eqref{eq:ex-branch-three-traces}.
+Write $\ell=\pi_0^{-1}$. Let
+$Y_i:\mathcal F_4^0\to E_4$ be the selected label
+lift, and set $\varpi_i=\beta_Z(m_i)r_i^4>0$. For each fixed
+$z\in\mathcal F_4^0$, the incoming local chart estimates and the scale
+comparison below give
+\begin{align}
+ \varpi_i^{-1}B_{m_i}Y_i z&\longrightarrow K\ell z,
+ \label{eq:ex-branch-lift-initial}\\
+ \|B_{m_i}Y_i z-B_{k_i}Y_i z\|
+ &\le \varepsilon_i\|B_{k_i}Y_i z\|,\quad
+ \varepsilon_i\longrightarrow0,
+ \label{eq:ex-branch-lift-stability}\\
+ \frac{\beta_Z(m_i)}{\beta_Z(k_i)}&\longrightarrow1.
+ \label{eq:ex-branch-lift-beta-ratio}
+\end{align}
+The first convergence comes from the fixed-grade local lift estimate after
+division by $\varpi_i$: for each fixed $z$ its error is bounded by a constant
+depending on $z$ times
+$\exp[-\tfrac12(\log\log\widehat\beta_{m_i})^2]$, which tends to zero.
+We spell out its finite-volume normalization. At a fixed initial level $m$,
+write $\mathcal N$ for the column map normalized by $a_m^{-4}$,
+$\mathcal T$ for the local chart map, and let $\alpha$ denote the displayed exponential error. The
+selected chart inputs give
+$\mathcal N u_{\rm ref}=\mathcal T u_{\rm ref}=e_0$ and, for every $y$,
+\[
+ \|\mathcal Ny-\mathcal Ty\|_{\rm c}\le\alpha\|\mathcal Ny\|_{\rm c},\qquad
+ \|\mathcal Ny-\mathcal Ty\|_{\rm c}\le\tfrac12\|\mathcal Ny\|_{\rm c}.
+\]
+The second estimate and the triangle inequality give
+$\|\mathcal Ny\|_{\rm c}\le2\|\mathcal Ty\|_{\rm c}$.
+For any $v$, take $y=v-(\mathcal Tv)_0u_{\rm ref}$. Then
+$\mathcal Ty=K\mathcal Tv$ and $K\mathcal Ny=K\mathcal Nv$, so the
+coefficient norm's contraction under $K$ gives
+\[
+ \|K(\mathcal Nv-\mathcal Tv)\|_{\rm c}\le2\alpha\|K\mathcal Tv\|_{\rm c}.
+\]
+At grade four the non-scalar coordinates of every label have the
+required homogeneous grade, by the low-grade simple-group classification.
+For the actual finite-volume lift $L$ of a reference label $v$, the
+selected lift identity is
+$K\mathcal TLv=\beta_{m,u}\vartheta_m^2 h^4Kv$, where
+$\beta_{m,u}>0$, $\vartheta_m>0$, $h\ge0$ and the physical radius is
+$a_mh$. The finite-volume counterpart of $B_mLv$ is
+$\vartheta_m^{-2}a_m^4K\mathcal NLv$. Substituting $Lv$ into the preceding
+inequality yields
+\[
+ \bigl\|\vartheta_m^{-2}a_m^4K\mathcal NLv-
+       \beta_{m,u}(a_mh)^4Kv\bigr\|_{\rm c}
+ \le2\alpha\,\beta_{m,u}(a_mh)^4\|Kv\|_{\rm c}.
+\]
+At fixed $i$ the selected lifts and couplings have their common
+separation-ultrafilter limits, and the selected physical radius is $r_i$.
+The steep transport property gives the limit of the finite-volume
+transport applied to those moving lifts. Passing to these limits gives the
+stated initial-level estimate; no separate limit of $\mathcal T$ is needed.
+The two finite-volume chart inequalities, lift identity and selected
+limits are the inputs used in this reduction.
+
+The second estimate is the comparison over the actual interval from the
+initial level to its summit. Its coefficient-size error is
+\[
+ \operatorname{part}(m_i)=
+ \exp\!\left[-\tfrac25(\log\log\widehat\beta_{m_i})^2\right].
+\]
+The norm is any fixed norm on $E_4$; equivalence with the coefficient norm
+transfers the estimate with $\varepsilon_i$ equal to a fixed
+positive multiple of $\operatorname{part}(m_i)$. This tends to zero because
+the hatted clock at the cofinal initial levels tends to infinity. The
+finite-volume inputs behind these comparisons belong to the selected
+history; they do not follow from a generic chart.
+
+The interval comparison follows from the actual one-step column bound and
+the scheduled sum budget. At one step, let $w$ and $v$ be the finite-volume
+column values at the earlier and later levels, with positive thresholds
+$a,b$. The selected one-step input gives $b/a\le2$ and a comparison value
+$X$ with
+\[
+ \|w-X\|_{\rm c}\le g\|Kv\|_{\rm c},\qquad
+ KX=(a/b)^2Kv.
+\]
+Here $g$ is the step's nonnegative column error; the second identity uses
+the grade-four homogeneity just noted. Thus
+\[
+ \|a^{-2}Kw-b^{-2}Kv\|_{\rm c}
+ \le a^{-2}g\|Kv\|_{\rm c}
+ \le 4g\|b^{-2}Kv\|_{\rm c}.
+\]
+This is the one-step estimate with coefficient $4g$; the threshold and
+column comparison are selected-construction inputs. To see the
+accumulation, fix a finite-volume label and write $u_j$ for its transported
+value at level $j$ between an initial level $m$ and its summit $k$. Put $N=k-m>0$ and
+$x=\operatorname{part}(m)\le1$. The selected one-step and schedule inputs
+state that
+\[
+ \|u_j-u_{j+1}\|_{\rm c}
+ \le \frac{x}{2N}\|u_{j+1}\|_{\rm c},\qquad m\le j<k.
+\]
+Backward induction gives, for every $m\le j\le k$,
+\[
+ \|u_j-u_k\|_{\rm c}
+ \le \frac{x(k-j)}N\|u_k\|_{\rm c}.
+\]
+Indeed, if this is known at $j+1$, the triangle inequality and $x\le1$
+give $\|u_{j+1}\|_{\rm c}\le2\|u_k\|_{\rm c}$. Add the one-step error
+to the induction bound to obtain the next case; the case $j=k$ is zero.
+For fixed $m,k$ and label, the finite-volume estimates hold together for
+the finitely many levels on an ultrafilter-large set. Passing to the
+fixed-scale transport limits gives the stated comparison. The threshold and column comparison and the schedule hypotheses remain
+selected-construction inputs; the induction does not establish them.
+
+For the scale ratio, the selected finite-volume running estimate says
+that for every $\epsilon>0$, eventually in $j$,
+\[
+ |\beta_{j,u}-\widehat\beta_j|\le\epsilon s_j
+\]
+on an ultrafilter-large set of finite-volume parameters $u$. At each fixed
+$j$, the same ultrafilter sends $\beta_{j,u}$ to $\beta_Z(j)$; passing to
+the closed interval gives the same estimate for $\beta_Z(j)$. The affine
+clock satisfies $\widehat\beta_j\ge b s_j$ for its positive slope $b$.
+For any $\delta>0$, choose $\epsilon=b\delta/2$ and divide by the positive
+clock. This proves $\beta_Z(j)/\widehat\beta_j\to1$. The running estimate
+and the fixed-scale limit are upstream inputs. The summit clock estimate follows from the first-crossing and
+block-size properties of the selected schedule. Write $g_j$ for the gap
+from level $j$ to its summit and $b$ for the fixed slope constant. Set
+$\operatorname{Gate}(x)=(\log x)^{48}$. For $x\ge1$, the inequality
+$t\le e^t$ with $t=(\log x)/96$ gives
+$(\log x)^{48}/x\le96^{48}x^{-1/2}$, so the gate ratio tends to zero.
+The selected clock tends to infinity.
+
+The summit is the first later level at which the scale gap reaches the
+gate. Let $q$ be its preceding level and put $x=\widehat\beta_j$. By the
+first-crossing property, $0\le s_q-s_j\le\operatorname{Gate}(x)$.
+The affine clock identity then gives
+$\widehat\beta_q\le x+b\operatorname{Gate}(x)\le2x$ eventually. The
+selected schedule has $L_q\ge1$ and bounds $L_q$ by
+$\log\widehat\beta_q$; its scale increment is
+$s_{q+1}-s_q=\log L_q$. Since $\log L_q\le L_q$, for large $x$,
+\[
+ s_{q+1}-s_q\le\log\widehat\beta_q
+ \le\log(2x)\le\operatorname{Gate}(x).
+\]
+Adding the pre-crossing gap and this last increment gives
+$0\le g_j\le2\operatorname{Gate}(\widehat\beta_j)$. Consequently,
+\[
+ \widehat\beta_{\mathrm{summit}(j)}
+   =\widehat\beta_j+b g_j,\qquad
+ 0\le\frac{g_j}{\widehat\beta_j}
+ \le 2\frac{\operatorname{Gate}(\widehat\beta_j)}{\widehat\beta_j}
+ \longrightarrow0.
+\]
+The first-crossing definition and block-size schedule bound are the inputs
+used here. Dividing the identity by the positive $\widehat\beta_j$ yields
+$\widehat\beta_{\mathrm{summit}(j)}/\widehat\beta_j\to1$, and hence the
+same limit along $j=m_i$. Since both levels are cofinal and the
+denominators are positive,
+\[
+ \frac{\beta_Z(m_i)}{\beta_Z(k_i)}=
+ \frac{\beta_Z(m_i)/\widehat\beta_{m_i}}
+ {\bigl(\beta_Z(k_i)/\widehat\beta_{k_i}\bigr)
+  \bigl(\widehat\beta_{k_i}/\widehat\beta_{m_i}\bigr)}
+ \longrightarrow1.
+\]
+Thus \eqref{eq:ex-branch-lift-beta-ratio} follows from these two explicit
+scale estimates.
+
+The same bounds also explain the scheduled budget used in the backward
+induction. Put $x=\widehat\beta_m$ and $N=k-m$, where $k$ is the summit.
+Every scale increment is at least one, so the gap bound gives
+$N\le2(\log x)^{48}$. For all large $m$, the summit clock is at most
+$2x$, and the scheduled column factor $p_j$ at each step satisfies
+$p_j\le2\log x$. Let
+$c_j=\exp[\tfrac12(\log\log\widehat\beta_{j+1})^2]$; clock monotonicity
+gives $c_j\ge\exp[\tfrac12(\log\log x)^2]$ at these levels. The
+one-step coefficient in the selected construction is
+$8(1+p_j)/c_j$. To bound it by $\operatorname{part}(m)/(2N)$, it is
+enough that
+\[
+ 16N(1+2\log x)\le\exp[\tfrac1{10}(\log\log x)^2].
+\]
+Using the bound on $N$, the left side is at most
+$32(1+2\log x)(\log x)^{48}$. With $y=\log\log x$, this is at most
+$96e^{49y}$ for large $x$, whereas the ratio of the right side to
+$96e^{49y}$ tends to infinity. This proves the scheduled budget from the
+clock, block and column bounds. The underlying threshold and column
+comparison remains an input; it is not a consequence of this numerical
+calculation.
+
+To combine them, put $X_i=\varpi_i^{-1}B_{m_i}Y_i z$ and
+$Z_i=\varpi_i^{-1}B_{k_i}Y_i z$. The stability estimate gives
+$\|X_i-Z_i\|\le\varepsilon_i\|Z_i\|$. Since $X_i$ converges, it is
+bounded; eventually $\varepsilon_i\le1/2$, so
+$\|Z_i\|\le2\|X_i\|$. Consequently $Z_i-X_i\to0$. Multiplication by
+\eqref{eq:ex-branch-lift-beta-ratio} changes the denominator from
+$\beta_Z(m_i)r_i^4$ to $\beta_Z(k_i)r_i^4=\omega_i$, giving
+\begin{equation}
+ \omega_i^{-1}B_{k_i}Y_i z\longrightarrow K\ell z.
+ \label{eq:ex-branch-lift-summit}
+\end{equation}
+The same $Y_i$, $r_i$, transport and history occur at both levels; the ratio is
+not a comparison between independently selected charts.
+
+Now put
+\[
+ D_i=\omega_i^{-1}B_{k_i},\qquad
+ \mathcal A_i=D_iY_i\pi_0+(1-K):E_4\longrightarrow E_4.
+\]
+The limit \eqref{eq:ex-branch-lift-summit}, $\ell\pi_0=1$, and a finite
+basis give $\mathcal A_i\to1$ in operator norm; here $K$ is the core projection on
+the fixed label space. Also $\mathsf M_i$
+annihilates the scalar complement $1-K$, and eventually
+$\pi Y_i=U_i$. Thus, on $x\in E_4$, the chart identity gives
+\[
+ \mathsf M_i \mathcal A_i x
+ =\pi_0x-\langle U_i\pi_0x\rangle\mathbf1_4^0
+ \longrightarrow \pi_0x-\langle\pi_0x\rangle\mathbf1_4^0
+ =\mathsf M_\infty x.
+\]
+The expectation convergence is the one-point case of the selected chart
+correlation limit. For a fixed standard field $z$, its one-point function
+at the origin is $\langle z\rangle_0$; the rescaled interacting one-point
+function at the origin is $\langle U_i z\rangle$. The selected chart
+convergence at this one-point configuration therefore gives
+$\langle U_i z\rangle\to\langle z\rangle_0$. It uses the chart's
+one-point convergence and the two table hierarchies as inputs. Eventual
+transport of the unit is another selected-chart input. A finite basis
+upgrades the displayed pointwise convergence to operator-norm convergence.
+Eventually $\|\mathcal A_i-1\|<1/2$, so the geometric series gives
+$\|\mathcal A_i^{-1}\|\le2$ and
+$\|\mathcal A_i^{-1}-1\|\le2\|\mathcal A_i-1\|\to0$.
+Since $\mathsf M_i=(\mathsf M_i\mathcal A_i)\mathcal A_i^{-1}$,
+this proves \eqref{eq:ex-branch-moment-input}. The normalized local lift
+and one-point chart convergence remain upstream dependencies. Neither limit alone
+supplies a trace rate.
+
+\begin{proposition}[Three branch field limits]
+\label{prop:ex-branch-moments}
+Assume \eqref{eq:ex-branch-coefficient-input}--
+\eqref{eq:ex-branch-moment-input}, the chart identity and projection
+equivariance above, and eventual equivariance of $B_k$ under every signed
+motion and the real-structure involution. Then
+\[
+ \mathsf P_i t^0_{k_i}\longrightarrow M(w^0),\qquad
+ \mathsf P_i t^-_{k_i}\longrightarrow M(w^-),\qquad
+ \mathsf P_i t^+_{k_i}\longrightarrow M(w^+)
+\]
+in the finite product $(\mathcal F_4^0)^{I\times I}$.
+\end{proposition}
+\begin{proof}
+The finite symmetry average commutes with symmetrization. For sufficiently
+large $k$, the selected transport intertwines every signed motion and the
+real-structure involution: this follows by taking its defining fixed-scale
+separation limit of the corresponding finite-volume transport identities.
+The core projection also commutes: the scalar label is fixed and its
+coordinate is preserved, up to conjugation under the real structure. Using
+equivariance and the chart identity gives, eventually,
+\begin{equation}
+ (\mathsf P_i t^b_{k_i})_{ac}=
+ \tfrac12\bigl(\mathsf M_i W^b_{k_i}(a,c)
+                 +\mathsf M_i W^b_{k_i}(c,a)\bigr).
+ \label{eq:ex-branch-chart-array}
+\end{equation}
+Indeed, apply \eqref{eq:ex-branch-chart-identity} to each term of the
+finite symmetry average; the scalar signs and coefficients are real, so
+commute with both maps. Since $k_i\to\infty$,
+$W^b_{k_i}(a,c)\to W^b(a,c)$. For any convergent $v_i\to v$ in $E_4$,
+\[
+ \|\mathsf M_i v_i-\mathsf M_\infty v\|
+ \leq \|\mathsf M_i-\mathsf M_\infty\|\,\|v_i\|
+       +\|\mathsf M_\infty\|\,\|v_i-v\|\longrightarrow0.
+\]
+Apply this to both entries in \eqref{eq:ex-branch-chart-array}. The limit
+is $\operatorname{sym}(\mathfrak c_0\pi_0\mathcal S(w^b))$, which is
+$M(w^b)$ by symmetry and zero expectation. There are only sixteen entries,
+so coordinate convergence is convergence of the entire tensor. This proves
+all three limits without exchanging an infinite sum and a limit.
+\end{proof}
+
+\subsection{The fast trace from localized recordings}
+\label{subsec:ex-branch-fast-trace}
+
+We now derive the raw fast-trace statement used in the weighted limit. Let
+$s_k\to\infty$ be the logarithmic scale of the selected schedule and
+$a_k=e^{-s_k}$ for the mesh above. A sequence is \emph{fast} if its norm is
+$O(e^{-\eta s_k})$ for some $\eta>0$; a scalar sequence or operator family
+is \emph{subexponential} if its norm is $O(e^{\epsilon s_k})$ for every
+$\epsilon>0$. A finite sum of fast sequences is fast, with the minimum of
+finitely many positive decay exponents.
+
+We make the local recording input explicit. Write $E_3$ and $\mathcal F_3^{\mathrm{int}}$
+for the finite-dimensional grade-three label and field spaces of the same
+interacting table, and $\pi_d:E_d\to\mathcal F_d^{\mathrm{int}}$ for its grade-$d$
+projection, with $\pi_4=\pi$.
+For each admissible separated test $\sigma$, the table gives linear functionals
+$L^{\sigma}_d(z):\mathcal F_d^{\mathrm{int}}\to\mathbb C$ for $d=3,4$ and $z$ near the origin.
+They are continuous in $z$ and $L^{\sigma}_d(0)=\lambda^{\sigma}_d$. The functionals
+$\lambda^{\sigma}_4$ separate $\mathcal F_4^{\mathrm{int}}$; hence finitely many already do so.
+This follows from the field-separation and smoothness properties of the
+selected hierarchy: approximate a separated configuration by generic grid
+configurations at increasingly fine scales. Subtracting the first grid
+address places the insertion at the origin without changing relative
+positions. Translation invariance preserves the correlation, and spectator
+fields have representative tokens, so these are allowed tests. By continuity,
+a field annihilated by them has all separated correlations zero and is zero
+by field separation. These hierarchy and
+grid-density properties are retained inputs; finite dimensionality alone
+does not imply separation.
+
+Every grade-three field is a multiple of the unit. Indeed, each color-valued
+jet-coordinate factor has grade at least two, so a grade-three label has at
+most one factor. Its invariant linear part vanishes by the low-grade color
+argument of Section~\ref{sec:ex-lattice-trace-free-rank}; only the scalar
+label remains. The field projection is onto and sends the scalar label to
+a nonzero reference-scale multiple of the unit, so the same is true of
+$\mathcal F_3^{\mathrm{int}}$. Finally, inserting the unit leaves a separated
+correlation independent of its insertion point. Thus $L^{\sigma}_3(z)$ is
+independent of $z$ in a sufficiently small separated neighborhood. The
+grading, quotient projection, unit and field-separation statements here
+are the ones belonging to the same selected table; they are not inferred
+from the branch limit.
+
+The incoming recording estimates are the following. For every test $\sigma$
+there is a radius $c_\sigma>0$. For each $d\in I$ the localized current
+$Q_d^{[r]}$ and its forward difference have recorded fields
+$v_{d,k}\in\mathcal F_3^{\mathrm{int}}$ and $w_{d,k}\in\mathcal F_4^{\mathrm{int}}$. For every branch
+$b\in\{0,-\}$, the diagonal tensor recordings are the already defined
+$\pi x^b_k(a,a)\in\mathcal F_4^{\mathrm{int}}$. Their finite-volume tested correlations,
+denoted respectively by $F^{\sigma}_{d,k,u}(j)$, $G^{\sigma}_{d,k,u}(j)$ and
+$T^{\sigma,b}_{a,k,u}$, satisfy, with fast nonnegative errors, the following
+estimates. For all sufficiently large $k$ and each integer $j$ with
+$|j|a_k\le c_\sigma$, the appropriate inequalities hold for $u$ in an
+ultrafilter-large set. A common radius is obtained by taking the minimum
+of the finitely many radii for these current, difference and tensor
+insertions; the corresponding eventual scale cutoff is the maximum of
+finitely many cutoffs:
+\begin{align}
+ |F^{\sigma}_{d,k,u}(j)-L^{\sigma}_3(ja_ke_d)v_{d,k}|&\le E^{\sigma}_{d,k},
+ \label{eq:ex-branch-book-current}\\
+ |G^{\sigma}_{d,k,u}(j)-L^{\sigma}_4(ja_ke_d)w_{d,k}|&\le D^{\sigma}_{d,k},
+ \label{eq:ex-branch-book-difference}\\
+ |T^{\sigma,b}_{a,k,u}-\lambda^{\sigma}_4(\pi x^b_k(a,a))|&\le H^{\sigma,b}_{a,k}.
+ \label{eq:ex-branch-book-tensor}
+\end{align}
+Here $e_d$ is the $d$th coordinate vector; $E,D,H$ are fast sequences,
+possibly with test- and component-dependent exponents. The same separation
+ultrafilter is used in every line. The last line is at zero displacement.
+The finite-volume correlation is linear in its inserted observable, and
+for each $\sigma$ the forward-difference identity holds for all integers
+$j$ on an ultrafilter-large set, for all sufficiently large $k$:
+\begin{equation}
+ G^{\sigma}_{d,k,u}(j)=a_k^{-1}
+ \bigl(F^{\sigma}_{d,k,u}(j+1)-F^{\sigma}_{d,k,u}(j)\bigr).
+ \label{eq:ex-branch-recorded-difference}
+\end{equation}
+Here $a_k^{-1}=a_k^{-4}/a_k^{-3}$, the ratio of the two grade
+normalizations; translation covariance identifies the displaced current values.
+The localized current and its difference are recorded using the same finite-volume choices
+and volumes. The construction supplies these estimates using its local
+recording, selected trace-current localization, field hierarchy and
+point-limit inputs. The estimates, low-grade unit statement and separating
+property use the upstream table and hierarchy inputs just stated; the
+finite-volume price production behind the estimates is not proved in this
+subsection. They are more primitive than the assertion that either branch
+trace is fast.
+
+The following root-price mechanism identifies a more primitive sufficient
+input for the three recording estimates. Fix one of the finitely many
+insertions above, its grade $d\in\{3,4\}$, and a separated test $\sigma$.
+At scale $k$ and finite-volume parameter $u$, let $A_{k,u}$ be the actual
+inserted observable and $O_{k,u}(v_{k,u})$ the observable made from its
+selected local label $v_{k,u}\in E_d$. The actual insertion already includes
+the grade-$d$ factor $a_k^{-d}$ and transport to the comparison volume;
+$O_{k,u}$ is the corresponding reference-scale observable. The
+following finite-dimensional selection explains how the same limiting label is obtained for all tests.
+The purchased finite-volume recording supplies a coefficient
+$\xi_{k,u}$, a label $v_{k,u}$, and the actual column map $C_{k,u}$ on an
+ultrafilter-large set, with
+\begin{equation}
+ \|\xi_{k,u}\|_{\mathrm c}\le1,\qquad
+ \|\xi_{k,u}-C_{k,u}v_{k,u}\|_{\mathrm c}\le1,
+ \qquad
+ \|v_{k,u}\|\le M_{d,k}\|C_{k,u}v_{k,u}\|_{\mathrm c}.
+ \label{eq:ex-branch-recording-compactness}
+\end{equation}
+Here $\|\cdot\|_{\mathrm c}$ is the fixed coefficient norm, and
+$M_{d,k}=\exp(\ell_k+ds_k)$ and
+$\ell_k=\sum_{j<k}\log\zeta_{j+1}$ for the calibrated column factors
+$\zeta_{j+1}\ge1$. The previously established column estimate gives
+$\ell_k=o(s_k)$, so $e^{\ell_k}$ is subexponential. The middle bound
+is a convenient weakening of the purchased bias bound
+$\vartheta_k^2\exp[-\tfrac14(\log\log\widehat\beta_k)^2]$, using
+$\vartheta_k\le1$. It is not a replacement for the root-price purchase
+below. The inverse bound follows by multiplying the calibrated one-step factors
+$\zeta_{j+1}L_j^d$ from the reference level, where the column is the identity.
+All factors are at least one, $\sum_{j<k}\log L_j=s_k$, and the label norm
+is bounded by the coefficient norm. The calibration, reference identity
+and common choice of column map and label remain inputs.
+
+When constructing a history from these purchased data, for each fixed
+sufficiently large $k$ choose $v_{k,u}$ once together with its full
+purchase certificate on the ultrafilter-large set where that certificate
+is available, and define it arbitrarily elsewhere. In particular,
+\eqref{eq:ex-branch-recording-compactness} holds on that set. By the
+triangle inequality its norm is at most
+$2M_{d,k}$ on that set. The closed ball of that radius is compact because
+$E_d$ is finite dimensional, so the ultrafilter has a limit $x_k\in E_d$
+in the ball. The choice is made before any test is selected; this one
+$x_k$ works for every fixed test and satisfies $\|x_k\|\le2M_{d,k}$.
+Since $\ell_k=o(s_k)$, for every $\epsilon>0$ this also gives
+$\|x_k\|=O(e^{(d+\epsilon)s_k})$; the bound is grade-dependent and need
+not be subexponential. For an already selected history, retain its original labels and their
+existing ultrafilter limit instead: the compactness construction by itself
+does not identify a newly chosen limit with that history's limit. The
+root-price step below uses the labels and limit from one and the same
+history.
+
+For the root-price step assume:
+\begin{enumerate}
+\item for this test, some $c_\sigma>0$ and $B_\sigma\ge0$ satisfy, for
+ every sufficiently large $k$, axis $a\in I$ and integer $\ell$ with
+ $|\ell|a_k\le c_\sigma$, on an ultrafilter-large set of $u$,
+\[
+ |\mathcal C^{\sigma}_{k,u}(\ell,a;A_{k,u})-
+   \mathcal C^{\sigma}_{k,u}(\ell,a;O_{k,u}(v_{k,u}))|
+ \le B_\sigma E_k,
+\]
+ where $E_k$ is fast and $\mathcal C$ is the ordinary finite-volume
+ tested correlation, linear in the insertion;
+\item for each sufficiently large fixed $k$, axis $a$, integer $\ell$ with
+ $|\ell|a_k\le c_\sigma$, and fixed $v\in E_d$, the correlation of
+ $O_{k,u}(v)$ converges along the same ultrafilter to
+ $L^{\sigma}_d(\ell a_ke_a)\pi_d v$.
+\end{enumerate}
+The first assumption applies the rooted price to the actual-minus-local
+insertion, using selected funding, interior and locality estimates. The
+second is the fixed-label point limit in the same table. To apply it to the moving labels,
+choose a basis $(e_j)$ of $E_d$ and write
+$v_{k,u}=\sum_j c_j(u)e_j$, with $c_j(u)\to c_j$ along the ultrafilter.
+Linearity of the local insertion and correlation gives a finite sum of
+$c_j(u)$ times the correlations for the fixed basis vectors. The product
+and finite-sum limit rules therefore give
+\[
+ \mathcal C^{\sigma}_{k,u}(\ell,a;O_{k,u}(v_{k,u}))
+ \longrightarrow L^{\sigma}_d(\ell a_ke_a)\pi_d x_k.
+\]
+This uses the existing fixed-scale label limit, including for an already
+chosen history. Fix a lower scale $h$ at least the test's native scale. A comparison scale is open when $h\le j$ and $b_j^2\le a_h/a_j$, where $b_j$
+is its cover size. Let $\operatorname{basin}(h)$ be the first open scale and
+choose $j=\max\{\operatorname{basin}(h),\operatorname{ref}(d)\}$. Such a scale exists: the cover-growth and mesh bounds give
+$a_{j+1}b_{j+1}^2\le(2/3)a_jb_j^2$. Iterating gives
+$a_jb_j^2\le(2/3)^{j-h}a_hb_h^2\to0$ for $j\ge h$. Opening persists at
+finer scales, so this choice of $j$ is open. At each allowed later level $k>j$, the
+finite-volume purchase gives the actual-minus-local insertion the rooted price
+\begin{equation}
+ P_{d,h,j}(k)=
+ \frac{2\,\operatorname{stake}_{h,j}\,a_j^{-d}}
+      {\varphi_{d,j}}\,
+ \widehat\beta_k^4\,
+ \exp\!\left[-\frac{s_k-s_j}{8}\right].
+ \label{eq:ex-branch-native-root-price}
+\end{equation}
+Here $\operatorname{stake}_{h,j}=\exp[(a_h/a_j)^4\mathcal T_j+5]$,
+where $\mathcal T_j$ is the selected per-site treasury, and
+$\varphi_{d,j}=\widehat\beta_j^{-\nu_d}$, where $\nu_d$ is the fixed
+reference-label degree bound plus four. Both are positive and fixed once
+$d,h,j$ are chosen. This is the actual purchased price. Since the hatted clock is affine in $s_k$, its
+fourth power is subexponential: for $s\ge0$ and $\epsilon>0$, the
+exponential series gives $s^4\le24\epsilon^{-4}e^{\epsilon s}$. Thus, for
+every $0<\eta<1/8$, $P_{d,h,j}(k)=O(e^{-\eta s_k})$ and is fast. The containing-window radius
+has an explicit bound. Put $r(x)=\lceil(\log x)^2\rceil$,
+$q(x)=r(x)^{60}+1100$, and
+\[
+ H(x)=1800(1001r(x))+4(1000r(x)+2),\qquad N_0=4000001^4.
+\]
+The selected radius is $R_k=R(\widehat\beta_k)$, where
+\[
+ R(x)=\max\{H(x)+18+q(x)(4r(x)+2)+2r(x),\,
+              2((N_0+q(x))(4r(x)+2)+10r(x))+1\}.
+\]
+For $x\ge e$, $r(x)\le1+(\log x)^2$, so this expression is at most a
+constant times $(1+\log x)^{122}$. Also $\log x\le32x^{1/32}$, whence
+$R(x)=O(x^{122/32})=o(x^4)$. Consequently
+$R_k\le\widehat\beta_k^4$ eventually and $a_kR_k\to0$. This radius
+includes the support enlargement and is distinct from the principal
+localization radius $\varrho_k$: in particular $R(x)\ge H(x)+18$, so the
+local regularity neighborhood of radius $H(x)+1$ lies in the window.
+The local symmetry, measurability and size bounds needed for the interior
+certificate remain inputs. The selected geometric tail is
+$\operatorname{tail}_k=30a_k(J_k+5)$, where $J_k\ge0$ is the schedule's
+integer clock. The schedule gives $a_{k+1}\le a_k/3$ and
+$J_{k+1}\le J_k+1$. Hence
+\[
+ \operatorname{tail}_{k+1}
+ \le10a_k(J_k+6)\le\tfrac23\operatorname{tail}_k,
+\]
+so the tail tends to zero geometrically. These two limits eventually give
+the geometric room inequality
+\[
+ 2(a_kR_k+\operatorname{tail}_k)<a_h.
+\]
+It is this inequality that allows the localized observable to sit in the
+actual fixed test chamber before applying the purchased root bound.
+To connect that bound to the first assumption, put
+$f_{k,u}=A_{k,u}-O_{k,u}(v_{k,u})$. The purchase and localization say that,
+on an ultrafilter-large set, this difference is interior to the chamber at
+level $h$ and its root-test size is at most $P_{d,h,j}(k)$. The separated
+spectator estimate supplies a constant $B_\sigma\ge0$, independent of $k$,
+and a possibly smaller displacement radius, such that
+\[
+ \bigl|\mathcal C^{\sigma}_{k,u}(\ell,a;f_{k,u})\bigr|
+ \le B_\sigma\operatorname{root}_{h,u}(f_{k,u}).
+\]
+The spectator input places the $n$ translated factors in distinct cells
+and bounds each root-test size by a common $A\ge0$, uniformly in $k$ and
+displacements of size at most $a_h/8$. The rooted moment inequality gives
+the bound with $B_\sigma=A^n$; its integrability and separation conditions
+are part of that input. To see the room for the local representatives,
+choose a finer level $j'\ge h+1$ with $24a_{j'}<a_h$ at which the
+spectator input supplies a common bound for its finitely many tokens and
+frames. It follows from the centered-representative hypothesis, using
+exponent and error allowances $1$, then summing the finitely many bounds
+and intersecting their eventual sets. The displacement and three fine-mesh
+widths together are less than $a_h/4$, inside the coarse cell's one-third
+margin. For sufficiently large period
+the spectator addresses and the insertion address occupy distinct cells.
+By correlation linearity, the first assumption follows with
+$E_k=P_{d,h,j}(k)$ after intersecting the relevant large sets. The local
+representative and its root bound still use the spectator input. The cover-growth bound, purchase, localization, spectator estimate and the
+displayed mesh and integer-clock bounds remain inputs from the selected
+construction; this argument does not establish those purchases.
+
+For each fixed $k$ and displacement, the moving-label limit makes the
+local correlation differ from its limit by at most $a_k$ on an ultrafilter-large
+set. Intersect that set with the root-price set and use the triangle
+inequality. The resulting recording error is at most
+$B_\sigma E_k+a_k$, which is fast because $a_k=e^{-s_k}$. This proves
+the corresponding instance of
+\eqref{eq:ex-branch-book-current}--\eqref{eq:ex-branch-book-tensor}
+from the displayed root-price and point-limit inputs. It does not construct
+the underlying purchased root bound. The radius can be reduced so that all moved
+test configurations remain separated.
+
+\begin{proposition}[Localized current and raw trace decay]
+\label{prop:ex-branch-raw-fast}
+Assume the recording and test properties above, and the exact
+finite-volume branch formulas. Then for each $d$ the recorded difference
+$w_{d,k}$ is fast, and so are both unaveraged projected traces
+\[
+ y^0_k=\sum_a\pi x^0_k(a,a),\qquad
+ y^-_k=\sum_a\pi x^-_k(a,a).
+\]
+\end{proposition}
+\begin{proof}
+We first record the finite-dimensional detection step. Choose finitely many
+$\lambda^{\sigma}_4$ whose joint map is injective. If for each such $\sigma$ linear
+functionals $\Lambda^{\sigma}_k$ converge pointwise to $\lambda^{\sigma}_4$, finite
+dimensionality gives convergence in operator norm. If $\mathcal F_4^{\mathrm{int}}=\{0\}$ the conclusion is immediate. Otherwise the joint
+limiting map has a positive minimum on the unit sphere. Consequently, for all large
+$k$ and every $z\in\mathcal F_4^{\mathrm{int}}$,
+\begin{equation}
+ \|z\|\le C\max_\sigma|\Lambda^{\sigma}_k z|.
+ \label{eq:ex-branch-moving-detector}
+\end{equation}
+Thus fast bounds on these finitely many moving tests imply a fast field
+bound, even when their exponents depend on $\sigma$.
+
+Fix $d$ and a test $\sigma$. Decrease the decay exponent if necessary so that
+$0<\eta<1$ and $E^{\sigma}_{d,k}=O(e^{-\eta s_k})$. Choose
+$0<\tau<\eta$ and set
+\[
+ n_k=\left\lceil e^{(1-\tau)s_k}\right\rceil,\qquad
+ h_k=a_kn_k.
+\]
+The ceiling bound gives
+\[
+ e^{-\tau s_k}\le h_k
+ \le e^{-\tau s_k}+e^{-s_k}.
+\]
+Thus $n_k\ge1$, $h_k\to0$, and
+$E^{\sigma}_{d,k}/h_k=O(e^{-(\eta-\tau)s_k})$. For large $k$ all the
+points $ja_ke_d$, $0\le j\le n_k$, lie inside the recording
+neighborhood. Define the moving functional
+\[
+ \Lambda^{\sigma}_k=\frac1{n_k}\sum_{j=0}^{n_k-1}L^{\sigma}_4(ja_ke_d).
+\]
+Continuity at zero implies $\Lambda^{\sigma}_k z\to\lambda^{\sigma}_4z$ for every
+fixed $z$: every term in the average lies within distance $h_k$ of
+zero. At each fixed $k$ intersect the finitely many ultrafilter-large sets
+needed for the two endpoint current estimates, the $n_k$ difference
+estimates, and the exact difference identity. This intersection is
+nonempty. On it the grade-three unit property gives a common value
+$C_{d,k}^{\sigma}=L^{\sigma}_3(0)v_{d,k}$ at both endpoints. Telescoping
+\eqref{eq:ex-branch-recorded-difference} and using the recording errors
+therefore yields
+\[
+ |\Lambda^{\sigma}_k w_{d,k}|
+ \le D^{\sigma}_{d,k}+\frac{2E^{\sigma}_{d,k}}{a_kn_k}.
+\]
+The right side is fast. This construction may use a different $n_k$ for
+each of the finitely many tests; applying
+\eqref{eq:ex-branch-moving-detector} proves that $w_{d,k}$ is fast.
+The finite intersection at fixed $k$ is essential: no common infinite
+intersection of ultrafilter-large sets is used.
+
+For the false branch the sum of the finite-volume diagonal insertions is
+exactly zero. For a fixed separating test, intersect the four sets in
+\eqref{eq:ex-branch-book-tensor} with that exact identity and use
+linearity. The triangle inequality gives
+$|\lambda^{\sigma}_4(y^-_k)|\le\sum_a H^{\sigma,-}_{a,k}$, which is fast. The
+fixed-test version of \eqref{eq:ex-branch-moving-detector} proves the
+false trace is fast.
+
+For the principal branch, its finite-volume trace is exactly the sum of
+the four forward differences. Intersect the four tensor-recording sets
+with the four difference-recording sets at $j=0$ and with this identity.
+Linearity gives
+\[
+ \left|\lambda^{\sigma}_4\left(y^0_k-\sum_d w_{d,k}\right)\right|
+ \le\sum_a H^{\sigma,0}_{a,k}+\sum_dD^{\sigma}_{d,k}.
+\]
+The detector bound makes the difference fast. The already proved fastness
+of each $w_{d,k}$ and finiteness of $I$ now imply that $y^0_k$ is fast.
+\end{proof}
+
+Under the displayed fixed-scale root-price inputs, the same proof gives the
+more explicit bound
+\begin{equation}
+ \|y^0_k\|+\|y^-_k\|=O\bigl((1+s_k)^5e^{-s_k/8}\bigr).
+ \label{eq:ex-branch-raw-rate}
+\end{equation}
+Indeed, for the finitely many required tests and insertions, each recording
+error is $O((1+s_k)^4e^{-s_k/8})$: the fourth power of the affine clock has
+polynomial growth and the point-limit tolerance is $a_k=e^{-s_k}$. In the
+sampling argument choose instead
+\[
+ n_k=\left\lceil\frac{e^{s_k}}{1+s_k}\right\rceil,\qquad
+ h_k=a_kn_k.
+\]
+Then $(1+s_k)^{-1}\le h_k\le(1+s_k)^{-1}+e^{-s_k}$, so $h_k\to0$ and
+the endpoint error divided by $h_k$ is
+$O((1+s_k)^5e^{-s_k/8})$. The moving detectors and finite trace comparisons
+now give \eqref{eq:ex-branch-raw-rate}. In particular, the bound is
+$O(e^{-\kappa s_k})$ for every $0<\kappa<1/8$. Its constants depend on the
+finite tests; the price and point-limit statements remain inputs.
+
+For the remaining weighted step, let $S_{k,u}$ be the finite-volume
+transport whose fixed-$k$ separation limit is $B_k$. With the same
+accumulated column logarithm $\ell_k$ as above, the selected calibration
+gives a fixed cutoff $k_0$ such that, for every $k\ge k_0$
+and every $v\in E_4$, the bound
+\[
+ \|S_{k,u}v\|\le C\widehat\beta_k e^{\ell_k}\|v\|
+\]
+on an ultrafilter-large set of $u$. Here $C$ depends only on the fixed
+finite-dimensional label coordinates. The closed-ball limit gives the
+same bound for $B_kv$, and taking the supremum over $\|v\|\le1$ gives
+$\|B_k\|\le C\widehat\beta_k e^{\ell_k}$. This passage fixes $k$ and $v$
+before taking the separation limit; it does not require a common
+ultrafilter-large set for infinitely many $v$. The accumulated-column estimate gives $\ell_k=o(s_k)$, so $e^{\ell_k}$ is
+subexponential. The clock is affine in $s_k$; since
+$s\le\epsilon^{-1}e^{\epsilon s}$ for $s\ge0$ and $\epsilon>0$,
+$\widehat\beta_k$ and hence $\|B_k\|$ are subexponential as well. The
+finite-volume column calibration and fixed-scale transport limit are upstream
+inputs. The Crown, Eve and weighted-estimate chapters supply parts of the
+selected local prices under their construction hypotheses.
+
+\begin{proposition}[Principal and false trace washout]
+\label{prop:ex-branch-washout}
+Under the recording and transport estimates,
+\eqref{eq:ex-branch-moment-input}, the chart identity and projection
+equivariance stated above, for each
+fixed $p\in\mathbb N$ and each $b\in\{0,-\}$,
+\begin{equation}
+ \widehat\beta_{k_i}^{\,p}\,
+ \operatorname{tr}(\mathsf P_i t^b_{k_i})\longrightarrow0
+ \quad\text{in }\mathcal F_4^0.
+ \label{eq:ex-branch-washout}
+\end{equation}
+In particular the assertion holds for $p=1$. The true branch is treated
+separately below.
+\end{proposition}
+\begin{proof}
+First, diagonal symmetrization changes nothing. Let $\mathcal G$ be the
+finite signed and real-structure symmetry set, and let $\rho_g$ denote
+the corresponding real-linear field action. In each term of the symmetry
+average the square of the tensor sign is one and the axis permutation is
+bijective. Using projection equivariance gives
+\[
+ q^b_k:=\operatorname{tr}t^b_k
+ =\frac1{|\mathcal G|}\sum_{g\in\mathcal G}\mathfrak c\,\rho_g(y^b_k).
+\]
+These fixed real-linear maps are bounded in finite dimension. Thus a
+constant $C$ independent of $k$ satisfies
+$\|q^b_k\|\le C\|y^b_k\|$, and
+Proposition~\ref{prop:ex-branch-raw-fast} makes $q^b_k$ fast. It is centered, because each
+$t^b_k(a,c)$ is centered and centering is linear.
+
+Choose a fixed linear representative $R:\mathcal F_4^{\mathrm{int}}\to E_4$ with
+$\pi R=\mathrm{id}$ and set $r^b_k=Rq^b_k$. It is also fast. For the
+fixed integer $p$, subexponential growth of $\widehat\beta^p_kB_k$
+therefore gives
+\[
+ \widehat\beta_k^{\,p}B_kr^b_k\longrightarrow0.
+\]
+For example, if $\|r^b_k\|\le C e^{-\eta s_k}$, use the subexponential
+bound with exponent $\eta/2$ on the combined factor. Composing with the
+cofinal sequence $k_i$ preserves the limit. The norms of $\mathsf M_i$
+are eventually bounded by \eqref{eq:ex-branch-moment-input}. Hence their
+images of the last sequence tend to zero. Since $q^b_k$ is centered and
+$\pi Rq^b_k=q^b_k$, the chart identity yields, for all sufficiently large
+$i$,
+\[
+ \mathsf M_i(\widehat\beta_{k_i}^{\,p}B_{k_i}r^b_{k_i})
+ =\widehat\beta_{k_i}^{\,p}\mathsf P_iq^b_{k_i}
+ =\widehat\beta_{k_i}^{\,p}\operatorname{tr}(\mathsf P_i t^b_{k_i}).
+\]
+This proves \eqref{eq:ex-branch-washout}. The estimate is for each fixed
+$p$; it is not a uniform assertion over a growing exponent.
+\end{proof}
+
+With the explicit root-price and point-limit inputs, the quantitative raw
+rate gives more: for each fixed $p\in\mathbb N$ and $b\in\{0,-\}$,
+\[
+ \bigl\|\widehat\beta_{k_i}^{\,p}\operatorname{tr}(\mathsf P_i t^b_{k_i})\bigr\|
+ =O\!\left((1+s_{k_i})^{p+6}e^{\ell_{k_i}-s_{k_i}/8}\right).
+\]
+Indeed, the raw bound contributes $(1+s)^5e^{-s/8}$, while
+$\widehat\beta^p\|B\|$ is bounded by a constant times
+$(1+s)^{p+1}e^\ell$; the moment maps are eventually bounded. Since
+$\ell_k=o(s_k)$, the right side is $O(e^{-\kappa s_{k_i}})$ for every
+$0<\kappa<1/8$. The constants can depend on $p$ and $\kappa$.
+
+The true branch instead has the unweighted limiting trace $4\mathcal O$ by
+Proposition~\ref{prop:ex-branch-moments} and
+\eqref{eq:ex-branch-three-traces}. This limit is nonzero, so the unweighted trace norm is eventually at least
+$2\|\mathcal O\|>0$. Since $\widehat\beta_{k_i}\to\infty$, the norm of
+the true-branch trace multiplied by $\widehat\beta_{k_i}^{\,p}$ diverges
+for each fixed $p\ge1$. These consequences do not construct the physical tensor or close the
+quantitative chart inputs.
