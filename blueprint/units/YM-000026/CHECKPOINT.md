@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 11:58 UTC
+# Collaborative checkpoint — 12 November 2026, 12:51 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -7,141 +7,98 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Previous checkpoint PR #38 was merged by the maintainer; continued draft PR
-  will be linked from issue #26 after this push.
-- Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
-  your claim. Helper PRs target this branch. `main` contains the
-  821-page checkpoint merged through PR #38; this branch continues that draft.
-- Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (838 pages). Page count describes an artifact,
-  not proof completion.
-- [Copy-and-paste agent prompt](AGENT-PROMPT.md).
-- [Manifest of included and unintegrated sections](checkpoint-manifest.json),
-  including the PDF hash and unintegrated candidate status.
+- Branch: `codex/existence-monograph`; helper PRs target this branch. Record the
+  actual checkpoint commit in your claim. The maintainer merged checkpoint PR40;
+  the continuing draft PR will be linked from issue26.
+- Article: `manuscript/existence.tex`; compiled snapshot `manuscript/existence.pdf`
+  has857 pages. Page count describes the artifact, not completion.
+- `checkpoint-manifest.json` records included files and PDF hash.
 - Pinned Lean source: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+- Existing helper prompt: [AGENT-PROMPT.md](AGENT-PROMPT.md).
 
-Read the relevant manuscript and its evidence file, then inspect the named Lean
-statements and immediate definitions. The chronological correspondence and review
-logs contain superseded frontiers. They are not a current complete dependency
-certificate. Recheck every interface used by a new argument.
+Read relevant prose, adjacent evidence and current review entries before source
+inspection. Older chronological frontiers may be superseded; neither review logs
+nor this checkpoint form an exhaustive dependency certificate.
 
-## Disjoint help tasks already released
+## External tasks and active ownership
 
-| Task | Starting source | Owned manuscript output |
-| --- | --- | --- |
-| [#33: trace sensor and weighted Ward limit](https://github.com/hairer/humanise-yang-mills/issues/33) | `YM.Trace.Terrace.springs`, `Prosper`, `TraceExtension/Terrace/Lease.lean` | `manuscript/existence/trace-prosper-sensor.tex` |
-| [#34: branch moments and trace washout](https://github.com/hairer/humanise-yang-mills/issues/34) | `YM.Trace.Shelves.nearing_h`, `muteP`, `TraceExtension/Shelves/Pear.lean` | `manuscript/existence/trace-branch-moments.tex` |
+Trace sensor/weighted Ward limit [#33](https://github.com/hairer/humanise-yang-mills/issues/33)
+owns `trace-prosper-sensor.tex` and YM-000033. Branch limits/trace washout
+[#34](https://github.com/hairer/humanise-yang-mills/issues/34) owns
+`trace-branch-moments.tex` and YM-000034. Both external claims currently expire
+13 November10:00UTC; recheck live discussions. Do not duplicate them or release
+those claims. Their author's submission restrictions remain in force.
 
-Both tasks were claimed externally on 12 November, through 13 November 10:00 UTC.
-Recheck their live discussions; do not start duplicate work.
+The independent clean-build audit [#37](https://github.com/hairer/humanise-yang-mills/issues/37)
+has its own external claim through13 November11:00UTC and is not duplicated here.
+Earlier accepted source evidence used a verified prebuilt artifact and kernel
+replay; this checkpoint does not claim a new clean source build.
 
-They own separate `YM-000033/` and `YM-000034/` blueprint records and are excluded
-from the parent claim and all subagents. Check live issues before claiming;
-this file is not a lock. Follow the repository and contributing human's claim
-requirements. The task statements permit precise draft prerequisites, but each
-worker must prove its own conclusion rather than assume it. Reuse the existing
-trace Crown/Eve/weighted/construction arguments. The parent retains integration.
+Parent #26 claim remains valid through12 November16:40UTC, excluding those and
+other pre-existing external scopes. Parent integrates and traces endpoint joins;
+Luna drafting agents own separate shell/history and free-classifier outputs;
+Astra supplies bounded independent mathematics/source review in its own clone.
 
-## Current work retained by the parent team
+## New checked local arguments
 
-The #26 claim remains valid until **2026-11-12 16:40 UTC**:
+Since the838-page checkpoint, the integrated draft adds physical Ward propagation
+and finite-row comparison (still conditional on the free polar classifier),
+free internal Ward erasure, every-character compact Ward inheritance, harmonic
+collision-pole separation and the exact free radial/Euler Ward identity.
+It also proves original-null inclusion in every phase before applying the finite
+detector and links the same-trial spanning/moment producers explicitly.
 
-- Parent: integration and native endpoint closure audit. Global row/source,
-  short covariance, stress normalization, Maxwell Ward, slab-copy, corrected
-  detector moments and actual angular-action calibration have bounded passes.
-- `lattice_draft`: actual same-history shrinking-shell economics and the
-  annular Ward-field representation, newly exposed by the refreshed blueprint.
-- `limits_draft`: physical Ward propagation, shell/derivative commutators and
-  the actual nonzero charge scalar. Guard and all-Matched Pupil repairs now pass.
-- `independent_review`: independent mathematical/source checks and a refresh of
-  the remaining supplier map after the rank, equation and derivative joins.
+Each addition has an exact bounded independent review in `reviews/` and source
+correspondence in its evidence record. These checks preserve stated construction
+inputs and do not certify global closure. No held classifier or shell candidate
+is silently included as a proved result.
 
-Each agent uses a separate clone and disjoint outputs. Do not begin neighboring
-work without checking the live claim. Main input order, metadata, review logs
-and final outline/index remain integration outputs.
+## Remaining mathematical work
 
-## What this update adds
+- The free polar-vector detector/classifier is being repaired after review found
+  generic determinant, filtration, probe-typing and classification issues. The
+  formerly missing collision-pole and radial-flux inputs are now proved in their
+  separate canonical chapters; the rest still requires review.
+- Actual same-history shell-node economics is under final source clarification.
+  Its annular consequence and spectral packet/cone/analytic consumers are already
+  separate canonical arguments at their explicit inputs.
+- The history audit has identified an unresolved same-step `Pump.Seeks` receipt:
+  actual path/clip, Alongside and exact-parameter Lawful must be supplied on the
+  retained public history. `Tissue.cloth` supplies Tissue once that precise Lawful
+  witness exists. The producer trace is continuing; this is a bounded audit
+  finding, not a claim that the source lacks a theorem.
+- External trace33/34 remain necessary. Canonical YM-000022 running extraction
+  needs its review response and explicit inclusion/application; do not duplicate
+  its proof.
+- Whole dependency closure, exact public meaning/source audit, independent final
+  reviews, literature/application audit and editorial work remain required.
 
-Since the first pushed 711-page checkpoint, the integrated draft adds the joint
-reader Gaussian model, healthy cumulant launch, trace Scribe, actual mixed
-compiler, terminal portfolio calibration, tree-to-conditional covariance,
-original-history attachment, harvested owner energy and corrected unmarked
-alphabet/body identity. Bounded independent reviews and exact fingerprints are
-in `reviews/`; all retain their explicitly stated input hypotheses.
+See `endpoint-closure-ledger.md` for inspected public same-witness calls. The
+actual native R,T,W/history and fixed100 profile must be preserved. Alternate
+Roll/Novena/Ebb/Ariva/Meridian witnesses and historical centered-budget/production
+drafts are not missing public obligations. The final assembly is still conditional.
+Do not infer a mass-gap result or a broader generalized-free-field exclusion.
 
-This checkpoint also integrates actual small-window and local Gaussian prices,
-common rank purchases, equation-ideal transport through arbitrary spectators,
-insertion/derivative comparisons, and native selector witness retention.
-Each has a bounded independent pass at its explicitly retained hypotheses.
-The finite-rank argument now explicitly invokes the common-cell spectator
-estimate before its smearing argument.
+## Usage-triggered handoff preparation
 
-This update adds the global actual row/source bounds, the common all-period
-short covariance, and the derivative/compact-jet/coherent-sign normalization
-argument. The free Maxwell collar Ward calculation has also passed bounded independent
-review and is included in this checkpoint. Physical annular Ward production
-remains in progress. This update also supplies uniform all-copy slab bounds,
-all powers of the actual corrected phase detectors, and the exact angular
-intertwiner/stress-averaging construction. The last retains the physical
-Ward-propagation inputs; detector moments retain the real-grid reflection input.
+At **30% weekly remaining or below**, stop mathematical expansion, package all
+unfinished mathematical, audit, review and editorial work, push, release parent
+scope, and stop this team. Final integration is reserved for the maintainer's
+later request. No reset is to be consumed. Last scheduled check12:52UTC:35%;
+next scheduled check13:07UTC. See USAGE-HANDOFF.md.
 
-Guarded curvature and uniform Dawn selection now appear in the PDF, as does
-the distinct all-Matched warning proof. The two unintegrated centered-budget and centered-production files
-are historical alternative-route drafts. Unfrozen work in agent clones is not
-represented as part of this PDF.
+`handoff/` contains **provisional, unclaimable preparation**: disjoint coverage
+of all238 included chapters, proposed global/editorial tasks, a common contract,
+and a copyable prompt. It is not yet the released task queue or a claim lock.
+At the threshold it must be refreshed against all remaining drafts and live
+claims, supplied with issue links, and explicitly released. It includes Section2,
+symbolic index, definition-before-use, logical order and independent final review.
 
-## Remaining closure and editorial work
+## Validation
 
-The working frontier includes the actual shell-node quantitative producer,
-physical Ward propagation (under correction/review), the distinct free
-polar-vector and internal-map classification, external trace sensor/branch
-receipts, and complete dependency/axiom/scope audits. The annular consequence,
-packet spectral prices and conservation-to-cone estimates now have bounded
-passes; their stated construction inputs still require the same-data joins.
-See `endpoint-closure-ledger.md` for inspected final calls and their exact
-retention requirements. This is not an exhaustive closure certificate.
-
-The public run uses the native preselected postnumeric period route.
-`Roll/Novena`, `Ebb`, `Ariva` and `Meridian` construct a different witness and
-are not required public links. The public `Funded.fixed` profile is exactly100.
-See `public-binding-package-audit.md` and the latest closure-audit entries for
-retained versus forgotten selector receipts. Do not reintroduce the alternate
-route merely to close a stale checklist item.
-
-The requested Section2 outline with applicable literature, symbolic index,
-notation introduction, logical ordering and removal of stale input language
-remain for the final editorial pass. Do not infer a mass-gap result from a title.
-
-## Usage-triggered handoff
-
-The maintainer instructed: at **30% weekly remaining or below**, stop mathematical
-expansion, package **all** unfinished mathematical, audit, review and editorial
-work into separate agent tasks, push that handoff, release parent scopes and stop
-both parent and subagents. The final pass is reserved for the maintainer's later
-request. This supersedes the earlier reset instruction. See `USAGE-HANDOFF.md`.
-Last check11:54UTC:42% remaining; next12:09UTC. No background monitor is installed.
-
-## Validation and provenance
-
-`python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
-mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds838 pages with no overfull boxes,
-undefined references or missing glyphs. New pages received sampled visual QA;
-exact commands, samples and earlier failed layout attempts are in `validation.md`.
-No fresh Lean build/axiom replay; inherited source evidence has its own limits.
-Lean, its toolchain and dependencies are unchanged.
-
-The draft uses two cheaper drafting agents, a stronger independent reviewer and
-parent integration/independent reciprocal review where needed, in isolated clones.
-Agent passes are not human acceptance. Scott Armstrong's informalization map
-was used for navigation, not as mathematical evidence; see the provenance record.
-
-The latest update supplies the conditional annular Ward representation,
-positive spectral packet prices and the conservation-to-diagonal-cone bound.
-The shell-node producer, free classifications and physical Ward propagation
-remain active. The new endpoint ledger records exact final call/data identities;
-it does not replace missing estimates or an independent whole-proof audit.
-
-Main was fetched at28d9c5e: the new Balaban gauge-averaging literature note is
-available there. Its reported lack of an applicable theorem match does not
-close an estimate here; no new literature substitution was made on that basis.
+The857-page PDF builds without overfull boxes, undefined references or missing
+glyphs. Newly added/changed pages were rendered and inspected in successive
+852/855/857 builds; exact commands and limits are in validation.md. Blueprint
+checker and whitespace checks are run before committing. No Lean source change,
+fresh Lean build or axiom replay was performed by this team. Machine approval
+fields remain unset; independent agent passes are not human acceptance.

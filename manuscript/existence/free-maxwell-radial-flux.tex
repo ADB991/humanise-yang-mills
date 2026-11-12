@@ -1,0 +1,101 @@
+\section{The free radial flux and the weighted Euler operator}
+\label{sec:free-maxwell-radial-flux}
+
+The classification of free vector charges also uses dilation about the
+marked insertion. Its generator preserves weighted grade, so its flux
+can be used without increasing the spectator capacity. We derive the
+normalization from the same stress as in
+Section~\ref{sec:free-maxwell-ward-flux}.
+
+Fix a centre $x\in\mathbb R^4$ and the vector field $v_x(y)=y-x$.
+For the polarized stress $T_{ab}(f,g)$ used there, differentiation of
+$j_a=\sum_b(v_x)_bT_{ab}$ gives the trace of the stress plus its
+contracted divergence. The trace is zero in four dimensions. Thus the
+current is divergence free wherever both arguments are Maxwell waves.
+This is the precise reason dilation is allowed even though its matrix
+is not skew-symmetric.
+
+Let $p$ be a linear probe of homogeneous jet order $j\in\mathbb N$,
+let $f$ be a Maxwell wave on a neighborhood of the support of a smooth
+compact cutoff $\chi$, and assume $\chi=1$ near $x$. The regulator
+calculation proving \eqref{eq:maxwell-coordinate-charge} remains valid
+for $v_x$: the extra differentiated-drive term is the vanishing stress
+trace, including for the regulated closed pulse. Differentiation in
+the enclosed pulse centre, with the drive fixed at $v_x$ and the
+cutoff fixed, therefore gives
+\[
+ \mathcal F_\chi(j(v_x;P_{p,x},f))
+                         =-p[d\iota_{v_x}f;x].
+\]
+The differentiation under the collar integral has the same compact,
+separated dominator as in \eqref{eq:maxwell-single-charge}.
+
+The Bianchi expansion of the variation is now
+\[
+ (d\iota_{v_x}f)_{ab}(y)
+       =(y-x)\cdot\nabla f_{ab}(y)+2f_{ab}(y).
+\]
+This is again a Maxwell wave: locally it is the derivative at $s=0$
+of $e^{2s}f(x+e^s(y-x))$, and the Maxwell and Bianchi differential
+equations are preserved by that rescaling. Its homogeneous Taylor
+coefficient of order $j$ at $x$ is $(j+2)$ times that of $f$.
+Indeed the degree-$j$ coefficient of the rescaled wave is
+$e^{(j+2)s}$ times the original coefficient; differentiating gives
+the factor, including for the normalized Taylor coefficient $D^jf/j!$.
+Consequently
+\begin{equation}\label{eq:maxwell-radial-single-charge}
+ \mathcal F_\chi(j(v_x;P_{p,x},f))=-(j+2)p[f;x].
+\end{equation}
+
+Write $X_{j,\alpha}$ for the polynomial jet coordinates and define the
+weighted Euler derivation
+\[
+ \mathscr E=\sum_{j,\alpha}(j+2)X_{j,\alpha}
+                         \frac{\partial}{\partial X_{j,\alpha}}.
+\]
+The sum acts finitely on every polynomial. On a monomial it multiplies
+by its weighted degree, and hence preserves every finite weighted
+filtration. It preserves the gauge-invariant polynomial space since
+colour rotations mix only coordinates of the same jet order.
+
+\begin{proposition}[Radial Ward identity for all polynomial words]
+\label{prop:maxwell-radial-ward}
+Let $x_0,\ldots,x_n$ be distinct points, and let $P_i$ be arbitrary
+Wick polynomials of Maxwell jets. Choose $\chi\in C_c^\infty$ equal
+to one near $x_0$, with support avoiding $x_i$ for $i>0$. For the
+same Wick stress $\mathsf T_{ab}$ as before,
+\begin{equation}\label{eq:maxwell-radial-polynomial-ward}
+ \mathcal F_\chi\!\left(
+   y\longmapsto\Bigl[\sum_b(y-x_0)_b
+       \mathcal M_{(y,x_0,\ldots,x_n)}
+          (\mathsf T_{ab},P_0,\ldots,P_n)\Bigr]_a\right)
+ =-\mathcal M_{(x_0,\ldots,x_n)}
+                (\mathscr E P_0,P_1,\ldots,P_n).
+\end{equation}
+All integrals on the left are absolutely convergent.
+\end{proposition}
+
+\begin{proof}
+The cutoff derivative has compact support separated from every insertion;
+the integrand is smooth there. This proves absolute integrability and
+allows the finite Wick sums to pass through the integral. Extract the
+two factors in the quadratic stress, as in the proof of
+\eqref{eq:maxwell-polynomial-ward}. If neither contracts with $P_0$,
+the associated two pulses are smooth throughout the cutoff support,
+and the divergence-free current has zero flux. If both contract with
+$P_0$, collar independence and pulse homogeneity give
+$Z=t^{1-5-j-l}Z$ for jet orders $j,l$ of those two legs: the radial
+drive is homogeneous of degree one. Taking $t=2$ forces $Z=0$.
+This argument uses only the compact collar, not a product of singular
+pulses through their common centre.
+
+If exactly one stress leg contracts with $P_0$, apply
+\eqref{eq:maxwell-radial-single-charge} to the other, smooth pulse.
+Each occurrence of an order-$j$ coordinate in $P_0$ acquires the factor
+$-(j+2)$. Summing occurrences is exactly the action of $-\mathscr E$.
+The two choices of stress leg cancel the factor $1/2$ in the polarized
+Wick stress, with the same normalization as the preceding polynomial
+Ward identity. The remaining Wick pairings are those of the word on
+the right of \eqref{eq:maxwell-radial-polynomial-ward}. Linearity in
+all polynomials completes the proof.
+\end{proof}
