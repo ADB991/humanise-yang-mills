@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 13:38 UTC
+# Released collaborative checkpoint — 12 November 2026, 13:46 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -8,7 +8,7 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
 - Branch: `codex/existence-monograph`; helper PRs target this branch. Record the
-  actual checkpoint commit in your claim. The maintainer merged PR41; the next draft is linked from issue26.
+  actual checkpoint commit in your claim. The maintainer merged PR41; the final handoff draft and exact commit are linked from issue26.
 - Article: `manuscript/existence.tex`; compiled snapshot `manuscript/existence.pdf`
   has872 pages. Page count describes the artifact, not completion.
 - `checkpoint-manifest.json` records included files and PDF hash.
@@ -33,10 +33,10 @@ has its own external claim through13 November11:00UTC and is not duplicated here
 Earlier accepted source evidence used a verified prebuilt artifact and kernel
 replay; this checkpoint does not claim a new clean source build.
 
-Parent #26 claim remains valid through12 November16:40UTC, excluding those and
-other pre-existing external scopes. Parent integrates and traces endpoint joins;
-Luna drafting agents now audit the selected-course and final Ward bindings;
-Astra supplies bounded independent mathematics/source review in its own clone.
+The parent stopped at the 30% weekly-remaining threshold. Its claim release and
+final handoff commit are linked in issue26; this does not release external claims.
+Luna drafting agents and the independent Astra reviewer have stopped too.
+The final pass is reserved until the user explicitly requests it.
 
 ## New checked local arguments
 
@@ -75,21 +75,22 @@ Roll/Novena/Ebb/Ariva/Meridian witnesses and historical centered-budget/producti
 drafts are not missing public obligations. The final assembly is still conditional.
 Do not infer a mass-gap result or a broader generalized-free-field exclusion.
 
-## Usage-triggered handoff preparation
+## Released work packages
 
-At **30% weekly remaining or below**, stop mathematical expansion, package all
-unfinished mathematical, audit, review and editorial work, push, release parent
-scope, and stop this team. Final integration is reserved for the maintainer's
-later request. No reset is to be consumed. Last check13:37UTC:31%;
-next check13:42UTC while close to the stop threshold. See USAGE-HANDOFF.md.
+At 13:46 UTC the weekly meter reached **30% remaining**. Mathematical work stopped;
+only the requested packaging/validation/push followed. No reset was consumed.
+The [package index](handoff/README.md) links all 16 chapter groups, six global tasks,
+and the reserved final pass. The [copyable agent prompt](handoff/AGENT-PROMPT.md)
+sets the exact scope, source, ownership, validation and independent-review rules.
 
-`handoff/` contains **provisional, unclaimable preparation**: disjoint coverage
-of all241 included chapters, proposed global/editorial tasks, a common contract,
-and a [copyable prompt](handoff/AGENT-PROMPT.md). See the
-[package index](handoff/README.md). It is not yet the released task queue or a claim lock.
-At the threshold it must be refreshed against all remaining drafts and live
-claims, supplied with issue links, and explicitly released. It includes Section2,
-symbolic index, definition-before-use, logical order and independent final review.
+Issues42–57 cover C01–C16. G01/G03/G04/G05/G06 are issues58–62;
+G02 reuses canonical issue22 and F01 stays reserved in issue26. G04/G06 are blocked
+until their named inputs are ready. Activate other ready scopes only after the
+parent's claim-release comment. Every included chapter is assigned exactly once.
+Existing external issues33/34/37 and source/literature tasks retain their ownership.
+The mathematical snapshot is `9b879ee64bdf2d5cfda8fd72e3bfd03cd53a980b`; final handoff commits only
+add coordination metadata. Section2, symbolic index, notation/order and final
+independent dependency closure remain explicit work, not completed features.
 
 ## Validation
 
