@@ -6,13 +6,109 @@ choosing a patch. Analyticity near the identity is then a local
 finite-dimensional statement, and its derivative includes the root
 normalization explicitly.
 
+\subsection{The nearest-point projection onto the group}
+The gauge group $G$ is a closed subgroup of $U(N)$. We regard
+$\mathcal M=M_N(\mathbb C)$ as a real vector space with the Frobenius
+inner product $\langle A,B\rangle=\operatorname{Re}\operatorname{tr}(A^*B)$
+and norm $\|\cdot\|$. Left and right multiplication by a unitary
+matrix are isometries of $\mathcal M$. Let
+$\mathfrak g=\{X\in\mathcal M:\exp(sX)\in G\text{ for all }s\in\mathbb R\}$
+be the Lie algebra of $G$, a real subspace of the skew-Hermitian
+matrices, let $\mathfrak g^\perp$ be its orthogonal complement in
+$\mathcal M$, and let $\Pi$ be the orthogonal projection of $\mathcal M$
+onto $\mathfrak g$. A point $u\in G$ is \emph{nearest} to
+$Z\in\mathcal M$ if $\|Z-u\|\le\|Z-v\|$ for all $v\in G$. Since $G$ is
+compact, every $Z$ has at least one nearest point. The group may be
+disconnected, and it may be finite, in which case $\mathfrak g=0$.
+
+\begin{lemma}\label{lem:branch-nearest-projection}
+There are $\rho>0$ and a real-analytic map
+$\pi:B(1,2\rho)\to G$, defined on the open Frobenius ball of radius
+$2\rho$ about $1$ in $\mathcal M$, with the following properties.
+\begin{enumerate}
+\item[(a)] $\pi(u)=u$ for $u\in G\cap B(1,2\rho)$, and $D\pi(1)=\Pi$.
+\item[(b)] For every $Z\in B(1,\rho)$, $\pi(Z)$ is the only point of $G$
+  nearest to $Z$.
+\item[(c)] If $Z\in\mathcal M$ and $\|Z-v\|<\rho$ for some $v\in G$, then
+  $Z$ has exactly one nearest point in $G$, namely $v\pi(v^{-1}Z)$.
+\item[(d)] The first and second derivatives of $\pi$ are bounded on the
+  closed ball $\overline B(1,\rho)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We use one fact from the theory of matrix Lie groups. Since $U(N)$ is
+closed in $GL(N,\mathbb C)$, $G$ is a closed subgroup of
+$GL(N,\mathbb C)$, that is a matrix Lie group in the sense of B.~C. Hall,
+\emph{Lie Groups, Lie Algebras, and Representations}, 2nd ed.,
+Graduate Texts in Mathematics 222, Springer, 2015, Definition~1.4,
+and $\mathfrak g$ is its Lie algebra in the sense of Definition~3.18
+there. By Theorem~3.42 of the same book there is $\varepsilon_0\in(0,\log2)$
+such that, for every matrix $A=\exp X$ with $\|X\|<\varepsilon_0$,
+one has $A\in G$ if and only if $X\in\mathfrak g$. The matrix
+exponential is a real-analytic diffeomorphism from a neighbourhood
+of $0$ in $\mathcal M$ onto a neighbourhood of $1$, with derivative
+the identity at $0$, so there is $\theta>0$ such that every
+$u\in G$ with $\|u-1\|<\theta$ equals $\exp X$ for one
+$X\in\mathfrak g$ with $\|X\|<\varepsilon_0$, and $X\to0$ as
+$u\to1$. (Equivalently: near $1$, $G$ is the embedded analytic
+submanifold $\exp(\mathfrak g)$; this is Cartan's closed-subgroup
+theorem.)
+
+\emph{The normal chart.} Define
+$\Phi:\mathfrak g\times\mathfrak g^\perp\to\mathcal M$ by
+$\Phi(X,N)=\exp(X)(1+N)$. It is real-analytic, $\Phi(0,0)=1$, and
+$D\Phi(0,0)(X,N)=X+N$. Since $\mathcal M=\mathfrak g\oplus\mathfrak g^\perp$,
+this derivative is a linear isomorphism. By the real-analytic inverse
+function theorem (S.~G. Krantz and H.~R. Parks, \emph{A Primer of Real
+Analytic Functions}, 2nd ed., Birkh\"auser, 2002, Section~2.5) there is
+$r\in(0,\varepsilon_0)$ such that, with
+$O_r=\{(X,N):\|X\|<r,\ \|N\|<r\}$, the set $\Phi(O_r)$ is an open
+neighbourhood of $1$ and $\Phi:O_r\to\Phi(O_r)$ is a real-analytic
+diffeomorphism. Choose $\rho>0$ so small that
+$\overline B(1,3\rho)\subset\Phi(O_r)$, $2\rho<\theta$, $\rho\le r$, and
+every $u\in G$ with $\|u-1\|<2\rho$ is $\exp X$ with
+$X\in\mathfrak g$, $\|X\|<r$. For $Z\in B(1,2\rho)$ write
+$\Phi^{-1}(Z)=(X(Z),N(Z))$ and put $\pi(Z)=\exp X(Z)$. Then $\pi$ is
+real-analytic and takes values in $G$, because $X(Z)\in\mathfrak g$.
+
+\emph{Property (a).} If $u\in G\cap B(1,2\rho)$, then $u=\exp X$ with
+$X\in\mathfrak g$, $\|X\|<r$, so $u=\Phi(X,0)$ with $(X,0)\in O_r$.
+Injectivity of $\Phi$ on $O_r$ gives $X(u)=X$ and $\pi(u)=u$.
+Differentiating $\pi(\Phi(X,N))=\exp X$ at $(0,0)$ gives
+$D\pi(1)(X+N)=X$, that is $D\pi(1)=\Pi$.
+
+\emph{Property (b).} Let $Z\in B(1,\rho)$ and let $u$ be a nearest
+point. Since $1\in G$, $\|Z-u\|\le\|Z-1\|<\rho$ and therefore
+$\|u-1\|<2\rho$, so $u=\exp X$ with $X\in\mathfrak g$, $\|X\|<r$.
+For $Y\in\mathfrak g$, $s\mapsto\|Z-u\exp(sY)\|^2$ is differentiable
+and minimal at $s=0$, because $u\exp(sY)\in G$. Its derivative there
+is $-2\langle Z-u,uY\rangle=-2\langle u^*Z-1,Y\rangle$, using that $u$
+is unitary. Hence $N:=u^*Z-1\in\mathfrak g^\perp$, and
+$\|N\|=\|Z-u\|<\rho\le r$. Thus $Z=\Phi(X,N)$ with $(X,N)\in O_r$, so
+$(X,N)=\Phi^{-1}(Z)$ and $u=\pi(Z)$. As a nearest point exists,
+$\pi(Z)$ is the unique one.
+
+\emph{Property (c).} Left multiplication by $v^{-1}\in G$ is an
+isometry of $\mathcal M$ mapping $G$ onto $G$. Hence $u$ is nearest to
+$Z$ if and only if $v^{-1}u$ is nearest to $v^{-1}Z$, and
+$\|v^{-1}Z-1\|=\|Z-v\|<\rho$. By (b), $v^{-1}u=\pi(v^{-1}Z)$.
+
+\emph{Property (d).} The derivatives of $\pi$ are continuous on the
+compact set $\overline B(1,\rho)\subset B(1,2\rho)$.
+\end{proof}
+
+In the rest of this chapter and in Sections~\ref{sec:seed-geometry}
+and~\ref{sec:seed-energy}, $\pi$ denotes this map. Its construction
+uses only $G$; no other part of the data enters.
+
 \subsection{Uniform uniqueness of minimizing frames}
 Use the finite path family $W_{ij\alpha}$ and minimizing energy from
-Section~\ref{sec:seed-geometry}. Regard group elements as matrices,
-and let $\Pi$ be the orthogonal projection onto the Lie algebra.
-The analytic nearest-point projection $\pi$ near $1$ has
-$D\pi(1)=\Pi$. By continuity of its derivative, for a sufficiently
-small convex ball and all $A,B$ in that ball,
+Section~\ref{sec:seed-geometry}. Let $\pi$ and $\rho$ be as in
+Lemma~\ref{lem:branch-nearest-projection}. By continuity of
+$D\pi$ at $1$ and $D\pi(1)=\Pi$, there is a convex ball about $1$,
+contained in $B(1,\rho)$, on which $\|D\pi-\Pi\|\le\tfrac14$; for all
+$A,B$ in that ball,
 \begin{equation}\label{eq:branch-projection}
  \|\pi(A)-\pi(B)-\Pi(A-B)\|\le\tfrac14\|A-B\|.
 \end{equation}
@@ -41,8 +137,10 @@ larger than the double average and applying Jensen gives
 $\|m-1\|\le2\varepsilon$. Its feedback matrix
 $m_i=\mathop{\rm av}_{j,\alpha}h_jW_{ij\alpha}^{-1}$ satisfies
 $\|m_i-m\|\le\varepsilon$, so $\|m_i-1\|\le3\varepsilon<\delta$.
-The self-consistency proved in \eqref{eq:geometry-feedback} therefore
-identifies $h_i=\pi(m_i)$.
+By \eqref{eq:geometry-feedback}, $h_i$ is a nearest group element to
+$m_i$, and $m_i$ lies in the $\delta$-ball, which is contained in
+$B(1,\rho)$. Hence
+Lemma~\ref{lem:branch-nearest-projection}(b) identifies $h_i=\pi(m_i)$.
 
 Let $h,k$ be the two rotated minimizers and set
 $v=\max_i\|h_i-k_i\|$. Their feedback differences $D_i$ satisfy
@@ -65,8 +163,9 @@ so $v=0$. Undoing the rotations proves uniqueness up to a common
 left multiplier. If both frames are normalized at their centre,
 that multiplier is $1$.
 
-The actual frame branch tests that every coordinate path transport,
-after one of its rooted axial gauges, has chord less than a fixed
+The actual frame branch tests that, for every rooted axial gauge
+centred at the patch centre (every coordinate order of the axial
+tree), every coordinate path transport has chord less than a fixed
 cutoff. Take this cutoff at most $\varepsilon/D$. Choose one of
 those axial gauges; the resulting $W$ satisfies the preceding matrix
 bound. Changing variables by that gauge in the minimizing energy
@@ -83,9 +182,10 @@ $\zeta$, Jensen gives
 \[
  \|m-u\|^2\le\sum_iw_i\|Y_i-u\|^2<2D^2\zeta.
 \]
-The group has a uniform nearest-point tube, obtained from the local
-tube by left translation. Choose $\zeta$ so that
-$\sqrt{2D^2\zeta}$ is smaller than its radius. Then the predictor
+Choose $\zeta$ so that $\sqrt{2D^2\zeta}<\rho$. Then $\|m-u\|<\rho$
+with $u\in G$, and Lemma~\ref{lem:branch-nearest-projection}(c),
+the uniform nearest-point tube obtained by left translation, shows
+that $m$ has exactly one nearest group element. Then the predictor
 minimum is unique on its tested branch, uniformly over all finite
 weight distributions. Finally the fallback frame rule has an
 eligible choice by \eqref{eq:geometry-axial} with axial factor $16$.
@@ -142,13 +242,22 @@ $\int_\gamma a$ for its signed sum along a path. Define
                  \int_{i\to j,\alpha}a,
 \]
 where the paths are in the patch centred at the coarse site $y$.
+Throughout, a coarse site $y$ is embedded in the fine lattice as $Ly$,
+and the patch at $y$ consists of the fine points $Ly+i$, with $i$
+ranging over the patch offsets in fine units and periodic reduction
+understood; thus $\int_{i\to j,\alpha}a$ is the sum of $a$ along the
+path from $Ly+i$ to $Ly+j$ of order $\alpha$.
 Differentiate the feedback equation at zero. If
 $\dot h_i$ is the matrix derivative and $\overline{\dot h}$ its
 uniform average, differentiation of the inverse transport gives
 \[
  \dot h_i=\Pi\overline{\dot h}+\operatorname{col}(\tau_y(i;a)).
 \]
-The feedback identity holds also at the centre. Since the normalized
+The feedback identity holds also at the centre: the cost is
+invariant under a common left multiplication, so the
+centre-normalized minimizer is an unconstrained minimizer and
+\eqref{eq:geometry-feedback} applies at $o$ as well (see
+Section~\ref{sec:seed-geometry}). Since the normalized
 frame has $h_o(a)=1$, its centre derivative is zero. Subtraction
 therefore yields
 \begin{equation}\label{eq:branch-frame-derivative}
@@ -162,7 +271,7 @@ of its frame at $y$, the length-$L$ fine path, and the inverse frame
 at $y+e_b$. Its colour derivative is consequently
 \[
  \tau_y(i;a)-\tau_y(o;a)
- +\int_{y+i\to y+i+Le_b}a
+ +\int_{Ly+i\to L(y+e_b)+i}a
  -\tau_{y+e_b}(i;a)+\tau_{y+e_b}(o;a).
 \]
 At zero all connectors equal $1$. Nearby the predictor is on its
@@ -178,7 +287,7 @@ Define the bond averaging map and the site correction by
 \[
  \begin{split}
  (\mathcal Aa)_{y,b}
-   &=\sum_iw_i\int_{y+i\to y+i+Le_b}a,\\
+   &=\sum_iw_i\int_{Ly+i\to L(y+e_b)+i}a,\\
  (\mathcal Ra)_y&=\tau_y(o;a)-\sum_iw_i\tau_y(i;a).
  \end{split}
 \]

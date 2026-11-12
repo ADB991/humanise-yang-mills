@@ -109,14 +109,15 @@ $r(kh_i^{-1})^2/2$, which is zero at $k=h_i$; hence $h_i$ also minimizes
 the full frozen-neighbour cost. Expanding the squared Frobenius norms
 shows that this is exactly nearest-point minimization for $m_i$.
 
-The local tubular projection of the group has derivative the
-orthogonal tangent projection at $1$. On a sufficiently small ambient
-ball its derivative has norm at most $2$. Shrinking the ball also
-ensures that every nearest point is this local projection. Thus choose
-$\delta>0$ so that two matrices in the $\delta$-ball have nearest
-points at distance at most twice their distance. This also follows
-directly from the first-order nearest-point estimate used for the
-group data. Set
+Let $\pi$ and $\rho$ be the nearest-point projection and its radius
+from Lemma~\ref{lem:branch-nearest-projection}. Its derivative at $1$
+is the orthogonal projection $\Pi$, of operator norm at most $1$, and
+$D\pi$ is continuous, so there is $\delta\in(0,\rho]$ with
+$\|D\pi\|\le2$ on the ball $B(1,\delta)$. By part~(b) of that lemma,
+every matrix $A$ in this ball has exactly one nearest group element,
+$\pi(A)$; integrating $D\pi$ along segments in the convex ball gives
+$\|\pi(A)-\pi(B)\|\le2\|A-B\|$. Thus two matrices in the $\delta$-ball
+have nearest points at distance at most twice their distance. Set
 \[
  \sigma=\frac{(\delta/2)^2}{8D^2},\qquad a=\frac{\delta}{2D}.
 \]
@@ -273,10 +274,42 @@ Let $t$ be the fine threshold, $T$ the very large threshold, and $W$
 the predictor cutoff parameter. Retain the seeds in $\mathcal F$
 with $r_p>T$ and those in $\mathcal I$ with
 $r(V_eQ_e^{-1})>T$, and discard the flags. Call this collection the
-very large seeds, of size $d_A$. The local sector conditions say
-that, in the radius-$5B$ seed neighbourhood, unlisted fine chords
-are at most $t/2$, unlisted predictor chords at most $2Wt$, and all
-selected frame weights are positive.
+very large seeds, of size $d_A$.
+
+\begin{definition}[Local sector conditions]\label{def:geometry-sector-conditions}
+Let $\mathcal N$ be the set of coarse sites at distance at most $5B$
+from the associated coarse sites of the seed collection. A fine
+plaquette \emph{meets} $\mathcal N$ if the coarse parent of at least one
+of its four corners lies in $\mathcal N$; a coarse bond meets $\mathcal N$
+if at least one of its two endpoints lies in $\mathcal N$. Write $r_p$
+for the chord of the fine plaquette $p$ and
+$z_e=r(V_eQ_e^{-1})$ for the predictor chord of the coarse bond $e$.
+The \emph{local sector conditions} are:
+\begin{enumerate}
+\item[(S1)] for every fine plaquette $p$ meeting $\mathcal N$:
+  $r_p\ge t/4$ if $p\in\mathcal F$, and $r_p\le t/2$ if $p\notin\mathcal F$;
+\item[(S2)] for every coarse bond $e$ meeting $\mathcal N$:
+  $z_e\ge Wt$ if $e\in\mathcal I$, and $z_e\le2Wt$ if $e\notin\mathcal I$;
+\item[(S3)] for every $i\in\mathcal N$: $i\in\mathcal G$ if and only if
+  $i$ is a coarse flag of $V$ at the coarse threshold $s$;
+\item[(S4)] for every $i\in\mathcal N$: the selected frame weight
+  (the retained site likelihood) of the patch at $i$ is strictly positive.
+\end{enumerate}
+\end{definition}
+
+These are the conditions defining the packet sector; they are part of
+the hypotheses of every estimate below and in
+Sections~\ref{sec:seed-energy} and~\ref{sec:seed-hit-comparison} that
+refers to them. Every fine plaquette whose anchor has its parent in
+$\mathcal N$ meets $\mathcal N$, and every coarse bond whose base point is
+in $\mathcal N$ meets $\mathcal N$, so the conditions imply the weaker
+anchor-based statements; the arguments of this section only use those.
+The incidence form matters in Section~\ref{sec:seed-energy}, where the
+data are transformed by signed coordinate maps: such a map sends the
+corners (endpoints) of an address to the corners (endpoints) of the
+image address and commutes with the parent map, so it preserves the
+class of addresses meeting $\mathcal N$ once $\mathcal N$ is replaced by
+its image, whereas it changes anchors.
 
 Suppose
 \begin{equation}\label{eq:geometry-witness-conditions}
