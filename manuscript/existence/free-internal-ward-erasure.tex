@@ -1,0 +1,221 @@
+\section{Erasing the internal Ward kernel in the free theory}
+\label{sec:free-internal-ward-erasure}
+
+The internal defect in a proposed rotation action has two skew-matrix
+arguments. Its vanishing requires a different test from the classification
+of vector charges. We prove that test using the free stress and the
+strict free detector already constructed in
+Sections~\ref{sec:free-maxwell-ward-flux} and
+\ref{sec:ex-lattice-all-grade-free-detectors}.
+
+Let $V_d$ be the complex space of gauge-invariant Maxwell jet polynomials
+of weighted degree at most $d$, modulo the Maxwell and Bianchi relations.
+A jet coordinate of order $r$ has weight $r+2$. We identify the inclusions
+$V_k\hookrightarrow V_d$ with inclusions of polynomial spaces. Write
+$\mathcal M_x(P_1,\ldots,P_n)$ for their separated free Wick moment, and
+$\rho(g)$ for the action of $g\in O(4)$ on the jets. The real structure is
+complex conjugation of the polynomial coefficients and the real jets.
+For $A\in\mathfrak{so}(4)$, denote the infinitesimal action by $L_A$;
+it preserves each $V_d$. The stress polynomials $\mathsf T_{ab}$ belong
+to $V_4$.
+
+\begin{theorem}[Vanishing of the internal Ward defect]
+\label{thm:free-internal-erasure}
+Suppose the gauge group is compact and simple and $d\in\mathbb N$, $d\geq4$. Let
+\[
+ T:\mathfrak{so}(4)\times\mathfrak{so}(4)
+       \longrightarrow\operatorname{End}_{\mathbb C}(V_d)
+\]
+be real bilinear. Suppose that $T(A,A)=0$, that every $T(A,B)$ kills
+the unit and commutes with the real structure, and that it preserves
+every $V_k$ with $0\leq k\leq d$. Suppose also that for each determinant-one
+signed coordinate transformation $g$,
+\begin{equation}\label{eq:internal-signed-covariance}
+ \rho(g)T(A,B)P
+ =T(gAg^{-1},gBg^{-1})\rho(g)P.
+\end{equation}
+If for every $n$, every separated $x=(x_1,\ldots,x_n)$, every
+$P_i\in V_d$ and all $A,B$,
+\begin{equation}\label{eq:internal-zero-ward-row}
+ \sum_{i=1}^n\mathcal M_x
+       (P_1,\ldots,T(A,B)P_i,\ldots,P_n)=0,
+\end{equation}
+then $T=0$.
+\end{theorem}
+
+The quantifier over spectators in \eqref{eq:internal-zero-ward-row}
+is essential: the word length is arbitrary, although every label belongs
+to the same finite grade $d$. We first work entirely in grade four, and
+then use the stress flux to reach all of $V_d$.
+
+\subsection{Changing the direction of a grade-four pairing}
+Put
+\[
+ B_x(P,Q)=\mathcal M_{(x,0)}(P,Q)\qquad(x\ne0),
+ \qquad h_x=I-2\frac{xx^{\mathsf t}}{|x|^2}.
+\]
+Thus $h_x$ is the orthogonal reflection in the hyperplane perpendicular
+to $x$. On zero-order two-form probes, the covariance
+\eqref{eq:maxwell-ward-covariance} is
+\begin{equation}\label{eq:internal-house-covariance}
+ C(x)=4\nu |x|^{-4}\,\bigwedge\nolimits^2 h_x
+                  \otimes I_{\mathfrak g}.
+\end{equation}
+Here the exterior square acts on the two-form indices, with their usual
+orthonormal basis $e_a\wedge e_b$, $a<b$. To check the coefficient and
+sign, use orthogonal covariance to take $x=re_0$. The Hessian of
+$\nu|x|^{-2}$ has diagonal entries $6\nu r^{-4}$ in direction $0$
+and $-2\nu r^{-4}$ in the other directions. Substitution in
+\eqref{eq:maxwell-ward-covariance} gives $-4\nu r^{-4}$ on
+$e_0\wedge e_b$, $4\nu r^{-4}$ on $e_a\wedge e_b$ with $a,b\ne0$,
+and zero off the diagonal. These are exactly the eigenvalues in
+\eqref{eq:internal-house-covariance}.
+
+Consequently the covariance of $\rho(h_x)p$ at $x$ with a zero-order
+probe $q$ at $0$ depends on $x$ only through $|x|$. This extends to
+products of such probes by Wick's rule: same-insertion contractions are
+zero, and every cross-contraction has the stated invariance. It extends
+further by linearity to their span. The low-grade decomposition in
+Section~\ref{sec:ex-lattice-trace-free-rank} says that $V_4$ is spanned
+by the unit and invariant quadratic products of zero-order curvature
+probes. We therefore obtain, for $|x|=|y|>0$,
+\begin{equation}\label{eq:internal-grade-four-direction}
+ B_x(P,Q)=B_y\bigl(\rho(h_yh_x)P,Q\bigr)
+                   \qquad(P,Q\in V_4).
+\end{equation}
+Indeed apply the preceding Wick identity to $\rho(h_x)P$, using
+$h_x^2=I$. This argument concerns zero-order probes; it makes no
+assertion that \eqref{eq:internal-grade-four-direction} holds on higher
+jet sectors.
+
+The form $B_{-re_a}$ is nondegenerate on every $V_k$ when $r>0$.
+To see this, translate the pair $(-re_a,0)$ to
+$(-re_a/2,re_a/2)$. If $P\ne0$, its reflected conjugate lies in the
+same $V_k$, and its pairing with $P$ is strictly positive by
+Theorem~\ref{thm:ex-lattice-all-grade-free-detector}. In particular,
+vanishing of $B_{-re_a}(P,Q)$ for every $Q\in V_k$ implies $P=0$.
+
+Fix $A,B$ and abbreviate $U=T(A,B)$. The two-point case of
+\eqref{eq:internal-zero-ward-row} is
+\begin{equation}\label{eq:internal-two-point-skew}
+ B_x(UP,Q)+B_x(P,UQ)=0.
+\end{equation}
+Choose $x=-re_a$ and $y$ with $|y|=r$, and set $s=h_xh_y$.
+Since $U$ preserves $V_4$, the identity at $y$, followed by
+\eqref{eq:internal-grade-four-direction}, gives
+\[
+ B_x(\rho(s)UP,Q)+B_x(\rho(s)P,UQ)=0.
+\]
+Subtract the identity at $x$ for $\rho(s)P,Q$. Nondegeneracy on $V_4$
+then yields
+\begin{equation}\label{eq:internal-low-commutation}
+ \rho(s)UP=U\rho(s)P\qquad(P\in V_4).
+\end{equation}
+For $a\ne b$, take $y=e_a+e_b$ and $r=\sqrt2$. Direct application
+of the reflection formula shows that $s=h_{-re_a}h_{e_a+e_b}$ is
+the quarter-turn $q_{ab}$ sending $e_a$ to $-e_b$, $e_b$ to $e_a$
+and fixing the other axes. Thus $U$ commutes with all these
+quarter-turns on $V_4$.
+
+\subsection{An alternating tensor killed by quarter-turns}
+We use the following elementary fact. If $W$ is a real vector space and
+$F:\mathfrak{so}(4)\times\mathfrak{so}(4)\to W$ is bilinear,
+alternating and invariant under simultaneous conjugation by every
+$q_{ab}$, then $F=0$.
+
+Here is a basis proof, which also explains the role of four dimensions.
+Write $E_{ab}=e_ae_b^{\mathsf t}-e_be_a^{\mathsf t}$, so that
+$E_{ba}=-E_{ab}$. Repeated arguments vanish by alternation. For
+$F(E_{ab},E_{ac})$ with $a,b,c$ distinct, choose the fourth axis $l$.
+The half-turn $q_{cl}^2$ fixes $E_{ab}$ and negates $E_{ac}$.
+Invariance therefore makes this value equal to its negative, hence zero.
+Changing the signs or order of indices covers every pair with a common
+axis. For four distinct indices $a,b,i,l$, conjugation by $q_{ai}$
+sends $(E_{ab},E_{il})$ to $(-E_{ib},E_{al})$, and conjugation by
+$q_{bl}$ sends $(E_{ib},E_{al})$ to $(-E_{il},E_{ab})$. Hence
+\[
+ F(E_{ab},E_{il})=-F(E_{ib},E_{al})
+       =F(E_{il},E_{ab})=-F(E_{ab},E_{il}).
+\]
+This value is zero as well. Bilinearity and the fact that the $E_{ab}$
+span $\mathfrak{so}(4)$ finish the proof.
+
+For $P\in V_4$, apply this fact to $F_P(A,B)=T(A,B)P$.
+Equation~\eqref{eq:internal-low-commutation} and signed covariance give
+\[
+ T(A,B)\rho(q_{ab})Q
+ =T(q_{ab}Aq_{ab}^{-1},q_{ab}Bq_{ab}^{-1})\rho(q_{ab})Q.
+\]
+The quarter-turn acts bijectively on $V_4$, so take
+$Q=\rho(q_{ab})^{-1}P$. This proves the invariance required for $F_P$.
+We conclude that
+\begin{equation}\label{eq:internal-stress-annihilation}
+ T(A,B)P=0\quad(P\in V_4),\qquad
+ T(A,B)\mathsf T_{ab}=0.
+\end{equation}
+
+\subsection{The flux commutator at the same spectator capacity}
+We now prove the step which propagates this conclusion. Let $U$ be
+any endomorphism of $V_d$ with zero Ward rows and
+$U\mathsf T_{ab}=0$. For a fixed $K\in\mathfrak{so}(4)$ and
+$P\in V_d$, we claim that
+\begin{equation}\label{eq:internal-commutator-null}
+ \mathcal M_x([L_K,U]P,Q_1,\ldots,Q_m)=0
+\end{equation}
+for every separated $x=(x_0,\ldots,x_m)$ and all $Q_i\in V_d$.
+Choose a smooth compactly supported cutoff $\chi$ equal to one near
+$x_0$, whose support avoids the other points. Use the rotational vector
+field $v(y)=K(y-x_0)$ in the polynomial flux identity
+\eqref{eq:maxwell-polynomial-ward}. All its integrals are finite:
+the weight $d\chi$ has compact support separated from all insertions,
+and each moment is smooth there.
+
+Write $\mathbf P=(P,Q_1,\ldots,Q_m)$, and let $\mathbf P^{(i)}$
+be this word with $U$ applied in slot $i$. At each point on the cutoff
+collar, apply the zero Ward row for $U$ to the enlarged word consisting
+of the stress insertion and $\mathbf P$. This is a permitted row at
+grade $d$ because $d\geq4$. Its term with $U$ on the stress is zero.
+The remaining terms say that the sum, over $i$, of the stress moments
+with words $\mathbf P^{(i)}$ vanishes. Multiply by $v_b\partial_a\chi$,
+sum over $a,b$, and integrate. The finite sum may be interchanged with
+the integrals by the compact smoothness just noted. The polynomial
+flux identity at the distinguished slot $0$ then gives
+\[
+ \mathcal M_x(L_KUP,Q_1,\ldots,Q_m)
+ +\sum_{i=1}^m\mathcal M_x
+       (L_KP,Q_1,\ldots,UQ_i,\ldots,Q_m)=0.
+\]
+On the other hand the zero Ward row applied to the word
+$(L_KP,Q_1,\ldots,Q_m)$ gives the same equation with $UL_KP$ in
+place of $L_KUP$. This second application stays at grade $d$, since
+$L_K$ preserves $V_d$. Subtracting proves
+\eqref{eq:internal-commutator-null}.
+
+The commutator $[L_K,U]P$ itself lies in $V_d$. In
+\eqref{eq:internal-commutator-null}, take one spectator to be its
+reflected conjugate at an axis-separated point. Strict reflection
+positivity forces the commutator to vanish. Thus
+\begin{equation}\label{eq:internal-infinitesimal-commutation}
+                         L_KU=UL_K\quad\hbox{on }V_d.
+\end{equation}
+The preservation of grade was used twice: to apply the second Ward
+row and to remove a vector detected by spectators of that same grade.
+No increase in the spectator capacity is hidden in this argument.
+
+\begin{proof}[Completion of Theorem~\ref{thm:free-internal-erasure}]
+For $U=T(A,B)$, \eqref{eq:internal-stress-annihilation} supplies the
+stress hypothesis of the preceding argument. Consequently $U$ commutes
+with every $L_K$ on $V_d$. For fixed $P$, the functions
+\[
+ f(t)=\rho(e^{tK})UP,\qquad g(t)=U\rho(e^{tK})P
+\]
+solve $f'=L_Kf$, $g'=L_Kg$ and have the same value at zero.
+Uniqueness is elementary in finite dimension: the derivative of
+$e^{-tL_K}(f(t)-g(t))$ is zero, so this difference is identically zero.
+Taking $K=E_{ab}$ and $t=\pi/2$ shows that $U$ commutes with
+$\rho(q_{ab})$ on all of $V_d$. For arbitrary $P\in V_d$, signed
+covariance and the surjectivity of $\rho(q_{ab})$ now make
+$(A,B)\mapsto T(A,B)P$ quarter-turn invariant, exactly as in grade four.
+The alternating-tensor argument proves it zero. Since $P$ was arbitrary,
+$T=0$.
+\end{proof}

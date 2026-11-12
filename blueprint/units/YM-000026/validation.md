@@ -336,3 +336,67 @@ reread11:57UTC; scope unchanged. Main's Balaban literature note was located,
 without introducing a new literature substitution. Endpoint call ledger added
 as an author audit, not a global completion finding. No Lean edits, fresh build
 or axiom replay. Whole dependency closure and human acceptance remain open.
+
+
+## 2026-11-12 12:38 UTC — 852-page working build
+
+Built the integrated Ward941dfa8, internal erasure be439656 and phase-inheritance
+ba6a0498 chapters. The first build exposed one undefined reference to the held
+free-classifier draft. Replaced it by the explicit existing free input boundary
+and a reference to the now-proved internal erasure; independent reviewer checked
+that exact carry. Final852 build succeeds,4317061 bytes, no overfull boxes,
+undefined references or missing glyphs. Rendered18 pages713–717,767–775,780–783
+at scale1300 and viewed all three contact sheets in /private/tmp/ym-qa852; no
+clipping, overlap or display overflow seen. The trace-small-means heading now
+starts its own section; reviewer confirmed the editorial-only carry.
+
+A structural cross-reference inventory reports1761 labels,2440 references,179
+cross-chapter forward references, no missing or duplicate labels. It is navigation
+evidence only, not a mathematical dependency graph or proof of definition-before-use.
+The free collision-pole chapter is a separate new draft and is not in this PDF.
+No Lean source edits, fresh Lean build or axiom replay. New main fetch still28d9c5e
+(Balaban note); external clean-build issue37 is active and is not duplicated.
+
+
+## 12:44 UTC — 855-page pole-separation build
+
+The added pole/collision chapter9a1cc07b builds cleanly; PDF855 pages,4332105
+bytes, with no overfull, undefined-reference or missing-glyph diagnostics.
+Rendered pages715–719 at scale1300 and inspected all five in
+/private/tmp/ym855-pole-contact.jpg; no clipping or overflow observed. Source
+and mathematical bounded pass is recorded separately. Phase-null inheritance
+was added afterwards and awaits its own review/build. Main fetch now3b1eeb6
+shows the maintainer merged PR40; the next pushed checkpoint needs a new draft PR.
+
+
+## 12:51 UTC —857-page checkpoint
+
+After the phase-null join, the855-page build remained855 pages,4335817 bytes;
+rendered/viewed pages151–153,156–158 on /private/tmp/ym855-phase-contact.jpg.
+Added radial Euler flux yields857 pages,4343024 bytes; rendered/viewed pages
+707–710 on /private/tmp/ym856-radial-contact.jpg (directory name856 is incidental).
+Both logs have no overfull boxes, undefined references or missing glyphs; no
+clipping/overlap observed in rendered samples. Canonical radial and C03 phase
+edits have bounded independent passes. Provisional handoff coverage refreshed
+to238 chapters; not released/claimable. No Lean changes/build/axiom replay.
+
+## 13:12 UTC —870-page working checkpoint
+
+Integrated the reviewed shell producer and free classifier, with separately
+recorded independent parent review of cross-order ranging. The first shell
+build (864 pages) had a 68pt overflow in its introductory definitions, repaired
+by two aligned rows; the first classifier build (870 pages) had a 17pt inline
+triple overflow, repaired by a display. The reviewer checked exact editorial
+carries, including removal of Bool terminology and replacing the source-name
+normal by the established nu=(4pi²)^-1. Final log has no overfull boxes,
+undefined references or missing glyphs. Rendered/viewed shell pages753–759 in
+the864 build and classifier721–727 plus revised shell763 in the870 build;
+no clipping or overlap observed in the contact sheets. A failed attempted
+PyMuPDF import (fitz unavailable) was replaced by pypdf for page inspection.
+
+Structural reference inventory:240 chapters,1801 labels,2488 references,
+183 cross-chapter forward references, no missing or duplicate labels. This is
+navigation evidence only. Manifest now correctly excludes the two unintegrated
+historical alternatives from included_sections (their conservative unit.json
+metadata entries remain). No Lean edit/build/axiom replay. Checker and whitespace
+checks pass; whole proof and human acceptance remain outstanding.

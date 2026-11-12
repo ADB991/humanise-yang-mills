@@ -1,0 +1,202 @@
+\section{The same stress laws in every character phase}
+\label{sec:phase-ward-inheritance}
+
+The character construction evaluates an operator for a whole word. This
+allows us to transfer a Ward identity with spectators, even though the
+identity includes an integral and is not a product of individual character
+values. We prove the required operator identity before evaluating it.
+
+Retain the unselected hierarchy $S$, its Euclidean Hilbert space
+$\mathcal H_E$, ground subspace $\mathcal H_0$, orthogonal projection $P_0$,
+and the commutative compression algebra $\mathcal A$ of
+Section~\ref{ex-phases}. Write $A_D(w)$ for its bounded insertion operator
+in a time slab of width $D>0$. The norm smoothness and derivative identities
+are those of Section~\ref{ex-slab-regularity}; the whole-word character
+hierarchies are those of Section~\ref{ex-phase-regularity}. Retain the same
+physical field spaces, derivative maps $\partial_b$, rotation generators
+$\mathcal R(M)$ and normalized stress tensor $J_{ab}$ constructed in
+Section~\ref{sec:physical-angular-actions}. In this section its unselected
+translation and rotation Ward identities are hypotheses already supplied
+by that construction. No new normalization of $J$ is made in a phase.
+
+Fix a distinguished insertion $B$ at $x_0$, spectator fields
+$B_1,\ldots,B_n$ at distinct points $x_1,\ldots,x_n$, and a smooth real
+cutoff $\chi$ of compact support. Require that $\chi=1$ on a neighborhood
+of $x_0$ and that $x_j\notin\operatorname{supp}\chi$ for $j>0$.
+All $n+1$ points are distinct. Put
+\[
+ S_\xi(B;x_0\mid\boldsymbol B,\boldsymbol x)
+   =S_\xi(B,B_1,\ldots,B_n;x_0,x_1,\ldots,x_n).
+\]
+Here $\xi\in\Xi$ is an arbitrary character. The corresponding notation
+with an extra field before $B$ includes its extra position before $x_0$.
+
+\begin{proposition}[Inheritance of the shell identities]
+\label{prop:phase-ward-inheritance}
+For every character $\xi$, every coordinate $b$, and every real
+skew-symmetric matrix $M$, one has
+\begin{align}
+ S_\xi(\partial_bB;x_0\mid\boldsymbol B,\boldsymbol x)
+ &=-\sum_a\int_{\mathbb R^4}\partial_a\chi(y)
+     S_\xi(J_{ab},B;y,x_0\mid\boldsymbol B,\boldsymbol x)\,dy,
+ \label{eq:phase-translation-flux}\\
+ S_\xi(\mathcal R(M)B;x_0\mid\boldsymbol B,\boldsymbol x)
+ &=-\sum_{a,b}\int_{\mathbb R^4}\partial_a\chi(y)
+      [M(y-x_0)]_b
+     S_\xi(J_{ab},B;y,x_0\mid\boldsymbol B,\boldsymbol x)\,dy.
+ \label{eq:phase-rotation-flux}
+\end{align}
+Both integrals are absolutely convergent. The same cutoff and the same
+field maps work for every character, including the selected one.
+\end{proposition}
+
+\subsection{A continuous evaluator on the uncompressed operators}
+
+A character is continuous and complex linear on $\mathcal A$. By the
+complex Hahn--Banach theorem, extend it to a bounded complex-linear
+functional $\widetilde\xi$ on $\mathcal B(\mathcal H_0)$, and set
+\[
+ \Phi_\xi(T)=\widetilde\xi(P_0T|_{\mathcal H_0}),
+               \qquad T\in\mathcal B(\mathcal H_E).
+\]
+Compression is bounded linear, so $\Phi_\xi$ is bounded linear. We use
+no positivity or multiplicativity of its extension outside $\mathcal A$.
+For a separated word $w$ placed strictly inside a slab by a translation
+$s$, the whole-word definition gives
+\begin{equation}\label{eq:phase-fixed-evaluator}
+             S_\xi(w)=\Phi_\xi(A_D(w+s)).
+\end{equation}
+The evaluator is fixed while positions, labels, and the slab placement
+vary. In particular it may be passed through a norm-convergent integral.
+
+Choose $s$ and $D$ so that both the finite configuration and the
+\emph{whole} compact support of $\chi$, after translation by $s$, lie
+strictly between time $0$ and time $D$. To see that this is possible,
+bound their time coordinates between $\alpha$ and $\beta$, translate
+by $(1-\alpha)e_0$, and take $D>\beta-\alpha+1$.
+This leaves a positive margin at each slab boundary. For a field tuple
+$v$ and a configuration $z$ in this fixed slab, write
+\[
+                         K_v(z)=A_D(v;z+s).
+\]
+Representatives in the original label spaces can be fixed once for the
+finitely many fields involved. The slab identities and equality of the
+phase null spaces ensure that the resulting correlation values are the
+ones on the physical field spaces. Norm regularity gives continuity of
+$K_v$ on separated configurations in this slab.
+
+\subsection{Integrating the shell before taking a character}
+
+Let $u:\mathbb R^4\to\mathbb C$ be continuous; the cases needed are
+$u=1$ and $u(y)=[M(y-x_0)]_b$. Put
+\[
+             w_a(y)=\partial_a\chi(y)u(y).
+\]
+Its support is compact and contained in $\operatorname{supp}\chi$.
+Moreover it misses a neighborhood of every $x_j$: at $x_0$ the cutoff
+is locally constant, and at the spectator points it is locally zero.
+Consequently the operator-valued function
+\[
+ F_{ab,u}(y)=w_a(y)
+  K_{(J_{ab},B,\boldsymbol B)}(y,x_0,\boldsymbol x)
+\]
+is continuous and compactly supported when defined to be zero in the
+neighborhoods where $w_a$ vanishes. On its support the inserted point
+is separated from all fixed points and remains strictly inside the
+fixed slab, so norm continuity follows from that of $K$.
+At a point outside the support of $w_a$, the entire product is locally
+zero, even if the unweighted correlation there would have a collision.
+This proves continuity on all of $\mathbb R^4$.
+
+A continuous compactly supported Banach-valued function has bounded
+norm, separable range on its compact support, and integrable norm.
+Thus the Bochner integral
+\[
+                   U_{ab}(u)=\int_{\mathbb R^4}F_{ab,u}(y)\,dy
+                \quad\hbox{in }\mathcal B(\mathcal H_E)
+\]
+exists. Every bounded linear functional $\Lambda$ commutes with this
+integral. One may verify this first for simple functions and then use
+norm-integrable approximation and the bound
+$|\Lambda(T)|\le\|\Lambda\|\,\|T\|$. Applied to
+\eqref{eq:phase-fixed-evaluator}, it gives
+\begin{equation}\label{eq:phase-shell-evaluation}
+ \Phi_\xi(U_{ab}(u))=
+ \int w_a(y)S_\xi(J_{ab},B;y,x_0\mid\boldsymbol B,\boldsymbol x)\,dy.
+\end{equation}
+It also proves absolute integrability of the scalar integrand. Values
+at collisions have no bearing on this equality, since the weight is
+zero in a neighborhood of each possible collision.
+
+\subsection{Testing the operator identity against exterior words}
+
+Let $l,r$ be arbitrary positive-time word vectors in $\mathcal H_E$.
+The slab matrix-element identity expresses
+$\langle[l],K_v(z)[r]\rangle$ as an unselected correlation containing
+$v$ at $z$, together with a reflected copy of $l$ below the slab and
+a translated copy of $r$ above it. Translate all points back by $-s$.
+Permutation symmetry puts the inserted fields first; translation
+invariance then gives precisely this correlation in the original
+coordinates. The two extra word configurations are internally
+separated and lie on opposite sides of the slab. They therefore
+introduce neither collisions with one another nor collisions with
+its interior insertions.
+
+Crucially, these extra spectators lie outside the entire support of
+$\chi$, since that support was placed strictly inside the slab.
+Thus $\chi$ is still an admissible cutoff for the unselected Ward
+identity with these additional spectators. Commuting the continuous
+matrix-element functional with each Bochner integral, that Ward
+identity proves
+\begin{align*}
+ \left\langle[l],-\sum_aU_{ab}(1)[r]\right\rangle
+ &=\langle[l],K_{(\partial_bB,\boldsymbol B)}
+                       (x_0,\boldsymbol x)[r]\rangle,\\
+ \left\langle[l],-\sum_{a,b}U_{ab}([M(\,\cdot-x_0)]_b)[r]\right\rangle
+ &=\langle[l],K_{(\mathcal R(M)B,\boldsymbol B)}
+                       (x_0,\boldsymbol x)[r]\rangle.
+\end{align*}
+Positive-time word vectors span a dense subspace. If a bounded operator
+has zero matrix elements on this span, fix its right argument there
+and use density on the left to see that its value is zero. Continuity
+then extends the vanishing to every right argument. Hence the two
+matrix-element equalities are equalities of bounded operators.
+
+Apply $\Phi_\xi$ to these operator equalities. Its linearity, the
+whole-word evaluation formula, and \eqref{eq:phase-shell-evaluation}
+give \eqref{eq:phase-translation-flux} and
+\eqref{eq:phase-rotation-flux}. This proves the proposition. Notice
+that no limiting argument over characters and no almost-everywhere
+exceptional set occurred.
+
+\subsection{The mixed and selected continuations}
+
+There are two applications of the continuation construction, with the
+same field labels and calibrated rotation action. For the mixed table
+use its original Hilbert space, bounded slabs and slot identities.
+For the selected character use the Hilbert space and slab operators
+of Corollary~\ref{ex-phase-dynamics} and
+Proposition~\ref{ex-phase-slab-bounds}. Their norm bounds, derivative
+identities and field inclusions have already been verified; equality
+of null spaces is supplied by Section~\ref{ex-phase-fields}.
+Reflection transport supplies the same orthogonal field covariance.
+The common label action of Section~\ref{sec:label-descent} consequently
+applies to both tables.
+
+Apply Sections~\ref{sec:complex-heat}--\ref{sec:analytic-boundary}
+separately with these two sets of Hilbert-space data. The continued
+functions are built from each table's own slab matrix elements, so
+their imaginary-time restrictions recover that table, and their
+tempered boundary distributions are its own boundary values. The
+Fourier-support, Lorentz-covariance, full-tube and locality arguments
+use these same functions in each application. None of those arguments
+uses one-dimensionality of the time-invariant subspace. The word-domain
+construction and heat-vector isometry likewise apply to each table.
+
+Only for the selected character do we invoke
+Theorem~\ref{ex-pure-ground}: its invariant Euclidean subspace is its
+vacuum line. The isometric embedding and translation intertwining
+then give vacuum uniqueness in its reconstructed theory, as proved
+in Section~\ref{sec:spectral-measure}. No such uniqueness is asserted
+for the mixed theory. This is why constructing both continuations
+requires no change of the selected phase and no second field quotient.

@@ -1,0 +1,468 @@
+% Draft proof unit for YM-000026. Parent supplies theorem environments/macros.
+\section{Finite-volume stress shell nodes}
+\label{sec:ex-lattice-actual-stress-shell-nodes}
+
+This section records the actual finite-volume producer used by the stress
+annulus argument. It follows the selected family and its retained history.
+The scale choice is made before the reference opening, insertion labels, or
+finite list of tests. The quantitative conclusion at a fixed collar site is
+then obtained from a two-channel coefficient construction and the finite
+quota-to-norm comparison.
+
+Write $a_i$ for the physical spacing, $\lambda_i=\log(a_i^{-1})$,
+$B_i$ for the support radius, and $\widehat\beta_i$ for the effective
+coupling. Put
+\[
+ \begin{aligned}
+ r_m&=128 B_{m+1}^{2}a_{m+1}, & c_m&=\exp(\lambda_m/32),\\
+ X_m&=\exp\sqrt{\widehat\beta_{m+1}}, & n_m&=\text{the number of columns at level }m.
+ \end{aligned}
+\]
+For a fixed finite-volume law, let $\mathcal O_{N,q}(L,x)$ be the readout
+of label $L$ at site $x$. For an opened reference level $p_0$, let
+$\mathcal C_{N,q}(p_0)$ be the finite cell index set of the centered chamber
+tiling used by the root test, and write $F_v$ for the prescribed translated
+copy of $F$ at $v\in\mathcal C_{N,q}(p_0)$. The copy includes complex
+conjugation exactly when the cell has odd reflection parity. Set
+\begin{equation}\label{eq:ex-lattice-shell-root-functional}
+ \mathcal R_{N,q,p_0}(F)=
+ \left|\mathbb E_{\beta,N,q}
+      \prod_{v\in\mathcal C_{N,q}(p_0)}F_v\right|^{1/|\mathcal C_{N,q}(p_0)|}.
+\end{equation}
+This is the root-test functional of that opening, not a product over every
+fine-lattice site. The grade-$D$ quota at birth level $m$ is denoted
+$\mathfrak q_{D,m,N,q}(z)$. It is a coefficient size in the fixed reference
+frame; it is not the norm in the continuum field space. The opening $p_0$
+selects the root-test chamber and its stake bound; the quota index is $m$.
+
+For grades $d,D,h\in\mathbb N$ satisfying
+\begin{equation}\label{eq:ex-lattice-shell-grade}
+ D+h=d+4,
+\end{equation}
+and labels $B$ of grade $d$ and $T$ of grade four, define the finite
+fragment
+\begin{equation}\label{eq:ex-lattice-shell-fragment}
+ \mathcal F_{m,x}^{N,q}(z)
+ =r_m^h\mathcal O_{N,q}(T,x_{m,N,q})\mathcal O_{N,q}(B,0)
+       -\mathcal O_{N,q}(z,0),
+ \qquad z\text{ of grade }D.
+\end{equation}
+Here $x_{m,N,q}$ is the image of the fixed cover anchor $x$ under the
+volume-period placement at level $j_m$. The factor is $r_m^h$, where
+$r_m=128B_{m+1}^2a_{m+1}$; it is not $a_{m+1}^h$. Identity
+\eqref{eq:ex-lattice-shell-grade} makes both terms have the same scaling
+power (the labels themselves lie in filtered grade spaces).
+Write $\operatorname{cs}_q(v)$ for the coefficient size of a grade-$q$
+label in the selected frame.
+
+\subsection{The scale schedule and its numerical gates}
+
+Fix a simple compact gauge group, the selected Wilson family, and its
+same-history records. The scale estimates used by the source give the
+following schedule for each fixed triple $(d,D,h)$ satisfying
+\eqref{eq:ex-lattice-shell-grade}:
+\begin{equation}\label{eq:ex-lattice-shell-schedule}
+ t=1+\frac{1}{64(d+12)},\qquad
+ j_m\longrightarrow\infty,\qquad
+ \frac{\lambda_{j_m}}{\lambda_m}\longrightarrow t.
+\end{equation}
+The sequence is chosen independently of the reference opening and all
+labels. The strict rate condition is
+\[
+ (d+12)(1-t)=-\frac1{64}>-\frac1{32}.
+\]
+The separate lightness estimate gives, for every fixed opening $p_0$,
+eventually in $m$,
+\begin{equation}\label{eq:ex-lattice-shell-lightness}
+ 32r_m\le a_{p_0},\qquad
+ a_{m+1}\bigl(B_{m+1}^{2}+1+2\cdot1024B_{m+1}^{2}\bigr)
+       \le a_{p_0}.
+\end{equation}
+The first inequality supplies the collar margin. The second supplies the
+number of centered chamber cells needed by the finite stencil.
+
+Here are the channel prices in ordinary notation. Write $\delta_i$ for the
+renal allowance, $\phi_i$ for the near allowance, and $s_i$ for the support
+exponent. Set
+\[
+ q_i=(2\cdot1024B_i+1)^4,\qquad
+ \operatorname{krill}_{j,i}(u)=\frac{u}{16}\left(\frac{a_j}{a_i}\right)^4.
+\]
+The quantity $q_i$ is the exponential-count parameter; it is distinct from
+the geometric radius $1024B_i^2$ used in the finite stencil. Let $g_q$ be
+the maximal engineering degree at grade $q$. The paid grade-$q$ weight for
+a label-size bound $v>0$ is
+\[
+ \mathsf w_q(v,j)=\frac{\widehat\beta_j^{-(g_q+4)}}
+  {v\,C_j\prod_{\ell<j}C_{\ell+1}},
+\]
+where $C_i$ is the column count. Set
+\[
+ A_-=a_{j_m}^{d}\mathsf w_d(a,j_m),\qquad
+ A_+=r_m^{-h}a_{j_m}^{4}\mathsf w_4(b,j_m).
+\]
+For channel weights $A_-,A_+$, define
+\begin{equation}\label{eq:ex-lattice-shell-picket}
+ \rho_{m,\pm}=\frac{\delta_{m+1}^{2}
+   \operatorname{krill}_{j_m,m+2}
+      (\delta_{j_m}\phi_{j_m}A_\pm)}
+      {\exp((s_{m+1}+1/2)q_{m+1})},\qquad
+ W_m=\rho_{m,-}\rho_{m,+}.
+\end{equation}
+This follows from the scalar exponential weight in each channel at
+$i=m+1$: both outer and inner renal factors are $\delta_{m+1}$, and the
+input also contains the near allowance $\phi_{j_m}$. The channel weights $A_-$
+and $A_+$ are the paid prices for the grade-$d$
+and grade-four insertions; the latter includes $r_m^{-h}$, cancelled by
+$r_m^h$ in the fragment. Thus $W_m$ is a positive product fixed by the
+source formulas, not a free normalization parameter.
+
+For a positive function $w$ on channel names, define its marched price
+from level $k$ by
+\[
+ (\mathsf M_{k,m}w)(i)=
+ \begin{cases}
+ w(i),&m<k,\\
+ w(i)\displaystyle\prod_{s=k}^{m-1}\phi_s,&m\ge k,
+ \end{cases}
+\]
+where $0<\phi_s\le1$ is the selected transition allowance. These formulas
+are the two positive channel prices; in particular $W_m$ is not a free
+normalization parameter.
+The selected price estimate supplies $W_m>0$ and
+\begin{equation}\label{eq:ex-lattice-shell-march}
+ \mathsf M_{k,m}(c_m)\le \delta_m\frac{W_m}{16X_m}.
+\end{equation}
+Set
+\begin{equation}\label{eq:ex-lattice-shell-coefficient-budget}
+ e_m=32(1+n_m)a_{m+1}^{D}\frac{X_m}{W_m}.
+\end{equation}
+The second price estimate, with
+$\|a_k^{-D}\|=a_k^{-D}$ and
+$g_{m,k}=\exp((\lambda_m-\lambda_k)/8)$, is
+\begin{equation}\label{eq:ex-lattice-shell-correction-price}
+ 32(1+n_m)c_m a_k^{-D}\frac{e_m}{g_{m,k}}
+       \le \frac12\widehat\beta_k^{-\nu_D},
+ \qquad \nu_D=g_D+4.
+\end{equation}
+Here $g_D$ is the maximal engineering degree of grade-$D$ labels. The
+normalization on the right is the grade-$D$ payment. For fixed
+$(p_0,k)$ it is independent of $m$.
+To expose the rate calculation, for a positive sequence $f_m$ write
+\[
+ \operatorname{rate}(f)=\lim_{m\to\infty}\frac{\log f_m}{\lambda_m}
+\]
+when the limit exists. The rate rules for the two channel weights give
+\[
+ M=(d+12)(1-t)=-\frac1{64},\quad
+ \operatorname{rate}(W_m)=-D+M.
+\]
+Explicitly, the unscaled grade-$d$ weight has rate $-dt$ and the unscaled
+grade-four weight has rate $-4t+h$, since it is divided by $r_m^h$ and
+$\operatorname{rate}(r_m)=-1$. Each channel transport contributes
+$4(1-t)$ from its fourth-power block ratio. Thus
+\[
+ \operatorname{rate}(\rho_{m,-})=-dt+4(1-t),\qquad
+ \operatorname{rate}(\rho_{m,+})=-4t+h+4(1-t),
+\]
+and their sum is $h+8-(d+12)t=-D+(d+12)(1-t)$, using
+$D+h=d+4$. The renal and near allowances have rate zero. The explicit
+source bound $(s_i+1/2)q_i\leq\sqrt{\widehat\beta_{i+1}}$ shows that the
+exponential denominator has rate zero as well. In the displayed paid width,
+$\log\widehat\beta_j=o(\lambda_j)$ and
+$\sum_{\ell<j}\log C_{\ell+1}=o(\lambda_j)$, so its coupling and column
+factors have rate zero. Also $\operatorname{rate}(c_m)=1/32$,
+$\operatorname{rate}(a_{m+1}^D)=-D$, and
+$\operatorname{rate}(X_m)=0$, because
+$X_m=\exp(\sqrt{\widehat\beta_{m+1}})$ is subexponential in $\lambda_m$.
+The finite column census is likewise subexponential. The exact definition
+of $e_m$ therefore gives $\operatorname{rate}(e_m)=-M=1/64$.
+In particular $c_m^{-1}\to0$, since $\lambda_m\to\infty$.
+For fixed $k$, $g_{m,k}=\exp((\lambda_m-\lambda_k)/8)$ has rate $1/8$,
+while $a_k^{-D}$ and $\widehat\beta_k^{-\nu_D}$ are fixed positive
+constants. Thus the correction-price left side has rate
+\[
+ \frac1{32}-M-\frac18=-\frac5{64}<0;
+\]
+it tends to zero and is eventually below the displayed grade-$D$
+payment. For the marched estimate, the one-step growth bound and
+$\operatorname{fly}(D,m)\leq1$ give
+\[
+ \mathsf M_{k,m}(c_m)\leq
+ \frac{c_m}{\upsilon_k}\left(\frac{a_m}{a_k}\right)^{D+1},
+ \qquad \upsilon_i=\operatorname{fly}(D,i),\quad k\geq\operatorname{ref}(D).
+\]
+For fixed $k$, the right side has rate $1/32-(D+1)$, while
+$\delta_mW_m/(16X_m)$ has rate $-D+M$. Their rate difference is
+$1/32-1-M=-61/64<0$, so the former is eventually smaller. This uses
+the same-history growth estimate, the rate-zero allowance, and the paid
+channel-rate identity above. The separate strict condition $M>-1/32$
+is a sufficient source condition for the correction price to be eventual.
+Hence both price
+inequalities hold for each fixed opening.
+
+The other price gate used in the finite coefficient construction is the exact budget
+identity
+\begin{equation}\label{eq:ex-lattice-shell-ledger-budget}
+ 4(1+n_m)\,2\left(a_{m+1}^{D}X_m\frac{4}{W_m}\right)=e_m.
+\end{equation}
+Thus the available coefficient budget is precisely the finite-census
+price of the principal term, with its two channel factors; no extra
+polynomial is hidden in this equality.
+
+\subsection{The coefficient and density ledger}
+
+Set
+\begin{equation}\label{eq:ex-lattice-shell-one-step-scales}
+ a_m^*=\frac4{W_m},\qquad I_m=\frac{W_m}{16X_m},\qquad
+ p'_m=a_{m+1}^{D}(X_m a_m^*),\qquad e_m=8(1+n_m)p'_m.
+\end{equation}
+Then $e_m=32(1+n_m)a_{m+1}^D X_m/W_m$, as above. This reparameterization
+exhibits the numerical inputs to the coefficient construction. Put
+$L_m=a_m/a_{m+1}$ and $A_m=L_m^D$, the block dilation of a grade-$D$
+coefficient. The block
+side $L_m\geq2$ and grade $D\geq0$ give $\|A_m^{-1}\|=L_m^{-D}\leq1$.
+The stretch across this step satisfies
+\[
+ a_m^D L_m^{-D}=a_{m+1}^D,
+\]
+so the coefficient bound $X_m a_m^*$ delivered by the finite-coupon
+construction becomes exactly $p'_m=a_{m+1}^D(X_m a_m^*)$ after this
+grade-$D$ rescaling.
+Together with $X_m\geq1$,
+\[
+ 2I_m(2a_m^*)=X_m^{-1}\leq1,\qquad
+ I_m\|A_m^{-1}\|(X_ma_m^*)=\frac{\|A_m^{-1}\|}{4}\leq1.
+\]
+The marched price says $J_m:=\mathsf M_{k,m}(c_m)\leq\delta_m I_m$.
+At each name the selected menu has the corresponding regular price
+$J_m$ and allowance $\delta_m I_m$; multiplying the finite factors and
+using $1+v\leq e^v$ for $v\geq0$ yields the finite transfer bound
+with its exponential penalty. This is the
+finite-product estimate used by the transition, not a claim that normalized
+root expectations multiply.
+
+The fine response is first built for each of the two
+insertions from the same terminal family, door, and funded path. Its quiet
+coefficient is the background activity and its singleton coefficient is
+the paid target plus the hook correction; signed covariance transports
+these identities from the distinguished name to the other names. Backward
+transport uses
+$\operatorname{krill}_{j,i}(u)=u(a_j/a_i)^4/16$. If
+$L_i=a_i/a_{i+1}\geq2$, then
+\[
+ \operatorname{krill}_{j,i+1}(u)=L_i^4\operatorname{krill}_{j,i}(u),
+ \qquad 6L_i\operatorname{krill}_{j,i}(u)
+       \leq\operatorname{krill}_{j,i+1}(u),
+\]
+because $L_i^3\geq8$. Iteration moves the response to level $m+1$;
+injective migration preserves occupancy and the block map expands
+separation by at least $L_i$. The fine response uses occupancy
+$o_{m+1}=r(m+1)$.
+
+The two channels refer to the two inserted labels. Their graft is formed at the same base name, and source affine
+covariance fixes its quiet and singleton coefficients. The higher
+many-name terms are pruned with the finite-mask receipt. With fine
+occupancy $o_{m+1}$ its mask cost is
+\[
+ \sigma_m=2(1+o_{m+1})\eta_{m+1}
+       \bigl(o_{m+1}e^{s_{m+1}+1/2}+1\bigr)
+       +(1+o_{m+1})\chi_{m+1}.
+\]
+The selected finite-mask receipt gives
+$(2B_{m+1}+1)^4\sigma_m\leq1/2$ and
+$e^{\sigma_m}-1\leq1$. The radius $1024B_{m+1}^2$ in the stencil and
+the exponent count $q_{m+1}$ in the channel price are distinct quantities.
+
+The finite-coupon step and transition then yield a coefficient $Q_m$ at
+level $m$. Its principal coefficient is bounded by $p'_m$. The census
+cost is exactly
+\[
+ 4(1+n_m)\,2p'_m=e_m,
+\]
+where $n_m$ is the column count; the factor $4$ is the source's two-channel
+and sign count. The correction has the purchased one-step remainder
+bound. No response coefficient is declared exact before that paid
+correction is included.
+
+Here is the exact density identity retained by the construction. The
+paid representation supplies regular coefficients $H_S(U)$ indexed by
+supports $S$ and forced coefficients $K_P(U)$ indexed by boxes $P$. Each
+regular coefficient is supported on its assigned $S$, and each forced
+coefficient on its assigned box support. Write $E_m(U)$ for the action
+polynomial, $\Phi_i(U)$ for singleton field coefficients, $\bar A_P(U)$
+for the background activity, and $\omega_{i,P}(U)$ for singleton
+activities. The operator $\operatorname{send}_i(z)$ is the polynomial
+monomial with coefficient $z$ in insertion slot $i$; $F(U)$ is the target
+flag set. Then the pushed density is
+\begin{align}\label{eq:ex-lattice-shell-served-density}
+ \mathscr D_m(U)={}&e^{E_m(U)}\exp_{\mathrm{nil}}\!\left(
+       \sum_i\operatorname{send}_i(\Phi_i(U))+\sum_S H_S(U)\right)\\
+ &\quad\times
+ \sum_{\substack{\mathcal P\text{ a family of boxes}:\\
+        P\cap P'=\varnothing\ (P\ne P'),\quad
+        \bigcup_{P\in\mathcal P}Q_P=F(U)}}
+       \prod_{P\in\mathcal P}
+       \left(\bar A_P(U)+\sum_i\operatorname{send}_i(\omega_{i,P}(U))
+                    +K_P(U)\right).
+\end{align}
+Each box is $(P,Q_P)$ with $Q_P\subseteq P$; compatibility means
+disjointness of full supports, while the flags cover $F(U)$. Here
+$\exp_{\mathrm{nil}}(Z)=\sum_{r=0}^{|I|}Z^r/r!$ for the finite set $I$ of
+insertion names. The degree conditions make every $H_S$ and $K_P$ vanish
+in degrees zero and one; their regular-support and forced-box coefficient
+costs have separate summable bounds.
+Thus the higher-degree exponential terms, forced terms, and compatible
+box products remain explicitly present and paid. In particular, the
+pushed density is not identified with a single leading coefficient.
+The canonical local-transfer proof pays these two arrays separately and
+proves the same-law density equality used here.
+
+The served transfer uses coarse occupancy $o_m=r(m)$; the fine response
+and graft use $o_{m+1}=r(m+1)$. Set
+$d_m=\widehat\beta_{m+1}^{-2}$,
+$u_m=\widehat\beta_{m+1}^{-1}$, and $y_m$ equal to the flagged response
+price. For the explicit rooted-site cost, put
+$\mathsf S(B)=e(2(16B+9))^4$. The transfer duty is
+\[
+ 0<d_m\leq1,\qquad
+ T_m=o_m\mathsf S(B_{m+1})d_m+4d_m,\qquad
+ T_m+e^{T_m}T_m\leq u_m,
+\]
+together with
+\[
+ (2B_m+1)^4\bigl(y_m+o_m\mathsf S(B_m)d_m\bigr)
+       \leq\tfrac12,\qquad
+ e^{y_m+o_m\mathsf S(B_m)d_m}-1\leq1.
+\]
+Here $y_m=2\exp(-\mu_m\Delta_{G,L_m}(\widehat\beta_m)^2/16)$,
+where $\mu_m,\Delta_{G,L_m}$ are the selected shape strength and fine
+monitor. These are the exact coarse transfer inequalities; the fine
+backward transport and graft instead use $o_{m+1}$. The endpoint support
+exponents are at least $100$. The source tariff and same-history service
+proofs in Sections~\ref{sec:finite-menu-history-handoff} and
+\ref{sec:local-transfer} supply these paid conditions. This keeps the
+regular and forced coefficient charges separate and does not assume
+equality of the interacting and reference actions.
+
+\subsection{From the ledger to one collar node}
+
+Fix an opened reference level $p_0$ and a level $k$ with that opening,
+$k$ beyond the grade-$D$ threshold, and labels $B,T$. The quota estimate
+at birth level $m$ gives a finite constant $Q_m^{\mathrm{quota}}$
+independent of volume and period. It may depend on $m$; no uniform
+birth-level bound is asserted:
+\begin{equation}\label{eq:ex-lattice-shell-quota}
+ \|z\|_D\le Q_m^{\mathrm{quota}}\mathfrak q_{D,m,N,q}(z).
+\end{equation}
+Apply the ledger and the same-history coefficient-to-label transfer at a
+fixed collar anchor. The coefficient budget
+\eqref{eq:ex-lattice-shell-ledger-budget} and the finite census give
+$\mathfrak q_{D,m,N,q}(z)\le2e_m$, hence
+\[
+ \|z\|_D\le2Q_m^{\mathrm{quota}}e_m.
+\]
+The transferred label satisfies the exact product-minus-correction
+identity \eqref{eq:ex-lattice-shell-fragment}. Its chamber condition follows
+from the two input chamber memberships and closure under products and
+subtraction of a paid correction. Write $\Theta_k$ for the selected
+treasury at level $k$. The response estimate together with
+\eqref{eq:ex-lattice-shell-correction-price} gives
+\begin{equation}\label{eq:ex-lattice-shell-root}
+ \mathcal R_{N,q,p_0}(\mathcal F_{m,x}^{N,q}(z))
+       \le 2S(p_0,k)c_m^{-1},
+ \qquad
+ S(p_0,k)=\exp\!\left((a_{p_0}/a_k)^4\Theta_k+5\right).
+\end{equation}
+To see the factor $2$, write the pre-correction function as $f$ and the
+finite-coupon correction as $r'$. The exact decomposition is
+\[
+ f-\mathcal O_{N,q}(B,0)
+   =(f+r')+(-r'-\mathcal O_{N,q}(B,0)).
+\]
+Put $B_m(p_0,k)=S(p_0,k)c_m^{-1}$. The two root-test bounds are respectively
+at most $B_m(p_0,k)$ and $B_m(p_0,k)$ (the second is first obtained with the
+stronger bound $B_m(p_0,k)/2$). The root-test triangle inequality applies because both
+terms are in the centered chamber. Thus the factor $2$ comes from this
+two-term triangle inequality; it is not obtained by multiplying normalized
+root functionals or by combining regular and forced charges. The estimate uses
+the served coefficient identity, the throw coupon, the fixed opening, and
+the two inequalities \eqref{eq:ex-lattice-shell-march} and
+\eqref{eq:ex-lattice-shell-correction-price}.
+
+The placement and room thresholds are pointwise in the cover anchor. The
+anchor is assumed to lie in the stated collar. For fixed $x$, the period
+eventually places it at its intended grid site, so the radial bounds carry
+over to the finite-volume location. The first inequality in
+\eqref{eq:ex-lattice-shell-lightness} is the shell-smallness condition
+used with those bounds to keep the remote insertion in the centered
+chamber; the second gives enough centered chamber cells for the finite
+response stencil. At each $(N,q)$ on that anchor's
+late set, the construction just described gives its correction. Outside
+that late set choose the zero label. The numerical bounds do not depend on
+$x$, although the late set may.
+
+\begin{proposition}[Selected-history shell-node output]
+\label{prop:ex-lattice-actual-shell-node}
+Take the selected public history of Theorem~\ref{thm:ex-selected-run-service}.
+Use its adjacent-scale paid menu, tariff, and served-transfer receipts from
+Sections~\ref{sec:ex-lattice-rg-multisource},
+\ref{subsec:ex-lattice-volant-producer},
+\ref{sec:finite-menu-history-handoff}, and \ref{sec:local-transfer}, together
+with the scale and price gates displayed above and the quota estimate at
+each birth level. For every fixed grade triple
+$D+h=d+4$, there is a sequence $j_m$ independent of $p_0,k,B,T$ and of
+the finite test family, with $\lambda_{j_m}/\lambda_m\to t$ as in
+\eqref{eq:ex-lattice-shell-schedule}. For each fixed opened $(p_0,k)$ and
+grades $d,D,h$, choose labels $B,T$ and positive coefficient bounds
+$a,b$ with $\operatorname{cs}_d(B)\le a$ and $\operatorname{cs}_4(T)\le b$,
+along with the finite extraction test family. Assume the selected stock
+opens $p_0\leq k\leq m$, with $\operatorname{ref}(D)\leq k$,
+$m+1<j_m<N$, and $\operatorname{ref}(d),\operatorname{ref}(4)\leq j_m$.
+Assume also the same-history
+chamber and room receipts: $\mathcal O_{N,q}(B,0)$,
+$\mathcal O_{N,q}(T,\xi_m(x))$, and $\mathcal O_{N,q}(z,0)$ for every
+grade-$D$ label $z$ lie in the centered chamber, and
+\[
+ 32r_m\leq a_{p_0},\qquad
+ a_{m+1}(B_{m+1}^2+1+2\cdot1024B_{m+1}^2)\leq a_{p_0}.
+\]
+There is
+$m_0$ such that for $m\ge m_0$ and each fixed cover anchor $x$ whose
+intended level-$j_m$ physical location $\xi_m(x)$ obeys
+$r_m/16\le\|\xi_m(x)\|_2\le4r_m$, the finite-volume correction has
+\[
+ \|z_x(N,q)\|_D\le2Q_m^{\mathrm{quota}}e_m,
+ \qquad \mathcal R_{N,q,p_0}(\mathcal F_{m,x}^{N,q}(z_x(N,q)))
+       \le2S(p_0,k)c_m^{-1}
+\]
+for filter-almost every pair along the selected volume and period filters. The
+late event may depend on $x$; the displayed numeric bounds do not.
+\end{proposition}
+
+\begin{proof}
+Choose $t$ and $j_m$ by the rate schedule. The strict inequality
+$(d+12)(1-t)>-1/32$ makes both rate-based price gates eventual. For fixed
+$p_0$, the two lightness inequalities are eventual as well. Thus for each
+fixed data set choose $m$ beyond the common numeric thresholds, the grade
+opening, and the finite-stencil room threshold. At a fixed cover anchor,
+choose the late volume-period event on which its image is the prescribed
+grid site and the opening is present. The local ledger gives the correction
+and its chamber/root bounds; the fixed quota estimate converts its quota
+to the continuum coefficient norm. This produces exactly the pointwise
+late-set quantifier stated above. It does not claim one late event
+simultaneously for the growing collar.
+\end{proof}
+
+\subsection{Scope of the shell construction}
+
+The menu and transfer receipts invoked above are the same-history
+constructions of Sections~\ref{sec:ex-lattice-rg-multisource},
+\ref{subsec:ex-lattice-volant-producer},
+\ref{sec:finite-menu-history-handoff}, and
+\ref{sec:local-transfer}; the selected public service and its endpoint
+support exponents are supplied by Theorem~\ref{thm:ex-selected-run-service}.
+The present argument supplies the remaining shell-specific composition:
+the two transported channel responses, finite mask and coupon steps,
+coefficient ledger, placement, and collar norm/root bounds. The collar's
+late event is pointwise in its fixed anchor, as required by the source.

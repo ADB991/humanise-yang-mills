@@ -1,0 +1,243 @@
+\section{Separating the harmonic residue of a free collision}
+\label{sec:free-collision-pole-separation}
+
+A quadratic probe approaching a polynomial insertion can contract once or
+twice with that insertion. The double contractions are generally more
+singular. We isolate the single-contraction residue by its harmonicity
+and its precise radial denominator, rather than by assuming that the
+unmodified rescaled moment has a limit. This is the collision statement
+needed for the finite-capacity free detector. All orders, cutoffs and capacities
+$r,s,j,k,l,d,M$ used below are nonnegative integers; pole orders satisfy
+$r\geq2$.
+
+\subsection{Harmonic poles and radial clearing}
+For $z\in\mathbb R^4\setminus\{0\}$ put $R(z)=|z|^2$.
+A complex function $f$ is a harmonic pole of order $r\geq2$ if it is
+smooth and harmonic away from zero, satisfies
+\[
+ f(tz)=t^{-r}f(z)\qquad(t>0),
+\]
+and $R^{r-1}f$ extends smoothly to all of $\mathbb R^4$.
+We say that $f$ can be cleared with $s$ radial powers if $R^sf$ has
+such a smooth extension. The same definitions apply componentwise to
+finite-dimensional vector-valued functions.
+
+The covariance of a probe of jet order $k$ with one of order $s$ is a
+harmonic pole of order $4+k+s$. Indeed, the curvature covariance is
+obtained by two derivatives and linear combinations of
+$G(z)=\nu|z|^{-2}$, and higher jet probes give further normalized
+constant-direction derivatives. The function $G$ is a pole of order
+two. If $f$ is a pole of order $r$ and $g=R^{r-1}f$ is its smooth
+extension, then
+\begin{equation}\label{eq:collision-derivative-numerator}
+ R^r\partial_u f
+ =R\partial_u g-(r-1)(\partial_uR)g
+                       \qquad(z\ne0).
+\end{equation}
+This gives a smooth extension of the new numerator. Differentiating
+the scaling identity gives degree $-(r+1)$, and constant derivatives
+commute with the Laplacian. Thus $\partial_u f$ is a pole of order
+$r+1$. Induction, followed by finite linear combinations, proves the
+assertion for all probes, including their Taylor normalization factors.
+
+The following strict separation is the essential point.
+
+\begin{lemma}[One extra radial cancellation forces zero]
+\label{lem:collision-radial-separation}
+A harmonic pole $f$ of order $r\geq2$ that can be cleared with $r-2$
+radial powers vanishes away from zero.
+\end{lemma}
+
+\begin{proof}
+Euler's identity is $z\cdot\nabla f=-rf$. Since $\Delta f=0$,
+the product rule in four dimensions gives, for $s\geq0$,
+\begin{equation}\label{eq:collision-radial-laplacian}
+ \Delta(R^{s+1}f)
+       =4(s+1)(s+2-r)R^sf.
+\end{equation}
+For completeness, $\nabla R^a=2aR^{a-1}z$ and
+$\Delta R^a=4a(a+1)R^{a-1}$. The cross term in the product
+Laplacian is therefore $4aR^{a-1}(z\cdot\nabla f)$; taking
+$a=s+1$ proves the formula.
+
+Suppose $R^{s+1}f$ has a smooth extension and $s+1<r-1$.
+The coefficient in \eqref{eq:collision-radial-laplacian} is nonzero.
+Apply the Laplacian to that extension and divide by the coefficient;
+this gives a smooth extension of $R^sf$. Starting at $r-2$ and
+repeating, we obtain a smooth extension $g$ of $f$ itself. For fixed
+$z\ne0$, homogeneity now gives
+\[
+ f(z)=t^r g(tz)\longrightarrow0\qquad(t\downarrow0).
+\]
+Thus $f(z)=0$. When $r=2$, the initial clearing already supplies $g$,
+so the same last argument applies directly.
+\end{proof}
+
+Products have precisely the weaker clearing property which this lemma
+excludes for a nonzero harmonic pole. If $f_1,f_2$ are poles of orders
+$r_1,r_2\geq2$, their product is homogeneous of degree
+$-(r_1+r_2)$ and
+\[
+ R^{r_1+r_2-2}f_1f_2
+       =(R^{r_1-1}f_1)(R^{r_2-1}f_2)
+\]
+extends smoothly. Harmonicity of the product is not asserted.
+Finite sums with the same degree have the same properties.
+
+\begin{lemma}[Extraction in the presence of product poles]
+\label{lem:collision-product-separation}
+Let $H$ be a harmonic pole of order $r\geq2$. Suppose finitely many
+functions $W_q$, indexed by nonnegative integers $q<M$, are homogeneous
+of degree $-q$ and can be cleared with $\max(q-2,0)$ radial powers.
+If for every $z\ne0$
+\begin{equation}\label{eq:collision-residue-expansion}
+ \lim_{t\downarrow0}t^r
+       \left(F(tz)-\sum_{q<M}W_q(tz)\right)=H(z),
+\end{equation}
+and $F(tz)=0$ for all sufficiently small positive $t$ (with the threshold
+allowed to depend on $z$), then $H=0$ away from zero.
+\end{lemma}
+
+\begin{proof}
+The hypotheses give
+$t^r\sum_{q<M}W_q(tz)\to-H(z)$. If the largest index $q$ is
+strictly greater than $r$, multiplication by $t^{q-r}$ makes this
+limit zero, while homogeneity shows that the same expression tends to
+$W_q(z)$: every smaller exponent has an extra positive power of $t$.
+Thus $W_q$ is zero away from zero and can be deleted. Repeat finitely
+many times. At the end only indices at most $r$ remain. Their rescaled
+limit is $W_r$, if that index occurs, and zero otherwise. Hence
+$H=-W_r$ or $H=0$. In the first case $H$ can be cleared with $r-2$
+radial powers, so Lemma~\ref{lem:collision-radial-separation} applies.
+\end{proof}
+
+\subsection{Contraction derivations at a fixed jet cutoff}
+We use the free Wick polynomial algebra underlying
+Section~\ref{sec:free-maxwell-ward-flux}. Let $X_{s,\alpha}$ be
+coordinates of the real Maxwell jet space of order $s$, complexified
+for polynomial coefficients. The index $\alpha$ includes colour.
+Let $\mathcal R_j$ be the subalgebra using coordinates only of orders
+$s\leq j$. This is a cutoff on jet order, distinct from the weighted
+grade $d$, where $X_{s,\alpha}$ has weight $s+2$.
+
+For a linear probe $p$ of order $k$, let $K(p,e_{s,\alpha};z)$ be its
+covariance with the coordinate probe at separation $z$. Define
+\[
+ D_{p,s}(z)P=\sum_\alpha K(p,e_{s,\alpha};z)
+                     \frac{\partial P}{\partial X_{s,\alpha}},
+ \qquad D_p(z)P=\sum_{s=0}^jD_{p,s}(z)P
+                      \quad(P\in\mathcal R_j).
+\]
+The second expression is the Wick contraction derivation of $p$ with
+$P$. The definitions agree on nested cutoffs because derivatives in
+unused coordinates vanish. Both derivations preserve $\mathcal R_j$.
+Each coefficient in $D_{p,s}$ is a pole of order $4+k+s$.
+
+Let $Q_z$ be any multilinear functional of a finite word of fixed
+polynomials such that its evaluation on each fixed word is continuous
+at $z=0$. Contracting $p$ with one slot $P\in\mathcal R_j$ gives
+\begin{equation}\label{eq:collision-single-leading}
+ \lim_{t\downarrow0}t^{4+k+j}
+ Q_{tz}(\ldots,D_p(tz)P,\ldots)
+ =Q_0(\ldots,D_{p,j}(z)P,\ldots).
+\end{equation}
+To verify this, expand the finite sum over $s,\alpha$. Homogeneity
+extracts $t^{-4-k-s}$ from the covariance coefficient. The remaining
+functional converges by continuity. Terms with $s<j$ acquire a factor
+$t^{j-s}$ and vanish, while those with $s=j$ give the stated limit.
+The right side, as a function of $z$, is a harmonic pole of order
+$4+k+j$, being a finite constant linear combination of such poles.
+
+If two probes $p,q$ of orders $k,l$ both contract with the same slot,
+then a fixed linear evaluation $Q$ of that slot gives
+\begin{equation}\label{eq:collision-double-poles}
+ Q(D_q(z)D_p(z)P)=
+ \sum_{s,b\leq j}\ \sum_{\alpha,\beta}
+ K(p,e_{s,\alpha};z)K(q,e_{b,\beta};z)
+ Q\!\left(\partial_{X_{b,\beta}}\partial_{X_{s,\alpha}}P\right).
+\end{equation}
+The derivations act on polynomial coordinates, not on $z$, so no
+covariance coefficient is differentiated here. Every summand is a
+product pole of order $8+k+l+s+b$, hence at most $8+k+l+2j$.
+Group the finitely many terms of each degree into $W_q$. Their radial
+clearing property is the one proved above. These are the terms which
+cannot be discarded by a simple collision limit.
+
+\subsection{The two-probe residue and null observables}
+Fix a separated configuration $x=(x_0,\ldots,x_n)$, a polynomial
+$P\in\mathcal R_j$ at $x_0$, and arbitrary polynomial spectators
+$P_1,\ldots,P_n$. Insert the Wick product $p q$ at $x_0+z$, where
+$p,q$ have orders $k,l$ with $l<k$. Write $F(z)$ for this enlarged
+moment and put $r=4+k+j$.
+
+Wick expansion contracts the two probe factors into the original word;
+they cannot contract with one another at their own insertion. There
+are four cases. If both hit $P$, their contribution is exactly
+\eqref{eq:collision-double-poles}, with $Q$ the moment of the unchanged
+spectators. If $p$ hits $P$ and $q$ hits a spectator, the latter
+contraction is continuous at $z=0$, since the spectator point differs
+from $x_0$. Apply \eqref{eq:collision-single-leading} to obtain the
+order-$r$ residue. If $q$ hits $P$ and $p$ hits a spectator, the analogous
+residue has order $4+l+j<r$ and therefore disappears after multiplication
+by $t^r$. Finally, if both hit spectators, every involved kernel is
+smooth near $z=0$, so this contribution disappears as well.
+These statements also cover two hits on the same spectator: the
+polynomial derivatives are finite and both covariance factors stay
+smooth near zero.
+
+Sum the surviving terms in the second case. The elementary one-leg
+Wick identity says that summing all contractions of $q$ with the
+spectators is the same as adjoining the factor $q$ to the polynomial
+at $x_0$. Hence the residue is
+\begin{equation}\label{eq:collision-two-probe-residue}
+ H(z)=\mathcal M_x\bigl(qD_{p,j}(z)P,P_1,\ldots,P_n\bigr).
+\end{equation}
+All sums are finite. We have proved
+\eqref{eq:collision-residue-expansion}, with this harmonic pole $H$
+and the double-hit product poles $W_q$, for any
+$M>8+k+l+2j$. For each fixed direction $z\ne0$, the enlarged
+configuration is separated for all sufficiently small positive $t$:
+$t z\ne0$ separates it from $x_0$, and convergence to $x_0$ separates
+it from the finitely many other points.
+
+Call a polynomial $P$ \emph{null at capacity $d$} if
+\[
+ \mathcal M_x(P,P_1,\ldots,P_n)=0
+\]
+for every finite number of spectators, every separated configuration,
+and all gauge-invariant spectator polynomials of weighted grade at
+most $d$. There is no bound on the number of spectators.
+
+To make the two-probe insertion gauge invariant, choose uncoloured
+linear probes $p,q$ of orders $k,l$ and an orthonormal colour basis.
+Write $p_c,q_c$ for the probes in colour $c$. Their quadratic contraction
+$\sum_c p_cq_c$ is invariant and has weighted grade $k+l+4$.
+Define the circulation polynomial
+\[
+ \mathcal C_{j;p,q}(z)P=\sum_c q_cD_{p_c,j}(z)P.
+\]
+The covariance is the identity in colour times the scalar jet
+covariance, so changing orthonormal colour basis leaves both this
+expression and the quadratic insertion unchanged.
+
+\begin{theorem}[Circulation preserves the null test]
+\label{thm:free-circulation-null}
+Let $P\in\mathcal R_j$ be null at capacity $d$. If $l<k$ and
+$k+l+4\leq d$, then for each $z\ne0$ the polynomial
+$\mathcal C_{j;p,q}(z)P$ is null at capacity $d$.
+\end{theorem}
+
+\begin{proof}
+Fix any allowed spectators and separated configuration. Sum the
+preceding residue expansions over the finite colour basis. The residue
+is now the moment with first insertion $\mathcal C_{j;p,q}(z)P$.
+The enlarged moment $F(tz)$ is zero for all sufficiently small positive
+$t$: reorder its slots so that $P$ is first and treat
+$\sum_c p_cq_c$ as one additional spectator. Its grade is at most $d$,
+and all the other spectators were already admissible. This uses only
+the null condition at the original capacity.
+Lemma~\ref{lem:collision-product-separation} therefore annihilates
+the residue, since $r=4+k+j\geq4$. As the original spectators and
+configuration were arbitrary, this proves the null test for the
+circulation at every fixed nonzero $z$.
+\end{proof}

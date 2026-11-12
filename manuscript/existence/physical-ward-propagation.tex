@@ -1,0 +1,615 @@
+\section{From the collinear stress identity to global Ward identities}
+\label{sec:physical-ward-propagation}
+
+This section records the finite-configuration argument which turns a collinear
+rotation identity into a Ward identity at every separated configuration.  It
+also records the two finite-level bridges needed later: the outer stress
+estimate supplies the collinear identity, and erasure of the internal Ward
+kernel turns the differentiated Ward identity into the Lie relations.  All
+statements are at fixed finite insertion number and fixed field grades; no
+coincidence limit is taken.
+
+Let $\mathscr S$ be a Euclidean hierarchy.  Write $\mathcal F_d$ for its
+complex field space at grade $d$, $\mathcal P_d:\mathcal F_d\to
+\mathcal F_{d+1}$ for the positional derivative, and
+$\mathcal Y_d(K):\mathcal F_d\to\mathcal F_d$ for a spin-row family indexed
+real-linearly by a skew matrix $K\in\mathfrak{so}(4)$.  A label at a slot is
+a pair $(d,v)$ with $v\in\mathcal F_d$.  For a word $q=(q_1,\ldots,q_n)$ and
+a separated tuple $x=(x_1,\ldots,x_n)$, let $S(q;x)$ denote its Euclidean
+moment.  The hierarchy's derivative rule says that differentiation in the
+coordinate $b$ of $x_i$ replaces $q_i=(d_i,v_i)$ by
+$(d_i+1,\mathcal P_{d_i,b}v_i)$.
+
+Define the angular Ward expression by
+\begin{align}
+\mathcal A_K(q;x) = \sum_{i=1}^n \bigg(&S(q[i\mapsto
+  (d_i,\mathcal Y_{d_i}(K)v_i)];x) \\
+  &+\sum_{b=1}^4 (Kx_i)_b\,
+  S(q[i\mapsto(d_i+1,\mathcal P_{d_i,b}v_i)];x)\bigg).
+\label{eq:ward-angular-expression}
+\end{align}
+Here $q[i\mapsto\cdot]$ changes only the indicated slot.  The condition
+\emph{Still at $x$} means $\mathcal A_K(q;x)=0$ for every word $q$ and every
+$K$.  The condition \emph{collinear} means this identity holds whenever the
+points lie on one common coordinate line and remain pairwise distinct.
+The compatibility relation between position and spin derivatives is
+\begin{equation}
+ \mathcal P_{d,b}\mathcal Y_d(K)v
+ +\sum_{c=1}^4 K_{cb}\,\mathcal P_{d,c}v
+ =\mathcal Y_{d+1}(K)\mathcal P_{d,b}v.
+\label{eq:ward-commutation}
+\end{equation}
+The signs in this identity use the convention in
+\eqref{eq:ward-angular-expression}.
+
+\begin{theorem}[Propagation from a line]\label{thm:ward-global-propagation}
+Assume the hierarchy is smooth on the configuration space
+\[
+ \operatorname{Conf}_n=\{(x_1,\ldots,x_n):x_i\ne x_j\text{ for }i\ne j\},
+\]
+the spin rows obey \eqref{eq:ward-commutation}, and the angular expression
+\eqref{eq:ward-angular-expression} is zero at every separated collinear
+configuration.  Assume also the extreme-segment analyticity established in
+Section~\ref{sec:physical-ward-analytic-continuation}: on every coordinate
+segment used below, the angular expression for each fixed word and generator
+is real analytic on a neighborhood of the segment.  Then it is zero at every
+$x\in\operatorname{Conf}_n$.
+\end{theorem}
+
+\begin{proof}
+We first establish a geometric reduction.  Fix a coordinate axis $a$ and
+another axis $b\ne a$.  Call a tuple $a$-ordered if the real numbers
+$x_i\cdot e_a$ are pairwise distinct.  Such tuples are dense in
+$\operatorname{Conf}_n$: perturb the $a$-coordinate of point $i$ by
+$t i$.  For each pair $i\ne j$, equality after perturbation can occur for at
+most one value of $t$.  Since there are finitely many pairs, there are
+arbitrarily small $t$ avoiding all these exceptional values.  The perturbed
+tuple converges to the original one and remains in the open set
+$\operatorname{Conf}_n$ for small enough $t$.
+
+Every $a$-ordered tuple can be moved to a collinear tuple by a finite chain
+of single-point coordinate segments which stay in $\operatorname{Conf}_n$.
+Here are the construction and the separation check.  Let $I$ be the set of
+points not yet on the $a$-axis, maintaining the invariant that points
+already aligned lie beyond every remaining point in the $a$-coordinate.
+Initially $I$ is the whole set, so the invariant is vacuous.  Choose
+$i\in I$ with smallest $a$-coordinate.  First move point $i$ in coordinate $b$ far enough in the
+positive direction that it is the unique largest $b$-coordinate.  During
+this first segment it stays the unique smallest $a$-coordinate, since its
+$a$-coordinate is fixed.  Then move it in coordinate $a$ far enough to be
+the unique largest $a$-coordinate.  During this second segment it stays
+the unique largest $b$-coordinate, so its $b$-coordinate does not meet
+another point's.  Now, one at a time, set each of its other coordinates
+to zero.  These moves leave its $a$-coordinate fixed and it remains the
+unique largest in $a$.  Every intermediate configuration is therefore
+separated.  The point has now reached the $a$-axis without moving any other
+point, and it lies beyond every point still in $I$.  Repeat with the
+remaining finite set $I$.  This terminates after at most $n$ stages and
+gives the required finite chain.  The motion consists of finitely many
+segments; the segment parameter interval can be oriented in either direction.
+
+It remains to show the Ward identity is constant along each such segment.
+Fix a segment moving point $i$ in coordinate $b$, with parameter $s$ in a
+closed interval $[u,v]$.  By construction, throughout this interval point
+$i$ is either the strict minimum or the strict maximum in some coordinate
+$a$; the choice may switch between segments, but not within this one.  For
+each fixed word $q$ and skew matrix $K$, the scalar function
+\[
+ s\longmapsto \mathcal A_K(q;x(s))
+\]
+is real analytic on a neighborhood of the interval by the stated
+extreme-segment analyticity input.  This input applies to moment rows with
+the moving point at either end and to every raised row appearing in the
+angular expression.  It is precisely the result of
+Section~\ref{sec:physical-ward-analytic-continuation}; smoothness on
+$\operatorname{Conf}_n$ alone is not enough.
+
+At an endpoint where Still holds, all derivatives of this analytic scalar
+function vanish.  For order zero this is the assumed Ward identity.  For
+higher orders, differentiate the identity along the segment and use
+\eqref{eq:ward-commutation}: differentiating the spin substitution at the
+moving slot gives the spin substitution of the raised positional derivative;
+the derivative of the orbital coefficient supplies the matrix term
+$\sum_c K_{cb}\mathcal P_{d,c}$; these terms combine exactly into the
+raised-slot term in the angular identity.  Induction therefore identifies
+the $r$th derivative with the Ward expression for the word with that slot
+raised $r$ times.  It is zero at the endpoint.  A real-analytic function on
+a connected interval whose derivatives of every order vanish at one point
+vanishes on the interval: its convergent Taylor series is zero near that
+point, and the identity theorem propagates the equality across the interval.
+Thus Still transfers from the final endpoint of a segment to its initial
+endpoint.  Applying this successively along the finite chain proves Still
+at every $a$-ordered tuple.  Finally, each angular expression is continuous
+on $\operatorname{Conf}_n$ by smoothness of the hierarchy there.  Density of
+the ordered tuples proves it vanishes at the original arbitrary separated
+tuple.  This also covers $n=0,1$, where there are no pairwise collision
+constraints and the sums are empty or single-term.
+\end{proof}
+
+\paragraph{The collinear identity from the stress tensor.}
+The preceding theorem needs no stress tensor once its collinear hypothesis
+is available.  In the application, let $J_{ab}$ be a symmetric conserved
+stress insertion, let $p_{d,b}$ be the local positional response, and let
+$Y_d(K)$ be the spin response.  The stress-law package consists of the
+conservation law, the symmetric raw stress identity, and the flux identity
+that identifies the infinitesimal rotation of a moment with the integral
+of the stress flux.  The actual source constructs the flux test rather
+than assuming a noncompact rotation field is admissible.
+
+For fixed separated collinear $x$, choose smooth compactly supported
+windows $\chi_i$ around each point, equal to one near that point and with
+supports avoiding all other insertions.  For a plane rotation in axes
+$a,b$, the packet
+\[
+ F_c(y)=\sum_i\chi_i(y)(K y)_c
+\]
+is smooth, compactly supported, and agrees with the rotational vector
+field near each insertion.  The flux identity therefore evaluates the
+angular expression as minus the integral of its stress-flux density.  In
+that density the term $\chi_i\,\partial_a(Ky)_b$ cancels after contraction
+against the symmetric stress, because $K$ is skew.  The terms
+$(\partial_a\chi_i)(Ky)_b$ do not cancel: they are the shell integrand.
+Their supports lie in the cutoff shells around the insertions, and the
+exterior packet estimate below controls them.
+
+Here is the rate calculation behind the stress-packet estimate.  For a
+sequence of scalar or finite-dimensional vector quantities $F_n$, write
+$F=O_r$ when $\|F_n\|\leq C e^{rn}$ for all sufficiently large $n$, with
+$C$ independent of $n$.  The exact choice of the fixed axes, word, and
+positions may affect $C$.  A positive spectral pairing satisfies the
+following elementary interpolation rule: if $X_n,Y_n\geq0$ and
+\[
+ |F_n(p)|^2\leq (M e^{tn})^2X_n(p)Y_n(p),\qquad
+ \int X_n\,d\nu_B=O_x,\qquad \int Y_n\,d\nu_A=O_y,
+\]
+then Cauchy--Schwarz gives
+\begin{equation}
+ |\langle F_n\rangle_{B,A}|
+ \leq M(C_XC_Y)^{1/2}e^{(t+(x+y)/2)n},
+ \qquad\text{so }\quad
+ \langle F_n\rangle_{B,A}=O_{t+(x+y)/2}.
+\label{eq:ward-balanced-price}
+\end{equation}
+Here $C_X,C_Y$ are the constants in the respective integral bounds.  This
+rule applies to the cross-spectral pairing after its positive supports
+and integrability have been verified.
+
+For the packet under consideration the anisotropic scale exponents are
+\[
+ w_j=\begin{cases}
+ -100,&j=a\text{ or }j=b,\\
+ -150,&j=l\text{ and }j\notin\{a,b\},\\
+ -300,&\text{otherwise},
+ \end{cases}
+ \qquad
+ u=\begin{cases}1,&d=l,\\-w_l,&d\ne l.\end{cases}
+\]
+They obey $-300\leq w_j\leq-100$, $w_d<0$, and $u\leq150$.  The
+nonnegative spectral measures are supported on $p_d\geq0$.  The cove is
+the set where $p_d\leq1$ and every transverse coordinate satisfies
+$|p_j|\leq e^{(1+w_j)n}$.  Let $h$ be the fixed nonnegative, smooth, even
+one-dimensional cutoff which equals one on $[-1,1]$ and is supported in
+$[-2,2]$.  The transverse panel uses
+the normalized dilation
+\[
+ h_{j,n}(s)=e^{-(1+w_j)n}h\bigl(s e^{-(1+w_j)n}\bigr),
+ \qquad H_n(p)=\prod_{j\ne d}h_{j,n}(p_j).
+\]
+Thus $H_n$ includes the normalization factors of the three transverse
+one-dimensional dilations; they are part of both price weights below.
+The packet estimate is for pairwise distinct axes $a,b$ and for
+$d\ne a$, as in the stress-packet construction.  Denote by $D_{r,n}$ the
+positive longitudinal cost
+\[
+ D_{r,n}(p)=\mathbf1_{p_d\leq1}\,(p_d+e^{rn})^{-1}
+             H_n(p),
+\]
+Denote by $Z_{r,n}$ its cone-weighted variant
+\[
+ Z_{r,n}(p)=\mathbf1_{p_d\leq1}
+     \frac{p_d e^{4rn}}{(p_d+e^{rn})^4}H_n(p).
+\]
+The following are the precise price bounds needed from the collinear
+spectral estimates.  The positive line and point prices are supplied by
+Section~\ref{sec:physical-ward-packet-prices}; the cone-weighted bound is
+proved by the fixed-band stress-conservation argument in
+Section~\ref{sec:physical-ward-stress-cone}.  In these notations the
+required bounds are
+\begin{align}
+ \int D_{-3000,n}\,d\nu_B&=O_u,&
+ \int Z_{-99,n}\,d\nu_A&=O_{-395},
+ \label{eq:ward-deep-prices}\\
+ \int D_{-3000,n}\,d\nu_B&=O_u,&
+ \int D_{0,n}\,d\nu_A&=O_{900},
+ \label{eq:ward-shallow-prices}\\
+ \int D_{-3000,n}\,d\nu_B&=O_u,&
+ \int D_{w_d,n}\,d\nu_A&=O_1.
+ \label{eq:ward-side-prices}
+\end{align}
+Each bound is uniform in $n$ for a fixed packet.  The exterior Fourier
+estimate supplies $O_{-101}$ on the complement of the low cove by the
+damped exterior estimate, not by assuming an undamped spectral moment.  The
+distinction between the two price measures in each display is essential:
+the first controls the collinear line cost, while the second controls the
+packet amplitude.
+
+The one-dimensional panel profile $\varphi_d$ in the test has Fourier gap
+$\widehat\varphi_d(\xi)\ne0\Rightarrow |\xi|\geq1$.  This is a property
+of the panel profile, not a claim that the compactly supported spatial
+petal has a Fourier gap.  On the cove, the frozen Fourier estimate for that panel gives
+the differentiated-packet bound
+\begin{equation}
+ |F_n(p)|\leq M e^{3n}H_n(p)
+                    \exp(-p_de^{-w_dn}),\qquad p_d\geq0.
+\label{eq:ward-packet-tail}
+\end{equation}
+On the cove with $d=b$, split at the longitudinal level
+$p_d=e^{-3000n}$.  On the region $p_d\geq e^{-3000n}$, the elementary inequality
+\[
+ e^{-t/s}\leq 4\left(\frac{s}{t+s}\right)^2
+ \quad(t\geq0, 0<s\leq v)
+\]
+with $s=e^{w_dn}$ and $v=e^{-99n}$ first gives the square-tail factor
+$16(v/(p_d+v))^4$.  On this region, put $R=e^{-3000n}$.  Since
+$R\leq p_d\leq1$, we have $1\leq4p_d/(p_d+R)$, and therefore
+\[
+ |F_n|^2\leq (M' e^{3n})^2D_{-3000,n}Z_{-99,n}.
+\]
+The factor $4p_d/(p_d+R)$ pays for replacing the packet's denominator at
+scale $e^{-99n}$ by the longitudinal cost at scale $e^{-3000n}$.  The costs in
+\eqref{eq:ward-deep-prices} and
+\eqref{eq:ward-balanced-price} give exponent
+\[
+ 3+\frac{u-395}{2}\leq 3+\frac{150-395}{2}=-119.5.
+\]
+On the other cove region, $0\leq p_d<e^{-3000n}$, the exponential in
+\eqref{eq:ward-packet-tail} is at most one.  The packet square is therefore
+bounded with amplitude exponent $3-1500=-1497$ against
+$D_{-3000,n}D_{0,n}$.  The shallow prices yield
+\[
+ -1497+\frac{u+900}{2}\leq -972.
+\]
+Both estimates are stronger than $O_{-101}$.
+
+If $d\ne b$, the shear estimate bounds the squared packet by an amplitude
+with exponent $3+w_d$, against $D_{-3000,n}D_{w_d,n}$.  When $d=l$,
+$w_d=-150$ and $u=1$, so \eqref{eq:ward-balanced-price} gives
+$-150+3+(1+1)/2=-146$.  When $d\ne l$, $w_d=-300$ and $u\leq150$,
+so the exponent is at most
+\[
+ 3-300+\frac{150+1}{2}=-221.5.
+\]
+The cove is partitioned by these two cases, and the complement has the
+independent damped Fourier-tail price $O_{-101}$.  For clarity, outside the
+cove there are exactly two alternatives.  If $p_d>1$, the gap in the panel
+Fourier support and the positive-time damping estimate give
+\[
+ e^{-p_de^{-w_dn}}\leq e^{yn}e^{-Rp_d}
+\]
+eventually, for any fixed $R>0$ and prescribed $y$.  Take $y=-1001$;
+the transverse readout contributes at most $e^{900n}$, leaving rate
+$-101$.  The positive-time damped spectral moment is supplied by the
+exterior-price estimate; no undamped zeroth moment is assumed.  If
+instead $p_d\leq1$
+and a transverse scatter bound fails, then for some $j\ne d$,
+$|p_j|>e^{(1+w_j)n}$.  The Schwartz bound of order $k$ in that coordinate
+contributes the factor $e^{-kn}$, while the order-zero bounds for the two
+other transverse coordinates and the ordinary bound in the failed
+coordinate contribute at most $e^{900n}$.  Choose $k>1001$; the
+corresponding positive-time polynomially weighted estimate is again the
+exterior-price input.  These two cases give the unamplified matching
+cluster readout the required price $O_{-101}$ under that input.
+
+The cross-slice step needs absolute integrability on both sides.  The
+weighted line/exterior prices and the positive-time damped spectral moment
+first give the spectral-side integrability.  On the position side, place the
+two fixed clusters at a common positive-time separation $u$.  The panel's
+temporal Fourier gap is at least $e^{-w_dn}$, which is eventually greater
+than $2u$ with a strict margin.  The damped moment estimate, together with
+the Schwartz bounds in the transverse coordinates, then gives absolute
+integrability and justifies Fubini.  This is the gap estimate in the
+cross-slice input; weighted spectral Cauchy by itself would not prove
+position-side integrability.  With these integrability hypotheses in place,
+the cross-slice identity gives, for a fixed sign
+$\epsilon\in\{-1,1\}$ and fixed $\tau>0$,
+\[
+ \epsilon\int R_n(p)\,dp=\tau\,\operatorname{cross}(F_n),
+\]
+where $R_n$ is the unamplified cluster readout times the position test and
+$F_n$ is its slice packet.  Thus the cove and exterior estimates imply
+$\int R_n=O_{-101}$.
+The actual insertion packet has an additional exact scalar factor
+$e^{100n}$: the profile identity is
+$\mathrm{packet}_n=e^{100n}\,\mathrm{readout}_n$.  Consequently its
+integral has price
+\begin{equation}
+ |B_{a,b,l,d}(n)|\leq C e^{100n}e^{-101n}=C e^{-n}.
+\label{eq:ward-shell-budget}
+\end{equation}
+To pass from this packet price to the stress insertion, first represent the chosen
+stress component by its finite signed cluster expansion.  Decompose the
+other insertion labels into their finitely many sign patterns.  A coordinate
+reflection changes the sign of each nonmatching pattern while preserving
+measure, so its integral is zero.  For the matching pattern, the exact
+derivative-profile identity is
+$\partial_d\mathrm{petal}_n=e^{100n}\mathrm{positionTest}_n$; thus its
+unamplified readout has price $O_{-101}$ and the actual stress packet has
+price $O_{100-101}=O_{-1}$.  Finally, the finite sum over patterns, axes,
+and insertions preserves $O_{-1}$, and the shell flux tends to zero.
+
+For the plane with generator normalized by $K e_a=e_b$ and
+$K e_b=-e_a$, use the compact
+vector test with components
+\[
+ F_b^{(n)}(y)=\mathrm{petal}(a,b,l,n)(y),\qquad
+ F_a^{(n)}(y)=-\mathrm{petal}(b,a,l,n)(y),\qquad
+ F_c^{(n)}(y)=0\quad(c\notin\{a,b\}).
+\]
+The local packet limits are $F_b^{(n)}(y)\to y_a$ and
+$F_a^{(n)}(y)\to-y_b$, exactly the two components of the orbital field.
+The second component carries the minus sign; it is not an additional sign
+in the stress contraction.  By stress symmetry, its shell integral and the
+first component combine as
+\[
+ \int\mathrm{river}(F^{(n)})
+ =\int\mathrm{draught}_{a,b}^{(n)}
+  -\int\mathrm{draught}_{b,a}^{(n)}.
+\]
+Each draught is a finite sum of the already estimated shell terms, hence
+has bound $C e^{-n}$.  The compact-flux identity identifies the negative of
+this integral with the local plane-rotation response.  That response is
+independent of $n$, so its absolute value is at most $C e^{-n}$ for all
+sufficiently large $n$ and therefore is zero.  The generators of coordinate
+planes span $\mathfrak{so}(4)$, giving the collinear identity for every
+skew generator.
+The skew matrices
+$E_{ab}-E_{ba}$ form a real basis of $\mathfrak{so}(4)$, and the angular
+response is real-linear in its generator, so it vanishes for every $K$.
+This proves the collinear input used above.  The exponential estimate is
+the substantive analytic input here; it is not a consequence of the
+geometric propagation argument.
+
+\begin{lemma}[Outer translation identity]\label{lem:ward-outer-miles}
+Under the same stress-law assumptions, the vector positional response also
+satisfies the following line identity.  If $x_1,\ldots,x_n$ lie on the
+axis $b$, $j\ne b$, and $v_i\in\mathcal F_d$, then
+\[
+ \sum_{i=1}^n S\bigl(q[i\mapsto(d+1,p_{d,j}v_i)];x\bigr)=0,
+ \qquad q_i=(d,v_i).
+\]
+\end{lemma}
+
+\begin{proof}
+Let $K_{j,b}$ be the plane generator normalized by $K_{j,b}e_b=e_j$.
+Simultaneous translation preserves the moment and all spin terms.  In the
+orbital term, translating every point by $e_b$ changes $(K_{j,b}x_i)_c$
+to $(K_{j,b}x_i)_c+(K_{j,b}e_b)_c$.  Only the $c=j$ component changes,
+by one.  Therefore
+\[
+ \mathcal A_{K_{j,b}}(q;x+e_b)=\mathcal A_{K_{j,b}}(q;x)
+   +\sum_i S(q[i\mapsto(d+1,p_{d,j}v_i)];x).
+\]
+Both tuples remain separated and lie on the same line, so both angular
+terms vanish.  Subtracting gives the stated line identity.  For the empty
+word it is the empty sum.
+\end{proof}
+
+\paragraph{Finite-level bridges used by the selected scale.}
+The line identity and the collinear rotational identity are only the
+geometric part of the finite-level argument.  The selected scale uses the
+following additional bridges; their order matters.
+
+At the local algebraic stage, the three identities used above are derived
+from the stress-law package rather than postulated separately.  For the
+positional response, differentiate the compactly supported flux with the
+same cutoff kept fixed.  The derivative has two terms: differentiation of
+the flux coefficient, and differentiation of the moment at the moving
+insertion.  The latter raises exactly that slot by one derivative.  The
+stress conservation identity moves derivatives of the cutoff to the
+coefficient, and symmetry of $J$ cancels the antisymmetric part.  This
+gives the shell-commutation relation and compatibility of $p$ with grade
+inclusion.  Applying translations, reflections, and real conjugation to
+the same cutoff formula gives the color covariance, reality, unit, and
+mirror rules for $p$ and $Y$.  In particular the unit rule uses
+conservation on the word with the unit insertion deleted; it is not a
+formal consequence of a nonzero-grade relation.
+
+To obtain the all-order line jets, do not differentiate an identity known
+only on the line.  First form the mixed-cap row which sums, over the marked
+slot, the moment with that label raised once in a fixed transverse direction.
+The derivative rule and the positional/spin compatibility identity prove
+on the whole open configuration space that differentiating this row in any
+point-coordinate direction equals the corresponding row with that slot
+raised once more.  This is a local identity on $\operatorname{Conf}_n$,
+not a line-restricted assertion.  On the line, the order-zero mixed-cap row
+vanishes: pad all caps to their finite maximum by inclusion compatibility,
+then apply the line-sum identity.  Now induct on derivative order.  The
+case of order zero is this line-sum statement.  For the induction step, the
+global derivative identity just proved expresses every coordinate
+directional derivative as a row with one additional raised slot; evaluate
+that raised row at the line and use the induction hypothesis.  Since
+coordinate directions span the configuration-space tangent space, all
+multilinear positional jets vanish there.  This is the transverse-jet
+condition used by the finite-scale argument.
+
+First, finite test rows determine the free derivative data.  At each grade,
+faithfulness of the free table says the family of all evaluation rows has
+zero common kernel.  Since the field space at fixed grade is finite
+dimensional, finitely many such rows already have zero common kernel: add
+rows while the intersection of kernels drops in dimension; this can happen
+only finitely often.  Under a scaling sequence, the prescribed local jet
+convergence makes each of these finitely many actual rows converge on every
+fixed free vector.  The limiting row map is injective.  Compose the actual
+row maps with a left inverse of the limit; in finite dimension the resulting
+operators converge to the identity and are invertible eventually.  If the
+row maps are evaluated on the moving scaled derivative, the given fitted
+row convergence then forces that derivative to converge to the free
+derivative.  This is the gradient component of the first scaling bridge.
+
+Second, the same finite-row method is applied to a finite family of
+observers at adjacent grades.  The stress meter and the shell/rotation
+flux identities identify the limiting rows with the free stress gradient
+and free spin action.  Fixed-window jet convergence supplies convergence
+of the actual rows.  The observer set is united before one scale threshold
+is chosen, so these limits use one selected scale sequence.  The precise
+rank-one argument identifying the positional scalar is given after the
+finite collinear rows have been transported.
+
+Third, transport the finite collinear tests through the same scale.  For
+each selected scene $s$ and substitution $q$, the exact scaling identity
+is
+\[
+ \mathrm{test}_k\!\left(s,\mathrm{aisle}_k(q)\right)
+   =r_k^{m_s}\,\mathrm{lens}_{\mathrm{scaled}(k,s)}(q),
+\]
+where $m_s$ is the number of positional derivatives in that scene and
+$r_k>0$ is the scale factor.  The local jet estimates make these row maps
+converge on every fixed free substitution, and a finite-dimensional basis
+then gives operator convergence for the finite family.  The derivative and
+the local response are both transverse: each transported test row
+annihilates each of them exactly at every scale.  Thus the same selected
+family has the required common zero-row property; there is no injectivity
+claim for the free collinear tests.  This is an exact-kernel argument, not
+an eventual-injectivity argument.
+
+The finite free classifier gives one more rank statement needed to identify
+the normalization.  Work at each fixed grade $d$ above the common detector
+threshold, where the free derivative $\partial$ is nonzero.  Let $V_d$ be
+the finite-dimensional real space of admissible spin-sector response vectors
+and let $R:V_d\to W_d$ be the free finite collinear row map.  Its kernel is
+exactly the span of $\partial$.  Choose a real linear functional $\ell$ with
+$\ell(\partial)\ne0$; then the augmented map $(R,\ell)$ is injective.
+The selected row maps converge on a fixed basis, so adjoining this same
+$\ell$ leaves them injective for all sufficiently large scales.  Choose one
+such scale $\nu$.  Write $p_\nu$ and $\partial_\nu$ for the transported
+response vectors, and let $A_\nu$ be the common aisle map from the original
+finite-dimensional field space into the selected coordinates.  The source
+row identity is $R_\nu A_\nu p=R_\nu A_\nu\partial=0$.  Since
+$A_\nu$ is injective and $\partial\ne0$, $\partial_\nu\ne0$.  If
+$\ell(\partial_\nu)=0$, then augmented injectivity of
+$(R_\nu,\ell)$ would force $\partial_\nu=0$; thus this denominator is
+nonzero.  Set $c_{d,\nu}=\ell(p_\nu)/\ell(\partial_\nu)$.  The
+vector $p_\nu-c_{d,\nu}\partial_\nu$ is killed by both $R_\nu$ and
+$\ell$, hence is zero.  Cancel the injective common aisle map to obtain
+$p=c_{d,\nu}\partial$ in the original field space.  Since $p\ne0$,
+$c_{d,\nu}\ne0$.  Grade inclusion intertwines $p$ and $\partial$.
+Comparing adjacent grades above the detector threshold shows that this
+scalar is constant there; comparing any lower grade with the fixed threshold
+grade and using injectivity of inclusion gives the same identity below the
+threshold.  For any finite collection of caps and grades, take the maximum
+of the finitely many row-convergence thresholds.  Thus the same scalar $c$
+works for every fixed finite comparison in the selected family.  The independent
+stress-normalization result, together with the A05 observer limits,
+identifies the spin response with the corresponding same-scale multiple;
+define $\widetilde Y=c^{-1}Y$.  This ratio is obtained before the downstream
+rotation-action argument.
+
+Finally, erasure transfers from the free table to the selected table by
+the same argument.  At fixed grade, regard the internal Ward maps as a
+finite-dimensional real vector space.  Free erasure says the totality of
+all separated row sums separates this space, so finitely many rows suffice.
+Their actual counterparts converge on every fixed map.  Eventual
+injectivity follows by applying a fixed left inverse of the free row map.
+For a selected-table Ward map, pull it back by the aligned grade
+isomorphism.  It lies in the free covariance subspace; if all selected row
+sums vanish, the finite actual rows annihilate the pullback, hence it is
+zero.  Conjugating back proves erasure at all sufficiently large grades.
+The finite-dimensional injectivity argument uses pointwise convergence on
+a fixed basis and does not assume convergence on a moving map.
+
+\begin{lemma}[Differentiated Ward identity and brackets]
+\label{lem:ward-brackets}
+Suppose Still holds at every separated configuration; suppose also the
+spin rows satisfy Euclidean covariance and reality, preserve the unit,
+and commute with grade inclusion.  If the selected table has the erasure
+property just described, then for every grade $d$ and $u,v\in\mathfrak{so}(4)$,
+\[
+ [\mathcal Y_d(u),\mathcal Y_d(v)] = \mathcal Y_d([u,v]).
+\]
+\end{lemma}
+
+\begin{proof}
+For a fixed word $q$ define the simultaneous orbital vector field
+\[
+ X_u(x)_i=u x_i.
+\]
+The Ward identity and the derivative rule give
+\[
+ X_u S(q;x)=-\sum_i S(q[i\mapsto\mathcal Y(u)q_i];x).
+\tag{1}\label{eq:ward-orbital}
+\]
+The minus sign is fixed by the convention in the angular expression.
+Because Still holds throughout the open configuration space, (1) can be
+differentiated there and used again on each substituted word.  The vector
+field bracket is $[X_u,X_v]=-X_{[u,v]}$; this follows directly by
+differentiating the linear maps $x\mapsto ux$ and $x\mapsto vx$.
+Consequently the commutator of the two orbital derivatives on a moment
+is $-X_{[u,v]}S(q;x)$.
+
+On the other hand, apply (1) twice.  Terms where the two spin substitutions
+hit distinct slots cancel in pairs: the term indexed by $(i,j)$ in one
+order is the same moment as the term indexed by $(j,i)$ in the reverse
+order.  The terms with both substitutions at slot $i$ leave the positive
+commutator
+\[
+ \sum_i S\bigl(q[i\mapsto
+  ([\mathcal Y_d(u),\mathcal Y_d(v)]q_i)];x\bigr).
+\]
+The orbital vector-field bracket is $-X_{[u,v]}$, and by (1) its action on
+the moment is $+\sum_i S(q[i\mapsto\mathcal Y_d([u,v])q_i];x)$.  Equating
+the two computations gives zero row sum for the defect
+\[
+ D_d(u,v)=[\mathcal Y_d(u),\mathcal Y_d(v)]-\mathcal Y_d([u,v])
+\]
+has zero row sum on every separated word.
+
+The covariance assumptions imply that $D_d$ is an internal Ward map:
+it transforms under signed rotations, respects conjugation, annihilates
+the unit, is alternating, and is compatible with grade inclusion.  Thus
+it belongs to the finite-level internal kernel tested by erasure.  Erasure
+annihilates it for every grade above a fixed threshold.  For any smaller
+grade, raise to a grade above that threshold; inclusion compatibility
+identifies the raised defect with the image of the original one.  The
+grade inclusion is injective, so the original defect was zero as well.
+This proves the bracket identity at every grade.
+\end{proof}
+
+\begin{corollary}[Selected finite-level Ward package]
+\label{cor:selected-ward-package}
+Assume the selected finite-level data supplied by
+Section~\ref{sec:actual-stress-normalization} and the finite-row
+comparisons above.  In particular, for one $c\ne0$ the
+raw responses obey $p=cV$ and $Y=c\widetilde Y$, where $V$ is the genuine
+positional derivative and $\widetilde Y$ is the normalized spin action.
+Assume also the two free inputs: a finite collinear classifier for the
+quiet derivative rows and erasure of any alternating two-generator internal
+map whose separated Ward rows vanish, with the hypotheses used in the
+finite-row comparisons above. Then the
+actual collinear rotational identity and line identity hold, the Ward
+identity holds at every separated configuration, and the spin rows satisfy
+the $\mathfrak{so}(4)$ bracket relations.
+\end{corollary}
+
+\begin{proof}
+The compact stress packet gives the raw collinear identity
+$\mathcal A_K(p,Y)=0$.  By the common scalar normalization,
+$\mathcal A_K(p,Y)=c\mathcal A_K(V,\widetilde Y)$, so the genuine derivative
+and normalized spin action satisfy the collinear hypothesis of
+Theorem~\ref{thm:ward-global-propagation}.  That theorem extends the
+rotational identity to all of $\operatorname{Conf}_n$.  The finite-row bridges produce
+the selected scale data and transfer erasure.  Apply
+Lemma~\ref{lem:ward-brackets} to that same selected family.  Each use is
+for a fixed grade/configuration; the finite maxima are taken before the
+scale threshold, so the argument does not interchange a pointwise limit
+with an uncountable family of tests.
+\end{proof}
+
+The cove, line, mass, point and exterior prices used by the stress packet
+are the exact inputs of Section~\ref{sec:physical-ward-packet-prices}; their
+exponent composition and the $-101+100=-1$ normalization are proved above.
+The common selected curve, finite observer/jet convergence and scalar
+normalization are supplied by Section~\ref{sec:actual-stress-normalization}.
+The collinear classifier remains an explicit free input here. The internal-map
+erasure input is proved in Section~\ref{sec:free-internal-ward-erasure}.
+These free inputs are distinct from the packet-price bounds and from the
+geometric line-to-configuration argument.
