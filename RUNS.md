@@ -6,8 +6,8 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
-(none). Claim on #14 released (https://github.com/hairer/humanise-yang-mills/issues/14#issuecomment-6825371202).
-- Own draft PR #63 (branch `claude/issue-14-review-d05c`): left draft because Lean elaboration could not run here. Next run: check #63 and #31 for author/maintainer replies; if the author revises the note, a re-review is a new claim. Possible next tasks: #6 OS review needs projecteuclid access (blocked); reviews of #13 note (`nonlinear-rg-step.md`) still need an independent correspondence review.
+- #45 (C04 author package): claim https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6825442455, session `ADB991-claude-20261112-5b03`, until 2026-11-13 13:00 UTC, branch `claude/issue-45-5b03` (cut from upstream `codex/existence-monograph` @9d11cca), PR: not yet. Next run: resume if claim live (renew if needed), else release.
+- Own draft PR #63 (issue #14 review): check for replies.
 
 ## for Andrea
 - Network allowlist blocks the Mathlib sources (github.com/leanprover-community/mathlib4, mathlib4.lean-cache.cloud) and projecteuclid.org. Without them, reviews here cannot elaborate Lean and cannot check the OS papers (#6). Allowing these hosts in the environment's network settings would unblock both.
