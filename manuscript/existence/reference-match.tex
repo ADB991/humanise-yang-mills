@@ -5,9 +5,15 @@ observable, not only its coefficient vector. This requires a
 simultaneous marked argument. We explain the finite-dimensional
 matching and the exact replicated difference used in that argument.
 
-Fix a degree $d$ and scales $\operatorname{ref}(d)\le m\le k<N$.
-All paths below use the same finest scale $N$ and the same history;
-$m$ is the opening scale and $k$ the matching scale. Let $Q$ represent a continuous finite-cutoff observable
+Fix a degree $d$ and three depths $J\le m\le k<N$ with
+$\operatorname{ref}(d)\le m$. All paths below use the same finest scale
+$N$ and the same history. The depth $J$ is the centered depth: the
+replicated cells are the $M$ cells of the centered depth-$J$ tiling,
+and the root test $\mathcal R$ below is taken over them. The depth
+$m\ge J$ is the opening depth, at which the common weight evolution of
+the marked transport starts (an opened depth for $J$ in the sense of
+Section~\ref{ex-centered-construction}); $k$ is the matching
+depth. Let $Q$ represent a continuous finite-cutoff observable
 $f$ at scale $k$ through the full marked local representation.
 Suppose its coefficient-plus-remainder bound is at most $c>0$,
 and put
@@ -73,8 +79,12 @@ $e_j$ at scale $k$, with its local mask, and set
 \]
 where $\mathcal B_{k,N}$ is the backward observable transfer to
 the finest lattice. All $\ell_j$ lie in the same fixed stencil
-window. Hence $\ell$ does too, and the room condition places
-$r$ inside the centered chamber. This common window is essential
+window, of some fixed radius $R$. Hence $\ell$ does too. We assume
+the room condition of Section~\ref{sec:actual-phase-grid-approximants}
+for the centered depth $J$, the matching depth $k$ and this radius,
+namely $2(a_kR+T_k)<a_J$ with $T_k=30a_k(h_k+5)$; it places the
+propagated window, and so $r$, inside the centered $J$-chamber at every
+depth between $k$ and $N$. This common window is essential
 for the replicated transfer identity below.
 
 \subsection{The full replicated difference}
@@ -98,7 +108,11 @@ factors.
 For coarse functions in the common local window, the room
 condition ensures that backward transfer respects their copied
 product: $\mathcal B_{k,N}(\prod_{i\in A}F_i)$ is the product
-of the corresponding copies of $\mathcal B_{k,N}F$.
+of the corresponding copies of $\mathcal B_{k,N}F$. This is
+\eqref{eq:actual-grid-factor}, proved under exactly that condition
+by disjointness of the kernel read sets of different chambers at every
+intervening transition; it is not a consequence of adjointness or of
+normalization alone.
 Using adjointness in each summand of
 \eqref{eq:reference-join}, its integral is therefore
 \[
@@ -129,21 +143,32 @@ allowances $2$ and $1$. Translations and conjugation preserve
 them. This is the sharper bound for the matched coefficient paths;
 it is separate from the general centered-field estimate.
 
-Suppose the marked transport has reached scale $m$ with common
-mark weight $v>0$, higher-array price one, and singleton bounds
+Suppose the marked transport has reached the opening depth $m$ with
+common mark weight $v>0$, higher-array price one, and singleton bounds
 \[
       v|g_i(U)|\le2,\qquad
           v\sum_X|q_i(X,U)|\le1.
 \]
 The integrated marked coefficient estimate
-\eqref{ex-centered-sail}, with singleton allowances
-$2$ and $1$, then bounds the complete moment by
+\eqref{ex-centered-sail}, applied at the opening depth with the $M$
+centered $J$-cells as marked copies and with singleton allowances
+$2$ and $1$ (so $x=2$, $y=1$, $f=1$ and $x+y+2f=5$), then bounds the
+complete moment by
 \[
       v^M|\operatorname{moment}|\le
        \exp\bigl(|\Lambda_m|\mathcal V_m+5M\bigr).
 \]
-There are $M$ copied cells. Write
-$S_0=\exp(|\Lambda_m|\mathcal V_m/M+5)$, the cell price.
+Here $|\Lambda_m|$ is the number of depth-$m$ sites and $\mathcal V_m$
+is the per-site treasury bound $t_m$ of the opening depth, which bounds
+the extensive bracket of \eqref{ex-centered-sail} by the finite-volume
+treasury identity, as in Section~\ref{ex-centered-construction}. Since
+each centered $J$-cell contains $(a_J/a_m)^4$ depth-$m$ sites,
+$|\Lambda_m|=M(a_J/a_m)^4$. Write
+\[
+ S_0=\exp\bigl(|\Lambda_m|\mathcal V_m/M+5\bigr)
+    =\exp\bigl((a_J/a_m)^4t_m+5\bigr),
+\]
+the cell price.
 Taking the $M$th root gives the centered root bound $S_0/v$.
 This is an estimate for the complete replicated difference;
 no estimate on its individual mixed summands is substituted.

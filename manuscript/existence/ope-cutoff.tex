@@ -59,7 +59,12 @@ new weights can be taken to be
        e^{-(\nu+1/2)\ell}.
 \end{equation}
 Here $\nu$ is the purchased support exponent and $\delta>0$ the local
-smallness parameter. These statements also retain the exact marked
+smallness parameter. The connecting-cover bound $\ell$ is the quantity
+written $k$ in Section~\ref{sec:ope-grouping}, where $\ell$ denotes
+instead the site occupancy. Each factor $\lambda W_r$ is the new weight
+$\delta^2W_re^{-(\nu+1/2)k}/h$ of the single old mark $r$, and their
+product over $r\in A$ is the numerator computed at the end of that
+section, so that $8\widetilde W_A=\prod_{r\in A}(\lambda W_r)$. These statements also retain the exact marked
 polynomial after regrouping, its covariance between copies, its
 integrability, and its permitted local representation. The analytic
 proofs of these two local representation estimates remain construction
@@ -134,6 +139,18 @@ $\log\delta_{i+1}=o(s_i)$. Taking logarithms of
 \eqref{eq:ope-group-weight} therefore gives
 $\log\lambda_i=o(s_i)$ for fixed $h$. These are schedule and
 running-coupling estimates; their production is a separate input.
+The cover inequality is the form in which condition~(O1) of
+Section~\ref{sec:ope-scale-purchases} is used: by
+\eqref{eq:ope-pair-halo}, with parent and child radii
+$\lceil(\log x)^2\rceil$ and $\lceil(\log y)^2\rceil$ for the
+hatted couplings $x,y$ of the transition, the connecting cover is at
+most $16H_L(x,y)$, and (O1) with $A=101=\nu+1$ gives
+$(\nu+1)\ell_i\le16\sqrt{x}$. At the transition from level $i$ the
+hatted couplings are $x=\widehat\beta_i$ and $y=\widehat\beta_{i+1}$,
+as displayed in Section~\ref{sec:ope-scale-purchases}.
+Since $\widehat\beta_i$ is an affine function of $s_i$ on the selected
+scale sequence (Section~\ref{sec:common-scale-selection}),
+$\sqrt{\widehat\beta_i}/s_i\to0$.
 
 This pointwise-in-scale fact also gives a uniform allowance for all
 previous scales. If $u_i>0$ and $\log u_i=o(s_i)$ for an increasing
@@ -194,11 +211,64 @@ from the centered scale to $m$. Its bound is
 \]
 If the centered scale has first been opened to a finer admissible
 level, use that opened level in these formulas. The opening retains
-rate $b$, as checked below. The actual comparison producing
-\eqref{eq:ope-cutoff-discrepancy}, including its representation and
-reference-field identification, remains to be proved in the
-construction part; these displayed inequalities specify exactly the
-budget it needs.
+rate $b$, as checked below. Precisely, $\mathcal M(z;k,m)$ is the
+mark weight at scale $m$ obtained from the opening weight $z$ at $k$
+by the scheduled one-step reduction factors (the evolution
+$b_{i+1}=\eta_ib_i$ of Section~\ref{sec:reference-cone}); the displayed
+bound for it is a property of that schedule.
+
+The comparison producing \eqref{eq:ope-cutoff-discrepancy} is the
+matched construction of Section~\ref{sec:reference-match}. That section,
+like Sections~\ref{sec:reference-cone} and~\ref{sec:reference-difference},
+uses three depths: a centered depth $J$ (the replicated cells and the
+root test), an opening depth $m$ (start of the weight evolution) and a
+matching depth $k$. Here they are, respectively, the centered level $k$,
+its opened level $K(k)$, and $m$. The centered and opened levels are
+different in general: equal logarithmic rates do not identify them.
+The quantities correspond as follows.
+\begin{center}
+\begin{tabular}{ll}
+Section~\ref{sec:reference-match} & this section\\ \hline
+centered $J$, opening $m$, matching $k$ & $k$, $K(k)$, $m$\\
+degree $d$ & $q$\\
+coefficient field $Q$ with bound $c$ & terminal projection, $c=2P$\\
+column allowance $C_k$ & $\zeta_m$\\
+$E\geq4(1+C_k)c$ & $E=4(1+\zeta_m)(2P)$\\
+opening weight $w$ & $z$\\
+gain $G=e^{(s_k-s_m)/8}$ & $G(m,k)$\\
+single-source allowance $\theta_m$ & $\vartheta_q(k)$\\
+cell price $S_0=\exp((a_J/a_m)^4t_m+5)$ & $\mathcal S(k)=\exp(u^4t_{K(k)}+5)$\\
+bare label $b$ & $b$\\
+quota $\mu(I_kb)\le2E$; price $2S_0/w$ & quota of $Q_{N,p}$ at $m$ $\le V$; $A$
+\end{tabular}
+\end{center}
+The label returned here is not the bare label $b$ itself but its image
+$Q_{N,p}=T_{N,p}b$ under the calibrated terminal identification $T_{N,p}$
+of the cutoff $(N,p)$, the reference label whose observable is
+$\mathcal O(b)$; its quota at the matching level is by definition
+$\mu(I_mT_{N,p}^{-1}Q_{N,p})=\mu(I_mb)$. Since $T_{N,p}$ depends on the
+cutoff, the compactness argument below is applied to the labels
+$Q_{N,p}$, not to $b$. Under this dictionary
+\eqref{eq:reference-match-afford} is literally
+\eqref{eq:ope-match-pay-two}. The coefficient field is the terminal
+projection of Section~\ref{sec:ope-local-projection} with grouped weight
+$X$ and projection allowance $\mathcal B_m$. Its coefficient-size and
+remainder are each at most $a_{m+1}^q\,4\mathcal B_m/X=P$, by
+\eqref{eq:ope-terminal-projection-price}, so $c=2P$. Condition
+\eqref{eq:ope-match-pay-one} says that the weight transported to the
+matching scale does not exceed the outgoing weight $\delta_mI_v$
+permitted there after that projection, where $I_v=X/(16\mathcal B_m)$.
+The two conclusions of Section~\ref{sec:reference-match}, the quota
+bound $\mu(I_kb)\le2E$ and the centered root bound $2S_0/w$ for the
+difference, are then the quota bound $V=2E$ and the price
+\eqref{eq:ope-cutoff-discrepancy}. This comparison is conditional on
+the analytic hypotheses listed at the start of
+Section~\ref{sec:reference-match}: the signed transitions of
+Section~\ref{sec:reference-difference}, the one-scale marked transport
+of Section~\ref{sec:local-transfer}, the complete-moment estimate, cell
+separation and chamber locality, and the terminal reference
+identification, all on the same history. Those hypotheses remain inputs
+here; the displayed inequalities are exactly the budget they need.
 
 Both payment conditions hold eventually by a strict comparison of
 rates. The right side of \eqref{eq:ope-match-pay-one} has rate
@@ -291,3 +361,84 @@ multiplied by $a_m$, has rate $-a<-b$. It therefore fits inside
 the centered scale $a_k$. This completes the accounting and extraction
 of the local matching input, conditional on the explicit analytic
 representation and comparison estimates above.
+
+\subsection{Assembly of the local matching input}
+We now record precisely how the three preceding constructions combine
+into Input~\ref{input:ope-match} of Section~\ref{sec:ope-grid}. The
+point is that one label $Q_n$ carries all the required bounds; no
+separate choice is made for a phase, a spectator list or a low degree.
+The letter $m$ denotes the matching level throughout this section, so we
+write $e+1$ for the low degree called $m$ in \eqref{eq:ope-match-distance}.
+
+\begin{proposition}\label{prop:ope-match-assembly}
+Assume, on one selected history and one ordered cutoff filter, the
+analytic inputs used above: the marked descent and regrouping estimates
+with the weight rule \eqref{eq:ope-group-weight} and the support
+propagation bound; the terminal local projection of
+Section~\ref{sec:ope-local-projection}; the comparison hypotheses of
+Section~\ref{sec:reference-match}; the schedule properties used in
+this section; the centered estimates and separated-cluster limit used in
+Section~\ref{sec:ope-phase-prices}, together with the unreflected
+conjugation identity \eqref{eq:episode-conjugate} and the continuity of
+the correlations in every character phase
+(Proposition~\ref{ex-phase-caps}) used there; and the one-step triangular,
+calibrated column and local comparison and projection inputs of
+Section~\ref{sec:ope-filtration}. Then Input~\ref{input:ope-match} holds.
+In it the cluster arity is $|I|=h$, the mesh rate $d$ of the input is
+the rate $c$ of the insertion grid here, and its rates $a,b$ are those
+of the matching and centered levels. Thus $\tau(p;a,d)$ there equals
+$\tau=cw+4h(c-a)$ here.
+\end{proposition}
+
+\begin{proof}
+Fix $0<b<a<x<d$, a nonempty label list $p$ of arity $h$, an integer
+$q\ge0$, and a coordinate-generic sequence $X_n$ at scale $x$ on meshes
+$a_{j_n}$ with $s_{j_n}/t_n\to d$. Choose levels $k_n,m_n$ with
+$s_{k_n}/t_n\to b$ and $s_{m_n}/t_n\to a$; they exist by the
+level-selection argument at the start of Section~\ref{sec:ope-grid}.
+Put $c=d$. The preceding subsection shows that the geometric
+requirements hold for $X_n$ eventually, since $a<x<c$.
+
+For each such $n$, the cutoff comparison on the ordered tail gives
+finite-cutoff labels $Q_{N,p}$ with quota at most $V_n=V$ and centered
+discrepancy price at most $A_n=A$. These have upper rates $\tau-qa$
+and $\tau-(q+\tfrac1{16})(a-b)$, by the rate computations above.
+Extract, as in the preceding subsection, a limit $Q_n$ on a finer
+nontrivial filter. Each of the following assertions concerns this one
+limit.
+
+First, the final paragraph of Section~\ref{sec:ope-phase-prices},
+applied with centered level $k_n$ of rate $b>0$ and
+$\gamma=\tau-(q+\tfrac1{16})(a-b)$, bounds the complete discrepancy
+between the cluster product and $Q_n$ at the origin. The bound has
+upper rate $\gamma$ in every character phase and in the mixed state,
+at arbitrary fixed-clearance spectator positions, uniformly along any
+sequence of phases. The finite tests of the prescription are finite
+linear combinations of such evaluations, so they obey the same rate.
+
+Second, apply \eqref{eq:ope-whole-distance} at the matching level
+$m_n$, with degree $q$. The quota of $Q_{N,p}$ at that level is at most
+$V_n$ eventually, and the bound passes to the limit label. Hence
+$\|Q_n\|\le J_nV_n$ with $J_n=J_{m_n}(a_U/a_{m_n})^q$. The last
+paragraph of Section~\ref{sec:ope-filtration} gives $J_n$ upper rate
+$qa$, because $J_{m_n}$ has rate zero and $s_U$ is fixed. This is
+\eqref{eq:ope-match-norm}.
+
+Third, fix $0\le e<q$. Section~\ref{sec:ope-filtration}, applied with
+$d=q$, this $e$ and $k=m_n$, gives a label $y$ with $[y]\in E_e$ and
+$\|Q_n-y\|\le F_{m_n,q,e}V_n$, by \eqref{eq:ope-physical-distance}.
+Only $y$ requires a further extraction; $Q_n$ is unchanged. Its factor
+has upper rate $(q-e-1)a$. Setting $z_{e+1,n}=y$ gives
+\eqref{eq:ope-match-distance} for the low degree $e+1$ of the Input,
+since $q-(e+1)=q-e-1$.
+
+All three statements hold for the same $Q_n$, and the rates of $A_n$
+and $V_n$ are those required. Hence Input~\ref{input:ope-match} holds.
+\end{proof}
+
+The proposition does not prove the analytic inputs it lists. In
+particular it does not supply the comparison hypotheses of
+Section~\ref{sec:reference-match} or the local comparison and
+projection inputs of Section~\ref{sec:ope-filtration}. It records that
+no further argument, and no further choice of label, is needed to
+combine them.
