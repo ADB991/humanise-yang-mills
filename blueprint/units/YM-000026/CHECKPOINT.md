@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 11:10 UTC
+# Collaborative checkpoint — 12 November 2026, 11:35 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -7,12 +7,12 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Draft PR: <https://github.com/hairer/humanise-yang-mills/pull/36>.
+- Previous checkpoint PR #36 was merged; the branch contains the continued draft.
 - Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
-  your claim. Helper PRs target this branch. `main` contains the earlier
-  747-page checkpoint merged through PR #35; this branch continues that draft.
+  your claim. Helper PRs target this branch. `main` contains the
+  809-page checkpoint merged through PR #36; this branch continues that draft.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (809 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (821 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -94,7 +94,7 @@ represented as part of this PDF.
 The working frontier includes matching the retained paid local inputs to the
 same corrected-compiler history, actual physical shrinking-annulus Ward
 representation (held for substantive corrections), its physical charge
-propagation, real phase-grid approximants, trace sensor/branch receipts, and a
+propagation, trace sensor/branch receipts, and a
 complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
 questions; they do not establish every quantitative premise of every chapter.
 
@@ -122,7 +122,7 @@ Last check10:58UTC:49% remaining; next11:13UTC. No background monitor is install
 
 `python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
 mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds809 pages with no overfull boxes,
+-outdir=build manuscript/existence.tex` builds821 pages with no overfull boxes,
 undefined references or missing glyphs. New pages received sampled visual QA;
 exact commands, samples and earlier failed layout attempts are in `validation.md`.
 No fresh Lean build/axiom replay; inherited source evidence has its own limits.
@@ -132,3 +132,8 @@ The draft uses two cheaper drafting agents, a stronger independent reviewer and
 parent integration/independent reciprocal review where needed, in isolated clones.
 Agent passes are not human acceptance. Scott Armstrong's informalization map
 was used for navigation, not as mathematical evidence; see the provenance record.
+
+The latest update supplies actual real phase-grid approximants, the C1–C8
+common-data local compiler application, and extreme-point Ward analyticity.
+Their exact retained dependencies and bounded reviews are recorded alongside
+the prose; the actual Ward packet/Track and shell-node producers remain open.
