@@ -147,3 +147,13 @@ flux transfer by bounded linear extension; it does not assume that extension
 is positive or multiplicative. Mixed and selected reconstruction applications
 are separate; UniqueHeat is asserted only for the selected phase. See exact
 review records, not these short hashes, before reusing a result.
+
+## 13:12 UTC local producer refresh
+
+The actual shell-node chapter and free external/quiet-charge/collinear classifier
+are now integrated with exact complementary review records. Earlier entries
+listing their local proofs as pending are superseded. Their same-history and
+finite-grade applications are still subject to the closure ledger. The selected
+course audit now identifies Metering.cost as the existing Launch supplier; the
+remaining join is the exact public-run specialization of the paid local course,
+not a new independent Launch construction. No global closure is asserted.

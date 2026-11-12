@@ -48,15 +48,16 @@ review must test the union, not merely count16 completed reports.
 
 ## Known mathematical work to reconcile at the stop snapshot
 
-- Actual shell-node producer: current candidate held for concrete numerical,
-  quota and marked-density corrections; use actual-stress-shell-nodes and its
-  review findings. The annular consequence is already separately proved.
-- Physical Ward propagation: c8abceb2 has passed bounded finite-row/cancellation
+- Actual shell-node producer: integrated after bounded numerical, quota,
+  marked-density and root-bound review; its same-history dependencies still
+  require closure. The annular consequence is separately proved.
+- Physical Ward propagation: 941dfa8f has passed bounded finite-row/cancellation
   review and is imported. Packet/cone/analytic suppliers are now canonical. This task does not
   own the free classifiers on which its comparison depends.
 - Free polar-vector fixed-grade detector/classification: Hidden.exposed,
   Magnitude.charges_quiet, Scenes.scanner in Maxwell/Free. Distinct from
-  all-grade polynomial field detection. Author candidate in progress.
+  all-grade polynomial field detection. Canonical classifier is now integrated after complementary bounded review;
+  remaining work is common-data instantiation and whole dependency closure.
 - Free internal Ward-map erasure: free-internal-ward-erasure.tex be439656 now has
   a bounded independent pass; it supplies AwayTeam.erasing through Depth.low_motion,
   Statistic.commute_ghost and Quarters.none, separately from the polar classifier.
@@ -106,5 +107,4 @@ Do not consume a reset or keep mathematical work running after the threshold.
 The explicit operational contract and copyable prompt are now in
 [COMMON-CONTRACT.md](COMMON-CONTRACT.md) and [AGENT-PROMPT.md](AGENT-PROMPT.md).
 C16 authors statement/assembly revisions; G01 reports on meaning without editing
-them, and G06 reviews their closure independently. Provisional C14 also includes
-the two pending candidate paths listed below; rehash and classify at release.
+them, and G06 reviews their closure independently. C14 includes the newly integrated classifier and shell chapters; rehash at release.

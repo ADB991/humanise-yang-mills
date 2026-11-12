@@ -379,3 +379,24 @@ Both logs have no overfull boxes, undefined references or missing glyphs; no
 clipping/overlap observed in rendered samples. Canonical radial and C03 phase
 edits have bounded independent passes. Provisional handoff coverage refreshed
 to238 chapters; not released/claimable. No Lean changes/build/axiom replay.
+
+## 13:12 UTC —870-page working checkpoint
+
+Integrated the reviewed shell producer and free classifier, with separately
+recorded independent parent review of cross-order ranging. The first shell
+build (864 pages) had a 68pt overflow in its introductory definitions, repaired
+by two aligned rows; the first classifier build (870 pages) had a 17pt inline
+triple overflow, repaired by a display. The reviewer checked exact editorial
+carries, including removal of Bool terminology and replacing the source-name
+normal by the established nu=(4pi²)^-1. Final log has no overfull boxes,
+undefined references or missing glyphs. Rendered/viewed shell pages753–759 in
+the864 build and classifier721–727 plus revised shell763 in the870 build;
+no clipping or overlap observed in the contact sheets. A failed attempted
+PyMuPDF import (fitz unavailable) was replaced by pypdf for page inspection.
+
+Structural reference inventory:240 chapters,1801 labels,2488 references,
+183 cross-chapter forward references, no missing or duplicate labels. This is
+navigation evidence only. Manifest now correctly excludes the two unintegrated
+historical alternatives from included_sections (their conservative unit.json
+metadata entries remain). No Lean edit/build/axiom replay. Checker and whitespace
+checks pass; whole proof and human acceptance remain outstanding.

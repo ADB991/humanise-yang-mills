@@ -1217,3 +1217,23 @@ It supplies the exact weighted Euler charge −(j+2) on jet probes using the
 same stress as the translation/rotation identities, including the regulated
 trace cancellation and all Wick contraction placements. This previously
 implicit input is needed by the held quiet-charge classifier.
+
+## Actual shell-node producer (12 November checkpoint)
+
+`manuscript/existence/actual-stress-shell-nodes.tex` supplies the shell-specific
+finite two-channel composition, rates, quota and root estimates under explicit
+same-history service receipts. See `actual-stress-shell-nodes-evidence.md` and
+the exact bounded independent review hashes. It precedes the conditional annular
+consumer. This does not discharge the global selected-history binding. The
+separate `lattice-history-closure-refresh.md` narrows that outstanding audit.
+
+## Free external detector, quiet charges and finite collinear tests
+
+The canonical `physical-ward-free-classification.tex` now supplies the finite
+external-capacity detector, quiet polar-vector classification and finite
+collinear test selection at its exact stated grades and covariance hypotheses.
+See its evidence and the independent review logs. The general cross-order
+pairing separation and its applications have an additional independent parent
+review in `reviews/classifier-ranging-parent-review.md`. The selected interacting
+application retains its own common-data and convergence obligations; this free
+result does not discharge the complete existence argument.
