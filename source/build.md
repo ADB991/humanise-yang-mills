@@ -6,7 +6,7 @@
 | Revision | `3456e5e75cf8d4cd558955a5c7638fba2d68f464` |
 | Toolchain | `leanprover/lean4:v4.32.0` |
 | Audit date | 11 November 2026 |
-| Status | **Pinned build commands passed from a verified prebuilt artifact; no clean source rebuild was performed on this host** |
+| Status | **Pinned build commands passed from a verified prebuilt artifact; no clean source rebuild was performed on this host. A clean from-source rebuild on a separate Linux host passed on 12 November 2026: see the addendum below** |
 
 ## Result
 
@@ -123,3 +123,23 @@ these local logs.
 - Existing linter and axiom-information messages were replayed during the build.
   They did not cause failure. The deliberate reference placeholder in
   `Challenge.lean` is accounted for in the axiom evidence.
+
+## Addendum: clean from-source rebuild (issue #37)
+
+On 12 November 2026 every project module was compiled from source on an
+independent Linux x86-64 host, from an empty project build directory and without
+the prebuilt artifact, and the upstream verification commands were repeated.
+All passed with the same job count, replay counts, endpoint axioms and inventory
+counts as recorded above. The record is
+[`evidence/clean-build-3456e5e.md`](evidence/clean-build-3456e5e.md). This closes
+the third limitation above for the project's own modules; Mathlib and the other
+external packages still come from their pinned caches. Two observations from
+that record qualify statements in this file:
+
+- In the Git import, `shasum -a 256 -c SOURCES.sha256` reports 9,497 files `OK`
+  and 10 absent (the ten `verification/*.log` files of the manifest, which are
+  not tracked). The "all 9,507 listed files" result above describes the original
+  archive.
+- The prebuilt artifact's generated C and `.ilean` files are byte-identical to
+  the fresh build, but 1,044 of its 9,470 `.olean` files differ by 8 or 16 bytes
+  in length. The cause is undetermined.
