@@ -17,7 +17,11 @@ $a_i=e^{-\lambda_i}$.  Write $B_i$ for its support radius, and
   r_m=128 B_{m+1}^{2}a_{m+1}.
 \]
 The scale note used below says $r_m\to0$.  Let $\mathcal F_d$ denote the
-complex field space at grade $d$, and let $\tau_{I,D}:\mathcal F_D\to\mathbb C$
+complex field space at grade $d$. Write $E_d$ for the finite-dimensional
+reference label space used at finite cutoff, and
+$\pi_d:E_d\to\mathcal F_d$ for the selected table's quotient map.
+Finite-volume insertions take labels in $E_d$; continuum testers take
+fields in $\mathcal F_d$. Let $\tau_{I,D}:\mathcal F_D\to\mathbb C$
 be the tester associated with a watch $I$.  We write
 \[
   \mathcal A_r=\{y\in\mathbb R^4:r/4<|y|<2r\},\qquad
@@ -53,7 +57,7 @@ root-test of a configuration observable $F$ is
 \]
 where $F_u$ is the prescribed translate of $F$ at cell $u$, with the source
 reflection conjugation when that cell is reflected.  The label norm
-$\|z\|_D$ below is the fixed coefficient norm of the grade-$D$ label space.
+$\|z\|_D$ below is the fixed norm of the reference label space $E_D$.
 
 For the exact shell costs, put
 \[
@@ -67,9 +71,10 @@ let $n_m$ be the number of columns at level $m$.  The counterterm budget is
 \[
  e_m=32(1+n_m)a_{m+1}^{D}X_m/V_m.
 \]
-The quota conversion supplies a finite factor $Q_0$ for the fixed
-grade/threshold, so the correction label has coefficient norm at most
-$2Q_0e_m$ at annulus level $m$.  The root-test cost, in contrast, is the
+For each fixed birth level $m$, the quota conversion supplies a finite
+factor $Q_m^{\mathrm{quota}}\ge0$, so the correction label has coefficient
+norm at most $2Q_m^{\mathrm{quota}}e_m$. This factor is uniform in volume,
+period and collar point at that $m$; no bound uniform in $m$ is required.  The root-test cost, in contrast, is the
 decaying quantity $2S(p_0,k)c_m^{-1}$.
 
 \subsection{The shell-node hypothesis}
@@ -96,22 +101,22 @@ and the scale note has the consequence
                          \frac{\log r_m}{\lambda_m}\longrightarrow-1.
 \]
 For every fixed opened reference level $p_0$ and level $k$ with $p_0$ open at $k$ and
-with $k$ at least the reference threshold for grade $D$, every $v\in\mathcal F_d$,
-$T\in\mathcal F_4$, and extraction order $\mathfrak f$, there is $m_0$ such
+with $k$ at least the reference threshold for grade $D$, every $v\in E_d$,
+$T\in E_4$, and extraction order $\mathfrak f$, there is $m_0$ such
 that for every $m\geq m_0$ and every fixed integer lattice anchor
 $x\in\mathrm{Cover}=\mathbb Z^4$ whose continuum location at level $j_m$
 lies in $\mathcal C_{r_m}$, there are a label sequence
-$z_x: \mathbb N\times\mathbb N\to\mathcal F_D$ and a constant $A'_m$ for which
+$z_x: \mathbb N\times\mathbb N\to E_D$ and a constant $A'_m$ for which
 $\mathfrak f$-almost every $(N,q)$ has $p_0\leq N$ and
 \[
-  \|z_x(N,q)\|_D\leq2Q_0e_m,\qquad
+  \|z_x(N,q)\|_D\leq2Q_m^{\mathrm{quota}}e_m,\qquad
   \operatorname{RT}_{\beta,\mathcal T}(\text{fragment}(z_x(N,q)))
        \leq A'_m:=2S(p_0,k)c_m^{-1}.
 \]
 The late filter set and sequence may depend on $x$; the numeric coefficient
-and root-test bounds do not.  The factor $Q_0$ is independent of volume,
-period, and collar point; the coefficient bound may depend on $m$ through
-$e_m$.  The finite extraction order may encode any fixed finite family of
+and root-test bounds do not.  For each fixed $m$, the finite factor $Q_m^{\mathrm{quota}}$ is
+independent of volume, period and collar point. Both this factor and
+$e_m$ may depend on $m$.  The finite extraction order may encode any fixed finite family of
 watches; the receipt is available for every such family, with its tester costs
 fixed before the eventual volume/period choice.
 The associated finite-volume fragment is the product of the grade-four
@@ -155,9 +160,11 @@ lightness estimate supplies both
 eventually.  These are used, respectively, for the collar/spacing margin and
 for the number of required coordinates in the opened chamber.  The corner
 lemma combines them with the same-history run, throw, root-room, and
-subsidized-payment bounds.  This draft does not prove that those source
-receipts imply the shell-node input above; that quantitative producer remains
-open.
+subsidized-payment bounds.  Proposition~\ref{prop:ex-lattice-actual-shell-node} supplies this
+shell-node input from the stated same-history menu, transfer, quota and
+price receipts. The coefficient bound in that proposition has exactly
+the birth-level dependence allowed here. Discharging its incoming
+receipts for the selected public family remains a separate obligation.
 
 The implication below takes the defined shell-node receipt as an input
 on one fixed family.  It does not infer that receipt from the public
@@ -172,8 +179,10 @@ Let $S$ be the selected hierarchy, $V$ a derivative plan for $S$, and $J$ a
 stress conserved with respect to $V$ and the spin action of $S$.  Assume the
 lattice configurations used in the shell argument are dense in the separated
 configuration space and that the flux and tester functionals are continuous
-there.  Fix an opened reference level $p_0$ and level $k$ as in the shell-node
-receipt.  Take $v\in\mathcal F_d$, and let
+there. Retain the centered-cell spectator bounds and the ordered
+moving-label point-limit identities on this same hierarchy and extraction.
+Fix an opened reference level $p_0$ and level $k$ as in the shell-node
+receipt, with $p_0$ at least the reference depth of every watch below.  Take $v\in\mathcal F_d$, and let
 $U:\mathbb R^4\to\mathbb R^4$ be a smooth homogeneous Killing field of degree
 $p\in\mathbb N$, so $U(ry)=r^pU(y)$ for $r>0$.  Suppose both
 \begin{equation}\label{eq:ex-lattice-flux-grade}
@@ -222,6 +231,9 @@ configurations,
 \end{lemma}
 
 \begin{proof}
+Choose fixed representatives in $E_d$ for $v$ and in $E_4$ for the
+sixteen components of $J$. The quotient map sends these representatives
+to the given fields, and the shell receipt applies to these fixed labels.
 Choose a smooth radial bump $\varphi$ on $\mathbb R^4$ which equals one on
 the ball of radius $1/2$ and vanishes outside the unit ball.  The selected
 watch configurations have their distinguished point at the origin and all
@@ -251,11 +263,21 @@ For this fixed $m$ the interpolation stencil uses only finitely many grid
 points.  Intersect the late filter sets supplied separately for those points;
 their finite intersection is still late.  The corresponding finite tuple of
 correction labels lies in a bounded subset of a finite-dimensional product
-space, so pass to one convergent subnet and take its coordinate limits.  This
+space, with $m$ held fixed, so pass to one convergent subnet and take its
+coordinate limits. Its bound $2Q_m^{\mathrm{quota}}e_m$ need not stay
+bounded as $m$ increases: the correction labels disappear by the
+annihilator identity before the limit $m\to\infty$ is taken.  This
 single extraction handles every stencil point and every watch in the finite
 family; no subsequence is chosen watch by watch.  The
-watch-cost limits identify each limiting tester with the corresponding
-rescaled product insertion, up to its paid error $A_a\epsilon_m$.  Summing
+centered-cell bound gives a constant $A_a$ for the fixed spectators of
+watch $I_a$, so their moment with each fragment is bounded by
+$A_a\epsilon_m$ on the late set. The opening dominates the watch's
+reference depth, as required by this bound. Along the convergent subnet,
+the ordered moving-label point-limit identity sends the correction
+insertion with limiting reference label $z$ to $\tau_{I_a,D}(\pi_Dz)$.
+It sends the other term to the rescaled product insertion. Passing the
+inequality to the limit therefore gives an error at most
+$A_a\epsilon_m$.  Summing
 with coefficients $g_a$, the limiting grade-$D$ terms cancel by
 \eqref{eq:ex-lattice-annulus-annihilator}; the remaining norm is at most
 $\epsilon_m\sum_a|g_a|A_a$.  Thus the grid error tends to zero.  Only this
@@ -418,17 +440,18 @@ step.
 \label{rem:ex-lattice-stress-public-binding}
 The public route keeps the relevant objects on the family selected by the
 run: the extraction, hierarchy, finite-volume laws, and conserved stress all
-come from that same record.  The endpoint then invokes the shell construction
-on this family.  The source correspondence is exact, but this unit does not
-prove that the selected history supplies the shell-node receipt defined
-above; the conditional Ward conclusion cannot be applied to the public stress
-until that producer is discharged.
+come from that same record.  The endpoint invokes Proposition~\ref{prop:ex-lattice-actual-shell-node}
+on this family. It also needs the same ordered extraction, point-limit
+identities, centered-cell bounds, smooth hierarchy and derivative plan
+used in the tester argument. The shell receipt alone supplies none of
+these. The resulting Ward conclusion is conditional on these inputs
+and on the incoming hypotheses of that proposition.
 \end{remark}
 
 The argument proves finite-tester annihilation and the unique-field
 representation conditional on the shell-node receipt and the stated
-regularity/conservation data.  Producing that receipt from the selected
-history, including the paid local estimates and the finite-volume
-counterterm, remains open in this unit.  The source crosswalk is recorded in
+regularity/conservation data.  The local producer of that receipt is
+Proposition~\ref{prop:ex-lattice-actual-shell-node}; its same-history
+analytic and service inputs remain explicit dependencies.  The source crosswalk is recorded in
 the companion evidence file; no published theorem is substituted for these
 project-specific quantitative estimates.
