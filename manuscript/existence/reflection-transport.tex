@@ -9,6 +9,23 @@ We denote ordinary time reflection by \(\rho\); thus \(\theta\)
 also conjugates labels and reverses the word, whereas \(\rho\) does
 neither. Permutation symmetry makes the reversal immaterial to \(M\).
 
+We use the following relation between the two label operations, which is how
+the reflected conjugate is defined. Write \(v\mapsto\overline v\) for the
+conjugation of raw labels and \(R_\rho\) for the complex-linear label action
+of the time reflection, one of the signed coordinate transformations. Then the
+reflected conjugate of \(v\) is
+\[
+ Jv=R_\rho\overline v,\qquad\text{and}\qquad
+ R_\rho\overline v=\overline{R_\rho v}.
+\]
+The second identity says that conjugation commutes with every signed
+coordinate action on raw labels. Consequently, if \(\overline v=v\) then
+\(Jv=R_\rho v\), and for every word \(\theta w\) is the reversal of
+\(\rho\overline w\), where \(\overline w\) conjugates each label. Both
+facts are used below. Without the commutation, a conjugation-fixed label
+could have a reflected conjugate different from its ordinary reflection, and
+the first step of the next proof would fail.
+
 \begin{lemma}[Positivity from bounded real approximations]
 \label{ex-replicated-positivity}
 Suppose real numbers \(b_t(i,j)\), for integers \(i<j\), satisfy
@@ -77,8 +94,10 @@ Then \(M(\rho w)=M(w)\) for every distinct-point word.
 \end{proposition}
 \begin{proof}
 First take a real basis-labelled word at an admitted configuration.
-Since its labels are fixed by conjugation, permutation symmetry and the
-adjoint identity give \(M(\rho w)=M(\theta w)=M(w)^*\).
+Its labels are fixed by conjugation, so \(\theta w\) is the reversal of
+\(\rho w\) by the relation \(Jv=R_\rho\overline v\) above. Permutation
+symmetry and the adjoint identity therefore give
+\(M(\rho w)=M(\theta w)=M(w)^*\).
 Thus \(D=M(w)-M(\rho w)\) satisfies \(D^*=-D\). The previous lemma
 and \eqref{ex-reflection-square} imply
 \[
@@ -161,7 +180,7 @@ and evaluation by a character gives the asserted phase covariance.
 \end{proof}
 
 Ordinary conjugation now follows as well. Since \(\theta w\) is a
-permutation of \(\rho\overline w\),
+permutation of \(\rho\overline w\), by the same relation,
 \[
  S_\chi(\overline w)=S_\chi(\rho\overline w)
  =S_\chi(\theta w)=\overline{S_\chi(w)}.

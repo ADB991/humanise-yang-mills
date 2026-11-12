@@ -297,3 +297,32 @@ is only continuous on generic patches. The later proof of smoothness on the
 full noncoincident set (including noncoincident coordinate-projection ties),
 followed by the full Euclidean hierarchy, has its own proof obligations.
 \end{remark}
+
+\begin{remark}[Full mesh convergence versus extraction]
+\label{rem:ex-limits-fullmesh}
+Proposition~\ref{prop:ex-limits-extraction} is a compactness statement: its
+first stage selects a mesh subsequence $t$, and its second a volume
+subsequence $u$. The construction used for the main theorem does not take the
+first selection. At each fixed period it proves convergence along the whole
+mesh sequence, by a different argument: the finite-difference bounds of
+Section~\ref{sec:ex-fullmesh-fixedbounds} hold at all sufficiently fine
+meshes, uniformly in the period, and
+Section~\ref{sec:fullmesh-correlation-cauchy} proves that the lattice
+correlations of one selected history are Cauchy at every ancestral
+configuration. Theorem~\ref{ex-smooth-grid-limit} turns these two inputs into
+locally uniform convergence of all difference quotients along the full mesh
+sequence. Its limit is a smooth function on $\mathrm{NoHit}_p$, a larger set
+than $\mathrm{Cyc}_p$. Nothing in that argument passes to a subsequence.
+
+With these inputs, the first stage of the proof above is unnecessary: one may
+take $t$ to be the identity and $J_{p,v}$ to be the full-mesh limit, for every
+eligible period $p$, not only the periods on the volume sequence. The second
+stage uses only the functions $J_{p,v}$, the expanding-volume modulus and the
+ordered compact norm bound. It applies unchanged and still selects a volume
+subsequence $u$; no full volume limit is asserted. The resulting statement is
+the order of limits in the public theorem: a full mesh limit at every suitable
+period, followed by a volume limit along a subsequence of the given period
+sequence. The two stages must not be conflated. A diagonal subsequence
+$(N_k,p_k)$ yields neither iterated limit. A mesh subsequence chosen
+separately for each period would not give the full-mesh assertion.
+\end{remark}
