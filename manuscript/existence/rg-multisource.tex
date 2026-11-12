@@ -12,7 +12,7 @@ selection of menus or rates is made.
 
 Let $i$ be a fragrance label. Its order is $n_i$ and its spatial labels are
 $u_{i,1},\ldots,u_{i,n_i}$. Write $c_i$ for the corresponding Ursell
-coefficient and $t_{i,\ell}$ for the selected tuned component, with
+coefficient and $t_{i,\ell}\geq0$ for the selected tuned component fee, with
 $\ell$ running over the distinguished base label and the $n_i$ spatial
 labels. The fee majorant is
 \begin{equation}
@@ -32,7 +32,7 @@ where $F$ is a finite set of selected menu indices. The product formula for
 $s_i$ writes it as its Ursell coefficient divided by $(n_i+1)!$ times the
 product of the component votes. The product has $n_i+1$ factors: one distinguished base position and the
 $n_i$ spatial positions. The switching payment for a
-product is as follows. For a finite marker set $I$, a score family $g_t(A)$
+product is as follows. For a finite marker set $I$, a real-valued score family $g_t(A)$
 represents
 \[
  f_t(F)=\sum_{A\subseteq F}t^{|A|}g_t(A),\qquad 0\leq t\leq1.
@@ -48,8 +48,8 @@ product is
 Expanding the product and regrouping by $C=A\cup B$ gives the original
 weight, since $|A|+|B|=|A\cup B|+|A\cap B|$. The coefficient bound at
 $t=1$ is the same convolution of the two nonnegative majorants; its total
-sum is the product of their sums. There are finitely many scores, so
-continuity at $t=0$ is preserved. Iterating over the $n_i+1$ component votes
+sum is the product of their sums. There are finitely many scores, so their
+limits as $t\downarrow0$ are preserved by this product. Iterating over the $n_i+1$ component votes
 and multiplying by the scalar coefficient gives the fee $\ell_i$ in
 \eqref{eq:ex-lattice-multi-lace}. The zero-menu term is paid at the same
 cost; the triangle inequality for the two score majorants therefore pays
@@ -147,8 +147,11 @@ $\sum_A(\lim_{t\downarrow0}g_t(A))\prod_{i\in A}z_i$. Addition is
 preserved by linearity. Multiplication is preserved because the score
 convolution has weight $t^{|A\cap B|}$, whose limit is zero whenever the
 same marker occurs in both factors; the corresponding product then vanishes
-by $z_i^2=0$. The exponential follows by applying this product rule to its
-power series. For the countable logarithm sum, the uniform summable fee
+by $z_i^2=0$. If the score family has payment $c$, the $n$th power has
+payment at most $c^n$ by the convolution estimate. Dividing by $n!$
+gives the summable majorant $c^n/n!$, so the score limit and the exponential
+series may be interchanged coefficient by coefficient. Applying the product
+rule term by term gives the exponential identity. For the countable logarithm sum, the uniform summable fee
 majorants permit dominated convergence coefficient by coefficient and then
 summation over markers. This establishes the coefficientwise closed-response
 identity used in the first paid response certificate; scalar equality alone
@@ -196,16 +199,18 @@ selected reset and soft-column prices by
  Q(P,S,\sigma,C)&=\mathcal P(1,b,0,\sigma/8,1,
      d_{\mathrm{sig}}L_{\mathrm{low}}(S,C),e+2,C_{\mathrm{low}}),
 \end{align*}
-where $b=P^B$, $e=P.\mathrm{supportExponent}$,
+where $b=B=P.B$, $e=P.\mathrm{supportExponent}$,
 $d_{\mathrm{sig}}$ is the number of signed directions, and $C_{\mathrm{low}}$
-is the fixed low-column count. The footprint price used here is the explicit
-function
+is the fixed low-column count. For nonnegative integers $n,W,k$ and
+$\epsilon>0$, the footprint price used here is the explicit function
 \[
- \mathcal P(P,W,k,\epsilon,C,\gamma,a,v)
- =\frac{e^{av}\gamma C\,P\,\operatorname{ballCost}(W)
+ \mathcal P(n,W,k,\epsilon,C,\gamma,a,v)
+ =\frac{e^{av}\gamma C\,n\,\operatorname{ballCost}(W)
          \,\epsilon^{-(4+k)}(4+k)!e^{\epsilon}}
         {1-e^{-\epsilon}}.
 \]
+The selected width satisfies $\sigma>0$, so both displayed applications
+have positive $\epsilon$ and a positive denominator.
 Thus $f_+=F(H)+N(P,\alpha,H)Q(P,S,\sigma,C)$ is the reset plus
 hit-weighted soft-column cost. These are the two terms in the enlarged-
 support vapor estimate at the raised point $R$; in general $f_+\ne f$.
@@ -230,10 +235,13 @@ $0\leq p_3\leq\exp(\chi_0)\beta_F^{-1/8}$, with $\chi_0$ denoting the selected c
 final vapor estimate is a separate local estimate and has a different
 budget, stated below.
 
-For the final row, the second arrival clause is used with the exact same
-budget, clip, width, path count, and schedule identity. Its hypotheses are
+For the final row, the second rate clause of the corresponding ordinary or
+raised certificate is used with the exact same budget, clip, width, path
+count, and schedule identity. Its hypotheses are
 $|\alpha|\leq\alpha_{\max}$, equality of the current parameters with the
-selected profile, and $f\geq0$. It returns a rate price $\kappa$ for the
+selected profile, and nonnegativity of the relevant soft demand. We first
+display the ordinary demand $f$; the raised demand $f_+$ is treated below.
+The ordinary clause returns a rate price $\kappa$ for the
 pair of goals
 \[
  \operatorname{straw}=2\,\operatorname{lauge}(L,\mu/4,\beta,1/4),
@@ -260,8 +268,9 @@ and target toll $\operatorname{straw}$. Its two numerical conditions are
 Here $B$ is the integer budget radius. The rate also requires
 $\kappa\geq0$, $0\leq\operatorname{stems}$, and $0\leq f\leq1$.
 The first inequality pays the fourth-degree local inflation and the soft
-reserve; the second is the selected financial price. The arrival certificate
-supplies all these fields. To pass a paid precursor to the widened activity family, use the selected
+reserve; the second is the selected financial price. The ordinary arrival
+certificate and the distinct raised-response certificate supply these fields
+for their respective requests. To pass a paid precursor to the widened activity family, use the selected
 injection $u$ from old activity labels to the new drawer labels. Put the old
 code at label $u(i)$ and set it to zero at every label outside the image.
 The widening identity says the forced field at $u(i)$ is exactly the old
@@ -337,7 +346,8 @@ For each activity label $j$, configuration $U$, and $t\in[0,1]$, write
 $g_{j,t}(A,U)$ for the switching score of the selected code. The paid
 certificate gives a nonnegative summable majorant $b_j(A)$ with
 $|g_{j,t}(A,U)|\leq b_j(A)$, and each score has a limit as $t\downarrow0$.
-Define the activity polynomial
+We regard these real score limits as complex scalars when they act on the
+marker algebra. Define the activity polynomial
 \[
  F_j(U)=\sum_{A}\left(\lim_{t\downarrow0}g_{j,t}(A,U)\right)
                        \prod_{i\in A}z_i.
@@ -398,8 +408,11 @@ For a support mode $s$, define $\mathsf{Field}((K_p),s)$ by the finite sum
 \]
 where a box is a pair $p=(P_p,Q_p)$ consisting of its full support $P_p$
 and assigned flag $Q_p\subseteq P_p$. In every family in the sum the full
-supports $P_p$ are pairwise disjoint and the flags have union $s$; a
-nonzero box term has nonempty assigned flag. This is the support pattern
+supports $P_p$ are pairwise disjoint and the flags have union $s$. For
+the constructed family $K_p$, a nonzero term has nonempty assigned flag:
+each contributing activity has nonempty inventory, and boxes with no
+contributing activities have zero coefficient. The general field pattern
+itself does not impose nonemptiness. This is the support pattern
 condition: disjoint flags alone would permit two interacting polymers to
 overlap and would not reproduce the gas. Grouping by barcode preserves the
 condition. Indeed, two nonzero compatible activity terms cannot have the same

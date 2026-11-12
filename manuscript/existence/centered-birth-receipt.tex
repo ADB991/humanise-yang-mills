@@ -2,20 +2,21 @@
 
 This section records the finite-volume terminal receipt used on the public selected-history route. It starts from the calibrated family, its same-history multiscale data, and the birth polynomial made from a finite list of observables. The result is a mode-by-mode normalized moment estimate. It is a conditional receipt: it uses the selected-history service and migration data stated below, rather than deriving those upstream construction inputs.
 
-Let $\mathcal V$ be a finite marker set and let $\mathsf B$ be its census. For each $a\in\mathcal V$, choose a grade label $s_a$, a terminal site $o_N(a)$, and a signed coordinate motion $g_a$. Let $O_a$ be the corresponding local cylinder observable, and define its terminal translate by
+Let $\mathcal V$ be a finite marker set and let $\mathsf B$ be a downward-closed family of allowed subsets containing the empty set and all singletons. Its elements are the census modes. For each $a\in\mathcal V$, choose a grade label $s_a$, a terminal site $o_N(a)$, and a motion $(\pi_a,\epsilon_a)$ consisting of a signed coordinate transformation and an independent conjugation flag. Let $O_a$ be the corresponding local cylinder observable, and define its terminal translate by
 \[
- T_a(U)=g_a\cdot O_a\bigl(\operatorname{pull}(o_N(a),U)\bigr).
+ T_a(U)=\sigma_{\epsilon_a}\!\left(O_a\bigl(\operatorname{pull}_{\pi_a,o_N(a)}U\bigr)\right),
 \]
+where $\sigma_0$ is the identity and $\sigma_1$ is complex conjugation. The pullback includes both the signed transformation and the translation to $o_N(a)$.
 Assume the selected family makes each $T_a$ continuous on the compact terminal configuration space. Write $R_N$ for the selected terminal representative and set
 \[
  \mathcal B_N(U)=R_N(U)\,\operatorname{Pass}\!\left(
     \sum_{a\in\mathcal V} e_{\{a\}}T_a(U)\right),
 \]
-where the marker algebra has square-free multiplication: $e_S e_{S'}=e_{S\cup S'}$ for disjoint subsets and $0$ otherwise. The polynomial pass is the finite exponential in this nilpotent algebra. For every mode $I\subseteq\mathcal V$, its coefficient satisfies
+where the marker algebra has one basis element for each allowed mode and square-free multiplication: $e_S e_{S'}=e_{S\cup S'}$ if the sets are disjoint and their union is allowed, and $0$ otherwise. The polynomial pass is the finite exponential in this nilpotent algebra. For every allowed mode $I\in\mathsf B$, its coefficient satisfies
 \[
  (\mathcal B_N(U))_I=R_N(U)\prod_{a\in I}T_a(U).
 \]
-The coefficient for the empty mode is $R_N$. This is the selected terminal birth identity.
+To verify the identity, expand the $r$th power in the finite exponential. A term contributing to an allowed mode $I$ must use precisely the $|I|$ distinct singleton markers in $I$: repeated markers vanish, and no term of another degree can produce $I$. Every ordering of those singletons contributes the same product. Downward closure ensures that each intermediate union in such an ordering is allowed, so the $|I|!$ orderings cancel the factorial in the exponential coefficient. The empty mode comes from the zeroth power and has coefficient $R_N$. The centered-copy application uses the full census $\mathsf B=2^{\mathcal V}$; the general mode estimate below does not require that choice.
 For this selected terminal representative, $R_N$ is the bare Wilson density. Write
 \[
  Z_{N,p}:=\int R_N(U)\,d\mu_N(U)>0,
@@ -24,11 +25,11 @@ For this selected terminal representative, $R_N$ is the bare Wilson density. Wri
 \]
 
 \begin{theorem}[Selected-history birth moment bound]\label{thm:ex-selected-birth-moment}
-Fix a selected family, volume $N$, period $p$, grade $d$, and reference scale $k$ with $C.\mathrm{ref}(d)\leq k<N$. Suppose the family satisfies its calibration conditions and the same-history finite-volume receipt supplies the terminal birth, its backward Wilson transitions, the scale-$k$ service resources, and the positive vacuum treasury. Assume also the geometric inputs at $k$: positive weights $w_a$, site assignments $o_k(a)$, an occupancy bound, the migration identity for the site assignments, and the separated-origin condition for every nontrivial mode. Suppose further that
+Fix a selected family, volume $N$, period $p$, grade $d$, and reference scale $k$ with $C.\mathrm{ref}(d)\leq k<N$. Assume all labels $s_a$ have grade $d$. Suppose the family satisfies its calibration conditions and the same-history finite-volume receipt supplies the terminal birth, its backward Wilson transitions, the scale-$k$ service resources, and the positive vacuum treasury. Assume also the geometric inputs at $k$: positive weights $w_a$, site assignments $o_k(a)$, an occupancy bound, the migration identity for the site assignments, and the separated-origin condition for every nontrivial mode. Suppose further that
 \[
  w_a\,\mathfrak m_a\leq \mathfrak f_k\leq1\quad(a\in\mathcal V),
 \]
-where $\mathfrak m_a$ is the paid coefficient size of label $s_a$ at scale $k$ and $\mathfrak f_k$ is the scale's small price. Require the service receipt to give measurable mode densities $H_I$, a common scalar $\sigma$, and real costs $A_k,D_k$ such that its representative is nonnegative, its support exponent is nonnegative, and its reserve is $f=1$, with
+where $\mathfrak m_a=\Gamma_k\,\mathrm{paid}_a$ is the column-weighted coefficient size of label $s_a$ at scale $k$, $\Gamma_k\geq1$ is the selected column count, and $\mathfrak f_k$ is the scale's small price. The factor $\Gamma_k$ is needed by the local coefficient and activity response; the unweighted payment alone is insufficient for that response estimate. Require the service receipt to give measurable mode densities $H_I$, a common scalar $\sigma$, and real costs $A_k,D_k$ such that its representative is nonnegative, its support exponent is nonnegative, and its reserve is $f=1$, with
 \[
  w_I|H_I(U)|\leq \exp(\sigma+A_k),\quad
  Z_{N,p}\geq\exp(\sigma-D_k),\quad
@@ -66,7 +67,7 @@ where $U$ is fine and $V$ is coarse. For an integrable coefficient $F$, slice in
  =\int F(U)\left(\int k_i(U,V)\,d\mu_i(V)\right)d\mu_{i+1}(U)
  =\int F(U)\,d\mu_{i+1}(U).
 \]
-For this terminal birth, $R_N$ is the bare Wilson density, so $Z_{N,p}=\int R_N\,d\mu_N$. For the selected Wilson transition the density is bounded on the finite configuration space, and the source slice-integrability property ensures that each coefficient of the product integrand is integrable on every fixed slice. Fubini therefore applies at each step. Since coefficient extraction is a continuous linear map on the finite-dimensional marker algebra, it commutes with this finite integral. Inductively, for each mode $I$,
+For this terminal birth, $R_N$ is the bare Wilson density, so $Z_{N,p}=\int R_N\,d\mu_N$. The selected transition density is jointly measurable, nonnegative and uniformly bounded on the product of the finite-volume configuration spaces. Multiplying an integrable coefficient by that density gives an integrable function on the product of the priors; the same bound also gives integrability on every fixed coarse slice. Fubini therefore applies at each step. Since coefficient extraction is a continuous linear map on the finite-dimensional marker algebra, it commutes with this finite integral. Inductively, for each mode $I$,
 \[
  \int (\mathcal B_k(U))_I\,d\mu_k(U)
  =\int (\mathcal B_N(U))_I\,d\mu_N(U)
@@ -75,7 +76,7 @@ For this terminal birth, $R_N$ is the bare Wilson density, so $Z_{N,p}=\int R_N\
 \]
 where $Z_{N,p}>0$ is the finite-volume Wilson partition function. The second equality uses the terminal birth identity and the definition of normalized expectation. This establishes the exact finite-volume transfer of the moment; no continuum limit or interchange of an infinite sum is involved.
 
-At scale $k$, the same-history receipt yields a served marked representation of $\mathcal B_k$. Its finite response estimate gives at marker $a$ a coefficient bound by three times the paid coefficient size and a total activity bound by that paid size. Multiplying by $w_a$ and using $w_a\mathfrak m_a\leq\mathfrak f_k$ gives the coefficient and activity bills $x=3\mathfrak f_k$ and $y=\mathfrak f_k$. The factor three is the local coefficient bound from the response estimate; the activity bill is its unmultiplied support charge. The separated-origin condition and occupancy estimate are what make this finite response estimate valid for a whole mode, and migration transports those facts through the backward scales. Since $\mathfrak f_k\leq1$, these satisfy $x+y+2\leq6$.
+At scale $k$, the same-history receipt yields a served marked representation of $\mathcal B_k$. Its finite response estimate gives at marker $a$ a coefficient bound by three times the column-weighted coefficient size $\mathfrak m_a$ and a total activity bound by $\mathfrak m_a$. Multiplying by $w_a$ and using $w_a\mathfrak m_a\leq\mathfrak f_k$ gives the coefficient and activity bills $x=3\mathfrak f_k$ and $y=\mathfrak f_k$. The factor three is the local coefficient bound from the response estimate; the activity bill is its unmultiplied support charge. The separated-origin condition and occupancy estimate are what make this finite response estimate valid for a whole mode, and migration transports those facts through the backward scales. Since $\mathfrak f_k\leq1$, these satisfy $x+y+2\leq6$.
 
 Here are the precise conditional price assumptions used at the scale-$k$ service step. The marked representation is lawful, its representative is pointwise nonnegative, its support exponent is nonnegative, and its served reserve is $f=1$. For each mode $I$, the local density estimate is
 \[

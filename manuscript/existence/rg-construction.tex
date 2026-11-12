@@ -42,8 +42,8 @@ The scale allotment for adjacent levels and its one-step null correction are
  \nu_i(u)=\frac{2m^2\mathcal A_i^{2}}{uL_i}\quad(u>0).
  \label{eq:ex-lattice-rg-coin}
 \end{equation}
-These quantities are nonnegative. Indeed, the row bounds on each quadratic
-precision imply $\Omega_i\geq0$. The expression $\mathcal A_i$ is the
+These quantities are nonnegative. Indeed, the metric row bounds imply
+$\Omega_i\geq0$. The expression $\mathcal A_i$ is the
 allotment entering the two order-two response-kernel estimates. The factor
 $m^2$ in $\nu_i$ counts the two finite face labels; the factor $L_i^{-1}$
 and the factor $2/u$ are the centered null-packet correction.
@@ -52,13 +52,16 @@ Assume the following finite data.
 
 \begin{enumerate}
 \item For every member $x$ of an index set $X$, there is a horizon of
-quadratic precisions $H_x(N,i)$, with row bounds at widths
+metrics $H_x(N,i)$ defining quadratic precisions, with metric row bounds at widths
 $\alpha(J_i)$ and costs $\Omega_i$. These bounds include the diagonal,
 crossing, and torus-floor estimates used in the one-step lemma. For every
-$i_0(x)\leq i<N_x$, the actual Wilson tower precision at $(N_x,i)$ equals
-the order-two precision of the flight from level $i+1$ to level $i$.
+$i_0(x)\leq i<N_x$, the two-form transport row of the horizon tower at
+$(N_x,i)$ equals the corresponding row of the order-two Wilson flight
+from level $i+1$ to level $i$, as a cross-lattice kernel before
+periodization.
 \item There is a positive width curve $w$, with
-$w(k)\leq\alpha(k)$, such that for every $i<N$,
+$w(k)\leq\alpha(k)$, such that for each $x$ and every
+$i_0(x)\leq i<N_x$,
 \begin{equation}
  \sigma_i\leq\min\{1,\alpha(J_i),\alpha(J_{i+1})\},\qquad
  2\sigma_i\leq L_i\sigma_{i+1},\qquad
@@ -79,8 +82,8 @@ with $Z_x\geq0$, integer $d\geq0$, and $A_0\geq0$ independent of
 $x,N,n$.
 \end{enumerate}
 
-The first two items are the complete inputs represented by the plan and
-funding conditions below. The first inequality in
+The three items record the plan and funding conditions used below; the
+terminal polynomial bound is part of the funding data. The first inequality in
 \eqref{eq:ex-lattice-rg-funding} keeps all response kernels inside both
 adjacent analytic widths. The second is the block-folding requirement. The
 third pays the exact one-step null-packet cost.
@@ -143,25 +146,51 @@ being an independent large-scale assumption.
 \subsection{Production of the horizon rows and exact tower identity}
 \label{subsec:ex-lattice-rg-horizon-producer}
 
-The selected public route supplies a horizon and an exact carrier identity,
-but their local row construction is a separate producer obligation. The
-source route retains finite-period rows, adds a Gram correction preserving
-the curl action, takes square roots on a common smaller strip, and checks the
-resulting block identities including harmonic modes. This paragraph records
-that route and does not treat those operations as proved here. The exact
-mathematical input consumed below is: for every $x,N,i$, a positive horizon
-metric with the stated diagonal, crossing, floor and row bounds, and an
-identity of its tower curvature with the order-two flight from $i+1$ to $i$
-on every required finite torus. Producing these horizons and verifying the
-Gram, root, and harmonic identities remains an open construction step in
-this chapter. The native component recipe retains the same schedule when
-binding these receipts to the selected run.
+The exact input consumed below is a positive horizon metric with the stated
+diagonal, crossing, floor and row bounds, together with the identity of its
+two-form transport row and the corresponding row of the order-two flight
+from $i+1$ to $i$ as cross-lattice kernels. Their periodizations then agree
+on every required finite torus.
+Section~\ref{sec:ex-lattice-rg-horizon-geometry} constructs
+the Gram completion and verifies its root, block and harmonic identities,
+then explains their application to the selected schedule. That construction
+uses the priced bed and flight receipts and the retained row and path bounds
+stated there; the block identities alone do not produce those inputs. On the
+selected run, the construction binds the resulting flat estimate to that
+run's own schedule and horizon, using its retained length floors and
+post-length stage payment. The auxiliary factorization used for the flat
+estimate preserves the quadratic output; it does not assert equality of all
+horizon data or higher-order kernels. Those payments and the horizon
+estimates remain inputs to this application. We use the earlier construction
+rather than repeating it here.
 \subsection{The selected run's nonlinear one-step supplier}
 \label{subsec:ex-lattice-volant-producer}
 
 At the selected adjacent levels, let $L$ be the block side, $\beta$ the
-lower scale, $B_0,B_1$ the lower and upper budget radii, $\mu$ the shape
-strength, and $Q$ the menu target. The shipment tariff is
+lower scale, $B_0,B_1$ the lower and upper budget radii, $b,e_1$ the lower
+and upper support exponents, $\mu$ the shape strength, and $Q$ the menu
+target. For a finite set $V$ of markers with positive weights $r_v$, write
+\[
+ \operatorname{price}_r(P)=\sum_{I}|P_I|\prod_{v\in I}r_v,
+\]
+where $I$ ranges over a downward-closed family of subsets of $V$
+containing the empty set and all singletons, the allowed modes of $P$. The target has a nonnegative integer halo size $Q.\mathrm{halo}$,
+a real geometric exponent $Q.\mathrm{relative}$, and a decay exponent
+$\rho=Q.\mathrm{rate}\in(-1/2,0)$. With the selected positive gauge
+slope $s_G$, put
+\[
+ \beta_F=\beta+s_G\log L,\qquad
+ \operatorname{preCost}(h)=(2(h+6)+1)^4,\qquad
+ \operatorname{siteFactor}(B)=e\{2(16B+9)\}^4,
+\]
+and, at the selected coupling $\beta_F>1$, define
+\[
+ \operatorname{ribbon}(Q,L,\beta)
+ =\beta_F^{\rho}\exp\!\left(Q.\mathrm{relative}\,
+ \operatorname{preCost}(Q.\mathrm{halo}+5)\right),\qquad
+ \Delta_{G,L}(\beta)=\exp\!\left((\log\log\beta_F)^2\right).
+\]
+The shipment tariff is
 \begin{equation}
  N\,\operatorname{siteFactor}(B_0)
  \exp\!\left((Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)\right)a
@@ -175,7 +204,7 @@ The second-row allotment is
  =2\exp\!\left(-\frac{\mu}{16}\Delta_{G,L}(\beta)^2\right),
  \label{eq:ex-lattice-volant-straw}
 \end{equation}
-with $\Delta_{G,L}$ the fine-scale monitor.
+where $\Delta_{G,L}$ is the fine-scale monitor just defined.
 
 The selected response produces ungrouped terms $A_i(U)$ and $D_i(U)$,
 with support indices $s(i)$ and $p(i)$, respectively. Let $a_i,d_i\geq0$
@@ -257,8 +286,11 @@ weight to the birth estimate gives
        w_i e^{(e_1-4)n_i^{\mathrm{crest}}}.
 \]
 For every named marker $v$, the offer gives
-$\sum_{i:v\in A_i}w_i e^{(e_1-4)n_i^{\mathrm{crest}}}\leq a$,
-where $A_i$ is the set of available named origins for menu $i$. Choose, for each positive wage, a named origin in the
+$\sum_{i:v\in \mathcal N_i}w_i e^{(e_1-4)n_i^{\mathrm{crest}}}\leq a$,
+where $\mathcal N_i$ is the set of available named origins for menu $i$. Indeed,
+the fine site of $v$ belongs to the crest of every such menu, so this
+nonnegative sum is bounded by the offer's site-rooted ledger at that site.
+Choose, for each positive wage, a named origin in the
 menu mode whose parent image lies in that menu's birth region. The birth
 estimate and the displayed $13\varepsilon_Q/4$ margin transfer the offer
 to a rooted budget on birth regions, with exponent
@@ -347,8 +379,8 @@ harmonic zero mode.
 \label{lem:ex-lattice-rg-one-step}
 Fix $i<N$ and assume a packet $B_{i+1}$ represents the difference
 $\mathscr Q(H_x(n,i+1),c)-\mathscr Q(H_x(N,i+1),c)$ on every required torus side. Suppose
-the two order-two response kernels for the histories $n$ and $N$ have
-common exponential width
+the two response kernels for the histories $n$ and $N$ obey order-two atlas
+bounds with common exponential width
 \[
  \omega_i=\min\{1,\alpha(J_i),\alpha(J_{i+1})\}
 \]
@@ -379,12 +411,27 @@ the allotment $\mathcal A_i$ in \eqref{eq:ex-lattice-rg-coin}.
 The crossing identities for the actual towers give the required matches
 with their periodized carrier maps. The response composition has the city
 law because each factor has its own translation law and these laws add
-under convolution. The widths are $\omega_i$ for both responses.
+under convolution. The widths are $\omega_i$ for both responses. The atlas
+bounds control both weighted row and column sums, with nonnegative cost
+$\mathcal A_i$. Since $\omega_i\geq0$, each weight is at least one; the
+ordinary row and column sums, and their restrictions to periodization
+fibres, are therefore absolutely summable. This also justifies the transpose
+matching rule when it is used in the mixed Schur step.
+The finite folded bound on $B_{i+1}$ likewise makes each of its displayed
+periodization fibres absolutely summable. In the two response compositions,
+the row bound for $U_i$, the uniform folded bound for $B_{i+1}$, and the
+column bound for $T_i$ give an absolute sum at most
+$(m\mathcal A_iL_i^2)p(\mathcal A_iL_i^{-2})=m\mathcal A_i^2p$,
+with the coarse input position and both external face labels fixed, even
+after summing over all output cover points. Restricting that sum
+to a periodization fibre proves the corresponding absolute convergence for
+the composed packet; the finite face-label sums introduce no further
+convergence requirement.
 
 For the remaining travel condition, the Wilson tower's zero-alias column
-is the toll-$L_i$ identity, namely $L_i^{-2}I$. Periodicity then gives a
-position-independent column sum for the installed tower; this scalar
-normalization is sufficient for the travel product. The fine cross-row bound
+is the toll-$L_i$ identity, namely $L_i^{-2}I$. Periodicity then makes the sum over the installed tower's second spatial
+argument independent of its first spatial argument, for each pair of face
+labels. This normalization is sufficient for the travel product. The fine cross-row bound
 and the inverse-precision row bound make the two preceding convolutions
 absolutely summable; absolute convergence permits changing their order.
 The sum of a convolution of two travelling kernels is the product of their
@@ -401,11 +448,11 @@ hypotheses.
 
 \begin{theorem}[Uniform finite-interval flat-sector bound]
 \label{thm:ex-lattice-rg-construction}
-Suppose the terminal and one-step hypotheses above hold for every
-$x\in X$ and every finite interval $N\leq n$. There are nonnegative
-constants $A_1$ and an integer $d_1$, and an exponent $c_1>0$, independent
-of $x,N,n$, and packets $B_i$ for all $i\in[i_0(x),N_x]$, such that
-each $B_i$ is neutral and translation covariant, represents
+Suppose that, for every $x\in X$, the terminal and one-step hypotheses
+above hold on its interval $[i_0(x),N_x]$ and for its cutoff $n_x\geq N_x$.
+There exist a nonnegative constant $A_1$, an integer $d_1$, and an exponent
+$c_1>0$, independent of $x$, and for each $x$ packets $B_i$ for all
+$i\in[i_0(x),N_x]$, such that each $B_i$ is neutral and translation covariant, represents
 $\mathscr Q(H_x(n,i),c)-\mathscr Q(H_x(N,i),c)$ on all required torus sides, and has folded
 cost
 \[
