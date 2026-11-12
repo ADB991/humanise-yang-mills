@@ -138,7 +138,8 @@ $r\ge0$ and constant $C\ge0$,
 \begin{equation}\label{eq:warning-monitor-pays}
  C d^r\le P^a\quad\hbox{eventually}.
 \end{equation}
-Taking logarithms, it suffices to compare a constant plus
+If $C=0$ there is nothing to prove. For $C>0$, taking logarithms,
+it suffices to compare a constant plus
 $2r\log\log h$ with $a(\log\log h)^2$; the latter dominates.
 Since $b_{2B}m$ is bounded by a fixed multiple of $d^4$,
 \eqref{eq:warning-monitor-pays} implies
@@ -178,8 +179,9 @@ Choose $q\xi\le1$ and an outer cutoff plateau $a\ge C+1$.
 The bond cutoff is then identically one throughout this smaller event.
 
 The remaining masks use the corresponding fine and predictor
-estimates. In the source construction these estimates supply, outside
-the enlarged seed region, a local error bound $\delta\tau$ for each
+estimates. In the source construction these estimates supply, at coarse
+sites at distance greater than $R_p$ from the seed set (the enlarged
+seed region; $R_p$ is specified below), a local error bound $\delta\tau$ for each
 fine or predictor reading, together with the guide bounds
 $A\tau/L^2$ and $A\tau$, respectively. The local error has three
 parts: the mean error, the change under the controlled fluctuation,
@@ -204,13 +206,88 @@ strictly smaller scale estimates.
 
 A warning factor is either a bounded cutoff times one of these
 factors minus one, or a bond cutoff minus one. Factors inside their
-compulsory seed region are defined to be zero. Hence, under the
-stated local estimates, a nonzero warning at an address implies a
-coordinate excursion within distance $2B$ of its assigned site.
-The local estimates producing \eqref{eq:warning-plateau}, and the
-uniform physical covariance bound, remain explicit analytic inputs
-here. The probability and integration arguments do not assume or
-replace their production.
+compulsory seed region are defined to be zero. We now make the
+passage from these local statements to the warning precise; this
+requires the contraction type, which the preceding paragraphs do not
+treat, and the change of radius from $B$ to $2B$.
+
+For a coarse site $j$ write $\mathcal W_r(j)$ for the event that all
+coordinates within distance $r$ of $j$ obey $|Z_i|\le\xi\tau\sqrt\beta$.
+Let $t_f$ be the fine chord threshold of Section~\ref{sec:seed-energy}
+(written $t$ there; it is unrelated to the coordinate threshold $t$ of
+this section). Say that the \emph{plateau conclusion} holds at $j$ if:
+the site likelihood at $j$ equals one; every fine plaquette whose
+anchor has parent $j$ has chord less than $t_f/4$; and for every axis
+$e$ the bond likelihood of the coarse bond $(j,e)$ equals one and its
+predictor chord is less than $Wt_f$. The local estimates described
+above give the plateau conclusion at every coarse site $j$ at distance
+greater than $R_p$ from the seed set on the event $\mathcal W_B(j)$;
+this is the form in which they enter, and it remains an analytic input.
+We assume that the compulsory seed region has radius $R_c\ge R_p+B$.
+(In the source construction $R_p=30B$ and $R_c=300B$.)
+
+The \emph{fine site contraction} at a fine site $y$, for the given finite
+list $l$ of forced activities, is the factor equal to $0$ if $y$ is not
+covered by the supports in $l$ and $y$ is a fine flag of the current
+fine field at the flag threshold of the representation, and equal to $1$
+otherwise. Here $y$ is a fine flag at threshold $\theta$ if some fine
+plaquette having $y$ as a corner has chord greater than $\theta$. The
+representation's flag threshold is the fine threshold $t_f$; this
+identification is part of the data of the representation.
+
+The assigned coarse site of a warning is the parent of its fine
+address (fine plaquette masks, through the anchor, and fine site
+contractions), the base point of its coarse bond (bond masks, bond
+likelihoods and bond cutoffs), or its coarse site (site likelihoods).
+
+\begin{lemma}\label{lem:warning-vanishes}
+Let a warning have assigned coarse site $i$ outside the compulsory
+seed region, and suppose $\mathcal W_{2B}(i)$ holds and $\mu$ obeys
+the bound $\|\mu_b\|\le C\tau$ used above on the bonds within distance
+$2B$ of $i$. Then the warning factor is zero.
+\end{lemma}
+
+\begin{proof}
+Let $j$ be a coarse site with $\operatorname{dist}(i,j)\le B$. The
+ball of radius $B$ about $j$ lies in the ball of radius $2B$ about $i$,
+so $\mathcal W_B(j)$ holds. Since $\operatorname{dist}(i,\text{seeds})>R_c\ge R_p+B$,
+we have $\operatorname{dist}(j,\text{seeds})>R_p$. Hence the plateau
+conclusion holds at every such $j$; in particular at $j=i$.
+
+\emph{Bond cutoff.} On $\mathcal W_B(i)$ the first paragraph of this
+subsection shows that the bond cutoff equals one on the bonds based at
+$i$, so the warning, a bond cutoff minus one, vanishes.
+
+\emph{Fine and predictor masks, bond and site likelihoods.} The fine
+readings at plaquettes with parent $i$ and the predictor readings on
+bonds based at $i$ are below the mask plateaus by
+\eqref{eq:warning-plateau} and the choice of $\delta,L,W$, and the
+likelihoods at $i$ equal one, by the plateau conclusion at $i$. Each
+such factor equals one, and the warning, a bounded cutoff times the
+factor minus one, vanishes.
+
+\emph{Fine site contraction.} Let the warning be the contraction at a
+fine site $y$ with parent $i$, and suppose its factor is $0$. Then $y$
+is a fine flag at threshold $t_f$, so some fine plaquette $v$ having $y$
+as a corner has chord greater than $t_f$. The anchor of $v$ differs
+from $y$ by at most one unit in each coordinate, and the parent map
+changes each coordinate by at most one when its argument changes by
+one, so the parent $j$ of the anchor of $v$ satisfies
+$\operatorname{dist}(i,j)\le1\le B$. The plateau conclusion at $j$ gives
+chord$(v)<t_f/4<t_f$, a contradiction. Hence the contraction equals one
+and the warning vanishes.
+\end{proof}
+
+Taking the contrapositive: a nonzero warning outside the compulsory
+region implies that $\mathcal W_{2B}(i)$ fails, that is, a coordinate
+excursion within distance $2B$ of its assigned site $i$; inside the
+compulsory region the warning is zero by definition. This is the
+implication used below, with the radius $2B$ of
+\eqref{eq:warning-actual-price}. The local estimates producing
+\eqref{eq:warning-plateau} and the plateau conclusion, the bound on
+$\mu$, and the uniform physical covariance bound remain explicit
+analytic inputs here. The probability and integration arguments do
+not assume or replace their production.
 
 \subsection{Integration before multiplication of prices}
 Fix a tree sector. Its integration variables are a Haar variable $Y$

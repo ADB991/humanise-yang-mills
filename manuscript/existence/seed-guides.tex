@@ -11,9 +11,12 @@ kernels does not require a small-field assumption.
 Let $K_{ab}(z)$ be a scalar cover kernel, with finite type sets
 $\mathcal A,\mathcal B$, satisfying, for every fixed pair of types,
 \[
- \sum_{z\in\mathbb Z^4}|K_{ab}(z)|e^{\eta|z|}\le C,
+ \sum_{z\in\mathbb Z^4}|K_{ab}(z)|e^{\eta|z|_1}\le C,
  \qquad \eta\ge0.
 \]
+where $|z|_1$ is the $\ell^1$ norm of the cover displacement (the
+same norm is used in the strip hypotheses below; neighbourhoods are
+still measured in the periodic supremum distance).
 A physical entry from $(x,a)$ to $(y,b)$ is a sum of selected terms
 $K_{ab}(z)\operatorname{Ad}(U_{\gamma_{x,z}})$ with
 $y=x+\operatorname{wrap}(z)$. Adjoint transport is an isometry of the
@@ -49,7 +52,14 @@ columns; $N$ has auxiliary coarse rows and the same columns. Their fixed-type st
 independently of $L$. The tower estimates provide precisely these
 three strip inputs; no residue factor is present in the narrow two
 kernels. In particular the column bound for $\Phi$ cannot be replaced
-by its row bound.
+by its row bound. The bounds \eqref{eq:guide-periodic-rows} hold for
+arbitrary isometric transports. When these kernels are identified with
+those of the energy comparison in Section~\ref{sec:seed-energy}, all
+transports come from one coarse field $V$: the narrow kernels $\Phi'$
+and $N$ are transported in $V$, and the wide kernel $\Phi$ in the fine
+replica $V^\uparrow$ of the same $V$, whose links are identities or
+links of $V$ (as in Section~\ref{sec:actual-global-row-prices}), along
+the path from the residue $r$ to $Lz$ described below.
 
 All three kernels are cut at path length at most
 $R_0=\lfloor B/100000\rfloor$ in fine units. The endpoint of the
@@ -70,8 +80,11 @@ At one stage write the path expansion of a plaquette field in the form
  \qquad p=(x,a).
 \]
 The label $i$ includes the target plaquette orientation and the
-transport path. Its length $\ell_{a,i}$ bounds the distance from $x$
-to the target anchor. The stage input is
+transport path. Its length $\ell_{a,i}$ is the number of bonds of the
+transport path $\gamma_{p,i}$ plus four, the length of the boundary of
+the target plaquette; in particular it bounds the $\ell^1$ distance
+from $x$ to the target anchor. The truncation below uses this length,
+and the clipped field depends on this convention. The stage input is
 \begin{equation}\label{eq:guide-path-input}
  \sum_i|c_{a,i}|e^{\sigma\ell_{a,i}}\le P,
  \qquad \sigma>0,\quad P>0,
