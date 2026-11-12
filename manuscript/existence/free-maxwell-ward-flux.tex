@@ -1,0 +1,310 @@
+\section{The free Maxwell stress and its collar Ward identities}
+\label{sec:free-maxwell-ward-flux}
+
+The reference stress is fixed by its action on every insertion, not only
+by conservation. We prove that action using the same free curvature
+covariance and Wick polynomial fields as in
+Section~\ref{sec:ex-lattice-trace-free-rank}. All integrals involving
+the stress below are taken on compact collars separated from every
+insertion. No product of singular kernels at coincident points is used.
+
+Let $\mathfrak g$ carry the fixed invariant real inner product. A smooth
+$\mathfrak g$-valued two-form $f=(f_{ab})$ is a Maxwell wave on an
+open set if it is antisymmetric and satisfies
+\[
+ \partial_af_{bc}+\partial_bf_{ca}+\partial_cf_{ab}=0,
+ \qquad \sum_a\partial_af_{ab}=0.
+\]
+Indices run from zero to three. Set $\nu=(4\pi^2)^{-1}$ and
+$G(z)=\nu|z|^{-2}$ for $z\ne0$. The covariance between curvature
+components is
+\begin{equation}\label{eq:maxwell-ward-covariance}
+ C_{ab;il}(z)=\delta_{ib}\partial_a\partial_lG(z)
+ -\delta_{lb}\partial_a\partial_iG(z)
+ -\delta_{ia}\partial_b\partial_lG(z)
+ +\delta_{la}\partial_b\partial_iG(z),
+\end{equation}
+times the identity on colour. A linear probe $p$ of a homogeneous
+Maxwell jet of order $j$ acts on $D^jf(x)/j!$; write its value as
+$p[f;x]$. Its covariance pulse $P_{p,x}(y)$ is the covariance of that
+probe at $x$ with curvature at $y$. For a coordinate curvature probe
+$(c,i,l)$ this is $C_{ab;il}(y-x)e_c$; higher pulses are obtained by
+the corresponding normalized derivatives in $x$. Such probes span the
+dual of the finite jet space, and these formulas extend linearly.
+The raised probe $\partial_u p$ is defined by
+$(\partial_up)[f;x]=\partial_u(p[f;\,\cdot\,])(x)$.
+It includes the factor $j+1$ arising from normalized Taylor coefficients.
+Differentiating the covariance gives
+\begin{equation}\label{eq:maxwell-pulse-differentiation}
+ \partial_{x,u}P_{p,x}(y)=P_{\partial_up,x}(y).
+\end{equation}
+Each pulse is a Maxwell wave away from its centre, as follows by
+commuting derivatives in \eqref{eq:maxwell-ward-covariance} and using
+$\Delta G=0$ there.
+
+\subsection{The polarized current and its divergence}
+For closed two-forms $f,g$, define the polarized stress
+\[
+ T_{ab}(f,g)=\sum_c\bigl(\langle f_{ac},g_{bc}\rangle
+                   +\langle f_{bc},g_{ac}\rangle\bigr)
+       -\frac{\delta_{ab}}2\sum_{c,d}\langle f_{cd},g_{cd}\rangle.
+\]
+It is symmetric in $a,b$ and in $f,g$, and its trace is zero in
+four dimensions. Put $(\operatorname{div}f)_c=\sum_a\partial_af_{ac}$.
+The Bianchi identity implies
+\[
+ \sum_{a,c}\langle f_{ac},\partial_ag_{bc}\rangle
+       =\frac12\sum_{a,c}\langle f_{ac},\partial_bg_{ac}\rangle.
+\]
+Indeed substitute
+$\partial_ag_{bc}=\partial_bg_{ac}-\partial_cg_{ab}$; exchanging
+$a,c$ and using both antisymmetries makes the last sum equal to the
+left side. The product rule, followed by this identity for $(f,g)$
+and $(g,f)$, cancels the differentiated trace terms and gives
+\begin{equation}\label{eq:maxwell-stress-divergence}
+ \sum_a\partial_aT_{ab}(f,g)
+ =\sum_c\bigl(\langle\operatorname{div}f_c,g_{bc}\rangle
+                  +\langle f_{bc},\operatorname{div}g_c\rangle\bigr).
+\end{equation}
+
+We need $v(y)=e_b$ and $v(y)=A(y-x)$ for a real skew matrix $A$.
+For either vector field define $j_a(v;f,g)=\sum_bv_bT_{ab}(f,g)$.
+The term $\sum_{a,b}(\partial_av_b)T_{ab}$ vanishes by symmetry;
+the same holds for dilation $v(y)=y-x$ by tracelessness.
+Thus, if both forms are Maxwell waves, $\operatorname{div}j=0$.
+For $\chi\in C_c^\infty(\mathbb R^4;\mathbb R)$ define outward
+collar flux by
+\begin{equation}\label{eq:maxwell-collar-flux}
+          \mathcal F_\chi(j)=-\sum_a\int(\partial_a\chi)(y)j_a(y)\,dy.
+\end{equation}
+Whenever $j$ is smooth on a neighborhood of $\operatorname{supp}\chi$,
+integration by parts identifies this with $\int\chi\operatorname{div}j$.
+In particular it vanishes for two waves on that neighborhood.
+If the only singularity is at $x$ and both cutoffs equal one near $x$,
+their fluxes agree: apply the same identity to their difference, which
+vanishes on a neighborhood of $x$.
+
+\subsection{A unit-mass regulator fixes the sign}
+For $t>0$ set
+\[
+ G_t(z)=\frac{\nu}{t^2+|z|^2},\qquad
+ \rho_t(z)=\frac{8\nu t^2}{(t^2+|z|^2)^3}.
+\]
+Direct differentiation gives $-\Delta G_t=\rho_t$ and
+$t^4\rho_t(tz)=\rho_1(z)$. These kernels are nonnegative, and polar
+coordinates give
+\[
+ \int\rho_1(z)\,dz
+ =16\pi^2\nu\int_0^\infty\frac{r^3}{(1+r^2)^3}\,dr=1.
+\]
+The radial integral is $1/4$, since an antiderivative is
+$\tfrac14(1-(1+r^2)^{-1})^2$. For any continuous compactly supported
+$h$, substitution $y=x+tz$ and dominated convergence therefore give
+\begin{equation}\label{eq:maxwell-source-approximation}
+              \int\rho_t(y-x)h(y)\,dy\longrightarrow h(x).
+\end{equation}
+The dominating function is $\rho_1(z)\|h\|_\infty$.
+
+Fix a coordinate probe $(c,i,l)$ and form a regulated pulse $R_t=dA_t$,
+where
+\[
+ (A_t)_b(y)=\bigl(\delta_{ib}\partial_lG_t(y-x)
+                    -\delta_{lb}\partial_iG_t(y-x)\bigr)e_c.
+\]
+It is closed and satisfies
+\[
+ (\operatorname{div}R_t)_b
+       =(\delta_{lb}\partial_i\rho_t(y-x)
+                    -\delta_{ib}\partial_l\rho_t(y-x))e_c.
+\]
+For the latter identity, $\sum_b\partial_b(A_t)_b=0$ by commuting
+derivatives, so $\operatorname{div}dA_t=\Delta A_t$; now use
+$\Delta G_t=-\rho_t$. Away from $x$, $R_t$ and all its derivatives
+converge locally uniformly to $P_{(c,i,l),x}$.
+
+Suppose $f$ is a Maxwell wave on a neighborhood of
+$\operatorname{supp}\chi$, and $\chi=1$ near $x$. Put
+$a_b(y)=\sum_uv_u(y)f_{ub}(y)$ and
+$H_b(y)=\chi(y)\langle e_c,a_b(y)\rangle$.
+Equation~\eqref{eq:maxwell-stress-divergence} gives
+\[
+ \mathcal F_\chi(j(v;R_t,f))
+ =\int H_l\partial_i\rho_t(\,\cdot-x)
+       -\int H_i\partial_l\rho_t(\,\cdot-x)
+ =\int\rho_t(\,\cdot-x)\partial_lH_i
+       -\int\rho_t(\,\cdot-x)\partial_iH_l.
+\]
+All integrations by parts are with smooth compactly supported $H_b$.
+The right side tends to $\partial_lH_i(x)-\partial_iH_l(x)$ by
+\eqref{eq:maxwell-source-approximation}. The left side tends to the
+unregulated flux because $\operatorname{supp}d\chi$ is compact and
+separated from $x$. Hence
+\begin{equation}\label{eq:maxwell-coordinate-charge}
+ \mathcal F_\chi(j(v;P_{(c,i,l),x},f))
+                       =-\langle e_c,(d\iota_v f)_{il}(x)\rangle.
+\end{equation}
+This proves the sign directly from the Green normalization and the
+outward-flux convention.
+
+For an arbitrary jet probe $p$, differentiate this identity in the
+enclosed centre while keeping both $v$ and $\chi$ fixed. The moving
+centre stays in a neighborhood on which $\chi=1$. That neighborhood
+can be chosen with positive distance from the compact collar. On its
+product with the collar, the pulse derivatives in
+\eqref{eq:maxwell-pulse-differentiation} are continuous and bounded.
+They therefore provide an integrable constant times the collar indicator
+for each fixed differentiation. Differentiation under the integral is
+justified. Induction on the jet order and linearity in $p$ prove
+\begin{equation}\label{eq:maxwell-single-charge}
+        \mathcal F_\chi(j(v;P_{p,x},f))=-p[d\iota_v f;x].
+\end{equation}
+Normalized jets cause no change: the raising factors occur on both
+sides and are nonzero. This argument applies whenever $d\iota_v f$
+is a Maxwell wave locally, as it is for the affine motions used here.
+
+For completeness, the Bianchi identity expands the variation as
+\[
+ (d\iota_v f)_{ab}
+   =\sum_i\bigl(v_i\partial_if_{ab}
+              +(\partial_av_i)f_{ib}+(\partial_bv_i)f_{ai}\bigr).
+\]
+For $v=e_b$ this is $\partial_bf$. For $v=A(y-x)$, it is the
+infinitesimal inverse-rotation action on the jet at $x$. Differentiating
+the two index factors and the argument in
+$e^{tA}_{ia}e^{tA}_{lb}f_{il}(x+e^{tA}z)$ at $t=0$, where $z$
+is displacement from the fixed rotation centre $x$, gives exactly
+this formula. Orthogonal covariance preserves the Maxwell equations,
+so this variation is a wave. Translation has the same property by
+commutation of derivatives. Write $\mathscr D_vp$ for the resulting
+probe: the raised derivative probe for translation and the angular
+probe for rotation about $x$. Equation~\eqref{eq:maxwell-single-charge}
+becomes $- (\mathscr D_vp)[f;x]$.
+
+\subsection{Two contractions at the enclosed point}
+When both pulses are centred at $x$, the preceding formula cannot be
+used with one pulse as a smooth wave across $x$. Instead use collar
+independence and homogeneity. For a probe of jet order $j$,
+\[
+ P_{p,x}(x+tz)=t^{-(4+j)}P_{p,x}(x+z)\qquad(t>0,z\ne0),
+\]
+because $G$ has degree $-2$ and the curvature covariance has two
+derivatives, followed by $j$ centre derivatives. The drive has degree
+$e=0$ for translation and $e=1$ for rotation about $x$.
+Replace $\chi(y)$ by $\psi(y)=\chi(x+(y-x)/t)$. Both cutoffs
+equal one near $x$, so their fluxes agree. In the latter integral set
+$y=x+tz$. The volume contributes $t^4$, the cutoff derivative
+$t^{-1}$, the drive $t^e$, and the two pulses
+$t^{-8-j-l}$. Consequently their common flux $Z$ satisfies
+\[
+                   Z=t^{e-5-j-l}Z.
+\]
+Take $t=2$. Since $e\le1$ and $j,l\ge0$, the factor is strictly
+less than one; hence $Z=0$. This proves vanishing without extending
+the product of the two poles through $x$.
+
+\subsection{All Wick polynomials and all spectators}
+The Wick stress polynomial is
+\begin{equation}\label{eq:maxwell-wick-stress}
+ J^0_{ab}=\sum_c:\!\langle F_{ac},F_{bc}\rangle\!:
+       -\frac{\delta_{ab}}4\sum_{c,d}:\!\langle F_{cd},F_{cd}\rangle\!:.
+\end{equation}
+Here the colons mean Wick ordering at that insertion. In Wick moments
+there are no contractions between factors at the same insertion.
+Fix distinct positions $x_0,\ldots,x_n$ and a smooth compact cutoff
+$\chi$ equal to one near $x_0$, whose support excludes every other
+$x_i$. Let $P_i$ be arbitrary Wick polynomials in finitely many jet
+probes at $x_i$. Extend $\mathscr D_v$ from probes to polynomials
+by the Leibniz rule, and denote this derivation by $\delta_v$.
+We claim
+\begin{equation}\label{eq:maxwell-polynomial-ward}
+ -\sum_{a,b}\int(\partial_a\chi)(y)v_b(y)
+   \left\langle J^0_{ab}(y)\prod_{i=0}^nP_i(x_i)\right\rangle_0dy
+       =-\left\langle(\delta_vP_0)(x_0)
+                            \prod_{i=1}^nP_i(x_i)\right\rangle_0.
+\end{equation}
+
+First suppose each $P_i$ is a monomial. Label its individual factor
+occurrences, including repeated factors, by a finite set $I$. Let
+$x_{u(h)}$ be the position of occurrence $h$, with probe $p_h$,
+and put $f_h=P_{p_h,x_{u(h)}}$. For a subset of remaining occurrences
+$A$, write $W(A)$ for its Wick pairing sum, with pair weights zero
+at the same insertion. Extract the two stress factors from the Wick
+sum. The exact integrand contracted with $v_b$ is
+\begin{equation}\label{eq:maxwell-double-extraction}
+ \frac12\sum_{h\ne l}j_a(v;f_h,f_l)(y)\,
+                                      W(I\setminus\{h,l\}).
+\end{equation}
+To verify the factor $1/2$, initially assign the first stress factor
+to $h$ and the second to $l$. The quadratic expression in
+\eqref{eq:maxwell-wick-stress} gives one ordered contraction.
+Exchanging $h,l$ gives its transpose; their sum is exactly the
+polarized tensor $T_{ab}(f_h,f_l)$. Averaging these two equal
+ordered sums gives \eqref{eq:maxwell-double-extraction}.
+The stress factors cannot contract to each other because of Wick
+ordering. After choosing their partners, the remaining pairing sum
+is exactly $W(I\setminus\{h,l\})$.
+
+Every term is smooth on the compact collar, so the finite sum can be
+integrated term by term. There are three cases. If neither partner
+is at $x_0$, both pulses are smooth waves on the support of $\chi$,
+and the flux vanishes. If both are at $x_0$, the preceding homogeneous
+two-pulse argument gives zero. If exactly one, say $h$, is at $x_0$,
+\eqref{eq:maxwell-single-charge} gives minus the covariance of
+$\mathscr D_vp_h$ at $x_0$ with $p_l$ at its spectator position.
+Both orders $(h,l)$ occur, and symmetry cancels the factor $1/2$.
+For a fixed $h$ at $x_0$, sum over its possible partner $l$ and
+over the remaining Wick pairings. This is precisely the Wick moment
+with occurrence $h$ replaced by $\mathscr D_vp_h$. Summing over all
+such occurrences is the Leibniz rule for $\delta_vP_0$, proving
+\eqref{eq:maxwell-polynomial-ward} for monomials. Expand general
+polynomials in their finite monomial bases. Multilinearity and the
+linearity of the compact integrals prove the identity for arbitrary
+complex coefficients and every finite spectator word.
+
+\subsection{The fixed reference normalization}
+For this final step assume the gauge Lie algebra is nonzero, nonabelian
+and simple, as in the construction theorem. The preceding collar and Wick
+calculations used only its finite-dimensional real inner product; the
+rank and nontriviality assertions below use this additional hypothesis.
+The polynomial \eqref{eq:maxwell-wick-stress} is real, symmetric,
+gauge-invariant and of grade four. Its expectation vanishes by Wick
+ordering. Its divergence is zero already as a Maxwell jet polynomial:
+apply \eqref{eq:maxwell-stress-divergence} with $f=g$ and divide
+by two. Polynomial differentiation is the same Leibniz rule as the
+field derivative. Its reference field is nonzero by the explicit
+stress probes in Section~\ref{sec:ex-lattice-trace-free-rank}.
+That section also proves surjectivity of divergence on centered
+covariant arrays and that its kernel is the line through this tensor.
+These facts supply the conserved-line certificate used in
+Section~\ref{sec:actual-stress-normalization}.
+
+The identification between invariant jet polynomials and the reference
+field table preserves their Wick moments, derivatives and rotations.
+Thus \eqref{eq:maxwell-polynomial-ward} descends to all its field
+labels. For the reference tensor $\tau J^0$, $\tau\in\mathbb R
+\setminus\{0\}$, both its translation and rotation Ward maps have
+the common coefficient $-\tau$. The sign comes from the collar
+calculation, not a choice made after comparing with the physical theory.
+
+There is also a useful uniqueness check on the reference packaging.
+Suppose the same stress field has translation Ward identities with
+coefficients $c_0,c_1$ multiplying the same derivative plan. Subtracting
+the two identities shows that every separated correlation with
+$(c_0-c_1)\partial_bv$ vanishes. Faithfulness of the field table
+gives $(c_0-c_1)\partial_bv=0$ for every label $v$. The derivative
+plan is nonzero already in grade four, as detected by the nonzero
+divergence probes in Section~\ref{sec:ex-lattice-trace-free-rank}.
+Hence $c_0=c_1$. In particular, retaining the canonical tensor $J^0$
+and the same derivative plan forces the coefficient to be $-1$.
+
+In the native construction the reference is fixed before the weak
+comparison curve is chosen. Its canonical tensor has polynomial
+\eqref{eq:maxwell-wick-stress}: the quadratic coordinate labels map
+to the corresponding products of curvature probes, their sum gives
+the first term, and subtracting one quarter of the diagonal sum
+gives the second. The reference packaging preserves the hierarchy,
+derivative plan, rotation and vacuum while selecting this tensor.
+The uniqueness argument therefore fixes its common Ward coefficient
+to $-1$ on that same data. Combined with the actual conserved-line
+certificate, this justifies the reference input to the physical
+normalization step without substituting another comparison model.

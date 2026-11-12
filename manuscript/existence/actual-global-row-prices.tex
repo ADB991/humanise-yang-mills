@@ -1,0 +1,244 @@
+\section{Global row and source bounds on the actual sector}
+\label{sec:actual-global-row-prices}
+
+The palette comparison needs estimates on the whole selected row matrix,
+including the source created by frozen links. A small covariance error
+on a posed clean panel does not supply these estimates. We establish the
+required global bounds using the actual sector precision and the selected
+background rows.
+
+Fix the gauge group, a one-step patch with block length $L$, its kernel,
+and its funded tower and path prices. Assume the patch satisfies the
+predictor branch conditions. All constants below are chosen from these
+fixed data. Put
+\[
+ B=\lceil(\log x)^2\rceil,\qquad t=\operatorname{fiery}(x,L),
+ \qquad R=\lfloor B/100000\rfloor.
+\]
+Here $t$ is the fine small-field threshold of
+Section~\ref{sec:seed-guides}, while $\operatorname{temp}(x)$ is the
+coarse threshold; eventually $\operatorname{temp}(x)\le2t$.
+The coarse period satisfies $c\ge100(1+B)$. Use arbitrary stores,
+forest, predictor tags and coarse field $V$ with the stores' flags equal
+to the actual coarse flags at threshold $\operatorname{temp}(x)$.
+No assertion about their fine costs or other noise entries is required.
+The large-$x$ threshold is uniform over all these choices and all funded
+towers having the fixed prices.
+
+Let $I$ be the active link-color coordinates and $J$ the row-color
+coordinates, with unselected rows set to zero. Their anchors are the coarse parent of the link
+and the anchor of the row, respectively. Write
+\[
+             M:\mathbb R^I\longrightarrow\mathbb R^J,
+             \qquad Q=M^*M
+\]
+for the actual selected derivative matrix and its Gram matrix, including
+the fixed row normalization $\lambda>0$. Thus $M$ is the matrix obtained
+by applying the selected row derivative to each active coordinate
+impulse, not a new linearization at the identity. The precision completed
+by the inactive identity is the matrix of Section~\ref{sec:sector-gram};
+$Q$ is its restriction to active coordinates.
+For matrices between either pair of anchor sets, use the weighted maximum
+of absolute row and column sums, denoted $\|\cdot\|_v$ as in
+Section~\ref{sec:local-covariance}. For each $j\in I$, let $W_j$ be its
+actual panel. Let $N$ be the matrix whose $j$th column is the inverse
+of $Q_{W_j}$, extended by zero, and let $C=(N+N^*)/2$.
+
+\begin{proposition}[Uniform global prices]
+\label{prop:actual-global-row-prices}
+There are $\eta>0$, $K\ge1$, $u,v>0$, and $L_0>0$, depending only
+on the fixed data, such that eventually in $x$, uniformly over the
+choices just specified,
+\begin{gather}
+ Q\ge\eta I,\qquad C\ge\eta I,\qquad
+ \|Q\|_0,\ \|C\|_0,\ \|N\|_0\le K,
+ \label{eq:global-row-kernels}\\
+ \|N-Q^{-1}\|_0\le u e^{-v\lfloor B/60\rfloor},\qquad
+ \|M\|_{\sigma/2}\le L_0,
+ \label{eq:global-row-error}
+\end{gather}
+where $\sigma>0$ is the fixed path width. In particular $Q$ and $C$
+are positive definite. Given any fixed $r\ge0$, there is also $Z>0$
+such that, for $0<d\le rt$, the actual source vector $s(Y)\in\mathbb R^J$
+created by an arbitrary frozen field $Y$ obeys
+\begin{equation}\label{eq:global-row-source}
+                      |s(Y)_i|\le Zt\qquad(i\in J).
+\end{equation}
+The same tail in $x$ may be used for all these inequalities. The
+source constant and tail may additionally depend on $r$.
+\end{proposition}
+
+\subsection{The actual matrix and its principal windows}
+
+The proof of the weighted estimate in Section~\ref{sec:sector-gram}
+applies to every selected row and active coordinate. Its inputs are the
+uniform derivative estimate for the predictor on its actual branch and
+the exponentially summable path rows. Both are valid at the coarse field
+$V$ because row selection clears the required neighbourhood of its flags.
+Reversing a bond changes its parent anchor by at most one; the proof
+there includes this displacement. Restrictions to selected rows or active
+coordinates delete nonnegative terms from the absolute sums.
+
+More explicitly, the entry estimate there has the form
+\[
+ e^{\sigma\operatorname{dist}(a_i,a_j)}|M_{ij}|\le C_0.
+\]
+Let $m_I,m_J$ bound the numbers of input and output coordinates per
+coarse anchor. They are finite constants fixed after $L$, including
+all color, orientation and block-residue factors. For
+$\mathcal W(v)=\sum_{n\ge0}(2n+1)^4e^{-vn}$, grouping by anchor
+distance gives
+\[
+ \|M\|_{\sigma/2}
+ \le C_0\max\{m_I,m_J\}\mathcal W(\sigma/2)=:L_0.
+\]
+Increasing $L_0$ if needed makes it positive. This is a global row
+and column bound; its proof does not introduce the torus cardinality.
+The same product estimate gives $\|Q\|_{\sigma/2}\le L_0^2$.
+The coercivity argument in Section~\ref{sec:sector-gram} gives
+$Q\ge\eta_0 I$ for some $\eta_0>0$. Indeed extend any active vector
+by zero in the completed precision matrix; the inactive identity
+contributes zero, and the quadratic form is exactly $\|M z\|_2^2$.
+
+Set $K_0\ge\max\{1,L_0^2\}$. Apply the inverse estimates of
+Section~\ref{sec:local-covariance} to this actual $Q$ and its principal
+submatrices. They give $w>0$ and $S>0$, independent of the period,
+for which
+\[
+                \|Q^{-1}\|_w\le S,\qquad \|N\|_w\le S.
+\]
+For the latter assertion the windows vary by column, but every
+principal inverse has the same entrywise exponential bound; summing
+that bound over either anchor set proves both sums. This is why a
+bound on each column's Euclidean norm alone would be insufficient.
+We may decrease $w$ to ensure $w\le\sigma/2$.
+
+Each actual panel contains every coordinate within anchor distance
+$\rho=\lfloor B/60\rfloor$ of its center, once $B\ge120$.
+Indeed the actual panel requires every pair of coarse bond endpoints
+to be at distance at most $\lfloor B/20\rfloor$. Each endpoint is at
+distance at most one from its anchor, and
+$2+\lfloor B/60\rfloor\le\lfloor B/20\rfloor$ for $B\ge120$.
+The triangle inequality proves the asserted containment. Equivalently one
+may use any family of panels with this ball-containment property.
+The principal-inverse equation implies
+\[
+            E:=QN-I,\qquad E_{ij}=0
+                 \quad\hbox{if }\operatorname{dist}(a_i,a_j)\le\rho.
+\]
+The product norm gives $\|E\|_w\le K_0S+1$. Remove its exponential
+weight only on the remaining entries to obtain
+\[
+ \|E\|_0\le(K_0S+1)e^{-w\rho},\qquad
+ \|N-Q^{-1}\|_0\le S(K_0S+1)e^{-w\rho}.
+\]
+The second inequality follows from the ordered identity
+$N-Q^{-1}=Q^{-1}E$.
+
+Since $Q^{-1}$ is symmetric, averaging $N$ with its transpose does
+not increase this error. Also $Q\le K_0 I$, so
+$Q^{-1}\ge K_0^{-1}I$. Because $\rho\to\infty$, enlarge the
+$x$ threshold until $S(K_0S+1)e^{-w\rho}\le(2K_0)^{-1}$.
+Then $C\ge(2K_0)^{-1}I$. Take
+\[
+ \eta=\min\{\eta_0,(2K_0)^{-1}\},\quad
+ K\ge\max\{1,K_0,S\},\quad
+ u=S(K_0S+1)+1,\quad v=w.
+\]
+These choices prove \eqref{eq:global-row-kernels} and
+\eqref{eq:global-row-error}. The argument works on an empty active
+set as well, with all matrix inequalities interpreted on the zero
+space. No local mean or source bound was used to prove these matrix
+estimates.
+
+\subsection{Selected background rows}
+
+The first subsection of Section~\ref{sec:warning-safety} proves the
+needed bound on the affine base strokes by fixed-radius endpoint gauges,
+absolute path sums, the global guide bound and the local predictor
+estimate for the original tags. We check its application to the actual
+selected rows here. This uses only that subsection's base-stroke argument,
+not its subsequent mean calculation.
+
+A selected row has no coarse flags in its required surrounding ball.
+For large $B$, this contains every fixed chart box needed by a predictor
+read or by a plaquette reached by a retained path. The actual flag
+identity in the proposition therefore gives the local small plaquette
+condition used by the axial gauge. Denote the fixed box constant by
+$c_*$. Its coarse gauge and the parent-lifted replica gauge obey
+\begin{equation}\label{eq:global-selected-gauge}
+ r(V^g_e)\le c_*\operatorname{temp}(x),\qquad
+ r((V^\uparrow)^{g\circ\mathrm{parent}}_e)
+                          \le c_*\operatorname{temp}(x).
+\end{equation}
+A replica link is either the identity or a coarse link. In a signed
+channel, pull back the gauge; reversal moves an anchor by at most one
+and preserves chord under inversion. The extra layer in each fixed box
+pays this displacement. The period condition makes the boxes nonwrapping.
+
+The cited argument may consequently be applied separately at each path
+target, since only color norms are compared. Four-link curvature costs
+at most $4c_*\operatorname{temp}(x)\le8c_*t$; its absolute path sum
+has a fixed price. The predictor uses its fixed local logarithm chart,
+with size $O(t)$, and the same original tags. The subtracted fine and
+predictor guides are precisely those of \eqref{eq:guide-maximum};
+their global bounds do not require flags to vanish at an unselected
+site. Thus the cited proof gives, for the unscaled affine base row,
+\begin{equation}\label{eq:global-selected-base}
+                      \|b_i(V)\|\le C_b t
+                      \quad\hbox{on every selected row }i,
+\end{equation}
+with $C_b>0$ fixed before the stores, period and field. Selection uses
+no assumption about the stores' fine costs or their other noise entries.
+This identifies the actual base rows to which the canonical argument
+applies without equating them to their flat approximations.
+
+\subsection{Directions that include frozen links}
+
+The source contains the derivative evaluated on the frozen displacement,
+which need not be supported on the active links. We require a separate
+supremum estimate on all such directions. Let $a$ be any fine-link
+Lie-algebra field with $\sup_e\|a_e\|\le A$, $A\ge0$.
+At a plaquette, the directional derivative is a sum of four transported
+link directions, followed by the fixed curvature projection. Hence its
+norm is bounded by $C_f A$, uniformly in the base configuration.
+One can equivalently sum the norms over the fixed neighbouring fine
+bonds; their number is bounded in terms of $L$.
+
+For a transported path row, the differentiated curvature inputs are
+summed with its absolutely summable path coefficients and isometric
+adjoint transports. Thus its bound is the coefficient row sum times
+$C_f A$. The direct row is bounded by its fixed square-root coefficient
+times $C_f A$. These are the two components of the selected linear
+curvature row. For the predictor derivative, use the local branch
+estimate at \eqref{eq:global-selected-gauge}. It is bounded by a
+constant times the sum of $\|a_e\|$ on the fixed predictor stencil,
+hence by $C_p A$. Conjugating directions by the local gauge or applying
+a signed channel preserves their norms. The same constants therefore
+apply to the original direction, including its values on frozen links.
+There is a $C_a>0$ such that
+\begin{equation}\label{eq:global-selected-bump}
+       \|\mathcal D_i(V)a\|\le C_a A
+                         \quad\hbox{on every selected row }i,
+\end{equation}
+where $\mathcal D_i(V)$ is the derivative used in the actual row
+construction. Its path transports are held as prescribed in that
+construction; the estimate does not differentiate a newly chosen gauge.
+
+Finally the frozen input $a(Y)$ is the patched displacement on frozen
+links and zero on the other links. Its clipping gives
+$\|a(Y)_e\|\le2d\le2rt$ for every $Y$ and every link.
+The exact source is the selected restriction of
+$\lambda\{b(V)+\mathcal D(V)a(Y)\}$ in scalar color coordinates.
+Projection onto a color coordinate has norm at most one. Equations
+\eqref{eq:global-selected-base} and \eqref{eq:global-selected-bump}
+therefore give
+\[
+            |s(Y)_i|\le\lambda(C_b+2rC_a)t.
+\]
+Taking $Z=\lambda(C_b+2rC_a)+1$ proves
+\eqref{eq:global-row-source}. Intersect the finitely many eventual
+tails used for the matrix, base, branch and source bounds. All their
+constants were fixed before the period, stores, field, tags and frozen
+input, proving the asserted uniformity. No differentiability of the
+frozen field as a function of $V$ was used or concluded.

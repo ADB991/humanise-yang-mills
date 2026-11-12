@@ -1,0 +1,309 @@
+\section{The actual reader on its small panel}
+\label{sec:ex-lattice-actual-reader-small-window}
+
+Fix the outer source scale $x$ and let $B$ denote its outer radius.
+The sector panel radius is the natural quotient
+\[
+ p=\left\lfloor\frac{B+80}{20}\right\rfloor.
+\]
+The matrices, forest, frozen coordinates, masks, and cutoff below are
+always those of the outer-$B$ construction.  The smaller $p$ is the
+panel already chosen by that construction; it is not a new source scale.
+Write $\mathcal D_U(R)$ for the seed-dome of radius $R$ in the fixed
+configuration $U$.  Outer clearance means
+$o\notin\mathcal D_U(11B+1)$.
+
+\begin{lemma}[Two-scale containment]
+\label{lem:ex-lattice-small-window-geometry}
+If $B\ge200$, then
+\begin{equation}\label{eq:ex-lattice-small-window-geometry}
+\begin{aligned}
+ p&\le B/20+4, & 30p&<11B+1-p,\\
+ 9p&\le B, & B/4+p+B/50&\le B/2,\\
+ B/4+2p+B/25&\le B, &p+B/50+B/4+B/2&\le B.
+\end{aligned}
+\end{equation}
+Thus a radius-$8p$ ball centered at any panel center within distance
+$p$ of $o$ lies in the outer radius-$B$ ball.  A target within $B/4$
+and its row span of at most $B/50$ lie inside the radius-$B/2$ region
+where the source-row bound is available.  Adding the further dependency
+radius $B/2$ still stays inside the outer $B$ neighborhood.  Every
+panel center moved by at most $p$ remains farther than $30p$ from each
+seed.
+\end{lemma}
+
+\begin{proof}
+The source uses natural division, so $p\le(B+80)/20=B/20+4$.
+The seed-dome radius is $10B+B+1=11B+1$.  Moving a center by at most
+$p$ leaves clearance at least $11B+1-p$, and
+\[
+ 11B+1-p-30p\ge 11B+1-31(B+80)/20
+                  =(189B-2460)/20>0.
+\]
+Also $9p\le9(B+80)/20\le B$ for $B\ge200$.  The total-reach bound
+follows from
+\[
+ p+B/50+B/4+B/2\le B/20+4+ B/50+B/4+B/2
+                         =(41B+200)/50\le B.
+\]
+Finally, $B/4+p+B/50\le B/2$ for $B\ge200$.  These inequalities
+and $B/4+2p+B/25\le B$ follow on substituting $p\le B/20+4$.
+They concern only support and source queries; no matrix, cutoff or mask
+is changed.
+\end{proof}
+
+\begin{proposition}[Actual local mean and panel covariance]
+\label{prop:ex-lattice-actual-reader-panel}
+Fix $R\ge1$ and put
+\[
+ \chi(x)=16\{2(B+1)+1\}^5n_{\rm plaq}\,\vartheta(x).
+\]
+Here $n_{\rm plaq}$ is the finite number of plaquette orientations and
+$\vartheta(x)$ is the source temperature, and
+$B=\lceil(\log x)^2\rceil$. There are a fixed finite
+number of row, color, and local jet types, and a radius-$r$ ball in the
+four-dimensional lattice has at most $(2r+1)^4$ sites. Consequently
+the row and panel counts below are bounded by a fixed multiple of
+$(1+B)^4$.
+Fix one patch, tube, forest, tag, posed configuration and history over
+the entire panel.  Assume the source's branch/funding, floor,
+attachment, swornness, diagonalization and roll conditions, and the
+same-pose hypotheses at outer radius $B$: for a source threshold
+$\delta>0$, the coarse side satisfies $c\ge100(1+B)$, and the stored
+flags equal the flags of the posed configuration at temperature
+$\vartheta(x)$. For $0\le t\le\min\{\delta,R\chi(x)\}$ the direction
+$v$ has size at most $t$, the local price bound holds on that ball, its group
+representative agrees there with the posed field, and the center is
+outside $\mathcal D_U(11B+1)$. Every shifted center used in the proof also satisfies the
+same pose margin: its distance from the fixed pose center plus the
+pose's wall allowance is at most the original width $W$.  Use the
+actual panels selected by the outer construction and the
+official-address map to the cleared panel. The mean conclusion is for
+an active coordinate $i$ whose anchor is within $B/4$ of $o$; the
+column conclusion is for every $j$ in that same selected panel.
+
+Let $\eta>0$ be the minimum decay rate in the short-kernel approximation
+and long-path budget. Put
+\begin{equation}\label{eq:ex-lattice-reader-widening}
+ \operatorname{widen}_x(t)=(1+\operatorname{till}(x))t
+                         +e^{-\eta\operatorname{till}(x)}.
+\end{equation}
+Assume $0\le t\le R\chi(x)$; since $\chi(x)\to0$, the source
+small-price threshold holds for all sufficiently large $x$.
+Let $D_x$ be the number of source rows that can contribute to a fixed
+normal-residual coordinate; the four-dimensional row count gives
+$D_x\le C(1+B)^4$. Let $n_p$ bound the number of coordinates in a
+reader panel at radius $p$. There are finitely many color and local jet
+types, so the four-dimensional panel count gives
+$n_p\le C(1+p)^4\le C(1+B)^4$. The source assumptions
+include its proved fixed-row chart and path bounds, its actual and bare
+positive Gram gaps $\lambda,\Lambda>0$, their uniform row constants,
+and the finite inverse-window estimates from the canonical local
+covariance argument.  Then, for all sufficiently large $x$,
+uniformly in the period and in this same history,
+\begin{align}
+ |\mu_i-a_i|&\le x^{-7/8},
+ \label{eq:ex-lattice-reader-mean}\\
+ |((Q_V|_{W_i})^{-1})_{ji}-((Q_1|_{W_i^0})^{-1})_{\bar j\bar i}|
+      &\le x^{-1/4}.
+ \label{eq:ex-lattice-reader-column}
+\end{align}
+Here $a_i$ is the frozen stationary-response coordinate, $\mu_i$ is
+the actual local Gaussian mean, $Q_V$ and $Q_1$ are respectively the
+actual and identity-configuration row Gram matrices, $W_i$ is the
+actual reader panel, $W_i^0$ is its cleared counterpart, and bars
+denote the official-address bijection.  The matrices are not asserted
+to have equal entries.  The error in the second line is the local
+actual-to-cleared inverse-column comparison; the later covariance
+split that upgrades it to the full physical-tensor estimate is not part
+of this proposition.
+\end{proposition}
+
+\begin{proof}
+\emph{The nonlinear row error.}
+Set $m$ to be the frozen stationary response to $v$.  The exact
+first-order identity for each uncut row is
+\begin{equation}\label{eq:ex-lattice-frozen-row-cancel}
+ I_r(m)+F_r(v)=0,
+\end{equation}
+where $F_r(v)$ is the linear first variation and $I_r(m)$ is the
+corresponding flat pulse. Write $B_r(V)$ for the smooth base
+contribution and $P_r(V,m)$ for the marked nonlinear pulse. The
+selected row, after subtraction of its stationary linear part, is
+exactly
+\[
+ \Delta_r=s\bigl[(B_r(V)-F_r(v))+(P_r(V,m)-I_r(m))\bigr].
+\]
+To verify this row formula, restrict to the finite read stencil.
+Outer clearance makes every free bond there active, while the frozen
+response $m$ vanishes on tree bonds. Thus the marked direction agrees
+with $m$ throughout the stencil. The additional frozen-input field
+also vanishes there, so finite row dependence removes it from the
+selected row formula. No value outside the stencil is used.
+Indeed, the selected row is $s(B_r(V)+P_r(V,m))$, while
+\eqref{eq:ex-lattice-frozen-row-cancel} says $F_r(v)+I_r(m)=0$.
+Unselected rows vanish by the row mask.  This cancellation is made
+before taking absolute values.
+
+For the base difference, write $F_j$ for the actual transport factor
+at the $j$th position of a path and $H_j$ for its frozen linear
+factor. Expand their finite transport products by the exact
+telescoping identity
+\[
+ F_1\cdots F_m-H_1\cdots H_m
+ =\sum_{j=1}^mF_1\cdots F_{j-1}(F_j-H_j)H_{j+1}\cdots H_m.
+\]
+The local chart bounds each changed factor by the field size times its
+path length; summing the retained lengths gives
+$(1+\operatorname{till}(x))t$. The omitted paths contribute at most
+$e^{-\tau\operatorname{till}(x)}$. Thus
+$|B_r(V)-F_r(v)|\le A t\,\operatorname{widen}_x(t)$.
+For the pulse difference, first restrict the direction to the outer
+comparison ball of radius $B$. Finite row dependence makes the row
+insensitive to the discarded part. The pulse construction then cuts
+paths at $\operatorname{till}(x)$: its finite pulse bound is
+$Z(1+\operatorname{till}(x))t\|m\|$ and the weighted omitted-path
+bound is $Z e^{-\sigma\operatorname{till}(x)}\|m\|$. The carry
+estimate gives $\|m\|\le Xt$. Consequently, with
+$\eta=\min\{\tau,\sigma\}$,
+$|P_r(V,m)-I_r(m)|\le ZXt\,\operatorname{widen}_x(t)$.
+Combining these inequalities proves, for a constant $A_0$,
+\begin{equation}\label{eq:ex-lattice-row-delta}
+ |\Delta_r|\le A_0t\,\operatorname{widen}_x(t),
+ \qquad d(o,r)\le B/2.
+\end{equation}
+This derivation uses the same frozen response and the same outer
+cutoff for every row; it does not reset the gauge or history panel by
+panel.
+
+\emph{Normal residual and the mean.}
+Let $M$ denote the actual row operator, $\Pi_0$ the projection onto
+inactive coordinates, $A=M^*M+\Pi_0$, and let $r_0$ be the affine
+source vector with $\ell=M^*r_0$.  Let $\mathsf P$ be the padded
+principal inverse used by the local Gaussian mean. For the frozen
+candidate $a$, the selected affine residual is $r(a)=Ma+r_0$; on each
+selected row its coordinate is the change $\Delta_r$ estimated above.
+The exact normal
+residual identities are
+\begin{equation}\label{eq:ex-lattice-normal-residual}
+ \mu=-\mathsf P^*\ell,\qquad
+ \mu-a=E^*a-\mathsf P^*(Aa+\ell),\qquad
+ Aa+\ell=M^*r(a)+\Pi_0a,
+ \quad E=A\mathsf P-I.
+\end{equation}
+These are the same finite-dimensional identities as
+\eqref{eq:mean-error-identity}. The candidate $a$ is extended by zero
+outside the active coordinates, so $\Pi_0a=0$. All queried mean
+coordinates are active; no assertion that every globally inactive
+coordinate is a tree coordinate is used.
+Each contributing row entry of $M$ is bounded by a fixed constant
+$M_0$, and at most $D_x$ rows contribute.  Equation
+\eqref{eq:ex-lattice-row-delta} therefore gives
+\[
+ |(Aa+\ell)_j|\le D_xM_0A_0t\,\operatorname{widen}_x(t).
+\]
+The local inverse-column sum is bounded by $N_0$. The inverse-window
+estimate is used only at the queried central coordinate:
+$|(E^*a)_i|\le E_0e^{-sB}Xt$. No global operator-norm estimate for
+$E$ is asserted. Since $\|a\|_\infty\le Xt$,
+\eqref{eq:ex-lattice-normal-residual} implies
+\begin{equation}\label{eq:ex-lattice-focused-mean-bound}
+ |\mu_i-a_i|
+ \le N_0D_xM_0A_0t\,\operatorname{widen}_x(t)+E_0e^{-sB}Xt.
+\end{equation}
+In the row-Gram formulation used for the actual reader, let $Q$ be
+the row Gram matrix, $b$ its affine source, and $\nu_W=Q[W]^{-1}$
+extended by zero off the selected panel.  The corresponding exact
+identity is
+\[
+ -\nu_W^*b-a=(Q\nu_W-I)^*a-\nu_W^*(Qa+b),
+\]
+This form makes the local residual sum and the off-window tail
+separate.
+
+For the source payment $t\le R\chi(x)$. Thus
+$t\le C_R(1+B)^5\vartheta(x)$. Put
+$b_x=1+B$ and $\mathcal B_R(x)=16R3^5n_{\rm plaq}b_x^5$; then
+$R\chi(x)\le\mathcal B_R(x)\vartheta(x)$. With
+$u=x^{-1/2+1/32}$, the temperature and cutoff bounds give
+$t\le\mathcal B_R(x)u$ and
+$\operatorname{widen}_x(t)\le b_x\mathcal B_R(x)u+u$; both exponential
+tails are at most $x^{-1}$ eventually, since $B=\lceil(\log x)^2\rceil$ and
+$\operatorname{till}(x)$ is a fixed positive fraction of $B$ up to an
+additive constant. Thus fixed
+polynomials in $1+B$ are subpower in $x$.  The
+remaining factors are bounded by the explicit polynomial
+\[
+ Y(x)=N_0D_xM_0A_0\mathcal B_R(x)
+       \bigl(b_x\mathcal B_R(x)+1\bigr)
+       +E_0X\mathcal B_R(x).
+\]
+The source scale bounds give $D_x\le Cb_x^4$, so the displayed
+polynomial satisfies $Y(x)\le C'(1+B)^{15}\le x^{1/16}$ eventually.
+Hence the right side of
+\eqref{eq:ex-lattice-focused-mean-bound} is at most
+\[
+ Y(x)u^2\le x^{1/16}x^{-1+1/16}=x^{-7/8},
+\]
+which proves \eqref{eq:ex-lattice-reader-mean}.  These are exactly
+the price and widening estimates established in the local Gaussian
+source; $B$ remains the outer scale throughout.
+
+\emph{The inverse-column comparison.}
+The official-address map preserves physical anchors, row labels and
+the sector-membership test.  Its restriction to a panel is onto: a
+bare address in the panel is within outer distance $B$ of the cleared
+center, so the seed-dome exclusion makes it live in the actual store.
+Injectivity is immediate from the official map.  This proves the
+finite index bijection only; it does not identify matrix entries.
+
+For each matched pair of indices, the local row estimate gives an
+entrywise Gram bound.  For each row constant $A\ge0$, define
+\[
+ w_x(A,t)=A(1+\operatorname{till}(x))t,\qquad
+ \mathfrak m_x(A,t)=D_x\bigl((A+w_x(A,t))w_x(A,t)
+                                  +w_x(A,t)A\bigr).
+\]
+Set $w_x=w_x(A_1,t)$ and $\mathfrak m_x=\mathfrak m_x(A_1,t)$;
+then the entrywise error is at most $\delta_x=\mathfrak m_x$.
+The moving row differs by at most $w_x$ and the identity row is at
+most $A_1$.  Thus, term by term,
+\[
+ |a_{rj}a_{rk}-b_{rj}b_{rk}|
+ \le |a_{rj}|\,|a_{rk}-b_{rk}|
+      +|a_{rj}-b_{rj}|\,|b_{rk}|
+ \le (A_1+w_x)w_x+w_xA_1.
+\]
+At most $D_x$ rows contribute, proving the claimed entrywise bound
+$\delta_x$.  Let $n_p$ bound the number of coordinates in either
+panel.  For positive panel matrices with lower bounds $\lambda$ and
+ $\Lambda$, the ordinary resolvent identity gives
+\[
+ X^{-1}-Y^{-1}=X^{-1}(Y-X)Y^{-1},\qquad
+ |(X^{-1}-Y^{-1})_{ij}|
+       \le n_p^2\lambda^{-1}\delta_x\Lambda^{-1}.
+\]
+This is precisely the finite-window comparison; its two distinct
+spectral floors are both used.  The count $n_p$ is bounded by the
+number of colors times the local jet-slot count at radius $p$.
+
+The nonnegative panel charge is
+\[
+ \mathcal C_x=n_p^2\lambda^{-1}\mathfrak m_x\Lambda^{-1}.
+\]
+The local stencil count gives $n_p\le Cb_x^4$ and $D_x\le Cb_x^4$.
+Also $t\le Cb_x^5\vartheta(x)$ and
+$w_x\le Cb_x^6\vartheta(x)$.  Since $\vartheta(x)\le1$ eventually,
+the definition of $\mathfrak m_x$ yields
+$\mathfrak m_x\le Cb_x^{16}\vartheta(x)$ and hence
+$\mathcal C_x\le Cb_x^{24}\vartheta(x)$.  The subpower scale bound
+implies $Cb_x^{24}\le x^{1/8}$ for all sufficiently large $x$; the
+temperature bound is $\vartheta(x)\le x^{-1/2+1/8}=x^{-3/8}$.
+Their product is $x^{-1/4}$, proving
+\eqref{eq:ex-lattice-reader-column}. The source price is $R\chi(x)$;
+its fixed-multiplier inequality
+$\mathfrak m_x(A,R\chi(x))\le\mathfrak m_x(RA,\chi(x))$
+absorbs $R$ into the row constant before applying the source fare
+bound. This completes the panel comparison without treating the
+curved and bare Gram matrices as equal.
+\end{proof}

@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 09:45 UTC
+# Collaborative checkpoint — 12 November 2026, 11:10 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -7,11 +7,12 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Draft PR: <https://github.com/hairer/humanise-yang-mills/pull/35>.
+- Draft PR: <https://github.com/hairer/humanise-yang-mills/pull/36>.
 - Branch: `codex/existence-monograph`. Record the actual checkpoint commit in
-  your claim. Helper PRs target this branch; `main` does not contain the article.
+  your claim. Helper PRs target this branch. `main` contains the earlier
+  747-page checkpoint merged through PR #35; this branch continues that draft.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (747 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (809 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -30,6 +31,9 @@ certificate. Recheck every interface used by a new argument.
 | [#33: trace sensor and weighted Ward limit](https://github.com/hairer/humanise-yang-mills/issues/33) | `YM.Trace.Terrace.springs`, `Prosper`, `TraceExtension/Terrace/Lease.lean` | `manuscript/existence/trace-prosper-sensor.tex` |
 | [#34: branch moments and trace washout](https://github.com/hairer/humanise-yang-mills/issues/34) | `YM.Trace.Shelves.nearing_h`, `muteP`, `TraceExtension/Shelves/Pear.lean` | `manuscript/existence/trace-branch-moments.tex` |
 
+Both tasks were claimed externally on 12 November, through 13 November 10:00 UTC.
+Recheck their live discussions; do not start duplicate work.
+
 They own separate `YM-000033/` and `YM-000034/` blueprint records and are excluded
 from the parent claim and all subagents. Check live issues before claiming;
 this file is not a lock. Follow the repository and contributing human's claim
@@ -41,18 +45,15 @@ trace Crown/Eve/weighted/construction arguments. The parent retains integration.
 
 The #26 claim remains valid until **2026-11-12 16:40 UTC**:
 
-- Parent: integration and targeted missing joins. Newly integrated owner-energy
-  and corrected-body proofs have bounded independent passes. Public-history
-  attachment and tree covariance are integrated too.
-- `lattice_draft`: actual small-window mean and inverse-column producer, then
-  the common short-covariance cover. The earlier small-window version was held
-  because it assumed the estimates to be proved and equated unequal matrices.
-  The repair follows the actual source residual and two-floor resolvent proof.
-- `limits_draft`: actual guarded-curvature/read and Gaussian-mask estimates;
-  repairs requested for field types, phases, drift, and the actual vector mask.
-  The separate all-compatible-palette warning/Pupil join is queued afterward.
-- `independent_review`: independent mathematical/source checks and a bounded
-  refresh of remaining public rank/kernel producer interfaces.
+- Parent: integration and native endpoint closure audit. Global row/source,
+  short covariance, stress normalization, Maxwell Ward, slab-copy, corrected
+  detector moments and actual angular-action calibration have bounded passes.
+- `lattice_draft`: actual same-history shrinking-shell economics and the
+  annular Ward-field representation, newly exposed by the refreshed blueprint.
+- `limits_draft`: physical Ward propagation, shell/derivative commutators and
+  the actual nonzero charge scalar. Guard and all-Matched Pupil repairs now pass.
+- `independent_review`: independent mathematical/source checks and a refresh of
+  the remaining supplier map after the rank, equation and derivative joins.
 
 Each agent uses a separate clone and disjoint outputs. Do not begin neighboring
 work without checking the live claim. Main input order, metadata, review logs
@@ -67,16 +68,33 @@ original-history attachment, harvested owner energy and corrected unmarked
 alphabet/body identity. Bounded independent reviews and exact fingerprints are
 in `reviews/`; all retain their explicitly stated input hypotheses.
 
-The local Gaussian-price and uniform Dawn-selection candidates are preserved
-outside the PDF. They pass only conditional review and await their actual
-small-window/guard/short-cover producers. The two unintegrated centered-budget
-and centered-production files are historical alternative-route drafts.
+This checkpoint also integrates actual small-window and local Gaussian prices,
+common rank purchases, equation-ideal transport through arbitrary spectators,
+insertion/derivative comparisons, and native selector witness retention.
+Each has a bounded independent pass at its explicitly retained hypotheses.
+The finite-rank argument now explicitly invokes the common-cell spectator
+estimate before its smearing argument.
+
+This update adds the global actual row/source bounds, the common all-period
+short covariance, and the derivative/compact-jet/coherent-sign normalization
+argument. The free Maxwell collar Ward calculation has also passed bounded independent
+review and is included in this checkpoint. Physical annular Ward production
+remains in progress. This update also supplies uniform all-copy slab bounds,
+all powers of the actual corrected phase detectors, and the exact angular
+intertwiner/stress-averaging construction. The last retains the physical
+Ward-propagation inputs; detector moments retain the real-grid reflection input.
+
+Guarded curvature and uniform Dawn selection now appear in the PDF, as does
+the distinct all-Matched warning proof. The two unintegrated centered-budget and centered-production files
+are historical alternative-route drafts. Unfrozen work in agent clones is not
+represented as part of this PDF.
 
 ## Remaining closure and editorial work
 
-The working frontier includes quantitative reader production, all-compatible
-warning and same corrected-compiler purchases, common-history rank purchases,
-equation-kernel identification, physical trace sensor/branch receipts, and a
+The working frontier includes matching the retained paid local inputs to the
+same corrected-compiler history, actual physical shrinking-annulus Ward
+representation (held for substantive corrections), its physical charge
+propagation, real phase-grid approximants, trace sensor/branch receipts, and a
 complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
 questions; they do not establish every quantitative premise of every chapter.
 
@@ -98,13 +116,13 @@ expansion, package **all** unfinished mathematical, audit, review and editorial
 work into separate agent tasks, push that handoff, release parent scopes and stop
 both parent and subagents. The final pass is reserved for the maintainer's later
 request. This supersedes the earlier reset instruction. See `USAGE-HANDOFF.md`.
-Last check09:45UTC:58% remaining; next10:00UTC. No background monitor is installed.
+Last check10:58UTC:49% remaining; next11:13UTC. No background monitor is installed.
 
 ## Validation and provenance
 
 `python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
 mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds747 pages with no overfull boxes,
+-outdir=build manuscript/existence.tex` builds809 pages with no overfull boxes,
 undefined references or missing glyphs. New pages received sampled visual QA;
 exact commands, samples and earlier failed layout attempts are in `validation.md`.
 No fresh Lean build/axiom replay; inherited source evidence has its own limits.

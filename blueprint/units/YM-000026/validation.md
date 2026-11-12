@@ -257,3 +257,54 @@ fresh axiom replay or Lean edits. Mathematical reviews are bounded conditional
 agent reviews; human acceptance and full dependency closure remain outstanding.
 Live main compared to fa705098efc07df2e54746b22893b5d26b515988 at09:41: identical.
 Issue26 was reread on resume; no overlapping new claim found.
+
+## 2026-11-12 10:21 UTC — 767-page checkpoint
+
+LaTeX builds succeeded at 757,765,767 pages. The 757 build had a 10.96pt
+small-window geometry display overflow; the inequalities were reflowed, and the
+independent reviewer confirmed mathematical carry. Final 767-page PDF is3,926,799
+bytes. Its final existence.log has no overfull boxes, undefined references or
+missing glyphs. `python3 scripts/check_blueprint.py` passed after derivative import;
+rerun with final native-binding metadata before commit. Rendered26 pages
+(602–607,670–685,763–766) with pdftoppm, scale1100; inspected five contact sheets
+under /private/tmp/ym-qa768. No clipping, overlap or display overflow observed at
+this resolution. Directory name768 is incidental; actual PDF has767 pages.
+Copied bounded independent review logs, preserving parent reviews. No fresh
+Lean build or axiom replay and no Lean changes. Usage10:15UTC55% remaining;
+claim and live issue26 rechecked on resume; independent trace claims respected.
+
+## 2026-11-12 10:50 UTC — 783-page checkpoint
+
+Actual latexmk builds succeeded at 771, 776, 779 and 783 pages. Final PDF is
+3,999,327 bytes; existence.log has no overfull boxes, undefined references or
+missing glyph diagnostics. Rendered 18 pages (275–278,606–610,674–678,710–713)
+with pdftoppm at scale1300 and visually inspected all three contact sheets
+in /private/tmp/ym-qa783. No clipping, overlap or oversized displays observed
+at overview resolution. Samples cover global rows, short covariance, Maxwell
+Ward flux, and stress normalization. Bounded independent review logs copied
+from the review clone; parent-authored review records preserved separately.
+Structural checker and whitespace check rerun before commit. No Lean edits,
+fresh Lean build or axiom replay. New native symmetry-propagation obligations
+remain open; this artifact is not a whole-proof closure certificate.
+
+## 2026-11-12 11:10 UTC — 809-page checkpoint
+
+Actual latexmk builds succeeded at 796, 799 and 809 pages after integration
+of guard/Dawn/slab, detector powers, and angular/Pupil packages. First guard
+build failed at an unescaped underscore in source-helper wording and had
+two long displays/prose overflows. Replaced that wording by ordinary mathematics
+and reflowed the displays; the reviewer checked exact editorial carry.
+Final PDF is 4,116,812 bytes. Final log has no overfull boxes, undefined
+references or missing glyphs. Rendered 20 pages from the 799-page intermediate
+(143–147,619–629,701–704) at scale1100; viewed all four contact sheets in
+/private/tmp/ym-qa799. Rendered 12 added Pupil/angular pages from the 809-page
+PDF (282–287,734–739) at scale1300; viewed both sheets in /private/tmp/ym-qa809.
+No clipping, overlaps or excessive displays seen at overview resolution.
+The earlier samples retain their reviewed content although pagination shifts.
+
+Structural checker passed after final manuscript metadata addition; whitespace
+check rerun before commit. Restored prior metadata list order to avoid unrelated
+reordering. Live issues26/33/34 reread before submission: parent claim unchanged;
+external trace claims still active. No fresh Lean build/axiom replay or source
+edits. Reviews are bounded, conditional agent passes; global proof closure and
+human acceptance remain outstanding. Weekly usage10:58UTC49% remaining.

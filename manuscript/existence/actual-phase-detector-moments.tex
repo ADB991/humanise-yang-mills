@@ -1,0 +1,197 @@
+\section{All powers of the corrected phase detectors}
+\label{sec:actual-phase-detector-moments}
+
+The rank comparisons must survive passage to a phase. A bound on the
+unselected one- and two-point functions is insufficient: we need bounds
+on every power of the complete corrected operators. We now obtain those
+bounds from the same finite-cutoff corrected root estimates.
+
+Retain the hierarchy, its reflection-positive Hilbert space, the bounded
+slab operators, and their ground-space compressions $M(w)$ from
+Section~\ref{ex-phases}. We use their permutation, empty-word and adjoint
+laws, the separated-cluster limit of Lemma~\ref{ex-cluster-train}, and
+the reflected-word identification established by the real phase-grid
+comparison. In particular, if $\bar w$ denotes ordinary conjugation of
+all labels without reflecting its points, then
+\begin{equation}\label{eq:episode-conjugate}
+                         M(\bar w)=M(w)^*.
+\end{equation}
+This last identity is a substantive input: reverse the order using
+permutation invariance, apply the reflected-word identification, and
+then the slab-adjoint law. The real phase-grid producer must supply that
+identification on this same hierarchy.
+
+Fix a grade and one of the comparison trials of
+Section~\ref{sec:actual-rank-purchases}. Write $k$ for its grid depth,
+$b\leq k$ for its root-test depth, and $g\geq0$ for its corrected root
+price. At its finitely many row sites $x_j$ let $f_j^{N,p}$ be the
+actual cutoff insertion with the trial's lifted label. Along the
+selected mesh-then-period order those labels converge to labels $f_j$
+on the same hierarchy. Write $a_j$ for the prescribed free one-point
+value, and $\kappa_{jh}$ for the prescribed connected pair value.
+The trial supplies chamber interiority and, for every $\varepsilon>0$,
+eventually in that order,
+\begin{align}
+ \|f_j^{N,p}-a_j\|_{\mathrm{root},b}&\leq g+\varepsilon,
+                                                        \label{eq:episode-root-one}\\
+ \|(f_j^{N,p}-a_j)(f_h^{N,p}-a_h)-\kappa_{jh}\|_{\mathrm{root},b}
+       &\leq g+\varepsilon\quad(j<h).                   \label{eq:episode-root-two}
+\end{align}
+These are the corrected polynomial estimates purchased before extraction,
+not estimates of a product of uncorrected root norms. Constant functions,
+sums and products preserve the chamber-interior property, so it also
+holds for the displayed corrections.
+
+\subsection{A finite polynomial with coupled cutoff and limiting labels}
+
+Consider a finite sum of words
+\[
+ Z^{N,p}(u)=\sum_{\alpha=1}^L c_\alpha
+     \prod_{j=1}^{n_\alpha}
+       f_{\alpha j}^{N,p}(x_{\alpha j}+u),
+ \qquad Z=\sum_{\alpha=1}^L c_\alpha M(w_\alpha).
+\]
+Each word uses sites on the depth-$k$ grid that are generic: in every
+coordinate its distinct slots have distinct coordinates. Different words
+in the sum may share sites. Empty words are allowed and represent the
+constant $1$ at both cutoff and limit. The coefficients $c_\alpha$ are
+fixed before the cutoff limits. Each cutoff label converges in the
+selected order to the label of the corresponding slot of $w_\alpha$.
+We call this coupled finite list a polynomial packet. Suppose its
+cutoff polynomial at $u=0$ is chamber-interior and has root price at most
+$g+\varepsilon$ at depth $b$, eventually for every $\varepsilon>0$.
+
+For $q\in\mathbb N$ and integers $t\geq1$ place $2q$ translates of this whole polynomial at
+physical displacements
+\[
+                   u_j(t)=2ta_bj(1,1,1,1),\qquad 0\leq j<2q.
+\]
+These are depth-$k$ grid displacements because $b\leq k$ and the scales
+are aligned. All coarse cell addresses are even in every coordinate.
+Consequently copying from the home cell to them is ordinary translation,
+without a reflection or conjugation of the copied polynomial. At even
+$j$ use $\overline{Z^{N,p}}$, and at odd $j$ use $Z^{N,p}$.
+Conjugation does not change a root price: it conjugates the full copied
+product and its expectation, preserving its absolute value.
+
+For each fixed $t,q$, sufficiently large periods make the $2q$ cell
+addresses distinct. Indeed $2t(2q)$ not exceeding the coarse period
+suffices; reducing modulo that period is then injective on the chosen
+addresses. The planted inequality on the same Wilson law gives
+\begin{equation}\label{eq:episode-cutoff-power}
+ \left|\mathbb E_{N,p}
+       \prod_{j=0}^{2q-1}
+       \begin{cases}
+        \overline{Z^{N,p}(u_j(t))},&j\ \text{even},\\
+        Z^{N,p}(u_j(t)),&j\ \text{odd}
+       \end{cases}\right|
+                    \leq(g+\varepsilon)^{2q}.
+\end{equation}
+The assertion is eventual in period and then in the mesh tail at that
+period. It makes no claim at periods too small to hold the distinct
+copies. For $q=0$ both sides equal $1$.
+
+Expand the product into its finitely many choices of a monomial for
+each of the $2q$ packets. Within each chosen monomial the slots are
+generic. Between slots in different packets, equality of any one
+coordinate is an affine equation in $t$ with nonzero slope, since their
+packet indices differ. It excludes at most one value of $t$. There
+are finitely many slot pairs, coordinates and monomial choices. Thus
+all sufficiently large $t$ make every expanded configuration generic.
+For each such fixed $t$, take the fine-mesh and period limits in their
+prescribed order. The same limiting labels are used in every term.
+Ordinary conjugation of a cutoff insertion agrees with conjugation of
+its label once its fixed reference depth is admitted. Convergence of
+these conjugated labels follows from continuity of conjugation.
+The point-limit theorem therefore applies term by term. At finite
+cutoff the integrands are continuous on the compact configuration
+space, so their finite sums are integrable and expansion under the
+integral is legitimate. This proves a limiting finite sum $P_q(t)$
+with
+\begin{equation}\label{eq:episode-first-limit}
+                    |P_q(t)|\leq(g+\varepsilon)^{2q}
+\end{equation}
+for all sufficiently large $t$.
+
+Now let $t\to\infty$. The time-coordinate separation between packets
+$j<h$ is $2ta_b(h-j)\to\infty$. The separated-cluster theorem permits
+the simultaneous spatial translations used here. Apply it to each
+expanded monomial, retaining the order of its packets. By
+\eqref{eq:episode-conjugate}, the even packets converge to adjoints of
+their compressed whole-word operators. Summing the finitely many
+terms gives
+\[
+       P_q(t)\longrightarrow
+       \langle\Omega_0,(Z^*Z)^q\Omega_0\rangle.
+\]
+This is simply expansion of the ordered product
+$Z^*Z\cdots Z^*Z$; commutativity is not needed for this identification.
+Take real parts in \eqref{eq:episode-first-limit} and then let
+$\varepsilon\downarrow0$. We have proved
+\begin{equation}\label{eq:episode-all-powers}
+  \langle\Omega_0,(Z^*Z)^q\Omega_0\rangle\leq g^{2q}
+                    \qquad(q=0,1,2,\ldots).
+\end{equation}
+The left side is real and nonnegative. The order of limits was:
+fix $q,\varepsilon$; fix sufficiently large $t$; take the cutoff
+limits; take $t\to\infty$; finally take $\varepsilon\downarrow0$.
+No uniform-in-$q$ cutoff threshold or interchange of those limits
+has been used.
+
+\subsection{The two actual corrected polynomials}
+
+Apply this result first to the two-term packet with coefficients $1,-a_j$
+and words $[f_j],\varnothing$. Its cutoff polynomial is exactly
+$f_j^{N,p}-a_j$, and its compressed limit is
+\[
+                           D_j=M(f_j)-a_jI.
+\]
+Use the actual trial's lifted labels at cutoff and its limiting labels
+in the compressed word. Genericity is inherited from the trial's row.
+Thus \eqref{eq:episode-root-one} supplies the required root bound.
+
+For $j<h$ use the four words
+$[f_j,f_h],[f_h],[f_j],\varnothing$ with coefficients
+$1,-a_j,-a_h,a_ha_j-\kappa_{jh}$. The finite-cutoff polynomial is
+\[
+ f_j^{N,p}f_h^{N,p}-a_j f_h^{N,p}-a_h f_j^{N,p}
+                  +a_ha_j-\kappa_{jh}
+       =(f_j^{N,p}-a_j)(f_h^{N,p}-a_h)-\kappa_{jh}.
+\]
+Its compressed limit is the entire operator
+\[
+ D_{jh}=M(f_jf_h)-a_jM(f_h)-a_hM(f_j)
+                         +(a_ha_j-\kappa_{jh})I.
+\]
+The two-slot monomial uses the actual distinct row slots $j,h$ even
+when their labels coincide or one is the unit. Its genericity follows
+from that of the row; no removal or renaming of slots is required.
+Equation~\eqref{eq:episode-root-two} therefore applies. We obtain
+\eqref{eq:episode-all-powers} for both $D_j$ and $D_{jh}$ with the
+same $g$.
+
+The ground algebra has the full-support spectral measure constructed
+in Section~\ref{ex-phases}. Lemma~\ref{ex-character-moments} now gives,
+for every character $\chi$,
+\[
+              |\chi(D_j)|\leq g,\qquad |\chi(D_{jh})|\leq g.
+\]
+Hence its phase correlations obey
+\[
+ |S_\chi(f_j)-a_j|\leq g,\qquad
+ |S_\chi(f_jf_h)-(\kappa_{jh}+a_ja_h)|
+                  \leq g(1+|a_j|+|a_h|).
+\]
+These estimates hold at every comparison trial and for every character,
+including characters in null sets for the representing measure. Along
+the purchased trials $g\to0$ and the one-point comparison values are
+bounded, by continuity of the free correlations at the limiting test
+configurations. The finite separating tests and the eventual spanning
+property of the same limiting lifts are those retained in the rank
+construction. The finite-dimensional argument of
+Proposition~\ref{ex-no-new-null} consequently applies in each grade:
+for every represented phase whose correlations respect the original
+null relations, its null space equals that of the original hierarchy.
+This proves the detector-moment input to phase retention, conditional
+on the stated slab, reflected-word and same-trial inputs; it does not
+construct a missing reflected-word identification.

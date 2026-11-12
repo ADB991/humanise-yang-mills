@@ -1067,3 +1067,91 @@ passes but remain outside the PDF until their exact small-window/guard/short-cov
 inputs are integrated. This is not complete-proof certification. Source main has
 not changed since the previous blueprint check. See current CHECKPOINT and
 USAGE-HANDOFF for active assignments and the maintainer's stop condition.
+
+## 12 November, 10:21 UTC — actual reader, rank and relay checkpoint
+
+Integrated actual-reader-small-window-bridge and actual-reader-local-gaussian-prices;
+actual-rank-purchases; actual-equation-kernel-relay; actual-insertion-derivative-relay;
+public-run-binding. Their adjacent evidence files give the exact pinned declarations,
+normalizations and retained hypotheses. The independent agent recorded bounded
+source and mathematical passes, including explicit margins, two-floor resolvent,
+common readout, all-spectator planting, derivative shift purchase and actual native
+selector witness retention. Finite-rank-kernel-transport now explicitly invokes
+the source Lease.take spectator bridge; parent review records that consumer repair.
+The manuscripts remain drafts, with machine review fields unset. Actual global
+weighted row/source production, all-Matched Pupil, short covariance, guarded reader,
+external trace scopes and global dependency closure remain in progress.
+## 2026-11-12 10:45 UTC — refreshed nonlinear notes and actual stress frontier
+
+Read the updated nonlinear and rank interface notes from upstream main
+`5535cc1579029c69155b0d0a89c13b819bf0f5f1`. These notes are navigation evidence;
+the Lean pin remains `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+The maintainer merged PR #35 at `660cada`; continued work is draft PR #36.
+
+The nonlinear note's additional suppliers have the following current canonical
+homes, at their explicitly retained hypotheses:
+
+| Source obligation | Canonical exposition/evidence |
+| --- | --- |
+| `Brim.pressings` beyond the four headline estimates | `nonlinear-singleton-inheritance.tex`; earlier bounded source review recorded above |
+| `Height.season`, `Height.beneath/haste`, `March.takeover`, `Armada.ensemble` | `high-degree-cluster-prices.tex`, including the common-field Cauchy--Schwarz bridge; graded component suppliers remain explicit |
+| `Boulevard.emits` and the full `Portaged` clauses | `small-field-budget-selection.tex` plus `healthy-boundary-jets.tex`; `stationary-small-field-evidence.md` |
+| `Yearling.brine/batten/sterling` | `parameter-comparison-suppliers.tex`, `finite-volume-parameter-continuity.tex`, `parameter-continuity-evidence.md` |
+| `Roof.ensures` | `small-field-budget-selection.tex` and the actual return in `selected-nonlinear-offering.tex` |
+| `Pane.school` / `Morning` | `pure-action-small-field.tex`, `uniform-stationary-chart.tex`, `stationary-action-prices.tex`, and their actual auxiliary application in `selected-nonlinear-offering.tex` |
+| `Roof.honey` / `WorksIn` simultaneous purchase | `common-funded-history.tex`; the four constituent estimates above are needed separately |
+
+This pass directly reread `Roof/Honey.lean`, `Boulevard/Dawn.lean`, and
+`Pane/Calls.lean` under `Lean/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`,
+as well as the cited evidence and the relevant canonical prose. `WorksIn`
+has chip/year/terms/plaza, not just `Sheltered`; `Pane.Morning` is an
+all-auxiliary-tube statement retaining the actual critical branch, classical
+match, finite quadratic bound, path bounds and Cash. `Pane.shouts` invokes
+the actual uniform stationary graph and `Shellac.erudite`; these inputs are
+not obtained from a delay maximum alone. The updated note therefore does
+not justify suppressing those retained hypotheses. No new global dependency
+closure certificate is claimed by this correspondence table.
+
+The rank note revealed a genuine additional native dependency: `Run.extractible17`
+constructs `Aroma R.family` before `Acme.readyA`, which needs the shrinking-shell
+annular field representation. This is assigned to the isolated lattice agent.
+The parent drafted the separate exact `Focus/Local/Limit` derivative-convergence,
+compact-jet and coherent-sign normalization join; its final `f4c1cebb58e543351f2b59c37a9aedbc70ce4362fb85827e2cffedc428ba1be9`
+passed bounded independent review. The exact free Maxwell collar Ward producer
+was also found missing and is now a separate review candidate. These are on
+the actual native path, not the alternate `SharpGram` witness.
+
+Integrated bounded-reviewed global row prices `c44170404157e5315b4785f2d64bc33ae0afbabfbe0511ccae5b7cfac0cded7c`
+and all-period short covariance `3482d873b406659f9cd5686eccdb76ef280c7f77007980c7193bbc472c364664`.
+Their adjacent evidence files state the exact global/local and all-period
+quantifiers and remaining inputs. No Lean source changes, fresh Lean build
+or axiom replay were performed. Whole-proof and human acceptance remain open.
+
+The free Maxwell collar Ward producer is now integrated at TeX fingerprint
+`66d6a6671deec2afa2f09e52f2164f6f3475090fc5a01147dea4db1bcb10e27a`
+and evidence fingerprint
+`91b9529dfe0be655b8251b7c554956c85c94f29fd705a0a2328df69f1251b16a`.
+Its bounded independent pass checks regulator mass/sign, the three Wick-pair
+locations, normalized jets, and the same native Maxwell witness. This does not
+supply the physical annular representation or its propagation to integrated
+physical symmetry actions; the endpoint audit identifies those separately.
+
+## 2026-11-12 11:10 UTC — actual reader and phase/symmetry joins
+
+Integrated guarded curvature at c740f410 (layout-only carry from f2fc9a53),
+uniform Dawn selection at its previously reviewed fingerprint, all-Matched
+Pupil at 368bd695, slab-copy bounds at 3221838d, corrected phase-detector
+moments at 5c9df3d7 (q in N clarified), and angular actions at c244c72a.
+Adjacent evidence and independent review logs record exact source scope.
+Dawn's same-history covariance binding was independently checked; guard
+now supplies its power-small mask input. Exact sharper reserve wording
+remains scoped in guard rather than claimed as a different estimate.
+
+Slab production proves Bench/AllCopy from CellHyp with two-scale exterior
+group roots and replica-independent constants. Detector moments prove
+B15–B18/Funds from the actual corrected trial polynomials and retain the
+real-grid reflected-word identity. Angular actions prove the same-Q
+relative-Casimir correction, actual rotation laws and normalized Haar
+stress average; physical Ward propagation and its same-Track comparisons
+remain explicit inputs. The held physical-annulus draft is not integrated.
+These bounded passes do not certify global closure or human acceptance.

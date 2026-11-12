@@ -1,0 +1,315 @@
+\section{Calibrating the physical rotation action}
+\label{sec:physical-angular-actions}
+
+We construct the rotation action on the physical field spaces from the
+actual angular Ward maps. Equal dimensions of the physical and reference
+spaces would not supply this action. The essential step is to correct an
+approximate intertwiner while preserving the real structure and signed
+coordinate symmetries.
+
+Write $E_d$ and $E_d^0$ for the finite-dimensional complex physical and
+reference field spaces at grade cap $d$. Retain the actual derivative maps $\partial$, the conserved
+stress $J$, its translation charges $p$, and its angular maps $Y$.
+The physical Ward propagation argument supplies one real $c\ne0$ such
+that $p=c\partial$ at every cap. Put $D=c^{-1}Y$. Its output also
+supplies the global angular Ward identity for $D$, the Lie-bracket
+identity
+\[
+                 [D_d(A),D_d(B)]=D_d([A,B]),
+\]
+and compatibility with conjugation, signed motions and inclusions.
+These are the inputs from the physical shell argument, distinct from the
+reference Maxwell Ward calculation.
+
+On the reference spaces keep the fixed continuous rotation representation
+$R_d^0$ and its infinitesimal maps $C_d$. Its reference stress has Ward
+coefficient $\kappa\ne0$, with the fixed value $-1$ in
+Section~\ref{sec:free-maxwell-ward-flux}. The reference action and its
+Lorentz companion are the ones attached to that same free hierarchy.
+We do not replace either representation when calibrating the physical one.
+
+\subsection{The scalar normalization on a common comparison sequence}
+
+Fix $d$. The finite-request comparison gives, on one sequence, complex-linear isomorphisms
+$U_{n,e}:E_e^0\to E_e$, radii $r_n>0$ and stress normalizers $\xi_n>0$.
+Choose it sufficiently rich to include the derivative test at cap $4$,
+the translation-charge test there, the angular tests at cap $d$, and
+the real/signed compatibility at $d$. One can do this by taking the
+maximum of the finitely many requested caps, arities, derivative orders
+and compact radii before invoking the comparison. This is the common
+finite-request construction of
+Section~\ref{sec:actual-stress-normalization}; the shell-charge limits
+are supplied by the physical Ward comparison.
+
+Transport both source and target of the derivative maps through these
+same $U_{n,e}$. Denote the transported cap-$4$ derivative array,
+multiplied by $r_n$, by $A_n$. The two limits just specified say
+\[
+        A_n\longrightarrow A^0\ne0,\qquad
+        (c/\xi_n)A_n\longrightarrow\kappa A^0.
+\]
+The nonzero derivative array is the fixed reference test. Choose a real
+linear functional $\lambda$ on the finite-dimensional array space with
+$\lambda(A^0)\ne0$. Then $\lambda(A_n)\ne0$ eventually, and division
+gives
+\begin{equation}\label{eq:angular-scalar-ratio}
+ \frac c{\xi_n}
+  =\frac{\lambda((c/\xi_n)A_n)}{\lambda(A_n)}
+                         \longrightarrow\kappa.
+\end{equation}
+In particular no unproved lower bound on $\xi_n$ is required.
+The angular comparison is
+\[
+ \xi_n^{-1}U_{n,d}^{-1}Y_d(A)U_{n,d}
+                             \longrightarrow\kappa C_d(A).
+\]
+Multiplying by $(c/\xi_n)^{-1}$ and using
+\eqref{eq:angular-scalar-ratio} proves
+\begin{equation}\label{eq:angular-transport-limit}
+ B_n(A):=U_{n,d}^{-1}D_d(A)U_{n,d}\longrightarrow C_d(A).
+\end{equation}
+Only finitely many generating planes are needed at this stage. The
+maps $U_{n,d}$ commute with conjugation and the signed actions.
+Their convergence is neither required nor asserted.
+
+\subsection{An exact intertwiner from nearby infinitesimal matrices}
+
+We give the finite-dimensional argument used with
+\eqref{eq:angular-transport-limit}. Let $E=E_d^0$ and write
+$K_{ab}=e_ae_b^{\mathsf T}-e_be_a^{\mathsf T}$ for the ordered plane
+generators, including $K_{aa}=0$. Index them by $i=(a,b)$. For every
+pair choose an axis $h$ distinct from $a,b$. Direct multiplication gives
+\[
+ [K_{ah},K_{hb}]=K_{ab}.
+\]
+Thus the corresponding matrices $B_{n,i}$ and $C_i$ obey a fixed family
+of perfect-commutator identities $B_{n,i}=[B_{n,l(i)},B_{n,r(i)}]$,
+and similarly for $C_i$. On $\operatorname{End}_{\mathbb C}(E)$ put
+\[
+ T_{n,i}(F)=B_{n,i}F-FC_i,\qquad T_i(F)=C_iF-FC_i,
+ \qquad L_n=\sum_iT_{n,i}^2,\quad L=\sum_iT_i^2.
+\]
+Left and right multiplication commute, so the $T_{n,i}$ satisfy the
+same perfect identities. In fact the full Lie-bracket relations give
+\begin{equation}\label{eq:angular-casimir-commutes}
+                        [L_n,T_{n,i}]=0.
+\end{equation}
+For completeness, the plane bracket formula is
+\[
+ [K_{ab},K_{ij}]=\delta_{bi}K_{aj}-\delta_{bj}K_{ai}
+                      +\delta_{ai}K_{jb}-\delta_{aj}K_{ib}.
+\]
+Insert this in
+$[T_{ab}^2,T_{ij}]=T_{ab}[T_{ab},T_{ij}]+[T_{ab},T_{ij}]T_{ab}$
+and sum over the ordered pairs $(a,b)$. The four resulting sums cancel
+in pairs after exchanging their repeated indices and using
+$T_{ba}=-T_{ab}$. This proves \eqref{eq:angular-casimir-commutes}
+for the relative representation too.
+
+First construct a real polynomial $q$ such that $P=q(L)$ is a projection,
+$P(I)=I$, and $T_iP=0$ for every $i$. Average any positive-definite real
+inner product on $\operatorname{End}_{\mathbb C}(E)$ under
+$F\mapsto R_d^0(K)F R_d^0(K)^{-1}$, using probability Haar measure on
+the compact group $O(4)$. The average is positive definite: for a
+nonzero vector the integrand is positive at the identity and, by
+continuity, on a nonempty open set of positive Haar measure. It is
+invariant by Haar translation. Differentiating that invariance makes
+each $T_i$ skew for the averaged form $\langle\cdot,\cdot\rangle_0$.
+Consequently
+\[
+       \langle LF,F\rangle_0=-\sum_i\langle T_iF,T_iF\rangle_0,
+       \qquad \ker L=\bigcap_i\ker T_i.
+\]
+Moreover $L^2F=0$ implies $LF=0$: the displayed kernel identity gives
+$T_iLF=0$, and skewness then gives
+$\langle LF,LF\rangle_0=\sum_i\langle T_i^2F,LF\rangle_0=0$.
+
+Cayley--Hamilton provides a nonzero polynomial annihilating $L$.
+Starting with $Lp(L)=0$, divide out factors of the variable as long as
+$p(0)=0$. If $p(X)=Xh(X)$, then $L^2h(L)=0$ implies $Lh(L)=0$ by the
+preceding implication, applied to every vector. Eventually a polynomial
+with nonzero constant term remains. Normalize it to obtain
+$q(0)=1$ and $Lq(L)=0$. Since $q(L)$ is the identity on $\ker L$,
+it is a projection onto that kernel. The identity matrix belongs to
+this kernel, so $P(I)=I$. This proof also covers $E=\{0\}$.
+
+Let $\mathcal F$ be the closed real vector space of endomorphisms of $E$
+commuting with the reference signed actions and conjugation. The identity
+belongs to $\mathcal F$. Every $L_n$ preserves $\mathcal F$.
+Indeed, a signed coordinate transformation permutes the ordered planes
+and multiplies each by a sign. Both $B_{n,i}$ and $C_i$ acquire the same
+sign, so it cancels in $T_{n,i}^2$ and the sum is unchanged. Conjugation
+commutes with both matrix families; since the polynomial coefficients
+are real, it commutes with all subsequent polynomial operations too.
+It follows that $P_n=q(L_n)$ preserves $\mathcal F$, commutes with
+every $T_{n,i}$, and converges to $P$.
+
+The $P_n$ need not be projections. Correct them by the polynomial
+iteration
+\[
+       Z_{j+1}=3Z_j^2-2Z_j^3,\qquad Z_0=P_n.
+\]
+For $e(Z)=Z^2-Z$ the exact identities are
+\[
+ Z_{j+1}-Z_j=(I-2Z_j)e(Z_j),\qquad
+ e(Z_{j+1})=(4e(Z_j)-3I)e(Z_j)^2.
+\]
+Here is a uniform convergence estimate. Choose $A>\|P\|$ and
+$C>\|I\|+2A$. For sufficiently large $n$, put
+$\varepsilon_n=\|e(P_n)\|$; then
+\[
+ \|P_n\|+2C\varepsilon_n\leq A,\qquad
+ (4\varepsilon_n+3\|I\|)\varepsilon_n\leq\tfrac12.
+\]
+Induction using the two identities gives
+$\|e(Z_j)\|\leq2^{-j}\varepsilon_n$ and
+$\|Z_{j+1}-Z_j\|\leq C2^{-j}\varepsilon_n$.
+Their sum keeps $\|Z_j\|\leq A$, closing the induction. Thus
+$Z_j\to Q_n$, with $Q_n^2=Q_n$ and
+$\|Q_n-P_n\|\leq2C\varepsilon_n$. In particular $Q_n\to P$.
+Closedness preserves the constraints: $Q_n$ preserves $\mathcal F$
+and commutes with all $T_{n,i}$.
+
+The restricted operators $T_{n,i}Q_n$ satisfy the same perfect identities,
+since $Q_n$ is idempotent and commutes with them. They converge to
+$T_iP=0$. Let $m_n=\max_i\|T_{n,i}Q_n\|$. The perfect identities give
+$m_n\leq2m_n^2$. Eventually $m_n<1/2$, hence $m_n=0$. Therefore
+\[
+                        T_{n,i}Q_n=0\quad\text{for every }i.
+\]
+Apply $Q_n$ to the identity matrix and set $F_n=Q_n(I)$. Then
+$F_n\in\mathcal F$, $F_n\to I$, and
+$B_{n,i}F_n=F_nC_i$. For one sufficiently late $n$, $F_n$ is invertible
+by the Neumann series. Thus
+\begin{equation}\label{eq:angular-exact-intertwiner}
+              Q_d=U_{n,d}F_n:E_d^0\longrightarrow E_d
+\end{equation}
+is an isomorphism preserving reality and signed motions, and
+$D_d(A)Q_d=Q_dC_d(A)$ for every skew matrix $A$.
+To pass from planes to all $A$, use the exact spanning identity
+$A=\frac12\sum_{a,b}A_{ab}K_{ab}$. No complete reducibility or
+unitarity of the deformed matrices was assumed.
+
+\subsection{The physical action and its compatibility}
+
+Choose one map \eqref{eq:angular-exact-intertwiner} in each cap and define
+\[
+                         R_d(K)=Q_dR_d^0(K)Q_d^{-1}.
+\]
+It is a continuous representation of all of $O(4)$, preserves the real
+structure, agrees with the prescribed signed action, and has derivative
+$D_d(A)$ along $\exp(tA)$ at zero. The group law moves this derivative
+to every $t$. The choices of $Q_d$ need not commute with inclusions.
+
+For arbitrary distinct points and field labels, differentiate
+\[
+ t\longmapsto S(R_{d_1}(e^{tA})v_1,\ldots,
+                     R_{d_n}(e^{tA})v_n;e^{tA}x_1,\ldots,e^{tA}x_n).
+\]
+Joint differentiability follows by expanding the labels in finite bases:
+the expression is a finite sum of smooth position coefficients times
+multilinear coordinate products. The chain rule gives the global angular
+Ward expression for $D$, which is zero. Thus the function is constant.
+Simultaneous covariance holds for every one-parameter rotation and also
+for signed transformations. The set of transformations for which it
+holds is a subgroup, by composition and inversion. Plane rotations
+generate $SO(4)$, and a signed reflection supplies its other component,
+as in the group-generation argument of
+Section~\ref{sec:lorentz-covariance}. Hence covariance holds for all $O(4)$.
+
+The unit, inclusions and derivatives are now compatible with this actual
+action. For the unit, test $R_d(K)1$ against any separated spectator word,
+move all labels and positions back by $K^{-1}$, and delete the unit using
+the original unit law. Move the remaining word forward again. The result
+is the test of $1$, so faithfulness of the physical quotient gives
+$R_d(K)1=1$. For an inclusion $\iota_{de}$, the identical argument uses
+the original inclusion identity at the moved configuration and yields
+\[
+                     R_e(K)\iota_{de}=\iota_{de}R_d(K).
+\]
+Finally differentiate the covariance identity in the coordinate of the
+head insertion, keeping arbitrary spectators. The ordinary linear chain
+rule and the original derivative identity give
+\begin{equation}\label{eq:angular-derivative-vector}
+ R_{d+1}(K)\partial_a v
+                  =\sum_i K_{ia}\partial_i(R_d(K)v).
+\end{equation}
+Again all-spectator faithfulness converts equality of correlations into
+an identity of field classes. This proves the full physical Euclidean
+action laws rather than merely laws at each isolated cap.
+
+\subsection{Normalizing and averaging the stress}
+
+First replace $J$ by $J_0=c^{-1}J$. Linearity of the collar flux makes
+its translation charge exactly $\partial$ and its angular charge exactly
+$D$. The tensor remains real, symmetric and divergence-free. To make it
+transform tensorially under the action just constructed, define
+\[
+ (\mathcal R_KJ_0)_{ab}
+               =\sum_{i,j}K_{ai}K_{bj}R_4(K)(J_{0,ij}),
+ \qquad \widehat J=\int_{O(4)}\mathcal R_KJ_0\,dK.
+\]
+This integral is in the finite-dimensional space $E_4^{16}$, with
+probability Haar measure. Its integrand is continuous. The group law
+gives $\mathcal R_K\mathcal R_L=\mathcal R_{KL}$, so Haar invariance
+implies $\mathcal R_K\widehat J=\widehat J$ and hence
+\[
+        R_4(K)\widehat J_{ij}
+                    =\sum_{a,b}K_{ai}K_{bj}\widehat J_{ab}.
+\]
+The average is real and symmetric. Equation~\eqref{eq:angular-derivative-vector}
+and orthogonality show
+\[
+ \sum_a\partial_a(\mathcal R_KJ_0)_{ab}
+       =\sum_jK_{bj}R_5(K)\left(\sum_i\partial_iJ_{0,ij}\right)=0.
+\]
+The derivative maps are continuous linear maps of finite-dimensional
+spaces and therefore commute with the integral. Thus $\widehat J$ is
+conserved.
+
+We verify that averaging retains both exact Ward normalizations.
+For vectors $u,v$ write $J[u,v]=\sum_{a,b}u_av_bJ_{ab}$. Then
+\[
+ (\mathcal R_KJ)[u,v]=R_4(K)J[K^{-1}u,K^{-1}v].
+\]
+In a collar flux with cutoff $\chi$ and vector field $W$, change variables
+$y=Kz$, moving the external points and labels by $K^{-1}$. Orthogonal
+maps preserve volume, and
+$\nabla(\chi\circ K)=K^{-1}(\nabla\chi)\circ K$.
+The transformed vector field is $K^{-1}W(Kz)$. Thus the flux of
+$\mathcal R_KJ_0$ equals the flux of $J_0$ in this transformed collar.
+The compact support of $\nabla\chi$ avoids all insertion points, so the
+integrands are smooth there and the change of variables is legitimate.
+
+For a translation $W=e_a$, the transformed charge is the linear
+combination with coefficients $(K^{-1}e_a)_i$. Its Ward identity,
+\eqref{eq:angular-derivative-vector} and covariance of the external
+correlation return exactly the original derivative charge $\partial_a$.
+For $W(y)=A(y-x_0)$ the transformed field is
+$(K^{-1}AK)(z-K^{-1}x_0)$. Differentiating the representation identity
+$R_d(K)R_d(e^{tA})R_d(K)^{-1}=R_d(e^{tKAK^{-1}})$ gives
+\[
+               R_d(K)D_d(A)=D_d(KAK^{-1})R_d(K).
+\]
+Its use in the transformed Ward identity returns exactly $D_d(A)$.
+This also holds for orientation-reversing $K$; volume measure contributes
+$|\det K|=1$, not a determinant sign. Each fixed collar flux is a
+continuous linear functional of the stress labels. It therefore passes
+through the finite-dimensional Haar integral, and the constant target
+Ward expression integrates to itself. Both charges of $\widehat J$
+are consequently normalized as required.
+
+\subsection{Keeping the same maps at the Lorentz step}
+
+The maps $Q_d$ in \eqref{eq:angular-exact-intertwiner}, with the reference
+Euclidean and Lorentz actions already fixed, give precisely the calibrated
+actions of Input~\ref{input:calibrated-actions}. Their reality and signed
+compatibility were preserved by the polynomial correction; their
+Euclidean actions now commute with inclusions. Define the physical
+Lorentz action at each cap by $Q_dT_d^0Q_d^{-1}$ with these very maps.
+Proposition~\ref{prop:lorentz-label-descent} proves its cross-cap
+compatibility from the boost differential equation, and
+Section~\ref{sec:lorentz-covariance} supplies the boundary covariance
+argument. There is no new choice of a Lorentz intertwiner. The hierarchy,
+its derivative maps and its field quotients have remained the same
+through this construction.

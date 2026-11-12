@@ -1,0 +1,359 @@
+\section{A common short-range covariance on every period}
+\label{sec:actual-reader-short-covariance}
+
+This section records the finite-period covariance output used by the local
+reader comparison. The construction keeps one bed, one forest, one blocking
+history, and one cover row throughout. In particular, the row is not chosen
+again when the period changes. The exact curvature covariance on the tree
+slice is identified in Section~\ref{sec:actual-reader-tree-covariance}; we
+use that identity here and construct its common exponentially localized
+cover representative and its finite-range approximation.
+
+\subsection{Period folding and the common inverse}
+
+Let $\mathcal I$ be the finite set of asked coordinates for a
+fixed forest and gauge branch. Its labels include the intra-block residue
+and colour. Let $\mathcal C$ denote the curvature labels, likewise
+including the intra-block cochain type and colour. The lattice coordinate
+in a cover row is always a coarse cell base, not a fine site. Write $d_n$
+for shortest $\ell^1$ distance between coarse bases on the period-$n$
+torus. A cover row is a family $P_{ab}(z)$, $a,b\in\mathcal I$,
+$z\in\mathbb Z^4$. Its period-$n$ matrix
+is the absolutely convergent periodization
+\[
+ P^{(n)}_{(x,a),(y,b)}
+   =\sum_{z:\ y=x+z\;\mathrm{mod}\;n}P_{ab}(z).
+\]
+A bound $\sum_z e^{s|z|_1}|P_{ab}(z)|\le M$ makes this sum absolute and
+bounds each row uniformly in the period. All sums below use the same
+coordinate and colour labels.
+
+\begin{lemma}[Folding a coercive row to every period]
+\label{lem:ex-reader-folding}
+Suppose $P$ is a real symmetric cover row, has an exponential row bound
+of width $s>0$, and there are $a>0$ and $n_0$ such that
+\[
+ \langle v,P^{(n)}v\rangle\ge a\|v\|_2^2
+ \quad\text{for every }n\ge n_0.
+\]
+If the periodizations commute with pullback under every quotient map
+$\mathbb T_m^4\to\mathbb T_n^4$ with $n\mid m$, then the same lower bound
+holds for every positive period.
+\end{lemma}
+\begin{proof}
+Fix $n$. Choose $m=(n_0+1)n$ and let $g$ be coordinatewise reduction
+modulo $n$. Then $g$ is surjective and commutes with lattice translations.
+Pull a vector $v$ on period $n$ back to $v\circ g$. Each coordinate of
+$v$ has exactly $|\ker g|$ preimages, so
+\[
+ \|v\circ g\|_2^2=|\ker g|\|v\|_2^2.
+\]
+At a coordinate $(x,i)$, the left side is
+\[
+ \sum_{j\in\mathcal I}\sum_{z\in\mathbb Z^4}
+       P_{ij}(z)\,v(g(x+z),j).
+\]
+Since $g(x+z)=g(x)+g(z)$, group the absolutely convergent sum by the
+residue $g(z)$. The result is $(P^{(n)}v)(g(x),i)$, so
+$P^{(m)}(v\circ g)=(P^{(n)}v)\circ g$. Taking inner products and
+using the same fiber count on both sides gives
+\[
+ |\ker g|\langle v,P^{(n)}v\rangle
+ \ge a|\ker g|\|v\|_2^2.
+\]
+The fiber size is positive, so division proves the claim. This argument
+also applies with the finite colour coordinate present: the quotient acts
+only on the spatial coordinate.
+\end{proof}
+
+The inverse row is obtained without a Fourier-symbol assumption. For each
+period, take the ordinary matrix inverse of $P^{(n)}$. A uniform positive
+lower bound gives the finite-volume resolvent bound. The exponential row
+estimate gives a uniform weighted row and column bound on every
+periodization: the internal label set is finite and each periodic
+ displacement sum is bounded by the corresponding cover sum. The diagonal
+conjugation estimate of Section~\ref{sec:local-covariance}, applied to
+these finite matrices, gives constants $C_1,r_1>0$, independent of the
+period, such that each inverse entry is bounded by
+$C_1e^{-r_1d_n(x,y)}$. This is the finite-dimensional weighted-resolvent
+estimate used in the period-independent inverse construction; no spectral
+lower bound at complex momentum is assumed.
+For every factorial side $N=k!$, choose one centered shortest
+representative in each residue class, coordinatewise in
+$[-\lfloor N/2\rfloor,\lceil N/2\rceil)$. Define the cover coefficient
+read from its inverse at $(0,a)$ and $(z,b)$ when $z$ is this representative,
+and set it to zero otherwise. For every retained coefficient,
+$d_N(0,z)=|z|_1$, so the bound $C_1e^{-r_1|z|_1}$ holds uniformly in both
+$z$ and $k$. For every fixed $z$, it is retained for all sufficiently large
+$k$. Enumerating the countable set of triples and taking successive
+subsequences, followed by the diagonal subsequence, gives simultaneous
+coefficient convergence. Passing to finite
+partial sums retains the exponential bound. At any fixed smaller width,
+the remaining tails are dominated by a constant times
+$e^{-c|z|_1}$, a summable function on $\mathbb Z^4$; hence the inverse rows
+converge in the weighted row norm.
+
+The limit has the required inverse on every period, not merely on the
+factorial sequence. Indeed, for $n\mid m$, pullback intertwines the two
+periodic convolution matrices. Since both are invertible, it also
+intertwines their inverses: apply the forward intertwining identity and
+uniqueness of the solution to the finite linear system. Periodizing the
+cover limit along any fixed period is justified by the common exponential
+majorant. Passing to the limit in the factorial periods divisible by $n$
+therefore identifies that periodization with $(P^{(n)})^{-1}$. This is the
+period-independent inverse construction used below.
+
+\subsection{The selected tree slice on the same history}
+
+Fix a blocking patch, gauge, kernel, forest, and bed $H$. At each period
+$n$, repeat the same forest by the zero-offset lift. Let $\mathcal A_n$
+be the fine one-form coordinates and let $\mathcal I_n$ be the active
+asked-coordinate set. The cover coefficients $P_{ij}(z)$ are the common
+full, uncut row on the finite asked-label set $\mathcal I$. Periodization
+sums these coefficients over the displacement classes and gives exactly
+the restriction of the finite tree precision to the repeated forest.
+
+The local construction has this concrete input. Fix one odd block side
+$L$, one patch and gauge branch, and one forest on the reference three-side
+block. Repeat that forest at every period by the same zero-offset rule.
+Fix a bed $H$, a clip, and constants $s,M,a,V,K_{\rm pen}$ with
+$s,a,K_{\rm pen}>0$, $M\ge0$, and $V>0$. Let $G_n$ and $\Delta_n$ be its metric and diagonal matrices
+on period $n$. Assume $H$ has strip width $s$ and bound $M$, and that at
+each finite period these matrices are symmetric and satisfy
+\[
+ a\|u\|_2^2\le \langle u,G_nu\rangle\le V\|u\|_2^2,
+ \qquad
+ a\|u\|_2^2\le \langle u,\Delta_nu\rangle\le V\|u\|_2^2.
+\]
+Also assume the exact root-gradient identity
+\eqref{eq:reader-root-gradient}, the same-bed stationarity identities
+\eqref{eq:reader-stationarity-input}, and the two-form transport identity
+\eqref{eq:reader-curvature-intertwiner} from
+Section~\ref{sec:actual-reader-tree-covariance}. The displayed numerical
+bounds produce the gap; these algebraic identities identify the
+conditional covariance. They are distinct inputs. The construction fixes
+its positive width $t$ and row constant $A$ from the patch, kernel, branch,
+forest template, and $s,M,a$ before selecting the bed within this class;
+the same pair works uniformly for every bed satisfying the stated strip
+and floor bounds.
+
+The finite block estimate of Section~\ref{sec:path-attachment-producer} gives the
+lower bound
+\[
+ \frac{\min(a,K_{\rm pen})}{1+\beta+\gamma},
+ \qquad \beta,\gamma\ge0,
+\]
+for every coarse side at least $100R+3$, where $R$ is the macro radius
+and $K_{\rm pen}$ is the prescribed penalty. Here $X$ is the fixed
+patch-offset set and $C_{\rm edge}$ is the edge-comparison constant. The
+finite costs are
+\[
+ \beta_\ell=(2C_{\rm edge}^2)|\operatorname{Site}(L)|\,|\operatorname{Axis}|
+ (|X|\,|\operatorname{PlaqAxes}|)\,|X|,
+ \qquad \gamma_\ell=2|\operatorname{Site}(L)|.
+\]
+They are the curl and rooted-probe coefficients proved in
+Section~\ref{sec:path-attachment-producer}; in the gap formula above
+$\beta=\beta_\ell$ and $\gamma=\gamma_\ell$.
+The cover coefficients are obtained by composing the bed row with the
+fixed local blocking maps. The weighted row norm of a product is bounded
+by the product of the weighted row norms, since
+$|z+w|_1\le |z|_1+|w|_1$. The blocking maps have finite coefficient sums,
+so the resulting exponential bound is finite and independent of the
+period. Periodizing these same coefficients gives the repeated full row,
+whose restriction is the tree precision. Thus it has the displayed gap
+at all sufficiently large periods. For any requested period $n$, take
+$m=(100R+4)n$, reduce modulo $n$, and pull a vector back. The quotient is
+surjective and every fiber has the same positive cardinality. Directly
+reindexing the cover convolution gives
+$P^{(m)}(v\circ g)=(P^{(n)}v)\circ g$, while both the quadratic form
+and squared norm of $v\circ g$ are multiplied by $|\ker g|$. Dividing
+transfers the same gap to period $n$.
+
+Apply the weighted finite-resolvent estimate to this common row. Its
+inverse is one exponentially localized cover row whose period action is
+the inverse tree precision at every period. Let $\mathcal R$ be the fixed
+rooted path-measurement matrix from asked-coordinate vectors to curvature
+coordinates, so its rows are indexed by $\mathcal C$ and columns by
+$\mathcal I$. The rooted gauge projection
+and the identity between the root correction and the gradient evaluation
+show that the curvature is unchanged by removing forest coordinates.
+Thus the matrix
+\[
+             Z=\mathcal R\,P^{-1}_{\mathrm{row}}\,\mathcal R^{\mathsf T}
+\]
+has, on each period, the same restriction to active curvature coordinates
+as the finite tree-slice covariance for every admissible coarse period
+$n\ge3$. More explicitly, the matrix on the
+slice is $(DI_F)A_F^{-1}(DI_F)^{\mathsf T}$, which equals
+$P_f-JP_cJ^{\mathsf T}$ by \eqref{eq:reader-tree-conditional-covariance}.
+This is an exact equality. Its proof
+uses the same bed and the same forest on both sides; it does not replace a
+curved bed by the flat one or compare two different histories. The
+finite-dimensional curl-through identity and the resulting exact
+conditional curvature formula are the ones proved in
+Section~\ref{sec:actual-reader-tree-covariance}.
+
+The row norm of $Z$ is bounded by the product of the row norms of the two
+rooted path rows and the inverse row. For convolution, the weighted row
+norm is submultiplicative: expand the product, use
+$|z+w|_1\le |z|_1+|w|_1$, and sum the resulting nonnegative majorant.
+Therefore $Z$ has a positive exponential width, with a finite constant
+fixed before the period is chosen.
+
+If the desired period matrices are symmetric but this particular cover
+representative is not symmetric term by term, replace it by
+\[
+ Z^{\mathrm{sym}}_{ab}(z)
+ =\tfrac12\bigl(Z_{ab}(z)+Z_{ba}(-z)\bigr).
+\]
+Its period matrix is the average of the original matrix and its transpose.
+Since the exact tree covariance is symmetric, this replacement leaves every
+period matrix unchanged. The triangle inequality shows that its exponential
+row bound is no larger than the original bound. The reversal is essential:
+transposition reverses the displacement as well as exchanging the two
+indices.
+
+\subsection{Cutting to short paths}
+
+For a scale parameter $x>1$, set the integer radius
+$B_x=\lceil(\log x)^2\rceil$ and the natural-number cut radii
+$h_x=\lfloor B_x/10000\rfloor$ and $H_x=\lfloor B_x/8\rfloor$.
+Their real uses below mean their natural casts. Choose a symmetric
+coarse-cell displacement cut which retains every coefficient with
+$|z|_1\le h_x$ and retains none with $|z|_1>H_x$. Write $Z^{\le x}$ for
+the cut row. If
+$\sum_z e^{t|z|_1}|Z_{ab}(z)|\le A$, then for every finite-period entry the triangle inequality and the tail
+estimate give
+\[
+ \left|Z^{(n)}_{(u,a),(v,b)}
+       -(Z^{\le x})^{(n)}_{(u,a),(v,b)}\right|
+ \le A e^{-t h_x}.
+\]
+The same estimate holds with row and column interchanged. The cut matrix
+is symmetric because the retention rule is invariant under
+$(a,b,z)\mapsto(b,a,-z)$. Also, if the separation of the two spatial
+coarse parent-base addresses (the addresses obtained by splitting the fine
+site into its coarse base and intra-block residue) is greater than $H_x$,
+its cut period-matrix entry is zero: every retained coarse displacement
+has length at most $H_x$, so none can connect those bases modulo the period. These two facts are the only geometric
+properties of the cut used in the short-history comparison.
+
+In the source normalization the row-tail payment for all output labels is
+\[
+ \operatorname{cheque}(t,A,x)
+ = |\mathcal C|A\exp(-t h_x).
+\]
+For the installed two-form path row, the incoming cover bound has a
+specific source. In cover-row notation it is
+\[
+ \Psi=D_f^{-1}\,\mathrm{Fine}(T)\,D_c,
+\]
+where $D_f$ is the fine diagonal, $D_c$ the coarse diagonal, and
+$\mathrm{Fine}(T)$ is the installed tower map. Assume the corresponding
+same-history strip receipts: $D_f^{-1}$ has bound $M_f$, $D_c$ has bound
+$M_c$, and the moving tower row has bound $M_T/L^2$. The weighted
+row-product estimate gives
+\[
+ \Psi\text{ has strip bound }
+ \frac{m_2^2 M_fM_T M_c}{L^2}.
+\]
+In the selected case where the three incoming factors are all bounded by
+$M_{\rm in}$, put $\psi_{\rm budget}(u)=m_2^2u^3$; then the installed row
+has bound $\psi_{\rm budget}(M_{\rm in})/L^2$. The factor $L^{-2}$ is
+already in the moving tower receipt, not produced by installation;
+installation preserves its per-entry bound and summing over output labels
+supplies the cheque factor. The paid movement error is therefore
+$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$. This is an
+incoming budget, separate from the turn-row cheque.
+
+Define the short transport matrix on a period by keeping each installed
+transport entry when the two coarse parent bases have separation at most
+$H_x$, and setting it to zero otherwise. The cut path row has zero at all
+omitted addresses. The installed-row estimate therefore bounds, for each
+input coordinate, the omitted row sum by
+$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$; in
+particular every omitted entry has this bound, while retained entries are
+unchanged. This is the same two-case finite-range comparison as for
+$Q_n^{\rm short}$ below.
+
+\begin{proposition}[Cutting the constructed same-history covariance]
+\label{prop:ex-reader-short-covariance}
+Under the fixed branch, repeated-forest, bed strip/floor, and same-bed
+factorization hypotheses above, construct $Z$ by the common inverse and
+rooted measurement. If a symmetric cut retains every displacement through
+$h_x$, has support through $H_x$, and its row-tail payment is at most
+$\varepsilon$ in both orientations, then $Z$ has the exact finite
+tree-slice curvature covariance at every admissible coarse period $n\ge3$,
+while the cut differs entrywise from that covariance by at most
+$\varepsilon$. Its entries vanish at separations greater than $H_x$.
+\end{proposition}
+\begin{proof}
+The finite tree bound gives the gap above the stated side threshold, and
+Lemma~\ref{lem:ex-reader-folding} transfers it to every period. The
+period-independent inverse and rooted measurement produce $Z$ with the
+exact period matrices for the admissible coarse periods $n\ge3$.
+Symmetrize by displacement reversal; exact symmetry of the period
+covariances preserves every period output. The cut-tail
+estimate gives the entrywise error, and the support-radius condition gives
+the vanishing statement.
+\end{proof}
+
+There is a useful finite-range version of the cut output. On period $n$,
+let $C_n=Z^{(n)}$ be the exact covariance and define
+\[
+ Q^{\rm short}_{n}(u,a;v,b)=
+ \begin{cases}
+ (C_n)_{(u,a),(v,b)},&d_n(u,v)\le H_x,\\
+ 0,&d_n(u,v)>H_x.
+ \end{cases}
+\]
+This is symmetric and has range $H_x$. If $d_n(u,v)\le H_x$, it agrees
+with the covariance by definition. If $d_n(u,v)>H_x$, the cut period
+matrix vanishes by the support condition, so the bound from
+Proposition~\ref{prop:ex-reader-short-covariance} gives
+\[
+ |(C_n)_{(u,a),(v,b)}-Q^{\rm short}_{n}(u,a;v,b)|
+ \le \operatorname{cheque}(t,A,x).
+\]
+Thus the short comparison used at a reader is exact on retained pairs;
+the only error is the omitted covariance tail. This is the two-case form
+needed for a finite-range covariance comparator on one fixed history.
+
+\subsection{How the estimate enters the path telescope}
+
+For clarity, the quantitative input used by the path telescope consists of
+two payments, not a free approximation assertion. If $\Psi$ is the
+installed two-form path row, let $m_2$ be the number of two-form labels,
+set $\psi_{\rm budget}(u)=m_2^2u^3$, and let $M_{\rm in}$ be its
+pre-installation bound. The movement payment is
+\[
+ m_2\,\frac{\psi_{\rm budget}(M_{\rm in})}{L^2}
+       \exp(-s h_x)\le \varepsilon.
+\]
+The second payment asks for a same-bed row $Z$, a width $t>0$, and a
+bound $A>0$ such that the preceding cut estimate is at most
+$\varepsilon$. The path part of the telescope uses the movement receipt
+through the triangle inequality and the finite row sum of the installed
+path data; the covariance part uses the turn receipt and the exact
+same-bed transfer. These are separate clauses. This section proves the
+row and covariance estimate, but it does not derive either price from the
+scale schedule.
+
+Suppose two consecutive levels of the selected history have the same
+blocking clock. In the covariance clause, truncate the rooted row at
+radius $H_x$. For endpoints farther apart, the truncated matrix entry
+vanishes. For the remaining pairs, the exact same-bed transfer identifies
+the uncut entry with the finite tree conditional covariance, and the cut
+estimate bounds its replacement error. In the path clause, the installed
+path row is handled by its finite row-sum estimate and the separate
+movement receipt. Both clauses retain the original stamped history. The
+selected schedule must allocate the movement and turn prices to their
+respective requested tolerances; the field-path bound and capital budget
+remain additional hypotheses of the telescope.
+
+The large-period gap, the strip width, and both payments are properties
+of the selected bed and the selected history. Their production is not
+proved by the finite covariance algebra above. In particular, this result
+must be combined with the separate schedule and paid-budget construction
+before it can be used as an unconditional Yang--Mills construction step.
