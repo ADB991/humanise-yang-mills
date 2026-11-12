@@ -1,0 +1,158 @@
+# Upstream bridge: lets a Claude cloud routine open PRs and post comments on
+# an upstream repository it can read but not write.
+#
+# The cloud agent can push only to this fork. To act upstream it commits a
+# request file to outbox/<name>.json on the BRIDGE_BRANCH and pushes; the
+# "Bridge notify" workflow on that branch (no secrets) then wakes this one.
+# This workflow sends the request to UPSTREAM with the UPSTREAM_TOKEN secret,
+# writes the result to sent/<name>.json, deletes the request, and pushes.
+#
+# Containment: workflow_run always executes this file from the default
+# branch, which a ruleset locks against pushes; UPSTREAM_TOKEN lives in the
+# `upstream` environment, whose deployment policy admits only the default
+# branch. A workflow the agent writes on any other branch cannot read it.
+# Requests are data: nothing from the bridge branch is executed.
+#
+# Request types (JSON objects):
+#   {"type": "pr", "head": "<fork branch>", "title": "...", "body": "...", "draft": true}
+#   {"type": "comment", "issue": 37, "body": "..."}       (issue or PR number)
+#   {"type": "issue", "title": "...", "body": "..."}
+#   {"type": "pr_edit", "number": 41, "title": "...", "body": "...", "state": "closed", "draft": false}
+
+name: Upstream bridge
+
+on:
+  workflow_run:
+    workflows: ["Bridge notify"]
+    types: [completed]
+  workflow_dispatch:
+
+env:
+  UPSTREAM: hairer/humanise-yang-mills
+  FORK_OWNER: ADB991
+  BRIDGE_BRANCH: ym-state
+  HEAD_PATTERN: 'claude/[A-Za-z0-9._/-]{1,100}'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: upstream-bridge
+  cancel-in-progress: false
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: upstream
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRIDGE_BRANCH }}
+          persist-credentials: true
+
+      - name: Send outbox requests upstream
+        env:
+          UPSTREAM_TOKEN: ${{ secrets.UPSTREAM_TOKEN }}
+        shell: python3 {0}
+        run: |
+          import json, os, pathlib, re, time, urllib.request, urllib.error
+
+          REPO, OWNER = os.environ["UPSTREAM"], os.environ["FORK_OWNER"]
+          HEAD = re.compile(os.environ["HEAD_PATTERN"])
+          TOKEN = os.environ.get("UPSTREAM_TOKEN", "")
+          MAX = 60000
+
+          def call(method, path, data=None):
+              req = urllib.request.Request("https://api.github.com" + path, method=method)
+              req.add_header("Accept", "application/vnd.github+json")
+              req.add_header("X-GitHub-Api-Version", "2022-11-28")
+              req.add_header("Authorization", "Bearer " + TOKEN)
+              body = None
+              if data is not None:
+                  body = json.dumps(data).encode()
+                  req.add_header("Content-Type", "application/json")
+              try:
+                  with urllib.request.urlopen(req, body, timeout=30) as r:
+                      t = r.read().decode()
+                      return r.status, json.loads(t) if t else {}
+              except urllib.error.HTTPError as e:
+                  return e.code, {"error": e.read().decode()[:2000]}
+
+          def text(x, name):
+              if not isinstance(x, str) or not x.strip() or len(x) > MAX:
+                  raise ValueError(f"{name} must be a non-empty string under {MAX} characters")
+              return x
+
+          def num(x, name):
+              if not isinstance(x, int) or x <= 0:
+                  raise ValueError(f"{name} must be a positive integer")
+              return x
+
+          def handle(q):
+              t = q.get("type")
+              if t == "comment":
+                  return call("POST", f"/repos/{REPO}/issues/{num(q.get('issue'), 'issue')}/comments",
+                              {"body": text(q.get("body"), "body")})
+              if t == "issue":
+                  return call("POST", f"/repos/{REPO}/issues",
+                              {"title": text(q.get("title"), "title"), "body": text(q.get("body"), "body")})
+              if t == "pr":
+                  head = q.get("head", "")
+                  if not isinstance(head, str) or not HEAD.fullmatch(head):
+                      raise ValueError(f"head must match {HEAD.pattern}")
+                  return call("POST", f"/repos/{REPO}/pulls", {
+                      "title": text(q.get("title"), "title"), "body": text(q.get("body"), "body"),
+                      "head": f"{OWNER}:{head}", "base": q.get("base", "main"),
+                      "draft": bool(q.get("draft", True)), "maintainer_can_modify": True})
+              if t == "pr_edit":
+                  n = num(q.get("number"), "number")
+                  st, pr = call("GET", f"/repos/{REPO}/pulls/{n}")
+                  if st != 200 or (pr.get("head", {}).get("repo") or {}).get("owner", {}).get("login") != OWNER:
+                      raise ValueError(f"only PRs from the {OWNER} fork can be edited")
+                  patch = {k: text(q[k], k) for k in ("title", "body") if k in q}
+                  if q.get("state") == "closed":
+                      patch["state"] = "closed"
+                  st, js = call("PATCH", f"/repos/{REPO}/pulls/{n}", patch) if patch else (200, pr)
+                  if q.get("draft") is False and pr.get("draft"):
+                      st2, js2 = call("POST", "/graphql", {
+                          "query": "mutation($id:ID!){markPullRequestReadyForReview(input:{pullRequestId:$id}){pullRequest{url}}}",
+                          "variables": {"id": pr["node_id"]}})
+                      if st2 != 200 or js2.get("errors"):
+                          return st2, {"error": json.dumps(js2)[:2000]}
+                  return st, js
+              raise ValueError(f"unknown request type {t!r}")
+
+          out, sent = pathlib.Path("outbox"), pathlib.Path("sent")
+          sent.mkdir(exist_ok=True)
+          for f in sorted(out.glob("*.json")):
+              r = {"request_file": f.name,
+                   "processed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+              try:
+                  q = json.loads(f.read_text())
+                  r["request"] = q
+                  if not TOKEN:
+                      raise ValueError("the UPSTREAM_TOKEN secret is not set on the fork")
+                  st, js = handle(q)
+                  r["status"], r["ok"] = st, st in (200, 201)
+                  for k in ("html_url", "id", "number", "created_at", "error"):
+                      if k in js:
+                          r[k] = js[k]
+              except Exception as e:
+                  r["ok"], r["error"] = False, str(e)
+              (sent / f.name).write_text(json.dumps(r, indent=1, ensure_ascii=False) + "\n")
+              f.unlink()
+              print(f.name, "ok" if r.get("ok") else "FAILED", r.get("html_url", r.get("error", "")))
+
+      - name: Push results
+        run: |
+          git config user.name "upstream-bridge"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A sent outbox
+          git diff --cached --quiet && exit 0
+          git commit -q -m "bridge: results"
+          for i in 1 2 3; do
+            git pull -q --rebase origin "$BRIDGE_BRANCH" && git push -q origin "HEAD:$BRIDGE_BRANCH" && exit 0
+            sleep 5
+          done
+          exit 1
