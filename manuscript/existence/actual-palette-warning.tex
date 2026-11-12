@@ -1,0 +1,432 @@
+\section{The all-pilot palette and the local zero-socket test}
+\label{sec:actual-palette-warning}
+
+This section isolates the warning input used by the opacity construction.
+There are two different estimates here. The palette estimate is a global,
+exponentially weighted row-and-column bound for the actual screened Gaussian
+matrix. The socket conclusion is deterministic: on a prescribed local
+small-noise event, every factor in the local mask product equals one. A
+comparison for one posed reader does not imply the first estimate, and a
+Gaussian probability estimate does not by itself imply the second.
+
+For $x>1$ write $\operatorname{radius}(x)=\lceil(\log x)^2\rceil$, the
+source radius $\operatorname{radiusB}(x)$.
+
+Write $\mathcal I$ for the active link-colour coordinates of a fixed forest
+and $\mathcal R$ for the retained response-row coordinates. A move matrix
+$M=(M_{ri})_{r\in\mathcal R,i\in\mathcal I}$ maps active-coordinate
+vectors to response-row vectors; $a(r)$ and $a(i)$ denote their anchor
+sites. For a rectangular matrix define its exponential row-and-column price
+at rate $\sigma\geq0$ by
+\[
+ \mathfrak p_\sigma(M)=\max\left\{
+   \sup_{r\in\mathcal R}\sum_{i\in\mathcal I}
+       e^{\sigma d(a(r),a(i))}|M_{ri}|,
+   \sup_{i\in\mathcal I}\sum_{r\in\mathcal R}
+       e^{\sigma d(a(r),a(i))}|M_{ri}|\right\}.
+\]
+The bounds below are uniform in the torus size, but their constants may
+depend on the fixed patch, tube, and interaction range. Let $Q$ be the Gram
+matrix of the actual row family, let $W$ be the panel projection, and put
+\[
+ C=\operatorname{clouded}(W,Q),\qquad N=\operatorname{per}(WQ).
+\]
+Here $s\in\mathbb R^{\mathcal R}$ is the source row,
+$b=M^{\mathsf T}s\in\mathbb R^{\mathcal I}$ its transported row and
+$m=-N^{\mathsf T}b$ the selected mean. The corresponding direct and
+auxiliary rows are
+\[
+ r=Mm+s,\qquad
+z^{\rm aux}=-(\operatorname{coupling}(\beta))^{-1}
+       Q\bigl(Q^{-1}-N^{\mathsf T}\bigr)b.
+\]
+These are the finite-dimensional identities behind the estimates; the
+transpose is the ordinary real transpose. The windowed covariance $C$ and
+its inverse comparison are taken on the same retained coordinate set.
+
+\begin{proposition}[Weighted response implies a uniform palette bound]
+\label{prop:actual-palette-response}
+Suppose that, for all sufficiently large $x$, uniformly in the period,
+forest, tube, choices and configuration under consideration, the following
+prices hold:
+\begin{enumerate}
+\item $Q$ and $C$ are positive definite and
+      $\mathfrak p_0(Q),\mathfrak p_0(C),\mathfrak p_0(N)\leq K$;
+\item $\mathfrak p_0(M)\leq L$;
+\item $|s_r|\leq Z\,\varphi(x)$ at every source coordinate $r\in\mathcal R$, where
+      $K,L,Z>0$, $\varphi(x)\geq0$, and $\varphi(x)\to0$; the local
+      width satisfies $0\leq d\leq r\varphi(x)$ for a fixed $r\geq0$;
+\item the window defect obeys
+\[
+ \mathfrak p_0\bigl(N-Q^{-1}\bigr)
+       \leq u\exp\{-v\,\operatorname{radius}(x)/60\}
+\]
+for fixed $u,v>0$;
+\item $0<\beta\leq4x$ and $x\geq4$. Since
+      $g=\operatorname{coupling}(\beta)=\beta^{-1/2}$, we have
+      $g^{-1}=\sqrt\beta\leq2\sqrt x\leq x$. The local door product
+      is a product of broad factors and obeys this implication: if it is
+      nonzero, then $|m_i+g\zeta_i|\leq1$ whenever $|m_i|\leq1$ and
+      $2d\leq1$, where $g=\operatorname{coupling}(\beta)$ and $\zeta$
+      is the noise vector.
+\end{enumerate}
+Then there is a fixed $\ell\geq1$ such that, eventually in $x$, the
+following four bounds hold for every configuration row in this family:
+\[
+ |m_i|\leq1,\qquad |r_i|\leq1,\qquad |z_i^{\rm aux}|\leq x^{-4},
+ \qquad \text{door product}\ne0\Longrightarrow
+ |\zeta_i|\leq x^2.
+\]
+Moreover the screened palette matrix $C$ satisfies
+\[
+ \mathfrak p_0(C)\leq\ell.
+\]
+\end{proposition}
+\begin{proof}
+For any rectangular matrix $A$ with $\mathfrak p_0(A)\leq c$ and any vector
+$u$ on its column set with $\|u\|_\infty\leq b_0$, the triangle inequality gives
+\[
+ |(Au)_i|\leq\sum_j|A_{ij}|\,|u_j|
+             \leq c b_0.
+\]
+The move-map price first gives
+$|b_i|=|(M^{\mathsf T}s)_i|\leq LZ\varphi(x)$ by its column bound.
+Apply the row-and-column estimate to $N^{\mathsf T}b$. The column bound
+for $N$ is the row bound for its transpose, so
+$|m_i|\leq KLZ\varphi(x)$. Applying the same calculation to $Mm+s$ gives
+\[
+ |r_i|\leq (L^2KZ+Z)\varphi(x).
+\]
+For the auxiliary row, factor the displayed identity exactly as written:
+\[
+ |z_i^{\rm aux}|\leq x\,K u LZ\varphi(x)
+       e^{-v\operatorname{radius}(x)/60}.
+\]
+Because $\operatorname{radius}(x)$ grows quadratically in $\log x$,
+the exponential factor is eventually at most $x^{-5}$. The right side is
+then at most $K u LZ\varphi(x)x^{-4}$. Since $K,u,L,Z$ are fixed and
+$\varphi(x)\to0$, its coefficient is eventually at most one; hence
+$|z_i^{\rm aux}|\leq x^{-4}$. The first two row bounds also tend to zero,
+hence are eventually at most one.
+The width condition and $\varphi(x)\to0$ ensure $2d\leq1$ eventually.
+If the door product is nonzero, its broad-span implication gives
+$|m_i+g\zeta_i|\leq1$. Thus $|g\zeta_i|\leq2$, and the coupling-price
+hypothesis gives
+\[
+ |\zeta_i|\leq2g^{-1}\leq2x\leq x^2
+\]
+for $x\geq2$. Finally, the weighted price of $C$ is already at most $K$;
+take $\ell=\max(1,K)$. This proves all conclusions with one threshold,
+independent of the period and of the subsequently chosen configuration.
+\end{proof}
+
+The four conclusions, together with $\mathfrak p_0(C)\leq\ell$, are the
+complete response receipt needed here: they give a positive weighted
+palette price, a mean bound, a direct-row bound, an auxiliary-row bound
+of order $x^{-4}$, and the implication from a nonzero door product to the
+noise bound $x^2$. Section~\ref{sec:actual-global-row-prices} supplies
+the distinct global matrix, source-row, and move-row estimates used in
+this calculation.
+
+In the selected application, Section~\ref{sec:actual-global-row-prices}
+supplies the matrix price and gap for $Q$, its panel restriction $C$, the
+windowed matrix $N$, and the exponentially small price for $N-Q^{-1}$.
+It also supplies the source-row bound $Z\operatorname{fiery}(x)$ and the
+move-row price $L$. The calculation above is included because it shows
+exactly how these different receipts combine, with no factor depending on
+the number of sites. The local covariance comparison of
+Section~\ref{sec:actual-reader-local-gaussian-prices} is a distinct input;
+its entrywise estimate cannot replace these global weighted bounds.
+
+\subsection{Why the palette estimate is all-matched}
+
+For a pilot $p$, let $\Pi_p$ be its endpoint palette, namely the normalized
+Gaussian matrix on the forest coordinates after retaining the panel
+addresses. A palette has a $\sigma$-price $C$ when its two weighted sums
+above are at most $C$. The endpoint convention identifies $\Pi_p$ exactly
+with the clouded panel Gram matrix $C$; it is not an approximate
+identification and involves no limiting field.
+
+For each matched pilot, specialize the uniform response estimate to that
+pilot's store, forest, configuration and tag. The endpoint palette then
+satisfies
+\[
+  \mathfrak p_0(\Pi_p)\leq\ell\qquad\text{for every matched }p.
+\]
+Because the matrix prices were obtained uniformly before selecting the
+pilot, the same constant works for the entire matched family. This
+universal quantifier comes from all-configuration screened-kernel bounds,
+not from testing a dense set of readers or passing from one posed pilot by
+continuity.
+
+\subsection{The local zero-socket implication}
+
+Fix a matched pilot $p$ and a mask address $i$, and put
+$q_i=\operatorname{toes}(i)$ and $B=\operatorname{radius}(x)$. Write
+$z_p$ for its local fluctuation vector and $g=\operatorname{coupling}(\beta)>0$.
+For a site $o$, define $\mathsf{Toned}(R,o,z,h)$ to mean
+$|z_j|\leq h$ for each active coordinate $j$ whose anchor is at distance
+at most $R$ from $o$. The local small-noise condition is
+\[
+ \mathsf{Toned}(2B,q_i,z_p,\varepsilon\,t/g),
+ \qquad t=\operatorname{fiery}(x).
+\]
+By definition, the
+socket is zero when the support foot meets the store's radius-$300B$ dome.
+It remains to treat the branch in which the foot and that dome are
+disjoint. The foot contains its toe $q_i$. Since the radius-$50B$ dome is contained
+in the radius-$300B$ dome, disjointness immediately gives
+$q_i\notin A.dome(50B)$.
+
+The beacon receipt is evaluated on the actual selected configuration,
+store, tag and mean-adjusted field. At every site $y$ outside the
+radius-$40B$ store dome, it gives active tape coordinates of norm below
+the chart radius, fine-face toll at most $t/4$, coarse-bond wire at most
+$Wt$, and both normalized likelihoods equal to one, provided
+$\mathsf{Toned}(B,y,z_p,\varepsilon t/g)$ holds.
+The toe is outside the radius-$50B$ dome. Every site within distance $B$ of
+the toe is therefore outside the radius-$40B$ dome. Restricting the
+radius-$2B$ toned bound gives the required radius-$B$ bound at these sites.
+The face, bond-wire and frame parts of the beacon receipt consequently
+give the local outpost condition.
+
+The port estimate turns this local condition into the door bound. Let
+$N_{\mathrm{port}}$ be the number of plaquettes in the fixed macrobox for
+the patch (the macrobox site count times the number of plaquette
+orientations). The port inequality sums at most $N_{\mathrm{port}}$ face
+tolls, and the braid inequality
+bounds the connector by $Wt$. Thus the chord of the relative link at any
+active row is at most $(C_0N_{\mathrm{port}}+W)t$, where $C_0$ is the fixed port constant.
+On the chart ball, the logarithm has norm at most $K_0$ times this chord.
+The beacon places the actual relative link in the injectivity ball, so its
+logarithm is the actual tape coordinate. Therefore the outpost condition and
+the distant-door estimate give
+\[
+ \|\ell_{p,j}\|\leq C_*t,
+ \qquad C_*=K_0(C_0N_{\mathrm{port}}+W),
+\]
+for each active door row. An inactive door factor equals one by its
+definition. The selected width has $C_*t\leq\operatorname{arc}$, so the
+broad factor equals one for active rows too. The integer $N_{\mathrm{port}}$ is fixed by the patch and does not grow with the torus.
+
+The mask has five coordinate types: fine-face share, coarse-bond wire
+share, site likelihood, bond likelihood, and door. The first two equal one
+because their nonnegative tolls are below their full-share thresholds; the
+likelihoods equal one by the beacon receipt; and the door equals one by the
+preceding argument. Thus the local ask is one, so the socket (ask minus
+one) is zero. Every estimate is on the same matched pilot; there is no
+perturbation or replacement of its store or tag.
+
+\begin{proposition}[Exact assembly of the palette condition]
+\label{prop:actual-palette-condition}
+Assume $\varepsilon\geq0$ and $\beta>0$, and the uniform weighted response prices of
+Proposition~\ref{prop:actual-palette-response}; these give a common price
+bound $\ell\geq1$. Let $\mathcal P$ be the set of matched pilots. Assume
+the selected field and forest satisfy the same-history response conditions
+of Section~\ref{sec:actual-global-row-prices}, and that the following
+uniform local receipts hold for every $p\in\mathcal P$ and mask address:
+the disjoint-foot branch geometry, beacon estimates, port estimate, and
+distant-door estimate just stated. These receipts are on the same field,
+forest, tag and store, with thresholds uniform over the matched family.
+Then for
+\[
+ q=\varepsilon\,\operatorname{fiery}(x)/
+                   \operatorname{coupling}(\beta)
+\]
+the endpoint palette has a uniform positive Pours price for every matched
+pilot, and its socket vanishes whenever the specified $\mathsf{Toned}(2B,q_i,z_p,\varepsilon t/g)$ condition holds.
+These are the two components of the all-matched palette condition used by the opacity step.
+\end{proposition}
+\begin{proof}
+The weighted matrix estimate is uniform over the matched family, so its
+constant is the common Pours price $\ell$. For each matched pilot and each
+mask address, the local argument above gives zero socket
+under its toned hypothesis. Since neither conclusion changes the pilot,
+the quantified statements hold for the full matched family.
+\end{proof}
+
+\subsection{The selected all-pilot package}
+
+The geometric and local receipts are selected together. For a fixed
+patch, a permitted chart ratio, a positive mask width $W$, and the reserve
+and wedge hypotheses of the sector construction, there is a lower scale
+$L_0$ and a beacon parameter $\varepsilon>0$. For each fixed chosen
+width $\lambda\geq L_0$, the chart and size conditions, the annular
+response at width $\lambda$, the local beacon, and the distant-door
+estimate all hold eventually in $x$. Their cutoff is uniform over legal
+stores, forests, tags, configurations and mask addresses, hence over
+matched pilots. The port/log-chart and distant-door route gives the fixed
+constant $C_*$ above; choose $L_0\geq C_*$, so
+$C_*t\leq\lambda t=\operatorname{arc}$. The annular estimate is a
+separate component of the selected package.
+
+Here is the mean-switch argument that makes the beacon a statement about
+the actual sewn field. The centered affine background (CAB) calibration is
+an auxiliary calculation;
+its matrices must not be identified with the actual-reader matrices
+$Q,C,N$ above. Fix one selected store, forest, tag, field $V$, and a site
+$o$ outside the radius-$30B$ store dome, where $B=\operatorname{radiusB}(x)$.
+Write $\varepsilon_0=2\varepsilon$, where $\varepsilon$ is the final
+all-matched beacon fee and $\varepsilon_0$ is the CAB plateau threshold.
+The based chart construction supplies a gauge and a chart vector $b$ with
+$\|b\|\leq\operatorname{clearance}(x)/2$, agreeing with that gauge on the
+radius-$20B$ room. Write $v$ for the corresponding local affine direction.
+For the auxiliary finite calibration, write $H$ for its sheet,
+$P_{\rm CAB}$ for its within-sheet map,
+$E=HP_{\rm CAB}-I$ for its error, and $s_{\rm CAB}$ for its source.
+The exact finite-dimensional subtraction identity is
+\begin{equation}\label{eq:actual-palette-cab-subtraction}
+ \mu_{\rm CAB}-v
+   =-P_{\rm CAB}^{\mathsf T}(Hv+s_{\rm CAB})+E^{\mathsf T}v.
+\end{equation}
+It follows by expanding $E=HP_{\rm CAB}-I$ and the definitions of the centered
+calibration mean. To state the paid rates without source shorthand, put
+\[
+ \rho_{r,k}(x)=\operatorname{radiusB}(x)^k
+                    \,\operatorname{fiery}(x)^r.
+\]
+The bought central residual and error-sheet estimates are, respectively,
+the rates $\rho_{2,25}$ and $\rho_{2,26}$;
+the selected scale schedule includes $\rho_{2,27}(x)\leq x^{-7/8}$
+eventually. In the first term of (\ref{eq:actual-palette-cab-subtraction}),
+the central residual bound $\rho_{2,25}$ is multiplied by the fixed
+within-sheet row price; one additional factor of the radius is absorbed
+into the next rate, giving $\rho_{2,26}$. The second term is the
+error-sheet tail, also at that rate. The reserve's allowance growth then
+gives, coordinatewise,
+\begin{equation}\label{eq:actual-palette-cab-velocity}
+ |(\mu_{\rm CAB}-v)_j|\leq \rho_{2,27}(x)\leq x^{-7/8}.
+\end{equation}
+These are the two matrix terms in (\ref{eq:actual-palette-cab-subtraction});
+no equality between the auxiliary calibration law and the actual palette
+law is used.
+
+The chart comparison of the actual portrait with this same affine direction
+has a second, separately paid error. The finite chart estimate and the
+identity between the local face read and its short-row read give a
+per-color error at most $x^{-7/8}$; summing over the fixed color
+coordinates and combining with (\ref{eq:actual-palette-cab-velocity}) gives
+\begin{equation}\label{eq:actual-palette-mean-switch}
+ \|D'_j-\mu_{{\rm CAB},j}\|
+       \leq 2\dim(G_{\rm color})x^{-7/8}\leq x^{-3/4}
+\end{equation}
+for all sufficiently large $x$. Here $D'$ is the portrait of the original
+selected field, in the local chart, and the last inequality is just a
+fixed-dimension power comparison. If the local fluctuation is $z$ and
+$g=\operatorname{coupling}(\beta)>0$, the switched active coordinate is
+exactly
+\[
+   (D'+gz-\mu_{\rm CAB})_j.
+\]
+For any point in the radius-$B$ neighborhood of $o$,
+(\ref{eq:actual-palette-mean-switch}) and the Toned bound
+$|z_j|\leq\varepsilon_0t/(2g)$ imply
+\[
+ |(D'+gz-\mu_{\rm CAB})_j|
+      \leq x^{-3/4}+\varepsilon_0t/2\leq\varepsilon_0t
+\]
+eventually; the final step uses the bought threshold
+$x^{-3/4}\leq\varepsilon_0t/2$. Thus the shifted affine field is Awake
+with threshold $\varepsilon_0t$ on that neighborhood.
+
+The charged plateau estimate is applied to this auxiliary affine field.
+Write $W_{\rm wire}=W$, $a_* = \sqrt{\mathrm{direct}}$, and
+$b_* = \sqrt{\mathrm{penalty}}$. The reserve and wedge purchases give
+$a_*>0$, $b_*>0$, and the uniform row price satisfies $W_{\rm row}>0$;
+these are the positive quadratic and penalty floors in the selected
+calibration.
+\begin{equation}\label{eq:actual-palette-cab-wedge}
+ \frac{C}{L^2}\leq\frac{a_*}{64},\qquad
+ C+\frac{a_*}{64}\leq\frac{W_{\rm wire}b_*}{4}.
+\end{equation}
+Let $W_{\rm row}$ be the bought uniform row price for the selected CAB
+system and let $\omega_{\rm CAB}>0$ be its fixed quadratic-response weight.
+Set $\delta=a_*/64$ and choose the plateau threshold
+\begin{equation}\label{eq:actual-palette-cab-target-fee}
+ \varepsilon_0=\min\left\{1,
+   \frac{\delta\sqrt{\omega_{\rm CAB}}}
+   {4(1+\sqrt{\dim(G_{\rm color})})W_{\rm row}}\right\}.
+\end{equation}
+The local target estimate gives target size at most $\delta t$ under this
+shift. Here is its payment. The action of the CAB mean is bounded by the
+rate $\rho_{2,29}$, which is eventually at most
+$W_{\rm row}\varepsilon_0t$; the sparse shifted action has the same bound.
+Thus the full shifted action is at most
+$2W_{\rm row}\varepsilon_0t$. In the target expansion, the linear term is
+at most $\delta t/2$ by the choice in (\ref{eq:actual-palette-cab-target-fee}),
+and the nonlinear term is at most $\rho_{2,40}\leq\delta t/2$ by the paid
+rate comparison. Their sum is at most $\delta t$. Decreasing a permitted
+shift threshold preserves these inequalities, so the minimum with one in
+(\ref{eq:actual-palette-cab-target-fee}) is harmless.
+
+The first inequality in (\ref{eq:actual-palette-cab-wedge}) bounds the
+unshifted face response by $a_*t/64$. The paid target response changes it
+by at most $a_*t/64$, so the resulting row has norm at most $a_*t/32$.
+On the purchased chart, the source curvature lower bound therefore gives
+face toll below $t/4$. For a bond row the unshifted term is at most $Ct$
+and the response term at most $a_*t/64$. Its normalized read is $b_*$
+times its curvature norm, so the second inequality in
+(\ref{eq:actual-palette-cab-wedge}) gives curvature at most
+$W_{\rm wire}t/4$. Chord is at most twice curvature on this chart; hence
+wire is below $W_{\rm wire}t$. The likelihood plateau estimate sets the
+site and bond factors equal to one.
+
+For the broad chart, the reserve bounds each CAB-mean color coordinate by
+$\rho_{1,12}$. The shift coordinates are at most $\varepsilon_0t$.
+Because $\varepsilon_0\leq1$ and $\operatorname{radiusB}(x)\geq1$,
+$\varepsilon_0t\leq\rho_{1,13}$ and $\rho_{1,12}\leq\rho_{1,13}$.
+The Euclidean color norm of the shifted row is at most
+$2\sqrt{\dim(G_{\rm color})}\rho_{1,13}$, which the purchased chart
+budget bounds by the chart radius. Thus the single threshold
+$\varepsilon_0$ ensures the target, face, wire and chart conclusions for
+every allowed calibration and every local shift. The coordinate-to-color
+step is the elementary inequality
+$\|a\|\leq\sqrt{\dim(G_{\rm color})}\max_j|a_j|$.
+
+Finally the CAB construction is sewn back without changing the physical
+field. Let $\mathcal B$ be the auxiliary configuration map built from the
+original field $V$ and its frozen-link data, and let $a=D'+gz$ be the desired
+active read. Define $\chi(a)$ to be $a-\mu_{\rm CAB}$ on active coordinates
+and zero on frozen coordinates. The sewing identity is, link by link,
+\begin{equation}\label{eq:actual-palette-cab-shelter}
+ \mathcal B(\mu_{\rm CAB}+\chi(a))=V_{\rm sewn}(a),
+\end{equation}
+where $V_{\rm sewn}(a)$ uses the prescribed tape $a$ on active links and
+the original stored values on frozen links. On a trunk both sides are the
+identity. On an active link the auxiliary mean cancels and leaves exactly
+the prescribed tape $a$. On a frozen link the correction is zero and the
+stored link is unchanged. Thus the plateau bounds
+apply to the actual sewn configuration. This proves the local beacon
+receipt used in the socket argument; its uniformity in all stores,
+forests, tags and periods is the uniformity of the chart, reserve and
+wedge purchases, before the pilot is chosen.
+
+Now fix one such selected field, with $0<\beta\leq4x$, local
+width $0<d\leq u t$, chosen broad-response width $\lambda\geq L_0$,
+and arc $\lambda t$. Suppose its budget certificate gives
+both the chart compatibility needed for the beacon and the auxiliary
+sector comparison, and suppose the all-matched response estimate above
+holds. For each matched pilot the actual response receipt gives the
+endpoint Pours bound with the common constant $\ell$. The deterministic
+argument above gives zero socket under
+$\mathsf{Toned}(2B,q_i,z_p,\varepsilon t/\operatorname{coupling}(\beta))$.
+The fee $\varepsilon t/\operatorname{coupling}(\beta)$ is nonnegative.
+Thus one and the same selected field satisfies both palette clauses for
+all matched pilots. This is the exact two-clause output used in the later
+opacity estimate; it is not obtained by selecting a different field for
+each pilot.
+
+The source's assembly uses these inputs in a fixed order. An enlarged
+patch supplies the local chart, while the separate port/log-chart estimate
+and the distant-door estimate supply the far-door bound. The annular
+response supplies its own fixed-scale response receipt; it is not the source
+of the port constant.
+Combining these with the all-configuration weighted palette estimate gives
+the two hypotheses of the proposition on one selected sector. The
+correlated-warning bound of Section~\ref{sec:gaussian-warnings} prices the
+probability of violating many such local conditions, while
+Section~\ref{sec:warning-safety} proves the deterministic likelihood and
+row plateaus on the small-fluctuation event. The annular argument in
+Section~\ref{sec:packet-annulus} controls the energy outside the packet
+core. None of these three statements alone is the all-matched Pours
+estimate; that part remains tied to the global weighted-kernel supplier.

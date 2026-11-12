@@ -1,0 +1,232 @@
+\section{Uniform bounds for arbitrarily many slab copies}
+\label{sec:actual-slab-copy-bounds}
+
+The centered estimates give more than bounds for a fixed number of fields.
+They also control arbitrarily long strings of reflected copies with one
+constant per insertion. This distinction is needed to construct bounded
+operators on the reflection-positive Hilbert space. We prove that implication
+on the same selected family and the same order of limits.
+
+Write $a_k$ for its decreasing mesh scales, with $a_0=1$ and $a_k\to0$.
+We use the scale inequality
+\begin{equation}\label{eq:slab-mesh-gentle}
+ a_{k+1}\geq c_*a_k^2\qquad(c_*>0),
+\end{equation}
+supplied by the selected mesh. A word is a finite ordered list of distinct
+points with raw field labels; its length is denoted by $n$. Reflection
+reverses the word, reflects the points in the time-zero plane, and applies
+the corresponding reflected, conjugated labels. Fix a grade bound $D$ and
+a bound $R$ for the norms of the raw labels. All constants below may depend
+on $D,R$ and the selected family. They will not depend on $n$, the slab
+width, its separation buffer, or the number of copies.
+
+The two inputs from the selected construction are the centered service of
+Section~\ref{sec:selected-centered-service}, with its uniformity over
+bounded label sets, and the smooth point limits of that very family. We
+retain its normalization, permutation and translation symmetries, and
+reflection positivity, together with the positive-word Hilbert space and
+contractive heat semigroup constructed earlier. We use the expanding order: first the fine mesh limit at a suitable fixed
+period, then the cofinal period limit. The centered estimates and point
+limits must use this same order. No bound at every fixed period is needed
+for the argument below.
+
+\subsection{One price for the entire reflected family}
+
+For every $D,R$ there are $F\in\mathbb N$, $J>0$, and $P=D+1$ such that,
+for $k\geq F$, every label of grade at most $D$ and norm at most $R$ has
+centered root price at most
+\begin{equation}\label{eq:slab-one-price}
+                         J a_k^{-P}.
+\end{equation}
+Here the price includes every signed-coordinate transform and adjoint of
+the label, as well as the chamber interiority and stencil fit needed to
+apply the planted inequality.
+
+To see the uniformity, first bound all those transformed labels by a
+single $Q>0$. There are only finitely many grades and signed-coordinate
+transformations. On each finite-dimensional grade space each transformation
+has finite operator norm, and adjunction preserves the raw norm. We do
+not assume that the signed-coordinate action is isometric. Apply the
+centered service in each grade $d\leq D$, with norm bound $Q$ and exponent
+slack $1$. In the expanding formulation an arbitrarily small additive
+error is allowed; taking that error to be $1$ gives
+$A_d a_k^{-(d+1)}+1$. Since $a_k\leq1$, this is at most
+$(A_d+1)a_k^{-(d+1)}$. Take the maximum of the finitely many grade
+thresholds and constants and use $d+1\leq P$. Fixed stencils fit eventually
+at every such reference scale. For a fixed word only finitely many labels
+and orientations occur, so their eventual mesh and period requirements
+have a common tail. The price $J$ itself was selected before that word.
+
+\subsection{Two scales for the main word and the exterior}
+
+We first record how to combine different centered prices. At finite cutoff
+let $T$ be a link-cell tiling, and let $Y$ be an aligned subdivision of it.
+Suppose main insertions lie in distinct $T$-cells, and no exterior insertion
+lies in those cells. The exterior insertions may share a $T$-cell, but lie
+in distinct $Y$-cells. Suppose all required margins and stencil fits hold.
+If the centered price of each main insertion is $A$, and that of each
+exterior insertion is $X\geq0$, then
+\begin{equation}\label{eq:slab-mixed-cells}
+ \left|\mathbb E\left[\prod_{i\in I}f_i\prod_{j\in E}g_j\right]\right|
+                 \leq A^{|I|}X^{|E|}.
+\end{equation}
+These are moments of the original observables; no absolute values have
+been inserted inside the expectation.
+
+Here is the extra point when several exterior fields share a coarse cell.
+Move that cell to the home cell by its signed reflection, transforming all
+its labels accordingly, and let $G$ be the product of its $h$ exterior
+factors. Its coarse root is obtained by copying the entire product to all
+$M_T$ coarse cells. The resulting $M_Th$ factors lie in distinct fine
+cells: equality of their fine cells first forces equality of their coarse
+cells, by alignment, and then equality of the original factors, by their
+fine-scale separation. Reflections preserve the fine margins and
+separation. The planted inequality in $Y$, together with the one-field
+root bounds, therefore gives
+\[
+       |\mathbb E[T\text{-full-copy}(G)]|\leq X^{M_Th}.
+\]
+Taking the $M_T$th root bounds the coarse root of $G$ by $X^h$.
+The empty product is covered by the same argument. The chamber-interior
+property is preserved under finite products. For the main insertions the
+one-field coarse root bound is the bracketing and copied-orbit argument
+of Section~\ref{ex-centered-estimates}. Apply the coarse planted inequality
+to these main insertions and the grouped exterior products. Their coarse
+cells are distinct. Multiplying their prices proves
+\eqref{eq:slab-mixed-cells}.
+
+We also need to place all those cells without paying for the number of
+main replicas. Suppose the main points have only $N_0$ residue patterns
+modulo $a_m\mathbb Z^4$, and choose levels
+$m\leq k\leq l\leq b$ satisfying
+\begin{equation}\label{eq:slab-two-room}
+ N_0(10a_k)<a_m,\qquad |E|(6a_b)<a_l.
+\end{equation}
+Assume main--main and main--exterior sup distances exceed $a_m$, and
+exterior--exterior distances exceed $a_l$. In each coordinate, the
+$N_0$ patterns forbid at most $N_0(10a_k)$ of the possible coarse offsets
+when a margin of $5a_k$ is required. Thus one can first place all main
+patterns in such margins. At the fine lattice level the identical
+argument is a count of forbidden residues; scale divisibility gives the
+same strict inequalities.
+
+Choose the exterior offset within one aligned cell of side $a_l$.
+The second inequality in \eqref{eq:slab-two-room} lets us give every
+exterior point a margin of $3a_b$. This changes the main offset by at
+most $a_l\leq a_k$. Allow also independent perturbations of the main
+points by at most $a_k$ in every coordinate. Their original margin
+$5a_k$ then leaves a margin of $3a_k$. This is why the first placement
+uses $5$, rather than $3$, fine spans. The same estimate remains valid
+after rounding to the fine mesh: if two coordinates differ by at most
+$K a_N$ with $K$ a nonnegative integer, their ceilings in units $a_N$ differ by at most $K$ lattice
+steps. Congruent unperturbed main patterns have identical coarse
+residues. Thus the number of forbidden patterns stays $N_0$, even
+though every occurrence may be perturbed independently.
+
+Apply \eqref{eq:slab-mixed-cells} at that cutoff. To pass to continuum
+points, first take a nearby generic configuration where the prescribed
+point-limit theorem applies and where all the strict separation
+inequalities remain valid. At sufficiently large period there is no
+wrapping collision; at sufficiently fine mesh the rounded configuration
+has the required separations and margins. The centered bounds hold on
+the same mesh and period tails. Pass first to the mesh limit and then
+to the period limit. Finally approach the original configuration through
+generic configurations. Their density and smoothness of the limiting
+correlations give \eqref{eq:slab-mixed-cells} there too. This argument
+uses independent perturbations of all slots, and so does not assume
+point convergence on a projection tie or on the lower-dimensional set
+of exactly congruent configurations.
+
+\subsection{Paying for the main word before choosing its exterior}
+
+Let $w\ne\varnothing$ lie in a time slab $(0,d)$ and have buffer $r$,
+where $0<r\leq1$: distinct points have sup distance at least $r$, and
+every time coordinate lies in $[r,d-r]$. Choose $m\geq F$ minimal
+with $a_m<r/32$, and put
+\[
+                   s=a_m\lfloor d/a_m\rfloor.
+\]
+Then $s\leq d<s+a_m$. The word remains in the slab $(0,s)$ with
+buffer $r/2$, and $s>0$ because the nonempty word has both boundary
+margins. Crucially, $s$ has been chosen before any exterior word.
+
+For later use, if $j\geq F$ is the first level with $a_j<\varepsilon$,
+where $0<\varepsilon\leq1$, then
+\begin{equation}\label{eq:slab-first-level}
+             t\varepsilon^2\leq a_j<\varepsilon,
+             \qquad t=\min(a_F,c_*)>0.
+\end{equation}
+For $j=F$ the lower bound follows from $\varepsilon\leq1$; otherwise
+$a_{j-1}\geq\varepsilon$ and \eqref{eq:slab-mesh-gentle} proves it.
+Set $b_0=t/32^2$ and $u=\min(b_0/21,1)$. For $n=|w|\geq1$, choose
+$k\geq F$ minimal with $a_k<\delta=u(r/n)^2$. Then
+\[
+ 20n a_k<20n\delta=20u r^2/n\leq20u r^2<b_0r^2\leq a_m.
+\]
+In particular $k\geq m$. Applying \eqref{eq:slab-first-level} again gives
+\begin{equation}\label{eq:slab-fine-lower}
+                 a_k\geq c(r/n)^4,\qquad c=tu^2>0.
+\end{equation}
+All main fields and their reflected versions can therefore be paid at
+this one level with price $A=Ja_k^{-P}$, and
+\begin{equation}\label{eq:slab-radius-produced}
+ A^n\leq C_0^n(n/r)^{4Pn},\qquad C_0=Jc^{-P}>0.
+\end{equation}
+
+To apply this to repeated insertion, write $w^\sharp=\tau_s\theta w$
+and $I_wv=w\,\tau_sv$. The word
+$(I_{w^\sharp}I_w)^qv$ consists of $2q$ alternating copies of the
+main word followed by one translated exterior $v$. Its reflection
+pairing contains $4qn$ main fields and $2|v|$ exterior fields. Every
+main field is congruent modulo $a_m\mathbb Z^4$ to one of the $2n$
+points of $w$ and $\theta w$, since $s$ is a multiple of $a_m$.
+Translation and reflection preserve separation. Consecutive slabs
+retain their buffer $r/2$, so the main points are mutually separated
+and separated from the exterior by at least $r/2>a_m$.
+These statements also follow directly by induction on $q$: attaching
+one reflected slab and one original slab preserves the boundary
+margins, adds $2n$ points, and translates the remaining word by $2s$.
+The final reflected pairing doubles the main count and creates exactly
+two exterior copies, independently of $q$.
+
+Fix now an arbitrary positive exterior word $v$. Its finitely many
+points have some positive mutual and boundary buffer $t_v$ and some
+finite grade and norm bounds. Choose $l\geq k$ with $a_l<t_v$,
+then $b\geq l$ beyond its one-field threshold and so fine that
+$2|v|(6a_b)<a_l$. Let $X$ be its one-field price at level $b$.
+Neither $l,b$ nor $X$ depends on $q$. The mixed estimate, with
+$N_0=2n$, yields
+\begin{equation}\label{eq:slab-replica-produced}
+ \big\|[(I_{w^\sharp}I_w)^qv]\big\|^2
+ \leq X^{2|v|} A^{4qn}
+ \leq X^{2|v|}\left(C_0^n(n/r)^{4Pn}\right)^{4q}
+ \qquad(q\geq0).
+\end{equation}
+For the empty exterior its cost is $1$ and the same proof applies.
+The exterior constant may depend on $v,w,r$; its independence of $q$
+is the essential conclusion.
+
+\subsection{The actual bounded slab operators}
+
+The repeated-insertion argument of Lemma~\ref{ex-train-bound} applies
+to \eqref{eq:slab-replica-produced}. It gives the operator at width $s$
+with norm at most $C_0^n(n/r)^{4Pn}$. To recover the original width $d$,
+first apply the heat contraction $E_{d-s}$ and then the width-$s$
+insertion. On a positive word this produces
+$w\,\tau_s\tau_{d-s}v=w\,\tau_dv$, exactly the required insertion.
+The norm cannot increase. Thus there is a common family of slab
+operators satisfying
+\begin{equation}\label{eq:slab-allcopy-produced}
+       \|A_d(w)\|\leq C_0^{|w|}(|w|/r)^{K|w|},\qquad K=4(D+1),
+\end{equation}
+for every nonempty word with the stated grade, norm and buffer bounds.
+For the empty word take $A_d(\varnothing)=E_d$ with norm at most $1$;
+the right side is then interpreted as $1$.
+
+The choices used to find a bounded operator may depend on an affordable
+buffer or label bound for a given word. They nevertheless produce a
+single operator: two such choices agree on all planted positive words,
+whose linear span is dense, and are bounded. Hence they agree everywhere.
+The common operator inherits every bound obtained with any admissible
+$D,R,r$. This proves the uniform all-copy estimate required by the
+phase construction, on the same hierarchy as the centered service.

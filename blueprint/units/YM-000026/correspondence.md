@@ -1135,3 +1135,23 @@ Its bounded independent pass checks regulator mass/sign, the three Wick-pair
 locations, normalized jets, and the same native Maxwell witness. This does not
 supply the physical annular representation or its propagation to integrated
 physical symmetry actions; the endpoint audit identifies those separately.
+
+## 2026-11-12 11:10 UTC — actual reader and phase/symmetry joins
+
+Integrated guarded curvature at c740f410 (layout-only carry from f2fc9a53),
+uniform Dawn selection at its previously reviewed fingerprint, all-Matched
+Pupil at 368bd695, slab-copy bounds at 3221838d, corrected phase-detector
+moments at 5c9df3d7 (q in N clarified), and angular actions at c244c72a.
+Adjacent evidence and independent review logs record exact source scope.
+Dawn's same-history covariance binding was independently checked; guard
+now supplies its power-small mask input. Exact sharper reserve wording
+remains scoped in guard rather than claimed as a different estimate.
+
+Slab production proves Bench/AllCopy from CellHyp with two-scale exterior
+group roots and replica-independent constants. Detector moments prove
+B15–B18/Funds from the actual corrected trial polynomials and retain the
+real-grid reflected-word identity. Angular actions prove the same-Q
+relative-Casimir correction, actual rotation laws and normalized Haar
+stress average; physical Ward propagation and its same-Track comparisons
+remain explicit inputs. The held physical-annulus draft is not integrated.
+These bounded passes do not certify global closure or human acceptance.

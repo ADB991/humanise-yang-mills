@@ -1,4 +1,4 @@
-# Collaborative checkpoint — 12 November 2026, 10:50 UTC
+# Collaborative checkpoint — 12 November 2026, 11:10 UTC
 
 This is an **incomplete author draft**, not a complete proof of existence.
 Local agent reviews do not establish whole-proof closure or human acceptance.
@@ -12,7 +12,7 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
   your claim. Helper PRs target this branch. `main` contains the earlier
   747-page checkpoint merged through PR #35; this branch continues that draft.
 - Article: `manuscript/existence.tex`; compiled snapshot:
-  `manuscript/existence.pdf` (783 pages). Page count describes an artifact,
+  `manuscript/existence.pdf` (809 pages). Page count describes an artifact,
   not proof completion.
 - [Copy-and-paste agent prompt](AGENT-PROMPT.md).
 - [Manifest of included and unintegrated sections](checkpoint-manifest.json),
@@ -45,14 +45,13 @@ trace Crown/Eve/weighted/construction arguments. The parent retains integration.
 
 The #26 claim remains valid until **2026-11-12 16:40 UTC**:
 
-- Parent: integration, native endpoint closure audit, and the free Maxwell
-  collar Ward producer. Global weighted Gram/move/source, short covariance and
-  coherent stress normalization now have bounded independent passes.
+- Parent: integration and native endpoint closure audit. Global row/source,
+  short covariance, stress normalization, Maxwell Ward, slab-copy, corrected
+  detector moments and actual angular-action calibration have bounded passes.
 - `lattice_draft`: actual same-history shrinking-shell economics and the
   annular Ward-field representation, newly exposed by the refreshed blueprint.
-- `limits_draft`: guarded-curvature/read repairs and the all-Matched palette
-  warning/Pupil proof. The latter consumes global weighted row estimates;
-  a posed reader comparison alone does not supply it.
+- `limits_draft`: physical Ward propagation, shell/derivative commutators and
+  the actual nonzero charge scalar. Guard and all-Matched Pupil repairs now pass.
 - `independent_review`: independent mathematical/source checks and a refresh of
   the remaining supplier map after the rank, equation and derivative joins.
 
@@ -80,18 +79,22 @@ This update adds the global actual row/source bounds, the common all-period
 short covariance, and the derivative/compact-jet/coherent-sign normalization
 argument. The free Maxwell collar Ward calculation has also passed bounded independent
 review and is included in this checkpoint. Physical annular Ward production
-remains in progress.
+remains in progress. This update also supplies uniform all-copy slab bounds,
+all powers of the actual corrected phase detectors, and the exact angular
+intertwiner/stress-averaging construction. The last retains the physical
+Ward-propagation inputs; detector moments retain the real-grid reflection input.
 
-Uniform Dawn selection remains outside the PDF pending guard production. The two unintegrated centered-budget and centered-production files
+Guarded curvature and uniform Dawn selection now appear in the PDF, as does
+the distinct all-Matched warning proof. The two unintegrated centered-budget and centered-production files
 are historical alternative-route drafts. Unfrozen work in agent clones is not
 represented as part of this PDF.
 
 ## Remaining closure and editorial work
 
-The working frontier includes quantitative reader production, all-compatible
-warning and same corrected-compiler purchases, the precise analytic inputs of the rank and comparison chapters,
-physical shrinking-annulus Ward representation and its propagation to actual
-translation/angular symmetry actions, trace sensor/branch receipts, and a
+The working frontier includes matching the retained paid local inputs to the
+same corrected-compiler history, actual physical shrinking-annulus Ward
+representation (held for substantive corrections), its physical charge
+propagation, real phase-grid approximants, trace sensor/branch receipts, and a
 complete dependency/axiom/scope audit. Recent joins resolve some witness-binding
 questions; they do not establish every quantitative premise of every chapter.
 
@@ -113,13 +116,13 @@ expansion, package **all** unfinished mathematical, audit, review and editorial
 work into separate agent tasks, push that handoff, release parent scopes and stop
 both parent and subagents. The final pass is reserved for the maintainer's later
 request. This supersedes the earlier reset instruction. See `USAGE-HANDOFF.md`.
-Last check10:45UTC:51% remaining; next11:00UTC. No background monitor is installed.
+Last check10:58UTC:49% remaining; next11:13UTC. No background monitor is installed.
 
 ## Validation and provenance
 
 `python3 scripts/check_blueprint.py` passes2 units; it does not verify Lean or
 mathematics. `latexmk -cd -pdf -interaction=nonstopmode -halt-on-error
--outdir=build manuscript/existence.tex` builds783 pages with no overfull boxes,
+-outdir=build manuscript/existence.tex` builds809 pages with no overfull boxes,
 undefined references or missing glyphs. New pages received sampled visual QA;
 exact commands, samples and earlier failed layout attempts are in `validation.md`.
 No fresh Lean build/axiom replay; inherited source evidence has its own limits.

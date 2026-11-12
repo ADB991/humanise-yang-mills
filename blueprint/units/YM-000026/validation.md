@@ -286,3 +286,25 @@ from the review clone; parent-authored review records preserved separately.
 Structural checker and whitespace check rerun before commit. No Lean edits,
 fresh Lean build or axiom replay. New native symmetry-propagation obligations
 remain open; this artifact is not a whole-proof closure certificate.
+
+## 2026-11-12 11:10 UTC — 809-page checkpoint
+
+Actual latexmk builds succeeded at 796, 799 and 809 pages after integration
+of guard/Dawn/slab, detector powers, and angular/Pupil packages. First guard
+build failed at an unescaped underscore in source-helper wording and had
+two long displays/prose overflows. Replaced that wording by ordinary mathematics
+and reflowed the displays; the reviewer checked exact editorial carry.
+Final PDF is 4,116,812 bytes. Final log has no overfull boxes, undefined
+references or missing glyphs. Rendered 20 pages from the 799-page intermediate
+(143–147,619–629,701–704) at scale1100; viewed all four contact sheets in
+/private/tmp/ym-qa799. Rendered 12 added Pupil/angular pages from the 809-page
+PDF (282–287,734–739) at scale1300; viewed both sheets in /private/tmp/ym-qa809.
+No clipping, overlaps or excessive displays seen at overview resolution.
+The earlier samples retain their reviewed content although pagination shifts.
+
+Structural checker passed after final manuscript metadata addition; whitespace
+check rerun before commit. Restored prior metadata list order to avoid unrelated
+reordering. Live issues26/33/34 reread before submission: parent claim unchanged;
+external trace claims still active. No fresh Lean build/axiom replay or source
+edits. Reviews are bounded, conditional agent passes; global proof closure and
+human acceptance remain outstanding. Weekly usage10:58UTC49% remaining.
