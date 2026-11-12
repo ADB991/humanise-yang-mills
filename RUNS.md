@@ -6,6 +6,7 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
+- LIVE: #47 C06 revision per review PR #80. Claim https://github.com/hairer/humanise-yang-mills/issues/47#issuecomment-6835524743, until 2026-11-13 20:30 UTC, session ADB991-claude-20261112-6574, branch claude/issue-47-6574 (base codex/existence-monograph), PR: none yet.
 (none live). Claim on #46 revision released (https://github.com/hairer/humanise-yang-mills/issues/46#issuecomment-6835149363).
 - Own draft PRs (base `codex/existence-monograph`): #69 (C03, `claude/issue-44-c853`), #72 (C05, `claude/issue-46-0c65`, revision 2 at 889deac answering review #79), #73 (C06, `claude/issue-47-8949`).
 - Reviews by schmittj (changes requested, nothing false): C03 -> PR #77 (on #69), C06 -> PR #80 (on #73), C04 -> PR #76 (on merged #66). Next run: post a new author CLAIM on #47 and revise #73 per `results/C06/review/` on PR #80. Main items: `predictor-branch.tex` fine paths should start at Ly+i (lines 165, 181); a proof or reference for nearest-point projection onto the group (source `YM.Gauge.nearest_tube`/`nearest_approximate`, note `blueprint/background/balaban-gauge-averaging.md`); the gaussian-warnings implication; the ledger X1/X3 producers. Then do the same on #44 for #69 per PR #77 (limits.tex 303–305 wrong sentence; `YM.Table.adj`). C05 needs a renewed independent review; don't review it yourself.
