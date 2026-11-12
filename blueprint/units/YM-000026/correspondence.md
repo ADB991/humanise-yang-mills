@@ -1237,3 +1237,13 @@ pairing separation and its applications have an additional independent parent
 review in `reviews/classifier-ranging-parent-review.md`. The selected interacting
 application retains its own common-data and convergence obligations; this free
 result does not discharge the complete existence argument.
+
+## Selected-course binding, narrowly scoped
+
+`selected-course-binding.tex` proves the binding on the literal selected family
+from Run.bought and generic monotonicity of paid schedules, including the full
+plateau interval and global period condition. It does not recover an internal
+franchise receipt for an already fixed run. See its source evidence and exact
+independent review; the next C12/C13 audit should compare the actual exported
+Chateau rated/warrant/market outputs with the required local consumer inputs,
+rather than automatically invent a new raw-receipt or Launch obligation.

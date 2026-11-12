@@ -176,3 +176,13 @@ no whitespace diagnostics (exit status 1 because the file is new).
 `python3 scripts/check_blueprint.py` was attempted; it could not run because
 this isolated clone lacks the coordinator-owned
 `blueprint/units/YM-000026/unit.json`. No TeX or Lean build was run.
+
+## Subsequent narrowed result
+
+The later `selected-course-binding.tex` and its evidence supersede this early
+frontier: Run.bought supplies Binding on literal R.family; generic Paid weakening
+is proved. The source's internal franchise receipt is not exported for an already
+fixed R, but that alone is not a new analytic obstruction. The next comparison
+must use the actual exported Chateau rated/warrant/market outputs where sufficient,
+then match the exact local consumer. Do not impose a stronger raw-receipt task
+without showing it is required. Exact review findings are in reviews/.

@@ -29,6 +29,10 @@ They do not prove dependency closure. Human acceptance remains separate.
 All C packages can begin their own audits in parallel. Edits are disjoint, but
 mathematical completion may wait for another package. No group is presumed to
 have no incoming dependencies merely because it is early in the current PDF.
+Track dependencies at theorem/output level: C16, for example, contains both
+an early public-run constructor and the final assembly. Opposite edges between
+two packages are not by themselves a circular proof; a cycle between the actual
+mathematical premises and conclusions is.
 
 ## Required input/output ledger
 

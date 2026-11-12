@@ -157,3 +157,13 @@ finite-grade applications are still subject to the closure ledger. The selected
 course audit now identifies Metering.cost as the existing Launch supplier; the
 remaining join is the exact public-run specialization of the paid local course,
 not a new independent Launch construction. No global closure is asserted.
+
+## 13:38 UTC narrowed selected-course result
+
+Literal-family Binding from Run.bought and generic Paid weakening are now
+proved in selected-course-binding.tex. The attempted stronger recovery of the
+internal franchise receipt for an already fixed R was rejected in review.
+Compare actual exported Chateau rated/warrant/market outputs with local consumers;
+the absence of an exported raw receipt is not a new analytic obstruction.
+The Ward final-binding audit and OPE closure refresh provide additional exact
+interface ledgers, not whole-proof acceptance. See their current review records.

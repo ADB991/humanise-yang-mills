@@ -1,0 +1,99 @@
+\section{Binding the selected local course}
+\label{sec:ex-lattice-selected-course-binding}
+
+The public construction returns a run together with a continuation on its
+selected history.  Specializing that continuation to the run's own bolt,
+schedule, transfer family and doors yields a binding on the very family used
+by the run.  This section proves that same-family assertion and records the
+monotonicity needed when comparing paid schedules.  The global schedule and
+same-history identities are those of Sections~\ref{sec:common-funded-history}
+and~\ref{prop:ex-original-history-attachment}.
+
+Write $R$ for the run selected by the public construction and put
+\[
+ C_R=\bigl(\operatorname{trail}(T_R),t_R,S_R\bigr),
+ \qquad A_R=\mathcal L(C_R),
+\]
+where $T_R$ is its bolt, $t_R$ its schedule, $S_R$ its transfer family, and
+$\mathcal L(C)$ denotes the directed level schedule of a course $C$.  The
+family $C_R$ is exactly the family stored in $R$, with its fixed holonomy,
+label frames and local sections.
+
+\begin{proposition}[Binding on the selected family]
+\label{prop:ex-lattice-selected-course-binding}
+The continuation stored in $R$, specialized to its own bolt, schedule,
+transfers and doors, supplies a binding $B_R$ for $C_R$.  Its price map is
+the selected run's price map.
+\end{proposition}
+
+\begin{proof}
+The continuation is universally applicable to a bolt, its nested factor,
+a schedule, transfer data and doors, subject to the making, climbing and
+freight conditions.  The run stores these very objects and receipts: its
+tuning supplies nesting, its acceptance data supply the openings, its making
+data define the family, and its carrying and freight records supply the
+remaining steps.  Specializing all arguments to those stored objects gives
+the family $C_R$ by its definition.  The resulting calibrated package
+contains a binding $B_R$ on $C_R$, with price map equal to the selected
+run's price map.  The binding is constructed from the shape-port, attached
+path and shell comparison for that same alloy and bolt, so no separately
+selected family is involved.  In assembling the public run, the directed
+levels of this family are identified with the levels of the directed alloy;
+therefore the schedule used by the binding is $A_R$.
+\end{proof}
+
+We record the exact elementary monotonicity for the paid-schedule condition.
+For waits $U,V$ over the same bar, write $U\preceq V$ when their requests
+obey, pointwise in stage $j$ and scale $s$,
+\[
+ r_U(j)\le r_V(j),\qquad w_U(j,s)\le w_V(j,s),
+ \qquad p_U\le p_V.
+\]
+Here $r$ is the ready-time request, $w$ the window request, and $p$ the
+minimum-period request.  A schedule $A$ has stage map $J_A$, scale values
+$s_A(k)$ and period values $P_A(i)$.  Write $\mathsf{Pay}(U,A)$ when the
+fixed kernel, bar, stage, initial-stage, length and protection identities
+and the entry, scale and volume inequalities hold, together with the
+following two conditions:
+\begin{enumerate}
+\item the separate period condition $p_U\le P_A(i)$ for every $i$;
+\item for every $j$ from the required initial stage onward, there is a $k$
+      such that
+      \begin{equation}\label{eq:ex-lattice-paid-plateau}
+      \begin{gathered}
+      r_U(j)\le s_A(k),\qquad w_U\bigl(j,s_A(k)\bigr)\le k,\\
+      J_A(i)=j\quad
+      (k-w_U(j,s_A(k))\le i\le k+w_U(j,s_A(k))).
+      \end{gathered}
+      \end{equation}
+\end{enumerate}
+The lower endpoint in this interval uses truncated natural subtraction.
+These are the schedule conditions used in
+Section~\ref{sec:common-scale-selection}.
+
+\begin{lemma}[Weakening the paid-schedule requests]
+\label{lem:ex-lattice-paid-weakening}
+If $U\preceq V$ and $\mathsf{Pay}(V,A)$, then $\mathsf{Pay}(U,A)$.
+\end{lemma}
+
+\begin{proof}
+The fixed identities and entry, scale and volume inequalities do not depend
+on the wait.  The separate period condition for $U$ follows for every $i$
+from $p_U\le p_V\le P_A(i)$.  Fix a stage $j$ and take the same $k$ supplied
+by the plateau condition for $V$.  Its ready-time inequality implies
+$r_U(j)\le r_V(j)\le s_A(k)$.  Set
+$a=w_U(j,s_A(k))$ and $b=w_V(j,s_A(k))$.  Then $a\le b$, and truncated
+subtraction gives
+\[
+ \max\{0,k-b\}\le \max\{0,k-a\},
+ \qquad k+a\le k+b.
+\]
+Hence the interval of indices on which $J_A(i)=j$ for $V$ contains the
+interval required for $U$.  Also $a\le b\le k$, so the window bound for $U$
+holds.  Thus the same index $k$ verifies the entire plateau condition for
+$U$; this proves $\mathsf{Pay}(U,A)$.
+\end{proof}
+
+These results identify the binding family and compare paid-schedule
+requirements.  They do not themselves supply the subsequent local-service
+estimates.

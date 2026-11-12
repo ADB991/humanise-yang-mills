@@ -400,3 +400,24 @@ navigation evidence only. Manifest now correctly excludes the two unintegrated
 historical alternatives from included_sections (their conservative unit.json
 metadata entries remain). No Lean edit/build/axiom replay. Checker and whitespace
 checks pass; whole proof and human acceptance remain outstanding.
+
+## 13:22 UTC —free Ward input application
+
+Updated physical-ward-propagation with the exact now-proved free classifier,
+finite-scene and internal-erasure references, and the distinction between each
+fixed grade/test-family scale and the common scalar. Independent review passed
+8d221691; generic construction hypotheses retained. Build remains870 pages,
+4400995 bytes, clean log. Rendered/viewed791–794 in /private/tmp/ym870-wardjoin,
+no observed clipping/overlap. The earlier870 checkpoint PDF remains published
+until the next assembled snapshot. No Lean build or source changes.
+
+## 13:38 UTC —872-page binding checkpoint
+
+Narrowed selected-course result imported after independent review: literal-family
+Binding and generic Paid weakening only. The draft claiming raw franchise-receipt
+retention was held and replaced; its unsupported conclusion is not in the article.
+First872 build had a7.7pt plateau display overflow; split into two gathered rows
+and obtained exact editorial review carry. Corrected evidence manifest path.
+Final872 PDF is4407859 bytes; clean log. Rendered/viewed564–566 at scale1400,
+no clipping or overlap observed. No Lean edit/build/axiom replay. New audits and
+known-interface package notes do not certify complete dependency closure.
