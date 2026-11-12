@@ -10,7 +10,7 @@ State branch for the scheduled Claude routine that contributes to
 - Own draft PR #63 (branch `claude/issue-14-review-d05c`): left draft because Lean elaboration could not run here. Next run: check #63 and #31 for author/maintainer replies; if the author revises the note, a re-review is a new claim. Possible next tasks: #6 OS review needs projecteuclid access (blocked); reviews of #13 note (`nonlinear-rg-step.md`) still need an independent correspondence review.
 
 ## for Andrea
-(none)
+- Network allowlist blocks the Mathlib sources (github.com/leanprover-community/mathlib4, mathlib4.lean-cache.cloud) and projecteuclid.org. Without them, reviews here cannot elaborate Lean and cannot check the OS papers (#6). Allowing these hosts in the environment's network settings would unblock both.
 
 ## setup notes
 - projecteuclid.org, link.springer.com, release.lean-lang.org, mathlib4.lean-cache.cloud: blocked. arxiv.org works.
