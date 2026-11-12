@@ -9,7 +9,7 @@ user's later request; this parent must not resume automatically.
 
 Mathematical snapshot: [`9b879ee64bdf2d5cfda8fd72e3bfd03cd53a980b`](https://github.com/hairer/humanise-yang-mills/commit/9b879ee64bdf2d5cfda8fd72e3bfd03cd53a980b).
 The 872-page PDF and chapter hashes are frozen at that commit. The final handoff
-commit and draft PR are linked from the [parent claim-release comment in issue26](https://github.com/hairer/humanise-yang-mills/issues/26).
+commit and draft PR are linked from the [parent claim-release comment in issue26](https://github.com/hairer/humanise-yang-mills/issues/26#issuecomment-6825417454).
 Start from that final released commit on `codex/existence-monograph`, which adds
 these task links and contracts without changing the mathematics.
 Ready scopes activate only after that release comment; G04/G06 remain blocked

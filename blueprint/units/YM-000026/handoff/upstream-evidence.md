@@ -19,3 +19,15 @@ If these files are absent from your checkpoint clone, fetch canonical main and
 read these pinned versions with `git show <commit>:<path>` (or the links above).
 Recheck for later contributions without assuming they preserve the same evidence.
 Do not merge or modify their owned files as part of a chapter package.
+
+## Review arriving during publication
+
+[PR63](https://github.com/hairer/humanise-yang-mills/pull/63) was observed while
+publishing the final release. It is a non-author Lean-correspondence review of
+issue14's rank/determinant/stress interface and **requests changes; no acceptance**.
+Its reported findings concern omitted hypotheses/quantifiers and source-name or
+consumer mismatches, including reception/castle and the stress/shell interfaces.
+C12/C13/C14, C16 and G01/G06 must read that review and its live responses before
+reusing the interface note. The stopped parent has not independently checked the
+findings or altered mathematical text in response; reconciliation belongs to the
+assigned packages. The review's separate output and claim remain external.
