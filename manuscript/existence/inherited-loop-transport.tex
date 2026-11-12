@@ -48,14 +48,24 @@ All tensors below use this unconjugated bilinear convention. On
 real momenta, $d_0(-p)^{\mathsf T}=d_0(p)^*$.
 
 \subsection{A strip bound with four finite differences}
-Put $\mu=L^{-1}$. Let $X$ be the derivative of the stationary
-chart, represented by a common coarse-to-fine Fourier bridge.
+Put $\mu=L^{-1}$. Let $W_i$ be the installed matrix of the step on
+the $i$th torus and let $X$ be its common coarse-to-fine Fourier
+bridge, the function denoted $\Phi$ in
+Section~\ref{sec:ex-selected-stationary-linear-data}: on every torus of
+the family, $X$ at the grid momenta is the Fourier representation of
+$W_i$. By that section $W_i$ is the fine tangent at zero of the
+gauged-back, recentered stationary representative; it is not the
+tangent of the branch in the original tree chart, which differs from
+it by an infinitesimal gauge transformation.
 Assume that, on a fixed positive coarse strip of width $\sigma$,
-its fine differences of order $j\le2$ obey the bounds
+$X$ is holomorphic and periodic and, for every ordered word of at
+most two fine coordinate differences, of length $j\le2$,
 \begin{equation}\label{eq:inherited-bridge-price}
                       |\Delta^j X|\le D\mu^{1+j}.
 \end{equation}
-These are the bridge bounds supplied by the stationary chart.
+This is the bridge bound \eqref{eq:ex-vertex-cruise}; for the retained
+tower it is proved in
+Section~\ref{sec:ex-selected-stationary-linear-data}.
 
 Apply the finite-difference division of
 Lemma~\ref{lem:ex-soft-factorization} to the order-four picture
@@ -71,9 +81,14 @@ The extra phase is a unit lattice translation of the remaining
 coefficient; its cost is absorbed in $C$. Thus every term has
 exactly two differences on each bridge leg.
 
-Pull this representation back by $X$. On a smaller fixed coarse
-strip, choose it narrow enough that all fine phases lie in the
-coefficient strip, in particular $\mu\sigma\le w$. The
+Pull this representation back by $X$. The width $\sigma$ is not
+changed. Instead the blocking side is restricted: we require
+\begin{equation}\label{eq:inherited-side-guard}
+                              \mu\sigma\le w ,
+\end{equation}
+so that for coarse momenta in the strip of width $\sigma$ all fine
+phases lie in the coefficient strip of width $w$. Here $w$ and the
+constant $C$ depend on $\tau$ only and were chosen before $L$. The
 exponentially weighted coefficient sum bounds every displaced
 contraction uniformly. For each pair of legs,
 \eqref{eq:inherited-bridge-price} contributes
@@ -82,13 +97,13 @@ contraction uniformly. For each pair of legs,
 \]
 Summing the fine anchor within one coarse block contributes
 $L^4=\mu^{-4}$. Hence the complete common coarse picture $H$
-has, on a positive width $\sigma'$ depending only on $\sigma$,
+has, on the width $\sigma'=\sigma/4$,
 component bound
 \begin{equation}\label{eq:inherited-strip-gain}
                               |H|_{\sigma'}\le C'\Lambda\mu^2.
 \end{equation}
 The finite numbers of colour, direction, and difference addresses
-are included in $C'$, which depends on the fixed widths and $D$,
+are included in $C'$, which depends on $G$, $\sigma$, $\tau$ and $D$,
 not on $L$, the torus, or $\Lambda$. Normal convergence of the
 coefficient sums proves holomorphy. Their covariance under
 integer momentum shifts and that of $X$ prove periodicity of the
@@ -97,17 +112,20 @@ on a finite torus gives its exact recording identity for the
 linear pullback of the fine loop action.
 
 The nonlinear stationary pullback has the same second derivative.
-Indeed the fine loop action $V$ has $DV(0)=0$, and the stationary
-map $\psi$ satisfies $\psi(0)=0$ and $D\psi(0)=X$. The chain rule
-therefore reads
+Indeed the fine loop action $V$ has $DV(0)=0$. Let $\psi_i$ be the
+fine component of the gauged-back stationary representative on the
+$i$th torus; it satisfies $\psi_i(0)=0$ and $D\psi_i(0)=W_i$. The
+chain rule therefore reads
 \[
- D^2(V\circ\psi)(0)[a,b]
-       =D^2V(0)[Xa,Xb]+DV(0)[D^2\psi(0)[a,b]]
-       =D^2V(0)[Xa,Xb].
+ D^2(V\circ\psi_i)(0)[a,b]
+       =D^2V(0)[W_ia,W_ib]+DV(0)[D^2\psi_i(0)[a,b]]
+       =D^2V(0)[W_ia,W_ib].
 \]
-The coordinate and tree-gauge maps identify these with the actual
-inherited response; changes of allowed tags agree as germs.
-Thus $H$ records that response, with no additional error.
+The loop action is gauge invariant, so $V\circ\psi_i$ equals, as a
+germ, the inherited loop evaluated on the stationary branch in the
+original tree chart; and that function does not involve the choice of
+block representatives. Thus $H$ records the actual inherited response,
+with no additional error.
 
 \subsection{The alias formula and the coarse--fine equation}
 To prove the order at zero, use the real-momentum alias
@@ -136,19 +154,35 @@ per-volume errors tending to zero. Here both recording identities
 are exact.
 
 Write $K_f(k)=d_1(k)^*B(k)d_1(k)$ for the fine Gaussian form and
-$K_c(p)$ for the coarse one. The stationary Hessian equations
-imply, in the block Fourier coordinates,
+$K_c(p)$ for the coarse one, formed with the metric rows of the fine
+bed and of the coarse bed. The order statement uses, as an input, the
+two matching equations of the installed matrices for this pair of
+beds: with $Q_i$ the block mean and $\kappa$ the penalty coefficient,
+on every torus of the family
+\begin{equation}\label{eq:inherited-matching}
+ K_{f,i}W_i=Q_i^{\mathsf T}K_{c,i},\qquad
+ Q_iW_i=I-\kappa^{-1}K_{c,i}.
+\end{equation}
+These are the diagonal two-scale identities of the fine bed, the
+coarse bed and the tower; they are hypotheses of the one-step
+construction (Section~\ref{subsec:path-stationary-chart}).
+Stationarity of the branch and its Hessian gap alone do not identify
+an independently chosen coarse form; compare
+Section~\ref{sec:ex-thermal-contact-cancellation}. The first equation
+of \eqref{eq:inherited-matching}
+implies, in the block Fourier coordinates,
 \begin{equation}\label{eq:inherited-primal}
           K_f(k_l(p))N_l(p)_a=A_l(p)K_c(p)e_a,
 \end{equation}
 where $A_l(p)$ is the corresponding component of the adjoint
 block-mean map and the inverse block Fourier change of coordinates.
 It is analytic near zero for fixed $L$. To obtain
-\eqref{eq:inherited-primal}, differentiate the stationary equation,
-which gives $K_f X=Q^*K_c$, and diagonalize the fine Gaussian form
-in its alias blocks. This identity also follows on arbitrary real
+\eqref{eq:inherited-primal}, write $K_fX=Q^*K_c$ at the grid momenta
+and diagonalize the fine Gaussian form
+in its alias blocks. This identity then follows on arbitrary real
 momenta from its exact finite-grid versions by the preceding
-density argument. Since $K_c$ contains a curl on each side,
+density argument, using that the coarse sides tend to infinity and
+that both metric rows are continuous on the real momenta. Since $K_c$ contains a curl on each side,
 \[
                              K_c(p)=O(|p|^2).
 \]
@@ -216,3 +250,55 @@ bridge prices; its order-four property uses the all-period floor
 and the exact coarse--fine stationary equation. In particular it
 does not assume that the longitudinal alias amplitudes themselves
 are small.
+
+\begin{proposition}[The inherited loop picture]
+\label{prop:inherited-loop-picture}
+Fix $\sigma>0$, $D\geq0$ and $\tau>0$. There are $w>0$ and $C'\geq0$,
+depending only on $G,\sigma,D,\tau$, such that the following holds for
+every patch with blocking side $L$ satisfying $\sigma/L\leq w$ and the
+branch compatibility of the kernel, every sequence of coarse sides
+$m_i\to\infty$ with fine sides $n_i=Lm_i$ and block steps with that
+patch, every clip $p$, path $R$, fine bed $B$, coarse bed $T$ and
+bridge $X$. Assume:
+\begin{enumerate}
+\item $R$ has path bounds $(\tau,A,\Lambda)$ in $p$ for some $A$ and
+ some $\Lambda\geq0$;
+\item $X$ is holomorphic and periodic on the strip of width $\sigma$
+ and satisfies \eqref{eq:inherited-bridge-price} there, and for every
+ $i$ it is the common Fourier representation of a matrix $W_i$;
+\item for every $i$ there are a forest and an analytic map $\rho_i$
+ into its tree chart with $\rho_i(0)=0$, stationary near the origin for
+ the tested action of every choice of block representatives, these
+ tested actions being real analytic near the origin, such that the
+ derivative of $t\mapsto\rho_i(tx)$ at $t=0$ is the linear prediction
+ of the tree chart from $W_i$; and the matching equations
+ \eqref{eq:inherited-matching} hold for $W_i$, $B$ and $T$;
+\item the metric row of $T$ has a strip bound at some positive width,
+ the metric row of $B$ has a strip bound at width $\sigma/L$, and the
+ floor of $B,p$ holds at every torus side with one constant
+ $\varepsilon>0$.
+\end{enumerate}
+Then there is a two-leg picture $H$ such that, for every $i$, $H$
+records exactly the second Taylor coefficient of the inherited loop
+of $R$ along $\rho_i$ on the $i$th coarse torus; every component of
+$H$ is holomorphic and periodic on the strip of width $\sigma/4$ and
+bounded there by $L^{-2}\Lambda C'$; and every component has order
+four at zero momentum along real rays.
+\end{proposition}
+\begin{proof}
+This is the content of the present section. The picture is the
+pullback by $X$ of the fine picture $S$ of the first subsection, which
+needs~(1). The strip bound is \eqref{eq:inherited-strip-gain}, proved
+under \eqref{eq:inherited-side-guard} and~(2). The recording identity
+for the nonlinear pullback uses the installed tangent in~(3). The
+order at zero is proved in the last two subsections from the alias
+formula, the first equation of \eqref{eq:inherited-matching}, the
+strip bounds and the floor in~(4), and the Ward identities
+\eqref{eq:inherited-transverse}.
+\end{proof}
+
+In the source the hypotheses of this proposition are stated for the
+standing data of the one-step construction, which contain in addition
+a positive Hessian gap of the branches and the response data of
+Section~\ref{sec:ex-selected-kinetic-response}; those play no role in
+the argument above.
