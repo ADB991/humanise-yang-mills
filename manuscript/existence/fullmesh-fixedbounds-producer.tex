@@ -134,13 +134,21 @@ inequality in distinct interior cells.
 Then for each finite field list $v$, difference list $l$, and $r>0$, there
 are $B<\infty$ and a mesh threshold $N_0$ such that for every $N\ge N_0$,
 every period $p$, and every periodic position tuple $x$ such that any two
-distinct slot indices have sites separated by at least $r$ in physical units
+distinct slot indices $u\ne u'$ have sites $x_u,x_{u'}$ with
+\[
+ a_N\,\operatorname{sep}_{N,p}(x_u,x_{u'})\ge r
+\]
 (even if the corresponding insertions agree),
 \[
                          |K_{N,p;v,l}(x)|\le B.              \tag{7}\label{eq:ex-fullmesh-bound}
 \]
 The threshold is independent of $p$; the bound is independent of both $N$
-and $p$.
+and $p$. Here $\operatorname{sep}_{N,p}(y,y')=\max_{\alpha}|y_\alpha-y'_\alpha|_{\rm per}$
+is the periodic maximum-coordinate distance of two sites of the period-$p$
+torus at mesh $N$, where $|k|_{\rm per}$ denotes the distance from the integer
+$k$ to the nearest multiple of the side length $\ell_{N,p}$. Thus the
+separation is measured in the periodic $\ell^\infty$ metric, not the
+Euclidean one; the injectivity argument below uses exactly this metric.
 \end{theorem}
 
 \begin{proof}
@@ -182,11 +190,15 @@ This is uniform in the period: alignment gives the same physical side
 $a_\ell$ for every period index, once $N$ is sufficiently fine.
 
 The cell assignment is injective for a geometric reason. If two sites were
-assigned to the same cell, their periodic maximum-coordinate separation
-would be at most the integer tiling side $T.\mathrm{side}$ of that cell.
-Multiplying by $a_N$ would give physical separation at most
-$a_NT.\mathrm{side}=a_\ell<r$, contradicting the
-assumption. The three-span margin is exactly what the centering lemma needs
+assigned to the same cell, then in each coordinate both lie in one window of
+$T.\mathrm{side}$ consecutive residues, so their periodic coordinate
+distance is at most $T.\mathrm{side}$; hence
+$\operatorname{sep}_{N,p}\le T.\mathrm{side}$.
+Multiplying by $a_N$ would give $a_N\operatorname{sep}_{N,p}\le
+a_NT.\mathrm{side}=a_\ell<r$, contradicting the
+assumption. (With Euclidean separation one would instead need
+$2a_\ell<r$ in four dimensions; the statement above avoids this by using the
+$\ell^\infty$ metric throughout.) The three-span margin is exactly what the centering lemma needs
 to transport each local insertion from the centered tile to its assigned
 cell.
 
