@@ -1,0 +1,344 @@
+\section{The mixed marked compiler on the restarted history}
+\label{sec:actual-mixed-marked-compiler}
+
+We give the price calculation which turns the actual three-alphabet
+expansion of Section~\ref{sec:allarity-planted-compiler} into the upper
+and lower marked transitions. All marked integrals use the genuine fine
+representation $P$. Its auxiliary representation $P^0$ has only its
+additive remainder removed. The body packets in the two calculations
+are nevertheless the same corrected packets. This distinction is
+necessary for the normalization argument below.
+
+\subsection{Support currency and the three letter families}
+
+Fix a fine-to-coarse block map of positive integer side $L$, fine and
+coarse budget radii $B_f,B_c$ that are positive integers, and a finite
+marker set $W$. Let
+$\theta:W\to\Lambda_f$ and $u:W\to\Lambda_c$ satisfy
+$u=\operatorname{parent}\circ\theta$. Use the cover charge
+\[
+ \mathcal D_B(t,X)=\exp(t\,\operatorname{cov}_B X),\qquad
+ v=e+5,\quad e\ge0,
+\]
+where $\operatorname{cov}_B X$ is the minimum number of radius-$B$
+cubes covering $X$ whose union is connected. Write $X^\uparrow$ for the prescribed coarse
+neighborhood of the parent image of $X$. The radius comparison and
+cover estimate proved in Section~\ref{sec:inherited-activity-prices}
+give, when $B_f\le2B_c$,
+\[
+ L\operatorname{cov}_{B_c}(X^\uparrow)
+       \le15^4\bigl(L+10\operatorname{cov}_{B_f}X\bigr).
+\]
+Consequently, if $10\cdot15^4(v+2)\le L\sigma_f$, then
+\begin{equation}\label{eq:mixed-cover-charge}
+ \mathcal D_{B_c}(v+2,X^\uparrow)
+ \le T_e\mathcal D_{B_f}(\sigma_f,X),
+ \qquad T_e=\exp(15^4(v+2)).
+\end{equation}
+Indeed multiply the cover inequality by $(v+2)/L$ and exponentiate.
+This pays the additive covering cost before taking any marker sum.
+
+All nonnegative sum estimates below are first proved on finite
+subfamilies and then extended by monotone convergence.
+There are three letter families in one fixed sector and tag:
+body letters with empty marker support, lifted background packets,
+and nonempty-marker insertion letters. Coalesce background packets
+only when their complete activity address and marker support agree.
+Their zero-marker coefficients must reproduce the fine archived
+activity addresswise. Let $z_a\ge0$ be the body prices. For a
+background packet with fine support $X_b$ and paid price $A_b$, use
+\[
+       f_b=A_b/\mathcal D_{B_f}(\sigma_f,X_b).
+\]
+The input global packet bound is valid on every fine field, so evaluating
+it on the actual chart gives the pointwise bound $f_b$, including on
+unhealthy fields. For a regular insertion the analogous estimate holds
+on its healthy support; its original mask makes its value zero elsewhere.
+Division by the positive cover charge is therefore valid in both cases.
+Positive marker weights are included in these prices throughout.
+
+Assume the background site sums obey
+$\sum_{b:x\in X_b}A_b\le\eta$. Equation~\ref{eq:mixed-cover-charge}
+implies, for each marker $w$,
+\begin{equation}\label{eq:mixed-background-marker}
+ \sum_{b:w\in F_b}f_b\mathcal D_{B_c}(v+2,X_b^\uparrow)
+                         \le T_e\eta.
+\end{equation}
+Here $\theta(w)\in X_b$ whenever $w\in F_b$. There is no factor
+$L^4$ in this marker estimate.
+
+The corresponding coarse site estimate does have that factor. Choose
+one genuine fine site in the nonempty supported inventory of every
+background packet. At a fixed coarse site at most $L^4$ fine sites
+have that parent. The anchor-to-site estimate loses one cover exponent
+and has cost
+\[
+ \mathcal W(B)=(33B)^4\sum_{j\ge0}(j+1)^4e^{-j}.
+\]
+For completeness, for an anchor $a\in X$ and $x\in X$ the cover
+number is at least $\lfloor\operatorname{dist}(a,x)/(8B)\rfloor$.
+The number of anchors in its $j$th distance shell is at most
+$(33B)^4(j+1)^4$. Summing the exponential loss proves this
+period-independent constant. Thus the background site price at
+exponent $v+1$ is at most $\mathcal W(B_c)L^4T_e\eta$.
+
+Let $w_h\ge0$ be the insertion-letter prices, and suppose their
+marker-root sums at exponent $v+2$ are at most $a$. If every coarse
+site receives at most $g$ markers, choose one marker in each letter.
+The same argument gives site price $\mathcal W(B_c)ga$ at exponent
+$v+1$. On the actual replicated reader geometry $g=n$, the number of
+reader labels: the parent cell is fixed by a coarse site, and only its
+$n$ labels remain. Combining these bounds with a body site price
+$\delta$ gives
+\begin{equation}\label{eq:mixed-letter-price}
+ \Sigma=\delta+\mathcal W(B_c)L^4T_e\eta
+                         +\mathcal W(B_c)ga.
+\end{equation}
+The total marker-root price at exponent $v+1$ is at most
+$T_e\eta+a$. Empty-marker body letters do not contribute to it.
+
+\subsection{Payment of each connected integral}
+
+Fix multipliers $m,l\ge1$. The body-letter product estimate on the
+actual sector measure supplies the following stronger integral bound:
+if $I$ is a collection of body letters and $X_I$ is the product of
+their nonnegative absolute weights, then
+\[
+ M_I\int X_I\,d\nu\le\prod_{a\in I}z_a.
+\]
+Here $M_I$ is the product of their individual inflations: a letter
+with nonempty forced inventory contributes $m$, and any remaining
+body letter contributes $l$. These are the paid unmarked product
+estimates, with the same chart and corrected body alphabet as above.
+The measure $\nu$ is the Gaussian/Haar probability measure of that
+sector and tag. Each other letter has its pointwise price. In addition,
+every insertion letter designated as a remainder satisfies one of
+\begin{equation}\label{eq:mixed-shadow}
+ l h(\xi)\le w_h\quad\hbox{for all }\xi,
+ \qquad\hbox{or}\qquad
+ h=0\text{ off }E_h,\quad l\nu(E_h)\le1,
+\end{equation}
+where $0\le h\le w_h$ and $E_h$ is measurable.
+
+Let $C$ be a compatible connected collection of letters. Its full
+integrated coefficient, including its marker monomial, is denoted $b_C$.
+Then
+\begin{equation}\label{eq:mixed-club-integral}
+ t_C\|b_C\|_r\le\prod_{j\in C}b_j,
+ \quad
+ t_C=\begin{cases}
+ m,&C\text{ has nonempty forced inventory},\\
+ l,&C\text{ is unforced but is not entirely leading},\\
+ 1,&C\text{ is entirely leading}.
+ \end{cases}
+\end{equation}
+To prove this, split its product into body, background and insertion
+factors. The last two products are bounded pointwise by their prices.
+If the body set is nonempty, its inflation $M_I$ is at least $t_C$.
+In the forced case this uses the exact inventory identity: a forced
+site must belong to one of the body inventories. In the unforced
+nonleading case any body letter supplies $l$. The paid body integral
+therefore proves the estimate.
+
+If the body set is empty, compatibility forces the background set to
+be empty as well. A background packet has a nonempty fine inventory,
+whereas compatibility identifies the union of those inventories with
+the union supplied by the body letters. The component is now a product
+of insertion letters. If all are leading, its pointwise bound integrates
+against a probability measure. Otherwise choose one remainder letter.
+The first alternative in \eqref{eq:mixed-shadow} pays $l$ pointwise;
+the second restricts the whole product to $E_h$ and pays $l$ after
+integration. This proves \eqref{eq:mixed-club-integral} in every case.
+All integrals exist: the body-product majorant is integrable, the other
+factors are bounded, and the positive monomial weight can be divided
+out. Finite tag averaging preserves the inequality because its weights
+are nonnegative and sum to one.
+
+Here is the finite connected-support estimate with the precise smallness
+condition used here. Put $c_j=\operatorname{cov}_{B_c}X_j$,
+$a_j=b_j e^{vc_j}$ and $\widehat b_j=b_j e^{(v+1)c_j}$, and assume
+\[
+                (2B_c+1)^4\Sigma\le1.
+\]
+The sum of $\widehat b_j$ over supports meeting $X_i$ is at most
+$|X_i|\Sigma\le c_i$. To count rooted trees, start with
+$R_i^{(0)}=a_i$ and iterate
+\[
+ R_i^{(q+1)}=a_i\exp\left(\sum_{j:X_j\cap X_i\ne\varnothing}
+                                       R_j^{(q)}\right).
+\]
+These are the nonnegative sums over rooted trees of bounded height;
+the exponential's factorial divides out permutations of the children.
+Allowing repeated labels only enlarges the sum. Induction gives
+$R_i^{(q)}\le a_i e^{c_i}=\widehat b_i$ for every $q$.
+Each finite connected set containing $i$ has a spanning tree rooted at
+$i$, with weight the product of its $a_j$; its distinct labels ensure
+that the child permutations cancel exactly the exponential factorials.
+Its union charge is no larger than this product charge, by cover
+subadditivity. Passing monotonically to the tree limit therefore bounds
+the connected-set sum rooted at $i$ by $\widehat b_i$.
+A component containing a specified site contains at least one letter
+whose support contains that site. Summing the rooted bound gives site
+price at most $\Sigma\le e^\Sigma-1$. Likewise a component carrying
+a specified marker contains some letter carrying it. Summing those
+rooted bounds gives marker-root price at most $T_e\eta+a$. Thus the
+same estimates hold simultaneously for every marker, without assigning
+independent prices to overlapping subsets. This is a bound on sets of
+distinct elementary letters, before the later logarithmic expansion
+with repeated labels.
+Let the all-hole normalization have raised hole-correction site price
+$k$ and boundary-correction site price $\psi$, at exponent $v$; the
+raised hole corrections have already been multiplied by $l$. If
+\begin{equation}\label{eq:mixed-finish-price}
+       e^\Sigma-1+k\le\psi,\qquad T_e\eta+a\le y,
+\end{equation}
+then the resulting representation has forced price paid by $m$, regular
+nonleading price paid by $l$, total regular site price at most $\psi$,
+and regular marker-root price at most $y$. Boundary corrections retain
+their separately purchased price $\psi$. The corrections carrying no
+marker make no contribution to the last bound. This is the complete
+price output needed in the marked propagation; the subsequent finite
+inventory compression is that of Section~\ref{sec:allarity-marked-propagation}.
+
+\subsection{Two complementary pieces of every leading insertion}
+
+The actual incoming leading letter $W_h$ is split using its one local
+cutoff $0\le\Gamma_h\le1$ into $\Gamma_hW_h$ and
+$(1-\Gamma_h)W_h$, with the same support and nonempty marker set.
+In the squarefree marker algebra their product is zero. Consequently
+\[
+ (1+\Gamma_hW_hz_{F_h})(1+(1-\Gamma_h)W_hz_{F_h})
+                           =1+W_hz_{F_h}.
+\]
+This is exact also off the healthy set, since $W_h$ retains its original
+mask. The first piece is leading; the second is a remainder. The cutoff
+plateau implies that the latter vanishes outside the actual warning
+event. Its purchased probability is at most $x^{-1}$, where $x$ is
+the coarse rung coupling. Thus $l x^{-1}\le1$ supplies the second
+alternative in \eqref{eq:mixed-shadow}. Both pieces cost the same
+pointwise price, so a leading-family marker budget $h$ costs exactly
+$2T_eh$ after coarse support conversion. An arbitrary regular family
+of budget $z$ is designated entirely as remainder and costs $lT_ez$;
+it uses the first alternative in \eqref{eq:mixed-shadow}.
+Hence their union has marker price
+\begin{equation}\label{eq:mixed-day-marker}
+                    a=lT_ez+2T_eh.
+\end{equation}
+The event estimate here is the actual joint sector warning estimate
+from the local Gaussian construction. A separate Gaussian sample for
+each factor would not prove \eqref{eq:mixed-club-integral}.
+
+All leading connected pieces are contained in one cell. Their connected
+reader graph has at most $n$ vertices, and the support argument in
+Section~\ref{sec:allarity-marked-propagation} bounds its radius by
+$(2n+1)\rho$. On the actual elementary support radius $3B_c$, this
+is $(6n+3)B_c$. The purchased condition
+\[
+              6n+3\le A/(3+2n)
+\]
+therefore puts it inside the required slice radius $AB_c/(3+2n)$.
+The whole-mode selection and coefficientwise integration in
+\eqref{eq:planted-selection}--\eqref{eq:planted-integral} identify its
+projected polynomial with the planted integral on the same cell.
+Its integrability also follows directly from the product of its
+pointwise letter prices divided by its positive marker weight. Thus
+this is the actual leading polynomial, not just a majorant for it.
+
+\subsection{Upper and lower numerical purchases}
+
+Put $H=\exp((\log\log s)^2)$, $K=H^{-1/8}$, and $h=H^{-4}$.
+The rung couplings $x,y$ both lie in $[s/2,s]$. Fix $n,e,L$ first.
+The large-field allowance $G(y)$ is positive, at most one, and decays
+faster than every negative power of $H$ uniformly on this interval.
+The radii $B_c=\lceil(\log x)^2\rceil^2$ give
+$\mathcal W(B_c)=H^{o(1)}$ uniformly there.
+
+For the upper part use the exponent $e=e_0+2$ and set
+\[
+ l=\max\left(1,\frac{H^{-3}}{\alpha z+H^{-q}}\right),
+ \quad 0\le z\le H^{-4},\qquad m=G(x)^{-2},
+ \qquad a=lT_ez+2T_eH^{-4}.
+\]
+Here $\alpha\ge8T_e$ and $q$ is fixed. If the displayed maximum is
+its second entry, $lT_ez\le H^{-3}/8$; if it is one, the same bound
+holds eventually since $z\le H^{-4}$. Also $2T_eH^{-4}\le H^{-3}/4$
+eventually. Thus $a\le H^{-3}/2$ eventually, after harmlessly
+enlarging the threshold. The incoming forced budget is $\eta=G(y)$.
+Taking $\delta=K/16$, both nonbody terms in
+\eqref{eq:mixed-letter-price} are at most $K/16$ eventually.
+Consequently $\Sigma\le3K/16\le K/4$ and
+$T_e\eta+a\le H^{-3}$. Also $l\le\max(1,H^{q-3})$, so
+$l x^{-1}\le1$ uniformly for $x\ge s/2$ eventually.
+
+For the lower part use $e=e_0$, $l=1$, $m=G(y)^{-1}$,
+$0\le z\le H^{-1/2}$ and incoming forced budget
+$\eta=z\omega(y)$, where $0\le\omega(y)\le1$ is the actual
+lower-interval attenuation. There are no designated leading letters.
+The regular marker budget is $a=T_ez$. Again the two nonbody site
+terms are each at most $K/16$ eventually. The output marker budget is
+\[
+ T_ez\omega(y)+T_ez\le2T_ez
+       \le\tfrac12\bigl(\alpha z+H^{1/2}z^2\bigr)
+                  \quad(\alpha\ge8T_e).
+\]
+This includes $z=0$ without division. The leading output is empty:
+with no body letters, a leading component would consist solely of
+insertion letters designated leading, of which there are none; with a
+body letter it is already nonleading.
+
+In both cases the hole price is $k=K/4$, the boundary and output
+site allowance is $\psi=K$, and the tree smallness condition holds
+for sufficiently large $s$. Finally
+$e^{K/4}-1+K/4\le K$ for all sufficiently small $K>0$, for example
+by $e^t-1\le2t$ on $0\le t\le1$. These calculations prove
+\eqref{eq:mixed-finish-price}. The support purchases
+\eqref{eq:mixed-cover-charge} for both $e_0,e_0+2$ are made by
+choosing $L$ after these fixed exponents and the two positive incoming
+support exponents $\sigma_{\rm lower},\sigma_{\rm upper}$. The
+separate purchases are
+\[
+ 10\cdot15^4(e_0+7)\le L\sigma_{\rm lower},\qquad
+ 10\cdot15^4(e_0+9)\le L\sigma_{\rm upper}.
+\]
+In the actual lower and upper inputs these exponents are respectively
+$e_0$ and $e_0+2$. No existence claim is made at a zero incoming
+exponent. The coupling threshold is chosen after $L$. For finitely many arities choose the maximum of
+their constants before that threshold.
+
+\subsection{The exact representation used by both parts}
+
+The body product and all-hole inputs used above belong to one compiler,
+chosen before the marked family. Specifically its body expansion is
+\eqref{eq:planted-body} for the genuine $P$, whereas its normalization
+is \eqref{eq:planted-holes} for the corrected body alphabet together
+with the archived activities of $P^0$. The equality of archived
+activities of $P$ and $P^0$ allows that alphabet to embed into the
+full marked alphabet, with the same full supports and inventories.
+It does not allow the genuine fine exponential to be replaced by that
+of $P^0$. The empty-marker component bijection proved in
+Section~\ref{sec:allarity-planted-compiler} transports the all-hole
+identity to every deleted support of the full marked alphabet.
+Applying it at the union of the marked forced supports and using the
+exclusion bijection gives precisely the push of the genuine marked
+density, normalized by the selected coarse representation.
+
+The unmarked compiler's purchase is made once for multipliers at least
+as large as both uses above, and for the larger support exponent.
+Decreasing a multiplier or exponent only decreases every nonnegative
+price. Its body estimate, hole correction and forced embedding therefore
+remain valid for each call. In particular its coarse normalization is
+selected before the arbitrary marked background and regular family.
+The upper calculation adds the leading family and its complementary
+cutoff pieces; the lower calculation uses only the ordinary family.
+The same construction supplies both transitions on each rung of the
+actual restarted history. The coupling of the push is the genuine
+incoming $P.\beta$ in both cases, by the retained course identity.
+
+This proves the mixed integral and price join from the actual local
+body and all-hole compiler purchases, the joint warning estimate and
+the selected geometry. It does not construct a different restarted
+history or deduce those purchases from an abstract Gaussian model.
+Their primitive analytic suppliers are the common corrected sector
+expansion, its unmarked all-hole normalization, and its paid product
+bounds; they must be supplied for the same body alphabet and coarse
+representation before this argument is applied.

@@ -1041,3 +1041,29 @@ Integrated terminal-marked-construction at 8ee1de534ce04b5d0c0dd8fd354e13e5367ec
 Integrated independently checked annulus-same-data-binding at 095be0354ac9e6f715fb18ded93d62dce4201427195a4685a04d1f2f0ce613ba and trace-eve-producer at 0bc1e4da3c975b52aa666b8ea6d4ddb6e13e0d8dea382b36e6a3dfaec3866e0b, with same-stem evidence. The annulus unit identifies the same combined stationary/Wilson response in the finite recording and radial estimate. Eve uses the canonical principal Gaussian comparison on its exact insertion/read-set/chart data, alongside proved finite billing. Both are local reviewed draft applications; remaining global all-grade comparison, portfolio and trace-scale suppliers remain distinct.
 
 2026-11-12 07:00 UTC: integrated independently checked ope-scale-purchases at 33aa599c8b458420aeebf0fad62381940f03ccddd79e698a42ff476fbf5e53e0. Exact fixed support exponent 100 and adjacent order profiles retained. This is numerical funding only; OPE analytic services remain separate.
+
+
+## 2026-11-12: joint reader, healthy launch and physical stress integration
+
+Integrated the exact bounded-reviewed snapshots: all-arity-reader-gaussian-model 7e718451, trace-scribe-producer 207d6605, marked-healthy-cumulant-launch d82d6be0. Source crosswalks are in the matching evidence files; review fingerprints in reviews/draft-review.md. Joint reader keeps quantitative sight, guard and field inputs; physical stress keeps sensor and branch inputs assigned to #33/#34. Healthy launch proves the cochain/transport/cumulant comparison from its stated paid input, not the original strong-history Tone producer. No whole-proof closure or human acceptance.
+
+
+2026-11-12 09:00 UTC: Integrated actual-mixed-marked-compiler (a082a48ada2824588270987ed27e303d9ca247cb7525f608359a68b2654eb020), independently parent-reviewed because authored by the independent reviewer; the report is reviews/parent-mixed-compiler-review.md. It retains genuine-P BodyGrant versus white-P ReturnTrip on the same corrected alphabet, connected covers and distinct upper/lower tail purchases. Actual body/all-hole analytical purchases remain incoming. Integrated actual-marked-portfolio-calibration at layout fingerprint 94a92748ef87edf19c4810cc6bb8c90c2cec2ef7b498eceb6132120a0dcf457f, with independent editorial carry confirmed. Original-history Scrim/Cream binding was still incoming at integration and is now assigned separately. The 734-page build and sampled rendering passed; no full-proof or accepted-status claim.
+
+
+## 2026-11-12 09:44 UTC integration
+
+Integrated bounded independently checked actual-reader-tree-covariance,
+original-history-portfolio-attachment, actual-harvested-owner-energy and
+actual-corrected-body-compiler. Their adjacent evidence files give the exact
+source declarations and retained hypotheses. Body retains all-Matched Pupil,
+actual white/all-hole and quantitative source purchases. Owner energy supplies
+its changed-threshold and harvested-ceiling join under the actual canonical
+seed/chart/branch conditions; it does not prove Pupil. Public attachment follows
+the native preselected postnumeric route on one retained run, not Roll/Novena.
+
+Dawn selection and local Gaussian-price candidates have bounded conditional
+passes but remain outside the PDF until their exact small-window/guard/short-cover
+inputs are integrated. This is not complete-proof certification. Source main has
+not changed since the previous blueprint check. See current CHECKPOINT and
+USAGE-HANDOFF for active assignments and the maintainer's stop condition.

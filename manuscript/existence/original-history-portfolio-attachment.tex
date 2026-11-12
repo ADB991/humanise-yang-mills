@@ -1,0 +1,162 @@
+\section{Attaching the funded service to the selected history}
+\label{sec:original-history-portfolio-attachment}
+
+The finite-volume service is useful only if its data belong to the history
+selected for the public theorem. We verify that binding here. The public
+construction selects one run and applies the funded continuation to that
+run's own history, schedule, transitions, and finite-volume data. No cutoff,
+period, or extraction order is used to select a second history. The common
+schedule and its numerical prices are organized in
+Section~\ref{sec:common-funded-history}; here we check the remaining
+same-witness interface.
+
+Let $R$ denote the selected run. Write $Y_R$ for its stored finite
+renormalization-group history and $\mathcal P_R$ for the separately stored
+scale campaign.
+The distinction matters: the history used below is
+$\operatorname{trail}(Y_R)$, whereas the campaign supplies the scale data.
+Let $t_R(d)$ be the reference level at grade $d$, let $S_R(d,N,p)$ be the
+transfer datum, and let $D_R(N,p,m)$ be the selected transition record. We
+write
+\[
+ C_R=\bigl(\operatorname{trail}(Y_R),\ t_R,\ S_R\bigr)
+\]
+for the family with its fixed holonomy, label frames, and local sections.
+This notation names the family already stored in the run; it does not define
+a new history.
+
+\begin{proposition}[Same-history attachment]
+\label{prop:ex-original-history-attachment}
+Suppose the selected run $R$ carries its funded continuation certificate.
+Applying that certificate to the data stored in $R$ gives a package on the
+same family $C_R$ with the following properties:
+\begin{enumerate}
+\item the reference-level condition
+\[
+ d+3\leq J(t_R(d))\qquad(d\geq0);
+\]
+\item one nesting family, one scale schedule, one transition family, and
+   one transfer family, such that the selected transition at $(N,p,m)$ is
+   available for $m<N$, and, for every $d,N,p$ with $t_R(d)\leq N$, the
+   finite-volume transfer identity holds using those same data;
+\item the funded nonlinear-response and adjacent-scale estimates, together
+   with the selected service on exactly $C_R$;
+\item the centered service, including its height estimates and terminal
+   forced-profile relation, as well as the finite-volume bounds and marked
+   portfolio conclusions recorded for $C_R$.
+\end{enumerate}
+The first three items and the finite-volume identities hold simultaneously
+for all cutoffs and periods in their stated domains. For each fixed grade
+and section in the purchased portfolio, the terminal marked estimate holds
+for all sufficiently large cutoffs, uniformly in the period; its threshold may depend on that grade
+and section. It is a separate local estimate, not a field included
+implicitly in the centered service.
+\end{proposition}
+
+\begin{proof}
+We first identify the history-bearing data. The selected run stores $Y_R$,
+the schedule $t_R$, a transition family, the gradewise regularity data, and
+the finite-volume transfer witnesses. Its underlying family is
+\[
+ C_R=\bigl(\operatorname{trail}(Y_R),t_R,S_R\bigr),
+\]
+with the fixed holonomy, label frames, and local-section map. The funded
+continuation is a function of precisely these stored objects: the
+configuration and its nesting data, the schedule and its opening
+inequalities, the transfer family and transition records, and the
+regularity and finite-volume transfer witnesses. Its output therefore has
+the family formed from those same arguments. That family is $C_R$ itself;
+there is no intervening identification map and no reselected label system.
+
+Here is why the quantifiers in that application are uniform. The public
+selection fixes the history $Y_R$ and a nesting family for it.
+Independently, it chooses the reference schedule on that selected run so
+that $d+3\leq J(t_R(d))$ for each grade. On this fixed history it constructs
+the transition branches and their records once, and then defines one
+transfer family on all triples $(d,N,p)$. That family has the required
+regularity properties; for every $d,N,p$ with $t_R(d)\leq N$, its
+finite-volume witness is built from the already chosen nesting family and
+transition records. The witness at $(d,N,p)$ may depend on those indices,
+but the history, nesting family, schedule, transitions, and transfer family
+do not. Thus the simultaneous quantifiers are part of the selected run and
+are not obtained by diagonal extraction or by making new global choices
+after fixing $(N,p)$.
+
+For the transfer witnesses, if $t_R(d)>N$ the construction uses a default
+map. If $t_R(d)\leq N$, it composes along the selected transitions and
+obtains the finite-volume identity and accounting estimate. This explains
+the cutoff in item 2 and shows that both cases use the original $Y_R$.
+
+The funded continuation supplies two quantitative inputs to the centered
+construction: bounds on the delayed nonlinear response and its tariff, and
+uniform estimates for each allowed adjacent-scale step. The latter are the
+scale inequalities proved in
+Section~\ref{ex-centered-geyser-scale-estimates}. That section applies them
+to the selected adjacent levels and block size, and supplies a common
+monotone threshold. It does not change the selected history, nor does it
+by itself establish the nonlinear-response bounds.
+
+The centered service is assembled from these data as follows. The escape
+estimate uses the same nesting family, nonlinear-response bounds, and all
+selected transitions. Its room and bank estimates use the budget fields of
+the selected factor. The adjacent-scale inequalities give the required
+scale comparison at each selected step. For heights at grade $d$ and
+reference level $k$, the local residence estimate at $k$ gives the later
+scale bounds, the one-cover footprint estimate, and a uniform camera
+bound. The five numerical implications used in this conversion are proved
+in Proposition~\ref{prop:ex-geyser-service-fields}; the eventual estimates
+and finite-prefix maximum are in
+Theorem~\ref{thm:ex-selected-geyser-steam}. The maximum is over the finitely
+many grades below each target stage and its two adjacent stages, so it gives
+a common threshold for all later uses at that stage.
+
+At the terminal endpoint, the finite-volume transfer witness gives the top
+transfer identity and its forced-profile relation. The centered service's
+terminal estimate is this same relation, using the domination and rise
+identities attached to the selected run. At an intermediate scale, the
+transfer witnesses and selected transitions feed the local transition
+estimate: specializing the tariff inequality to the zero-grade section
+gives the required relay bounds. The separate growth and jump estimates
+follow from positivity and the selected scale payment. The three-card
+coefficient, exponential-entry, and forced-profile identities are proved
+in Section~\ref{sec:three-port-history}; we use those identities here
+rather than constructing a second interpolation or repeating their price
+proof.
+
+The funded continuation returns the centered service together with its
+finite-volume bounds and marked portfolio. Its local transition estimates
+use the same nonlinear-response bounds, adjacent-scale estimates, nesting
+family, transition records, finite-volume witnesses, and schedule just
+described. The core centered-service assembly and its stronger funded
+version are distinguished in the source, but both use the supplied
+configuration, schedule, transfer data, and transition family. Neither
+creates a second history.
+
+Finally, the terminal marked-field estimate is attached only after $C_R$
+has been fixed. Section~\ref{sec:terminal-marked-construction} supplies the
+reserved addresses and terminal representation from the regularity and
+stock data on this same family. The quantitative local bounds and their
+eventual uniformity for each fixed grade and section are proved in
+Section~\ref{sec:ex-marked-field-local}. The local estimate requires soundness,
+reference-level eligibility, fit of the union of the stencils, nonnegative
+credit, a keeper, the regional card-times-allowance bound, cover at most
+$81$, the square-root allowance-times-storm bound, and the stated positive
+terminal weight and nonnegative reserve. The purchased local-estimates
+section supplies these conditions for all sufficiently large cutoffs for
+each fixed grade and section in the purchased portfolio, uniformly in the
+period. The marked density
+and forced-profile identity then give the terminal estimate on $C_R$.
+Throughout, its history, schedule, transfer family, and terminal
+representation remain those of $C_R$. No uniqueness assertion for a
+terminal field is needed.
+\end{proof}
+
+\begin{remark}[Scope of the attachment]
+The proposition proves the same-history attachment once the selected run's
+funded continuation certificate is available. The common funded-history
+construction is responsible for producing that certificate and its
+quantitative prices; this section does not replace those purchases by the
+name of a record. It also does not use the separate grantor route as
+evidence for the public caller. The public construction applies its funded
+continuation to the data stored in the selected run.
+\end{remark}

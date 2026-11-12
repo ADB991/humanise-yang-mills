@@ -227,3 +227,33 @@ latexmk -cd -pdf -interaction=nonstopmode -halt-on-error -outdir=build manuscrip
 Checkpoint staging: initial git diff --cached --check found only trailing whitespace / blank EOF in five chapters (free-kernel-components, primary-calibration-producer, rg-construction, trace-medal-prices, trace-weighted-estimates). Removed whitespace only; prior review fingerprints preserved, not refreshed by author. Subsequent whitespace check passes. These edits do not change the mathematical text; review carry is requested independently.
 
 Post-whitespace rebuild succeeded: 711 pages, 3,677,991 bytes, no overfull/undefined/missing-glyph diagnostics. PDF refreshed and its SHA-256 recorded in checkpoint-manifest.json. Source and manuscript text remain an incomplete draft.
+
+
+## 2026-11-12 09:00 UTC — 734-page working checkpoint
+
+`python3 scripts/check_blueprint.py` passed (2 units; structural only).
+`latexmk -cd -pdf -interaction=nonstopmode -halt-on-error -outdir=build manuscript/existence.tex` succeeded: 734 pages, 3,778,568 bytes. The first portfolio layout attempt failed because a split display had extra alignment tabs; replacing it by aligned still overflowed, so the final identities use gathered with one identity per line. The final log has no overfull boxes, undefined references or missing-glyph warnings.
+
+Rendered and visually inspected 29 pages (568–574, 582–587, 599–607, 699–704, 734) at scale 1100 in five contact sheets under `/private/tmp/ym-qa734`. No clipping or overlap identified at overview scale. This samples the mixed compiler, joint reader model, healthy launch, trace scribe and portfolio changes; it is rendering QA, not proof closure. The independently checked portfolio layout carry is recorded in the reviewer log. The healthy-launch wording edit was reported harmless but the reviewer lacked the exact old baseline to certify a bytewise editorial-only diff.
+
+No Lean build, fresh axiom replay or source changes. New original-history attachment and tree-covariance candidates are outside this build and remain under review. The 711-page committed checkpoint manifest and PDF still describe the earlier pushed snapshot until the next refresh.
+
+
+## 2026-11-12 09:44 UTC — 747-page checkpoint
+
+Actual latexmk builds succeeded at 737, 744 and 747 pages. The 744-page build
+had one overfull prose line caused by an unbreakable slash-separated phrase;
+wording-only reflow was independently checked. Final 747-page PDF is 3,839,085
+bytes, with no overfull boxes, undefined references or missing-glyph diagnostics.
+Rendered 18 pages (546–548, 586–595, 598–602) with pdftoppm at scale1300 and
+visually inspected all three contact sheets under /private/tmp/ym-qa747.
+No clipping, overlap or oversized displays observed at overview resolution.
+This covers the original-history attachment, harvested owner-energy, corrected
+body and tree covariance additions. Previous new sections were checked at734.
+
+The structural checker passed after the body/attachment imports; the final
+owner-energy metadata addition is checked again before commit. No Lean build,
+fresh axiom replay or Lean edits. Mathematical reviews are bounded conditional
+agent reviews; human acceptance and full dependency closure remain outstanding.
+Live main compared to fa705098efc07df2e54746b22893b5d26b515988 at09:41: identical.
+Issue26 was reread on resume; no overlapping new claim found.

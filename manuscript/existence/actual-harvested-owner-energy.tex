@@ -1,0 +1,251 @@
+\section{Owner energy at the rank threshold}
+\label{sec:actual-harvested-owner-energy}
+
+The energy estimate used in the corrected block alphabet concerns
+the actual fine flag threshold. It also subtracts the affine squares
+selected by the Gaussian construction. We verify these two changes
+to the seed estimate explicitly.
+
+Write $y=r(x)$ for the recording parameter,
+$\nu=\mathrm{fiery}(y)$ and
+$\tau=\mathrm{phase}(\beta_F(x))$ for the fine rank threshold.
+The retiming comparison gives, eventually,
+\begin{equation}\label{eq:owner-threshold-band}
+ 0<\nu,\quad 0<\tau,\qquad \nu/2\le\tau\le2\nu.
+\end{equation}
+The stores and seed counts remain those of the recorded configuration
+at $y$. Only the fine energy rows are read at threshold $\tau$;
+the other rows retain their recorded thresholds. In particular,
+this operation does not replace the stored flags by flags at $\tau$.
+
+\subsection{Paying the same seeds after changing the fine threshold}
+
+Let $\mathcal F$ be the original fine seed inventory and
+$r_i$ the fine plaquette chords. For a threshold $s$, write
+$\mathcal F_s=\{i\in\mathcal F:r_i>s\}$. At any
+$s\in[\nu/2,2\nu]$, the argument of
+Section~\ref{sec:seed-energy} gives
+\begin{equation}\label{eq:owner-reread-fine}
+ F_s\ge b s\sum_{i\in\mathcal F_s}r_i
+            +d s^2|\mathcal F\setminus\mathcal F_s|,
+ \qquad b=\lambda_f/2,\quad d=a_f/512.
+\end{equation}
+Here the guide has norm at most $\epsilon s$, where
+$\epsilon=2C/L^2$. The factor two comes from
+$\nu\le2s$. To verify the changed constant, a listed small
+plaquette has $r_i\ge\nu/4\ge s/8$. If
+$\epsilon\le\sqrt{a_f}/16$, then
+\[
+ \tfrac12(\sqrt{a_f}r_i-\|v_i\|)^2
+       \ge a_fs^2/512.
+\]
+Impose also $\epsilon\sqrt{a_f}\le\lambda_f/4$.
+The large-plaquette direct bound then remains
+$(3\lambda_f/4)sr_i$. The discarded-path argument of
+\eqref{eq:seed-discarded-count} uses witnesses with
+$s\exp(\operatorname{dist}/R)<r_j$ and the same original
+fine lattice. The recorded clean-neighbourhood conditions,
+$s\ge\nu/2$ and the paid path-range bound place each such
+witness in $\mathcal F_s$. Thus the discarded rows cost at most
+$(\lambda_f/4)s\sum_{\mathcal F_s}r_i$, provided
+$\epsilon(1+C_R)C\le\lambda_f/4$. These two estimates prove
+\eqref{eq:owner-reread-fine}. No continuity in the clipping
+threshold is used.
+
+The next elementary allocation compares the two large-defect
+inventories without identifying them. Let $T\ge\nu$ be the
+very-large threshold, and let $\mathcal K$ be the fine defects
+spent at that threshold. Put
+\[
+ N=\mathcal F_s,\quad n_0=|\mathcal F\setminus N|,
+ \quad R=\sum_{i\in N}r_i,\quad
+ V=\sum_{i\in\mathcal F_\nu}r_i.
+\]
+Then
+\[
+ V\le R+2\nu n_0,\qquad
+ \nu|N|\le2R,\qquad T|\mathcal K|\le V.
+\]
+The first inequality bounds every term outside $N$ by
+$s\le2\nu$; the second uses $s\ge\nu/2$; and the last
+uses $\mathcal K\subseteq\mathcal F_\nu$ and
+$r_i\ge T$ on $\mathcal K$. Consequently, if $m,c\ge0$
+and
+\[
+ 2(3m+c)\le b,\qquad m+2(m+c)\le d/4,
+\]
+then
+\begin{equation}\label{eq:owner-reread-reserve}
+ m\nu^2|\mathcal F|+m\nu T|\mathcal K|+c\nu V
+       \le F_s.
+\end{equation}
+Indeed the left side is at most
+$(3m+c)\nu R+(3m+2c)\nu^2n_0$.
+The displayed conditions and $\nu\le2s$ bound these terms by
+$bsR$ and $ds^2n_0$, respectively.
+
+All predictor and coarse rows are unchanged. Apply their reserves
+and the hit/unhit comparisons from
+Sections~\ref{sec:seed-energy}, \ref{sec:seed-hit-comparison}
+and \ref{sec:seed-unhit-comparison}, using
+\eqref{eq:owner-reread-reserve} for the fine reserve.
+One can choose
+\[
+ 0<m\le\min\{p/32,a_c/64,\lambda_f/32,d/32\}
+\]
+before increasing $L$ until $c\le m$ and the guide conditions
+above hold. Choose the predictor width afterward, so that its
+linear expense is at most $pW/16$. The two final smallness
+inequalities \eqref{eq:seed-final-smallness}, now with threshold
+$\nu$, hold eventually. The same cancellation as in the seed
+estimate proves
+\begin{equation}\label{eq:owner-rank-income}
+ \mathcal E_\tau(O)\ge b_0\nu^2\,s(O),\qquad b_0=m/2>0.
+\end{equation}
+Here $s(O)$ is the unchanged number of seed shares of the owner
+store $O$, and $\mathcal E_\tau(O)$ is its assigned energy
+with only the fine rows replaced by their $\tau$ versions.
+The finite-volume, tree-slice and local seed hypotheses are those
+of the cited seed estimates. Their guide, geometry and comparison
+bounds are used on this same store and field.
+
+\subsection{Subtracting the selected affine squares}
+
+Put $B=\lceil(\log y)^2\rceil$. Let $Q$ be an annular
+window around $O$, and $H$ a subwindow selecting fine and
+predictor rows of $Q$. Use the actual logarithmic signal in
+the local Gaussian coordinates, and denote by
+$\mathcal X_H$ the sum of its selected affine squares.
+Section~\ref{sec:packet-annulus} proves that these are the
+actual rows, with the same forest, tag and coarse field, and
+that
+\begin{equation}\label{eq:owner-annulus-loss}
+ \mathcal W(Q)-\mathcal X_H\ge-e(y)s(O),
+ \qquad e(y)\ge0,\quad y\,e(y)\longrightarrow0.
+\end{equation}
+Here $e$ is a function of the recording parameter, evaluated at
+$y=r(x)$ in this application. Since $r(x)\to\infty$,
+its eventual estimates apply for all sufficiently large $x$.
+In fact its local error has upper exponent $-3/2$, and the
+number of annular rows per share is bounded by a fixed polynomial
+in $B$. This gives the asserted decay and also supplies the
+local chart representation of every selected row.
+
+The same bound applies when the fine rows of $Q$ are read at
+$\tau$. To see why, the annulus has fine chord at most
+$\nu/2\le\tau$. The only possible obstruction is the
+exponential path-kept test. Its nontrivial range is contained
+in radius $B/50$ by the purchased path-counting bound; in that
+range the clean-annulus condition gives chord at most $\nu/2$.
+Outside it the right side of the test is at least the universal
+chord bound $2$. Thus every relevant path is kept at both
+thresholds $\nu$ and $\tau$. Both fine rows have exactly the
+same quadratic formula there. The other rows never changed.
+This proves equality of the two annular energies, including at
+threshold equality.
+
+Since $\nu^2\ge\beta_F(y)^{-1}$ and
+$\beta_F(y)/y\to1$, \eqref{eq:owner-annulus-loss} implies
+$e(y)\le(b_0/2)\nu^2$ eventually. Adding
+\eqref{eq:owner-rank-income} therefore gives
+\begin{equation}\label{eq:owner-selected-gain}
+ \mathcal E_\tau(O)+\mathcal W_\tau(Q)-\mathcal X_H
+ \ge\frac{b_0}{2}\nu^2s(O)
+ \ge\frac{b_0}{8}\tau^2s(O).
+\end{equation}
+This estimate holds for every admitted selected window and
+actual chart signal, uniformly in the finite period. The
+threshold is chosen after its fixed window and chart constants.
+
+\subsection{The harvested ceiling of an actual packet}
+
+We apply \eqref{eq:owner-selected-gain} to the ceiling used in
+the block exponent. Fix the full store $A$, an owner packet
+$O$, and separation radius $R\ge205B$. Assume the packet
+ownership conditions, the actual seed conditions on $(U,V)$,
+positive frame likelihood, and nonzero chart doors. Assume also
+$\operatorname{span}\le B/50$, the coarse side at least
+$100(1+B)$, and the purchased local chart comparison with
+width $w$. The chart radius is $w\nu$, is positive and is
+smaller than the first logarithmic radius. These hypotheses
+hold before the fine field or its coordinates are varied.
+
+For each signed orientation $\sigma$, turn the owner and full
+store, the fine and coarse fields, the forest and the tag together.
+Let $Q_\sigma$ be the annulus between radii $2B$ and $200B$
+of the turned owner. Let $H_\sigma$ consist of the actual
+Gaussian rows selected from this annulus. The span bound keeps
+each selected row outside the $2B$ core. The packet separation
+$R\ge205B$ keeps the annulus away from other owners. Thus
+$H_\sigma$ selects a subwindow of $Q_\sigma$ satisfying
+exactly the annular hypotheses used above.
+
+The signal in those rows is the actual signed coordinate array,
+not an independently chosen logarithm. On tree bonds both its
+increment and the fine field are the identity. On frozen bonds,
+the clean chart has norm at most $K\nu$ with $1\le K\le w$;
+the cutoff logarithm agrees with that chart because it lies
+within the chosen radius. On active bonds the nonzero doors
+bound the actual coordinate by $2w\nu$. Therefore this same
+array reconstructs the turned fine field and has norm at most
+$2w\nu$ throughout every selected stencil. The chart argument
+in Section~\ref{sec:packet-annulus} applies with width $2w$.
+It proves the hypotheses of \eqref{eq:owner-selected-gain}
+for every $H_\sigma$.
+
+Let $\mathcal C_{200B}(O)$ be the oriented elementary energy
+addresses whose coarse anchors lie within distance $200B$ of
+$O$. The definition of the actual ceiling charge gives the exact
+identity
+\begin{equation}\label{eq:owner-ceiling-identity}
+\begin{split}
+ \mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+             \mathrm{levy}_j
+ =\operatorname{Av}_{\sigma}\bigl[
+       \mathcal W_\tau(\operatorname{anchor}_{200B}(\sigma O))
+       -\mathcal X_{H_\sigma}(a_\sigma)
+       +\mathcal C_\sigma(m)\bigr].
+\end{split}
+\end{equation}
+Here $a_\sigma$ is the actual array just described, $m$ is
+the localized Gaussian mean, and $\mathcal C_\sigma(m)$
+is the sum of its charged fine and predictor squares. It is
+nonnegative. The average is the normalized signed average;
+the factor $\mathrm{Aff.weight}$ has already performed this
+normalization.
+
+For completeness, the identity is a finite reindexing. Partition
+the oriented energy addresses into fine faces, predictor bonds,
+coarse faces and normalization rows. Their anchored sums are
+the corresponding four terms of $\mathcal W_\tau$. At a
+selected fine or predictor address the charged coordinate square
+equals the extracted affine square of the signed array. This
+uses the actual path bound and authorized predictor branch.
+At an unselected address both subtracted terms are zero. The
+mean squares remain with the positive sign in the definition
+of the levy. Summing these identities yields
+\eqref{eq:owner-ceiling-identity}.
+
+Finally the anchored energy partitions exactly into its core
+and annulus:
+\[
+ \mathcal W_\tau(\operatorname{anchor}_{200B}(\sigma O))
+ =\mathcal E_\tau(\sigma O)+\mathcal W_\tau(Q_\sigma).
+\]
+This is the finite disjoint partition of each of the four row
+inventories; the changed fine threshold is used on both sides.
+Apply \eqref{eq:owner-selected-gain}, drop the nonnegative
+mean squares, and use $s(\sigma O)=s(O)$. Averaging proves
+\begin{equation}\label{eq:owner-actual-heft}
+ \frac{b_0}{8}\tau^2s(O)
+ \le\mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+               \mathrm{levy}_j.
+\end{equation}
+This is the harvested owner-energy estimate required in
+Section~\ref{sec:actual-corrected-body-compiler}. It holds for
+all actual compatible packets, forests, tags and coordinates
+with the stated seed, likelihood and door conditions. The
+uniform chart, branch and seed estimates used to obtain those
+conditions remain the previously stated construction inputs;
+no assertion about the separate all-compatible warning factor
+is made by this energy calculation.
