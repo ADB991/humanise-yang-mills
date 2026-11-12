@@ -141,5 +141,7 @@ that record qualify statements in this file:
   not tracked). The "all 9,507 listed files" result above describes the original
   archive.
 - The prebuilt artifact's generated C and `.ilean` files are byte-identical to
-  the fresh build, but 1,044 of its 9,470 `.olean` files differ by 8 or 16 bytes
-  in length. The cause is undetermined.
+  the fresh build, and 8,426 of its 9,470 `.olean` files as well. The other 1,044
+  differ only through the absolute source path stored with persisted linter
+  messages: recompiled under a root path of the same length, all 1,044 equal the
+  artifact's files after substituting that path.
