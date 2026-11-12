@@ -1,0 +1,197 @@
+\section{Derivative prices for the Gaussian correction chains}
+\label{sec:itinerary-prices}
+The corrections in Section~\ref{sec:local-covariance} are sums
+over ordered itineraries of physical bonds. Their operator bounds alone do not price each
+activity in the connected expansion. We now keep the itinerary
+labels and their full read supports while differentiating and
+summing them.
+
+\subsection{Products along a fixed itinerary}
+Write $q$ for the number of colour coordinates. An itinerary of
+length $N$ consists of physical bonds $e_0,\ldots,e_N$; colour
+indices are summed within its matrix product. Suppose the entry
+jets of its $r$th matrix have amplitude $a_r\ge0$ and common
+derivative scale $d\ge0$. Repeated matrix multiplication and the
+product rule give
+\begin{equation}\label{eq:itinerary-entry-price}
+ \mathcal B_j\!\left(q^N\prod_{r=0}^{N-1}a_r,Nd\right)
+\end{equation}
+for any entry of the colour-block product. This follows by
+induction on $N$: multiplying the next entry adds $d$ to the
+derivative scale, multiplies the amplitude by $a_r$, and introduces
+at most $q$ choices for the next colour. The estimate deliberately
+overcounts when $N=1$. Taking a colour trace adds a factor $q$.
+Integrating such a trace over $s\in[0,1]$ preserves this bound
+when the entry estimates are uniform in $s$.
+
+For the present matrices, this last differentiation under the
+integral is valid by the compact-glide argument of
+Section~\ref{sec:normalization-jets}: all principal determinants
+are nonzero on one common parameter neighbourhood for $s\in[0,1]$,
+and the finite matrix products are jointly smooth there. A closed
+itinerary contributes its diagonal trace; a nonclosed itinerary
+contributes zero to that trace.
+
+All the matrices in these words have range at most $3B$. If some
+consecutive pair of bonds has all endpoint distances greater than
+$3B$, the corresponding matrix block vanishes identically as the
+coarse field varies. Thus the whole word is a zero germ. Call an
+itinerary admissible when every consecutive pair has endpoints
+at distance at most $3B$. This condition is fixed by its geometry,
+and is retained in every price below.
+
+Let $a$ be the common weighted jet amplitude of the actual
+precision $A$, let $h_0$ price the padded inverse of the glide,
+and let $t_0$ price its error $A_sP_s-1$. These quantities were
+constructed in Section~\ref{sec:normalization-jets}. The amplitudes
+$a,h_0$ have upper exponent zero; $t_0$ has every negative upper
+exponent. The first logarithmic correction has word
+\[
+ (A-1)P_s(-E_s)^{n+1},\qquad E_s=A_sP_s-1.
+\]
+It has $n+3$ matrix factors. If $d_A$ bounds their derivative
+scales, \eqref{eq:itinerary-entry-price} and the colour trace give
+\begin{equation}\label{eq:itinerary-A-price}
+ \mathcal B_j\bigl(C_A Q_A^n,(n+3)d_A\bigr),
+ \qquad C_A=q^4(a+1)h_0t_0,\quad Q_A=qt_0.
+\end{equation}
+The same argument applies to the flat-reference correction.
+Its coarse field is constant and satisfies the same entry bounds.
+
+For the second correction put $D=AC-1$, where $C$ is the symmetric
+padded covariance. Its entry jets have amplitude $w_0$ with every
+negative upper exponent, obtained by multiplying the padded-inverse
+error by the full inverse envelope and then by $A$. If $d_D$ is
+their derivative scale, the word $D(-sD)^n$ has $n+1$ factors.
+Since $0\le s\le1$, its integrated trace has bound
+\begin{equation}\label{eq:itinerary-S-price}
+ \mathcal B_j\bigl(C_S Q_S^n,(n+1)d_D\bigr),
+ \qquad C_S=q^2w_0,\quad Q_S=qw_0.
+\end{equation}
+These formulas price the actual trace words, including their
+endpoint identifications. Discarding a factor $1/2$ or another
+coefficient of absolute value at most one only enlarges the bounds.
+
+\subsection{The two protected Gaussian endpoints}
+The inverse correction is a quadratic form with word
+$(-D)^{n+1}A$, of length $n+2$, and a Gaussian coordinate at
+each endpoint. Those coordinates are not bounded on the whole
+sample space. Their protective cutoffs supply the needed local
+bound.
+
+Let $u(y)=\nu(y)+g_\beta z(y)$, $g_\beta=\beta^{-1/2}$,
+be the compensated increment on an active physical bond.
+If its doubled cutoff is not a zero germ, the increment jet bound
+has amplitude $s_0+4a_0\tau$, where $s_0$ has upper exponent
+$-1/2$ and $a_0>0$ is the fixed cutoff parameter. The mean jets
+have amplitude $m_0$ of upper exponent $-1/2$. Hence
+\begin{equation}\label{eq:itinerary-endpoint-price}
+ z_e\in\mathcal B_j(p,1),\qquad
+ p=\sqrt\beta\,(s_0+4a_0\tau+m_0),
+\end{equation}
+which has upper exponent zero since $\beta\le2h$.
+If either cutoff is a zero germ, the protected quadratic activity
+is a zero germ instead. If an endpoint is inactive, the inactive
+block of the completed precision and covariance is the identity;
+the corresponding defect block is zero. These block identities
+persist on the neighbourhood where the fixed principal windows
+remain invertible. The quadratic word therefore vanishes as a
+germ unless both endpoints are active. This justifies using
+\eqref{eq:itinerary-endpoint-price} only where it applies.
+
+Suppose the cutoff jets have amplitude one and scale $d_0$.
+The word has entry amplitude $q^{n+2}aw_0^{n+1}$.
+The two endpoint colour sums add $q^2p^2$, and the product
+rule adds two endpoint scales and two cutoff scales. Enlarging
+the resulting scale gives
+\begin{equation}\label{eq:itinerary-quadratic-price}
+ \mathcal B_j\bigl(C_Q Q_Q^n,(n+2)d_Q\bigr),\qquad
+ C_Q=p^2q^4aw_0,\quad Q_Q=qw_0,\quad
+ d_Q=d_D+d_0+1,
+\end{equation}
+after enlarging $d_D$ to include the scale of $A$.
+All derivative scales here have upper exponent zero. The
+unprotected linear score is handled separately: its coefficient
+has every negative upper exponent by the mean equation, while
+its one protected endpoint has the bound just proved. Summing
+its $q$ colours and multiplying its cutoff produces one local
+bond activity with every negative upper exponent, even after
+its fixed-radius support is counted.
+
+\subsection{Paying the derivative order before the chain length}
+All three itinerary families have the form
+\[
+ \mathcal B_j(CQ^n,(n+u)d),\qquad u\in\{3,1,2\},
+\]
+on admissible itineraries and zero germs otherwise. To give every
+jet a common amplitude and unit derivative scale, multiply the
+amplitude by $(1+(n+u)d)^j$. The elementary inequality
+$n+1\le2^n$ implies
+\[
+ 1+(n+u)d\le2^n\{1+(1+u)d\}.
+\]
+It is therefore enough to replace
+\begin{equation}\label{eq:itinerary-inflated-price}
+ C\longmapsto C'=C\{1+(1+u)d\}^{j},\qquad
+ Q\longmapsto Q'=2^jQ.
+\end{equation}
+No factor depending on $n$ remains outside the geometric power.
+For fixed $j$, $C'$ retains every negative upper exponent of $C$,
+and $Q'$ retains every negative upper exponent of $Q$.
+
+\subsection{The rooted support sum}
+Fix a halo multiplier $m\ge4$, also large enough to contain the
+previously established mean, window and compensated-variation read
+radii, a support exponent $a_1\ge0$, and a length reserve
+$\varepsilon>0$. The inequality $m\ge4$ alone is used in the
+count below; the additional read-radius requirement is needed
+when applying it to the actual activities. The support of an itinerary
+is the union of the radius-$mB$ halos of the endpoint sets of
+all its bonds. Put
+\[
+ \rho_L=L^4\#\{\mathrm{axes}\},\quad
+ K=b_{3B+2}\rho_L,\quad s_m=b_{m+1}.
+\]
+There are at most $K$ choices for a next bond in an admissible
+step: its anchor is within $3B+2$ of the preceding anchor.
+Thus there are at most $K^{n+u}$ admissible itineraries of length
+$n+u$ with prescribed initial bond.
+
+Each bond halo has $B$-cover number at most $s_m$. Consecutive
+halos intersect because $3B+2\le mB$. Subadditivity along the
+ordered chain gives support cover at most $(n+u+1)s_m$.
+If this support contains a fixed site $x_0$, the initial anchor
+is within $(n+u+1)(mB+1)$ of $x_0$: follow the chain to a halo
+containing $x_0$ and sum the step distances. Since
+$n+u+1\le(u+1)2^n$, the number of possible initial bonds is at
+most
+\[
+ b_{(u+1)(mB+1)}16^n\rho_L.
+\]
+The factor $16^n$ is the fourth power of $2^n$; it also bounds
+the additive one in the lattice ball formula. Wrapping on a torus
+can only reduce these counts.
+
+Multiplying the price $C'(Q')^n$, the count, the support weight
+and the extra length weight $e^{2\varepsilon n}$ gives the bound
+\begin{equation}\label{eq:itinerary-site-series}
+ \sum_{\lambda:x_0\in S_\lambda}
+ p_\lambda e^{a_1\operatorname{cov}_B(S_\lambda)}
+                   e^{2\varepsilon n(\lambda)}
+ \le H C'\sum_{n\ge0}
+ \bigl[Q'16K e^{a_1s_m+2\varepsilon}\bigr]^n,
+\end{equation}
+where
+\[
+ H=b_{(u+1)(mB+1)}\rho_L K^u e^{a_1(u+1)s_m}.
+\]
+All sums have nonnegative terms, so grouping first by length and
+then by initial bond is justified without a convergence assumption.
+At fixed $m,L,j$, both $K$ and $H$ have upper exponent zero.
+The geometric ratio in \eqref{eq:itinerary-site-series} is
+eventually at most $1/2$, and its sum is at most $2HC'$.
+Consequently every prescribed negative upper exponent is available
+for the rooted price of these correction chains. This pays the
+actual full read supports and every itinerary label, including
+repeated physical bonds; it does not assume disjoint paths or
+independent Gaussian coordinates.

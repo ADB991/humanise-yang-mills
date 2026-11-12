@@ -1,0 +1,229 @@
+\section{Covariant homogeneous OPE coefficients}
+\label{sec:ope-homogeneous}
+The finite tests of Section~\ref{sec:ope-prescription} are chosen for exact
+compatibility, without imposing rotational symmetry. We first average
+their field-valued output, retaining both the input and output rotations.
+We then construct homogeneous complements using these averaged tests.
+This order ensures that the final coefficients have compatible finite
+truncations as well as the required symmetries.
+
+Write $R_n(K)$ for the continuous $O(4)$ action on $E_n$ and $J_n$ for
+complex conjugation of fields. Assume, as supplied by the field structure,
+that these actions commute with the inclusions, that $J_n$ is an antilinear
+involution, and that $J_nR_n(K)=R_n(K)J_n$. Haar measure $dK$ on $O(4)$
+is normalized to have mass one.
+
+\subsection{Averaging on a common separated region}
+For a fixed degree $n$, let $\mathcal U_n$ be the set of cluster configurations
+$(\boldsymbol x,o)$ for which every exterior test occurring through degree
+$n$ remains separated from the relative cluster after every orthogonal
+rotation. This is an open set. Indeed, for a fixed finite test, separation
+is an open condition in the configuration and the rotation. If it holds
+for every rotation at a configuration, compactness of $O(4)$ supplies
+finitely many rotation neighborhoods and a common configuration neighborhood
+on which it still holds. Intersect over the finitely many tests.
+The set is invariant under simultaneous translations, rotations and
+permutations of the cluster. It contains every sufficiently small separated
+cluster around its center, by the clearance argument of the preceding
+section.
+
+On $\mathcal U_n$ define
+\begin{equation}\label{eq:ope-average}
+ A_n(\boldsymbol x,\boldsymbol v;o)
+   =\int_{O(4)}R_n(K)
+       H_n(K^{-1}\boldsymbol x,R(K^{-1})\boldsymbol v;K^{-1}o)\,dK,
+\end{equation}
+where the action on each input label uses its own degree. Set $A_n=0$
+outside $\mathcal U_n$. The integrand is continuous in $K$, takes values
+in a finite-dimensional space, and is therefore integrable on the compact
+group. Multilinearity passes through the integral; the zero extension
+preserves it because the domain condition is independent of labels.
+
+The map $A_n$ is smooth in positions on $\mathcal U_n$. Here one must not
+assume differentiability of the representation in $K$ to justify
+position derivatives. Expand the input labels and output in finite bases.
+Each matrix entry of $R(K)$ is continuous and bounded on the compact
+group. The remaining factors are derivatives in positions of separated
+correlations evaluated at rotated coordinates. On a sufficiently small
+closed configuration neighborhood times $O(4)$, all finitely many
+separations have a positive minimum. The correlation derivatives of each
+fixed order are therefore continuous and bounded on this compact set.
+The chain rule contributes only bounded entries of the rotation matrix.
+Thus each position derivative has a uniform integrable bound.
+Differentiation under the integral, repeated for every finite order,
+proves smoothness. The same finite-basis expansion justifies smooth
+variation of labels when needed.
+
+Left invariance of Haar measure gives rotation covariance. For a fixed
+$L\in O(4)$ substitute $K=LH$ in
+$A_n(L\boldsymbol x,R(L)\boldsymbol v;Lo)$. Since
+$(LH)^{-1}L=H^{-1}$, the integrand becomes $R_n(L)$ times the integrand
+in \eqref{eq:ope-average}. Hence
+\[
+ A_n(L\boldsymbol x,R(L)\boldsymbol v;Lo)
+                         =R_n(L)A_n(\boldsymbol x,\boldsymbol v;o).
+\]
+This also holds outside the domain by its invariance. Translation and
+permutation identities follow directly from the corresponding identities
+for $H_n$ inside the integral. For a single field $v\in E_q$ at its
+center, with $q\leq n$, \eqref{eq:ope-raw-single} shows that the integrand
+is the constant
+$R_n(K)\iota_{qn}R_q(K^{-1})v=\iota_{qn}v$. Therefore
+$A_n((o),(v);o)=\iota_{qn}v$.
+
+Now define the real-symmetric readout
+\begin{equation}\label{eq:ope-real-average}
+ C_n(\boldsymbol x,\boldsymbol v;o)
+  =\tfrac12\bigl(A_n(\boldsymbol x,\boldsymbol v;o)
+       +J_nA_n(\boldsymbol x,J\boldsymbol v;o)\bigr).
+\end{equation}
+It is still complex multilinear: an input scalar is conjugated by the
+input $J$ and conjugated back by the output $J_n$. It is smooth on
+$\mathcal U_n$, has the same translation, permutation and rotation
+identities, and satisfies
+\[
+ C_n(\boldsymbol x,J\boldsymbol v;o)=J_nC_n(\boldsymbol x,\boldsymbol v;o),
+ \qquad C_n((o),(v);o)=\iota_{qn}v\quad(q\leq n).
+\]
+The first identity uses $J^2=I$ and exchanges the two summands. The
+second follows from the corresponding identity for $A_n$ and
+compatibility of $J$ with inclusions.
+
+\subsection{Compatible projections onto new degrees}
+For every pair $m,q\geq0$, define a linear map
+\[
+ L_{mq}:E_q\to E_m,\qquad L_{mq}v=C_m((0),(v);0).
+\]
+The centered single-field configuration always belongs to $\mathcal U_m$.
+The preceding identities give
+\begin{equation}\label{eq:ope-single-compat}
+ L_{mq}=\iota_{qm}\ (q\leq m),\qquad
+ L_{mq}\iota_{rq}=L_{mr}\ (r\leq q).
+\end{equation}
+For the second equality, every exterior correlation used in the raw tests
+is unchanged under the physical inclusion. This equality passes through
+rotation averaging, since the inclusions commute with rotations, and
+through conjugation averaging for the same reason. It holds even when
+$m<r$; no extension of a low-degree inverse is being assumed.
+The maps $L_{mq}$ intertwine rotations and conjugation as well.
+
+Define recursively
+\[
+ K_m=I_{E_m}-\sum_{i<m}\iota_{im}K_iL_{im},\qquad
+ P_{mq}=K_mL_{mq},\qquad
+ V_m=\bigcap_{i<m}\ker P_{im}.
+\]
+The empty sum makes $K_0=I$. These are finite sums of fixed linear maps.
+From \eqref{eq:ope-single-compat}, for $q\leq m$,
+\begin{equation}\label{eq:ope-projection-recursion}
+ P_{mq}v=\iota_{qm}v-\sum_{i<m}\iota_{im}P_{iq}v,
+ \qquad
+ \sum_{i\leq m}\iota_{im}P_{iq}v=\iota_{qm}v.
+\end{equation}
+Also $P_{mq}\iota_{rq}=P_{mr}$ whenever $r\leq q$.
+If $q<m$, apply the second identity at degree $m-1$ and then include
+in $E_m$. Its sum is the one subtracted in the first identity, so
+\begin{equation}\label{eq:ope-higher-kills}
+ P_{mq}=0\quad(q<m).
+\end{equation}
+For $v\in V_m$, the recursion with $q=m$ gives $P_{mm}v=v$.
+
+\begin{lemma}\label{lem:ope-homogeneous-projections}
+The range of $K_m$ is contained in $V_m$. If $v\in V_j$, then
+$P_{mj}v=\delta_{mj}v$, interpreting the right side as zero when
+$m\neq j$. Consequently
+\[
+ E_m=\bigoplus_{j\leq m}\iota_{jm}V_j.
+\]
+\end{lemma}
+\begin{proof}
+We prove the range assertion by induction on $m$. Fix $i<m$ and apply
+$P_{im}$ to the defining formula for $K_mx$. Compatibility gives
+\[
+ P_{im}K_mx=P_{im}x-\sum_{j<m}P_{ij}(K_jL_{jm}x).
+\]
+By the induction hypothesis $K_jL_{jm}x\in V_j$. If $i<j$, its image
+under $P_{ij}$ is zero by the definition of $V_j$; if $i>j$, it is zero
+by \eqref{eq:ope-higher-kills}. At $i=j$, the identity on $V_i$
+proved above makes the term $K_iL_{im}x=P_{im}x$. The sum therefore
+cancels the first term. This proves $K_mx\in V_m$.
+The asserted action on $V_j$ follows from the same three cases.
+
+Take $q=m$ in \eqref{eq:ope-projection-recursion}. Each
+$P_{jm}x=K_jL_{jm}x$ belongs to $V_j$, so this identity proves spanning.
+If $\sum_{j\leq m}\iota_{jm}v_j=0$ with $v_j\in V_j$, apply
+$P_{km}$ and use inclusion compatibility. All terms vanish except
+$v_k$. Thus every $v_k=0$, proving directness.
+\end{proof}
+
+Induction in the formula for $K_m$ shows that it commutes with rotations
+and conjugation: the inclusions and $L_{im}$ intertwine them, and the
+previous $K_i$ do so by induction. It follows that $V_m$ is invariant
+under both operations, since all its defining tests intertwine them.
+No claim that the original arbitrary quotient lifts were covariant was
+needed.
+
+Define the homogeneous output at degree $m$ by
+\[
+ F_m(\boldsymbol x,\boldsymbol v;o)
+                         =K_mC_m(\boldsymbol x,\boldsymbol v;o)\in V_m.
+\]
+It is multilinear, has the same symmetries as $C_m$, and is smooth on
+$\mathcal U_m$. At a single centered field $v\in E_q$ it equals
+$P_{mq}v$. In particular the finite packet
+\[
+ \mathcal P_D(\boldsymbol x,\boldsymbol v;o)
+          =\sum_{m\leq D}\iota_{mD}F_m(\boldsymbol x,\boldsymbol v;o)
+\]
+satisfies the exact compatibility
+\begin{equation}\label{eq:ope-packet-projection}
+ P_{jD}\mathcal P_D=F_j\qquad(j\leq D),
+\end{equation}
+by Lemma~\ref{lem:ope-homogeneous-projections}. On one centered field of
+degree $q\leq D$, the packet equals $\iota_{qD}v$ by
+\eqref{eq:ope-projection-recursion}.
+
+\subsection{Real channel bases and scalar coefficients}
+The conjugation $J_m$ restricts to an antilinear involution of $V_m$.
+Its fixed real vector space has a real basis $(e_{m,\alpha})$; this is
+also a complex basis of $V_m$. Indeed every $v\in V_m$ decomposes as
+\[
+ v=\frac{v+J_mv}{2}
+       +i\frac{v-J_mv}{2i},
+\]
+and both displayed components are fixed by $J_m$. This proves complex
+spanning. If $\sum_\alpha z_\alpha e_{m,\alpha}=0$, applying $J_m$
+and then adding and subtracting the two equations shows separately that
+the real and imaginary coefficient sums vanish. Real linear independence
+forces every $z_\alpha=0$.
+
+Choose these bases once for every $m$ and write
+\begin{equation}\label{eq:ope-final-coefficients}
+ F_m(\boldsymbol x,\boldsymbol v;o)
+   =\sum_\alpha c_{\boldsymbol v}^{m,\alpha}(\boldsymbol x;o)
+                                                   e_{m,\alpha}.
+\end{equation}
+The coordinate functionals are continuous because the spaces are finite
+dimensional. Thus the coefficients inherit smoothness, multilinearity,
+translation and permutation symmetry; reality gives conjugation of their
+values under conjugation of all input labels. Rotation covariance holds
+for the field-valued output, or equivalently through the finite matrix of
+$R_m$ on this basis. The individual basis vectors need not be rotation
+invariant.
+
+Let $\ell_{\chi,m,o,\boldsymbol y,\boldsymbol w}$ be the linear
+functional obtained by inserting an $E_m$ field at $o$ alongside separated
+spectators, in any phase $\chi$ or in the mixed state. Physical inclusion
+compatibility gives
+$\ell_{\chi,D}\iota_{mD}=\ell_{\chi,m}$. Therefore evaluation of the
+packet is exactly
+\[
+ \ell_{\chi,D}(\mathcal P_D)
+  =\sum_{m\leq D}\sum_\alpha
+    c_{\boldsymbol v}^{m,\alpha}(\boldsymbol x;o)
+    S_\chi(e_{m,\alpha},\boldsymbol w;o,\boldsymbol y).
+\]
+This identifies the final scalar coefficients with one fixed covariant
+field prescription, independent of phase, spectators and truncation.
+It does not yet estimate the difference from the original cluster
+correlation. That quantitative difference is the next proof obligation.

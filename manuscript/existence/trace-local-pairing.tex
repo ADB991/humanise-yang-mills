@@ -1,0 +1,126 @@
+% Separation estimate for the selected finite-volume price test.
+\section{A finite-volume separation estimate}
+\label{sec:ex-lattice-trace-local-pairing}
+
+We prove the separation estimate that converts a localized probe into a
+small two-site correlation. The proof is a three-term bilinear expansion;
+all source-specific quantitative inputs are written as precise hypotheses
+and audited separately.
+
+Fix a finite periodic gauge configuration space $\Omega$ with normalized
+Wilson expectation $\mathbb E_\beta$, and a reflection-positive cell
+tiling at selected level $i$ with $n\ge1$ cells. Its admissible
+observables are bounded measurable gauge-invariant functions in the
+chamber-local domain. For each cell $a$, its copy $C_aF$ is the
+translated pullback of $F$ under that cell's reflection; if the reflection
+has odd sign parity, the copy is complex-conjugated. Define the root bound
+by
+\[
+ \mathcal R_i(F)=\left|\mathbb E_\beta\prod_{a=1}^n C_aF\right|^{1/n}.
+\]
+The local positivity estimate supplies the following inequalities for
+observables in the chamber-local domain:
+\begin{align}
+ |\mathbb E_\beta[F(\tau_{a(x)}\omega)G(\tau_{a(y)}\omega)]|
+    &\le \mathcal R_i(F)\mathcal R_i(G)\quad(x\ne y),
+    \label{eq:ex-lattice-root-product}\\
+ \mathcal R_i(F+G)&\le\mathcal R_i(F)+\mathcal R_i(G).
+    \label{eq:ex-lattice-root-sum}
+\end{align}
+Here $x,y$ are coarse sites in the tiling, $a(x),a(y)$ are their fine
+anchor sites, and $\omega\in\Omega$ is a gauge configuration. The anchor
+map is injective on the two sites under consideration. The first estimate
+is the reflected-cell product bound; the second is the root-bound triangle
+inequality. We use them only when the observables and all indicated sums
+and differences remain in the bounded measurable, gauge-invariant,
+chamber-local domain.
+The local error scale at selected level $i$ is
+\[
+ t_i(a)=\exp\!\left(\frac{a}{10^4}(\log p_i)^{48}\right),
+ \qquad p_i\longrightarrow\infty.
+\]
+It satisfies $t_i(a)t_i(c)=t_i(a+c)$ and is increasing in $a$ once $p_i>1$.
+The source growth estimate gives $t_i(1)\ge4$ for all sufficiently large
+$i$.
+
+\begin{proposition}[Finite-volume two-site error]
+\label{prop:ex-lattice-finite-volume-pairing}
+Let $P,Q,U,V$ be observables in the chamber-local domain at
+selected level $i$, and let $x\ne y$ be coarse sites whose fine anchor
+sites are distinct. Suppose
+\begin{align}
+ \mathcal R_i(P)&\le t_i(5), &\mathcal R_i(Q)&\le t_i(5),
+ \label{eq:ex-lattice-pair-main-cost}\\
+ \mathcal R_i(Q-V)&\le t_i(-300), &
+ \mathcal R_i(P-U)&\le t_i(-200),
+ \label{eq:ex-lattice-pair-local-errors}\\
+ |\mathbb E_\beta[U(\tau_{a(x)} \omega)V(\tau_{a(y)} \omega)]|&\le t_i(-200).
+ \label{eq:ex-lattice-pair-probe}
+\end{align}
+Then
+\[
+ |\mathbb E_\beta[P(\tau_{a(x)} \omega)Q(\tau_{a(y)} \omega)]|
+ \le t_i(-100)
+\]
+for all sufficiently large $i$.
+\end{proposition}
+\begin{proof}
+Write $\langle F,G\rangle_{x,y}=\mathbb E_\beta[F(\tau_{a(x)}\omega)G(\tau_{a(y)}\omega)]$. By \eqref{eq:ex-lattice-root-sum} and the assumptions,
+\[
+ \mathcal R_i(V)\le \mathcal R_i(Q)+\mathcal R_i(V-Q)
+       \le t_i(5)+t_i(-300).
+\]
+The definition gives $\mathcal R_i(-F)=\mathcal R_i(F)$, since negating
+$F$ changes the product of its $n$ cell copies only by the overall sign
+$(-1)^n$. Hence the assumed bound for $Q-V$ also bounds $V-Q$.
+Bilinearity gives the exact identity
+\begin{equation}
+ \langle P,Q\rangle_{x,y}
+ =\langle U,V\rangle_{x,y}
+  +\langle P,Q-V\rangle_{x,y}
+  +\langle P-U,V\rangle_{x,y}.
+ \label{eq:ex-lattice-pair-telescope}
+\end{equation}
+Indeed, the right hand side equals
+$\langle U,V\rangle+\langle P,Q\rangle-\langle P,V\rangle
+ +\langle P,V\rangle-\langle U,V\rangle$.
+Using \eqref{eq:ex-lattice-root-product} on the last two terms and
+\eqref{eq:ex-lattice-pair-main-cost}--\eqref{eq:ex-lattice-pair-probe}
+therefore yields
+\begin{align*}
+ |\langle P,Q\rangle_{x,y}|
+ &\le t_i(-200)+t_i(5)t_i(-300)
+       +t_i(-200)\bigl(t_i(5)+t_i(-300)\bigr)\\
+ &=t_i(-200)+t_i(-295)+t_i(-195)+t_i(-500)\\
+ &\le4t_i(-195).
+\end{align*}
+The last inequality uses monotonicity in the exponent. Since $t_i(1)\ge4$,
+\[
+ 4t_i(-195)\le t_i(1)t_i(-195)=t_i(-194)\le t_i(-100),
+\]
+again by monotonicity. This proves the conclusion.
+\end{proof}
+
+\subsection{Application to a selected response insertion}
+\label{subsec:ex-lattice-mileage-application}
+
+For the selected construction, the proposition applies with $P$ equal to
+the measured grade-five marker, $Q$ the marker after the grade-four
+insertion, $U$ the localized probe supplied by the marker receipt, and $V$
+the bounded local approximation to the inserted marker. The exact source
+hypotheses have the following mathematical form: both measured markers have
+root bound at most $t_i(5)$; the local approximation satisfies
+$\mathcal R_i(Q-V)\le t_i(-300)$; the probe-to-marker difference satisfies
+$\mathcal R_i(P-U)\le t_i(-200)$; and the distant-site probe correlation
+satisfies $|\langle U,V\rangle_{x,y}|\le t_i(-200)$. With these four
+receipts, the proposition proves the required two-site price bound
+$t_i(-100)$.
+
+The proof above discharges the finite-volume assembly estimate, including
+its exponent arithmetic. It does not prove production of the four receipts.
+In the selected source, their producers are the coefficient-to-root estimate
+for the two measured markers, the local approximation and window bound for
+the insertion, the probe witness with its distant-site price estimate, and
+the finite-volume reflection-positivity seam. The evidence table records
+these exact source statements and the remaining producer boundaries. No
+continuum or infinite-volume limit is used in this proposition.

@@ -1,0 +1,309 @@
+\section{Calibration of the primary coefficient transition}
+\label{sec:primary-calibration-producer}
+The primary transition must do more than bound a regular insertion. Its
+coefficient must approach the prescribed linear transport on the finite
+coefficient frame. We prove this by the same three comparisons used in
+the construction: the actual principal term to its Gaussian reference,
+the Gaussian reference to the linear predicted field, and that field to
+the finite polynomial probe calculation.
+
+Fix a frame of total degree $d$ and a nonconstant coordinate $i$. Write
+$g_i\in\{1,\ldots,d\}$ for its spatial grade and $\ell_i$ for its
+order of vanishing in the field amplitude. These are different gradings.
+The primary insertion $h_i$ is the local section at fine threshold
+$\theta_f$, normalized by $\theta_f^{-\ell_i}$ as in
+Section~\ref{sec:local-sections}. Its regularity price is bounded by the
+fixed fine-frame constant $T_f$. All constants in this section may depend
+on the chosen frame and the block factor $L$. Periods and the incoming
+coupling remain uniform. Both adjacent kernel levels are at least four,
+and the fine level is at least $d$.
+
+\subsection{Removing the Gaussian fluctuation at the flat field}
+Let $h$ be one real component of $h_i$. Denote by $H(V)$ its reference
+Gaussian integral and by
+\[
+ h_0(V)=h\left(\exp\bigl(\mathcal A\,
+                  \operatorname{crop}_{R}(\log V)\bigr)\right)
+\]
+the linear prediction, with the installed response $\mathcal A$ and
+$R=45(1+B_c)$. This formula is used as a germ at $V=1$; its crop is in
+the identity gauge. Let $k$ be the derivative order of a frame probe.
+Purchase regularity through order $n\ge k+1$, as well as $n\ge2$.
+The additional derivative will control the change of the insertion's
+base point.
+
+Use the fixed Gaussian measure at $V=1$ and let $R_V(z)$ be the
+normalized density ratio. Put $A_V(z)=h(W(V,z))$, where $W$ is the
+actual received reference configuration. With the cutoff $\Gamma$
+of the preceding section, the exact difference of integrands is
+\begin{equation}\label{eq:primary-integrand-difference}
+ \Gamma R_V A_V-h_0(V)
+ =\Gamma R_V(A_V-h_0(V))
+       +\Gamma(R_V-1)h_0(V)+(\Gamma-1)h_0(V).
+\end{equation}
+Thus no derivative of the varying density is discarded.
+
+Write $P(z)\ge\max\{1,\|\mathrm{tape}(z)\|\}$ for the fixed
+Gaussian coordinate norm augmented by one. On the cutoff support,
+the display comparison of Section~\ref{sec:principal-reference-attenuation}
+gives, for every jet through order $n$, an error of fine direction price
+\[
+ p(z)=C_n\frac{Q s^2+g\|\mathrm{tape}(z)\|}{\theta_f}.
+\]
+The linear predictor's argument jets have bounded fine direction price
+$W\ge1$. The nonlinear jets have price at most $W+p(z)$.
+For a partition with $r$ arguments, subtract the two chain-rule terms
+by first changing their base point and then their arguments one at a time.
+Changing the base point costs at most
+$C\tau p(z)(W+p(z))^r$: integrate the $(r+1)$st derivative of the
+insertion along the healthy radial segment proved earlier. Changing the
+arguments costs at most
+$Cr\tau p(z)(W+p(z))^{r-1}$. All these terms use $r+1\le n$.
+Summing the finitely many partitions proves
+\[
+ |D^j(A_V(z)-h_0(V))|_{V=1}
+       \le C_n\tau p(z)(W+p(z))^n,
+                         \qquad j\le k.
+\]
+The same argument without subtraction gives $|D^jh_0(1)|\le C_n\tau$.
+
+The density-ratio calculation in
+Section~\ref{sec:gaussian-differentiation} gives a small factor
+$\theta_f$ times a polynomial in the read radius and $P(z)^2$
+in every positive-order jet of $R_V-1$ at $1$.
+Its value there is zero since $R_1=1$. More explicitly, differentiate
+$\tfrac12\log\det C(V)-\tfrac12\langle z,C(V)z\rangle$
+with the reference precision $C$. Each positive-order term contains
+at least one admissible coarse direction, and the inverse and precision
+jets bound it by $K_L\theta_f(1+B_c)^aP(z)^2$. The partition formula
+for its exponential multiplies such factors, retaining at least one.
+
+The cutoff error is controlled even outside its support. It is one on
+the plateau $g\|\mathrm{tape}(z)_a\|\le\varepsilon\theta_f/8$
+for every coordinate $a$. If a coordinate fails this test, then
+$(g/\theta_f)P(z)^2\ge\varepsilon/8$, while $|\Gamma-1|\le2$.
+Consequently
+\[
+ |\Gamma(z)-1|\le \frac{16}{\varepsilon}
+                           \frac g{\theta_f}P(z)^2.
+\]
+This bound does not require evaluating $A_V$ off the cutoff support:
+there the first two terms of \eqref{eq:primary-integrand-difference}
+vanish identically.
+
+Collect the displayed small factors into $J_\beta\ge0$ so that
+\[
+ J_\beta\le K_L(\theta_f+g/\theta_f)(1+B_c)^a,
+ \qquad p(z)\le J_\beta P(z)^2.
+\]
+The bounded threshold ratio supplies $s^2/\theta_f\le
+K_L\theta_f(1+B_c)^a$. Increase the coupling until $J_\beta\le1$.
+Leibniz' rule in \eqref{eq:primary-integrand-difference} and the
+partition bounds then give
+\[
+ |D^j(\Gamma R_V A_V-h_0(V))|_{V=1}
+                \le C_n\tau J_\beta P(z)^{4(n+1)},
+                         \qquad j\le k.
+\]
+All factors from higher-order products are absorbed by the displayed
+power, since $P\ge1$ and $J_\beta\le1$. The fixed Gaussian moments
+bound its integral by $K'_L(1+B_c)^b$. Compact cutoff support and the
+common local smoothness justify differentiation under the integral;
+the polynomial bound also dominates the subtracted constant term.
+The monitor estimate from the preceding section implies
+\begin{equation}\label{eq:primary-flat-gaussian}
+ \max_{j\le k}|D^jH(1)-D^jh_0(1)|\longrightarrow0
+                                      \quad(\beta\to\infty).
+\end{equation}
+The bound is uniform in every forest, replica choice and allowed
+period. Averaging therefore preserves it. Combining it with the
+actual-to-reference comparison gives the same convergence for the
+actual principal insertion.
+
+\subsection{Normalized stencil functions and their jets}
+We give the finite-dimensional estimate needed to sample $h_0$ on the
+frame probes. Let $H_i$ be the analytic unnormalized stencil function
+of coordinate $i$, on the finite-dimensional space of its link logs.
+It satisfies $D^jH_i(0)=0$ for $j<\ell_i$. For $0<t\le1$ set
+\[
+                       H_{i,t}(v)=t^{-\ell_i}H_i(tv).
+\]
+On any fixed ball $\|tv\|\le R_0$, Taylor's formula and compactness
+give, for every prescribed order $j$,
+\begin{equation}\label{eq:primary-normalized-jets}
+                    \|D^jH_{i,t}(v)\|
+                           \le C(1+\|v\|)^{\ell_i}.
+\end{equation}
+Indeed let $a=\max\{\ell_i-j,0\}$. The vanishing derivatives imply
+$\|D^jH_i(tv)\|\le C\|tv\|^a$ by integrating $a$ times from zero.
+For $a=0$, use the maximum of the continuous derivative on the ball.
+The scaling factor is $t^{j-\ell_i+a}\le1$, with nonnegative exponent;
+and $\|v\|^a\le(1+\|v\|)^{\ell_i}$. Taking a maximum over the
+finitely many required orders proves the bound with one $C$.
+
+Suppose two $C^k$ curves $v,q$ have jets at zero bounded by $U+e,U$,
+respectively, and their jet differences through order $k$ are at most
+$e\ge0$. Suppose also their values, multiplied by $t$, lie in the
+fixed ball. Along the segment joining their values, use
+\eqref{eq:primary-normalized-jets} through order $k+1$.
+For a partition with $r\le j\le k$ blocks, the difference of the
+outer $r$th derivatives costs at most
+$C(1+U+e)^{\ell_i}e$. Replacing its $r$ arguments one at a time
+costs at most $Cr(1+U+e)^{\ell_i+r}e$. Thus
+\begin{equation}\label{eq:primary-stencil-stability}
+ \max_{j\le k}\|D^j(H_{i,t}\circ v)(0)
+                   -D^j(H_{i,t}\circ q)(0)\|
+           \le C_{k,i,U}(1+e)^{\ell_i+k}e.
+\end{equation}
+This estimate is uniform as $t\downarrow0$. The same partition
+calculation without subtraction bounds the jets of
+$H_{i,t}\circ q$ uniformly. The constant is a finite sum over
+partitions, not a limit at the singular normalization $t=0$.
+
+\subsection{The cropped torus probe and the full polynomial forecast}
+A probe consists of a fixed polynomial potential and a derivative
+order $k\le d$. Its test-link curve is the holonomy curve defined in
+Section~\ref{sec:local-sections}. At derivative order $j\le k$,
+its link-log jet on the covering lattice is a polynomial field of
+degree at most $dj$. This follows by expanding the exponential,
+product and logarithm to order $j$: every term is a product of at
+most $j$ potential factors, each of degree at most $d$. Integration
+along a unit bond and finite differences do not increase that bound.
+The Taylor coefficients are fixed by the probe.
+
+Normalize the coarse probe by its threshold $y=\theta_c$ and the
+fine link field by $t=\theta_f$, with $y/t\le2$ and $y\le1$.
+Apply the installed response to the cropped torus link-log curve and
+restrict to the fixed fine stencil; call the resulting normalized
+curve $v_R$. Let $q$ be the full covering-lattice prediction obtained
+by applying the same response to the polynomial link-log jets.
+Only its $k$-jet is used; it is equivalently obtained by the finite
+polynomial jet algebra of the probe. Both curves vanish at zero.
+The exact correspondence between periodic and covering convolution
+holds because the retained kernel is periodized from its absolutely
+summable covering kernel.
+
+On covering sites of distance at most $R$, the crop and the full
+probe have identical jets. The room inequality $2R<c$ ensures that
+these sites have their canonical lifts, so there is no seam error
+there. Outside this region, the probe jets have polynomial growth
+and the cropped jets have norm at most $K(1+4R)^{dk}$.
+The response strip bound gives
+\begin{equation}\label{eq:primary-probe-tail}
+ \max_{j\le k}\|D^jv_R(0)-D^jq(0)\|
+       \le C\{1+K(1+4R)^{dk}\}e^{-\sigma R/2}=:e_R.
+\end{equation}
+To verify the tail estimate, take half the exponential weight to
+bound the polynomial factor uniformly, and sum the remaining
+weighted kernel. The finite stencil offsets and four directions
+supply only a fixed multiplier. The torus sum is the same sum
+regrouped by residue class; absolute convergence permits this
+regrouping. This is the cropped-versus-full comparison, including
+all derivative orders, for the actual retained response.
+
+The full predicted jets have a bound $U$ independent of the period
+and $R$. Indeed convolution of a degree-$dj$ polynomial costs its
+fixed weighted kernel moment. In a nonzero chain-rule term with
+$r\ge1$ blocks, the threshold factor is $y^r/t\le y/t\le2$.
+The finitely many probe partitions therefore have a common bound.
+Apply \eqref{eq:primary-stencil-stability} with $t=\theta_f$ and
+$R_0=1$: both input values are zero and hence lie in this fixed
+positive-radius ball. Since $e_R\to0$, the resulting
+normalized stencil jet difference tends to zero. Multiplication by
+the fixed physical factor $L^d$ preserves that convergence.
+
+To identify the prescribed coefficient transport explicitly, let
+$\mathscr S_t$ be diagonal multiplication by $t^{\ell_i}$, let
+$\mathscr D_L$ be diagonal multiplication by $L^{g_i}$, and let
+$\mathscr V_L$ be diagonal multiplication by $L^{d-g_i}$. If
+$\mathscr R$ is coefficient recovery of the full polynomial forecast,
+the construction's heading is the matrix
+\[
+ \mathscr S_{\theta_c}\,\mathscr R\,
+             \mathscr D_L\,\mathscr S_{\theta_f^{-1}},
+ \qquad
+ x_i=\mathscr S_{\theta_c}\mathscr R
+       \mathscr D_L\mathscr S_{\theta_f^{-1}}\mathscr V_L e_i.
+\]
+On column $i$, the last three diagonal factors contribute
+$L^{g_i}\theta_f^{-\ell_i}L^{d-g_i}
+ =L^d\theta_f^{-\ell_i}$. The remaining coarse scaling substitutes
+$\theta_c$ times the probe potential into its polynomial jet.
+Consequently, for every frame probe $p$,
+\[
+ \operatorname{probe}_p(x_i)
+           =L^d D^{k_p}(H_{i,\theta_f}\circ q_p)(0).
+\]
+This identity is an equality of the finite jet calculation: evaluate
+the polynomial transport on the probe, substitute the response's
+polynomial moments, and use the local section's exact coefficient
+recovery. The normalization on each side is
+$L^d\theta_f^{-\ell_i}$, with the same coarse threshold in the
+probe. Thus \eqref{eq:primary-probe-tail} identifies the linear
+prediction's probes with those of $x_i$, to an error tending to zero.
+It does not replace the retained response by another continuum kernel.
+
+\subsection{From probes to the paid primary coefficient}
+Let $F_i$ be the actual complex principal insertion, already multiplied
+by $L^d$, and let $b_i$ be its extracted coefficient vector. The
+nonwrapping coarse stencil allows coefficient recovery by the fixed
+finite probe family. Ordered derivative convergence in
+\eqref{eq:primary-flat-gaussian} implies probe convergence: each
+probe derivative is a finite combination of ordered derivatives
+along its fixed test-link curve. The coefficients are uniformly
+bounded by its finite local price. The last subsection and the
+triangle inequality therefore give
+\[
+       \max_p|\operatorname{probe}_p(b_i-x_i)|\longrightarrow0.
+\]
+A finite separating family of linear probes controls the coefficient
+norm: on its unit sphere their maximum has a positive minimum by
+compactness. Equivalently use the finite recovery matrix from
+Section~\ref{sec:local-sections}. Denote its bound by $T_{\rm test}$.
+Then $\|b_i-x_i\|_1\le T_{\rm test}\delta_\beta$, where
+$\delta_\beta\to0$ is the maximum displayed probe error.
+
+The remaining regular rows have weighted sum tending to zero after
+$L$ is fixed, by the nonprincipal estimate of
+Section~\ref{sec:leaf-expansion}. The extraction map on them costs
+the fixed read constant $T_{\rm read}$. If their summed majorant is
+$u_\beta$, the total extracted coefficient differs from $x_i$ by at most
+\[
+                    p_\beta=T_{\rm test}\delta_\beta
+                                  +T_{\rm read}u_\beta\longrightarrow0.
+\]
+The equality splitting the sum into its principal row and the other
+rows is justified by their absolute weighted summability.
+
+Move this coefficient error into the local-section remainder. The
+local splitting identity of Section~\ref{sec:local-splitting} makes
+this an exact equality of densities and of the ordinary and flagged
+profiles. Its additional cost is at most $C_{\rm sec}p_\beta$, with
+$C_{\rm sec}$ the fixed section and symmetry cost. Choose the probe
+error to spend half the desired allowance $L^{-2/5}$ and the
+nonprincipal error to spend the other half. The probe family and
+frame are finite, so one entrance threshold meets all these demands.
+This proves the small primary coefficient error for the prescribed
+transport $x_i$, on the actual selected transition.
+
+For completeness, its principal remainder has the required graded
+bound as well. The local section for coordinate $i$ has zero moments
+through degree $g_i-1$. Apply the short reference estimate with that
+degree to its fixed stencil; it gives $C_iL^{-g_i}$ times the fine
+mass. After $L$ is fixed, choose the comparison error so that its
+reserved mass is at most $L^{-g_i}$ times that mass. Apply this to the
+real and imaginary parts and multiply by $L^d$. The resulting
+principal price is at most
+\[
+                     2(C_i+1)L^{d-g_i}m_i.
+\]
+Here the constant $C_i$ is purchased before the block factor using
+the weighted response derivatives through order $g_i-1$.
+The projection calculation already proved bounds the remaining cost
+by fixed multiples of this price and $m_i$. Since $L^{d-g_i}\ge1$
+and the normalized local-section mass $m_i$ is bounded by the fixed
+frame credibility constant, choose the primary ledger constant $E_J$
+larger than their finite sum over the frame. This gives the graded
+remainder budget $E_JL^{d-g_i}$. It is the ordinary primary budget
+used in the calibrated coefficient-field recursion, together with
+the small coefficient error just proved.

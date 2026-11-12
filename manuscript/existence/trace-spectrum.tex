@@ -1,0 +1,271 @@
+\section{The spectral measure of a single field}
+\label{sec:trace-spectrum}
+The joint translation measure acts on vectors in Hilbert space. A point
+field applied to the vacuum need not be such a vector. To obtain the
+spectral measure of its two-point function, we first keep a positive heat
+height, take the measure of the resulting vector, and then remove the
+exponential damping. The resulting measure can have infinite total mass.
+
+\subsection{Exact damping of vector measures}
+We first record a uniqueness fact for bounded holomorphic functions that
+will identify heat evolution inside the spectral integral. Suppose $h$ is
+bounded and continuous on the closed upper half-plane, holomorphic in its
+interior, and zero on the real axis. Fix $x\in\mathbb R$, $s\geq0$ and
+apply the Gaussian contour argument from
+Lemma~\ref{lem:paley-positive} to $h(z+x)$ with $b=-2\varepsilon s$.
+The bottom integral vanishes. On the top edge,
+\[
+ e^{-ib(t+is)-\varepsilon(t+is)^2}
+       =e^{-\varepsilon s^2}e^{-\varepsilon t^2}.
+\]
+The nonzero constant factor can be cancelled, giving
+$\int e^{-\varepsilon t^2}h(x+t+is)dt=0$.
+Set $\varepsilon=R^{-2}$ and $t=Ru$. After cancelling $R>0$, let
+$R\downarrow0$. Boundedness and the Gaussian majorant justify dominated
+convergence and give $\sqrt\pi h(x+is)=0$. Thus $h=0$. In particular,
+two such bounded holomorphic functions with equal continuous boundary
+values agree throughout the half-plane.
+
+Let $\nu_v$ be the finite joint spectral measure of a vector
+$v\in\mathcal H_E$, and retain $T_E$ and $E_t$ from the earlier
+construction. Equation~\eqref{eq:euclidean-positive-energy} gives
+$p_0\geq0$ almost everywhere for $\nu_v$. For fixed $a\in\mathbb R^4$,
+the function
+\[
+ G(z)=\int e^{ip\cdot a}e^{izp_0}\,d\nu_v(p)
+\]
+is bounded and continuous on the closed upper half-plane. On a neighborhood
+where $\operatorname{Im}z\geq\eta>0$, its derivative is dominated by
+$p_0e^{-\eta p_0}\leq\eta^{-1}$. Since $\nu_v$ is finite, dominated
+differentiation proves holomorphy. The bounded holomorphic function
+\[
+ F(z)=\langle v,T_E(a)E(-iz)v\rangle
+\]
+in the open half-plane has the continuous boundary
+$\langle v,T_E(a)V(t)v\rangle$. By the translation spectral formula
+these boundary values equal $G(t)$. The uniqueness just proved therefore
+identifies $F=G$.
+
+The operators $E_t$ are self-adjoint and commute with translations.
+For $t\geq0$, the preceding identity at $z=2it$ gives
+\[
+ \langle E_tv,T_E(a)E_tv\rangle
+  =\langle v,T_E(a)E_{2t}v\rangle
+  =\int e^{ip\cdot a}e^{-2tp_0}\,d\nu_v(p).
+\]
+Both measures here are finite, because $p_0\geq0$. Uniqueness of finite
+measures from their characteristic functions, proved in
+Section~\ref{sec:spectral-measure}, yields
+\begin{equation}\label{eq:trace-vector-damping}
+ d\nu_{E_tv}(p)=e^{-2tp_0}\,d\nu_v(p).
+\end{equation}
+This proof uses the continuous bounded half-plane boundary of a vector
+matrix coefficient, not the generally distributional boundary of a point
+correlation.
+
+\subsection{Point vectors and removal of damping}
+Fix a label $v$ and, for $s>0$, define
+\[
+ q_s(v)=Q_{p,(s)}(0;v)=E_{s-p}B_p(v)\Omega_E,
+ \qquad 0<p<1,\quad4p<s.
+\]
+The vector is independent of the admissible width $p$. Indeed, the mixed
+Gram identity gives the same number for the scalar product of either of
+two such vectors with either one of them. Expanding the squared norm of
+their difference therefore gives zero. If $t\geq0$, a width admissible
+at $s$ is also admissible at $s+t$. Using that common width and the
+semigroup law gives
+\begin{equation}\label{eq:trace-point-flow}
+ q_{s+t}(v)=E_tq_s(v).
+\end{equation}
+Let $\nu_s$ be the finite spectral measure of $q_s(v)$. Define a positive
+Borel measure by
+\begin{equation}\label{eq:trace-undamping}
+ d\mu_v(p)=e^{2p_0}\,d\nu_1(p).
+\end{equation}
+This is a well-defined sigma-finite measure: the density is finite and
+positive, and is bounded on each set $\{|p_0|\leq n\}$.
+Multiplication of densities and
+\eqref{eq:trace-vector-damping}--\eqref{eq:trace-point-flow} imply
+\[
+ e^{2(s+t)p_0}\,d\nu_{s+t}=e^{2sp_0}\,d\nu_s.
+\]
+Compare $s$ and $1$ through their common larger height $s+1$. It follows
+that for every $s>0$,
+\begin{equation}\label{eq:trace-height-measure}
+ d\mu_v=e^{2sp_0}\,d\nu_s,
+ \qquad e^{-2sp_0}\,d\mu_v=d\nu_s.
+\end{equation}
+In particular $\mu_v$ is supported in the time half-space $p_0\geq0$,
+and every positive exponential damping has finite mass.
+
+The single-insertion case of the mixed Gram identity and translation
+covariance of the point vectors now gives
+\begin{equation}\label{eq:trace-pair-laplace}
+ F_2(x_0^0-is,x_1^0+is;\mathbf x_0,\mathbf x_1;Jv,v)
+ =\int e^{-2sp_0}e^{ip\cdot(x_1-x_0)}\,d\mu_v(p).
+\end{equation}
+To see the relative sign explicitly, the two vectors are
+$T_E(x_0)q_s(v)$ and $T_E(x_1)q_s(v)$. Unitarity moves the first
+translation to the second, producing $T_E(x_1-x_0)$; the spectral formula
+and \eqref{eq:trace-height-measure} give the integral above.
+
+For a self-adjoint Euclidean scalar label $v$, taking both real positions
+equal to zero identifies the left side with its Euclidean two-point
+function at separation $2s$. Thus
+\begin{equation}\label{eq:trace-positive-laplace}
+ T_v(t)=\int e^{-tp_0}\,d\mu_v(p)\quad(t>0).
+\end{equation}
+It follows already that $T_v$ is real, nonnegative and decreasing. The
+stronger forward-cone conclusion below is obtained after identifying the
+measure with the actual reconstructed fields.
+
+\subsection{Polynomial growth and the full boundary distribution}
+The fixed-label gap bound \eqref{eq:gap-power}, applied at heights $(-s,s)$
+and zero real positions, gives constants $C\geq0$ and $k\in\mathbb N$
+such that
+\[
+ \nu_s(\mathbb R^4)=\|q_s(v)\|^2\leq Cs^{-k},\qquad0<s\leq1.
+\]
+For $R\geq1$ use $s=R^{-1}$ in \eqref{eq:trace-height-measure}. On
+$\{p:p_0\leq R\}$ one has $e^{-2sp_0}\geq e^{-2}$, and hence
+\begin{equation}\label{eq:trace-energy-growth}
+ \mu_v\{p:p_0\leq R\}\leq e^2CR^k.
+\end{equation}
+This controls an entire energy sublevel set, not just a Euclidean ball.
+In particular $\mu_v(\{|p|\leq R\})\leq AR^k$ with $A=e^2C$.
+The measure is locally finite and therefore is a Radon measure on
+$\mathbb R^4$.
+
+Here is a quantitative rapid-weight consequence. Cover $\mathbb R^4$ by
+the closed shells $2^j\leq1+|p|\leq2^{j+1}$, $j\geq0$. On the $j$th
+shell the weight $(1+|p|)^{-k-1}$ is at most $2^{-j(k+1)}$, and its
+mass is at most $A2^{(j+1)k}$. Summing, with overlaps causing only an
+upper bound, gives
+\begin{equation}\label{eq:trace-rapid-weight}
+ \int(1+|p|)^{-k-1}\,d\mu_v(p)\leq A2^{k+1}<\infty.
+\end{equation}
+Thus every Schwartz function is absolutely integrable against $\mu_v$,
+and integration is a continuous functional on Schwartz space, bounded
+by a weighted supremum seminorm times the finite integral in
+\eqref{eq:trace-rapid-weight}.
+
+Use the unnormalized plus Fourier convention
+\[
+ f_+(p)=\int e^{ip\cdot x}f(x)\,dx,
+ \qquad
+ \mathcal W\Phi(p)=\int e^{ip\cdot(x_1-x_0)}\Phi(x_0,x_1)\,dx_0dx_1.
+\]
+Both are Schwartz functions when their arguments are Schwartz.
+For the second assertion take the joint plus Fourier transform and
+restrict it to the injective linear subspace $p\mapsto(-p,p)$.
+The chain rule controls derivatives of the restriction, and
+$|(-p,p)|=\sqrt2|p|$ controls its weighted supremum seminorms.
+
+At each height $s>0$, Fubini in \eqref{eq:trace-pair-laplace} is justified
+by $\nu_s(\mathbb R^4)\|\Phi\|_{L^1}<\infty$. It identifies the joint
+tested correlation with
+$\int e^{-2sp_0}\mathcal W\Phi(p)d\mu_v(p)$.
+As $s\downarrow0$, the exponential has absolute value at most one
+almost everywhere and tends to one. The integrable majorant
+$|\mathcal W\Phi|$ and the joint boundary theorem give
+\begin{equation}\label{eq:trace-full-boundary}
+ W_2(Jv,v)(\Phi)=\int\mathcal W\Phi(p)\,d\mu_v(p).
+\end{equation}
+This is an identity on all joint Schwartz tests, including those meeting
+the coincidence set or the null cone. No restriction of a distribution
+to such a set has been used.
+
+\subsection{Identification with field vectors and the forward cone}
+Let $\xi_v(f)=\phi(v,f)\Omega$ be the one-field vector in the reconstructed
+Hilbert space. With
+$\Phi(x_0,x_1)=\overline{f(x_0)}g(x_1)$, Fubini in the ordinary Fourier
+integral gives
+$\mathcal W\Phi=\overline{f_+}g_+$. The word Gram formula and
+\eqref{eq:trace-full-boundary} therefore give
+\begin{equation}\label{eq:trace-smeared-inner}
+ \langle\xi_v(f),\xi_v(g)\rangle
+                  =\int\overline{f_+(p)}g_+(p)\,d\mu_v(p).
+\end{equation}
+The product is integrable by the rapid-weight bound.
+Translation covariance gives
+$U(a)\xi_v(f)=\xi_v(f(\,\cdot-a))$, and changing variables in the
+Fourier integral gives
+$(f(\,\cdot-a))_+(p)=e^{ip\cdot a}f_+(p)$.
+It follows from \eqref{eq:trace-smeared-inner} that the characteristic
+function of the finite PVM measure of $\xi_v(f)$ equals that of
+$|f_+|^2\mu_v$. The latter is finite by
+\eqref{eq:trace-rapid-weight}. Finite-measure uniqueness gives
+\begin{equation}\label{eq:trace-field-mass}
+ d\mu^{\mathrm{field}}_{\xi_v(f)}=|f_+|^2\,d\mu_v.
+\end{equation}
+
+The weights in this identity determine $\mu_v$ uniquely. Given a closed
+ball of radius $n$, choose a smooth compactly supported function $h$ equal
+to one on that ball and take a Schwartz function $f$ with $f_+=h$.
+Such an $f$ exists by Fourier inversion, with the factor $(2\pi)^{-4}$
+in the inverse transform. The weight $|f_+|^2$ is then exactly one on the
+ball. Equality of all the weighted measures implies equality on every
+measurable subset of each ball; increasing the radius proves equality
+on all Borel sets by continuity from below.
+
+By Theorem~\ref{thm:field-spectrum}, every measure on the left of
+\eqref{eq:trace-field-mass} vanishes outside the forward cone.
+Apply the preceding weights on each ball to conclude
+\begin{equation}\label{eq:trace-forward}
+ \mu_v(\mathbb R^4\setminus\overline V_+)=0.
+\end{equation}
+Thus the forward-cone statement is inherited from the reconstructed field
+representation, while the initial undamping argument required only
+positivity of the time coordinate in the Euclidean chamber.
+
+For completeness the same identification gives Lorentz covariance of the
+point measure. Write $A=\Lambda^{-T}$ for the dual momentum action and
+$g_\Lambda(x)=g(\Lambda^{-1}x)$. Since $\det\Lambda=1$,
+$(g_\Lambda)_+(Ap)=g_+(p)$. Covariance of the field vectors and of their
+PVM measures then gives
+\[
+ |(g_\Lambda)_+|^2\mu_{\rho(\Lambda)v}
+            =A_*\bigl(|g_+|^2\mu_v\bigr)
+            =|(g_\Lambda)_+|^2 A_*\mu_v.
+\]
+The transformed tests run through Schwartz space, so uniqueness by the
+weights proves $\mu_{\rho(\Lambda)v}=A_*\mu_v$. In particular a Lorentz
+scalar label has a Lorentz-invariant point measure, with the same dual
+convention as the joint translation measure.
+
+\subsection{Application to the centered trace}
+Let $T_{ab}$ be the real symmetric Euclidean stress tensor supplied by the
+construction, transforming as a rank-two tensor, and put
+$\tau=\sum_aT_{aa}$. Orthogonality gives
+\[
+ R(K)\tau=\sum_{a,i,j}K_{ia}K_{ja}T_{ij}
+          =\sum_{i,j}\delta_{ij}T_{ij}=\tau.
+\]
+Its one-point value $c=\langle\tau\rangle_\chi$ is independent of position
+by translation invariance, and real by conjugation symmetry. The centered
+label $\Theta=\tau-c\mathbf1$ is consequently real, invariant under all
+Euclidean orthogonal transformations, and has zero one-point function.
+Since the adjoint label operation is conjugation followed by time
+reflection, $J\Theta=\Theta$.
+
+It is also a Lorentz scalar. Differentiating its Euclidean invariance shows
+that every Euclidean rotation generator annihilates it. The corresponding
+boost generator is $-i$ times that generator, so also annihilates it. The
+constant curve $\Theta$ and its boost orbit solve the same finite-dimensional
+constant-coefficient differential equation with the same initial value;
+uniqueness makes the orbit constant. Spatial rotations already fix it,
+and generation by boosts and spatial rotations proves full Lorentz
+invariance.
+
+The one-point holomorphic continuation of $\Theta$ is zero: on positive
+imaginary times it is the zero Euclidean one-point function, and the
+one-variable identity theorem extends that equality to the half-plane
+for each spatial position. Its tested boundary is therefore zero. The
+word formula gives
+$\langle\Omega,\phi(\Theta,f)\Omega\rangle=0$ for every Schwartz $f$.
+Finally \eqref{eq:trace-positive-laplace} supplies the positive measure
+and Laplace formula for the very same centered trace used in
+Section~\ref{sec:trace-asymptotic}. No additional positive-measure input
+is needed there once the earlier reconstruction hypotheses and this
+stress tensor are available.

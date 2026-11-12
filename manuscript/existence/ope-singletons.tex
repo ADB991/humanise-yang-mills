@@ -1,0 +1,201 @@
+\section{Recovering the local fields after regrouping}
+\label{sec:ope-singletons}
+The preceding regrouping gives a polynomial density with controlled
+coefficients. To continue the scale induction, its linear coefficients
+must again be presented as local fields, with the remaining terms
+assigned to interactions involving at least two marks. We give this
+passage explicitly. It uses no Taylor approximation: the separation
+by the number of marks is exact.
+
+Fix a finite periodic lattice, a finite mark set $V$, and positive
+weights $w_v$. Write $e_A$ for the squarefree monomial belonging to
+an allowed mark set $A$, as in the preceding section. Ordinary
+polynomial activities $F_X$ are indexed by supports $X$; flagged
+activities $K_{X,Z}$ are indexed by pairs with
+$\varnothing\ne Z\subseteq X$. Their coefficients are measurable,
+gauge invariant, and depend only on the field and flag data in $X$.
+A nonzero coefficient with mark set $A$ requires
+$\{o_v:v\in A\}\subseteq X$. Ordinary activities have zero constant
+coefficient and vanish unless $X$ is healthy. Flagged activities vanish
+unless the flags in $X$ are exactly $Z$.
+
+Put $\nu=\nu_R$, $M=M_R$ for the support parameters of the current
+representation. Suppose the ordinary and flagged arrays have the
+weighted coefficient bounds from Section~\ref{sec:ope-grouping}, with
+local hit bounds $a$ and $b$, respectively. In concrete terms there
+are nonnegative coefficient majorants $t_{X,A}$ and $s_{(X,Z),A}$,
+valid for every field configuration, such that for every site $x$
+\begin{align}
+ \sum_{X\ni x}e^{\nu c_M(X)}
+       \sum_A t_{X,A}\prod_{v\in A}w_v&\le a,\label{eq:ope-single-hit}\\
+ \sum_{(X,Z):x\in X}e^{\nu c_M(X)}
+       \sum_A s_{(X,Z),A}\prod_{v\in A}w_v&\le b.\notag
+\end{align}
+The underlying lattice is finite, so the support indices in these
+expressions are finite. The activity dictionary used to represent
+them may nevertheless be countable.
+
+We use the following precise property of that dictionary. Every
+nonempty support has an unused ordinary slot with that support and
+zero background coefficient. Every admissible flagged pair has a
+flagged slot with that pair, eligible whenever the specified flag
+condition holds. A real measurable gauge-invariant function $h$ in
+such a slot is an allowed elementary insertion when it has the
+required local dependence and vanishes off the slot's eligibility
+set. If $|h|\le t$, its cost is
+\[
+                 e^{\nu c_M(X)}t.
+\]
+This is a property of the available representation, not a consequence
+of the support count. Its production in the evolving activity
+dictionary remains an input to this local argument.
+
+\subsection{The price of a singleton}
+Fix a mark $v$. In the first inequality of
+\eqref{eq:ope-single-hit}, take $x=o_v$ and retain only the
+coefficient of $e_{\{v\}}$. Coefficients on supports not containing
+$o_v$ vanish. Dividing by $w_v>0$ gives majorants $t_X\ge0$ with
+\[
+ |[e_{\{v\}}]F_X(U)|\le t_X,
+ \qquad \sum_Xe^{\nu c_M(X)}t_X\le a/w_v.
+\]
+The same argument for the flagged array gives majorants $s_{X,Z}$
+with weighted sum at most $b/w_v$. There is no factor $|V|$ in
+these bounds: only one coordinate of the price at $o_v$ was retained.
+
+For an ordinary singleton function $f$ supported in $X$, use the
+unused ordinary slot and write
+$f=\operatorname{Re}f+\mathrm i\operatorname{Im}f$.
+Both real functions have bound $t_X$, retain local dependence,
+measurability and gauge invariance, and vanish outside the healthy
+set. They are therefore two elementary insertions, with coefficients
+$1$ and $\mathrm i$, of total cost at most
+$2e^{\nu c_M(X)}t_X$. They contribute $f$ to the ordinary field and
+zero to its flagged profile. The same construction in the flagged
+slot contributes zero to the ordinary field and $f$ at the specified
+flagged pair, at cost at most $2e^{\nu c_M(X)}s_{X,Z}$.
+Zero functions require no slot.
+
+Consequently, for arbitrary constants $u_v\in\mathbb C$, the pair
+\begin{equation}\label{eq:ope-single-pair}
+ g_v(U)=u_v+\sum_X[e_{\{v\}}]F_X(U),\qquad
+ q_v(X,Z;U)=[e_{\{v\}}]K_{X,Z}(U)
+\end{equation}
+has a finite elementary representation anchored at $o_v$, with
+constant part $u_v$ and cost at most
+\begin{equation}\label{eq:ope-single-price}
+                         2a/w_v+2b/w_v.
+\end{equation}
+Indeed concatenate the finite lists just constructed. Adding lists
+adds their costs, and multiplication by a scalar multiplies cost
+by its modulus. The constant $u_v$ is recorded separately and costs
+nothing in this representation; its later affordability is a
+separate condition.
+
+Each flagged elementary insertion is carried by its chosen index in
+the countable activity dictionary. Adding the finitely many such
+indexed functions gives a family $k_{v,j}(U)$ with a summable uniform
+majorant. Summing it over all indices with flagged pair $(X,Z)$
+gives exactly $q_v(X,Z;U)$. Thus a finite local representation also
+provides the dominated indexed family required by the transfer
+formula. The estimates concern the local representation and do not
+require a canonically chosen index for each singleton.
+
+\subsection{Exact separation of the higher terms}
+Let $k_j^0(U)$ be the real background flagged activities and let
+$E(U)$ be the ordinary background exponent. For a fixed configuration
+$U$, denote its flag set by $\mathcal Z(U)$. For an array $L$ indexed
+by flagged pairs set
+\[
+ \mathcal G_U(L)=
+ \sum_{\substack{\mathcal P\text{ a set of flagged pairs}\\
+           \text{supports pairwise disjoint},\;
+           \bigcup_{(X,Z)\in\mathcal P}Z=\mathcal Z(U)}}
+                 \prod_{(X,Z)\in\mathcal P}L_{X,Z}.
+\]
+The current density is
+\begin{equation}\label{eq:ope-single-density}
+ D(U)=e^{E(U)}\exp\left(\sum_vu_ve_{\{v\}}
+                                     +\sum_XF_X(U)\right)
+                         \mathcal G_U(K(U)).
+\end{equation}
+Assume the constant coefficient of $K_{X,Z}$ is the sum of
+$k_j^0$ over dictionary indices with pair $(X,Z)$; assume also
+the background activities are absolutely summable. These are the
+vacuum consistency and validity conditions retained in the preceding
+regrouping.
+
+Let $F_X^{\ge2}$ and $K_{X,Z}^{\ge2}$ denote the arrays obtained by
+discarding coefficients with fewer than two marks. Then, coefficient
+by coefficient,
+\begin{align*}
+ \sum_vu_ve_{\{v\}}+\sum_XF_X
+    &=\sum_vg_ve_{\{v\}}+\sum_XF_X^{\ge2},\\
+ K_{X,Z}
+    &=\sum_{j:\,(X_j,Z_j)=(X,Z)}k_j^0
+       +\sum_v q_v(X,Z)e_{\{v\}}+K_{X,Z}^{\ge2}.
+\end{align*}
+Substitution in \eqref{eq:ope-single-density} proves the desired
+local representation of the same density, with fields $g_v$,
+flagged profiles $q_v$, and interactions of order at least two.
+Discarding coefficients cannot increase a sum of nonnegative
+coefficient majorants. Hence the two higher arrays retain hit bounds
+$a$ and $b$. Their support, eligibility and invariance properties
+are retained as well, since each remaining coefficient is unchanged.
+
+For completeness, this representation has the expected linear
+density. Put $r(U)=e^{E(U)}\mathcal G_U(k^0)$, the unmarked density.
+Expanding a product to first order gives
+\begin{equation}\label{eq:ope-single-coin}
+ [e_{\{v\}}]D(U)=r(U)g_v(U)
+ +e^{E(U)}\sum_{S\text{ admissible}}
+          \sum_{j\in S}k_{v,j}(U)
+                         \prod_{i\in S\setminus\{j\}}k_i^0(U).
+\end{equation}
+Here admissibility means that the indexed supports are disjoint
+and their flags cover $\mathcal Z(U)$. The exponential contributes
+its singleton coefficient $g_v$, while the flagged product contributes
+exactly one differentiated factor. Replacing sums over flagged pairs
+by sums over dictionary indices is legitimate: if
+$B_0=\sum_j|k_j^0(U)|$ and $B_v=\sum_j|k_{v,j}(U)|$, the absolute
+sum of all differentiated products, even without admissibility,
+is bounded by $B_v\prod_j(1+|k_j^0(U)|)\le B_ve^{B_0}$.
+The corresponding vacuum sum is bounded by $e^{B_0}$. Finite
+expansions followed by absolute convergence establish the identity.
+
+Equation~\eqref{eq:ope-single-coin} also explains why the ordinary
+singleton is determined by its density and flagged profile whenever
+$r(U)\ne0$: subtract the flagged term and divide by $r(U)$.
+This is the uniqueness used when a transfer step first identifies
+the singleton density rather than the ordinary field itself.
+
+\subsection{Returning to the scale induction}
+Apply this construction to the regrouped arrays of the preceding
+section. If both hit bounds are at most $Z$, each grouped field has
+cost at most $4Z/w_v$, and the higher interactions have hit bound
+$Z$. The regrouping creates no separately recorded linear constant,
+so here $u_v=0$. In particular, when $Z=1$, reducing the mark weight
+from $w_v$ to $w'_v=w_v/8$ leaves
+\[
+             \text{singleton cost}\le\frac4{w_v}
+                                  =\frac1{2w'_v}.
+\]
+The coefficient prices of the higher interactions only decrease
+under this reduction. This proves the representation and the
+singleton budget needed after a grouping operation, conditional on
+the stated dictionary and background-validity properties.
+
+Assume the input arrays and constants have the covariance inherited
+from the preceding regrouping. Translations and coordinate symmetries
+then preserve the ordinary
+singletons by reindexing the finite support sum in
+\eqref{eq:ope-single-pair}; conjugating symmetries also conjugate
+its scalar coefficients. The flagged profiles transform in the
+same way. No equivariance of the auxiliary choice of dictionary
+indices is needed, because only their summed profiles occur in
+the representation and in \eqref{eq:ope-single-coin}. This argument
+applies to any finite number of slots in each copied cell.
+The remaining analytic step is to replace these local fields by
+degree-bounded coefficient fields while controlling the error
+under transfer to the next scale. The singleton extraction alone
+does not provide that projection estimate.

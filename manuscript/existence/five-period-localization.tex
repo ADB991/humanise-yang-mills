@@ -1,0 +1,246 @@
+\section{Recovering a local density from five auxiliary periods}
+\label{sec:five-period-localization}
+The local projection in the nonlinear step uses five small periodic
+boxes. Their side lengths differ by two. A fourth finite difference
+cancels all the contributions from folded boundary faces and retains
+the interior contribution. We give the construction, since both the
+exact identity and its derivative cost matter for the parameter
+estimates.
+
+\subsection{Folded fields and boundary types}
+For an integer $w\ge1$, fold the cyclic set $\mathbb Z/(2w)\mathbb Z$
+onto $\{0,\ldots,w\}$ by
+\[
+       \pi_w(q)=\min(\bar q,2w-\bar q),\qquad 0\le\bar q<2w.
+\]
+Its two endpoints have one preimage each and its other points have
+two. Apply this map in each of the four coordinates. Adjacent sites
+map to adjacent sites, with direction either preserved or reversed.
+For a gauge field $U$ on a larger torus and an anchor $o$, the
+folded field $\Phi_{w,o}U$ on the side-$2w$ torus reads the link
+of $U$ between $o+\pi_w(q)$ and $o+\pi_w(q+e_\mu)$; a reversed
+link is read as its inverse. Here and below a lattice point is
+reduced modulo the large period when used to index $U$.
+
+Fix $r\ge1$ and $w\ge2r$. In one coordinate, give a folded point
+$p\in\{0,\ldots,w\}$ its boundary type:
+\[
+ \begin{cases}
+  (\mathrm{left},p),&p<r,\\
+  (\mathrm{right},w-p),&w-p<r,\\
+  \mathrm{interior},&r\le p\le w-r.
+ \end{cases}
+\]
+The cases are disjoint. For an offset $s$ with $|s|\le r$,
+the folded displacement from $p$ is respectively
+\begin{equation}\label{eq:five-period-displacement}
+ |p+s|-p,\qquad d-|d-s|\ (d=w-p),\qquad s.
+\end{equation}
+These identities follow directly from the two affine branches of
+$\pi_w$. They also describe links in a local box when both endpoints
+are in the box. Thus, after moving the anchor to cancel the folded
+base point, the local field near a site depends only on its four
+boundary types. The displacement formulas do not depend on $w$.
+An all-interior type gives the original, unfolded field near the
+chosen anchor.
+
+For a left or right type of depth $d\in\{0,\ldots,r-1\}$,
+the number of cyclic points of that type is $1$ if $d=0$ and
+$2$ otherwise. The interior count is
+\[
+                              2(w-2r+1).
+\]
+Indeed its folded coordinates are $r,\ldots,w-r$, all strictly
+between the two endpoints, and each has two preimages. In four
+dimensions the number of sites of a prescribed type vector is the
+product of its four one-dimensional counts.
+
+Let $\mathcal T_r$ be the finite set of four-coordinate type vectors,
+and let $\tau_*$ be the all-interior type. For any function
+$H:\mathcal T_r\to\mathbb R$, the preceding count proves
+\begin{equation}\label{eq:five-period-counting}
+ \sum_{i=0}^4 c_i\sum_{q\in(\mathbb Z/2(w+i)\mathbb Z)^4}
+                      H(\operatorname{type}_{w+i,r}(q))=H(\tau_*),
+ \qquad c_i=\frac{(-1)^i\binom4i}{2^4\cdot4!}.
+\end{equation}
+To verify this exactly, fix a type vector with $d$ interior
+coordinates. Its multiplicity at side $2(w+i)$ is a polynomial
+in $i$ of degree $d$. The fourth difference annihilates that
+polynomial when $d<4$. For the all-interior type the polynomial
+is $2^4(w+i-2r+1)^4$, whose fourth difference is $2^4,4!$.
+Division by that factor gives one. Summing over the finitely many
+type vectors proves \eqref{eq:five-period-counting}. In particular,
+no boundary term has been discarded before cancellation.
+
+\subsection{Compatible local densities}
+Write $f_0(o,U)$ for a density on the large torus and
+$f_i(q,V)$ for densities on the five auxiliary tori of sides
+$2(w+i)$. The compatibility conditions needed here are explicit:
+the auxiliary densities transform covariantly under signed lattice
+symmetries, their values on globally healthy fields agree whenever
+their centered radius-$r$ link patterns agree, and the same
+agreement holds with $f_0$ on globally healthy fields. Finally
+$f_0(o,\cdot)$ is local on the radius-$r$ neighbourhood of $o$.
+The large period is at least $4r+16$. These are compatibility of
+local functions at fixed coupling and fixed path; no equality of
+partition functions on different periods is required.
+
+Set $\widetilde f_i(q,V)=f_i(q,V)-f_i(q,\mathbf1)$ and define
+$\widetilde f_0$ in the same way. The compatibility properties
+persist after this centering: the identity fields are healthy and
+have identical local link patterns. Define
+\[
+ g(o,U)=\sum_{i=0}^4c_i\sum_{q\in\Lambda_i}
+                         \widetilde f_i(q,\Phi_{w+i,o}U),
+                   \qquad \Lambda_i=(\mathbb Z/2(w+i)\mathbb Z)^4.
+\]
+Choose $z\ge w+4$. The function $g(o,\cdot)$ reads only the
+radius-$z$ neighbourhood of $o$. For each auxiliary site $q$ set
+$o_{i,q}=o-\pi_{w+i}(q)$, coordinatewise, and put
+\begin{equation}\label{eq:five-period-shifted-localization}
+ h(o,U)=\sum_{i=0}^4c_i\sum_{q\in\Lambda_i}
+  \mathbf1_{\{U\text{ healthy on }N_z(o_{i,q})\}}
+                  \widetilde f_i(q,\Phi_{w+i,o_{i,q}}U).
+\end{equation}
+The shift ensures that the physical point corresponding to $q$
+is $o$. Here $N_z(a)$ denotes the radius-$z$ lattice neighbourhood
+of $a$.
+
+If $U$ is healthy on $N_{2z}(o)$, every indicator in
+\eqref{eq:five-period-shifted-localization} equals one:
+$\operatorname{dist}(o,o_{i,q})\le w+i\le z$ and
+$N_z(o_{i,q})\subseteq N_{2z}(o)$. The folded auxiliary fields
+are then globally healthy. A folded plaquette is either an
+original plaquette with an orientation change, a conjugate of
+such a plaquette, or a degenerate loop with identity holonomy.
+The plaquette chord is invariant under conjugation and inversion;
+thus its bound follows from the healthy large-field bound on the
+read set.
+
+Reflection covariance first moves $q$ to its canonical folded
+representative. The displacement formulas
+\eqref{eq:five-period-displacement}, followed by compatibility,
+show that the summand depends only on its type vector. For the
+all-interior vector it equals $\widetilde f_0(o,U)$. One can
+make the last comparison using a globally healthy extension on the original large torus.
+In each cyclic coordinate of length $c\ge4r$, take the track
+that increases from $0$ to $2r$ in $2r$ steps, decreases back to
+$0$ in the next $2r$ steps, and remains at $0$ for the remaining
+$c-4r$ steps. Place its image at $o-r$ and center its argument at
+the midpoint of the increasing segment. The resulting field agrees
+with $U$ on the radius-$r$ box about $o$ and reads only that box
+everywhere. Each plaquette is again an original plaquette with
+orientation changed or an identity loop, so the extension is
+globally healthy. Compatibility applies to this field on the
+original period; locality then identifies its $f_0$ value with
+$f_0(o,U)$. Applying \eqref{eq:five-period-counting} gives
+\begin{equation}\label{eq:five-period-healthy-identity}
+                h(o,U)=\widetilde f_0(o,U)
+                          \quad\text{if $U$ is healthy on }N_{2z}(o).
+\end{equation}
+
+The compatibility in the selected construction is established by
+passing two given periods to their product period. Replicate each
+field to that period; the short local density is preserved by
+replication. Translate both base points to zero. Their local
+patterns still agree there, so locality of the common-period
+density gives equality. The selected auxiliary representations
+use the same path, coupling, profile and finite cutoff. It is
+these equalities that permit the replication comparison. The
+required replication and local-generation identities are part of
+the short-density construction; this argument does not assert
+compatibility for independently chosen histories.
+
+\subsection{The exact additive decomposition}
+Let $F_a(U)$ be the ordinary logarithmic entries retained in a
+finite short-support panel. Their allocation coefficients
+$\omega_{oa}$ are nonnegative, sum to one in $o$ for each $a$,
+and satisfy $S_a\subseteq N_r(o)$ whenever $\omega_{oa}\ne0$. Put
+\[
+ E(o,U)=\sum_a\omega_{oa}
+           \mathbf1_{\{U\text{ healthy on }S_a\}}F_a(U).
+\]
+Its sum over $o$ is exactly the masked contribution of the panel.
+The unmasked short density is $f_0(o,U)=\sum_a\omega_{oa}F_a(U)$.
+Translation covariance makes $f_0(o,\mathbf1)$ independent of $o$.
+Define the discrepancy
+\[
+                     d(o,U)=E(o,U)-f_0(o,\mathbf1)-h(o,U).
+\]
+This definition, followed by the change of variable
+$o\mapsto o-\pi_{w+i}(q)$ in each finite site sum, proves
+\begin{equation}\label{eq:five-period-exact-decomposition}
+ \sum_a\mathbf1_{\{U\text{ healthy on }S_a\}}F_a(U)
+ =|\Lambda|f_0(0,\mathbf1)
+   +\sum_o\mathbf1_{\{U\text{ healthy on }N_z(o)\}}g(o,U)
+   +\sum_o d(o,U).
+\end{equation}
+Indeed this change of variable identifies $\sum_oh(o,U)$ with
+the middle sum. It does not require that $U$ itself be healthy.
+If $U$ is healthy on $N_{2z}(o)$, the allocation supports near
+$o$ are healthy, so $E(o,U)=f_0(o,U)$. Equation
+\eqref{eq:five-period-healthy-identity} then gives $d(o,U)=0$.
+Thus the discrepancy is supported on an unhealthy enlarged
+neighbourhood. The regular output retains $g$, the constant
+contribution is extracted, and the forced correction uses
+$e^{-d}-1$. The negative sign follows by solving
+\eqref{eq:five-period-exact-decomposition} for the new logarithmic
+sum in the density convention of the nonlinear step.
+
+\subsection{The derivative cost of folding}
+Let the derivative order be $j$, the spatial weight power be $m$,
+and the small-direction threshold be $\theta>0$. Suppose a
+function $F$ on an auxiliary torus has all left derivatives through
+order $j$ bounded by $q$ when each direction has norm at most
+$\theta$. On a healthy radius-$z$ neighbourhood, the corresponding
+bound for $F\circ\Phi_{w+i,o}$, with directions allowed to grow
+as $\theta(1+\operatorname{dist}(o,x))^m$, is
+\begin{equation}\label{eq:five-period-derivative-cost}
+                          2^j(1+z)^{mj}q.
+\end{equation}
+The factor two per derivative is needed because a reversed link
+transforms a left variation into a right variation. We justify
+that point rather than identifying the two derivatives.
+
+On a forward auxiliary link the induced variation is a left
+variation by the corresponding original direction; on a reversed
+link it is a right variation by the negative original direction.
+The two types have disjoint link coordinates, fixed by the folding
+map. Consequently left and right variations on different types
+commute. For a list of $k$ derivatives, expand each variation into
+its left and right part. There are at most $2^k$ terms. In each
+term, right derivatives can be moved past all left derivatives,
+and at the fixed field converted to left derivatives by adjoint
+conjugation. Their norms are unchanged because the group metric
+is adjoint invariant. Explicitly, start with the empty list. For a leading mixed
+direction $(v_L,v_R)$ and each converted list $s$ for the remaining
+directions, the two new lists are $v_L::s$ and
+$s\mathbin{+\!+}[\operatorname{Ad}_{V}v_R]$, with the adjoint
+chosen to turn the right action at the fixed field $V$ into a left
+action. Thus the right directions occur in reverse order. The
+disjoint link supports ensure that this recursion introduces no
+derivatives of a varying conjugating field. Each resulting direction has norm at most
+$X\theta$, where $X=(1+z)^m$. Multilinearity and rescaling by
+$X^{-1}$ bound the term by $X^kq$. Summation and $k\le j$ prove
+\eqref{eq:five-period-derivative-cost}. The smooth chart property
+under composition follows since a link read, its inverse and a
+constant identity link are smooth maps.
+
+It follows that the ordinary localized density has derivative
+price
+\begin{equation}\label{eq:five-period-local-price}
+       \mathcal O_z(q_0,\ldots,q_4)
+                =\sum_{i=0}^4|c_i|\,2^j(1+z)^{mj}q_i,
+\end{equation}
+when $q_i$ bounds the centered total auxiliary density
+$\sum_q\widetilde f_i(q,\cdot)$. The support is $N_z(o)$.
+For the ordinary derivative budget, each entry has an assigned
+anchor; its budget at a root $o$ sums only entries assigned to $o$,
+weighted by $e^{e c_B(S)}$. Thus if $c_B(N_z(o))\le C_z$, the
+entry $g(o)$ costs $\mathcal O_z(q)e^{eC_z}$ in that anchored
+budget. A sum over every support containing a fixed site would
+instead cost the additional factor $(2z+1)^4$.
+A fixed signed-orientation average and its local allocation
+multiply this price by the already purchased orientation cost.
+All these factors depend only on the fixed local geometry, and
+have upper exponent zero in the scale parameter.

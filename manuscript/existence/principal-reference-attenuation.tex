@@ -1,0 +1,403 @@
+\section{Attenuation under the principal Gaussian reference}
+\label{sec:principal-reference-attenuation}
+We apply the polynomial cancellation just proved to the reference
+integral in Section~\ref{sec:principal-gaussian-comparison}.
+The important feature is the order of constants: the coefficient
+of $L^{-d-1}$ is chosen before $L$. Bounds for the nonlinear chart
+and the Gaussian can be chosen after $L$, because their additional
+costs tend to zero as the entrance coupling increases. Throughout,
+$n\ge\max\{2,d+1\}$, the insertion has the fine regularity through
+order $n$ used below, and its polynomial moments through degree $d$ vanish.
+The coarse weight exponent does not exceed the fine one.
+
+\subsection{The first derivative of the reference mean}
+Let $u$ be a coarse logarithmic field and $v_F(u)$ the stationary
+relative field in tree coordinates from Section~\ref{sec:local-mean}.
+At the identity the full affine row satisfies
+\[
+                     D_\infty v_F(u)+r'_0(u)=0.
+\]
+This is \eqref{eq:mean-stationary-zero}, with the same signed
+normalization on the two terms. The reference construction uses
+the cut row $D_R$ and its cut residual derivative $r'_R$.
+The exponential path tail gives, uniformly in the period,
+\begin{equation}\label{eq:reference-tangent-tail}
+ \|D_Rv_F(u)+r'_R(u)\|_\infty
+       \le C(1+R)^a e^{-\sigma R}\|u\|_\infty.
+\end{equation}
+To see this, subtract the full identity. The row difference acts
+on $v_F(u)$, whose sup norm is at most $C_{\rm resp}\|u\|_\infty$.
+The guide difference acts on $u$. Each is a sum of omitted path
+rows; their weighted absolute tails give the displayed bound,
+including the finite path-length power. All inactive coordinates
+are omitted on both sides, and tree coordinates of $v_F$ are zero.
+
+Let $A_R=D_R^*D_R$, let $P_R$ be the reference principal-window
+inverse, and put $E_R=A_RP_R-I$. The reference mean in active
+coordinates is $m(u)=-P_R(u)^*D_R(u)^*r_R(u)$. Since
+$r_R(0)=0$, its derivative at zero is
+\[
+ Dm(0)u=-P_R(0)^*D_R(0)^*r'_R(u).
+\]
+The elementary normal-equation identity therefore gives
+\[
+ Dm(0)u-v_F(u)
+ =E_R(0)^*v_F(u)
+       -P_R(0)^*D_R(0)^*(D_R(0)v_F(u)+r'_R(u)).
+\]
+The window and row bounds of
+Section~\ref{sec:principal-comparison-jets}, together with
+\eqref{eq:reference-tangent-tail}, imply
+\begin{equation}\label{eq:reference-mean-tangent}
+ \|Dm(0)-v_F\|_{\infty\to\infty}
+ \le C\{e^{-c\lfloor B/60\rfloor}
+                      +(1+R)^a e^{-\sigma R}\}.
+\end{equation}
+Here and below the restriction to active counting coordinates
+and the fixed colour reassembly contribute only fixed factors.
+Because $R=\lfloor B/100000\rfloor$ and $B$ grows quadratically
+in the logarithm of the coupling, the right side is eventually
+at most the coarse small-field threshold $\theta_c$. This proves
+the required first-order approximation for the selected windowed
+mean, without replacing it by the exact inverse mean.
+
+\subsection{The nonlinear local display}
+The tree-straightening potential is a linear site field $\phi(u)$.
+Its discrete gradient corrects the tree response to the actual
+installed $A_0$ response, denoted $\mathcal A u$:
+\[
+ \phi(u)(e_-)-\phi(u)(e_+)+v_F(u)_e+\overline u_e
+                                             =(\mathcal A u)_e.
+\]
+This follows by summing the tree potential along a bond: the
+interior terms telescope, leaving its endpoint difference. The
+root correction is included in the same potential, as in the
+response bound of Section~\ref{sec:local-mean}.
+
+For noise $w$ in fine link logarithmic units define the local
+logarithmic display
+\[
+ \Phi(u,w)_e=\log\left(
+ e^{\phi(u)(e_-)}
+ e^{\widetilde m(u)_e+w_e}e^{\overline u_e}
+ e^{-\phi(u)(e_+)}\right),
+\]
+where $\widetilde m$ is the colour-reassembled mean, zero on tree
+links. The logarithm is taken on one common fixed ball. Its
+existence and uniform derivatives follow from the fixed-dimensional
+group chart, the mean row bounds, the tree-potential bound and the
+replica bound. Shrink the input ball so that the four entries of
+the logarithm's argument lie in that chart. The derivative of
+$\log(e^a e^b e^c e^{-d})$ at zero is $a+b+c-d$.
+Consequently, with $T(u,w)=\mathcal A u+w$, there are $Q\ge1$
+and $r>0$, uniform over all periods, forests and tags, such that
+\begin{equation}\label{eq:reference-display-data}
+ \Phi(0)=0,\quad \|D\Phi(0)-T\|\le Q\theta_c,
+ \qquad \|D^j\Phi(z)\|\le Q\quad
+                  (j\le n,\ \|z\|\le r).
+\end{equation}
+The constants $Q,r$ may depend on the already chosen block factor.
+The tangent error is \eqref{eq:reference-mean-tangent}; the
+other bounds follow by the finite product and composition rules
+and the separate reference inverse estimates already proved.
+
+Let $a(y)=(u(y),w)$, where $u(y)$ is the fixed-gauge local
+logarithm along the ordered coarse variation. Write $s$ for its
+common size and derivative scale, so that
+\[
+ \|a(0)\|\le s,\qquad
+ \|D^ja(0)\|\le s^j\quad(1\le j\le n),\qquad
+                  \theta_c\le s\le\min\{1,r\}.
+\]
+The noise is controlled separately from the health condition. In counting
+Gaussian coordinates $z$, it is $w=g\,\mathrm{tape}(z)$, up to the fixed
+colour isometries. We use a compactly supported $C^n$ cutoff $\Gamma$
+with $|\Gamma|\le1$ and
+\[
+ z\in\operatorname{supp}\Gamma
+ \quad\Longrightarrow\quad g\|\mathrm{tape}(z)\|
+             \le\varepsilon\theta_f\le s.
+\]
+The chart bound gives $s=C\theta_c$ times a fixed polynomial in its
+read radius, with the local-gauge constant $C$ purchased before $L$.
+The nonlinear display constants $Q,r$ are chosen after $L$. Thus the asserted
+bound for $a$ holds on the cutoff support, including its boundary.
+Only the coarse component varies. Integrating the first two
+derivative bounds in \eqref{eq:reference-display-data} gives
+\[
+ \|\Phi(z)-Tz\|\le Q(\theta_c+\|z\|)\|z\|,
+ \qquad \|D\Phi(z)-T\|\le Q(\theta_c+\|z\|).
+\]
+Apply the partition chain rule to $(\Phi-T)\circ a$. A term
+with one block costs at most $2Qs\cdot s^j\le2Qs^2$.
+A term with at least two blocks costs at most $Q s^j\le Qs^2$;
+linear maps have zero derivatives of those orders. The value is
+bounded by $2Qs^2$ too. Thus for a constant $c_n$ depending only
+on the derivative order,
+\begin{equation}\label{eq:reference-display-remainder}
+ \|D^j(\Phi\circ a)(0)-\mathcal A D^ju(0)\|
+                    \le c_nQs^2+\|w\|,\qquad j\le n.
+\end{equation}
+The noise term is needed only at $j=0$ but is harmless at all
+orders.
+
+Each $\mathcal A D^ju(0)$ has the graded decomposition of
+Section~\ref{sec:polynomial-moment-attenuation}, with cost $M$
+chosen before $L$. Put the error in
+\eqref{eq:reference-display-remainder} entirely into its last
+piece. Since the fine direction width is at least $\theta_f$,
+all the display derivatives have a graded decomposition at scale
+$L^{-1}$ and cost
+\begin{equation}\label{eq:reference-graded-cost}
+            M+\frac{c_nQs^2+\|w\|}{\theta_f}L^{d+1}.
+\end{equation}
+This operation requires no polynomial property of the error.
+
+\subsection{The common healthy segment}
+For a short fine support, meaning that its cover number $q$ obeys
+$q^3<L$, the whole inspected support lies in the read halo of
+one coarse chart. Seed separation, identical local flags, and the
+mean-locality argument of
+Section~\ref{sec:principal-comparison-jets} identify the displayed
+configuration with the physical Gaussian-reference configuration
+on that support, after two gauge transformations. One gauge is
+the fixed coarse chart gauge; the second is the exponential of
+$\phi(u)$. Gauge invariance of the insertion removes both.
+The equality holds as a germ in the coarse variation, so derivatives
+of the insertion agree. Neither the frozen fine field nor the
+Gaussian coordinates are resampled in this identity.
+
+The cutoff restricts to configurations healthy on $X$. We also
+need health on the radial segment of the display. Here is the
+small elementary estimate that supplies it. If a plaquette has
+four logarithmic bonds of norm at most $h\le1$, let $K(t)$ be
+the matrix chord
+$K(t)=(\operatorname{mat}(\operatorname{plaquette}(t))-I)/c_G$,
+where $c_G$ is the fixed colour normalization and the norm is the
+ambient matrix norm of the health test. The group product and
+this chord map have bounded second derivatives on this fixed ball,
+so
+\[
+ \|K(t)-tK(1)\|\le C_G t(1-t)h^2,
+                                      \qquad 0\le t\le1.
+\]
+Indeed subtract the affine interpolation of $K$ at its endpoints
+and integrate its second derivative against the Dirichlet Green
+kernel on $[0,1]$; the kernel integral is $t(1-t)/2$.
+All four bonds in the touched-plaquette halo are included. The chord
+at zero is zero. Hence, if the endpoint is healthy
+and $C_Gh^2\le\theta_f$,
+\[
+                  \|K(t)\|\le t\theta_f+
+                       t(1-t)\theta_f\le\theta_f.
+\]
+Take $h=Qs$. The two required smallness conditions
+$Qs\le1$ and $C_G(Qs)^2\le\theta_f$ hold eventually: $s$ is
+$\theta_c$ times a fixed polynomial in the read radius, and
+$\theta_c^2/\theta_f$ has negative upper exponent. The direction
+width bound follows likewise from
+$\theta_f(1+6(1+B)L)^p\le1$. These purchases occur after $L$.
+We can therefore apply the displaced cancellation bound to every
+partition in the derivatives of $f\circ\exp\circ\Phi\circ a$.
+It gives the fine-insertion price
+\begin{equation}\label{eq:reference-short-pointwise}
+ C_{n,d}\tau L^{-d-1}
+ \left(M+\frac{c_nQs^2+\|w\|}{\theta_f}L^{d+1}\right)^n.
+\end{equation}
+The finite number of partitions is included in $C_{n,d}$.
+
+\subsection{Separate local gauges for a winding support}
+For a general support $X$, one common logarithm need not exist. We instead
+base the insertion chart at the actual received configuration $W_0$.
+Keep the frozen fine field, the Gaussian coordinates, and every localization
+tag fixed. For each tested fine bond $i$, choose the coarse tree gauge
+$g_i$ on the read halo centered at its coarse parent. The local mean and
+covariance agreement proved earlier identifies this local calculation with
+the same received configuration. The gauges may differ with $i$.
+
+Let $b_i(y)$ be the coarse logarithm in this gauge along the coarse
+variation, and let $w_i$ be the adjoint transform of the same noise. Use the unstraightened tree display
+\[
+ S_i(y)=e^{\widetilde m(b_i(y))_i+(w_i)_i}
+                           e^{\overline {b_i(y)}_i}.
+\]
+Its linear response is the tree response
+$\mathcal W b=v_F(b)+\overline b$, whose weighted bound is $M$.
+Take $\log(S_i(y)S_i(0)^{-1})$ and return it by the fixed adjoint
+$g_i^{-1}$ at the initial endpoint. The variable straightening
+potential $\phi(b_i(y))$ is absent from this relative display. Denote the result by $Z_i(y)$;
+set it to zero on untested bonds. The relative logarithm is defined
+near $y=0$ because both arguments lie in the fixed chart. It satisfies
+\[
+ Z(0)=0,\qquad
+ W(y)_i=\exp(Z_i(y))(W_0)_i
+                 \quad\hbox{on every tested bond}.
+\]
+This is an identity of germs: the relative exponential cancels the
+base display in that bond's own gauge. Finitely many tested bonds admit
+one common neighborhood. Local dependence of $f$ then gives
+$f(W(y))=f(\exp(Z(y))W_0)$ there. No compatibility between different
+$g_i$ is needed, since $Z$ is an ordinary fine bond field in the original
+coordinates. In particular this argument does not require a logarithm
+of $W_0$ around a noncontractible loop.
+
+Here is the bound on this field. Write
+$\omega(i)=\theta_f(1+\operatorname{dist}(i_-,o))^{p_f}$ for the
+fine direction width. Let $C\ge1$ be the fixed local gauge response
+constant, $M\ge1$ the weighted tree-response constant just specified, and put
+\[
+ H_X=(2+\operatorname{breadth}(X))^{np_c},\qquad
+ A_X=2MC+\frac{(c_nQ+M)s^2H_X}{\theta_f}.
+\]
+The first derivative of $b_i$ obeys the coarse weighted direction bound
+with cost $C$; the linear response estimate and
+$\theta_c\le2\theta_f$, $p_c\le p_f$, therefore give
+$2MC\omega(i)$. For derivatives of order $j\ge2$, the local chart
+bound gives
+\[
+ \|D^jb_i(0)\|\le s^j
+ (1+\operatorname{dist}(\operatorname{parent}(i_-),
+                         \operatorname{parent}(o)))^{jp_c}
+ \le s^2H_X.
+\]
+The last inequality uses $s\le1$, $j\le n$, and the diameter bound
+for a tested bond relative to $o\in X$. The linear response on this
+bounded field costs at most $Ms^2H_X$.
+
+The relative display on two copies of its inputs vanishes at zero;
+its derivative there is the linear response of their difference, up to
+$Q\theta_c$. Its first derivative away from zero differs by at most
+a constant times $Qs$, and derivatives of higher order are bounded by
+$Q$. The partition chain rule, exactly as for
+\eqref{eq:reference-display-remainder}, bounds the remaining terms
+at order $j\ge1$ by $c_nQs^2H_X$. Adjoint return preserves the norm.
+Since $\omega(i)\ge\theta_f$, these estimates prove
+\[
+                  \|D^jZ_i(0)\|\le A_X\omega(i),
+                         \qquad 1\le j\le n.
+\]
+The cutoff and the local health estimate make $W_0$ healthy. Apply the
+ordinary fine regularity bound to $f(\exp(Z)W_0)$ at $Z=0$.
+For each partition its argument fields have the displayed fine widths,
+so that the bound is at most $C_n\tau A_X^n$ after summing partitions.
+The zeroth derivative is bounded by $\tau$. This proves a general-support
+bound whose leading constant $C_n(2MC)^n$ is chosen before $L$.
+Every dependence on the later chart constant $Q$ is accompanied by
+$s^2/\theta_f$, which can be made small after $L$ is fixed.
+There is no sum of separate insertion derivatives over bonds: the
+entire field $Z$ is inserted into the same regularity estimate.
+
+\subsection{Integrating the density derivatives}
+Use the same finite Gaussian coordinates for all derivatives,
+with its positive covariance and the frozen fine field fixed.
+The moment and density differentiation arguments of
+Sections~\ref{sec:gaussian-differentiation} and
+\ref{sec:gaussian-moment-prices} apply to this reference as well:
+its precision floor, inverse jets and local affine source were
+proved in Section~\ref{sec:principal-comparison-jets}. The cutoff
+is held fixed in these coordinates. Only on its support is the
+unmasked regular insertion evaluated; the health conclusion in
+the preceding paragraph applies there.
+
+We detail the dependence of the bound on the support. Let $q$
+be its fine cover number and let
+$H=(r_0+48)(1+B)$, where $r_0$ is the fixed allocation radius.
+The number of read coordinates and all polynomial weights on
+this set are bounded by fixed powers of $H(1+q)$, with constants
+allowed to depend on $L$. Differentiating a Gaussian density
+inserts sums of products of inverse-covariance entries and at
+most quadratic coordinate factors. At order at most $n$ the
+result is a polynomial in the Gaussian coordinates of degree
+at most $2n$. The derivative bounds and the product rule therefore
+bound the price in \eqref{eq:reference-short-pointwise}, including
+the density factors, by
+\begin{equation}\label{eq:reference-short-envelope}
+ C_0\tau L^{-d-1}
+        \{1+\rho^{2n}(1+\|z\|)^{4n}\}.
+\end{equation}
+Here $C_0$ depends on the pre-$L$ graded-field cost and the
+regularity conversion constants, while
+\[
+ 0\le\rho\le K_L(\theta_f+g/\theta_f)
+                         \{H(1+q)\}^{a_n}.
+\]
+To check this factor, insert $w=gz$ into
+\eqref{eq:reference-graded-cost}. The nonlinear remainder
+$s^2/\theta_f$ is bounded by $\theta_f$ times a polynomial in
+$B$ because the two thresholds have bounded ratio. The noise
+contributes $(g/\theta_f)\|z\|$. Every positive-order density
+or covariance variation has at least one coarse direction factor,
+which is at most $\theta_c$ times such a polynomial; enlarge
+$K_L$ and $a_n$ to include it. Separate the fixed term $M$ from
+these errors, and use
+$(a+b)^{2n}\le(2a)^{2n}(1+b^{2n})$ for $a\ge1$, $b\ge0$.
+This gives \eqref{eq:reference-short-envelope}. For a general support,
+use the separate-gauge bound just proved, with its leading constant
+$C_n(2MC)^n$ and error $(c_nQ+M)s^2H_X/\theta_f$.
+Combining it with the same density factors gives $C_1\tau$ in
+place of $C_0\tau L^{-d-1}$, with possibly larger fixed exponents.
+Its pre-$L$ constants are the ordinary local regularity and
+linear-response constants.
+
+The Gaussian moment of $(1+\|z\|)^{4n}$ is bounded by
+$K'_L\{H(1+q)\}^{b_n}$. This follows by expanding the norm
+bound into coordinate moments and using the covariance upper
+bound, exactly as in Section~\ref{sec:gaussian-moment-prices}.
+Choose $h_n=2na_n+b_n$. For each fixed $L$, increasing the
+entrance coupling makes
+\[
+ [K_L(\theta_f+g/\theta_f)]^{2n}K'_L H^{h_n}\le1.
+\]
+Indeed $\theta_f$ times any fixed power of $B$ tends to zero,
+and, uniformly over the incoming beta window,
+$g/\theta_f\le2/\operatorname{monitor}(\beta_f)$.
+The monitor grows faster than every fixed power of $B$.
+This argument does not assign a negative power exponent to
+$g/\theta_f$. The resulting integrated derivative bounds are
+\begin{equation}\label{eq:reference-integrated-attenuation}
+ \begin{cases}
+ C\tau L^{-d-1}(1+q)^{h_n},&q^3<L,\\
+ C'\tau(1+q)^{h'_n},&q^3\ge L.
+ \end{cases}
+\end{equation}
+All differentiation under the integral is justified by the same
+polynomial Gaussian majorants on a common parameter neighborhood.
+
+\subsection{Absorbing the enlarged support}
+Let $A>0$ be the fine support exponent, $e\ge0$ the requested
+coarse exponent including its reserve, and $q'$ the coarse
+cover number of the allocated output support. The geometric
+cover estimate gives
+\[
+ Lq'\le(L+10q)t_{r_0},
+\]
+where $t_{r_0}$ depends only on the fixed allocation radius.
+Choose $L$ so that $20e t_{r_0}\le LA$. Then
+\begin{equation}\label{eq:reference-cover-release}
+ eq'\le e t_{r_0}+\tfrac12 A q.
+\end{equation}
+For every fixed integer $h$, the function
+$(1+q)^h e^{-Aq/2}$ is bounded on $q\ge0$: it tends to zero
+at infinity and is continuous on compact intervals. Thus the
+short-support case of \eqref{eq:reference-integrated-attenuation}
+and \eqref{eq:reference-cover-release} yield
+\[
+ e^{eq'}\,\|\hbox{reference integral}\|_{J^n}
+                  \le C_2L^{-d-1}\tau e^{Aq}.
+\]
+For the long-support case, $q^3\ge L$ implies
+$1\le((1+q)^3/L)^{d+1}$. Insert this inequality into its
+bound, then absorb the larger fixed polynomial in the same
+half of the support exponential. We obtain the identical form
+with another constant $C_3$, also chosen before $L$.
+This is the required gain for all supports, including wrapping
+ones in the long-support case.
+
+Finally, the allotted regular price has the form
+$L^{-d-2/5}/(2h)$, where $h>0$ depends only on the fixed
+profile. Since $L^{-d-1}/L^{-d-2/5}=L^{-3/5}$, choose $L$
+large enough that both $C_2L^{-d-1}$ and $C_3L^{-d-1}$ are
+at most half that price. All nonlinear chart, moment and
+Gaussian-comparison thresholds are chosen afterwards. This
+preserves the order of constants needed for the one-step
+regular estimate.

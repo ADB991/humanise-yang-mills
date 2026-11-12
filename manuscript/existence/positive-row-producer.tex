@@ -1,0 +1,184 @@
+\section{Positive Laurent rows and the actual quadratic beds}
+\label{sec:positive-row-producer}
+The quadratic construction needs positive factors with exponentially
+decaying coefficients, uniformly in the finite period. Taking a separate
+matrix square root on each torus would not supply such coefficients.
+We construct one analytic symbol and then recover its Laurent row.
+This is also how the construction preserves its zero-frequency
+conventions.
+
+\subsection{A uniform analytic inverse and square root}
+Let $I$ be a fixed finite index set of cardinality $r$. A real Laurent
+row is a collection $A_{ij}(z)$, $i,j\in I$, $z\in\mathbb Z^4$.
+Suppose, for some $\eta,C>0$,
+\begin{equation}\label{eq:positive-row-strip}
+ \sup_{i,j}\sum_{z\in\mathbb Z^4}
+                    e^{\eta|z|_1}|A_{ij}(z)|\le C.
+\end{equation}
+Its symbol
+\[
+                  \widehat A(p)=\sum_z A(z)e^{ip\cdot z}
+\]
+is periodic in each real coordinate and holomorphic whenever
+$\max_a|\operatorname{Im}p_a|<\eta$. If the index set is empty
+all the statements below are vacuous, so assume $r\ge1$.
+On every smaller strip of width $\sigma$, termwise differentiation
+is justified by
+\[
+ |z|_1 e^{\sigma|z|_1}
+             \le(\eta-\sigma)^{-1}e^{\eta|z|_1}.
+\]
+Thus each entry has derivative norm at most
+$C/(\eta-\sigma)$, for the maximum norm on momenta. This
+also proves local uniform convergence of the differentiated series.
+In operator norm the corresponding Lipschitz bound is at most
+$rC/(\eta-\sigma)$, since a matrix with entries bounded by $a$
+has operator norm at most $ra$.
+
+Suppose in addition that for every real momentum $p$,
+\begin{equation}\label{eq:positive-symbol-band}
+                 vI\le\widehat A(p)\le MI,
+                              \qquad 0<v\le M,
+\end{equation}
+as Hermitian forms. These bounds are uniform over the whole
+real torus. Let $\sigma=\eta/2$, $D=rC/(\eta-\sigma)$,
+and choose
+\[
+       0<\tau\le\min\{\sigma,v/(2D)\}.
+\]
+For a complex momentum in this strip, put $q=\operatorname{Re}p$.
+The segment joining $q$ to $p$ lies in the strip of width $\sigma$,
+and therefore
+\[
+                   \|\widehat A(p)-\widehat A(q)\|\le v/2.
+\]
+Diagonalizing the Hermitian matrix at $q$ gives
+\[
+ \|M^{-1}\widehat A(q)-I\|\le1-v/M.
+\]
+Hence throughout the smaller strip
+\begin{equation}\label{eq:positive-binomial-disk}
+      \|M^{-1}\widehat A(p)-I\|\le1-v/(2M)=:\rho<1.
+\end{equation}
+All constants depend only on the original uniform bounds and the
+fixed index set.
+
+Put $Z(p)=M^{-1}\widehat A(p)-I$. The normally convergent series
+\[
+ \widehat F(p)=\sqrt M\sum_{n\ge0}{1/2\choose n}Z(p)^n,
+ \qquad
+ \widehat B(p)=M^{-1}\sum_{n\ge0}(-Z(p))^n
+\]
+define holomorphic periodic symbols on this strip. Normal convergence
+follows from $\rho<1$ and absolute convergence of the scalar power
+series on every smaller closed disk. Cauchy multiplication gives
+$\widehat B\widehat A=I$ and $\widehat F^2=\widehat A$.
+On the real torus diagonalization gives eigenvalues
+$\lambda^{-1}$ and $\sqrt\lambda$, respectively, where
+$v\le\lambda\le M$. Consequently
+\begin{equation}\label{eq:positive-root-bands}
+ M^{-1}I\le\widehat B\le v^{-1}I,
+ \qquad \sqrt v I\le\widehat F\le\sqrt M I.
+\end{equation}
+In particular these are the positive inverse and positive square root,
+with no choice of eigenvectors as the momentum varies.
+
+We verify that they are symbols of real exponentially summable rows.
+Either symbol is bounded on a still smaller strip, say of width
+$\tau_0>0$, by a constant $K$. Its Fourier coefficient is the
+integral over $[-\pi,\pi]^4$ against $e^{-ip\cdot z}$, divided
+by $(2\pi)^4$. Shift the $a$th contour to imaginary part
+$-\tau_1\operatorname{sign}(z_a)$, where $0<\tau_1<\tau_0$.
+Cauchy's theorem applies one coordinate at a time; the vertical
+sides cancel by periodicity. The coefficient is therefore bounded
+by $Ke^{-\tau_1|z|_1}$. For $0<e<\tau_1$,
+\[
+ \sum_z e^{e|z|_1}|F_{ij}(z)|
+ \le K\left(\sum_{n\in\mathbb Z}
+                      e^{-(\tau_1-e)|n|}\right)^4<\infty,
+\]
+and likewise for $B$. The original real row satisfies
+$\widehat A(-p)=\overline{\widehat A(p)}$ on real momenta.
+Both power series have real coefficients, so their symbols have
+the same symmetry. Changing $p$ to $-p$ in the Fourier integral
+shows that every recovered coefficient is real.
+Absolute Fourier convergence identifies the recovered symbols with
+the displayed analytic functions on the real torus.
+
+On a finite torus, periodize these same rows. The discrete Fourier
+transform diagonalizes their convolution matrices, with symbols
+evaluated at the finite Fourier frequencies. Thus on every period
+$n$, simultaneously,
+\begin{equation}\label{eq:positive-row-periods}
+ B_nA_n=I,\qquad F_n^{\mathsf T}=F_n,\qquad
+ F_n^{\mathsf T}F_n=A_n,
+ \qquad \sqrt v I\le F_n\le\sqrt M I.
+\end{equation}
+The same transform transfers the inverse bounds in
+\eqref{eq:positive-root-bands}. This includes the zero frequency
+and the one-site torus. The construction has used a fixed number
+of form labels; no bound involving the growing number of lattice
+sites has entered the analytic inverse or root estimate.
+
+\subsection{The amendment of the two-form precision}
+Fix a smoothing stage $j\ge4$ and the positive kernel parameter
+$k$. For every finite train at this stage, let $H$ and $B$ be the
+pulse and dual-pulse rows constructed in
+Sections~\ref{sec:ex-lattice-free-kernel-estimates} and
+\ref{sec:ex-lattice-free-kernel-components}. Their real symbols are
+diagonal, positive and reciprocal. Their uniform strip bounds
+therefore also give uniform positive lower bounds: if a diagonal
+entry of each row is at most $C$ and their product is one, each
+is at least $C^{-1}$. The preceding Fourier argument yields
+$HB=BH=I$ on every period, with uniform spectral bounds.
+
+Let $d_1,d_2$ be the exterior differences from one-forms to
+two-forms and from two-forms to three-forms; thus $d_2d_1=0$.
+For a fixed amendment coefficient $l\ge0$, define
+\begin{equation}\label{eq:positive-amendment}
+ X=d_2B,\qquad A=B+lX^{\mathsf T}X,\qquad
+ G=A^{-1},\qquad R=I+l d_2B d_2^{\mathsf T},\qquad D=R^{-1}.
+\end{equation}
+These formulas denote compositions of Laurent rows and hence also
+their matrices on every finite period. Products and sums preserve
+exponential summability, after taking a common strip width.
+On real frequencies $A\ge B>0$ and $R\ge I$, because $B>0$.
+The analytic inverse construction supplies $G,D$ with uniform
+strip and spectral bounds. The constants may depend on $j,k,l$,
+but are independent of the train and finite period.
+
+Two identities explain the choice of this amendment. First,
+$XHd_1=d_2d_1=0$, so
+\[
+                       AHd_1=d_1,\qquad Gd_1=Hd_1.
+\]
+Thus the potential precision is unchanged. Second, expansion of
+\eqref{eq:positive-amendment} gives $RX=d_2A$, since $B$ is
+symmetric. Multiplication by $D$ on the left and $G$ on the right
+therefore gives
+\begin{equation}\label{eq:positive-amendment-intertwine}
+                              XG=Dd_2.
+\end{equation}
+Both $G$ and $D$ are symmetric. At zero momentum $d_2=0$ and
+$B=I$, so $G(0)=I$; the harmonic convention is retained.
+
+Choose a uniform lower spectral bound $b>0$ for $G$, and allow
+any direct precision $0<p\le b/2$. Then
+$G-pI\ge(b/2)I$. It has a uniform strip bound, including the
+subtracted constant row, so the analytic square-root construction
+gives a row $F$ with
+\[
+               F_n\ge0,\qquad F_n^{\mathsf T}F_n=G_n-pI
+\]
+for every finite period, with uniform strip bounds. The full root
+matrix is
+\[
+             J_p=\begin{bmatrix}\sqrt p I\\F_n\end{bmatrix},
+                         \qquad J_p^{\mathsf T}J_p=G_n.
+\]
+Together with $H,B,G,A$ this is the actual quadratic bed. Its
+inverse, symmetry, positivity and exterior-intertwining properties
+have all been verified above. In the top train the pulse is the
+identity, so its diagonal bed row is the identity as required.
+The admissible upper bound for $p$ and all row bounds are selected
+before any lattice volume or train is chosen.

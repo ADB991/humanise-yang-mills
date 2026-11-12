@@ -1,0 +1,212 @@
+\section{Transferring the OPE estimates to homogeneous fields}
+\label{sec:ope-estimates}
+The raw prescription and its covariant homogeneous version need not agree
+exactly on a product of fields. Their difference must therefore be estimated
+before the homogeneous coefficients can be used in the expansion. We give
+that transfer, retaining the complete correlations, including all unit and
+disconnected terms. The quantitative estimate for the raw prescription
+remains the construction input identified below.
+
+Fix cluster fields $\boldsymbol v=(v_i)_{i\in I}$, with
+$w=\sum_i\deg v_i$. For a sequence of positive numbers $r_n\to0$, set $t_n=-\log r_n\to\infty$.
+Say that a sequence $f_n$ has upper rate $a$ if for every $\delta>0$,
+\[
+ \|f_n\|\leq e^{(a+\delta)t_n}=r_n^{-a-\delta}
+                 \quad\hbox{for all sufficiently large }n.
+\]
+This notation permits zero values. Finite sums preserve a common upper
+rate, products add rates, and fixed linear maps preserve rates.
+For sums, first use half the desired slack and then absorb the finite
+number of terms into $e^{\delta t_n/2}$. The same device absorbs a fixed
+operator norm. Products follow by dividing the slack between the factors.
+In particular any bounded sequence has upper rate zero.
+
+If $\ell_n:E\to\mathbb C$ is a sequence of linear functionals on a
+fixed finite-dimensional space, and $\ell_n(e)$ has upper rate $b$ for
+every fixed $e$, then applying it to vectors $u_n$ of upper rate $a$
+gives upper rate $a+b$. To prove this, expand $u_n$ in a fixed basis.
+Each coordinate has rate at most $a$, each basis evaluation has rate at
+most $b$, and the finite sum has rate at most $a+b$. The identical
+finite-basis argument works for multilinear forms with several varying
+inputs. We will use it for bounded rotated detector labels.
+
+\begin{assumption}[Raw product comparison]\label{input:ope-raw-estimates}
+For every fixed cluster label list, every $M\geq0$, $\eta>0$, every
+positive sequence $r_n\to0$ and configurations with
+\[
+ |x_{i,n}-o_n|\leq Mr_n,\qquad
+ |x_{i,n}-x_{j,n}|\geq\eta r_n\quad(i\neq j),
+\]
+the raw coefficients of \eqref{eq:ope-raw-coefficient} have upper rate
+$w-|\alpha|$. For any fixed spectator label list $\boldsymbol z$,
+any $c>0$, any positions satisfying
+\[
+ |y_{j,n}-o_n|\geq c,\qquad |y_{j,n}-y_{k,n}|\geq c\quad(j\neq k),
+\]
+and any sequence of phases or mixed-state choices $\chi_n$, the following
+assertions hold.
+For every $D$, the raw discrepancy
+\begin{equation}\label{eq:ope-raw-discrepancy}
+ S_{\chi_n}(\boldsymbol v,\boldsymbol z;\boldsymbol x_n,\boldsymbol y_n)
+ -\ell_{\chi_n,D,o_n,\boldsymbol y_n,\boldsymbol z}
+                 (H_D(\boldsymbol x_n,\boldsymbol v;o_n))
+\end{equation}
+has upper rate $w-D-1$. For every fixed $u\in E_j$, the separated
+insertion $\ell_{\chi_n,j,o_n,\boldsymbol y_n,\boldsymbol z}(u)$ has
+upper rate zero. These statements hold for every finite spectator list,
+including empty lists, and for conjugated cluster fields as well.
+The same underlying hierarchy and physical inclusions are used throughout.
+\end{assumption}
+In the source these are the fixed-exterior specialization of the raw
+coefficient and full-discrepancy estimates; the stronger statements allow
+several positive logarithmic scales. This input includes uniform control
+along arbitrarily moving configurations and phases. A bound for each
+fixed configuration with a threshold depending on that configuration
+would be insufficient.
+
+\subsection{The averaged readout error}
+Fix a raw truncation degree $D$ and an output degree $m$, which may differ.
+Abbreviate
+$h_n=H_D(\boldsymbol x_n,\boldsymbol v;o_n)$. We claim that
+\begin{equation}\label{eq:ope-average-bridge}
+ C_m(\boldsymbol x_n,\boldsymbol v;o_n)-L_{mD}h_n
+                 \quad\hbox{has upper rate }w-D-1.
+\end{equation}
+First consider only the rotation average. Let
+\[
+ Z_m(K;\boldsymbol x,\boldsymbol v;o)
+       =R_m(K)H_m(K^{-1}\boldsymbol x,R(K^{-1})\boldsymbol v;K^{-1}o)
+\]
+be its integrand. On the common separated region, expanding the finite
+tests gives the exact identity
+\begin{align}
+ &Z_m(K;\boldsymbol x,\boldsymbol v;o)
+                  -Z_m(K;(o),(h);o)\nonumber\\
+ &=\sum_{|\alpha|\leq m}\sum_\lambda b_{\alpha,\lambda}
+   \bigl[S_{\mathrm{mix}}(\boldsymbol v,R(K)\boldsymbol w_\lambda;
+                 \boldsymbol x,o+K\boldsymbol z_\lambda)
+       -S_{\mathrm{mix}}(h,R(K)\boldsymbol w_\lambda;
+                 o,o+K\boldsymbol z_\lambda)\bigr]
+                         R_m(K)\iota_{|\alpha|,m}u_\alpha.
+ \label{eq:ope-rotated-error}
+\end{align}
+Here each sum over $\lambda$ is restricted to the finite support of
+$b_\alpha$. To verify the identity, write each raw coefficient as its
+exterior correlation at relative origin. Rotate the entire correlation
+by $K$ and translate by $o$. The cluster positions and labels become
+$\boldsymbol x,\boldsymbol v$, and the detector positions and labels
+become exactly those displayed. Subtract the same evaluation with the
+single field $h$ at $o$, and use linearity in that slot.
+
+Take $h=h_n$ and any sequence $K_n\in O(4)$. All the rotated detector
+positions have a common positive separation from $o_n$ and from one
+another: these are the fixed finite nonzero detector distances, preserved
+by rotations. All rotated detector labels and output vectors are bounded,
+by continuity of the representations on the compact group. Apply
+Input~\ref{input:ope-raw-estimates} to each fixed basis choice of detector
+labels in \eqref{eq:ope-rotated-error}, then use the multilinear
+finite-basis argument above to allow their bounded variation with $K_n$.
+Every summand and hence their finite sum has upper rate $w-D-1$.
+
+This statement for every rotation sequence implies a uniform estimate in
+$K$ at each sufficiently large $n$. Indeed, for a fixed slack, if there
+were a violating rotation at infinitely many indices, choose one at each
+such index and any rotation at the remaining indices. The resulting
+sequence would contradict the rate estimate just proved. Thus the norm
+of the integrand difference is eventually bounded uniformly by
+$e^{(w-D-1+\delta)t_n}$. Both integrands are continuous on the compact
+group once the shrinking cluster lies in $\mathcal U_m$. Integrating
+against probability Haar measure gives the same bound for the difference
+of their averages.
+
+Apply the same argument to the conjugated part. Its single comparison
+field is $J_Dh_n$, rather than the raw truncation recomputed from the
+conjugated cluster. This distinction causes no extra assumption.
+Conjugating a complete correlation conjugates all its labels, and the
+raw discrepancy is linear in each spectator slot. Hence the discrepancy
+with cluster $J\boldsymbol v$, comparison field $J_Dh_n$, and arbitrary
+spectator labels is the complex conjugate of the original discrepancy
+with conjugated spectator labels. That original discrepancy is covered
+by the input and the bounded-label argument. It has the same norm and
+upper rate. Output conjugation is a fixed real-linear map on a
+finite-dimensional space and preserves the rate. Adding the two averages
+and dividing by two proves \eqref{eq:ope-average-bridge}; translation
+invariance identifies its centered singleton readout with $L_{mD}h_n$.
+Applying the fixed projection $K_m$ yields
+\begin{equation}\label{eq:ope-fresh-bridge}
+ F_m(\boldsymbol x_n,\boldsymbol v;o_n)-P_{mD}h_n
+                    \quad\hbox{has upper rate }w-D-1.
+\end{equation}
+
+\subsection{Coefficient and remainder bounds}
+Set $D=m$ in \eqref{eq:ope-fresh-bridge}. Applying $P_{mm}$ to the raw
+shadow $H_m$ kills every term of degree less than $m$, by inclusion
+compatibility and \eqref{eq:ope-higher-kills}. The remaining finitely many
+terms consist of degree-$m$ raw coefficients, of upper rate $w-m$,
+times fixed vectors. Their sum has that rate. The difference in
+\eqref{eq:ope-fresh-bridge} has the smaller rate $w-m-1$, so
+$F_m$ has upper rate $w-m$. Taking its fixed channel coordinates gives
+the same rate for each coefficient in
+\eqref{eq:ope-final-coefficients}.
+
+For the remainder, retain the raw truncation $h_n=H_D$ and abbreviate
+the spectator functional at degree $j$ by $\ell_{n,j}$. The exact
+reconstruction identity in \eqref{eq:ope-projection-recursion} and
+compatibility of spectator insertions give
+\[
+ \ell_{n,D}(h_n)=\sum_{j\leq D}\ell_{n,j}(P_{jD}h_n).
+\]
+Consequently the final homogeneous discrepancy is exactly the raw
+discrepancy \eqref{eq:ope-raw-discrepancy} plus
+\begin{equation}\label{eq:ope-final-correction}
+ \sum_{j\leq D}\ell_{n,j}
+       \bigl(P_{jD}h_n-F_j(\boldsymbol x_n,\boldsymbol v;o_n)\bigr).
+\end{equation}
+Each vector difference has upper rate $w-D-1$ by
+\eqref{eq:ope-fresh-bridge}. The insertion functional has rate zero on
+every fixed vector by the input. The finite-dimensional evaluation
+argument therefore gives rate $w-D-1$ for every term of
+\eqref{eq:ope-final-correction}, and for their finite sum. Adding the
+raw discrepancy proves the same rate for the final discrepancy, along
+any prescribed configuration and phase sequence.
+
+\begin{theorem}\label{thm:ope-quantitative}
+Under Input~\ref{input:ope-raw-estimates}, the coefficients of
+\eqref{eq:ope-final-coefficients} satisfy the public separated OPE bounds.
+Specifically, for every $\epsilon>0$, fixed channel $(m,\alpha)$ and
+fixed $M\geq0$, $\eta>0$, at all sufficiently small $r>0$,
+\[
+ |c_{\boldsymbol v}^{m,\alpha}(\boldsymbol x;o)|
+                      \leq r^{m-w-\epsilon}
+\]
+uniformly over $|x_i-o|\leq Mr$ and $|x_i-x_j|\geq\eta r$.
+For each finite $D$, fixed spectator labels and $c>0$, one also has
+\begin{align*}
+ \bigg|S_\chi(\boldsymbol v,\boldsymbol z;\boldsymbol x,\boldsymbol y)
+  -\sum_{j\leq D}\sum_\alpha
+   c_{\boldsymbol v}^{j,\alpha}(\boldsymbol x;o)
+   S_\chi(e_{j,\alpha},\boldsymbol z;o,\boldsymbol y)\bigg|
+               \leq r^{D+1-w-\epsilon},
+\end{align*}
+uniformly over the same clusters, all spectators with center and mutual
+clearance at least $c$, and all phases and the mixed state.
+\end{theorem}
+\begin{proof}
+The preceding arguments prove these inequalities eventually along every
+admissible sequence, by taking slack $\epsilon$ in the rate definition.
+If a uniform threshold for the coefficient failed, choose for each $n$
+a violating radius $0<r_n<1/n$ and an admissible cluster at that radius.
+The resulting sequence contradicts its eventual rate bound. If the
+uniform remainder threshold failed, choose in addition a violating
+spectator configuration and a violating phase at each radius. The rate
+bound was proved for arbitrary such choices, so gives the same
+contradiction. A finite initial segment where a cluster might meet a
+spectator is immaterial: for sufficiently small $r$, $Mr<c/2$ makes
+the combined configuration separated, while the stated lower bounds
+separate all points within either group. The center and spectators are
+already separated by $c$.
+\end{proof}
+The coefficients used in this theorem were chosen before $D$, the phase
+and the spectators. Only the small-radius threshold may depend on those
+finite demands. The theorem transfers the quantitative raw comparison;
+it does not produce that comparison from the Wilson measure.

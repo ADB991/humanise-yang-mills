@@ -1,0 +1,250 @@
+\section{Uniform selection of the reader comparison on a plateau}
+\label{sec:actual-reader-dawn-selection}
+
+We now put the local estimates on one selected history. The choices
+must be uniform in the finite period, the reader patch, the forest
+and the tag. A further distinction is essential: the temperature used
+to record a Gaussian sector need not be the physical coupling at
+which the field is sampled. We keep these parameters separate.
+
+\subsection{One allowance for the whole coupling band}
+
+Fix a blocking patch with side $L$, its predictor kernel and adjacent
+path data. Fix positive strip width $s$ and lower metric bound $a$,
+an upper price $z\ge0$, a reader-room multiplier $w\in\mathbb N$,
+a real error exponent $f$, and a real coupling-drift bound $\gamma$.
+The preselected block side must satisfy the predictor smallness
+condition
+\[
+ 2\dim(\mathfrak g)\,T_\Psi(z,L)\le 1/4096,
+\]
+where $T_\Psi(z,L)$ is the absolute-row ticket for the truncated
+coarse-to-fine curvature transport. This is a condition on the
+previous choice of $L$, not something achieved by increasing the
+entrance coupling afterward.
+
+For $t>1$ define
+\[
+ \ell(t)=\log\log t,\qquad
+ \varepsilon_f(t)=\exp\{-f\ell(t)^2\}.
+\]
+For every fixed $v>0$ and real $c$, eventually in $t$,
+\begin{equation}\label{eq:reader-band-power}
+ x^{-v}\le\varepsilon_c(t)\qquad(t/2\le x\le t).
+\end{equation}
+In fact $x^{-v}\le 2^vt^{-v}$, and
+$c(\log\log t)^2=o(\log t)$. Taking logarithms proves the
+inequality, uniformly over the displayed interval. This elementary
+comparison lets us use one error allowance at the top of a plateau.
+
+Here are the local inputs to which we apply it. The local Gaussian
+comparison gives one entry bound $U\ge1$, followed by an eventual
+threshold for its mean and covariance estimates. The nonlinear
+guarded comparison supplies its field estimates for all
+$x/2\le\beta\le3x$, and the guard bound gives lost mass at most
+$x^{-1}$. The common covariance-cover and transport estimates
+supply both short-row errors at most $x^{-1/8}$. The adjacent
+coupling comparison holds uniformly for
+\begin{equation}\label{eq:reader-coupling-band}
+ x/2\le\beta\le3x,\qquad x/2\le\beta',\qquad
+ |\beta'-\beta|\le\gamma.
+\end{equation}
+There is no independent upper restriction on $\beta'$. Finally,
+the local chart thresholds give the room and logarithm inequalities
+used in the next subsection. These are respectively the conclusions
+of Sections~\ref{sec:actual-reader-local-gaussian-prices},
+\ref{sec:actual-reader-guarded-curvature} and
+\ref{sec:actual-reader-short-covariance}, with their stated
+same-data and prior-purchase hypotheses. Their production is a
+prerequisite here; the following choice argument does not supply an
+estimate absent from one of them.
+
+Take the maximum of their finitely many thresholds, after $L$ and
+the other displayed fixed parameters have been chosen. For all
+sufficiently large $t$, every $x\in[t/2,t]$ is above that maximum.
+Set
+\[
+ p_x=x^{-1/8}.
+\]
+This value is chosen before $\beta,\beta'$ and pays the short-row
+errors for every coupling pair in \eqref{eq:reader-coupling-band}.
+Increase the common threshold once more so that
+\begin{equation}\label{eq:reader-common-error-budget}
+ x^{-1/8}+p_x\le\varepsilon_f(t),\qquad
+ x^{-1/32}\le\varepsilon_f(t),\qquad
+ x^{-1}\le\varepsilon_f(t)^2
+ \quad(t/2\le x\le t).
+\end{equation}
+For the first inequality apply \eqref{eq:reader-band-power} with
+$c=f+1$ and note that
+$2\varepsilon_{f+1}(t)\le\varepsilon_f(t)$ eventually. For the
+second use $c=f,v=1/32$; for the third use $c=2f,v=1$ and
+$\varepsilon_{2f}=\varepsilon_f^2$.
+
+Thus one $U$ is chosen first, then one entrance threshold, then
+for each $x$ one $p_x$, and all the estimates hold for every
+admissible coupling pair, period, forest and tag. No maximum over
+an infinite collection of periods is being taken: each input
+estimate already has its uniform threshold.
+
+\subsection{The tube and covariance belong to the retained history}
+
+Let $C$ be the selected family and fix its actual precision horizon
+and path attachment. At an adjacent step $i<N$, form the local
+Gaussian data from the fine path at $i+1$, the coarse path at $i$,
+their prescribed clips, and the tower between those very levels.
+The path bounds come from the Wilson representations of $C$;
+the metric floors, path attachments, symmetry and crossing
+identities come from this horizon. They are therefore the same
+objects in the local Gaussian estimate and in the short-covariance
+construction. Replacing either by another witness with similar
+bounds would not justify the calculation below.
+
+Suppose the step is in a constant-order plateau,
+$J(i+1)=J(i)$. Its strip width, metric floor and price then have
+the same stage index on both sides. Write $P_i^{\rm cond}$ for
+its conditional curvature covariance, and $Q_i^{\rm short}$ for
+the prescribed finite-range covariance used in the reader
+expansion. The common-cover estimate, applied to the actual fine
+metric, gives
+\begin{equation}\label{eq:reader-history-short-error}
+ |P_i^{\rm cond}(a,b)-Q_i^{\rm short}(a,b)|\le p_x.
+\end{equation}
+This includes the two cases in the short-row rule. Where the rule
+keeps the covariance entry there is no discrepancy. Where it
+sets an entry to zero, the identically truncated cover row has
+zero at that periodic address, so its tail estimate bounds the
+original entry. All images in the periodization are included in
+that support test.
+
+For a posed actual sector, the local estimate gives
+$|C_i^{\rm read}(a,b)-P_i^{\rm cond}(a,b)|\le x^{-1/8}$ on
+both reader supports. Adding \eqref{eq:reader-history-short-error}
+and using \eqref{eq:reader-common-error-budget} yields
+\begin{equation}\label{eq:reader-selected-sight}
+ |C_i^{\rm read}(a,b)-Q_i^{\rm short}(a,b)|
+ \le\varepsilon_f(t).
+\end{equation}
+The short covariance is a comparator. The random vector continues
+to have the actual sector covariance $C_i^{\rm read}$.
+
+The corresponding transport-row estimate uses the same horizon
+and gives the short mean-transport error. Combining these two
+estimates on each plateau step is the history comparison used by
+the reader expansion. The common schedule must place the actual
+entrance parameter in $[t/2,t]$ and the actual couplings in
+\eqref{eq:reader-coupling-band}; these are the purchased plateau
+and coupling conditions retained in the application.
+
+\subsection{One pose contains all required reads}
+
+We give the geometric check, since it prevents accidental use of
+different local gauges for different readers. Put
+$b_x=\lceil(\log x)^2\rceil$ and $w_x=b_x^2$. At a fixed
+step let $y$ be the next prescribed scale parameter, and suppose
+the paid room conditions hold. In explicit terms the conditions
+used here are
+\[
+ b_x\ge200,\quad w\ge d+10,\quad
+ w w_y+L\le Lw_x,
+\]
+together with room nonwrapping at both levels and the prescribed
+reader separation of at most $d w_x$. Here $d$ is the fixed
+reader separation order. The recording parameter $r(x)$ satisfies
+\[
+ x\le r(x)\le x^2,\qquad b_{r(x)}\le4b_x,
+\]
+and its flag threshold equals the healthy threshold at $x$.
+Consequently $11b_{r(x)}+1\le w_x$. Also the nonwrapping room
+bound at radius $ww_x$ implies the local Gaussian side bound:
+$100(1+b_{r(x)})\le2(ww_x+1)$ eventually under these
+inequalities, and the torus side exceeds the latter quantity.
+
+For this application fix the seed-free store: both its seed sets
+are empty, and its flag set is exactly the set of flags of the
+actual coarse field at recording threshold $\operatorname{temp}(r(x))$.
+This threshold equals $\tau_x$. Thus, for a coarse field healthy
+on the whole room of radius $ww_x$, the store has no marked site
+in that room. Health alone would not remove seeds from an
+arbitrary store. For this seed-free store,
+the local axial construction gives one gauge on this room and a
+logarithmic direction of norm at most $8ww_x\tau_x$, where
+$\tau_x$ is the healthy threshold. The purchased chart conditions
+place this inside half the logarithmic clearance allowance and
+inside the fixed chart radius. Extend that direction by zero
+outside the room. It remains one global direction with the same
+supremum bound. At any address whose distance from the room
+boundary is at least $w_x$, the whole $b_{r(x)}$-ball lies
+inside the chart, and its $11b_{r(x)}+1$ seed neighbourhood
+contains no flag. The replica bound follows from the linear
+replica norm bound and the exponential chart estimate. These are
+exactly the pose conditions used above.
+
+It remains to fit the fine guards into that room. A fine bond in
+the enlarged guard room of radius $ww_y+8$ has parent at distance
+at most $w_x+8$ from the parent of the fine reader centre.
+Indeed the parent-distance inequality is
+\[
+ L\,\operatorname{dist}(\operatorname{parent}u,
+                         \operatorname{parent}v)
+ \le\operatorname{dist}(u,v)+L,
+\]
+and $ww_y+L\le Lw_x$ gives the assertion. The coarse centre
+of a tested reader is at distance at most $dw_x$ from the
+chosen root reader. Adding distances shows that every such guard
+bond has
+\[
+ \operatorname{dist}(o,\operatorname{parent}v)+w_x+2
+ \le(d+2)w_x+10\le ww_x,
+\]
+using $w_x\ge8$ and $w\ge d+10$. Every incidence read has
+the same inequality with $+1$ in place of $+2$. Thus both
+endpoints of every covariance entry, and all four bonds used in
+every nonlinear read, lie in the one pose. Signed translations
+carry the reader centres, masks, forest and tag together, so the
+same inequalities apply to every selected orientation.
+
+\subsection{The joint reader model on the actual sample space}
+
+Fix a forest and tag, retain this same seed-free store, and choose
+a chart cutoff $\delta>0$ with $2\delta$ smaller than the fixed
+first logarithmic chart radius of the gauge group. These are the
+cutoff hypotheses of the measurable field construction in the
+joint reader model. Use the common product space of frozen Haar
+links and the centered Gaussian sector coordinates from
+Section~\ref{sec:ex-lattice-all-arity-reader-gaussian-model}.
+The signed transport and the one pose gauge send the store,
+forest, tag and sample together. Their measure-preserving
+identities give one joint centered incidence vector, with
+covariance $C_i^{\rm read}$, for every reader. Equation
+\eqref{eq:reader-selected-sight} is therefore an entrywise
+comparison of that actual joint law with the short covariance,
+including all off-diagonal pairs.
+
+For each reader use the guard on its enlarged fine room. The
+Gaussian guard estimate gives
+\[
+ 0\le\Gamma_a\le1,\qquad
+ \int(1-\Gamma_a)\,d\mu\le x^{-1}
+                          \le\varepsilon_f(t)^2.
+\]
+On its positive set, the nonlinear comparison makes the fine
+field healthy on that reader patch and gives one gauge element
+for the whole patch. In that gauge, each normalized coordinate
+differs by at most $x^{-1/32}\le\varepsilon_f(t)$ from the
+sum of the fixed parent forecast and the corresponding coordinate
+of the common Gaussian vector. The forecast uses the actual
+coarse coupling $\beta'$; the fine field uses $\beta$. Their
+conversion was included in the adjacent coupling estimate, so
+they are not set equal in this step.
+
+The same construction works for every permitted reader in the
+fixed finite family. Its mask bound is per reader, with no union
+over the family, and its gauge is common to the coordinates of
+one patch. All readers still share the same random vector and
+the same parent forecast. These are precisely the quantitative
+receipts left explicit in the joint reader-model construction.
+They are obtained on the selected family whenever its purchased
+plateau, room, chart and coupling conditions hold. The later
+activity reassembly remains responsible for identifying the
+resulting expansion with the interacting block integral.

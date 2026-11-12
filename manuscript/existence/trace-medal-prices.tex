@@ -1,0 +1,90 @@
+% Three scalar price bounds used by the selected trace construction.
+\section{Three local scalar price bounds}
+\label{sec:ex-lattice-trace-medal-prices}
+
+This section proves three scalar price conversions used by the selected
+trace construction. The arguments are independent of the construction of the
+local response and chart records that consume these bounds.
+
+Fix a block side \(L\), and retain \(\beta(x)\), \(H(x)\), and
+\(\chi(x)=H(x)^{1/2}\) from Section~\ref{sec:ex-lattice-trace-local-rate-selection}.
+For a fixed price \(a>0\), write
+\[
+                 \mathsf s_a(x)=a/\chi(x).
+\]
+A negative strict-power rate has the following elementary consequence: if
+\(f\in\mathcal R_\alpha\) with \(\alpha<0\), then
+\(\chi(x)f(x)\to0\). Indeed \(\chi\in\mathcal R_0\), so the product has
+rate \(\alpha\); choose \(v\in(\alpha,0)\), and use
+\(\beta(x)^v\to0\).
+
+\begin{lemma}[Cloud price]
+\label{lem:ex-lattice-medal-cloud-price}
+Let \(Q\) be a target with rate exponent \(q<0\). Suppose its poster
+coefficient \(p_Q(x)\) has strict-power rate \(q/4\), and define the
+cloud response for a cloud \(Z\) on a representation \(R\) by
+\[
+ \mathcal M_Q(Z;x)=m_R(Z)\exp(-\epsilon_Q N_R(Z))p_Q(x),
+ \qquad m_R(Z)\ge0,\quad N_R(Z)\ge0,\quad \epsilon_Q>0.
+\]
+Then for every \(a>0\), eventually, uniformly over all clouds,
+\[
+             |\mathcal M_Q(Z;x)|\le \mathsf s_a(x)m_R(Z).
+ \tag{1}\label{eq:ex-lattice-cloud-price}
+\]
+\end{lemma}
+\begin{proof}
+Since \(q<0\), choose \(v\) with \(q/4<v<0\). The rate hypothesis
+implies \(|p_Q(x)|\le a/\chi(x)\) eventually: equivalently
+\(\chi|p_Q|\to0\), and then make it at most \(a\). The attenuation obeys
+\(0<\exp(-\epsilon_QN_R(Z))\le1\), independently of the cloud. Multiply
+these inequalities by the nonnegative mass \(m_R(Z)\).
+\end{proof}
+
+\begin{lemma}[Forced gas price]
+\label{lem:ex-lattice-medal-gas-price}
+Let \(g(x)=\exp(-H(x)^{1/5}/2)\). For every \(a>0\), eventually
+\[
+                    \operatorname{DoorsRate}(L)g(x)\le\mathsf s_a(x).
+ \tag{2}\label{eq:ex-lattice-gas-price}
+\]
+\end{lemma}
+\begin{proof}
+Set \(t=\log\log\beta(x)\), so \(\log H=t^2\) and
+\(\log\beta=e^t\). Then
+\[
+\log\bigl(\chi(x)g(x)\bigr)=\tfrac12t^2-\tfrac12e^{t^2/5}\longrightarrow-\infty,
+\]
+because \(e^{t^2/5}\) grows faster than \(t^2\). Thus
+\(\chi g\to0\); multiplying by the fixed positive \(\operatorname{DoorsRate}(L)\)
+and making the product at most \(a\) proves (2).
+\end{proof}
+
+\begin{lemma}[Tuition price]
+\label{lem:ex-lattice-medal-tuition-price}
+For a target with goal \(\beta(x)^q\), define its tuition at fixed integers
+\(s,n\ge0\) by
+\[
+ \mathcal T_Q(x;s,n)=A(x)^{sn}\,P_{1/2}(sn)\,\beta(x)^{-q}
+                         \exp(-b(x)/2),
+ \tag{3}\label{eq:ex-lattice-tuition}
+\]
+where \(A\) and the polynomial price \(P_{1/2}(sn)\) have rate zero and
+\(b(x)=\lceil(\log x)^2\rceil\). Then
+\(\mathcal T_Q(\cdot;s,n)\in\mathcal R_z\) for every real \(z\). In
+particular, for every \(a>0\), eventually
+\[
+                       \mathcal T_Q(x;s,n)\le\mathsf s_a(x).
+ \tag{4}\label{eq:ex-lattice-tuition-price}
+\]
+\end{lemma}
+\begin{proof}
+The first two factors in (3) have rate zero, and \(\beta^{-q}\) has rate
+\(-q\). The last factor has every strict-power rate: for every fixed
+\(c>0\), \(b(x)/2\ge c\log\beta(x)\) eventually, since
+\(b(x)\asymp(\log x)^2\) while \(\log\beta(x)\asymp\log x\). Thus
+\(e^{-b/2}\le\beta^{-c}\) eventually. Choose
+\(c>\max(0,-q-z)\); the product rate \(-q-c\) is then less than \(z\),
+so the strict-power definition gives the claimed rate. Taking \(z=-1\) and using the negative-rate consequence
+above proves (4).
+\end{proof}

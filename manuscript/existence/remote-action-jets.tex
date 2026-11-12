@@ -1,0 +1,241 @@
+\section{Small derivatives of the remote action}
+\label{sec:remote-action-jets}
+The packet estimate permits a polynomial expense in its logarithm.
+Outside the packets we need a stronger conclusion: each local
+logarithmic activity, together with its derivatives, must be small.
+We obtain the extra power from the local quadratic comparison and
+the flat interpolation argument already proved. Throughout this
+section the derivative order, block length, patch, forest and tags
+are fixed. The path bounds, flat identities and positive precision
+estimates retain the hypotheses of the preceding sections.
+
+\subsection{A cubic remainder in a flat chart}
+For a local energy address $p$, let $\mathcal E_p(U,V)$ denote its
+unmasked energy, with the original predictor tags. Let $I(p)$ be
+its set of extracted quadratic rows; $|I(p)|\le2$. Write $f_i(V)$
+for the zero-fluctuation residual and $M_i(V)u$ for the transported
+cut linear row. Define
+\begin{align}
+ R_p(U,V,u)&=\mathcal E_p(U,V)
+       -\frac12\sum_{i\in I(p)}|f_i(V)+M_i(V)u|^2,
+       \label{eq:remote-square-remainder}\\
+ F_p(b,u)&=R_p(\exp(u)\operatorname{replica}(\exp b),\exp b,u).
+       \label{eq:remote-flat-remainder}
+\end{align}
+The four address types are the fine curvature, predictor penalty,
+coarse curvature with its two mismatch terms, and the null-row
+square. For the last two, the parent set is empty. These are the
+same unmasked expressions as in Section~\ref{sec:packet-annulus}.
+
+For every fixed $k$, there are a radius $r>0$ independent of the
+period and a function $A$ of upper exponent zero such that
+\begin{equation}\label{eq:remote-fixed-ball}
+ F_p\in\mathcal B_k(A(x),1;(b,u)),\qquad
+ \max(\|b\|_\infty,\|u\|_\infty)\le r.
+\end{equation}
+Here and below the same bound holds at every address. To verify it,
+use the four dressed fields and their predictor bounds in
+Section~\ref{sec:mean-action-jets}. Each cut path has length
+$O(R+1)$, its absolute coefficients have bounded sum, and its
+transport derivatives cost a polynomial in $R+1$. The local energy
+is a sum of squared curvature rows and inner products of the
+coarse stroke with linear guide rows. Its derivatives therefore
+cost only another polynomial in $R+1$. Each affine row in
+\eqref{eq:remote-square-remainder} is the sum of the residual
+already estimated there and a cut linear map applied to $u$.
+On the unit ball, the coordinate map $u\mapsto u_e$ has value and
+first derivative at most one and all higher derivatives zero.
+The product rule bounds its transported image by a polynomial
+in $B+1$. Squaring and summing at most two such rows proves
+\eqref{eq:remote-fixed-ball}. This is a bound on the unmasked
+formula; it makes no small-field assertion on that whole fixed ball.
+
+Put $t=q h^{-1/2}$ with $q>0$ fixed and sufficiently small.
+Every coarse field $\exp b$ with $\|b\|_\infty\le3t$ is clean
+on all its plaquettes. Indeed the exponential chart gives
+$\operatorname{chord}(\exp b_e)\le C\|b_e\|$, and the four-link
+triangle inequality gives plaquette chord at most $12Cq h^{-1/2}$.
+Choose $q\le(12C)^{-1}$ and use $h^{-1/2}$ no larger than the
+coarse flag threshold. This check applies on every period.
+
+On the radius-$3t$ ball, the fields in
+\eqref{eq:remote-flat-remainder} have the exact local graft
+$U=\exp u\operatorname{replica}V$. The annular comparison then
+gives
+\begin{equation}\label{eq:remote-probe-value}
+ |F_p(b,u)|\le E(x),\qquad E\text{ of upper exponent }-3/2.
+\end{equation}
+More explicitly, the fine and predictor rows have affine error of
+upper exponent $-1$ and amplitude of upper exponent $-1/2$;
+the difference of their squares consequently has upper exponent
+$-3/2$. Their extracted rows agree with $f_i+M_i u$, since
+cleanliness removes the clipping on the complete read stencil.
+The coarse curvature remainder and null-row square have upper
+exponent $-2$. Each mismatch term is an inner product of a coarse
+stroke of upper exponent $-1/2$ with an error of upper exponent
+$-1$. Their sum has upper exponent $-3/2$. Taking the sum of
+these four nonnegative bounds gives one $E$ for all address types.
+These are precisely the estimates proved in the annular argument;
+no inequality is differentiated in obtaining
+\eqref{eq:remote-probe-value}.
+
+Let $Q\ge0$ have upper exponent $-1/2$, and put $B_0=Q+3t$.
+Apply \eqref{eq:action-interpolation} to $F_p$, with $k=j+3$,
+value bound $E$ and fixed-ball derivative bound $A$. Its constants
+satisfy
+\[
+ W=1000(E/t^2+AB_0),\qquad
+ Y=1000E/t+3WB_0,\qquad
+ H=E+YB_0+Yt+Wt^2+At^3.
+\]
+Their upper exponents are $-1/2,-1,-3/2$, respectively. For example
+$E/t^2$ and $AB_0$ have upper exponent $-1/2$, and each of
+$YB_0,Yt,Wt^2,At^3$ has upper exponent $-3/2$. Thus
+\begin{equation}\label{eq:remote-probe-jets}
+ F_p\in\mathcal B_j(H,t^{-1};z)
+ \quad(\|z\|\le Q),\qquad H\text{ of upper exponent }-3/2.
+\end{equation}
+The reciprocal $t^{-1}$ has upper exponent $1/2$ and is paid by
+the small derivatives of the chart coordinates in the next step.
+
+\subsection{Returning to a protected remote address}
+Suppose the anchor of $p$ is farther than $200B$ from the seeds.
+Let $V(y)$ be a coarse variation of derivative scale with upper
+exponent $-1/2$, and let $u(y)$ be its coherently compensated fine
+increment. Hold the underlying fine configuration $U_*$ fixed,
+as in Section~\ref{sec:compensated-variation}. Let $\psi_p(y)$
+be the product of the doubled protective cutoffs on the local
+read region. If $\psi_p$ vanishes on a neighbourhood of $y_0$,
+the protected remainder has zero jets there. Otherwise the closed
+support argument bounds the increment on that read region by
+$q_0+4a\tau$, with $q_0$ of upper exponent $-1/2$.
+
+After a signed pullback, the relative increment is
+$\operatorname{Ad}$ of this increment by the appropriate replica
+link. The product rule and the unitary bounds give amplitude
+\[
+ R_G^2(q_0+4a\tau)\{1+(v+1+v)\}^{j}
+\]
+for its jets through order $j$; this still has upper exponent
+$-1/2$. On tree bonds the increment is identically zero. All other
+bonds in the radius-$B$ read region are active because the address
+is remote from the seeds. The compensated identity therefore gives,
+on a neighbourhood of $y_0$,
+\[
+ U_* =\exp u(y)\operatorname{replica}V(y)
+ \quad\text{on the radius-}\lfloor7B/8\rfloor\text{ patch},
+\]
+with the signed pullback understood on both sides.
+
+Choose one coarse gauge from $V(y_0)$ on this patch. The coarse
+logarithmic coordinates $b(y)$ have jets of upper exponent $-1/2$
+by the fixed-gauge construction in Section~\ref{sec:mean-action-jets}.
+Conjugate $u(y)$ by this fixed gauge and set it to zero outside
+the patch. This preserves its derivative bound. Denote the resulting
+pair of arrays by $z(y)$. For one nonnegative $Q$ of upper exponent
+$-1/2$, we have $z\in\mathcal B_j(Q,1;y_0)$.
+
+All terms in \eqref{eq:remote-square-remainder} are determined by
+this patch. To check the radius, the cut guide and transported
+linear rows read within $B/4$ of their address; the local energy
+and its predicted coarse field read within $B/2$, including the
+fixed predictor reach. Both fit inside $7B/8$ for the previously
+chosen geometric threshold. The row transports, predictor tags and
+quadratic extraction decisions are unchanged there. Gauge covariance
+and the local equality of the fields consequently identify the
+actual remainder with $F_p(z(y))$ throughout a neighbourhood.
+
+For a derivative of order $k\le j$, the chain rule has at most
+$k!$ partition terms. A term with $m$ blocks is bounded by
+$H t^{-m}Q^m$. Hence every derivative of $F_p(z(y))$ is bounded
+by
+\[
+ H\max(1,j!) (1+Qt^{-1})^j.
+\]
+The second factor has upper exponent zero. We have proved that
+the remote unmasked remainder has jets of upper exponent $-3/2$
+whenever its protector is not locally zero. The protector has
+amplitude one and derivative scale bounded by a function of upper
+exponent zero times its support cover. Multiplying it back in
+preserves the amplitude exponent $-3/2$, allowing this support
+factor in the derivative scale.
+
+\subsection{The remote mean square and other short terms}
+The local mean residual $m_p$ has remote value bound of upper
+exponent $-1$, proved in Section~\ref{sec:local-mean}. Its jets
+have the same exponent. Here is why the scalar estimate suffices
+in this application. On a flat probe ball all sectors are clean
+and the actual mean agrees with its unmasked expression. The
+derivative estimate on the larger \emph{shrinking} ball requires
+an additional check, since the intermediate probes need not satisfy
+the sector flag conditions. Let $B_0=Q+3t$ as above and write
+$A(z)$ for the empty-seed precision at logarithmic probe $z$.
+The same-history comparison at the identity supplies
+$A(0)\ge r_0 I$ for a fixed $r_0>0$. On $\|z\|\le B_0$,
+the transported-row estimates give an entry derivative bound
+$C v_1$, where $C$ is fixed and $v_1$ has upper exponent zero.
+Integrating this derivative along the segment from $0$ to $z$
+gives $|A(z)_{ik}-A(0)_{ik}|\le C v_1B_0$. The matrices have
+range at most $B$ and coordinate density at most $\rho$ per site.
+Both the row and column sums of this difference are therefore
+at most $b_B\rho C v_1B_0$, which tends to zero. The elementary
+row-column bound on the Euclidean operator norm follows by
+Cauchy--Schwarz:
+$\|Hv\|_2^2\le(\sup_i\sum_k|H_{ik}|)
+(\sup_k\sum_i|H_{ik}|)\|v\|_2^2$.
+Consequently $A(z)\ge(r_0/2)I$ throughout the shrinking ball
+for large $x$. Every principal restriction has the same floor.
+The exponentially weighted entry estimates remain uniform there;
+the inverse and padded-inverse jet bounds proved earlier thus
+apply with fixed reduced floor and width. They cost only a
+polynomial in $B$ at fixed derivative order.
+
+The empty-seed residual is the zero-fluctuation row residual
+minus the transported row applied to its padded-inverse response,
+that is $f-MPM^*f$ after the fixed row normalization. All four
+factors now have jet bounds of upper exponent zero on this
+shrinking ball. The product and row-sum estimates give the required
+upper exponent zero bound for the residual there. On the smaller
+radius-$3t$ ball every empty-seed probe is clean, so the
+same-history stationary comparison applies separately to each
+probe and gives the remote value exponent $-1$. No flag condition
+was assumed on the entire larger ball. Apply the same interpolation
+above with this probe value exponent $-1$.
+Then $W,Y,H$ have upper exponents $0,-1/2,-1$. The fixed-gauge
+composition again costs only upper exponent zero. Finally the
+mean residual depends only on the radius-$24B$ patch and the
+unchanged windows; a point farther than $30B$ from the seeds has
+the same local formula as the empty-seed comparison. This gives
+the claimed exponent $-1$ for every fixed jet order, with no
+derivative of a gauge choice or stationary minimizer.
+
+At most two such residuals enter a local mean-square term, so its
+jets have upper exponent $-2$. The remote logarithmic action is
+$-\theta\beta$ times the sum of this mean-square term and the
+protected remainder, where $0\le\theta\le1$ is the fixed channel
+weight and $0<\beta\le2h$. Its amplitude therefore has upper
+exponent $-1/2$. This uses the same $\beta$ as in the original
+action.
+
+The other two short logarithmic terms are the remote normalization
+correction and the protected chart logarithm. Their jets have upper
+exponent $-1/2$ by Sections~\ref{sec:normalization-jets} and
+\ref{sec:haar-chart}. Each term is set to zero on its prescribed
+packet neighbourhood; this indicator depends only on the frozen
+sector. Consequently the three short families have one common
+nonnegative amplitude $b(x)$ of upper exponent $-1/2$, and
+derivative scale
+\begin{equation}\label{eq:remote-short-price}
+ v_0(x)\{1+\operatorname{cov}_B(S_p)\},
+ \qquad v_0\text{ of upper exponent zero}.
+\end{equation}
+Here $S_p$ is the full enlarged read support of the term.
+For fixed enlargement $\ell$, these supports lie in radius
+$(\ell+1)B$ balls about their anchors and have uniformly bounded
+cover number. The number of anchors meeting a given site is at
+most $b_{(\ell+1)B}$ times the fixed density of the three families.
+Their exponentially cover-weighted site sum is therefore bounded
+by this polynomial count times $b(x)$ and a fixed exponential
+in the cover bound. It still has upper exponent $-1/2$, uniformly
+in the period. This supplies the short-activity part of the
+logarithmic price estimate.

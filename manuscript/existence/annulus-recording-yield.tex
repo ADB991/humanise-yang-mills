@@ -1,0 +1,325 @@
+\section{Finite-volume recording and uniform drift}
+\label{sec:ex-annulus-recording}
+
+The continuum pole calculation controls a coefficient of the analytically
+assembled response. The finite-volume argument needs two additional steps:
+an exact determinant identity at each torus size, and a quantitative bound
+on the difference between a torus mean and its zero Fourier mode. This
+section proves that bound, explains the determinant calculation and
+positive-matrix domain, and gives the exact scale order in the final
+annulus output.
+The local stationary estimates used to feed this construction remain those
+listed in the preceding section and its evidence record.
+
+Write $\mathcal H_\sigma(A)$ for the class of periodic functions that are
+holomorphic when each imaginary momentum coordinate has modulus less than
+$\sigma$ and have supremum norm at most $A$ there. The coefficient of a
+translation-invariant two-leg picture is its mixed second derivative; its
+finite-volume realization at a conserving pair is $\ell^4$ times that
+coefficient. Write $\operatorname{Err}_\ell(\mathcal Y,\mathcal P;\delta)$
+when every mixed two-leg coefficient of the finite test $\mathcal P$
+differs from this finite-volume realization for $\mathcal Y$ by at most
+$\ell^4\delta$.
+
+\subsection{A torus mean differs from the zero mode by an exponential tail}
+
+Let $\ell\geq1$ be an integer and let $f$ be a periodic function of four
+real momenta, holomorphic and bounded by $A$ on the complex strip of width
+$\sigma>0$. Write its absolutely convergent Fourier series as
+\[
+ f(\theta)=\sum_{n\in\mathbb Z^4}c_n e^{i n\cdot\theta},
+ \qquad |n|_1=\sum_{j=0}^3|n_j|.
+\]
+The normalized mean over the side-$\ell$ grid is
+\[
+ \langle f\rangle_\ell
+   =\ell^{-4}\sum_{q\in(\mathbb Z/\ell\mathbb Z)^4}
+                       f(2\pi q/\ell).
+\]
+Character orthogonality in each coordinate says
+\[
+ \ell^{-4}\sum_q e^{2\pi i n\cdot q/\ell}
+       =\mathbf 1_{n\in\ell\mathbb Z^4}.
+\]
+Consequently $\langle f\rangle_\ell- c_0$ is the sum of precisely the
+nonzero Fourier coefficients whose indices lie in $\ell\mathbb Z^4$.
+Every such index satisfies $|n|_1\geq\ell$. Cauchy's integral formula,
+applied after shifting each coordinate contour by $\pm i(\sigma/2)$,
+and the geometric-series bound in four coordinates give
+\[
+ \sum_{n\in\mathbb Z^4}e^{(\sigma/4)|n|_1}|c_n|
+ \leq A\left(2\frac{1+\sigma/4}{\sigma/4}\right)^4.
+ \tag{RY1}
+\]
+For completeness, the one-coordinate sum used here is bounded by
+\[
+ \sum_{k\in\mathbb Z}e^{-h|k|}
+ =1+2\sum_{k\geq1}e^{-hk}
+ \leq 2\frac{1+h}{h},\qquad h=\sigma/4;
+\]
+the last inequality follows from $e^h\geq1+h$. The contour shift gives
+the factor $e^{-(\sigma/2)|n|_1}$ for an individual coefficient, leaving
+the weight $e^{(\sigma/4)|n|_1}$ in (RY1). Therefore
+\[
+ |\langle f\rangle_\ell-c_0|
+ \leq \mathfrak r(\sigma,A)e^{-\sigma\ell/4},\qquad
+ \mathfrak r(\sigma,A)
+   =A\left(2\frac{1+\sigma/4}{\sigma/4}\right)^4.
+ \tag{RY2}
+\]
+This estimate is for the actual full grid at each $\ell$; no subsequence
+selection is involved.
+
+\begin{lemma}[Recorded second-order coefficients]
+\label{lem:ex-pole-recording}
+Let $F_{ij}(p,q)$ be two-momentum response entries in
+$\mathcal H_\sigma(A)$ jointly in $p,q$. Let $\mathcal P_\ell$
+be a real finite-volume test and
+assume its exact local coefficient identity: for every pair of colored
+sites $q,q'$, the mixed second coefficient of $\mathcal P_\ell$ is zero
+when $q+q'\ne0$, and otherwise is
+\[
+ \ell^4\,\langle F_{ij}(\operatorname{mon}(q'),\,\cdot\,)\rangle_\ell.
+ \tag{RY3}
+\]
+Define the internal zero mode and limiting picture by
+\[
+ \widehat F_{ij,0}(p)=\int_{\mathbb T^4}F_{ij}(p,q)\,dq,
+ \qquad
+ \mathcal Y_{ij}(p)=\tfrac12\,\widehat F_{ij,0}(p),
+\]
+where Haar measure on $\mathbb T^4$ is normalized to one. We use the
+translation-invariant two-leg convention in which the mixed second
+derivative is the polarized coefficient (there is no factorial in the
+definition of that coefficient). Thus the finite-volume realization at a
+conserving pair is $\ell^4$ times this coefficient, namely
+$\ell^4\,2\mathcal Y_{ij}$. Then
+$\mathcal Y$ is interpreted as the translation-invariant two-leg picture:
+its mixed coefficient at external momenta $p,p'$ is zero unless
+$p+p'=0$, and in the conserving case is
+$2\mathcal Y_{ij}(p')=\widehat F_{ij,0}(p')$.
+$\mathcal Y\in\mathcal H_{\sigma/2}(A)$, and for every side $\ell$,
+\[
+ \operatorname{Err}_\ell(\mathcal Y,\mathcal P_\ell;
+     \mathfrak r(\sigma,A)e^{-\sigma\ell/4}).
+ \tag{RY4}
+\]
+\end{lemma}
+\begin{proof}
+The normalized Haar integral defining $\widehat F_{ij,0}$ is holomorphic
+in $p$ on the width-$\sigma$ strip: on each compact substrip its integrand
+and derivatives are uniformly bounded, so differentiation under the
+integral is valid. Its norm is at most $A$, hence the half-scaled picture
+is bounded by $A$ on the width-$\sigma/2$ strip. For each fixed real $p$,
+apply (RY2) to the one-variable function $q\mapsto F_{ij}(p,q)$; its
+Fourier zero mode is exactly $\widehat F_{ij,0}(p)$. This gives
+\[
+ |\langle F_{ij}(p,\cdot)\rangle_\ell
+              -\widehat F_{ij,0}(p)|
+       \leq \mathfrak r(\sigma,A)e^{-\sigma\ell/4}
+\]
+on the real external momentum torus. If $q+q'\ne0$, both mixed
+coefficients in the definition of $\operatorname{Err}_\ell$ vanish by
+momentum conservation. If $q+q'=0$, the second Taylor coefficient of
+$\mathcal Y=\frac12\widehat F_{ij,0}$ has the factor $2!=2$, so it equals
+$\widehat F_{ij,0}$; subtracting (RY3) and multiplying the mean estimate
+by the number $\ell^4$ of sites gives (RY4).
+\end{proof}
+
+For a finite side $\ell$, set
+\[
+ \mathcal Y_{\ell,ij}(p)=\tfrac12\,\ell^{-4}
+        \sum_{q\in(\mathbb Z/\ell\mathbb Z)^4}F_{ij}(p,2\pi q/\ell)
+\]
+at each external grid momentum. By (RY3), its second
+finite-volume coefficient is $2\ell^4\mathcal Y_{\ell,ij}(p)$.
+The limiting picture also has the exchange and reality symmetries
+\[
+ \mathcal Y_{ij}(p)=\mathcal Y_{ji}(-p),\qquad
+ \overline{\mathcal Y_{ij}(p)}=\mathcal Y_{ij}(-p).
+\tag{RY4a}
+\]
+At each finite side, the logarithmic determinant is a real scalar
+function of real field coordinates. Equality of its mixed derivatives
+gives exchange of the two external legs, while reality of its Hessian
+gives conjugation under Fourier inversion. Thus the finite-volume
+normalized pictures have both relations at every allowed grid momentum.
+Estimate (RY2) says $\mathcal Y_{\ell,ij}(p)\to\mathcal Y_{ij}(p)$
+uniformly over the external grid points as $\ell\to\infty$. Thus their
+difference from $\mathcal Y$ tends uniformly to zero on
+these grids as the side tends to infinity. The union of the full side
+grids is dense in the momentum torus, and $\mathcal Y$ is continuous by
+its analytic strip bound. Passing along cofinal sides and then using
+density proves (RY4a) everywhere. This supplies the Hessian symmetry and
+reality of the half-scaled zero-mode picture; it does not follow from
+factorial normalization alone.
+
+The factor $1/2$ in $\mathcal Y$ is essential: the finite-volume mixed
+second derivative of $\frac12\widehat F_{ij,0}$ contributes
+$2!\,\frac12\widehat F_{ij,0}=\widehat F_{ij,0}$. This is why (RY3)
+compares the normalized grid mean to the continuum coefficient and why the
+error is the per-site Fourier error multiplied by the site count exactly
+once.
+
+\subsection{Determinant identity and positive-matrix domain}
+
+In the application, the pole test is
+\[
+ \mathcal P_\ell(x)=\tfrac12\log\det P_\ell(x)
+                              -\log\det V_\ell(x),
+\]
+where $P_\ell$ is the positive rank matrix and $V_\ell$ the positive
+reference matrix. The finite ticket identifies the zero-, one-, and
+two-leg Taylor layers of $P_\ell$ with those of the interacting response,
+and those of $V_\ell$ with the reference response. The floor and
+positive-regulator hypotheses make both matrices positive definite at
+$x=0$; by continuity their real logarithmic determinants are smooth
+nearby. Ordinary matrix differentiation gives
+\[
+ \begin{aligned}
+ D\log\det P[H]&=\operatorname{tr}(P^{-1}DP[H]),\\
+ D^2\log\det P[H,K]
+ &=\operatorname{tr}\!\left(P^{-1}D^2P[H,K]
+       -P^{-1}DP[K]P^{-1}DP[H]\right).
+ \end{aligned}
+ \tag{RY8}
+\]
+and the same formulas for $V$. Write $A(r)$ for either matrix family,
+$B_i(p,r)$ for its first variation (from background momentum $r$ to
+$r+p$), and $C_{ij}(p,q,r)$ for its mixed second variation (from $r$ to
+$r+p+q$). The shifted fiber block of the mixed derivative of the
+logarithmic determinant at the ordered pair of legs is the trace of
+\[
+ A(r+p+q)^{-1}C_{ij}(p,q,r)
+ -A(r+p+q)^{-1}B_i(p,r+q)A(r+q)^{-1}B_j(q,r).
+ \tag{RY8a}
+\]
+This follows by differentiating
+$D\log\det A[H]=\operatorname{tr}(A^{-1}DA[H])$ and using
+\[D(A^{-1})[K]=-A^{-1}DA[K]A^{-1}.\] There is one ordered product for
+the specified ordered pair; exchanging the legs gives the corresponding
+other entry, not an extra copy in (RY8a). Sum this expression over internal
+momentum and apply the weights in the finite ticket. Formula (RY8a) is the
+shifted fiber block of the Hessian. Translation invariance makes the full
+trace entry zero unless the external momenta conserve; in the conserving
+case summing the fiber blocks gives the normalized torus mean multiplied by
+$\ell^4$. This finite-volume determinant
+calculation precedes the Fourier tail limit.
+
+The Fourier estimate is entrywise. Any closed-cone passage for finite
+reflection matrices and the smooth-word approximation to point
+configurations belong to the separate reflection argument.
+
+\subsection{Order of choices in the all-period output}
+
+Here is the exact downstream implication, with its inputs exposed. Fix
+$\sigma,\epsilon,\tau>0$ and $C,Z,A\geq0$. Assume a baseline analytic
+family $H$ has strip fee $(k,E)$ with $k>0$, $E\geq0$, and matches the free
+Wilson response at every volume. Assume the response service chooses
+$v>0,M\geq0$, depending only on these external data, with the following
+property: for every sequence of positive integer sides $\ell_j\to\infty$,
+every bed $B$, target $p$, path $R$, and budget $\Lambda$ satisfying the
+fixed $(\tau,A,\Lambda)$ path bound, attachment of $B$ to $R$, metric
+strip bound $(\sigma,C)$, direct-term bound $Z$, all grade floors
+$(\epsilon,C)$, and sworn conditions at every $\ell_j$, it provides a
+family $T$ with fee $(v,M)$, whose zero-, one-, and two-leg layers vanish
+to orders three, two, and one respectively, and exact analytic
+cancellation of the target response against the Wilson term at every
+$\ell_j$. Require also the exact finite-layer realization: for every
+$\ell_j$, the interacting and reference matrices are real analytic on the
+real momentum torus, Hermitian positive definite at the origin with a
+positive lower eigenvalue bound uniform in $j$, and their Taylor layers of
+orders zero, one and two are the layers specified by the response ticket.
+The resulting shifted-fiber kernel $F_{c,\ell_j}(p,q)$ is the restriction
+of one common periodic kernel $F_c(p,q)$, holomorphic and bounded by some
+$K$ whenever every imaginary momentum coordinate has modulus less than
+some $z>0$, uniformly in $j$ and color $c$. This is the common-strip and
+common-layer content needed for the full-grid limit; positivity at the
+origin alone does not imply it. Assume also the uniform two-wave output: for every
+combined family below, every color $c$, and every regulator $0<y\leq1$,
+the same constants $a,b\geq0$ give
+\[
+ |\kappa_{y,c}(x)|\leq a(|x|+y)^{-4},\qquad
+ |\kappa_{y,c}(x)-\Pi_{G,c}(x)|
+      \leq b|x|^{-3}+by^2|x|^{-6}\quad(y\leq|x|\leq1)
+ \tag{RY9}
+\]
+on the centered momentum box. This states the uniform local estimate
+needed from the next producer; it is not deduced from the finite-volume
+recording argument.
+
+\begin{theorem}[All-period recording and drift]
+\label{thm:ex-all-period-recording}
+Under these hypotheses, for every admissible path datum, every odd integer
+$L\geq1$, and every side sequence $\ell_j\to\infty$ there are a picture
+$\mathcal Y_L$, constants
+$z_L>0$, $K_L\geq0$, and numbers $e_{L,j}\geq0$ such that
+\[
+ \mathcal Y_L\in\mathcal H_{z_L/2}(K_L),\qquad
+ e_{L,j}=\mathfrak r(z_L,K_L)e^{-z_L\ell_j/4}\longrightarrow0,
+ \qquad
+ \operatorname{Err}_{\ell_j}(\mathcal Y_L,\mathcal P_{\ell_j};e_{L,j}),
+ \tag{RY10}
+\]
+and, for every color $c$,
+\[
+ \left|\alpha_c(\mathcal Y_L)+\lambda_G\log L\right|
+ \leq D_0,
+ \quad D_0=c_{\mathrm{wt}}\left[
+     a\left(\frac{\pi^2}{2}+|E_4|\right)+3\pi^2 b\right].
+ \tag{RY11}
+\]
+The constant $D_0$ is independent of $L$ and of the side sequence.
+\end{theorem}
+\begin{proof}
+Choose the baseline before the response family. Put $w=\min(k,v)>0$;
+restrict both fee bounds to $w$ and add the families, obtaining fee
+$(w,M+E)$. Now fix $L$ and set
+\[
+ y=L^{-1},\qquad
+ s=\min\{\sigma,w,y/128\}>0.
+ \tag{RY5}
+\]
+Then $0<y\leq1$, and $s\leq y/128$ is the phase condition in the local
+determinant-floor estimate. At every $\ell_j$, the response ticket matches
+the target minus the Wilson term, while the baseline ticket matches the
+Wilson term. Adding their zero-, one-, and two-leg Taylor identities gives
+the target ticket. The finite determinant formula (RY8) turns this into
+the exact local coefficient identity (RY3), and the floor and positive
+regulator bounds ensure both determinants are nonzero at zero. The all-grade
+floors and metric assumptions identify the regulated interacting table
+with the tested local determinant table; the reference table is identified
+by its explicit regulator formula. These are the two tab identities
+required by the local positivity/floor argument at scale $s$. The exact
+finite-layer and common-strip receipt in the hypotheses supplies
+$z_L>0$, $K_L\geq0$ and the common analytic two-momentum kernel in
+$\mathcal H_{z_L}(K_L)$. Applying
+Lemma~\ref{lem:ex-pole-recording} yields
+\[
+ e_{L,j}=\mathfrak r(z_L,K_L)e^{-z_L\ell_j/4},\qquad
+ \operatorname{Err}_{\ell_j}(\mathcal Y_L,\mathcal P_{\ell_j};e_{L,j}).
+ \tag{RY12}
+\]
+The positive $z_L$ and $\ell_j\to\infty$ imply $e_{L,j}\to0$ for this
+fixed $L$. No uniformity of $z_L,K_L$ in $L$ is required or asserted.
+
+The same response satisfies (RY9), uniformly in color $c$, at regulator
+$y$. The coefficient-integral identity (AT1) identifies
+$\alpha_c(\mathcal Y_L)$ with the normalized integral of
+$\operatorname{Re}\kappa_{y,c}$. The radial calculation in the preceding
+section then gives the estimate, with the same $D_0$ for every color.
+(RY11): $\log y^{-1}=\log L$, while $a,b$ were fixed uniformly before
+choosing $L$. Taking $L_{\min}=1$ supplies the all-odd-side clause needed by the
+outer construction; oddness is not otherwise used in this estimate.
+\end{proof}
+
+\paragraph{Scope.}
+This proves the finite Fourier tail, the exact conversion of local
+coefficient identities into a site-count-scaled recording error, and the
+downstream assembly from the stated baseline, response-service,
+local-positivity/floor, and uniform two-wave outputs. It does not reprove the local
+stationary-family producers of the all-centered and shell bounds, nor the
+general path-history service that supplies the response family. Those are
+the remaining analytic inputs recorded in the companion evidence. No
+finite-volume coefficient is identified with the continuum integral
+without first passing through (RY12).

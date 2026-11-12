@@ -1,0 +1,52 @@
+\section{Producing the occupied, migrating, separated sites}\label{ex-centered-site-geometry}
+
+The mode-moment receipt needs a site assignment at its opened scale: it must have bounded occupancy, agree with its descendants under every selected coarse-graining map, and keep distinct names in every nontrivial mode far apart. On the public root-test route, one finite copy of the opened lattice supplies all three properties. This section proves that geometric production from the selected tab-opening schedule.
+
+Let $m\leq k\leq N$ be levels in one selected history and fix a period $p$. Put $V=\Lambda_m$ for the finite site set at level $m$. Write $a_j$ for the physical lattice spacing at level $j$, $L_j=a_j/a_{j+1}\in\mathbb N$ for the exact adjacent ratio, and $B_j$ for the schedule's covering radius. Write $n_j$ for the integer side of the periodic lattice $\Lambda_j$, so an aligned embedding with ratio $q_j=a_m/a_j$ has $n_j=q_jn_m$. The selected tab schedule gives
+\[
+ L_j\geq3,\qquad B_{j+1}^2\leq2B_j^2,
+ \qquad B_k^2\leq a_m/a_k
+\]
+when the root level $m$ is opened at $k$ with parameter one. At every level $j\geq m$, define
+\[
+ o_j(x)=\operatorname{embed}_{m\to j}(x),\qquad x\in V,
+\]
+using the canonical aligned lattice embedding, and put $o_j(x)=0$ below $m$. Let $B_j$ be the schedule's separation radius at level $j$; for the selected Wilson history this is also the radius of the local configuration there.
+
+\begin{lemma}[Opened-copy geometry]\label{lem:ex-centered-opened-copy}
+Assume the selected family identifies the represented field radius with $B_j$, and the schedule bounds just stated hold. Then the opened-copy assignment has the following properties for $k\leq j\leq N$:
+\begin{enumerate}
+\item $o_j:V\to\Lambda_j$ is injective, and hence has occupancy at most one.
+\item For each $k\leq j<N$, the parent of $o_{j+1}(x)$ is $o_j(x)$.
+\item For distinct $x,y\in V$, $\operatorname{sep}(o_j(x),o_j(y))\geq B_j^2$.
+\item At the terminal level, the root copy map sends each $x\in V$ to $o_N(x)$.
+\end{enumerate}
+Consequently, if an occupancy schedule $r_j$ obeys $1\leq r_j$, the assignment is migrating, has occupancy at most $r_k$ at scale $k$, and satisfies the separated-origin condition for every census mode whose distinct names are drawn from $V$.
+\end{lemma}
+
+\begin{proof}
+The opening condition gives $B_k^2\leq a_m/a_k$. We propagate this to every later $j$. If $B_j^2\leq a_m/a_j$, then
+\[
+ B_{j+1}^2\leq2B_j^2\leq2\frac{a_m}{a_j}
+ \leq L_j\frac{a_m}{a_j}=\frac{a_m}{a_{j+1}},
+\]
+because $L_j\geq3$. Thus $a_m/a_j\geq B_j^2$ for all $j\geq k$. The level-$m$ to level-$j$ ratio $q_j=a_m/a_j$ is an integer, by multiplication of the adjacent integer ratios.
+
+For sites on the periodic lattice $\Lambda_m$, define separation as the maximum over coordinates of the shortest periodic distance, namely
+\[
+ \operatorname{sep}(x,y)=\max_\alpha\min_{r\in\mathbb Z}
+      |\widetilde x_\alpha-\widetilde y_\alpha+r n_m|.
+\]
+Here $\widetilde x,\widetilde y$ are any integer lifts of the periodic sites; the minimum does not depend on the chosen lifts. Choose in each coordinate a centered integer representative of the difference. Under the aligned ratio embedding of factor $q_j$, each such representative is multiplied by $q_j$ and remains centered modulo the new periodic side $n_j=q_jn_m$, including the half-side tie case. Hence
+\[
+ \operatorname{sep}(o_j(x),o_j(y))=q_j\operatorname{sep}(x,y).
+\]
+Distinct $x,y$ in the level-$m$ lattice have integer separation at least one. Therefore
+\[
+ \operatorname{sep}(o_j(x),o_j(y))
+ =q_j\operatorname{sep}(x,y)\geq q_j\geq B_j^2.
+\]
+In particular they are distinct; this proves injectivity and occupancy at most one. The exact ratio-composition identity for canonical embeddings identifies the parent of $o_{j+1}(x)$ with $o_j(x)$. By the definition of the opened root cell, its terminal copy map is precisely the canonical embedding $o_N$. Finally, $1\leq r_k$ upgrades occupancy one to the requested bound, while the separation estimate is exactly the required bound for every pair of distinct names in any nontrivial mode.
+\end{proof}
+
+For the selected root test, take its finite root set as $V$. Lemma~\ref{lem:ex-centered-opened-copy} gives the migration, occupancy, and separated-origin inputs used by the finite-volume moment receipt. It gives these inputs for the same selected period, stop level, and schedule; it does not choose new sites independently at each scale. The estimate does not supply the weights or the response budget, which remain separate selected-history inputs.

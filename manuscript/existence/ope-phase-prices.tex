@@ -1,0 +1,264 @@
+\section{Centered bounds, phase prices, and matched discrepancies}
+\label{sec:ope-phase-prices}
+The raw OPE estimates must hold in every character phase, including phases
+of zero measure for the original mixture. An estimate of the mixed-state
+expectation alone does not give this. We prove the required transfer by
+bounding all even moments of a compressed whole-word operator. The cutoff
+argument keeps a matched discrepancy as a single observable throughout;
+it never replaces its small price by separate prices for its two terms.
+
+We use the finite-volume planted inequality and the change-of-cell root
+estimate established in Section~\ref{ex-centered-estimates}. In the latter,
+a centered observable whose root norm is at most $B$ can be moved, with
+the corresponding reflection or conjugation, into a coarser cell at a
+margin of three of its original cell spans, still with root norm at most
+$B$. The proof uses the entire reflected copy orbit and coordinatewise
+log convexity. These statements apply to any observable satisfying the
+centered interior and root conditions, including a difference of two
+observables.
+
+\subsection{A mixed two-scale chessboard estimate}
+Let $W_0,W$ be aligned link tilings of a finite torus, with the side of
+$W_0$ dividing that of $W$. Write $\mathcal R_W$ for the root norm.
+Suppose fine-group observables $F_j$ have centered prices $A_j\geq0$
+at a span dividing the side of $W_0$, and their positions $u_j$ lie in
+the required three-span margins of $W_0$. Suppose further that
+\[
+ \operatorname{dist}_\infty(u_j,u_{j'})>\operatorname{side}(W_0)
+                  \quad(j\ne j').
+\]
+For one fixed cell $C$ of $W$, collect the fine-group observables lying
+in $C$. Their product is a copy in $C$ of an interior observable $Z_C$,
+and
+\begin{equation}\label{eq:ope-exterior-root}
+ \mathcal R_W(Z_C)\leq\prod_{u_j\in C}A_j.
+\end{equation}
+Indeed pull each factor back to the home cell of $W$, with the reflection
+and conjugation determined by $C$. Now copy this product into every cell
+of $W$. The copied positions still lie in the corresponding fine-tiling
+margins, since the tilings are aligned and their sides divide. They occupy
+distinct cells of $W_0$. Points copied into different cells of $W$ cannot
+share a fine cell; within one coarse cell, reflection preserves distances,
+and the displayed separation prevents sharing a fine cell. The planted
+inequality on $W_0$ therefore bounds the full copied-product expectation
+by
+\[
+ \left(\prod_{u_j\in C}A_j\right)^{\#\mathrm{Cell}(W)}.
+\]
+Taking the defining root proves \eqref{eq:ope-exterior-root}. Interiority
+of the home product follows by multiplying interior factors.
+
+Let a second group $G_i$ have centered prices $B_i\geq0$ at spans dividing
+the side of $W$, with positions $v_i$ in the corresponding margins of $W$.
+Assume their mutual distances, and their distances to all $u_j$, exceed
+$\operatorname{side}(W)$. The $G_i$ then occupy distinct coarse cells,
+and none of those cells contains an $F_j$. Apply the planted inequality
+on $W$ to the individual $G_i$ and the products $Z_C$. This gives
+\begin{equation}\label{eq:ope-mixed-plant}
+ \left|\mathbb E\left[\prod_iG_i(\cdot+v_i)
+                         \prod_jF_j(\cdot+u_j)\right]\right|
+                   \leq\prod_iB_i\prod_jA_j.
+\end{equation}
+Grouping by cells loses no factors: the disjoint groups of indices
+$\{j:u_j\in C\}$ partition the fine-group list. Empty groups contribute
+one.
+
+Here are sufficient geometric conditions for placing both groups.
+Use depths $b\leq f\leq l\leq n$ and $f\leq q$. The coarse tiling is
+at depth $b$, the fine tiling at depth $l$, the centered prices for the
+coarse group at depth $q$, and those for the fine group at depth $n$.
+If the group sizes are $I_0,J_0$ and
+\begin{equation}\label{eq:ope-two-scale-room}
+ 10I_0a_f<a_b,\qquad 6J_0a_n<a_l,
+\end{equation}
+there is a common origin for both tilings placing all coarse-group points
+at margin $3a_q$ and all fine-group points at margin $3a_n$.
+To prove this, first choose the coarse origin coordinate by coordinate.
+For each point, origins giving distance less than $5a_f$ from a cell
+boundary occupy an interval of length at most $10a_f$ in the circle of
+possible origins modulo $a_b$. The first inequality leaves an allowed
+origin. Next choose the fine origin modulo $a_l$ avoiding the intervals
+of total length at most $6J_0a_n$ forbidden by the fine-group points.
+It can be reached from the chosen coarse origin by a shift of coordinate
+size at most $a_l\leq a_f$. This shift decreases the coarse margins by
+at most $2a_f$ even with the endpoint conventions for link cells, leaving
+$3a_f\geq3a_q$. On the finite lattice, if a cell side is $B$ and the desired integer
+margin is $r$, a point forbids the stripe residues
+$0,\ldots,r-1$ and $B-r,\ldots,B-1$: at most $2r$ residues
+of the origin modulo $B$. Summing over the points leaves a permitted
+origin whenever their total count is less than $B$. Multiplying
+\eqref{eq:ope-two-scale-room} by $a_N^{-1}$ gives precisely these
+strict inequalities, first with margin $5a_f/a_N$, then with margin
+$3a_n/a_N$. To attain the permitted fine origin, choose a common lattice
+shift with $0\leq s_\mu< a_l/a_N$ in each coordinate. The coarse
+$5a_f/a_N$ margin loses at most $2a_f/a_N$, leaving the required three
+spans. Nested mesh divisibility makes all sides and margins integers.
+
+A Euclidean separation greater than $2a_b$ implies a maximum-coordinate
+separation greater than $a_b$ in four dimensions; likewise for $a_l$.
+For fixed physical grid points these inequalities persist on the periodic
+lattice for all sufficiently large periods: their finitely many coordinate
+differences then do not wrap. They persist at all finer cutoffs by the
+exact mesh embedding. Thus Euclidean separation at $2a_b$ within and
+across the coarse group, and at $2a_l$ within the fine group, suffices
+for \eqref{eq:ope-mixed-plant} on the ordered cutoff tail.
+
+\subsection{Even replicas and the norm in the ground algebra}
+Let $Z$ be a finite linear combination of products of local fields, at
+fixed coordinate-generic grid configurations. Write $A\in\mathcal A$
+for the same linear combination of their compressed whole-word
+operators. The cutoff version $Z_{N,p}$ may use labels converging in their
+fixed finite-dimensional label spaces along a nontrivial refinement of
+the ordered cutoff limit.
+
+Suppose each cutoff $Z_{N,p}$ factors as the product of two groups as in
+\eqref{eq:ope-mixed-plant}, with the same centered price bounds and
+geometry. The statement includes a group consisting of a single
+matched discrepancy. Set $C=\prod_iB_i\prod_jA_j$. For each $m\geq1$,
+translate $2m$ copies of $Z_{N,p}$ by the even coarse-cell displacements
+\[
+ d_j(t)=2tj\,a_b(1,1,1,1),\qquad t\in\mathbb N,\quad 0\leq j<2m,
+\]
+conjugating the copies with even $j$. These translations preserve all
+tilings' margins, because they are multiples of the coarse cell side,
+and this side is a multiple of the fine side. For fixed $m$, copies at
+distinct indices become separated in every coordinate as $t\to\infty$.
+For each sufficiently large fixed $t$, take the period large enough to
+avoid wrapping, and then the cutoff fine enough to use all the centered
+prices. Applying \eqref{eq:ope-mixed-plant} to the replicated lists gives
+\begin{equation}\label{eq:ope-replica-price}
+ \left|\mathbb E_{N,p}\prod_{j=0}^{2m-1}
+       \begin{cases}\overline{Z_{N,p}(\cdot+d_j(t))},&j\text{ even},\\
+                       Z_{N,p}(\cdot+d_j(t)),&j\text{ odd}
+       \end{cases}\right|\leq C^{2m}.
+\end{equation}
+Only the two original arities occur in \eqref{eq:ope-two-scale-room}.
+Once an origin works for one copy, it works for all its even-cell
+translates. The period and the translation threshold may depend on $m$;
+the bound $C$ does not.
+
+Expand the finite polynomial in \eqref{eq:ope-replica-price} and first
+pass to the ordered cutoff limit at fixed $t$. For sufficiently large
+$t$ each expanded word is coordinate-generic, so the point-limit theorem
+applies. Converging labels cause no extra difficulty: in a fixed basis
+a multilinear correlation is a finite sum of basis correlations times
+products of label coordinates. The basis correlations converge and the
+coordinates converge, proving convergence of each term. This also works
+on any finer nontrivial cutoff filter. It does not assume that the moving
+labels have separate limits in the two cutoff indices.
+
+Next let $t\to\infty$. The separated-cluster limit of
+Lemma~\ref{ex-cluster-train}, together with conjugation becoming adjoint
+under ground compression, identifies the limit as
+\[
+ \langle\Omega,(A^*A)^m\Omega\rangle.
+\]
+For a linear combination this follows by expanding the ordered product;
+its alternating factors are exactly $A^*,A,\ldots,A^*,A$. Thus
+\[
+ \int_\Xi|\chi(A)|^{2m}\,d\mu(\chi)\leq C^{2m}
+                  \quad(m\geq1).
+\]
+Full support of $\mu$ now gives $|\chi(A)|\leq C$ for every character.
+If one value exceeded $C$, continuity would give an open set of positive
+measure on which it exceeded some $C'>C$. Then
+$\mu(O)(C')^{2m}\leq C^{2m}$ for every $m$, a contradiction. The same
+argument covers $C=0$. The isometric Gelfand transform consequently gives
+\begin{equation}\label{eq:ope-ground-price}
+ \|A\|\leq C.
+\end{equation}
+Both every character evaluation and the mixed-state functional have norm
+one, so the same bound holds for their evaluations of $A$.
+
+\subsection{Removing coordinate ties}
+To extend \eqref{eq:ope-ground-price} to arbitrary separated
+configurations, first approximate all their points by the generic grids
+of \eqref{eq:ope-grid-round}. Strict Euclidean separations persist.
+For each fixed character, its correlation is continuous on separated
+configurations, so the generic bound passes to the limit. Taking the
+supremum over characters then proves the ground-algebra norm bound at
+the original configuration. This uses scalar continuity in each phase,
+not norm continuity of the ground-algebra-valued correlation.
+
+For a matched discrepancy whose cluster is already fixed and generic,
+only the spectator positions are approximated. They must remain
+coordinate-generic relative to both that cluster and the origin. Here is
+the required extension of the grid construction. Let $W$ be the finite
+set consisting of the cluster points and the origin, $J_0$ the number of
+spectators, and $K=(J_0+1)(|W|+1)$. In each coordinate choose for spectator
+$j$ a residue from the block
+\[
+ \{j(|W|+1),\ldots,j(|W|+1)+|W|\}
+\]
+which avoids the residues $\lfloor w_\mu/h\rfloor\bmod K$ for $w\in W$.
+There are $|W|+1$ candidates and at most $|W|$ forbidden residues. The
+blocks are disjoint, so the chosen residues distinguish all spectators.
+Adding the chosen residue to
+$K\lfloor y_{j,\mu}/(hK)\rfloor$ gives a grid point within $hK$ in
+each coordinate, and it cannot equal any $w_\mu$. Thus these spectator
+grids converge and retain all required coordinate inequalities. If the
+new grid is finer than the fixed cluster grid, reexpress the cluster
+points on it by the integer mesh ratio; their physical positions and
+cutoff observables are unchanged. Apply the preceding replica argument
+on that common grid, then take the spectator approximation limit in
+each phase. This proves the complete-discrepancy bound at arbitrary
+separated spectator configurations.
+
+\subsection{Engineering rates from centered prices}
+We now use the centered estimate in its full quantifier order: for a
+fixed degree $d$, bounded set of labels and every $\epsilon>0$, one
+constant controls the centered root price at all depths after the
+reference depth, with an eventual cutoff tail uniform in period and
+those labels. In particular a fixed field of degree $d_i$ has a price
+\[
+ B_i(k)=(1+C_i)a_k^{-d_i-\epsilon}+1
+\]
+for a suitable $C_i\geq0$. If $s_{k_n}/t_n\to u\geq0$, this positive
+price has logarithmic rate $(d_i+\epsilon)u$. For a finite group the
+product therefore has rate $(\sum_i d_i+\epsilon\#I)u$.
+
+More generally, suppose two groups have mutual separations at upper
+scales $0\leq a\leq b$, and cross separation at scale $a$. This means that
+for every positive slack the corresponding distances eventually exceed
+$e^{-(a+\delta)t_n}$ or $e^{-(b+\delta)t_n}$. Choose mesh depths of
+logarithmic rates
+\[
+ a+\delta/3,\quad a+\delta/2,\quad a+\delta,
+ \quad b+3\delta/4,\quad b+\delta
+\]
+for the coarse placement, buffer, coarse-group price, fine placement,
+and fine-group price respectively. The inequalities of the rates imply
+all depth orderings and \eqref{eq:ope-two-scale-room} eventually. The
+separation assumptions imply the required strict gaps at the placement
+meshes. The bounds just proved yield ground-algebra upper rate
+\[
+ (w_1+\epsilon I_0)(a+\delta)
+                  +(w_2+\epsilon J_0)(b+\delta).
+\]
+Let $\epsilon,\delta\downarrow0$ by allocating half of any desired
+rate slack to these choices and half to the eventual estimate. The
+result is the upper rate $w_1a+w_2b$, uniformly along every sequence of
+phases, because the ground-algebra norm controls them all.
+
+For the OPE, take the fixed-clearance spectators as the first group
+($a=0$) and the scale-$x$ cluster as the second ($b=x$).
+Their cross clearance is fixed for all sufficiently large indices.
+This proves the rough rate $xw(p)$ used in Section~\ref{sec:ope-grid}.
+Taking every group at scale zero proves rate zero for the fixed
+single-field spectator insertion in Input~\ref{input:ope-raw-estimates}.
+
+Finally suppose a cutoff matched discrepancy is centered and priced by
+$A_n$ at a depth of logarithmic rate $b>0$, and its coefficient label
+converges along a refinement of the same ordered cutoff limit. Assume
+$A_n$ has upper rate $\gamma$. Choose, for any small $0<\delta<b$,
+placement, buffer, fine-placement and spectator-price depths of rates
+$\delta/4,\delta/2,3\delta/4,\delta$. The centered discrepancy price
+at rate $b$ fits this geometry. Equation~\eqref{eq:ope-ground-price}
+and the spectator approximation give upper rate at most
+$\gamma+(w_2+\epsilon J_0)\delta$ for the entire discrepancy, in every
+phase and at arbitrary fixed-clearance spectator positions. Sending
+$\delta\downarrow0$ proves rate $\gamma$. Thus the finite-cutoff match
+supplies exactly the complete-discrepancy part of
+Input~\ref{input:ope-match}, once its price and convergent label are
+constructed. Neither this transfer nor the even-moment argument creates
+that finite-cutoff match.

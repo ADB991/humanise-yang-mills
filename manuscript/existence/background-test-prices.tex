@@ -1,0 +1,234 @@
+\section{Sharpening the finite-test prices}
+\label{sec:background-test-prices}
+The real parameter tests of Section~\ref{sec:background-ray-estimates}
+need small prices on one fixed parameter interval. The local expansion
+first provides a bound on a growing interval and a better pointwise
+bound. A finite polynomial interpolation combines these two estimates.
+We give the interpolation and its numerical purchase, keeping the
+underlying wide-interval analytic estimate visible.
+
+\subsection{A finite interpolation estimate}
+Let $\mathcal E$ be a vector space of families on a fixed support
+dictionary, with a nonnegative budget $\mathcal N$ satisfying the
+triangle inequality and absolute homogeneity. A budget defined as
+an infimum over admissible summable majorants has these properties:
+add or scale the majorants and then take their infima. The argument
+below equally applies by retaining the majorants themselves.
+For a finite real signed measure $\lambda$ on $[-1,1]$, set
+\[
+ M_r(\lambda)=\sup_{n\ge0}\left|\int(t/r)^n\,d\lambda(t)\right|,
+                    \qquad r\ge1.
+\]
+Let $F:[-1,1]\to\mathcal E$. Suppose
+\[
+ \mathcal N\left(\int F\,d\lambda\right)\le B M_v(\lambda),
+ \qquad \mathcal N(F(t))\le b\quad(-1\le t\le1),
+\]
+where $1\le q\le v$ and $b,B\ge0$. The integrals here are finite
+linear combinations; no measurability of $F$ is required.
+For each integer $k\ge0$, a constant $U=U(k,q)\ge0$, independent
+of the family, its dictionary and its volume, gives
+\begin{equation}\label{eq:background-sharp-test}
+ \mathcal N\left(\int F\,d\lambda\right)
+ \le M_q(\lambda)\left\{Ub+(1+U)(q/v)^{k+1}B\right\}.
+\end{equation}
+
+Choose the $k+1$ distinct points $t_i=i/(k+1)$, $0\le i\le k$,
+and their Lagrange polynomials $\ell_i$ of degree at most $k$.
+Write $\ell_i(t)=\sum_{j=0}^kc_{ij}t^j$ and put
+\[
+                    U_i=\sum_{j=0}^k|c_{ij}|q^j,
+                    \qquad U=\sum_{i=0}^kU_i.
+\]
+For $\eta=M_q(\lambda)$, we have
+$|\int\ell_i\,d\lambda|\le\eta U_i$. Define
+\[
+              \Pi\lambda=\sum_{i=0}^k
+                         \left(\int\ell_i\,d\lambda\right)\delta_{t_i}.
+\]
+Lagrange interpolation of each polynomial of degree at most $k$
+gives $\int t^j\,d(\lambda-\Pi\lambda)=0$ for $j\le k$.
+For $j>k$, use $|t_i/q|\le1$ to get
+\[
+ \left|\int(t/q)^j\,d(\lambda-\Pi\lambda)\right|
+          \le\eta+\sum_i\left|\int\ell_i\,d\lambda\right|
+          \le\eta(1+U).
+\]
+Since $q/v\le1$, multiplication by $(q/v)^j$ proves
+\[
+ M_v(\lambda-\Pi\lambda)\le\eta(1+U)(q/v)^{k+1}.
+\]
+The pointwise price and the triangle inequality give
+$\mathcal N(\int F\,d\Pi\lambda)\le\eta Ub$.
+Adding this to the wide-interval bound on $\lambda-\Pi\lambda$
+proves \eqref{eq:background-sharp-test}. Thus the same constant
+works for the full regular derivative budget, including all its
+site sums; no count of dictionary entries enters the estimate.
+
+\subsection{The fixed-radius price at large coupling}
+Fix the stage and block length, and put $y=x+a$, where $a>0$
+is the fixed reference coupling increment. The broad analytic
+estimate to be sharpened has radius and price
+\[
+                 v(x)=\tfrac12 y^{1/256},\qquad B(x)=y^{-1/4}.
+\]
+The local pointwise price has the form
+\[
+             b(x)=3t C_{\rm st}x^{-11/10}+R(x),
+\]
+where $t>0$ is a small response parameter and $C_{\rm st}>0$
+is the fixed stage conversion constant. The remainder $R$ has
+upper exponent at most $-23/20$: concretely, for every
+$\epsilon>0$, $|R(x)|\le C_\epsilon y^{-23/20+\epsilon}$
+eventually. This estimate comprises the local comparison and
+truncation errors; it is separate from the broad analytic bound.
+
+Fix $q\ge2$ and $s>0$, take $k=300$ in
+\eqref{eq:background-sharp-test}, and choose $t$ small enough that
+$6Ut\le s$. The leading pointwise contribution is at most
+$(s/2)C_{\rm st}x^{-11/10}$. The other part of the bound is
+\[
+ UR(x)+(1+U)(2q)^{301}y^{-301/256-1/4}.
+\]
+Its upper exponent is at most $-23/20$, because
+$301/256+1/4=365/256>23/20$. Since $23/20>11/10$
+and $y/x\to1$, that expression is eventually bounded above by
+$(s/2)C_{\rm st}x^{-11/10}$. Hence the fixed-radius test price is
+\begin{equation}\label{eq:background-pre-reset-price}
+                         sC_{\rm st}x^{-11/10}.
+\end{equation}
+There is no requirement that $U$ be small. It depends only on
+$300$ and $q$; the response parameter is chosen after it, and the
+coupling threshold after all those choices. For example
+$t\le s/[6(1+U)]$ always suffices. Since $v(x)\to\infty$,
+the condition $q\le v(x)$ also holds beyond that threshold.
+
+\subsection{The reset and the final regular price}
+The reset and local Taylor subtraction are linear in the raw
+logarithmic family and in its extracted coupling coefficient.
+On a fixed stage, the exact regular output price has the form
+\begin{equation}\label{eq:background-regular-price}
+                   C_0 H+C_1|\alpha|\theta(x)^3,
+\end{equation}
+where $C_0,C_1\ge0$ are independent of the coupling, period and
+input family, $H$ is the raw test price, and
+$\theta(x)=x^{-1/2}\exp((\log\log x)^2)$ is the fluctuation
+threshold. The two constants collect respectively the reset,
+low-path and high-path derivative prices, and the high-path
+remainder. This is the same local subtraction estimate used in
+the nonlinear transition, applied to a finite linear combination
+before taking its majorant.
+
+The stage conversion constant is selected as
+\[
+                 C_{\rm st}=\frac1{64(1+C_0)}.
+\]
+It is positive and satisfies both $C_{\rm st}\le1/64$ and
+$C_0C_{\rm st}\le1/64$. Fix $d>0$, take $0<s\le d$ in
+\eqref{eq:background-pre-reset-price}, and retain the fixed
+bound $|\alpha|\le A$. The first term of
+\eqref{eq:background-regular-price} is at most
+$(d/64)x^{-11/10}$. The second is $o(x^{-11/10})$, since
+\[
+ \frac{\theta(x)^3}{x^{-11/10}}
+          =x^{-2/5}\exp(3(\log\log x)^2)\longrightarrow0.
+\]
+Increasing the coupling threshold therefore gives regular
+output price at most $d x^{-11/10}$.
+
+This remains a finite-test statement. If the moment bound of
+the finite test is $\eta$, the raw price is $\eta H$, the
+constant path correction becomes the same finite combination
+of $\alpha$, and its modulus is at most $\eta A$ by the zeroth
+moment test. The linear reset and the triangle inequality thus
+multiply \eqref{eq:background-regular-price} by $\eta$.
+Dividing by the positive regular normalization gives the regular
+part of \eqref{eq:background-ray-tests}.
+The scalar coupling coefficient is a bounded linear projection
+of the raw family, with price $H/\theta(x)^2$. Consequently its
+finite-test price is exactly the scalar allowance
+$f_m=sC_{\rm st}x^{-11/10}/\theta(x)^2$ used there.
+
+\subsection{The forced price and the remaining analytic input}
+A finite-test bound alone may choose its majorant after the test,
+so recovery of a power series for each value separately does not yet
+produce one common support majorant. We supply that step. Let $S_i$
+be the countable list of nonempty supports and let $e\ge0$ be the
+cover exponent. Suppose that for every finite test $\lambda$ there
+are numbers $k_\lambda(i)\ge0$ such that
+\[
+ \begin{gathered}
+ \left|\int F(t,i,U)\,d\lambda(t)\right|\le k_\lambda(i)
+ \quad\hbox{for every configuration }U,\\
+ \sum_{i:z\in S_i}k_\lambda(i)e^{e C(S_i)}
+                         \le B M_q(\lambda)
+ \quad\hbox{at every root }z.
+ \end{gathered}
+\]
+Here $C(S_i)$ is the cover number. Nonemptiness and $e\ge0$
+imply $k_\lambda(i)\le B M_q(\lambda)$ for each $i$.
+For each entry and configuration, the closed-span argument of
+Section~\ref{sec:background-ray-estimates} therefore extends
+finite-test evaluation to a bounded functional $T_{i,U}$ on the
+closed span of the moment vectors $v(t)=((t/q)^n)_n$.
+
+Fix $n$. Choose finite tests $\lambda_j$ whose moment vectors
+$v(\lambda_j)$ converge in sup norm to $e_n$; these approximants
+exist by the coordinate-vector construction above. In particular
+$M_q(\lambda_j)\to1$. Choose their majorants $k_j$ as in the
+hypothesis. Their coordinates lie in one common bounded interval.
+A diagonal subsequence on the countable indices $i$ gives
+$k_j(i)\to b_{n,i}\ge0$. For each finite set of indices and
+root $z$, pass to the limit in its weighted sum. Taking the
+supremum over finite sets yields
+\[
+                 \sum_{i:z\in S_i}b_{n,i}e^{e C(S_i)}\le B.
+\]
+Also $|T_{i,U}e_n|\le b_{n,i}$, by continuity of $T_{i,U}$.
+This last conclusion holds for every $U$ on the same subsequence:
+the chosen majorants bounded all configurations from the start,
+and convergence of the moment vectors is independent of $U$.
+No subsequence indexed by configurations is selected.
+
+For $1\le r<q$, put
+\[
+             K_i=\sum_{n\ge0}(r/q)^n b_{n,i}.
+\]
+The bounds $b_{n,i}\le B$ make each series finite. Tonelli's
+theorem for the nonnegative weighted series gives
+\[
+                 \sum_{i:z\in S_i}K_i e^{e C(S_i)}
+                              \le\frac{B}{1-r/q}.
+\]
+The coefficients $(r/q)^nT_{i,U}e_n$ have total absolute sum
+at most $K_i$ and reconstruct $F(t,i,U)$ as a series in $t/r$.
+Thus one common support majorant works for every configuration.
+Applied to the soft correction from the linear reset with
+$r=q/2$, this proves the required factor-two price and radius loss.
+
+The compatible
+finite-subset products preserve absolute coefficient summability:
+their coefficients obey convolution, and the sum of coefficient
+norms of a product is bounded by the product of the corresponding
+sums. The proof is Tonelli's theorem for the nonnegative coefficient
+majorants. Thus the forced absorption argument of
+Section~\ref{sec:nonlinear-payment-selection} applies also to
+these parameter coefficient prices, with the same enlarged
+support reserve and the same scalar parameter $\kappa$.
+It gives a forced output price at most $d$ times the prescribed
+forced normalization after increasing the entry threshold.
+The test inequality follows by applying each finite moment test
+to the absolutely summable coefficient series. This supplies the
+forced clause of \eqref{eq:background-ray-tests} whenever the
+broad ordinary and forced analytic estimates have been supplied.
+
+The broad estimates used in this section are substantive: the
+ordinary raw logarithmic family must have radius $y^{1/256}/2$
+and price $y^{-1/4}$ in the full derivative budget, and the raw
+forced family must have its common coefficient majorant at the
+paid broad radius. The pointwise remainder $R$ must have the
+stated upper exponent. The interpolation and reset estimates
+above do not themselves prove those statements. They explain
+exactly how those local analytic estimates, once obtained for
+the same transition and parameter line, give the small prices
+needed by the coupled history argument.

@@ -1,0 +1,243 @@
+% Selected-scale charts and the public gallery handoff.
+\section{From funded chart receipts to a trace gallery}
+\label{sec:ex-lattice-firesky-gallery}
+
+This section records the actual selected-run route from one-scale chart data
+to the scale-dependent charts used by the trace calibration. The analytic
+chart receipts are provided by the funded construction and are identified
+below. We prove the subsequent scale selection and finite-dimensional limit
+steps explicitly. The correction and Ward-flux calculations are in
+Section~\ref{sec:ex-lattice-trace-producer}.
+
+\subsection{The funded chart family and its one-step output}
+
+Fix a grade $d$, a binding, a gauge-invariant chart budget, and a scale
+parameter $z\geq0$. The funded chart receipt consists of three panels
+$P(t,i)$, $i=0,1,2$, for $0\leq t\leq1$, with arc coordinates $b_i+t$.
+Their currency and angular parameters are constant in $t$, and the three
+base arcs obey the finite separation inequalities for the probe count at
+grade $d$. At every sufficiently large level $k$ and every $t\in[0,1]$,
+the receipt supplies a finite-volume chart witness at that level and
+offset. The other fields of this witness are the chart, invoice,
+legacy-cost, actuation, and stamp data used by the quantitative chart
+estimate. The single offset changes only the three arc coordinates.
+
+The funded run constructs these panels from its paid multi-scale request.
+The request gives charts with a common added offset and fixed currency and
+angle. Forward chart estimates supply legacy costs at all large levels;
+the staging estimate at the common angle supplies simultaneous actuation
+and stamp receipts. Clipping the offset to $[0,1]$ preserves the arc lower
+bound, chart factor, currency, and angle. The resulting finite-level data
+are the hypotheses of the one-step chart theorem.
+
+That theorem also requires a simple gauge group, the funded chart-control
+estimate, a bound on the generator through grade $d$, an index $l$ with
+$l\leq\operatorname{trays}(d)$, a positive sequence tending to zero, and
+the selected extraction order, smooth table, point limits, and reference
+hierarchy used by the station construction.
+It returns a strictly increasing level curve and, at a selected point,
+data $(k,i,b,c,R)$ such that the requested scale equals the exact clock
+gap at level $i$ and base arc $b$. Its chart has $5<b$ and $b$ no larger
+than the permitted angular bound, covers all reference grades through
+$d$, and supplies the finite-volume charts and invoices whenever $i<N$.
+It also supplies a pairwise comparison receipt at cost
+$\operatorname{costHint}(l)$ and a station whose lift has a finite norm
+bound, preserves the unit, real structure, and signed action, and obeys
+the short-test estimate for arity at most $l$, tests in the stated window,
+and error $\operatorname{costHint}(l)$. The proof of this quantitative
+upgrade is the separate three-panel chart result; this section uses that
+exact output and proves the scalar gap interpolation and recursion. In
+the gallery construction one takes $l=d$, so the chart cutoff, arity cap,
+and finite grade cutoff agree. The clock gives, for each fixed base arc
+$b\geq0$, a positive gap
+\begin{equation}\label{eq:ex-lattice-firesky-gap}
+ g_b(k)=a_k m_k^b,
+\end{equation}
+where $a_k>0$, $m_k\geq1$, $g_b(k)\to0$, and eventually
+$g_b(k)\leq g_{b+1}(k+1)$. These scale-gap facts are the input to the
+selection argument.
+
+\begin{lemma}[Clock-gap interpolation]
+\label{lem:ex-lattice-firesky-gap-interpolation}
+Fix $b\geq0$. Suppose $g_b(k)>0$, $g_b(k)\to0$, and
+$g_b(k)\leq g_{b+1}(k+1)$ for all $k\geq k_0$. For every $J\geq k_0$
+there is $r>0$ such that for each $0<s\leq r$ there are $k>J$ and
+$t\in[0,1]$ with $s=g_{b+t}(k)$.
+\end{lemma}
+\begin{proof}
+Take $r=g_b(J)>0$. Given $0<s\leq r$, choose the least $k>J$ with
+$g_b(k)\leq s$; it exists by convergence to zero. Minimality gives
+$s\leq g_b(k-1)$, and the one-step comparison at $k-1$ gives
+\[
+ g_b(k)\leq s\leq g_b(k-1)\leq g_{b+1}(k).
+\]
+The function $t\mapsto g_{b+t}(k)=a_km_k^{b+t}$ is continuous on
+$[0,1]$. The intermediate value theorem supplies the desired $t$.
+\end{proof}
+
+\subsection{Choosing scales and chart levels}
+
+\begin{lemma}[Strict scale selection]
+\label{lem:ex-lattice-firesky-selection}
+Assume the one-step chart producer has this output at every grade $d$: for
+every previous index $N$ and every $\theta>0$, it supplies an index $n>N$,
+a level $i\geq d$, and a grade-$d$ chart with exact radius $s_n<\theta$
+and the finite-level receipts above. Let $s_n>0$ and $s_n\to0$. Then
+there are strictly increasing indices $n_d$, levels $i_d\geq d$, and
+admissible charts at grade $d$ and level $i_d$, such that
+\[
+ s_{n_0}<1,\qquad s_{n_{d+1}}<s_{n_d},\qquad i_d\geq d.
+\]
+In particular $i_d\to\infty$ and the selected chart radius is exactly
+$s_{n_d}$.
+\end{lemma}
+\begin{proof}
+For $d=0$, apply the one-step output with previous index $0$ and threshold
+$1$. For $d>0$, apply it with previous index $n_{d-1}$ and threshold
+$s_{n_{d-1}}$. It gives $n_0>0$, $s_{n_0}<1$, and thereafter
+$n_d>n_{d-1}$, $s_{n_d}<s_{n_{d-1}}$, with a grade-$d$ chart at level
+$i_d\geq d$ and exact radius $s_{n_d}$. Induction proves the claims;
+$i_d\geq d$ implies $i_d\to\infty$.
+\end{proof}
+
+The one-step chart theorem obtains this output by combining the clock-gap
+interpolation with the funded chart family. Its quantitative comparison
+and station estimates are the three-panel weak-comparison result in
+Section~\ref{sec:three-panel-weak-comparison}; we use its conclusion here
+without duplicating those estimates.
+
+Here is the finite-level extraction used to pass from the charts to the
+limiting fields. Let $F$ be an extraction order, let $\mathcal U$ be an
+ultrafilter on period-phase pairs finer than the fused filter of $F$, and
+fix a cutoff $D$. Suppose $X_{N,p}$ is a tuple of linear maps, one for
+each grade $0,\ldots,D$, from the corresponding reference field into the
+common finite-period coefficient space. Assume $A\geq0$ and, on an
+$F$-late set,
+\[
+ \|X_{N,p}\|\leq A.
+ \tag{1}\label{eq:ex-lattice-firesky-lift-bound}
+\]
+The finite product of these map spaces is finite-dimensional. The closed
+ball of radius $A$ is compact. Compactness gives a proper subfilter limit
+of the bounded tuple of maps. This subfilter is finer than $\mathcal U$;
+ultrafilter maximality identifies it with $\mathcal U$. Thus the tuple
+converges along $\mathcal U$ to $Y=(Y_0,\ldots,Y_D)$. This is the only
+compactness step: it is finite-dimensional and is performed at each fixed
+cutoff.
+
+If the finite-level maps preserve the real involution and signed actions on
+the late set, continuity of those actions shows that each $Y_d$ preserves
+them. If they send the reference unit to the scalar unit eventually, the
+same limit identity gives $Y_d(1)=1$. Compose with the quotient projection
+to define the table map
+\[
+ U_d=\mathsf P_dY_d,\qquad 0\leq d\leq D.
+\]
+This order matters: the finite maps converge in the coefficient space, and
+the table-valued maps are obtained by applying the continuous projection
+after taking the limit.
+
+For a fixed tuple of $n$ labels of grades at most $D$, a fixed smooth test
+function supported in the allowed window, and $n$ no greater than the
+available arity cap, the finite-level receipt bounds the paid test error
+by $\epsilon$ times the label charge and the test supremum. To pass this
+estimate to the quotient table, use the ordered-moment limit rather than
+continuity of an integral whose finite-volume measure varies. For each
+fixed tuple of coefficient vectors, the ordered read receipt gives
+convergence of the corresponding finite-volume moment to the table moment.
+The moment is multilinear in its $n$ label vectors, and each label space is
+finite-dimensional. Expanding each moving vector in a fixed basis expresses
+the moment as a finite sum of products of convergent coordinates and
+convergent fixed-basis moments. Hence the moving-label moment converges to
+the table moment. This is the finite-basis multilinear limit argument; it
+uses the common ordered extraction and the fixed compactly supported test.
+The inequality passes to the limit
+because a closed interval is closed under limits. More explicitly, for
+each $\eta>0$ the late-set estimate is at most the claimed bound plus
+$\eta$; taking the limit and then letting $\eta\downarrow0$ removes the
+slack. This proves the cutoff-level short-test estimate with no exchange
+of an infinite sum and a limit. It is the same moment-passage mechanism as
+the calibrated-smearing lemma: fixed-vector convergence is supplied by the
+ordered table, and finite dimensionality handles the moving vectors.
+
+Apply this extraction separately at cutoff $D=d$ to the chart chosen at
+grade $d$ and level $i_d$. The chart receipt supplies a bound on its finite lifts,
+exact reality and signed covariance, the exact unit, and a short-test error
+for arity $n\leq d$ with coefficient $1/(d+1)$. Projecting the
+limits gives panels $U_d$. For every fixed finite label tuple, its grades
+are at most $d$ eventually along the sequence of cutoffs; the support of a
+fixed compact test fits the expanding chart window eventually; and
+$1/(d+1)\to0$. Write
+$\mathcal T_{r,U}(v;t)$ for the tested integral of the tuple $v$ under
+radius $r$, panel family $U$, and test function $t$. Write
+$\mathcal T_0(v;t)$ for the corresponding reference test value. Hence
+\[
+ \mathcal T_{s_{n_d},U_d}(v;t)-\mathcal T_{0}(v;t)
+ \longrightarrow0
+\]
+for every fixed tuple $v$ and test $t$. This is the tested approach property.
+The argument is for each fixed test; it does not assert a uniform tail over
+all tests or all label tuples.
+
+The final chart isomorphisms follow grade by grade. For a fixed grade $d$,
+the reference tests separate its finite-dimensional field: every nonzero
+vector has a nonzero separated two-point evaluation. To obtain a smooth
+test, keep the spectator insertion fixed and choose a separated pair where
+the complex value is nonzero. Multiply the spectator by a unit complex
+phase so that the real part of the value is positive. Continuity away from
+the diagonal gives a small neighborhood on which that real part remains
+positive. Integrating against a nonnegative smooth bump of integral one,
+supported in that neighborhood, gives a smooth smeared test with nonzero
+value. Thus smooth smeared reference tests also separate. Normalize to the
+unit sphere. For
+each point of that compact sphere, continuity gives a neighborhood on
+which one such test has absolute value at least half its value at the
+point. A finite subcover gives tests $t_1,\ldots,t_m$ and a constant
+$\alpha>0$ such that every unit vector has
+$\max_j|\mathcal T_0(v;t_j)|\geq\alpha$. The fixed finite set of
+label charges and test suprema is bounded on that sphere. The tested
+approach estimate therefore makes all corresponding errors less than
+$\alpha/2$ for sufficiently large $k$. If the projected grade map killed a
+unit vector, all its tested values would vanish, contradicting this lower
+bound. Thus it is injective. The dimension bound from the selected table gives the reverse
+dimension inequality; therefore the two dimensions agree and the map is
+bijective. This tail may depend on $d$: there is no single finite index
+after which every grade is simultaneously bijective. For the finitely many
+indices before the grade-$d$ tail, choose any isomorphism using the same
+dimension equality. This defines a scaling at every index. For each fixed
+grade, the unit, reality, and signed symmetry identities hold on its
+eventual isomorphism tail; the arbitrary isomorphisms used earlier need not
+preserve those identities. The reference test-separation input here is the
+all-grade free-detector result of
+Section~\ref{sec:ex-lattice-all-grade-free-detectors}; the separate
+low-grade trace calculation is not enough to justify separation in every
+grade. The reviewed corrected-lift argument in
+Section~\ref{sec:ex-lattice-trace-producer}
+provides the compatible panel maps when required by the trace family.
+
+\subsection{The gallery handoff}
+
+The preceding argument proves the scale-selection, finite-cutoff extraction,
+tested-approach, and fixed-grade eventual-isomorphism clauses. It does not
+by itself prove the complete gallery statement. That handoff also needs the
+physical-array receipts in the selected-run transfer. For the same
+ultrafilter, hierarchy, and scaling these include convergence of the
+recentered physical stress to its prescribed material tensor; for every
+comparison table, an eventual decomposition of its rescaled transformed
+energy tensor into the scalar unit and canonical stress direction, with the
+two scalar coefficients converging respectively to the prescribed stress
+coefficient and to zero; and convergence of the corresponding zoomed scalar
+observable to the prescribed multiple of the unit. The arbitrary-null-
+sequence case needs these same receipts after the selected scaling has
+been constructed above. They are additional physical and field-array
+estimates, not consequences of finite-dimensional compactness or of the
+rank-one solve alone. The correction, one-dimensional
+kernel, stable inverse, flux normalization, and physical/reference shell
+comparison in Section~\ref{sec:ex-lattice-trace-producer} remain conditional
+on their displayed analytic receipts.
+
+In the selected public construction, the one-scale chart family comes from
+the paid multi-scale request and its subsequent chart staging. This section
+proves the scale-selection and tested-chart clauses of that assembly; the
+physical-array, stress, and flux receipts needed for the full gallery remain
+separate inputs.

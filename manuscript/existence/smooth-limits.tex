@@ -1,0 +1,183 @@
+\section{Smooth limits from lattice differences}
+\label{ex-smooth-limits}
+
+The extraction argument initially gives continuity only on generic
+configuration patches. A stronger family of difference bounds removes
+coordinate ties and identifies every derivative of the limit. This
+argument also explains the additional input needed for convergence along
+the whole mesh sequence: pointwise Cauchy convergence on a dense set,
+without another subsequence selection.
+
+We state the analytic result on an arbitrary open set
+\(U\subset\mathbb R^d\). In the fixed-period application,
+\(d=4n\), \(U\) is the set of configurations with no coincident
+points modulo the period, and the functions are periodic lifts of lattice
+correlations. Thus \(U\) includes configurations with coordinate ties
+and can cross a fundamental-domain seam. Write
+\(\Gamma_N=a_N\mathbb Z^d\), where \(a_N>0\) and \(a_N\to0\).
+For functions \(F_N:\Gamma_N\to\mathbb C\), define
+\[
+ \Delta_{N,j}F_N(x)=\frac{F_N(x+a_Ne_j)-F_N(x)}{a_N},
+ \qquad
+ F_{N,\alpha}=\Delta_{N,\alpha_1}\cdots
+                    \Delta_{N,\alpha_k}F_N
+\]
+for a finite list \(\alpha\) of coordinates, including the empty list.
+The order convention is that prefixing a coordinate applies one further
+difference to the previous function. Choose cell representatives
+\(Q_N:\mathbb R^d\to\Gamma_N\) by rounding each coordinate, so
+\(|Q_Nx-x|_1\le da_N\) and \(Q_Nx=x\) on \(\Gamma_N\).
+
+\begin{theorem}[Full-sequence smooth convergence]\label{ex-smooth-grid-limit}
+Assume that for every compact \(K\subset U\) and every finite list
+\(\alpha\), there are \(C_{K,\alpha}<\infty\) and \(N_{K,\alpha}\)
+such that
+\begin{equation}\label{ex-grid-derivative-budget}
+ |F_{N,\alpha}(x)|\le C_{K,\alpha}
+ \quad(N\ge N_{K,\alpha},\ x\in\Gamma_N\cap K).
+\end{equation}
+Suppose also that there is a dense subset \(D\subset U\) for which
+\(F_N(Q_Nx)\) is Cauchy for every \(x\in D\).
+Then there is a smooth function \(f:U\to\mathbb C\) such that, for
+every \(\alpha\),
+\begin{equation}\label{ex-grid-all-limits}
+ F_{N,\alpha}(Q_Nx)\longrightarrow\partial^\alpha f(x)
+ \quad\text{uniformly on every compact subset of }U.
+\end{equation}
+No further subsequence is taken. In particular, whenever \(N_k\to\infty\)
+and \(x_k\in\Gamma_{N_k}\) tends to \(x\in U\),
+\(F_{N_k,\alpha}(x_k)\to\partial^\alpha f(x)\).
+\end{theorem}
+\begin{proof}
+We give the details in the \(\ell^1\) norm; equivalence of norms in
+fixed dimension gives the same local convergence in the Euclidean norm.
+All estimates below are made in a compact neighborhood strictly inside
+\(U\), and finitely many thresholds in
+\eqref{ex-grid-derivative-budget} can be replaced by their maximum.
+
+\emph{Grid Lipschitz and Taylor estimates.}
+Fix \(\alpha\), and abbreviate \(G_N=F_{N,\alpha}\).
+On a slightly enlarged compact set, bound all its first differences
+by \(B_1\) and all its second differences by \(B_2\). Join sufficiently
+nearby grid points \(x,y\) by moving one coordinate at a time, always
+monotonically toward \(y\). The path has total length
+\(R=|y-x|_1\) and stays in the coordinate box between \(x,y\).
+Each edge changes \(G_N\) by at most \(a_NB_1\), including a
+negative edge by using the forward difference at its lower endpoint.
+Telescoping gives
+\begin{equation}\label{ex-grid-lipschitz}
+ |G_N(y)-G_N(x)|\le B_1|y-x|_1.
+\end{equation}
+Apply the same argument to each \(\Delta_{N,j}G_N\). At every base
+point \(z\) of an edge of the path,
+\(|\Delta_{N,j}G_N(z)-\Delta_{N,j}G_N(x)|\le B_2R\).
+Subtract the linear function whose coordinate coefficients are
+\(\Delta_{N,j}G_N(x)\) from the edge increments, and telescope again:
+\begin{equation}\label{ex-grid-taylor}
+ \left|G_N(y)-G_N(x)-\sum_j(y_j-x_j)\Delta_{N,j}G_N(x)\right|
+ \le B_2|y-x|_1^2.
+\end{equation}
+The slightly enlarged compact set ensures that all shifted points used
+by these differences remain inside the region of the bounds. This is
+possible because only finitely many shifts occur and \(a_N\to0\).
+
+\emph{Extension from dense pointwise convergence.}
+Equation~\eqref{ex-grid-lipschitz} and the rounding bound imply on any
+compact patch, for sufficiently nearby \(x,y\),
+\[
+ |G_N(Q_Nx)-G_N(Q_Ny)|\le B_1(|x-y|_1+2da_N).
+\]
+Thus the rounded functions are asymptotically equicontinuous; they need
+not themselves be continuous. For \(\alpha=\varnothing\), this and
+the Cauchy property on \(D\) imply uniform Cauchy convergence on each
+compact set. To see it explicitly, cover that compact set by finitely
+many sufficiently small balls with centers in \(D\), lying in a common
+compact neighborhood in \(U\). At the centers, choose one common
+Cauchy threshold. Choose the mesh still finer so that the two oscillation
+errors, from a point to its center for each of the two mesh functions,
+are small. The triangle inequality then bounds their difference uniformly
+on the whole compact set. Completeness of \(\mathbb C\) gives a
+uniform limit. The displayed modulus makes the limit continuous. Limits
+on overlapping compact neighborhoods agree by pointwise uniqueness,
+giving a single continuous \(f\) on \(U\).
+
+This reasoning also proves a useful moving-point assertion: if the
+rounded \(G_N\) converge locally uniformly to a continuous \(g\),
+and grid points \(y_N\to y\in U\), then \(G_N(y_N)\to g(y)\).
+Indeed, eventually the points lie in one compact neighborhood; use
+\(Q_Ny_N=y_N\), uniform convergence there, and continuity of \(g\).
+The same statement holds after any indices \(N_k\to\infty\).
+
+\emph{Cauchy convergence of the next differences.}
+Suppose now the rounded \(G_N=F_{N,\alpha}\) converge locally uniformly
+to \(g\). Fix \(x\in U\) and a coordinate \(j\). Take a small
+\(h>0\) such that a compact neighborhood of the segment
+\([x,x+he_j]\) lies in \(U\). Put
+\(h_N=a_N\lceil h/a_N\rceil\), \(x_N=Q_Nx\), and
+\(y_N=x_N+h_Ne_j\). Then \(h\le h_N<h+a_N\), so the moving-point
+assertion implies convergence of
+\[
+ V_N=\frac{G_N(y_N)-G_N(x_N)}{h_N}
+ \longrightarrow\frac{g(x+he_j)-g(x)}h.
+\]
+The Taylor estimate gives
+\[
+ |\Delta_{N,j}G_N(x_N)-V_N|\le B_2h_N.
+\]
+Here \(B_2\) can be fixed on one compact neighborhood for every
+sufficiently small \(h\). Given \(\epsilon>0\), first choose \(h\)
+so that \(4B_2h<\epsilon/2\), then choose \(N\) large so that
+\(h_N\le2h\) and \(V_N\) is Cauchy with error less than
+\(\epsilon/2\). The triangle inequality proves that
+\(\Delta_{N,j}G_N(Q_Nx)\) is Cauchy. Bounds for its first differences
+give asymptotic equicontinuity by the previous argument. It therefore
+converges locally uniformly to a continuous function \(g_j\).
+
+\emph{Identification of derivatives and induction.}
+Apply \eqref{ex-grid-taylor} with \(Q_Nx,Q_Ny\), for fixed nearby
+\(x,y\), and pass to the limit using the just-established convergence
+of all first differences. This gives
+\[
+ |g(y)-g(x)-\sum_j(y_j-x_j)g_j(x)|\le B_2|y-x|_1^2.
+\]
+The bound proves Fr\'echet differentiability, with
+\(Dg(x)[u]=\sum_ju_jg_j(x)\). Since the \(g_j\) are continuous,
+\(g\) is \(C^1\). Repeat this argument for every finite list
+\(\alpha\). Induction gives locally uniform limits for all iterated
+differences and identifies them with the corresponding derivatives of
+\(f\). Their continuity proves \(f\in C^k\) for every finite \(k\),
+hence smoothness. The case \(d=0\) is simply convergence of one scalar
+sequence; there are no derivative steps. This completes the proof.
+\end{proof}
+
+\begin{corollary}[Other fixed difference stencils]\label{ex-other-stencils}
+The same limits hold for any fixed finite composition of forward,
+backward or centered coordinate differences, provided every difference
+is divided by its full physical interval length.
+\end{corollary}
+\begin{proof}
+For fixed integers \(b,c\ge0\) with \(b+c>0\), telescope:
+\[
+ \frac{G_N(x+ca_Ne_j)-G_N(x-ba_Ne_j)}{(b+c)a_N}
+ =\frac1{b+c}\sum_{r=0}^{b+c-1}
+       \Delta_{N,j}G_N(x+(r-b)a_Ne_j).
+\]
+Each of the finitely many sample points approaches the same point, so
+the moving-point conclusion in Theorem~\ref{ex-smooth-grid-limit} gives
+the same derivative for each summand. Translation averages commute with
+coordinate differences. A finite composition is therefore a finite
+average of shifted iterated unit forward differences, and has exactly
+the stated limiting derivative. Uniform convergence on compacts follows
+by using one slightly enlarged compact neighborhood for all the finitely
+many shifts. No assertion is made when the stencil sizes vary with \(N\).
+\end{proof}
+
+The theorem is applied separately for each fixed period, label tuple and
+finite derivative request. Its derivative bounds are supplied by the
+full-precision lattice estimates, and its dense Cauchy input by the
+renormalization-group comparison of different cutoffs. Neither input
+follows from a subsequential limit alone. Once they are supplied, the
+fixed-period smooth kernel and all its locally uniform difference limits
+follow without further mesh extraction. The fixed-period smeared limits
+then follow by the cell-integral dominated-convergence argument of
+Proposition~\ref{prop:ex-limits-extraction}, applied to each fixed stencil.

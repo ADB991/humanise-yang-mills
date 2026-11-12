@@ -1,0 +1,108 @@
+\section{Signed lattice symmetry of the quadratic precision}
+\label{sec:quadratic-lattice-symmetry}
+The path attachment uses the quadratic precision of the selected bed.
+We verify its invariance under signed permutations of the coordinate axes,
+including the change of anchor caused by reversing a bond. This is a
+property of the bilinear form on one-cochains; the curvature metric need
+not satisfy a stronger symmetry away from exact curvatures.
+
+Let $s$ be a signed permutation of the four axes, acting on sites and
+momenta by the same orthogonal integer matrix. A positive bond $(x,a)$
+becomes the directed bond from $sx$ to $sx+s e_a$. If $s e_a=-e_b$,
+its value in positive-bond coordinates is minus the value at $(sx-e_b,b)$.
+This defines the pullback $R_s$ on real one-cochains. For a canonical
+plaquette $p=(a,b)$, $a<b$, let $r_s(x,p)$ be its image with its two
+axes reordered increasingly and its lower vertex shifted for each
+reversed axis. Its orientation sign is
+\[
+ \epsilon_s(p)=\epsilon_s(a)\epsilon_s(b)
+                   \operatorname{sgn}(s_{\mathrm{perm}}(b)-s_{\mathrm{perm}}(a)),
+\]
+where $\epsilon_s(a)\in\{-1,1\}$ is the sign of the image axis.
+In the permutation subscripts, only the unsigned permutation is meant.
+Equivalently the last factor is $1$ if the two image axes are in
+increasing order and $-1$ otherwise. The map $r_s$ is a permutation of
+canonical plaquettes on every finite torus and $\epsilon_s(p)^2=1$.
+
+Let $d$ denote the discrete exterior derivative. The boundary of the
+image of an oriented plaquette is the image of its boundary, with the
+same orientation sign, so
+\begin{equation}\label{eq:quadratic-curl-rotation}
+       (dR_sa)(x,p)=\epsilon_s(p)(da)(r_s(x,p)).
+\end{equation}
+One can verify the identity directly by substituting
+$(da)(x,a,b)=a(x,a)+a(x+e_a,b)-a(x+e_b,a)-a(x,b)$.
+Reversing an axis replaces each affected bond by its negative at the
+shifted lower endpoint; exchanging the two axes reverses the whole
+expression. These two operations generate all the signs and permutations,
+so the formula holds also across the torus seam and for even periods.
+
+Assume the blocking penalty is positive and the kernel level is at
+least four, as in the retained construction. Let $P$ be the unamended curvature row from
+Section~\ref{sec:positive-row-producer}. Its Fourier symbol is diagonal
+in the plaquette axes. For $q\in[-\pi,\pi]^4\setminus\{0\}$, its entry at
+$p=(a,b)$ is
+\[
+ \widehat P_{pp}(q)=
+      \rho(q)^{-1}D_a(q)^{-1}D_b(q)^{-1},
+ \qquad
+ \rho(q)=\sum_c\frac{4\sin^2(q_c/2)}{D_c(q)}.
+\]
+Here $D_c$ are the positive direction denominators of the selected
+finite tower. Their defining alias sums satisfy
+$D_{s_{\mathrm{perm}}(c)}(sq)=D_c(q)$: a signed permutation bijects the
+alias indices, preserves their scalar product weights, and permutes
+the single distinguished axis. The identity also follows term by term
+through the finite tower recursion. The sine squares are unchanged
+by sign and permuted with the same axes. Consequently $\rho(sq)=\rho(q)$
+and
+\[
+            \widehat P_{pp}(q)
+                =\widehat P_{p',p'}(sq),\qquad p'=s p
+\]
+with the image axes canonically ordered. At $q=0$ the unamended symbol is the identity matrix, so the same
+identity holds there too. Off-diagonal entries vanish.
+
+The Laurent rows are absolutely summable. Uniqueness of Fourier
+coefficients and the change of variable $q\mapsto sq$ therefore give
+\[
+ P_{pp}(z)=P_{p'p'}(sz),\qquad P_{pq}=0\quad(p\ne q).
+\]
+Let $P_n$ denote the periodized row on a torus of side $n$.
+The lower vertex of an image plaquette has the form $sx+t_p$, where
+$t_p$ depends only on its axes. For two plaquettes with the same axes,
+this shift cancels from their separation. Reindexing the absolutely
+convergent periodization sum by $z\mapsto sz$ thus proves
+\begin{equation}\label{eq:quadratic-face-symmetry}
+ P_n((x,p),(y,q))\epsilon_s(p)\epsilon_s(q)
+       =P_n(r_s(x,p),r_s(y,q)).
+\end{equation}
+For unequal axes both sides are zero; for equal axes the two signs
+multiply to one. This cancellation is why the anchor shifts cannot
+be ignored before passing to the bilinear form.
+
+Using \eqref{eq:quadratic-curl-rotation} and
+\eqref{eq:quadratic-face-symmetry}, expand the finite double sum:
+\begin{align*}
+ \langle dR_sa,P_n dR_sb\rangle
+ &=\sum_{u,v}\epsilon_s(u)\epsilon_s(v)
+          (da)(r_su)P_n(u,v)(db)(r_sv)\\
+ &=\sum_{u,v}(da)(r_su)P_n(r_su,r_sv)(db)(r_sv)\\
+ &=\langle da,P_n db\rangle.
+\end{align*}
+The last equality reindexes by the permutation $r_s$.
+
+The positive amendment of Section~\ref{sec:curvature-horizon-producer}
+vanishes on exact curvatures: if $M$ is the amended metric, then
+$d^*M_nd=d^*P_nd$. Hence its quadratic bilinear form satisfies
+\[
+          \langle R_sa,d^*M_ndR_sb\rangle
+                        =\langle a,d^*M_ndb\rangle.
+\]
+For a Lie-algebra-valued field, expand in an orthonormal colour basis.
+The signed lattice pullback acts separately in every colour, and the
+gauge quadratic form is the sum of the real bilinear forms just
+considered. Summing their equalities proves the required invariance
+for every pair of such fields and every period. The positive square
+root used to represent the amended metric is not needed in this
+symmetry argument.

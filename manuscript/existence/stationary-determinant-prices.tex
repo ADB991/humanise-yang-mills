@@ -1,0 +1,273 @@
+\section{Uniform prices for the determinant comparison}
+\label{sec:ex-stationary-determinant-prices}
+
+The absolute one-loop term counts all fine variables in a block and
+therefore has a bound proportional to $L^4$. Its comparison with the
+gauge-completed fine determinant has a better bound. We prove that
+bound before extracting the quadratic coefficient. Throughout this
+section $L$ is odd, $\mu=L^{-1}$, and all constants are chosen from
+the fixed group, patch size, bridge price and penalty coefficient,
+before $L$. The fine kinetic response is an additional input: on a positive
+common strip of width $\sigma$, assume its value and first two
+background kernels satisfy $\|K_0\|,\|K_i\|,\|K_{ij}\|\leq A_K$
+in the weighted fine one-form norms, at every admissible set of
+intermediate momenta. Section~\ref{sec:ex-selected-kinetic-response}
+constructs that response and its bound for the selected actions.
+
+\subsection{Differentiated Fourier matrices}
+We need the value and the first two background derivatives of a matrix.
+An external leg of momentum $p$ changes an input momentum $q$ to $q+p$.
+Write these three kernels as $M_0(q)$, $M_i(p;q)$ and
+$M_{ij}(p,r;q)$. All momenta that occur as intermediate inputs or
+outputs must lie in the specified strip. A bound on these three
+kernels always uses the weighted norms at their respective input and
+output momenta. It does not mean an entrywise bound. The holomorphic rear reverses
+the endpoints while retaining the external momenta:
+\[
+ (M^*)_0(q)=M_0(-q)^T,\quad
+ (M^*)_i(p;q)=M_i(p;-q-p)^T,\quad
+ (M^*)_{ij}(p,r;q)=M_{ij}(p,r;-q-p-r)^T.
+\]
+This convention is used in all products below.
+
+Products obey the ordinary Leibniz rule with these intermediate momenta.
+Thus common bounds $A,B$ for two triples give the bound $4AB$ for
+their product: there is one value term, two first-derivative terms,
+and four second-derivative terms. If $M_0^{-1}$ has bound $F$, its
+derivative kernels follow by differentiating $M^{-1}M=1$:
+\begin{align*}
+ (M^{-1})_i&=-M^{-1}M_iM^{-1},\\
+ (M^{-1})_{ij}&=M^{-1}M_iM^{-1}M_jM^{-1}
+ +M^{-1}M_jM^{-1}M_iM^{-1}\\
+ &\quad-M^{-1}M_{ij}M^{-1}.
+\end{align*}
+Intermediate momenta in these formulas are determined by composition.
+In particular a common inverse-jet bound is
+$F+F^2A+2F^3A^2+F^2A$. These formulas use only the inverse at zero
+background; they impose no uniform neighborhood of invertibility in
+the full background space.
+
+Here are the local inputs to this calculus. Let $d(U)$ be the fine
+covariant difference at background $U$. On each edge its difference
+from $d(1)$ is the adjoint action of the edge variable minus the
+identity, followed by the fixed endpoint shift. The identity
+\[
+ d(U)=d(1)+(d(U)-d(1))
+\]
+is therefore a fixed shift operator multiplied by local smooth
+functions of one fine link. Positive derivatives through order two
+of these functions have a factor $\mu$: every differentiated fine
+link has size at most $\mu C$, and products of more such factors
+are smaller since $\mu\leq1$. Passing from Euclidean norms to a
+single weighted fine norm costs at most $e^4\mu^{-1}$, by
+Section~\ref{sec:ex-weighted-frame-penalty}. The factor $\mu$ pays
+this cost. The constant term $d(1)$ has a uniform weighted bound
+directly from its multiplier $q$ and $|q|\leq h$. Consequently
+the first two background derivatives of $d(U)$ are uniformly bounded
+in both placements needed for $d^*d$ and $dd^*$.
+
+The derivative of the centered frame, denoted by $X(U)$, has bound
+$C L^2$ from the joint weighted space to the ordinary fine scalar
+space, through two background derivatives. Indeed these are at most
+third derivatives of the frame, with one internal direction of charge
+one and the remaining external directions of charge zero. The frame
+calculus bounds the normalized $L^2$ output; removing that
+normalization multiplies by $L^2$. The logarithm and the finite chart
+changes preserve this estimate. The block constraint derivative $Q(U)$
+and its coarse penalty form $H(U)$ have uniformly bounded kernels.
+The actual penalty Hessian $B(U)$ has the same property: its first
+two background derivatives require derivatives through order four,
+with two internal directions of charge one. Their total charge is
+two, exactly the $L^1$ case of the weighted penalty estimate.
+
+These estimates apply on one common smaller strip. The external
+directions are the actual stationary bridge of
+Section~\ref{sec:ex-selected-stationary-linear-data}. The same finite
+stencils define the kernels on every torus. Thus the preceding
+bounds apply to their common holomorphic Fourier matrices, rather
+than to separately chosen extensions of finite-grid matrices.
+
+\subsection{Why the regulator has a uniform trace bound}
+For a map between weighted Hilbert spaces, let $\|\cdot\|_1$ denote
+the nuclear norm after transforming to orthonormal coordinates.
+We use
+\[
+ \|ABC\|_1\leq\|A\|\|B\|_1\|C\|,
+ \qquad |\operatorname{tr}B|\leq\|B\|_1.
+\]
+The second inequality is applied to endomorphisms with the same
+input and output momentum. Both statements follow from a singular
+value decomposition; the first also follows by decomposing $B$ as
+a sum of rank-one operators. They introduce no dimension factor.
+
+Set
+\[
+ P(U)=\mu^2(d(U)^*d(U)+\mu^2I)^{-1},\qquad
+ C(U)=\mu^2P(U)^9.
+\]
+Here and below the star means transpose with opposite Fourier
+momentum in the holomorphic formulas. On the real slice it is the
+usual adjoint. The scalar inverse estimate of
+Section~\ref{sec:ex-weighted-stationary-inverses}, the preceding
+product and inverse rules, and the two weight conversions show that
+all three kernels of $P$ have a common Euclidean bound independent
+of $L$. The factor $\mu^2$ cancels the two costs $O(\mu^{-1})$.
+It follows that the three kernels of $C$ have operator bound
+$C_0\mu^2$.
+
+We need the stronger nuclear bound, for which the ninth power is
+useful. At zero background, $P_0$ has alias eigenvalues
+$d_\mu(k_l)=\mu^2/(\omega(k_l)+\mu^2)$. On the strip of width
+$1/128$, after choosing a real fundamental cube, the alias distance
+$n=\operatorname{dist}_\infty(l,0)$ satisfies
+\[
+ |d_\mu(k_l)|\leq\frac{2}{(1+n)^2}.
+\]
+For $n=0$ this is the scalar denominator bound. For $n>0$, the
+real alias difference has size at least $2\mu n$; the same
+denominator comparison gives the displayed estimate. The number
+of residues with distance $n$ is at most $(2n+1)^4$. Hence
+\[
+ \sum_l |d_\mu(k_l)|^3
+ \leq 8\sum_{n\geq0}\frac{(2n+1)^4}{(n+1)^6}
+ \leq128\sum_{n\geq0}(n+1)^{-2}<\infty.
+\]
+The fixed color multiplicity and the bounded Fourier conjugations
+only multiply this constant. Thus $(P^3)_0$ has a uniform nuclear
+bound, although $P_0$ itself need not have one.
+
+If a triple $V$ has operator bound $a$ and its value $V_0$ has
+nuclear bound $b$, the triple for $V^3$ has nuclear bound
+$20a^2b$. To see this, distribute at most two derivatives among
+three factors. Every term has an undifferentiated factor, which
+can be estimated in nuclear norm; all other factors use operator
+norm. The value, first derivative and second derivative have at
+most one, three and nine terms, respectively. The larger constant
+20 also accommodates the grouped product estimates above.
+Apply this to $V=P^3$. We obtain
+\begin{equation}\label{eq:ex-regulator-nuclear}
+       \|C_0\|_1,\ \|C_i\|_1,\ \|C_{ij}\|_1
+                          \leq C_1\mu^2.
+\end{equation}
+This argument needs only the value-level spectral calculation for
+$P^3$; derivatives of its eigenvectors are not used.
+
+\subsection{Cancellation of the fine kinetic form}
+Let $b$ project the joint space onto its fine one-form part, and let
+$e$ project it onto its coarse scalar part. Let $s_a$ be the fixed
+map selecting the one-form component in direction $a$. Denote the
+fine kinetic Hessian triple by $K$. Define
+\[
+ X=d^*b,\qquad T=CX_{\rm fr},\qquad F=X+T,
+\]
+where $X_{\rm fr}$ is the centered frame derivative denoted by
+$X(U)$ above. The change of notation separates it from $d^*b$.
+The three matrix triples to be compared are
+\begin{align*}
+ M_{\rm act}&=b^*Kb+B+F^*F,\\
+ M_{\rm core}&=b^*Kb+Q^*HQ+F^*F,\\
+ M_{\rm rank}&=b^*\left(K+dd^*+\sum_{a=1}^4s_a^*Cs_a\right)b+e^*e.
+\end{align*}
+The first uses the full penalty Hessian; the second retains its
+constraint pullback. Their distinction will matter in the next
+comparison of low-momentum coefficients.
+
+The weighted norm bounds above, including the bound for $K$, give
+a common operator bound $A$ for all three triples and for
+$d^*d+C$. Their zero-background inverses have one common bound
+$F_0$ on a smaller strip of width $\eta$, by the previous two
+sections. Indeed the zero-background penalty Hessian equals its
+constraint pullback, and the gauge-completed fine matrix is precisely
+the auxiliary matrix treated there. Take the minimum of the finitely
+many widths and the maximum of their costs.
+
+The difference of the second and third triples is exactly
+\begin{equation}\label{eq:ex-core-rank-difference}
+ M_{\rm core}-M_{\rm rank}
+ =Q^*HQ+T^*F+X^*T-b^*\sum_a s_a^*Cs_ab-e^*e.
+\end{equation}
+This is an identity at all three derivative levels. In particular
+the entire $K$ triple cancels, not just its value at the origin.
+It follows by expanding $F=X+T$ and using $X^*X=b^*dd^*b$.
+
+Every term on the right has a nuclear bound independent of $L$.
+For $Q^*HQ$, take the nuclear bound on the fixed-dimensional
+coarse space before multiplying by $Q^*$ and $Q$; the estimate
+$\|H_j\|_1\leq\dim(\text{coarse one-forms})\|H_j\|$ works
+for each derivative. The same argument applies to $e^*e$.
+For $T=CX_{\rm fr}$, \eqref{eq:ex-regulator-nuclear} cancels
+the $L^2$ frame cost because $\mu^2L^2=1$. Multiplication by
+$F$ or $X$ preserves its nuclear bound. Finally, converting the
+regulator term to weighted fine norms costs at most
+$e^8\mu^{-2}$, paid by its factor $\mu^2$; the four component
+maps $s_a$ have fixed bounds. Leibniz's rule proves the same
+estimates through order two. Thus there is $k$, independent of
+$L$ and of the fine kinetic price, with
+\begin{equation}\label{eq:ex-core-rank-nuclear}
+ \|(M_{\rm core}-M_{\rm rank})_j\|_1\leq k,
+                         \qquad j=0,1,2.
+\end{equation}
+The inverse bound $F_0$ and absolute bound $A$ may still depend
+on the stated kinetic hypotheses. That dependence has not been
+removed by this cancellation.
+
+\subsection{The second logarithmic derivative}
+For any of the invertible triples define its two-leg trace density by
+\[
+ \mathcal T_M(i,j;p,q)=\operatorname{tr}\left[
+ M_0(q)^{-1}M_{ij}(-p,p;q)
+ -M_0(q)^{-1}M_i(-p;q+p)M_0(q+p)^{-1}M_j(p;q)\right].
+\]
+This is the second derivative of $\log\det M$, obtained by
+differentiating $D\log\det M=\operatorname{tr}(M^{-1}DM)$.
+It requires no choice of a global logarithm on the strip. The
+formula itself is holomorphic wherever the constant inverses exist.
+Restrict both independent momenta to width $\eta/2$, so every
+intermediate momentum lies in width $\eta$.
+
+If the fiber dimension is $d$, the operator bounds give
+\begin{equation}\label{eq:ex-absolute-trace-density}
+ |\mathcal T_M|\leq d(F_0A+F_0^2A^2).
+\end{equation}
+Here $d\leq L^4(d_0+d_1)$, with $d_0,d_1$ the fixed scalar
+and one-form color dimensions. This explains the absolute $L^4$
+cost.
+
+For $M=M_{\rm core}$ and $N=M_{\rm rank}$ put
+\[
+ D=F_0kF_0,\qquad E=DA+F_0k.
+\]
+The resolvent identity gives
+$\|M_0^{-1}-N_0^{-1}\|_1\leq D$.
+The elementary telescoping identity
+$UV-U'V'=(U-U')V+U'(V-V')$ then bounds the difference of
+$M_0^{-1}M_{ij}$ and $N_0^{-1}N_{ij}$ by $E$ in nuclear norm.
+For the four-factor term, first compare the initial two factors,
+at cost $E$; compare the next inverse, at additional cost
+$F_0AD$; and finally compare the last derivative. Keeping the
+remaining factors in operator norm gives
+\[
+ \|M_0^{-1}M_iM_0^{-1}M_j
+       -N_0^{-1}N_iN_0^{-1}N_j\|_1
+       \leq(EF_0+F_0AD)A+F_0AF_0k.
+\]
+All these products respect the displayed intermediate momenta.
+Taking traces proves
+\begin{equation}\label{eq:ex-relative-trace-density}
+ |\mathcal T_{M_{\rm core}}-\mathcal T_{M_{\rm rank}}|
+ \leq E+(EF_0+F_0AD)A+F_0AF_0k.
+\end{equation}
+There is no dimension factor in this estimate.
+
+The one-loop densities are
+$\frac12\mathcal T_{M_{\rm act}}-\mathcal T_{d^*d+C}$,
+$\frac12\mathcal T_{M_{\rm core}}-\mathcal T_{d^*d+C}$ and
+$\frac12\mathcal T_{M_{\rm rank}}-\mathcal T_{d^*d+C}$.
+Their individual bounds may all be enlarged to twice the right-hand
+side of \eqref{eq:ex-absolute-trace-density}. In the difference
+of the latter two densities the scalar determinant cancels exactly,
+leaving half the difference in
+\eqref{eq:ex-relative-trace-density}. This proves the required
+uniform comparison price. Identification with the thermal stationary
+coefficient, and the disappearance of the remaining action-versus-core
+quadratic difference, are separate steps below.

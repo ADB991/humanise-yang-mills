@@ -1,0 +1,247 @@
+\section{The Fourier window of the actual curvature covariance}
+\label{sec:actual-covariance-fourier-window}
+
+The Gaussian comparison requires estimates for the covariance selected
+by the construction, uniformly in its ancestry and physical period.
+We derive these estimates before considering the cumulative transport.
+Fix the positive kernel penalty and a smoothing order $J\ge4$.
+All constants in this section may depend on these two choices and on
+the finite derivative order, but not on block lengths or ancestry.
+
+\subsection{A uniformly elliptic symbol}
+
+Let $H(p)$ be the two-form pulse symbol of the chosen ancestry, in
+radian frequency $p\in\mathbb R^4$. The component and positive-row
+constructions give constants $\alpha,\eta>0$ and $\Omega<\infty$
+such that its Laurent coefficients have strip cost $\Omega$ at
+width $\alpha$, its action on every finite period has quadratic
+lower bound $\eta$, and $H(0)=I$. These are properties of the
+original pulse, before any replacement of the curvature completion.
+Exponential summability implies, for every integer $m\ge0$,
+\[
+ \sup_p\|D^mH(p)\|\le C_m.
+\]
+Indeed each derivative multiplies the coefficient at $z$ by at most
+$|z|^m$, and $|z|^m e^{-\alpha|z|_1}$ is bounded. The finite-period
+lower bound also holds at every real frequency. First extend the
+quadratic bound of the real finite-period operator to complex vectors
+by splitting them into real and imaginary parts. Then test
+the period-$n$ matrix on the vector $e^{ip\cdot x}v$ for a grid
+frequency $p$. Its quadratic form and squared norm both acquire the
+same factor $n^4$, which cancels. Approximate an arbitrary real
+frequency by grid frequencies and use continuity. Thus
+\[
+       \operatorname{Re}\langle H(p)v,v\rangle\ge\eta|v|^2.
+\]
+
+Put $q_a(p)=e^{ip_a}-1$, and let $X(p)$ and $U(p)$ be exterior
+multiplication by $q(p)$ from one-forms to two-forms and from
+scalars to one-forms, respectively. Define
+\[
+ F(p)=X(p)^*H(p)X(p)+U(p)U(p)^*,\qquad
+ P(p)=X(p)F(p)^{-1}X(p)^*\quad(p\ne0),
+\]
+and set $P(0)=0$. On the cube $|p_a|<3\pi/2$, the elementary
+identity for exterior multiplication and contraction gives
+\[
+ \|Xv\|^2+\|U^*v\|^2=|q|^2\|v\|^2,
+ \qquad
+ \operatorname{Re}\langle Fv,v\rangle
+       \ge\min(\eta,1)|q|^2\|v\|^2.
+\]
+Here $|q|\ge c|p|$: the continuous function
+$|e^{it}-1|/|t|$ has a positive lower bound on
+$[-3\pi/2,3\pi/2]$, with its value at zero defined to be one.
+Consequently $F(p)$ is invertible for $p\ne0$ in this cube.
+
+We record the derivative estimates with their exact gain. A function
+has order $s$ if, through the finite number of derivatives under
+consideration, its $m$th derivative is bounded by
+$C_m|p|^{s-m}$. Products add orders by Leibniz' rule.
+Taylor's formula gives $q-ip$ order two and $H-I$ order one;
+$q$ itself has order one. The exterior identity at $q=ip$ gives
+\[
+ F(p)=|p|^2I+E(p),\qquad E\text{ has order }3.
+\]
+Thus $T=|p|^{-2}F$ has order zero, $T-I$ order one, and
+$\|T^{-1}\|$ is uniformly bounded by coercivity. Differentiating
+$TT^{-1}=I$ proves inductively that $D^mT^{-1}=O(|p|^{-m})$:
+the term containing $D^mT^{-1}$ is isolated and every remaining
+term is a product of derivatives whose orders total $m$.
+Furthermore $T^{-1}-I=T^{-1}(I-T)$ has order one. It follows that
+\begin{equation}\label{eq:actual-symbol-orders}
+ P\text{ has order }0,\qquad P-P_0\text{ has order }1,
+ \quad P_0(p)=X_0(p)|p|^{-2}X_0(p)^*,
+\end{equation}
+where $X_0$ is exterior multiplication by $ip$.
+These estimates are uniform over all the selected ancestries.
+
+We verify that $P$ is the actual curvature multiplier. Let $D$ be
+the original one-form covariance and $R=X^*HX$. The transport
+identities already proved give $RDX^*=X^*$ and $XU=0$.
+Write $B=UU^*$. Then $XB=0$, $BX^*=0$, and $RB=BR=0$.
+Hence $F=R+B$ commutes with $B$, as does its inverse, and
+$XF^{-1}B=0$. Multiplying $RDX^*=X^*$ on the left by
+$XF^{-1}$ yields
+\[
+ XF^{-1}X^*=XF^{-1}RDX^*=XDX^*.
+\]
+At zero both curvature multipliers vanish. Thus no change of the
+finite-period covariance has been made.
+
+\subsection{A smooth chart without changing the finite Fourier sum}
+
+Choose a smooth nondecreasing function $g$ that is zero on
+$(-\infty,-5\pi/4]$ and one on $[-3\pi/4,\infty)$, and put
+\[
+ h(p)=\prod_{a=1}^4\bigl(g(p_a)-g(p_a-2\pi)\bigr).
+\]
+It is supported in $|p_a|\le5\pi/4$, equals one near zero,
+and satisfies
+\[
+                 \sum_{z\in\mathbb Z^4}h(p+2\pi z)=1.
+\]
+The last identity is the product of four telescoping sums; only
+finitely many terms are nonzero. Define the unit-frequency chart
+$K(\xi)=h(2\pi\xi)P(2\pi\xi)$, entry by entry and with the
+usual Kronecker delta on colour indices. Its support lies in
+$|\xi|\le2$. For an integer displacement $x$, periodicity and
+the partition identity show that the exact period-$n$ covariance is
+\begin{equation}\label{eq:actual-chart-sum}
+ \kappa_n(x)=n^{-4}\sum_{z\in\mathbb Z^4}
+              e^{2\pi i x\cdot z/n}K(z/n).
+\end{equation}
+The sum is finite. Grouping $z$ by its residue modulo $n$ proves
+the formula, including even $n$ and the zero frequency. At zero
+we retain the actual value $P(0)=0$, rather than assigning a
+continuous value to a direction-dependent limit.
+
+For two lists of coordinate directions, of lengths $a,b$, let
+$u=a+b$. Differencing the first endpoint multiplies $K(\xi)$
+by $e^{2\pi i\xi_c}-1$; differencing the second endpoint uses
+$e^{-2\pi i\xi_c}-1$. Denote their product by $m(\xi)$,
+and the corresponding product of $2\pi i\xi_c$ and
+$-2\pi i\xi_c$ by $m_0(\xi)$. Repeatedly using
+$e^{it}-1-it=O(t^2)$, with its differentiated Taylor bounds,
+shows that $m-m_0$ has order $u+1$ and $m,m_0$ have order $u$.
+By \eqref{eq:actual-symbol-orders}, the remainder
+\[
+ G(\xi)=m(\xi)K(\xi)
+       -m_0(\xi)e^{-(2\pi)^2|\xi|^2}P_0(2\pi\xi)
+\]
+satisfies, for $0\le v\le u+6$,
+\begin{align}\label{eq:actual-mist}
+ \|D^vG(\xi)\|&\le C|\xi|^{u+1-v}
+                              &&(0<|\xi|\le1),\\
+ \|D^vG(\xi)\|&\le C|\xi|^{-5}
+                              &&(|\xi|\ge1).\notag
+\end{align}
+For the first estimate, subtract and add $m_0K$ and use the
+product rule. The extra Gaussian differs from one to order two.
+Outside the unit ball the compactly supported term has bounded
+derivatives, and every derivative of the Gaussian term decays
+faster than any power. Finite maxima give the same $C$ for all
+face pairs and direction lists of bounded length.
+
+\subsection{Fourier decay and quadrature at the pole}
+
+Write $\mathcal F_+f(x)=\int e^{2\pi i x\cdot\xi}f(\xi)\,d\xi$.
+We first show directly that \eqref{eq:actual-mist} implies
+\begin{equation}\label{eq:actual-mist-decay}
+             |\mathcal F_+G(x)|\le C'|x|^{-u-5}
+                                      \quad(|x|\ge1).
+\end{equation}
+Set $r=|x|^{-1}$ and choose a smooth radial cutoff equal to zero
+on the ball of radius $r/2$ and one outside the ball of radius
+$r$. The omitted inner term has integral at most
+$C\int_0^r t^{u+1}t^3\,dt\le C'r^{u+5}$.
+For the outer term integrate by parts $u+6$ times in the unit
+direction $x/|x|$. Each term where a derivative hits the cutoff
+is supported on $r/2\le|\xi|\le r$ and has integral
+$O(Cr^{-1})$. For the remaining terms, derivatives of order
+$u+6$ have integral bounded by
+\[
+ C'\left(\int_r^1 t^{-5}t^3\,dt+
+                    \int_1^\infty t^{-5}t^3\,dt\right)
+                  \le C''/r.
+\]
+Boundary terms vanish by first inserting a distant smooth cutoff
+and then sending its radius to infinity; the displayed bounds
+control its derivatives as well. Multiplication by
+$|x|^{-u-6}$ proves \eqref{eq:actual-mist-decay}.
+
+Next let $f=mK$. It is compactly supported, bounded by $C$, and
+satisfies $\|Df(\xi)\|\le C/|\xi|$ off zero. Partition frequency
+space into cubes of side $1/n$, and use their grid corner as the
+sample point. Its distance from any point of that cube is at most
+$2/n$. If this distance is less than $|\xi|/2$, the mean value
+bound gives
+\[
+ |f(\xi)-f(z/n)|\le C'/(n|\xi|).
+\]
+Otherwise the same estimate follows from the bound $2C$ on the
+difference, after increasing $C'$. This also covers a sampled
+corner at zero. The phase difference is at most
+$2\pi|x|\,|\xi-z/n|$. Integration over a fixed enlarged support
+ball is legitimate because $|\xi|^{-1}$ is locally integrable in
+four dimensions. We obtain
+\begin{equation}\label{eq:actual-quadrature}
+ \left|\mathcal F_+f(x)-n^{-4}\sum_z
+                e^{2\pi i x\cdot z/n}f(z/n)\right|
+                  \le C'\frac{1+|x|}{n}.
+\end{equation}
+This estimate treats the singular grid point without removing it.
+
+Finally the Gaussian-regularized continuum term has the required
+Maxwell limit. In the present Fourier convention its scalar
+potential multiplier, for $t>0$ (here $t=(2\pi)^2$), is
+$(2\pi)^{-2}e^{-t|\xi|^2}/|\xi|^2$. The identity
+\[
+ \frac{e^{-t|\xi|^2}}{|\xi|^2}
+       =\int_t^\infty e^{-s|\xi|^2}\,ds
+\]
+and the product Gaussian integral give, at $x\ne0$,
+\[
+ \mathcal F_+\left((2\pi)^{-2}
+          \frac{e^{-t|\xi|^2}}{|\xi|^2}\right)(x)
+ =\frac{1}{4\pi^2|x|^2}
+                 \left(1-e^{-\pi^2|x|^2/t}\right).
+\]
+Fubini is justified by
+$\int_t^\infty(\pi/s)^2\,ds<\infty$.
+All polynomial frequency moments are integrable, so differentiation
+under the integral supplies both curls and both endpoint derivative
+lists, with the opposite sign at the second endpoint. The difference
+from the derivatives of $1/(4\pi^2|x|^2)$ is a derivative of a
+Gaussian times that potential. It is bounded by any prescribed
+inverse power for $|x|\ge1$.
+
+Combining this fact with \eqref{eq:actual-chart-sum},
+\eqref{eq:actual-mist-decay} and \eqref{eq:actual-quadrature} proves
+\begin{equation}\label{eq:actual-native-model}
+ \bigl|\Delta_x^a\Delta_y^b\kappa_n(x,y)
+                     -\mathcal K_{a,b}(x-y)\bigr|
+ \le C_{a,b}\left(|x-y|^{-a-b-5}
+                          +\frac{1+|x-y|}{n}\right),
+ \qquad |x-y|\ge1.
+\end{equation}
+Here each superscript denotes its specified direction list, and
+$\mathcal K_{a,b}$ is the corresponding continuum Maxwell curvature
+covariance. The constants are uniform in ancestry and period.
+The covariance has closed rows and columns because its construction
+is $dDd^*$ and $d^2=0$. Its entries are real by conjugating the
+finite Fourier sum and replacing the frequency by its negative.
+No positivity of a later normal-ordered covariance is inferred.
+
+For a fixed comparison order $d\ge1$, only $a,b\le d-1$ are needed.
+The zero-order comparison can use $d=1$ and discard the extra data.
+The construction reserves their finitely many chart constants at
+smoothing order $J$ before choosing the block length. At the chosen
+comparison level the reserved chart cost is paid by $H^{1/4}$,
+where $H$ is its monitor. The finite constants from the multiplier
+and Fourier estimates are then absorbed successively into
+$H^{1/2}$ and $H$. This yields \eqref{eq:actual-native-model}
+with $C_{a,b}$ replaced by $H$, on that same chosen history.
+The quantitative clearance at the chosen level remains part of
+the common scale selection; merely taking an unrelated level large
+would not establish it.

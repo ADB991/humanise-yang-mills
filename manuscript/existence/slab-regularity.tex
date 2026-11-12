@@ -1,0 +1,170 @@
+\section{Regularity in operator norm}
+\label{ex-slab-regularity}
+
+To pass from scalar correlation identities to the character construction,
+we need regularity in operator norm. Weak continuity of matrix elements
+alone would not provide it. The additional ingredient is a local uniform
+bound on the operators representing the differentiated insertions.
+
+\begin{lemma}[Operator remainder estimate]\label{ex-operator-remainder}
+Let \(U\) be an open subset of a finite-dimensional real normed space
+\(E\), let \(H\) be a complex Hilbert space, and let \(\mathcal D\)
+be a dense linear subspace. Suppose \(A:U\to B(H)\) and
+\(B:U\to\mathcal L_{\mathbb R}(E,B(H))\) satisfy
+\[
+ D\langle u,A(\cdot)v\rangle(z)[h]=\langle u,B(z)[h]v\rangle
+ \quad(u,v\in\mathcal D,\ z\in U,\ h\in E).
+\]
+If the segment from \(x\) to \(y\) lies in \(U\) and
+\(\|B(z)-B_0\|\le C\) along the segment, with \(C\ge0\), then
+\begin{equation}\label{ex-operator-remainder-bound}
+ \|A(y)-A(x)-B_0[y-x]\|\le C\|y-x\|.
+\end{equation}
+Consequently, local boundedness of \(B\) implies local Lipschitz
+continuity of \(A\); continuity of \(B\) implies \(DA=B\) in
+operator norm.
+\end{lemma}
+\begin{proof}
+Fix \(u,v\in\mathcal D\). Along the segment, subtract the linear
+function \(z\mapsto\langle u,B_0[z]v\rangle\). The derivative of
+the resulting complex-valued function has norm at most
+\(C\|u\|\|v\|\). The scalar mean-value inequality yields
+\[
+ |\langle u,(A(y)-A(x)-B_0[y-x])v\rangle|
+ \le C\|u\|\|v\|\|y-x\|.
+\]
+This inequality also follows directly by composing with the segment and
+then with every real-linear functional of norm one on \(\mathbb C\),
+using the real mean-value theorem, and taking the supremum. Density
+extends the inequality to all \(u,v\in H\). For any bounded operator
+\(T\), the supremum of \(|\langle u,Tv\rangle|\) over unit vectors
+\(u,v\) is \(\|T\|\): Cauchy--Schwarz gives one inequality and,
+when \(Tv\ne0\), the choice \(u=Tv/\|Tv\|\) gives the other.
+This proves \eqref{ex-operator-remainder-bound}.
+
+On a sufficiently small ball where \(\|B\|\le C\), use \(B_0=0\)
+to obtain the Lipschitz bound. If \(B\) is continuous at \(x\), then
+for any \(\epsilon>0\) choose such a ball with
+\(\|B(z)-B(x)\|\le\epsilon\). Taking \(B_0=B(x)\) proves that
+the remainder is at most \(\epsilon\|y-x\|\), which is precisely
+Fr\'echet differentiability with derivative \(B(x)\).
+\end{proof}
+
+We apply the lemma to the slab operators of Section~\ref{ex-phases}.
+For fixed width \(d>0\), arity \(n\), and labels
+\(\boldsymbol v=(v_1,\ldots,v_n)\), write
+\(A_{\boldsymbol v}(x)=A_d((x_1,v_1)\cdots(x_n,v_n))\) on
+\[
+ U_{d,n}=\{x:x_i\ne x_j\ (i\ne j),\quad0<(x_i)_0<d\}.
+\]
+This is open, since finitely many strict inequalities describe the time
+conditions and finitely many diagonals have been excluded.
+
+The two quantitative and differential inputs are as follows. First, for
+each grade bound \(D\) and label norm bound \(R\), there are
+\(C>0\) and \(K\in\mathbb N\) such that every slab word of length
+\(n\), with these label bounds, satisfies
+\begin{equation}\label{ex-all-copy-bound}
+ \|A_d(w)\|\le C^n(n/r)^{Kn}
+\end{equation}
+whenever \(0<r\le1\), its points have mutual sup-norm distances at
+least \(r\), and each time coordinate lies in \([r,d-r]\).
+The constants are independent of \(n,d\) and the positions.
+For the empty word the right side is interpreted as one, in agreement
+with \(A_d(\varnothing)=E_d\).
+Second, for each raw label \(v\) of grade \(d'\) and each coordinate
+\(j\), choose a raw label \(\delta_jv\) of grade \(d'+1\) representing
+its field derivative. Assume that the smooth scalar correlations obey
+the exact slot identity
+\begin{equation}\label{ex-raw-slot-identity}
+ \partial_{(x_i)_j}S_{\boldsymbol v}(x)
+ =S_{\boldsymbol v[i\leftarrow\delta_jv_i]}(x)
+\end{equation}
+at distinct points, also with any finite list of exterior insertions.
+The choice of raw representative need not itself be linear. For a phase
+using the original field quotient, the identity includes the assertion
+that the chosen representatives have the indicated values in that phase.
+
+\begin{proposition}[Smooth slab operators]\label{ex-smooth-slabs}
+Under \eqref{ex-all-copy-bound} and \eqref{ex-raw-slot-identity},
+\(A_{\boldsymbol v}:U_{d,n}\to B(\mathcal H)\) is smooth in operator
+norm, and
+\[
+ \partial_{(x_i)_j}A_{\boldsymbol v}(x)
+ =A_{\boldsymbol v[i\leftarrow\delta_jv_i]}(x).
+\]
+\end{proposition}
+\begin{proof}
+Fix a point \(x\in U_{d,n}\). Choose \(0<r\le1\) below its finitely
+many positive time margins and pairwise distances. In a neighborhood of
+\(x\), the same margins and distances are at least \(r/2\).
+For every fixed label tuple, \eqref{ex-all-copy-bound} therefore gives
+a local operator bound. The same holds for every one-slot differentiated
+tuple, since there are finitely many labels and their grades and norms
+have finite maxima.
+
+Define the real-linear derivative candidate
+\[
+ B_{\boldsymbol v}(x)[h]
+ =\sum_{i=1}^n\sum_{j=0}^3h_{i,j}
+    A_{\boldsymbol v[i\leftarrow\delta_jv_i]}(x).
+\]
+The finite collection of local bounds gives a local bound on
+\(\|B_{\boldsymbol v}(x)\|\). For positive words \(p,q\),
+\[
+ \langle[p],A_{\boldsymbol v}(x)[q]\rangle
+ =S((\theta p)\,w(x,\boldsymbol v)\,\tau_dq).
+\]
+The exterior points lie respectively below zero and above \(d\), so
+all configurations remain distinct near \(x\). Differentiating by
+\eqref{ex-raw-slot-identity} gives exactly the matrix elements of
+\(B_{\boldsymbol v}\). Sesquilinearity extends this statement to
+finite word sums, a dense linear subspace. The remainder lemma now
+proves norm continuity of \(A_{\boldsymbol v}\), for every tuple.
+
+In particular each differentiated tuple has norm-continuous operators.
+Thus the finite sum defining \(B_{\boldsymbol v}\) is norm-continuous.
+A second application of the remainder lemma proves
+\(DA_{\boldsymbol v}=B_{\boldsymbol v}\). Inductively, if all the
+tuple maps are \(C^k\), then each \(B_{\boldsymbol v}\) is \(C^k\)
+as a finite sum of fixed coordinate functionals times such maps. The
+derivative formula makes all tuple maps \(C^{k+1}\). Starting from
+continuity proves smoothness of every finite order, with the stated
+coordinate derivatives.
+\end{proof}
+
+\begin{corollary}[Norm separability of the compression algebra]
+\label{ex-norm-separable}
+If the scalar correlations are multilinear in the finite-dimensional raw
+label spaces, the hypotheses of Proposition~\ref{ex-smooth-slabs} imply
+that \(\mathcal A\) is separable in operator norm.
+\end{corollary}
+\begin{proof}
+Fix a finite basis in every raw label space. At fixed positions, the slab
+operator is multilinear in the labels: pairing the purported linear
+identity with any two word vectors reduces it to scalar multilinearity;
+density then proves equality of bounded operators. Every compressed word
+operator is therefore a finite linear combination of ones with basis
+labels.
+
+Place a word in positive time and choose a positive rational width
+greater than all its time coordinates. Approximate its distinct positions
+by rational positions inside this slab. Operator-norm continuity from
+Proposition~\ref{ex-smooth-slabs}, followed by the bounded compression
+\(A\mapsto P_0A|_{\mathcal H_0}\), proves norm convergence of the
+compressed operators. There are countably many rational widths, rational
+configurations, arities and finite basis-label tuples. Their compressed
+operators thus generate a norm-dense subalgebra. Star polynomials in this
+countable set with coefficients in \(\mathbb Q+i\mathbb Q\) form a
+countable set dense in the whole norm-closed algebra: approximate the
+finitely many generators and coefficients in any given polynomial, and
+then use the definition of the closure. This is the required norm
+separability.
+\end{proof}
+
+The first analytic input, the estimate uniform in the length of the word,
+is stronger than the separated-correlation bound used to construct time
+translations. The second input is an exact differential identity. The
+argument above supplies operator smoothness and norm separability from
+these two inputs; it leaves their derivation from the lattice fields to
+the construction chapters.

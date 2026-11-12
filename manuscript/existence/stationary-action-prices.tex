@@ -1,0 +1,187 @@
+\section{Local action prices for the stationary construction}
+\label{sec:stationary-action-prices}
+We verify the localized derivative input of
+Section~\ref{sec:uniform-stationary-chart} for the actual unmasked
+block action. The action is a sum over sites. Its positive-order
+coordinate derivatives have uniform local bounds, although its
+scalar value need not have a volume-independent bound.
+
+Fix the block side $L$, the patch, the direct clip, and the kernel
+parameters, including its positive frame and predictor cutoffs and
+positive penalty coefficient. Fix also an order $n\ge3$ and an
+exponential path width $\mu>0$. The incoming path data have row, cubic and quartic
+budgets at most $C_0$ at width $\mu$; the loop budget is at most
+$\Lambda$. These budgets are the sums of the absolute coefficients
+with their specified exponential length weights. All constants
+below may depend on this fixed data and on the group, but not on
+the auxiliary torus, its forest, or the tag choices.
+
+\subsection{From a finite read set to a localized derivative}
+A function based at a site $v$ has read radius $R$ if changing
+coordinates anchored farther than $R$ from $v$ leaves the function
+unchanged. A derivative containing any one such coordinate is zero:
+restrict to a line varying that coordinate, differentiate the
+constant function, and commute derivatives. If derivatives through
+order $n$ have operator norm at most $A$, then, for $q\le n$,
+\begin{equation}\label{eq:stationary-read-price}
+ |\partial_{i_1}\cdots\partial_{i_q}u|
+ \le Ae^{anR}\exp\!\left(-a\sum_{h=1}^q
+                               \operatorname{dist}(v,a_{i_h})\right).
+\end{equation}
+If every tested coordinate lies in the read set, the sum of their
+distances is at most $nR$; otherwise the left side vanishes.
+This also holds for vector-valued expressions with norms in place
+of absolute values.
+
+For a path atom of total length $t$, the fine forest chart and a
+signed motion enlarge its read radius to at most
+$2t+1+L$. The path itself travels at most $2t$ in fine units;
+reversing an oriented bond can move its initial point by one,
+and the coarse replica coordinate is anchored at most $L$ from
+the fine bond. This estimate remains valid for winding paths:
+periodic distance is bounded by lifted path length.
+
+Choose
+\[
+                         a=\frac\mu{4(n+1)(1+L)}.
+\]
+The elementary inequality
+\begin{equation}\label{eq:stationary-support-payment}
+         e^{\mu t/2}e^{an(2t+1+L)}\le e^{\mu t}e^\mu
+\end{equation}
+follows by comparing exponents: the second exponent is at most
+$\mu t/2+\mu$.
+The holomorphic path bounds at width $\mu/2$ give a derivative
+price $A_n e^{\mu t/2}$ for a slot, and
+$A_{n,k}\operatorname{magnitude}(q)e^{\mu t/2}$ for a degree-$k$
+atom $q$. To recall why the constants are uniform, each matrix
+transport is a finite product; on the fixed complex neighborhood
+its norm is bounded exponentially in path length. The Cauchy
+estimate on a fixed smaller neighborhood bounds derivatives by
+that exponential times a constant depending only on $n$ and the
+neighborhood. Composing with the fine exponential chart uses its
+uniform link derivatives and the finite partition formula. The
+fixed color projections and multilinear atom contractions contribute
+only the constants $A_n,A_{n,k}$.
+Combining this estimate with
+\eqref{eq:stationary-read-price} and
+\eqref{eq:stationary-support-payment} pays the localized derivative
+by the original width-$\mu$ coefficient budget.
+
+For an infinite row or atom family, the paid coefficient sequence
+is summable. It bounds the values and derivatives through order
+$n$ on the common coordinate ball. Uniform convergence and the
+fundamental theorem of calculus along coordinate segments justify
+termwise differentiation, inductively in the derivative order.
+The underlying holomorphic series converges normally on a smaller
+complex neighborhood, so it is smooth to all orders there.
+Consequently a row based at $v$ has localized derivative cost
+$C_0A_n$, and a cubic or quartic family has cost $C_0A_{n,3}$ or
+$C_0A_{n,4}$. A loop family has cost $\Lambda A_{n,2}$.
+The latter dependence is linear in $\Lambda$.
+
+\subsection{Summing sites without a volume factor}
+Suppose a site term $u_v$ has derivatives bounded by
+\[
+ |\partial_{i_1}\cdots\partial_{i_q}u_v|
+             \le B\exp\!\left(-a\sum_h\operatorname{dist}(v,a_{i_h})\right).
+\]
+Fix a tested coordinate $i_t$ and set
+$s=\sum_h\operatorname{dist}(v,a_{i_h})$. Then
+$\operatorname{dist}(v,a_{i_t})\le s$ and
+\[
+ \sum_h\operatorname{dist}(a_{i_t},a_{i_h})
+                                         \le(q+1)s\le(n+1)s.
+\]
+Splitting the exponent in two gives
+\[
+ e^{-as}\le e^{-(a/2)\operatorname{dist}(v,a_{i_t})}
+     \exp\!\left(-\frac a{2(n+1)}
+                     \sum_h\operatorname{dist}(a_{i_t},a_{i_h})\right).
+\]
+Summing $v$ costs only the distance-shell sum at width $a/2$.
+If at most $h$ terms have the same base site, multiply this cost
+by $h$. We have obtained the bound
+\eqref{eq:stationary-scatter-input}, with width $a/[2(n+1)]$,
+for every positive derivative of the site sum. The argument needs
+a tested coordinate as root, so it makes no assertion at order
+zero. Averaging over signed motions preserves the cost: each
+motion permutes sites and the averaging weights sum to one.
+
+The classical site density has three types of terms. The direct
+plaquette term has a fixed read radius and derivative bounds from
+its four unitary factors and the smooth group penalty. The
+squared-row term is $\|\ell(U)\|^2/2$. Its row value and derivatives
+are bounded by the row budget just proved; the finite product rule
+bounds its derivatives by a constant depending on $C_0$. Its
+localized bounds are preserved by that product rule, since the
+exponential factors for the split derivative slots multiply to the
+factor for all slots. Finally the cubic and quartic terms have the
+atom bounds above. Adding these terms and summing sites proves
+the required localized derivative estimate for the fine classical
+action. The classical price depends on $C_0$ and the direct clip,
+and does not depend on the loop budget $\Lambda$.
+
+\subsection{The prediction penalty on the same ball}
+The minimizing frame and predictor of
+Section~\ref{sec:predictor-branch} are smooth near the identity.
+The finite-read transplantation argument of
+Section~\ref{sec:mean-action-jets} makes their fixed-order
+neighborhood and derivative bounds uniform over periods. We must
+also verify that all tags select that same branch there.
+
+On a coordinate ball of radius $r$, each fine bond chord is at
+most $C_1r$, by integrating its first derivative from the identity.
+Every path used by a frame is of bounded length for the fixed
+patch, so its transport chord is at most $C_2r$. Shrink $r$ until
+the strict frame test holds. The uniqueness of the normalized
+minimizing frame identifies all frame tags there. Its coordinates
+and first derivatives are uniformly bounded on a smaller ball.
+A connector contains the frame at each of its two endpoints and
+a straight fine path. Its chord is therefore at most $C_3r$,
+with a common constant $C_3>0$.
+
+Let $Y_i$ be these connectors and $w_i\ge0$ their weights,
+$\sum_iw_i=1$. Comparing the prediction cost with the identity gives
+\[
+       \min_u\sum_iw_i\operatorname{price}(Y_i u^{-1})
+          \le\tfrac12(C_3r)^2.
+\]
+Choose $r<\sqrt{\zeta}/C_3$, where $\zeta>0$ is the predictor
+cutoff. This inequality is then strictly below the cutoff. Also
+\[
+       \left\|\sum_iw_i\operatorname{mat}(Y_i)-1\right\|
+                       \le c_GC_3r,
+\]
+where $c_G$ converts chord to matrix norm. Shrink $r$ further so
+this lies in the fixed nearest-point tube. The selected predictor
+is the smooth nearest-point projection of this weighted matrix
+average. Hence every predictor tag agrees with this same smooth
+expression throughout the ball. Product and composition rules
+bound its derivatives uniformly, using the same actual endpoint
+frames in both occurrences.
+
+For each coarse bond, the smoothing penalty is the group price of
+the coarse field times the inverse predicted field. Its value and
+its derivatives through order $n$ have a common bound on this ball.
+Its read set is the finite union of the patch paths at the two
+endpoints and the coarse bond coordinate. Apply
+\eqref{eq:stationary-read-price} with that fixed radius, then the
+site-summation argument. The embedded coarse sites are distinct;
+there are four coarse bond directions at each such site. Thus this
+sum has the same localized derivative bound, with multiplicity
+four, multiplied by the fixed kernel penalty coefficient.
+
+The full tested action is the sum of this smoothing penalty and
+the fine classical action. Taking the smaller common radius and
+adding their costs proves
+\eqref{eq:stationary-scatter-input} for the actual action, with all
+tags equal there. At the identity the curvature slots, plaquette
+cost and prediction discrepancy vanish; their first derivatives
+in the full action vanish as well, since the direct penalty is
+stationary and every other term has degree at least two in these
+vanishing slots. Thus $f(0)=0$ and $D_yf(0)=0$.
+Together with the tree-gauge Hessian gap, this supplies all inputs
+to the uniform stationary construction. The argument fixes the
+block and path budgets first; it does not assert a new estimate
+for the evolution of those budgets along a history.

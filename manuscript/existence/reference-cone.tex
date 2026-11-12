@@ -1,0 +1,132 @@
+\section{Decay of the matched reference error}
+\label{sec:reference-cone}
+The reference comparison uses a second cone argument. Here the
+coefficient vector is small compared with the remainder cost.
+The initial condition is imposed at the coarse comparison scale;
+the resulting cone propagates towards finer scales and bounds
+the error in the opposite direction.
+
+Let $\mu$ be the coefficient $\ell^1$ norm, including the unit
+coordinate. At scale $i$ write $v_i$ for the coefficient vector
+of a signed comparison and $r_i\ge0$ for its remainder cost.
+These are the data of the actual difference, not the sum of the
+costs of its two summands. On an interval $l\le i\le k$, assume
+$v_l=0$ and a one-step comparison of the following form. Put
+\[
+ q_i=L_i^{1/8},\qquad \varepsilon_i=q_i^{-3},\qquad
+ Y_i=\mu(D_{L_i}v_{i+1}),
+\]
+where $D_L$ multiplies the coordinate of degree $j\le d$ by
+$L^{d-j}$. An invertible coefficient map $B_i$ and its inverse
+have norm at most $K_i\ge1$, and the transition satisfies
+\begin{align}
+ \mu(v_i-B_iD_{L_i}v_{i+1})
+       &\le\varepsilon_i\{\mu(\operatorname{core}v_{i+1})+r_{i+1}\},
+                                                        \label{eq:reference-direction}\\
+ r_i&\le K_i\mu(\operatorname{core}D_{L_i}v_{i+1})
+                                    +\varepsilon_i r_{i+1}.\notag
+\end{align}
+Here $\operatorname{core}$ deletes the unit coordinate. Let $C_i\ge1$
+be the column allowances. The schedule is required to satisfy
+\begin{equation}\label{eq:reference-bank}
+ 64K_i^2\le C_i,
+ \qquad q_i\ge100000M_i^6(1+C_{i+1})^2,
+ \qquad M_i\ge K_i\ge1.
+\end{equation}
+Finally suppose the finest-scale cost obeys
+\begin{equation}\label{eq:reference-terminal}
+                    r_k\le w+C_k\{w+\mu(v_k)\},\qquad w\ge0.
+\end{equation}
+We prove
+\begin{equation}\label{eq:reference-gain}
+ e^{(s_k-s_i)/8}\{r_i+\mu(v_i)\}
+                    \le4(1+C_k)w\qquad(l\le i\le k),
+\end{equation}
+where $s_{i+1}-s_i=\log L_i$.
+
+First, deleting the unit coordinate cannot increase $\mu$, and
+$L_i\ge1$ gives $\mu(v_{i+1})\le Y_i$. Apply $B_i^{-1}$ to
+\eqref{eq:reference-direction} and use the triangle inequality:
+\begin{equation}\label{eq:reference-numeric-direction}
+ Y_i\le K_i\{\mu(v_i)+\varepsilon_i(Y_i+r_{i+1})\},
+ \qquad r_i\le K_iY_i+\varepsilon_i r_{i+1}.
+\end{equation}
+Set $A_i=32(1+C_i)^2$. The schedule implies
+\begin{equation}\label{eq:reference-smallness}
+ A_i\ge4K_i^2,\quad
+ 4K_i\varepsilon_i\le1,\quad
+ 4K_iA_{i+1}\varepsilon_i\le1,\quad
+ (4K_i^2+1)q_i\varepsilon_i\le1.
+\end{equation}
+Indeed \eqref{eq:reference-bank} gives
+$q_i\ge128K_i^2(1+C_{i+1})^2\ge1$.
+Since $\varepsilon_i\le q_i^{-1}$ and
+$q_i\varepsilon_i\le q_i^{-1}$, the last three claims follow
+from $4K_i\le q_i$, $128K_i(1+C_{i+1})^2\le q_i$, and
+$4K_i^2+1\le q_i$, respectively. The first follows from
+$C_i\ge64K_i^2$ and $C_i\ge1$.
+
+Suppose the cone inequality $A_i\mu(v_i)\le r_i$ holds.
+For this one step abbreviate $K=K_i$, $\varepsilon=\varepsilon_i$,
+$u=\mu(v_i)$, $Y=Y_i$ and $t=r_{i+1}$. The second inequality
+in \eqref{eq:reference-numeric-direction} yields
+\[
+              4Ku\le Y+\varepsilon t,
+\]
+because $4K^2u\le r_i\le KY+\varepsilon t$
+and $K\ge1$. Substitute this bound for $u$ in the first inequality:
+\[
+ Y\le\tfrac14(Y+\varepsilon t)
+                 +K\varepsilon Y+K\varepsilon t
+       \le\tfrac12Y+(K+\tfrac14)\varepsilon t.
+\]
+Thus $Y\le(2K+1/2)\varepsilon t\le4K\varepsilon t$.
+Using \eqref{eq:reference-smallness}, we obtain
+\[
+ A_{i+1}\mu(v_{i+1})\le A_{i+1}Y\le t,
+ \qquad q_ir_i\le q_i(4K^2+1)\varepsilon t\le t.
+\]
+The first statement propagates the cone. The second gives the
+gain in remainder cost. At $i=l$ the cone holds because $v_l=0$;
+induction therefore proves both inequalities at every step.
+Multiplying the latter gives
+\[
+               e^{(s_k-s_i)/8}r_i\le r_k.
+\]
+
+At the finest scale the cone also implies
+$2C_k\mu(v_k)\le r_k$. Insert this in
+\eqref{eq:reference-terminal}:
+\[
+                r_k\le(1+C_k)w+\tfrac12r_k,
+ \qquad r_k\le2(1+C_k)w.
+\]
+Since $\mu(v_i)\le r_i$ everywhere in the cone, this proves
+\eqref{eq:reference-gain}.
+
+\subsection{Keeping the error affordable along the interval}
+The gain estimate is combined with a sequence of mark
+weights. Let $\eta_i>0$, put $b_l=b>0$ and
+$b_{i+1}=\eta_i b_i$. Let $\rho_i>0$ satisfy
+\[
+                         \eta_iL_i^{d+1}\rho_i\le\rho_{i+1}.
+\]
+If $E\ge0$ and
+\[
+                 b_la_l^{-d}\frac{E}{e^{(s_k-s_l)/8}}
+                                      \le\rho_l,
+\]
+then the same estimate holds at every $i\ge l$ up to $k$:
+\begin{equation}\label{eq:reference-affordable}
+                 b_ia_i^{-d}\frac{E}{e^{(s_k-s_i)/8}}
+                                      \le\rho_i.
+\end{equation}
+In fact, the expression on the left is multiplied in one step
+by $\eta_iL_i^d q_i\le\eta_iL_i^{d+1}$. This proves the assertion
+by induction. Applied with $E=4(1+C_k)w$, it bounds the weighted
+coefficient-plus-remainder cost of the matched difference at all
+intermediate scales. The construction of that signed difference
+and the proof of its one-step comparison
+\eqref{eq:reference-direction} remain separate inputs: this
+numerical argument does not obtain them by subtracting two
+unrelated error estimates.

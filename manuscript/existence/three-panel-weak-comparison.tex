@@ -1,0 +1,249 @@
+\section{Three comparison scales and weak convergence}
+\label{sec:three-panel-weak-comparison}
+
+The comparison estimate is initially available at grid points whose coordinate
+projections are distinct. A test function may cross the excluded hyperplanes.
+We use three scales to pass from the former estimate to the latter test:
+one for the numerical comparison, one for a bound everywhere on a compact
+noncoincident set, and one for a derivative bound away from thin strips.
+Their different costs are essential to the argument.
+
+\subsection{The geometric and analytic estimates}
+
+Fix an arity $m\ge1$ and use the Euclidean norm on
+$E_4^m=(\mathbb R^4)^m$, retaining the maximum norm for pair separation. For $R>0$ set
+\[
+ K_R=\{x:\|x\|_2\le R,\quad
+               \|x_i-x_j\|_\infty\ge R^{-1}\ (i\ne j)\}.
+\]
+This is a compact subset of the noncoincident configuration space. Every
+compact subset of that space is contained in some $K_R$. Define
+\[
+ \Omega_\sigma=\{x: |x_{i,\nu}-x_{j,\nu}|>8\sigma
+                  \text{ for every }i\ne j,\ 1\le\nu\le4\}.
+\]
+Thus the complement of $\Omega_\sigma$ is a union of coordinate strips,
+not a neighborhood of just the actual coincidence set.
+
+Let $S$ be the smooth interacting table already extracted along the ordered
+mesh and volume filter $\mathcal F$, and let $Q(x)$ be the free correlation
+for a fixed word of labels. Fix a comparison index $k$. Its physical radius
+is $r_k>0$; its normalized grid spacing is $h_k>0$; its strip width is
+$\sigma_k>0$. The calibrated insertion maps may still depend on the finite
+cutoff pair. Suppose they are eventually bounded in their finite-dimensional
+operator space. On any convergent subfilter of these maps write $Y$ for the
+limiting tuple and
+\[
+                 U_{k,Y}(x)=S(r_kx;Y).
+\]
+All the following estimates are to hold for every such $Y$, with constants
+independent of that subfilter. The three required estimates are
+\begin{align}
+ |U_{k,Y}(y)-Q(y)|&\le e_k
+ &&\text{at generic grid points }y\in K_{2R},\label{eq:three-grid}\\
+ |U_{k,Y}(x)|&\le A_k^m
+ &&(x\in K_R),\label{eq:three-bulk}\\
+ \|D U_{k,Y}(x)\|&\le 4m B_k^m/\sigma_k
+ &&\bigl(|x_{i,\nu}-x_{j,\nu}|>4\sigma_k\bigr).
+ \label{eq:three-slope}
+\end{align}
+The last estimate is needed only in the noncoincident domain. The quantities
+$e_k,A_k,B_k$ are nonnegative. Assume
+\begin{gather}
+ e_k\longrightarrow0,\qquad \sigma_k\longrightarrow0,\qquad
+                 4m h_k\le\sigma_k\quad\hbox{eventually},\label{eq:three-room}\\
+ A_k^m\sigma_k\longrightarrow0,\qquad
+                  B_k^m h_k/\sigma_k\longrightarrow0.
+                  \label{eq:three-balances}
+\end{gather}
+We first prove the weak comparison from these estimates, then explain the
+three scale choices that give exactly these powers.
+
+Choose the coordinatewise lattice address $y$ of $x$, so
+$\|y-x\|\le4m h_k$. If $x\in\Omega_{\sigma_k}$, the closed ball
+of radius $\sigma_k$ about $x$ has every coordinate difference larger
+than $4\sigma_k$: moving its two endpoints changes a difference by at
+most $2\sigma_k$. In particular the segment from $x$ to $y$ remains
+in the region of \eqref{eq:three-slope}. The fundamental theorem of
+calculus on that segment gives
+\[
+ |U_{k,Y}(x)-U_{k,Y}(y)|
+          \le16m^2 B_k^m h_k/\sigma_k.
+\]
+For all sufficiently large $k$, this $y$ belongs to $K_{2R}$ whenever
+$x\in K_R$. Indeed the compact set $K_R$ lies in the interior of
+$K_{2R}$, and $\|y-x\|\le\sigma_k\to0$. It is also generic by the
+strict coordinate separation just proved. The free function $Q$ is
+uniformly continuous on $K_{2R}$. If $\omega_Q(t)$ is its modulus of
+continuity there, the three-term triangle inequality gives
+\begin{equation}\label{eq:three-clear}
+ \sup_{x\in K_R\cap\Omega_{\sigma_k}}
+ |U_{k,Y}(x)-Q(x)|
+ \le\alpha_k:=16m^2B_k^m h_k/\sigma_k+e_k+\omega_Q(\sigma_k)
+ \longrightarrow0.
+\end{equation}
+This convergence is uniform over the limiting tuples $Y$ under consideration.
+
+There is an explicit linear bound for the volume of the omitted strips:
+\begin{equation}\label{eq:three-strip}
+ |K_R\setminus\Omega_\sigma|\le C_{m,R}\sigma,
+ \qquad C_{m,R}=64m(m-1)(2R)^{4m-1}.
+\end{equation}
+For a fixed ordered pair $i\ne j$ and coordinate $\nu$, make the
+linear change replacing $x_{j,\nu}$ by
+$x_{j,\nu}-x_{i,\nu}$ and leaving the other coordinates unchanged.
+Its determinant is one. The restricted coordinate has interval length
+$16\sigma$ and each of the remaining $4m-1$ coordinates lies in an
+interval of length $2R$. This bounds the volume of that strip intersected
+with $K_R$ by $16\sigma(2R)^{4m-1}$. There are $4m(m-1)$ choices.
+Subadditivity proves \eqref{eq:three-strip}, including intersecting strips.
+For $m=1$ the union is empty and the constant is zero.
+
+Let $f$ be a smooth test supported in $K_R$, and put
+$C_Q=\sup_{K_R}|Q|<\infty$. Split its integral into the clear region
+and its complement. Equations \eqref{eq:three-bulk}--\eqref{eq:three-strip}
+give the quantitative bound
+\begin{equation}\label{eq:three-integral}
+ \left|\int f(x)\{U_{k,Y}(x)-Q(x)\}\,dx\right|
+ \le\|f\|_\infty\left\{|K_R|\alpha_k+
+                  C_{m,R}(A_k^m+C_Q)\sigma_k\right\}.
+\end{equation}
+The right side tends to zero. Both integrands are continuous on a
+neighborhood of the support, so these are ordinary integrals; no extension
+across coincident configurations is involved.
+
+\subsection{Returning to cutoff-dependent insertions}
+
+It is necessary to apply this estimate to the actual insertion maps, whose
+values depend on the cutoff. Fix $k$. Their eventual boundedness gives a
+compact closure in their finite-dimensional operator space. We use the
+ordered point and smeared limits of the same table $S$; these limits also
+hold on subfilters. If insertion maps converge to a map $T$ along a
+subfilter, multilinearity in a fixed finite basis proves that their point
+and smeared correlations converge to those with the limiting labels.
+For example, expanding an $m$-tuple gives finitely many terms
+\[
+ \sum_{a_1,\ldots,a_m}
+     t_{1,a_1}(N,p)\cdots t_{m,a_m}(N,p)
+     U_{N,p}(e_{a_1},\ldots,e_{a_m}).
+\]
+Every scalar coefficient converges and every fixed basis correlation has
+the specified limit. Finite sums and products therefore give the claimed
+convergence for varying insertions. For the smeared expression, use the
+fixed dilated test $r_k^{-4m}f(\,\cdot\,/r_k)$; a change of variables identifies
+its limiting integral with $\int f(x)U_{k,Y}(x)\,dx$.
+
+Denote the right side of \eqref{eq:three-integral} by $E_k(f)$. We claim
+that the cutoff smeared comparison error is eventually at most
+$E_k(f)+\eta$, for every $\eta>0$. If not, the set where it exceeds this
+number is frequent in $\mathcal F$. Restricting to that set gives a
+nontrivial filter. Compactness of the insertion maps supplies a further
+convergent subfilter. Along it the smeared error converges, by the preceding
+finite expansion, to a number at most $E_k(f)$. But its values are all
+larger than $E_k(f)+\eta$, so their limit is at least that latter number.
+This is a contradiction. Consequently the actual cutoff errors have the
+same asymptotic upper bound, and that bound tends to zero as $k\to\infty$.
+This compactness argument is performed separately at each fixed $k$ and
+does not replace the original ordered extraction by a new continuum table.
+
+\subsection{The three scale inequalities}
+
+We describe precisely the estimates needed from the marked construction.
+Fix an upper arity $n\ge2$, a maximum grade $D$, and a word of length
+$m\le n$ in grades at most $D$. Let $H_k>1$ be the diverging comparison
+monitor. Choose three exponents $a,b,e>0$ and a strip exponent $c<0$,
+and set
+\[
+ r_k=a_kH_k^a,\qquad h_k=H_k^{-a},\qquad
+ \sigma_k=H_k^c.
+\]
+At a fixed comparison depth, all three panels must use the same calibrated
+readout map $T$. The lift at exponent $a$ and the lift at exponent $b$
+then differ by the grade weight $H_k^{(a-b)j}$ on grade $j$.
+With a common finite basis, the sum of the absolute expansion coefficients
+of a fixed label of grade at most $D$ is bounded by a constant times
+$H_k^{(a-b)D}$. The constant depends on the label, not on $k$.
+This uses the same map $T$ on the two sides; two unrelated calibrations
+would not give the stated identity.
+
+The marked comparison at the $a$-panel supplies
+\eqref{eq:three-grid} with $e_k=C\varepsilon_k\to0$.
+The centered one-point bounds at the $b$-panel, expanded in that common
+basis and in the finitely many signed and conjugated orientations, supply
+the bulk coefficient bound with
+\[
+          A_k=C_bH_k^{(a-b)D}.
+\]
+The analogous centered difference bound at the $e$-panel supplies
+\[
+          B_k=C_eH_k^{(a-e)D}.
+\]
+Here the product and difference estimates are the centered cell estimates
+of Section~\ref{ex-centered-estimates}. Their use requires actual cell
+widths, not just these coefficient prices. If $w_b,w_e$ are the output
+levels of the latter two panels, the schedule estimates are
+\begin{gather}
+ a_{w_b-1}/a_k\le H_k^{b+6},\qquad
+          6m a_{w_b}<a_{w_b-1},\label{eq:three-width-b}\\
+ a_{w_e}/a_k\le H_k^{e+5}.\label{eq:three-width-e}
+\end{gather}
+The first gives a bulk cell strictly smaller than $r_k/(2R)$ once
+$b+6<a$; the second gives a difference cell smaller than
+$r_k\sigma_k$ once $e+5<a+c$. Applying the centered bounds and their
+continuum limits then gives \eqref{eq:three-bulk} and the directional
+bound $B_k^m/\sigma_k$. Summing over the $4m$ coordinate directions
+gives exactly \eqref{eq:three-slope}.
+
+Here is the elementary rounding calculation underlying the width expenses
+$5$ and $6$. On the relevant constant-block interval let its block factor
+be $L\le H_k$ and let $V$ be its cover parameter, with $V^{10}\le H_k$.
+The panel height is the least $h$ with $L^h\ge H_k^{b+2}$, and its
+surplus is the least $s$ with $L^s\ge V^{10}$. Minimality gives
+$L^h\le L H_k^{b+2}$ and $L^s\le L V^{10}$. Thus
+\[
+ a_{w_b}/a_k=L^{h+s}\le H_k^{b+5}.
+\]
+One earlier block costs at most another $H_k$, giving the first inequality
+in \eqref{eq:three-width-b}. The block factors at these output levels
+tend to infinity; hence they eventually exceed $6m$, proving its second
+inequality. The identical calculation with $e$ gives
+\eqref{eq:three-width-e}. The allowance of each panel must place all
+these levels in the same constant-block interval.
+
+It remains to choose the exponents so that both integral errors decay.
+The exact sufficient inequalities are
+\begin{equation}\label{eq:three-checks}
+ \begin{split}
+ c&<0,\qquad b+6<a,\qquad e+5<a+c,\\
+ (a-b)Dn+c&<0,\qquad (a-e)Dn-a-c<0.
+ \end{split}
+\end{equation}
+They imply $-a<c$ and hence $4m h_k\le\sigma_k$ eventually.
+They also give
+\[
+ A_k^m\sigma_k=C_b^mH_k^{(a-b)Dm+c}\to0,\qquad
+ B_k^m h_k/\sigma_k=C_e^mH_k^{(a-e)Dm-a-c}\to0.
+\]
+Indeed $a>b,e$, so replacing $m$ by $n$ increases the exponents.
+For a concrete choice, write $q=Dn$, $x=7q+1$, $y=6+x$, and take
+\[
+ a=10+D+x+yq+y+7,\qquad b=a-7,\qquad e=a-y,\qquad c=-x.
+\]
+Then $b+6=a-1$, $e+5=a-x-1$, and the last two exponents in
+\eqref{eq:three-checks} are respectively $-1$ and $-17-D-y$.
+Also $a,b,e>D+6$, so the additional lower bounds on panel exponents
+are respected. These choices depend only on the finite grade and arity
+bounds. They make no assertion of a uniform estimate over all words.
+
+Finally, if these common-panel data are available at arbitrarily large
+comparison depths, choose an increasing sequence of those depths.
+All the eventually valid numerical inequalities remain valid along it.
+There are only finitely many basis words under fixed grade and arity
+bounds; take the maximum of their finitely many thresholds. The preceding
+proof applies to each word on this one sequence, and multilinearity extends
+it to arbitrary labels within these bounds. The empty word is the constant
+one and needs no strip estimate. Unit, conjugation and signed-symmetry
+properties of the insertion maps pass through this construction whenever
+they hold eventually at the finite cutoffs. Producing the common marked
+panel data on the selected Wilson history is a separate upstream task;
+the argument here proves their exact weak-convergence consequence.

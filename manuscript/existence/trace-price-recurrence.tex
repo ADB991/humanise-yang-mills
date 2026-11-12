@@ -1,0 +1,332 @@
+% Finite scale induction behind the endpoint price-duality estimate.
+\section{The finite price recurrence}
+\label{sec:ex-lattice-trace-price-recurrence}
+
+We give the scale induction that turns the paid direction and the local
+one-step response estimate into the endpoint inequality used in
+Section~\ref{sec:ex-lattice-trace-coffer-supplier}. The one-step response
+estimate is derived below from the finite-volume local insertion, local
+uniqueness, and block-size bounds. The exact source declarations and their
+remaining scale inputs are recorded in the accompanying evidence file.
+
+Fix a reference degree \(d\), a selected scale history \(H\), and integers
+\(m\leq k\). Write
+\[
+ \Gamma_j=\exp\!\left(\frac{S_k-S_j}{8}\right),\qquad
+ \kappa_j=\sqrt{\operatorname{monitor}(j)},\qquad
+ I_j=\frac1{\Gamma_j\kappa_j}\quad(m\leq j\leq k).
+\]
+Here \(S_j\) is the scale coordinate of the history. For \(m\leq j<k\),
+let \(L_j\) be the block side length at step \(j\), let
+\[
+ P_j=C(J(j+1)),\qquad
+ b_j=\frac1{10K(J(j+1))},\qquad
+ \rho_j=\operatorname{rate}(L_j),\qquad
+ s_j=\frac{b_j}{\kappa_{j+1}},
+\]
+where \(J(j)\) is the stage at rung \(j\), \(C\) is the selected
+coefficient-cost profile, \(K\) is the fixed positive worth profile, and
+\(\rho_j>0\) is the block remainder-cost factor. Write \(c_k\) for the number of coefficient columns at the terminal
+rung, matching the notation of the Coffer estimate. Put \(p_j=L_j^{1/8}\), and define
+\begin{equation}
+ H_j=\Gamma_j^{-1}+\frac{P_jL_j^d+\rho_j}{\Gamma_{j+1}},\qquad
+ \varepsilon_j=\frac{I_{j+1}}{10P_jH_j}.
+ \label{eq:ex-lattice-price-local-scales}
+\end{equation}
+All quantities in the denominators are positive.
+
+The scale and budget choices give, at every step,
+\begin{equation}
+ \kappa_{j+1}\leq2\kappa_j,\qquad
+ 1\leq P_j,\qquad 4P_j\leq p_j,\qquad
+ 2P_jb_j\leq\frac13,\qquad
+ \Gamma_j=\Gamma_{j+1}p_j.
+ \label{eq:ex-lattice-price-budget}
+\end{equation}
+Consequently
+\begin{equation}
+ P_jI_j\leq\frac12 I_{j+1}.
+ \label{eq:ex-lattice-price-contraction}
+\end{equation}
+Indeed, the ratio of the left side to \(I_{j+1}\) is
+\(P_j\kappa_{j+1}/(p_j\kappa_j)\), which is at most \(2P_j/p_j\leq1/2\).
+
+For a coefficient \(x\) at rung \(j\), write \(x^{\circ}\) for its
+projection to nonconstant coordinates, and let \(\mathcal L_j(x)\) be the
+coefficient produced by the local block insertion. The diagonal weight map
+\(\mathcal V_{L_j}\) multiplies a grade-\(r\) coordinate by
+\(L_j^{d-r}\). Thus \(\|\mathcal V_{L_j}(x^{\circ})\|
+\leq L_j^d\|x^{\circ}\|\).
+The one-step local response estimate, for a paid comparison with adjacent coefficients
+\(x_j,x_{j+1}\) and nonnegative remainder-cost bounds \(r_j,r_{j+1}\), is
+\begin{equation}
+ \begin{split}
+ \|x_j-\mathcal L_j(x_{j+1})\|
+ &\leq s_j\bigl(\|x_{j+1}^{\circ}\|+r_{j+1}\bigr)\\
+ &\quad+\varepsilon_j\Bigl(r_j+P_j\|\mathcal V_{L_j}
+                (x_{j+1}^{\circ})\|+\rho_jr_{j+1}\Bigr).
+ \end{split}
+ \label{eq:ex-lattice-price-one-step}
+\end{equation}
+It holds uniformly for all sufficiently large volume indices, provided the
+adjacent fields have the required format, remainder bounds, exact density
+transfer, and their marked sites are related by the scale map. The separate
+local insertion estimate is also
+\begin{equation}
+ \|x_{j+1}\|\leq P_j\|\mathcal L_j(x_{j+1})\|.
+ \label{eq:ex-lattice-price-spends}
+\end{equation}
+We explain the finite-volume comparison producing the second line of
+\eqref{eq:ex-lattice-price-one-step}. Let \(\mathcal Q_d\) be the finite
+family of coefficient-recovery probes, with probe prices \(\pi(\tau)\) for \(\tau\in\mathcal Q_d\). Let \(M_d\geq1\) be the maximum of the operator-norm products of the local gauge variations that occur in these probes, over the finitely many ordered variation patterns of order at most \(d\) and over the compact local gauge chart. Let \(T_d\) be the finite coefficient reconstruction constant for this probe family. Thus for any
+coefficient difference \(z\),
+\[
+ \|z\|\leq T_d\sum_{\tau\in\mathcal Q_d}|R_\tau(z)|.
+\]
+A probe of order at most \(d\) annihilates a regular source term whose
+support is nonwrapping and whose format has the required vanishing of its
+first \(d\) local variations. Let \(B_0\) be the support radius and
+\(\sigma>0\) the support exponent of the local representation, and define
+\[
+ M_{B_0}(X,W)=e^{\sigma\operatorname{cover}_{B_0}(X)}W.
+\]
+For each of the two coefficients, the regular part has a countable
+presentation by regular terms with origin in their supports and with total
+\(M_{B_0}\)-mass bounded by its remainder budget. Each term has a common
+healthy chart. If its purchased sup-bound is \(u_a\), then on this chart
+every ordered directional derivative of orders \(q=0,\ldots,d\) has norm at
+most \(u_a\), after the local variation prices have been factored out.
+The chart is large enough for each recovery probe and its local stencil to
+fit, and the admissible local presentation has the required order-\(d\)
+vanishing on each nonwrapping term. These are the finite recovery and
+regularity hypotheses used below; a value bound alone would not imply the
+probe estimate. Their signed union is still absolutely summable, even when
+some supports overlap.
+
+Let \(\mathcal I_0\) be the indices of nonwrapping terms, and take a finite
+subset \(D\subset\mathcal I_0\). The probe applied to the presented
+coefficient equals the corresponding derivative of its local presentation;
+this is the coefficient-readout identity.
+On the common quiet chart, the forced contributions vanish, and the
+prescribed masks replace the local masks. Thus each density is the same
+nonzero exponential action factor times its presented coefficient plus its
+regular series. Equality of the two densities lets us cancel this common
+factor and gives the signed difference of the presented coefficients as
+the sum of all signed regular terms. The finite sum over \(D\) has zero probe: every term has the
+vanishing property just stated. First apply the finite-order local chain rule
+to the finite truncation and its omitted tail, not to the infinite series. The
+local comparison estimate bounds the difference between the full presented
+field probe and the zero probe of this truncation by the sup-bound tail of
+the omitted terms. This estimate is uniform in finite \(D\), because the
+local section has order-\(d\) regularity and the source terms have summable
+sup-bound mass. If the probe has order \(r\), the chain rule expands its
+local link variation into ordered partitions of \(\{1,\ldots,r\}\). Let
+\(\lambda_{\tau,q}\) be the price of a local logarithmic variation of
+order \(q\); the finite sum of the products
+\(\prod_{A\in\mathcal P}\lambda_{\tau,|A|}\) over these partitions,
+with the zeroth-order term included, is \(\pi(\tau)\). Supremum bounds
+on the omitted terms and the triangle inequality therefore give
+\[
+ |R_\tau(P.x-Q.x)|\leq\pi(\tau)M_d\left(
+   \sum_{a\in\mathcal I_0\setminus D}u_a
+   +\sum_{a\notin\mathcal I_0}u_a\right),
+\]
+where \(u_a\) is the sup-bound of the corresponding signed regular
+term. The remainder certificates give \(\sum_a M_{B_0}(X_a,u_a)\leq a+b\),
+so \(\sum_a u_a\) is finite as well. For the wrapping terms, the elementary support inequality
+\[
+ 10\bigl(h(4B_0+2)+2B_0\bigr)<n,
+ \quad 0\in X,\quad X\text{ wrapping},\quad W\geq0
+ \quad\Longrightarrow\quad
+ W\leq e^{-\sigma h}M_{B_0}(X,W)
+\]
+follows from the lower bound on the cover radius of a wrapping support.
+Absolute summability justifies the tail limit (without differentiating an
+infinite sum term by term) and permits the finite sets \(D\) to increase
+through all of \(\mathcal I_0\). The nonwrapping
+sup-bound tail tends to zero, and the wrapping sup-bound sum is at most
+\(e^{-\sigma h}(a+b)\); taking this limit gives the probe estimate
+\[
+ |R_\tau(P.x-Q.x)|\leq\pi(\tau)M_d e^{-\sigma h}(a+b).
+\]
+This is the truncation-and-tail argument: one does not apply a probe
+term by term to the infinite collection of wrapping terms.
+
+The coefficient recovery inequality is
+\[
+ \|z\|\leq T_d\sum_{\tau\in\mathcal Q_d}|R_\tau(z)|.
+\]
+It follows from finite-dimensionality: the probes jointly separate
+coefficients, so their maximum is a norm on the coefficient space; compactness
+of its unit sphere gives a finite comparison constant, and a maximum is
+bounded by the sum. Summing the probe estimate over the finite family gives
+\begin{equation}
+ \|P.x-Q.x\|\leq \mathfrak C_d e^{-\sigma h}(a+b),\qquad
+ \mathfrak C_d=T_dM_d\sum_{\tau\in\mathcal Q_d}\pi(\tau).
+ \label{eq:ex-lattice-local-uniqueness}
+\end{equation}
+Take the torus side length \(n\) so that
+\(10(h(4B_0+2)+2B_0)<n\). Then every probe fits in the region of
+nonwrapping supports. This proves the required local uniqueness estimate
+from coefficient recovery, local vanishing, the exponential support tail,
+and absolute summation.
+
+For the insertion itself, first decompose the next-level density into its
+primary term, its countable regular terms, and its countable forced terms.
+The primary term has only finitely many coefficient coordinates.
+The regular series is absolutely summable by its sup-bound mass budget. The
+forced series is absolutely summable after division by the positive factor
+\(y=\sqrt{\operatorname{forcedAllowance}_{j+1}}\), using the forced part
+of the same remainder certificate. Write the regular mass sum as \(a\) and the forced mass sum as \(yb\),
+where \(a,b\geq0\) and \(a+b\leq r_{j+1}\) by the remainder
+certificate. For a regular term of volume mass \(m_a\), the paid atom
+costs are \(s_jm_a\) and \(\rho_jm_a\); for a forced term of mass
+\(m_a\), they are \(s_jm_a/y\) and \(\rho_jm_a/y\). Thus the
+combined regular and forced costs are bounded by \(s_jr_{j+1}\) and
+\(\rho_jr_{j+1}\), respectively. The primary coefficient atom contributes the finite
+coordinate costs \(s_j\|x_{j+1}^{\circ}\|\) and
+\(P_j\|\mathcal V_{L_j}(x_{j+1}^{\circ})\|\). Summing first over the
+finite coefficient basis, then over the countable regular and forced lists,
+is legitimate because their total costs and coefficient norms are summable.
+At fixed volume \(N\), write \(A_N\) for the supremum of the
+normalized action and vacuum factor occurring in the density integral.
+There are finitely many compact link variables, so the action is continuous
+and \(A_N<\infty\). The absolute integrand of the countable atomic
+sum is bounded by \(A_N\) times its summable mass majorant. This is
+an integrable bound on the normalized finite-volume Haar space, so Fubini
+preserves the density identity.
+Thus the countable atomic sum has the pushed density. Denote its actual
+coefficient by \(\widetilde x_j\). The coordinate leads sum to
+\(\mathcal L_j(x_{j+1})\), and the paid insertion estimate gives
+\(\|\widetilde x_j-\mathcal L_j(x_{j+1})\|\leq
+s_j(\|x_{j+1}^{\circ}\|+r_{j+1})\). Its coarse remainder budget is at
+most \(P_j\|\mathcal V_{L_j}(x_{j+1}^{\circ})\|+\rho_jr_{j+1}\).
+This is the content of the countable summation argument: dominatedness and
+absolute summability justify both the density identity and the interchange
+of summation with integration.
+
+Compare this intermediate coefficient with the actual coefficient at rung
+\(j\) using the local uniqueness estimate
+\eqref{eq:ex-lattice-local-uniqueness}. Their local densities agree by the
+paid comparison's density identity and the insertion's pushed-density
+identity. Choose \(h\) so that
+\(\mathfrak C_de^{-\sigma h}\leq\varepsilon_j\), then choose the torus
+side long enough for the displayed support inequality. The triangle
+inequality gives exactly \eqref{eq:ex-lattice-price-one-step}, uniformly
+over the allowed fields.
+
+For \eqref{eq:ex-lattice-price-spends}, coefficient coordinates have grades
+\(r=0,1,\ldots,d\), so each weight \(L_j^{d-r}\geq1\) when \(L_j\geq1\).
+Consequently the weighted coordinate norm dominates the original norm. The legal block cap
+then controls that weighted norm by \(P_j\) times the norm after
+insertion. This is the size estimate for the admissible leading map; it is
+not merely the inequality \(L_j\geq1\).
+
+\begin{lemma}[One-step propagation]
+\label{lem:ex-lattice-price-one-step}
+Suppose the adjacent data satisfy the local hypotheses above and, for some
+\(t\geq0\),
+\[
+ r_j+\|x_j\|\leq\frac{t}{\Gamma_j},\qquad
+ r_{j+1}+\|x_{j+1}\|\leq\frac{t}{\Gamma_{j+1}},\qquad
+ \|x_j\|\leq tI_j.
+\]
+Then
+\[
+ \|x_{j+1}\|\leq tI_{j+1}.
+\]
+\end{lemma}
+
+\begin{proof}
+The projection to nonconstant coordinates is contractive, so the paid-cone
+bound gives \(\|x_{j+1}^{\circ}\|+r_{j+1}\leq
+\|x_{j+1}\|+r_{j+1}\leq t/\Gamma_{j+1}\). It also gives
+\[
+ r_j+P_j\|\mathcal V_{L_j}(x_{j+1}^{\circ})\|
+       +\rho_jr_{j+1}
+ \leq t\left(\Gamma_j^{-1}
+        +\frac{P_jL_j^d+\rho_j}{\Gamma_{j+1}}\right)=tH_j.
+\]
+Apply \eqref{eq:ex-lattice-price-one-step} and then
+\eqref{eq:ex-lattice-price-spends}. The triangle inequality yields
+\[
+ \|x_{j+1}\|
+ \leq P_j\left(\|x_j\|
+       +s_j\frac{t}{\Gamma_{j+1}}+\varepsilon_jtH_j\right).
+\]
+Using \(\|x_j\|\leq tI_j\), \(s_j=b_j/\kappa_{j+1}\), and the definition
+of \(I_{j+1}\), the right side is
+\[
+ tI_{j+1}\left(
+   \frac{P_jI_j}{I_{j+1}}
+   +P_jb_j
+   +\frac1{10}\right)
+ \leq tI_{j+1}\left(\frac12+\frac16+\frac1{10}\right)
+ =\frac{23}{30}tI_{j+1}\leq tI_{j+1}.
+\]
+Here \(P_jb_j\leq1/6\) follows from the fourth inequality in
+\eqref{eq:ex-lattice-price-budget}. This proves the claim, including the
+degenerate case \(t=0\).
+\end{proof}
+
+\begin{proposition}[Finite endpoint price estimate]
+\label{prop:ex-lattice-trace-sharp-read}
+Assume the selected history satisfies the scale inequalities
+\eqref{eq:ex-lattice-price-budget} for every \(m\leq j<k\). Let a paid
+comparison have coefficient vectors \(x_j\), remainder costs \(r_j\),
+and marked sites at the spatial origin for \(m\leq j\leq k\). Assume
+its left coefficient is zero, \(x_m=0\), and that its adjacent pairs
+satisfy the local estimates \eqref{eq:ex-lattice-price-one-step} and
+\eqref{eq:ex-lattice-price-spends}. Assume also the paid direction
+conditions of Section~\ref{sec:reference-cone}, the room and bank
+inequalities \eqref{eq:reference-bank}, and the terminal spread bound
+\eqref{eq:reference-terminal} with endpoint budget \(w\geq0\). Then,
+for all sufficiently large volume indices for which the local one-step
+estimates hold,
+\begin{equation}
+ \kappa_k\|x_k\|\leq4(1+c_k)w.
+ \label{eq:ex-lattice-price-endpoint}
+\end{equation}
+The threshold in the volume index is uniform over the comparison data and
+\(w\) covered by the local estimate.
+\end{proposition}
+
+\begin{proof}
+We first verify that the comparison satisfies the discounted paid-cone
+bound used in the recurrence. In the canonical cone estimate, choose at
+rung \(j\) the worth coefficient
+\(K_j=K(J(j+1))\), the column allowance equal to the actual column count
+\(c_j\), and the bank comparison coefficient
+\(M_j=K(J(j+1)+1)\). The scale-slow condition gives
+\(K_j\leq K(J(j)+1)\), so the room inequality yields
+\(64K_j^2\leq c_j\). The bank condition is exactly
+\(100000M_j^6(1+c_{j+1})^2\leq p_j\), and monotonicity gives
+\(M_j\geq K_j\geq1\). The paid direction in that cone is the adjacent
+coefficient comparison with diagonal weights \(L_j^{d-r}\) and loss
+\(p_j^{-3}\); this is the direction hypothesis assumed here. The zero
+left coefficient and terminal spread are precisely its boundary
+conditions. Therefore equation~\eqref{eq:reference-gain} gives
+\begin{equation}
+ \Gamma_j(r_j+\|x_j\|)\leq4(1+c_k)w
+       \qquad(m\leq j\leq k).
+ \label{eq:ex-lattice-price-cone}
+\end{equation}
+
+Put \(t=4(1+c_k)w\). Since \(x_m=0\), we have
+\(\|x_m\|=0\leq tI_m\). Suppose inductively that
+\(\|x_j\|\leq tI_j\). The paid-cone bound gives
+\(r_j+\|x_j\|\leq t/\Gamma_j\) and
+\(r_{j+1}+\|x_{j+1}\|\leq t/\Gamma_{j+1}\). In particular the local
+remainder allowances satisfy the two bounds in Lemma~\ref{lem:ex-lattice-price-one-step}.
+That lemma gives \(\|x_{j+1}\|\leq tI_{j+1}\). Finite induction reaches
+\(j=k\), where \(\Gamma_k=1\), so \(I_k=1/\kappa_k\). Multiplying by \(\kappa_k\)
+gives \eqref{eq:ex-lattice-price-endpoint}. The finite intersection of the
+volume thresholds for \(j=m,\ldots,k-1\) is still an eventual set. Each
+adjacent estimate is uniform over the specified comparison data, so one
+threshold works for all of them.
+\end{proof}
+
+Thus the endpoint estimate combines the already proved paid-cone argument
+of Section~\ref{sec:reference-cone} with the one-step quantitative price
+recurrence proved here. The only new induction is the finite propagation
+from the zero left coefficient to the terminal rung.

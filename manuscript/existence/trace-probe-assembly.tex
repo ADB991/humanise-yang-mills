@@ -1,0 +1,191 @@
+% The paid local components and chamber receipt assemble to a one-point probe.
+\section{Assembly of the finite-volume response probe}
+\label{sec:ex-lattice-trace-probe-assembly}
+
+We spell out the finite algebra that turns two separately paid local
+components and a buffered chamber approximation into the probe used in the
+mission. The quantitative assumptions below are exactly the estimates the
+assembly consumes. In particular, the proof establishes every component of
+the probe conclusion and does not regard the existence of a record with
+those components as a proof.
+
+Fix a frame level $j$, its volume level $k$, and a finite volume $N>k$.
+Write
+\[
+ t=\widehat\beta_k,\qquad a>0,\qquad \beta>0,\qquad
+ q=(a/a_k)^5,
+\]
+where $a_k$ is the field scale at the volume level. Let $\tau_j$ be the
+error scale
+\[
+ \tau_j(s)=\exp\!\left(\frac{s}{10^4}
+           (\log\widehat\beta_j)^{48}\right),
+ \qquad E=\tau_j(-430).
+\]
+Assume the scale bounds
+\begin{equation}
+ t\geq1,\quad a\geq1,\quad 0<\beta\leq2t,\quad
+ 1+2t\leq\tau_j(230),\quad 6c\leq t,
+ \label{eq:ex-trace-probe-scales}
+\end{equation}
+where $c$ is the coefficient cost of the finite symmetry average defined
+below. The error scales obey $\tau_j(s)\tau_j(s')=\tau_j(s+s')$.
+
+Let $\mathfrak A=\operatorname{Signed}(4)\times\{0,1\}$ be the finite
+motion set; the second factor records whether complex conjugation is
+applied. For $\mu=(s,e)$, write $\rho_\mu$ for the real-linear action on
+grade-five coefficients and $\sigma_\mu$ for the corresponding real-linear
+action on observables. For $\mu=(s,e)$ and axis $d$, define
+$\operatorname{prev}(\mu,d)=s.\operatorname{perm}^{-1}(d)$ and
+$\epsilon(\mu,d)=\operatorname{sign}(s,\operatorname{prev}(\mu,d))$;
+the sign does not depend on the conjugation bit $e$. Put
+$R=|\mathfrak A|^{-1}$. The finite averages have the
+form
+\begin{align}
+ (\mathscr S_5 V)_d&=R\sum_{\mu\in\mathfrak A}
+     \epsilon(\mu,d)\,\rho_\mu V_{\operatorname{prev}(\mu,d)},
+ &R\sum_{\mu\in\mathfrak A}|\epsilon(\mu,d)|&=1,
+ \label{eq:ex-trace-probe-coeff-average}\\
+ (\mathscr S_0 f)_d&=R\sum_{\mu\in\mathfrak A}
+     \epsilon(\mu,d)\,\sigma_\mu f_{\operatorname{prev}(\mu,d)}.
+ \label{eq:ex-trace-probe-observable-average}
+\end{align}
+This is a real-linear Reynolds average. Reindexing by $\mu\mapsto g\mu$
+for each signed motion $g$ and using the defining previous-axis and sign
+formulas gives the exact covariance
+$\rho_g Z_d=\operatorname{sign}(g,d)Z_{g.\operatorname{perm}(d)}$.
+Toggling the second motion coordinate reindexes the conjugation action and
+proves the reality condition. In particular, central inversion fixes every
+axis and has sign $-1$, so $\rho_{\mathrm{archV}}Z_d=-Z_d$ for each $d$.
+Oddness is a consequence of this vector-valued Reynolds projection, not a
+claim about arbitrary grade-five labels.
+
+Let $\operatorname{Col}$ be the finite-volume column map from grade-five
+labels to coefficient arrays. It is real-linear and commutes with each
+motion by finite-volume covariance. The paid labels obey
+$\|\operatorname{Col}(X_d)\|_1,\|\operatorname{Col}(Y_d)\|_1\leq2$;
+this is the transported column bound, including the norm of the observation
+map, rather than a bound on the raw label alone. Define its averaged coefficient cost
+by
+\[
+ c=R\sup_d\sum_{\mu\in\mathfrak A}
+       \|\rho_\mu\|_{\mathrm{col}}.
+\]
+The triangle inequality yields
+$\|\operatorname{Col}(\mathscr S_5V)_d\|_1\leq
+c\sup_e\|\operatorname{Col}(V_e)\|_1$. This is the precise finite
+column estimate used below; the signed or conjugate motion is real-linear,
+not assumed complex-linear or isometric in the column norm. The observable average has total
+variation one, so, on chamber-interior observables, the reflection seam
+makes it preserve a common root-seminorm bound.
+
+Let $x_d,y_d$ be two arrays of finite-volume observables, each interior to
+a fixed locality window. Let $X_d,Y_d$ be their grade-five paid
+coefficients. The paid receipts and the finite-volume column map give the transported
+column bounds $\|\operatorname{Col}(X_d)\|_1\leq2$ and
+$\|\operatorname{Col}(Y_d)\|_1\leq2$.
+Write $\mathcal O$ for the linear finite-volume observation into a
+one-point observable, $\mathcal B$ for pullback from the coarse volume to
+the reflection chamber at level $N$, and $\mathcal R$ for the chamber root
+seminorm. Assume each paid residual, each pulled-back local field, and each observed
+label below is interior to the same reflection chamber, with the locality
+window and room conditions required for the finite-volume seam. On this
+interior class, assume the seam gives root-seminorm subadditivity and
+invariance under each motion. The exact covariance identities are
+\begin{equation}
+ \mathcal O\,\mathscr S_5=\mathscr S_0\,\mathcal O,
+ \qquad
+ \mathcal B\,\mathscr S_0=\mathscr S_0\,\mathcal B.
+ \label{eq:ex-trace-probe-covariance}
+\end{equation}
+These follow term by term from linearity and covariance of the finite-volume
+observation and pullback under each signed motion.
+
+The paid-component estimates used here are the following explicit
+inequalities, for every axis $d$:
+\begin{align}
+ \mathcal R\!\left(\mathcal B(qx_d)-\mathcal O(a^5X_d)\right)&\leq E,
+ &\mathcal R\!\left(\mathcal B(qy_d)-\mathcal O(a^5Y_d)\right)&\leq E.
+ \label{eq:ex-trace-probe-paid-errors}
+\end{align}
+The buffered chamber estimate is this: if
+\[
+ J_d=q\bigl(x_d-\beta y_d\bigr)
+\]
+and $g$ is any admissible coarse observable with supremum norm at most
+$\tau_j(150000)$, interior to the same locality window, with that window
+fitting in the available room, then at any two distinct coarse sites,
+\begin{equation}
+ \left|\mathbb E\left[(\mathcal B\mathscr S_0J)_d(x)\,
+                    (\mathcal B g)(z)\right]\right|
+       \leq\tau_j(-30000).
+ \label{eq:ex-trace-probe-buffered}
+\end{equation}
+The estimate is supplied by the finite-volume chamber buffer; its proof is
+upstream of this assembly. The scale assumptions and the paid-component
+bounds are supplied by the construction's budget and response receipts.
+
+\begin{proposition}[Probe from paid components and a chamber buffer]
+\label{prop:ex-trace-probe-assembly}
+Under the assumptions above, define
+\[
+ Z_d=(\mathscr S_5(X-\beta Y))_d,\qquad
+ J_d=q(x_d-\beta y_d),\qquad
+ P_d=\mathcal O(a^5 Z_d),\qquad
+ U_d=(\mathcal B\mathscr S_0J)_d.
+\]
+Then $Z$ is signed-covariant, with each component satisfying
+$\rho_{\mathrm{archV}}Z_d=-Z_d$. Moreover, for every axis $d$,
+\begin{enumerate}
+\item $\|\operatorname{Col}(a^5 Z_d)\|_1\leq a^5t^4$;
+\item $U_d$ is chamber-interior and
+  $\mathcal R(U_d-P_d)\leq\tau_j(-200)$;
+\item for every admissible bounded local test in
+  \eqref{eq:ex-trace-probe-buffered}, the separated-site pairing of $U_d$
+  with its pullback is at most $\tau_j(-200)$ in absolute value.
+\end{enumerate}
+Thus $P_d$ has exactly the coefficient, parity, root-error, and local-price
+parts required of the finite-volume probe.
+\end{proposition}
+\begin{proof}
+Real-linearity of the column map and the transported column bounds give
+$\|\operatorname{Col}(X_d-\beta Y_d)\|_1\leq2+2\beta$. Covariance
+lets the finite-average bound apply to $Z$, so
+\[
+ \|\operatorname{Col}(Z_d)\|_1
+   \leq c(2+2\beta)\leq c(2+4t)\leq6ct\leq t^2.
+\]
+Because $a,t\geq1$, this yields
+$\|\operatorname{Col}(a^5Z_d)\|_1\leq a^5t^4$. The finite signed-motion average has the covariance just established;
+central inversion fixes each axis with sign $-1$, giving the oddness
+assertion for every component.
+
+By linearity and the covariance identities,
+\[
+ U_d-P_d=\bigl(\mathscr S_0\bigl(\mathcal B(qx)-\mathcal O(a^5X)\bigr)\bigr)_d
+       -\beta\bigl(\mathscr S_0\bigl(\mathcal B(qy)-\mathcal O(a^5Y)\bigr)\bigr)_d.
+\]
+The root seminorm is invariant under each signed motion, is subadditive,
+and the averaging weights have total absolute value one. Hence
+\[
+ \mathcal R(U_d-P_d)\leq(1+\beta)E
+   \leq\tau_j(230)\tau_j(-430)=\tau_j(-200),
+\]
+where $1+\beta\leq1+2t\leq\tau_j(230)$ was used. The interiority of $U_d$
+follows because each motion preserves the fixed locality window and finite
+averaging preserves the interior domain.
+
+Finally, the buffered estimate gives a separated-site price at most
+$\tau_j(-30000)$, which is at most $\tau_j(-200)$ by monotonicity of
+$\tau_j$. This proves all three conclusions.
+\end{proof}
+
+The proposition isolates the actual finite averaging and error arithmetic
+in the selected probe producer. The source's remaining inputs to this
+local argument are the two paid-component estimates
+\eqref{eq:ex-trace-probe-paid-errors}, the finite-volume covariance
+identities, and the buffered chamber estimate
+\eqref{eq:ex-trace-probe-buffered}; their exact producers and hypotheses
+are recorded in the evidence file. In particular, this section does not
+claim that arbitrary local components or an arbitrary chamber record
+satisfy those paid estimates.

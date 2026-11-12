@@ -1,0 +1,121 @@
+% Draft for issue #26. All claims and notation remain subject to independent review.
+\section{Finite lattice gauge theory}
+\label{sec:ex-lattice}
+\label{ex-lattice}
+
+The starting point is a probability measure on finitely many group-valued links.
+Compactness makes this measure elementary to define; the difficulty of the
+continuum problem is to control its observables uniformly as the number of links
+grows. We first fix the action and its normalization.
+
+\subsection{The periodic lattice and its probability law}
+\label{subsec:ex-lattice-finite}
+
+Fix a closed subgroup $G\subset U(r_G)$ in a specified faithful unitary
+representation, with nonabelian simple real Lie algebra as in
+Section~\ref{ex-statement}. The group is compact. For a positive
+integer $\ell$, let
+\[
+  \Lambda_\ell=(\mathbb Z/\ell\mathbb Z)^4,\qquad
+  E_\ell=\Lambda_\ell\times\{0,1,2,3\}.
+\]
+A link configuration is a function $U:E_\ell\to G$. The four coordinates are
+Euclidean; this finite model does not distinguish a time direction in its
+action. An oriented link in the negative direction is represented by the
+inverse of the corresponding positively oriented link.
+
+For $x\in\Lambda_\ell$ and distinct axes $i,j$, the positively oriented
+plaquette holonomy based at $x$ is
+\[
+ U_{ij}(x)=U_i(x)U_j(x+e_i)U_i(x+e_j)^{-1}U_j(x)^{-1}.
+\]
+Count each pair $i<j$ once. The action is
+\[
+ S_\ell(U)=\sum_{x\in\Lambda_\ell}\sum_{0\leq i<j<4}
+   \left(1-\frac{\operatorname{Re}\operatorname{tr}U_{ij}(x)}{r_G}\right).
+ \label{eq:ex-lattice-action}
+\]
+Each summand is real and nonnegative: a unitary matrix has each diagonal
+entry of modulus at most one, so $\operatorname{Re}\operatorname{tr}V\leq r_G$.
+The convention has no extra factor of $1/2$ over faces. This action is
+dimensionless. The bare
+coefficient $\beta$ multiplies it in the Boltzmann weight; it is not the
+blocking-kernel penalty used later in the RG construction.
+
+Let $H_G$ be probability Haar measure on $G$, and let
+\[
+ \rho_\ell=\bigotimes_{(x,i)\in E_\ell}H_G,
+ \quad Z_\ell(\beta)=\int e^{-\beta S_\ell(U)}\,d\rho_\ell(U),
+ \quad d\mu_{\ell,\beta}(U)=Z_\ell(\beta)^{-1}e^{-\beta S_\ell(U)}d\rho_\ell(U).
+\]
+The partition function is finite and strictly positive. Indeed the link space
+is a finite product of compact groups, hence compact, and $S_\ell$ is continuous;
+therefore $e^{-\beta S_\ell}$ is bounded and integrable. It is strictly
+positive at every configuration, so its integral against the probability
+measure $\rho_\ell$ is positive. Integrating the displayed density gives
+$Z_\ell(\beta)/Z_\ell(\beta)=1$, so $\mu_{\ell,\beta}$ is a probability
+measure. This argument works for every real $\beta$ for which the displayed
+definition is used; the construction theorem later selects its own coefficient
+sequence.
+
+\begin{proposition}[Gauge invariance of the finite action and law]
+\label{prop:ex-lattice-gauge}
+For any map $g:\Lambda_\ell\to G$, transform links by
+\[
+ (g\cdot U)_i(x)=g(x)U_i(x)g(x+e_i)^{-1}.
+\]
+Then $S_\ell(g\cdot U)=S_\ell(U)$ and $\mu_{\ell,\beta}$ is invariant under
+$U\mapsto g\cdot U$.
+\end{proposition}
+\begin{proof}
+Substitution into the four factors of $U_{ij}(x)$ cancels the group elements at
+the three intermediate vertices. The remaining factors give
+\[
+ (g\cdot U)_{ij}(x)=g(x)U_{ij}(x)g(x)^{-1}.
+\]
+Trace is invariant under conjugation, since for matrices $A,B$ of matching
+finite size $\operatorname{tr}(AB)=\operatorname{tr}(BA)$; hence every
+plaquette summand and their finite sum are unchanged.
+
+For each link $(x,i)$, the transformed value is obtained from $U_i(x)$ by left
+and right multiplication by fixed group elements. Left and right translations
+preserve Haar measure. The full transformation acts separately on the
+coordinates of the finite product $E_\ell$, so the product Haar measure
+$\rho_\ell$ is preserved. Since the density $Z_\ell(\beta)^{-1}
+e^{-\beta S_\ell(U)}$ is invariant, the weighted measure is preserved as well.
+This proves invariance of the law, not gauge invariance of every observable.
+An insertion must separately satisfy the relevant invariance condition.
+\end{proof}
+
+\subsection{Scales, observables, and the ordered limit}
+\label{subsec:ex-lattice-scales}
+
+For mesh index $N$ and physical-period index $p$, the family uses
+strictly increasing positive-integer sequences $D_N$ and $P_p$. Set
+\[
+ a_N=D_N^{-1},\qquad \ell_{N,p}=P_pD_N=P_p/a_N,
+ \qquad \Lambda_{N,p}=(\mathbb Z/\ell_{N,p}\mathbb Z)^4.
+\]
+Thus $\ell_{N,p}$ is a site count per axis, while $P_p$ is the physical linear
+period. A site is embedded in Euclidean spacetime by multiplying the symmetric
+least-absolute residue in each coordinate by $a_N$. A token $v$ specifies an
+insertion $O_{N,p}(v,z;U)$. We require the insertion to be continuous and gauge invariant, with the
+fixed-stencil locality specified in Section~\ref{ex-statement}.
+
+The finite $m$-point moment is the integral of the product of its $m$
+insertions under $\mu_{\ell_{N,p},\beta_{N,p}}$. Smearing uses a lattice sum
+weighted by $a_N^{4m}$. Continuity and compactness of the finite configuration space give
+integrability of each finite product. The
+convergence interface first demands, at each fixed
+suitable physical volume, a full $N\to\infty$ mesh limit of these smeared
+moments, and only then a volume limit along a specified strictly increasing
+subsequence. It is not an arbitrary joint or diagonal limit. The support of a
+test function must eventually fit inside the period box and its arguments must
+remain separated as specified in Section~\ref{ex-statement}.
+
+The next task is to control these moments as the number of links tends to
+infinity. The required estimates must concern the same bare coefficients and
+local insertions at all cutoffs and periods. The extraction argument in the
+next section isolates a local modulus of continuity and a local size bound;
+the renormalization construction must supply those estimates with the indicated
+order of quantifiers.

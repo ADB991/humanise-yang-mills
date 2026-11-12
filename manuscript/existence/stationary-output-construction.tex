@@ -1,0 +1,317 @@
+\section{Constructing the stationary output action}
+\label{sec:stationary-output-construction}
+We now apply the curvature lift to the Taylor coefficients of the
+stationary action. The construction has two separate parts. Cubic
+and quartic atoms match the classical action through degree four.
+The quadratic response determines one scalar change in the kinetic
+coefficient and an invariant loop remainder with vanishing moments.
+Both parts use the same coarse bed and the same sequence of tori.
+
+\subsection{Recovering Ward data from finite-volume coefficients}
+For an analytic real function $F$ of the link coordinates, write
+$C_n(F)=D^nF(0)/n!$, extended complex multilinearly to complex link
+fields. A unit Fourier wave has a specified momentum, coordinate
+direction, and colour basis vector. A common coefficient picture
+$P$ for functions $F_k$ on tori $\Lambda_k$ means that
+\begin{equation}\label{eq:output-record}
+ \left|C_n(F_k)[v_1,\ldots,v_n]
+ -\mathbf1_{\sum p_j=0}\,|\Lambda_k|\,
+      P(p_1,\ldots,p_{n-1})\right|
+       \le |\Lambda_k|\varepsilon_k
+\end{equation}
+for every such tuple of unit waves; the zeroth momentum in the
+picture is minus the sum of the other momenta. Direction and
+colour indices in $P$ are understood. We assume a common positive
+strip width and finite component bound, and $\varepsilon_k\to0$.
+The side lengths tend to infinity. Exact recording is the case
+$\varepsilon_k=0$.
+
+Suppose $F_k$ is invariant, as a germ at the identity, under gauge
+transformations and under simultaneous adjoint colour rotations.
+Assume its positive-degree derivatives below degree $n$ vanish.
+Differentiate the gauge-invariance identity once in the gauge
+parameter and $n-1$ times in the link variables. The term where
+all link derivatives fall on $F_k$ gives its $n$th derivative
+with one argument equal to the linear gauge variation $d_0h$.
+Every other term contains a positive-degree derivative of $F_k$
+of degree less than $n$ and is zero. Consequently
+\[
+             C_n(F_k)[v_1,\ldots,d_0h,\ldots,v_n]=0.
+\]
+On Fourier waves this is exactly the contraction by
+$q(p_j)$ in factor $j$. It holds in every factor by symmetry
+of the derivative. This is also the leading case of the finite
+gauge-variation identity in
+Section~\ref{sec:ex-soft-curvature-receipts}.
+
+Approximate any tuple of real independent momenta by finite-torus
+frequencies and choose the zeroth frequency to make their sum
+zero. Representatives may differ by $2\pi$ multiples; both the
+picture and the symbols $q$ are periodic. Divide
+\eqref{eq:output-record} by $|\Lambda_k|$. The error tends to
+zero, while continuity of the common picture and of $q$ permits
+passage to the limit in the finite contraction sum. Thus the
+picture has all continuous-momentum Ward identities. Conjugating
+real Taylor coefficients and reversing every wave gives
+$\overline{P(-p)}=P(p)$ by the same limit. Differentiating the
+constant colour-rotation invariance and passing to the limit
+makes the real and imaginary colour tensors invariant. These
+are precisely the hypotheses of
+Section~\ref{sec:multileg-curvature-lift}.
+
+For $n=2$, only the first derivative of $F_k$ needs to vanish.
+This follows from colour invariance when the gauge Lie algebra is
+simple: an invariant linear functional kills every bracket, and
+the brackets span the algebra. The constant value of $F_k$ need
+not be zero.
+
+\subsection{Matching a leading Taylor coefficient}
+Suppose $n\ge3$, each $F_k$ is invariant under signed coordinate
+permutations as a germ, $F_k$ vanishes to order $n$, and $P$ records its
+$n$th coefficient exactly, at strip cost $A$. The curvature lift
+produces invariant real atoms of degree $n$ with total exponential
+budget $KA$, at a positive width chosen before $A$ and $P$.
+Let $S$ be their translation sum and then their average over the
+finite group of signed coordinate permutations.
+
+Here is the normalization check. Each transported plaquette slot
+has zero constant term and linear term equal to its discrete curl.
+The leading coefficient of the product of $n$ slots is therefore
+the product of these curls. The normalized coefficient $C_n(S)$
+is the symmetrization of that ordered product, namely the average
+over the $n!$ permutations of its arguments. On unit Fourier
+waves, summing the anchor over the torus gives zero unless the
+momenta sum to zero, and gives $|\Lambda_k|$ otherwise. The
+remaining absolutely convergent displacement sum is exactly the
+curvature symbol contracted in every factor. It is $P$ by the
+lifting identity. Since $C_n(F_k)$ is symmetric, symmetrizing this
+identity retains it. Averaging orientations also retains it,
+because $F_k$ is invariant under those orientations. Reflections
+may multiply a wave by a unit-modulus edge phase; these phases
+are included when applying the same identity to the transformed
+wave. Thus $C_n(S)=C_n(F_k)$ on every tuple of unit Fourier waves.
+
+These waves span the complexified link space, by finite Fourier
+inversion. Multilinearity gives equality on arbitrary arguments
+and hence on real fields. Both functions are analytic, and each
+atom vanishes to order $n$; the exponential budget permits
+termwise differentiation on a common complex link ball as in
+Proposition~\ref{prop:ex-atom-stream-picture}. It follows that
+\begin{equation}\label{eq:output-leading-removal}
+                           F_k-S=O(|x|^{n+1})
+\end{equation}
+along every real ray. In the approximate version of
+\eqref{eq:output-record}, permutation and orientation averages
+are convex averages, so the same argument retains the coefficient
+error $|\Lambda_k|\varepsilon_k$ on each tuple of unit waves.
+It does not insert a factorial or a further volume factor.
+
+\subsection{The cubic and quartic construction}
+Let $E_k$ be the classical stationary action in the chosen chart,
+and let $J_k$ be the quadratic path action obtained from the coarse
+bed roots. Both are analytic, gauge invariant, and invariant under
+signed coordinate permutations. Their values and first derivatives
+at zero are zero. The stationary Hessian identity and the exact
+bed attachment give the same Hessian for both, namely the coarse
+Gaussian form. Thus
+\[
+                              F_k=E_k-J_k
+\]
+has order three. Suppose $E_k$ has exact common coefficient
+pictures of degrees three and four with component bound $M\ge1$
+at width $\sigma$. The row estimates supply such pictures for
+$J_k$ at positive widths and fixed bounds $P_3,P_4$.
+Choose the minimum of the three widths. Both residual pictures
+then have cost at most
+\[
+                             M(1+P_3+P_4).
+\]
+Apply \eqref{eq:output-leading-removal} at $n=3$ to obtain an
+invariant cubic atom action $S_3$ of budget $K_3M$ and with
+$F_k-S_3$ of order four.
+
+Its fourth coefficient must also be subtracted. In general an
+atom of degree three has nonzero higher Taylor terms. The uniform
+atom-picture estimate gives an exact common degree-four picture
+for $S_3$, of cost at most $K_3M B_4$ at a positive width. Subtract
+it from the degree-four picture of $F_k$, and take the minimum
+width. The resulting cost is at most a fixed multiple of $M$.
+Apply the leading-removal construction at $n=4$ to $F_k-S_3$.
+This produces an invariant quartic action $S_4$, again with budget
+bounded by a fixed multiple of $M$, and
+\begin{equation}\label{eq:output-classical-five}
+                     E_k-J_k-S_3-S_4=O(|x|^5).
+\end{equation}
+The two atom families and their common positive width are chosen
+independently of $k$. They consequently match the action on every
+torus in the sequence. Taylor expansion on rays followed by
+polarization proves equality of the full derivatives of orders
+zero through four. The chart's tag-independence is an equality
+of germs, so the same derivatives agree for every allowed choice
+of tag, without choosing a different path for each tag.
+
+\subsection{Removing the unique quadratic kinetic coefficient}
+We need one further consequence of the Ward and lattice symmetries.
+Let $f_{ab}^{uv}(p)$ be an analytic quadratic coefficient picture,
+where $a,b$ are coordinate indices and $u,v$ colour indices,
+with momenta $(-p,p)$. Suppose it comes from the common recording
+of analytic, gauge-invariant, signed-coordinate-invariant real
+functions as above. It then has the exchange symmetry
+\[
+                  f_{ab}^{uv}(p)=f_{ba}^{vu}(-p).
+\]
+The leading homogeneous terms transform as ordinary coordinate
+tensors under signed permutations: the reflected-edge phases have
+constant term equal to the relevant coordinate sign. Once all
+lower homogeneous terms vanish, the higher terms of these phases
+do not contribute at the order being considered.
+
+First $f(0)=0$. Indeed the first-order part of the Ward identity
+for a constant tensor is $\sum_b p_b f_{ab}^{uv}(0)=0$ for all
+$p$, and coordinate vectors detect every entry. For its linear
+term write $K_{ab}^{uv}(p)$. The left and right Ward identities
+give
+\[
+ \sum_b p_bK_{ab}^{uv}(p)=0,\qquad
+ \sum_a p_aK_{ab}^{uv}(p)=0.
+\]
+They imply $K_{ab}^{uv}(e_b)=K_{ab}^{uv}(e_a)=0$ and
+$K_{ab}^{uv}(e_j)+K_{aj}^{uv}(e_b)=0$. If $a,b,j$ are distinct,
+the coordinate permutation exchanging $b$ and $j$ identifies the
+two terms, so both vanish. When indices coincide the preceding
+two identities already imply the same conclusion. The linear
+term is zero and $f$ has order two.
+
+Let $Q_{ab}^{uv}(p)$ be its quadratic homogeneous term. Fix
+$a\ne b$ and one unit colour vector $e_u$. We claim that
+\begin{equation}\label{eq:output-one-test}
+                      Q_{aa}^{uu}(e_b)=0
+\end{equation}
+forces $Q=0$. At fixed $a,p$, the colour form
+$Q_{aa}^{uv}(p)$ is real, symmetric, and adjoint invariant.
+Reality follows from momentum reversal and even homogeneity;
+symmetry follows from the exchange identity. Such a form is a
+scalar multiple of the invariant inner product. Indeed its
+self-adjoint representing operator commutes with every adjoint
+operator; each eigenspace is an ideal, so simplicity leaves only
+one eigenvalue. Therefore \eqref{eq:output-one-test} kills that
+whole colour form. Coordinate permutations transfer the conclusion
+to $Q_{xx}^{uv}(e_y)$ for all $x\ne y$. The case $x=y$ follows
+directly from the leading Ward identity.
+
+Polarize $Q$, writing $T_{xy}^{uv}(e_k,e_l)$ for its symmetric
+bilinear coefficient in momentum. Reflection in coordinate $r$
+multiplies this entry by $(-1)^{\mathbf1_{r=k}+\mathbf1_{r=l}}$
+on the momentum side and by
+$(-1)^{\mathbf1_{r=x}+\mathbf1_{r=y}}$ on the tensor side.
+Unless these parities agree for every $r$, the entry is zero.
+For $x=y$ this eliminates every mixed momentum coefficient;
+the diagonal coefficients were just shown to vanish. For $x\ne y$
+it leaves only the mixed pair $\{k,l\}=\{x,y\}$. Finally insert
+$p=e_x+e_y$ in the Ward identity with first tensor index $x$.
+All other entries have vanished, so it kills this last mixed
+coefficient as well. Thus $Q=0$ in every colour component.
+
+The picture now has order three. Reversal of all coordinate signs
+acts by $+1$ on its two tensor indices but by $-1$ on a homogeneous
+cubic polynomial. Its cubic term is therefore zero. We have proved
+that the single test \eqref{eq:output-one-test} gives order four.
+
+Let $H(p)$ be the coarse metric row, with $H(0)=I$, and let $b_H$
+be the exactly recorded quadratic picture of its quadratic path
+action. Its quadratic homogeneous term is
+\[
+           (b_H)_{ab}^{uv,[2]}(p)
+          =\tfrac12\bigl(|p|^2\delta_{ab}-p_ap_b\bigr)\delta_{uv}.
+\]
+This follows by replacing both discrete curls by their linear
+terms $ip\wedge$ and using $H(0)=I$; the action has coefficient
+$1/2$ and its two waves have opposite momenta. In particular the
+transverse unit test is $1/2$. Fixing distinct axes $0,1$ and any
+unit colour basis vector $e_u$, define
+\[
+                   \alpha=2\operatorname{Re}f_{11}^{uu,[2]}(e_0).
+\]
+Then $f-\alpha b_H$ passes the zero test. It inherits the Ward,
+reality, exchange, and lattice symmetries by subtracting the
+actual quadratic action, so it has order four. This establishes
+the normalization of $\alpha$ before any curvature lift is chosen.
+
+\subsection{The loop remainder and its real-wave estimate}
+Let $U_k$ denote the local determinant and Jacobian response and
+$V_k$ the inherited loop response. Suppose their common pictures
+are $f$ and $g$, with strip bounds $\Phi$ and $R$ on width
+$\sigma$, respectively. Assume $f$ records $U_k$ with error
+$|\Lambda_k|\varepsilon_k$, while $g$ records $V_k$ exactly and
+has order four. Assume also that $J_k$ has the exact picture
+$b_H$, of bound $B_H$, at that width. All three functions have
+the invariances used above. Then
+\[
+                h=f-\alpha b_H+g
+\]
+has order four, strip cost at most $\Phi+|\alpha|B_H+R$,
+and records $U_k-\alpha J_k+V_k$ with the same error.
+The two-factor lift, with retained order two, gives an invariant
+loop atom family of budget
+\begin{equation}\label{eq:output-loop-budget}
+                          D(\Phi+|\alpha|B_H+R).
+\end{equation}
+It has zero total coefficient and zero first displacement moments.
+Let $S_2$ be its orientation-averaged action. The normalization
+argument above shows that the difference between
+$C_2(S_2)$ and $C_2(U_k-\alpha J_k+V_k)$ on every pair of unit
+complex Fourier waves is bounded by $|\Lambda_k|\varepsilon_k$.
+
+Put $d=4\dim\mathfrak g$, the number of one-form direction and
+colour coordinates at a site. A complex wave with all component
+amplitudes bounded by one is a sum of $d$ unit basis waves, so
+bilinearity bounds the coefficient difference by
+$d^2|\Lambda_k|\varepsilon_k$. A real wave is half the sum of
+that complex wave and the opposite-momentum wave with conjugate
+amplitude. Expanding two real waves gives four terms, each with
+factor $1/4$, and hence the same bound. Finally $D^2=2C_2$:
+\begin{equation}\label{eq:output-real-wave}
+ \left|D^2(S_2-U_k+\alpha J_k-V_k)(0)[w_p,w_q]\right|
+        \le 2d^2|\Lambda_k|\varepsilon_k.
+\end{equation}
+The momenta $p,q$ are arbitrary; no opposite-momentum restriction
+has been added.
+
+\subsection{One common output path}
+Take the row family to be the coarse bed roots and take the loop,
+cubic, and quartic families just constructed. Their exact row
+attachment is unchanged by adding the other three families.
+The metric identity follows from that root attachment and the
+coarse bed identity. Invariance and the two loop moment identities
+hold separately for the constructed atoms. At any positive width
+below the common construction width, the row and cubic/quartic
+budgets are satisfied whenever
+\[
+      A'\ge\max\{\operatorname{rowPrice}(w,M_H),KM\},
+ \qquad
+      \Lambda'\ge D(\Phi+|\alpha|B_H+R).
+\]
+Here $M_H$ is the root-strip bound and $M$ the classical Taylor
+bound. Width reduction only decreases each weighted absolute sum.
+Thus this is a path with all the required summability, metric,
+invariance, and moment properties, not merely a list of formal jets.
+
+Its classical part is $J_k+S_3+S_4$ and obeys
+\eqref{eq:output-classical-five}. Its response part is
+$\alpha J_k+S_2$. The stationary determinant identity identifies
+the actual thermal response, as a germ, with $U_k+V_k$.
+Consequently \eqref{eq:output-real-wave} is the required Hessian
+comparison for the actual response. If
+\[
+                 2d^2\varepsilon_k
+                    \le\Theta\Omega e^{-g\,\mathrm{side}(\Lambda_k)},
+\]
+its right side is at most
+$|\Lambda_k|\Theta\Omega e^{-g\,\mathrm{side}(\Lambda_k)}$.
+The stationary gap gives positivity of the stationary fluctuation
+Hessian, so its determinant remains positive near zero; the analytic
+chart gives the required smooth response germs.
+These conclusions all concern the same output path. Production of
+the common determinant picture, the inherited picture with its
+fourth-order bound, and the displayed exponential error is still
+required when this construction is used in a transition.

@@ -1,0 +1,259 @@
+\section{The Gaussian quadratic form in a sector}
+\label{sec:sector-gram}
+The quadratic reference must remain nondegenerate after the large-field
+bonds have been frozen. A lower bound for a flat Hessian alone would
+not establish this. We prove the lower bound for the actual transported,
+selected rows, using a separate local gauge around each active bond.
+All norms in the quadratic inequalities below are physical counting
+norms: squared colour norms are summed over bonds without dividing
+by the volume.
+
+Fix the tree, seed set, coarse field and original predictor tags of
+Section~\ref{sec:packet-annulus}. Let $\mathcal H$ be the active
+free bonds and let $P_{\mathcal H}$ denote restriction to them,
+extended by zero on all other bonds. The seeds include exactly the
+actual coarse flags. An active bond has both coarse endpoints outside
+the $10B$ seed neighbourhood. A row is selected when its anchor
+is outside the $6B$ seed neighbourhood. These are fixed selections
+for this quadratic form.
+
+Let $q$ be the number of signed channels and write
+$\lambda=q^{-1/2}$. For a channel $s$ and a fine or predictor
+row $a$, set
+\[
+ D_{s,a}u={\bf1}_{\{(s,a)\ {
+m selected}\}}
+             A^V_{s,a}P_{\mathcal H}u.
+\]
+The map $A^V_{s,a}$ is the actual transported cut row, including
+the signed displacement of input colours. In orthonormal colour
+coordinates, define $M$ by
+\[
+ (Mu)_{s,a}=\lambda D_{s,a}u.
+\]
+Here and below a colour array and its scalar coordinate vector are
+identified. Define the completed precision matrix
+\begin{equation}\label{eq:sector-precision}
+ A=M^*M+P_{\mathcal H^c}.
+\end{equation}
+Every column of $M$ indexed by an inactive bond is zero.
+Consequently $A$ acts as the identity on the inactive coordinates
+and has no cross terms between them and the active coordinates.
+The completion supplies no energy on the active subspace.
+
+If $b$ is the vector of selected affine rows at zero fluctuation,
+including the same factor $\lambda$, linearity of the transported
+rows gives
+\[
+ \mathcal Q(u)=\tfrac12\|b+Mu\|_2^2.
+\]
+This is exactly the orientation average of the extracted squares:
+$\lambda^2=1/q$ supplies its normalization. In particular,
+\[
+ \mathcal Q(v+u)-\mathcal Q(v)
+ =\langle u,M^*b+M^*Mv\rangle
+       +\tfrac12\langle u,M^*Mu\rangle.
+\]
+The same fine field, tags and orientation choices are used in every
+term. We have not averaged independently chosen Gaussian matrices.
+
+\subsection{A local linear inequality from the tree comparison}
+Let $w$ be a fine colour array which vanishes on the fixed tree.
+The tree comparison of Section~\ref{sec:seed-tree-patch}, with
+coarse configuration equal to the identity, implies
+\begin{equation}\label{eq:sector-local-linear}
+ \|w_e\|\le K\sum_{z\in\mathcal B}\sum_\alpha
+       \|(d_fw)_{\overline z+L o,\alpha}\|
+           +\|(\mathcal Qw)_{o,a}\|,
+ \qquad o=\operatorname{parent}(e),
+\end{equation}
+where $a$ is the axis of $e$, $\mathcal B$ is the fixed macro box,
+and $\mathcal Q$ is the derivative of the actual predictor.
+The box sum may count periodic images more than once; this only
+enlarges its nonnegative right side.
+
+Here is the passage to the linear inequality. Apply the nonlinear
+comparison to $U_e(\varepsilon)=\exp(\varepsilon w_e)$.
+It remains in the same tree slice since $w$ vanishes on the tree.
+For sufficiently small $\varepsilon$ all required frame
+likelihoods are positive: at zero every frame is in the minimizing
+branch, and the finitely many conditions are open. Divide the
+comparison by $|\varepsilon|$ and let $\varepsilon\to0$ through
+nonzero real values. If $g(0)=1$ and its matrix derivative is the
+colour matrix of $v$, then
+\[
+ \lim_{\varepsilon\to0}
+ \frac{r(g(\varepsilon))}{|\varepsilon|}=\|v\|.
+\]
+This follows directly from differentiability and the physical
+normalization of the chord. The derivatives of the fine links,
+plaquettes and predictor are respectively $w$, $d_fw$ and
+$\mathcal Qw$, the last by Section~\ref{sec:predictor-branch}.
+Passing through the finite box sum proves
+\eqref{eq:sector-local-linear}. The limiting neighbourhood can
+depend on the finite torus; the resulting constant $K$, inherited
+from the nonlinear tree inequality, does not.
+
+\subsection{A lower bound for the actual selected rows}
+For an anchor $o$, define
+\[
+ \begin{split}
+ J_o(u)^2&=\sum_{\operatorname{dist}(o,\operatorname{parent}(e))
+                         \le3B}\|(P_{\mathcal H}u)_e\|^2,\\
+ R_o(u)^2&=\sum_{\operatorname{dist}(o,\operatorname{anchor}(s,a))
+                         \le R_{\rm macro}+2}\|D_{s,a}u\|^2.
+ \end{split}
+\]
+The square roots are nonnegative. An active bond at $o$ is more
+than $10B$ from the seeds. Since the macro radius is much smaller
+than $B$, every row with anchor within $R_{\rm macro}+2$ of $o$
+is selected in the identity signed channel. Also the coarse patch
+of radius $2B+1$ is clean, because the coarse flags belong to the
+seeds. The local axial construction gives a gauge $g$ with
+\[
+ r((g\cdot V)_e)\le h_0(x)
+ \quad\hbox{on radius }2B,
+\]
+where $h_0\ge0$ has upper exponent $-1/2$.
+
+Apply \eqref{eq:sector-local-linear} to
+$w=\operatorname{Ad}(g)P_{\mathcal H}u$. This array still
+vanishes on the tree. For every required row, the transport estimate
+\eqref{eq:annulus-transport-error} and gauge covariance give
+\begin{equation}\label{eq:sector-flat-row-control}
+ \|(A_Rw)_a\|\le R_o(u)+\varepsilon(x)J_o(u),
+ \qquad \varepsilon(x)=C\,2D_{\rm col}(B+1)h_0(x).
+\end{equation}
+Indeed the actual row in the chosen gauge has the same norm as
+its selected original row and is at most $R_o(u)$. Every input
+used in the comparison lies within $3B$ of $o$, so its norm is
+at most $J_o(u)$. All comparison routes lie inside the radius
+$2B$ patch. The identity signed channel suffices for this lower
+bound; the sum defining $R_o$ may include all the other channels.
+
+The direct fine component of $A_Rw$ is $\sqrt{a_f}\,d_fw$,
+and its predictor component is $-\sqrt p\,\mathcal Qw$.
+Writing $N_{\rm macro}=|\mathcal B|N_{\rm plaq}$, insert
+\eqref{eq:sector-flat-row-control} into
+\eqref{eq:sector-local-linear}. We obtain
+\begin{equation}\label{eq:sector-bond-control}
+ \|(P_{\mathcal H}u)_e\|
+ \le ZR_o(u)+E(x)J_o(u),
+ \quad Z=K N_{\rm macro}/\sqrt{a_f}+1/\sqrt p,
+ \quad E=Z\varepsilon.
+\end{equation}
+This also holds on inactive bonds because its left side is zero.
+$Z$ is fixed after $L$; $E$ has upper exponent $-1/2$.
+
+There are $L^4N_{\rm axis}$ fine positive bonds per coarse site.
+Let
+\[
+ S_L(d)=(2d+1)^4L^4N_{\rm axis}.
+\]
+For every nonnegative family $f_a$ anchored on coarse sites,
+changing the order of the two finite sums shows
+\[
+ \sum_e\sum_{\operatorname{dist}(\operatorname{parent}(e),
+                                    \operatorname{anchor}(a))\le d} f_a
+ \le S_L(d)\sum_a f_a.
+\]
+For fixed $a$, at most $(2d+1)^4$ coarse sites can occur, each
+with at most $L^4N_{\rm axis}$ bonds. This remains valid when
+the neighbourhood wraps around the torus: wrapping reduces the
+number of distinct sites.
+
+Square \eqref{eq:sector-bond-control}, using
+$(r+s)^2\le2r^2+2s^2$, and sum over bonds. The counting bound gives
+\[
+ \|P_{\mathcal H}u\|_2^2
+ \le2Z^2S_L(R_{\rm macro}+2)\sum_{s,a}\|D_{s,a}u\|^2
+       +2E(x)^2S_L(3B)\|P_{\mathcal H}u\|_2^2.
+\]
+The last coefficient has upper exponent $-1$ and is eventually
+at most $1/2$. Move it to the left to get
+\[
+ \|P_{\mathcal H}u\|_2^2
+ \le a_*\sum_{s,a}\|D_{s,a}u\|^2,
+ \qquad a_*=1+4Z^2S_L(R_{\rm macro}+2).
+\]
+The added one ensures a strictly positive constant in every case.
+Since $\|Mu\|_2^2=\lambda^2\sum\|D_{s,a}u\|^2$, the
+orthogonal active/inactive decomposition proves
+\begin{equation}\label{eq:sector-gram-floor}
+ \langle u,Au\rangle\ge\kappa\|u\|_2^2,
+ \qquad \kappa=\min\{\lambda^2/a_*,1\}>0.
+\end{equation}
+This includes an empty active set, in which case $A=1$.
+No globally small gauge for $V$ has been constructed or assumed.
+
+\subsection{Upper bounds with spatial weights}
+We also need a bound independent of the period on the matrix
+entries and their weighted sums. The cut row $A_R$ vanishes on
+an impulse at a bond farther than $R+\rho+4$ from its anchor.
+Together with \eqref{eq:annulus-linear-rows}, this implies
+\[
+ e^{\sigma d}\|(A_R\delta_ev)_a\|
+ \le2C e^{\sigma(\rho+6)}\|v\|,
+ \qquad d=\operatorname{dist}(\operatorname{anchor}(a),
+                                      \operatorname{parent}(e)).
+\]
+To see this, if $d\le\rho+5$ use the uniform cut-row bound.
+Otherwise take $r=d-(\rho+5)$, so that $A_r\delta_ev=0$.
+If $R<r$ locality gives zero as well. For $R\ge r$, compare
+both $A_R$ and $A_r$ with $A_\infty$; the two tails are at most
+$C\|v\|e^{-\sigma r}$ each. This proves the stated bound.
+
+Signed displacement and parallel transport send a single impulse
+to a single impulse with unchanged colour norm. The coarse anchor
+may move by one under reversal of a bond. Thus the preceding
+constant becomes $2Ce^{\sigma(\rho+7)}$ for the actual oriented
+row. Selection and restriction to active bonds only set entries
+to zero. In scalar coordinates,
+\[
+ e^{\sigma\operatorname{dist}(i,j)}|M_{ij}|
+ \le b_*=\lambda\,2Ce^{\sigma(\rho+7)}.
+\]
+The anchors of input coordinates have multiplicity at most
+$m=L^4N_{\rm axis}q_{\rm col}$, where $q_{\rm col}$ is the
+colour dimension. Output-coordinate anchors have multiplicity
+at most
+\[
+ n=q\,(2L^4N_{\rm plaq}+N_{\rm axis})q_{\rm col}.
+\]
+For $\eta>0$ put
+$P_0(\eta)=\sum_{k\ge0}(2k+1)^4e^{-\eta k}<\infty$.
+Grouping coordinates by their distance from an anchor gives,
+for $0\le r\le\sigma/2$,
+\[
+ \sup_i\sum_j e^{r\operatorname{dist}(i,j)}|M_{ij}|
+ \le b_*mP_0(\sigma/2),\qquad
+ \sup_j\sum_i e^{r\operatorname{dist}(i,j)}|M_{ij}|
+ \le b_*nP_0(\sigma/2).
+\]
+Choose one constant $C_*$ larger than these two bounds and one.
+The triangle inequality for anchor distances proves the product
+rule for such weighted row and column sums. Therefore
+\begin{equation}\label{eq:sector-gram-upper}
+ \sup_i\sum_j e^{r\operatorname{dist}(i,j)}|A_{ij}|
+ \le C_*^2+1.
+\end{equation}
+The extra one is the inactive diagonal. Symmetry gives the same
+column bound. The usual finite Cauchy--Schwarz argument gives
+$\|A\|_{2\to2}\le C_*^2+1$: bound
+$|(Au)_i|^2$ by the absolute row sum times
+$\sum_j|A_{ij}||u_j|^2$ and then sum over $i$.
+Also $M_{ij}=0$ beyond distance $B/4$ by its stencil, so
+$A_{ij}=0$ beyond $B/2$.
+
+Combining \eqref{eq:sector-gram-floor} and
+\eqref{eq:sector-gram-upper} proves a strictly positive, uniform
+spectral interval for the actual completed precision matrix.
+In particular its inverse exists and satisfies
+$0<A^{-1}\le\kappa^{-1}1$. For $\beta>0$, the centered finite-dimensional
+Gaussian with covariance $\beta^{-1}A^{-1}$ is consequently
+well defined, including when there are no active coordinates.
+Restricting to the active subspace gives the physical Gaussian;
+the inactive identity coordinates are an algebraic completion.
+Spatial locality of the inverse, comparison of local Gaussian
+normalizations, and control of the affine mean require the
+additional estimates developed at their respective steps.

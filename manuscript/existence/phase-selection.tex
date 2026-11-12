@@ -1,0 +1,180 @@
+\section{Characters and selection of a vacuum}
+\label{ex-phase-selection}
+
+The preceding section constructs a commutative algebra on the whole ground
+space. Its characters provide a useful way of separating the vacuum state
+into components. The argument below also explains why a one-dimensional
+ground space is an almost-everywhere conclusion, rather than an assumption
+about the unselected table.
+
+\begin{proposition}[The representing probability]\label{ex-character-measure}
+Suppose the algebra \(\mathcal A\) of
+Proposition~\ref{ex-ground-commutative} is separable in operator norm.
+Its space \(\Xi\) of unital complex star characters, with the topology
+of pointwise convergence on \(\mathcal A\), is compact and metrizable.
+There is a probability measure \(\mu\) on \(\Xi\), positive on every
+nonempty open set, such that
+\begin{equation}\label{ex-spectral-state}
+ \int_\Xi\chi(A)\,d\mu(\chi)=\langle\Omega,A\Omega\rangle
+ \quad(A\in\mathcal A).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The algebra is a nonzero unital commutative \(C^*\)-algebra: it is a
+norm-closed star subalgebra of \(B(\mathcal H_0)\), and
+\(\|\Omega\|=1\). The commutative Gelfand theorem identifies it
+isometrically, as a star algebra, with \(C(\Xi)\), by
+\(A\mapsto\widehat A\), where \(\widehat A(\chi)=\chi(A)\)
+\cite[Theorem 2.13]{Williams}. Its character space is compact since the
+algebra is unital.
+
+Choose a countable norm-dense sequence \((A_j)\) in \(\mathcal A\).
+The continuous map \(\chi\mapsto(\chi(A_j))_j\) into
+\(\mathbb C^{\mathbb N}\) is injective: equality on the dense sequence
+implies equality everywhere by continuity of the characters. A continuous
+injection of a compact space into a Hausdorff space is a homeomorphism onto
+its image (images of closed sets are compact and hence closed).
+The countable product is metrizable, for example by
+\(\sum_j2^{-j-1}\min(1,|z_j-z'_j|)\), so \(\Xi\) is metrizable.
+
+Transfer the functional \(A\mapsto\langle\Omega,A\Omega\rangle\)
+to \(C(\Xi)\). It is positive: a nonnegative continuous function is
+\(\overline g g\) for its continuous nonnegative square root \(g\),
+and its inverse Gelfand transform has the form \(B^*B\). The functional
+takes the value \(\|B\Omega\|^2\ge0\) there. The Riesz representation
+theorem supplies a positive Borel measure representing it
+\cite[Chapter 6, Theorem 32]{Sawyer}. Compactness gives
+\(C_c(\Xi)=C(\Xi)\), so that theorem applies directly. At the constant
+function one it gives \(\mu(\Xi)=\|\Omega\|^2=1\).
+
+To prove full support, suppose a nonempty open set \(O\) has zero measure.
+Choose \(x\in O\) and \(r>0\) with \(B(x,r)\subset O\). The function
+\(f(y)=\max(0,r-\operatorname{dist}(x,y))\) is continuous, nonzero at
+\(x\), and zero outside \(O\). Let \(A\) be its inverse Gelfand
+transform. Then \eqref{ex-spectral-state} applied to \(A^*A\) gives
+\(\|A\Omega\|^2=\int|f|^2\,d\mu=0\). Separation of \(\Omega\)
+forces \(A=0\), contradicting \(f(x)=r\). Thus every such open set has
+positive measure.
+\end{proof}
+
+For \(\chi\in\Xi\), define the whole-word values
+\begin{equation}\label{ex-phase-word}
+ S_\chi(w)=\chi(M(w))
+ \quad\text{for distinct-point words }w.
+\end{equation}
+It is essential to apply the character to the operator for the entire
+word. The compressed operator \(M(w_1w_2)\) need not equal
+\(M(w_1)M(w_2)\) at finite separation.
+Equations~\eqref{ex-spectral-state} and \eqref{ex-compression-values} give
+the barycenter identity
+\begin{equation}\label{ex-phase-barycenter}
+ S(w)=\int_\Xi S_\chi(w)\,d\mu(\chi).
+\end{equation}
+For a fixed word the integrand is continuous, and hence integrable.
+
+Some properties of \(S_\chi\) already follow at this level. Normalization
+and translation invariance follow from \(M(\varnothing)=I\) and
+\eqref{ex-compression-values}. It is also reflection positive. For
+positive words \(v_i\) and coefficients \(c_i\), the Gram identity in
+the preceding section gives
+\[
+ \sum_{i,j}\overline{c_i}c_jM((\theta v_i)v_j)
+ =\left(\sum_i c_iX(v_i)\right)^*
+   \left(\sum_j c_jX(v_j)\right)\ge0
+ \quad\text{in }B(\mathcal H_0).
+\]
+The operator on the left lies in \(\mathcal A\). Positivity is the
+same in a unital \(C^*\)-subalgebra as in the ambient operator algebra
+(spectral permanence and continuous functional calculus give its nonnegative square root in
+the subalgebra; see \cite[Theorems 2.17 and 2.19]{Williams}). Characters take positive elements to nonnegative
+numbers. Applying \(\chi\) proves the desired Gram positivity.
+Regularity and the remaining covariance and field identities still need
+their own operator estimates; the barycenter formula alone does not
+establish them.
+
+\begin{lemma}[A common countable collection of words]\label{ex-phase-horizon}
+Suppose the raw label spaces are finite-dimensional complex vector spaces
+indexed by the nonnegative integers. Suppose that each \(S_\chi\) is
+multilinear in its labels and continuous on the distinct-point
+configuration space, and has the Hilbert realization of
+Proposition~\ref{ex-gns}. There is one countable collection of positive
+words whose vectors span a dense subspace in every \(\mathcal H_\chi\).
+\end{lemma}
+\begin{proof}
+Choose a finite basis in every raw label space. Take all positive words
+with rational coordinates and with basis-vector labels, for every arity
+and every finite list of label grades; include the empty word. There are
+countably many choices. Every word is a finite linear combination of
+words with basis labels, by expanding each label in its basis. This identity holds for the Hilbert-space vectors: pair the difference with any word vector and use multilinearity of the correlation in the positive-word labels. All such inner products vanish, so density forces the difference to be zero.
+For a fixed basis-labelled positive word, approximate its positions by
+rational positions, remaining within the open set of positive
+distinct-point configurations. Its vectors converge in every
+\(\mathcal H_\chi\): the squared norm of their difference is the sum
+of two diagonal Gram values minus twice the real part of the cross Gram
+value, and continuity makes this tend to zero. The reflected and positive
+halves remain strictly separated throughout this limit. The full word
+span is dense by construction; thus the selected countable span is dense
+as well. The positions and bases were chosen without reference to
+\(\chi\), so the collection is common to every phase.
+\end{proof}
+
+\begin{theorem}[A one-dimensional ground space in almost every phase]
+\label{ex-pure-ground}
+Assume every \(S_\chi\) has the Euclidean Hilbert-space dynamics of
+Theorem~\ref{ex-euclidean-semigroup}, with unit vacuum \(\Omega_\chi\).
+Assume there is a common countable collection of positive words whose
+vectors span densely in every phase Hilbert space. Then, for
+\(\mu\)-almost every \(\chi\),
+\[
+ \mathcal H_{\chi,0}=\mathbb C\Omega_\chi.
+\]
+In particular there exists a phase with this property.
+\end{theorem}
+\begin{proof}
+Fix a positive word \(v\). For integers \(n\ge0\), set
+\[
+ f_n(\chi)=\|E_{\chi,n}[v]_\chi\|^2
+ =S_\chi((\theta\tau_nv)(\tau_nv)).
+\]
+Each is a continuous function of \(\chi\), by
+\eqref{ex-phase-word}. Contractivity gives \(0\le f_n\le f_0\);
+the latter is integrable on the compact probability space. The
+large-time projection theorem gives
+\(f_n(\chi)\to\|P_{\chi,0}[v]_\chi\|^2\).
+Dominated convergence and the barycenter identity imply
+\begin{equation}\label{ex-phase-ground-average}
+ \int_\Xi\|P_{\chi,0}[v]_\chi\|^2\,d\mu
+ =\lim_{n\to\infty}\|E_n[v]\|^2=\|P_0[v]\|^2.
+\end{equation}
+All limit functions here are measurable as pointwise limits of the
+continuous \(f_n\).
+
+Apply \eqref{ex-spectral-state} to \(M(v)^*M(v)\). Since characters
+preserve products and adjoints and \(M(v)\Omega=P_0[v]\),
+\[
+ \int_\Xi|S_\chi(v)|^2\,d\mu=\|P_0[v]\|^2.
+\]
+Moreover \(\langle\Omega_\chi,P_{\chi,0}[v]_\chi\rangle=S_\chi(v)\),
+because the projection fixes the vacuum. Orthogonal decomposition along
+the unit vector \(\Omega_\chi\) gives
+\[
+ \|P_{\chi,0}[v]_\chi-S_\chi(v)\Omega_\chi\|^2
+ =\|P_{\chi,0}[v]_\chi\|^2-|S_\chi(v)|^2.
+\]
+The nonnegative right side is integrable and, by the two preceding
+identities, has integral zero. It is therefore zero almost everywhere.
+
+Apply this conclusion to the common countable collection and intersect
+its full-measure sets. For every \(\chi\) in the intersection, the
+projection of its dense word span lies in \(\mathbb C\Omega_\chi\).
+This one-dimensional subspace is closed. Continuity of the projection
+therefore implies \(\operatorname{ran}P_{\chi,0}\subset
+\mathbb C\Omega_\chi\). The reverse inclusion holds because the vacuum
+is fixed. Finally a set of measure one in a probability space is nonempty.
+\end{proof}
+
+This selection argument requires the phase Hilbert spaces and their
+contraction semigroups before it can be applied. It does not construct
+them from a probability decomposition alone. Retention of the raw-label
+null spaces, field derivatives, stress tensor and relativistic
+reconstruction remain additional obligations for the chosen phase.

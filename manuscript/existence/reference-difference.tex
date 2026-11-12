@@ -1,0 +1,177 @@
+\section{Constructing the signed reference difference}
+\label{sec:reference-difference}
+The cone in Section~\ref{sec:reference-cone} applies only to a
+comparison produced on a common background history. We describe
+that construction. Its principal feature is to remove the
+coefficient vector after each backward step, retaining the removed
+part in a reference label. This provides a family of exact
+comparisons, from which a single label is chosen at the coarsest
+scale.
+
+Fix the degree $d$ and scales $l\le k$. Assume the bank and
+column inequalities \eqref{eq:reference-bank}, with $K_i,C_i\ge1$,
+as in Section~\ref{sec:reference-cone}. At each scale $i$, let
+$\mathcal P_i(b)$ be the calibrated reference coefficient field
+with bare label $b$ in the fixed coefficient space. Its coefficient
+vector is $I_i b$, where $I_i$ is a linear isomorphism. Assume its
+density, ordinary field and flagged profile depend linearly on
+$b$, and its remainder has a nonnegative subadditive bound $h_i(b)$
+with
+\begin{equation}\label{eq:reference-primary-charge}
+           h_i(b)\le C_i\mu(\operatorname{core}I_i b)
+                         \le C_i\mu(I_i b).
+\end{equation}
+The reference densities satisfy the exact degree-$d$ transition
+identity. Their coefficient and remainder data satisfy
+\eqref{eq:reference-direction}, with a common comparison map for
+each reference label, as supplied by the calibrated construction.
+
+We also require a small transition estimate for a coefficient
+field $S$ whose coefficient vector is zero. If its remainder is
+bounded by $q\ge0$, its backward transition has a representation
+$U$ such that
+\begin{equation}\label{eq:reference-zero-transition}
+ \operatorname{dens}(U)=L_i^d\mathcal T_i\operatorname{dens}(S),
+ \quad \mu(U.x)\le\eta_i q,\quad
+ \operatorname{rem}(U)\le\eta_i q,
+ \quad (1+2C_i)\eta_i\le\varepsilon_i.
+\end{equation}
+Here $\eta_i\ge0$ and $\varepsilon_i=L_i^{-3/8}$.
+The fields and their sums retain the coefficient-field format and
+the integrability needed for the displayed transition identities.
+These are analytic inputs for the same history, including its
+calibrated reference fields.
+
+\subsection{Removing the coefficient after each step}
+Start with a coefficient field $Q$ at scale $k$, with remainder
+bound $t\ge0$ and $\mu(Q.x)+t\le w$. Put
+\[
+ c_k=I_k^{-1}Q.x,\qquad
+ S_k=Q-\mathcal P_k(c_k),\qquad
+ q_k=t+h_k(-c_k).
+\]
+The minus sign denotes a sum with the field $\mathcal P_k(-c_k)$;
+its regular remainders are concatenated with those of $Q$.
+Thus $S_k.x=0$ and its remainder is at most $q_k$. For every
+bare label $v$, define
+\[
+ D_k(v)=S_k+\mathcal P_k(c_k+v),\qquad
+ r_k(v)=q_k+h_k(c_k+v).
+\]
+Linearity of the reference density and vector gives
+\begin{equation}\label{eq:reference-top-family}
+ D_k(v).x=Q.x+I_kv,
+ \qquad\operatorname{dens}(D_k(v))
+                  =\operatorname{dens}(Q)+\operatorname{dens}(\mathcal P_k(v)).
+\end{equation}
+The cost, despite possible cancellation in this identity, is
+kept as the sum of the displayed nonnegative remainder bounds.
+Since $t\le w$ and $\mu(Q.x)\le w$,
+\[
+ r_k(v)\le w+C_k\{w+\mu(D_k(v).x)\}.
+\]
+This is exactly the finest-scale condition
+\eqref{eq:reference-terminal}.
+
+Suppose $c_{i+1},S_{i+1},q_{i+1}$ have been constructed, with
+$S_{i+1}.x=0$. Apply \eqref{eq:reference-zero-transition} to obtain
+$U_i$, put $e_i=\eta_iq_{i+1}$, and set
+\begin{align*}
+ b_i&=I_i^{-1}U_i.x,&c_i&=c_{i+1}+b_i,\\
+ S_i&=U_i-\mathcal P_i(b_i),&
+ q_i&=e_i+h_i(-b_i).
+\end{align*}
+Then $S_i.x=0$, and $q_i$ bounds its remainder. Define
+$D_i(v)=S_i+\mathcal P_i(c_i+v)$ and
+$r_i(v)=q_i+h_i(c_i+v)$. Their densities satisfy
+\[
+ \operatorname{dens}(D_i(v))
+           =\operatorname{dens}(U_i)
+                       +\operatorname{dens}(\mathcal P_i(c_{i+1}+v))
+           =L_i^d\mathcal T_i\operatorname{dens}(D_{i+1}(v)).
+\]
+The first equality cancels the two reference terms with labels
+$-b_i$ and $b_i$ by linearity. The second uses both transition
+identities and linearity of the integrable transition. The same
+cancellation holds separately for ordinary fields and flagged
+profiles; it is not merely an equality after taking expectation.
+
+We verify the signed one-step estimates. Fix $v$ and write
+$y=c_{i+1}+v$. Then
+\[
+ D_{i+1}(v).x=I_{i+1}y,\qquad D_i(v).x=I_i y+U_i.x.
+\]
+Use the comparison map belonging to the primary label $y$.
+Its coefficient error is at most
+\[
+ \varepsilon_i\{\mu(\operatorname{core}I_{i+1}y)+h_{i+1}(y)\}.
+\]
+The added vector $U_i.x$ costs at most
+$\eta_iq_{i+1}\le\varepsilon_iq_{i+1}$. Thus the coefficient
+inequality in \eqref{eq:reference-direction} holds for the
+actual signed vectors, with cost $r_{i+1}(v)$.
+
+For the remainder, \eqref{eq:reference-primary-charge} gives
+$h_i(\pm b_i)\le C_i e_i$. Subadditivity yields
+\begin{align*}
+ r_i(v)&=e_i+h_i(-b_i)+h_i(y+b_i)\\
+       &\le h_i(y)+(1+2C_i)e_i\\
+       &\le K_i\mu(\operatorname{core}D_{L_i}I_{i+1}y)
+                         +\varepsilon_i\{h_{i+1}(y)+q_{i+1}\}.
+\end{align*}
+This is the other inequality of
+\eqref{eq:reference-direction}. In particular it is a bound
+for the very same presentation that supplies the exact density
+identity. No subtraction of unsigned remainder bounds is used.
+
+Now choose the single label $v=-c_l$ and write $b=c_l$.
+The coefficient vector of $D_l(-b)$ vanishes. The construction
+therefore meets every hypothesis of
+Section~\ref{sec:reference-cone}, including its terminal condition.
+Writing $Z_i=D_i(-b)$ and $r_i=r_i(-b)$ gives
+\begin{equation}\label{eq:reference-produced-difference}
+ \operatorname{dens}(Z_k)
+       =\operatorname{dens}(Q)-\operatorname{dens}(\mathcal P_k(b)),
+ \qquad
+ r_i+\mu(Z_i.x)\le\frac{4(1+C_k)w}{e^{(s_k-s_i)/8}}.
+\end{equation}
+If $E\ge4(1+C_k)w$, then $w\le E$ and at $i=k$
+\[
+              \mu(I_k b)=\mu(Q.x-Z_k.x)\le w+E\le2E.
+\]
+This is the quota bound for the matched reference label.
+
+\subsection{The singleton transition expansion is retained}
+To use this difference inside a marked density, more than its
+coefficient and remainder estimates is needed. Suppose the
+zero-vector transition in \eqref{eq:reference-zero-transition}
+comes with the singleton expansion of
+Section~\ref{sec:local-transfer}, of fine cost $2q_{i+1}$ and
+coarse response cost $e_i$. Suppose the primary transition for
+label $y$ has fine cost at most
+\[
+ \operatorname{orb}(d)\mu(I_{i+1}y)
+                            (\psi_i+2C_{i+1}),
+\]
+and coarse response cost $h_i(y)$. Both expansions must use the
+same quoted-profile map; their finite sets of slots can then be
+united. Their sum has the ordinary and flagged profiles of
+$D_{i+1}(v)$ and the coarse profile of $D_i(v)$, by the
+cancellations just proved. Its fine cost is at most
+\[
+ \operatorname{orb}(d)\mu(D_{i+1}(v).x)
+           (\psi_i+2C_{i+1})+2r_{i+1}(v).
+\]
+Its response cost $e_i+h_i(y)$ is at most $r_i(v)$, because
+\[
+ h_i(y)=h_i\bigl(-b_i+(y+b_i)\bigr)
+                           \le h_i(-b_i)+h_i(y+b_i).
+\]
+Thus the same signed difference carries the singleton transition
+expansions needed for the marked transport argument. Combining
+\eqref{eq:reference-produced-difference} with
+\eqref{eq:reference-affordable} makes these expansions affordable
+once the prescribed one-step allowances are imposed. The
+production of the small zero-vector transition and the calibrated
+primary transition bounds remains an analytic dependency of this
+construction.

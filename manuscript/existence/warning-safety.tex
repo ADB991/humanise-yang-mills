@@ -1,0 +1,248 @@
+\section{Producing the warning plateaus}
+\label{sec:warning-safety}
+We prove the deterministic input to the warning estimate of
+Section~\ref{sec:gaussian-warnings}. Fix the patch and the positive
+fine-action and predictor-penalty constants $c_f,c_p$. We retain the
+funded path bounds, the clean-sector precision bounds and the stationary
+response of Sections~\ref{sec:sector-gram} and \ref{sec:local-mean}.
+Let $t=\operatorname{fiery}(x)$, $B=\operatorname{radius}(x)$ and
+$q=\dim\mathfrak g$. We use $\delta_0$ for a fixed small error allowance,
+to distinguish it from the field scale $t$.
+
+The guide estimate supplies a constant $A>0$, chosen before $L$, such
+that the fine guide has norm at most $At/L^2$ and the predictor guide
+at most $At$. Choose
+\begin{equation}\label{eq:safety-goals}
+ \delta_0=\frac{\sqrt{c_f}}{32},\qquad
+ \frac{A}{L^2}\le\delta_0,\qquad
+ W>\frac{2}{\sqrt{c_p}}(A+\delta_0).
+\end{equation}
+For example, any integer lower bound strictly larger than $A/\delta_0$
+suffices for $L$, since $L\ge1$. We will choose the remaining constants
+after $L$ and $W$, and finally one lower bound for $x$. None of these
+choices depends on the lattice period or on the seed allocation.
+
+\subsection{A uniform bound for the affine mean}
+First we need $\|\mu_e\|\le C t$ with a fixed post-$L$ constant $C$.
+A bound with upper exponent $-1/2$ alone would not imply this stronger
+comparison with the particular scale $t$.
+
+On a clean ball of fixed radius $n$, the axial gauge construction of
+Section~\ref{sec:seed-geometry} bounds every coarse bond chord by
+$K_n t$, where one may take
+\[
+                  K_n=32(2(n+1)+1)^5\#\{\text{plaquette axes}\}.
+\]
+The number $n$ is fixed before $x$. For a fine plaquette in the coarse
+replica, use $n=4$: each of its four links has chord at most $K_4t$
+in that gauge, so its curvature norm is at most $4K_4t$. Every path
+term retained by the fine cutoff leaves the required radius-five margin at its endpoint inside the clean
+$B$-ball: its endpoint separation plus five is at most $B$. Apply the same radius-four argument separately at that
+endpoint. Unitary transport preserves its norm; summing the absolute
+path coefficients bounds the entire fine base stroke by
+\[
+                 4K_4(\sqrt{c_f}+P_f)t,
+\]
+where $P_f$ is the funded absolute fine-path price. This is a sum of
+individual fixed-radius estimates; no gauge on the whole growing
+$B$-ball is required for this bound.
+
+For a predictor base stroke, take $n$ equal to the fixed predictor
+read radius. The logarithm chart extends the locally gauged coarse
+field to a global logarithmic field of norm at most $K'_nt$, while
+preserving the actual links on that stencil. Its linear replica has
+no larger norm. The fixed-patch Taylor estimate from
+Section~\ref{sec:predictor-branch} bounds the predictor by
+$J(\|w\|+\|w\|^2)$ for the pair of logarithmic fields $w$.
+Eventually $\|w\|\le K'_nt\le1$, so this is at most $2JK'_nt$.
+Locality and gauge covariance identify it with the original predictor
+base stroke for every original tag choice. We have therefore proved
+a common bound $A_1t$ for both base-stroke types on clean balls.
+
+Let $s>0$ be the fixed row normalization, $N_1$ the row operator
+bound, and $\gamma,K$ the shell-access constants. The saved frozen
+logarithmic field is bounded by $2\gamma Kt$. A selected affine row
+at zero is the base stroke minus its guide plus the row applied to
+this saved field. Unselected rows vanish. Hence all normalized affine
+rows have norm at most $b_1t$, where
+\[
+                  b_1=s(A_1+A+2N_1\gamma K).
+\]
+Let $Y$ bound the absolute column sums of the row matrix, and let
+$P_0$ bound both row and column sums of the unsymmetrized local inverse
+$P$. The affine linear coefficient $\ell$ and the mean $m=-P^T\ell$
+then satisfy coordinatewise
+\[
+                    |\ell_i|\le Yb_1t,
+       \qquad |m_i|\le P_0Yb_1t,
+       \qquad \|\mu_e\|\le qP_0Yb_1t.
+\]
+Each inequality is the elementary bound
+$|\sum_jM_{ij}v_j|\le(\sum_j|M_{ij}|)\sup_j|v_j|$;
+the last sums the $q$ colour coordinates. Choose once and for all
+\begin{equation}\label{eq:safety-mean-cap}
+                    C=1+\max\{0,b_1,Yb_1,qP_0Yb_1\}>0.
+\end{equation}
+The same algebra gives the residual identity
+$Am+\ell=-A(P-A^{-1})^T\ell$. Its entries are bounded by a
+fixed multiple of $\operatorname{distPay}(B)t$, and hence have every
+prescribed negative upper exponent by the local inverse tail estimate.
+The mean and its residual thus come from the same affine system.
+
+\subsection{The genuine local minimizing branches}
+We also need exact likelihood values, before restoring other masks.
+Fix any $\varepsilon>0$. There exist a radius $r>0$ and a finite
+read distance $d$, depending on the patch and $\varepsilon$, such that
+if all fine bond chords within distance $d$ of a coarse site are at
+most $r$, then its site likelihood equals one, every outgoing bond
+likelihood equals one, and the predictor bonds have chord at most
+$\varepsilon$.
+
+Here is the uniformity argument. On the covering lattice, the identity
+configuration lies in the open unique-minimizer branches for both
+the frame and the connector. Their values there are the identity.
+The continuity and uniqueness proved in
+Section~\ref{sec:predictor-branch} imply a neighbourhood on which these
+branches remain selected and each predictor chord is below
+$\varepsilon$. Intersect these neighbourhoods over the finitely many
+axes and frame-tag pairs. A product-topology neighbourhood contains
+one obtained by restricting finitely many covering bonds to chord
+balls of a common positive radius $r$. Enclose their anchors in a
+ball of finite read distance $d$.
+
+Pulling a periodic configuration to the cover preserves all these
+finite reads, even when some periodic bonds coincide. Thus the same
+$r,d$ work for every period and every tag array. On a minimizing
+branch the chosen tag is uniform: its mass is the reciprocal of the
+number of tags. The physical likelihood multiplies by that number,
+so its value is exactly one. This proves both likelihood identities,
+not merely their convergence to one.
+
+Suppose now that the coarse field is clean on the $B$-ball about $o$
+and that, on its half-ball, the actual fine field is
+$U=\exp(v)\operatorname{replica}V$ with $\|v_e\|\le w(x)$,
+where $w$ has upper exponent $-1/2$. The local axial gauge and logarithm
+extension put both coarse and fine chords below a common bound
+$W_1(x)$ of upper exponent $-1/2$. Indeed the coarse logarithm has
+that bound, the exponential is locally Lipschitz, and
+\[
+ \operatorname{chord}(\exp(v_e)\operatorname{replica}V_e)
+ \le\operatorname{chord}(\exp(v_e))
+                 +\operatorname{chord}(\operatorname{replica}V_e).
+\]
+Choose $x$ so that $B\ge2d+12$ and
+$W_1(x)\le\min\{r,\varepsilon/4\}$, applying the preceding branch
+result with target $\varepsilon/2$. The predictor/coarse relative chord
+is at most $\varepsilon/2+W_1(x)\le\varepsilon$. Every fine plaquette
+chord is at most $4W_1(x)\le\varepsilon$. Gauge covariance transfers
+these statements and the likelihood identities to the original fields.
+
+\subsection{The three errors on a small fluctuation event}
+Let $o$ have distance greater than $30B$ from the seeds. The exact
+flag condition implies that the coarse field is clean on its needed
+hull. For $\beta>0$, assume
+\begin{equation}\label{eq:safety-watch}
+ |z_i|\le\xi t\sqrt\beta
+       \quad\text{for every coordinate whose anchor lies within }B
+       \text{ of }o.
+\end{equation}
+With $v=\mu+\beta^{-1/2}z$, interpreted in the colour basis,
+\eqref{eq:safety-mean-cap} gives
+\[
+              \|v_e-\mu_e\|\le q\xi t,
+                  \qquad \|v_e\|\le(C+q\xi)t.
+\]
+Away from the seeds the actual fine field agrees with this increment
+of the coarse replica. Thus the small-chart branch result just proved
+applies to it, with $w=(C+q\xi)t$.
+
+For a fine or predictor row based at $o$, write $B_p(U,V)$ for its
+actual stroke minus its guide, and $R_p(v)$ for the transported affine
+row with the same coarse field, tags and saved variables. There is a
+nonnegative error $H(x)$ of upper exponent $-1$ such that
+\begin{equation}\label{eq:safety-nonlinear-error}
+                      \|B_p(U,V)-R_p(v)\|\le H(x).
+\end{equation}
+To detail the estimate, use the preceding common local gauge and
+extend its two logarithmic fields by zero outside the read hull.
+Let $h$ bound their norms; it has upper exponent $-1/2$. The local
+product logarithm differs from the sum by at most $Jh^2$. Taylor
+expansion of each genuine fine/predictor stroke at zero leaves a
+remainder $E_0$ of upper exponent $-1$. Subtract the corresponding
+Taylor formula at the replica. The five resulting errors are bounded
+by
+\begin{equation}\label{eq:safety-five-errors}
+  2E_0+N_1Jh^2+N_1h e^{-\sigma R}
+                           +2N_1c_GB A_2h^2.
+\end{equation}
+Here $R=\lfloor B/100000\rfloor$ is the retained path cutoff, and
+$\sigma>0$ is the funded path decay exponent. They are, respectively,
+the two Taylor remainders, the product-log
+error acted on by the linear row, the cutoff tail of that row, and
+the change from flat to coarse-field transport. For the last term,
+each transport path has length at most $B$, each coarse chord is at
+most $A_2h$, and the adjoint perturbation bound is $2c_G$ times the
+path chord; multiply by the input norm $h$ and the row price $N_1$.
+The retained read radius is at most $B/4$, so truncating the extended
+fields does not alter the actual row. Since $B$ has upper exponent
+zero and $e^{-\sigma R}$ has every negative exponent, every term in
+\eqref{eq:safety-five-errors} has upper exponent $-1$. This proves
+\eqref{eq:safety-nonlinear-error} with the original tags.
+
+The affine row matrix has absolute row price $Y$ after normalization
+by $s$. Therefore \eqref{eq:safety-watch} implies
+\begin{equation}\label{eq:safety-linear-error}
+              \|R_p(v)-R_p(\mu)\|\le q s^{-1}Y\xi t.
+\end{equation}
+The local mean comparison in \eqref{eq:mean-remote-final} gives a
+nonnegative $E(x)$ of upper exponent $-1$ with
+$\|R_p(\mu)\|\le E(x)$. Choose
+\begin{equation}\label{eq:safety-xi}
+ \xi=\min\left\{(q+1)^{-1},
+                 \frac{\delta_0}{3q s^{-1}|Y|+1}\right\}>0.
+\end{equation}
+Then $q\xi\le1$ and $q s^{-1}Y\xi\le\delta_0/3$.
+An upper-exponent-$-1$ function is eventually at most
+$\delta_0t/3$: multiplying it by $\widehat\beta_f^{1/2}$ gives a
+quantity tending to zero, while
+$t=\widehat\beta_f^{-1/2}\operatorname{fineMonitor}\ge
+\widehat\beta_f^{-1/2}$. Hence $H,E\le\delta_0t/3$ eventually.
+The triangle inequality proves
+\begin{equation}\label{eq:safety-bill}
+                         \|B_p(U,V)\|\le\delta_0t.
+\end{equation}
+
+Choose the earlier small-chart target $\varepsilon$ below the fixed
+curvature-comparison radius. In that neighbourhood,
+$\operatorname{chord}(g)\le2\|\operatorname{curvature}(g)\|$.
+Adding the guide bounds to \eqref{eq:safety-bill}, and retaining the
+square-root penalty normalizations, gives
+\[
+ \operatorname{toll}(U,p)
+       \le\frac{2}{\sqrt{c_f}}(A/L^2+\delta_0)t<t/4,
+ \qquad
+ \operatorname{wire}(Q(U),V,(o,a))
+       \le\frac{2}{\sqrt{c_p}}(A+\delta_0)t<Wt.
+\]
+The strict inequalities follow from \eqref{eq:safety-goals}; the first
+coefficient is at most $1/8$. Both physical likelihoods are already
+exactly one by the local minimizing-branch argument.
+
+\subsection{The cutoff margin and the final order of choices}
+Set $a=\max\{C+1,\gamma K\}$. The same event has
+$\|v_e\|\le(C+q\xi)t\le at$, so the broad bond cutoff is one.
+For derivatives, use the event with $\xi/2$. It gives the strict
+margin $C+q\xi/2<a$, while the fine and predictor inequalities above
+are strict as well. Continuity makes these masks constant on a
+neighbourhood of the base point. This is exactly the plateau required
+in Section~\ref{sec:activity-jet-assembly}; no derivative is taken
+through a chosen gauge or a varying seed assignment.
+
+The order is now explicit: choose the guide bound $A$ and error
+allowance before $L$; choose $L$, then $W$; obtain the fixed shell and
+precision constants, then $C,a,\xi$; finally enlarge the $x$ threshold
+for the finite-read branches, the two order-$-1$ errors, the chart
+radius and the inverse-series bounds. This supplies the previously
+displayed safety input on every funded, stamped sector. Funding,
+the stationary response and the guide bounds retain their separate
+construction hypotheses.

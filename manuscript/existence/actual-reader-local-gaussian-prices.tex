@@ -1,0 +1,188 @@
+\section{Local Gaussian prices in the common reader frame}
+\label{sec:actual-reader-local-gaussian-prices}
+
+We combine the actual local-window comparison with the exact tree
+identity of Section~\ref{sec:actual-reader-tree-covariance}. This
+gives both the mean and every cross-entry of the curvature covariance
+in the one frame used by the reader family.
+
+Fix the patch, predictor kernel, path bounds and adjacent tower data.
+Their numerical costs are fixed before the finite period is chosen.
+Let $x$ be the large reader parameter and $t$ its recording parameter,
+chosen with
+\[
+ x\le t\le x^2,\qquad B=\lceil(\log t)^2\rceil.
+\]
+The recording parameter is chosen so that its coarse flag threshold
+equals the reader's healthy threshold. All sector matrices below use
+this same $t$ and its flag set. Assume the coarse torus side is at least
+$100(1+B)$ and retain the predictor branch and fine-side conditions
+of Section~\ref{sec:actual-reader-tree-covariance}.
+
+Use a pose of the coarse field on a room of radius $W$ around $o$:
+one gauge makes that field equal there to the exponential of one
+real direction $v$, whose supremum norm is at most half the
+selected logarithmic clearance allowance. For every interior coarse
+address $z$ with
+\[
+ \operatorname{dist}(o,z)+w(x)\le W,
+\]
+assume its $B$-neighbourhood is in that same logarithmic chart,
+the replica has the prescribed clearance bound there, and no seed
+lies within $11B+1$ of $z$. Here $w(x)$ is the reader's fixed room
+margin. These are the local conditions of the pose, not separate
+choices of gauges at each address.
+
+Let $\mathcal U$ be the actual active link-coordinate set for the
+chosen store and forest, and let
+$\iota:\mathcal U\to V_F$ insert its coordinates into the complete
+forest coordinate set. Let $H$ be the actual ordered window inverse,
+and let $H^0$ be the ordered window inverse with empty store and
+identity coarse field, using the same forest, tag and window geometry.
+Write $C=(H+H^{\mathsf T})/2$ for the actual Gaussian covariance,
+and $C^0=(H^0+(H^0)^{\mathsf T})/2$ on $V_F$ for the bare one.
+The prescribed mean with arbitrary frozen links is denoted $m$;
+the stationary mean in the single direction $v$ is $m^0$.
+
+Assume the small-window specialization in
+Section~\ref{sec:ex-lattice-actual-reader-small-window} has supplied its
+mean and column estimates for these actual data. These state, for every
+interior column $j$ and every actual active row $i$,
+\begin{equation}\label{eq:reader-local-column-price}
+ |m_j-m^0_{\iota(j)}|\le t^{-7/8},\qquad
+ |H_{ij}-H^0_{\iota(i),\iota(j)}|\le t^{-1/4}.
+\end{equation}
+Its hypotheses are precisely the chart and clearance conditions just
+listed. In particular its frozen-source cancellation holds for every
+choice of the frozen field and auxiliary channel parameters; no
+bound on those arbitrary frozen values is introduced here.
+If both $i,j$ are interior, the two column estimates imply
+\begin{equation}\label{eq:reader-local-symmetric-price}
+ |C_{ij}-C^0_{\iota(i),\iota(j)}|\le t^{-1/4}.
+\end{equation}
+This follows by adding the two inequalities and dividing by two.
+
+\subsection{Removing the bare cut and window}
+
+Let $A_F$ be the full flat precision on $V_F$ identified in
+Section~\ref{sec:actual-reader-tree-covariance}. The bare reference
+still uses a path cutoff and a principal window. We show, at the
+fixed patch, that
+\begin{equation}\label{eq:reader-bare-full-price}
+ \|C^0-A_F^{-1}\|_0\le K e^{-cB}
+\end{equation}
+for constants $K,c>0$ independent of the period, forest and tag.
+Here $\|\cdot\|_0$ is the maximum of absolute row and column sums.
+
+The actual path cutoff is $r=\lfloor B/100000\rfloor$. Its
+exponentially weighted path bound gives a row tail at most
+$C_1e^{-\sigma r/4}$ in a narrower weighted norm, with
+$\sigma>0$ fixed. Taking Gram products preserves such a bound:
+if $L$ is the full row map and $L_r$ its cut version, then
+\[
+ L^{\mathsf T}L-L_r^{\mathsf T}L_r
+ =(L-L_r)^{\mathsf T}L+L_r^{\mathsf T}(L-L_r).
+\]
+The weighted row-and-column norm is submultiplicative, and both
+row maps have fixed bounds. Thus the corresponding precisions
+$A_F,A_{F,r}$ differ by at most $C_2e^{-\sigma r/4}$.
+The cut does not remove the direct curl or predictor terms, and
+every remaining path term is a nonnegative Gram form. Retaining
+just the identity channel in the normalized signed average gives
+a lower bound equal to $1/|\mathcal S|$ times its direct-curl and
+predictor form, where $\mathcal S$ is the finite signed-channel set.
+Apply the tree inequality of Section~\ref{sec:actual-reader-tree-covariance}
+with direct coefficient $\alpha>0$ from
+\eqref{eq:reader-flat-factor}: the cut precision has lower bound
+$\min(\alpha,\kappa)/[|\mathcal S|(1+b_1+b_2)]$. Thus both
+cut and uncut precisions have a common fixed positive gap, without
+using the uncut metric factorization for the cut rows.
+The weighted inverse estimate of Section~\ref{sec:local-covariance}
+and the identity
+\[
+ A_{F,r}^{-1}-A_F^{-1}
+ =A_{F,r}^{-1}(A_F-A_{F,r})A_F^{-1}
+\]
+therefore give the same exponential order for the inverse difference.
+All norms can be taken at one smaller fixed positive width.
+
+For the actual bare principal windows the inner radius is
+$\lfloor B/60\rfloor$, by the panel inclusion in
+Section~\ref{sec:principal-comparison-jets}. The window-error proof
+of Section~\ref{sec:local-covariance} then bounds the difference
+between the ordered bare window inverse and $A_{F,r}^{-1}$ by
+$C_3e^{-\gamma\lfloor B/60\rfloor}$, with $\gamma>0$.
+The empty store has all forest coordinates active. Hence restriction
+to these coordinates identifies its windows and cut flat precision
+with the ones just used; it introduces no further projection of an
+inverse. Symmetrization does not increase the zero-width norm.
+For $B\ge200000$,
+\[
+ B\le120\lfloor B/60\rfloor,\qquad
+ B\le200000\lfloor B/100000\rfloor.
+\]
+Taking $c\le\min(\gamma/120,\sigma/800000)$ and adding the two
+errors proves \eqref{eq:reader-bare-full-price}. Since
+$B\ge(\log t)^2$, eventually $e^{-cB}\le t^{-1/4}$.
+
+\subsection{Reading curvature and preserving every cross-entry}
+
+Let $L=DI_F$ be the full forest-coordinate curl matrix, with colour
+identity included. Each of its absolute row sums is bounded by a
+fixed number $U$, uniformly in period and forest. A nonzero entry
+$L_{ai}$ places the parent anchor of $i$ within one coarse step
+of the plaquette anchor of $a$. Therefore, if a plaquette $a$
+satisfies
+\[
+ \operatorname{dist}(o,\operatorname{anchor}(a))+w(x)+1\le W,
+\]
+every coordinate used by its curl row is interior. The clearance
+condition makes all these forest coordinates active. This is why
+the actual restricted curl and $L$ read precisely the same
+coordinates on the plaquettes under consideration.
+
+For two such plaquettes $a,b$, expand their covariance as a finite
+double sum. Applying \eqref{eq:reader-local-symmetric-price} to
+each pair of used coordinates gives
+\[
+ |\operatorname{Cov}_{\rm actual}(a,b)
+                 -(LC^0L^{\mathsf T})_{ab}|
+ \le t^{-1/4}\sum_i|L_{ai}|\sum_j|L_{bj}|
+ \le U^2t^{-1/4}.
+\]
+No independence between coordinates or plaquettes was used.
+The same calculation and \eqref{eq:reader-bare-full-price} give
+\[
+ |(LC^0L^{\mathsf T})_{ab}
+                 -(LA_F^{-1}L^{\mathsf T})_{ab}|
+ \le U^2Ke^{-cB}\le U^2Kt^{-1/4}.
+\]
+By \eqref{eq:reader-tree-conditional-covariance}, the last full
+covariance is the colour extension of $P_f-JP_cJ^{\mathsf T}$.
+Consequently, eventually in $x$,
+\begin{equation}\label{eq:reader-strong-scope-price}
+ \left|\operatorname{Cov}_{\rm actual}(a,b)
+       -(P_f-JP_cJ^{\mathsf T})_{ab}\right|
+ \le U^2(1+K)t^{-1/4}\le x^{-1/8}.
+\end{equation}
+For the last inequality, $t\ge x$ and the fixed constant
+$U^2(1+K)$ is eventually at most $x^{1/8}$. The mean estimate
+in \eqref{eq:reader-local-column-price} similarly implies
+$|m_j-m^0_{\iota(j)}|\le x^{-7/8}$.
+
+Finally, the actual covariance $C$ is positive definite with a
+uniform entry bound, whether or not a pose is available. Indeed the
+sector gap and row bounds hold for the actual flag store, and the
+positive local covariance construction of
+Section~\ref{sec:local-covariance} applies to either admitted window
+geometry. Its row bound bounds each entry. Enlarge this constant to
+at least one and take the maximum of the finitely many thresholds
+used above. This one choice supplies positivity and bounded entries
+for every permitted store, together with the mean and curvature
+comparison on every admissible pose, forest, tag and period.
+
+These are the quantitative local Gaussian estimates. The nonlinear
+comparison between a group-valued field read and its linear Gaussian
+coordinate, the lost-mask probability and the selected-history
+telescoping error are additional steps; none is inferred from a
+covariance identity alone.

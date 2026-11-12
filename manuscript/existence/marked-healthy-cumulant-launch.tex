@@ -1,0 +1,197 @@
+\section{The healthy-field comparison at the middle scale}
+\label{sec:marked-healthy-cumulant-launch}
+
+The Gaussian comparison must approximate the actual local coefficient
+on each healthy configuration. We prove this by constructing one closed
+real curvature cochain from that configuration, and by comparing the
+actual polynomial transport with the transport of its covariance atlas.
+Both comparisons are simultaneous for every subset of the insertion word.
+
+\subsection{A closed cochain from a healthy gauge field}
+
+Work on a lattice of integer side $N_{\rm per}>0$, with a patch
+of integer radius $B\ge0$ about $o$, and assume $2(B+1)<N_{\rm per}$.
+Let the field be healthy at threshold
+$\theta\ge0$ on that patch. Put it in the axial gauge based at $o$.
+The path construction expresses every link in the room as a product
+of at most $4B$ conjugated plaquette holonomies. The chord of a
+product is at most the sum of the chords, so each such link has chord
+at most $4B\theta$. Let $c>0$ be the actual scale normalization.
+Define a Lie-algebra-valued one-cochain $A$ by taking $c^{-1}$
+times the curvature coordinate of this gauge-fixed link inside the
+room, and zero outside it. Define the two-cochain $X=dA$ on the
+whole torus, and take its real colour coordinates. Then
+\begin{equation}\label{eq:healthy-closed-cochain}
+           dX=0,\qquad \|X\|_\infty\le16B\theta/c.
+\end{equation}
+The first assertion is the exact discrete identity $d^2=0$, also
+across the artificial boundary of the room. The second follows by
+summing the four link bounds in each plaquette curl.
+
+Let $Y$ be $c^{-1}$ times the actual curvature of the gauge-fixed
+plaquette. For a plaquette whose base is at distance at most $B-2$
+from $o$, all four edges lie inside the room. The curvature map
+satisfies the product estimate
+\[
+ \|\mathcal C(ab)-\mathcal C(a)-\mathcal C(b)\|
+       \le c_G\operatorname{chord}(a)\operatorname{chord}(b),
+ \qquad \mathcal C(a^{-1})=-\mathcal C(a).
+\]
+Applying it successively to the four factors of the plaquette,
+with their inverse orientations, costs $1+2+3=6$ products of
+link bounds. Hence
+\begin{equation}\label{eq:healthy-curvature-linear-error}
+     |Y_\nu-X_\nu|\le6c_G(4B\theta)^2/c
+\end{equation}
+for every colour coordinate in the interior stencil. This is an
+estimate for the same gauged field, without sampling a new field.
+Translations and signed coordinate changes transport the construction
+and preserve these absolute bounds.
+
+At the selected middle scale the normalization satisfies
+$\theta/c\le\tau(t)$, where $t$ is its coupling and
+$\tau(t)=3\,\mathrm{hot}(t)$. The upper comparison coupling is
+$s$, with $s/2\le t\le s$. Write $H=\exp((\log\log s)^2)$,
+taking $s$ large enough that $H\ge1$, and fix $0<\lambda\le1/4$.
+The purchased numerical bounds are
+\begin{align}\label{eq:healthy-middle-purchases}
+ 16B\tau(t)&\le H^{\lambda/4},\\
+ 6c_G(4B)^2\theta\tau(t)&\le\varepsilon,
+                  \qquad \varepsilon=H^{-v},\notag
+\end{align}
+where $v$ is selected before the final coupling threshold.
+They are feasible uniformly in this interval: the patch radius and
+$\tau$ grow slower than every power of $H$, whereas
+$\theta=t^{-1/2}\mathrm{hot}(t)$ decays faster than every negative
+power of $H$. For example, taking logarithms compares
+$-\tfrac12\log t+o(\log t)$ with any fixed multiple of
+$(\log\log s)^2$; $t\ge s/2$ makes this uniform.
+Thus \eqref{eq:healthy-closed-cochain} supplies exactly a closed real
+background admitted by the covariance comparison, while
+\eqref{eq:healthy-curvature-linear-error} is at most $\varepsilon$.
+
+\subsection{Comparing two polynomial transports}
+
+A polynomial step consists of a finite linear substitution followed
+by Wick contraction. Suppose the coefficient sum of every substituted
+coordinate and every covariance entry is at most $C\ge1$.
+For degree at most $D$, put $A_D=[2(D+2)C]^D$.
+The Wick recurrence used in
+Section~\ref{sec:allarity-cumulant-comparison} applies equally when
+its mean is a linear polynomial. Submultiplicativity of coefficient
+sums then proves that the step preserves degree and has norm at most
+$A_D$ on this finite-degree space. If a second step has the same
+bounds and each linear row and covariance entry differs by at most
+$\varepsilon\ge0$, the same induction, subtracting products one factor
+at a time, bounds the difference operator by $\varepsilon A_D$.
+The row error here is a coefficient sum, not an entrywise error
+followed by an unbounded sum over sites.
+
+For $m$ successive steps $T_i,T'_i$, expand
+\[
+ T_m\cdots T_1-T'_m\cdots T'_1
+ =\sum_{j=1}^m T'_m\cdots T'_{j+1}
+                   (T_j-T'_j)T_{j-1}\cdots T_1.
+\]
+Thus, for $\deg p\le D$,
+\begin{equation}\label{eq:healthy-transport-telescope}
+ |T_m\cdots T_1p-T'_m\cdots T'_1p|_1
+                         \le |p|_1 m\varepsilon A_D^m.
+\end{equation}
+We apply this to the actual polynomial history and the history read
+from its covariance atlas. Their per-step common bounds and errors
+are the same ones used in the marked Gaussian reader estimates.
+
+All degree bounds $D,K,D_*$ and the insertion count $n$ below are
+nonnegative integers. Let $p_i$ be the calibrated incoming polynomials,
+$i=1,\ldots,n$, with a fixed exponent $z\ge0$,
+with $|p_i|_1\le H^z$ and degree at most $K$. Every subset product
+has degree at most $nK$ and norm at most $H^{nz}$. Choose the
+block length after $A_{nK}$ so that
+\[
+              2(b+2)\log A_{nK}\le\log L.
+\]
+For the prescribed number
+$m=\lceil(b+2)\log H/\log L\rceil$ of steps, this gives
+$A_{nK}^m\le H$ eventually; also $m\le H$ eventually.
+Therefore all transported subset moments have norm at most
+$R=H^{nz+1}$, and their differences have norm at most
+$RH\varepsilon$.
+
+For a nonempty subset $I$, its connected polynomial is
+\[
+ c_I=\sum_{\pi\in\mathcal P(I)}
+       (-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}q_B,
+\]
+where $q_B$ is the transported moment polynomial. There are finitely
+many set partitions. Telescoping the product for each partition
+bounds the difference of the two connected polynomials by
+\begin{equation}\label{eq:healthy-connected-polynomials}
+ |c_I-c'_I|_1\le D_n(R)RH\varepsilon,
+ \quad D_n(R)=\sum_{\varnothing\ne I\subseteq\{1,\ldots,n\}}
+       \sum_{\pi\in\mathcal P(I)}|\pi|!R^{|\pi|-1}.
+\end{equation}
+Both have degree at most a fixed number $D_*$, and coefficient norm
+at most a fixed polynomial $Q_n(R)$ in $R$, obtained by the same
+partition expansion. These constants depend on the finite word,
+not on the lattice period.
+
+\subsection{Evaluation and the initial connected error}
+
+For a polynomial $p$ of degree at most $D_*$, two real coordinate
+vectors bounded by $M\ge1$ on its variables, and coordinate error
+at most $\varepsilon$, monomial telescoping gives
+\[
+ |p(Y)-p(X)|\le |p|_1D_*M^{D_*}\varepsilon.
+\]
+The sharper power $M^{D_*-1}$ is available for positive degree;
+the displayed bound also covers degree zero. Moreover
+$|p(X)|\le |p|_1M^{D_*}$.
+The healthy-field construction and its numerical purchases bound
+both vectors by $M=H$ on the required interior stencil.
+Using \eqref{eq:healthy-connected-polynomials} therefore gives
+\begin{align*}
+ |c_I(Y)-c'_I(X)|
+ &\le Q_n(R)D_*H^{D_*}\varepsilon
+       +D_n(R)RH^{D_*+1}\varepsilon.
+\end{align*}
+The prefactor is bounded by a fixed power $H^a$, with a fixed
+multiplicative constant. Choose $v>a+3/2$ before the final coupling
+threshold. The right side is then at most $H^{-3/2}$ eventually.
+This is the actual healthy local-coefficient error required by the
+cumulant comparison. The support estimates of the marked propagation
+put every variable used here at distance at most $B-2$ from the
+chosen base; no estimate outside the healthy stencil has been used.
+
+The atlas connected polynomial $c'_I(X)$ is the finite logarithm
+of its jointly evaluated Gaussian moments. The exact common-coordinate
+and calibration construction, followed by the actual covariance bounds,
+compares those moments with the free moments with error $H^{-3/2}$.
+Section~\ref{sec:allarity-cumulant-comparison} consequently gives
+\[
+ |c'_I(X)-c_I^{\rm free}|+H^{-3/2}\le H^{-31/32}
+\]
+eventually. Adding the healthy local error proves the prescribed
+small remainder against the negative free connected coefficient.
+The coordinate $X$ is common to all subsets, so this step does not
+mix separately chosen background realizations.
+
+At the upper comparison level the same construction starts with
+singletons only. The transport has zero length there and is the
+identity. Hence its moment polynomial is
+$\prod_i(1+z_ip_i)$ in the squarefree marker algebra, and its
+finite logarithm is $\sum_i z_ip_i$. Every connected coefficient
+with at least two markers vanishes. The singleton is exactly the
+calibrated local section; its support, marker and masked value agree
+with the terminal birth term. The algebraic reindexing therefore
+adds zero higher coefficients and leaves the pushed density unchanged.
+Shrinking the marker radius preserves regular and forced bounds,
+since every marker monomial acquires a smaller nonnegative weight.
+This identifies the top initialization used in the all-arity marked
+propagation with the actual calibrated insertion.
+
+The remaining inputs in applying this chapter are the actual mixed
+compiler's per-step row and covariance comparison, the terminal paid
+insertion bound and the common purchases. The argument proves the
+healthy-field and polynomial comparison from those precise receipts;
+it does not produce them by changing the selected history.

@@ -1,0 +1,330 @@
+\section{The terminal Wilson family}
+\label{sec:wilson-startup-construction}
+The shooting argument needs a continuous initial family on the entire
+terminal coupling band, with one fixed local dictionary and common
+summable bounds. We construct it directly from the Wilson density.
+This also explains why its terminal path can be chosen before any
+trajectory is selected.
+
+Fix a compact gauge group as in the construction, a clipping profile
+with direct coefficient $0<c_0\le1$, linear coefficient
+$0<c_1\le1/4$, and relaxation length $\lambda>0$. Write $q=1-c_0$.
+For a plaquette holonomy $u$, put
+\[
+ r(u)=\operatorname{chord}(u),\qquad
+ k(u)=\operatorname{curv}(u),\qquad
+ W(u)=\tfrac12r(u)^2.
+\]
+Thus $0\le W\le2$ and $\|k(u)\|\le r(u)$. The gauge normalization
+gives $k(\exp X)=X+O(\|X\|^2)$ near zero.
+
+\subsection{A curvature-coordinate remainder}
+The analytic inverse function theorem applied to $X\mapsto k(\exp X)$
+gives a local inverse $v$ near zero. Set $u(x)=\exp v(x)$ and
+$w(x)=W(u(x))$. Conjugation covariance of curvature and uniqueness
+of the local inverse show
+$w(\operatorname{Ad}_g x)=w(x)$ as germs at zero. The identities
+$k(u^{-1})=-k(u)$ and $W(u^{-1})=W(u)$ give $w(-x)=w(x)$.
+The first and second derivatives at zero are respectively zero and
+the Euclidean inner product. Thus the fourth Taylor polynomial is
+\[
+ T_4w(x)=\tfrac12\|x\|^2+Q_4(x),\qquad
+ Q_4(x)=\frac1{4!}D^4w(0)[x,x,x,x].
+\]
+The odd terms vanish by evenness. The quartic form $Q_4$ is
+adjoint-invariant, by differentiation of the conjugation identity.
+Define the global smooth residual
+\[
+ h(u)=W(u)-\tfrac12\|k(u)\|^2-Q_4(k(u)).
+\]
+For every smooth family through the identity its composition with $h$
+has vanishing derivatives through order four. Indeed near the
+identity $u=u(k(u))$, so this is the Taylor remainder
+$(w-T_4w)(k(u))$; the chain rule preserves the stated vanishing.
+
+We need more than a Taylor estimate at the all-identity link field.
+For every derivative order $K$ and spatial power $P$ there are
+$C>0$ and $t_0\in(0,1]$, independent of the torus, such that
+\begin{equation}\label{eq:startup-residual-price}
+ \bigl|\partial_{a_1}\cdots\partial_{a_l}
+              h(U_0U_1U_2^{-1}U_3^{-1})\bigr|
+       \le Ct^5,\qquad 0\le l\le K,
+\end{equation}
+when the plaquette chord is at most $t\le t_0$ and the four-link
+directions have norm at most $t5^P$. Derivatives here are successive
+left increments on the links.
+
+Here is a uniform proof. For fixed links $U_1,U_2,U_3$ and a small
+face logarithm $x$, reconstruct the first link as
+\[
+             U_0(x)=\exp(x)U_3U_2U_1^{-1}.
+\]
+The face holonomy is then $\exp x$. After $l$ left differentiations
+the resulting smooth function of $x$ vanishes to order
+$(5-l)_+=\max(5-l,0)$ at zero. Each differentiation can lower the
+vanishing order by at most one: introduce its increment parameter
+as one further variable, differentiate the vanishing Taylor
+polynomial, and restrict that parameter to zero. All remaining
+links range over a compact group and the directions, after division
+by $t$, range over a fixed compact ball. Taylor's integral remainder
+therefore gives a common bound $C_l\|x\|^{(5-l)_+}$ for the
+unscaled derivatives. A fixed local logarithm satisfies
+$\|x\|\le C_{\log}r(u)$ when $r(u)$ is sufficiently small.
+Restoring the $l$ factors of $t$ gives
+$C_l'C_{\log}^{(5-l)_+}t^{l+(5-l)_+}\le C_l''t^5$,
+since $t\le1$. Take the largest constant and smallest threshold
+over $0\le l\le K$. For a real lattice plaquette, the four links
+may coincide because of wrapping; substitution into the four-link
+identity remains valid. Each lies within distance four of any
+chosen plaquette corner, so the normalized spatially weighted
+directions obey the required bound $t5^P$. This proves
+\eqref{eq:startup-residual-price} on every healthy plaquette,
+including equality in the health threshold.
+
+\subsection{The principal path and the nonnegative debt}
+Choose the terminal path to have one row
+$\sqrt q\,k(u)$ at each elementary plaquette, quartic term $qQ_4$,
+and zero cubic and loop terms. Its zero-momentum metric is
+$c_0I+qI=I$. Its path supports have length four, and its only
+nonzero quartic coefficients form a finite list. Hence at any fixed
+positive strip width their weighted path sums are finite. Choosing
+the stage path allowance above their maximum, and the column
+allowance above the prescribed factorial, supplies the startup
+profile before choosing block lengths. Its uncut principal action
+differs from the Wilson action by $\sum qh(u)$, so the two actions
+have identical jets through order four at the identity.
+
+Fix an integer support scale $B\ge2$ and threshold $t>0$ satisfying
+\begin{equation}\label{eq:startup-relaxation}
+                  2\le t e^{(B-2)/\lambda}.
+\end{equation}
+At a plaquette with base site $x$, the row is kept when every
+plaquette based at $y$ has chord at most $te^{d(x,y)/\lambda}$.
+Its base action is
+\[
+ b(u)=
+ \begin{cases}c_0r(u)^2/2,&r(u)\le t,\\c_1tr(u),&r(u)>t,\end{cases}
+       +\mathbf1_{\rm kept}\,q\|k(u)\|^2/2.
+\]
+The quartic term is masked by health of the full four-corner
+plaquette support. Define the debt at that plaquette by
+\[
+ d(U)=
+ \begin{cases}
+ W(u)-c_1tr(u),&r(u)>t,\\
+ \mathbf1_{\rm healthy}\,q\|k(u)\|^2/2+
+ \mathbf1_{\rm not\ healthy}\,qW(u)
+       -\mathbf1_{\rm kept}\,q\|k(u)\|^2/2,&r(u)\le t .
+ \end{cases}
+\]
+A direct split into the healthy, large-chord and remaining cases gives
+\begin{equation}\label{eq:startup-face-split}
+ W(u)=b(u)+q\mathbf1_{\rm healthy}Q_4(k(u))
+             +q\mathbf1_{\rm healthy}h(u)+d(U).
+\end{equation}
+The debt satisfies $0\le d(U)\le2$, since
+$q\|k(u)\|^2/2\le qW(u)\le2$. On a large-chord plaquette,
+\[
+ d(U)\ge r(u)^2/2-tr(u)/4\ge t^2/4.
+\]
+If the base site is farther than $B$ from every flag, the plaquette
+is healthy and the row is kept. For nearby plaquettes this follows
+from absence of flags; for the remaining plaquettes
+\eqref{eq:startup-relaxation} and the global chord bound $r\le2$
+make the kept test automatic. Thus its debt vanishes there.
+The same argument shows that debt at a base site can be determined
+from the field in its radius-$B$ neighborhood, with the prescribed
+boundary flag information.
+
+Average \eqref{eq:startup-face-split} over signed coordinate changes.
+Let $s_*=1/|\mathcal S|$, where $\mathcal S$ is that finite symmetry
+group, and index the oriented plaquettes by $i=(s,x,b)$.
+Their supports are the actual transformed four-corner supports
+$Y_i$, with native site $x$, residual $h_i$ and debt $d_i$.
+The signed average is exact, because the Wilson energy is invariant:
+\begin{equation}\label{eq:startup-signed-split}
+ \beta E_W(U)=A^{\rm top}_\beta(U)
+       +\beta s_*q\sum_i\mathbf1_{\rm healthy(Y_i)}h_i(U)
+       +\beta s_*\sum_i d_i(U).
+\end{equation}
+This uses the transformed supports and native sites in every channel.
+
+\subsection{Forced packets and the exact Wilson density}
+Let $\mathcal D(U)$ be the flag set. Join two flags when their closed
+radius-$2B$ balls overlap, and let $D$ run over the connected
+components for this relation. Put
+\[
+ P(D)=\bigcup_{x\in D}B_{2B}(x),\qquad
+ C_D(U)=s_*\sum_{i:\,x_i\in B_B(D)}d_i(U).
+\]
+The regions $P(D)$ of distinct components are disjoint and
+$P(D)\cap\mathcal D(U)=D$. Every nonzero debt lies in exactly one
+of these sums: it lies within $B$ of a flag, while membership in
+two such neighborhoods would join the two flag components.
+Consequently
+\[
+                 \sum_D C_D(U)=s_*\sum_i d_i(U).
+\]
+
+The energy price is
+\begin{equation}\label{eq:startup-packet-energy}
+                    C_D(U)\ge |D|s_*t^2/16.
+\end{equation}
+To prove it, every flag is a corner of a large-chord plaquette.
+Such a plaquette has at most four corners and its base is within
+distance two of the flag, hence in $B_B(D)$. If $\mathcal A$ is
+the set of these plaquettes in the identity channel, then
+$|D|\le4|\mathcal A|$. Each contributes at least $t^2/4$;
+all other debts are nonnegative. Multiplication by $s_*$ proves
+\eqref{eq:startup-packet-energy}.
+
+In a fixed dictionary include every nonempty connected flag set $D$
+with address $(P(D),D)$, and put
+\[
+ K_D(\beta,U)=
+ \mathbf1_{\{P(D)\cap\mathcal D(U)=D\}}e^{-\beta C_D(U)}.
+\]
+Other addresses have zero coefficient. The forced gas sums products
+over disjoint supports with total flag inventory $\mathcal D(U)$.
+Exactly one family can have nonzero product: the components of
+$\mathcal D(U)$ just constructed. Indeed disjoint connected regions
+covering that inventory give its component decomposition. Thus the
+gas equals $e^{-\beta s_*\sum_i d_i(U)}$, including the empty
+product when there are no flags. Put the regular residuals
+$\beta s_*q h_i$ in their healthy supports and take every extra
+logarithmic attachment to be zero. Equation
+\eqref{eq:startup-signed-split} now proves that the full density is
+exactly $e^{-\beta E_W(U)}$ at every field.
+
+All coefficients are gauge-invariant and measurable; the local
+residuals are smooth in left increments. Their value and Hessian
+at the identity vanish. Permuting the signed channels and lattice
+sites gives the required translation and signed-coordinate
+covariance. The packet charge reads only its support with the given
+flags, since the radius-$B$ neighborhood of a site in $B_B(D)$
+lies in $P(D)$. These are the locality conditions of the startup
+family.
+
+\subsection{Uniform prices on the whole coupling band}
+Let $a>0$ be the support exponent. A plaquette support has cover
+number at most $5^4$. At a fixed native site there are
+$|\mathcal S|$ times the number $n_\square$ of plaquette directions
+regular entries. By \eqref{eq:startup-residual-price} their regular
+budget for $0\le\beta\le v$ is at most
+\begin{equation}\label{eq:startup-regular-book}
+             |\mathcal S|n_\square e^{a5^4}\,vCt^5.
+\end{equation}
+The constants depend on the stage, not on volume or cutoff.
+
+Choose positive numbers $\sigma,\kappa,\gamma$ and a lower band
+endpoint $l$ such that
+\begin{align}
+ \kappa+\sigma&\le l\,s_*t^2/16,\label{eq:startup-loan}\\
+ (4B+1)^4e^{(a+2)5^4-\sigma}&\le\gamma,\qquad
+ (2B+1)^4\gamma\le1,\label{eq:startup-single-hit}\\
+ (2B+1)^4(e^\gamma-1)&\le1.\label{eq:startup-margin}
+\end{align}
+For $\beta\ge l$, \eqref{eq:startup-packet-energy} implies
+\[
+               |K_D(\beta,U)|\le e^{-\kappa}e^{-\sigma|D|}.
+\]
+The elementary ball supports $B_{2B}(x)$ have cover number at most
+$5^4$, and at most $(4B+1)^4$ of them contain a specified site.
+Thus \eqref{eq:startup-single-hit} bounds their rooted support sum
+with exponent $a+2$ by $\gamma$. Apply the connected-support
+estimate \eqref{eq:ope-forest-price}, with spare exponent one, to
+these ball supports. It gives the packet majorant
+\[
+ \sup_x\sum_{D:\,x\in P(D)}
+          e^{-\sigma|D|}e^{(a+1)\operatorname{cov}_B(P(D))}
+                        \le e^\gamma-1.
+\]
+This is one common summable majorant for the entire band
+$\beta\ge l$. The regular and forced budgets, and the extra
+one-unit support reserve, have now been proved. After the
+finite gas grouping the forced cost is at most
+$e^{-\kappa}(e^{e^\gamma-1}-1)$, by the same connected-support
+estimate with \eqref{eq:startup-margin}.
+
+We verify that the actual schedule pays these inequalities. Write
+$s=\log\widehat\beta$ and set
+\[
+ M=e^{(\log s)^2},\quad t=e^{-s/2}M,\quad B=\lceil s^2\rceil,
+ \quad \gamma=e^{-M/2},\quad
+ \delta_E=e^{-11s/10},\quad \delta_K=e^{-M^{1/5}}.
+\]
+At a fixed stage take $\sigma=M$, $l=e^s/2$ and $\kappa=M$.
+Then $lt^2s_*/16=s_*M^2/32\ge2M$ eventually, giving
+\eqref{eq:startup-loan}. Since $B$ grows polynomially in $s$
+while $M$ grows faster than every such polynomial,
+\eqref{eq:startup-single-hit} and \eqref{eq:startup-margin}
+hold eventually. More explicitly $(4B+1)^4\le M/4$ and
+$(a+2)5^4\le M/4$ eventually, so their product with
+$e^{-M}$ is at most $e^{-M/2}$; also
+$e^\gamma-1\le2\gamma$ once $\gamma\le1$.
+Since $\gamma\to0$, we may also require
+$e^{e^\gamma-1}-1\le1$. The grouped forced cost is then at most
+$e^{-M}$ and hence at most $\delta_K$.
+
+The logarithm of \eqref{eq:startup-regular-book}, with
+$v=2e^s$, equals
+\[ C-\frac32s+5(\log s)^2, \]
+where $C$ is a stage constant.
+It is at most $-11s/10$ for large $s$, because
+$(\log s)^2=o(s)$. Also $t\to0$, $B\to\infty$, and
+$\log(t e^{(B-2)/\lambda})=-s/2+(\log s)^2+
+(B-2)/\lambda\to\infty$. Thus the residual threshold and
+\eqref{eq:startup-relaxation} are paid at the same entry delay.
+
+The stronger startup reserve needed by the later common services
+is obtained without changing this family. For any fixed additional
+support exponent $\eta\ge0$, replace $a$ by $a+\eta$ in the
+preceding prices and delay the stage further. Take instead
+$l=e^s/4$ and $\kappa=s_*M^2/128$. Eventually $M\le\kappa$,
+and
+\[
+       \kappa+M\le2\kappa=s_*M^2/64=lt^2s_*/16.
+\]
+The same packet bounds then give a forced allowance at most
+$e^{-s_*M^2/128}$ before grouping, with a still smaller
+grouped cost after the reserve is paid. These choices depend on
+the stage and its fixed extra requests, and work for all periods
+and cutoffs realizing that stage. Taking their entry thresholds
+together with the other already chosen thresholds therefore
+preserves the order of choices in the common construction.
+
+\subsection{Continuity and the initial history}
+The dictionary and the masks above do not depend on $\beta$.
+Regular coefficients depend linearly on $\beta$, so their
+normalized derivative differences have the bound
+$C|\beta-\beta'|t^5$. For a packet, $0\le C_D(U)\le
+2s_*|\mathcal S|\,|\Lambda|n_\square$, and, for
+$\beta,\beta'\ge0$,
+\[
+ |e^{-\beta C_D(U)}-e^{-\beta'C_D(U)}|
+                         \le C_D(U)|\beta-\beta'|.
+\]
+There are finitely many nonzero addresses on a fixed torus.
+Their weighted difference sums consequently tend to zero with
+$\beta'-\beta$, uniformly in $U$. Together with the band-wide
+majorants above this proves the required curve property and
+invariant-atom continuity. No continuity of a health indicator
+as a function of $U$ is asserted.
+
+Pack the dictionary into the fixed terminal dictionary by its
+coupling-independent injection. Zero unused entries contribute
+neither cost nor logarithm, and every nonzero coefficient, support,
+inventory, and density is preserved. The finite gas grouping and
+its continuous summable bounds therefore give a continuous family
+on $[\widehat\beta/2,2\widehat\beta]$ with exact Wilson density,
+regular allowance $\delta_E$ and grouped forced allowance
+$\delta_K$. Its scalar constant is zero and its coupling is
+the input parameter $\beta$.
+
+The revised common horizon has exactly the terminal path constructed
+above. For its default recipe there is no additional initial
+permission condition. The exact density and paid ingredients thus
+start the retained history at level $N$ and give its starter
+relation. This proves the initial-family assertion used in
+Section~\ref{sec:common-funded-history} for every $N,p$,
+including $N=0$.

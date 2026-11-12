@@ -1,0 +1,212 @@
+% Finite-volume buffer which transfers a Crown witness to a two-point probe.
+\section{The finite-volume Crown buffer}
+\label{sec:ex-lattice-trace-crown-buffer}
+
+We record the buffer argument used to pass from a local Crown approximation to
+the selected two-point observable. It is useful to separate its three
+ingredients: a rooted product estimate for the good approximation, a
+finite-volume estimate for the exceptional set, and the exact product
+identification across the coarse-to-fine map.
+
+Fix a scale index $i>0$, a finite-volume index $N$, and a period $p$ with
+$i\le k=\operatorname{summit}(i)\le N$. Put $k_-=k-1$. Write
+\begin{align*}
+ T&=\operatorname{tiles}(i,k,N,p),&
+ F_i(q)&=\exp\!\left(\frac{q}{10^4}\,G_i\right),\\
+ G_i&=\operatorname{Gate}(\widehat\beta_i),&
+ \Pi_k&=\operatorname{prism}(\widehat\beta_k),\\
+ \beta&=\beta_{N,p},& \beta_k&=\beta_{N,p}(k),\qquad A_j=C.S.a(j).
+\end{align*}
+For a tiling $T$ with cell set $I$, its rooted functional is
+$\mathsf R_T^\beta(h)=|\mathbb E_\beta[\prod_{q\in I}T.\mathrm{copy}(q,h)]|^{1/|I|}$,
+with the normalized-root convention of the source.
+Write $\mathcal B_{N,k}$ for the local extension from scale $k$ to volume
+$N$. For distinct coarse sites $a,b$ at scale $i$, let $\alpha_{i,k}(a)$
+and $\alpha_{i,k}(b)$ denote their scale-$k$ anchors, and let
+$\alpha_{i,N}(a),\alpha_{i,N}(b)$ denote their volume-$N$ anchors. For
+scale-$k$ fields $X,Y$, define the complex pairing
+\begin{align*}
+ \mathcal Q(X,Y)&=\mathbb E_\beta\!\left[
+  ((\mathcal B_{N,k}X)\circ\operatorname{translate}_{\alpha_{i,N}(a)})
+  ((\mathcal B_{N,k}Y)\circ\operatorname{translate}_{\alpha_{i,N}(b)})\right],\\
+ X_a&=X\circ\operatorname{pull}_{\alpha_{i,k}(a)},\qquad
+ Y_b=Y\circ\operatorname{pull}_{\alpha_{i,k}(b)}.
+\end{align*}
+The exact product identity used below is
+$\mathcal Q(X,Y)=\mathbb E_\beta[\mathcal B_{N,k}(X_aY_b)]$ when both
+fields are interior to a common window and that window fits the tiling.
+The scale receipts give, eventually in $i$,
+\begin{equation}
+ e^{-2\Pi_k}\le F_i(-1{,}200{,}000),\qquad
+ 3\le F_i(1).
+ \label{eq:ex-trace-crown-small-tail}
+\end{equation}
+For the first inequality, use $i\le k$, monotonicity of the gate, and the
+selected estimates
+\[100{,}000\,G_k\,\operatorname{Lyra}(k)\le\Pi_k/32,\qquad
+G_i\le G_k.\] Since $\operatorname{Lyra}(k)\ge1$ eventually, this gives
+$120G_i\le2\Pi_k$, which is the exponent inequality in
+\eqref{eq:ex-trace-crown-small-tail}. The second inequality follows from
+$G_i\to\infty$.
+
+Suppose $f$ is the field to be tested and a Crown witness provides a field
+$w$, a support $P$, and a window radius $l$ such that both fields are interior
+to that window, the scale has room for $l$, and
+\begin{align}
+ |P|&\le F_i(1000), &
+ \sup_U|f(U)-w(U)|&\le F_i(500{,}000),\\
+ |f(U)-w(U)|&\le F_i(-500{,}000)
+   &&\text{if $U$ is healthy for $P$ at threshold $\vartheta_k/16$},\\
+ \mathsf R_T^\beta(\mathcal B_{N,k}w)&\le F_i(-1{,}200{,}000).
+ \label{eq:ex-trace-crown-witness}
+\end{align}
+Let $g$ be the second field in the desired probe, with
+$\sup_U|g(U)|\le F_i(150{,}000)$ and with the required window interiority.
+Let $a\ne b$ be distinct coarse sites. Define the pulled-back factors
+\[
+f_a(U)=f(\operatorname{pull}_{\alpha_{i,k}(a)} U),\quad
+w_a(U)=w(\operatorname{pull}_{\alpha_{i,k}(a)} U),\quad
+g_b(U)=g(\operatorname{pull}_{\alpha_{i,k}(b)} U),\quad
+ D_a=f_a-w_a.
+\]
+Here $\vartheta_k$ is the clock threshold at scale $k$; the pull maps use
+the scale-$k$ anchors defined above.
+
+We make explicit the finite-volume input used for the correction. Let
+$\rho_k$ be the nonnegative density of the effective scale-$k$ representation
+of the volume-$N$ Wilson measure, and put
+$Z=\int\rho_k=\operatorname{Partition}(N,p)$. We use the normalized transfer
+identity
+\begin{equation}
+ \mathbb E_{\beta_{N,p}}[\mathcal B_{N,k}h]
+   =Z^{-1}\int \rho_k(U)h(U)\,d\mu_k(U).
+ \label{eq:ex-trace-crown-transfer}
+\end{equation}
+Let $I_x(U)$ indicate that the local flag at site $x$ exceeds threshold $b$.
+The one-site estimate is an incoming local-action receipt:
+\begin{equation}
+ \int \rho_k(U) I_x(U)\,d\mu_k(U)
+ \le Z\exp\!\left(
+   \left(\frac{A_{k_-}}{A_k}\right)^4\!\operatorname{Treasury}(k)
+   -\beta_k\frac{\operatorname{clip}_k}{5}b^2\right).
+ \label{eq:ex-trace-crown-one-site-tail}
+\end{equation}
+It applies when $2b\le\vartheta_k$ and the scale has room for the radius-eight
+indicator. Given this receipt, obtain the corresponding estimate for a
+support $P'$ by splitting
+configurations into those healthy for all sites of $P'$ and the complement.
+On the healthy set, use the bound $U_0$ for the field. On the complement,
+there is at least one $x\in P'$ with $I_x=1$, so the pointwise absolute
+integrand is at most $V_0\rho_k\sum_{x\in P'}I_x$. Integration, the triangle
+inequality, and \eqref{eq:ex-trace-crown-one-site-tail} give
+\begin{equation}
+ |\mathbb E_{\beta_{N,p}}[\mathcal B_{N,k}h]|
+ \le U_0+V_0|P'|\exp\!\left(
+   \left(\frac{A_{k_-}}{A_k}\right)^4\!\operatorname{Treasury}(k)
+   -\beta_k\frac{\operatorname{clip}_k}{5}b^2\right).
+ \label{eq:ex-trace-crown-soils}
+\end{equation}
+The exponent in \eqref{eq:ex-trace-crown-soils} is eventually at most
+$-2\Pi_k$ by the scale estimate
+\begin{equation}
+ \left(\frac{A_{k_-}}{A_k}\right)^4\!\operatorname{Treasury}(k)
+ -\beta_k\frac{\operatorname{clip}_k}{5}b^2\le -2\Pi_k,
+ \label{eq:ex-trace-crown-funeral}
+\end{equation}
+for $b=\vartheta_k/16$. This is the exact threshold used in the witness
+bound. Here is the scalar calculation behind that estimate. Put
+$x=\widehat\beta_k$, $y=\operatorname{Lyra}(k)$, $q=\Pi_k$,
+$C=\operatorname{clip}_k$, and $m=\operatorname{monitor}(k)$. These satisfy
+$x,y,C>0$ and $q\ge0$. The selected scale receipts give
+\[
+ \left(\frac{A_{k_-}}{A_k}\right)^4\operatorname{Treasury}(k)\le y^6,
+ \quad 10\cdot16^2 y(y^6+2q)\le m^2,
+ \quad yC\ge1,
+ \quad x\vartheta_k^2=m^2,
+ \quad \beta_k\ge x/2.
+\]
+Since $b=\vartheta_k/16$, the second and fourth inequalities imply
+$y^6+2q\le m^2/(2560y)$. The third gives $1/y\le C$, so
+\[
+ y^6+2q\le \frac{Cm^2}{2560}
+ =\frac{x}{2}\frac C5\left(\frac{\vartheta_k}{16}\right)^2
+ \le \beta_k\frac C5 b^2.
+\]
+Subtracting from the first bound yields the exponent in
+\eqref{eq:ex-trace-crown-funeral}. Thus the exceptional-set estimate is
+obtained from the one-site flag bound and the displayed scale receipts, not
+from locality by itself.
+
+\begin{lemma}[Good Crown term]
+\label{lem:ex-trace-crown-good}
+Under the seam condition for $T$ and the window and room hypotheses above,
+\[ |\mathcal Q(w,g)|\le F_i(-1{,}050{,}000).\]
+\end{lemma}
+\begin{proof}
+The translated planted inequality gives
+\[
+ |\mathcal Q(w,g)|\le \mathsf R_T^\beta(\mathcal B_{N,k}w)\,
+      \mathsf R_T^\beta(\mathcal B_{N,k}g).
+\]
+Its proof represents each anchored factor by a tiling copy of an oriented,
+possibly conjugated chamber-interior field; this preserves the rooted
+functional. The Crown bound controls the first factor by
+$F_i(-1{,}200{,}000)$. For the second, the rooted sup estimate says
+that a field bounded pointwise by $R\ge0$ has root at most $R$; hence it is at
+most $F_i(150{,}000)$. Multiplying and using
+$F_i(s)F_i(t)=F_i(s+t)$ gives the claim.
+\end{proof}
+
+\begin{lemma}[Exceptional-set buffer]
+\label{lem:ex-trace-crown-exception}
+The correction term satisfies
+\[ |\mathcal Q(f-w,g)|\le F_i(-350{,}000)+F_i(-549{,}000).\]
+\end{lemma}
+\begin{proof}
+By the exact product identity, the correction is the finite-volume Wilson
+expectation of the local field $D_a g_b$. This field has envelope obtained by
+multiplying the two local envelopes. Its global bound is
+$F_i(500{,}000)F_i(150{,}000)=F_i(650{,}000)$; on the healthy set for the
+translated support, the bound improves to
+$F_i(-500{,}000)F_i(150{,}000)=F_i(-350{,}000)$. Translation preserves the
+number of support sites, so the support cardinality is at most $F_i(1000)$.
+Apply \eqref{eq:ex-trace-crown-soils} with
+$U_0=F_i(-350{,}000)$, $V_0=F_i(650{,}000)$, $P'$ the translate of $P$, and
+$b=\vartheta_k/16$. By \eqref{eq:ex-trace-crown-funeral}, this bounds
+$|\mathbb E_\beta[\mathcal B_{N,k}(D_a g_b)]|$ by
+\[
+ F_i(-350{,}000)+F_i(650{,}000)F_i(1000)e^{-2\Pi_k}.
+\]
+Apply \eqref{eq:ex-trace-crown-small-tail} to the last factor and combine the
+exponents: $650{,}000+1000-1{,}200{,}000=-549{,}000$. Thus
+\begin{equation}
+ F_i(-350{,}000)+F_i(-549{,}000).
+ \label{eq:ex-trace-crown-exception-correct}
+\end{equation}
+\end{proof}
+
+\begin{proposition}[Crown buffer for the two-point probe]
+\label{prop:ex-trace-crown-buffer}
+Under the preceding hypotheses, if also the coarse-to-fine room condition
+holds, then
+\[
+ |\mathcal Q(f,g)|\le F_i(-30{,}000)
+\]
+for all sufficiently large $i$, uniformly in the allowed finite volumes,
+periods, fields, and distinct coarse sites.
+\end{proposition}
+\begin{proof}
+Set $D_a=f_a-w_a$. By the exact product identity for the coarse pairing,
+\[
+ \mathcal Q(f,g)=\mathcal Q(w,g)+\mathcal Q(f-w,g).
+\]
+The first term is bounded by Lemma~\ref{lem:ex-trace-crown-good} and the
+second by \eqref{eq:ex-trace-crown-exception-correct}. Each exponent is at
+most $-31{,}000$, so the sum is at most $3F_i(-31{,}000)$. Since eventually
+$3\le F_i(1)$, this is at most
+\[F_i(-31{,}000)F_i(1)=F_i(-30{,}999)\le F_i(-30{,}000).\]
+\end{proof}
+
+The proof uses the stated Crown witness and the finite-volume buffer
+estimate. The source's witness construction is a separate input to this
+transfer proposition.

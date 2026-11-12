@@ -1,0 +1,225 @@
+\section{From a coefficient field to a finite-cutoff reference observable}
+\label{sec:reference-match}
+The signed comparison must control the original finite-cutoff
+observable, not only its coefficient vector. This requires a
+simultaneous marked argument. We explain the finite-dimensional
+matching and the exact replicated difference used in that argument.
+
+Fix a degree $d$ and scales $\operatorname{ref}(d)\le m\le k<N$.
+All paths below use the same finest scale $N$ and the same history;
+$m$ is the opening scale and $k$ the matching scale. Let $Q$ represent a continuous finite-cutoff observable
+$f$ at scale $k$ through the full marked local representation.
+Suppose its coefficient-plus-remainder bound is at most $c>0$,
+and put
+\[
+ E\ge4(1+C_k)c,\qquad
+ G=e^{(s_k-s_m)/8},\qquad w>0.
+\]
+Assume the signed transition hypotheses of
+Section~\ref{sec:reference-difference}, the one-scale marked
+transport hypotheses of Section~\ref{sec:local-transfer}, and
+the necessary cell separation and chamber locality at each scale.
+The common affordability condition is
+\begin{equation}\label{eq:reference-match-afford}
+       32(1+C_k)w a_m^{-d}E/G\le\theta_m/2.
+\end{equation}
+Here $\theta_i$ are the single-source allowances; their growth
+condition is the one used in \eqref{eq:reference-affordable}.
+The coefficient paths must also satisfy the corresponding
+one-step singleton cost conditions there and in the marked
+transport lemma. No availability of these analytic hypotheses
+is inferred from \eqref{eq:reference-match-afford} alone.
+
+\subsection{An approximate coordinate basis}
+Apply the signed reference construction first to $Q$. It gives a
+label $b$ with $\mu(I_kb)\le2E$ and a path representing
+$Q-\mathcal P_k(b)$. Its opening price is $2w$; the required
+initial affordability follows from
+\eqref{eq:reference-match-afford} because
+$2\le32(1+C_k)$.
+
+For each coefficient coordinate $j$, apply the same construction
+to the primary field with vector $e_j$ and zero remainder.
+Use opening price $8Ew$ and coefficient allowance $4(1+C_k)$.
+Its affordability expression is exactly the left side of
+\eqref{eq:reference-match-afford}. Obtain labels $b_j$.
+The cone estimate at $k$, now with terminal bound $1$, gives
+\[
+ 32(1+C_k)^2\mu(e_j-I_kb_j)\le2(1+C_k),
+ \qquad \mu(e_j-I_kb_j)\le\tfrac14.
+\]
+Define $A z=\sum_jz_jI_kb_j$. Since $\mu$ is the coefficient
+$\ell^1$ norm,
+\[
+ \mu(z-Az)\le\sum_j|z_j|\mu(e_j-I_kb_j)
+                         \le\tfrac14\mu(z).
+\]
+It follows that $\mu(z)\le2\mu(Az)$. Thus $A$ is injective
+and, in this finite-dimensional space, surjective. Solve
+$As=I_kb$. Injectivity of $I_k$ gives
+\begin{equation}\label{eq:reference-basis-expansion}
+                   b=\sum_js_jb_j,
+             \qquad\sum_j|s_j|\le2\mu(I_kb)\le4E.
+\end{equation}
+No uniform condition number of an arbitrarily chosen reference
+basis is being assumed; the bound comes from the explicitly
+constructed approximate coordinate vectors.
+
+Let $\ell_j$ be the physically normalized primary field for
+$e_j$ at scale $k$, with its local mask, and set
+\[
+                   \ell=-\sum_js_j\ell_j,
+                         r=\mathcal B_{k,N}\ell,
+\]
+where $\mathcal B_{k,N}$ is the backward observable transfer to
+the finest lattice. All $\ell_j$ lie in the same fixed stencil
+window. Hence $\ell$ does too, and the room condition places
+$r$ inside the centered chamber. This common window is essential
+for the replicated transfer identity below.
+
+\subsection{The full replicated difference}
+We spell out that identity, keeping every mixed term. Write
+$\mathcal T_{N,k}$ for the forward density transfer, adjoint to
+$\mathcal B_{k,N}$ under the Haar priors. For copied fine
+observables $O_i$ and copied coarse observables $F_i$, the
+coefficient of a mark set $S$ after introducing the coarse
+sources is
+\begin{equation}\label{eq:reference-join}
+ \sum_{A\subseteq S}
+       \mathcal T_{N,k}\left(\rho_N
+                    \prod_{i\in S\setminus A}(-O_i)\right)
+                                      \prod_{i\in A}F_i.
+\end{equation}
+Here $\rho_N$ is the unnormalized Wilson density. The same
+forward transfer is used for the whole fine product in each
+summand. It has not been replaced by a product of transferred
+factors.
+
+For coarse functions in the common local window, the room
+condition ensures that backward transfer respects their copied
+product: $\mathcal B_{k,N}(\prod_{i\in A}F_i)$ is the product
+of the corresponding copies of $\mathcal B_{k,N}F$.
+Using adjointness in each summand of
+\eqref{eq:reference-join}, its integral is therefore
+\[
+       \int\rho_N\prod_{i\in S}
+                     (\mathcal B_{k,N}F_i-O_i)\,dU.
+\]
+This follows by the finite subset expansion of the product.
+The interchange is justified by bounded local observables,
+integrable fine densities and the transition-slice bounds.
+Further forward transfers leave this integral unchanged.
+Thus the coefficient of the complete mark set is the Wilson
+partition function times the replicated difference moment.
+
+The singleton bounds used here follow from the priced coefficient
+basis and the remainder bounds. Explicitly, require the masked
+basis evaluation bound with column constant $C_m\ge1$ and
+remainder divisor at most one. If a coefficient field has vector
+$q$ and remainder cost $t$, the triangle inequality gives
+$|g|\le(1+C_m)\mu(q)+t$ before physical normalization.
+The sum of the norms of its flagged profiles is at most $t$: sum
+the absolutely summable forced majorants and use that every support
+weight is at least one. The same argument bounds the ordinary
+remainder by $t$; the primary term is bounded by
+$(1+C_m)\mu(q)$ using the priced basis. If
+$v a_m^{-d}(t+\mu(q))\le\theta_m$ and
+$C_m\theta_m\le1$, these bounds give normalized singleton
+allowances $2$ and $1$. Translations and conjugation preserve
+them. This is the sharper bound for the matched coefficient paths;
+it is separate from the general centered-field estimate.
+
+Suppose the marked transport has reached scale $m$ with common
+mark weight $v>0$, higher-array price one, and singleton bounds
+\[
+      v|g_i(U)|\le2,\qquad
+          v\sum_X|q_i(X,U)|\le1.
+\]
+The integrated marked coefficient estimate
+\eqref{ex-centered-sail}, with singleton allowances
+$2$ and $1$, then bounds the complete moment by
+\[
+      v^M|\operatorname{moment}|\le
+       \exp\bigl(|\Lambda_m|\mathcal V_m+5M\bigr).
+\]
+There are $M$ copied cells. Write
+$S_0=\exp(|\Lambda_m|\mathcal V_m/M+5)$, the cell price.
+Taking the $M$th root gives the centered root bound $S_0/v$.
+This is an estimate for the complete replicated difference;
+no estimate on its individual mixed summands is substituted.
+
+\subsection{Combining the comparison paths}
+The one-scale transport is stable under affordable finite linear
+combinations of its single-source paths. Explicitly, if path
+$j$ has positive opening price $v_j$ and coefficient $a_j$,
+the condition
+\begin{equation}\label{eq:reference-portfolio}
+                           \sum_j w|a_j|/v_j\le1
+\end{equation}
+preserves every common normalized cost bound. All paths use the
+same multiplicative weight evolution: at scale $i$ the opening
+prices $v_j$ and $w$ are multiplied by the same positive factor.
+Thus the fractions in \eqref{eq:reference-portfolio} are unchanged
+at each intermediate scale. To verify the cost bound,
+if $v_j\sum_X|F_{j,X}|\le C$, then
+\[
+ w\sum_X\left|\sum_ja_jF_{j,X}\right|
+       \le\sum_j\frac{w|a_j|}{v_j}
+                          v_j\sum_X|F_{j,X}|\le C.
+\]
+The same calculation applies to singleton values, elementary
+transition costs and response majorants. Sum the dominated
+indexed arrays using their summed majorants. The transition
+identities are linear, so remain exact. Applying the marked
+transport successively proves the claim for the whole interval.
+
+Use the base difference path with coefficient $1$ and price
+$2w$, and the coordinate paths with coefficients $-s_j$ and
+price $8Ew$. Equation~\eqref{eq:reference-basis-expansion} gives
+\[
+                 \frac{w}{2w}
+                     +\sum_j\frac{w|s_j|}{8Ew}\le1.
+\]
+At scale $k$, the reference terms cancel separately in the
+ordinary and flagged profiles, because
+$-b+\sum_j(-s_j)(-b_j)=0$.
+For a conjugating copy, use the conjugate of every coefficient
+$a_j$ in the portfolio; for an ordinary copy use $a_j$ itself.
+Their absolute values coincide, so the cost proof is unchanged.
+The cancellation in a conjugating copy is the conjugate of the
+displayed identity. Thus cancellation holds for every copied profile.
+The resulting ordinary field is the one for $Q$ plus $\ell$;
+the flagged profile is exactly the one for $Q$. Introducing
+$\ell$ into the marked representation of $f$ is multiplication
+by its squarefree source exponential. The identity
+\eqref{eq:reference-join}, with $O=-f$ and $F=\ell$, therefore
+identifies the complete coefficient with the replicated moment
+of $f+r$. The transport and complete-moment estimate give
+\[
+                           \mathcal R(f+r)\le S_0/w,
+\]
+where $\mathcal R$ is the centered root seminorm.
+
+For each coordinate path the same argument, starting from the
+terminal reference field and inserting $\ell_j$ at scale $k$,
+gives
+\[
+ \mathcal R\bigl(\mathcal B_{k,N}\ell_j-\mathcal O(b_j)\bigr)
+                                         \le S_0/(8Ew).
+\]
+Here $\mathcal O(b_j)$ denotes the fine observable attached to
+that bare label by the calibrated terminal identification.
+This application requires the terminal reference representation
+and its singleton profile identity on the same history.
+They remain among the analytic inputs to the matched construction.
+The chamber seminorm inequality, backward-transfer linearity
+and \eqref{eq:reference-basis-expansion} imply
+\[
+           \mathcal R\bigl(-r-\mathcal O(b)\bigr)
+                  \le4E\frac{S_0}{8Ew}=\frac{S_0}{2w}.
+\]
+Finally $f-\mathcal O(b)=(f+r)+(-r-\mathcal O(b))$ lies in
+the common chamber class, so its centered root is at most
+$2S_0/w$. The matched reference observable has quota at most
+$2E$, as proved above. These are exactly the two bounds used
+in the cutoff matching argument.

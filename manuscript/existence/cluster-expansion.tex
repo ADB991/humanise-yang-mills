@@ -1,0 +1,285 @@
+\section{Connected clusters with repeated labels}
+\label{sec:cluster-expansion}
+Section~\ref{sec:ope-grouping} counted connected sets of distinct activity
+labels. A logarithmic expansion is different: its vertices are numbered
+occurrences, and the same activity label may occur several times. We now
+prove the bound for this expansion, including its factorials and the
+identity with the real logarithm of the gas. No positivity of the gas is
+assumed in obtaining the identity.
+
+Let $\Lambda$ be a finite periodic lattice. Each label $i$ has a nonempty
+support $X_i$, and write $c(X)=C_B(X)$ and $h_B=(2B+1)^4$. We use
+$|X|\le h_Bc(X)$ and covering subadditivity for intersecting supports.
+The incompatibility relation $R$ is symmetric and reflexive, and
+\[
+                R(i,j)\quad\Longrightarrow\quad X_i\cap X_j\ne\varnothing.
+\]
+The converse is not required. Let $w_i\ge0$, $a\ge0$, $\gamma>0$,
+$\delta>0$, and suppose
+\begin{equation}\label{eq:cluster-vertex-input}
+ \sup_{x\in\Lambda}\sum_{i:x\in X_i}w_i e^{(a+\delta)c(X_i)}\le\gamma,
+ \qquad q_0=\frac{4h_B\gamma}{\delta}\le q<1.
+\end{equation}
+In particular $q>0$.
+
+For an ordered tuple $z=(i_0,\ldots,i_m)$, let $T(z)$ be the graph
+on $\{0,\ldots,m\}$ with an edge $\{r,s\}$ when $r\ne s$ and
+$R(i_r,i_s)$. Define its connected coefficient and majorant by
+\[
+ u(z)=\sum_{\substack{G\subseteq T(z)\\G\ {\rm connected}}}(-1)^{|E(G)|},
+ \qquad W(z)=\frac{|u(z)|}{(m+1)!}\prod_{r=0}^m w_{i_r}.
+\]
+For $m=0$ the graph with no edges is connected and $u(z)=1$.
+Repeated labels are allowed in every tuple sum below.
+
+\subsection{Cancellation before taking absolute values}
+For any graph $T$ on $\{0,\ldots,m\}$,
+\begin{equation}\label{eq:cluster-tree-graph}
+ \left|\sum_{\substack{G\subseteq T\\G\ {\rm connected}}}
+                      (-1)^{|E(G)|}\right|
+                      \le\#\{\text{spanning trees of }T\}.
+\end{equation}
+Here is the cancellation argument. Fix a total order of the vertices
+and root at zero. For each connected $G$, let $d(v)$ be its distance
+from zero, and choose the least neighbor $p(v)$ at distance $d(v)-1$
+as the parent of each $v\ne0$. The resulting parent edges form a
+spanning tree $P$. They determine $d$ by their path lengths.
+
+For a fixed tree $P$, define $U(P)\subseteq T$ to contain the tree
+edges and all further edges satisfying these two rules: their levels
+differ by at most one, and, if they join $v$ at level $r$ to $w$ at
+level $r-1$, then $w\ge p(v)$ in the chosen order. Precisely the graphs
+with
+\[
+                         P\subseteq G\subseteq U(P)
+\]
+have this breadth-first parent tree. One implication follows from
+shortest-path distance and the least-parent rule. Conversely, the tree
+paths show that a graph in this interval reaches every vertex in at
+most $d(v)$ steps. The level restriction implies that no path from
+zero reaches it in fewer steps, so the distances are exactly $d$.
+The second rule makes $p(v)$ its least neighbor at the preceding
+level. This proves the other implication and partitions all connected
+graphs into these intervals.
+
+The alternating sum over one interval is
+$(-1)^m(1-1)^{|U(P)\setminus P|}$, hence has absolute value at most
+one. Equivalently, if there is a free edge, toggling it pairs terms
+with opposite signs. Summing over $P$ proves
+\eqref{eq:cluster-tree-graph}. Taking absolute values separately for
+all connected graphs would lose this cancellation and would not give
+the required estimate.
+
+\subsection{The weighted forest estimate}
+A parent map $p:\{1,\ldots,m\}\to\{0,\ldots,m\}$ is called rooted
+if iterating it always reaches the external root zero. Place a fixed
+support $Y$ at zero and a support $X_{i_v}$ at vertex $v\ne0$.
+Only assignments in which each child support meets its parent support
+are retained. We claim
+\begin{equation}\label{eq:cluster-forest-bound}
+ \frac1{m!}\sum_{p\ {\rm rooted}}\sum_{i_1,\ldots,i_m}
+ \mathbf1_{\{\text{all parent edges overlap}\}}
+       \prod_{v=1}^m w_{i_v}e^{a c(X_{i_v})}
+                            \le e^{\delta c(Y)}q^m.
+\end{equation}
+The labels in this sum need not be distinct.
+
+Put $t=h_B\gamma/\delta>0$, $F(Y)=\max(\delta c(Y),1)$, and
+introduce the nonnegative kernel
+\[
+ K(Y,i)=\frac{\mathbf1_{\{X_i\cap Y\ne\varnothing\}}
+                        w_i e^{(a+\delta)c(X_i)}}{tF(Y)}.
+\]
+The site bound in \eqref{eq:cluster-vertex-input} implies
+\[
+ \sum_i\mathbf1_{\{X_i\cap Y\ne\varnothing\}}
+                w_i e^{(a+\delta)c(X_i)}
+       \le |Y|\gamma\le h_B\gamma c(Y)\le tF(Y).
+\]
+Thus every row of $K$ sums to at most one. For a fixed rooted parent
+map, the sum over all label assignments of the product of its edge
+kernels is at most one: sum the label at a leaf first, apply its row
+bound, and repeat until no vertex remains. For infinite alphabets
+one first restricts to a finite alphabet; the row bounds still hold,
+and nonnegative convergence removes the restriction.
+
+Let $d_v$ be the number of children of vertex $v$, including the
+external root. The exponential series gives
+\[
+                 F(Z)^k\le k!e^{\delta c(Z)}\quad(k\ge0).
+\]
+Indeed if $\delta c(Z)\ge1$ this is one term in the exponential
+series; otherwise use $F(Z)=1$ and $k!e^{\delta c(Z)}\ge1$.
+Replacing each overlap weight with its kernel expression and collecting
+the factors at parents gives
+\begin{align*}
+ &\prod_{v=1}^m\mathbf1_{\{X_{i_v}\text{ meets parent}\}}
+                    w_{i_v}e^{a c(X_{i_v})}\\
+ &\qquad\le t^m e^{\delta c(Y)}
+                    \left(\prod_{v=0}^m d_v!\right)
+                    \prod_{v=1}^m K(X_{i_{p(v)}},i_v),
+\end{align*}
+where $X_{i_0}=Y$. To check the reserve cancellation, before the
+inequality there is a factor $e^{-\delta c(X_{i_v})}$ at every
+nonroot vertex. Applying the bound on $F^{d_v}$ supplies exactly
+one inverse factor there, leaving only $e^{\delta c(Y)}$ at the
+external root.
+
+It remains to sum the child factorials. Summing over all parent maps,
+including those which are not rooted, can only increase the answer.
+For fixed child counts $d_0+\cdots+d_m=m$ there are
+$m!/\prod_vd_v!$ maps. Therefore
+\[
+ \sum_{p:\{1,\ldots,m\}\to\{0,\ldots,m\}}\prod_{v=0}^m d_v!
+       =m!\binom{2m}{m}\le m!4^m.
+\]
+The binomial coefficient counts weak compositions of $m$ into $m+1$
+parts. The inequality follows by comparing it with the sum of all
+binomial coefficients of order $2m$. After division by $m!$, the
+kernel bound and this count prove
+\eqref{eq:cluster-forest-bound}, since $(4t)^m=q_0^m\le q^m$.
+This also proves the case $m=0$, whose left side is one.
+
+A distinguished root may carry a different nonnegative weight $v_i$.
+If $\sum_i v_i e^{(a+\delta)c(X_i)}\le b$, multiply
+\eqref{eq:cluster-forest-bound} with $Y=X_{i_0}$ by
+$v_{i_0}e^{a c(X_{i_0})}$ and sum $i_0$. The result is the rooted
+bound $bq^m$, with denominator $m!$ for the other vertices.
+
+\subsection{A root anywhere in the tuple}
+Let $Q$ be any property of an activity label and assume
+\[
+              \sum_{i:Q(i)}w_i e^{(a+\delta)c(X_i)}\le b.
+\]
+Apply \eqref{eq:cluster-tree-graph} to each occurrence graph and the
+rooted forest bound with $v_i=\mathbf1_{Q(i)}w_i$ at a specified
+vertex. This gives
+\[
+ \sum_{z}\frac{|u(z)|}{m!}\,
+          \mathbf1_{Q(i_r)}\prod_{s=0}^m w_{i_s}e^{a c(X_{i_s})}
+                           \le bq^m
+\]
+for every root position $r$. Relabeling occurrence positions preserves
+both the connected coefficient and the tuple sum, so the same bound
+holds for all $r$. If a tuple contains at least one label satisfying
+$Q$, its cluster majorant, with denominator $(m+1)!$, is bounded by
+$1/(m+1)$ times the sum of the displayed rooted integrands over all
+$r$. Summing yields
+\begin{equation}\label{eq:cluster-marked-size}
+ \sum_{z:\,\exists r\,Q(i_r)}
+ \frac{|u(z)|}{(m+1)!}\prod_{r=0}^m w_{i_r}e^{a c(X_{i_r})}
+                           \le bq^m.
+\end{equation}
+This is the normalization that pays for choosing a root; no additional
+factor $m+1$ remains.
+
+If $u(z)\ne0$, its occurrence graph contains a connected spanning
+subgraph, hence a spanning tree. Incompatibility edges imply support
+overlap. Adding supports along this tree gives
+\[
+        c\left(\bigcup_{r=0}^m X_{i_r}\right)
+                              \le\sum_{r=0}^m c(X_{i_r}).
+\]
+As $a\ge0$, the exponential weight of the actual union is therefore
+bounded by the product weight in \eqref{eq:cluster-marked-size}.
+Take $Q(i)$ to mean $x\in X_i$ and $b=\gamma$. The union contains
+$x$ exactly when some label has this property. Finally sum over
+$m\ge z$ to obtain
+\begin{equation}\label{eq:cluster-local-tail}
+ \sum_{m\ge z}\sum_{i_0,\ldots,i_m}
+ \mathbf1_{\{x\in\bigcup_rX_{i_r}\}}
+      W(i_0,\ldots,i_m)e^{a c(\bigcup_rX_{i_r})}
+                       \le\frac{\gamma q^z}{1-q}.
+\end{equation}
+Thus the connected estimate \eqref{eq:leaf-cluster-tail} follows
+from a vertex site bound and the explicit smallness inequality in
+\eqref{eq:cluster-vertex-input}: use the exponent $a+e$ there in
+place of $a$, the cluster vertex price $t$ in place of $\gamma$,
+and the tail parameter $\gamma$ of that section in place of $q$.
+The reserve $\delta$ pays for tree branching and is distinct from the
+reserve $e$ used later for spatial derivative weights.
+
+\subsection{The exact logarithm identity}
+Now let $v_i\in\mathbb R$ be possibly signed activities and apply the
+preceding estimates to $w_i=|v_i|$. Define the gas and connected sum
+\[
+ Z=\sum_{A\ {\rm finite,compatible}}\prod_{i\in A}v_i,
+ \qquad
+ \mathcal L=\sum_{m\ge0}\frac1{(m+1)!}
+         \sum_{i_0,\ldots,i_m}u(i_0,\ldots,i_m)\prod_{r=0}^m v_{i_r}.
+\]
+A finite set is compatible if it contains no incompatible distinct
+labels. The empty set contributes one. We will prove
+\begin{equation}\label{eq:cluster-exact-log}
+                         Z=e^{\mathcal L}>0,\qquad \log Z=\mathcal L.
+\end{equation}
+First both series converge absolutely. Nonempty supports and
+\eqref{eq:cluster-vertex-input} imply $\sum_i|v_i|\le|\Lambda|\gamma$,
+so the gas is dominated by $\prod_i(1+|v_i|)\le e^{|\Lambda|\gamma}$.
+For the logarithm, use \eqref{eq:cluster-marked-size} with $Q$ always
+true and $b=|\Lambda|\gamma$, and drop the support weights. Its
+absolute sum at order $m$ is at most $|\Lambda|\gamma q^m$; hence
+the total is at most $|\Lambda|\gamma/(1-q)$.
+
+Begin with a finite alphabet $D$. Let $P(t)$ be its gas polynomial,
+with each activity replaced by $tv_i$, and let
+\[
+                 L(t)=\sum_{m\ge0}\ell_m t^{m+1},\qquad
+ \ell_m=\frac1{(m+1)!}\sum_{i_0,\ldots,i_m\in D}
+                                    u(i_0,\ldots,i_m)\prod_rv_{i_r}.
+\]
+The bound $|\ell_m|\le |\Lambda|\gamma q^m$ shows that $L$ is
+differentiable for $|t|<q^{-1}$ by termwise differentiation. Indeed
+on $|t|\le u<q^{-1}$ the derivative terms are bounded by the summable
+series $|\Lambda|\gamma(m+1)(qu)^m$. This interval contains $[0,1]$.
+
+We verify the coefficient identity $P'=L'P$, rather than assuming a
+formal logarithm can be evaluated. On a tuple of $n$ occurrences,
+the sum of $(-1)^{|E(G)|}$ over all subgraphs of its incompatibility
+graph is $(1-1)^{|E(T)|}$. It is one if the graph has no edge and zero
+otherwise. Because $R$ is reflexive, a tuple with repeated labels
+has an edge between equal occurrences and contributes zero. Thus
+summing this all-graph weight over tuples, multiplying by their
+activities, and dividing by $n!$ gives exactly the coefficient $p_n$
+of $P(t)$: each compatible $n$-element set has $n!$ enumerations.
+
+For $n=m+1$, distinguish occurrence zero in an arbitrary graph. Its
+connected component consists of zero and some $k$ of the other $m$
+vertices. Choose those vertices in $\binom{m}{k}$ ways. A graph is
+then uniquely specified by a connected graph on this component and
+an arbitrary graph on its complement, with no cross edges. Edge
+signs and label products factor. Summing the choices and dividing
+by $m!$ gives the exact recurrence
+\[
+                  (m+1)p_{m+1}
+                       =\sum_{k=0}^m(k+1)\ell_k p_{m-k}.
+\]
+Absolute convergence of $L'$ and the finiteness of $P$ allow its
+coefficients to be multiplied and summed, proving $P'=L'P$ on the
+interval. Hence
+\[
+                 \frac{d}{dt}\{P(t)e^{-L(t)}\}=0.
+\]
+At zero, $P(0)=1$ and $L(0)=0$. The mean value theorem implies
+$P(t)e^{-L(t)}=1$ throughout the interval, and evaluation at $t=1$
+proves \eqref{eq:cluster-exact-log} for the finite alphabet.
+
+Finally let finite alphabets increase to all labels. Every gas term
+and every occurrence tuple is eventually retained. The absolute
+majorants already proved are independent of this restriction.
+Dominated convergence therefore gives $P_D(1)\to Z$ and
+$L_D(1)\to\mathcal L$. Continuity of the exponential yields
+$Z=e^{\mathcal L}$, and its strict positivity gives the claimed
+real logarithm. For an arbitrary index set the same argument uses
+the directed family of all finite subsets; alternatively absolute
+summability leaves only countably many nonzero terms. This completes
+the proof, with no assumption of positivity or a choice of a complex
+logarithm branch.
+
+Applied to the uniformly dominated tilted activities of
+Section~\ref{sec:leaf-expansion}, this result constructs their positive
+normalization and logarithmic cluster series once the vertex site
+bound \eqref{eq:cluster-vertex-input} is established. The joint bounds
+proved there then justify differentiating it. Constructing the actual
+block-integral activities and proving their vertex bounds remain
+separate analytic tasks.

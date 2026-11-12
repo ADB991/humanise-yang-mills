@@ -1,0 +1,293 @@
+\section{Capturing a cluster and paying for a cutoff match}
+\label{sec:ope-cutoff}
+The local match used in Section~\ref{sec:ope-grid} is constructed before
+any continuum limit. One follows a product of local observables down
+through the scales, merging groups whenever their parent sites cease
+to be separated. The bookkeeping must be independent of the number of
+replicated cells. Otherwise it would be unusable in the centered root
+estimate. We give the geometric selection and the scale accounting
+explicitly, and state where the remaining local RG estimates enter.
+
+\subsection{Regrouping without a growing arity cost}
+Let a cluster have $h\geq1$ marked sites and distinguish one of its
+marks. At a given scale, call sites separated if their periodic
+maximum-coordinate distance is at least $B^2$, where $B\geq1$ is the
+purchased support radius. Among the subsets containing the distinguished
+mark choose one of maximal cardinality with separated sites. Every
+omitted mark lies at distance less than $B^2$ from a chosen mark:
+otherwise it could be added. Assign each omitted mark to one such
+representative, and assign each chosen mark to itself. This defines a
+partition with a chosen representative in every part. If the original
+sites were not separated, the number of parts strictly decreases.
+
+Copies in different centered cells have the same relative geometry,
+up to translations and signed coordinate transformations, which preserve
+distance. Use the same partition in each copy. Cross-cell separation
+and separation of the chosen representatives in the home cell then
+give separation of all representatives. In particular the number of
+regroupings is at most $h-1$, regardless of how many cells are copied.
+
+The cost of connecting a mark to its representative can be charged
+one scale before their parents meet. To check the geometry, let the
+block ratio be $L$, let $K$ be the parent's support radius and $B$ the
+child's, and let $x,y$ be two child sites whose parents have distance
+less than $K^2$. Each child is at distance less than $L/2$ from the
+embedded parent. The triangle inequality gives
+\[
+ \operatorname{dist}(x,y)<L(K^2+1)\leq L(K+B+1)^2=:c.
+\]
+A pair at distance at most $cB$ can be covered by at most $(2c+1)^4$
+$B$-blocks: both points lie in the radius-$cB$ halo of one point,
+which is tiled by at most $2c+1$ blocks per coordinate. Since $B\geq1$,
+the preceding pair therefore has covering number at most
+\begin{equation}\label{eq:ope-pair-halo}
+ (2c+1)^4\leq16(1+c)^4.
+\end{equation}
+This is the halo charged to the individual grouping operation. It
+does not assert that the entire cluster lies in a single small halo
+at every intervening scale.
+
+Here are the two local RG estimates used in the induction. A group
+has a positive weight $W$ measuring the allowed size of its marked
+representation. If its parents stay separated, descent through a block
+of ratio $L$ changes its weight to $W/L^4$. If $p$ groups merge into
+$q<p$ groups at a scale with connecting-cover bound $\ell$, their
+new weights can be taken to be
+\begin{equation}\label{eq:ope-group-weight}
+ \widetilde W_A=\frac18\prod_{r\in A}(\lambda W_r),\qquad
+ \lambda=\frac{\delta^2}{h}
+       e^{-(\nu+1/2)\ell}.
+\end{equation}
+Here $\nu$ is the purchased support exponent and $\delta>0$ the local
+smallness parameter. These statements also retain the exact marked
+polynomial after regrouping, its covariance between copies, its
+integrability, and its permitted local representation. The analytic
+proofs of these two local representation estimates remain construction
+inputs. In particular their weight rules alone are not a proof that
+a marked representation exists.
+
+Choose one $0<\alpha\leq1$ no larger than every grouping factor
+$\lambda$ that will be needed. If $j$ is the initial scale, $i$ the
+current scale and $s\leq h$ the current number of groups, put
+\[
+ C(i,s)=\left(\frac{a_j}{a_i}\right)^{4h}
+         (\alpha/8)^{h(h-s)}\prod_{r=1}^h W_r^{\mathrm{initial}}.
+\]
+We claim that the product of the current group weights is at least
+$C(i,s)$. This is equality initially. For an ordinary descent,
+\[
+ C(i,s)=L_i^{-4h}C(i+1,s)
+ \leq L_i^{-4s}\prod_r W_r,
+\]
+since $s\leq h$ and $L_i\geq1$.
+For a genuine grouping, $q<p\leq h$ and $\alpha/8\leq1$ imply
+\[
+ C(i,q)\leq C(i,p)(\alpha/8)^h.
+\]
+Thus
+\[
+ 8^q C(i,q)\leq\alpha^h C(i,p)
+       \leq\lambda^p\prod_r W_r.
+\]
+We used $8^q\leq8^h$ and $\alpha^h\leq\alpha^p\leq\lambda^p$.
+The last expression is exactly the product of the new numerators
+in \eqref{eq:ope-group-weight}, because the groups partition the
+old marks. This proves the induction after the subsequent descent
+as well. The regrouping of marked polynomials commutes with descent:
+it is a fixed linear map on a finite coefficient space, so it commutes
+with integration against the transition kernel. Its composition law
+is the composition law of the partitions. These observations keep the
+induction on the original exact product.
+
+The initial single-field estimates give weights
+$W_r^{\mathrm{initial}}=\delta_j\eta_j p_r(j)/8$, where $p_r(j)>0$
+is the paid weight of the $r$th field. At the final parent scale $m+1$
+merge all remaining groups. Their number $s$ is at most $h$, and the
+last grouping factor is also at least $\alpha$. The terminal merge
+uses the weight $\lambda^s\prod_r W_r$ without the factor $1/8$
+reserved at intermediate regroupings; it supplies the final local
+projection directly. Since $\alpha^h\leq\lambda^s$ and
+$C(m+1,0)\leq C(m+1,s)$, the resulting weight is at least
+\begin{equation}\label{eq:ope-initial-weight}
+ X=\alpha^h
+ \left(\frac{a_j}{a_{m+1}}\right)^{4h}
+ (\alpha/8)^{h^2}
+ (\delta_j\eta_j/8)^h\prod_{r=1}^h p_r(j).
+\end{equation}
+The final local projection estimate produces a degree-$q$ coefficient
+whose coefficient-size and remainder norm are each bounded by
+\begin{equation}\label{eq:ope-terminal-coefficient}
+ P=a_{m+1}^q\,\mathcal B_m\frac4X.
+\end{equation}
+Here $\mathcal B_m$ is the purchased local projection bound. This
+projection estimate, together with the marked-representation estimates
+above, is still an analytic input. The preceding argument proves the
+precise scale cost it must be given; no factor depends on the number
+of copies.
+
+\subsection{A single subpower allowance for all intermediate levels}
+The halo estimate ensures that each grouping factor has zero
+logarithmic rate. Explicitly the purchased bound is
+$(\nu_{i+1}+1)\ell_i\leq16\sqrt{\widehat\beta_i}$,
+while $\sqrt{\widehat\beta_i}/s_i\to0$ and
+$\log\delta_{i+1}=o(s_i)$. Taking logarithms of
+\eqref{eq:ope-group-weight} therefore gives
+$\log\lambda_i=o(s_i)$ for fixed $h$. These are schedule and
+running-coupling estimates; their production is a separate input.
+
+This pointwise-in-scale fact also gives a uniform allowance for all
+previous scales. If $u_i>0$ and $\log u_i=o(s_i)$ for an increasing
+$s_i\to\infty$, set $\alpha_j=\min(1,u_0,\ldots,u_j)$. Then
+$\alpha_j\leq1$, $\alpha_j\leq u_i$ for $i\leq j$, and
+$\log\alpha_j=o(s_j)$. Indeed, for any $\epsilon>0$, eventually
+$u_i\geq e^{-\epsilon s_i}\geq e^{-\epsilon s_j}$ for $i\leq j$
+in the tail. The positive minimum of the finite initial segment is
+also eventually at least $e^{-\epsilon s_j}$. Hence
+$e^{-\epsilon s_j}\leq\alpha_j\leq1$. Apply this to the grouping
+factors. Arbitrarily many intermediate scales thus require only one
+subpower allowance for the fixed cluster arity.
+
+\subsection{The two output prices}
+Take sequences of levels $k,m,j$ of logarithmic rates $b,a,c$ relative
+to $t_n\to\infty$, with $0<b<a<c$. Here $k$ sets the centered test
+scale, $m$ the matching scale, and $j$ the insertion grid. All level
+sequences tend to infinity. Let the field degrees be $d_r$, put
+$w=\sum_r d_r$, and define
+\[
+ \tau=cw+4h(c-a).
+\]
+The calibrated single-field weight has the form
+$p_r(j)=a_j^{d_r}\mathcal W_r(j)$, with
+$\log\mathcal W_r(j)=o(s_j)$. All factors in
+\eqref{eq:ope-initial-weight} other than the displayed mesh powers
+have zero logarithmic rate. The gentle schedule gives rate $a$ also
+at $m+1$. Consequently $X$ has rate $-\tau$.
+
+Set
+\begin{equation}\label{eq:ope-terminal-price}
+ E=4(1+\zeta_m)(2P),\qquad V=2E,
+ \qquad z=\exp\bigl(((q+\tfrac1{16})(a-b)-\tau)t_n\bigr).
+\end{equation}
+Equations \eqref{eq:ope-terminal-coefficient} and
+\eqref{eq:ope-terminal-price} give rate $\tau-qa$ for both $E,V$.
+The final comparison of the local coefficient with the normalized
+reference fields has the following quantitative form. Provided its
+positive matching allowance $z$ satisfies
+\begin{align}
+ \mathcal M(z;k,m)&\leq\delta_m X/(16\mathcal B_m),
+       \label{eq:ope-match-pay-one}\\
+ 32(1+\zeta_m)z\,a_k^{-q}
+       E/G(m,k)&\leq\vartheta_q(k)/2,
+       \label{eq:ope-match-pay-two}
+\end{align}
+it produces a reference label $Q_{N,p}$ with quota at most $V$ and
+centered discrepancy price at most
+\begin{equation}\label{eq:ope-cutoff-discrepancy}
+ A=2\mathcal S(k)/z.
+\end{equation}
+Here $G(m,k)=\exp((s_m-s_k)/8)$, $\vartheta_q$ is positive with
+zero logarithmic rate, and $\mathcal M$ is the allowance transported
+from the centered scale to $m$. Its bound is
+\[
+ \mathcal M(z;k,m)\leq
+ z(a_m/a_k)^{q+1}\frac{\vartheta_q(m)}{\vartheta_q(k)}.
+\]
+If the centered scale has first been opened to a finer admissible
+level, use that opened level in these formulas. The opening retains
+rate $b$, as checked below. The actual comparison producing
+\eqref{eq:ope-cutoff-discrepancy}, including its representation and
+reference-field identification, remains to be proved in the
+construction part; these displayed inequalities specify exactly the
+budget it needs.
+
+Both payment conditions hold eventually by a strict comparison of
+rates. The right side of \eqref{eq:ope-match-pay-one} has rate
+$-\tau$, whereas the upper bound for its left side has rate
+\[
+ (q+\tfrac1{16})(a-b)-\tau-(q+1)(a-b)
+       =-\tau-\tfrac{15}{16}(a-b)<-\tau.
+\]
+The left side of \eqref{eq:ope-match-pay-two} has rate
+\[
+ (q+\tfrac1{16})(a-b)-\tau+qb+(\tau-qa)
+       -\tfrac18(a-b)=-\tfrac1{16}(a-b)<0,
+\]
+while its positive right side has rate zero. If positive sequences
+have unequal logarithmic rates, division and taking logarithms shows
+that the one with the smaller rate is eventually smaller. This
+justifies both comparisons, including all their fixed constants.
+Since $\mathcal S$ has upper rate zero, \eqref{eq:ope-cutoff-discrepancy}
+has upper rate $\tau-(q+1/16)(a-b)$, as required in
+Input~\ref{input:ope-match}.
+
+Here is the opening check. Write $K(k)\geq k$ for the opened level,
+$u=a_k/a_{K(k)}\geq1$, and $B_{K(k)}\geq1$ for its positive vacuum
+budget. The schedule ensures, for every $\epsilon>0$,
+\[
+ u^4 B_{K(k)}\leq\epsilon s_{K(k)}\quad\hbox{eventually in }k.
+\]
+Since $s_{K(k)}-s_k=\log u\leq u\leq u^4B_{K(k)}$,
+we have $s_k/s_{K(k)}\to1$. Opening a sequence of rate $b$
+therefore retains that rate. The actual centered factor is
+\[
+ \mathcal S(k)=\exp\bigl(u^4 t_{K(k)}+5\bigr),
+\]
+where $t_{K(k)}\leq B_{K(k)}$ eventually. Its logarithm divided
+by $t_n$ is at most $\epsilon s_{K(k)}/t_n+5/t_n$.
+Taking the upper limit and then $\epsilon\downarrow0$ proves its
+upper rate zero.
+
+\subsection{Keeping the match in the continuum limit}
+For fixed intermediate levels and a fixed cluster on the $j$-grid,
+require
+\[
+ 8\max_r|x_r|<a_{m+1},\qquad
+ |x_r-x_s|>2a_j B_j^2\quad(r\ne s).
+\]
+Cross-cell separation persists during every intervening descent.
+The initial room condition is
+$(B_{m+1}^2+1)a_{m+1}\leq a_k$, which follows eventually from
+subpower $B_{m+1}$ and $a>b$. At an intermediate level $i\geq m+1$,
+put $L=a_{m+1}/a_i$. Distinct parent cell centers at level $m+1$
+have lattice separation at least $a_k/a_{m+1}\geq B_{m+1}^2+1$.
+Their embeddings at level $i$ therefore have separation at least
+$L(B_{m+1}^2+1)$. The children each deviate from their embedded
+parent by less than $L/2$. The triangle inequality leaves separation
+greater than $LB_{m+1}^2$. The purchased support propagation bound
+$B_i^2\leq LB_{m+1}^2$ then gives the required separation at level
+$i$. This propagation bound is one of the local RG inputs retained
+above. The argument applies simultaneously to every pair of marks
+belonging to different copied cells.
+
+For sufficiently large periods there is no wrapping in this finite
+configuration. Its points have the required periodic separation and
+have common parent zero at level $m+1$: each is inside half the
+parent block by the first bound and the maximum-coordinate estimate.
+For sufficiently fine cutoff $N$, the fixed stencils of the cluster
+fields and of every degree-$q$ field fit in the centered positive
+chamber. The cutoff comparison can consequently be applied on the
+ordered tail, first in period and then in $N$.
+
+Choose its labels $Q_{N,p}$ on that tail and set them to zero
+elsewhere. Their quotas are bounded by the same $V$. Equation
+\eqref{eq:ope-whole-distance} bounds their reference norms by a
+constant depending on the fixed matching level, so finite-dimensional
+compactness gives a convergent family on a finer nontrivial filter.
+Every eventual discrepancy and quota bound persists on that same
+filter. Section~\ref{sec:ope-phase-prices} converts the discrepancy
+bound to all character phases, and Section~\ref{sec:ope-filtration}
+gives the physical low-degree distances and the whole-label bound.
+These are all statements about the same limiting label $Q$.
+
+Finally the geometric requirements hold for the grid clusters of
+Section~\ref{sec:ope-grid}. If their scale is $x$ with $a<x<c$,
+their radius has rate $-x<-a$, so they fit strictly inside the
+$m+1$ block. Their pairwise separation is eventually larger than
+$e^{-(x+\epsilon)t_n}$, while $a_jB_j^2$ has rate $-c$ because
+$B_j$ is subpower. Choosing $x+\epsilon<c$ proves the separation
+condition. The fixed support-radius room at the centered scale is
+also automatic: a fixed radius plus a subpower truncation radius,
+multiplied by $a_m$, has rate $-a<-b$. It therefore fits inside
+the centered scale $a_k$. This completes the accounting and extraction
+of the local matching input, conditional on the explicit analytic
+representation and comparison estimates above.

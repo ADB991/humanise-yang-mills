@@ -1,0 +1,418 @@
+% Same-history physical stress transfer and Scribe assembly.
+\section{The same-history physical stress transfer}
+\label{sec:ex-lattice-trace-scribe-producer}
+
+This section proves the physical stress and flux passage used by the
+selected trace gallery from the explicit response, sensor, fourth-order,
+and weighted trace receipts displayed below. Those paid receipts are
+producer inputs; the arguments here show how they combine. All limits below use one selected history, one
+ultrafilter, one hierarchy, and one scaling. In particular, the physical
+stress, the correction tensors, and the comparison observables are never
+reselected on separate subsequences. The quantitative estimates entering the
+construction include the paid response and comparison estimates from
+Sections~\ref{sec:ex-lattice-trace-weighted-estimates},
+\ref{sec:ex-lattice-trace-crown-buffer}, and
+\ref{sec:ex-lattice-trace-eve-producer}. The additional sensor and branch
+receipts are stated explicitly below. Given these inputs, this section proves
+how the estimates produce the conserved tensor sequence and transfer its
+physical normalization to the selected table.
+
+Write $\kappa>0$ for the slope constant and let $\mathcal O$ be the
+distinguished unit field in the reference grade-four stress table. The
+physical coefficient is $d_2=-\kappa/4$.
+
+\subsection{The two-direction conserved correction}
+
+Let $E$ be the finite-dimensional real space of centered, signed-equivariant,
+spin-symmetric grade-four tensors for the selected table (before imposing
+the divergence equation), let $V$ be the finite-dimensional
+response space, and let $\mathcal B$ be the grade-five profile space. Let
+$D:E\to V$ be the divergence map. Under the reference-rank and optical-comparison receipts
+recorded in Section~\ref{sec:ex-lattice-trace-producer}, the finite-dimensional
+argument there gives $\dim\ker D=1$. We use that conclusion here. The
+interacting divergence remains fixed; the comparison varies the optical map,
+and its positive scale and invertible chart preserve the kernel.
+
+The construction solves the correction equations at each
+large index, rather than taking an unspecified kernel vector. Let
+$\mathsf K_i:E\to V$ be the selected comparison map, let
+$s_i:\mathcal B\to V$ be the paid response map, and let
+$L_i,\Omega_i,\Delta_i$ be the
+principal and two correction directions. The correction map is
+\[
+ \mathsf S_i(c_0,c_1)=c_0\Omega_i+c_1\Delta_i,
+ \qquad \mathsf B_i=\mathsf K_i\mathsf S_i.
+\]
+Let $q_i>0$ be the selected effective coupling and $\rho_i$ its positive
+response-size price; these are the scales in the paid bounds below.
+For $a=0,1$, the corrected response estimates compare the corresponding
+column with the same-history linear response on a paid forecast
+$w_i^a\in\mathcal B$:
+\[
+ \|\mathsf B_i e_a-s_i(w_i^a)\|\longrightarrow0,
+ \qquad w_i^a\longrightarrow v_a,
+ \qquad s_i\longrightarrow\mathsf V.
+\]
+The profiles $v_0,v_1$ are the two free correction directions, and
+$\mathsf W(c_0,c_1)=c_0v_0+c_1v_1$. Hence
+\[
+ \mathsf B_i\longrightarrow
+ \mathsf B_\infty=\mathsf V\mathsf W,
+ \qquad
+ \mathsf V\mathsf W(c_0,c_1)=c_0\mathsf V(v_0)+c_1\mathsf V(v_1),
+\]
+where $\mathsf V$ is the free vector-response map and $\mathsf W$ is the
+two-column reference correction. Indeed, for each $a$, the displayed
+response estimate and continuity of the limiting response give
+$\mathsf B_i e_a\to\mathsf V(v_a)$. Since the domain has basis
+$e_0,e_1$, convergence of both columns implies operator-norm convergence.
+The free classification proves
+$\mathsf B_\infty$ is an isomorphism. In finite dimension, if
+$\|\mathsf B_i-\mathsf B_\infty\|<1/(2\|\mathsf B_\infty^{-1}\|)$,
+then for every $c$,
+\[
+ \|\mathsf B_i c\|\ge
+ \|\mathsf B_\infty^{-1}\|^{-1}\|c\|-\|
+   (\mathsf B_i-\mathsf B_\infty)c\|
+ \ge \frac{\|c\|}{2\|\mathsf B_\infty^{-1}\|}.
+\]
+Thus $\mathsf B_i$ is injective and hence bijective, and its inverse norms
+are uniformly bounded on a tail. Let $X_i=q_i\mathsf K_i(L_i)$ be the
+uncorrected forcing. The paid response-size estimate gives
+$\|X_i\|\le C\rho_i$, where $\rho_i$ is the positive response-size
+price. Define
+\[
+ c_i=-\mathsf B_i^{-1}X_i,\qquad
+ T_i=q_iL_i+\mathsf S_i(c_i).
+\]
+Then $\mathsf K_i(T_i)=0$, and the optical comparison identity gives
+$DT_i=0$: on the selected tail, $\mathsf K_i(Q)=0$ is equivalent to
+$DQ=0$ for every $Q\in E$. The inverse bound gives
+$\|c_i\|\le C'\rho_i$.
+
+The scalar calibration uses the same paid functional $\mu_i\in V^*$ that controls
+the response price. Let $\Lambda\in\mathcal B^*$ be the free Ward functional.
+At chart level $k_i$, write $t_i$ for its positive sensor
+scale and $z_i=\widehat\beta_{k_i}$ for its clock weight. The price comparison
+gives $t_i\to\infty$, $\rho_i\le t_i\le z_i$. The sensor inputs
+include a constant $C_\mu$ with $\|\mu_i\|\le C_\mu$ eventually, and, for
+every $\delta>0$, the eventual estimate
+\[
+ t_i\left|\mu_i(s_i y)-\Lambda(y)\right|
+       \le\delta\|y\|\quad\text{for all }y\in\mathcal B.
+\]
+We spell out how these inputs
+give the three limits needed for calibration. Let $Y_i$ be the principal
+forecast. The paid response comparison, penumbra estimate, and principal
+Ward limit are
+\begin{equation}
+ q_i\mathsf K_i(L_i)-s_i(Y_i)\longrightarrow0,\qquad
+ \|Y_i\|\le C\rho_i\le Ct_i,\qquad
+ \Lambda(Y_i)\longrightarrow-\kappa.
+ \label{eq:ex-lattice-scribe-principal-response-input}
+\end{equation}
+The first convergence and the uniform bound on $\mu_i$ imply
+$\mu_i(X_i)-\mu_i(s_i(Y_i))\to0$. For any $\delta>0$, the sensor estimate
+then gives eventually
+\[
+ |\mu_i(s_i(Y_i))-\Lambda(Y_i)|
+       \le \delta\|Y_i\|/t_i\le C\delta.
+\]
+Taking the limit superior and then $\delta\downarrow0$ proves
+$\mu_i(X_i)\to-\kappa$; no norm convergence of the principal forecast is
+needed.
+
+For a correction branch $P\in\{\Omega,\Delta\}$, let $U_i^P\in\mathcal B$
+be its finite-volume profile and $v_P\in\mathcal B$ its reference profile.
+The comparison and
+Ward estimates needed are
+\begin{equation}
+ U_i^P\to v_P,\qquad
+ z_i\|\mathsf K_i(P_i)-s_i(U_i^P)\|\to0,\qquad
+ t_i|\Lambda(U_i^P)-\Lambda(v_P)|\to0,
+ \label{eq:ex-lattice-scribe-correction-response-input}
+\end{equation}
+where $P_i$ denotes the corresponding correction tensor. Since $U_i^P$ is
+bounded, the uniform sensor estimate implies
+$t_i|\mu_i(s_i(U_i^P))-\Lambda(U_i^P)|\to0$. Using $t_i\le z_i$ and the
+uniform operator bound for $\mu_i$ in the middle estimate of
+(\ref{eq:ex-lattice-scribe-correction-response-input}) gives
+\[
+ t_i\left|\mu_i(\mathsf K_i(P_i))-\Lambda(v_P)\right|\longrightarrow0.
+\]
+The reference Ward values are $\Lambda(v_\Omega)=0$ and
+$\Lambda(v_\Delta)=-4$. Thus the principal and two correction limits are
+now established from the explicitly stated paid inputs:
+\begin{equation}
+ \mu_i(X_i)\to-\kappa,\qquad
+ t_i\mu_i(\mathsf K_i\Omega_i)\to0,\qquad
+ t_i\bigl(\mu_i(\mathsf K_i\Delta_i)+4\bigr)\to0.
+ \label{eq:ex-lattice-scribe-sensor-limits}
+\end{equation}
+Applying $\mu_i$ to the exact cancellation $X_i+\mathsf B_i c_i=0$ gives
+\[
+ \mu_i(X_i)+c_i^0\mu_i(\mathsf K_i\Omega_i)
+       +c_i^1\mu_i(\mathsf K_i\Delta_i)=0.
+\]
+Set $\alpha_i=t_i\mu_i(\mathsf K_i\Omega_i)$ and
+$\beta_i=t_i(\mu_i(\mathsf K_i\Delta_i)+4)$. Since
+$\|c_i\|\le C\rho_i\le Ct_i$, both $c_i^0/t_i$ and $c_i^1/t_i$ are
+bounded. The exact equation rewrites as
+\[
+ 0=\mu_i(X_i)-4c_i^1+
+       \frac{c_i^0}{t_i}\alpha_i+\frac{c_i^1}{t_i}\beta_i.
+\]
+The last two terms tend to zero by
+(\ref{eq:ex-lattice-scribe-sensor-limits}), so
+$\mu_i(X_i)\to-\kappa$ implies
+\[
+ c_i^1\longrightarrow-\frac{\kappa}{4}.
+\]
+This is the stable-inversion and coefficient-extraction argument of
+Section~\ref{sec:ex-lattice-trace-producer}.
+
+The source constructs the correction using the same three paid tensor
+families at every index: a principal tensor $L_i$ and two correction tensors
+$\Omega_i,\Delta_i$. Let
+$\mathcal P_i$ be the scaled pullback of a stress tensor, and put
+$\mathcal Y_i=q_i^{-1}\mathcal P_i$. The scaled pullback is the
+chart map multiplied by its positive crown normalization; by definition,
+$\mathcal P_i=q_i\mathcal Y_i$ on every tensor. In the source,
+$q_i$ is the effective coupling at the selected level and the crown is
+$q_i$ times the fourth power of the chart radius. The defining corrected tensor is
+\begin{equation}
+ T_i=q_iL_i+c_i^0\Omega_i+c_i^1\Delta_i.
+ \label{eq:ex-lattice-scribe-corrected-tensor}
+\end{equation}
+For the three tensor sequences $Q_i\in\{L_i,\Omega_i,\Delta_i\}$, let
+their reference branches be $\nu_L=0$, $\nu_\Omega=-$, and
+$\nu_\Delta=+$. Let $W_i^Q(a,b)$ be the ordered grade-four label for the
+two tensor indices $a,b$ obtained by the finite-volume response of the
+corresponding sequence. These ordered
+labels are the entries of a finite array; no spatial sum is hidden in this
+notation. Let $\mathsf M_i$ be the finite-volume fourth-order coefficient
+map, obtained by applying the centered chart pullback to a grade-four label.
+It is a continuous linear map
+$\mathsf M_i:\mathcal L_4\to\mathcal F_4$, not a scalar moment matrix.
+Each $W_i^Q(a,b)$ belongs to $\mathcal L_4$. For every sufficiently large
+$i$ (so the selected level exceeds the fixed reference cutoff), symmetrizing
+the two ordered indices gives the chart formula
+\begin{equation}
+ [\mathcal P_i(Q_i)]_{ab}=
+ \frac12\left(\mathsf M_i(W_i^Q(a,b))+\mathsf M_i(W_i^Q(b,a))\right).
+ \label{eq:ex-lattice-scribe-phase-formula}
+\end{equation}
+The selected coefficient convergence gives $W_i^Q(a,b)\to
+W_{\nu_Q}(a,b)$, and the fourth-order maps converge in operator norm,
+$\mathsf M_i\to\mathsf M_\infty$. Thus, entry by entry in the finite
+stress array,
+\[
+ \mathcal P_i(Q_i)\longrightarrow\mathcal B_{\nu_Q},\qquad
+ (\mathcal B_\nu)_{ab}:=
+ \frac12\left(\mathsf M_\infty(W_\nu(a,b))+
+                \mathsf M_\infty(W_\nu(b,a))\right).
+\]
+This follows directly from continuity of the finite bilinear expression in
+(\ref{eq:ex-lattice-scribe-phase-formula}); no limit is interchanged with
+an infinite sum. The explicit free tensor calculation identifies these
+arrays with the reference material tensors. Write
+\[
+ M_0=\mathcal B_0,\qquad M_\Omega=\mathcal B_-,\qquad M_1=\mathcal B_+.
+\]
+The false-branch tensor need not vanish; it is its coefficient
+$c_i^0/q_i\to0$ that removes it from the normalized field limit. The three
+branch limits are on the same history.
+
+These are the field receipts used below:
+\begin{align}
+ \mathcal P_i(L_i)&\longrightarrow M_0,&
+ \mathcal P_i(\Omega_i)&\longrightarrow M_\Omega,&
+ \mathcal P_i(\Delta_i)&\longrightarrow M_1,
+ &\frac{\rho_i}{q_i}&\longrightarrow0,
+ \label{eq:ex-lattice-scribe-field-receipts}
+\end{align}
+The displayed ratio is the selected-scale washout input: the response price
+is bounded by the one-sixth subpower clock price, whose ratio to the effective
+coupling tends to zero along this scale. Since $M_0$ is the prescribed
+material tensor and $|c_i^0|+|c_i^1|\le C\rho_i$, it follows that
+$c_i^a/q_i\to0$ for $a=0,1$. Linearity gives
+the exact identity
+\[
+ \mathcal Y_i(T_i)=\mathcal P_i(L_i)
+   +\frac{c_i^0}{q_i}\mathcal P_i(\Omega_i)
+   +\frac{c_i^1}{q_i}\mathcal P_i(\Delta_i).
+\]
+The principal, false-correction, and true-correction rescaled tensors converge
+to $M_0,M_\Omega,M_1$, respectively.
+In particular the two correction phase tensors are bounded, and the exact
+identity proves
+\begin{equation}
+ \mathcal Y_i(T_i)\longrightarrow M_0.
+ \label{eq:ex-lattice-scribe-field-limit}
+\end{equation}
+For the scalar trace, the true correction profile is the true material
+correction, whose diagonal trace is $4\mathcal O$ by the finite tensor
+identity used in the source: the diagonal sum is
+$4(0+4\cdot\frac14)\mathcal O=4\mathcal O$. The source bounds
+$q_i\le2z_i$ and $\rho_i\le t_i\le z_i$ and supplies
+\[
+ z_i\operatorname{tr}\mathcal P_i(L_i)\to0,\quad
+ z_i\operatorname{tr}\mathcal P_i(\Omega_i)\to0,\quad
+ |c_i^0|\le C\rho_i,\quad
+ \operatorname{tr}\mathcal P_i(\Delta_i)\to4\mathcal O,
+ \quad c_i^1\to-\kappa/4.
+\]
+To see exactly how the weighted estimates enter, use
+$\mathcal P_i(T_i)=q_i\mathcal P_i(L_i)
++c_i^0\mathcal P_i(\Omega_i)
++c_i^1\mathcal P_i(\Delta_i)$. The principal contribution tends
+to zero since $q_i\le2z_i$ and the exponent-one principal trace estimate
+gives $z_i\operatorname{tr}\mathcal P_i(L_i)\to0$. For the false
+correction, $|c_i^0|\le C\rho_i\le Cz_i$ and the exponent-one
+weighted false-sector estimate gives
+$z_i\operatorname{tr}\mathcal P_i(\Omega_i)\to0$.
+Finally $c_i^1\to-\kappa/4$ and
+$\operatorname{tr}\mathcal P_i(\Delta_i)\to4\mathcal O$.
+Thus applying the trace to (\ref{eq:ex-lattice-scribe-corrected-tensor})
+and using these three contributions gives
+\begin{equation}
+ \operatorname{tr}\mathcal P_i(T_i)\longrightarrow-\kappa\mathcal O.
+ \label{eq:ex-lattice-scribe-flux-limit}
+\end{equation}
+Indeed, the principal term tends to zero, the first correction term is
+bounded by $C z_i|\operatorname{tr}\mathcal P_i(\Omega_i)|$, and the last
+term tends to $(-\kappa/4)(4\mathcal O)$. This establishes the physical
+field and flux limits from the exact three-term correction, with no
+interchange of limits or choice of history.
+
+\subsection{Proportionality transfers the physical normalization}
+
+We now show that the corrected physical tensor and the selected table
+stress have the same limiting normalization. Let $A$ be the selected
+algebra, and let $R$ be its centered table stress
+$R=\operatorname{reCenter}_S(A.\operatorname{energy})\in E$, whose entries
+are conserved and whose flux is the physical Ward flux. This is the stress
+used in the physical-shell theorem. Let $g_i$ be the explicit conserved
+correction sequence just constructed, viewed in the same one-dimensional
+kernel of $D$. Assume its normalized field
+and flux limits are (\ref{eq:ex-lattice-scribe-field-limit}) and
+(\ref{eq:ex-lattice-scribe-flux-limit}), and that the table stress has the
+same nonzero shell-flux limit. We prove the transfer, spelling out the
+nonzero test and the scalar ratio.
+
+The reference observer-separation calculation supplies an axis $a$, an
+observer $o$, and a reference grade-four field direction $v$ such that
+$y=o.test_5(D_a v)\ne0$, where $D_a$ is the reference derivative in direction
+$a$. Let $\chi$ be the cut and $x$ the base point belonging to this same
+observer. Its defining test identity identifies this number with
+$\operatorname{shellGrad}(M_0,\chi,a,x,v)$. We keep this exact observer and
+cut for both stress sequences; no new test or window is selected in the
+limit argument.
+
+For a stress tensor $Q$, write the exact selected shell measurement as
+\[
+ \mathscr F_i(Q)=r_i\operatorname{shellGrad}_S\!\left(
+ Q,\operatorname{stretch}(r_i,\chi),a,r_i x,
+ \operatorname{pins}_i\circ q,U_i v\right),
+\]
+where $r_i$ is the chart radius, $q$ is the observer's fixed test window,
+and $U_i$ is the selected grade-four chart isomorphism. The selected
+chart's tested convergence and the comparison-of-jets estimate give, for
+the physical tensor and for $g_i$, respectively,
+\begin{equation}
+ f_i:=\mathscr F_i(R)\to y,
+ \qquad \mathscr F_i(g_i)\to y.
+ \label{eq:ex-lattice-scribe-common-test}
+\end{equation}
+The argument uses the same selected scale and the same observer test in both
+limits. The physical flux excludes $R=0$: if $R$ vanished, linearity of
+shell differentiation would force $f_i=0$ at every index, contrary to
+$y\ne0$.
+
+Since $\ker D$ is one-dimensional, $g_i=\lambda_iR$ for all sufficiently
+large $i$. The second limit in (\ref{eq:ex-lattice-scribe-common-test})
+therefore reads $\lambda_i f_i\to y$, while the first reads $f_i\to y$.
+As $y\ne0$, choose a scalar coordinate functional $\ell$ with $\ell(y)\ne0$.
+Then
+\[
+ \lambda_i=\frac{\ell(\lambda_i f_i)}{\ell(f_i)}\longrightarrow
+ \frac{\ell(y)}{\ell(y)}=1.
+\]
+Thus $g_i=\lambda_iR$ and $\lambda_i\to1$. On a late tail
+$\lambda_i\ne0$ and $\lambda_i^{-1}\to1$. Since $\mathcal Y_i$
+and the weighted trace are linear,
+\[
+ \mathcal Y_i(R)=\lambda_i^{-1}\mathcal Y_i(g_i),
+ \qquad
+ \operatorname{tr}\mathcal P_i(R)=\lambda_i^{-1}
+       \operatorname{tr}\mathcal P_i(g_i)
+\]
+on that tail. This proves the physical field and flux limits. In particular,
+\begin{equation}
+ \mathcal Y_i(R)\longrightarrow M_0,
+ \qquad \operatorname{tr}\mathcal P_i(R)\longrightarrow-\kappa\mathcal O.
+ \label{eq:ex-lattice-scribe-physical-transfer}
+\end{equation}
+This is the physical-array step used by the chart gallery. The dimension-one
+kernel alone would not fix the scalar; the common nonzero shell test fixes it.
+
+\subsection{Comparison tables and the full gallery record}
+
+Let $T$ be any comparison table that respects the selected table, and let
+$\Theta_T$ be its trace observable on $A.\operatorname{energy}$. Its exact
+centered decomposition is
+\[
+ \Theta_T=\operatorname{tr}(\operatorname{reCenter}_S(A.\operatorname{energy}))-c_T\,1,
+ \qquad c_T\in\mathbb C.
+\]
+The physical-transfer limit (\ref{eq:ex-lattice-scribe-physical-transfer})
+applies to the first term. The scalar-unit term vanishes after zooming:
+the selected scale satisfies
+\[
+ q_i r_i^4\,1\longrightarrow0,
+ \qquad q_i>0,
+\]
+and the selected chart eventually identifies its unit with the reference
+unit. The zoom maps are linear, so the same vanishing holds after
+multiplication by $c_T$. Therefore the zoomed comparison observable converges to the same
+prescribed multiple of the unit as the physical stress. This argument is
+uniform in the algebraic identity for $T$; only the two scalar sequences
+used to represent its component in the distinguished two-dimensional
+stress sector depend on $T$.
+
+More explicitly, the scalar representation is
+\[
+ \iota(e,d)=e\,1+4d\,\mathcal O.
+\]
+The finite reference calculation shows that $1$ and $\mathcal O$ are
+linearly independent, so $\iota$ is injective and has a continuous left
+inverse on its range.
+The limiting comparison tensor is $4d_2\mathcal O$, where
+$d_2=-\kappa/4$, so its coordinates are $(0,d_2)$. Put
+$Z_i=q_i r_i^4(J.U_i)^{-1}\Theta_T$. The selected comparison receipt gives
+$Z_i\in\operatorname{range}(\iota)$ eventually, separately from the limit
+$Z_i\to4d_2\mathcal O$. On that tail let $(a_i,b_i)=\iota^{-1}(Z_i)$;
+continuity of the fixed left inverse gives $a_i\to0$ and $b_i\to d_2$.
+Define $e_i=a_i/q_i$ and $d_i=b_i/q_i$. Thus, eventually,
+\[
+ r_i^4(J.U_i)^{-1}\Theta_T=\iota(e_i,d_i),
+ \qquad q_i e_i\to0,\qquad q_i d_i\to d_2.
+\]
+The definition of the zoom then gives
+$q_i r_i^4(J.U_i)^{-1}\Theta_T\to4d_2\mathcal O$.
+
+The exact record contains $q_i\to\infty$ and
+$\log(\operatorname{Zoom}_i)/q_i\to\kappa^{-1}$, where
+$\operatorname{Zoom}_i$ is the positive zoom scale of the selected chart;
+the same finite-volume
+chart and hierarchy; the physical stress limit; and, for every comparison
+table, the late scalar representation and two coefficient limits just
+proved. The fixed-scale case uses the selected
+chart directly. For an arbitrary positive null sequence, the paid scale
+selection first chooses a strictly increasing subsequence and a scaling
+whose radii are that subsequence; the same history is then passed to the
+finite-volume chart producer, and the physical transfer above applies
+without another extraction. Thus, under the same paid response, sensor,
+branch, and scale-selection inputs, the output of the selected-run producer
+is the full Scribe record, rather than only its finite-dimensional chart
+part.

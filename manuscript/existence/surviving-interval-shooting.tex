@@ -1,0 +1,141 @@
+\section{Shooting through the coupling bands}
+\label{sec:surviving-interval-shooting}
+A nonlinear step is available when its input coupling belongs to the
+prescribed band. Its output need not belong to the next band for every
+input parameter. We construct a surviving interval at each level; this
+preserves the activity continuity needed for the subsequent step.
+
+Fix the scale sequence and all the preceding nonlinear choices. Let
+$s=s_G>0$, $L_i\ge2$ be the integer block sides, and set
+\[
+ S_0=0,\qquad S_{i+1}=S_i+\log L_i,\qquad
+ \widehat\beta_i=\bar\beta+sS_i,\qquad \bar\beta>0.
+\]
+The permitted band is
+$[\widehat\beta_i/2,2\widehat\beta_i]$.
+Suppose the purchased initial family exists for every cutoff and period,
+and that the continuous return of the preceding section applies on
+any compact interval whose inputs satisfy the history conditions and
+belong to the fine band. Preserve its exact density identity and its
+retained next-step conditions. The adjacent coupling bound has the form
+\begin{equation}\label{eq:shoot-adjacent-drift}
+ |\beta_{i+1}-\beta_i-s\log L_i|\le\varepsilon_{i+1},
+ \qquad \varepsilon_{i+1}\le\tfrac{s}{4}\log L_i.
+\end{equation}
+Here $\varepsilon_i\ge0$. These are bounds on the actual returned representations.
+
+\subsection{Restricting a curve without crossing a barrier}
+We first record the elementary interval argument. Let $f$ be continuous
+on $[x,y]$, and suppose
+$f(x)\le d\le u\le f(y)$. There are $z\le w$ in $[x,y]$ such that
+\[
+ f(z)=d,\quad f(w)=u,\quad f([z,w])\subset[d,u].
+\]
+The case $d=u$ follows by taking one point of the nonempty level set.
+Otherwise let $w$ be the first point of $[x,y]$ at which $f=u$.
+The level set is nonempty by the intermediate value theorem, and
+compactness makes its minimum belong to it. Let $z$ be the last point
+of $[x,w]$ at which $f=d$; this level set is likewise nonempty and
+compact. If $f(c)<d$ at some $c\in[z,w]$, the intermediate value
+theorem between $c$ and $w$ gives a later point with value $d$,
+contrary to the choice of $z$. If $f(c)>u$, the same theorem between
+$x$ and $c$ gives an earlier point with value $u$, contrary to the
+choice of $w$. This proves the claim without any monotonicity assumption
+on $f$.
+
+Define inner barriers
+\[
+ \ell_i=\bar\beta+\tfrac{s}{2}S_i,
+ \qquad u_i=\bar\beta+2sS_i.
+\]
+Both lie in the permitted band, since $S_i\ge0$. If an input at
+level $i+1$ has coupling $\ell_{i+1}$, its returned coarse coupling
+satisfies, by \eqref{eq:shoot-adjacent-drift},
+\[
+ \beta_i\le\ell_{i+1}-s\log L_i+\varepsilon_{i+1}
+             \le\ell_i-\tfrac{s}{4}\log L_i<\ell_i.
+\]
+If the input coupling is $u_{i+1}$, the corresponding lower bound is
+\[
+ \beta_i\ge u_{i+1}-s\log L_i-\varepsilon_{i+1}
+             \ge u_i+\tfrac{3s}{4}\log L_i>u_i.
+\]
+Thus the two endpoints cross the next two barriers in the required
+order, even though the intermediate output curve may oscillate.
+
+\subsection{Descending through a finite history}
+At cutoff $N$ restrict the initial bare-action family to
+$[\ell_N,u_N]$. Its coupling is its parameter, it is continuous in the
+labelled activity norms, and it satisfies the prescribed initial
+conditions. Suppose a compact parameter interval already carries a
+family of histories from $N$ down to $i+1$, with every represented
+coupling in its band, and with the endpoint couplings at level $i+1$
+equal to $\ell_{i+1},u_{i+1}$. Apply the continuous nonlinear step to
+the level-$i+1$ curve on this interval. The endpoint inequalities just
+proved and the interval lemma give a subinterval on which the output
+coupling stays between $\ell_i,u_i$, attaining these values at the
+two ends.
+
+Restrict every earlier representation in the history to this
+subinterval and append the newly constructed level-$i$ representation.
+Restriction preserves the fixed dictionaries, their norm continuity,
+all activity bounds and every previously established adjacent identity.
+The new step supplies the same properties at level $i$. Induction
+therefore reaches level zero. Since $\ell_0=u_0=\bar\beta$, either
+endpoint supplies a history with exactly the desired coarse coupling.
+No representation was extended across an interval on which its input
+band condition failed.
+
+There is also one fixed neighborhood of coarse targets that uses the
+same selected data. Put
+\[
+ h=\min\{\bar\beta/2,s\log L_0/4\}>0.
+\]
+For any $|b-\bar\beta|\le h$, descend only to level $1$ and apply the
+last nonlinear step there. Its lower endpoint returns at most
+$\bar\beta-s\log L_0/4\le b$, and its upper endpoint returns at
+least $\bar\beta+3s\log L_0/4\ge b$. The intermediate value theorem
+selects an input parameter with output coupling $b$. That output lies
+in the level-zero band because $|b-\bar\beta|\le\bar\beta/2$.
+For $N=0$, use the initial family directly at parameter $b$.
+This construction asserts existence, not uniqueness of a shooting
+history or continuity of its choice as $b$ varies.
+
+For every cutoff and period select one such history. The selected
+paths depend on cutoff and level, and were fixed before the period;
+therefore their identity across periods is preserved. Each selected
+history starts at the bare Wilson density with vacuum parameter zero,
+satisfies all its local activity bounds, and has the exact full-density
+transfer at each step. The stronger retained conditions are preserved
+by taking them as part of the next-step requirement throughout the
+interval induction. The induction selects no new bridges, paths or
+support exponents.
+
+\subsection{The running-coupling estimate}
+Let
+$E_0=0$ and $E_i=\sum_{j<i}\varepsilon_{j+1}$.
+Telescoping \eqref{eq:shoot-adjacent-drift} gives, uniformly over every
+selected cutoff $N\ge i$ and period,
+\begin{equation}\label{eq:shoot-running-error}
+            |\beta_i-\widehat\beta_i|\le E_i+|b-\bar\beta|.
+\end{equation}
+The later stage purchases give the more precise ratio bound
+\[
+ \frac{\varepsilon_{i+1}}{\log L_i}\le J_{i+1}^{-2},
+                  \qquad J_i\longrightarrow\infty.
+\]
+Fix $\epsilon>0$ and choose $j$ so that $J_{i+1}^{-2}\le\epsilon/2$
+for $i\ge j$. Then
+\[
+ E_i\le E_j+\tfrac\epsilon2(S_i-S_j),\qquad i\ge j.
+\]
+Since $S_i\to\infty$, eventually
+$E_j+|b-\bar\beta|\le\epsilon S_i/2$. Substitution into
+\eqref{eq:shoot-running-error} yields
+\[
+                 |\beta_i-\widehat\beta_i|\le\epsilon S_i
+\]
+uniformly in cutoff and period. In particular the error is $o(S_i)$.
+There is no assertion that the sum of the step errors is uniformly
+bounded in the depth. The estimate uses their small ratio to the
+accumulated logarithmic scale.

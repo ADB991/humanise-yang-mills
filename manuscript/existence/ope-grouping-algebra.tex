@@ -1,0 +1,200 @@
+\section{The exact regrouping identity}
+\label{sec:ope-grouping-algebra}
+The estimates of Section~\ref{sec:ope-grouping} concern an exact
+reorganization of the marked density. We now prove the identity. In
+particular the coefficient of the empty mark set, which determines
+the vacuum activity, is preserved.
+
+\subsection{Squarefree marks and complete groups}
+For a finite mark set $I$, use the commutative algebra with basis
+$e_A$, $A\subseteq I$, and multiplication
+\[
+ e_Ae_B=\begin{cases}e_{A\cup B},&A\cap B=\varnothing,\\0,&\text{otherwise}.
+ \end{cases}
+\]
+Its unit is $e_\varnothing$. The ideal spanned by the nonempty
+$A$ is nilpotent, so its exponential is a finite sum. In particular,
+for finitely many nonempty $A_r$,
+\[
+ \exp\left(\sum_r z_re_{A_r}\right)
+       =\prod_r(1+z_re_{A_r}),
+\]
+since each individual summand squares to zero and all commute.
+Repeated use of a mark thus vanishes automatically.
+
+Let $\pi:I\to V$ be the partition from the previous section, with
+nonempty groups $I_v=\pi^{-1}(v)$. Define a linear map
+$\mathcal R$ to the analogous algebra on $V$ by
+\[
+ \mathcal R e_A=
+ \begin{cases}e_B,&A=\bigcup_{v\in B}I_v\text{ for some }B\subseteq V,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+Equivalently, the coefficient at $B$ after applying $\mathcal R$
+is the old coefficient at $\pi^{-1}(B)$. This map is not asserted
+to preserve arbitrary products. It does preserve a product of
+monomials whose mark sets are individually unions of complete groups.
+If these sets are disjoint, the assertion follows from their unions;
+if they overlap, both products vanish. We will apply multiplicativity
+only after the connected-component decomposition has made every
+component complete in this sense.
+
+\subsection{Ordinary and flagged entries}
+Fix a lattice configuration and let $F$ be its set of flags. Take
+finite families of ordinary and flagged entries. An
+ordinary entry $r$ has a nonempty old mark set $A_r$, a support
+$X_r$ and a coefficient $z_r$. A flagged entry $r$ has, in addition,
+a nonempty prescribed flag set $Z_r\subseteq X_r$, and its coefficient
+vanishes unless $X_r\cap F=Z_r$. Its mark set may be empty.
+The flagged part of the density is the sum over selections of flagged
+entries with pairwise disjoint supports and prescribed flag sets whose
+union is $F$. Multiply this sum by the exponential of the ordinary
+entries. The finite exponential formula shows that the product is a
+sum over sets $S$ of distinct ordinary and flagged entries, with weight
+\[
+ \prod_{r\in S}z_r e_{A_r},
+\]
+subject to the flagged-support and flag-inventory conditions. Terms
+with overlapping old mark sets vanish.
+
+Enlarge each support as in \eqref{eq:ope-enlarged-cover}, writing
+$\widetilde X_r$ for the result. Split each ordinary entry into two
+entries with the same marks, multiplied respectively by
+$\boldsymbol1_{\widetilde X_r\cap F=\varnothing}$ and its complement.
+Call the second kind \emph{dirty}; all flagged entries are dirty too.
+The sum of the two pieces is the original entry, so this split leaves
+the density unchanged. At most one piece is nonzero at any fixed
+configuration. Every enlarged support contains the representative
+$c_v$ of each group mentioned by its old marks. A flagged entry with
+no marks is not enlarged.
+
+We describe a canonical partition of a selected set $S$. First join
+entries which mention a common group. Call a component of this first
+graph hot if it contains a dirty entry. Next join hot components
+whenever their enlarged supports intersect. The resulting components
+are the components used below. Equivalently each entry always carries
+its group names as graph coordinates, and carries its enlarged support
+as additional graph coordinates precisely when its first component
+is hot. Connected components are then taken in this single intersection
+graph. Distinct components have disjoint group-name sets, and distinct
+hot components have disjoint enlarged supports. Every component is
+connected by ordinary support overlaps: a common group supplies its
+representative site as a common point.
+
+This partition is unchanged by restricting to one of its components.
+Indeed a path using group names never leaves that component, so its
+hot status can be determined within it. Conversely, a family of
+internally connected components with disjoint group-name sets and
+pairwise disjoint hot supports is exactly the component partition
+of its union. No group-name path or hot-support edge can cross between
+members of the family. These two observations prove the uniqueness
+needed for the reorganization.
+
+\subsection{Reconstructing the selected density}
+Consider a nonzero old term which survives $\mathcal R$. Its total
+mark set is a union of complete groups. Every one of its components
+also has this property. For if one mark in a group occurs in that
+component, every other selected mark of the same group is joined to
+it through their common group name. Since the total selection contains
+the whole group, the component contains the whole group.
+
+A cold component contains only healthy ordinary entries, so its
+coefficient is supported on configurations with no flags in its
+combined enlarged support. It has a nonempty group mark set. A hot
+component necessarily contains a flagged entry. To prove this last
+assertion, choose a dirty ordinary entry if no flagged entry has yet
+been found. Its enlarged support meets $F$. The global flag-inventory
+condition supplies a selected flagged entry whose prescribed flag set
+contains that point. Both entries are hot and their supports intersect,
+so they are in the same component, a contradiction.
+
+For each possible cold component, make a new ordinary entry: its
+support is the union of its enlarged supports, its coefficient is
+the product of its constituent coefficients, and its new marks are
+its group names. For each possible component containing a flagged
+entry, make a new flagged entry with that same combined support,
+flag set $Z$ equal to the union of its old prescribed flag sets,
+and coefficient
+\[
+ \boldsymbol1_{\widetilde X\cap F=Z}\prod_{r\in S}z_r.
+\]
+Only internally connected components with disjoint old mark sets,
+complete group marks and pairwise disjoint old flagged supports are
+included. The new flag set is nonempty.
+
+For the components of a nonzero old selection, the displayed indicator
+is one. Any flag in the enlarged support of a hot component belongs
+to a selected flagged entry somewhere in the old term; intersection
+of the two hot supports puts that entry in this same component.
+The converse inclusion follows from the old flag conditions.
+Distinct hot supports are disjoint, and their prescribed flag sets
+still partition $F$. Distinct components have disjoint new mark sets.
+The old term therefore gives an allowed new term with exactly the
+same coefficient after $\mathcal R$.
+
+Conversely, take a nonzero term in the new ordinary-exponential and
+flagged-selection expansion. Its component entries have disjoint
+new mark sets and pairwise disjoint hot supports. Their inventories
+of old labels are disjoint. A shared old label carrying a mark would
+force a shared group name; a shared label without marks must be a
+flagged entry and would force intersecting hot supports. Thus no old
+label is counted twice. Within each new component the old flagged
+supports are disjoint; between components they lie inside disjoint
+hot supports. Their old flag sets have union $F$. The old mark sets
+are disjoint, since they are disjoint within components and complete
+disjoint groups between components. Hence their union gives an
+allowed old selection. The uniqueness of the component partition
+proves that this construction inverts the preceding one.
+
+The products of coefficients agree in both directions. On complete
+group components, $\mathcal R$ preserves their monomial product by
+the first subsection. Summing the resulting weight-preserving
+bijection proves the exact regrouping identity. All sums here are
+finite: the torus, mark sets, supports and their admissible patterns
+are finite. No convergence or rearrangement assumption enters this
+algebraic step. The connected-array estimates of
+Section~\ref{sec:ope-grouping} apply to these very component entries.
+The ordinary and flagged kinds cannot represent the same constituent
+set, since one is cold and the other contains a flagged entry; thus
+summing their bounds does not hide an additional multiplicity.
+
+\subsection{Vacuum, locality, and covariance}
+A new entry with no group marks must be a single old zero-mark flagged
+entry. In fact no ordinary entry has empty marks. All entries of such
+a component are therefore flagged entries with no marks, whose
+supports were not enlarged. Their old supports are pairwise disjoint,
+so no support edge connects two different entries; and there are no
+group-name edges. Connectedness forces a singleton. Its new support,
+flag set and coefficient coincide with the old ones; the indicator
+is already implied by the old flag condition. Thus the zero-mark
+coefficient of every flagged support is unchanged. The ordinary
+array has no zero-mark coefficient. The same vacuum activity is
+retained by the regrouping.
+
+The construction also preserves the required local dependence.
+Each coefficient is a finite product of original coefficients, with
+indicators determined by the flags in the combined support. It
+therefore depends only on the original field and flag data in that
+support. Products, finite sums and these measurable indicators preserve
+measurability. If the original coefficients and flags are gauge
+invariant, so are the new coefficients. Healthy ordinary components
+vanish when their support meets the flags; flagged components vanish
+unless the intersection with the flags is their specified flag set.
+These are the support conditions used in the local representations.
+They do not assert smoothness across a flag boundary.
+
+Finally translations, signed coordinate changes and the accompanying
+conjugation preserve the construction whenever they preserve the
+original coefficient data. They relabel entries bijectively, preserve
+group-name incidence, health and flag inventory, and send support
+intersections to support intersections. Hence they send the canonical
+components to the corresponding components after transformation.
+Reindexing the finite sums proves covariance of the new arrays,
+including every coefficient whose marks lie in the copied group
+family. This keeps the replication identities through repeated
+regrouping. To obtain the local normalized-field representation used
+in \eqref{eq:ope-group-weight}, one must in addition extract its
+singleton coefficients and apply the purchased local analytic
+projection bounds; those estimates are not consequences of this
+finite algebraic identity.

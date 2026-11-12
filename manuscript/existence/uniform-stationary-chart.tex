@@ -1,0 +1,253 @@
+\section{A uniform stationary chart and its auxiliary-volume derivatives}
+\label{sec:uniform-stationary-chart}
+We construct the stationary branch on the real coordinate neighborhood
+used by the nonlinear step. The neighborhood must be uniform in the
+auxiliary torus; the subsequent derivative bounds may pay a fixed
+polynomial in its volume. These are different requirements.
+
+\subsection{Local derivative data and the Hessian gap}
+Let $I$ and $J$ be the coarse and free fine real-coordinate sets,
+and write $w=(x,y)\in\mathbb R^I\times\mathbb R^J$. Both coordinate
+spaces initially carry the supremum norm. Give every coordinate an
+anchor $a_i$ on the fine torus, with at most $K$ coordinates at each
+site. Put
+\[
+       S_a=K\sum_{r\ge0}(2r+1)^4e^{-ar}\qquad(a>0).
+\]
+The distance-shell bound implies
+$\sum_i e^{-a\operatorname{dist}(v,a_i)}\le S_a$, uniformly in the
+torus and in $v$.
+
+Fix an order $N\ge3$. The local action estimates provide a smooth
+real function $f(x,y)$ on $\|w\|_\infty<r_0$ and constants
+$a,C,m,r_0>0$ such that $f(0)=0$, $D_yf(0)=0$, and
+\begin{equation}\label{eq:stationary-scatter-input}
+ |\partial_{i_1}\cdots\partial_{i_q}f(w)|
+ \le C\exp\!\left(-a\sum_{h=1}^q
+                  \operatorname{dist}(a_{i_t},a_{i_h})\right)
+ \quad(1\le q\le N, 1\le t\le q).
+\end{equation}
+The vertical Hessian $H(0)=D_y^2f(0)$ satisfies
+$H(0)\ge mI$ in the Euclidean quadratic-form sense.
+The constants and coordinate multiplicity are independent of the
+auxiliary torus after the block data have been fixed. The Hessian
+gap is the tree-gauge energy comparison in
+Section~\ref{subsec:path-stationary-chart}; the derivative estimate
+is the additional quantitative local-action input.
+
+For two points $v,w$ in the original coordinate ball, differentiate
+a Hessian entry along their joining segment. Applying
+\eqref{eq:stationary-scatter-input} with the first Hessian coordinate
+as root, and summing the varied coordinate, gives
+\[
+ |H(v)_{ij}-H(w)_{ij}|
+   \le C S_a\|v-w\|_\infty
+                     e^{-a\operatorname{dist}(a_i,a_j)}.
+\]
+Both row and column sums of the difference are therefore at most
+$CS_a^2\|v-w\|_\infty$. Its Euclidean operator norm and its
+supremum operator norm have this same bound. Choose
+\[
+ r_H=\min\left\{r_0/2,\frac{m}{2(1+CS_a^2)}\right\}.
+\]
+Then $H(w)\ge(m/2)I$ on $\|w\|_\infty\le r_H$.
+The second-derivative case of
+\eqref{eq:stationary-scatter-input} also gives uniformly bounded
+exponentially weighted row and column sums of $H(w)$, after
+reducing $a$ to $a/2$. The inverse argument of
+Section~\ref{sec:local-covariance}, applied with lower bound
+$\min(1,m/2)$, supplies an exponential bound on $H(w)^{-1}$.
+Summing that bound gives a fixed constant $J_0\ge1$ with
+\begin{equation}\label{eq:stationary-uniform-inverse}
+                 \|H(w)^{-1}\|_{\infty\to\infty}\le J_0.
+\end{equation}
+The Euclidean bound $\|H(w)^{-1}\|_{2\to2}\le2/m$ follows directly
+from the positive gap. No conversion between the two vector norms
+is used to obtain either uniform bound.
+
+\subsection{Contraction on a common coordinate ball}
+Let $F(x,y)=D_yf(x,y)$, viewed as its array of real coordinates.
+Choose
+\begin{align*}
+ r_V&=\min\{r_H,[4J_0(1+CS_a^2)]^{-1}\},\\
+ r_X&=\min\{r_V,r_V/[4J_0(1+CS_a)]\}.
+\end{align*}
+For $\|x\|_\infty<r_X$, define on the closed ball
+$\|y\|_\infty\le r_V$
+\[
+                 T_x(y)=y-H(0)^{-1}F(x,y).
+\]
+The Hessian difference estimate gives
+\[
+ \|D_yT_x(y)\|_{\infty\to\infty}
+       \le J_0CS_a^2r_V\le\tfrac14.
+\]
+The second-derivative bound, summed with its vertical coordinate
+as root, gives
+\[
+ \|F(x,0)-F(0,0)\|_\infty\le CS_a\|x\|_\infty.
+\]
+Consequently $\|T_x(0)\|_\infty\le r_V/4$ and
+\[
+          \|T_x(y)\|_\infty
+                   \le\tfrac14\|y\|_\infty+r_V/4\le r_V/2.
+\]
+Thus $T_x$ maps the complete closed ball into itself and contracts
+by $1/4$. Its iterates from zero form a Cauchy sequence: consecutive
+differences are bounded by a geometric sequence of ratio $1/4$.
+Their limit $\rho(x)$ is a fixed point by continuity. If two fixed
+points existed, their distance would be at most one quarter of
+itself, so they would coincide. We have proved
+\[
+ \|\rho(x)\|_\infty\le r_V/2,\qquad F(x,\rho(x))=0,\qquad\rho(0)=0,
+\]
+with uniqueness among all stationary points in the closed
+$r_V$-ball.
+
+At each $(x,\rho(x))$ the vertical derivative of $F$ is the
+invertible Hessian $H(x,\rho(x))$. The finite-dimensional smooth
+implicit-function theorem therefore supplies a local smooth
+stationary graph. It remains inside the open $r_V$-ball after
+restricting its neighborhood, and uniqueness identifies it with
+the graph just constructed. These local identifications prove
+smoothness of $\rho$ throughout $\|x\|_\infty<r_X$.
+If several local tags give the same function on the original
+coordinate ball, the constructed graph is stationary for every
+tag and is the same graph for all of them. No extension outside
+the common ball is asserted.
+
+Differentiating $F(x,\rho(x))=0$ once gives
+\[
+        D\rho(x)=-H(x,\rho(x))^{-1}D_xF(x,\rho(x)).
+\]
+The rooted row sum bounds $\|D_xF\|_{\infty\to\infty}$ by
+$CS_a$. Hence $\|D\rho\|_{\infty\to\infty}\le J_0CS_a$.
+Integration along a coarse line segment proves
+\begin{equation}\label{eq:stationary-uniform-lipschitz}
+ \|\rho(x)-\rho(x')\|_\infty
+              \le C_\rho\|x-x'\|_\infty,\qquad C_\rho=1+J_0CS_a.
+\end{equation}
+In particular the constant used to spread fine-field slack is
+independent of the auxiliary volume.
+
+\subsection{Fixed-order derivatives with polynomial volume cost}
+Let $W\ge1$ bound $|I|+|J|$. We now allow polynomial costs in $W$.
+A scalar $q$-linear form with coordinate entries bounded by $C$
+has supremum operator norm at most $CW^q$: expand its arguments
+in coordinate basis vectors and bound the resulting at most $W^q$
+terms. For a vector-valued form with supremum output norm the same
+bound holds coordinate by coordinate. Passing that output to its
+Euclidean norm costs at most $\sqrt W\le W$.
+
+These elementary conversions turn
+\eqref{eq:stationary-scatter-input} into polynomial bounds for the
+ordinary derivatives of $f$ through order $N$. Its value has the
+same kind of bound on the fixed ball, because $f(0)=0$ and the
+first derivative can be integrated radially.
+They also give polynomial bounds for every derivative of $\rho$
+through order $N-1$. For completeness, differentiate
+$F\circ\Gamma=0$, where $\Gamma(x)=(x,\rho(x))$.
+At order $k\ge2$, the partition formula reads
+\[
+ 0=H(\Gamma(x))D^k\rho(x)
+   +\sum_{\substack{\pi\text{ a partition of }\{1,\ldots,k\}\\
+                    |\pi|\ge2}}
+       D^{|\pi|}F(\Gamma(x))
+                       [D^{|B|}\Gamma(x):B\in\pi].
+\]
+Every block in the sum has size less than $k$; the single-block
+term is exactly the isolated Hessian term, since the coarse
+component of $D^k\Gamma$ vanishes. The first derivative was already
+bounded in \eqref{eq:stationary-uniform-lipschitz}. Inductively,
+if the lower derivatives have polynomial bounds $P_h(W)$, the sum
+is bounded by
+\[
+ C\sum_{\substack{\pi\vdash\{1,\ldots,k\}\\|\pi|\ge2}}
+       W^{|\pi|}\prod_{B\in\pi}(1+P_{|B|}(W)).
+\]
+Multiplying by $J_0$ bounds $D^k\rho$. This is a fixed polynomial
+in $W$ at every fixed $k$, and uses derivatives of $f$ only through
+order $k+1$. The Euclidean output version follows by the preceding
+factor $W$. Thus the coordinate conversion does not affect the
+uniform radius or the uniform first-derivative bound.
+
+Put $M(x)=H(\Gamma(x))$. The chain rule gives polynomial bounds
+for its entry derivatives through order $N-2$. A matrix with
+entries bounded by $B$ has Euclidean operator norm at most $WB$,
+so these are polynomial operator bounds as well. The inverse
+identity gives, for each nonempty set of derivative slots $A$,
+\[
+ \partial_A M^{-1}
+   =-M^{-1}\sum_{\varnothing\ne B\subseteq A}
+                   (\partial_BM)(\partial_{A\setminus B}M^{-1}).
+\]
+All inverse derivatives on the right have lower order.
+Together with $\|M^{-1}\|_{2\to2}\le2/m$, this proves polynomial
+bounds by induction. Finally
+\[
+        D\log\det M[h]=\operatorname{tr}(M^{-1}DM[h]).
+\]
+Repeated product differentiation and
+$|\operatorname{tr}A|\le W\|A\|_{2\to2}$ give polynomial bounds
+for every positive derivative of $\log\det M$ through order
+$N-2$. Its centered value is bounded by integrating the first
+derivative. Its uncentered value is bounded too: the eigenvalues
+lie between $m/2$ and a fixed upper row-sum bound, so the sum of
+their logarithms has absolute value at most a fixed constant times
+$W$. In particular all determinants used here are positive.
+
+\subsection{The loop exponent and the Gaussian comparison data}
+The remaining exponent is
+\[
+      \psi(x,y)=\ell({\cal D}_x(y))-
+                              \sum_{i\in J_{\rm bond}}\log J_H(y_i),
+\]
+where $J_{\rm bond}$ denotes the free bonds and $J_H$ the
+single-bond Haar Jacobian. The notation separates the bond set
+from the earlier real-coordinate set $J$.
+On the fixed combined coordinate unit ball, the actual loop
+coefficient budget bounds each coordinate derivative through the
+requested order by a fixed constant times $\Lambda$, summed over
+at most $W$ sites. Its exponentially summable coefficient series
+converges normally there, which justifies differentiation before
+summation. Conversion to operator derivatives costs at most a
+further power of $W$. On the half-radius Haar chart,
+Section~\ref{sec:haar-chart} bounds the derivatives of $\log J_H$.
+Summing over at most $W$ free bonds and composing with the fixed
+Lie-coordinate maps has polynomial cost in $W$. Thus the
+$\psi$ bounds have the form
+\[
+                       P_0(W)+P_1(W)\Lambda
+\]
+for fixed nonnegative polynomials $P_0,P_1$.
+
+Apply the preceding construction at order $N=n+3$. It supplies
+bounds through order $n+2$ for $\rho$, through order $n+3$ for
+$f$, and through order $n+1$ for the relative log determinant.
+The loop and Haar estimates are purchased through order $n+4$.
+Take coarse radius $u$ and fluctuation parameter radius $v$ with
+\[
+ (1+C_\rho)u+vD<\min(r_H,1),\qquad u\le r_X,
+ \quad c_{\rm Lie}(C_\rho u+vD)\le r_H^{\rm Haar}/2.
+\]
+Here $c_{\rm Lie}$ is the fixed norm of the Lie-coordinate map
+and $r_H^{\rm Haar}>0$ is the Haar-chart radius. On every segment
+$(x,\rho(x)+tbz)$, with $\|x\|_\infty<u$, $|b|<v$,
+$0\le t\le1$ and $\|z\|_2\le D$, these inequalities verify the
+needed action, coordinate and Haar domains. The stationary
+Hessian is positive with inverse covariance bound $2/m$, and
+stationarity removes the linear vertical Taylor term.
+These are exactly the data required in
+Section~\ref{sec:truncated-stationary-log}.
+
+For the selected auxiliary volumes, $W$ is bounded by a polynomial
+in the auxiliary size parameter. All the prices obtained here are
+therefore polynomial in that parameter, except for the single
+linear loop factor. With $\Lambda\le2P_F$ their common bound can
+be written $p_0+p_1P_F$, with polynomially bounded $p_0,p_1$.
+This verifies the precise price dependence used in
+Section~\ref{sec:stationary-exterior-receipt}. The remaining
+quantitative inputs are the local-action estimate
+\eqref{eq:stationary-scatter-input}, the initial Hessian gap, and
+the loop coefficient and Haar-chart budgets. The construction
+never changes the selected finite-volume action or its tags.

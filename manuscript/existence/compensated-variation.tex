@@ -1,0 +1,211 @@
+\section{Varying the coarse field while holding the fine field fixed}
+\label{sec:compensated-variation}
+Differentiating a packet directly in its coarse field would also
+change the fine configuration represented by its fluctuation variable.
+The resulting derivatives would meet the fine masks and branch choices.
+We instead make the actual compensated change of variables. It is a
+global bijection on the fluctuation space near the chosen coarse
+configuration, and agrees with the required logarithmic adjustment
+where the protected integrand can be nonzero.
+
+\subsection{A globally defined adjustment of one logarithm}
+Choose fixed $d,A>0$ so small that
+\[
+ \log(\exp u)=u\quad(\|u\|\le2d)
+\]
+and the matrix logarithm is analytic at $\exp(u)M$ whenever
+$\|u\|\le2d$ and $\|M-1\|\le A$. Also require
+$\exp\log(\exp(u)g)=\exp(u)g$ for $\|u\|\le d$ and
+$\|g-1\|\le A$. Such constants exist by continuity of multiplication
+and the exponential at $(0,1)$, after choosing a smaller product
+neighbourhood inside the given logarithm domain. The constants are
+chosen before the coupling threshold and before the particular cutoff.
+
+Using the same smooth cutoff as before, define
+\[
+ \psi(M,u)=\chi(\|u\|^2/d^2)\{\log(\exp(u)M)-u\},
+ \qquad F_M(u)=u+\psi(M,u).
+\]
+Here group elements are represented by their unitary matrices in the
+logarithm expression. The correction is zero for $\|u\|\ge2d$.
+On the closed ball it is smooth in $(M,u)$; outside the ball it
+vanishes locally, so these formulas define a smooth map everywhere
+for $M$ sufficiently near $1$. At $M=1$ the correction and all its
+$u$ derivatives vanish.
+
+Compactness of $\|u\|\le2d$ now supplies one neighbourhood of
+$M=1$ on which, for every $u$,
+\begin{equation}\label{eq:compensator-small}
+ \|\psi(M,u)\|<d/2,\qquad \|D_u\psi(M,u)\|<1/2.
+\end{equation}
+Indeed these inequalities hold at $(1,u)$, and their continuous
+left-hand sides are uniformly small on that compact set; off it they
+are zero. Integration of the derivative on line segments shows that
+$\psi(M,\cdot)$ is $1/2$-Lipschitz. Thus $F_M$ is injective, since
+$F_M(u)=F_M(v)$ implies $\|u-v\|\le\|u-v\|/2$.
+For every $z$, iteration of $u\mapsto z-\psi(M,u)$ is a contraction
+on the complete colour space. Its iterates are Cauchy because successive
+distances form a geometric series; their limit is its unique fixed
+point and solves $F_M(u)=z$. Hence $F_M$ is surjective as well.
+
+Its derivative is $1+D_u\psi$, which is invertible by the convergent
+geometric series. The determinant
+\[
+ p(M,u)=\det(1+D_u\psi(M,u))
+\]
+is positive for all $u$ after a further uniform restriction on $M$:
+it equals one at $M=1$, is continuous on the compact $u$ ball, and
+is one outside it. Thus $F_M$ is a smooth bijection with positive
+Jacobian. Its local smooth inverses agree by injectivity, giving a
+global smooth inverse.
+
+For an actual group element $g$ near $1$ and $\|u\|\le d$, the
+cutoff equals one. Consequently
+\begin{equation}\label{eq:compensator-exact}
+ \exp(F_g(u))=\exp(u)g.
+\end{equation}
+The map is global, but this exact group identity is used only within
+that smaller ball.
+
+\subsection{The coherent coarse and fluctuation variables}
+Fix a sector with coarse field $V_0$, and keep its seeds, forest,
+tags, frozen fine bonds and active sets fixed. In the affine source
+replace the clipped coarse guide by its unmasked path-field formula;
+let $\widetilde\ell(V)$ be the resulting linear source and put
+\[
+ \nu(V)=-P(V)^*\widetilde\ell(V)
+\]
+in physical colour coordinates. This specifies the extension used
+in the change of variables. At a valid sector, every selected row
+has a clean neighbourhood. The clipping is then inactive at every
+read of that row, as proved in the guide comparison. Its unmasked
+source equals the original source, and hence $\nu(V_0)=\mu$.
+The same statement holds at any other valid sector. Away from valid
+sectors the unmasked expression is retained as its definition.
+
+Let $g_\beta=\beta^{-1/2}>0$ and identify a counting Gaussian
+coordinate $z$ with its colour vector on each fine bond. The extended
+fluctuation field is
+\[
+ u_0=\nu(V_0)+g_\beta z.
+\]
+For a nearby coarse field $V$, define separately at each fine bond
+\begin{equation}\label{eq:compensator-course}
+ M_i(V)=\overline V_{0,i}\overline V_i^{-1},\quad
+ u_i(V)=F_{M_i(V)}(u_{0,i}),\quad
+ z_i(V)=g_\beta^{-1}\{u_i(V)-\nu_i(V)\}.
+\end{equation}
+The replica is the prescribed one. It follows identically that
+$\nu(V)+g_\beta z(V)=u(V)$, and at $V=V_0$ the map is the identity
+on $z$.
+
+The fine field on an active bond is $\exp(u_i)\overline V_i$;
+on an inactive bond it is the fixed original fine field. Suppose
+$8at\le d/2$ and the varied active fluctuation satisfies
+$\|u_i(V)\|\le8at$. By \eqref{eq:compensator-small},
+\[
+ \|u_{0,i}\|\le\|u_i(V)\|+\|\psi(M_i(V),u_{0,i})\|<d.
+\]
+Equation~\eqref{eq:compensator-exact} therefore gives
+\begin{equation}\label{eq:compensator-held-fine}
+ \exp(u_i(V))\overline V_i
+ =\exp(u_{0,i})\overline V_{0,i}.
+\end{equation}
+Inactive bonds agree by definition. On the protected support all fine
+reads are consequently fixed, including their masks, likelihoods and
+selected branch tags. The larger $8at$ allowance is deliberate: at
+a point where the broader cutoff germ is not identically zero,
+continuity first gives $\|u_i(V_0)\|\le4at$, then gives the strict
+$8at$ bound on a neighbourhood. A finite set of protected bonds has
+one common such neighbourhood. No condition is imposed on the
+unprotected Gaussian coordinates.
+
+\subsection{Uniform derivative bounds for the compensation}
+Fix the derivative order $k$. On
+$\{1\}\times\{u:\|u\|\le2d\}$, all derivatives in $M$ of
+$\psi$ and $p$ through order $k$ have fixed bounds, by smoothness and
+compactness. Outside this set their $u$-sections are respectively
+zero and one as functions of $M$. Hence these bounds hold for every
+$u\in\mathfrak g$, with constants independent of the Gaussian
+coordinate. Moreover $\psi(1,u)=0$ and $p(1,u)=1$.
+
+Suppose the coarse variation $V(y)$ has the link derivative bounds
+of Section~\ref{sec:normalization-jets}, with $V(y_0)=V_0$ and
+scale $v(x)$ of upper exponent $-1/2$. Inversion, replication and
+multiplication by the fixed unitary replica show that $M_i(V(y))$
+has the same bound. In a chain-rule term of positive order $r\le k$,
+the product of derivatives of $M_i$ has total scale $v^r$; its
+amplitude is bounded by a constant depending only on $k$ and the
+representation. There are finitely many partitions of $r$. Thus,
+for every $u_{0,i}$,
+\[
+ \|D^r_y\psi(M_i(V(y_0)),u_{0,i})\|\le C_kv^r,
+ \qquad
+ \|D^r_y p(M_i(V(y_0)),u_{0,i})\|\le C'_kv^r
+ \quad(1\le r\le k).
+\]
+Their zero-order values are zero and one. Since $v\to0$, enlarge
+constants and obtain
+\begin{equation}\label{eq:compensator-jets}
+ \|D^r_y(u_i(y)-u_{0,i})|_{y=y_0}\|\le s(x),\qquad
+ \|D^r_y p(M_i(V(y)),u_{0,i})|_{y=y_0}\|\le D(x)^r
+ \quad(0\le r\le k),
+\end{equation}
+where $s\ge0$ has upper exponent $-1/2$, and $D\ge0$ has upper
+exponent zero. For the first bound use $C_kv$ for positive orders
+and zero at order zero; for the second take
+$D=\max(1,C'_k)v$, increasing the fixed constant if necessary.
+For $r\ge1$, $\max(1,C'_k)^r\ge C'_k$. At order zero the second
+bound is equality, with the convention $D^0=1$.
+These are precisely the compensated increment bounds used in
+Section~\ref{sec:haar-chart}. They are uniform over all Gaussian
+samples; they do not require a bound on $z_i(y)$ or on the derivatives
+of the mean extension.
+
+The incoming link-variation premise itself holds for the prescribed
+scaled exponential variations. For example, let
+$V_i(y)=\exp(\epsilon L_i y)V_{0,i}$, where the linear maps
+$L_i$ have uniformly bounded norm and $y$ stays in a fixed bounded
+set. The derivatives of the matrix exponential are uniformly bounded
+on the resulting fixed colour ball. The linear chain rule contributes
+$\epsilon^r$ at order $r$. Right multiplication by $V_{0,i}$ is
+an isometry. Enlarging one fixed constant therefore gives the link
+bound with $v=C_k\epsilon$. In particular the required scale holds
+when $\epsilon$ has upper exponent $-1/2$, as for the prescribed
+inverse-square-root coupling normalization. Finite collections of
+marked directions are handled by taking the maximum of their norms.
+
+\subsection{The exact finite-dimensional Jacobian}
+For a fixed nearby $V$, the map in
+\eqref{eq:compensator-course} acts separately on the colour coordinate
+of every fine bond. On a finite set $P$ of bonds it is conjugate,
+by the fixed coordinate regrouping, to the product of maps
+\[
+ z_i\longmapsto g_\beta^{-1}
+       \{F_{M_i(V)}(\nu_i(V_0)+g_\beta z_i)-\nu_i(V)\}.
+\]
+Each is a bijection. Its derivative is exactly
+$D F_{M_i(V)}(u_{0,i})$: the two scalar factors $g_\beta^{-1}$ and
+$g_\beta$ cancel. The derivative of the product is block diagonal,
+so its determinant is
+\begin{equation}\label{eq:compensator-jacobian}
+ \prod_{i\in P}p(M_i(V),u_{0,i})>0.
+\end{equation}
+A fixed regrouping of counting coordinates conjugates the derivative
+and does not change its determinant. This remains true if the
+regrouped spaces are temporarily given different finite-dimensional
+norms. For the empty set the map is the identity of the zero-dimensional
+space and the product is one.
+
+The ordinary change-of-variables formula therefore gives, for every
+nonnegative measurable test $f$ on these coordinates (and hence for
+every integrable test),
+\[
+ \int f(z')\,dz'
+ =\int f(z(V))\prod_{i\in P}p(M_i(V),u_{0,i})\,dz.
+\]
+Together with \eqref{eq:compensator-held-fine} and
+\eqref{eq:compensator-jets}, this supplies the coherent protected
+variation and its exact Jacobian. Differentiating a Gaussian density
+under this substitution still requires its own covariance and mean
+score bounds; those do not follow from this Jacobian calculation.

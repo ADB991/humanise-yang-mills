@@ -1,0 +1,215 @@
+\section{The logarithm of a truncated stationary Gaussian integral}
+\label{sec:truncated-stationary-log}
+The local small-field comparison uses a normalized integral near the
+actual stationary point. Its first correction has order $\beta^{-1}$.
+Two details matter: the cutoff is retained when the coupling parameter
+vanishes, and the stationary Hessian varies with the coarse field.
+We prove the corresponding parameter estimate with both features.
+
+\subsection{The normalized integral}
+Let $E$ be the finite-dimensional space of coarse logarithmic
+coordinates and let $\mathbb R^d$ be the fine integration space, with
+its Euclidean norm. Let $\varphi(x,y)$ be the real action,
+$\psi(x,y)$ the additional real exponent, and $\rho(x)$ the stationary
+point. Assume
+\[
+ D_y\varphi(x,\rho(x))=0,\qquad
+                   D_y^2\varphi(x,\rho(x))=M(x)>0.
+\]
+On the parameter domains under consideration assume smoothness of
+$\rho$, $\varphi$, $\psi$ and $\tfrac12\log\det M$, with derivatives
+through the orders used below. More precisely, a derivative estimate
+through order $k$ for the integral uses orders $k+2$ for $\varphi$
+and $\rho$, and order $k$ for $\psi$ and the relative log determinant,
+on every segment $(x,\rho(x)+tbz)$ with $0\le t\le1$ and $|z|\le D$.
+Let their common bounds be $p$. These are bounds on the actual moving
+stationary branch and its Hessian, not on a separately chosen quadratic
+approximation.
+
+Define the smooth divided difference
+\[
+ V(b,x,z)=\int_0^1(1-t)
+   D_y^2\varphi(x,\rho(x)+tbz)[z,z],dt.
+\]
+Taylor's formula and stationarity give
+\[
+ V(b,x,z)=\frac{\varphi(x,\rho(x)+bz)-\varphi(x,\rho(x))}{b^2}
+ \quad(b\ne0),\qquad V(0,x,z)=\tfrac12z^TM(x)z.
+\]
+The integral formula supplies its derivatives also at $b=0$.
+Put $s(x)=\tfrac12\log\det M(x)$ and
+\begin{align*}
+ A(b,x,z)={}&s(x)-s(0)+V(0,0,z)-V(b,x,z)\\
+            &+\psi(x,\rho(x))-\psi(x,\rho(x)+bz).
+\end{align*}
+With $\gamma_0$ the Gaussian of covariance $M(0)^{-1}$, set
+\begin{equation}\label{eq:stationary-normalized-integral}
+ R(b,x)=\int_{|z|\le D}e^{A(b,x,z)}\,d\gamma_0(z),
+                         \qquad L(b,x)=\log R(b,x).
+\end{equation}
+The normalization is fixed at the base point in the measure; the
+varying determinant is explicitly present in $A$.
+
+At $b=0$ the density identity gives exactly
+\begin{equation}\label{eq:stationary-zero-mass}
+                   R(0,x)=\gamma_x\{|z|\le D\},
+                         \qquad \gamma_x=N(0,M(x)^{-1}).
+\end{equation}
+Indeed the factor $e^{s(x)-s(0)}$ converts the determinant prefactor,
+and $V(0,0,z)-V(0,x,z)$ converts the quadratic exponent. The two
+$\psi$ terms cancel. The result is the truncated Gaussian mass,
+which need not equal one.
+
+There is also an exact parity identity
+\begin{equation}\label{eq:stationary-even}
+                            R(-b,x)=R(b,x).
+\end{equation}
+Changing $z$ to $-z$ preserves the ball and the centered Gaussian.
+The segment $\rho(x)+t(-b)(-z)$ equals the original segment, and
+the two appearances of $z$ in the quadratic evaluation cancel their
+signs. Thus $A(-b,x,-z)=A(b,x,z)$, proving the identity before taking
+any expansion.
+
+\subsection{Uniform derivatives on the truncated ball}
+The chain rule in the integral defining $V$ gives a polynomial bound
+$P_k(p,D)$ for all derivatives of $A$ through order $k$, uniformly
+for $|z|\le D$. To see the polynomial nature, the map
+$(b,x)\mapsto(x,\rho(x)+tbz)$ has derivatives bounded by fixed
+polynomials in $1+p+D$; each chain-rule term has at most $k$
+factors. Evaluating the two additional slots at $z$ costs at most
+$D^2$. Integration against $1-t$ adds no large constant. The
+$\psi$ and log-determinant terms have the same type of bound.
+
+Purchase $k\ge1$ (replace a requested order zero by order one here).
+Suppose $|b|<v\le1$, $\|x\|<u\le1$, and
+$P_k(p,D)\max(u,v)\le1$, enlarging $P_k$ to include its first
+order bound. Since $A(0,0,z)=0$, integration along the parameter
+segment from zero gives $|A(b,x,z)|\le1$. Derivatives of $e^A$
+through order $k$ are consequently bounded by another fixed
+polynomial in $P_k$, times $e$. The cutoff ball is fixed in these
+parameters, and the reference Gaussian has mass one. This bound is
+integrable and uniform on the open parameter domain, so differentiation
+under the integral is justified at every order through $k$.
+
+If $\gamma_0\{|z|\le D\}\ge1/2$, then
+\begin{equation}\label{eq:stationary-positive-range}
+                              e^{-1}/2\le R(b,x)\le e.
+\end{equation}
+It follows by integrating $e^{-1}\le e^A\le e$ on the ball.
+Derivatives of $\log$ are bounded on this fixed positive interval,
+so the chain rule gives a common bound for all derivatives of $L$
+through order $k$. If $p,D$ have upper exponent zero, this bound
+also has upper exponent zero. The smallness condition on $u,v$
+holds eventually whenever both have a fixed negative upper exponent.
+
+\subsection{The cutoff error when the dimension grows}
+The auxiliary tori have dimension at most $Q(x)$, where $Q$ is bounded
+by a fixed polynomial in $1+(\log\beta_F(x))^2$. Suppose
+$M(y)^{-1}\le cI$ uniformly on the coarse-field ball, with $c>0$
+fixed. Let $P_F(x)$ be the fine monitor and take $D=d_0P_F(x)$,
+where $d_0>0$ is fixed. For the actual fine monitor,
+$P_F(x)/\log z\to\infty$, and every fixed polynomial in $\log z$
+is eventually bounded by $P_F(x)^\epsilon$ for every $\epsilon>0$,
+where $z=\beta_F(x)$. These stronger growth properties are used
+in the following tail estimate.
+
+Here is a dimension-explicit tail estimate. If a centered Gaussian
+has covariance at most $cI$ in dimension at most $P\ge1$, then
+for $r,s\ge0$,
+\[
+ \mathbb P\{|Z|>Pr\}\le2P\exp(-sr+cs^2/2).
+\]
+If every coordinate has absolute value less than $r$, then
+$|Z|^2\le Pr^2\le P^2r^2$. A union bound and the one-coordinate
+exponential-moment estimate therefore prove the assertion.
+For $P=1+Q(x)$, the monitor growth gives $P\le\sqrt{P_F(x)}$
+eventually. Choose $r=d_0\sqrt{P_F(x)}$ and $s=r/c$. Then $Pr\le D$
+and
+\begin{equation}\label{eq:stationary-tail}
+ 1-\gamma_y\{|z|\le D\}
+        \le2(1+Q(x))\exp\{-d_0^2P_F(x)/(2c)\}.
+\end{equation}
+The right side has every negative upper exponent. In particular it
+is at most $1/2$ eventually, proving the mass condition above.
+
+If $0\le\epsilon\le1/2$ and $1-\epsilon\le r\le1$, integration
+of $1/t$ on $[r,1]$ gives $|\log r|\le2\epsilon$. Applying this to
+\eqref{eq:stationary-zero-mass} shows that $L(0,y)$ has a value
+smaller than every fixed negative power of $\beta_F$, uniformly
+on the allowed coarse ball. Derivatives require an additional
+argument; a small value by itself is insufficient.
+
+\subsection{Turning a small value into small jets}
+We give the finite-order interpolation used for that purpose. Fix
+$j\in\mathbb N$, $a>0$, and real $d,m$. There is an exponent $B$
+such that, for all sufficiently large $z$, the following implication
+holds in any finite-dimensional normed spaces. If on
+$\overline B(y,z^{-a})$ a function $F$ has derivatives through order
+$j+1$ bounded by $z^d$, and its value is bounded by $z^B$, then its
+jets through order $j$ at $y$ are bounded by $z^m$.
+
+The elementary one-step estimate is
+\[
+             \|D^{r+1}F(y)\|\le 2v/s+Cs
+\]
+whenever $\|D^rF\|\le v$ and $\|D^{r+2}F\|\le C$ on the
+radius-$s$ ball. Subtract the tangent map of $D^rF$ at $y$,
+integrate its derivative along a segment of length $s$, and use
+the second-derivative bound to control the tangent-map error.
+This gives the estimate in every unit direction, hence in operator
+norm, without a dimension factor.
+
+Induct on $j$. The case $j=0$ takes $B=m$. In the induction step
+choose
+\[
+ c=a+\max(0,d-m)+1,\qquad b=m-1-c,\qquad s=z^{-c}.
+\]
+Eventually $2s\le z^{-a}$. Apply the induction hypothesis with target
+exponent $b$ on every radius-$s$ ball whose center lies within $s$
+of $y$; those balls lie in the original domain. A sufficiently
+negative common value exponent $B$ then bounds jets through order
+$j-1$ by $z^b$ on that inner ball. The one-step estimate bounds the
+order-$j$ derivative at $y$ by
+\[
+                            2z^{b+c}+z^{d-c}.
+\]
+Both exponents are strictly less than $m$, and $b<m$ also bounds
+all lower derivatives. Increasing the lower threshold on $z$
+proves the assertion. This is a finite induction, with all exponents
+chosen before the function or dimension is supplied.
+
+Apply it to $F(y)=L(0,y)$ on a microscopic ball of radius
+$z^{-1}$ inside the coarse-field domain. The derivative bound of
+upper exponent zero is at most $z$ eventually. The tail estimate
+provides any value exponent $B$ the induction requests. Hence,
+for every fixed real $e$,
+\begin{equation}\label{eq:stationary-zero-jets}
+                       \|L(0,\cdot)\|_{J^j,y}\le z^e
+\end{equation}
+eventually, with the stated microscopic margin.
+
+\subsection{The even second-order gain}
+Purchase two additional parameter derivatives in the earlier
+bounds. For every $r\le j$, the function
+$b\mapsto D_y^rL(b,y)$ is even by
+\eqref{eq:stationary-even}. Its first derivative at zero vanishes.
+If its second derivative is bounded by $C(x)$ for $|b|\le\epsilon$,
+Taylor's formula gives
+\[
+ \|D_y^rL(\epsilon,y)-D_y^rL(0,y)\|
+                         \le C(x)\epsilon^2.
+\]
+The derivative constant $C$ has upper exponent zero. Combining with
+\eqref{eq:stationary-zero-jets}, assuming $\beta>0$ and $\epsilon=\beta^{-1/2}<v$, we obtain
+\begin{equation}\label{eq:stationary-log-price}
+             \|L(\beta^{-1/2},\cdot)\|_{J^j,y}
+                              \le C(x)\beta^{-1}+z^e.
+\end{equation}
+This is the required first-order inverse-coupling price, uniform
+for the prescribed auxiliary volumes and coupling band, with the
+closed microscopic ball $\overline B(y,z^{-1})$ contained in the
+coarse-field parameter domain, provided
+the actual stationary branch, segment derivative and Hessian bounds
+stated above hold. Identifying this truncated integral with the
+full nonlinear push additionally requires its separate exterior
+estimate; that estimate is not part of the parity argument.

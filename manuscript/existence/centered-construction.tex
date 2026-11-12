@@ -1,0 +1,225 @@
+\section{The centered estimate on the selected Wilson history}\label{ex-centered-construction}
+
+Fix the family selected for a compact simple gauge group and positive penalty by the construction theorem. The compactness argument in Section~\ref{ex-centered-producers} needs a uniform root bound for its centered local observables. We derive it from the paid single-source history selected with that family. The essential finite-volume input is a marked-copy estimate: placing one copy in each cell turns the RG bound for a finite census into a bound on the normalized root moment. The scale schedule and the factorial-column estimate then make its cost at most the desired power of the mesh.
+
+\begin{theorem}[Uniform centered power bound from the single-source receipts]\label{ex-centered-main-bound}
+Assume the selected same-history construction supplies the single-source quantitative fields listed below, with one common budget for all labels in each bounded grade ball, together with its width and interiority receipts.
+For each grade $d$, each $R>0$, and each $\varepsilon>0$, there is a finite $A\geq0$ such that for every $m\geq m_{\mathrm{ref}}(d)$, for all sufficiently large volumes $N$, uniformly in every period $p$, every label $v$ of grade $d$ with $\|v\|\leq R$, and every site $x$, the centered cell at depth $m$ and site $x$ contains the observable in its positive chamber and
+\[
+  \mathcal R_{m,N,p}(O_{N,p}(v,x))\leq A a_m^{-d-\varepsilon}.
+\]
+The volume threshold may depend on $m$, but not on $p$, $v$, or $x$.
+\end{theorem}
+
+The argument below proves this conditional estimate through the actual single-source supplier used by the public construction. The upstream production of the uniform fields is tracked separately and is not folded into this theorem's hypotheses.
+
+\begin{proof}
+
+\subsection{The finite-volume marked-copy estimate}
+
+Fix a grade $d$, a label-norm radius $R>0$, a target depth $m$, and an opened depth $k\geq m$. The finite-dimensional grade-$d$ label space has compact closed $R$-ball, and its coefficient-size function is continuous. Thus
+\[
+ g_{d,R}=\max\!\left(1,\sup_{\|v\|\leq R}\mathrm{coeffSize}_d(v)\right)<\infty.
+\]
+Use this coefficient-size radius in the local payment and width estimates. Write $a_i$ for the lattice spacing, $\sigma_i=\log(a_i^{-1})$, and
+\[
+  P(d,R,k)=a_k^d\,W(d,g_{d,R},k),\qquad
+  E(d,R;m,k)=\left(\frac{a_m}{a_k}\right)^4 t_k+6-\log P(d,R,k),
+\]
+where $W(d,R,k)$ is the width allocated to the grade-$d$ coefficient ball at depth $k$, and $t_k$ is the vacuum treasury per site at that depth. All these quantities are positive where they occur in logarithms. Let $M_m$ be the number of cells in the centered tiling of depth $m$. For an observable copy $U_j$, write $c_k(U_j)$ for the local production cost assigned by the selected history; the paid-ticket inequality is $P(d,R,k)c_k(U_j)\leq\mathrm{fly}_k$.
+
+We now give the finite-census estimate used in the proof. Let $V$ be the cells of the centered depth-$m$ tiling, so $|V|=M_m$. For each $j\in V$, let $U_j$ be the transported observable placed at that cell. Write $\mathcal C_V$ for the finite squarefree marker algebra: its basis elements are subsets $I\subseteq V$, multiplication is disjoint union when the subsets are disjoint and zero otherwise, and
+\[
+ \operatorname{price}_r(F)=\sum_{I\subseteq V}|F_I|\prod_{j\in I}r_j,
+ \qquad \operatorname{toll}_r(I)=\prod_{j\in I}r_j
+\]
+for positive weights $r_j$. The mode-zero coefficient is the quiet coefficient. The polynomial pass is the finite exponential series through degree $|V|$; it satisfies $\operatorname{price}_r(\operatorname{pass}F)\leq\exp(\operatorname{price}_r(F))$, by submultiplicativity and the ordinary exponential-series bound.
+
+The single-source receipt at each intermediate scale represents the propagated density in the form
+\[
+ X(U)=e^{E(U)}\operatorname{pass}\!\left(\operatorname{Mach}(F(U))+\sum_{S}H_S(U)\right)
+ \operatorname{field}\!\left(\overline K(U)+\operatorname{Mach}(G(U))+K(U)\right).
+\]
+Here $\operatorname{Mach}(z)=\sum_{j\in V}\operatorname{send}_j(z_j)$ places a scalar source in the marker for copy $j$; each local unit $H_S$ and forced-box source $K_S$ has marker degree at least two whenever it is nonzero. The field is the sum over admissible families of pairwise disjoint boxes whose FLAG sets have union equal to the global flag set, with each term the product of its box factors. The vacuum terms are $\overline K$ and the vacuum part of the box factors. This is the representation supplied by the source's served-slab receipt.
+
+For positive $r_j$, the support budgets give four contributions to the price. The scalar observables contribute at most $|V|x$ by the first part of the vault bound. The box-marked observables contribute at most $|V|y$ by its second part. The local unit family and the forced-box family each contribute at most $|V|f$ by their towed support budgets. Here is the origin-counting step in full. For an active unit $H_S(U)\neq0$, choose a nonzero marker coefficient. The degree condition gives a marker $j$ in that coefficient; the support-placement condition for that unit says its site $o_j$ lies in $S$. Thus every active support contains a named origin. For a forced-box term the same argument gives $o_j$ in its box. If $a_S\geq0$ is the envelope supplied by the towed bound, its weighted coefficient price $q_S(U)$ satisfies $q_S(U)\leq a_S$ and $\sum_{S:o_j\in S}a_S\exp(e\,\mathrm{cover}(S))\leq f$ at every origin. Only active supports need be charged; a zero polynomial has price zero even if its envelope is positive. Because $e\geq0$, the exponential is at least one. Summing the envelope bounds over origins therefore gives $\sum_{S\,\mathrm{active}}q_S(U)\leq |V|f$. Finally, the unmarked vacuum activities contribute at most $s u_0$, where $s$ is the number of lattice sites and $u_0$ is the per-site vacuum allowance. Thus the total price inside the finite pass is at most $|V|(x+f)$, and the total price of the box factors is at most $s u_0+|V|(y+f)$.
+
+For the field, sum first over admissible box families. Dropping the disjointness restriction only adds nonnegative terms, so its price is at most the product over boxes of one plus the price of that box factor. The inequality $1+t\leq e^t$ bounds this by the exponential of the sum of box prices. The same $1+t\leq e^t$ argument for the finite polynomial pass, together with submultiplicativity of price, now yields the pointwise estimate
+\begin{equation}\label{ex-centered-steer}
+ \operatorname{price}_r(X(U))\leq
+ \exp\!\left(E(U)+|V|(x+y+2f)+s u_0\right).
+\end{equation}
+The lawfulness estimate bounds the scalar action by $\mathrm{scalar}+s\,\mathrm{exCost}$, and the pointwise vacuum price contributes $s\kappa$. Because the prior is a probability measure and $|X_I(U)|\operatorname{toll}_r(I)\leq\operatorname{price}_r(X(U))$, integrating \eqref{ex-centered-steer} gives
+\[
+ \left|\int X_I\,d\mu\right|\operatorname{toll}_r(I)
+ \leq \exp\!\left(\mathrm{scalar}+s(\mathrm{exCost}+\kappa)+|V|(x+y+2f)\right).
+\]
+Assume the action parameters satisfy $0<\rho\leq\rho_0\leq1$, where $\rho_0$ is the flag-vanishing threshold, and $\beta\geq0$, the Wilson action is lawful, and its representation is pointwise nonnegative. The product prior is the normalized product Haar probability $\mu$ on edge variables. The positive partition function has the explicit lower bound
+\[
+ Z\geq\exp\!\left(\mathrm{scalar}-s\left[\mathrm{exCost}
+ +\beta\,\mathrm{baseBudget}(\rho)+4d_G\log(16/\rho)\right]\right).
+\]
+Here $d_G=\dim_{\mathbb R}G.\mathrm{Mat}$ is the dimension of the ambient real matrix space used by the gauge representation. For completeness, the Haar small-ball estimate used here follows from a packing argument. Put $D=d_G$ and use the matrix norm defining the radius. Choose a maximal finite family with pairwise distances strictly greater than $r\gamma$. Its open balls of radius $r\gamma/2$ are disjoint and lie in the ambient ball of radius $2\gamma$. Comparing Euclidean volumes gives $M(r/4)^D\leq1$. Maximality says the closed balls of radius $r\gamma$ cover the group. By Haar invariance, each such ball has the same Haar measure as the identity ball, so $1\leq M\,\mu(B(e,r\gamma))$ and hence $\mu(B(e,r\gamma))\geq(r/4)^D$. With $\gamma$ the source color scale and $r=\rho/4$, each edge ball has probability at least $(\rho/16)^{d_G}$. Restrict every oriented edge to this ball: a four-edge plaquette path differs from the identity by at most the sum of its four edge deviations, hence its chord is at most $\rho$ and the flag term vanishes. The loop action is bounded by the stated loop cost, and nonnegativity of $\beta$ bounds the remaining local action by $\beta$ times the base budget. Independence under the normalized product prior gives event probability at least $(\rho/16)^{4s d_G}$. On that event the exponential density is at least the scalar exponential times the exponential of minus the displayed action and vacuum costs. Integrating this nonnegative density over the event proves the bound. Dividing the numerator estimate by this denominator gives the integrated mode estimate
+\begin{equation}\label{ex-centered-sail}
+ \frac{\left|\int X_I\,d\mu\right|}{Z}\operatorname{toll}_r(I)
+ \leq \exp\!\left(s\left[2\,\operatorname{exCost}+\kappa+\beta\,\operatorname{baseBudget}
+       +4d_G\log(16/\rho)\right]+|V|(x+y+2f)\right),
+\end{equation}
+where $Z>0$ is the Wilson partition function, $\rho$ is the small-ball radius below the action threshold, and $d_G$ is the real dimension of the ambient gauge-matrix space. This is a finite-volume estimate; no infinite-volume measure is involved.
+
+Now propagate the terminal birth polynomial $b_N$ backwards through the finite-volume transitions: $b_i=T_i b_{i+1}$ for $i=N-1,\ldots,k$. Start from the actual terminal birth, which is integrable because it is a finite polynomial in continuous observables on compact configuration space. At each step the transition's finite mass bound sends an integrable function to an integrable function; the kernel mass identity preserves its integral against the corresponding normalized prior. The mode extraction commutes with this transition because it is a continuous linear coefficient map on the finite-dimensional polynomial space: applying it before or after integration gives the same scalar integral. Induction therefore preserves integrability, each coefficient identity, and the same partition normalization at every scale. The transition equation and terminal birth identity consequently give
+\[
+ \frac{\int (b_k)_I\,d\mu_k}{Z_{N,p}}
+   =\mathbb E_{N,p}\prod_{j\in I}U_j.
+\]
+The intermediate height, locality, and terminal Fourier statements are the exact hypotheses used to identify the propagated coefficient with the served-slab census; the conversion from these fields to the displayed squarefree price is set out below. The weighted local-payment inequality is $r_j c_k(U_j)\leq\mathrm{fly}_k$. Separation controls the cover cost of each multi-marker support, while the occupancy bound controls the number of named origins per site. These are the geometric and payment hypotheses needed for the four support-price bounds above.
+
+At the opened depth, the weight march returns its initial value, so $r_j=P(d,R,k)$ for all $j$. The local scalar bounds are $x=3\,\mathrm{fly}_k$ and $y=\mathrm{fly}_k$; the action estimate has $f=1$ and $\mathrm{fly}_k\leq1$. Thus $x+y+2f=4\,\mathrm{fly}_k+2\leq6$. The finite-volume treasury identity bounds the extensive bracket in \eqref{ex-centered-sail} by $M_m(a_m/a_k)^4t_k$. Taking $I=V$ therefore gives
+\begin{equation}\label{ex-centered-marked-copy}
+ \left|\mathbb E_{N,p}\prod_{j\in V}U_j\right| P(d,R,k)^{M_m}
+ \leq \exp\!\left(M_m\left[\left(\frac{a_m}{a_k}\right)^4t_k+6\right]\right).
+\end{equation}
+This is the marked-copy inequality with all terms traced: the $6M_m$ is the sum of the $3\,\mathrm{fly}_k+\mathrm{fly}_k+2$ scalar, forced, and action charges; the treasury is the cost of all $M_m(a_m/a_k)^4$ scale-$k$ cells.
+
+By definition, the centered root test is $X^{1/M_m}$, where $X=|\mathbb E_{N,p}\prod_j U_j|$. If $X=0$ the desired estimate is immediate. Otherwise divide \eqref{ex-centered-marked-copy} by $P^{M_m}>0$ to get
+\[
+ X\leq\left(\frac{\exp((a_m/a_k)^4t_k+6)}{P(d,R,k)}\right)^{M_m}.
+\]
+The map $x\mapsto x^{1/M_m}$ is increasing on $[0,\infty)$ and $M_m\geq1$, so taking its value on the two sides yields
+\begin{equation}\label{ex-centered-opened-root}
+ \mathcal R_{m,N,p}(O_{N,p}(v,x))
+ \leq \frac{\exp((a_m/a_k)^4t_k+6)}{P(d,R,k)}
+ =\exp(E(d,R;m,k)),
+\end{equation}
+for $\|v\|\leq R$, once the centered tiling has interiority at the chosen site. Translation covariance transfers the estimate from the origin to any site; the finitely many signed-coordinate copies have the same coefficient and payment bounds. In the source proof, the marked-copy inequality is obtained by applying its finite-census RG estimate to the full census, then applying the root-test inequality. No continuum or limiting operation is used in this step.
+
+\subsection{The width bill and the choice of opened depth}
+
+Set $n_d=2\,\mathrm{winter}(d)$ and, at scale $i$, write $c_i$ for the column count, $\nu_i$ for the factorial order, $\widehat\beta_i$ for the hatted coupling, and
+\[
+ W_i=\frac{\widehat\beta_i^{-n_d/2}}{g_{d,R}\,c_i\prod_{j<i}c_{j+1}},
+ \qquad L_i=\frac{W_i}{\nu_i!}.
+\]
+These are the actual width, envelope, and paid last-column quantities in the factorial-column estimate. The accumulated column-log estimate $F_i=o(\sigma_i)$ is proved by the scale-increment telescoping in Section~\ref{ex-column-subpower}. The hatted coupling has the exact schedule form $\widehat\beta_i=\bar\beta+c_G\sigma_i$ with $c_G>0$. Thus for all sufficiently large $i$ there is a fixed $C>0$ such that $1\leq\widehat\beta_i\leq C\sigma_i$, and
+\[
+ 0\leq\frac{\log\widehat\beta_i}{\sigma_i}
+ \leq\frac{\log(C\sigma_i)}{\sigma_i}\longrightarrow0.
+\]
+This proves the logarithmic coupling subpower directly from the affine reference schedule; the actual finite-volume coefficient's running limit is not used in this width step. The paid factorial condition $\nu_i!\leq c_i$ and the width identity give, for every $z>0$, eventually
+\[
+ 5-\log L_i\leq\frac z2\sigma_i.
+\]
+The exact logarithmic expression is
+\[
+ 5-\log L_i=5+\log g_{d,R}+\frac{n_d}{2}\log\widehat\beta_i
+   +\log c_i+\sum_{j<i}\log c_{j+1}+\log(\nu_i!).
+\]
+For $i\geq1$, the sum $F_i=\sum_{j<i}\log c_{j+1}$ contains $\log c_i$; since $\nu_i!\leq c_i$, it also dominates $\log(\nu_i!)$. Thus the last three terms are bounded by $3F_i$. The fixed prefactor and coupling-log terms are $o(\sigma_i)$ by the estimates just given. This is exactly the I04 inequality with slack $z/2$, and makes the finite-prefix handling explicit.
+Since $\nu_i!\geq1$, one has $L_i\leq W_i$, and therefore $5-\log W_i\leq z\sigma_i/2$. For all sufficiently large $i$, also $1\leq z\sigma_i/2$. Hence
+\[
+ 6-\log W_i\leq z\sigma_i.
+\]
+The physical palette width is $P(d,R,i)=a_i^d W_i$, so $-d\log a_i=d\sigma_i$ yields the exact bill
+\begin{equation}\label{ex-centered-width-bill}
+ 6-\log P(d,R,i)\leq(d+z)\sigma_i.
+\end{equation}
+This also explains the constants: the last-column estimate is on $5-\log L_i$; the extra $1$ is absorbed into $z\sigma_i/2$, and the physical grade factor contributes exactly $d\sigma_i$. No additional arbitrary width slack is hidden in \eqref{ex-centered-width-bill}.
+
+Let $k(m)$ be the depth opened by the selected schedule for target depth $m$. The schedule gives $k(m)\geq m$ and $k(m)\to\infty$. Given $\eta>0$, choose
+\[
+  0<z\leq\min\left\{\frac{\eta}{4},\frac{\eta}{4(d+\eta)}\right\}.
+\]
+The schedule's pay bound and the vacuum-treasury estimate give, eventually in $m$,
+\[
+ w^4q_{k(m)}\leq z\sigma_{k(m)},\qquad t_{k(m)}\leq q_{k(m)},
+ \qquad w=\frac{a_m}{a_{k(m)}}\geq1,
+\]
+where $q_k\geq1$ is the paid fiat at depth $k$. Also $\sigma_{k(m)}-\sigma_m=\log w\leq w^4q_{k(m)}$. Combining these facts with \eqref{ex-centered-width-bill} yields
+\[
+ E(d,R;m,k(m))\leq(d+2z)\sigma_{k(m)}
+ \leq(d+\eta)(1-z)\sigma_{k(m)}
+ \leq(d+\eta)\sigma_m.
+\]
+The middle inequality follows from the two restrictions on $z$. Hence, for any $0<\eta<\varepsilon$, the opened-depth estimate is at most $a_m^{-d-\eta}$ for every sufficiently large $m$.
+
+For the finitely many smaller depths, choose an opened $k(m)\geq m$ and use the finite estimate \eqref{ex-centered-opened-root}. The maximum of $1$ and the finitely many numbers
+\[
+  \exp(E(d,R;m,k(m)))\,a_m^{d+\varepsilon}
+\]
+is a single finite constant $A$. It is independent of the period, volume, site, and label within the specified coefficient ball. For late depths, $a_m^{-d-\eta}\leq a_m^{-d-\varepsilon}$ because $a_m<1$ and $\eta<\varepsilon$. This proves the power bound at all depths at or beyond the grade reference. The centered-cell interiority and the common eventual volume threshold are supplied by the selected schedule's interior-clearance receipt.
+
+\subsection{The centered supplier on the public construction route}
+
+Write $S_B=e\{2(16B+9)\}^4$ for the packing factor of Section~\ref{sec:local-transfer}.
+
+The public construction uses a single-source per-label supplier, followed by a downward induction across the scale transitions. We spell out the quantitative propagation and cost checks; the local transfer argument itself is supplied in Section~\ref{sec:local-transfer}. The public route does not call the separate multisource-lane construction. The finite-menu nonlinear response remains an explicit selected-history input to this conditional proof. At the adjacent step it must provide ordinary and flagged polynomial ledgers for finite nonquiet offers supported in their crests, under the history’s regularity, arrival, response-rate, slot, and shipment-tariff conditions. The ordinary ledger is paid at exponent equal to the lower profile exponent plus $1/2$ and site budget $1$; the flagged ledger is paid at exponent plus $1$ and site budget $2\exp(-\mu\Delta_{G,L}(\beta)^2/16)$. Its push identity fixes the quiet coefficient and the specified singleton coefficients for each box only; no arbitrary nonquiet coefficients are assumed. The offer threshold in this application is the upper support exponent minus $4$, with allowance fixed by that step’s tariff. The conditional response record also retains propagation, tuning, slot separation, and the finite-wing price data used below. A separate producer argument is required to derive this record uniformly from the public run; the source path and its current review status are recorded in the evidence file. The adjacent-scale finite-wing input is produced from the selected history: its nested realization, tariff, climbing-door data, and support-exponent bounds are passed through the one-step response construction. At step $i$ the two support exponents are at least $100$, the price shrinkage $d_i=\delta_i$ lies in $(0,1]$, and the one-step total price $t_i$ and local-response allowance $y_i$ obey the exact inequalities displayed below. These are the finite-wing response and one-step payment data required by the local-transfer step. The tariff and compatibility data are carried on the same chosen history; their producer is identified in the evidence file. At a step $i$, the resulting one-step conditions are $\nu_i,\nu_{i+1}\geq100$, $0<d_i\leq1$, and, with $T_i=r_i\,S_{B_{i+1}}d_i+4d_i$, $T_i+e^{T_i}T_i\leq t_i$ and $ (2B_i+1)^4(y_i+r_i\,S_{B_i}d_i)\leq\tfrac12$, $e^{y_i+r_i\,S_{B_i}d_i}-1\leq1$. These are the one-step payment inequalities, with $t_i$ the total response price and $y_i$ the local-response allowance. The climbing witness and tariff are used by the one-step response lemma to produce the finite wing; their nonlinear estimate is a separately tracked input, not inferred from scale geometry.
+
+For occupancy and separation, write $B_i$ for the integer separation scale, $o_i(j)$ for the designated site, $r_i$ for the occupancy bound, and $W_i(j)=\phi_{i-1}\cdots\phi_k w(j)$ for the marched weight. The scale fields give $0<\phi_i,\delta_i$, $1\leq\delta_i\phi_i e^{B_i/128}$, $B_{i+1}^2\leq \ell_iB_i^2$, and $8\leq B_i$, where $\ell_i$ is the integer ratio count. The migration identity is $o_{i+1}=\mathrm{embed}_i\circ o_i$, and $r_i$ is nondecreasing. Occupancy means that each site has at most $r_i$ names mapped to it. The injective embedding maps each fine fiber into the coarse fiber over its parent. Since the occupancy bounds are nondecreasing, both the old fiber and its embedded fine fiber have multiplicity at most $r_i$ at step $i$: the old occupancy is bounded by $r_i$, while the fine occupancy is bounded by the old bound and hence also by $r_i$. Iterating this comparison propagates occupancy from the opened scale through all finer scales. For a mode with at least two names, distinct origins have coarse separation at least $B_i^2$. The scale comparison gives fine separation at least $\ell_i$ times that coarse separation. The split inequality $B_{i+1}^2\leq \ell_iB_i^2$ therefore propagates the required separation forward.
+
+At a given scale, take any mode $I$ of cardinality at least two and any support $X$ containing its origin image. The following tour argument proves the required geometric estimate. Choose a minimizing cover of $X$ by $D=\operatorname{cover}(B_i,X)$ balls of radius $B_i$. In the source connected-halo cover, the centers form a connected graph: two centers are adjacent when their radius-$B_i$ halos meet or contain sites at max-distance at most one. Thus adjacent centers are at max-distance at most $2B_i+1$. Take a spanning tree. Join each tree edge by a unit max-distance path, advancing coordinates simultaneously so its length is at most $2B_i+1$, and traverse each such path out and back. This gives a walk visiting every center with length at most $2(2B_i+1)(D-1)\leq D(4B_i+2)$. Enumerate its unit steps as $R(0),\ldots,R(N)$; successive sites, including intermediate sites that need not be cover centers, are at distance at most one. For each origin $o_i(j)$, choose a covering center and a time $t_j$ at which the walk visits it; that center is within distance $B_i$ of the origin. If $j\ne j'$ are in the mode, their origins are separated by at least $B_i^2$. The triangle inequality and the unit-speed walk give, after ordering $t_j\leq t_{j'}$, $t_j+(B_i^2-2B_i)\leq t_{j'}$. Therefore the buckets of width $B_i^2-2B_i$ containing these times are distinct. Since each time is at most $N$,
+\[
+ (|I|-1)(B_i^2-2B_i)\leq N.
+\]
+For $B_i\geq8$, $B_i^2\leq 4(|I|-1)(B_i^2-2B_i)/|I|$ when $|I|\geq2$. Combining with the tour length and $4B_i+2\leq16B_i$ yields $B_i|I|\leq64D$. The support $X$ can be any support containing the origin image, so in particular
+\[
+ B_i|I|\leq64\,\operatorname{cover}(B_i,X).
+\]
+Set $a_j=W_i(j)$ and $v_j=\delta_iW_{i+1}(j)$. Since $W_{i+1}=\phi_iW_i$, the march and the inequality $1\leq\delta_i\phi_i e^{B_i/128}$ give $a_j\leq v_j e^{B_i/128}$, with both weights positive. Multiplying over $I$ and applying the preceding geometric estimate yields
+\[
+ \prod_{j\in I}a_j\leq\prod_{j\in I}v_j\,
+ \exp\{\operatorname{cover}(B_i,X)/2\}.
+\]
+This is the support-price comparison with cover exponent $1/2$ and multiplier one. Its definition only asks about modes of cardinality at least two, so no singleton or empty-mode case is needed. Together with propagated occupancy, site migration, and positive marched weights, this gives the site/separation package data used downstream.
+For each label $v$, let $A_i$ be the scale-dependent grade dilation, $\tau_i(v)$ its coefficient in the same-history representation, and $\Gamma_i$ the paid column count. Define the paid bond $\Lambda_i(v)=\|A_i\|\,\mathrm{coeffSize}(\tau_i(v))$. The representation supplies the coefficient cone estimate $q_i(v)\leq\Gamma_i\mathrm{coeffSize}(\tau_i(v))$ at each scale, while its dilation step gives $\Lambda_{i+1}(v)\leq\ell_i^d\Gamma_{i+1}\Lambda_i(v)$. The paid scale data give, at every $i$, $0<\phi_i\leq1$, $\phi_i\ell_i^d\Gamma_{i+1}\zeta_i\leq\zeta_{i+1}$, $\zeta_i\Gamma_i\leq1$, $\psi_i\geq0$, and $2\,\mathrm{orbitCost}(\psi_i+2\Gamma_{i+1})\zeta_{i+1}\leq1$. The opened-scale payment is $w_k\Lambda_k(v)\leq\zeta_k$. The marched weights satisfy $w_{i+1}=\phi_iw_i$. Multiplying $\Lambda_{i+1}(v)\leq\ell_i^d\Gamma_{i+1}\Lambda_i(v)$ by $w_{i+1}$ and using the displayed price inequality gives $w_{i+1}\Lambda_{i+1}(v)\leq\zeta_{i+1}$ from $w_i\Lambda_i(v)\leq\zeta_i$; induction proves the bound at all scales. The one-step estimate charges the observable by $b=w_{i+1}$, and $b\leq w_i$, so $b\|A_i\|q_i(v)\leq b\Lambda_i(v)\Gamma_i\leq w_i\Lambda_i(v)\Gamma_i\leq\zeta_i\Gamma_i\leq1$. For the finite-wing increment, put $b=w_{i+1}$ and $r=w_i$. The march has $b\leq r$; the adjacent paid bound and the column budget give exactly
+\[
+2b\|A_{i+1}\|\,\mathrm{orbitCost}\,\mathrm{coeffSize}(\tau_{i+1}(v))(\psi_i+2\Gamma_{i+1})\leq1.
+\]
+These are the two numeric inequalities passed to the scale-step construction. The same-history compatibility bound is a finite set of tales, one for each coefficient in the frame; each tale relates the fine exponential entry and forced profile to the coarser forced profile, with the gauge-door carrying the same local coordinate change. Together with the gauge-door transport law, it yields a finite family of insertions and the two bounds $2w_{i+1}s\leq1$ and $w_{i+1}t\leq1$. The charge estimate above is the first term in that tale budget; the displayed orbit-cost inequality pays the remaining coefficient increment and column contribution.
+
+Here is the per-scale profile construction. Reorient the coefficient by the selected motion and gauge move, and denote the resulting audited coefficient by $Q_i(v)$. Let $F_i(v)$ be its exponential-entry field and let $g_i(v)$ be the sequence of marked activities obtained by applying the grade dilation $A_i$ to its forced activities. For clarity, the coefficient coin is
+\[
+ \chi_i(v;U)= (R_i.\mathrm{eval}(U))F_i(v;U)
+   + e^{E_i(U)}\sum_j N_{i,j}(g_i(v);U),
+\]
+where $E_i$ is the scalar action exponent. The audition identities identify this coin with the oriented density and identify the marked profile with the motion-transported forced profile. The remnant estimate gives a summable dominating function for $Q_i(v).\mathrm{forced}$, hence for $g_i(v)$. Reorientation preserves the normalized prior because it is a composition of a lattice motion and a gauge change; therefore the transformed ordinary field remains integrable. At the terminal level the same identity is the birth coefficient equation $R_N.\mathrm{eval}(U)b_N(v;U)=\chi_N(v;U)$. This proves the profile and coefficient identities used at every scale, rather than only a formal compatibility of names.
+
+At terminal scale, the calibrated response construction uses the actual attainment, the place bound
+\[
+ \|S(\mathrm{axis}_j,0,U)\|\leq t,
+\]
+cover number at most one, and bank inequality $e^{\nu_N+2}\mathfrak c_N(t)\zeta_N\leq u_N$ to produce the response with $w_Na_N\leq u_N$ and the prescribed forced hook. Here $\mathfrak c_N(t)$ is the full coefficient cost at section budget $t$. The terminal response's hook agrees with the profile identity above, so the exact terminal birth coefficient is recovered.
+
+Define the pitch $\pi_i$ by $\pi_i=\nu_i$ for $i<N$ and $\pi_N=\nu_N-3$. Then $\nu_{i+1}-4\leq\pi_{i+1}$ at every transition, including the terminal step. Now descend from scale $N$. The terminal birth identity gives each mode coefficient as the manifest. To check terminal servedness quantitatively, put $c_N=\mathrm{forcedAllowance}_N$ and $C_N=c_N+r_NS_{B_N}u_N$. The terminal receipt gives
+\[
+ ((2B_N+1)^4)C_N\leq3,\qquad e^{C_N}-1\leq1,\qquad \nu_N-3\geq0.
+\]
+The terminal response at label $v$ has price $a_N(v)\leq\|A_N\|e^{\nu_N+2}\mathfrak c_N(t_N)\mathrm{coeffSize}(\mathrm{core}(\tau_N(v)))$. Since core deletion does not increase coefficient size, the paid bond gives $w_N\|A_N\|\mathrm{coeffSize}(\mathrm{core}(\tau_N(v)))\leq\zeta_N$. Hence $w_Na_N(v)\leq e^{\nu_N+2}\mathfrak c_N(t_N)\zeta_N\leq u_N$, by the bank budget. Its toll estimate converts this into the required weighted section bound; the forced response is dominated. More explicitly, the terminal bank price requires $t_N\geq1$ and
+\[
+ e^{\nu_N+2}\,\mathfrak c_N(t_N)\,\zeta_N\leq u_N,
+\]
+and gives the response price estimate stated above. Combining this toll control with the terminal birth expansion, Fourier hook, and the two displayed smallness conditions gives the served representation with exponent $\nu_N-3$, exactly the terminal pitch.
+
+For the induction step, assume integrability and the manifest identity at scale $i+1$. Applying the finite transition kernel preserves integrability by its finite mass bound; applying a mode coefficient before or after integration agrees because coefficient extraction is a continuous linear map on the finite-dimensional polynomial space. Thus the pushed coefficient at scale $i$ is the transition applied to the scale-$i+1$ coefficient, and the exact push identity identifies it with the scale-$i$ manifest. The one-step geometry supplies positive old and new weights, occupancy at both the old and embedded site families with multiplicity at most $r_i$, the parent-site identity, and the support-price comparison. The transported representation is dominated, and its finite-wing response satisfies $2w_{i+1}s\leq1$ and $w_{i+1}t\leq1$. The one-step payment data are
+\[
+ 0<d_i\leq1,\quad \nu_i,\nu_{i+1}\geq100,\quad
+ T_i+e^{T_i}T_i\leq t_i,\quad
+ (2B_i+1)^4(y_i+r_i\,S_{B_i}d_i)\leq\tfrac12,
+ \quad e^{y_i+r_i\,S_{B_i}d_i}-1\leq1,
+\]
+where $T_i=r_iS_{B_{i+1}}d_i+4d_i$ is the prepared insertion price and $t_i$ its response budget. The local-transfer theorem of Section~\ref{sec:local-transfer} applies with these values; it yields servedness at scale $i$. Finite downward induction proves the served-slab statement for every $m\in[k,N]$. The remaining section-compatibility and response-construction receipts used to obtain these displayed one-step inputs are named explicitly in the evidence file; they are part of the conditional input, not consequences of the transfer lemma.
+
+The remaining public-construction obligation is to produce these inputs uniformly on one selected history. The run selector's continuation and terminal full-volume supplier provide levels, doors, weights, and budgets; the same-history section supplier provides adjacent-scale compatibility, place, and bank bounds; and the terminal supplier provides the birth polynomial, transition identities, and Fourier hook. The source trace and exact upstream declaration chain are in the evidence file. Where that chain forwards a receipt rather than proving the uniform bounded-label inequalities from earlier data, that is recorded as an open production obligation. The present derivation is conditional on those explicitly listed quantitative fields, and does not infer them merely from a receipt's name.
+
+The dependency chain is therefore
+\[
+\begin{aligned}
+ \text{funded selected run}
+ &\longrightarrow \text{paid same-history receipts}
+ \longrightarrow \eqref{ex-centered-marked-copy}\\
+ &\longrightarrow \eqref{ex-centered-opened-root}
+ \longrightarrow \text{uniform centered power bound}
+ \longrightarrow \text{continuum extraction}.
+\end{aligned}
+\]
+The compact-bound and local-modulus arguments of Section~\ref{ex-centered-producers} use that final centered estimate. The separate multisource-lane route, whose offered lanes already package terminal births and raw adjacent-scale bounds, is not called along this public dependency chain. In particular, the normalized overlay-density price calculation in the optional multisource draft is not an input here.
+\end{proof}

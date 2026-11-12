@@ -1,0 +1,140 @@
+\section{The first spectral support restriction}
+\label{sec:fourier-support}
+The joint boundary theorem also controls the Fourier support of the
+continued distributions. We use the radian convention
+\[
+ \widehat f(X)=\int e^{-iX\cdot p}f(p)\,dp,\qquad
+ \widehat W(f)=W(\widehat f).
+\]
+Thus the inverse test transform has factor $(2\pi)^{-4n}$. The dot product
+here is the Euclidean pairing of the absolute coordinates, including each
+real time coordinate; no relative-coordinate reduction has been made.
+For a height tuple $y$, write $d(y)=(y_1e_0,\ldots,y_ne_0)$.
+
+\begin{lemma}[Exponential testing identity]\label{lem:exponential-testing}
+For strictly ordered $y$ and every smooth compactly supported frequency test
+$f$,
+\begin{equation}\label{eq:frequency-height}
+ \widehat W_n(v)(f)
+   =\psi_y\big(\widehat{\,e^{d(y)\cdot p}f(p)\,}\big).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set $f_s(p)=e^{s d(y)\cdot p}f(p)$ and $g_s=\widehat f_s$.
+All $f_s$ have the same compact support. Differentiating their explicit
+formula, including all spatial derivatives, shows that
+$s\mapsto f_s$ is differentiable in the Schwartz topology with derivative
+$(d(y)\cdot p)f_s$. To see the topology directly, every weighted derivative
+is supported in that fixed compact set; Taylor's formula in $s$, uniformly
+on it for each derivative, proves convergence in each Schwartz seminorm.
+Continuity of the Fourier transform then gives
+\[
+ g_s'=\widehat{(d(y)\cdot p)f_s}=-D_yg_s.
+\]
+The sign follows by differentiating the kernel $e^{-iX\cdot p}$ and using
+$D_y=-i\partial_y$.
+
+For $s>0$, differentiate $\psi_{sy}(g_s)$. The varying-test step is
+legitimate with the uniform seminorm bound proved in
+Theorem~\ref{thm:joint-boundary}: write a difference quotient as the sum
+of the change in the test at the new height and the change in height with
+the old test fixed. The first part converges to $\psi_{sy}(g_s')$, because
+the test quotient converges in Schwartz space and the family of functionals
+has a common continuous seminorm bound. Lemma~\ref{lem:tested-cr} handles
+the second part. Their sum is
+$\psi_{sy}(-D_yg_s)+\psi_{sy}(D_yg_s)=0$.
+The function is therefore constant on $(0,\infty)$. As $s\downarrow0$,
+$g_s\to\widehat f$ in Schwartz space, and the same uniform bound plus the
+joint boundary limit gives
+$\psi_{sy}(g_s)\to W_n(v)(\widehat f)$. Comparing this with its value
+at $s=1$ proves the formula.
+\end{proof}
+
+\begin{proposition}\label{prop:half-support}
+For every label tuple, the distribution $\widehat W_n(v)$ is supported in
+\[
+ H_n=\left\{p:\sum_{i=1}^n y_i p_i^0\geq0
+                    \text{ for every }y_1\leq\cdots\leq y_n\right\}.
+\]
+Equivalently,
+\[
+ \sum_{i=1}^n p_i^0=0,\qquad
+ \sum_{i=j}^n p_i^0\geq0\quad(2\leq j\leq n).
+\]
+\end{proposition}
+\begin{proof}
+Fix a weakly ordered $y$ and a smooth compactly supported $f$ whose support
+lies in the open set $d(y)\cdot p<-1$. Put
+$y(t)=ty+r$, where $r=(0,1,\ldots,n-1)$ and $t\geq0$.
+These heights are strictly ordered, with all gaps at least one. The
+functions
+\[
+ h_t(p)=e^{d(y(t))\cdot p}f(p)
+\]
+tend to zero in Schwartz space. Indeed, on the fixed compact support every
+derivative is a finite sum of a fixed smooth coefficient times a power of
+$t$ times $e^{t d(y)\cdot p}$, and the latter is bounded by $e^{-t}$.
+All polynomially weighted derivative suprema therefore tend to zero.
+Equation~\eqref{eq:frequency-height} and the gap bound at $k=1$ imply
+\[
+ |\widehat W_n(v)(f)|
+  =|\psi_{y(t)}(\widehat h_t)|
+  \leq C\|\widehat h_t\|_{L^1}\longrightarrow0.
+\]
+Thus the distribution vanishes on that open set. If a point has
+$d(y)\cdot p<0$, rescale $y$ by a positive constant so that its value is
+less than $-1$. A neighborhood of the point then has the same strict
+inequality. This proves support in $H_n$.
+
+To identify $H_n$, the constant height tuples $1$ and $-1$ give zero total
+time momentum. The weakly increasing step tuple equal to zero before $j$
+and one from $j$ onward gives nonnegativity of each suffix sum. Conversely,
+for any weakly ordered $y$,
+\[
+ \sum_i y_i p_i^0
+ =y_1\sum_i p_i^0+
+       \sum_{j=2}^n(y_j-y_{j-1})\sum_{i=j}^n p_i^0\geq0.
+\]
+This proves the equivalence, with the empty and single-slot conventions
+included.
+\end{proof}
+
+\begin{corollary}[Conditional Lorentz improvement]\label{cor:cone-support}
+If the boundary distributions are covariant under the continuous
+finite-dimensional label representation of the proper orthochronous Lorentz
+group, then
+the support of every $\widehat W_n(v)$ lies in
+\[
+ \left\{p:\sum_i p_i=0,\quad \sum_{i=j}^n p_i\in\overline V_+
+                                     \ (2\leq j\leq n)\right\},
+ \qquad \overline V_+=\{p:p^0\geq|\mathbf p|\}.
+\]
+\end{corollary}
+\begin{proof}
+Fourier transformation of the covariance identity changes momenta by the
+dual Lorentz action: this follows by the linear change of variables in the
+test transform, whose Jacobian has absolute value one. The transformed
+labels are again an allowed tuple, so Proposition~\ref{prop:half-support}
+applies after every such dual Lorentz transformation. The inverse-transpose
+action ranges over the same group: for the Minkowski metric matrix $\eta$,
+$\Lambda^{-T}=\eta\Lambda\eta$, which preserves the future cone, and
+this operation is an involution. In particular every transformed
+suffix momentum has nonnegative time coordinate.
+
+A real vector $q$ has this property exactly when $q\in\overline V_+$.
+One implication follows from preservation of the future cone. For the
+other, if $q^0<0$ the identity transformation suffices. If
+$0\leq q^0<|\mathbf q|$, choose a boost in the direction of
+$\mathbf q$ with speed $\beta$ strictly between $q^0/|\mathbf q|$ and
+one; the transformed time coordinate
+$(q^0-\beta|\mathbf q|)/\sqrt{1-\beta^2}$ is negative, a contradiction.
+This proves the suffix assertion. The total momentum has zero time
+coordinate in every frame. The identity frame makes its time coordinate
+zero, and the same boost argument forces its spatial part to vanish.
+\end{proof}
+
+The Lorentz covariance hypothesis in this last corollary is still to be
+proved from the infinitesimal Euclidean rotation identities. The conclusion
+here is support of the distributions in momentum variables; constructing
+the projection-valued momentum measure of the Hilbert-space representation
+is a separate step.

@@ -1,0 +1,137 @@
+\section{The construction problem and the order of its limits}
+\label{ex-statement}
+
+The aim is to construct a relativistic field theory from finite-dimensional
+Wilson integrals. There are two limiting operations. First the lattice spacing
+tends to zero while the physical period stays fixed. Then the period tends to
+infinity. The observables and bare action coefficients must be chosen coherently
+before either operation: changing the family in response to a requested sequence
+of periods would give a weaker statement.
+
+We assume familiarity with finite-dimensional Lie groups, probability Haar
+measure on compact groups, Lebesgue integration and dominated convergence,
+and elementary Hilbert-space theory. The specific compactness, quotient and
+operator arguments used below are supplied where they enter the construction.
+
+Fix a closed subgroup \(G\subset U(r_G)\), with its specified faithful matrix
+representation. Its real Lie algebra is
+\[
+ \mathfrak g=\{X\in M_{r_G}(\mathbb C):\exp(tX)\in G
+                       \text{ for every }t\in\mathbb R\}.
+\]
+We assume that \(\mathfrak g\) is nonabelian and simple: its only real
+subspaces invariant under every \(\operatorname{ad}X\), \(X\in\mathfrak g\),
+are \(0\) and \(\mathfrak g\). Coordinates on \(\mathbb R^4\) are written
+\(x=(\boldsymbol x,t)\), with time last. The Minkowski form is
+\(t^2-|\boldsymbol x|^2\), and the closed forward cone is
+\(\overline V_+=\{(\boldsymbol p,E):|\boldsymbol p|\le E\}\).
+
+The lattice family consists of strictly increasing positive integer sequences
+\(P_p\) and \(D_N\), a spacing \(a_N=D_N^{-1}\), real coefficients
+\(\beta_{N,p}\), and local gauge-invariant insertion functions
+\(O_{N,p,v}(x;U)\) indexed by tokens \(v\). The periodic lattice has
+\(P_pD_N\) sites along each axis and physical period \(P_p\).
+Section~\ref{ex-lattice} describes its Wilson probability measure and moments.
+Each insertion is continuous in \(U\). For each token a single finite
+integer-offset stencil controls the insertion at every spacing, period and
+placement. The running condition is
+\begin{equation}\label{ex-running-input}
+ \exists\sigma>0\quad\forall\varepsilon>0\quad\exists N_0\quad
+ \forall N\ge N_0\quad\forall p:\qquad
+ \left|\frac{\beta_{N,p}}{\log(a_N^{-1})}-\sigma\right|<\varepsilon.
+\end{equation}
+In particular, the choice of \(N_0\) is uniform in the period index.
+
+Let \(\operatorname{Conf}_n(\mathbb R^4)\) be the set of ordered
+\(n\)-tuples of pairwise distinct points. A separated test is a smooth
+complex function with compact support in this set, extended by zero outside
+it. For insertion tokens \(\boldsymbol v=(v_1,\ldots,v_n)\), write
+\(M_{N,p}(\boldsymbol v;\boldsymbol x)\) for their Wilson moment and put
+\begin{equation}\label{ex-smearing}
+ W_{N,p}(\boldsymbol v;f)=a_N^{4n}
+ \sum_{\boldsymbol x\in\Lambda_{N,p}^n}
+ f(a_N\boldsymbol x)M_{N,p}(\boldsymbol v;\boldsymbol x).
+\end{equation}
+Here the coordinates of \(\boldsymbol x\) are chosen in the centered
+fundamental cell. A period is suitable for \(f\) if its support lies strictly
+inside that physical cell in every coordinate.
+
+The limiting data have several related components. For every integer grade
+\(d\ge0\) there is a finite-dimensional complex space \(\mathcal F_d\).
+It has a complex-linear injection into a common field-label space; every label is
+represented at some grade. Tokens map onto the disjoint union
+\(\coprod_d\mathcal F_d\). A compact metric space \(X\), a probability
+measure \(\nu\) of full support, and a selected character \(\chi_*\in X\)
+describe the phases. For graded fields \(\boldsymbol A\), let
+\(S^{\chi}_{\boldsymbol A}(\boldsymbol x)\) and
+\(S^{\mathrm{mix}}_{\boldsymbol A}(\boldsymbol x)\) denote the phase and
+mixed separated correlations. They are smooth on configuration space,
+permutation symmetric, and continuous in \(\chi\), with
+\begin{equation}\label{ex-mixture}
+ S^{\mathrm{mix}}_{\boldsymbol A}(\boldsymbol x)
+   =\int_X S^{\chi}_{\boldsymbol A}(\boldsymbol x)\,d\nu(\chi).
+\end{equation}
+The mixed correlations are the Wilson limits. The selected correlations
+are the Euclidean correlations to be continued into the reconstructed theory.
+These two roles should be kept distinct even when the phase space has only
+one point.
+
+\begin{definition}[Reconstructed selected theory]\label{ex-reconstructed}
+The selected theory consists of a complex Hilbert space \(\mathcal H\),
+a normalized vacuum \(\Omega\), a common dense invariant domain
+\(\mathcal D\) containing \(\Omega\), and complex-linear fields
+\(\Phi(A,f):\mathcal D\to\mathcal D\), linear separately in the label
+and test, where
+\(f\in\mathcal S(\mathbb R^4)\). For fixed \(A,\psi\), the map
+\(f\mapsto\Phi(A,f)\psi\) is continuous in the Schwartz topology.
+The domain is the span of field words applied to the vacuum. There is a
+conjugate-linear label adjoint \(A\mapsto A^*\) with
+\[
+ \langle\Phi(A,f)\psi,\eta\rangle
+   =\langle\psi,\Phi(A^*,\overline f)\eta\rangle.
+\]
+A strongly continuous unitary representation of the proper orthochronous
+Poincar\'e group preserves the domain and the vacuum, and transforms fields
+with the specified action on labels and the ordinary affine pullback of tests.
+Its translation spectral measure is supported in \(\overline V_+\), and
+every translation-invariant vector is a scalar multiple of \(\Omega\).
+Fields commute on \(\mathcal D\) when their test supports are spacelike
+separated. Every nonzero label acts nontrivially for some test, and at least
+one smeared field is nonzero.
+
+For fixed spatial positions the selected correlations have a holomorphic
+continuation \(F_{\boldsymbol A}(\boldsymbol z;\boldsymbol x)\) on
+\(\operatorname{Im}z_1<\cdots<\operatorname{Im}z_n\). At strictly ordered
+Euclidean times its value at \(z_i=it_i\) is
+\(S^{\chi_*}_{\boldsymbol A}((\boldsymbol x_i,t_i)_i)\).
+For every strictly increasing real height vector \(\boldsymbol h\) and
+every tuple of Schwartz tests, its integrals on
+\(z_i=t_i+i\epsilon h_i\) converge as \(\epsilon\downarrow0\) to the
+corresponding vacuum expectation of the smeared fields.
+\end{definition}
+
+The existence target is one regular Wilson family such that, for every
+strictly increasing period-index sequence \(p(k)\), a strictly increasing
+\(q(k)\) and one hierarchy with the preceding properties can be found.
+For each separated test there are row limits \(w_p(\boldsymbol v;f)\)
+satisfying
+\begin{align}
+ \lim_{N\to\infty}W_{N,p}(\boldsymbol v;f)
+   &=w_p(\boldsymbol v;f)
+       &&\text{at each suitable fixed }p,\label{ex-row-target}\\
+ \lim_{k\to\infty}w_{p(q(k))}(\boldsymbol v;f)
+   &=\int f(\boldsymbol x)
+           S^{\mathrm{mix}}_{\boldsymbol A}(\boldsymbol x)\,d\boldsymbol x,
+       \label{ex-volume-target}
+\end{align}
+where \(A_i\) is the class of \(v_i\). Suitability holds eventually
+along the selected period sequence. The same \(q\) and hierarchy work for
+all arities, tokens and tests. The hierarchy may depend on the requested
+sequence; the Wilson family may not.
+
+The full endpoint also specifies a common operator-product expansion and a
+short-distance trace test, described in Section~\ref{ex-assembly}. These
+are additional obligations on the same hierarchy. The target concerns a
+theory of the constructed gauge-invariant observables; identifying a particular
+label with a separately prescribed physical observable requires its own
+construction argument.

@@ -1,0 +1,285 @@
+\section{Several marked insertions on the restarted history}
+\label{sec:allarity-planted-compiler}
+
+We keep the actual restarted density from
+Section~\ref{sec:restarted-rank-history}. Its additive remainder is
+removed only in the auxiliary unmarked normalization. The marked integral
+itself must retain that remainder. We first prove the finite algebra that
+identifies all the selected insertion coefficients, then explain this
+mixed normalization and the extra local price it requires.
+
+\subsection{Selecting a cell in the marker algebra}
+
+For a finite set $V$, let
+\[
+ \mathscr A_V=\mathbb C[z_v:v\in V]/(z_v^2:v\in V).
+\]
+Its basis consists of $z_A=\prod_{v\in A}z_v$, $A\subseteq V$.
+Products satisfy $z_Az_B=z_{A\cup B}$ for disjoint sets and are zero
+otherwise. If $F$ has zero constant coefficient, define
+$\exp_*F=\sum_{j=0}^{|V|}F^j/j!$. Every product of more than $|V|$
+nonconstant monomials has a repeated variable, so it vanishes. Hence
+this finite exponential satisfies the usual addition formula for
+commuting elements of zero constant coefficient, by the binomial theorem.
+In particular
+\begin{equation}\label{eq:planted-exp}
+ \prod_\alpha(1+y_\alpha z_{A_\alpha})
+       =\exp_*\left(\sum_\alpha y_\alpha z_{A_\alpha}\right)
+       \quad(A_\alpha\ne\varnothing).
+\end{equation}
+There is no disjointness assumption on the $A_\alpha$: their overlapping
+products vanish on both sides.
+
+For $T\subseteq V$, define $\pi_T$ by setting $z_v=0$ for $v\notin T$.
+Thus $\pi_T(\sum_A c_Az_A)=\sum_{A\subseteq T}c_Az_A$.
+It is an algebra homomorphism, and therefore commutes with $\exp_*$.
+For a finite cell set $\mathcal C$ and mark set $J$, put
+$V=\mathcal C\times J$. The cell embedding
+$\iota_c:\mathscr A_J\to\mathscr A_V$ sends $z_j$ to $z_{(c,j)}$;
+it too is an algebra homomorphism.
+
+Fix one coarse cell $c$ and a selected set $T\subseteq\{c\}\times J$.
+The incoming insertion pieces are indexed by pairs $(c',\alpha)$.
+Each piece has a nonempty marker support $A_{c',\alpha}$ lying in
+$\{c'\}\times J$. Its value in a particular sector, forest, tag and
+Gaussian coordinate is $y_{c',\alpha}$. The spatial geometry selects
+exactly those pieces for which
+$A_{c,\alpha}\subseteq T$; write $\mathcal I_T$ for this selected
+index set and write $B_\alpha\subseteq J$ for their marker supports
+with the cell coordinate removed. Define the planted polynomial
+\[
+             P_T=\sum_{\alpha\in\mathcal I_T}
+                         y_{c,\alpha}z_{B_\alpha}.
+\]
+Applying $\pi_T$ to \eqref{eq:planted-exp} proves
+\begin{equation}\label{eq:planted-selection}
+ \pi_T\prod_{c',\alpha}(1+y_{c',\alpha}z_{A_{c',\alpha}})
+           =\pi_T\iota_c(\exp_*P_T).
+\end{equation}
+To check the selection explicitly, a piece from $c'\ne c$ has at least
+one marker outside $T$ and is killed. A piece from $c$ is retained
+exactly when its entire marker support is contained in $T$. Because
+$\pi_T$ is multiplicative, a product containing a killed factor cannot
+contribute through a different coefficient. This proves the identity
+at all orders simultaneously.
+
+The spatially planted value is the same masked field value as in the
+left side. Write it as $\Gamma_\alpha(\xi)h_\alpha(U(\xi))$, where
+$0\le\Gamma_\alpha\le1$ is its local cutoff. On the region where
+$\Gamma_\alpha>0$, the chart's healthy-field condition makes the original
+mask equal to one on the full inspected support. Where
+$\Gamma_\alpha=0$, both products are zero. Consequently this formula
+agrees everywhere with
+$\Gamma_\alpha\operatorname{masked}(h_\alpha)(U(\xi))$.
+The sector and tag are fixed during this verification. They are not
+chosen separately for the different readers.
+
+All linear maps on $\mathscr A_V$ are continuous because this space is
+finite dimensional. Hence an integrable polynomial-valued function can
+be integrated coefficientwise, and its integral commutes with $\pi_T$
+and $\iota_c$. If $\nu_t$ are the finitely many sector/tag measures and
+$\lambda_t$ their scalar weights, \eqref{eq:planted-selection} gives
+\begin{equation}\label{eq:planted-integral}
+ \sum_t\lambda_t\int
+       \pi_T\prod_{c',\alpha}(1+y_{c',\alpha,t}z_{A_{c',\alpha}})
+          \,d\nu_t
+ =\pi_T\iota_c\left(\sum_t\lambda_t\int\exp_*P_{T,t}\,d\nu_t\right).
+\end{equation}
+Here integrability is provided by the common positive marker weights
+and the paid product envelopes: the absolute value of each coefficient
+is bounded by its weighted polynomial norm divided by its positive
+monomial weight. The Gaussian/Haar envelope bounds that norm by an
+integrable function. Thus no interchange of a merely formal infinite
+series is used in \eqref{eq:planted-integral}.
+
+\subsection{The marked density and its three kinds of factors}
+
+Let $P$ denote the fine representation and $Q$ the coarse one. Write
+$\mathcal K$ for a finite family of lifted background packets, with
+full spatial supports $X_b$ and fine flag inventories $F_b$. Its
+unmarked coefficients reproduce the activities of $P$ at each activity
+address. This addresswise identity is stronger than equality of their
+summed gases. For regular insertion pieces $h_\alpha$ with nonempty
+marker supports, the exact polynomial density is
+\begin{equation}\label{eq:planted-density}
+ D_P(U)=e^{\operatorname{exponent}_P(U)}
+    \exp_*\left(\sum_\alpha z_{A_\alpha}
+                    \operatorname{masked}(h_\alpha)(U)\right)
+    \sum_{B\ {
+m admissible}}\prod_{b\in B}K_b(U).
+\end{equation}
+Admissibility requires pairwise disjoint full supports and the exact
+identity $\bigcup_{b\in B}F_b=\operatorname{flags}_P(U)$.
+It is not enough to require just disjoint inventories.
+
+Fix the actual coarse configuration, positioned chart, forest, tag and
+Gaussian coordinate. The unmarked chart expansion, including its Haar
+Jacobian and Gaussian normalization, has the following sliced form.
+For each fine flag set $F$,
+\begin{equation}\label{eq:planted-body}
+ \mathbf1_{\{\operatorname{flags}_P(U)=F\}}
+          J(U)e^{\operatorname{exponent}_P(U)}
+   =\Lambda\sum_{A\ {
+m compatible}(F)}\prod_{a\in A}p_a.
+\end{equation}
+Here $J$ denotes the full scalar chart factor, and $\Lambda$ is the
+same positive loading used by the unmarked construction. Each $p_a$
+has a fixed coarse support, a fine inventory and a coarse inventory.
+Compatibility means disjoint coarse supports, fine inventory union $F$,
+coarse inventory union equal to the coarse flags, and the sector key
+specified by those same packets. These are precisely the data of the
+unmarked sector expansion of Section~\ref{sec:gaussian-reassembly}.
+
+To obtain the marked identity, first fix a background packet family
+$B$. If its full supports overlap its contribution is zero. Otherwise
+multiply \eqref{eq:planted-body}, with $F=\bigcup_{b\in B}F_b$, by
+$\prod_{b\in B}K_b$ and by the insertion product
+\eqref{eq:planted-exp}. The indicator on the left imposes exactly the
+background flag test in \eqref{eq:planted-density}. Expand the insertion
+product as a sum over its subsets. On the right we now have three
+independent kinds of factors: scalar body packets $p_a$, background
+packets $K_b$, and marked insertion pieces. Index their union by the
+disjoint union of these three alphabets. This is a bijection between
+the three subset choices and the subsets of the union alphabet.
+The flag and sector tests are unchanged. If a marker is used twice,
+the corresponding product is zero in $\mathscr A_V$, exactly as on
+the expanded left side. Summing over $B$ proves the full marked
+chart identity at every coefficient.
+
+Integrate with the common Gaussian/Haar product envelopes, sum the
+sector partition and average the tags. The coefficientwise argument of
+Section~\ref{sec:ex-lattice-rg-multisource} then applies to this same
+three-alphabet expansion. It gives the pushed density
+$\mathcal T D_P$ represented by the resulting coarse polynomial
+activities and their regular exponential. In particular this step does
+not follow by repeating the one-address affine argument of
+Section~\ref{sec:marked-block-integral}; that argument alone has no
+mixed higher coefficients.
+
+\subsection{Restoring the additive remainder before normalization}
+
+Put $P^0=\operatorname{white}(P)$, so that its additive remainder has
+been deleted while its coupling, path, masks and forced activities are
+unchanged. In the notation of Section~\ref{sec:restarted-rank-history},
+$P=e^{-E}P^0$. On the actual chart the additional exponent is a sum
+$\sum_i f_i=-E(U)$ over local coarse supports. Suppose its support
+prices $b_i\ge0$ satisfy $|f_i|\le b_i$ and have anchored weighted
+sum at most $d\le1$. The functions $f_i$ are real-valued. Let $M_i$ be the real-valued
+unperturbed local exponents,
+with
+\[
+ |e^{M_i}-1|\le w_i,\qquad w_i\ge0,
+ \qquad\hbox{anchored weighted sum of }w_i\le e\le1.
+\]
+The weights are at least one, so individually $b_i\le d$ and
+$w_i\le e$. Hence $e^{M_i}\le2$ and
+$|e^{f_i}-1|\le2|f_i|\le2b_i$. The latter elementary inequality
+holds for real $|f_i|\le1$, by convexity of the exponential on
+$[0,1]$ and $e-1<2$, and by $1-e^{-t}\le t$ for $t\ge0$.
+It follows that
+\[
+ |e^{M_i+f_i}-1|
+ \le |e^{M_i}-1|+e^{M_i}|e^{f_i}-1|
+ \le w_i+4b_i.
+\]
+Thus the perturbed auxiliary price is at most $e+4d$. The base Gaussian
+quadratic form and the scalar loading have not changed. This proves
+\eqref{eq:planted-body} for $P$ itself from the neutral chart expansion:
+add $f_i$ to the same local exponents and use their exact sum $-E(U)$.
+The full-support locality of these terms was established in the
+restarted-history construction, including the final flag tests.
+
+For the actual scale purchases, write $\omega$ for the permitted
+perturbation price. The neutral auxiliary price is at most $\omega$
+and $d\le\omega$, so the preceding bound is at most $5\omega$ and
+in particular at most the reserved $6\omega$. The two other elementary
+letter families have anchored prices at most $u^{-1/2}$ each, where
+$u$ is the retimed coupling scale. Since $u^{-1/2}\le\omega$, their
+combined price is at most $8\omega$. The background large-field
+letters retain the decay $\exp(-\alpha\,\mathrm{hot}^2\,\mathrm{shares})$;
+the separate purchase $2a_{\rm coast}\le\alpha/4$ pays their forced
+inflation. With the reserved line multiplier $L_0$, the integrated
+cluster bound is therefore purchased through
+\[
+                 L_0(e^{8\omega}-1)\le\delta_{\rm step}.
+\]
+This is the local unmarked price used by the restarted recurrence.
+The fixed stage constants and Gaussian envelopes in this calculation
+are those of the neutral compiler at the same physical parameters.
+The perturbation estimate does not assert derivative bounds for $E$.
+
+There are now two distinct, compatible uses of the representations.
+The body identity \eqref{eq:planted-body} is for $P$, including $E$.
+The unmarked auxiliary alphabet consists of these \emph{same corrected}
+body packets $p_a$, together with the archived background packets of $P^0$.
+It does not use the former neutral body packets. Its loading is the same
+$\Lambda$ as in \eqref{eq:planted-body}.
+
+The normalization needed here has two precise parts. Write $Z_j$ for
+its zero-marker regular components. For every deleted spatial support
+$D$ and every coarse configuration $V$, require the identity
+\begin{equation}\label{eq:planted-holes}
+ \Lambda(V)\,\mathcal G_{Z;D}(V)
+ =e^{\operatorname{exponent}_Q(V)}
+        \prod_a(1+p_a^{\rm pay}(V))
+        \prod_{b:\,X_b^{\rm hole}\cap D\ne\varnothing}
+                    (1+h_b(V)).
+\end{equation}
+Here $\mathcal G_{Z;D}$ is the compatible gas of the $Z_j$ whose
+full supports are disjoint from $D$. The factors $p_a^{\rm pay}$ and
+$h_b$ are the fixed boundary and hole corrections of the unmarked
+regrouping, with their original masks. Secondly, the unmarked coarse
+forced family must embed into the forced components of this alphabet,
+with identical values, supports and inventories, and must exhaust its
+zero-marker forced components. The forced family, together with these
+same hole and boundary correction factors, must reproduce the archived
+activity of $Q$ at each activity address, with its full support and
+flag inventory. This addresswise identity is required before applying
+the exclusion regrouping. These are the all-deleted-support
+identity and the forced-family embedding supplied by the unmarked
+forest and exclusion construction. They must be established for the
+corrected $p_a$ and this actual coarse $Q$; equality of the two archived
+fine backgrounds alone does not establish them.
+
+We verify that these two statements, once available, pass to the full
+marked alphabet. First coalesce background packets with the same
+address and marker mode. Their zero-marker values are exactly the
+archived activities at that address, by the addresswise background
+identity. This embeds the entire unmarked alphabet into the full
+alphabet, preserving values, full supports, inventories and sector
+keys. Every remaining elementary insertion has a nonempty marker
+support. If a full connected component has empty marker support,
+every elementary factor in it must therefore have empty marker
+support: its marker support is their union. Hence it comes from the
+unmarked alphabet. Conversely every unmarked component has the same
+connectedness and eligibility tests after the embedding. This is a
+bijection of zero-marker components preserving their full supports.
+It restricts to the components disjoint from any given $D$. Thus
+$\mathcal G_{Z;D}$ is unchanged, and \eqref{eq:planted-holes} holds
+for the full alphabet at every deleted support. The same component
+bijection transports the forced-family embedding and its exhaustion
+property.
+
+Finally fix a compatible marked forced family and let $D$ be the union
+of its full supports. Its residual zero-marker gas is precisely
+$\mathcal G_{Z;D}$. Substitute \eqref{eq:planted-holes}. A hole factor
+occurs exactly when its support meets at least one member of that forced
+family, since $D$ is their union. Expanding these factors and regrouping
+by their incident forced components is the weight-preserving exclusion
+bijection of Section~\ref{sec:forced-exclusion}. The resulting polynomial
+has exponent $\operatorname{exponent}_Q$ and the actual coarse archived
+background, by the transported forced-family embedding. Summing over the
+marked forced families therefore represents $\mathcal T D_P$ with this
+coarse vacuum normalization. This uses \eqref{eq:planted-body} for $P$
+and \eqref{eq:planted-holes} for the corrected auxiliary alphabet; it
+never substitutes $\mathcal T D_{P^0}$ for the marked integral.
+
+This proves the finite algebra and the additive-remainder correction
+needed by the all-order compiler. Its quantitative marked use still
+requires the common Gaussian reader estimates and their cumulant
+approximation, the day and night marker prices, and the selected
+spatial support bounds. In particular the cell selection
+\eqref{eq:planted-integral} must be applied with the same readers and
+same sector measures as the body expansion, at the purchased slice
+radius. Those analytic and geometric estimates are separate from the
+polynomial identities proved here.

@@ -1,0 +1,279 @@
+\section{Stability in the common support dictionary}
+\label{sec:local-source-stability}
+The fixed-scale contraction argument needs convergence of a one-step
+map on each fixed input. Its output is a countable list of local
+terms. Pointwise convergence of the terms and boundedness of their
+total price would not be enough: price could escape to later addresses.
+The needed extra property is uniform smallness of the tails. We prove
+the summation and local-subtraction argument with this property explicit.
+The supports, thresholds and address encodings are fixed throughout.
+
+\subsection{Uniform tails and products}
+For nonnegative numbers $a_{N,i}$, indexed by a countable set $I$,
+say that their tails are uniformly small if
+\[
+ \sup_N\sum_{i\in I}a_{N,i}<\infty,
+ \qquad
+ \forall\epsilon>0\ \exists I_0\subset I\text{ finite}:\quad
+ \sup_N\sum_{i\notin I_0}a_{N,i}<\epsilon.
+\]
+The definition is unchanged if the tail sums are replaced by sums
+over arbitrary finite subsets of $I\setminus I_0$. Indeed all
+summands are nonnegative. Domination, addition and multiplication
+by a fixed nonnegative constant preserve this property. Extension
+by zero through a fixed injection preserves it as well.
+
+It also passes to finite-subset products. If
+$\sum_i a_{N,i}\le C$, set $A_{N,S}=\prod_{i\in S}a_{N,i}$
+for finite subsets $S\subset I$, including the empty subset.
+For every finite $J\subset I$,
+\[
+ \sum_{S\subset J}A_{N,S}
+       =\prod_{i\in J}(1+a_{N,i})
+       \le\exp\Bigl(\sum_{i\in J}a_{N,i}\Bigr)\le e^C.
+\]
+This bounds the entire sum by monotone passage through finite $J$.
+If $S$ is not contained in $I_0$, choose one of its elements outside
+$I_0$ and overcount by all such choices. Removing the chosen element
+gives
+\[
+ \sum_{S\not\subset I_0}A_{N,S}
+ \le\sum_{i\notin I_0}a_{N,i}
+                   \sum_{T\subset I\setminus\{i\}}A_{N,T}
+ \le e^C\sum_{i\notin I_0}a_{N,i}.
+\]
+Thus the finite collection of subsets of $I_0$ captures all but
+an arbitrarily small price. Compatibility restrictions only
+remove nonnegative terms and preserve the conclusion. This is
+the tail estimate for the finite-subset products in the gas.
+
+There is a corresponding assertion for connected clusters, where
+indices may repeat. Suppose the elementary prices $a_{N,i}$ have
+uniformly small tails and obey the rooted cluster criterion with
+one fixed margin $\rho<1$. The rooted tree bound controls the
+total price of clusters of length at least $k+1$ by
+\[
+                         V\gamma\frac{\rho^k}{1-\rho},
+\]
+where $V$ is the number of sites. Every cluster has a nonempty
+support, so summing the rooted bounds over sites bounds the
+unrooted sum. Choose $k$ making this bound small. At each of
+the finitely many remaining lengths $r\le k$, the absolute
+connected-graph coefficient divided by $r!$ has a finite maximum:
+there are finitely many graphs on $r$ labeled vertices. The
+remaining price is bounded by a constant times a product of
+$r$ elementary prices. The total price of ordered tuples with
+some entry outside $I_0$ is at most
+\[
+                 r C^{r-1}\sum_{i\notin I_0}a_{N,i},
+                 \qquad C=\sup_N\sum_i a_{N,i}.
+\]
+Choose $I_0$ to make these finitely many bounds small. The finite
+set of words of length at most $k$ in $I_0$ then captures all
+but an arbitrarily small cluster price. This proves uniform
+tails for the connected expansion.
+
+For marked clusters the margin is obtained as follows. Suppose
+the unmarked criterion has margin $1/2$ and rooted allowance
+$\gamma>0$, and the marked elementary prices $v_{N,i}$ have
+uniformly small tails and total bound $B$. Let $M$ bound the
+support weight in the rooted criterion on this finite torus.
+Take
+\[
+                     \delta=\frac{\gamma}{2(1+MB)}>0.
+\]
+The additional rooted price of $\delta v$ is at most
+$\delta MB\le\gamma/2$. Thus $a+\delta v$ satisfies the
+criterion with allowance $3\gamma/2$. The degree price is linear in
+this rooted allowance: its original bound is
+$\operatorname{degreePrice}(\gamma)\le1/2$, and hence
+$\operatorname{degreePrice}(3\gamma/2)
+=(3/2)\operatorname{degreePrice}(\gamma)\le3/4$.
+For each word, expansion of the product gives
+\[
+ \sum_{j=1}^r v_{N,i_j}\prod_{h\ne j}a_{N,i_h}
+       \le\delta^{-1}\prod_{j=1}^r
+                              (a_{N,i_j}+\delta v_{N,i_j}).
+\]
+The right side includes all terms with exactly one marked factor
+and has nonnegative remaining terms. At derivative order $j$,
+the product rule costs at most $(r+1)^j\le2^{jr}$; absorb $2^j$
+into each elementary price before this comparison. The paid
+derivative criterion supplies these enlarged prices. An unmarked
+price may be replaced by the smaller of its uniform-tail majorant
+and its rooted-criterion majorant, preserving both bounds.
+The cluster argument just proved then gives uniform tails for
+the differentiated logarithm, not only a bound on its total price.
+
+Let $u_{N,i},v_{N,i}$ take values in a Banach space, and suppose
+their norms have uniformly small tails. If
+$u_{N,i}-v_{N,i}\to0$ for every fixed $i$, then
+\[
+                 \sum_i u_{N,i}-\sum_i v_{N,i}\longrightarrow0.
+\tag{$\dagger$}\label{eq:source-tight-sum}
+\]
+To prove it, choose a common finite $I_0$ making each norm tail
+less than $\epsilon/4$. The difference of the two sums over
+$I_0$ tends to zero, and is eventually less than $\epsilon/2$.
+The triangle inequality proves the assertion. Absolute convergence
+justifies the subtraction. The same proof applies to supremum norms
+of bounded functions and to norms of their fixed-order derivatives.
+
+One useful form of uniform convergence does not require a compact
+configuration space. If for every sequence of configurations $U_N$
+one has $f_N(U_N)-g_N(U_N)\to0$, then
+\[
+                    \sup_U|f_N(U)-g_N(U)|\longrightarrow0.
+\]
+Otherwise some subsequence would have supremum at least $\epsilon$;
+choose on it points with difference greater than $\epsilon/2$,
+and complete them to a sequence arbitrarily. This contradicts
+the hypothesis. The same selection argument applies to derivative
+evaluations along normalized local charts. It is this uniform
+form, rather than pointwise convergence at each fixed configuration,
+that is needed for moving field insertions.
+
+\subsection{From entrywise convergence to a small remainder price}
+At the fixed scale let $X_i$ be the regular supports and $Y_i$
+the forced supports. Write $M(X)t$ for the support price of an
+amplitude $t\ge0$. Since the torus is finite, it has finitely many
+supports, and
+\[
+                         M_*:=\max_X M(X)<\infty.
+\]
+The price is linear in the amplitude. Suppose two regular lists
+$f_{N,i},g_{N,i}$ have derivative majorants with uniformly small
+tails, and for every fixed $i$ the difference has arbitrarily
+small derivative majorant for sufficiently large $N$.
+For any $\epsilon>0$, choose $I_0$ so that the sum of the two
+tail majorants is below $\epsilon/(2M_*)$. On $I_0$ use the
+common eventual majorant
+\[
+                     \frac{\epsilon}{2M_*(|I_0|+1)}.
+\]
+Outside $I_0$ use the sum of the original two majorants.
+The resulting majorants bound every difference, and their total
+support price is at most $\epsilon$. No supremum over infinitely
+many convergence thresholds has been taken.
+
+For forced lists use the identical argument with uniform value
+bounds. If their contribution to the remainder norm is divided
+by $\kappa>0$, make their total unnormalized support price at
+most $\kappa\epsilon/2$, and the regular price at most
+$\epsilon/2$. Their sum has remainder seminorm at most
+$\epsilon$. This proves smallness in the full remainder space
+of Section~\ref{sec:fixed-rung-convergence}. In particular it
+does not identify arrays merely because they have the same gas
+evaluation.
+
+\subsection{Local subtraction preserves this convergence}
+Let $f_{N,i}$ be a regular local term on $X_i$. Its subtraction
+uses the fixed linear jet projection $\pi_i$, the fixed local
+section $\sigma_i$, and the enlarged support $\widehat X_i$:
+\[
+ p_{N,i}=\pi_i f_{N,i},\qquad
+ r_{N,i}=f_{N,i}-\sigma_i p_{N,i}.
+\]
+The mask identity leaves the forced rebate
+\[
+ b_{N,i}
+   =\chi_{X_i}f_{N,i}-\sigma_i p_{N,i}
+                                  -\chi_{\widehat X_i}r_{N,i}.
+\]
+At this fixed scale the already established projection and local
+section estimates bound each of these three linear maps by a
+fixed constant times its input derivative majorant. Subtracting
+two inputs gives exactly the same maps of their difference:
+\[
+ \Delta p_i=\pi_i\Delta f_i,\quad
+ \Delta r_i=\Delta f_i-\sigma_i\pi_i\Delta f_i,\quad
+ \Delta b_i=\chi_{X_i}\Delta f_i-\sigma_i\pi_i\Delta f_i
+                   -\chi_{\widehat X_i}\Delta r_i.
+\]
+Thus the projected coefficients converge by
+\eqref{eq:source-tight-sum}, and the residual and rebate lists
+retain the required small-tail bounds and entrywise convergence.
+Masks may be discontinuous at the threshold. They are identical
+on the two sides and have modulus at most one, so they do not
+create a continuity assumption at that threshold.
+
+The forced correction also contains products with the background
+activities. On a fixed support--inventory profile it is a sum of
+terms
+\[
+ b_{N,i}(U)\,1_{\mathcal E(i,S,U)}
+                            \prod_{j\in S}K_{N,j}(U).
+\]
+Here $\mathcal E$ is the fixed compatibility and flag condition.
+For two backgrounds its indicator is the same: the address
+dictionary, supports, inventory and threshold are the same.
+For a fixed finite $S$, the identity
+\[
+ \prod_{j\in S}u_j-\prod_{j\in S}v_j
+   =\sum_{j\in S}(u_j-v_j)
+          \prod_{k<j}u_k\prod_{k>j}v_k
+\]
+in any chosen ordering shows convergence of the product when
+each activity converges uniformly and is uniformly bounded.
+The product-tail estimate above and
+\eqref{eq:source-tight-sum} justify summing over $S$. Multiplying
+by the convergent rebate, summing the finitely many profiles,
+and using the fixed extension of each profile to its address
+therefore preserves convergence. The same argument applies to
+the raw forced output before the rebate is added.
+
+Consequently local subtraction, barcode grouping, addition of
+the background hook, and placement in the common dictionary
+preserve convergence of coefficients and smallness of the full
+remainder difference. These are exact operations on the common
+representation. Changing its forced dictionary midway would
+invalidate the product and mask comparisons.
+
+\subsection{Summing the fixed input columns}
+For one fixed input remainder, its regular and forced prices
+are summable. The selected one-step expansion has one primary
+column and one column for each regular and forced input entry.
+The primary column has a single fixed bound; the other columns
+have bounds proportional to these summable input prices, with
+the forced price divided by its fine-scale $\kappa$.
+Thus there is a summable sequence $w_i$ bounding, uniformly in
+terminal cutoff, both the coefficient norm and remainder price
+of output column $i$.
+
+Suppose corresponding individual output columns have the same
+regular supports, convergent coefficient differences, and
+remainder differences tending to zero in the preceding sense.
+Choose a finite set of columns outside which $\sum_i2w_i$
+is less than $\epsilon/2$. On that finite set take a common
+convergence threshold and sum the small coefficient and remainder
+prices. Outside it use $2w_i$. This proves convergence after
+all columns have been merged. The unit column is constant and
+requires no limiting argument. For the nonunit primary column
+the fixed input function is its local-section basis element.
+For regular columns it is the fixed masked regular input; for
+forced columns it is the fixed profile of the input array.
+Hence each column comparison uses the same inserted function
+on the two histories, although its background changes.
+
+Signed motions and complex conjugation are bounded linear or
+real-linear maps on these data, with the fixed motion prices
+already proved. The finite motion average therefore preserves
+the convergence. Applying the fixed coefficient pencil and
+the common profile capture gives convergence of the actual
+one-step coefficient map and its recorded remainder on every
+fixed coefficient vector. The coefficient space is finite
+dimensional; comparison on its finite basis, followed by the
+triangle inequality, gives operator-norm convergence. This is
+the local stability input used by the fixed-scale graph argument.
+
+To apply this result to the selected histories one still needs
+the individual marked-column comparisons, with uniformly small
+tails, for their ordinary and forced expansions. Their hypotheses
+are more specific than a uniform total price bound: convergence
+of the adjacent path and Gaussian kernels, convergence of the
+background activities and coupling, and the common marked input
+are all required. The next analytic comparison must supply these
+on the same selected histories. The preceding proof isolates
+the exact summation, subtraction and normalization steps after
+that comparison; it does not replace it by an unproved assertion
+of continuity of the infinite expansion.

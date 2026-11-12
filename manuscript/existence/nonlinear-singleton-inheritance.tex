@@ -1,0 +1,237 @@
+\section{Nonlinear singleton inheritance}
+\label{sec:nonlinear-singleton-inheritance}
+A surviving singleton contributes an exponential of an old regular
+activity. Its first order part must be retained as a Gaussian reference
+observable. The error after this subtraction is smaller for two distinct
+reasons: the exponential remainder is quadratic, and the actual Gaussian
+law is close to the reference law. We prove both estimates on the same
+coordinates and then sum them over the inherited occurrences.
+
+\subsection{The nonlinear comparison on fixed coordinates}
+Use the notation and quantitative hypotheses of
+Section~\ref{sec:principal-gaussian-comparison}. In particular, $R_6,R_9$
+are density ratios with the same compensated Jacobian, $\gamma_{C_0}$
+is the fixed reference probability measure, and $w(z)$ is the original
+masked activity. Thus $w$ is measurable and $|w(z)|\le\tau$. Assume
+\[
+ 0\le\tau\le K\le1.
+\]
+Write $c(y,z)$ and $v(y,z)$ for the actual and reference cutoffs,
+respectively. They take values in $[0,1]$ and have the common compact
+support and local plateau properties specified there. The exact integrand
+for the singleton plus its reference observable is
+\begin{equation}\label{eq:singleton-nonlinear-integrand}
+ T(y,z)=R_6(y,z)\{e^{-w(z)c(y,z)}-1\}
+                         +R_9(y,z)v(y,z)w(z).
+\end{equation}
+The plus sign in the second term cancels the negative linear term of
+the first. The reference guard ensures that, wherever it is nonzero,
+the actual cutoff is one and the frozen field is healthy on the
+insertion support. Consequently the same $w$ occurs in both terms,
+by the compensated locality identity. No derivative of $w$ is needed.
+
+Let $P_0,P_1,P_2$ denote fixed positive polynomials in the local
+coordinate count and jet bounds, enlarged below when necessary. The
+density comparison already proved gives
+\[
+ \|R_6(\cdot,z)\|_{J^n_0}\le P_0,
+ \qquad
+ \|R_9(\cdot,z)-R_6(\cdot,z)\|_{J^n_0}\le\delta P_1.
+\]
+Here and below the jet norm includes derivatives of every order from
+zero through $n$. The polynomial constants depend on $n$, not on the
+number of occurrences or the torus volume. If $Q_c\ge1$ bounds the
+cutoff jets, impose also $KQ_c\le1$. For a nonempty derivative set $I$,
+the derivative of $e^{-wc}$ is
+\[
+ e^{-wc}\sum_{\pi\in\mathcal P(I)}
+                  \prod_{A\in\pi}(-w D_Ac).
+\]
+Since $|w|Q_c\le1$, every product has size at most $\tau Q_c$,
+up to the fixed number of partitions. For the zero-order term,
+$|e^{-wc}-1|\le e\tau$. Product differentiation in
+\eqref{eq:singleton-nonlinear-integrand} therefore gives the global
+bound $\|T(\cdot,z)\|_{J^n_0}\le\tau P_2$ on the compact read ball.
+
+On the smaller ball where both cutoffs have germ one at $y=0$,
+the exact identity is
+\[
+ T=R_6(e^{-w}-1+w)+(R_9-R_6)w.
+\]
+For real $|w|\le1$, the exponential series gives
+\[
+ |e^{-w}-1+w|
+ \le |w|^2\sum_{k\ge2}\frac1{k!}
+ \le |w|^2\le\tau K.
+\]
+The two factors involving $w$ are constant in the differentiation
+parameter. Hence on this ball
+\begin{equation}\label{eq:singleton-good-price}
+              \|T(\cdot,z)\|_{J^n_0}
+                    \le\tau(KP_0+\delta P_1).
+\end{equation}
+Let its radius be $v_0$ in the coordinate maximum norm and suppose
+$C_0\le MI$. The coordinate Gaussian tail bound used in the principal
+comparison gives
+\[
+ \gamma_{C_0}\{\|z\|_\infty\ge v_0\}
+                      \le 2N\exp(-v_0+M/2).
+\]
+The same compact-coordinate domination justifies differentiating
+\eqref{eq:singleton-nonlinear-integrand} under the integral: on a
+common parameter neighborhood the smooth factors and their finitely
+many derivatives are bounded on the fixed compact ball, and $w$ is
+bounded. Splitting that integral into the good ball and its complement
+proves
+\begin{equation}\label{eq:singleton-comparison-price}
+ \left\|\int T(\cdot,z)\,d\gamma_{C_0}(z)\right\|_{J^n_0}
+ \le \tau\{KP_0+\delta P_1
+                +2N e^{-v_0+M/2}P_2\}.
+\end{equation}
+This estimate includes the entire near-weight on the bad set; it does
+not use cancellation outside the common plateau.
+
+In the renormalization step, $K$ is the incoming regular budget, of
+upper exponent $-11/10$. The local covariance and mean comparison of
+Section~\ref{sec:principal-comparison-jets} gives $\delta$ of upper
+exponent $-1/2$: its two terms are the covariance discrepancy and the
+unscaled mean discrepancy multiplied by the inverse noise scale.
+The local coordinate counts, cutoff bounds, and polynomials above have
+upper exponent zero. The plateau radius is a fixed positive multiple
+of the fine monitor and its Gaussian tail has every negative upper
+exponent. Thus the braces in \eqref{eq:singleton-comparison-price}
+have upper exponent $-1/2$. In particular, all the smallness conditions
+in the density comparison and $KQ_c\le1$ hold after increasing the
+entrance coupling, with the block size already fixed. Denote a common
+nonnegative bound for the braces by $b(x)$.
+
+\subsection{The retained reference term}
+We spell out the summation cost of the reference term, since a
+per-occurrence gain alone does not give the required coarse budget.
+Let $X_i$ be the fine support of occurrence $i$, $a_i$ its fine anchor,
+$Y_i$ its allocated coarse support, and $\bar a_i$ the parent of $a_i$.
+Put $q_i=\operatorname{cov}_f(X_i)$ and
+$q_i'=\operatorname{cov}_c(Y_i)$ for their cover numbers. Suppose the
+incoming amplitudes satisfy
+\begin{equation}\label{eq:singleton-incoming-budget}
+ \sup_a\sum_{i:a_i=a}e^{Aq_i}\tau_i\le E_{\rm in},
+                         \qquad A>0.
+\end{equation}
+All sums use the given occurrence enumeration, including repeated
+supports. Fix derivative order $n\ge2$, spatial weight order $p$, and
+allocation radius $r_0$. Let $t\ge0$ be the full requested coarse
+support exponent, including any reserve needed later.
+
+The reference attenuation proof in
+Section~\ref{sec:principal-reference-attenuation} applies to each
+forest and tag. In its notation the pointwise derivative bound is
+\[
+ B_0\tau_i d_L(q_i)
+             \{1+\rho_i^{2n}(1+\|z\|)^{4n}\},
+ \qquad
+ d_L(q)=\begin{cases}L^{-5},&q^3<L,\\1,&q^3\ge L.\end{cases}
+\]
+Here $B_0$ is fixed before $L$. The same local Gaussian moment
+estimate bounds the integral of the polynomial factor. More precisely,
+write $H=(r_0+48)(1+B)$, where $B$ is the scale radius. There are fixed
+integers $a,v$ such that
+\[
+ \rho_i\le K_L(\theta_f+g/\theta_f)
+                         [H(1+q_i)]^a,
+ \quad
+ \int(1+\|z\|)^{4n}\,d\gamma\le M_L[H(1+q_i)]^v.
+\]
+The fine and coarse thresholds here have the bounded ratio required
+by that proof. With $h=2na+v$, impose the explicit post-$L$ condition
+\[
+ [K_L(\theta_f+g/\theta_f)]^{2n}M_L H^h\le1.
+\]
+It is available by the threshold and monitor argument proved there;
+no negative power rate is assigned to $g/\theta_f$. Integration yields
+$B_0\tau_i d_L(q_i)\{1+(1+q_i)^h\}$. Since
+\[
+ d_L(q)\le L^{-5}(1+q)^{15},
+\]
+including when $q^3\ge L$, the reference price is at most
+$2B_0\tau_i L^{-5}(1+q_i)^{15+h}$.
+
+The support compression estimate gives, provided
+$20t\,t_{r_0}\le LA$,
+\[
+ tq_i'\le t\,t_{r_0}+\tfrac12 Aq_i.
+\]
+Choose $R$ so that $(1+q)^{15+h}\le R e^{Aq/2}$ for $q\ge0$.
+Such an $R$ exists by polynomial versus exponential growth and depends
+only on the displayed pre-$L$ data. Thus for
+$C'=1+2B_0R e^{t t_{r_0}}$, the weighted reference price is bounded by
+\begin{equation}\label{eq:singleton-reference-occurrence}
+            e^{tq_i'}s_i\le C'L^{-5}e^{Aq_i}\tau_i.
+\end{equation}
+A finite average over forests and tags whose sum of absolute weights
+is at most one preserves this estimate. This is the actual fixed
+average used in the singleton construction; no new Gaussian marginal
+or smaller-period replacement is introduced.
+
+Each coarse site has exactly $L^4$ fine parents in four dimensions.
+For a coarse site $\bar a$, summing
+\eqref{eq:singleton-reference-occurrence} first over each fine anchor
+above $\bar a$ and then over those $L^4$ anchors proves
+\begin{equation}\label{eq:singleton-reference-anchored}
+ \sup_{\bar a}\sum_{i:\bar a_i=\bar a}e^{tq_i'}s_i
+                                  \le (C'/L)E_{\rm in}.
+\end{equation}
+The factor $L^4$ is essential. It is paid by the fifth power in the
+per-occurrence attenuation.
+
+\subsection{Inheritance of the small remainder}
+The corresponding nonlinear remainder is the actual singleton plus
+the positive reference observable. Equation
+\eqref{eq:singleton-comparison-price} bounds its local ordered jets
+by $\tau_i b(x)$ for each fixed forest and tag. The common finite
+average preserves this bound.
+
+For completeness, the coordinate-to-field step uses the same local
+variation as the actual singleton, not a separately chosen test
+field. Restrict each direction to $Y_i$, which leaves every derivative
+of a $Y_i$-local function unchanged. For $q_i'\le B$ the weighted
+admissibility bounds imply the local direction bound used in the
+Gaussian comparison. The support cover restriction and the coarse threshold bound by twice
+the fine scale threshold give the required direction norm bound
+directly. Indeed the anchor belongs to $Y_i$ and the cover restriction
+bounds each support-point distance from it by the local radius $D_x$;
+thus the truncated direction satisfies
+\[ \|U\|\le\theta_c(1+D_x)^p
+                    \le2\theta_f(1+D_x)^p. \]
+Apply the comparison to the ordered parameter map formed
+from these actual restricted directions. Its mixed derivative is the
+prescribed ordered field derivative: evaluate the corresponding
+multilinear differential on the coordinate unit vectors, each of norm
+one. This conversion incurs no inverse rescaling factor.
+Consequently the
+estimate controls the prescribed spatially weighted derivatives
+through order $n$ on healthy configurations whenever $q_i'\le B$.
+Regularity, gauge invariance, and locality on every support follow
+from the actual singleton regularity and the reference construction.
+The latter is invariant under the orthogonal colour-coordinate gauge
+change; locality follows from agreement on $Y_i$. Its measurable
+extension outside the healthy domain has the same local germ there.
+
+For the remainder use the weaker consequence
+$tq_i'\le t t_{r_0}+Aq_i$ of support compression. Combining it with
+\eqref{eq:singleton-incoming-budget} and again counting $L^4$ fine
+anchors above a coarse anchor gives
+\begin{equation}\label{eq:singleton-remainder-anchored}
+ \sup_{\bar a}\sum_{i:\bar a_i=\bar a}
+       e^{tq_i'}\tau_i b(x)
+       \le L^4 e^{t t_{r_0}}b(x)E_{\rm in}.
+\end{equation}
+For fixed $L,r_0,t$, the coefficient on the right retains upper
+exponent $-1/2$. Equations
+\eqref{eq:singleton-reference-anchored} and
+\eqref{eq:singleton-remainder-anchored} are the two required
+inheritance bounds. The first applies to every reference support;
+the derivative assertion for the remainder retains the restriction
+$q_i'\le B$. The pre-existing full singleton regularity and the
+common funded path are inputs to this step. The argument does not
+replace their construction or the estimates for clusters containing
+more than one old occurrence.

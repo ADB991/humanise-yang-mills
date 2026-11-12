@@ -1,0 +1,176 @@
+\section{The elementary one-step projection estimate}
+\label{sec:leaf-transfer}
+We connect the local splitting to the elementary insertion estimate used
+in Section~\ref{sec:ope-local-projection}. The analytic input is now the
+localized expansion of a real inserted field under one fixed nonlinear
+block integral. We state the part of that expansion used here and prove
+the remaining conversion and its constants.
+
+Let $\mathcal T$ be the fine-to-coarse density transfer with block ratio
+$L$, and let $f$ be one real elementary insertion with anchored fine
+support $X$, majorant $c$, and mass $m=m_{\rm fine}(X,c)\ge0$.
+Use the same fixed coarse background, threshold and activity alphabet
+as the unmarked transition. A localized expansion has real regular
+terms $h_i$ on anchored coarse supports $X_i$ and a real flagged
+source array $k$ such that
+\begin{equation}\label{eq:leaf-raw-identity}
+ \mathcal T f=\rho_{\rm coarse}\sum_i\chi_{X_i}h_i
+                    +e^{E_{\rm coarse}}\mathcal G^{[1]}(k).
+\end{equation}
+All regular and marked series must be absolutely dominated, and the
+original insertion must be integrable under the fine prior and every
+transition slice. These conditions are part of the analytic expansion.
+They justify the displayed identity as an identity of actual integrals.
+In addition, require the marked identity: the raw forced profile of $k$
+is the transferred singleton profile of the insertion in its fixed ordinary
+or flagged input slot, with the same background and activity alphabet.
+This profile identity is a separate part of the expansion hypothesis.
+
+Split the localized terms into the distinguished principal term, when
+present, and the remaining terms. The required bounds have the following
+form, in the coarse derivative norm and reserved support mass:
+\begin{align}
+ \sum_{i\ {
+m nonprincipal}}m_+(X_i,\|h_i\|)&\le M,
+       \label{eq:leaf-tail-input}\\
+ m_+(X_*,\|h_*\|)&\le V\,m/g,
+       \label{eq:leaf-principal-input}\\
+ \operatorname{mass}(k)&\le D s.
+       \label{eq:leaf-flag-input}
+\end{align}
+Here $g>0$ is the normalization gain, $V\ge0$ a fixed-order derivative
+price, $D\ge0$ the insertion debt, and $s\ge0$ the flagged-response
+price. For a flagged elementary insertion there is no principal term.
+For a regular elementary insertion there is just one, at the fixed
+principal location. The indices and supports are selected before
+forming complex linear combinations.
+
+\subsection{The principal-term reserve}
+The principal estimate \eqref{eq:leaf-principal-input} follows from
+three more primitive bounds used by the local integral expansion.
+Write $D_X=C_B(X_*)$, let $\omega\ge0$ be its localized majorant,
+and suppose
+\[
+ \|h_*\|\le D\omega\,\Phi(X_*),\qquad
+ \omega e^{(a+e)D_X}\le1,\qquad
+ D\le m/g,
+\]
+where $e\ge0$ and $a\ge u+3$. Its derivative price has the form
+$\Phi(X_*)\le V e^{D_X/2}$. The latter is the polynomial-to-exponential
+bound on the support size: for a fixed integer $r\ge0$ one can take
+$C_r=\sup_{z\ge0}z^re^{-z/2}<\infty$ and bound $z^r$ by
+$C_re^{z/2}$. The additional fixed factor in $V$ is the spatial
+weight of the derivative directions at the given coupling.
+Consequently
+\[
+ e^{(u+2)D_X}\|h_*\|
+ \le DV\omega e^{(u+5/2)D_X}
+ \le DV\omega e^{(a+e)D_X}
+ \le Vm/g.
+\]
+If $D_X\ge B$, the same calculation leaves a factor $e^{-B/2}$,
+because $a+e-(u+5/2)\ge1/2$. This is the stronger principal
+estimate used when its support is large. The local derivative
+estimate and the weighted bound on $\omega$ remain substantive
+inputs from the nonlinear expansion.
+
+\subsection{Complex fields and the raw expansion}
+To treat a complex insertion, take two real elementary insertions
+with the same support, type and majorant, and combine them as
+$f=f_1+if_2$. Their masses are the same $m$; their principal support
+and index agree. For $z\in\mathbb C$, define
+\[
+      H_i=z(h_i^{(1)}+ih_i^{(2)}),\qquad
+      K=z(k^{(1)}+ik^{(2)}).
+\]
+The sum of the two real majorants times $|z|$ dominates each
+complex term. Thus the nonprincipal reserved mass is at most
+$2|z|M$, the principal reserved mass is at most $2|z|Vm/g$, and
+$\operatorname{mass}(K)\le2|z|Ds$.
+The raw seed is zero. Pad the common countable list by zero terms
+on the singleton anchor support if a natural-number indexing is
+needed; neither the represented density nor its cost changes.
+
+Linearity of masks, marked-gas insertion and $\mathcal T$, with
+absolute convergence of the series, gives the exact raw density
+$z\mathcal T(f_1+if_2)$. This is the reason the same supports and
+principal indices were retained. Applying the splitting of
+Section~\ref{sec:local-splitting} to these raw terms preserves the
+identity. In the elementary application take $z=L^d$ and
+$f_2=0$ with the same majorant as $f_1$. The bound with the factor
+two remains valid and avoids making the chosen dictionary depend
+on whether one component happens to vanish.
+
+\subsection{The projection allowance}
+Let $F_d$ be the support-join and jet-extraction factor from
+\eqref{eq:local-join-price}, let $C_{\rm orb}\ge1$ be the finite
+coefficient-action price, and let $C_{\rm turn}\ge1$ be the price
+for transporting the local remainder norm under the required
+lattice motions. Put
+\[
+ H_d=1+2F_d(1+C_{\rm orb}+C_{\rm turn}),\qquad
+                     \eta_0=\operatorname{rate}(L)/H_d.
+\]
+Assume the already chosen coupling satisfies
+\begin{equation}\label{eq:leaf-small-inputs}
+ 2L^d M\le\eta_0m,\qquad
+ 2\kappa^{-1}L^dDs\le\eta_0m,\qquad
+                      (2B+1)^4\kappa\le1,
+\end{equation}
+where $\kappa=\sqrt{\text{coarse forced allowance}}>0$.
+The first two inequalities are required uniformly over insertions.
+They are paid by the same coupling delay as the chosen nonlinear
+transition; choosing a different history here is not allowed.
+
+Set
+\[
+         E=2L^dV/g,\qquad e_0=(\eta_0+|E|)m.
+\]
+Then $e_0\ge\eta_0m\ge0$. The principal bill is at most $e_0$,
+and the nonprincipal bill is at most $\eta_0m$. The total raw regular
+reserved mass is therefore at most $\eta_0m+e_0\le2e_0$.
+Write $p_0=F_d(\eta_0m+e_0)\le2F_de_0$ and
+$b_0=2\kappa^{-1}L^dDs\le e_0$.
+The local splitting gives a coefficient change at most $p_0$,
+a regular remainder of mass at most $p_0$, a normalized forced
+remainder of mass at most $b_0+p_0$, and a response of reserved
+mass at most $p_0$. To bound the coefficient change by $p_0$,
+use $R_d\le F_d$, which follows from $w\ge0$ and the definition
+of $F_d$.
+
+It follows directly that
+\[
+ C_{\rm orb}\mu(q)\le C_{\rm orb}p_0\le H_de_0,
+ \qquad
+ C_{\rm turn}p_0+(b_0+p_0)\le H_de_0.
+\]
+The response cost is also at most $H_de_0$. Therefore any
+$Q_e$ satisfying
+\begin{equation}\label{eq:leaf-projection-allowance}
+                  Q_e\ge(\eta_0+|2L^dV/g|)H_d
+\end{equation}
+gives a coefficient field with coefficient and remainder bounds
+$Q_em$ and exact density $L^d\mathcal T f$.
+This is the numerical projection bound in
+\eqref{eq:ope-leaf-projection}.
+
+The marked transition is retained as well. The original real
+insertion occupies its fixed ordinary or flagged slot with cost
+$m$; the real/imaginary convention just used gives the available
+bound $2m$. Its raw output forced profile is the transferred
+singleton profile. Splitting adds exactly the hook of the response
+$\psi$ constructed in Section~\ref{sec:local-splitting}, of cost
+at most $Q_em$. Thus the transition identity has fine cost $2m$,
+coarse response cost $Q_em$, and multiplier $L^d$, precisely as
+required in Section~\ref{sec:ope-local-projection}.
+This last assertion uses the marked profile hypothesis stated alongside
+\eqref{eq:leaf-raw-identity}; the scalar density identity alone would
+not suffice.
+
+The analytic work remaining at this point is explicit:
+construct the common localized expansion with its singleton identity,
+prove \eqref{eq:leaf-tail-input} and \eqref{eq:leaf-flag-input}, and
+fund \eqref{eq:leaf-small-inputs} on the selected history.
+The finite projection, support correction, principal reserve
+conversion, and passage to the elementary allowance have now been
+proved from those inputs.

@@ -1,0 +1,246 @@
+\section{Prices for the inherited activities}
+\label{sec:inherited-activity-prices}
+The remaining logarithmic activities come from the incoming
+representation: its regular activities, cubic and quartic path
+terms, quadratic loop terms, and the true long-path tails on the
+fine and coarse levels. We convert their existing coefficient
+bounds into prices on the full coarse read supports. This section
+assumes those incoming coefficient bounds on the same representation
+and paths as the selected step. It proves the price conversion;
+maintenance of the incoming bounds along the renormalisation run
+is a separate construction requirement.
+
+\subsection{Coarsening a connected cover}
+Let $\pi$ be the parent map with block length $L$, and let
+$c_M(X)$ be the connected covering number at radius $M$. Thus
+$X$ is contained in the union of $M$-balls around $c_M(X)$
+centres, and that union is connected by unit lattice steps.
+For $B\ge1$, $M\le2B$ and integer $\ell\ge0$, put
+\[
+ P_\ell=b_{\ell+6},\qquad v_\ell=10P_\ell/L,
+ \qquad Y=\operatorname{halo}_{\ell B}(\pi X).
+\]
+Then
+\begin{equation}\label{eq:inherited-cover-conversion}
+ c_B(Y)\le P_\ell+v_\ell c_M(X).
+\end{equation}
+
+Here is a proof retaining the factor $L^{-1}$. Choose a minimal
+cover with centre set $D$. The graph joining centres at distance
+at most $2M+1$ is connected. Traverse a spanning tree out and
+back, replacing each edge by steps of max-distance at most one
+(diagonal steps are allowed). This gives a walk
+visiting all centres, of length at most $(4M+2)|D|$.
+Sample it every $LB$ steps and apply $\pi$. If its length is $N$,
+the resulting centre set $D'$ satisfies
+$LB|D'|\le N+LB$. The parent-distance inequality
+\[
+ L\,d(\pi x,\pi y)\le d(x,y)+L
+\]
+shows that every projected walk point is within $2B$ of a
+sampled centre and that consecutive sampled centres are within
+$2B$. Every point of $X$ is within $M\le2B$ of an original
+centre; its parent is therefore within $3B$ of that centre's
+parent. Thus $Y$ is covered by the $(\ell+5)B$-balls about
+$D'$, with connected union. Tile their slightly enlarged
+$(\ell+6)B$-balls by $B$-balls with centres on a $B$-spaced
+four-dimensional grid. There are at most $P_\ell$ tiles per
+centre. These enlarged halos overlap along the sampled walk,
+so the resulting cover remains connected. Finally
+$(4M+2)|D|\le10B|D|$ proves
+\eqref{eq:inherited-cover-conversion}. For an empty set the
+inequality is immediate. Wrapping any of these walks or grids
+only decreases the number of distinct centres.
+
+If $o\in X$ and $y\in Y$, the same spanning walk gives
+\begin{equation}\label{eq:inherited-anchor-distance}
+ d(y,\pi o)\le(\ell+20)B\{1+c_M(X)\}.
+\end{equation}
+Indeed two points of $X$ are at distance at most
+$(4M+2)c_M(X)+2M$; apply the parent-distance inequality and
+then add the $\ell B$ halo. The displayed larger constant
+bounds the result for $M\le2B$, $B\ge1$.
+Inspecting the fine plaquettes touching a support adds at most
+four fine lattice steps. Their parents lie within five coarse
+steps, so replacing $\ell$ by $\ell+5$ pays all these reads.
+
+\subsection{From an anchor bound to a site bound}
+We give a general counting estimate. Suppose nonnegative weights
+$b_i$, integer costs $d_i\ge0$, fine anchors $o_i$, and coarse
+supports $Y_i$ satisfy
+\[
+ \sup_o\sum_{i:o_i=o}b_i e^{\sigma d_i}\le\Gamma,
+ \qquad c_B(Y_i)\le v+v'd_i,
+ \qquad y\in Y_i\Longrightarrow
+ d(y,\pi o_i)\le W(1+d_i).
+\]
+Let $k,W$ be nonnegative integers and
+$0\le g_i\le C b_i(1+d_i)^k$ with $C\ge0$, and assume
+\begin{equation}\label{eq:inherited-reserve}
+ a\ge0,\quad\varepsilon>0,\quad av'+2\varepsilon\le\sigma.
+\end{equation}
+For a fixed coarse site $y$, the fine anchors of labels with
+$d_i=n$ and $y\in Y_i$ have parents in a radius-$W(1+n)$
+ball. There are at most $L^4b_W(1+n)^4$ such anchors, because
+a parent has exactly $L^4$ residues. The sum of $g_i e^{a c_B(Y_i)}$
+over these labels is at most
+\[
+ L^4b_W\Gamma C e^{av}(1+n)^{4+k}e^{-2\varepsilon n}.
+\]
+Use the exponential series at $\varepsilon(1+n)$ to obtain
+\[
+ (1+n)^{4+k}\le
+ \varepsilon^{-(4+k)}(4+k)!e^\varepsilon e^{\varepsilon n}.
+\]
+Summing the geometric series proves
+\begin{equation}\label{eq:inherited-payment}
+ \sup_y\sum_{i:y\in Y_i}g_i e^{a c_B(Y_i)}
+ \le e^{av}\Gamma C L^4b_W
+ \frac{\varepsilon^{-(4+k)}(4+k)!e^\varepsilon}
+      {1-e^{-\varepsilon}}.
+\end{equation}
+Restricting to $d_i\ge n_0$ adds the factor
+$e^{-\varepsilon n_0}$. The proof works with arbitrary label
+multiplicities, since the input already sums all labels at an
+anchor. Nonnegative finite partial sums justify the estimate
+also for a countable alphabet.
+
+We need an additional factor $e^{2\varepsilon d_i}$ in the
+output price. Apply the preceding argument to weights
+$b_i e^{2\varepsilon d_i}$ and exponent $\sigma-2\varepsilon$.
+The sufficient condition becomes $av'+4\varepsilon\le\sigma$.
+For inherited supports use
+\eqref{eq:inherited-cover-conversion} with
+$d_i=c_M(X_i)$ and $W=(\ell+20)B$.
+If $4\varepsilon<\sigma$, choose $L$ large enough that
+$a10P_\ell/L+4\varepsilon\le\sigma$, before increasing $x$.
+The incoming cover radius $M=B(h)$ is eventually at most $2B(x)$:
+$h=x+c_L$ with $c_L$ fixed, and the logarithmic-square radius
+has $B(x+c_L)/B(x)\to1$. All factors in
+\eqref{eq:inherited-payment} other than $\Gamma C$ then have
+upper exponent zero.
+
+\subsection{Path lengths, including winding paths}
+For a bundle of $r$ paths based at one fine anchor, let $d_i$ be
+the sum of their true lengths, including their final plaquette
+walks. Dividing each walk into pieces of $B$ steps shows that its
+visited sites have connected $B$-cover number at most
+$1+\text{length}/B$. All paths share the anchor, so their union
+with the anchor has cover at most $1+r+d_i/B$. Applying
+\eqref{eq:inherited-cover-conversion} at $M=B$ gives
+\[
+ c_B(Y_i)\le P_\ell+v_\ell(1+r)+(v_\ell/B)d_i.
+\]
+The support lies within $(\ell B+1)(1+d_i)$ of the parent
+anchor. Thus the preceding site estimate applies with
+$v'=v_\ell/B$. For any fixed $L$, this coefficient tends to
+zero, so the required strict exponential reserve is eventually
+available. No path length is replaced by its endpoint distance;
+in particular, winding and repeated edges retain their costs.
+
+Suppose the path coefficients satisfy
+$\sum_i b_i e^{\sigma d_i}\le\Gamma$ at each translated
+anchor. An order-$r$ atom evaluated with its original small-field
+mask has absolute value at most $b_i\tau^r$: every one of its
+$r$ curvature arguments has norm at most $\tau$, while the
+unhealthy branch is zero. An external multiplier bounded by
+$D(x)$ therefore has scalar price $D(x)\tau^r b_i$.
+The site conversion preserves the sum of the upper exponents
+of $D$, $\tau^r$, and $\Gamma$, allowing any strictly larger
+power for the final bound. Applied to the actual families,
+\[
+ \begin{array}{c|c|c}
+ \text{family}&\text{multiplier and coefficient budget}&
+                 \text{upper exponent}\\ \hline
+ \text{cubic}&2h\,\tau^3\cdot C&-1/2\\
+ \text{quartic}&2h\,\tau^4\cdot C&-1\\
+ \text{quadratic loop}&\tau^2\cdot2P(h)&-1
+ \end{array}
+\]
+Here $C$ is the incoming fixed path bound, $P(h)$ is the monitor,
+and the channel weight has absolute value at most one. The
+multiplier is the original $\beta\le2h$, wherever it occurs.
+The fixed number of signed orientations and plaquette axes is
+summed, not discarded.
+
+For the tail of a squared path row, retain the ordered pair of
+path labels $(i,k)$. With coefficients $a_i,a_k$ and lengths
+$l_i,l_k$, its price is
+\[
+ b_{ik}=2|a_i a_k|\,
+       1_{\{l_i d>R\ \mathrm{or}\ l_k d>R\}},
+\]
+where $d=1$ for the fine row and $d=L$ for the coarse row.
+This bounds the actual half inner product because each unmasked
+transported curvature has norm at most two; the kept-row
+indicator can only decrease its magnitude. If
+$\sum_i|a_i|e^{\sigma l_i}\le C$, then
+\begin{equation}\label{eq:inherited-tail-budget}
+ \sum_{i,k}b_{ik}e^{(\sigma/2)(l_i+l_k)}
+ \le2e^{-\sigma R/(2d)}C^2.
+\end{equation}
+Indeed every retained pair has $l_i+l_k\ge R/d$; extract
+$e^{-\sigma R/(2d)}$ and use the product of the two weighted
+row sums. The genuine read support includes both full paths and
+the kept-row test halo. After projection that extra halo is paid
+by replacing $\ell$ by $\ell+2$. The site bound with its length
+reserve is valid if $8\varepsilon<\sigma$, since its available
+input exponent is now $\sigma/2$. As $R=\lfloor B/100000\rfloor$,
+the right side of \eqref{eq:inherited-tail-budget} has every
+negative upper exponent, even after multiplication by $2h$,
+fixed powers of the true length and the site-conversion cost.
+For the coarse-level tail the parent map is the identity; its
+population factor is one, and the exponential still has fixed
+$d=L$. The argument thus covers both tails without confusing
+their spatial scales.
+
+\subsection{Inherited jets in the compensated variation}
+The incoming regular activity budget has upper exponent $-11/10$;
+the incoming forced activity budget has every negative upper
+exponent. The former bounds the original masked occurrence on
+its healthy domain, extended by zero, and the latter bounds the
+forced occurrence everywhere. Apply the anchor-to-site estimate
+to their original supports and masks. This preserves those
+exponents and all label multiplicities.
+
+During the compensated variation the underlying fine field $U_*$
+is held fixed. Hence the regular, cubic, quartic, loop, fine-tail
+and forced values are constant in the coarse parameter. Their
+protective factors vary. On a coarse support $Y$, each protective
+bond cutoff has amplitude one and derivative scale of upper
+exponent zero. Covering $Y$ by its $B$-cover, its full bond read
+set contains at most
+$b_B b_1\rho_L c_B(Y)$ bonds. The product rule therefore gives
+the protector derivative scale $v_0(x)c_B(Y)$, with $v_0$ of
+upper exponent zero. Multiplying a constant value by this
+protector preserves its scalar price.
+
+The coarse tail is the exception: its original coarse field varies.
+For a path of length $l$, the unitary product argument gives
+its transported curvature jets amplitude $|a_i|R_G^2$ and
+derivative scale $2R_Gvl$. A product of two paths thus has scale
+$2R_Gv(l_i+l_k)$, and its half inner product has amplitude at
+most $|a_i a_k|R_G^4$. Multiplying by the original $\beta$
+and channel coefficient is paid by
+$2hR_G^4 b_{ik}$. The same tail estimate prices these labels
+with every negative upper exponent, retaining the total length
+in the derivative scale. There is no moving coarse kept-row
+indicator in this term: its unmasked coarse counterpart is the
+smooth path-pair expression with the fixed long-pair selector.
+
+Choose $-1/2<t<0$. By the strict exponent slack, the six
+inherited logarithmic families together have a rooted price
+at most $h^t$ for sufficiently large $x$, with the support and
+$2\varepsilon$ extra-cost reserves just proved. For the coarse
+tail add its differentiated price to the scalar one; both are
+nonnegative and negligible, so this addition is paid by choosing
+an intermediate exponent between $-1/2$ and $t$ first.
+The forced family has the same bound. Their common derivative
+scale can be taken as
+\begin{equation}\label{eq:inherited-jet-price}
+ v_1(x)\{c_B(Y_i)+d_i\},\qquad
+ v_1\text{ of upper exponent zero},
+\end{equation}
+where $d_i$ is the old support cover or the true path length,
+as appropriate. The bounds are uniform over the held fine
+configuration and preserve its original labels and parameters.

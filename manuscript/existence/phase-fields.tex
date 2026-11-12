@@ -1,0 +1,114 @@
+\section{Keeping the same field space in each phase}
+\label{ex-phase-fields}
+
+A field label may disappear when one passes to a component of a mixture.
+For the selected phase to represent the intended fields, one must rule out
+additional null labels. The following argument explains the role of the
+finite detectors and the uniform moment estimates used for this purpose.
+
+\begin{lemma}[Moment bounds at every character]\label{ex-character-moments}
+Let \(A\in\mathcal A\), let \(t\ge0\), and suppose
+\[
+ \langle\Omega,(A^*A)^n\Omega\rangle\le t^{2n}
+ \qquad(n=0,1,2,\ldots).
+\]
+Then \(|\chi(A)|\le t\) for every \(\chi\in\Xi\).
+\end{lemma}
+\begin{proof}
+The representing measure gives
+\(\int|\chi(A)|^{2n}\,d\mu\le t^{2n}\).
+If \(|\chi_0(A)|>t\), choose \(p\) strictly between these numbers.
+The nonempty open set \(O=\{\chi:|\chi(A)|>p\}\) has positive measure
+\(c\) by full support. Hence
+\(cp^{2n}\le\int|\chi(A)|^{2n}\,d\mu\le t^{2n}\).
+Since \(p>0\), division gives \(c\le(t/p)^{2n}\to0\), a
+contradiction. This also covers \(t=0\), when the right side already
+vanishes for positive \(n\).
+\end{proof}
+
+Here is the elementary two-point calculation to which these moment
+estimates are applied. At a fixed scale \(k\), let \(a,b\) denote two
+insertions at distinct points and let \(j_a,j_b,\kappa\in\mathbb C\)
+be the prescribed comparison one-point values and connected two-point
+value. Form the elements
+\begin{align*}
+ D_a&=M(a)-j_aI,\qquad D_b=M(b)-j_bI,\\
+ D_{ab}&=M(ab)-j_aM(b)-j_bM(a)+(j_aj_b-\kappa)I.
+\end{align*}
+Assume the preceding lemma's moment bounds hold for each of these three
+elements with the same number \(\epsilon_k\ge0\). It follows for every
+character that
+\begin{align}
+ |S_\chi(a)-j_a|&\le\epsilon_k,\label{ex-detector-one}\\
+ |S_\chi(ab)-(\kappa+j_aj_b)|
+ &\le\epsilon_k(1+|j_a|+|j_b|).\label{ex-detector-two}
+\end{align}
+Indeed, evaluating \(D_{ab}\) and rearranging gives
+\[
+ S_\chi(ab)-(\kappa+j_aj_b)
+ =\chi(D_{ab})+j_a(S_\chi(b)-j_b)+j_b(S_\chi(a)-j_a),
+\]
+so the triangle inequality proves \eqref{ex-detector-two}.
+If \(\epsilon_k\to0\) and the prescribed one-point values converge,
+these errors tend to zero in every phase, with a bound independent of
+the character. This conclusion requires moments of the full corrected
+operators \(D_{ab}\), not only pointwise estimates for the unselected
+two-point correlations.
+
+\begin{proposition}[Finite detectors prevent an additional null space]
+\label{ex-no-new-null}
+Let \(E\) be a complex vector space of raw labels, and let
+\(N\subset N_\chi\) be subspaces. Write
+\(\pi:E\to E/N=V\) and \(\pi_\chi:E\to E/N_\chi=V_\chi\).
+Let \(W\) be a finite-dimensional complex normed space. Suppose there
+are linear maps \(J_k:W\to E\), linear tests
+\(\ell_{k,i}:V_\chi\to\mathbb C\), \(1\le i\le r\), and an
+injective linear map \(F:W\to\mathbb C^r\) such that:
+\begin{enumerate}
+\item \(\pi J_k\) is surjective for all sufficiently large \(k\);
+\item for every vector of a fixed basis of \(W\),
+\[
+ F_k w:=\bigl(\ell_{k,i}(\pi_\chi J_kw)\bigr)_{i=1}^r
+ \longrightarrow Fw.
+\]
+\end{enumerate}
+Then \(N_\chi=N\).
+\end{proposition}
+\begin{proof}
+Convergence on a finite basis implies convergence in operator norm.
+To see this, let \(e_1,\ldots,e_s\) be that basis with continuous
+coordinate functionals \(e_j^*\). Then
+\[
+ \|(F_k-F)w\|
+ \le\sum_{j=1}^s|e_j^*(w)|\,\|(F_k-F)e_j\|
+ \le\|w\|\sum_{j=1}^s\|e_j^*\|\,\|(F_k-F)e_j\|.
+\]
+The finite sum tends to zero. If \(W\ne\{0\}\), compactness of its
+unit sphere and injectivity of \(F\) give
+\(c=\min_{\|w\|=1}\|Fw\|>0\). Choose \(k\) late enough that
+\(\|F_k-F\|<c/2\) and \(\pi J_k\) is onto. Then
+\(\|F_kw\|\ge(c/2)\|w\|\), so \(F_k\) is injective.
+If \(W=\{0\}\), surjectivity already gives \(V=0\), and the result
+is immediate.
+
+Now take \(e\in N_\chi\). By surjectivity choose \(w\in W\) with
+\(\pi J_kw=\pi e\). Thus \(J_kw-e\in N\subset N_\chi\), and since
+\(e\in N_\chi\), also \(J_kw\in N_\chi\). All tests vanish on
+\(\pi_\chi J_kw=0\); hence \(F_kw=0\). Injectivity forces \(w=0\),
+so \(\pi e=\pi J_k0=0\), or \(e\in N\). This proves
+\(N_\chi\subset N\); the reverse inclusion was assumed.
+\end{proof}
+
+In the application at label degree \(d\), \(W\) is the comparison
+field space, \(J_k\) consists of its corrected labels at the chosen
+scales, and the tests are one- or two-point correlations with fixed
+exterior labels. Estimates~\eqref{ex-detector-one}--\eqref{ex-detector-two},
+combined with continuity at the limiting distinct test configurations,
+give convergence on a basis. The comparison tests separate \(W\), so
+their joint map \(F\) is injective. The first hypothesis of the
+proposition is the eventual spanning statement for the corrected labels
+in the unselected quotient. Establishing these detector moment bounds,
+the separating comparison tests and eventual spanning from the lattice
+construction is still required. The proposition proves exactly how those
+inputs imply that every phase has the same null space; it does not infer
+their existence from finite dimensionality alone.

@@ -1,0 +1,222 @@
+% Quantitative extraction of cover-kernel atlas bounds from the strip receipts.
+\section{From strip receipts to an order-two atlas}
+\label{sec:ex-lattice-atlas-estimates}
+
+The local flat-sector estimate requires an order-two atlas for the two response
+kernels. This section proves the quantitative extraction of that atlas from
+the exponentially localized bed kernels and the supplied tower cross-kernel. It isolates
+what the construction has to provide: the strip receipt for the tower kernel
+and its first differences. The receipt-to-atlas argument itself is proved
+here.
+
+\subsection{Cover and installed kernels}
+
+Write $\mathcal C=\mathbb Z^4$ with $|x|_1=\sum_{a=1}^4|x_a|$.
+For an odd positive integer $L$, let $\Lambda_L=(\mathbb Z/L\mathbb Z)^4$,
+let $\pi_L$ be reduction modulo $L$, and let $\ell_L$ denote the centered
+representative. There is a unique $\rho_L(x)\in\mathcal C$ such that
+\[
+ x=\ell_L(\pi_Lx)+L\rho_L(x).
+\]
+For $x,y\in\mathcal C$, put
+\[
+ d_L(x,y)=L^{-1}|x-Ly|_1.
+\]
+The centered representative satisfies $|\ell_L(r)|_1\leq 2L$, hence, for
+every $z\in\mathcal C$,
+\begin{equation}
+ d_L(x,y)\leq |y-\rho_L(x)|_1+2
+ \leq |y-\rho_L(x)|_1+4.
+ \label{eq:ex-lattice-atlas-mixed-distance}
+\end{equation}
+We retain the harmless margin $4$ used in the finite-scale estimates.
+
+For finite type sets $F,G$, a cross-stencil is a family
+$T(r,i,j,z)\in\mathbb R$ indexed by $r\in\Lambda_L$, $i\in F$,
+$j\in G$, and $z\in\mathcal C$. Its width-$\alpha$ strip cost is the
+per-label bound
+\[
+ \sum_{z\in\mathcal C} e^{\alpha|z|_1}|T(r,i,j,z)|\leq C.
+\]
+For each coordinate direction $a$, define its residue difference by
+\[
+ (\nabla_a^LT)(r,i,j,z)=T(r+\pi_L(e_a),i,j,z-\epsilon_a(r))-T(r,i,j,z),
+ \qquad
+ \epsilon_a(r)=\begin{cases}e_a,&2\ell_L(r)_a=L-1,\\0,&\text{otherwise.}\end{cases}
+\]
+Here $L$ is odd, so the boundary condition in the displayed case is
+equivalently $2\ell_L(r)_a=L-1$; this is the centered-lift carry convention.
+The installed cover kernel is
+\begin{equation}
+ \widehat T((x,i),(y,j))=T(\pi_Lx,i,j,y-\rho_Lx).
+ \label{eq:ex-lattice-installed-cross}
+\end{equation}
+Its forward difference is
+\[
+ (\partial_a\widehat T)((x,i),(y,j))
+ =\widehat T((x+e_a,i),(y,j))-\widehat T((x,i),(y,j)).
+\]
+The centered-lift identity gives the exact relation
+\begin{equation}
+ \partial_a\widehat T=\widehat{\nabla_a^LT}.
+ \label{eq:ex-lattice-install-difference}
+\end{equation}
+Indeed, if $x=\ell_L(r)+Lv$, then $x+e_a=\ell_L(r+\pi_L(e_a))+L(v+\epsilon_a(r))$;
+substituting this identity in \eqref{eq:ex-lattice-installed-cross}
+produces the displayed difference formula.
+
+\begin{lemma}[Installation of strip receipts]
+\label{lem:ex-lattice-cross-atlas}
+Suppose $0\leq\sigma\leq\alpha$. If $T$ has strip cost $C/L^2$ at
+width $\alpha$ and every $\nabla_a^LT$ has strip cost $C/L^3$ at that
+width, then for every fixed pair of types $i,j$,
+\begin{align*}
+ \sum_y e^{\sigma d_L(x,y)}|\widehat T((x,i),(y,j))|
+     &\leq e^{4\sigma}C L^{-2},\\
+ \sum_x e^{\sigma d_L(x,y)}|\widehat T((x,i),(y,j))|
+     &\leq e^{4\sigma}C L^2,\\
+ \sum_y e^{\sigma d_L(x,y)}|\partial_a\widehat T((x,i),(y,j))|
+     &\leq e^{4\sigma}C L^{-3}.
+\end{align*}
+Thus $\widehat T$ has the order-two atlas bounds with cost
+$e^{4\sigma}C$: row $L^{-2}$, column $L^2$, and first-difference row
+$L^{-3}$. These are per-label bounds; summing over a finite type set adds its
+cardinality explicitly.
+\end{lemma}
+
+\begin{proof}
+Fix $x$ and put $r=\pi_Lx$, $v=\rho_Lx$. In the row sum, the substitution
+$z=y-v$ is a bijection of $\mathcal C$. By
+\eqref{eq:ex-lattice-atlas-mixed-distance},
+\[
+ \sum_y e^{\sigma d_L(x,y)}|\widehat T((x,i),(y,j))|
+ \leq e^{2\sigma}\sum_z e^{\sigma|z|_1}|T(r,i,j,z)|
+ \leq e^{2\sigma} C L^{-2}
+ \leq e^{4\sigma} C L^{-2}.
+\]
+The last inequality uses $\sigma\geq0$.
+
+For the column, decompose every $x$ uniquely as $x=\ell_L(r)+Lv$,
+where $(r,v)\in\Lambda_L\times\mathcal C$. At fixed $r$, the installed
+coefficient is $T(r,i,j,y-v)$ and
+\[
+ d_L(\ell_L(r)+Lv,y)
+ \leq |v-y|_1+2,
+\]
+again because $|\ell_L(r)|_1/L\leq2$. Thus the sum over $v$ is at most
+$e^{2\sigma}CL^{-2}$ for each $r$. There are $|\Lambda_L|=L^4$ residues,
+so the column sum is at most $e^{2\sigma}CL^2\leq e^{4\sigma}CL^2$.
+Finally apply the row argument to each $\nabla_a^LT$, use
+\eqref{eq:ex-lattice-install-difference}, and replace the cost $C/L^2$
+by $C/L^3$.
+\end{proof}
+
+\subsection{Composition with translation-invariant bed kernels}
+
+A translation-invariant row stencil $I$ on a finite type set $F$ has
+coefficients $I(i,b,u)$ for $u\in\mathcal C$. Its strip cost $C_I$ at
+width $\alpha$ means
+\[
+ \sum_{u\in\mathcal C}e^{\alpha|u|_1}|I(i,b,u)|\leq C_I
+ \quad\text{for every }i,b\in F.
+\]
+It acts on the cover by convolution. Let $J$ be a second such stencil, on a
+finite type set $G$, with strip cost $C_J$. Given a cross kernel $K$ from
+$\mathcal C\times F$ to $\mathcal C\times G$, form its sandwich
+\[
+ S((x,i),(y,j))=
+ \sum_{u,v\in\mathcal C}\sum_{b\in F,\,c\in G}
+ I(i,b,u)K((x+u,b),(y+v,c))J(c,j,-v).
+\]
+Assume the sums below are absolutely convergent; this follows, in each
+application here, from the weighted bounds just stated and Tonelli's theorem.
+
+\begin{lemma}[Sandwich atlas estimate]
+\label{lem:ex-lattice-sandwich-atlas}
+Suppose $I,J$ have nonnegative strip costs $C_I,C_J$ at width $\alpha$, and $K$ has
+per-label atlas bounds of order two with cost $Q$ at width $\sigma$.
+If $0\leq\sigma\leq\alpha$ and $L\geq1$, then $S$ has per-label order-two
+atlas bounds at width $\sigma$ with cost
+\[
+ |F|\,|G|\,C_I C_J Q.
+\]
+The first input difference of $S$ is obtained by replacing $K$ with its first
+input difference in the same formula; in particular its row cost is at most
+$|F|\,|G|C_I C_J Q/L^3$.
+\end{lemma}
+
+\begin{proof}
+For $x,y,u,v\in\mathcal C$, the triangle inequality gives
+\[
+ d_L(x,y)\leq d_L(x+u,y+v)+|u|_1/L+|v|_1.
+\]
+Consequently the exponential weight at $(x,y)$ is bounded by the central
+kernel weight multiplied by $e^{\alpha|u|_1}e^{\alpha|v|_1}$, since
+$0\leq\sigma/L\leq\alpha$ and $0\leq\sigma\leq\alpha$. Sum absolute
+values first in $y,v,c$.
+For each fixed $u,b$, the kernel row bound, summed over the $|G|$ possible
+intermediate output types $c$, is $|G|QL^{-2}$. For each resulting intermediate output,
+the stencil $J$ contributes at most $C_J$. Summing in $u,b$ against $I$
+costs at most $|F|C_I$. The row bound is therefore
+\[
+ |F|C_I\cdot |G|QL^{-2}\cdot C_J.
+\]
+For the column, fix the external input type $i$ and sum first in $x,u,b$.
+The stencil $I$ contributes $C_I$;
+the kernel column bound, summed over the $|F|$ possible input types, is
+$|F|QL^2$; and summing the remaining displacement and type of $J$ contributes
+$|G|C_J$. This gives $|F||G|C_IC_JQL^2$.
+
+Subtract the formulas for $S((x+e_a,i),(y,j))$ and $S((x,i),(y,j))$
+term by term with the same summation variables. Since $I,J$ do not depend on
+their torus positions, this replaces $K((x+u,b),(y+v,c))$ by
+\[
+ K((x+u+e_a,b),(y+v,c))-K((x+u,b),(y+v,c)).
+\]
+Repeating the row estimate with the difference-row cost $Q/L^3$ proves the
+last assertion. Absolute convergence follows from the same calculation with
+all exponential weights replaced by $1$; this licenses the subtraction.
+\end{proof}
+
+\begin{theorem}[Response atlas from primitive strip receipts]
+\label{thm:ex-lattice-response-atlas}
+Let $F$ be the common finite type set of the fine inverse stencil and the
+coarse metric stencil, and let $T$ be the tower cross-kernel. Suppose the two
+bed stencils have nonnegative strip costs $C_f,C_c$ at width $\alpha$,
+and $C_T\geq0$, while $T$ has
+base strip cost $C_T/L^2$ and each first residue-difference strip cost
+$C_T/L^3$ at that width. For $0\leq\sigma\leq\alpha$, let $\widehat T$
+be the installed cross-kernel and let
+\[
+ K=I_f\,\widehat T\,I_c
+\]
+denote its convolution sandwich with the fine inverse and coarse metric
+stencils. Then $K$ has the order-two atlas bounds at width $\sigma$ with
+cost
+\begin{equation}
+ Q=|F|^2e^{4\sigma}C_f C_c C_T.
+ \label{eq:ex-lattice-atlas-cost}
+\end{equation}
+In particular its per-label row, column and first-difference row bounds are
+$Q/L^2$, $QL^2$ and $Q/L^3$, respectively.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:ex-lattice-cross-atlas} gives the order-two atlas for
+$\widehat T$ with cost $e^{4\sigma}C_T$. Apply
+Lemma~\ref{lem:ex-lattice-sandwich-atlas} with $I_f$ and $I_c$; the two
+intermediate type sums each contribute one factor $|F|$. This yields exactly
+\eqref{eq:ex-lattice-atlas-cost} and all three asserted estimates.
+\end{proof}
+
+\begin{remark}[What this estimate does not supply]
+The theorem starts with the weighted cross-kernel receipts for $T$ and its
+first differences. The RG construction must still prove these receipts,
+uniformly in the period, from its chosen cumulative kernels and defect
+factorization. At the public construction seam inspected here, this
+quantitative tower receipt is an input to the construction record; the local atlas
+calculation cannot replace it. Thus the theorem closes the passage from
+receipts to the hypotheses of the flat-sector propagation, but not the
+construction of the receipts themselves.
+\label{rem:ex-lattice-atlas-open}
+\end{remark}

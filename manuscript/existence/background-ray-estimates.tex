@@ -1,0 +1,177 @@
+\section{Real parameter tests and the background contraction}
+\label{sec:background-ray-estimates}
+The small Lipschitz constant used in the background history does not
+follow from a small bound on the values alone. It follows from the
+paid bounds on finite linear combinations along each real parameter
+line. We prove the conversion explicitly. Only real configurations
+are used in these tests.
+
+\subsection{Recovering a convergent series from finite tests}
+Let $E$ be a real Banach space, $p>1$, $C\ge0$, and
+$f:[-1,1]\to E$. Suppose that, for every finite list
+$t_1,\ldots,t_k\in[-1,1]$ and real weights $a_1,\ldots,a_k$,
+\begin{equation}\label{eq:ray-dual-test}
+ \left\|\sum_{j=1}^k a_j f(t_j)\right\|
+ \le C\sup_{n\ge0}\left|\sum_{j=1}^k a_j(t_j/p)^n\right|.
+\end{equation}
+No continuity of $f$ is assumed here. There are vectors $b_n\in E$
+with $\|b_n\|\le C$ such that
+\begin{equation}\label{eq:ray-recovered-series}
+                    f(t)=\sum_{n=0}^\infty(t/p)^n b_n
+                    \qquad(-1\le t\le1).
+\end{equation}
+
+To prove this, use the sup norm on sequences and let
+$v(t)=((t/p)^n)_{n\ge0}$. Its coordinates tend to zero. Define,
+on the span of these sequences,
+\[
+                 T\left(\sum_j a_jv(t_j)\right)=\sum_j a_jf(t_j).
+\]
+If the sequence on the left is zero, \eqref{eq:ray-dual-test}
+makes the proposed value zero. Thus $T$ is well defined and linear,
+and its norm is at most $C$. It extends uniquely to the closed
+span, because $E$ is complete.
+
+Every coordinate vector $e_n$ lies in that closed span. For $n=0$,
+use $v(0)=e_0$. Inductively assume this for $e_0,\ldots,e_{n-1}$.
+For $0<t\le1$, put $r=t/p$. The vector
+\[
+       r^{-n}\left(v(t)-\sum_{j<n}r^je_j\right)
+\]
+has its first $n$ coordinates zero, its $n$th coordinate one,
+and subsequent coordinates $r,r^2,\ldots$. Its sup distance
+from $e_n$ is $r\to0$ as $t\downarrow0$. This proves the claim.
+Set $b_n=T e_n$, so $\|b_n\|\le C$. The geometric series
+$v(t)=\sum_n(t/p)^ne_n$ converges in the sup norm. Apply $T$
+to it to obtain \eqref{eq:ray-recovered-series}.
+
+For $1\le a<p$, the same identity can be written
+$f(t)=\sum_n(t/a)^nc_n$ with $c_n=(a/p)^nb_n$ and
+\begin{equation}\label{eq:ray-radius-loss}
+                        \sum_n\|c_n\|\le\frac{C}{1-a/p}.
+\end{equation}
+This is the radius loss used when passing from finite tests to
+absolutely summable analytic coefficients. In particular, taking
+$a=p/2$ costs at most a factor two when $p\ge2$. The argument
+also applies to maps into the completion of a seminormed space;
+no completeness of its original representatives is needed.
+
+Two consequences will be used. First, a test with one point and
+weight one gives $\|f(t)\|\le C$. Second, subtracting the series
+at zero gives
+\begin{equation}\label{eq:ray-increment}
+                 \|f(t)-f(0)\|\le C\frac{|t|}{p-|t|}.
+\end{equation}
+Both conclusions hold even if the initial pointwise construction
+of $f$ involved arbitrary choices: the finite tests themselves
+force the displayed series and hence continuity on $[-1,1]$.
+
+\subsection{Applying the tests to the actual activity coordinates}
+At one adjacent pair of scales, retain the actual common dictionary
+of regular and forced arrays. Its norm is the maximum of the
+normalized regular and forced budgets, with all the fixed symmetry
+and support constraints retained. Finite linear combinations remain
+in this vector space. Suppose a line of allowed inputs has normalized
+coupling $\lambda+t\mu$ and activity array $x+ty$, $|t|\le1$.
+Let $F(t)$ be its selected output array in the completion and
+$Q(t)$ its scalar coupling correction.
+
+The exact finite-test receipts used here are the following. For
+any finite weights $a_j$ and points $t_j$, write
+\[
+ \eta_r=\sup_{n\ge0}\left|\sum_j a_j(t_j/r)^n\right|.
+\]
+The combined regular output array has normalized budget at most
+$d\eta_{q/2}$, as does the combined forced output array. The
+scalar correction satisfies
+\[
+                   \left|\sum_j a_jQ(t_j)\right|
+                          \le f_m\eta_q.
+\]
+The forced statement follows from its single common summable
+coefficient majorant; the regular statement is a bound on the
+actual mixed arrays, with their derivative prices, not just on
+values of their gas. The definition of the array norm and the
+isometric embedding into its completion consequently give
+\begin{equation}\label{eq:background-ray-tests}
+ \left\|\sum_j a_jF(t_j)\right\|\le d\eta_{q/2},\qquad
+                 \left|\sum_j a_jQ(t_j)\right|\le f_m\eta_q.
+\end{equation}
+These are precisely the two instances of
+\eqref{eq:ray-dual-test} needed below. Padding the dictionaries
+with zero entries, or using another representative of the same
+array, preserves them.
+
+We spell out why the admissible lines are the ones used in the
+finite-test construction. Their activity values are affine in $t$
+on each fixed support. On a healthy configuration the regular mask
+is one and the value is the corresponding affine combination;
+on an unhealthy configuration the common mask is zero and the
+same equality holds. Forced values are affine without a derivative
+condition. The inverse coupling along the line is
+$\widehat\beta\{w(\lambda+t\mu)\}^2$, with the same reference
+$\widehat\beta$ and $w=\widehat\beta^{-1/32}$. Thus it is exactly
+the prescribed quadratic coupling line, not an independent choice
+of complexified gauge fields. The protected supports, normalization,
+path data and transition are the same for all $t$.
+The analytic estimates that pay \eqref{eq:background-ray-tests}
+are retained as quantitative inputs here; the deduction of the
+contraction from those estimates is complete below.
+
+\subsection{The full-band Lipschitz estimates}
+Take $q\ge4$, $d,f_m\ge0$, $2d\le\gamma=1/128$, and $s_m=2f_m$.
+Assume $w\le1/128$, as purchased by the coupling threshold.
+Consider two inputs $z=(\lambda,x)$ and
+$z'=(\lambda',x')$ with $\|x\|,\|x'\|\le1/8$ and
+$17/20\le w\lambda,w\lambda'\le23/20$. Use the product
+norm
+\[
+                 h=\|z'-z\|=\max\{|\lambda'-\lambda|,\|x'-x\|\}.
+\]
+The constant-line tests give $\|F(z)\|,\|F(z')\|\le d$
+and $|Q(z)|,|Q(z')|\le f_m$. If $h>1/4$, the triangle
+inequality therefore gives
+\[
+ \|F(z')-F(z)\|\le2d\le8\gamma h,
+ \qquad |Q(z')-Q(z)|\le2f_m\le8f_m h=4s_mh.
+\]
+For $h=0$, no equality of raw representatives is needed.
+For any $0<\varepsilon\le1$, take the line
+$z+t(z'-z)/\varepsilon$, $|t|\le1$. Its coupling direction is
+zero and its activity direction has seminorm zero. Every point
+therefore has the same activity norm as $z$, at most $1/8$,
+so the line is admissible. Its value at $t=\varepsilon$ is $z'$.
+Equation~\eqref{eq:ray-increment} bounds the output differences
+by $d\varepsilon/(q/2-\varepsilon)$ and
+$f_m\varepsilon/(q-\varepsilon)$, respectively. Letting
+$\varepsilon\downarrow0$ proves equality of the output classes
+and of the scalar correction. This also proves that the map
+respects the seminorm kernel; it does not identify regular
+representatives on unhealthy configurations.
+
+For $0<h\le1/4$, set $v=(z'-z)/(4h)$. Its norm is $1/4$,
+and the full line $z+tv$, $|t|\le1$, is allowed. Its activity
+norm is at most $1/8+1/4<1$. Its normalized coupling lies in
+the broader interval
+\[
+                   33/40\le w(\lambda+tv_1)\le47/40,
+\]
+since $w|tv_1|\le1/512<1/40$, the margin between the narrower
+and broader intervals. The prescribed coupling-line construction
+therefore supplies \eqref{eq:background-ray-tests} on this line.
+Apply \eqref{eq:ray-increment} at $t=4h\le1$ to get
+\[
+ \|F(z')-F(z)\|\le\frac{4d}{q/2-1}h\le4dh\le8\gamma h,
+ \qquad
+ |Q(z')-Q(z)|\le\frac{4f_m}{q-1}h\le8f_mh.
+\]
+This proves exactly \eqref{eq:coupled-activity-step} and
+\eqref{eq:coupled-cost-step}. The output bounds also follow from
+the constant-line tests, since $d\le1/256<1/8$ and $f_m=s_m/2$.
+
+The use of one-dimensional series here is sufficient for these
+Lipschitz estimates. The same real finite-test method also produces
+multilinear Taylor coefficients by polarization when a full analytic
+parameterization is required. That additional conclusion is not
+needed in the convergence argument of
+Section~\ref{sec:coupled-background-convergence}.

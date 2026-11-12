@@ -1,0 +1,430 @@
+% Mathematical derivation of the local neutral flat-sector RG propagation.
+\section{One-step propagation of a neutral curvature representative}
+\label{sec:ex-lattice-flat-step}
+
+This section gives the local mathematical content of the one-step flat-sector
+update. It concerns an order-zero quadratic precision difference; it does not
+assert convergence of the full Wilson theory. The inputs are exact one-step
+Schur data and weighted kernel estimates. All cost sums below are absolute weighted sums in $[0,\infty]$; signed
+kernel sums are used only after their absolute convergence has been established.
+
+\subsection{Spaces and estimates}
+
+Let $\mathcal C=\mathbb Z^4$ be the cover with Laurent distance
+$\operatorname{sep}(x,y)=\sum_{a=1}^4|x_a-y_a|$. For a positive integer scale
+$L$, set
+\[
+ \delta_L(x,y)=L^{-1}\operatorname{sep}(x,Ly),\qquad
+ \operatorname{bill}(a,t)=|a|e^t.
+\]
+For finite label sets $I,J$, a kernel $K$ is a real function on
+$(\mathcal C\times I)\times(\mathcal C\times J)$. All three atlas
+bounds below are per fixed finite label: for every cover point $x$, input label
+$i$, and output label $j$,
+\begin{align}
+ &\sum_{y\in\mathcal C}\operatorname{bill}
+   \bigl(K((x,i),(y,j)),\omega\delta_L(x,y)\bigr)\leq bL^{-2},\label{eq:ex-lattice-flat-step-row}\\
+ &\sum_{x\in\mathcal C}\operatorname{bill}
+   \bigl(K((x,i),(y,j)),\omega\delta_L(x,y)\bigr)\leq bL^2,
+   \quad (y,j)\text{ fixed},\label{eq:ex-lattice-flat-step-column}\\
+ &\sum_{y\in\mathcal C}\operatorname{bill}
+   \bigl(K((x+e_a,i),(y,j))-K((x,i),(y,j)),\omega\delta_L(x,y)\bigr)\leq bL^{-3}.
+   \label{eq:ex-lattice-flat-step-difference}
+\end{align}
+In the column line, $i$ and $(y,j)$ are fixed and the sum is over the cover
+coordinate of the input. These are the order-two atlas costs. Summing a row
+bound over all $|J|$ output labels or a column bound over all $|I|$ input
+labels contributes the corresponding explicit cardinality factor; neither
+line above already includes that factor. Here and below an estimate stated at
+width $\omega$ also holds at every smaller nonnegative width.
+
+A rank-one packet $P$ has coefficients $P((x,i),(v,j))$, with both
+positions in $\mathcal C$ and both types in $I$. Define its folded cost by
+\[
+ \|P\|_{\tau,\mathrm{fold}}
+ :=\sup_{(x,i)}\sum_{(v,j)\in\mathcal C\times I}
+     |P((x,i),(v,j))|e^{\tau\operatorname{sep}(x,v)}.
+\]
+It is neutral when $\sum_{v\in\mathcal C}P((x,i),(v,j))=0$ for every
+$x,i,j$. It is diagonally stationary when translating both cover positions
+by the same unit vector leaves each coefficient unchanged.
+
+Let $T,U$ map fine cover-label spaces to coarse cover-label spaces, using the
+same finite type set $I$, $|I|=m$. The push is
+\begin{equation}
+ (P\star(T,U))((y,k),(z,l))
+ =\sum_{(x,i)\in\mathcal C\times I}T((x,i),(y,k))
+   \sum_{(v,j)\in\mathcal C\times I}
+      P((x,i),(v,j))U((v,j),(z,l)).
+ \label{eq:ex-lattice-flat-step-push}
+\end{equation}
+Its folded cost is defined by the same formula as for $P$, with fine labels
+replaced by coarse labels and $\tau$ replaced by $\sigma$.
+
+\subsection{Centering and the kernel row bound}
+
+\begin{lemma}[Centering bound from an order-two atlas]
+\label{lem:ex-lattice-flat-step-center}
+Suppose $U$ has the per-label difference bound
+\eqref{eq:ex-lattice-flat-step-difference} with cost $p$ and width $\omega$.
+For $x,v\in\mathcal C$ and types $j,l\in I$, set
+\[
+ U_x(v,j;z,l)=U((v,j),(z,l))-U((x,j),(z,l)).
+\]
+If $\tau>0$, $0\leq\sigma\leq\omega$, and $2\sigma\leq L\tau$,
+then for every fixed output type $l$,
+\begin{equation}
+ \sum_{z\in\mathcal C}|U_x(v,j;z,l)|e^{\sigma\delta_L(x,z)}
+ \leq\frac{2p}{\tau L^3}e^{\tau\operatorname{sep}(x,v)}.
+ \label{eq:ex-lattice-flat-step-centered-row}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $a=\operatorname{sep}(x,v)$. Choose a coordinate path
+$x=v_0,v_1,\ldots,v_a=v$ with each increment a signed unit vector. The
+cover distance triangle inequality gives
+\[
+ \delta_L(x,z)\leq \operatorname{sep}(x,v_{k})/L+
+                         \delta_L(v_k,z)
+ \leq a/L+\delta_L(v_k,z).
+\]
+For each path edge, the per-label difference row bound
+\eqref{eq:ex-lattice-flat-step-difference} (the negative edge has the same
+absolute value after translating its base point) therefore bounds its
+weighted row at center $x$ by $pL^{-3}e^{\sigma a/L}$. Telescoping the
+coefficient difference and summing the $a$ edge bounds yields
+\[
+ \sum_z |U((v,j),(z,l))-U((x,j),(z,l))|e^{\sigma\delta_L(x,z)}
+ \leq pL^{-3}a e^{\sigma a/L}.
+\]
+Since $0\leq\sigma/L\leq\tau/2$,
+\[
+ a e^{\sigma a/L}\leq a e^{\tau a/2}
+       \leq (2/\tau)e^{\tau a},
+\]
+where the last inequality is $u\leq e^u$ for $u=\tau a/2\geq0$.
+This proves the claim, including $a=0$.
+\end{proof}
+
+\begin{remark}
+The path bound is for one fixed output label. Summing it over all $m$ output
+labels gives the aggregate outgoing-row bound used below.
+No cancellation has yet been used. Neutrality is used next to replace $U$ by
+this centered kernel inside the convolution.
+\end{remark}
+
+\subsection{Weighted push estimate}
+
+\begin{lemma}[Weighted convolution]
+\label{lem:ex-lattice-flat-step-convolution}
+Let $P$ be a neutral rank-one packet with
+$\|P\|_{\tau,\mathrm{fold}}\leq r$, where $r\geq0$. Suppose $T$ has the
+order-two atlas row and column bounds with cost $q\geq0$, and $U$ has the
+order-two atlas bounds with cost $p\geq0$, both at width $\omega$. Assume
+explicitly $\tau>0$, $0\leq\sigma\leq\omega$, and $2\sigma\leq L\tau$. Then
+\[
+ \|P\star(T,U)\|_{\sigma,\mathrm{fold}}
+ \leq \frac{m^2 q(2/\tau)p}{L}\,r.
+ \label{eq:ex-lattice-flat-step-folded}
+\]
+\end{lemma}
+
+\begin{proof}
+Before using neutrality, the uncentered absolute sum is already finite. For a
+fixed output $(y,k)$, first sum over the outgoing cover coordinate and type:
+its per-label row budget is $pL^{-2}$, so summing the $m$ output types costs
+$m pL^{-2}$. The packet factor then sums to at most $r$, since its nonnegative
+exponential weight is at least one. Finally the root column has per-input-
+type budget $qL^2$ and summing the $m$ input types costs $m qL^2$. Thus
+\[
+ \sum_{x,i,v,j,z,l}|T((x,i),(y,k))P((x,i),(v,j))U((v,j),(z,l))|
+ \leq (m qL^2)r(m pL^{-2})=m^2qpr.
+\]
+This finite majorant justifies Fubini and all subsequent changes of order,
+including the neutrality replacement. For fixed $(x,i)$ and output type $l$,
+neutrality gives
+\[
+ \sum_{v,j}P((x,i),(v,j))U((v,j),(z,l))
+ =\sum_{v,j}P((x,i),(v,j))
+    [U((v,j),(z,l))-U((x,j),(z,l))].
+\]
+Indeed, for each $j$, the subtracted term is independent of $v$ and its
+coefficient sum is zero. The folded bound makes these coefficient sums
+absolutely convergent; the Atlas pointwise bounds and the centered-row bound
+make the products summable. Thus this replacement and the following uses of
+Tonelli are legitimate.
+
+Fix an output market $(y,k)$. For output $(z,l)$, the cover geometry gives
+\[
+ \operatorname{sep}(y,z)\leq\delta_L(x,y)+\delta_L(x,z).
+\]
+After taking absolute values in the push and summing in $(z,l)$, the root
+factor is weighted by $\sigma\delta_L(x,y)$ and the outgoing factor by
+$\sigma\delta_L(x,z)$. For every fixed pair of input and output types of
+$U$, Lemma~\ref{lem:ex-lattice-flat-step-center} bounds the outgoing cover
+sum by $2p(\tau L^3)^{-1}e^{\tau\operatorname{sep}(x,v)}$. Summing over
+its $m$ output types gives the factor $m$. The exponential is exactly the
+packet weight on the leg $v$. Summing the packet over $(v,j)$ therefore costs
+at most $r$ for each fixed $(x,i)$.
+
+The remaining root sum is over $(x,i)$. For the fixed output $(y,k)$, the
+column bound in \eqref{eq:ex-lattice-flat-step-column} is per fixed input
+type $i$; summing over the $m$ possible $i$ costs $m qL^2$. Consequently the
+whole nonnegative sum is bounded by
+\[
+ (m qL^2)\left(m\frac{2p}{\tau L^3}\right)r
+ =\frac{m^2q(2/\tau)p}{L}r.
+\]
+This bound is finite and proves both absolute convergence of the defining
+push and the asserted folded estimate. More formally, the argument applies
+first to finite subsets of each countable cover sum; the uniform right-hand
+side bounds their increasing limit, so monotone convergence gives the full
+sums and justifies every rearrangement.
+\end{proof}
+
+\begin{remark}
+The estimate is a neutral-packet estimate: the extra factor $L^{-1}$ comes
+from centering $U$ and using its first-difference row cost $L^{-3}$, while the
+coarse-root column cost contributes $L^2$. Without neutrality, the centering
+identity is unavailable and the stated contraction does not follow.
+\end{remark}
+
+\subsection{Periodization and matching of the pushed representative}
+
+For each positive integer $n$, let $\Lambda_n=(\mathbb Z/n\mathbb Z)^4$,
+let $\pi_n: \mathcal C\to\Lambda_n$ be coordinatewise reduction, and let
+$\ell_n: \Lambda_n\to\mathcal C$ choose the centered representative
+with $\pi_n\ell_n$ the identity. The fibre of $\pi_n$ over $y$ is exactly
+$\{\ell_n(y)+n r:r\in\mathcal C\}$: if $\pi_n z=y$, then each
+coordinate of $z-\ell_n(y)$ is divisible by $n$, with unique quotient.
+Fix positive periods $n_f,n_c,n$ when using a composition. For a kernel $K$
+and output side $n$, define its displayed finite matrix by
+\[
+ (D_nK)((x,i),(y,j))
+ :=\sum_{r\in\mathcal C}K((x,i),(\ell_n(y)+nr,j)).
+\]
+When the input side is $n_f$ and output side is $n_c$, $K$ matches a matrix $A$
+if
+\begin{equation}
+ (D_{n_c}K)((x,i),(y,j))=A((\pi_{n_f}(x),i),(y,j))
+ \quad\text{for every }(x,i)\in\mathcal C\times I,
+                      (y,j)\in\Lambda_{n_c}\times J.
+ \label{eq:ex-lattice-flat-step-match}
+\end{equation}
+Thus matching requires the same value for every cover representative of the
+input torus point, not just its chosen lift. A kernel is city-covariant at
+ratio $L$ if
+\begin{equation}
+ K((x+Lu,i),(y+u,j))=K((x,i),(y,j))
+ \quad (u,x,y\in\mathcal C).
+ \label{eq:ex-lattice-flat-step-city}
+\end{equation}
+
+For kernels $K$ and $U$ with an intermediate finite type set $J$, define their
+cover composition by
+\[
+ (K\diamond U)((x,i),(z,k))
+ :=\sum_{v\in\mathcal C}\sum_{j\in J}
+       K((x,i),(v,j))U((v,j),(z,k)).
+\]
+Suppose $K$ matches $A$ from side $n_f$ to side $n_c$, and $U$ matches $B$
+from side $n_c$ to side $n$. Assume for each fixed external input and output
+that the total double absolute sum over the intermediate and final cover
+coordinates and intermediate labels is finite. Then
+\begin{equation}
+ (D_n(K\diamond U))((x,i),(y,k))
+ =\sum_{w\in\Lambda_{n_c}}\sum_{j\in J}
+   A((\pi_{n_f}(x),i),(w,j))B((w,j),(y,k)).
+ \label{eq:ex-lattice-flat-step-composition}
+\end{equation}
+Indeed, replace the output fibre in $D_n$ by its explicit coset, interchange
+absolutely convergent sums, and first sum in the final cover lift:
+\[
+\begin{split}
+ (D_n(K\diamond U))((x,i),(y,k))
+ &=\sum_{v,j}K((x,i),(v,j))
+       \sum_{r\in\mathcal C}U((v,j),(\ell_n(y)+nr,k))\\
+ &=\sum_{v,j}K((x,i),(v,j))B((\pi_{n_c}(v),j),(y,k))\\
+ &=\sum_{w,j}A((\pi_{n_f}(x),i),(w,j))B((w,j),(y,k)).
+\end{split}
+\]
+The second equality is the matching identity for $U$. For the third, partition
+$\mathcal C$ into the disjoint fibres $\pi_{n_c}^{-1}(w)$ and use the matching
+identity for $K$ on each fibre. This proves the exact finite-matrix product,
+including the sum over intermediate types.
+
+The transpose also has an exact matching rule. Suppose $n_f=Ln_c$ and $T$ is
+city-covariant at ratio $L$ and matches $M$ from side $n_f$ to side $n_c$. Then
+$\operatorname{swap}T$, defined by
+$(\operatorname{swap}T)((x,j),(y,i))=T((y,i),(x,j))$, matches $M^{\mathsf T}$
+from side $n_c$ to side $n_f$. For fixed $x\in\mathcal C$ and $y\in\Lambda_{n_f}$, its display is
+\[
+\begin{split}
+ (D_{n_f}\operatorname{swap}T)((x,j),(y,i))
+ &=\sum_{v\in\mathcal C}T((\ell_{n_f}(y)+n_fv,i),(x,j))\\
+ &=\sum_{v\in\mathcal C}T((\ell_{n_f}(y),i),(x-n_c v,j))\\
+ &=\sum_{r\in\mathcal C}T((\ell_{n_f}(y),i),
+                    (\ell_{n_c}(\pi_{n_c} x)+n_c r,j))\\
+ &=(D_{n_c}T)((\ell_{n_f}(y),i),(\pi_{n_c} x,j))
+ =M((y,i),(\pi_{n_c} x,j)).
+\end{split}
+\]
+The second line uses city covariance with shift $u=n_c v$. In the third line use
+$x=\ell_{n_c}(\pi_{n_c} x)+n_c\,\operatorname{rent}_{n_c}(x)$ and the bijective
+reindexing $r=\operatorname{rent}_{n_c}(x)-v$ of $\mathcal C$. The last line
+is the matching identity and equals the $( (\pi_{n_c} x,j),(y,i))$ entry of
+$M^{\mathsf T}$. Thus no unproved periodization rule is needed.
+
+For a rank-one packet, define its two-point kernel by
+$P^{\sharp}((x,i),(v,j))=P((x,i),(v,j))$. Direct substitution in the push
+definition gives the cover-kernel identity
+\begin{equation}
+ (P\star(T,U))^{\sharp}
+ =(\operatorname{swap}T)\diamond(P^{\sharp}\diamond U).
+ \label{eq:ex-lattice-flat-step-second-composition}
+\end{equation}
+For completeness, the absolute sum in the two compositions is finite. The
+row atlas estimate implies $|U((v,j),(z,l))|\leq pL^{-2}$, and the folded
+bound implies $\sum_{v,j}|P((x,i),(v,j))|\leq r$. Hence
+$\sum_{v,j}|P((x,i),(v,j))U((v,j),(z,l))|\leq pL^{-2}r$.
+The outer sum against $\operatorname{swap}T$ is finite by the column atlas
+bound, summed over its $m$ input types. These same estimates justify Fubini.
+If $P^{\sharp}$ matches $A$, and $T,U$ match $M,N$, respectively, apply
+\eqref{eq:ex-lattice-flat-step-composition} first to $P^{\sharp}$ and $U$,
+then to $\operatorname{swap}T$ and that composition. The transpose calculation
+above supplies the match $M^{\mathsf T}$ for $\operatorname{swap}T$.
+The resulting displayed coarse matrix is exactly $M^{\mathsf T}AN$.
+
+\subsection{Exact propagation of the quadratic representative}
+
+Let $E_n^1=\mathbb R^{\Lambda_n\times I_1}$ and
+$E_n^2=\mathbb R^{\Lambda_n\times I_2}$ be the one-form and curvature
+coordinate spaces; $d_n:E_n^1\to E_n^2$. The precision matrices
+$Q_H,Q_Y$ act on $E_{n_f}^1$, and $Q_{H'},Q_{Y'}$ act on $E_{n_c}^1$.
+The curvature representative matrix $A$ acts on $E_{n_f}^2$, whose type set is the same $I$ used for the packet legs. The mean matrices
+$M_A,N_A:E_{n_c}^1\to E_{n_f}^1$, and the matched carrier matrices
+$C_Y,C_H:E_{n_c}^2\to E_{n_f}^2$.
+
+Here are the exact identities used below and their derivations. The two
+one-step precision inputs share a blocking (coarse-averaging) map $B:E_{n_f}^1\to E_{n_c}^1$ and
+penalty coefficient $\kappa$. For the two histories they say
+\[
+ Q_HM_A=B^{\mathsf T}Q_{H'},\quad BM_A=I-\kappa Q_{H'},\qquad
+ Q_YN_A=B^{\mathsf T}Q_{Y'},\quad BN_A=I-\kappa Q_{Y'}.
+\]
+The floor data make all four precision matrices symmetric. Transposing the
+first identity for $Y$ gives $N_A^{\mathsf T}Q_Y=Q_{Y'}B$, while transposing
+$BN_A=I-\kappa Q_{Y'}$ gives $N_A^{\mathsf T}B^{\mathsf T}=I-\kappa Q_{Y'}$.
+Therefore
+\[
+\begin{split}
+ N_A^{\mathsf T}(Q_Y-Q_H)M_A
+ &=Q_{Y'}BM_A-N_A^{\mathsf T}B^{\mathsf T}Q_{H'}\\
+ &=Q_{Y'}(I-\kappa Q_{H'})-(I-\kappa Q_{Y'})Q_{H'}\\
+ &=Q_{Y'}-Q_{H'}.
+\end{split}
+\]
+This proves the mixed Schur identity
+\begin{equation}
+ Q_{Y'}-Q_{H'}=N_A^{\mathsf T}(Q_Y-Q_H)M_A.
+ \label{eq:ex-lattice-flat-step-schur}
+\end{equation}
+
+For either history, write $G,G'$ for fine/coarse metric matrices, $D,D'$ for
+the diagonal matrices, $R$ for the installed transfer on curvature
+coordinates, and $Z$ for its mean on one-form coordinates. Its carrier is
+$C=G^{-1}RG'$. The floor equalities on exact forms and the diagonal tower
+identity are respectively
+$Gd_f=Dd_f$, $G'd_c=D'd_c$, and $RD'd_c=Dd_fZ$. The floor inverse identity
+is $G^{-1}G=I$. Thus, with all domains as above,
+\[
+\begin{split}
+ Cd_c&=G^{-1}RG'd_c
+      =G^{-1}RD'd_c
+      =G^{-1}Dd_fZ
+      =G^{-1}Gd_fZ
+      =d_fZ.
+\end{split}
+\]
+Applying this calculation to the $Y$ history with $Z=N_A$ and the $H$ history
+with $Z=M_A$ proves the inherited identities
+\begin{equation}
+ C_Yd_c=d_fN_A,\qquad C_Hd_c=d_fM_A.
+ \label{eq:ex-lattice-flat-step-inherited}
+\end{equation}
+
+\begin{proposition}[One-step flat-sector propagation]
+\label{prop:ex-lattice-flat-step}
+Let $P$ be a rank-one packet satisfying neutrality, diagonal stationarity, and
+$\|P\|_{\tau,\mathrm{fold}}\leq r$. Suppose the fine two-point kernel associated with $P$ matches a matrix $A$,
+which represents the curvature difference, and
+\[
+ d_f^{\mathsf T}A d_f=Q_Y-Q_H.
+\]
+Suppose $T,U$ are matched, on the coarse torus, by their carrier matrices
+$M=C_Y$ and $N=C_H$, respectively. They satisfy the order-two atlas bounds
+with nonnegative costs $q,p$ and width $\omega$ used in
+Lemma~\ref{lem:ex-lattice-flat-step-convolution}, and are city-covariant at
+ratio $L$. The fine and coarse torus periods satisfy $n_f=Ln_c$. Assume
+$\tau>0$, $r\geq0$, $0\leq\sigma\leq\omega$, and
+$2\sigma\leq L\tau$. Also assume the exact Schur and inherited identities
+\eqref{eq:ex-lattice-flat-step-schur} and\;\eqref{eq:ex-lattice-flat-step-inherited}. Finally suppose $U$ has the travel
+property that each fixed pair of finite labels has a row sum independent of
+the cover point. Then the pushed packet $P'=P\star(T,U)$ has the following
+properties:
+\begin{enumerate}
+\item $P'$ is neutral;
+\item $P'$ is diagonally stationary;
+\item its folded cost satisfies
+\[
+ \|P'\|_{\sigma,\mathrm{fold}}
+ \leq \frac{m^2q(2/\tau)p}{L}\,r;
+\]
+\item $P'$ is matched by $M^{\mathsf T}AN$, and
+\[
+ d_c^{\mathsf T}(M^{\mathsf T}AN)d_c=Q_{Y'}-Q_{H'}.
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The folded estimate is Lemma~\ref{lem:ex-lattice-flat-step-convolution}.
+For neutrality, expand the pushed constant-column sum, interchange the sums
+using the same absolute weighted bounds, and first sum in the output cover
+coordinate of $U$. Its value depends only on the finite labels and is
+independent of the intermediate cover point by the travel assumption. The
+remaining cover sum is then the neutral column sum of $P$, hence is zero.
+For diagonal stationarity, translate the outer summation variable and then
+the inner one. The two covariance identities for $T$ and $U$, together with
+the simultaneous stationarity of $P$, leave each summand unchanged. Absolute
+convergence just established permits these translations in the sums.
+
+By the exact reindexing argument in
+\eqref{eq:ex-lattice-flat-step-composition} and the transpose calculation
+following it, the pushed packet is matched by $M^{\mathsf T}AN$; the two
+applications have absolutely convergent sums by the weighted estimates.
+Finally, using \eqref{eq:ex-lattice-flat-step-inherited},
+\[
+\begin{split}
+ d_c^{\mathsf T}M^{\mathsf T}ANd_c
+ &= (Md_c)^{\mathsf T}A(Nd_c)\\
+ &= (d_fN_A)^{\mathsf T}A(d_fM_A)\\
+ &= N_A^{\mathsf T}(d_f^{\mathsf T}Ad_f)M_A\\
+ &= N_A^{\mathsf T}(Q_Y-Q_H)M_A\\
+ &=Q_{Y'}-Q_{H'},
+\end{split}
+\]
+where the final equality is \eqref{eq:ex-lattice-flat-step-schur}. This proves
+the propagated curvature identity.\end{proof}
+
+\begin{remark}[Inputs still required from the RG construction]
+The proposition proves the one-step packet algebra and weighted estimate
+conditional on the two actual order-two atlas bounds, exact tower matching,
+quadratic floors, and travel condition. Those hypotheses are mathematical
+inputs from the selected construction and must be checked there. In particular,
+this section does not prove that a given construction supplies these bounds,
+nor does it upgrade the order-zero quadratic statement to the full hierarchy
+of Wilson observables.
+\label{rem:ex-lattice-flat-step-inputs}
+\end{remark}

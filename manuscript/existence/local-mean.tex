@@ -1,0 +1,252 @@
+\section{The Gaussian mean away from seeds}
+\label{sec:local-mean}
+The local covariance is accompanied by a local mean. Its defining
+formula alone does not make the affine energy small: a uniform bound
+on the inverse would only preserve the size of the original source.
+The additional gain comes from the stationary linear response. We
+first prove its cancellation, and then compare it with the actual
+mean on one common clean neighbourhood.
+
+\subsection{The stationary response cancels every linear row}
+Fix the step, forest and full flat kernels of
+Section~\ref{sec:seed-unhit-comparison}. Write $\mathcal U_F b$ for
+the fine stationary field in tree coordinates with coarse input $b$.
+It is the tree-straightened installed linear response. Its relative
+field is
+\[
+ v_F(b)=\mathcal U_F b-\overline b,
+\]
+where $\overline b$ is the linear coarse replica. On every forest
+bond this difference is zero. We use the actual diagonalization
+identity for this response: if $K_f,K_c$ are the fine and coarse
+quadratic forms and $\mathcal Q$ is the rooted linear predictor,
+\begin{equation}\label{eq:mean-diagonal}
+ K_c=\mathcal U_F^*K_f\mathcal U_F
+       +p(1-\mathcal Q\mathcal U_F)^*
+                     (1-\mathcal Q\mathcal U_F).
+\end{equation}
+These are the full physical forms, including the prescribed root
+correction. This is an incoming flat construction identity; it does
+not follow merely from positivity of the forms.
+
+Let $b_s$ and $a_s$ be the pullbacks, by one signed lattice symmetry,
+of $b$ and $\mathcal U_Fb$. Set
+\[
+ w=B_cd_cb_s,\qquad u=B_fd_fa_s,\qquad
+ z=\sqrt p\,(b_s-\mathcal Qa_s),\qquad
+ U=F_0w,\quad V=I_0w.
+\]
+All norms in this paragraph are counting Euclidean norms, summed
+over their physical sites and colours. The two curvature squares
+are the corresponding quadratic forms. Indeed expand each colour
+component in the curvature factorization $K=d^*B^*Bd$; the predictor
+square is exactly the last term in \eqref{eq:mean-diagonal}.
+Thus that identity gives
+\begin{equation}\label{eq:mean-norm-equality}
+ \|u\|_2^2+\|z\|_2^2=\|w\|_2^2.
+\end{equation}
+The same equality holds after the signed pullback: the two full
+quadratic forms are invariant, and the nonlinear predictor energy
+is invariant with the transported tags. Apply that last invariance
+to $\exp(tb)$ and $\exp(t\mathcal U_Fb)$, divide by $t^2$ and
+let $t\to0$. The derivative proved in
+Section~\ref{sec:predictor-branch} gives the stated predictor square.
+This also explains why the rooted response need not itself commute
+with the chosen symmetry.
+
+The full stack identities give
+\[
+ N_0w=0,\qquad F_0^*U+I_0^*V=w,
+ \qquad F_0^*u+I_0^*z=w.
+\]
+The first is the extra identity $N_0B_cd_c=0$; the second follows
+from the stack isometry and the first, and the third is
+\eqref{eq:unhit-linear-zero}. Taking inner products with $w$ gives
+\[
+ \|U\|_2^2+\|V\|_2^2=\|w\|_2^2,
+ \qquad \langle U,u\rangle+\langle V,z\rangle=\|w\|_2^2.
+\]
+Together with \eqref{eq:mean-norm-equality}, these imply
+$\|U-u\|_2^2+\|V-z\|_2^2=0$. Every summand is nonnegative,
+so $U=u$ and $V=z$ at every address. In the notation of affine
+energy rows, this says
+\begin{equation}\label{eq:mean-stationary-zero}
+ C_0(\overline{b_s},b_s)-G_0(b_s)
+                 +\mathcal A_\infty(v_F(b))_s=0.
+\end{equation}
+Here $C_0$ is the linear fine-curvature/predictor pair, $G_0$ the
+linear guide, and $\mathcal A_\infty$ the full fluctuation row;
+the subscript $s$ includes the signed action on bonds. Linearity of
+$C_0$ in its fine input and commutation of the replica with the signed
+action give the displayed equation. In particular the cancellation
+holds for each row, not just after summing the energy.
+
+We will also need a volume-independent bound
+\begin{equation}\label{eq:mean-response-cap}
+ \|v_F(b)\|_\infty\le C_{\rm resp}\|b\|_\infty.
+\end{equation}
+Here is the quantitative tree estimate behind this bound. Put
+$r_0=(J+3)L$ and let the installed cross kernel have weighted row
+price $C/L$ and width $\eta\ge0$. At fine sites within $tL$ of a
+fixed origin, moving the exponential weight costs at most $e^{\eta t}$.
+Consequently its action on a scalar coarse field bounded by that
+weight is at most
+\[
+ A/L,\qquad
+ A=e^{\eta(12(J+3)+5)}e^\eta\,4\max(C,1).
+\]
+A tree hike has length at most $4L$. Each coordinate route in the
+root patch has length at most $8r_0$; the root correction is the
+difference of two averages of such path integrals. It is therefore
+bounded by $16r_0 A/L$. Combining the hike and root correction gives
+$C_1=(4+16(J+3))A$ for the straightening potential. Taking its bond
+gradient costs $2C_1$, so the extracted response costs at most
+$A+2C_1$. Subtracting the replica costs another $e^\eta$ in the
+weighted estimate. For a field of sup norm one all its colour
+coordinates satisfy the weighted premise, since the weight is at
+least one. Summing the absolute colour coordinates bounds the
+physical colour norm. Thus one may take
+\[
+ C_{\rm resp}=\max\{1,q\max(0,A+2C_1+e^\eta)\},
+\]
+where $q$ is the colour dimension. Homogeneity proves
+\eqref{eq:mean-response-cap} for arbitrary $b$. All tree and path
+lengths were bounded before periodization, so the estimate is uniform
+in the period and in the forest.
+
+\subsection{A common logarithmic comparison field}
+Retain the upper-exponent convention of
+Section~\ref{sec:packet-estimates}. Away from the seed set the
+coarse field $V$ is clean: its plaquette chords are bounded by the
+small threshold. If the ball of radius $d+1$ about $o$ is clean,
+$d\le32B$, the axial construction gives a gauge with bond chords,
+on the radius-$d$ ball, at most
+\[
+ 16\{2(32B+1)+1\}^5N_p\,2\tau_c.
+\]
+Here $\tau_c$ is the coarse small threshold and has upper exponent
+$-1/2$. Apply the local logarithm there and extend the logarithmic
+field by zero elsewhere. We obtain a single global field $b$ and
+a coarse gauge $g$ such that
+\begin{equation}\label{eq:mean-common-log}
+ g\cdot V=\exp b\ \hbox{on the radius-$d$ ball},\qquad
+ \|b\|_\infty\le w(x),
+\end{equation}
+where $w\ge0$ has upper exponent $-1/2$. The period and chart-radius
+conditions hold at one threshold depending only on the fixed step
+parameters. The zero extension is used for the full linear kernels;
+no smallness of $V$ outside the ball is asserted.
+
+Consider a row whose anchor is at distance greater than $20B$ from
+all seeds, and suppose \eqref{eq:mean-common-log} holds on its
+radius-$2B$ ball. In the original gauge use the candidate
+\[
+ v=\operatorname{Ad}(g^{-1}\circ\operatorname{parent})v_F(b).
+\]
+It vanishes on tree bonds and has norm at most
+$W=C_{\rm resp}w$. Within the stencil of this remote row all non-tree
+bonds are active. Thus the sector's affine signal agrees there with
+$v$, including its tree zeros. Gauge covariance transfers its actual
+affine row to the same $b$ and $v_F(b)$.
+
+Let $C(V)$ be the fine-curvature/predictor pair at the coarse replica,
+$G(V)$ the guide, and $\mathcal A_R^V$ the transported cut fluctuation
+row. Their residual is
+$C(V)-G(V)+\mathcal A_R^Vv_F(b)$ in this common gauge.
+Subtract \eqref{eq:mean-stationary-zero}. The four errors are
+\[
+ \begin{split}
+ &C(V)-C_0(\overline b,b),\qquad -(G(V)-G_0(b)),\\
+ &(\mathcal A_R^V-\mathcal A_R)v_F(b),\qquad
+ (\mathcal A_R-\mathcal A_\infty)v_F(b).
+ \end{split}
+\]
+The first two have upper exponent $-1$, by the local Taylor and
+guide comparisons of Sections~\ref{sec:seed-unhit-comparison}
+and~\ref{sec:packet-annulus}: their bounds are fixed multiples of
+$w\{(1+R)w+e^{-\sigma R}\}$. The clean condition makes the guide's
+clipping inactive on precisely the read stencil; it is removed
+before the comparison with the globally extended logarithm.
+For the third error, all coarse transport bonds have chord at most
+$Cw$ on the common hull. The adjoint estimate and the absolute path
+price give a bound $C(B+1)wW$. The fourth is at most
+$CW e^{-\sigma R}$. The cutoff $R=\lfloor B/100000\rfloor$ has
+an exponentially small tail of every prescribed negative upper
+exponent. We have therefore proved, for one $a(x)\ge0$ of upper
+exponent $-1$,
+\begin{equation}\label{eq:mean-candidate-residual}
+ \|\mathcal R_j(v)\|\le a(x)
+\end{equation}
+on every row whose comparison hull is included in the common clean
+ball. Here $\mathcal R_j$ is the actual unscaled affine row, with
+its original orientation and tags. One field $b$ is used for all
+rows in the ball, so these estimates can be inserted into a matrix
+identity without changing the candidate from row to row.
+
+\subsection{Comparing the candidate with the chosen local mean}
+Use counting coordinates and the matrices of
+Sections~\ref{sec:sector-gram} and~\ref{sec:local-covariance}.
+Write $M$ for the selected row matrix, $A=M^*M+\Pi_{\rm inactive}$,
+$\ell=M^*r(0)$ for the linear source, and
+\[
+ r(v)=Mv+r(0),\qquad P=\hbox{the padded principal inverse},
+ \qquad m=-P^*\ell,\quad E=AP-1.
+\]
+The row $r_j(v)$ is $s\mathcal R_j(v)$ when selected, and zero
+otherwise; $s>0$ is the fixed signed-channel normalization. The
+chosen physical mean $\mu$ is obtained from $m$ by reassembling its
+colour coordinates. We have the exact identity
+\begin{equation}\label{eq:mean-error-identity}
+ m-v=E^*v-P^*(Av+\ell),\qquad
+ Av+\ell=M^*r(v)+\Pi_{\rm inactive}v.
+\end{equation}
+For the first equality use $E^*=P^*A-1$ and cancel $P^*Av$.
+The second follows directly from the definition of $A$ and $\ell$.
+
+Let $S$ bound both unweighted row and column sums of $P$, let
+$\varepsilon_B$ bound those of $E$, and let $Y$ bound those of $M$.
+These constants are supplied by the weighted estimates already proved;
+$\varepsilon_B$ has every negative upper exponent. If the normal
+residual $Av+\ell$ is bounded by $b_0$ on the principal window
+attached to coordinate $i$, \eqref{eq:mean-error-identity} gives
+\begin{equation}\label{eq:mean-point}
+ |m_i-v_i|\le S b_0+\varepsilon_B\|v\|_\infty.
+\end{equation}
+Indeed the $i$th row of $P^*$ is supported on that very window,
+and the column bounds give both estimates. This uses $P^*$ in the
+mean; replacing it by the symmetrized covariance would change the
+identity.
+
+Fix a target row at anchor $o$ farther than $30B$ from every seed.
+Choose \eqref{eq:mean-common-log} on the radius-$8B$ ball. For each
+coordinate within $B$ of $o$, its principal window lies within $3B$
+of $o$, since the window radius is at most $B+2$. At such window
+coordinates the inactive term vanishes: a non-tree bond is active
+there, and a tree bond has candidate value zero. A nonzero entry
+of $M^*$ reads a row within $B/4$, so all its affine residuals obey
+\eqref{eq:mean-candidate-residual}, using subballs of the same
+radius-$8B$ comparison. Hence $b_0=Ys a$, and
+\[
+ |m_i-v_i|\le U(x):=SYs\,a(x)+\varepsilon_BW(x)
+ \quad\hbox{when }d(o,i)\le B.
+\]
+The function $U$ has upper exponent $-1$.
+
+The target row is selected and reads only coordinates within $B/4$.
+Its difference on $\mu$ and $v$ is linear, so the row bound on $M$
+and the passage from colour coordinates to the colour norm imply
+\[
+ \|\mathcal R_o(\mu)-\mathcal R_o(v)\|
+       \le q s^{-1}YU.
+\]
+Combining this with \eqref{eq:mean-candidate-residual} proves
+\begin{equation}\label{eq:mean-remote-final}
+ \|\mathcal R_o(\mu)\|\le a(x)+q s^{-1}YU(x),
+ \qquad d(o,\text{seeds})>30B.
+\end{equation}
+The right-hand side has upper exponent $-1$, uniformly in the
+period, forest, tags and all sectors satisfying the fixed construction
+conditions. This is the required extra order of smallness of the
+actual affine mean. The argument uses the flat stationary response
+and its diagonal identity; it makes no assertion about derivatives
+of the mean or a nonlinear global stationary solution.

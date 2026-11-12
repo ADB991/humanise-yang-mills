@@ -1,0 +1,261 @@
+\section{Realigning and propagating the marked comparison}
+\label{sec:allarity-marked-propagation}
+
+The finite polynomial comparison must survive each block integration.
+At an intermediate level the marked expansion contains the desired
+principal insertion, a small regular remainder, and a forced remainder.
+We explain how its leading pieces are reassigned to the prescribed
+supports and how the resulting errors accumulate. The identities use
+the actual representation at that level.
+
+\subsection{Why a connected principal component stays in one cell}
+
+Let $\rho\ge0$ be an elementary slice radius. Each elementary principal
+piece has a nonempty set of marked reader sites and its full support is
+within distance $\rho$ of every one of those readers. Assume distinct
+replica cells have reader separation strictly greater than $dB$, and
+\[
+                  (3+2n)\rho\le dB\le bB.
+\]
+Consider a connected component in the graph joining elementary pieces
+whose full supports intersect. Two marked readers on the same piece
+are at distance at most $\rho$, since a reader lies in that piece's
+support. Readers on two adjacent pieces have distance at most
+$2\rho$, by using a point in the intersection. Both bounds are at most
+$dB$, so the readers belong to the same replica cell. Following a
+path of intersecting pieces shows that all marked readers of the
+component belong to one cell.
+
+There are at most $n$ distinct marker labels in that cell. Make a graph
+on the labels used by the component, joining labels appearing on the
+same or on adjacent pieces. The preceding support path gives a walk
+between any two of these labels. Erase cycles from the walk. The
+remaining simple path uses at most $n-1$ edges, each of geometric
+length at most $2\rho$. Thus the distance between any two marked
+readers is at most $2n\rho$. Every point in the component's full
+support is at distance at most $\rho$ from one of its readers, so
+it is at distance at most $(2n+1)\rho\le dB$ from every marked
+reader of the component. Its marker diameter is also at most $dB$.
+This proves the required enlarged-support bounds independently of
+how many elementary pieces the component contains.
+
+For the selected construction take the integer slice radius supplied
+by the local expansion, bounded by
+$aB/(3+2n)$, where $a$ is the chosen horizon. The purchase
+$6n+3\le a/(3+2n)$ is the separate local room condition needed to
+produce these elementary slices. Once they are available, the
+argument above uses $(3+2n)\rho\le aB$ and the strict separation
+of the replica cells. Subsequent regrouping of pure principal
+components preserves their full supports and marker unions, so the
+same argument applies to the principal connected logarithm.
+
+\subsection{Marker prices and spatial prices}
+
+Fix $n\ge1$ marks in each replica cell. Every principal piece has a
+nonempty marker subset $I\subseteq\{1,\ldots,n\}$ and a prescribed
+spatial support $X_{c,I}$ in cell $c$. The geometric hypotheses are the
+following: pieces with the same marker mode have a unique prescribed
+support; each actual principal support is contained in that support;
+and two prescribed supports containing the same spatial site belong
+to the same replica cell. These statements are made for full inspected
+supports, including the masks. Let
+\[
+ \operatorname{chg}_e(X)=\exp(e\operatorname{cov}_B(X)),\qquad
+ \operatorname{chg}_e(X_{c,I})\le R_e,
+\]
+where $e\ge0$ is the support exponent, $B$ the current radius and
+$\operatorname{cov}_B$ its covering number. Use the constant marker
+weight $0<r\le1$. The weight of a mode $I$ is $r^{|I|}\le1$.
+
+If each prescribed piece has weighted coefficient price at most $Z$,
+its total incidence price at a fixed mark $(c,j)$ is at most $2^nZ$.
+Indeed only subsets $I$ of that same cell can contain $(c,j)$, and
+there are at most $2^n$ subsets. This estimate is independent of the
+number of replica cells.
+
+A second estimate converts incidence price to spatial price. Suppose
+actual pieces $s_a$ have nonnegative prices $p_a$ and nonempty marker
+supports, and the total price of pieces containing any fixed mark is
+at most $N$. Assign piece $a$ to its prescribed support
+$X_{c(a),I(a)}$. At a spatial site $v$, if any such support contains
+$v$, all such supports lie in one cell $c$. Charge each summand to
+one of its nonempty marks and then overcount by summing over every
+mark in that cell. It follows that
+\begin{equation}\label{eq:allarity-spatial-incidence}
+ \sum_{a:\,v\in X_{c(a),I(a)}}
+            p_a\operatorname{chg}_e(X_{c(a),I(a)})
+                    \le n N R_e.
+\end{equation}
+This is why the spatial charge is proportional to $n$, while the
+number of principal subset types is bounded by $2^n$.
+
+\subsection{Replacing the leading pieces on their prescribed supports}
+
+Write the current regular source as a sum of remainder pieces $H_a$
+and leading pieces $S_b$. Let $F_{c,I}$ be the desired principal source
+at mode $(c,I)$, with support $X_{c,I}$. Group the $S_b$ by this marker
+mode and define on its healthy region
+\[
+ L_{c,I}(U)=\sum_{b:\,\operatorname{mode}(S_b)=(c,I)}S_b(U)
+                        -F_{c,I}(U).
+\]
+Assume $|L_{c,I}(U)|\le y$ there. Attach the full support $X_{c,I}$
+to $L_{c,I}$ and apply its healthy mask. The incidence price of these
+new regular remainders is at most
+\begin{equation}\label{eq:allarity-realign-regular}
+                         2^n R_e y.
+\end{equation}
+Indeed each individual weighted price is at most $R_e y$, because
+$r^{|I|}\le1$, and the preceding subset count applies.
+
+The mask change also has a forced part. A leading piece may be healthy
+on its smaller support while its prescribed larger support is not
+healthy. Split its original masked value into its value on the larger
+healthy region and the complementary part. The latter is supported
+where the enlarged support contains a flag. Insert these complementary
+pieces into the forced alphabet, keeping their original marker modes.
+The identity is an identity of functions on every field: on the larger
+healthy region it is the defining equality for $L_{c,I}$; on its
+complement the difference has just been assigned to the forced part.
+Apply the exact regular/forced regrouping of
+Section~\ref{sec:soft-log-fusion} to the enlarged supports. No division
+by an activity value is involved.
+
+Here is its quantitative form. Suppose the previous forced spatial
+price is $s$, the leading incidence price is $Z$, and the new forced
+inflation exponent is $g\ge0$. If
+\begin{equation}\label{eq:allarity-realign-forced-input}
+ e^g s+n Z R_{e+1}\le\delta,
+           \qquad (2B+1)^4\delta\le1,
+\end{equation}
+then the regrouped forced price is at most
+\begin{equation}\label{eq:allarity-realign-forced-output}
+                           e^{-g}(e^\delta-1).
+\end{equation}
+To apply the canonical regrouping estimate, the old forced pieces
+contribute $e^g s$ and the newly moved pieces contribute at most
+$n Z R_{e+1}$ by \eqref{eq:allarity-spatial-incidence}. These are the
+two terms of its local inflation budget. Its support-counting factor
+is exactly $(2B+1)^4$, so \eqref{eq:allarity-realign-forced-input}
+is its smallness condition. Its exponential product bound gives
+\eqref{eq:allarity-realign-forced-output}. The same regrouping bijection
+preserves the archived background coefficient at each address.
+Thus a regular remainder price $z$ becomes at most
+$z+2^nR_e y$, while the forced price changes as displayed, and the
+polynomial density is unchanged.
+
+\subsection{The recurrence along the comparison interval}
+
+Fix a top comparison depth $k$, an intermediate level $l$, a larger
+arity allowance $u\ge\max(2,n)$, and a monitor $H>1$ fixed by $k$.
+Here $k,l,u,n$ are natural numbers with $l\le k$, and all scalar
+price bounds are nonnegative.
+Let the tolerance exponent be $q\ge6$ and the regular step multiplier
+be $\alpha\ge0$. Set
+\[
+ d_0=H^{-q},\qquad d_j=(\alpha+2)^j d_0.
+\]
+The principal sources are the connected polynomials of the same
+Gaussian history at the current level, with the same cell and marker
+labels. At the terminal comparison level their higher connected
+coefficients vanish: the formal logarithm of
+$\prod_i(1+z_iP_i)$ is $\sum_i z_iP_i$. Its singleton terms are
+exactly the launched calibrated insertions. Consequently the initial
+marked representation has regular remainder price $d_0$, after the
+specified terminal-source purchase, which must also bound its initial
+forced price by $G_k$.
+
+Suppose the actual one-step marked compiler at each level has the
+following quantitative outputs when its incoming remainder price is
+$z\ge d_0$. Before realignment it supplies remainder price at most
+$(\alpha+1)z$, principal incidence price at most $H^{-2}$, and forced
+price at most $G_i^2$ at the coarse level. Here
+$G_i=e^{-g_i}\le1$ is the required final forced price. Its projected
+principal polynomial differs from the next prescribed connected
+polynomial by at most $y$ on every required healthy region. Purchase
+\begin{gather}
+ 2^nR_e y\le d_0,\qquad
+ G_i+n H^{-2}R_{e+1}\le H^{-1},\label{eq:allarity-step-purchases}\\
+ (2B_i+1)^4H^{-1}\le1,\qquad e^{H^{-1}}-1\le1.
+ \label{eq:allarity-step-small}
+\end{gather}
+The forced inequality is \eqref{eq:allarity-realign-forced-input}
+with $s=G_i^2$, $g=g_i$ and $\delta=H^{-1}$. Its output is at most
+$G_i$. The regular price becomes at most
+\[
+       (\alpha+1)z+d_0\le(\alpha+2)z.
+\]
+Induction therefore bounds the remainder at level $i$ by $d_{k-i}$,
+with forced price $G_i$ and the exact prescribed principal polynomial.
+At the induction step the density is the push of the preceding marked
+density along the same transition kernel; the realignment changes only
+its representation. Hence this is an estimate on the original launched
+observable, not a sequence of separately chosen approximants.
+
+The total number of steps is purchased so that
+$(\alpha+2)^{k-l}\le H$. It follows that
+$d_{k-l}\le H^{1-q}$. The marker weight throughout this interval is
+$r=H^{1/(8u)-U}$, with the fixed cost exponent $U$ chosen so that
+$0<r\le1$. The same radius is used at all replicas and finite periods.
+If the later propagation requires an extra factor $H^{uV+2}$ in the
+regular price, purchase $1-q\le-uV-2$. Then
+$H^{1-q}\le H^{-uV-2}$ supplies that margin. These two inequalities
+are separate purchases: a small initial error does not alone control
+arbitrarily many steps or an arbitrary later marker-weight change.
+
+\subsection{The scalar envelope used in the replica estimate}
+
+We record the final elementary step linking a paid marked representation
+to Section~\ref{sec:rank-root-normalization}. Suppose a polynomial
+density on a torus of $q_0$ sites has the form
+\[
+ D(U)=e^{\operatorname{exponent}_P(U)}
+       \exp_*\left(\sum_a z_{I_a}h_a(U)\right)
+       \sum_{B\ {\rm admissible}}\prod_{b\in B}K_b(U).
+\]
+The $I_a$ are nonempty, and each background packet has nonempty full
+spatial support. Let $\|\cdot\|_{\boldsymbol r}$ denote the coefficient
+$\ell^1$ norm weighted by positive marker weights. Assume regular
+incidence price at most $\ell$ per mark and forced spatial price at
+most $L$ per site, with nonnegative support exponent. If there are
+$M_0$ marks in total, double counting gives
+\[
+ \sum_a\|z_{I_a}h_a\|_{\boldsymbol r}\le M_0\ell,
+       \qquad\sum_b\|K_b\|_{\boldsymbol r}\le q_0 L.
+\]
+A nonempty support contributes at least once to the corresponding
+incidence sum. Dropping the support weight is legitimate because it
+is at least one. Masks can only lower the regular value bounds.
+Submultiplicativity gives
+\[
+ \left\|\exp_*\left(\sum_a z_{I_a}h_a\right)\right\|_{\boldsymbol r}
+       \le e^{M_0\ell}.
+\]
+Dropping the admissibility restrictions in the nonnegative majorant
+bounds the forced sum by
+$\prod_b(1+\|K_b\|_{\boldsymbol r})\le e^{q_0 L}$. Therefore
+\begin{equation}\label{eq:allarity-density-envelope}
+ \|D(U)\|_{\boldsymbol r}
+      \le\exp\{\operatorname{exponent}_P(U)+q_0L+M_0\ell\}.
+\end{equation}
+For the replica estimate, first complete any later propagation to the
+selected output torus whose site count is exactly the number $q_0$ of
+replica cells. This equality is a property of that selected output
+level, not of an arbitrary intermediate torus. At this output there
+are $M_0=q_0 n$ marks. Thus $L,\ell\le1$
+give per-site expense at most $1+n$, exactly the arity dependence
+in the determinant ticket. The weight of the coefficient carrying
+a chosen nonempty subset $I$ in each of the $q_0$ cells is the
+$q_0$th power of its single-cell weight. Apply the normalization
+estimate and then take the $q_0$th root. The denominator is the
+partition function of the same pushed density, preserved by the
+unmarked coefficient identity at every step.
+
+The recurrence above states its one-step hypotheses quantitatively.
+The joint Gaussian reader estimate supplies the discrepancy $y$ and
+the principal source bounds; the mixed compiler supplies the exact
+marked push and the pre-realignment prices. The selected scale
+construction must buy all of these on the common history, including
+the later propagation below $l$. Neither the recurrence nor the
+scalar envelope asserts those upstream estimates without their
+corresponding purchases.

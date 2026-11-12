@@ -1,0 +1,147 @@
+\section{The final handoffs and the remaining construction theorem}
+\label{ex-assembly}
+
+The final assembly must use one hierarchy throughout. An operator-product
+expansion for one subsequential limit and a reconstruction for another would
+not establish the desired result. We first state the remaining two properties
+of that common hierarchy, then isolate precisely what is needed to assemble it.
+
+\subsection{The operator-product and trace requirements}
+Let \(\boldsymbol A=(A_i)_{i\in I}\) and
+\(\boldsymbol B=(B_j)_{j\in J}\) be finite lists of graded fields and
+write \(w(\boldsymbol A)=\sum_{i\in I}\deg A_i\). For each grade
+\(\ell\), let \((E_{\ell,\alpha})_{\alpha\in\mathcal C_\ell}\)
+be a finite collection of fields. The coefficients
+\(c_{\boldsymbol A}^{\ell,\alpha}(\boldsymbol x;o)\) do not depend
+on the phase. The cluster geometry at scale \(r>0\) is
+\[
+ |x_i-o|\le Mr,\qquad |x_i-x_{i'}|\ge\eta r\quad(i\ne i'),
+\]
+where \(M\ge0\) and \(\eta>0\). Spectators satisfy
+\(|y_j-o|\ge c\) and \(|y_j-y_{j'}|\ge c\) for \(j\ne j'\),
+where \(c>0\). For every \(\epsilon>0\), each fixed coefficient obeys
+\begin{equation}\label{ex-ope-coefficient}
+ |c_{\boldsymbol A}^{\ell,\alpha}(\boldsymbol x;o)|
+ \le r^{\ell-w(\boldsymbol A)-\epsilon}
+\end{equation}
+at sufficiently small \(r\), uniformly in the indicated cluster geometry.
+For each fixed truncation degree \(D\), the expansion requires
+\begin{align}
+ \bigg|S^s_{\boldsymbol A,\boldsymbol B}(\boldsymbol x,\boldsymbol y)
+ -\sum_{\ell=0}^D\sum_{\alpha\in\mathcal C_\ell}
+ c_{\boldsymbol A}^{\ell,\alpha}(\boldsymbol x;o)
+ S^s_{E_{\ell,\alpha},\boldsymbol B}(o,\boldsymbol y)\bigg|
+ \le r^{D+1-w(\boldsymbol A)-\epsilon}.
+ \label{ex-ope-remainder}
+\end{align}
+Here \(s\) can be any character or the mixed state. The small-radius
+threshold for the remainder is uniform over these choices and over the
+allowed positions, but may depend on the fields, \(D,M,\eta,c,\epsilon\).
+There is no assertion of one threshold working for all truncation degrees.
+
+The trace requirement concerns a centered grade-four field \(\Theta\).
+Set
+\[
+ T(r)=S^{\chi_*}_{\Theta,\Theta}
+            ((\boldsymbol0,-r/2),(\boldsymbol0,r/2)).
+\]
+Its vacuum one-point functional vanishes, and the required asymptotic is
+\begin{equation}\label{ex-trace-limit}
+ \lim_{r\downarrow0}r^8\log^2(r^{-1})T(r)
+       =\frac{3\dim_{\mathbb R}\mathfrak g}{\pi^4}>0.
+\end{equation}
+Theorem~\ref{thm:profile-exclusion} shows that this asymptotic implies the
+required exclusion of finite complex linear combinations of mass-shell
+tracks, including empty products. The class of profiles and their exact
+normalization are given in Section~\ref{sec:trace-profiles}.
+Theorem~\ref{thm:trace-asymptotic} supplies the limiting argument from
+the trace comparison estimates; producing those estimates remains necessary.
+
+\subsection{A precise conditional assembly}
+An internal extraction order is a pair \((u,p)\) of strictly increasing
+maps \(\mathbb N\to\mathbb N\). Refining by \((v,q)\) gives
+\((u\circ v,p\circ q)\). The full mesh order is \(u(N)=N\).
+The need for a full mesh limit at the public endpoint is stronger than
+convergence just along \(u\circ v\).
+
+\begin{lemma}[Identifying the full mesh limit]\label{ex-full-mesh}
+Fix a test and its insertion labels. Suppose that at every suitable period
+\(p\) the full sequence \(W_{N,p}\) converges to some \(\ell_p\).
+Suppose also that an ordered extraction supplies numbers \(w_p\) such that
+\(W_{u(j),p}\to w_p\), where \(u\) is strictly increasing, and
+\(w_{p(q(k))}\to s\). Then \(\ell_p=w_p\) at every suitable period,
+and the same volume limit \(s\) holds with the full mesh limits.
+\end{lemma}
+\begin{proof}
+Strict increase implies \(u(j)\ge j\) by induction, so \(u(j)\to\infty\).
+The full mesh convergence therefore implies
+\(W_{u(j),p}\to\ell_p\). To see uniqueness explicitly, for any
+\(\epsilon>0\), take \(j\) sufficiently large that this term is within
+\(\epsilon/2\) of each proposed limit. The triangle inequality gives
+\(|\ell_p-w_p|<\epsilon\), hence equality. Suitability holds eventually
+on the volume sequence, so the two sequences of row limits eventually agree
+and have the same limit.
+\end{proof}
+
+This lemma explains how a full ultraviolet convergence result can be combined
+with a hierarchy constructed by subsequence extraction. It does not obtain
+full ultraviolet convergence from subsequential convergence: that is its
+additional hypothesis.
+
+\begin{assumption}[Joint construction input]\label{ex-joint-input}
+For the fixed group \(G\) and each chosen positive blocking penalty
+\(b\), there is one lattice family with the following properties.
+Its insertions are continuous, gauge-invariant and uniformly local, and its
+bare coefficients satisfy \eqref{ex-running-input}.
+For every extraction order \((u,p)\), there is a refinement \((v,q)\)
+and one set of graded fields, phase data, correlations and selected
+relativistic theory as in Definition~\ref{ex-reconstructed}, for which
+all of the following hold simultaneously:
+\begin{enumerate}
+\item The mixed correlations satisfy \eqref{ex-row-target} along the
+\emph{full} mesh sequence at every suitable period and
+\eqref{ex-volume-target} along \(p\circ q\).
+\item The phase correlations have the stated smoothness, symmetry,
+continuity and mixture identity \eqref{ex-mixture}.
+\item The fields and coefficients satisfy
+\eqref{ex-ope-coefficient}--\eqref{ex-ope-remainder} and the centered
+field satisfies \eqref{ex-trace-limit}.
+\end{enumerate}
+Every assertion refers to the same lattice family and the same selected
+hierarchy on that refinement.
+\end{assumption}
+
+\begin{proposition}[Assembly from the joint input]\label{ex-conditional-existence}
+Input~\ref{ex-joint-input} implies the full existence target stated in
+Section~\ref{ex-statement}, including the operator-product and trace
+properties above.
+\end{proposition}
+\begin{proof}
+Fix \(G\) and choose \(b=1\). Select the family supplied by
+Input~\ref{ex-joint-input} once. Its regularity is part of that input and
+is unaffected by any subsequent choice of volume sequence. Now let
+\(p:\mathbb N\to\mathbb N\) be an arbitrary strictly increasing
+sequence. Apply the input to the extraction order \((\mathrm{id},p)\).
+It yields \((v,q)\) and one hierarchy with all three simultaneous
+properties. Take \(q\) as the public volume subsequence and retain this
+hierarchy. Its ordered Wilson convergence uses the full mesh sequence by
+item~1, so no assertion about a mesh subsequence has been substituted for
+\eqref{ex-row-target}. Item~2 gives the phase and mixture conditions;
+the selected theory is part of the same data. Item~3 supplies the remaining
+two properties, with finite-profile exclusion following from
+Theorem~\ref{thm:profile-exclusion}. The construction of the family preceded the choice of
+\(p\), while \(q\) and the hierarchy were chosen after \(p\), exactly
+as required.
+\end{proof}
+
+The proposition is only the final logical assembly. The main outstanding
+work is to establish Input~\ref{ex-joint-input} from the Wilson measure.
+In particular, the finite-dimensional normalization proof does not supply
+the estimates uniform in spacing and volume; a convergent mesh subsequence
+does not establish the full mesh limit; the Euclidean Hilbert space of
+Section~\ref{ex-reflection} needs the subsequent slab and phase estimates
+to support the phase decomposition and the relativistic reconstruction proved
+in the later sections; and separated-correlation
+compactness does not supply the operator-product remainder or the trace
+asymptotic. Until those inputs have detailed proofs or checked applicable
+references, this article does not contain a complete existence proof.

@@ -1,0 +1,212 @@
+\section{From boundary values to fields on a common domain}
+\label{sec:word-reconstruction}
+The Euclidean Hilbert space and the relativistic field Hilbert space have
+related, but different, definitions. The bridge between them is a limit of
+vectors with small positive imaginary times. This section proves the bridge and
+the ensuing operator construction. The preceding two sections construct the analytic boundary values and
+verify their heat-vector bridge from the stated slab hypotheses. Positivity
+of the boundary values will now follow from that bridge.
+
+Write $E$ for the algebraic union of the finite-dimensional field spaces and
+$\mathscr S=\mathscr S(\mathbb R^4;\mathbb C)$ for the Schwartz space. A letter is
+a pair $a=(v,f)\in E\times\mathscr S$, and a word is a finite ordered list of
+letters. Let $J:E\to E$ be an antilinear involution, put
+$a^*=(Jv,\overline f)$, and define the star of a word by reversing its order
+and starring each letter. The empty word is denoted by $1$. Concatenation is
+written without an intervening symbol.
+
+Suppose $W_n(v_1,\ldots,v_n)$ is a tempered distribution on
+$(\mathbb R^4)^n$, multilinear in the labels. Its value on a product test
+function defines $w(a_1\cdots a_n)$. Set
+\[
+ K(b,c)=w(b^*c).
+\]
+The joint distribution, rather than merely this restricted family of tests,
+will be needed in constructing the boundary values. For the operator argument
+below the following properties specify exactly what is used.
+\begin{assumption}[Boundary data]\label{input:word-boundary}
+The functional $w$ is multilinear separately in every label and every test
+function, and $w(1)=1$. For fixed words $b,c$ and labels $v,u$, the function
+\[
+ (f,g)\longmapsto K((v,f)b,(u,g)c)
+\]
+is jointly continuous in the Schwartz topology. There are vectors
+$h_t(b)$, $t>0$, in the selected Euclidean Hilbert space $\mathcal H_E$,
+with unit vacuum $\Omega_E$, such that
+\begin{align}
+ \lim_{s,t\downarrow0}\langle h_s(b),h_t(c)\rangle&=K(b,c),
+       \label{eq:independent-heat-gram}\\
+ \lim_{t\downarrow0}h_t(1)&=\Omega_E.\nonumber
+\end{align}
+The two positive parameters in the first limit vary independently.
+\end{assumption}
+Here and below the inner product is antilinear in its first argument.
+In the application $h_t(b)$ is the integral of a product of bounded slab
+insertions and intervening complex-time translations, at strictly increasing
+heights $(t,2t,\ldots,nt)$. Thus the integrability of this vector-valued
+integral and the joint limit \eqref{eq:independent-heat-gram} require proof.
+A scalar boundary limit along one fixed ray does not by itself give this input.
+
+\begin{lemma}[Removing the imaginary heights]\label{lem:cold-vectors}
+Under Input~\ref{input:word-boundary}, each $h_t(b)$ has a norm limit
+$q(b)\in\mathcal H_E$, and
+\[
+ \langle q(b),q(c)\rangle=K(b,c),\qquad q(1)=\Omega_E.
+\]
+In particular $K$ is a positive semidefinite kernel.
+\end{lemma}
+\begin{proof}
+Fix $b$. Expanding a squared norm gives
+\[
+ \|h_s(b)-h_t(b)\|^2
+ =\langle h_s(b),h_s(b)\rangle+\langle h_t(b),h_t(b)\rangle
+  -\langle h_s(b),h_t(b)\rangle-\langle h_t(b),h_s(b)\rangle.
+\]
+All four terms tend to $K(b,b)$, including the diagonal terms, by the joint
+limit. The expression therefore tends to zero as $s,t\downarrow0$.
+Completeness gives the norm limit. Continuity of the inner product gives the
+asserted Gram identities and the specified empty-word limit gives the vacuum.
+For any finitely many coefficients $c_i$ and words $b_i$,
+\[
+ \sum_{i,j}\overline{c_i}K(b_i,b_j)c_j
+   =\Big\|\sum_i c_iq(b_i)\Big\|^2\geq0.
+\]
+\end{proof}
+
+Let $\mathcal P$ be the vector space of formal finite complex linear
+combinations of words. Extend $K$ sesquilinearly to $\mathcal P$ and let
+$\mathcal N=\{p:K(p,p)=0\}$. Cauchy--Schwarz for a positive semidefinite form
+follows by applying positivity to $p+zq$ and minimizing over $z$ (the case
+$K(q,q)=0$ follows by allowing $|z|$ to grow). Consequently
+$\mathcal N$ is the radical of the form. The quotient
+$\mathcal D=\mathcal P/\mathcal N$ is an inner-product space; let
+$\mathcal H$ be its completion and $[b]\in\mathcal D$ the class of a word.
+
+\begin{proposition}[The common invariant domain]\label{prop:word-fields}
+There is a bilinear map
+\[
+ (v,f)\longmapsto\Phi(v,f):\mathcal D\to\mathcal D,
+ \qquad \Phi(v,f)[b]=[(v,f)b].
+\]
+The vacuum $\Omega=[1]$ has norm one, the domain $\mathcal D$ is dense and
+spanned by its word vectors, and
+\begin{align}
+ \langle\Phi(v,f)\xi,\eta\rangle
+   &=\langle\xi,\Phi(Jv,\overline f)\eta\rangle,
+                       \label{eq:word-adjoint}\\
+ \langle\Omega,\Phi(a_1)\cdots\Phi(a_n)\Omega\rangle
+   &=w(a_1\cdots a_n).\nonumber
+\end{align}
+For each $v$ and $\xi\in\mathcal D$, the map
+$f\mapsto\Phi(v,f)\xi$ is continuous from $\mathscr S$ to $\mathcal H$.
+As densely defined operators on $\mathcal H$,
+$\Phi(Jv,\overline f)\subseteq\Phi(v,f)^*$; in particular every field
+operator is closable.
+\end{proposition}
+\begin{proof}
+Let $L_a$ denote left concatenation on formal sums. Word reversal gives the
+exact identity
+\[
+ K(L_ap,q)=K(p,L_{a^*}q).
+\]
+If $p\in\mathcal N$, the right side vanishes for every $q$. Taking
+$q=L_ap$ proves $K(L_ap,L_ap)=0$. Thus $L_a$ preserves $\mathcal N$ and
+descends to $\mathcal D$. This is the necessary null-space argument;
+positivity without the concatenation identity would not suffice.
+The same identity proves \eqref{eq:word-adjoint}. Multilinearity of $w$
+shows that every matrix element against a word of the defect in a proposed
+linearity identity is zero. Since words span $\mathcal D$, each such defect
+is zero. This proves bilinearity of $\Phi$ even though no multilinearity
+relations were imposed on the formal word space initially.
+
+The vacuum norm, cyclicity and moment identity follow directly from the
+construction. To prove continuity first take $\xi=[b]$ and write
+$\eta_f=[(v,f)b]$. At any $f_0$,
+\[
+ \|\eta_f-\eta_{f_0}\|^2
+ =K((v,f)b,(v,f)b)+K((v,f_0)b,(v,f_0)b)
+  -2\operatorname{Re}K((v,f_0)b,(v,f)b),
+\]
+which tends to zero by the assumed joint continuity. Finite linear
+combinations give the result for every $\xi\in\mathcal D$.
+Finally \eqref{eq:word-adjoint}, with $\mathcal D$ dense, is precisely the
+criterion for the asserted adjoint inclusion. The adjoint domain contains the
+dense space $\mathcal D$; hence the original operator is closable. Equivalently,
+if $\xi_n\to0$ and $\Phi(v,f)\xi_n\to\eta$, pairing with each vector of
+$\mathcal D$ gives $\eta=0$, which directly proves closability.
+\end{proof}
+
+\begin{proposition}[Locality and retention of labels]\label{prop:word-locality}
+Suppose, whenever $f,g$ have mutually spacelike supports, that
+\[
+ w(b(v,f)(u,g)c)=w(b(u,g)(v,f)c)
+\]
+for all exterior words $b,c$. Then
+$[\Phi(v,f),\Phi(u,g)]=0$ on $\mathcal D$.
+Suppose also that a label $v$ whose insertion has zero expectation against
+all exterior words and all tests must be zero. Then for every $v\ne0$
+there is an $f$ with $\Phi(v,f)\ne0$.
+\end{proposition}
+\begin{proof}
+Pair the commutator applied to $[c]$ with $[b]$. Its value is the difference
+of the two assumed expectations, with left exterior word $b^*$, and so is
+zero. Density and linearity prove the operator identity on $\mathcal D$.
+If all $\Phi(v,f)$ vanish, then for any $b,c,f$,
+\[
+ w(b(v,f)c)=\langle[b^*],\Phi(v,f)[c]\rangle=0,
+\]
+because $(b^*)^*=b$. The detection assumption now gives $v=0$.
+\end{proof}
+
+\subsection{The group action and its Euclidean embedding}
+Let $G$ be the Poincar\'e group with proper orthochronous Lorentz part. Suppose its action on labels
+and pullback action on test functions induce an action $b\mapsto gb$ on
+words, preserving the empty word. Assume
+\begin{equation}\label{eq:word-motion-input}
+ K(gb,gc)=K(b,c),\qquad g\longmapsto K(b,gc)\ \text{is continuous}
+\end{equation}
+for all words. These are properties of the continued distributions and the
+label action on each finite level, to be established before this
+construction is applied.
+
+\begin{proposition}\label{prop:word-motion}
+There is a strongly continuous unitary representation $U$ of $G$ on
+$\mathcal H$ with $U(g)[b]=[gb]$. It fixes $\Omega$, preserves $\mathcal D$,
+and satisfies field covariance there. There is also a linear isometry
+$V:\mathcal H\to\mathcal H_E$ with $V[b]=q(b)$ and $V\Omega=\Omega_E$.
+If, for every translation $a$, the heat vectors obey
+\[
+ h_t(ab)=U_E(a)h_t(b)
+\]
+for all sufficiently small $t>0$, then
+$VU(a)=U_E(a)V$.
+\end{proposition}
+\begin{proof}
+Extend the action on words linearly. Gram invariance makes it an isometry
+of the quotient; the inverse action makes its extension to the completion
+unitary. Multiplication and identity laws hold on words, hence on the dense
+span, hence on the completion. For a word $b$, Gram invariance and
+\eqref{eq:word-motion-input} give
+\[
+ \|[gb]-[g_0b]\|^2
+ =2K(b,b)-2\operatorname{Re}K(g_0b,gb)\longrightarrow0.
+\]
+Thus orbit maps are continuous first on finite word sums and then on every
+vector: approximate that vector by a finite sum, and use the isometry at both
+$g$ and $g_0$ to bound the approximation errors uniformly. The vacuum and
+domain statements follow on words. The equality
+$g(ab)=(ga)(gb)$ gives covariance on their span.
+
+The map $\sum c_i[b_i]\mapsto\sum c_iq(b_i)$ preserves squared norms by
+Lemma~\ref{lem:cold-vectors}, so is well-defined and extends isometrically.
+Its vacuum identity is already known. Taking the norm limit in the stated
+translation identity for heat vectors proves intertwining on every word;
+boundedness then extends it to $\mathcal H$.
+\end{proof}
+
+These arguments construct all fields on one common invariant domain. They
+still require the continued distributions, their locality and label-detection
+properties, the continuous group action, and the independent-height limit.
+The forward spectral condition and uniqueness of the invariant vacuum require
+additional facts about the Euclidean translation representation and are not
+consequences of the formal word construction alone.

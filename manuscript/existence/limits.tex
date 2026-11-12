@@ -1,0 +1,299 @@
+\section{Ordered limits and Euclidean properties}
+\label{sec:ex-limits}
+
+The lattice spacing is sent to zero at fixed volume before the volume is sent to
+infinity. A subsequence of pairs $(N_k,p_k)$ tending to infinity in both
+coordinates need not give either iterated limit. We record the compactness
+argument that produces one common pair of subsequences for all finite
+correlation signatures, and then explain which Euclidean properties pass to
+the resulting table. The construction is conditional on uniform finite-cutoff
+estimates stated below; their derivation from the Wilson trajectory is a
+separate input.
+
+Fix one Wilson family $\mathcal C$. Write $a_N$ for its mesh, $P_p$ for its
+physical linear period, and $\ell_{N,p}$ for the number of sites in that
+period. For an $n$-tuple of field labels $v$,
+let $U_{N,p,v}$ denote the finite-lattice correlation, namely the
+finite expectation of the chosen insertions. We assume it is multilinear in
+each label. The factor $a_N^{4n}$ appears when these values are smeared by a
+test function. Let $\mathrm{Cyc}_p$
+be the open set of configurations for which no two distinct insertions have
+coordinate differences equal to an integer multiple of the physical period
+$P_p$ in any coordinate. Write $\mathrm{NoHit}_p$ for configurations in which each distinct pair has
+at least one coordinate difference that is not an integer multiple of $P_p$.
+This excludes torus-coincident pairs but permits coordinatewise ties. Let $\mathrm{Gen}$ be the set for which every coordinate
+projection separates distinct insertions. Let $\mathrm{Conf}$ be the set of
+configurations with no coincident points. Thus $\mathrm{Gen}\subset\mathrm{Conf}$;
+$\mathrm{Gen}$ also excludes noncoincident coordinate-projection ties, while
+$\mathrm{Conf}$ permits them. The table $S$ below is the limiting Euclidean correlation table.
+
+Here are the two uniform estimates used for extraction. In each statement
+``eventually'' has its ordinary meaning along the indicated strictly
+increasing sequence.
+
+\begin{definition}[Uniform bounds and moduli]
+\label{def:ex-limits-estimates}
+Fix an ordered pair $f=(f_{\rm mesh},f_{\rm per})$ of strictly increasing
+sequences.
+
+\begin{enumerate}
+\item A local mesh modulus means that for every fixed period $p$, arity $n$,
+  label tuple $v$, compact $K\subset\mathrm{Cyc}_p$, and $\varepsilon>0$,
+  there are $\delta>0$ and $j_0$ such that, for $j\ge j_0$ and lattice
+  configurations $x,y\in K$ at mesh $a_{f_{\rm mesh}(j)}$,
+  \[
+  |U_{f_{\rm mesh}(j),p,v}(x)-U_{f_{\rm mesh}(j),p,v}(y)|<\varepsilon
+  \quad\hbox{whenever }|x-y|<\delta.
+  \]
+  The modulus may depend on $p,n,v,K,\varepsilon$.
+\item An expanding-volume modulus means that for every $n,v$, compact
+  $K\subset\mathrm{Gen}$, and $\varepsilon>0$, there are $\delta>0$ and
+  thresholds $k_0$ and $j_0(k)$ such that for $k\ge k_0$, $j\ge j_0(k)$,
+  and lattice configurations $x,y\in K$ at mesh $a_{f_{\rm mesh}(j)}$,
+  \[
+  |U_{f_{\rm mesh}(j),f_{\rm per}(k),v}(x)
+       -U_{f_{\rm mesh}(j),f_{\rm per}(k),v}(y)|<\varepsilon
+       \quad\hbox{whenever }|x-y|<\delta.
+  \]
+  The mesh threshold may depend on the fixed volume index $k$.
+\item A compact norm bound means both: for every fixed $p,n,v$ and compact
+  $K\subset\mathrm{NoHit}_p$, the lattice values $|U_{f_{\rm mesh}(j),p,v}(x)|$
+  are bounded by one constant for all $x\in K$ and all sufficiently large
+  $j$; and for every $n,v$ and compact $K\subset\mathrm{Conf}$ they are
+  bounded by one constant for all sufficiently large pairs in the ordered
+  sense $\forall k\ge k_0\;\forall j\ge j_0(k)$.
+\end{enumerate}
+
+In the ordered-volume clause, the outer threshold is the period threshold and
+the inner mesh threshold may depend on that period. In particular these
+assumptions do not assert a single diagonal limit or a modulus uniform over
+all periods.
+\end{definition}
+
+\begin{proposition}[Common ordered extraction]
+\label{prop:ex-limits-extraction}
+Fix a countable algebraic basis for the local field-label spaces. Assume the
+local mesh modulus, expanding-volume modulus, and compact norm bound of
+Definition~\ref{def:ex-limits-estimates} for every finite tuple from this
+basis, for the same family $\mathcal C$ and initial order $f$. Then there are
+strictly increasing subsequences $t,u$ of the mesh and volume indices. Put
+$\rho_k=f_{\rm per}(u(k))$. There are intermediate continuous functions $J_{p,v}$ on each $\mathrm{Cyc}_p$
+and a table $S$ continuous on $\mathrm{Gen}$, with the following properties:
+
+\begin{enumerate}
+\item for each fixed $p,n,v$, the address-cell interpolants along the mesh subsequence
+  $f_{\rm mesh}\circ t$ converge to $J_{p,v}$ uniformly on every compact subset
+  of $\mathrm{Cyc}_p$;
+\item for each $n,v$, $J_{\rho_k,v}$ converges to $S$ uniformly on
+  every compact subset of $\mathrm{Gen}$ as $k\to\infty$;
+\item for each separated test function suitable at fixed $p$, the finite-lattice
+  smeared correlations converge first along the mesh subsequence to the
+  integral against $J_{p,v}$, and
+  then along the volume subsequence to the integral against $S$ (extended by
+  zero off $\mathrm{Gen}$, which does not change this integral).
+\end{enumerate}
+
+All signature limits use the same $t,u$. The mesh subsequence is chosen
+independently of the requested test support. The volume limit is only asserted
+along $f_{\rm per}\circ u$, and the mesh limit remains an ordinary limit along
+the full mesh subsequence at each eligible fixed period.
+\end{proposition}
+
+\begin{proof}
+We give the compactness argument, including the common-subsequence step.
+For each mesh index $j$ and point $x$, let $Q_j(x)$ be the cell representative
+selected by the lattice address map, so that $|Q_j(x)-x|\le c_n a_{f_{\rm
+mesh}(j)}$ for a constant $c_n$ depending only on the arity. Define the
+position-space function $\widetilde U_j(x)=U_{f_{\rm mesh}(j),p,v}(Q_j(x))$.
+This function is defined even when $x$ is not a lattice point. Let $K$ be a
+compact subset of an open patch and choose a compact neighborhood $K'$ still
+inside that patch. For $x,y\in K$ with $|x-y|<\delta/2$, the representatives
+$Q_j(x),Q_j(y)$ belong to $K'$ for all sufficiently large $j$, and
+\[
+ |Q_j(x)-Q_j(y)|\le |x-y|+2c_n a_{f_{\rm mesh}(j)}<\delta.
+\]
+The lattice modulus on $K'$ therefore makes $\widetilde U_j$ asymptotically equicontinuous on $K$; the rounded
+functions need not themselves be continuous. The compact norm bound on $K'$ makes their values bounded there for all
+sufficiently large $j$.
+
+The basis-signature set and periods are countable. Choose a countable dense
+subset $D$ of each patch. The values $\widetilde U_j(d)$, over all dense points and
+signatures for the fixed period, lie eventually in bounded closed disks in
+$\mathbb C$. A diagonal subsequence makes all these scalar sequences converge.
+We check that this gives compact-uniform convergence, not just convergence on
+$D$. Let $K$ be compact in the patch and $\varepsilon>0$. Choose a compact
+neighborhood $K'$ inside the patch. Use the common modulus on $K'$ to choose a
+radius $\delta$ for error $\varepsilon/3$. Finitely many balls of radius
+$\delta/3$ centered at points of $D\cap K'$ cover $K$. At these finitely many
+centers the selected subsequence is Cauchy. For any $x\in K$, choose one such
+center $d$; for all large indices $i,i'$, the two modulus errors
+$|\widetilde U_i(x)-\widetilde U_i(d)|$ and
+$|\widetilde U_{i'}(x)-\widetilde U_{i'}(d)|$ are each less than
+$\varepsilon/3$, while the center values differ by less than
+$\varepsilon/3$. The triangle inequality proves the subsequence is uniformly
+Cauchy on $K$. Completeness of $\mathbb C$ gives a uniform limit on $K$; limits
+agree on overlaps, and the same modulus estimate proves the resulting
+function is continuous. Exhausting the patch by compact sets gives one
+continuous limit there and uniform convergence on every compact subset.
+Diagonalize over the countable collection of signatures and a compact
+exhaustion of each patch to obtain one mesh subsequence $t$ and all the
+intermediate functions $J_{p,v}$.
+
+Now consider the sequence of mesh-limit functions $J_{f_{\rm per}(k),v}$ on
+$\mathrm{Gen}$. For a compact $K\subset\mathrm{Gen}$ choose a compact neighborhood
+$K'\subset\mathrm{Gen}$ with $K$ in its interior. For all sufficiently large $k$, $K'$ lies inside the fundamental box; since $K'\subset\mathrm{Gen}$, this gives $K'\subset\mathrm{Cyc}_{f_{\rm per}(k)}$. If $x,y\in K$ and
+$|x-y|<\delta/2$, their representatives at mesh $a_{f_{\rm mesh}(j)}$ lie
+in $K'$ and have mutual distance less than $\delta$ for all sufficiently
+large $j$. Apply the expanding-volume modulus at the fixed outer index $k$,
+then pass $j\to\infty$ using the already established mesh convergence on
+$K'$. This proves asymptotic equicontinuity of the functions $J_{f_{\rm per}(k),v}$ on
+$K$. Similarly, the ordered compact norm bound and mesh convergence give a
+uniform bound for these functions on $K$ for all sufficiently large $k$.
+
+Choose countable dense subsets in each generic configuration space and
+repeat the closed-disk diagonal argument, now with $k$ as the sequence index.
+The finite-cover argument proves compact-uniform convergence on every compact
+subset of $\mathrm{Gen}$ and gives a continuous limit $S$. Diagonalizing over
+the countable signature index makes the same volume subsequence $u$ work for
+all signatures. Use arity together with finite tuples from a
+countable algebraic basis as the countable signature index. Every arbitrary finite tuple of labels is a finite
+linear combination of such basis tuples, and finite lattice moments are
+multilinear, so finite linearity extends these limits to arbitrary labels
+without any further subsequence. This is a diagonal argument over the countable basis index, not over the
+uncountably many arbitrary test functions.
+
+It remains to pass from pointwise limits to smeared moments. Let $\varphi$ be
+a separated test, meaning its support $K$ is compact and contained in
+$\mathrm{Conf}$, and fix an eligible period $p$. Assume $p$ is eligible for this test, so $K$ lies strictly inside the
+comparison cell. Choose a compact neighborhood $K_1$ of $K$ whose closure
+stays inside the comparison cell. For all fine meshes, every cell representative of a point
+in $K$ lies in $K_1$. The cell boundaries in this bounded region lie in finitely many affine
+hyperplanes and have Lebesgue measure zero. The complement of the cyclic patch is a countable union of affine
+hyperplanes and therefore has Lebesgue measure zero. At almost every point
+in $K$, the cell representatives tend to that point and eventually belong to
+the cyclic patch. Extend $J_{p,v}$ by zero off that patch. The mesh
+convergence gives almost-everywhere convergence of the cell density to
+$\varphi J_{p,v}$.
+Since $K$ is compactly contained in the fundamental cell and in $\mathrm{Conf}$,
+it lies in the fixed-period no-hit set. Choose a compact neighborhood $K_2$
+of $K$ contained in that open set. For all sufficiently fine meshes the rounded samples of points
+in $K$ lie in $K_2$. The fixed-period compact norm bound on $K_2$ bounds the finite-lattice
+moments for all sufficiently fine meshes. If $\varphi(Q_N(x))\ne0$, the
+cell representative $Q_N(x)$ belongs to $K$ and hence to $K_2$. Therefore the
+absolute value of the piecewise constant cell density is at most
+$D\|\varphi\|_\infty$ on the whole fundamental box and is zero outside
+the union of cells meeting the support. The indicator of the bounded
+fundamental box times this constant is integrable. The exact cell identity
+writes the smeared sum as the integral of this density: each cell has volume
+$a_N^{4n}$. The strict cell margin keeps all samples inside the no-wrap
+region. At points outside the closed support $K$, the cell density is eventually zero because $Q_N(x)\to x$; outside the fixed box it is identically zero. Dominated convergence proves the fixed-period smeared limit.
+
+For the volume limit, choose compact neighborhoods $K_0\subset K_1\subset
+\mathrm{Conf}$ of the support $K$. For sufficiently fine meshes, every cell
+representative of a point in $K_0$ lies in $K_1$. The ordered compact norm
+bound on $K_1$ gives one constant for these lattice values once the period
+index is sufficiently large and then the mesh threshold is met. For all
+sufficiently large period indices, $K_1$ lies inside the fundamental cell.
+At generic points $x\in K$, the no-wrap equivalence identifies the cyclic
+patch with $\mathrm{Gen}$, and the mesh evaluation lemma passes the lattice
+bound to $J_{f_{\rm per}(k),v}(x)$. The set $K\setminus\mathrm{Gen}$ is
+contained in finitely many coordinate hyperplanes and has Lebesgue measure
+zero. Therefore these intermediate functions are bounded by the same constant
+almost everywhere on $K$. Extend $S$ by zero off $\mathrm{Gen}$. The
+volume-point convergence holds at each $x\in K\cap\mathrm{Gen}$, hence almost
+everywhere on $K$. Dominated convergence gives the
+second integral limit for every separated test, including supports that meet
+noncoincident coordinate-projection ties. Here $\mathrm{Gen}$ supplies a
+full-measure set for the integral passage, while the larger set
+$\mathrm{Conf}$ contains the entire test support.
+\end{proof}
+
+The two compactness stages use distinct moduli: one at each fixed period and
+one in the ordered volume limit. The argument preserves the order of limits:
+no estimate uniform in an unbounded volume threshold is substituted for the
+permitted threshold $j_0(k)$.
+
+\begin{proposition}[Passage of Euclidean identities and positivity]
+\label{prop:ex-limits-euclidean}
+Let $S$ be a table obtained with the ordered smeared limits of
+Proposition~\ref{prop:ex-limits-extraction}. Assume in addition that:
+
+\begin{enumerate}
+\item finite-lattice correlations satisfy exact permutation and lattice
+  translation identities, signed coordinate symmetries, conjugation, and
+  normalization at admissible grid points; labels transform accordingly;
+\item the ordered point limits exist on the generic domain and $S$ is
+  continuous there; assume also that for each signature it extends to a smooth
+  function on $\mathrm{Conf}$ agreeing with $S$ on $\mathrm{Gen}$;
+\item for each finite list of positive-time smeared observables, the exact
+  finite-lattice pairing identity expresses each reflected product as a finite
+  linear combination of separated smeared correlations covered by the
+  preceding extraction, with coefficients independent of the lattice indices;
+  the same combination defines the limiting smeared pairing. The finite-lattice
+  smeared reflection form is nonnegative for all sufficiently late indices in
+  the ordered sense.
+\end{enumerate}
+
+Then the corresponding permutation, translation, signed coordinate-permutation,
+and conjugation identities hold for $S$ on the noncoincident domain, and the
+smeared reflection form of $S$ is nonnegative for every finite list of
+admissible positive-time test observables. If, in addition, $S$ satisfies the separate cap bound required by the
+Euclidean hierarchy interface, these conclusions together with normalization
+give its Euclidean positivity and symmetry clauses.
+\end{proposition}
+
+\begin{proof}
+For permutation and conjugation, fix the signature and a generic configuration
+and approximate it by admissible lattice configurations. At each sufficiently
+fine mesh the finite-lattice change of variables gives the exact identity;
+the point limits along the common ordered filter and uniqueness of limits in
+$\mathbb C$ give the identity for $S$. A signed coordinate permutation
+preserves the lattice, so the same argument applies after transforming the
+grid points and the insertion labels. For translation by an arbitrary vector
+$z\in E_4$, choose lattice translations $z_j$ converging to $z$ as the mesh
+tends to zero. The finite trajectory's anchoring identity gives equality
+between the two grid evaluations separated by $z_j$. The grid points converge
+to the desired translated configurations, and continuity of the limiting
+correlation gives the translation identity. The generic set is dense in the
+noncoincident domain; if an identity has first been proved only there,
+continuity of both sides extends it throughout that domain.
+
+For positivity, fix $m$ positive-time smeared observables $A_1,\ldots,A_m$ and
+coefficients $c_1,\ldots,c_m\in\mathbb C$. The pairing assumption and the
+ordered convergence of each separated entry show that every entry in the
+finite reflection matrix converges to its limiting smeared pairing. At each
+sufficiently late admissible lattice pair, reflection positivity gives
+\[
+  Q_{N,p}:=\sum_{i,j=1}^m \overline{c_i}c_j\,
+       \langle \theta A_i\,A_j\rangle_{N,p}\ \geq\ 0.
+\]
+There are only $m^2$ terms. Since every matrix entry has the same ordered
+limit, finite-sum continuity gives
+\[ Q_{N,p}\longrightarrow\sum_{i,j}\overline{c_i}c_j\langle\theta A_i A_j\rangle_S. \]
+This convergence holds along the same ordered filter.
+The nonnegative real half-line is closed, so the limit is nonnegative. Since
+the list and coefficients were arbitrary, the limiting smeared reflection
+matrix is positive semidefinite. Pointwise reflection positivity
+for point insertions then follows from the separate bump-approximation argument
+in Lemma~\ref{ex-rp-bumps}; that step uses continuity away from coincident
+points and is not a consequence of generic point convergence alone.
+
+These limit arguments establish only the clauses just named. The extraction
+gives continuity on $\mathrm{Gen}$; passing identities to $\mathrm{Conf}$
+requires the separate smoothness hypothesis there. Smoothness on $\mathrm{Conf}$
+includes noncoincident coordinate-projection ties but excludes actual
+coincident points. Field quotients and Wightman reconstruction do not follow
+from a subsequence argument; they are separate hypotheses or results in the
+hierarchy and reconstruction units.
+\end{proof}
+
+\begin{remark}[Scope of the extraction]
+\label{rem:ex-limits-scope}
+The local estimates are not a proof that the Wilson family has a convergent
+subsequence by themselves. One must first establish the exact norm and oscillation
+bounds for that family, uniformly over the compact sets and with the specified
+fixed-period or ordered-volume quantifiers. Also, the extracted first surface
+is only continuous on generic patches. The later proof of smoothness on the
+full noncoincident set (including noncoincident coordinate-projection ties),
+followed by the full Euclidean hierarchy, has its own proof obligations.
+\end{remark}

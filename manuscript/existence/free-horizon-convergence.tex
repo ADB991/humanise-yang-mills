@@ -1,0 +1,291 @@
+\section{Convergence of the free precision horizon}
+\label{sec:free-horizon-convergence}
+We prove the retained-horizon convergence used for the stationary paths.
+The cutoff tends to infinity while the scale and block side remain fixed.
+All coefficients are kept on the lattice cover. Finite-torus matrices are
+used to identify their limits; they are not substituted for the cover
+coefficients.
+
+\subsection{Compactness with an exponential row bound}
+A row $K$ between finite coordinate sets $I,J$ has coefficients
+$K_{ab}(z)$, $z\in\mathbb Z^4$. Suppose, eventually in $N$,
+\begin{equation}\label{eq:free-horizon-row-budget}
+ \sum_z e^{\sigma|z|_1}|K_{N,ab}(z)|\le C
+ \qquad(a\in I,b\in J),\qquad \sigma>0.
+\end{equation}
+A subsequence of any given cutoff sequence converges in every coefficient:
+enumerate the countably many entries, extract successively in their bounded
+real intervals, and take the diagonal subsequence. If its limit is $K$,
+pass to the limit in each finite subsum of
+\eqref{eq:free-horizon-row-budget}. The nonnegative sums remain bounded
+by $C$, so the full sum has the same bound.
+
+For every $0\le\tau<\sigma$ this coefficient convergence gives
+\begin{equation}\label{eq:free-horizon-narrower}
+       \sum_z e^{\tau|z|_1}|K_{N,ab}(z)-K_{ab}(z)|\longrightarrow0.
+\end{equation}
+Indeed its summands are at most
+$2C e^{-(\sigma-\tau)|z|_1}$, and
+\[
+ \sum_{z\in\mathbb Z^4}e^{-t|z|_1}
+       =\left(\frac{1+e^{-t}}{1-e^{-t}}\right)^4<\infty
+       \qquad(t>0).
+\]
+First make the tail of this majorant small, and then use convergence
+on its finite complement. This also proves convergence of the Fourier
+symbols on real momenta and of the periodized matrices on every fixed
+torus, since their entries are sums of subfamilies of the same coefficients.
+The argument applies to a cross row by including its finitely many block
+residues in $I$.
+
+Two ways of identifying the resulting cluster limits will be useful.
+If the Fourier symbols have a prescribed limit on a dense subset of
+the real momentum torus, any two cluster rows have the same symbol
+there. Their symbols are continuous by absolute summability, so they
+agree everywhere. Integrating against $e^{-ip\cdot z}$ recovers the
+coefficient $K_{ab}(z)$, proving equality of the rows. Alternatively,
+it suffices that the cluster rows have equal matrices on an unbounded
+sequence of torus sides. For a fixed displacement $z$ the appropriate
+periodized entry is
+\[
+                       \sum_{h\in\mathbb Z^4}K_{ab}(z+nh).
+\]
+Its term $h=0$ is $K_{ab}(z)$. All other terms have displacement
+at least $n-|z|_1$ and their sum tends to zero by absolute summability.
+Thus these matrices recover every cover coefficient as $n\to\infty$.
+In either case the cluster limit is unique. If the original sequence
+did not converge to it in some coordinate, a subsequence staying a
+fixed distance away would have a convergent further subsequence,
+a contradiction. Hence the full sequence converges, with
+\eqref{eq:free-horizon-narrower} at every smaller width.
+
+\subsection{The primitive multipliers along the actual scale schedule}
+Fix a scale $m$, and let $v_{d,m}$ be the train consisting of the next
+$d$ prescribed blocking steps, with a top train at its fine end. Its
+mass side $M_{d,m}$ tends to infinity, since each block side is at least
+three. The actual path at terminal cutoff $N$ uses precisely
+$v_{N-m,m}$; for fixed $m$, its depth $N-m$ tends to infinity.
+Consequently each depth limit below also applies to the selected terminal
+cutoff sequence. For real momentum $p$ and a direction $a$, put
+\[
+ u_{d,m,a}(p)=D_{v_{d,m},a}(p/M_{d,m})
+                         D_{v_{d,m},a}(-p/M_{d,m}),
+\]
+using the cumulative drive of
+Section~\ref{sec:ex-lattice-free-kernel-components}.
+A single step with patch $P_m$ and side $L_m$ gives the exact identity
+\[
+ u_{d+1,m,a}(p)=
+  |\operatorname{pullLine}_{P_m,a}(p/L_m)|^2
+                          u_{d,m+1,a}(p/L_m).
+\]
+Each rail and centered plank is an average of unit complex numbers on
+real momenta, up to a unit phase. Its modulus is at most one. Thus the
+factor in front lies in $[0,1]$. Starting with $u_{0,m,a}=1$, induction
+on $d$ in the displayed recurrence shows
+\[
+                   0\le u_{d+1,m,a}(p)\le u_{d,m,a}(p)\le1.
+\]
+This proves convergence for every real $p$, also after any fixed
+reciprocal translation of $p$.
+
+The noise list of $v_{d+1,m}$ is the list for $v_{d,m}$ with one
+additional train appended. This follows by induction from the list
+rule under one hop: both old lists undergo the same hop, with the
+same top element prepended. Each additional real-momentum feed is
+nonnegative. The accumulated noise $N_{d,m,a}(p)$ is therefore
+nondecreasing. The uniform noise estimate of
+Section~\ref{sec:ex-lattice-free-kernel-components} bounds it above,
+independently of $d$ for $p$ in the base cube. At depth one it is
+one. Its limit $N_{m,a}(p)$ consequently satisfies
+\[
+                            1\le N_{m,a}(p)<\infty.
+\]
+
+We also need the high-alias part $H_{v_{d,m},a}(p)$. Extend its
+finite sum to $\mathbb Z^4$ by setting it to zero outside the centered
+representatives of the nonzero residues of $M_{d,m}$. Each fixed
+$z\ne0$ is represented for all sufficiently large $d$. Put
+$q=p+2\pi z$. The corresponding summand is then exactly
+\[
+                         \frac{u_{d,m,a}(q)}{d_{M_{d,m}}(q)}.
+\]
+The numerator has a limit by the preceding monotonicity. The
+identity
+\[
+ M(e^{iq_a/M}-1)\longrightarrow iq_a
+\]
+gives $d_M(q)\to |q|^2$. For $p$ in the base cube and $z\ne0$,
+$q\ne0$, so its denominator has a nonzero limit. The uniform alias
+bounds already proved give one summable majorant
+\[
+       C\prod_{a=1}^4(1+|z_a|)^{-2}
+\]
+for these extended summands. The sum of this product is finite by
+the one-dimensional inverse-square series. Dominated convergence
+for the series proves convergence of the high-alias part. At $z=0$
+the extended summand is identically zero; no denominator at the
+origin is used in this argument.
+
+For $p\ne0$ the full directional covariance multiplier is
+\[
+ L_{d,m,a}(p)=
+ \frac{u_{d,m,a}(p)}{d_{M_{d,m}}(p)}
+       +H_{v_{d,m},a}(p)+k^{-1}N_{d,m,a}(p),\qquad k>0.
+\]
+It has a finite real limit $L_{m,a}(p)\ge k^{-1}>0$.
+The pulse and dual-pulse symbols are the rational matrix expressions
+in these multipliers given in
+Section~\ref{sec:ex-lattice-free-kernel-estimates}.
+Their directional denominators have just been shown to have positive
+limits. The remaining scalar denominator has the form
+\[
+        \sum_a\frac{|e^{ip_a}-1|^2}{L_{m,a}(p)}.
+\]
+It is strictly positive off the origin in the base cube: every term
+is nonnegative and some numerator is nonzero. Consequently every
+entry of both symbols converges there. At zero their normalized
+values are the identity for every cutoff. The uniform strip bounds
+of the free-kernel estimates and the first subsection now give
+convergence of both rows on the cover, with a retained exponential
+bound.
+
+\subsection{The adjacent one-form and two-form transports}
+Fix the block side $L=L_m$. Unlike the mass side in the preceding
+high-alias sum, $L$ does not change with the terminal cutoff.
+For $p\ne0$ in the base cube, all the finitely many adjacent aliases
+$q_l=(p+2\pi\ell_L(l))/L$ are nonzero real momenta in that cube.
+Apply the directional limit above at the coarse momentum $p$ and
+the fine momenta $q_l$. The principal and nonprincipal transport
+formulas of Section~\ref{sec:kernel-transport-identities} then have
+convergent factors.
+
+We spell out the additional denominator check in those formulas.
+The finite alias denominator is
+\[
+ \mathcal V_N(p)=\sum_l |m_{P_m}(q_l)|^2
+                          \sum_a L_{N,a}^{\mathrm{scaled}}(q_l).
+\]
+Here $L_{N,a}^{\mathrm{scaled}}$ is the fine directional multiplier
+with the fixed positive scaling $L^{-2}$. Every summand has a
+nonnegative real limit, each inner sum has a strictly positive
+limit, and the principal patch mass $m_{P_m}(p/L)$ is nonzero on
+the base cube. Hence $\lim_N\mathcal V_N(p)>0$.
+All other divisions in the transport formulas are by the positive
+directional or scalar denominators just checked. Finite matrix
+products, sums and division by these nonzero limits prove convergence
+of every alias transport. Fourier reconstruction over the finite
+set of $L^4$ aliases proves convergence of the adjacent transport
+symbols. Their uniform row bounds again identify unique cover
+limits. Possible exceptional momenta at the origin are removed by
+continuity of the cluster symbols, not by taking a quotient there.
+
+\subsection{Convergence of amendments, exterior lifts and roots}
+Several operations preserve the cover convergence just established.
+Sums, transposes and scalar multiples do so directly. For products,
+take the minimum of two positive available widths; the convolution
+of rows has a uniform bound there, multiplied by the finite middle
+coordinate count. Its symbol is the product of the two symbols,
+so the first subsection identifies its unique limit. For an inverse
+row with a uniform bound, suppose $K_N^{-1}K_N=I$ on every torus.
+Every cluster limit $Q$ of the inverse rows satisfies $QK=I$ there
+by finite matrix multiplication. A square matrix with a left inverse
+is invertible, so that inverse is unique. Recovery from all periods
+then identifies $Q$ on the cover, and proves convergence.
+
+The exterior lifts in Section~\ref{sec:curvature-horizon-producer}
+are finite combinations of coordinate evaluation at $p_a=0$,
+fixed exterior matrices and divided differences
+\[
+                \frac{\widehat K_N(p)-\widehat K_N(p|_{p_a=0})}
+                     {e^{ip_a}-1}.
+\]
+Their uniform bounds at a smaller positive width were proved there.
+For $p_a\ne0$ the displayed expression converges, because both
+numerator terms do and the denominator is fixed. Thus any two
+cluster symbols agree off that coordinate hyperplane, and by
+continuity everywhere. This proves convergence of the divided
+row. Repeating the argument through the finitely many axes proves
+convergence of the one-sided and two-sided exterior lifts, with
+all their fixed matrix factors.
+
+It remains to justify the positive square roots; convergence of an
+arbitrary matrix factor would be false. Suppose $P_N$ have a common
+exponential row bound, their torus matrices are positive semidefinite,
+and $P_N^{\mathsf T}P_N$ converge on every torus. Two cluster limits
+$P,Q$ have positive semidefinite torus matrices, since symmetry and
+nonnegativity of each quadratic form pass to the limit. Their
+squares are equal. A positive semidefinite square root is unique:
+if $A\ge0$ and $A^2=B$, then $A$ commutes with $B$; on each
+eigenspace of $B$, diagonalizing the symmetric restriction of $A$
+forces all eigenvalues to be the nonnegative square root of that
+eigenvalue of $B$. Hence $A$ is fixed on every eigenspace.
+Apply this to $P$ and $Q$ on each torus, then recover the cover
+coefficients. The unique-cluster-limit argument proves convergence
+of $P_N$ itself.
+
+The amended beds have exactly these properties. If $B_N$ is the
+dual-pulse row, its amended inverse precision is
+\[
+ A_N=B_N+l(d_2B_N)^{\mathsf T}(d_2B_N),\qquad l\ge0,
+\]
+and its precision is $G_N=A_N^{-1}$. Products and the inverse argument
+give their limits. The root row has square $G_N-cI$, where $c$ is
+the fixed direct clipping coefficient. Its uniform strip bound
+and positive semidefinite torus values are supplied by
+Section~\ref{sec:positive-row-producer}, so the positive-root argument
+applies. The original pulse, dual pulse, amended precision, its
+inverse and the root row therefore converge together.
+
+For the curvature root, use the explicit amended row of
+Section~\ref{sec:curvature-horizon-producer}:
+\[
+ R_N=D_N^{\mathsf T}(C_N+lI-hS_N^{\mathsf T}S_N)D_N,
+ \qquad D_N=(I+l d_2 B_{c,N}d_2^{\mathsf T})^{-1}.
+\]
+Here $l,h$ are the fixed coarse and fine amendment coefficients;
+$C_N,S_N$ are the two exterior lifts constructed there. Their
+convergence follows from the operations just proved. The positivity
+and uniform strip price of $R_N$ and its positive root are already
+established. Since that root's square is $R_N$, it too converges.
+All of these statements concern the actual chosen positive roots;
+no new choice of signs or bases has been made.
+
+\subsection{Completing the retained tower}
+The full precision factors $J_{f,N},J_{c,N}$ consist of the fixed
+direct block and the root rows, so they converge on every torus.
+Write $G_{f,N},G_{c,N}$ for the corresponding precisions and
+$R_{f,N}=G_{f,N}^{-1}$, $R_{c,N}=G_{c,N}^{-1}$. With the two-form
+transport $T_N$ and curvature root $P_N$, the exact tower blocks are
+\begin{align*}
+ M_{F,N}&=J_{f,N}R_{f,N}T_NJ_{c,N}^{\mathsf T},\\
+ M_{N,N}&=k^{-1/2}d_{1,c}^{\mathsf T}J_{c,N}^{\mathsf T},\\
+ M_{O,N}&=
+ \begin{bmatrix}
+ I-J_{c,N}R_{c,N}J_{c,N}^{\mathsf T}\\
+ P_Nd_{2,c}R_{c,N}J_{c,N}^{\mathsf T}
+ \end{bmatrix}.
+\end{align*}
+These are the same formulas as
+\eqref{eq:ex-lattice-horizon-blocks}, on each selected physical torus
+of side $n_m(p)$, with its prescribed fine partner. Here $n_m(p)$
+denotes the period sequence fixed at scale $m$ by the schedule.
+Here $p$ is fixed while $N$ increases. The committed transition
+identities apply on precisely these tori. Every finite matrix factor
+has a limit there, hence so does each block. Their
+uniform strip bounds were purchased in the retained tower
+construction. The period-recovery criterion from the first
+subsection gives convergence of their cover coefficients. Use the selected sides above, which tend to infinity as $p$ does;
+no assumption on convergence of an unrelated periodic realization
+is needed.
+
+Together with the one-form predictor and two-form transport, these
+are precisely the five retained tower rows. Thus at every fixed
+scale all five bed rows and all five tower rows converge, and each
+family keeps some positive exponential width and finite budget.
+The purchases of widths and budgets are made at the fixed stages,
+before choosing the later terminal cutoff. The eventual
+normalization changes discussed in
+Section~\ref{sec:selected-history-limits} preserve these limits.
+This supplies the free-horizon convergence input of that section
+from the actual recursively selected free kernels.

@@ -1,0 +1,229 @@
+\section{Analytic time continuation and joint boundary values}
+\label{sec:analytic-boundary}
+We next construct the tempered boundary distribution used in the field
+reconstruction argument. The crucial bound is a power of the smallest imaginary-time
+gap. No bound uniform in the number of insertions is needed in this section.
+
+\subsection{Centered insertions and continuation}
+Work in the selected Euclidean Hilbert space with heat contractions $E_t$,
+spatial translations $U(x)$, and vacuum $\Omega_E$. In this section we use the
+complex heat extension $E(z)$ on $\operatorname{Re}z>0$: it is holomorphic in
+operator norm, satisfies the semigroup law and $\|E(z)\|\leq1$, agrees with
+$E_t$ for positive real $z$, and commutes with $U(x)$. These properties were established in
+Proposition~\ref{prop:complex-heat}.
+
+For a finite-level label $v$, define $B_p(v)$, $p>0$, to be the slab operator
+of width $2p$ with its single insertion at spatial position zero and time $p$.
+All exterior matrix elements are precisely the corresponding Euclidean
+correlations. Multilinearity of those correlations, tested against the dense
+span of Euclidean words on both sides, proves linearity in $v$. The same
+argument, using compatibility of the finite-level inclusions in every
+correlation, proves that these maps agree under inclusion. They therefore
+define one linear map $B_p:E\to\mathcal B(\mathcal H_E)$ on the union of the
+field spaces. This use of all exterior words is what makes the union map
+well-defined.
+
+The single-insertion case of the all-copy slab bound gives, for each fixed
+$v\in E$, constants $C_v>0$ and an integer $a_v\geq0$ such that
+\begin{equation}\label{eq:bar-power}
+ \|B_p(v)\|\leq C_vp^{-a_v},\qquad 0<p<1.
+\end{equation}
+Indeed, choose a finite level representing $v$ and a bound for the norm of its
+chosen raw representative. The centered slab has both boundary clearances
+$p$, so the estimate with one insertion applies with buffer $p$.
+The padding identities for slab operators give
+\begin{equation}\label{eq:bar-padding}
+ B_{p+u}(v)=E_u B_p(v)E_u\qquad(p>0,\ u\geq0).
+\end{equation}
+Both statements retain the constants of the all-copy estimate; no uniform
+bound over all labels in the union is asserted.
+
+For times $z_i=t_i+iy_i$ with $y_1<\cdots<y_n$, choose $0<p<1$ with
+$4p<y_j-y_i$ whenever $i<j$. Write
+\[
+ R_p(z,x)=E(-iz-2p)U(x).
+\]
+Define
+\begin{equation}\label{eq:continued-matrix}
+ F_n(z,x;v)=\langle\Omega_E,
+ B_p(v_1)R_p(z_2-z_1,x_2-x_1)B_p(v_2)\cdots
+ R_p(z_n-z_{n-1},x_n-x_{n-1})B_p(v_n)\Omega_E\rangle.
+\end{equation}
+For $n=1$ the intervening factors are absent; for $n=0$ the value is one.
+All arguments of $E$ have positive real part.
+
+\begin{lemma}\label{lem:continued-matrix}
+The value \eqref{eq:continued-matrix} is independent of the admissible width
+$p$. It is multilinear in the labels, jointly continuous in $(z,x)$, and
+holomorphic in the complex time variables on the strictly ordered tube.
+At purely imaginary times it equals the Euclidean correlation of the
+insertions at $(x_i,y_i)$. For each fixed label tuple there are $C\geq0$ and
+$m\in\mathbb N$ such that, for $0<k\leq1$,
+\begin{equation}\label{eq:gap-power}
+ y_j-y_i\geq k\ (i<j)\quad\Longrightarrow\quad
+ |F_n(t+iy,x;v)|\leq Ck^{-m}
+\end{equation}
+uniformly in all real times $t$ and spatial positions $x$.
+\end{lemma}
+\begin{proof}
+Compare widths $p$ and $q=p+u$. For $u>0$, the semigroup law and spatial
+commutation imply
+\[
+ R_p(z,x)=E_uR_q(z,x)E_u.
+\]
+Substituting \eqref{eq:bar-padding} for every $B_q$ in the product at width
+$q$ merges the two adjacent $E_u$ factors around each $R_q$ into $R_p$.
+The exterior $E_u$ factors disappear against the invariant vacuum. This
+proves equality; $u=0$ is immediate, and any two widths can be ordered.
+The admissibility inequalities are strict, so the same fixed width works on
+a neighborhood of every point of the tube. There the product is holomorphic
+in all time variables. It is jointly continuous in the spatial variables as
+a vector matrix element: strong continuity of $U(x)$, local norm continuity
+of the other factors, and their local uniform bounds prove this successively
+from the rightmost vector. No operator-norm continuity of spatial
+translations is required. Multilinearity follows from that of each $B_p$.
+
+At imaginary times each intervening factor is the ordinary positive heat
+translation through the unused gap. Starting with the rightmost insertion,
+the slab insertion rule and the time and space translation rules show that
+the suffix train after a preceding reference $(X,Y)$ is the Euclidean
+word vector with suffix positions $(x_i-X,y_i-Y-p)$. For the first suffix
+point its preceding heat duration is $y_i-Y-2p>0$: the centered slab
+places that insertion at height $p$, and translation through this duration
+places it at $y_i-Y-p$. The remaining suffix points follow the same
+translation, proving the induction invariant. Pairing the resulting train
+with the initial centered insertion gives the complete word shifted by
+$(-x_1,-y_1+p)$. Pairing with the vacuum and using translation invariance
+removes this last shift and gives the asserted Euclidean correlation.
+
+All intervening factors have norm at most one. Thus the absolute value is
+at most $\prod_i\|B_p(v_i)\|$, since $\|\Omega_E\|=1$. When the gaps are
+at least $k$, choose $p=k/8$. Equation~\eqref{eq:bar-power} gives
+\[
+ m=\sum_i a_{v_i},\qquad C=\prod_i(C_{v_i}8^{a_{v_i}}),
+\]
+and proves \eqref{eq:gap-power}. The empty product and sum also cover $n=0$.
+\end{proof}
+
+\subsection{Differentiating tested functions}
+Fix the arity and labels, and write $X=(t_1,x_1,\ldots,t_n,x_n)$ for real
+positions. For strictly ordered heights $y$ and a joint Schwartz test $f$, put
+\[
+ \psi_y(f)=\int F_n(t+iy,x;v)f(X)\,dX.
+\]
+For a real height vector $a$, let $\partial_a$ denote differentiation of the
+real time coordinates in direction $a$, and put $D_a=-i\partial_a$ on tests.
+\begin{lemma}\label{lem:tested-cr}
+The integral defining $\psi_y$ is absolutely convergent, depends continuously
+on $y$ in the open ordered cone, and satisfies
+\[
+ \frac{d}{ds}\psi_{y+sa}(f)=\psi_{y+sa}(D_af)
+\]
+whenever the heights remain strictly ordered.
+\end{lemma}
+\begin{proof}
+Near any strictly ordered $y$, all gaps have a common positive lower bound.
+Equation~\eqref{eq:gap-power} therefore supplies a bound uniform in $X$ and
+in the nearby heights. Multiplication by the integrable function $|f|$
+proves integrability and, by dominated convergence, height continuity.
+For the derivative, restrict the holomorphic function to the complex line
+which changes all complex time coordinates by $\zeta a$. A fixed disc about
+zero stays in the tube for every real configuration $X$ and every height in
+a sufficiently small neighborhood. The same gap bound holds throughout that
+disc. Cauchy's formula therefore bounds the first complex derivative by a
+constant independent of $X$. The Cauchy--Riemann equations give the pointwise
+height derivative $i\partial_aF$. This uniform bound times $|f|$ justifies
+differentiation under the integral.
+
+To move the derivative onto the test, use smooth compactly supported cutoffs
+$\chi_R(X)=\chi(X/R)$ equal to one on the radius-$R$ ball and supported on
+the radius-$2R$ ball. Integration by parts for the real time direction gives
+\[
+ \int i(\partial_aF)f\chi_R
+ =-\int iF(\partial_af)\chi_R-\int iFf\partial_a\chi_R.
+\]
+The last integral has magnitude at most a fixed constant times
+$R^{-1}\|f\|_{L^1}$, hence tends to zero. The other two integrals converge
+by the uniform bounds for $F$ and $\partial_aF$ and the integrability of
+$f,\partial_af$. This proves the identity, including its sign.
+\end{proof}
+
+\subsection{An exact Taylor formula at the edge}
+Let $r=(0,1,\ldots,n-1)$ and $D=D_r$. If $y$ is only weakly ordered, then
+$y+sr$ has all distinct-index gaps at least $s$ for $s>0$; for arities zero
+and one the conditions on pairs are empty. Choose $m,C$ from
+\eqref{eq:gap-power} for the fixed labels. Define
+\begin{align}
+ \widetilde\psi_y(f)
+ &=\sum_{j=0}^{m}\frac{(-1)^j}{j!}\psi_{y+r}(D^jf)
+   -\int_0^1\frac{(-s)^m}{m!}
+                    \psi_{y+sr}(D^{m+1}f)\,ds.
+                    \label{eq:edge-taylor}
+\end{align}
+This formula uses values strictly inside the tube even when some heights
+of $y$ coincide.
+
+\begin{theorem}[Joint tempered boundary]\label{thm:joint-boundary}
+Formula~\eqref{eq:edge-taylor} defines a continuous linear functional of $f$
+on the joint Schwartz space, continuously in every weakly ordered $y$.
+It agrees with $\psi_y(f)$ when $y$ is strictly ordered. In particular
+\[
+ W_n(v)(f):=\widetilde\psi_0(f)
+\]
+is a tempered distribution and
+\[
+ \psi_y(f)\longrightarrow W_n(v)(f)
+ \quad\text{as }y\to0\text{ through all strictly ordered heights}.
+\]
+The limit is multilinear in the labels. No restriction on the ratios of
+height gaps is imposed.
+\end{theorem}
+\begin{proof}
+First take strictly ordered $y$ and set
+\[
+ P(s)=\sum_{j=0}^{m}\frac{(-s)^j}{j!}\psi_{y+sr}(D^jf).
+\]
+By Lemma~\ref{lem:tested-cr}, differentiating the finite sum cancels
+successive terms, leaving
+\[
+ P'(s)=\frac{(-s)^m}{m!}\psi_{y+sr}(D^{m+1}f).
+\]
+Integrating from zero to one and using $P(0)=\psi_y(f)$ proves the asserted
+identity with \eqref{eq:edge-taylor}.
+
+For weakly ordered $y$ and $0<s\leq1$, the gap estimate gives
+\[
+ \left|\frac{(-s)^m}{m!}\psi_{y+sr}(D^{m+1}f)\right|
+ \leq\frac{C}{m!}\|D^{m+1}f\|_{L^1}.
+\]
+Thus the remainder is absolutely integrable uniformly in $y$. For each
+$s>0$ its integrand is continuous in $y$ on the closed ordered cone, by
+Lemma~\ref{lem:tested-cr}. Dominated convergence proves continuity of the
+remainder, and the finite sum in \eqref{eq:edge-taylor} is continuous for
+the same reason. The formula also gives the uniform estimate
+\[
+ |\widetilde\psi_y(f)|\leq
+ C\sum_{j=0}^{m}\frac{\|D^jf\|_{L^1}}{j!}
+   +\frac{C}{m!}\|D^{m+1}f\|_{L^1}.
+\]
+These are continuous seminorms of $f$ in the Schwartz topology. Explicitly,
+in real dimension $d=4n$, each $L^1$ norm is bounded by
+$\int(1+|X|)^{-d-1}dX$ times the corresponding weighted supremum norm;
+$D^j$ is a finite sum of ordinary derivatives. This proves continuity as a
+test functional.
+
+The cone of strictly ordered heights accumulates at every weakly ordered
+height, by the path $y+sr$. Hence its limits determine the functional
+uniquely. Linearity in $f$ and multilinearity in every label follow by
+passing those identities for the interior integrals to the common boundary
+limit. This also shows that the answer is independent of the chosen power
+bound $m,C$, although those bounds may depend on the label tuple. Finally,
+continuity of \eqref{eq:edge-taylor} at zero and its agreement with the
+interior integrals give the full asserted limit.
+\end{proof}
+
+The theorem constructs boundary values for joint tests on all real positions,
+not just factorized tests and not just pointwise limits. To obtain the heat
+vectors needed for positivity, one must also identify their Gram matrix with
+these same continued functions at mixed positive and negative heights. That
+identification is the next step.

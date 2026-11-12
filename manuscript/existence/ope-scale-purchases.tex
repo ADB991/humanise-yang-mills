@@ -1,0 +1,131 @@
+\section{Additional scale estimates for the operator-product expansion}
+\label{sec:ope-scale-purchases}
+The operator-product construction uses the same block lengths and
+hatted couplings as the centered estimates. Its additional numerical
+requirements can all be imposed after the block lengths are chosen
+and before the scale sequence is realized. We verify them explicitly.
+
+For the final construction choose the profile order and spatial power
+at stage $j$ to be at least $6+j$ and $2+j$, respectively, and choose
+the support exponent to be exactly $100$ at every stage. Constant
+support exponents satisfy the monotonicity requirement. Increasing the
+order and spatial power does not require increasing this exponent:
+the finite profile prices are selected afresh at the chosen orders,
+and their later floors and delays are allowed to depend on them.
+Thus the common funding and observable purchases apply with this
+choice. The constant exponent will also be retained when intermediate
+clusters are regrouped.
+
+\subsection{The halo and block-length inequalities}
+At a transition write $L$ for the already selected integer block side,
+$x$ for the hatted coupling and $y=x+c_G\log L$ for the next hatted
+coupling. Set $B(x)=\lceil(\log x)^2\rceil$ and define
+\[
+ H_L(x,y)=\bigl(1+L(B(x)+B(y)+1)^2\bigr)^4.
+\]
+For fixed $L$ and any fixed $A\ge0$, there is an entrance threshold
+such that
+\[
+                         A H_L(x,y)\le\sqrt x
+ \tag{O1}
+\]
+above that threshold. Indeed $y/x\to1$, so eventually
+$B(y)\le2B(x)$. Hence $B(x)+B(y)+1\le4(1+B(x))$ and
+$H_L(x,y)=O((1+\log x)^{16})$. The logarithm of
+$(1+\log x)^{16}/\sqrt x$ tends to $-\infty$, proving (O1).
+Apply this with $A=101$, the fine support exponent plus one.
+The power four is the spatial dimension; the factor $L$ is needed
+because two child anchors which first meet after blocking can be
+separated by a block side as well as the two cover radii.
+
+The stronger block-length condition
+\[
+                             L\le\log x
+ \tag{O2}
+\]
+is obtained by requiring $x\ge e^L$. It is a condition at a fixed
+profile stage, not a uniform bound over unchosen block lengths.
+Let $C_i$ denote the column count at stage $i$. At a transition with
+fine stage $j$ the coarse stage is either $j$ or $j-1$.
+Imposing
+\[
+                    x\ge\max(L_j,C_j,C_{j-1})
+ \tag{O3}
+\]
+therefore gives both adjacent column bounds and the block bound
+required by the logarithmic estimates. For $j=0$ use $C_0$ in
+place of $C_{j-1}$.
+
+\subsection{Uniform logarithmic bounds for the fixed-stage data}
+Write $h_i$ for the path price at stage $i$, $\sigma_i>0$ for its
+width, $\lambda_i>0$ for its linear clipping parameter,
+$r_i$ for its relaxation parameter, and $d_i$ for its direct
+clipping parameter. These are fixed finite nonnegative numbers,
+with the stated strictly positive denominators. Let
+$D_G=\dim_{\mathbb R}M_{r_G}(\mathbb C)$, and let $n_\square$
+be the number of oriented plaquette-axis types used in the action.
+The elementary vacuum bound has the form
+\[
+ V_i(x)=2(1+(4h_i+1))+1+n_\square(d_i+h_i^2)
+                  +4D_G(\log16+\tfrac12\log x).
+\]
+Thus $V_i(x)+n_\square=B_i+2D_G\log x$ for a fixed constant
+$B_i$. At each fixed stage we can require simultaneously
+\begin{gather}
+ L_j\le\log x,\qquad 10/\sigma_i\le\log x,\qquad
+ 10/\lambda_i\le\log x,\tag{O4}\\
+ V_i(x)+n_\square\le(\log x)^2,\tag{O5}\\
+ 10^5(i+1)\le\log x,\qquad
+ 10^5(1+h_i+100+r_i+\sigma_i+C_i+d_i+\lambda_i)
+                       \le\log x.\tag{O6}
+\end{gather}
+For (O5), take $z=\log x\ge\max(1,B_i,2D_G+1)$; then
+$B_i+2D_Gz\le z+(z-1)z=z^2$. The remaining inequalities
+hold because $\log x\to\infty$. To allow the stage indexing at
+both ends of a transition, purchase (O4)--(O6) for every $i\le j$
+with the actual block side $L_j$. This is a finite list at each $j$.
+
+Take the maximum of these thresholds and those for (O1)--(O3),
+then enlarge the existing entrance delay by their running maxima.
+Every estimate holds for all larger $x$, so this preserves earlier
+purchases. At level $m$ take $j=J(m+1)$ and $i=J(m)$. The
+common scale construction ensures the entrance condition at this
+$j$, and the identities for the actual clock give
+\[
+ L=L_{J(m+1)},\qquad x=\widehat\beta_m,\qquad
+ y=\widehat\beta_{m+1}.
+\]
+Thus (O1)--(O6) hold on the selected family, at all steps and
+periods. They require no subsequent change of its history.
+
+\subsection{Two consequences used in choosing intermediate scales}
+The physical scale satisfies
+$\widehat\beta_m=\beta_*+c_G\log a_m^{-1}$, with $c_G>0$.
+For every fixed integer $q\ge0$,
+\[
+                 a_m\widehat\beta_m^q\longrightarrow0.
+ \tag{O7}
+\]
+Indeed, setting $s=\log a_m^{-1}\to\infty$ gives an exponential
+$e^{-s}$ times a polynomial of degree $q$. Also, for every
+$c,\epsilon>0$ and integer $q\ge0$, eventually
+\[
+ c(\log x)^q\le\epsilon\exp\{(\log\log x)^2\}.
+ \tag{O8}
+\]
+The logarithm of the ratio of the left side to the right side is
+$\log(c/\epsilon)+qu-u^2$ with $u=\log\log x\to\infty$,
+so the ratio tends to zero.
+
+Finally, if $r>1$ and $ra_i<1$, there is $j<i$ such that
+\[
+                         a_{j+1}\le ra_i<a_j.
+ \tag{O9}
+\]
+Choose the first index $k$ with $a_k\le ra_i$. It exists since
+$i$ qualifies; it is positive since $a_0=1>ra_i$.
+Set $j=k-1$. Minimality gives the strict upper inequality and
+$k\le i$ gives $j<i$. These are the intermediate-scale choices
+used with the common clock. The analytic OPE estimates remain
+those of the preceding local construction; (O1)--(O9) supply
+its additional scale inequalities.

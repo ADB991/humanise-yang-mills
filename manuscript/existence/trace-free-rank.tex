@@ -1,0 +1,341 @@
+% Finite free-reference rank and point-probe calculation.
+\section{Free-reference rank from finite point probes}
+\label{sec:ex-lattice-trace-free-rank}
+
+This section proves the finite-dimensional reference-rank facts used in the
+trace calibration. The calculation uses only four-dimensional Euclidean
+Green-function derivatives, the signed coordinate symmetries, and simplicity
+of the compact gauge Lie algebra. All spaces below are real, even though
+polynomial coefficients are temporarily complexified to encode real
+observables.
+
+\subsection{Low-grade invariant labels}
+
+Write $\mathfrak g$ for the compact simple real gauge Lie algebra, with its
+invariant inner product, and $e_0,e_1,e_2,e_3$ for the coordinate basis of
+$\mathbb R^4$. A grade-$d$ label is a polynomial in all radial jets, with jet order $r$
+having engineering weight $r+2$. In particular, grades four and five may
+include linear terms in higher jets; those terms are removed below by gauge
+simplicity. After that reduction, their nonlinear terms depend only on the
+curvature $F$ and, at grade five, its first derivative $J$. A signed
+permutation $s$ acts
+on a coordinate tensor by permuting its indices and multiplying by the
+product of the corresponding coordinate signs. The raw grade-four space
+consists of symmetric two-index arrays of grade-four labels, real under
+complex conjugation and covariant under this signed action. The raw grade-five
+space consists of one-index arrays of grade-five labels with the same reality
+and covariance conditions.
+
+The following elementary color fact is used repeatedly. If a real linear
+functional $\ell$ on $\mathfrak g$ is invariant under the adjoint action,
+then differentiating $\ell(\operatorname{Ad}_{\exp(tx)}y)=\ell(y)$ at $t=0$
+gives $\ell([x,y])=0$. Simplicity and nonabelianity imply
+$[\mathfrak g,\mathfrak g]=\mathfrak g$, hence $\ell=0$. For an invariant
+real bilinear form $B$, define $T$ by $B(x,y)=\langle Tx,y\rangle$. The
+invariance of $B$ and of the positive inner product implies
+$T[a,x]=[a,Tx]$ for every $a,x$. Therefore its self-adjoint and
+skew-adjoint parts $S=(T+T^*)/2$ and $A=(T-T^*)/2$ both commute with the
+adjoint action. Every eigenspace of $S$ is an ideal; the spectral theorem
+and simplicity show $S=\lambda I$. Also $-A^2$ is positive self-adjoint
+and commutes with the adjoint action, so the same argument gives
+$-A^2=cI$ for some $c\ge0$. If $c>0$, then $J=A/\sqrt c$ is a skew-adjoint
+complex structure commuting with every $\operatorname{ad}_a$. This implies
+$\operatorname{ad}_{Jx}=J\operatorname{ad}_x$. The right side is
+self-adjoint, because it is a product of commuting skew-adjoint operators,
+whereas the left side is skew-adjoint by invariance of the inner product.
+It must vanish; invertibility of $J$ would then make every
+$\operatorname{ad}_x$ vanish, contradicting nonabelianity. Thus $c=0$ and
+$A=0$, so $T=\lambda I$. Every invariant bilinear form is consequently a
+scalar multiple of the inner product. Applying this argument to real and
+imaginary parts covers complex-valued coefficients too.
+Consequently the color dependence of an invariant quadratic term is just
+the inner product. The engineering weights are $2$ for $F$ and $3$ for its first derivative $J$; a jet of order $r$ has weight $r+2$. At grade four or five, a monomial can therefore contain at most two factors. The possible terms are a constant, one linear functional of each jet of weight at most the grade, a symmetric quadratic form in $F$, and (only at grade five) a mixed bilinear form in $(F,J)$.
+Every linear jet term vanishes by the preceding color argument, including the higher-derivative linear terms allowed by these two grades. Under simultaneous
+reversal of all four coordinate signs, $F$ is even while the output vector
+index and $J$ are odd. Hence constants and quadratic $F$ terms vanish in a
+covariant vector. Only the mixed term remains in grade five.
+
+For precision, the source represents the radial degree-zero and degree-one
+potentials by the following spanning families, for $c\in\mathfrak g$:
+\begin{align*}
+ (\ell^0_{ij}c)_a(z)&=\tfrac12(\delta_{aj}z_i-\delta_{ai}z_j)c,\\
+ (\ell^1_{rkl}c)_a(z)&=\tfrac13(\delta_{al}z_k-\delta_{ak}z_l)z_r c.
+\end{align*}
+The first family is antisymmetric in $i,j$; the second is antisymmetric in
+$k,l$ and satisfies
+\[
+ \ell^1_{rkl}+\ell^1_{klr}+\ell^1_{lrk}=0.
+\]
+This identity follows by adding the three displayed quadratic monomials:
+each term cancels its opposite. The families span the actual radial jet
+spaces: for every degree-zero potential $A_0$ and degree-one potential
+$A_1$, respectively,
+\[
+ A_0=\tfrac12\sum_{i,j}\ell^0_{ij}(\operatorname{curl}_0^{ij}A_0),
+ \qquad
+ A_1=\tfrac12\sum_{r,k,l}\ell^1_{rkl}(\operatorname{curl}_1^{rkl}A_1).
+\]
+Indeed, applying the corresponding curl to the right sides gives the
+identity on each curl coordinate, and the displayed formulas for the legs
+then give equality of the potential coefficients. Thus a bilinear form in
+these jet slots is determined by its values on pairs of legs. Signed
+covariance and pair antisymmetry follow directly from the same formulas.
+Put $f_{ij}=\operatorname{curl}_0^{ij}A_0$ and
+$j_{rkl}=\operatorname{curl}_1^{rkl}A_1$; the cycle identity is precisely
+the Bianchi relation $j_{rkl}+j_{klr}+j_{lrk}=0$.
+
+For a grade-five vector label, let $M_p$ denote the mixed bilinear term
+in its low-grade decomposition. Choose a unit color vector $v$ and define
+\[
+ A_{p;r;ij;kl}=M_p(\ell^0_{ij}(v),\ell^1_{rkl}(v)).
+\]
+Reality makes these coefficients real. The adjoint-invariant bilinear-form
+calculation shows that this unit color vector records the full color
+coefficient. The leg spanning identities show that the coefficients
+determine every $M_p$. The cycle relation for $\ell^1$ gives the Bianchi
+relation for $A$. Hence $A_{p;r;ij;kl}$ is antisymmetric in $i,j$ and in
+$k,l$, and obeys
+\[
+ A_{p;r;ij;kl}
+ =s_p s_r s_i s_j s_k s_l\,
+ A_{s(p);s(r);s(i)s(j);s(k)s(l)}
+\tag{1}\label{eq:ex-trace-signed-array}
+\]
+for every signed permutation, where the signs $s_a\in\{\pm1\}$ are those
+of the coordinate reflection. The finite signed-coordinate orbit count in
+dimension four has the following explicit form: if a coefficient satisfying
+(1) is nonzero, then its two antisymmetric pairs have distinct entries, and
+either (i) $p=r$ and the two pairs are parallel, or (ii) $p\ne r$ and there
+is a third coordinate $u$, distinct from $p,r$, such that the two pairs are
+$(p,u),(r,u)$ in either order. Permuting coordinates and reversing an
+antisymmetric pair reduces these cases to the four rows
+\[
+ (p,r;ij;kl)=(0,0;01;01),\ (0,0;12;12),\
+ (0,2;01;21),\ (0,2;21;01).
+\tag{2}\label{eq:ex-trace-orbit-representatives}
+\]
+To check the count directly, a reflection in coordinate $a$ multiplies the
+coefficient by $-1$ exactly when $a$ belongs to an odd number of the six
+indices $p,r,i,j,k,l$; a nonzero entry requires even parity at every
+coordinate. If $p=r$, this forces the supports of the two antisymmetric
+pairs to agree, giving case (i). If $p\ne r$, parity forces the pairs to
+share exactly one coordinate, distinct from both $p,r$, giving case (ii).
+Coordinate permutations put the resulting supports in the forms in (2),
+and antisymmetry fixes the order signs. This proves the stated orbit count.
+
+\begin{lemma}[Three probes determine every covariant vector label]
+\label{lem:ex-trace-vector-probes}
+Let $A_{p;r;ij;kl}$ be a real array satisfying the antisymmetries,
+Bianchi relation, and signed covariance above. If
+\[
+ A_{0;0;01;01}=A_{0;2;01;21}=A_{0;2;21;01}=0,
+\]
+then every coefficient of $A$ vanishes.
+\end{lemma}
+\begin{proof}
+By the orbit count, it suffices to check the four rows in
+\eqref{eq:ex-trace-orbit-representatives}. Three are the displayed
+hypotheses. For the remaining row, use Bianchi in the differentiated pair
+with derivative index $0$ and pair $12$:
+\[
+ A_{0;0;12;12}+A_{0;1;12;20}+A_{0;2;12;01}=0.
+\]
+The third term is minus the third displayed probe by reversing the first
+pair $12$ to $21$. Interchanging $1$ and $2$ carries the second term to
+the same third probe, up to the sign from reversing its first or
+differentiated pair. Both terms therefore vanish, so $A_{0;0;12;12}=0$.
+Thus all four representatives vanish; signed
+covariance and antisymmetry propagate zero to every entry.
+\end{proof}
+
+\subsection{The raw spaces have dimensions at most four and three}
+
+For a raw grade-four tensor $Q=(Q_{ab})$, choose a unit color vector $v$.
+The four real linear probes are: the real constant coefficient of $Q_{00}$;
+and the coefficients of $\langle F_{01},F_{01}\rangle$ and
+$\langle F_{12},F_{12}\rangle$ in $Q_{00}$ and
+$\langle F_{01},F_{21}\rangle$ in $Q_{02}$. If all four vanish, the
+constant vanishes. Polarization in the two $F$ slots extracts the symmetric
+quadratic coefficient. For the quadratic coefficient array, signed parity says that if $a=b$,
+the two antisymmetric field pairs have the same support. Relative to the
+fixed output axis $a$, their common support either contains $a$ or avoids
+$a$; coordinate permutations fixing $a$ reduce these to the probes
+$Q_{00}$ on $(01,01)$ and $(12,12)$. If $a\ne b$, the two field-pair
+supports have symmetric difference $\{a,b\}$, so they share a third
+coordinate distinct from $a,b$. Coordinate permutation reduces this to
+$Q_{02}$ on $(01,21)$. Pair reversals change only signs; exchanging the
+output indices gives the same coefficient by $Q_{ab}=Q_{ba}$. These are
+exactly the three quadratic probes listed above.
+The invariant-color argument makes vanishing on the chosen unit color vector
+sufficient: every color coefficient is its inner product multiple. The
+linear term is zero by color simplicity. Thus these four probes are
+injective, and
+\[
+ \dim \mathcal R_4\le4,
+\]
+where $\mathcal R_4$ denotes the raw symmetric grade-four table space.
+
+For a raw grade-five vector $Q=(Q_p)$, polarize the mixed term by evaluating the grade-zero and grade-one slots at
+$(F,J)$, $(F,0)$, $(0,J)$, and $(0,0)$ and taking the alternating sum.
+This cancels the constant and pure-degree terms and leaves exactly the
+mixed bilinear coefficient. The three probes
+are the three entries in Lemma~\ref{lem:ex-trace-vector-probes}. The Bianchi
+identity supplies the fourth orbit representative, while the color argument
+and the all-coordinate reflection remove the other grades as shown above.
+Thus the probe map is injective into $\mathbb R^3$ and
+\[
+ \dim \mathcal R_5\le3.
+\]
+This proves the two raw-dimension bounds without assuming a tensor
+classification beyond the finite parity count just given.
+
+\subsection{The normalized free stress basis}
+
+Let $\nu=(4\pi^2)^{-1}$ and $d_G=\dim\mathfrak g>0$. The normalized
+four-dimensional massless Green function is $G(x)=\nu|x|^{-2}$. At the unit
+vector $e_0$, direct differentiation gives
+\begin{align}
+ \partial_i\partial_jG(e_0)
+   &=-2\nu\delta_{ij}+8\nu\delta_{i0}\delta_{j0},
+ \label{eq:ex-trace-green-hessian}\\
+ \partial_k\partial_i\partial_jG(e_0)
+   &=8\nu(\delta_{ij}\delta_{k0}+\delta_{ki}\delta_{j0}
+                 +\delta_{i0}\delta_{kj})
+       -48\nu\delta_{i0}\delta_{j0}\delta_{k0}.
+ \label{eq:ex-trace-green-third}
+\end{align}
+For example, differentiating $G$ once gives
+$\partial_iG(x)=-2\nu x_i|x|^{-4}$. Differentiating again gives
+\[ -2\nu\delta_{ij}|x|^{-4}+8\nu x_ix_j|x|^{-6}. \]
+One more derivative and
+$x=e_0$ give the displayed formulas.
+
+For antisymmetric index pairs define the free curl kernel
+\[
+ C_{ab;km}(x)=\delta_{kb}\partial_a\partial_mG(x)
+ -\delta_{mb}\partial_a\partial_kG(x)
+ -\delta_{ka}\partial_b\partial_mG(x)
+ +\delta_{ma}\partial_b\partial_kG(x),
+\]
+and the two-contraction chain
+\[
+ \mathcal C_{ab,cd;ij,kl}(x)
+ =C_{ab;ij}(x)C_{cd;kl}(x)
+  +C_{ab;kl}(x)C_{cd;ij}(x).
+\]
+The Wick pairing of two separated point insertions with coefficient vector
+$w=(w_0,w_1,w_2,w_3)$ is $d_G$ times
+\[
+ \mathcal D_w^{ab}(H)=
+ \begin{cases}
+ w_1\sum_i H_{ai,ai}+w_2\sum_{i,j}H_{ij,ij},&a=b,\\
+ w_3\sum_i H_{ai,bi},&a\ne b,
+ \end{cases}
+\]
+For fixed field pairs $(ij,kl)$ set
+$H_{pqrs}(x)=C_{pq;ij}(x)C_{rs;kl}(x)+C_{pq;kl}(x)C_{rs;ij}(x)$.
+The probe is $S_w(ij,kl;ab;x)=d_G\mathcal D_w^{ab}(H(x))$; the vacuum
+contribution to a one-point $00$ entry is $w_0$. Substitution of
+\eqref{eq:ex-trace-green-hessian} into the curl factors gives
+\begin{align}
+ S_w(01,01;00;e_0)&=d_G\nu^2(32w_1+64w_2),\\
+ S_w(12,12;00;e_0)&=d_G\nu^2(64w_2),\\
+ S_w(02,12;01;e_0)&=d_G\nu^2(-16w_3).
+ \label{eq:ex-trace-vacuum-probes}
+\end{align}
+After factoring out $d_G\nu^2$, the coefficient rows for these three
+probes, in columns $(w_1,w_2,w_3)$, are
+\[
+ (32,64,0),\qquad(0,64,0),\qquad(0,0,-16).
+\]
+These finite sums are evaluated by inserting the displayed Kronecker-delta
+Hessian into $C$ and then into $H$ and $\mathcal D_w$. The second equation
+recovers $w_2$, the first then recovers $w_1$, and the third recovers $w_3$,
+since $d_G\nu^2>0$. Together with the one-point vacuum coefficient $w_0$,
+these four probes prove injectivity of the free stress coefficient map into
+the free stress table. The raw bound $\dim\mathcal R_4\le4$ and the
+surjective averaging projection from raw arrays to the free table show that
+the free table has dimension at most four. Thus the coefficient map is an
+isomorphism.
+
+\begin{lemma}[Free stress coefficient map is an isomorphism]
+\label{lem:ex-trace-free-stress-basis}
+The four coefficient tensors consisting of the vacuum scalar, the two
+independent diagonal curvature contractions, and the off-diagonal shear
+contraction form a basis of the free symmetric grade-four stress table.
+\end{lemma}
+\begin{proof}
+The four probes above prove injectivity from a four-dimensional space; the raw
+upper bound proves equality of dimensions, hence bijectivity.
+\end{proof}
+
+\subsection{The two conserved free directions}
+
+Let $\mathcal T_4$ be the free symmetric grade-four stress table and
+$K_0=\ker(\operatorname{skim}:\mathcal T_4\to\mathbb R)$. Let
+$\mathcal V_5$ be the grade-five vector table after imposing the free
+Maxwell equation, and let $D_0:K_0\to\mathcal V_5$ be the free
+divergence restricted to this zero-skim subspace. Write $\pi$ for the
+quotient projection from the raw vector table onto $\mathcal V_5$. The projection is onto by the equivariant
+section obtained by averaging any real section over the finite signed
+permutation group. The equation-of-motion array is
+\[
+ E_b=\sum_{i,a}\langle F_{bi},\partial_aF_{ai}\rangle.
+\]
+It is a nonzero raw covariant vector: take a nonzero color vector $v$, set
+$F_{01}=v$ and $\partial_0F_{01}=v$ at one jet, with all other independent
+jet coordinates zero. The defining sum then evaluates its $b=0$ component
+to $\langle v,v\rangle>0$. The Maxwell equation makes $E$ vanish after the
+quotient. Thus the kernel of $\pi$ is nonzero. Rank--nullity and
+$\dim\mathcal R_5\le3$ give $\dim\mathcal V_5\le2$.
+
+Let $\phi_1,\phi_2$ be the two linear functionals on $\mathcal V_5$
+obtained by the point-divergence probes $(01,01)$ and $(12,12)$ at $e_0$.
+For $w$ as above, let $S_w(ij,kl;ab;x)$ denote the response with field-pair
+insertion $(ij,kl)$, output component $(a,b)$, and separation $x$. Differentiating
+the chain product gives
+\[
+ \partial_u\mathcal C
+ = (\partial_u C_{ab;ij})C_{cd;kl}
+  +C_{ab;ij}(\partial_u C_{cd;kl})
+  +(\partial_u C_{ab;kl})C_{cd;ij}
+  +C_{ab;kl}(\partial_u C_{cd;ij}).
+\]
+Inserting \eqref{eq:ex-trace-green-hessian}--
+\eqref{eq:ex-trace-green-third} and summing $u=0,1,2,3$ gives
+\begin{align}
+ \sum_u\partial_uS_w(01,01;u0;e_0)
+   &=d_G\nu^2(-256w_1-512w_2+128w_3),\\
+ \sum_u\partial_uS_w(12,12;u0;e_0)
+   &=d_G\nu^2(-512w_2-128w_3).
+ \label{eq:ex-trace-divergence-probes}
+\end{align}
+The two coefficient rows in $(w_1,w_2,w_3)$ are linearly independent.
+Consequently $\phi_1\circ D_0$ and $\phi_2\circ D_0$ are independent,
+so $\phi_1,\phi_2$ are independent on $\mathcal V_5$. Together with the
+upper bound $\dim\mathcal V_5\le2$, this gives $\dim\mathcal V_5=2$,
+and $\Phi=(\phi_1,\phi_2):\mathcal V_5\to\mathbb R^2$ is an
+isomorphism. The two probe equations have common kernel
+$\mathbb R(1,-1/4,1)$ on $(w_1,w_2,w_3)$: the second gives
+$w_2=-w_3/4$, and then the first gives $w_1=w_3$. The scalar coefficient
+$w_0$ is removed by zero skim. Thus the kernel of $(\operatorname{skim},
+\Phi\circ D_0)$ is exactly the Weyl line $(0,1,-1/4,1)$. Since $\Phi$
+is an isomorphism, this also proves the Weyl tensor has zero divergence.
+The zero-skim domain has dimension three, and the restricted divergence has
+one-dimensional kernel, so it has rank two and is onto the two-dimensional
+target. Its kernel is precisely the Weyl line.
+
+\begin{proposition}[Free rank and closure dimensions]
+\label{prop:ex-trace-free-closure-rank}
+The free symmetric grade-four stress table has dimension four. The
+Maxwell-reduced grade-five vector table has dimension two. The free
+zero-skim divergence map is onto that vector table and its kernel is the
+one-dimensional Weyl line.
+\end{proposition}
+\begin{proof}
+The first assertion is Lemma~\ref{lem:ex-trace-free-stress-basis}. The
+previous paragraph proves the second and third assertions. The scalar skim
+is exactly the real one-point average of the $00$ entry; it is not the tensor
+trace. The statement uses only the explicit probe formulas and the
+finite-dimensional quotient argument just given.
+\end{proof}

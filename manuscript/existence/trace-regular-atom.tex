@@ -1,0 +1,200 @@
+% The two-regime estimate that pays one regular source atom.
+\section{A paid estimate for one regular source}
+\label{sec:ex-lattice-trace-regular-atom}
+
+We spell out how a single regular source term is paid in the selected
+one-block transition. The source is split into its real and imaginary
+channels. When the transported support fits inside the receiving budget
+radius, local coefficient probes control the inserted coefficient. When it
+does not fit, a direct supremum estimate controls it. The two cases use
+different fields of the local budget, which is why both the regular and
+large-support inequalities were selected in
+Lemma~\ref{lem:ex-lattice-local-budget-choice}. The principal insertion
+attenuation needed in the local estimate is established in
+Section~\ref{sec:regular-principal-producer}; the argument below keeps the
+regular source and both support regimes explicit.
+
+Fix a one-step transition of block length \(L\), a coefficient frame of
+maximum grade \(d\), and a regular source \(f\) on fine support \(b\), with
+pointwise bound \(c\geq0\). Let \(\alpha_f>0\) be the fine support
+exponent and \(q_f\geq0\) its fine cover number, and define the charged mass
+\[
+ m_0=e^{\alpha_f q_f}c.
+\]
+Let \(\beta>0\) be the selected coupling, let
+\(\mathcal M_f(G,L,\beta)>0\) be the fine monitor, and put
+\(\chi=\sqrt{\mathcal M_f(G,L,\beta)}\). Thus a raw budget \(b_0\)
+gives the actual channel price \(b_0/\chi\). Set \(a=L^d\). Let
+\(O,H,W\geq0\) be respectively the motion-average norm, local readout,
+and local test factors. Let raw budgets \(u,v,\xi>0\) satisfy
+\begin{align}
+ O(Wu+2Hav)&\leq \xi, \label{eq:ex-lattice-regular-small-budget}\\
+ 4OHav&\leq \xi. \label{eq:ex-lattice-regular-large-budget}
+\end{align}
+These are the regular and large-support paid budgets. In the Wilson
+application, \(m_0\) is the mass of the source support with its sup-bound;
+\(u,v\) are chosen by Section~\ref{sec:ex-lattice-local-paid-budgets}.
+
+The local estimates needed from the one-step construction have the following
+precise form. The real and imaginary channels have transported cloud
+charges \(C_1,C_2\) satisfying
+\begin{equation}
+ 0\leq C_1,C_2\leq \frac{v}{\chi}m_0. \label{eq:ex-lattice-regular-cloud}
+\end{equation}
+If the transported support is at most the receiving budget radius, the
+local probe reconstruction error, after both channels are combined, is at
+most
+\begin{equation}
+O\bigl(Wu\chi^{-1}m_0+Ha(C_1+C_2)\bigr). \label{eq:ex-lattice-regular-small-read}
+\end{equation}
+If the transported support exceeds that radius, each channel admits a
+uniform chart bound \(S_i\leq \frac{v}{\chi}m_0\) for \(i=1,2\); the resulting two-channel
+coefficient error is at most
+\begin{equation}
+ OHa(S_1+S_2+C_1+C_2). \label{eq:ex-lattice-regular-large-read}
+\end{equation}
+In either case the local construction also supplies a coefficient in the
+coarse format, its exact pushed-density identity, and a remainder budget at
+most \(\rho m_0\), where \(\rho\) is the one-step remainder rate. These
+are the actual local chart and transport conclusions used below, not
+consequences of the scalar budget inequalities alone.
+
+\begin{proposition}[Regular source atom]
+\label{prop:ex-lattice-regular-source-atom}
+Assume the local estimates \eqref{eq:ex-lattice-regular-cloud}--
+\eqref{eq:ex-lattice-regular-large-read} and the coarse-format,
+density, and remainder conclusions just stated. If
+\eqref{eq:ex-lattice-regular-small-budget}--
+\eqref{eq:ex-lattice-regular-large-budget} hold, then the source term
+produces a one-step coefficient with coefficient error at most
+\(\xi\chi^{-1}m_0\),
+exact pushed density, and remainder at most \(\rho m_0\). In the terminology
+of the finite price recurrence, this is the regular-source estimate with
+cost pair \((\xi\chi^{-1}m_0,\rho m_0)\).
+\end{proposition}
+\begin{proof}
+First suppose the transported support is within the receiving radius. By
+\eqref{eq:ex-lattice-regular-cloud},
+\[
+O\bigl(Wu\chi^{-1}m_0+Ha(C_1+C_2)\bigr)
+\leq O(Wu+2Hav)\chi^{-1}m_0\leq \xi\chi^{-1}m_0,
+\]
+where the last inequality is \eqref{eq:ex-lattice-regular-small-budget}.
+The local probe reconstruction estimate
+\eqref{eq:ex-lattice-regular-small-read} therefore gives the claimed
+coefficient error.
+
+Now suppose the transported support exceeds the receiving radius. The
+uniform chart estimate and the two channel bounds give
+\[
+ OHa(S_1+S_2+C_1+C_2)
+ \leq OHa(4v\chi^{-1}m_0)=4OHav\chi^{-1}m_0\leq \xi\chi^{-1}m_0,
+\]
+by \eqref{eq:ex-lattice-regular-large-budget}. Thus the large-support
+estimate gives the same coefficient error. The two cases exhaust the
+support sizes. In both cases, the local construction supplies the exact
+pushed-density identity, coarse format, and remainder bound \(\rho m_0\);
+these components are unchanged by the numerical comparison. This proves the
+assertion.
+\end{proof}
+
+Here is the source realization of the local hypotheses. The source term is
+turned into its real and imaginary masked channels. The single distinguished
+channel is the only one carrying the root label; the other channel labels
+have zero assigned support cost. The per-channel reserved-mass estimate is
+provided by the regular insertion result of
+Section~\ref{sec:regular-principal-producer}. In the small-support regime,
+the finite local probes fit inside the chart, and the local reconstruction
+bound is the test-price term \(Wu\chi^{-1}m_0\) plus the two readout terms
+\(HaC_1\) and \(HaC_2\). In the large-support regime, the direct chart
+supremum bound replaces the probes, leaving two chart and two cloud
+readout contributions; this is exactly the factor four in
+\eqref{eq:ex-lattice-regular-large-budget}. The cloud inequality controls
+each \(C_i\), and the insertion construction carries the same source
+through the block with its density identity. The finite price recurrence
+then sums these single-source costs over the countable regular family using
+its absolute mass budget.
+
+More explicitly, let \(q_\tau\) be the coefficient in
+Section~\ref{sec:ex-lattice-local-paid-budgets}. In the small-support case,
+the chart estimate gives, for each recovery probe \(\tau\), a contribution
+at most \(q_\tau v\chi^{-1}m_0\). The cycle budget gives
+\(q_\tau v\leq u\); finite coefficient recovery therefore bounds the
+probe part by \(Wu\chi^{-1}m_0\). The two real/imaginary cloud
+contributions are bounded by
+\(Ha(C_1+C_2)\), and the regular budget in
+\eqref{eq:ex-lattice-regular-small-budget} pays their sum. The chart
+construction has enough room that the support is nonwrapping and every
+probe stencil lies in the healthy region; the ordered derivative bounds
+through order \(d\) are exactly the ones used by the finite recovery map.
+This is the local probe conclusion of the small-support construction, not an
+inference from the value bound alone.
+
+For the large-support case, the local field is built by its support
+reservation. The reservation includes the factor
+\(\exp(\alpha_c q_i)\geq1\), where \(\alpha_c>0\) is the receiving
+support exponent and \(q_i\geq0\) the channel's coarse cover number, so
+its unweighted supremum cost is no larger than its reserved mass. The
+construction bounds that reserved mass using the one-site talent estimate
+times the source mass. That estimate is at most \(v/\chi\), hence each
+channel has \(S_i\leq(v/\chi)m_0\). The cloud bounds likewise give
+\(C_i\leq(v/\chi)m_0\). Applying the local readout bound to the two chart
+bounds and the two cloud terms yields
+\(OHa(S_1+S_2+C_1+C_2)\leq4OHavm_0/\chi\). The large-support budget pays this
+quantity. In both cases the chosen support labels retain the same fine
+source and the transition preserves its density, while the one-site
+reservation and turn-price inequalities give the remainder \(\rho m_0\).
+The local chart statements used in these paragraphs are the exact outputs
+of the small-support and large-support constructions; their hypotheses and
+producer declarations are recorded in the accompanying evidence file.
+
+In the small-support construction, the image of the source support is first
+enlarged by the transport halo. The geometric placement puts this enlarged
+set in a parent patch and bounds every point of that patch's support by the
+chart radius. The condition
+\[
+ 20(r_d+R_d+1)<n_0
+\]
+then makes both the transported source support and the parent patch
+nonwrapping; \(r_d\) is the chart radius, \(R_d\) the transport reach, and
+\(n_0\) the parent side length. The local construction gives the actual
+field \(U_i\) and its smooth reference \(V_i\) on one healthy chart. For
+each channel weight \(w_i\), the ordered derivatives at the identity through
+order \(d\) satisfy
+\[
+ \|D^\ell_0 U_i-D^\ell_0 V_i\|
+       \leq 2(v/\chi)w_i,
+\]
+For every coefficient-recovery probe \(\tau\in\mathcal T\), evaluated at
+parameter zero along its test path, one also has
+\[
+ |\partial^\tau_0 V_i|\leq(v/\chi)w_i.
+\]
+The probe stencil lies in the healthy chart. The first bound controls the
+local variation correction in the reconstruction, and the second is the
+probe-price input. The finite recovery map and its probe-price sum therefore
+give the \(Wu\chi^{-1}m_0\) contribution; applying the same row decomposition
+to the two real channels gives the separate \(Ha(C_1+C_2)\) contribution.
+This supplies the stated small-support estimate with the correct one-block
+normalization.
+
+In the large-support construction, the transported cover number is larger
+than the receiving radius. For each real channel, the support-reservation
+argument constructs a regular field with supremum bound \(S_i\) and a
+reserved mass
+\[
+ R_i=e^{\alpha_c q_i}S_i,
+ \qquad R_i\leq(v/\chi)m_0,
+\]
+where \(\alpha_c>0\) is the receiving support exponent and \(q_i\geq0\)
+is the channel's coarse cover number. The exponential factor is at least
+one, so \(S_i\leq R_i\leq(v/\chi)m_0\). Independently, the cloud estimate
+gives \(C_i\leq(v/\chi)m_0\). Thus the two chart bounds and two cloud
+charges together cost at most
+\[
+ OHa(S_1+S_2+C_1+C_2)
+       \leq 4OHav\chi^{-1}m_0,
+\]
+which is paid by the large-support inequality. This is the large-support
+estimate used in the proposition; it keeps the chart and cloud contributions
+separate because they come from different source bounds.

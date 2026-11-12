@@ -1,0 +1,134 @@
+\section{The kinetic response on the selected bridge}
+\label{sec:ex-selected-kinetic-response}
+
+We supply the fine kinetic matrix bound used in
+Section~\ref{sec:ex-stationary-determinant-prices}, and identify its
+three derivative kernels on the selected finite periods. Let
+$F_n$, $0\leq n\leq2$, be the response arrays of
+Theorem~\ref{thm:ex-soft-response-mockups}, of common Laurent width
+$t_*>0$ and price $C\geq0$. Retain all the theorem's hypotheses
+on the incoming path and metric. Let $\Phi$ be the actual bridge
+of Section~\ref{sec:ex-selected-stationary-linear-data}, with fine
+differences through order one bounded by $D\mu^{1+j}$.
+Fix $0<\sigma\leq1$ in its strip and require
+$\mu\sigma\leq t_*$. This last condition is imposed by increasing
+$L$ after $t_*$ and $\sigma$ have been chosen.
+
+\subsection{Contracting the response arrays}
+For external momenta $p_1,\ldots,p_n$ and coarse coordinate legs
+$a_1,\ldots,a_n$, put $v_j=\Phi(p_j)e_{a_j}$. For an internal
+input momentum $q$ the output momentum is
+$q'=q+\sum_jp_j$. Define a matrix $K_n(p_1,\ldots,p_n;q)$
+by its bilinear pairing with arbitrary internal vectors $u,w$:
+\[
+ u^T K_n(p_1,\ldots,p_n;q)w
+ =\mathcal B_n(p_1,\ldots,p_n,-q',q)
+                         [v_1,\ldots,v_n,u,w].
+\]
+Here $\mathcal B_n$ is the block-periodized multilinear form
+obtained by inserting the array $F_n$ in (SR2) and summing the
+base site over one fine residue block. Translation of a residue
+across a block boundary carries the corresponding Bloch phase.
+This defines the pairing on coordinate vectors, hence defines
+the matrix uniquely. We only use momenta for which $p_j,q,q'$
+belong to the width-$\sigma$ strip.
+
+Every stitch uses words of length at most one, and its lengths obey
+\begin{equation}\label{eq:ex-kinetic-stitch-count}
+                  (n+2)+\sum_{j=1}^{n+2}|\ell_j|=4.
+\end{equation}
+This is the precise derivative count: two differences for the value,
+one for the first background derivative, and none for the second.
+Set $R=D+5e^4$. In normalized counting measure on a residue block,
+the external leg with word $\ell_j$ has supremum norm at most
+$\mu^{1+|\ell_j|}R$. A unit internal leg in the weighted Fourier
+norm has normalized $L^2$ norm at most the same expression, by
+the multiplier estimate of
+Section~\ref{sec:ex-weighted-frame-penalty}. There are exactly
+two such internal legs. H\"older's inequality therefore bounds
+the normalized sum of their product and all external factors by
+\[
+                         \prod_{j=1}^{n+2}\mu^{1+|\ell_j|}R.
+\]
+Restoring the unnormalized residue sum multiplies by $L^4$.
+Equation~\eqref{eq:ex-kinetic-stitch-count} gives the cancellation
+\[
+        L^4\prod_{j=1}^{n+2}\mu^{1+|\ell_j|}R=R^{n+2}.
+\]
+Thus neither a count of fine sites nor a conversion of a full
+matrix to entrywise bounds introduces an extra power of $L$.
+
+We also check complex translation factors. For a shift $z$ of a
+residue leg, its Bloch extension differs from the permuted residue
+vector by a phase with modulus at most
+$\exp(\sigma(8+\mu|z|_1))$. To see the bound, write the translated
+site as its residue plus $L$ times its block quotient. The difference
+between the two residues has coordinate sum at most $8L$; the
+remaining displacement contributes $|z|_1$. Multiplying the phases
+of the $n+2$ legs costs at most
+\[
+                 e^{8\sigma(n+2)}e^{\mu\sigma|z|_1},
+\]
+where now $z$ is the whole array shift. The last factor is paid
+by its Laurent width. Summing shifts, color addresses and stitch
+addresses therefore gives
+\begin{equation}\label{eq:ex-selected-kinetic-bound}
+ \|K_n\|\leq A_n,
+ \qquad A_n=N_n e^{8\sigma(n+2)}R^{n+2}C,
+ \qquad 0\leq n\leq2,
+\end{equation}
+where $N_n$ is the product of the numbers of color and stitch
+addresses at level $n$. These numbers depend only on the fixed
+group and $n$. The norm is the operator norm between the weighted
+fine space and its bilinear dual at the two indicated momenta.
+Taking $A_K=A_0+A_1+A_2$ supplies the common bound required in
+the determinant comparison.
+
+Absolute Laurent convergence, uniformly on every strictly smaller
+strip, also proves holomorphy of these matrices. Moving a momentum
+by a reciprocal lattice vector changes its residue phases and its
+block quotient phases by inverse factors, so the matrices are
+periodic. This verifies the common analytic extension directly
+from the arrays and the bridge.
+
+\subsection{Identification with the actual Hessian derivatives}
+Let $I_m$ be the incoming action on a fine torus and put
+\[
+ \mathcal D(x_+,x_-)
+       =\operatorname{content}(\operatorname{input}(x_+)
+                                      \operatorname{input}(x_-)).
+\]
+Near zero,
+$I_m(\mathcal D(x_+,x_-))$ is exactly the action at the background
+$\operatorname{input}(x_-)$ after the left increment
+$\operatorname{input}(x_+)$. Its Hessian in $x_+$ is therefore
+the fine kinetic Hessian in the left coordinates used for the
+stationary determinant. Differentiating it $n$ times in the
+background $x_-=Wx$, and testing with two arbitrary internal
+vectors, gives precisely the mixed response with $n$ minus-species
+legs followed by two plus-species legs. Analyticity permits this
+reordering of derivatives. This is the species order in (SR2).
+
+On a coarse Fourier wave, the actual installed matrix $W$ produces
+the block wave with residue amplitude $\Phi(p)e_a$, by the
+finite Fourier identity of
+Section~\ref{sec:ex-selected-stationary-linear-data}. Insert these
+waves and the two internal block waves into (SR2). The sum over
+coarse base sites is zero unless the total coarse momentum vanishes;
+otherwise it is the coarse site cardinality. In the latter case
+the remaining residue and shift sum is exactly the defining
+pairing of $K_n$ above. Fourier waves span the full finite-volume
+space, and testing against every outgoing wave determines a matrix.
+Thus $K_0,K_1,K_2$ are the actual value, first derivative and
+second derivative kernels of the same kinetic Hessian on every
+selected torus, including nonzero momentum transfer. They are
+not only limiting coefficient pictures.
+
+Finally the local bridge legs used by the frame and penalty estimates
+obey their required common pointwise bound: at a residue the color
+Euclidean norm is at most $\sqrt{d_1}\,D\mu$, because there are
+$d_1$ one-form color coordinates. Enlarging the local price to
+$\sqrt{d_1}D+e^4$ also covers the fixed coordinate legs. This price
+is independent of $L$. Consequently the local estimates, the kinetic
+triple and all finite-volume identifications in the determinant
+comparison refer to one and the same selected bridge and path.

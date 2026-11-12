@@ -1,0 +1,472 @@
+\section{Producing and symmetrizing the marked campaign}
+\label{sec:marked-campaign-producer}
+
+This section supplies the campaign used by the fixed-stencil construction.
+It has two parts. First, the equation ideal is read by microscopic link
+observables whose Taylor errors lie strictly above the requested grade.
+Second, finite-dimensional linear algebra combines these reads into one
+campaign, and finite group averages impose the signed and real symmetries.
+The filtration throughout counts factors that are color coordinates of
+based curvature slots; it is not a count of raw link entries.
+
+\subsection{The microscopic filtration and its Taylor data}
+
+Fix a gauge group, a holomorphic link action, and a cutoff degree $d$. A
+slot $S$ is one of the based, transported plaquette-curvature readouts on
+the cover lattice. For a real basis vector $e_a$ of the color space, write
+\[
+              x_{S,a}(U)= e_a\mathbin{\cdot} S(U).
+\]
+Let $\mathcal P_{\geq r}$ be the complex span of finite products of at
+least $r$ such coordinates, with the empty product allowed when $r=0$.
+Thus a single slot coordinate has filtration degree one even though, as a
+function of link matrices, it is a nonlinear polynomial or analytic
+expression.
+
+For a label $p$ of grade $m=(r,s)$, a marked read consists of a field
+function $f$ and a polynomial $q$ with three properties. The function is
+gauge invariant, has at least $s$ slot factors in the span sense above,
+and its link-action derivatives through order $d$ agree with those of $q$.
+The correction $q-p$ has strictly larger grade stamp
+\[
+                         \operatorname{st}(r,s)=(s,r)
+\]
+in lexicographic order. When $p$ lies in the Maxwell equation ideal, the
+read $f$ is additionally microscopic: its moment against every sufficiently
+large-volume spectator which is local away from a fixed anchor vanishes.
+These are precisely the properties needed for later stencil pricing and
+for the exact equation-ideal payment.
+
+The elementary analytic input is a first-order germ for each slot. Put
+$\operatorname{Snap}_d$ for the finite-dimensional space of radial link
+jets through degree $d$. For every slot $S$, the function
+\[
+          J\longmapsto S\bigl(U_d(J)\bigr),\qquad J\in\operatorname{Snap}_d,
+\]
+is real analytic near zero, transforms by the adjoint action under a
+constant gauge transformation at the base point, vanishes at zero, and
+has derivative equal to the linearized plaquette curvature. To see the
+analyticity directly, on one link the connection coefficient is a linear
+function $A_J(t)$ of $J$. On the Banach space $C([0,1],\mathfrak A)$ of
+continuous paths in the finite-dimensional matrix algebra $\mathfrak A$
+containing the group representation, the Volterra operator
+\[
+          (T_Ju)(t)=\int_0^t u(s)A_J(s)\,ds
+\]
+has norm at most $\sup_s\|A_J(s)\|$. In a neighborhood of $J=0$ this is
+less than one, so the unique solution of the link equation is
+\[
+                 u_J=(I-T_J)^{-1}{\bf 1}
+                     =\sum_{n\geq0}T_J^n{\bf 1}.
+\]
+The series converges locally uniformly in the finite-dimensional parameter
+$J$, and hence is analytic there. Uniqueness identifies it with the given
+link transport. A slot is obtained by a finite product of these transports
+and their inverses, followed by the plaquette curvature map; it is therefore
+analytic as well. Constant-gauge covariance follows by conjugating the ODE,
+and differentiating at $J=0$ gives the signed sum of the edge tangents around
+the plaquette, which is the linearized curvature. This proves the required
+slot germ without imposing any regularity on a configuration space of
+infinite link fields.
+
+\subsection{Avoiding one edge while spanning Taylor tests}
+
+The next finite-dimensional fact is the source of the locality needed for
+products. Regard $\operatorname{Snap}_d$ itself as the real vector space
+$\mathcal T_d$ of radial jets. For a slot $S$, let
+\[
+       B_S=D_0\bigl(J\mapsto S(U_d(J))\bigr):
+                  \operatorname{Snap}_d\to\mathfrak g.
+\]
+If $e$ is a prescribed cover edge, call a slot $S$ safe for $e$ if its
+spatial support avoids $e$ along the translated path used to define $S$.
+
+\begin{lemma}[Safe Taylor tests span]\label{lem:marked-safe-span}
+For each edge $e$, the real linear span of the component functionals of
+$B_S$, over slots $S$ safe for $e$, is all of $\mathcal T_d^*$.
+\end{lemma}
+\begin{proof}
+For $d<2$ the radial-jet space has no Taylor components and the claim is
+immediate. Assume $d\geq2$.
+Take a jet $A\in\operatorname{Snap}_d$ annihilated by every listed
+functional. For every pair of axes $i<j$, the safe-slot geometry excludes
+only a finite set of plaquette base points. At each other base point it
+supplies a detour transport path avoiding $e$. The hypothesis says the
+resulting slot derivative on $A$ is zero. The slot-germ identity therefore
+gives the full sampled curl equation below. Here
+$C_{ij}(A_\ell)(x,t)$ denotes the axes-$(i,j)$ finite-mesh curl component
+of the degree-$\ell$ Taylor field at position $x$ and mesh $t$; it is
+homogeneous under simultaneous scaling of $x$ and $t$.
+\[
+       \sum_{\ell=0}^{d-2}C_{ij}(A_\ell)(x_y,1)=0
+\]
+at every lattice point $y$ outside the finite exceptional set. We now
+induct downwards: once shells above $k$ have been shown to vanish, this
+same equation reduces to its sum over $0\leq\ell\leq k$. For $t>0$ define
+\[
+ F_k(x,t)=\sum_{\ell=0}^{k}
+              t^{k-\ell}C_{ij}(A_\ell)(x,t).
+\]
+Homogeneity of the degree-$\ell$ curl component gives
+\[
+ F_k(t x_y,t)=t^k\sum_{\ell=0}^k C_{ij}(A_\ell)(x_y,1)=0.
+\]
+Choose lattice sites $y_t$ with $t x_{y_t}\to x$ as $t\downarrow0$.
+For $x\ne0$ the
+finite exceptional set is avoided for all sufficiently small $t$.
+Continuity of $F_k$ gives
+$F_k(x,0)=C_{ij}(A_k)(x,0)=0$, since every lower-shell
+term has a positive power of $t$ at $t=0$. Continuity extends this
+identity to $x=0$. Thus the top coefficient has zero curl. For a
+homogeneous radial-gauge potential of degree $k+1$, this forces the
+potential to vanish directly. Differentiate its radial-gauge identity
+$\sum_jx_jA_j(x)=0$ in coordinate $i$ and use curl-freeness and Euler's
+identity:
+\[
+ 0=A_i+\sum_jx_j\partial_iA_j
+   =A_i+\sum_jx_j\partial_jA_i=(k+2)A_i.
+\]
+Hence $A_i=0$ for every coordinate, so the top shell vanishes. Remove it
+from the sampled equation and repeat with the next lower index. Descending
+induction proves $A=0$. In a finite-dimensional space a family of
+functionals spans the dual exactly when its common kernel is zero, which
+proves the claim.
+\end{proof}
+
+The slot linearization in this proof is concrete. For a based plaquette
+readout it is the oriented sum of the four link tangents, transported to
+the base point; the ODE calculation above proves this formula for the
+actual link action. Only finitely many plaquette base points are excluded;
+at each remaining point the detour path is chosen separately. The radial
+argument therefore applies to every Taylor test, not just
+to tests supported on a generic set.
+
+\begin{lemma}[Equation-factor and spectator reads]\label{lem:marked-factor-read}
+Let $a$ be a homogeneous polynomial in the equation ideal, of grade
+$m=(r,s)$ with $r\leq d$. Then $a$ is a finite linear combination of
+terms
+\[
+                    \ell\,\prod_{j=1}^k z_j,
+\]
+where $\ell$ is a homogeneous linear label functional annihilating the
+Maxwell solution-potential subspace and each $z_j$ is a homogeneous linear
+label atom. Their field reads are assembled from slot-coordinate
+observables. Each term has a raw read $f$ and polynomial $q$ with
+$q-a$ of strictly larger grade stamp, $f\in\mathcal P_{\geq s}$, and
+$f$ microscopic. Individual terms need not be gauge invariant.
+\end{lemma}
+\begin{proof}
+Write $\mathcal E_j$ for a projection onto the space of radial potentials
+obtained from on-shell Maxwell curvatures at order $j$, and let $\mathcal E$
+act coefficientwise. The equation
+ideal is the kernel of $p\mapsto \operatorname{changed}(\mathcal E)p$.
+If $p$ belongs to that ideal, then
+\[
+                 p=p-\operatorname{changed}(\mathcal E)p.
+\]
+Expand $p$ into monomials before applying the substitution. For a literal
+slot atom $u$, split $u=(u-\mathcal E u)+\mathcal E u$. The first
+summand annihilates every Maxwell solution potential. For a product
+$u_1\cdots u_k$, use
+the telescoping identity
+\[
+ \prod_{j=1}^k u_j-\prod_{j=1}^k\mathcal E u_j
+ =\sum_{i=1}^k (u_i-\mathcal E u_i)
+       \Bigl(\prod_{j<i}\mathcal E u_j\Bigr)
+       \Bigl(\prod_{j>i}u_j\Bigr).
+\]
+The projection preserves the radial grade. Thus every summand has one
+solution-annihilating linear factor and a finite spectator product, with the
+original total grade. This proves the displayed factorization directly
+from the equation-ideal definition; no invariant-factor assumption is
+made.
+
+Fix one generator $\ell\prod_jz_j$. The functional $\ell$ annihilates the Maxwell solution-potential subspace.
+The required duality statement concerns only the top Taylor layer. For a
+homogeneous potential $A_\ell$, define its transverse plaquette difference by
+\[
+ T_\ell(p,b;x)=N_\ell(p,b;x,1)-N_\ell(p,b;x-e_b,1),
+\]
+where $N_\ell$ is the sampled curl on the plaquette based at $p$. Apply the
+plaquette incidence sign in direction $\nu$ to $T_\ell$ to obtain the
+transverse force density. The corresponding line term
+$L_\ell(\nu,p;x,t)$ is the same incidence sum of the oriented arc; each arc
+is the difference of the two ordered triple averages of
+$\partial_b(\partial_a A_c-\partial_c A_a)$ along the plaquette edges.
+The source's scaling and zero-mesh identities are
+\[
+ t L_\ell(\nu,p;t x,t)=t^\ell T_\ell(\nu,p;x),\qquad
+ \sum_p L_\ell(\nu,p;x,0)
+       =-\sum_b\partial_b\operatorname{curl}(A_\ell)_{b\nu}(x).
+\]
+If every positive path-force test vanishes through order $j+2$, then for
+every permitted lattice site the finite force sum vanishes. Its line form is
+\[
+ F_j(x,t)=\sum_{\ell=0}^j t^{j-\ell}
+                    \sum_p L_\ell(\nu,p;x,t).
+\]
+The scaling identity shows that $tF_j(t x_y,t)$ is $t^j$ times the
+vanishing finite force sum. Since $t>0$, this implies
+$F_j(t x_y,t)=0$. For $x\ne0$, choose lattice sites $y_t$ with
+$t x_{y_t}\to x$; they eventually avoid the finite exceptional set. Let
+$t\downarrow0$ and use continuity. Only the top
+coefficient remains, and the zero-mesh identity gives
+$\sum_b\partial_b\operatorname{curl}(A_j)_{b\nu}=0$. The curl is also
+closed by the Bianchi identity, hence is an on-shell Maxwell curvature.
+The exact potential sequence represents this curvature as the curl of a
+radial potential; uniqueness in radial gauge identifies that potential
+with $A_j$. Thus $A_j$ lies in the image of the Maxwell potential map.
+Continuity extends the assertion to $x=0$.
+
+Now let a linear functional on the top Taylor layer annihilate that
+solution-potential image. It vanishes on $A_j$ whenever the positive
+force tests vanish on $A$. Thus its composition with projection onto the
+top Taylor layer annihilates the common kernel of the force family.
+Finite-dimensional duality puts this composed functional in the span of
+the positive path forces. This is the force representation used to
+construct the equation-factor read; no statement about the full
+force-kernel in all Taylor layers is needed.
+
+Write the equation-factor atom as one of grade $(j+2,1)$, and let the
+spectator word have grade equal to the sum of the grades of its factors.
+At the intermediate cutoff $j+2$, express the linearized equation factor
+as a finite sum of transported link forces. Replacing each linearized
+curvature by its actual slot read gives the forced factor with error in
+slot filtration at least two. The spectator word is read by induction on
+its length: for each factor, the safe-span lemma supplies slots avoiding
+the force edge. The product rule then puts every error term at least one
+slot above the spectator's own factor count. These reads have the desired
+minimum slot count and preserve the one-link microscopic identity.
+
+For the requested cutoff $d\geq j+2$, extend the intermediate Taylor
+functional to the full jet and multiply by the unchanged spectator word.
+The extension has two distinct errors. First, the discrepancy between
+the constructed read and its own lifted Taylor polynomial has one more
+slot factor than the target's second grade. Second, the lifted
+linear functional agrees with the original equation atom on the
+intermediate jet; its remaining Taylor tail has strictly higher first
+grade while retaining the same slot count. Multiplying this tail by the
+spectator word preserves the strict first-grade increase. Thus, writing
+$w$ for the lifted polynomial and $v$ for the target generator, the
+required comparison is the sum
+\[
+ w-v=\bigl(w-\operatorname{Taylor}_{\leq d}(\widetilde\ell\,a)\bigr)
+       +\bigl(\operatorname{Taylor}_{\leq d}(\widetilde\ell\,a)-v\bigr).
+\]
+The first term is strictly later in the slot-count coordinate of the
+grade stamp; the second is strictly later in the first-grade coordinate.
+Both are therefore strictly above the target stamp. This two-part
+comparison, together with the forced edge read, gives the required
+positioned read for the generator. Finite sums and scalar multiples
+extend it to the full homogeneous ideal element.
+
+The reads in this lemma are raw reads; gauge averaging is done only after
+the terms for the invariant label have been assembled.
+\end{proof}
+
+The conditional moment calculation in this argument is the one-link
+Haar integration-by-parts identity. For a walk $w$ from the anchor to a
+source edge $e$, the transported force is
+\[
+       \operatorname{Ad}_{\operatorname{travel}(U,0,w)}
+                                  \operatorname{field}(U,e).
+\]
+Move the transport to the other slot using invariance of the color inner
+product, then expand in a real orthonormal color basis $(E_a)$. Every
+term has the form
+\[
+ \langle E_a,\operatorname{field}(U,e)\rangle\,S_a(U),
+\]
+where $S_a$ is the spectator times a coefficient depending only on the
+walk transport. For the translated test at anchor $o$, choose the Micro
+radius larger than the support radius of the walk and its source edge,
+and choose the side threshold so these cover sites do not wrap. The test
+spectator is then local outside that radius and is unchanged when only
+the translated source link is varied. Haar integration by parts on that
+link gives
+\[
+ \int \left(\partial_{E_a}S_a
+       -\beta\langle E_a,\operatorname{field}(U,e)\rangle S_a\right)
+            d\mu_\beta(U)=0.
+\]
+The derivative term vanishes; the derivative of the bare density is the
+displayed force term. The envelope bound supplies an integrable majorant
+for differentiating under the integral, so the identity also holds for
+the bounded measurable spectators permitted in the Micro definition.
+Summing over $a$ gives the force moment zero. This identity is valid for
+either sign of $\beta$; the nonzero condition in Micro is used only when
+dividing out the scalar factor in the moment normalization.
+
+\paragraph{Scope of the factor lemma.}
+The source's equation-ideal identity is the kernel statement used above.
+The force calculation used is only the top-component implication proved
+from the radial current limit: simultaneous vanishing of the positive
+path-force tests puts the highest radial coefficient in the image of the
+Maxwell potential map. The conditional one-link Haar identity is the
+moment input defining the equation leg. The argument above proves the
+monomial factorization, edge-avoiding spectator assembly, and two-part
+filtration comparison from these facts.
+
+\subsection{The all-grade campaign}
+
+The previous lemmas give the exact pointwise producer needed for the
+finite-dimensional assembly.
+
+\begin{proposition}[Positioned equation-ideal read]\label{prop:marked-positioned}
+For every pure-grade label $p$ in the Maxwell equation ideal, of grade
+$m=(r,s)$ with $r\leq d$, there are a gauge-invariant function $f$ and a
+polynomial $q$ such that $f$ has slot degree at least $s$, the action
+derivatives through order $d$ of $f$ and $q$ agree, $q-p$ has grade
+strictly above $m$, and $f$ is microscopic.
+\end{proposition}
+\begin{proof}
+Use the exact ideal factorization to write $p$ as a finite sum of gap
+atoms times spectator monomials. Apply the factor-read lemma to those
+generators and add the resulting raw reads. Their polynomial targets sum
+to $p$; their errors remain in the strictly higher-stamp subspace, and
+the slot-degree and microscopic conditions pass to finite sums. The
+resulting raw function need not yet be gauge invariant.
+
+Now average the pair over the compact gauge group at the anchor. A
+constant gauge transformation rotates the color components of each of
+the finitely many fixed slot addresses among a finite basis. Thus the
+orbit of this particular finite sum lies in a finite-dimensional span,
+and its Haar integral is an ordinary finite-dimensional vector integral.
+The label $p$ is gauge invariant, so the target of every rotated read is
+still $p$; its Taylor correction remains in the same strictly higher
+stamp subspace. Forms, slot filtration, and the microscopic moment
+condition are linear and preserved by the integral. A based transported
+slot under an arbitrary local gauge transformation changes only by the
+adjoint action of that gauge transformation at its base point: the
+interior transports cancel in pairs. Averaging over the anchor group
+therefore makes the read invariant under the full local gauge action.
+This produces the required $f$ and $q$.
+\end{proof}
+
+The proposition applies to the actual action, rather than to a formal substitute:
+the slot germ is obtained from the link ODE above. Its one-factor
+linearization is the oriented plaquette sum. The finite-generation formula
+for the ideal is obtained degree by degree by expanding each polynomial
+into monomials, applying the projection onto the Maxwell
+solution-potential subspace, and splitting one
+literal equation factor from the remaining slot coordinates. The
+safe-span annihilator proof handles the edge avoidance needed to multiply
+the spectators. These are the mathematical steps packaged by the
+positioned read in the source.
+
+\begin{theorem}[Campaign and imprint at fixed cutoff]
+\label{thm:marked-campaign-producer}
+Assume at cutoff $d$ there is a complex-linear map $S$ from labels to
+link-field functions with unit value one, gauge-invariant values, and exact
+action Taylor forms through order $d$. In addition, for each pure-grade
+basis label of grade $(r,s)$, assume its value has a finite representation
+as a linear combination of products of based curvature-slot color
+coordinates, each product having at least $s$ factors. This is the powered
+slot-degree condition used below. Then there is a complex-linear campaign
+$F$ whose grade-$m$ value
+has a read with slot degree at least the second grade, whose polynomial
+correction has strictly larger stamp than the input label, and whose
+equation-ideal values are microscopic. The campaign may be chosen to
+commute with signed coordinate changes and the real structure.
+\end{theorem}
+\begin{proof}
+We first construct the unsymmetrized campaign. The sound section itself
+provides a linear map $X$ with
+\[
+ Xp=(p,S(p)),\qquad X1=(1,1).
+\]
+It gives the required action forms, gauge invariance, and slot degree for
+each pure grade. It need not be microscopic on the equation ideal.
+
+For a fixed grade $m$, restrict the input $p$ to $\operatorname{Grade}(m)$
+and let
+\[
+ P_m=\operatorname{Grade}(m)\cap\mathcal I_d,
+\]
+where $\mathcal I_d$ is the finite-dimensional Maxwell equation ideal.
+Choose a basis $(b_i)$ of $P_m$. For each $b_i$, apply
+Proposition~\ref{prop:marked-positioned} and write its read as
+$(q_i,f_i)$. Extend $b_i\mapsto(q_i,f_i)$ linearly on $P_m$. The result
+is a payment map on the ideal part of this grade: forms, strict-stamp
+correction, powered membership, and the Micro conclusion are all linear
+conditions and hence pass through the basis expansion.
+
+Choose a linear projection $L_m$ from the full label space onto $P_m$
+which restricts to the identity on $P_m$. If $X_m$ is the map just
+constructed on $P_m$ and $S_m$ is the sound-section map, set
+\[
+                 F_m(p)=X_m(L_mp)+S_m(p-L_mp).
+\]
+Both summands have the required grade-$m$ payment, so their sum does too.
+If this grade-$m$ input $p$ lies in the equation ideal, grade preservation
+of the ideal gives $L_mp\in P_m$ and $p-L_mp\in P_m$. Since $L_m$ is the
+identity on $P_m$, applying $L_m$
+to $p-L_mp$ gives zero and also $p-L_mp$; therefore $p-L_mp=0$.
+Thus for ideal inputs the entire value is the microscopic marked value
+$X_m(p)$. If $m=(0,0)$, the unit is not in the equation ideal: the ideal
+has no nonzero constant component. Hence $L_m1=0$ and the sound map
+supplies $F_m(1)=(1,1)$.
+
+There are only finitely many relevant grades,
+\[
+             \{0,\ldots,d\}\times\{0,\ldots,d\}.
+\]
+Decompose $p=\sum_m p_m$ by its homogeneous grade and define
+$F(p)=\sum_mF_m(p_m)$. On an input of pure grade $m$, every other grade
+component vanishes, so the corresponding payment remains exact. On the
+unit only grade $(0,0)$ contributes, so the start condition holds. This
+is the claimed campaign.
+
+Now symmetrize. Let $\mathcal S$ be the finite signed coordinate
+permutation group, $\theta_s$ its action on labels, and $\phi_s$ its
+joint action on a label/function pair. Define
+\[
+ F^{\mathrm{sgn}}=\frac1{|\mathcal S|}
+       \sum_{s\in\mathcal S}\phi_s F\theta_{s^{-1}}.
+\]
+Signed changes preserve grade, the strictly higher-stamp subspace, the
+slot-product filtration, the action-form identity, and the equation ideal.
+They preserve the moment condition by changing variables in the finite
+volume measure. Thus every summand remains a campaign and the average is
+one. Reindexing by $s\mapsto ts$ shows
+$F^{\mathrm{sgn}}\theta_t=\phi_tF^{\mathrm{sgn}}$.
+
+Let $c$ be the joint real-conjugation involution on labels and
+label/function pairs. It is conjugate-linear, commutes with the signed
+action, and preserves each campaign condition. Set
+\[
+ F^{\mathrm{imp}}=\tfrac12\bigl(F^{\mathrm{sgn}}+
+                           cF^{\mathrm{sgn}}c\bigr).
+\]
+The midpoint is complex-linear because the two conjugate-linear actions
+on the source and target cancel. It remains a campaign; $c^2=1$ gives
+real equivariance, while commutation of $c$ with the signed action retains
+signed equivariance. Both averages fix the unit. This is the required
+imprint.
+\end{proof}
+
+The exact algebraic assembly above uses no limit in volume and no
+compactness argument. Its analytic input is the positioned read. The
+source proves that input from the radial ODE germ, the finite Taylor
+annihilator argument, the equation-ideal generation formula, and the
+conditional-Haar microscopic identity described above. The section
+input is supplied by the integrated section producer, as the following
+corollary records.
+
+\begin{corollary}[Actual fixed-cutoff imprint]\label{cor:marked-campaign-actual}
+For every gauge group, holomorphic link action $H$, and cutoff $d$, the
+source's actual section construction yields a campaign and an imprint at
+that cutoff.
+\end{corollary}
+\begin{proof}
+Use the local-sections construction of
+Section~\ref{sec:local-sections}. For cutoff $d$ it gives the section
+$T_dF$ and pose polynomials $P_\alpha$ with exact action forms through
+order $d$, unit, and gauge covariance. Its pose certificate says that every
+monomial in the pose polynomial of a grade-$(r,s)$ basis label has total
+factor degree at least $s$. Expanding the finite pose polynomial writes each such basis value as
+a finite sum of slot-coordinate products with at least $s$ factors. Thus
+the powered slot-degree hypothesis of the theorem holds. Applying the
+theorem gives a campaign; its finite signed and real averages give the
+imprint.
+\end{proof}

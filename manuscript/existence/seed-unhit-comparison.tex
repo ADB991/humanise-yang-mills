@@ -1,0 +1,272 @@
+\section{The comparison error on the unhit region}
+\label{sec:seed-unhit-comparison}
+We compare the actual cut kernels with the full linear kernels at the
+identity. The linear cancellation uses the derivative of the actual
+rooted predictor. Its gradient correction disappears only after the
+coarse curl is applied. Throughout this section $L$ and the patch
+are fixed; constants may depend on them but are uniform in the period,
+the truncation length, and the selected tags.
+
+\subsection{The full linear identities}
+Let $B_f,B_c$ be the two stacked curvature maps: their first components
+are $\sqrt{a_f}$ and $\sqrt{a_c}$ times the identity, and their
+second components are the full path-root kernels. Path coefficients
+are aligned with these root kernels by summing all labels with the
+same displacement and target orientation. Absolute convergence in
+\eqref{eq:guide-path-input} permits periodization and grouping.
+Consequently the linearizations of the two plaquette fields are
+\[
+ X_f^0=B_f d_f a,\qquad X_c^0=B_c d_c b,
+\]
+where $a,b$ are fine and coarse logarithmic bond fields and $d_f,d_c$
+are the discrete exterior derivatives from bonds to plaquettes.
+Let $F_0,I_0,N_0$ be the full real kernels corresponding to
+$\Phi,\Phi',N$ at the identity. The flat stack identities needed
+here are
+\begin{equation}\label{eq:unhit-flat-stack}
+ \begin{split}
+ F_0^*F_0+I_0^*I_0+N_0^*N_0&=1,\\
+ \sqrt p\,I_0^*&=B_cd_c,\\
+ F_0^*B_fd_f&=\sqrt p\,I_0^*\mathcal A.
+ \end{split}
+\end{equation}
+Here $\mathcal A$ is the unrooted linear averaging map. These are
+identities of full finite matrices in physical counting coordinates,
+for the same step and the same two stages. We state their exact role
+because none of them is asserted for the transported cut kernels.
+Their production, together with the aligned path expansion, is the
+flat-stack input to this comparison.
+
+The derivative $\mathcal Q$ of the actual predictor has the form
+$\mathcal Q=\mathcal A+d_c^{(0)}\mathcal R$, where
+$d_c^{(0)}$ sends site fields to bond gradients. Thus, since
+$d_cd_c^{(0)}=0$,
+\[
+ \sqrt p\,I_0^*\mathcal Q=B_cd_c\mathcal A.
+\]
+The discrete identity $d_cd_c^{(0)}=0$ follows by cancellation of
+the four endpoint differences around each plaquette. With
+$Z^0=\sqrt p\,(b-\mathcal Qa)$, the last two identities in
+\eqref{eq:unhit-flat-stack} therefore give
+\begin{equation}\label{eq:unhit-linear-zero}
+ F_0^*X_f^0+I_0^*Z^0-X_c^0=0.
+\end{equation}
+The first identity in \eqref{eq:unhit-flat-stack} also gives
+$(1-F_0^*F_0-I_0^*I_0-N_0^*N_0)w=0$ for every doubled coarse
+field $w$. No closedness assumption on $w$ or removal of harmonic
+modes is used.
+
+\subsection{Uniform Taylor bounds for local reads}
+For a real logarithmic field $a$, put $U_e=\exp(a_e)$ and use its
+supremum norm. On a fixed small group chart,
+\[
+ r(\exp v)\le C\|v\|,\qquad
+ \|\log g\|\le C r(g),\qquad \exp(\log g)=g.
+\]
+These follow by integrating the first derivative of the analytic
+exponential and local logarithm on smaller closed balls. Likewise,
+Taylor's formula for the product of the four exponentials around a
+plaquette gives
+\begin{equation}\label{eq:unhit-face-taylor}
+ \|F(U_p)-(d a)_p\|\le C\|a\|_\infty^2,
+ \qquad \|(d a)_p\|\le C\|a\|_\infty.
+\end{equation}
+Indeed differentiating the product at zero gives the signed sum of
+the four logarithms; the derivative of the curvature coordinate is
+the identity on the Lie algebra. Bound the second derivative on the
+fixed four-slot ball and integrate the remainder. Repeated periodic
+bonds simply repeat coordinates in that four-slot map and do not
+change the constant.
+
+For the actual predictor we use its local analytic law at the
+identity, for each allowed tag, with derivative $\mathcal Q$ above.
+The law is part of the branch construction: it includes uniqueness
+of the normalized minimizing frame on the branch where that frame
+is used. It implies the uniform estimate
+\begin{equation}\label{eq:unhit-predictor-taylor}
+ \|Z-Z^0\|_\infty\le C h^2,\qquad
+ \|Z^0\|_\infty\le Ch,
+ \quad h=\max\{\|a\|_\infty,\|b\|_\infty\},
+\end{equation}
+with a radius independent of the torus. Here is why finite-dimensional
+Taylor estimates give that uniformity. A predictor bond reads only
+two frame patches, their coordinate paths, and their length-$L$
+connectors. This is a fixed finite set of cover bond anchors. Choose
+one reference torus large enough that these anchors have their actual
+cover lifts and its two coarse endpoints are distinct. Transplant
+the local fine logarithms to it by reading the original periodic
+field at each corresponding cover anchor. Transplant the coarse
+logarithm at the tested bond as a constant field, and copy the actual
+two frame tags and connector tag. The transplanted sup norm does not
+increase. All path products, frame scores, selected frames and
+connectors agree. On a minimizing branch, equality of scores gives
+equality of the selected normalized frame by its uniqueness; on the
+other branch the chosen axial paths agree directly.
+
+There are only finitely many tags and tested directions on this
+reference torus. Take the minimum of their positive Taylor radii and
+the maximum of their Taylor bounds. Equality of the transplanted
+reads along every ray $v\mapsto v(a,b)$ gives equality of their
+derivatives at zero as well, so these bounds prove
+\eqref{eq:unhit-predictor-taylor} on every torus, including short
+ones. This proves the uniformization; the stated analytic branch law
+and identification of its derivative are required inputs.
+
+\subsection{Truncation and transport errors}
+For cutoff $R$ in fine units define
+\[
+ \omega(R,h)=(1+R)h+e^{-\tau R},\qquad \tau>0.
+\]
+The kernel strip width here is strictly positive, $\eta>0$.
+The value of $\tau$ can be decreased a finite number of times below.
+If all logarithms have norm at most $h$ in the chart, every link has
+chord at most $Ch$, and a path of length $k$ has chord at most $Ckh$
+by the product triangle inequality. On the colour space,
+\begin{equation}\label{eq:unhit-adjoint}
+ \|\operatorname{Ad}(g)-1\|\le2D r(g).
+\end{equation}
+Here $D$ is the fixed colour normalization. To see this, write
+$gXg^*-X=(g-1)Xg^*+X(g^*-1)$, use the Frobenius product bound and
+unitary invariance, then divide by the colour normalization.
+
+Consider a transported kernel term with cover displacement $z$ and
+physical path length $k\le D_L(1+|z|)$. This bound holds for the
+actual paths: a narrow path has fine length $L|z|$, while the wide
+path from residue $r$ to $Lz$ has length at most $L|z|+4L$.
+If $k\le R$, \eqref{eq:unhit-adjoint} bounds the difference from
+the scalar flat term by $C Rh|K_{ab}(z)|$. If $k>R$, the flat term
+is omitted, and
+\[
+ 1\le e^\eta e^{\eta|z|}e^{-\eta R/D_L}.
+\]
+Paying both cases with the weighted strip sum and using the same
+row and column counting as \eqref{eq:guide-periodic-rows} proves
+\begin{equation}\label{eq:unhit-kernel-near}
+ \|F\|_{\rm row},\|F\|_{\rm col},
+ \|F_0\|_{\rm row},\|F_0\|_{\rm col}\le C,
+ \qquad
+ \|F-F_0\|_{\rm row},\|F-F_0\|_{\rm col}
+       \le C\omega(R,h).
+\end{equation}
+This holds for each of the three kernels, after increasing $C$ and
+choosing $\tau\le\eta/D_L$. The type counts, including residues,
+are absorbed after $L$ is fixed. Every cover term is estimated before
+periodization, so winding paths cause no exception.
+
+The same argument applies to the two plaquette fields. For a retained
+path term, first use \eqref{eq:unhit-face-taylor}, then
+\eqref{eq:unhit-adjoint} on its transport. Its error is at most
+$C(1+R)h^2$ times its coefficient. For an omitted term use its full
+linear value, bounded by $Ch$, and
+$1\le e^{\sigma\ell}e^{-\sigma R/d}$ when $d\ell>R$.
+The weighted absolute path sum therefore gives
+\begin{equation}\label{eq:unhit-field-near}
+ \|X^0\|_\infty\le Ch,\qquad
+ \|X-X^0\|_\infty\le Ch\omega(R,h)
+\end{equation}
+for both stages, with $\tau\le\min\{\sigma_f,\sigma_c/L\}$.
+Absolute convergence justifies subtracting and summing the path
+series, even if the set of labels below the length cutoff is infinite.
+Equation \eqref{eq:unhit-predictor-taylor} has the same form since
+$h\le\omega(R,h)$.
+
+If $F,F_0$ satisfy \eqref{eq:unhit-kernel-near} and
+$z,z^0$ satisfy \eqref{eq:unhit-field-near}, then
+\[
+ F^*z-F_0^*z^0=F^*(z-z^0)+(F-F_0)^*z^0
+\]
+has sup norm at most $2C^2h\omega(R,h)$. For an arbitrary bounded
+field $w$, the same decomposition gives
+\[
+ \|(F^*F-F_0^*F_0)w\|_\infty
+       \le2C^2\|w\|_\infty\omega(R,h).
+\]
+Insert these bounds in the two full linear cancellations. After
+increasing $C$, the actual defect vectors satisfy
+\begin{equation}\label{eq:unhit-global}
+ \|\Phi^*X_f+(\Phi')^*Z-X_c\|_\infty\le Ch\omega(R,h),
+ \qquad
+ \|(1-\Phi^*\Phi-(\Phi')^*\Phi'-N^*N)w\|_\infty
+       \le C\|w\|_\infty\omega(R,h).
+\end{equation}
+The argument keeps $w$ arbitrary; it requires no regularity of the
+clipping indicators that will later define $w$.
+
+\subsection{Restriction to a neighbourhood and summation}
+A cut kernel entry has endpoints within distance $R$ in coarse
+anchor units and reads only the transport path of that length.
+The cut path field reads through radius $R+4$. A predictor bond
+reads through a fixed patch radius $R_{\rm pred}$. Thus the first
+defect at anchor $o$ depends only on fine and coarse bonds through
+radius $3R+4+R_{\rm pred}$, using parent distance for fine bonds.
+For example, the outer transpose moves the input anchor by at most
+$R$, its kernel path adds at most $R$, and the input field adds
+$R+4$ or the predictor radius. The second defect, as an operator
+applied to a fixed $w$, reads its kernels through radius $2R$.
+Equality of these reads gives equality term by term in each cut
+series and finite matrix sum.
+
+Suppose a coarse gauge $z$ makes the fine and coarse bond chords
+at most $h$ on this neighbourhood. Take the local logarithms there
+and set them to zero outside. Their global sup norms are at most
+$Ah$ and their exponentials agree with the gauged fields on all
+required reads. Apply \eqref{eq:unhit-global} to these extensions.
+Replacing $h$ by $Ah$ changes only the constant, since for $A\ge1$,
+$\omega(R,Ah)\le A\omega(R,h)$.
+
+To remove the gauge, every transported plaquette term transforms
+by $\operatorname{Ad}(z_o)$ at its anchor; the endpoint gauge
+factors cancel. The same endpoint calculation for kernels gives
+\[
+ F'_{ij}=\operatorname{Ad}(z_i)F_{ij}\operatorname{Ad}(z_j)^{-1},
+\]
+with the parent anchor on fine rows. Taking physical adjoints
+preserves this identity, because adjoint transport is orthogonal.
+The actual predictor is covariant with the same tags under the
+block-constant fine gauge. Hence both defect vectors transform by
+$\operatorname{Ad}(z_o)$, provided the free field $w$ is transformed
+at its anchors. Its norm is unchanged. Thus the local version of
+\eqref{eq:unhit-global} holds for the original fields and for any
+bounded $w$. In particular we may use the original clipped field
+$v$ without changing its indicators in the extension argument.
+
+Take $R=\lfloor B/100000\rfloor$ and
+$h=C_LB^{10}T$ from \eqref{eq:tree-common-gauge}. For large $B$,
+$3R+4+R_{\rm pred}\le\lfloor2B/5\rfloor$, so this estimate applies
+to every unhit outer plaquette. As $\|v\|_\infty\le dt$, its two
+comparison rows are bounded below by minus
+\begin{equation}\label{eq:unhit-row-loss}
+ \mathcal L=2dt\,Ch\omega(R,h)+dt\,Cdt\,\omega(R,h).
+\end{equation}
+There are two components in the linear row, while the factor $1/2$
+in the quadratic row cancels its two components.
+
+For completeness, the required delay is stronger than $h\to0$.
+Write $H=x+c_L$, so $T=H^{-49/100}$ and
+$t=P(H)H^{-1/2}\ge H^{-1/2}$. Any fixed power of
+$B=\lceil(\log x)^2\rceil$ is smaller than any positive power of
+$H$ eventually. Consequently, for every fixed integer $n$,
+\[
+ B^n h\longrightarrow0,\qquad
+ B^n\frac{h^2}{t}\longrightarrow0,
+\]
+the latter because $T^2/t\le H^{-48/100}$. Also
+$e^{-\tau R}\le H^{-1}$ eventually: $R$ grows quadratically in
+$\log x$, whereas $\log H$ grows linearly. It follows that
+\[
+ B^n\omega(R,h)\longrightarrow0,\qquad
+ B^n\frac{h\omega(R,h)}t\longrightarrow0.
+\]
+Expanding $\omega$ proves the second assertion from the $h^2/t$
+bound and $e^{-\tau R}/t\le H^{-1/2}$. The outer region has at most
+$NB^4n$ plaquettes for $n$ seeds. Given $\epsilon>0$, choose the
+coupling threshold so that $NB^4\mathcal L\le\epsilon t^2$.
+Summing \eqref{eq:unhit-row-loss} gives
+\begin{equation}\label{eq:unhit-final}
+ \sum_{p\text{ outer, unhit}}(L_p+D_p)\ge-\epsilon t^2 n.
+\end{equation}
+This is the unhit-region estimate used in the energy allocation.
+Its remaining construction inputs are the full flat stack and aligned
+path expansions, and the analytic law and derivative of the actual
+predictor. The estimates, localization, common-gauge use and delay
+from those inputs have all been given above.

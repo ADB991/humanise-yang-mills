@@ -1,0 +1,272 @@
+\section{Comparing the principal insertion with its Gaussian reference}
+\label{sec:principal-gaussian-comparison}
+The principal cluster is not itself a small remainder. Its leading
+part is a local Gaussian reference observable. We compare these two
+objects on one probability space, keeping the insertion fixed while
+differentiating the surrounding densities. This is necessary even
+when the insertion is only bounded and measurable.
+
+\subsection{The common reference integral}
+Fix a forest, its tags, a regular insertion of amplitude $\tau\ge0$,
+and a healthy base configuration. Let $y\in\mathbb R^j$, $j\le n$,
+parameterize an ordered local variation about that configuration,
+with base point $0$. The read coordinates form a finite set of size
+$N_0$, including every colour of each read bond. Write
+$C_6(y),C_9(y)$ for the actual-sector and Gaussian-reference
+covariances on these coordinates, and $w_6(y,z),w_9(y,z)$ for
+the two compensated coordinate maps. At the base point
+\[
+                    C_0=C_6(0),\qquad w_6(0,z)=z.
+\]
+Both covariances are positive in a neighborhood of zero.
+Let $J(y,z)$ be the common compensated Jacobian and put
+\[
+ R_a(y,z)=J(y,z)\frac{p_{C_a(y)}(w_a(y,z))}{p_{C_0}(z)},
+                                     \qquad a=6,9,
+\]
+where $p_C$ is the Gaussian density in
+\eqref{eq:gaussian-local-density}. The reference probability
+measure is always $\gamma_{C_0}$.
+
+Let $h(z)$ be the original masked insertion evaluated at the fixed
+base configuration and its original Gaussian coordinates. It is
+measurable and $|h(z)|\le\tau$. The exact two integrands are
+\begin{equation}\label{eq:principal-two-integrands}
+ R_6(y,z)\chi_6(y,z)h(z),\qquad
+ R_9(y,z)\chi_9(y,z)h(z).
+\end{equation}
+Here $\chi_6$ is the sector cutoff and $\chi_9$ the reference
+cutoff, both smooth with values in $[0,1]$. The first identity
+follows from the compensated change of variables of
+Section~\ref{sec:gaussian-differentiation}: on the support of its
+cutoff the new configuration agrees with the fixed one on the
+insertion's read support. Locality therefore identifies their
+insertion values. For the second identity, the reference cutoff
+implies that the first cutoff is one and that the fixed configuration
+is healthy on the insertion support. The mask can then be removed,
+and the same local agreement identifies the unmasked reference
+insertion with $h(z)$. Where a cutoff vanishes both sides of its
+identity are zero. Thus no derivative of $h$ is taken in either
+formula, and no insertion-dependent change of Gaussian measure
+has been made.
+
+We state the quantitative finite-dimensional data used below
+explicitly. They are uniform over all the forests, tags and local
+variations under consideration. There are $N,Q,S\ge1$,
+$\delta\ge0$, and a fixed $M>0$ such that:
+\begin{enumerate}
+\item $N_0\le N$ and $C_0\le MI$;
+\item the entries of $C_6,C_9$ have jets through order $n$
+bounded by $Q$ at zero, their inverses at zero have entries
+bounded by $Q$, and the jets of $C_9-C_6$ are bounded by $\delta$;
+\item for $\|z\|_\infty\le S$, the entries of $w_6,w_9$ and
+the scalar $J$ have jets bounded by $Q$, and those of
+$w_9-w_6$ are bounded by $\delta$;
+\item on a common neighborhood of zero both integrands in
+\eqref{eq:principal-two-integrands} vanish for $\|z\|_\infty>S$.
+The cutoff jets on this ball are bounded by a fixed polynomial
+in $N,Q,S$. For every $z$ with $\|z\|_\infty<v$, both cutoffs
+are identically one on some neighborhood of zero.
+\end{enumerate}
+Here a jet bound includes the value and the operator norms of
+derivatives of all orders at most $n$. The last neighborhood may
+depend on $z$; the common compact support neighborhood does not.
+The covariances, coordinate maps and Jacobian are smooth on the
+compact coordinate ball and a neighborhood of the base parameter.
+These hypotheses are the specific comparison data; they are not
+consequences of an abstract equality between the two gas profiles.
+
+\subsection{A quantitative density difference}
+There is a polynomial $P_n$ with positive coefficients, depending
+only on $n$, such that, after increasing $P_n$ if necessary and
+provided
+\begin{equation}\label{eq:principal-delta-small}
+                      \delta P_n(N,Q,S)\le1,
+\end{equation}
+the following bounds hold for $\|z\|_\infty\le S$:
+\begin{equation}\label{eq:principal-density-jets}
+ \|R_6(\cdot,z)\|_{J^n_0}\le P_n(N,Q,S),\qquad
+ \|R_9(\cdot,z)-R_6(\cdot,z)\|_{J^n_0}
+                                      \le\delta P_n(N,Q,S).
+\end{equation}
+We prove the polynomial form of these estimates rather than leave
+the dependence on the number of read coordinates implicit.
+
+For matrices use the maximum entry norm. Multiplication costs at
+most $N$ per contracted index. Differentiating $CC^{-1}=I$
+gives, for a nonempty labelled derivative set $I$,
+\[
+ D_I(C^{-1})=-C^{-1}
+        \sum_{\varnothing\ne A\subseteq I}(D_AC)
+                                      D_{I\setminus A}(C^{-1}).
+\]
+Induction in $|I|\le n$ bounds all inverse jets by a polynomial
+in $N,Q$. The exact identity
+\[
+ C_9^{-1}-C_6^{-1}
+                      =C_9^{-1}(C_6-C_9)C_6^{-1}
+\]
+and the Leibniz rule give a factor $\delta$ in every derivative
+of the inverse difference. The remaining factors have the
+polynomial bounds just obtained.
+
+For the logarithmic determinant, its positive-order derivatives
+follow by repeatedly differentiating
+$D\log\det C=\operatorname{tr}(C^{-1}DC)$.
+Telescoping each product shows that the difference of these
+derivatives for $C_9$ and $C_6$ is $\delta$ times a polynomial.
+For the zeroth order join $C_6(0)$ to $C_9(0)$ by the straight
+positive segment. Since the endpoint inverse operator norms are
+at most $NQ$, both endpoints are at least $(NQ)^{-1}I$;
+the whole segment has the same lower bound. Hence
+\[
+ |\log\det C_9(0)-\log\det C_6(0)|
+ \le\int_0^1N\|C_s^{-1}\|\|C_9(0)-C_6(0)\|\,ds
+ \le N^3Q\delta.
+\]
+The two quadratic forms in the Gaussian exponent differ by
+\[
+\begin{split}
+ w_9^TC_9^{-1}w_9-w_6^TC_6^{-1}w_6
+  ={}&(w_9-w_6)^TC_9^{-1}w_9\\
+     &+w_6^TC_9^{-1}(w_9-w_6)
+       +w_6^T(C_9^{-1}-C_6^{-1})w_6.
+\end{split}
+\]
+Every derivative therefore has the same $\delta$ factor.
+
+Let $\ell_a=\log[p_{C_a(y)}(w_a(y,z))/p_{C_0}(z)]$.
+The preceding calculations bound all jets of $\ell_9-\ell_6$
+by $\delta$ times a polynomial. All positive-order jets of
+$\ell_6$ have polynomial bounds, and $\ell_6(0,z)=0$.
+The labelled-partition formula
+\[
+ D_Ie^\ell=e^\ell\sum_{\pi\in\operatorname{Part}(I)}
+                                  \prod_{A\in\pi}D_A\ell
+\]
+thus gives polynomial jets of $e^{\ell_6}$. For
+$e^{\ell_9-\ell_6}-1$, the value is bounded by
+$e|\ell_9-\ell_6|$ under \eqref{eq:principal-delta-small}.
+Each positive-order partition has at least one derivative factor,
+so all its terms retain a factor $\delta$. The other factors
+can be bounded by one times an enlarged polynomial, using
+\eqref{eq:principal-delta-small}. Finally
+\[
+ R_9-R_6=J e^{\ell_6}(e^{\ell_9-\ell_6}-1)
+\]
+and the Leibniz rule prove \eqref{eq:principal-density-jets}.
+All operations involve at most $n$ derivatives, so the number
+and degree of polynomial factors are fixed, independently of $N$.
+
+\subsection{The good-coordinate region and the Gaussian tail}
+On $\|z\|_\infty<v$, the cutoff jets equal those of the
+constant one. The difference of the two integrands consequently
+has jet norm at most $\tau\delta P_n(N,Q,S)$.
+On the rest of the compact ball, the product rule and
+\eqref{eq:principal-density-jets} bound its jets by
+$\tau P_n(N,Q,S)$, after enlarging the polynomial once more.
+Outside that ball the integrands vanish on a parameter
+neighborhood, so their jets vanish too.
+
+The reference Gaussian obeys the dimension-explicit tail estimate
+\begin{equation}\label{eq:principal-outage}
+ \gamma_{C_0}\{\|z\|_\infty\ge v\}
+                                  \le2N e^{-v+M/2}.
+\end{equation}
+For a single coordinate, Markov's inequality applied to $e^{z_i}$
+and $e^{-z_i}$ gives
+$\mathbb P(|z_i|\ge v)\le2e^{-v+(C_0)_{ii}/2}$.
+Sum over the at most $N$ coordinates and use $(C_0)_{ii}\le M$.
+No independence of these coordinates is required.
+
+Differentiation under the integral is justified even though $h$
+need not be continuous. On a fixed compact coordinate ball the
+smooth density-cutoff factors and all their derivatives through
+order $n$ are bounded on a smaller parameter neighborhood.
+Multiplication by the fixed measurable $h$ supplies an integrable
+constant bound. Difference quotients are dominated using the
+fundamental theorem of calculus along a short parameter segment.
+Apply dominated convergence, successively through order $n$, as
+in Section~\ref{sec:gaussian-differentiation}. Integration of the
+two pointwise bounds and \eqref{eq:principal-outage} gives
+\begin{equation}\label{eq:principal-comparison-final}
+ \left\|\int(R_6\chi_6-R_9\chi_9)h\,d\gamma_{C_0}
+       \right\|_{J^n_0}
+ \le\tau P_n(N,Q,S)\bigl(\delta+2N e^{-v+M/2}\bigr).
+\end{equation}
+Finite forest and tag averages preserve this estimate, because
+their weights are nonnegative and sum to one. The insertion and
+the reference transition remain paired before taking these averages.
+
+\subsection{How the comparison is paid}
+Write $\beta_f(x)$ for the fine inverse coupling, and use the
+upper-exponent convention of Section~\ref{sec:nonlinear-payment-selection}.
+Suppose $N,Q,S$ have upper exponent zero, $\delta$ has upper
+exponent $-1/2$, and $e^{-v}$ has every negative upper exponent.
+Then the multiplier of $\tau$ in
+\eqref{eq:principal-comparison-final} has upper exponent $-1/2$.
+Indeed a fixed polynomial in exponent-zero quantities still has
+upper exponent zero. Its product with $\delta$ has exponent
+$-1/2$, whereas its product with $e^{-v}$ can be assigned any
+negative exponent. A finite sum preserves the larger exponent.
+The smallness requirement \eqref{eq:principal-delta-small}
+therefore holds beyond a finite post-length threshold.
+
+Here are the exact scales that produce the comparison data in the
+construction. The local support diameter is at most
+$D_x=B_x(4B_x+2)+2B_x$, and its read dimension is at most
+\[
+             N(x)=(2D_x+1)^4L^4\,4\dim\mathfrak g.
+\]
+This has upper exponent zero for fixed $L$.
+The local direction bound is
+$2\theta_f(x)(1+D_x)^p$, of upper exponent $-1/2$.
+Let $J_0(x)$ bound the unscaled displacement of the two means,
+and $V_0(x)$ the covariance difference, including their jets.
+The construction requires the bounds
+\begin{equation}\label{eq:principal-primitive-comparison}
+ J_0:\ -1,\qquad V_0:\ -1/2,
+\end{equation}
+where the numbers denote upper exponents. Here $\beta$ is the
+actual fine inverse coupling of the incoming representation,
+within its prescribed window about $\beta_f(x)$.
+Gaussian coordinates divide the mean displacement by
+$g=\beta^{-1/2}$, so a common
+jet difference bound is
+\[
+             \delta(x)=|V_0(x)|+g^{-1}|J_0(x)|.
+\]
+Since $g^{-1}$ has upper exponent $1/2$, this has exponent
+$-1/2$. Absolute mean and coordinate bounds, covariance inverse
+bounds, and the fixed-order Jacobian bounds are exponent zero
+after this rescaling. The support radius in Gaussian coordinates
+is bounded by
+$g^{-1}(5a\theta_f+|c|\theta_f)$, also exponent zero.
+The product cutoffs have polynomial fixed-order jet bounds: in a
+derivative of order at most $n$, at most $n$ factors are
+differentiated; the others have magnitude at most one. There are
+at most $N^n$ choices of these factors. The one-factor derivatives
+are bounded by the fixed smooth cutoff and its rescaled aperture.
+
+Choose the good-coordinate radius
+\[
+ v(x)=\frac{\varepsilon}{128(\dim\mathfrak g+1)}\,\mathcal M_f(x),
+\]
+where $\mathcal M_f$ is the fine monitor. The monitor estimate
+gives every negative upper exponent for $e^{-v}$.
+The construction's aperture comparison is
+$\theta_f/g\ge\mathcal M_f/2$. Eventually
+$\delta\le\varepsilon\mathcal M_f/[128(\dim\mathfrak g+1)]$;
+hence
+\[
+ g\dim\mathfrak g\,(v+\delta)<\varepsilon\theta_f/8.
+\]
+Each reference coordinate then lies strictly inside its cutoff
+plateau when $\|z\|_\infty<v$. Continuity gives the required
+parameter neighborhood; the cutoff implication in the common
+integral gives the other plateau as well. This proves the tail
+and numerical purchases directly, once the primitive mean and
+covariance comparison \eqref{eq:principal-primitive-comparison}
+and their absolute jet bounds have been supplied. Those primitive
+estimates concern the actual sector and reference covariances;
+the value-only remote mean bound does not by itself prove them.

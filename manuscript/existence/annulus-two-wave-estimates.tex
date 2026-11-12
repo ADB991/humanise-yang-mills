@@ -1,0 +1,254 @@
+\section{The annular pole and the two-wave estimate}
+\label{sec:ex-annulus-two-wave}
+
+The selected one-step construction needs two facts about one finite-volume
+response. Its logarithmic coefficient is an integral of the response over
+four-dimensional momentum space, and that response is close to the continuum
+quadratic pole on an annulus. This section gives the exact polar calculation
+and expands the finite-volume two-channel estimate that supplies the two
+radial bounds. The remaining local chart and weighted-face estimates are
+stated at their precise input interface and cross-referenced to the units
+that produce them.
+
+\subsection{From the finite response to a momentum integral}
+
+Let $E_4$ be the fundamental momentum cube in Euclidean coordinates, with
+normalized measure $c_{\mathrm{wt}}\,dx$ and
+$c_{\mathrm{wt}}=(2\pi)^{-4}$. It has finite volume and contains the unit
+ball. For a quadratic response picture $F$ and color coordinate $a$, let
+$\mathcal K_a(x)$ be one half of the second derivative in the distinguished
+response direction, with the other momentum equal to $x$, and set
+$g_a(x)=\operatorname{Re}\mathcal K_a(x)$. The coefficient functional
+$\alpha_a(F)$ is the second Taylor coefficient of the analytic stock
+picture associated with $F$. The Fourier stock formula and differentiation
+under the integral give
+\[
+ \alpha_a(F)=c_{\mathrm{wt}}\int_{E_4}g_a(x)\,dx.
+ \tag{AT1}
+\]
+The common analytic bound on the differentiated symbol supplies the
+integrable majorant. Equation (AT1) is an identity for the analytically
+assembled response picture. The equality to a finite sampled pole-test
+coefficient is a separate recording statement and is not asserted by
+(AT1).
+
+For $x\in\mathbb R^4\setminus\{0\}$ let $r=|x|$ and define the gauge pole
+\[
+ \Pi_G(x)=4C_G\left(
+   \frac{x_1^2}{r^6}-4\frac{x_1^2x_0^2}{r^8}-\frac1{r^4}
+ \right),
+ \tag{AT2}
+\]
+where $C_G$ is the quadratic Casimir in the chosen representation. The
+spherical area of $S^3$ is $2\pi^2$. Rotational invariance gives
+\[
+ \int_{S^3}\theta_1^2\,d\theta=\frac{2\pi^2}{4},\qquad
+ \int_{S^3}\theta_1^2\theta_0^2\,d\theta=\frac{2\pi^2}{24}.
+ \tag{AT3}
+\]
+For the second identity, set $A=\int\theta_0^4$ and
+$B=\int\theta_0^2\theta_1^2$. Coordinate permutations make these
+independent of the distinct indices. From $\sum_i\theta_i^2=1$,
+$4A+12B=2\pi^2$. Rotating the $0$-axis to
+$(e_0+e_1)/\sqrt2$ gives $A=(2A+6B)/4$, hence $A=3B$ and
+$B=2\pi^2/24$. The first identity follows by integrating
+$\sum_i\theta_i^2=1$.
+
+Consequently the angular mean of the parenthesis in (AT2) is
+\[
+ r^{-4}\left(\frac14-\frac4{24}-1\right)
+       =-\frac{11}{12}r^{-4}.
+\]
+Since the Euclidean polar Jacobian is $r^3dr\,d\theta$,
+\[
+ \int_{\mu<|x|\leq1}|x|^{-4}\,dx
+       =2\pi^2\int_\mu^1\frac{dr}{r}
+       =2\pi^2\log\mu^{-1}.
+\]
+Using $c_{\mathrm{wt}}=(2\pi)^{-4}$, we obtain the exact pole law
+\[
+ c_{\mathrm{wt}}\int_{\mu<|x|\leq1}\Pi_G(x)\,dx
+ =-\frac{11C_G}{24\pi^2}\log\mu^{-1}
+ =-\lambda_G\log\mu^{-1},
+ \qquad \lambda_G=\frac{11C_G}{24\pi^2}.
+ \tag{AT4}
+\]
+This fixes the sign and normalization of the logarithm; in particular the
+pole is not defined only up to an angular constant.
+
+\subsection{The finite-volume two-channel calculation}
+
+We now state the two scale receipts used by the finite-volume construction.
+Let $x$ be a centered momentum, $r=|x|$, and $0<\mu\leq1$. Write
+$\mathcal K(x)\in\mathbb C$ for the normalized response coefficient and
+$g(x)=\operatorname{Re}\mathcal K(x)$. The six complex second-derivative
+traces $D,Y,c,d,c_0,d_0$ are defined so that $D$ is the interacting upper
+trace, $Y$ the reference upper trace, $c$ the reference lower trace, $d$
+the interacting lower trace, and $c_0,d_0$ their free halo traces. The
+exact identities are
+\[
+ \mathcal K=\frac12\left(\frac12(D-d)-(Y-c)\right),\qquad
+ \Pi_G=\frac12\left(c_0-\frac12d_0\right),
+ \tag{AT5a}
+\]
+\[
+ \mathcal K-\Pi_G=\frac12\left(\frac12D-Y\right)
+       +\frac12\left((c-c_0)-\frac12(d-d_0)\right).
+ \tag{AT5b}
+\]
+The first identity is the second derivative of the split-field response
+after subtracting its reference film. The second is the free halo
+identity, with marked direction and color fixed. The third is their
+algebraic difference; the real-valued pole $\Pi_G$ is embedded in $\mathbb C$
+in these formulas. All are exact at each finite volume.
+
+For clarity, the second identity follows directly from the two free
+propagator numerators. In the selected unit color direction $e_b$, use the
+normalization $\operatorname{tr}(\operatorname{ad}(e_b)^2)=-C_G$. Put
+$\rho=|x|^2$, $c_{\rm col}=-C_G$, and $L=-4x_1^2$. Along the marked
+displacement $t e_0$, the common denominator is
+$\Delta(t)=\rho+2x_0t+t^2$. The ghost numerator is the scalar orbital
+factor $L$ times the color trace, giving $Lc_{\rm col}/\rho$. For the
+vector numerator, write $p=-2i x_1$ and let $A(t)$ have entries
+$A_{01}(t)=-2it$, $A_{10}(t)=2it$, and all other entries zero. Then
+$p^2=L$ and direct multiplication gives
+\[
+ \operatorname{tr}\bigl[(pI+A(-t))(pI+A(t))\bigr]
+       =4p^2-8t^2=4L-8t^2.
+\]
+Multiplying by the same color trace and scalar denominator factor gives
+the vector numerator $\rho^{-1}(4L-8t^2)c_{\rm col}$. Differentiating
+the quotients twice at $t=0$ gives
+\[
+ \left(\frac{Lc_{\rm col}/\rho}{\Delta}\right)''_{t=0}
+       =-\frac{2Lc_{\rm col}}{\rho^3}
+           +\frac{8Lc_{\rm col}x_0^2}{\rho^4},\qquad
+ \left(\frac{\rho^{-1}(4L-8t^2)c_{\rm col}}{\Delta}\right)''_{t=0}
+       =-\frac{16c_{\rm col}}{\rho^2}
+         -\frac{8Lc_{\rm col}}{\rho^3}
+         +\frac{32Lc_{\rm col}x_0^2}{\rho^4}.
+\]
+Thus the orbital trace minus one half of the vector trace is
+\[
+ \frac{8c_{\rm col}}{\rho^2}
+       +\frac{2Lc_{\rm col}}{\rho^3}
+       -\frac{8Lc_{\rm col}x_0^2}{\rho^4}
+ =8C_G\left(\frac{x_1^2}{r^6}
+       -4\frac{x_1^2x_0^2}{r^8}-\frac1{r^4}\right)
+ =2\Pi_G(x),
+\]
+which proves the halo identity in (AT5a). The first identity is the
+definition of the marked split-field second response and its reference
+subtraction; (AT5b) is then obtained by subtracting the just-computed free
+identity and collecting terms.
+
+The first family of estimates is the all-centered-record receipt, with
+$T_1=r+\mu$ and $R_0=1+2\pi$:
+\[
+ 0\leq r,\quad T_1=r+\mu\leq R_0,\qquad
+ |\mathcal K|\leq A_1T_1^{-4}.
+ \tag{AT6}
+\]
+The second is the shell receipt, available only on $\mu\leq r\leq1$ and
+using $T_2=r$:
+\[
+ |D|\leq u r^{-2}+v\mu^2r^{-6},\qquad
+ |Y|\leq u_{\mathrm{ref}}r^{-2}+v_{\mathrm{ref}}\mu^2r^{-6},
+ \tag{AT7}
+\]
+\[
+ |c-c_0|\leq A_0(r+\mu^2r^{-2})r^{-4},\qquad
+ |d-d_0|\leq B_0(r+\mu^2r^{-2})r^{-4}.
+ \tag{AT8}
+\]
+All constants $A_1,u,v,u_{\mathrm{ref}},v_{\mathrm{ref}},A_0,B_0$ are nonnegative and uniform in
+the finite volume and selected record. These two receipts are kept
+separate: the all-centered estimate uses scale $r+\mu$, while the shell
+comparison uses scale $r$. Their source producer is the common finite
+family of local stationary records; its exact proof obligations are
+listed in the correspondence file.
+
+\begin{proposition}[Two wave bounds from the finite response]
+\label{prop:ex-two-wave}
+Suppose (AT5a)--(AT8) hold uniformly. Then
+\[
+ |g(x)|\leq \frac{A_1}{(r+\mu)^4},\qquad
+ |g(x)-\Pi_G(x)|\leq \frac{A_2}{r^3}
+                     +\frac{A_2\mu^2}{r^6}
+ \quad(\mu\leq r\leq1),
+ \tag{AT9}
+\]
+where
+\[
+ A_2=\max\{u+u_{\mathrm{ref}}+A_0+B_0,
+                    v+v_{\mathrm{ref}}+A_0+B_0\}.
+\]
+\end{proposition}
+\begin{proof}
+The first estimate follows from (AT6) and $|\operatorname{Re}z|\leq|z|$.
+On the annulus, use (AT5b) and (AT7)--(AT8):
+\[
+ |\mathcal K-\Pi_G|
+ \leq (u+u_{\mathrm{ref}})r^{-2}
+      +(v+v_{\mathrm{ref}})\mu^2r^{-6}
+ +(A_0+B_0)(r^{-3}+\mu^2r^{-6}).
+ \tag{AT10}
+\]
+Here $\tfrac12$ factors are bounded by one, and
+$(r+\mu^2r^{-2})r^{-4}=r^{-3}+\mu^2r^{-6}$. Since $r\leq1$,
+$r^{-2}\leq r^{-3}$. The displayed $A_2$ bounds (AT10) by
+$A_2(r^{-3}+\mu^2r^{-6})$. Taking real parts gives
+$|g-\Pi_G|\leq|\mathcal K-\Pi_G|$, proving (AT9).
+\end{proof}
+
+\subsection{The two applications of the finite-volume receipts}
+
+The common family of local records is used twice, with different scale
+parameters. Each record supplies a centered momentum $x$, a positive
+regulator $\mu\leq1$, and the same complex response coefficient
+$\mathcal K(x)$. The centered-box condition $|x_j|\leq\pi$ gives
+$|x|\leq2\pi$.
+
+For the all-centered estimate, use scale $T_1=|x|+\mu$. The whole-frame
+bound from the two channels is
+\[
+ |D-d|\leq A_{\rm int}T_1^{-4},\qquad
+ |Y-c|\leq A_{\rm ref}T_1^{-4}.
+\]
+The exact first identity in (AT5a) then gives
+$|\mathcal K|\leq(A_{\rm int}/4+A_{\rm ref}/2)T_1^{-4}$. This is the
+first radial estimate; it applies also at $x=0$.
+
+For the annular comparison, restrict the same records to
+$\mu\leq|x|$ and use the second scale $T_2=|x|$. The upper channel is split
+into a principal term and a tadpole term; their charged bounds are
+$uT_2^{-2}$ and $v\mu^2T_2^{-6}$. The same split for the reference channel
+has bounds $u_{\mathrm{ref}}T_2^{-2}$ and
+$v_{\mathrm{ref}}\mu^2T_2^{-6}$. The lower-channel
+remainders after subtracting their respective halos are bounded by
+$A_0(T_2+\mu^2/T_2^2)T_2^{-4}$ and
+$B_0(T_2+\mu^2/T_2^2)T_2^{-4}$. The free quotient calculation gives
+$\Pi_G=\frac12(c_0-\frac12d_0)$, so these four estimates feed exactly
+into (AT5b) and yield (AT7)--(AT10).
+
+These scale receipts arise in the source through two separate applications
+of the finite-family construction: the first applies the frame estimate to
+every centered record, while the second restricts to the subfamily
+$\mu\leq|x|$ before applying the shell estimate. They use the same response
+coefficient and common constants. The annulus proof therefore does not
+interchange a limit with a volume-dependent integral. The equality of this
+analytic coefficient with the finite sampled pole-test coefficient is a
+separate recording step; it is not inferred from (AT1).
+
+\paragraph{Source boundary.}
+This unit proves the normalized pole integral and the algebraic conversion
+from the two explicit finite-volume scale receipts to the radial bounds.
+The receipts themselves are produced by the local stationary-family proof
+(`Rally.register` and `Rally.shell`) and remain a source-correspondence
+obligation until that finite-record construction is expanded in the next
+unit. In particular, the stationary-chart and row-price units are not
+claimed here to establish these upper/tadpole and lower/halo estimates.
+The later `HouseWord`/yield argument must also prove the finite recording
+error decays after division by the site count, with its strip chosen before
+the requested blocking side. The remaining path-history, retained-cutoff,
+and flux-capacity suppliers are tracked in the evidence file.

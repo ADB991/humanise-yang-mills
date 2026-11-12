@@ -1,0 +1,184 @@
+\section{Large entrance scales for the selected Geyser}
+\label{ex-centered-geyser-scale-estimates}
+
+This section proves the finite-volume scale estimates used by the selected Geyser receipt. It isolates the elementary large-parameter estimates and then explains how their separate eventual thresholds are made into one monotone delay sequence. All scale, profile, and gauge data below are the actual fixed data of the selected run.
+
+Write
+\[
+ B(x)=\left\lceil(\log x)^2\right\rceil,\qquad
+ h(x)=e^{-\frac12\log x},\qquad
+ f_d(x)=x^{-\left(\deg F_d+4\right)},\qquad
+ s(x)=\tfrac14h(x),
+\]
+where $F_d$ is the finite frame at grade $d$. For a fixed period $j$, write $L_j$ for its side, $b_j=c_G\log L_j$, $y_j(x)=x+b_j$, and $p_j=Q(j)$. The stage quantities are the column count $C_j$, support exponent $E_j$, and the finite camera bound $A_d$; each is fixed while $x\to\infty$.
+
+\begin{lemma}[Uniform eventual scale estimates for one transition]
+\label{lem:ex-geyser-radial}
+Fix a period $j$, two adjacent stages $i$ and $j$ with $\mathrm{Step}(j,i)$, and a finite grade range $0\leq d\leq i$. For each grade let $C_i\geq1$ and $C_j\geq1$ be the corresponding column counts, $E_i,E_j\geq0$ the support exponents, $A_d\geq1$ its camera count, $a_d\geq1$ its motion orbit cost, and $m_d=\deg F_d$ its frame degree. Let $L_j\geq1$ be the integer side and assume the finite title cost $T_j\geq0$. Put
+\[
+ r_j=2e^{E_j}\,T_j,
+ \qquad
+ T_j=\text{the finite title cost at stage }j.
+\]
+Then there is $x_0$ so that every $x\geq x_0$ satisfies
+\begin{align}
+ &8\leq B(x),\qquad y_j(x)^3\leq e^{B(x)/128},\label{eq:ex-geyser-first}\\
+ & (2B(x)+1)^4\left(\operatorname{stain}(x)+p_j\,\operatorname{siteFactor}(B(x))s(x)\right)\leq3,\notag\\
+ &e^{\operatorname{stain}(x)+p_j\operatorname{siteFactor}(B(x))s(x)}-1\leq1,\label{eq:ex-geyser-second}
+\end{align}
+and, for every $d\leq i$,
+\begin{align}
+ &f_d(x)C_i\leq1,\label{eq:ex-geyser-creek1}\\
+ &2a_d\bigl(r_j+2C_j\bigr)f_d(y_j(x))\leq1,\label{eq:ex-geyser-creek2}\\
+ &e^{E_i+2}A_d x^{m_d}f_d(x)\leq s(x),\label{eq:ex-geyser-creek3}\\
+ &y_j(x)^{-1}\leq1,\qquad
+ y_j(x)^{-1}L_j^d C_j f_d(x)\leq f_d(y_j(x)),\label{eq:ex-geyser-creek4}
+\end{align}
+as well as $\nu_d\leq B(x)$, where $\nu_d$ is the minimum stencil side at grade $d$.
+\end{lemma}
+
+\begin{proof}
+We check each bound from its large-$x$ mechanism. Since $B(x)\to\infty$, eventually $B(x)\geq8$ and $B(x)\geq\nu_d$ for all the finitely many grades. The first polynomial estimate follows from the same elementary comparison: for any fixed $b$ and integer $q$, eventually $x+b\leq2x$, $C2^q\leq x$, and $(q+1)\log x\leq(\log x)^2/128$. Thus
+\[
+ C(x+b)^q\leq C2^q x^q\leq x^{q+1}
+ =e^{(q+1)\log x}\leq e^{B(x)/128}.
+\]
+Apply this with $C=1,q=3,b=b_j$ to get \eqref{eq:ex-geyser-first}.
+
+For \eqref{eq:ex-geyser-second}, set $H=h(x)$. We verify the reserves
+directly. The hat is $H=x^{-1/2}$, so $H\leq1/4$ eventually. From the
+definition,
+\[
+ \operatorname{smallK}(x)=\exp\!\left(-\tfrac12
+       \exp\!\left(\tfrac15(\log\log x)^2\right)\right).
+\]
+Writing $y=\log\log x$, for $y\geq10$ we have
+$y^2/5-y\geq10>\log6$, hence
+$\exp(y^2/5)\geq6e^y=6\log x$. Comparing exponents yields
+$\operatorname{smallK}(x)\leq H^6$.
+
+For the contact bound, put $t=\frac12\log x$, so $H=e^{-t}$. For $t\geq1$,
+$B(x)=\lceil4t^2\rceil\leq5t^2$, and therefore
+\[
+2B(x)+1\leq11t^2,\qquad
+\operatorname{siteFactor}(B(x))
+=e\bigl(2(16B(x)+9)\bigr)^4\leq e(178t^2)^4.
+\]
+Thus the contact expression is at most $C_p t^{16}e^{-t}$ for a constant
+$C_p$ depending only on the fixed period. For any fixed integer $q\geq0$,
+the exponential series gives $e^t\geq t^{q+1}/(q+1)!$, and so
+$C t^qe^{-t}\leq C(q+1)!/t\to0$. Taking $q=16$ proves the contact
+reserve. Consequently, for large $x$,
+\[
+ 0<H\leq\tfrac14,\qquad \operatorname{smallK}(x)\leq H^6,
+ \qquad (1+p_j\operatorname{siteFactor}(B(x)))(2B(x)+1)^4H\leq1.
+\]
+The stain is $\operatorname{smallK}(x)^2$. Squaring the small-$K$ bound gives $\operatorname{stain}(x)\leq H^{12}\leq H$ because $0<H\leq1$. Also $s(x)=H/4\leq H$. Therefore
+\[
+ \operatorname{stain}(x)+p_j\operatorname{siteFactor}(B(x))s(x)
+ \leq (1+p_j\operatorname{siteFactor}(B(x)))H,
+\]
+which proves the product bound by the third reserve estimate. Since $(2B+1)^4\geq2$ once $B\geq8$, the exponent in that display is at most $1/2$. It follows from $1/2<\log2$ that its exponential minus one is at most $e^{1/2}-1<1$.
+
+For the remaining five estimates, fix $d\leq i$ and put $m=\deg F_d+4$, so $m\geq1$, and $D=L_j^d C_j$. All constants are fixed, while $x\to\infty$ and $y=x+b_j\to\infty$. Eventually
+\[
+ x\geq\max\{1,C_i,4e^{E_i+2}A_d\},\quad
+ y\geq\max\{1,2a_d(r_j+2C_j),D2^m\},\quad y\leq2x.
+\]
+Now $f_d(x)=x^{-m}$, so $C_ix^{-m}\leq1$ and
+\[
+ 2a_d(r_j+2C_j)y^{-m}\leq1.
+\]
+For the camera term, put $m=m_d+4=\deg F_d+4$; then
+\[
+ e^{E_i+2}A_d x^{\deg F_d}f_d(x)
+ =\frac{e^{E_i+2}A_d}{x^4}
+ \leq\frac{1}{4\sqrt{x}}=s(x),
+\]
+using $4e^{E_i+2}A_d\leq x\leq x^{7/2}$ for $x\geq1$ (the weaker power inequality suffices). Also $y^{-1}\leq1$.
+
+Finally, $D2^m\leq y$ and $y\leq2x$ imply
+\[
+ D y^m\leq yx^m.
+\]
+Indeed $y^m\leq(2x)^m$ and $D2^m\leq y$. Dividing by the positive quantity $y^{m+1}x^m$ yields
+\[
+ y^{-1}D x^{-m}\leq y^{-m},
+\]
+which is the last inequality. There are finitely many $d\leq i$, so the finitely many thresholds just chosen have a common maximum. This proves the lemma.
+\end{proof}
+
+\begin{theorem}[One monotone delay for all selected transitions]
+\label{thm:ex-selected-geyser-steam}
+Fix the selected schedule, profile, gauge, period sides, and an initial delay sequence $z_j$. There is a coordinatewise larger delay sequence $v_j$, nondecreasing in $j$, such that for every later delay sequence $u_j\geq v_j$, every $j,i,x$ with $\mathrm{Step}(j,i)$ and $u_j\leq x$ satisfies \eqref{eq:ex-geyser-first}--\eqref{eq:ex-geyser-creek4} for the actual profile, as well as the frame-fit inequality $\nu_d\leq B(x)$ for every $d\leq i$.
+\end{theorem}
+
+\begin{proof}
+For a fixed pair $(j,i)$ with $\mathrm{Step}(j,i)$, apply Lemma~\ref{lem:ex-geyser-radial} to its finite range $d\leq i$. It provides a threshold $t_{j,i}$ above which all its conclusions hold. A fixed $j$ has only two possible stages, $i=j$ and (when $j>0$) $i=j-1$, because the source relation is $i\leq j\leq i+1$. Set $t_j$ to the maximum of the available $t_{j,i}$, and enlarge it to include $z_j$. Define
+\[
+ v_j=\max_{0\leq \ell\leq j}t_\ell.
+\]
+Then $v_j$ is nondecreasing and $z_j\leq v_j$. Whenever $v_j\leq x$, we have $t_j\leq x$, so the required estimates hold for either possible stage. If $u\geq v$ coordinatewise and $u_j\leq x$, then $v_j\leq x$, giving the same conclusions. This is the finite-prefix maximum construction used to collect the eventual estimates; no uniformity over unbounded profile ranges is presumed at a fixed scale.
+\end{proof}
+
+\paragraph{Use in the Geyser producer.} The theorem gives the exact quantitative service inequalities used by the selected finite producer: the cubic mint bound, stain/contact reserve, five interpolation bounds, and finite stencil fit. In the source these are combined with the selected history, opening, menu, and Freight inputs in the Geyser constructor. This section proves the large-entrance estimates and their common monotone threshold; it does not prove the separate selected nonlinear menu response or the paid purchase that supplies the fixed profile data.
+
+\begin{proposition}[From the scale inequalities to the Geyser service fields]
+\label{prop:ex-geyser-service-fields}
+Let $x_m$ be the selected hatted scale, $L_m$ its block side, and $B_m=B(x_m)$. Let $E_m$ be its support exponent and $T_m$ its finite title cost. Suppose the selected schedule and delay $u$ satisfy
+\[
+ x_{m+1}=x_m+b_{J(m+1)},\qquad x_m\geq1,
+ \qquad B_{m+1}^2\leq2B_m^2,\qquad L_m\geq2,\qquad u_{J(m+1)}\leq x_m,
+\]
+with $u_j\geq v_j$ as in Theorem~\ref{thm:ex-selected-geyser-steam}. Assume $\mathrm{threshold}_m>0$ and $\mathrm{threshold}_m^{-1}\leq x_m$. Let $d\leq J(k)$, $k\leq m$, and set
+\[
+ \zeta_m=f_d(x_m),\quad \phi_m=x_{m+1}^{-1},\quad
+ \delta_m=x_{m+1}^{-2},\quad \psi_m=2e^{E_{m+1}}T_{m+1},\quad
+ \eta_m=s(x_m).
+\]
+Then the scale estimates give, at every $m\geq k$, the local coin, room, decay, and norm-cost inequalities in the definitions of $\mathrm{Fiesta}$, $\mathrm{Cherry}$, and $\mathrm{Banks}$, with price $\mathrm{cameras}(d)$. They also give the Brine water, mint, split, and support inequalities. If the local-section bounds are taken from the source camera estimate, namely $\|\mathrm{places}_d(i,0,U)\|\leq\mathrm{cameras}(d)$, its place bound is uniform in $m$; its footprint cover is at most one once $\nu_d\leq B_m$.
+\end{proposition}
+
+\begin{proof}
+Apply Theorem~\ref{thm:ex-selected-geyser-steam} at $j=J(m+1)$, $i=J(m)$, and $x=x_m$. The selected clock identities give $\mathrm{Step}(j,i)$ and identify the next scale with $y_j(x_m)=x_{m+1}$. The delay condition places $x_m$ beyond the collected threshold. Since $d\leq J(k)\leq J(m)$, its creek inequalities apply to grade $d$.
+
+Write $F_d$ for the grade frame and $m_d=\deg F_d$. The first creek inequality is
+\[
+ x_m^{-(m_d+4)}\,\mathrm{columns}_m\leq1,
+\]
+which is the Fiesta coin inequality. Its second is
+\[
+2\,\mathrm{orbitCost}(F_d)(\psi_m+2\,\mathrm{columns}_{m+1})x_{m+1}^{-(m_d+4)}\leq1,
+\]
+the Fiesta room inequality. The title cost is nonnegative, so the remaining Fiesta sign condition holds.
+
+The shifted reciprocal estimate $x_{m+1}^{-1}\leq1$ is the Cherry level inequality. The final creek estimate reads
+\[
+ x_{m+1}^{-1}L_m^d\mathrm{columns}_{m+1}x_m^{-(m_d+4)}
+ \leq x_{m+1}^{-(m_d+4)};
+\]
+this is exactly the Cherry cost inequality with $\phi_m=x_{m+1}^{-1}$ and the adjacent marker prices $\zeta_m,\zeta_{m+1}$.
+
+For Banks, the cost price is at least one by the camera bound. Its candle cost is
+\[
+ e^{E_m+2}\,\mathrm{cameras}(d)\,
+      \mathrm{threshold}_m^{-m_d}\,x_m^{-(m_d+4)}.
+\]
+The threshold comparison and $\mathrm{threshold}_m^{-1}\leq x_m$ bound this by
+\[
+ e^{E_m+2}\,\mathrm{cameras}(d)\,x_m^{m_d}x_m^{-(m_d+4)}
+ \leq s(x_m)=\eta_m,
+\]
+using the third creek inequality. This verifies the Banks candle bound. The separate source camera estimate gives the stated uniform place bound; the footprint estimate follows from the fitted stencil radius and the one-site cover lemma.
+
+For Brine, positivity is immediate because $x_{m+1}>0$. Its mint inequality follows from the second scale estimate:
+\[
+ \delta_m\phi_m e^{B_m/128}
+ =x_{m+1}^{-3}e^{B_m/128}\geq1.
+\]
+The contact inequality supplies support $B_m\geq8$. Finally,
+\[
+ B_{m+1}^2\leq2B_m^2\leq L_mB_m^2,
+\]
+so the scale split holds. These are exactly the four Brine clauses used in the Geyser-to-Ponds conversion.
+\end{proof}

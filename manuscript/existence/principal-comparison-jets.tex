@@ -1,0 +1,342 @@
+\section{The mean and covariance jets in the principal comparison}
+\label{sec:principal-comparison-jets}
+We prove the extra smallness used in
+\eqref{eq:principal-primitive-comparison}. The two means need not
+agree away from the flat configuration. At the flat configuration
+their values vanish and their first derivatives differ only by the
+local inverse error. This gives one more small factor for their
+difference than for the covariance difference.
+
+\subsection{Uniform derivatives of the two local kernels}
+We first record why the kernel bounds are uniform in the period.
+All row estimates in this subsection use the maximum of weighted
+row and column sums from Section~\ref{sec:local-covariance}.
+For a fixed derivative order $n$, suppose a family of precisions
+$A(b)$ has uniformly positive lower bound $r>0$, uniform
+exponential row bound, and derivatives through order $n$ with
+weighted row bounds at most $C(x)$, where $C$ has upper exponent
+zero. The logarithmic fields $b$ range over a ball of radius
+$v(x)$, with upper exponent $-1/2$. These hypotheses hold for
+the unmasked local kernels under the fixed path and positive
+precision bounds used in Section~\ref{sec:mean-action-jets}.
+
+The inverse derivative formula, in multilinear notation, is
+\begin{equation}\label{eq:comparison-inverse-derivative}
+ D_I A^{-1}=
+ \sum_{(I_1,\ldots,I_k)}(-1)^k
+     A^{-1}(D_{I_1}A)A^{-1}\cdots(D_{I_k}A)A^{-1}.
+\end{equation}
+The sum is over ordered partitions of the labelled set $I$ into
+nonempty blocks. Differentiate $AA^{-1}=I$ and induct on $|I|$
+to prove this formula: the first differentiated block is the
+nonempty subset falling on $A$, and the induction partitions the
+remaining labels. Submultiplicativity and the inverse decay
+estimate of Section~\ref{sec:local-covariance} bound each term
+by a fixed power of $C(x)$ and of the inverse row bound.
+The number of terms depends only on $n$. Thus all inverse jets
+have upper exponent zero.
+
+The same argument applies to every principal window, with a
+small reduction of the exponential weight when the windows vary.
+Indeed, at some fixed weight $\gamma>0$ the ordered-partition
+formula bounds each inverse derivative on every window by $K_n$.
+An assembled column is one such inverse column extended by zero;
+thus each of its entries is at most
+$K_n e^{-\gamma\operatorname{dist}(a_i,a_j)}$. At weight
+$\gamma/2$, both row and column sums are bounded by
+\[
+ K_n m\sum_{q\ge0}(2q+1)^4 e^{-\gamma q/2},
+\]
+where $m$ bounds the number of coordinates at an anchor. This
+bound does not require two columns to use the same window.
+All windows and coordinate projections remain fixed during
+ differentiation. Symmetrizing preserves the estimate.
+
+On the reference side the coupling is the matrix of the
+unmasked curvature and predictor derivatives, restricted by the
+fixed keep test to the active coordinates. Denote it by $D(b)$;
+its precision is exactly $D(b)^*D(b)$. Away from zero this
+coupling differs from the completed-sector coupling: it uses the
+actual derivatives of curved plaquettes and of the predictor,
+whereas the completed sector transports their flat derivatives.
+We bound the reference derivatives separately. A derivative of
+order $j$ of a plaquette derivative is a derivative of order
+$j+1$ of its finite product of link matrices; the product rule
+bounds it by the same finite path-length moments, now through
+order $j+1$. The predictor contribution is treated with its
+fixed-ball derivative bound through that order. Purchase these
+bounds through $n+1$ when requesting $n$ coupling derivatives.
+All coefficients are bounded by the absolute path sums already
+used in Section~\ref{sec:mean-action-jets}. Summing their
+exponentially weighted rows and columns, and then applying the
+fixed keep and active projections, gives an exponent-zero bound
+for each reference coupling derivative. The product rule gives
+the precision derivative bound, with a finite sum over subsets
+of the derivative labels.
+The flat identity proved below identifies $D(0)^*D(0)$ with the
+active principal block of the completed sector precision; hence
+Section~\ref{sec:sector-gram} gives its lower bound $r$.
+Its perturbation on the logarithmic ball is bounded by $C(x)v(x)$,
+so it remains at least $r/2$ eventually. Thus the inverse argument
+applies to the reference matrix as well as the completed one.
+
+The reference panels have a different geometric size from the
+sector windows. For $B\ge120$ they contain every active coordinate
+whose parent anchor is within $\lfloor B/60\rfloor$ of the column
+anchor. Each endpoint of a bond lies within one coarse step of
+its parent anchor. The triangle inequality therefore bounds the
+separation of any two such endpoints by $\lfloor B/60\rfloor+2$;
+the reference middle-panel criterion follows from
+$20\lfloor B/60\rfloor+80\le B$. These are the two panel
+inclusions required here. The inverse-error proof uses only
+this inner radius, not an equality of the two window systems.
+Accordingly the reference error costs
+$e^{-c\lfloor B/60\rfloor}$ in place of $e^{-cB}$.
+Both have every negative upper exponent.
+
+For clarity, these derivatives are taken with the forest, tags,
+read windows and sector indicators fixed. The unmasked matrix
+entries are products of path derivatives and parallel transports.
+Their row costs are finite sums of the absolute path prices
+multiplied by fixed powers of path length. The fixed-ball
+predictor bounds in Section~\ref{sec:mean-action-jets} make those
+costs exponent zero. On the shrinking ball, the change from the
+flat precision is at most $C(x)v(x)$ in operator norm, by the
+fundamental theorem of calculus. Eventually this is less than
+$r/2$, so the same inverse estimates apply throughout the ball.
+This proves the required neighborhood of positivity without
+changing any sector indicator.
+
+Both affine sources are products of these kernel rows, their
+coupling matrices and the unmasked residual vector. Their
+derivatives therefore have exponent-zero bounds as well. The
+residual and its derivatives have the fixed-ball bounds
+\eqref{eq:action-fixed-ball}. A row acting on a bounded vector
+uses its absolute row sum, not the total number of lattice
+coordinates. The preceding product estimates are consequently
+uniform over all finite periods and all allowed forests and tags.
+
+\subsection{The exact comparison at the flat configuration}
+Let $A$ denote the full flat sector precision, padded by the
+identity on inactive coordinates, and let $U$ denote its active
+coordinate set. At a flat field all parallel transports are
+identities. Differentiating a plaquette gives its signed exterior
+difference, and differentiating the predictor noise gives the
+flat coarse response with the same sign in both constructions.
+The normalization of the signed average is the same
+$|\mathcal S|^{-1/2}$ in both matrices. Evaluating on each colour
+coordinate vector therefore identifies the restricted sector
+coupling with the reference coupling. Taking its Gram matrix gives
+the exact flat identity
+\begin{equation}\label{eq:comparison-flat-precision}
+                             A_{UU}=A_{\rm ref}.
+\end{equation}
+The padding contributes zero on $U$. Rows discarded by the
+reference keep test already vanish in this coupling, so their
+removal does not change the product.
+
+Since inactive rows and columns of $A$ are identity rows and
+columns, $A$ is the direct sum of $A_{UU}$ and an identity matrix.
+Hence
+\[
+                         (A^{-1})_{UU}=A_{UU}^{-1}.
+\]
+This conclusion uses the actual direct-sum property; it would
+not follow merely by compressing an arbitrary inverse.
+Let $P_6$ be the sector window inverse and $P_9$ the reference
+window inverse at the flat point. The window-error calculation
+of Section~\ref{sec:local-covariance}, applied to their respective
+windows, gives
+\begin{equation}\label{eq:comparison-flat-window-error}
+              \|(P_6)_{UU}-P_9\|_0\le t(x),
+\end{equation}
+where $t$ has every negative upper exponent. Indeed each error
+is bounded by its fixed inverse-decay constant times
+$e^{-c\lfloor B_x/60\rfloor}$, and the cutoff radius $B_x$ dominates every fixed
+multiple of $\log\beta_f(x)$. Taking the sum of the two errors
+preserves this property. Symmetrizing
+\eqref{eq:comparison-flat-window-error} gives the same bound
+for the flat covariance difference.
+
+Write the actual and reference means in logarithmic coordinates as
+\[
+              m_6(b)=-P_6(b)^*s_6(b),\qquad
+              m_9(b)=-P_9(b)^*s_9(b).
+\]
+On the actual side the formula is restricted to $U$ after the
+matrix-vector product. Each source is its coupling transpose
+applied to the residual. The residuals vanish at $b=0$: all
+curvature strokes are zero, the predictor is the identity, and
+all coarse guides are linear in zero strokes. Thus both sources
+and both means vanish there.
+
+The source derivatives agree after restriction:
+\begin{equation}\label{eq:comparison-source-first}
+                         (Ds_6(0)h)|_U=Ds_9(0)h.
+\end{equation}
+To see this, write $s=M^*a$. At zero, $a(0)=0$, so its derivative
+is $M(0)^*Da(0)h$ and the derivative of $M$ contributes zero.
+The two residual formulas are the same unmasked curvature and
+noise strokes, after restricting the kept rows. On omitted rows
+the coupling is zero, as in
+\eqref{eq:comparison-flat-precision}. This proves
+\eqref{eq:comparison-source-first}. The actual source derivative
+also vanishes outside $U$, because the corresponding coupling
+columns are zero.
+
+Differentiating the mean products now gives the exact identity
+\begin{equation}\label{eq:comparison-mean-first}
+ D(m_9-m_6)(0)h=
+                  \bigl((P_6(0))_{UU}-P_9(0)\bigr)^*Ds_9(0)h.
+\end{equation}
+Derivatives of $P_a$ multiply the zero source and disappear.
+By the row bound and the exponent-zero source derivative bound,
+\[
+          \|D(m_9-m_6)(0)\|\le t(x)C(x).
+\]
+This proves a first-derivative comparison, not merely an equality
+of quadratic forms.
+
+\subsection{Transferring the estimates along a local variation}
+We give the elementary Taylor argument used for this transfer.
+Let $f:E\to F$ be $C^n$, $n\ge2$, on a neighborhood of the
+closed ball of radius $v\le1$, and suppose
+\[
+ f(0)=0,\qquad \|Df(0)\|\le Ct,
+ \qquad \|D^kf(b)\|\le C\quad(2\le k\le n,\ \|b\|\le v).
+\]
+Let $u$ be a $C^n$ chart about the parameter base point with
+$\|u(0)\|\le v$ and $\|D^ku(0)\|\le v^k$ for $1\le k\le n$.
+Taylor's formula along the segment from $0$ to $b$ gives
+\[
+ \|f(b)\|\le Ct\,v+Cv^2/2,
+                       \qquad \|Df(b)\|\le C(t+v).
+\]
+For a derivative of $f\circ u$ of order $k\ge1$, a partition
+with $r$ blocks contributes $D^rf(u(0))$ applied to the
+derivatives of $u$ of those block sizes. Their product costs
+$v^k$. When $r=1$ this is at most $C(t+v)v$; when $r\ge2$
+it is at most $Cv^2$, since $k\ge2$ and $v\le1$.
+There are at most $n!2^n$ partitions for any $k\le n$.
+Together with the value estimate this proves
+\begin{equation}\label{eq:comparison-quadratic-jet-gain}
+ \|f\circ u\|_{J^n_0}
+                  \le n!2^n\{C(t+v)v+Cv^2\}.
+\end{equation}
+Similarly, if $g(0)$ has norm at most $t$ and all its
+positive-order derivatives on the ball are bounded by $2C$,
+the mean-value theorem and the same partition formula give
+\begin{equation}\label{eq:comparison-linear-jet-gain}
+                \|g\circ u\|_{J^n_0}\le n!2^n(t+2Cv).
+\end{equation}
+
+Apply \eqref{eq:comparison-quadratic-jet-gain} to
+$f=m_9-m_6$, using \eqref{eq:comparison-mean-first}.
+Apply \eqref{eq:comparison-linear-jet-gain} to each entry of
+the covariance difference, using
+\eqref{eq:comparison-flat-window-error}. The common logarithmic
+chart from Sections~\ref{sec:haar-chart} and
+\ref{sec:mean-action-jets} supplies the required $u$.
+For a support anchored at $o$, its radius is at most $D_x$.
+The chart's derivative scale can be chosen as
+\[
+ v(x)=C_n\,2\theta_f(x)
+                    (1+\operatorname{reach}(x))^p(1+D_x)^p.
+\]
+This follows by applying the weighted direction bound at $o$
+to every read site and using the uniform derivatives of the
+logarithm on the fixed chart. An ordered product of $k$ local
+variations contributes the $k$th power of that scale.
+It has upper exponent $-1/2$ and is eventually at most one.
+
+\subsection{Returning from the local logarithm to the physical field}
+The preceding comparison is made with blank local sector data.
+We must identify its readings with the physical ones; global
+agreement of the fields or of their sector indicators is not
+available. Let $Y$ be the allocated coarse support, disjoint
+from the sector's seed set. For each coordinate read by the
+insertion, with parent anchor $p$, its allocation includes
+\[
+ \operatorname{halo}_{R+4}\{p\}\subset Y,
+                    \qquad R=45(1+B).
+\]
+The field is healthy on $Y$, and the period and chart bounds
+ensure that this read region has the local gauge chart of
+Section~\ref{sec:haar-chart}. Fix that gauge $g$ once, at the
+base configuration. For every nearby configuration $W$ define
+\[
+ b(W)_e=\begin{cases}
+ \log((g\cdot W)_e),&\operatorname{dist}(p,e_-)\le R,\\
+ 0,&\operatorname{dist}(p,e_-)>R.
+ \end{cases}
+\]
+The finite set of logarithms stays in its common chart on a
+neighborhood of the base point. Thus $b$ is smooth there, and
+$\exp b(W)=g\cdot W$ on the entire read halo. No assertion is
+made about plaquettes crossing the boundary of its zero extension.
+The derivative estimates used above hold for precisely this
+extension: the entries outside the halo have zero derivatives.
+
+Here is why this local agreement suffices. A seed in the read
+halo would belong to $Y$, contrary to seed separation. The local
+indicator tests therefore agree with the blank tests there.
+The forest, signed choices, widths and fixed path data are the
+same. Every entry used by a sector window, and every source
+entry used in its local mean, reads at most $17B$ from the
+column anchor. This fits inside $R$. In the reference construction
+the middle and end panels and their field queries are contained
+in the same allocated halo, with the extra four sites allowing
+for the bond endpoints. For the reference construction this containment can be checked
+numerically. The panel radius is at most $\lfloor B/20\rfloor$.
+If $E$ denotes the extent of a single path query, the coupling
+read radius is $E+10B+4$, and the covariance read radius is this
+quantity plus $2\lfloor B/20\rfloor$. The mean adds the residual
+read radius, the coupling range, and one more panel radius;
+write the resulting radius as $S$. The fixed range inequalities
+give $S+E\le36B$. Even an allowed displacement of the query
+anchor by $7(1+B)$ therefore costs at most
+$7(1+B)+36B\le45(1+B)=R$. These inequalities cover the
+whole local product, including source entries in a mean row.
+Consequently their restricted coupling
+and precision entries, and their source entries, agree after
+the local gauge change. Equal principal matrices have equal
+inverses; their restricted matrix products also agree. This
+proves equality of the mean readings and window covariance
+blocks. It uses the local tests only, so sector indicators outside
+the halo can be arbitrary.
+
+More explicitly, write $O_j$ for the colour adjoint of the fixed
+gauge at the parent of coordinate $j$. For a mean read at $k$,
+and a covariance block between $k$ and $l$, the preceding
+identification gives
+\[
+ O_k m_a^{\rm phys}(W)_k=m_a^{\rm loc}(b(W))_k,
+ \qquad
+ C_a^{\rm phys}(W)_{kl}
+   =O_k^* C_a^{\rm loc}(b(W))_{kl}O_l,\qquad a=6,9.
+\]
+For the sector covariance its locality initially identifies the
+column at $k$; symmetry gives the displayed row identity. The
+reference identity reads that row directly. Thus the same
+chart at $k$ compares any requested block, including $l$ outside
+the insertion's support. The mean identity on the reference
+side holds for every fixed fine field and auxiliary parameter:
+its local affine source is the same one just identified.
+All these equalities hold on a neighborhood, so their derivatives
+through the required order agree as well.
+
+A colour adjoint is an isometry, so returning from the local
+mean does not change its norm. Each entry of $O_j$ has magnitude
+at most one, so the covariance entry bound acquires at most
+$(\dim\mathfrak g)^2$. The gauge is fixed while differentiating.
+Consequently the actual unscaled mean difference
+has upper exponent $-1$, whereas the covariance difference has
+upper exponent $-1/2$, exactly as in
+\eqref{eq:principal-primitive-comparison}.
+
+The argument uses the same local histories, flags and reference
+windows on both sides. It does not identify the two precisions
+on nonflat fields. The hypotheses inherited from the earlier
+kernel and chart sections are the common path bounds, their
+local smooth formulas, and the positive precision estimates;
+these remain part of the selected construction throughout.

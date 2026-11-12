@@ -1,0 +1,169 @@
+\section{Extending small-field derivative estimates to the boundary}
+\label{sec:healthy-boundary-jets}
+A small-field configuration may have a plaquette exactly at the
+health threshold. Identities first proved where every plaquette is
+strictly below that threshold must therefore be extended to this
+boundary. We follow the actual radial argument. It uses the smallness
+of the logarithmic field and a second-derivative estimate; it does
+not assume that the healthy set is convex.
+
+\subsection{A radial retreat lemma}
+Let $X:[0,1]\to E$ be a twice continuously differentiable curve in
+a finite-dimensional normed space, with
+\[
+ \sup_{0\le s\le1}\|X''(s)\|\le K<t,
+             \qquad \|X(1)-X(0)\|\le t.
+\]
+Then $\|X(s)-X(0)\|<t$ for all $s<1$ sufficiently close to one.
+If the endpoint inequality is strict, this is continuity. In the
+remaining case put $D=X(1)-X(0)$, so $\|D\|=t$, and
+$g(s)=X(s)-sD$. The fundamental theorem of calculus gives
+\[
+ \|X'(1)-D\|
+  =\left\|\int_0^1\{X'(1)-X'(r)\}\,dr\right\|
+                      \le K<t.
+\]
+Since $g'(1)=X'(1)-D$, the one-sided difference quotient satisfies
+$\|g(s)-g(1)\|<(1-s)t$ near one. For $0\le s<1$ in that neighborhood,
+\[
+ X(s)-X(0)=sD+g(s)-g(1),\qquad
+ \|X(s)-X(0)\|<st+(1-s)t=t.
+\]
+The inequality is strict even when the original endpoint lies exactly
+on the boundary.
+
+Let $W$ be the actual logarithmic coordinate of a coarse field, and
+write $U_s=\operatorname{actual}(sW)$ for the field obtained by
+exponentiating its bond coordinates. For one plaquette let
+$X(s)=\rho(\operatorname{Hol}_{\square}U_s)$, where $\rho$ is the
+fixed unitary representation. Then $X(0)=1$ and
+\[
+ \operatorname{chord}(\operatorname{Hol}_{\square}U_s)
+                     =\|X(s)-1\|/r_G,
+\]
+with the fixed representation normalization $r_G>0$.
+On a fixed small logarithmic ball the exponential has bounded first
+and second derivatives. If the coordinate norm is at most $w\le1$,
+its bond derivative scale is at most $Cw$. The product rule over the
+four plaquette bonds gives
+\[
+                  \sup_{s\in[0,1]}\|X''(s)\|
+                           \le r_G(4r_GCw)^2.
+\]
+Thus, if $(4r_GCw)^2<\tau$ and all endpoint plaquette chords are at
+most $\tau$, the retreat lemma with $t=r_G\tau$ makes every plaquette
+strictly healthy for $s<1$ close enough to one. There are finitely
+many plaquettes, so one neighborhood works for all of them.
+
+In the construction the logarithmic radius is
+$h=\beta_F^{-7/16}$, while the health threshold has scale
+$\tau=\beta_F^{-1/2}$ times its prescribed slowly varying factor.
+The coordinate norm conversion has a fixed constant. Since
+$h^2$ has exponent $-7/8<-1/2$, the displayed strict curvature
+inequality holds eventually, uniformly over every field in that
+logarithmic ball. This is the needed strict radial approximation.
+
+\subsection{Transferring chart jets to ordered group derivatives}
+We record the normalization used with this approximation. Let $j$
+be fixed. Compactness on a small Lie-algebra chart supplies constants
+$J,d>0$ for derivatives through order $j$ of the local logarithm.
+Shrink the chart so that the logarithm inverts the exponential there.
+Let $U=\operatorname{actual}(W)$, with $\|W\|\le h$, and suppose
+\[
+            f\circ\operatorname{actual}\in
+                       \mathcal B_j(T,h^{-1};W).
+\]
+Consider an admissible group-valued variation $V(y)$ through $U$,
+whose link derivative scale is $C$. The local logarithm and the
+inverse linear coordinate map produce a chart variation $a(y)$
+with $a(y_0)=W$ and $V=\operatorname{actual}\circ a$ near $y_0$.
+The logarithm chain rule bounds its positive-order derivatives by
+\[
+             j!J\{(1+r_G)C\}^{r}\qquad(1\le r\le j).
+\]
+Assume
+\[
+       (1+r_G)C\le1,
+             \qquad j!J(1+r_G)C\le h.
+\]
+Then every derivative of $a$ through order $j$, including its value,
+is at most $h$. In the chain rule for $f\circ\operatorname{actual}\circ a$,
+an outer derivative of order $m$ costs $Th^{-m}$ and its $m$
+inner factors cost at most $h^m$. They cancel. Bounding the finite
+partition count conservatively gives
+\begin{equation}\label{eq:healthy-chart-ticket}
+                       \|f\circ V\|_{j,y_0}\le j!3^jT.
+\end{equation}
+The same estimate applies to ordered left derivatives along any
+list of at most $j$ directions of norm at most $\tau$. Indeed use
+the corresponding ordered products of exponentials as the variation;
+the compact exponential bounds give a link scale at most $C_jj\tau$.
+Choose $C$ to dominate that value. In the present construction
+$C$ has upper exponent $-1/2$, strictly below the radius exponent
+$-7/16$, so both normalization inequalities hold eventually.
+The construction also proves the required local differentiability
+of $f$ in the group chart.
+
+\subsection{Subtracting a summable activity array}
+Let $u_i$ be regular activities with nonempty assigned supports and
+nonnegative jet prices $k_i$. Suppose their rooted support-weighted
+price is at most $b$ per torus site and their derivatives in directions
+bounded by $\tau$ are at most $k_i$. Then
+\[
+                     \sum_i k_i\le |\Lambda|b.
+\]
+This follows by summing over the roots and removing weights at least
+one. On the open set $\mathcal S$ of strictly healthy configurations,
+every $u_i$ is differentiable to order $j$. Their series can be
+differentiated term by term there. To check the needed domination
+for any fixed list of directions, scale every direction by a common
+positive number so that its norm is at most $\tau$. Multilinearity
+of the ordered derivative then multiplies the summable majorant
+$k_i$ by only one fixed power of that number. The common majorant
+is uniform on $\mathcal S$. The local differentiation theorem for
+normally convergent derivative series therefore applies, order by
+order. In particular, for $U\in\mathcal S$ and normalized directions,
+\begin{equation}\label{eq:healthy-array-sum}
+ \left|\sum_i u_i(U)\right|\le|\Lambda|b,\qquad
+ \left\|D_\ell\sum_i u_i(U)\right\|\le|\Lambda|b
+                                  \quad(|\ell|\le j).
+\end{equation}
+
+Suppose the local action identity on $\mathcal S$ is
+\[
+                      f(U)=z-H(U)-\sum_i u_i(U),
+\]
+where $z$ is constant. For any function $q$ write
+$\widetilde q(U)=q(U)-q(1)$. The identity field belongs to
+$\mathcal S$, because $\tau>0$. Subtracting its value yields
+\[
+              \widetilde H(U)
+             =\sum_i u_i(1)-\sum_i u_i(U)-\widetilde f(U).
+\]
+Assume now that the chart bound with amplitude $T$ and scale $h^{-1}$
+holds for $\widetilde f\circ\operatorname{actual}$ at every $W' $
+such that $\|W'\|+2d<h$ and $\operatorname{actual}(W')\in\mathcal S$.
+This is a bound on the centered function itself. Apply
+\eqref{eq:healthy-chart-ticket} to $\widetilde f$. Combining it with
+\eqref{eq:healthy-array-sum} gives
+\begin{equation}\label{eq:healthy-interior-remainder}
+          \|D_\ell\widetilde H(U)\|
+                   \le j!3^jT+2|\Lambda|b.
+\end{equation}
+The extra factor two covers the centered value at derivative order
+zero; for positive orders the identity-field constant differentiates
+to zero.
+
+Now let $U=\operatorname{actual}(W)$ have no flagged plaquettes,
+allowing equality at the threshold, and assume
+$\|W\|+2d<h$ with $d>0$. For $0\le s\le1$,
+$\|sW\|+2d<h$ as well. The radial retreat places $U_s$ in
+$\mathcal S$ for $s<1$ sufficiently close to one, so the same
+interior estimate applies there. Assume $H$ is regular on the full
+healthy domain, as supplied by the local action construction. Its
+ordered derivatives through order $j$ are continuous at $U$ in the
+local group chart. Since $U_s\to U$, passing to the limit in
+\eqref{eq:healthy-interior-remainder} gives the same bound at $U$.
+Only $H$ needs this boundary regularity: no boundary smoothness is
+inferred for the original masked series or for $f$ from its interior
+identity.

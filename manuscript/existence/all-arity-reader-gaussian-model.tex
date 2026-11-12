@@ -1,0 +1,223 @@
+% The common finite Gaussian model underlying a full reader family.
+\section{One joint Gaussian model for the whole reader family}
+\label{sec:ex-lattice-all-arity-reader-gaussian-model}
+
+The leading Gaussian construction assigns a local reference model to an
+entire finite family of readers at once. It is important that this is one
+joint law: replacing it by a separate Gaussian sample for each reader would
+lose the cross-covariances used in the principal comparison. The model is an
+auxiliary leading law for a fixed block, pose, forest, and tag. It is not a
+claim that the complete interacting block measure is Gaussian.
+
+\subsection{Fixed data and the common sample space}
+
+Fix adjacent coarse and fine levels, a block and its point set, a coarse
+configuration $V$, a store of flags, a forest $F$, and one channel tag $c$.
+Fix also the positive scale parameter $x$, the channel mask parameter $q$
+and width $d$, the signed transport
+$s$, its coarse anchor $t$, the fine anchor $o$, and a pose at that anchor.
+Transport the store, forest, tag, and
+coarse field together by this same signed map. Denote the transported data
+by $A^\sharp,F^\sharp,c^\sharp,V^\sharp$. In particular, the transformed
+tag is the image of $c$ under the signed channel action; it is not chosen
+again independently.
+
+Let $I=\operatorname{In}(x,A,F)$ be the finite set of active fine-link Lie
+coordinates for the fixed store $A$ and forest $F$. Let $\Pi$ be the
+centered covariance prescribed by the channel on these input coordinates.
+The sample space is
+\begin{equation}
+ \Omega=\mathcal H_{\mathrm{frozen}}\times\mathbb R^I,
+ \qquad
+ d\mu(H,Z)=d\pi_{\mathrm{Haar}}(H)\,d\gamma_{\Pi}(Z).
+ \label{eq:ex-lattice-reader-space}
+\end{equation}
+Here $\mathcal H_{\mathrm{frozen}}$ is the product of the compact gauge
+groups on the bonds frozen by the store, with normalized product Haar
+measure, and $\gamma_\Pi$ is the centered Gaussian measure with covariance
+matrix $\Pi$. The two coordinates in \eqref{eq:ex-lattice-reader-space} are independent because the law
+is a product. The channel covariance and all its tags and masks remain fixed
+throughout the construction.
+
+For each sample $(H,Z)$, form the channel's local drift $a(H)$ from the
+frozen links, using the fixed tube, tag, mask parameter, and width. Convert
+$a(H)+gZ$ to the gauge group by the fixed
+exponential-coordinate chart, then apply the finite-volume local link
+update to $V$ while retaining $H$ on the frozen bonds. Denote this
+specified update map by $\mathsf U_{A,F,V}$. Define the fine configuration
+\begin{equation}\label{eq:ex-lattice-reader-fine-field}
+ V_*(H,Z)=\mathsf U_{A,F,V}\!\left(H,a(H)+gZ\right),
+ \qquad g=\beta^{-1/2}>0.
+\end{equation}
+The crucial point is that $H,Z$, the channel, and the coarse configuration
+are shared by every reader. The different readers enter only through their
+read sets and their local masks.
+
+The chosen pose is a single geometric input at $o$: on its room the coarse
+field agrees with one represented direction, after the fixed signed
+transport, and the room is healthy and clear of the assigned flags. The
+pose supplies the gauge frame used below. It is selected before the reader
+index is chosen and is not allowed to vary from one read coordinate to the
+next. For clarity, the quantitative receipts used by this handoff are these:
+the channel covariance is positive semidefinite and transforms covariantly
+under the fixed signed transport; for every admissible pair of incidence
+coordinates, there are nonnegative sight and common-history errors
+$\varepsilon_{\rm sight},\varepsilon_{\rm hist}$ with sum at most
+$\varepsilon$; for each reader $a$, its measurable mask has values in
+$[0,1]$ and integral loss at most $\varepsilon^2$; and, whenever that mask
+is positive, the same pose room and local comparison provide one gauge
+element for the whole reader patch with coordinate error at most
+$\varepsilon$. The covariance split, Markov bound, and common-sample
+notation below are proved here. Production of these paid sight, mask, and
+field-comparison receipts is the separate input supplied by the selected
+local construction; it is not inferred from positivity of the covariance.
+
+When the surrounding construction averages over its finite list of tag
+atoms, apply this construction to each atom with its own fixed tag and
+covariance. Those outer weights are nonnegative and sum to one. The theorem
+below is uniform over the allowed atoms; it does not identify distinct
+tagged Gaussian measures with one another.
+
+\subsection{Exact joint law of the transverse coordinates}
+
+Let $\mathcal I$ be the fine incidence-coordinate set, and let
+\[
+ R:\mathbb R^I\longrightarrow\mathbb R^{\mathcal I}
+\]
+be the row matrix that reads the transported fine curvature coordinates
+and restricts them to these incidences. Write $Z^\sharp$ for the Gaussian
+coordinate after the fixed signed transport, the channel's forest
+reorganization, and the one pose gauge change. Define the centered reader
+vector by
+\begin{equation}\label{eq:ex-lattice-reader-transverse}
+ \eta=RZ^\sharp.
+\end{equation}
+The exact transported channel covariance on the coordinates before the row
+restriction is denoted $\Pi^\sharp$. The measure-preserving transport laws
+give
+\begin{equation}
+ Z^\sharp\sim\gamma_{\Pi^\sharp},\qquad
+ \eta\sim\gamma_C,\qquad
+ C=R\Pi^\sharp R^{\mathsf T}.
+ \label{eq:ex-lattice-reader-covariance}
+\end{equation}
+This includes every cross-entry: for all $u,v\in\mathcal I$,
+\[
+ \mathbb E_\mu[\eta_u\eta_v]
+   =\sum_{r,r'\in I}R_{ur}\Pi^\sharp_{rr'}R_{vr'}=C_{uv}.
+\]
+The law statement in \eqref{eq:ex-lattice-reader-covariance}, not just its covariance identity, follows because
+the first transport pushes the product sample law to the transported
+Gaussian channel and the remaining maps are real-linear. Thus any finite
+subcollection of readers has the corresponding principal submatrix of
+$C$ as its exact joint covariance. No independence among reader
+coordinates is asserted. The covariance $C$ may be positive semidefinite
+and singular; the Gaussian pushforward statement remains valid in that
+case.
+
+The local estimate compares this matrix with the short reference
+covariance. Let $C^{\mathrm{short}}$ be that covariance on the same
+incidence coordinates. For every pair $u,v$ in the support of the chosen
+reader family, the paid sight estimate compares $C_{uv}$ with the tracked
+finite-volume covariance $C^{\mathrm{track}}_{uv}$. The common-history
+telescoping identity compares the latter with $C^{\mathrm{short}}_{uv}$.
+Adding these two differences gives the exact bound
+\begin{equation}\label{eq:ex-lattice-reader-covariance-error}
+ |C_{uv}-C^{\mathrm{short}}_{uv}|
+ \le |C_{uv}-C^{\mathrm{track}}_{uv}|
+       +|C^{\mathrm{track}}_{uv}-C^{\mathrm{short}}_{uv}|
+ \le \varepsilon.
+\end{equation}
+The two terms are bounded by $\varepsilon_{\rm sight}$ and
+$\varepsilon_{\rm hist}$, respectively, and their sum is at most
+$\varepsilon$. The common-history identity and room-separation conditions
+are required for both coordinates. In particular, \eqref{eq:ex-lattice-reader-covariance-error} holds for every pair
+of admissible read coordinates in the full family, not just for its
+diagonal entries.
+
+\subsection{All-reader field comparison on the same sample}
+
+For a fine reader patch $a$, let $J_a$ be the chamber-coordinate set read
+by that patch inside the prescribed room. A patch is admissible when its
+reader support is contained in the coarse block tag. Its mask
+$\Gamma_a:\Omega\to[0,1]$ depends on the same frozen field and channel as
+\eqref{eq:ex-lattice-reader-space}. The construction gives
+\begin{equation}\label{eq:ex-lattice-reader-guard}
+ \int_\Omega(1-\Gamma_a)\,d\mu\le\varepsilon^2.
+\end{equation}
+By Markov's inequality,
+\[
+ \mu\{\Gamma_a=0\}\le\varepsilon^2,
+ \qquad
+ \mu\{\Gamma_a\le1-\delta\}\le\frac{\varepsilon^2}{\delta}
+ \quad(0<\delta\le1).
+\]
+The statement is per reader; it does not take a union over the reader
+family. When $\Gamma_a(H,Z)>0$,
+the local guard places the sample in the healthy room where its field
+coordinates can be compared.
+
+Write $\operatorname{Basis}_a(W)$ for the local chamber basis at patch $a$,
+and define the complex gauged read by
+\[
+ \operatorname{Read}_{a,j}(W;q)
+ :=\left[\operatorname{rigid}\!\left(
+       \operatorname{coloring}\bigl(q,\operatorname{Basis}_a(W)\bigr)
+      \right)\right]_j.
+\]
+Thus the read is a complex coordinate after applying the patch basis and one
+gauge frame. Let $\mathsf B_{\rm parent}(U)$ denote the coarse chamber basis
+constructed once from the fixed parent manner, coarse configuration $U$,
+and reference tag. It is common to all fine patches; each set $J_a$ only
+restricts its coordinates. Let $\mathsf N_{H_i}$ be the normal-read map in
+the fixed reference chamber frame $H_i$. The center is the actual linear
+forecast
+\[
+ m_{a,j}:=\operatorname{Re}\left[
+   \mathsf N_{H_i}\bigl(\operatorname{rigid}(\mathsf B_{\rm parent}(U))\bigr)
+ \right]_j,
+ \qquad j\in J_a.
+\]
+It is the real part of the normal read in the reference frame, not an
+untransformed coordinate of $U$. On every guarded sample there is one gauge
+element $q_a(H,Z)$ for the whole patch such that
+\begin{equation}\label{eq:ex-lattice-reader-coordinate}
+ \left|
+  \operatorname{Read}_{a,j}\bigl(V_*(H,Z);q_a(H,Z)\bigr)
+       -\bigl(m_{a,j}+\eta_j(H,Z)\bigr)
+ \right|\le\varepsilon,
+ \qquad j\in J_a.
+\end{equation}
+The frame may depend on the reader and on the sample, but within one
+reader it is shared by all of that reader's coordinates. The same random
+vector $\eta$ from \eqref{eq:ex-lattice-reader-covariance} occurs for every patch, and the center $m_{a,j}$
+is the actual coarse reader value. There is no separate sampling or
+re-centering for each $j$.
+
+The geometry behind \eqref{eq:ex-lattice-reader-coordinate} is as follows. The fine read region is first
+rewritten in the common coarse frame; the block room condition places its
+whole stencil inside the pose room. The paid local guard then supplies the
+healthy-region condition. Applying the field comparison on that room
+produces the one gauge element $q_a(H,Z)$ and the coordinate estimate for
+each $j$ in the patch. The reader's mask is what localizes this statement:
+outside its support no coordinate comparison is claimed. This is exactly
+the scope needed for bounded chamber-local insertions.
+
+The law \eqref{eq:ex-lattice-reader-space}, the covariance statements
+\eqref{eq:ex-lattice-reader-covariance}--\eqref{eq:ex-lattice-reader-covariance-error},
+the guard estimate \eqref{eq:ex-lattice-reader-guard}, and the coordinate
+comparison \eqref{eq:ex-lattice-reader-coordinate} are the joint reader model. They are the
+finite-dimensional input used by the subsequent Gaussian density
+comparison, with a fixed measurable masked insertion. That comparison is
+proved in Section~\ref{sec:principal-gaussian-comparison}; it derives the
+polynomial density-jet bound and never differentiates the insertion. The
+Gaussian reassembly in Section~\ref{sec:gaussian-reassembly} separately
+proves that the absolutely summable activity expansion restores the
+original block integral. This auxiliary reader model alone does not assert
+that identity. Finally, the response billing in
+Section~\ref{sec:ex-lattice-trace-eve-producer} uses one uniform derivative
+and tail envelope over all allowed leaves and reader directions. The
+present section supplies the common-law and same-insertion identification
+required to apply those comparison and reassembly results; their primitive
+mean, covariance-jet, cutoff, and packet estimates remain those stated in
+the cited sections.

@@ -1,0 +1,160 @@
+\section{A uniform analytic price for the bare plaquette energy}
+\label{sec:ex-wilson-vacuum-price}
+
+The path construction uses uniform analytic bounds for the unperturbed Wilson
+energy, before it compares that energy with a general path. This section
+records the finite-volume estimate and its proof. All constants are independent
+of the torus side.
+
+Write $\mathcal A$ for the finite set of positive oriented plaquette types,
+$N_{\mathcal A}=|\mathcal A|$, and let $d_G$ be the dimension of the fixed
+matrix representation. For a link field $U$ on a torus of side $m$, put
+\[
+ W_m(U)=\sum_{x\in(\mathbb Z/m\mathbb Z)^4}\sum_{a\in\mathcal A}
+       \left(1-\frac{\operatorname{Re}\operatorname{tr}U(\partial(x,a))}{d_G}\right).
+\]
+Here $U(\partial(x,a))$ is the ordered four-edge holonomy. The estimate below
+is a coefficientwise price uniform in $m$; the action itself is extensive.
+We use Lie-algebra coordinates $z$ at the identity and write
+$\widetilde W_m(z)=W_m(\exp z)$; every derivative below means the derivative
+of this coordinate function at $z=0$. The norm on link-coordinate arrays and
+on their local Fourier-mode restrictions is the supremum norm.
+
+For $t\in\mathbb N$, set $n=t+1$. A coefficient picture of order $t$ assigns a
+function of $t$ independent complex momenta $q_1,\ldots,q_t$ to every list
+of $n$ colors and oriented-link directions; the zeroth momentum is fixed by
+$q_0=-\sum_{j=1}^tq_j$. The width-one strip is the set where every
+coordinate of each independent momentum has imaginary part of absolute value
+at most one. Let
+$\operatorname{CTax}(R,0)=1$ and
+$\operatorname{CTax}(R,k+1)=\operatorname{CTax}(R,k)/(R/2^{k+1})$.
+
+\begin{proposition}[Uniform bare-energy coefficient price]
+\label{prop:ex-wilson-stream}
+There are constants $R_*>0$ and $A_*<\infty$, depending only on the compact
+gauge representation and plaquette convention, and for each $t$ there is a
+single picture $\mathcal W_t$ that works for every torus side $m$. Its
+components are holomorphic on the width-one momentum strip and satisfy
+\[
+ \sup_{q\text{ in the strip}}|\mathcal W_t(q)|\leq
+ A_t:=N_{\mathcal A}A_*\exp\bigl(16(t+1)^2\bigr)
+       \frac{\operatorname{CTax}(R_*,t+1)}{(t+1)!}.
+\]
+Moreover, let $p_0,\ldots,p_t$ be dual-torus momenta, $c_0,\ldots,c_t$
+colors, and $b_0,\ldots,b_t$ oriented-link directions. Let $e_{p,b,c}$
+denote the corresponding Fourier-mode variation of the link field, and put
+$q=(p_1,\ldots,p_t)$. Then
+\[
+ \frac{1}{n!}D^n \widetilde W_m(0)\bigl[e_{p_0,b_0,c_0},\ldots,e_{p_t,b_t,c_t}\bigr]
+ =\begin{cases}
+ |(\mathbb Z/m\mathbb Z)^4|\,\mathcal W_t(\mathbf c,\mathbf b;q),
+       &\sum_{j=0}^t p_j=0,\\
+ 0,&\sum_{j=0}^t p_j\ne0.
+ \end{cases}
+\]
+Thus the volume factor in the zero-total-momentum coefficient is exactly the
+torus cardinality, and every nonzero-total-momentum coefficient vanishes.
+\end{proposition}
+
+\begin{proof}
+First construct a single plaquette extension. Let $\mathfrak g_\mathbb C$ be
+the complexification of the represented Lie algebra and let
+$\mathcal E:\mathfrak g_\mathbb C\to\mathrm{Mat}_{d_G}(\mathbb C)$ be the
+linear representation map. For a complex link-coordinate array $z$, the two
+oriented link matrices are $\exp(\mathcal E z_e)$ and
+$\exp(-\mathcal E z_e)$. These depend holomorphically on $z$, since the
+matrix exponential is entire. Multiplication along the four edges, trace,
+and the average of the forward and reverse loop traces are holomorphic too.
+On real coordinates that average is the real trace of the holonomy, because
+for the unitary holonomy $H$ one has
+$\operatorname{tr}(H^{-1})=\overline{\operatorname{tr}(H)}$. Thus this
+extension restricts to the real plaquette energy summand.
+
+Continuity of the exponential at zero gives $R_*>0$ such that complex link
+coordinates in the radius-$R_*$ ball give oriented matrices within
+$\operatorname{rad}(1)$ of their physical unitary matrices. In the source's
+Frobenius norm, this implies the correct product estimate as follows. If $M$
+is within $r=\operatorname{rad}(1)$ of a unitary $V$, then for every matrix
+$X$,
+\[
+ \|MX\|_F\leq\|VX\|_F+\|(M-V)X\|_F
+       \leq(1+r)\|X\|_F,
+\]
+since left multiplication by $V$ is an isometry and the operator norm of
+$M-V$ is at most its Frobenius norm. Iterating this inequality through four
+factors, starting with $X=I$, gives
+$\|M_1M_2M_3M_4\|_F\leq(1+r)^4\|I\|_F$. The reverse loop has the same
+bound. The continuous pulse
+\[
+ (M,N)\longmapsto1-\frac{\operatorname{tr}M+\operatorname{tr}N}{2d_G}
+\]
+is bounded on the product of the two closed Frobenius balls of radius
+$T=(1+r)^4\|I\|_F$ about zero, since both four-edge products lie there.
+Compactness in finite dimension gives a common bound $A_*$.
+Together these facts give a uniform holomorphic extension bounded by $A_*$
+on a fixed ball, at every plaquette anchor and every torus size.
+
+Each plaquette is supported in the radius-four coordinate box about its
+anchor: every link in its four-edge boundary has an anchor at max-distance at
+most four. Hence its real local action is unchanged when the cover
+configuration is changed outside that box.
+
+To define the common local symbol, place each radius-four box in the auxiliary
+torus $\Lambda_9=(\mathbb Z/9\mathbb Z)^4$, with $9=2d+1$ and $d=4$. The
+box embeds in this torus without identifications. For each plaquette type,
+evaluate its local Taylor form there on the restricted Fourier modes
+$y\mapsto {\bf1}_{(b,c)}\exp(i\langle p,\operatorname{lift}y\rangle)$,
+and sum these local symbols over the plaquette types; this defines
+$\mathcal W_t$ at the corresponding independent momenta. For a period of any
+side $m$, pull a period-$m$ field $z$ to the auxiliary torus by
+\[
+ (P_mz)(y,b,c)=z(\operatorname{wrap}_m(\operatorname{lift}y),b,c).
+\]
+Then the local plaquette function satisfies
+$\operatorname{local}_m(z)=\operatorname{local}_9(P_mz)$. The pullback of a
+period-$m$ Fourier mode is exactly the restricted Fourier mode used above.
+This identity holds even when $m<9$ and distinct auxiliary sites wrap to the
+same period-$m$ link: evaluating $\operatorname{local}_9$ on $P_mz$ retains
+all repeated-link contributions. Thus the local symbol is the same for every
+period, including the small periods.
+The picture variables are momenta, rather than link coordinates. To obtain
+the strip bound, evaluate the order-$n$ Taylor multilinear form of the local
+plaquette extension on the Fourier-mode vectors $e_{p_j,b_j,c_j}$. The Cauchy
+derivative estimate on successively shrinking balls of radii $R_*/2,R_*/2^2,\ldots,R_*/2^n$ bounds its order-$n$
+derivative by $A_*\operatorname{CTax}(R_*,n)$. The Taylor coefficient is
+normalized by $1/n!$.
+For a momentum in the width-one strip, a Fourier mode restricted to the
+radius-four stencil has supremum norm at most $\exp(16n)$: the dependent momentum has imaginary coordinates
+bounded by $t$, and a stencil displacement has four coordinates, each of
+absolute value at most four. There are $n$ input modes in the multilinear form, so their
+product costs at most $\exp(16n^2)$. This proves the claimed bound for each
+plaquette type. Summing over the finite set $\mathcal A$ multiplies it by
+$N_{\mathcal A}$ and yields a single picture $\mathcal W_t$, independent of
+the torus side.
+
+It remains to check the finite-volume coefficient identity. Expand the
+translated plaquette sum and apply the multilinear coefficient to an ordered
+momentum/color/direction tuple. Translating a local plaquette coefficient
+by an anchor multiplies its Fourier mode by the character at total momentum
+$\sum_{j=0}^t p_j$. The sum over all anchors is zero unless that total momentum is
+zero; in that case each anchor contributes the same local coefficient, so
+the sum is exactly $|(\mathbb Z/m\mathbb Z)^4|$ times the local symbol
+$\mathcal W_t$ evaluated at the output phase. This proves the displayed
+identity, including its volume normalization.
+\end{proof}
+
+\begin{remark}[Use in the selected path estimate]
+\label{rem:ex-wilson-stream-use}
+The source's all-orders summation lemma applies this same local-extension
+argument to a countable family of interaction atoms, with the summability
+condition
+\[
+ \sum_j b_j\exp\bigl((t+1)^2\sigma\,4d_j\bigr)<\infty,
+\]
+where $d_j$ is the support length and $b_j$ its absolute coefficient times
+its exponential length weight. For the bare action the family is finite in
+plaquette type, has support length four, and the preceding bound gives its
+summability directly. Applying the lemma at orders three and four yields the
+two Wilson reference pictures used in the one-step path estimate. They are
+uniform over torus sides; no limit in the volume is used here.
+\end{remark}

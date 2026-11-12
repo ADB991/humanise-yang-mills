@@ -1,0 +1,83 @@
+\section{From a transfer lane to a centered cell estimate}\label{ex-centered-budget-production}
+
+This section isolates the finite-volume conversion from a lane price estimate to the centered root bound used in Section~\ref{ex-centered-estimates}. The conversion uses the exact copied-product normalization. The following section proves the lane price estimate from the Wilson density expansion and its radial bounds.
+
+Fix a period $p$, a depth $m$, and a volume index $N$. Let $\Lambda_{m,p}$ be the sites of the period-$p$ torus at depth $m$, set $n=|\Lambda_{m,p}|$, and let $\mathcal T_{m,p}$ be the centered reflection-positive tiling. The full marker mode contains one marker for every $x\in\Lambda_{m,p}$. If $F$ has grade $g$, the lane inserts its centered copy $U_x$ at marker $x$, and we write
+\[
+ M_{N,p}(U)=\mathbb E_{N,p}\!\left[\prod_{x\in\Lambda_{m,p}}U_x\right]
+\]
+for the normalized full-mode moment.
+
+A transfer lane from stopping depth $r$ to terminal depth $N$ has, at every level $j$ with $r\leq j\leq N$, an active slab density and an integrable signal for every marker mode. The origin of each marker at level $j$ is the parent of its origin at level $j+1$. Its terminal signal for a mode $S$ is the product of the vacuum density, the full-mode observable insertions, and one scalar factor $a_N^{g_x}$ per marker $x\in S$. At each step from $j+1$ down to $j$, the signal is pushed through the positive transfer between the adjacent slabs and multiplied by one blocking ratio to the load of each marker. Thus, for the full mode, finite iteration and integration give
+\[
+ \int \Sigma_r(\Lambda_{m,p})\,d\nu_r
+ =a_r^{gn} Z_{N,p}M_{N,p}(U),
+ \label{ex-centered-lane-transfer}
+\]
+where $Z_{N,p}>0$ is the vacuum partition function. This identity is just the finite transfer recursion, with no limiting operation.
+
+We record the exact radial quantities that enter the price estimate. If $S$ is a marker mode, its weight toll is $\operatorname{toll}_w(S)=\prod_{x\in S}w_x$. For a support $A$ and $t\geq0$, write $\operatorname{mass}(A,t)=e^{\lambda\,\operatorname{cover}(A)}t$, where $\operatorname{cover}(A)$ is the coarse-cover count and $\lambda$ the support price fixed by the Wilson section. A sum budget $\operatorname{SB}(f;c)$ means that its terms are nonnegative, summable, and sum to at most $c$.
+
+At stopping depth $r$, the radial data consist of positive marker weights $w_x$, local coefficients $u_x$ with $w_x|u_x|\leq u$, and a factor $b_0>0$. Each positive ray $i$ has a nonnegative coefficient majorant $s_i$ that bounds it on its healthy support $A_i$. For each marker $x$, the weighted ray charges obey
+\[
+ \operatorname{SB}\!\left(\left(\mathbf 1_{x\in R_i}\operatorname{toll}_w(R_i)\operatorname{mass}(A_i,s_i)\right)_i;c\right).
+\]
+Each marked interaction $(i,j)$ has a nonnegative majorant $t_{ij}$ that bounds its coefficient pointwise on its forced support $A_{ij}$. For each marker $x$, its weighted charges obey
+\[
+ \operatorname{SB}\!\left(\left(\mathbf 1_{x\in M_{ij}}\operatorname{toll}_w(M_{ij})\operatorname{mass}(A_{ij},t_{ij})\right)_{i,j};\gamma b_0\right).
+\]
+These are the exact support, coefficient, and summability bounds used in the next section to prove the finite-volume price inequality.
+
+For the uniform case $w_x=W>0$, write $\tau_r$ for the per-site vacuum cost at the stopping depth. The lane price conclusion to be established from the radial data is the following inequality:
+\[
+ (a_r^g)^n|M_{N,p}(U)|W^n
+ \leq \exp\!\left(|\Lambda_{r,p}|\tau_r+n(u+c+\gamma b_0)\right),
+ \qquad |\Lambda_{r,p}|=n\left(\frac{a_m}{a_r}\right)^4.
+ \label{ex-centered-lane-price}
+\]
+Here $\Lambda_{r,p}$ on the right is the stopping-depth torus, with the same physical period as $\Lambda_{m,p}$. Section~\ref{ex-centered-production} proves this estimate from the actual finite-volume density and denominator bounds.
+
+\begin{lemma}[Lane price gives the centered root bound]\label{ex-centered-lane-bound}
+Suppose $m\leq r\leq N$, the centered full-mode lane satisfies the transfer identity above, and the lane price inequality (\ref{ex-centered-lane-price}) holds with $w_x=W>0$. Then
+\[
+ \mathcal R_{\mathcal T_{m,p}}(F_0)
+ \leq \exp\!\left(\left(\frac{a_m}{a_r}\right)^4\tau_r+u+c+\gamma b_0
+                       +g\log\frac1{a_r}-\log W\right),
+\]
+where $F_0$ is the observable at the origin and $\mathcal R$ is its copied-product root norm.
+\end{lemma}
+\begin{proof}
+The full mode copies $F_0$ once in each cell of $\mathcal T_{m,p}$, so its root norm is $|M_{N,p}(U)|^{1/n}$. Divide the lane price inequality by $(a_r^gW)^n$ and take the nonnegative $n$th root. Using $|\Lambda_{r,p}|/n=(a_m/a_r)^4$ yields
+\[
+ |M_{N,p}(U)|^{1/n}
+ \leq \exp\!\left(\left(\frac{a_m}{a_r}\right)^4\tau_r+u+c+\gamma b_0-g\log a_r-\log W\right).
+\]
+Since $a_r=e^{-\sigma_r}$, the grade term is $-g\log a_r=g\sigma_r$. This is the assertion.
+\end{proof}
+
+\begin{lemma}[Scale conversion]\label{ex-centered-scale}
+Let the stopping-depth bill be
+\[
+ B_m=\left(\frac{a_m}{a_r}\right)^4\tau_r+u+c+\gamma b_0
+                 +g\log\frac1{a_r}-\log W.
+\]
+If $B_m\leq(g+\eta)\log(1/a_m)$, then
+\[
+ \mathcal R_{\mathcal T_{m,p}}(F_0)\leq a_m^{-g-\eta}.
+\]
+If this bill inequality holds only for $m\geq m_0$, a single prefactor $A<\infty$ absorbs the finitely many depths $m_{\rm ref}\leq m<m_0$ and gives $\mathcal R_{\mathcal T_{m,p}}(F_0)\leq A a_m^{-g-\eta}$ for every $m\geq m_{\rm ref}$. The prefactor is independent of period whenever the lane and bill data are.
+\end{lemma}
+\begin{proof}
+The first assertion follows by substituting the bill into Lemma~\ref{ex-centered-lane-bound} and using $\exp((g+\eta)\log(1/a_m))=a_m^{-g-\eta}$. For the second, for each exceptional depth set $r_m=\exp(B_m)/a_m^{-g-\eta}$ and take $A=\max(1,\max_{m_{\rm ref}\leq m<m_0}r_m)$. The later depths have ratio at most one. All these quantities are fixed before the period and volume variables.
+\end{proof}
+
+\begin{lemma}[Translation to every site]\label{ex-centered-all-sites}
+Fix $m$ and a local observable with finite stencil. For all sufficiently large $N$, its translated copies fit in the centered chamber at every torus site. If the finite-volume law is translation invariant, its copied-product root norm is the same at every site as at the origin. Consequently the estimate of Lemma~\ref{ex-centered-lane-bound} holds at all sites, and the centered observables are in the required chamber interior.
+\end{lemma}
+\begin{proof}
+Let $R_0$ bound the coordinate extent of the finite stencil. Since $a_N\to0$ while $a_m>0$ is fixed, take $N$ large enough that the physical stencil radius $R_0a_N$ is smaller than the centered chamber margin. This choice is uniform in site and period because the stencil and physical chamber width are fixed. Translation carries the centered tiling at the origin to the centered tiling at any site $x$, and carries each copied observable to its corresponding translate. Translation invariance therefore identifies the normalized copied-product expectations. Taking their common positive root transfers the origin bound to every $x$. Stencil fit and locality give chamber interiority.
+\end{proof}
+
+\begin{remark}[Target supplied by the producer]\label{ex-centered-budget-open}
+For each grade $g$, norm bound $R>0$, and slack $\eta>0$, the upstream task must construct stopping-depth lanes, uniformly for all labels of grade $g$ and norm at most $R$, whose bill is at most $(g+\eta)\log(1/a_m)$ for all sufficiently large depths. Their service condition must produce the lane at every sufficiently large volume and every period with one common volume tail, and include chamber interiority. Lemmas~\ref{ex-centered-lane-bound},~\ref{ex-centered-scale}, and~\ref{ex-centered-all-sites} then give the centered estimate $A a_m^{-g-\eta}$ uniformly in those labels and periods. The following producer analysis establishes the finite-volume price inequality and reduces the remaining obligation to the RG construction of the lane and its bill bound.
+\end{remark}

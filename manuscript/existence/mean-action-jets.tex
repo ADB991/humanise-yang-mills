@@ -1,0 +1,339 @@
+\section{Derivatives of the mean and of the local action}
+\label{sec:mean-action-jets}
+We now prove the differentiated estimates needed for the logarithm of
+a packet. The pointwise comparison with a stationary response is not
+differentiated: its gauge was chosen from the base configuration.
+Instead we use that one fixed gauge to express nearby configurations
+in logarithmic coordinates, estimate the smooth unmasked expressions
+there, and finally restore the original gauge. This distinction keeps
+the argument valid at the boundary of a cutoff.
+
+Fix a derivative order $j$, a patch, the branch constants, the forest,
+tags and sector indicators. Assume the uniform path bounds, clean-sector
+conditions and positive precision bounds of
+Sections~\ref{sec:sector-gram}--\ref{sec:normalization-jets}.
+All these choices precede the large-$x$ limit. A coarse variation
+$V(y)$ is measured by its matrix derivatives on each bond:
+\[
+ \|D^r\rho(V_e)(y_0)\|\le R_G v(x)^r\quad(0\le r\le j),
+ \qquad v\ge0,
+\]
+where $R_G$ is the fixed representation bound and $v$ has upper
+exponent $-1/2$. We use the derivative notation $\mathcal B_j$ of
+Section~\ref{sec:packet-estimates}; the same definition applies to
+colour-valued and operator-valued functions.
+
+\subsection{Uniform bounds for the actual predictor branch}
+The analytic branch of Section~\ref{sec:predictor-branch} gives bounds
+of every fixed finite order on a neighbourhood of the identity.
+We need that neighbourhood to be independent of the torus size.
+Here is the finite-read argument that ensures this.
+
+For a fixed patch and direction, take the union of the sites visited
+by all frame paths, their translates to the neighbouring coarse
+root, and all the straight connectors of length $L$. This is a
+finite subset of the covering lattice. Choose a reference torus
+large enough that lifting after wrapping fixes every site in this
+union, and with distinct neighbouring coarse roots. There are only
+finitely many tag choices and output bonds on this reference torus.
+For each, analyticity gives a positive logarithmic radius and a
+bound on derivatives through order $k$. Take the minimum of the
+radii and one plus the sum of the bounds.
+
+For a bond on any other torus, pull its logarithmic coordinates to
+the reference torus by translation and wrapping. This linear map
+has norm at most one in the supremum norm, even when some input
+coordinates coincide. Assign the two reference frame tags the actual
+tags at the two endpoints, and assign the actual predictor tag to
+the reference bond. Every read path has the same transport. Thus
+the two frame score functions coincide; uniqueness on the minimizing
+branch, and the explicit axial formula on its complement, identify
+the frames. The connector and predictor then coincide as well.
+Composition with the norm-one linear map transfers the derivative
+bound without a dimension factor.
+
+Consequently, for each $k$ there are $r,C>0$, independent of the
+period, such that the actual predictor on logarithmic fields of
+norm at most $r$ belongs to $\mathcal B_k(C,1)$ on each output
+bond. Shrink $r$ once more to use the logarithm and exponential
+charts. The chain rule shows that a near-identity group variation
+with derivative scale $v$ has predictor derivative scale $C_kv$.
+This statement includes the original tags and the branch tests.
+
+In particular, on a fixed ball in pairs $(b,u)$ of coarse and fine
+logarithmic fields, the four fields
+\[
+ V=\exp b,\qquad U=\exp u\,\operatorname{replica}V,
+ \qquad Q(U),\qquad Q(\operatorname{replica}V)
+\]
+have uniform derivatives of every prescribed finite order.
+Indeed both coordinate projections have norm one; differentiation
+of the exponential on a fixed compact chart, replication, and the
+unitary product rule give uniform bounds for $V,U$. Their chords
+are bounded by a fixed multiple of $\max(\|b\|,\|u\|)$, so the
+predictor estimate just proved applies after shrinking the ball.
+
+Let $f(b,u)$ be one unmasked affine residual at zero fluctuation,
+namely the fine or predictor base stroke minus its transported
+coarse guide, with coarse field $\exp b$. It does not depend on $u$,
+but retaining the pair space allows the same chart for all local
+actions. The preceding bounds and the absolute path prices imply
+\begin{equation}\label{eq:action-fixed-ball}
+ f\in\mathcal B_k(A(x),1;(b,u))
+ \quad\text{for }\|(b,u)\|\le r,
+ \qquad f(0,0)=0,
+\end{equation}
+where $A$ has upper exponent zero. To see the rate assertion, each
+cut path has length at most a fixed multiple of $R+1$ and bounded
+absolute coefficient sum. Transport adds a derivative scale
+$C(R+1)$; a guide sums over at most $C(R+1)^4$ inputs with bounded
+coefficients. At fixed order, the product rule therefore costs only
+a polynomial in $R+1$. The predictor bounds are fixed constants.
+Here $R=\lfloor B/100000\rfloor$ has upper exponent zero.
+At the identity all curvature strokes vanish, the predictor equals
+the identity, and the guides are linear in zero coarse strokes,
+which proves the last equality in \eqref{eq:action-fixed-ball}.
+
+\subsection{Recovering small derivatives by flat interpolation}
+We give the interpolation step explicitly because its constants are
+independent of the dimension of the logarithmic field space.
+Let $f:E\to F$ be $C^k$ near the closed ball of radius $B_0$ in a
+finite-dimensional normed space, with $k\ge3$. Suppose
+\[
+ f\in\mathcal B_k(A,1;z)\quad(\|z\|\le B_0),\qquad
+ \|f(z)\|\le u\quad(\|z\|\le3t),
+ \quad 0<t\le1,\quad 3t\le B_0,
+\]
+where $A,u\ge0$. Put
+\begin{align*}
+ W&=1000(u/t^2+AB_0),&
+ Y&=1000u/t+3WB_0,\\
+ H&=u+YB_0+Yt+Wt^2+At^3.
+\end{align*}
+Then, throughout the larger ball,
+\begin{equation}\label{eq:action-interpolation}
+ f\in\mathcal B_k(H,t^{-1}).
+\end{equation}
+
+First, if $\|Df(z)-Df(a)\|\le e d$ and $\|f(z)\|\le u$ on
+$\overline B(a,d)$, integration along a segment of length $d$
+in any unit direction gives
+\[
+ \|Df(a)\|\le 2u/d+ed.
+\]
+Write $H_0=\|D^2f(0)\|$. The third derivative bound gives
+$\|D^2f(z)\|\le H_0+A\|z\|$. Apply the preceding inequality on
+balls of radius $t/4$ centred in $\overline B(0,2t)$. These balls
+lie in $\overline B(0,3t)$, and hence
+\[
+ \|Df(z)\|\le A_1:=8u/t+(H_0+3At)t/4
+ \quad(\|z\|\le2t).
+\]
+Apply the same inequality to $Df$ on the radius-$2t$ ball, using
+the third derivative bound to control the variation of $D^2f$.
+It yields $H_0\le A_1/t+2At$, and therefore
+\[
+ H_0\le \tfrac{32}{3}u/t^2+\tfrac{11}{3}At
+       \le50(u/t^2+At).
+\]
+Integration out to radius $B_0$ now gives $\|D^2f\|\le W$,
+$\|Df\|\le Y$, and $\|f\|\le u+YB_0$.
+For orders $r\ge3$, the original bound gives
+$t^r\|D^rf\|\le At^3$. Each of the bounds for orders zero, one,
+two and at least three is a summand of $H$, proving
+\eqref{eq:action-interpolation}.
+
+Apply this with $k=j+3$ and $t=h^{-1/2}$. This $t$ is the
+flat probing radius, not the larger fluctuation threshold
+$\tau=P(h)h^{-1/2}$. In a clean ball, choose one gauge from the
+base field $V(y_0)$ and keep it fixed. The small-log construction
+and the smooth local logarithm give a logarithmic variation $b(y)$,
+zero outside the required ball, with
+\[
+ b\in\mathcal B_j(F(x),1;y_0),\qquad
+ F\text{ of upper exponent }-1/2.
+\]
+For positive derivatives this follows by composing the bounded
+derivatives of the logarithm with the bond derivative scale $v$;
+for the value it is the small-log bound at the base field. Finitely
+many strict chart inequalities give a common neighbourhood on which
+exponentiating $b$ agrees with the gauge-transformed field on the
+whole read stencil. No derivative of the chosen gauge is taken.
+
+Set $B_0=F+3t$, which eventually lies in the fixed ball of
+\eqref{eq:action-fixed-ball}. Since $f(0)=0$, integration of its
+first derivative gives $\|f\|\le3At$ on the radius-$3t$ ball.
+Thus take $u=3At$ above. The upper exponents of $W,Y,H$ are,
+respectively, $1/2,0,-1/2$: each term follows from the displayed
+formulas, $B_0,t$ of upper exponent $-1/2$, and $t^{-1}$ of
+upper exponent $1/2$.
+
+The chain rule for $f(b(y),0)$ costs at most a fixed factorial
+times $H$ and a fixed-order polynomial in
+$1+2F(1+t^{-1})$. To verify this directly, in a term indexed by a
+partition into $m$ blocks, the outer derivative contributes
+$Ht^{-m}$ and each inner derivative contributes at most $2F$;
+there are at most $j!$ partitions. The displayed polynomial has
+upper exponent zero. Thus every derivative through order $j$ of
+the residual has upper exponent $-1/2$. Locality identifies this
+expression with the actual unmasked residual in the fixed gauge;
+gauge covariance restores the original field by a fixed isometry.
+
+\subsection{The source and the mean}
+The selected affine source also contains frozen cut logarithms.
+They obey the same upper exponent $-1/2$ derivative bound. For
+completeness, write such a logarithm as
+\[
+ \chi\bigl(\operatorname{chord}(U)^2/Z^2\bigr)\,
+                    \log U,
+ \qquad Z=K\tau,
+\]
+with fixed $K>0$. If the base chord is strictly larger than $2Z$,
+the function is locally zero. Otherwise normalize the matrix
+displacement by $R_GZ$. Its value is at most two and its positive
+derivatives have size bounded by constants times $v/Z$ after
+enlarging the scale. Since $Z^{-1}$ has upper exponent $1/2$,
+the derivatives of the cutoff have upper exponent zero. On the
+fixed logarithm chart, the value of $\log U$ is at most $C Z$;
+its positive derivatives are at most $C_jv$ after $v\le1$.
+The product rule proves the assertion, including the closed
+boundary $\operatorname{chord}(U)=2Z$.
+
+On a selected row, the zero-fluctuation affine source is the fixed
+row scale times the sum of the unmasked residual and the transported
+frozen logarithm. The latter transport reads only a radius-$B$
+neighbourhood and has bounded absolute row price. Its derivative
+scale is bounded by $C(B+1)v+1$, of upper exponent zero. Combining
+the preceding estimates gives
+\begin{equation}\label{eq:action-source-jets}
+ r(0)\in\mathcal B_j(F_0(x),1)
+ \quad\text{coordinatewise},\qquad F_0\text{ of upper exponent }-1/2.
+\end{equation}
+On unselected rows the function is identically zero. The selection
+is held fixed throughout this differentiation.
+
+Use the same counting-coordinate matrices $M,A,P$ as before, and
+put $\ell=M^*r(0)$ and $\nu=-P^*\ell$. Weighted row and column
+derivative bounds for $M$, together with
+\eqref{eq:action-source-jets}, show that each coordinate of $\ell$
+has derivatives of upper exponent $-1/2$. The padded inverse
+derivative bounds have upper exponent zero, so the same is true
+of $\nu$. Reassembling a colour vector costs at most its fixed
+colour dimension. On the clean selected sector $\nu$ equals the
+actual mean $\mu$, by the local clipping identity already proved.
+
+There is a stronger estimate for the normal residual. Since $A$
+is symmetric, on a neighbourhood where it is invertible,
+\begin{equation}\label{eq:action-score-small}
+ A\nu+\ell=-A(P-A^{-1})^*\ell.
+\end{equation}
+This follows by substituting $\nu=-P^*\ell$ and using
+$(A^{-1})^*=A^{-1}$. Every prescribed finite derivative of
+$P-A^{-1}$ has every prescribed negative upper exponent, by
+Section~\ref{sec:normalization-jets}. The weighted product rule
+therefore proves the same assertion for \eqref{eq:action-score-small}.
+For $0<\beta\le2h$, multiplication by $\sqrt\beta$ loses at most
+upper exponent $1/2$, so the normalized linear Gaussian score
+$-\sqrt\beta(A\nu+\ell)$ still has any prescribed upper exponent.
+This proves the score bound without replacing the local mean by
+the exact global inverse mean.
+
+\subsection{Local action derivatives with a held fine field}
+We also require a cruder bound that holds for every fixed fine
+configuration $U$. Keep $U$ and its actual predictor $Q(U)$ fixed
+while varying the coarse field. Since $v\le1$ eventually, all
+coarse matrix derivatives may be bounded with scale one.
+
+The cut curvature strokes and predictor-noise stroke have a common
+constant amplitude $C_0$ and derivative scale $D_0=C(R+1)$.
+For curvature strokes this follows by differentiating their cut
+path sums, whose absolute coefficients are bounded; the unextended
+plaquette alternative is a product of four unitary bonds. For the
+noise stroke use the product $VQ(U)^{-1}$ and the bounded curvature
+map. A transported guide adds a finite input sum and transport:
+its amplitude is at most $C(R+1)^4C_0$ and its derivative scale
+at most $D_0+C(R+1)$. A second application of the transported
+operator has the corresponding squared polynomial price.
+
+All unmasked local action terms now have upper exponent zero in
+every derivative through order $j$. Indeed they are finite sums
+of inner products of the above strokes and guides, their squared
+norms, and the plaquette discrepancy
+\[
+ \tfrac12\bigl(\operatorname{chord}(g)^2
+                                  -\|\operatorname{curv}(g)\|^2\bigr).
+\]
+An inner product multiplies amplitudes and adds derivative scales;
+this is precisely the bilinear product rule. The discrepancy has
+bounded derivatives because the chord squared is a fixed multiple
+of $\|\rho(g)-1\|^2$, and the curvature is a fixed linear
+projection of the matrix displacement. At fixed $j$, converting
+a polynomial derivative scale to scale one preserves upper
+exponent zero.
+
+The fine energy requires one separate observation: its clipped
+part need not be smooth in the fixed fine input. It is constant
+in the variable being differentiated. The chord is at most two
+and $\tau\le1$, so the direct and linear pieces of that clipped
+energy are bounded by twice their fixed coefficients. If $C_{\rm path}$
+is the fixed absolute path price, the complete fine constant is
+\[
+ F=\tfrac12(C_{\rm path}R_G^2)^2
+                   +2c_{\rm direct}+2c_{\rm linear}.
+\]
+The remaining fine terms are, for the
+two curvature components, $\|G\|^2/2-\langle G,X_f\rangle$,
+where $G$ is the varying guide and $X_f$ is fixed and bounded.
+The preceding product estimates apply. Thus no smoothness of the
+arbitrary held fine configuration is assumed.
+
+Finally consider an extracted affine square. If a varying
+fluctuation $w$ has derivatives bounded by $p(x)$ of upper
+exponent zero on the hot bonds in its read ball, then
+\[
+ r(w)=r(0)+Mw
+\]
+has coordinatewise derivatives of upper exponent zero. Rows of $M$
+vanish off the hot bonds and outside radius $B/4$, so only these
+local bounds on $w$ enter. Squaring, dividing by twice the square
+of the fixed row normalization, and summing over the at most two
+parent rows at an energy address preserves that exponent. This
+applies both to the compensated fluctuation on protected bonds
+and to the mean $\nu$.
+
+\subsection{The logarithmic packet estimate}
+Let $n$ be the number of seeds. If the product of protected masks
+is not locally zero, their closed support bounds and the compensated
+variation of Section~\ref{sec:compensated-variation} give derivatives
+of the fluctuation of upper exponent $-1/2$ on the protected
+$304B$ region. The mean has the same bound by the preceding
+argument. Thus the local action and both extracted-square costs
+just estimated are available at every address of the $200B$
+region. There are at most
+$n b_{200B+1}s_L$ such addresses in each signed channel.
+Taking the normalized signed average preserves this bound.
+
+Let $C_a,C_q,C_c,C_J\ge0$ bound respectively the derivatives of
+the unmasked action, one extracted-square cost, the Gaussian
+normalization correction and the chart correction, all at scale
+one through order $j$. Their upper exponents are zero, zero,
+zero and $-1/2$, respectively. With $\rho_L$ the fine-bond density,
+put
+\[
+ S(x)=2h\,b_{200B+1}s_L(C_a+2C_q)
+       +b_{200B+2}\rho_L C_c+b_{304B+2}\rho_L C_J.
+\]
+It has upper exponent one. The formula
+\eqref{eq:packet-log-density}, the local bounds, and the bond
+census show that its nonconstant part belongs to
+$\mathcal B_j(nS,1;y_0)$. The term $-N_A\log m_\beta$ is
+constant in this variation. Subtracting the value at $y_0$ costs
+at most a factor two, so
+\begin{equation}\label{eq:action-packet-log-jets}
+ \Phi_A-\Phi_A(y_0)\in\mathcal B_j(2nS(x),1;y_0).
+\end{equation}
+This proves the first bound in
+\eqref{eq:packet-local-jet-inputs}, with the original local
+covariance, chart and compensated fluctuation. If the protected
+mask product is locally zero, the packet derivatives vanish and
+this bound on its logarithm is not needed.

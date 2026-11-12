@@ -1,0 +1,96 @@
+% Quantitative choice of atom budgets and uniform scale thresholds.
+\section{Choosing the local paid budgets}
+\label{sec:ex-lattice-local-paid-budgets}
+
+The one-step insertion uses two kinds of local input: a finite list of
+coefficient-recovery probes, and positive budgets for the basis, regular,
+and forced atoms. The first choice is elementary once the probe list is
+finite. The eventual threshold can then be made monotone in the scale and
+uniform over all admissible adjacent levels. This section proves those two
+selection steps. The local atom estimates themselves are recorded in the
+source audit; they are the remaining inputs to the one-step recurrence of
+Section~\ref{sec:ex-lattice-trace-price-recurrence}.
+
+Fix a finite set \(\mathcal T\) of probes and nonnegative constants
+\(O,H,W,G_d,a,c\), where \(O\) is the motion-average norm factor, \(H\) the local
+readout factor, \(W\) the test factor, \(G_d\) the gauge-variation factor,
+\(a\) the block weight, and \(c\) the tail-decay factor. For each probe
+\(\tau\), let \(\pi_\tau\geq0\) be its variation price and define its
+local coefficient
+\[
+ q_\tau=4aG_d\pi_\tau+2a.
+\]
+Given a target price \(y>0\), the required atom budget inequalities are
+\begin{align}
+ q_\tau v&\leq u &&(\tau\in\mathcal T), \label{eq:ex-lattice-atom-cycle}\\
+ O\bigl(Wu+2Hav\bigr)&\leq y, \label{eq:ex-lattice-atom-regular}\\
+ 4OHav&\leq y, \label{eq:ex-lattice-atom-large}\\
+ O\bigl(Wv+2Havc\bigr)&\leq y. \label{eq:ex-lattice-atom-main}
+\end{align}
+The two outputs \(u,v\) are the probe and summability budgets. In the
+Wilson application, \(q_\tau\) bounds the local variation coefficient,
+while the other three inequalities pay respectively for regular terms,
+large-support terms, and the primary atom.
+
+\begin{lemma}[Positive local budget choice]
+\label{lem:ex-lattice-local-budget-choice}
+For every finite probe family and every \(y>0\), there are \(u,v>0\)
+satisfying \eqref{eq:ex-lattice-atom-cycle}--\eqref{eq:ex-lattice-atom-main}.
+\end{lemma}
+\begin{proof}
+Set
+\[
+ K=\sum_{\tau\in\mathcal T}q_\tau,\qquad
+ B=\max\{1,\ O[W(1+K)+2Ha],\ 4OHa,\ O[W+2Hac]\}.
+\]
+These are finite nonnegative numbers. Choose
+\[
+ v=\frac{y}{2B},\qquad u=(1+K)v.
+\]
+Both are strictly positive. Since \(q_\tau\leq K\leq1+K\),
+\(q_\tau v\leq u\). The left side of the regular-term inequality is
+\(vO[W(1+K)+2Ha]\leq vB=y/2\). The large-support and primary left
+sides are respectively \(4OHav\leq Bv=y/2\) and
+\(vO[W+2Hac]\leq Bv=y/2\). Each is therefore at most \(y\), as
+required.
+\end{proof}
+
+We next record the uniform threshold selection used to turn fixed-parameter
+estimates into a single scale profile. At a scale index \(j\), the allowed
+adjacent indices are the same-level index and its immediate predecessor;
+there are at most two. The coefficient grades to be checked form the finite
+set \(\{0,\ldots,j-1\}\). Thus only finitely many eventual requirements
+occur at each fixed \(j\).
+
+\begin{lemma}[Monotone threshold envelope]
+\label{lem:ex-lattice-monotone-threshold}
+Let \(b_j\in\mathbb R\) be any prescribed lower threshold. For each
+\(j\), let \(S_j\) be a finite set and, for each \(s\in S_j\), let
+\(E_{j,s}\in\mathbb R\) have the property that a desired conclusion
+\(\mathcal P_{j,s}(x)\) holds whenever \(x\geq E_{j,s}\). Then there is a
+nondecreasing sequence \(B_j\) such that \(B_j\geq b_j\) and, for every
+\(s\in S_j\), \(\mathcal P_{j,s}(x)\) holds whenever \(x\geq B_j\).
+\end{lemma}
+\begin{proof}
+Define
+\[
+ e_j=\max\bigl(\{b_j\}\cup\{E_{j,s}:s\in S_j\}\bigr),
+ \qquad B_j=\max_{0\leq r\leq j}e_r.
+\]
+The maxima exist because the sets are finite and nonempty after adjoining
+\(b_j\). The prefix maximum \(B_j\) is nondecreasing and dominates
+\(b_j\). If \(s\in S_j\), then \(E_{j,s}\leq e_j\leq B_j\), so every
+\(x\geq B_j\) satisfies the stipulated conclusion.
+\end{proof}
+
+Apply this lemma at each scale to the finitely many pairs consisting of an
+admissible adjacent level and a coefficient grade below that scale. The
+atom-budget lemma supplies positive budgets for each fixed pair; the
+finite-volume local estimates then supply an eventual threshold for the
+corresponding primary, regular, and forced atom conclusions. Taking the
+finite maximum and then the prefix maximum gives one monotone threshold
+profile that works simultaneously for every adjacent transition and every
+permitted coefficient grade. This is the uniformization step needed before
+the scale induction. It does not prove the local atom estimates: their
+mathematical inputs and exact source route are itemized in the accompanying
+evidence file.

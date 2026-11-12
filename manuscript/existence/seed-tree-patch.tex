@@ -1,0 +1,128 @@
+\section{A common small gauge away from very large seeds}
+\label{sec:seed-tree-patch}
+The remaining energy comparison needs a gauge in which both the fine
+and coarse fields are small near an unhit plaquette. The fine field
+is given on its actual block-tree slice: its tree bonds equal $1$.
+We use that tree, including paths crossing a periodic seam.
+
+\subsection{Comparing one fine bond with the coarse replica}
+In each block the rooted forest gives a path from a fine site to its
+block centre, of length at most $4L$. On the tree slice its transport
+is $1$, since every step is a tree bond or its inverse. For a fine
+bond $e=(x,a)$, concatenate the reverse path from $x$ to its root,
+the bond itself, and the path from $x+e_a$ to its root. This gives a
+walk $w$ between the two roots with
+\[
+ |w|\le8L+1,\qquad U_w=U_e.
+\]
+Lift this entire walk to the covering lattice starting at zero,
+with origin the first root. Its length fits in the macro radius
+$(J+7)L$ because $J\ge4$. Its endpoint $z$ lies in that macro box.
+For fine period at least $100(J+7)L$, wrapping is injective on the
+macro box. Hence $z=0$ if the two roots coincide, and $z=Le_a$ if
+the bond crosses to the next block. The latter is true even at a
+periodic seam: the periodic endpoints agree with the two stated
+cover endpoints, and injectivity identifies their lifts.
+
+Use the macro gauge $H$ of Section~\ref{sec:seed-geometry} at the
+first coarse root $i$, and write $P_i$ for its macro plaquette sum.
+If its bond sum is at most $D_0LP_i$, the chord of the transport of
+$w$ is at most its length times that bond sum. This deliberately
+allows repeated steps and gives
+\begin{equation}\label{eq:tree-fine-link}
+ r(H_0U_eH_z^{-1})\le (8L+1)D_0L P_i.
+\end{equation}
+The normalized local frames take value $1$ at their own centres.
+Thus the centre term of \eqref{eq:geometry-macro-frame} gives
+\[
+ r(H_{Ly}c_y)\le C_0L^2P_i\quad(y=0,e_a).
+\]
+Together with the gauged predictor bond bound this yields
+\[
+ r(H_0Q_{i,a}H_{Le_a}^{-1})
+       \le(2C_0L^2+C_1L^{-2})P_i.
+\]
+Indeed insert $c_0c_0^{-1}$ and $c_{e_a}c_{e_a}^{-1}$ and apply the
+triangle inequality to the two centre errors and the predictor term.
+
+The coarse replica $\overline V$ is $1$ on internal fine bonds and
+$V_{i,a}$ on crossing bonds. If $e$ is internal,
+\eqref{eq:tree-fine-link} has $z=0$ and conjugation removes $H_0$.
+If it crosses, compare the last two displayed bounds in the same
+macro gauge and then compare $Q_{i,a}$ with $V_{i,a}$. Thus, with
+\[
+ D_L=(8L+1)D_0L+2C_0L^2+C_1L^{-2},
+\]
+we obtain the shell comparison
+\begin{equation}\label{eq:tree-shell}
+ r(U_e\overline V_e^{-1})\le D_LP_i+
+ \begin{cases}
+ 0,& e\text{ internal to a block},\\
+ r(V_{i,a}Q_{i,a}^{-1}),&e\text{ crossing from }i.
+ \end{cases}
+\end{equation}
+The constant is allowed to depend on the fixed block side. The only
+frame hypothesis is the same positive-weight condition in the macro
+comparison. No replacement of the prescribed forest was made.
+
+\subsection{Constructing the gauge in an unhit neighbourhood}
+Fix an outer plaquette with anchor $o$ which is not in the hit region.
+Let $T$ be the very large threshold. Throughout distance
+$\lfloor4B/5\rfloor$ from $o$, all fine plaquette chords and all
+predictor discrepancies are at most $T$. For listed defects this
+follows from being unhit: any value above $T$ would place a very
+large seed in that neighbourhood. For unlisted defects it follows
+from the sector bounds $t/2\le T$ and $2Wt\le T$.
+
+Write $M=(J+7)L$ and $K_L=(2M+1)^4N_p$. For $B$ sufficiently large
+after fixing $L,W$, every macro box whose coarse centre lies within
+$r=\lfloor B/2\rfloor$ of $o$ is contained, in coarse parent
+distance, in the above neighbourhood. Its macro sum is at most
+$K_LT$, with lifted multiplicities included. The necessary frames
+are active there as well. By
+\eqref{eq:geometry-predictor-curvature}, every coarse plaquette with
+anchor within $r$ has chord at most
+\[
+ F_LT,\qquad F_L=4+CL^{-2}K_L.
+\]
+The allowed coarse period is at least $100(1+B)$, so the cover box
+of radius $r$ is nonwrapping. Apply the axial gauge construction
+\eqref{eq:geometry-axial} on this box. Its plaquette sum is at most
+$(2r+1)^4N_pF_LT$, so the total gauged bond sum is at most
+$16(2r+1)^5N_pF_LT$. Descend the cover gauge by the centred lift
+$y\mapsto\operatorname{lift}(y-o)$. For a bond whose anchor is
+within $\lfloor2B/5\rfloor$ of $o$, both endpoints lie in the box;
+the descended gauge therefore agrees with the cover gauge at both
+endpoints. Each such coarse bond has chord at most
+\begin{equation}\label{eq:tree-coarse-small}
+ H_L B^5T,\qquad H_L=16\,3^5N_pF_L.
+\end{equation}
+This follows by bounding one nonnegative summand by the total and
+using $2r+1\le3B$.
+
+Call the resulting coarse gauge $z$ and use $z\circ\operatorname{parent}$
+on the fine lattice. Under this block-constant gauge, the replica
+of $V$ becomes the replica of $z\cdot V$: odd $L$ ensures the
+prescribed parent changes across a positive fine bond either not at
+all or by the corresponding positive coarse step. Thus its bond
+chord is either zero or bounded by \eqref{eq:tree-coarse-small}.
+On the other hand, the chord of $U_e\overline V_e^{-1}$ is unchanged
+by the simultaneous gauge, since that product is conjugated at the
+initial endpoint. Equation \eqref{eq:tree-shell} consequently gives
+\[
+ r((z\circ\operatorname{parent})\cdot U)_e
+       \le(D_LK_L+1)T+H_LB^5T.
+\]
+With $C_L=H_L+D_LK_L+1$ and $B\ge1$, both fine and coarse fields
+therefore satisfy the common bound
+\begin{equation}\label{eq:tree-common-gauge}
+ r((z\circ\operatorname{parent})\cdot U)_e\le h(x),\qquad
+ r(z\cdot V)_b\le h(x),\qquad h(x)=C_LB^{10}T,
+\end{equation}
+on the radius-$\lfloor2B/5\rfloor$ neighbourhood of $o$.
+The fine bound uses parent distance for the anchor. All choices,
+including the gauge, refer to the same original fields, tree and
+tags. The threshold for $x$ may depend on $L,W$ and the fixed
+construction parameters, but not on the torus volume or on the
+chosen unhit plaquette. This proves the common small-gauge input
+needed for the local comparison.

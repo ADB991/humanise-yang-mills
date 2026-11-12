@@ -1,0 +1,197 @@
+\section{The weighted quadratic row estimate}
+\label{sec:ex-row-quadratic-price}
+
+The part of the one-step action quadratic in the row field has a uniform
+coefficient price. Its cost is the square of the exponentially weighted row
+budget. The proof is an exact two-index expansion followed by a summable
+Cauchy estimate; no finite-volume truncation of the row family is needed.
+
+Let $\operatorname{CTax}$ be the iterated Cauchy derivative factor defined
+in Section~\ref{sec:ex-wilson-vacuum-price}. Let $\mathcal A$ be the finite set
+of plaquette types. Write $d_{\rm col}$ for
+the number of color coordinates and $d_{\rm mat}$ for the dimension of the
+matrix representation; these constants have different roles below. For each
+$a\in\mathcal A$ and $i\in\mathbb N$, let $s_{a,i}(U;x)$ be a color vector
+obtained by evaluating one path slot at the translated anchor $x$, and let
+$\ell_{a,i}$ be that slot's length. Let $c_{a,i}\in\mathbb R$ be its row
+coefficient, and assume $\ell_{a,i}\in\mathbb N$. The color vector takes values
+in the finite-dimensional real Euclidean color space on physical fields; its
+complex extension applies the complex-linear extension of the real color
+projection to half the difference between the forward slot word and its
+reversed word. On real fields this is the original skew-color slot. The
+quadratic extension is bilinear, $\sum_c s_c s_c$, not a Hermitian norm.
+Assume the row budget
+\begin{equation}\label{eq:ex-row-budget}
+ \sum_i |c_{a,i}|e^{\sigma\ell_{a,i}}\leq C
+       \quad(a\in\mathcal A),\qquad \sigma>0.
+\end{equation}
+
+We use the following elementary path bound. For each $\sigma>0$ there are a
+common complex coordinate radius $R_{\sigma/2}>0$ and a constant $S_G$ such
+that, on the radius-$R_{\sigma/2}$ ball about the identity, every color
+component of a slot of length $\ell$ has a holomorphic extension bounded by
+$S_Ge^{(\sigma/2)\ell}$. More explicitly, if $H_a(z)$ is the matrix product along the slot walk and
+$H_a^{\mathrm{rev}}(z)$ the product along the reversed slot walk, the
+extension is
+\[
+ s_a^{\mathbb C}(z)=\Pi_{G,\mathbb C}\!\left(
+       \frac{H_a(z)-H_a^{\mathrm{rev}}(z)}{2}\right),
+\]
+where $\Pi_{G,\mathbb C}$ is the complex-linear extension of the real
+skew-color projection. On real links, the reversed full slot walk is the inverse walk; its string
+matrix is the adjoint of the forward string matrix. Their half-difference is
+skew-adjoint, and the physical color projection of this skew matrix is exactly
+the transported-curvature slot. Thus the complex extension agrees with the
+original real slot on physical fields. The two words each contain at most $2\ell$ edge
+factors. Choose the radius so that each complexified edge matrix and its
+inverse has operator norm at most $e^{\sigma/4}$; this is possible by
+continuity near the compact unitary group. Each word then has norm at most
+$e^{(\sigma/2)\ell}$. Apply the bounded complex-linear projection; its norm
+and the fixed factor from the difference are absorbed in $S_G$. This proves
+the bound uniformly in location and length.
+
+Define the quadratic row action on a torus of side $m$ by
+\[
+ Q^{(2)}_m(U)=\frac12\sum_{x\in(\mathbb Z/m\mathbb Z)^4}
+       \sum_{a\in\mathcal A}\left\|\sum_i c_{a,i}s_{a,i}(U;x)\right\|^2.
+\]
+The sum over $i$ converges absolutely on the real compact configuration
+space by \eqref{eq:ex-row-budget} and the path bound. On the common complex
+coordinate ball, the two-index expansion below also converges uniformly: its
+absolute majorant is the product of the two row sums with exponent $\sigma/2$,
+which is bounded by the assumed row budget. Thus the complexified action is
+holomorphic there before any derivatives or momentum coefficients are taken.
+
+\begin{proposition}[Uniform price of the quadratic row action]
+\label{prop:ex-row-quadratic-price}
+For each $t\in\mathbb N$, put $n=t+1$ and
+\[
+ \eta_t=\min\!\left(1,\frac{\sigma}{8n^2}\right).
+\]
+There is one coefficient picture $\mathcal Q_t$ valid at every torus side,
+holomorphic for $t$ independent complex momenta of width $\eta_t$, whose
+components are bounded by
+\[
+ \frac{|\mathcal A|d_{\rm col}}{2}C^2S_G^2
+       \frac{\operatorname{CTax}(R_{\sigma/2},n)}{n!}.
+\]
+For each ordered list of $n$ Fourier-mode variations, its coefficient is zero
+unless their total momentum vanishes; in the zero case it is the torus
+cardinality times the value of $\mathcal Q_t$ at the independent momenta.
+\end{proposition}
+
+\begin{proof}
+For each $a,i,j$, expand the squared norm into the two-slot term
+\[
+ \Gamma_{a,i,j}(U;x)=\frac12c_{a,i}c_{a,j}
+       \sum_{c=1}^{d_{\rm col}}s_{a,i,c}(U;x)s_{a,j,c}(U;x).
+\]
+It has support length at most $\ell_{a,i}+\ell_{a,j}$ and total absolute
+coefficient $d_{\rm col}|c_{a,i}c_{a,j}|/2$. Therefore its total weighted
+activity satisfies, by Tonelli and \eqref{eq:ex-row-budget},
+\[
+ \begin{aligned}
+ \sum_{a,i,j}\frac{d_{\rm col}}2|c_{a,i}c_{a,j}|
+          e^{\sigma(\ell_{a,i}+\ell_{a,j})}
+ &=\frac{d_{\rm col}}2\sum_a
+       \left(\sum_i|c_{a,i}|e^{\sigma\ell_{a,i}}\right)^2\\
+ &\leq \frac{|\mathcal A|d_{\rm col}}2C^2.
+ \end{aligned}
+\]
+
+We now estimate the coefficient of each two-slot term. On the common
+radius-$R_{\sigma/2}$ ball, the product of its two holomorphic slot extensions
+is bounded by
+$S_G^2e^{(\sigma/2)(\ell_{a,i}+\ell_{a,j})}$. The Cauchy derivative
+estimate on the nested radii
+$R_{\sigma/2}/2,\ldots,R_{\sigma/2}/2^n$ contributes
+$\operatorname{CTax}(R_{\sigma/2},n)/n!$ to the normalized order-$n$
+coefficient. Restricting a width-$\eta_t$ Fourier mode to a support of length
+$\ell$ costs at most $e^{4n\eta_t\ell}$; for $n$ inputs the total additional
+factor is at most $e^{4n^2\eta_t\ell}$. Since
+$4n^2\eta_t\leq\sigma/2$, this factor is at most $e^{(\sigma/2)\ell}$.
+Consequently the slot-extension and Fourier-mode factors together are bounded
+by $S_G^2e^{\sigma(\ell_{a,i}+\ell_{a,j})}$.
+
+The weighted activity sum just computed is thus a summable majorant for the
+series of coefficient pictures, uniformly on the smaller momentum strip.
+The Weierstrass $M$-test gives uniform convergence on compact subsets; its sum
+is holomorphic, and Cauchy's integral formula permits termwise extraction of
+each Taylor coefficient. On the real field, absolute convergence also permits
+expanding the row square and interchanging the sums, so this summed picture
+represents exactly $Q^{(2)}_m$.
+
+Finally, translating each local two-slot term over all anchors multiplies its
+Fourier coefficient by the character of the total momentum. The character sum
+on the finite torus is zero at nonzero total momentum and equals the torus
+cardinality at zero total momentum. For each pair atom, its finite support lies in a max-distance box of radius
+$d=\ell_{a,i}+\ell_{a,j}$. Compute its local symbol on the auxiliary torus
+$\Lambda_{2d+1}$; this box has no internal identifications there. Pull any
+period-$m$ field back to this auxiliary torus by
+$z(y)=z_m(\operatorname{wrap}_m(\operatorname{lift}y))$. The identity holds
+even when $m<2d+1$, so repeated links are retained. Summing the local symbols
+over atoms gives one picture independent of $m$, with the asserted volume
+factor and price.
+\end{proof}
+
+\begin{corollary}[The averaged path-kernel coefficient price]
+\label{cor:ex-row-controlled-action}
+Suppose the unaveraged path kernel has the exact decomposition
+\[
+ Q_{p,R,m}=\lambda W_m+Q^{(2)}_m,\qquad 0\leq\lambda\leq Z,
+\]
+with $Q^{(2)}_m$ as above. Then the unaveraged order-$n$ picture has width
+$\eta_t$ and price at most
+\[
+ A_{raw}=ZA_t+\frac{|\mathcal A|d_{\rm col}}{2}C^2S_G^2
+       \frac{\operatorname{CTax}(R_{\sigma/2},n)}{n!},
+       \qquad n=t+1.
+\]
+Let $\mathcal S$ be the finite signed-coordinate group and define the
+average $Q^\sharp(U)=|\mathcal S|^{-1}\sum_{s\in\mathcal S}Q_{p,R,m}(\rho_sU)$,
+where $\rho_s$ is the corresponding signed coordinate action on link
+fluctuations. For this averaged kernel, the common picture has width $\eta_t$ and price
+at most
+\[
+ A_{avg}=\operatorname{ReflectBill}(t,\eta_t)A_{raw},\qquad
+ \operatorname{ReflectBill}(t,\eta)=\exp\bigl((t+1)^2\eta\bigr).
+\]
+Both coefficient identities hold at every torus side, with the exact
+zero-total-momentum volume factor.
+\end{corollary}
+
+\begin{proof}
+The unaveraged assertion follows by adding the bare-action picture and the
+quadratic picture, after restricting the former to width $\eta_t\leq1$.
+For completeness, the signed action on a picture entry is
+\[
+ (\operatorname{rot}_s L)(x,(j_r)_{r=1}^n,p)=
+ \left(\prod_{r=1}^{n}\operatorname{reflectFee}_s
+       (\operatorname{plotted}(p,r),k_r)\right)
+ L\bigl(x,(k_r)_{r=1}^n,\operatorname{rotatePhase}_s(p)\bigr),
+ \]
+Here $n=t+1$ and $j_r\in\{0,1,2,3\}$ is the coordinate axis attached to the
+$r$th slot and $k_r=s_{\rm perm}^{-1}(j_r)$ is the corresponding input axis,
+used both in the fee and in the original picture's axis argument. Thus the
+original picture is evaluated on the tuple $(k_1,\ldots,k_n)$. Each factor $\operatorname{reflectFee}_s$ is either $1$ or minus
+the Fourier character $\exp(i\langle p,-e_{s(k_r)}\rangle)$ of one unit
+direction. On the width-$\eta_t$ strip, each independent momentum has
+imaginary coordinates bounded by $\eta_t$, and the plotted momentum
+(including the dependent $p_0=-\sum_{r=1}^t p_r$) has imaginary coordinates
+bounded by $n\eta_t$. Thus each such factor has price at most
+$e^{n\eta_t}$. The product of the $n$ factors therefore costs at most
+$e^{n^2\eta_t}$. The map $p\mapsto\operatorname{rotatePhase}_s(p)$ applies
+the signed coordinate action $s^{-1}$ independently to each independent
+momentum; the dependent momentum transforms by the same action because it is
+minus their sum. This preserves the coordinate strip and incurs no additional
+exponential price. This is precisely the picture transformation formula:
+the character factors account for the translated base point in the signed
+coordinate action, and the remaining coefficient is the original picture
+evaluated on the reindexed directions and transformed momenta. Hence each
+rotated picture has price at most
+$\operatorname{ReflectBill}(t,\eta_t)A_{raw}$. The normalized finite signed
+average preserves the same bound by the triangle inequality. Linearity of
+the coefficient identity shows that the averaged picture represents the
+averaged kernel and retains the same zero-momentum volume factor. This is the exact
+orientation-average step needed for the input kernel.
+\end{proof}

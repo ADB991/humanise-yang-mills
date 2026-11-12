@@ -1,0 +1,387 @@
+\section{Local jet extraction and exact masked splitting}
+\label{sec:local-splitting}
+A transferred local field is not yet a coefficient field. Its low-order
+jet has to be extracted, and subtracting that jet changes the support of
+its healthy-set indicator. The difference of indicators is retained as
+an explicit flagged response. We give the extraction and this exact
+splitting before applying it to the one-step integral.
+
+Fix a finite lattice, an anchor $o$, a degree $d$, and a coefficient
+frame $V_d$ for the gauge-invariant curvature-jet polynomials of weighted
+degree at most $d$. A curvature derivative of order $j$ has weight
+$j+2$. Write $\mu(v)=\sum_\alpha|v_\alpha|$, $e_0$ for the unit
+coordinate, $v^\circ=v-v_0e_0$, and $D_t$ for the diagonal map multiplying
+a coordinate with $r$ curvature factors by $t^r$.
+The budget consists of a threshold $0<t\le1$, derivative order $q\ge d$,
+spatial power $p\ge d$, positive support exponent $u$, and integer
+covering radius $B\ge1$.
+
+A regular field on a support $X$ is a measurable, gauge-invariant
+function depending only on its links, whose exponential-coordinate germ
+is $C^q$ at every configuration healthy on $X$. Its ordered left
+ derivatives exist through order $q$, including at the threshold boundary.
+Write $\|f\|_{o,X}\le c$ when $c\ge0$ and all these derivatives of
+orders at most $q$ have modulus at most $c$, for direction lists whose
+every entry satisfies
+\[
+       |A(e)|\le t(1+\operatorname{dist}(e_-,o))^p.
+\]
+In particular the zeroth-order estimate bounds $f$ on the healthy set.
+No derivatives of a healthy-set indicator occur in this definition.
+
+\subsection{Reading the unmasked jet}
+Let $H_o(J,h)$ be the local test holonomy for a curvature jet $J$,
+and write $h\cdot J$ for weighted scaling, with component
+$h^{j+2}J_j$. Its defining local identities are
+\[
+ H_o(J,0)=1,\qquad H_o(J,h)=H_o(h\cdot J,1),\qquad
+ H_o(gJ,h)=g\,H_o(J,h)\,g^{-1}.
+\]
+Here only the components of weights at most $d$ are retained on the
+right. The finite-dimensional map $Z\mapsto H_o(Z,1)$ is analytic near
+$Z=0$ in the genuine group exponential chart. These properties of the
+chosen test holonomy, and the existence of the local polynomial section
+below, are the geometric inputs used in this section.
+
+Here a support $X$ is nonwrapping at $o$ precisely when
+$10\operatorname{dist}(x,o)<n$ for every $x\in X$, where $n$ is
+the lattice side. For such a support, define $\Pi_{o,X}f$ by requiring that
+for every $J$, the functions
+\[
+       h\longmapsto f(H_o(J,h)),\qquad
+       h\longmapsto (\Pi_{o,X}f)(h\cdot J)
+\]
+have the same derivatives at zero through order $d$.
+For a wrapping support the convention is
+$\Pi_{o,X}f=f(1)\,1$.
+
+We first prove existence in the nonwrapping case. In the finite space
+of truncated jets put $F(Z)=f(H_o(Z,1))$. The identity configuration
+is healthy, and the local logarithm of $H_o(Z,1)$ is analytic and
+vanishes at zero. Thus $F$ is $C^d$ near zero. Its Taylor polynomial
+\[
+        T(Z)=\sum_{r=0}^d\frac1{r!}D^rF(0)[Z,\ldots,Z]
+\]
+is a polynomial in the real coordinates of the curvature jets.
+Delete its monomials of weighted degree greater than $d$, obtaining
+$P$. The ordinary Taylor polynomial has the same derivatives as $F$
+through order $d$. Composing with the polynomial curve $h\cdot J$
+preserves that equality: in the chain rule for a derivative of order
+$k\le d$, only derivatives of $F$ of orders at most $k$ enter.
+A deleted monomial becomes a multiple of $h^r$ with $r>d$, so contributes
+nothing through order $d$. Hence $P$ has exactly the required test jets.
+
+Gauge invariance of $f$ and covariance of $H$ give the same test jets
+for $P(gJ)$ and $P(J)$. Their difference has weighted degree at most
+$d$. For each fixed $J$, all its coefficients as a polynomial in $h$
+vanish, since its derivatives at zero vanish. Taking $h=1$ proves
+$P(gJ)=P(J)$. Thus $P$ belongs to the gauge-invariant label space.
+The same argument applied to two candidates proves uniqueness.
+Subtraction and scalar multiplication of the test identities now show
+that $\Pi_{o,X}$ is linear on regular fields with a fixed support.
+The wrapping convention has these properties as well.
+
+For later use set
+\[
+                  v(f)=D_t\operatorname{coord}(\Pi_{o,X}f).
+\]
+The uniform estimate for this map follows from a precise local bound
+on test holonomies. Namely, for every fixed $J,d$ and $r\le d$, suppose
+the logarithmic test curve $Z(h)=\log H_o(tJ,h)$ satisfies
+\begin{equation}\label{eq:local-test-log-input}
+ |Z^{(r)}(0)(e)|\le a_r(J,d)\,t
+                    (1+\operatorname{dist}(e_-,o))^{\max(r-1,0)}.
+\end{equation}
+The constants are independent of the period, anchor, support and
+threshold. We prove this estimate for the actual radial test below;
+first we explain precisely how it is used.
+
+Here is why it gives a constant $R_d\ge1$ such that
+\begin{equation}\label{eq:local-read-price}
+                         \mu(v(f))\le R_d c.
+\end{equation}
+First bound a mixed exponential-coordinate derivative of order $k$
+on directions $w_1,\ldots,w_k$ bounded by fixed multiples
+$a_1,\ldots,a_k$ of the allowed direction weight. Restrict the symmetric
+$k$th Fr\'echet derivative at zero to their span, using the map
+$Lx=\sum_i x_iw_i$ from $\mathbb R^k$. Its diagonal at $x$ is bounded
+by $(1+\sum_i|x_i|a_i)^k c$: normalize $Lx$ by this positive factor
+and use the repeated same-direction left derivative along
+$\exp(sLx)$. Such a repeated derivative equals the derivative of
+$f(\exp(sLx))$; the one-parameter group identity proves this by
+induction. Only the Fr\'echet derivative in this finite-dimensional
+chart is being treated as symmetric.
+
+Diagonal evaluations separate symmetric tensors on $\mathbb R^k$.
+A finite number of them therefore bound any fixed mixed evaluation.
+For completeness, if separating linear functionals $\ell_i$ on a
+finite-dimensional space obey $|\ell_i A|\le b_i c$, but no uniform
+norm bound follows, choose $A_n,c_n$ with
+$\|A_n\|>(n+1)c_n$. A subsequence of $A_n/\|A_n\|$ converges on the
+unit sphere. Every $\ell_i$ vanishes on its limit, a contradiction.
+Apply this argument to the symmetric tensors just described. The
+resulting mixed bound depends on $k$ and the $a_i$, not on the lattice.
+
+The finite-order chain rule for $f(\exp Z(h))$, together with
+\eqref{eq:local-test-log-input} and $p\ge d$, now bounds each fixed
+jet probe by $C_{J,k}c$. These probes, for $k\le d$, separate $V_d$:
+a weighted polynomial all of whose test derivatives vanish is zero,
+by the uniqueness argument above. Apply the same finite-dimensional
+argument to $V_d$ to obtain \eqref{eq:local-read-price}. The weights
+are exactly $D_t$, since evaluating a polynomial at $tJ$ multiplies
+a monomial with $r$ curvature factors by $t^r$.
+For a wrapping support only $f(1)$ remains, and $|f(1)|\le c$.
+
+\subsection{Uniform bounds for the logarithmic test links}
+We establish \eqref{eq:local-test-log-input} by the same rescaling
+used to construct the test. A truncated radial connection is a finite
+sum of homogeneous connection tensors $J_j$ of degree $j+1$.
+On a positive link starting at a covering-space point $x$ in direction
+$e_i$, its coefficient at test scale $h$ and amplitude $t$ is
+\[
+       \sum_{j=0}^{d-2}t h^{j+2}
+                    J_j(e_i)[x+s e_i,\ldots,x+s e_i],
+                  \qquad 0\le s\le1.
+\]
+An empty sum is allowed. The link is the endpoint of the
+right-multiplication equation $U'=UA$, $U(0)=1$, with this
+Lie-algebra-valued coefficient. The local logarithm is taken only
+near $h=0$.
+
+We need an elementary parameter regularity fact for this equation.
+On continuous matrix paths with the supremum norm define
+$T_A V(s)=\int_0^s V(r)A(r)\,dr$. Its norm is at most
+$\|A\|_\infty$. If $A$ depends linearly on a finite-dimensional
+parameter $z$, then $T_A$ is a continuous linear function of $z$.
+For $z$ near zero, $\|T_A\|<1$, and the integral equation has the
+unique solution
+\[
+                         U=(I-T_A)^{-1}1
+                           =\sum_{k=0}^\infty T_A^k1.
+\]
+The convergent operator power series makes this an analytic function
+of $z$. The given link solution satisfies the same integral equation,
+so agrees with it. Endpoint evaluation and the analytic local group
+logarithm therefore give an analytic logarithmic endpoint map $E(z)$
+near zero, with $E(0)=0$. This argument applies to the finite-dimensional
+space of all polynomial-in-$s$ connection profiles of the indicated
+degrees, not only to profiles coming from a particular link.
+
+Put $R=1+\operatorname{dist}(e_-,o)$, $r=R^{-1}$ and
+$y=r\,\operatorname{lift}(e_--o)$. The centered lift has each coordinate
+at most $R$ in modulus, so $|y|_2\le2$, while $0<r\le1$.
+Consider the polynomial profile
+\[
+       P(y,r,a,h)(s)=\sum_{j=0}^{d-2}a h^{j+2}
+                    J_j(e_i)[y+rse_i,\ldots,y+rse_i].
+\]
+For all parameters $(y,r,a)$ the profile is zero at $h=0$.
+Consequently
+\[
+       Q_k(y,r,a)=\left.\frac{d^k}{dh^k}
+                                E(P(y,r,a,h))\right|_{h=0}
+\]
+is smooth in $(y,r,a)$: near each point it is obtained by
+composing a polynomial map with the analytic germ $E$, then
+differentiating a fixed finite number of times. Also $Q_k(y,r,0)=0$.
+On the compact set $|y|_2\le2$, $0\le r,a\le1$, its derivative
+with respect to $a$ is bounded. Integrating that derivative from
+zero to $a$ gives $|Q_k(y,r,a)|\le C_{J,d,k,i}a$.
+This compactness is in the fixed profile-parameter space and has
+no dimension dependence on the lattice.
+
+Homogeneity of $J_j$ shows that the actual link at scale $hr$ and
+amplitude $t$ has profile $P(y,r,tr,h)$: both coefficients are
+$t h^{j+2}r^{j+2}J_j(e_i)[x+se_i,\ldots,x+se_i]$.
+Uniqueness of the link equation identifies their endpoints.
+Differentiating this identity at zero gives
+\[
+       r^k|Z^{(k)}(0)(e)|\le C_{J,d,k,i}tr.
+\]
+For $k\ge1$ this is precisely
+$|Z^{(k)}(0)(e)|\le C_{J,d,k,i}t R^{k-1}$.
+For $k=0$ the logarithm is zero. Taking the maximum over the four
+directions proves \eqref{eq:local-test-log-input}. The argument
+uses only derivatives at zero; it asserts no common analytic radius
+for links arbitrarily far from the anchor.
+
+\subsection{The support correction}
+Choose a linear local section of the labels, supported on a fixed
+stencil $Y$ containing $o$. Its placed field $P_t(v)$ represents
+$D_t^{-1}v$, has the prescribed jet, and satisfies
+\begin{equation}\label{eq:local-section-price}
+              \|P_t(v)\|_{o,Y}\le w\mu(v),\qquad w\ge0.
+\end{equation}
+The stencil is assumed to fit without wrapping. The section sends
+$e_0$ to the constant one. These are hypotheses about the chosen
+section; they do not follow from the abstract existence of $\Pi$.
+Let $\chi_X$ be the indicator that $X$ is healthy, and put
+\[
+       p_t(v)=v_0+\chi_Y P_t(v^\circ),\qquad Z=X\cup Y.
+\]
+Then $|p_t(v)|\le(1+w)\mu(v)$ everywhere, and
+$p_t(v)=P_t(v)$ when $Y$ is healthy. Define
+\begin{align}
+       g&=f-P_t(v(f)),\\
+       r&=\chi_X f-p_t(v(f))-\chi_Zg.
+       \label{eq:local-rebate}
+\end{align}
+These definitions give the exact, pointwise identity
+\begin{equation}\label{eq:local-atom-identity}
+                  \chi_X f=p_t(v(f))+\chi_Zg+r.
+\end{equation}
+The field $g$ is regular on $Z$. It has zero identity value and,
+when $Z$ is nonwrapping, zero test jets through order $d$.
+Indeed $Y$ is nonwrapping, so $Z$ is nonwrapping exactly when $X$
+is; subtract the two equal jets in that case. In the wrapping case
+$v(f)=f(1)e_0$, and the same subtraction gives the zero identity value.
+
+The response $r$ is measurable, gauge invariant, and determined by
+the links and final flags in $Z$. It vanishes whenever $Z$ is healthy,
+by \eqref{eq:local-atom-identity} and $p_t(v)=P_t(v)$ there.
+Put $A_d=1+(1+w)R_d$. Then
+\begin{equation}\label{eq:local-atom-cost}
+             \|g\|_{o,Z}\le A_dc,\qquad |r(U)|\le A_dc.
+\end{equation}
+The first estimate is the triangle inequality using
+\eqref{eq:local-read-price}--\eqref{eq:local-section-price}.
+For the second, $r=0$ on the healthy set of $Z$. On its complement
+$\chi_Z=0$, so
+$|r|\le|\chi_X f|+|p_t(v(f))|\le c+(1+w)R_dc$.
+This proves the global bound without differentiating any mask.
+
+\subsection{Putting the response into the existing gas}
+Let $K_j$ be the original flagged activities, with supports $P_j$
+and nonempty flag inventories $I_j\subseteq P_j$. An admissible
+finite family has disjoint supports and its inventories cover
+exactly the final flags. Let $\mathcal G(U)$ be its gas sum.
+For each response $r_i$ supported on $Z_i$ and each nonempty
+pairwise disjoint family $q$ of old activities meeting $Z_i$, assume
+a distinct available address with support and inventory
+\[
+       Z_i\cup\bigcup_{j\in q}P_j,\qquad \bigcup_{j\in q}I_j.
+\]
+The address's additional eligibility predicate must hold whenever
+its support has exactly this flag inventory. No zero value of its
+old activity is required. Insert at this address the coefficient
+\[
+       r_i(U)\prod_{j\in q}K_j(U)
+\]
+when eligible, and zero otherwise. Denote the resulting source
+array by $\mathcal K(r)$. This is a linear operation in $r$, with
+addresses fixed before their values are evaluated.
+
+Its exact marked-gas sum is
+\begin{equation}\label{eq:local-gas-recovery}
+       \mathcal G^{[1]}(\mathcal K(r))(U)
+                     =\Bigl(\sum_i r_i(U)\Bigr)\mathcal G(U).
+\end{equation}
+To prove this, take a nonzero term on the right, consisting of
+$i$ and an admissible old family $b$. Because $r_i$ vanishes on
+healthy $Z_i$, some final flag lies in $Z_i$. Exact inventory
+coverage implies that the subfamily
+$q=\{j\in b:P_j\cap Z_i\ne\varnothing\}$ is nonempty.
+Replace precisely this subfamily by the designated new address.
+Every remaining support is disjoint from the new support;
+the inventories still cover the same flags. This produces an
+admissible pointed family on the left, with identical value.
+Conversely, expand the distinguished new address into its encoded
+family $q$. The other supports are disjoint from its total support,
+so $q$ is exactly the subfamily meeting $Z_i$. This recovers $i,b$
+uniquely. Thus there is a value-preserving bijection of nonzero
+terms. Absolute summability, established next, permits reindexing.
+
+Let $C_B(X)$ be the covering number used in the local norm and set
+\[
+       m(X,a)=e^{uC_B(X)}a,\qquad
+       m_+(X,a)=e^{(u+2)C_B(X)}a.
+\]
+Suppose $|K_j|\le b_j$, $b_j\ge0$, and
+$\sum_{j:x\in P_j}m(P_j,b_j)\le v$ at every site $x$.
+For one response with $|r_i|\le a_i$, the inserted array has total
+mass at most
+\begin{equation}\label{eq:local-merge-cost}
+           m(Z_i,a_i)\bigl(e^{|Z_i|v}-1\bigr).
+\end{equation}
+Indeed the total mass of old activities meeting $Z_i$ is at most
+$|Z_i|v$, by summing their site bounds over $Z_i$.
+The mass of the union is at most the product of the masses, since
+each old support meets $Z_i$ and their covering numbers are
+subadditive along such unions. Summing products over nonempty
+finite subsets is bounded by $e^{\sum b}-1$; dropping the
+disjointness restriction only increases this nonnegative sum.
+This proves \eqref{eq:local-merge-cost}. If the sum of the right sides of \eqref{eq:local-merge-cost}
+over $i$ is finite, summing these bounds proves absolute domination
+of the inserted array and hence of its pointed gas series.
+The reserved-mass hypothesis below will establish this finiteness. The old gas series is absolutely convergent
+under the same site bound on the finite lattice. This justifies
+\eqref{eq:local-gas-recovery}.
+
+\subsection{The two-unit reserve in the support exponent}
+Let $T$ bound $C_B(Y)$ and put $h_B=(2B+1)^4$.
+The elementary covering estimates used here are
+\[
+ C_B(X\cup Y)\le C_B(X)+T\quad(o\in X\cap Y),
+       \qquad |X|\le h_B C_B(X).
+\]
+Set $F_d=e^{(u+2)T}A_d$. Then
+\begin{equation}\label{eq:local-join-price}
+               m_+(X\cup Y,A_dc)\le F_d m_+(X,c).
+\end{equation}
+This follows immediately by inserting the first covering inequality
+in the exponential. If $h_Bv\le1$, then for $a\ge0$,
+\begin{equation}\label{eq:local-meeting-reserve}
+       m(X,a)(e^{|X|v}-1)\le h_Bv\,m_+(X,a).
+\end{equation}
+For $D=C_B(X)$, put $q_0=h_Bv$. We have $|X|v\le Dq_0\le D$.
+Using $e^x-1\le xe^x$ for $x\ge0$ and $D\le e^D$ gives
+$e^{|X|v}-1\le q_0De^D\le q_0e^{2D}$, as required.
+
+Consider now a raw expansion with seed $v_0$, regular fields $f_i$
+on anchored supports $X_i$, and an existing forced source $k$.
+Suppose $\|f_i\|_{o,X_i}\le c_i$ and
+\[
+       \sum_i m_+(X_i,c_i)\le a,\qquad
+                      \operatorname{mass}(k)\le\kappa b,
+       \qquad \kappa=\sqrt v>0,\quad h_B\kappa\le1.
+\]
+All constants $a,b$ are nonnegative. Form $v_i=v(f_i)$,
+$g_i,r_i$ as above, and define the coefficient field by
+\begin{equation}\label{eq:local-built-field}
+       v=v_0+\sum_i v_i,\qquad
+       \text{regular terms }g_i\text{ on }X_i\cup Y,\qquad
+       \text{forced array }k+\mathcal K(r).
+\end{equation}
+The coordinate sum converges absolutely by
+\eqref{eq:local-read-price} and $\sum_i c_i\le a$.
+Its change is bounded by $R_da$. The regular remainder mass is at
+most $F_da$. Furthermore $h_Bv=h_B\kappa^2\le\kappa\le1$,
+so \eqref{eq:local-meeting-reserve} and
+\eqref{eq:local-join-price} bound the added forced mass by
+$\kappa F_da$. Thus the normalized total remainder bound is
+\begin{equation}\label{eq:local-built-cost}
+                              2F_da+b.
+\end{equation}
+The original density is preserved exactly: sum
+\eqref{eq:local-atom-identity}, use linearity of $p_t$, and then
+\eqref{eq:local-gas-recovery} for the response terms. Multiplication
+by the common vacuum exponential preserves this identity.
+Every sum is absolutely dominated by the bounds just proved.
+In particular this construction uses the original vacuum activities
+and the original threshold predicates throughout.
+
+Finally, collect the responses with the same support:
+$\psi(Z)=\sum_{i:X_i\cup Y=Z}r_i$. Their majorants obey
+\[
+       \sum_Z m_+\left(Z,\sum_{i:X_i\cup Y=Z}A_dc_i\right)
+                                    \le F_da.
+\]
+Consequently $\psi$ is an anchored, gauge-invariant response vanishing
+on healthy supports, with the stated reserved mass. Its insertion
+profile is exactly the profile of $\mathcal K(r)$: grouping the
+absolutely convergent terms by their encoded support and inventory
+proves the equality. These are the response and profile identities
+needed by the marked transport of Section~\ref{sec:local-transfer}.
+The raw expansion and its bounds still have to be produced by the
+one-step integral; this section proves the projection, mask correction,
+and cost conversion once that expansion is given.

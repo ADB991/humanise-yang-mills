@@ -1,0 +1,225 @@
+\section{Uniform inverse bounds for the stationary matrices}
+\label{sec:ex-weighted-stationary-inverses}
+
+We use the block Fourier norm of
+Section~\ref{sec:ex-weighted-frame-penalty}. Its weight at alias $l$ is
+$h_l(p)=(|q(\operatorname{Re}k_l(p))|^2+\mu^2)^{1/2}$.
+The internal space is the direct sum of the fine one-form space in this
+norm and the coarse scalar space in its Euclidean norm. We denote it by
+$W_p$. The dual always pairs opposite momenta. The weights are not
+holomorphic functions of $p$, so a complex inverse estimate requires
+more than a direct application of Cauchy's inequality to a weighted
+matrix.
+
+\subsection{Continuing a real lower bound to a complex strip}
+Use the maximum norm on the four momentum coordinates throughout.
+Let $X_p,Y_p$ be two weighted norms, represented by invertible matrices
+$S_X(p),S_Y(p)$: $\|u\|_{X_p}=|S_X(p)^{-1}u|_2$.
+Suppose that, at each real momentum $x$, these matrices admit holomorphic
+replacements on the ball $|z-x|<\sigma$. The replacements agree with
+the actual matrices on the vertical slice $\operatorname{Re}z=x$ and
+compare to the actual weighted norms in both directions by a fixed
+factor $H$, and first restrict $0<\sigma\leq1$. Let $K$ be periodic and holomorphic, with weighted operator
+bound $A$ on the strip of width $\sigma$, and suppose its weighted real
+matrix has least singular value at least $a>0$.
+Then there are $\eta>0$ and $F<\infty$, depending on $\sigma,H,A,a$
+only, such that $K^{-1}:X_p\to Y_p$ has norm at most $F$ for
+$p$ in the strip of width $\eta$.
+
+Here is a quantitative proof. At a real anchor $x$, transform $K(z)$
+using the holomorphic replacement matrices. The resulting matrix $Q_x(z)$
+is holomorphic and has Euclidean operator norm at most $H^2A$ on the
+ball of radius $\sigma$. Cauchy's estimate on complex lines, tested
+against unit vectors on both sides, gives
+\[
+       \|Q_x(p)-Q_x(x)\|\leq k|p-x|,
+             \qquad k=\frac{H^2A}{\sigma/2},
+             \quad |p-x|<\sigma/2.
+\]
+Choose $\eta=\min\{\sigma/2,a/(2(1+k))\}$. For
+$x=\operatorname{Re}p$, the actual and replacement norms coincide, and
+\[
+       |Q_x(p)v|\geq(a-k|p-x|)|v|\geq(a/2)|v|.
+\]
+Thus $Q_x(p)$ is invertible and its inverse has norm at most $2/a$.
+The same is true of the weighted inverse of $K(p)$. Holomorphy of the
+inverse follows from the adjugate formula; periodicity follows from
+uniqueness of the inverse. No dimension enters this argument.
+
+For the block Fourier weights the required replacement is explicit:
+freeze $h_l$ at the real anchor $x$, while retaining the holomorphic
+Fourier matrix $P(z)$. The inequality
+\[
+                    h_l(z)\leq6h_l(x),\qquad h_l(x)\leq6h_l(z)
+                    \quad(|z-x|\leq1)
+\]
+follows from $h_l\geq\mu$, the triangle inequality and the Lipschitz
+bound $|q(\operatorname{Re}k_l(z))-q(k_l(x))|\leq4\mu|z-x|$.
+The Fourier matrices cancel in the comparison of the two norms; the
+remaining matrix is diagonal with these ratios. Hence $H=6$ works,
+uniformly in $L$. Direct sums with the ordinary scalar norm and dual
+norms have the same property.
+
+\subsection{The scalar and gauge-completed fine matrices}
+Put $\omega(k)=\sum_a q_a(-k)q_a(k)$ and define
+\[
+ s_\mu(k)=\omega(k)+\mu^2,
+ \quad d_\mu(k)=\frac{\mu^2}{s_\mu(k)},\quad
+ c_\mu(k)=\mu^2d_\mu(k)^9,\quad
+ \gamma_\mu(k)=\omega(k)+c_\mu(k).
+\]
+At real $k$, $\omega(k)=|q(k)|^2$. The sign convention in this display
+uses $q_a(-k)q_a(k)=|q_a(k)|^2$ on the real slice.
+For $x\geq0$,
+\begin{equation}\label{eq:ex-scalar-weight-floor}
+ x+\mu^2\left(\frac{\mu^2}{x+\mu^2}\right)^9
+                   \geq2^{-10}(x+\mu^2).
+\end{equation}
+If $x\geq\mu^2$, its first term alone suffices. If $x<\mu^2$,
+the ratio is greater than $1/2$, so the second term is at least
+$2^{-9}\mu^2\geq2^{-10}(x+\mu^2)$.
+On the alias strip $|\operatorname{Im}k|_\infty<\mu/128$,
+comparison with the real symbol gives
+$|s_\mu(k)|\geq\tfrac12(|q(\operatorname{Re}k)|^2+\mu^2)$.
+Indeed the change of $q$ has norm at most $4\mu/128$ and the change
+of its quadratic product is bounded by twice this times the real norm
+plus its square; $2ab\leq a^2+b^2$ absorbs this into less than half
+the real denominator. In particular all displayed rational symbols are
+holomorphic there, $|d_\mu|\leq2$, and
+$|c_\mu|\leq2^9\mu^2$.
+
+Let $H(k)$ be the fine two-form metric, bounded by $\Theta$ on the
+required strip, and suppose its real kinetic form satisfies the
+all-period lower bound $\varepsilon|d_1(k)v|^2$.
+Write $K_f=d_1(-k)^TH(k)d_1(k)$ and $d_0(k)v=q(k)\wedge v$.
+The scalar matrix $s_\mu I$ and the scalar matrix $\gamma_\mu I$
+have weighted real floors $1$ and $2^{-10}$. The gauge-completed
+one-form matrix
+\[
+       D_\mu(k)=K_f(k)+d_0(k)d_0(-k)^T+c_\mu(k)I
+\]
+has weighted floor $2^{-10}\min\{\varepsilon,1\}$.
+This follows from
+\[
+       |d_1v|^2+|d_0^*v|^2=|q|^2|v|^2
+\]
+and \eqref{eq:ex-scalar-weight-floor}. The exterior identity is obtained
+by expanding the wedge and contraction in the coordinate basis.
+The all-period kinetic bound applies at every real momentum by density
+of finite-torus frequencies and continuity.
+
+For these scalar and fine symbols restrict further to $\sigma\leq1/128$.
+Their complex weighted upper bounds are also uniform. Each exterior
+matrix costs at most a fixed color-direction constant times $|q|$,
+$|q(k_l)|\leq5h_l$, and $|c_\mu(k_l)|\leq2^9h_l^2$.
+Thus division by $h_l$ at both ends leaves a fixed bound depending only
+on $G,\Theta$. The block Fourier conjugations cancel between opposite
+momenta, leaving a unitary alias permutation and these diagonal weights.
+The preceding continuation argument gives inverse bounds for all three
+matrices on one coarse strip, before $L$ and before any higher-order
+interaction budget are chosen.
+
+\subsection{A real lower bound modulo gauge directions}
+Let $Q(p)$ be the linear block mean on one-forms and $J(p)$ its scalar
+counterpart, so $Qd_0=d_{0,c}J$. Set
+\[
+ \mathcal R a=(-d_0a,-Ja),\qquad
+ N(u,r)=d_{0,c}r-Qu,
+ \qquad \mathcal G(u,r)=\langle u,K_fu\rangle+\kappa|N(u,r)|^2,
+\]
+where $\kappa>0$ and all operators are expressed in the same block
+Fourier coordinates. The curl and $N$ annihilate $\mathcal R a$, so
+$\mathcal G$ is unchanged when a gauge vector is subtracted.
+We claim that, for some $a_0>0$ depending only on
+$G,J,\kappa,\varepsilon$,
+\begin{equation}\label{eq:ex-quotient-floor}
+        \text{for every }v\text{ there is }a\text{ such that }
+        a_0\|v-\mathcal R a\|_{W_p}^2\leq\mathcal G(v).
+\end{equation}
+
+Choose the real coarse momentum in $[-\pi,\pi]^4$. For every nonzero
+alias, $|q(k_l)|\geq2\mu$. Subtract its longitudinal component by
+solving $d_0(k_l)^*(u_l+d_0(k_l)a_l)=0$; the scalar denominator is
+$|q(k_l)|^2>0$. The principal alias is left available to eliminate the
+coarse scalar coordinate. In normalized Fourier coordinates the scalar
+block mean on that alias is $\mu^2\operatorname{rollMean}(k_0)$,
+which is nonzero. No uniform bound on the eliminating gauge parameter
+is needed. Here $\operatorname{rollMean}$ is the product
+of the four normalized half-block geometric sums, raised to power $J$.
+For $|k_a|\leq\pi/L$, each sum has modulus at least $1/16$;
+this follows from the geometric-sum formula and
+$\sin t\geq2t/\pi$ for $0\leq t\leq\pi/2$, with the value at zero
+understood by continuity. Thus $|\operatorname{rollMean}|\geq c_J=(1/16)^{4J}$. We obtain a representative $(P(p)b,0)$ with all
+nonprincipal $b_l$ transverse.
+
+Put $A_h=\sum_{l\ne0}h_l^2|b_l|^2$ and
+$B_0=|QP(p)b|^2$. The kinetic bound and transversality give
+\[
+             \mathcal G(v)\geq(\varepsilon/2)A_h+\kappa B_0.
+\]
+The principal part of $QP(p)$ has smallest singular value at least
+$(c_J/16)\mu$: the straight connector contributes a geometric sum of
+size at least $L/16$, and $P$ contributes $\mu^2$.
+The full block mean has weighted norm at most a constant $C_J$.
+To verify this upper bound directly, each fixed-position read has
+coefficients bounded by $C_J\mu^4$ on $O_J(L^4)$ sites, hence Euclidean
+row norm at most $C'_J\mu^2$; sum the $L$ positions and use
+$h_l\geq\mu$. The same argument gives the scalar averaging norm
+$\|J\|\leq C'_J\mu^2$.
+Separating the principal and nonprincipal aliases and squaring the
+triangle inequality now gives
+\[
+ ((c_J/16)\mu|b_0|)^2\leq2B_0+2C_J^2A_h.
+\]
+Finally $h_0^2\leq((2\pi)^2+1)\mu^2$. It follows that
+$\|(P b,0)\|_{W_p}^2=A_h+h_0^2|b_0|^2$ is bounded by a fixed
+multiple of $(\varepsilon/2)A_h+\kappa B_0$, proving
+\eqref{eq:ex-quotient-floor}. This proof includes $p=0$.
+
+\subsection{Adding the gauge-fixing square}
+Let $F$ be the actual linear gauge-fixing map, periodic and holomorphic
+on the chosen strip, and satisfying $F(-p)^T=F(p)^*$ on real momenta.
+Its required identities
+and estimate are
+\begin{equation}\label{eq:ex-gauge-fixing-receipt}
+       F\mathcal R=\Gamma_\mu,
+       \qquad |Fv|\leq D\|v\|_{W_p},
+\end{equation}
+where the bound holds throughout that complex strip, and $\Gamma_\mu$
+is the block scalar operator with symbol $\gamma_\mu$. These are exact same-frame identities; they remain
+inputs to this subsection until the gauge-fixing construction is
+identified with these symbols.
+The bound on $J$, the definition of $\mathcal R$ and
+\eqref{eq:ex-scalar-weight-floor} give
+\[
+       \|\mathcal R a\|_{W_p}\leq C\,|\Gamma_\mu a|
+                                 =C|F\mathcal R a|,
+\]
+with $C$ independent of $L$. For the fine component this is the
+pointwise inequality $h_l|q_l|\leq h_l^2\leq2^{10}\gamma_\mu(k_l)$;
+for the coarse component use $\mu^2\leq h_l^2$ and the scalar mean
+bound above.
+Given $v$, take $a$ from \eqref{eq:ex-quotient-floor} and put
+$b=\|v-\mathcal R a\|_{W_p}$, $c=|Fv|$. Then
+\[
+       \|v\|_{W_p}\leq Cc+(CD+1)b,
+       \qquad a_0b^2+c^2\leq\mathcal G(v)+|Fv|^2.
+\]
+Squaring the first inequality proves a uniform positive lower bound
+for the full quadratic form $\mathcal G+F^*F$; for example its inverse
+floor can be taken as
+$\max\{2C^2,2(CD+1)^2/a_0\}$.
+On the complex strip its weighted upper bound is the sum of the
+kinetic bound, $\kappa$ times the square of the bound for $N$, and $D^2$.
+The holomorphic opposite-momentum transpose replaces $F^*$ off the real
+slice. The continuation lemma therefore gives a common inverse width
+and cost for this actual stationary fluctuation matrix.
+
+Once the common matrix is identified on the Fourier grids of an
+unbounded family of tori, the identification extends to the entire
+real slice by density, and then to the strip by analytic uniqueness.
+Consequently any two stationary matrix presentations representing that
+same family inherit this one inverse estimate. This last statement does
+not identify arbitrary independently chosen matrices: the all-period
+representation and the exact identities
+\eqref{eq:ex-gauge-fixing-receipt} must refer to the same construction.

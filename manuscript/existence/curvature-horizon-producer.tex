@@ -1,0 +1,264 @@
+\section{The curvature factor and the retained horizon}
+\label{sec:curvature-horizon-producer}
+The positive beds of Section~\ref{sec:positive-row-producer} must
+be joined by one common family of transports. The remaining issue
+is the positivity of the curvature defect. The construction first
+writes that defect as a double exterior derivative, then adds a
+fixed positive amendment before taking its square root.
+
+\subsection{An exponentially summable exterior lift}
+We give the row-level lifting argument, because a cycle on a
+single finite torus would not suffice. Write
+$q_a(p)=e^{ip_a}-1$ and $d_r(p)=q(p)\wedge\cdot$ on $r$-forms.
+Let $A(p)$ be the symbol of an exponentially summable row from
+$(r+1)$-forms to a fixed coordinate space, where $r+1>0$, and
+suppose $A(p)d_r(p)=0$ for every real $p$.
+
+For one coordinate $a$, let $A_0(p)=A(p_1,\ldots,0,\ldots,p_4)$.
+The difference $A-A_0$ is divisible by $q_a$ as a Laurent row.
+To see this coefficientwise, replace each monomial in that
+coordinate by
+\[
+ \frac{e^{inp_a}-1}{e^{ip_a}-1}
+ =\begin{cases}
+   \sum_{h=0}^{n-1}e^{ihp_a},& n>0,\\
+   0,&n=0,\\
+   -\sum_{h=n}^{-1}e^{ihp_a},&n<0.
+  \end{cases}
+\]
+These are finite identities, including at $p_a=0$ by continuity.
+If the original row has weighted norm at width $\eta$, the
+quotient has weighted norm at width $\eta/2$ bounded by
+$2/\eta$ times the original one. Each monomial produces $|n|$
+terms of no greater absolute displacement, and
+\[
+       |n|e^{(\eta/2)|z|_1}
+                  \le (2/\eta)e^{\eta|z|_1}
+                   \quad(|n|\le|z|_1).
+\]
+This proves both convergence and the claimed bound.
+
+Let $E_a$ denote exterior multiplication by the $a$th basis
+vector, and $\iota_a=E_a^{\mathsf T}$ the corresponding
+contraction. The exterior identity
+$d_r\iota_a+\iota_a d_{r+1}=q_a I$ follows on every coordinate
+face by distinguishing whether that face contains $a$; the two
+possible orders of adjoining another coordinate have opposite
+signs. Set
+\[
+       R_a=\frac{A-A_0}{q_a}\,\iota_a,
+       \qquad S_a=A_0(I-E_a\iota_a).
+\]
+Then
+\begin{equation}\label{eq:curvature-axis-lift}
+                            R_a d_{r+1}+S_a=A.
+\end{equation}
+For $q_a\ne0$, multiply this identity by $q_a$ and use
+$Ad_r=0$ and $A_0d_r=q_aA_0E_a$; the latter follows from
+the cycle identity at $p_a=0$. This proves it there, and
+continuity proves it also at $q_a=0$. Multiplication on the
+right by $d_r$ shows that $S_a$ remains a cycle.
+The row $S_a$ has zero columns on faces containing $a$, and
+on the other columns it simply evaluates $p_a$ at zero.
+
+Apply this operation successively in the four coordinate
+directions. Previously vanished columns remain zero. Every
+positive-degree face contains some coordinate, so the final
+residual is zero. Summing the four successive $R_a$ gives a
+row $\mathcal L(A)$ with
+\[
+                         \mathcal L(A)d_{r+1}=A.
+\]
+There are only four operations. The width is reduced a fixed
+number of times and the cost is multiplied by a fixed constant;
+any scalar scale factor in the initial bound is retained.
+Transposition gives the left-handed lift. All these identities
+hold on every finite period by Fourier diagonalization.
+Conversely, an exponentially summable row identity valid on all
+finite periods holds for all real symbols: the finite Fourier
+frequencies are dense and the symbols are continuous.
+
+We shall also need a two-sided version. Suppose a two-form row
+$E$ satisfies $Ed_1=0$ and $d_1^{\mathsf T}E=0$ on every
+period. Let $W$ be a left lift, so $d_2^{\mathsf T}W=E$,
+and put $V=Wd_1$. Then $d_2^{\mathsf T}V=0$. Lift once more
+on the left to obtain $T$ with $d_3^{\mathsf T}T=V$.
+The row $Td_0$ is annihilated on the left by $d_3^{\mathsf T}$.
+A further left lift would take values in five-forms, whose
+coordinate space is zero in dimension four. Hence $Td_0=0$.
+The right lift therefore gives $X d_1=T$. Consequently
+\[
+       W'=W-d_3^{\mathsf T}X
+       \quad\hbox{satisfies}\quad
+       W'd_1=0,\qquad d_2^{\mathsf T}W'=E.
+\]
+A final right lift $C$ with $Cd_2=W'$ gives
+\begin{equation}\label{eq:curvature-double-lift}
+                         d_2^{\mathsf T}Cd_2=E.
+\end{equation}
+If $E$ is symmetric, replace $C$ by
+$(C+C^{\mathsf T})/2$. The identity and exponential row bounds
+are preserved, and the new $C$ is symmetric.
+
+\subsection{The unamended defect and its scale factor}
+For one flight let $H_c,B_c$ and $H_f,B_f$ be the reciprocal
+pulse and dual-pulse rows on the coarse and fine lattices.
+Let $T$ be its two-form transport and $A_0$ its one-form
+transport. The conditional mean is denoted by $Q$. The exact
+unamended transport identities are
+\begin{equation}\label{eq:curvature-tangent}
+ T^{\mathsf T}d_{1,f}=d_{1,c}Q,\qquad
+ TH_cd_{1,c}=H_fd_{1,f}A_0,\qquad
+ QA_0=I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}.
+\end{equation}
+These identities were proved for the original kernel in
+Section~\ref{sec:kernel-transport-identities};
+the amendment does not alter them on exact forms, by
+\eqref{eq:positive-amendment-intertwine} and $Gd_1=Hd_1$.
+Define
+\[
+ Z_0=B_c-T^{\mathsf T}B_fT-k^{-1}d_{1,c}d_{1,c}^{\mathsf T},
+                        \qquad E=H_c Z_0 H_c.
+\]
+The matrices are symmetric. Moreover
+\[
+ T^{\mathsf T}B_fT H_cd_{1,c}
+       =T^{\mathsf T}d_{1,f}A_0
+       =d_{1,c}\bigl(I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}\bigr).
+\]
+Substituting this in $Z_0H_cd_{1,c}$ gives zero. Thus
+$Ed_{1,c}=0$, and symmetry gives the left cycle identity.
+The two-sided lift yields a symmetric row $C$ such that
+\begin{equation}\label{eq:curvature-unamended-factor}
+ Z_0=(d_{2,c}B_c)^{\mathsf T}C(d_{2,c}B_c).
+\end{equation}
+Indeed multiply \eqref{eq:curvature-double-lift} by $B_c$ on
+both sides and use $B_cH_c=H_cB_c=I$.
+
+We check uniformity in the block side $L$. The dual transport
+and the row $B_fT$ have entrywise strip cost $O(L^{-2})$,
+including their required cover differences, by the wire estimates
+of Sections~\ref{sec:ex-lattice-free-kernel-estimates} and
+\ref{sec:ex-lattice-free-kernel-components}. The Gram product
+$T^{\mathsf T}B_fT$ sums over $L^4$ fine residues and a fixed
+number of form labels. Its entrywise cost is consequently
+$O(L^4 L^{-2}L^{-2})=O(1)$. The other rows in $E$ have uniform
+costs. All lifts use fixed exterior index sets on the coarse
+side, so the resulting cost of $C$ is uniform in $L$ too.
+
+There is a second lift with a stronger scale gain. Put
+\[
+                         Y=d_{2,f}B_fTH_c.
+\]
+The second identity in \eqref{eq:curvature-tangent} gives
+$Yd_{1,c}=d_{2,f}d_{1,f}A_0=0$. Its right lift is a row $S$
+with $Sd_{2,c}=Y$. One fine exterior difference is a signed
+sum of at most four cover differences of $B_fT$; the first
+difference estimate supplies one additional $L^{-1}$.
+Thus each entry of $Y$, and then of $S$, has strip cost
+$O(L^{-3})$. Multiplying the lift identity by $B_c$ gives
+\begin{equation}\label{eq:curvature-charge-lift}
+                     S d_{2,c}B_c=d_{2,f}B_fT.
+\end{equation}
+The row $S^{\mathsf T}S$ now has cost $O(L^{-2})$:
+its summation has $L^4$ residues, while both factors cost
+$L^{-3}$. Retaining this count is essential.
+
+\subsection{Making the curvature row positive}
+Choose amendment coefficients $m,l\ge0$ for the fine and
+coarse beds. With $D_c=(I+l d_{2,c}B_cd_{2,c}^{\mathsf T})^{-1}$,
+set
+\[
+                R_0=C+lI-mS^{\mathsf T}S,
+                       \qquad R=D_c^{\mathsf T}R_0D_c.
+\]
+The uniform bounds just proved give constants $C_0,C_1>0$,
+independent of the train and $L$, with
+\[
+ |\langle u,Cu\rangle|\le C_0\|u\|^2,
+ \qquad
+ \langle u,S^{\mathsf T}Su\rangle
+                                 \le C_1L^{-2}\|u\|^2.
+\]
+Choose $l\ge C_0+2$ and $L^2\ge mC_1$. Then
+\[
+                         \langle u,R_0u\rangle\ge\|u\|^2.
+\]
+This is positivity on the entire three-form space. No projection
+onto a momentum-dependent range is needed. The row
+$D_c^{-1}=I+l d_{2,c}B_cd_{2,c}^{\mathsf T}$ has uniformly
+bounded operator norm, say at most $K$. Therefore
+\[
+           \langle u,Ru\rangle\ge\|D_cu\|^2
+                                      \ge K^{-2}\|u\|^2.
+\]
+The products defining $R$ have a uniform exponential row bound.
+Section~\ref{sec:positive-row-producer} supplies its positive
+square-root row $P$, uniformly over all flights of these stages.
+
+It remains to identify this factor with the actual amended
+curvature defect. Write
+\[
+ A_c=B_c+l(d_{2,c}B_c)^{\mathsf T}(d_{2,c}B_c),\qquad
+ A_f=B_f+m(d_{2,f}B_f)^{\mathsf T}(d_{2,f}B_f),
+ \qquad G_c=A_c^{-1}.
+\]
+Equations~\eqref{eq:curvature-unamended-factor} and
+\eqref{eq:curvature-charge-lift}, followed by expansion, give
+\[
+ A_c-T^{\mathsf T}A_fT-k^{-1}d_{1,c}d_{1,c}^{\mathsf T}
+           =(d_{2,c}B_c)^{\mathsf T}R_0(d_{2,c}B_c).
+\]
+Using $(d_{2,c}B_c)G_c=D_cd_{2,c}$ from
+\eqref{eq:positive-amendment-intertwine}, multiply by $G_c$
+on both sides to obtain
+\begin{equation}\label{eq:curvature-paid-factor}
+ G_c\bigl(A_c-T^{\mathsf T}A_fT
+               -k^{-1}d_{1,c}d_{1,c}^{\mathsf T}\bigr)G_c
+                         =d_{2,c}^{\mathsf T}P^{\mathsf T}P d_{2,c}.
+\end{equation}
+This is precisely the curvature factorization in
+Section~\ref{sec:ex-lattice-rg-horizon-geometry}, with the actual
+amended beds. All formulas hold on every finite period, since
+they were constructed from the same Laurent rows.
+
+\subsection{Choosing the prices before the scale sequence}
+For each adjacent pair of stages $j,t$, where $t=j$ or $t=j-1$,
+let $a_{j,t}>0$ be the lower requirement on the coarse amendment
+coefficient just obtained. Select
+\[
+                         l_i=\max(a_{i,i},a_{i+1,i}).
+\]
+Then every permitted transition has $l_t\ge a_{j,t}$ and
+$l_j\ge0$. Its required block-size floor is finite because the
+fine amendment $m=l_j$ is now fixed. Combine the two permitted
+flight floors at stage $j$ by their maximum. Combine bed and
+flight strip widths and positive lower bounds by minima, and
+upper bounds by maxima. All widths and lower bounds stay positive,
+since each combination is finite.
+
+Choose the stage's direct precision below its positive bed
+ceiling. Choose its block length above the flight floor. These
+are requirements on the original stage profiles and pre-length
+floors; they are imposed before the common schedule of
+Section~\ref{sec:common-scale-selection}. They hold for both
+within-stage steps and a change to the next stage, however many
+times either occurs.
+
+At a terminal cutoff $N$, start with the top train and descend
+along those very block lengths. At each level use its positive
+bed from Section~\ref{sec:positive-row-producer}; at each step
+use \eqref{eq:curvature-paid-factor} and the exact block completion
+of Section~\ref{sec:ex-lattice-rg-horizon-geometry}. The latter's
+strip calculation supplies the prescribed iterated difference bounds
+for its unchanged $A_0,T$ rows and the displayed strip bounds for
+its remaining blocks. This changes neither the bed rows nor the
+original one-form and two-form transports $A_0,T$. It only
+constructs the remaining three blocks from their common positive
+curvature factor. Taking finite minima and maxima of the quoted
+prices gives a single family of bounds valid for every $N$, every
+intermediate level and every finite period. This proves the bed
+and curvature suppliers used by the horizon construction, using
+the original pulse transport identities proved in
+\eqref{eq:transport-installed-identities}. The attachment and bounds of the
+nonlinear path remain the separate construction step.

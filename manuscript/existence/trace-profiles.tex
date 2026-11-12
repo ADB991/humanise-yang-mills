@@ -1,0 +1,237 @@
+\section{Excluding finite mass-shell profiles}
+\label{sec:trace-profiles}
+The centered trace has a short-distance behavior that can distinguish it from
+finite polynomial expressions in free fields. The relevant distinction is the
+negative power of the logarithm. We prove the exclusion directly for the
+mass-shell profiles appearing in the statement. The proof proceeds through
+finite power--logarithm approximations to Laplace integrals; it does not
+assume a convergent asymptotic series.
+
+\subsection{An algebra of finite asymptotic approximations}
+Let $\mathcal P$ be the real vector space of finite sums of the functions
+$s^a(\log s)^k$, where $a\in\mathbb Z$, $k\in\mathbb N$ and $s>0$.
+It is an algebra containing the constants. Say that $f$ has an approximation
+of order $b\in\mathbb Z$ if
+\[
+ f(s)=P(s)+O(s^b)\quad(s\downarrow0),\qquad P\in\mathcal P.
+\]
+Say that $f$ has power--logarithm approximations if it has an approximation
+of every integer order. Different orders may use different finite sums.
+An approximation of order $b$ is also one of any order $a\leq b$, since
+$s^b\leq s^a$ for $0<s<1$.
+
+\begin{lemma}\label{lem:profile-algebra}
+Functions with power--logarithm approximations form a real algebra. Every
+such function, and every element of $\mathcal P$, is $O(s^u)$ for some
+integer $u$. Multiplication by $s^a$ shifts the order of an approximation
+by $a$.
+\end{lemma}
+\begin{proof}
+For $0<s<1$, $|\log s|\leq s^{-1}$. Thus each monomial is bounded by
+$s^{a-k}$, and a finite sum is $O(s^u)$ for the smallest of the finitely
+many exponents $a-k$. An order-zero approximation then gives the growth
+claim for $f$, after replacing $u$ by $\min(u,0)$. The assertions about
+addition, real scalar multiplication, and shifts are immediate from the
+definition and closure of $\mathcal P$ under these operations.
+
+For multiplication fix a desired order $b$. Choose $\ell$ with
+$g=O(s^\ell)$ and an approximation $f=P+O(s^{b-\ell})$. Choose $u$ with
+$P=O(s^u)$ and then $g=Q+O(s^{b-u})$. The exact identity
+\[
+ fg-PQ=(f-P)g+P(g-Q)
+\]
+shows that both terms are $O(s^b)$. Since $PQ\in\mathcal P$, this proves
+the required approximation. In particular it proves closure under every
+finite product, including the empty product $1$.
+\end{proof}
+
+\begin{lemma}[Integrating an approximation]\label{lem:profile-primitive}
+Suppose $F$ is differentiable on $(0,\infty)$, $F'=g$, and $g$ has an
+approximation of integer order $b\neq-1$. Then $F$ has an approximation
+of order $b+1$.
+\end{lemma}
+\begin{proof}
+Every monomial has an antiderivative in $\mathcal P$. For $a=-1$ it is
+$(\log s)^{k+1}/(k+1)$. For $a\neq-1$, integration by parts gives the
+recursion
+\[
+ I_{a,k}(s)=\frac{s^{a+1}(\log s)^k}{a+1}
+       -\frac{k}{a+1}I_{a,k-1}(s),\qquad
+ I_{a,0}(s)=\frac{s^{a+1}}{a+1}.
+\]
+These formulas are verified by differentiation, so no integrability at zero
+is being assumed. If $g=P+O(s^b)$, subtract a primitive of $P$ from $F$.
+It remains to treat a differentiable $R$ with
+$|R'(s)|\leq Cs^b$ on $(0,\delta)$, where $C\geq0$.
+
+Put $d=b+1\neq0$ and $A=C/d$. The derivatives of
+$As^d+R(s)$ and $As^d-R(s)$ are nonnegative. The mean value theorem
+therefore makes both functions increasing. Consequently, for
+$0<x<y<\delta$,
+\begin{equation}\label{eq:profile-comparison}
+ |R(y)-R(x)|\leq A(y^d-x^d).
+\end{equation}
+The right-hand side is nonnegative also when $d<0$. In that case fix
+$y\in(0,\delta)$; the inequality bounds $|R(x)|$ by a constant plus
+$|A|x^d$. Since $x^d\geq1$ for small $x$, we obtain $R=O(s^d)$.
+If $d>0$, the same inequality shows that $R(x)$ is Cauchy as $x\downarrow0$:
+for $x,y<\eta$, its oscillation is at most $A\eta^d$. Let its limit be
+$c$. Sending $x\downarrow0$ in \eqref{eq:profile-comparison} gives
+$|R(y)-c|\leq Ay^d$. The constant $c$ belongs to $\mathcal P$.
+Adding back the subtracted primitive proves the result in both cases.
+\end{proof}
+The exceptional order $-1$ is excluded only from this estimate for an
+arbitrary remainder. The logarithmic monomial itself has already been
+integrated explicitly. In the argument below the exceptional remainder
+order is handled by weakening it to order $-2$ before integrating.
+
+\subsection{Radial Laplace integrals and their Euler equation}
+For $m\geq0$ and $j,k\in\mathbb N$, set
+\[
+ \omega(r)=\sqrt{m^2+r^2},\qquad
+ M_{j,k}(s)=\int_0^\infty r^{j+2}\omega(r)^{k-1}
+                                      e^{-s\omega(r)}\,dr,\quad s>0.
+\]
+The value of the integrand at $r=0$ is immaterial. For $r>0$,
+$\omega(r)\geq r>0$. The integrands for $k=0$ and $k=1$ are respectively
+bounded by $r^{j+1}e^{-sr}$ and $r^{j+2}e^{-sr}$. These are integrable:
+scaling and repeated integration by parts give
+\[
+ \int_0^\infty r^q e^{-sr}\,dr=q!s^{-q-1}\quad(q\in\mathbb N).
+\]
+The boundary terms vanish at infinity by exponential decay and at zero
+when $q>0$; the initial case is $\int_0^\infty e^{-sr}dr=s^{-1}$.
+The identity $\omega^2=m^2+r^2$ now proves integrability for every $k$,
+by induction in steps of two, and gives
+\begin{equation}\label{eq:profile-moment-recur}
+ M_{j,k+2}=m^2M_{j,k}+M_{j+2,k}.
+\end{equation}
+For a fixed $s>0$, differentiation of the integrand in a neighborhood
+where the parameter is at least $s/2$ is dominated in absolute value by
+the integrand for $M_{j,k+1}(s/2)$. Dominated differentiation gives
+\begin{equation}\label{eq:profile-moment-deriv}
+ M_{j,k}'(s)=-M_{j,k+1}(s).
+\end{equation}
+
+There is a second relation which improves the approximation order. For
+$r>0$, differentiation in the radial variable gives
+\[
+ \frac{d}{dr}\bigl(r^{j+3}e^{-s\omega(r)}\bigr)
+ =(j+3)r^{j+2}e^{-s\omega(r)}
+       -s\frac{r^{j+4}}{\omega(r)}e^{-s\omega(r)}.
+\]
+The two terms are integrable by the bounds just proved. The primitive
+vanishes at zero and infinity, including when $m=0$. Integration therefore
+yields the Euler identity
+\begin{equation}\label{eq:profile-euler}
+ sM_{j+2,0}(s)=(j+3)M_{j,1}(s).
+\end{equation}
+Combining \eqref{eq:profile-moment-recur}--\eqref{eq:profile-euler} gives
+\begin{equation}\label{eq:profile-weighted-deriv}
+ \frac{d}{ds}\bigl(s^{j+3}M_{j,1}(s)\bigr)
+                      =-m^2s^{j+3}M_{j,0}(s).
+\end{equation}
+Indeed the derivative on the left is
+$(j+3)s^{j+2}M_{j,1}-s^{j+3}(m^2M_{j,0}+M_{j+2,0})$,
+and the Euler identity cancels the first and last terms.
+
+\begin{proposition}\label{prop:profile-moments}
+Every $M_{j,k}$ has power--logarithm approximations.
+\end{proposition}
+\begin{proof}
+The initial bound is $0\leq M_{j,0}(s)\leq(j+1)!s^{-j-2}$, so the zero
+polynomial gives an approximation of order $b_0=-j-2$. Suppose $M_{j,0}$
+has an approximation of order $b\geq b_0$. The right-hand side of
+\eqref{eq:profile-weighted-deriv} then has an approximation of order
+$j+3+b\geq1$. Lemma~\ref{lem:profile-primitive}, followed by division
+by $s^{j+3}$, gives an approximation of order $b+1$ to $M_{j,1}$.
+Since $M_{j,0}'=-M_{j,1}$, another application of the same lemma gives
+an approximation to $M_{j,0}$ of order $b+2$, hence of order $b+1$,
+provided $b+1\neq-1$. In the remaining case $b=-2$, weaken the
+approximation to $M_{j,1}$ from order $-1$ to order $-2$. Integration
+then gives precisely the required order $-1$ for $M_{j,0}$.
+
+Induction from $b_0$ proves all larger orders, and weakening covers every
+smaller integer order. The first half of the argument now gives every
+order for $M_{j,1}$ as well: choose $b\geq b_0$ as large as needed.
+Finally \eqref{eq:profile-moment-recur} and closure under addition and
+scalar multiplication prove the assertion for all $k$, by induction in
+steps of two, simultaneously for every $j$.
+\end{proof}
+
+\subsection{From modes to the logarithmic obstruction}
+A mode consists of a mass $m\geq0$, integers $j,k\geq0$, and a continuous
+real function $P$ on $\mathbb R^3$ homogeneous of degree $j$ under positive
+scalings. Its Euclidean profile is
+\begin{equation}\label{eq:profile-mode}
+ K_{m,P,k}(s)=\int_{\mathbb R^3}
+       \frac{\omega_m(p)^kP(p)}{2\omega_m(p)}e^{-s\omega_m(p)}\,dp,
+ \qquad \omega_m(p)=\sqrt{m^2+|p|^2}.
+\end{equation}
+Let $d\sigma$ denote ordinary surface area measure on the unit sphere.
+The maximum of $|P|$ on that sphere is finite. In polar coordinates,
+$|P(r\theta)|\leq Cr^j$, so absolute integrability follows from that
+of $M_{j,k}$. Fubini's theorem and homogeneity therefore give the exact
+normalization
+\begin{equation}\label{eq:profile-angular}
+ K_{m,P,k}(s)=\frac12\left(\int_{S^2}P(\theta)\,d\sigma(\theta)\right)
+                         M_{j,k}(s).
+\end{equation}
+A track is a finite product of mode profiles; the empty track is $1$.
+By Proposition~\ref{prop:profile-moments} and
+Lemma~\ref{lem:profile-algebra}, every track has power--logarithm
+approximations. The same is true of the real part of a finite complex
+linear combination of tracks, because all the individual tracks are real.
+
+\begin{lemma}[No inverse logarithmic leading term]\label{lem:profile-log}
+If a real function $f$ has an approximation of order zero and
+\[
+ \lim_{s\downarrow0}s^8\bigl(\log s^{-1}\bigr)^2f(s)=A\in\mathbb R,
+\]
+then $A=0$.
+\end{lemma}
+\begin{proof}
+Write $f=P+O(1)$ with $P\in\mathcal P$. Since
+$s^8(\log s^{-1})^2\to0$, the same weighted limit holds for $P$.
+Restrict to $s_n=2^{-n}$. A monomial $c_{a,k}s^a(\log s)^k$ contributes
+\[
+ c_{a,k}\bigl(\log(1/2)\bigr)^{k+2}
+             \bigl(2^{-(8+a)}\bigr)^n n^{k+2}.
+\]
+Combine equal pairs $(a,k)$ and discard zero coefficients. The remaining
+finite sum has distinct pairs $(\lambda,q)=(2^{-(8+a)},k+2)$,
+with $\lambda>0$ and $q\geq2$. Order them lexicographically and choose
+the largest pair $(\lambda_*,q_*)$. If the sum is empty, its limit is
+zero. If $\lambda_*<1$, every term tends to zero: writing
+$\lambda=e^{-c}$ with $c>0$ reduces this to $n^qe^{-cn}\to0$.
+For completeness, $e^{cn}\geq(cn)^{q+1}/(q+1)!$ proves that limit.
+
+If $\lambda_*\geq1$, then $D_n=\lambda_*^n n^{q_*}\to\infty$.
+Each smaller term divided by $D_n$ tends to zero. With a smaller base,
+exponential decay dominates any remaining power of $n$ by the same
+estimate; with equal base, the ratio is a negative power of $n$.
+Thus the finite sum divided by $D_n$ tends to its nonzero leading
+coefficient. But the sum has the finite limit $A$, and division by
+$D_n\to\infty$ makes its limit zero, a contradiction. Only the first
+case is possible, and it has $A=0$.
+\end{proof}
+
+\begin{theorem}\label{thm:profile-exclusion}
+Let $T:(0,\infty)\to\mathbb C$ satisfy
+\[
+ \lim_{s\downarrow0}s^8\bigl(\log s^{-1}\bigr)^2T(s)=A,
+ \qquad A>0.
+\]
+Then $T$ cannot agree on any interval $(0,\delta)$ with a finite complex
+linear combination of tracks built from \eqref{eq:profile-mode}.
+\end{theorem}
+\begin{proof}
+If such agreement held, the real part of that combination would have an
+order-zero approximation. Taking real parts in the displayed limit and
+using the agreement would contradict Lemma~\ref{lem:profile-log}.
+\end{proof}
+This proves the exclusion once the positive trace asymptotic has been
+established for the constructed theory. It imposes no restriction on an
+infinite sum or a continuous distribution of masses, and no such exclusion
+is asserted here. The construction of $T$ and its positive coefficient $A$
+is a separate quantitative step.

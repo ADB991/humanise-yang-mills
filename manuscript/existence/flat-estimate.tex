@@ -1,0 +1,123 @@
+% Scalar recurrence input for the order-zero RG cutoff estimate.
+\section{A scalar decay estimate for cutoff errors}
+\label{sec:ex-lattice-flat-rate}
+
+The following elementary lemma converts a one-step contraction with a
+polynomially controlled source into a power of the ratio of scales. In an RG
+application, the difficult step is to prove that the difference of two
+quadratic precisions has a positive coefficient majorant satisfying the
+hypotheses below. The lemma here does not prove that RG estimate.
+
+\begin{proposition}[Contraction with a polynomially controlled source]
+\label{prop:ex-lattice-flat-rate}
+Let $M\in\mathbb N$, and let
+\[
+ t_0<t_1<\cdots<t_M
+\]
+be real numbers whose successive gaps satisfy
+\[
+ \Delta_j:=t_{j+1}-t_j\geq\delta>0
+ \qquad(0\leq j<M).
+\]
+Fix $s\in\mathbb R$, $Z\geq0$, $d\in\mathbb N$, $c_0,\theta>0$, and $A\geq0$.
+Put $T=t_M$, choose
+\[
+ \mu=\min\{c_0,\theta/2\},\qquad
+ \lambda=\theta-\mu,\qquad
+ R=\max\left\{2,\frac{2(d+1)}{\lambda}\right\},\qquad
+ y_j=R+Z+|t_j-s|,
+ \]
+and set $q=\exp(-\lambda\delta/2)$ and $C=A/(1-q)$. Suppose
+$f_0,\ldots,f_M$ and $g_0,\ldots,g_{M-1}$ are nonnegative real numbers such
+that, for $0\leq j<M$,
+\begin{equation}
+ f_j\leq e^{-\theta\Delta_j}f_{j+1}+g_j,
+ \qquad e^{c_0(T-t_j)}g_j\leq A y_j^d,
+ \label{eq:ex-lattice-flat-rate-recurrence}
+\end{equation}
+and at the terminal index
+\begin{equation}
+ f_M\leq A y_M^d.
+ \label{eq:ex-lattice-flat-rate-boundary}
+\end{equation}
+Then, for every $j\in\{0,\ldots,M\}$,
+\begin{equation}
+ f_j\leq C y_j^d e^{-\mu(T-t_j)}.
+ \label{eq:ex-lattice-flat-rate-conclusion}
+\end{equation}
+If positive scales are defined by $a_j=e^{-t_j}$, the exponential factor in
+\eqref{eq:ex-lattice-flat-rate-conclusion} equals $(a_M/a_j)^\mu$.
+\end{proposition}
+
+\begin{proof}
+The constants in the conclusion depend on $A,d,c_0,\theta,\delta$ but not on
+$s$ or $Z$. The choices give $0<\mu\leq c_0$, $\mu\leq\theta/2$, and hence
+$\lambda=\theta-\mu\geq\theta/2>0$. Thus $0<q<1$ and $C\geq A$.
+Introduce the tilted errors
+\[
+ F_j=e^{\mu(T-t_j)}f_j,\qquad
+ G_j=e^{\mu(T-t_j)}g_j.
+\]
+Since $t_j\leq T$ and $\mu\leq c_0$, the source bound in
+\eqref{eq:ex-lattice-flat-rate-recurrence} implies
+\begin{equation}
+ 0\leq G_j\leq A y_j^d.
+ \label{eq:ex-lattice-flat-rate-tilted-source}
+\end{equation}
+Multiplying the recurrence by $e^{\mu(T-t_j)}$ gives
+\begin{equation}
+ F_j\leq e^{-\lambda\Delta_j}F_{j+1}+G_j.
+ \label{eq:ex-lattice-flat-rate-tilted-recurrence}
+\end{equation}
+
+We first control the change in the polynomial weight. The triangle
+inequality gives
+\[
+ y_{j+1}=R+Z+|t_{j+1}-s|\leq y_j+\Delta_j.
+\]
+Because $y_j\geq R\geq2(d+1)/\lambda$, we have
+$d/y_j\leq\lambda/2$. Using $1+x\leq e^x$ for $x\geq0$, we obtain
+\begin{equation}
+\begin{split}
+ e^{-\lambda\Delta_j}y_{j+1}^d
+ &\leq y_j^d e^{-\lambda\Delta_j}
+       \left(1+\frac{\Delta_j}{y_j}\right)^d\\
+ &\leq y_j^d e^{-(\lambda-d/y_j)\Delta_j}\\
+ &\leq y_j^d e^{-\lambda\Delta_j/2}
+ \leq q y_j^d.
+ \end{split}
+ \label{eq:ex-lattice-flat-rate-age}
+\end{equation}
+For $d=0$, the same inequalities hold with the polynomial factor equal to one.
+
+We now argue backward from $M$. At the endpoint,
+$F_M=f_M\leq A y_M^d\leq C y_M^d$. Suppose $F_{j+1}\leq C y_{j+1}^d$.
+Equations \eqref{eq:ex-lattice-flat-rate-tilted-recurrence},
+\eqref{eq:ex-lattice-flat-rate-tilted-source}, and
+\eqref{eq:ex-lattice-flat-rate-age} imply
+\[
+ F_j\leq Cq y_j^d+A y_j^d=(Cq+A)y_j^d=C y_j^d,
+\]
+where the last equality follows from $C=A/(1-q)$. Induction proves this bound
+for every $j$. Undoing the tilt gives
+\[
+ f_j=e^{-\mu(T-t_j)}F_j
+ \leq C y_j^d e^{-\mu(T-t_j)},
+\]
+as required. Finally,
+$e^{-(T-t_j)}=e^{-t_M+t_j}=a_M/a_j$, so the exponential factor is the
+stated scale ratio to the power $\mu$.
+\end{proof}
+
+\begin{remark}[Scope of the recurrence input]
+\label{rem:ex-lattice-flat-rate-scope}
+The proposition is a complete scalar argument once the nonnegative recurrence,
+its polynomially bounded tilted source, and its endpoint estimate are known.
+In the Yang--Mills construction, those data must be obtained from the
+scale-by-scale propagation of a neutral curvature representative for the
+difference of two quadratic RG precisions. Establishing that propagation
+requires the exact Schur-complement, locality, and weighted-kernel hypotheses
+of the RG step. This proposition supplies none of them. It therefore proves a
+power-rate consequence of that RG input, not the RG input itself or convergence
+of the public Wilson moments.
+\end{remark}

@@ -1,0 +1,179 @@
+\section{Selecting the coupling and the vacuum constant}
+\label{sec:coupling-reset-selection}
+An exact local return contains a small correction to the kinetic
+coefficient. We must show that this correction lies in the purchased
+interval and depends continuously on the incoming representation. Two
+healthy configurations suffice to select the two scalar parameters. The
+exact density identity at other configurations comes from the local
+return, and must be retained separately.
+
+\subsection{A separating configuration in every volume}
+Assume the gauge Lie algebra is nonzero, as it is for our simple gauge group.
+Let $V_\Lambda=|\Lambda|$ be the number of sites in an even-sided torus.
+Let $a_0>0$ be the direct plaquette coefficient of the selected clipped
+kinetic action $\mathcal K$, and let $C\ge0$ bound its cubic and quartic
+arrays. Fix a healthy-field threshold $0<t\le1$. There is a number
+$\eta>0$, depending on the stage bounds but not the torus or $t$, and
+an all-healthy configuration $U_*$ such that
+\begin{equation}\label{eq:reset-separator}
+                  \mathcal K(U_*)\ge V_\Lambda\eta t^2.
+\end{equation}
+Here and below the trivial configuration is denoted by $1$.
+
+To construct it, first choose $\epsilon>0$ such that every chord value
+in $[0,\epsilon]$ occurs in $G$. Indeed, take a nonzero Lie-algebra
+vector $c$. The derivative at zero of the curvature of $\exp(sc)$ is
+$c$, so its chord cannot vanish identically. Continuity and the
+intermediate value theorem along that path give the assertion. Set
+\[
+ r=\min\{\epsilon,1/4,a_0/[512(1+C)]\}>0,
+ \qquad h=rt,
+\]
+and choose $u\in G$ of chord $h$. Set the links in direction $0$ equal
+to $u$ on even coordinate-$1$ slices and to $1$ on odd slices; set all
+other links equal to $1$. Even side length makes this periodic. Every
+$(0,1)$ plaquette has holonomy $u$ or $u^{-1}$ and hence chord $h$.
+Every plaquette has chord at most $4h\le t$, by the four-link triangle
+inequality. Thus the configuration is healthy.
+
+For each signed lattice symmetry the sum of the direct plaquette terms
+is at least $V_\Lambda a_0h^2/2$: the symmetry permutes plaquettes,
+and the indicated plane already contributes that amount. The other
+quadratic terms are nonnegative on this healthy configuration. The
+absolute cubic-plus-quartic contribution per site is at most
+\[
+ C(4h)^3+C(4h)^4
+ \le 128Ch^3\le a_0h^2/4.
+\]
+The first inequality uses $4h\le1$, and the second uses
+$512Ch\le a_0$. Averaging the signed actions preserves the lower
+bound $V_\Lambda a_0h^2/4$. This proves
+\eqref{eq:reset-separator} with $\eta=a_0r^2/4$.
+
+\subsection{The scalar equation on a purchased interval}
+Fix the coarse path, clip and budget. Let $x$ range in an interval $I$,
+and let $H_x(U)$ be the actual unnormalized transferred density. Assume
+$H_x(1),H_x(U_*)>0$. Write
+\[
+ c(x)=\log H_x(1)-\log H_x(U_*),\qquad
+ b(x)=\beta_f(x)+\alpha_{N,m}.
+\]
+For a trial correction $d\in[-w,w]$, $0<w\le1$, write its density as
+\begin{equation}\label{eq:reset-trial-density}
+ e^{V_\Lambda v}
+ e^{-(b(x)+d)\mathcal K(U)-\mathcal L(U)-A_{x,d}(U)}
+                         \mathcal G_{x,d}(U).
+\end{equation}
+Here $\mathcal L$ is the fixed loop action, $A_{x,d}$ the regular
+activity sum, and $\mathcal G_{x,d}$ the forced gas. The regular
+entries vanish at $1$, and $\mathcal K(1)=\mathcal L(1)=0$ because
+each path atom vanishes at the trivial configuration. The forced gas
+equals $1$ on healthy
+configurations. In particular the vacuum parameter is forced to be
+\begin{equation}\label{eq:reset-vacuum}
+                    v(x)=V_\Lambda^{-1}\log H_x(1).
+\end{equation}
+Put $k=\mathcal K(U_*)>0$ and define the residual
+\[
+ f(x,d)=(b(x)+d)k+\mathcal L(U_*)+A_{x,d}(U_*)-c(x).
+\]
+The trial matches $H_x$ at $1$ and $U_*$ exactly when $v$ has
+value \eqref{eq:reset-vacuum} and $f(x,d)=0$.
+
+Here are the estimates required for this selection. Let
+$\delta\ge0$ be the regular allowance per site and $F\ge0$ the
+reset allowance per site. Assume
+\begin{align}
+ |b(x)k+\mathcal L(U_*)-c(x)|&\le V_\Lambda F,
+                                      \label{eq:reset-surplus}\\
+ |A_{x,0}(U_*)|&\le V_\Lambda\delta,\nonumber\\
+ |A_{x,d'}(U_*)-A_{x,d}(U_*)|
+              &\le V_\Lambda F|d'-d|,\nonumber\\
+ 2(F+\delta)&\le\eta t^2w.\label{eq:reset-purchase}
+\end{align}
+The arrays have fixed labels, are continuous in their regular and forced
+norms along parameter curves, and have locally summable comparison
+majorants. These conditions imply continuity of their evaluated sums
+along the parameter and dial: truncate a summable majorant, use
+continuity for the finite part, and bound the two tails by that majorant.
+The same argument works if domination is supplied on a further
+subsequence of every convergent sequence. Otherwise a sequence
+violating continuity would have a further dominated subsequence which
+still violates it. We also assume continuity of the two positive
+values of $H_x$ and of $b(x)$.
+
+From \eqref{eq:reset-separator} and \eqref{eq:reset-purchase},
+\[
+ V_\Lambda(F+\delta)\le kw/2,\qquad V_\Lambda F\le k/2.
+\]
+Consequently, for $d\le d'$,
+\[
+ f(x,d')-f(x,d)\ge\tfrac12k(d'-d),\qquad
+                         |f(x,0)|\le kw/2.
+\]
+Thus $f(x,-w)\le0\le f(x,w)$. Continuity in $d$ gives a zero
+$d(x)\in[-w,w]$, and the strict slope bound makes it unique in that
+interval. It also gives the useful inverse estimate
+\begin{equation}\label{eq:reset-inverse}
+ |d(x)-d(y)|\le \frac2k|f(x,d(y))-f(y,d(y))|.
+\end{equation}
+For fixed $y$, the right side tends to zero as $x\to y$; this proves
+continuity of $d$ including at endpoints. Substitution into the fixed
+labelled arrays preserves their continuity and their budgets. Together
+with \eqref{eq:reset-vacuum} this produces a continuous family of
+representations with the purchased correction bound $|d(x)|\le w$.
+
+\subsection{Identification with the physical local correction}
+In the actual local construction the activity array is independent of
+the trial dial. The local projection and compulsory-packet absorption
+first give a number $\Delta(x)$ and an array $S_x$ for which
+\eqref{eq:reset-trial-density}, at $d=\Delta(x)$ and
+\[
+ v_0(x)=\tau_x-V_\Lambda^{-1}\sum_i v_x^{\rm reg}(i,1),
+\]
+is exactly $H_x(U)$ for every $U$. This is the exact local
+reorganization; its scalar sign is fixed by evaluating the identity at
+$U=1$. Its regular arrays vanish at the flat configuration after
+subtraction. With $A_{x,d}$ and $\mathcal G_{x,d}$ independent of $d$,
+taking the two healthy evaluations of that exact identity gives
+\begin{equation}\label{eq:reset-physical-residual}
+                         f(x,d)=(d-\Delta(x))k.
+\end{equation}
+Therefore the selected zero is $d(x)=\Delta(x)$ and $v(x)=v_0(x)$.
+This identifies the selected continuous family with the actual
+reorganized local return, rather than merely producing a family with
+the same two scalar tests.
+
+One may also express the full-field justification as a quantitative
+error bound. For fixed $x,U$, put $q=\mathcal K(U)$ and
+$r_U=H_x(U)/H_x(1)$. The trial normalized shape equals
+$e^{(\Delta-d)q}r_U$. Since $|d|\le1$,
+\[
+ |e^{(\Delta-d)q}r_U-r_U|
+ \le e^{(1+|\Delta|)|q|}|q|\,|r_U|\,|\Delta-d|
+ =\frac{e^{(1+|\Delta|)|q|}|q|\,|r_U|}{k}|f(x,d)|.
+\]
+This follows from $|e^z-1|\le e^M|z|$ for real $z\le M$, $M\ge0$.
+It applies also when the forced gas is nontrivial or signed. At the
+selected zero it proves exact equality at every configuration; the
+constant here may depend on $x,U$ and the finite volume.
+
+The remaining compatibility check uses the actual local construction.
+Its subtraction estimate gives $t^2|\Delta(x)|\le E(x)$, its
+regular and forced arrays satisfy the purchased output allowances, and
+its exact normalized density is the same transferred density. These
+are precisely the input and output conditions of the selected recipe.
+Using that same local construction as witness therefore preserves the
+retained history constraints and the next-step constraints. Equality
+of densities alone would not imply those constraints for arbitrary
+arrays or dictionaries. The forced estimate is retained separately,
+including its exponential monitor bound.
+
+This proves the scalar selection and its full-field identification
+relative to the physical reorganization and the displayed purchases.
+In that application the dial-motion estimate is zero. The surplus
+estimate comes from the exact all-healthy local expression and the
+regular budget, together with the purchased cubic/quartic discrepancy
+between the full kinetic action and its quadratic part. The next
+construction must verify those purchases on the selected history;
+the scalar argument itself does not choose a new path or new prices.

@@ -1,0 +1,228 @@
+\section{A fixed-coupling history for the rank comparison}
+\label{sec:restarted-rank-history}
+
+The rank tests compare the interacting fields with a free field over a
+short interval of scales. They require an auxiliary integration history.
+The coupling is held fixed on that interval, and the local additive
+remainder is controlled in value. We give the density construction and
+its bounds here. The calibrated history constructed earlier supplies the
+endpoint and the kernels; it is still the history defining the fields.
+
+\subsection{The additive remainder and its exact density factor}
+
+On a finite torus $\Lambda$, write a representation's density as
+\[
+ R(U)=\exp\{v|\Lambda|-A(U)-E(U)\}\,G(U),
+ \qquad E(U)=\sum_\alpha E_\alpha(U).
+\]
+Here $A$ is its path action, $G$ its forced gas with the prescribed
+supports, inventories and eligibility tests, and $E_\alpha$ are real,
+measurable, gauge-invariant local functions: their values agree when the local links and the relevant final flag data agree. Each $E_\alpha$ vanishes
+unless its support $X_\alpha$ is healthy at the representation's threshold.
+Give $X_\alpha$ an anchor $a_\alpha\in X_\alpha$. Suppose $b_\alpha\ge0$
+majorizes $|E_\alpha|$ and, for the representation's support weight
+$M(X)\ge1$,
+\begin{equation}\label{eq:restart-anchored}
+ \sum_{\alpha:a_\alpha=x}M(X_\alpha)b_\alpha\le q
+ \quad(x\in\Lambda).
+\end{equation}
+The sums in this inequality are assumed summable. Since the anchor set
+is finite, summing it gives
+\[
+ \sum_\alpha |E_\alpha(U)|\le |\Lambda|q.
+\]
+Thus the sum defining $E$ converges absolutely, is measurable and gauge
+invariant, and $e^{-E}$ has the finite-volume bound $e^{|\Lambda|q}$.
+Let $R^0$ be obtained by deleting just the additive terms. Its paths,
+coupling, scalar, forced activities and their tests are unchanged. Then
+\begin{equation}\label{eq:restart-white}
+ R=e^{-E}R^0.
+\end{equation}
+For any finite family of source variables, the same identity holds for
+its polynomial-valued density. Consequently the integrability of that
+density follows from the corresponding envelope for $R^0$. The estimate
+$e^{|\Lambda|q}$ is used only for finite-volume integrability; it is not
+used as a uniform bound in the volume limit.
+
+\subsection{A local multiplier keeps the expansion on the actual density}
+
+Here is the local operation behind the construction. For a masked
+additive term $E_\alpha$, insert the letter
+\[
+ h_\alpha=e^{-E_\alpha}-1.
+\]
+The identity $\prod_\alpha(1+h_\alpha)=e^{-E}$ is exact. Its infinite
+version follows from absolute summability, since
+$|e^{-t}-1|\le e^{|t|}|t|$ and $\sum_\alpha b_\alpha<\infty$.
+If the weighted footprint estimate for these letters has allowance
+$\omega$, attach them to the same component alphabet as the fluctuation
+integral. The component estimate of
+Section~\ref{sec:mixed-activity-prices} and the reassembly identity of
+Section~\ref{sec:gaussian-reassembly} apply with this enlarged alphabet.
+The old forced labels and their eligibility conditions are retained.
+In particular the resulting identity integrates $e^{-E}R^0=R$.
+This construction cannot be replaced by integrating $R^0$ alone.
+
+For later use, denote by $\delta$ the weighted allowance of the
+unmarked coarse letters, including the multiplier letters. The
+regular-gas estimate of Section~\ref{sec:forest-average-log}, at the
+purchased support exponent, supplies a masked logarithmic family
+$\ell_\gamma$ with anchored cost at most $16\delta$, and
+\begin{equation}\label{eq:restart-log}
+ G_{\rm reg}(U)=\exp\{-\sum_\gamma\ell_\gamma(U)\}.
+\end{equation}
+The elementary numerical conditions used at this step include
+\[
+ 16\delta\le1,\qquad
+ e^{2\delta}-1\le1-e^{-16\delta},\qquad
+ 16\delta\,\mathcal R(B)\le1.
+\]
+Here $\mathcal R(B)$ is the connected-support counting constant in the
+regular logarithm bound, and $B$ is the coarse support radius. They
+are imposed on the same letter prices, not on a different auxiliary
+normalization. If the integrand has holes around marked sites, the
+forced-exclusion identity gives the corresponding localized logarithms
+with those holes. The scalar identity without holes and these identities
+with holes therefore have the same normalization.
+
+Choose the new coarse scalar from the positive fluctuation prefactor.
+If the prefactor is $C>0$, its contribution to the scalar per coarse
+site is $|\Lambda_c|^{-1}\log C$. Positivity follows from the positive
+coupling, the positive chart ratio, and the positive determinant of the
+flat precision. In particular this logarithm does not choose a branch.
+Let $A_c$ be the retained coarse path action and $\beta B_c$ the
+reference action used in the fluctuation formula. Its local correction
+is $\beta B_c-A_c$. Add its masked local pieces to
+$\ell_\gamma$. If the former have anchored cost $\epsilon$, the
+combined family has cost
+\begin{equation}\label{eq:restart-newcost}
+                         \epsilon+16\delta.
+\end{equation}
+Indeed the two nonnegative majorant sums add at every anchor. The
+identity for its exponential is exactly
+\[
+ e^{v_c|\Lambda_c|-\beta B_c}\,G_{\rm reg}
+       =e^{v_c|\Lambda_c|-A_c-E_c}.
+\]
+The regular/forced decomposition of the same expansion then gives
+\begin{equation}\label{eq:restart-push}
+                  R_c=\mathcal K_\beta R_f
+\end{equation}
+on every coarse configuration, including configurations with flags.
+To check this last assertion, first keep the source polynomial in the
+finite expansion. Its coefficient of the empty inventory equals the
+unmarked scalar density. The reassembly and exclusion identities hold
+coefficientwise and preserve exact flag coverage. Setting the source
+family empty therefore identifies their scalar coefficients on every
+configuration. There is no division by a density or by a forced
+activity in this argument.
+
+\subsection{Symmetrizing the additive family}
+
+The newly obtained sum $E_c$ is invariant under signed lattice motions,
+but an individual choice of anchored pieces need not have a symmetric
+indexing. Let $H$ be the finite group of these motions on the torus.
+Replace a piece $f_\alpha$ by the family
+\[
+ |H|^{-1}f_\alpha(gU),\qquad (g,\alpha)\in H\times\mathcal I,
+\]
+with the correspondingly transported support and anchor. For fixed $g$,
+the anchored bound is the old bound at the inverse image of the anchor.
+Multiplication by $|H|^{-1}$ and summation over $g$ preserve that bound.
+Absolute summability permits interchange of the finite group sum and
+the piece sum. Since the total was invariant, the new total is
+$|H|^{-1}\sum_gE_c(gU)=E_c(U)$. Left multiplication in $H$ permutes the
+new indices, giving the required covariance of individual addresses.
+Reindex this countable family and, if necessary, add zero terms.
+The gas and all forced addresses are unchanged. This produces the
+locality, measurability and motion properties together with
+\eqref{eq:restart-push}.
+
+\subsection{The cost over a short interval}
+
+Fix a block ratio $L>1$ and a width parameter $b\ge0$. For large $s$ put
+\[
+ y=\log\log s,\quad A_s=e^{y^3},\quad
+ q_n=s^{-1/200}A_s^{4n},\quad
+ \omega_n=q_nA_s,\quad \delta_n=q_nA_s^3.
+\]
+The two parts of the comparison interval have lengths $h_1,h_2$.
+Their definitions are the ceilings
+\[
+ h_1=\left\lceil\frac{(b+2)y^2}{\log L}\right\rceil,
+ \qquad
+ h_2=\left\lceil\frac{\log(M_s^{10})}{\log L}\right\rceil,
+ \qquad h=h_1+h_2,
+\]
+where $M_s=\lceil(\log s)^2\rceil$; the support wall is $M_s^2$.
+The support-radius estimates give $\log(M_s^{10})\le y^2$ eventually.
+Thus $h\le C_{L,b}y^2+2\le y^4$ eventually.
+For every fixed integer $r\ge0$, uniformly for $0\le n\le h$,
+\begin{equation}\label{eq:restart-decay}
+ q_nA_s^r\le s^{-1/400}
+\end{equation}
+for all sufficiently large $s$. In fact its logarithm is at most
+$-(\log s)/200+(4y^4+r)y^3$. For $y\ge1$ the positive term is at most
+$(4+r)y^7$. Since $y^7e^{-y}\to0$ and $\log s=e^y$, it is at most
+$(\log s)/400$ eventually, proving the claim.
+
+The footprint price of an additive input with cost $q_n$ is at most
+\[
+ C_{L,a,t}(42B+1)^4q_n,
+\]
+where the support reserve $t$ is strictly positive, $a$ is the fixed
+support exponent, and $B\le M_s^2$. All factors except the displayed
+radius and $q_n$ are fixed before $s$ is increased. The wall estimates
+imply $C_{L,a,t}(42M_s^2+1)^4\le A_s$ eventually. Hence the multiplier
+letters cost at most $\omega_n$. The remaining unmarked letters have
+their purchased local bounds; their combined logarithm is allowed cost
+$16\delta_n$. The path correction costs at most $s^{-1/200}$. These
+bounds close the recurrence because, as soon as $A_s\ge17$,
+\begin{equation}\label{eq:restart-recurrence}
+ s^{-1/200}+16\delta_n\le q_{n+1}.
+\end{equation}
+Indeed $s^{-1/200}\le q_n\le\delta_n$ and
+$q_{n+1}=A_s\delta_n$.
+
+For clarity, the small exponential conditions also hold uniformly
+through this interval. If $0\le t\le1$, then $e^t-1\le2t$.
+Consequently $e^{2\delta_n}-1\le4\delta_n$. If
+$0\le\delta_n\le1/16$, the inequalities
+$e^{16\delta_n}\ge1+16\delta_n$ and
+$(1+16\delta_n)^{-1}\le1-4\delta_n$ give
+\[
+ e^{2\delta_n}-1\le1-e^{-16\delta_n}.
+\]
+The second rational inequality follows after multiplying by its positive
+denominator: $12\delta_n-64\delta_n^2\ge0$.
+The factors $\mathcal R(B)$, the insertion inflation and any fixed
+comparison polynomial have at most the purchased powers of
+$e^{y^2}$; multiplying \eqref{eq:restart-decay} by such factors still
+gives zero in the limit. The forced-gas allowance is smaller than every
+negative power of $s$, uniformly for the local scale parameter in
+$[s/2,s]$. It therefore pays the support-counting factors in the
+normalization-with-holes estimates. All these are eventual conditions
+after $L,b$ and the finite menu have been fixed.
+
+\subsection{Joining to the endpoint}
+
+Choose a comparison depth $k$ and cutoff $N\ge k$. Above $k$, retain
+the original history. At $k$, use its actual representation in the
+chosen local presentation. Below $k$, set the coupling identically
+$\beta_{N,p,k}$ and apply the preceding construction down to the lower
+edge of the comparison interval. The local scale parameter lies in
+$[s/2,s]$, with $s$ the clock coupling at $k$, and the endpoint bound
+$|\beta_{N,p,k}-s|\le s/8$ places this constant coupling in the
+purchased local range throughout the interval.
+
+Inductively, the input at a step has cost $q_n$, the output has cost
+at most $q_{n+1}$ by \eqref{eq:restart-recurrence}, and their unnormalized
+densities satisfy \eqref{eq:restart-push} at that very same coupling.
+Only the new entry is installed at each backward step. Thus all entries
+already constructed, including the endpoint and its marked labels, are
+retained. Composition proves the density identities for the entire
+auxiliary history. The comparison with one or two marked sites uses the
+same component alphabet and the same hole normalization. Its leading
+and remainder estimates are separate from this unmarked construction;
+they must be verified on these actual densities before the rank tests
+can be applied.

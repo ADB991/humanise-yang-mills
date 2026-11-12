@@ -1,0 +1,422 @@
+% All-order free detector used by trace calibration and the finite scanner.
+\section{A positive free detector at every jet order}
+\label{sec:ex-lattice-all-grade-free-detectors}
+
+This section proves the all-grade reference-field separation needed in
+Section~\ref{sec:ex-lattice-firesky-gallery} and for the finite point
+scanner. The point is that positivity must hold for a mixture of derivative
+orders, not just separately at each order. We establish it by an explicit
+triangular change of probes. All vector spaces in the one-leg calculation
+are real; ordinary complex conjugation is added only when passing to the
+Wick-polynomial pairing.
+
+\subsection{The Kelvin response and a triangular family of probes}
+
+Let $\mathscr S_j$ be the finite-dimensional real space of homogeneous
+degree-$j$ Maxwell field strengths in four-dimensional Euclidean space,
+with the fixed gauge-color representation. Thus $P\in\mathscr S_j$ is an
+antisymmetric two-tensor-valued homogeneous polynomial satisfying the
+Maxwell differential and algebraic identities. Let $\langle\cdot,\cdot\rangle_F$
+denote the positive Frobenius inner product, including the positive color
+inner product. For a nonzero point $x$, write
+\[
+ r_x=|x|^{-2},\qquad I(x)=r_xx,\qquad
+ \vartheta_x=I-2r_x\,x\otimes x.
+\]
+The matrix $\vartheta_x$ is the orthogonal reflection that reverses the
+line through $x$ and fixes its orthogonal complement. Its induced action on
+two-tensors is denoted $\vartheta_x^{(2)}$.
+
+For a symmetric coefficient tensor $A$ of order $j$ with two antisymmetric
+field indices, write componentwise
+\[
+ (\mathcal D_A f)_{im}(x)=\sum_{(a_1,\ldots,a_j)\in\{0,1,2,3\}^j}
+   \frac{1}{j!}D^jf(x)[e_{a_1},\ldots,e_{a_j}]\,
+       A_{im}(e_{a_1},\ldots,e_{a_j}).
+\]
+The sum is over ordered derivative tuples; later the two field indices are
+summed in both orders in the Frobenius pairing. This is the normalized
+Taylor coefficient convention. The colour pairing is the fixed positive
+real inner product. Write $c_j=(-2)^j/(4\pi^2)$, the coefficient of the
+four-dimensional Green function.
+
+We first establish the differentiated Green identity used below:
+\begin{equation}\label{eq:ex-lattice-shell-green}
+ (\mathcal D_A G)_{im}(x)=c_j|x|^{-2(j+1)}A_{im}(x),\qquad x\ne0,
+ \quad A\in\mathscr S_j,
+ \qquad G(x)=\frac{1}{4\pi^2|x|^2}.
+\end{equation}
+For $j=0$ this is evaluation of the Green function. Suppose it holds at
+order $j$ and let $A$ have order $j+1$. For each coordinate direction
+$e_a$, freeze the first tensor slot to get $A_a\in\mathscr S_j$. The
+normalized Taylor coefficient satisfies
+\[
+ (\mathcal D_A f)_{im}=\frac1{j+1}\sum_a\partial_a(\mathcal D_{A_a}f)_{im}.
+\]
+This follows by expanding the ordered derivative tuples: each of the
+$j+1$ possible first slots gives the same symmetric coefficient. Applying
+the induction hypothesis and differentiating gives
+\[
+ (\mathcal D_A G)_{im}=\frac{c_j}{j+1}\left(
+  -2(j+1)|x|^{-2(j+2)}\sum_a x_a(A_a)(x)
+  +|x|^{-2(j+1)}\sum_a\partial_a(A_a)(x)\right).
+\]
+For completeness, the trace identity here is harmonicity in the derivative
+slots, not the Maxwell divergence equation alone. Write $F_{im}(x)$ for
+the homogeneous field components represented by $A$. The Maxwell equations
+give $\partial_aF_{ai}=0$ and
+$\partial_aF_{im}+\partial_iF_{ma}+\partial_mF_{ai}=0$. Apply $\partial_a$
+and sum over $a$ in the second identity. The two terms involving the
+divergence vanish, so $\Delta F_{im}=0$. By the normalized coefficient
+convention, $(A_a)_{im}=(j+1)^{-1}\partial_aF_{im}$; hence
+\[
+ \sum_a\partial_a(A_a)_{im}
+   =(j+1)^{-1}\Delta F_{im}=0.
+\]
+Euler's homogeneous identity, or direct contraction of the first slot,
+gives
+\[
+ \sum_a x_a(A_a)_{im}(x)=F_{im}(x)=A_{im}(x).
+\]
+Since $c_{j+1}=-2c_j$, this proves
+\eqref{eq:ex-lattice-shell-green}. It is an off-origin identity; no
+distributional contact term is involved.
+
+The Euclidean Green kernel and its two curls give a response field
+associated with $P$. The Kelvin calculation needed here is the following
+identity, with the normalization fixed by the Green function:
+\begin{equation}\label{eq:ex-lattice-kelvin-response}
+ \mathcal R(P)(y)
+ =\operatorname{strength}(j)|y|^{-4}
+   \vartheta_y^{(2)}P(I(y)),\qquad y\ne0,
+ \quad\operatorname{strength}(j)
+ =4(j+1)(j+2)(-2)^j\operatorname{normal}.
+\end{equation}
+Here $\operatorname{normal}=1/(4\pi^2)>0$ is the scalar in
+\eqref{eq:ex-lattice-shell-green}. In particular,
+\begin{equation}\label{eq:ex-lattice-strength-sign}
+ (-1)^j\operatorname{strength}(j)>0.
+\end{equation}
+The sign follows directly from the displayed formula: the factors
+$4(j+1)(j+2)$ and $\operatorname{normal}$ are positive and
+$(-1)^j(-2)^j=2^j$.
+
+We recall the differential reduction giving this normalization. Put
+$R_i(x)=\sum_a x_aP_{ai}(x)$ and
+$c_j=(-2)^j\operatorname{normal}$. The differentiated Green potential is
+$c_j|x|^{-2(j+1)}P_{ai}(x)$. The divergence-free equation removes the
+derivatives falling on $P$ in its divergence, so the resulting vector is
+\[
+ D_i(x)=-2(j+1)c_j|x|^{-2(j+2)}R_i(x).
+\]
+The curl of the field response is
+$2(\partial_mD_i-\partial_iD_m)$. Closedness, the Bianchi identity, and
+Euler homogeneity give
+\[
+ \partial_iR_m(x)-\partial_mR_i(x)=(j+2)P_{im}(x).
+\]
+Also $\partial_i|x|^{-2(j+2)}=-2(j+2)x_i|x|^{-2(j+3)}$. Substitution
+yields
+\[
+ 4(j+1)(j+2)c_j|x|^{-2(j+2)}
+ \left[
+   P_{im}(x)-2|x|^{-2}\bigl(x_iR_m(x)-x_mR_i(x)\bigr)
+ \right].
+\]
+The bracket is the two-index reflection of $P(x)$. Homogeneity gives
+\[
+ |x|^{-2(j+2)}\vartheta_x^{(2)}P(x)
+   =|x|^{-4}\vartheta_x^{(2)}P(I(x)).
+\]
+This proves
+(\ref{eq:ex-lattice-kelvin-response}) off the origin and identifies its
+coefficient; no contact term is used.
+
+For an orthogonal reflection $s$, define its full action on a solution by
+$(s\cdot Q)(v)=s^{(2)}Q(sv)$: it acts on both field indices and every
+derivative slot. For $x\ne0$, let $\operatorname{Leg}_x(P,Q)$ be the
+one-leg kernel: contract the second derivatives of the scalar Green kernel
+at separation $x$ with the dual probes of $P$ and $Q$, and apply the two
+curls. The one-leg reflected pairing is
+\[
+ B_x^{j,k}(P,Q)=\operatorname{Leg}_x(P,\vartheta_x\cdot Q).
+\]
+Orthogonal covariance and exchange symmetry of the Green kernel imply
+\[
+ B_x^{j,k}(P,Q)=B_x^{k,j}(Q,P).
+\]
+The use of the reflection in the second slot is essential: this is the
+one-leg reflected form, not the unreflected covariance.
+
+To triangularize all grades at once, for $0\leq k\leq j$ let
+\[
+ T_{j,k}^{x}P
+ =\frac{\operatorname{strength}(j)}{\operatorname{strength}(k)}
+   \operatorname{Taylor}_{k}\bigl(P(\,\cdot-I(x))\bigr),
+ \qquad P\in\mathscr S_j.
+\]
+The Taylor coefficient is taken at the origin, and the translated
+coefficient is again a homogeneous degree-$k$ Maxwell solution. Set
+\[
+ \Sigma_xP=\sum_{k=0}^{j} T_{j,k}^{x}P\in\mathscr S_{<j+1},
+ \qquad P\in\mathscr S_j.
+\]
+The sum is finite. By the exact Taylor formula for a degree-$j$ polynomial,
+for every $y$,
+\begin{equation}\label{eq:ex-lattice-shift-taylor}
+ \sum_{k=0}^{j}\operatorname{strength}(k)
+   (T_{j,k}^{x}P)(y)
+ =\operatorname{strength}(j)P(y-I(x)).
+\end{equation}
+Apply (\ref{eq:ex-lattice-kelvin-response}) term by term and use
+(\ref{eq:ex-lattice-shift-taylor}). The resulting response is
+$\mathcal R_x(\Sigma_xP):=\sum_{k=0}^j\mathcal R(T_{j,k}^{x}P)$.
+For $y$ near $x$, inversion gives
+\[
+I(x+t v)-I(x)=t\,V_{x,v}(t),\qquad
+V_{x,v}(t)=|x+t v|^{-2}
+  \bigl(\vartheta_xv-t|v|^2I(x)\bigr),
+\]
+where $V_{x,v}$ is smooth near $t=0$. Since $P$ is homogeneous of degree
+$j$, the shifted response along this line is $t^j$ times a smooth function.
+Consequently its Taylor coefficients through order $j-1$ vanish, while
+its order-$j$ coefficient is
+\[
+ \operatorname{strength}(j)|x|^{-2(j+2)}
+  (\vartheta_x\cdot P)(v),
+\]
+where the reflected solution is defined by
+$(\vartheta_x\cdot P)(v)=\vartheta_x^{(2)}P(\vartheta_xv)$.
+To connect the response computation to the one-leg pairing, the
+two-curl Green identity gives
+\[
+ B_x(\Sigma_xP,Q_k)=(-1)^k
+ \left\langle \vartheta_x\cdot Q_k,
+   \operatorname{Taylor}_{k}\bigl(\mathcal R_x(\Sigma_xP)\bigr)(x)\right\rangle_F.
+\]
+Here $Q_k\in\mathscr S_k$, and the normalized Taylor tensor includes all
+ordered derivative tuples. The sign $(-1)^k$ is the sign from
+differentiating the second insertion. The vanishing lower Taylor
+coefficients imply $B_x(\Sigma_xP,Q_k)=0$ when $k<j$; at $k=j$ the
+order-$j$ coefficient gives
+$B_x(\Sigma_xP,Q_j)=\lambda_j(x)\langle P,Q_j\rangle_F$, because
+$(\vartheta_x\cdot Q_j,\vartheta_x\cdot P)$ have the same Frobenius
+product as $(Q_j,P)$. When the second input is also transformed, its
+components have grades at most its original grade, and its top component is
+unchanged because $T_{k,k}^x$ is the identity. Thus these same two
+identities give the triangular identities for the full one-leg kernel.
+Extend $B_x$ by bilinearity to the finite tower. If
+$\mathscr S_{<m}=\bigoplus_{k<m}\mathscr S_k$, then the formulas
+\begin{align}
+ B_x(\Sigma_xP,\Sigma_xQ)&=0
+     &&(P\in\mathscr S_j,\ Q\in\mathscr S_k,\ k<j),
+       \label{eq:ex-lattice-shift-cross}\\
+ B_x(\Sigma_xP,\Sigma_xQ)&=\lambda_j(x)
+     \langle P,Q\rangle_F
+     &&(P,Q\in\mathscr S_j),
+       \label{eq:ex-lattice-shift-diagonal}
+\end{align}
+where
+\begin{equation}\label{eq:ex-lattice-positive-pivot}
+ \lambda_j(x)=(-1)^j\operatorname{strength}(j)|x|^{-2(j+2)}>0.
+\end{equation}
+The factor $(-1)^k$ in the one-leg kernel comes from differentiating the
+second insertion; at equal grade it combines with the Taylor coefficient
+to give precisely (\ref{eq:ex-lattice-positive-pivot}).
+
+Now fix a finite cutoff $n$ and form the tower
+\[
+ \mathscr S_{<n}=\bigoplus_{j=0}^{n-1}\mathscr S_j.
+\]
+On this tower the reflected Gram form is
+\[
+ B_x(P,Q)=\sum_{j,k<n}B_x^{j,k}(P_j,Q_k).
+\]
+Apply the triangular transform $\Sigma_x$ separately in each input grade.
+The cross-grade identities (\ref{eq:ex-lattice-shift-cross}) and their
+transposes remove every off-diagonal block, while
+(\ref{eq:ex-lattice-shift-diagonal}) gives
+\begin{equation}\label{eq:ex-lattice-tower-gram}
+ B_x(\Sigma_xP,\Sigma_xQ)
+ =\sum_{j<n}\lambda_j(x)\langle P_j,Q_j\rangle_F.
+\end{equation}
+Every coefficient on the right is positive. Since each Frobenius inner
+product is positive definite, the right side is positive for every nonzero
+tower. Moreover, $T_{j,j}^{x}$ is the identity: the top-degree Taylor
+coefficient of $P(\,\cdot-I(x))$ is $P$. Therefore the matrix of $\Sigma_x$
+on the ordered grades is lower triangular with identity diagonal. Its
+strictly grade-lowering part $N_x=\Sigma_x-I$ satisfies $N_x^n=0$, so
+\[
+ \Sigma_x^{-1}=I-N_x+N_x^2-\cdots+(-1)^{n-1}N_x^{n-1}.
+\]
+Thus the diagonalization is an invertible change of probes, and the full
+mixed-grade Gram form is positive definite. This is a
+simultaneous statement about the entire tower; positivity of the separate
+diagonal blocks alone would not imply it.
+
+\subsection{Wick polynomials and strict reflected positivity}
+
+Let $\mathscr A$ be the complex polynomial algebra generated by the formal
+field-strength jet coordinates at all derivative orders. Evaluation on
+homogeneous Maxwell solutions restricts each polynomial to the on-shell
+jet space, imposing both the differential Maxwell equations and the
+algebraic Bianchi identities. The filtered shell sector $\mathscr Q_{\le d}$
+is the image of this restriction map through grade $d$, hence is canonically
+the quotient by its kernel. Full reflection preserves each grade and this
+filtered sector. Each linear coordinate restricted to $\mathscr S_j$ is a
+linear functional on a finite-dimensional inner-product space, so the
+finite-dimensional Riesz representation theorem writes it as pairing with
+a vector of $\mathscr S_j$. Consequently every polynomial in finitely many
+jet coordinates is a polynomial in the coordinates of one sufficiently
+large finite tower. A homogeneous solution $P\in\mathscr S_j$
+defines its linear Wick symbol $\mathsf d(P)$. Products of these symbols
+generate the polynomial Wick algebra.
+
+For two distinct points $x,y$, put $z=x-y$. Let
+$\mathcal W_{x,y}(A,B)$ denote the free two-point moment of the polynomial
+insertions $A$ and $B$. The reflected pairing is linear in its first
+argument and conjugate-linear in its second:
+\[
+\langle A,B\rangle_{x,y}^{\mathrm{ref}}
+   =\mathcal W_{x,y}\bigl(A,\vartheta_z\cdot\overline{B}\bigr),
+\]
+where $\vartheta_z$ acts on every tensor index of the second field
+insertion. Complex conjugation of polynomial coefficients is a separate
+operation in this formula. The free moment is the normal-ordered cross-site
+Gaussian matching moment: only pairings joining the two distinct insertion
+sites occur. Removing one linear field factor from the first insertion
+therefore gives the sum of its contractions with the factors in the second
+insertion. This follows by separating the unique partner of the removed
+factor in the finite matching formula for a free moment. With two insertion
+points there is only one possible partner site. In orthogonal coordinates
+the identity reads
+\begin{equation}\label{eq:ex-lattice-script-recurrence}
+ \langle X_i p,q\rangle_{x,y}^{\mathrm{ref}}
+   =d_i\langle p,\partial_iq\rangle_{x,y}^{\mathrm{ref}},
+ \qquad
+ \langle1,X_iq\rangle_{x,y}^{\mathrm{ref}}=0,
+ \qquad \langle1,1\rangle_{x,y}^{\mathrm{ref}}=1.
+\end{equation}
+The first identity is the differentiated removal rule, and the second is
+the same rule with no factor available to contract on the first side.
+
+Choose a real orthogonal basis $e_1,\ldots,e_M$ for the tower Gram form
+\eqref{eq:ex-lattice-tower-gram}, with squared norms $d_i>0$. Such a basis
+exists by finite-dimensional Gram--Schmidt: at each step, the orthogonal
+complement of the span already chosen is positive definite, so a nonzero
+vector in it has strictly positive squared norm; normalize or retain its
+positive norm. In the polynomial coordinates $X_1,\ldots,X_M$ associated
+with $e_i$, the reflected pairing satisfies
+\[
+ \langle X^\alpha,X^\beta\rangle_{x,y}^{\mathrm{ref}}
+ =\begin{cases}
+   \displaystyle\prod_{i=1}^M \alpha_i!d_i^{\alpha_i},&\alpha=\beta,\\
+   0,&\alpha\ne\beta.
+  \end{cases}
+\]
+For completeness, this formula follows by induction on $|\alpha|$. When
+$\alpha=0$, the last two identities in
+(\ref{eq:ex-lattice-script-recurrence}) give $1$ if $\beta=0$ and $0$
+otherwise. If $\alpha_i>0$, apply the first identity with
+$p=X^{\alpha-e_i}$ and $q=X^\beta$:
+\[
+ \langle X^\alpha,X^\beta\rangle
+   =\beta_i d_i\langle X^{\alpha-e_i},X^{\beta-e_i}\rangle,
+\]
+where the right side is zero when $\beta_i=0$. Induction shows that the
+pairing vanishes unless $\alpha=\beta$. When they agree, removing each
+occurrence of coordinate $i$ contributes successively
+$d_i\alpha_i,d_i(\alpha_i-1),\ldots,d_i$, so its total factor is
+$\alpha_i!d_i^{\alpha_i}$. Multiplication over coordinates gives the
+formula. For arbitrary polynomials
+$p=\sum_\alpha p_\alpha X^\alpha$ and
+$q=\sum_\alpha q_\alpha X^\alpha$, it follows that
+\begin{equation}\label{eq:ex-lattice-wick-norm}
+ \langle p,q\rangle_{x,y}^{\mathrm{ref}}
+ =\sum_{\alpha}p_\alpha\overline{q_\alpha}
+     \prod_{i=1}^M\alpha_i!d_i^{\alpha_i},
+ \qquad
+ \langle p,p\rangle_{x,y}^{\mathrm{ref}}
+ =\sum_{\alpha}|p_\alpha|^2
+     \prod_{i=1}^M\alpha_i!d_i^{\alpha_i}.
+\end{equation}
+Each weight is strictly positive, including the empty multi-index, whose
+weight is $1$. Thus the reflected norm is strictly positive for every
+nonzero polynomial. Every polynomial uses only finitely many jet orders;
+choose a tower cutoff containing those orders, and the argument applies.
+If two representatives define the same shell polynomial, their difference
+restricts to zero on every solution and has zero pairing with every
+insertion. The formula is therefore well defined on the shell quotient and
+strictly positive on each nonzero class.
+
+\begin{theorem}[Strict all-grade free detector]
+\label{thm:ex-lattice-all-grade-free-detector}
+For any two distinct Euclidean points, the reflected free two-point form on
+the polynomial algebra of gauge-invariant field-strength jets, after
+quotienting by the Maxwell equations and the Bianchi identities, is
+strictly positive: if $P$ is a nonzero quotient class, then
+\[
+ \langle P,P\rangle_{x,y}^{\mathrm{ref}}>0.
+\]
+Consequently, the family of separated two-point evaluations at any fixed
+pair detects every field in each finite-dimensional grade.
+\end{theorem}
+
+\begin{proof}
+The Kelvin calculation gives the one-leg triangular identities and the
+strictly positive tower pivots in
+(\ref{eq:ex-lattice-shift-cross})--(\ref{eq:ex-lattice-positive-pivot}).
+Equation (\ref{eq:ex-lattice-tower-gram}) therefore diagonalizes the
+entire finite tower with positive diagonal entries. The removal-rule
+calculation gives (\ref{eq:ex-lattice-wick-norm}), whose summands are
+nonnegative and whose summand for any nonzero coefficient is positive.
+Every polynomial lies in a finite tower, proving strict positivity for
+each nonzero shell class.
+
+For the detector statement, fix a grade $d$ and a nonzero class $v$ in its
+free field space. Choose any separated pair. The reflected evaluation of
+$v$ against its reflected conjugate is the strictly positive number just
+proved. Hence at least one vector in any spanning basis of the grade has a
+nonzero pairing with $v$; otherwise linearity would make its pairing with
+every grade-$d$ vector, including the reflected conjugate of $v$, vanish.
+Thus the full family of basis-column evaluations is injective.
+\end{proof}
+
+\subsection{The finite point scanner}
+
+We spell out the map used by the construction. Fix a reference frame and a
+grade $d$. Choose a basis $b_0,\ldots,b_m$ of its free field space with
+$b_0=1$, the scalar unit; the remaining basis elements are images of
+vectors in that same reference frame. At a separated pair $(x,y)$ define
+the row scanner
+\[
+ \mathcal R_{x,y}(v)
+   =\bigl(\operatorname{Use}_{x,y}(v,b_j)\bigr)_{j=0}^{m},
+ \qquad
+ \operatorname{Face}_{x,y}(w)
+   =\vartheta_{x-y}\bigl(\overline w\bigr).
+\]
+Here the bar is ordinary coefficient conjugation, and the reflection acts
+on all tensor indices. By the definitions of the free-field quotient and
+the reflected polynomial pairing,
+\begin{equation}\label{eq:ex-lattice-scanner-reflection}
+ \operatorname{Use}_{x,y}
+   (v,\operatorname{Face}_{x,y}(w))
+ =\langle v,w\rangle_{x,y}^{\mathrm{ref}}.
+\end{equation}
+If $\mathcal R_{x,y}(v)=0$, then the bilinear form
+$w\mapsto\operatorname{Use}_{x,y}(v,w)$ vanishes on the chosen basis and
+therefore on the whole grade. In particular, take
+$w=\operatorname{Face}_{x,y}(v)$. Equation
+(\ref{eq:ex-lattice-scanner-reflection}) and strict positivity imply
+$v=0$. So the scanner is injective. Notice that it is the conjugate and
+the reflection together that place the second entry in the reflected
+positive form; reflection alone or conjugation alone is not the required
+operation.
+
+The scalar unit and source-frame basis make this an admissible finite
+scanner for the later construction. The unit is retained as the first
+column, and the other columns use the same frame from which the free table
+was built. This proves the all-grade reference detector only. It makes no
+positivity claim about the interacting measure, and the eventual
+interacting comparison and replication bounds remain separate inputs.

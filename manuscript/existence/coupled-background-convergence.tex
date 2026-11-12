@@ -1,0 +1,256 @@
+\section{Convergence of the coupling and activity histories}
+\label{sec:coupled-background-convergence}
+We next prove convergence of the background on which the marked
+comparison depends. The coupling and the activities must be treated
+together. The activity recursion contracts towards coarser scales,
+whereas the coupling is fixed at the bottom scale. A finite telescoping
+identity joins these two directions. In particular, the proof does not
+assume that the activity space has compact bounded balls.
+
+\subsection{The normalized variables and their paid estimates}
+Fix a period. Let $\widehat\beta_m>0$ be the reference coupling at
+scale $m$, and set
+\[
+ w_m=\widehat\beta_m^{-1/32},\qquad
+ B_m=\widehat\beta_m w_m=\widehat\beta_m^{31/32},\qquad
+ b_m(\lambda)=\widehat\beta_m(w_m\lambda)^2.
+\]
+A coupling $\beta$ is represented by
+$\lambda=w_m^{-1}\sqrt{\beta/\widehat\beta_m}$. On the paid
+band its normalized variable satisfies
+\[
+                  17/20\le w_m\lambda\le23/20.
+\]
+Thus, for two variables in that band,
+\begin{equation}\label{eq:coupled-inverse-bound}
+ B_m|\lambda-\lambda'|
+ \le |b_m(\lambda)-b_m(\lambda')|.
+\end{equation}
+Indeed the difference on the right is
+$B_m|\lambda-\lambda'|\,|w_m\lambda+w_m\lambda'|$, whose last
+factor is at least $17/10>1$.
+
+Let $\mathcal H_m$ be the completion of the seminormed space of
+actual regular and forced activity arrays with the prescribed
+weighted derivative and value prices. The embedding preserves
+distances. In particular, equality of evaluated gases alone is
+not the equivalence relation used here. Let $x_m$ denote the
+embedded array. The finite-history construction gives
+$\|x_m\|\le1/8$. For a terminal index $N$, write
+\[
+ x_m=F_{m,N}(\lambda_{m+1},x_{m+1}),\qquad
+ q_m=Q_{m,N}(\lambda_{m+1},x_{m+1})\quad(m<N)
+\]
+for its activity transformation and the scalar correction to the
+coupling. These maps are initially defined on the actual allowed
+arrays; the notation does not assume an extension to every element
+of the completion. Their output and comparison estimates are
+\begin{align}
+ \|F_{m,N}(\lambda,x)\|&\le1/8,
+ &|Q_{m,N}(\lambda,x)|&\le s_m/2,\label{eq:coupled-output-bounds}\\
+ \|F_{m,N}(\lambda,x)-F_{m,N}(\lambda',x')\|
+ &\le c\max\{|\lambda-\lambda'|,\|x-x'\|\},\label{eq:coupled-activity-step}\\
+ |Q_{m,N}(\lambda,x)-Q_{m,N}(\lambda',x')|
+ &\le4s_m\max\{|\lambda-\lambda'|,\|x-x'\|\},\label{eq:coupled-cost-step}
+\end{align}
+where $c=8/128=1/16$ and $s_m\ge0$. The numerical schedule
+also pays
+\begin{equation}\label{eq:coupled-cumulative-payment}
+                  \sum_{j<m}s_j\le\frac1{128}B_m.
+\end{equation}
+The coupling recursion is
+\begin{equation}\label{eq:coupled-recursion}
+ b_m(\lambda_m)-b_{m+1}(\lambda_{m+1})-\alpha_{m,N}=q_m,
+\end{equation}
+where $\alpha_{m,N}$ is the path correction, already convergent
+at each fixed $m$ by Section~\ref{sec:background-path-convergence}.
+
+We use the following precise continuity statement for the local
+transformation: if two sequences of terminal indices tend to infinity,
+their input normalized couplings have a common limit, and their
+actual input arrays are Cauchy with difference tending to zero in
+$\mathcal H_{m+1}$, then the differences of their output arrays and
+scalar corrections tend to zero. This statement concerns arbitrary
+allowed inputs, including the truncated histories constructed below.
+Its analytic content is the common-variable comparison of
+Section~\ref{sec:marked-kernel-convergence} without a mark, together
+with the weighted head-and-tail argument of
+Section~\ref{sec:local-source-stability}. Here is the precise tail implication. For a regular entry put
+$b_f(i)=\sup_U|f_i^{\rm reg}(U)|$, with its actual mask, and for
+a forced entry put $b_f(i)=\sup_U|f_i^{\rm forced}(U)|$.
+Summing the site's paid budgets gives, separately for these two
+families,
+\[
+ \sum_i b_f(i)\le C_m\|f\|,\qquad
+ b_f(i)\le b_{f-g}(i)+b_g(i).
+\]
+The constants are the finite number of sites times the corresponding
+positive regular or forced normalization. Fix one sufficiently late
+array $f_{N_0}$ and choose a finite set outside which its $b$-sum
+is small. For every later array, its tail sum is at most that fixed
+tail plus $C_m\|f_N-f_{N_0}\|$. Enlarge the finite set for the
+finitely many earlier arrays. This gives the uniform value-price
+tails needed by the compensated comparison. It does not assert
+that arbitrary activity arrays can be truncated in their full
+derivative norm.
+
+For the scalar output, use convergence of the finite projected
+coupling coefficient itself: its projection is bounded by the
+local derivative price, whose convergence is supplied by the
+compensated comparison. This is in addition to convergence of
+the output activity array. Subtracting the convergent incoming
+coupling and path correction gives continuity of $Q$ by
+\eqref{eq:coupled-recursion}.
+The bounds \eqref{eq:coupled-output-bounds}--\eqref{eq:coupled-cost-step}
+are the quantitative one-step hypotheses used in this section;
+their purchase is kept separate from the convergence proof.
+
+\subsection{First fix the normalized coupling history}
+Suppose two sequences of allowed normalized coupling histories
+$\lambda_{m,N}$ and $\lambda'_{m,N'}$ have the same limit for
+every fixed $m$. For an integer $h\ge m$, construct a truncated
+activity history by putting $x_h^{[h]}=0$ and applying the same
+finite-history maps backwards down to $m$. This construction is
+allowed for every prescribed coupling history in the band:
+\eqref{eq:coupled-output-bounds} keeps all its arrays in the ball
+of radius $1/8$. It does not impose the coupling recursion on this
+auxiliary history.
+
+Compare it with the original activity history for the same
+terminal index and the same prescribed couplings. At scale $h$
+the difference is at most $1/4\le1$. By
+\eqref{eq:coupled-activity-step}, backwards induction gives
+\begin{equation}\label{eq:coupled-truncation}
+                         \|x_m-x_m^{[h]}\|\le c^{h-m}.
+\end{equation}
+For fixed $h$, the two truncated histories have common limits
+at every scale at most $h$. At $h$ they are both zero. If this
+is known at $i+1$, their arrays are Cauchy and their difference
+tends to zero there; the local continuity statement and the
+common normalized coupling limit give output differences tending
+to zero at $i$. To get convergence, apply this comparison to
+arbitrary pairs of subsequences of either truncated history.
+If that history were not Cauchy, one could select indices
+$u_n,v_n\ge n$ whose distances stay above some $\varepsilon>0$,
+contradicting the comparison. Completeness of $\mathcal H_i$
+then gives a limit, common to the two histories. This completes
+the finite backwards induction. It also proves common limits
+of their scalar corrections at scales below $h$.
+
+Now choose $h-m$ so large that $2c^{h-m}<\varepsilon/2$.
+Equation~\eqref{eq:coupled-truncation} and the convergence of
+the two truncated histories show that the original activity
+difference is eventually below $\varepsilon$. Apply the same
+arbitrary-subsequence argument once more. The original activity
+histories converge in $\mathcal H_m$ to the same limit. Their
+scalar corrections then have common limits by local continuity
+at the next scale. Thus convergence of all the normalized
+couplings implies convergence of all the activities and costs.
+
+\subsection{Identifying the possible coupling limits}
+At each fixed scale the band for $\lambda_{m,N}$ is a compact
+real interval. Successive subsequence selection at scales
+$0,1,\ldots$ followed by the diagonal subsequence gives a
+subsequence on which every normalized coupling converges.
+The preceding argument attaches activity and scalar-correction
+limits to it. Denote one such limiting history by
+$(\lambda_m,x_m,q_m)$ and another by
+$(\lambda'_m,x'_m,q'_m)$. Suppose the bottom couplings of the
+two sequences have a common limit. Passing to the limit in
+\eqref{eq:coupled-recursion} and subtracting gives the exact
+finite identity
+\begin{equation}\label{eq:coupled-telescope}
+ b_m(\lambda_m)-b_m(\lambda'_m)
+                  =-\sum_{j<m}(q_j-q'_j).
+\end{equation}
+The common limits of $\alpha_{j,N}$ cancel. There is no infinite
+sum and no terminal boundary term in this identity.
+
+The one-step inequalities also pass to these limits, despite
+being initially defined only for actual input arrays. To see
+this without postulating an extension of $F_{m,N}$, construct
+at each terminal index a new backwards activity history with
+the fixed normalized coupling script $(\lambda'_i)_i$ and zero
+terminal array. Its couplings are allowed, because the band is
+closed. By the previous subsection, its activities and costs
+have precisely the limits $x'_m,q'_m$. Compare it to the first
+history at the same terminal index using
+\eqref{eq:coupled-activity-step} and
+\eqref{eq:coupled-cost-step}, then pass to the limit. Writing
+\[
+       d_m=\max\{|\lambda_m-\lambda'_m|,\|x_m-x'_m\|\},
+\]
+we obtain
+\begin{equation}\label{eq:coupled-limit-comparison}
+ \|x_m-x'_m\|\le c d_{m+1},\qquad
+                         |q_m-q'_m|\le4s_m d_{m+1}.
+\end{equation}
+
+First observe that $d_m\le1/4$ for all $m$. The activity bound
+follows from $\|x_m\|,\|x'_m\|\le1/8$. For the normalized
+coupling, \eqref{eq:coupled-inverse-bound},
+\eqref{eq:coupled-telescope}, the bound $|q_j|,|q'_j|\le s_j/2$
+and \eqref{eq:coupled-cumulative-payment} give
+\[
+ B_m|\lambda_m-\lambda'_m|\le\sum_{j<m}s_j
+                         \le B_m/128.
+\]
+Thus $D=\sup_m d_m$ exists and lies in $[0,1/4]$.
+Using the sharper cost comparison now gives
+\[
+ B_m|\lambda_m-\lambda'_m|
+ \le4\sum_{j<m}s_jd_{j+1}
+ \le\frac{4D}{128}B_m.
+\]
+Together with \eqref{eq:coupled-limit-comparison} this yields
+$d_m\le(8/128)D$ for every $m$. Taking the supremum,
+$0\le D\le D/16$, hence $D=0$. Both limiting normalized
+coupling and activity histories are identical. The costs are
+identical too, by their one-step comparison.
+
+Every subsequence has a further subsequence with all normalized
+couplings convergent, and all such limits have just been identified.
+If the original normalized coupling at some scale failed to
+converge to this value, a subsequence would remain outside one
+fixed neighborhood, contradicting its convergent further
+subsequence. Thus the entire normalized coupling sequence
+converges at every scale. The first part of the proof then gives
+convergence of the entire activity and correction sequences.
+In particular this applies when the bottom coupling is fixed
+exactly, as in the selected public construction.
+
+\subsection{Why the cumulative payment can be imposed}
+The numerical inequality \eqref{eq:coupled-cumulative-payment}
+is a finite cumulative bound, not summability of a fixed sequence
+of costs over all scales. We record its purchase to distinguish
+the two assertions. On a stage with positive reference increment
+$a$, put $B(x)=x^{31/32}$. For $x\ge a>0$, the mean value theorem
+and monotonicity of $x^{-1/32}$ give
+\[
+ B(x+a)-B(x)\ge a\frac{31}{32}2^{-1/32}x^{-1/32}.
+\]
+The corresponding cost allowance is twice the activity allowance
+divided by the squared fluctuation threshold. Its paid form is
+\[
+ s(x)=\frac{2vC_{\rm st}x^{-11/10}}{t(x)^2},\qquad
+ t(x)=x^{-1/2}\exp((\log\log x)^2),
+\]
+where $v,C_{\rm st}>0$ are fixed at this stage. For sufficiently
+large $x$, $t(x)\ge x^{-1/2}$, so
+$s(x)\le2vC_{\rm st}x^{-1/10}$. Since
+$-1/10<-1/32$, increasing the entry threshold gives
+\[
+                s(x)\le\frac1{128}\{B(x+a)-B(x)\}.
+\]
+There are only finitely many permitted next stages at each stage,
+so their thresholds can be increased together after their block
+lengths, positive increments and constants have been fixed.
+The reference recursion is
+$\widehat\beta_{m+1}=\widehat\beta_m+a_m$.
+Summing the preceding inequalities over $j<m$ telescopes and gives
+\[
+ \sum_{j<m}s_j\le\frac1{128}(B_m-B_0)\le\frac1{128}B_m.
+\]
+This proves the cumulative estimate required in the uniqueness
+argument. It preserves the chosen maps and block lengths, just
+as the other entry-threshold increases do.

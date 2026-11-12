@@ -1,0 +1,244 @@
+\section{Finite projections and transport of the equation kernel}
+\label{sec:finite-rank-kernel-transport}
+
+Free separation does not by itself identify the interacting null space.
+We prove the finite-dimensional endpoint, keeping the actual marked
+correlation estimates and local equation estimates as explicit inputs.
+All spaces below are finite-dimensional over $\mathbb C$.
+
+\subsection{Uniform projections and a common extraction}
+
+Let $V$ have a norm, an isometric conjugate-linear involution $J$, and a
+representation $\rho$ of a finite group $\Gamma$ commuting with $J$.
+Fix an isomorphism $Q:\mathbb C^m\to V$ from Euclidean space. For any
+subspace $U\subset V$, let $\Pi_U$ be the orthogonal projection onto
+$Q^{-1}U$. Then
+\[
+ A_U^0=I-Q\Pi_UQ^{-1},\qquad
+ \|A_U^0\|\le C_0:=\|I\|+\|Q\|\,\|Q^{-1}\|
+\]
+kills $U$ and satisfies $x-A_U^0x\in U$. Any linear map $A$ having
+these two properties satisfies $A^2=A$ and $\ker A=U$: apply $A$ to
+$x-Ax$ for the first assertion, and use $x=x-Ax$ when $Ax=0$ for
+the second.
+
+When $U$ is invariant under the symmetries, put
+\[
+ B_U=\frac1{|\Gamma|}\sum_{g\in\Gamma}\rho(g)A_U^0\rho(g)^{-1},
+ \qquad A_U=\tfrac12(B_U+JB_UJ).
+\]
+Each average still kills $U$ and differs from the identity by a map
+into $U$. It is therefore an idempotent with kernel $U$. Reindexing
+by left multiplication proves that $B_U$ commutes with $\rho(g)$;
+commutation of $J$ and $\rho(g)$ proves the same for $A_U$, and
+$JA_UJ=A_U$. The composition $JB_UJ$ is complex-linear. Moreover
+\[
+ \|A_U\|\le\frac{C_0}{|\Gamma|}
+       \sum_{g\in\Gamma}\|\rho(g)\|\,\|\rho(g)^{-1}\|.
+\]
+This bound is independent of $U$. If invariance is known only at late
+cutoffs, use $A_U^0$ at earlier ones and take the maximum of the two
+bounds. No isometry of the given signed representation is needed.
+
+For every grade $d$, apply this construction to its coefficient space
+$V_d$ and finite equation spaces $U_{d,N,p}$. The bounds may depend
+on $d$, but not on mesh cutoff $N$ or period index $p$. There is a
+common refinement with mesh limits for every fixed $(d,p)$ and then
+period limits for every $d$. Indeed, enumerate the countably many
+pairs $(d,p)$, take successive subsequences in their compact matrix
+balls, and take a diagonal subsequence. Choose its $j$th term from the $j$th nested subsequence,
+with index beyond the $j$th index of each of the first $j$ subsequences
+and beyond the preceding chosen index. Its tail then belongs to every
+fixed earlier subsequence, so every fixed pair retains its limit. Repeat in the period variable for the
+countably many grades. Bounded lifted vectors indexed by a comparison
+scale and finitely many columns can be included in the same enumeration.
+Previously existing limits survive these refinements.
+
+Write $A_{d,p}$ for the inner limits and $T_d$ for the outer limits.
+Continuity of multiplication gives $A_{d,p}^2=A_{d,p}$ and $T_d^2=T_d$.
+Below the index $c=(N,p)$ follows this ordered filter: first every
+sufficiently large selected period, then every sufficiently large
+selected mesh cutoff, whose threshold may depend on the period. The
+two-stage limits give $A_{d,c}\to T_d$ along this filter. There is no
+claim of uniform convergence in $p$.
+
+\subsection{The all-test null space and the local equation input}
+
+Fix a grade, write $V=V_d$, $A_c=A_{d,c}$ and $T=T_d$, and let
+$\Theta$ consist of all smooth compactly supported spectator tests
+on separated configuration domains with one specified slot of this
+grade. Let $f_{\theta,c}\in V^*$ be its finite-cutoff correlation
+functional and assume $f_{\theta,c}\to f_\theta$ in operator norm.
+Convergence on a fixed basis suffices, since for its dual basis $e_j^*$
+\[
+ \|f_{\theta,c}-f_\theta\|
+ \le\sum_j |(f_{\theta,c}-f_\theta)(e_j)|\,\|e_j^*\|.
+\]
+Define
+\[
+                         M=\bigcap_{\theta\in\Theta}\ker f_\theta.
+\]
+This includes every arity and spectator word, not only the finite pair
+measurements used below to bound dimension.
+
+The local equation input is as follows. For every family
+$v_c\in\ker A_c$ with subpower inverse-calibrated norm, there is a
+comparison insertion $Z_c$ whose separated spectator moments vanish
+exactly, and whose difference from the physical insertion of $v_c$
+has centered discrepancy price tending to zero on this same filter.
+Subpower means that for every $\epsilon>0$ the inverse-calibrated norm
+is eventually at most $\exp(\epsilon s_N)$, with $s_N\to\infty$.
+The insertions are measurable and bounded at each cutoff, and their
+products with the fixed spectator word are integrable.
+
+Section~\ref{ex-column-subpower} proves that bounded coefficient
+families have subpower inverse-calibrated norm. Its smeared-discrepancy
+estimate sends the tested difference from $Z_c$ to zero. The compact
+test support is eventually separated on the lattice, so the tested
+sum for $Z_c$ is zero. Subtraction of the finite-cutoff integrals is
+legitimate by integrability. Consequently
+\begin{equation}\label{eq:finite-rank-silent}
+ v_c\in\ker A_c,\quad (v_c)\text{ bounded}
+       \quad\Longrightarrow\quad f_{\theta,c}(v_c)\longrightarrow0.
+\end{equation}
+For $v\in\ker T$, the family $v_c=(I-A_c)v$ is bounded, is killed by
+$A_c$, and tends to $v$. Hence \eqref{eq:finite-rank-silent} and norm
+convergence of the functionals imply
+\begin{equation}\label{eq:finite-rank-upper-kernel}
+                             \ker T\subseteq M.
+\end{equation}
+The local equation input is substantive; it does not follow from free
+positivity.
+
+It remains applicable after further refinement. Extend a vector family
+from the refined grid of mesh and period indices by zero outside that grid. The kernel
+condition is preserved. Subpower bounds on the original ordered filter
+hold conditionally on membership in the refined grid: monotonicity of
+the two index sequences translates the refined thresholds into original
+thresholds. Outside that grid the bound is automatic. Apply the original
+local estimate to this extension, then restrict back. Thus no control
+of the original family at unused cutoff pairs is required.
+
+\subsection{Purchased measurements and exact dimension}
+
+Let $E$ be the free field space, $r=\dim E$, and $b_1,\ldots,b_r$ a
+basis. By Section~\ref{sec:ex-lattice-all-grade-free-detectors}, choose
+finitely many free measurements $\ell_a\in E^*$ for which
+$Lx=(\ell_a(x))_{a=1}^h$ is injective. The additional interacting
+comparison consists of vectors $u_{k,j}\in V$ and linear measurements
+$g_{k,a}\in V^*$ satisfying
+\begin{equation}\label{eq:finite-rank-purchased-matrix}
+ g_{k,a}|_M=0,\qquad
+             g_{k,a}(u_{k,j})\longrightarrow\ell_a(b_j).
+\end{equation}
+Here $k$ tends to infinity after taking the mesh and period limits for
+each fixed comparison scale. Neither $u_{k,j}$ nor $g_{k,a}$ is required
+to converge as $k\to\infty$.
+
+For the application, $g_{k,a}$ is a generic-point correlation linear in
+its first insertion, with its other insertions fixed at that $k$.
+It vanishes on $M$ because the corresponding correlation is continuous
+on the open generic configuration domain and has zero integral against
+every compactly supported smooth test there. A nonzero value could be
+rotated by a constant complex phase to have positive real part on a
+small neighborhood; a nonnegative smooth bump supported there would
+then have nonzero integral. This contradiction proves pointwise
+vanishing. It uses no point evaluation at a coordinate tie.
+
+The convergence in \eqref{eq:finite-rank-purchased-matrix} is the paid
+comparison input. Its precise usable form, after the cutoff limits, is
+\[
+ |g_{k,a}(u_{k,j})-\ell_{a,k}(b_j)|\le P_{k,a,j}\varepsilon_k,
+ \qquad P_{k,a,j}\varepsilon_k\to0,
+ \qquad \ell_{a,k}(b_j)\to\ell_a(b_j).
+\]
+The factors $P_{k,a,j}$ are coefficient norms of the common free moment
+profile at the rescaled separated points. Continuity of that finite
+profile bounds them. The lifted vectors for fixed $k$ must be bounded
+uniformly in both cutoff indices, so the preceding common extraction
+retains them. These requirements are not consequences of the finite
+matrix argument.
+
+The matrix $(\ell_a(b_j))$ has rank $r$. Choose an $r$-row minor with
+nonzero determinant. Its counterpart in $(g_{k,a}(u_{k,j}))$ is nonzero
+for all sufficiently large $k$, by entrywise convergence and continuity
+of the determinant. A linear relation between the classes $[u_{k,j}]$
+in $V/M$, evaluated by these rows, has every coefficient zero. Thus
+\begin{equation}\label{eq:finite-rank-lower-dimension}
+                              r\le\dim(V/M).
+\end{equation}
+For $r=0$ this inequality is automatic and no minor is needed.
+
+Assume also the finite equation count
+\begin{equation}\label{eq:finite-rank-equation-count}
+           \dim V\le\dim\ker A_c+r
+           \quad\text{frequently along the same filter}.
+\end{equation}
+In the application, a label space $W$, equation ideal $\mathcal E$,
+and actual calibrated isomorphisms $L_c:W\to V$ satisfy
+$\dim(W/\mathcal E)=r$ and $\ker A_c=L_c\mathcal E$. Rank-nullity
+then gives equality in \eqref{eq:finite-rank-equation-count}. The free
+detector identifies $W/\mathcal E$ with the free space; it does not
+establish this separate identity for the actual finite kernel.
+
+If $A,T$ are idempotents with $\|A-T\|<1$, the map
+$\ker A\to\ker T$, $v\mapsto(I-T)v$, is injective. Indeed a vector
+in its kernel has $Tv=v$ and $Av=0$, so
+$\|v\|=\|(A-T)v\|\le\|A-T\|\|v\|$, forcing $v=0$.
+Interchange $A,T$ to obtain equal kernel dimensions. Applying this
+eventually to $A_c\to T$, and intersecting with the frequent set in
+\eqref{eq:finite-rank-equation-count}, gives
+$\dim\ker T\ge\dim V-r$. Combining this with
+\eqref{eq:finite-rank-upper-kernel} and
+\eqref{eq:finite-rank-lower-dimension} proves
+\begin{equation}\label{eq:finite-rank-exact-kernel}
+                     M=\ker T,\qquad \dim(V/M)=r.
+\end{equation}
+The purchased classes are therefore eventually a basis of $V/M$.
+This supplies the kernel hypothesis in the normalized compact test
+argument of Section~\ref{sec:ope-filtration}, provided its projections
+and tests are these same ones. That argument then applies to its
+unbounded approximating vectors without asserting convergence of
+moving physical subspaces.
+
+\subsection{Exact transport and quotient symmetries}
+
+Suppose $\ker A_c=L_c\mathcal E$ as above, with $L_c$ intertwining
+the real involutions and signed actions at all sufficiently late
+cutoffs. The subspace $\mathcal E$ is invariant, and the selected
+$A_c$ commute with the actions on $V$. Their limit $T$ commutes too,
+by passage to the limit on each fixed vector. Define
+\begin{equation}\label{eq:finite-rank-conjugator}
+                   Y_c=TA_c+(I-T)(I-A_c).
+\end{equation}
+Direct multiplication, using both idempotence identities, gives
+\[
+ Y_c-I=(2T-I)(A_c-T),\qquad Y_cA_c=TA_c=TY_c.
+\]
+Thus $Y_c\to I$. Choose one late cutoff satisfying all the symmetry
+conditions and $\|Y_c-I\|<1$. Its inverse is the norm-convergent
+series $\sum_{n\ge0}(I-Y_c)^n$: multiplication of the partial sums
+leaves the remainder $(I-Y_c)^{n+1}$, which tends to zero. In particular
+$\|Y_c^{-1}\|\le(1-\|Y_c-I\|)^{-1}$. The intertwining identity and
+invertibility give $Y_c(\ker A_c)=\ker T$.
+
+Since $Y_c$ is a real polynomial expression in $T,A_c$, it commutes
+with both symmetries. Therefore $\mathcal L=Y_cL_c$ is an isomorphism
+with $\mathcal L\mathcal E=M$, and descends to
+\begin{equation}\label{eq:finite-rank-quotient-isomorphism}
+                         W/\mathcal E\simeq V/M
+\end{equation}
+intertwining the induced conjugations and signed actions. Only one
+sufficiently late $L_c$ is used; convergence of $L_c$ is unnecessary.
+
+If a smooth representative of the limiting correlation table has the
+same tested correlations, its physical null space equals $M$.
+Physical nullity implies tested nullity by integration, while the
+converse follows by the smooth bump argument for every separated
+spectator word. Hence \eqref{eq:finite-rank-quotient-isomorphism}
+identifies that physical quotient with the free quotient. Construction
+of the smooth representative and its derivative hierarchy, the actual
+calibrated maps $L_c$, the local equation estimate, and the paid
+comparisons remain separate inputs. This section proves the finite
+projection, dimension and symmetry transport on their common family
+and extraction.

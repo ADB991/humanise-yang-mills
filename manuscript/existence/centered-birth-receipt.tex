@@ -1,0 +1,108 @@
+\section{Propagating the selected terminal birth to a moment bound}\label{ex-selected-birth-receipt}
+
+This section records the finite-volume terminal receipt used on the public selected-history route. It starts from the calibrated family, its same-history multiscale data, and the birth polynomial made from a finite list of observables. The result is a mode-by-mode normalized moment estimate. It is a conditional receipt: it uses the selected-history service and migration data stated below, rather than deriving those upstream construction inputs.
+
+Let $\mathcal V$ be a finite marker set and let $\mathsf B$ be its census. For each $a\in\mathcal V$, choose a grade label $s_a$, a terminal site $o_N(a)$, and a signed coordinate motion $g_a$. Let $O_a$ be the corresponding local cylinder observable, and define its terminal translate by
+\[
+ T_a(U)=g_a\cdot O_a\bigl(\operatorname{pull}(o_N(a),U)\bigr).
+\]
+Assume the selected family makes each $T_a$ continuous on the compact terminal configuration space. Write $R_N$ for the selected terminal representative and set
+\[
+ \mathcal B_N(U)=R_N(U)\,\operatorname{Pass}\!\left(
+    \sum_{a\in\mathcal V} e_{\{a\}}T_a(U)\right),
+\]
+where the marker algebra has square-free multiplication: $e_S e_{S'}=e_{S\cup S'}$ for disjoint subsets and $0$ otherwise. The polynomial pass is the finite exponential in this nilpotent algebra. For every mode $I\subseteq\mathcal V$, its coefficient satisfies
+\[
+ (\mathcal B_N(U))_I=R_N(U)\prod_{a\in I}T_a(U).
+\]
+The coefficient for the empty mode is $R_N$. This is the selected terminal birth identity.
+For this selected terminal representative, $R_N$ is the bare Wilson density. Write
+\[
+ Z_{N,p}:=\int R_N(U)\,d\mu_N(U)>0,
+ \qquad
+ \omega_{N,p}(F):=Z_{N,p}^{-1}\int R_N(U)F(U)\,d\mu_N(U).
+\]
+
+\begin{theorem}[Selected-history birth moment bound]\label{thm:ex-selected-birth-moment}
+Fix a selected family, volume $N$, period $p$, grade $d$, and reference scale $k$ with $C.\mathrm{ref}(d)\leq k<N$. Suppose the family satisfies its calibration conditions and the same-history finite-volume receipt supplies the terminal birth, its backward Wilson transitions, the scale-$k$ service resources, and the positive vacuum treasury. Assume also the geometric inputs at $k$: positive weights $w_a$, site assignments $o_k(a)$, an occupancy bound, the migration identity for the site assignments, and the separated-origin condition for every nontrivial mode. Suppose further that
+\[
+ w_a\,\mathfrak m_a\leq \mathfrak f_k\leq1\quad(a\in\mathcal V),
+\]
+where $\mathfrak m_a$ is the paid coefficient size of label $s_a$ at scale $k$ and $\mathfrak f_k$ is the scale's small price. Require the service receipt to give measurable mode densities $H_I$, a common scalar $\sigma$, and real costs $A_k,D_k$ such that its representative is nonnegative, its support exponent is nonnegative, and its reserve is $f=1$, with
+\[
+ w_I|H_I(U)|\leq \exp(\sigma+A_k),\quad
+ Z_{N,p}\geq\exp(\sigma-D_k),\quad
+ A_k+D_k\leq |\Lambda_k|\mathcal T_k+|\mathcal V|(x+y+2f),
+\]
+where $w_I=\prod_{a\in I}w_a$, $x=3\mathfrak f_k$, and $y=\mathfrak f_k$. The same-history receipt identifies $H_I$ with the scale-$k$ coefficient of the backward birth. Then for every census mode $I$,
+\[
+ \left|\omega_{N,p}\!\left(\prod_{a\in I}T_a\right)\right|
+ \prod_{a\in I}w_a
+ \leq \exp\!\left( |\Lambda_k|\,\mathcal T_k+6|\mathcal V|\right),
+ \label{ex-selected-birth-bound}
+\]
+where $\omega_{N,p}$ is the normalized finite-volume Wilson expectation, $\Lambda_k$ is the scale-$k$ lattice, and $\mathcal T_k$ is the finite-volume vacuum treasury cost. The conclusion is conditional on the listed service, geometry, and paid-coefficient hypotheses.
+\end{theorem}
+
+\begin{proof}
+First, $\mathcal B_N$ is integrable. The selected terminal representative is continuous, each $T_a$ is continuous by assumption, and the finite marker polynomial is a finite sum of products of these functions. Hence every coefficient of $\mathcal B_N$ is continuous. The terminal configuration space is compact, so each coefficient is integrable against the normalized product-Haar prior.
+
+For $k\leq i\leq N$, let $\mathcal B_i$ be the coefficient polynomial obtained by the selected backward transition. It satisfies
+\[
+ \mathcal B_i=\operatorname{Push}_i(\mathcal B_{i+1}),
+ \qquad \mathcal B_N\text{ as above},
+\]
+where the fine-to-coarse kernel is normalized in its output variable:
+\[
+ \int k_i(U,V)\,d\mu_i(V)=1\qquad\text{for each fine configuration }U.
+\]
+The density push is therefore
+\[
+ (\operatorname{Push}_iF)(V)=\int k_i(U,V)F(U)\,d\mu_{i+1}(U),
+\]
+where $U$ is fine and $V$ is coarse. For an integrable coefficient $F$, slice integrability and Fubini give the precise conservation identity
+\[
+ \int (\operatorname{Push}_iF)(V)\,d\mu_i(V)
+ =\int F(U)\left(\int k_i(U,V)\,d\mu_i(V)\right)d\mu_{i+1}(U)
+ =\int F(U)\,d\mu_{i+1}(U).
+\]
+For this terminal birth, $R_N$ is the bare Wilson density, so $Z_{N,p}=\int R_N\,d\mu_N$. For the selected Wilson transition the density is bounded on the finite configuration space, and the source slice-integrability property ensures that each coefficient of the product integrand is integrable on every fixed slice. Fubini therefore applies at each step. Since coefficient extraction is a continuous linear map on the finite-dimensional marker algebra, it commutes with this finite integral. Inductively, for each mode $I$,
+\[
+ \int (\mathcal B_k(U))_I\,d\mu_k(U)
+ =\int (\mathcal B_N(U))_I\,d\mu_N(U)
+ =Z_{N,p}\,\omega_{N,p}\!\left(\prod_{a\in I}T_a\right),
+ \label{ex-selected-birth-integral}
+\]
+where $Z_{N,p}>0$ is the finite-volume Wilson partition function. The second equality uses the terminal birth identity and the definition of normalized expectation. This establishes the exact finite-volume transfer of the moment; no continuum limit or interchange of an infinite sum is involved.
+
+At scale $k$, the same-history receipt yields a served marked representation of $\mathcal B_k$. Its finite response estimate gives at marker $a$ a coefficient bound by three times the paid coefficient size and a total activity bound by that paid size. Multiplying by $w_a$ and using $w_a\mathfrak m_a\leq\mathfrak f_k$ gives the coefficient and activity bills $x=3\mathfrak f_k$ and $y=\mathfrak f_k$. The factor three is the local coefficient bound from the response estimate; the activity bill is its unmultiplied support charge. The separated-origin condition and occupancy estimate are what make this finite response estimate valid for a whole mode, and migration transports those facts through the backward scales. Since $\mathfrak f_k\leq1$, these satisfy $x+y+2\leq6$.
+
+Here are the precise conditional price assumptions used at the scale-$k$ service step. The marked representation is lawful, its representative is pointwise nonnegative, its support exponent is nonnegative, and its served reserve is $f=1$. For each mode $I$, the local density estimate is
+\[
+ w_I|H_I(U)|\leq \exp(\sigma+A_k),
+ \qquad w_I=\prod_{a\in I}w_a,
+\]
+with $x=3\mathfrak f_k$ and $y=\mathfrak f_k$. The vacuum denominator bound is
+\[
+ Z_{N,p}\geq\exp(\sigma-D_k),
+\]
+and the receipts give
+\[
+ A_k+D_k\leq |\Lambda_k|\mathcal T_k
+            +|\mathcal V|(x+y+2f),\qquad f=1.
+\]
+The reserve contributes the term $2f$; the coefficient $+2$ is not paid merely by the marker fee. Integrating the pointwise inequality yields
+\[
+ w_I\left|\int H_I\,d\mu_k\right|
+ \leq \exp(\sigma+A_k).
+\]
+Divide by the positive denominator lower bound. The scalar $\sigma$ cancels:
+\[
+ w_I\frac{|\int H_I\,d\mu_k|}{Z_{N,p}}
+ \leq \exp(A_k+D_k)
+ \leq \exp\bigl(|\Lambda_k|\mathcal T_k+6|\mathcal V|\bigr),
+\]
+using $x+y+2f=4\mathfrak f_k+2\leq6$. Equation \eqref{ex-selected-birth-integral} identifies this normalized coefficient integral with the desired Wilson moment and proves the result.
+\end{proof}
+
+The terminal product, continuity, and exact backward integration have been proved above. The service certificate, its local coefficient envelope, the origin-counting response, and the finite-volume vacuum lower bound remain explicit inputs to this receipt. Their source correspondence and the exact producer boundary are recorded in the evidence ledger.

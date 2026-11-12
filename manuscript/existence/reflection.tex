@@ -1,0 +1,214 @@
+\section{Reflection positivity and the Euclidean Hilbert space}
+\label{ex-reflection}
+
+Reflection positivity is the mechanism that turns Euclidean correlations into
+an inner product. A second ingredient is needed to make positive-time
+translation contractive: a bound on correlations as the two halves move apart.
+We give the complete argument, keeping this bound explicit.
+
+A word \(w=((x_1,v_1),\ldots,(x_n,v_n))\) records finitely many distinct
+insertion points and their labels. Write \(S(w)\) for its correlation and
+\(\varnothing\) for the empty word. Fix a coordinate axis and call its
+coordinate \(t\). Let \(\mathcal W_+\) consist of words whose points have
+strictly positive \(t\), including the empty word. Reflection \(\theta\)
+reverses the order of a word, reflects the points across \(t=0\), and
+applies the reflected conjugate to each label. Assume \(\theta^2=1\).
+For \(v,w\in\mathcal W_+\), the concatenation \((\theta v)w\) has no
+coincident points: its two parts lie in opposite open half-spaces.
+
+The inputs used in this section are normalization \(S(\varnothing)=1\),
+translation invariance, the reflection relation
+\(S(\theta w)=\overline{S(w)}\), permutation symmetry on distinct
+points, and the following two conditions:
+\begin{align}
+ &\sum_{i,j=1}^m\overline{c_i}c_j S((\theta w_i)w_j)\ge0
+       \quad(w_i\in\mathcal W_+,\ c_i\in\mathbb C),
+       \label{ex-rp}\\
+ &x\longmapsto S((\theta v)(w+x))
+   \text{ is continuous and bounded on }\{x:t(x)\ge0\}
+       \quad(v,w\in\mathcal W_+).\label{ex-cap}
+\end{align}
+The positivity in \eqref{ex-rp} means that the displayed complex number
+is real and nonnegative.
+
+\begin{lemma}[From smeared to point reflection positivity]\label{ex-rp-bumps}
+Suppose the correlations are continuous at every configuration of distinct
+points. Assume reflection positivity for finite sums of smooth compactly
+supported tests on positive-time configurations, with arbitrary fixed label
+tuples for the separate summands. Then \eqref{ex-rp} holds.
+\end{lemma}
+\begin{proof}
+Fix positive words \(w_1,\ldots,w_m\) and coefficients
+\(c_1,\ldots,c_m\). For each nonempty word choose a small configuration
+neighborhood in which its points stay distinct and strictly in the positive
+half-space. Place a nonnegative smooth bump of integral one in that
+neighborhood, centered at the word's positions, with support radius
+\(\epsilon\). Such bumps are obtained by translation and rescaling of
+\(\exp(-1/(1-|x|^2))\) on the unit ball, zero outside, followed by
+division by its positive integral. The empty word has a zero-dimensional
+configuration space; use the constant test one there and counting measure
+of total mass one.
+
+For each pair \(i,j\), the concatenation of a reflected configuration
+near \(w_i\) with a configuration near \(w_j\) has distinct points.
+Within either half this follows from the choice of neighborhood; across
+halves it follows from the strict time separation. Thus its correlation
+kernel is continuous near the pair of centers, even if some spatial
+coordinates agree. Write \(K_{ij}^{\epsilon}\) for its integral against
+the two bumps. Nonnegativity and unit integrals give
+\[
+ |K_{ij}^{\epsilon}-S((\theta w_i)w_j)|
+ \le \sup\bigl|K_{ij}(x,y)-K_{ij}(x_i,y_j)\bigr|\longrightarrow0,
+\]
+where the supremum is over the shrinking product support. The kernels are
+bounded on these compact supports, so the integrals are well-defined.
+Smeared reflection positivity says
+\(\sum_{i,j}\overline{c_i}c_jK_{ij}^{\epsilon}\ge0\).
+There are finitely many terms, and the nonnegative real half-line is closed
+in \(\mathbb C\). Passing to the limit proves \eqref{ex-rp}.
+\end{proof}
+
+This argument needs continuity at all distinct-point configurations.
+Continuity only where every coordinate is pairwise different would not
+suffice: a word and its reflection share spatial coordinates, including in
+the diagonal entries of the reflection matrix.
+
+\begin{lemma}[A sufficient separated-correlation bound]\label{ex-cap-proof}
+Suppose the correlations are smooth at distinct points and, for each fixed
+finite list of labels, there are \(C\ge0\) and \(A\ge0\) such that
+\[
+ |S_{\boldsymbol v}(\boldsymbol x)|\le C\rho^{-A}
+ \quad\text{whenever }0<\rho\le1\text{ and }
+       |x_i-x_j|_\infty\ge\rho\ (i\ne j).
+\]
+Then \eqref{ex-cap} holds.
+\end{lemma}
+\begin{proof}
+Fix \(v,w\). The distances between points within either word are unchanged
+by translation. For a reflected point from \(v\) and a point of \(w+x\),
+their time separation is the sum of their original positive times plus
+\(t(x)\). It is bounded below by a positive number independent of
+\(x\) when \(t(x)\ge0\). There are only finitely many pairs. Choose
+\(\rho\le1\) smaller than all their positive lower bounds; if there
+are no pairs, take \(\rho=1\). The assumed estimate gives the required
+uniform bound. The configuration depends continuously on \(x\) and
+always remains in the distinct-point set, so smoothness gives continuity.
+\end{proof}
+
+\begin{proposition}[Hilbert space and vacuum]\label{ex-gns}
+There is a Hilbert space \(\mathcal H_E\) with vectors \([w]\),
+\(w\in\mathcal W_+\), whose linear span is dense and such that
+\[
+ \langle[v],[w]\rangle=S((\theta v)w).
+\]
+The vector \(\Omega_E=[\varnothing]\) has norm one.
+\end{proposition}
+\begin{proof}
+On the free complex vector space of finitely supported coefficients on
+\(\mathcal W_+\), define
+\[
+ B(c,d)=\sum_{v,w}\overline{c_v}d_w S((\theta v)w).
+\]
+Reflection, \(\theta^2=1\), and permutation symmetry show
+\(B(d,c)=\overline{B(c,d)}\); positivity follows from \eqref{ex-rp}.
+For completeness, Cauchy--Schwarz follows by applying positivity to
+\(c+\lambda d\): if \(B(d,d)>0\), minimize the resulting quadratic
+expression in \(\lambda\); if \(B(d,d)=0\), varying the magnitude and
+phase of \(\lambda\) forces \(B(c,d)=0\). Thus
+\(|B(c,d)|^2\le B(c,c)B(d,d)\).
+Consequently the null vectors \(\mathcal N=\{c:B(c,c)=0\}\) are
+orthogonal to every vector and form a subspace. The quotient by
+\(\mathcal N\) is an inner-product space. Complete it and map each
+word to the class of its basis vector. This gives the stated inner product
+and density. Finally
+\(\|\Omega_E\|^2=S(\varnothing)=1\).
+\end{proof}
+
+Let \(\tau_s w\) translate every point of \(w\) by \(s\) in the positive
+time direction, where \(s\ge0\). Define for a finite formal sum \(c\)
+the vector \(T_s c=\sum_w c_w[\tau_s w]\). At this point \(T_s\) is
+defined on formal sums; descent to the null quotient will follow from its
+norm bound. Translation invariance gives
+\begin{equation}\label{ex-time-symmetry}
+ \langle T_s c,T_t d\rangle=\langle T_0c,T_{s+t}d\rangle.
+\end{equation}
+Indeed, reflecting the translation by \(s\) shifts the first word by
+\(-s\); translating the whole concatenation by \(s\) gives the right
+side. Sesquilinearity extends the identity from words to finite sums.
+
+\begin{lemma}[The contraction estimate]\label{ex-contraction}
+For every finite sum \(c\) and every \(s\ge0\),
+\(\|T_sc\|\le\|T_0c\|\).
+\end{lemma}
+\begin{proof}
+For a single word, \eqref{ex-time-symmetry} gives
+\(\|[\tau_sw]\|^2=S((\theta w)(\tau_{2s}w))\).
+Condition~\eqref{ex-cap} bounds this expression uniformly in \(s\).
+The triangle inequality therefore bounds \(\|T_sc\|\) uniformly for
+every finite sum \(c\). Put
+\(M=\sup_{s\ge0}\|T_sc\|<\infty\) and \(a=\|T_0c\|\).
+By \eqref{ex-time-symmetry} and Cauchy--Schwarz,
+\[
+ \|T_sc\|^2=|\langle T_0c,T_{2s}c\rangle|\le aM.
+\]
+Taking the supremum gives \(M^2\le aM\). Since \(M\ge0\), either
+\(M=0\), or division by \(M\) gives \(M\le a\). Both cases prove
+the result.
+\end{proof}
+
+\begin{theorem}[Euclidean translations]\label{ex-euclidean-semigroup}
+Positive time translations extend uniquely to a strongly continuous
+semigroup \(E_s\), \(s\ge0\), of self-adjoint contractions on
+\(\mathcal H_E\). Spatial translations extend to a strongly continuous
+unitary representation \(U_y\), \(y\in\mathbb R^3\), commuting with
+\(E_s\). Both leave \(\Omega_E\) fixed.
+\end{theorem}
+\begin{proof}
+The contraction estimate sends null vectors to null vectors. It therefore
+defines a contraction on the quotient, and then uniquely on its completion.
+On word vectors, \(E_0=1\) and \(E_sE_t=E_{s+t}\); continuity of the
+bounded operators extends these identities from their dense span to the
+whole Hilbert space. Equation~\eqref{ex-time-symmetry} with one time
+equal to zero says that \(E_s\) is symmetric. A bounded symmetric operator
+defined everywhere is self-adjoint: its adjoint has the same matrix
+elements against all vectors, hence is the same operator.
+
+For a spatial shift \(y\), reflection commutes with the shift. Translation
+invariance gives
+\(\langle[v+y],[w+y]\rangle=\langle[v],[w]\rangle\).
+Thus the shift descends to an isometry on the quotient and its completion.
+Its inverse is the shift by \(-y\), so it is unitary. The group law and
+commutation with \(E_s\) follow on words from commutation of ordinary
+translations, and extend by density. The empty word is unchanged by any
+translation, proving the vacuum assertions.
+
+It remains to prove strong continuity. For a word \(w\), the square of
+\(\|E_sw-E_tw\|\), with word brackets understood, is the sum of the
+two diagonal inner products minus twice the real part of the cross term.
+By \eqref{ex-time-symmetry} these are values of the continuous function
+\(u\mapsto S((\theta w)(\tau_uw))\) at \(2s,2t,s+t\).
+Their combination tends to zero as \(s\to t\). The identical norm-square
+argument and \eqref{ex-cap} give continuity of spatial translations on
+word vectors. Finite linear combinations remain continuous.
+For an arbitrary \(\psi\), choose a finite word sum \(v\) with
+\(\|\psi-v\|<\varepsilon/3\). For either family \(V_z\), its norm
+bound gives
+\[
+ \|V_z\psi-V_{z_0}\psi\|
+ \le2\|\psi-v\|+\|V_zv-V_{z_0}v\|.
+\]
+The last term is smaller than \(\varepsilon/3\) near \(z_0\), proving
+strong continuity.
+\end{proof}
+
+This theorem establishes Euclidean Hilbert-space dynamics from the displayed
+correlation hypotheses. Relativistic reconstruction also requires field
+operators, rotations, locality, boundary distributions and a selected phase
+with a unique invariant vacuum. These do not follow merely by naming the
+Hilbert space. One possible literature route is the corrected reconstruction
+theorem of Osterwalder--Schrader~\cite[\S IV.1]{OS75}; applying that version
+requires checking its linear growth condition as well as its covariance,
+positivity, symmetry and clustering assumptions. That comparison is still
+outstanding here, particularly the passage from bounds for each fixed
+label tuple to the required growth control and the treatment of the selected
+phase.

@@ -1,0 +1,245 @@
+\section{The curvature covariance on the selected tree slice}
+\label{sec:actual-reader-tree-covariance}
+
+The local Gaussian comparison needs an exact identification at the flat
+configuration. Its reference matrix is the inverse on the selected forest,
+whereas the free curvature estimates are expressed using two consecutive
+members of the precision tower. We now identify these two descriptions.
+Everything in this section is on the same pair of finite tori. In
+particular, no limit in the period and no change of forest is involved.
+
+\subsection{Counting coordinates and the flat precision}
+
+Write $E_f^r$ and $E_c^r$ for real $r$-cochains on the fine and coarse
+tori, with their counting inner products. Set
+\[
+ d_f:E_f^0\longrightarrow E_f^1,\quad
+ D:E_f^1\longrightarrow E_f^2,\quad
+ d_c:E_c^0\longrightarrow E_c^1,\quad
+ D':E_c^1\longrightarrow E_c^2.
+\]
+Thus $Dd_f=0$ and $D'd_c=0$. Matrices initially act on one colour;
+tensoring with the identity on the real orthonormal colour space gives
+the physical arrays. There is no volume factor in this convention.
+
+Let $M_f,M_c$ be the actual symmetric two-form metrics at the two levels,
+with $M_f\ge aI$ and $M_c\ge a'I$ for $a,a'>0$. Put
+\[
+ K=D^{\mathsf T}M_fD,\qquad
+ K'=(D')^{\mathsf T}M_cD',\qquad
+ Q=\overline Q+d_cR_0,\qquad
+ A=K+\kappa Q^{\mathsf T}Q,\quad \kappa>0.
+\]
+Here $\overline Q:E_f^1\to E_c^1$ is the selected averaged path
+map, $R_0:E_f^1\to E_c^0$ is its root correction, and $Q$ is the
+derivative of the actual predictor. If $E:E_f^0\to E_c^0$ evaluates
+a potential at the block roots, then
+\begin{equation}\label{eq:reader-root-gradient}
+ Qd_f=d_cE.
+\end{equation}
+Indeed the integral of a gradient along a path is the difference of
+its endpoint values. In $\overline Qd_f$ these are the weighted
+endpoint averages. The root correction replaces each such average by
+the value at the root, giving \eqref{eq:reader-root-gradient}.
+This also explains why a gradient with zero root values costs no
+energy in $A$.
+
+We first relate $A$ to the flat rows used in the local comparison.
+Suppose the selected path coefficients are absolutely summable and
+attached to a two-form row $R_f$: the sum of the coefficients with
+each given endpoint and plaquette type is exactly that row entry.
+Suppose the full factorization and symmetry identities are
+\begin{equation}\label{eq:reader-flat-factor}
+ M_f=\alpha I+R_f^{\mathsf T}R_f,\qquad \alpha>0,
+\end{equation}
+and the curl energy $u^{\mathsf T}Kv$ is invariant under the selected
+signed lattice motions. These are the path attachment, metric
+factorization and symmetry properties of the same fine bed; they
+must refer to that bed, not an independently chosen comparison metric.
+
+At the zero background, with every path admitted, parallel transport
+in each path row is the identity. The coefficient sum in that row is
+therefore $R_f$, by absolute summability and attachment. The fine
+linear response in channel $s$ is $DP_s$, where $P_s$ is the signed
+permutation on link cochains. The predictor response is the signed
+permutation of $Qu$ on coarse bonds. Consequently the channel's
+bilinear form is
+\[
+ \alpha\langle DP_su,DP_sv\rangle
+ +\langle R_fDP_su,R_fDP_sv\rangle
+ +\kappa\langle Qu,Qv\rangle
+ =\langle u,Av\rangle.
+\]
+For the equality, first use \eqref{eq:reader-flat-factor}, then the
+stated invariance of the curl energy; the coarse signed permutation
+preserves the counting inner product. Each channel has this same
+bilinear form, so its normalized orientation average is also $A$.
+Restricting to the selected tree gives the tree compression of $A$.
+This identification is at zero background with all paths admitted;
+the estimates comparing a curved or cut row with it are separate.
+
+\subsection{Rooted gauge projection and the slice inverse}
+
+Fix the selected forest $F$, with one designated root in each block.
+Let $I_F$ insert the coordinates of the nonforest bonds into $E_f^1$,
+putting zero on every forest bond. The coordinate space of these
+free bonds will be denoted $V_F$. For $u\in E_f^1$ define $\phi_u(x)$
+as the oriented integral of $u$ along the forest path from $x$ back
+to its root. Define
+\[
+ \mathcal Pu=u+d_f\phi_u.
+\]
+The root values of $\phi_u$ vanish. The difference of two adjacent
+path integrals is the negative of the intervening oriented bond
+value, so $\mathcal Pu$ vanishes on the forest. If $u$ already
+vanishes there, all its forest path integrals vanish, and
+$\mathcal Pu=u$. Furthermore,
+\begin{equation}\label{eq:reader-slice-projection}
+ A\mathcal P=A,\qquad D\mathcal P=D.
+\end{equation}
+The second equality follows from $Dd_f=0$; the first follows from
+the same identity and \eqref{eq:reader-root-gradient}, since
+$E\phi_u=0$.
+
+The tree comparison of Section~\ref{sec:sector-gram}, specialized
+to the flat field and summed over bonds, gives finite constants
+$b_1,b_2\ge0$ such that
+\[
+ \|u\|^2\le b_1\|Du\|^2+b_2\|Qu\|^2
+ \quad\text{whenever }u\text{ vanishes on }F.
+\]
+Here the block geometry and predictor branch hypotheses of that
+comparison are retained. In particular the fine side is at least
+one hundred times the macro radius and the coarse side exceeds one,
+as in its finite-torus application. Hence the compressed precision
+$A_F=I_F^{\mathsf T}AI_F$ is positive definite, with lower bound
+$\min(a,\kappa)/(1+b_1+b_2)$. Define its extended covariance by
+\[
+ X=I_FA_F^{-1}I_F^{\mathsf T}.
+\]
+For any $u$, write $\mathcal Pu=I_Fv$ in its free coordinates.
+Using \eqref{eq:reader-slice-projection} gives
+\[
+ XAu=XA\mathcal Pu
+ =I_FA_F^{-1}I_F^{\mathsf T}AI_Fv=I_Fv=\mathcal Pu.
+\]
+We have proved the exact identity
+\begin{equation}\label{eq:reader-curl-through}
+ DXA=D.
+\end{equation}
+The full precision need not be invertible. Its inverse on the
+forest slice is enough, because curl is unchanged by the rooted
+gauge projection.
+
+\subsection{Curvature matrices without inverting zero modes}
+
+For any symmetric positive definite matrix $M$ on two-forms and
+any finite curl matrix $q$, there is a matrix $Z$ satisfying
+\begin{equation}\label{eq:reader-curl-solve}
+ (q^{\mathsf T}Mq)Z=q^{\mathsf T}.
+\end{equation}
+To see this, positivity gives
+$\ker(q^{\mathsf T}Mq)=\ker q$. Since $q^{\mathsf T}Mq$ is
+symmetric, its range is the orthogonal complement of this kernel,
+which is precisely $\operatorname{ran}q^{\mathsf T}$. Solve each
+column of \eqref{eq:reader-curl-solve} in that range.
+Any two solutions differ by a matrix with columns in $\ker q$.
+Thus $P_M=qZ$ is independent of the choice. Moreover
+\[
+ P_M=Z^{\mathsf T}(q^{\mathsf T}Mq)Z,
+\]
+by transposing \eqref{eq:reader-curl-solve}. It is therefore
+symmetric and positive semidefinite.
+
+Apply this construction on both tori, choosing
+\[
+ KZ=D^{\mathsf T},\qquad K'Z'=(D')^{\mathsf T},\qquad
+ P_f=DZ,\quad P_c=D'Z'.
+\]
+These are the finite-period free curvature matrices. This
+construction does not divide by the curl eigenvalue at zero
+momentum or discard a harmonic link direction.
+
+Let $A_0:E_c^1\to E_f^1$ be the selected one-form transport.
+The stationarity identities on the same beds are
+\begin{equation}\label{eq:reader-stationarity-input}
+ KA_0=\overline Q^{\mathsf T}K',\qquad
+ \overline QA_0=I-\kappa^{-1}K'.
+\end{equation}
+For completeness, the two-form transport used below is
+$J=H_f^{-1}T H_c$, where $H_f,H_c$ are the diagonal two-form
+operators of the selected beds and $T$ is their installed tower
+map. Their inverse and transport identities give
+\begin{equation}\label{eq:reader-curvature-intertwiner}
+ DA_0=JD'.
+\end{equation}
+The operators $H_f,H_c$ in this formula are the diagonal operators;
+the metrics defining $K,K'$ remain $M_f,M_c$. This distinction is
+needed when the metric has undergone its prescribed repair.
+
+Straighten $A_0$ onto the forest by setting $W=A_0+d_f\Phi$, where
+the column potential $\Phi$ is the backwards forest integral of
+$A_0$, minus the blockwise constant root correction $R_0A_0$.
+It has root values $E\Phi=-R_0A_0$, and the same path difference
+calculation makes $W$ vanish on the forest. Equations
+\eqref{eq:reader-root-gradient}--\eqref{eq:reader-stationarity-input}
+give
+\begin{equation}\label{eq:reader-stationary-slice}
+ QW=I-\kappa^{-1}K',\qquad KW=Q^{\mathsf T}K',
+ \qquad AW=\kappa Q^{\mathsf T},\qquad DW=JD'.
+\end{equation}
+Indeed $QW=\overline QA_0$ because the root correction cancels.
+Also $KW=KA_0$, while
+$(Q-\overline Q)^{\mathsf T}K'=R_0^{\mathsf T}d_c^{\mathsf T}K'=0$.
+Adding $\kappa Q^{\mathsf T}QW$ to $KW$ gives the third identity.
+The last follows from \eqref{eq:reader-curvature-intertwiner} and
+$Dd_f=0$.
+
+\subsection{Exact conditional curvature covariance}
+
+The cross-covariance identity needed in the calculation is
+\begin{equation}\label{eq:reader-cross-covariance}
+ D'QZ=P_cJ^{\mathsf T}.
+\end{equation}
+Transpose $KW=Q^{\mathsf T}K'$ and multiply by $Z$. This yields
+\[
+ K'QZ=W^{\mathsf T}KZ=W^{\mathsf T}D^{\mathsf T}
+       =(D')^{\mathsf T}J^{\mathsf T}.
+\]
+Since $(Z')^{\mathsf T}K'=D'$ and
+$(Z')^{\mathsf T}(D')^{\mathsf T}=(D'Z')^{\mathsf T}=P_c$,
+multiplication by $(Z')^{\mathsf T}$ proves
+\eqref{eq:reader-cross-covariance}.
+
+We can now compute directly. Equations
+\eqref{eq:reader-curl-through} and \eqref{eq:reader-stationary-slice}
+give $DX(\kappa Q^{\mathsf T})=DW$. Also
+\[
+ AZ=D^{\mathsf T}+\kappa Q^{\mathsf T}QZ.
+\]
+Multiplication by $DX$ and use of \eqref{eq:reader-curl-through}
+therefore show
+\[
+ DXD^{\mathsf T}+DWQZ=DZ=P_f.
+\]
+Substitute $DW=JD'$ and
+\eqref{eq:reader-cross-covariance}. We obtain
+\begin{equation}\label{eq:reader-tree-conditional-covariance}
+ (DI_F)A_F^{-1}(DI_F)^{\mathsf T}
+       =P_f-JP_cJ^{\mathsf T}.
+\end{equation}
+In particular the right side is positive semidefinite, being the
+covariance of the curl of a centered Gaussian on $V_F$.
+Tensoring every map with the colour identity proves the same
+identity for all physical colour coordinates and all cross-entries.
+
+Equation~\eqref{eq:reader-tree-conditional-covariance} identifies the
+flat reference covariance on the actual tree with the tower's
+conditional curvature matrix. Together with the flat row
+identification above, it supplies the exact algebraic reference
+for the local Gaussian comparison. Passing from a posed, truncated
+local covariance to this reference still uses the local inverse and
+window estimates. Selecting the beds, path attachment, symmetry and
+stationary tower on one retained history is likewise an incoming
+construction requirement. The identity proves the connection between
+those specified objects; it does not select new ones.
