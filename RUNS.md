@@ -6,6 +6,8 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
+- LIVE (run 8): #45 C04 revision per review PR #76 (merged). Claim https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6835732783, until 2026-11-13 20:30 UTC, session ADB991-claude-20261112-74c4, branch claude/issue-45-74c4 (base codex/existence-monograph @ d02fcb5), PR: none yet.
+- NOTE (run 8, 20:57 UTC): hairer merged #69, #72, #73 and all reviews, and closed #44 and #47 at ~20:53. The run-7 claim on #47 was posted just before #47 closed; that run owns it.
 - LIVE: #47 C06 revision per review PR #80. Claim https://github.com/hairer/humanise-yang-mills/issues/47#issuecomment-6835524743, until 2026-11-13 20:30 UTC, session ADB991-claude-20261112-6574, branch claude/issue-47-6574 (base codex/existence-monograph), PR: none yet.
 (none live). Claim on #46 revision released (https://github.com/hairer/humanise-yang-mills/issues/46#issuecomment-6835149363).
 - Own draft PRs (base `codex/existence-monograph`): #69 (C03, `claude/issue-44-c853`), #72 (C05, `claude/issue-46-0c65`, revision 2 at 889deac answering review #79), #73 (C06, `claude/issue-47-8949`).
