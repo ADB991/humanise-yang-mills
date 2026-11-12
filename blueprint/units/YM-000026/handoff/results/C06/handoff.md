@@ -23,19 +23,50 @@ based on `codex/existence-monograph` at `01ef22c`.
 | seed-unhit-comparison.tex | `64db95a12991aa182893f0aabcb3ba8848786b09f0051dd48024041d85026416` | yes (R7); the earlier request at `6a1aa82f…` no longer applies |
 | seed-energy.tex | `3ae894b6f772d1532b3404d5d024ef9ca2567789de55bc6c099f115e38f10d75` | yes (R2) |
 
-## Established (author check, not a review)
+## Revision 2 (session `ADB991-claude-20261112-6574`, branch `claude/issue-47-6574`)
+
+Answers the independent review in PR #80 (`review/`). Revised chapter
+hashes:
+
+| Chapter | SHA-256 | Review items |
+| --- | --- | --- |
+| predictor-branch.tex | `2ac3c8a13fcb98a2a126607c20899a5d58a037879780ddcd0f059df3eec98c20` | M1 (path endpoints Ly+i → L(y+e_b)+i, patch embedding stated), M2 (new `lem:branch-nearest-projection` with proof), M7(a), M7(h) |
+| seed-geometry.tex | `b1939f55b51d0e1050f481280e1d6c436f0142c30febc61c7ae8ef53e3ec4c71` | M2 (uses the lemma), M3 (new `def:geometry-sector-conditions`, incidence convention) |
+| seed-energy.tex | `6c73fbbf76db453dd067738862676f7a44f9e403cdd7f720d589c87f8ae29998` | M2 (Taylor bound from the lemma; δ with Dδ ≤ ρ), M3 (references; orientation step argued with the incidence convention) |
+| seed-hit-comparison.tex | `e0f47bad6e08b0a8827c9dd00f13860fb4ed65d5cd6e257623ddf5b9e0424ce0` | M3 (reference) |
+| gaussian-warnings.tex | `c70767f4c20a97de71c37afff7a37f231ae40c457836a6877b43ed7587f492fe` | M5 (plateau conclusion, contraction defined, new `lem:warning-vanishes` with the radius transfer B → 2B, margin R_c ≥ R_p + B), M7(f) |
+| leaf-transfer.tex | `71c0a8e267f24dc5cce884a14e7b82eb4c270381838c6e23c1453a68a6c5ff21` | M4 (hypotheses (A), (B); ingredient vs density) |
+| polynomial-moment-attenuation.tex | `b64d7a241dffaeed4fc6e6b4d01bf31e830c9a38c3629591ece6854400fdde2b` | M6 (d ≤ j−2, α > 0, constants before L) |
+| mixed-activity-prices.tex | `7cf6671cbe3aab3321f5c44b6193ad4a858c18dd1afe26d4c6c332a741273c60` | M7(b) (B_c > 0, B_f ≤ 2B_c) |
+| seed-guides.tex | `832eacb89513d2214c1358c4b1a59785fce4f13b4180a5bbd0a73ca5174cabba` | M7(c) (ℓ_{a,i} = path length + 4), M7(d) (ℓ¹ norm), M7(e) (transports from one V) |
+| seed-unhit-comparison.tex | `600a5ed1e871835e6288815f1d358585d657f9ad924d662147dc6500a306607b` | M7(d) |
+
+Unchanged: local-transfer, local-splitting, local-sections, cluster-expansion,
+seed-tree-patch (hashes as below). Records: `ledger.md` (M8: I3, I4/I4', X1,
+X2, X3, X5, rows 29, 33, 77), `correspondence.md` (L1, L2, L5, L6, L8, L9,
+L12–L15), `findings.md`, `validation.md`.
+
+The review found one error in a displayed formula (M1), which the
+author pass below had missed; it is now repaired. M9 (C13, C11, C07) is
+cross-package and was not edited here. Every revised chapter needs
+renewed independent review.
+
+## Established in the first pass (author check, not a review)
 
 All 15 chapters were read in full, and every displayed estimate was
-rederived from its stated premises. No mathematical error was found. The
+rederived from its stated premises. The first pass reported no
+mathematical error; the review then found the wrong path endpoints in
+two displays of predictor-branch (M1), repaired in revision 2. The
 repairs are listed in `findings.md`: one typesetting corruption, one implicit
 constant choice made explicit (checked against `YM.Work.E09.assemble`), and
 local notation repairs.
 
 ## Remaining
 
-- Analytic inputs with no located producer label: X1 (nonlinear transition,
-  `eq:transfer-nonlinear-input`), X2 (physical covariance bound), X3 (local
-  plateau estimates). X4 and X5 (path data and flat stack) are "assigned to
+- Analytic inputs: X1 has the conditional supplier
+  `thm:ex-lattice-volant-supplier` (C02); X2 has the candidate
+  `eq:local-covariance` (C07, unchecked); X3 is produced by C07
+  `warning-safety.tex` (form not checked) (corrected in revision 2). X4 and X5 (path data and flat stack) are "assigned to
   the lattice author" in the parent correspondence, but no package owns them
   in the inventory. G06 should decide where they are produced.
 - Cross-package acknowledgements: I1 and I2 (C05), I3 (C01), I4 and I5 (C08),

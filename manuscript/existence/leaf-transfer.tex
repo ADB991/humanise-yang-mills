@@ -7,8 +7,18 @@ block integral. We state the part of that expansion used here and prove
 the remaining conversion and its constants.
 
 Let $\mathcal T$ be the fine-to-coarse density transfer with block ratio
-$L$, and let $f$ be one real elementary insertion with anchored fine
-support $X$, majorant $c$, and mass $m=m_{\rm fine}(X,c)\ge0$.
+$L$. Let $M$ be one real elementary insertion. It has a local
+\emph{ingredient} $\phi_M$, a real function of the fine field with
+anchored fine support $X$ and majorant $c$, that is
+$|\phi_M|\le c$, and mass $m=m_{\rm fine}(X,c)\ge0$. Its
+\emph{density} $f=\operatorname{dens}(M)$ is the ingredient inserted in
+the fine background gas: the fine background weight times the sum,
+over admissible families of the remaining fine activities, of
+$\phi_M$ times the product of those activities. The support and the
+majorant refer to the ingredient; the transfer $\mathcal T$ acts on the
+density. This is the reading of the consumer in
+Section~\ref{sec:ope-local-projection}, which writes
+$\operatorname{dens}(Q_M)=L^d\mathcal T\operatorname{dens}(M)$.
 Use the same fixed coarse background, threshold and activity alphabet
 as the unmarked transition. A localized expansion has real regular
 terms $h_i$ on anchored coarse supports $X_i$ and a real flagged
@@ -75,8 +85,8 @@ inputs from the nonlinear expansion.
 
 \subsection{Complex fields and the raw expansion}
 To treat a complex insertion, take two real elementary insertions
-with the same support, type and majorant, and combine them as
-$f=f_1+if_2$. Their masses are the same $m$; their principal support
+whose ingredients have the same support, type and majorant, let
+$f_1,f_2$ be their densities, and combine them as $f=f_1+if_2$. Their masses are the same $m$; their principal support
 and index agree. For $z\in\mathbb C$, define
 \[
       H_i=z(h_i^{(1)}+ih_i^{(2)}),\qquad
@@ -95,7 +105,23 @@ absolute convergence of the series, gives the exact raw density
 $z\mathcal T(f_1+if_2)$. This is the reason the same supports and
 principal indices were retained. Applying the splitting of
 Section~\ref{sec:local-splitting} to these raw terms preserves the
-identity. In the elementary application take $z=L^d$ and
+identity. That splitting has two hypotheses on the coarse data, which
+we assume here and list among the inputs at the end of this section:
+\begin{enumerate}
+\item[(A)] \emph{Addresses.} For each response $r_i$ produced by the
+  splitting, supported on $Z_i$, and each nonempty pairwise disjoint
+  family $q$ of original coarse flagged activities meeting $Z_i$, there
+  is a distinct available address with support
+  $Z_i\cup\bigcup_{j\in q}P_j$, flag inventory $\bigcup_{j\in q}I_j$, and
+  additional eligibility predicate satisfied whenever its support has
+  exactly this inventory (Section~\ref{sec:local-splitting},
+  ``Putting the response into the existing gas'').
+\item[(B)] \emph{Background bound.} The original coarse flagged
+  activities $K_j$ have majorants $|K_j|\le b_j$, $b_j\ge0$, with site
+  price $\varsigma=\kappa^2$:
+  $\sum_{j:x\in P_j}m(P_j,b_j)\le\kappa^2$ at every coarse site $x$,
+  where $\kappa>0$ is the constant of \eqref{eq:leaf-small-inputs}.
+\end{enumerate} In the elementary application take $z=L^d$ and
 $f_2=0$ with the same majorant as $f_1$. The bound with the factor
 two remains valid and avoids making the chosen dictionary depend
 on whether one component happens to vanish.
@@ -116,7 +142,8 @@ Assume the already chosen coupling satisfies
  2\kappa^{-1}L^dDs\le\eta_0m,\qquad
                       (2B+1)^4\kappa\le1,
 \end{equation}
-where $\kappa=\sqrt{\text{coarse forced allowance}}>0$.
+where $\kappa>0$ is the square root of the coarse forced allowance,
+that is of the site price $\varsigma$ in hypothesis (B).
 The first two inequalities are required uniformly over insertions.
 They are paid by the same coupling delay as the chosen nonlinear
 transition; choosing a different history here is not allowed.
@@ -149,7 +176,7 @@ $Q_e$ satisfying
                   Q_e\ge(\eta_0+|2L^dV/g|)H_d
 \end{equation}
 gives a coefficient field with coefficient and remainder bounds
-$Q_em$ and exact density $L^d\mathcal T f$.
+$Q_em$ and exact density $L^d\mathcal T f=L^d\mathcal T\operatorname{dens}(M)$.
 This is the numerical projection bound in
 \eqref{eq:ope-leaf-projection}.
 
@@ -168,8 +195,10 @@ not suffice.
 
 The analytic work remaining at this point is explicit:
 construct the common localized expansion with its singleton identity,
-prove \eqref{eq:leaf-tail-input} and \eqref{eq:leaf-flag-input}, and
-fund \eqref{eq:leaf-small-inputs} on the selected history.
+prove \eqref{eq:leaf-tail-input} and \eqref{eq:leaf-flag-input},
+verify the address hypothesis (A) and the background bound (B) for the
+coarse flagged activities of the selected transition, and fund
+\eqref{eq:leaf-small-inputs} on the selected history.
 The finite projection, support correction, principal reserve
 conversion, and passage to the elementary allowance have now been
 proved from those inputs.

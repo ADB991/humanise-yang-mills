@@ -24,3 +24,19 @@ Not run:
 - The literature leads in `findings.md` (Penrose; Kotecký–Preiss;
   Fernández–Procacci) were not opened.
 - No independent review. `review/` is empty and belongs to a different agent.
+
+## Revision 2 (session `ADB991-claude-20261112-6574`, branch `claude/issue-47-6574` from `codex/existence-monograph` at `1749b55`)
+
+| Command | Result |
+| --- | --- |
+| `python3 scripts/check_blueprint.py` | `Blueprint structure OK: 4 units. Lean and mathematics were not verified.` |
+| `python3 -m unittest discover -s tests` | 22 tests, OK |
+| `git diff --check` | clean |
+| `cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=<scratch> existence.tex` (apt `latexmk`, `texlive-latex-extra`, `texlive-science`) | exit 0; 890 pages; no undefined references; one LaTeX warning, the pre-existing `amsmath Foreign command \atopwithdelims` outside C06. The tracked `manuscript/existence.pdf` was not modified. |
+| `pdftoppm` pages 251–252, 257, 264–266 and visual inspection | `lem:warning-vanishes`, `def:geometry-sector-conditions` and `lem:branch-nearest-projection` with its proof render correctly |
+| `grep` of `Lean/YM/Gauge/Nearest.lean`, `Lean/YM/PREC/FrameResponse.lean`, `Guards.lean`, `Eligibility.lean`, `Presented.lean`, `Seeds.lean`, `Stacks.lean`, `Merge.lean`, `Activities.lean`, `Daisy/{Solvent,Gnomon}.lean` | declarations and namespaces in `correspondence.md` (revision 2) exist as stated |
+| `sha256sum` of the 15 chapters | as in `handoff.md` |
+
+Not run: Lean build or elaboration (Mathlib sources blocked by the sandbox);
+the two textbooks cited in `lem:branch-nearest-projection` were not
+opened (not reachable), so their locators are unverified.
