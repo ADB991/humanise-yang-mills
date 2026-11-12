@@ -400,3 +400,39 @@ navigation evidence only. Manifest now correctly excludes the two unintegrated
 historical alternatives from included_sections (their conservative unit.json
 metadata entries remain). No Lean edit/build/axiom replay. Checker and whitespace
 checks pass; whole proof and human acceptance remain outstanding.
+
+## 13:22 UTC —free Ward input application
+
+Updated physical-ward-propagation with the exact now-proved free classifier,
+finite-scene and internal-erasure references, and the distinction between each
+fixed grade/test-family scale and the common scalar. Independent review passed
+8d221691; generic construction hypotheses retained. Build remains870 pages,
+4400995 bytes, clean log. Rendered/viewed791–794 in /private/tmp/ym870-wardjoin,
+no observed clipping/overlap. The earlier870 checkpoint PDF remains published
+until the next assembled snapshot. No Lean build or source changes.
+
+## 13:38 UTC —872-page binding checkpoint
+
+Narrowed selected-course result imported after independent review: literal-family
+Binding and generic Paid weakening only. The draft claiming raw franchise-receipt
+retention was held and replaced; its unsupported conclusion is not in the article.
+First872 build had a7.7pt plateau display overflow; split into two gathered rows
+and obtained exact editorial review carry. Corrected evidence manifest path.
+Final872 PDF is4407859 bytes; clean log. Rendered/viewed564–566 at scale1400,
+no clipping or overlap observed. No Lean edit/build/axiom replay. New audits and
+known-interface package notes do not certify complete dependency closure.
+
+## Threshold handoff validation — 12 November 2026
+
+Weekly remaining reached30% at13:46UTC. No mathematical edit followed the freeze.
+The 21 new issue payloads were published; canonical22 and reserved26 complete the
+23-package index. Independent handoff-document review found disjoint chapter
+ownership and intact review/editorial gates; three clarity fixes were applied.
+Chapter partition/hash check:241 included chapters exactly once; PDF SHA-256
+6a2614c163263bd705703faae3de4cf6ec0ef08d6ef6995a0e7aa7c9cab7f2f3.
+Blueprint checker and whitespace checks are rerun before the release commit.
+No new Lean build, axiom replay or LaTeX build is claimed for coordination-only edits.
+
+The final main-branch fetch was4cf1c97dd820c9996d0242f9956d123a940e2dff.
+Seven separately authored blueprint additions/reviews are linked immutably in
+handoff/upstream-evidence.md; no content review or edit of them is claimed.

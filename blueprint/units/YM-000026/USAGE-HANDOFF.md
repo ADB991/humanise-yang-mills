@@ -20,6 +20,9 @@ final integration/editorial pass explicitly reserved for the user's later reques
 Reconcile live claims, release parent-owned scopes on handoff, link each package
 from the parent issue, and preserve unfinished drafts with honest status.
 
-Last check: 2026-11-12 13:05 UTC (14:05 Europe/Zurich), 34% weekly remaining;
-credits unchanged at 50413.0750500000; no reset available. Next check due 13:20 UTC.
-This file records a working instruction, not an automated background monitor.
+Stop triggered: 2026-11-12 13:46 UTC (14:46 Europe/Zurich), **30% weekly
+remaining** (used70%, weekly window10080 minutes). Credits remained
+50413.0750500000; no reset was consumed. Parent and all three subagents were
+instructed to freeze. Only bounded handoff validation/publication continued.
+No background monitor or automatic resume is scheduled. Final pass requires
+the user's later instruction. See handoff/README.md and the release in issue26.

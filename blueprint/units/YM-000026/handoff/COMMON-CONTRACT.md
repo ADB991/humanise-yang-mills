@@ -1,7 +1,8 @@
 # Contract for the post-checkpoint work packages
 
-This is provisional until the parent publishes the threshold handoff and releases
-its claim. A package document is not a lock. Read the live issue, linked PRs and
+This is the threshold handoff contract. Ready scopes activate with the parent
+claim-release comment in issue26. G04/G06 have prerequisites and F01 is reserved.
+A package document is not a lock. Read the live issue, linked PRs and
 all claims before starting, and recheck after posting the claim required by your
 instructions. Coordinator: @hairer. Source revision:
 `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
@@ -29,6 +30,10 @@ They do not prove dependency closure. Human acceptance remains separate.
 All C packages can begin their own audits in parallel. Edits are disjoint, but
 mathematical completion may wait for another package. No group is presumed to
 have no incoming dependencies merely because it is early in the current PDF.
+Track dependencies at theorem/output level: C16, for example, contains both
+an early public-run constructor and the final assembly. Opposite edges between
+two packages are not by themselves a circular proof; a cycle between the actual
+mathematical premises and conclusions is.
 
 ## Required input/output ledger
 
@@ -75,8 +80,9 @@ metadata additions for the eventual integrator. Machine-readable approvals remai
 unset until the applicable independent review process accepts the final content.
 
 Run `python3 scripts/check_blueprint.py` for blueprint changes and `git diff --check`.
-Build a local wrapper containing your changed chapters and their referenced
-canonical inputs; inspect the changed rendered pages. Record actual commands and
+When changing mathematical LaTeX, build a local wrapper containing your changed
+chapters and their referenced canonical inputs; inspect the changed rendered
+pages. Audit-only reports do not require an artificial LaTeX wrapper. Record actual commands and
 failures; label unrun checks as unrun. Do not rebuild the entire Lean tree or replay
 axioms per package. Preserve Lean, the pinned toolchain and dependencies. Reuse the
 source evidence and #37's separate clean-build work with their exact limitations.
@@ -101,3 +107,7 @@ diff and exact content hashes. F01 may apply reviewed patches and checked editor
 changes, but any substantive assembly rewrite, renaming or changed mathematical
 claim needs renewed independent mathematics/source review. The integrator never
 refreshes another reviewer’s approval itself.
+
+Read [newly merged shared evidence](upstream-evidence.md), including the
+OS, Gaussian/nonlinear/rank interface, Balaban and running-coupling review notes.
+These upstream inputs may be newer than the frozen branch; preserve their ownership.
