@@ -57,7 +57,8 @@ $\vartheta_N^{-1}\leq\beta_N$,
 Choose $N$ large enough that $\beta_N\geq\max\{1,AM\}$. Then
 $A M\beta_N^k\leq\beta_N^{k+1}$, so it suffices that
 $\sqrt{\operatorname{stain}(\beta_N)}\,\beta_N^{k+1}\leq1$.
-For completeness, put $v=\log\log x$. The logarithm of the left side is
+For completeness, put $v=\log\log\beta_N$, which tends to infinity
+with $N$. The logarithm of the left side is
 \[
  (k+1)e^v-\tfrac12e^{v^2/5}.
 \]
@@ -84,10 +85,9 @@ For fixed $X$, every point of $X$ is eventually in the radius-$B_N$ cube.
 Consequently $\operatorname{regional}(X,0)$ lies in the halo of the
 origin. The cube-tiling cover of that halo uses at most $81$ support
 blocks, so
-\[
+\begin{equation}\label{eq:ex-marked-cover}
  \operatorname{coverNumber}(B_N,\operatorname{regional}(X,0))\leq81
- \label{eq:ex-marked-cover}
-\]
+\end{equation}
 eventually. In the source schedule $B_N\to\infty$ follows from
 $\beta_N\to\infty$ and the radius estimate in the finite-volume budget.
 The three local conditions used below are therefore obtained with the
@@ -127,8 +127,14 @@ $\alpha_N\geq0$ and the following exact local inputs:
   $0<w_N$, $|D|w_N\leq1$, and
   $\operatorname{coverNumber}(B_N,D)\leq81$.
 \item The selected terminal representative is lawful and has a terminal
-  Keeper. Also $u_N>0$, $\zeta_{d,N}\geq0$, and
-  $\sqrt{w_N}s_N\leq1$.
+  Keeper: an injective assignment of an address of its dictionary to
+  every triple $(X,I,n)$ with $\varnothing\neq I\subseteq X$ and
+  $n\in\mathbb N$, with support $X$ and inventory $I$, whose additional
+  predicate holds at every configuration with
+  $X\cap\operatorname{flags}(U)=I$. This is the reserved-address part
+  of hypothesis~(2) of Proposition~\ref{prop:terminal-marked-voice},
+  with its zero-activity requirement omitted. Also $u_N>0$,
+  $\zeta_{d,N}\geq0$, and $\sqrt{w_N}s_N\leq1$.
 \item At the terminal budget point, every placed basis column of $T$ is
   regular on its footprint and has derivative bound
   $c_N\theta_N^{s_j}$ for grade $s_j$; this is the selected-family price
@@ -149,22 +155,26 @@ For a basis vector $e_j$ of $F$, define
 
 \begin{proposition}[One-body marked invitation]
 \label{prop:ex-marked-invitation}
-Under these inputs, for each basis vector $e_j$ there is a coefficient
-record $Z_j$ and a regular price $r_N=b_N+c_N$
-such that, with
+Under these inputs, put $r_N=b_N+c_N$ (the regular price),
+$\kappa_N=\operatorname{coverNumber}(B_N,D)\leq81$, and
 \begin{align*}
- t_N&=e^{81\alpha_N}r_N
-       +2|D|\sqrt{w_N}\,e^{81\alpha_N}s_N,\\
+ t_N&=e^{\alpha_N\kappa_N}r_N
+       +2|D|\sqrt{w_N}\,e^{\alpha_N\kappa_N}s_N,\\
  \overline A_N&=e^{81(\alpha_N+2)}s_N.
 \end{align*}
-The record fields are
+Then for each basis vector $e_j$ there is a coefficient record $Z_j$
+with the following fields:
 \begin{align*}
  Z_j.x&=e_j,\\
  &Z_j.\mathrm{Format}(0,C.\mathrm{params},R_N),\\
  &Z_j.\mathrm{remBound}(0,R_N,\sqrt{w_N},t_N),\\
- F.\mathrm{coeffSize}(Z_j.x)+t_N&\leq Q_N.
+ F.\mathrm{coeffSize}(Z_j.x)+t_N&\leq Q_N,
 \end{align*}
-and $0<Q_N$. There are an attenuation $S_j$ and an actual reserved mass
+and $0<Q_N$. Since a remainder bound persists when its bill is
+increased, the same holds with $t_N$ replaced by the larger envelope
+$e^{81\alpha_N}r_N+2|D|\sqrt{w_N}\,e^{81\alpha_N}s_N$, which also
+satisfies the charge inequality. There are an attenuation $S_j$ and an
+actual reserved mass
 \[
 A_j=e^{(\alpha_N+2)\operatorname{coverNumber}(B_N,D)}s_N
 \]
@@ -192,12 +202,13 @@ Equivalently, these are the $\mathrm{Cream}$ fields used by the selected
 field calibration.
 \end{proposition}
 \begin{proof}
-Fix $j$. The coordinate vector
+Fix $j$ and put
 \[
  a=F.\mathrm{scaled}(\theta_N^{-1})e_j,
  \qquad z=F.\mathrm{coords}^{-1}(a).
 \]
-By the inverse-coordinate identity,
+Thus $a$ is the dilated coefficient vector and $z$ the label with these
+coordinates. By the inverse-coordinate identity,
 \[
           F.\mathrm{scaled}(\theta_N)\,F.\mathrm{coords}(z)=e_j.
 \]
@@ -252,12 +263,18 @@ $g=T.\mathrm{places}(a,0,\cdot)$ and residual $r=y-g$, define
 where $A$ is the local-section footprint and each mask is the indicator of
 the corresponding healthy set. The read identity, unit normalization, and
 the projection condition in section soundness give the null-value and
-gauge-vanishing conditions needed for this residual. On the healthy set for $D$,
+gauge-vanishing conditions needed for the residual $r$: both $y$ and $g$
+read the same label $z$, so $r$ vanishes at the identity configuration
+and its action jets through order $d$ vanish. On the healthy set for $D$,
 $\operatorname{mask}_D(r)=r$ and, since $A\subseteq D$,
-$\operatorname{mask}_A(\xi)=\xi$; hence $b_0=0$ there. The read and
-projection identities give the required null-value and gauge-vanishing
-conditions for $r$. The triangle inequality and the two section prices
-then give the pointwise bound
+$\operatorname{mask}_A(\xi)=\xi$; hence $b_0=0$ there. Off that set,
+$|r-\operatorname{mask}_D(r)|\leq|r|\leq|y|+|g|$ and
+$|\xi-\operatorname{mask}_A(\xi)|\leq|\xi|$. The undilated vectors $e_j$
+and $\operatorname{core}e_j$ have coefficient size at most one; their
+dilations, the coefficient vectors of $g$ and $\xi$, therefore have
+coefficient size at most $\operatorname{Seat}_{d,N}$. The triangle
+inequality and the two section
+prices then give the pointwise bound
 \[
  |b_0(U)|\leq \operatorname{price}(V)\operatorname{Seat}_{d,N}
    +2\operatorname{price}(T)\operatorname{Seat}_{d,N}=s_N.
@@ -297,21 +314,49 @@ back to the original one by the canonical crossing map. The inputs are the
 origin support, attachment, nonnegative bound $s_N$, and the merge-price
 budget above. It returns a
 forced family whose gas-mark sum is $b_0(U)$ times the activity gas density
-and whose profile is the prescribed hook. Add this family to the regular
-coefficient produced by the support split. Pointwise, the exponential entry
-contributes the unit coordinate plus the masked residual, while the
-gas-mark sum contributes $b_0$; their sum is the target. The regular
+and whose profile is the prescribed hook. The hypotheses of this step
+are that the terminal representation is lawful and has a Keeper, that
+the region $D$ contains the origin, and that $b_0$ is gauge invariant,
+measurable, determined by the field and the flags on $D$, zero where $D$
+is healthy, and bounded by $s_N$; its price is the merge price
+$\operatorname{mergePrice}(D,s_N)$. The source proves the step by the
+slot-packing construction of the local splitting
+(Section~\ref{sec:local-splitting}), applied to the dictionary with its
+additional predicates temporarily erased and then restored through the
+Keeper. The statement has the same form as the attachment of
+Section~\ref{sec:terminal-marked-construction}, with the footprint $Y$
+and the function $f_v$ there replaced by $D$ and $b_0$, and the merge
+price is the majorant (T4) with $C_d\theta^{-q}\|\operatorname{core}v\|_1$
+replaced by $s_N$; we do not rederive it here. The
+attainment recorded in the statement says that the singleton response
+$S_j$, equal to $b_0$ on the support $D$ and zero on other supports, has
+these properties and is bounded by $s_N$; its reserved mass is by
+definition $e^{(\alpha_N+2)\operatorname{coverNumber}(B_N,D)}$ times that
+bound. Add this family to the regular
+coefficient produced by the support split. Pointwise, the primary part
+contributes the unit coordinate plus the masked core section
+$\operatorname{mask}_A(\xi)$, the regular part contributes the masked
+residual $\operatorname{mask}_D(r)$, and the gas-mark sum contributes
+$b_0$. Since the dilation fixes the unit coordinate and $T$ has unit
+normalization, $g=(e_j)_0+\xi$, where $(e_j)_0$ is the unit coordinate of
+$e_j$. Hence their sum is
+\[
+ (e_j)_0+\operatorname{mask}_A(\xi)+\operatorname{mask}_D(r)+b_0
+   =(e_j)_0+\xi+r=g+r=y,
+\]
+the target. The regular
 remainder's price is its ordinary mass plus the merge price. This
 construction also gives an attainment with reserved mass
 \[
 A_j=e^{(\alpha_N+2)\operatorname{coverNumber}(B_N,D)}s_N
        \leq e^{81(\alpha_N+2)}s_N.
 \]
-The regular part of the remainder is bounded by
-$e^{81\alpha_N}r_N$. The merge-price estimate, in the
-$\sqrt{w_N}$-weighted remainder budget, contributes at most
-$2|D|\sqrt{w_N}e^{81\alpha_N}s_N$. Their sum is $t_N$. Since
-$r_N=b_N+c_N$, $|D|\leq|X|$, and
+The regular part of the remainder has support mass
+$e^{\alpha_N\kappa_N}r_N$, where
+$\kappa_N=\operatorname{coverNumber}(B_N,D)$. The merge-price estimate,
+in the $\sqrt{w_N}$-weighted remainder budget, contributes
+$2|D|\sqrt{w_N}e^{\alpha_N\kappa_N}s_N$. Their sum is $t_N$. Since
+$r_N=b_N+c_N$, $\kappa_N\leq81$, $\alpha_N\geq0$, $|D|\leq|X|$, and
 $\sqrt{w_N}s_N\leq1$,
 \[
  t_N\leq e^{81\alpha_N}(b_N+c_N+2|X|),

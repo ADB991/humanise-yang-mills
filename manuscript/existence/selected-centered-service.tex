@@ -7,11 +7,19 @@ Sections~\ref{sec:common-funded-history} and
 free convergence estimates on their common horizon. We retain the
 prescribed positive blocking penalty throughout.
 
-Choose increasing profile orders and spatial powers, both at least the
-stage index, and support exponents at least $100$. The particular
-choices $6+j$, $2+j$ and $100+j$ suffice for the elementary construction;
-further finite-stage requests may enlarge them before the profiles are
-fixed. Choose the fixed parameter radius and the small response reserve
+Choose nondecreasing profile orders and spatial powers, both at least the
+stage index, and nondecreasing support exponents at least $100$. The
+particular choices $6+j$, $2+j$ and $100+j$ suffice for the elementary
+construction. The selected public run uses the first stage $4$, the
+orders $6+j$, the powers $2+j$, and the constant support exponent
+$b_j=100$ at every stage; the identity $b_j=100$ is retained with that
+run and is required by later consumers. Throughout this section the
+public run $R$ is retained, including its selected shooting parameters,
+its reference schedule $t_R$, its transition records and its transfer
+family. The following paragraphs unpack the construction and the
+estimates of these retained witnesses; where they speak of choosing an
+object, the object meant is the one stored in $R$, and no second choice
+is made. Choose the fixed parameter radius and the small response reserve
 as in Section~\ref{sec:common-observable-purchases}. Make the block-length
 choices before their numerical costs. Apply
 Section~\ref{sec:common-scale-selection} to all the resulting requests,
@@ -34,7 +42,13 @@ strengthened certificate.
 Retain that member, its actual representations $R_{N,p,m}$ and its
 adjacent transitions. All of them use the already purchased paths,
 kernels and clipping data. Choosing the members for the countably
-many pairs $(N,p)$ introduces no new scale request.
+many pairs $(N,p)$ introduces no new scale request. On the run $R$ these
+are stored data: for every $(N,p)$ the run stores the interval family, a
+parameter in its interval, and the identity of its history at $(N,p)$
+with the replay of that family at that parameter. Its nesting receipt
+records that every adjacent pair of this history is a protected and
+accurate transition of the purchased step and that the terminal
+representative carries the reserved addresses.
 
 The original certificate at the chosen parameter supplies the local
 parameter estimates on these histories. Thus the comparisons and fixed-level limits in
@@ -46,12 +60,13 @@ Section~\ref{sec:common-observable-purchases}. In particular, the
 fixed-level convergence is available for the actual selected
 activity arrays, not just for their stationary paths.
 
-Choose a reference level $t_d$ for each grade $d$ such that
+Put $t_d=t_R(d)$, the reference level stored in the run for the grade
+$d$. The public construction supplies
 \[
-                         d+3\le J(t_d).
+                 1\le t_d,\qquad d+3\le J(t_d).
 \]
-These levels exist by divergence of $J$. They may be chosen
-nondecreasing by taking finite prefix maxima. At each adjacent step
+Such levels exist by divergence of $J$; no monotonicity of
+$d\mapsto t_d$ is recorded or used. At each adjacent step
 choose the wing containing the origin principal modes and the keeper
 keys for all relevant support/inventory shapes. These keys form a finite
 set: the torus is finite, so its support powerset and the pairs
@@ -78,11 +93,15 @@ in this construction are the adjacent maps already chosen above;
 the downward induction does not select another background history.
 The unit, gauge invariance and signed-motion identities are preserved
 by the exact local section and by the equivariant finite assembly.
-Thus these transfer data form one family on the retained history.
+Thus these transfer data form one family on the retained history. On the
+run $R$ this family is the stored transfer family $S_R$, and the adjacent
+maps are its stored transition records; for $t_d>N$ the stored transfer
+datum is a default map and carries no assertion, as explained in the
+proof of Proposition~\ref{prop:ex-original-history-attachment}.
 
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
-$t_d\le k\le N$. We verify the inputs of
+$t_d\le k\le N$; in particular $k\ge1$. We verify the inputs of
 Theorem~\ref{thm:ex-selected-run-service} for this family.
 
 At every step above $k$, the ordinary and raised menu estimates of
@@ -90,10 +109,12 @@ Section~\ref{sec:finite-menu-history-handoff} apply to the selected
 transition. Its input and output are exactly $R_{N,p,m+1}$ and
 $R_{N,p,m}$. Its three tariff inequalities give the local duty
 bound and the same single-marker derivative. The terminal clause
-is supplied by Section~\ref{sec:terminal-marked-construction}:
-the reserved slots, marked density and forced-profile identity are
-constructed on the exact startup representation, with their separate
-entrance fee paid before scale selection.
+is supplied by Proposition~\ref{prop:terminal-marked-voice}:
+the marked density and forced-profile identity are
+constructed on the exact startup representation, from the reserved
+addresses recorded in the nesting receipt of the run, with their separate
+entrance fee paid before scale selection
+(Section~\ref{sec:common-observable-purchases}).
 This proves retention all the way to the terminal level.
 
 The room and bank constants are those chosen for the local
@@ -171,3 +192,38 @@ rank and ultraviolet comparisons must still be made on this family.
 They will use the same reference levels and transfers; the centered
 construction above is already fixed before those comparisons or a
 volume subsequence are chosen.
+
+\paragraph{Relation to the paid selected-history record.}
+Section~\ref{sec:actual-marked-portfolio-calibration} consumes a record
+(R1)--(R7) on the same family and the same transition records. Its
+parameters are those of this section: the stage function $W$ is the
+purchased worth, $u_i=\eta_i$, $\phi_i$, $\delta_i$ and $\zeta_{d,i}$
+are the marker prices displayed above, $r_i=N_{J(i+1)}$, the doors are
+the stored transition records, and $\psi_i$ is the common waybill
+\eqref{eq:history-common-waybill} at level $i+1$. With these
+parameters, the present section assembles the following items, each from
+the inputs named in its place above. The room and bank inequalities (R1)
+are those of the purchased budget. The scale bounds (R2) are the
+positivity of the marker prices and the three displayed inequalities.
+The monotonicity in (R3) is that of the occupancy bound. The retention
+clauses and the terminal clause of the second paragraph of this
+subsection are (R4). Of (R5), this section supplies $\phi_i\le1$,
+$\psi_i\ge0$, the second, third and fourth displayed inequalities, the
+bound $X=C_d$, the cover number one, and the terminal inequality for
+$u_N$. The backward transfer data, with their door-by-door comparison at
+price $\psi_i$ and their terminal forced-profile identity, are (R6).
+Three items are not part of the centered service and are not derived in
+this section: $r_i\ge1$ in (R3); the positivity $\zeta_{d,i}>0$ and the
+first inequality of (R5), which is
+\eqref{eq:ex-marked-height-jump} for the prices above; and the paid
+one-step input (R7). They belong to the stronger form of the funded
+continuation described in the proof of
+Proposition~\ref{prop:ex-original-history-attachment}: $r_i\ge1$ is the
+prescribed lower bound of the occupancy schedule, positivity is that of
+$\widehat\beta_i$, the first inequality of (R5) is the tail clause of
+the delay purchased in Section~\ref{sec:common-observable-purchases},
+and (R7) is the local transition estimate obtained in that proof from
+the nesting receipt, the transition records and the floor-length
+condition of Section~\ref{sec:common-observable-purchases} at grade
+zero. For none of the items has this
+section a self-contained proof: each rests on the cited producers.
