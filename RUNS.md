@@ -6,12 +6,8 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
-(none live). Claim on #47 released (https://github.com/hairer/humanise-yang-mills/issues/47#issuecomment-6829136812); claims on #44 and #46 were released earlier.
-- Own draft PRs (base `codex/existence-monograph`): #69 (C03, branch `claude/issue-44-c853`), #72 (C05, branch `claude/issue-46-0c65`), #73 (C06, branch `claude/issue-47-8949`). No reviews or comments on #69 or #72 as of 16:20 UTC. Next run: check #69, #72 and #73 and issues #44, #46 and #47 for review comments. Reviews of C03, C05 and C06 must be done by someone else, so don't claim them. Fix substantive review findings only under a new author claim on the issue.
-- C06 open items for other packages: X1 (`eq:transfer-nonlinear-input`), X2 (`eq:warning-covariance`) and X3 (`eq:warning-plateau`) have no producer label. X4 and X5 (path data, flat stack) have no owning package. G05 notation proposals N1–N4; G03 leads (Penrose, Kotecký–Preiss) unverified.
-- Candidate next tasks: another unclaimed C package (C07–C12 and C15/C16 had no claims at 16:20 UTC; C07 #48 and C08 #49 are the main consumers of C06), G03 bibliography (#59), or C14 #55 (large). Recheck claims first. Trishen holds C01 and C02.
-- Build note: `latexmk existence.tex` in manuscript/ overwrites the tracked `manuscript/existence.pdf`, so use `-outdir`.
-
+- LIVE: #46 C05 author revision answering review PR #79. Claim https://github.com/hairer/humanise-yang-mills/issues/46#issuecomment-6834951826, Until 2026-11-13 18:00 UTC, session `ADB991-claude-20261112-3b89`, branch `claude/issue-46-0c65` (PR #72). If this run is interrupted: finish the M/L items of `results/C05/review/` on PR #79, or post CLAIM RELEASED with handoff.
+- Reviews received (schmittj, changes requested, no theorem false): C03 -> PR #77 (on my #69), C05 -> PR #79 (on #72), C06 -> PR #80 (on #73), C04 -> PR #76 (on merged #66). Next runs: revise #69 and #73 under new author claims on #44/#47 (C06 item: predictor-branch.tex fine paths must start at Ly+i; nearest-point projection needs proof/reference).
 ## for Andrea
 - Network allowlist blocks the Mathlib sources (github.com/leanprover-community/mathlib4, mathlib4.lean-cache.cloud) and projecteuclid.org. Without them, reviews here cannot elaborate Lean and cannot check the OS papers (#6). Allowing these hosts in the environment's network settings would unblock both.
 
