@@ -306,6 +306,27 @@ same bed family and the actual primal and two-form transports. In
 particular its retained-horizon equality is equality of the bed families;
 its tower equality preserves the $A_0,T$ rows used by the schedule.
 
+The resulting prices are indexed by the smoothing stage. Write $F$ for the
+finite set of two-form labels, $J_i$ for the stage at level $i$, and
+$\alpha_j>0$, $\Omega_j$ for the corresponding retained strip width and
+cost. For each level $i$, $\Omega_{J_i}\geq0$: the covered bed bounds a
+nonnegative weighted row sum for a fixed face label, and the face-label set
+is nonempty. At a fixed step $i<N$, the
+retained tower and its fine bed have width $\alpha_{J_{i+1}}$ and cost
+$\Omega_{J_{i+1}}$, while the coarse bed has width $\alpha_{J_i}$ and cost
+$\Omega_{J_i}$. For any $0\leq\sigma\leq\min(\alpha_{J_{i+1}},
+\alpha_{J_i})$, the response of these very beds and tower therefore has
+the order-two atlas of Theorem~\ref{thm:ex-lattice-response-atlas}, with
+cost
+\[
+ |F|^2 e^{4\sigma}\Omega_{J_{i+1}}^2\Omega_{J_i}.
+\]
+The first tower difference exists at the required order because the
+admissible stages are at least four. For a fixed step these prices are
+common to all terminal cutoffs $N>i$; they need not be bounded by one
+constant over all stages. Periodization and its uniformity require the
+separate quotient-fibre argument and the same retained data.
+
 The source contract's remaining numerical receipts are explicit: the
 chosen price functions bound the bed strip widths/costs, floor constants,
 iterated tower costs, and the one-step crossing and roll identities at all
@@ -313,7 +334,12 @@ $N,i$ and finite torus sides. The top bed is the unit diagonal because the
 top train is constant. These are exactly the fields of the horizon contract;
 they are not consequences of the block identity alone. In the public
 construction the level schedule and these receipts are attached to the
-preselected run, as stated next.
+preselected run, as stated next. The public horizon contract alone does
+not identify its transport rows with the particular recursively produced
+ones above. For the flat quadratic output, the completion-independence
+argument of Lemma~\ref{lem:ex-lattice-flat-same-output} permits the
+auxiliary priced construction to be compared on the same blocking data;
+it does not identify the two horizons or their individual tower rows.
 
 \subsection{Actual path data and the public binding}
 \label{subsec:ex-lattice-horizon-path}
@@ -330,8 +356,9 @@ absolute summability of the path coefficients: its exponential weight is
 at least one. It also implies absolute summability after multiplying by
 the bounded face curl of $a$. Therefore we may first group the path sum
 by physical face, and then sum over the finite set of torus faces.
-Let $F_W$ be the actual roots block in the selected bed factorization,
-acting on periodic two-form fields. Periodizing the cover entries by the
+Let $W$ be the selected bed's metric on this torus, and let $F_W$ be
+the actual roots block in its factorization, acting on periodic two-form
+fields. Periodizing the cover entries by the
 attachment identity gives, for each color component $q$,
 \[
  (\ell_{\mathrm{path}}(b,a))_q=\bigl[F_W((d_1a)_q)\bigr](b),
@@ -342,17 +369,35 @@ product. This is the entrywise path-to-root identity used in the physical
 quadratic-form computation; the absolute bound justifies the only
 infinite regrouping.
 
-For the selected RG history, the construction receipt gives the attachment
-identity for every cutoff $N$, level $i\leq N$, and period label $p$,
-between the bed $H_{N,i}$ and the path at that same history, cutoff, level,
-and period. The public adapter carries the original levels and retained
-horizon into the component theorem; it does not choose another schedule.
-Thus the path-to-root identity above applies to the same bed rows that
-enter the tower calculation. The weighted row bound is an additional
-priced path input: it is what supplies absolute summability, and is not
-concluded from attachment alone.
+The direct block in the full root is also needed. For two one-form
+variations $a,a'$, the identity $J_p^{\mathsf T}J_p=W$ and the displayed
+path-to-root equality give, with the sum over physical plaquettes,
+\[
+ \langle d_1a,Wd_1a'\rangle
+ =p_{\rm direct}\langle d_1a,d_1a'\rangle
+  +\sum_{f}\langle\ell_{\rm path}(f,a),
+                   \ell_{\rm path}(f,a')\rangle.
+\]
+For colour-valued fields the inner products are taken in an orthonormal
+colour basis. This is a finite counting-measure identity; no lattice-volume
+normalization is inserted. It uses both the direct block and the attached
+root block of the same bed.
 
-The matrix identities proved here discharge the tower side of the
-selected construction. The path attachment and absolute bounds are
-separate receipts of the selected path history, and are kept explicit in
-the source crosswalk rather than inferred from the matrix bounds alone.
+The public-run adapter carries its original levels and retained horizon
+into the native component construction; its flat quadratic receipt uses
+that very horizon. For that same run, the attachment identity holds for
+every cutoff $N$, level $i\leq N$, and period label $p$. Indeed, the
+successful history retains at $(N,p,i)$ the path fixed by its underlying
+recipe. That recipe's path is the designated path of the retained bed
+family, and the bed construction attaches its root row to that designated
+path. These two path equalities give the attachment for the actual history;
+no independently selected family is substituted. The run's Wilson
+representation supplies its own weighted path-row bound at every such
+cutoff, level and period, with the width and price of that level. This
+separate bound supplies absolute summability; it is not concluded from
+attachment alone.
+
+The matrix identities prove the block calculation once its displayed
+inputs hold. The selected tower prices, path attachment and absolute bounds
+come from the separate receipts just described; they are not inferred from
+the block calculation alone.

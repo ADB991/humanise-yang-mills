@@ -187,12 +187,16 @@ For a coefficient row $K$ on $\Lambda_L\times\mathcal C$, define
  =K(r+\pi_L(e_a),i,j,z-c_a(r))-K(r,i,j,z),
 \]
 where $c_a(r)$ is the centered-lift carry characterized in the proof below.
-For a word $u=(a_1,\ldots,a_s)$ set
-$K_{e,\emptyset}=K_{e,0}$ and
-$K_{e,(a,u)}=\nabla_a^L K_{e,u}$. If $K_{e,u}$ is the real Fourier
-coefficient row of $\mathcal S_{e,u}$, then
-$K_{e,(a,u)}=\nabla_a^L K_{e,u}$. Consequently the order-$s$ difference
-row has width cost $C_{e,s}L^{-(e+s)}$.
+For a word $u$, define the iterated operator recursively by
+$\nabla_{\emptyset}^L=\mathrm{id}$ and
+$\nabla_{(a,u)}^L=\nabla_a^L\nabla_u^L$. The real Fourier coefficient
+rows defined above obey
+\[
+ K_{e,u}=\nabla_u^L K_{e,\emptyset}.
+\]
+Under the preceding analytic and overlap hypotheses, the order-$s$
+difference row has width cost $C_{e,s}L^{-(e+s)}$ whenever
+$s=|u|\leq j-2$.
 \end{lemma}
 
 \begin{proof}
@@ -280,7 +284,7 @@ The nonzero-residue port vector and scalar are
 R_{P,l}(p)=\operatorname{blow}_{P_{\rm wing}.mass,L}(p,l)^2
                        \beta_{P_{\rm wing}}(q_l).
 \]
-The land divisor is $\rho_P(p)=\operatorname{divisor}(P_{\rm land}.mass)(p)$, and the tail
+The land divisor is $\mathfrak d_P(p)=\operatorname{divisor}(P_{\rm land}.mass)(p)$, and the tail
 vector is
 \[
  \operatorname{tail}_{P,a}(p)=k^{-1}+
@@ -298,11 +302,11 @@ Further set
 and, with $x_a(p)=\operatorname{tail}_{P,a}(p)/b_{P_{\rm land}}(p)_a$,
 \[
  B_P(p)=\mathcal P_{P_{\rm wing}}(q_0)
-      \bigl(\mathcal T_2(x(p))-\rho_P(p)\mathcal M_2(x(p))\bigr),
+      \bigl(\mathcal T_2(x(p))-\mathfrak d_P(p)\mathcal M_2(x(p))\bigr),
 \]
 \[
- N_P(p)=\rho_P(p)^2I-
- \rho_P(p)\mathcal P_{P_{\rm land}}(p)
+ N_P(p)=\mathfrak d_P(p)^2I-
+ \mathfrak d_P(p)\mathcal P_{P_{\rm land}}(p)
           \Sigma_1^1(p)M_P(p)\Sigma_1^1(-p)^{\mathsf T}.
 \]
 For a nonzero alias $l$, let $D_{P,l}$ be the vector with components
@@ -396,20 +400,20 @@ not periodic when $M>1$).
 
 For clarity, the branch algebra is verified here. All products below are
 matrix products in the indicated face spaces. At a nonzero alias write
-$q=q_l$, $s=\rho_P(p)$, $D=\mathcal M_1(D_{P,l})$, $D'=
+$q=q_l$, $s=\mathfrak d_P(p)$, $D=\mathcal M_1(D_{P,l})$, $D'=
 \mathcal M_1(b_{P_{\rm land}}(p))$, and abbreviate the two order-one
 signals and the order-one/order-two fluxes by their displayed symbols. The
 port definitions and the divisor recovery identity give
 \[
 \operatorname{chainY}_P(p,q)
-   =Y_{P,l}(p)\,\rho_P(p)^2,
+   =Y_{P,l}(p)\,\mathfrak d_P(p)^2,
 \qquad
 \operatorname{portD}_{P,l,a}(p)=L^{-2}\mathscr D_{P_{\rm wing},a}(q_l).
 \]
 The first equality follows by substituting
 $R_{P,l}=\operatorname{blow}_{P_{\rm wing}.mass,L}^2
 \beta_{P_{\rm wing}}(q)$ into $Y_{P,l}$ and then using
-$\rho_P^2\beta_{P_{\rm land}}/\beta_{P_{\rm wing}}$ for the ratio
+$\mathfrak d_P^2\beta_{P_{\rm land}}/\beta_{P_{\rm wing}}$ for the ratio
 of the two bend factors; the second is the definition of the port vector
 after cancellation of its blow-up denominator. Also
 \[
@@ -461,7 +465,7 @@ proves the bulb network identity
  b_{P_{\rm land},a}(p)=\operatorname{heel}_{P,a}(p)+
              s\operatorname{tail}_{P,a}(p).
 \]
-For the zero branch write $q=q_0$, $s=\rho_P(p)$, $H$ and $H'$
+For the zero branch write $q=q_0$, $s=\mathfrak d_P(p)$, $H$ and $H'$
 for the wing and land pulses at $q$ and $p$, $d=\Sigma_1^1(p)$,
 $\delta=\Sigma_L^1(q)$, $v=\Phi_{P,2}(p,0)$,
 $u=\Phi_{P,1}(p,0)$, and $m=\operatorname{mirage}_{1,1}(p)$.
@@ -600,6 +604,38 @@ $\mathrm{zone}=\pi/4$ is the padding. Since $\pi+\mathrm{zone}<2\pi$,
 no nonzero reciprocal vector can connect zero momentum to another point
 of this cube; this is the separation used above.
 
+The reality needed to recover the original symbol from the real coefficient
+row is a separate property from this overlap law. Entrywise complex
+conjugation does not transpose a matrix. For real momenta, the patch mass,
+train covariances and their scalar contractions are real and even. The
+exterior signal at $-p$ is the entrywise conjugate of the signal at $p$;
+the same holds for its transposed partner and for the flux. The pulse has
+the same conjugation property. These statements follow directly from the
+opposite-momentum factors $e^{ip_a}-1$ and $e^{-ip_a}-1$, the real even
+covariances, and the displayed pulse and flux formulas. Entrywise
+conjugation preserves sums and the order of matrix products. Applying it to
+each factor in the two script formulas therefore gives their values at
+$(-p,-q)$. For $p\ne0$, the branch identities and
+$q_{-l}(-p)=-q_l(p)$ give
+\[
+ \overline{F(P,p,l)}=F(P,-p,-l).
+\]
+At $p=0$ this also holds: the zero-alias column is the real identity and
+the other columns vanish. The same argument gives this conjugation law for
+the one-form pilot column, using its own script formula and the same zero-mode
+values. Conjugating
+\eqref{eq:ex-lattice-spread-symbol}, using
+$\overline{\chi_u(q)}=\chi_u(-q)$ and reindexing $l\mapsto-l$, yields
+\[
+ \overline{\mathcal S_{e,u}(P,r,p)}
+       =\mathcal S_{e,u}(P,r,-p)
+\]
+for real $p$ in the enlarged cube, for either column family. Its Fourier
+coefficients are consequently real by the calculation following \eqref{eq:ex-lattice-wire-width}. Thus
+the real coefficient row reconstructs the full periodic symbol, not merely
+its real part. This is the reality input used when transferring the symbol
+identities to real finite-torus transport matrices.
+
 The product estimates use the following weights, all uniform on a common
 complex cube and independent of $L$:
 \begin{center}
@@ -631,12 +667,17 @@ derives the component estimates used in that multiplication.
 
 \begin{theorem}[Wire symbol yields the tower's order-$e$ strip receipt]
 \label{thm:ex-lattice-wire-tower-strip}
-Under $j\geq4$, odd $L$, and the entrywise weighted analytic bound together
-with the reciprocal-shift overlap identity \eqref{eq:ex-lattice-wire-overlap},
-there are $\sigma>0$ and $C_{e,j}>0$, independent of the flight,
+Fix stages $j,t\geq4$ with $t\leq j\leq t+1$, a coupling $k>0$, and
+an integer $e\geq0$. Consider flights with odd coarse side $L\geq3$,
+and suppose the entrywise weighted analytic bound and the reciprocal-shift
+overlap identity \eqref{eq:ex-lattice-wire-overlap} hold with common
+analytic width and cost over this flight family. Then there are $\sigma>0$
+and $C_{e,j}>0$, independent of the flight,
 residue, and period, such that for every word $u$ of length $s$ with
 $s\leq j-2$, the cross-kernel row $K_{e,u}$ has strip width $\sigma$ and cost
 $C_{e,j}/L^{e+s}$ for every flight, residue, and fixed type pair.
+The width and cost may depend on the fixed stages and coupling, the input
+analytic width and cost, and $e$; no uniformity in these parameters is claimed.
 In particular $e=2$ gives the tower component $T$ the base cost
 $C_{2,j}/L^2$ and each first-difference cost $C_{2,j}/L^3$ required by
 Lemma~\ref{lem:ex-lattice-cross-atlas}.
@@ -676,7 +717,9 @@ scaling and the carry-corrected differences. Its mathematical dependence on
 the actual dual-kernel producer is restricted to the entrywise weighted
 analytic estimate and the component inequalities listed in the audit. In particular, the
 finite-residue geometry, scale powers, geometric coefficient summation,
-overlap gluing, and finite uniformization are proved here. The selected
-response atlas then follows from Theorem~\ref{thm:ex-lattice-response-atlas}.
+overlap gluing, and finite uniformization are proved here. To apply
+Theorem~\ref{thm:ex-lattice-response-atlas} to the selected response, one
+must additionally match the tower and its fixed data to that response and
+supply the two bed bounds required by the theorem.
 \label{rem:ex-lattice-free-kernel-inputs}
 \end{remark}
