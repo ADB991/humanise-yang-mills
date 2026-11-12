@@ -1,0 +1,383 @@
+\section{Bounded local approximations on the original phase grid}
+\label{sec:actual-phase-grid-approximants}
+
+The comparison argument requires bounded real observables which approximate
+whole replicated fields under the original finite-volume law. A bound on a
+single expectation would not suffice. We construct these observables using
+one insertion at the terminal scale and a second insertion at an intermediate
+scale. Their difference is controlled by the marked estimate, before taking
+any limit or choosing a phase.
+
+Fix the selected family $C$ and the extraction order already used for its
+centered estimates. Write $a_i$ for the physical mesh, $\sigma_i$ for the
+running scale, $c_i$ for the column count, and $\ell_i$ for the accumulated
+column logarithm. Thus $a_i\to0$ whereas $\sigma_i\to+\infty$.
+At grade $d$ the finite coefficient space has coordinate norm $\|\cdot\|_1$,
+coordinate basis $(e_s)$, and reference depth $r_d$. The finite-volume
+observable associated with $L$ is denoted by $O_{N,p}(L)$, with its base
+point at the origin. All expectations below use the original Wilson
+probability measure $\mu_{N,p}$.
+
+We use the paid selected-history data of
+Sections~\ref{sec:actual-marked-portfolio-calibration}
+and~\ref{sec:selected-centered-service}: the coefficient transport on this
+history, its adjacent density and forced-profile identities, and its height,
+transition, occupancy and support estimates. In particular the positive
+heights $\zeta_{d,i}$ and weights $\phi_i$ satisfy
+\[
+ 0<\phi_i\leq1,\qquad
+ \phi_i L_i^{d+1}\zeta_{d,i}\leq\zeta_{d,i+1},\qquad
+ L_i=a_i/a_{i+1}.
+\]
+These data are used with the same local sections and transition kernels at
+every occurrence below. The availability of this entire paid history is an
+input here; it is not inferred merely from the existence of an unmarked
+Wilson measure.
+
+\subsection{Transporting a bounded local observable}
+
+For $k\leq N$, let $\mathsf B_{k,N}$ be the iterated averaging operator
+which carries a scale-$k$ observable to a function of the scale-$N$
+configuration. At the step from $i$ to $i+1$ it uses the transition kernel
+of the selected history, with that history's coupling at $i+1$ and its
+fixed terminal indices $(N,p)$. Its adjoint $\mathsf P_{k,N}$ pushes
+densities from $N$ to $k$, relative to product Haar measure. Normalization
+of each transition kernel, followed by induction, gives
+\begin{align*}
+ \|\mathsf B_{k,N}F\|_\infty&\leq\|F\|_\infty,\\
+ \mathsf B_{k,N}\overline F&=\overline{\mathsf B_{k,N}F},\\
+ \int (\mathsf P_{k,N}g)F\,d\nu_k
+   &=\int g\,\mathsf B_{k,N}F\,d\nu_N.
+\end{align*}
+Here $\nu_i$ is product Haar measure at scale $i$, $F$ is bounded
+measurable, and $g$ is integrable. The last identity follows first at one
+step by integration against the kernel, and then by iteration. The same
+argument with $F=1$ proves preservation of the density integral.
+
+The local geometry supplies a useful stronger identity. Fix a coarse depth
+$J\leq k$ and a window radius $R$. Choose $k$ large enough that the
+propagated radius-$R$ windows, based at distinct $J$-cell centers, remain
+inside their respective chambers at every intervening depth. This is the
+room condition. To verify it, let $h_i$ be the calendar index at depth
+$i$, so $h_{i+1}\leq h_i+1$, and recall $L_i\geq3$. Starting with
+$R_k=R$, the kernel read set has propagated radius
+\[
+ R_{i+1}=L_iR_i+10(h_{i+1}+3)L_i.
+\]
+Put $T_i=30a_i(h_i+5)$. Since $a_{i+1}=a_i/L_i$,
+$T_{i+1}\leq(2/3)T_i$ and
+$a_{i+1}R_{i+1}-a_iR_i\leq T_i/3$. Therefore
+\[
+ a_iR_i+T_i\leq a_kR+T_k\qquad(i\geq k).
+\]
+Both $a_kR$ and $T_k$ tend to zero. Choose $k$ so that
+$2(a_kR+T_k)<a_J$. Then $2a_iR_i<a_J$ at every later depth,
+which places the window inside the centered $J$-chamber, using the
+odd-subdivision chamber convention. This proves the required room
+condition uniformly in terminal depth, period and number of cells. If $F_i$ depends only on the window at cell $i$,
+then
+\begin{equation}\label{eq:actual-grid-factor}
+ \mathsf B_{k,N}\left(\prod_{i\in A}F_i\right)
+       =\prod_{i\in A}\mathsf B_{k,N}F_i
+\end{equation}
+for every finite set $A$ of distinct cells. Indeed, at one transition the
+kernel variables read by different chambers are disjoint. Integrating
+their product therefore factors. The propagated-window condition permits
+this argument at every subsequent transition. Induction over the depth
+proves the formula. Covariance of the kernels under signed lattice motions,
+and their compatibility with conjugation, also show that transport commutes
+with the centered copy maps. These are identities of the kernels; no
+factorization of the Wilson probability measure is asserted.
+
+At scale $k$, define $F_{k,L}$ to be the physically rescaled exponential
+entry of the primary coefficient $L$. More explicitly it is
+\[
+ F_{k,L}(U)=a_k^{-d}L_0+
+       \mathbf1_{\mathrm{healthy}(k)}(U)\,\mathcal Q_{k,L}(U),
+\]
+where $\mathcal Q_{k,L}$ is the continuous gauge-invariant candidate of the
+local section including its physical factor $a_k^{-d}$, and the indicator
+tests the section's footprint. The
+candidate estimate gives a bound on $|\mathcal Q_{k,L}|$ independent of
+$N\geq k$ and $p$. The indicator has values zero and one; thus $F_{k,L}$
+is bounded and measurable uniformly in these indices. Its complete read
+set, including the mask's halo, lies in the window of radius $R_d+4$,
+where $R_d$ is the stencil radius. Consequently there is $A_k\geq0$ such
+that
+\[
+ \sup|F_{k,e_s}|\leq A_k\qquad\hbox{for every basis index }s,
+\]
+uniformly in $N,p$. For example one may sum the finitely many individual
+bounds. Continuity of the masked field is not needed.
+
+\subsection{The marked discrepancy estimate}
+
+Fix an opened pair of depths $J\leq m$, with $m\geq r_d$, and choose
+$k\geq m$ satisfying the room condition above. Put
+\[
+ E_k=4(1+c_k),\quad
+ G(k,i)=\exp\bigl((\sigma_k-\sigma_i)/8\bigr),\quad
+ S_{J,m}=\exp\left((a_J/a_m)^4\mathcal T_m+5\right),
+\]
+where $\mathcal T_m$ is the vacuum treasury. Choose $w>0$ so that
+\begin{equation}\label{eq:actual-grid-price}
+ w a_m^{-d}\frac{E_k}{G(k,m)}\leq\frac{\zeta_{d,m}}2.
+\end{equation}
+The opening supplies migrating centers for the full $J$-cell census,
+separated at every depth between $m$ and $N$. Their occupancy is one and
+therefore fits the nondecreasing paid occupancy schedule.
+
+\begin{lemma}\label{lem:actual-grid-basis}
+For every basis vector $e_s$ and every $N>k$, there is a coefficient $b_s$
+in the same history's coefficient transport such that
+\[
+ \|e_s-I_kb_s\|_1\leq\tfrac14,
+ \qquad
+ \rho_{J;N,p}\bigl(\mathsf B_{k,N}F_{k,e_s}
+                    -O_{N,p}(T_Nb_s)\bigr)\leq S_{J,m}/w.
+\]
+Here $I_k$ is the coefficient identification at $k$, $T_N$ is the terminal
+identification, and $\rho_{J;N,p}$ is the centered full-census root test
+for $\mu_{N,p}$.
+\end{lemma}
+\begin{proof}
+Apply the backward coefficient construction of
+Lemma~\ref{lem:actual-marked-antilles} to the primary $e_s$ at depth $k$.
+Its initial remainder and forced profile vanish, its format is the primary
+format, and its coefficient norm is at most one. Recenter the resulting
+backward coefficients by the negative of their bottom primary $b_s$.
+Writing the resulting voice as $Z_i$ and its remainder price as $g_i$,
+the construction gives, for $m\leq i\leq k$,
+\[
+ g_i+\|Z_i.x\|_1\leq E_k/G(k,i),\qquad
+ Z_k.x=e_s-I_kb_s.
+\]
+The terminal cone estimate is
+$32(1+c_k)^2\|Z_k.x\|_1\leq2(1+c_k)$.
+Since $c_k\geq1$, it implies the stated quarter bound.
+
+Let $\tau_i=w\prod_{j=m}^{i-1}\phi_j$. The physical rescaling changes
+$a_i^{-d}$ by $L_i^d$ at the next step, and $G(k,i)^{-1}$ changes by at
+most $L_i$. Thus the height recurrence and
+\eqref{eq:actual-grid-price} imply
+\[
+ \tau_i a_i^{-d}E_k/G(k,i)\leq\zeta_{d,i}/2
+       \qquad(m\leq i\leq k).
+\]
+Moreover $\|I_kb_s\|_1\leq1+\|Z_k.x\|_1\leq2E_k$.
+It follows that the negative played coefficient at $k$ costs at most
+$\zeta_{d,k}$ with weight $\tau_k$. This is the input needed for the
+selected insertion service above $k$.
+
+The matching at $k$ is exact, not just a norm comparison. Linearity of
+the played exponential entry and of its forced-profile map gives
+\[
+ Z_k^{\mathrm{exp}}=\mathrm{primary}(e_s)^{\mathrm{exp}}
+                       +\mathrm{played}(-b_s)^{\mathrm{exp}},\qquad
+ Z_k^{\mathrm{forced}}=\mathrm{played}(-b_s)^{\mathrm{forced}}.
+\]
+The second identity uses the zero forced profile of the primary. Hence we
+can first insert the negative terminal observable
+$-O_{N,p}(T_Nb_s)$, transport its marked density down to $k$, and then
+multiply by the positive local factors $F_{k,e_s}$. The selected service
+of Section~\ref{sec:selected-centered-service} applies above $k$ with
+the just verified played-coefficient price. Adding the local factors
+changes its exponential entries to those of $Z_k$ and leaves its forced
+profiles unchanged.
+
+Below $k$ the backward coefficients supply the adjacent density identities
+and finite-support forced-profile comparisons. We verify both transition
+prices. Put $D_i=\operatorname{orbitCost}_d(\psi_i+2c_{i+1})$, where
+$\psi_i$ is the adjacent comparison price. The exact comparison bounds
+its next-level weighted remainder by
+$D_i(g_{i+1}+\|Z_{i+1}.x\|_1)$; its lower-level remainder is $g_i$.
+The paid room and coin inequalities are
+$2D_i\zeta_{d,i+1}\leq1$ and $c_i\zeta_{d,i}\leq1$.
+The marched height estimate, with the harmless factor $1/2$ discarded,
+therefore gives
+\[
+ 2\tau_{i+1}a_{i+1}^{-d}
+     D_i(g_{i+1}+\|Z_{i+1}.x\|_1)
+       \leq2D_i\zeta_{d,i+1}\leq1,
+\]
+and, since $\tau_{i+1}\leq\tau_i$ and $c_i\geq1$,
+\[
+ \tau_{i+1}a_i^{-d}g_i
+       \leq\tau_i a_i^{-d}g_i\leq\zeta_{d,i}\leq1.
+\]
+The finite-support comparison is transported through the actual sound
+gauge door and physically rescaled by the exact adjacent scale identity.
+Its profiles consequently have precisely these two prices. The selected
+transition estimate now descends by induction from $k$ to $m$.
+At each step the centers migrate along the
+same embeddings, the occupancy and separation estimates persist, and the
+pushed singleton coefficients equal the prescribed local densities.
+Thus the marked estimate of Section~\ref{ex-centered-sail} applies at
+$m$. Its local entry price is at most $2$, its forced price at most $1$,
+and its action allowance is $1$, giving total price $2+1+2=5$ per cell.
+These are the same prices derived in the finite-census argument of
+Proposition~\ref{prop:actual-marked-figment}; the new feature here is the
+intermediate positive insertion and the exact matching just proved.
+
+For clarity we identify the coefficient being bounded. Let $\mathcal I$
+be the full set of $J$-cells and $M=|\mathcal I|>0$. Put
+$U=O_{N,p}(T_Nb_s)$ and $F=F_{k,e_s}$. For a subset
+$A\subseteq\mathcal I$, the coefficient after the insertion at $k$ is
+\[
+ \sum_{B\subseteq A}
+ \mathsf P_{k,N}\left(e^{-S_N}
+                \prod_{i\in A\setminus B}(-\mathcal C_i^NU)\right)
+                 \prod_{i\in B}\mathcal C_i^kF .
+\]
+Here $e^{-S_N}$ denotes the unnormalized Wilson density and
+$\mathcal C_i^j$ the centered copy at depth $j$, including its conjugation
+when prescribed by the tiling. Duality, \eqref{eq:actual-grid-factor},
+and commutation with copies show that its integral is
+\[
+ Z_{N,p}\,\mathbb E_{N,p}
+       \prod_{i\in A}\mathcal C_i^N(\mathsf B_{k,N}F-U).
+\]
+This follows by expanding the product over all subsets $B$; the negative
+old factors are retained together inside their pushed density. All
+integrals exist because the terminal fields are continuous on compact
+configuration spaces and $F$ is bounded measurable. Further density
+transport to $m$ preserves this integral, coefficient by coefficient.
+
+For $A=\mathcal I$, denote the last expectation by $\Omega$. Applying
+the marked estimate and dividing by the positive original partition
+function $Z_{N,p}$ gives
+\[
+ |\Omega|w^M\leq
+     \exp\bigl(|\mathrm{Site}(m,p)|\mathcal T_m+5M\bigr).
+\]
+The aligned four-dimensional count is
+$|\mathrm{Site}(m,p)|=M(a_J/a_m)^4$. Taking the $M$th root proves
+$|\Omega|^{1/M}\leq S_{J,m}/w$, which is precisely the asserted root
+test. No change of law or extraction order has entered the calculation.
+\end{proof}
+
+\subsection{Arbitrary real labels and a common coarse depth}
+
+For a label $L$ of grade $d$, put
+$K_k(L)=2e^{\ell_k}\|L\|_1$.
+The vectors $I_kb_s$ in Lemma~\ref{lem:actual-grid-basis} form a basis by
+Lemma~\ref{lem:ex-public-frame-recovery}. If $t=T_N^{-1}L$, solve
+$\sum_s v_sI_kb_s=I_kt$. Then
+\[
+ L=\sum_s v_sT_Nb_s,\qquad
+ \sum_s|v_s|\leq2\|I_kt\|_1\leq K_k(L).
+\]
+The last inequality is the backward coefficient budget of the same
+selected history. Define
+$B^{\mathbb C}_{N,p}=\sum_s v_s\mathsf B_{k,N}F_{k,e_s}$.
+Its supremum norm is at most $K_k(L)A_k$. The room condition puts every
+summand in the origin chamber of the $J$-tiling; eventually the physical
+observables of this fixed grade also lie there. The rooted triangle
+inequality on chamber-interior fields therefore gives
+\[
+ \rho_{J;N,p}(B^{\mathbb C}_{N,p}-O_{N,p}(L))
+                  \leq K_k(L)S_{J,m}/w.
+\]
+The coefficients $v_s$ may depend on $N,p$; their common bound makes the
+supremum estimate uniform in these indices.
+
+Choose
+\[
+ w_k=\frac{\zeta_{d,m}G(k,m)}{2a_m^{-d}E_k}.
+\]
+Then \eqref{eq:actual-grid-price} is an equality. The column estimates
+$\ell_k=o(\sigma_k)$ and $\log(1+c_k)=o(\sigma_k)$ imply
+$K_k(L)S_{J,m}/w_k\to0$, by
+Lemma~\ref{lem:ex-public-radial-choice}. In this limit $J,m,d,L$ are fixed.
+Thus we can choose $k$ to meet both the room condition and any prescribed
+error $\varepsilon>0$, and subsequently take $N>k$ on the original late
+set.
+
+If $L$ is star-real, the exact reality identity makes $O_{N,p}(L)$ real.
+Take $B_{N,p}=\operatorname{Re}B^{\mathbb C}_{N,p}$. It has the same
+supremum bound and chamber support. Since the root test is invariant under
+conjugation and subadditive on these fields,
+\[
+ \rho_{J;N,p}(B_{N,p}-O_{N,p}(L))
+ \leq\tfrac12\rho_{J;N,p}(B^{\mathbb C}_{N,p}-O_{N,p}(L))
+     +\tfrac12\rho_{J;N,p}
+          (\overline{B^{\mathbb C}_{N,p}-O_{N,p}(L)})
+ \leq\varepsilon.
+\]
+Here real fields are identified with their complex-valued inclusions.
+
+For a finite grade ceiling $D$ and a requested coarse depth $J_0$, choose
+\[
+ J=\max\{J_0,r_0,\ldots,r_D\}.
+\]
+Use the opening schedule once to select $m\geq J$ with the required
+opening. The preceding construction then applies to every star-real label
+of grade at most $D$ and each accuracy $\varepsilon_q=(q+1)^{-1}$.
+Its approximation depth and supremum bound may depend on the label and
+$q$, but its coarse depth $J$ and extraction order do not. This is the
+coherent family of origin approximations needed for the comparison grid.
+
+\subsection{From origin approximations to whole grid words}
+
+The same origin approximations must be used for all translated and
+reflected copies. For a real label $v$ and a copy of spin frame $s$, first
+apply the inverse spin frame to $v$, then copy its origin approximation.
+The exact covariance identity turns the corresponding copied physical
+field into the field labelled by $v$ at the desired site. A conjugated
+copy of a real approximant has the same value as its ordinary real
+pullback. All transformed labels remain real. Since the spin-frame set
+is finite, summing their supremum bounds gives a bound $M_{v,q}$ valid
+for every cell at accuracy $q$.
+
+There is also an accuracy-independent bound $A_v$ on the root tests of
+the physical origin fields in these finitely many frames. To obtain it,
+choose a finer depth $j\geq J$ with $9a_j\leq a_J$ and use the centered
+one-field estimate at that depth. The origin is in the margin of width
+$3a_j$ of its $J$-chamber. The centered comparison estimate embeds the
+fine test into this chamber and bounds its root test there. Sum these
+bounds over the finite spin frames. For each fixed $q$, intersect their
+finitely many late sets with those for the origin approximations. We
+obtain, for every cell, chamber-interior fields $X_v,Y_v$ satisfying
+\[
+ \rho(X_v)\leq A_v,\qquad
+ \rho(Y_v-X_v)\leq\varepsilon_q,
+ \qquad |\mathcal C_iY_v|\leq M_{v,q}.
+\]
+The copies of $X_v$ are exactly the physical fields. The prescription for
+$Y_v$ depends only on the label, accuracy and cell frame, and thus works
+simultaneously for arbitrary finite layouts.
+
+For a word $v_1,\ldots,v_n$, set $M=1+\sum_i A_{v_i}$. Since
+$\varepsilon_q\leq1$, both $\rho(X_{v_i})$ and $\rho(Y_{v_i})$ are at
+most $M$. For any injective layout in the actual finite torus,
+Lemma~\ref{lem:ex-public-replace-word} gives
+\[
+ \left|\mathbb E_{N,p}\prod_i\mathcal C_{x_i}Y_{v_i}
+        -\mathbb E_{N,p}\prod_i\mathcal C_{x_i}X_{v_i}\right|
+                 \leq n\varepsilon_q M^{n-1}.
+\]
+The new word is real, measurable and bounded by $\prod_iM_{v_i,q}$.
+This bound holds even for colliding layouts; only the error estimate needs
+injectivity. An empty word has error zero.
+
+Finally consider two fixed injective integer-grid layouts. Translate their
+copies numbered $i<j$ by $ti(1,1,1,1)$ and $tj(1,1,1,1)$. For all
+sufficiently large $t$, their first coordinates separate, so their union
+is injective. For each such fixed $t$, eventual growth of the period
+makes the union injective on the torus as well. Apply the preceding word
+estimate to the concatenated labels. Taking real parts gives the required
+comparison with the real part of the \emph{whole} complex product, since
+$|\operatorname{Re}z|\leq|z|$ and integration commutes with real parts.
+The order of choices is accuracy, pair of copy numbers, sufficiently large
+separation, then the original late cutoff/period limit.
+
+Apply this construction to each of the four pairs of plain and reflected
+words. The difference between their two bounded real approximants has
+supremum bound equal to the sum of their individual bounds. Expanding the
+product of two such differences gives four terms, with total error at
+most $\varepsilon_q$ times the sum of the four accuracy-independent
+word constants. This tends to zero. Theorem~\ref{thm:ex-public-grill}
+therefore applies on the same extraction order and the same coarse grid.
+This supplies its local approximation and separated-pair inputs from the
+paid selected history, rather than assuming those approximations as an
+additional phase hypothesis.

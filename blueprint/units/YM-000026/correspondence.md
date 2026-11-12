@@ -1155,3 +1155,21 @@ relative-Casimir correction, actual rotation laws and normalized Haar
 stress average; physical Ward propagation and its same-Track comparisons
 remain explicit inputs. The held physical-annulus draft is not integrated.
 These bounded passes do not certify global closure or human acceptance.
+
+## 2026-11-12 11:35 UTC — common compiler, actual grids and analytic continuation
+
+Integrated actual-phase-grid-approximants (5f2b6050), same-data local compiler
+(9e22856e), and physical Ward extreme-point analyticity (fe34ec19, display-only
+reflow to 685077ff). Their adjacent evidence maps exact pinned declarations.
+The first supplies actual Origin and coherent real four-pair grids from the
+retained paid Makes/Scrim/Tabs/CellHyp. The compiler matches C1–C8 to one tuple,
+including atomic-list weighted matrix rates, a torus-uniform neighborhood gap,
+retimed interval quantifiers, genuine BodyGrant and white Veins on one alphabet.
+Actual path/clip/Alongside, inherited law and Tissue remain explicit inputs.
+The analytic bridge supplies the extreme-segment analytic rows from OS heat
+evolution, all-grade collinear Ward and commutation; the Hilbert factorial
+estimate closes the smooth-jet-to-analyticity step. Physical Ward propagation
+and actual shell production remain separate. No global closure is asserted.
+
+Fetched main at 454fcbb: maintainer merged PR36; no new source pin or additional
+blueprint notes since 5535cc1. Live issues26/33/34 rechecked; scopes unchanged.

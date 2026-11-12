@@ -1,0 +1,214 @@
+\section{Analyticity along extreme-point motions}
+\label{sec:physical-ward-analytic-continuation}
+
+To continue a Ward identity away from a line, we need analyticity along
+certain one-coordinate motions. Smoothness of the hierarchy does not
+suffice. We derive the required analyticity from reflection positivity,
+positive-time heat evolution, and the collinear angular identities. The
+argument uses only finite-dimensional exponentials of individual spin
+operators; an action of the full rotation group is not an input.
+
+Let $S$ be the smooth, translation-invariant, reflection-positive hierarchy
+already constructed, with finite-dimensional filtered field spaces $E_d$.
+Write $D_b:E_d\to E_{d+1}$ for its derivative operators and
+$T_d(K):E_d\to E_d$ for the angular operators, real-linear in a skew
+matrix $K$ and complex-linear in the field. Assume the derivative insertion
+identities, the collinear angular Ward identities at every grade and arity,
+and the commutation rule
+\begin{equation}\label{eq:ward-analytic-commute}
+ T_{d+1}(K)D_bv=D_bT_d(K)v+\sum_c K_{cb}D_cv.
+\end{equation}
+Signed coordinate symmetries, including reflection of the field labels,
+are the ones already present in the hierarchy.
+
+Fix a coordinate axis $a$. Its reflection-positive Hilbert space is
+$\mathcal H_a$. For a field $v$ and a point $x$ with $x_a>0$, let
+$\Psi_v(x)$ be the vector represented by the singleton insertion there.
+Denote the reflected label by $v^{\dagger_a}$ and the coordinate reflection
+by $\vartheta_a$. If
+\[
+ F_{v,w}(x)=S(v\text{ at }x,w\text{ at }0),
+\]
+the exact Gram identity is
+\begin{equation}\label{eq:ward-analytic-gram}
+ \langle\Psi_v(x),\Psi_w(y)\rangle
+       =F_{w,v^{\dagger_a}}(y-\vartheta_a x).
+\end{equation}
+The inner product is linear in its second variable. Translation invariance
+and the permutation symmetry of the hierarchy prove this identity directly
+from the reflected-word definition of the Hilbert space.
+
+\subsection{Smooth singleton vectors and the positive radial line}
+
+For $b\ne a$, the curve $t\mapsto\Psi_v(x+te_b)$ is continuous by the
+strongly continuous spatial translations on $\mathcal H_a$. Its derivative
+is $\Psi_{D_bv}(x+te_b)$. To justify this as a Hilbert-space derivative,
+first pair with any reflected-word vector. The scalar pairing is a smooth
+separated-point moment, whose derivative is the stated derivative
+insertion. The proposed derivative curve is itself continuous by spatial
+translation. Its Bochner integral from $0$ to $t$ therefore has, against
+every word vector, the same pairing as
+$\Psi_v(x+te_b)-\Psi_v(x)$. Density of word vectors identifies these
+vectors. The fundamental theorem of calculus now gives the strong
+derivative. Iterating this argument with $D_bv,D_b^2v,\ldots$ proves
+smoothness of the entire curve.
+
+In the normal direction there is more: a singleton vector is analytic at
+every positive normal coordinate. Choose an earlier strictly positive
+normal coordinate. Nearby vectors are obtained from that earlier vector
+by the heat semigroup at a strictly positive time. The holomorphic
+positive-time extension of Section~\ref{sec:complex-heat} proves the
+claim. Pairing with a fixed singleton and using
+\eqref{eq:ward-analytic-gram} consequently shows that
+\begin{equation}\label{eq:ward-radial-analytic}
+ t\longmapsto F_{v,w}(te_a)
+ \quad\hbox{is real analytic for }t>0.
+\end{equation}
+For example, near a specified $t_0>0$, place the fixed reflected singleton
+at $t_0e_a/2$ and the variable singleton at $(t-t_0/2)e_a$.
+Their separation is $te_a$ and both lie in the positive half-space.
+
+\subsection{An analytic comparison with the same transverse jets}
+
+Fix $b\ne a$ and the plane generator $K$ with
+$Ke_a=e_b$, $Ke_b=-e_a$. For $u>0$ set
+\[
+ \rho(u,z)=\sqrt{u^2+z^2},\qquad
+ \theta(u,z)=\arctan(z/u),
+\]
+\[
+ Q_{v,w}(u,z)=
+ F_{e^{-\theta(u,z)T(K)}v,\,e^{-\theta(u,z)T(K)}w}
+                    (\rho(u,z)e_a).
+\]
+The exponentials act in the respective finite-dimensional field spaces.
+Expand both labels in finite bases. Each summand is a product of analytic
+matrix coefficients and a fixed radial moment from
+\eqref{eq:ward-radial-analytic}, composed with the positive analytic
+function $\rho$. Thus $Q_{v,w}$ is real analytic on $u>0$.
+
+Define $\mathcal R=u\partial_z-z\partial_u$. Direct differentiation gives
+$\mathcal R\theta=1$ and $\mathcal R\rho=0$. Consequently
+\begin{equation}\label{eq:ward-comparator-pde}
+ Q_{T(K)v,w}+Q_{v,T(K)w}+\mathcal RQ_{v,w}=0.
+\end{equation}
+Also $Q_{v,w}(u,0)=F_{v,w}(ue_a)$.
+Let $G_{v,w}(u,z)=F_{v,w}(ue_a+ze_b)$ be the actual smooth two-point
+function. Its corresponding expression
+$G_{T(K)v,w}+G_{v,T(K)w}+\mathcal RG_{v,w}$ is the angular Ward expression
+for these two insertions.
+
+Every transverse derivative of that Ward expression vanishes at $(u,0)$.
+Here is the reason this follows from the collinear identity for all labels.
+Differentiate the angular expression in one insertion coordinate. The
+new derivative of its linear spatial coefficient contributes
+$\sum_c K_{cb}$ times the corresponding derivative insertion. Combining
+this term with the differentiated spin insertion, using
+\eqref{eq:ward-analytic-commute}, gives exactly the angular expression
+with that label replaced by $D_bv$. All other terms are just differentiated
+moment rows. Thus repeated coordinate differentiation only raises labels.
+The assumed collinear identity applies to every resulting word. In
+particular all $\partial_z^n$ of the two-point angular expression vanish
+at every $(u,0)$ with $u>0$.
+
+We show that $G$ and $Q$ have the same transverse jets, without assuming
+that $G$ is analytic. Put $H=G-Q$, allowing every pair of labels in this
+notation. Then $H_{v,w}(u,0)=0$ and all transverse jets of its angular
+expression vanish. The elementary commutation formula is
+\[
+ \partial_z^n(\mathcal RH)
+    =\mathcal R\partial_z^nH-n\partial_u\partial_z^{n-1}H
+       \qquad(n\geq1).
+\]
+Assume inductively that all transverse jets through order $n$ of every
+$H_{v,w}$ vanish along the positive $u$-axis. Apply $\partial_z^n$ to
+its angular expression and set $z=0$. Both spin terms vanish by the
+induction hypothesis. The last term in the displayed formula also
+vanishes, because the preceding transverse jet is identically zero as a
+function of $u$. We obtain
+$u\partial_z^{n+1}H_{v,w}(u,0)=0$.
+For $n=0$ the same conclusion follows directly without the last term.
+Since $u>0$, induction proves
+\begin{equation}\label{eq:ward-comparison-jets}
+ \partial_z^nG_{v,w}(u,0)=\partial_z^nQ_{v,w}(u,0)
+             \qquad(n\geq0).
+\end{equation}
+This equality of jets alone is not an analytic continuation statement.
+The next Hilbert-space estimate supplies the required convergence.
+
+\subsection{From scalar jets to a Hilbert analytic curve}
+
+We use a useful elementary fact. Suppose $f:\mathbb R\to\mathcal H$ is
+smooth and
+\[
+ \langle f(s),f(t)\rangle=A(t-s).
+\]
+Suppose the derivatives of $A$ at zero agree with those of a scalar
+function analytic at zero. The power series of that function gives
+constants $C,R>0$ with
+$|A^{(n)}(0)|\leq C R^{-n}n!$ for every $n$. Differentiating the Gram
+identity in both variables yields
+\[
+ \langle f^{(m)}(s),f^{(n)}(t)\rangle
+                  =(-1)^m A^{(m+n)}(t-s).
+\]
+In particular, uniformly for all real $t$,
+\[
+ \|f^{(n)}(t)\|^2
+    =|A^{(2n)}(0)|\leq C R^{-2n}(2n)!
+    \leq C(2/R)^{2n}(n!)^2.
+\]
+The last inequality uses $\binom{2n}{n}\leq2^{2n}$.
+Taylor's integral remainder in the Hilbert space is therefore at most
+$\sqrt C(2|h|/R)^{N+1}$ after order $N$. It tends to zero for
+$|h|<R/2$. The Taylor series converges in norm and equals $f$ there,
+proving real analyticity at every point of the line.
+
+Apply this fact to $f(t)=\Psi_v(x+te_b)$ for $x_a>0$ and $b\ne a$.
+By \eqref{eq:ward-analytic-gram},
+\[
+ A(t-s)=F_{v,v^{\dagger_a}}
+                  (2x_ae_a+(t-s)e_b).
+\]
+The smoothness was proved above. The analytic comparator is
+$z\mapsto Q_{v,v^{\dagger_a}}(2x_a,z)$, and
+\eqref{eq:ward-comparison-jets} gives precisely the required derivatives
+at zero. Hence the singleton trajectory is analytic along every transverse
+coordinate, as well as along the positive normal coordinate. Stationarity
+of the Gram kernel is what makes the factorial bound uniform along the
+whole transverse line.
+
+\subsection{Moving an extreme insertion in an arbitrary word}
+
+Consider a configuration of distinct points and one insertion whose
+$a$-coordinate is strictly larger than those of all other insertions.
+Choose a separating hyperplane $x_a=c$ strictly between them. Translate
+it to zero and reflect the fixed spectator word into the positive
+half-space. Reflection positivity then represents the moment, locally in
+any coordinate motion of the extreme insertion, as
+\[
+ \langle\Phi,\Psi_v(x+te_b)\rangle
+\]
+with a fixed word vector $\Phi$. Strict separation persists in a
+neighborhood of the chosen parameter. If $b=a$, positive-time analyticity
+applies; if $b\ne a$, use the transverse result just proved. Applying the
+continuous linear functional $\langle\Phi,\cdot\rangle$ proves
+analyticity of the moment row. Permutation symmetry moves any selected
+slot to the first slot, so no restriction on its position in the word is
+needed. Spectators may have equal $a$-coordinates, provided their points
+remain distinct.
+
+For an insertion strictly smaller in coordinate $a$, use the hierarchy's
+actual signed reflection in that axis, with its reflected labels. It
+turns the insertion into a strict maximum. A motion in coordinate $a$
+changes parameter $t$ to $-t$; a transverse motion leaves $t$ unchanged.
+Both substitutions preserve analyticity. This reflection uses the already
+constructed signed symmetry, not a rotation action yet to be proved.
+
+Every angular Ward expression is a finite sum of such moment rows, with
+labels either turned or raised once and coefficients affine in the moving
+coordinate. It is therefore analytic wherever the moving point is a
+strict extremum in some fixed coordinate. Along a closed segment with
+this property at every point, these neighborhoods cover the segment.
+This is the precise segment analyticity needed for the one-dimensional
+identity theorem in the global Ward propagation argument.
