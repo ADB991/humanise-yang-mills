@@ -11,8 +11,9 @@ by the volume.
 Fix the tree, seed set, coarse field and original predictor tags of
 Section~\ref{sec:packet-annulus}. Let $\mathcal H$ be the active
 free bonds and let $P_{\mathcal H}$ denote restriction to them,
-extended by zero on all other bonds. The seeds include exactly the
-actual coarse flags. An active bond has both coarse endpoints outside
+extended by zero on all other bonds. The seed store's coarse-flag
+component equals the actual coarse flags; it may have other seed
+components. An active bond has both coarse endpoints outside
 the $10B$ seed neighbourhood. A row is selected when its anchor
 is outside the $6B$ seed neighbourhood. These are fixed selections
 for this quadratic form.
@@ -21,13 +22,13 @@ Let $q$ be the number of signed channels and write
 $\lambda=q^{-1/2}$. For a channel $s$ and a fine or predictor
 row $a$, set
 \[
- D_{s,a}u={\bf1}_{\{(s,a)\ {
-m selected}\}}
+ D_{s,a}u={\bf1}_{\{(s,a)\ \text{selected}\}}
              A^V_{s,a}P_{\mathcal H}u.
 \]
-The map $A^V_{s,a}$ is the actual transported cut row, including
-the signed displacement of input colours. In orthonormal colour
-coordinates, define $M$ by
+The map $A^V_{s,a}$ is the flat linear cut row transported using $V$,
+including the signed displacement of input colours. It is not, in general,
+the derivative at the replica of $V$ of the nonlinear curvature or predictor. In
+orthonormal colour coordinates, define $M$ by
 \[
  (Mu)_{s,a}=\lambda D_{s,a}u.
 \]
@@ -45,12 +46,12 @@ If $b$ is the vector of selected affine rows at zero fluctuation,
 including the same factor $\lambda$, linearity of the transported
 rows gives
 \[
- \mathcal Q(u)=\tfrac12\|b+Mu\|_2^2.
+ Q_{\rm quad}(u)=\tfrac12\|b+Mu\|_2^2.
 \]
 This is exactly the orientation average of the extracted squares:
 $\lambda^2=1/q$ supplies its normalization. In particular,
 \[
- \mathcal Q(v+u)-\mathcal Q(v)
+ Q_{\rm quad}(v+u)-Q_{\rm quad}(v)
  =\langle u,M^*b+M^*Mv\rangle
        +\tfrac12\langle u,M^*Mu\rangle.
 \]

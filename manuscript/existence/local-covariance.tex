@@ -36,6 +36,24 @@ a test vector by zero for the first assertion, and restrict the
 nonnegative row and column sums for the second.
 
 \subsection{Exponential decay of the inverse}
+The qualitative exponential decay of the inverse is a special case of
+Jaffard's inverse-decay theorem.\footnote{S.~Jaffard,
+``Propriétés des matrices « bien localisées » près de leur diagonale et
+quelques applications,'' \emph{Annales de l'Institut Henri Poincaré,
+Analyse non linéaire} \textbf{7} (1990), 461--476, Proposition~2,
+p.~464.} His hypothesis requires exponential distance sums to be
+uniformly finite. For the finite coordinate set here, put
+$d'(i,j)=\operatorname{dist}(a_i,a_j)+\mathbf1_{\{i\ne j\}}$.
+This is a metric, and bounded anchor multiplicity gives
+\[
+ \sup_i\sum_j e^{-\varepsilon d'(i,j)}
+ \le m\sum_{n\ge0}(2n+1)^4e^{-\varepsilon n}<\infty
+ \qquad(\varepsilon>0).
+\]
+Moreover \eqref{eq:covariance-data} gives
+$|A_{ij}|\le Qe^\eta e^{-\eta d'(i,j)}$ and makes $A$ invertible.
+We prove the explicit estimate below because we need constants uniform
+in the period and in all principal windows; the empty case is immediate.
 Set
 \[
  \theta=\min\{1,r/(2Q)\},\qquad \gamma=\theta\eta,
@@ -143,14 +161,25 @@ Consequently, once $\delta_B\le1/(2Q)$,
 \begin{equation}\label{eq:local-covariance-floor}
  C\ge(2Q)^{-1}1.
 \end{equation}
-The actual bond windows are colour independent: a coordinate belongs
-to $W_j$ when some coarse endpoint of its bond is within $B$ of
-some endpoint of the bond of $j$. Each endpoint is within one
-of its bond's parent anchor. This proves the required $B$ and
-$B+2$ bounds and shows that complete colour blocks occur together.
-The matrix $C$ has range at most $B+2$. Its closeness to $A^{-1}$
-is a conclusion of the preceding estimates, not a replacement of
-one matrix by the other.
+The local activity bond windows are colour independent: a coordinate
+belongs to $W_j$ when some coarse endpoint of its bond is within $B$ of
+some endpoint of the bond of $j$. Each endpoint is within one of its
+bond's parent anchor. Choosing the two anchors proves the inner bound;
+the triangle inequality proves the outer bound $B+2$. Thus complete
+colour blocks occur together, and $C$ has range at most $B+2$.
+
+A different panel is used for the global selected-source estimates in
+Section~\ref{sec:actual-global-row-prices}. There membership requires
+\emph{every} pair of coarse endpoints to be within an integer threshold
+$R=\lfloor\operatorname{radiusB}(x)/20\rfloor$. For $R\geq2$, it contains
+the anchor ball of radius $R-2$ and is contained in the anchor ball of
+radius $R$: use the same endpoint-to-anchor bound for the first inclusion,
+and take the anchors themselves for the second. It too is colour independent.
+The conservative inner radius $\lfloor\operatorname{radiusB}(x)/60\rfloor$
+used in the global estimates is valid on the stated sufficiently late tail.
+The two window prescriptions need not coincide. In either case, the
+closeness of the symmetrized window inverse to $A^{-1}$ is a conclusion
+of the preceding estimates, not an identification of the two matrices.
 
 For the sector precision, inactive rows and columns of $A$ are
 those of the identity. This property passes to every principal
