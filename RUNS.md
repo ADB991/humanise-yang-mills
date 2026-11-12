@@ -6,10 +6,9 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
-(none). Claim on #45 released (https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6825750554).
-- Own draft PR #66 (C04 author pass, branch `claude/issue-45-5b03`, base `codex/existence-monograph`). Next run: check #66/#45 for review comments; a C04 *review* must be by someone else, so don't claim it. Fix substantive review findings only under a new author claim on #45.
-- Own draft PR #63 (issue #14 review): check for replies.
-- Candidate next tasks: another C package in Andrea's area that's still unclaimed (C03 Euclidean/reflection #44, C14 #55 is large), or G03 bibliography (#59; note Williams Thm 2.19 vs 2.13 mismatch). Recheck claims first.
+- LIVE CLAIM #44 (C03 author): https://github.com/hairer/humanise-yang-mills/issues/44#issuecomment-6827609183, session ADB991-claude-20261112-c853, until 2026-11-13 15:00 UTC, branch `claude/issue-44-c853` (base `codex/existence-monograph` @ 01ef22c). PR: none yet. If this run was interrupted: resume, renew if needed, deliver draft PR + handoff, or release.
+- PRs #63 and #66 merged by maintainer (no review comments).
+- Candidate next tasks after C03: G03 bibliography (#59; Williams Thm 2.19 vs 2.13 mismatch), C14 #55.
 
 ## for Andrea
 - Network allowlist blocks the Mathlib sources (github.com/leanprover-community/mathlib4, mathlib4.lean-cache.cloud) and projecteuclid.org. Without them, reviews here cannot elaborate Lean and cannot check the OS papers (#6). Allowing these hosts in the environment's network settings would unblock both.
