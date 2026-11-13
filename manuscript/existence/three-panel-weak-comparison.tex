@@ -108,9 +108,13 @@ give the quantitative bound
  \le\|f\|_\infty\left\{|K_R|\alpha_k+
                   C_{m,R}(A_k^m+C_Q)\sigma_k\right\}.
 \end{equation}
-The right side tends to zero. Both integrands are continuous on a
-neighborhood of the support, so these are ordinary integrals; no extension
-across coincident configurations is involved.
+The right side tends to zero. For fixed $R$ and $M>0$, the same bound
+therefore holds uniformly over all smooth tests supported in $K_R$ with
+$\|f\|_\infty\le M$; it imposes no bound on their derivatives. This
+uniformity is used in the stress comparison after its readout maps and
+normalizations have been matched to these panels. Both integrands are
+continuous on a neighborhood of the support, so these are ordinary
+integrals; no extension across coincident configurations is involved.
 
 \subsection{Returning to cutoff-dependent insertions}
 
@@ -144,7 +148,11 @@ larger than $E_k(f)+\eta$, so their limit is at least that latter number.
 This is a contradiction. Consequently the actual cutoff errors have the
 same asymptotic upper bound, and that bound tends to zero as $k\to\infty$.
 This compactness argument is performed separately at each fixed $k$ and
-does not replace the original ordered extraction by a new continuum table.
+fixed test; its eventual mesh cutoff may depend on that test and on the
+period index. The earlier bound is uniform in the tests after passing to the
+limiting insertion tuple, but
+this argument does not claim one cutoff that works for all tests at once.
+It does not replace the original ordered extraction by a new continuum table.
 
 \subsection{The three scale inequalities}
 
@@ -240,9 +248,43 @@ comparison depths, choose an increasing sequence of those depths.
 All the eventually valid numerical inequalities remain valid along it.
 There are only finitely many basis words under fixed grade and arity
 bounds; take the maximum of their finitely many thresholds. The preceding
-proof applies to each word on this one sequence, and multilinearity extends
-it to arbitrary labels within these bounds. The empty word is the constant
-one and needs no strip estimate. Unit, conjugation and signed-symmetry
+proof applies to each word on this one sequence. We make the extension to
+arbitrary labels quantitative. For the finitely many reference grades at
+most $D$, choose bases and a constant $C_D\ge1$ that bounds the sum of the
+absolute basis coefficients of a label by $C_D$ times its norm. Let
+$\epsilon_k$ be the maximum of the finitely many basis-word errors in
+\eqref{eq:three-integral}, with $\|f\|_\infty$ factored out. Then
+$\epsilon_k\to0$. For one limiting tuple $Y$ of insertion maps, write
+$U_{k,Y}(x;v_1,\ldots,v_m)$ and $Q(x;v_1,\ldots,v_m)$ for the
+interacting and reference correlations with those labels. Multilinearity
+then gives, for every word of length $m\le n$ and every test supported in
+the same $K_R$,
+\[
+ \left|\int f(x)\{U_{k,Y}(x;v_1,\ldots,v_m)-Q(x;v_1,\ldots,v_m)\}\,dx\right|
+ \le C_D^m\epsilon_k\,\|f\|_\infty\prod_{i=1}^m\|v_i\|.
+\]
+At each fixed arity, the bound uses one limiting tuple of insertion maps
+on every basis word and is uniform in those tests and admitted tuples when
+the basis estimates are uniform there. Its application to the stress
+maps still requires the same readout and normalization identification.
+
+Suppose the common-panel data are available at arbitrarily large depths for
+each finite grade, arity and window request, and the corresponding radii
+tend to zero. At request $h\ge2$, take $n=D=h$ and a window containing the
+first $h$ members of a prescribed compact exhaustion at each arity at most
+$h$. Write $\epsilon_k^{(h)}$ for the finite basis maximum for that request.
+Choose the next depth $k\ge h$ so large that those bounds hold and
+$C_h^h\epsilon_k^{(h)}\le1/(h+1)$; also make its radius smaller than the
+previous one and at most $1/(h+1)$. This gives one increasing comparison sequence with the
+bound $(h+1)^{-1}\|f\|_\infty\prod_i\|v_i\|$ for that finite request.
+For the actual cutoff expression the same finite-basis expansion uses the
+ordered-filter upper bound separately for each fixed test and label tuple:
+divide the desired positive slack by one plus the sum of the absolute
+expansion coefficients, and intersect the finitely many basis-word tails.
+The resulting mesh tail may depend on the period. This diagonal choice does
+not identify its maps or filter with those of a different construction.
+
+The empty word is the constant one and needs no strip estimate. Unit, conjugation and signed-symmetry
 properties of the insertion maps pass through this construction whenever
 they hold eventually at the finite cutoffs. Producing the common marked
 panel data on the selected Wilson history is a separate upstream task;
