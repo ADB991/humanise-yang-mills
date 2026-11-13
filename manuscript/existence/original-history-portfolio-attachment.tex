@@ -197,3 +197,93 @@ chosen, and use it throughout. Reopening the existence statement at a
 later point may produce a different portfolio and is not a same-object
 argument.
 \end{remark}
+
+\subsection{Budget and domain of the stored service}
+\label{sec:ex-stored-service-budget}
+
+Write $W(j)$ for the worth fixed in the purchase, $c_j$ for the
+column count of stage $j$, and $\ell_j$ for its chosen block side.
+At level $i$ put $C_i=c_{J(i)}$ and $L_i=\ell_{J(i+1)}$.
+Thus $C_i$ is the column count denoted by $\Gamma_i$ in
+Theorem~\ref{thm:ex-selected-run-service}; it is unrelated to the
+running-coupling increment. Notice that the level-$i$ block is
+chosen at the \emph{entrance} stage $J(i+1)$.
+
+\begin{proposition}[Room and bank on the purchased levels]
+\label{prop:ex-stored-service-budget}
+The stage purchase can be made so that every allowed schedule has,
+at every level $i\geq0$,
+\[
+ 64 W(J(i)+1)^2\le C_i,\qquad
+ 100000 W(J(i+1)+1)^6(1+C_{i+1})^2\le L_i^{1/8}.
+\]
+In particular the same inequalities hold for the selected run,
+independently of grade, cutoff and period.
+\end{proposition}
+
+\begin{proof}
+After fixing worth and the orders, choose the stage column count
+as a running maximum of the room request $64W(j+1)^2$, the
+factorial of the stage derivative order and the other pre-length
+column requests. An integer count can be used by taking ceilings.
+In particular the profile already pays the room request before any
+length is chosen. With these columns fixed, let
+\[
+ A_j=100000W(j+1)^6(1+c_j)^2,\qquad
+ n_j=\max\{1,\lceil A_j^8\rceil\}.
+\]
+Include $n_j$ in the stage length floor before selecting $\ell_j$.
+This is compatible with all other lower floors: take their maximum
+and, if nondecreasing floors are required, take the running maximum
+of that maximum. Any subsequent increase preserves the two
+purchases. Since $\ell_j\ge n_j$ and the eighth root is increasing
+on the nonnegative reals, $A_j\le\ell_j^{1/8}$. Substitute $j=J(i)$
+in the column inequality and $j=J(i+1)$ in the length inequality.
+The same substitutions apply at $i=0$. The later entrance delays
+and the selection of finite-volume histories do not change the
+stage columns or these lengths.
+\end{proof}
+
+For the common C02 and C12 interface use the direct specialization
+of the funded continuation in
+Proposition~\ref{prop:ex-original-history-attachment}, with family
+$C_R$, reference map $t_R$, transfer data $S_R$ and doors $D_R$.
+The stronger funded service is on precisely these objects. Its
+centered part restricts to each reference level $k$ by retaining
+the transition receipts with $k\le i<N$ and the terminal receipt
+at $N$. The stock clause for grade $d$ is needed only for
+$t_R(d)\le k\le N$, and the music clause for $t_R(d)\le N$ with
+doors $t_R(d)\le i<N$. The restriction makes sense even when
+$k=N$, with no intervening door. The centered birth estimate uses
+the stricter domain $k<N$. All period and cutoff indices range
+over entries of this one run. The local analytic attachments
+needed for retention, music, the paid local coupon and the uniform
+birth estimate are separate from this projection and the numerical
+budget proposition.
+
+There is also a campaign construction with its own chosen
+finite-volume history, transfers and doors. In the stamped original
+campaign the history is $Y_R$ and the transfers are $S_R$, so
+forming its family gives $C_R$ by substitution. The campaign
+service uses the recorded gate of its campaign step for $i\ge1$
+and its $k$-restricted retention is asserted for $k\ge1$.
+At $i=0$ its door is a default. The common interface above uses
+$D_R$ directly, including at level zero, and needs no identification
+of campaign gates with these doors.
+
+For this direct interface put $x_i=\widehat\beta_i$ and
+$r_i=N_{J(i+1)}$, where $N_j$ is the stage occupancy bound.
+The marched weight multiplier is $\phi_i=x_{i+1}^{-1}$ and the
+probe price is $\delta_i=x_{i+1}^{-2}$; both use the fine coupling.
+The grade height is
+$\zeta_{d,i}=x_i^{-(\deg F_d+4)}$ and the response waybill
+$\psi_i$ is twice the title cost at level $i+1$ multiplied by
+the exponential of that level's support exponent.
+The terminal-bank reserve is $u_i=x_i^{-1/2}/4$.
+In particular it is neither the marched multiplier nor the
+adjacent coupon rate. Proposition~\ref{prop:selected-centered-retention}
+gives the separate terminal endowment from the paid delay at $J(N+1)$:
+for $C_N^{\rm end}=w_N^{\rm f}+r_N\mathsf s(B_N)u_N$,
+the bounds are $(2B_N+1)^4 C_N^{\rm end}\le3$ and
+$e^{C_N^{\rm end}}-1\le1$, where $w_N^{\rm f}$ is the forced
+allowance. These numerical bounds require no door beyond the cutoff.
