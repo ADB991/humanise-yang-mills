@@ -76,30 +76,147 @@ $\binom Nr\le N^r$. Consequently
 \]
 For $j=0$ this just states the value one.
 
-Apply this to $A(y)=C(y)C_0^{-1}-1$. Weighted row bounds for the
-derivatives of $C$ and for $C_0^{-1}$ supply the required entry
-bounds by matrix multiplication. Since
+The relative density itself needs one more bookkeeping step, because
+the quadratic form must be priced without an operator norm that has
+not been estimated. We use the row-sum norm
 \[
- \log\det C(y)-\log\det C_0
-       =\log\det(1+A(y))
+ \|K\|_\infty=\max_i\sum_k|K_{ik}|
 \]
-near $y_0$, composition with the logarithm near one gives a
-derivative bound polynomial in $N$, at each fixed order. The
-inverse-matrix estimates of Section~\ref{sec:normalization-jets}
-similarly control $C(y)^{-1}$. If each coordinate of $T_yz$ has
-derivatives bounded by $W$ at $y_0$, the product rule applied to
-$(T_yz)^TC(y)^{-1}(T_yz)$ adds a factor at most $N$ times the
-inverse row price and a fixed-order polynomial in the derivative
-scales and $W$.
+of an $N\times N$ matrix, which is the operator norm on
+$(\mathbb R^N,\|\cdot\|_\infty)$ and is submultiplicative. It is
+bounded by every exponentially weighted row price of
+Section~\ref{sec:local-covariance}, since the weights are at least one.
+For vectors $x,x'$ and a matrix $K$,
+\begin{equation}\label{eq:gaussian-l1-linf}
+ |x^TKx'|\le\sum_i|x_i|\sum_k|K_{ik}||x'_k|
+ \le\|x\|_1\|K\|_\infty\|x'\|_\infty,
+ \qquad |\operatorname{tr}K|\le N\|K\|_\infty .
+\end{equation}
+For a multilinear derivative $D^bK(y_0)$ with matrix values, we write
+$\|D^bK(y_0)\|_\infty\le c$ if
+$\|D^bK(y_0)[h_1,\ldots,h_b]\|_\infty\le c\|h_1\|\cdots\|h_b\|$ for all
+directions $h_1,\ldots,h_b$; likewise for vector values and $\|\cdot\|_1$.
 
-Subtract the value of that quadratic form at $y_0$ and combine it
-with the relative log determinant. The exponent is zero at $y_0$.
-The exponential partition formula from
-Section~\ref{sec:packet-estimates} proves a relative-density bound
-of amplitude one and a derivative scale polynomial in $N$ and
-these prices. This is a finite-rank derivative estimate at the
-base point. It does not yet justify taking derivatives under an
-integral over unbounded $z$.
+\begin{lemma}\label{lem:gaussian-base-density}
+Let $N=|I|\ge1$, $j\ge0$, and let $C(y)$ be a $C^j$ family of
+symmetric positive definite $N\times N$ matrices near $y_0$, with
+$C_0=C(y_0)$. Let $w(y)\in\mathbb R^N$ be $C^j$ near $y_0$, with
+$w(y_0)=z$. Suppose that $P,Q,v,W\ge0$ satisfy
+\begin{equation}\label{eq:gaussian-base-inputs}
+ \|C_0^{-1}\|_\infty\le P,\qquad
+ \|D^bC(y_0)\|_\infty\le Qv^b,\qquad
+ |D^rw_i(y_0)[h_1,\ldots,h_r]|\le W\|h_1\|\cdots\|h_r\|
+\end{equation}
+for $1\le b\le j$, $0\le r\le j$ and every $i\in I$. Put
+$\kappa=\max(1,P)\max(1,Q)$. Then the relative density
+\[
+ R(y)=\frac{p_{C(y)}(w(y))}{p_{C_0}(z)}
+\]
+satisfies
+\begin{equation}\label{eq:gaussian-base-density}
+ R\in\mathcal B_j\bigl(1,\,K_j\,N(1+W)^2\kappa^3\max(1,v);\,y_0\bigr),
+\end{equation}
+where $K_j\ge1$ depends only on $j$. For $N=0$ the ratio is identically
+one.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:gaussian-local-density}, $R=e^L$ with
+\[
+ L(y)=-\tfrac12\{\log\det C(y)-\log\det C_0\}
+      -\tfrac12\{w(y)^T\Gamma(y)w(y)-z^T\Gamma(y_0)z\},
+ \qquad \Gamma=C^{-1},
+\]
+and $L(y_0)=0$.
+
+\emph{The case $j=0$.} Here \eqref{eq:gaussian-base-density} asks only
+for $|R(y_0)|\le1$, whatever the scale, and indeed $R(y_0)=e^{L(y_0)}=1$.
+So the lemma holds with $K_0=1$, and no derivative of $C$ or $w$ enters.
+From now on $j\ge1$. Throughout, $c_r,c'_r,c''_r$ denote constants
+depending only on $r$, and $1\le r\le j$.
+
+\emph{Inverse.} Differentiating $\Gamma C=1$ gives
+$D_h\Gamma=-\Gamma(D_hC)\Gamma$. Induction on $r$ shows that
+$D^r\Gamma(y_0)[h_1,\ldots,h_r]$ is a sum of at most $c_r$ terms of the
+form
+\[
+ \pm\Gamma_0(D^{b_1}C)\Gamma_0(D^{b_2}C)\cdots(D^{b_m}C)\Gamma_0,
+ \qquad b_1+\cdots+b_m=r,\ b_i\ge1,
+\]
+in which the directions $h_1,\ldots,h_r$ are distributed among the
+derivatives of $C$, all evaluated at $y_0$. (The induction step applies
+$D_h$ either to one factor $\Gamma_0$, producing
+$-\Gamma_0(D_hC)\Gamma_0$, or to one factor $D^{b}C$, raising $b$ by
+one; this bounds $c_{r+1}$ by $(2r+1)c_r$.) By submultiplicativity and
+\eqref{eq:gaussian-base-inputs}, each term has row-sum norm at most
+$P^{m+1}Q^mv^r\le\kappa^{r+1}v^r$, since $m\le r$. Hence
+$\|D^r\Gamma(y_0)\|_\infty\le c_r\kappa^{r+1}v^r$, and
+$\|\Gamma(y_0)\|_\infty\le\kappa$.
+
+\emph{Determinant.} Near $y_0$,
+$D_h\log\det C=\operatorname{tr}(\Gamma\,D_hC)$. Differentiating this
+$r-1$ more times by Leibniz's rule gives at most $2^{r-1}$ terms
+$\operatorname{tr}\bigl(D^a\Gamma\cdot D^{b+1}C\bigr)$ with $a+b=r-1$.
+By \eqref{eq:gaussian-l1-linf} and the inverse bound, each is at most
+$N\cdot c_a\kappa^{a+1}v^a\cdot Qv^{b+1}\le c_aN\kappa^{r+1}v^r$.
+Thus
+\[
+ |D^r\log\det C(y_0)|\le c'_rN\kappa^{r+1}v^r .
+\]
+
+\emph{Quadratic form.} Leibniz's rule for the trilinear expression
+$w^T\Gamma w$ writes $D^r(w^T\Gamma w)(y_0)$ as a sum of at most $3^r$
+terms $(D^aw)^T(D^b\Gamma)(D^cw)$ with $a+b+c=r$, all at $y_0$.
+By \eqref{eq:gaussian-base-inputs}, $\|D^aw(y_0)\|_\infty\le W$ and
+$\|D^aw(y_0)\|_1\le NW$, including $a=0$, where $D^0w(y_0)=z$. Now
+\eqref{eq:gaussian-l1-linf} and the inverse bound give, for each term,
+the bound $NW\cdot c_b\kappa^{b+1}\max(1,v)^b\cdot W$. Hence
+\[
+ |D^r(w^T\Gamma w)(y_0)|\le c''_rN W^2\kappa^{r+1}\max(1,v)^r .
+\]
+The Euclidean norm of $z$ and the operator norm of $\Gamma$ on
+$\ell^2$ never enter.
+
+\emph{The exponent.} Combining the two bounds, with $Q\le\kappa$ and
+$W^2\le(1+W)^2$,
+\[
+ |D^rL(y_0)|\le K'_rN(1+W)^2\kappa^{r+1}\max(1,v)^r,\qquad
+ K'_r=\tfrac12(c'_r+c''_r).
+\]
+Let $K=\max_{1\le r\le j}\max(1,K'_r)$ and
+$S=KN(1+W)^2\kappa^3\max(1,v)$. Every factor in $S$ is at least one,
+because $N\ge1$. Therefore, for $1\le r\le j$, using $\kappa^{r+1}\le
+\kappa^{3r}$ and $N(1+W)^2\le\{N(1+W)^2\}^r$,
+\[
+ |D^rL(y_0)|\le S^r .
+\]
+This absorbs the constants $K'_r$ into the scale.
+
+\emph{Exponentiation.} By the exponential partition formula used in
+Section~\ref{sec:packet-estimates}, $D^re^L(y_0)$ is the sum over the
+set partitions of the $r$ directions of $e^{L(y_0)}$ times the product,
+over the blocks, of the derivatives of $L$ of the block sizes. Since
+$L(y_0)=0$, each such product is at most $S^r$, and there are at most
+$r!$ partitions (the Bell number is at most $r!$). Hence
+$|D^rR(y_0)|\le r!S^r\le(j!S)^r$ for $1\le r\le j$, while $R(y_0)=1$.
+This is \eqref{eq:gaussian-base-density} with $K_j=\max(1,j!)K$.
+\end{proof}
+
+In the application $w=T_yz$, the coordinate bound $W$ is that of
+Section~\ref{sec:gaussian-moment-prices}, of the form
+$W\le\sqrt\beta\{u(x)+2m(x)\}+F_I(z)$, and the quantities $P,Q,v$ are
+the weighted row prices of the principal covariance, its inverse and
+their derivatives from Sections~\ref{sec:local-covariance}
+and~\ref{sec:normalization-jets}. Since $1\le F_I(z)$ and $N\le F_I(z)$,
+and $1+a+F\le2(1+a)F$ for $a\ge0$, $F\ge1$, the scale in
+\eqref{eq:gaussian-base-density} is at most $D'(x)F_I(z)^3$ with
+$D'=4K_j\{1+\sqrt\beta(u+2m)\}^2\kappa^3\max(1,v)$, which has
+upper exponent zero when $\kappa$ and $v$ do.
+This is the form \eqref{eq:moment-ratio-jets} used there, before the
+Jacobian factor is multiplied in. This is a finite-rank derivative
+estimate at the base point. It does not yet justify taking derivatives
+under an integral over unbounded $z$; that is the purpose of the next
+subsection.
 
 \subsection{An integrable bound on one open neighbourhood}
 We prove the additional assertion needed for that interchange.
@@ -174,7 +291,8 @@ $F_M(u)=u+\psi(M,u)$. Its displacement in Gaussian coordinates is
 \end{equation}
 Here the fixed coupling satisfies $\beta>0$. The perturbation
 $\psi$ and all its parameter derivatives are uniformly bounded
-for all $u_0$: outside the fixed radius-$2d$ ball it is zero, and
+for all $u_0$: outside the fixed radius-$2d_*$ ball of
+Section~\ref{sec:compensated-variation} it is zero, and
 inside that ball compactness applies. The unmasked mean and its
 derivatives are bounded on a common neighbourhood uniformly in
 the frozen Haar variables. Indeed the frozen cut logarithms are
@@ -214,11 +332,16 @@ nearby point to satisfy the original sector inequalities.
 It follows that every fixed activity factor is unchanged when
 large initial fluctuation coordinates are replaced by bounded
 ones, provided this comparison is made through the compensated
-map and the fine field is held fixed. Use radial truncation at
-radius $3d$: it leaves the radius-$2d$ ball unchanged. Outside
-that ball $F_M$ is the identity; both the old and truncated
-coordinates then remain beyond the cutoff threshold, since
-$8a\tau\le d/2$. Inside it, the coordinates agree. The resulting
+map and the fine field is held fixed. Apply radial truncation at
+radius $3d_*$ to the initial fluctuation coordinates
+$u_0=\nu_0+\beta^{-1/2}z$ of each bond. These do not depend on the
+parameter $y$, so the lack of smoothness of radial truncation in its
+argument plays no role. The truncation leaves the closed
+radius-$3d_*$ ball unchanged, and in particular the radius-$2d_*$
+ball, which is all that is used. Outside that ball $F_M$ is the
+identity; both the old and truncated coordinates then remain beyond
+the cutoff threshold, since $8a\tau\le d_*/2$. Inside it, the
+coordinates agree. The resulting
 bounded input family has uniform parameter derivatives by the
 compact chart construction. The frozen fine factors remain merely
 bounded measurable functions: their regular activities, forced
