@@ -16,3 +16,7 @@ No patch was applied, even in scratch. No claim is made that the historical G02 
 ## Handoff
 
 The mathematical and source comparisons favor the conditional running implication. Actual integration remains incomplete: O1 belongs to the relevant owners/F01, O2 to the public assembly owner. Parent inspects these reports and owns the issue acknowledgement/release. No manuscript, G02 patch, prior report, shared ledger or source is edited; no formal approval, merge, closure or human acceptance.
+
+## Citation correction after submission
+
+Parent session `mgubi-parent-running-citation-20261113`, claim178#6864060631, corrected the Schedule namespace only. `Lean/YM/Lattice/Scale.lean` declares the structure under `namespace YM`; `open Lattice` does not nest the declaration there. The four anchors are `YM.Schedule.denominator`, `YM.Schedule.a`, `YM.Schedule.scale`, and `YM.Schedule.block_large`. Parent inspected the namespace and declarations and reran the blueprint and whitespace checks successfully. Mathematical findings, frozen input hashes and all other report content are unchanged; no fresh Lean or LaTeX run. This correction does not update any other reviewer's verdict.
