@@ -134,6 +134,9 @@ At adjacent levels $m+1,m$ set
  L=L_{J(m+1)},\quad N=N_{J(m+1)},\quad
  \delta_m=y^{-2},\quad \sigma_m=y^{-1}.
 \]
+Here $N_j\ge1$ is the nondecreasing integer occupancy schedule fixed in
+Section~\ref{sec:common-observable-purchases}, so $N$ is the purchased
+occupancy bound at the stage $J(m+1)$ of the incoming level.
 Let $\chi_m$ be the forced-gas price from the two successive
 absorptions, with its actual positive suppression constant and this
 block length. It is the price denoted by $t$ in
@@ -144,9 +147,28 @@ exponent $100+1/2$, and forced output exponent $101$. Their output
 allowances are respectively $1$ and $\chi_m$.
 
 To apply them to several slots in each replica cell, take the finite
-marker set to be the product of the cell set and its slot set.
-The compiler of the finite-menu construction already permits every
-finite marker set. The ordinary coefficient is indexed by individual
+marker set to be the product $V\times S$ of the cell set $V$ and its slot
+set $S$, with a fine site $o(v,\varsigma)$ for every marker. The
+compiler of the finite-menu construction accepts any finite marker set,
+but its estimates are conditional on the hypotheses of
+Section~\ref{sec:finite-menu-history-handoff}, and these must now hold
+for the whole product set:
+\begin{enumerate}
+\item every marker weight $r(v,\varsigma)$ is positive;
+\item the parent-site occupancy is at most $N$: for every coarse site
+ $y$, at most $N$ markers $(v,\varsigma)\in V\times S$ have
+ $\operatorname{parent}(o(v,\varsigma))=y$;
+\item the list of insertions is a menu offer for $V\times S$, with the
+ positions $o$ and the weights $r$: the named sites of each insertion lie
+ in its fine crest, and the offer bound holds at exponent $b_f-4$ and
+ allowance $u$.
+\end{enumerate}
+Condition~(2) counts every pair (cell, slot), so it does not follow from
+an occupancy bound for the cells alone, and enlarging the slot sets can
+violate it at fixed $N$. Nothing in the regrouping argument below
+supplies (2) or (3); they are hypotheses on the marker set and its offer,
+checked by the caller with the purchased value $N=N_{J(m+1)}$ and the
+exponents just stated. The ordinary coefficient is indexed by individual
 markers and the forced coefficients by their subsets. Grouping by
 the cell coordinate is exactly the substitution used in
 Section~\ref{sec:ope-grouping-algebra}. The quiet coefficient stays
@@ -189,7 +211,8 @@ $6L$ elementary transport use the same $\mathcal D$ just identified.
 \subsection{Uniformity above the reference level}
 
 For each grade $d$ retain the reference level $t_d$ with
-$d+3\le J(t_d)$. If $m\ge t_d$, monotonicity gives
+$d+3\le J(t_d)$; such a level exists because $J(m)\to\infty$
+(Section~\ref{sec:common-scale-selection}). If $m\ge t_d$, monotonicity gives
 $d\le J(m)$. The numerical purchases were made for every degree
 up to the predecessor stage, and for every permitted adjacent pair
 of stages, before the scale sequence was realized. Hence the

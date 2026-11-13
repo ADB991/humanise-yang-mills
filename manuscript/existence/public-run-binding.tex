@@ -18,9 +18,15 @@ by $\pi_j$, and its primary and secondary row-price families by $P$ and
 $P'$. The flat-step, curvature-quadratic symmetry and dual-support estimates select their
 floors from these data before the block lengths are chosen. Take their
 maximum together with the original, comparison, treasury and period
-floors, and call it $n_j$. Raising the floor to $n_j$ changes neither
-$K$ nor $\pi_j$ nor $P$. Select block lengths $L_j\ge n_j$ and retain
-all these data when applying the scheduling construction.
+floors, the marked-portfolio thresholds and the drift floors of
+Section~\ref{sec:common-scale-selection}, and call it $n_j$. Raising the
+floor to $n_j$ changes neither $K$ nor $\pi_j$ nor $P$. Select block
+lengths $L_j\ge n_j$ and retain all these data when applying the
+scheduling construction. The marked portfolio, with its sections and
+regradings, was fixed before the profiles' price maps and the floors
+(Section~\ref{sec:common-observable-purchases}); the run retains exactly
+that portfolio, and no section or regrading is chosen after the
+schedule.
 
 Let $J(m)$ be the resulting stage clock, $\widehat\beta_m$ its hatted
 coupling, and $H$ its quadratic horizon. Its actual block at step $m$
@@ -32,7 +38,10 @@ index $E$, the countable purchase is
  \quad U_{E,j}^{-1}\le 1+\log\log\widehat\beta_m.
 \]
 The same construction keeps $1\le1+\log\log\widehat\beta_m$ for
-all $m$. After the lengths are fixed, let $A_j(L)$ and $B_j(L)$
+all $m$: the countable purchase includes $\exp(\exp E_j)$ with
+$E_j\ge1$ in every $d_j$, so
+$\widehat\beta_m\ge\beta_*\ge d_{j_*}\ge e^e$ and
+$\log\log\widehat\beta_m\ge1$. After the lengths are fixed, let $A_j(L)$ and $B_j(L)$
 be the two actual post-length costs and set
 $F_j(L)=\max\{A_j(L),B_j(L)\}$. The all-stage purchase is
 \begin{equation}\label{eq:public-native-allstage}
@@ -50,7 +59,15 @@ used in computing $F_{J(m+1)}(L)$ agree, because a patch is determined
 by its stage and block length. Thus \eqref{eq:public-native-allstage}
 pays both actual costs. In the cost that has the form $e^{a_j}$, its
 payment gives $a_j\le\log\widehat\beta_m$ by monotonicity of the
-logarithm. The other payment supplies the flat-step delay. The flat,
+logarithm. The other payment supplies the flat-step delay. The entry delays of
+the run are the final thresholds $d_j$ of
+Section~\ref{sec:common-scale-selection}; they contain the terminal fee
+threshold, the marked-portfolio delay, the startup and reset delays and
+the loop-capacity thresholds listed there, so every schedule condition
+of Sections~\ref{sec:ex-marked-portfolio-calibration},
+\ref{sec:surviving-interval-shooting} and
+\ref{sec:path-attachment-producer} that is stated as an entry delay
+holds for this run's delays. The flat,
 dual-support and curvature-quadratic symmetry suppliers therefore apply with the original
 levels and $H$, at every allowed cutoff and level. No new horizon is
 chosen in this application.
@@ -79,7 +96,8 @@ increasing support-exponent profile.
 
 The funded continuation is now evaluated at the history, reference
 schedule, local sections, transition data and finite-volume witnesses
-stored in $R$. Proposition~\ref{prop:ex-original-history-attachment}
+stored in $R$; its portfolio sections and regradings are the ones fixed
+before the schedule, as above. Proposition~\ref{prop:ex-original-history-attachment}
 identifies its output family with $C_R$. Its trace and coverage
 conclusions consequently concern that same family. For the
 operator-product estimates, keep $W$ as well as $R,T$: the finite

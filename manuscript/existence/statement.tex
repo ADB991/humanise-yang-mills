@@ -21,7 +21,12 @@ representation. Its real Lie algebra is
 \]
 We assume that \(\mathfrak g\) is nonabelian and simple: its only real
 subspaces invariant under every \(\operatorname{ad}X\), \(X\in\mathfrak g\),
-are \(0\) and \(\mathfrak g\). Coordinates on \(\mathbb R^4\) are written
+are \(0\) and \(\mathfrak g\). The group \(G\) is compact, being closed in
+\(U(r_G)\). It is not assumed to be connected, and the given representation
+is not assumed to be irreducible. The Wilson action of
+Section~\ref{ex-lattice} is normalized by the dimension \(r_G\) of this
+representation, so the same abstract group in two representations gives two
+instances of the problem. Coordinates on \(\mathbb R^4\) are written
 \(x=(\boldsymbol x,t)\), with time last. The Minkowski form is
 \(t^2-|\boldsymbol x|^2\), and the closed forward cone is
 \(\overline V_+=\{(\boldsymbol p,E):|\boldsymbol p|\le E\}\).
@@ -128,7 +133,8 @@ In this target clause the integral has value zero when its integrand is not
 Lebesgue integrable. Thus the clause prescribes a boundary limit without
 separately requiring absolute integrability at positive height. When ordinary
 integrals are used in the construction, their integrability must be supplied
-by the analytic estimates, as in Theorem~\ref{thm:joint-boundary}.
+by the analytic estimates, as in Lemma~\ref{lem:tested-cr} and
+Theorem~\ref{thm:joint-boundary}.
 \end{definition}
 
 The existence target is one regular Wilson family such that, for every
@@ -151,11 +157,84 @@ all arities, tokens and tests. The hierarchy may depend on the requested
 sequence; the Wilson family may not.
 
 The full endpoint also specifies a common operator-product expansion and a
-short-distance trace test, described in Section~\ref{ex-assembly}. These
-are additional obligations on the same hierarchy. The target concerns a
-theory of the constructed gauge-invariant observables; identifying a particular
-label with a separately prescribed physical observable requires its own
-construction argument. In particular, the target does not specify a lattice
-formula for the insertions beyond regularity and convergence, or a
-stress-tensor identification for the grade-four field. Such identifications
-require the additional information retained by the detailed construction.
+short-distance test on one centered field of grade four, described in
+Section~\ref{ex-assembly}. These are additional obligations on the same
+hierarchy. The scope of the target should be read literally. The spectral
+conclusions are that the energy-momentum spectrum lies in the closed forward
+cone and that the translation-invariant vectors form the line
+\(\mathbb C\Omega\); no gap above the vacuum in the spectrum is asserted.
+The short-distance test prescribes the leading behaviour
+\(r^{-8}\log^{-2}(r^{-1})\) of one two-point function on the time axis and,
+as a consequence, excludes its coincidence near \(r=0\) with any finite
+combination of the mass-shell profiles of Section~\ref{sec:trace-profiles};
+it does not exclude infinite or continuous superpositions of masses and makes
+no assertion about truncated correlations of higher order. The target
+requires a positive limit of \(\beta_{N,p}/\log(a_N^{-1})\) but does not
+prescribe its value. The grade-four field is existentially chosen, subject
+to the stated test (vanishing vacuum one-point functional, the exact
+asymptotic coefficient, and the profile exclusion); the target contains no
+stress-tensor or Ward-identity normalization identifying it physically, and
+that identification belongs to the detailed construction. More generally the
+target concerns a theory of the constructed gauge-invariant observables: the
+insertions \(O_{N,p,v}\) are part of what is constructed, no lattice formula
+is prescribed for them beyond regularity and the joint convergence
+requirements, and the lattice measure enters the target only through the
+mixed correlations. Identifying a particular label with a separately
+prescribed physical observable requires its own construction argument.
+The detailed construction is parameterized by a positive blocking penalty;
+the target is obtained from the value \(1\) in the conditional assembly of
+Proposition~\ref{ex-conditional-existence}. No uniqueness assertion is made.
+
+\begin{remark}[What the target alone ties to the Wilson measure]
+\label{rem:ex-target-adequacy}
+The Wilson measure enters the target only through
+\eqref{ex-row-target}--\eqref{ex-volume-target}, that is, through the mixed
+correlations. These are tied to the selected correlations only by the
+mixture identity \eqref{ex-mixture} and by the common operator-product
+estimates. The target does not require the correlations to be multilinear in
+the graded fields, nor the correlations at a non-selected phase to be
+reflection positive. Consequently the public clauses alone do not force the
+selected theory to arise from the Wilson measure: they admit Wilson families
+whose insertions do not depend on the gauge configuration.
+
+To see this, suppose hierarchy data are given that satisfy every requirement
+of the target except the two convergence statements, with selected
+correlations \(S=S^{\chi_*}\), and suppose that some \(u\in\mathcal F_0\),
+\(u\ne0\), enters \(S\) homogeneously: replacing the tag \((0,u)\) by
+\((0,2u)\) in any one slot doubles \(S\). Put \(m(A)=1\) if \(A=(0,u)\) and
+\(m(A)=0\) for every other tag, and \(M_{\boldsymbol A}=\prod_im(A_i)\), with
+\(M_\emptyset=1\). Let the tokens be the tags themselves, with the identity
+token map; take \(P_p=p+1\), \(D_N=N+2\), \(\beta_{N,p}=\log(N+2)\) and the
+insertions \(O_{N,p,A}(x;U)=m(A)\), which are constant, hence regular with
+empty stencils, and satisfy \eqref{ex-running-input} with \(\sigma=1\).
+Since the Wilson measure is a probability measure, the moments are
+\(M_{\boldsymbol A}\), and Riemann sums give
+\(W_{N,p}(\boldsymbol A;f)\to M_{\boldsymbol A}\int f\) at every suitable
+\(p\). Replace the phase data by the two-point space \(\{+,-\}\) with the
+uniform measure and selected point \(+\), and set
+\[
+ S^+=S,\qquad S^-=2M-S,\qquad S^{\mathrm{mix}}=M .
+\]
+The mixture identity holds, the selected theory is unchanged, and the
+volume limit is \(\int fM\) along every period sequence. In the
+operator-product data add two grade-zero channels with actors \(u\) and
+\(2u\) and coefficients \(h_a\) and \(-\tfrac12h_a\), where
+\(h_a=\prod_km(a_k)-\sum_ic^{0,i}_a\,m((0,E_{0,i}))\) is the defect of the
+old grade-zero channels \((E_{0,i},c^{0,i}_a)\) on \(M\). The coefficient
+bounds for the new channels follow from those of the old ones, because
+\(|m|\le1\). At the selected point the two new terms cancel by homogeneity;
+in the mixed state the expansion reproduces \(M\) exactly, because \(M\)
+vanishes on every actor of positive grade; and the remainder at \(-\) is
+minus that at \(+\). Every requirement other than the convergence statements
+mentions only the selected point, the common operator-product data or the
+listed properties of the phase correlations, and these have just been
+checked. The lattice moment of every field of positive grade, including the
+grade-four field of the trace test, is zero in this example.
+
+The detailed construction does not use any of these freedoms: its
+correlations are multilinear in the fields, each of its phases carries its
+own positive reconstruction, and its insertions are fixed local functions of
+the links tied to the Wilson measure by the construction. The remark
+therefore concerns only what the displayed target certifies; it says nothing
+against the construction of the later sections.
+\end{remark}

@@ -176,10 +176,53 @@ the original kernel, the row-price families and their secondary
 widths. Their analytic suppliers give integer block-size floors.
 Take the pointwise maximum of the original floor, the flat and
 dual support floors, the curvature floor, the comparison floors,
-and the treasury and period floors. A nondecreasing odd sequence
+and the treasury and period floors. Two further families of floors
+are named explicitly, because later sections consume them as schedule
+conditions.
+\begin{enumerate}
+\item \emph{Marked-portfolio thresholds.} The marked portfolio,
+ its sections and its regradings are fixed before the profiles' price
+ maps and the floors
+ (Section~\ref{sec:common-observable-purchases}). For that portfolio,
+ Section~\ref{sec:ex-marked-portfolio-calibration} produces stage
+ thresholds $n^{\mathrm{mk}}_j$ on the block length. Include
+ $n^{\mathrm{mk}}_j$ in the floor of stage $j$. Then every block side
+ used at stage $j$ is at least $n^{\mathrm{mk}}_j$; this is the
+ comparison of thresholds with floor lengths required by the caller
+ in Section~\ref{sec:ex-marked-portfolio-calibration}.
+\item \emph{Drift and logarithmic-size ratios.} For $j\ge j_*$ let
+ $\varepsilon_j\ge0$ be the drift allowance of the stage profile
+ $\pi_j$ and $\lambda_j\ge0$ the logarithm of one plus the sum of its
+ path allowance, inverse width, column count, clip relaxation and
+ support exponent. Both are fixed with the profile. Require
+ \begin{equation}\label{eq:common-drift-floor}
+  \frac{\varepsilon_j}{\log L_j}\le\min\Bigl\{\frac{s_G}{4},
+       \frac1{j^2}\Bigr\},\qquad
+  \frac{\lambda_j}{\log L_j}\le\frac1{j^2}\qquad(j\ge j_*).
+ \end{equation}
+ Since $\varepsilon_j,\lambda_j$ do not depend on the length and
+ $c/\log n\to0$ as $n\to\infty$ for each fixed $c\ge0$, there is an
+ integer $u_j$ such that \eqref{eq:common-drift-floor} holds for every
+ $L_j\ge u_j$; include $u_j$ in the floor of stage $j$.
+\end{enumerate}
+A nondecreasing odd sequence
 $L_j$ above these floors exists: choose each $L_j$ above the
 current finite maximum and above $L_{j-1}$. These choices precede
 any numerical request that depends on $L_j$.
+
+At step $m$ the block side is $L_{J(m+1)}$ and the incoming stage is
+$J(m+1)\ge j_*$. Thus \eqref{eq:common-drift-floor} at $j=J(m+1)$
+reads
+\[
+ \frac{\varepsilon_{J(m+1)}}{\log L_{J(m+1)}}\le
+   \min\Bigl\{\frac{s_G}4,\frac1{J(m+1)^2}\Bigr\},
+\]
+which, together with $J(m)\to\infty$, is the drift condition
+\eqref{eq:shoot-drift-ratio} and the second inequality of
+\eqref{eq:shoot-adjacent-drift} on the selected schedule, in the
+notation of Section~\ref{sec:surviving-interval-shooting} (there
+$\varepsilon_{i+1}$ is the allowance of the stage $J(i+1)$ and
+$L_i=L_{J(i+1)}$).
 
 With the lengths now fixed, form the actual post-length numerical
 costs. If two constructions require $H_j^{(1)}$ and $H_j^{(2)}$,
@@ -191,7 +234,81 @@ entry requirements of Section~\ref{sec:nonlinear-payment-selection}
 and every other selected finite-stage threshold before constructing
 $J$ and $\widehat\beta$. Every realization paying these enlarged
 thresholds preserves all the earlier purchases by the preceding
-monotonicity argument.
+monotonicity argument. Explicitly, the final entry threshold $d_j$
+includes the following stage thresholds, each of which is a finite
+maximum at stage $j$ selected before $\beta_*$:
+\begin{enumerate}
+\item the terminal fee threshold $k_j$ and the entrance delay of the
+ marked portfolio, both from
+ Section~\ref{sec:common-observable-purchases}; the latter is the delay
+ condition of Section~\ref{sec:ex-marked-portfolio-calibration} for the
+ adjacent stage pairs, including its profile-cost, credit and tail
+ clauses;
+\item the startup and reset thresholds and the remaining entry delays
+ listed at the end of Section~\ref{sec:common-funded-history},
+ selected after the protection parameters there;
+\item the loop-capacity threshold $\Delta_j$ of
+ Lemma~\ref{lem:common-loop-capacity} below, for the side-dependent
+ thresholds $W_j(L_j)$ of Section~\ref{sec:path-attachment-producer}.
+\end{enumerate}
+Since $d_{J(m+1)}\le\widehat\beta_m$ at every step, every one of these
+thresholds is paid at stage $J(m+1)$ by the coupling $\widehat\beta_m$.
+In particular $k_{J(m+1)}\le\widehat\beta_m$, which is the fee condition
+used in Proposition~\ref{prop:terminal-marked-voice}.
+
+\begin{lemma}[Loop capacities]\label{lem:common-loop-capacity}
+Let $\theta_j>0$ be nonincreasing protection exponents, fixed
+after the block lengths, and put
+\[
+ P(x)=\exp\bigl((\log\log x)^2\bigr),\qquad
+ \mathrm{loopCap}_m=2P(\widehat\beta_m)^{\theta_{J(m)}}.
+\]
+For every real sequence $W_j$ there are thresholds $\Delta_j$ such that,
+whenever $\Delta_j\le d_j$ for all $j$, the selected schedule satisfies
+at every $m\ge0$, with $j=J(m+1)$,
+\begin{equation}\label{eq:common-loop-capacity}
+ W_j\le\mathrm{loopCap}_m,\qquad
+ \tfrac12\mathrm{loopCap}_{m+1}\le\mathrm{loopCap}_m,\qquad
+ 1\le\mathrm{loopCap}_m.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix $j$ and put $v_j=s_G\log L_j\ge0$. As $x\to\infty$,
+$2P(x)^{\theta_j}\to\infty$, so eventually $W_j\le2P(x)^{\theta_j}$.
+For the second requirement let $\ell=\log x$ and $\ell'=\log(x+v_j)$.
+For $x>1$, $\ell\le\ell'\le\ell+v_j/x$, since
+$\log(1+v_j/x)\le v_j/x$. Using $\log t\le t-1$,
+\[
+ 0\le\log\ell'-\log\ell\le\frac{\ell'}{\ell}-1\le\frac{v_j}{x\ell}.
+\]
+Once $\ell\ge1$ and $x\ge v_j$, also $0\le\log\ell\le\ell$ and
+$\log\ell'\le\ell'-1\le\ell+v_j/x-1\le\ell+1$, so
+\[
+ (\log\ell')^2-(\log\ell)^2
+   \le(\log\ell'+\log\ell)\frac{v_j}{x\ell}
+   \le\frac{(2\ell+1)v_j}{x\ell}\le\frac{3v_j}{x}.
+\]
+Hence $P(x+v_j)^{\theta_j}\le e^{3v_j\theta_j/x}P(x)^{\theta_j}
+\le2P(x)^{\theta_j}$ as soon as $3v_j\theta_j/x\le\log2$. Let
+$\Delta_j$ be a common threshold beyond which both properties hold,
+and $x\ge\max\{e,v_j\}$.
+
+Now let $m\ge0$, $j=J(m+1)$ and $x=\widehat\beta_m\ge d_j\ge\Delta_j$.
+Since $P\ge1$ and $\theta_j\le\theta_{J(m)}$ (because $J(m)\le j$ and
+the exponents are nonincreasing),
+$P(x)^{\theta_j}\le P(x)^{\theta_{J(m)}}$. The first property gives
+$W_j\le\mathrm{loopCap}_m$. Next
+$\widehat\beta_{m+1}=x+s_G\log L_{J(m+1)}=x+v_j$ and $J(m+1)=j$, so
+\[
+ \tfrac12\mathrm{loopCap}_{m+1}=P(x+v_j)^{\theta_j}
+   \le2P(x)^{\theta_j}\le2P(x)^{\theta_{J(m)}}=\mathrm{loopCap}_m.
+\]
+Finally $P(x)\ge1$ and $\theta_{J(m)}>0$ give $\mathrm{loopCap}_m\ge2$.
+\end{proof}
+These are the three loop-capacity inequalities used in
+Section~\ref{sec:path-attachment-producer}, with $W_j$ its side-dependent
+threshold at stage $j$ evaluated at $L_j$; the threshold is indexed by
+the incoming stage and the capacity by the output level, as there.
 
 Every step then uses the original length $L_{J(m+1)}$, so its
 actual finite patch is exactly the patch for which the post-length
