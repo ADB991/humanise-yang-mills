@@ -5,7 +5,8 @@ Branch `codex/issue-55-c14-20261113`; base `81538d6`.
 Issue #55, parent #26. All work remains a conditional author draft.
 
 The focused patch changes four chapters: campaign filtration and reserve price,
-backward relay's exact C12 inputs, shell factor-degree terminology, and the
+backward relay's exact C12 inputs, the shell threshold exponent (redefined as
+the maximal factor degree, not only renamed; review PR #117 R3), and the
 shell/annulus label spaces, quota uniformity and limit order. The other 19
 owned chapters are byte-for-byte unchanged from the released inventory.
 See `hashes.json` for exact before/after values and `ledger.md` for all groups.

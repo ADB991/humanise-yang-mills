@@ -66,3 +66,26 @@ The separate #37 source-build work and the inherited source limitations remain.
 No tests were added: the changes are mathematical LaTeX and author reports;
 structural checking, source inspection and rendering are the relevant local
 checks. A clean build does not establish the mathematics or close dependencies.
+
+## Revision 1, part A (session `hairer-claude-c14-rev1a-20261113`)
+
+Base `codex/existence-monograph` `84a6a93`; see `revision-1.md`. No Lean was built or elaborated: the toolchain is unreachable in this session, and Lean anchors were checked as source text only.
+
+| Command | Result |
+| --- | --- |
+| `cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build existence.tex` | exit 0; 961 pages; `grep -c undefined build/existence.log` = 0; no multiply defined labels. The tracked `manuscript/existence.pdf` is unchanged (build under the ignored `build/`) |
+| `pdftotext` page search, then `pdftoppm -r 70` | changed passages on PDF pages 797, 801, 809, 812, 813, 815, 817 and 831; pages 801, 809 and 831 viewed as images, the others read as text; rendering correct |
+| `python3 scripts/check_blueprint.py` | `Blueprint structure OK: 4 units. Lean and mathematics were not verified.` |
+| `git diff --check` | no output |
+
+Changed chapters (SHA-256 before at `84a6a93`, after):
+
+| File | Before | After |
+| --- | --- | --- |
+| `manuscript/existence/finite-rank-kernel-transport.tex` | `c6da79dfc7cf7bffc4d81b47fc75bcea0a873bc1fd87d8f034b9e64c5811d327` | `5abd0cc495d61893611cf5d42336589fb4f059956befb75937c8b766ca214679` |
+| `manuscript/existence/actual-equation-kernel-relay.tex` | `f966d1ee034d43f47215bfe6db561b3e8d88c04c2cf6ed5164996a2a4773156c` | `bf75181d78490ac46b571007134b8c2fe3317d3fb0f53f604f77827ffb1c0785` |
+| `manuscript/existence/actual-insertion-derivative-relay.tex` | `b7b0f559a8365e0703462ea5023de1828585b96f874b0f7b02d9494661e8b16b` | `f9dc7e949bec0d37a325e7a27a7337723ce94ceccf5bb93b87f78d4ab974b93a` |
+| `manuscript/existence/trace-firesky-gallery.tex` | `6265ab845bd82fe72bcb8fbcdcf9089adb99a43badfae8b0054fa244e4a4f437` | `4dd0bd90b135f8ec8dc3776023e916f074f3b321ad78811c2e3c1ccc4d0c0de7` |
+| `manuscript/existence/physical-ward-free-classification.tex` | `784e7d1c0ef6a2f6b909744c609a76bda66991861f7edbe91a36ea8c2eecc514` | `e3356f9ba36869afdce60614e5e2680eed000d93f0b03d9bf7a951336ea381e7` |
+
+The other 18 C14 chapters are unchanged by this revision.
