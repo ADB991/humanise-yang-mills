@@ -60,3 +60,20 @@ snapshot; it was not refreshed, since a hash refresh is not an author statement 
 - `centered-construction.tex`:27 and the theorem title of `ex-centered-main-bound` ("single-source receipts").
 
 A follow-up pass, or a renewed audit, could treat these.
+
+## Revision 1: response to review PR #209 (session `ADB991-claude-20261113-c514`)
+
+Review: mgubi, report-only PR #209 at target `b8b9de0`; claim for this response
+https://github.com/hairer/humanise-yang-mills/issues/182#issuecomment-6861622028.
+
+- **M1 (row 43).** `centered-public-service.tex`:40 no longer writes `s=|Λ_k|`: the sentence now reads "with the
+  site-count parameter in that formula equal to `|Λ_k|`, `x=3a`, `y=a` and reserve `f=1`". In this paragraph `s`
+  keeps its meaning `s = ĥ_k = β̂_k^{-1/2}` (the cutoff in `log(16/s)` in the denominator and treasury bounds), and
+  the dummy site-count variable of `ex-centered-steer` is no longer identified with it. The displayed inequality is
+  unchanged.
+- **Optional precision note (rows 41–42).** Hypothesis (iv) of `thm:ex-selected-run-service` now says "the support
+  assigned to each address does not depend on the coefficient; this is the assigned support address, not the set
+  where its regular or forced part is nonzero". This is the reviewer's reading of `tags v : (P v).support =
+  (P 0).support` in `YM.Extra.Histories.Ledger` (`Lean/YM/Extra/SOURCE_HISTORIES/Pencil.lean`:83). It changes the
+  wording of a theorem hypothesis without changing its content; it needs renewed review of the delta.
+- No other file and no other row changed.
