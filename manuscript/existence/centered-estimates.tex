@@ -20,7 +20,230 @@ For a centered tiling $\mathcal T$ with $M$ cells, write
  \mathcal R_{\mathcal T}(F)
  :=\left|\mathbb E_{N,p}\left[\prod_{C\in\mathrm{Cell}(\mathcal T)} F^{(C)}\right]\right|^{1/M},
 \]
-where $F^{(C)}$ is the prescribed translated copy of $F$, reflected and conjugated on alternating chambers. This notation is used only when the observable is admissible in the home chamber and the normalized expectation is defined.
+where $F^{(C)}$ is the prescribed translated copy of $F$, reflected in each axis whose cell coordinate is odd and conjugated exactly
+when an odd number of axes are reflected. This notation is used only when the observable is admissible in the home chamber and the normalized expectation is defined.
+
+\begin{proposition}[Finite-cell dissemination from positive seams]
+\label{prop:ex-centered-planted}
+Fix one finite torus, one normalized probability law $\mu$ on its
+configurations, and one tiling $\mathcal T$. Write its side as $2h\ell$,
+where $h,\ell\ge1$ are integers, and index its cells by
+$\mathcal C=(\mathbb Z/(2h)\mathbb Z)^4$, so $M=(2h)^4>0$.
+All seams have the same kind: put $\delta=1$ for link seams and
+$\delta=0$ for site seams. For a fixed base site $b$, cell $v$ starts
+at $b+\ell v$. Its strict chamber consists of the sites whose relative
+coordinates $r_i$ satisfy $0\le r_i<\ell$ for link seams, and
+$0<r_i<\ell$ for site seams. Observables are complex, bounded,
+measurable and gauge invariant, and depend only on links with both
+endpoints in the indicated strict chamber.
+
+For $v\in\mathcal C$, define the affine signed map $\phi_v$ by
+\begin{equation}\label{eq:ex-centered-copy-geometry}
+ (\phi_v(x))_i=b_i+\ell v_i+
+ \begin{cases}
+ x_i-b_i,&v_i\text{ even},\\
+ \ell-\delta-(x_i-b_i),&v_i\text{ odd},
+ \end{cases}
+ \qquad\pmod{2h\ell}.
+\end{equation}
+Parity is well defined modulo $2h$. Let $P_{\phi_v}$ be the pullback
+of configurations along this map, including reversal of oriented links.
+The copy $F^{(v)}$ is $F\circ P_{\phi_v}$, conjugated exactly when an
+odd number of the coordinates $v_i$ are odd. Use these same copies in
+$\mathcal R_{\mathcal T}$.
+
+For every $p\in\mathcal C$ and coordinate $a$, assume the law is
+invariant under the configuration pullback $R_{p,a}$ of the site reflection
+\[
+ x_a\longmapsto2(b_a+\ell p_a)-\delta-x_a,
+ \qquad x_i\longmapsto x_i\quad(i\ne a).
+\]
+Assume also seam positivity on its positive strict half torus: for
+every bounded measurable gauge-invariant $H$ depending only on links
+with both endpoints in that half,
+\begin{equation}\label{eq:ex-centered-seam-positive}
+ \mathbb E_\mu[H\,\overline{H\circ R_{p,a}}]\in[0,\infty).
+\end{equation}
+The positive half has relative $a$-coordinate in $[0,h\ell)$ for
+link seams, and in $(0,h\ell)$ for site seams.
+Then for every family of home-chamber observables $(F_v)_{v\in\mathcal C}$,
+\begin{equation}\label{eq:ex-centered-seam-full}
+ \left|\mathbb E_\mu\prod_{v\in\mathcal C}F_v^{(v)}\right|
+       \le\prod_{v\in\mathcal C}\mathcal R_{\mathcal T}(F_v).
+\end{equation}
+For every finite set $I$, injection $c:I\to\mathcal C$ and such
+observables $F_i$, it follows that
+\begin{equation}\label{eq:ex-centered-seam-planted}
+ \left|\mathbb E_\mu\prod_{i\in I}F_i^{(c(i))}\right|
+       \le\prod_{i\in I}\mathcal R_{\mathcal T}(F_i).
+\end{equation}
+These statements include zero root tests and the empty planted family.
+There is no power-of-two restriction on $2h$.
+\end{proposition}
+
+This is the chessboard principle; compare M.~Biskup,
+\emph{Reflection Positivity and Phase Transitions in Lattice Spin Models},
+\S5.3, Theorem~5.8, pp.~50--52 of the author's lecture-note version
+\href{https://www.math.ucla.edu/~biskup/PDFs/private/2008-2010/Biskup-LNM08.pdf}{available here}.
+That statement uses real block functions and site reflections. We give
+the complex strict-chamber argument, including both seam kinds and
+vanishing roots, explicitly.
+
+\begin{proof}
+All products below are bounded measurable functions, hence integrable
+for the same probability law. The maps in
+\eqref{eq:ex-centered-copy-geometry} carry the strict home chamber into
+the indicated strict chamber: the reversed relative coordinate is
+$\ell-1-r$ in the link case and $\ell-r$ in the site case.
+Both preserve the stated strict ranges. Their pullbacks therefore
+preserve locality in the transported chamber; signed link permutations
+preserve measurability and transport gauge transformations. Conjugation
+preserves all these properties.
+
+Fix a seam $(p,a)$. On cell indices define the involution $m$ by
+\[
+ (mv)_a=2p_a-1-v_a,\qquad (mv)_i=v_i\ (i\ne a),
+\]
+and put $S=\{v:(v_a-p_a)\bmod 2h<h\}$, using residues in
+$\{0,\ldots,2h-1\}$. If that residue is $t$, its mate has residue
+$2h-1-t$, so $m$ interchanges $S$ and its complement. It reverses
+the parity of coordinate $a$ and preserves the other parities.
+Substitution in \eqref{eq:ex-centered-copy-geometry}, in each of the
+two parity cases, gives
+$\phi_{mv}=r_{p,a}\circ\phi_v$, where $r_{p,a}$ is the site
+reflection defining $R_{p,a}$. Indeed the changed coordinate is
+$2(b_a+\ell p_a)-\delta-(\phi_v(x))_a$; all other coordinates
+are unchanged. Composition of configuration pullbacks and the parity
+change now give the exact identity
+\begin{equation}\label{eq:ex-centered-copy-opposite}
+             F^{(mv)}=\overline{F^{(v)}\circ R_{p,a}}.
+\end{equation}
+There is exactly one extra conjugation, even when other coordinates
+were already reflected.
+
+Each chamber with index in $S$ lies in the positive half torus:
+its relative coordinate there is $\ell t+r_a$ with $0\le t<h$.
+This is in $[0,h\ell)$ for link seams and in $(0,h\ell)$ for
+site seams. Thus finite products of copies from $S$ are admissible
+for \eqref{eq:ex-centered-seam-positive}; in particular, no link
+crossing a seam is introduced.
+
+For positive-half observables set
+$B(P,Q)=\mathbb E_\mu[P\,\overline{Q\circ R_{p,a}}]$.
+Invariance of $\mu$, the involution $R_{p,a}^2=1$, and conjugation
+of integrals show $B(P,Q)=\overline{B(Q,P)}$. The form is linear
+in its first variable and conjugate-linear in its second, and its
+diagonal is nonnegative by assumption. Here is the Cauchy--Schwarz
+argument including a zero diagonal. Write $u=B(P,P)$, $v=B(Q,Q)$
+and $z=B(P,Q)$. Positivity of $P-tQ$ gives
+\[
+ 0\le u-\overline t z-t\overline z+|t|^2v\qquad(t\in\mathbb C).
+\]
+If $v>0$, take $t=z/v$ to get $|z|^2\le uv$. If $v=0$
+and $z\ne0$, taking $t=Rz$ with a sufficiently large positive real
+$R$ makes the right side negative. Thus $z=0$, and the same bound
+holds also in this case.
+
+For two assignments $A,D$ of home observables to cells, define
+\[
+ [A,D](v)=\begin{cases}A(v),&v\in S,\\D(mv),&v\notin S,\end{cases}
+ \quad P_A=\prod_{v\in S}A(v)^{(v)},\quad
+ V(A)=\left|\mathbb E_\mu\prod_v A(v)^{(v)}\right|.
+\]
+Reindexing the complementary half by $m$ and using
+\eqref{eq:ex-centered-copy-opposite} proves the pointwise identity
+\[
+ \prod_v[A,D](v)^{(v)}=P_A\,\overline{P_D\circ R_{p,a}}.
+\]
+Consequently Cauchy--Schwarz proves, rather than assumes, the fold bound
+\begin{equation}\label{eq:ex-centered-fold}
+                 V([A,D])^2\le V([A,A])V([D,D]).
+\end{equation}
+The operation $A\mapsto[A,A]$ retains the positive half and reflects
+its labels into the negative half, with the copy orientations fixed.
+
+Choose any nonempty finite palette of home observables. There are only
+finitely many assignments from this palette to $\mathcal C$, so $V$
+has a maximum $K\ge0$. Every fold of a maximizing assignment still
+maximizes $V$. To prove this, for a maximizing $A$ put $D=A\circ m$.
+Then $[A,D]=A$, since $m^2=1$. Both folds in
+\eqref{eq:ex-centered-fold} have value at most $K$, and
+\[
+                    K^2\le V([A,A])V([D,D])\le K^2.
+\]
+If $K=0$ every assignment maximizes. If $K>0$, either factor being
+strictly less than $K$ would make their product less than $K^2$.
+Thus in both cases each fold is a maximizer, for every translated seam.
+
+We next show in finitely many folds that some maximizing assignment is
+constant. The following argument applies to any property preserved by
+all these folds. Suppose an assignment is already independent of the
+coordinates in a set $E$, and choose an axis $a\notin E$.
+A strip of $k$ equal slices starting at $p_a$ means that whenever
+$x,y$ have the same coordinates off $a$ and their $a$-residues
+relative to $p_a$ lie in $\{0,\ldots,k-1\}$, their labels agree.
+A strip of length one always has this property.
+
+For $1\le k<h$, fold at the seam starting at $p_a$. In the new strip
+starting at $p_a-1$ of length $k+1$, the first slice is reflected to
+$p_a$, whereas the remaining slices $p_a,\ldots,p_a+k-1$ are kept.
+All these slices therefore acquire the same labels for each fixed
+choice of the other coordinates. More explicitly, a new-strip residue
+$t=0$ is sent by the fold to old residue zero; a residue
+$1\le t\le k$ is kept and has old residue $t-1<k\le h$.
+This proves the extension and checks that the kept slices really are
+in the positive half. Repeating $h-1$ times yields a strip of $h$
+equal slices. Fold once more at its starting seam. Every cell is then
+either in that half or mapped into it by $m$, and the map changes no
+other coordinate. The resulting assignment is independent of $a$
+on the entire torus.
+
+No earlier independence is lost: for $b\in E$, two cells differing
+only in coordinate $b$ lie on the same side of an $a$-seam. If kept,
+their old labels agree; if reflected, their images still differ only
+in $b$, so their old labels also agree. Thus all folds just used
+preserve independence of every coordinate in $E$. This also covers
+$h=1$, when only the final half-to-whole fold is needed. Performing
+this construction for the four coordinates makes the assignment
+independent of all of them. Changing coordinates one at a time then
+shows it is constant. Since all folds preserve maximality, the original
+maximum $K$ is attained by a constant assignment from the same palette.
+This finite argument uses no divisibility beyond the even cell period.
+
+Finally fix $(F_v)$ and $\varepsilon>0$, and abbreviate
+$\rho(F)=\mathcal R_{\mathcal T}(F)$ and
+$r_v=\rho(F_v)+\varepsilon>0$. Apply the maximum conclusion to the
+finite palette $X_v=F_v/r_v$. Positive real scaling commutes with
+every copy, including its conjugation. A constant assignment $X_v$
+has value
+\[
+ V(\text{constant }X_v)
+       =\frac{\rho(F_v)^M}{r_v^M}\le1.
+\]
+Hence every assignment from this palette has value at most one,
+in particular the assignment putting $X_v$ at $v$. Pulling its
+positive real constants out of the product and integral gives
+\[
+ V((F_v))\le\prod_v(\rho(F_v)+\varepsilon).
+\]
+The right side is a finite product of continuous functions of
+$\varepsilon$. Letting $\varepsilon\downarrow0$ proves
+\eqref{eq:ex-centered-seam-full}, without dividing by a possibly zero
+root. This scaling argument uses only the definition of the root test,
+not its triangle inequality.
+
+The constant function $1$ is admissible, every copy of it is $1$,
+and normalization gives $\rho(1)=|\mathbb E_\mu1|^{1/M}=1$.
+For an injective $c$, fill cell $c(i)$ with $F_i$ and every unoccupied
+cell with $1$. The full-cell inequality is exactly
+\eqref{eq:ex-centered-seam-planted}; injectivity makes the assignment
+unambiguous. For $I=\varnothing$ both sides are $1$.
+\end{proof}
+
+In particular, Proposition~\ref{prop:ex-centered-planted} supplies the
+full-cell premise of Lemma~\ref{lem:ex-centered-root-seminorm} below
+for this same law, tiling and copy convention. Its seam positivity is
+an upstream assumption, not a consequence of the root-seminorm argument.
 
 \begin{lemma}[Seminorm from the planted inequality]
 \label{lem:ex-centered-root-seminorm}
@@ -143,9 +366,9 @@ projection $V=(U'+\overline{U'})/2$ belongs to $\mathcal A$ and satisfies
  =\rho(U'-U).
 \]
 This uses one law and one chamber for both errors. The lemma proves only
-a consequence of the planted inequality; it does not prove that inequality
-from reflection positivity or construct a centered budget along a selected
-trajectory.
+a consequence of the planted inequality. Proposition~\ref{prop:ex-centered-planted}
+supplies that inequality from its explicit seam hypotheses on the same tiling;
+neither result constructs a centered budget along a selected trajectory.
 
 The quantitative assumption has two distinct orders of quantifiers. For every fixed observable $O$ and period index $p$, there is a tail of depths $m$ such that for each such $m$ one can choose $A=A(O,p,m)\geq0$ and a mesh tail on which $\mathsf{CB}(O;A,m,N,p)$ holds. In addition, for each $O$ there is a tail of depths $m$ such that one can choose $A=A(O,m)\geq0$ for which there is an outer period-index tail and, for each period in it, an inner mesh-index tail on which the budget holds. The constants may depend on the displayed fixed data. This is the precise centered-budget hypothesis used in the next result.
 
@@ -162,7 +385,7 @@ Assume the finite-volume Wilson family has the following properties, as well as 
  \operatorname{Cl}_\mu(K_1,\ldots,K_r)
  :=\int_{X^r}\prod_{j=1}^{r}K_j(x_j,x_{j+1})\,d\mu^r(x_1,\ldots,x_r),\qquad x_{r+1}=x_1,
 \]
-for the collapsed cyclic list of $q$ brick kernels and the individual unit heat steps, which has $r=q+\sum_i H_i$ kernel factors. The physical tour length is $L=qw+\sum_iH_i$. Division by the $L$-step partition trace $Z=\operatorname{Cl}_\mu(T,\ldots,T)>0$ gives the normalized Wilson expectation. The finite-volume representation identifies a change of one marked position by $l$ steps with replacing two free gaps $H_i,H_j$ by $H_i-l,H_j+l$. Finally, for every cut tiling $\mathcal T$, finite index set $I$, injection $c:I\to\mathrm{Cell}(\mathcal T)$, and home-chamber-admissible functions $F_i$, the planted inequality
+for the collapsed cyclic list of $q$ brick kernels and the individual unit heat steps, which has $r=q+\sum_i H_i$ kernel factors. The physical tour length is $L=qw+\sum_iH_i$. Division by the $L$-step partition trace $Z=\operatorname{Cl}_\mu(T,\ldots,T)>0$ gives the normalized Wilson expectation. The finite-volume representation identifies a change of one marked position by $l$ steps with replacing two free gaps $H_i,H_j$ by $H_i-l,H_j+l$. Finally, assume each cut tiling and this same normalized law satisfy the geometric, reflection-invariance and seam-positivity hypotheses of Proposition~\ref{prop:ex-centered-planted}, with its copy convention. That proposition then gives, for every such tiling $\mathcal T$, finite index set $I$, injection $c:I\to\mathrm{Cell}(\mathcal T)$, and home-chamber-admissible functions $F_i$, the planted inequality
 \[
  \left|\mathbb E_{N,p}\!\left[\prod_{i\in I} F_i^{(c(i))}\right]\right|
  \leq \prod_{i\in I} \mathcal R_{\mathcal T}(F_i)
