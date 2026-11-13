@@ -29,3 +29,13 @@ These are statement-level candidate matches, not accepted edges. Each requires t
 | `C02-to-C12-menu-purchase` | C02 station, probe and flagged-price estimates → C12 `sec:common-observable-purchases`, on the same selected step. The geometric floor, block length and numerical thresholds must be chosen in the consumer's required order. |
 
 C03 draft PR #69 is at `6fa64da98d307caccab7e625ca67ef6123af66a3`; C06 draft PR #73 is at `5d91921339150dfe35aed5caf239b777ea341021`. Neither draft is incorporated or accepted here. G05 owns shared notation/order coordination and G06 owns whole-argument closure.
+
+## Inputs named in the source-leakage pass (#182)
+
+Named by session `ADB991-claude-20261113-b6b4` (response table: `source-leakage-response.md`). Both are outstanding:
+no producer has been accepted.
+
+| Input | Content | Used in | Status |
+| --- | --- | --- | --- |
+| I-C02-funded-record | The funded record on one selected trail, with the fields (i)–(v) of `thm:ex-selected-run-service`: one transition history with retention and terminal endowment; room and bank budgets and the scale inequalities of `prop:ex-geyser-service-fields`; gradewise height, coefficient, activity, adjacent-weight, terminal-bank, footprint-cover and local-section bounds; the calibrated finite music with linear voices; thresholds, scale prices and local tone tickets on the same doors. Includes the mode-slot and shipment estimates, uniformity over each bounded grade ball, and the four inputs of the terminal birth receipt (service certificate, local coefficient envelope, origin-counting response, vacuum lower bound). Ingredients: selected campaign purchase, transition tariff, delayed scale choices, same-trail transfer data, climbing doors, finite-transfer records. | `ex-centered-construction` (end of proof), `ex-selected-birth-receipt`, `ex-centered-public-service`, `centered-freight-producer` (scope) | outstanding |
+| I-C02-finite-interpolation | The finite interpolation statement of `centered-freight-producer.tex`: when the two fields at the selected spring parameter, slot table, motion/rate data, schedule-price bound and keeper are those of the selected history and `d+3 ≤ J_m^c`, there is one heading and one ticket for every wing containing the principal-field tags, with axis residual price `C_m`, lead price `η_m`, crossing allowance `t_m` and the regular and forced prices of that section; together with its three analytic coupon estimates (axis, regular, forced). | `centered-freight-producer` | outstanding; candidate producer C09 `sec:heading-history-handoff` (edge `C09-to-C02-heading-and-tickets`, not accepted) |

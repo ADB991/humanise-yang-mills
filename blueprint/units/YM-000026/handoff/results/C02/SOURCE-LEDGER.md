@@ -15,3 +15,31 @@ Source pin: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; reviewed chapter and rep
 - **Uniformity and extraction.** `YM.MergeProof.Accent.gardena` (`Lean/YM/MergeProof/Gardens.lean`) yields `YM.Extraction.Wcmain` (`Lean/YM/Extraction/Center.lean`) under the selected family, simple gauge group, paid columns, tab schedule and same-history `Geyser`. For each fixed grade, positive label-radius and slack, one constant works at every eligible depth; the volume tail may depend on depth but is uniform in period, site and labels in the norm ball. This does not give one volume cutoff over all depths or prove the upstream selected purchases. The fixed-period and ordered expanding-period limits and other C03 producer obligations remain distinct.
 
 The post-`84587b7` chapter changes and later source-anchor corrections require independent mathematics and Lean-correspondence review at the hashes in `HANDOFF.md`. Cross-package statements, owners and exact-data obligations are listed in `RESULTS.md`; no external owner acceptance is inferred from this source correspondence.
+
+## Source-leakage pass (#182)
+
+Formal-route remarks removed from the chapters by session `ADB991-claude-20261113-b6b4` (see
+`source-leakage-response.md`). Declarations named here were located with `grep`; no Lean command was run.
+
+- Row 18 (`rg-construction.tex`): `E_X(j)` and the two `b_X` summands are the source's entrance ticket and adjacent
+  row prices of the flat funded-width producer.
+- Row 20 (`rg-multisource.tex`): the bound `Σ ℓ_i ≤ |Λ_c| P_0/(1−ρ)` is the source's nonempty-support counting
+  argument.
+- Row 32 (`centered-construction.tex`): in the source, the one-step inputs come from the run selector's
+  continuation and terminal full-volume supplier (levels, doors, weights, budgets), the same-history section
+  supplier (adjacent-scale compatibility, place and bank bounds) and the terminal supplier (birth polynomial,
+  transition identities, Fourier hook). Where that chain forwards a receipt rather than proving the uniform
+  bounded-label inequalities from earlier data, the obligation is open; this is now input I-C02-funded-record.
+- Row 33 (`centered-freight-producer.tex`): the finite interpolation statement is the source's finite interpolation
+  lemma; its interface and three analytic coupon estimates are source inputs. Now input I-C02-finite-interpolation.
+- Row 37: the source supplies the ticket's nonlinear coefficient estimates through the field interpolation,
+  mode-slot and shipment records of the selected public construction.
+- Row 38 (`centered-birth-receipt.tex`): the source correspondence of the four terminal-receipt inputs is the
+  "Service and its guards" and "Transfer, terminal birth and normalization" entries above.
+- Rows 41–42 (`centered-public-service.tex`): "source ledger" was the formal predicate `YM.Extra.Histories.Ledger`
+  (`Lean/YM/Extra/SOURCE_HISTORIES/Pencil.lean`:83: `x`, `reg`, `f` complex-linear in the coefficient; `tags`:
+  support of `P v` equals support of `P 0`), required of each voice through `YM.Extra.Histories.Heard.book`
+  (`Lean/YM/Extra/SOURCE_HISTORIES/Replay.lean`:33).
+- Row 43: the pointwise price bound is the source fine-price formula, with `x=3a`, `y=a`, `f=1`.
+- Row 45: the ordinary proof unit records the exact public caller chain of the funded record and which
+  quantitative inputs are furnished there (this file, "Service and its guards" and "Uniformity and extraction").
