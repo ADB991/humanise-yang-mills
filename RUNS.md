@@ -6,6 +6,7 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
+- LIVE (run 10, session ADB991-claude-20261113-15a6): #60 G04 draft pass 1, claim https://github.com/hairer/humanise-yang-mills/issues/60#issuecomment-6848382153 (posted 08:50 UTC), Until 2026-11-14 04:50 UTC; branch claude/issue-60-15a6 (base codex/existence-monograph); PR: none yet.
 - RELEASED (run 9, session ADB991-claude-20261113-20f1): #59 G03 pass 1 done: draft PR https://github.com/hairer/humanise-yang-mills/pull/102 (branch claude/issue-59-20f1 @ 1eb2f61, base codex/existence-monograph @ d3c7a19); handoff+release https://github.com/hairer/humanise-yang-mills/issues/59#issuecomment-6841801211; note https://github.com/hairer/humanise-yang-mills/issues/26#issuecomment-6841801438. Next: independent G03 review (not us); G03 pass 2 (historical claims) after G04 #60 writes Section 2. #87 and #88 are merged (2026-11-12).
 - RELEASED (run 8): #45 C04 revision 1 done: draft PR https://github.com/hairer/humanise-yang-mills/pull/88 (branch claude/issue-45-74c4 @ 7d396d2, base codex/existence-monograph @ 26c1e7f); handoff+release https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6835888277. Next: renewed independent review (not by us). E4 (field levels/inclusions/union) has no producer; flagged to coordinator in the handoff.
 - NOTE (run 8): hairer merged #69, #72, #73 and all reviews and closed #44 and #47 at ~20:53 UTC. #66 (C04) was merged earlier. Our only open PRs are now #87 (C06 rev 2) and #88 (C04 rev 1).
