@@ -55,3 +55,20 @@ inspected text. The author revises the chapter statements and author records.
 The listed source checks were textual. Fresh Lean elaboration, axiom checks
 and kernel replay remain unrun. The same-data producer obligations and
 directed system required by later chapters remain as recorded in the ledger.
+
+## Source-leakage pass (issue #183, session `ADB991-claude-20261113-0642`)
+
+Formalisation remarks moved out of the chapters (audit #159, rows 47–57; see `source-leakage-response.md`).
+Base `codex/existence-monograph` @ `5d91534`; pinned source `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+Read with `grep`/`sed`; no Lean command run.
+
+| Row | Text removed or reworded | Correspondence |
+| --- | --- | --- |
+| 47 | "as in the source full-mesh receipts" (`prop:ex-fullmesh-cap-source`) | The uniformity in `I` (one mesh threshold for every period) is the quantifier order of `YM.FullVolume.FixedBounds` (`Lean/YM/FullVolume/Discrete.lean` 50–54), read in the author pass (table above). |
+| 49 | "The source identity is" | The identity `hops(F) = upper(y) + upper(x−y) − e` is proved in the text. Formal counterpart not re-read in this pass; see `fullmesh-fixedbounds-producer-evidence.md`. |
+| 51 | "The source obtains the first two subpower estimates from the accumulated column logarithm and column-count bounds; the gain decay is the scale-flight estimate." | `YM.Work.D01.columnLogs` (sum of `log columns(i+1)`, `i<m`) and `columnLogs_le` (`Lean/YM/Work/D01.lean` 22, 34): for every ε>0, eventually `columnLogs ≤ ε·scale`, by telescoping `fits.logCost` (the log of a cost that contains `columns`, divided by `log block`, is at most `J(i+1)^{-2}`) with `Schedule.scale_succ` (`Lean/YM/Lattice/Scale.lean` 124). Gain: `YM.Bid.gainChart H k i = exp((1/8)(scale k − scale i))` (`Lean/YM/Bid/Loan.lean` 130), used in `YM.Next.UVStress.gainRead` (`Lean/YM/Next/UV_STRESS/Union.lean` 33) as `4(1+columns)w/gainChart`, which is item 4 of `prop:ex-public-origin`. |
+| 52 | "satisfying the source plainness condition" | `YM.OS.Grid.plain v := ∀ i, star (v i).2 = (v i).2` (`Lean/YM/Phase/Approx.lean` 24). |
+| 50 | "the source root test … as in the selected root-test receipts" | `rootTest`; conjugation invariance and the triangle inequality are used in `YM.MergeProof.Accent.realityC` (`Lean/YM/MergeProof/South/FinalG.lean`), as recorded in `phase-quantitative-producer-evidence.md` (not re-read). |
+| 53 | "The source status of its three purchase clauses is not uniform." | As recorded in revision 1 (field `forced` of `YM.MergeProof.Stampede`, `Lean/YM/MergeProof/Wallet.lean` 29). Not re-read. |
+| 54 | "The selected source route proves … ; the upstream proof that the selected run supplies all the receipts is recorded separately below." | Cauchy at ancestral points: `YM.PhysicalNext.Repeat.Legato.Bandage.Rising.cinema` (`Lean/YM/FullVolume/Fields/Seat.lean`), read in the author pass. |
+| 55–57 | "the source confluence statement gives an eventual uniform bound …"; paragraph "For source correspondence, …" | Moved content: at a fixed rung, the branch-stability result gives confluence of the scalar insertion and of every box-marked insertion, and the credit result gives the paid amounts `B_i`. The finite-sum lemma `lem:ex-uniform-confluence-vault` turns those uniform bounds into the two vault inequalities. At the opened rung the positive weights are fixed; at a later rung the marched weights are used with later-rung confluence. The pond package comes from the selected run's scale-field package, and its history recurrence builds the per-label transition fields used by the served-slab step. These fields are mapped in `phase-quantitative-producer-evidence.md`; the chapter does not claim their mathematical production (this caveat is kept in the chapter text). The alternative detector route through trained rows and null-row sweeps is not called by the public construction. Declarations were not re-read in this pass. |

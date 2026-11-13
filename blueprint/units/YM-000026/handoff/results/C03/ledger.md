@@ -79,3 +79,17 @@ Acknowledgement of the edges named in `results/C04/ledger.md`:
 | C03-to-C09-* | `prop:ex-selected-interpolation`, `eq:ex-interpolation-buy` → C09 `heading-history-handoff.tex`; `ex-public-same-run-cauchy` → C09 `fixed-rung-convergence.tex` | open |
 | C03-to-C16 | `ex-reflection` → C16 `assembly.tex` | open |
 | C03-to-C16-full-mesh (`known-open-edges.md`) | `thm:ex-fullmesh-fixedbounds-producer`, `sec:fullmesh-correlation-cauchy`, `ex-smooth-grid-limit`, `rem:ex-limits-fullmesh` → C16 `assembly.tex` (`ex-full-mesh`, `ex-joint-input` item 1) | open. C03 supplies the full-mesh limit at every suitable period as a separate result from the field-subsequence refinement; `ex-full-mesh` identifies it with the extracted row limit. No full-mesh convergence is inferred from a subsequence |
+
+## Inputs named in the source-leakage pass (issue #183, session `ADB991-claude-20261113-0642`)
+
+See `source-leakage-response.md`. These rows name inputs that the chapters previously deferred to "the source".
+
+| Edge ID | Producer → C03 consumer | Exact statement needed | Common objects | Status |
+| --- | --- | --- | --- | --- |
+| I-C02-root-seminorm | owner to be identified (C02 `centered-estimates.tex` defines the root test, Definition `ex-centered-budget`) → phase-quantitative-producer (`prop:ex-public-origin`, `lem:ex-public-origin-sum`) | on the chamber-interior test class of a fixed centered chamber and finite-volume law, the centered root test satisfies ρ(H+H') ≤ ρ(H)+ρ(H') and ρ(H̄) = ρ(H). Absolute homogeneity ρ(tH) = \|t\|ρ(H) is now proved in the chapter from the definition | same finite-volume Wilson law, same centered tiling and chamber | **input**; source uses `rootTest` conjugation invariance and triangle inequality in `YM.MergeProof.Accent.realityC` (`Lean/YM/MergeProof/South/FinalG.lean`), per `phase-quantitative-producer-evidence.md`; producer declaration not re-read. Possible literature lead (unverified): reflection-positivity chessboard estimates |
+| I-C03-schedule-cost | schedule (premise also used by `ex-column-subpower`, `ope-filtration.tex`) → `rem:ex-public-radial-schedule` → `lem:ex-public-radial-choice` | σ_j → ∞; σ_{i+1} − σ_i = log L_i with L_i > 1; c_i ≥ 1; numbers h_i → ∞ with log c_{i+1} ≤ h_i^{-2} log L_i; ℓ_j = Σ_{i<j} log c_{i+1}. The remark then proves ℓ_j = o(σ_j), log(1+c_j) = o(σ_j); the gain decay holds with C_m = 1, γ = 1/8 for gain(j,m) = e^{(σ_j−σ_m)/8} | same selected schedule | **input** (schedule property); source: `YM.Work.D01.columnLogs`, `columnLogs_le` (`Lean/YM/Work/D01.lean` 22, 34; uses `a.fits.logCost`, `a.fits.deep`, `Schedule.scale_succ` at `Lean/YM/Lattice/Scale.lean` 124, `columns_ge`); `YM.Bid.gainChart` (`Lean/YM/Bid/Loan.lean` 130) |
+| I-C03-regular-clause | outstanding → phase-quantitative-producer §2 (`prop:ex-selected-interpolation`) | the regular purchase clause: the regular-card estimate for the small-support, vanishing-jet principal term | same marked coefficient, same transition | **outstanding input** (previously "open" in the `lem:ex-selected-cone-step` row) |
+| I-C03-main-clause | outstanding → phase-quantitative-producer §2 | the main purchase clause for each nonunit basis coordinate: the selected primary-card and budget-card comparison | same | **outstanding input** (previously "open") |
+
+Rows 48, 54 and 55 of the audit are covered by existing edges: I-C12-primary (row 48), I-C02-service,
+I-C13-fixed-level and I-C09-fixed-rung (rows 54–55).
