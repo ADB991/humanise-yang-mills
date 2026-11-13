@@ -3,7 +3,19 @@
 
 Let \(G\subset U(r_G)\) be a closed matrix subgroup, in the indicated
 unitary representation, with nonabelian simple real Lie algebra
-\(\mathfrak g\). Write
+\(\mathfrak g\), where \(r_G\ge1\). Since \(\exp(tX)\) is unitary for
+\(X\in\mathfrak g\) and real \(t\), differentiating
+\(\exp(tX)^*\exp(tX)=I\) at \(t=0\) gives \(X^*=-X\).
+Thus the symmetric real bilinear form
+\(\langle X,Y\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(XY)\)
+is positive definite: for \(X\ne0\),
+\[
+ \langle X,X\rangle
+ =r_G^{-1}\operatorname{tr}(X^*X)
+ =r_G^{-1}\sum_{a,b}|X_{ab}|^2>0.
+\]
+Nonabelianness implies \(\mathfrak g\ne\{0\}\), so
+\(\dim_{\mathbb R}\mathfrak g\ge1\). Write
 \[
     b_0(G)=\frac{11\,C_{\mathfrak g}}{48\pi^2},
     \qquad
@@ -12,14 +24,23 @@ unitary representation, with nonabelian simple real Lie algebra
         \sum_j \operatorname{Tr}_{\mathfrak g}
              \bigl((\operatorname{ad}e_j)^2\bigr),
 \]
-where \((e_j)\) is an orthonormal basis of \(\mathfrak g\) for
-\(\langle X,Y\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(XY)\).
-Here \(\operatorname{Tr}_{\mathfrak g}\) is the real trace of an
-endomorphism of \(\mathfrak g\). Invariance of the matrix trace gives
+where \((e_j)\) is an orthonormal basis for this inner product and
+\(\operatorname{ad}X(Y)=[X,Y]=XY-YX\). Here
+\(\operatorname{Tr}_{\mathfrak g}\) is the real trace of an endomorphism of
+\(\mathfrak g\). This constant is independent of the orthonormal basis:
+if \(f_i=\sum_j q_{ij}e_j\) with \(q\) orthogonal, then
+\[
+ \sum_i(\operatorname{ad}f_i)^2
+ =\sum_{j,k}\Bigl(\sum_iq_{ij}q_{ik}\Bigr)
+       \operatorname{ad}e_j\operatorname{ad}e_k
+ =\sum_j(\operatorname{ad}e_j)^2.
+\]
+Taking traces proves the assertion. Invariance of the matrix trace gives
 \(\langle[X,Y],Z\rangle=-\langle Y,[X,Z]\rangle\), so each
 \(\operatorname{ad}e_j\) is skew-adjoint. Consequently
 \(-\operatorname{Tr}_{\mathfrak g}((\operatorname{ad}e_j)^2)
-=\sum_\ell\|[e_j,e_\ell]\|^2\). Noncommutativity of \(\mathfrak g\)
+=\sum_\ell\|[e_j,e_\ell]\|^2\). If every basis commutator vanished,
+bilinearity would make all commutators vanish. Noncommutativity therefore
 makes at least one term in the resulting double sum positive. In particular,
 \(b_0(G)>0\).
 
