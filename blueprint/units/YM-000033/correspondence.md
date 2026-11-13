@@ -80,3 +80,30 @@ The [notation protocol](../../../docs/notation.md) and [shared glossary](../../g
 ## Outstanding obligations
 
 The conclusion is conditional on the displayed exact chart and marked-vector inputs; the existence of the inputs in the full selected run, the detailed source crosswalk, and the full upstream dependency chain require independent correspondence and mathematical review. In particular the `legacy` field estimate uses the mission, finite-cover/local-price, derivative and probe hypotheses and is not implied by scalar Ward cancellation. A limited lexical scan of locally available imported modules found one textual `admit` match: the field of the conditional structure `YM.Further.RootedInteractingRemainder.Appointment` (`Lean/YM/Further/ROOTED_INTERACTING_REMAINDER/Station.lean`), not an `admit` tactic. Import reachability does not establish that `springs` depends on this structure, and the scan cannot inspect missing external imports or prove absence of placeholders. No fresh Lean build or target-specific elaborated-type/kernel/axiom replay has been performed, and internal agent checks do not establish responsible independent human acceptance. This is not a proof of the whole existence theorem. Actual local checks are recorded in `validation.md`.
+
+## Revision response to independent review #126, corrected by #127
+
+Revision basis `84a6a9371caddd2f9967b9d6924e156ec097610e` on
+`codex/existence-monograph`; session `TrishenGunaratnam-terra-issue33-revision-20261113`.
+The 2026-11-13 mathematics and correspondence reports remain read-only; their
+fingerprint belongs to the earlier content and is not renewed here.
+
+| Review item | Revision and correspondence boundary |
+| --- | --- |
+| R1 | Immediately before `prop:trace-prosper-sensor`, (S1)–(S7) state the selected clock, chart, shared fused filter and joint limits, tested-map and lift receipts, one-step quantifiers, budget/oddness, and arbitrary marked-vector limits. The derived statements now have labels `lem:trace-sensor-arch-ratio`, `lem:trace-sensor-initial-price`, `lem:trace-sensor-transport-price`, and `lem:trace-sensor-lift-limit`, each with its argument. The initial, transport and lift lemmas consume (S1)–(S6), not the marked input (S7). The finite-volume bound and transport price are proved from the displayed primitive receipts, not introduced as new sensor assumptions. |
+| R2 | The one-factor invariant argument cites `sec:ex-lattice-trace-free-rank`; #127 corrects the earlier claim that it was missing. No support chapter is edited. |
+| R3 | `𝖠,𝖳 : V → V` are explicitly complex-linear endomorphisms of the finite grade-five coefficient space. At the pinned source, `YM.Next.Rank.Price.Tested` takes an endomorphism of `C.label d` (`Lean/YM/Next/RANK/Matrices.lean`), and `awake` maps `C.label d` to itself. Finite-dimensional injectivity implies bijectivity. |
+| R4 | The selected ultrafilter is explicitly required to refine the fused-order filter; the source condition is `hb : (𝓛 : Filter (ℕ × ℕ)) ≤ F.fuse` in `Lean/YM/TraceExtension/Terrace/Lease.lean`. The proof uses its coordinate-tail consequences, with the fixed-i finite intersection kept separate. |
+| R5 | The local wrapper deliberately omits `trace-local-charge.tex` and `trace-mission-price.tex`; it documents the corresponding external labels `prop:ex-lattice-charge-bounds` and `prop:ex-trace-mission-price-transfer`. Their definitions were located in those files; no fictitious label or support-file edit is used. The wrapper is not the full integration build. |
+
+Source was re-read at `YM.Trace.Terrace.Prosper` and `.springs` in
+`Lean/YM/TraceExtension/Terrace/Lease.lean`, `.lensP` and `Spun.starts` in
+`Terrace/Prism.lean`, `.scout` and `.expenses` in `Terrace/Delta.lean`,
+`Sceptre.step` in `Terrace/Knell.lean`, and `PostT` in `Terrace/Base.lean`.
+`Sceptre.step` quantifies over each `d ≤ 5` and fixed admissible `m`, then
+an eventual period tail, uniformly over every `N > m` and label. The prose
+specializes to degree five. `Prosper.vote`'s eventual receiver bound is
+uniform in every target vector; its weighted estimate is for each positive
+error followed by an eventual tail uniform in every source vector. Neither
+the source's structured upstream assumptions nor the later medium producer
+are claimed to follow solely from this revision's display.
