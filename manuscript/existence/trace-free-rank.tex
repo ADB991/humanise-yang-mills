@@ -5,7 +5,8 @@
 This section proves the finite-dimensional reference-rank facts used in the
 trace calibration. The calculation uses only four-dimensional Euclidean
 Green-function derivatives, the signed coordinate symmetries, and simplicity
-of the compact gauge Lie algebra. All spaces below are real, even though
+of the compact gauge Lie algebra. The divergence-rank conclusion also uses
+the compatible derivative plan specified below. All spaces below are real, even though
 polynomial coefficients are temporarily complexified to encode real
 observables.
 
@@ -75,14 +76,49 @@ $A_1$, respectively,
  \qquad
  A_1=\tfrac12\sum_{r,k,l}\ell^1_{rkl}(\operatorname{curl}_1^{rkl}A_1).
 \]
-Indeed, applying the corresponding curl to the right sides gives the
-identity on each curl coordinate, and the displayed formulas for the legs
-then give equality of the potential coefficients. Thus a bilinear form in
-these jet slots is determined by its values on pairs of legs. Signed
-covariance and pair antisymmetry follow directly from the same formulas.
-Put $f_{ij}=\operatorname{curl}_0^{ij}A_0$ and
-$j_{rkl}=\operatorname{curl}_1^{rkl}A_1$; the cycle identity is precisely
-the Bianchi relation $j_{rkl}+j_{klr}+j_{lrk}=0$.
+Here a radial jet of index $r$ is a homogeneous polynomial one-form
+$A=(A_a)$ of polynomial degree $r+1$, satisfying
+$\sum_i z_iA_i(z)=0$. Its linear curl is the two-form
+$F_{ia}(z)=\partial_iA_a(z)-\partial_aA_i(z)$; no nonlinear
+commutator is included in this jet calculation. Differentiating the radial
+identity with respect to $z_a$ and using Euler's identity gives
+\[
+ \sum_i z_i\partial_aA_i=-A_a,\qquad
+ \sum_i z_i\partial_iA_a=(r+1)A_a.
+\]
+Subtracting proves the reconstruction formula
+\begin{equation}\label{eq:ex-trace-radial-reconstruction}
+ A_a(z)=\frac1{r+2}\sum_i z_iF_{ia}(z).
+\end{equation}
+In particular curl is injective on this radial homogeneous space: a zero
+curl forces every component of $A$ to vanish. For $A_0$, write
+$f_{ij}=\partial_i(A_0)_j-\partial_j(A_0)_i$, which is constant.
+For $A_1$, write
+$j_{rkl}=\partial_r(\partial_k(A_1)_l-\partial_l(A_1)_k)$,
+which is also constant. These are derivative values, with no factorial
+rescaling. Homogeneity gives $F_{kl}(z)=\sum_r z_rj_{rkl}$ in the
+second case. Thus \eqref{eq:ex-trace-radial-reconstruction} reads
+\[
+ (A_0)_a(z)=\tfrac12\sum_i z_if_{ia},\qquad
+ (A_1)_a(z)=\tfrac13\sum_{r,k}z_kz_rj_{rka}.
+\]
+Antisymmetry now checks the asserted spanning identities directly:
+\begin{align*}
+ \tfrac12\sum_{i,j}(\ell^0_{ij}f_{ij})_a(z)
+ &=\tfrac14\left(\sum_i z_if_{ia}-\sum_jz_jf_{aj}\right)
+   =\tfrac12\sum_i z_if_{ia},\\
+ \tfrac12\sum_{r,k,l}(\ell^1_{rkl}j_{rkl})_a(z)
+ &=\tfrac16\left(\sum_{r,k}z_kz_rj_{rka}
+                  -\sum_{r,l}z_lz_rj_{ral}\right)
+   =\tfrac13\sum_{r,k}z_kz_rj_{rka}.
+\end{align*}
+Equality as polynomial functions is equality of their symmetric
+coefficients, so these are identities of radial jets. A bilinear form in
+these slots is therefore determined by its values on pairs of legs;
+the legs need not be linearly independent. Signed covariance and pair
+antisymmetry follow from their displayed formulas. Commuting the ordinary
+partial derivatives in the definition of $j$ gives
+$j_{rkl}+j_{klr}+j_{lrk}=0$, the Bianchi relation used below.
 
 For a grade-five vector label, let $M_p$ denote the mixed bilinear term
 in its low-grade decomposition. Choose a unit color vector $v$ and define
@@ -274,8 +310,37 @@ upper bound proves equality of dimensions, hence bijectivity.
 Let $\mathcal T_4$ be the free symmetric grade-four stress table and
 $K_0=\ker(\operatorname{skim}:\mathcal T_4\to\mathbb R)$. Let
 $\mathcal V_5$ be the grade-five vector table after imposing the free
-Maxwell equation, and let $D_0:K_0\to\mathcal V_5$ be the free
-divergence restricted to this zero-skim subspace. Write $\pi$ for the
+Maxwell equation. Fix on this same free field table a derivative plan,
+whose grade-raising maps on the complexified label spaces are
+$\mathscr D_a^{(d)}:\mathcal F_d\to\mathcal F_{d+1}$.
+They are complex-linear. We assume they commute with the real involution and have vector covariance:
+\[
+ \rho_{d+1}(s)\mathscr D_b^{(d)}
+ =\sum_a s_{ab}\mathscr D_a^{(d)}\rho_d(s)
+\]
+for every signed permutation matrix $s$, where $\rho_d$ is its action on
+grade-$d$ labels. We also assume the following compatibility with the
+smooth separated free correlations. For every grade-$d$ label $B$, every
+finite spectator word $B_1,\ldots,B_n$ of arbitrary grades, and every
+pairwise distinct tuple $(x,x_1,\ldots,x_n)$,
+\begin{equation}\label{eq:ex-trace-derivative-compatibility}
+ \left\langle (\mathscr D_a^{(d)}B)(x)
+                    \prod_{k=1}^n B_k(x_k)\right\rangle_0
+ =\partial_{x_a}\left\langle B(x)
+                    \prod_{k=1}^n B_k(x_k)\right\rangle_0.
+\end{equation}
+The derivative is taken in the first insertion, holding every spectator
+fixed, within the open set of separated points. These are inputs on the
+chosen table and plan; this finite-rank calculation does not construct
+them. Define the restricted divergence by
+\[
+ (D_0T)_b=\sum_{a=0}^3\mathscr D_a^{(4)}T_{ab},
+ \qquad D_0:K_0\longrightarrow\mathcal V_5.
+\]
+Reality and the covariance law make this a real linear map to the stated
+vector table: the two transformed indices contracted in the sum cancel
+by orthogonality of $s$, leaving its vector action on $b$.
+Write $\pi$ for the
 quotient projection from the raw vector table onto $\mathcal V_5$. The projection is onto by the equivariant
 section obtained by averaging any real section over the finite signed
 permutation group. The equation-of-motion array is
@@ -290,10 +355,19 @@ quotient. Thus the kernel of $\pi$ is nonzero. Rank--nullity and
 $\dim\mathcal R_5\le3$ give $\dim\mathcal V_5\le2$.
 
 Let $\phi_1,\phi_2$ be the two linear functionals on $\mathcal V_5$
-obtained by the point-divergence probes $(01,01)$ and $(12,12)$ at $e_0$.
-For $w$ as above, let $S_w(ij,kl;ab;x)$ denote the response with field-pair
-insertion $(ij,kl)$, output component $(a,b)$, and separation $x$. Differentiating
-the chain product gives
+obtained by correlating the component with output index $0$ at $e_0$
+with the respective quadratic curvature probes $(01,01)$ and $(12,12)$
+at the origin. These are functionals of a vector label, not definitions
+by differentiating a stress correlation. As above,
+$S_w(ij,kl;ab;x)$ is the stress response with field-pair insertion
+$(ij,kl)$, output component $(a,b)$, and separation $x$.
+For the stress $T_w$ with coefficient vector $w$ and zero skim, linearity and
+\eqref{eq:ex-trace-derivative-compatibility} give
+\[
+ \phi_1(D_0T_w)=\sum_u\partial_uS_w(01,01;u0;e_0),\qquad
+ \phi_2(D_0T_w)=\sum_u\partial_uS_w(12,12;u0;e_0).
+\]
+Differentiating the chain product gives
 \[
  \partial_u\mathcal C
  = (\partial_u C_{ab;ij})C_{cd;kl}
@@ -327,8 +401,9 @@ target. Its kernel is precisely the Weyl line.
 
 \begin{proposition}[Free rank and closure dimensions]
 \label{prop:ex-trace-free-closure-rank}
-The free symmetric grade-four stress table has dimension four. The
-Maxwell-reduced grade-five vector table has dimension two. The free
+Under the reality, signed covariance and separated-correlation
+compatibility assumptions on the derivative plan stated above, the free
+symmetric grade-four stress table has dimension four. The Maxwell-reduced grade-five vector table has dimension two. The free
 zero-skim divergence map is onto that vector table and its kernel is the
 one-dimensional Weyl line.
 \end{proposition}
@@ -336,6 +411,8 @@ one-dimensional Weyl line.
 The first assertion is Lemma~\ref{lem:ex-trace-free-stress-basis}. The
 previous paragraph proves the second and third assertions. The scalar skim
 is exactly the real one-point average of the $00$ entry; it is not the tensor
-trace. The statement uses only the explicit probe formulas and the
-finite-dimensional quotient argument just given.
+trace. The identification of the differentiated stress probes with the
+probes of $D_0$ uses \eqref{eq:ex-trace-derivative-compatibility}; the
+remaining steps are the explicit probe formulas and the finite-dimensional
+quotient argument just given.
 \end{proof}
