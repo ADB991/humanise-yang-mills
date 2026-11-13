@@ -88,3 +88,23 @@ Final SHA-256 of the changed chapters (the other six C03 chapters are unchanged)
   elaboration, axiom printing and kernel replay remain unrun. The revised
   arguments retain the stated quantitative input and same-history assumptions.
   Renewed independent review concerns the exact follow-up snapshot.
+
+## Source-leakage pass (issue #183, session `ADB991-claude-20261113-0642`)
+
+Base `codex/existence-monograph` @ `5d91534`. Commands run in this pass:
+
+- `python3 scripts/check_blueprint.py`: exit 0, "Blueprint structure OK: 4 units. Lean and mathematics were not verified."
+- `python3 -m unittest discover -s tests`: exit 0, 22 tests OK.
+- `latexmk -g -pdf -interaction=nonstopmode -halt-on-error -outdir=<scratch> existence.tex` (from `manuscript/`):
+  exit 0, 978 pages, 0 undefined references, no `??` in `pdftotext` output. Changed pages rendered with
+  `pdftoppm` and inspected: 136 (rows 48–49), 139–140 (gain definition, row 50), 142 (row 51 remark, row 52),
+  148–150 (rows 53–55), 152 (rows 56–57).
+- `git diff --check`: clean.
+- Lean: source text read with `grep`/`sed` only; no Lean command, elaboration or axiom check was run.
+
+SHA-256 of the changed chapters:
+
+| File | Base `5d91534` | This pass |
+| --- | --- | --- |
+| `manuscript/existence/fullmesh-fixedbounds-producer.tex` | `b41f625235af595ec3b2c5b5f80cc51942842f5eaae1f006b63841fbc9a1b558` | `668889f30e94498f9e9cc03a34241e8c1832e4edf68a51cfce32453b52c43de0` |
+| `manuscript/existence/phase-quantitative-producer.tex` | `0ecef89fe822f61972e9dc16f262aacc8358c36c82b17799be2634f01eba98bd` | `fe27c96006b4762fc99175f50846f1c62ab24d2839e4152caa8dde04a8c11feb` |
