@@ -33,6 +33,18 @@ with the rest of the section; no review approvals were carried forward.
 
 ## Literature and editorial treatment
 
+Hall, *An Elementary Introduction to Groups and Representations*,
+[arXiv:math-ph/0005032v1](https://arxiv.org/pdf/math-ph/0005032v1),
+31 May 2000, Chapter 3, Definition 3.13 (p. 36) and Theorem 3.16
+(pp. 40–41), supplies the matrix Lie algebra definition and its real
+vector-space and commutator closure properties. Chapter 2, Definition 2.2
+(p. 9), requires a subgroup closed in the general linear group; the
+manuscript checks this for the closed subgroup of the unitary group.
+The definition uses all real exponential parameters, exactly as
+`YM.Gauge.Generates` and `YM.Gauge.lie` do. The opening paragraph now cites
+these results directly; see the [Hall follow-up record](revisions/mgubi-astra-22-hall-20261113/README.md)
+for the inspected version, verification and bibliography impact.
+
 Lebl, *Basic Analysis I*, author-maintained HTML §2.2, Propositions 2.2.5(iv)
 and 2.2.6, inspected on 11 November 2026, supplies the reciprocal and square-root
 limit rules. The section explicitly checks positivity and restricts to a tail.
@@ -124,6 +136,12 @@ from the earlier LaTeX pilot. The reports in `reviews/lean-mgubi.md` and
 `reviews/mathematics-mgubi.md` concern the earlier fingerprint
 `367b5982bb56035d3f0cbf81641d1f0564c27a48169707b9aa64a5cf3c0b0aa2`;
 they remain unchanged historical evidence and do not review this revision.
+The independent reports in [PR #113](https://github.com/hairer/humanise-yang-mills/pull/113)
+reviewed the subsequent fingerprint
+`37a404dea24a3001c320680e4b25334e619d6865178c86e3d85993bb4000168f`.
+Their required Hall definition/citation addition is addressed by the follow-up
+under [issue #114](https://github.com/hairer/humanise-yang-mills/issues/114),
+which changes the fingerprint again and requires renewed independent review.
 Both approvals remain null. No mathematical gap in the conditional scalar
 argument is presently identified.
 
