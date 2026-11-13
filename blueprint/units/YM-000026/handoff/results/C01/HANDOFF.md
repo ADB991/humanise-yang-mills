@@ -16,7 +16,7 @@ The following hashes identify the present author text; they are not themselves a
 | `manuscript/existence/atlas-estimates.tex` | `cf62afb4ce7f3e116aa100e2b15468367ab998974bc77c53d983e25054a2e481` |
 | `manuscript/existence/flat-step.tex` | `d6c8914591ecbd6a09fe4c9af5ddd205af7c4ee44cfe2f79707504d4ca550005` |
 | `manuscript/existence/flat-estimate.tex` | `0b7f7e9eb6cc6c5a8b4f7b626fce6e504a4060b26ca0e940967a38287a656929` |
-| `manuscript/existence/free-kernel-estimates.tex` | `9310e3d7daffc0897772fbdeb8f8de3a083d972c55b24466ae5ee7e606b99b69` |
+| `manuscript/existence/free-kernel-estimates.tex` | `6395a24090a89dc3955e5ecab9806b4b4baf44c75bb8b4116550ed756a3ed493` |
 | `manuscript/existence/free-kernel-components.tex` | `a9aea2289819d31b275f3a006a36de6f2e365b9f1ecdf44bc65b1d2aa59f9f84` |
 | `manuscript/existence/kernel-transport-identities.tex` | `509a2ecd65bd6280619ec3d9675ecf98e8de4a6e3defa0cb329fe81063b73f80` |
 | `manuscript/existence/positive-row-producer.tex` | `89f5f856610d06893be5a15ec1fb0756458eade7059cdaf6a6d945292d5db9d3` |
