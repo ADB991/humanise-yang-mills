@@ -61,3 +61,16 @@ Crown witness (`Glade.canopy`); transfer identity (`Cask.forfeit`) and one-site 
 - Coffer and bill chapters: the window condition is now the explicit `J ≤ m`, `σ_m² ≤ A_J/A_m` (`Stock.Tabs.opens levels 1`, `Overlay/Prior.lean`).
 - Crown buffer: `tilesAt C.S p (i ≤ N) = Cells.center C.S p _ 0`, a tiling of `S.side N p` with period `S.side i p` (`Push/GRID_APPROXIMATION/Geometry.lean`, `Cells/Packing.lean`); the "inferred" caveat of the first round is withdrawn.
 - Edge `C14-to-C15-vector-detector`: the independent checker reports that the C14 passage supplies the separation on the relevant real equivariant grade-five space. I have not re-verified this identification myself; status unchanged (input; producer located).
+
+## Source-leakage inputs (#194)
+
+Named in the author response to the source-leakage audit (session `ADB991-claude-20261113-e4dd`; details and rows in `../source-leakage-response.md`). No producer is located for any of them.
+
+| Input | Statement | Consumer | Status |
+| --- | --- | --- | --- |
+| I-C15-crown-witness | Crown witness for the field to which `prop:ex-trace-crown-buffer` is applied (ledger: `Glade.canopy`) | crown buffer; probe assembly (part B) | open |
+| I-C15-frame-normalization | testPrice(𝓕) ≥ 1, readPrice(𝓕) ≥ 1, c = orbitCost·errorPrice·corn(d)·a > 0 for the selected frame | application of `thm:ex-lattice-eve-producer` | open |
+| I-C15-eve-insertion-rate | if the branch patch exists: f ∈ 𝓡_{−1/2} with the uniform derivative inequality at price 2\|f\| | response choice u = 2\|f\| in `sec:ex-lattice-trace-eve-producer` | open; expected from `eq:ex-lattice-eve-linear-receipt` and the envelope B_*, identification not carried out |
+| I-C15-bill-label-receipt | paid label (norm ≤ 1, bias bound) with its paid root receipt ≤ n_{d,i}, as assumed by `prop:ex-trace-bill-root-price`; refines X2 | bill prices; probe assembly | open |
+
+Existing premises P1–P5 (small means), X1 (bill scale tickets) and `C15-internal-planted-expansion` are now stated in the text as outstanding inputs, without reference to the source.
