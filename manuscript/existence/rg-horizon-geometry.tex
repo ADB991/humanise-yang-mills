@@ -187,9 +187,10 @@ flight whose wing is the already defined train at level $i+1$. This uses
 the actual adjacent block at level $i$; no second schedule is selected.
 
 The bed at each $(N,i)$ is first constructed for the corresponding train.
-The source bed proposition fixes its four precision rows to the train's
-pulse, dual pulse, amended precision and amended inverse. It constructs the
-remaining root row as a square factor of the positive remainder. The
+Its four precision rows are the train's
+pulse, dual pulse, amended precision and amended inverse, and its
+remaining root row is a square factor of the positive remainder
+(Section~\ref{sec:positive-row-producer}). The
 finite-volume root matrix is the vertical stack
 \[
  J_p=\begin{bmatrix}\sqrt{p_{\mathrm{direct}}}I\\F\end{bmatrix},
@@ -204,7 +205,7 @@ inverse identities and the uniform quadratic form bounds required of a
 bed.
 
 For a step $i<N$, the flight's donated primal and two-form transports are
-the source towers' $A_0$ and $T$. The tangent identities are first obtained for the unamended pulses.
+the transports $A_0$ and $T$ of its tower. The tangent identities are first obtained for the unamended pulses.
 On both lattices the amended metric agrees with its pulse on exact
 curvatures, $Gd_1=Hd_1$ (Section~\ref{sec:positive-row-producer}).
 Thus the tangent identities give
@@ -219,8 +220,8 @@ Section~\ref{sec:curvature-horizon-producer}, supplies the curvature factorizati
 proposition applies to these actual adjacent beds, not just to an abstract
 pair of positive matrices.
 
-The source tower-price theorem also supplies explicit uniform strip costs.
-Here is the finite matrix bookkeeping behind that assertion. Let $\alpha$
+The completed tower also has explicit strip costs, uniform in $L$.
+We verify them by finite matrix bookkeeping. Let $\alpha$
 be the minimum of the two bed widths (the fine bed width is also
 the donated width) and the curvature-factor width; write $\Omega,\Omega'$ for the two bed costs, $V$ for the curvature
 factor cost, $L$ for the odd block side, $X$ for the maximum difference
@@ -330,12 +331,15 @@ common to all terminal cutoffs $N>i$; they need not be bounded by one
 constant over all stages. Periodization and its uniformity require the
 separate quotient-fibre argument and the same retained data.
 
-The source contract's remaining numerical receipts are explicit: the
-chosen price functions bound the bed strip widths/costs, floor constants,
-iterated tower costs, and the one-step crossing and roll identities at all
-$N,i$ and finite torus sides. The top bed is the unit diagonal because the
-top train is constant. These are exactly the fields of the horizon contract;
-they are not consequences of the block identity alone. In the public
+The horizon therefore carries explicit numerical data at all $N,i$ and
+on every finite torus side: the stage-indexed prices bound the bed strip
+widths and costs and the floor constants (by the schedule input described
+at the beginning of this subsection), and the iterated tower costs (by the
+bookkeeping above); the one-step crossing and roll identities hold by
+Proposition~\ref{prop:ex-lattice-horizon-roll}. The top bed is the unit diagonal because the
+top train is constant. These are exactly the data a horizon must carry;
+the prices and floors are inputs of the schedule and do not follow from
+the block identity alone. In the public
 construction the level schedule and these receipts are attached to the
 preselected run, as stated next. The public horizon contract alone does
 not identify its transport rows with the particular recursively produced
