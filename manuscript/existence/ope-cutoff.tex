@@ -187,14 +187,20 @@ Set
 \end{equation}
 Equations \eqref{eq:ope-terminal-coefficient} and
 \eqref{eq:ope-terminal-price} give rate $\tau-qa$ for both $E,V$.
-The final comparison of the local coefficient with the normalized
-reference fields has the following quantitative form. Provided its
+Let $K(k)\ge k$ be the chosen opened level, with $K(k)\le m$,
+and put $k^\circ=K(k)$ and $u=a_k/a_{k^\circ}$. The opening condition
+is $B_{k^\circ}^2\le a_k/a_{k^\circ}$, with $B_{k^\circ}$ the purchased
+covering radius, as in Section~\ref{sec:reference-match}. The opening
+is a separate requirement from the room condition. The fact that $k^\circ$
+has logarithmic rate $b$ is checked below. The final comparison of
+the local coefficient with the normalized reference fields has the following
+quantitative form. Provided its
 positive matching allowance $z$ satisfies
 \begin{align}
- \mathcal M(z;k,m)&\leq\delta_m X/(16\mathcal B_m),
+ \mathcal M(z;k^\circ,m)&\leq\delta_m X/(16\mathcal B_m),
        \label{eq:ope-match-pay-one}\\
- 32(1+\zeta_m)z\,a_k^{-q}
-       E/G(m,k)&\leq\vartheta_q(k)/2,
+ 32(1+\zeta_m)z\,a_{k^\circ}^{-q}
+       E/G(m,k^\circ)&\leq\vartheta_q(k^\circ)/2,
        \label{eq:ope-match-pay-two}
 \end{align}
 it produces a reference label $Q_{N,p}$ with quota at most $V$ and
@@ -202,25 +208,23 @@ centered discrepancy price at most
 \begin{equation}\label{eq:ope-cutoff-discrepancy}
  A=2\mathcal S(k)/z.
 \end{equation}
-Here $G(m,k)=\exp((s_m-s_k)/8)$, $\vartheta_q$ is positive with
-zero logarithmic rate, and $\mathcal M$ is the allowance transported
-from the centered scale to $m$. Its bound is
+For levels $\ell\le m$ write $G(m,\ell)=\exp((s_m-s_\ell)/8)$.
+The allowance $\vartheta_q$ is positive with zero logarithmic rate, and
+$\mathcal M$ is transported from the opened level $k^\circ$ to $m$.
+Its bound is
 \[
- \mathcal M(z;k,m)\leq
- z(a_m/a_k)^{q+1}\frac{\vartheta_q(m)}{\vartheta_q(k)}.
+ \mathcal M(z;k^\circ,m)\leq
+ z(a_m/a_{k^\circ})^{q+1}\frac{\vartheta_q(m)}{\vartheta_q(k^\circ)}.
 \]
-If the centered scale has first been opened to a finer admissible
-level, use that opened level in these formulas. The opening retains
-rate $b$, as checked below. Precisely, $\mathcal M(z;k,m)$ is the
-mark weight at scale $m$ obtained from the opening weight $z$ at $k$
+The opening retains rate $b$, as checked below. Precisely,
+$\mathcal M(z;k^\circ,m)$ is the mark weight at scale $m$ obtained
+from the opening weight $z$ at $k^\circ$
 by the scheduled one-step reduction factors (the evolution
 $b_{i+1}=\eta_ib_i$ of Section~\ref{sec:reference-cone}); the displayed
 bound for it is a property of that schedule.
 
 The comparison producing \eqref{eq:ope-cutoff-discrepancy} is the
-matched construction of Section~\ref{sec:reference-match}. That section,
-like Sections~\ref{sec:reference-cone} and~\ref{sec:reference-difference},
-uses three depths: a centered depth $J$ (the replicated cells and the
+matched construction of Section~\ref{sec:reference-match}. That section uses three depths: a centered depth $J$ (the replicated cells and the
 root test), an opening depth $m$ (start of the weight evolution) and a
 matching depth $k$. Here they are, respectively, the centered level $k$,
 its opened level $K(k)$, and $m$. The centered and opened levels are
@@ -235,8 +239,8 @@ coefficient field $Q$ with bound $c$ & terminal projection, $c=2P$\\
 column allowance $C_k$ & $\zeta_m$\\
 $E\geq4(1+C_k)c$ & $E=4(1+\zeta_m)(2P)$\\
 opening weight $w$ & $z$\\
-gain $G=e^{(s_k-s_m)/8}$ & $G(m,k)$\\
-single-source allowance $\theta_m$ & $\vartheta_q(k)$\\
+gain $G=e^{(s_k-s_m)/8}$ & $G(m,k^\circ)$\\
+single-source allowance $\theta_m$ & $\vartheta_q(k^\circ)$\\
 cell price $S_0=\exp((a_J/a_m)^4t_m+5)$ & $\mathcal S(k)=\exp(u^4t_{K(k)}+5)$\\
 bare label $b$ & $b$\\
 quota $\mu(I_kb)\le2E$; price $2S_0/w$ & quota of $Q_{N,p}$ at $m$ $\le V$; $A$
@@ -290,19 +294,19 @@ Since $\mathcal S$ has upper rate zero, \eqref{eq:ope-cutoff-discrepancy}
 has upper rate $\tau-(q+1/16)(a-b)$, as required in
 Input~\ref{input:ope-match}.
 
-Here is the opening check. Write $K(k)\geq k$ for the opened level,
-$u=a_k/a_{K(k)}\geq1$, and $B_{K(k)}\geq1$ for its positive vacuum
-budget. The schedule ensures, for every $\epsilon>0$,
+Here is the opening check. The ratio $u=a_k/a_{K(k)}$ is at least one. Write
+$V^{\rm vac}_{K(k)}\geq1$ for the positive vacuum budget at the opened
+level, distinct from its covering radius $B_{K(k)}$. The schedule ensures, for every $\epsilon>0$,
 \[
- u^4 B_{K(k)}\leq\epsilon s_{K(k)}\quad\hbox{eventually in }k.
+ u^4 V^{\rm vac}_{K(k)}\leq\epsilon s_{K(k)}\quad\hbox{eventually in }k.
 \]
-Since $s_{K(k)}-s_k=\log u\leq u\leq u^4B_{K(k)}$,
+Since $s_{K(k)}-s_k=\log u\leq u\leq u^4V^{\rm vac}_{K(k)}$,
 we have $s_k/s_{K(k)}\to1$. Opening a sequence of rate $b$
 therefore retains that rate. The actual centered factor is
 \[
  \mathcal S(k)=\exp\bigl(u^4 t_{K(k)}+5\bigr),
 \]
-where $t_{K(k)}\leq B_{K(k)}$ eventually. Its logarithm divided
+where $t_{K(k)}\leq V^{\rm vac}_{K(k)}$ eventually. Its logarithm divided
 by $t_n$ is at most $\epsilon s_{K(k)}/t_n+5/t_n$.
 Taking the upper limit and then $\epsilon\downarrow0$ proves its
 upper rate zero.
