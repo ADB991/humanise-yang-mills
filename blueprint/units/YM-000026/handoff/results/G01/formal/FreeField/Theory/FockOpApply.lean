@@ -1,8 +1,11 @@
-import FreeField.Theory
+import FreeField.Theory.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/fockOp_apply.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Theory_FockOpApply
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical InnerProductSpace ENNReal
 
@@ -248,13 +251,61 @@ theorem projOp_adjoint' {B : Set Spacetime} (hB : MeasurableSet B) :
   rw [hψ, hφ]
   by_cases hp : totalMom p ∈ B <;> simp [hp]
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Theory_FockOpApply
 
-#print axioms YangMills.FreeField.fockOp_apply'
-#print axioms YangMills.FreeField.transOp_zero'
-#print axioms YangMills.FreeField.transOp_add'
-#print axioms YangMills.FreeField.transOp_norm'
-#print axioms YangMills.FreeField.projOp_empty'
-#print axioms YangMills.FreeField.projOp_univ'
-#print axioms YangMills.FreeField.projOp_inter'
-#print axioms YangMills.FreeField.projOp_adjoint'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical InnerProductSpace ENNReal
+
+/-- [MEDIUM, 300 lines] **The sectorwise operator exists.** If every `c k` is measurable and
+bounded by one and every `T k` preserves `mu^{⊗k}`, then `fockOp c T` acts sectorwise by
+`ψ_k ↦ c_k · (ψ_k ∘ T_k)`.
+
+Proof: `ψ_k ∘ T_k` is `Lp.compMeasurePreserving`, of the same norm; multiplying by `c k` does not
+increase the `L²` norm, so `sectorMap` is in `L²` with `‖sectorMap … ψ_k‖ ≤ ‖ψ_k‖`, the sequence is
+in `ℓ²`, and the resulting map is linear and bounded by one (`LinearMap.mkContinuous`). Then
+unfold the three totalised definitions with `dif_pos` and `Exists.choose_spec`. -/
+theorem fockOp_apply (c : ∀ k : ℕ, (Fin k → Spacetime) → ℂ)
+    (T : ∀ k : ℕ, (Fin k → Spacetime) → (Fin k → Spacetime))
+    (hc : ∀ k, Measurable (c k)) (hb : ∀ k p, ‖c k p‖ ≤ 1)
+    (hT : ∀ k, MeasurePreserving (T k) (Measure.pi fun _ : Fin k => mu)
+      (Measure.pi fun _ : Fin k => mu))
+    (ψ : FockCarrier) (k : ℕ) :
+    ((fockOp c T ψ) k : (Fin k → Spacetime) → ℂ) =ᵐ[Measure.pi fun _ : Fin k => mu]
+      fun p => c k p * (ψ k : (Fin k → Spacetime) → ℂ) (T k p) := by
+  exact Consolidated.Theory_FockOpApply.fockOp_apply' c T hc hb hT ψ k
+
+/-- [EASY, 40 lines] `phase 0 = 1`. Depends on `fockOp_apply`. -/
+theorem transOp_zero : transOp 0 = ContinuousLinearMap.id ℂ FockCarrier := by
+  exact Consolidated.Theory_FockOpApply.transOp_zero'
+
+/-- [EASY, 60 lines] `phase x * phase y = phase (x + y)`. Depends on `fockOp_apply`. -/
+theorem transOp_add (x y : Spacetime) : (transOp x).comp (transOp y) = transOp (x + y) := by
+  exact Consolidated.Theory_FockOpApply.transOp_add' x y
+
+/-- [EASY, 60 lines] `|phase| = 1`. Depends on `fockOp_apply`. -/
+theorem transOp_norm (x : Spacetime) (ψ : FockCarrier) : ‖transOp x ψ‖ = ‖ψ‖ := by
+  exact Consolidated.Theory_FockOpApply.transOp_norm' x ψ
+
+/-- [EASY, 30 lines] The indicator of `∅` is `0`. Depends on `fockOp_apply`. -/
+theorem projOp_empty : projOp ∅ = 0 := by
+  exact Consolidated.Theory_FockOpApply.projOp_empty'
+
+/-- [EASY, 30 lines] The indicator of `univ` is `1`. Depends on `fockOp_apply`. -/
+theorem projOp_univ : projOp Set.univ = ContinuousLinearMap.id ℂ FockCarrier := by
+  exact Consolidated.Theory_FockOpApply.projOp_univ'
+
+/-- [EASY, 60 lines] Product of indicators. Depends on `fockOp_apply`. -/
+theorem projOp_inter {A B : Set Spacetime} (hA : MeasurableSet A) (hB : MeasurableSet B) :
+    (projOp A).comp (projOp B) = projOp (A ∩ B) := by
+  exact Consolidated.Theory_FockOpApply.projOp_inter' hA hB
+
+/-- [EASY, 80 lines] Multiplication by a real function is symmetric
+(`ContinuousLinearMap.eq_adjoint_iff`). Depends on `fockOp_apply`. -/
+theorem projOp_adjoint {B : Set Spacetime} (hB : MeasurableSet B) :
+    ContinuousLinearMap.adjoint (projOp B) = projOp B := by
+  exact Consolidated.Theory_FockOpApply.projOp_adjoint' hB
+
+end YangMills.FreeField

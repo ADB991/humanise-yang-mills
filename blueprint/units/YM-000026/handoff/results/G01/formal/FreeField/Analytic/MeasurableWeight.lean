@@ -1,8 +1,11 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/measurable_weight.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_MeasurableWeight
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -25,5 +28,17 @@ theorem measurable_weight' : Measurable weight := by
       ((measurable_const.add continuous_minkowskiSquare_work.measurable).log.pow_const 2)
   · exact measurable_const
 
+end YangMills.FreeField.Consolidated.Analytic_MeasurableWeight
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [EASY, 30 lines] `weight` is an `ite` over a closed set of continuous functions. -/
+theorem measurable_weight : Measurable weight := by
+  exact Consolidated.Analytic_MeasurableWeight.measurable_weight'
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.measurable_weight'

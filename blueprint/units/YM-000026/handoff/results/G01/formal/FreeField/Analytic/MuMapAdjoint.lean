@@ -1,9 +1,14 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+import FreeField.Analytic.MeasurableWeight
+import FreeField.Analytic.WeightAdjoint
+
 import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+
+/-! Proofs consolidated from `FreeField/Work/mu_map_adjoint.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_MuMapAdjoint
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -42,5 +47,19 @@ theorem mu_map_adjoint' (Λ : ProperLorentz) :
     rw [weight_adjoint]
   · simp [hp]
 
+end YangMills.FreeField.Consolidated.Analytic_MuMapAdjoint
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [MEDIUM, 80 lines] `mu` is invariant under `Λᵀ`: `weight_adjoint` and `|det Λᵀ| = 1`
+(`MeasureTheory.Measure.map_linearMap_addHaar_eq_smul_addHaar`). Depends on `weight_adjoint`. -/
+theorem mu_map_adjoint (Λ : ProperLorentz) :
+    Measure.map (ContinuousLinearMap.adjoint (Λ.1.val : Spacetime →L[ℝ] Spacetime)) mu = mu := by
+  exact Consolidated.Analytic_MuMapAdjoint.mu_map_adjoint' Λ
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.mu_map_adjoint'

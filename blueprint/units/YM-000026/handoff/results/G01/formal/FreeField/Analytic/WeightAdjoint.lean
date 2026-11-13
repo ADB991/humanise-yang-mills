@@ -1,8 +1,11 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/weight_adjoint.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_WeightAdjoint
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -73,5 +76,20 @@ theorem weight_adjoint' (Λ : ProperLorentz) (p : Spacetime) :
       simpa only [e.apply_symm_apply] using (hw (e.symm (spatialReflection_work p))).symm
     _ = weight p := weight_reflection_work p
 
+end YangMills.FreeField.Consolidated.Analytic_WeightAdjoint
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [MEDIUM, 150 lines] Lorentz invariance of the weight under the Euclidean transpose: for
+`Λ` proper orthochronous, `Λᵀ = J Λ⁻¹ J` with `J` the reflection of the spatial coordinates, and
+`J`, `Λ⁻¹` preserve the cone and `minkowskiSquare`. -/
+theorem weight_adjoint (Λ : ProperLorentz) (p : Spacetime) :
+    weight (ContinuousLinearMap.adjoint (Λ.1.val : Spacetime →L[ℝ] Spacetime) p) = weight p := by
+  exact Consolidated.Analytic_WeightAdjoint.weight_adjoint' Λ p
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.weight_adjoint'

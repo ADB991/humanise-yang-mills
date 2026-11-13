@@ -1,8 +1,11 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/weight_le.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_WeightLe
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -31,5 +34,18 @@ theorem weight_le' (p : Spacetime) : weight p ≤ time p ^ 4 := by
         le_mul_of_one_le_right (by positivity) hl2
   · positivity
 
+end YangMills.FreeField.Consolidated.Analytic_WeightLe
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [EASY, 30 lines] On the cone `0 ≤ p² ≤ p_t²` and `log (e + p²) ≥ 1`; off the cone the weight
+is `0 ≤ p_t^4` (even power). -/
+theorem weight_le (p : Spacetime) : weight p ≤ time p ^ 4 := by
+  exact Consolidated.Analytic_WeightLe.weight_le' p
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.weight_le'

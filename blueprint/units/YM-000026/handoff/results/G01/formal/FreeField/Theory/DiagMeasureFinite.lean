@@ -1,8 +1,11 @@
-import FreeField.Theory
+import FreeField.Theory.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/diagMeasure_finite.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Theory_DiagMeasureFinite
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical InnerProductSpace ENNReal
 
@@ -34,6 +37,16 @@ theorem diagMeasure_finite' (ψ : FockCarrier) : IsFiniteMeasure (diagMeasure ψ
     exact DiagMeasureProof.sector_mass k (ψ k)
   exact ⟨hmass ▸ hsum.tsum_ofReal_lt_top⟩
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Theory_DiagMeasureFinite
 
-#print axioms YangMills.FreeField.diagMeasure_finite'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical InnerProductSpace ENNReal
+
+/-- [EASY, 60 lines] Total mass `∑_k ‖ψ_k‖² = ‖ψ‖²`. -/
+theorem diagMeasure_finite (ψ : FockCarrier) : IsFiniteMeasure (diagMeasure ψ) := by
+  exact Consolidated.Theory_DiagMeasureFinite.diagMeasure_finite' ψ
+
+end YangMills.FreeField

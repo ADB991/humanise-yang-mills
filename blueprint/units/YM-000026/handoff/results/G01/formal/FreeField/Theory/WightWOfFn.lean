@@ -1,9 +1,12 @@
-import FreeField.Theory
+import FreeField.Theory.Base
+
 import Mathlib.LinearAlgebra.Multilinear.Finsupp
+
+/-! Proofs consolidated from `FreeField/Work/wightW_ofFn.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Theory_WightWOfFn
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical InnerProductSpace ENNReal
 
@@ -131,9 +134,33 @@ theorem wightW_smul_test' (u v : Word) (c : ℂ) (A : Mon →₀ ℂ) (f : TestF
       (Fin.natAdd u.length 0) c f
 
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Theory_WightWOfFn
 
-#print axioms YangMills.FreeField.wightW_ofFn'
-#print axioms YangMills.FreeField.wightW_add_label'
-#print axioms YangMills.FreeField.wightW_smul_label'
-#print axioms YangMills.FreeField.wightW_smul_test'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical InnerProductSpace ENNReal
+
+/-- [EASY, 60 lines] Transport along `List.length_ofFn`. -/
+theorem wightW_ofFn {n : ℕ} (P : Fin n → (Mon →₀ ℂ)) (f : Fin n → TestFunction) :
+    wightW (List.ofFn fun i => (P i, f i)) = wightmanL P f := by
+  exact Consolidated.Theory_WightWOfFn.wightW_ofFn' P f
+
+/-- [MEDIUM, 150 lines] The Wightman function of a word is additive in each label
+(`wightmanL` is a sum over the supports; pass to a common superset of the supports). -/
+theorem wightW_add_label (u v : Word) (A A' : Mon →₀ ℂ) (f : TestFunction) :
+    wightW (u ++ (A + A', f) :: v) = wightW (u ++ (A, f) :: v) + wightW (u ++ (A', f) :: v) := by
+  exact Consolidated.Theory_WightWOfFn.wightW_add_label' u v A A' f
+
+/-- [EASY, 80 lines] Homogeneity in each label (for `c = 0` both sides vanish). -/
+theorem wightW_smul_label (u v : Word) (c : ℂ) (A : Mon →₀ ℂ) (f : TestFunction) :
+    wightW (u ++ (c • A, f) :: v) = c * wightW (u ++ (A, f) :: v) := by
+  exact Consolidated.Theory_WightWOfFn.wightW_smul_label' u v c A f
+
+/-- [EASY, 80 lines] Homogeneity in each test. -/
+theorem wightW_smul_test (u v : Word) (c : ℂ) (A : Mon →₀ ℂ) (f : TestFunction) :
+    wightW (u ++ (A, c • f) :: v) = c * wightW (u ++ (A, f) :: v) := by
+  exact Consolidated.Theory_WightWOfFn.wightW_smul_test' u v c A f
+
+end YangMills.FreeField

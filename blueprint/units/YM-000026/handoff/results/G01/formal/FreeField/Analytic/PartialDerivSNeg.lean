@@ -1,8 +1,11 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/partialDeriv_S_neg.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_PartialDerivSNeg
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -38,5 +41,20 @@ theorem partialDeriv_S_neg' (γ : Idx) (ξ : Spacetime) :
     partialDeriv γ S (-ξ) = (-1) ^ idxOrder γ * partialDeriv γ S ξ := by
   simpa only [partialDeriv, dirList_length_work] using foldr_parity_work (dirList γ) ξ
 
+end YangMills.FreeField.Consolidated.Analytic_PartialDerivSNeg
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [EASY, 60 lines] Parity. `S` is even, and `fderiv` of an even (odd) function applied to a
+fixed vector is odd (even), with no differentiability hypothesis; induct on `dirList γ`, whose
+length is `idxOrder γ`. -/
+theorem partialDeriv_S_neg (γ : Idx) (ξ : Spacetime) :
+    partialDeriv γ S (-ξ) = (-1) ^ idxOrder γ * partialDeriv γ S ξ := by
+  exact Consolidated.Analytic_PartialDerivSNeg.partialDeriv_S_neg' γ ξ
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.partialDeriv_S_neg'
