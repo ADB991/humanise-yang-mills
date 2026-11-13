@@ -71,3 +71,13 @@ The canonical evidence files `blueprint/units/YM-000026/*-evidence.md` were not 
 ## Revision 1 (13 November 2026)
 
 Answering finding R1 of the review in `review/mgubi-codex-c10-annulus-20261113/` (draft PR #99): the fixed-film ticket calculus was an explicit input in the text but was missing from the statement of `prop:ex-annulus-estimate`, from the dependency summary after it and from the outgoing edge to C11. It is now named (T) in `annulus-same-data-binding.tex`, is a hypothesis of the proposition next to (W) and (S), appears in the summary, and the edge `C10-to-C11-annulus-estimate` and `handoff.md` carry it. Only `annulus-same-data-binding.tex` changed among the chapters; its new SHA-256 is recorded in `part-B/validation.md`. The hash table above gives the hashes at the first handoff. The reviewed hashes of that chapter are stale and need renewed review.
+
+## Revision 2 (13 November 2026)
+
+Session `schmittj-claude-c10-rev2-20261113`, answering finding G04-F1 of the G04 author pass (PR #119; note on issue #60 of 13 November). Only `annulus-two-wave-estimates.tex` changed; its SHA-256 is now `1d7c80972d3ac8d5d967b046a0c0e9f74e89e5d13ce82f6e2dabeefbbe0e6ea0`.
+
+The chapter defined \(C_G\) through "the chosen invariant inner product" without naming it. It now states that this is the colour inner product \(\langle u,v\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(uv)\), that the colour basis is orthonormal for it, and gives \(C_G=-(\dim\mathfrak g)^{-1}\sum_b\operatorname{tr}((\operatorname{ad}e_b)^2)\), with the value \(2N^2\) for \(SU(N)\) as orientation. Source read for this: `YM.Gauge.trace_color` (`Lean/YM/Gauge/Colors.lean`: \(-\operatorname{Re}\operatorname{tr}(\texttt{colorMat}\,c\cdot\texttt{colorMat}\,d)=r_G\langle c,d\rangle\)), `YM.Gauge.casimir` (same file, defined with the standard orthonormal basis of the colour space), `YM.Gauge.trace_adjoint` (`Lean/YM/Gauge/Casimir.lean`), `YM.Gauge.slopeConstant` \(=11\,\texttt{casimir}/(24\pi^2)\). Consequently \(C_G\) of this chapter is `casimir`, it equals \(C_{\mathfrak g}\) of the running-coefficient unit YM-000022, and \(\lambda_G=11C_G/(24\pi^2)\) is `slopeConstant` \(=2b_0(G)\). The value for \(SU(N)\) is the author's computation from the Killing form \(2N\operatorname{tr}(uv)\).
+
+Not settled here: the positive constant \(s_G\) in `common-scale-selection.tex` (package C16) is introduced there only as "\(s_G>0\)"; whether it is `slopeConstant` was not checked. That is the remaining half of G04-F1 and belongs to C16.
+
+No statement or estimate changed. Validation: full `latexmk` build of `manuscript/existence.tex` on base `ce1b3a4` with this edit, exit 0, 966 pages, 0 undefined references, 0 overfull boxes. Not independently reviewed.
