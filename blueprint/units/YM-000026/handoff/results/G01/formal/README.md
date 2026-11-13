@@ -116,3 +116,64 @@ Results: all three invocations exited with status 0, no errors and no warnings; 
 **SHA-256.** `AdequacyFull.lean` a4f05230225a73c36155f1159bda5cb83979333b4a4e7d9f6c97f09cc1c9706e; `Adequacy.lean` 581880ef39e48a1af37af8b67b50869a011958411be2c6fb291a5a38e43b18f3 (local and server copies identical).
 
 **What the check relies on.** Unlike `Adequacy.lean`, this theorem's kernel check relies on the project's compiled modules (`Solution.olean`, `Construction.olean` and their roughly 12,000 transitive imports) from the clean rebuild of issue #37: Lean checked the new declarations against the imported environment and did not re-check the imported modules. The `#print axioms` output covers the full dependency closure as recorded in those compiled modules, so it is as trustworthy as that rebuild. No independent re-check (for example with `lean4checker`) of `AdequacyFull.olean` was run.
+
+---
+
+## Group independence (revision 1, 13 November 2026)
+
+**Origin.** The independent review of G01 (`../review/hairer-claude-20261113/mathematics.md`, M3) argued on paper that the public statement does not distinguish gauge groups. The files `GroupIndependence.lean` and `GroupIndependenceFull.lean` check and formalise that argument. It is correct, with one hypothesis that the paper sketch uses implicitly.
+
+**Paper check.** `Hierarchy C` depends on the family `C` only through the domain of `project`; no field mentions the group, the lattice, `haar` or `insertion`. Among the clauses of `Reconstructed`, `OperatorProductExpansion` and `TraceTest`, only `represents` mentions the family and only `amplitudePositive` and `shortDistance` mention the group, both through `Module.finrank ℝ g.lieAlgebra`. Under \(\Theta\mapsto\lambda\Theta\) with real \(\lambda>0\): `centered` holds with no further hypothesis, because it is stated through the linear maps `toLabel 4` and `field`; `shortDistance` and `excludes` concern `traceTwo`, which is a value of the bare function `correlation` and not of the field map, so they need \(\operatorname{traceTwo}(\lambda\Theta)=\lambda^2\operatorname{traceTwo}(\Theta)\) as a hypothesis; `wickProfile` takes arbitrary complex coefficients, so dividing them by \(\lambda^2\) is allowed.
+
+**The extra hypothesis.** `YangMills.GroupIndependence.HomogeneousTrace T₀ lam`: for all sufficiently small \(r>0\), the selected correlation at `timePair r` of two copies of `⟨4, lam • centeredTrace⟩` equals `lam ^ 2 * T₀.traceTwo r`. It is needed only for the one real scalar \(\lambda=\sqrt{\dim\mathfrak g/\dim\mathfrak g_0}\). It holds for the constructed witness by `MultilinearMap.map_smul_univ`. It was not derived from the public clauses; whether `root`, `analytic` and `boundary` imply it was not examined.
+
+**Theorems over the public specification only (`GroupIndependence.lean`, 328 lines, imports only `Adequacy`).**
+
+```lean
+theorem YangMills.group_transfer_witness {g₀ g : GaugeGroup} (C₀ : WilsonFamily g₀) (T₀ : Hierarchy C₀)
+    (hR : T₀.Reconstructed) (hO : T₀.OperatorProductExpansion) (hT : T₀.TraceTest)
+    (hH : ∀ (n : ℕ) (a : Fin n → T₀.Tag) (x : Points n), (∃ k, a k = ⟨0, 0⟩) →
+      T₀.correlation (some T₀.selected) a x = 0)
+    (hom : ∀ᶠ r : ℝ in 𝓝[>] 0,
+      T₀.correlation (some T₀.selected)
+          (fun _ : Fin 2 => ⟨4, ((Real.sqrt ((Module.finrank ℝ g.lieAlgebra : ℝ) /
+            (Module.finrank ℝ g₀.lieAlgebra : ℝ)) : ℝ) : ℂ) • T₀.centeredTrace⟩)
+          (Hierarchy.timePair r) =
+        ((Real.sqrt ((Module.finrank ℝ g.lieAlgebra : ℝ) /
+          (Module.finrank ℝ g₀.lieAlgebra : ℝ)) : ℝ) : ℂ) ^ 2 * T₀.traceTwo r)
+    (hg : 0 < Module.finrank ℝ g.lieAlgebra) :
+    ∃ C : WilsonFamily g, WilsonRegularity C ∧
+      (∀ (N p : ℕ) (v : C.Token) (x : Site (C.period p * C.denominator N))
+        (U V : Configuration g (C.period p * C.denominator N)),
+        C.insertion N p v x U = C.insertion N p v x V) ∧
+      ∃ T : Hierarchy C, ∀ p : ℕ → ℕ, StrictMono p → T.Properties p
+```
+
+`YangMills.group_transfer_jointExistence_body` has the same hypotheses and concludes the body of `JointExistence` at `g` (with `q = id`) together with constant insertions. So a hierarchy over a family of one group `g₀` with the three public properties, the vanishing hypothesis and the homogeneity yields the public body at any group `g` of positive dimension. Supporting declarations: `rehome` (copies a hierarchy to another family, with a new `project` and a new grade-four field), `rehome_reconstructed`, `rehome_ope`, `rescale_centered`, `rescale_shortDistance`, `rescale_excludes`, `rehome_traceTest`, `haarFamily` (a family over any `g`, using the normalised Haar measure of the compact group `g.image`; compactness of the unitary group is proved in the file because Mathlib has no such instance), `finrank_pos_of_isSimple` (public simplicity implies positive dimension), `homogeneousTrace_of_homogeneous`. No positivity of the dimension of `g₀` is assumed; it follows from `hT`. `Adequacy.lean` is unchanged.
+
+**Corollaries in the full project (`GroupIndependenceFull.lean`, imports `GroupIndependence` and `Solution`).**
+
+```lean
+theorem YangMills.jointExistence_body_any_group_of_one_simple :
+    ∀ g₀ : GaugeGroup, g₀.IsSimple → ∀ g : GaugeGroup, 0 < Module.finrank ℝ g.lieAlgebra →
+      ∃ C : WilsonFamily g,
+        (WilsonRegularity C ∧ ∀ p : ℕ → ℕ, StrictMono p → ∃ q : ℕ → ℕ, StrictMono q ∧
+          ∃ T : Hierarchy C, T.Properties (p ∘ q)) ∧
+        (∀ (N p : ℕ) (v : C.Token) (x : Site (C.period p * C.denominator N))
+          (U V : Configuration g (C.period p * C.denominator N)),
+          C.insertion N p v x U = C.insertion N p v x V)
+```
+
+together with `jointExistence_body_any_simple_of_one_simple` (the same for every simple `g`) and `jointExistence_of_one_simple (g₀) (hg₀ : g₀.IsSimple) : JointExistence`. The proofs call `YangMills.constructed` at `g₀` only.
+
+**How to read these.** That only the witness at `g₀` is used is a property of the proof term and is not visible in the statements of the full-project corollaries: since `constructed` holds for every simple group, the simple case of the first corollary also follows from `jointExistence_with_constant_insertions`. The statement in which group independence is visible is `group_transfer_witness`, whose input is a hierarchy over `g₀` and whose output is one over `g`. New at statement level in the full project is the case of a group `g` of positive dimension that is not simple (abelian, or in a reducible representation): the body of `JointExistence` holds there too, although `JointExistence` itself quantifies over simple groups only.
+
+**Axioms.** `#print axioms` gives `[propext, Classical.choice, Quot.sound]` for `rehome_traceTest`, `finrank_pos_of_isSimple`, `group_transfer_witness`, `group_transfer_jointExistence_body` (local build and server) and for the three full-project corollaries (server). No `sorry`, no `axiom` declaration, no `native_decide` in either file (`grep`).
+
+**Commands and results.** Local, in the build directory of the first section with `GroupIndependence.lean` and the new `lakefile.toml` (one added library): `rm -rf .lake/build && lake build` gives `Build completed successfully (8662 jobs)`, no errors, no warnings, with the three axiom lines of `Adequacy.lean` as before and the four new ones; the job count is 8662 instead of 8660 because of the added library. A second `lake build` by the coordinating session replayed the same result. Server (`ada-25`, files in `/userdata/schmittj/ym-build/formal/`, project tree of the #37 rebuild not modified, `git status --porcelain` there empty): a new script `compile-gi.sh` with the same `LEAN_PATH` recipe as above elaborated `Adequacy.lean` afresh into a separate directory (exit 0, same three axiom lines, resulting `.olean` byte-identical to the existing one), `GroupIndependence.lean` (exit 0) and `GroupIndependenceFull.lean` (exit 0, compiled at the first attempt, three axiom lines as stated).
+
+**Re-run of the earlier build (review item L4).** Local clean rebuild as above. On the server `bash compile.sh` was re-run: exit 0, `'YangMills.jointExistence_with_constant_insertions' depends on axioms: [propext, Classical.choice, Quot.sound]`; the `Check` step (the `example : YangMills.JointExistence` through the corollary) re-elaborated with output byte-identical to the first run. One correction to the section above: the script on the server skips `Adequacy.lean` when its `.olean` is up to date, so it is not literally the three-line script printed there; the fresh elaboration of `Adequacy.lean` is the one in `compile-gi.sh`.
+
+**SHA-256.** `GroupIndependence.lean` 71441f89e6ebe5a4dc3c291dc98c8d00151b3b4dabdbf7574fb9b39d02ebeebc; `GroupIndependenceFull.lean` 16026a3e3839d7409532245059a0acbbf653caf5145dc00c04c05a2b831064ec; `lakefile.toml` 3d68fb2f3493e1be64938bb87ffef4eed6c7d85125e36b12137d265680060914 (was ed67fb3b…e855); `Adequacy.lean`, `AdequacyFull.lean` and the three public files unchanged, hashes as above, identical locally, in this directory and on the server.
+
+**Not done.** No independent kernel replay (`lean4checker`, Comparator) of the new objects; as for `AdequacyFull.lean`, the check of `GroupIndependenceFull.lean` relies on the compiled modules of the #37 rebuild. The new statements have not been independently reviewed. The reviewer's open question M4 (a generalised free field as input) was not touched.
