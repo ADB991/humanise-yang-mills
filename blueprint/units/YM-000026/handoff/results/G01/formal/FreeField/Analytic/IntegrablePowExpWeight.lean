@@ -1,10 +1,15 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+import FreeField.Analytic.WeightLe
+import FreeField.Analytic.MeasurableWeight
+
 import Mathlib.MeasureTheory.Constructions.HaarToSphere
 import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
 
+/-! Proofs consolidated from `FreeField/Work/integrable_pow_exp_weight.lean`. -/
+
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_IntegrablePowExpWeight
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -60,5 +65,21 @@ theorem integrable_pow_exp_weight' {r : ℝ} (hr : 0 < r) (k : ℕ) :
   · rw [weight_eq_zero hp, mul_zero]
     positivity
 
+end YangMills.FreeField.Consolidated.Analytic_IntegrablePowExpWeight
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [MEDIUM, 120 lines] Laplace integrability with polynomial weights: on the cone
+`‖p‖ ≤ √2 p_t` and `weight p ≤ p_t^4`, so the integrand is at most
+`(√2 p_t)^k p_t^4 exp (-r p_t)` on the cone, whose integral over `{‖𝐩‖ ≤ p_t}` is a Gamma
+integral. -/
+theorem integrable_pow_exp_weight {r : ℝ} (hr : 0 < r) (k : ℕ) :
+    Integrable fun p : Spacetime => ‖p‖ ^ k * Real.exp (-r * time p) * weight p := by
+  exact Consolidated.Analytic_IntegrablePowExpWeight.integrable_pow_exp_weight' hr k
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.integrable_pow_exp_weight'

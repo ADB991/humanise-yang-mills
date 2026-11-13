@@ -1,8 +1,11 @@
-import FreeField.Theory
+import FreeField.Theory.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/rhoL_one.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Theory_RhoLOne
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical InnerProductSpace ENNReal
 
@@ -175,8 +178,28 @@ theorem rhoL_bijective' (Λ : ProperLorentz) : Bijective (rhoL Λ) := by
   exact ⟨hl.injective, hr.surjective⟩
 
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Theory_RhoLOne
 
-#print axioms YangMills.FreeField.rhoL_one'
-#print axioms YangMills.FreeField.rhoL_mul'
-#print axioms YangMills.FreeField.rhoL_bijective'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical InnerProductSpace ENNReal
+
+/-- [MEDIUM, 100 lines] `rhoMat 1` is the identity matrix, `derivSubst 1 = id`, hence
+`rhoIdx 1 α = single {α} 1` and `rhoMon 1 m = single m 1`. -/
+theorem rhoL_one : rhoL 1 = LinearMap.id := by
+  exact Consolidated.Theory_RhoLOne.rhoL_one'
+
+/-- [MEDIUM, 250 lines] `rhoMat (Λ Γ) = rhoMat Λ * rhoMat Γ` (matrix product), so
+`derivSubst (Λ Γ) = (derivSubst Λ).comp (derivSubst Γ)`; `rhoL Λ` is the algebra endomorphism of
+`AddMonoidAlgebra ℂ Mon` determined on generators, and algebra homomorphisms compose. -/
+theorem rhoL_mul (Λ Γ : ProperLorentz) : rhoL (Λ * Γ) = rhoL Λ ∘ₗ rhoL Γ := by
+  exact Consolidated.Theory_RhoLOne.rhoL_mul' Λ Γ
+
+/-- [MEDIUM, 120 lines] The inverse of a proper orthochronous Lorentz transformation is one;
+then `rhoL_mul` and `rhoL_one` give a two-sided inverse. Depends on `rhoL_one`, `rhoL_mul`. -/
+theorem rhoL_bijective (Λ : ProperLorentz) : Bijective (rhoL Λ) := by
+  exact Consolidated.Theory_RhoLOne.rhoL_bijective' Λ
+
+end YangMills.FreeField

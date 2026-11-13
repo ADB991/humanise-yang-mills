@@ -1,10 +1,13 @@
-import FreeField.Reconstruction
+import FreeField.Reconstruction.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/HostReconstruct.lean`. -/
 
 set_option autoImplicit false
 set_option backward.isDefEq.respectTransparency false
 noncomputable section
 
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Reconstruction_HostReconstruct
 open MeasureTheory
 open scoped InnerProductSpace Topology Classical
 
@@ -523,6 +526,38 @@ end Host.Reconstruction
       Host.Reconstruction.w2 h hg, Host.Reconstruction.w3 h hg⟩,
     Host.Reconstruction.vacuumExpectation h hg, Host.Reconstruction.faithful h hg⟩
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Reconstruction_HostReconstruct
 
-#print axioms YangMills.FreeField.Host.reconstruct'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open MeasureTheory
+open scoped InnerProductSpace
+
+/-- [HARD (long, formal), 1000–1500 lines; no dependencies] **Reconstruction from a host.** A good host yields a Wightman theory satisfying W0–W3 whose
+vacuum expectations are the inner products `⟪Ψ [], Ψ w⟫`, and which is faithful as soon as every
+non-zero label moves some word vector.
+
+Proof idea (DESIGN.md (a), about 800 lines, no analysis beyond Mathlib):
+* `H` is the topological closure of `D = span (range Ψ)` in `K`, a complete subspace; `domain` is
+  `D` inside it, so `denseDomain` and `cyclicVacuum` hold by construction.
+* Let `J : (words →₀ ℂ) →ₗ K` extend `Ψ` and let `L_a` prepend the letter `a` to every word. If
+  `J x = 0` then `J (L_a x)` is orthogonal to every `Ψ v` by `adjoint`, and it lies in `D`, hence
+  vanishes. So `L_a` descends to `D`; `add_label` … `smul_test` give bilinearity in the letter.
+* `AdjointAxiom`, `tempered`, `LocalCommutativity` are `adjoint`, `tempered`, `locality` extended
+  linearly. The Poincaré operators map `D` to `D` by `covariant`, hence `H` to `H`; W2 follows.
+* Energy–momentum: for measurable `B` the host projection maps `H` to `H`. Indeed, for `v ∈ H`
+  and `u ⊥ H`, `⟪u, U(a) v⟫ = 0 = ⟪v, U(a) u⟫` for all `a`, so the four vectors `u + i^k v` have
+  the same characteristic function `a ↦ ⟪ψ, U(a) ψ⟫`; by `spectral` and
+  `MeasureTheory.Measure.ext_of_charFun` their diagonal measures agree, and polarisation gives
+  `⟪u, E(B) v⟫ = 0`. For non-measurable `B` put `projection B = 0`.
+* `uniqueVacuum`, `positiveEnergy`, `spectralRepresentation` restrict from `K`. -/
+theorem Host.reconstruct {Lab : FieldLabels} (h : Host Lab) (hg : h.Good) :
+    ∃ (H : HilbertSpace) (th : WightmanTheory H Lab), th.Axioms ∧
+      (∀ (n : ℕ) (P : Fin n → Lab.carrier) (f : Fin n → TestFunction),
+        th.fields.vacuumExpectation P f =
+          inner ℂ (h.Ψ []) (h.Ψ (List.ofFn fun i => (P i, f i)))) ∧
+      ((∀ A : Lab.carrier, A ≠ 0 → ∃ f u, h.Ψ ((A, f) :: u) ≠ 0) → th.fields.Faithful) := by
+  exact Consolidated.Reconstruction_HostReconstruct.Host.reconstruct' h hg
+
+end YangMills.FreeField

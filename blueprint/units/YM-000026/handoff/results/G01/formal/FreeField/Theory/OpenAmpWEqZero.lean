@@ -1,8 +1,11 @@
-import FreeField.Theory
+import FreeField.Theory.Base
+
+
+/-! Proofs consolidated from `FreeField/Work/openAmpW_eq_zero.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Theory_OpenAmpWEqZero
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical InnerProductSpace ENNReal
 
@@ -39,6 +42,18 @@ theorem openAmpW_eq_zero' (w : Word) : ∃ N : ℕ, ∀ k, N < k → openAmpW w 
   simp [openAmp]
 
 
-end YangMills.FreeField
+end YangMills.FreeField.Consolidated.Theory_OpenAmpWEqZero
 
-#print axioms YangMills.FreeField.openAmpW_eq_zero'
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical InnerProductSpace ENNReal
+
+/-- [MEDIUM, 120 lines] No open matching exists when there are more external slots than legs:
+for monomials `μ`, `OMatching k μ` is empty if `k > ∑ i, card (μ i)`; take the maximum over the
+finite supports. -/
+theorem openAmpW_eq_zero (w : Word) : ∃ N : ℕ, ∀ k, N < k → openAmpW w k = 0 := by
+  exact Consolidated.Theory_OpenAmpWEqZero.openAmpW_eq_zero' w
+
+end YangMills.FreeField

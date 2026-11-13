@@ -1,8 +1,12 @@
-import FreeField.Analytic
+import FreeField.Analytic.Base
+import FreeField.Analytic.PartialDerivSNeg
+
+
+/-! Proofs consolidated from `FreeField/Work/lineS_symm.lean`. -/
 
 set_option autoImplicit false
 noncomputable section
-namespace YangMills.FreeField
+namespace YangMills.FreeField.Consolidated.Analytic_LineSSymm
 open Function Filter Set MeasureTheory TopologicalSpace
 open scoped Topology BigOperators Classical ContDiff InnerProductSpace
 
@@ -22,5 +26,18 @@ theorem lineS_symm' (α β : Idx) (ξ : Spacetime) : lineS α β ξ = lineS β �
           ((-1) ^ idxOrder α * partialDeriv (α + β) S ξ) := by rw [hb, one_mul]
     _ = _ := by ring
 
+end YangMills.FreeField.Consolidated.Analytic_LineSSymm
+
+set_option autoImplicit false
+noncomputable section
+namespace YangMills.FreeField
+open Function Filter Set MeasureTheory TopologicalSpace
+open scoped Topology BigOperators Classical ContDiff InnerProductSpace
+variable {n : ℕ}
+
+/-- [EASY, 20 lines] Symmetry of the Euclidean line kernel, from `partialDeriv_S_neg` and
+`add_comm`: `(-1)^{|β|} (-1)^{|α+β|} = (-1)^{|α|}`. -/
+theorem lineS_symm (α β : Idx) (ξ : Spacetime) : lineS α β ξ = lineS β α (-ξ) := by
+  exact Consolidated.Analytic_LineSSymm.lineS_symm' α β ξ
+
 end YangMills.FreeField
-#print axioms YangMills.FreeField.lineS_symm'
