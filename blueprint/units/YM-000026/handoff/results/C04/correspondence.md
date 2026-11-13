@@ -10,8 +10,8 @@ unchanged chapters; it was not re-verified line by line in this pass.
 
 | Manuscript step | Declaration | Path | What was read |
 | --- | --- | --- | --- |
-| Target clause "at least one smeared field is nonzero" | field `acts` of `YangMills.Reconstructed` | `Lean/ChallengeSpec.lean` l.121 | statement |
-| Proof of `acts` in the source | first bullet of `YM.HierarchyBridge.publicReconstruction` (tag ⟨0, S.unit 0⟩) | `Lean/HierarchyBridge.lean` l.84–88 | full |
+| Target clause "at least one smeared field is nonzero" | field `acts` of `YangMills.Hierarchy.Reconstructed` | `Lean/ChallengeSpec.lean` l.121 | statement |
+| Proof of `acts` in the source | first bullet of `YangMills.publicReconstruction` (tag ⟨0, S.unit 0⟩) | `Lean/HierarchyBridge.lean` l.84–88 | full |
 | Unit class nonzero (first paragraph of the proof) | `YM.Table.alive` (single insertion at the one-point configuration `0 : Points 1`, empty spectator list, then `unital` and `trivial`) | `Lean/YM/Euclid/Null.lean` l.100–109 | full |
 | Null space allows zero spectators | `YM.Table.criterion` quantifies over all `n : ℕ`, including n=0; `YM.Exterior` has `point : Points (n+1)` | `Lean/YM/Euclid/Null.lean` l.22–43 | full |
 | `input:unit-insertion` (i), (ii) | `YM.Table.Basic.unital`, `YM.Table.Basic.trivial`; unit token `YM.Register.one d = ⟨d, L.scalar d⟩` | `Lean/YM/Euclid/Table.lean` l.74–78; `Lean/YM/Euclid/Register.lean` l.28, l.90 | full |

@@ -30,7 +30,7 @@ C04-to-C16-endpoint row) and `correspondence.md` (new section).
 Finding F3 of the C04-to-C16-reconstruction endpoint check (PR #248,
 `results/C16/endpoints/ADB991-claude-20261113-a112/mathematics.md`) and C04
 review M3 (PR #76): the public clause "at least one smeared field is nonzero"
-(`Reconstructed.acts`) had no producer in the manuscript.
+(`YangMills.Hierarchy.Reconstructed.acts`) had no producer in the manuscript.
 
 ## What remains open
 
@@ -59,3 +59,16 @@ the step is not a standard citation target.
 ## Checks
 
 See the PR for the commands actually run.
+
+## Review response (session ADB991-claude-20261113-b476)
+
+Independent review PR #259 (mgubi, at `42ca0b6`) found no mathematical
+correction and one required record correction, M1. The namespaces were
+checked in the pinned source: `structure Reconstructed` sits inside
+`namespace YangMills` / `namespace Hierarchy` (`Lean/ChallengeSpec.lean`
+l.7, l.53, l.117), and `theorem publicReconstruction` sits directly in
+`namespace YangMills` (`Lean/HierarchyBridge.lean` l.9, l.79);
+`HierarchyBridge` is the module name only. The "Why" section above, the C04
+correspondence table and the ledger endpoint row now use
+`YangMills.Hierarchy.Reconstructed` (field `acts`) and
+`YangMills.publicReconstruction`. No manuscript change.
