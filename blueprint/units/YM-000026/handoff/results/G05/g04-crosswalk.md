@@ -55,3 +55,7 @@ summary:
   filtration and must not be silently identified with the factor degree
   used in a local marked-frame estimate. Fix cutoff/threshold dependence
   as stated in the consumer; the outline's summary does not strengthen it.
+
+## G02 status at ddc3c90
+
+PR #138 has merged G02 author reports and proposed patches only. The separate G02 exact-version review is in progress, and the shooting/public-family edits and proposed labels are not installed here. The slope identification and uniform running interface remain conditional manuscript joins; the public-family identification O2 must also be matched. See `r1-revision.md`.
