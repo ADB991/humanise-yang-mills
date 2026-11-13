@@ -63,3 +63,28 @@ Final SHA-256 of the changed chapters (the other six C03 chapters are unchanged)
 | manuscript/existence/fullmesh-correlation-cauchy.tex | 19e0825603d24d9f6a8ac2fbc33b62012149f039efb54c243b9034b393f478ee |
 | manuscript/existence/phase-fields.tex | f584cf074ddcd6fceed1c6a65bff5e2613454a20d26831680559c924d58c29ae |
 | manuscript/existence/actual-slab-copy-bounds.tex | c1e553d1cf8278716619a36c27156f1bd3245a2070dab8ad445798a907b201e6 |
+
+## Follow-up to review #125 (issue #122)
+
+- Basis `c560828e62b5168cd9fc51507a5751de2871efe3`; Lean pin
+  `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; unchanged Lean tree
+  `328ad19b404d2db2a578319ea3e4eba4b27e34ef`. The author scope was
+  rechecked after posting the claim on #122. Two isolated Codex Terra
+  sessions revised the disjoint chapter groups and Parent combined the
+  commits and checked the author records. Review #125 remains historical.
+- `python3 scripts/check_blueprint.py` passed for four units. It verifies
+  structure. `python3 -m unittest discover -s tests` passed all 22 tests.
+  `git diff --check c560828e62b5168cd9fc51507a5751de2871efe3` passed.
+- From `manuscript/`, `latexmk -pdf -interaction=nonstopmode -halt-on-error
+  -outdir=/private/tmp/ym-c03-parent-build-20261113 existence.tex` built the
+  968-page monograph. The log has no unresolved references, citations or box
+  warnings. It retains the existing amsmath `atopwithdelims` warning. The
+  build output is outside the checkout.
+- `pdftoppm -f PAGE -l PAGE -singlefile -scale-to 950 -png existence.pdf
+  page-PAGE` rendered pages 133–135, 141–143, 156–157 and 167–168.
+  Parent inspected the revised theorem, threshold argument, merger
+  hypotheses, commutation citation and cutoff-covariance passage.
+- Source inspection is recorded in `correspondence.md`. Fresh Lean
+  elaboration, axiom printing and kernel replay remain unrun. The revised
+  arguments retain the stated quantitative input and same-history assumptions.
+  Renewed independent review concerns the exact follow-up snapshot.
