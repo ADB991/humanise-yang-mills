@@ -107,3 +107,83 @@ using $x+y+2f=4\mathfrak f_k+2\leq6$. Equation \eqref{ex-selected-birth-integral
 \end{proof}
 
 The terminal product, continuity, and exact backward integration have been proved above. The service certificate, its local coefficient envelope, the origin-counting response, and the finite-volume vacuum lower bound remain explicit inputs to this receipt; they are part of input I-C02-funded-record.
+
+\subsection{The local denominator on the retained history}
+
+\begin{lemma}[Quiet coefficient and partition function]
+\label{lem:ex-selected-birth-denominator}
+Fix the selected history at $(N,p)$. For each $i\le N$ let $A_i$
+be its unmarked representative, and put $A_i^{\rm ev}(U)=\operatorname{eval}(A_i)(U)$.
+Assume the selected Wilson identities
+$A_N^{\rm ev}=R_N$ and $A_i^{\rm ev}=\operatorname{Push}_i A_{i+1}^{\rm ev}$ for $i<N$,
+where the push is the normalized transition in
+Section~\ref{ex-selected-birth-receipt}. Then for all $i\le N$,
+\[
+ (\mathcal B_i)_\varnothing=A_i^{\rm ev}
+ \quad\text{and}\quad
+ \int A_i^{\rm ev}\,d\mu_i=Z_{N,p}.
+\]
+\end{lemma}
+\begin{proof}
+At $N$, the constant coefficient of the finite exponential is one,
+so $(\mathcal B_N)_\varnothing=R_N=A_N^{\rm ev}$. If the assertion holds at
+$i+1$, extracting the quiet coefficient commutes with the normalized
+push by the same finite-dimensional integration argument used in
+\eqref{ex-selected-birth-integral}. Thus
+\[
+ (\mathcal B_i)_\varnothing
+ =\operatorname{Push}_i(\mathcal B_{i+1})_\varnothing
+ =\operatorname{Push}_i A_{i+1}^{\rm ev}=A_i^{\rm ev}.
+\]
+Integrating and using the normalized transition mass at every step
+gives the claimed equality with the positive terminal partition
+function.
+\end{proof}
+
+\paragraph{Common width and the vacuum cutoff.}
+Fix an admitted grade $d$ and radius $R>0$. Let $g_{d,R}\ge1$
+bound the coefficient norm on the closed grade ball, which is
+compact in the finite-dimensional grade space. Using the
+calibrated reference readout and the adjacent coefficient cone of
+Section~\ref{ex-centered-freight-producer}, the coefficient at level
+$k$ satisfies $q_k(v)\le g_{d,R}D_k$ throughout the ball, with
+$D_k=\prod_{i<k}\Gamma_{i+1}$. Indeed the reference coefficient is
+$v$ and each forward bound multiplies by at most the next column
+count. Extending the product back to zero only increases it. Here
+$\Gamma_i\ge1$ are the columns of the fixed schedule. Writing $a_k^{\rm mesh}$
+for the mesh spacing, take the single positive weight
+\[
+ \omega_k=\frac{(a_k^{\rm mesh})^d\zeta_{d,k}}
+                 {\Gamma_k g_{d,R}D_k}.
+\]
+Multiplication by the local column-weighted price
+$\Gamma_k(a_k^{\rm mesh})^{-d}q_k(v)$ gives at most
+$\zeta_{d,k}$ for every label in the ball. The weight is independent
+of the terminal volume, period, site and particular label.
+
+On a served census at $k<N$, use the local prices
+$x=3\zeta_{d,k}$, $y=\zeta_{d,k}$ and reserve one in
+\eqref{ex-centered-steer}. In the small-ball bound of
+Section~\ref{ex-centered-construction} choose the radius
+$s_k=\widehat\beta_k^{-1/2}$. The paid scale has
+$\widehat\beta_k>1$ and the selected threshold is $s_k$ times an
+exponential of a square, so $0<s_k\le1$ and $s_k$ is at most the
+threshold. Write $E$ for the local excess cost, $\kappa$ for the
+unmarked activity allowance, and $\beta$ for the local coupling.
+The numerator pays per site $E+\kappa$ and the denominator pays
+$E+\beta\,\operatorname{baseBudget}(s_k)+4d_G\log(16/s_k)$,
+with the same scalar in both. To compare their sum with the selected
+treasury, use the selected representation bounds: the local excess
+cost is at most the regular allowance plus the loop price at its
+coupling, the activity allowance is bounded by the scheduled forced
+allowance, and $0\le\beta\le2\widehat\beta_k$. The loop price is an
+affine function of the coupling with nonnegative slope, and the
+base budget is nonnegative. Replacing the coupling in both costs
+by $2\widehat\beta_k$ therefore gives at most the scheduled treasury
+at radius $s_k$. By Lemma~\ref{lem:ex-selected-birth-denominator}
+the denominator in this calculation is $Z_{N,p}$.
+Thus, whenever the shared retention and transfer give the served
+census and its local response on the actual geometry, the bound
+\eqref{ex-selected-birth-bound} holds with this same width throughout
+the grade ball. This argument uses the conditional served response
+only at the opened scale and makes no new choice of history.
