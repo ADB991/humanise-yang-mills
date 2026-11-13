@@ -1,0 +1,18 @@
+# Validation and scope limits
+
+Reviewer session `mgubi-astra-c07-revision1-review-20261113`. Parent posted and rechecked issue 48 claim 6864994627, expiring 2026-11-14 11:00 UTC. Reviewer read the live issue body and all nine comments, target PR271 metadata, the PR118 findings/source reports and relevant validation, task/guidance, author response and complete frozen delta. At the final live recheck, issue 48 still had nine comments with our claim latest, and PR271 remained OPEN at `c68df769f649ccd6f81597ddbc56832061678729`. No conflicting claim was observed.
+
+## Actual checks
+
+- Full `git diff 69b2631f7a3d3c4176ca0084d8607cb9d8d124a2 c68df769f649ccd6f81597ddbc56832061678729` inspected: ten manuscript chapters and six author records, 527 insertions/164 deletions. Mathematical coverage is described chapter by chapter in mathematics.md. Immediate source declarations and literature access are documented separately.
+- Frozen target files were read with `git show target:path`; working canonical files were not substituted for unmerged target prose. `inputs.json` records 65 immutable file versions with full revision, path, Git blob and SHA-256: all changed files at target and their existing base versions, immediate manuscript consumers/producers, inspected Lean source, prior review records and canonical evidence leads.
+- `python3 blueprint/units/YM-000026/handoff/results/C07/review/mgubi-astra-c07-revision1-review-20261113/verify_inputs.py`: PASS, 65. It also verifies the exact 16-file target scope, all 18 current chapter hashes and all 10 pre-revision chapter hashes in the target author inventory, unchanged working base inputs, and source-tree equality at base/target. Imported tree remains `328ad19b404d2db2a578319ea3e4eba4b27e34ef`, pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+- `python3 scripts/check_blueprint.py`: PASS, four units; this is structural validation, not proof verification.
+- `git diff --check`: PASS. New report files are additionally checked after staging before commit.
+- Hall 2nd-edition theorem 3.42 and corollary 3.44 were inspected in the indexed transcription of the original text, including the title page/ISBN. The publisher chapter metadata was checked separately. Direct curl access to the transcription returned 403, and its short-ID URL was inaccessible; the exact indexed address was successfully read through the web tool. No publisher facsimile or canonical redirect is claimed. The source report preserves these limitations and stable bibliographic locators.
+
+## Not run / not claimed
+
+This is report-only work on canonical base 69b2631. No target author commits are included; no manuscript, prior report, author inventory, shared file or Lean source was edited. No independent LaTeX build/render, Lean elaboration, transitive axiom audit, checker test suite or numerical test was run. The author reports a 985-page full build and rendered changed pages in its frozen validation record; this review attributes that evidence and does not claim to have replayed it. No checker code changed.
+
+The review checks all changed mathematical arguments and their immediate interfaces. It does not renew every unchanged argument in the eighteen-chapter C07 package, construct analytic suppliers, resolve PR201/220, repair the C13 cross-reference/canonical evidence, or certify C07-to-C08 common-data closure. Parent inspection does not constitute human acceptance. M1 is a minor proof-completeness request, and N1–N2 are editorial; the positive-order Gaussian bound and other substantive repairs check conditionally. Parent owns COMMENT on PR271 and claim release; no formal approval, merge or closure is requested.
