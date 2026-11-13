@@ -161,8 +161,10 @@ eventually.  These are used, respectively, for the collar/spacing margin and
 for the number of required coordinates in the opened chamber.  The corner
 lemma combines them with the same-history run, throw, root-room, and
 subsidized-payment bounds.  Proposition~\ref{prop:ex-lattice-actual-shell-node} supplies this
-shell-node input from the stated same-history menu, transfer, quota and
-price receipts. The coefficient bound in that proposition has exactly
+shell-node input, in the form of Definition~\ref{def:ex-lattice-shell-receipt},
+from the stated same-history menu, transfer, quota and price receipts and
+the eventual chamber receipt; the scale note is proved in the paragraph
+following that proposition. The coefficient bound in that proposition has exactly
 the birth-level dependence allowed here. Discharging its incoming
 receipts for the selected public family remains a separate obligation.
 
@@ -170,6 +172,36 @@ The implication below takes the defined shell-node receipt as an input
 on one fixed family.  It does not infer that receipt from the public
 extractor's record or change family, history, or scale sequence between the
 receipt and the stress law.
+
+\paragraph{Openings.}
+A reference level $m$ is \emph{opened at} a level $k$ (with parameter one)
+if $m\le k$ and $B_k^2\le a_m/a_k$, as in
+Section~\ref{ex-centered-site-geometry}.  The receipt in
+Definition~\ref{def:ex-lattice-shell-receipt} is stated for every opened
+pair, so it says nothing unless openings exist.  They do, under the
+selected tab schedule.
+
+\begin{lemma}[Every reference level is opened]
+\label{lem:ex-lattice-opening-exists}
+Assume the tab-schedule bounds $L_j=a_j/a_{j+1}\ge3$ and
+$B_{j+1}^2\le2B_j^2$ for every $j$, where $B_j$ is the radius in the
+definition of $r_m$.  If $m$ is opened at $k$, then it is opened at every
+$k'\ge k$.  For every level $m$ and every $k_1\in\mathbb N$ there is
+$k\ge k_1$ at which $m$ is opened.
+\end{lemma}
+
+\begin{proof}
+Persistence is the induction in the proof of
+Lemma~\ref{lem:ex-centered-opened-copy}: if $B_j^2\le a_m/a_j$, then
+$B_{j+1}^2\le2B_j^2\le2a_m/a_j\le L_ja_m/a_j=a_m/a_{j+1}$.  For existence
+put $f_j=a_jB_j^2>0$.  The two schedule bounds give
+\[
+ f_{j+1}=a_{j+1}B_{j+1}^2\le\frac{a_j}{L_j}\,2B_j^2\le\frac23f_j,
+\]
+so $f_j\le(2/3)^{j-m}f_m\to0$ as $j\to\infty$.  Choose $k_0\ge m$ with
+$f_{k_0}\le a_m$, that is $B_{k_0}^2\le a_m/a_{k_0}$; then $m$ is opened
+at $k_0$.  By persistence it is opened at $k=\max(k_0,k_1)$.
+\end{proof}
 
 \subsection{Vanishing against a finite tester annihilator}
 
@@ -181,8 +213,12 @@ lattice configurations used in the shell argument are dense in the separated
 configuration space and that the flux and tester functionals are continuous
 there. Retain the centered-cell spectator bounds and the ordered
 moving-label point-limit identities on this same hierarchy and extraction.
-Fix an opened reference level $p_0$ and level $k$ as in the shell-node
-receipt, with $p_0$ at least the reference depth of every watch below.  Take $v\in\mathcal F_d$, and let
+Assume the tab-schedule bounds of
+Lemma~\ref{lem:ex-lattice-opening-exists}.  For the finite family of
+watches $I_1,\ldots,I_s$ below, let $p_0$ be the largest of their reference
+depths, and fix a level $k\ge\operatorname{ref}(D)$ at which $p_0$ is
+opened; such a $k$ exists by Lemma~\ref{lem:ex-lattice-opening-exists}.
+Both $p_0$ and $k$ depend on the family.  Take $v\in\mathcal F_d$, and let
 $U:\mathbb R^4\to\mathbb R^4$ be a smooth homogeneous Killing field of degree
 $p\in\mathbb N$, so $U(ry)=r^pU(y)$ for $r>0$.  Suppose both
 \begin{equation}\label{eq:ex-lattice-flux-grade}
@@ -373,8 +409,14 @@ grade, and the chosen chain length, but not on $m$.
 
 \begin{proposition}[annular flux representation]
 \label{prop:ex-lattice-annular-field}
-Assume the hypotheses of Lemma~\ref{lem:ex-lattice-annulus-annihilation},
-with the shell-node receipt available for every finite family of watches.  For each
+Assume, for every finite family of watches, the hypotheses of
+Lemma~\ref{lem:ex-lattice-annulus-annihilation} for that family: the
+tab-schedule bounds, the shell-node receipt at the opened pair $(p_0,k)$
+chosen for that family, and the separated-point bounds with their constants
+$C_a$, cloud degrees $c_a$ and chain length $q_*$ for that family.  Assume
+also that the hierarchy is faithful at grade $D$: a field in
+$\mathcal F_D$ whose testers $\tau_{I,D}$ vanish for every watch $I$ is
+zero.  For each
 $v\in\mathcal F_d$ and each smooth homogeneous Killing field $U$ of degree
 $p$, there exists one field $b\in\mathcal F_D$ such that for every
 watch $I$, every compatible smooth window $\chi$, and every separated point
@@ -401,12 +443,16 @@ infinite-dimensional Riesz representation.
 
 Choose a finite faithful family of watches whose testers distinguish
 elements of $\mathcal F_D$.  Such a family exists because the complete family
-of watch evaluations separates fields, and a finite-dimensional field space
-has a finite subfamily of any separating family that still separates.  Apply
+of watch evaluations separates fields, by the assumed faithfulness of the
+hierarchy at grade $D$, and a finite-dimensional field space has a finite
+subfamily of any separating family that still separates.  Apply
 the finite result to that family to obtain
 $b$.  For any further watch $I$, apply the result to the union of $I$ and the
-faithful family.  The shell-node receipt, assumed for every finite family of watches,
-applies to this union.  It gives $b'$.  On the faithful family, $b'$ and $b$ have
+faithful family.  The hypotheses of
+Lemma~\ref{lem:ex-lattice-annulus-annihilation}, assumed for every finite
+family, apply to this union, with its own opening $(p_0,k)$ chosen as in the
+lemma; the opening chosen for the faithful family alone may be too shallow
+for $I$.  The finite result gives $b'$.  On the faithful family, $b'$ and $b$ have
 the same tester values, so faithfulness implies $b'=b$.  Therefore the flux
 identity holds for $I$ as well.  This argument also handles every compatible
 window, since the window-change identity identifies its flux with the chosen
@@ -442,8 +488,11 @@ The public route keeps the relevant objects on the family selected by the
 run: the extraction, hierarchy, finite-volume laws, and conserved stress all
 come from that same record.  The endpoint invokes Proposition~\ref{prop:ex-lattice-actual-shell-node}
 on this family. It also needs the same ordered extraction, point-limit
-identities, centered-cell bounds, smooth hierarchy and derivative plan
-used in the tester argument. The shell receipt alone supplies none of
+identities, centered-cell bounds, smooth faithful hierarchy and derivative
+plan used in the tester argument, the tab-schedule bounds that give an
+opening above the depths of each finite family of watches
+(Lemma~\ref{lem:ex-lattice-opening-exists}), and the two schedule
+properties behind the scale note. The shell receipt alone supplies none of
 these. The resulting Ward conclusion is conditional on these inputs
 and on the incoming hypotheses of that proposition.
 \end{remark}
