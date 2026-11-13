@@ -1,0 +1,9 @@
+# C08 review F1 — coarse-exponent normalization
+
+Refs #49, #26 and review PR #100. Source pin: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Session `hairer-codex-c08-normalization-20261113`.
+
+The two manuscript consumers now point to one normalization identity and its two explicit supplier inputs. In `Lean/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Mallow/Brisk.lean`, `YM.PhysicalNext.Repeat.Mallow.cone` obtains the first identity from `Spring.owns`, `cruise_EX` and the local exponent identity for `H.core`. It uses the same intermediate frozen exponent `V0` and correction `gV * Collection.receipt M₁ K.clip B U` as `Mallow.prom`. That second identity transports the regular exponent by `Marlin.cruiseV`, identifies the renewed regular terms and payment via `Embrasure.click`, and uses `Song.creditRing` (in `Mallow/Crack.lean`) on the same path, clipping and budget. The latter proof uses path bounds for the two-, three- and four-leg bills, the renewal and the match of threshold and regular order. The two constituent logarithm sums are those of `Tap0` and `T'`, respectively, in `Mallow.curd` and `Mallow.cord`.
+
+The manuscript proves the cancellation from the two displayed identities. Full manuscript proofs of the two structural supplier identities are still outstanding. The change does not discharge their summability, path, renewal or common-history hypotheses. Other C08 review findings remain outside this bounded revision.
+
+Validation in an isolated checkout at local snapshot `b9a7f5c`: `python3 scripts/check_blueprint.py`, `git diff --check`, and the full LaTeX build passed (970 pages). Rendered pages 362 and 369 were visually inspected. Both changed chapter blobs matched the remote branch basis before editing. No fresh Lean elaboration or kernel replay. Renewed independent review required.
