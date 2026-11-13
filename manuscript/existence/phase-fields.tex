@@ -129,3 +129,237 @@ Lemma~\ref{ex-phase-original-null} supplies $N\subseteq N_\chi$.
 The proposition then proves equality in every grade for every character.
 Thus the finite-dimensional argument uses the actual comparison and
 moment constructions; finite dimensionality alone does not supply them.
+
+\subsection{Field inclusions from simultaneous tested representatives}
+\label{subsec:phase-field-inclusions}
+
+Equality of the null spaces at each grade does not construct a map between
+those grades. We now give that construction from a separate realization
+input, on one fixed table. No change of phase or of the extraction defining
+the table is made in this argument.
+
+Let $A_d$ be a finite-dimensional complex raw label space for each
+$d\in\mathbb N$. A raw label includes its grade. Fix a table $S$ whose
+correlations
+\[
+ S(x;(d_1,a_1),\ldots,(d_m,a_m)),\qquad
+ x\in\operatorname{Conf}_m(\mathbb R^4),\quad a_j\in A_{d_j},
+\]
+are complex multilinear in the labels, smooth in $x$, and symmetric under
+simultaneous permutation of labels and positions. Here
+$\operatorname{Conf}_m(\mathbb R^4)$ is the open set of pairwise distinct
+positions. Spectator tuples may have arbitrary finite length and arbitrary
+grades; no upper grade or arity bound is imposed on them.
+
+An exterior $\xi=(x;\boldsymbol b)$ contains a tuple $\boldsymbol b$
+of $n$ raw spectators and a configuration of $n+1$ distinct positions,
+$x\in\operatorname{Conf}_{n+1}(\mathbb R^4)$. Allow $n=0$. Let $\mathcal X$ be the set of all such exteriors and define the
+linear response map
+\[
+ \mathcal R_d:A_d\longrightarrow\mathbb C^{\mathcal X},\qquad
+ (\mathcal R_da)(x;\boldsymbol b)=S(x;(d,a),\boldsymbol b).
+\]
+Set
+\[
+ N_d=\ker\mathcal R_d,\qquad E_d=A_d/N_d,
+ \qquad \pi_d:A_d\longrightarrow E_d.
+\]
+Thus nullity means vanishing against every exterior, not just a finite
+detector family. The spaces $E_d$ are finite-dimensional. The response map
+descends to an injective linear map
+$J_d:E_d\to\mathbb C^{\mathcal X}$: if $J_d\pi_da=0$, then
+$a\in N_d$, so $\pi_da=0$.
+
+Choose a basis $(a_{d,j})_{j\in B_d}$ of each $A_d$. The incoming
+\emph{simultaneous tested realization} is the following statement. For
+every $d\le e$ and every $j\in B_d$, there is one $b_{de,j}\in A_e$
+such that, for every spectator tuple $\boldsymbol b$ of length $n$ and
+every $\varphi\in C_c^\infty(\operatorname{Conf}_{n+1}(\mathbb R^4))$,
+\begin{equation}\label{eq:phase-inclusion-tested-input}
+ \int\varphi(x)S(x;(e,b_{de,j}),\boldsymbol b)\,dx
+ =\int\varphi(x)S(x;(d,a_{d,j}),\boldsymbol b)\,dx.
+\end{equation}
+The order of these quantifiers matters: $b_{de,j}$ is chosen before the
+spectators and the test. A representative depending on either would not
+supply a linear map of label spaces. This input asks only for raw
+representatives of insertion functionals; it assumes neither quotient
+inclusions nor their injectivity or coherence.
+
+\begin{proposition}[Conditional construction of the field inclusions]
+\label{prop:phase-field-inclusions}
+For the fixed smooth symmetric table above, the simultaneous tested
+realization supplies unique linear maps
+$\iota_{de}:E_d\to E_e$ for $d\le e$ preserving every exterior response.
+They are injective and satisfy
+\[
+ \iota_{dd}=1,\qquad
+ \iota_{ef}\iota_{de}=\iota_{df}\quad(d\le e\le f).
+\]
+Correlations descend to the quotient labels in every slot. For any fixed
+configuration of distinct points, any slot, and arbitrary quotient
+spectators, replacing a label $v\in E_d$ in that slot by
+$\iota_{de}v\in E_e$ leaves the correlation unchanged.
+\end{proposition}
+\begin{proof}
+First define a raw linear map by basis expansion:
+\[
+ K_{de}\left(\sum_{j\in B_d}c_ja_{d,j}\right)
+       =\sum_{j\in B_d}c_jb_{de,j}.
+\]
+For each fixed spectator tuple and test, multilinearity and the finite sum
+in this definition extend \eqref{eq:phase-inclusion-tested-input} to every
+$a\in A_d$, with $b_{de,j}$ replaced by $K_{de}a$. The same map works for
+all tests and all spectators because its basis images were fixed first.
+
+We spell out why this tested equality is pointwise. For a fixed $a$ and
+spectator tuple, let
+\[
+ h(x)=S(x;(e,K_{de}a),\boldsymbol b)
+                   -S(x;(d,a),\boldsymbol b).
+\]
+It is continuous on the open configuration space and has zero integral
+against every smooth compactly supported test there. If $h(x_0)\ne0$,
+choose $c\in\mathbb C$ with $|c|=1$ and $c h(x_0)=|h(x_0)|$.
+There is a ball about $x_0$, with closure in the configuration space,
+on which $\operatorname{Re}(c h)>|h(x_0)|/2$. Choose a nonnegative smooth
+function $\psi$, supported in that ball, with positive integral. Such a
+function is obtained by translating and rescaling
+$\exp(-1/(1-|x|^2))$ on $|x|<1$, extended by zero outside. Then
+\[
+ 0=\operatorname{Re}\left(c\int\psi h\right)
+   >\frac{|h(x_0)|}{2}\int\psi>0,
+\]
+a contradiction. Thus $h=0$ on the configuration space. In particular,
+\begin{equation}\label{eq:phase-inclusion-raw-response}
+                 \mathcal R_eK_{de}=\mathcal R_d.
+\end{equation}
+No equality at coincident points is used or asserted.
+
+If $a\in N_d$, this identity gives $K_{de}a\in N_e$. Consequently
+\[
+               \iota_{de}(\pi_da)=\pi_eK_{de}a
+\]
+is well defined and linear. If different simultaneous representatives, or
+a different basis, give a raw map $K'_{de}$ with the same tested property,
+then \eqref{eq:phase-inclusion-raw-response} holds for both maps. Their
+difference takes values in $N_e$, so they induce the same quotient map.
+For every $v\in E_d$ we have
+\begin{equation}\label{eq:phase-inclusion-faithful-response}
+                     J_e\iota_{de}v=J_dv.
+\end{equation}
+Since $J_d$ is injective, this also proves injectivity of $\iota_{de}$.
+Since $J_e$ is injective, it proves uniqueness of a response-preserving
+map $E_d\to E_e$.
+
+For completeness, null labels vanish in every slot. Permute the chosen
+slot and its position to the first position; symmetry expresses the
+correlation as a head insertion against another raw exterior. If the
+chosen label belongs to its $N_d$, that head correlation is zero by
+definition. Thus changing any raw representative by a null label changes
+no correlation. Changing the finitely many representatives one at a time
+proves well-defined multilinear correlations on quotient tuples. Smoothness
+and permutation symmetry pass to these correlations by taking fixed raw
+representatives. The pointwise identity already proved at the head,
+followed by the same permutation, gives explicitly
+\begin{equation}\label{eq:phase-inclusion-slot}
+ S(x;v_1,\ldots,\iota_{de}v_i,\ldots,v_m)
+       =S(x;v_1,\ldots,v_i,\ldots,v_m),
+ \qquad v_i\in E_d,
+\end{equation}
+where the other labels have any fixed grades and the changed slot is
+assigned grade $e$ on the left. Repeated application gives the identity
+when any finite collection of slots is raised, even to different grades.
+Integration against a compactly supported test preserves the identity.
+
+Finally $J_d\iota_{dd}=J_d$ implies $\iota_{dd}=1$. If $d\le e\le f$,
+then
+\[
+ J_f\iota_{ef}\iota_{de}=J_e\iota_{de}=J_d
+                         =J_f\iota_{df}.
+\]
+Injectivity of $J_f$ proves composition. These identities are conclusions
+on the quotients; the chosen raw maps need not compose or equal the raw
+identity when $d=e$.
+\end{proof}
+
+\begin{proposition}[The common union and its universal property]
+\label{prop:phase-field-union}
+Under the hypotheses of Proposition~\ref{prop:phase-field-inclusions},
+the spaces $E_d$ have an algebraic direct limit $E$, with injective maps
+$j_d:E_d\to E$ and $j_e\iota_{de}=j_d$. Every element of $E$ comes from
+one grade, and every finite collection comes from one common grade. The
+table correlations are well defined on finite tuples from $E$.
+If $W$ is any complex vector space and linear maps $F_d:E_d\to W$ satisfy
+$F_e\iota_{de}=F_d$ for all $d\le e$, there is a unique linear
+$F:E\to W$ such that $Fj_d=F_d$ for every $d$.
+\end{proposition}
+\begin{proof}
+Realize the union in the single response space:
+\[
+               E=\bigcup_{d\ge0}J_d(E_d)
+                    \ \subseteq\mathbb C^{\mathcal X}.
+\]
+Equation~\eqref{eq:phase-inclusion-faithful-response} makes these ranges
+increasing. If $u=J_dv$ and $w=J_ez$, put $D=\max(d,e)$. For any scalars
+$a,b\in\mathbb C$,
+\[
+ au+bw=J_D\bigl(a\iota_{dD}v+b\iota_{eD}z\bigr)\in E.
+\]
+The zero vector belongs to every range, so $E$ is a vector subspace.
+Take $j_d$ to be $J_d$ with codomain restricted to $E$. These maps are
+injective and satisfy the stated compatibility. If $u_1,\ldots,u_m\in E$,
+choose $u_i=j_{d_i}v_i$ and let $D=\max_i d_i$. Then
+$u_i=j_D\iota_{d_iD}v_i$ for every $i$. For the empty collection choose
+$D=0$. Surjectivity of $\pi_D$ also gives simultaneous raw representatives
+in $A_D$ for any such finite collection. No bound uniform over all elements
+of $E$ is implied.
+
+To evaluate a correlation of $u_1,\ldots,u_m$, choose these representatives
+at a common grade and use the quotient correlation constructed above.
+Suppose a second choice uses grade $D'$. At $L=\max(D,D')$, the two
+representatives of each $u_i$ have the same image under the injective map
+$j_L$ and hence are equal in $E_L$. Raising all slots to $L$ leaves the
+correlation unchanged by \eqref{eq:phase-inclusion-slot}. Thus the value
+is independent of both the common grade and all representatives. The same
+argument treats initially different grades slot by slot. Multilinearity,
+symmetry and smoothness follow by evaluating each finite tuple at one
+fixed common grade; the zero-point correlation is the original vacuum
+value and requires no label representative.
+
+Define $F(j_dv)=F_dv$. If $j_dv=j_ez$, then at $D=\max(d,e)$,
+\[
+ j_D\iota_{dD}v=j_D\iota_{eD}z,
+ \qquad\hbox{hence}\qquad \iota_{dD}v=\iota_{eD}z.
+\]
+Compatibility of the $F_d$ proves $F_dv=F_ez$, so $F$ is well defined.
+Putting two arguments in one grade proves additivity and scalar
+homogeneity from those of $F_D$. Its restriction to each grade is $F_d$.
+Any other such map agrees on every $j_d(E_d)$, whose union is $E$, and
+therefore equals $F$. This is the algebraic direct-limit property of
+complex vector spaces; no topology or multiplication on the union is
+being asserted.
+\end{proof}
+
+These conclusions apply to a selected phase only with the realization
+receipt for that same selected table. More generally, suppose a second
+smooth symmetric table $T$ on the same raw spaces has
+$N_d^S\subseteq N_d^T$ at every grade, and the same raw maps $K_{de}$
+satisfy \eqref{eq:phase-inclusion-tested-input} for both tables. The natural
+surjections $q_d:E_d^S\to E_d^T$, $q_d\pi_d^Sa=\pi_d^Ta$, then obey
+\[
+ q_e\iota_{de}^S\pi_d^Sa=\pi_e^TK_{de}a
+             =\iota_{de}^Tq_d\pi_d^Sa.
+\]
+Surjectivity of $\pi_d^S$ proves compatibility on all quotient labels.
+The universal property gives the induced map between the two unions.
+Correlations of $T$ on the $S$-quotients are well defined by null-space
+containment, and their inclusion compatibility follows from the same
+pointwise tested identity for $T$. If the null spaces are equal, each
+$q_d$ is an isomorphism, and the induced union map is an isomorphism:
+its inverse is obtained from the compatible inverses $q_d^{-1}$.
+The numerical correlations of the two tables need not be equal.
+Without the tested realization for $T$ on these same raw maps, grade-wise
+null-space equality alone supplies none of these cross-grade correlation
+identities. Derivative maps and their slot identities, and compatibility
+with calibrated actions or involutions, require their own receipts and
+are not constructed in this subsection.
