@@ -107,6 +107,101 @@ clock, halo and logarithmic estimates are those just selected.
 Thus the common-history, observable and operator-product applications
 are simultaneous applications of their canonical arguments.
 
+\paragraph{The public family of this retained history.}
+Write $\beta^R_{N,p,m}$ for the actual coupling of the stored history at
+level $m\le N$, cutoff $N$ and period index $p$. Let $P_p$ be its selected
+physical periods. To distinguish levels from stages, put
+\[
+ \ell_m=L_{J(m+1)},\qquad D_0=1,\qquad
+ D_N=\prod_{m=0}^{N-1}\ell_m.
+\]
+Thus $\ell_m$ is the block used in the transition from level $m+1$ to
+level $m$; it is not the stage length $L_m$ unless those indices agree.
+All these data belong to $R$ and are fixed before an extraction order is
+requested. Define its public Wilson family by retaining these periods,
+using $P_pD_N$ sites on each axis, and setting
+\begin{equation}\label{eq:public-family-coordinates}
+ a_N=D_N^{-1}=e^{-s_N},\qquad
+ \beta^{\rm pub}_{N,p}=\beta^R_{N,p,N}.
+\end{equation}
+The Haar measure and the Wilson action are those of
+Section~\ref{ex-lattice}, in the fixed representation of $G$.
+
+The insertion maps also retain the calibrated finite-volume data.
+For a grade $d$ and cutoff-period pair $(N,p)$, let
+$A^R_{d,N,p}$ be the terminal linear isomorphism of the coefficient space
+stored in the transfer datum $S_R(d,N,p)$. Let
+$\mathrm{Init}^R_{d,N,p}(w;x;U)$ be its initial local-section observable,
+at site $x$ and configuration $U$, with coefficient $w$.
+Here is its exact normalization. In the fixed grade-$d$ coefficient frame,
+let $c_{d,\alpha}\in\mathbb N$ be the colour-factor count of coordinate
+$\alpha$, and define the linear dilation
+$(\Delta_d(t)w)_\alpha=t^{c_{d,\alpha}}w_\alpha$.
+Write $\vartheta_N>0$ for the selected threshold and
+$\mathcal L^R_d(w;x;U)$ for placement of the fixed local section with
+coefficient $w$ at $x$. Then
+\[
+ \mathrm{Init}^R_{d,N,p}(w;x;U)
+ =a_N^{-d}\mathcal L^R_d\bigl(\Delta_d(\vartheta_N^{-1})w;x;U\bigr).
+\]
+The dilation exponent is the coordinate's colour-factor count, whereas
+the physical prefactor uses the grade $d$. These are the initial
+observables used in Section~\ref{sec:selected-centered-service}.
+The public token $(d,v)$ uses the same coefficient space and has insertion
+\begin{equation}\label{eq:public-family-insertion}
+ O^{\rm pub}_{N,p,(d,v)}(x;U)
+ =\mathrm{Init}^R_{d,N,p}\bigl((A^R_{d,N,p})^{-1}v;x;U\bigr).
+\end{equation}
+In particular the terminal inverse is part of the insertion calibration;
+the token $v$ is not substituted directly for its initial coefficient.
+The formulas define the insertions at every cutoff using the stored
+transfer datum there. Calibration and transport estimates are still
+asserted only in their stated domains, in particular $N\ge t_R(d)$
+when the reference-level hypothesis is required.
+
+These identities follow from the retained construction, rather than
+from a new choice of family. The schedule starts with denominator one
+and multiplies it by its actual block $\ell_m$ at each level. Its scale
+recurrence is $s_0=0$, $s_{m+1}=s_m+\log\ell_m$, so induction gives
+$s_N=\log D_N$ and the first identity in
+\eqref{eq:public-family-coordinates}. Since every $\ell_m\ge3$, the
+positive integer denominators strictly increase. The stored history
+starts at cutoff $N$ with bare Wilson density of coefficient
+$\beta^R_{N,p,N}$ and zero vacuum parameter; this gives the second
+identity. Finally, the finite insertion assigned by the transfer datum
+is, by its definition, the initial local-section observable after its
+terminal inverse. This is exactly \eqref{eq:public-family-insertion}.
+Thus, for every $N,p$, every finite token tuple and every tuple of lattice
+sites, the public finite moment is the moment of these same insertions
+under the same normalized Wilson law of $C_R$. Neither a limiting
+identification nor a replacement by the reference coupling
+$\widehat\beta_N$ is used.
+
+\paragraph{Conditional running consequence.}
+Suppose the running estimate of
+Section~\ref{sec:surviving-interval-shooting}, with the slope identified
+as $\sigma=2b_0(G)>0$, holds for these actual coefficients: there is one
+fixed intercept $\bar\beta$ such that for every $\eta>0$ there is
+$m_0(\eta)$ with
+\[
+ \left|\beta^R_{N,p,m}-(\bar\beta+\sigma s_m)\right|\le\eta s_m
+ \quad\text{for all }m\ge m_0(\eta),\ N\ge m,\ p\in\mathbb N.
+\]
+Apply the uniform extraction proposition of the running-coefficient
+pilot to these coefficients, scale $s_m$ and intercept $\bar\beta$.
+It gives a threshold independent of $N,p$ for their ratio to $s_m$.
+Taking $m=N$ and using \eqref{eq:public-family-coordinates} yields
+\[
+ \forall\varepsilon>0\ \exists N_0\ \forall N\ge N_0\ \forall p:
+ \quad
+ \left|\frac{\beta^{\rm pub}_{N,p}}{\log(a_N^{-1})}-\sigma\right|
+ <\varepsilon,
+\]
+which is \eqref{ex-running-input}. The denominator is positive on this
+tail because $s_N\ge N\log3$. This is a specialization of the existing
+uniform extraction argument, not a proof of its running-estimate input
+or an identification with a coupling defined by a physical observable.
+
 Finally this binding persists through the ordered extractions. Given
 an initial extraction order $f$, first refine it to obtain the coupling
 limits, then refine again to obtain the field limits. If the two
