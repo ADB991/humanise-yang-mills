@@ -287,6 +287,138 @@ from a subsequence argument; they are separate hypotheses or results in the
 hierarchy and reconstruction units.
 \end{proof}
 
+\begin{proposition}[A unit insertion in the original limiting table]
+\label{prop:ex-limits-unit}
+Fix the same family $\mathcal C$, its raw label spaces and reference depths
+$r_d$ before taking limits. In grade $d$, let $e_{0,d}$ be the scalar
+coordinate, let $D_{N,d}$ be the threshold scaling of coefficients, and
+write the insertion at site $o$ and lattice configuration $A$ as
+\begin{equation}\label{eq:ex-limits-unit-insertion}
+ \mathcal O_{N,p}(v;o;A)
+ =a_N^{-d}\,\mathcal P_d\bigl(D_{N,d}X_{N,p,d}^{-1}v;o;A\bigr).
+\end{equation}
+Here $X_{N,p,d}$ is the invertible terminal coefficient map, and
+$\mathcal P_d$ is the continuous local section, linear in its coefficient
+argument.
+For the positive threshold $\tau_N$, the threshold scaling multiplies a
+coefficient of factor degree $q$ by
+$\tau_N^{-q}$; the scalar coordinate has factor degree zero.
+Assume the following grade-zero calibration laws on this same family.
+The local section satisfies $\mathcal P_0(e_{0,0};o;A)=1$ for every site
+and configuration. For $N\ge r_0$ and every period $p$, the coefficient
+readouts $L_{m}^{N,p}$ satisfy
+\[
+ L_{r_0}^{N,p}(v)=X_{N,p,0}v,
+ \qquad L_m^{N,p}(a_N^0e_{0,0})=a_m^0e_{0,0}
+       \quad(r_0\le m\le N).
+\]
+Finite correlations are expectations of products of these insertions
+under the normalized finite-volume Wilson probability measure.
+
+Let $S$ be their original, unselected limiting table. Assume the same
+ordered point-limit hypotheses as in
+Proposition~\ref{prop:ex-limits-euclidean}, for all signatures including
+arity zero, with one common order and table. More explicitly, the
+fixed-period mesh limits apply to the slotwise address samples in each
+cyclic patch, and the subsequent period limits give $S$ on
+$\mathrm{Gen}$, as in Proposition~\ref{prop:ex-limits-extraction}.
+Assume the correlations of $S$ extend continuously to $\mathrm{Conf}$;
+the smoothness hypothesis there is more than sufficient.
+Then the fixed raw grade-zero label $\mathbf1=e_{0,0}$ satisfies
+\begin{equation}\label{eq:ex-limits-unit-law}
+ S(\mathbf1,v_1,\ldots,v_n;x_0,x_1,\ldots,x_n)
+ =S(v_1,\ldots,v_n;x_1,\ldots,x_n)
+\end{equation}
+for every $n\ge0$, every finite raw label tuple and every pairwise distinct
+configuration. Moreover $S(\varnothing)=1$.
+\end{proposition}
+\begin{proof}
+All raw label spaces and their scalar coordinates were fixed with the
+family. In particular $\mathbf1=e_{0,0}$ has no dependence on $N$ or $p$.
+At a general grade the physical unit coordinate at level $m$ is
+$a_m^d e_{0,d}$; in grade zero it is exactly $e_{0,0}$ at every level.
+Taking $m=r_0$ in the calibration law and using the terminal readout gives
+\[
+ X_{N,p,0}e_{0,0}=L_{r_0}^{N,p}(e_{0,0})=e_{0,0},
+ \qquad X_{N,p,0}^{-1}e_{0,0}=e_{0,0}
+ \quad(N\ge r_0).
+\]
+Threshold scaling also fixes this coordinate: its only nonzero component
+has factor degree zero, so its multiplier is $\tau_N^0=1$.
+The physical prefactor in \eqref{eq:ex-limits-unit-insertion} is
+$a_N^0=1$. The section's unit law therefore yields
+\[
+ \mathcal O_{N,p}(\mathbf1;o;A)=1
+ \quad\text{for every }N\ge r_0,
+       \text{ every }p,o,A.
+\]
+Thus no period-dependent or configuration-dependent threshold is needed
+for this identity; the terminal inverse cannot change the unit.
+
+For any lattice sites $(o_0,\ldots,o_n)$, multiplication of the insertions
+and the identity just proved give the pointwise equality of integrands
+\[
+ \mathcal O_{N,p}(\mathbf1;o_0;A)
+       \prod_{j=1}^n\mathcal O_{N,p}(v_j;o_j;A)
+ =\prod_{j=1}^n\mathcal O_{N,p}(v_j;o_j;A).
+\]
+The local sections are continuous on the compact finite-lattice configuration
+space, so these finite products are integrable. Taking the same
+finite-volume expectation on both sides proves the exact
+unit-deletion identity for the finite correlations. For $n=0$ the product
+on the right is the constant one. Independently, the arity-zero finite
+correlation is the expectation of the empty product, hence is one by
+probability normalization at every cutoff and period. These are identities
+of point correlations, with no smearing factor $a_N^{4n}$.
+
+We pass the deletion identity to the limits without changing the family
+or the order. Fix first $x=(x_0,\ldots,x_n)\in\mathrm{Gen}$. Its deleted
+tuple $x'=(x_1,\ldots,x_n)$ is also generic: each coordinate projection
+remains injective after deleting a point. For every sufficiently large
+fixed period, both tuples lie in their cyclic patches and inside the
+comparison cell. Indeed their finitely many coordinate differences are
+nonzero, and the growing period eventually exceeds all their absolute
+values and the size of a box containing the tuples.
+
+Use the slotwise address map to choose the lattice sites for $x$, and
+for $x'$ delete its zeroth site. Rounding each point coordinate separately,
+and then wrapping it into the periodic lattice, commutes exactly with
+this deletion. The lifted samples converge to $x$ and $x'$ as the mesh
+tends to zero. Openness of the two cyclic patches places both samples in
+compact neighborhoods inside those patches on a common mesh tail.
+The assumed local uniform mesh convergence there, together with continuity
+of the intermediate limits, identifies their limits with
+$J_{p,(\mathbf1,v)}(x)$ and $J_{p,v}(x')$. Intersect this tail with
+$N\ge r_0$ (and the finitely many reference-depth tails of the requested
+labels, if needed). The exact finite identity then gives
+\[
+ J_{p,(\mathbf1,v)}(x)=J_{p,v}(x').
+\]
+Now send the period index to infinity along the same chosen sequence.
+Both signatures converge to their respective values in the same table
+$S$, so uniqueness of limits proves \eqref{eq:ex-limits-unit-law} on
+$\mathrm{Gen}$. All mesh thresholds may depend on the fixed period;
+intersecting the two tails preserves the ordered quantifiers and requires
+neither a diagonal limit nor a mesh threshold uniform over periods.
+At arity zero the configuration space has one point; the two successive
+limits of its constant finite correlation are still one. This proves
+$S(\varnothing)=1$ and also treats the empty deleted tuple when $n=0$.
+
+Finally, $\mathrm{Gen}$ is dense in $\mathrm{Conf}$: its complement there
+is the finite union of coordinate-equality hyperplanes. A distinct
+configuration has a neighborhood inside $\mathrm{Conf}$, and arbitrarily
+small perturbations within that neighborhood avoid all these hyperplanes.
+The two sides of \eqref{eq:ex-limits-unit-law} are continuous on
+$\mathrm{Conf}$; for the right side use continuity of deletion and the
+fact that deleting a point preserves distinctness. Equality on the dense
+subset therefore extends to every pairwise distinct configuration.
+\end{proof}
+
+This proposition derives a raw unit law from the retained finite calibration
+and the same-family limit hypotheses. It does not construct the calibrated
+family, prove its convergence or smoothness, or construct inclusions between
+field quotients. No selected-phase unit law is asserted here.
+
 \begin{remark}[Scope of the extraction]
 \label{rem:ex-limits-scope}
 The local estimates are not a proof that the Wilson family has a convergent
