@@ -7,7 +7,9 @@ The authoritative mathematical text is
 `prop:running-asymptotic`. There is no separate Markdown proof.
 
 Human contributor: hairer. Agent assistance: Codex for exposition/integration;
-GPT-6 Luna for bounded Lean extraction. See [issue #22](https://github.com/hairer/humanise-yang-mills/issues/22).
+GPT-6 Luna for bounded Lean extraction. Human contributor mgubi and GPT-6 Astra
+(Codex) supplied the bounded author revision responding to PR #32; see
+[the revision record](revisions/mgubi-astra-22-repair-20261113/README.md). See [issue #22](https://github.com/hairer/humanise-yang-mills/issues/22).
 The provisional VII.5/CP-03 decomposition is credited to
 [Scott Armstrong's informalization project](https://github.com/scottnarmstrong/yang-mills-informalization).
 
@@ -48,11 +50,16 @@ for the owned declarations are retained in [the Lean inspection output](evidence
 
 | Mathematical datum or step | Fully qualified declaration | Source path and location |
 | --- | --- | --- |
+| Product formula and block lower bound used in the prose divergence proof | `YM.Schedule.denominator`, `YM.Schedule.block_large` | `Lean/YM/Lattice/Scale.lean:29–41` |
 | Spacing $a_m$, its positivity, $s_m=\log(a_m^{-1})$, and divergence | `YM.Schedule.a`, `YM.Schedule.a_pos`, `YM.Schedule.scale`, `YM.Schedule.divergent` | `Lean/YM/Lattice/Scale.lean:99–120` |
 | The family's schedule and scalar coefficients | `YM.Family.S`, `YM.RG.History.β` | `Lean/YM/Source/Construction.lean:32–35`; `Lean/YM/RG/History.lean:210–211` |
 | Fixed $\bar\beta=C.\mathrm{path}.\mathrm{levels}.\mathrm{clock}.\mathrm{bar}$ and reference value $\bar\beta+c s_m$ | `YM.RG.Calendar.bar`, `YM.RG.Calendar.hatBeta` | `Lean/YM/RG/History.lean:64–79` |
 | Running input (`eq:running`), supplied by the construction hypothesis | `YM.Family.Makes.wilson`, `YM.RG.History.Selected.running`, `YM.RG.History.Running` | `Lean/YM/Source/Construction.lean:44–45`; `Lean/YM/RG/History.lean:229–240` |
+| Initial coefficient is the bare Wilson action coefficient | `YM.RG.History.Selected.starts`, `YM.RG.Rep.eval`, `YM.Wilson.bare`, `YM.Wilson.energy`, `YM.Gauge.price` | `Lean/YM/RG/History.lean:174–179,237`; `Lean/YM/Wilson/Law.lean:29,58`; `Lean/YM/Gauge/MatrixGroup.lean:112` |
+| Matrix representation and its positive dimension | `YM.Gauge`, `YM.Gauge.repDim`, `YM.Gauge.dimPos` | `Lean/YM/Gauge/MatrixGroup.lean:23–26,73–75` |
+| Real Lie algebra, skew-Hermitian generators, and bracket closure | `YM.Gauge.Generates`, `YM.Gauge.lie`, `YM.Gauge.generates_skew`, `YM.Gauge.bracket_mem` | `Lean/YM/Gauge/Lie.lean:26,42–44,126–134,159–176` |
 | Color normalization and the Casimir formula | `YM.Gauge.Color`, `YM.Gauge.colorIso`, `YM.Gauge.trace_color`, `YM.Gauge.ad`, `YM.Gauge.casimir` | `Lean/YM/Gauge/Colors.lean:42–78,136–149,179–182` |
+| Transport of the commutator to color coordinates | `YM.Gauge.frobInner`, `YM.Gauge.projectColor`, `YM.Gauge.colorMat_project_self`, `YM.Gauge.colorMat_ad` | `Lean/YM/Gauge/Colors.lean:25–38,96–105,152–154` |
 | Nonabelian real Lie-algebra simplicity | `YM.Gauge.Simple` | `Lean/YM/Gauge/Lie.lean:178–182` |
 | $c=11\operatorname{cas}(G)/(24\pi^2)>0$ under simplicity | `YM.Gauge.slopeConstant`, `YM.Gauge.slopeConstant_pos` | `Lean/YM/Gauge/Colors.lean:184`; `Lean/YM/Gauge/Casimir.lean:174–176` |
 | $b_0$ and $c=2b_0$ | `YM.Pert.Asymptotics.b0`, `YM.Pert.Asymptotics.b0_normalizes` | `Lean/YM/Pert/Asymptotics/RawAxis.lean:13–14` |
@@ -64,10 +71,39 @@ The uniform extraction proposition weakens the construction's hypotheses to
 the exact numerical interfaces used. The source's `Calendar.bar_pos` requires
 a positive intercept, while extraction works for any fixed real intercept.
 The source's `zeroUp_bound` needs `C.Makes` but no simplicity assumption;
-`comparison` additionally assumes `G.Simple`. The latter is used here solely
-through `YM.Gauge.slopeConstant_pos`; the section supplies its elementary positivity
-argument explicitly. Neither the construction hypothesis nor
-the simplicity predicate is redefined to mean only the consequence used here.
+`comparison` additionally assumes `G.Simple` and obtains positivity through
+`YM.Gauge.slopeConstant_pos`. Its input `YM.Gauge.casimir_pos`
+(`Lean/YM/Gauge/Casimir.lean:160–172`) uses `YM.Gauge.trace_adjoint`
+(`Lean/YM/Gauge/Casimir.lean:140–158`), which uses full simplicity to identify
+an invariant bilinear form with a scalar multiple of the color inner product.
+The manuscript instead gives a reorganized positivity proof: sum the squared
+commutator norms over an orthonormal basis and use noncommutativity. This
+replaces, rather than paraphrases, `casimir_pos`; it needs only the nonabelian
+clause, although the section retains the source's full simplicity hypothesis.
+The new positive-definiteness and basis-independence calculations are author
+arguments requiring renewed mathematical review. Neither the construction
+hypothesis nor the simplicity predicate is redefined to mean only the
+consequence used here.
+
+For the closing bare-coefficient remark, `hc.wilson.starts N p` identifies
+`(C.path.rep N p N).eval` exactly with `YM.Wilson.bare (C.path.β N p N)`.
+The latter is the unnormalized density `exp(-β * energy U)`, where `energy`
+is the sum of `G.price` over lattice faces and
+`G.price u = 1 - Re tr(G.mat u) / G.repDim`. Thus “bare lattice action
+coefficient” means the multiplier of this specific energy. `Rep.eval` is a
+full represented density (an exponential times an activity gas), not itself
+an action or a coupling. The equality in `starts`, rather than a general
+simplification of `Rep.eval`, justifies the remark. No conventional physical
+coupling normalization or matching theorem is asserted.
+
+For the opening Casimir formula, `trace_color` makes `colorIso` an isometry
+from color coordinates to the Lie algebra with the manuscript's normalized
+inner product. `colorMat_ad`, using `bracket_mem` and
+`colorMat_project_self`, transports the adjoint operator to the actual matrix
+commutator; hence traces of the conjugate endomorphisms agree. The local
+`frobInner` instance defining the projection is the unnormalized real
+Frobenius inner product; `colorIso` rescales by `sqrt(repDim)`. These facts
+support the formula without treating the projection as an extra Lie bracket.
 
 Lean defines `Real.sqrt` and inversion on every real input, including negative
 arguments and zero. The definition of `regulatorRun` has no hypotheses, as its
@@ -84,7 +120,11 @@ or a checked reference before global integration can be complete. The numerical
 proxy is not identified with a coupling defined by physical observables.
 Independent correspondence and mathematical review remain outstanding. The unit
 is draft, including the elementary positivity and schedule arguments inherited
-from the earlier LaTeX pilot. No mathematical gap in the conditional scalar
+from the earlier LaTeX pilot. The reports in `reviews/lean-mgubi.md` and
+`reviews/mathematics-mgubi.md` concern the earlier fingerprint
+`367b5982bb56035d3f0cbf81641d1f0564c27a48169707b9aa64a5cf3c0b0aa2`;
+they remain unchanged historical evidence and do not review this revision.
+Both approvals remain null. No mathematical gap in the conditional scalar
 argument is presently identified.
 
 ## Verification evidence
