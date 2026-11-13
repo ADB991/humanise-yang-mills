@@ -1,47 +1,57 @@
 # FreeField consolidation
 
-The production graph now includes the completed proofs of `Sr_euclid`, `cut_identity`,
-`Psi_covariant`, and `gope_remainder`. The sole remaining proof hole is `wightW_local` in
-`Theory/WightWLocal.lean`. All original theorem statements and definitions are unchanged.
-All Work files (including the incomplete `Work/wightW_local.lean`), the public files,
-`Adequacy.lean`, `GroupIndependence.lean`, `Main.lean`, the toolchain, the dependency manifest,
-and `lakefile.toml` are byte-for-byte unchanged by this consolidation pass.
+Consolidation is complete. The production graph contains the completed proofs of all 75
+TASKS lemmas, including `wightW_local` in `Theory/WightWLocal.lean`. There are no remaining
+proof holes outside `Work/`. All original theorem statements and definitions are unchanged.
+
+The final pass changes only `Theory/WightWLocal.lean`, `AxiomReport.lean`, and this document.
+All Work sources, the public files, `Adequacy.lean`, `GroupIndependence.lean`, `Main.lean`,
+the toolchain, the dependency manifest, and `lakefile.toml` are byte-for-byte unchanged,
+verified against content hashes taken before the pass. No files were added or deleted.
 
 ## Validation
 
-1. `lake build` succeeds (8,734 jobs), including `FreeField.AxiomReport`.
-2. Outside `FreeField/Work/`, the sole executable `sorry` is the body of `wightW_local`
-   in `Theory/WightWLocal.lean:26`. The only additional literal occurrence is the pre-existing
-   docstring in `Main.lean:9`.
-3. `AxiomReport.lean` prints kernel axioms for the main theorem, every one of the 75 entries
-   in `TASKS.md`, and five assembly lemmas. It verifies that every dependency set is exactly
-   `[propext, Classical.choice, Quot.sound]`, or those three principles plus `sorryAx`.
-   It follows elaborated declaration bodies and permits an admission only through
-   `wightW_local`; any other admission or unexpected primitive is an error.
-   Among the 75 TASKS lemmas, 73 are clean and two depend on `sorryAx`.
-   Across all 81 audited declarations, 75 are clean and six depend on `sorryAx` (listed below).
-4. A token scan of every Lean source under `FreeField/`, including Work, finds no `axiom`,
-   `native_decide`, `opaque`, `implemented_by`, or `unsafe` in code. The scan excludes nested
-   comments and strings. The pre-existing prose occurrence of `axiom` in the docstring at
-   `Work/wightW_local.lean:306` remains untouched.
-5. This document records the final module layout, the actual dependency changes, and the
-   mechanical insertion step for the remaining locality proof.
+1. `lake build` succeeds: `Build completed successfully (8734 jobs).`
+2. A code-token scan of all 71 Lean files under `FreeField/` outside `Work/` finds zero
+   `sorry` tokens. Nested block comments, line comments, and strings are excluded. The
+   pre-existing prose occurrence in the `Main.lean` docstring remains unchanged.
+3. `AxiomReport.lean` requires every one of its 81 distinct declarations to depend on
+   exactly `[propext, Classical.choice, Quot.sound]`: the main theorem, all 75 TASKS
+   lemmas, and five assembly lemmas. Its task list was compared with `TASKS.md` in order.
+   It checks both the cardinality and membership of the kernel dependency set returned
+   by `collectAxioms`; any missing or additional dependency raises a build error.
+   There is no admission exception or unfinished-source allowance. The standalone report
+   also succeeds. Two temporary negative checks both exit with an error: an audited
+   declaration with no primitive dependencies, and a whitelist omitting `Quot.sound`.
+4. The same code-token scan finds zero `axiom`, `native_decide`, `opaque`,
+   `implemented_by`, `unsafe`, or `sorryAx` tokens in production Lean code.
+5. This document records the final layout, proof imports, strict audit, and completed
+   validation. The production import graph is acyclic and imports no Work modules.
 
-The four inserted proofs and helpers are verbatim copies of their Work sources apart from
-namespace relocation, import selection, and removal of diagnostic commands. Their original
-public theorem signatures are preserved verbatim. No non-mechanical proof repair, statement
-change, new admission, or definition change was needed. The production import graph is
-acyclic and imports no Work modules.
+The plain command remains in `AxiomReport.lean:9`:
 
-Reproduce the build and kernel report with:
+```lean
+#print axioms YangMills.jointExistence_of_freeField
+```
+
+Its build output and the audit summaries are:
+
+```text
+info: FreeField/AxiomReport.lean:9:0: 'YangMills.jointExistence_of_freeField' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: FreeField/AxiomReport.lean:94:0: TASK AUDIT: 75 of 75 use exactly [propext, Classical.choice, Quot.sound].
+info: FreeField/AxiomReport.lean:94:0: AUDIT PASSED: 81 of 81 declarations use exactly [propext, Classical.choice, Quot.sound].
+Build completed successfully (8734 jobs).
+```
+
+Reproduce the build and standalone kernel report with:
 
 ```sh
 lake build
 lake env lean FreeField/AxiomReport.lean
-rg -n '\bsorry\b' FreeField --glob '*.lean' --glob '!FreeField/Work/**'
 ```
 
-The last command is a literal search, so it also reports the `Main.lean` docstring.
+A literal `rg` search also finds comments/docstrings; the acceptance scan distinguishes
+Lean code from nested comments and strings.
 
 ## Module layout
 
@@ -62,8 +72,8 @@ Each `Base.lean` contains only the prerequisites needed before proving that modu
 The individual proof modules import their own base and the providers of the unprimed names
 actually used by their Work sources. The graph was determined from those sources, not the
 suggested order in `TASKS.md`. A proof module never imports its own entry point. In particular,
-`Theory/InnerPsi.lean` imports the Wightman multilinearity layers and the unfinished locality
-statement before exporting the word-vector identities.
+`Theory/InnerPsi.lean` imports the Wightman multilinearity layers and the completed locality
+theorem before exporting the word-vector identities.
 
 Completed proof bodies and helpers are in separate namespaces
 `YangMills.FreeField.Consolidated.<Module>_<Layer>`. Each layer then states the original theorem
@@ -128,9 +138,72 @@ together with the five bases above, these are the 55 layer files.
 | `OPE/SplitCorrCollapse.lean` | `splitCorr_collapse` |
 | `OPE/SplitCorrFderiv.lean` | `splitCorr_fderiv` |
 
-## Dependency changes in this pass
+## Final locality integration
 
-All four proofs were inserted into their designated existing layers. No module was added,
+The completed `Work/wightW_local.lean` proof is copied directly into
+`Theory/WightWLocal.lean`, before the original public theorem, under
+`YangMills.FreeField.Consolidated.Theory_WightWLocal`. Its internal `WightLocal` helpers,
+definitions, lemma statements, proof bodies, options, variables, and scopes are preserved
+verbatim. In particular, both `set_option maxHeartbeats 1000000 in` lines are unchanged.
+Only its outer namespace, imports, and diagnostic-command placement differ. The stale
+Work-file status header was not copied; the Work file itself remains unchanged.
+
+The original public `wightW_local` signature and scopes are preserved verbatim. Its body
+now reads:
+
+```lean
+  exact Consolidated.Theory_WightWLocal.wightW_local' u v A B f g h
+```
+
+The proof's direct production imports were selected from the definitions and unprimed
+lemmas it actually references:
+
+| Provider | Referenced definitions or lemmas |
+| --- | --- |
+| `Fock` | `Word`, `Word.lab`, `Word.test`, `wightW`; lower-level label, two-point, and Wick definitions through its prerequisites. |
+| `Analytic.IntegrablePowExpWeight` | `integrable_pow_exp_weight` |
+| `Analytic.LineCDifferentiableOn` | `lineC_differentiableOn` |
+| `Analytic.LineCEuclid` | `lineC_euclid` |
+| `Analytic.LineSSymm` | `lineS_symm` |
+| `Analytic.MatchingIntegrable` | `matching_integrable`, `wightmanL_continuous` |
+| `Analytic.MeasurableWeight` | `measurable_weight` |
+| `Analytic.PartialDerivSBound` | `partialDeriv_S_bound` |
+| `Analytic.SrEuclid` | `Sr_euclid` |
+| `Analytic.WeightLe` | `weight_le` |
+
+`weight_nonneg` and `weight_eq_zero` come from the analytic base through these imports.
+The Work file's additional Mathlib imports, `Mathlib.Analysis.Complex.SqrtDeriv` and
+`Mathlib.Analysis.Fourier.Convolution`, are retained. `Fock` already re-exports the analytic
+layers; the explicit analytic imports document the proof's actual prerequisites.
+
+The old `Theory.Base` import was narrowed to `Fock`, which supplies the word definitions.
+The prerequisite closure consists of 23 production modules and contains neither
+`Theory`, `Theory.WightWLocal`, nor `Theory.InnerPsi`. Thus none of the prerequisites can
+depend on `wightW_local` or `Psi_local`. No re-layering, entry-point import change, or Lake
+module-list change was needed. The downstream order remains:
+
+```text
+Fock + analytic layers
+  -> Theory.WightWLocal
+  -> Theory.InnerPsi (including Psi_local)
+  -> Theory
+  -> Main
+  -> AxiomReport
+```
+
+No proof repair or weakening was required. The six declarations formerly affected by the
+locality admission now all use exactly the three standard principles:
+
+- `YangMills.FreeField.wightW_local`
+- `YangMills.FreeField.Psi_local`
+- `YangMills.FreeField.fockHost_good`
+- `YangMills.FreeField.exists_fockHost`
+- `YangMills.FreeField.exists_wightmanTheory`
+- `YangMills.jointExistence_of_freeField`
+
+## Earlier completed proof integrations
+
+The four previously completed proofs were inserted into their designated existing layers. No module was added,
 and no entry-point import or Lake module-list change was needed. Each primed proof is
 elaborated before its unprimed public wrapper, without importing its own entry point.
 
@@ -166,74 +239,10 @@ no additional production imports beyond those already in their stubs. In particu
 `InnerPsi` nor `Theory`. Thus no completed proof can reach its own public wrapper through
 an import cycle. The kernel audit confirms all four are free of admissions.
 
-## Remaining proof dependencies
+## Files changed in the final pass
 
-The exact list of audited declarations depending on `sorryAx` is:
+- `FreeField/Theory/WightWLocal.lean`: completed proof and cycle-free prerequisite imports.
+- `FreeField/AxiomReport.lean`: exact three-principle requirement for every audited declaration.
+- `FreeField/CONSOLIDATION.md`: final state and validation results.
 
-- `YangMills.FreeField.wightW_local`
-- `YangMills.FreeField.Psi_local`
-- `YangMills.FreeField.fockHost_good`
-- `YangMills.FreeField.exists_fockHost`
-- `YangMills.FreeField.exists_wightmanTheory`
-- `YangMills.jointExistence_of_freeField`
-
-Every one traces solely to `wightW_local`. Of these, only `wightW_local` and `Psi_local`
-are TASKS lemmas. All other 73 TASKS lemmas, as well as `exists_ope_coefficient` and
-`hier_reconstructed`, use exactly the three standard principles.
-
-This is a dependency report on elaborated proof terms: importing the locality stub does
-not make an otherwise independent theorem depend on its admission. In particular,
-`inner_Psi`, all its other word-vector identities, `Psi_covariant`, and the analytic,
-continuation, and OPE results are now clean.
-
-## Mechanical insertion of the remaining locality proof
-
-`FreeField/Work/wightW_local.lean` is still incomplete and has not been changed or imported
-by production. Once its proof is complete:
-
-1. Edit only `FreeField/Theory/WightWLocal.lean` for the proof insertion. Keep its existing
-   imports:
-
-   ```lean
-   import FreeField.Theory.Base
-   import FreeField.Analytic.SrEuclid
-   import FreeField.Analytic.MatchingIntegrable
-   ```
-
-   Copy any additional Mathlib imports from the completed Work file to the top of this
-   layer. If it uses further unprimed lemmas, import their provider modules, checking their
-   import closure for cycles. Never import `FreeField.Theory`, `FreeField.Theory.InnerPsi`,
-   or the Work file itself here; the first two already import `WightWLocal`.
-2. Copy the completed Work helper code and primed proof before the original public
-   statement. Remove the Work import of `FreeField.Theory` and its diagnostic `#print axioms`
-   commands. Change its outer opening and closing namespace to
-   `YangMills.FreeField.Consolidated.Theory_WightWLocal`. Preserve its own options, variables,
-   `open`, and `open scoped` commands.
-3. Preserve the original `wightW_local` signature and its current scopes verbatim. Replace
-   only its proof hole (currently line 26) with:
-
-   ```lean
-     exact Consolidated.Theory_WightWLocal.wightW_local' u v A B f g h
-   ```
-
-4. Run `lake build` and `lake env lean FreeField/AxiomReport.lean`. The report automatically
-   follows the completed proof instead of treating `wightW_local` as an admitted source.
-   No report-list edit is required. If the proof is complete and uses only clean
-   prerequisites, the expected counts become 75 of 75 clean TASKS lemmas, 81 of 81 clean
-   audited declarations, and an empty `sorryAx` dependency list. Update this document's
-   validation and dependency counts after that succeeds.
-
-The existing `FreeField.Theory` import of `FreeField.Theory.WightWLocal` stays in place.
-No change to `Main.lean` or the Lake module list is needed.
-
-## Files changed in this pass
-
-- `FreeField/Analytic/SrEuclid.lean`
-- `FreeField/Theory/CutIdentity.lean`
-- `FreeField/Theory/PsiCovariant.lean`
-- `FreeField/OPE/GopeRemainder.lean`
-- `FreeField/AxiomReport.lean`
-- `FreeField/CONSOLIDATION.md`
-
-No files were added or deleted. All other source files are unchanged from the start of
-this pass, verified by content hashes.
+All other source files are unchanged from the start of this pass, verified by content hashes.
