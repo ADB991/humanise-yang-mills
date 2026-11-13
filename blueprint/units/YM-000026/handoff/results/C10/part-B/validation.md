@@ -67,3 +67,7 @@ SHA-256 after the second round:
 | `quadratic-pole-transport.tex` | 2476144f4516574592dcdfc563196789a0ef492ecdaf98496e5ab1418850ab33 (unchanged) |
 
 Not done in the second round: no Lean build; the full `existence.tex` was not built; part-A's chapters were still being revised, so the cited part-A statements were not re-read after the label check. Four rows of `ledger.md` were first rewritten with a short script before I switched to the Edit tool; the content is as now on disk.
+
+## Revision 1 (13 November 2026, coordinating session)
+
+After review finding R1 (draft PR #99): `annulus-same-data-binding.tex` edited to name the fixed-film ticket input (T) and to carry it in `prop:ex-annulus-estimate` and the summary after it. New SHA-256: `7e3a0f5fe739ade9222cd2e4b57d3f6845d80621dbf7b53af225010833be764c`. Full `existence.tex` build with `latexmk`: exit 0, 938 pages, no undefined references, no overfull boxes. `git diff --check`: clean.

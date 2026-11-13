@@ -12,7 +12,7 @@ Session `schmittj-claude-c10-20261112`. Author draft; needs independent review o
 
 ## For G06 and neighbouring packages
 
-- For C11: `prop:ex-annulus-estimate` is the producer of the annulus input, conditional on (W), (S). The one-step theorem and the forest-chart Hessian identity are not produced by C10; C11's ledger rows for these should stay open and name the missing statements given in `part-B/ledger.md` and `part-A/ledger.md`.
+- For C11: `prop:ex-annulus-estimate` is the producer of the annulus input, conditional on (W), (S) and the fixed-film ticket input (T) (`unassigned-to-C10-film-tickets`); a consumer of the annulus estimate inherits all three. The one-step theorem and the forest-chart Hessian identity are not produced by C10; C11's ledger rows for these should stay open and name the missing statements given in `part-B/ledger.md` and `part-A/ledger.md`.
 - Not produced anywhere located: inputs (W), (S); `unassigned-to-C10-film-tickets`; the uniform gap over all periods; same-history path and bed data.
 - Incoming from C01, C06, C07, C09, C11: listed with the cited passages; none was audited on the producer side.
 

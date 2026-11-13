@@ -24,7 +24,7 @@ The second Codex pass found one regression, two errors and two gaps in the first
 
 ## Edges to C11
 
-- `C10-to-C11-annulus-estimate`: produced as `prop:ex-annulus-estimate`, conditional on the inputs (W), (S) named there.
+- `C10-to-C11-annulus-estimate`: produced as `prop:ex-annulus-estimate`, conditional on the inputs (W), (S) and the fixed-film ticket input (T) named there (the last is the edge `unassigned-to-C10-film-tickets`).
 - `C10-to-C11-one-step`: C10 does not state the assembled one-step theorem. C11's interface in the source uses a refinement that C10 does not state; the four components in part B are now explicit propositions.
 - `C10-to-C11-hessian-identity`: only the flat-coordinate Hessian is proved here; the forest chart with penalty and the chart analyticity are produced by no C10 chapter.
 - `C11-to-C10-stationary-tangent`: consumed as a named input.
@@ -67,3 +67,7 @@ The second Codex pass found one regression, two errors and two gaps in the first
 | `quadratic-pole-transport.tex` | `d7814c03f1488a4c21bbc9b706cb8fbccb7963d99f4fc4ff6f11dd2cf03f76b2` | `2476144f4516574592dcdfc563196789a0ef492ecdaf98496e5ab1418850ab33` |
 
 The canonical evidence files `blueprint/units/YM-000026/*-evidence.md` were not modified and describe the text before this pass.
+
+## Revision 1 (13 November 2026)
+
+Answering finding R1 of the review in `review/mgubi-codex-c10-annulus-20261113/` (draft PR #99): the fixed-film ticket calculus was an explicit input in the text but was missing from the statement of `prop:ex-annulus-estimate`, from the dependency summary after it and from the outgoing edge to C11. It is now named (T) in `annulus-same-data-binding.tex`, is a hypothesis of the proposition next to (W) and (S), appears in the summary, and the edge `C10-to-C11-annulus-estimate` and `handoff.md` carry it. Only `annulus-same-data-binding.tex` changed among the chapters; its new SHA-256 is recorded in `part-B/validation.md`. The hash table above gives the hashes at the first handoff. The reviewed hashes of that chapter are stale and need renewed review.

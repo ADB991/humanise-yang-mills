@@ -148,3 +148,9 @@ Coordinator's points.
 - Face prices (F6). In this round I read the proof scripts of `Fleet.tadControl`, `Fleet.cool0` and `Fleet.brass`, in addition to `Week.pair`, `Week.invW`, `chertWeek`, `cannonWeek`, `cinderWeek`, `glaze`, `bloomJ`, `sepJ`, `stepsJ`, `rainP`, `weeks`, `bubbleHV`, `cinderTall`, `grainTall`, `granaryTall` read in the first round. They follow the chapter's derivation: reference upper face from the regulator arch budget `μ²/T²` and the inverse at scale `T`; interacting upper face at unit scale; inverse differences from `S⁻¹−R⁻¹` with `S−R` of budget `T³+μ²=δT²`; leg differences from `T²≤δT` and `μ²/T≤δT`. Not opened: `sipPatrol`, `sipLight` (Taylor remainder to path budget), `Fiesta.inv`, `Fiesta.invDiff`, `Fiesta.pairDif`, `stoneWeek` beyond its first line. (F6) is therefore checked against the source at the level of these proof scripts, not re-derived line by line; O3 stands in that weaker form.
 
 Remaining uncertainties: the ticket calculus of the fixed films (now an input); inputs (W), (S); the determinant picture's recording; the exact statements of the part-A results cited by label, which part-A was revising at the same time.
+
+## Revision 1: response to the review in draft PR #99
+
+| Review finding | Response |
+| --- | --- |
+| R1: the fixed-film ticket calculus is an open input but is omitted from the final annulus dependency summary and the outgoing C11 handoff | Adopted. The input is named (T) where it is introduced in `annulus-same-data-binding.tex`, is now a hypothesis of `prop:ex-annulus-estimate`, is listed in the summary paragraph after the proposition, and is carried by the edge `C10-to-C11-annulus-estimate` in `ledger.md`, by `../README.md` and by `../handoff.md`. It is not discharged. |
