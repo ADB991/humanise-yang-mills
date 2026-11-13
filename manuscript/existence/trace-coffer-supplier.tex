@@ -13,7 +13,8 @@ upstream response, paid-price, and price-duality receipts explicit.
 
 Let \(X\) be an order-zero coefficient at scale \(k\), \(g\) its local field,
 and \(Z=\widehat\beta_k\). Write \(x_X\) for its coordinate, \(X^{\rm f}\) for its forced part, and \(D_X\) for its density. The atomic certificate supplies a nonnegative
-remainder allowance \(s\), a response \(L\) with attainment cost \(e\), and
+remainder allowance \(s\), a response \(L\) with attainment cost at most
+\(e\), and
 the identities
 \begin{align}
  \|x_X\|_{\rm coeff}+s&\leq q, \label{eq:ex-trace-atomd-charge}\\
@@ -22,8 +23,20 @@ the identities
  \label{eq:ex-trace-atomd-data}
 \end{align}
 The remainder bound is measured at scale \(k\), at order zero and with
-tolerance \(\sqrt{\operatorname{forcedAllowance}_k}\); the response has
-\(\operatorname{Attainment}(L)=e\). Set
+tolerance \(\sqrt{\operatorname{forcedAllowance}_k}\). The statement that
+the response \(L=(L_Y)_Y\), indexed by supports \(Y\), has attainment cost
+at most \(e\) is a certificate, not a scalar equality: every component
+\(L_Y\) is measurable and gauge invariant, vanishes at every configuration
+that is healthy on \(Y\) at the threshold of the scale-\(k\) budget, and
+takes the same value at two configurations whose links on \(Y\) agree and
+whose threshold flags in \(Y\) agree; \(L_Y\neq0\) only if \(Y\) contains
+the marked origin, and there are numbers \(a_Y\geq0\) with
+\[
+ |L_Y(U)|\leq a_Y\ \text{ for all }U,\qquad
+ \sum_Y e^{(\alpha_k+2)\operatorname{cov}_k(Y)}a_Y\leq e,
+\]
+where \(\alpha_k\) is the support exponent and \(\operatorname{cov}_k\)
+the cover number of that budget. Set
 \(u=\operatorname{alto}_{k,d}\), the inverse field dilation, and \(G'=ug\).
 Multiplying the density identity by \(u\) gives
 \[
@@ -37,7 +50,9 @@ The selected atomic charge budget satisfies
  4(1+c_k)q\leq Z^3,
  \label{eq:ex-trace-coffer-budget}
 \end{equation}
-where \(c_k\) is the number of coefficient columns at scale \(k\). Hence
+where \(c_k\geq1\) is the selected column allowance of the history at
+scale \(k\), a real parameter of the stage data and not a cardinality.
+Hence
 \[
  4(1+c_k)(\|x_X\|_{\rm coeff}+s)\leq Z^3.
 \]
@@ -59,7 +74,9 @@ spread estimate
  w+c_k\bigl(w+\|P_k.x\|_{\rm coeff}\bigr),\qquad w\geq0.
 \]
 Write \(\kappa_k>0\) for the square root of the level-\(k\) monitor.
-For every such paid comparison the endpoint estimate is
+The endpoint estimate, which is required for all sufficiently large
+period indices, uniformly in the volume index
+\(N\geq k\), in the paid comparison and in \(w\geq0\), is
 \begin{equation}
  \kappa_k\,\|P_k.x\|_{\rm coeff}
  \leq4(1+c_k)w.
@@ -75,8 +92,8 @@ response alone.
 
 \subsection{The finite Coffer transfer}
 
-We keep the source parameters distinct. Write \(c_k\) for the number of
-coefficient columns at level \(k\). Let \(X\) be the input coefficient, \(S\) its remainder budget,
+We keep the source parameters distinct. As above, \(c_k\geq1\) is the
+selected column allowance at level \(k\). Let \(X\) be the input coefficient, \(S\) its remainder budget,
 \(E\) the paid response and \(e\) its attainment cost, and
 \(\zeta_i>0\) its payment allowance. Let \(a\in(0,1]\) be the mask fraction,
 \(v'\geq0\) the forced-allowance budget, and \(q,B>0\) two coefficient budgets.
@@ -119,31 +136,60 @@ reflection half of the configuration; when that reflection reverses
 orientation it also complex-conjugates the value. This is the
 reflection-positive tiling functional, with its \(K\)th-root normalization.
 
-Assume \(N>k\), the reference grade is no larger than \(m\), and the
-scale-\(J\)-to-\(m\) window is open. The response data are an admissible
+Assume \(N>k\) and that the reference level is no larger than \(k\).
+The response data are an admissible
 sequence of coefficient voices from the reference level through \(N\), an
 admissible top coefficient, an exact paid response identity between each
 adjacent pair, and the terminal forced-profile identity. The input field
 has the format, remainder, attainment, and density identities stated above.
-Assume also the melting and payment inequalities, the endpoint estimate
-\eqref{eq:ex-trace-sharp-read}, and the room and interiority conditions
-from \(J\) to \(k\). Put
+Assume also the melting and payment inequalities and the endpoint estimate
+\eqref{eq:ex-trace-sharp-read}. Put
 \[
  \widetilde G'=\operatorname{back}_{k\to N}G'.
 \]
-Under these hypotheses the finite construction returns a label \(b\) with
-two estimates:
-\begin{align}
+Under these hypotheses the finite construction returns one public label
+\(b\), chosen before any window, with the following two properties. First,
+\begin{equation}
  b'\,\|x_X-\mathcal C_k(b)\|_{\rm coeff}
-   &\leq 4(1+c_k)q, \label{eq:ex-trace-coffer-column}\\
+   \leq 4(1+c_k)q. \label{eq:ex-trace-coffer-column}
+\end{equation}
+Here the window from scale \(J\) to scale \(m\) is called \emph{open} if
+\[
+ J\leq m,\qquad \sigma_m^2\leq A_J/A_m,
+\]
+where \(\sigma_m\) is the cover size of the selected clock at level \(m\)
+and \(A_j\) the field dilation. Second, for the same \(b\) and for every
+triple \((J,m,l)\) such that the
+scale-\(J\)-to-\(m\) window is open, the reference level is no larger than
+\(m\), \(m<k\), the scale \(J\) has room for the radius \(l\) at scale
+\(k\), and \(G'\) is interior to the window of radius \(l\),
+\begin{equation}
  \operatorname{root}_{J,N,p}(\widetilde G'-\mathcal O_{N,p}b)
-   &\leq \frac{\operatorname{stakes}(J,m)}{w_m}.
+   \leq \frac{\operatorname{stakes}(J,m)}{w_m}.
  \label{eq:ex-trace-coffer-root}
-\end{align}
-Here \(b'\) is the endpoint price-duality constant, \(\mathcal C_k(b)\)
-is the scale-\(k\) response column of \(b\), and
+\end{equation}
+The order of quantifiers matters: a label depending on the window would
+not give a Bill, whose root estimate is required for all windows with one
+label. Here \(b'\) is the endpoint price-duality constant and
 \(\operatorname{root}_{J,N,p}\) is the reflection-positive root functional
-on the volume-\(N\) field, defined using the scale-\(J\) tiling. In this application the endpoint constant $b'$ is $\kappa_k$.
+on the volume-\(N\) field, defined using the scale-\(J\) tiling. In this
+application the endpoint constant $b'$ is $\kappa_k$. The column
+\(\mathcal C_k(b)\) is defined through the bare reference coordinate of
+the public label: if \(\mathsf T\) denotes the terminal identification of
+the selected response hierarchy, a linear isomorphism of the grade-\(d\)
+coefficient space onto itself which sends bare reference
+coordinates \(v\) to public labels, and \(I_k v\) is the coefficient of
+the calibrated primary field \(\mathcal P_k(v)\) at level \(k\), then
+\[
+ \mathcal C_k(b)=I_k(\mathsf T^{-1}b).
+\]
+The construction below produces a bare coordinate \(v\) and sets
+\(b=\mathsf T v\); the column estimate is proved for \(I_kv\), while the
+observation \(\mathcal O_{N,p}b\) in \eqref{eq:ex-trace-coffer-root} is
+that of the public label. That the level-\(k\) entries of the selected
+response hierarchy, read at \(\mathsf T^{-1}b\), are these calibrated
+primary fields is an identity of the selected hierarchy, used here as part
+of the response data.
 
 For the column estimate, apply the signed reference-difference construction
 of Section~\ref{sec:reference-difference} to the Coffer coefficient field
@@ -163,12 +209,14 @@ remainder. The paid direction and remainder estimates
 not to an unsigned estimate obtained by subtracting costs.
 
 The top family has terminal charge at most \(q\), since
-\(\|x_X\|_{\rm coeff}+S\le q\). Choose its single reference label by
-setting the left endpoint coefficient to zero. The output is precisely
-\eqref{eq:reference-produced-difference}: for the chosen label \(b\), the
-terminal coefficient is \(x_X-\mathcal C_k(b)\), the terminal density is
-\(D_X-D_{\mathcal P_k(b)}\), and the left endpoint coefficient vector
-vanishes. Every intermediate field and the selected reference field are
+\(\|x_X\|_{\rm coeff}+S\le q\). Choose its single bare reference coordinate \(v\) by
+setting the left endpoint coefficient to zero, and put \(b=\mathsf Tv\).
+The output is precisely
+\eqref{eq:reference-produced-difference}: for the chosen coordinate, the
+terminal coefficient is \(x_X-I_kv=x_X-\mathcal C_k(b)\), the terminal
+density is
+\(D_X-D_{\mathcal P_k(v)}\), and the left endpoint coefficient vector
+vanishes. This choice does not involve any window \((J,m,l)\). Every intermediate field and the selected reference field are
 evaluated against the same finest volume and background history; this is
 what permits the exact density cancellation. At the terminal level the reference construction also retains its spread
 bound \(r_k\le q+c_k(q+\|Z_k.x\|_{\rm coeff})\), the precise spread
@@ -181,15 +229,62 @@ then gives the zero-site paid-response duet required by SharpRead, and its
 endpoint inequality is exactly \eqref{eq:ex-trace-coffer-column}. Here zero refers to the left coefficient
 vector and to the duet's marked spatial site being the origin. It does not
 assert that the observed field values vanish.
-For the rooted estimate, the same dual chain is planted once at each site of
+For the rooted estimate, fix a window \((J,m,l)\) as above; the label
+\(b\) is already fixed. The same dual chain is planted once at each site of
 the finite scale-\(J\) census. The construction couples each translated
 negative endpoint to the local lens response, then propagates the resulting
-polynomial to level \(m\). Its site-supported and box-supported parts have weighted absolute sums
-bounded by $2$ and $1$, respectively; each box term carries one unit of
-support cost. The planted coefficient is
+polynomial to level \(m\). The properties of this planted expansion that
+are used below are an input from the response construction, not proved in
+this section; we state them explicitly. \emph{Planted-expansion input.}
+Let \(V\) be the set of census sites, \(K=|V|\), with marks \(o_a\),
+\(a\in V\), in the level-\(m\) lattice. The level-\(m\) census polynomial
+\(\mathsf X(U)\) is integrable against the reference
+measure and has the following structure. There are singleton site
+amplitudes \(\Phi_a(U)\) and singleton box amplitudes \(\omega_{a,P}(U)\),
+\(a\in V\), \(P\) a box, with
+\[
+ w_a|\Phi_a(U)|\leq2,\qquad \sum_P w_a|\omega_{a,P}(U)|\leq1
+ \qquad\text{for every }a\text{ and every }U,
+\]
+and two correction families, an ordinary family \(H_Y(U)\) indexed by
+supports \(Y\) and a flagged family \(K_P(U)\) indexed by boxes \(P\), such
+that
+\[
+ \mathsf X(U)=e^{E_m(U)}\,
+   \operatorname{pass}\Bigl(\sum_a\Phi_a(U)\,\mathsf t_a+\sum_YH_Y(U)\Bigr)
+   \cdot\operatorname{field}\Bigl(P\mapsto
+       \mathsf b_P(U)+\sum_a\omega_{a,P}(U)\,\mathsf t_a+K_P(U)\Bigr),
+\]
+where \(E_m\) is the exponent of the level-\(m\) effective density,
+\(\mathsf t_a\) is the census monomial of the site \(a\), \(\mathsf b_P\)
+is the box activity term of the level-\(m\) representation, and
+\(\operatorname{field}\) is evaluated on the flagged set of \(U\). Each
+correction family satisfies the anchored support-cost bound with constant
+\(1\) at the support exponent \(\alpha_m\) of the level-\(m\) budget: there
+are numbers \(h_Y\geq0\) bounding the weighted absolute coefficient sums,
+\(\mathcal P_w(H_Y(U))\leq h_Y\) for all \(U\), with
+\(\sum_{Y\ni x}h_Ye^{\alpha_m\operatorname{cov}_m(Y)}\leq1\) for every
+site \(x\), and likewise for \(K_P\) with the support of the box \(P\).
+Every nonzero correction term has a census mark \(o_a\) in its support.
+Consequently, summing the anchored bound over the \(K\) marks,
+\begin{equation}
+ \sum_Y\mathcal P_w(H_Y(U))\leq K,\qquad
+ \sum_P\mathcal P_w(K_P(U))\leq K
+ \qquad\text{for every }U.
+ \label{eq:ex-trace-coffer-corrections}
+\end{equation}
+Finally, the
+planted coefficient is
 the moment in the root functional: integrating it against the level-\(m\)
 reference measure gives the volume-\(N\) Wilson partition function times
-the normalized moment. This identity follows at each transfer from
+the normalized moment \(M\) of
+\(\prod_{x\in\mathcal T_J}\operatorname{copy}_x(\widetilde G'-
+\mathcal O_{N,p}b)\). In the source these properties are derived from the
+same response hierarchy and its adjacent paid-response identities, the
+terminal forced-profile identity, the melting condition, occupancy and
+placement conditions on the planted sites at the levels \(m\) and \(k\),
+the two payment inequalities, and integrability of the initial and coupled
+polynomials; the moment identity follows at each transfer from
 normalization of the transition kernel and the exact response-density
 identity, and at the terminal level from the definition of the marked
 coefficient.
@@ -210,11 +305,15 @@ because each pattern's product price is at most the product of its factors
 and \(1+x\leq e^x\). The same submultiplicativity, applied term by term to
 the finite truncated exponential, gives
 \(\mathcal P_w(\operatorname{pass}(Q))\leq e^{\mathcal P_w(Q)}\).
-The site and box absolute-sum receipts contribute \(2K\) and \(K\) to the
-exponent. The remaining term is the \(2fK\) contribution in the planted
-price estimate at \(f=1\).
+The singleton site and box amplitudes contribute \(2K\) and \(K\) to the
+exponent, by the two singleton bounds of the planted-expansion input. The
+ordinary and the flagged correction families contribute \(K\) each, by
+\eqref{eq:ex-trace-coffer-corrections}. The total is \(5K\); the box
+activity terms \(\mathsf b_P\) and the exponent \(E_m\) are paid by the
+finite-volume denominator bound used next.
 
-By construction, the integral of the selected coefficient equals the
+By the planted-expansion input, the integral of the selected coefficient
+equals the
 volume-\(N\) Wilson partition function times the normalized moment \(M\).
 The partition function is positive. Dividing by it and using the finite
 volume denominator bound yields
@@ -254,12 +353,59 @@ from \eqref{eq:ex-trace-coffer-weight} is
  {\|\operatorname{alto}_{m,d}\|(Z^3/\operatorname{gain}(k,m))}.
 \]
 The factor $Z^{-1}$ is the mask fraction $a$ in the Coffer input, so this is
-exactly the native Bill denominator. Its norm entry follows from the atomic charge and the unit
-scale allowance. Its bias entry combines
-\eqref{eq:ex-trace-coffer-column} with the separately calibrated
-response-column estimate; the paid-response price estimate in
-Section~\ref{sec:ex-lattice-trace-bill-prices} bounds the resulting
-quantity by \(\operatorname{threshold}(k)^2\operatorname{AgeK}_k(-1/4)\).
+exactly the native Bill denominator.
+
+The other two entries of the Bill use the specific atomic charge. Fix
+\(u>0\) and let the charge in \eqref{eq:ex-trace-atomd-charge} be
+\[
+ q=q_k=u\,\vartheta_k^2\operatorname{Age}_k(1/6),
+ \qquad
+ \operatorname{Age}_k(a)=\exp\bigl(a(\log\log\widehat\beta_k)^2\bigr),
+\]
+where \(\vartheta_k\) is the threshold of the scale-\(k\) budget; thus
+\(\kappa_k=\operatorname{Age}_k(1/2)\) and
+\(\operatorname{Age}_k(a)\operatorname{Age}_k(a')=\operatorname{Age}_k(a+a')\).
+The selected schedule has \(c_k\leq\log\widehat\beta_k\). Since
+\(\vartheta_k^2\operatorname{Age}_k(1/6)=\widehat\beta_k^{-1}
+\operatorname{Age}_k(2+1/6)\) tends to zero faster than any power of
+\(\log\widehat\beta_k\) grows, and
+\(\log\widehat\beta_k=\exp(\log\log\widehat\beta_k)\) is eventually
+smaller than any positive multiple of \(\operatorname{Age}_k(1/12)\), and
+\(\widehat\beta_k\to\infty\), for all large \(k\)
+\[
+ q_k\leq1,\qquad 4(1+\log\widehat\beta_k)q_k\leq Z^3,\qquad
+ 4(1+\log\widehat\beta_k)u\leq\operatorname{Age}_k(1/12);
+\]
+the second inequality gives \eqref{eq:ex-trace-coffer-budget}. The norm
+entry of the Bill is \(\|x_X\|_{\rm coeff}\leq1\); it follows from
+\eqref{eq:ex-trace-atomd-charge}, nonnegativity of the remainder allowance
+and \(q_k\leq1\):
+\(\|x_X\|_{\rm coeff}\leq\|x_X\|_{\rm coeff}+s\leq q_k\leq1\). The bias
+entry is obtained from \eqref{eq:ex-trace-coffer-column} with
+\(b'=\kappa_k\) alone:
+\[
+ \|x_X-\mathcal C_k(b)\|_{\rm coeff}
+ \leq\frac{4(1+c_k)q_k}{\kappa_k}
+ \leq\operatorname{Age}_k(1/12)\,\vartheta_k^2
+      \operatorname{Age}_k(1/6)\operatorname{Age}_k(-1/2)
+ =\vartheta_k^2\operatorname{Age}_k(-1/4),
+\]
+because \(1/12+1/6-1/2=-1/4\). This is the bias bound which
+Section~\ref{sec:ex-lattice-trace-bill-prices} takes as a hypothesis on a
+paid label; that section does not prove it.
+
+In the source, the resulting statement has the following order of
+choices, under the standing hypotheses on the selected family, which
+include the endpoint estimate \eqref{eq:ex-trace-sharp-read} with
+\(b'=\kappa_k\) as a hypothesis. For every fixed \(u>0\) and grade
+\(d\): for all sufficiently
+large \(k\), for all sufficiently large periods \(p\) (depending on \(k\)),
+for every volume index \(N>k\) and every atomic certificate \((X,g)\) at
+scale \(k\) with charge \(q_k\) and attainment cost at most
+\(Z=\widehat\beta_k\), there is a public label \(b\) such that
+\((g,x_X,b)\) is a Bill, with the root estimate for all windows. The
+period threshold is the one at which the endpoint estimate
+\eqref{eq:ex-trace-sharp-read} holds with \(\ell\) the reference level.
 
 The outstanding suppliers are the atomic response, the endpoint
 price-duality recurrence, and the local action and occupancy estimates

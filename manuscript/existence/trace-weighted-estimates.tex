@@ -123,7 +123,12 @@ eventually, so
 All sequences in the source application below are already reindexed by a
 selected level $k_i\to\infty$: $b_i$ is the
 arch scale at level $k_i$, $q_i$ and $r_i$ are the chosen and reference
-responses there, and $s_i$ is the chart at index $i$. This reindexing matters:
+responses there, and $s_i$ is the chart at index $i$. Precisely, $k_i$ is
+the summit index of the frame level of the $i$th selected chart. It is the
+level called the postselected level and denoted $n_i$ in
+the external unit YM-000033 (file \texttt{trace-prosper-sensor.tex},
+label \texttt{sec:trace-prosper-sensor}); it is not the initial level
+denoted $k_i$ there. This reindexing matters:
 the source does not assert the field-decay estimate at every unreindexed
 level. Write $p_i=\widehat\beta_{k_i}$ and
 $A_a(i)=\exp(a(\log\log p_i)^2)$. The source-specific weight is
@@ -154,8 +159,19 @@ functionals $\mu_i:H\to\mathbb R$ and
  \bigl\|e_i(\mu_i s_i-\rho)\bigr\|_{E^*}\longrightarrow0.
 \]
 This is the response-price estimate used by the two-direction trace
-correction. The displayed deduction is complete; its chart and response
-estimates are the separate producer obligations listed in the audit.
+correction. The displayed deduction is complete as a deduction from its
+hypotheses. In the selected construction it is carried out in
+the proposition `Selected trace sensor' of the separately owned external
+unit YM-000033 (file \texttt{trace-prosper-sensor.tex}, label
+\texttt{prop:trace-prosper-sensor}): that proposition takes the three limits of
+Lemma~\ref{lem:ex-lattice-trace-medium-receipts} as its marked-vector
+hypotheses, derives $s_i\to f$ from them together with its own chart
+inputs, and then applies
+Lemma~\ref{lem:ex-lattice-trace-weighted-price}. The convergence
+$s_i\to f$ is therefore not a consequence of the present paragraph, and
+neither the chart inputs of that proposition nor the response estimates
+\eqref{eq:ex-lattice-trace-response-limit}--\eqref{eq:ex-lattice-trace-response-weighted}
+are proved here.
 
 \subsection{The source rate and medium calculation}
 \label{subsec:ex-lattice-trace-source-rate}
@@ -226,8 +242,13 @@ scale and the two-sided scale control. It obtains the local response
 estimate from a priced local charge inequality, transfers it through the
 finite-volume separation limit, and gets the reference-price estimate from
 the calibrated reference chart. Those three analytic inputs are not proved
-by the scalar calculation above. Their declarations and proof boundaries are
-listed in the adjacent evidence record.
+by the scalar calculation above. The priced local charge inequality is
+Proposition~\ref{prop:ex-lattice-charge-bounds}, which is conditional on
+its component receipts; its transfer through the separation limit is the
+conditional argument of
+Section~\ref{subsec:ex-lattice-trace-weighted-route}. The arch comparison
+\eqref{eq:ex-lattice-trace-arch-comparison} and the calibration of the
+reference chart are inputs.
 
 \subsection{How the two weighted receipts are assembled}
 \label{subsec:ex-lattice-trace-weighted-assembly}
@@ -266,12 +287,13 @@ separation argument. Let $\mathcal T$ be the linear map from the transported
 finite-volume coefficient field to the grade-five response, and let
 $\lambda$ be the flux functional on the transported fields. On the limiting
 field, their compatibility is $\rho(\mathcal T v_i)=\lambda(v_i)$. At fixed
-level $i$, write $v_i(p)$ for the finite-volume transported field indexed by the
-configuration parameter $p$. The local charged-configuration estimate
+level $i$, write $v_i(\nu)$ for the finite-volume transported field of the
+chosen response, indexed by the finite-volume index $\nu$ (a different
+object from the rate $p_i$). The local charged-configuration estimate
 gives, on a set in the separation ultrafilter,
 \begin{align}
- \|\mathcal T v_i(p)\|&\le C_TA_{1/6}(i),\\
- |\lambda(v_i(p))+\kappa|&\le
+ \|\mathcal T v_i(\nu)\|&\le C_TA_{1/6}(i),\\
+ |\lambda(v_i(\nu))+\kappa|&\le
  C_1A_{-1/4}(i)+C_2A_{-1}(i)
        +\frac{p_i^{-30}+p_i^{-100}}{12}.
  \label{eq:ex-lattice-trace-finite-response-price}
@@ -294,16 +316,23 @@ using the transported-field error estimate. The latter is bounded by
 $A_{-1/4}$; the local flux estimate contributes
 $4A_{-1}$ and the two inverse-power costs. Thus the ultrafilter passage is
 an ordinary continuity argument; all quantitative work lies in the local
-charge bound and its field-transport error estimate. Their exact source
-declarations are recorded in the evidence table.
+charge bound and its field-transport error estimate. The local charge
+bound is Proposition~\ref{prop:ex-lattice-charge-bounds}, with $t=p_i$,
+combined with the payment accuracy bound stated after it; the
+field-transport error estimate is an input.
 
-For the weighted reference-price estimate, let $c_i(p)$ be the calibrated
-finite-volume probe and $v_i(p)$ the transported field. The calibration
-gives $\rho(\mathcal T c_i(p))=\rho(-x)=0$, while the transport estimate
-gives $\|v_i(p)-c_i(p)\|\le C A_{-1/4}(i)$ on an ultrafilter-large set.
+For the weighted reference-price estimate, the transported field is that
+of the reference response and is a different object from the field
+$v_i(\nu)$ of the chosen response above. Let $c_i(\nu)$ be the calibrated
+finite-volume probe and $v^{\mathrm{ref}}_i(\nu)$ the transported
+reference field, whose image under $\mathcal T$ converges along the
+ultrafilter to $w_i$. The calibration
+gives $\rho(\mathcal T c_i(\nu))=\rho(-x)=0$, while the transport estimate
+gives $\|v^{\mathrm{ref}}_i(\nu)-c_i(\nu)\|\le C A_{-1/4}(i)$ on an
+ultrafilter-large set.
 Continuity therefore implies
 \[
- |\rho(\mathcal T v_i(p))|
+ |\rho(\mathcal T v^{\mathrm{ref}}_i(\nu))|
  \le \|\rho\|\,\|\mathcal T\| C A_{-1/4}(i).
 \]
 Passing to the ultrafilter limit gives the same bound for $|\rho(w_i)|$.
@@ -318,14 +347,19 @@ limit
  p_i\,s_i(m_i)\longrightarrow0.
  \label{eq:ex-lattice-trace-chart-field-decay}
 \end{equation}
-It is independent of the response-size and flux estimates above. To produce
-it, the source constructs finite-volume labels whose one-point expectations
-converge to the target core field, obtains local price bounds for each fixed
-grade-four test, and uses derivative and orientation compatibility to pass
-the bounds to a finite basis of the chart target. Finite dimensionality then
-converts those basis estimates to the displayed chart-norm limit. The
-finite-volume label existence, local price bounds, chart scaling identity,
-and compatibility identities are analytic inputs to this step; no claim
-that they follow from the scalar rate calculation is made here. Their exact
-declarations and the source's application route are recorded only in the
-evidence file.
+It is independent of the response-size and flux estimates above. It is the
+conclusion of Lemma~\ref{lem:ex-trace-small-means} with exponent $1$,
+applied to the present medium: in the notation of that lemma,
+$z_i=p_i$, $\zeta_i=b_i$, and its medium $v_i$ is the present $m_i$.
+The hypotheses of that lemma are the scale relations, the core
+representation \eqref{eq:ex-trace-medium-core} of this medium, the
+response and scaling identities, the local price bound for finitely many
+detector fields, the detector lower bound
+\eqref{eq:ex-trace-small-means-detector}, and the scalar rate
+\eqref{eq:ex-trace-small-means-rate}. The detector lower bound is
+essential. Bounds for the pairings of $s_i(m_i)$ with finitely many tested
+fields give a bound for its norm only because those tests separate the
+finite-dimensional response space with a lower bound uniform in $i$;
+finite dimensionality alone does not provide this. All the hypotheses
+listed are inputs to this step, and no claim that they follow from the
+scalar rate calculation is made here.

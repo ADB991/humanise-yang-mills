@@ -26,7 +26,7 @@ let \(L_j\) be the block side length at step \(j\), let
 \]
 where \(J(j)\) is the stage at rung \(j\), \(C\) is the selected
 coefficient-cost profile, \(K\) is the fixed positive worth profile, and
-\(\rho_j>0\) is the block remainder-cost factor. Write \(c_k\) for the number of coefficient columns at the terminal
+\(\rho_j>0\) is the block remainder-cost factor. For each rung \(j\), write \(c_j\geq1\) for the selected column allowance of the history at that rung. It is a real parameter of the selected stage data, not the cardinality of a coefficient index set; \(c_k\) is its value at the terminal
 rung, matching the notation of the Coffer estimate. Put \(p_j=L_j^{1/8}\), and define
 \begin{equation}
  H_j=\Gamma_j^{-1}+\frac{P_jL_j^d+\rho_j}{\Gamma_{j+1}},\qquad
@@ -68,9 +68,22 @@ The one-step local response estimate, for a paid comparison with adjacent coeffi
  \end{split}
  \label{eq:ex-lattice-price-one-step}
 \end{equation}
-It holds uniformly for all sufficiently large volume indices, provided the
-adjacent fields have the required format, remainder bounds, exact density
-transfer, and their marked sites are related by the scale map. The separate
+Here \(\|x\|\) is the coefficient \(\ell^1\)-norm, the sum of the absolute
+values of all coordinates including the unit coordinate, and \(x^\circ\)
+deletes exactly the unit coordinate. In the selected construction, under
+its standing scale hypotheses (in particular the stage at rung \(j\) is at
+least \(d+3\)), the estimate
+holds for all sufficiently large period indices \(n\), with a threshold
+depending on \(j\) and on the constant \(\varepsilon_j\), and then uniformly
+in the volume index \(N>j\) and in the pair of adjacent fields, provided
+both fields belong to the effective representations of the same selected
+history at the rungs \(j\) and \(j+1\) for these \(N\) and \(n\), have the
+required order-zero format and remainder bounds at the normalizations
+\(\sqrt{\operatorname{forcedAllowance}_j}\) and
+\(\sqrt{\operatorname{forcedAllowance}_{j+1}}\) with costs
+\(r_j,r_{j+1}\), satisfy the exact density transfer (the rung-\(j\) density
+is \(L_j^d\) times the pushed rung-\((j+1)\) density), and have marked
+sites related by the scale map. The separate
 local insertion estimate is also
 \begin{equation}
  \|x_{j+1}\|\leq P_j\|\mathcal L_j(x_{j+1})\|.
@@ -78,7 +91,11 @@ local insertion estimate is also
 \end{equation}
 We explain the finite-volume comparison producing the second line of
 \eqref{eq:ex-lattice-price-one-step}. Let \(\mathcal Q_d\) be the finite
-family of coefficient-recovery probes, with probe prices \(\pi(\tau)\) for \(\tau\in\mathcal Q_d\). Let \(M_d\geq1\) be the maximum of the operator-norm products of the local gauge variations that occur in these probes, over the finitely many ordered variation patterns of order at most \(d\) and over the compact local gauge chart. Let \(T_d\) be the finite coefficient reconstruction constant for this probe family. Thus for any
+family of coefficient-recovery probes, with probe prices \(\pi(\tau)\) for \(\tau\in\mathcal Q_d\). Put
+\[
+ M_d=1+\sum_{q=0}^{d}2^q(q+1)^q .
+\]
+This is the polarization constant: if two functions are of class \(C^d\) near the identity and all ordered directional derivatives of orders \(0,\ldots,d\) of their difference at the identity, along normalized directions, are bounded by \(c\), then for every probe \(\tau\) the two probe values, in which the functions are composed with the logarithmic-link test curve of \(\tau\), differ by at most \(\pi(\tau)M_dc\). The factor \(M_d\) pays for expressing the mixed derivatives that occur in the chain rule through the available ordered derivatives, and \(\pi(\tau)\), defined below, pays for the composition with the test curve. Let \(T_d\) be the finite coefficient reconstruction constant for this probe family. Thus for any
 coefficient difference \(z\),
 \[
  \|z\|\leq T_d\sum_{\tau\in\mathcal Q_d}|R_\tau(z)|.
@@ -112,12 +129,59 @@ prescribed masks replace the local masks. Thus each density is the same
 nonzero exponential action factor times its presented coefficient plus its
 regular series. Equality of the two densities lets us cancel this common
 factor and gives the signed difference of the presented coefficients as
-the sum of all signed regular terms. The finite sum over \(D\) has zero probe: every term has the
-vanishing property just stated. First apply the finite-order local chain rule
-to the finite truncation and its omitted tail, not to the infinite series. The
-local comparison estimate bounds the difference between the full presented
-field probe and the zero probe of this truncation by the sup-bound tail of
-the omitted terms. This estimate is uniform in finite \(D\), because the
+the sum of all signed regular terms: writing \(g\) for the local
+presentation of the coefficient difference and \(f_a\) for the signed
+regular terms,
+\begin{equation}
+ g(U)=\sum_a f_a(U)
+ \label{eq:ex-lattice-price-presented-sum}
+\end{equation}
+for every configuration \(U\) in the quiet set \(\mathcal D\), the set of
+configurations all of whose plaquette variables are strictly below the
+threshold. The set \(\mathcal D\) is open and contains the identity
+configuration, every support is healthy on it, and the series converges
+absolutely there because \(|f_a|\leq u_a\) and \(\sum_au_a<\infty\).
+
+The probe estimate needs the ordered derivatives of \(g\), so the identity
+\eqref{eq:ex-lattice-price-presented-sum} must be differentiated. We claim
+that for every \(U\in\mathcal D\) and every ordered list
+\((A_1,\ldots,A_q)\) of normalized directions with \(q\) at most the order
+of the budget,
+\begin{equation}
+ \partial_{A_1}\cdots\partial_{A_q}g(U)
+   =\sum_a\partial_{A_1}\cdots\partial_{A_q}f_a(U),
+ \label{eq:ex-lattice-price-derivative-sum}
+\end{equation}
+where the series converges absolutely. The proof is by induction on \(q\);
+the case \(q=0\) is \eqref{eq:ex-lattice-price-presented-sum}. For the
+induction step, let \(W(t)\) be the increment curve through \(U\) in the
+direction \(A_1\). Since \(\mathcal D\) is open, \(W(t)\in\mathcal D\) for
+\(|t|<r\) with some \(r>0\). On this interval the functions
+\(v_a(t)=\partial_{A_2}\cdots\partial_{A_q}f_a(W(t))\) are differentiable
+by regularity of the terms on healthy configurations, their derivatives are
+\(\partial_{A_1}\cdots\partial_{A_q}f_a(W(t))\), and these are bounded by
+\(u_a\) uniformly in \(t\), with \(\sum_au_a<\infty\). The series
+\(\sum_av_a(0)\) converges. The theorem on termwise differentiation of a
+series whose derivatives are dominated by a summable sequence on an
+interval therefore shows that \(\sum_av_a\) is differentiable at \(0\) with
+derivative \(\sum_av_a'(0)\). By the induction hypothesis, applied at
+every point \(W(t)\), \(|t|<r\), the sum \(\sum_av_a(t)\) equals
+\(\partial_{A_2}\cdots\partial_{A_q}g(W(t))\); differentiating at \(t=0\)
+gives \eqref{eq:ex-lattice-price-derivative-sum}.
+
+Now fix the finite set \(D\) and let \(G_D=\sum_{a\in D}f_a\). The finite
+sum \(G_D\) has zero probe: every term has the
+vanishing property just stated, and a finite sum may be differentiated
+termwise. By \eqref{eq:ex-lattice-price-derivative-sum} at the identity
+configuration, every ordered derivative of \(g-G_D\) of order at most
+\(d\) along normalized directions is the sum of the corresponding
+derivatives of the omitted nonwrapping terms and of the wrapping terms, so
+it is bounded by
+\(\sum_{a\in\mathcal I_0\setminus D}u_a+\sum_{a\notin\mathcal I_0}u_a\).
+The polarization estimate stated with the definition of \(M_d\) then bounds
+the difference between the probe of the full presented
+field and the zero probe of the truncation \(G_D\). This estimate is
+uniform in finite \(D\), because the
 local section has order-\(d\) regularity and the source terms have summable
 sup-bound mass. If the probe has order \(r\), the chain rule expands its
 local link variation into ordered partitions of \(\{1,\ldots,r\}\). Let
@@ -141,16 +205,19 @@ so \(\sum_a u_a\) is finite as well. For the wrapping terms, the elementary supp
  W\leq e^{-\sigma h}M_{B_0}(X,W)
 \]
 follows from the lower bound on the cover radius of a wrapping support.
-Absolute summability justifies the tail limit (without differentiating an
-infinite sum term by term) and permits the finite sets \(D\) to increase
+Absolute summability of \(\sum_au_a\) justifies the tail limit and permits
+the finite sets \(D\) to increase
 through all of \(\mathcal I_0\). The nonwrapping
 sup-bound tail tends to zero, and the wrapping sup-bound sum is at most
 \(e^{-\sigma h}(a+b)\); taking this limit gives the probe estimate
 \[
  |R_\tau(P.x-Q.x)|\leq\pi(\tau)M_d e^{-\sigma h}(a+b).
 \]
-This is the truncation-and-tail argument: one does not apply a probe
-term by term to the infinite collection of wrapping terms.
+This is the truncation-and-tail argument. The probe is applied termwise
+only to the finite truncations, where the vanishing property is available;
+the infinite collection of omitted and wrapping terms enters only through
+the derivative identity \eqref{eq:ex-lattice-price-derivative-sum} and the
+resulting sup-bound.
 
 The coefficient recovery inequality is
 \[
@@ -188,11 +255,29 @@ coordinate costs \(s_j\|x_{j+1}^{\circ}\|\) and
 \(P_j\|\mathcal V_{L_j}(x_{j+1}^{\circ})\|\). Summing first over the
 finite coefficient basis, then over the countable regular and forced lists,
 is legitimate because their total costs and coefficient norms are summable.
-At fixed volume \(N\), write \(A_N\) for the supremum of the
-normalized action and vacuum factor occurring in the density integral.
-There are finitely many compact link variables, so the action is continuous
-and \(A_N<\infty\). The absolute integrand of the countable atomic
-sum is bounded by \(A_N\) times its summable mass majorant. This is
+The interchange of the countable sums with the integral needs a bound
+for the factors multiplying the atoms in the density, and this is not a
+consequence of compactness of the link variables alone. Two properties of
+the fine effective representation are used; both are part of its
+representation certificate and are inputs here. First, its effective
+density is measurable and bounded. Second, its vacuum activities \(K_j\),
+\(j\in\mathbb N\), have a summable budget: there are \(a_j\geq0\) with
+\(\sum_ja_j<\infty\) and \(|K_j(U)|\leq a_j\) for all \(U\). The multiplier
+that dresses the \(i\)-th forced insertion is the sum, over the finite
+admissible index sets \(b\ni i\), of \(\prod_{j\in b\setminus\{i\}}K_j(U)\).
+Erasing the index \(i\) is injective on such sets, so every dressed
+multiplier is bounded, uniformly in \(i\) and \(U\), by
+\[
+ C_{\mathrm{gas}}=\sum_{b\subset\mathbb N\ \mathrm{finite}}
+     \prod_{j\in b}a_j\leq\exp\Bigl(\sum_ja_j\Bigr)<\infty.
+\]
+Hence a summable majorant \(\beta_i\) for the forced insertions gives the
+summable majorant \(C_{\mathrm{gas}}\beta_i\) for their dressed versions,
+and the same absolute summability justifies rearranging the sum over
+marked index sets into the sum of dressed insertions. The absolute
+integrand of the countable atomic
+sum is therefore bounded by the bound of the effective density times a
+summable majorant. This is
 an integrable bound on the normalized finite-volume Haar space, so Fubini
 preserves the density identity.
 Thus the countable atomic sum has the pushed density. Denote its actual
@@ -280,23 +365,28 @@ satisfy the local estimates \eqref{eq:ex-lattice-price-one-step} and
 \eqref{eq:ex-lattice-price-spends}. Assume also the paid direction
 conditions of Section~\ref{sec:reference-cone}, the room and bank
 inequalities \eqref{eq:reference-bank}, and the terminal spread bound
-\eqref{eq:reference-terminal} with endpoint budget \(w\geq0\). Then,
-for all sufficiently large volume indices for which the local one-step
-estimates hold,
+\eqref{eq:reference-terminal} with endpoint budget \(w\geq0\) and with
+the column allowances \(c_j\). Then,
+for all period indices and volume indices for which the local one-step
+estimates hold at every rung \(m\leq j<k\),
 \begin{equation}
  \kappa_k\|x_k\|\leq4(1+c_k)w.
  \label{eq:ex-lattice-price-endpoint}
 \end{equation}
-The threshold in the volume index is uniform over the comparison data and
-\(w\) covered by the local estimate.
+If, as in the selected construction, the one-step estimates hold for all
+period indices \(n\geq n_j\), uniformly in the volume index \(N\geq k\) and
+in the comparison data, then the endpoint estimate holds for all
+\(n\geq n_0=\max(\{0\}\cup\{n_j:m\leq j<k\})\) (the set of rungs is empty
+when \(m=k\), where the estimate is \(x_k=x_m=0\)), uniformly in \(N\geq k\), in the paid
+comparison and in \(w\geq0\).
 \end{proposition}
 
 \begin{proof}
 We first verify that the comparison satisfies the discounted paid-cone
 bound used in the recurrence. In the canonical cone estimate, choose at
 rung \(j\) the worth coefficient
-\(K_j=K(J(j+1))\), the column allowance equal to the actual column count
-\(c_j\), and the bank comparison coefficient
+\(K_j=K(J(j+1))\), the column allowance equal to the selected column
+allowance \(c_j\) of the history, and the bank comparison coefficient
 \(M_j=K(J(j+1)+1)\). The scale-slow condition gives
 \(K_j\leq K(J(j)+1)\), so the room inequality yields
 \(64K_j^2\leq c_j\). The bank condition is exactly
@@ -321,8 +411,9 @@ remainder allowances satisfy the two bounds in Lemma~\ref{lem:ex-lattice-price-o
 That lemma gives \(\|x_{j+1}\|\leq tI_{j+1}\). Finite induction reaches
 \(j=k\), where \(\Gamma_k=1\), so \(I_k=1/\kappa_k\). Multiplying by \(\kappa_k\)
 gives \eqref{eq:ex-lattice-price-endpoint}. The finite intersection of the
-volume thresholds for \(j=m,\ldots,k-1\) is still an eventual set. Each
-adjacent estimate is uniform over the specified comparison data, so one
+period thresholds for \(j=m,\ldots,k-1\) is still an eventual set. Each
+adjacent estimate is uniform over the volume index and the specified
+comparison data, so one
 threshold works for all of them.
 \end{proof}
 

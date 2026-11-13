@@ -9,11 +9,29 @@ bound from the finite-volume estimates.
 
 Let $S$ be the selected interacting table, and let
 $\mathcal U_i^{(d)}:E_d\to S_d$ be its scale chart from the reference grade
-space $E_d$ into the selected grade space $S_d$. Let $\mathcal V$ be the
-finite-dimensional real vector space of signed-equivariant grade-five
-response arrays (the source's one-point response table), and let
-$s_i$ be the real-linear normalized response map into $\mathcal V$. Write $j_i$ for the
-selected frame level and $k_i$ for its associated scale index. The source
+space $E_d$ into the selected grade space $S_d$. Here $E_d$ is the
+grade-$d$ field space of the reference (standard) table; it carries a
+complex-antilinear real-structure involution and an action $R(s)$ of the
+signed permutations $s$ of the four axes. Let $\mathcal V$ be the
+finite-dimensional real vector space of grade-five response arrays
+$y=(y_\alpha)_{\alpha\in\mathrm{Axis}}$, $y_\alpha\in E_5$, which are
+real and signed-equivariant: every $y_\alpha$ is fixed by the real-structure
+involution, and
+\[
+ R(s)y_\alpha=\operatorname{sign}(s,\alpha)\,y_{s\alpha}
+ \qquad\text{for every signed permutation }s\text{ and every axis }\alpha,
+\]
+where $\operatorname{sign}(s,\alpha)$ is the sign that $s$ attaches to
+the axis $\alpha$ (this is the source's one-point response table). Both
+conditions are part of the definition; signed equivariance alone defines a
+larger space. Let $\mathcal B$ be the real vector space of arrays of raw
+grade-five labels defined by the same two conditions, with the conjugation
+and the signed-permutation action of the raw labels in place of those of
+$E_5$. The normalized response map is a real-linear map
+$s_i:\mathcal B\to\mathcal V$. Write $j_i$ for the
+selected frame level and $k_i$ for its associated scale index, the summit
+index of $j_i$; in particular $k_i>j_i$, and $j_i\to\infty$ along the
+selected sequence. The source
 uses two distinct positive scales:
 \[
  z_i=\widehat\beta_{k_i},\qquad \zeta_i=Z.\beta(k_i).
@@ -27,7 +45,13 @@ The selected scale relations are
  r_i=a_ib_i,\qquad 0<b_i\leq m_i,
  \qquad m_i=\operatorname{tiltcap}(j_i).
 \]
-Let $v_i$ be the selected medium and $x_i$ its core field. Its exact core
+Let $v_i\in\mathcal B$ be the selected medium and $x_i\in\mathcal B$ its
+core field. The three identities
+\eqref{eq:ex-trace-medium-core}--\eqref{eq:ex-trace-night-scaling} below
+are used only for all sufficiently large $i$, and the source supplies the
+first two only on such a tail; the third requires $k_i$ to be at least the
+grade-five reference level, which holds for large $i$ because
+$k_i>j_i\to\infty$. The core
 representation is
 \begin{equation}
  v_i(\alpha)=\zeta_i^{-1}\mathcal E_{k_i}(x_i(\alpha))
@@ -35,16 +59,18 @@ representation is
  \label{eq:ex-trace-medium-core}
 \end{equation}
 where $\mathcal E_k$ is the source's core-to-strip map. The response
-normalization is
+normalization is, for every $v\in\mathcal B$ and every axis $\alpha$,
 \begin{equation}
  \mathcal U_i^{(5)}((s_i(v))_\alpha)
        =\mathcal V_i(v_\alpha),
  \label{eq:ex-trace-spun-response}
 \end{equation}
 where $\mathcal V_i=\operatorname{Vault}(S,Z,5,k_i,c_i)$ is the grade-five
-strip evaluation at scale index $k_i$ with crown normalization $c_i$. For $x$ odd
+strip evaluation at scale index $k_i$ with crown normalization $c_i$. For
+a raw grade-five label $x$ which is odd
 under central signed inversion, meaning
-$F(\operatorname{archV})x=-x$, the exact scaling identity is
+$F(\operatorname{archV})x=-x$ (the night condition), the exact scaling
+identity is
 \begin{equation}
  \mathcal V_i(\mathcal E_{k_i}(x))
    =c_i P_5x,
@@ -53,13 +79,40 @@ $F(\operatorname{archV})x=-x$, the exact scaling identity is
 \end{equation}
 where $P_5=S.\operatorname{project}_5$ maps raw grade-five labels into
 $S_5$. These are exact
-source identities, not consequences of the estimate below.
+source identities on the stated tail, not consequences of the estimate
+below. Every entry $y_\alpha$ of an array $y\in\mathcal B$ satisfies the
+night condition: the central inversion fixes each axis and attaches the
+sign $-1$ to it, so signed equivariance reads
+$F(\operatorname{archV})y_\alpha=-y_\alpha$. In particular
+\eqref{eq:ex-trace-night-scaling} applies to $x=x_i(\alpha)$.
 
-For a reference grade-four field $w\in E_4$, let $\lambda_{i,w}(Y)$ be the
-tested two-point pairing of $\mathcal U_i^{(5)}(Y_0)$ with
-$\mathcal U_i^{(4)}w$, at the shrinking point $r_i\zeta_i^{\mathrm{pt}}$.
-Denote this pairing on explicitly supplied grade-five and grade-four entries
-by $\mathfrak p_{i,w}$. The local price input is the bound
+The tested configuration consists of two points. With $e_0$ the unit vector
+of axis $0$, put
+\[
+ \zeta_i^{\mathrm{pt}}
+   =\bigl(b_i^{-1}(\lceil b_i\rceil,1,1,1),\,0\bigr),
+ \qquad
+ \zeta_\infty^{\mathrm{pt}}=(e_0,0).
+\]
+The scale input is $b_i\to\infty$; hence
+$\zeta_i^{\mathrm{pt}}\to\zeta_\infty^{\mathrm{pt}}$, the axial
+configuration. By $r_i=a_ib_i$, the dilated configuration
+$r_i\zeta_i^{\mathrm{pt}}=(a_i(\lceil b_i\rceil,1,1,1),0)$ consists of two
+distinct points of the lattice of spacing $a_i$, the kind of configuration
+at which the finite-volume price estimate is formulated.
+For a reference grade-four field $w\in E_4$ and $Y\in\mathcal V$, let
+$\lambda_{i,w}(Y)$ be the
+two-point function of the selected table with entries
+$\mathcal U_i^{(5)}(Y_0)$ and
+$\mathcal U_i^{(4)}w$, at the shrinking configuration
+$r_i\zeta_i^{\mathrm{pt}}$; only the axis-$0$ entry $Y_0$ of the array
+enters. Let $\lambda_w(Y)$ be the two-point function of the reference table
+with entries $Y_0$ and $w$ at $\zeta_\infty^{\mathrm{pt}}$.
+Denote the selected-table two-point function at
+$r_i\zeta_i^{\mathrm{pt}}$ on explicitly supplied grade-five and grade-four
+entries
+by $\mathfrak p_{i,w}$; it is complex-linear in the grade-five entry. The
+local price input is the bound
 \begin{equation}
  \left|\mathfrak p_{i,w}
        (a_i^5P_5x_i(0),\mathcal U_i^{(4)}w)\right|
@@ -67,31 +120,62 @@ by $\mathfrak p_{i,w}$. The local price input is the bound
  \quad\text{eventually in }i\text{ for each fixed }w,
  \label{eq:ex-trace-small-means-price}
 \end{equation}
-where $\Theta_i$ is the positive local price allowance. The source proves
+where
+\[
+ \Theta_i=\exp\!\left(-\frac{100}{10^4}
+      (\log\widehat\beta_{j_i})^{48}\right)
+\]
+is the positive local price allowance
+at the frame level $j_i$. The source proves
 this receipt from the priced mission and its finite-volume mileage
-estimate; it remains an upstream input here.
+estimate; Proposition~\ref{prop:ex-trace-mission-price-transfer} is the
+corresponding conditional transfer statement, and the bound remains an
+upstream input here.
 
-The selected chart hierarchy and its derivative/orientation identities
-supply a finite detector. There are fixed reference fields
+The detector rests on two inputs, which are not proved in this section.
+\begin{enumerate}
+\item \emph{Separation at the axial configuration.} If $y\in\mathcal V$
+and $\lambda_w(y)=0$ for every $w\in E_4$, then $y=0$. In the source this
+is derived from the derivative and orientation identities of the reference
+table and simplicity of the gauge group, through the injectivity of the
+axial divergence probes on the reference vector table; compare
+\eqref{eq:ex-trace-divergence-probes} and the isomorphism stated after it.
+\item \emph{Convergence of fixed tested pairings.} For fixed $u\in E_5$
+and $w\in E_4$, and every sequence of two-point configurations
+$\xi_i\to\zeta_\infty^{\mathrm{pt}}$, the selected-table two-point
+function with entries $\mathcal U_i^{(5)}u$ and $\mathcal U_i^{(4)}w$ at
+$r_i\xi_i$ converges to the reference-table two-point function with
+entries $u,w$ at $\zeta_\infty^{\mathrm{pt}}$. This is a property of the
+same selected charts $\mathcal U_i^{(d)}$ and dilations $r_i$ as above; in
+the source it follows from the convergence of the selected chart path
+together with the derivative identities of both tables.
+\end{enumerate}
+The finite detector is deduced from them as follows. The maps
+$y\mapsto\lambda_w(y)$, $w\in E_4$, are real-linear functionals on the
+finite-dimensional space $\mathcal V$ with zero common kernel by~(1), so
+finitely many of them already have zero common kernel. Hence there are
+fixed reference fields
 $w_1,\ldots,w_m\in E_4$ such that the limiting pairings define an injective
-linear map
+real-linear map
 \[
  \Lambda(y)=(\lambda_{w_r}(y))_{r=1}^m:
        \mathcal V\longrightarrow\mathbb C^m.
 \]
-The scale-dependent maps $\Lambda_i(y)=(\lambda_{i,w_r}(y))_{r=1}^m$
-converge to $\Lambda$ in operator norm. The full family of grade-four
-insertions separates the signed-equivariant response arrays; choose a
-finite separating subfamily and use the selected chart and shrinking-point
-convergence for those tests. If $\mathcal V\neq\{0\}$, injectivity gives a
-positive minimum norm on its unit sphere. Thus some $c>0$ satisfies
+By~(2), applied with $\xi_i=\zeta_i^{\mathrm{pt}}$, $u=y_0$ and
+$w=w_r$, the scale-dependent real-linear maps
+$\Lambda_i(y)=(\lambda_{i,w_r}(y))_{r=1}^m$
+converge to $\Lambda$ pointwise on $\mathcal V$, and therefore in operator
+norm, since $\mathcal V$ is finite-dimensional. If
+$\mathcal V\neq\{0\}$, injectivity gives a
+positive minimum $2c$ of $\|\Lambda y\|$ on its unit sphere, and
+$\|\Lambda_i-\Lambda\|\le c$ for large $i$. Thus some $c>0$ satisfies
 \begin{equation}
  \|\Lambda_i y\|\geq c\|y\|
  \qquad\text{for all sufficiently large }i\text{ and every }y\in\mathcal V.
  \label{eq:ex-trace-small-means-detector}
 \end{equation}
 For $\mathcal V=\{0\}$ the desired conclusion is immediate. The
-separation and convergence receipts, not finite dimensionality alone, are
+separation and convergence inputs, not finite dimensionality alone, are
 the detector inputs.
 
 The scalar rate input is
@@ -100,30 +184,47 @@ The scalar rate input is
  \qquad\text{for each fixed integer }p\geq0.
  \label{eq:ex-trace-small-means-rate}
 \end{equation}
-In the selected source, this follows by multiplying three rate tickets:
-the rate of $z_i$ is bounded by the zero-rate ticket for the scale at the
-summit of $j_i$; $m_i$ has a zero-rate fifth-power ticket; and $\Theta_i$
+In the selected source, this follows by multiplying three rate tickets
+for sequences indexed by the frame level $j$ and then substituting
+$j=j_i\to\infty$. Here a nonnegative sequence $f_j$ has a ticket of rate
+$\rho$ if, for every $\rho'>\rho$,
+$f_j\le\exp(\rho'(\log\widehat\beta_j)^{48})$ for all sufficiently large
+$j$. The three tickets are:
+the scale $\widehat\beta$ at the summit index of $j$, which for $j=j_i$
+is $z_i$ itself, has a zero-rate ticket (it is eventually at most twice
+$\widehat\beta_j$); the cap $\operatorname{tiltcap}(j)$ has a zero-rate
+ticket, hence so does its fifth power; and
+$\exp(-100\delta(\log\widehat\beta_j)^{48})$, which is $\Theta_i$ for
+$j=j_i$,
 has rate $-100\delta$, with the fixed source constant $\delta=10^{-4}$.
 Ticket products add rates, so for fixed $p$ the product has negative rate
-$-100\delta<0$ and tends to zero. The stage comparison bounds $z_i$ by the
-summit scale. These scalar receipts are listed with their exact source
+$-100\delta<0$ and tends to zero, because
+$\widehat\beta_j\to\infty$. These scalar receipts are listed with
+their exact source
 declarations in the evidence file.
 
 \begin{lemma}[Weighted field decay from the priced mission]
 \label{lem:ex-trace-small-means}
-Assume \eqref{eq:ex-trace-medium-core}--\eqref{eq:ex-trace-small-means-rate},
-the night condition for $x_i(0)$, the response identity
-\eqref{eq:ex-trace-spun-response}, the price bound
-\eqref{eq:ex-trace-small-means-price}, and the detector bound
-\eqref{eq:ex-trace-small-means-detector}. Then, for each fixed integer
+Assume that, for all sufficiently large $i$, the scale relations
+$r_i=a_ib_i$ and $0<b_i\le m_i$, the medium representation
+\eqref{eq:ex-trace-medium-core}, the response identity
+\eqref{eq:ex-trace-spun-response} and the scaling identity
+\eqref{eq:ex-trace-night-scaling} for $x=x_i(0)$ hold. Assume the price bound
+\eqref{eq:ex-trace-small-means-price} for each of the finitely many
+detector fields $w_1,\ldots,w_m$, the detector bound
+\eqref{eq:ex-trace-small-means-detector}, and the rate
+\eqref{eq:ex-trace-small-means-rate}. Then, for each fixed integer
 $p\geq0$,
 \[
  z_i^p s_i(v_i)\longrightarrow0\quad\text{in }\mathcal V.
 \]
 \end{lemma}
 \begin{proof}
-Set $Y_i=z_i^p s_i(v_i)\in\mathcal V$. By the medium representation,
-response normalization, and night scaling,
+Set $Y_i=z_i^p s_i(v_i)\in\mathcal V$, and restrict to $i$ so large that
+all the assumed identities and the finitely many price bounds hold. By the
+medium representation,
+response normalization, and night scaling, together with the real
+linearity of $s_i$, $\mathcal U_i^{(5)}$ and $\mathcal V_i$,
 \[
  \mathcal U_i^{(5)}((Y_i)_0)
  =z_i^p\zeta_i^{-1}c_iP_5x_i(0)
