@@ -62,7 +62,7 @@ Outcome by class: 42 B, all edited; 20 J (one reclassified B, one resolved by pr
 | 372 | `trace-scribe-producer.tex` | J | Reclassified as a definition plus inputs: the correction is built from three paid tensor families (L_i, Ω_i, Δ_i), which, with c_i⁰, c_i¹, are data of the selected construction. The properties used are stated as inputs (they already are: field receipts `eq:ex-lattice-scribe-field-receipts`, from external unit YM-000034). Moved: in Lean `L_i, Ω_i, Δ_i` are `blade`-type tensors of `Spun.starts` (part-B ledger row "Scribe chapter"). |
 | 373 | `trace-scribe-producer.tex` | B | "In the source, q_i is the effective coupling …" → "Here q_i is the effective coupling … and the crown normalization is …". **For the reviewer:** the part-B ledger records q_i = Z.β(k_i) (the arch scale), and l.613 says q_i = ζ(k_i), the arch scale. The text calls this "effective coupling". I left the wording as it was; whether the arch scale *is* the effective coupling at the selected level should be checked by the C15 owner. |
 | 379 | `trace-scribe-producer.tex` | B | "by the finite tensor identity used in the source" → "by the trace formula of the branch-moment unit recalled above" (`eq:ex-branch-three-traces` of YM-000034, already cited in the preceding paragraph, tr M_1 = 4𝒪). |
-| 380 | `trace-scribe-producer.tex` | J | Split. (a) z_i tr𝒫_i(L_i) → 0 and z_i tr𝒫_i(Ω_i) → 0: the exponent-one washout limits of YM-000034 (`prop:ex-branch-washout`, p = 1) recalled above, so this is a manuscript reference. (b) \|c_i⁰\| ≤ Cρ_i: contained in the bound \|c_i⁰\|+\|c_i¹\| ≤ Cρ_i used earlier in the chapter. (c) tr𝒫_i(Δ_i) → 4𝒪: **proved** from the field receipt 𝒫_i(Δ_i) → M_1, tr M_1 = 4𝒪 and continuity of the trace. (d) New named input **I-C15-scribe-scale-bounds**: q_i ≤ 2z_i, ρ_i ≤ t_i ≤ z_i, and c_i¹ → −κ/4 (the latter is `eq:ex-lattice-scribe-sensor-limits` from YM-000033 via the sensor dictionary, if the owner confirms; I list it as outstanding). |
+| 380 | `trace-scribe-producer.tex` | J | Split. (a) z_i tr𝒫_i(L_i) → 0 and z_i tr𝒫_i(Ω_i) → 0: the exponent-one washout limits of YM-000034 (`prop:ex-branch-washout`, p = 1) recalled above, so this is a manuscript reference. (b) \|c_i⁰\| ≤ Cρ_i: contained in the bound \|c_i⁰\|+\|c_i¹\| ≤ Cρ_i used earlier in the chapter. (c) tr𝒫_i(Δ_i) → 4𝒪: **proved** from the field receipt 𝒫_i(Δ_i) → M_1, tr M_1 = 4𝒪 and continuity of the trace. (d) New named input **I-C15-scribe-scale-bounds**: q_i ≤ 2z_i and ρ_i ≤ t_i ≤ z_i. (e) c_i¹ → −κ/4: **proved in the same chapter**, conditionally (revised after review R1, PR #212): the cancellation argument right after `eq:ex-lattice-scribe-sensor-limits` derives it from X_i + 𝖡_i c_i = 0, the sensor limits, ‖c_i‖ ≤ Cρ_i and ρ_i ≤ t_i. It is conditional on those inputs (the YM-000033 sensor inputs and the scale bound in (d)), and the text now says so. |
 | 381 | `trace-scribe-producer.tex` | B | Inside input (4d), already an open premise. "In the source both follow from the comparison-of-jets estimate" → "Both are to be obtained from the comparison-of-jets estimate …; this deduction is not carried out here." Moved: Lean `reads_limit` (part-B ledger, E-C14-shell). |
 | 385 | `trace-asymptotic.tex` | B | **Caveat moved:** in the source the ultrafilter, the arch scale (from which B_i is read) and the reference hierarchy are chosen once, before the null sequence (s_n) is given. So the source has a stronger, sequence-uniform form of `input:trace-scales`. The text now says only that the input as stated allows the comparison data to depend on (s_n), and that this is all that is used. |
 | 390 | `trace-weighted-estimates.tex` | B | "in the source application below" → "in the application below". |
@@ -99,7 +99,7 @@ Existing names are reused where the C15 ledgers already had one. New names are m
 | X1 (part-A ledger) | existing | four rate-zero tickets s_i, v_i, t_i⁴, f_i⁻¹ and the gain estimate τ_i(500) ≤ γ_i | `trace-bill-prices` | 361 |
 | I-C15-bill-label-receipt | **new**, refines X2 | paid label (norm ≤ 1, bias bound) together with its paid root receipt ≤ n_{d,i}, as assumed by `prop:ex-trace-bill-root-price` | bill prices; probe assembly | 362, 363, 364 |
 | I-C15-probe-scales | **new** | `eq:ex-trace-probe-scales` for all sufficiently large j | `prop:ex-trace-probe-assembly` | 365 |
-| I-C15-scribe-scale-bounds | **new** | q_i ≤ 2z_i; ρ_i ≤ t_i ≤ z_i; c_i¹ → −κ/4 | scribe flux limit `eq:ex-lattice-scribe-flux-limit` | 380 |
+| I-C15-scribe-scale-bounds | **new** | q_i ≤ 2z_i; ρ_i ≤ t_i ≤ z_i (c_i¹ → −κ/4 removed after review R1: it is proved conditionally in the chapter) | scribe flux limit `eq:ex-lattice-scribe-flux-limit` | 380 |
 | E-clock = `unlocated-to-C15-clock` | existing | arch comparison `eq:ex-lattice-trace-arch-comparison` | weighted estimates | 402 |
 | reference-chart calibration (part-B ledger, "Scalar deductions") | existing | calibrated reference chart giving the reference-price estimate | weighted estimates | 402 |
 | I-C15-finite-response-price | **new** | the finite-volume inequalities `eq:ex-lattice-trace-finite-response-price` on a set in the separation ultrafilter | `subsec:ex-lattice-trace-weighted-route` | 407 |
@@ -142,10 +142,21 @@ Not touched, but noted for the C15 owner: dotted Lean-style constant names in `t
 
 ## For the reviewer
 
-1. Row 380: is c_i¹ → −κ/4 supplied by the sensor dictionary of YM-000033 (`eq:ex-lattice-scribe-sensor-limits`)? If so, I-C15-scribe-scale-bounds shrinks to the two scale bounds.
+1. Row 380: answered by review R1 (PR #212). c_i¹ → −κ/4 is proved conditionally in the chapter, and I-C15-scribe-scale-bounds now holds only the two scale bounds.
 2. Row 373: the text calls q_i "the effective coupling at the selected level", while the chapter (l.613) and the part-B ledger identify q_i with the arch scale ζ(k_i). I kept the existing wording. Please check that the two are the same object.
 3. Row 328: I did not identify f with the envelope B_* (the constants τB_* and 2\|f\| differ), so the step is now a named input rather than a proof.
 4. Row 409 is the only J resolved by a new proof (one line).
+
+## Response to review R1/R2 (PR #212, session ADB991-claude-20261113-b226)
+
+mgubi's review of `a4a73dc` (report PR #212) asked for two proof-status corrections.
+
+- **R1 (row 380, `trace-scribe-producer.tex`).** Accepted. The sentence that called c_i¹ → −κ/4 an outstanding input now cites the cancellation argument after `eq:ex-lattice-scribe-sensor-limits`. That argument uses the exact cancellation X_i + 𝖡_i c_i = 0, the three sensor limits, the bound ‖c_i‖ ≤ Cρ_i and the scale bound ρ_i ≤ t_i. The text now says the limit is proved conditionally on exactly these inputs. I-C15-scribe-scale-bounds keeps only q_i ≤ 2z_i and ρ_i ≤ t_i ≤ z_i (this record and `part-B/ledger.md`). One point is kept explicit: the derivation uses ρ_i ≤ t_i, which is part of I-C15-scribe-scale-bounds, so the coefficient limit is not unconditional.
+- **R2 (row 328, `trace-eve-producer.tex`).** Accepted. The closing sentence no longer says the cited comparison sections supply the insertion estimate. It now says the assembly is conditional on the outstanding estimate (I-C15-eve-insertion-rate). The cited sections supply the comparison and the envelope B_* under their hypotheses, but not the price-2|f| estimate. No identification of f was attempted.
+
+No other passage, label or theorem statement changed.
+
+Checks for this delta (run by session b226): `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=<scratch> existence.tex` in `manuscript/`: exit 0, 982 pages, no undefined references. Pages 917 (eve producer, R2) and 942 (scribe flux limit, R1) were viewed as images. `python3 scripts/check_blueprint.py`: OK (4 units). `python3 -m unittest discover -s tests`: 22 tests OK. `git diff --check`: clean. No Lean command was run.
 
 ## Checks
 
@@ -166,14 +177,14 @@ Not touched, but noted for the C15 owner: dotted Lean-style constant names in `t
 | `trace-local-paid-budgets.tex` | `89a8a89d18a90c5f6378cdba260900ee955b196be53216cafcca319f3619f591` | `42962f8b9d7359162f6f0d7599fbc4ee8fb13b3ee7c7da7129d79b92c1b4ef73` |
 | `trace-local-rate-selection.tex` | `46950adfb52103145d21023096690f59165ea81c08f9de42c71c0a5679de144a` | `e5ed9177f0dab785de99a4855cb1638c0cc2832cbcaeaeae57c21fbbfa9ccf2f` |
 | `trace-medal-prices.tex` | `54df3679cc287744478c37d40e26e444ec00786055d88004256b1e1538f39d9f` | `4cdfbb56d96e045dd4c87732718bb01e3859ab7b444a2414836ed5d101005d57` |
-| `trace-eve-producer.tex` | `5bcdf4e577b71960cad20ac715d230280cdcac84868a4d7c2f958728a9eb63e6` | `b0a13cb3739cd96b1745f4bdc9599f150afefa8c8caa97cb0416bdb979c17d1c` |
+| `trace-eve-producer.tex` | `5bcdf4e577b71960cad20ac715d230280cdcac84868a4d7c2f958728a9eb63e6` | `b0a13cb3739cd96b1745f4bdc9599f150afefa8c8caa97cb0416bdb979c17d1c` → after R2: `2b4f47c811da111ff8c3b092553dba106dfdd65b22d7e8390cdab4d01c43398b` |
 | `trace-row-jet-estimates.tex` | `f2fc8a245f8ae1373db1c2e15e436437d162d7fdec5cdd3a3172b3c96c4aadf2` | `dbd6bbffed6605f24a55e20ece34e794e1028477bd3a828afb3629ffe6b899ba` |
 | `trace-regular-atom.tex` | `940dfbef8513a96ed9f9a90e893baa20dbe013d9dafec96075f55033a21390f4` | `254da9c85ab32697d331e8f4319a33a4116c1eb9f2b2a1098e9fc318280ebef9` |
 | `trace-coffer-supplier.tex` | `855c25c892f03f7ca6cfd20b18553159e8c411042f4e74d9d8a8f6cb098fdd53` | `7d00533ed57018e3551ae196d7891378f12c813a3eafc1dbb8ebfebf65a561e6` |
 | `trace-bill-prices.tex` | `3573e9ef1c5d47b0b9d9a6ce76115c406440fc5622ce29edf7cdb151a4094a55` | `a5b651ba609fe5032fcacae80e3e0dcfb459c5783788f5650672a61f31d9e8e1` |
 | `trace-probe-assembly.tex` | `420072c701690d362620da6915bc3b98e9218b0a0be02e82fb78698bbed3b532` | `744be9eee8f4bd35161e46bb6d497a2274ee4c5a9ba0aa6167cbb00d1c9086c9` |
 | `trace-mission-price.tex` | `e6244286399c6af819ebc538519e8008a1a8f1ab9aed57b7cce24695eb0dca5e` | `e5ee15e550242bfa52d310456effb485acc0c93f35955a29729d61059732bece` |
-| `trace-scribe-producer.tex` | `9a805ba11d8a56a2fa7892258bbb65e6730650a8b25e83eb16693440cbe5b96a` | `eb2df35a460c7425c26c8784ba21fbf65cccf50a069edd6a3588778aec2af6bd` |
+| `trace-scribe-producer.tex` | `9a805ba11d8a56a2fa7892258bbb65e6730650a8b25e83eb16693440cbe5b96a` | `eb2df35a460c7425c26c8784ba21fbf65cccf50a069edd6a3588778aec2af6bd` → after R1: `016a16f891f350f3d728b155620124acaaa8c1f4f9c2336bcd900c9be3214b19` |
 | `trace-asymptotic.tex` | `ccb50cdba852e470937cd038c3524f2a24a02c6624cbca884b8a1753d1d167c2` | `3e36d480a5325ec64e3920cfc468f9196c8e9ab8ce4cfbd15ad58872e195d04e` |
 | `trace-weighted-estimates.tex` | `c1d181d871c298b83e3bc29c984c0699243f75fcc5d6f5d3edb6fbe3746b2e3f` | `e5f996ca940a967436eb6966ed73a5ade4e39e22a3b171aefb26794e9d372d93` |
 | `trace-local-pairing.tex` | `d904217ef3c520d77225c89ea058d324b8126235996f708b7195780d3e9a16e7` | `c50f5136d756a22cfd04612fec67366ca35e20725e22aeb6faecf5f5ae3281f8` |

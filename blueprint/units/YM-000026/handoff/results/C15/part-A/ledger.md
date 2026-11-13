@@ -70,7 +70,7 @@ Named in the author response to the source-leakage audit (session `ADB991-claude
 | --- | --- | --- | --- |
 | I-C15-crown-witness | Crown witness for the field to which `prop:ex-trace-crown-buffer` is applied (ledger: `Glade.canopy`) | crown buffer; probe assembly (part B) | open |
 | I-C15-frame-normalization | testPrice(𝓕) ≥ 1, readPrice(𝓕) ≥ 1, c = orbitCost·errorPrice·corn(d)·a > 0 for the selected frame | application of `thm:ex-lattice-eve-producer` | open |
-| I-C15-eve-insertion-rate | if the branch patch exists: f ∈ 𝓡_{−1/2} with the uniform derivative inequality at price 2\|f\| | response choice u = 2\|f\| in `sec:ex-lattice-trace-eve-producer` | open; expected from `eq:ex-lattice-eve-linear-receipt` and the envelope B_*, identification not carried out |
+| I-C15-eve-insertion-rate | if the branch patch exists: f ∈ 𝓡_{−1/2} with the uniform derivative inequality at price 2\|f\| | response choice u = 2\|f\| in `sec:ex-lattice-trace-eve-producer` | open; expected from `eq:ex-lattice-eve-linear-receipt` and the envelope B_*, identification not carried out. After review R2 (PR #212) the chapter's assembly is stated as conditional on this input |
 | I-C15-bill-label-receipt | paid label (norm ≤ 1, bias bound) with its paid root receipt ≤ n_{d,i}, as assumed by `prop:ex-trace-bill-root-price`; refines X2 | bill prices; probe assembly | open |
 
 Existing premises P1–P5 (small means), X1 (bill scale tickets) and `C15-internal-planted-expansion` are now stated in the text as outstanding inputs, without reference to the source.
