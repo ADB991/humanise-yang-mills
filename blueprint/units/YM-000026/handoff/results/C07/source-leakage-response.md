@@ -35,8 +35,13 @@ relies on that statement. Its proof belongs to the owner of that chapter.
     `‖u‖ ≤ ‖u−y‖+‖y‖ ≤ 2·slew·t`, `slew = a/64`;
   - hence `‖curvature‖ ≤ t/32`;
   - `hz` derives `chord ≤ 2‖curvature‖` from the second clause of
-    `YM.Work.E05.curvature_lower` whenever `chord ≤ δ`, and the chart bound
-    (`cordF`, `vanishes`) supplies `chord ≤ δ`;
+    `YM.Work.E05.curvature_lower` whenever `chord ≤ δ`. The face chart bound
+    `chord ≤ δ` comes from the local chart (Lit) receipt through
+    `YM.AnalyticNext.ConnectedActivity.Aff.face_pays` (`Palace.lean`, line 62),
+    which bounds the face toll by the next allowance, together with
+    `YM.AnalyticNext.ConnectedActivity.Rates.vanishes` (`Rate.lean`, line 60),
+    which makes that allowance smaller than `δ` eventually. (`Aff.cordF`,
+    `Palace.lean` line 96, is used only in the following bond clause.)
   - finally, `YM.Pressure.toll U x = G.chord (faceValue U x)`
     (`Lean/YM/Pressure/Rows.lean`, line 55).
 - **C2 (rows 86–87).** The assembly is `YM.PhysicalNext.InteractingRank.Pump.ballot`
@@ -53,3 +58,15 @@ relies on that statement. Its proof belongs to the owner of that chapter.
 - `python3 scripts/check_blueprint.py`: "Blueprint structure OK".
 - `chapter-hashes.json` (`current_sha256`) and `review-index.md` updated
   for the two edited chapters; `manifest.json` keeps its historical hashes.
+
+## Response to the independent review (PR #220)
+
+Session `hairer-claude-20261113-c07fix`.
+
+- **Source review S1 (required).** In C1 the face chart bound was wrongly
+  attributed to `cordF`. It is now attributed to `face_pays` plus `vanishes`,
+  with the local chart receipt retained. `cordF` is noted as the bond-clause
+  supplier. I checked the locations at the pin
+  (`Lean/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Palace.lean`, lines 62 and 96;
+  `Rate.lean`, line 60). This is a record-only change, and no manuscript text
+  changed.
