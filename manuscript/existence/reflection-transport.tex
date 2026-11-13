@@ -18,13 +18,21 @@ reflected conjugate of \(v\) is
  Jv=R_\rho\overline v,\qquad\text{and}\qquad
  R_\rho\overline v=\overline{R_\rho v}.
 \]
-The second identity says that conjugation commutes with every signed
-coordinate action on raw labels. Consequently, if \(\overline v=v\) then
-\(Jv=R_\rho v\), and for every word \(\theta w\) is the reversal of
-\(\rho\overline w\), where \(\overline w\) conjugates each label. Both
-facts are used below. Without the commutation, a conjugation-fixed label
-could have a reflected conjugate different from its ordinary reflection, and
-the first step of the next proof would fail.
+Here the second identity is the case \(s=\rho\) of the commutation
+\[
+ R_s\overline v=\overline{R_sv}
+ \qquad\text{for every signed coordinate transformation }s,
+\]
+of conjugation with the signed coordinate actions on raw labels.
+Two facts used below follow from the definition of \(J\) alone: if
+\(\overline v=v\) then \(Jv=R_\rho v\); and, for every word, \(\theta w\)
+is the reversal of \(\rho\overline w\), where \(\overline w\) conjugates
+each label, because \(\theta\) reflects, reverses and applies \(J\) letter
+by letter. The commutation is not needed for these two facts. It is what
+makes the two possible orders of the operations agree,
+\(R_\rho\overline v=\overline{R_\rho v}\), and it gives
+\(J^2v=R_\rho\overline{R_\rho\overline v}=R_\rho R_\rho v=v\), hence
+\(\theta^2=1\), as assumed in Section~\ref{ex-reflection}.
 
 \begin{lemma}[Positivity from bounded real approximations]
 \label{ex-replicated-positivity}
@@ -77,9 +85,18 @@ limit is
  a=\operatorname{Re}\langle\Omega,
        (M(w)-M(\rho w))^2\Omega\rangle.
 \end{equation}
-The input required here is the existence of the bounded real variables
-in Lemma~\ref{ex-replicated-positivity}, with errors independent of the
-number and offsets of copies. Ordinary positivity of a Wilson
+In the lemma, \(b_t(i,j)\) is this four-term expression for the copies
+\(i<j\) at spacing \(t\), and \(b_{\mathrm{cut},t}(i,j)\) is the same
+four-term expression for the lattice correlations at finite cutoff. Two
+inputs are required here, and they are distinct. The first is the existence
+of the bounded real variables in Lemma~\ref{ex-replicated-positivity}, with
+errors independent of the number and offsets of copies. The second is the
+convergence \(b_{\mathrm{cut},t}(i,j)\to b_t(i,j)\) in the ordered cutoff
+limit. The second is not supplied by the approximations; it follows from the
+ordered point limits of Proposition~\ref{prop:ex-limits-extraction} for the
+same lattice family, extraction order and history table, since each of the
+four terms is a correlation of that family at a fixed configuration which is
+generic for large \(t\). Ordinary positivity of a Wilson
 probability measure supplies the nonnegative square once these
 simultaneous approximations are available; it does not supply the
 approximations or their uniform error bounds.
@@ -87,7 +104,9 @@ approximations or their uniform error bounds.
 \begin{proposition}[Ordinary reflection fixes compressed words]
 \label{ex-ordinary-reflection}
 Assume the bounded real approximation property just described holds on
-a dense set of internally generic grid configurations for each tuple of real basis labels.
+a dense set of internally generic grid configurations for each tuple of real
+basis labels, and that at those configurations the four-term cutoff
+covariances converge in the ordered cutoff limit as just described.
 Assume the norm-regularity hypotheses of Section~\ref{ex-slab-regularity}
 and that each raw label space has a basis fixed by conjugation.
 Then \(M(\rho w)=M(w)\) for every distinct-point word.

@@ -10,3 +10,8 @@ Issue #44. Base `codex/existence-monograph` @ `01ef22c`.
 - `handoff.md`: next steps.
 
 This is not a review and records no acceptance. `review/` is reserved for the independent reviewer.
+
+Revision 1 (session `ADB991-claude-20261113-80e9`, issue #122) answers the independent review in `review/`
+(PR #77): `revision-1.md` has the item-by-item response, the corrections to read-only evidence files and a
+proposed patch for the C04 ledger. `ledger.md`, `correspondence.md`, `findings.md` and `validation.md` are
+updated; `review/` is untouched.

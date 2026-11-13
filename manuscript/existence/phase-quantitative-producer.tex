@@ -22,7 +22,7 @@ block of side at depth $m$, compared with a fine observable at depth $j$, is
                         \mathcal T_j+5\right),
 \]
 with $\mathcal T_j$ the vacuum treasury. This is the four-dimensional
-marked-copy estimate proved in Section~\ref{ex-centered-sail}.
+marked-copy estimate~\eqref{ex-centered-sail}.
 
 \begin{lemma}[Finite-frame recovery from approximate coordinate atoms]
 \label{lem:ex-public-frame-recovery}
@@ -85,8 +85,13 @@ Wilson law.
 
 \begin{proposition}[A finite-depth real approximation receipt]
 \label{prop:ex-public-origin}
-Fix grade $d$, a star-real coefficient $L$, a block depth $m$, a station
-$J\leq N$, and a fine depth $k<N$ with $C.ref(d)\leq m\leq k$. Assume the
+Fix grade $d$, a star-real coefficient $L$, a station depth $J\leq N$, an
+opened intermediate depth $m$, and a fine depth $k<N$ with
+$J\leq m$ and $C.ref(d)\leq m\leq k$. The centered block below is the block of
+the centered tiling at the station depth $J$ (of physical side $a_J$); it
+carries the support and the rooted test. The depth $m$ enters only through the
+opening condition in item~4, the scale inequality and the error
+$S_{J,m}$. Assume the
 following selected-history data at these depths. The rooted quantity below
 is the source root test for the same finite-volume law and centered chamber;
 we assume its triangle inequality, homogeneity, and invariance under complex
@@ -99,11 +104,11 @@ conjugation, as in the selected root-test receipts.
       with coefficient sum at most $K_k(L)$, and the resulting complex sum
       $Z$ lies in the centered chamber interior; that interior is preserved
       by the real-part projection used below;
-\item moving each local approximation from the fine centered box back to the
-      block of depth $m$ preserves its support inside the block and its rooted
-      error bound;
-\item the scales fit: the local window embeds in the block, the station box
-      is open at depth $m$, and
+\item transporting each local approximation from the fine depth $k$ to the
+      cutoff lattice preserves its support inside the centered station block,
+      its supremum bound $A_0$, and its rooted error bound;
+\item the scales fit: the local window embeds in the block, the station block
+      of depth $J$ is open at depth $m$, and
 \[
  w\,\|\operatorname{alto}_{m,d}\|
        \frac{4(1+c_k)}{\operatorname{gain}(k,m)}
@@ -111,7 +116,7 @@ conjugation, as in the selected root-test receipts.
  \qquad w>0,\quad \zeta_{d,m}>0.
 \]
 \end{enumerate}
-Then there is a real field $B_N$ supported in the centered block, uniformly
+Then there is a real field $B_N$ supported in the centered station block, uniformly
 bounded by $A_0K_k(L)$, whose rooted distance from the insertion $L$ is at
 most
 \[
@@ -123,8 +128,9 @@ hold there.
 
 \begin{proof}
 Use the representation and coefficient bound in item~2. Transport the
-complex coordinate approximants to the
-common block and form their complex linear combination $Z$. The finite-sum
+complex coordinate approximants from depth $k$ to the cutoff lattice, inside
+the common station block; by item~3 they keep the supremum bound $A_0$ and
+their rooted errors. Form their complex linear combination $Z$. The finite-sum
 lemma gives $|Z|\leq A_0K_k(L)$ and rooted error at most
 $K_k(L)S_{J,m}/w$. The exact selected-family reality identity says that the
 target insertion $U$ is real when $L$ is star-real. Put $B=\operatorname{Re}Z$.
@@ -323,16 +329,34 @@ one coherent coarser voice. It is essential that the coupons be combined
 before the coefficient is chosen: choosing separately for each label would
 not give a single linear voice, and the next scale's cone estimate would not
 apply. Let $\mathcal T_m$ denote the actual fine-to-coarse density map,
-including its physical block-volume factor. It is integration against the
+$\mathcal T_mf=L^d\operatorname{push}_mf$ on grade $d$, where $L$ is the
+block scale and $\operatorname{push}_m$ integrates against the selected
+transition kernel. It is integration against the
 selected transition kernel, so its linearity on the displayed integrable
 columns follows from the probability-kernel identity.
 
 Let $F$ be the finite coefficient frame, $V$ a voice at the fine scale, and
 write $I$ for its invertible coefficient readout. Assume the heard identities
-hold: the played coefficient has $x$-coordinate $I(v)$, its density is a
-complex-linear function of $v$, the density obeys the stated motion
-covariance, and its charge is bounded by $s\|\operatorname{core}I(v)\|_1$,
-where $s$ is the fine column count. For the profile conclusions below assume
+hold:
+\begin{enumerate}
+\item[(H1)] the played coefficient has $x$-coordinate $I(v)$;
+\item[(H2)] its density is a complex-linear function of $v$, and the density
+      obeys the stated motion covariance;
+\item[(H3)] its charge is bounded by $s\|\operatorname{core}I(v)\|_1$,
+      where $s$ is the fine column count, and is subadditive in $v$;
+\item[(H4)] the readout intertwines the motions: $I(gv)=gI(v)$ for every
+      motion $g\in\mathcal M$ defined below, including the conjugation flag;
+\item[(H5)] the coefficient, regular and forced fields of $V(v)$ are
+      complex-linear in $v$, and the supports of the regular atoms of $V(v)$
+      do not depend on $v$;
+\item[(H6)] the readout maps the physical unit at the cutoff to the unit at
+      the coarse scale: $I(u_N)=u_{m+1}$, where $u_m=a_m^de_0$.
+\end{enumerate}
+Hypotheses (H4)--(H6) are used in the proof of
+Proposition~\ref{prop:ex-selected-interpolation} below: (H4) to identify the
+recombined coefficient with $V(v)$ and for covariance of the new readout,
+(H5) to recover the exponential entry and forced profile of $V(v)$ from
+those of the basis columns, and (H6) for the unit statement. For the profile conclusions below assume
 the coefficient law is sound under local reorientation, the forced profiles
 transform covariantly, and the local evaluation is nonzero on every
 configuration. Density covariance alone does not imply covariance of the
@@ -396,15 +420,25 @@ $V(v_j)$ is formatted and integrable, and its remainder is bounded by its
 charge. The selected one-column purchase record has three clauses: the
 principal insertion when $j\ne0$, every regular remainder atom with its
 support and supremum bounds, and every forced atom with its support-mass
-bound. The forced clause applies only to nonzero addresses; the keeper
-condition places every such address in the funded wing. The unit coordinate
+bound. The forced clause applies to every forced slot of the funded wing at
+which the insertion function is nonzero; the keeper condition places every
+such slot in the funded wing. The unit coordinate
 uses the exact vacuum coupon. The density has an absolutely convergent
 principal-plus-regular-plus-forced expansion: the regular and forced
 majorants are dominated by the coefficient envelope and remainder bound.
 For each component, the corresponding purchase clause gives a coupon. The
-coupon-merger theorem sums their densities and profiles termwise; Tonelli
+coupon merger sums their densities and profiles termwise; Tonelli
 applies to the nonnegative majorants, and each scalar cost sum is bounded by
-the given purchase budget. This gives the exact basis coupon with lead
+the given purchase budget. We use the merger in the following form, which
+this chapter does not prove: for a countable family of formatted coefficients
+$P_i$ with the same vacuum, each with remainder bound $t_i$ at a common
+positive allowance and with $\sum_it_i<\infty$, the merged coefficient (whose
+lead is $\sum_iP_i.x$, whose regular atoms are those of the $P_i$, kept
+separately, and whose forced coefficient at each address is
+$\sum_iP_i.\mathrm{forced}$) is formatted, has remainder bound $\sum_it_i$,
+and its forced profile is the sum of the forced profiles of the $P_i$. The
+statement and proof of this merger, which require the definition of the
+remainder bound, are an outstanding input of this section. This gives the exact basis coupon with lead
 $T(L)e_j$. Before simplification its three budgets are
 \[
  \eta(\|\operatorname{core}e_j\|_1+V.\operatorname{charge}(v_j)),\quad
@@ -514,6 +548,8 @@ room bounds
 with $\operatorname{barunit}(L)=L^{-3/8}$ and the purchase inequalities
 \eqref{eq:ex-interpolation-buy}. These are exactly the scalar hypotheses of
 Lemma~\ref{lem:ex-selected-cone-step}, with $K=D=D_0$.
+Assume that the fine voice $V$ satisfies the heard identities (H1)--(H6)
+and the profile hypotheses stated before \eqref{eq:ex-interpolation-buy}.
 The basis
 coupons have their stated exact density/profile identities and a common
 gauge door; their wings are the motion images of the common funded wing.
@@ -614,8 +650,18 @@ budgets, proving item 1.
 For the density, linearity of the transition integral is justified by the
 integrability of each played column. Motion covariance of the heard density
 identifies the transported coupon density with the corresponding motion of
-the transitioned basis density. Sum with the weights in (2): the result is
-$\mathcal T$ applied to the density of $V(v)$. The regular and forced address arrays are finite coefficient sums, hence
+the transitioned basis density, so that
+$Z_{g,j}.\mathrm{density}=\mathcal T_m(V(gv_j).\mathrm{density})$. By (H4),
+$gv_j=gI^{-1}e_j=I^{-1}(ge_j)$. Sum with the weights in (2) and use the
+linearity of the density (H2) and of $I^{-1}$: the result is $\mathcal T_m$
+applied to the density of
+$V\bigl(I^{-1}\sum_{g,j}\chi_{g,j}(Iv)\,g e_j\bigr)=V(v)$, by
+\eqref{eq:ex-interpolation-chips}. The same computation with the regular and
+forced fields, which are complex-linear in $v$ by (H5), recovers the forced
+profile of $V(v)$ from those of the basis columns; the exponential entry
+then follows from the dressing identity below. Without (H4) the weighted sum
+would be $V$ evaluated at $\sum_{g,j}\chi_{g,j}(Iv)\,gI^{-1}e_j$, which need
+not equal $v$. The regular and forced address arrays are finite coefficient sums, hence
 complex-linear in $v$; their address dictionaries are reindexed by motion
 and need not themselves be invariant. The heard density is motion-covariant
 by hypothesis. The forced profile covariance is an explicit assumption. For the
@@ -625,12 +671,13 @@ $\mathrm{density}(U)=\mathrm{eval}(U)\,\mathrm{exponentialEntry}(U)
 identity give covariance of the last term; subtract it from the density
 covariance identity and divide by the nonzero local evaluation. This proves
 the needed exponential-entry covariance.
-Thus the readout and the two profile outputs obey the finite motion
-reindexing identities, without asserting invariance of raw address arrays.
+Covariance of the new readout uses (H4) once more: the weights satisfy
+$\chi_{g,j}(I(hv))=\chi_{g,j}(hIv)$ for every motion $h$. Thus the readout
+and the two profile outputs obey the finite motion reindexing identities, without asserting invariance of raw address arrays.
 Every summand is supported on the same common stencil, so the output support
-is independent of $v$. The unit identity follows because the core of the unit coordinate
-vanishes, so the lead error is zero, and the heading preserves the unit;
-the scale map preserves the unit normalization.
+is independent of $v$. The unit identity follows from (H6): $I(u_N)=u_{m+1}$, the core of the
+unit coordinate vanishes, so the lead error is zero, and the heading
+preserves the unit coordinate; the unit at each scale is $u_m=a_m^de_0$.
 
 For each $v$, put $u=Q(v).x$ and $y=\operatorname{vowel}_L(Iv)$.
 The heading map gives the two-sided map bound with $K=K_{J(m+1)}$;
@@ -646,8 +693,9 @@ Thus the linear coordinate map of the new voice is injective and, in finite
 dimension, is an isomorphism.
 
 Finally, transport each finite-wing witness to its motion address, multiply
-it by $w_v(g,j)$, and take their finite union. The finite repainting identity and motion covariance show that the exponential entries and forced profiles sum
-to those of $V(v)$. The first budget is bounded by
+it by $w_v(g,j)$, and take their finite union. The finite repainting identity, motion covariance, (H4) and the linearity
+(H5) show, as for the density above, that the exponential entries and forced
+profiles sum to those of $V(v)$. The first budget is bounded by
 \[
  \sum_{(g,j)}|w_v(g,j)|(t+2s)
        \le R_F\|Iv\|_1(t+2s),
@@ -685,7 +733,15 @@ both non-hit and an ancestor point, write
  U_i(x)=C_i.\operatorname{numeric}\bigl(f_i,p,v,o_{f_i}(x)\bigr).
 \]
 The selected source route proves that $(U_i(x))_i$ is Cauchy from the
-growth, price, transfer, and geometric receipts of one fixed run. This
+growth, price, transfer, and geometric receipts of one fixed run.
+For the full-mesh conclusion at the end of this section we use the
+specialisation $f_i=i$ for every $i$ and $C_i=C$, one fixed selected history
+table for all cutoffs; the grade-dependent reference depth that enters the
+receipts is a separate function $\psi$ of the grade, not the cutoff map.
+With this specialisation $U_i(x)$ is the finite-volume correlation of the
+fixed family at the cutoff $i$ itself. For a general growth function or
+$i$-dependent tables, Cauchyness of $(U_i(x))_i$ would not by itself give
+convergence of the cutoff sequence of one family. This
 subsection translates the Cauchy implication and the analytic interpolation
 step; the upstream proof that the selected run supplies all the receipts is
 recorded separately below.
@@ -834,8 +890,8 @@ exponent $E_j-2$. This does not assert that the restore operation itself is
 linear. For integrability, the vault bounds the finitely many scalar and
 marked fields and the served ledger bounds the finitely many correction
 coefficients. The selected lawfulness upper bound for the action and the
-vacuum-activity envelope give the pointwise exponential majorant proved in
-Section~\ref{ex-centered-steer}; all coefficient fields are measurable.
+vacuum-activity envelope give the pointwise exponential majorant
+\eqref{ex-centered-steer}; all coefficient fields are measurable.
 Expanding the finite restored polynomial therefore gives a measurable,
 integrable majorant for each coefficient of $P_z$, uniform for $z$ in the
 disk. The prior is a probability measure. Thus the integral defining $\Phi$
@@ -869,7 +925,7 @@ Fubini therefore proves
  =\int q_{m+1}(U)\,d\mu_{m+1}(U).
 \]
 This proves the mode-integral preservation at each transition. The opened-rung vaults and
-finite-volume mode estimate of Section~\ref{ex-centered-sail} then give
+finite-volume mode estimate~\eqref{ex-centered-sail} then give
 exactly
 \[
  |\int P_z\,d\mu_j|\,\operatorname{toll}_w(A)
@@ -930,8 +986,11 @@ insertion estimate just proved, and the pointwise Cauchy and compact-uniform
 limits required by the full-mesh positioned construction follow for every
 period, length, and label word.
 Together with the same-run finite-difference bounds in
-Section~\ref{sec:ex-fullmesh-fixedbounds}, these receipts yield the smooth
+Section~\ref{sec:ex-fullmesh-fixedbounds}, and with the specialisation
+$f_i=i$, $C_i=C$ fixed above, these receipts yield the smooth
 positioned correlation along the full mesh, without further extraction.
+The same conclusion, for the cutoff sequence itself, is stated in
+Section~\ref{sec:fullmesh-correlation-cauchy}.
 For source correspondence, the branch-stability result at a fixed rung gives
 confluence of the scalar insertion and of every box-marked insertion; the
 credit result gives the paid amounts. The finite-sum lemma above converts

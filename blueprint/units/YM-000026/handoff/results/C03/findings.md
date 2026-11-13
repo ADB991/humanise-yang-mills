@@ -1,5 +1,9 @@
 # C03 author findings
 
+**Revision 1 (issue #122).** F2 and F3 below contained the two statements that review PR #77 found false
+(M1, M2). They are corrected in place, marked "Corrected in revision 1". F6 is restated per M12. The full
+response is in `revision-1.md`.
+
 Scope: the 13 chapters listed in `../../C03.md`. Every chapter was read in full. All initial SHA-256 hashes
 matched `coverage-inventory.json`. Arithmetic and logic were rechecked step by step in: `reflection.tex`,
 `phases.tex`, `phase-selection.tex`, `phase-regularity.tex`, `reflection-transport.tex`, `phase-fields.tex`,
@@ -26,18 +30,22 @@ presented only the subsequential compactness argument, with a mesh subsequence `
 the main theorem's mesh limit is a full limit, obtained from different inputs. The new remark states this.
 At each eligible period, the full-mesh route (`thm:ex-fullmesh-fixedbounds-producer` +
 `sec:fullmesh-correlation-cauchy` + `ex-smooth-grid-limit`) gives convergence along the whole mesh sequence,
-on NoHit_p. Stage 1 of `prop:ex-limits-extraction` can then be dropped, with `t` the identity. Stage 2 is
-unchanged and still selects the volume subsequence. This matches the G01 ledger (statement-ledger.md line
+on NoHit_p. Corrected in revision 1: the source and `assembly.tex` do **not** drop stage 1. They extract
+the hierarchy along a refined order whose mesh component is a subsequence, and identify the full-mesh row
+limit with the extracted one (`ex-full-mesh`; Lean `YM.FullVolume.Final.from_spec`). Running stage 1 with
+`t` the identity is an alternative for the correlations only; it does not transfer the other order-dependent
+data of the extracted hierarchy. Stage 2 still selects the volume subsequence. This matches the G01 ledger (statement-ledger.md line
 147: "The mesh limit is a full limit; the volume limit is along the subsequence") and `YM.FullVolume.positioned`
 (`PositionsUV C e` from `FixedBounds C` and `Purchased C e`). It is the issue's first mathematical check.
 
 **F3. Reflected conjugate versus ordinary reflection (reflection-transport.tex).** The proof of
 `ex-ordinary-reflection` used M(ρw)=M(θw) for conjugation-fixed labels, and the conjugation corollary used
-"θw is a permutation of ρw̄". Both need J v = R_ρ v̄ with conjugation commuting with signed label actions.
+"θw is a permutation of ρw̄". Both need J v = R_ρ v̄. Corrected in revision 1: they follow from that definition alone; the
+commutation of conjugation with signed label actions is needed for J² = 1 (hence θ² = 1), not for these steps.
 The chapter never stated this. It is now stated as the definition of the reflected conjugate, with the
 consequence derived. Source: `YM.Register.adj d a = (mirrorGroup d (Signed.mirror a)).comp (bar d)` and
-`YM.Register.star_mirror` (`Lean/YM/Euclid/Register.lean` 67–74). The descended version is `YM.Table.RealSpin.adj`
-(`Lean/YM/Euclid/Null.lean` 165).
+`YM.Register.star_mirror` (`Lean/YM/Euclid/Register.lean` 67–74). The descended version is `YM.Table.adj`
+(`Lean/YM/Euclid/Null.lean` 165, under the section hypothesis `H : S.RealSpin`; name corrected in revision 1).
 
 **F3a (editorial).** actual-slab-copy-bounds.tex used `D` for the grade bound while applying
 `ex-train-bound`, whose norm constant is also `D`. The application now names B_v=X^{2|v|} and the norm
@@ -59,7 +67,10 @@ witness", "voice", "coupon", "barunit", "alto", "vowel", "Works quantifiers", "f
 A notation pass needs G05's contract and the C02/C12 definitions these words abbreviate. The proofs I checked
 are correct under their stated hypotheses. Recommended: a bounded follow-up in C03, after G05.
 
-**F6. Producer of C04's edge E4 (field levels) is not C03.** See the ledger. The C04 ledger
+**F6. Producer of C04's edge E4 (field levels) is not C03.** (Restated in revision 1 per review M12: C03
+produces the grade-wise null spaces and quotients; the maps between grades and the directed-system facts have
+no producer statement in the manuscript; `physical-angular-actions.tex` is a consumer, not a producer. See the
+ledger.) See the ledger. The C04 ledger
 (`results/C04/ledger.md`, written by this account's previous session) attributes the finite levels,
 inclusions and direct limit to C03 `limits.tex`. No C03 chapter contains them. They are part of
 `input:calibrated-actions` in C04's label-descent.tex. For G06 and the C04 reviewer.
