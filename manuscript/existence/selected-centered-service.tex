@@ -365,8 +365,343 @@ Proposition~\ref{prop:ex-original-history-attachment}: $r_i\ge1$ is the
 prescribed lower bound of the occupancy schedule, positivity is that of
 $\widehat\beta_i$, the first inequality of (R5) is the tail clause of
 the delay purchased in Section~\ref{sec:common-observable-purchases},
-and (R7) is the local transition estimate obtained in that proof from
-the nesting receipt, the transition records and the floor-length
-condition of Section~\ref{sec:common-observable-purchases} at grade
-zero. For none of the items has this
-section a self-contained proof: each rests on the cited producers.
+and (R7) is the local transition estimate on the stored doors. For
+(R7), Proposition~\ref{prop:selected-zero-coordinate-coupon} below
+proves the tuning inequality from the grade-zero floor of
+Section~\ref{sec:common-observable-purchases}, together with the signs.
+It reduces the zero-coordinate Coupon to the regular and forced
+insertion estimates, soundness of the stored door, and the countable
+Coupon merger; these three inputs remain open on the selected history.
+The proof of Proposition~\ref{prop:ex-original-history-attachment}
+names this estimate but does not derive it. For none of the items has
+this section a self-contained proof: each rests on the cited
+producers.
+
+\subsection{The zero-coordinate Coupon on the stored doors}
+\label{sec:selected-zero-coordinate-coupon}
+
+This subsection treats item (R7) of
+Section~\ref{sec:actual-marked-portfolio-calibration}. It proves the
+tuning inequality from the purchase and the price bookkeeping
+outright. The Coupon itself is reduced to three inputs on the same
+stored door: the regular and forced insertion estimates, soundness,
+and the countable merger of Coupons.
+
+Fix a grade $d$, a cutoff $N$, a period $p$ and a level $i$ with
+$t_d\le i<N$. Then $d+3\le J(t_d)\le J(i)$. Write
+$R^+=R_{N,p,i+1}$ and $R^-=R_{N,p,i}$ for the stored upper and lower
+representations, and $D=D_{N,p,i}$ for the stored door between them.
+The block side of this step is $L_i$, the block length chosen at the
+entrance stage $J(i+1)$. Write $C_i=\operatorname{columns}(i)$ for the
+column count of the profile at the stage $J(i)$, and
+$\kappa=\sqrt{w^{\mathrm f}_{i+1}}$, so that $0<\kappa\le1$. Put
+\[
+ \varrho_i=\operatorname{rate}(L_i)=L_i^{-2/5},\qquad
+ \operatorname{barunit}(L_i)=L_i^{-3/8},
+\]
+and let $\psi_i=2e^{\alpha_{i+1}}\tau_{i+1}$ be the common waybill
+\eqref{eq:history-common-waybill} at the fine level $i+1$; here
+$\tau_{i+1}\ge0$ is the fine local-section derivative bound. The number
+$\varrho_i$ is the number called $\eta_i$ in (R7). It is not the marker
+price $\eta_m=\tfrac14\widehat\beta_m^{-1/2}$ displayed earlier in this
+section, which is the allowance $u_m$ of (R5). Let $W_i$ be the finite
+wing chosen above for this step. It contains the principal-mode keys of
+the supports containing the origin and the keeper key of every
+support--inventory tag.
+
+\paragraph{Coefficients and their densities.}
+We recall the data entering a Coupon. A coefficient field $Q$ on $R^+$
+consists of a coordinate vector $Q.x\in F$, regular atoms
+$(X_j,f_j)_{j\ge0}$ with supports $X_j$ and local functions $f_j$, and
+a forced array $(k_a)_{a\ge0}$ indexed by the addresses of the
+dictionary of $R^+$. Address $a$ carries a support $S_a$, a nonempty
+inventory $I_a\subseteq S_a$ and an activity $K_a$; its \emph{tag} is
+$\operatorname{tag}(a)=(S_a,I_a)$. The exponential entry of $Q$ is
+\[
+ \mathcal E(Q)(U)=Q.x_0+\ell(U,Q.x)
+   +\sum_j\chi_{X_j}f_j(U),
+\]
+where $Q.x_0$ is the unit coordinate, $\ell(U,\cdot)$ is the masked
+placement of $\operatorname{core}Q.x$ by the local section at the
+origin, and $\chi_{X_j}f_j$ is the masked regular term. The forced
+profile $\mathcal P(Q)$ is the function on tags
+\[
+ \mathcal P(Q)(X,I)=\sum_{a:\ \operatorname{tag}(a)=(X,I)}k_a .
+\]
+Call a finite set $b$ of addresses admissible at $U$ if it satisfies the
+admissibility condition of the activity expansion of $R^+$. That
+condition depends on the addresses only through their supports and
+inventories, and two addresses of one admissible set have disjoint
+supports. The dressed field at an address $a$ is
+\[
+ \operatorname{Dr}_a(U)=\sum_{b\ni a\ \text{admissible at }U}
+            \ \prod_{c\in b\setminus\{a\}}K_c(U).
+\]
+The density of $Q$ is
+\[
+ \operatorname{dens}(Q)(U)=R^+.\mathrm{eval}(U)\,\mathcal E(Q)(U)
+   +e^{R^+.\mathrm{exponent}(U)}\sum_a k_a(U)\operatorname{Dr}_a(U),
+\]
+in which the forced series has been regrouped by its address. The
+regrouping is justified by the absolute bounds on the dressed sums
+of a lawful representation and by the forced majorants below.
+
+The terminal format at the origin requires several things of $Q$. Each
+regular atom is regular on its support, its support contains the
+origin, it vanishes at the identity configuration, and it passes the
+holonomy test. Each forced coefficient is gauge invariant, measurable
+and local to its support. Where $k_a$ is nonzero, address $a$ is
+eligible, that is $S_a\cap\operatorname{flags}(U)=I_a$; and $k_a\ne0$
+forces the origin to lie in $S_a$. A remainder bound $q$ at weight
+$\kappa$ means that there are $a_{\rm r},a_{\rm f}\ge0$ with
+$a_{\rm r}+a_{\rm f}\le q$, together with sup-norm majorants $e_j$ of
+the regular atoms and $e'_a\ge0$ with $|k_a|\le e'_a$, such that
+\[
+ \sum_j\operatorname{mass}(X_j,e_j)\le a_{\rm r},\qquad
+ \sum_a\operatorname{mass}(S_a,e'_a)\le\kappa\,a_{\rm f}.
+\]
+Here $\operatorname{mass}(X,e)=e^{\alpha_{i+1}\operatorname{coverNumber}(B_{i+1},X)}e$
+is the fine mass. It is linear in $e$ for a fixed support. This is the
+normalized remainder convention of Section~\ref{sec:local-splitting}.
+
+A \emph{Coupon} across $D$ on a wing $W$ for input data
+$(\alpha,\rho,\delta,f)$ is defined as follows. Here $\alpha$ is an
+exponential entry, $\rho$ a forced profile, $\delta$ a unit value and
+$f$ an upper density. The Coupon has lead $\ell_0\in F$ and prices
+$(c,r,u)$. It is a lower coefficient field $P$ on $R^-$ with the
+format at $R^-$, the exact push identity
+$\operatorname{dens}(P)=L_i^d\mathsf P_if$, the lead bound
+$C_{\rm orb}\|P.x-\ell_0\|_1\le c$, and a turn-weighted remainder
+bound at most $r$. It also has a Tale witness on $W$ across $D$
+relating $(\alpha,\rho,\delta)$ to the lower forced profile
+$\mathcal P(P)$, with input price $u$ and output price $r$. This is the
+notion of Section~\ref{sec:three-port-history}: there the three
+elementary insertions are described by exactly these items, with
+prices written as $C_{\rm orb}\|Q.x-\cdots\|_1\le\cdot$,
+$r=\cdot$ and ``input allowance''. It is also the description before
+Lemma~\ref{lem:actual-marked-antilles}, with $\ell_0=0$.
+
+\begin{proposition}[Zero-coordinate Coupon on the stored doors]
+\label{prop:selected-zero-coordinate-coupon}
+Keep the selected history, its stored doors and the purchase of
+Section~\ref{sec:common-observable-purchases}. Fix $d,N,p$ and
+$t_d\le i<N$, with the notation above. Assume the following three
+inputs on the stored door $D$.
+\begin{enumerate}
+\item[(K)] \emph{Insertion estimates.} The upper representation $R^+$
+  has a Keeper, an injective assignment $(X,I)\mapsto\mathsf k(X,I)$
+  of an address with tag $(X,I)$ to every pair
+  $\varnothing\ne I\subseteq X$, eligible whenever
+  $X\cap\operatorname{flags}(U)=I$. Its keys lie in $W_i$. On the wing
+  $W_i$ the regular and forced estimates of
+  Section~\ref{sec:three-port-history} hold on $D$ with $\eta=\varrho_i$,
+  in the following form, with lead $0$.
+  \begin{itemize}
+  \item Let $(X,f)$ be a regular atom with $0\in X$ that passes the
+    format tests, and let $e$ be a sup-norm majorant of $f$. Put
+    $m=\operatorname{mass}(X,e)$. Then the input data
+    $(\chi_Xf,\,0,\,0,\,R^+.\mathrm{eval}\,\chi_Xf)$ have a Coupon with
+    prices $(\varrho_im,\varrho_im,2m)$.
+  \item Let $a$ be an address whose key lies in $W_i$, and let
+    $f\ne0$ be a forced insertion at $a$ that fits its slot, with
+    $|f|\le e$. Put $m=\operatorname{mass}(S_a,e)$. Then the input data
+    $(0,\,f\mathbf 1_{\operatorname{tag}(a)},\,0,\,
+    e^{R^+.\mathrm{exponent}}f\operatorname{Dr}_a)$ have a Coupon with
+    prices $(\varrho_im/\kappa,\varrho_im/\kappa,2m)$.
+  \end{itemize}
+\item[(S)] \emph{Soundness.} The door $D$ is sound for the transition
+  operator of the step.
+\item[(M)] \emph{Merger.} Coupons across $D$ on one wing are monotone
+  in their three prices. A countable family of them merges into a
+  Coupon whose input data, lead and prices are the sums, provided the
+  following hold: the entries and the profiles converge pointwise; the
+  unit values, the three prices and the norms of the leads are
+  summable; and the densities are measurable and dominated. This is the
+  merger left as an outstanding input in
+  Section~\ref{ex-selected-linear-interpolation}, together with the
+  summation of the Tale witnesses. Finally, zero input data have a
+  Coupon with lead $0$ and any nonnegative prices.
+\end{enumerate}
+Then (R7) holds at $D$ with $\eta_i=\varrho_i$:
+\[
+ (1+2C_i)\varrho_i\le\operatorname{barunit}(L_i),\qquad
+ D\text{ is sound},\qquad \psi_i\ge0,\qquad \varrho_i>0.
+\]
+Moreover, let $Q$ be any upper coefficient field on $R^+$ with
+$Q.x=0$, the terminal format at the origin and remainder bound $q$ at
+weight $\kappa$. Then its input data
+$(\mathcal E(Q),\mathcal P(Q),Q.x_0,\operatorname{dens}(Q))$ have a
+Coupon across $D$ on $W_i$ with lead $0$ and prices
+$(\varrho_iq,\varrho_iq,2q)$. The wing $W_i$ is finite and does not
+depend on $Q$.
+\end{proposition}
+
+\begin{proof}
+\emph{Tuning.} Section~\ref{sec:ex-marked-portfolio-calibration}
+chooses, for every stage $j$, a threshold $v_j$ with
+$(1+2c_j)\operatorname{rate}(L)\le\operatorname{barunit}(L)$ for all
+$L\ge v_j$; here $c_j$ is the column count of the profile at stage $j$.
+Indeed the ratio of the two sides is
+$\operatorname{rate}(L)/\operatorname{barunit}(L)=L^{-2/5+3/8}=L^{-1/40}$.
+So the inequality is equivalent to $L^{1/40}\ge1+2c_j$, and
+$v_j=\lceil(1+2c_j)^{40}\rceil$ suffices. The stage threshold $n_k$
+there is the maximum of these $v_j$ over $j\le k$, together with the
+credit thresholds. By Section~\ref{sec:common-observable-purchases},
+the purchase includes $n_k$ among the block floors of stage $k$. Every
+block length chosen at stage $k$ is at least that floor. Take
+$k=J(i+1)$. The block side of the present step is chosen at that stage,
+so $L_i\ge n_{J(i+1)}$. Since $J(i)\le J(i+1)$, the threshold
+$v_{J(i)}$ is one of the terms of $n_{J(i+1)}$. Hence
+$L_i\ge v_{J(i)}$. The column count at level $i$ is that of the profile
+at stage $J(i)$, so $C_i=c_{J(i)}$. Therefore
+$(1+2C_i)\varrho_i\le\operatorname{barunit}(L_i)$. This is the
+grade-zero clause of the purchase: the inequality involves no section,
+and the threshold $v_j$ is the same for every grade.
+
+\emph{Signs and soundness.} We have $\varrho_i=L_i^{-2/5}>0$. Also
+$\psi_i=2e^{\alpha_{i+1}}\tau_{i+1}\ge0$, since $\tau_{i+1}\ge0$.
+Soundness is (S).
+
+\emph{Repacking the forced array.} Let $Q$ be as in the statement. Define
+$Q'$ to have the same coordinate vector and regular atoms as $Q$. Its
+forced array is
+\[
+ k'_{\mathsf k(X,I)}=\mathcal P(Q)(X,I),\qquad
+ k'_a=0\ \text{ if $a$ is not a Keeper address}.
+\]
+The tag of every address has a nonempty inventory contained in its
+support, so it lies in the domain of the Keeper. We check five
+properties of $Q'$.
+
+(i) $\mathcal E(Q')=\mathcal E(Q)$, because the exponential entry does
+not involve the forced array.
+
+(ii) $\mathcal P(Q')=\mathcal P(Q)$. Fix a tag $(X,I)$. The only address
+with this tag at which $k'$ can be nonzero is $\mathsf k(X,I)$, since
+$\mathsf k$ is injective and $\operatorname{tag}(\mathsf k(X,I))=(X,I)$.
+Hence $\mathcal P(Q')(X,I)=k'_{\mathsf k(X,I)}=\mathcal P(Q)(X,I)$.
+
+(iii) $\operatorname{dens}(Q')=\operatorname{dens}(Q)$. The dressed
+field depends on the address only through its tag. To see this, let
+$\operatorname{tag}(a)=\operatorname{tag}(a')$ with $a\ne a'$, and let
+$\sigma$ be the transposition of $a$ and $a'$. Then $\sigma$ preserves
+tags, so it maps admissible sets to admissible sets. No admissible set
+contains both $a$ and $a'$, because their supports coincide and are
+nonempty, while distinct members of an admissible set have disjoint
+supports. Thus $b\mapsto\sigma(b)$ is a bijection from the admissible
+sets containing $a$ to those containing $a'$, and
+$\sigma(b)\setminus\{a'\}=b\setminus\{a\}$. Comparing the two series
+term by term gives $\operatorname{Dr}_a=\operatorname{Dr}_{a'}$. Write
+$\operatorname{Dr}_{(X,I)}$ for the common value. The forced series
+converges absolutely. Grouping it by tags therefore gives
+\[
+ \sum_ak_a(U)\operatorname{Dr}_a(U)
+ =\sum_{(X,I)}\mathcal P(Q)(X,I)(U)\operatorname{Dr}_{(X,I)}(U),
+\]
+and the same identity holds for $Q'$. By (i) and (ii) the two
+densities coincide.
+
+(iv) $Q'$ has the terminal format. The regular clauses are unchanged.
+Fix a tag $(X,I)$ and put $g=k'_{\mathsf k(X,I)}=\sum_{\operatorname{tag}(a)=(X,I)}k_a$.
+This sum converges absolutely, by the majorants $e'_a$ and the
+summability below. A countable absolutely convergent sum of
+gauge-invariant, measurable functions local to $X$ has the same three
+properties. If $g(U)\ne0$, then some $k_a(U)\ne0$ with
+$\operatorname{tag}(a)=(X,I)$. Eligibility of $a$ at $U$ gives
+$X\cap\operatorname{flags}(U)=I$, so the Keeper address $\mathsf k(X,I)$
+is eligible at $U$. Similarly $g\ne0$ forces some $k_a\ne0$, hence
+$0\in S_a=X$.
+
+(v) $Q'$ has remainder bound $q$ at weight $\kappa$, with the same
+$a_{\rm r},a_{\rm f}$. The regular part is unchanged. For the forced
+part, put $e''_{\mathsf k(X,I)}=\sum_{\operatorname{tag}(a)=(X,I)}e'_a$
+and $e''=0$ elsewhere. Then $|k'|\le e''$ by the triangle inequality.
+Masses on the common support $X$ add, so
+$\sum_a\operatorname{mass}(S_a,e''_a)=\sum_a\operatorname{mass}(S_a,e'_a)\le\kappa a_{\rm f}$.
+The mass bound gives $\operatorname{mass}(S_a,e'_a)\ge e'_a\ge0$
+(the cover number is nonnegative), so $\sum_ae'_a<\infty$. This is the
+summability used in (iv).
+
+Consequently $Q$ and $Q'$ have the same input data
+$(\mathcal E,\mathcal P,Q.x_0,\operatorname{dens})$, and it suffices to
+produce the Coupon for $Q'$.
+
+\emph{Decomposition.} Since $Q'.x=0$, also $Q'.x_0=0$, and the placement
+term $\ell(U,0)$ vanishes. Thus
+\[
+ \mathcal E(Q')=\sum_j\chi_{X_j}f_j,\qquad
+ \mathcal P(Q')=\sum_a k'_a\mathbf 1_{\operatorname{tag}(a)},\qquad
+ \operatorname{dens}(Q')=\sum_jR^+.\mathrm{eval}\,\chi_{X_j}f_j
+   +\sum_ae^{R^+.\mathrm{exponent}}k'_a\operatorname{Dr}_a .
+\]
+All three series converge absolutely and pointwise. For the density the
+regular and forced majorants are dominated by the coefficient envelope
+of the lawful representation and by the remainder bound. Tonelli's
+theorem applied to these nonnegative majorants gives a dominated,
+measurable expansion, as in
+Section~\ref{ex-selected-linear-interpolation}. Put
+$m_j=\operatorname{mass}(X_j,e_j)$ and
+$m'_a=\operatorname{mass}(S_a,e''_a)$. We attach a Coupon to each term.
+\begin{itemize}
+\item Regular atom $j$. Its input data are
+  $(\chi_{X_j}f_j,0,0,R^+.\mathrm{eval}\,\chi_{X_j}f_j)$. The atom has
+  $0\in X_j$, passes the format tests and has majorant $e_j$. By (K) it
+  has a Coupon with prices $(\varrho_im_j,\varrho_im_j,2m_j)$.
+\item Forced address $a$ with $k'_a\ne0$. Then $a=\mathsf k(X,I)$ is a
+  Keeper address, so its key lies in $W_i$. Its coefficient fits the
+  slot by (iv), and $|k'_a|\le e''_a$. By (K) it has a Coupon with
+  prices $(\varrho_im'_a/\kappa,\varrho_im'_a/\kappa,2m'_a)$. Since
+  $\kappa\le1$, monotonicity (M) gives one with prices
+  $(\varrho_im'_a/\kappa,\varrho_im'_a/\kappa,2m'_a/\kappa)$.
+\item Forced address $a$ with $k'_a=0$. Its input data are zero, and
+  by (M) they have a Coupon with prices
+  $(\varrho_im'_a/\kappa,\varrho_im'_a/\kappa,2m'_a/\kappa)$.
+\end{itemize}
+
+\emph{Summation.} All leads are $0$, and so are all unit values. The
+entries, profiles and densities of the terms sum to those of $Q'$, by
+the decomposition. The price series are summable:
+\[
+ \sum_j\varrho_im_j+\sum_a\frac{\varrho_im'_a}{\kappa}
+ \le\varrho_i\bigl(a_{\rm r}+a_{\rm f}\bigr)\le\varrho_iq,
+ \qquad
+ \sum_j2m_j+\sum_a\frac{2m'_a}{\kappa}\le2q .
+\]
+Here we used $\sum_jm_j\le a_{\rm r}$ and
+$\sum_am'_a\le\kappa a_{\rm f}$ from (v). By (M) the terms merge into
+one Coupon on $W_i$ for the input data of $Q'$, with lead $0$. Its
+prices are the three sums, and by monotonicity they may be replaced by
+$(\varrho_iq,\varrho_iq,2q)$. By the repacking step these are also the
+input data of $Q$.
+
+The wing $W_i$ was chosen before $Q$, from the finite fine torus and
+its Keeper. It is finite because the torus has finitely many supports
+and tags.
+\end{proof}
+
+\paragraph{What the proposition supplies.}
+Of (R7), the proposition proves the tuning inequality, the signs, and
+the reduction of the Coupon for an arbitrary zero-coordinate
+coefficient to single insertions. The tuning inequality uses only the
+grade-zero threshold of the purchase. That threshold pays tuning; the
+Coupon itself is paid at the grade $d$ of the frame, through (K). The
+three inputs are not proved here.
+\begin{itemize}
+\item The regular and forced estimates (K) are those of
+  Section~\ref{sec:three-port-history}. They hold relative to the
+  retained funded interpolation and its slot realization, with
+  $\eta=L^{-2/5}$ there equal to $\varrho_i$. They are attached to the
+  stored door through the same history identifications. Their
+  derivation from the selected interpolation is the open path
+  construction recorded at the end of that section and in
+  Section~\ref{ex-centered-freight-producer}.
+\item Soundness (S) of the stored door is asserted in
+  Section~\ref{sec:three-port-history} for the retained interpolating
+  point.
+\item The merger (M) is the outstanding input of
+  Section~\ref{ex-selected-linear-interpolation}, extended to the Tale
+  witnesses.
+\end{itemize}
+The Keeper of $R^+$ in (K) is part of the retained slot realization.
+At the terminal level it is the Keeper of
+Proposition~\ref{prop:terminal-marked-voice}.
