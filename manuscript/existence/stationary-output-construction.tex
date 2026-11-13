@@ -66,8 +66,8 @@ the brackets span the algebra. The constant value of $F_k$ need
 not be zero.
 
 \subsection{Matching a leading Taylor coefficient}
-Suppose $n\ge3$, each $F_k$ is invariant under signed coordinate
-permutations as a germ, $F_k$ vanishes to order $n$, and $P$ records its
+Suppose $n\in\{3,4\}$, the two cases used below, each $F_k$ is
+invariant under signed coordinate permutations as a germ, $F_k$ vanishes to order $n$, and $P$ records its
 $n$th coefficient exactly, at strip cost $A$. The curvature lift
 produces invariant real atoms of degree $n$ with total exponential
 budget $KA$, at a positive width chosen before $A$ and $P$.
@@ -107,20 +107,57 @@ error $|\Lambda_k|\varepsilon_k$ on each tuple of unit waves.
 It does not insert a factorial or a further volume factor.
 
 \subsection{The cubic and quartic construction}
-Let $E_k$ be the classical stationary action in the chosen chart,
-and let $J_k$ be the quadratic path action obtained from the coarse
-bed roots. Both are analytic, gauge invariant, and invariant under
-signed coordinate permutations. Their values and first derivatives
-at zero are zero. The stationary Hessian identity and the exact
-bed attachment give the same Hessian for both, namely the coarse
-Gaussian form. Thus
+Fix the outgoing clip $q$, with direct coefficient
+$q_{\rm direct}\leq Z$, and the coarse bed $C$, with strip bound
+$(w,M_H)$ for its metric and root rows, with its floor in the clip $q$
+at every torus side, and with the sworn condition at every coarse side
+of the sequence. Let $E_k$ be the classical stationary action in the
+chosen chart, that is, the tested action of the incoming clip and path
+along the stationary branch. Let $R_C$ be the path whose row family is
+the root row of $C$ and whose loop, cubic and quartic families are
+zero, and let $J_k$ be the complete quadratic action of $q,R_C$ on the
+$k$th coarse torus: the average over signed lattice transformations
+$s$ of
+\[
+ \sum_f\Bigl[q_{\rm direct}\,\varpi\bigl(\operatorname{hol}_f
+      (s^*\exp x)\bigr)
+      +\tfrac12\bigl\|\ell_{R_C}(s^*\exp x;f)\bigr\|^2\Bigr],
+\]
+the sum being over plaquettes, with $\varpi$ the Wilson plaquette
+price and $\ell_{R_C}$ the row field. It contains the direct Wilson
+term of the clip as well as the squared row term. Both $E_k$ and $J_k$
+are analytic, gauge invariant, and invariant under signed coordinate
+permutations. Their values and first derivatives at zero are zero.
+Their Hessians at zero agree, and equal the coarse Gaussian form
+$\mathcal K_C(x,y)=\sum_f\langle(d_1x)_f,(M_Cd_1y)_f\rangle$ of the
+metric of $C$. For $J_k$ this is
+Lemma~\ref{lem:ex-soft-quadratic-hessian}, applied to $R_C$ at the
+coarse side; $R_C$ is attached to $C$ by construction and satisfies
+the path bounds by the root strip bound, and the lemma uses the floor
+and the sworn condition of $C$ at that side. For $E_k$ it is the reduced
+Hessian (heat) identity of the stationary branch for this same bed
+$C$,
+\[
+ D^2E_k(0)=\mathcal K_C ,
+\]
+which is one of the chart receipts treated in
+Section~\ref{subsec:path-stationary-chart}. It is an input here, as is
+the Hessian gap $\eta$ common to all $k$ in
+Proposition~\ref{prop:stationary-output-path}: it
+holds for the coarse bed matched to the fine bed and the installed
+tower by the two-scale identities, not for an arbitrarily chosen
+coarse bed. Thus
 \[
                               F_k=E_k-J_k
 \]
 has order three. Suppose $E_k$ has exact common coefficient
 pictures of degrees three and four with component bound $M\ge1$
-at width $\sigma$. The row estimates supply such pictures for
-$J_k$ at positive widths and fixed bounds $P_3,P_4$.
+at width $\sigma$. The row estimate of
+Proposition~\ref{prop:ex-row-quadratic-price} for the squared row term,
+and the Wilson pictures of Proposition~\ref{prop:ex-wilson-stream}
+multiplied by $q_{\rm direct}\leq Z$ for the direct term, supply such
+pictures for $J_k$ at positive widths and fixed bounds $P_3,P_4$,
+which depend on $w,M_H,Z$.
 Choose the minimum of the three widths. Both residual pictures
 then have cost at most
 \[
@@ -315,3 +352,106 @@ These conclusions all concern the same output path. Production of
 the common determinant picture, the inherited picture with its
 fourth-order bound, and the displayed exponential error is still
 required when this construction is used in a transition.
+
+We record the result with its order of choices.
+
+\begin{proposition}[The stationary output path]
+\label{prop:stationary-output-path}
+Let $G$ be simple and fix $\sigma>0$, $w>0$, $M_H\geq0$ and
+$Z\geq0$. There are $s$ with $0<s\leq\min(\sigma,w)$ and
+$K,D\geq0$, depending only on these data, with the following
+property. Let coarse sides $c_k\to\infty$ and fine sides $f_k$ be
+given, and for every $k$ a block step from the coarse to the fine
+torus whose patch satisfies the branch compatibility of the kernel,
+whose fine side is at least one hundred times the macro radius of the
+patch and whose coarse side exceeds one, a forest, a choice $t_k$ of block representatives and a
+map $\rho_k$ into the tree chart. Let $p,q$ be clips with
+$q_{\rm direct}\leq Z$, let $B,C$ be beds, $U$ a path, $\mu>0$,
+$\eta>0$, and fix a local Haar chart. Assume:
+\begin{enumerate}
+\item $U$ has path bounds in $p$ and is attached to $B$; the floor of
+ $B,p$ and the sworn condition of $B$ hold at every $f_k$;
+\item for every $k$, $\rho_k$ is a stationary branch in the sense of
+ Section~\ref{sec:stationary-germ-symmetry} with Hessian gap $\eta$,
+ and it satisfies the reduced Hessian identity for the bed $C$;
+\item the metric and root rows of $C$ have strip bound $(w,M_H)$, the
+ floor of $C,q$ holds at every torus side, and the sworn condition of
+ $C$ holds at every $c_k$;
+\item the classical stationary actions $E_k$, formed with $t_k$, have
+ exactly recorded common pictures of degrees three and four, with
+ components holomorphic on the strip of width $\sigma$ and bounded by
+ $X\geq1$;
+\item there are two-leg pictures $f$ and $g$ with components
+ holomorphic on the strip of width $\sigma$ and bounded by $\Phi$ and
+ $R$, such that $f$ records the completed determinant correction
+ $\mathcal B_{t_k}$ along $\rho_k$, with regulator $\mu$, with error
+ $|\Lambda_k|\varepsilon_k$, where $\varepsilon_k\geq0$ and
+ $\varepsilon_k\to0$, and $g$ records the inherited loop of $U$ along
+ $\rho_k$ exactly and has order four at zero momentum.
+\end{enumerate}
+Fix a color $u$ and put $\alpha=\alpha_u(f)$. Then there is a path $T$
+such that
+\begin{enumerate}
+\item[(a)] the row family of $T$ is the root row of $C$, and $T$ is
+ attached to $C$;
+\item[(b)] $T$ has the path bounds $(s',A',\Lambda')$ in $q$ whenever
+ $0<s'\leq s$,
+ $A'\geq\max\{\operatorname{rowPrice}(w,M_H),KX\}$ and
+ $\Lambda'\geq D\bigl(\Phi+|\alpha|
+   \operatorname{bedCharge}(\min(\sigma,w),M_H)+R\bigr)$;
+\item[(c)] for every $k$, every $j\leq4$ and every choice of block
+ representatives, the tested action of $p,U$ along $\rho_k$ and the
+ main term of $T$ in the clip $q$ on the $k$th coarse torus are
+ analytic at zero and have the same $j$th derivative there;
+\item[(d)] for every $k$ and all $\Theta,\gamma,\Omega$ with
+ $2d^2\varepsilon_k\leq\Theta\Omega e^{-\gamma c_k}$: for every choice
+ of block representatives the determinant of the tree-chart Hessian of
+ the tested action $\mathcal T$ is positive along $\rho_k$ near zero,
+ the thermal function
+ $\vartheta(x)=\mathcal L_U(x,\rho_k(x))
+   +\frac12\log\det D_z^2\mathcal T(x,\rho_k(x))
+   -\log\prod_bJ(\rho_k(x)_b)$,
+ formed with the loop term $\mathcal L_U$ of $U$ and the density $J$
+ of the Haar chart, and the function
+ $\alpha\mathcal K_{2,T}+\mathcal L_T$, formed from the quadratic term
+ and the loop term of $T$ in $q$, are analytic at zero, and their
+ second derivatives at zero on any two real plane waves with complex
+ amplitudes of modulus at most one differ by at most
+ $|\Lambda_k|\Theta\Omega e^{-\gamma c_k}$.
+\end{enumerate}
+The path $T$ does not depend on the choices of representatives in
+\textup{(c)} and \textup{(d)}, nor on $\Theta,\gamma,\Omega$.
+\end{proposition}
+\begin{proof}
+The preceding subsections prove this. The cubic and quartic families
+are those of \eqref{eq:output-classical-five}, constructed from the
+pictures in~(4) and from the pictures of $J_k$, which exist by~(3);
+the equality of Hessians used there is the lemma cited for $J_k$,
+which uses~(3), and the reduced Hessian identity in~(2). The symmetry
+and gauge properties of $E_k$, of the determinant correction and of
+the inherited loop are those of
+Section~\ref{sec:stationary-germ-symmetry}, whose standing hypotheses
+are~(1) and~(2). The loop family is the one constructed from
+$h=f-\alpha b_H+g$, with budget \eqref{eq:output-loop-budget}. The
+path is assembled in the present subsection, which gives (a) and (b).
+Assertion (c) for the representatives $t_k$ is
+\eqref{eq:output-classical-five} with polarization; for other
+representatives it follows from the equality of germs proved in
+Section~\ref{sec:stationary-germ-symmetry}. For (d), the moving Haar
+identity \eqref{eq:ex-thermal-determinant} identifies the thermal
+function, as a germ, with the inherited loop plus the completed
+determinant correction, up to the choice of representatives, which
+again does not change the germ; \eqref{eq:output-real-wave} is then
+the stated comparison.
+\end{proof}
+
+The stationary data in~(2) and the pictures in~(4) and~(5) are inputs
+to this proposition. The hypotheses are extracted from the standing data of the one-step
+construction, in which the incoming path $U$ is attached to the fine
+bed $B$ and the output path to the coarse bed $C$. In the one-step
+construction the pictures
+in~(4) are those of Proposition~\ref{prop:ex-classical-stationary-pictures},
+the inherited picture $g$ is that of
+Proposition~\ref{prop:inherited-loop-picture}, and the determinant
+picture $f$ with its exponentially small error is the subject of
+Section~\ref{sec:ex-stationary-determinant-prices}.

@@ -55,20 +55,55 @@ finite-dimensional price rules underlying the estimates below.
 
 \subsection{Upper, lower, and halo faces}
 
-For each configuration $i$, let $x_i$ be its background, $e_i$ its
-boost, $\mu_i>0$ its regulator and $T_i>0$ its scale. The local geometry
-used here is
+For each configuration $i$, let $x_i\in\mathbb R^4$ be its background
+momentum, $e_i$ its boost, $\mu_i>0$ its regulator and $T_i>0$ its
+scale. Norms of momenta are Euclidean. The local geometry used here is
 \[
  \|e_i\|\leq1,\qquad \|x_i\|\leq T_i\leq r_*,\qquad
  0<\mu_i\leq T_i.
  \tag{F4}
 \]
-Let $S_i$ denote the total stationary denominator (interacting plus
-reference), and let $J_i$ and $J_i^{\rm ref}$ be the two two-leg arch
+The proposition below uses only (F4) and the prices (F6). The derivation
+of those prices from the selected data, given later in this section,
+uses in addition
+\[
+ x_i\in[-\pi,\pi]^4,\qquad \mu_i\leq1,\qquad
+ T_i\leq\|x_i\|+\mu_i.
+ \tag{F4$'$}
+\]
+The last inequality is needed for the lower bound of the denominators:
+(F4) alone allows $x_i=0$, $T_i=1$ and $\mu_i$ arbitrarily small, in
+which case no bound $T_i^2\leq C(\|x_i\|^2+\mu_i^2)$ holds. Both scale
+choices made below satisfy (F4$'$).
+
+The matrices entering the faces are slots of a \emph{film}: a triple of
+analytic matrix functions of momentum consisting of a tab $a(p)$, a
+one-leg slot $b_\xi(k,p)$ for a mark $\xi$ inserted with momentum $k$ on
+the incoming momentum $p$, and a two-leg slot $c_{\xi\zeta}(k,k',p)$.
+Sums, products and inverses of films are formed with the insertion
+rules recalled in the trajectory-price paragraph below. Each
+configuration carries a mark $\xi_i$, a local film and a regulator film;
+their sum is the total film. With $a,b,c$ the slots of the total film,
+the objects in the next paragraph are
+\[
+ S_i(t)=a(x_i+te_i),\qquad
+ B_i^+(t)=b_{\xi_i}(te_i,x_i),\qquad
+ B_i^-(t)=b_{\xi_i}(-te_i,x_i+te_i),
+\]
+and $J_i(t)+J_i^{\rm ref}(t)=c_{\xi_i\xi_i}(-te_i,te_i,x_i)$, where
+$J_i$ is the two-leg slot of the local film and $J_i^{\rm ref}$ that of
+the regulator film. The second leg $B_i^-$ is evaluated at the shifted
+momentum $x_i+te_i$.
+Thus $S_i$ denotes the total denominator (local plus regulator film),
+and $J_i$ and $J_i^{\rm ref}$ are the two two-leg arch
 insertions. Write $K_{0,i}=S_i(0)^{-1}$ for the inverse at the
-unshifted background and $K_{1,i}(t)$ for the inverse at the displaced
-background $x_i+t e_i$. Write $D_{0,i}$ and $D_{1,i}(t)$ for the
-corresponding free/reference inverses. The unshifted inverse is constant
+unshifted background and $K_{1,i}(t)=S_i(t)^{-1}$ for the inverse at
+the displaced background $x_i+t e_i$. Write
+$D_{0,i}=(\|x_i\|^2I)^{-1}$ and $D_{1,i}(t)=(\|x_i+te_i\|^2I)^{-1}$ for
+the corresponding unregulated free inverses, defined when $x_i\ne0$,
+and $\widetilde B_i^\pm$ for the legs obtained from $B_i^\pm$ by
+replacing the slot $b_{\xi_i}$ with its linear part $v_{\xi_i}$, which
+is determined below. The unshifted inverse is constant
 in $t$; the shifted inverse varies. With $B_i^-,B_i^+$ the displaced
 insertion legs, define the scalar upper and lower faces by
 \[
@@ -78,8 +113,10 @@ insertion legs, define the scalar upper and lower faces by
 \]
 The halo is $H_i(t)=\operatorname{tr}[D_{0,i}\widetilde B_i^-(t)
 D_{1,i}(t)\widetilde B_i^+(t)]$, with the four factors the
-corresponding free/reference values. Thus it replaces both inverses and
-both legs.
+corresponding free values. Thus it replaces both inverses and
+both legs. In this subsection and in (F6) the word ``reference'' and
+the superscript ${\rm ref}$ refer to the regulator film of the
+configuration; the halo factors are called free.
 
 The selected row transfer yields the following prices, with one constant
 $C_0\geq0$ independent of $i$:
@@ -99,7 +136,7 @@ $C_0\geq0$ independent of $i$:
                       C_0\,\delta_iT_i),\label{F6d}
 \end{align}
 where $C_0\geq0$ and $\delta_i=T_i+\mu_i^2/T_i^2$. The tilded factors are the
-reference/halo factors just described. Also
+free halo factors just described. Also
 $\|K_{0,i}\|_{\mathrm{op}}\leq C_0T_i^{-2}$. The ordinary face prices
 (F6a)--(F6c) apply to the all-centered population. The extra differences
 (F6d) are required only on the shell $\mu_i\leq T_i=\|x_i\|_2$; at the
@@ -160,15 +197,99 @@ the trace of their sum. Its second derivative is bounded by
 $C\delta_i/T_i^4$, as claimed.
 \end{proof}
 
-\subsection{The Hstar populations and the two scale choices}
+\subsection{The two populations of centered records and the two scale choices}
 
-Let $G$ be simple and fix the reference family, positive regulator fee,
-grey bound, and local row data. An Orion datum supplies a centered track
-$x$, regulator $\mu$, color $c$, bed, clip and a local family $l$;
-the row condition is imposed on the combined family $l+V$. An Hstar
-datum is such an Orion datum together with the condition that $x$ lies in
-the closed centered box. The selected population uses the axial mark
-$(1,c)$ and the unit axial boost $e_0$.
+We now state the input family precisely. Let $G$ be simple. A
+\emph{response} is a triple of analytic coefficient pictures with two,
+three and four legs, $R_0,R_1,R_2$; it determines a film whose tab,
+one-leg and two-leg slots are its zero-, one- and two-mark layers,
+with the marked momenta first, then the outgoing and the incoming
+momentum:
+\[
+ a(k)=R_0(-k,k),\qquad b_\xi(p,k)=R_1(\xi;p,-k-p,k),\qquad
+ c_{\xi\zeta}(p,q,k)=R_2(\xi,\zeta;p,q,-k-p-q,k),
+\]
+the direction and color indices of the last two legs being the matrix
+indices. A response has fees
+$(\eta,C)$ if all components of its three pictures are holomorphic and
+periodic on the strip of width $\eta$ and bounded by $C$ there. Fix
+\[
+ \eta>0,\qquad \epsilon>0,\qquad C,D,A\geq0,
+\]
+and one \emph{vacuum response} $V$ with fees $(\eta,C)$ which is
+\emph{grey}: at every torus side its zero-, one- and two-mark layers
+record exactly, with the volume factor at conserving momenta and with
+no error, the corresponding marked derivatives of the Wilson action
+$\mathcal W$ on that torus. These are the derivatives at the origin of
+$(y,z)\mapsto\mathcal W(e^{y}e^{z})$, the product of the two
+exponentiated link fields being taken link by link, of order two in
+$y$ and of order zero, one or two in the marked variable $z$. The same
+convention defines the layers recorded by any response.
+
+A \emph{local record} (an Orion datum in the terminology of the source)
+consists of a strip width $\sigma$, a regulator $\mu$, a color $c$, a
+bed $B$, a clip $p$ and a response $l$, the \emph{local correction},
+such that
+\begin{enumerate}
+\item $l$ has fees $(\eta,A)$, and its zero-, one- and two-mark layers
+  vanish at zero momentum to orders three, two and one;
+\item $0<\mu\leq1$ and $0<\sigma\leq\mu/128$;
+\item the three layers of the combined response $l+V$ are holomorphic
+  and periodic on the strip of width $\sigma$, and the metric row of
+  $B$ has strip bound $(\sigma,D)$;
+\item the denominator matching (F13) below holds on the strip of width
+  $\sigma$ for the vector film of $l+V$, the bed $B$ and the regulator
+  $\mu$;
+\item the floor of $B$ in the clip $p$ holds with constants
+  $(\epsilon,D)$ at every torus side.
+\end{enumerate}
+The numbers $\eta,\epsilon,C,D,A$ and the response $V$ are common to all
+records. The width $\sigma$ belongs to the individual record and is
+forced to tend to zero with $\mu$; no common strip for the regulated
+denominators is assumed. A \emph{centered record} (an Hstar datum) is a
+local record together with a momentum $x\in[-\pi,\pi]^4$. The constants
+obtained below depend only on $G$, $V$, $\eta$, $\epsilon$, $C$, $D$,
+$A$: they are chosen before the record, so they are uniform over all
+centered records, in particular in $\mu$, $\sigma$, the color, the bed
+and the clip.
+
+Each centered record is used in two \emph{channels}, both with the mark
+$\xi=(1,c)$ (direction $1$, color $c$) and the unit axial boost $e_0$.
+Let $\mathsf B$ be the fixed gauge-fixing film. It is the film of the
+covariant difference: for a link configuration $U$ and a
+Lie-algebra valued function $h$ on sites,
+\[
+ (D_Uh)(x,a)=h(x)-\operatorname{Ad}_{U(x,a)}h(x+e_a),
+\]
+and the tab and the one- and two-leg slots of $\mathsf B$ are the
+Fourier symbols of $D_1$ and of the first and second derivatives of
+$D_{\exp z}$ in the background $z$ at $z=0$, with the routing of
+momenta displayed above. In particular its tab is
+$-\mathsf T(P_0)$, the color-diagonal extension of minus the zero-form
+symbol $P_0$ below, and its marked slots do not vanish. Let
+$\mathsf B^{\rm r}$ be its rear film (transposed, with reversed
+momenta). The sign of $\mathsf B$ cancels in the two products
+$\mathsf B\mathsf B^{\rm r}$ and $\mathsf B^{\rm r}\mathsf B$, which are
+the only places where $\mathsf B$ enters. That these slots record
+$D_{\exp z}$ on every torus, and the corresponding statement for
+products, rears and inverses, is used below without proof; see
+Section~\ref{sec:ex-annulus-same-data}.
+\begin{center}
+\begin{tabular}{l|l|l}
+ channel & local film & regulator film\\ \hline
+ vector & film of $l+V$, plus $\mathsf B\mathsf B^{\rm r}$ &
+   $R_{\rm vec,\mu}$\\
+ ghost & $Q_{\rm gh}=\mathsf B^{\rm r}\mathsf B$ & $R_{\rm gh,\mu}$
+\end{tabular}
+\end{center}
+The regulator films are constructed in the trajectory-price paragraph.
+The response whose second derivative the annulus estimate concerns is
+one half of the vector-channel total film's two-leg figure minus the
+ghost-channel one; with $U,L$ the faces (F5) of each channel,
+\begin{equation}\label{eq:ex-fleet-response}
+ \kappa(x)=\frac12\Bigl(\frac12\bigl(U_{\rm vec}''(0)-L_{\rm vec}''(0)\bigr)
+           -\bigl(U_{\rm gh}''(0)-L_{\rm gh}''(0)\bigr)\Bigr).
+\end{equation}
 
 For each selected row, the path bounds give caps for the tab, the
 one-leg insertions, and the two-leg insertion, together with the two
@@ -189,30 +310,36 @@ all-centered scale is
  \qquad 0<T\leq1+2\pi=:r_*.
  \tag{F10}
 \]
-Thus (F4) holds and (F7)'s upper estimate gives the first two-wave
-bound after combining it with the lower-face estimate. On the shell
-$\mu\leq\|x\|_2$, reset the scale to
-$T=\|x\|_2$. Then $0<\mu\leq T\leq r_*$, and the same package gives
-both the upper estimate and (F8). Use the low-face identity of
-Proposition~\ref{prop:ex-two-wave} to replace the halo by the continuum
-pole. Since $T\leq r_*$,
+Thus (F4) and (F4$'$) hold and (F7)'s upper estimate gives the first
+two-wave bound after combining it with the lower-face estimate. On the
+shell $\mu\leq\|x\|_2$, reset the scale to
+$T=\|x\|_2$. Then $0<\mu\leq T\leq r_*$ and $T\leq\|x\|_2+\mu$, so
+(F4) and (F4$'$) hold again, and the same package gives
+both the upper estimate and (F8). The shell population is the
+subfamily of the same centered records with $\mu\leq\|x\|_2$; only the
+scale is changed, not the response, bed, color or regulator. Use the
+halo identity, the second identity in \eqref{eq:ex-two-wave-identities}
+of Section~\ref{sec:ex-annulus-two-wave}, to replace the halo by the
+continuum pole. Since $T\leq r_*$,
 \[
  T^{-2}\leq r_*T^{-3},\qquad T^{-2}\leq r_*^2T^{-4},\qquad
  \frac{\mu^2}{T^6}\leq\frac1{T^4},\qquad
  \frac{\delta}{T^4}=\frac1{T^3}+\frac{\mu^2}{T^6}.
 \]
-Indeed, the response is half the difference of interacting and reference
-upper-minus-lower traces. The upper estimate and lower-face estimate in
-(F7), with $\mu\leq T$, therefore give $|\kappa(x)|\leq aT^{-4}$.
+Indeed, the response is given by \eqref{eq:ex-fleet-response}. The
+upper estimate and lower-face estimate in (F7), applied in both
+channels with $\mu\leq T$, therefore give $|\kappa(x)|\leq aT^{-4}$.
 For the shell discrepancy, the exact algebra is
 \[
  \kappa(x)-\Pi_G(x)
- =\frac12\left(\frac12U_I''-U_R''
-                  +(L_R''-H_R'')-\frac12(L_I''-H_I'')\right),
+ =\frac12\left(\frac12U_{\rm vec}''-U_{\rm gh}''
+        +(L_{\rm gh}''-H_{\rm gh}'')
+        -\frac12(L_{\rm vec}''-H_{\rm vec}'')\right),
  \tag{F12}
 \]
-where the reference/interacting halo combination is the pole identity
-in Proposition~\ref{prop:ex-two-wave}. The two upper terms are bounded by
+all second derivatives being taken at $t=0$, where the halo
+combination $\frac12(H_{\rm gh}''-\frac12H_{\rm vec}'')=\Pi_G$ is the
+halo identity just cited. The two upper terms are bounded by
 $C/T^2+C\mu^2/T^6$, and the lower remainders by $C\delta/T^4$;
 the displayed scale inequalities give the two powers in (F11).
 Enlarge constants once to cover the bounded part of the centered box
@@ -224,6 +351,10 @@ $\mu$ such that
       +b\mu^2\|x\|_2^{-6}\quad(\mu\leq\|x\|_2\leq1).
  \tag{F11}
 \]
+The constants $a,b$ depend only on $G$, $V$, $\eta$, $\epsilon$, $C$,
+$D$, $A$. In particular the same $a,b$ serve every local record, every
+color $c$ and every regulator $0<\mu\leq1$, and they are not affected
+by the record's own strip width $\sigma$.
 These are the uniform local estimates consumed in
 Section~\ref{sec:ex-annulus-two-wave}.
 
@@ -239,20 +370,27 @@ by $\mathsf T$. Put
  G_i(p)=\text{the two-point row of the interacting film},\qquad
  J_{i,b}(p,k)=\text{its marked two-leg row}.
 \]
-For the selected construction, the row package has a common analytic
-strip and fee bound; it satisfies the denominator matching identity
+For a local record, the three layers of $l$ and of $V$ have the common
+fee strip of width $\eta$; the record satisfies the denominator
+matching identity on its own strip of width $\sigma$,
 \[
-  (\text{interacting film}+\text{regulator film})_{\rm tab}(p)
-       =\text{the bed denominator}(p),
+  (\text{vector local film}+\text{vector regulator film})_{\rm tab}(p)
+       =D^{\rm bed}(p),
 \tag{F13}
 \]
-the all-grade floor (in particular, the grade-one normalization
-$M_i(0)=M_*(0)$), the local action soft order-three condition, and the
-vacuum matching condition (the color-diagonal vacuum row equals the
-finite Wilson row). These properties all concern the same selected bed
-and the same combined local row. The regulator satisfies $0<\mu\leq1$
-and its tab is the scalar multiple $s_\mu(p)I$ on the strip. They are
-properties of the selected row package, rather than consequences of
+where the bed denominator $D^{\rm bed}$ is displayed in the derivation
+below; the floor at every torus side (in particular the zero-momentum
+normalization $M_i(0)=I=M_*(0)$ of the metric row, which is one clause
+of the floor at any one side); the soft order-three condition on the
+local correction; and the vacuum matching condition (greyness of $V$).
+These properties all concern the same bed and the same combined
+response $l+V$. The regulator satisfies $0<\mu\leq1$, and the tab of
+the vector regulator film is the scalar multiple $s_\mu(p)I$ on the
+strip of width $\mu/128$, where, with $\omega$ as below,
+\[
+ s_\mu(p)=\mu^2\left(\frac{\mu^2}{\omega(p)+\mu^2}\right)^{9}.
+\]
+They are properties of the local record, rather than consequences of
 analyticity alone.
 
 Let $\omega(p)=\sum_\nu q_\nu(-p)q_\nu(p)$. The exact row and free
@@ -318,23 +456,53 @@ $M_*$ is the constant identity metric, this proves
 leader identity from the row-to-film identity proves (F14), with the
 lattice-dispersion term $\omega(p)-|p|^2$ retained explicitly.
 
-For the marked row, the local film is the sum of the selected local
-action and the fixed free quadratic film. Linearity of the marked
+For the marked row, the vector local film is the sum of the film of
+the local correction $l$, the film of the vacuum response $V$, and the
+fixed gauge-fixing film $\mathsf B\mathsf B^{\rm r}$. Accordingly
+$J^{\rm loc}_{i,b}$ in (F15) is the one-mark slot of $l$, and
+$J^{\rm vac}_{i,b}$ is the sum of the one-mark slots of $V$ and of
+$\mathsf B\mathsf B^{\rm r}$. Linearity of the marked
 coefficient gives (F15). The soft-3 hypothesis assigns radial order two
 to the one-mark layer; composing that layer with the linear two-momentum
-map gives the required second-order vanishing. The vacuum term is identified by grey
-matching with the Wilson three-leg coefficient. Write $\tau(u)_a=iu_a$
-and denote the color structure coefficient by $c_{bxy}$. Differentiating
-the three plaquette placements gives its first radial coefficient
+map gives the required second-order vanishing. The slot of $V$ is
+identified by greyness with the Wilson three-leg coefficient. Greyness
+gives this equality at the grid momenta of every torus side; both sides
+are continuous on the real momenta and the union of the grids is dense,
+so the equality holds at all real momenta. An identity on one fixed
+grid would not suffice for the radial expansion. Let the mark be
+$(a,b)$, with direction $a$ and color $b$, let the two other legs have
+directions $i,j$ and colors $x,y$ and momenta $-(k+p)$ and $k$, the mark
+carrying momentum $p$, and write
+\[
+ \tau(u)_a=iu_a,\qquad c_{bxy}=\langle e_x,[e_b,e_y]\rangle
+\]
+for the structure coefficient in the orthonormal color basis; it is
+totally antisymmetric. After summing over all positively oriented plaquette types, the
+contribution to the linear part of the three-leg coefficient in which a
+chosen leg is differentiated in the curl and the two others in the
+commutator is
+$(\tau(u)_{i'}\delta_{a'j'}-\tau(u)_{j'}\delta_{a'i'})$ times the
+structure coefficient with the color of the chosen leg in the middle,
+where $u,a'$ are the momentum and direction of the chosen leg and
+$i',j'$ the directions of the others. Choosing in turn the mark, the
+leg $(i,x)$ and the leg $(j,y)$, and reordering the color indices by
+antisymmetry, gives the three contributions
+\[
+\begin{aligned}
+ &[-\tau(p)_i\delta_{aj}+\tau(p)_j\delta_{ai}]\,c_{bxy},\\
+ &[-(\tau(k)_a+\tau(p)_a)\delta_{ij}
+       +(\tau(k)_j+\tau(p)_j)\delta_{ia}]\,c_{bxy},\\
+ &[-\tau(k)_a\delta_{ij}+\tau(k)_i\delta_{ja}]\,c_{bxy}.
+\end{aligned}
+\]
+Their sum is the first radial coefficient of the Wilson slot,
 \[
  [-(2\tau(k)_a+\tau(p)_a)\delta_{ij}
    +(\tau(k)_j+2\tau(p)_j)\delta_{ia}
    +(\tau(k)_i-\tau(p)_i)\delta_{ja}]c_{bxy}.
 \]
-Each placement contributes one of the terms in the defining plaquette
-coefficient; summing the two orientations and using
-$\tau(k+p)=\tau(k)+\tau(p)$ gives this formula. The fixed free-film
-marked coefficient has first radial coefficient
+The marked slot of the gauge-fixing film
+$\mathsf B\mathsf B^{\rm r}$ has first radial coefficient
 \[
  [-\tau(k)_j\delta_{ia}-\tau(k+p)_i\delta_{ja}]c_{bxy}.
 \]
@@ -351,11 +519,29 @@ implies that it has radial order at least two. With the soft local term,
 give uniform compact derivative bounds by Cauchy's formula.
 \end{proof}
 
+\paragraph{The ghost channel.}
+The ghost local film $Q_{\rm gh}=\mathsf B^{\rm r}\mathsf B$ is a fixed
+film, independent of the record. Its tab is $\omega(p)I$ on the color
+space, so the analogue of (F14) is
+$Q_{{\rm gh},{\rm tab}}(p)-|p|^2I=(\omega(p)-|p|^2)I$, of radial order
+three. Its one-mark slot at the mark $(a,b)$ has entries analytic in
+the two momenta and the linear part
+\[
+ w_b(p,k)_{xy}=-(2\tau(k)_a+\tau(p)_a)\,c_{bxy},
+\]
+obtained from the explicit slot of the product by expanding the two
+lattice symbols to first order; the remainder has radial order two.
+These are the two contacts of the ghost channel, with $w_b$ in the
+place of $v_b$ as the linear leg of its halo. Its compact derivative
+caps are those of a fixed analytic periodic film. The tab of the ghost
+total film is $(\omega(p)+s_\mu(p))I$ on the strip of width $\mu/128$.
+
 \begin{lemma}[Row data give the priced insertion family]
 \label{lem:ex-row-to-floe}
-For a bounded family of selected rows with the common strip/fee bounds,
-denominator matching, all-grade floor, soft order-three local action and grey
-vacuum matching just described, the interacting film has uniform
+For the family of all local records with the common fee bounds,
+denominator matching, floor at every torus side, soft order-three local
+correction and grey vacuum response just described, the vector local
+film has uniform
 compact derivative prices through order three. Its two-point row has a
 cubic radial remainder after subtraction of $|p|^2I$, and its marked
 row has a quadratic radial remainder after subtraction of $v_b$.
@@ -371,8 +557,8 @@ chain rule therefore gives uniform compact derivative caps through the
 orders used here. A finite sum of these caps bounds the matrix operator
 norm, since the matrix dimension is fixed.
 
-For the two-point contact, (F14) and the grade-one floor give
-$M_i(0)-M_*(0)=0$. Analyticity makes this metric difference $O(|p|)$.
+For the two-point contact, (F14) and the zero-momentum normalization
+supplied by the floor give $M_i(0)-M_*(0)=0$. Analyticity makes this metric difference $O(|p|)$.
 Each edge symbol vanishes linearly, $q_\nu(p)=ip_\nu+O(|p|^2)$, so the
 metric term in (F14) is $O(|p|^3)$. Expanding each product
 $q_\nu(-p)q_\nu(p)$ shows $\omega(p)-|p|^2=O(|p|^3)$ as well.
@@ -398,48 +584,65 @@ prices in (F6a) and the shell-separation prices in (F6d) from these
 contacts and the reference path budgets.
 \end{proof}
 
-\paragraph{Hstar to the local row package.}
-For every Hstar datum the associated Orion datum contains one selected
-bed, clip, regulator, and local action. Its denominator matching field is
-the identity
-(F13), its fee field supplies the uniform analytic strip, and its
-all-grade floor supplies the grade-one normalization. Its local soft
-field is soft order three. Applying this row argument to the single
-combined family $l+V$ gives the interacting row used by the annulus.
-The common free reference is the quadratic film. If the external vacuum
+\paragraph{From a centered record to the row package.}
+Every centered record contains one bed, clip, regulator, and local
+correction. Its denominator matching is the identity
+(F13), its fees supply the uniform analytic strip, and its
+floor supplies the zero-momentum normalization. Its local correction
+is soft of order three. Applying the row argument to the single
+combined response $l+V$ gives the vector local film used by the
+annulus. The free halo comparison is $|k|^2I$ with the linear legs
+$v_b$ (vector) and $w_b$ (ghost). Since the vacuum response
 $V$ is grey and has the required fees, the finite-volume Wilson matching
 above identifies its marked vertex and hence its linear term. These
-statements establish the row contacts from the selected Hstar data. The
+statements establish the row contacts from the data of a centered
+record. The
 scalar regulator term and its positive floor are then included in the
 total denominator; the next price calculation uses the free comparison
 only on the shell, where its inverse exists.
 
-Assume $\epsilon>0$, as in the selected floor package. The denominator
+Recall $\epsilon>0$. The denominator
 lower bound is also tied to this same bed. At a real momentum $p$, write
 \[
  D_i^{\rm bed}(p)=
  \mathsf T\!\left[P_1(-p)^TM_i(p)P_1(p)
        +P_0(p)P_0(-p)^T\right]+s_\mu(p)I
 \]
-for the denominator matrix in (F13). If
-$\mathrm{peb}(p,\mu)$ denotes the positive quadratic weight, the cold
-geometry gives
+for the denominator matrix in (F13), and put
 \[
- T^2\leq64\,\mathrm{peb}(p,\mu).
+ \mathrm{peb}(p,\mu)=\sum_\nu|q_\nu(p)|^2+\mu^2 .
 \]
-The bed-floor estimate for this matrix gives
+Assume (F4) and (F4$'$) and let $p=x$ be the background. On the
+centered box
+\[
+ |q_\nu(x)|=2|\sin(x_\nu/2)|\geq\frac2\pi|x_\nu|\geq\frac{|x_\nu|}4,
+ \qquad\hbox{so}\qquad \sum_\nu|q_\nu(x)|^2\geq\frac{\|x\|^2}{16}.
+\]
+With $T\leq\|x\|+\mu$ this gives
+$T^2\leq2\|x\|^2+2\mu^2\leq32\sum_\nu|q_\nu(x)|^2+2\mu^2$, hence
+\[
+ T^2\leq64\,\mathrm{peb}(x,\mu).
+\]
+The bed-floor estimate for this matrix, which uses the floor at every
+torus side, the metric strip bound and $\epsilon>0$, gives at every
+real momentum $p$
 \[
  \frac{\min(\epsilon,1)}{2^{10}}\,\mathrm{peb}(p,\mu)\|z\|^2
-       \leq \operatorname{Re}\langle z,\mathrm{dais}(p)z\rangle.
+       \leq \operatorname{Re}\langle z,D_i^{\rm bed}(p)z\rangle.
 \]
-Using the denominator matching to identify this matrix with the selected
-total denominator, we obtain
+Using the denominator matching (F13) at the real momentum $x$ to
+identify this matrix with the vector total denominator, we obtain
 \[
  cT^2\|z\|^2\leq
    \operatorname{Re}\langle z,S_i(0)z\rangle,
  \qquad c=\frac{\min(\epsilon,1)}{2^{16}}.
 \]
-The same cold lower bound and the free reference floor give the ghost
+For the ghost channel the total tab at real momentum is the scalar
+$\omega(p)+s_\mu(p)$, and
+$\omega(p)+s_\mu(p)\geq2^{-10}\,\mathrm{peb}(p,\mu)$: if
+$\omega(p)\leq\mu^2$ then $s_\mu(p)\geq\mu^2/2^{9}$, and otherwise
+$\omega(p)\geq\frac12\mathrm{peb}(p,\mu)$. The same cold lower bound
+therefore gives the ghost
 denominator bound with $c=2^{-16}$. For either square matrix $S$, the
 coercive estimate implies
 $cT^2\|z\|^2\leq\operatorname{Re}\langle z,Sz\rangle
@@ -489,11 +692,24 @@ its actual construction below:
   C\mu_i^2,\qquad C\frac{\mu_i^2}{T_i},\qquad
   C\frac{\mu_i^2}{T_i^2}.
 \]
-These weights follow from its construction. Begin with the massive free
-film, the free Wilson film plus $\mu_i^2 I$. The free Wilson path has
-tab budget $T_i^2$: its tab has a quadratic zero, while its compact
-derivatives are uniformly bounded. Its marked leg has a linear first
-term and a quadratic remainder, hence budget $T_i$; its two-leg arch
+These weights follow from its construction. The regulator films of
+both channels are built from the ghost film
+$Q_{\rm gh}=\mathsf B^{\rm r}\mathsf B$, not from the vector film:
+\[
+ C_\mu=Q_{\rm gh}+\mu^2I,\qquad
+ H_\mu=\mu^2C_\mu^{-1},\qquad
+ R_{{\rm gh},\mu}=\mu^2H_\mu^{9},\qquad
+ R_{{\rm vec},\mu}=\sum_{a=0}^3\mathsf D_a^{\rm r}R_{{\rm gh},\mu}
+                    \mathsf D_a,
+\]
+with products and inverses of films, including their marked slots, and
+with $\mathsf D_a$ the fixed constant matrix selecting the direction
+$a$, regarded as a film without marked slots. Begin with the massive
+ghost film $C_{\mu_i}$. The ghost film has
+tab budget $T_i^2$: its tab $\omega(p)I$ has a quadratic zero, while
+its compact derivatives are uniformly bounded. Its marked leg has the
+linear first term $w_b$ and a quadratic remainder, hence budget $T_i$;
+its two-leg arch
 has a uniform unit-scale cap. The added constant mass has tab budget
 $T_i^2$ since $\mu_i\leq T_i$, and has zero spot and arch. The massive
 film therefore has the three-component path budgets $T_i^2,T_i,1$. Its
@@ -539,10 +755,12 @@ $LM/T^2$. Iterating through the nine factors changes only fixed
 numerical constants: the tab, spot, and arch rates remain $1$, $T_i^{-1}$,
 and $T_i^{-2}$. The final weight gives $\mu_i^2$,
 $\mu_i^2/T_i$, and $\mu_i^2/T_i^2$.
-Each directional sandwich in the free reference row has constant
+This is the ghost regulator film $R_{{\rm gh},\mu_i}$. Each directional
+sandwich in the vector regulator film $R_{{\rm vec},\mu_i}$ has constant
 unit-budget factors on both sides, so it preserves these prices.
 Summing the four directions changes only the common constant. This
-proves the displayed reference budgets from the field construction.
+proves the displayed regulator budgets, in both channels, from the
+construction.
 
 Because $\mu_i\leq T_i$, adding the local and reference tab budgets gives
 $C(T_i^2+\mu_i^2)\leq 2C T_i^2$. The total denominator has the same
@@ -553,7 +771,7 @@ Differentiating the inverse with (F2) gives both inverse prices in
 interacting arch has unit-scale budget $C$, proving (F6b). The two total
 marked legs have budget at most
 $C(T_i+\mu_i^2/T_i)\leq2C T_i$, which proves (F6c). All constants here
-are uniform over the selected Hstar family because the fees, compact
+are uniform over the family of all centered records because the fees, compact
 caps, regulator bound, floor constant and centered-box radius are uniform.
 
 On the shell, set $T_i=\|x_i\|_2>0$. The unregulated reference
@@ -578,9 +796,10 @@ Both inverse paths have price $C/T_i^2$; the identity
 and the product rule therefore give the two inverse differences in (F6d)
 with price $C\delta_i/T_i^2$.
 
-For the marked legs, subtract the unregulated free leg. The local marked
-row and the free Wilson row have the same linear vector coefficient by
-the explicit coefficient calculation above. Their difference has
+For the marked legs, subtract the unregulated free leg, which is the
+linear vector coefficient $v_b$ (respectively $w_b$ in the ghost
+channel). By the explicit coefficient calculation above the local
+marked row has this linear part. Their difference has
 radial order two. Hence the local marked row minus the halo leg has
 price $C T_i^2$ along the shell path. The regulated reference leg has
 the one-leg budget $C\mu_i^2/T_i$ from its path spot component. Since
@@ -605,18 +824,22 @@ for the tab use derivatives through order three, and for the spot and
 arch through order two. The momentum maps entering the three components
 are fixed linear maps, so the chain rule multiplies these estimates only
 by their fixed operator norms. The matrix dimension is fixed, hence the
-entrywise bounds imply operator-norm bounds. The additional fixed free
-film is a finite polynomial and has uniform derivative bounds on the
-centered box. Adding it gives the compact path caps used in (F17).
+entrywise bounds imply operator-norm bounds. The additional fixed
+gauge-fixing film $\mathsf B\mathsf B^{\rm r}$ is not a polynomial in
+the momenta: its three slots are finite sums of products of lattice
+exponentials. They are entire and periodic, so their derivatives of
+every fixed order are bounded on the centered box. Adding these bounds
+gives the compact path caps used in (F17).
 
 The selected action's soft hypothesis is componentwise: its unmarked
 layer vanishes to radial order three, its one-mark layer to order two,
 and its two-mark layer to order one. The local marked insertion uses the
 one-mark layer composed with a linear two-momentum map, so it has the
 second-order vanishing required for the local contact. The grey vacuum's
-marked row has the same linear term as the free Wilson row: the three
-plaquette placements give the displayed coefficient
-$v_b$, and the fixed free-film term supplies the complementary part.
+marked row, together with that of the gauge-fixing film, has the linear
+term $v_b$: the three plaquette placements give the displayed Wilson
+coefficient, and the gauge-fixing film supplies the complementary
+part.
 Their difference has order two. Thus the selected combined row has
 exactly the tab and marked-leg contacts used in (F14)--(F15), with
 uniform compact caps.
@@ -625,7 +848,7 @@ Finally, the reference field is constructed from the same regulator
 $\mu$. Its trajectory tab budget is $\mu^2$, and its two other
 components carry the factors $T^{-1}$ and $T^{-2}$. The local field has
 tab budget $T^2$. Since $\mu\leq T$, their sum has tab budget at most
-$2T^2$. The selected House floor and the cold geometric bound give the
+$2T^2$. The floor of the record and the cold geometric bound give the
 total tab a coercive lower bound $cT^2$; the elementary inverse
 calculation preceding (F17) then yields the inverse estimates for both
 the unshifted and boosted paths. On the shell, the free comparison is

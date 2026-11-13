@@ -6,31 +6,56 @@ response. Its logarithmic coefficient is an integral of the response over
 four-dimensional momentum space, and that response is close to the continuum
 quadratic pole on an annulus. This section gives the exact polar calculation
 and expands the finite-volume two-channel estimate that supplies the two
-radial bounds. The remaining local chart and weighted-face estimates are
-stated at their precise input interface and cross-referenced to the units
-that produce them.
+radial bounds. The weighted-face estimates that feed it are proved in
+Section~\ref{sec:ex-annulus-fleet-faces}; they are stated here at their
+precise input interface.
 
 \subsection{From the finite response to a momentum integral}
 
-Let $E_4$ be the fundamental momentum cube in Euclidean coordinates, with
-normalized measure $c_{\mathrm{wt}}\,dx$ and
+Let $E_4=(-\pi,\pi]^4$ be the fundamental momentum cube in Euclidean
+coordinates, with normalized measure $c_{\mathrm{wt}}\,dx$ and
 $c_{\mathrm{wt}}=(2\pi)^{-4}$. It has finite volume and contains the unit
-ball. For a quadratic response picture $F$ and color coordinate $a$, let
-$\mathcal K_a(x)$ be one half of the second derivative in the distinguished
-response direction, with the other momentum equal to $x$, and set
-$g_a(x)=\operatorname{Re}\mathcal K_a(x)$. The coefficient functional
-$\alpha_a(F)$ is the second Taylor coefficient of the analytic stock
-picture associated with $F$. The Fourier stock formula and differentiation
-under the integral give
+ball. Two different objects occur, and the coefficient functional is
+defined on the second.
+
+A \emph{response kernel} $F$ has entries $F_{\xi\zeta}(p,x)$, indexed by
+two marks (direction and color) and depending on an external momentum
+$p$ and an internal momentum $x$. We assume that every entry is jointly
+holomorphic, periodic and bounded on a common strip of positive width in
+$(p,x)$. Its associated \emph{picture} is one half of the normalized
+integral over the internal momentum,
 \[
- \alpha_a(F)=c_{\mathrm{wt}}\int_{E_4}g_a(x)\,dx.
+ \mathcal Y_{\xi\zeta}(p)=\frac12\,c_{\mathrm{wt}}\int_{E_4}
+                         F_{\xi\zeta}(p,x)\,dx.
+\]
+For a two-leg picture $\mathcal Y$ and a color $a$, the coefficient
+functional is twice the real part of the quadratic Taylor coefficient
+along the axis $e_0$ of the component with both marks equal to
+$(1,a)$:
+\[
+ \alpha_a(\mathcal Y)=2\operatorname{Re}\,[t^2]\,
+                    \mathcal Y_{(1,a)(1,a)}(te_0)
+ =\operatorname{Re}\frac{d^2}{dt^2}\mathcal Y_{(1,a)(1,a)}(te_0)
+   \Big|_{t=0}.
+\]
+For the kernel put
+\[
+ \mathcal K_a(x)=\frac12\frac{d^2}{dt^2}F_{(1,a)(1,a)}(te_0,x)\Big|_{t=0},
+ \qquad g_a(x)=\operatorname{Re}\mathcal K_a(x).
+\]
+Differentiation under the integral gives, for the picture $\mathcal Y$
+associated with $F$,
+\[
+ \alpha_a(\mathcal Y)=c_{\mathrm{wt}}\int_{E_4}g_a(x)\,dx.
  \tag{AT1}
 \]
-The common analytic bound on the differentiated symbol supplies the
-integrable majorant. Equation (AT1) is an identity for the analytically
-assembled response picture. The equality to a finite sampled pole-test
-coefficient is a separate recording statement and is not asserted by
-(AT1).
+The common analytic bound and Cauchy's estimate bound the second
+$t$-derivative of the integrand uniformly in $x$, which justifies the
+differentiation and shows that $g_a$ is bounded and continuous on the
+closure of $E_4$. Equation (AT1) is an identity for the analytically
+assembled response picture. The comparison of that picture with the
+finite sampled pole test is a separate recording estimate with an
+error term; it is not an equality and is not asserted by (AT1).
 
 For $x\in\mathbb R^4\setminus\{0\}$ let $r=|x|$ and define the gauge pole
 \[
@@ -39,8 +64,14 @@ For $x\in\mathbb R^4\setminus\{0\}$ let $r=|x|$ and define the gauge pole
  \right),
  \tag{AT2}
 \]
-where $C_G$ is the quadratic Casimir in the chosen representation. The
-spherical area of $S^3$ is $2\pi^2$. Rotational invariance gives
+where the gauge group is simple and $C_G$ is its adjoint Casimir in the
+normalization of the chosen invariant inner product on the Lie algebra:
+\[
+ -\operatorname{tr}(\operatorname{ad}u\,\operatorname{ad}v)
+                =C_G\langle u,v\rangle .
+\]
+Simplicity is what makes the left side a multiple of the inner product.
+The spherical area of $S^3$ is $2\pi^2$. Rotational invariance gives
 \[
  \int_{S^3}\theta_1^2\,d\theta=\frac{2\pi^2}{4},\qquad
  \int_{S^3}\theta_1^2\theta_0^2\,d\theta=\frac{2\pi^2}{24}.
@@ -59,7 +90,8 @@ Consequently the angular mean of the parenthesis in (AT2) is
  r^{-4}\left(\frac14-\frac4{24}-1\right)
        =-\frac{11}{12}r^{-4}.
 \]
-Since the Euclidean polar Jacobian is $r^3dr\,d\theta$,
+Let $0<\mu\leq1$. Since the Euclidean polar Jacobian is
+$r^3dr\,d\theta$,
 \[
  \int_{\mu<|x|\leq1}|x|^{-4}\,dx
        =2\pi^2\int_\mu^1\frac{dr}{r}
@@ -79,31 +111,48 @@ pole is not defined only up to an angular constant.
 \subsection{The finite-volume two-channel calculation}
 
 We now state the two scale receipts used by the finite-volume construction.
-Let $x$ be a centered momentum, $r=|x|$, and $0<\mu\leq1$. Write
-$\mathcal K(x)\in\mathbb C$ for the normalized response coefficient and
-$g(x)=\operatorname{Re}\mathcal K(x)$. The six complex second-derivative
-traces $D,Y,c,d,c_0,d_0$ are defined so that $D$ is the interacting upper
-trace, $Y$ the reference upper trace, $c$ the reference lower trace, $d$
-the interacting lower trace, and $c_0,d_0$ their free halo traces. The
-exact identities are
+Let $x\in[-\pi,\pi]^4$ be a centered momentum, $r=|x|$, and
+$0<\mu\leq1$. The response kernel is the one of
+Section~\ref{sec:ex-annulus-fleet-faces}: for a local record with color
+$b$ and regulator $\mu$, it is one half of the two-leg figure of the
+vector-channel total film minus that of the ghost-channel total film.
+Write $\mathcal K(x)\in\mathbb C$ for its coefficient $\mathcal K_b(x)$
+defined before (AT1), and $g(x)=\operatorname{Re}\mathcal K(x)$. With
+the faces $U,L,H$ of (F5) in that section, formed in each of the two
+channels with the same background $x$, the same mark $(1,b)$, the same
+boost $e_0$ and the same regulator $\mu$, the six complex
+second-derivative traces are
 \[
+\begin{array}{lll}
+ D=U_{\rm vec}''(0),& d=L_{\rm vec}''(0),& d_0=H_{\rm vec}''(0),\\[2pt]
+ Y=U_{\rm gh}''(0),& c=L_{\rm gh}''(0),& c_0=H_{\rm gh}''(0).
+\end{array}
+\]
+The halo traces $c_0,d_0$ and the pole $\Pi_G$ are defined only for
+$r>0$. The exact identities are
+\begin{equation}\label{eq:ex-two-wave-identities}
  \mathcal K=\frac12\left(\frac12(D-d)-(Y-c)\right),\qquad
  \Pi_G=\frac12\left(c_0-\frac12d_0\right),
  \tag{AT5a}
-\]
+\end{equation}
 \[
  \mathcal K-\Pi_G=\frac12\left(\frac12D-Y\right)
        +\frac12\left((c-c_0)-\frac12(d-d_0)\right).
  \tag{AT5b}
 \]
-The first identity is the second derivative of the split-field response
-after subtracting its reference film. The second is the free halo
-identity, with marked direction and color fixed. The third is their
+The first identity holds at every centered $x$, including $x=0$: the
+two-leg figure of a film is the trace of its upper face minus that of
+its lower face, and the response kernel is one half of the vector
+figure minus the ghost figure. The second is the free halo
+identity, with marked direction and color fixed; it and (AT5b) hold for
+$r>0$ and are used only on $\mu\leq r$. The third is their
 algebraic difference; the real-valued pole $\Pi_G$ is embedded in $\mathbb C$
-in these formulas. All are exact at each finite volume.
+in these formulas. None of the three involves a torus side.
 
 For clarity, the second identity follows directly from the two free
-propagator numerators. In the selected unit color direction $e_b$, use the
+propagator numerators, that is, from the linear legs $w_b$ (ghost) and
+$v_b$ (vector) of Section~\ref{sec:ex-annulus-fleet-faces} and the free
+inverses $|k|^{-2}I$. In the selected unit color direction $e_b$, use the
 normalization $\operatorname{tr}(\operatorname{ad}(e_b)^2)=-C_G$. Put
 $\rho=|x|^2$, $c_{\rm col}=-C_G$, and $L=-4x_1^2$. Along the marked
 displacement $t e_0$, the common denominator is
@@ -137,10 +186,9 @@ Thus the orbital trace minus one half of the vector trace is
        -4\frac{x_1^2x_0^2}{r^8}-\frac1{r^4}\right)
  =2\Pi_G(x),
 \]
-which proves the halo identity in (AT5a). The first identity is the
-definition of the marked split-field second response and its reference
-subtraction; (AT5b) is then obtained by subtracting the just-computed free
-identity and collecting terms.
+which proves the halo identity in (AT5a). (AT5b) is then obtained by
+subtracting the just-computed free identity from the first identity and
+collecting terms.
 
 The first family of estimates is the all-centered-record receipt, with
 $T_1=r+\mu$ and $R_0=1+2\pi$:
@@ -161,12 +209,18 @@ using $T_2=r$:
  |d-d_0|\leq B_0(r+\mu^2r^{-2})r^{-4}.
  \tag{AT8}
 \]
-All constants $A_1,u,v,u_{\mathrm{ref}},v_{\mathrm{ref}},A_0,B_0$ are nonnegative and uniform in
-the finite volume and selected record. These two receipts are kept
+All constants $A_1,u,v,u_{\mathrm{ref}},v_{\mathrm{ref}},A_0,B_0$ are nonnegative and
+are chosen before the local record: they do not depend on its regulator,
+color, bed, clip or strip width. The subscript ${\rm ref}$ marks the
+ghost channel. These two receipts are kept
 separate: the all-centered estimate uses scale $r+\mu$, while the shell
-comparison uses scale $r$. Their source producer is the common finite
-family of local stationary records; its exact proof obligations are
-listed in the correspondence file.
+comparison uses scale $r$. They are the conclusions (F7) and (F8) of
+Proposition~\ref{prop:ex-fleet-face-bounds}, applied in the two channels
+to the family of all centered records with the prices derived there
+(Lemma~\ref{lem:ex-row-to-floe} and the trajectory-price paragraph):
+(AT6) follows from (F7) at scale $r+\mu$ and the first identity in
+(AT5a), (AT7) is the upper bound in (F7) at scale $r$, and (AT8) is (F8)
+at scale $r$.
 
 \begin{proposition}[Two wave bounds from the finite response]
 \label{prop:ex-two-wave}
@@ -220,9 +274,10 @@ $|\mathcal K|\leq(A_{\rm int}/4+A_{\rm ref}/2)T_1^{-4}$. This is the
 first radial estimate; it applies also at $x=0$.
 
 For the annular comparison, restrict the same records to
-$\mu\leq|x|$ and use the second scale $T_2=|x|$. The upper channel is split
+$\mu\leq|x|$ and use the second scale $T_2=|x|$. The upper face of the
+vector channel is split
 into a principal term and a tadpole term; their charged bounds are
-$uT_2^{-2}$ and $v\mu^2T_2^{-6}$. The same split for the reference channel
+$uT_2^{-2}$ and $v\mu^2T_2^{-6}$. The same split for the ghost channel
 has bounds $u_{\mathrm{ref}}T_2^{-2}$ and
 $v_{\mathrm{ref}}\mu^2T_2^{-6}$. The lower-channel
 remainders after subtracting their respective halos are bounded by
@@ -236,19 +291,25 @@ of the finite-family construction: the first applies the frame estimate to
 every centered record, while the second restricts to the subfamily
 $\mu\leq|x|$ before applying the shell estimate. They use the same response
 coefficient and common constants. The annulus proof therefore does not
-interchange a limit with a volume-dependent integral. The equality of this
-analytic coefficient with the finite sampled pole-test coefficient is a
-separate recording step; it is not inferred from (AT1).
+interchange a limit with a volume-dependent integral. The comparison of
+this analytic coefficient with the finite sampled pole test is a
+separate recording estimate, with an error equal to the site count
+times a quantity tending to zero; exact equality with the finite
+sampled coefficient is not asserted, and nothing of the kind is
+inferred from (AT1).
 
-\paragraph{Source boundary.}
-This unit proves the normalized pole integral and the algebraic conversion
-from the two explicit finite-volume scale receipts to the radial bounds.
-The receipts themselves are produced by the local stationary-family proof
-(`Rally.register` and `Rally.shell`) and remain a source-correspondence
-obligation until that finite-record construction is expanded in the next
-unit. In particular, the stationary-chart and row-price units are not
-claimed here to establish these upper/tadpole and lower/halo estimates.
-The later `HouseWord`/yield argument must also prove the finite recording
-error decays after division by the site count, with its strip chosen before
-the requested blocking side. The remaining path-history, retained-cutoff,
-and flux-capacity suppliers are tracked in the evidence file.
+\paragraph{Scope.}
+This section proves the normalized pole integral, the halo identity and
+the algebraic conversion from the two scale receipts to the radial
+bounds. The receipts themselves are proved in
+Section~\ref{sec:ex-annulus-fleet-faces} for the family of all centered
+records. The recording estimate is proved in
+Section~\ref{sec:ex-annulus-recording}. The order of choices there
+differs from the one for the radial constants: the fee strip of the
+response and the constants $A_1,A_2$ are fixed before the blocking side
+$L$, whereas the strip width $z_L$ and the bound $K_L$ of the regulated
+recording kernel are obtained after $L$ is fixed, with $\mu=L^{-1}$,
+and may depend on $L$. For fixed $L$ the recording error is the site
+count times $\mathfrak r(z_L,K_L)e^{-z_L\ell/4}$, in the notation of
+that section, which tends to zero along every sequence of sides
+$\ell\to\infty$.

@@ -22,6 +22,27 @@ installed linear bridge $W$, with coarse per-site errors tending
 to zero. Both pictures are holomorphic on positive strips. Fix the
 block side $L$ throughout the argument.
 
+The standing data are those of one stationary step, and all of them
+refer to the same step. The gauge group is simple. The coarse sides
+$m_i$ tend to infinity and the fine sides are $n_i=Lm_i$. The path $R$
+has path bounds in the clip $p$ and is attached to the fine bed $B$;
+the metric row of $B$ has a strip bound at width $\sigma/L$, the
+floor of $B,p$ holds with one constant $\varepsilon>0$ at every torus
+side, and the sworn condition of $B$ holds at every $n_i$. The metric
+row of the coarse bed $T$ has a strip bound at width $\sigma$. The
+bridge $\Phi$ is holomorphic and periodic on the strip of width
+$\sigma$ and is the common Fourier representation of the installed
+matrices $W_i$, which satisfy both matching equations
+\eqref{eq:inherited-matching} for $B$ and $T$, with block mean $Q_i$
+and penalty coefficient $\kappa$. The frame and kinetic response data
+of Section~\ref{sec:ex-selected-kinetic-response}, from which the rank
+response is built, are formed with these same $W_i$. The pole
+functional $P_f$ is formed with the regulator $\mu=L^{-1}$, and the
+fine pole picture $\Pi_f$ records it at the sides $n_i$. The argument
+of this section does not use the stationary branch or its Hessian gap,
+although in the source they belong to the same packaged data of the
+step.
+
 The block determinant matrix $M_{\rm rank}$ is the direct sum of the
 fine pole matrix and an identity on coarse scalar coordinates,
 after the coordinate permutation separating the two kinds of
@@ -93,7 +114,10 @@ Thus every nonprincipal term of
 argument does not require $S$ to vanish at the nonprincipal alias.
 
 It remains to determine the principal amplitude at zero. The dual
-matching equation is
+matching equation, the second equation of
+\eqref{eq:inherited-matching}, passes from the grids to all real
+momenta by the density argument already used. With $Q(p)$ the symbol
+of the block mean it reads
 \[
                   Q(p)\Phi(p)=I-\kappa^{-1}K_c(p).
 \]
@@ -128,22 +152,67 @@ of $S$, the quadratic term of the expression on the right is
 Thus $H$ and $S$ have identical quadratic Taylor terms, and in
 particular identical drift coefficients in every color component.
 
-Apply this result with the fine pole picture supplied by the
-annulus estimates and the coarse rank picture supplied by the
-determinant trace formula. The latter's leading coefficient equals
-the former's. The contact cancellation and the dimension-free
-core-versus-rank estimate then show that the actual thermal drift
-differs from the fine annulus drift by a bounded amount, with the
-bound fixed before $L$. Consequently a fine estimate
+We state the result and its use.
+
+\begin{proposition}[Transport of the pole coefficient]
+\label{prop:ex-pole-coefficient-transport}
+Under the standing data listed at the beginning of this section, let
+$\Pi_f$ be a two-leg picture, with components holomorphic, periodic and
+bounded on a strip of positive width, which records the fine pole
+functional $P_f$ of $p,R$ with regulator $L^{-1}$ at every fine side
+$n_i$ with error $n_i^4e_i$, where $e_i\to0$. Let $\Pi_c$ be the
+picture associated, as in Lemma~\ref{lem:ex-pole-recording}, with the
+rank response kernel, and assume that this kernel is jointly
+holomorphic, periodic and bounded on a strip of positive width. Then
+for every color $c$
 \[
-       |\alpha_f+b_G\log L|\leq N
+ \alpha_c(\Pi_c)=\alpha_c(\Pi_f).
 \]
-gives
+\end{proposition}
+\begin{proof}
+By the block identity for the determinant matrix recalled above and
+Lemma~\ref{lem:ex-pole-recording}, $\Pi_c$ records $P_f\circ W_i$ on
+the $i$th coarse torus with error equal to the coarse site count times
+a quantity tending to zero. The argument of this section then shows
+that the bilinear matrices $H$ of $\Pi_c$ and $S$ of $\Pi_f$ have the
+same quadratic homogeneous term at zero momentum. The coefficient
+$\alpha_c$ is twice the real part of one entry of that term.
+\end{proof}
+
+In the one-step construction three coefficients occur, and the
+proposition relates two of them. Let $\mathcal Y_{\rm det}$ be the
+picture of the completed determinant correction
+$\mathcal B_t$ of Section~\ref{sec:stationary-germ-symmetry} along the
+stationary branch, with regulator $\mu=L^{-1}$. The scalar of the
+output path is $\alpha=\alpha_c(\mathcal Y_{\rm det})$
+(Proposition~\ref{prop:stationary-output-path}). The inherited loop
+does not enter $\alpha$: by the moving Haar identity
+\eqref{eq:ex-thermal-determinant} the thermal function is the
+inherited loop plus $\mathcal B_t$ along the same branch, and the
+inherited picture has order four
+(Proposition~\ref{prop:inherited-loop-picture}), so its quadratic
+coefficient is zero. The comparison of the completed determinant
+response with the rank response is the subject of
+Sections~\ref{sec:ex-stationary-determinant-prices}
+and~\ref{sec:ex-thermal-contact-cancellation}: it is to supply a
+constant $C_{\rm cmp}$, fixed before $L$, with
 \[
-       |\alpha_{\rm thermal}+b_G\log L|
-       \leq N+C_{\rm cmp},
+ |\alpha_c(\mathcal Y_{\rm det})-\alpha_c(\Pi_c)|\leq C_{\rm cmp}.
 \]
-where $C_{\rm cmp}$ is the Cauchy coefficient bound from the
-uniform determinant comparison. The fine annulus estimate itself,
-including its common finite-volume recording, remains the input
-named at the start of this application.
+This is an input here. Finally
+Proposition~\ref{prop:ex-annulus-estimate} supplies a fine pole picture
+$\Pi_f$ for the same clip, path, fine bed and regulator, recorded at
+the same fine sides $n_i$, with
+\[
+       |\alpha_c(\Pi_f)+\lambda_G\log L|\leq D_0 .
+\]
+The three statements concern the same data, and the triangle
+inequality gives
+\[
+       |\alpha+\lambda_G\log L|
+       \leq D_0+C_{\rm cmp}.
+\]
+The hypotheses \eqref{eq:ex-annulus-hypotheses} of the annulus
+estimate, for the fine bed and the fine sides, are among the standing
+data of this section together with the bound on the direct coefficient
+of $p$ and the strip bound of $B$ at a fixed width.

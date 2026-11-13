@@ -8,8 +8,9 @@ on the difference between a torus mean and its zero Fourier mode. This
 section proves that bound, explains the determinant calculation and
 positive-matrix domain, and gives the exact scale order in the final
 annulus output.
-The local stationary estimates used to feed this construction remain those
-listed in the preceding section and its evidence record.
+The local estimates used to feed this construction are those of
+Sections~\ref{sec:ex-annulus-fleet-faces}
+and~\ref{sec:ex-annulus-two-wave}.
 
 Write $\mathcal H_\sigma(A)$ for the class of periodic functions that are
 holomorphic when each imaginary momentum coordinate has modulus less than
@@ -104,6 +105,18 @@ $\mathcal Y\in\mathcal H_{\sigma/2}(A)$, and for every side $\ell$,
      \mathfrak r(\sigma,A)e^{-\sigma\ell/4}).
  \tag{RY4}
 \]
+In the normalized convention $C_2=D^2/2!$ used for coefficient pictures
+elsewhere (see \eqref{eq:output-record}), (RY4) says that for unit
+Fourier waves $v,w$ of momenta $p,p'$ and marks $i,j$
+\[
+ \Bigl|C_2(\mathcal P_\ell)[v,w]
+   -\mathbf 1_{p+p'=0}\,\ell^4\,\mathcal Y_{ij}(p')\Bigr|
+  \leq\tfrac12\,\ell^4\,\mathfrak r(\sigma,A)e^{-\sigma\ell/4};
+ \tag{RY4$'$}
+\]
+in particular $\mathcal Y$ records $\mathcal P_\ell$ in the sense of
+\eqref{eq:output-record} with error
+$\ell^4\mathfrak r(\sigma,A)e^{-\sigma\ell/4}$.
 \end{lemma}
 \begin{proof}
 The normalized Haar integral defining $\widehat F_{ij,0}$ is holomorphic
@@ -123,7 +136,8 @@ coefficients in the definition of $\operatorname{Err}_\ell$ vanish by
 momentum conservation. If $q+q'=0$, the second Taylor coefficient of
 $\mathcal Y=\frac12\widehat F_{ij,0}$ has the factor $2!=2$, so it equals
 $\widehat F_{ij,0}$; subtracting (RY3) and multiplying the mean estimate
-by the number $\ell^4$ of sites gives (RY4).
+by the number $\ell^4$ of sites gives (RY4). Dividing by $2!$ gives
+(RY4$'$).
 \end{proof}
 
 For a finite side $\ell$, set
@@ -218,10 +232,11 @@ family $H$ has strip fee $(k,E)$ with $k>0$, $E\geq0$, and matches the free
 Wilson response at every volume. Assume the response service chooses
 $v>0,M\geq0$, depending only on these external data, with the following
 property: for every sequence of positive integer sides $\ell_j\to\infty$,
-every bed $B$, target $p$, path $R$, and budget $\Lambda$ satisfying the
-fixed $(\tau,A,\Lambda)$ path bound, attachment of $B$ to $R$, metric
-strip bound $(\sigma,C)$, direct-term bound $Z$, all grade floors
-$(\epsilon,C)$, and sworn conditions at every $\ell_j$, it provides a
+every bed $B$, clip $p$, path $R$, and budget $\Lambda$ satisfying the
+path bound $(\tau,A,\Lambda)$ in $p$, attachment of $B$ to $R$, metric
+strip bound $(\sigma,C)$, direct-term bound $Z$, the floors
+$(\epsilon,C)$ of $B,p$ at every torus side (not only at the sides
+$\ell_j$), and the sworn condition at every $\ell_j$, it provides a
 family $T$ with fee $(v,M)$, whose zero-, one-, and two-leg layers vanish
 to orders three, two, and one respectively, and exact analytic
 cancellation of the target response against the Wilson term at every
@@ -286,8 +301,9 @@ the target minus the Wilson term, while the baseline ticket matches the
 Wilson term. Adding their zero-, one-, and two-leg Taylor identities gives
 the target ticket. The finite determinant formula (RY8) turns this into
 the exact local coefficient identity (RY3), and the floor and positive
-regulator bounds ensure both determinants are nonzero at zero. The all-grade
-floors and metric assumptions identify the regulated interacting table
+regulator bounds ensure both determinants are nonzero at zero. The
+floors at every torus side and the metric assumptions identify the
+regulated interacting table
 with the tested local determinant table; the reference table is identified
 by its explicit regulator formula. These are the two tab identities
 required by the local positivity/floor argument at scale $s$. The exact
@@ -304,12 +320,22 @@ The positive $z_L$ and $\ell_j\to\infty$ imply $e_{L,j}\to0$ for this
 fixed $L$. No uniformity of $z_L,K_L$ in $L$ is required or asserted.
 
 The same response satisfies (RY9), uniformly in color $c$, at regulator
-$y$. The coefficient-integral identity (AT1) identifies
-$\alpha_c(\mathcal Y_L)$ with the normalized integral of
-$\operatorname{Re}\kappa_{y,c}$. The radial calculation in the preceding
-section then gives the estimate, with the same $D_0$ for every color.
-(RY11): $\log y^{-1}=\log L$, while $a,b$ were fixed uniformly before
-choosing $L$. Taking $L_{\min}=1$ supplies the all-odd-side clause needed by the
+$y$. The coefficient-integral identity (AT1) of
+Section~\ref{sec:ex-annulus-two-wave} identifies
+$\alpha_c(\mathcal Y_L)$ with the normalized integral over $E_4$ of
+$g=\operatorname{Re}\kappa_{y,c}$, which is bounded and continuous, and
+(AT4) gives the pole integral
+$c_{\rm wt}\int_{y<|x|\leq1}\Pi_G=-\lambda_G\log y^{-1}$. These are the
+hypotheses of Lemma~\ref{lem:path-radial-log}, with $A_1=a$, $A_2=b$
+and $\mu=y$; its conclusion is (RY11), with the same $D_0$ for every
+color. Explicitly, split $E_4$ into the ball $|x|\leq y$, the annulus
+$y<|x|\leq1$ and the rest. On the ball the first bound in (RY9) gives
+$|g|\leq ay^{-4}$ and the volume is $\pi^2y^4/2$. Outside the unit ball
+$|g|\leq a$. On the annulus
+$\int|x|^{-3}dx=2\pi^2(1-y)$ and
+$y^2\int|x|^{-6}dx=\pi^2(1-y^2)$, so the second bound in (RY9)
+contributes at most $3\pi^2b$. Finally $\log y^{-1}=\log L$, while
+$a,b$ were fixed uniformly before choosing $L$. Taking $L_{\min}=1$ supplies the all-odd-side clause needed by the
 outer construction; oddness is not otherwise used in this estimate.
 \end{proof}
 
@@ -317,9 +343,13 @@ outer construction; oddness is not otherwise used in this estimate.
 This proves the finite Fourier tail, the exact conversion of local
 coefficient identities into a site-count-scaled recording error, and the
 downstream assembly from the stated baseline, response-service,
-local-positivity/floor, and uniform two-wave outputs. It does not reprove the local
-stationary-family producers of the all-centered and shell bounds, nor the
-general path-history service that supplies the response family. Those are
-the remaining analytic inputs recorded in the companion evidence. No
+local-positivity/floor, and uniform two-wave outputs. Of these four
+hypotheses, the finite-layer realization with its common strip is
+proved in Lemmas~\ref{lem:ex-annulus-same-data}
+and~\ref{lem:ex-annulus-common-strip}, and the uniform two-wave output
+(RY9) is the conclusion (F11) of
+Section~\ref{sec:ex-annulus-fleet-faces}. The resulting statement, in
+which only the baseline and the response service remain as inputs, is
+Proposition~\ref{prop:ex-annulus-estimate}. No
 finite-volume coefficient is identified with the continuum integral
 without first passing through (RY12).
