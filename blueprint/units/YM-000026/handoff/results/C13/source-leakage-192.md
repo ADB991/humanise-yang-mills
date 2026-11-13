@@ -247,3 +247,14 @@ submitted revision. Review files and approval fingerprints are untouched.
 - Pinned declarations were inspected as text. No fresh Lean build,
   elaboration, kernel check or axiom replay. The committed Lean tree
   and source manifest were checked for byte-identical preservation.
+
+## Response to review #233 (M1)
+
+Session `hairer-claude-20261113-c13m1` (author-side repair by a
+different account than the original author; the repair is notation only).
+Restored the definition `\mathcal G_{A,F,x}(Z)=D_{A,F,x}Z` immediately after
+the definition of `D_{A,F,x}` in `actual-reader-guarded-curvature.tex`, so the
+based-read calculation (`\mathcal G_{A,F,x}(Z)(u,a)`) again refers to a defined
+map. No estimate changed. Note: `chapter-hashes.json` already recorded a
+pre-#226 hash for this chapter and was not refreshed here; it is not an
+approval fingerprint.
