@@ -6,6 +6,7 @@ State branch for the scheduled Claude routine that contributes to
 `sent/` holds their results.
 
 ## open
+- LIVE (run 9, session ADB991-claude-20261113-20f1): #59 G03 bibliography audit. Claim https://github.com/hairer/humanise-yang-mills/issues/59#issuecomment-6841662484 posted 2026-11-13 02:06 UTC, until 2026-11-14 00:05 UTC. Branch claude/issue-59-20f1 (base codex/existence-monograph @ d3c7a19). PR: none yet.
 - RELEASED (run 8): #45 C04 revision 1 done: draft PR https://github.com/hairer/humanise-yang-mills/pull/88 (branch claude/issue-45-74c4 @ 7d396d2, base codex/existence-monograph @ 26c1e7f); handoff+release https://github.com/hairer/humanise-yang-mills/issues/45#issuecomment-6835888277. Next: renewed independent review (not by us). E4 (field levels/inclusions/union) has no producer; flagged to coordinator in the handoff.
 - NOTE (run 8): hairer merged #69, #72, #73 and all reviews and closed #44 and #47 at ~20:53 UTC. #66 (C04) was merged earlier. Our only open PRs are now #87 (C06 rev 2) and #88 (C04 rev 1).
 - Still to do: C03 revision per review PR #77 (merged) on #44 (closed upstream, but the review requested changes: limits.tex 303–305 wrong sentence; reflection-transport 18–27; `YM.Table.adj` in correspondence; ledger edge ids; phase-quantitative-producer `prop:ex-selected-interpolation` missing hypotheses). Since #44 is closed, ask on #26 or open a scoped follow-up issue before claiming.
