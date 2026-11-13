@@ -113,9 +113,11 @@ probabilities. Let $N_f$ and $N_p$ be the numbers of frame and
 predictor tags in the fixed patch. A site likelihood is $N_f$ times
 its tag probability, and a bond likelihood is $N_p$ times its tag
 probability. The probabilities are nonnegative and at most one:
-in the minimizing frame branch they are uniform on the nonempty
-set of minimizers, in the fallback branch they are uniform on all
-tags, and the predictor weights are nonnegative with sum one.
+in the minimizing frame branch the frame is the single selected
+minimizer and the tag probabilities are uniform on all frame tags;
+in the fallback branch they are uniform on the set of eligible tags
+and zero outside it; and the predictor weights are nonnegative with
+sum one.
 Thus each likelihood is at most $N_f\le e^{N_f}$ or
 $N_p\le e^{N_p}$, respectively. The radius-$r$ seed neighbourhood
 contains at most $n b_{r+1}$ sites, and the bonds incident to it
@@ -135,10 +137,15 @@ sector seed support and its own flag set agrees with the actual coarse
 flags throughout its $300B$ neighbourhood. On a healthy packet
 neighbourhood, where there are no actual coarse flags, this flag test is
 equivalent to the packet's flag component being empty. The latter is
-the eligibility rule of the locally smooth stock extension used in the local
-jet argument; its equality with the physical packet also uses the
+the eligibility rule of the locally smooth stock extension
+$\mathcal P_A^{\rm st}$ used in the local jet argument. The extension
+differs from $\mathcal P_A$ in two respects: its eligibility test is
+the fixed one just described, and its action exponent is built from
+the unmasked rows rather than the clipped rows of $\Phi_A$. The
 funded room and manifest-sector conditions and a healthy neighbourhood
-through radius at least $500B$. Indeed, every packet flag lies in its
+through radius at least $500B$ are used for both identifications below,
+and the second of them is also what gives the value bound of the
+extension itself. Indeed, every packet flag lies in its
 own support and hence in its $300B$ neighbourhood, so the flag
 agreement forces the packet flag set to be empty when that neighbourhood
 is healthy; the converse follows because both flag sets then vanish
@@ -206,10 +213,19 @@ The scalar estimate \eqref{eq:packet-normalization} and the core
 estimate must hold on these closed conditions; this is the closed
 support version of the local input used below.
 
-For the local jet estimate, use the locally smooth stock extension described
-above; its seed-eligibility indicator is fixed as the coarse field
-varies. Separate its expression as $e^{\phi(v)}H(v)$, apart from that
-indicator. The local differentiated estimates give
+For the local jet estimate, use the locally smooth stock extension
+$\mathcal P_A^{\rm st}$ described above; its seed-eligibility indicator
+is fixed as the coarse field varies. The estimate is made at a base
+field $y$ at which the funded-room and manifest-sector conditions hold
+and the packet's $500B$ neighbourhood is healthy. These hypotheses are
+used twice. They identify the unmasked rows in the exponent of
+$\mathcal P_A^{\rm st}$ with the clipped rows of $\Phi_A$, which is
+how the energy bound \eqref{eq:packet-assigned-energy} gives the value
+bound of the extension's exponent (the last line of
+\eqref{eq:packet-local-jet-inputs} below); and they give
+$\mathcal P_A^{\rm st}(y)=\mathcal P_A(y)$ in value. No derivative of
+the physical packet's flag test is taken. Separate the extension as
+$e^{\phi(v)}H(v)$, apart from its fixed indicator. The local differentiated estimates give
 \begin{equation}\label{eq:packet-local-jet-inputs}
  \begin{split}
  \phi-\phi(y)&\in\mathcal B_j(b(x)n,1;y),\\
@@ -219,7 +235,10 @@ indicator. The local differentiated estimates give
  \end{split}
 \end{equation}
 where $b,c\ge0$, $b$ has upper exponent $1$ and $c$ upper exponent
-zero. Here $\ell$ is the ticket expense per seed. The first bound is
+zero. Here $\ell$ is the ticket expense per seed (not the
+support radius parameter of the next subsection), and in the next
+paragraph $v$ denotes the coarse displacement scale, not the
+derivative-scale slot of $\mathcal B_j$. The first bound is
 \eqref{eq:action-packet-log-jets}. To check the bound for $H$, first
 consider a coarse noise cutoff. Its argument is the squared chord
 of $V_e Q(U)_e^{-1}$ divided by $(W\tau)^2$, with $W>0$ fixed
@@ -248,7 +267,9 @@ where $\rho_L$ is the fine-bond density. Their derivative scales
 add, giving $c(x)n$ with upper exponent zero, as asserted.
 The last inequality in
 \eqref{eq:packet-local-jet-inputs} is the closed support version just
-explained. Thus the differentiated local action, covariance and chart
+explained, applied to the clipped exponent, which equals the
+extension's exponent at $y$ under the healthy-neighbourhood,
+funded-room and manifest-sector hypotheses. Thus the differentiated local action, covariance and chart
 bounds proved in the preceding sections supply the required estimates.
 
 We give the remaining derivative calculation. The repeated chain rule
@@ -273,7 +294,8 @@ $1\le k\le j$,
  \qquad J_j=\max\{1,j!\}.
 \]
 The zero-order bound is equality. Using
-\eqref{eq:packet-derivative-product} and $n\ge1$, the packet belongs to
+\eqref{eq:packet-derivative-product} and $n\ge1$, the stock
+extension $\mathcal P_A^{\rm st}$ belongs to
 \[
  \mathcal B_j\bigl(e^{(C d^5-g)n},a(x)n;y\bigr),
  \qquad a(x)=J_j(1+b(x))+c(x).
@@ -287,13 +309,20 @@ As $d\ge1$ and $d\ge\log h$ eventually, for $n\ge1$,
 Enlarge $a$ to at least one if necessary. Every derivative of order
 at most $j$ is now bounded by the same number:
 \begin{equation}\label{eq:packet-jet-price}
- \|D^k\mathcal P_A(y)\|
+ \|D^k\mathcal P_A^{\rm st}(y)\|
  \le\exp\{((C+3j)d^5-g)n\},\qquad 0\le k\le j.
 \end{equation}
+At $k=0$ this is also a bound for $|\mathcal P_A(y)|$, since the two
+agree in value at $y$.
 Thus finite differentiation changes the fixed coefficient of the
 logarithmic expense; it does not consume a fixed fraction of the
-energy gain. This argument applies separately at every point of the
-allowed variation, with the same constants.
+energy gain. This argument applies, with the same constants, at every
+point of the variation at which the funded-room, manifest-sector and
+$500B$ healthy-neighbourhood hypotheses hold, the estimate being
+re-based at that point. It does not apply at other points of the
+variation: health is a closed condition, and manifestness is not
+preserved when only the coarse field is varied with the seeds held
+fixed.
 
 \subsection{Absorbing the expense and the packet count}
 Here is the quantitative comparison used to turn these estimates into
