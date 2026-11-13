@@ -1,0 +1,18 @@
+# Source correspondence (author evidence)
+
+Source revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. All reads are textual; no fresh Lean elaboration or axiom audit. The authoritative mathematical argument is only in the chapter.
+
+| Chapter interface | Inspected declaration and path | Exact support / limit |
+| --- | --- | --- |
+| Raw maps and approach | `YM.Next.UVStress.Stations.build_curve`, `Approaches`, `Zoom`, `Lean/YM/Next/UV_STRESS/Rates.lean` | One radii sequence and raw panel family; fixed-grade eventual symmetry/unit receipts and fixed-tuple tested limits. |
+| Corrected recursion and exact inclusions | `YM.Next.UVStress.corrected`, `correction`, `balanced`, `solid`, `Lean/YM/Next/UV_STRESS/Arrange.lean` | Exact corrected inclusion identity; symmetry on fixed-grade tails; the correction precedes isomorphism completion. |
+| Eventual invertibility and completion | `YM.Next.UVStress.MeterTest.injects`, `Stations.equivalences`, `Stable`, `Lean/YM/Next/UV_STRESS/Invert.lean` | Q is corrected; he d gives eventual bijectivity. M k d uses Q when bijective and a fixed bijective witness otherwise. hX d proves eventual equality. The final fun_kit uses intersections of fixed-grade agreement tails. No all-grade common tail. The manuscript restricts its raw construction to d≤k; its completion handles the otherwise branch as well. |
+| Total isomorphism curve | `YM.Climb.Scaling`, `.Align`, `.jets`, `.meter`, `Lean/YM/Climb/Cells.lean` | U is a grade-wise equivalence at every index; eventual coherence is additional data. Meter includes the separate positive xi normalizer. |
+| Normalization restriction | `YM.Next.UVStress.produce_current`, `focused_track`, `Lean/YM/Next/UV_STRESS/Limit.lean` | produce_current narrows one input curve and returns approach, stability and a normalized stress meter together. focused_track chooses a tail after finite grade/test requests. This alone is not the trace calibration package. |
+| Immediate common-witness caller | `YM.MergeProof.Acme.readyA`, `emanate`, `Lean/YM/MergeProof/Emanate.lean` | readyA passes the equivalences witness into produce_current and retains its returned X for approach/stability/meter/ActLaw. This does not by itself prove all trace receipts for X. |
+| Same-curve trace assumption | `YM.Trace.Over.ChoiceK`, `Lean/YM/TraceExtension/Chart/Masts.lean`; `YM.Trace.Over.year_spec`, `Lean/YM/TraceExtension/Chart/North.lean` | ChoiceK is indexed by J:Scaling and contains rank plus a single eventually conserved family with both year and weighted-trace limits. year_spec takes that same J, its approach, physical and reference Marvel/Ward hypotheses and derivative data; its flux quotient tends to one on that curve. It does not identify independently chosen curves. |
+| Immediate trace use | `YM.Trace.Over.july`, `Lean/YM/TraceExtension/Chart/Nectar.lean` | Calls reveals then year_spec on the same J/hq' approach and the recentered physical energy, before passing to the scalar trace. Full production of all reveals hypotheses and the public trace route are not re-audited here. |
+
+The supplied candidate `Lean/YM/UVNext/PHASE_COARSE_ERROR/Stations.lean` is not the location of Stations.equivalences; the exact location above was found and read. No source edits.
+
+Shared literature/Bots check: read `blueprint/background/README.md` and `Bots/README.md`, searched for comparison-curve/trace/Stations material. Available background notes concern OS, gauge averaging and SU(2); no matching joint analytic supplier was located. No new external theorem or analytic proof is claimed. The finite-tail argument is elementary and written directly in LaTeX.
