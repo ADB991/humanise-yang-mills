@@ -31,7 +31,11 @@ Define the angular Ward expression by
 Here $q[i\mapsto\cdot]$ changes only the indicated slot.  The condition
 \emph{Still at $x$} means $\mathcal A_K(q;x)=0$ for every word $q$ and every
 $K$.  The condition \emph{collinear} means this identity holds whenever the
-points lie on one common coordinate line and remain pairwise distinct.
+points lie on one coordinate axis $\mathbb Re_a$ through the origin and
+remain pairwise distinct.  Because the orbital term contains $Kx_i$, the
+expression is not translation invariant, so this is weaker than the
+identity on all lines parallel to an axis; only the axis version is proved
+and used below.
 The compatibility relation between position and spin derivatives is
 \begin{equation}
  \mathcal P_{d,b}\mathcal Y_d(K)v
@@ -137,7 +141,9 @@ of the stress flux; its precise form is (S1)--(S3) before
 Lemma~\ref{lem:ward-local-response-laws}.  The actual source constructs the flux test rather
 than assuming a noncompact rotation field is admissible.
 
-For fixed separated collinear $x$, choose smooth compactly supported
+The following paragraph is motivation only; the test actually used is the
+growing anisotropic petal described after the price estimates.  For fixed
+separated collinear $x$, one might choose smooth compactly supported
 windows $\chi_i$ around each point, equal to one near that point and with
 supports avoiding all other insertions.  For a plane rotation in axes
 $a,b$, the packet
@@ -150,8 +156,9 @@ angular expression as minus the integral of its stress-flux density.  In
 that density the term $\chi_i\,\partial_a(Ky)_b$ cancels after contraction
 against the symmetric stress, because $K$ is skew.  The terms
 $(\partial_a\chi_i)(Ky)_b$ do not cancel: they are the shell integrand.
-Their supports lie in the cutoff shells around the insertions, and the
-exterior packet estimate below controls them.
+The estimate proved below is not for such fixed windows.  It is for a petal
+centred at the origin, of widths $e^{100n},e^{150n},e^{300n}$, whose shell
+lies far from all insertions.
 
 Here is the rate calculation behind the stress-packet estimate.  For a
 sequence of scalar or finite-dimensional vector quantities $F_n$, write
@@ -234,6 +241,22 @@ distinction between the two price measures in each display is essential:
 the first controls the collinear line cost, while the second controls the
 packet amplitude.
 
+The two price inputs carry sign hypotheses, which we now check.  The line
+price \eqref{eq:packet-line-price} for the collinear cluster $B$ requires
+both reflection signs among the three axes other than $l$, and an axis
+among them whose sign is opposite to that of $l$.  The point price
+\eqref{eq:packet-point-price} for $A$, with $Q$ all four axes, requires
+both signs among all four axes.  In the stress decomposition below, $B$ is
+the matching sign pattern of $J_{ab}$ with $a\ne b$: it is odd exactly
+under the reflections of the axes $a$ and $b$.  The cluster $A=J_{db}$
+with $d\ne b$ is odd exactly under the reflections of $d$ and $b$.  For
+$B$: since $a\ne b$, at least one of $a,b$ differs from $l$, which gives
+an odd axis other than $l$; and $\{a,b,l\}$ has at most three elements,
+which gives an even axis other than $l$.  If $l\in\{a,b\}$ then $l$ is odd
+and the even axis just found has the opposite sign; otherwise $l$ is even
+and the odd axis has the opposite sign.  For $A$: the axes $d,b$ are odd
+and the two remaining axes are even.  Hence both price hypotheses hold.
+
 The one-dimensional panel profile $\varphi_d$ in the test has Fourier gap
 $\widehat\varphi_d(\xi)\ne0\Rightarrow |\xi|\geq1$.  This is a property
 of the panel profile, not a claim that the compactly supported spatial
@@ -244,6 +267,22 @@ the differentiated-packet bound
                     \exp(-p_de^{-w_dn}),\qquad p_d\geq0.
 \label{eq:ward-packet-tail}
 \end{equation}
+To derive it, use the exterior computation of
+Section~\ref{sec:physical-ward-packet-prices}.  For $p_d\ge0$ the temporal
+factor is at most
+\[
+ \|\widehat\varphi_d\|_1\exp(-p_d/e^{w_dn}),
+\]
+and each
+transverse factor has the form $e^{-w_jn}f_j(p_j/e^{w_jn})$ with a fixed
+bounded profile $f_j$, as in that section, so its modulus is at most
+$\|f_j\|_\infty e^{-w_jn}$.  On the cove $|p_j|e^{-(1+w_j)n}\le1$, so
+$h_{j,n}(p_j)=e^{-(1+w_j)n}$ and
+\[
+ \|f_j\|_\infty e^{-w_jn}=\|f_j\|_\infty\,e^{n}h_{j,n}(p_j).
+\]
+The product of the three transverse factors gives $e^{3n}H_n(p)$.
+
 On the cove with $d=b$, split at the longitudinal level
 $p_d=e^{-3000n}$.  On the region $p_d\geq e^{-3000n}$, the elementary inequality
 \[
@@ -273,7 +312,17 @@ $D_{-3000,n}D_{0,n}$.  The shallow prices yield
 Both estimates are stronger than $O_{-101}$.
 
 If $d\ne b$, the shear estimate bounds the squared packet by an amplitude
-with exponent $3+w_d$, against $D_{-3000,n}D_{w_d,n}$.  When $d=l$,
+with exponent $3+w_d$, against $D_{-3000,n}D_{w_d,n}$.  It follows from
+\eqref{eq:ward-packet-tail}: with $\tau=p_de^{-w_dn}$ one has
+$(1+\tau)^2e^{-2\tau}\le1$, so
+$e^{-2\tau}\le(1+\tau)^{-2}=e^{2w_dn}(p_d+e^{w_dn})^{-2}$; and since
+$e^{-3000n}\le e^{w_dn}$,
+$(p_d+e^{-3000n})(p_d+e^{w_dn})\le(p_d+e^{w_dn})^2$.  Together,
+\[
+ |F_n|^2\le M^2e^{2(3+w_d)n}\,\frac{H_n^2}{(p_d+e^{w_dn})^2}
+ \le M^2e^{2(3+w_d)n}\,D_{-3000,n}D_{w_d,n}
+\]
+on the cove.  When $d=l$,
 $w_d=-150$ and $u=1$, so \eqref{eq:ward-balanced-price} gives
 $-150+3+(1+1)/2=-146$.  When $d\ne l$, $w_d=-300$ and $u\leq150$,
 so the exponent is at most
@@ -346,8 +395,16 @@ vector test with components
  F_a^{(n)}(y)=-\mathrm{petal}(b,a,l,n)(y),\qquad
  F_c^{(n)}(y)=0\quad(c\notin\{a,b\}).
 \]
-The local packet limits are $F_b^{(n)}(y)\to y_a$ and
-$F_a^{(n)}(y)\to-y_b$, exactly the two components of the orbital field.
+These tests do more than converge to the orbital field near the
+insertions: for every fixed point $y_0$ there is $n_0$ such that for
+$n\ge n_0$ one has $\mathrm{petal}(a,b,l,n)(y)=y_a$ for all $y$ in a
+neighborhood of $y_0$.  Indeed $\mathrm{petal}(a,b,l,n)(y)=y_a$ whenever
+every normalized coordinate $e^{w_in}y_i$ has modulus less than one, and
+these normalized coordinates tend to zero locally uniformly because every
+$w_i<0$.  Hence, for all large $n$, $F_b^{(n)}(y)=y_a$ and
+$F_a^{(n)}(y)=-y_b$ on a neighborhood of each of the finitely many
+insertions: they coincide there with the two components of the orbital
+field, which is what the compact flux identity requires.
 The second component carries the minus sign; it is not an additional sign
 in the stress contraction.  By stress symmetry, its shell integral and the
 first component combine as

@@ -71,10 +71,14 @@ let $n_m$ be the number of columns at level $m$.  The counterterm budget is
 \[
  e_m=32(1+n_m)a_{m+1}^{D}X_m/V_m.
 \]
-For each fixed birth level $m$, the quota conversion supplies a finite
-factor $Q_m^{\mathrm{quota}}\ge0$, so the correction label has coefficient
-norm at most $2Q_m^{\mathrm{quota}}e_m$. This factor is uniform in volume,
-period and collar point at that $m$; no bound uniform in $m$ is required.  The root-test cost, in contrast, is the
+The channel payments, and hence $V_m$ and $e_m$, depend on the
+coefficient bounds of the two inserted labels.  For each fixed birth level
+$m$, the quota conversion supplies a finite factor
+$Q_m^{\mathrm{quota}}\ge0$, so the producer bounds the correction label's
+coefficient norm by $2Q_m^{\mathrm{quota}}e_m$. This bound is uniform in
+volume, period and collar point at that $m$; no bound uniform in $m$ is
+required, and the definition below asks only for some finite bound of this
+kind.  The root-test cost, in contrast, is the
 decaying quantity $2S(p_0,k)c_m^{-1}$.
 
 \subsection{The shell-node hypothesis}
@@ -105,18 +109,20 @@ with $k$ at least the reference threshold for grade $D$, every $v\in E_d$,
 $T\in E_4$, and extraction order $\mathfrak f$, there is $m_0$ such
 that for every $m\geq m_0$ and every fixed integer lattice anchor
 $x\in\mathrm{Cover}=\mathbb Z^4$ whose continuum location at level $j_m$
-lies in $\mathcal C_{r_m}$, there are a label sequence
-$z_x: \mathbb N\times\mathbb N\to E_D$ and a constant $A'_m$ for which
+lies in $\mathcal C_{r_m}$, there is a label sequence
+$z_x: \mathbb N\times\mathbb N\to E_D$ for which
 $\mathfrak f$-almost every $(N,q)$ has $p_0\leq N$ and
 \[
-  \|z_x(N,q)\|_D\leq2Q_m^{\mathrm{quota}}e_m,\qquad
+  \|z_x(N,q)\|_D\leq A_m,\qquad
   \operatorname{RT}_{\beta,\mathcal T}(\text{fragment}(z_x(N,q)))
        \leq A'_m:=2S(p_0,k)c_m^{-1}.
 \]
+Here $A_m<\infty$ is a constant which may depend on $m$, the opening, the
+labels and the extraction order, but not on the anchor $x$ or on $(N,q)$.
 The late filter set and sequence may depend on $x$; the numeric coefficient
-and root-test bounds do not.  For each fixed $m$, the finite factor $Q_m^{\mathrm{quota}}$ is
-independent of volume, period and collar point. Both this factor and
-$e_m$ may depend on $m$.  The finite extraction order may encode any fixed finite family of
+and root-test bounds do not.  The producer in
+Proposition~\ref{prop:ex-lattice-actual-shell-node} gives
+$A_m=2Q_m^{\mathrm{quota}}e_m$.  The finite extraction order may encode any fixed finite family of
 watches; the receipt is available for every such family, with its tester costs
 fixed before the eventual volume/period choice.
 The associated finite-volume fragment is the product of the grade-four
@@ -300,7 +306,7 @@ points.  Intersect the late filter sets supplied separately for those points;
 their finite intersection is still late.  The corresponding finite tuple of
 correction labels lies in a bounded subset of a finite-dimensional product
 space, with $m$ held fixed, so pass to one convergent subnet and take its
-coordinate limits. Its bound $2Q_m^{\mathrm{quota}}e_m$ need not stay
+coordinate limits. Its bound $A_m$ need not stay
 bounded as $m$ increases: the correction labels disappear by the
 annihilator identity before the limit $m\to\infty$ is taken.  This
 single extraction handles every stencil point and every watch in the finite
