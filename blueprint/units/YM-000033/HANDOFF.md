@@ -15,3 +15,16 @@ The precise upstream inputs and their source suppliers remain in the mathematica
 Match the same chart, norms, weights and receiver parameters in the downstream Scribe argument; resolve its chapter order and parent-owned evidence references.
 
 The main assembly, supporting chapters, shared metadata, pinned Lean source and dependencies are unchanged by this contribution. Review the exact target version before integration. Actual local checks and their limits are recorded in validation.md.
+
+## 2026-11-13 revision for #126 and #127
+
+The current bounded author revision responds to R1–R5 in the response table
+in `correspondence.md`. It starts from upstream `84a6a9371caddd2f9967b9d6924e156ec097610e`;
+the earlier independent review fingerprint is stale for the changed text.
+It leaves all prior review reports and approval metadata untouched. Fresh
+independent mathematics and Lean-correspondence review at the new fingerprint
+is required. The selected chart, tested-map, transport, medium/probe and
+common-data producers remain conditional inputs; the wrapper's two external
+reference warnings are documented rather than hidden. See `validation.md`
+for checks actually run and their limits. No push, draft PR, public comment,
+claim release or human acceptance is asserted by this local revision.
