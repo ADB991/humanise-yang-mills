@@ -1,8 +1,8 @@
 import FreeField.Main
 
 /-! Kernel dependency report for all 75 tasks, the main theorem, and five assembly lemmas.
-The checks distinguish exactly `[propext, Classical.choice, Quot.sound]` from those
-three principles plus `sorryAx`, and trace each admission to `wightW_local`.
+Every audited declaration must depend on exactly `[propext, Classical.choice, Quot.sound]`.
+Any missing or additional kernel dependency is a build error.
 Run with `lake env lean FreeField/AxiomReport.lean`, or as part of `lake build`.
 -/
 
@@ -91,34 +91,6 @@ Run with `lake env lean FreeField/AxiomReport.lean`, or as part of `lake build`.
 namespace YangMills.FreeField.AxiomReport
 open Lean Elab Command
 
-private def unfinished : Array Name := #[``wightW_local]
-
-/-- Recognize admission primitives with Lean's own expression predicate. -/
-private def isAdmission (n : Name) : Bool := (mkConst n).isSorry
-
-/-- Follow elaborated declaration dependencies, pruning branches that have no admissions. -/
-private partial def unfinishedUses (n : Name) :
-    StateT (NameMap (Array Name)) CommandElabM (Array Name) := do
-  if let some uses := (← get).find? n then
-    return uses
-  if !(← collectAxioms n).any isAdmission then
-    modify fun memo => memo.insert n #[]
-    return #[]
-  if isAdmission n then
-    throwError "Unaccounted admission: a dependency bypassed wightW_local"
-  let info ← getConstInfo n
-  if unfinished.contains n &&
-      info.getUsedConstantsAsSet.toList.any isAdmission then
-    return #[n]
-  modify fun memo => memo.insert n #[]
-  let mut uses := #[]
-  for dep in info.getUsedConstantsAsSet do
-    for source in (← unfinishedUses dep) do
-      if !uses.contains source then
-        uses := uses.push source
-  modify fun memo => memo.insert n uses
-  return uses
-
 run_cmd do
   let names : Array Name := #[
     ``YangMills.jointExistence_of_freeField,
@@ -205,28 +177,12 @@ run_cmd do
   let standard : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   unless names.size == 81 && names.toList.eraseDups.length == names.size do
     throwError "Expected 81 distinct declarations: main theorem, 75 tasks, five assembly lemmas"
-  let taskNames := names.extract 1 76
-  let mut memo : NameMap (Array Name) := {}
-  let mut clean : Nat := 0
-  let mut cleanTasks : Nat := 0
-  let mut pending : Array Name := #[]
   for n in names do
     let axs ← collectAxioms n
-    let (uses, nextMemo) ← (unfinishedUses n).run memo
-    memo := nextMemo
-    let expectedSize := standard.size + if uses.isEmpty then 0 else 1
-    unless axs.size == expectedSize && standard.all axs.contains &&
-        axs.all (fun a => standard.contains a || isAdmission a) do
-      throwError "Unexpected dependencies for {n}: {axs}; unfinished sources: {uses}"
-    if uses.isEmpty then
-      clean := clean + 1
-      if taskNames.contains n then
-        cleanTasks := cleanTasks + 1
-    else
-      pending := pending.push n
-      logInfo m!"UNFINISHED {n}: {uses}"
-  logInfo m!"TASK AUDIT: {cleanTasks} of 75 use exactly [propext, Classical.choice, Quot.sound]; {75 - cleanTasks} additionally depend on sorryAx."
-  logInfo m!"DECLARATIONS DEPENDING ON sorryAx: {pending}"
-  logInfo m!"AUDIT PASSED: {clean} of 81 declarations use exactly [propext, Classical.choice, Quot.sound]; {pending.size} additionally depend on sorryAx, traced only to wightW_local."
+    unless axs.size == standard.size && standard.all axs.contains &&
+        axs.all standard.contains do
+      throwError "Unexpected dependencies for {n}: {axs}; expected exactly [propext, Classical.choice, Quot.sound]"
+  logInfo "TASK AUDIT: 75 of 75 use exactly [propext, Classical.choice, Quot.sound]."
+  logInfo "AUDIT PASSED: 81 of 81 declarations use exactly [propext, Classical.choice, Quot.sound]."
 
 end YangMills.FreeField.AxiomReport
