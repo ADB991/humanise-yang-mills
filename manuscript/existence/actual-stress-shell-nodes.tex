@@ -189,12 +189,84 @@ constants. Thus the correction-price left side has rate
  \frac1{32}-M-\frac18=-\frac5{64}<0;
 \]
 it tends to zero and is eventually below the displayed grade-$D$
-payment. For the marched estimate put
-$\upsilon_i=\widehat\beta_i^{-\nu_D}$, the same quantity as on the right
-of \eqref{eq:ex-lattice-shell-correction-price}; since
-$\widehat\beta_i\ge1$, $\upsilon_i\le1$.  The same-history one-step growth
-bound of the march is a stated input here, supplied with the menu and
-transfer receipts listed in Proposition~\ref{prop:ex-lattice-actual-shell-node}.
+payment.
+
+\begin{lemma}[Paid-delay growth of the shell weights]
+\label{lem:ex-lattice-shell-paid-growth}
+Use the same selected history, block lengths and entrance delays as in
+Sections~\ref{sec:common-observable-purchases} and
+\ref{sec:common-scale-selection}. In particular, its final entry
+thresholds retain the marked-portfolio delay of
+Section~\ref{sec:ex-marked-portfolio-calibration}. Write $J(i)$ for its
+stage clock and $\ell_j$ for the block side fixed at stage $j$, so that
+\[
+ J(i)\le J(i+1)\le J(i)+1,\qquad
+ L_i=\ell_{J(i+1)}=a_i/a_{i+1},\qquad
+ \widehat\beta_{i+1}=\widehat\beta_i+s_G\log L_i,
+ \quad s_G>0.
+\]
+At step $i$, assume the history pays the retained entrance threshold of
+stage $J(i+1)$ with $\widehat\beta_i$. Use the public weights
+\[
+ \phi_i=\widehat\beta_{i+1}^{-1},\qquad
+ \upsilon_i=\widehat\beta_i^{-\nu_D},\qquad \nu_D=g_D+4,
+\]
+where $g_D$ is the maximal factor degree of the same selected grade-$D$
+frame. Assume the retained reference depths satisfy
+$D+3\le J(\operatorname{ref}(D))$ for every $D$. Then, for every $D\in\mathbb N$
+and every $i\ge\operatorname{ref}(D)$,
+\begin{equation}\label{eq:ex-lattice-shell-growth-input}
+ \phi_i L_i^{D+1}\upsilon_i\le\upsilon_{i+1}.
+\end{equation}
+This conclusion uses no cutoff or period parameter.
+\end{lemma}
+\begin{proof}
+The delay calibration in
+Section~\ref{sec:ex-marked-portfolio-calibration} is made after the
+stage block sides are fixed. For each stage $j$, it tests the two possible
+profiles $k=j$ and $k=j-1$ (only $k=0$ when $j=0$), and all grades
+$0\le d\le k$. Its numerical proof uses, for
+$x=\widehat\beta_i$, $b=s_G\log\ell_j$ and $y=x+b$, the sufficient
+bounds
+\[
+ x\ge1,\qquad x\ge b,\qquad
+ y\ge\max\{1,2^{g_d+4}\ell_j^{d+1}\}.
+\]
+These are thresholds for each fixed pair $(j,d)$, not one threshold
+independent of the block side or grade. The cited proof takes a finite
+maximum at each stage, includes the profile-cost and credit thresholds,
+and then takes prefix maxima together with the prior entrance requests.
+It proves the tail comparison for every coupling beyond the resulting
+threshold. Sections~\ref{sec:common-observable-purchases} and
+\ref{sec:common-scale-selection} retain this delay before constructing
+the history; enlarging an entry threshold preserves the comparison.
+Thus no new history is selected for the present application.
+
+Now fix $D$ and $i\ge\operatorname{ref}(D)$. Monotonicity of $J$ gives
+$D\le D+3\le J(\operatorname{ref}(D))\le J(i)$.
+The pair $(j,k)=(J(i+1),J(i))$ is one of the tested adjacent pairs,
+and the assumed payment permits evaluation at $x=\widehat\beta_i$.
+The block and coupling identities in the statement identify its
+$\ell_j$ and $y$ with $L_i$ and $\widehat\beta_{i+1}$.
+Finally the reciprocal tail $\mathsf f_D$ in
+\eqref{eq:ex-marked-height-jump} has exponent $g_D+4$, hence its values
+at these two couplings are exactly $\upsilon_i$ and $\upsilon_{i+1}$.
+That equation, with $d=D$, is the asserted inequality.
+\end{proof}
+
+For the marched estimate use Lemma~\ref{lem:ex-lattice-shell-paid-growth}.
+Since $\widehat\beta_i\ge1$, its weights satisfy
+$0<\upsilon_i\le1$ and $0<\phi_i\le1$. The retained delay and the
+reference-depth condition are conditions on the same history used by the
+menu and transfer inputs of
+Proposition~\ref{prop:ex-lattice-actual-shell-node}. The service theorem
+alone does not supply them; the named delay purchase above supplies the
+growth bound when those conditions hold. Merely knowing
+$\widehat\beta_i\to\infty$ would not imply it for varying $L_i$.
+For $m\ge k\ge\operatorname{ref}(D)$, multiplying
+it for $k\le i<m$ gives
+$\prod_{i=k}^{m-1}\phi_i\le
+(\upsilon_m/\upsilon_k)(a_m/a_k)^{D+1}$.
 Together with $\upsilon_m\leq1$ it gives
 \[
  \mathsf M_{k,m}(c_m)\leq
