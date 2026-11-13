@@ -19,6 +19,18 @@ Files: `formal/` (Lean formalisation of the adequacy proposition, added after th
 7. **Imprecise wording** in `statement.tex`: "regular" undefined (P1); simplicity and what is not assumed of the group (P2); the stencil condition (P3); operator order in the boundary values (P4); no pointer to the penalty-indexed detailed theorem (P7).
 8. **Source record.** The line of `source/build.md` reporting 9,507 manifest entries OK is not reproducible from the repository (ten `verification/*.log` files are untracked; no `.lean` file affected). Patch P8. `source-trust.md`.
 
+## Revision 1 (13 November 2026)
+
+Session `schmittj-claude-g01-rev1-20261113`, answering the independent review in `review/hairer-claude-20261113/` (PR #124).
+
+- **Q1 (group independence, review M3): accepted, checked and formalised.** Finding 1 is strengthened: the public statement does not distinguish gauge groups. From a hierarchy over one group with the three non-lattice properties, the vanishing hypothesis and one homogeneity property of the trace two-point function, one obtains the public body at every group of positive dimension, with constant insertions (`YangMills.group_transfer_witness`, `formal/GroupIndependence.lean`, public files only). In the full project the constructed witness at one simple group gives the body of `JointExistence` at every group of positive dimension (`formal/GroupIndependenceFull.lean`). All with axioms `[propext, Classical.choice, Quot.sound]`. One point differs from the review's sketch: the homogeneity of `traceTwo` under rescaling is not a consequence of the public clauses as they are written and enters as a hypothesis; the constructed witness satisfies it. See `adequacy.md` (d), addendum, and `formal/README.md`.
+- **Q2: done.** `adequacy.md` (d)(3) no longer says the non-lattice properties are "as hard as before"; it states what the construction does and points to the open question M4.
+- **Q3: done.** `proposed-patches.md` begins with a status table per patch; the line numbers of the patches refer to the audited version of `statement.tex` and were not re-based.
+- **Review next step 2 (`lean.md` L4): done.** The commands of `formal/README.md` were re-run locally and on the server, with the same results; one inaccuracy in the description of the server script is corrected there.
+- **Not addressed: M4** (can a generalised free field supply the hierarchy?). It is outside this revision and left to the coordinator, as the review proposes. If the answer is yes, `JointExistence` would be provable without any Yang–Mills input; G06 should treat this as open.
+
+The changed text of `adequacy.md` and the two new Lean files need renewed review; nothing here has been independently reviewed.
+
 ## Proposed patches
 
 P1 definition of "regular"; P2 group hypotheses; P3 locality; P4 boundary values; P5 remark on phases; P6 scope paragraph; P7 pointer to the detailed theorem; P8 `source/build.md` manifest sentence; P9 additions for the #11 interface note. All are in `proposed-patches.md` with LaTeX or Markdown text, justification and Lean anchors. None removes a false mathematical statement; P4 removes a presupposition; the rest add precision or limitations. No patch is proposed for finding 1: whether and how the monograph should record it is a decision for the coordinator and C16 after independent review of `adequacy.md`.

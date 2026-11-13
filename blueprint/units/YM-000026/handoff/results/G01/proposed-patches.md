@@ -4,6 +4,22 @@ Author draft, session `schmittj-claude-g01-20261112`, issue #58. Not reviewed. T
 
 Summary: no sentence of `statement.tex` was found to be wrong, and none claims a mathematical conclusion beyond `YangMills.JointExistence`, with one technical exception by presupposition (P4). Revised after an author-side cross-check (see `validation.md`): P4, P6, P7 and P9.1 were corrected. Patches P1–P3 and P5–P7 replace imprecise wording by the exact content of the Lean clauses or add limitations a reader needs. None is required to remove a false statement.
 
+## Status after the C16 author pass and the G01 review (revision 1, 13 November 2026)
+
+The line numbers in the patch headings below refer to `manuscript/existence/statement.tex` at SHA-256 `43ca…5378`, the version audited. C16 (PR #86, commit `3c2ed3b`) revised the file to `1279…301d`; the patches have not been re-based on that version. The status column is taken from the independent review (`review/hairer-claude-20261113/README.md`, "Verdicts on the proposed patches"), which checked the new text against the Lean clauses; the author session did not re-check the C16 text itself.
+
+| Patch | Status on `codex/existence-monograph` `69c254b` | Remaining |
+| --- | --- | --- |
+| P1 "regular" | applied by C16 | nothing |
+| P2 group hypotheses | not applied | whole patch, for C16 |
+| P3 locality | applied by C16 together with P1 | nothing |
+| P4 boundary values | applied by C16, option (i) | nothing |
+| P5 phases | first part applied (only the selected point carries a theory; multilinearity not required) | the sentence on characters of a commutative algebra is withdrawn: it rests on a source anchor that neither the audit nor the review opened |
+| P6 scope | partly applied (no lattice formula, no stress-tensor identification) | three sentences, for C16: no spectral gap is asserted; the trace test excludes finite Wick profiles only; the slope is not prescribed |
+| P7 pointer to the detailed theorem | not applied | optional, for C16 |
+| P8 `source/build.md` | not applied | for the #2/#37 owners; the counts were reproduced by the reviewer |
+| P9 additions for #11 | not applied | for the #11 owner |
+
 ## P1. Define "regular" (lines 35–43, 113)
 
 Justification: line 113 uses "one regular Wilson family" but the word is not defined; the Lean predicate is `YangMills.WilsonRegularity` (`Lean/ChallengeSpec.lean` 12–22) with exactly four fields. Ledger A1, A3.
