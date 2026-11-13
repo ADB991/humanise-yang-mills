@@ -101,6 +101,78 @@ back links along the reflected oriented edges; a reflected negative edge is
 read as the inverse of its positive representative. Write $\Theta U$ for this
 configuration.
 
+These reflections preserve the law. Fix an axis $a$, an integer $c$ and
+$\kappa\in\{0,1\}$, and let $\mathsf r$ be the involution of $\Lambda_\ell$
+given by $(\mathsf rx)_a=2c-\kappa-x_a$ and $(\mathsf rx)_i=x_i$ for
+$i\ne a$, coordinates modulo $\ell$. Thus $\kappa=0$ is a site reflection
+and $\kappa=1$ a link reflection; with $\ell=2h$ and $c=0$ they are the two
+cuts above, and other $c$ give their translates. The edge from $x$ to
+$x+e_i$ is carried to the edge from $\mathsf rx$ to $\mathsf rx+e_i$ if
+$i\ne a$, and to the negatively oriented edge from $\mathsf rx$ to
+$\mathsf rx-e_a$ if $i=a$. The pulled-back configuration is therefore
+\begin{equation}\label{eq:ex-lattice-reflection-pullback}
+ (\Theta U)_i(x)=U_i(\mathsf rx)\quad(i\ne a),\qquad
+ (\Theta U)_a(x)=U_a(\mathsf rx-e_a)^{-1}.
+\end{equation}
+
+\begin{proposition}[Reflection invariance of the finite law]
+\label{prop:ex-lattice-reflection-invariance}
+For every positive integer $\ell$, axis $a$, integer $c$ and
+$\kappa\in\{0,1\}$, the map $\Theta$ of
+\eqref{eq:ex-lattice-reflection-pullback} is a measurable involution of
+$G^{E_\ell}$. It satisfies $S_\ell(\Theta U)=S_\ell(U)$, and both the product
+Haar measure $\rho_\ell$ and the law $\mu_{\ell,\beta}$, $\beta\ge0$, are
+invariant under $\Theta$.
+\end{proposition}
+\begin{proof}
+Since $(\mathsf r(\mathsf rx-e_a))_a=x_a+1$, applying
+\eqref{eq:ex-lattice-reflection-pullback} twice gives
+$(\Theta^2U)_a(x)=U_a(x)$, and clearly $(\Theta^2U)_i=U_i$ for $i\ne a$.
+Hence $\Theta$ is an involution. It acts on the coordinates of the product
+$G^{E_\ell}$ by the bijections $x\mapsto\mathsf rx$ (for $i\ne a$) and
+$x\mapsto\mathsf rx-e_a$ (for $i=a$) of $\Lambda_\ell$, composed with
+inversion in the $a$-coordinates. Haar measure on the compact group $G$ is
+invariant under inversion, and a product of identical probability measures
+is invariant under a permutation of its factors. Therefore $\rho_\ell$ is
+$\Theta$-invariant.
+
+Now compare plaquettes. If $a\notin\{i,j\}$, then substitution gives
+$(\Theta U)_{ij}(x)=U_{ij}(\mathsf rx)$. Let $i<j$ with $i=a$, and put
+$z=\mathsf rx-e_a$. Since $\mathsf r(x+e_a)=z$ and
+$\mathsf r(x+e_j)=\mathsf rx+e_j$,
+\[
+ (\Theta U)_{aj}(x)
+  =U_a(z)^{-1}U_j(z)U_a(z+e_j)U_j(z+e_a)^{-1}
+  =U_a(z)^{-1}\,U_{aj}(z)^{-1}\,U_a(z).
+\]
+Similarly, if $j=a$ and $z=\mathsf rx-e_a$, then
+\[
+ (\Theta U)_{ia}(x)
+  =U_i(z+e_a)U_a(z+e_i)^{-1}U_i(z)^{-1}U_a(z)
+  =U_a(z)^{-1}\,U_{ia}(z)^{-1}\,U_a(z).
+\]
+Trace is invariant under conjugation. For $V\in U(r_G)$,
+$\operatorname{tr}V^{-1}=\operatorname{tr}V^*=\overline{\operatorname{tr}V}$,
+so $\operatorname{Re}\operatorname{tr}V^{-1}=\operatorname{Re}\operatorname{tr}V$.
+Hence the summand of $S_\ell(\Theta U)$ indexed by $(x,i,j)$ equals the
+summand of $S_\ell(U)$ indexed by $(\mathsf rx,i,j)$ or by
+$(\mathsf rx-e_a,i,j)$. For each fixed pair $i<j$ these are bijections of
+$\Lambda_\ell$, so $S_\ell(\Theta U)=S_\ell(U)$.
+
+Finally, for every bounded Borel $F$, invariance of $\rho_\ell$ and of the
+density gives
+\[
+ \int F\circ\Theta\,d\mu_{\ell,\beta}
+  =\frac1{Z_\ell(\beta)}\int F(\Theta U)e^{-\beta S_\ell(\Theta U)}\,d\rho_\ell(U)
+  =\int F\,d\mu_{\ell,\beta}.
+\]
+\end{proof}
+
+This supplies the reflection-invariance hypothesis of
+Proposition~\ref{prop:ex-centered-planted} for the Wilson law. Its seam
+reflection $R_{p,a}$ is the case $c=b_a+\ell p_a$ and $\kappa=\delta$, on the
+torus of side $2h\ell$.
+
 \begin{proposition}[Finite-volume reflection positivity]
 \label{prop:ex-lattice-finite-reflection}
 For either cut, let $F$ be a bounded Borel, gauge-invariant function of the

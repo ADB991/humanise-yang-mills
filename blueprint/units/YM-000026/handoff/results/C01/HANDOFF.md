@@ -12,7 +12,7 @@ The following hashes identify the present author text; they are not themselves a
 
 | Chapter | SHA-256 |
 | --- | --- |
-| `manuscript/existence/lattice.tex` | `b8172d7e2c6aafb27a8ad007858e0a49159a9a4f9c00caa07addf99a29a7764f` |
+| `manuscript/existence/lattice.tex` | `cdd4d7ffdf5a6dad3526a288492321cbacf4bad092a6a2577bfe92722549d24f` |
 | `manuscript/existence/atlas-estimates.tex` | `cf62afb4ce7f3e116aa100e2b15468367ab998974bc77c53d983e25054a2e481` |
 | `manuscript/existence/flat-step.tex` | `d6c8914591ecbd6a09fe4c9af5ddd205af7c4ee44cfe2f79707504d4ca550005` |
 | `manuscript/existence/flat-estimate.tex` | `0b7f7e9eb6cc6c5a8b4f7b626fce6e504a4060b26ca0e940967a38287a656929` |
