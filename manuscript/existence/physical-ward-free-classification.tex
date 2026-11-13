@@ -7,7 +7,7 @@ classification of quiet vector charges, and reduction to finitely many
 collinear tests.  Internal Ward-map erasure is treated separately in
 Section~\ref{sec:free-internal-ward-erasure}.  The arguments here use
 finite generation of a polynomial ideal, explicit Wick collision limits,
-reflection positivity, and the signed symmetries of four coordinates.
+the strict all-grade free detector, and the signed symmetries of four coordinates.
 
 \subsection{Polynomial grading and a finite external detector}
 
@@ -115,12 +115,15 @@ The coalescence lemma gives
 By Lemma~\ref{lem:free-uniform-generation}, the time-reflected conjugate
 $\Theta\pi_kp$ belongs to $\mathcal H_{D_j,k}$: reflection preserves
 the jet cutoff, the gauge-invariant sector, and ordinary length.  If
-$\pi_kp\ne0$, reflection positivity at the separated pair
+$\pi_kp\ne0$, the strict all-grade free detector
+(Theorem~\ref{thm:ex-lattice-all-grade-free-detector}, with time
+reflection and coefficient conjugation) at the separated pair
 $(-r e_0,r e_0)$ gives
 \[
- \mathcal M((-r e_0,r e_0);\pi_kp,\Theta\pi_kp)>0,
+ \mathcal M((-r e_0,r e_0);\pi_kp,\Theta\pi_kp)>0;
 \]
-contradicting the preceding vanishing.  Hence $\pi_kp=0$ for every $k$.
+reflection positivity alone would give only $\ge0$. This contradicts
+the preceding vanishing.  Hence $\pi_kp=0$ for every $k$.
 The polynomial is a finite sum of these components, so it is zero.
 \end{proof}
 
@@ -425,9 +428,14 @@ proves the classification.
 
 \begin{theorem}[Finite collinear scene family]
 \label{thm:free-collinear-scenes}
-There is a finite level threshold such that at every larger level a finite
-family of collinear scene tests has simultaneous kernel exactly the
-quiet-charge subspace, for every level $d\geq\max\{4,D_*\}$.
+\begin{enumerate}
+\item At every level $d$ there is a finite family of collinear scene
+  tests whose simultaneous kernel on the space of charges is exactly the
+  quiet-charge subspace.
+\item If $d\geq\max\{4,D_*\}$, the simultaneous kernel of such a family on
+  the vector-spin subspace of Theorem~\ref{thm:free-quiet-classification}
+  is exactly $\mathbb R\partial$.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -458,7 +466,19 @@ An arbitrary intersection of kernels on a finite-dimensional space is
 already the intersection of a finite subfamily: add a functional whenever
 the current intersection is too large.  Its dimension strictly drops,
 so after at most $\dim V$ additions the process stops.  The selected
-finite scene family has the required kernel.
+finite scene family has the required kernel, proving~(1); no level
+threshold is used.
+
+For~(2), intersect with the vector-spin subspace. By~(1) the kernel there
+consists of the quiet charges in that subspace, and for
+$d\geq\max\{4,D_*\}$ Theorem~\ref{thm:free-quiet-classification} shows
+that each of them is $c\partial$ for a real $c$. Conversely $\partial$
+lies in the vector-spin subspace (it raises the level by one, has the
+signed-coordinate covariance and reality of a vector, and annihilates
+the unit) and is quiet: applying $\partial_a$ in each slot and summing
+gives the derivative of the free moment along a common translation of
+all insertion points, which vanishes by translation invariance. Hence the
+kernel on the vector-spin subspace is $\mathbb R\partial$.
 \end{proof}
 
 The finite-scene theorem is the free-theory interface used by the selected finite-level Ward package; its formal source map and remaining hypothesis checks are in the adjacent evidence record.

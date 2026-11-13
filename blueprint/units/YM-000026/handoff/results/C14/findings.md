@@ -29,10 +29,19 @@
    centered-cell spectator estimates and ordered moving-label point limits.
    The opening must dominate the reference depth of each watch. It names the
    existing local shell producer instead of reporting that producer as absent.
+   (Revision 1, review PR #117 R2: the coefficient-bound mismatch is repaired,
+   but the producer's statement does not yet deliver the consumer's
+   definition, and the per-family opening receipt is missing; see review
+   findings F1 and F2 of part 4. The join is not closed.)
 
 These are author corrections, not a new independent approval. In particular,
 the changed shell and annulus fingerprints invalidate reliance on their old
 reviews for the complete revised files.
+
+Revision 1, part A (session `hairer-claude-c14-rev1a-20261113`) answers
+findings 3–6 and 8 of the review in PR #117; see `revision-1.md`, which
+also lists corrections to read-only evidence files (review part 4 R4 and
+parts 1–2) for the integrator.
 
 ## Supplier obligations still open
 
@@ -42,9 +51,13 @@ reviews for the complete revised files.
   applications inherit those dependencies. The new citations do not close them.
 - The shell-node proposition is conditional on the same-history menu, transfer,
   quota, price and scale receipts. Its annulus consumer additionally requires
-  the ordered extraction, point limits, centered-cell bounds, smooth faithful
-  hierarchy and derivative/conservation data. A shell receipt alone cannot
-  produce these analytic structures.
+  an extraction order (the annulus source does not require it to be the
+  ordered one), point limits, centered-cell bounds, smooth faithful
+  hierarchy and derivative/conservation data, and also (revision 1, review
+  PR #117 R1) the per-family opening receipt that chooses an opening above
+  all watch depths (source `Aroma.opens`), the scale note (`Aroma.notes`)
+  and `C.Makes`. A shell receipt alone cannot produce these analytic
+  structures.
 - `YM.MergeProof.Accent.rated` requires nonnegative generator data and the
   actual frequent analytic purchases along the common binding. Its output
   includes the derivative plan, reference seed and Maxwell ranks. The public
