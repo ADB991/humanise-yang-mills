@@ -22,6 +22,131 @@ For a centered tiling $\mathcal T$ with $M$ cells, write
 \]
 where $F^{(C)}$ is the prescribed translated copy of $F$, reflected and conjugated on alternating chambers. This notation is used only when the observable is admissible in the home chamber and the normalized expectation is defined.
 
+\begin{lemma}[Seminorm from the planted inequality]
+\label{lem:ex-centered-root-seminorm}
+Fix one normalized finite-volume Wilson law, one centered tiling
+$\mathcal T$, and its home chamber, with
+$M=|\mathrm{Cell}(\mathcal T)|\geq1$. Let $\mathcal A$ be the complex
+chamber-admissible class defined above, with dependence only on links whose
+two endpoints lie in the same strict home chamber. Keep the prescribed
+copy maps and their conjugation choices fixed. Assume the full-cell case
+of the planted inequality used in Theorem~\ref{ex-centered-producers}:
+for every family $(H_C)_{C\in\mathrm{Cell}(\mathcal T)}$ in $\mathcal A$,
+\begin{equation}\label{eq:ex-centered-root-planted}
+ \left|\mathbb E_{N,p}
+       \prod_{C\in\mathrm{Cell}(\mathcal T)}H_C^{(C)}\right|
+ \leq\prod_{C\in\mathrm{Cell}(\mathcal T)}\mathcal R_{\mathcal T}(H_C).
+\end{equation}
+Then $\mathcal A$ is a complex vector space closed under pointwise
+conjugation, and $\rho=\mathcal R_{\mathcal T}$ is a finite-valued
+complex seminorm on it, invariant under conjugation. Explicitly,
+for $F,G\in\mathcal A$ and $z\in\mathbb C$,
+\[
+ \rho(0)=0,\qquad \rho(F)\geq0,\qquad
+ \rho(zF)=|z|\rho(F),\qquad
+ \rho(F+G)\leq\rho(F)+\rho(G),\qquad
+ \rho(\overline F)=\rho(F).
+\]
+Consequently, for every finite index set $I$, complex coefficients $z_i$
+and $F_i\in\mathcal A$,
+\begin{equation}\label{eq:ex-centered-root-finite-sum}
+ \sum_{i\in I}z_iF_i\in\mathcal A,\qquad
+ \rho\!\left(\sum_{i\in I}z_iF_i\right)
+ \leq\sum_{i\in I}|z_i|\rho(F_i).
+\end{equation}
+In particular, if $\rho(F_i)\leq A_i$ with $A_i\geq0$, the right side
+may be replaced by $\sum_i|z_i|A_i$, including zero budgets and the
+empty sum. No positive-definiteness assertion is made for $\rho$.
+\end{lemma}
+\begin{proof}
+The zero function is admissible. Gauge invariance and dependence only on
+the specified links are preserved by addition, scalar multiplication and
+conjugation: configurations agreeing on those links give equal values
+before and after any of these operations. Measurability is preserved by
+the same operations on complex-valued functions. If $|F|\leq B$ and
+$|G|\leq D$ with finite nonnegative bounds, then
+$|F+G|\leq B+D$, $|zF|\leq|z|B$ and $|\overline F|\leq B$.
+This proves all the stated closure properties without enlarging the
+chamber or allowing links across its boundary.
+
+For each cell $C$, write $P_C$ for its fixed pullback on configurations
+and $\epsilon_C\in\{0,1\}$ for its conjugation choice. Thus
+$F^{(C)}=F\circ P_C$ if $\epsilon_C=0$, and
+$F^{(C)}=\overline{F\circ P_C}$ if $\epsilon_C=1$.
+These geometric pullbacks are measurable; copied functions and all their
+finite products are therefore bounded and measurable. They are integrable
+for the fixed probability law. All expectations below are thus ordinary
+finite integrals. The definition gives finiteness and nonnegativity of
+$\rho$. Since $M\geq1$, the product of the copies of zero is zero, so
+$\rho(0)=0$.
+
+Put $w_C=z$ when $\epsilon_C=0$ and $w_C=\overline z$ otherwise.
+Before taking any absolute value, one has
+$(zF)^{(C)}=w_CF^{(C)}$. Linearity of the expectation and
+$|\prod_Cw_C|=|z|^M$ give
+\[
+ \rho(zF)^M
+ =\left|\Bigl(\prod_C w_C\Bigr)
+              \mathbb E_{N,p}\prod_CF^{(C)}\right|
+ =|z|^M\rho(F)^M.
+\]
+Taking the unique nonnegative $M$th root proves absolute homogeneity,
+also when $z=0$. No equality between the numbers of conjugated and
+unconjugated cells is needed.
+
+Each copy is additive, including when it conjugates. For every subset
+$S\subseteq\mathrm{Cell}(\mathcal T)$ set $H_{S,C}=F$ if $C\in S$
+and $H_{S,C}=G$ otherwise. Finite distributivity gives the pointwise identity
+\[
+ \prod_C(F+G)^{(C)}=\sum_{S\subseteq\mathrm{Cell}(\mathcal T)}
+                         \prod_C H_{S,C}^{(C)}.
+\]
+Integrating this finite sum, applying the complex triangle inequality to
+its expectations, and then applying
+\eqref{eq:ex-centered-root-planted} separately to each assignment yields
+\[
+ \begin{aligned}
+ \rho(F+G)^M
+ &\leq\sum_{S\subseteq\mathrm{Cell}(\mathcal T)}
+          \left|\mathbb E_{N,p}\prod_C H_{S,C}^{(C)}\right|\\
+ &\leq\sum_{S\subseteq\mathrm{Cell}(\mathcal T)}
+          \prod_{C\in S}\rho(F)\prod_{C\notin S}\rho(G)
+   =\prod_C(\rho(F)+\rho(G))
+   =(\rho(F)+\rho(G))^M.
+ \end{aligned}
+\]
+The last equality is again finite distributivity. All factors are
+nonnegative, so the increasing nonnegative $M$th-root function proves
+the triangle inequality. This argument divides by neither root budget;
+it includes $\rho(F)=0$ or $\rho(G)=0$ and every positive finite $M$.
+
+Both choices of $\epsilon_C$ give
+$(\overline F)^{(C)}=\overline{F^{(C)}}$. Conjugation commutes with
+finite products and with integration against the real probability
+measure. Consequently
+\[
+ \mathbb E_{N,p}\prod_C(\overline F)^{(C)}
+ =\overline{\mathbb E_{N,p}\prod_CF^{(C)}}.
+\]
+Absolute values and nonnegative roots give conjugation invariance.
+Finally induction on $|I|$, using closure, the triangle inequality and
+absolute homogeneity, proves \eqref{eq:ex-centered-root-finite-sum}.
+For $I=\varnothing$ both sides are zero; replacing each nonnegative
+root budget by its upper bound proves the final assertion.
+\end{proof}
+
+For example, if $U,U'\in\mathcal A$ and $\overline U=U$, the real
+projection $V=(U'+\overline{U'})/2$ belongs to $\mathcal A$ and satisfies
+\[
+ \rho(V-U)
+ \leq\tfrac12\rho(U'-U)+\tfrac12\rho(\overline{U'-U})
+ =\rho(U'-U).
+\]
+This uses one law and one chamber for both errors. The lemma proves only
+a consequence of the planted inequality; it does not prove that inequality
+from reflection positivity or construct a centered budget along a selected
+trajectory.
+
 The quantitative assumption has two distinct orders of quantifiers. For every fixed observable $O$ and period index $p$, there is a tail of depths $m$ such that for each such $m$ one can choose $A=A(O,p,m)\geq0$ and a mesh tail on which $\mathsf{CB}(O;A,m,N,p)$ holds. In addition, for each $O$ there is a tail of depths $m$ such that one can choose $A=A(O,m)\geq0$ for which there is an outer period-index tail and, for each period in it, an inner mesh-index tail on which the budget holds. The constants may depend on the displayed fixed data. This is the precise centered-budget hypothesis used in the next result.
 
 \begin{lemma}[Finite families share one budget]\label{ex-centered-finite}
