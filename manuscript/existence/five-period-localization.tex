@@ -67,26 +67,29 @@ To verify this exactly, fix a type vector with $d$ interior
 coordinates. Its multiplicity at side $2(w+i)$ is a polynomial
 in $i$ of degree $d$. The fourth difference annihilates that
 polynomial when $d<4$. For the all-interior type the polynomial
-is $2^4(w+i-2r+1)^4$, whose fourth difference is $2^4,4!$.
+is $2^4(w+i-2r+1)^4$, whose fourth difference is $2^4\cdot4!$.
 Division by that factor gives one. Summing over the finitely many
 type vectors proves \eqref{eq:five-period-counting}. In particular,
 no boundary term has been discarded before cancellation.
 
 \subsection{Compatible local densities}
-Write $f_0(o,U)$ for a density on the large torus and
-$f_i(q,V)$ for densities on the five auxiliary tori of sides
-$2(w+i)$. The compatibility conditions needed here are explicit:
-the auxiliary densities transform covariantly under signed lattice
-symmetries, their values on globally healthy fields agree whenever
-their centered radius-$r$ link patterns agree, and the same
-agreement holds with $f_0$ on globally healthy fields. Finally
-$f_0(o,\cdot)$ is local on the radius-$r$ neighbourhood of $o$.
+Let $\Lambda$ be the site set of the large torus. Write
+$f_\Lambda(o,U)$ for a density on the large torus and
+$f_i(q,V)$, $0\le i\le4$, for densities on the five auxiliary tori
+of sides $2(w+i)$. The compatibility conditions needed here are
+explicit: the auxiliary densities transform covariantly under signed
+lattice symmetries, the values of any two of them on globally
+healthy fields agree whenever their centered radius-$r$ link
+patterns agree, and the same agreement holds between each of them
+and $f_\Lambda$ on globally healthy fields. Finally
+$f_\Lambda(o,\cdot)$ is local on the radius-$r$ neighbourhood of
+$o$.
 The large period is at least $4r+16$. These are compatibility of
 local functions at fixed coupling and fixed path; no equality of
 partition functions on different periods is required.
 
 Set $\widetilde f_i(q,V)=f_i(q,V)-f_i(q,\mathbf1)$ and define
-$\widetilde f_0$ in the same way. The compatibility properties
+$\widetilde f_\Lambda$ in the same way. The compatibility properties
 persist after this centering: the identity fields are healthy and
 have identical local link patterns. Define
 \[
@@ -121,7 +124,7 @@ Reflection covariance first moves $q$ to its canonical folded
 representative. The displacement formulas
 \eqref{eq:five-period-displacement}, followed by compatibility,
 show that the summand depends only on its type vector. For the
-all-interior vector it equals $\widetilde f_0(o,U)$. One can
+all-interior vector it equals $\widetilde f_\Lambda(o,U)$. One can
 make the last comparison using a globally healthy extension on the original large torus.
 In each cyclic coordinate of length $c\ge4r$, take the track
 that increases from $0$ to $2r$ in $2r$ steps, decreases back to
@@ -132,10 +135,10 @@ with $U$ on the radius-$r$ box about $o$ and reads only that box
 everywhere. Each plaquette is again an original plaquette with
 orientation changed or an identity loop, so the extension is
 globally healthy. Compatibility applies to this field on the
-original period; locality then identifies its $f_0$ value with
-$f_0(o,U)$. Applying \eqref{eq:five-period-counting} gives
+original period; locality then identifies its $f_\Lambda$ value with
+$f_\Lambda(o,U)$. Applying \eqref{eq:five-period-counting} gives
 \begin{equation}\label{eq:five-period-healthy-identity}
-                h(o,U)=\widetilde f_0(o,U)
+                h(o,U)=\widetilde f_\Lambda(o,U)
                           \quad\text{if $U$ is healthy on }N_{2z}(o).
 \end{equation}
 
@@ -149,7 +152,14 @@ use the same path, coupling, profile and finite cutoff. It is
 these equalities that permit the replication comparison. The
 required replication and local-generation identities are part of
 the short-density construction; this argument does not assert
-compatibility for independently chosen histories.
+compatibility for independently chosen histories. For the selected
+densities they are proved in
+Section~\ref{sec:selected-nonlinear-offering}, where the five
+auxiliary densities are formed with the physical path, incoming
+budget, coupling, scalar correction and finite label cutoff. When the
+present section is applied, $f_\Lambda$ and $f_0,\ldots,f_4$ are
+those densities; the four compatibility conditions above are then
+conclusions of that section and not additional assumptions.
 
 \subsection{The exact additive decomposition}
 Let $F_a(U)$ be the ordinary logarithmic entries retained in a
@@ -161,24 +171,26 @@ and satisfy $S_a\subseteq N_r(o)$ whenever $\omega_{oa}\ne0$. Put
            \mathbf1_{\{U\text{ healthy on }S_a\}}F_a(U).
 \]
 Its sum over $o$ is exactly the masked contribution of the panel.
-The unmasked short density is $f_0(o,U)=\sum_a\omega_{oa}F_a(U)$.
-Translation covariance makes $f_0(o,\mathbf1)$ independent of $o$.
+The unmasked short density is
+$f_\Lambda(o,U)=\sum_a\omega_{oa}F_a(U)$.
+Translation covariance makes $f_\Lambda(o,\mathbf1)$ independent of
+$o$.
 Define the discrepancy
 \[
-                     d(o,U)=E(o,U)-f_0(o,\mathbf1)-h(o,U).
+                     d(o,U)=E(o,U)-f_\Lambda(o,\mathbf1)-h(o,U).
 \]
 This definition, followed by the change of variable
 $o\mapsto o-\pi_{w+i}(q)$ in each finite site sum, proves
 \begin{equation}\label{eq:five-period-exact-decomposition}
  \sum_a\mathbf1_{\{U\text{ healthy on }S_a\}}F_a(U)
- =|\Lambda|f_0(0,\mathbf1)
+ =|\Lambda|f_\Lambda(0,\mathbf1)
    +\sum_o\mathbf1_{\{U\text{ healthy on }N_z(o)\}}g(o,U)
    +\sum_o d(o,U).
 \end{equation}
 Indeed this change of variable identifies $\sum_oh(o,U)$ with
 the middle sum. It does not require that $U$ itself be healthy.
 If $U$ is healthy on $N_{2z}(o)$, the allocation supports near
-$o$ are healthy, so $E(o,U)=f_0(o,U)$. Equation
+$o$ are healthy, so $E(o,U)=f_\Lambda(o,U)$. Equation
 \eqref{eq:five-period-healthy-identity} then gives $d(o,U)=0$.
 Thus the discrepancy is supported on an unhealthy enlarged
 neighbourhood. The regular output retains $g$, the constant
@@ -190,9 +202,11 @@ sum in the density convention of the nonlinear step.
 \subsection{The derivative cost of folding}
 Let the derivative order be $j$, the spatial weight power be $m$,
 and the small-direction threshold be $\theta>0$. Suppose a
-function $F$ on an auxiliary torus has all left derivatives through
-order $j$ bounded by $q$ when each direction has norm at most
-$\theta$. On a healthy radius-$z$ neighbourhood, the corresponding
+function $F$ on an auxiliary torus is $C^j$ in local exponential
+charts at every globally healthy field, and has there all iterated
+left derivatives through order $j$ bounded by $q$ when each direction
+has norm at most $\theta$. On a healthy radius-$z$ neighbourhood, the
+corresponding
 bound for $F\circ\Phi_{w+i,o}$, with directions allowed to grow
 as $\theta(1+\operatorname{dist}(o,x))^m$, is
 \begin{equation}\label{eq:five-period-derivative-cost}

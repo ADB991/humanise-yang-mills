@@ -26,8 +26,15 @@ The large-$x$ threshold is uniform over all these choices and all funded
 towers having the fixed prices.
 
 Let $I$ be the active link-color coordinates and $J$ the row-color
-coordinates, with unselected rows set to zero. Their anchors are the coarse parent of the link
-and the anchor of the row, respectively. Write
+coordinates, with unselected rows set to zero. An input coordinate is
+anchored at the coarse parent of its fine link. For a row in signed
+channel $s$, apply $s$ to the row's coarse root: the parent of the
+fine plaquette base for a curvature row, or the initial coarse site for
+a predictor row. This is the output anchor used in the weighted bounds.
+The selector here retains a row exactly when its prescribed stencil
+meets an active bond; that stencil contains all fine-direction inputs of
+the row. The anchor-distance selector of Section~\ref{sec:sector-gram}
+uses a different rule; no equality of selected sets is assumed. Write
 \[
              M:\mathbb R^I\longrightarrow\mathbb R^J,
              \qquad Q=M^*M
@@ -35,9 +42,12 @@ and the anchor of the row, respectively. Write
 for the actual selected derivative matrix and its Gram matrix, including
 the fixed row normalization $\lambda>0$. Thus $M$ is the matrix obtained
 by applying the selected row derivative to each active coordinate
-impulse, not a new linearization at the identity. The precision completed
-by the inactive identity is the matrix of Section~\ref{sec:sector-gram};
-$Q$ is its restriction to active coordinates.
+impulse, not a new linearization at the identity. These derivatives
+are taken at the actual replica; the predictor derivative applies
+curvature to the predictor at the displaced field multiplied by the
+inverse predictor at zero displacement. They need not equal the
+transported flat rows used in Section~\ref{sec:sector-gram}; their
+coercivity requires the separate comparison below.
 For matrices between either pair of anchor sets, use the weighted maximum
 of absolute row and column sums, denoted $\|\cdot\|_v$ as in
 Section~\ref{sec:local-covariance}. For each $j\in I$, let $W_j$ be its
@@ -70,16 +80,24 @@ source constant and tail may additionally depend on $r$.
 
 \subsection{The actual matrix and its principal windows}
 
-The proof of the weighted estimate in Section~\ref{sec:sector-gram}
-applies to every selected row and active coordinate. Its inputs are the
-uniform derivative estimate for the predictor on its actual branch and
-the exponentially summable path rows. Both are valid at the coarse field
-$V$ because row selection clears the required neighbourhood of its flags.
-Reversing a bond changes its parent anchor by at most one; the proof
-there includes this displacement. Restrictions to selected rows or active
-coordinates delete nonnegative terms from the absolute sums.
+The actual derivative has a uniform exponentially decaying impulse
+bound. For a plaquette derivative, the product rule gives a fixed sum
+over its four input bonds; path transports preserve colour norms and
+the funded absolute path coefficients pay the remaining distance. The
+predictor derivative reads a fixed stencil and has a uniform bound on
+its actual branch by the finite-read argument of
+Section~\ref{sec:mean-action-jets}. That finite-read argument uses the
+fixed patch and predictor branch conditions; it does not use the
+precision bounds assumed for other parts of that section. Row selection
+clears the required neighbourhood of flags, so this branch estimate
+applies at $V$.
+Reversing a bond changes its parent anchor by at most one, which costs
+only a fixed factor in the exponential weight. Restrictions to selected
+rows or active coordinates delete nonnegative terms from the absolute
+sums. This is the actual-derivative counterpart of the impulse estimate
+used in Section~\ref{sec:sector-gram}.
 
-More explicitly, the entry estimate there has the form
+More explicitly, the resulting actual entry estimate has the form
 \[
  e^{\sigma\operatorname{dist}(a_i,a_j)}|M_{ij}|\le C_0.
 \]
@@ -95,10 +113,83 @@ distance gives
 Increasing $L_0$ if needed makes it positive. This is a global row
 and column bound; its proof does not introduce the torus cardinality.
 The same product estimate gives $\|Q\|_{\sigma/2}\le L_0^2$.
-The coercivity argument in Section~\ref{sec:sector-gram} gives
-$Q\ge\eta_0 I$ for some $\eta_0>0$. Indeed extend any active vector
-by zero in the completed precision matrix; the inactive identity
-contributes zero, and the quadratic form is exactly $\|M z\|_2^2$.
+We prove a uniform lower bound for these actual derivatives. Let $a$
+be an active-coordinate vector and extend it by zero to a fine-bond
+field $u$, including zeros on tree and frozen bonds. At each active
+bond choose a coarse gauge on a fixed macro patch around its parent;
+the active-bond clearance and the flag identity make this patch clean.
+The tree comparison's fixed macrobox fits on the fine torus: eventually
+$B$ dominates its fixed radius, while the fine period $f=Lc$ satisfies
+$f\ge c\ge100(1+B)$ and $c>1$.
+The axial estimate makes every replica link read by the comparison
+arbitrarily close to the identity, uniformly in the period and in the
+subsequently chosen sector. Use one such gauge for the whole comparison
+at that bond, including every row in its macro patch.
+
+Fix $\varepsilon>0$. On a sufficiently small identity neighbourhood,
+the derivatives of a plaquette and of the selected predictor differ
+from their flat derivatives by at most $\varepsilon$ times the sum of
+the norms of the input directions on their respective finite stencils.
+For a plaquette this follows by differentiating its finite link product
+and using continuity of its derivative. For the predictor, use the
+finite-read analytic branch of Section~\ref{sec:mean-action-jets}; its
+derivative at the identity is the flat predictor row. Continuity of
+that derivative on the fixed reference patch gives the required
+$\varepsilon$ bound for each axis and local tag choice. Their finite
+intersection is one neighbourhood, independent of the period. The
+read pullback has supremum norm at most one even when periodic reads
+coincide, and the supremum of the input directions is bounded by their
+sum on the stencil.
+Gauge covariance and invariance of the colour norm return the estimates
+to the original actual derivatives. The tree inequality
+\eqref{eq:sector-local-linear}, applied in the chosen gauge, therefore
+bounds each active $\|u_e\|$ by a fixed linear combination of the
+norms of the actual direct plaquette and predictor derivatives, plus
+$\varepsilon$ times sums of $\|u\|$ over fixed-radius stencils. The
+gauge may depend on $e$; it is fixed while differentiating the rows.
+
+Square this inequality and sum over active bonds. Reordering the finite
+neighbourhood sums, as in Section~\ref{sec:sector-gram}, gives fixed
+constants $K_f,K_p,H_f,H_p\ge0$, independent of the period, such that
+\[
+ \|a\|_2^2\le
+ 2K_f\sum_p\|D_pu\|^2+2K_p\sum_b\|D_bu\|^2
+       +2\varepsilon^2(K_fH_f+K_pH_p)\|a\|_2^2,
+\]
+where $D_p,D_b$ are the actual direct plaquette and predictor
+derivatives in the identity signed channel. These constants include
+the macrobox and stencil multiplicities: Cauchy--Schwarz bounds the
+square of each local input sum by the stencil cardinality times its
+sum of squares, and each input bond occurs in only a fixed number of
+these sums per coarse anchor. The number of fine bonds over an anchor
+is $L^4$ times the number of axes. The same finite counting applies to
+the plaquette and predictor terms, including on a wrapped torus.
+Choose $\varepsilon$ before
+the large-$x$ threshold so that the final coefficient is at most
+$1/2$. The row-selection rule retains a row whenever its read stencil
+meets an active bond. Conversely, if the row is omitted, the
+zero-extended direction vanishes on its entire stencil, so its
+derivative is zero. For a path row the stencil contains the reads of
+every retained path; for a predictor row it contains the finite branch
+reads. Thus inserting row selection does not change the derivative on
+the zero-extended active space. The normalized Gram energy obeys
+\[
+ \langle a,Qa\rangle\ge\lambda^2\left(
+ c_f\sum_p\|D_pu\|^2+c_p\sum_b\|D_bu\|^2\right),
+\]
+with the positive direct and predictor coefficients $c_f,c_p$.
+The remaining signed channels and path rows contribute nonnegative
+squares. Absorbing the error gives
+\[
+ \|a\|_2^2\le4(K_f+K_p+1)
+  \left(\sum_p\|D_pu\|^2+\sum_b\|D_bu\|^2\right).
+\]
+Thus one may take
+$\eta_0=\lambda^2\min(c_f,c_p)/\{4(K_f+K_p+1)\}>0$,
+uniformly in all the stated sector choices. The empty active space is
+included. This argument uses
+the same tree inequality as Section~\ref{sec:sector-gram}, but does not
+identify its transported-flat matrix with $M$.
 
 Set $K_0\ge\max\{1,L_0^2\}$. Apply the inverse estimates of
 Section~\ref{sec:local-covariance} to this actual $Q$ and its principal

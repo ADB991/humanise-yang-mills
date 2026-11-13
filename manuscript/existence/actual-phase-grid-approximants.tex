@@ -22,7 +22,11 @@ We use the paid selected-history data of
 Sections~\ref{sec:actual-marked-portfolio-calibration}
 and~\ref{sec:selected-centered-service}: the coefficient transport on this
 history, its adjacent density and forced-profile identities, and its height,
-transition, occupancy and support estimates. In particular the positive
+transition, occupancy and support estimates. Precisely, the input is the
+record (R1)--(R7) of
+Section~\ref{sec:actual-marked-portfolio-calibration}, for every grade,
+together with the opening schedule of
+Section~\ref{ex-centered-site-geometry}. In particular the positive
 heights $\zeta_{d,i}$ and weights $\phi_i$ satisfy
 \[
  0<\phi_i\leq1,\qquad
@@ -123,9 +127,11 @@ where $\mathcal T_m$ is the vacuum treasury. Choose $w>0$ so that
 \begin{equation}\label{eq:actual-grid-price}
  w a_m^{-d}\frac{E_k}{G(k,m)}\leq\frac{\zeta_{d,m}}2.
 \end{equation}
-The opening supplies migrating centers for the full $J$-cell census,
+By Lemma~\ref{lem:ex-centered-opened-copy}, applied to $J$ opened at
+$m$, the opening supplies migrating centers for the full $J$-cell census,
 separated at every depth between $m$ and $N$. Their occupancy is one and
-therefore fits the nondecreasing paid occupancy schedule.
+therefore fits the nondecreasing paid occupancy schedule, whose entries
+are at least one.
 
 \begin{lemma}\label{lem:actual-grid-basis}
 For every basis vector $e_s$ and every $N>k$, there is a coefficient $b_s$
@@ -142,18 +148,24 @@ for $\mu_{N,p}$.
 \end{lemma}
 \begin{proof}
 Apply the backward coefficient construction of
-Lemma~\ref{lem:actual-marked-antilles} to the primary $e_s$ at depth $k$.
-Its initial remainder and forced profile vanish, its format is the primary
-format, and its coefficient norm is at most one. Recenter the resulting
-backward coefficients by the negative of their bottom primary $b_s$.
+Lemma~\ref{lem:actual-marked-antilles} to the primary coefficient with
+lead $e_s$ at depth $k$: in the notation of that lemma the top level is
+$k$, the bottom level is the reference depth $l=r_d\leq m$, the
+coefficient is the primary of $e_s$, and $w=1$. This is legitimate because
+the initial remainder and forced profile of a primary vanish, its format
+is the primary format, and its coefficient norm is one. The Music is the
+one of the record (R6) at $(N,p)$, and the doors are those of the record.
+Recenter the resulting backward coefficients by the negative of their
+bottom primary $b_s$, the primary of the state at $r_d$.
 Writing the resulting voice as $Z_i$ and its remainder price as $g_i$,
-the construction gives, for $m\leq i\leq k$,
+the third item of the lemma gives, for $r_d\leq i\leq k$ and in
+particular for $m\leq i\leq k$,
 \[
  g_i+\|Z_i.x\|_1\leq E_k/G(k,i),\qquad
  Z_k.x=e_s-I_kb_s.
 \]
-The terminal cone estimate is
-$32(1+c_k)^2\|Z_k.x\|_1\leq2(1+c_k)$.
+The last item of the lemma gives the terminal cone estimate
+$32(1+c_k)^2\|Z_k.x\|_1\leq g_k\leq2(1+c_k)$.
 Since $c_k\geq1$, it implies the stated quarter bound.
 
 Let $\tau_i=w\prod_{j=m}^{i-1}\phi_j$. The physical rescaling changes
@@ -212,8 +224,15 @@ transition estimate now descends by induction from $k$ to $m$.
 At each step the centers migrate along the
 same embeddings, the occupancy and separation estimates persist, and the
 pushed singleton coefficients equal the prescribed local densities.
-Thus the marked estimate of Section~\ref{ex-centered-sail} applies at
-$m$. Its local entry price is at most $2$, its forced price at most $1$,
+Thus the marked estimate \eqref{ex-centered-sail} of
+Section~\ref{ex-centered-construction} applies at $m$, once the pushed
+coefficient has a served representation there. As in
+Proposition~\ref{prop:actual-marked-figment}, the construction of that
+served representation from the coefficient records, here through the
+two-stage descent just described, is not proved in detail in this
+section; the two prices verified above are its numerical inputs, and the
+root-test bound of the lemma is conditional on it. Its local entry price
+is at most $2$, its forced price at most $1$,
 and its action allowance is $1$, giving total price $2+1+2=5$ per cell.
 These are the same prices derived in the finite-census argument of
 Proposition~\ref{prop:actual-marked-figment}; the new feature here is the
@@ -286,9 +305,11 @@ Choose
  w_k=\frac{\zeta_{d,m}G(k,m)}{2a_m^{-d}E_k}.
 \]
 Then \eqref{eq:actual-grid-price} is an equality. The column estimates
-$\ell_k=o(\sigma_k)$ and $\log(1+c_k)=o(\sigma_k)$ imply
-$K_k(L)S_{J,m}/w_k\to0$, by
-Lemma~\ref{lem:ex-public-radial-choice}. In this limit $J,m,d,L$ are fixed.
+$\ell_k=o(\sigma_k)$ and $\log(1+c_k)=o(\sigma_k)$ imply, by
+Lemma~\ref{lem:ex-public-radial-choice},
+\[
+ K_k(L)\,S_{J,m}/w_k\longrightarrow0\qquad(k\to\infty).
+\] In this limit $J,m,d,L$ are fixed.
 Thus we can choose $k$ to meet both the room condition and any prescribed
 error $\varepsilon>0$, and subsequently take $N>k$ on the original late
 set.
@@ -330,7 +351,12 @@ is finite, summing their supremum bounds gives a bound $M_{v,q}$ valid
 for every cell at accuracy $q$.
 
 There is also an accuracy-independent bound $A_v$ on the root tests of
-the physical origin fields in these finitely many frames. To obtain it,
+the physical origin fields in these finitely many frames. This is the one
+place where the centered one-field estimate enters: it is the uniform
+centered power bound of Theorem~\ref{ex-centered-main-bound}, used here
+as an input on the same family and extraction order, together with the
+reflection-positive transfer structure of the finite-volume laws. To
+obtain $A_v$,
 choose a finer depth $j\geq J$ with $9a_j\leq a_J$ and use the centered
 one-field estimate at that depth. The origin is in the margin of width
 $3a_j$ of its $J$-chamber. The centered comparison estimate embeds the

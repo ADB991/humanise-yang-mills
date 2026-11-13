@@ -28,7 +28,7 @@ properties of the cubic and quartic streams used below.
 
 \begin{proposition}[Uniform coefficient picture for an atom stream]
 \label{prop:ex-atom-stream-picture}
-Fix $r,t\in\mathbb N$, $r\leq4$, and $\sigma>0$. There are constants
+Fix $r,t\in\mathbb N$ and $\sigma>0$. There are constants
 $\eta_{r,t}>0$ and $C_{r,t}<\infty$, depending only on $G,r,t,\sigma$,
 such that the following holds. If $\sum_i b_\sigma(a_i)\leq A$, then the
 translation sum of the local atom functions has an exact order-$(t+1)$
@@ -131,47 +131,110 @@ independent momentum tuple $p$, its one-leg contraction at leg $j$ is
  \qquad q(p_j,\mu)=e^{ip_{j,\mu}}-1,
 \]
 where $\mathcal A$ is the finite set of spatial axes. The color word
-$v$ is held fixed; the sum is over the spatial difference axis.
+$v$ is held fixed; the sum is over the spatial difference axis. Here
+$j$ ranges over all $t+1$ legs and $p_0,\ldots,p_t$ denote the external
+momenta of the tuple: $p_1,\ldots,p_t$ are the independent momenta and
+$p_0=-\sum_{i=1}^tp_i$.
+
+A function of the independent momenta has ray order at least $s$ if,
+for every real tuple $p$, its value at $\lambda p$ is $O(|\lambda|^s)$
+as the real parameter $\lambda$ tends to zero.
+
+Gauge invariance of an action $F$ on link fluctuations is used in the
+following form. For a site field $\theta$ and a link fluctuation $u$,
+both Lie-algebra valued, let $g(\theta,u)$ be the gauge transform of
+$\exp u$ by $\exp\theta$ in logarithmic link coordinates: on the link
+from $x$ in direction $\mu$,
+\[
+ g(\theta,u)_{x,\mu}
+   =\log\bigl(\exp(\theta_x)\exp(u_{x,\mu})
+                 \exp(\theta_{x+e_\mu})^{-1}\bigr).
+\]
+Then $F(g(\theta,u))=F(u)$ for all $(\theta,u)$ near zero. The map $g$
+is given on every link of every torus by one and the same analytic
+function $\omega$ of the three arguments
+$(\theta_x,u_{x,\mu},\theta_{x+e_\mu})$. Its first derivative at zero
+is $D_ug(0,0)=I$ and $D_\theta g(0,0)\theta=-d_0\theta$, where
+$(d_0\theta)_{x,\mu}=\theta_{x+e_\mu}-\theta_x$.
 
 \begin{lemma}[Ward partition identity]
 \label{lem:ex-ward-partition}
 Let $m_k\to\infty$, and let $F_k$ be real analytic, gauge invariant
-actions with $DF_k(0)=0$. Suppose an order-$t$ picture $P$ is uniformly
-bounded on a momentum strip and records the $(t+1)$st coefficient of
-$F_k$ exactly on every torus. Suppose further that for each
-$b=2,\ldots,t$ there is a uniformly bounded order-$(b-1)$ picture
-recording the $b$th coefficient, with each of its entries of ray order
-at least $s$. Then each contraction $\mathcal C_jP$ has ray order at
-least $s$.
+actions with $DF_k(0)=0$. Suppose an order-$t$ picture $P$ is
+holomorphic and uniformly bounded on a momentum strip and records the
+$(t+1)$st coefficient of $F_k$ exactly on every torus of the sequence.
+Suppose further that for each $b=2,\ldots,t$ there is one order-$(b-1)$
+picture $P_{b-1}$, holomorphic and bounded on a momentum strip, which
+records the $b$th coefficient of $F_k$ for every $k$ and each of whose
+entries has ray order at least $s$. Then each contraction
+$\mathcal C_jP$ has ray order at least $s$.
 \end{lemma}
 
 \begin{proof}
-Differentiate the composition of $F_k$ with the infinitesimal gauge
-change $t+1$ times. The chain rule is the finite sum over ordered set
-partitions of the $t+1$ slots. Gauge invariance makes this sum zero:
-the pure-gauge bundle has no component in the distinguished gauge
-coordinate. The all-singleton partition is, by the exact coefficient
-record, $-|\Lambda_{m_k}|(t+1)!\,\mathcal C_jP$. The factor
-$q(p_j,\mu)$ is precisely the Fourier multiplier of the one-link
-difference in the distinguished slot. The one-block term vanishes since
-$DF_k(0)=0$.
+Fix the leg $j$, the color word $v$ and the run $a$. On the torus of
+side $m_k$ take mesh momenta $p_0,\ldots,p_t$ with zero sum, and
+differentiate the identity $F_k(g(\theta,u))=F_k(u)$ once in each of
+$t+1$ directions: in slot $j$ the direction is the site wave of momentum
+$p_j$ and color $v_j$, and in every other slot $i$ it is the link wave
+of momentum $p_i$, axis $a_i$ and color $v_i$. The right side gives
+zero, because its slot $j$ has no link component. The left side is,
+by the chain rule, the finite sum over the set partitions $\pi$ of the
+$t+1$ slots, the blocks being ordered by their least slot, of
+$D^{b}F_k(0)$ applied to the block derivatives of $g$; here $b$ is the
+number of blocks of $\pi$.
 
-For a partition with $b$ blocks, $2\leq b\leq t$, the lower recorded
-picture has order $b-1$ because it records the $b$th derivative. Its
-arguments are the sums of the external momenta in the corresponding
-blocks. The chain-rule contribution is a finite sum of products of this
-picture entry and continuous block-derivative coefficients; it therefore
-has ray order at least $s$. Thus on the finite period mesh the
-contraction is a finite sum of such lower terms divided by the positive
-factor $|\Lambda_{m_k}|(t+1)!$. Every real momentum tuple is a limit of
-zero-total-momentum mesh tuples: round the $t$ independent momenta to the
-period mesh, and set the remaining momentum (the first, distinguished
-leg) to their negative sum, retaining the integer winding in the momentum
-lift. Exact recording gives the same factor $|\Lambda_{m_k}|$ in the top
-and each lower coefficient. Cancel this common volume factor in the
-finite-mesh identity before passing to the limit. The lower terms are
-continuous, so the identity passes to every real tuple. Their finite sum
-has ray order $s$, proving the claim.
+The all-singleton partition contributes the first derivative of $g$ in
+each slot. In slot $j$ this is $-d_0$ of the site wave, whose link
+components are $-q(p_j,\mu)$ times the link waves of momentum $p_j$ and
+axis $\mu$; in the other slots it is the link wave itself. By the exact
+coefficient record this term equals
+$-|\Lambda_{m_k}|(t+1)!\,(\mathcal C_jP)_{v,a}$ at the independent
+momenta. The one-block term vanishes since $DF_k(0)=0$.
+
+Now let $\pi$ have $b$ blocks $\pi_1,\ldots,\pi_b$ with
+$2\leq b\leq t$. Since $g$ is given by the one local function $\omega$
+on every link, the derivative of $g$ of order $|\pi_r|$ applied to
+waves of momenta $(p_i)_{i\in\pi_r}$ is the link wave of momentum
+$\sum_{i\in\pi_r}p_i$ whose amplitude, at axis $\mu$ and color $c$, is
+the corresponding component of $D^{|\pi_r|}\omega(0)$ evaluated on the
+triples $(\alpha_i,\upsilon_i,e^{ip_{i,\mu}}\alpha_i)$ formed from the
+site and link amplitudes of the inserted waves. Call this amplitude
+$c_{\pi,r}(\mu,c;p)$. It is a polynomial in the phases
+$e^{ip_{i,\mu}}$, so it is a continuous function of real momenta, and
+it does not depend on the period. The lower picture $P_{b-1}$ records
+the $b$th coefficient of every $F_k$, and the block momenta sum to
+zero. Hence the contribution of $\pi$ is
+$|\Lambda_{m_k}|\,g_\pi(p_1,\ldots,p_t)$, where
+\[
+ g_\pi(p)=b!\sum_{\boldsymbol\mu,\mathbf c}
+   \Bigl(\prod_{r=1}^{b}c_{\pi,r}(\mu_r,c_r;p)\Bigr)
+   (P_{b-1})_{\mathbf c,\boldsymbol\mu}
+     \Bigl(\textstyle\sum_{i\in\pi_2}p_i,\ldots,
+           \sum_{i\in\pi_b}p_i\Bigr)
+\]
+is one function for all $k$; in these sums $p_0$ stands for
+$-\sum_{i\geq1}p_i$. It is defined and continuous at every real tuple.
+Its arguments in $P_{b-1}$ are linear in $p$, so along a real ray
+through zero the picture factor is $O(|\lambda|^s)$, while the
+continuous multipliers stay bounded. Thus $g_\pi$ has ray order at
+least $s$.
+
+Dividing the differentiated identity by the positive factor
+$|\Lambda_{m_k}|$, which is common to the top and to every lower
+term, we obtain on the period mesh
+\[
+ (t+1)!\,(\mathcal C_jP)_{v,a}(p)=\sum_{\pi}g_\pi(p),
+\]
+the sum being over the partitions with $2\leq b\leq t$ blocks.
+Every real momentum tuple is a limit of mesh tuples along
+$m_k\to\infty$: round the $t$ independent momenta to the period mesh
+and let the remaining momentum $p_0$ be their negative sum. The mesh
+momenta are determined modulo $2\pi$, and both sides are evaluated at
+this real representative; periodicity of the pictures makes the choice
+immaterial. Both sides are continuous at real tuples, the left one
+because $P$ is holomorphic on a strip. The identity therefore holds at
+every real tuple. The finite sum on the right has ray order $s$,
+proving the claim.
 \end{proof}
 
 \begin{lemma}[Recovering powers from the contracted kernel]
@@ -268,103 +331,382 @@ orders.
 
 \subsection{The curvature stream and the Wilson subtraction}
 
-For a path family $R$, write
+We fix the objects. On the torus of side $m$ a link fluctuation $u$
+assigns a Lie-algebra element to every positively oriented link, and
+$U=\exp u$ is the corresponding configuration. Let $\varrho$ be the
+defining unitary representation, of dimension $d_G$, and normalize the
+inner product on the Lie algebra by $\|\varrho_*(c)\|^2=d_G|c|^2$, with
+the Hilbert--Schmidt norm on the left. The plaquette energy is
+$\varpi(g)=1-\operatorname{Re}\operatorname{tr}\varrho(g)/d_G
+=\|\varrho(g)-1\|^2/(2d_G)$, and the Wilson action is
+$W_m(u)=\sum_f\varpi(U_f)$, summed over the plaquettes $f$ of the torus
+with holonomies $U_f$. The curvature of a group element is
+$\kappa(g)=\Pi_G\bigl(\tfrac12(\varrho(g)-\varrho(g)^{-1})\bigr)$, where
+$\Pi_G$ is the projection onto the Lie algebra, so that
+$\kappa(\exp c)=c+O(|c|^2)$. A slot consists of a lattice walk from
+the origin and a plaquette type; its value $s(U;x)$ at the anchor $x$
+is the curvature of the plaquette of that type at the endpoint of the
+translated walk, transported back to $x$ by the adjoint action of the
+holonomy along the walk.
+
+A path family $R$ consists of rows, a loop stream, and cubic and
+quartic atom streams $R^{(3)},R^{(4)}$. For each plaquette type $b$ the
+row is a sequence of real coefficients $c_{b,i}$ and slots $s_{b,i}$.
+Its row field at the plaquette $f=(x,b)$ is the sum
+$\ell_R(U;f)=\sum_ic_{b,i}s_{b,i}(U;x)$; it converges absolutely when
+$R$ satisfies the path bound stated below, which is assumed whenever
+the row field is used. A clip $p$ supplies the
+direct coefficient $p.\mathrm{direct}>0$. The unaveraged quadratic
+path action is
 \[
-  C_k=\sum_{i\geq0}\operatorname{turn}(R^{(3)}_i)(m_k)
-      +\sum_{i\geq0}\operatorname{turn}(R^{(4)}_i)(m_k),
-  \qquad
-  I_k=\operatorname{intended}(p,R;m_k),\quad W_k=\operatorname{Wilson}(m_k).
+ Q_{p,R,m}(U)=\sum_f\Bigl(p.\mathrm{direct}\,\varpi(U_f)
+                  +\tfrac12|\ell_R(U;f)|^2\Bigr)
+   =p.\mathrm{direct}\,W_m+Q^{(2)}_m ,
 \]
-The path bounds provide the cubic and quartic activity budgets at most
-$A$ and their gauge invariance. The curvature part satisfies
-$I_k=J_k+C_k$, where $J_k$ is the quadratic path action.
+in the notation of Corollary~\ref{cor:ex-row-controlled-action}. Let
+$\mathcal S$ be the finite signed-coordinate group acting on
+configurations by $U\mapsto\rho_sU$. For a period sequence $m_k$ put
+\[
+ J_k(u)=\frac1{|\mathcal S|}\sum_{s\in\mathcal S}
+              Q_{p,R,m_k}(\rho_s\exp u),\qquad
+ C_k=T_3(m_k)+T_4(m_k),\qquad W_k=W_{m_k},
+\]
+where $T_3,T_4$ are the signed-orientation-averaged translation sums of
+the atom streams $R^{(3)},R^{(4)}$, as in the preceding subsection. The
+selected action is
+\[
+ I_k=\operatorname{intended}(p,R;m_k)=J_k+C_k .
+\]
+The loop stream of $R$ is not part of $I_k$. The path bound
+$R.\mathrm{Bounds}(p,\tau,A,\Lambda)$, recalled in
+Section~\ref{sec:path-attachment-producer}, provides the row budgets
+$\sum_i|c_{b,i}|e^{\tau\ell_{b,i}}\leq A$, where $\ell_{b,i}$ is the
+length of the slot $s_{b,i}$, the cubic and quartic activity budgets at
+most $A$ at the same width $\tau$, and the invariance of every atom.
 
 \begin{proposition}[Curvature stream pictures]
 \label{prop:ex-veneer}
-Assume the cubic and quartic budgets and invariance just stated. There are
-constants $\eta_c>0$, $K_c<\infty$ such that for $k=1,2,3$ the curvature
-sequence $C_k$ has a priced, exactly recorded picture of order $k$,
-vanishing order $4-k$, with price at most $A K_c$.
+Fix $\tau>0$. There are constants $\eta_c>0$, $K_c<\infty$, depending
+only on $G$ and $\tau$, such that the following holds. If $m_k\to\infty$
+and the cubic and quartic streams are invariant with activity budgets
+at most $A$ at width $\tau$, then for each $j=1,2,3$ the sequence
+$(C_k)_k$ has an exactly recorded picture of order $j$, holomorphic on
+the strip of width $\eta_c$, of ray order at least $4-j$, with price at
+most $A K_c$.
 \end{proposition}
 
 \begin{proof}
-Proposition~\ref{prop:ex-extra-curves} supplies the order-two and
-order-three pictures. For order two its vanishing order is two, as
-required. For order three its vanishing order is one. The order-one
-picture is identically zero: $C_k$ vanishes to third order, so its second
-Taylor coefficient is zero. The recorded error is therefore zero, its
-price is zero, and it has any positive vanishing order. Taking the common
-minimum width and the maximum of the two prices proves the assertion.
+Proposition~\ref{prop:ex-extra-curves}, applied at width $\tau$,
+supplies the order-two and order-three pictures. For order two its
+vanishing order is two, as required. For order three its vanishing order
+is one. The order-one picture is identically zero: $C_k$ vanishes to
+third order, so its second Taylor coefficient is zero. The zero picture
+records it exactly, its price is zero, and it has every ray order.
+Taking the common minimum width and the maximum of the two prices proves
+the assertion.
 \end{proof}
 
-Now impose the selected metric hypotheses: a bed $B$ is attached to $R$;
-its metric row is bounded on a strip of width $\sigma$ and price $C$;
-the metric floor bound holds at every torus side and the sworn condition
-holds at each selected side $m_k$. The following estimates are the only uses of these
-assumptions. The metric-slot picture has price
-$b_0=\operatorname{bedCharge}(\sigma,C)$ and records the quadratic
-coefficient of $J_k$. The unit leader has price
-$b_1=\operatorname{bedCharge}(\sigma,1)$ and records the Wilson
-coefficient. The floor-start condition gives the zero-momentum normalization
-$B(0)=I$. The sworn identity and the attached-path Hessian identity
-identify the actual quadratic coefficient of $J_k$ with the metric-slot
-picture. In Fourier variables, the difference of the two quadratic
-pictures has the form
-\[
-       \widehat{\operatorname{curl}}(p)^*
-       (B(p)-I)\widehat{\operatorname{curl}}(p).
-\]
-Each curl factor is a one-link difference and is $O(|p|)$; analyticity
-and $B(0)=I$ give $B(p)-I=O(|p|)$. Their product therefore has ray
-order three. This is the order-one picture for $J_k-W_k$, with price
-$b_0+b_1$. The higher column pictures are supplied by
-Proposition~\ref{prop:ex-row-quadratic-price}; they record the third and
-fourth coefficients of $J_k$. The bound
-$\operatorname{bedCharge}(\sigma,D)$ is the product of the two face
-counts and the elementary exponential strip bound for the two slot
-factors, so it is independent of the torus side.
+We next describe the metric hypotheses. A bed $B$ consists of five real
+coefficient arrays on $\mathbb Z^4$, each indexed by pairs of plaquette
+types: the metric $H$, the diagonal metric $\widetilde H$, designated
+inverses of these two, and the root $r$. For such an array $E$ write
+$E_m$ for its periodization to the torus of side $m$, a matrix acting
+on two-form fields, whose entries are the sums of $E$ over residue
+classes modulo $m$. The source defines these sums, and the value
+$\widehat H(0)=\sum_xH(x)$ occurring in the floor condition, for
+arbitrary arrays, assigning a conventional value to a series that is
+not unconditionally summable; the floor and sworn conditions below
+are conditions on the matrices so defined. In this section the symbol
+of $H$ is used only under a strip bound on $H$, where all these series
+converge absolutely. If $E$ is entrywise absolutely
+summable, $\sum_x|E_{bb'}(x)|<\infty$ for every pair of types, write
+$\widehat E(p)=\sum_xe^{ip\cdot x}E(x)$ for its symbol; then $E_m$
+multiplies a Fourier wave of mesh momentum $k$ by $\widehat E(k)$.
+The strip bound $E.\mathrm{strip}(\sigma,M)$ means
+$\sum_xe^{\sigma|x|_1}|E_{bb'}(x)|\leq M$ for every pair of types. For
+$\sigma>0$ it implies absolute summability, and that every entry of
+$\widehat E$ is holomorphic and bounded in modulus by $M$ on the strip
+of width $\sigma$.
+\begin{itemize}
+\item $B$ is \emph{attached} to $R$ if, for all plaquette types $b,b'$
+ and every $y\in\mathbb Z^4$, the coefficients $c_{b,i}$ of the slots
+ of row $b$ with plaquette type $b'$ and walk endpoint $y$ sum to
+ $r_{bb'}(y)$.
+\item $\mathrm{Floor}(B,p,m,\varepsilon,M)$ is the conjunction of the
+ following conditions at the side $m$: the designated inverses are
+ inverse to $H_m$ and $\widetilde H_m$;
+ $H_m=p.\mathrm{direct}\,I+r_m^{\mathsf T}r_m$; $\widehat H(0)=I$;
+ $H_md_1=\widetilde H_md_1$, with $d_1$ the lattice curl from one-forms
+ to two-forms; $H_m$ and $\widetilde H_m$ are symmetric; and both
+ satisfy $\varepsilon|v|^2\leq\langle v,H_mv\rangle\leq M|v|^2$,
+ respectively the same with $\widetilde H_m$, for every real two-form
+ $v$.
+\item The \emph{sworn} condition at the side $m$ says that the
+ quadratic form
+ \[
+  \mathcal K_m(x,y)=\sum_f\langle(d_1x)_f,(H_md_1y)_f\rangle
+ \]
+ on Lie-algebra valued one-forms is invariant under the
+ signed-coordinate group: $\mathcal K_m(x^s,y^s)=\mathcal K_m(x,y)$
+ for $s\in\mathcal S$, where $x\mapsto x^s$ is the linear action for
+ which $\rho_s\exp x=\exp x^s$.
+\end{itemize}
+Here $H_m$ acts on each color component, in an orthonormal basis of the
+Lie algebra, and $\langle\cdot,\cdot\rangle$ is the color inner
+product. Of the floor conditions, this section uses only the root
+identity, the normalization $\widehat H(0)=I$ and the symmetry of
+$H_m$.
 
-The row estimate of Proposition~\ref{prop:ex-row-quadratic-price}, with
-its signed average, supplies priced pictures for $J_k$ at orders two and
-three. Proposition~\ref{prop:ex-wilson-stream} supplies the corresponding
-Wilson pictures at both orders, with price constants $X_2,X_3$ and
-positive width one. Subtracting pictures preserves exact recording and
-adds their prices.
+\begin{lemma}[Quadratic coefficients of the Wilson and path actions]
+\label{lem:ex-soft-quadratic-hessian}
+Let $m$ be a torus side.
+\begin{enumerate}
+\item On every torus, $W_m(0)=0$, $DW_m(0)=0$ and
+ \[
+  D^2W_m(0)[x,y]=\sum_f\langle(d_1x)_f,(d_1y)_f\rangle .
+ \]
+\item Let $R$ satisfy the path bound with parameters
+ $(p,\tau,A,\Lambda)$ and let $B$ be attached to $R$. Suppose that
+ $\mathrm{Floor}(B,p,m,\varepsilon,M)$ and the sworn condition hold at
+ the side $m$. Then the signed average $J$ of $Q_{p,R,m}$ satisfies
+ \[
+  J(0)=0,\qquad DJ(0)=0,\qquad D^2J(0)[x,y]=\mathcal K_m(x,y).
+ \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Both functions are real analytic near zero, by the holomorphic
+extensions constructed for Proposition~\ref{prop:ex-wilson-stream} and
+Proposition~\ref{prop:ex-row-quadratic-price}. We use the following
+elementary fact. Let $f$ be twice continuously differentiable near
+zero in a finite-dimensional space, and let $\mathcal Q$ be a symmetric
+bilinear form such that $f(\lambda a)/\lambda^2\to\mathcal Q(a,a)/2$
+as $\lambda\to0$, for every $a$. Then $f(0)=0$, $Df(0)=0$ and
+$D^2f(0)=\mathcal Q$. Indeed the second-order Taylor formula along the
+line through $a$ forces $f(0)=0$, then $Df(0)a=0$, then
+$D^2f(0)[a,a]=\mathcal Q(a,a)$, and polarization of the two symmetric
+forms gives the last claim.
+
+Fix a one-form $a$ and put $U(\lambda)=\exp(\lambda a)$. The holonomy
+$V_f(\lambda)$ around a plaquette $f$ is a product of four factors
+$\exp(\pm\lambda a_e)$, so $V_f(0)=1$ and
+$\frac{d}{d\lambda}\varrho(V_f(\lambda))|_{\lambda=0}
+=\varrho_*((d_1a)_f)$. By the normalization of the color inner product,
+\[
+ \lambda^{-2}\varpi(V_f(\lambda))
+   =\frac{\|\lambda^{-1}(\varrho(V_f(\lambda))-1)\|^2}{2d_G}
+   \longrightarrow\tfrac12|(d_1a)_f|^2 .
+\]
+Summing over the finitely many plaquettes and applying the elementary
+fact with $\mathcal Q(x,y)=\sum_f\langle(d_1x)_f,(d_1y)_f\rangle$
+proves the first part.
+
+For the second part consider one slot $s$ at an anchor $x$, and let
+$f'$ be the torus plaquette it reads. Its value at $U(\lambda)$ is
+$\kappa(T(\lambda)V_{f'}(\lambda)T(\lambda)^{-1})$, where $T(\lambda)$
+is the holonomy along the walk and $T(0)=1$. The derivative at zero of
+the conjugated holonomy is that of $V_{f'}$, hence
+\[
+ \lambda^{-1}s(U(\lambda);x)\longrightarrow(d_1a)_{f'} .
+\]
+Moreover, the adjoint action is isometric and $V_{f'}$ ranges over
+the finitely many plaquettes of the torus. Hence there is a constant
+$b_a$, for instance $1+\sum_f|(d_1a)_f|$, such that
+$|\lambda^{-1}s(U(\lambda);x)|\leq b_a$ for all sufficiently small
+$\lambda\neq0$, simultaneously for all slots and anchors. The row
+budget gives $\sum_i|c_{b,i}|\leq A$. Dominated convergence therefore
+yields, for every plaquette $f=(x,b)$,
+\[
+ \lambda^{-1}\ell_R(U(\lambda);f)\longrightarrow
+ \ell_{\rm path}(f,a):=\sum_ic_{b,i}\,(d_1a)_{f_{b,i}(x)},
+\]
+where $f_{b,i}(x)$ is the plaquette read by the slot $s_{b,i}$ at the
+anchor $x$. Consequently
+\[
+ \lambda^{-2}Q_{p,R,m}(U(\lambda))\longrightarrow
+ \tfrac12\sum_f\Bigl(p.\mathrm{direct}\,|(d_1a)_f|^2
+              +|\ell_{\rm path}(f,a)|^2\Bigr).
+\]
+The right side equals $\tfrac12\mathcal K_m(a,a)$. This is the
+path-to-root computation of
+Section~\ref{subsec:ex-lattice-horizon-path}: grouping the absolutely
+summable row by the plaquette read and using attachment gives
+$\ell_{\rm path}(f,a)=[r_m(d_1a)](f)$ in each color component, and
+the root identity $H_m=p.\mathrm{direct}\,I+r_m^{\mathsf T}r_m$ of the
+floor then gives
+\[
+ \mathcal K_m(a,a')=\sum_f\Bigl(p.\mathrm{direct}\,
+    \langle(d_1a)_f,(d_1a')_f\rangle
+    +\langle\ell_{\rm path}(f,a),\ell_{\rm path}(f,a')\rangle\Bigr).
+\]
+Finally $\rho_s\exp(\lambda a)=\exp(\lambda a^s)$, so the same limit
+applies to each term of the signed average, with $a^s$ in place of $a$:
+\[
+ \lambda^{-2}J(\lambda a)\longrightarrow
+ \frac1{|\mathcal S|}\sum_{s\in\mathcal S}\tfrac12\mathcal K_m(a^s,a^s)
+ =\tfrac12\mathcal K_m(a,a),
+\]
+the last equality being the sworn condition. The form $\mathcal K_m$
+is symmetric because $H_m$ is. The elementary fact proves the second
+part.
+\end{proof}
+
+The Hessian formulas of the lemma become coefficient pictures as
+follows. Let $d_1(p)$ be the symbol of the lattice curl, a matrix from
+link directions to plaquette types whose entries are $0$ or
+$\pm q(p,\mu)$. Let $E$ be one of the arrays above, assumed entrywise
+absolutely summable, or the unit array
+$I$, which is the identity matrix at the origin and zero elsewhere; its
+symbol is the identity and it has strip bound $(\sigma,1)$ for every
+$\sigma$. Define the order-one picture
+\[
+ \mathsf S[E]_{\mathbf c,\mathbf a}(p)
+ =\tfrac12\,\mathbf 1_{\{c_0=c_1\}}
+  \bigl[d_1(-p)^{\mathsf T}\widehat E(p)\,d_1(p)\bigr]_{a_0a_1},
+\]
+where $p$ is the one independent momentum, $\mathbf c$ the pair of
+colors and $\mathbf a$ the pair of link directions. The transpose is
+algebraic; for real $p$, $d_1(-p)^{\mathsf T}=d_1(p)^*$. The factor
+$\tfrac12$ is the Taylor normalization of the second coefficient.
+Inserting two Fourier waves of mesh momenta $k_0,k_1$ into the
+complex-bilinear extensions of the forms of
+Lemma~\ref{lem:ex-soft-quadratic-hessian}, with colors $c_0,c_1$ and
+link directions $a_0,a_1$, gives zero unless $k_0+k_1=0$ and
+$c_0=c_1$, and otherwise the number of sites times the displayed
+bracket at $p=k_1$, with $\widehat E=I$ for the Wilson action and
+$\widehat E=\widehat H$ for $J$; the normalized second coefficient is
+half of this. Thus $\mathsf S[I]$, the unit leader, records the
+second Taylor coefficient of $W_m$ exactly on every torus. Under the
+hypotheses of the lemma, and assuming in addition that the metric $H$
+is entrywise absolutely summable, the metric-slot picture
+$\mathsf S[H]$ records that of $J$ exactly on the torus of side $m$.
+In the applications below this additional condition follows from
+$H.\mathrm{strip}(\sigma,C)$ with $\sigma>0$. If
+$E.\mathrm{strip}(\sigma,D)$, then each entry of $\mathsf S[E]$ is
+bounded on the strip of width $\sigma$ by
+\[
+ \operatorname{bedCharge}(\sigma,D)
+   =36\cdot\bigl(4(e^\sigma+1)\bigr)^2D ,
+\]
+the product of the two counts of plaquette types and the elementary
+strip bounds for the two curl factors; it is independent of the torus
+side. Each curl factor is $O(|p|)$ along real rays, so $\mathsf S[E]$
+has ray order at least two.
+
+Now impose the selected metric hypotheses: $B$ is attached to $R$; its
+metric satisfies $H.\mathrm{strip}(\sigma,C)$; the floor holds at every
+torus side; and the sworn condition holds at each selected side $m_k$.
+The following are the only uses of these assumptions. The metric-slot
+picture $\mathsf S[H]$ has price
+$b_0=\operatorname{bedCharge}(\sigma,C)$ and records the quadratic
+coefficient of $J_k$ for every $k$. The unit leader has price
+$b_1=\operatorname{bedCharge}(\sigma,1)$ and records the Wilson
+coefficient. The floor gives the zero-momentum normalization
+$\widehat H(0)=I$, and analyticity then gives
+$\widehat H(p)-I=O(|p|)$. The difference
+\[
+ \mathsf S[H]-\mathsf S[I]
+  =\tfrac12\,\mathbf 1_{\{c_0=c_1\}}
+   \bigl[d_1(-p)^{\mathsf T}(\widehat H(p)-I)\,d_1(p)\bigr]
+\]
+therefore has ray order three. This is the order-one picture for
+$J_k-W_k$, with price $b_0+b_1$.
+
+The higher pictures of $J_k$ are supplied by
+Corollary~\ref{cor:ex-row-controlled-action}, whose averaged kernel
+$Q^\sharp$ is $J_k$ in logarithmic coordinates. Apply it with its row
+budget equal to $A$, its width equal to the path width $\tau$, and the
+bound $Z$ for the direct coefficient. For $j=2,3$ it gives one picture
+of order $j$, recording the $(j+1)$st coefficient of $J_k$ on every
+torus, holomorphic on the strip of width
+$\eta_j=\min(1,\tau/(8(j+1)^2))$, with price
+\[
+ P_j=e^{(j+1)^2\eta_j}\Bigl(ZX_j
+     +\frac{|\mathcal A_{\rm pl}|d_{\rm col}}2A^2S_G^2
+      \frac{\operatorname{circleTax}(R_{\tau/2},j+1)}{(j+1)!}\Bigr),
+\]
+where $|\mathcal A_{\rm pl}|$ is the number of plaquette types,
+$d_{\rm col}$ the number of color coordinates, and $X_j$ the price of
+the Wilson picture of order $j$ in
+Proposition~\ref{prop:ex-wilson-stream}. That proposition supplies the
+Wilson pictures of orders two and three themselves, with prices
+$X_2,X_3$ and width one. Subtracting pictures preserves exact
+recording and adds their prices.
+
+\begin{lemma}[Soft Wilson pictures]
+\label{lem:ex-soft-wilson-pictures}
+Let $m_k\to\infty$. For $j=1,2,3$ the Wilson actions $W_{m_k}$ have an
+exactly recorded picture of order $j$, holomorphic and bounded on the
+strip of width one, of ray order at least $3-j$. The sum of the three
+prices is at most
+$P_W=\operatorname{bedCharge}(1,1)+X_2+X_3$, which does not depend on
+the sequence.
+\end{lemma}
+
+\begin{proof}
+For $j=1$ take the unit leader $\mathsf S[I]$. It records the second
+coefficient by Lemma~\ref{lem:ex-soft-quadratic-hessian}, has price
+$\operatorname{bedCharge}(1,1)$ at width one, and has ray order two.
+For $j=2$ take the picture of
+Proposition~\ref{prop:ex-wilson-stream}. The Wilson action is real
+analytic and gauge invariant, and $DW_m(0)=0$ by
+Lemma~\ref{lem:ex-soft-quadratic-hessian}. Apply
+Lemma~\ref{lem:ex-ward-partition} with $t=2$; its single lower picture
+is the unit leader, of ray order two. The contractions therefore have
+ray order two, and the first part of Lemma~\ref{lem:ex-ward-rays} gives
+ray order one. For $j=3$ take the order-three picture of
+Proposition~\ref{prop:ex-wilson-stream}; ray order zero only requires
+boundedness near zero.
+\end{proof}
 
 \begin{proposition}[The selected Wilson-subtracted response]
 \label{prop:ex-greyson}
-Assume that $R$ has path bounds $(\tau,A,\Lambda)$. Its attached bed has
-metric strip bound $(\sigma,C)$, the floor holds at every torus side, and
-the sworn condition holds at each $m_k$. Also suppose
+Fix $\sigma,\tau>0$, $C,Z,A\geq0$ and $\varepsilon\in\mathbb R$.
+There are $s>0$ and $M<\infty$ such that the following holds for every
+divergent period sequence $m_k$, bed $B$, clip $p$, path family $R$ and
+$\Lambda$. Assume that $R$ has path bounds $(p,\tau,A,\Lambda)$, that
+$B$ is attached to $R$ with metric strip bound $(\sigma,C)$, that
+$\mathrm{Floor}(B,p,n,\varepsilon,C)$ holds at every torus side $n$,
+that the sworn condition holds at each $m_k$, and that
 \[
-                    0\leq p.\mathrm{direct}\leq Z.
+                    p.\mathrm{direct}\leq Z.
 \]
-Then there are $s>0$ and $M<\infty$, uniform in the sequence and path,
-such that $I_k-W_k$ has exact recorded pictures of orders $j=1,2,3$,
-each priced at width $s$ and price $M$, with vanishing order $4-j$.
+Then $(I_k-W_k)_k$ has exactly recorded pictures of orders $j=1,2,3$,
+each holomorphic on the strip of width $s$ with price at most $M$, and
+of ray order at least $4-j$.
 One valid price is
 \[
  M=\operatorname{bedCharge}(\sigma,C)+\operatorname{bedCharge}(\sigma,1)
       +P_2+P_3+X_2+X_3+A K_c,
 \]
-where $P_2,P_3$ are the two row-action prices from
-Proposition~\ref{prop:ex-row-quadratic-price}, and $K_c$ is from
-Proposition~\ref{prop:ex-veneer}. One valid width is the minimum of
-$\sigma$, $1$, the two row widths, and $\eta_c$.
+where $P_2,P_3$ are the two row-action prices displayed above, $X_2,X_3$
+the Wilson prices of Proposition~\ref{prop:ex-wilson-stream}, and $K_c$
+is from Proposition~\ref{prop:ex-veneer} at the width $\tau$. One valid
+width is the minimum of $\sigma$, $1$, the two row widths
+$\eta_2,\eta_3$, and $\eta_c$.
 \end{proposition}
 
 \begin{proof}
-Set $F_k=J_k-W_k$. Let $S_1$ be the metric-slot picture minus the unit
-leader picture. It records the second Taylor coefficient of $F_k$, has
-price $b_0+b_1$, and has vanishing order three by the floor and zero-metric
-normalization. In the notation of the Ward lemma it is the lower picture
-of order one for $F_k$. Let $S_2$ be the row picture for $J_k$ minus the
-order-two Wilson picture, and let $S_3$ be the order-three row picture
+Set $F_k=J_k-W_k$. Let $S_1=\mathsf S[H]-\mathsf S[I]$ be the
+metric-slot picture minus the unit leader picture. It records the second
+Taylor coefficient of $F_k$ for every $k$, has price $b_0+b_1$, and has
+vanishing order three by the floor normalization $\widehat H(0)=I$. In
+the notation of the Ward lemma it is the lower picture of order one for
+$F_k$. Let $S_2$ be the order-two picture of $J_k$
+from Corollary~\ref{cor:ex-row-controlled-action} minus the order-two
+Wilson picture, and let $S_3$ be the corresponding order-three picture
 minus the order-three Wilson picture. They exactly record the third and
 fourth Taylor coefficients of $F_k$ and have prices at most $P_2+X_2$
 and $P_3+X_3$.
 
-The action $F_k$ is gauge invariant and has zero first derivative. For
+The action $F_k$ is real analytic and has zero first derivative by
+Lemma~\ref{lem:ex-soft-quadratic-hessian}. It is gauge invariant: a
+gauge transformation conjugates every plaquette holonomy and rotates
+every slot value, hence every row field $\ell_R(U;f)$, by the adjoint
+action of the gauge element at the anchor, which preserves $\varpi$
+and the color norm; and the signed-coordinate action carries gauge
+transformations to gauge transformations. For
 $t=2$, apply Lemma~\ref{lem:ex-ward-partition} to $S_2$, with the single
 lower picture $S_1$; the resulting contraction has vanishing order three,
 and Lemma~\ref{lem:ex-ward-rays} gives vanishing order two for $S_2$.
@@ -435,9 +777,13 @@ differences are distributed one per leg; for $n=1$ there is one
 difference, and for $n=2$ there are none.
 
 To state the response identity, split a link fluctuation into two
-species $x_+,x_-$ and write
-$\mathsf D_m(x)=\operatorname{content}(\operatorname{input}(x_+)
-\operatorname{input}(x_-))$. Let $v_n$ put species $-$ in the first $n$
+species $x_+,x_-$ and let $\mathsf D_m(x)$ be the logarithmic link
+coordinate of the product of the two exponentials: on every link $e$,
+\[
+ \mathsf D_m(x_+,x_-)_e=\log\bigl(\exp(x_{+,e})\exp(x_{-,e})\bigr),
+\]
+where $\log$ is the local inverse of $\exp$ at the identity and
+$x_\pm$ are near zero. Let $v_n$ put species $-$ in the first $n$
 slots and species $+$ in the final two. Let $\mathcal R_{n,m}(U_m)$ be the $(n+2)$-linear derivative of
 $U_m\circ\mathsf D_m$ at zero, restricted to those species in that
 order; it is a tensor whose components are indexed by external color
@@ -653,17 +999,21 @@ character identity proves (SR2); Laurent absolute convergence justifies
 the sum over shifts. Thus the exact response is supplied at each finite
 period, not merely in the limiting Taylor series.
 
-Apply the conversion to $I_m=(I_m-W_m)+W_m$. Proposition
-\ref{prop:ex-greyson} supplies pictures with ray orders $3,2,1$ at
-orders $1,2,3$. The Wilson pictures have ray orders $2,1,0$, so the sums
-have the required orders $2,1,0$. Their exact records and prices add.
-The value and first derivative of $I_m$ vanish by the quadratic
-normalization and cubic vanishing of the curvature part. We obtain three
+Apply the conversion to $I_k=(I_k-W_k)+W_k$ along a divergent period
+sequence. Proposition~\ref{prop:ex-greyson} supplies pictures with ray
+orders $3,2,1$ at orders $1,2,3$. By
+Lemma~\ref{lem:ex-soft-wilson-pictures} the Wilson pictures have ray
+orders $2,1,0$, so the sums have the required orders $2,1,0$. Their
+exact records and prices add. The value and first derivative of $I_k$
+vanish at zero by Lemma~\ref{lem:ex-soft-quadratic-hessian} and the
+third-order vanishing of the curvature part $C_k$. We obtain three
 uniformly priced response arrays.
 Let $M_g$ denote the displayed price in Proposition~\ref{prop:ex-greyson},
-and let $P_W$ be the sum of the leader and the two higher Wilson picture
-prices. The common array width is bounded by
-$K=3C_*(M_g+P_W)$.
+and let $P_W$ be the price of Lemma~\ref{lem:ex-soft-wilson-pictures}.
+Each of the three input pictures has price at most $M_g+P_W$ on the
+common strip of width $\min(1,s)$, so the common array width is bounded
+by $K=3C_*(M_g+P_W)$, where $C_*$ is the multiplier of
+Proposition~\ref{prop:ex-three-level-conversion} for that strip.
 
 Define the mockup width property by the common Laurent bound above at each
 level $n\leq2$, and define its response property to be (SR2) at every
@@ -672,35 +1022,46 @@ called the width and exact-response requirements for the three mockups.
 
 \begin{theorem}[Selected soft-response arrays]
 \label{thm:ex-soft-response-mockups}
-Fix $\sigma>0$, $M,Z,A\geq0$, $\tau>0$, and $\varepsilon\in\mathbb R$. There are
-$\eta>0$ and $K<\infty$ such that for every divergent period sequence
-$m_k$, clip $p$, path family $R$, attached bed $B$, and $\Lambda\geq0$
-satisfying
+Fix $\sigma>0$, $M,Z,A\geq0$, $\tau>0$, and $\varepsilon\in\mathbb R$.
+There are $\eta>0$ and $K<\infty$ such that the following holds for
+every divergent period sequence $m_k$, clip $p$, path family $R$, bed
+$B$, and $\Lambda\geq0$ satisfying
 \[
  p.\mathrm{direct}\leq Z,\quad R.\mathrm{Bounds}(p,\tau,A,\Lambda),\quad
  B\text{ attached to }R,\quad B.\mathrm{metric.strip}(\sigma,M),
 \]
 with $\mathrm{Floor}(B,p,n,\varepsilon,M)$ for every torus side $n$,
-and the sworn metric identity at each selected side $m_k$. Put
-$U_{m_k}=\operatorname{intended}(p,R;m_k)$. Then these actions admit arrays
-$F_0,F_1,F_2$ of width at most $K$ satisfying (SR1) and (SR2) on every
-period. Set $F_n=0$ for $n>2$. One may take $K=3C_*(M_g+P_W)$, where $M_g$ is the price displayed in
-Proposition~\ref{prop:ex-greyson}, $P_W$ is the finite Wilson picture
-price, and $C_*$ is the finite response-array multiplier above. The
-constants $\eta,K$ depend only on the listed scalar bounds and the fixed
-gauge and finite coordinate sets.
+and the sworn condition at each selected side $m_k$. Put
+$U_{m_k}=\operatorname{intended}(p,R;m_k)$. Then there is one family of
+arrays $F_0,F_1,F_2$, not depending on $k$, such that each $F_n$ has
+width at most $K$ at $\eta$, and such that the exact response identity
+(SR2) holds for $U_{m_k}$ at every level $n\leq2$ and for every $k$.
+Set $F_n=0$ for $n>2$. By construction the stitched pictures (SR1) of
+these arrays are the mixed response pictures of the sequence. One may
+take $K=3C_*(M_g+P_W)$, where $M_g$ is the price displayed in
+Proposition~\ref{prop:ex-greyson} (with $C=M$), $P_W$ is the Wilson
+price of Lemma~\ref{lem:ex-soft-wilson-pictures}, and $C_*$ is the
+response-array multiplier above. The constants $\eta,K$ depend only on
+the listed scalar bounds and the fixed gauge and finite coordinate
+sets. The identity (SR2) is asserted only on the tori of the selected
+sequence, where the sworn condition is assumed.
 \end{theorem}
 
 \begin{proof}
-The Wilson-subtracted proposition supplies order-$j$ pictures of ray
-orders $4-j$, for $j=1,2,3$. The Wilson pictures have ray orders
-$3-j$. Their sums therefore have the required ray orders $3-j$. Prices
-and exact recording identities add. The quadratic normalization and the
-cubic vanishing of the curvature part give $U_m(0)=0$ and
-$DU_m(0)=0$. Apply Proposition~\ref{prop:ex-three-level-conversion}.
-Its finite constants depend only on the listed bounds and the finite
-color, phase, and stitch sets, so the common width and price are uniform
-in the path, period, and selected action.
+Proposition~\ref{prop:ex-greyson} supplies pictures of $(U_{m_k}-W_k)_k$
+of orders $j=1,2,3$ and ray orders $4-j$.
+Lemma~\ref{lem:ex-soft-wilson-pictures} supplies Wilson pictures of
+ray orders $3-j$. Their sums are pictures of $(U_{m_k})_k$ with the
+required ray orders $3-j$, on the common strip of width $\min(1,s)$.
+Prices and exact recording identities add. Each $U_{m_k}$ is real
+analytic, and Lemma~\ref{lem:ex-soft-quadratic-hessian} together with
+the third-order vanishing of the curvature part gives $U_{m_k}(0)=0$
+and $DU_{m_k}(0)=0$. Apply
+Proposition~\ref{prop:ex-three-level-conversion} to the sequence
+$(U_{m_k})_k$. Its finite constants depend only on the listed bounds
+and the finite color, phase, and stitch sets, so the common width and
+price are uniform in the path, the bed, the period sequence, and the
+selected action.
 \end{proof}
 
 \paragraph{Scope.}

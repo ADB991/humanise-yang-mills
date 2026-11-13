@@ -47,21 +47,24 @@ let
  f_v(U)=S(\theta^{-1}\mathbin{\cdot_F}v)(o,U)-P_v(U).
  \label{eq:terminal-supplement}
 \]
-Here $\cdot_F$ is the graded dilation: on a coordinate of degree $r$
-it multiplies by $\theta^{-r}$. The primary part retains the vacuum
+Here $\cdot_F$ is the graded dilation: on the coordinate of a basis
+vector $e_j$ of the frame it multiplies by $\theta^{-s_j}$, where $s_j$
+is the factor grade of $e_j$, the second entry of its grade $(r_j,s_j)$
+in Section~\ref{sec:ex-marked-portfolio-calibration}. The primary part retains the vacuum
 coordinate everywhere and the scaled nonvacuum part on healthy
 configurations. Hence $f_v=0$ when $Y$ is healthy; otherwise it equals
 the scaled nonvacuum section. The map $v\mapsto f_v$ is complex-linear,
 measurable, gauge invariant, and depends only on the field and flags in
 $Y$. These assertions follow directly from the corresponding properties
-of the sound section and the mask. If $q$ is the maximum coordinate
-degree and each axis section has modulus at most $C_d\ge1$, then
+of the sound section and the mask. If $q=\max_js_j$ is the maximum
+factor grade and each axis section $S(e_j)(o,\cdot)$ has modulus at most
+$C_d\ge1$, then
 \[
  |f_v(U)|\le C_d\theta^{-q}\|\operatorname{core}v\|_1.
  \tag{T1}
 \]
 Indeed expand the nonvacuum coefficient in the finite axis basis and
-use $0<\theta\le1$, so $\theta^{-r}\le\theta^{-q}$ for every axis.
+use $0<\theta\le1$, so $\theta^{-s_j}\le\theta^{-q}$ for every axis.
 
 Define the new forced coefficient at $s(b)$ by
 \[
@@ -131,8 +134,10 @@ identity
    =a_N^d R(U)\,\mathrm{initial}_{N,p}(v)(U).
  \tag{T5}
 \]
-The last equality is the definition of the physical normalization of
-$\mathrm{initial}$.
+Here $R(U)$ denotes the value at $U$ of the unmarked density of the
+terminal representation, and $a_N$ is the mesh at level $N$. The last
+equality is the definition of the physical normalization
+$\mathrm{initial}_{N,p}(v)=a_N^{-d}S(\theta^{-1}\mathbin{\cdot_F}v)(0,\cdot)$.
 
 There is also an identity before multiplication by the unmarked gas.
 Group the forced coefficients according to their support and inventory.
@@ -194,3 +199,73 @@ finite list purchased at $J(m+1)$. The fee therefore fits at every
 admitted terminal level, on the same selected scale sequence. With
 (T1)--(T5), this supplies the terminal marked data and all of their
 bounds for the backward transfer construction.
+
+\subsection{Summary of the terminal construction}
+For later reference we collect what has been proved, with its exact
+inputs. Fix $d$, $N$ and $p$ as above.
+
+\begin{proposition}[Terminal marked coefficients]
+\label{prop:terminal-marked-voice}
+Assume the following.
+\begin{enumerate}
+\item The terminal representation $R$ of the selected history at $(N,p)$
+  is lawful: its forced labels satisfy the regularity, measurability and
+  locality requirements of the dictionary, and their activities have
+  majorants $k_i\geq|K_i|$ obeying the weighted site bound (T3) with
+  some $w>0$.
+\item For every pair $I\subseteq X$ with $I\neq\varnothing$ the
+  dictionary of $R$ contains infinitely many reserved addresses with
+  support $X$, inventory $I$ and zero activity, whose additional
+  predicate holds at every configuration with
+  $X\cap\operatorname{flags}(U)=I$.
+\item The local section $S$ is sound, and
+  $|S(e_j)(0,U)|\leq C_d$ for all axes $j$ and configurations $U$, with
+  $C_d\geq1$.
+\item The fee inequality
+  $C_d\theta^{-q}M(Y)(e^{|Y|w}-1)\leq\sqrt w$ holds.
+\end{enumerate}
+For $v\in F$ let $\mathcal V(v)$ be the marked coefficient with lead
+$v$, zero regular correction and forced part $J_v$ defined in (T2). Then
+$v\mapsto\mathcal V(v)$ is complex-linear in each of its three entries,
+and for every $v$:
+\begin{enumerate}
+\item each forced entry $J_v(i,\cdot)$ is gauge invariant and measurable,
+  depends only on the field and flags on the support of the address $i$,
+  and is nonzero only at configurations where that address is eligible
+  for the original dictionary of $R$;
+\item the forced entries have majorants with
+  $\sum_bM(T_b)\sup_U|J_v(s(b),U)|
+     \leq\sqrt w\,\|\operatorname{core}v\|_1$;
+\item the density identity (T5) holds at every configuration;
+\item the forced profile of $J_v$ on the activities of $R$ equals the
+  attachment of the singleton response $f_v$ on the footprint $Y$;
+\item for every signed lattice motion, with or without complex
+  conjugation, the density of $\mathcal V(v)$ transported by the motion
+  is the density of $\mathcal V$ at the transported label.
+\end{enumerate}
+On the selected scale sequence, hypothesis~(4) holds at every admitted
+terminal level $N$, for every grade $d\leq J(N)$ and every period, once
+the entrance delays include the fee thresholds chosen above.
+\end{proposition}
+\begin{proof}
+Linearity holds because $v\mapsto f_v$ is linear and (T2) is linear in
+$f_v$. Assertion~(1) was verified after (T2); the eligibility for the
+original dictionary uses the indicator in (T2) and hypothesis~(2).
+Assertion~(2) is (T4) combined with hypothesis~(4). Assertions~(3), (4)
+and~(5) are respectively the identity (T5), the forced-profile identity
+and the covariance proved in the second subsection. The final sentence is
+the conclusion of the third subsection.
+\end{proof}
+
+Hypothesis~(2) is a property of the selected history, not of the
+construction in this section. The reserved-address property is an input
+here; the first subsection only recalls why the dictionary can carry such
+addresses, and the realization of the property on the selected history
+must be supplied by the history-selection construction. Hypothesis~(1)
+is likewise a property of the selected history. The inclusion of the fee
+thresholds among the entrance delays, used in the final sentence of the
+proposition, is a condition on the schedule which is not discharged
+here. These hypotheses are recorded as inputs and are consumed,
+together with the five conclusions, by the backward constructions of
+Sections~\ref{sec:selected-centered-service} and
+\ref{sec:actual-marked-portfolio-calibration}.

@@ -21,7 +21,7 @@ $\exp_*F=\sum_{j=0}^{|V|}F^j/j!$. Every product of more than $|V|$
 nonconstant monomials has a repeated variable, so it vanishes. Hence
 this finite exponential satisfies the usual addition formula for
 commuting elements of zero constant coefficient, by the binomial theorem.
-In particular
+In particular, for every finite family of pieces,
 \begin{equation}\label{eq:planted-exp}
  \prod_\alpha(1+y_\alpha z_{A_\alpha})
        =\exp_*\left(\sum_\alpha y_\alpha z_{A_\alpha}\right)
@@ -58,10 +58,10 @@ Applying $\pi_T$ to \eqref{eq:planted-exp} proves
 \end{equation}
 To check the selection explicitly, a piece from $c'\ne c$ has at least
 one marker outside $T$ and is killed. A piece from $c$ is retained
-exactly when its entire marker support is contained in $T$. Because
-$\pi_T$ is multiplicative, a product containing a killed factor cannot
-contribute through a different coefficient. This proves the identity
-at all orders simultaneously.
+exactly when its entire marker support is contained in $T$. A discarded
+monomial maps to zero, so its factor $1+y_{c',\alpha}z_{A_{c',\alpha}}$
+maps to one. In the expanded product, every term selecting a discarded
+monomial vanishes. This proves the identity at all orders simultaneously.
 
 The spatially planted value is the same masked field value as in the
 left side. Write it as $\Gamma_\alpha(\xi)h_\alpha(U(\xi))$, where
@@ -89,8 +89,13 @@ Here integrability is provided by the common positive marker weights
 and the paid product envelopes: the absolute value of each coefficient
 is bounded by its weighted polynomial norm divided by its positive
 monomial weight. The Gaussian/Haar envelope bounds that norm by an
-integrable function. Thus no interchange of a merely formal infinite
-series is used in \eqref{eq:planted-integral}.
+integrable function. For the countable activity menu, first apply the
+identity to finite truncations. The summable full-support majorants and
+coefficientwise countable regrouping of
+Section~\ref{sec:ex-lattice-rg-multisource} provide the limiting
+integrable coefficients; the finite-dimensional linear maps commute with
+those limits. Thus no interchange of a merely formal infinite series is
+used in \eqref{eq:planted-integral}.
 
 \subsection{The marked density and its three kinds of factors}
 
@@ -105,8 +110,7 @@ marker supports, the exact polynomial density is
  D_P(U)=e^{\operatorname{exponent}_P(U)}
     \exp_*\left(\sum_\alpha z_{A_\alpha}
                     \operatorname{masked}(h_\alpha)(U)\right)
-    \sum_{B\ {
-m admissible}}\prod_{b\in B}K_b(U).
+    \sum_{B\ \text{admissible}}\prod_{b\in B}K_b(U).
 \end{equation}
 Admissibility requires pairwise disjoint full supports and the exact
 identity $\bigcup_{b\in B}F_b=\operatorname{flags}_P(U)$.
@@ -119,8 +123,7 @@ For each fine flag set $F$,
 \begin{equation}\label{eq:planted-body}
  \mathbf1_{\{\operatorname{flags}_P(U)=F\}}
           J(U)e^{\operatorname{exponent}_P(U)}
-   =\Lambda\sum_{A\ {
-m compatible}(F)}\prod_{a\in A}p_a.
+   =\Lambda\sum_{A\ \text{compatible}(F)}\prod_{a\in A}p_a.
 \end{equation}
 Here $J$ denotes the full scalar chart factor, and $\Lambda$ is the
 same positive loading used by the unmarked construction. Each $p_a$

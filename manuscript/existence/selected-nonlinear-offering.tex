@@ -27,7 +27,13 @@ most $2E/16$, and the preliminary forced price at most $K(x)/8$, where
  \delta_E(x_0)=x_0^{-11/10},\quad c_{\rm st}>0.
 \]
 These are the principal and complementary bounds of the preceding local
-expansion, in the actual coarse budget. The selected path has its full
+expansion, in the actual coarse budget. In the application
+$c_{\rm st}$ is the stage constant $c^{\rm reset}$ of
+\eqref{eq:reset-stage-constants}, fixed before the block length, and
+$K_{\rm forecast}$ is the forecast forced price fixed in
+Section~\ref{sec:common-funded-history}; the simultaneous purchase of
+the three displayed bounds at these values is made there. The selected
+path has its full
 quadratic, cubic, quartic and loop bounds, with width $\sigma_c>0$;
 its loop allowance is the selected allowance at level $m$. The initial
 action is admissible in this same budget. If $A_c$ denotes the
@@ -62,17 +68,29 @@ an admissible identification. Thus all output arrays can be read in the
 reference dictionary. This is precisely the comparison used in
 Section~\ref{sec:finite-volume-parameter-continuity}; no claim that an
 arbitrary choice of coordinates depends continuously on $x$ is needed.
+That section has the pointwise compensated comparison estimate
+\eqref{eq:parameter-integrand-difference} as a hypothesis; equality
+of labels does not supply it. For the present output it is the
+collection of local estimates provided in
+Section~\ref{sec:parameter-comparison-suppliers}, applied with the
+same paths, clips, forests and tags at both parameters. The two
+conclusions used later are the following: at every $x\in I$ the
+output arrays at nearby parameters converge entry by entry to those
+at $x$, and every sequence in $I$ converging to $x$ has a subsequence
+on which the regular and forced entries have common summable
+majorants.
 
 The auxiliary tori used for local comparisons carry the same block
 bridge and the same two paths. On such a torus the reference fine
-representation is the bare path action with the pale activity array:
-its density is
+representation is the bare path action with the zero activity array,
+all of whose regular and forced coefficients vanish. Its forced gas
+is the indicator that no fine site is flagged, so its density is
 \[
  {\bf1}_{\{\text{all fine sites healthy}\}}
  \exp\{-\beta\mathcal K_f-\mathcal L_f\}.
 \]
 Here $\mathcal K_f$ and $\mathcal L_f$ are the fine kinetic and loop
-terms. The pale array has zero regular cost and its stated forced cost.
+terms. The zero array has zero regular cost and zero forced cost.
 The fine path bounds and the clock inequality for the loop allowance
 therefore give the required incoming budgets. The fine threshold,
 radius and band are exactly those at $\beta_F(x_0)$. The all-period
@@ -259,20 +277,55 @@ identified with bare-input terms.
 
 To price the centered auxiliary total, use its exact decomposition
 into the compensated interacting action, the complementary regular
-array and a constant. The first term has the healthy derivative
-bound of Section~\ref{sec:healthy-boundary-jets}. For an auxiliary
-torus $\Lambda_i$, its complementary array has budget
-$C_{\rm turn}(g+g)+g$ after the same uniform-tail choice. Summing over
-its anchors bounds every allowed derivative of the total by
-$|\Lambda_i|[C_{\rm turn}(g+g)+g]$. Centering subtracts its flat value
-and costs at most a further copy of this bound. Consequently the
+array and a constant. The estimate is that of
+Section~\ref{sec:healthy-boundary-jets}, applied as follows. On an
+auxiliary torus $\Lambda_i$ let $H_i$ be the uncentered short total
+and $u_{i,a}$ the complementary regular entries. On strictly healthy
+fields the compensated action $f_i$ satisfies
+$f_i=z_i-H_i-\sum_au_{i,a}$ with a constant $z_i$. That section
+assumes a chart estimate of amplitude $T$ for the centered
+compensated action on the strictly healthy set, and a budget $b$ per
+site for the complementary entries. It concludes
+\eqref{eq:healthy-interior-remainder}: the ordered derivatives of
+order at most $j$ of the centered short total $H_i-H_i(1)$ are at
+most $j!\,3^jT+2|\Lambda_i|b$, first on strictly healthy fields and
+then, because the finite short total is regular on the full healthy
+domain, at the threshold boundary. No boundary estimate for $f_i$
+itself is obtained or used. The complementary array has budget
+$b=C_{\rm turn}(g+g)+g$ after the same uniform-tail choice. The
+chart estimate, with amplitude $T=g$, is the final
+small-field price of Section~\ref{sec:pure-action-small-field}. Its
+hypotheses are the stationary-branch bounds, the classical and
+quadratic matching and the exterior estimate for the selected
+paths on the auxiliary torus. The auxiliary torus carries the same
+two paths, clips and bridge, but this alone does not give those
+hypotheses there. The source obtains them from three further
+ingredients, which are inputs to the present section and are not
+constructed in it: a uniform stationary service for the same
+incoming path on the auxiliary one-step datum; the identification
+of its branch, after replication to a scheduled period which is a
+multiple of the auxiliary side, with the branch of the stationary
+plan of Section~\ref{sec:path-attachment-producer}, by uniqueness of
+the critical graph; and the resulting transfer of the thermal
+estimate, whose amplitude is the sum of the service amplitude and
+the plan amplitude and whose rate is the minimum of the two rates.
+Two standing hypotheses enter this transfer. First, the selected
+schedule has, beyond every bound, a period which is a multiple of
+the auxiliary side; Section~\ref{sec:common-scale-selection}
+provides such periods. Second, the chart table of the local price
+data is the local-ratio chart of the stationary plan.
+Write
+\[
+                       \mathcal T_j(g)=j!\,3^jg .
+\]
+Consequently the
 centered short total has derivative price
 \[
  q_i=\mathcal T_j(g)
              +2|\Lambda_i|[C_{\rm turn}(g+g)+g],
 \]
-where $\mathcal T_j(g)$ is the healthy-boundary derivative price of
-order $j$ for the compensated action. The finite-volume continuity
+where the factor two covers the centered value at order zero, as in
+\eqref{eq:healthy-interior-remainder}. The finite-volume continuity
 argument applies to the entire closed fine coupling band on each of
 these five fixed tori, so one $d$ suffices for all their couplings.
 The comparison charts are admissible by the purchased local gauge
@@ -314,8 +367,22 @@ neighborhood and has the gauge invariance and measurability inherited
 from its finitely many summands. Its value bound is obtained by the
 triangle inequality for the panel sum and the five folded sums; this
 is the local value estimate purchased along with the original
-expansion. Write $q$ for this value bound, and $M_2$ for the covering-number
-bound of the doubled support. Its soft absorption cost is
+expansion. Explicitly, let $a_i$ be the five folding coefficients
+and $\Lambda_i$ the auxiliary tori, and let $h_{\rm val}$ bound the
+value per anchor of a short panel sum on arbitrary fields. The
+purchased value estimate is
+\[
+ h_{\rm val}=2\,\operatorname{ballCost}(r)\,C_{\rm turn}\,
+                               \beta_F(x_0)^{-7/16},
+\]
+and the triangle inequality gives the value bound
+\[
+ q=2h_{\rm val}\Bigl(1+\sum_{i=0}^4|a_i|\,|\Lambda_i|\Bigr).
+\]
+Write $M_2$ for the covering-number
+bound of the doubled support; it is a stage constant, because the
+doubled radius is a fixed multiple of the coarse radius $B_c$. Its
+soft absorption cost is
 \[
  b_{\rm soft}=\operatorname{ballCost}(2z)\,q
                              e^{(b_c+2)M_2}.
@@ -324,7 +391,11 @@ The factor $\operatorname{ballCost}(2z)$ bounds the number of anchors
 whose discrepancy support can meet a fixed site; the extra exponent
 reserve is the one needed for the raised forced budget. Finite
 symmetry averaging preserves the corresponding normalized anchor
-sum. The local value estimates and logarithmic-radius geometry give
+sum. The factors $\operatorname{ballCost}(2z)$,
+$\operatorname{ballCost}(r)$ and $|\Lambda_i|$ are polynomial in the
+logarithmic radius and so have upper exponent zero, the factor
+$e^{(b_c+2)M_2}$ is a stage constant, and $q$ therefore has upper
+exponent $-7/16<-1/8$. Hence
 $b_{\rm soft}\le\beta_F(x_0)^{-1/8}$ after increasing the entry
 threshold. This is a separate purchase from the regular jet cost
 $s'=c'e^{A_cM}$: $q$ bounds the discrepancy on arbitrary fields,
@@ -365,9 +436,14 @@ dictionary, and let $v_x$ be the array formed from the truncated local
 expansion, the local counterterms and the forced correction just
 constructed. The scalar correction is
 \[
- \tau_x=\text{the original scalar payment at }x
-             -\text{the constant term removed by the local subtraction}.
+ \tau_x=\pi_x-f_{x,d}(0,1),
 \]
+where $\pi_x$ is the original scalar payment of the local expansion
+at $x$, per site, and $f_{x,d}(0,1)$ is the value at the identity
+field of the short density at one anchor; by translation covariance
+it does not depend on the anchor. Thus the constant removed by the
+local subtraction is $|\Lambda|f_{x,d}(0,1)$ in the action, as in
+\eqref{eq:selected-offer-exact-split}, and $f_{x,d}(0,1)$ per site.
 This sign follows by moving the removed constant from the action to
 its vacuum parameter. The exact decomposition of the local expansion
 and the local subtraction identity now give, for every coarse
@@ -384,7 +460,22 @@ exponential and gas identities.
 
 All regular entries are local and gauge invariant with the prescribed
 jets; the forced entries are local, measurable and gauge invariant.
-Their bounds are $E$ and $K(x)$ respectively. The common-dictionary
+Their bounds are $E$ and $K(x)$ respectively, in the following
+raised form. For each $x$ there exist majorants $u_i(x)\ge0$ of the
+regular norms of the regular entries, anchored at $o_i$ on supports
+$X_i$, and majorants $k_i(x)\ge0$ of the suprema of the forced
+entries on supports $Y_i$, such that
+\begin{equation}\label{eq:selected-offer-budgets}
+ \sup_o\sum_{i:\,o_i=o}e^{(b_c+3)c_{B_c}(X_i)}u_i(x)\le E,
+ \qquad
+ \sup_o\sum_{i:\,o\in Y_i}e^{(b_c+1)c_{B_c}(Y_i)}k_i(x)\le K(x).
+\end{equation}
+The regular exponent is $A_c=b_c+3$, by
+\eqref{eq:selected-offer-width} and the weights used for
+$h_0$ and $s'$; the forced exponent $b_c+1$ is the output exponent
+of the absorption at reserve $b_c+2$. These are the exponents
+required in \eqref{eq:reset-early-majorant}. Bounds at the ordinary
+exponent $b_c$ would not suffice there. The common-dictionary
 parameter comparison survives truncation, addition, fixed pullbacks and
 finite averages, each of which is continuous in these array norms.
 For the remaining infinite arrays, the summable comparison majorants
@@ -394,7 +485,22 @@ parameter dependence in the same dictionary $\mathcal X$.
 We have proved the interval return needed by the scalar coupling reset:
 for every compact interval and every allowed input curve there is one
 dictionary, one tree and one sector choice, with an exact return and
-both local budgets throughout the interval. This statement still uses
+both local budgets throughout the interval. In the notation of
+\eqref{eq:reset-early-density}, the return is the identity
+\[
+ \mathcal H_x(U)=
+ \exp\Bigl\{|\Lambda|\tau_x-Q_x.\beta\,\mathcal K(U)-\mathcal L(U)
+   -\sum_i\chi_{X_i}(U)v^{\rm reg}_{x,i}(U)
+   -\gamma\,\mathcal Q(U)\Bigr\}\,\mathcal G_{v_x}(U)
+\]
+at every coarse field $U$, where $\mathcal H_x$ is the transferred
+unnormalized density of $Q_x$, $\mathcal K,\mathcal L$ are the
+kinetic and loop terms of the selected coarse path, $\mathcal Q$ is
+the masked low-channel quadratic sum of that path, and
+$\mathcal G_{v_x}$ is the forced gas of $v_x$. It comes with the
+budgets \eqref{eq:selected-offer-budgets} and with the two
+comparison properties stated in the first subsection, now for the
+arrays $v_x$ in the dictionary $\mathcal X$. This statement still uses
 the simultaneous scale purchases listed at the start. Their selection
 must precede all intervals, histories and periods. The scalar reset
 then has a separate task: choose the new coupling and vacuum parameters

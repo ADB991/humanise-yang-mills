@@ -30,35 +30,38 @@ The fine site is determined by its coarse parent and one of $L^4$
 residues, which proves the plaquette count; the two other counts are
 immediate. Consequently at most
 \[
- H=(2(\ell B+1)+1)^4T_L
+ H_B=(2(\ell B+1)+1)^4T_L
 \]
 seed halos can contain a given site. If two halos overlap, their
 anchors have distance at most $2(\ell B+1)$, so each seed has at most
 \[
-                   D=(4(\ell B+1)+1)^4T_L\ge1
+                   D_B=(4(\ell B+1)+1)^4T_L\ge1
 \]
-possible neighboring seeds. These bounds remain valid when balls wrap
+possible neighboring seeds. The root count $H_B$, the adjacency count
+$D_B$ and the per-seed cover cost $c_\ell$ defined below are the
+quantities used under the same names in
+Section~\ref{sec:packet-estimates}. These bounds remain valid when balls wrap
 around the periodic lattice, since wrapping only decreases the number
 of distinct sites.
 
-There are at most $HD^{2n}$ packets of size $n$ containing a fixed
+There are at most $H_BD_B^{2n}$ packets of size $n$ containing a fixed
 site in their support. To prove this, choose a seed whose halo contains
-that site; there are at most $H$ choices. A connected $n$-seed packet
+that site; there are at most $H_B$ choices. A connected $n$-seed packet
 has a spanning tree. Traversing every tree edge out and back gives a
 walk of length $2(n-1)$, starting at the chosen seed, whose visited
-set is exactly the packet. There are at most $D^{2(n-1)}$ such walks.
+set is exactly the packet. There are at most $D_B^{2(n-1)}$ such walks.
 Different visited sets cannot come from the same walk, so this counts
 packets without an injectivity assumption on their placements.
-Enlarging the bound to $HD^{2n}$ also covers $n=1$ uniformly. There
+Enlarging the bound to $H_BD_B^{2n}$ also covers $n=1$ uniformly. There
 is no packet with $n=0$.
 
 A single halo has $B$-cover number at most
-$s_\ell=(2\ell+3)^4$. For $B\ge1$ it lies in the ball of radius
+$c_\ell=(2\ell+3)^4$. For $B\ge1$ it lies in the ball of radius
 $(\ell+1)B$, tiled by $B$-balls with centers on the $B$-spaced grid;
 there are at most $(2\ell+3)^4$ centers, forming a connected grid.
-For $B=0$ use at most $3^4\le s_\ell$ singleton centers. Covering
+For $B=0$ use at most $3^4\le c_\ell$ singleton centers. Covering
 subadditivity along a spanning tree therefore bounds a packet's
-cover number by $ns_\ell$.
+cover number by $nc_\ell$.
 
 Suppose its nonnegative weight obeys the analytic estimate
 \begin{equation}\label{eq:mixed-packet-analytic}
@@ -67,16 +70,16 @@ Suppose its nonnegative weight obeys the analytic estimate
 where $s$ is the expense per seed and $g$ the gain per seed. For a
 support exponent $h\ge0$, put
 \[
-                   q_p=D^2\exp(s-g+hs_\ell).
+                   q_p=D_B^2\exp(s-g+hc_\ell).
 \]
 If $q_p\le r_p<1$, multiplication by the support weight, the packet
 count, and a geometric sum give
 \begin{equation}\label{eq:mixed-packet-hit}
  \sum_{\substack{A:\,x\in X_A\\n(A)\ge n_0}}
                   p_Ae^{h c(X_A)}
-          \le HC\frac{r_p^{\max(1,n_0)}}{1-r_p}.
+          \le H_BC\frac{r_p^{\max(1,n_0)}}{1-r_p}.
 \end{equation}
-Indeed the summand at fixed size $n$ is at most $HCq_p^n$.
+Indeed the summand at fixed size $n$ is at most $H_BCq_p^n$.
 The lower limit is $\max(1,n_0)$ because packets are nonempty.
 This explains the single-seed extraction in the packet price.
 If a packet has several analytic variants, the hypothesis
@@ -224,8 +227,11 @@ order-zero tail in Section~\ref{sec:leaf-expansion}.
 
 For the actual projected footprint the sufficient geometric condition
 is $h(10P/L)\le\varepsilon$, together with the comparison of fine
-and coarse cover radii. Indeed the projected cover estimate is
-$c(X_*)\le P+(10P/L)c_f$, which gives
+and coarse cover radii: the coarse cover radius $B_c$ is positive and
+the fine cover radius satisfies $B_f\le2B_c$. Under these two
+conditions the cover estimate for the enlarged inspected footprint
+$X_*$, the projection of the fine support enlarged by the fixed halo,
+is $c(X_*)\le P+(10P/L)c_f$, which gives
 \eqref{eq:mixed-marked-footprint}. The fixed block ratio is chosen
 large enough for this condition before the coupling is increased.
 If $g$ and $\gamma$ have negative upper exponent $q_*<0$ in the
@@ -233,7 +239,10 @@ fine coupling, then $R_*=g e^{hP}$ and $\gamma'$ have the same upper
 exponent, with $L$ and the halo constants fixed. The factor $h_B$
 has upper exponent zero. The degree price therefore has upper
 exponent $q_*$, and is eventually bounded by the strictly larger
-power $H^{q_*/2}$, which tends to zero. This proves affordability
+power $\mathsf h(x)^{q_*/2}$ of the coupling scale $\mathsf h(x)\to\infty$
+used to define upper exponents in Section~\ref{sec:packet-estimates}
+(written $h(x)$ there; here $h$ is the head exponent). This power tends
+to zero. This proves affordability
 of the augmented tree price under precisely these rate and geometric
 inputs.
 

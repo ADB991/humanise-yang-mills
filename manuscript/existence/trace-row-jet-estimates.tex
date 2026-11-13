@@ -172,18 +172,29 @@ block side. For each
  \tag{9a}\label{eq:ex-lattice-local-array-input}
 \]
 where \(K\ge1\), \(M\ge0\), and each kernel base \(u\) has
-\(|u|_1\le4m\). Define the order-\(k\) reference and actual directions by
+\(|u|_1\le4m\). Define the order-\(k\) reference and actual directions \(y_k\) and
+\(x_k\) by
 applying this matrix row to \(A^{(0)}\) and \(A^{(1)}\), respectively.
-The screen is coordinate restriction to allowed edges, and the normalization
-is the same edge norm used in (6); thus no additional screen norm is inserted
-between the row estimate and the priced jet. Then their
-difference is at most
+The screen \(P\) is coordinate restriction to allowed edges. Let
+\(\theta>0\) be the threshold and \(\omega(e)\ge1\) the spatial weight of
+the budget; the norm in (6) is the normalized edge norm
+\[
+ \|v\|=\sup_{e}\frac{\|v(e)\|}{\theta\,\omega(e)},
+ \qquad\text{so that}\qquad
+ \|P(\theta v)\|\le\sup_{e\ \mathrm{allowed}}\|v(e)\|
+\]
+for every direction array \(v\). Thus an entrywise bound for an unscaled
+direction on the allowed edges is a bound for the normalized norm of its
+threshold-scaled screen, and no additional screen norm is inserted
+between the row estimate and the priced jet. Then the entrywise
+difference of \(x_k\) and \(y_k\) is at most
 \[
  \delta_k=
   8K e^{-\sigma b/2}(1+4m)^{dk}C_{dk}(\sigma/2)M
  \tag{9}\label{eq:ex-lattice-local-delta}
 \]
-in the normalized edge norm. The reference and actual directions satisfy
+and hence so is the normalized norm of \(P(\theta x_k)-P(\theta y_k)\).
+The reference and actual directions satisfy, entrywise,
 \[
  \|y_k\|,\ \|x_k\|
  \le 4K C_{dk}(\sigma)M(1+4L(m+2))^{dk}\le C_1,
@@ -194,19 +205,28 @@ where
  4K C_{dk}(\sigma)M\bigl(1+4L(m+2)\bigr)^{dk},
  \tag{10}\label{eq:ex-lattice-local-C1}
 \]
-Assume the local jet satisfies the price bound (6), and also that
-\(\varepsilon_d\le C_1\). Let \(\mathcal V_k\) denote the
-allowed direction subspace of degree \(k\), and suppose \(x_k,y_k\in
-\mathcal V_k\) and the weighted vanishing receipt holds:
+Assume the local jet satisfies the price bound (6), that \(F\) depends
+only on the allowed-edge components of the configuration, so that
+\(\mathcal J_a(v_1,\ldots,v_a)=\mathcal J_a(Pv_1,\ldots,Pv_a)\), and also
+that
+\(\varepsilon_d\le C_1\). Assume the weighted vanishing receipt for the
+screened, threshold-scaled reference directions:
 \[
- \mathcal J_a(y_{q_1},\ldots,y_{q_a})=0
+ \mathcal J_a\bigl(P(\theta y_{q_1}),\ldots,P(\theta y_{q_a})\bigr)=0
  \quad\text{whenever }q_i\ge1,\quad \sum_{i=1}^a q_i\le d.
  \tag{10a}\label{eq:ex-lattice-weighted-jet-vanishing}
 \]
+In the application, (10a) holds because each \(P(\theta y_k)\) lies in the
+space \(\mathcal V_k\) of polynomial directions of degree at most \(k-1\)
+on the allowed edges, and the observable has vanishing jets on lists of
+such directions with positive degrees of sum at most \(d\). No such
+membership is assumed for the actual directions \(x_k\); it is neither
+needed below nor available in the application.
 Assume also the order-zero receipt \(F(\mathrm{id})=0\).
 Let \(\gamma:\mathbb R\to\mathcal X\) be the actual \(C^d\) probe path in
 the tangent configuration space, with \(\gamma(0)=0\) and
-\(\gamma^{(k)}(0)=x_k\) for \(1\le k\le d\). The observable is evaluated on
+\(\gamma^{(k)}(0)=\theta x_k\) for \(1\le k\le d\). The observable is
+evaluated on
 \(\operatorname{inc}_1(\gamma(s))\), so its base point is the identity
 configuration. Then the probe of total derivative order \(\ell\le d\)
 obeys
@@ -242,29 +262,96 @@ the repeated chain rule in that ordered-finpartition form. When \(\ell=0\),
 the derivative is \(F(\mathrm{id})=0\) by the separate order-zero receipt.
 For each nonempty-order partition \(\pi\) of the \(\ell\) probe derivatives, the
 chain-rule term is the \(|\pi|\)-linear jet \(\mathcal J_{|\pi|}\) applied
-to the actual direction \(x_{|B|}\) for each block \(B\in\pi\).
-The all-reference term, with \(x_{|B|}\) replaced by \(y_{|B|}\), vanishes:
+to the path derivative \(\theta x_{|B|}\) for each block \(B\in\pi\),
+and by the locality assumption it is unchanged when each
+\(\theta x_{|B|}\) is replaced by \(P(\theta x_{|B|})\).
+The all-reference term, with \(P(\theta x_{|B|})\) replaced by
+\(P(\theta y_{|B|})\), vanishes:
 the block degrees are positive and sum to \(\ell\le d\), so the weighted
-vanishing hypothesis applies. Each reference direction is bounded by
-\(C_1\), and each actual direction differs from it by at most
-\(\varepsilon_d\). Since \(\varepsilon_d\le C_1\), the multilinear
+vanishing hypothesis applies. In the normalized norm, each screened
+reference direction \(P(\theta y_{|B|})\) is bounded by
+\(C_1\), and each \(P(\theta x_{|B|})\) differs from it by at most
+\(\delta_{|B|}\le\varepsilon_d\). Since \(\varepsilon_d\le C_1\), the multilinear
 comparison lemma (8), with \(K=C_1\), bounds this chain-rule term by
 \(2^{|\pi|}\varepsilon_d C_1^{|\pi|}\Phi w\), which is at most
 \(2^\ell\varepsilon_d C_1^\ell\Phi w\). Summing over the finite ordered
 finpartition index set proves (11).
 \end{proof}
 
-In the selected construction, the identity behind the periodization is
-that the routed test path equals the local observable composed with the
-lifted direction. The reference direction is the finite Laurent
-polynomial obtained from the probe's truncated mode, while the actual input
-array is the analytic periodized row applied to the patched test field.
-These input arrays agree on the ball of radius \(b\); their convolved
-directions need not agree there. The strip bound supplies (2), while the
+\paragraph{The arrays in the selected construction.}
+In the selected construction the probe is the composition of the local
+observable with a routed test path: the logarithmic-link test curve of the
+coefficient probe is cropped to the chart of radius \(m\) and passed
+through the first-order row operator of the step. This routed path is
+\(\theta\) times a real-analytic path \(R(s)\) of direction arrays with
+\(R(0)=0\), and the actual direction is \(x_k=R^{(k)}(0)\). The two input
+arrays, before the row operator is applied, are the following. The
+reference array \(A^{(0)}=W_k\) is the \(k\)-th derivative at \(s=0\)
+of the test script, an array on the covering lattice; the coefficient-growth
+receipt is \(\|W_k(y)\|\le KW_{dk}(y)\). The actual array is its patched
+periodic lift
+\[
+ A^{(1)}(z)=V_k(z)=
+ \begin{cases}
+  W_k(\operatorname{lift}(\operatorname{wrap}z)),
+     &\operatorname{sep}(0,\operatorname{wrap}z)\le m,\\
+  0,&\text{otherwise},
+ \end{cases}
+\]
+where \(\operatorname{wrap}\) is the projection of the covering lattice
+onto the periodic coarse lattice and \(\operatorname{lift}\) its centred
+section; it satisfies the same growth bound. The placement hypotheses
+stated below imply \(V_k(u+z)=W_k(u+z)\) for \(|z|_1<b\) at every kernel
+base \(u\) that occurs, with \(|u|_1\le4m\). Applying the same row operator
+to \(W_k\) and \(V_k\) gives the reference direction \(y_k\) and the actual
+direction \(x_k\). The input arrays agree on the ball of radius \(b\);
+the two convolved
+directions need not agree anywhere. The reference direction is, on the
+allowed edges, a polynomial in the spatial coordinates of degree at most
+\(k-1\) when \(k\ge1\); this polynomial property is established for the
+reference direction only, and is the membership
+\(P(\theta y_k)\in\mathcal V_k\) used for (10a). The strip bound supplies
+(2), while the
 coefficient-growth receipt supplies \(K W_{dk}\). Thus the difference is
 not estimated term by term without cancellation: all terms inside the
 agreement ball cancel, and only the exponentially weighted exterior tail
 is paid.
+
+The hypotheses under which the source applies
+Proposition~\ref{prop:ex-lattice-strip-to-probe} in this way are the
+following; none of them is proved in this section.
+\begin{enumerate}
+\item The row operator applied to both arrays is literally the first-order
+row of the actual step. It satisfies the strip bound (2) with constants
+\(\sigma>0\), \(M\ge0\); it is identical to the row of the selected
+kernel, and the patch block side of the step equals that
+kernel's block side \(L\). A strip bound for some other kernel does not
+suffice.
+\item Placement: with \(c\) the side of the coarse periodic lattice,
+\(20(m+b+1)<c\); the support \(X\) of the observable and the chart region
+\(Y\) satisfy that the radius-\(b\) halo of the parent of every site of
+\(X\) is contained in \(Y\), and every site of \(Y\) has separation at most
+\(m\) from the origin.
+\item The observable is regular on \(X\) for the budget, with all ordered
+derivatives of order at most the budget's order \(n_B\) along normalized
+directions bounded by \(w\) on healthy configurations; this yields (6)
+with \(\Phi\) the fixed jet price of order \(N\), where
+\(d\le N\le n_B\).
+\item The observable has the polynomial-jet vanishing property of order
+\(d\) on \(X\): its jets at the identity vanish on every list of directions
+whose screens lie in \(\mathcal V_{q_1},\ldots,\mathcal V_{q_a}\) with
+\(q_i\ge1\) and \(\sum_iq_i\le d\). This includes \(F(\mathrm{id})=0\) as
+the case of the empty list.
+\item The growth receipt \(\|W_k(y)\|\le KW_{dk}(y)\) holds for every
+\(k\le d\) with one \(K\ge1\), the two integer parameters \((p,u)\) of
+the selected kernel satisfy \(p\ge d\) and \(u\ge4\), its real parameter is
+positive, and \(\varepsilon_d\le C_1\).
+\end{enumerate}
+Under these hypotheses the routed-path identity gives the path \(\gamma=
+\theta R\), the tail lemma gives the entrywise error \(\delta_k\) on the
+allowed edges, the row bound (4) gives \(\|y_k\|\le C_1\) on those edges,
+and the polynomial property of \(y_k\) gives (10a); the proposition then
+yields (11) with \(L\) the common block side.
 
 The argument above proves the Fourier-tail and multilinear comparison
 once the three receipts (strip, growth, and vanishing priced jet) are

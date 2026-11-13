@@ -18,7 +18,17 @@ to a coarse field. In block coordinates the full tangent vector is
 The last component is the gauge coordinate. An internal vector is written
 $\iota v=(0,v)$, with the internal space including the fine field and the
 auxiliary scalar variables. Let $\|\cdot\|_p$ be its weighted fluctuation
-norm. The corresponding bilinear dual norm is
+norm at coarse momentum $p$. This is the norm defined in
+Section~\ref{sec:ex-weighted-frame-penalty}: writing a fine block vector
+$u$ in the block Fourier basis with matrix $P(p)$ and alias momenta
+$k_l(p)=(p+2\pi l)/L$,
+\[
+ \|u\|_p^2=\sum_l h_l(p)^2|(P(p)^{-1}u)_l|^2,\qquad
+ h_l(p)^2=|q(\operatorname{Re}k_l(p))|^2+\mu^2,
+\]
+and the auxiliary scalar component carries its Euclidean norm. The
+$L$-independent estimates below depend on this particular weight. The
+corresponding bilinear dual norm is
 \[
  \|s\|_{p,*}=\sup_{\|v\|_{-p}\leq1}|v^Ts|.
 \]
@@ -48,9 +58,12 @@ The weighted Fourier estimate and the block penalty estimate below are
 explicit inputs here; an ordinary bound for chart derivatives at fixed
 $L$ would not imply either uniform estimate.
 
-An $n$-linear vertex has price $C_n$ if its absolute value is at most
-$C_n$ on smooth coordinate legs, and also with the first leg replaced by
-$\iota v$, $\|v\|_p\leq1$, and all other legs smooth. These are
+An $n$-linear vertex, a function of $n$ independent momenta in the
+strip of width $\eta$, has price $C_n$ if its absolute value is at most
+$C_n$ on smooth coordinate legs $\mathcal L_{p_i}e_{a_i}$, and also with
+the first leg replaced by $\iota v$, $\|v\|_{p_1}\leq1$ for the first
+momentum $p_1$, and all other legs smooth. No relation between the $n$
+momenta is imposed in this definition. These are
 \emph{unnormalized} derivatives. Their coefficient pictures therefore
 carry a factor $1/n!$.
 
@@ -105,17 +118,45 @@ finite color and difference labels are included in the constant. The
 first leg has no differences, so its weaker derivative allowance is
 sufficient. This proves both parts of the vertex price.
 
-Choose the coarse width $\eta$ before fixing the incoming path width
-$\tau$ and budget $A$. The Wilson arrays and the penalty prices then give
-constants $a,b\geq0$ independent of $\tau,A,L$. For each $\tau,A$ the
-residual arrays give a fine width $\sigma'>0$ and constants $\ell,r\geq0$.
+The order of choices and the family to which the conclusion applies
+are as follows. Fix the gauge group, the kernel with its penalty
+coefficient, the phase $J$ of the patch, a bed strip width $w>0$ and
+bound $Q\geq0$, a floor constant $\varepsilon$, a bound $Z\geq0$ for the
+direct coefficient, the bridge constant $D$, and the coarse width
+$0<\eta\leq1$. All of this is fixed before the incoming path width
+$\tau>0$ and budget $A\geq0$. The Wilson arrays and the penalty prices
+then give constants $a,b\geq0$ independent of $\tau,A,L$. For each
+$\tau,A$ the residual arrays give a fine width $\sigma'>0$ and constants
+$\ell,r\geq0$; these depend on the data just listed and on $\tau,A$,
+but not on the path, the bed, the loop budget $\Lambda$, the block side
+or the tori. The conclusion is asserted for every sequence of fine torus
+sides $n_i\to\infty$, every clip $p$ with direct coefficient at most
+$Z$, every path $R$ with the bounds $(\tau,A,\Lambda)$ in $p$, and every
+bed $B$ such that $R$ is attached to $B$, the metric row of $B$ has
+strip bound $(w,Q)$, the floor $(\varepsilon,Q)$ holds for $B,p$ at
+every torus side, and the sworn condition holds at each $n_i$; and for
+every patch of phase $J$ satisfying the branch compatibility of the
+kernel, every family of block steps $S_i$ with that patch from coarse
+tori of sides $m_i$ to the fine tori of sides $n_i=Lm_i$, every choice
+of block representatives $t_i$, and every bridge $\Phi$ satisfying
+\eqref{eq:ex-vertex-cruise}. The hypotheses on $R,B,p$ are exactly those
+of Proposition~\ref{prop:ex-greyson}, which supplies the residual
+arrays; the Wilson arrays need none of them.
+
 Provided $\mu\eta\leq\sigma'$, addition of the three contributions gives
-holomorphic periodic vertices $T_3,T_4$ with prices
+vertices $T_3,T_4$, holomorphic on the strip of width $\eta$ in each
+momentum and periodic, with prices
 \begin{equation}\label{eq:ex-classical-vertex-prices}
                     C_3=a+\mu\ell,\qquad C_4=b+\mu r.
 \end{equation}
-These vertices represent the actual block action on every torus in the
-chosen family. To verify this, insert Fourier waves into each local
+These vertices represent the actual block action
+$\mathcal A_i$ of the step $S_i$ with representatives $t_i$, clip $p$
+and path $R$ (the fine action of $R$ composed with the block chart, plus
+the block penalty) on every torus in the family just described: for
+every $i$, the $n$th derivative of $\mathcal A_i$ at the origin on
+block Fourier waves of coarse momenta $p_1,\ldots,p_n$ is zero unless
+$\sum_jp_j=0$, and is otherwise the number of coarse sites times $T_n$
+at these momenta. To verify this, insert Fourier waves into each local
 translation sum. Summing the coarse anchor gives zero unless the total
 momentum is zero, and otherwise gives the coarse volume. The remaining
 fine-block sum is exactly the array just estimated. The germ identity
@@ -124,11 +165,41 @@ penalty identifies these derivatives for the actual tags. No change of
 stationary branch has been made.
 
 \subsection{The stationary contraction formula}
-Let $\mathcal A(x,y)$ be this real analytic block action, with coarse
-variable $x$ and internal variable $y$. Suppose
-$D_y\mathcal A(x,y(x))=0$, $y(0)=0$, and
-$M=D_y^2\mathcal A(0,0)$ is positive definite. Put
-$E(x)=\mathcal A(x,y(x))$ and $\mathcal Lh=(h,Dy(0)h)$.
+Let $\mathcal A(x,y)$ be this real analytic block action on one torus,
+with coarse variable $x$ and internal variable $y$, and let $y(x)$ be
+real analytic near $0$ with
+$D_y\mathcal A(x,y(x))=0$ and $y(0)=0$. Put
+\[
+ H=D_y^2\mathcal A(0,0),\qquad
+ E(x)=\mathcal A(x,y(x)),\qquad \mathcal Lh=(h,Dy(0)h).
+\]
+The internal variable contains the gauge directions, and $\mathcal A$
+is gauge invariant. Hence the symmetric matrix $H$ is \emph{not}
+invertible: it annihilates the infinitesimal gauge directions. The
+matrix inverted in the construction is its gauge completion. The facts
+used are the following, in the notation of
+Section~\ref{sec:ex-selected-stationary-linear-data}: $\mathcal R$ is
+the matrix of infinitesimal gauge directions, $F$ the linear
+gauge-fixing map with regulator $\mu=L^{-1}$, and
+\begin{equation}\label{eq:ex-stationary-completion}
+ H^{\mathsf T}=H,\qquad H\mathcal R=0,\qquad
+ F\mathcal R=\Gamma_\mu\ \hbox{invertible},\qquad
+ M=H+F^{\mathsf T}F\ \hbox{invertible}.
+\end{equation}
+The second property follows from gauge invariance of $\mathcal A$ and
+stationarity at $(0,0)$: differentiating
+$\mathcal A(0,\varphi_t(y))=\mathcal A(0,y)$ along a one-parameter gauge
+flow $\varphi_t$ once in $t$ and once in $y$ at $t=0$, $y=0$ leaves
+$D_y^2\mathcal A(0,0)[\dot\varphi_0(0),\,\cdot\,]=0$, because the other
+term contains $D_y\mathcal A(0,0)=0$. The third is
+\eqref{eq:ex-actual-gauge-identity}, where $\Gamma_\mu=d^*d+C_\mu$ is
+positive definite for $\mu>0$. The last follows from the determinant
+factorization \eqref{eq:ex-gauge-det-factorization} (written there as
+$\det(H+L^{\mathsf T}L)=\det(\Gamma)^2\det C$), the positive stationary
+Hessian gap and $\mu>0$. All four are properties of the selected step
+on its finite torus; the argument of this subsection uses nothing else
+about $F$ and $\mathcal R$.
+
 Differentiating stationarity once gives
 \begin{equation}\label{eq:ex-stationary-orthogonality}
              D^2\mathcal A(0)[\mathcal Lh,\iota v]=0.
@@ -137,10 +208,31 @@ Define the internal covector
 \[
  s(h,k)[v]=D^3\mathcal A(0)[\iota v,\mathcal Lh,\mathcal Lk].
 \]
-A second differentiation of stationarity gives
+A second differentiation of stationarity gives, for
+$u_{hk}=D^2y(0)[h,k]$,
+\begin{equation}\label{eq:ex-stationary-second}
+                 Hu_{hk}=-s(h,k).
+\end{equation}
+Because $H$ is degenerate this equation does not determine $u_{hk}$,
+which depends on the gauge of the chosen branch. It does determine the
+contractions we need, by the identity
+\begin{equation}\label{eq:ex-completion-projection}
+                 HM^{-1}H=H.
+\end{equation}
+To prove \eqref{eq:ex-completion-projection}, put $N=M^{-1}H$, so that
+$MN=H$. Transposing $H\mathcal R=0$ gives $\mathcal R^{\mathsf T}H=0$,
+hence $\mathcal R^{\mathsf T}M=(F\mathcal R)^{\mathsf T}F$ and
 \[
-                 D^2y(0)[h,k]=-M^{-1}s(h,k).
+ (F\mathcal R)^{\mathsf T}FN=\mathcal R^{\mathsf T}MN
+                             =\mathcal R^{\mathsf T}H=0.
 \]
+Since $F\mathcal R$ is invertible, $FN=0$, and therefore
+$HN=(M-F^{\mathsf T}F)N=MN=H$. Consequently, by
+\eqref{eq:ex-stationary-second} and the symmetry of $H$,
+\begin{equation}\label{eq:ex-stationary-pairing}
+ s(h,k)^{\mathsf T}M^{-1}s(l,m)=u_{hk}^{\mathsf T}HM^{-1}Hu_{lm}
+                              =u_{hk}^{\mathsf T}Hu_{lm}.
+\end{equation}
 The resulting third and fourth derivatives are
 \begin{align}
  D^3E(0)[h_1,h_2,h_3]
@@ -164,23 +256,33 @@ mixed Hessian terms involving $\mathcal Lh$ vanish by
 $D^3\mathcal A(0)[\mathcal Lh]^3/6$. The fourth-order coefficient is
 \[
  \frac{D^4\mathcal A(0)[\mathcal Lh]^4}{24}
-       +\frac{s(h,h)[u]}4+\frac{u^TMu}{8}
+       +\frac{s(h,h)[u]}4+\frac{u^THu}{8}
  =\frac{D^4\mathcal A(0)[\mathcal Lh]^4}{24}
        -\frac{s(h,h)^TM^{-1}s(h,h)}8.
 \]
-Here $u=-M^{-1}s(h,h)$. Polarization of these symmetric multilinear
+Here $u=u_{hh}$, so that $s(h,h)[u]=-u^THu$ by
+\eqref{eq:ex-stationary-second}, and
+$u^THu=s(h,h)^TM^{-1}s(h,h)$ by \eqref{eq:ex-stationary-pairing}.
+Polarization of these symmetric multilinear
 forms proves \eqref{eq:ex-stationary-third}--\eqref{eq:ex-stationary-fourth},
 including the coefficient and sign of all three pairings.
 
 \subsection{Common analytic pictures and their prices}
-Assume that the inverse of the same internal Hessian has a periodic
-holomorphic Fourier symbol $V(p)$, with the weighted operator estimate
+Assume that the inverse $M^{-1}$ of the same completed matrix
+\eqref{eq:ex-stationary-completion}, on every torus of the family, has
+one common periodic holomorphic Fourier symbol $V(p)$, with the weighted
+operator estimate
 \begin{equation}\label{eq:ex-exchange-inverse}
                  \|V(p)s\|_p\leq F\|s\|_{p,*}
 \end{equation}
 on the strip of width $\eta$, where $F\geq0$ is fixed before the
 incoming width and budget. This is an input about the actual inverse,
-not an arbitrary comparison matrix.
+not an arbitrary comparison matrix. It is not proved in the present
+section: the inverse bound for the quadratic form
+$\mathcal G+F(-p)^{\mathsf T}F(p)$ is the subject of
+Section~\ref{sec:ex-weighted-stationary-inverses}, and the
+identification of that form with the Fourier symbol of $M$ is the
+subject of Section~\ref{sec:ex-selected-stationary-linear-data}.
 
 With smooth legs at momenta $p,q$, let
 \[
@@ -211,6 +313,95 @@ vertex identities already have the coarse-volume normalization, and
 Fourier inversion of the internal Hessian makes its contraction precisely
 $V$ at the paired momentum. Thus the contraction formula preserves the
 same momentum-conservation rule and the same volume factor.
+
+We collect the statement in the form in which it is used by the
+one-step construction.
+
+\begin{proposition}[Cubic and quartic pictures of the stationary value]
+\label{prop:ex-classical-stationary-pictures}
+Let the constants and the family of tori, clips, paths, beds, block
+steps $S_i$, representatives $t_i$ and bridge $\Phi$ be as described
+before \eqref{eq:ex-classical-vertex-prices}, with $\mu\eta\leq\sigma'$,
+and let $T_3,T_4$ be the vertices constructed there. For every $i$
+suppose given, on the $i$th coarse torus,
+\begin{enumerate}
+\item a forest and an analytic map $\rho_i$ into its tree chart with
+  $\rho_i(0)=0$ which is stationary, near the origin, for the tested
+  action of every choice of block representatives, these tested
+  actions being real analytic near the origin, and a constant
+  $\delta>0$, independent of $i$, which is a lower bound for the
+  Hessian of every tested action in the tree-chart variables at the
+  origin;
+\item a matrix $W_i$ such that the derivative of
+  $t\mapsto\rho_i(tx)$ at $t=0$ is the linear prediction of the tree
+  chart from $W_i$ for every coarse direction $x$, and such that
+  $\Phi$ is the common Fourier representation of $W_i$;
+\item a function $V(p)$, the same for all $i$, holomorphic and periodic
+  on the strip of width $\eta$, which is the Fourier symbol of the
+  inverse of the completed matrix \eqref{eq:ex-stationary-completion}
+  of the step $S_i$ with representatives $t_i$ and regulator
+  $\mu=L^{-1}$, and satisfies
+  \eqref{eq:ex-exchange-inverse} with a constant $F\geq0$.
+\end{enumerate}
+Let $E_i$ be the tested action of the representatives $t_i$ evaluated
+along $\rho_i$, a real analytic function of the coarse field near
+zero. Then the pictures $P_3,P_4$ defined by
+\eqref{eq:ex-stationary-third}--\eqref{eq:ex-stationary-fourth} from
+$T_3,T_4,\Phi,V$ satisfy \eqref{eq:ex-classical-picture-prices}, and for
+every $i$ they record exactly the normalized Taylor coefficients
+$D^3E_i(0)/3!$ and $D^4E_i(0)/4!$: on unit Fourier waves these
+coefficients vanish unless the momenta sum to zero, and otherwise equal
+the number of coarse sites times $P_3$, respectively $P_4$, at the
+last two, respectively three, momenta.
+\end{proposition}
+\begin{proof}
+Fix $i$. By Section~\ref{sec:ex-selected-stationary-linear-data},
+gauging the branch $\rho_i$ back and recentering gives a stationary
+representative $y_i(x)$ of the centered block action $\mathcal A_i$,
+in all internal directions, with $y_i(0)=0$ and $Dy_i(0)x=(W_ix,0)$;
+hypotheses~(1) and~(2) are what that construction uses. The fine
+action and the block penalty are gauge invariant, so
+$\mathcal A_i(x,y_i(x))=E_i(x)$ near zero. The gap in~(1) and $\mu>0$ give
+\eqref{eq:ex-stationary-completion}. The contraction formulas
+\eqref{eq:ex-stationary-third}--\eqref{eq:ex-stationary-fourth}
+therefore express $D^3E_i(0)$ and $D^4E_i(0)$ through the derivatives
+of $\mathcal A_i$ on the legs $\mathcal Lh=(h,W_ih,0)$ and through
+$M^{-1}$. Insert unit coarse Fourier waves. By~(2) the leg of a wave of
+momentum $p$ is the block Fourier wave with fiber
+$\mathcal L_pe_a$; the vertex identity stated after
+\eqref{eq:ex-classical-vertex-prices} evaluates the derivatives of
+$\mathcal A_i$ as the number of coarse sites times $T_3$ or $T_4$ at
+conserving momenta; and by~(3) the contraction with $M^{-1}$ is the
+contraction with $V$ at the paired momentum, which preserves momentum
+conservation and introduces no further volume factor. Dividing by the
+factorials gives the recording identities. The bounds were proved
+before the statement: they use the two parts of the vertex prices,
+\eqref{eq:ex-exchange-inverse} and weighted duality.
+\end{proof}
+
+The hypotheses of this proposition are extracted from the standing
+data of the one-step construction. There, hypothesis~(3) is not assumed
+directly: the identification of the inverse symbol is derived from the
+frame and kinetic response data of
+Section~\ref{sec:ex-selected-kinetic-response}, and only the bound
+\eqref{eq:ex-exchange-inverse} is a separate estimate. The proof above
+uses nothing beyond (1)--(3), the path bounds, the branch compatibility
+and the vertex identity. The hypotheses are inputs with the following
+producers. The bridge bound \eqref{eq:ex-vertex-cruise} for the
+retained tower, and the identification of $\Phi$ with the tangent of
+the recentered stationary representative, are proved in
+Section~\ref{sec:ex-selected-stationary-linear-data}. The weighted
+Fourier and penalty estimates are proved in
+Section~\ref{sec:ex-weighted-frame-penalty}; the inverse estimate
+in~(3) is the subject of
+Section~\ref{sec:ex-weighted-stationary-inverses}. The stationary
+branch, its gap and its installed tangent in~(1) and~(2) are the chart
+receipts of Section~\ref{subsec:path-stationary-chart}; they are
+hypotheses of the one-step construction and are not produced here.
+Note that~(1) requires one gap $\delta$ for all $i$, and that the path
+$R$ is the incoming path, attached to the fine bed. A construction of
+the branch at each fixed period does not by itself give a gap that is
+uniform in the period; that uniformity is part of the input.
 
 Finally choose $L$ sufficiently large that $\mu\ell,\mu r\leq1$.
 Both pictures are then bounded on their common strip by

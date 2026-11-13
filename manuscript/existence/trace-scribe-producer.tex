@@ -17,19 +17,35 @@ receipts are stated explicitly below. Given these inputs, this section proves
 how the estimates produce the conserved tensor sequence and transfer its
 physical normalization to the selected table.
 
-Write $\kappa>0$ for the slope constant and let $\mathcal O$ be the
-distinguished unit field in the reference grade-four stress table. The
-physical coefficient is $d_2=-\kappa/4$.
+Write $\kappa>0$ for the slope constant; in the notation of
+Section~\ref{sec:trace-asymptotic}, $\kappa=2b_0$. Let $1$ denote the unit
+field of the reference grade-four table, and let $\mathcal O$ be the
+normalized curvature-square field of the reference table: the image in
+that table of one quarter of the sum, over all ordered pairs $(a,b)$ of
+coordinate directions, of the labels representing the color inner
+products $\langle F_{ab},F_{ab}\rangle$ of the curvature with itself. It is the field denoted
+$\mathcal O$ in the external unit YM-000034 (file
+\texttt{trace-branch-moments.tex}, label
+\texttt{sec:ex-trace-branch-moments}) and $O$ in
+Section~\ref{sec:trace-asymptotic}. It has expectation zero in the
+reference table, it is nonzero, and it is not a multiple of the unit
+field. The physical coefficient is $d_2=-\kappa/4$.
 
 \subsection{The two-direction conserved correction}
 
 Let $E$ be the finite-dimensional real space of centered, signed-equivariant,
 spin-symmetric grade-four tensors for the selected table (before imposing
-the divergence equation), let $V$ be the finite-dimensional
-response space, and let $\mathcal B$ be the grade-five profile space. Let
-$D:E\to V$ be the divergence map. Under the reference-rank and optical-comparison receipts
+the divergence equation), let $V_{\mathrm{int}}$ be the real space of
+grade-five vector arrays of the selected table in which divergences lie,
+let $V$ be the finite-dimensional response space, which is the grade-five
+vector table of the reference table, and let $\mathcal B$ be the
+grade-five profile space. Let
+$D:E\to V_{\mathrm{int}}$ be the divergence map. Its codomain belongs to
+the selected table, whereas the comparison and response maps below take
+values in the reference space $V$. Under the reference-rank and optical-comparison receipts
 recorded in Section~\ref{sec:ex-lattice-trace-producer}, the finite-dimensional
-argument there gives $\dim\ker D=1$. We use that conclusion here. The
+argument there (Lemma~\ref{lem:ex-lattice-trace-rank-one}, which is
+conditional on those receipts) gives $\dim\ker D=1$. We use that conclusion here. The
 interacting divergence remains fixed; the comparison varies the optical map,
 and its positive scale and invertible chart preserve the kernel.
 
@@ -45,6 +61,17 @@ principal and two correction directions. The correction map is
 \]
 Let $q_i>0$ be the selected effective coupling and $\rho_i$ its positive
 response-size price; these are the scales in the paid bounds below.
+The optical comparison identity, which is an input here, states that on
+the selected tail the comparison map is the divergence followed by the
+scaled inverse chart: for every $Q\in E$ and every axis $a$,
+\begin{equation}
+ (\mathsf K_iQ)_a=q_ir_i^5\,U_{i,5}^{-1}\bigl((DQ)_a\bigr),
+ \label{eq:ex-lattice-scribe-optical-identity}
+\end{equation}
+where $r_i>0$ is the chart radius and $U_{i,5}$ is the grade-five chart
+isomorphism from reference fields to fields of the selected table. Since
+$q_ir_i^5>0$ and $U_{i,5}$ is invertible, $\mathsf K_iQ=0$ if and only if
+$DQ=0$ on that tail.
 For $a=0,1$, the corrected response estimates compare the corresponding
 column with the same-history linear response on a paid forecast
 $w_i^a\in\mathcal B$:
@@ -66,8 +93,27 @@ two-column reference correction. Indeed, for each $a$, the displayed
 response estimate and continuity of the limiting response give
 $\mathsf B_i e_a\to\mathsf V(v_a)$. Since the domain has basis
 $e_0,e_1$, convergence of both columns implies operator-norm convergence.
-The free classification proves
-$\mathsf B_\infty$ is an isomorphism. In finite dimension, if
+The map $\mathsf B_\infty$ is an isomorphism. To see this, use the real
+coordinates $w=(w_0,w_1,w_2)\in\mathbb R^3$ that parametrize
+$\mathcal B$ bijectively and in which the branch profiles are defined.
+In these coordinates
+\[
+ v_0=(0,0,1),\qquad v_1=(0,\tfrac14,0),
+\]
+and two facts from the reference computation of
+Section~\ref{sec:ex-lattice-trace-free-rank} are used as inputs:
+$\mathsf V$ maps $\mathcal B$ onto $V$, and its kernel is the line
+spanned by the equation-of-motion direction, whose coordinates are
+$\epsilon=(1,-\tfrac14,1)$. If $\mathsf V\mathsf W(c_0,c_1)=0$, then
+$c_0v_0+c_1v_1=\gamma\epsilon$ for some real $\gamma$; the coordinate
+$w_0$ gives $\gamma=0$, then $w_2$ gives $c_0=0$ and $w_1$ gives
+$c_1=0$. So $\mathsf V\mathsf W$ is injective. It is onto: an arbitrary
+element of $V$ is $\mathsf V(w)$ for some $w$, and
+\[
+ w-w_0\epsilon=(w_2-w_0)v_0+(4w_1+w_0)v_1,
+\]
+so $\mathsf V(w)=\mathsf V\mathsf W(w_2-w_0,\,4w_1+w_0)$ because
+$\mathsf V(\epsilon)=0$. In finite dimension, if
 $\|\mathsf B_i-\mathsf B_\infty\|<1/(2\|\mathsf B_\infty^{-1}\|)$,
 then for every $c$,
 \[
@@ -85,7 +131,8 @@ price. Define
  c_i=-\mathsf B_i^{-1}X_i,\qquad
  T_i=q_iL_i+\mathsf S_i(c_i).
 \]
-Then $\mathsf K_i(T_i)=0$, and the optical comparison identity gives
+Then $\mathsf K_i(T_i)=0$, and the optical comparison identity
+\eqref{eq:ex-lattice-scribe-optical-identity} gives
 $DT_i=0$: on the selected tail, $\mathsf K_i(Q)=0$ is equivalent to
 $DQ=0$ for every $Q\in E$. The inverse bound gives
 $\|c_i\|\le C'\rho_i$.
@@ -101,7 +148,23 @@ every $\delta>0$, the eventual estimate
  t_i\left|\mu_i(s_i y)-\Lambda(y)\right|
        \le\delta\|y\|\quad\text{for all }y\in\mathcal B.
 \]
-We spell out how these inputs
+These sensor inputs are the conclusion of
+the proposition `Selected trace sensor' of the separately owned external
+unit YM-000033; its file is \texttt{trace-prosper-sensor.tex} and its
+label is \texttt{prop:trace-prosper-sensor}. We use it under the
+following identification of its notation with the present one. Its spaces $E$ and $H$ are $\mathcal B$ and $V$; its sensor
+maps $s_i$ are the present $s_i$, defined by the selected chart formula
+of that unit (label \texttt{eq:trace-sensor-selected-formulas}) and not
+merely maps with the
+same limit; its free projection $f$ is $\mathsf V$; its Ward functional
+$\rho$ is $\Lambda$; its postselected level $n_i$ is the present $k_i$,
+the summit index of the frame level of the $i$th chart; and its weight
+$\mathfrak a_i$ is $t_i$. In the notation of
+Section~\ref{sec:ex-lattice-trace-weighted-estimates}, with $p_i=z_i$,
+one has $t_i=A_{1/5}(i)$ and $\rho_i=A_{1/6}(i)$, and $q_i$ is the arch
+scale $b_i$ at the level $k_i$. That proposition is conditional on its own
+chart, clock and marked-vector inputs; it is used here as an external
+input and is not reproved. We spell out how these inputs
 give the three limits needed for calibration. Let $Y_i$ be the principal
 forecast. The paid response comparison, penumbra estimate, and principal
 Ward limit are
@@ -223,6 +286,30 @@ The false-branch tensor need not vanish; it is its coefficient
 $c_i^0/q_i\to0$ that removes it from the normalized field limit. The three
 branch limits are on the same history.
 
+The three branch limits, and the trace statements used below, are the
+conclusions of the separately owned branch unit,
+the external unit YM-000034 (file \texttt{trace-branch-moments.tex},
+label \texttt{sec:ex-trace-branch-moments}), under the following
+identification. The tensors are $L_i=t^0_{k_i}$, $\Omega_i=t^-_{k_i}$
+and $\Delta_i=t^+_{k_i}$, at the same level $k_i$ as above. The scaled
+pullback $\mathcal P_i$ is the entrywise application of the map
+$\mathsf P_i=\omega_iU_i^{-1}$ of that section, with
+$\omega_i=q_ir_i^4$, and $\mathsf M_i$ is its centered moment map. The
+ordered labels are $W_i^Q=W^{b}_{k_i}$ for the branch $b=\nu_Q$, and
+$M_0=M(w^0)$, $M_\Omega=M(w^-)$, $M_1=M(w^+)$.
+Its proposition `Three branch field limits' (label
+\texttt{prop:ex-branch-moments}) gives the three field limits in
+\eqref{eq:ex-lattice-scribe-field-receipts};
+its proposition `Principal and false trace washout' (label
+\texttt{prop:ex-branch-washout}) with exponent $p=1$ gives the
+weighted trace limits for the principal and the false branch that are
+used below, and gives nothing for the true branch;
+and its trace formula (label \texttt{eq:ex-branch-three-traces}) gives
+$\operatorname{tr}M_1=4\mathcal O$. Those propositions are conditional on
+their own recording, transport and chart inputs. They are used here as
+external inputs; the finite-array argument written out above repeats the
+proof of the first of them under the same hypotheses.
+
 These are the field receipts used below:
 \begin{align}
  \mathcal P_i(L_i)&\longrightarrow M_0,&
@@ -291,21 +378,81 @@ We now show that the corrected physical tensor and the selected table
 stress have the same limiting normalization. Let $A$ be the selected
 algebra, and let $R$ be its centered table stress
 $R=\operatorname{reCenter}_S(A.\operatorname{energy})\in E$, whose entries
-are conserved and whose flux is the physical Ward flux. This is the stress
-used in the physical-shell theorem. Let $g_i$ be the explicit conserved
-correction sequence just constructed, viewed in the same one-dimensional
-kernel of $D$. Assume its normalized field
+are conserved and whose flux is the physical Ward flux. Let $g_i=T_i$ be
+the explicit conserved correction sequence just constructed, viewed in the
+same one-dimensional kernel of $D$. Its normalized field
 and flux limits are (\ref{eq:ex-lattice-scribe-field-limit}) and
-(\ref{eq:ex-lattice-scribe-flux-limit}), and that the table stress has the
-same nonzero shell-flux limit. We prove the transfer, spelling out the
-nonzero test and the scalar ratio.
+(\ref{eq:ex-lattice-scribe-flux-limit}). We prove the transfer, spelling
+out the nonzero test and the scalar ratio.
 
-The reference observer-separation calculation supplies an axis $a$, an
+The argument uses the following inputs, all for the same selected table,
+reference table, derivative maps, chart and scaling as above; the
+derivative maps of the two tables are assumed to obey the derivative and
+orientation laws of their tables. None of these inputs
+is a consequence of rank one or of the field and flux limits.
+\begin{enumerate}
+\item \emph{Physical stress laws.} The tensor $R$ lies in $E$, satisfies
+ $DR=0$, and obeys the translation Ward identity of the selected table:
+ for every separated configuration consisting of a distinguished point and
+ spectator points, every tuple of spectator labels, every cutoff that
+ separates the distinguished point from the spectator points, every axis
+ $b$ and every field $B$, the shell measurement of $R$ with that cutoff
+ and with $B$ at the distinguished point equals the correlation at that
+ configuration with the derivative field $D_b^SB$ at the distinguished
+ point and the same spectators.
+\item \emph{Reference stress laws.} The material tensor $M_0$ is a
+ centered, conserved stress tensor of the reference table and obeys the
+ translation Ward identity of the reference table.
+\item \emph{A detecting derivative.} There are an axis $a$, a reference
+ observer $o$, and a reference grade-four field $v$ whose derivative in
+ direction $a$ has nonzero value $y$ on the grade-five test of $o$.
+\item \emph{Tested convergence and jet comparison.} The following four
+ statements hold for the selected chart maps $U_{i,d}$ and radii $r_i$.
+ \begin{enumerate}
+ \item[(4a)] For every integrated reference test, that is, a compactly
+  supported test function with fixed spectator labels and one
+  distinguished slot, and every fixed reference field $g$ of the grade
+  of that slot, the correspondingly rescaled tested correlation of the
+  selected table with $U_{i,d}g$ in the distinguished slot converges to
+  the reference tested correlation with $g$ in that slot. This holds
+  also for the test obtained by differentiating the test function in
+  the distinguished variable.
+ \item[(4b)] There are finitely many integrated reference tests with a
+  grade-five distinguished slot whose reference functionals have zero
+  common kernel on the reference grade-five field space.
+ \item[(4c)] In both tables a tested correlation with the derivative
+  field $D_a g$ in the distinguished slot equals the derivative in
+  direction $a$, in the distinguished variable, of the correlation with
+  $g$ in that slot.
+ \item[(4d)] Pointwise jet comparison for the observer $o$. For every
+  fixed reference grade-five field $g$, the selected correlation at the
+  configuration $r_ix$ with $U_{i,5}g$ at the distinguished point and
+  the spectator labels $\operatorname{pins}_i\circ q$ converges to the
+  observer's reference value $o.test_5(g)$. For every fixed reference
+  stress tensor $H$, the rescaled shell measurement
+  $\mathcal L_i(H)=\mathscr F_i(r_i^{-4}U_{i,4}H)$ defined below, in
+  which the chart is applied entrywise, converges to the reference shell
+  measurement $\operatorname{shellGrad}(H,\chi,a,x,q,v)$. In the source
+  both follow from the comparison-of-jets estimate for the finitely
+  many grades and arities fixed by the observer, on a comparison window
+  containing the support of the gradient of $\chi$ together with the
+  spectator points.
+ \end{enumerate}
+\end{enumerate}
+These inputs belong to the stress, Ward and reference-detector parts of
+the construction. No statement of this section produces them, and they
+are recorded as open incoming premises of the present argument.
+
+By input~3 fix an axis $a$, an
 observer $o$, and a reference grade-four field direction $v$ such that
 $y=o.test_5(D_a v)\ne0$, where $D_a$ is the reference derivative in direction
-$a$. Let $\chi$ be the cut and $x$ the base point belonging to this same
-observer. Its defining test identity identifies this number with
-$\operatorname{shellGrad}(M_0,\chi,a,x,v)$. We keep this exact observer and
+$a$. Let $x$ be the separated configuration of this same observer,
+consisting of the point of the distinguished insertion and the points of
+its spectators, let $q$ be its fixed tuple of spectator labels, and let
+$\chi$ be its cut, a cutoff separating the distinguished point from the
+spectator points. The reference translation Ward identity of input~2, applied to
+this cut, identifies this number with
+$\operatorname{shellGrad}(M_0,\chi,a,x,q,v)$. We keep this exact observer and
 cut for both stress sequences; no new test or window is selected in the
 limit argument.
 
@@ -315,15 +462,82 @@ For a stress tensor $Q$, write the exact selected shell measurement as
  Q,\operatorname{stretch}(r_i,\chi),a,r_i x,
  \operatorname{pins}_i\circ q,U_i v\right),
 \]
-where $r_i$ is the chart radius, $q$ is the observer's fixed test window,
-and $U_i$ is the selected grade-four chart isomorphism. The selected
-chart's tested convergence and the comparison-of-jets estimate give, for
-the physical tensor and for $g_i$, respectively,
+where $r_i$ is the chart radius, $q$ is the observer's tuple of spectator
+labels, transported by the chart maps $\operatorname{pins}_i$,
+and $U_i$ is the selected grade-four chart isomorphism. We claim
 \begin{equation}
  f_i:=\mathscr F_i(R)\to y,
  \qquad \mathscr F_i(g_i)\to y.
  \label{eq:ex-lattice-scribe-common-test}
 \end{equation}
+The two limits have different sources, and both involve labels that
+move with $i$, so that convergence for fixed labels cannot be applied
+directly.
+
+\emph{First limit.} Write $D_a^S$ for the derivative map of the selected
+table and define the real-linear maps from reference grade-four fields to
+reference grade-five fields
+\[
+ \mathsf T_i=r_i\,U_{i,5}^{-1}D_a^S\,U_{i,4}.
+\]
+We first show $\mathsf T_i\to D_a$ in operator norm. Let
+$\lambda^1,\ldots,\lambda^m$ be the reference functionals of the tests
+of (4b) and let $\lambda^1_i,\ldots,\lambda^m_i$ be the rescaled
+functionals $g\mapsto$ (tested correlation of the selected table with
+$U_{i,5}g$ in the distinguished slot). By (4a), $\lambda^r_i\to\lambda^r$
+pointwise, hence in operator norm on the finite-dimensional reference
+grade-five space. Fix a reference grade-four field $u$. By (4c) for the
+selected table and integration by parts in the distinguished variable,
+$\lambda^r_i(\mathsf T_iu)$ is minus the rescaled tested correlation of
+$U_{i,4}u$ against the test with differentiated test function; the factor
+$r_i$ in $\mathsf T_i$ is exactly the one produced by rescaling the
+derivative. By (4a) for the differentiated test this converges to minus
+the reference tested correlation of $u$ against the differentiated test,
+which equals $\lambda^r(D_au)$ by (4c) for the reference table and
+integration by parts. Thus $\Lambda_i(\mathsf T_iu)\to\Lambda(D_au)$,
+where $\Lambda=(\lambda^r)_r$ and $\Lambda_i=(\lambda^r_i)_r$. Since
+$\Lambda$ is injective on a finite-dimensional space there is $c>0$ with
+$\|\Lambda w\|\ge c\|w\|$, and $\|\Lambda_iw\|\ge(c/2)\|w\|$ for large
+$i$. Hence
+\[
+ \|\mathsf T_iu-D_au\|\le\frac2c\Bigl(
+ \|\Lambda_i\mathsf T_iu-\Lambda D_au\|
+ +\|(\Lambda-\Lambda_i)D_au\|\Bigr)\longrightarrow0,
+\]
+and pointwise convergence on the finite-dimensional grade-four space is
+operator-norm convergence. Next let $A_i(g)$ denote the selected
+correlation at $r_ix$ with $U_{i,5}g$ at the distinguished point and
+spectator labels $\operatorname{pins}_i\circ q$. By the first part of
+(4d), $A_i\to o.test_5$ pointwise, hence in operator norm. The physical
+Ward identity of input~1, applied at the separated configuration $r_ix$
+with the stretched cut, and linearity give
+\[
+ \mathscr F_i(R)=r_i\,(\text{correlation at }r_ix\text{ with }
+ D_a^S(U_{i,4}v)\text{ at the distinguished point})
+ =A_i(\mathsf T_iv).
+\]
+Since $A_i\to o.test_5$ in operator norm and
+$\mathsf T_iv\to D_av$, we get
+$\mathscr F_i(R)\to o.test_5(D_av)=y$.
+
+\emph{Second limit.} No Ward identity for $g_i$ is used. For a reference
+stress tensor $H$ put $\mathcal L_i(H)=\mathscr F_i(r_i^{-4}U_{i,4}H)$,
+with the chart applied to each entry. This is a linear functional on the
+finite-dimensional space of reference stress tensors, and by the
+definition of $\mathcal Y_i$ and linearity of $\mathscr F_i$,
+\[
+ \mathscr F_i(g_i)=\mathcal L_i\bigl(\mathcal Y_i(g_i)\bigr)
+\]
+exactly. By the second part of (4d), $\mathcal L_i(H)\to\mathcal L_0(H)
+:=\operatorname{shellGrad}(H,\chi,a,x,q,v)$ for every fixed $H$, hence
+in operator norm. The field limit
+(\ref{eq:ex-lattice-scribe-field-limit}) gives
+$\mathcal Y_i(g_i)\to M_0$. Therefore
+\[
+ \mathscr F_i(g_i)\longrightarrow\mathcal L_0(M_0)
+ =\operatorname{shellGrad}(M_0,\chi,a,x,q,v)=y,
+\]
+the last equality being the reference Ward identity used above.
 The argument uses the same selected scale and the same observer test in both
 limits. The physical flux excludes $R=0$: if $R$ vanished, linearity of
 shell differentiation would force $f_i=0$ at every index, contrary to
@@ -358,27 +572,81 @@ kernel alone would not fix the scalar; the common nonzero shell test fixes it.
 
 \subsection{Comparison tables and the full gallery record}
 
-Let $T$ be any comparison table that respects the selected table, and let
-$\Theta_T$ be its trace observable on $A.\operatorname{energy}$. Its exact
+Let $T$ be any table on the same label book as the selected table $S$;
+for the limit proved in this paragraph no hierarchy on $T$ and no
+compatibility of $T$ with $S$ is required. Let
+$\Theta_T$ be the trace of $A.\operatorname{energy}$ centered by its
+one-point value in $T$. Its exact
 centered decomposition is
 \[
- \Theta_T=\operatorname{tr}(\operatorname{reCenter}_S(A.\operatorname{energy}))-c_T\,1,
- \qquad c_T\in\mathbb C.
+ \Theta_T=\operatorname{tr}(\operatorname{reCenter}_S(A.\operatorname{energy}))-c_T\,1_S,
+ \qquad c_T\in\mathbb C,
 \]
+where $1_S$ is the grade-four unit field of $S$: both sides differ from
+the uncentered trace by a multiple of $1_S$.
 The physical-transfer limit (\ref{eq:ex-lattice-scribe-physical-transfer})
 applies to the first term. The scalar-unit term vanishes after zooming:
 the selected scale satisfies
-\[
- q_i r_i^4\,1\longrightarrow0,
+\begin{equation}
+ q_i r_i^4\longrightarrow0,
  \qquad q_i>0,
+ \label{eq:ex-lattice-scribe-band-cost}
+\end{equation}
+as is proved from the clock in the next paragraph, and the selected chart
+eventually identifies the reference unit with the unit of $S$, that is,
+$U_i1=1_S$ for large $i$. Hence
+$q_ir_i^4U_i^{-1}(c_T1_S)=c_Tq_ir_i^41\to0$. Therefore the zoomed
+comparison observable has the same limit as the trace of the physical
+stress,
+\[
+ q_ir_i^4U_i^{-1}\Theta_T\longrightarrow-\kappa\mathcal O=4d_2\mathcal O.
 \]
-and the selected chart eventually identifies its unit with the reference
-unit. The zoom maps are linear, so the same vanishing holds after
-multiplication by $c_T$. Therefore the zoomed comparison observable converges to the same
-prescribed multiple of the unit as the physical stress. This argument is
+The limit is a multiple of the curvature-square field $\mathcal O$, not of
+the unit. This argument is
 uniform in the algebraic identity for $T$; only the two scalar sequences
-used to represent its component in the distinguished two-dimensional
+used below to represent its component in the distinguished two-dimensional
 stress sector depend on $T$.
+
+\emph{The clock.} Write $j_i$ for the frame level of the $i$th chart, so
+that $k_i$ is its summit index, let $\mathsf a_j>0$ be the field scale at
+level $j$ and $\mathsf b_i$ the zoom factor of the $i$th chart, and let
+$\zeta(j)>0$ be the arch scale at level $j$; thus $q_i=\zeta(k_i)$. The
+chart radius is $r_i=\mathsf a_{j_i}\mathsf b_i$, the running rate is
+$\widehat\beta_j=\bar\beta+\kappa\log(\mathsf a_j^{-1})$ with a fixed
+constant $\bar\beta$, and the selected run has $j_i\to\infty$,
+$\widehat\beta_j\to\infty$ and $r_i\to0$. We use three further inputs of
+the selected run:
+\begin{equation}
+ \frac{\zeta(j)}{\widehat\beta_j}\longrightarrow1,\qquad
+ \frac{\zeta(j)}{\zeta(\operatorname{summit}(j))}\longrightarrow1
+ \quad(j\to\infty),\qquad
+ 0\le\log\mathsf b_i\le(\log\widehat\beta_{j_i})^{48}
+ \quad\text{eventually}.
+ \label{eq:ex-lattice-scribe-clock-inputs}
+\end{equation}
+The definition of the rate gives
+\[
+ \frac{\log(r_i^{-1})}{\widehat\beta_{j_i}}
+ =\frac{\log(\mathsf a_{j_i}^{-1})}{\widehat\beta_{j_i}}
+   -\frac{\log\mathsf b_i}{\widehat\beta_{j_i}}
+ =\frac1\kappa\left(1-\frac{\bar\beta}{\widehat\beta_{j_i}}\right)
+   -\frac{\log\mathsf b_i}{\widehat\beta_{j_i}}
+ \longrightarrow\frac1\kappa,
+\]
+because $(\log t)^{48}/t\to0$ as $t\to\infty$. Dividing by
+$\zeta(j_i)/\widehat\beta_{j_i}\to1$ and multiplying by
+$\zeta(j_i)/\zeta(k_i)\to1$ gives
+\begin{equation}
+ \frac{\log(r_i^{-1})}{q_i}\longrightarrow\frac1\kappa.
+ \label{eq:ex-lattice-scribe-clock}
+\end{equation}
+Put $\ell_i=\log(r_i^{-1})$. Since $r_i\to0$, $\ell_i\to\infty$, and
+$\ell_ir_i^4=\ell_ie^{-4\ell_i}\to0$. For large $i$, $\ell_i>0$ and
+\[
+ q_ir_i^4=\frac{\ell_ir_i^4}{\ell_i/q_i}\longrightarrow\frac0{1/\kappa}=0,
+\]
+which is \eqref{eq:ex-lattice-scribe-band-cost}. Finally
+$q_i\to\infty$, since $q_i=\ell_i/(\ell_i/q_i)$ and $\ell_i\to\infty$.
 
 More explicitly, the scalar representation is
 \[
@@ -389,30 +657,53 @@ linearly independent, so $\iota$ is injective and has a continuous left
 inverse on its range.
 The limiting comparison tensor is $4d_2\mathcal O$, where
 $d_2=-\kappa/4$, so its coordinates are $(0,d_2)$. Put
-$Z_i=q_i r_i^4(J.U_i)^{-1}\Theta_T$. The selected comparison receipt gives
+$Z_i=q_i r_i^4U_i^{-1}\Theta_T$. For the coordinate representation,
+and only for it, assume in addition that $T$ carries a hierarchy and
+respects $S$, and that the selected algebra has the local Ward structure
+(conservation, symmetry and reality of its energy tensor and its tensor
+transformation law). Then
 $Z_i\in\operatorname{range}(\iota)$ eventually, separately from the limit
-$Z_i\to4d_2\mathcal O$. On that tail let $(a_i,b_i)=\iota^{-1}(Z_i)$;
+$Z_i\to4d_2\mathcal O$. Indeed, under these assumptions $\Theta_T$ is
+fixed by the real structure of $S$ and by every signed permutation of the
+axes. On the tail where the grade-four chart is coherent, $U_i^{-1}$
+intertwines the real structures and the signed-permutation actions of
+the two tables, and multiplication by the positive real number
+$q_ir_i^4$ preserves both conditions; so $Z_i$ is a real,
+signed-invariant grade-four field of the reference table. The diagonal
+tensor with all four diagonal entries equal to $Z_i$ and vanishing
+off-diagonal entries is then a real, symmetric, signed-covariant stress
+tensor of the reference table, hence a real combination of the four basis
+tensors of Lemma~\ref{lem:ex-trace-free-stress-basis}. Taking its trace,
+and using that the trace of each of those basis tensors lies in
+$\mathbb R1+\mathbb R\mathcal O$, shows
+$4Z_i\in\mathbb R1+\mathbb R\mathcal O$. On that tail let $(a_i,b_i)=\iota^{-1}(Z_i)$;
 continuity of the fixed left inverse gives $a_i\to0$ and $b_i\to d_2$.
 Define $e_i=a_i/q_i$ and $d_i=b_i/q_i$. Thus, eventually,
 \[
- r_i^4(J.U_i)^{-1}\Theta_T=\iota(e_i,d_i),
+ r_i^4U_i^{-1}\Theta_T=\iota(e_i,d_i),
  \qquad q_i e_i\to0,\qquad q_i d_i\to d_2.
 \]
 The definition of the zoom then gives
-$q_i r_i^4(J.U_i)^{-1}\Theta_T\to4d_2\mathcal O$.
+$q_i r_i^4U_i^{-1}\Theta_T\to4d_2\mathcal O$.
 
-The exact record contains $q_i\to\infty$ and
-$\log(\operatorname{Zoom}_i)/q_i\to\kappa^{-1}$, where
-$\operatorname{Zoom}_i$ is the positive zoom scale of the selected chart;
+The exact record contains $q_i\to\infty$ and the clock limit
+\eqref{eq:ex-lattice-scribe-clock}, in which the scale is the reciprocal
+$r_i^{-1}$ of the chart radius and not the zoom factor;
 the same finite-volume
-chart and hierarchy; the physical stress limit; and, for every comparison
-table, the late scalar representation and two coefficient limits just
-proved. The fixed-scale case uses the selected
-chart directly. For an arbitrary positive null sequence, the paid scale
-selection first chooses a strictly increasing subsequence and a scaling
-whose radii are that subsequence; the same history is then passed to the
+chart and hierarchy; the physical stress limit; for every table $T$ the
+zoomed trace limit; and, for every table $T$ that carries a hierarchy and
+respects $S$, the late scalar representation and two coefficient limits
+just proved. The fixed-scale case uses the selected
+chart directly. For arbitrary positive null sequences the order of choices
+is as follows. The ultrafilter, the arch scale and the reference hierarchy
+are fixed first. Then, for every positive sequence $s_n\to0$, the paid
+scale selection chooses a strictly increasing sequence of indices $n_i$
+and a scaling whose radii are exactly $r_i=s_{n_i}$
+(Lemma~\ref{lem:ex-lattice-firesky-selection}, which is conditional on
+its one-step chart producer); the same history is then passed to the
 finite-volume chart producer, and the physical transfer above applies
 without another extraction. Thus, under the same paid response, sensor,
-branch, and scale-selection inputs, the output of the selected-run producer
-is the full Scribe record, rather than only its finite-dimensional chart
-part.
+branch, shell-comparison, clock and scale-selection inputs, the output of
+the selected-run producer is the full Scribe record, rather than only its
+finite-dimensional chart part. Each of these inputs is conditional on
+its own hypotheses, and this section does not establish them.

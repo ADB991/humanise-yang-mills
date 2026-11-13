@@ -87,6 +87,110 @@ This proves invariance of the law, not gauge invariance of every observable.
 An insertion must separately satisfy the relevant invariance condition.
 \end{proof}
 
+\subsection{Reflection positivity on an even torus}
+\label{subsec:ex-lattice-finite-reflection}
+
+We next prove the finite-volume positivity needed for the reflection
+construction. Fix an axis as the time coordinate, let $\ell=2h$ with
+$h\geq1$, and take $\beta\geq0$. There are two cuts: the site reflection
+$t\mapsto-t$, whose strict positive sector is $1\leq t<h$, and the link
+reflection $t\mapsto-1-t$, whose positive sector is $0\leq t<h$; both
+coordinates are taken modulo $2h$. Reflections based at other time
+coordinates are obtained by translation. The reflected configuration pulls
+back links along the reflected oriented edges; a reflected negative edge is
+read as the inverse of its positive representative. Write $\Theta U$ for this
+configuration.
+
+\begin{proposition}[Finite-volume reflection positivity]
+\label{prop:ex-lattice-finite-reflection}
+For either cut, let $F$ be a bounded Borel, gauge-invariant function of the
+link configuration which depends only on links with both endpoints in the
+strict positive sector. Then
+\[
+ \int F(U)\,\overline{F(\Theta U)}\,d\mu_{2h,\beta}(U)\geq0.
+\]
+The inequality is real and the same statement holds at every translated cut
+and for every choice of time axis. It applies at each finite volume; no
+continuum limit is asserted.
+\end{proposition}
+\begin{proof}
+We first fix the transfer-kernel normalization. Let $X$ and $Y$ be the
+spatial link configurations on two adjacent time slices, let $u_v$ be the
+intervening time link at spatial vertex $v$, and let $e=(v,v+e_j)$ run over
+the positive spatial links in one slice. The temporal plaquette has holonomy
+$X_eu_{v+e_j}Y_e^{-1}u_v^{-1}$. Put
+\[
+ H(X,Y)=\int\exp\!\left[-\beta\sum_e
+ \left(1-\frac{\operatorname{Re}\operatorname{tr}
+ (X_eu_{v+e_j}Y_e^{-1}u_v^{-1})}{r_G}\right)\right]
+ \prod_v dH_G(u_v).
+\]
+This is the single common integration over the family of time links, not an
+independent gauge average for each spatial edge. We claim that $H$ is a
+positive-semidefinite kernel. Define the spatial gauge action
+$(u\cdot Y)_e=u_vY_eu_{v+e_j}^{-1}$ and the real inner product
+$\langle X,Y\rangle=\sum_e\operatorname{Re}\operatorname{tr}(X_eY_e^*)$.
+For $c=\beta/r_G\geq0$, set
+\[
+ H_0(X,Y)=e^{-\beta |E_{\rm sp}|}\exp(c\langle X,Y\rangle).
+\]
+For any finitely many $X^a$ and complex coefficients $z_a$,
+$\sum_{a,b}\overline{z_a}z_b\langle X^a,X^b\rangle^m\geq0$:
+view the matrix entries as real coordinates and take the squared norm of
+$\sum_a z_a(X^a)^{\otimes m}$ in the complexified real tensor space. The
+exponential series, with nonnegative coefficients, therefore makes $H_0$
+positive semidefinite. It is invariant under a simultaneous spatial gauge
+transformation of both arguments. Product Haar invariance gives
+\[
+ H(X,Y)=\int H_0(X,u\cdot Y)\,du
+       =\int\!\!\int H_0(v\cdot X,u\cdot Y)\,du\,dv.
+\]
+More explicitly, if $M_m(X)=\int(u\cdot X)^{\otimes m}\,du$, then
+\[
+ H(X,Y)=e^{-\beta |E_{\rm sp}|}\sum_{m\geq0}
+ \frac{c^m}{m!}\langle M_m(X),M_m(Y)\rangle.
+\]
+Thus $H$ is real, symmetric, and positive semidefinite. The series converges
+uniformly because the spatial-link space is compact. Products of such kernels
+are positive semidefinite by taking tensor products of their feature spaces;
+the same remains true when the two boundary slice variables coincide.
+
+For a link cut, partition the temporal links into those wholly in the positive
+half, those in its reflected half, and the two sets of crossing links. The
+spatial links are partitioned between the two halves. Every spatial plaquette
+belongs to one half, every non-crossing temporal plaquette belongs to one
+half, and the remaining temporal plaquettes occur at the two cut boundaries.
+Reflection identifies the two half actions. After integrating the crossing
+links, the unnormalized reflected expectation is a double integral over the
+two open half-configurations, with integrand
+\[
+ \Phi(x)\,\overline{\Phi(y)}\,
+ H(X_1(x),X_1(y))\,H(X_2(x),X_2(y)).
+\]
+Here $\Phi$ is $F$ times the positive-half Boltzmann factor, and $X_1,X_2$
+are its two boundary spatial slices. Insert the two uniformly convergent
+feature expansions. Fubini turns each term into the squared norm of the
+integral of $\Phi$ against the corresponding tensor feature, with a
+nonnegative coefficient. Boundedness of $F$ and compactness justify the
+interchange of integrals and sums. The integral is therefore nonnegative.
+This also covers $h=1$, when the two boundary slice variables within one half
+are the same.
+
+For a site cut, condition instead on the spatial links in the two fixed
+reflection planes. The remaining links occur in reflected pairs, and the
+plaquette action splits into the action in one half, its reflection, and the
+spatial plaquettes contained in the fixed planes. Since $F$ reads only links
+with both endpoints in the strict positive sector, the two half integrations
+are conjugates. Their product is an absolute square, multiplied by the positive
+Boltzmann weight of the fixed-plane plaquettes. The same factorization works
+when the strict sector is empty. Product Haar invariance supplies the reflected
+change of variables, including inversion of reversed links. All integrands are
+bounded and measurable on a compact finite product, so Fubini's theorem
+applies. Finally $Z_{2h}(\beta)>0$; division by it preserves nonnegativity.
+Translation of the cut and permutation of axes preserve the product prior and
+plaquette action, proving the remaining cases.
+\end{proof}
+
 \subsection{Scales, observables, and the ordered limit}
 \label{subsec:ex-lattice-scales}
 
@@ -97,7 +201,11 @@ strictly increasing positive-integer sequences $D_N$ and $P_p$. Set
  \qquad \Lambda_{N,p}=(\mathbb Z/\ell_{N,p}\mathbb Z)^4.
 \]
 Thus $\ell_{N,p}$ is a site count per axis, while $P_p$ is the physical linear
-period. A site is embedded in Euclidean spacetime by multiplying the symmetric
+period. In the selected construction, every $P_p$ is divisible by four and
+every $\beta_{N,p}$ is positive. Consequently Proposition~\ref{prop:ex-lattice-finite-reflection}
+applies on every one of its finite $(N,p)$ grids. These extra properties are
+of the constructed schedule and coupling; strict increase alone in the abstract
+family definition does not impose either one. A site is embedded in Euclidean spacetime by multiplying the symmetric
 least-absolute residue in each coordinate by $a_N$. A token $v$ specifies an
 insertion $O_{N,p}(v,z;U)$. We require the insertion to be continuous and gauge invariant, with the
 fixed-stencil locality specified in Section~\ref{ex-statement}.
@@ -106,7 +214,7 @@ The finite $m$-point moment is the integral of the product of its $m$
 insertions under $\mu_{\ell_{N,p},\beta_{N,p}}$. Smearing uses a lattice sum
 weighted by $a_N^{4m}$. Continuity and compactness of the finite configuration space give
 integrability of each finite product. The
-convergence interface first demands, at each fixed
+public convergence interface first demands, at each fixed
 suitable physical volume, a full $N\to\infty$ mesh limit of these smeared
 moments, and only then a volume limit along a specified strictly increasing
 subsequence. It is not an arbitrary joint or diagonal limit. The support of a

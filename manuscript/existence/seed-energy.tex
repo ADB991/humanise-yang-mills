@@ -34,17 +34,21 @@ negative. Pythagoras therefore gives the exact identity
 \end{equation}
 In particular $\|F(U)\|\le r(U)$ for every group element.
 
-The local tubular projection in the group data is analytic, equals
-the identity on the group near $1$, and has derivative $\Pi$ at $1$.
-Taylor's formula on a sufficiently small ambient ball consequently
-gives
+The nearest-point projection $\pi$ of
+Lemma~\ref{lem:branch-nearest-projection} is not part of the group
+data; it is constructed from $G$ there. It is real-analytic on
+$B(1,2\rho)$, equals the identity on $G\cap B(1,2\rho)$, and has
+derivative $\Pi$ at $1$. For $U\in G$ with $\|U-1\|\le\rho$ we
+therefore have
+$(1-\Pi)(U-1)=\pi(U)-\pi(1)-D\pi(1)(U-1)$, and Taylor's formula
+with integral remainder along the segment from $1$ to $U$, which lies
+in the convex closed ball $\overline B(1,\rho)$, gives
 \[
- \|(1-\Pi)(U-1)\|\le C\|U-1\|^2
+ \|(1-\Pi)(U-1)\|\le C\|U-1\|^2,\qquad
+ C=\tfrac12\sup_{\overline B(1,\rho)}\|D^2\pi\|,
 \]
-for nearby group elements. Explicitly, bound the second derivative of
-the projection on a smaller closed ball and integrate its second-order
-Taylor remainder along the segment from $1$ to $U$. This proves the
-inequality with one constant $C>0$. Combining it with
+which is finite by part~(d) of the lemma. (If $C=0$ replace it by
+$1$.) Combining it with
 \eqref{eq:seed-normal-defect} gives constants $K,\delta>0$, depending
 only on the group data, such that
 \begin{equation}\label{eq:seed-curvature-bound}
@@ -52,7 +56,9 @@ only on the group data, such that
  \qquad \tfrac34r^2\le\|F(U)\|^2
  \quad\text{when }r=r(U)\le\delta.
 \end{equation}
-One can take $K=C^2D^2$ and decrease $\delta$ until $K\delta^2\le1/4$.
+One can take $K=C^2D^2$ and choose $\delta$ with $D\delta\le\rho$
+(so that $\|U-1\|=Dr(U)\le\rho$ and the Taylor bound applies) and
+$K\delta^2\le1/4$.
 Thus the nonnegative defect
 $\mathfrak f(U)=(r(U)^2-\|F(U)\|^2)/2$ is at most $Kr(U)^4/2$
 in that neighbourhood.
@@ -104,7 +110,8 @@ and the fine clipping radius $R>0$ are fixed before $L$ is chosen.
 
 Let $\mathcal F$ be the listed fine defects and
 $\mathcal S=\{i\in\mathcal F:r_i>t\}$ their large part. The local
-sector conditions ensure $r_i\ge t/4$ on $\mathcal F$ and
+sector conditions (Definition~\ref{def:geometry-sector-conditions},
+part (S1)) ensure $r_i\ge t/4$ on $\mathcal F$ and
 $r_i\le t/2$ on unlisted plaquettes in the relevant neighbourhood.
 For $r_i\le t$, Cauchy--Schwarz gives
 \[
@@ -173,7 +180,7 @@ For predictor defects the argument is simpler. Let $p>0$ be the
 predictor penalty and $z_i$ its bond chord. A predictor energy row is
 at least $(\sqrt p\,z_i-\|w_i\|)^2/2$, with $\|w_i\|\le Ct$.
 On each listed predictor defect $i\in\mathcal I$, the sector condition
-is $z_i\ge Wt$. Choose $W$ after $L$ so that $C\le\sqrt p\,W/2$.
+(S2) of Definition~\ref{def:geometry-sector-conditions} is $z_i\ge Wt$. Choose $W$ after $L$ so that $C\le\sqrt p\,W/2$.
 The unlisted rows are nonnegative, and hence
 \begin{equation}\label{eq:seed-predictor-income}
  I_A\ge \frac{p}{8}\sum_{i\in\mathcal I}z_i^2.
@@ -263,7 +270,9 @@ The total assigned energy is exactly
 $F_A+I_A+C_A+N_A+L_{\mathcal H}+L_{\mathcal O\setminus\mathcal H}$.
 
 Choose $L$ large enough for the fine estimate and
-$C_1/L^2\le\lambda_f/4$, and $W$ large enough for the predictor
+$C_1/L^2\le\lambda_f/4$, and use \eqref{eq:seed-fine-reserve} with
+$c_F=C_1/L^2$; this is the coefficient of the fine linear expense in
+\eqref{eq:seed-hit-input}. Choose $W$ large enough for the predictor
 estimate, $W\ge1$ and $C_1\le pW/16$. Choose
 \[
  0<m\le\min\{\lambda_f/8,d_f,p/32,a_c/64\},\qquad \eta=m/4.
@@ -274,7 +283,10 @@ Suppose finally that
  \qquad B_0s^4K_0B^4\le(m/4)t^2.
 \end{equation}
 Adding \eqref{eq:seed-fine-reserve}--\eqref{eq:seed-unhit-input}
-cancels the three explicit linear expenses. The first inequality in
+cancels the three explicit linear expenses: the term in $\mathcal C_2$
+against its counterpart in \eqref{eq:seed-coarse-reserve}, and the fine
+and predictor terms against the $c_F$ and $C_1$ charges of
+\eqref{eq:seed-fine-reserve} and \eqref{eq:seed-predictor-reserve}. The first inequality in
 \eqref{eq:seed-final-smallness} leaves $4mK_0t^2d_A$ from the
 very-large-defect reserve, and the second pays the small coarse rows.
 Thus the assigned energy is at least
@@ -323,8 +335,16 @@ the patch's signed covariance laws for the predictor and the local
 likelihoods. Turn the tree, seed set and tag array together with the fields. Tree edges remain equal to the group
 identity; the predictor and likelihood transform covariantly; distances,
 chords and the number of seeds are preserved. The local sector
-conditions, including the strict positivity of the retained site
-likelihoods, therefore hold in every transformed channel. Applying the
+conditions of Definition~\ref{def:geometry-sector-conditions},
+including the strict positivity (S4) of the retained site
+likelihoods, therefore hold in every transformed channel. Here the
+incidence convention of that definition is used: a signed coordinate
+map sends the corners of a fine plaquette (the endpoints of a coarse
+bond) to the corners (endpoints) of its image and commutes with the
+parent map, so an address meets the transformed seed neighbourhood if
+and only if its preimage meets the original one. An anchor-based
+formulation would not be invariant, because a reflection changes the
+anchor of a positively oriented plaquette or bond. Applying the
 same energy bound there and averaging with normalized weights yields
 $Q_A^{\rm core}\ge\mu t^2n$. This supplies the core input to
 \eqref{eq:packet-assigned-energy} once the geometric, guide and

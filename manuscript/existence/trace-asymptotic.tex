@@ -59,9 +59,22 @@ $\sum_{A,B}(\delta^{AB})^2=N$, and therefore
  =\frac{2N}{16}\sum_{a,b,i,j}C_{abij}(x)^2
  =\frac{3N}{\pi^4|x|^8}.
 \end{equation}
-This computation uses the stated reference covariance and Wick rule; the
-identification of the constructed reference hierarchy with those data is
-an earlier construction requirement. The factor $1/4$ and the use of ordered
+This computation uses the stated reference covariance and Wick rule. They
+are the normalized free curvature covariance and the Wick polynomial
+fields of Section~\ref{sec:ex-lattice-trace-free-rank}, where
+$D=\nu|x|^{-2}$ with $\nu=(4\pi^2)^{-1}$. The computation does not
+establish that the reference table entering the comparison below is this
+free hierarchy, nor that its label $O$ is the curvature-square field
+denoted $\mathcal O$ in Section~\ref{sec:ex-lattice-trace-scribe-producer}
+and in the external unit YM-000034 (file
+\texttt{trace-branch-moments.tex}, label
+\texttt{sec:ex-trace-branch-moments}). This identification is a
+requirement on the construction, which we call the \emph{reference
+normalization}: the reference two-point function used below satisfies
+\begin{equation}\label{eq:trace-reference-normalization}
+ S_0(O,O;x_0,x_1)=\frac{3N}{\pi^4|x_0-x_1|^8}\qquad(x_0\neq x_1).
+\end{equation}
+The factor $1/4$ and the use of ordered
 pairs are essential to the coefficient.
 
 \subsection{Fixing the physical stress amplitude}
@@ -73,9 +86,10 @@ with the required rotation symmetry, let $\mathcal V$ be the space in
 which their divergences lie, and let
 $D:\mathcal K\to\mathcal V$ be the divergence map. The reference theory
 has corresponding spaces $\mathcal K_0,\mathcal V_0$ and divergence $D_0$.
-The following precise finite-dimensional data are supplied by the stress
-comparison estimates: $D_0$ is onto, $\dim\ker D_0=1$,
-$\dim\mathcal K=\dim\mathcal K_0$, $\dim\mathcal V=\dim\mathcal V_0$,
+The following precise finite-dimensional data are used; they are the
+properties under which Lemma~\ref{lem:ex-lattice-trace-rank-one} is
+proved: $D_0$ is onto, $\dim\ker D_0=1$,
+$\dim\mathcal K=\dim\mathcal K_0$,
 and there is a surjective map
 $Q:\mathcal K\to\mathcal V_0$ with $\ker Q=\ker D$.
 Rank--nullity then gives
@@ -86,7 +100,9 @@ Rank--nullity then gives
 In the construction the surjectivity of $Q$ is obtained from a surjective
 finite-dimensional comparison composed with a test map into $\mathcal K$;
 a surjective composition is sufficient to make $Q$ itself surjective.
-The asserted comparison and kernel equality remain quantitative inputs here.
+The statements about $D_0$ are proved in
+Proposition~\ref{prop:ex-trace-free-closure-rank}. The equality of
+dimensions, the comparison map and the kernel equality remain inputs here.
 
 Let $R\in\ker D$ be the physical centered stress tensor. At scales
 $r_i>0$ let $U_i$ be the calibrated isomorphism from reference grade-four
@@ -100,6 +116,13 @@ $T_i\in\mathcal K$ and positive numbers $B_i$ with
  Y_i(T_i)\longrightarrow R_0,\qquad
  B_i\operatorname{tr}Y_i(T_i)\longrightarrow4d_2O.
 \end{equation}
+In the selected construction these are the corrected tensors $T_i$ and
+the effective couplings $B_i=q_i$ of
+Section~\ref{sec:ex-lattice-trace-scribe-producer}, with $R_0=M_0$ and
+$4d_2=-\kappa$ there; the two limits are
+\eqref{eq:ex-lattice-scribe-field-limit} and
+\eqref{eq:ex-lattice-scribe-flux-limit}, which are conditional on the
+inputs of that section.
 The normalization test is a shell flux functional $\ell_i$ on tensors.
 For example, fixing a separated spectator configuration $x$, a smooth
 cutoff $\chi$ equal to one near that configuration, a direction $b$, and
@@ -121,7 +144,10 @@ integral has the following exact consequence:
 The same nonzero $y$ occurs because $R_0$ has the reference translation
 Ward identity. The existence of a detecting reference derivative field,
 and the jet estimates justifying these two limits, are part of the stress
-comparison input, rather than consequences of rank--nullity.
+comparison input, rather than consequences of rank--nullity. They are the
+four inputs listed in the proportionality argument of
+Section~\ref{sec:ex-lattice-trace-scribe-producer}, where the two limits
+appear as \eqref{eq:ex-lattice-scribe-common-test}.
 
 \begin{lemma}\label{lem:trace-normalized-stress}
 Equations \eqref{eq:trace-conserved-rank}--\eqref{eq:trace-flux-test} imply
@@ -143,7 +169,9 @@ and of the trace. This yields exactly the asserted limits.
 
 Centering the trace in the chosen phase can differ from tracing the
 mixed-state-centered tensor $R$ by a fixed multiple $c\mathbf1$ of the
-unit. If $U_i\mathbf1_0=\mathbf1$ eventually and $B_ir_i^4\to0$, then
+unit. If $U_i\mathbf1_0=\mathbf1$ eventually and $B_ir_i^4\to0$
+(for the selected data the latter is
+\eqref{eq:ex-lattice-scribe-band-cost}), then
 \[
  U_i^{-1}(B_ir_i^4c\mathbf1)=B_ir_i^4c\mathbf1_0\longrightarrow0.
 \]
@@ -197,13 +225,47 @@ where $M_{\alpha\beta}$ is continuous near $x$. The reference correlations
 are continuous there. The comparison window includes a neighborhood of
 $x(t)=(0,(t/2,t/2,t/2,t/2))$ for each $1/2<t<2$.
 \end{assumption}
-This input is the ultraviolet and stress comparison problem. The positive
+This input is the ultraviolet and stress comparison problem, and no
+statement of this section produces it. In the source the ultrafilter, the
+arch scale from which the numbers $B_i$ are read off, and the reference
+hierarchy are chosen once, before
+the sequence $(s_n)$ is given; the input as stated, in which the
+comparison data may depend on the sequence, is all that is used below.
+Its clauses are addressed in the present text as follows, in each case
+conditionally. The selection, after an arbitrary positive null sequence,
+of a strictly increasing subsequence with exactly those radii and of
+compatible charts is Lemma~\ref{lem:ex-lattice-firesky-selection}, under
+its one-step chart producer. The moving-label limit
+\eqref{eq:trace-moving-label} and the logarithmic limit are derived in
+Section~\ref{sec:ex-lattice-trace-scribe-producer}, with $B_i=q_i$ and
+$2b_0=\kappa$; see \eqref{eq:ex-lattice-scribe-physical-transfer},
+\eqref{eq:ex-lattice-scribe-clock} and the zoomed trace limit proved
+there, applied to the selected phase. That derivation rests on the
+rank-one conclusion of Lemma~\ref{lem:ex-lattice-trace-rank-one}, on the
+sensor estimates of the proposition `Selected trace sensor' of the
+external unit YM-000033 (file \texttt{trace-prosper-sensor.tex}, label
+\texttt{prop:trace-prosper-sensor}), on the
+branch limits and trace washout of the propositions `Three branch field
+limits' and `Principal and false trace washout' of the external unit
+YM-000034 (file \texttt{trace-branch-moments.tex}, labels
+\texttt{prop:ex-branch-moments} and \texttt{prop:ex-branch-washout}),
+and on the paid response, shell
+comparison and clock inputs listed in that section. The sensor and branch
+propositions belong to two separately owned units; they are distinct
+inputs, and each is conditional on its own stated hypotheses. For the pointwise comparison
+\eqref{eq:trace-basis-error} at rounded configurations, with its window
+and continuity clauses, we have not located a producer statement in the
+present text; it remains an open input. The positive
 trace spectral measure and its Laplace formula are supplied by
-Section~\ref{sec:trace-spectrum} for the same reconstructed centered trace.
+Section~\ref{sec:trace-spectrum} for the same reconstructed centered trace,
+under the hypotheses of that section.
 We have not inferred the comparison estimates from compactness.
 
 \begin{lemma}\label{lem:trace-moving-correlation}
-Under Input~\ref{input:trace-scales}, for each eligible fixed $x$,
+Assume Input~\ref{input:trace-scales}, the radial form
+\eqref{eq:trace-radial} and the reference normalization
+\eqref{eq:trace-reference-normalization}. Then, along each comparison
+subsequence of the input and for each eligible fixed $x$,
 \[
  r_i^8\log^2(r_i^{-1})T(r_i|q_i(x)_0-q_i(x)_1|)
        \longrightarrow \frac{A}{|x_0-x_1|^8},
@@ -226,8 +288,11 @@ two coordinates and one of the convergent basis correlations. In particular,
 The definition of $a_i$, bilinearity and \eqref{eq:trace-radial} identify
 the expression on the left with
 $B_i^2r_i^8T(r_i|q_i(x)_0-q_i(x)_1|)$.
+Here \eqref{eq:trace-radial} applies because the two points of
+$r_iq_i(x)$ are distinct for large $i$: $q_i(x)\to x$ and the two points
+of $x$ are distinct.
 Multiply by $(\log(r_i^{-1})/B_i)^2$ and use
-\eqref{eq:trace-free-scalar}. The limiting coefficient is
+\eqref{eq:trace-reference-normalization}. The limiting coefficient is
 \[
  \frac{(4d_2)^2}{(2b_0)^2}\frac{3N}{\pi^4}
        =\frac{12d_2^2N}{b_0^2\pi^4}
@@ -245,12 +310,29 @@ each $p_0\geq0$. Integrability at the smaller positive time permits the
 comparison under the integral.
 
 \begin{theorem}\label{thm:trace-asymptotic}
-Input~\ref{input:trace-scales}, with the reference normalization above,
-implies
+Let $\Theta$ be the centered trace of Section~\ref{sec:trace-spectrum},
+let $T$ be its two-point function in the selected phase as in
+\eqref{eq:trace-radial}, and let $N=\dim_{\mathbb R}\mathfrak g$. Assume:
+\begin{enumerate}
+\item the reconstruction and stress hypotheses of
+ Section~\ref{sec:trace-spectrum}, under which $T$ has the positive
+ Laplace representation \eqref{eq:trace-positive-laplace};
+\item invariance of the selected correlations under Euclidean translations
+ and orthogonal transformations, together with the scalar law of
+ $\Theta$, which give the radial form \eqref{eq:trace-radial};
+\item the reference normalization
+ \eqref{eq:trace-reference-normalization};
+\item Input~\ref{input:trace-scales}.
+\end{enumerate}
+Then
 \[
  \lim_{r\downarrow0}r^8\log^2(r^{-1})T(r)=\frac{3N}{\pi^4}>0.
 \]
 \end{theorem}
+The theorem is conditional: none of its four hypotheses is proved in this
+section, and the paragraph following Input~\ref{input:trace-scales}
+records how that input depends on the two external units and on the
+remaining construction inputs.
 \begin{proof}
 First fix any one comparison subsequence $r_i$. Let
 $c_i=r_i^8\log^2(r_i^{-1})\geq0$. For $1/2<t<2$ take the configuration

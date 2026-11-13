@@ -147,9 +147,17 @@ coordinates converge, proving convergence of each term. This also works
 on any finer nontrivial cutoff filter. It does not assume that the moving
 labels have separate limits in the two cutoff indices.
 
-Next let $t\to\infty$. The separated-cluster limit of
-Lemma~\ref{ex-cluster-train}, together with conjugation becoming adjoint
-under ground compression, identifies the limit as
+Next let $t\to\infty$. The conjugated copies are translated, not
+reflected, so the adjoint law $M(\theta w)=M(w)^*$ of
+Section~\ref{ex-phases}, which involves reflection, does not apply to
+them directly. We use instead the unreflected conjugation identity
+\eqref{eq:episode-conjugate}, $M(\bar w)=M(w)^*$ for ordinary
+conjugation of all labels at unchanged points. As recorded there, it is
+a substantive input obtained from the ordinary-reflection identity
+$M(\rho w)=M(w)$ of Proposition~\ref{ex-ordinary-reflection}, under that
+proposition's hypotheses, on this same hierarchy; it is an input of the
+present section as well. With it, the separated-cluster limit of
+Lemma~\ref{ex-cluster-train} identifies the limit as
 \[
  \langle\Omega,(A^*A)^m\Omega\rangle.
 \]
@@ -175,7 +183,13 @@ To extend \eqref{eq:ope-ground-price} to arbitrary separated
 configurations, first approximate all their points by the generic grids
 of \eqref{eq:ope-grid-round}. Strict Euclidean separations persist.
 For each fixed character, its correlation is continuous on separated
-configurations, so the generic bound passes to the limit. Taking the
+configurations by Proposition~\ref{ex-phase-caps}, so the generic bound
+passes to the limit. This continuity is needed for every character, not
+only for almost every character, because the conclusion is used for
+every character and along arbitrary sequences of phases; full support and
+the barycentre formula alone do not supply it. Proposition~\ref{ex-phase-caps}
+is conditional on the all-copy bound and the slot identity
+\eqref{ex-raw-slot-identity}; those remain inputs here. Taking the
 supremum over characters then proves the ground-algebra norm bound at
 the original configuration. This uses scalar continuity in each phase,
 not norm continuity of the ground-algebra-valued correlation.
@@ -184,8 +198,9 @@ For a matched discrepancy whose cluster is already fixed and generic,
 only the spectator positions are approximated. They must remain
 coordinate-generic relative to both that cluster and the origin. Here is
 the required extension of the grid construction. Let $W$ be the finite
-set consisting of the cluster points and the origin, $J_0$ the number of
-spectators, and $K=(J_0+1)(|W|+1)$. In each coordinate choose for spectator
+set consisting of the cluster points and the origin, $I_0$ the number of
+spectators (the coarse group of \eqref{eq:ope-two-scale-room}), and
+$K=(I_0+1)(|W|+1)$. In each coordinate choose for spectator
 $j$ a residue from the block
 \[
  \{j(|W|+1),\ldots,j(|W|+1)+|W|\}
@@ -193,9 +208,9 @@ $j$ a residue from the block
 which avoids the residues $\lfloor w_\mu/h\rfloor\bmod K$ for $w\in W$.
 There are $|W|+1$ candidates and at most $|W|$ forbidden residues. The
 blocks are disjoint, so the chosen residues distinguish all spectators.
-Adding the chosen residue to
-$K\lfloor y_{j,\mu}/(hK)\rfloor$ gives a grid point within $hK$ in
-each coordinate, and it cannot equal any $w_\mu$. Thus these spectator
+Adding the chosen residue to the integer
+$K\lfloor y_{j,\mu}/(hK)\rfloor$ and multiplying by the mesh $h$ gives
+a grid point within $hK$ in each coordinate, and it cannot equal any $w_\mu$. Thus these spectator
 grids converge and retain all required coordinate inequalities. If the
 new grid is finer than the fixed cluster grid, reexpress the cluster
 points on it by the integer mesh ratio; their physical positions and
@@ -230,7 +245,10 @@ for the coarse placement, buffer, coarse-group price, fine placement,
 and fine-group price respectively. The inequalities of the rates imply
 all depth orderings and \eqref{eq:ope-two-scale-room} eventually. The
 separation assumptions imply the required strict gaps at the placement
-meshes. The bounds just proved yield ground-algebra upper rate
+meshes. Let $w_1$ and $w_2$ be the total field degrees of the coarse
+group (separated at scale $a$, of size $I_0$) and of the fine group
+(separated at scale $b$, of size $J_0$). The bounds just proved yield
+ground-algebra upper rate
 \[
  (w_1+\epsilon I_0)(a+\delta)
                   +(w_2+\epsilon J_0)(b+\delta).
@@ -254,8 +272,10 @@ $A_n$ has upper rate $\gamma$. Choose, for any small $0<\delta<b$,
 placement, buffer, fine-placement and spectator-price depths of rates
 $\delta/4,\delta/2,3\delta/4,\delta$. The centered discrepancy price
 at rate $b$ fits this geometry. Equation~\eqref{eq:ope-ground-price}
-and the spectator approximation give upper rate at most
-$\gamma+(w_2+\epsilon J_0)\delta$ for the entire discrepancy, in every
+and the spectator approximation give, with the spectators as the coarse
+group (total degree $w_1$, number $I_0$) and the discrepancy as the
+single-member fine group, upper rate at most
+$\gamma+(w_1+\epsilon I_0)\delta$ for the entire discrepancy, in every
 phase and at arbitrary fixed-clearance spectator positions. Sending
 $\delta\downarrow0$ proves rate $\gamma$. Thus the finite-cutoff match
 supplies exactly the complete-discrepancy part of

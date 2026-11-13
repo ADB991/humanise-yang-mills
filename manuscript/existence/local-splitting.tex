@@ -296,15 +296,16 @@ Let $C_B(X)$ be the covering number used in the local norm and set
        m(X,a)=e^{uC_B(X)}a,\qquad
        m_+(X,a)=e^{(u+2)C_B(X)}a.
 \]
-Suppose $|K_j|\le b_j$, $b_j\ge0$, and
-$\sum_{j:x\in P_j}m(P_j,b_j)\le v$ at every site $x$.
+Suppose $|K_j|\le b_j$, $b_j\ge0$, and, for a site price $\varsigma\ge0$
+(not to be confused with the coefficient vectors $v$ above),
+$\sum_{j:x\in P_j}m(P_j,b_j)\le\varsigma$ at every site $x$.
 For one response with $|r_i|\le a_i$, the inserted array has total
 mass at most
 \begin{equation}\label{eq:local-merge-cost}
-           m(Z_i,a_i)\bigl(e^{|Z_i|v}-1\bigr).
+           m(Z_i,a_i)\bigl(e^{|Z_i|\varsigma}-1\bigr).
 \end{equation}
 Indeed the total mass of old activities meeting $Z_i$ is at most
-$|Z_i|v$, by summing their site bounds over $Z_i$.
+$|Z_i|\varsigma$, by summing their site bounds over $Z_i$.
 The mass of the union is at most the product of the masses, since
 each old support meets $Z_i$ and their covering numbers are
 subadditive along such unions. Summing products over nonempty
@@ -329,13 +330,13 @@ Set $F_d=e^{(u+2)T}A_d$. Then
                m_+(X\cup Y,A_dc)\le F_d m_+(X,c).
 \end{equation}
 This follows immediately by inserting the first covering inequality
-in the exponential. If $h_Bv\le1$, then for $a\ge0$,
+in the exponential. If $h_B\varsigma\le1$, then for $a\ge0$,
 \begin{equation}\label{eq:local-meeting-reserve}
-       m(X,a)(e^{|X|v}-1)\le h_Bv\,m_+(X,a).
+       m(X,a)(e^{|X|\varsigma}-1)\le h_B\varsigma\,m_+(X,a).
 \end{equation}
-For $D=C_B(X)$, put $q_0=h_Bv$. We have $|X|v\le Dq_0\le D$.
+For $D=C_B(X)$, put $q_0=h_B\varsigma$. We have $|X|\varsigma\le Dq_0\le D$.
 Using $e^x-1\le xe^x$ for $x\ge0$ and $D\le e^D$ gives
-$e^{|X|v}-1\le q_0De^D\le q_0e^{2D}$, as required.
+$e^{|X|\varsigma}-1\le q_0De^D\le q_0e^{2D}$, as required.
 
 Consider now a raw expansion with seed $v_0$, regular fields $f_i$
 on anchored supports $X_i$, and an existing forced source $k$.
@@ -343,9 +344,11 @@ Suppose $\|f_i\|_{o,X_i}\le c_i$ and
 \[
        \sum_i m_+(X_i,c_i)\le a,\qquad
                       \operatorname{mass}(k)\le\kappa b,
-       \qquad \kappa=\sqrt v>0,\quad h_B\kappa\le1.
+       \qquad \kappa=\sqrt\varsigma>0,\quad h_B\kappa\le1.
 \]
-All constants $a,b$ are nonnegative. Form $v_i=v(f_i)$,
+All constants $a,b$ are nonnegative, and $\varsigma$ is the site price
+of the original flagged activities $K_j$ of the preceding subsection.
+Form $v_i=v(f_i)$,
 $g_i,r_i$ as above, and define the coefficient field by
 \begin{equation}\label{eq:local-built-field}
        v=v_0+\sum_i v_i,\qquad
@@ -355,10 +358,12 @@ $g_i,r_i$ as above, and define the coefficient field by
 The coordinate sum converges absolutely by
 \eqref{eq:local-read-price} and $\sum_i c_i\le a$.
 Its change is bounded by $R_da$. The regular remainder mass is at
-most $F_da$. Furthermore $h_Bv=h_B\kappa^2\le\kappa\le1$,
+most $F_da$. Furthermore $h_B\varsigma=h_B\kappa^2\le\kappa\le1$,
 so \eqref{eq:local-meeting-reserve} and
 \eqref{eq:local-join-price} bound the added forced mass by
-$\kappa F_da$. Thus the normalized total remainder bound is
+$\kappa F_da$. Measuring forced mass in units of $\kappa$, so that
+the forced array has normalized mass at most $b+F_da$, the normalized
+total remainder bound is
 \begin{equation}\label{eq:local-built-cost}
                               2F_da+b.
 \end{equation}

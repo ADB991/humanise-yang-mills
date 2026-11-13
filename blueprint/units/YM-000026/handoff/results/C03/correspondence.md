@@ -1,0 +1,39 @@
+# C03 source correspondence for this pass
+
+Pinned source `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. This file covers only the declarations read in this
+pass to support the edits and checks in `findings.md`. Read the existing evidence files (canonical, read-only)
+for the rest of each chapter: `fullmesh-correlation-cauchy-evidence.md`, `limits-evidence.md`,
+`fullmesh-fixedbounds-producer-evidence.md`, `phase-quantitative-producer-evidence.md`,
+`actual-slab-copy-bounds-evidence.md`, `phase-null-inheritance-evidence.md` (all in `blueprint/units/YM-000026/`).
+
+| English (label) | Declaration (path) | What was read | Match |
+| --- | --- | --- | --- |
+| `thm:ex-fullmesh-fixedbounds-producer`, separation hypothesis | `YM.FullVolume.FixedBounds` (`Lean/YM/FullVolume/Discrete.lean` 50–54) | full structure | ∃B≥0, ∀ᶠN, ∀p, ∀x, `spaceout C r (N,p) (wrap ∘ x)` → ‖gKernel‖≤B: threshold independent of p, bound independent of N,p. Matches the statement as repaired |
+| periodic ℓ∞ distance sep_{N,p} | `YM.FullVolume.spaceout` (`Lean/YM/FullVolume/Cohort.lean` 36); `YM.Lattice.pdist`, `YM.Lattice.separation` (`Lean/YM/Lattice/Site.lean` 78–81) | definitions | `r ≤ a_N * separation (x u) (x v)` for u≠v; `separation x y = pdist (x-y)`, `pdist x = sup_i (lift x i).natAbs`, i.e. max over axes of the periodic (min-abs) coordinate distance |
+| injectivity of cell assignment | `YM.Cells.Tiling.extent` (`Lean/YM/Cells/Proximity.lean` 69–80); its use in `YM.FullVolume.cohort` (`Cohort.lean` 38–60) | statement, proof start, call site | `separation x y ≤ T.side` for x,y in one chamber; cohort derives injectivity from `a_N*T.side = a_ℓ < r` |
+| `rem:ex-limits-fullmesh` | `YM.FullVolume.PositionsUV`, `YM.FullVolume.positioned` (`Lean/YM/FullVolume/Profiles.lean` 25–47) | definition + proof | for every p, n, v there is f, `ContDiffOn` on `NoHit`, with `Tendsto (fun j => smears C (e j) p v t)` for every suitable test, from `FixedBounds C` and `Purchased C e`; with `e` the full sequence this is the full-mesh limit. G01 statement ledger records that the public `wilson` clause demands the full mesh limit at every suitable period, with the volume limit along `p∘q` |
+| `rem:ex-limits-fullmesh` (contrast) | `YM.FullVolume.printed` (same file 49–56) | docstring + statement | subsequential version along `f.mesh`; "Not full-sequence until Purchased on .full" — confirms the two routes are distinct |
+| ancestral points, a_mB_m²→0, separation | `YM.FullVolume.Eves.ancestor`, `dense`, `lateAnch`, `price`, `positions` (`Lean/YM/FullVolume/Fields/Eves.lean`) | full file | `price` (requires `G.Simple`): ratio 2/3 from `Push.Corrected.Grows.walls A h 2` (B_{m+1}²≤2B_m² eventually) and `block_large` (L≥3); `positions`: eventually B_m² ≤ separation of distinct ancestral sites |
+| Cauchy at ancestral points | `YM.PhysicalNext.Repeat.Legato.Bandage.Rising.cinema`, `absolute` (`Lean/YM/FullVolume/Fields/Seat.lean`) | full file | CauchySeq of `numeric (f i) p … (o (f i))` along the run index; `absolute` identifies the all-label census mode of the pilot with the numeric observable (the "exact finite identity" of `ex-public-same-run-cauchy`) |
+| reflected conjugate J v = R_ρ v̄; conj commutes with signed actions | `YM.Register.adj`, `YM.Register.star_mirror`, `YM.Register.reflected` (`Lean/YM/Euclid/Register.lean` 67–83); descended `YM.Table.adj`, `YM.Table.mirror_star`, `YM.Table.reflect_twice` (`Lean/YM/Euclid/Null.lean` 155–172; each takes the section hypothesis `H : S.RealSpin`; corrected in revision 1, L7) | definitions and lemmas | `adj d a = mirrorGroup d (Signed.mirror a) ∘ bar d`; `star (mirror s v) = mirror s (star v)`. Matches the stated relation with ρ the time-axis mirror |
+| J used at the boundary | `YM.Boundary.starRead` (`Lean/YM/Fields/Star.lean` 42) | definition | J(pin d v) = pin d (adj h d timeAxis v): the same J as above, supporting edge C03-to-C04-reflection-J |
+
+Not inspected in this pass: the declarations behind `phase-selection`, `phase-regularity`, `phase-fields`,
+`slab-regularity` and `phase-quantitative-producer` beyond the evidence files. Their correspondence remains as
+recorded there.
+
+## Added in revision 1 (session `ADB991-claude-20261113-80e9`, issue #122)
+
+Read with `grep`/`sed` at the pinned revision; no Lean command run. Line numbers are supplementary.
+
+| English (label) | Declaration (path) | What was read | Match |
+| --- | --- | --- | --- |
+| `rem:ex-limits-fullmesh`, identification with the extracted hierarchy | `YM.FullVolume.Final.from_spec`, `YM.FullVolume.Final.july` (`Lean/YM/FullVolume/Finale/Program.lean` 117, 154) | statements, docstring, end of proof of `july` (quoted in review L1) | hierarchy and `Spec.Final` along `f.refine g` (mesh subsequence); `from_spec` upgrades only the ordered readings to `Sequence.full` by uniqueness of limits ("Not asserting CellHyp etc on that order"). Matches the revised remark |
+| `prop:ex-public-origin` | `YM.MergeProof.Accent.dine` (`Lean/YM/MergeProof/South/Dine.lean` 53); `YM.Push.GridApprox.backTo_bound` (`Lean/YM/Push/GRID_APPROXIMATION/Iterate.lean` 49) | statement; lemma statement | hypotheses `opens 1 J m`, `ℓ ≤ m`, `m ≤ k`, output chamber and root test of `center C.S p hf 0` with `hf : J ≤ N`; transport preserves pointwise bounds. Matches the revised statement (J station depth, m opened depth, supremum bound in item 3) |
+| (H1)–(H6) of `prop:ex-selected-interpolation` | `YM.Extra.Histories.Heard` (`Lean/YM/Extra/SOURCE_HISTORIES/Replay.lean` 31–42): fields `currents`, `values`, `travels`, `cone`, `summed`, `moves`, `unit`, `book`; `unitVec` (`Lean/YM/Source/Insertion.lean` 82) | structure | (H1) `currents`; (H2) `values`, `travels`; (H3) `cone`, `summed`; (H4) `moves`; (H5) `book` (`Ledger`: linear x, regular, forced; constant support); (H6) `unit`; `unitVec m = a_m^d • e0` |
+| coupon merger (outstanding input) | `YM.Extra.Histories.merge`, `merge_format`, `merge_budget` (`Lean/YM/Extra/SOURCE_HISTORIES/Merge.lean` 26, 34, 56); `YM.MergeProof.profile_merge` (`Lean/YM/MergeProof/Orchestra.lean` 48) | definitions and statements | countable merge with `Summable t`, common `0 < v`: formatted, `remBound … (∑' t i)`, forced profile is the sum. Matches the stated input; its manuscript proof is outstanding |
+| `T_m f = L^d push_m f`; forced clause | `YM.Extra.Histories.blast` (`Lean/YM/Extra/SOURCE_HISTORIES/Play.lean` 44); field `forced` of `YM.MergeProof.Stampede` (`Lean/YM/MergeProof/Wallet.lean` 29) | definitions | factor `(block m)^d`; forced clause conditioned on a nonzero insertion function `f ≠ 0`, not on the address |
+| `ex-public-same-run-cauchy`, specialisation | `YM.PhysicalNext.Repeat.Legato.Campaign.sees` (`Lean/YM/FullVolume/Fields/Filled.lean` 30–37) | as quoted in review L5, not re-read | history `fun _ => R.T.history`, cutoff map `id`, `ψ := R.t`. Matches the revised text |
+| `ex-ordinary-reflection`, two inputs | `YM.OS.Grid.Covering.Works`, `YM.OS.Grid.Expects` (`Lean/YM/Phase/Approx.lean` 71, 78); `YM.Bid.B04` (`Lean/YM/Bid/Phase.lean` 62); `YM.Work.B04.answer` (`Lean/YM/Work/B04.lean` 168) | statements | `B04`: `C.Makes → S.Hierarchy → F.PointLimits C S → Grid.plain v → grid ∈ generic → Grid.Expects`. Matches the revised application paragraph |
+| `ex-no-new-null`, application | `probe'`, `limits` (`Lean/YM/Phase/Picks.lean` 18, 45); `zoom`, `tested` (`Lean/YM/Cells/Corrected.lean` 59, 73) | as quoted in review L12, not re-read | k-dependent exterior labels; rescaled test points; limit of the free table at the rescaled configurations |
+| `thm:ex-fullmesh-fixedbounds-producer`, budget quantifiers and filter | `YM.FullVolume.FixedBounds` (as above) and the review's L9 | review L9, not re-read | for all sufficiently fine centred scales, for all sufficiently fine meshes, for every period; filter on the mesh index only |

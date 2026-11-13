@@ -11,14 +11,25 @@ which plants finitely many such rows into one large periodic box.
 For a period $p$, mesh $N$, field list $v=(v_1,\ldots,v_n)$, and finite
 list $l$ of slot-and-coordinate directions, write $K_{N,p;v,l}(x)$ for the
 finite Wilson expectation of the product of the corresponding iterated
-periodic difference insertions at the positions $x=(x_1,\ldots,x_n)$. The
-normalization is $\Delta_{N,\alpha}F(x)=a_N^{-1}
-\bigl(F(x+a_Ne_\alpha)-F(x)\bigr)$. Thus the theorem below concerns the unscaled
-derivative kernel; the exact one-step identity used in its proof is
-$F(x+a_Ne_\alpha)-F(x)=a_N\Delta_{N,\alpha}F(x)$.
+periodic difference insertions at the sites $x=(x_1,\ldots,x_n)$ of the
+period-$p$ torus at mesh $N$. Sites have integer coordinates; the physical
+position of a site $z$ is $a_Nz$. The normalization is
+$\Delta_{N,\alpha}F(z)=a_N^{-1}\bigl(F(z+e_\alpha)-F(z)\bigr)$ for a site $z$
+and a unit lattice step $e_\alpha$. Thus the theorem below concerns the
+unscaled derivative kernel; the exact one-step identity used in its proof is
+$F(z+e_\alpha)-F(z)=a_N\Delta_{N,\alpha}F(z)$.
+
+Throughout this section the index set $I$ is the set of mesh-period pairs
+$i=(N,p)$ with the preorder $(N,p)\le(N',p')$ if and only if $N\le N'$.
+A statement holds \emph{eventually in $I$} if there is $N_0$ such that it
+holds for all $N\ge N_0$ and every period $p$. A limit in $I$ is understood
+in the same sense: $y_i\to y$ means that for every $\varepsilon>0$ there is
+$N_0$ with $|y_{(N,p)}-y|<\varepsilon$ for all $N\ge N_0$ and all $p$.
+With the product order instead, ``eventually'' would exclude small periods
+and the uniformity asserted below would not follow.
 
 \begin{lemma}[Absorption of the projected coefficient]\label{lem:ex-fullmesh-cap}
-Let $I$ be a directed set of mesh and period indices, and let $X_i$ be a
+Let $I$ be the mesh-period index set just described, and let $X_i$ be a
 finite-dimensional normed coefficient space. Suppose that for each $i$ there
 are a projection $P_i:X_i\to X_i$, a linear map $L_i:X_i\to Y_i$, and a constant $Z>0$
 such that
@@ -49,8 +60,8 @@ $Z\|L_iR_i\|\le(1+\|X_i^0\|)/2$. Therefore
 \[
  \|X_i^0\|\le Zc+\tfrac12(1+\|X_i^0\|),
 \]
-and rearranging gives (5). All estimates were eventual, so their finite set
-of thresholds can be replaced by their maximum.
+and rearranging gives (5). All estimates were eventual, so their two mesh
+thresholds can be replaced by their maximum.
 \end{proof}
 
 \begin{proposition}[One coefficient row is bounded at every period]
@@ -67,17 +78,18 @@ one, and that every uniformly norm-bounded row family belongs to $C$. Suppose al
 \item for every row family $z\in C$ satisfying $P_i z_i=0$ for every $i$,
       one has $\|L_i z_i\|\to0$.
 \end{enumerate}
-Then, eventually, uniformly over all indices in the directed mesh-period
-system,
+Then, eventually in $I$, that is, for all sufficiently fine meshes and
+uniformly over all periods,
 \[
                         \|P_i x_i\|\le 2Z(v+1)+1.
 \]
-The uniformity means that the estimates in (2) and (3) hold beyond one mesh
-threshold for every period, as in the source full-mesh receipts.
+The uniformity means that the limits in items~2 and~3 are taken in $I$:
+they hold beyond one mesh threshold for every period, as in the source
+full-mesh receipts.
 \end{proposition}
 
 \begin{proof}
-From (2), eventually $\|L_i x_i\|\le v+1=:c$. Put
+From item~2, eventually in $I$, $\|L_i x_i\|\le v+1=:c$. Put
 $X_i^0=P_i x_i$ and
 \[
        \lambda_i=(1+\|X_i^0\|)^{-1},\qquad
@@ -87,7 +99,7 @@ The scalar family $\lambda=(\lambda_i)_i$ satisfies $|\lambda_i|\le1$, so
 $\lambda x\in C$. The family $\lambda X^0$ is uniformly bounded by one, so
 it belongs to $C$ as well. Therefore $z=\lambda(x-X^0)\in C$ by subtraction,
 and $P_i z_i=0$ because
-$P_i(x_i-P_ix_i)=0$. By (3),
+$P_i(x_i-P_ix_i)=0$. By item~3,
 for all sufficiently fine meshes $\|L_i z_i\|\le(2Z)^{-1}$. Since
 $L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate (1) gives
 \[
@@ -96,7 +108,7 @@ $L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate (1) gives
  \le Zc+\frac{1+\|X_i^0\|}{2}.
 \]
 Rearranging proves the claim. The common mesh threshold is the maximum of the
-thresholds in (2) and (3).
+mesh thresholds in items~2 and~3.
 \end{proof}
 
 The cap alone bounds a projected row; the source separately uses that bound
@@ -128,19 +140,31 @@ that depends on $\|Px\|$.
 Fix a family for which the preceding coefficient-row estimate and the
 paid-remainder decomposition just described apply to every finite list of
 fields and difference directions. Assume that bounded primary coefficient
-rows have paid root-test budgets, that the exact periodic one-step difference
+rows have paid root-test budgets in the following sense: for each bounded
+row family there is a depth $k_0$ such that, for every centred scale
+$k\ge k_0$, there are a budget $b<\infty$ and a mesh threshold valid for
+every period beyond which the centred root test at scale $k$ is at most $b$.
+Assume also that the exact periodic one-step difference
 identity holds, and that translated insertions satisfy the product root-test
 inequality in distinct interior cells.
 Then for each finite field list $v$, difference list $l$, and $r>0$, there
 are $B<\infty$ and a mesh threshold $N_0$ such that for every $N\ge N_0$,
 every period $p$, and every periodic position tuple $x$ such that any two
-distinct slot indices have sites separated by at least $r$ in physical units
+distinct slot indices $u\ne u'$ have sites $x_u,x_{u'}$ with
+\[
+ a_N\,\operatorname{sep}_{N,p}(x_u,x_{u'})\ge r
+\]
 (even if the corresponding insertions agree),
 \[
                          |K_{N,p;v,l}(x)|\le B.              \tag{7}\label{eq:ex-fullmesh-bound}
 \]
 The threshold is independent of $p$; the bound is independent of both $N$
-and $p$.
+and $p$. Here $\operatorname{sep}_{N,p}(y,y')=\max_{\alpha}|y_\alpha-y'_\alpha|_{\rm per}$
+is the periodic maximum-coordinate distance of two sites of the period-$p$
+torus at mesh $N$, where $|k|_{\rm per}$ denotes the distance from the integer
+$k$ to the nearest multiple of the side length $\ell_{N,p}$. Thus the
+separation is measured in the periodic $\ell^\infty$ metric, not the
+Euclidean one; the injectivity argument below uses exactly this metric.
 \end{theorem}
 
 \begin{proof}
@@ -154,47 +178,70 @@ list, make one trial for each slot by applying to $v_j$ the subsequence of
 directions assigned to that slot. The exact one-step identity is the
 periodic discrete difference formula
 \[
- F_j(x+ a_N e_\alpha)-F_j(x)
-   =a_N\,\delta_{a_Ne_\alpha}F_j(x),
+ F_j(z+e_\alpha)-F_j(z)
+   =a_N\,\Delta_{N,\alpha}F_j(z),
 \]
 with the normalization of the difference operator. Iterating this identity
 and the exact product measure definition gives the desired multi-difference
-kernel, including wrapped coordinates. The list is finite. Choose a common
-centered scale beyond the finitely many thresholds in these paid records; at
-that scale all its root-test budgets hold eventually in mesh, uniformly over
-periods.
+kernel, including wrapped coordinates. The list is finite, so the paid
+records have finitely many depth thresholds $k_0$.
 
-We now explain the two-scale tiling argument. Choose a tiling scale
-$\ell$ and a finer recentering scale $k$ so that the physical tiling span
-$a_\ell$ is below $r$ and
+We now explain the two-scale tiling argument. First choose a tiling scale
+$\ell$ with $a_\ell<r$. Then use $a_k\to0$ to choose one recentering scale
+$k\ge\ell$ which lies beyond all the finitely many depth thresholds $k_0$ of
+the paid records and satisfies
 \[
                          6n a_k<a_\ell .
 \]
-First choose $\ell$ with $a_\ell<r$, then use $a_k\to0$ to choose $k$ with
-the displayed margin. At a fine mesh $N$ beyond both scales, let $t$ be the
+At this scale $k$ all the root-test budgets hold beyond a common mesh
+threshold, uniformly over periods (take the maximum of the finitely many
+mesh thresholds). At a fine mesh $N$ beyond both scales, let $t$ be the
 integer span of scale $k$ and let $T$ be a periodic tiling whose side is the
 integer span of scale $\ell$. The aligned-scale identities give
 $a_Nt=a_k$ and $a_N T.\mathrm{side}=a_\ell$. Thus
 $n(2(3t))<T.\mathrm{side}$. The tiling placement lemma, applied with margin
 $3t$, gives one translated tiling and an assignment of the $n$ insertion
 sites to cells, each site lying at least $3t$ from the cell boundary.
+The boundary count is the one in the proof of
+Theorem~\ref{ex-centered-producers}: in each coordinate one site forbids at
+most $6t$ of the $T.\mathrm{side}$ possible translations, so the $n$ sites
+forbid fewer than $T.\mathrm{side}$ of them.
 This is uniform in the period: alignment gives the same physical side
 $a_\ell$ for every period index, once $N$ is sufficiently fine.
 
 The cell assignment is injective for a geometric reason. If two sites were
-assigned to the same cell, their periodic maximum-coordinate separation
-would be at most the integer tiling side $T.\mathrm{side}$ of that cell.
-Multiplying by $a_N$ would give physical separation at most
-$a_NT.\mathrm{side}=a_\ell<r$, contradicting the
-assumption. The three-span margin is exactly what the centering lemma needs
+assigned to the same cell, then in each coordinate both lie in one window of
+$T.\mathrm{side}$ consecutive residues, so their periodic coordinate
+distance is at most $T.\mathrm{side}$; hence
+$\operatorname{sep}_{N,p}\le T.\mathrm{side}$.
+Multiplying by $a_N$ would give $a_N\operatorname{sep}_{N,p}\le
+a_NT.\mathrm{side}=a_\ell<r$, contradicting the
+assumption. (With Euclidean separation one would instead need
+$2a_\ell<r$ in four dimensions; the statement above avoids this by using the
+$\ell^\infty$ metric throughout.) The three-span margin is exactly what the centering lemma needs
 to transport each local insertion from the centered tile to its assigned
 cell.
 
 For each occupied cell, recenter its insertion to the distinguished center
-cell. The Wilson law is invariant under translations and the signed
-coordinate symmetries used by the lattice. The centering lemma therefore
-transports both the interior support condition and the same root-test budget
-to the occupied cell. No statistical independence is asserted: all factors
+cell. The budgets are root tests relative to the fine centred tiling at
+scale $k$, whereas the planted inequality below is applied in the coarse
+tiling of side $a_\ell$. Invariance of the Wilson law under translations and
+signed coordinate symmetries does not by itself compare root tests of
+different tilings. The comparison is the replicated-orbit and
+maximum-principle argument in the proof of
+Theorem~\ref{ex-centered-producers} (the packing argument, with its coarse
+depth $m$ and fine depth $k$ taken to be $\ell$ and $k$ here): the fine
+planted inequality bounds the root test of each insertion relative to the
+coarse tiling at a home point on the fine centre grid by the fine budget,
+the one-dimensional maximum principle moves the home point to the assigned
+site, and signed-coordinate covariance identifies the oriented copy in each
+occupied cell with the original insertion. This needs the root-test
+budgets for the finitely many reflected and conjugated orientations of each
+trial; we include them in the finite list of paid records above, as in
+Lemma~\ref{ex-centered-finite}, and this is part of the hypothesis that
+bounded primary rows have paid budgets. This transports both the
+interior support condition and the same root-test budget to the occupied
+cell. No statistical independence is asserted: all factors
 are evaluated under the same Wilson law. Instead, the planted-cell
 inequality applies to the translated copies in distinct cells and gives
 \[

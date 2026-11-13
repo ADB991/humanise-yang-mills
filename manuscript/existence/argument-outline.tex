@@ -1,0 +1,422 @@
+% G04 (issue #60): Section 2, outline of the argument.
+% Author draft pass 1, session ADB991-claude-20261113-15a6; not reviewed.
+% Not \input anywhere: placement after the statement section is reserved
+% for F01 (see blueprint/units/YM-000026/handoff/results/G04/).
+\section{Outline of the argument}
+\label{ex-outline}
+
+This section describes the route from the Wilson integrals of
+Section~\ref{ex-lattice} to the target of Section~\ref{ex-statement}.
+It proves nothing: each claim below is a pointer to the section where it is
+proved or where it is stated as an outstanding input. The order of the
+discussion follows the logical dependence of the steps, which differs in
+places from the order of presentation. Reading the outline does not replace
+reading the hypotheses of the cited results.
+
+\subsection{Status of the argument}
+\label{ex-outline-status}
+
+The final step, Proposition~\ref{ex-conditional-existence}, deduces the
+target from one construction statement, Input~\ref{ex-joint-input}.
+Everything else in the article serves to establish that input. It requires
+four things simultaneously for one lattice family and one extracted
+hierarchy: the Wilson limits along the full mesh sequence, the phase
+decomposition, the reconstructed relativistic theory, and the
+operator-product and trace properties. At the present draft several
+producers of this input remain conditional. The precise open interfaces are
+listed in Section~\ref{ex-outline-open}. In particular, this article does not
+yet contain a complete existence proof, and nothing in the present section
+should be read as asserting one.
+
+Two scope limitations of the target itself should be kept in view. The
+target concerns the constructed gauge-invariant fields; it does not
+identify a given label with a separately prescribed physical observable.
+It contains no mass-gap statement. The short-distance trace test of
+Section~\ref{ex-assembly} excludes finite combinations of mass-shell
+profiles for one two-point function. That is a non-triviality statement,
+not a spectral-gap statement.
+
+\subsection{Prerequisites}
+\label{ex-outline-prerequisites}
+
+Section~\ref{ex-statement} lists the prerequisites assumed of the reader.
+The detailed proofs also use the following standard material without
+proof: Fubini--Tonelli, Dynkin's $\pi$--$\lambda$ theorem and Bochner
+integrals of Banach-space-valued functions; Cauchy's theorem and integral
+formula; the Hahn--Banach theorem; the Fourier transform on Schwartz space;
+and the elementary inequalities for Gaussian vectors (Markov, Chernoff and
+Jensen inequalities, Wick's rule). Commutative $C^*$-algebra theory, the
+Riesz--Markov theorem, the spectral theorem for unitary representations of
+$\mathbb R^4$, the topology of the Schwartz space and the local structure of
+closed matrix groups are cited at their points of use. They enter only in
+Sections~\ref{ex-reflection}--\ref{sec:lorentz-covariance} and in the
+nearest-point projection onto $G$ (Lemma~\ref{lem:branch-nearest-projection}).
+
+\subsection{Context}
+\label{ex-outline-context}
+
+The finite-volume measures are Wilson's lattice gauge theory
+\cite{Wilson74}. The bare coefficients grow logarithmically,
+\eqref{ex-running-input}, as asymptotic freedom predicts
+\cite{GrossWilczek73,Politzer73}. The construction proceeds by block-spin
+renormalization for lattice gauge fields, an approach developed in
+Ba\l{}aban's programme \cite{Balaban87RG1}. The present argument follows the
+pinned formal proof rather than those papers. No theorem of
+\cite{Balaban87RG1} is used, and where a construction resembles one there,
+the resemblance is noted without being relied upon. The passage from
+Euclidean correlations to a relativistic theory has the shape of the
+Osterwalder--Schrader reconstruction \cite{OS73,OS75}. Here it is carried
+out directly, for the specific hierarchy and with its own estimates, in
+Sections~\ref{ex-reflection}--\ref{sec:lorentz-covariance}. The comparison
+with the corrected theorem of \cite{OS75} remains, as stated in
+Section~\ref{ex-reflection}, one possible literature route, not an input.
+
+\subsection{The order of the limits}
+\label{ex-outline-limits}
+
+The target is stated in Section~\ref{ex-statement}. Its essential feature is
+an order of quantifiers. One regular lattice family is chosen first, with
+spacings $a_N=D_N^{-1}$, periods $P_p$ and bare coefficients
+$\beta_{N,p}$ satisfying \eqref{ex-running-input}. Only afterwards is a
+volume sequence $p(k)$ prescribed. For it a subsequence $q(k)$ and a
+hierarchy of graded fields, phases and correlations are chosen. The
+ultraviolet limit \eqref{ex-row-target} is taken along the \emph{full} mesh
+sequence at each fixed period. The infinite-volume limit
+\eqref{ex-volume-target} is taken along the subsequence. The same
+subsequence and hierarchy must serve every arity, token and test, and also
+the operator-product and trace statements.
+
+Lemma~\ref{ex-full-mesh} shows how a full mesh limit is combined with a
+hierarchy obtained by compactness. It does not produce full mesh
+convergence from subsequential convergence. That must be proved separately,
+and is the content of Section~\ref{sec:fullmesh-correlation-cauchy}.
+
+\subsection{The plan in nine steps}
+\label{ex-outline-plan}
+
+The argument has nine main steps. Steps~1--4 construct the lattice
+estimates. Steps~5--6 take the limits and obtain the Euclidean theory and
+its phases. Step~7 reconstructs the relativistic theory. Steps~8--9 establish
+the operator-product expansion, the stress tensor and the trace test. The
+final assembly is Proposition~\ref{ex-conditional-existence}. The table in
+Section~\ref{ex-outline-map} maps the steps to sections.
+
+\paragraph{Step 1: the free block-spin transformation.}
+The Wilson measure on a periodic lattice is gauge invariant and reflection
+positive for both site and link reflections
+(Propositions~\ref{prop:ex-lattice-gauge}
+and~\ref{prop:ex-lattice-finite-reflection}). Together with the lattice
+symmetries, reflection positivity is what passes to the limit and yields
+the Euclidean Hilbert space of Step~6.
+
+The block-spin renormalization group averages over blocks of odd side $L$
+and changes the spacing by a factor $L$ per step. Its quadratic part is
+analysed first, uniformly in the period. The fine-to-coarse transports and
+the free precisions of each scale are given by explicit Laurent symbols.
+Contour shifts give exponential decay of their kernels, uniform in the
+period (Theorem~\ref{thm:ex-lattice-wire-tower-strip} and
+Proposition~\ref{prop:ex-lattice-wire-entrywise-bound}).
+Section~\ref{ex-lattice} also establishes the exact algebraic identities of
+the transports on every torus, including zero momentum.
+
+The quadratic forms at different starting scales differ by a neutral,
+translation-covariant representative. One block step contracts this
+difference by a factor $L^{-1}$, up to explicit constants
+(Proposition~\ref{prop:ex-lattice-flat-step}). An elementary recurrence,
+Proposition~\ref{prop:ex-lattice-flat-rate}, converts the one-step
+contraction into power decay over a finite interval of scales, uniformly
+in the starting level (Theorem~\ref{thm:ex-lattice-rg-construction}).
+
+\paragraph{Step 2: one nonlinear block step.}
+A block step of the interacting measure is analysed on a fixed sector, that
+is, for a fixed choice of the regions where the field is large. Its
+analysis has four parts.
+\begin{enumerate}
+\item \emph{Defects and their energy.} Away from the large-field region,
+ gauge comparison through axial gauges and minimising frames bounds the
+ curvature of the coarse predictor. The predictor uses the analytic
+ nearest-point projection onto $G$
+ (Lemma~\ref{lem:branch-nearest-projection}). Each defect seed is then
+ assigned a definite share of action, which pays for it.
+\item \emph{The Gaussian part.} The precision of the selected rows is
+ uniformly positive on each sector, with a separate local gauge at each
+ active bond. Its inverse is exponentially localized and approximated by
+ principal-window inverses, with explicit control of the log-determinant
+ (Section~\ref{sec:local-covariance}). The Haar density in exponential
+ coordinates, a change of variables holding the fine field fixed, and the
+ jets of the local actions are controlled. Together they give a
+ differentiated bound for the product of local activities.
+\item \emph{Exact reassembly.} The block integral is rewritten exactly as a
+ completed-square Gaussian with one scalar overhead, multiplied by a gas of
+ compatible components (Section~\ref{sec:gaussian-reassembly}). Averaging
+ over the forests separates the regular part. The exclusion correction and
+ the localized logarithms are absorbed into a gas of forced activities.
+ A marked insertion is carried through the step exactly, as an affine tilt.
+ Its derivative yields the elementary projection estimate used by the
+ operator-product construction (Section~\ref{sec:projection-payment-producer}).
+\item \emph{Cluster expansion.} A tree-graph bound for repeated-label
+ cluster expansions gives the logarithm of the polymer gas as a convergent
+ sum of connected terms, without any positivity assumption on the
+ activities (Section~\ref{sec:cluster-expansion}). Warning events of the
+ Gaussian fields are controlled by a union bound
+ (Proposition~\ref{prop:warning-crowding}).
+\end{enumerate}
+The scale-transfer of local representations
+(Section~\ref{sec:local-transfer}) and exact jet extraction
+(Section~\ref{sec:local-splitting}) complete the one-step map.
+
+\paragraph{Step 3: stationary analysis and the one-loop coefficient.}
+On the small-field region the block integral is evaluated around a
+stationary configuration. A contraction argument gives a stationary branch
+on a ball whose radius and Lipschitz constant do not depend on the volume
+(Section~\ref{sec:uniform-stationary-chart}). The truncated Gaussian
+integral about it has a logarithm of order $\beta^{-1}$
+(Section~\ref{sec:truncated-stationary-log}). The remainder of the pure
+nonlinear push is smaller by a definite power
+(Section~\ref{sec:pure-action-small-field}).
+
+The quadratic coefficient of the output action is then computed. The
+cubic and quartic classical vertices come from stationary elimination
+(Proposition~\ref{prop:ex-classical-stationary-pictures}). The one-loop
+determinant is compared with a reference determinant
+(Section~\ref{sec:ex-thermal-contact-cancellation}). An annulus estimate
+isolates the logarithmic term. The coefficient of $\log L$ in the change of
+the inverse coupling over one step is
+\[
+ \lambda_G=\frac{11C_G}{24\pi^2},
+\]
+up to a constant independent of $L$
+(Proposition~\ref{prop:ex-annulus-estimate}). Here $C_G$ is the adjoint
+Casimir. This is the step at which the one-loop coefficient of asymptotic
+freedom enters the construction. The canonical running-coefficient unit
+writes the same coefficient as $2b_0(G)$ with
+$b_0(G)=11C_{\mathfrak g}/(48\pi^2)$, and proves $b_0(G)>0$ from the
+noncommutativity of $\mathfrak g$. That unit is not yet included in this
+article, and checking that the two Casimir normalizations agree is part of
+the running interface listed in Section~\ref{ex-outline-open}.
+
+\paragraph{Step 4: the coupling history and the common funded history.}
+The one-step outputs are attached to paths of quadratic backgrounds. Their
+limits as the cutoff is removed at a fixed scale are unique
+(Section~\ref{sec:background-path-convergence}). A real-coupling
+interpolation gives analytic parameter estimates
+(Section~\ref{sec:real-coupling-interpolation}). The coupled coupling and
+activity histories then converge (Section~\ref{sec:coupled-background-convergence}).
+
+The coupling is reset at each step by a scalar shooting argument through
+bands of admissible values. This keeps the inverse coupling within a
+sublinear error of a line in $s_m=\log a_m^{-1}$
+(Section~\ref{sec:surviving-interval-shooting}). Its slope is a
+group constant $s_G>0$. Once $s_G$ is matched with the one-loop coefficient,
+the running-coefficient unit converts this estimate into the uniform
+logarithmic growth \eqref{ex-running-input} of the public family. The terminal step installs the exact Wilson density
+(Proposition~\ref{prop:wilson-startup-family}).
+
+All finitely many numerical requirements at each stage are then paid on one
+scale schedule. The block sides are chosen first, then their costs, then a
+slowly advancing stage clock (Section~\ref{sec:common-scale-selection}).
+This produces a single \emph{funded history}: one sequence of scales,
+couplings and local representations on which the stationary, nonlinear and
+observable estimates hold together (Section~\ref{sec:common-funded-history}).
+The point of this step is that later limits use the estimates of one fixed
+history. They do not use separate histories selected for each estimate.
+
+\paragraph{Step 5: centered bounds and the full mesh limit.}
+Local observables are constructed on the funded history, together with
+their calibration. The microscopic equations of motion come from Haar
+integration by parts on one link (Section~\ref{sec:marked-campaign-producer}).
+
+The basic estimate is a root-test bound for a local observable copied into
+every cell of a tiling. Reflection positivity and the chessboard inequality
+turn it into control of all separated correlations
+(Theorem~\ref{ex-centered-producers}). On the funded history the root
+test is bounded by $Aa_m^{-d-\varepsilon}$ for a field of grade $d$,
+uniformly in the period, the site and the label in a bounded set
+(Theorem~\ref{ex-centered-main-bound}). This yields equicontinuity and
+local bounds for all separated correlations.
+
+The correlations converge along the full mesh sequence at each fixed period
+(Section~\ref{sec:fullmesh-correlation-cauchy}). This uses a fixed
+intermediate level at which the higher marked terms are uniformly small,
+together with convergence at a fixed scale
+(Section~\ref{sec:fixed-rung-convergence}). Bounds on lattice difference
+quotients make the limits smooth on separated configurations
+(Section~\ref{ex-smooth-limits} and
+Theorem~\ref{thm:ex-fullmesh-fixedbounds-producer}). A diagonal extraction
+over a countable basis then gives the infinite-volume table
+(Proposition~\ref{prop:ex-limits-extraction}). Symmetry, Euclidean
+covariance under the lattice symmetries, and reflection positivity pass to
+the limit (Proposition~\ref{prop:ex-limits-euclidean}).
+
+\paragraph{Step 6: the Euclidean Hilbert space and the phases.}
+Reflection positivity gives a Hilbert space with a self-adjoint contraction
+semigroup in Euclidean time and commuting spatial translations
+(Theorem~\ref{ex-euclidean-semigroup}). The infinite-volume limit need
+not have a unique vacuum. The time-invariant subspace carries a commutative
+algebra generated by compressed slab insertions. Its boundedness rests on
+uniform bounds for arbitrarily many slab copies
+(Section~\ref{sec:actual-slab-copy-bounds}).
+
+The Gelfand and Riesz--Markov theorems \cite{Williams,Sawyer} give a
+probability measure $\nu$ of full support on the characters of this
+algebra. The mixed correlations are the $\nu$-average of the character
+correlations; this is the mixture identity~\eqref{ex-mixture}
+(Proposition~\ref{ex-character-measure}). For $\nu$-almost every character
+the ground space is one-dimensional (Theorem~\ref{ex-pure-ground}). The
+selected character $\chi_*$ is chosen among these. Every character keeps the
+regularity bounds, the null relations of the original fields
+(Lemma~\ref{ex-phase-original-null}) and full $O(4)$ covariance
+(Proposition~\ref{ex-individual-rotations}). The field spaces are therefore
+the same in every phase (Proposition~\ref{ex-no-new-null}).
+
+\paragraph{Step 7: analytic continuation and reconstruction.}
+Functional calculus continues the heat semigroup to complex time
+(Proposition~\ref{prop:complex-heat}) \cite{Williams}. Ordered insertions of
+centered slab operators give holomorphic functions on the ordered tube.
+Their tempered boundary values are the Wightman distributions
+(Theorem~\ref{thm:joint-boundary}). Exponential testing places their
+Fourier support in a half-space (Proposition~\ref{prop:half-support}).
+
+Calibrated finite-dimensional Lorentz actions on the field levels descend
+to the field union (Input~\ref{input:calibrated-actions} and
+Proposition~\ref{prop:lorentz-label-descent}). A boost Ward identity then
+gives Lorentz covariance (Theorem~\ref{thm:lorentz-covariance}). This
+improves the support to the forward cones and gives holomorphy on the full
+tube (Proposition~\ref{prop:full-tube-holomorphic}).
+
+The fields are built on the span of words applied to the vacuum, with the
+unitary Poincar\'e representation of Proposition~\ref{prop:word-motion}.
+Nonzero labels act nontrivially (Proposition~\ref{prop:boundary-detection})
+\cite{Melrose}. The joint spectral measure of the translations lies in
+$\overline V_+$, and the translation-invariant vectors are the multiples of
+the vacuum (Theorem~\ref{thm:field-spectrum}) \cite{BHV}. Spacelike
+commutativity follows by continuing along imaginary boosts into both
+ordered tubes (Theorem~\ref{thm:spacelike-exchange}). The boundary-value
+identity~\eqref{eq:public-selected-boundary} relates the selected Euclidean
+correlations to the vacuum expectation values of the reconstructed fields.
+
+\paragraph{Step 8: the operator-product expansion.}
+The limiting fields carry a grading, and the operator-product statement
+\eqref{ex-ope-coefficient}--\eqref{ex-ope-remainder} is uniform over all
+phases. One prescription of fields and finite exterior tests is fixed for
+every truncation degree (Proposition~\ref{prop:ope-prescription}). Its raw
+coefficients are averaged over $O(4)$ and split into homogeneous parts.
+
+Bounds pass to every phase through an even-replica chessboard argument and
+the full support of $\nu$ (Section~\ref{sec:ope-phase-prices}). Lattice
+clusters are grouped exactly in a square-free mark algebra. The grouped
+local field at the last scale is matched with a finite-cutoff reference
+observable by a backward cone argument (Section~\ref{sec:reference-match}).
+Under the local matching estimates (Input~\ref{input:ope-match}, assembled
+in Proposition~\ref{prop:ope-match-assembly}) and the raw product
+comparison (Input~\ref{input:ope-raw-estimates}),
+Theorem~\ref{thm:ope-quantitative} gives the coefficient and remainder
+bounds. Their thresholds are uniform in the phase.
+
+\paragraph{Step 9: the stress tensor and the trace test.}
+The field quotient of the interacting theory is identified with that of the
+free Maxwell theory through finite rank. Finite point probes detect each
+grade in the free theory (Theorem~\ref{thm:ex-lattice-all-grade-free-detector}).
+Comparisons purchased on the funded history transport the kernels of the
+Maxwell equations (Section~\ref{sec:finite-rank-kernel-transport}). The
+supporting comparisons of interacting and Gaussian ``reader'' fields over
+short intervals of scales are in Sections~\ref{sec:restarted-rank-history}--%
+\ref{sec:selected-history-limits}.
+
+This gives one conserved physical stress tensor with a fixed nonzero
+normalization along one comparison curve
+(Section~\ref{sec:actual-stress-normalization}). Its translation and rotation
+Ward identities hold at all separated configurations
+(Theorem~\ref{thm:ward-global-propagation}). They hold in every phase
+(Proposition~\ref{prop:phase-ward-inheritance}). The same comparison
+supplies the calibrated Lorentz actions used in Step~7
+(Section~\ref{sec:physical-angular-actions}).
+
+The centered trace $\Theta$ of the stress tensor has a positive Laplace
+representation in the selected phase (Section~\ref{sec:trace-spectrum}).
+Its short-distance asymptotic~\eqref{ex-trace-limit} is reduced, in
+Theorem~\ref{thm:trace-asymptotic}, to the trace comparison along scales
+(Input~\ref{input:trace-scales}). There the amplitude
+$3\dim_{\mathbb R}\mathfrak g/\pi^4$ comes from the free contraction of the
+curvature-square field and the Ward normalization. The factor
+$\log^{-2}(r^{-1})$ comes from the running coupling with coefficient $b_0$.
+Theorem~\ref{thm:profile-exclusion} then shows, without further input, that
+such an asymptotic excludes finite combinations of mass-shell profiles.
+
+\subsection{Map of the article}
+\label{ex-outline-map}
+
+The table gives, for each step, the sections where it is carried out, in
+order of presentation. The soft analytic layer (Steps~5--8) is presented
+before the construction estimates (Steps~2--4 and~9) that supply its
+quantitative inputs.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.06\linewidth}p{0.36\linewidth}p{0.48\linewidth}}
+\hline
+Step & Content & From section \(\to\) to section\\
+\hline
+1 & lattice, free RG, finite-interval contraction &
+ \ref{ex-lattice} \(\to\) \ref{sec:finite-menu-history-handoff}\\
+5 & centered bounds; full mesh and volume limits &
+ \ref{ex-centered-estimates} \(\to\) \ref{ex-public-same-run-cauchy}\\
+6 & reflection, Hilbert space, phases &
+ \ref{ex-reflection} \(\to\) \ref{ex-phase-fields}\\
+7 & continuation, covariance, reconstruction &
+ \ref{sec:complex-heat} \(\to\) \ref{sec:locality}\\
+8 & OPE prescription, grouping &
+ \ref{sec:ope-prescription} \(\to\) \ref{sec:ope-singletons}\\
+2 & one nonlinear block step &
+ \ref{sec:local-transfer} \(\to\) \ref{sec:high-degree-cluster-prices}\\
+3 & stationary analysis, one-loop coefficient &
+ \ref{sec:local-parameter-comparison} \(\to\) \ref{sec:ex-quadratic-pole-transport}\\
+4 & paths, coupling reset, funded history &
+ \ref{sec:free-horizon-convergence} \(\to\) \ref{sec:actual-phase-grid-approximants}\\
+9 & reader comparisons and rank limits &
+ \ref{sec:restarted-rank-history} \(\to\) \ref{sec:selected-history-limits}\\
+8 & OPE matching and estimates &
+ \ref{sec:ope-local-projection} \(\to\) \ref{sec:ope-estimates}\\
+9 & free detectors, stress, Ward identities, trace &
+ \ref{sec:ex-lattice-trace-free-rank} \(\to\) \ref{sec:ex-lattice-trace-local-charge}\\
+4 & schedule purchases and binding &
+ \ref{sec:nonlinear-payment-selection} \(\to\) \ref{sec:public-run-binding}\\
+--- & assembly & \ref{ex-assembly}\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Open interfaces}
+\label{ex-outline-open}
+
+At this draft Input~\ref{ex-joint-input} is not yet established. The
+following interfaces between the steps remain to be closed. Each is stated
+precisely at its point of use.
+\begin{enumerate}
+\item \emph{Steps 2--4.} The one-step theorem is not yet assembled from its
+ parts, so the stationary paths are attached only conditionally. The
+ annulus estimate depends on three stated response and ticket premises
+ (Proposition~\ref{prop:ex-annulus-estimate}). The slope $s_G$ of the
+ running line in Step~4 must be matched with $\lambda_G$ and with the
+ hypotheses of the running-coefficient unit, including its Casimir
+ normalization.
+\item \emph{Step 4 to Steps 5 and 9.} The selected public run must be bound
+ to the funded history used by the centered service and the local course.
+ The served representation used by the marked calibration must be produced.
+\item \emph{Step 5.} Full mesh convergence must be matched, on the same
+ history, with the subsequence refinement used for the fields.
+\item \emph{Steps 6--7.} The field levels and their inclusions are used but
+ not yet constructed by a named producer. The calibrated actions of
+ Input~\ref{input:calibrated-actions} require the stress comparison of
+ Step~9. The selected phase must be one of the $\nu$-almost every
+ characters with a unique ground state.
+\item \emph{Step 8.} Inputs~\ref{input:ope-match}
+ and~\ref{input:ope-raw-estimates} require the matched fields of
+ Steps~2, 4 and~5 and the physical filtration of Step~9 on the same labels.
+\item \emph{Step 9.} The trace comparison of Input~\ref{input:trace-scales},
+ the weighted sensor estimates and the branch-moment limits are supplied
+ outside the included chapters and are still to be integrated.
+\end{enumerate}
+A final independent check of the union of these interfaces, for
+circularity and for agreement of common data, is required before the
+existence statement can be asserted.

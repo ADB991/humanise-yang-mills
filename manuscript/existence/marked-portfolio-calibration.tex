@@ -29,19 +29,29 @@ $A_d1=1$, $B_d1=1$, gauge invariance of $B_dp$,
 $\operatorname{Forms}(H,d,B_dp,A_dp)$, and $B_dp\in\operatorname{Micro}$
 whenever $p$ belongs to the equation ideal, together with the campaign's
 exact-action identity. They also have
-the following filtration clauses. If $p$ has grade at least $(r,s)$,
-then $A_dp-p$ has strictly larger source stamp
+the following filtration clauses. The source stamp of a grade is
 \[
-                         \operatorname{st}(r,s)=(s,r)
+                         \operatorname{st}(r,s)=(s,r),
 \]
-in lexicographic order, and $B_dp\in\mathcal P_{\geq s}$. The order is
-lexicographic in the displayed order, so increasing the stamp never lowers
-the factor coordinate $s$. In addition, $A_d$ and $B_d$ each commute with
+and stamps are compared lexicographically in the displayed order. Say
+that a label has stamp at least $\operatorname{st}(r,s)$ (respectively
+strictly above it) if each of its nonzero homogeneous components, of
+grade $(r',s')$ say, has
+$\operatorname{st}(r',s')\geq\operatorname{st}(r,s)$ (respectively $>$).
+If $p$ has stamp at least $\operatorname{st}(r,s)$, then $A_dp-p$ has
+stamp strictly above $\operatorname{st}(r,s)$, and
+$B_dp\in\mathcal P_{\geq s}$. By linearity it is equivalent to require
+these two clauses for homogeneous $p$ of grade $(r,s)$ only: a component
+of grade $(r',s')$ with larger stamp has $s'\geq s$, because increasing
+the stamp never lowers the factor coordinate, and
+$\mathcal P_{\geq s'}\subseteq\mathcal P_{\geq s}$. In addition, $A_d$ and
+$B_d$ each commute with
 the signed-coordinate action and the real structure; equivariance of only
 $B_d$ would not suffice to pass it through $A_d^{-1}$. A campaign without
 these two equivariances is turned into such an imprint by the finite group
-and conjugation averages described in the source; the campaign producer
-itself is a separate input to this local theorem.
+and conjugation averages recalled next; the campaign producer itself is a
+separate input to this local theorem. It is constructed in
+Section~\ref{sec:marked-campaign-producer}.
 
 For clarity, the symmetrization just mentioned is finite-dimensional. If
 $\Phi_s$ is the joint signed action on labels and fields, and $\mathfrak c$
@@ -85,7 +95,11 @@ and an invertible linear regrading $R_d:E_d\to E_d$ such that
   $C_{d,k,P}$ at factor degree $s_j$. This is a bound on the healthy part
   of the translated stencil, for every budget point of order $k$ and
   power $P$, torus, anchor, and tested direction list allowed by that
-  budget point.
+  budget point;
+\item one may take $R_d=A_d$. Then $R_d$ commutes with the
+  signed-coordinate action and with the real structure, and for every
+  $p$ in the equation ideal the field obtained by evaluating $T_d$ at the
+  coordinates of $R_dp$ belongs to $\operatorname{Micro}$.
 \end{enumerate}
 The section and stencil depend on $d$ and the fixed action/frame only;
 they do not depend on $k,P$, torus size, or cutoff.
@@ -123,7 +137,10 @@ the unit normalization, signed covariance, conjugation reality, and the
 action-projection condition are the corresponding properties of $B_d$.
 Because evaluation agrees on the entire basis, the section has these
 properties on all labels. The basis poses give the common-support and
-degree witnesses.
+degree witnesses. The last item of the theorem is immediate from the
+choice $R_d=A_d$: the two equivariances of $A_d$ are imprint hypotheses,
+and by the exact evaluation identity the field attached to $R_dp$ is
+$B_dp$, which is microscopic for $p$ in the equation ideal.
 
 It remains to show the derivative budgets for all later queries. The
 source rate statement is localized: for a stencil $S$, order $k$, power
@@ -132,10 +149,19 @@ at $o$ on $\mathrm{Healthy}(\theta,S+o)$, for direction lists obeying
 the budget point's direction bound at $o$. The extra derivative-rate
 parameter here is zero, so the threshold factor remains exactly
 $\theta^s$ at every tested derivative order.
-Each color-coordinate curvature slot has rate degree one by the local
-slot estimate. For a binary product, the product rule gives at most $2^k$
-terms at order $k$. Iterating over a product of $m$ factors gives at most
-$m^k$ terms; in each pose the number $m$ is fixed, so this changes only its
+Each color-coordinate curvature slot has rate degree one: on
+configurations healthy on the translated stencil, the slot and each of
+its tested derivatives through order $k$ have norm at most a constant
+times $\theta$, uniformly in the torus and the anchor. This is the slot
+estimate proved in Section~\ref{sec:local-sections} (the value is bounded
+by health and the isometry of parallel transport, and every derivative of
+positive order $\ell$ by a constant times $\theta^\ell\leq\theta$ because
+each tested direction on a link of the stencil has size at most a
+constant times $\theta$). A real color coordinate is a bounded linear
+functional of the slot, so it obeys the same bound. For a binary product,
+the product rule gives at most $2^k$ terms at order $k$. Iterating over a
+product of $m$ factors gives at most $m^k$ terms; in each pose the number
+$m$ is fixed, so this changes only its
 finite constant. Factor degrees add under multiplication. Hence a monomial of
 at least $s_j$ chips has rate degree at least
 $s_j$. Finite sums add their constants, and lowering a rate from a larger
@@ -146,7 +172,7 @@ with coefficient moduli gives the linear price for arbitrary labels. No
 uniformity in $d,k$, or $P$ is claimed.
 \end{proof}
 
-The last item is the currency furnished by the finite section. In the
+Item (5) is the currency furnished by the finite section. In the
 application, the profile at stage $i$ requests the particular order
 $k_i$ and power $P_i$ appearing in that profile. For each $d\leq i$, choose
 one available amount $a_{di}\geq0$ for this request. It remains a valid
@@ -157,13 +183,19 @@ nonnegative. The section is not rebuilt when these requests change.
 
 For a stage $i$, let $c_i$ be its column count, let $q_d$ be the stencil
 size of the chosen section together with the fixed local section, and let
-$s_i$ be its support exponent. The source sphere price is
+$\alpha_i$ be its support exponent. The source sphere price is
 \[
- \mathsf S_i(q_d,a)=2+e^{81s_i}(a+c_i+2q_d).
+ \mathsf S_i(q_d,a)=2+e^{81\alpha_i}(a+c_i+2q_d).
 \]
 For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere price,
-and the coefficient $2(1+c_i)$ are finite. The stencil's orbit cost is
-finite, so its sliver
+and the coefficient $2(1+c_i)$ are finite. The orbit cost of the
+degree-$d$ frame,
+\[
+ \mathcal O_d=1+\sum_{g}\sum_{j\in J_d}\|\rho_ge_j\|_1,
+\]
+where $g$ runs over the finite list of signed coordinate permutations
+with or without conjugation and $\rho_g$ is its action on coefficient
+vectors, is finite and at least one. Hence its sliver
 \[
        \delta_d=\frac{1}{2\,\mathcal O_d^2}
 \]
@@ -190,16 +222,25 @@ thresholds $n_i$ are exactly the same section's all-stage purchase data.
 
 The later delayed budget has a similar finite-threshold argument. Write
 $\beta_F(x,L)=x+b_L$, where $b_L$ is the fixed logarithmic scale shift,
-and write $w_d$ for the positive power in the reciprocal tail
-$\mathsf f_d(x)=x^{-w_d}$. For fixed $L,d$, and all sufficiently large
-$x$, one has $0\leq b_L\leq x$ and hence $y=x+b_L\leq2x$. The tail
-comparison needed by the delay is equivalent, after multiplying by the
-positive denominators, to
+and write $\mathsf f_d(x)=x^{-w_d}$ for the reciprocal tail. For the
+public schedule $w_d=\max_js_j+4$, the maximal factor grade of the
+degree-$d$ frame plus four; the following delay argument works for any
+fixed positive integer exponent. The tail
+comparison needed by the delay is, with $y=\beta_F(x,L)=x+b_L$,
+\[
+       y^{-1}L^{d+1}\,\mathsf f_d(x)\leq\mathsf f_d(y).
+\]
+For fixed $L,d$, and all sufficiently large $x$, one has $x\geq1$,
+$b_L\leq x$, and $y\geq\max\{1,L^{d+1}2^{w_d}\}$; the last condition
+holds eventually because $y\to\infty$ with $x$. In particular
+$0<y\leq2x$. After multiplying by the positive denominators the tail
+comparison is equivalent to
 \[
        L^{d+1} y^{w_d}\leq yx^{w_d}.
 \]
 The left side is at most $L^{d+1}2^{w_d}x^{w_d}$, which is at most the
-right side once $x\geq L^{d+1}2^{w_d}$. The remaining conditions at a fixed
+right side because $y\geq L^{d+1}2^{w_d}$. No sign condition on the
+shift $b_L$ is used. The remaining conditions at a fixed
 stage-profile pair are just that $x$ exceed the fixed profile cost and
 the finitely many credits requested at degrees $d$ below that profile.
 They therefore hold eventually as well. For a fixed stage, only that
@@ -216,15 +257,36 @@ needed by the marked budget package. For each fixed degree $d$, the section
 credit is queried at the profile of the actual stage $J(N)$. The strict
 reference-depth margin implies $d\leq J(N)$ for all sufficiently large
 $N$. The purchased stage table supplies the credit and flight inequality
-at that stage, evaluated at its preceding block side. The delay purchase
-supplies the allowance comparison: evaluate its adjacent-stage estimate
-at the selected entrance value and use the schedule identity
+at that stage, evaluated at its preceding block side $L_{N-1}$; this side
+is at least the stage threshold $n_{J(N)}$ provided the thresholds $n_i$
+do not exceed the floor length of stage $i$, which bounds from below
+every block side used at that stage. This comparison of thresholds with
+floor lengths is an explicit condition on the schedule of the caller; it
+is not proved in this section. The
+delay purchase supplies the allowance comparison. At level $N$ the
+selected coupling $\widehat\beta_N$ is at least the entrance delay of the
+stage $J(N+1)$, and $J(N)\leq J(N+1)\leq J(N)+1$, so the stage $J(N+1)$
+and the profile $J(N)$ form one of the adjacent pairs tested by the delay.
+Its credit clause at $x=\widehat\beta_N$ gives
+$a_{d,J(N)}\leq\widehat\beta_N$ for every $d\leq J(N)$. The credit
+$b_N=a_{d,J(N)}$ is thus nonnegative and no larger than the running
+allowance $\widehat\beta_N$. The tail clause of the same delay is used
+separately: with the schedule identity
 \[
  \widehat\beta_{i+1}=\beta_F(\widehat\beta_i,L_i)
-       =\widehat\beta_i+G.\mathrm{slopeConstant}\log L_i.
+       =\widehat\beta_i+c_G\log L_i,
 \]
-The resulting amount is nonnegative and no larger than the new running
-allowance. Thus, at every sufficiently late stage for this fixed degree,
+where $c_G$ is the slope constant of the gauge group, it reads
+\begin{equation}\label{eq:ex-marked-height-jump}
+ \widehat\beta_{i+1}^{-1}L_i^{d+1}\,\mathsf f_d(\widehat\beta_i)
+      \leq\mathsf f_d(\widehat\beta_{i+1})\qquad(d\leq J(i)).
+\end{equation}
+This is the height recurrence
+$\phi_iL_i^{d+1}\zeta_{d,i}\leq\zeta_{d,i+1}$ consumed in
+Section~\ref{sec:actual-marked-portfolio-calibration}, for the public
+choices $\phi_i=\widehat\beta_{i+1}^{-1}$ and
+$\zeta_{d,i}=\mathsf f_d(\widehat\beta_i)$.
+Thus, at every sufficiently late stage for this fixed degree,
 there are simultaneously a valid derivative credit, the allowance bound,
 and the sphere/flight bound. These are exactly the three fields of the
 marked budget package used by the selected field-calibration call. It uses
@@ -270,7 +332,7 @@ The sum of chip moduli is at most $\mathcal O\|x\|_1$, and applying
 the symmetry to a column error costs at most another factor $\mathcal O$.
 Consequently
 \[
-       \|(I-D)x\|_1\leq\mathcal O^2\delta_d\|x\|_1
+       \|(I-D)x\|_1\leq\mathcal O^2(2\mathcal O^2)^{-1}\|x\|_1
                          =\tfrac12\|x\|_1.
 \]
 The triangle inequality gives $\|Dx\|_1\geq\frac12\|x\|_1$;
@@ -281,56 +343,166 @@ $\|D^{-1}y\|_1\leq2\|y\|_1$.
 
 \subsection{Application to the selected field calibration}
 
-For a cutoff and mark, let $V_d$ be the fixed section above. The selected
-field package supplies an eventual nonnegative credit $b_N$ for the
-profile's derivative order and power, with $b_N$ no larger than the
-available running allowance. It also supplies the flight inequality
-\[
- 2(1+c_N)\mathsf S_N(q_d,b_N)
-       \leq\mathsf P(L_{N-1})\delta_d,
-\]
-and the local spread/insertion data. These exact conditions are the
-preconditions for the finite field-calibration step. That step first
-constructs one approximate column $u_j$ for each frame basis vector with
-the sliver error above, then applies Lemma~\ref{lem:ex-marked-calibration-inverse}
-to the whole coefficient map. Its inverse norm is at most $2$ and its
-repainted columns agree exactly with the selected field change. The
-coefficient error is thus removed by one invertible linear regrading,
-shared by all labels at this cutoff.
+We now state how the fixed section is compared, at each cutoff, with the
+local section of a selected family. The statement assembles two results
+proved later, the one-body invitation of
+Proposition~\ref{prop:ex-marked-invitation} and the same-history
+calibration of Proposition~\ref{prop:actual-marked-figment}; neither of
+them uses the present subsection.
 
-The price attached to each constructed column is the explicit schedule
-amount
+Fix a selected family $C$ which makes the action, with its history, and a
+degree $d$. Write $F$ for the grade-$d$ coefficient frame with basis
+$(e_j)_{j\in J_d}$, $T$ for the local section of the family at degree
+$d$, and $V=V_d$ for the fixed section of
+Theorem~\ref{thm:ex-marked-portfolio-section}, expressed in this frame and
+sound for the action of the family. At level $N$ write $a_N$ for the
+mesh, $\theta_N$ for the budget threshold, $c_N$ for the column count,
+$\alpha_N$ for the support exponent, $\sigma_N$ for the running scale,
+$L_{N-1}$ for the preceding block side, and
+$\mathsf S_N(q,b)=2+e^{81\alpha_N}(b+c_N+2q)$ for the sphere price. For a
+section $W\in\{V,T\}$ and a coefficient vector $v\in F$, the normalized
+origin field at $(N,p)$ is
+\[
+ \mathcal O^{W}_{N,p}(v)(U)=a_N^{-d}\,
+     W\bigl(\theta_N^{-1}\mathbin{\cdot_F}v\bigr)(0,U),
+\]
+where $\cdot_F$ is the graded dilation multiplying the coordinate $j$ by
+$\theta_N^{-s_j}$. The inputs are the following.
+\begin{enumerate}
+\item \emph{The eventual budget triple.} There is a sequence $b_N$ such
+  that, for all sufficiently large $N$: the section $V$ has the credit of
+  item~(5) of Theorem~\ref{thm:ex-marked-portfolio-section} with constant
+  $b_N$ at the derivative order and power of the level-$N$ budget;
+  $0\leq b_N\leq\widehat\beta_N$; and
+  \[
+   2(1+c_N)\mathsf S_N(q_d,b_N)\leq\mathsf P(L_{N-1})\delta_d .
+  \]
+  For a schedule satisfying the floor and delay conditions stated in the
+  preceding subsection, the triple follows with $b_N=a_{d,J(N)}$; the
+  discharge of those conditions on the selected public run is an open
+  input.
+\item \emph{The paid selected-history record}
+  of Section~\ref{sec:actual-marked-portfolio-calibration}, with its
+  allowances $u_N>0$ and heights $\zeta_{d,N}\geq0$, and a terminal Keeper
+  at every $(N,p)$ (Section~\ref{sec:terminal-marked-construction}).
+\item \emph{Slow growth of the reserves.} Call a real sequence $x_N$
+  \emph{slow} if for every $\varepsilon>0$ one has
+  $|x_N|\leq e^{\varepsilon\sigma_N}$ for all sufficiently large $N$
+  along the extraction order under consideration. The sequences $u_N^{-1}$
+  and $\zeta_{d,N}$ are slow for every extraction order.
+\item The gauge group is simple, and the history has the opening schedule
+  used for the centered root tests.
+\end{enumerate}
+Put
+\[
+ \mathsf Z_N=\bigl(\mathsf C(V)+2\mathsf C(T)\bigr)
+                  \operatorname{Seat}_{d,N},
+ \qquad
+ \operatorname{Seat}_{d,N}=\sum_{j\in J_d}\theta_N^{-s_j},
+\]
+where $\mathsf C(W)\geq1$ denotes a fixed value-norm constant of the
+section $W$: $|W(v)(o,U)|\leq\mathsf C(W)\|v\|_1$ for all coefficient
+vectors, sides, anchors and configurations. Such a constant exists
+because the finitely many basis columns of $W$ are continuous functions
+on a compact configuration space. It is not a derivative price, and
+$\operatorname{Seat}_{d,N}$ is not a number of sites: it bounds the
+$\ell^1$ operator norm of the dilation $\theta_N^{-1}\cdot_F$. The
+price attached to each constructed column is the explicit schedule amount
 \[
  E_N=4(1+c_N)\mathsf S_N(q_d,b_N)
-    +e^{81(s_N+2)}\mathsf Z_N\,\zeta_{d,N}\,u_N^{-1},
-\qquad
- \mathsf Z_N=\bigl(\mathsf C(V_d)+2\mathsf C(V_d^{\rm loc})\bigr)
-                  \mathsf N_{d,N},
+    +e^{81(\alpha_N+2)}\mathsf Z_N\,\zeta_{d,N}\,u_N^{-1}.
 \]
-where $\mathsf C$ denotes the fixed derivative price of a local section
-and $\mathsf N_{d,N}$ the number of active sites in the selected
-insertion region. The first summand pays the local stencil and sphere
-terms; the second pays the activity term after the reserve factor
-$\zeta_{d,N}/u_N$. The same bound controls the marked matter estimate for
-all earlier opened scales and all signed motions, because those motions
-are included in the orbit cost and the local price.
+The first summand pays the local stencil and sphere terms; the second
+pays the forced correction after the reserve factor $\zeta_{d,N}/u_N$.
 
-For a fixed degree, the slow-growth assertion uses all the source
-components, not just the flight inequality. The running credit is bounded
-eventually by $\widehat\beta_N$ by the Braze hymn; the cutoff profile and
-the schedule give a slow bound for $\widehat\beta_N$ and for the column
-count. The scale estimate for the profile gives a slow bound for
-$\exp(81(s_N+2))$. The number of insertion sites is bounded by the finite
-seat count, whose slow bound follows from the tab schedule. Finally the
-Fridge estimates give the required slow bounds for $\zeta_{d,N}$ and
-$u_N^{-1}$. Since the class of slow sequences is closed under finite sums
-and products, each summand in $E_N$ is slow and hence so is $E_N$. Omitting
-either of the Fridge bounds would not justify this conclusion.
+\begin{proposition}[Eventual invertible calibration of the fixed section]
+\label{prop:ex-marked-solaris}
+Under the four inputs above, for every sufficiently large $N$ and every
+period $p$ there are columns $u_j=u_j(N,p)\in F$, $j\in J_d$, such that:
+\begin{enumerate}
+\item $\|e_j-u_j\|_1\leq\delta_d$ for every $j$. Consequently the
+  repainting map $D_{N,p}$ built from these columns in
+  Lemma~\ref{lem:ex-marked-calibration-inverse} is invertible and
+  $\|D_{N,p}^{-1}\|_{1\to1}\leq2$.
+\item For every $j$, every $k$ with $\operatorname{ref}(d)\leq k<N$,
+  every $m$ opened at $k$, and every motion $s$ (a signed
+  coordinate permutation, possibly composed with complex conjugation),
+  the centered root test at depth $m$ for the finite-volume law at
+  $(N,p)$, in the notation of
+  Section~\ref{sec:actual-marked-portfolio-calibration}, satisfies
+  \[
+   \operatorname{rootTest}_{m;N,p}\Bigl(
+      s\cdot\bigl(\mathcal O^{V}_{N,p}(e_j)
+                  -\mathcal O^{T}_{N,p}(u_j)\bigr)\Bigr)
+     \leq\operatorname{cider}(d,m,k)\,E_N\,
+          e^{-\gamma\sigma_N},
+  \]
+  with the constant $\operatorname{cider}(d,m,k)$ and the exponent
+  $\gamma=1/8$ of Proposition~\ref{prop:actual-marked-figment}. This
+  assertion inherits the condition of that proposition: it depends on
+  the served-representation step which is not proved there.
+\item The sequence $E_N$ is slow for every extraction order.
+\end{enumerate}
+The threshold in $N$ depends on $d$ but not on $p$.
+\end{proposition}
+\begin{proof}
+Fix $N$ so large that the following hold; each holds for all sufficiently
+large $N$, uniformly in $p$. The three clauses of the budget triple hold
+at $N$. One has $N>\operatorname{ref}(d)$. Every point $z$ of the union
+$X$ of the stencils of $V$ and $T$ satisfies
+$20(|z_i|+1)\leq\operatorname{side}(N,p)$ in each coordinate, because the
+sides tend to infinity uniformly in $p$. Finally the three local reserve
+conditions of Lemma~\ref{lem:ex-marked-sanded} and
+\eqref{eq:ex-marked-cover} hold for the stencil $X$ and the two constants
+$\mathsf C(V),\mathsf C(T)$; here simplicity of the gauge group is used,
+through $\widehat\beta_N\to\infty$.
+
+Fix $p$ and $j$. These are exactly the inputs of
+Proposition~\ref{prop:ex-marked-invitation}, with the terminal Keeper,
+$u_N>0$ and $\zeta_{d,N}\geq0$ from the second input. It supplies a
+terminal coefficient $Z_j$ with leading coordinate $Z_j.x=e_j$, charge
+bound $Q_N=\mathsf S_N(q_d,b_N)$, budget $E_N$, and field
+$\mathcal O^{V}_{N,p}(e_j)$; these are the Cream data. Since
+$\operatorname{ref}(d)<N$, Proposition~\ref{prop:actual-marked-figment}
+applies on the same family and history. It gives one label $v_j$ with
+\[
+ \mathsf P(L_{N-1})\,\|e_j-X_N^{-1}v_j\|_1\leq2(1+c_N)Q_N
+\]
+and the displayed root-test bounds for
+$\mathcal O^{V}_{N,p}(e_j)-C.O(v_j)$, where $X_N$ is the terminal
+calibration isomorphism of the family. Put $u_j=X_N^{-1}v_j$. By the
+definition of the family's observable, $C.O(v_j)=\mathcal
+O^{T}_{N,p}(X_N^{-1}v_j)=\mathcal O^{T}_{N,p}(u_j)$; this proves the
+second assertion. The flight inequality of the budget triple bounds the
+right side of the last display by $\mathsf P(L_{N-1})\delta_d$. Dividing
+by $\mathsf P(L_{N-1})>0$ gives $\|e_j-u_j\|_1\leq\delta_d$, and
+Lemma~\ref{lem:ex-marked-calibration-inverse} gives the invertibility and
+the inverse bound. The coefficient error is thus removed by one
+invertible linear regrading, shared by all labels at this cutoff.
+
+For the slow-growth assertion, all the components of $E_N$ are needed.
+The class of slow sequences is closed under finite sums and products,
+contains the constants, and contains every sequence dominated eventually
+by a slow sequence. The credit satisfies $0\leq b_N\leq\widehat\beta_N$
+eventually, and $\widehat\beta_N$ is slow because it is affine in
+$\sigma_N$. The column count $c_N$ is slow by the accumulated
+column-logarithm estimate. The opening schedule gives
+$\alpha_N=o(\sigma_N)$, so $e^{81\alpha_N}$ and
+$e^{81(\alpha_N+2)}=e^{162}e^{81\alpha_N}$ are slow. Hence
+$\mathsf S_N(q_d,b_N)$ is slow. The inverse threshold $\theta_N^{-1}$ is
+slow, being bounded by $\widehat\beta_N$; therefore the finite sum
+$\operatorname{Seat}_{d,N}$ of its powers and $\mathsf Z_N$ are slow.
+Finally $\zeta_{d,N}$ and $u_N^{-1}$ are slow by the third input. Each
+summand of $E_N$ is a finite product of slow sequences. Omitting either
+of the two reserve bounds of the third input would not justify this
+conclusion.
+\end{proof}
 
 The section theorem and stage/delay arguments above prove the fixed-stencil
-portfolio, all later credit requests, and the schedule's three eventual
-field-budget inputs. The local invitation and field-spread estimates used
-after that point remain separate substantive suppliers; they do not follow
-from existence of the section or from the inverse lemma. Their source
-declarations, actual selected caller, and remaining estimate boundary are
-listed in the evidence file.
+portfolio, all later credit requests, and, for a schedule satisfying the
+stated floor and delay conditions, the three eventual field-budget
+inputs. The local invitation and the same-history calibration
+used in Proposition~\ref{prop:ex-marked-solaris} remain separate
+substantive suppliers; they do not follow from existence of the section or
+from the inverse lemma. Their source declarations, actual selected caller,
+and remaining estimate boundary are listed in the evidence file.

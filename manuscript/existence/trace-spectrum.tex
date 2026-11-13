@@ -6,6 +6,22 @@ spectral measure of its two-point function, we first keep a positive heat
 height, take the measure of the resulting vector, and then remove the
 exponential damping. The resulting measure can have infinite total mass.
 
+Throughout this section one selected phase is fixed, and every object
+belongs to the single reconstruction built from it in
+Sections~\ref{sec:complex-heat}--\ref{sec:spectral-measure}, whose
+hypotheses are retained. These objects are: the Euclidean Hilbert space
+$\mathcal H_E$ with vacuum $\Omega_E$, its heat semigroup $E_t$, the
+complex heat operators $E(z)$ and the unitary group $V(t)$ of
+Proposition~\ref{prop:complex-heat}, and the joint translations $T_E(a)$;
+the slab insertions $B_p(v)$ and the point heat vectors
+\eqref{eq:point-heat-vector}; the continued correlations $F_n$ of
+Lemma~\ref{lem:continued-matrix} and their boundary distributions $W_n$
+of Theorem~\ref{thm:joint-boundary}; the involution $J$ on labels; and
+the field operators of Proposition~\ref{prop:word-fields}, written
+$\phi(v,f)$ in this section, with vacuum $\Omega$ and the representation
+$U$ of Proposition~\ref{prop:word-motion}. Nothing below selects a second
+phase, continuation, or reconstruction.
+
 \subsection{Exact damping of vector measures}
 We first record a uniqueness fact for bounded holomorphic functions that
 will identify heat evolution inside the spectral integral. Suppose $h$ is
@@ -70,7 +86,9 @@ Fix a label $v$ and, for $s>0$, define
  \qquad 0<p<1,\quad4p<s.
 \]
 The vector is independent of the admissible width $p$. Indeed, the mixed
-Gram identity gives the same number for the scalar product of either of
+Gram identity (Lemma~\ref{lem:mixed-heat-gram}), together with the
+width independence of the continued correlations
+(Lemma~\ref{lem:continued-matrix}), gives the same number for the scalar product of either of
 two such vectors with either one of them. Expanding the squared norm of
 their difference therefore gives zero. If $t\geq0$, a width admissible
 at $s$ is also admissible at $s+t$. Using that common width and the
@@ -168,7 +186,9 @@ tested correlation with
 $\int e^{-2sp_0}\mathcal W\Phi(p)d\mu_v(p)$.
 As $s\downarrow0$, the exponential has absolute value at most one
 almost everywhere and tends to one. The integrable majorant
-$|\mathcal W\Phi|$ and the joint boundary theorem give
+$|\mathcal W\Phi|$ and the joint boundary theorem
+(Theorem~\ref{thm:joint-boundary}, at the strictly ordered heights
+$(-s,s)$) give
 \begin{equation}\label{eq:trace-full-boundary}
  W_2(Jv,v)(\Phi)=\int\mathcal W\Phi(p)\,d\mu_v(p).
 \end{equation}
@@ -181,14 +201,19 @@ Let $\xi_v(f)=\phi(v,f)\Omega$ be the one-field vector in the reconstructed
 Hilbert space. With
 $\Phi(x_0,x_1)=\overline{f(x_0)}g(x_1)$, Fubini in the ordinary Fourier
 integral gives
-$\mathcal W\Phi=\overline{f_+}g_+$. The word Gram formula and
+$\mathcal W\Phi=\overline{f_+}g_+$. By the adjoint identity
+\eqref{eq:word-adjoint} and the vacuum expectation formula of
+Proposition~\ref{prop:word-fields}, the scalar product
+$\langle\xi_v(f),\xi_v(g)\rangle$ is the value of $W_2(Jv,v)$ on this
+product test. This and
 \eqref{eq:trace-full-boundary} therefore give
 \begin{equation}\label{eq:trace-smeared-inner}
  \langle\xi_v(f),\xi_v(g)\rangle
                   =\int\overline{f_+(p)}g_+(p)\,d\mu_v(p).
 \end{equation}
 The product is integrable by the rapid-weight bound.
-Translation covariance gives
+Translation covariance of the fields
+(Proposition~\ref{prop:word-motion}) gives
 $U(a)\xi_v(f)=\xi_v(f(\,\cdot-a))$, and changing variables in the
 Fourier integral gives
 $(f(\,\cdot-a))_+(p)=e^{ip\cdot a}f_+(p)$.
@@ -235,8 +260,14 @@ scalar label has a Lorentz-invariant point measure, with the same dual
 convention as the joint translation measure.
 
 \subsection{Application to the centered trace}
-Let $T_{ab}$ be the real symmetric Euclidean stress tensor supplied by the
-construction, transforming as a rank-two tensor, and put
+Let $T_{ab}$ be the physical Euclidean stress tensor of the same
+construction, a family of grade-four labels, and let $\chi$ be the
+selected phase fixed above, with one-point functional
+$\langle\,\cdot\,\rangle_\chi$. We use the following properties of
+$T_{ab}$ as hypotheses; they are produced by the stress and Ward part of
+the construction and not in this section: its entries are real labels,
+$T_{ab}=T_{ba}$, and it transforms as a rank-two tensor under the action
+$R$ of the Euclidean orthogonal group on labels. Put
 $\tau=\sum_aT_{aa}$. Orthogonality gives
 \[
  R(K)\tau=\sum_{a,i,j}K_{ia}K_{ja}T_{ij}
