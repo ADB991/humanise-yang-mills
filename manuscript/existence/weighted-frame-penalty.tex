@@ -96,9 +96,15 @@ Let $F_x$ be the matrix of the minimizing frame after recentering by
 the nearest group element to its weighted mean. Let $\nu$ be the uniform
 measure on $\mathcal B$, and $\omega$ the actual smoothing probability
 used for this recentering. The latter is the distribution of the sum of
-$J$ independent uniform half-block points. Its reduction modulo $L$ is
-uniform: fix all summands except the first and sum the first over its
-complete residue system. Hence
+$J$ independent points, each uniform on the centred box
+$\{z\in\mathbb Z^4:|z|_\infty\leq(L-1)/2\}$ of side $L$; the block side
+$L$ is odd (Section~\ref{sec:common-scale-selection}), so this box is a complete residue system modulo $L$. The
+reduction of the sum modulo $L$ is therefore uniform: fix all summands
+except the first, and let the first run over its complete residue
+system. Every residue class thus has $\omega$-probability $L^{-4}$, and
+in particular $\omega(x)\leq L^{-4}$. Moreover $\omega$ is supported in
+the box of radius $J(L-1)/2<(J+3)L$, hence in $\mathcal B$, where
+$\nu=|\mathcal B|^{-1}$. Hence
 \[
  \omega(x)\leq L^{-4},\qquad
           \omega(x)\leq H_J\nu(x),
@@ -208,9 +214,18 @@ Also
  |q_a(k_l(p))|\leq5h_l(p).
 \]
 For this last inequality, split the symbol into its real-momentum value
-and its change in the imaginary direction. The latter is at most
-$4\mu$ on this strip by $|e^z-1|\leq e^{|z|}|z|$ and $\mu\leq1$;
-the former is at most $h_l$. Fourier multiplication therefore bounds
+and its change in the imaginary direction. Put $x=\operatorname{Re}k_l(p)$
+and $w=k_l(p)-x=i\operatorname{Im}p/L$. On the strip,
+$|w_a|\leq\mu\leq1$ for every coordinate $a$, since $\mu=L^{-1}$. Because
+$x$ is real,
+\[
+ q_a(k_l(p))-q_a(x)=e^{ix_a}\bigl(e^{iw_a}-1\bigr),\qquad
+ |e^{z}-1|\leq\sum_{n\geq1}\frac{|z|^n}{n!}\leq(e-1)|z|\leq2|z|
+ \quad(|z|\leq1).
+\]
+Hence each coordinate changes by at most $2\mu$, and the Euclidean norm
+on $\mathbb C^4$ by at most $4\mu\leq4h_l(p)$. The real-momentum value
+is at most $h_l(p)$, which gives the factor $5$. Fourier multiplication therefore bounds
 one fine difference in unnormalized $\ell^2$ by $5e^4$, and in
 normalized $L^2$ by $5e^4\mu^2$. These are exactly the one-internal-leg
 bounds used in Section~\ref{sec:ex-classical-stationary-vertices}.
