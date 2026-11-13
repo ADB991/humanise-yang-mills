@@ -15,8 +15,19 @@ For each frame index $i$, set
  v_i=\left(\frac{A_i}{A_{J_i}}\right)^d,
  \qquad f_i=\operatorname{fly}_d(J_i),
 \]
-where $A_j$ is the field dilation at level $j$. Let $s_i$ be the local
-stake price and $\gamma_i$ the gain from level $K_i$ down to $J_i$. The
+where $A_j$ is the field dilation at level $j$, and the basin, the summit
+and all scales belong to one fixed selected family and its selected
+schedule. Let
+\[
+ s_i=\operatorname{stakes}(i,J_i)
+    =\exp\!\left(\Bigl(\frac{A_i}{A_{J_i}}\Bigr)^{4}
+        \operatorname{Treasury}(J_i)+5\right),
+ \qquad
+ \gamma_i=\operatorname{gain}(K_i,J_i)
+    =\exp\!\left(\frac{S_{K_i}-S_{J_i}}{8}\right)
+\]
+be the local stake price and the gain from level $K_i$ down to $J_i$,
+where $S_j$ is the scale coordinate. The
 source's native root allowance for a grade-$d$ response has the exact form
 \begin{equation}
  n_{d,i}=\frac{s_i}{t_i^{-1}\left(
@@ -46,10 +57,15 @@ requested excess over $\alpha+\alpha'$. Nonnegative sums of equal-rate
 sequences retain that rate by the same argument and the elementary bound
 $u+v\leq2\max(u,v)$.
 
-The scale hypotheses supply the following rate-zero tickets:
+The following five scale estimates are inputs to this section; they are
+properties of the selected schedule, proved in the source from its
+selection rules and simplicity of the gauge group, and are not derived
+here. Four are rate-zero tickets:
 \[
- s_i,\qquad v_i,\qquad t_i^4,\qquad f_i^{-1}.
+ s_i,\qquad v_i,\qquad t_i^4,\qquad f_i^{-1};
 \]
+the fifth is the gain estimate $\tau_i(500)\le\gamma_i$ for large $i$
+stated below.
 The first is the stake receipt. The second is the dilation-ratio receipt at
 the selected basin. The third is the scale-at-summit receipt. For the fourth,
 $J_i\leq K_i$ and the inverse-flux receipt applies to the flight scale at
@@ -99,15 +115,29 @@ The triangle inequality gives
 
 \begin{proposition}[Paid label yields the scaled component price]
 \label{prop:ex-trace-bill-root-price}
-Let $g$ be an admissible finite-volume observable and let $y,x$ be a paid
-grade-$d$ label pair satisfying the hypotheses of
-Lemma~\ref{lem:ex-trace-bill-column-size}. Assume its paid root receipt
-states, for every allowed window and whenever $g$ is interior, that
+Fix the volume index $N$, the period $p$ and the grade $d$, and let
+$K=K_i\le N$. Let $g$ be a scale-$K$ observable, $y$ a grade-$d$
+coefficient and $x$ a public grade-$d$ label, and let
+$\operatorname{Col}(x)=\mathcal C_K(x)$ be the scale-$K$ response column of
+$x$ defined in Section~\ref{sec:ex-lattice-trace-coffer-supplier} for the
+same $N,p,d$. Suppose $(y,x)$ satisfies the hypotheses of
+Lemma~\ref{lem:ex-trace-bill-column-size}. Assume its paid root receipt:
+whenever the window of the selected schedule from $i$ to $J_i$ is open,
+that is, $i\le J_i$ and $\sigma_{J_i}^2\le A_i/A_{J_i}$ with $\sigma_j$ the
+cover size of the selected clock at level $j$,
+the reference level of grade $d$ is at most $J_i$, $J_i<K_i$, the scale
+$i$ has room for a radius $l$ at scale $K_i$, and $g$ is interior to the
+window of radius $l$,
 \[
  \mathcal R_{i,p}\!\left(
    \mathcal B\bigl(A_{K_i}^{-d}g\bigr)-\mathcal O(x)\right)
-       \leq n_{d,i}.
+       \leq n_{d,i},
 \]
+where $\mathcal R_{i,p}$ is the root functional of the tiling of the
+volume-$N$ lattice by scale-$i$ cells, $\mathcal B$ the extension from
+scale $K_i$ to volume $N$, and $\mathcal O(x)$ the volume-$N$ observation
+of the label $x$ at the origin. Assume that $i$ is so large that
+\eqref{eq:ex-trace-native-rate} holds.
 Then the paid column has size at most $2$. For
 $q_i=(A_i/A_{K_i})^d$, linearity and homogeneity give the scaled error
 bound
@@ -117,7 +147,8 @@ bound
       \leq\tau_i(-430).
 \]
 For all sufficiently large $i$, this is the paid-component error used in the
-probe assembly, uniformly over the allowed windows and observables.
+probe assembly, uniformly over $N$, $p$, the radii $l$ and the observables
+satisfying the stated window, room and interiority conditions.
 \end{proposition}
 \begin{proof}
 The coefficient conclusion is Lemma~\ref{lem:ex-trace-bill-column-size}.

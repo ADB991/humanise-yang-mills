@@ -8,8 +8,11 @@ ingredients: a rooted product estimate for the good approximation, a
 finite-volume estimate for the exceptional set, and the exact product
 identification across the coarse-to-fine map.
 
+Throughout, one selected family is fixed, and every scale, coupling,
+effective representation, tiling and extension map below is the one
+attached to that family's selected history; no second history is chosen.
 Fix a scale index $i>0$, a finite-volume index $N$, and a period $p$ with
-$i\le k=\operatorname{summit}(i)\le N$. Put $k_-=k-1$. Write
+$i<k=\operatorname{summit}(i)\le N$. Put $k_-=k-1$. Write
 \begin{align*}
  T&=\operatorname{tiles}(i,k,N,p),&
  F_i(q)&=\exp\!\left(\frac{q}{10^4}\,G_i\right),\\
@@ -17,9 +20,36 @@ $i\le k=\operatorname{summit}(i)\le N$. Put $k_-=k-1$. Write
  \Pi_k&=\operatorname{prism}(\widehat\beta_k),\\
  \beta&=\beta_{N,p},& \beta_k&=\beta_{N,p}(k),\qquad A_j=C.S.a(j).
 \end{align*}
-For a tiling $T$ with cell set $I$, its rooted functional is
+Here $T$ is the tiling of the volume-$N$ lattice by the cells of scale
+$i$. For a tiling $T$ with cell set $I$, its rooted functional is
 $\mathsf R_T^\beta(h)=|\mathbb E_\beta[\prod_{q\in I}T.\mathrm{copy}(q,h)]|^{1/|I|}$,
 with the normalized-root convention of the source.
+
+Three conditions are used repeatedly. A complex function $h$ of the
+lattice configuration is \emph{interior} to a set $K$ of sites if it is
+gauge invariant, measurable and bounded, and depends only on the
+restriction of the configuration to $K$. The \emph{window} of radius $l$
+is the image of the centred box of radius $l$ in the scale-$k$ lattice. The
+scale $i$ has \emph{room} for the radius $l$ at scale $k$ if
+\[
+ 2\bigl(A_k l+\operatorname{tail}(k)\bigr)<A_i,
+ \qquad \operatorname{tail}(k)=30A_k(J_k+5),
+\]
+with strict inequality, where $J_k$ is the stage index of the clock at scale
+$k$. If a scale-$k$ field is interior to the window of radius $l$ and the
+scale $i$ has room for $l$, then its extension $\mathcal B_{N,k}$ to volume
+$N$, defined below, is interior to the base chamber of $T$. Finally, the
+\emph{seam condition} for the Wilson measure at coupling $\beta$ is the
+conjunction of reflection positivity across every lattice cut, the
+tiled-product inequality
+\[
+ \Bigl|\mathbb E_\beta\Bigl[\prod_{q\in I}T.\mathrm{copy}(q,h_q)\Bigr]\Bigr|
+ \le\prod_{q\in I}\mathsf R_T^\beta(h_q)
+\]
+for every tiling $T$ and all fields $h_q$ interior to its base chamber, and
+subadditivity of $\mathsf R_T^\beta$ on such fields. It holds for every
+$\beta\ge0$ by reflection positivity; only the tiled-product inequality is
+used in this section.
 Write $\mathcal B_{N,k}$ for the local extension from scale $k$ to volume
 $N$. For distinct coarse sites $a,b$ at scale $i$, let $\alpha_{i,k}(a)$
 and $\alpha_{i,k}(b)$ denote their scale-$k$ anchors, and let
@@ -33,8 +63,9 @@ scale-$k$ fields $X,Y$, define the complex pairing
  Y_b=Y\circ\operatorname{pull}_{\alpha_{i,k}(b)}.
 \end{align*}
 The exact product identity used below is
-$\mathcal Q(X,Y)=\mathbb E_\beta[\mathcal B_{N,k}(X_aY_b)]$ when both
-fields are interior to a common window and that window fits the tiling.
+$\mathcal Q(X,Y)=\mathbb E_\beta[\mathcal B_{N,k}(X_aY_b)]$ when $a\ne b$,
+both fields are interior to a common window of some radius $u$, and the
+scale $i$ has room for $u$.
 The scale receipts give, eventually in $i$,
 \begin{equation}
  e^{-2\Pi_k}\le F_i(-1{,}200{,}000),\qquad
@@ -61,7 +92,14 @@ to that window, the scale has room for $l$, and
  \label{eq:ex-trace-crown-witness}
 \end{align}
 Let $g$ be the second field in the desired probe, with
-$\sup_U|g(U)|\le F_i(150{,}000)$ and with the required window interiority.
+$\sup_U|g(U)|\le F_i(150{,}000)$. Let $l_4$ be the fixed grade-four test
+radius (the grade-four stencil radius plus four); assume that $g$ is
+interior to the window of radius $l_4$ and that the scale $i$ has room for
+$l_4$ at scale $k$. Both $l$ and $l_4$ then satisfy the room condition, so
+$f$, $w$, $f-w$ and $g$ are all interior to the window of radius
+$\max\{l,l_4\}$, for which the scale has room; this is the common window
+used in the product identity, and it makes the extensions of $w$ and $g$
+interior to the base chamber of $T$.
 Let $a\ne b$ be distinct coarse sites. Define the pulled-back factors
 \[
 f_a(U)=f(\operatorname{pull}_{\alpha_{i,k}(a)} U),\quad
@@ -139,11 +177,16 @@ from locality by itself.
 
 \begin{lemma}[Good Crown term]
 \label{lem:ex-trace-crown-good}
-Under the seam condition for $T$ and the window and room hypotheses above,
+Assume the Crown witness \eqref{eq:ex-trace-crown-witness}, the stated
+bound, interiority and room hypotheses for $g$, the seam condition for the
+Wilson measure at coupling $\beta$, and $a\ne b$. Then
 \[ |\mathcal Q(w,g)|\le F_i(-1{,}050{,}000).\]
 \end{lemma}
 \begin{proof}
-The translated planted inequality gives
+The extensions $\mathcal B_{N,k}w$ and $\mathcal B_{N,k}g$ are interior to
+the base chamber of $T$, by the window and room hypotheses. The translated
+form of the tiled-product inequality, for two fields placed at the two
+distinct cells $a\ne b$, gives
 \[
  |\mathcal Q(w,g)|\le \mathsf R_T^\beta(\mathcal B_{N,k}w)\,
       \mathsf R_T^\beta(\mathcal B_{N,k}g).
@@ -159,12 +202,20 @@ $F_i(s)F_i(t)=F_i(s+t)$ gives the claim.
 
 \begin{lemma}[Exceptional-set buffer]
 \label{lem:ex-trace-crown-exception}
-The correction term satisfies
+Assume the Crown witness \eqref{eq:ex-trace-crown-witness}, the stated
+bound, interiority and room hypotheses for $g$, $a\ne b$, the transfer
+identity \eqref{eq:ex-trace-crown-transfer}, and, for the given $i$, the
+scale inequalities \eqref{eq:ex-trace-crown-small-tail} and
+\eqref{eq:ex-trace-crown-funeral} together with the one-site estimate
+\eqref{eq:ex-trace-crown-one-site-tail} at $b=\vartheta_k/16$. Then the
+correction term satisfies
 \[ |\mathcal Q(f-w,g)|\le F_i(-350{,}000)+F_i(-549{,}000).\]
 \end{lemma}
 \begin{proof}
-By the exact product identity, the correction is the finite-volume Wilson
-expectation of the local field $D_a g_b$. This field has envelope obtained by
+By the exact product identity, applied to $f-w$ and $g$ in the common
+window of radius $\max\{l,l_4\}$, the correction is the finite-volume Wilson
+expectation of the extension of the local field $D_a g_b$, which is
+measurable and bounded. This field has envelope obtained by
 multiplying the two local envelopes. Its global bound is
 $F_i(500{,}000)F_i(150{,}000)=F_i(650{,}000)$; on the healthy set for the
 translated support, the bound improves to
@@ -187,16 +238,30 @@ exponents: $650{,}000+1000-1{,}200{,}000=-549{,}000$. Thus
 
 \begin{proposition}[Crown buffer for the two-point probe]
 \label{prop:ex-trace-crown-buffer}
-Under the preceding hypotheses, if also the coarse-to-fine room condition
-holds, then
+There is $i_0$ such that the following holds for every $i\ge i_0$, every
+volume index $N\ge k=\operatorname{summit}(i)$ and every period $p$.
+Let $f$ be a scale-$k$ field with a Crown witness
+\eqref{eq:ex-trace-crown-witness}, let $g$ be a scale-$k$ field with
+$\sup_U|g(U)|\le F_i(150{,}000)$ which is interior to the window of radius
+$l_4$, and assume that the scale $i$ has room for $l_4$ at scale $k$.
+Assume the seam condition, the transfer identity
+\eqref{eq:ex-trace-crown-transfer} and the one-site estimate
+\eqref{eq:ex-trace-crown-one-site-tail} for the selected history. Then, for
+all distinct coarse sites $a\ne b$ at scale $i$,
 \[
- |\mathcal Q(f,g)|\le F_i(-30{,}000)
+ |\mathcal Q(f,g)|\le F_i(-30{,}000).
 \]
-for all sufficiently large $i$, uniformly in the allowed finite volumes,
-periods, fields, and distinct coarse sites.
+The threshold $i_0$ depends only on the selected scale receipts
+\eqref{eq:ex-trace-crown-small-tail} and \eqref{eq:ex-trace-crown-funeral};
+it does not depend on $N$, $p$, the fields, the witness, or the sites.
 \end{proposition}
 \begin{proof}
-Set $D_a=f_a-w_a$. By the exact product identity for the coarse pairing,
+Choose $i_0$ so that \eqref{eq:ex-trace-crown-small-tail} holds for
+$i\ge i_0$ and \eqref{eq:ex-trace-crown-funeral} holds at
+$k=\operatorname{summit}(i)$ for $i\ge i_0$; this is possible because
+$\operatorname{summit}(i)>i\to\infty$. Set $D_a=f_a-w_a$. The extension
+$\mathcal B_{N,k}$ is linear and the expectation is linear, and all fields
+involved are measurable and bounded, so
 \[
  \mathcal Q(f,g)=\mathcal Q(w,g)+\mathcal Q(f-w,g).
 \]

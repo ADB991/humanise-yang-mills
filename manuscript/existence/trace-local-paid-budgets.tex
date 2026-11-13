@@ -13,7 +13,7 @@ Section~\ref{sec:ex-lattice-trace-price-recurrence}.
 
 Fix a finite set \(\mathcal T\) of probes and nonnegative constants
 \(O,H,W,G_d,a,c\), where \(O\) is the motion-average norm factor, \(H\) the local
-readout factor, \(W\) the test factor, \(G_d\) the gauge-variation factor,
+readout factor, \(W\) the test factor, \(G_d\) the polarization factor,
 \(a\) the block weight, and \(c\) the tail-decay factor. For each probe
 \(\tau\), let \(\pi_\tau\geq0\) be its variation price and define its
 local coefficient
@@ -28,9 +28,21 @@ Given a target price \(y>0\), the required atom budget inequalities are
  O\bigl(Wv+2Havc\bigr)&\leq y. \label{eq:ex-lattice-atom-main}
 \end{align}
 The two outputs \(u,v\) are the probe and summability budgets. In the
-Wilson application, \(q_\tau\) bounds the local variation coefficient,
+Wilson application, at coefficient grade \(d\) and block side \(L\), the
+constants are specialized as follows: \(\mathcal T\) is the finite
+coefficient-recovery probe family \(\mathcal Q_d\) of
+Section~\ref{sec:ex-lattice-trace-price-recurrence} and \(W=T_d\) its
+reconstruction constant; \(G_d\) is the polarization constant \(M_d\) and
+\(\pi_\tau=\pi(\tau)\geq1\) the probe price defined there; \(O\) is the
+orbit-average cost and \(H\) the readout price of the grade-\(d\)
+coefficient frame; \(a=L^d\); and \(c\) is the fixed tail constant
+attached to the support exponent, order and power of the profile of the
+stage called \(j\) below. With
+these values \(q_\tau\) bounds the local variation coefficient,
 while the other three inequalities pay respectively for regular terms,
-large-support terms, and the primary atom.
+large-support terms, and the primary atom. The same number \(v\) is later
+used as the summability budget in all of the local atom estimates of one
+transition; the budgets are not chosen separately for each estimate.
 
 \begin{lemma}[Positive local budget choice]
 \label{lem:ex-lattice-local-budget-choice}
@@ -56,10 +68,20 @@ required.
 \end{proof}
 
 We next record the uniform threshold selection used to turn fixed-parameter
-estimates into a single scale profile. At a scale index \(j\), the allowed
-adjacent indices are the same-level index and its immediate predecessor;
-there are at most two. The coefficient grades to be checked form the finite
-set \(\{0,\ldots,j-1\}\). Thus only finitely many eventual requirements
+estimates into a single scale profile. Here \(j\) is a stage index of the
+selected stage data, with profile orders \(\operatorname{order}_i\),
+powers \(\operatorname{power}_j\) and first stage \(i_0\). At a stage
+\(j\), the admissible pairs of an adjacent stage \(i\) and a coefficient
+grade \(d\) form the set
+\[
+ \mathcal I_j=\bigl\{(i,d):\ i\leq j\leq i+1,\ i_0\leq i,\
+   d+1\leq\operatorname{order}_i,\ d\leq\operatorname{power}_j,\
+   d+2\leq j\bigr\}.
+\]
+The adjacent stage is \(j\) itself or its immediate predecessor, so
+there are at most two, and \(d+2\leq j\) confines the grades to the finite
+set \(\{0,\ldots,j-1\}\). Thus \(\mathcal I_j\) is finite, and only
+finitely many eventual requirements
 occur at each fixed \(j\).
 
 \begin{lemma}[Monotone threshold envelope]
@@ -83,11 +105,16 @@ The maxima exist because the sets are finite and nonempty after adjoining
 \(x\geq B_j\) satisfies the stipulated conclusion.
 \end{proof}
 
-Apply this lemma at each scale to the finitely many pairs consisting of an
-admissible adjacent level and a coefficient grade below that scale. The
-atom-budget lemma supplies positive budgets for each fixed pair; the
-finite-volume local estimates then supply an eventual threshold for the
-corresponding primary, regular, and forced atom conclusions. Taking the
+Apply this lemma at each stage \(j\) with \(S_j=\mathcal I_j\). Let a
+positive target price \(y_{j,i}\) be prescribed for every pair of stages.
+For each fixed \((i,d)\in\mathcal I_j\), the
+atom-budget lemma, with \(y=y_{j,i}\), first supplies positive budgets
+\(u,v\); for these fixed budgets, the
+finite-volume local estimates then supply an eventual threshold
+\(E_{j,(i,d)}\) in the scale variable \(x\) for the
+corresponding primary, regular, and forced atom conclusions. In the source
+these local estimates require, in addition, that the smallness parameter
+\(\varepsilon\) recorded for the transition \((j,i)\) is at most \(1/4\). Taking the
 finite maximum and then the prefix maximum gives one monotone threshold
 profile that works simultaneously for every adjacent transition and every
 permitted coefficient grade. This is the uniformization step needed before

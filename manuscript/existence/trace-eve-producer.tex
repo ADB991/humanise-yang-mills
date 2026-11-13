@@ -13,13 +13,31 @@ Fix the scale data of the trace construction and write
  a=\mathrm{title}(P_0),\quad
  h=\mathrm{credibility}(P_1),\quad \nu=\mathrm{DoorsRate}(L).
 \]
-Here $e,a,h,\nu$ are positive, and $e,a\ge1$. Let $F$ be the finite
-family of probes at the chosen grade. For $p\in F$, let $w_p$ be its
-coefficient price, and write $\Lambda$ for the common normalization factor
-in the probe estimate. Put
+Here $H$ and $\chi$ are the monitor and its square root from
+Section~\ref{sec:ex-lattice-trace-local-rate-selection}, whose functions
+$\beta(x)$, $b(x)$, $R(x)$ and $\rho(x)$ are also used below; we write
+$b(\beta(x))$ for the radius function evaluated at $\beta(x)$,
 \[
- Z=\mathrm{testPrice}(F),\qquad T=\mathrm{readPrice}(F),\qquad
- c=\mathrm{orbitCost}(F)\,\mathrm{errorPrice}(F)\,\mathrm{corn}(d)\,a.
+ \operatorname{temp}(x)=x^{-1/2}\exp\bigl((\log\log x)^2\bigr),
+ \qquad
+ \operatorname{fiery}(x)=\operatorname{temp}(\beta(x))
+                        =\beta(x)^{-1/2}H(x).
+\]
+Further, $P_0$ and $P_1$
+are the two stage profiles of the transition, and $L$ is the block side;
+$e,a,h,\nu$ are positive, $e,a\ge1$, and $\nu=L^{-2/5}$. Let $\mathscr F$ be the grade-$d$ coefficient frame and $F$ its
+finite family of coefficient-recovery probes; $F$ is distinct from the
+finite basis of the frame, whose indices
+are denoted by $\alpha$ below. The prices $\mathrm{testPrice}$,
+$\mathrm{readPrice}$, $\mathrm{errorPrice}$ and $\mathrm{orbitCost}$ below
+are constants of the frame $\mathscr F$ (the second and third also of the
+selected holonomy map), not of the probe family. For $p\in F$, let $w_p=\pi(p)\ge1$ be its
+probe price, and write $\Lambda=M_d$ for the polarization constant
+in the probe estimate, both as in
+Section~\ref{sec:ex-lattice-trace-price-recurrence}. Put
+\[
+ Z=\mathrm{testPrice}(\mathscr F),\qquad T=\mathrm{readPrice}(\mathscr F),\qquad
+ c=\mathrm{orbitCost}(\mathscr F)\,\mathrm{errorPrice}(\mathscr F)\,\mathrm{corn}(d)\,a.
 \]
 The source normalizations give $Z,T\ge1$ and $c>0$. For a positive target
 price $\zeta$, define
@@ -47,18 +65,42 @@ For each probe, the charged scalar is the continuous function
  \delta_x=Q/\chi(x),\qquad C_x=\kappa/\chi(x).
 \]
 Assume the following selected-scale receipts hold on one common eventual
-tail, uniformly for every admissible period, forest and tag choice, every
-leaf of cover at most $B$, and every normalized direction list in the
-fixed grade/block. The bounds and cutoff-tail estimates are independent of
-the leaf weight $\tau$. For the chosen threshold $\theta$ and fine
-threshold $\Theta$,
+tail in $x$; the tail is fixed before the probe, the frame index and all
+the other data listed in each receipt are chosen, and each receipt holds
+uniformly in those data. For the threshold $\theta=\operatorname{temp}(x)$
+and the fine threshold $\Theta=\operatorname{fiery}(x)$,
 \[
  \tfrac12\le \frac{\Theta}{\theta}\le2.
  \tag{2}\label{eq:ex-lattice-eve-blend}
 \]
-For every selected probe and allowed local chart, the probe-to-run
-difference has norm at most $Q/\chi(x)$. For every allowed support and
-budget, the scale cap $O_x$ and local moment $M_x$ obey
+The probe receipt is as follows. Let $p\in F$ have order $r_p$ and probe
+functional $R_p$ on coefficients, and let $\alpha$ be a basis index of the
+coefficient frame, with basis coefficient $\mathsf e_\alpha$. Consider any
+step whose block count is $L$ and whose first-order row is literally the
+row of the selected kernel with block side $L$, with coarse side larger
+than $2\rho(x)$, and any two thresholds $w,y\in(0,1]$ within a factor two
+of each other. Let $U_\alpha$ be the coarse-lattice function obtained from the
+local presentation of $\mathsf e_\alpha$ at the origin with threshold $w$
+by cropping the coarse configuration to radius $\rho(x)$ about the parent
+of the origin and routing it through the first-order row of the step; let
+$V_p$ be the logarithmic-link test curve of $p$ with amplitude $y$; and
+let $\mathcal L$ be the leading coefficient map determined by the selected
+kernel and the two thresholds. The
+\emph{probe-to-run difference} is
+\[
+ L^d\left.\frac{d^{r_p}}{ds^{r_p}}U_\alpha(V_p(s))\right|_{s=0}
+   -R_p\bigl(\mathcal L\,\mathsf e_\alpha\bigr),
+\]
+and the receipt is that its absolute value is at most $Q/\chi(x)$ for
+every $p\in F$, every $\alpha$, and all such steps and thresholds. The cap
+receipt is: for every support $X$ and every pair of budgets $(P,B)$ such
+that $P$ has threshold $\theta$ and the power of $P_0$, $B$ has threshold
+$\Theta$ and radius $b(\beta(x))$, and
+$\operatorname{coverNumber}(B.B,X)\le1$, and for every
+$\beta\ge\beta(x)/2$, the scale cap $O_x$ (the response cost of
+\eqref{eq:ex-lattice-explicit-local-cost} without its last, paint, line)
+and the local moment $M_x$ (the
+head-count moment of order $4(n+1)$ there) obey
 \[
  0\le O_x\le1,\qquad
  \mathrm{clocks}(e)\,O_x\,M_x\le \frac{Q}{\chi(x)}.
@@ -71,7 +113,8 @@ $\mathcal M_x(Z_0)=\mathrm{marvel}_x(Z_0)\ge0$. Its cloud receipt is
  \qquad S=\frac{\nu}{2cTh}.
  \tag{4}\label{eq:ex-lattice-eve-cloud}
 \]
-Then for all sufficiently large $x$:
+Then for all sufficiently large $x$, with the same uniformity in the data
+of each receipt:
 
 \begin{enumerate}
 \item the two selected thresholds satisfy the factor-two comparison;
@@ -210,3 +253,29 @@ be $u=2|f|$ preserves that rate and bound. Thus the remaining assembly in
 this section is exactly the finite-test choice and scalar billing proved
 above; the local insertion estimate is supplied by the two cited comparison
 sections under their explicit hypotheses.
+
+For the record, the source constructs the package for one transition with
+block side $L$ and grade $d$ under the following standing conditions, which
+the scalar theorem above does not see: the guard of the record satisfies
+$D.\varepsilon\le1/4$; the two integer parameters of the selected kernel
+are at least $4$, and the first of them is at least $d$; the differentiation
+order satisfies $n\ge2$; and the real parameter $\mu$ of the response
+estimate is positive. The response receipt with amplitude $|u(x)|$ is stated there for
+every leaf whose label is the logarithmic key of a regular activity and
+whose ingredient is exactly the mask, at the threshold of the
+representation, of a function that is regular on the support of that
+activity; for every budget of radius $b(x)$ and of the power of $P_0$ that
+is compatible with the representation; for every read support that is
+healthy at the base configuration and has cover number at most that
+radius; and for every list of at most $n$ directions satisfying the
+budget's directional bound and the canopy bound
+$2\Theta(1+R(x))^{p}$, where $p$ is the power of $P_0$. These identities
+of the leaf, mask, budget and support are what make
+\eqref{eq:ex-lattice-eve-source-identification} a comparison of one
+insertion on one Gaussian space. The cap receipt of
+Theorem~\ref{thm:ex-lattice-eve-producer} follows from the scalar budget
+estimate \eqref{eq:ex-lattice-budget-output} of
+Section~\ref{sec:ex-lattice-trace-local-rate-selection}, called
+at price $Q/e$ and with the nonnegative paint term omitted. The probe
+receipt and the cloud receipt (4) are separate inputs, not proved in this
+section.

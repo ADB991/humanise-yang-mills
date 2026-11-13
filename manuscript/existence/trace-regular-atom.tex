@@ -14,16 +14,44 @@ attenuation needed in the local estimate is established in
 Section~\ref{sec:regular-principal-producer}; the argument below keeps the
 regular source and both support regimes explicit.
 
-Fix a one-step transition of block length \(L\), a coefficient frame of
-maximum grade \(d\), and a regular source \(f\) on fine support \(b\), with
-pointwise bound \(c\geq0\). Let \(\alpha_f>0\) be the fine support
-exponent and \(q_f\geq0\) its fine cover number, and define the charged mass
+Fix a one-step transition of block length \(L\) between the adjacent
+rungs \(m\) and \(m+1\) of the selected history, at fixed volume and period
+indices, and a coefficient frame of
+maximum grade \(d\). Both ends of the transition are the effective
+representations of that one history at these indices; the source, its
+mask, the cloud estimate and the resulting coefficient all refer to this
+same pair. Let \(f\) be a complex function of the fine (rung \(m+1\))
+configuration and \(b\) a fine support such that:
+\begin{enumerate}
+\item \(f\) is regular on \(b\) for the fine budget, that is, local on
+\(b\), gauge invariant, measurable, and smooth to the order of the budget
+on configurations healthy on \(b\);
+\item the origin belongs to \(b\), and \(f(\mathrm{id})=0\);
+\item if \(b\) is nonwrapping about the origin, then for every local jet
+the function \(s\mapsto f\) along the corresponding logarithmic-link test
+curve at the origin is \(C^d\) at \(s=0\) and all its derivatives of order
+at most \(d\) vanish there;
+\item there is \(c\geq0\) such that, on every configuration healthy on
+\(b\), every ordered derivative of \(f\) of order at most the order of
+the fine budget, along directions satisfying the fine budget's
+directional bound, has absolute value at most \(c\).
+\end{enumerate}
+Condition (4) with the empty list of directions is the pointwise bound
+\(|f|\le c\) on healthy configurations; the full derivative bound, and
+conditions (1)--(3), are needed for the local estimates below, which do
+not follow from a value bound. The source term itself is the product of
+the fine effective density with the mask of \(f\) on \(b\) at the fine
+threshold. Let \(\alpha_f>0\) be the fine support
+exponent and \(q_f\geq0\) the fine cover number of \(b\), and define the
+charged mass
 \[
  m_0=e^{\alpha_f q_f}c.
 \]
-Let \(\beta>0\) be the selected coupling, let
-\(\mathcal M_f(G,L,\beta)>0\) be the fine monitor, and put
-\(\chi=\sqrt{\mathcal M_f(G,L,\beta)}\). Thus a raw budget \(b_0\)
+Let \(\widehat\beta_m>0\) be the hatted coupling of the history at the
+coarse rung \(m\) (not the actual coupling of the finite-volume
+representation), let
+\(\mathcal M_f(G,L,\widehat\beta_m)>0\) be the fine monitor, and put
+\(\chi=\sqrt{\mathcal M_f(G,L,\widehat\beta_m)}\). Thus a raw budget \(b_0\)
 gives the actual channel price \(b_0/\chi\). Set \(a=L^d\). Let
 \(O,H,W\geq0\) be respectively the motion-average norm, local readout,
 and local test factors. Let raw budgets \(u,v,\xi>0\) satisfy
@@ -41,6 +69,11 @@ charges \(C_1,C_2\) satisfying
 \begin{equation}
  0\leq C_1,C_2\leq \frac{v}{\chi}m_0. \label{eq:ex-lattice-regular-cloud}
 \end{equation}
+In the source both charges are the single cloud response of the
+two-channel source, so \(C_1=C_2\), and \eqref{eq:ex-lattice-regular-cloud}
+is the cloud entry of the selected local record at price \(v\); it is a
+separate input, not a consequence of the principal reserved-mass estimate
+of Section~\ref{sec:regular-principal-producer}.
 If the transported support is at most the receiving budget radius, the
 local probe reconstruction error, after both channels are combined, is at
 most
@@ -53,9 +86,30 @@ coefficient error is at most
 \begin{equation}
  OHa(S_1+S_2+C_1+C_2). \label{eq:ex-lattice-regular-large-read}
 \end{equation}
-In either case the local construction also supplies a coefficient in the
-coarse format, its exact pushed-density identity, and a remainder budget at
-most \(\rho m_0\), where \(\rho\) is the one-step remainder rate. These
+Here the \emph{coefficient error} is measured uniformly over the finite
+set of lattice motions, and \(O\) pays for this uniformity. In either
+case the local construction also supplies the following certificate, in
+which \(\rho=L^{-2/5}\) is the one-step remainder rate. There is one
+coarse coefficient \(X\), chosen before any motion, such that for every
+motion \(\omega\) there is a coarse presentation \(P_\omega\) with
+coefficient \(\omega X\) which has the order-zero format of the coarse
+representation, has remainder cost at most \(\rho m_0\) at the
+normalization \(\sqrt{\operatorname{forcedAllowance}_m}\), and has the
+exact pushed density
+\begin{equation}
+ D(P_\omega)=\omega\cdot\Bigl[L^d\,\mathcal T_m\bigl(
+     \varrho_{m+1}\,\operatorname{mask}_b f\bigr)\Bigr],
+ \label{eq:ex-lattice-regular-pushed-density}
+\end{equation}
+where \(\varrho_{m+1}\) is the fine effective density,
+\(\operatorname{mask}_bf\) the mask of \(f\) on \(b\) at the fine
+threshold, \(\mathcal T_m\) the one-step push at the coupling of rung
+\(m+1\), and \(\omega\cdot\) the action of the motion on functions. The
+presentation may depend on the motion; the coefficient \(X\) does not.
+The estimates \eqref{eq:ex-lattice-regular-small-read} and
+\eqref{eq:ex-lattice-regular-large-read} are bounds for
+\(\sup_\omega\|\omega X\|\), the predicted leading coefficient of a regular
+source being zero. These
 are the actual local chart and transport conclusions used below, not
 consequences of the scalar budget inequalities alone.
 
@@ -66,9 +120,12 @@ Assume the local estimates \eqref{eq:ex-lattice-regular-cloud}--
 density, and remainder conclusions just stated. If
 \eqref{eq:ex-lattice-regular-small-budget}--
 \eqref{eq:ex-lattice-regular-large-budget} hold, then the source term
-produces a one-step coefficient with coefficient error at most
-\(\xi\chi^{-1}m_0\),
-exact pushed density, and remainder at most \(\rho m_0\). In the terminology
+produces one coarse coefficient \(X\) with
+\(\|\omega X\|\le\xi\chi^{-1}m_0\) for every motion \(\omega\), together
+with presentations \(P_\omega\) of \(\omega X\) in the coarse order-zero
+format having the
+exact pushed density \eqref{eq:ex-lattice-regular-pushed-density} and
+remainder at most \(\rho m_0\). In the terminology
 of the finite price recurrence, this is the regular-source estimate with
 cost pair \((\xi\chi^{-1}m_0,\rho m_0)\).
 \end{proposition}
@@ -99,11 +156,19 @@ assertion.
 \end{proof}
 
 Here is the source realization of the local hypotheses. The source term is
-turned into its real and imaginary masked channels. The single distinguished
-channel is the only one carrying the root label; the other channel labels
-have zero assigned support cost. The per-channel reserved-mass estimate is
+turned into its real and imaginary masked channels. Both channels carry the
+same root label, the logarithmic key of the regular activity with support
+\(b\). Their two reserved-mass bounds are combined at the single expansion
+index \(i_0\) attached to that label, where the assigned cost is
+\(L^d(c_{\mathrm{re}}+c_{\mathrm{im}})\) with \(c_{\mathrm{re}},
+c_{\mathrm{im}}\) the derivative bounds of the two transported channels;
+every other expansion index is
+assigned cost zero. The per-channel reserved-mass estimate used for this
+format and remainder certificate is
 provided by the regular insertion result of
-Section~\ref{sec:regular-principal-producer}. In the small-support regime,
+Section~\ref{sec:regular-principal-producer}; it does not supply the
+cloud bound \eqref{eq:ex-lattice-regular-cloud} or the large-support chart
+bound below, which use two further entries of the selected local record. In the small-support regime,
 the finite local probes fit inside the chart, and the local reconstruction
 bound is the test-price term \(Wu\chi^{-1}m_0\) plus the two readout terms
 \(HaC_1\) and \(HaC_2\). In the large-support regime, the direct chart
@@ -132,7 +197,7 @@ inference from the value bound alone.
 
 For the large-support case, the local field is built by its support
 reservation. The reservation includes the factor
-\(\exp(\alpha_c q_i)\geq1\), where \(\alpha_c>0\) is the receiving
+\(\exp((\alpha_c+2)q_i)\geq1\), where \(\alpha_c>0\) is the receiving
 support exponent and \(q_i\geq0\) the channel's coarse cover number, so
 its unweighted supremum cost is no larger than its reserved mass. The
 construction bounds that reserved mass using the one-site talent estimate
@@ -159,12 +224,17 @@ then makes both the transported source support and the parent patch
 nonwrapping; \(r_d\) is the chart radius, \(R_d\) the transport reach, and
 \(n_0\) the parent side length. The local construction gives the actual
 field \(U_i\) and its smooth reference \(V_i\) on one healthy chart. For
-each channel weight \(w_i\), the ordered derivatives at the identity through
-order \(d\) satisfy
+each channel weight \(w_i\), and for every ordered list
+\((A_1,\ldots,A_\ell)\) of at most \(d\) directions each satisfying the
+directional bound of the receiving budget at the origin (entrywise at most
+the receiving threshold times the spatial weight), the ordered derivatives
+at the identity satisfy
 \[
- \|D^\ell_0 U_i-D^\ell_0 V_i\|
-       \leq 2(v/\chi)w_i,
+ \bigl|\partial_{A_1}\cdots\partial_{A_\ell}(U_i-V_i)(\mathrm{id})\bigr|
+       \leq 2(v/\chi)w_i.
 \]
+This is a bound on these normalized directions only, not an operator-norm
+bound for the derivative.
 For every coefficient-recovery probe \(\tau\in\mathcal T\), evaluated at
 parameter zero along its test path, one also has
 \[
@@ -183,11 +253,14 @@ than the receiving radius. For each real channel, the support-reservation
 argument constructs a regular field with supremum bound \(S_i\) and a
 reserved mass
 \[
- R_i=e^{\alpha_c q_i}S_i,
+ R_i=e^{(\alpha_c+2)q_i}S_i,
  \qquad R_i\leq(v/\chi)m_0,
 \]
 where \(\alpha_c>0\) is the receiving support exponent and \(q_i\geq0\)
-is the channel's coarse cover number. The exponential factor is at least
+is the channel's coarse cover number. The second inequality combines the
+support-reservation estimate, which bounds \(R_i\) by the tuition of the
+selected local record times \(m_0\), with the tuition entry of that
+record, which is at most \(v/\chi\). The exponential factor is at least
 one, so \(S_i\leq R_i\leq(v/\chi)m_0\). Independently, the cloud estimate
 gives \(C_i\leq(v/\chi)m_0\). Thus the two chart bounds and two cloud
 charges together cost at most

@@ -43,7 +43,9 @@ these inequalities by the nonnegative mass \(m_R(Z)\).
 
 \begin{lemma}[Forced gas price]
 \label{lem:ex-lattice-medal-gas-price}
-Let \(g(x)=\exp(-H(x)^{1/5}/2)\). For every \(a>0\), eventually
+Let \(g(x)=\exp(-H(x)^{1/5}/2)\), and let
+\(\operatorname{DoorsRate}(L)=L^{-2/5}>0\) be the block remainder-cost
+factor. For every \(a>0\), eventually
 \[
                     \operatorname{DoorsRate}(L)g(x)\le\mathsf s_a(x).
  \tag{2}\label{eq:ex-lattice-gas-price}
@@ -70,7 +72,12 @@ For a target with goal \(\beta(x)^q\), define its tuition at fixed integers
  \tag{3}\label{eq:ex-lattice-tuition}
 \]
 where \(A\) and the polynomial price \(P_{1/2}(sn)\) have rate zero and
-\(b(x)=\lceil(\log x)^2\rceil\). Then
+\(b(x)=\lceil(\log x)^2\rceil\). In the source,
+\[
+ A(x)=4(2b(x)+1),\qquad P_{1/2}(k)=2^k\,k!\,e^{1/2},
+\]
+so that \(A\) is a fixed polynomial in \(b(x)\) and \(P_{1/2}(sn)\) is a
+constant; both have rate zero. Then
 \(\mathcal T_Q(\cdot;s,n)\in\mathcal R_z\) for every real \(z\). In
 particular, for every \(a>0\), eventually
 \[
@@ -88,3 +95,12 @@ The first two factors in (3) have rate zero, and \(\beta^{-q}\) has rate
 so the strict-power definition gives the claimed rate. Taking \(z=-1\) and using the negative-rate consequence
 above proves (4).
 \end{proof}
+
+The three bounds enter the selected local record with two different
+prices. For one transition with block side \(L\) and one value of \(x\),
+the cloud bound (1) and the tuition bound (4) are used with the same price
+\(a=z\) as the response and chart estimates of that record, while the gas
+bound (2) is used with the separate price \(a=y\); both \(y,z>0\) are
+fixed before the eventual threshold in \(x\) is taken. The three lemmas
+produce only these scalar entries of the record, not its response and chart
+entries.
