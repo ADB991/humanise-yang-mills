@@ -13,12 +13,12 @@ The source uses a single marker radius, the large allowance, from the launch thr
 | Allowance | `YM.Next.Rank.Ship.allowance := exp (2 * pot A M k)`, `pot := log (A.clock.monitor k) / (16 M)` (`Lean/YM/Next/RANK/Allowance.lean`) | a = 𝓜_k^{1/(8M)} ≥ 1 (`Ship.fixed`) |
 | Same number as a power of the monitor | `YM.Next.Rank.Peak.packaged : powder (hatBeta k) m = Ship.allowance A m k`, `powder s m = bill (1/(8m)) s` (`Lean/YM/Next/RANK/TableGate.lean`); `bill a s = exp (boil s * a)` (`Next/RANK/Reign.lean`); `RG…monitor m = exp ((log log hatBeta m)^2)` (`Lean/YM/RG/History.lean`) | a = H^{1/(8m)}, H = 𝓜_k |
 | Launch at the middle level | `Peak.Meter … radius := Ship.allowance A m k` (TableGate.lean); `Peak.launched` gives `Notice … (fun _ => J.radius)` (`Next/RANK/Memorandum.lean`); `Peak.warming` pays the restored entries with `Peak.aperture : toll (radius) (sectionAt x) ≤ bill (1/8) s` | a; cost H^{1/8} per piece |
-| Steps from middle to width | `Perch.Exhibits` (hypothesis, part of `Rank.Instance` in `Next/RANK/Incoming.lean`) and `Perch.covers`, `Perch.settled` (`Next/RANK/Stepped.lean`): every `Notice` uses `fun _ => Ship.allowance A m k`; `Perch.follows` changes only the prices, not the radius | a throughout |
+| Steps from middle to width | `Perch.Exhibits` (hypothesis, part of `YM.Next.Rank.Peak.Instance` in `Next/RANK/Incoming.lean`) and `Perch.covers`, `Perch.settled` (`Next/RANK/Stepped.lean`): every `Notice` uses `fun _ => Ship.allowance A m k`; `Perch.follows` changes only the prices, not the radius | a throughout |
 | Assembly | `Soft.v_conditioned` (`…/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean`) chains `Peak.launched`, `Perch.follows` and `Perch.covers` into `Ship.estimate … (Ship.allowance …)` | a |
 | Replica root | `Soft.s_postage`, `Soft.coupon` (`Soft/Denarii.lean`): the `Notice` at r = allowance gives `rootTest ≤ exp(protection …)/r^{|s|}`, and `coupon` divides by `allowance = exp(2I)` | a |
 | Prices | `Value.Notice`, `SourceAt.pays`, `Lifted.pays`, `Notice.price` (`Next/RANK/Value.lean`): every price contains `Poly.toll r fires`; `Notice.price` holds for every positive r | any r > 0 |
 
-The step and launch inputs at radius a are hypotheses of `Rank.Instance` (`Arrangements ∧ Exhibits`, slot count 2), produced upstream (`Soft.v_culminates`, `crushed`). This record does not trace that producer.
+The step and launch inputs at radius a are hypotheses of `YM.Next.Rank.Peak.Instance` (`Arrangements ∧ Exhibits`, slot count 2), produced upstream (`Soft.v_culminates`, `crushed`). This record does not trace that producer.
 
 ## What changed in the manuscript
 
@@ -54,3 +54,12 @@ The identification H = 𝓜_k pins the "monitor H fixed by k" of the recurrence 
 ## Checks
 
 Recorded in the PR body; see there for commands and outcomes.
+
+## Author response to review #262 (session ADB991-claude-20261113-5de2)
+
+Review #262 (mgubi, report head `09ca7f2`) froze this PR at `a7f0824` and required two local corrections; both are applied.
+
+- M1: the regular-realignment summary at the end of the realignment subsection of `allarity-marked-propagation.tex` said `z + 2^n R_e y`. It now reads `z + 2^n \bar\omega_n R_e y`, citing `eq:allarity-realign-regular`, matching the displayed bound and the purchase `eq:allarity-step-purchases`. No other statement used the old summary; the recurrence was already purchased with the factor.
+- S1: the locator `Rank.Instance` (twice, in the table and the paragraph after it) is now `YM.Next.Rank.Peak.Instance`, checked at `Lean/YM/Next/RANK/Incoming.lean` (namespace `YM.Next.Rank.Peak`, opened at line 21; `def Instance (nslot : ℕ)` at line 59, defined as `Arrangements … ∧ Exhibits …`).
+
+Nothing else changed. A renewed independent review of this delta is needed (not by ADB991).
