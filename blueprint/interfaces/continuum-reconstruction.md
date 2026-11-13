@@ -42,10 +42,10 @@ The following is the complete field-order map of `YangMills.Hierarchy.Reconstruc
 | --- | --- | --- |
 | `axioms` | `view_axioms _ F.realization.qt` | PU-18 selected Wightman realization and public projection. |
 | `faithful` | `F.realization.qt.faithful` | PU-18 label faithfulness. |
-| `injective` | `S.pin_inj` | Proposed PU-16 table/physical-label input; its construction is not established here and does not follow from extraction bounds alone. |
+| `injective` | `S.pin_inj` | PU-16 exposition of the all-spectator quotient definition: for every table, `S.Field d = L.Ref d ⧸ S.null d`, where `null` is the kernel of `replies`. The induced response map `S.spectra d` is injective (`S.faithfully`), and its codomain restriction `S.pin d` remains injective (`Lean/YM/Euclid/Null.lean`, `Union.lean`). This is a quotient fact, not an additional analytic input. |
 | `acts` | `S.alive 0 F.room.kernel.laws`, `S.pin_inj`, then `qt.faithful` on the nonzero unit label | PU-16 nonzero grade-zero unit and PU-18 faithful realization. |
 | `covers` | `F.sector.derivatives.covered F.room.kernel.laws.toSymmetric F.phase.transport.injection` | PU-16 symmetry together with the derivative unit's `DiffPlan` and `Spec.Locals.injection` (PU-11/PU-20 neighbourhood); not PU-17 spectral decomposition alone. |
-| `represents` | `S.representative`, `S.rep` | Proposed PU-16 table/quotient representative input; no quotient construction is certified here. |
+| `represents` | `S.representative`, `S.rep` | PU-16 exposition of the same quotient: for every table, the surjective quotient map `S.project d` has a chosen linear section `S.representative d`, with `S.project d (S.representative d v) = v` by `S.rep` (`Lean/YM/Euclid/Null.lean`). This representative identity is a quotient fact, not an additional analytic input. |
 | `normalized` | `F.phase.phase.decomposition.normalized` | PU-17 probability measure. |
 | `fullSupport` | `F.phase.phase.decomposition.support` | PU-17 full support on the character space. |
 | `permutation` | `S.class_perm` applied to `(spectate F s).laws.toSymmetric` | PU-16 mixed hierarchy; PU-17 `Certificate.states` for character hierarchies. |
