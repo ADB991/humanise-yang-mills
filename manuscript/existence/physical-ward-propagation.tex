@@ -133,7 +133,8 @@ stress insertion, let $p_{d,b}$ be the local positional response, and let
 $Y_d(K)$ be the spin response.  The stress-law package consists of the
 conservation law, the symmetric raw stress identity, and the flux identity
 that identifies the infinitesimal rotation of a moment with the integral
-of the stress flux.  The actual source constructs the flux test rather
+of the stress flux; its precise form is (S1)--(S3) before
+Lemma~\ref{lem:ward-local-response-laws}.  The actual source constructs the flux test rather
 than assuming a noncompact rotation field is admissible.
 
 For fixed separated collinear $x$, choose smooth compactly supported
@@ -399,20 +400,359 @@ The line identity and the collinear rotational identity are only the
 geometric part of the finite-level argument.  The selected scale uses the
 following additional bridges; their order matters.
 
-At the local algebraic stage, the three identities used above are derived
-from the stress-law package rather than postulated separately.  For the
-positional response, differentiate the compactly supported flux with the
-same cutoff kept fixed.  The derivative has two terms: differentiation of
-the flux coefficient, and differentiation of the moment at the moving
-insertion.  The latter raises exactly that slot by one derivative.  The
-stress conservation identity moves derivatives of the cutoff to the
-coefficient, and symmetry of $J$ cancels the antisymmetric part.  This
-gives the shell-commutation relation and compatibility of $p$ with grade
-inclusion.  Applying translations, reflections, and real conjugation to
-the same cutoff formula gives the color covariance, reality, unit, and
-mirror rules for $p$ and $Y$.  In particular the unit rule uses
-conservation on the word with the unit insertion deleted; it is not a
-formal consequence of a nonzero-grade relation.
+\paragraph{The stress-law package.}
+At the local algebraic stage the commutation relation and the covariance,
+reality, unit and inclusion rules for the raw responses are derived from
+the stress-law package rather than postulated separately.  We first state
+that package precisely.
+
+A \emph{window} for a separated tuple $(x_0,x_1,\ldots,x_n)$ is a smooth,
+compactly supported, real function $\chi$ on $\mathbb R^4$ which equals
+one on a neighborhood of $x_0$ and whose support contains none of
+$x_1,\ldots,x_n$.  Every separated tuple has a window: take a bump function
+equal to one on the ball about $x_0$ of radius $\rho/4$ and supported in
+the ball of radius $\rho/2$, where $\rho$ is the least distance from $x_0$
+to the other points.  If $\chi$ is a window, then $\nabla\chi$ vanishes on
+an open set $U\ni x_0$, so the compact set
+$C_\chi=\operatorname{supp}\nabla\chi$ misses $U$ and all $x_i$ with
+$i\ge1$.  For a label $v\in\mathcal F_d$ at $x_0$ and a spectator word
+$\boldsymbol q=(q_1,\ldots,q_n)$ at $\boldsymbol x=(x_1,\ldots,x_n)$ we
+write $S(v,\boldsymbol q;x_0,\boldsymbol x)$ for the moment with $(d,v)$
+in the first slot, and $S(J_{ab},v,\boldsymbol q;y,x_0,\boldsymbol x)$ for
+the moment with an additional insertion $(4,J_{ab})$ at $y$.  For
+$y\in C_\chi$ the tuple $(y,x_0,\boldsymbol x)$ is separated.
+
+We write $\overline v$ for the conjugation of a field, $\mathsf m_k$ for
+the action of a signed permutation matrix $k$ on fields (acting on
+$\mathbb R^4$ by $y\mapsto ky$), $\iota=\iota_{d,e}$ for the inclusion of
+grade $d$ into grade $e\ge d$, and $\mathbf 1_d$ for the unit at grade
+$d$.  Conjugation, $\mathsf m_k$ and $\iota$ act on words slot by slot.
+The hierarchy properties used are: the derivative rule; faithfulness (a
+field $v$ with $S(v,\boldsymbol q;x_0,\boldsymbol x)=0$ for every word and
+every separated tuple is zero); reality,
+$S(\overline{\boldsymbol w};\boldsymbol z)
+=\overline{S(\boldsymbol w;\boldsymbol z)}$; signed covariance,
+$S(\mathsf m_k\boldsymbol w;k\boldsymbol z)=S(\boldsymbol w;\boldsymbol z)$;
+the unit law, by which a unit insertion may be deleted together with its
+position; and invariance of moments under replacing a label $v$ by
+$\iota v$.
+
+The stress is a family $J=(J_{ab})_{a,b=1}^4$ of grade-four fields with
+\begin{enumerate}
+\item[(S1)] $J_{ab}=J_{ba}$, $\overline{J_{ab}}=J_{ab}$, and
+  $\sum_a\mathcal P_{4,a}J_{ab}=0$ for every $b$;
+\item[(S2)] $\mathsf m_kJ_{ab}=\sum_{e,f}k_{ea}k_{fb}J_{ef}$ for every
+  signed permutation matrix $k$;
+\item[(S3)] for every separated tuple, every window $\chi$, every label
+  $v\in\mathcal F_d$, every word $\boldsymbol q$, every axis $b$ and every
+  $K\in\mathfrak{so}(4)$,
+\begin{align}
+ S(p_{d,b}v,\boldsymbol q;x_0,\boldsymbol x)
+ &=-\sum_a\int_{\mathbb R^4}\partial_a\chi(y)\,
+     S(J_{ab},v,\boldsymbol q;y,x_0,\boldsymbol x)\,dy,
+ \label{eq:ward-raw-translation-flux}\\
+ S(Y_d(K)v,\boldsymbol q;x_0,\boldsymbol x)
+ &=-\sum_{a,b}\int_{\mathbb R^4}\partial_a\chi(y)\,[K(y-x_0)]_b\,
+     S(J_{ab},v,\boldsymbol q;y,x_0,\boldsymbol x)\,dy.
+ \label{eq:ward-raw-rotation-flux}
+\end{align}
+\end{enumerate}
+The integrands vanish off $C_\chi$ and are continuous on it, so both
+integrals converge absolutely.  Identities (S3) define the raw responses
+$p_{d,b}:\mathcal F_d\to\mathcal F_{d+1}$ and
+$Y_d(K):\mathcal F_d\to\mathcal F_d$ uniquely by faithfulness; they are
+identities of the same form as \eqref{eq:phase-translation-flux} and
+\eqref{eq:phase-rotation-flux}, where the responses appear after
+normalization.
+
+\begin{lemma}[Local response laws]\label{lem:ward-local-response-laws}
+Assume (S1)--(S3) and the hierarchy properties just listed.  For every
+grade $d$, every $v\in\mathcal F_d$, all axes $b,i$, every
+$K\in\mathfrak{so}(4)$, every signed permutation matrix $k$ and every
+$e\ge d$:
+\begin{enumerate}
+\item[(i)] (commutation)
+\[
+ \mathcal P_{d,b}Y_d(K)v+\sum_{c}K_{cb}\,p_{d,c}v
+   =Y_{d+1}(K)\mathcal P_{d,b}v,
+ \qquad
+ \mathcal P_{d+1,b}\,p_{d,i}v=p_{d+1,i}\,\mathcal P_{d,b}v;
+\]
+\item[(ii)] (inclusion) $p_{e,i}\iota v=\iota p_{d,i}v$ and
+  $Y_e(K)\iota v=\iota Y_d(K)v$;
+\item[(iii)] (unit) $p_{d,i}\mathbf 1_d=0$ and $Y_d(K)\mathbf 1_d=0$;
+\item[(iv)] (reality) $\overline{p_{d,i}v}=p_{d,i}\overline v$ and
+  $\overline{Y_d(K)v}=Y_d(K)\overline v$;
+\item[(v)] (signed covariance)
+  $\mathsf m_kp_{d,i}v=\sum_jk_{ji}\,p_{d,j}\mathsf m_kv$ and
+  $\mathsf m_kY_d(K)v=Y_d(kKk^{\mathsf T})\mathsf m_kv$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Each assertion is an equality of two fields at one grade.  By faithfulness
+it suffices to show that both sides have the same moment against every
+word at every separated tuple.  Fix such a tuple $(x_0,\boldsymbol x)$, a
+word $\boldsymbol q$ and a window $\chi$, with $U$ and $C_\chi$ as above.
+
+(i) Put $x_0(t)=x_0+te_b$.  Choose $t_0>0$ such that $x_0(t)\in U$ for
+$|t|\le t_0$.  For such $t$ the tuple $(x_0(t),\boldsymbol x)$ is
+separated and the \emph{same} $\chi$ is a window for it, and for
+$y\in C_\chi$ the tuple $(y,x_0(t),\boldsymbol x)$ is separated, because
+$C_\chi\cap U=\emptyset$.  Apply \eqref{eq:ward-raw-rotation-flux} at
+$x_0(t)$ with this fixed $\chi$:
+\[
+ f(t):=S(Y_d(K)v,\boldsymbol q;x_0(t),\boldsymbol x)
+ =-\sum_{a,c}\int_{C_\chi}\partial_a\chi(y)\,[K(y-x_0(t))]_c\,
+   S(J_{ac},v,\boldsymbol q;y,x_0(t),\boldsymbol x)\,dy.
+\]
+By the derivative rule,
+$f'(0)=S(\mathcal P_{d,b}Y_d(K)v,\boldsymbol q;x_0,\boldsymbol x)$.  On the
+right, the integration runs over the fixed compact set $C_\chi$, and the
+integrand is continuously differentiable in $t$ on
+$[-t_0,t_0]\times C_\chi$, since moments are smooth on configuration space.
+Hence we may differentiate under the integral.  The $t$-derivative of the
+weight $[K(y-x_0(t))]_c$ is $-K_{cb}$.  By the derivative rule, the
+$t$-derivative of the moment replaces $v$ by $\mathcal P_{d,b}v$.  Thus
+\[
+ f'(0)=\sum_cK_{cb}\sum_a\int\partial_a\chi\,
+        S(J_{ac},v,\boldsymbol q)\,dy
+      -\sum_{a,c}\int\partial_a\chi\,[K(y-x_0)]_c\,
+        S(J_{ac},\mathcal P_{d,b}v,\boldsymbol q)\,dy,
+\]
+with all moments at $(y,x_0,\boldsymbol x)$.  By
+\eqref{eq:ward-raw-translation-flux}, with $b$ replaced by $c$, the first
+term is
+\[
+ -\sum_cK_{cb}\,S(p_{d,c}v,\boldsymbol q;x_0,\boldsymbol x).
+\]
+By
+\eqref{eq:ward-raw-rotation-flux} at grade $d+1$ the second term is
+$S(Y_{d+1}(K)\mathcal P_{d,b}v,\boldsymbol q;x_0,\boldsymbol x)$.
+Comparing the two expressions for $f'(0)$ gives the first identity in (i)
+against every word.  The second identity follows in the same way from
+\eqref{eq:ward-raw-translation-flux}; there the weight does not depend on
+$t$, so only the moment is differentiated.
+
+(ii) Replacing $v$ by $\iota v$ does not change any moment, in particular
+not the integrands of (S3).  Hence
+$S(p_{e,i}\iota v,\boldsymbol q;x_0,\boldsymbol x)
+=S(p_{d,i}v,\boldsymbol q;x_0,\boldsymbol x)
+=S(\iota p_{d,i}v,\boldsymbol q;x_0,\boldsymbol x)$, and likewise for
+$Y$.
+
+(iii) Let $w(y)$ be the constant vector $e_i$, respectively the
+rotational field $K(y-x_0)$.  In both cases $\partial_aw_b+\partial_bw_a=0$.
+By the unit law,
+$S(J_{ab},\mathbf 1_d,\boldsymbol q;y,x_0,\boldsymbol x)
+=g_{ab}(y):=S(J_{ab},\boldsymbol q;y,\boldsymbol x)$.  The function
+$g_{ab}$ is smooth on $\mathbb R^4\setminus\{x_1,\ldots,x_n\}$, which is a
+neighborhood of $\operatorname{supp}\chi$; the point $x_0$ no longer
+carries an insertion.  The products $\chi w_bg_{ab}$ therefore extend by
+zero to smooth compactly supported functions, and integration by parts
+gives
+\[
+ -\sum_{a,b}\int\partial_a\chi\,w_b\,g_{ab}\,dy
+ =\sum_{a,b}\int\chi\,(\partial_aw_b)\,g_{ab}\,dy
+  +\sum_b\int\chi\,w_b\sum_a\partial_ag_{ab}\,dy.
+\]
+The first sum vanishes, because $\partial_aw_b$ is antisymmetric and
+$g_{ab}=g_{ba}$ by (S1).  By the derivative rule,
+$\sum_a\partial_ag_{ab}(y)
+=S(\sum_a\mathcal P_{4,a}J_{ab},\boldsymbol q;y,\boldsymbol x)=0$ by
+conservation.  By (S3) the left side is the moment of $p_{d,i}\mathbf 1_d$,
+respectively $Y_d(K)\mathbf 1_d$, against $\boldsymbol q$; so both vanish.
+This uses conservation on the word from which the unit has been deleted;
+it is not a formal consequence of an identity at nonzero grade.
+
+(iv) Conjugate both sides of (S3).  The functions $\chi$, $w$ and the
+matrix $K$ are real, and $J_{ab}$ is real by (S1), so reality of the
+moments gives
+$\overline{S(p_{d,i}v,\boldsymbol q;x_0,\boldsymbol x)}
+=S(p_{d,i}\overline v,\overline{\boldsymbol q};x_0,\boldsymbol x)$.  The
+left side is $S(\overline{p_{d,i}v},\overline{\boldsymbol q};x_0,\boldsymbol x)$.
+Since $\boldsymbol q\mapsto\overline{\boldsymbol q}$ is a bijection of
+words, faithfulness gives the first identity in (iv); the second is
+identical.
+
+(v) The matrix $k$ is orthogonal, and $\chi'=\chi\circ k^{-1}$ is a window
+for $(kx_0,k\boldsymbol x)$.  By the chain rule
+$\partial_a\chi(y)=\sum_ek_{ea}(\partial_e\chi')(ky)$.  By signed
+covariance of the moments and (S2),
+\[
+ S(J_{ab},v,\boldsymbol q;y,x_0,\boldsymbol x)
+ =\sum_{e,f}k_{ea}k_{fb}\,
+   S(J_{ef},\mathsf m_kv,\mathsf m_k\boldsymbol q;ky,kx_0,k\boldsymbol x).
+\]
+Insert both into \eqref{eq:ward-raw-translation-flux} with $b=i$ and
+substitute $y'=ky$, which preserves Lebesgue measure.  Orthogonality,
+$\sum_ak_{e'a}k_{ea}=\delta_{e'e}$, leaves
+\begin{align*}
+ S(p_{d,i}v,\boldsymbol q;x_0,\boldsymbol x)
+ &=\sum_fk_{fi}\Bigl(-\sum_e\int\partial_e\chi'(y')\,
+   S(J_{ef},\mathsf m_kv,\mathsf m_k\boldsymbol q;y',kx_0,k\boldsymbol x)
+   \,dy'\Bigr)\\
+ &=\sum_fk_{fi}\,
+  S(p_{d,f}\mathsf m_kv,\mathsf m_k\boldsymbol q;kx_0,k\boldsymbol x).
+\end{align*}
+The left side equals
+$S(\mathsf m_kp_{d,i}v,\mathsf m_k\boldsymbol q;kx_0,k\boldsymbol x)$.  As
+$(x_0,\boldsymbol x,\boldsymbol q)$ ranges over all separated tuples and
+words, so does $(kx_0,k\boldsymbol x,\mathsf m_k\boldsymbol q)$, because
+$k$ and $\mathsf m_k$ are invertible.  Faithfulness gives the first
+identity in (v).  For the second use in addition
+$[K(y-x_0)]_b=\sum_{f'}k_{f'b}\,[K'(y'-kx_0)]_{f'}$ with
+$K'=kKk^{\mathsf T}$, which holds because
+$kK(y-x_0)=K'(ky-kx_0)$.  The two orthogonality sums over $a$ and $b$ then
+turn \eqref{eq:ward-raw-rotation-flux} at $(x_0,\boldsymbol x)$ into
+\eqref{eq:ward-raw-rotation-flux} for $K'$ and $\chi'$ at
+$(kx_0,k\boldsymbol x)$ with labels $\mathsf m_kv$, $\mathsf m_k\boldsymbol q$,
+and faithfulness gives the claim.
+\end{proof}
+
+\paragraph{Readout limits on the comparison curve.}
+We next prove the two limits that compare the raw responses with the
+reference derivative and rotation action along the comparison curve.  Use
+the notation of Section~\ref{sec:actual-stress-normalization}: $E_d$ is the
+reference field space, $F_d=\mathcal F_d$ the physical one,
+$U_{k,d}:E_d\to F_d$ the comparison maps, $r_k\downarrow0$ the radii,
+$\xi_k>0$ the stress normalizers, $J$ the physical and $J^0$ the reference
+stress.  We write $S^1$ and $S^0$ for physical and reference moments.
+
+\begin{proposition}[Translation and rotation readout limits]
+\label{prop:ward-readout-limits}
+Assume the following.
+\begin{enumerate}
+\item[(a)] The physical raw responses $p,Y$ satisfy (S3) with the stress
+  $J$.
+\item[(b)] The reference table satisfies (S3) with the stress $J^0$ and
+  with responses $\kappa\partial^0$ and $\kappa C$, where $\partial^0$ is the
+  reference derivative, $C$ is the reference infinitesimal rotation action,
+  and $\kappa\ne0$ is the reference Ward coefficient
+  ($\kappa=-1$ by Section~\ref{sec:free-maxwell-ward-flux}).
+\item[(c)] The normalization \eqref{eq:stress-fixed-normalization} holds:
+  $\widetilde J_{k,ab}:=U_{k,4}^{-1}(\xi_k^{-1}r_k^4J_{ab})\to J^0_{ab}$.
+\item[(d)] Order zero of the compact convergence of
+  Section~\ref{sec:actual-stress-normalization} holds: for every fixed
+  tuple $\boldsymbol v$ of reference labels and every compact
+  $Q\subset\operatorname{Conf}$,
+  $\sup_{\boldsymbol z\in Q}
+   |S^1(U_k\boldsymbol v;r_k\boldsymbol z)-S^0(\boldsymbol v;\boldsymbol z)|
+   \to0$.
+\end{enumerate}
+Then for every grade $d$, every axis $b$ and every $K\in\mathfrak{so}(4)$,
+in operator norm,
+\begin{align}
+ \frac{r_k}{\xi_k}\,U_{k,d+1}^{-1}\,p_{d,b}\,U_{k,d}
+   &\longrightarrow\kappa\,\partial^0_{d,b},
+ \label{eq:ward-translation-readout}\\
+ \xi_k^{-1}\,U_{k,d}^{-1}\,Y_d(K)\,U_{k,d}
+   &\longrightarrow\kappa\,C_d(K).
+ \label{eq:ward-rotation-readout}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+\emph{Step 1: finitely many separating reads.}  Fix a grade $e$.  An
+\emph{observer} is a separated tuple $(x_0,\boldsymbol x)$ together with a
+reference word $\boldsymbol q$ at $\boldsymbol x$; its reference read is
+the linear functional $w\mapsto S^0(w,\boldsymbol q;x_0,\boldsymbol x)$ on
+$E_e$.  By faithfulness the reads of all observers have zero common kernel.
+Since $E_e$ is finite-dimensional, finitely many observers $o\in O$
+already have zero common kernel: add observers while the common kernel
+drops in dimension, which happens at most $\dim E_e$ times.  Let
+$M:E_e\to\mathbb C^O$ be the injective map formed by their reference
+reads, and $M_k$ the map formed by the scaled physical reads
+\[
+ (M_kw)_o=S^1(U_{k,e}w,U_k\boldsymbol q^o;r_kx_0^o,r_k\boldsymbol x^o).
+\]
+By (d), applied at the single point of each observer, $M_kw\to Mw$ for
+every $w$, hence $M_k\to M$ in operator norm.  As in
+Section~\ref{sec:actual-stress-normalization}, compactness of the unit
+sphere gives $\gamma>0$ with $\|Mw\|\ge\gamma\|w\|$, hence
+$\|M_kw\|\ge(\gamma/2)\|w\|$ for all large $k$.  Consequently, if
+$w_k\in E_e$ and $M_kw_k\to Mw$, then
+\[
+ \|w_k-w\|\le\tfrac2\gamma\|M_k(w_k-w)\|
+ \le\tfrac2\gamma\bigl(\|M_kw_k-Mw\|+\|(M-M_k)w\|\bigr)\to0.
+\]
+It therefore suffices to prove, for each fixed $v\in E_d$ and each
+observer $(x_0,\boldsymbol x,\boldsymbol q)$, that the scaled physical read
+of
+\[
+ w_k=\frac{r_k}{\xi_k}U_{k,d+1}^{-1}p_{d,b}U_{k,d}v
+ \quad\text{resp.}\quad
+ w_k'=\xi_k^{-1}U_{k,d}^{-1}Y_d(K)U_{k,d}v
+\]
+converges to the reference read of $\kappa\partial^0_{d,b}v$, respectively
+$\kappa C_d(K)v$.  Operator-norm convergence then follows by checking a
+finite basis of $E_d$.
+
+\emph{Step 2: rescaling the flux.}  Fix the observer and a window $\chi$
+for $(x_0,\boldsymbol x)$.  Then $\chi_k(z)=\chi(z/r_k)$ is a window for
+$(r_kx_0,r_k\boldsymbol x)$.  By (a) with $\chi_k$,
+\[
+ S^1(U_{k,d+1}w_k,U_k\boldsymbol q;r_kx_0,r_k\boldsymbol x)
+ =-\frac{r_k}{\xi_k}\sum_a\int\partial_a\chi_k(z)\,
+   S^1(J_{ab},U_{k,d}v,U_k\boldsymbol q;z,r_kx_0,r_k\boldsymbol x)\,dz.
+\]
+Substitute $z=r_ky$.  Then $dz=r_k^4\,dy$ and
+$\partial_a\chi_k(r_ky)=r_k^{-1}\partial_a\chi(y)$, so the powers of $r_k$
+combine to $r_k\cdot r_k^{-1}\cdot r_k^4=r_k^4$.  By linearity in the
+stress slot and the definition of $\widetilde J_{k,ab}$,
+\[
+ S^1(U_{k,d+1}w_k,U_k\boldsymbol q;r_kx_0,r_k\boldsymbol x)
+ =-\sum_a\Lambda^{a,1}_k(\widetilde J_{k,ab}),
+\]
+where, for a continuous weight $\omega$ on $\mathbb R^4$, we put
+\[
+ \Lambda^{a,\omega}_k(u)=\int\partial_a\chi(y)\,\omega(y)\,
+   S^1(U_{k,4}u,U_{k,d}v,U_k\boldsymbol q;
+       r_ky,r_kx_0,r_k\boldsymbol x)\,dy,
+ \qquad u\in E_4.
+\]
+For the rotation, (a) with $\chi_k$ gives the weight
+$[K(z-r_kx_0)]_b=r_k[K(y-x_0)]_b$ at $z=r_ky$.  The powers of $r_k$ now
+combine to $r_k^{-1}\cdot r_k\cdot r_k^4=r_k^4$, which is again absorbed
+by $\xi_k^{-1}$ into $\widetilde J_{k,ab}$:
+\[
+ S^1(U_{k,d}w_k',U_k\boldsymbol q;r_kx_0,r_k\boldsymbol x)
+ =-\sum_{a,b}\Lambda^{a,\omega_b}_k(\widetilde J_{k,ab}),
+ \qquad\omega_b(y)=[K(y-x_0)]_b.
+\]
+
+\emph{Step 3: the limit.}  Let $\Lambda^{a,\omega}$ be the same functional
+with $S^0(u,v,\boldsymbol q;y,x_0,\boldsymbol x)$ in place of the scaled
+physical moment.  The set
+$Q=\{(y,x_0,\boldsymbol x):y\in C_\chi\}$ is a compact subset of
+configuration space.  For fixed $u\in E_4$,
+\[
+ |\Lambda^{a,\omega}_k(u)-\Lambda^{a,\omega}(u)|
+ \le\int|\partial_a\chi\,\omega|\,dy\cdot
+   \sup_Q\bigl|S^1(U_k(u,v,\boldsymbol q);r_k\,\cdot\,)
+               -S^0((u,v,\boldsymbol q);\,\cdot\,)\bigr|\to0
+\]
+by (d).  Since $E_4$ is finite-dimensional, $\Lambda^{a,\omega}_k\to
+\Lambda^{a,\omega}$ in norm.  Together with (c) this gives
+$\Lambda^{a,\omega}_k(\widetilde J_{k,ab})\to\Lambda^{a,\omega}(J^0_{ab})$.
+Summing over the finitely many $a$ (and $b$), the scaled physical reads of
+$w_k$ and $w_k'$ converge to
+\[
+ -\sum_a\Lambda^{a,1}(J^0_{ab})
+   =S^0(\kappa\partial^0_{d,b}v,\boldsymbol q;x_0,\boldsymbol x),
+ \qquad
+ -\sum_{a,b}\Lambda^{a,\omega_b}(J^0_{ab})
+   =S^0(\kappa C_d(K)v,\boldsymbol q;x_0,\boldsymbol x),
+\]
+by (b).  Step~1 with $e=d+1$, respectively $e=d$, completes the proof.
+\end{proof}
+
+Only finitely many observers, labels and compact sets enter the proof for
+a fixed grade, so a single tail of the comparison curve serves all of them.
+In the translation limit the extra factor $r_k$ compensates the one power
+lost by the gradient of the rescaled window.  In the rotation limit the
+arm of the rotational weight supplies that power.  These are exactly the
+normalizations used in Section~\ref{sec:physical-angular-actions}.
 
 To obtain the all-order line jets, do not differentiate an identity known
 only on the line.  First form the mixed-cap row which sums, over the marked
@@ -447,11 +787,14 @@ row convergence then forces that derivative to converge to the free
 derivative.  This is the gradient component of the first scaling bridge.
 
 Second, the same finite-row method is applied to a finite family of
-observers at adjacent grades.  The stress meter and the shell/rotation
-flux identities identify the limiting rows with the free stress gradient
-and free spin action.  Fixed-window jet convergence supplies convergence
-of the actual rows.  The observer set is united before one scale threshold
-is chosen, so these limits use one selected scale sequence.  The precise
+observers at adjacent grades.  This is
+Proposition~\ref{prop:ward-readout-limits}: the stress normalization
+\eqref{eq:stress-fixed-normalization} and the flux identities
+\eqref{eq:ward-raw-translation-flux}, \eqref{eq:ward-raw-rotation-flux}
+identify the limiting rows with $\kappa$ times the reference derivative and
+reference rotation action.  Its observer set is united with the one of the
+first bridge before one scale threshold is chosen, so these limits use one
+selected scale sequence.  The precise
 rank-one argument identifying the positional scalar is given after the
 finite collinear rows have been transported.
 
@@ -476,15 +819,26 @@ Theorems~\ref{thm:free-quiet-classification} and
 \ref{thm:free-collinear-scenes} give one more rank statement needed to
 identify the normalization.  Work at each fixed grade $d$ above the common detector
 threshold, where the free derivative $\partial$ is nonzero.  Let $V_d$ be
-the finite-dimensional real space of admissible spin-sector response vectors
-and let $R:V_d\to W_d$ be the free finite collinear row map.  Its kernel is
+the finite-dimensional real space of admissible spin-sector response
+vectors: arrays $u=(u_b)_b$ of linear maps from the reference grade-$d$
+space to grade $d+1$ which annihilate the unit, commute with conjugation,
+satisfy $\mathsf m_ku_i=\sum_jk_{ji}u_j\mathsf m_k$ for every signed
+permutation matrix $k$, and map $\iota_{a,d}E_a$ into
+$\iota_{a+1,d+1}E_{a+1}$ for every $a\le d$.  Let $R:V_d\to W_d$ be the free finite collinear row map.  Its kernel is
 exactly the span of $\partial$.  Choose a real linear functional $\ell$ with
 $\ell(\partial)\ne0$; then the augmented map $(R,\ell)$ is injective.
 The selected row maps converge on a fixed basis, so adjoining this same
 $\ell$ leaves them injective for all sufficiently large scales.  Choose one
 such scale $\nu$.  Write $p_\nu$ and $\partial_\nu$ for the transported
 response vectors, and let $A_\nu$ be the common aisle map from the original
-finite-dimensional field space into the selected coordinates.  The source
+finite-dimensional field space into the selected coordinates.  Both
+transported vectors lie in $V_d$.  The physical arrays $(p_{d,b})_b$ and
+$(\partial_{d,b})_b$ have the four defining properties: for $p$ these are
+parts (ii)--(v) of Lemma~\ref{lem:ward-local-response-laws}, for the
+derivative they are the corresponding properties of the derivative plan.
+The aligned comparison maps of the selected scale preserve units,
+conjugations, signed actions and inclusions through grade $d+1$, so they
+carry such arrays into $V_d$.  The source
 row identity is $R_\nu A_\nu p=R_\nu A_\nu\partial=0$.  Since
 $A_\nu$ is injective and $\partial\ne0$, $\partial_\nu\ne0$.  If
 $\ell(\partial_\nu)=0$, then augmented injectivity of
@@ -492,8 +846,12 @@ $(R_\nu,\ell)$ would force $\partial_\nu=0$; thus this denominator is
 nonzero.  Set $c_{d,\nu}=\ell(p_\nu)/\ell(\partial_\nu)$.  The
 vector $p_\nu-c_{d,\nu}\partial_\nu$ is killed by both $R_\nu$ and
 $\ell$, hence is zero.  Cancel the injective common aisle map to obtain
-$p=c_{d,\nu}\partial$ in the original field space.  Since $p\ne0$,
-$c_{d,\nu}\ne0$.  Grade inclusion intertwines $p$ and $\partial$.
+$p=c_{d,\nu}\partial$ in the original field space.  Moreover
+$c_{d,\nu}\ne0$.  Indeed, if $c_{d,\nu}=0$, then $p_{d,b}=0$ for every
+$b$, so the left side of \eqref{eq:ward-translation-readout} vanishes for
+every $k$.  Its limit $\kappa\partial^0_{d,b}$ would then be zero for every
+$b$, which is impossible: $\kappa\ne0$, and the reference derivative is
+nonzero at grades above the detector threshold.  Grade inclusion intertwines $p$ and $\partial$.
 Comparing adjacent grades above the detector threshold shows that this
 scalar is constant there; comparing any lower grade with the fixed threshold
 grade and using injectivity of inclusion gives the same identity below the
@@ -593,7 +951,13 @@ the $\mathfrak{so}(4)$ bracket relations.
 
 \begin{proof}
 The compact stress packet gives the raw collinear identity
-$\mathcal A_K(p,Y)=0$.  By the common scalar normalization,
+$\mathcal A_K(p,Y)=0$.  Dividing the commutation relation of
+Lemma~\ref{lem:ward-local-response-laws}(i) by $c$ and using $p=cV$ gives
+\eqref{eq:ward-commutation} for $(V,\widetilde Y)$.  Parts (ii)--(v) of
+that lemma, divided by $c$, give the inclusion, unit, reality and signed
+covariance rules for $\widetilde Y$ used in Lemma~\ref{lem:ward-brackets}.
+The nonvanishing of $c$ is proved above from
+\eqref{eq:ward-translation-readout}.  By the common scalar normalization,
 $\mathcal A_K(p,Y)=c\mathcal A_K(V,\widetilde Y)$, so the genuine derivative
 and normalized spin action satisfy the collinear hypothesis of
 Theorem~\ref{thm:ward-global-propagation}.  That theorem extends the
