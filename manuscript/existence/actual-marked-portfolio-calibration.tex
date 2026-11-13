@@ -46,10 +46,11 @@ state at displacement $v$ is
 \]
 Call the state keyed if $Z_i.x=0$ and $Z_i$ has the prescribed format and
 remainder bound. Write $J_i$ for the history's clock index at scale $i$;
-the schedule has $J_{i+1}\leq J_i+1$. The source transition from scale
-$i+1$ to $i$ preserves keyedness, gives the exact density push identity
-for every $v$, and gives the direction relation comparing the leading
-coordinates for every $v$. It does not assert equality of those coordinates.
+the schedule has $J_{i+1}\leq J_i+1$. Assume that the transition from
+scale $i+1$ to $i$ preserves keyedness, gives the exact density push
+identity for every $v$, and gives the direction relation comparing the
+leading coordinates for every $v$. It does not assert equality of those
+coordinates.
 Writing $L_i$ for the physical side at step $i$,
 $e_i=\operatorname{barunit}(L_i)$, and $K_i=W(J_{i+1})$, for each
 displacement $v$ there is an invertible map $B_{i,v}$ such that
@@ -263,7 +264,7 @@ $\exp((\sigma_m-\sigma_i)/8)(c_i+\|x_i\|_1)
 the room and bank inequalities, on the same finite interval and history.
 \end{proof}
 
-\paragraph{Source producer retained in the lemma.}
+\paragraph{Same-history inputs to the lemma.}
 For each step, the response is supplied by a same-history Tone record, a
 paid Coupon for every keyed silent upper coefficient, and the matching
 Carol/Tale witness. The Coupon fixes the input exponential entry, forced
@@ -347,13 +348,12 @@ these properties.
   allowance at level $i$. For all $N$, $p$ and $i<N$ there are reals
   $y,w$ such that:
   \begin{itemize}
-  \item the door $D_{N,p,i}$ has the multi-marker offer property of the
-    source (the record \texttt{Volant}) with occupancy $r_i$, offer
+  \item the door $D_{N,p,i}$ satisfies the multi-marker offer input
+    with occupancy $r_i$, offer
     threshold $\alpha_{i+1}-4$ and offer allowance $y$, ordinary
     exponent $\alpha_i+\frac12$ with site budget $1$, and flagged
-    exponent $\alpha_i+1$ with site budget $w$. This property is named
-    from the source field; its content is not expanded here. It
-    comprises the pushed representation of every finite census of
+    exponent $\alpha_i+1$ with site budget $w$. Its full conditions
+    remain an input; they are not derived here. They include the pushed representation of every finite census of
     offers of occupancy at most $r_i$, soundness and tuning of the door,
     and a contact condition on the upper representation;
   \item $0<\delta_i\leq1$, $\alpha_i\geq100$, $\alpha_{i+1}\geq100$;
@@ -394,8 +394,8 @@ witness with price $\psi_i$ at every door
   exponential entry and forced profile of the upper played coefficient
   to the forced profile of the lower one, with upper price
   $\mathcal O_d\|\iota_{i+1}(v)\|_1(\psi_i+2C_{i+1})$ and lower price
-  $g_i(v)$. The notions of wing and Tale are named from the source;
-  their content is not expanded here. The Music may depend on
+  $g_i(v)$. The full conditions on the wing and Tale witnesses remain
+  inputs here. The Music may depend on
   $(d,N,p)$.
 \item[(R7)] \emph{The paid one-step input.} At every door $D_{N,p,i}$,
   $\operatorname{ref}(d)\leq i<N$, there is a number $\eta_i\geq0$ with
@@ -404,10 +404,58 @@ witness with price $\psi_i$ at every door
   upper coefficient with zero leading coordinate, the terminal format
   and remainder bill $q$ has a Coupon across the door with budgets
   $(\eta_iq,\eta_iq,2q)$, as described before
-  Lemma~\ref{lem:actual-marked-antilles}. The notion of Coupon is named
-  from the source; its content beyond that description is not expanded
-  here.
+  Lemma~\ref{lem:actual-marked-antilles}. The full conditions on the
+  Coupon beyond that description remain an input here.
 \end{enumerate}
+The multi-marker offer input in (R4) has the following interface. Fix
+one of its doors, its upper and lower representations, and the associated
+parent map from upper to lower sites. Take any finite marker set $V$ and
+any downward-closed family of subsets containing the empty set and all
+singletons; its marker algebra has commuting square-zero generators, with
+only the allowed subsets as modes. Choose sites $o_v$ on the upper lattice,
+strictly positive weights $t_v$, and any finite family of offers. Each
+offer consists of an upper activity leaf with support $P$, a nonempty
+allowed marker mode $A$, and a complex coefficient $c$; its marker sites
+$\{o_v:v\in A\}$ lie in $P$. Its fare is the leaf weight times
+$|c|\prod_{v\in A}t_v$. The offer is priced if, for every upper site $x$,
+the sum of fares over supports containing $x$, each multiplied by
+$e^{(\alpha_{i+1}-4)\operatorname{coverNumber}(B_{i+1},P)}$, is at
+most $y$. Assume also that at most $r_i$ markers have any one parent
+site.
+
+For every such census, weights, sites and priced offer, the input supplies
+lower-lattice polynomial families $F_P$ indexed by supports and $K_{P,I}$
+indexed by support--inventory pairs. Both are gauge invariant, measurable,
+local to their supports and contain only modes whose marker sites lie in
+the support. An $F_P$ term vanishes unless $P$ is healthy and has zero
+empty-mode coefficient. A $K_{P,I}$ term vanishes unless $I$ is nonempty,
+$I\subseteq P$, and the flags in $P$ are exactly $I$. Each family has
+nonnegative summable support prices. For each support or support--inventory
+pair, there is one nonnegative majorant for each mode that bounds the
+absolute value of that mode's coefficient for every configuration. The
+weighted sum of these configuration-independent majorants is at most the
+corresponding support price; the weight of a mode $A$ is
+$\prod_{v\in A}t_v$. At each lower site the
+support prices, multiplied by the exponential of the support cover
+number, sum to at most $1$ for $F$ with exponent $\alpha_i+1/2$, and at
+most $w$ for $K$ with exponent $\alpha_i+1$.
+
+Their assembled lower representation equals exactly the transition push
+of the offered upper polynomial. For every lower support--inventory pair
+and configuration, the empty-mode coefficient of $K$ is the ordinary
+lower activity profile; its singleton coefficient for marker $v$ is the
+sum, over the offered leaves whose mode is $\{v\}$, of their coefficients
+times their door-transported profiles. These identities hold pointwise,
+not merely after integration. The same door is also required to have the
+soundness and tuning interfaces: a uniform forced-cost bound and motion
+equivariance for its leaf transports, and compatibility of those
+transports with every countable grouped leaf sum. Finally, the upper
+representation must have the contact addresses: every nonempty support
+has a zero-activity regular address, and every nonempty inventory contained
+in a support has an address eligible whenever the flags realize that
+inventory. These are assumptions on this same door and representation;
+their simultaneous production on the selected history remains open.
+
 The items (R1)--(R3), (R5) and the inequalities of (R4) are numerical.
 The remaining parts of (R4), (R6) and (R7) are the same-history records;
 they must hold for the one family and the one indexed field of doors,
@@ -512,9 +560,8 @@ inequality of (R5) pays this by $\zeta_{i+1}/\zeta_i$. Thus the exact
 march/height inequality required for the finite root estimate holds at
 every later scale.
 
-For precision, these are the fields of the finite-copy construction (the
-source's Yeast record). At level $i$, the residual coefficient $Z_i$ of
-the state is keyed; the coefficient used by the Yeast record is the
+For the finite-copy construction, at level $i$ the residual coefficient
+$Z_i$ of the state is keyed; the coefficient used in the construction is the
 translated voice $\mathcal Z_i(-a)=Z_i+\Pi_i(\varpi_i-a)$ with its bill
 $c_i=c_i(-a)$. Keyedness of $Z_i$ and the earned bounds of the Music
 transfer format and the remainder bound, with bill $c_i$, to this
@@ -526,10 +573,10 @@ per-level price inequality for
 \[
  \frac{w_i\|\operatorname{alto}(H,i,d)\|E}{\mathrm{gain}(N,i)},
 \]
-this gives the Yeast rate clause
+this gives the finite-copy rate bound
 $w_i\|\operatorname{alto}(H,i,d)\|(c_i+\|x_i\|_1)\leq\zeta_i$ by
 multiplication. The
-Coupon's density debt is exactly the density transition in the Yeast vote;
+Coupon's density debt is exactly the density transition in the finite-copy transition identity;
 its Carol witness supplies the accompanying finite Tale support and the
 forced-profile/exponential-entry comparison. At the terminal level let
 $c=(M.\mathrm{tone}\,N).\mathrm{index}(-a)$. The top clause of `Sung` gives
@@ -548,21 +595,21 @@ hypothesis
 together with
 $w_NjE\leq\zeta_N/4$, gives
 $w_NjB_{\rm cream}\leq u_N/4\leq u_N/2$. Hence the combined price
-$A_{\rm ins}+B_{\rm cream}$ fits the Yeast allowance $u_N$. The forced profile is
+$A_{\rm ins}+B_{\rm cream}$ fits the finite-copy allowance $u_N$. The forced profile is
 preserved by the Cream hook identity and linearity of
-the played forced-profile map. Finally, the Yeast bill is the Cream density
+the played forced-profile map. Finally, the finite-copy density identity is the Cream density
 equation after the terminal `originate' identity: the two recentering
 terms have density equal to the Music readout, leaving precisely the
 terminal marked density. These are all same-history records; no new
-terminal volume or history is selected in assembling the Yeast.
+terminal volume or history is selected in assembling these data.
 
 The state residuals $Z_i$ are keyed. Their translated voices are the
-Yeast coefficients; the translated voice at the bottom reference has zero
+finite-copy coefficients; the translated voice at the bottom reference has zero
 leading coordinate, by the choice of the negative bottom primary.
 The Accord identities give the Wilson push and all-displacement profile
 updates; the Cream gives the
 terminal forced hook and density identity; and the Bank and footprint
-cover pay the forced correction. The output is the exact Yeast identity
+cover pay the forced correction. The output is the exact finite-copy identity
 for the terminal field $b+\operatorname{initial}(-a)$, the sum of $b$ and
 the original-history insertion with primary $-a$. Since the terminal
 calibration is linear,
@@ -585,19 +632,18 @@ occupancy schedule (R3), the scale bounds (R2), the transition service
 $b-C.O(v)$, which holds because $b$ is continuous by the Cream and
 $C.O(v)$ is a polynomial cylinder.
 
-The passage from these residual coefficient records to a served
-representation of their finite birth polynomial at the opened scale is
-not proved in this section. In the source it is a backward induction
-from $N$ to $k$ which transports the profiles of the Yeast voices
-through the doors, using (R4), the Tale witnesses, and the two numerical
-prices
+We require a separate served-residual input: the residual coefficient
+records have a served representation of their finite birth polynomial at
+the opened scale, with support exponent $\alpha_k$ and action allowance
+$1$. This passage is not proved in this section. Its required profile
+transport uses (R4), the Tale witnesses, and the two numerical prices
 \[
  2w_{i+1}a_{i+1}^{-d}\,\mathcal O_d(\psi_i+2C_{i+1})
      (c_{i+1}+\|x_{i+1}\|_1)\leq2\mathcal O_d(\psi_i+2C_{i+1})\zeta_{i+1}
      \leq1,
  \qquad w_{i+1}a_i^{-d}c_i\leq\zeta_iC_i\leq1,
 \]
-which follow from the Yeast rate clause, (R5) and $w_{i+1}\leq w_i$. The
+which follow from the finite-copy rate bound, (R5) and $w_{i+1}\leq w_i$. The
 following moment calculation is conditional on that representation, with
 support exponent $\alpha_k$ and action allowance $1$; this is recorded as
 an open input. With constant positive slot weight
@@ -684,12 +730,10 @@ quantifiers: the Music is chosen for each $(d,N,p)$ and then retained
 through all tests at those indices, whereas choosing a different history
 or door field for each period or terminal volume is insufficient.
 
-In the source construction this record is attached by the selected
-funded-history route: its history package gives the nested selected field
-and adjacent climbing doors; its finite Music package supplies the terminal
-factory realization and full-height response history; the local three-card
-Heading/Stampede calculation of Section~\ref{sec:three-port-history}
-prices each Coupon; and the all-level service ledger supplies the Geyser
+The selected funded-history route would need to supply the nested selected
+field and adjacent climbing doors, the terminal factory realization and
+full-height response history, the Coupon prices from the local three-card
+calculation of Section~\ref{sec:three-port-history}, and the all-level
 height and transition bounds. The remaining proof obligation is to derive
 these inputs uniformly from the same original funded history, including the
 terminal Cream attachment. The local three-card calculation, the

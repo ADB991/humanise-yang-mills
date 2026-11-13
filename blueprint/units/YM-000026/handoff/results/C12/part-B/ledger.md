@@ -46,3 +46,9 @@ Status words: **proved here** (detailed proof in the chapter, conditional on lis
 | `C12-to-C12-terminal-voice` | `prop:terminal-marked-voice` → part-A `selected-centered-service.tex`, `original-history-portfolio-attachment.tex` | open |
 | `C06-C08-C12-C16-to-C05-matched-field` (known edge) | marked profile part: `prop:terminal-marked-voice` item (4), figment | open; not examined against C05 |
 | `C12-to-C13-local-course` (known edge) | not touched by part-B | — |
+
+## Source-leakage revision, issue #191
+
+The one-body proposition now assumes explicitly the local forced-family attachment for its correction and carries this assumption into `prop:ex-marked-solaris`. Call the open edge E-local-forced-attachment: the required family has the stated locality, gas-mark identity, hook and merge-price bound on the same terminal representation and support. `YM.MergeProof.garnish` in `Lean/YM/MergeProof/Platter.lean` is the candidate producer; its Keeper/berths, `Attaches`, finite-index and price-budget matching have not been fully checked in this pass. For the selected budget, `B_N = ⌈(log β_N)^2⌉` and `β_N → ∞` give `B_N → ∞`; an arbitrary budget still needs its own radius divergence. E-record, E-keeper, E-fee and E-served remain open. See `../source-leakage-191.md`; no review status is conferred.
+
+The independent review of candidate `4c14471` identified two necessary corrections: the multi-marker output prices require one configuration-independent coefficientwise majorant per mode, and the terminal estimate in `prop:ex-original-history-attachment` must retain the local forced-family and served-representation conditions on the same family. The subsequent author revision incorporates both; the paid-history and served-residual obligations remain open and no review approval is implied. The selected-budget radius limit is now derived from its explicit radius formula, rather than carried as an extra open condition for that budget.
