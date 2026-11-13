@@ -674,8 +674,16 @@ interacting table, and $\pi_d:E_d\to\mathcal F_d^{\mathrm{int}}$ for its grade-$
 projection, with $\pi_4=\pi$.
 For each admissible separated test $\sigma$, the table gives linear functionals
 $L^{\sigma}_d(z):\mathcal F_d^{\mathrm{int}}\to\mathbb C$ for $d=3,4$ and $z$ near the origin.
-They are continuous in $z$ and $L^{\sigma}_d(0)=\lambda^{\sigma}_d$. The functionals
-$\lambda^{\sigma}_4$ separate $\mathcal F_4^{\mathrm{int}}$; hence finitely many already do so.
+They are continuous in $z$ and $L^{\sigma}_d(0)=\lambda^{\sigma}_d$. In particular,
+\begin{equation}
+ \lim_{z\to0}\|L^{\sigma}_d(z)-\lambda^{\sigma}_d\|=0
+ \quad(d=3,4),\qquad
+ \bigcap_{\sigma}\ker\lambda^{\sigma}_4=\{0\}.
+ \label{eq:ex-branch-test-properties}
+\end{equation}
+The convergence is in operator norm by finite dimensionality. Thus finitely
+many of the functionals $\lambda^{\sigma}_4$ already separate
+$\mathcal F_4^{\mathrm{int}}$.
 This follows from the field-separation and smoothness properties of the
 selected hierarchy: approximate a separated configuration by generic grid
 configurations at increasingly fine scales. Subtracting the first grid
@@ -694,9 +702,13 @@ argument of Section~\ref{sec:ex-lattice-trace-free-rank}; only the scalar
 label remains. The field projection is onto and sends the scalar label to
 a nonzero reference-scale multiple of the unit, so the same is true of
 $\mathcal F_3^{\mathrm{int}}$. Finally, inserting the unit leaves a separated
-correlation independent of its insertion point. Thus $L^{\sigma}_3(z)$ is
-independent of $z$ in a sufficiently small separated neighborhood. The
-grading, quotient projection, unit and field-separation statements here
+correlation independent of its insertion point. Thus, in a sufficiently
+small separated neighborhood,
+\begin{equation}
+ L^{\sigma}_3(z)=L^{\sigma}_3(0).
+ \label{eq:ex-branch-grade-three-unit}
+\end{equation}
+The grading, quotient projection, unit and field-separation statements here
 are the ones belonging to the same selected table; they are not inferred
 from the branch limit.
 
@@ -736,7 +748,15 @@ $j$ on an ultrafilter-large set, for all sufficiently large $k$:
 Here $a_k^{-1}=a_k^{-4}/a_k^{-3}$, the ratio of the two grade
 normalizations; translation covariance identifies the displaced current values.
 The localized current and its difference are recorded using the same finite-volume choices
-and volumes. The construction supplies these estimates using its local
+and volumes. The exact finite-volume branch formulas, after applying the
+same linear tested correlation, give for each test $\sigma$ and all
+sufficiently large $k$, on an ultrafilter-large set of $u$,
+\begin{equation}
+ \sum_aT^{\sigma,-}_{a,k,u}=0,\qquad
+ \sum_aT^{\sigma,0}_{a,k,u}=\sum_dG^{\sigma}_{d,k,u}(0).
+ \label{eq:ex-branch-recorded-traces}
+\end{equation}
+The construction supplies these estimates using its local
 recording, selected trace-current localization, field hierarchy and
 point-limit inputs. The estimates, low-grade unit statement and separating
 property use the upstream table and hierarchy inputs just stated; the
@@ -923,8 +943,12 @@ test configurations remain separated.
 
 \begin{proposition}[Localized current and raw trace decay]
 \label{prop:ex-branch-raw-fast}
-Assume the recording and test properties above, and the exact
-finite-volume branch formulas. Then for each $d$ the recorded difference
+Assume the recording bounds \eqref{eq:ex-branch-book-current}--
+\eqref{eq:ex-branch-book-tensor}, the finite-volume linearity and identities
+\eqref{eq:ex-branch-recorded-difference} and
+\eqref{eq:ex-branch-recorded-traces}, and the test separation, continuity
+and grade-three unit properties \eqref{eq:ex-branch-test-properties} and
+\eqref{eq:ex-branch-grade-three-unit}. Then for each $d$ the recorded difference
 $w_{d,k}$ is fast, and so are both unaveraged projected traces
 \[
  y^0_k=\sum_a\pi x^0_k(a,a),\qquad
@@ -969,7 +993,7 @@ fixed $z$: every term in the average lies within distance $h_k$ of
 zero. At each fixed $k$ intersect the finitely many ultrafilter-large sets
 needed for the two endpoint current estimates, the $n_k$ difference
 estimates, and the exact difference identity. This intersection is
-nonempty. On it the grade-three unit property gives a common value
+nonempty. On it \eqref{eq:ex-branch-grade-three-unit} gives a common value
 $C_{d,k}^{\sigma}=L^{\sigma}_3(0)v_{d,k}$ at both endpoints. Telescoping
 \eqref{eq:ex-branch-recorded-difference} and using the recording errors
 therefore yields
@@ -983,16 +1007,16 @@ each of the finitely many tests; applying
 The finite intersection at fixed $k$ is essential: no common infinite
 intersection of ultrafilter-large sets is used.
 
-For the false branch the sum of the finite-volume diagonal insertions is
-exactly zero. For a fixed separating test, intersect the four sets in
+For the false branch the first identity in
+\eqref{eq:ex-branch-recorded-traces} is exactly zero. For a fixed separating test, intersect the four sets in
 \eqref{eq:ex-branch-book-tensor} with that exact identity and use
 linearity. The triangle inequality gives
 $|\lambda^{\sigma}_4(y^-_k)|\le\sum_a H^{\sigma,-}_{a,k}$, which is fast. The
 fixed-test version of \eqref{eq:ex-branch-moving-detector} proves the
 false trace is fast.
 
-For the principal branch, its finite-volume trace is exactly the sum of
-the four forward differences. Intersect the four tensor-recording sets
+For the principal branch, the second identity in
+\eqref{eq:ex-branch-recorded-traces} gives the sum of the four forward differences. Intersect the four tensor-recording sets
 with the four difference-recording sets at $j=0$ and with this identity.
 Linearity gives
 \[
@@ -1035,8 +1059,12 @@ and every $v\in E_4$, the bound
 on an ultrafilter-large set of $u$. Here $C$ depends only on the fixed
 finite-dimensional label coordinates. The closed-ball limit gives the
 same bound for $B_kv$, and taking the supremum over $\|v\|\le1$ gives
-$\|B_k\|\le C\widehat\beta_k e^{\ell_k}$. This passage fixes $k$ and $v$
-before taking the separation limit; it does not require a common
+\begin{equation}
+ \|B_k\|\le C\widehat\beta_k e^{\ell_k}
+ \qquad\text{for all sufficiently large }k.
+ \label{eq:ex-branch-transport-bound}
+\end{equation}
+This passage fixes $k$ and $v$ before taking the separation limit; it does not require a common
 ultrafilter-large set for infinitely many $v$. The accumulated-column estimate gives $\ell_k=o(s_k)$, so $e^{\ell_k}$ is
 subexponential. The clock is affine in $s_k$; since
 $s\le\epsilon^{-1}e^{\epsilon s}$ for $s\ge0$ and $\epsilon>0$,
@@ -1047,9 +1075,12 @@ selected local prices under their construction hypotheses.
 
 \begin{proposition}[Principal and false trace washout]
 \label{prop:ex-branch-washout}
-Under the recording and transport estimates,
-\eqref{eq:ex-branch-moment-input}, the chart identity and projection
-equivariance stated above, for each
+Under the recording and test inputs of
+Proposition~\ref{prop:ex-branch-raw-fast}, the transport bound
+\eqref{eq:ex-branch-transport-bound} with $\ell_k=o(s_k)$ and the affine
+clock, \eqref{eq:ex-branch-moment-input}, the chart identity
+\eqref{eq:ex-branch-chart-identity} and the stated projection
+equivariance, for each
 fixed $p\in\mathbb N$ and each $b\in\{0,-\}$,
 \begin{equation}
  \widehat\beta_{k_i}^{\,p}\,
@@ -1078,8 +1109,8 @@ $t^b_k(a,c)$ is centered and centering is linear.
 
 Choose a fixed linear representative $R:\mathcal F_4^{\mathrm{int}}\to E_4$ with
 $\pi R=\mathrm{id}$ and set $r^b_k=Rq^b_k$. It is also fast. For the
-fixed integer $p$, subexponential growth of $\widehat\beta^p_kB_k$
-therefore gives
+fixed integer $p$, \eqref{eq:ex-branch-transport-bound} and the clock
+give subexponential growth of $\widehat\beta^p_kB_k$ and hence
 \[
  \widehat\beta_k^{\,p}B_kr^b_k\longrightarrow0.
 \]
