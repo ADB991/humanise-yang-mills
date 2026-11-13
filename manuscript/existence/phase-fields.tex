@@ -133,6 +133,10 @@ moment constructions; finite dimensionality alone does not supply them.
 \subsection{Field inclusions from simultaneous tested representatives}
 \label{subsec:phase-field-inclusions}
 
+In this subsection we reuse notation: $A_d$ denotes the raw space, $E_d$
+its quotient, $E$ their union, $J_d$ a response map, and $W$ a target
+space; these differ from the letters in Proposition~\ref{ex-no-new-null}.
+
 Equality of the null spaces at each grade does not construct a map between
 those grades. We now give that construction from a separate realization
 input, on one fixed table. No change of phase or of the extraction defining
@@ -289,9 +293,15 @@ the spaces $E_d$ have an algebraic direct limit $E$, with injective maps
 $j_d:E_d\to E$ and $j_e\iota_{de}=j_d$. Every element of $E$ comes from
 one grade, and every finite collection comes from one common grade. The
 table correlations are well defined on finite tuples from $E$.
-If $W$ is any complex vector space and linear maps $F_d:E_d\to W$ satisfy
-$F_e\iota_{de}=F_d$ for all $d\le e$, there is a unique linear
-$F:E\to W$ such that $Fj_d=F_d$ for every $d$.
+Fix any unital ring endomorphism $\sigma:\mathbb C\to\mathbb C$;
+surjectivity is not assumed. If $W$ is a complex vector space and additive
+maps $F_d:E_d\to W$ satisfy
+\[
+ F_d(cv)=\sigma(c)F_d(v),\qquad F_e\iota_{de}=F_d\quad(d\le e),
+\]
+there is a unique additive $\sigma$-semilinear map $F:E\to W$ with
+$Fj_d=F_d$ for every $d$. The complex-linear universal property is the
+case $\sigma=\mathrm{id}$.
 \end{proposition}
 \begin{proof}
 Realize the union in the single response space:
@@ -332,8 +342,19 @@ Define $F(j_dv)=F_dv$. If $j_dv=j_ez$, then at $D=\max(d,e)$,
  \qquad\hbox{hence}\qquad \iota_{dD}v=\iota_{eD}z.
 \]
 Compatibility of the $F_d$ proves $F_dv=F_ez$, so $F$ is well defined.
-Putting two arguments in one grade proves additivity and scalar
-homogeneity from those of $F_D$. Its restriction to each grade is $F_d$.
+For $u=j_dv$ and $w=j_ez$, put $D=\max(d,e)$ as before. Then
+\[
+ \begin{aligned}
+ F(u+w)&=F_D(\iota_{dD}v+\iota_{eD}z)\\
+       &=F_D\iota_{dD}v+F_D\iota_{eD}z=F(u)+F(w).
+ \end{aligned}
+\]
+Also $F(0)=F_d(0)=0$, and for each $c\in\mathbb C$,
+\[
+ F(cu)=F(j_d(cv))=F_d(cv)=\sigma(c)F_d(v)=\sigma(c)F(u).
+\]
+Only the image $\sigma(c)$ is used; no preimage under $\sigma$ is
+chosen. Its restriction to each grade is $F_d$.
 Any other such map agrees on every $j_d(E_d)$, whose union is $E$, and
 therefore equals $F$. This is the algebraic direct-limit property of
 complex vector spaces; no topology or multiplication on the union is
@@ -361,8 +382,9 @@ The numerical correlations of the two tables need not be equal.
 Without the tested realization for $T$ on these same raw maps, grade-wise
 null-space equality alone supplies none of these cross-grade correlation
 identities. Derivative maps and their slot identities, and compatibility
-with calibrated actions or involutions, require their own receipts and
-are not constructed in this subsection.
+with calibrated actions, require their own receipts. The reflected
+involution is constructed below only under its explicit additional
+raw symmetry and inclusion-compatibility hypotheses.
 
 \subsection{Attaching one table and passing its inclusions to every character}
 \label{subsec:phase-inclusion-inheritance}
@@ -401,13 +423,21 @@ also to
 Indeed this is exactly the normalized residual treated following
 \eqref{eq:ope-normalized-tests}: its first term has subpower bare norm
 by the relay bound, and its second is bounded in reference coordinates,
-hence has subpower bare norm by \eqref{eq:ope-bounded-bare}. Thus both
+hence has subpower bare norm by \eqref{eq:ope-bounded-bare}. Here the bare
+or inverse-calibrated norm is the norm in the actual inverse terminal
+coordinates, $|X_{e,c}^{-1}v|_1$, with $X_{e,c}$ the same terminal
+calibration used by the relay. Thus both
 limits in \eqref{eq:ope-normalized-tests} hold, on the same filter and
 with the same row $u_c$. The compactness argument there supplies one
 $b_{de,j}\in\operatorname{ran}P_e$ with
 $f_\theta(b_{de,j})=M_\theta$ for every $\theta$. This is
 \eqref{eq:phase-inclusion-tested-input}. Its one compact refinement is
-made for this row, not separately for each test. Applying it to the basis
+made for this row, not separately for each test. The functionals
+$f_\theta$ and values $M_\theta$ are fixed limits along the original
+ordered filter. Each resulting representative therefore satisfies an
+identity between refinement-independent quantities. Different basis labels
+may use different compact refinements; no joint extraction of those
+refinements is needed to assemble their representatives. Applying it to the basis
 labels supplies the raw maps $K_{de}$ above. This attachment uses only the
 inclusion comparison; it asserts neither a derivative identity nor the
 production of the retained analytic hypotheses.
@@ -500,7 +530,11 @@ then $r_d(v)-a\in N_d$. Similarly,
  r_e(\iota_{de}v)-K_{de}a\in N_e,
  \qquad \iota_{de}v=\pi_eK_{de}a.
 \]
-Lemma~\ref{ex-phase-original-null} shows that both differences vanish in
+Here we use only the proof of Lemma~\ref{ex-phase-original-null}: bounded
+slab insertion, its matrix-element identity, density and placement
+independence imply original-null containment. All these hypotheses are
+already assumed here; the stronger derivative and all-copy bounds standing
+in its section are not used in that proof. It follows that both differences vanish in
 every character correlation against arbitrary spectators. The same is
 true for any changes of spectator representatives. Thus the identity on
 the fixed original quotient plan and the raw identity
@@ -515,7 +549,9 @@ injectivity, uniqueness and composition proof there uses this identity,
 linearity and symmetry only. Its earlier smoothness assumption was used
 to obtain the pointwise identity from the tested one; that step is already
 proved here. Proposition~\ref{prop:phase-field-union} therefore constructs
-the phase union. By Lemma~\ref{ex-phase-original-null},
+the phase union with continuous correlations; its smoothness clauses are
+replaced by continuity in this application. Smoothness follows only when
+the additional hypotheses of Proposition~\ref{ex-phase-caps} are supplied. By Lemma~\ref{ex-phase-original-null},
 $N_d\subseteq N_{\chi,d}$, so the two-table comparison preceding this
 subsection applies to these same raw maps. Explicitly, with
 $q_{\chi,d}\pi_da=\pi_{\chi,d}a$,
@@ -535,7 +571,163 @@ $S$ and $S_\chi$.
 This supplies the same-map selected-table attachment conditional on the
 stated unselected realization and whole-word construction. It does not
 supply the local service, calibrated comparison, rank or ordered-limit
-inputs in Paragraph~\ref{par:phase-inclusion-attachment}. Equality of the
+inputs in the \hyperref[par:phase-inclusion-attachment]{same-table
+realization paragraph}. Equality of the
 null spaces, when needed for isomorphisms, retains the separate hypotheses
-of the earlier phase-null argument. Derivative and Ward identities and
-compatibility with additional field actions remain separate statements.
+of the earlier phase-null argument. Derivative and Ward identities remain
+separate statements. The next subsection treats only the reflected
+conjugation, under its stated additional symmetry and orientation inputs.
+
+\subsection{A compatible reflected adjoint on the common union}
+\label{subsec:phase-union-adjoint}
+
+We retain the raw spaces, null quotients and inclusions already constructed.
+The following are additional inputs, not consequences of equality of null
+spaces. On each $A_d$ assume a conjugate-linear involution
+$a\mapsto\overline a$ and a complex-linear action $R_{d,s}$ of the
+signed coordinate transformations, commuting with conjugation. Assume
+that the same table $S$ obeys, at every distinct-point configuration,
+\begin{equation}\label{eq:phase-raw-real-covariance}
+ \begin{split}
+ S(x;\overline{\boldsymbol a})
+      &=\overline{S(x;\boldsymbol a)},\\
+ S(sx;R_s\boldsymbol a)&=S(x;\boldsymbol a).
+ \end{split}
+\end{equation}
+Here each operation acts at the grade of its label, and $sx$ transforms
+all positions. These are the reality and signed covariance receipts for
+this table. Fix a coordinate reflection $\rho$, so $\rho^2=1$.
+The raw reflected conjugation is
+$a^{\dagger_\rho}=R_{d,\rho}\overline a$. This is the fixed-grade
+operation of Section~\ref{ex-reflection-transport}, not ordinary
+reflection alone. Its conjugate linearity and square-one identity follow
+from the commuting real structure and signed action, as proved there.
+We now check descent and compatibility with this particular field union.
+
+First these operations preserve each null space. If $a\in N_d$, then
+for arbitrary raw spectators $\boldsymbol b$ and separated $x$,
+\[
+ S(x;\overline a,\boldsymbol b)
+   =\overline{S(x;a,\overline{\boldsymbol b})}=0.
+\]
+For a signed transformation $s$, covariance likewise gives
+\[
+ S(x;R_{d,s}a,\boldsymbol b)
+   =S(s^{-1}x;a,R_{s^{-1}}\boldsymbol b)=0.
+\]
+The transformed positions remain distinct, and the transformed spectators
+are admissible raw labels of the same grades. Thus conjugation and $R_{d,s}$
+preserve $N_d$. Applying the inverse operations shows that they carry it
+onto itself. Consequently the quotient maps
+\[
+ \mathsf c_d(\pi_da)=\pi_d\overline a,\qquad
+ \mathsf m_{d,s}(\pi_da)=\pi_dR_{d,s}a
+\]
+are well defined: replacing $a$ by $a+n$ with $n\in N_d$ changes either
+image by a null class. Additivity and conjugate homogeneity of $\mathsf c_d$,
+and complex linearity of $\mathsf m_{d,s}$, follow by applying these
+formulas to sums and scalar multiples of raw representatives. Surjectivity
+of $\pi_d$ passes the raw group law, commutation with conjugation and
+square-one identities to the quotient. In particular
+\[
+ \delta_{d,\rho}=\mathsf m_{d,\rho}\mathsf c_d:E_d\longrightarrow E_d
+\]
+is conjugate-linear and satisfies $\delta_{d,\rho}^2=1$.
+
+To pass to the union retain the inclusion-only orientation identities
+\begin{equation}\label{eq:phase-inclusion-orientation}
+ \mathsf c_e\iota_{de}=\iota_{de}\mathsf c_d,
+ \qquad
+ \mathsf m_{e,\rho}\iota_{de}=\iota_{de}\mathsf m_{d,\rho}
+ \quad(d\le e).
+\end{equation}
+It suffices to supply these for the chosen reflection; the stronger signed
+orientation receipt supplies the second identity for every signed $s$.
+For the raw maps used above, these assumptions have the precise equivalent
+form
+\begin{equation}\label{eq:phase-raw-inclusion-orientation}
+ \begin{split}
+ \overline{K_{de}a}-K_{de}\overline a&\in N_e,\\
+ R_{e,\rho}K_{de}a-K_{de}R_{d,\rho}a&\in N_e
+ \qquad(a\in A_d).
+ \end{split}
+\end{equation}
+Indeed, substitute $\iota_{de}\pi_da=\pi_eK_{de}a$ in each side of
+\eqref{eq:phase-inclusion-orientation}. Their difference is the projection
+of the corresponding expression in
+\eqref{eq:phase-raw-inclusion-orientation}; its projection vanishes exactly
+when it lies in $N_e$. Every quotient label is a projection, so this proves
+both directions. Exact commutation of arbitrarily chosen raw representatives
+is not required. These orientation receipts are retained explicitly here;
+neither grade-wise null equality nor the choice of basis images for $K_{de}$
+is being used as their proof.
+
+\begin{proposition}[Reflected adjoint of the field union]
+\label{prop:phase-union-adjoint}
+Under the hypotheses above, the same algebraic union $E$ has a unique
+conjugate-linear map $\mathcal J_\rho:E\to E$ satisfying
+\begin{equation}\label{eq:phase-union-adjoint}
+ \mathcal J_\rho j_d\pi_da=j_d\pi_d a^{\dagger_\rho}
+ \qquad(d\ge0,\ a\in A_d).
+\end{equation}
+It is an involution and hence a bijection. In particular it preserves every
+level subspace $j_d(E_d)$, with restriction equal to the already specified
+reflected adjoint of that grade. No topology on $E$ is required.
+\end{proposition}
+\begin{proof}
+The two identities in \eqref{eq:phase-inclusion-orientation} imply
+\[
+ \delta_{e,\rho}\iota_{de}
+ =\mathsf m_{e,\rho}\mathsf c_e\iota_{de}
+ =\mathsf m_{e,\rho}\iota_{de}\mathsf c_d
+ =\iota_{de}\delta_{d,\rho}.
+\]
+Thus $F_d=j_d\delta_{d,\rho}:E_d\to E$ is a compatible family:
+\[
+ F_e\iota_{de}=j_e\delta_{e,\rho}\iota_{de}
+              =j_e\iota_{de}\delta_{d,\rho}=F_d.
+\]
+Each $F_d$ is additive and semilinear for $\sigma(c)=\overline c$.
+Proposition~\ref{prop:phase-field-union} supplies the unique such map
+$\mathcal J_\rho$, and its restriction formula gives
+\eqref{eq:phase-union-adjoint}. More concretely, if the same element is
+represented as $j_dv=j_ez$, then at $D=\max(d,e)$ its representatives
+are equal. Applying $\delta_{D,\rho}$ and the compatibility just proved
+gives $j_d\delta_{d,\rho}v=j_e\delta_{e,\rho}z$, which is the
+representative independence needed for this formula.
+For any $u\in E$ choose $u=j_dv$. Then
+\[
+ \mathcal J_\rho^2u
+ =\mathcal J_\rho j_d\delta_{d,\rho}v
+ =j_d\delta_{d,\rho}^2v=j_dv=u.
+\]
+Hence $\mathcal J_\rho$ is its own inverse. The same computation within
+a fixed grade shows that its image of $j_d(E_d)$ is all of that level
+subspace. Any competing conjugate-linear map with the raw restriction
+formula agrees on every $j_d(E_d)$, since $\pi_d$ is onto, and therefore
+agrees on their union. This proves the stated uniqueness.
+\end{proof}
+
+For a second table $T$, comparison of adjoints requires the same raw
+conjugation and signed actions, its own reality and covariance receipts
+\eqref{eq:phase-raw-real-covariance}, and compatible inclusion maps for
+both tables as in \eqref{eq:phase-inclusion-orientation}. Assume also
+$N_d^S\subseteq N_d^T$ and the same-$K_{de}$ correlation identities
+required by the earlier two-table comparison. The resulting maps
+$q_d:E_d^S\to E_d^T$ then satisfy, on every raw class,
+\[
+ q_d\delta^S_{d,\rho}\pi_d^Sa
+   =\pi_d^T a^{\dagger_\rho}
+   =\delta^T_{d,\rho}q_d\pi_d^Sa.
+\]
+They therefore intertwine the grade adjoints. If $q:E^S\to E^T$ is the
+induced union map, the defining identities for $q$ and $\mathcal J_\rho$
+give $q\mathcal J^S_\rho j_d^S=\mathcal J^T_\rho qj_d^S$ at every
+grade, hence $q\mathcal J^S_\rho=\mathcal J^T_\rho q$ on the union.
+If the null spaces are equal, $q$ is the earlier union isomorphism and
+this identity also intertwines its inverse. This applies to a character
+table only when the stated common raw actions and its covariance and
+orientation receipts are supplied. Original-null containment alone does
+not assert them. Nor does this algebraic construction prove compatibility
+with derivatives, a calibrated reference identification, continuous
+rotation or Lorentz actions, or any Ward identity.
