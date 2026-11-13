@@ -318,24 +318,64 @@ identify the two weights or infer one from the other.
 
 \subsection{The calibrated stress sequence}
 
-Throughout this section the index $i$ runs along one comparison curve: the
-radii are $r_i=s_{n_i}$. Write $U_{i,d}$ for the isomorphisms obtained
-from the corrected maps $C_{i,d}$ of
-Theorem~\ref{thm:ex-lattice-selected-trace-gallery} by the early-index
-completion described below. For each fixed grade $d$, $U_{i,d}=C_{i,d}$
-for all sufficiently large $i$; equality at every index is not required.
-The projected maps before correction are denoted $U^{\mathrm{raw}}_{i,d}$,
-never $U_{i,d}$. This is the curve used in
-Section~\ref{sec:actual-stress-normalization}. Every use of grades four
-and five below is restricted to a common tail on which their corrected
-maps are invertible and the stated optical and coherence identities hold.
-Write $U_i=U_{i,4}$ for its grade-four chart and, for a tensor $T$, set
+For this application retain the single comparison curve whose existence
+is required by the joint input below. The index $i$ runs along that curve,
+with radii $r_i=s_{n_i}$. For any admissible choices, form the corrected
+maps $C_{i,d}$ of Theorem~\ref{thm:ex-lattice-selected-trace-gallery}
+and their early-index completion $U_{i,d}$ described below. The theorem
+applies to every admissible choice, so it applies to this same retained
+curve. For each fixed grade $d$, $U_{i,d}=C_{i,d}$ for all sufficiently
+large $i$; equality at every index is not required. The projected maps
+before correction are denoted $U^{\mathrm{raw}}_{i,d}$, never $U_{i,d}$.
+Write $U_i=U_{i,4}$ for the grade-four chart and, for a tensor $T$, set
 \[
  Y_i(T)=r_i^4U_i^{-1}T.
 \]
-For this application we assume the joint-curve input stated below:
-the correction, beam, trace and shell-flux receipts all concern these
-same radii, charts, physical table, derivative maps and reference fields.
+
+\paragraph{Joint-curve input for calibrated stress.}
+\label{par:ex-trace-joint-curve}
+Fix the physical and reference tables, their derivative maps, the physical
+conserved centered tensor $R$, reference stress $R_0$, reference trace field
+$O$ and Ward normalization $\kappa$. Fix also the extraction and its
+ultrafilter. Assume that there exist a positive null sequence $(s_n)$,
+admissible one-stage selections and finite-volume limits satisfying the
+hypotheses of Theorem~\ref{thm:ex-lattice-selected-trace-gallery}, such that
+the following additional receipts hold after forming and completing their
+corrected maps as above. On this same curve, require the eventual optical
+kernel identity used in the rank argument, the coherence identities, the
+operator-norm convergence of $\mathcal B_i$ to an isomorphism, and the
+bound $\|X_i\|\le C_1A_i$. Require the correction cancellation and
+estimates \eqref{eq:ex-lattice-trace-correction-bound}--
+\eqref{eq:ex-lattice-trace-trace-inputs}, with $\mathcal P_i=Y_i$.
+Thus the two-direction tensors use this curve's grade-four and grade-five
+maps, and the beam and weighted trace limits use these same tensors and
+weights. For $\widetilde T_i=B_i^{-1}T_i$, require both separated
+shell-flux limits
+\[
+ \phi_i(R)\longrightarrow y\ne0,\qquad
+ \phi_i(\widetilde T_i)\longrightarrow y.
+\]
+The physical and reference Ward identities and separated-jet comparisons
+used in Section~\ref{sec:actual-stress-normalization} must concern these
+same data. Every use of grades four and five is restricted to a common
+tail on which the needed optical and coherence identities hold.
+A further subsequence is allowed only with all receipts, radii and charts
+restricted together. Tails may depend on each fixed finite collection of
+grades, labels and tests; the tables, derivative maps, $R$, $R_0$, $O$,
+$\kappa$ and cutoff extraction remain fixed.
+
+Only one curve carrying these additional receipts is required for the
+normalization application. The separate prescribed-sequence chart theorem
+remains conditional for every sequence for which its selection input is
+available; no normalization receipt on every prescribed sequence is asserted.
+An all-sequence trace-asymptotic application must retain its stronger
+joint-receipt requirement on the requested sequences; the one-curve input
+here does not supply that requirement.
+This joint input is outstanding. Curves for the individual receipts
+separately, or a ratio of scalar normalizers tending to a constant, do not
+identify the charts and derivative maps. The chart theorem below does not
+assume or produce these additional analytic receipts.
+
 Apply Lemma~\ref{lem:ex-lattice-trace-correction-limits} with
 $\mathcal P_i=Y_i$, so that $\mathcal Y_i=B_i^{-1}Y_i$, and put
 $\widetilde T_i=B_i^{-1}T_i$ for the normalized corrected tensor.  It is
@@ -364,12 +404,11 @@ limits by its physical and reference translation Ward identities and the
 separated-jet comparison. The argument above makes explicit why the common
 nonzero Ward value forces the multiplicative constant to be one.
 
-\subsection{Every vanishing positive scale has a strict subsequence}
+\subsection{Strict subsequences under a prescribed-scale selection input}
 
-The scale part of the source proves a slightly stronger assertion than a
-single convenient scaling. Fix any sequence $s_n>0$ with $s_n\to0$. At each
-integer level $d$, the finite-volume growth and funding estimates give the
-following selection property: for every lower index $N$ and every $\theta>0$
+Fix any sequence $s_n>0$ with $s_n\to0$. For a selection constrained to
+this prescribed sequence, assume the following one-stage property at each
+integer level $d$: for every lower index $N$ and every $\theta>0$
 there are $n>N$, a level $j\ge d$, and a finite-level chart $V_{d,j}$ such
 that
 \begin{equation}
@@ -379,9 +418,9 @@ that
  \label{eq:ex-lattice-trace-one-stage}
 \end{equation}
 The matching receipts cover grades through $d$, and their accuracy is the
-one requested at cutoff $d$. The estimate is uniform in the requested lower index: its
-only use of $N$ is to ask the scale sequence to pass below a positive
-threshold after $N$.
+one requested at cutoff $d$. The quantifiers require a chart at an exact
+member of the prescribed sequence after every lower index $N$, not merely
+at some radius below $\theta$. This is an explicit selection input.
 
 \begin{lemma}[Recursive strict scale selection]
 \label{lem:ex-lattice-trace-strict-subsequence}
@@ -404,13 +443,14 @@ Since $n_d\to\infty$ and $s_n\to0$, the subsequence $s_{n_d}$ tends to
 zero. The selected chart receipts hold at each level by construction.
 \end{proof}
 
-The selected construction obtains the one-stage property from its funded
-finite-volume selection estimate. It finds a scale below $\theta$ past any
-prescribed index, then chooses a chart with scale-location index at least
-$d$ and with the accuracy requested at cutoff $d$. The recursive
-construction above is the complete subsequence argument;
-it does not assume that a preselected scaling already follows the requested
-sequence.
+An arbitrarily-small-radius chart estimate alone does not establish
+\eqref{eq:ex-lattice-trace-one-stage}: its good radii need not meet a
+prescribed sequence. The arbitrarily-small-radius construction chooses
+its own radii successively, below the preceding radius and a vanishing
+upper bound. The lemma above instead proves the prescribed-sequence
+conclusion conditional on the stronger one-stage input. If that input is
+available for every positive null sequence, the conclusion holds for every
+such sequence; that additional availability is not proved here.
 
 \subsection{Corrected lifts and compatibility across grades}
 \label{subsec:ex-trace-corrected-lifts}
@@ -562,52 +602,20 @@ gives $\dim S_d\le\dim E_d$; injectivity gives the reverse inequality.
 Thus $C_{k,d}$ is an isomorphism eventually for each fixed $d$. The
 exceptional tail may depend on $d$.
 
-\paragraph{Joint-curve input.}
-\label{par:ex-trace-joint-curve}
-Fix the physical and reference tables, their derivative maps, the physical
-tensor $R$, reference stress $R_0$, reference trace field $O$ and Ward
-normalization $\kappa$. Fix also the extraction and its ultrafilter. These
-data do not depend on the positive null sequence. For every such sequence
-$(s_n)$, assume that the one-stage choices and the finite-volume limits
-can be made so that all the correction and normalization receipts in the
-following theorem hold on the resulting corrected curve. The subsequence
-and charts may depend on $(s_n)$, but the fixed physical and reference
-data do not. In particular,
-the two-direction matrices and corrected tensors use its grade-four and
-grade-five maps; the beam and weighted trace limits use these same tensors
-and weights; and both shell-flux limits use the same physical tensor $R$,
-reference stress $R_0$ and nonzero Ward value $y$. The physical and reference
-Ward identities and separated-jet comparisons required in
-Section~\ref{sec:actual-stress-normalization} must hold for these same
-data. A further subsequence is allowed only if every receipt is restricted
-together with the radii and charts. Tails may depend on each fixed finite
-collection of grades, labels and tests.
-
-This is an outstanding joint input, not a consequence of having a curve
-for each receipt separately. Nor does a ratio of scalar normalizers tending
-to a constant identify two chart sequences or their derivative maps. The
-finite-dimensional arguments below do not produce these analytic receipts
-on a common curve.
-
 \begin{theorem}[Conditional gradewise ultralimit charts]
 \label{thm:ex-lattice-selected-trace-gallery}
-Assume the scale comparison matrices $\mathcal B_i$ converge in operator
-norm to an isomorphism and $\|X_i\|\le C A_i$, so stable inversion supplies
-property 4 in the rank argument; property 3 follows from
-\eqref{eq:ex-lattice-trace-kernel-comparison}. Assume also the eventual
-correction cancellation and estimates in
-\eqref{eq:ex-lattice-trace-correction-bound}--
-\eqref{eq:ex-lattice-trace-trace-inputs}, together with the one-stage
-selection property \eqref{eq:ex-lattice-trace-one-stage}. For physical
-stress normalization, assume separated shell-flux limits
-$\phi_i(R)\to y\ne0$ and $\phi_i(\widetilde T_i)\to y$. Finally, for each cutoff
-$k$, assume the finite-volume lift bound, exact unit and covariance
-identities, the dimension receipt, and the short-test bound for every tuple
-of arity at most $k$ described above. Require these inputs jointly as in
-the \hyperref[par:ex-trace-joint-curve]{joint-curve input above}. Then for every positive sequence
-$s_n\to0$, there is a strictly increasing sequence $n_k$ such that
-$s_{n_k}$ strictly decreases to zero, and there are corrected maps
-$C_{k,d}:E_d\to S_d$ for $d\le k$ with the following properties:
+Fix a positive sequence $s_n\to0$ for which the one-stage selection
+property \eqref{eq:ex-lattice-trace-one-stage} holds. Fix the physical
+and reference tables, their inclusions and derivative maps, the extraction
+and its ultrafilter. Assume the finite-volume lift bound, exact unit,
+reality and signed-covariance identities, dimension receipt, reference separating-test
+property, and short-test bound described above at each cutoff $k$.
+Then admissible strictly increasing selections $n_k$ with $s_{n_k}$
+strictly decreasing to zero exist. For every such selection of matching
+charts, and every choice of finite-volume limits satisfying these receipts
+on the fixed extraction, form the raw projected maps and apply the
+corrected-lift recursion. The resulting maps $C_{k,d}:E_d\to S_d$
+($d\le k$) have the following properties:
 for each fixed $d$, $C_{k,d}$ is an isomorphism for all sufficiently large
 $k$; the exact unit, reality, and signed-covariance identities hold at those
 indices; and for each fixed tuple and compactly supported test, the tested
@@ -627,9 +635,10 @@ $C_{k,e}\iota^E_{d,e}=\iota^S_{d,e}C_{k,d}$ for all sufficiently large
 $k$. The tail may depend on $(d,e)$.
 \end{theorem}
 \begin{proof}
-Apply the recursive scale-selection lemma to choose $n_k$ with strictly
-decreasing $s_{n_k}$. At each cutoff $k$, the common-ultrafilter finite
-dimensional limit gives the raw projected maps $U^{\mathrm{raw}}_{k,d}$ and their tested
+The recursive scale-selection lemma supplies at least one admissible
+selection. Now fix any admissible selection and any corresponding
+finite-volume limits with the stated receipts. At each cutoff $k$, the
+common-ultrafilter finite-dimensional limit gives the raw projected maps $U^{\mathrm{raw}}_{k,d}$ and their tested
 correlation estimates. The corrected-lift calculation above produces
 $C_{k,d}$; the finite slot argument transfers tested convergence, reality,
 and signed covariance to these maps. The finite separating-test argument
@@ -648,7 +657,10 @@ $Q$ and $k$ exceeds the arity and grades involved,
 \eqref{eq:ex-lattice-trace-test-error} bounds each summand by
 $(k+1)^{-1}M\prod_a\|w_a\|$.  Summing, the supremum in
 \eqref{eq:ex-lattice-trace-uniform-tests} is at most $(k+1)^{-1}MK_v$ with
-a constant $K_v$ depending only on $v$, and it tends to zero.\end{proof}
+a constant $K_v$ depending only on $v$, and it tends to zero. The argument
+uses only the stated receipts of the chosen charts and limits, so it
+applies to every admissible choice, in particular the one retained in the
+joint-curve input for stress normalization.\end{proof}
 
 To obtain isomorphisms at every index, fix for each grade $d$ an index
 $k_d\ge d$ for which $C_{k_d,d}$ is invertible, and set
@@ -659,7 +671,12 @@ $k_d\ge d$ for which $C_{k_d,d}$ is invertible, and set
  \end{cases}
 \]
 For each fixed $d$ this changes only finitely many terms. Hence the tested
-limits for every fixed finite tuple are unchanged. For each fixed pair
+limits for every fixed finite tuple are unchanged. More strongly, for a
+fixed tuple the equality of its finitely many grade maps holds on one
+tail independent of the test. Thus $A^U_{k,v}(t)=A^C_{k,v}(t)$ there
+for every test $t$, and the uniform supremum estimate
+\eqref{eq:ex-lattice-trace-uniform-tests} transfers to $U$ unchanged.
+For each fixed pair
 $d\le e$, intersecting the two agreement tails transfers the balanced
 inclusion identity to $U$; the same argument transfers the unit and
 symmetry identities. The exact identity for $C$ before completion is
@@ -670,9 +687,9 @@ data together as required by the joint-curve input.
 
 The corrected-lift construction proves the pairwise eventual inclusion
 identities for the corrected maps; it does not claim one tail uniform over
-all grades. The actual source theorem producing the full gallery also requires several
-substantive analytic estimates: the one-stage
-finite-volume chart selection; the scale-dependent two-direction limits;
+all grades. Production of the full calibrated curve also requires several
+substantive analytic estimates: the finite-volume chart selection (with
+the stronger prescribed-sequence property if that version is requested); the scale-dependent two-direction limits;
 the base and correction beam limits; the weighted false-sector flux
 washout and true-sector flux convergence; the separated-jet comparison;
 and the finite chart lift, unit, covariance, short-test, and dimension
