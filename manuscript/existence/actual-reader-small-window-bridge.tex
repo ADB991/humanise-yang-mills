@@ -68,20 +68,21 @@ $(1+B)^4$.
 Fix one patch, tube, forest, tag, posed configuration and history over
 the entire panel.  Assume the source's branch/funding, floor,
 attachment, swornness, diagonalization and roll conditions, and the
-same-pose hypotheses at outer radius $B$: for a source threshold
-$\delta>0$, the coarse side satisfies $c\ge100(1+B)$, and the stored
+same-pose hypotheses at outer radius $B$: the coarse side satisfies
+$c\ge100(1+B)$, and the stored
 flags equal the flags of the posed configuration at temperature
-$\vartheta(x)$. For each $x$ under consideration, fix $t$ with
+$\vartheta(x)$. Let $\delta>0$ be the fixed small-field threshold.
+For each $x$ under consideration, fix $t$ with
 $0\le t\le\min\{\delta,R\chi(x)\}$.
 Assume that the direction $v$ has size at most $t$, the local price bound
 holds on that ball, its group representative agrees there with the posed
-field, and the center is outside $\mathcal D_U(11B+1)$. Every shifted center used in the proof also satisfies the
-same pose margin: its distance from the fixed pose center plus the
-pose's wall allowance is at most the original width $W$.  Use the
+field, and the center is outside $\mathcal D_U(11B+1)$. Use the
 actual panels selected by the outer construction and the
 official-address map to the cleared panel. The mean conclusion is for
 an active coordinate $i$ whose anchor is within $B/4$ of $o$; the
-column conclusion is for every $j$ in that same selected panel.
+column conclusion is for every actual active row $j$ of the padded
+window inverses. Outside the selected panel both padded inverses
+vanish, so this also includes those rows.
 
 Let $\eta>0$ be the minimum decay rate in the short-kernel approximation
 and long-path budget. Put
@@ -158,10 +159,19 @@ telescoping identity
  F_1\cdots F_m-H_1\cdots H_m
  =\sum_{j=1}^mF_1\cdots F_{j-1}(F_j-H_j)H_{j+1}\cdots H_m.
 \]
-The local chart bounds each changed factor by the field size times its
-path length; summing the retained lengths gives
-$(1+\operatorname{till}(x))t$. The omitted paths contribute at most
-$e^{-\tau\operatorname{till}(x)}$. Thus
+Write $w_x=\operatorname{widen}_x(t)$. The chart bounds give a linear
+curvature row $v'$ of size at most $Ct$ and a nonlinear row $v_0$
+with $|v_0-v'|\le Ct w_x$. The actual and flat transport kernels
+$K,H$ have row norms at most $C$ and difference row norm at most
+$Cw_x$. Thus
+\[
+ Kv_0-Hv'=(K-H)v'+K(v_0-v'),\qquad
+ |Kv_0-Hv'|\le 2C^2t w_x.
+\]
+The extra factor $t$ comes from the linear curvature row, not from
+the transport telescoping alone. The local bond-response Taylor
+remainder is at most $Ct^2\le Ct w_x$. Combining these estimates
+with the fine curvature-row remainder gives
 $|B_r(V)-F_r(v)|\le A t\,\operatorname{widen}_x(t)$.
 For the pulse difference, first restrict the direction to the outer
 comparison ball of radius $B$. Finite row dependence makes the row
