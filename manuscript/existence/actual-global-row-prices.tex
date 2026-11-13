@@ -34,7 +34,53 @@ a predictor row. This is the output anchor used in the weighted bounds.
 The selector here retains a row exactly when its prescribed stencil
 meets an active bond; that stencil contains all fine-direction inputs of
 the row. The anchor-distance selector of Section~\ref{sec:sector-gram}
-uses a different rule; no equality of selected sets is assumed. Write
+uses a different rule; no equality of selected sets is assumed.
+
+We make the selection rule and its consequence for flags explicit.
+For $k\ge0$, the $k$-neighbourhood of the seeds is the set of coarse
+sites within distance $k$ of the seed place of the stores; the coarse
+flags belong to the seed place. As in Section~\ref{sec:sector-gram},
+the active bonds are the free bonds whose coarse endpoints lie outside
+the $10B$-neighbourhood of the seeds; below we use only that the coarse
+parent of an active bond lies outside it. Let $r_{\rm pred}$ be the
+fixed reach of the predictor and put
+\[
+ \operatorname{span}(x)=R+5+r_{\rm pred}.
+\]
+The \emph{stencil} of a row in signed channel $s$ consists of the fine
+bonds whose coarse parent is within distance $\operatorname{span}(x)$
+of its output anchor $o$. Here $R$ is the cutoff on the length of the
+retained paths, and the stencil contains every fine-direction input of
+the row. Since $R=\lfloor B/100000\rfloor$, one has
+$\operatorname{span}(x)\le\lfloor B/50\rfloor$ as soon as
+$B\ge100(5+r_{\rm pred})$; this and $B\ge7$ hold eventually.
+
+\emph{Clearance of selected rows.} Suppose a row with output anchor
+$o$ is selected, so that its stencil contains an active bond $a$ with
+coarse parent $l$. Then $\operatorname{dist}(o,l)\le\lfloor B/50\rfloor$.
+If a coarse site $m$ and $k\ge0$ satisfy
+$k+\operatorname{dist}(m,l)\le10B$, then $m$ is outside the
+$k$-neighbourhood of the seeds: otherwise some seed point $y$ has
+$\operatorname{dist}(y,m)\le k$, hence $\operatorname{dist}(y,l)\le10B$,
+contradicting that $a$ is active. Applying this with $m=o$ and
+$k=9B+\lfloor9B/10\rfloor$ (note
+$\lfloor9B/10\rfloor+\lfloor B/50\rfloor\le B$) shows that $o$ is
+outside the $(9B+\lfloor9B/10\rfloor)$-neighbourhood of the seeds.
+For a bond $e$ of the stencil, its coarse parent $m$ satisfies
+$\operatorname{dist}(m,l)\le\operatorname{dist}(m,o)+\operatorname{dist}(o,l)
+\le2\lfloor B/50\rfloor$, and the coarse parent $n$ of its other
+endpoint is within one more. With $k=9B+\lfloor8B/10\rfloor$ and
+$\lfloor8B/10\rfloor+1+2\lfloor B/50\rfloor\le B$ (valid for $B\ge7$),
+both $m$ and $n$ lie outside the $(9B+\lfloor8B/10\rfloor)$-neighbourhood
+of the seeds. Since the flags lie in the seed place, every coarse ball
+of radius at most $9B$ about the output anchor or about an endpoint of
+the stencil is free of coarse flags. All the neighbourhoods used below
+for a selected row (the branch neighbourhood of a predictor read, the
+clean $B$-ball of the base-row estimate, and the chart boxes of the
+plaquettes reached by retained paths) have radius at most $B$ for large
+$x$, so they are clean. This is the meaning of the phrase ``row selection
+clears the required neighbourhood of flags'' below. Unselected rows are
+set to zero and need no clearance. Write
 \[
              M:\mathbb R^I\longrightarrow\mathbb R^J,
              \qquad Q=M^*M
@@ -49,8 +95,12 @@ inverse predictor at zero displacement. They need not equal the
 transported flat rows used in Section~\ref{sec:sector-gram}; their
 coercivity requires the separate comparison below.
 For matrices between either pair of anchor sets, use the weighted maximum
-of absolute row and column sums, denoted $\|\cdot\|_v$ as in
-Section~\ref{sec:local-covariance}. For each $j\in I$, let $W_j$ be its
+of absolute row and column sums with exponential weight $w\ge0$, denoted
+$\|\cdot\|_w$; this is the norm $\|\cdot\|_\eta$ of
+Section~\ref{sec:local-covariance} with $\eta=w$. (The letter $Q$ below
+is the Gram matrix, not the amplitude constant of
+\eqref{eq:covariance-data}; when that section is applied to $Q$, its
+amplitude constant is supplied by \eqref{eq:global-row-error}.) For each $j\in I$, let $W_j$ be its
 actual panel. Let $N$ be the matrix whose $j$th column is the inverse
 of $Q_{W_j}$, extended by zero, and let $C=(N+N^*)/2$.
 
@@ -64,7 +114,8 @@ choices just specified,
  \|Q\|_0,\ \|C\|_0,\ \|N\|_0\le K,
  \label{eq:global-row-kernels}\\
  \|N-Q^{-1}\|_0\le u e^{-v\lfloor B/60\rfloor},\qquad
- \|M\|_{\sigma/2}\le L_0,
+ \|M\|_{\sigma/2}\le L_0,\qquad
+ \|Q\|_{\sigma/2}\le L_0^2,
  \label{eq:global-row-error}
 \end{gather}
 where $\sigma>0$ is the fixed path width. In particular $Q$ and $C$
@@ -89,8 +140,8 @@ its actual branch by the finite-read argument of
 Section~\ref{sec:mean-action-jets}. That finite-read argument uses the
 fixed patch and predictor branch conditions; it does not use the
 precision bounds assumed for other parts of that section. Row selection
-clears the required neighbourhood of flags, so this branch estimate
-applies at $V$.
+clears the required neighbourhood of flags, by the clearance argument
+above, so this branch estimate applies at $V$.
 Reversing a bond changes its parent anchor by at most one, which costs
 only a fixed factor in the exponential weight. Restrictions to selected
 rows or active coordinates delete nonnegative terms from the absolute
@@ -112,7 +163,12 @@ distance gives
 \]
 Increasing $L_0$ if needed makes it positive. This is a global row
 and column bound; its proof does not introduce the torus cardinality.
-The same product estimate gives $\|Q\|_{\sigma/2}\le L_0^2$.
+The same product estimate gives $\|Q\|_{\sigma/2}\le L_0^2$: the
+weighted norm is submultiplicative, because the triangle inequality
+$\operatorname{dist}(a_i,a_k)\le\operatorname{dist}(a_i,a_j)+\operatorname{dist}(a_j,a_k)$
+through the intermediate anchor splits the weight, and the adjoint has
+the same weighted norm since row and column sums are interchanged.
+This is the last bound in \eqref{eq:global-row-error}.
 We prove a uniform lower bound for these actual derivatives. Let $a$
 be an active-coordinate vector and extend it by zero to a fine-bond
 field $u$, including zeros on tree and frozen bonds. At each active
@@ -251,7 +307,8 @@ estimate for the original tags. We check its application to the actual
 selected rows here. This uses only that subsection's base-stroke argument,
 not its subsequent mean calculation.
 
-A selected row has no coarse flags in its required surrounding ball.
+A selected row has no coarse flags in its required surrounding ball,
+by the clearance argument following the definition of the stencil.
 For large $B$, this contains every fixed chart box needed by a predictor
 read or by a plaquette reached by a retained path. The actual flag
 identity in the proposition therefore gives the local small plaquette

@@ -10,8 +10,9 @@ the actual marked construction, together with its terminal activity
 keepers and opened-scale response bounds, on this same history;
 these are the hypotheses of Lemma~\ref{lem:actual-marked-antilles},
 not additional conclusions of the present argument. For the difference
-relay we also assume the derivative-shift purchase
-$J_N\le\widehat\beta_N$ stated in its place below. The argument
+relay we use the derivative-shift purchase
+$J_N\le\widehat\beta_N$ derived below from the retained profile-cost
+clause of this same funded history. The argument
 uses the same terminal coefficient construction as the marked section,
 but allows a local function whose coefficients vary with the cutoffs.
 
@@ -94,12 +95,77 @@ multilinear in its directions, so restoring their size costs at most
                          J_N=2^{w_Nq_N}.
 \]
 The protected prices for \eqref{eq:relay-difference-weight} are therefore
-$(J_N+1)c_{N,p}$ and $2b_{N,p}$. We assume the selected-run
-derivative-shift purchase $J_N\le\widehat\beta_N$ for all sufficiently
-large $N$; it is a hypothesis on the selected delay, to be discharged by
-the caller, and is not proved in this monograph. Given it, the hatted
-coupling is subpower, so this extra price is subpower too. This order-and-power purchase is essential and
-does not follow merely from the cancellation of $a_N^{-1}$.
+$(J_N+1)c_{N,p}$ and $2b_{N,p}$. The required shift purchase is
+already contained in the profile-cost clause of the common history, as
+follows.
+
+\begin{lemma}[Payment for the derivative shift]\label{lem:actual-derivative-shift-payment}
+Fix the funded history of Sections~\ref{sec:common-observable-purchases}
+and~\ref{sec:common-scale-selection}, retaining the marked-portfolio
+entrance delay of Section~\ref{sec:ex-marked-portfolio-calibration}.
+At every level $N\ge0$, let $q_N,w_N$ be the order and power of the
+actual top budget, namely those of the profile at stage $J(N)$.
+Then
+\[
+                 1\le J_N=2^{w_Nq_N}\le\widehat\beta_N.
+\]
+This bound holds for every period on that same history. For every
+extraction order and every refinement of it, $J_N$ is subpower in the
+ordered-cutoff sense. Consequently $(J_N+1)c_{N,p}$ and $2b_{N,p}$
+are subpower whenever $c_{N,p}$ and $b_{N,p}$ are.
+\end{lemma}
+
+\begin{proof}
+Write $q(j),w(j)$ for the order and power of the fixed stage-$j$
+profile and set $C_j=(2^{w(j)})^{q(j)}$. The profile-cost clause of the
+retained entrance delay $E_i$ says precisely that
+\[
+ j\le i\le j+1,\quad E_i\le x
+                  \quad\Longrightarrow\quad C_j\le x.
+\]
+The finite-threshold construction in
+Section~\ref{sec:ex-marked-portfolio-calibration} includes this clause:
+for a fixed adjacent pair $(i,j)$, $C_j$ is a fixed finite number,
+so it is exceeded on a tail of $x$. Only the stage $i$ and its
+predecessor are tested at entrance $i$. Taking their finite maximum,
+and then prefix maxima together with the other entrance requirements,
+retains the clause under further enlargement. This is the entrance
+purchase kept in Section~\ref{sec:common-observable-purchases} before
+the common history is chosen; no new history is selected here.
+
+On that history the final entry threshold $d_i$ dominates $E_i$,
+and Section~\ref{sec:common-scale-selection} gives, for every $N\ge0$,
+\[
+ J(N)\le J(N+1)\le J(N)+1,\qquad
+ E_{J(N+1)}\le d_{J(N+1)}\le\widehat\beta_N.
+\]
+Apply the clause with $i=J(N+1)$, $j=J(N)$ and
+$x=\widehat\beta_N$. The actual budget uses that same profile $J(N)$;
+hence $C_{J(N)}=(2^{w_N})^{q_N}=2^{w_Nq_N}=J_N$.
+Nonnegative integer order and power also give $J_N\ge1$.
+This argument includes $N=0$ and uses neither a grade-dependent
+reference depth nor a period-dependent choice.
+
+The retained coupling price is subpower along every extraction order.
+Since $0\le J_N\le\widehat\beta_N$ pointwise and independently of the
+period, the same eventual bounds apply to $J_N$ on any such order and
+remain true after any refinement. To check the resulting products
+explicitly, fix $\varepsilon>0$ and a chosen extraction order.
+Subpower gives $J_N\le e^{\varepsilon s_N/3}$ and
+$c_{N,p}\le e^{\varepsilon s_N/3}$ on a common ordered-cutoff tail.
+As $J_N\ge1$, their new price is at most
+$2e^{2\varepsilon s_N/3}\le e^{\varepsilon s_N}$ after enlarging
+that tail, since $s_N\to\infty$. Likewise
+$b_{N,p}\le e^{\varepsilon s_N/2}$ implies
+$2b_{N,p}\le e^{\varepsilon s_N}$ eventually. These are finite
+intersections of tails on the original family, not exchanges of the
+period and mesh limits.
+\end{proof}
+
+The order-and-power payment is essential: cancellation of $a_N^{-1}$
+alone does not supply it. The lemma extracts an existing paid clause;
+it does not construct the quantitative service, activity keepers or
+opened-scale bounds assumed at the start of this section.
 
 \subsection{A terminal coefficient with a subpower total price}
 

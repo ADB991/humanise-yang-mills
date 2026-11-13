@@ -1,0 +1,13 @@
+# Validation and limits
+
+Review session: `mgubi-astra-c15-leakage-review-20261113` (independent delegated Astra review on behalf of mgubi). Target: PR #207, exact commit `a4a73dc9e0efcb16db2519acfb33ba7df0d0c032`; parent `69b2631f7a3d3c4176ca0084d8607cb9d8d124a2`. Source pin: `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Claim: https://github.com/hairer/humanise-yang-mills/issues/194#issuecomment-6861077618 (expires 2026-11-13 22:00 UTC).
+
+Scope: the 67 responses in issue #194 and U1, changed hunks of 18 chapters and three author records, with immediate interfaces. This is not a full C15 review, renewed approval of PRs #107/#112, or human acceptance. Author files were read only. Fingerprints are in `reviewed-files.sha256` and bind this review to the frozen target, not a later checkout.
+
+Read the worktree instructions, contribution/coordination/proof standards, source README, relevant shared literature notes, issue #194 and all comments, PR #207, relevant #56 history, and audit #159/#164 material. Prior #107/#112 reviews were evidence only. The live claim was rechecked before substantial work. Submission checks are recorded below.
+
+Commands actually run include `git diff` against the target parent for all 21 changed files, focused `sed`/`rg` source and interface reads, and `git show <target>:<path>` for immutable fingerprints. A Python check found exactly 67 distinct numbered response rows and generated the row coverage table, plus U1. It fingerprinted all 21 changed author files, the immediate branch-moment chapter, and 20 inspected source files. All 20 source digests match the frozen `Lean/SOURCES.sha256` entries. These fingerprints describe the original target even if this report branch is transplanted onto a newer base.
+
+No manuscript, author ledger, source, old review, or shared metadata was edited. No LaTeX build or rendered-page inspection was run by this reviewer: the deliverable is report-only, and no new typeset content is proposed. The author's reported build is not claimed as an independent check. No Lean command or test suite was run; the checker itself was not changed. These reports are bounded independent judgments, not formal verification or human acceptance.
+
+Submission recheck: issue #194 still contains this unexpired claim with no conflicting review claim; PR #207 remains OPEN at the exact target. `python3 scripts/check_blueprint.py` passed: “Blueprint structure OK: 4 units. Lean and mathematics were not verified.” `git diff --check` passed. Because PR #207 is unmerged, only the report commit is transplanted onto the current canonical base before publication; the final PR diff must contain only the five files in this session directory.

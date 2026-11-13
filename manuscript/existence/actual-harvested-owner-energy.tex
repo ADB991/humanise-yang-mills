@@ -158,6 +158,7 @@ actual chart signal, uniformly in the finite period. The
 threshold is chosen after its fixed window and chart constants.
 
 \subsection{The harvested ceiling of an actual packet}
+\label{subsec:owner-harvested-ceiling}
 
 We apply \eqref{eq:owner-selected-gain} to the ceiling used in
 the block exponent. Fix the full store $A$, an owner packet
@@ -170,8 +171,12 @@ width $w$. The chart radius is $w\nu$, is positive and is
 smaller than the first logarithmic radius. These hypotheses
 hold before the fine field or its coordinates are varied.
 
-For each signed orientation $\sigma$, turn the owner and full
-store, the fine and coarse fields, the forest and the tag together.
+Let $\mathcal S$ be the set of signed permutations of the four lattice
+axes: a permutation and an independent choice of reflection for each
+axis. Put $\omega_{\mathcal S}=1/|\mathcal S|$ and write
+$\operatorname{Av}_{\sigma}F(\sigma)=\omega_{\mathcal S}
+\sum_{\sigma\in\mathcal S}F(\sigma)$. For each $\sigma$, turn the owner and
+full store, the fine and coarse fields, the forest and the tag together.
 Let $Q_\sigma$ be the annulus between radii $2B$ and $200B$
 of the turned owner. Let $H_\sigma$ consist of the actual
 Gaussian rows selected from this annulus. The span bound keeps
@@ -199,7 +204,7 @@ $O$. The definition of the actual ceiling charge gives the exact
 identity
 \begin{equation}\label{eq:owner-ceiling-identity}
 \begin{split}
- \mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+ \omega_{\mathcal S}\sum_{j\in\mathcal C_{200B}(O)}
              \mathrm{levy}_j
  =\operatorname{Av}_{\sigma}\bigl[
        \mathcal W_\tau(\operatorname{anchor}_{200B}(\sigma O))
@@ -210,9 +215,9 @@ identity
 Here $a_\sigma$ is the actual array just described, $m$ is
 the localized Gaussian mean, and $\mathcal C_\sigma(m)$
 is the sum of its charged fine and predictor squares. It is
-nonnegative. The average is the normalized signed average;
-the factor $\mathrm{Aff.weight}$ has already performed this
-normalization.
+nonnegative. Each address on the left already includes its signed orientation, so
+the single factor $\omega_{\mathcal S}$ normalizes the sum over those
+orientations.
 
 For completeness, the identity is a finite reindexing. Partition
 the oriented energy addresses into fine faces, predictor bonds,
@@ -238,7 +243,7 @@ Apply \eqref{eq:owner-selected-gain}, drop the nonnegative
 mean squares, and use $s(\sigma O)=s(O)$. Averaging proves
 \begin{equation}\label{eq:owner-actual-heft}
  \frac{b_0}{8}\tau^2s(O)
- \le\mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+ \le\omega_{\mathcal S}\sum_{j\in\mathcal C_{200B}(O)}
                \mathrm{levy}_j.
 \end{equation}
 This is the harvested owner-energy estimate required in

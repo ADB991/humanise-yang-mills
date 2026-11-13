@@ -6,6 +6,28 @@ sandbox, see validation.md). The existing table in
 `../../../reconstruction-evidence.md` remains the correspondence for the
 unchanged chapters; it was not re-verified line by line in this pass.
 
+## New: Corollary `cor:nonzero-field` and input `input:unit-insertion` (boundary-detection.tex; issue #251)
+
+| Manuscript step | Declaration | Path | What was read |
+| --- | --- | --- | --- |
+| Target clause "at least one smeared field is nonzero" | field `acts` of `YangMills.Hierarchy.Reconstructed` | `Lean/ChallengeSpec.lean` l.121 | statement |
+| Proof of `acts` in the source | first bullet of `YangMills.publicReconstruction` (tag ⟨0, S.unit 0⟩) | `Lean/HierarchyBridge.lean` l.84–88 | full |
+| Unit class nonzero (first paragraph of the proof) | `YM.Table.alive` (single insertion at the one-point configuration `0 : Points 1`, empty spectator list, then `unital` and `trivial`) | `Lean/YM/Euclid/Null.lean` l.100–109 | full |
+| Null space allows zero spectators | `YM.Table.criterion` quantifies over all `n : ℕ`, including n=0; `YM.Exterior` has `point : Points (n+1)` | `Lean/YM/Euclid/Null.lean` l.22–43 | full |
+| `input:unit-insertion` (i), (ii) | `YM.Table.Basic.unital`, `YM.Table.Basic.trivial`; unit token `YM.Register.one d = ⟨d, L.scalar d⟩` | `Lean/YM/Euclid/Table.lean` l.74–78; `Lean/YM/Euclid/Register.lean` l.28, l.90 | full |
+| Where the source gets (i), (ii) | `YM.Table.Hierarchy.laws : S.Basic`, field of the premise `YM.Spec.Seed.kernel`, used as `F.room.kernel.laws` | `Lean/YM/Euclid/Words.lean` l.140–149; `Lean/YM/Spec/Closed.lean` l.18–25 | statements |
+| Injectivity into the union | `YM.Table.pin_inj` | `Lean/YM/Euclid/Union.lean` l.26–30 | statement |
+| Nonzero label ⇒ nonzero field | `F.realization.qt.faithful` (source); manuscript: `prop:boundary-detection` + `prop:word-fields` | `Lean/HierarchyBridge.lean` l.80, 87 | use only |
+
+Differences from the source: the source uses grade d₀=0 and the unit law at
+every grade; the manuscript needs only one grade. The source table `S` here is
+the unselected (original) table whose quotients define the levels; the
+manuscript states the input for the unselected limiting correlations,
+matching. The manuscript reaches the nonzero operator through
+`prop:boundary-detection` (contrapositive) and the field formula of
+`prop:word-fields`, where the source invokes faithfulness of the realization
+directly; both rest on the same detection argument.
+
 ## New: Corollary `cor:word-motion-inputs` (boundary-detection.tex)
 
 | Manuscript step | Declaration | Path | What was read |

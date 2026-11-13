@@ -40,13 +40,14 @@ No new named outstanding input arises from these rows.
   `../../../free-kernel-estimates-evidence.md` (row "Theorem
   `thm:ex-lattice-wire-tower-strip`": `YM.Next.Free.Secured.bankCost`,
   `.traverse`, `.honored`; `Flight.duo`).
-- **C2 (row 8).** Level response and recovery: `YM.Next.Free.levelD` and
-  `YM.Next.Free.Train.D_feedback` (`Lean/YM/Next/FREE_KERNELS/Feed.lean`), and
-  `Train.recover_rho`, `Train.D_bulb`, as listed against
-  `lem:ex-lattice-train-component-bounds` in the PR #83 Lean table
-  (`review/schmittj-claude-20261112/part2-lean.md`, row 61; file path not
-  recorded there and not re-inspected here). The manuscript proof is
-  restricted to nonzero momentum, where `d_M≠0`.
+- **C2 (row 8).** Level response and recovery: `YM.Next.Free.Train.levelD`
+  and `YM.Next.Free.Train.D_feedback` (`Lean/YM/Next/FREE_KERNELS/Feed.lean`,
+  lines 133 and 154), and `YM.Next.Free.Train.D_bulb` and
+  `YM.Next.Free.Train.recover_rho` (`Lean/YM/Next/FREE_KERNELS/Bend.lean`,
+  lines 72 and 150). Both of the latter assume `p ∈ realCube zone` and
+  `p ≠ 0`; `recover_rho` also assumes `0 < k`. The manuscript proof is
+  stated for nonzero real `p` in the enlarged cube (coordinate radius
+  `π+zone`), where `d_M(p)≠0`, with the positive penalty `k` of the section.
 - **C3 (row 10).** Reciprocal shift of the wire: `YM.Next.Free.Secured.relay`,
   instantiated by `secure_both` (`Strands.lean`), built from
   `Flight.knots_shift`, `alias_exchange`, `script_shift`, `wire_match`,
@@ -66,3 +67,20 @@ No new named outstanding input arises from these rows.
   11–17 wording).
 - `python3 scripts/check_blueprint.py`: "Blueprint structure OK".
 - `HANDOFF.md` chapter hashes updated for the four edited chapters.
+
+## Response to the independent review (PR #222)
+
+Session `hairer-claude-20261113-c01fix`.
+
+- **Source review S1 (required).** Corrected `YM.Next.Free.levelD` to
+  `YM.Next.Free.Train.levelD` in C2. C2 now also gives the `Bend.lean`
+  locations and hypotheses of `D_bulb` and `recover_rho`, as supplied by
+  the review.
+- **Mathematical review, domain clarification for row 8 (recommended).**
+  "Off `p=0`" is replaced by "for nonzero real `p` in the enlarged cube".
+  One added sentence shows that `d_M(p)=4M²Σ_a sin²(p_a/2M)≠0` there,
+  because `|p_a|<π+π/4<2π≤2πM`. This matches the source hypotheses
+  (`realCube zone`, `p≠0`).
+
+The manuscript edit is a material change to row 8, so the delta needs a
+renewed bounded review by another account. Checks are listed in the PR.

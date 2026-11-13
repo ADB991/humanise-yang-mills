@@ -5,6 +5,17 @@ Session: `TrishenGunaratnam-terra-c13-20261112`; issue #54. Source pin
 `9d11cca4644bad07126bfa372cc85fb120dee7ba`. These are author findings,
 not independent review or a claim of global closure.
 
+## #192 source-leakage revision
+
+The [#192 response and source crosswalk](source-leakage-192.md) accounts for
+all 29 audit rows for C13. It states the based-transport proof and the
+replica/relative-response identity under the local reader hypotheses and
+derives the scalar sizing and retimed clearance bounds. The two original J
+rows and the two scalar rows reclassified as J introduce no new outstanding
+input. The same-pose Gaussian, paid chart and row, window and common-history
+premises are retained. The larger-weight and auxiliary-history joins recorded
+in the [#202 continuation](completion-20261113.md) remain open.
+
 ## C09/C11/C13 convergence order and auxiliary histories — open
 
 Consumer: `sec:selected-history-limits`, activity and coupling subsection;

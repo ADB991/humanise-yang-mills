@@ -1,0 +1,15 @@
+# C15 R1/R2 response: mathematical review
+
+Session `mgubi-astra-c15-r1r2-review-20261113`, independent Astra review for mgubi. Claim: https://github.com/hairer/humanise-yang-mills/issues/194#issuecomment-6861748664. Target PR #207 delta `a4a73dc9e0efcb16db2519acfb33ba7df0d0c032..2719f797c6bcd4d16dcf62b220afdd87155e213e`; prior findings in PR #212 at `84863815e07ce0028847c93c5fef10a5fda343ec`.
+
+**Verdict: R1 and R2 are addressed; no further correction required in this response delta.** The scope is two changed chapter passages, three author records and the immediate existing cancellation/insertion arguments. This does not renew the other 65 audit rows, all C15 proofs, or any open input. Human acceptance is unset; the work remains draft.
+
+R1: `trace-scribe-producer.tex` now cites the actual conditional derivation immediately after `eq:ex-lattice-scribe-sensor-limits`. Its coefficients are the same c_i used in the flux calculation: the displayed definition solves exact cancellation, and the subsequent text introduces the same three tensor families rather than a different schedule. Put alpha_i=t_i mu_i(K_i Omega_i) and beta_i=t_i(mu_i(K_i Delta_i)+4). The sensor inputs give alpha_i,beta_i→0 and mu_i(X_i)→−kappa. The coefficient bound and rho_i<=t_i bound both c_i^j/t_i. Thus in
+
+    0 = mu_i(X_i) - 4 c_i^1 + (c_i^0/t_i) alpha_i + (c_i^1/t_i) beta_i
+
+the last two terms vanish, giving c_i^1→−kappa/4 with the correct sign and factor four. This verifies the already printed conditional argument; it does not supply its incoming sensor estimates, scale bounds or paid comparison receipts. The new reference accurately states that dependency. The preceding sensor discussion explicitly treats YM-000033 and its chart/clock/marked-vector data as external inputs. The part-B ledger now retains q_i<=2z_i and rho_i<=t_i<=z_i as open, including the use of rho_i<=t_i in the conditional proof. The response table, input inventory and reviewer question all remove the consequence from the unproved components consistently.
+
+R2: `trace-eve-producer.tex` now explicitly conditions the remaining finite-test/scalar assembly on the outstanding insertion estimate. It separately says that the comparison sections supply comparison and the envelope B_*, but do not by themselves supply the uniform price-2|f| receipt. The branch-existence split, rate condition and non-identification of f remain intact. The part-A ledger and response record agree. This resolves the contradictory closing claim; it is not a construction of f or a proof that the displayed envelope has the missing normalization.
+
+No new analytic proof is needed for these status corrections. The prior review's undefined core-to-strip map, scale terminology and other open analytic inputs remain unchanged and are not silently accepted. The initial PR body still describes the original submission, but the later author response comment and current authoritative records clearly supersede its R1/R2 status description; no mathematical correction to this five-file delta is required on that account.

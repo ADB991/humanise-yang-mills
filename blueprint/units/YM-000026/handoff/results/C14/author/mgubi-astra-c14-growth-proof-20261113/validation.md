@@ -1,0 +1,13 @@
+# Actual validation and limits
+
+Author session `mgubi-astra-c14-growth-proof-20261113`. Read repository guidance, live issue55/193 context and exact claim, PR252 and complete independent PR258 report. Prior histories from the bounded C14 sessions remain context. Checked the immediate source chain and canonical delay proof/purchases, not the whole Lean tree or all schedule suppliers.
+
+- `python3 .../mgubi-astra-c14-growth-proof-20261113/verify.py`: PASS 18 frozen base/current file pairs, 11 source-manifest entries, seven current prior-author fingerprints. Full Lean/source and reviewer directories unchanged. Base `322bbe01215ba0c36ebfa22eb9607ac6087b0113`; source pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+- `python3 scripts/check_blueprint.py`: PASS, four units; does not verify Lean or mathematics. `git diff --check`: PASS.
+- From manuscript/: `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/ym-c14-growth-proof-build existence.tex`: final exit 0, 983 pages. Log `/tmp/ym-c14-growth-proof-build/build-final.log`; PDF same directory/existence.pdf. Final LaTeX pass has no undefined references; existing amsmath atopwithdelims warning and 1.82599pt overfull box at public-run-binding lines39–47 remain. Initial edit invocation used the wrong working directory and built unchanged text; that run is not the validation. The applied change and final retained-reference wording were subsequently built successfully.
+- Rendered and visually inspected final PDF pages849–851 with PyMuPDF, `/tmp/ym-c14-growth-proof-build/page-849.png` through `page-851.png`. Lemma, proof, telescope and following ledger are legible; no clipped formulas/new layout problem.
+- Separate manuscript-only diffs of PR216 at `4c141ec86b5cb20e7d837a343b26bbe91e57394a` and PR227 at `84948b6a09300a5d397cb742b2c6e87341bfc7b9`, each against canonical69b2631, pass `git apply --check` over this working tree. Neither applied; no combined build or mathematical acceptance.
+
+No Lean build/elaboration, axiom audit or checker tests were run. No source edits. Historical review258 and old author prose remain frozen; only the old author's current shell hash changes, preserving its prior revision/digest. New text is draft and requires renewed independent mathematical/source review. Parent owns PR/issue handoff and claim release, not human acceptance.
+
+Final live recheck: issue55 shows this active growth claim and the disjoint curve claim released; no overlap. PR252 and its fork branch both still at the expected 322bbe0 before nonforce publication. Parent inspected the full diff/records, replayed the verifier and checked the final build/render before author publication.

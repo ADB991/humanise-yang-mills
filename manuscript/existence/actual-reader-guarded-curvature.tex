@@ -11,43 +11,34 @@ Section~\ref{sec:actual-reader-local-gaussian-prices}. That section's
 same-pose mean and covariance estimates remain inputs, as do the paid
 regularity and window hypotheses specified below.
 
-Let $x$ be the large coarse parameter, $L$ the fixed blocking side, and
+Let $x$ be the large coarse parameter, $L$ the fixed blocking side, and $w$
+the fixed width multiplier of the fine read. Set
 \[
  y=x+c_L,\qquad R=x^{-3/8},\qquad
- t=\operatorname{phase}(y),\qquad
- g=\operatorname{coupling}(\beta),\quad
- g'=\operatorname{coupling}(\beta').
+ g=\beta^{-1/2},\qquad g'=(\beta')^{-1/2}.
 \]
-Here $\operatorname{coupling}(\beta)=\beta^{-1/2}$, so
-$\sqrt{x/2}\le g^{-1}\le\sqrt{3x}$.
-Here $c_L$ is the fixed scale shift, $x/2\leq\beta\leq3x$,
-$x/2\leq\beta'$, and $|\beta'-\beta|\leq\gamma$. The change from $\beta$
-to $\beta'$ is paid by the relative-coupling allowance $x^{-1/8}$. Write
-$\tau=\operatorname{phase}(x)$ for the coarse phase and
-$t=\operatorname{phase}(y)$ for the fine phase; the scale receipt is
-$\tau\leq2t$. The scalar functions have the
-definitions
+Here $c_L\ge0$ is the fixed scale shift. The coupling band is
+$x/2\le\beta\le3x$, $x/2\le\beta'$ and $|\beta'-\beta|\le\gamma$,
+for a fixed $\gamma>0$.
+In particular $\sqrt{x/2}\le g^{-1}\le\sqrt{3x}$. Define
 \[
- R=\operatorname{linkRoom}(x),\qquad
- \operatorname{walls}(y)=\lceil(\log y)^2\rceil^2,\quad
- \operatorname{phase}(y)=y^{-1/2}
-       \exp((\log\log y)^{3/2}).
+ \operatorname{phase}(v)=v^{-1/2}\exp((\log\log v)^{3/2}),
+ \qquad \tau=\operatorname{phase}(x),\qquad t=\operatorname{phase}(y).
 \]
-Put $\operatorname{stride}_4(x)=(1+\lceil(\log x)^2\rceil)^4$.
-Let $C_0\ge1$ be a common constant in the purchased deterministic
-chart estimate $\operatorname{docCost}(x)\le C_0R$; fix it before $x$.
-Let $C_{\rm core}=\operatorname{priceCore}(G)$ be the fixed price for the
-coarse response chart, $C_{\rm high}=\operatorname{highPrice}(G)$ the fixed
-price for a fine link in the exponential chart, and let
-$A_*$ be the fixed price for the two-link curvature remainder, chosen at least
-as large as $\operatorname{arcPrice}(G)$. Let $n_G$ be the real color dimension and set
+Set $B(v)=\lceil(\log v)^2\rceil$ and $W_f=w B(y)^2$. The recording parameter
+$r(x)\in[x,x^2]$ has temperature $\tau$. Thus the logarithmic clearance
+allowance from Section~\ref{sec:ex-lattice-actual-reader-small-window}
+on this recording scale is
 \[
- e=(A_*+n_G)R^2.
+ a_x=16\{2(B(r(x))+1)+1\}^5 n_{\rm plaq}\,\tau .
 \]
-These are distinct prices and each estimate below uses its stated price;
-we do not identify the chart, link, and curvature constants. Choose them
-before the large-$x$ threshold and require the eventual heat and transport
-inequalities for these fixed values.
+Fix the coarse chart constant $C_{\rm core}$ and a common constant
+$C_0\ge1$ such that the deterministic link response to a direction of
+size at most $a_x$ is bounded by $C_0a_x$ on the funded tube. Let
+$C_{\rm high}$ and $A_*$ be the chord and curvature constants for the
+two-exponential chart estimate proved below. Let $n_G$ be the real
+dimension of the gauge algebra and put $e=(A_*+n_G)R^2$. All these
+constants are fixed before taking large $x$.
 Let $\mathcal C_o(V)_q$ denote the nonlinear plaquette-curvature coordinate
 of the coarse field in the fixed gauge based at $o$, indexed by coarse
 plaquettes and color coordinates. The parent forecast is the fixed real row
@@ -55,107 +46,108 @@ plaquettes and color coordinates. The parent forecast is the fixed real row
  \mathcal P_{o,V,g'}(u,a)=\frac1{g'}
    \sum_q K_{u,a;q}\,\mathcal C_o(V)_q.
 \]
-The finite linear response operator selected by the patch and forest will be
-denoted $D_{A,F,x}$; it acts on the one joint Gaussian vector and retains
-the source transport and gauge data.
+Let $D_{A,F,x}$ denote the linear response on the selected store $A$
+and forest $F$. It inserts the active coordinates of the joint Gaussian
+vector into the fine link field, with zeros off the active coordinates,
+then takes the signed curl and reads its real color coordinates in the
+fixed frame.
 When an incidence index $j$ is used instead of $(u,a)$, it denotes that
 same plaquette/color row. The same $V,o,g'$ and kernel $K$ are used for every tested row. In
 particular, $\mathcal P$ is not recomputed from a patch-dependent field.
 
 \subsection{The scalar scale and ticket estimates}
 
-Fix a patch of side $L$, a finite transition tube, its paid row and chart
-bounds, a fixed width $w$, an action budget $s>0$, a positive slope allowance
-$\gamma$, and a nonnegative intensity $z$. There is a threshold $x_0$ such
-that for every $x\geq x_0$ and every $\beta,\beta'$ in the bands above,
-the following scalar estimates hold. Set
+Fix a patch of side $L$ and a finite transition tube with its row and
+chart bounds. For the positive cut rate $s$ and nonnegative strip
+parameter $z$ of this tube, put
 \[
- M_0=\frac{\operatorname{psiBudget}(z)}{L^2},
- \qquad P_0=6M_0=|\mathrm{TypeFace}_2|M_0=\operatorname{ticket}(z,L),
+ m_2=\binom42=6,\qquad M_0=\frac{m_2^2 z^3}{L^2},
+ \qquad P_0=m_2M_0.
 \]
-Here $\mathrm{TypeFace}_2$ is the set of two-element subsets of the four
-coordinate axes, so its cardinality is six. The separate factor $2$ in the
-room budget below comes from $\tau\leq2t$. By taking the fixed $L$ large
-enough, source sizing gives
-$2n_GP_0\leq1/4096$. For this $L$, the eventual source estimates give
-\begin{align}
- &\operatorname{clearance}(x)\leq R\leq\operatorname{pinMargin}
-   \quad\text{and}\quad4C_0\operatorname{clearance}(x)\leq R,
-   &x^{-7/8}&\leq R^2, \label{eq:readerB-clearance}\\
- &\operatorname{docCost}(x)\leq C_0 R,
-   \quad \operatorname{cheque}(s,M_0,x)\leq R,
-   &t\leq 2x^{-7/16}, \label{eq:readerB-chart}\\
- &g^{-1}\leq2\sqrt{x},\qquad
- &\tau&\leq2t,\label{eq:readerB-coupling}\\
- &C_{\rm core}R^2\,\operatorname{stride}_4(x)&=o(x^{-1/8}),
-   &e/g&=O(x^{-1/4}).\label{eq:readerB-power}
-\end{align}
-The second clearance estimate is the scale-scope bound applied with
-multiplier $4C_0$; it is needed to turn the chart estimate into a
-quarter-room bound. The scalar ticket bound gives
+The two diagonal installations and the transport row give the cubic
+strip bound $M_0$, as in Section~\ref{sec:actual-reader-short-covariance}.
+The factor $m_2$ in $P_0$ sums over two-form output labels. For fixed
+$z$ choose $L$ large enough that $2n_GP_0\le1/4096$, which follows from
+$P_0=m_2^3 z^3/L^2$. Define the row-tail and comparison bounds
 \[
- \operatorname{retract}(x)
-   =\operatorname{cheque}(s,M_0,x)C_{\rm core}R
-       +P_0C_{\rm core}R^2\leq C_{\rm core}(1+P_0)R^2.
+ h_x=\left\lfloor\frac{B(x)}{10000}\right\rfloor,\quad
+ \Delta(x)=P_0e^{-s h_x},\quad
+ E(x)=C_{\rm core}\bigl(\Delta(x)R+P_0R^2\bigr).
 \]
-The relative-coupling part is bounded by
-$P_0\tau\,\operatorname{coupler}(x)$. These are the two terms paid by the one-step budget
-\begin{equation}\label{eq:readerB-ticket-bill}
- \frac{\operatorname{retract}(x)+P_0\tau\,\operatorname{coupler}(x)}{g}
-       \leq x^{-1/16}.
-\end{equation}
-Here the relative-coupling receipt is
-$|g'^{-1}g-1|\leq\operatorname{coupler}(x)$.
-The remaining large-$x$ comparisons used below are
-\begin{align}
- 4C_{\rm high}R&\leq\delta_G,\label{eq:readerB-small-chart}\\
- 6c_G(C_{\rm high}R)^2+4e&\leq t/64,\label{eq:readerB-four-budget}\\
- \operatorname{nautical}(G,C_{\rm high}R,g,w\operatorname{walls}(y))
-       +4e/g&\leq x^{-1/8}.\label{eq:readerB-nautical}
-\end{align}
-Here $c_G$ is the fixed color-scale constant and $\delta_G$ is the
-near-identity radius in the quadratic curvature lower bound.
-For the transport term, the source formula is explicit. With
-$M=C_{\rm high}R$, $B=w\operatorname{walls}(y)$, and $u=4BM$,
-\[
- \operatorname{nautical}(G,M,g,B)
- =\frac{c_G\{u(4M)+(u+4M)u+6M^2\}}{g}.
-\]
-For fixed $w$ and $y=x+c_L$, the wall definition gives both
-$B=O(\operatorname{stride}_4(x)^{1/2})$ and
-$B^2=O(\operatorname{stride}_4(x))$. Since the displayed polynomial in $B$
-is quadratic and $M=C_{\rm high}R$, the right side is at most
-$C\operatorname{stride}_4(x)R^2/g=O(\operatorname{polylog}(x)x^{-1/4})$.
-These estimates follow with the stated powers: $R=x^{-3/8}$,
-$t\leq2x^{-7/16}$, $g^{-1}=O(\sqrt{x})$, and
-$\operatorname{walls}(y)\leq\operatorname{stride}_4(x)$; the local chart
-and ticket prices fix the constants before $x$ varies. In particular
-$R^2= x^{-3/4}=o(t)$ because
-$t\geq y^{-1/2}$, and $e/g=O(x^{-1/4})$.
+The row and chart estimates to which these bounds are applied are
+specified in Lemma~\ref{lem:readerB-pointing}.
 
-The quadratic lower bound used here is the elementary local curvature
-estimate: whenever the group chord of $U$ is at most $\delta_G$,
+Since $r(x)\le x^2$, the logarithmic factor in $a_x$ is bounded by
+a fixed power of $1+\log x$. Also $\tau=x^{-1/2+o(1)}$,
+$t\ge y^{-1/2}$, and eventually $t\le2x^{-7/16}$. The phase ratio
+$\tau/t\le\sqrt{y/x}\le2$ follows for large $x$ from the monotonicity
+of the exponential factor on $y\ge x$. For every fixed chart radius
+$r_G>0$, these bounds and $R=x^{-3/8}$ give, eventually,
+\begin{equation}\label{eq:readerB-clearance}
+ 4C_0 a_x\le R\le r_G,\qquad x^{-7/8}\le R^2,\qquad
+ \Delta(x)\le R.
+\end{equation}
+For the last inequality use $h_x\ge(\log x)^2/10000-1$ and $s>0$.
+In particular $E(x)\le C_{\rm core}(1+P_0)R^2$. Uniformly in the
+coupling band,
+\[
+ |g/g'-1|=\frac{|\beta'-\beta|}
+                {\sqrt\beta(\sqrt{\beta'}+\sqrt\beta)}
+       \le\gamma/x\le x^{-1/8}.
+\]
+Since $E(x)/g=O(x^{-1/4})$, $g^{-1}=O(\sqrt{x})$ and
+$\tau=x^{-1/2+o(1)}$, both terms of the following quotient are
+$o(x^{-1/16})$, uniformly in the coupling band. Hence
+\begin{equation}\label{eq:readerB-ticket-bill}
+ \frac{E(x)+P_0\tau x^{-1/8}}{g}\le x^{-1/16}
+\end{equation}
+eventually. The vector price is also eventual. Indeed
+$n_GP_0\tau\le t/4096$ by the choice of $L$, and
+$n_GE(x)\le t/4096$ for large $x$ because $R^2=o(t)$.
+
+Write $c_G$ for the color-scale constant in the curvature product estimate
+below and $\delta_G$ for the radius of the local curvature lower bound.
+Use $M=C_{\rm high}R$, and for positive $g$ and any room radius $W$ define
+\begin{equation}\label{eq:readerB-transport-cost}
+ \mathcal N_G(M,g,W)
+ =\frac{c_G\{u(4M)+(u+4M)u+6M^2\}}{g},
+ \qquad u=4WM.
+\end{equation}
+Section~\ref{subsec:readerB-gauge-read} derives this expression from the
+based holonomy and the four-link product. For fixed $w$,
+$W_f^2=O((1+B(x))^4)$ because $y=x+c_L$. Thus
+$\mathcal N_G(M,g,W_f)=O((1+B(x))^4x^{-1/4})=o(x^{-1/8})$.
+Together with $R^2=o(t)$ and $e/g=O(x^{-1/4})$, this gives the remaining
+large-$x$ comparisons
+\begin{align}
+ 4M&\le\delta_G,\label{eq:readerB-small-chart}\\
+ 6c_G M^2+4e&\le t/64,\label{eq:readerB-four-budget}\\
+ \mathcal N_G(M,g,W_f)+4e/g&\le x^{-1/8}.\label{eq:readerB-nautical}
+\end{align}
+
+We use the local curvature estimate \eqref{eq:seed-curvature-bound}.
+With the group-dependent radius $\delta_G$ and
+$\operatorname{chord}(U)\le\delta_G$, it gives
 \[
  \frac34\,\operatorname{chord}(U)^2
        \leq\|\kappa_G(U)\|^2.
 \]
-Its constants depend only on the fixed compact gauge group. The paid
-chart, action, and ticket inputs are exactly the scalar hypotheses consumed
-by the local reader argument; no uniformity in $L$, patch, or tube is
-claimed here.
+The constants in this inequality depend only on the fixed compact
+gauge group. All large-$x$ thresholds here are for fixed $L$, patch,
+and transition tube with the stated bounds.
 
 \begin{lemma}[Eventual local room]
 \label{lem:readerB-enlightened}
 For fixed $G,L,w,z,s,\gamma$ as above and a transition tube with the stated
 paid chart bounds, all sufficiently large $x$ and all
 $x/2\leq\beta\leq3x$, $x/2\le\beta'$ and
-$|\beta'-\beta|\le\gamma$ have the following properties:
+$|\beta'-\beta|\le\gamma$ have the following properties. Set $\kappa_0=1/4096$.
 \begin{enumerate}
 \item the chart clearance is at most $R$, $R$ lies below the fixed chart
    margin, and $x^{-7/8}\leq R^2$;
-\item every funded fluctuation of norm at most the clearance has deterministic
-   chart size plus $n_Gx^{-7/8}$ and the Gaussian reserve
-   $\kappa_0t$ at most $R$, where $\kappa_0=1/4096$;
+\item for every coarse direction of norm at most the clearance, the sum of
+   the deterministic response bound, $n_Gx^{-7/8}$ and the Gaussian
+   reserve $\kappa_0t$ is at most $R$;
 \item the near-identity link price is at most $C_{\rm high}R$, and the four-face
    curvature budget is at most $t/64$;
 \item the sum of the four-face gauge-reading error, the coupling error and
@@ -165,9 +157,8 @@ The assertions hold uniformly in the period for the fixed patch and local
 data.
 \end{lemma}
 \begin{proof}
-The selected row and chart receipts bound the deterministic logarithmic
-response by $C_0$ times the available chart clearance. The source
-$4C_0\operatorname{clearance}(x)\leq R$ makes this at most $R/4$.
+The deterministic response has size at most $C_0a_x\le R/4$ by
+\eqref{eq:readerB-clearance}.
 Since
 $x^{-7/8}/R=x^{-1/2}$ and
 $t/R\leq2x^{-1/16}$, the color-count and reserve terms are each at most
@@ -177,8 +168,7 @@ $O(R^2)=O(x^{-3/4})$, while $t\geq y^{-1/2}\geq c x^{-1/2}$ for large
 $x$, proving the curvature budget. Finally, the definition of the
 four-face gauge error is
 \[
- \operatorname{nautical}(G,C_{\rm high}R,g,w\operatorname{walls}(y))
-          +4e/g.
+ \mathcal N_G(C_{\rm high}R,g,W_f)+4e/g.
 \]
 The scalar scale estimate bounds this by $x^{-1/8}$. Adding the paid row
 read error $x^{-1/16}$ and the remaining coupling allowance gives at most
@@ -193,58 +183,84 @@ Let the coarse side be $c$ and the fine side be $f$, with a fixed blocking
 map. Let $V$ be the coarse field and $o$ a single base site. The common pose
 assumption is that one based gauge transforms $V$ on the whole room about
 $o$ into the exponential of one real direction $v$, with
-$\|v\|\leq\operatorname{clearance}(x)/2$. The field is healthy at
-threshold $\tau$ on that room. The curvature coordinate has modulus
-at most the plaquette chord in the fixed normalization, hence at most
-$\tau$ there. The chosen stores have no support there. The same gauge is used
+$\|v\|_\infty\le a_x/2$, where the norm of a link field is the
+maximum of its Euclidean color norms. The field is healthy at
+threshold $\tau$ on that room. The curvature coordinate has norm at most the plaquette chord by
+\eqref{eq:seed-normal-defect}, hence at most $\tau$ there. The chosen stores have no support there. The same gauge is used
 for every row and plaquette below.
 
 Let $F$ be the selected forest and $Z$ the actual joint Gaussian sample on
-its active link coordinates. Write $\ell$ for the low, linear response to
-the coarse direction, and write $\mathrm{doc}$ for the paid deterministic
-local response. Write $\mathcal G_{A,F,x}(Z)=D_{A,F,x}Z$ for the transported Gaussian
-response. The fine field on an interior bond $j$ has the exact form
+its active link coordinates. Write $z_j$ for its insertion into the fine
+link field (zero outside the active coordinates). The stationary linear
+fine response is $\ell=\mathcal U_Fv$ from Section~\ref{sec:local-mean},
+using the same tube and forest.
+On an internal bond set $b_j=0$. On a crossing bond set $b_j$ equal to the
+corresponding coarse direction of $v$. The replica link is the identity
+in the first case and copies the coarse link in the second. Because the
+pose gives $V^o=\exp v$ at the relevant coarse bonds in the gauge based at
+$o$, the replica link equals $\exp b_j$ in both cases, with
+$\|b_j\|\le\|v\|_\infty\le R$. The stationary relative response of Section~\ref{sec:local-mean} is
+$d_j=\ell_j-b_j$. This is the decomposition of the tangent in the
+replica coordinates: differentiating $\exp(\epsilon d_j)\exp(\epsilon b_j)$
+at $\epsilon=0$ gives $d_j+b_j=\ell_j$. The comparison mean
+$m^0$ in \eqref{eq:reader-local-column-price} is the restriction of this $d$
+to the active bonds in the same forest.
+
+Let $w_j$ be the actual local mean in those relative coordinates and put
+$r_j=gz_j$. The pointwise mean estimate
+\eqref{eq:reader-local-column-price} at recording scale $r(x)\ge x$ bounds
+each color component of $w_j-d_j$ by $x^{-7/8}$ on the interior active
+bonds. The Euclidean norm is bounded by the sum of component moduli, so
+$\|w_j-d_j\|\le n_Gx^{-7/8}$. The cleared stencils place every queried nonforest bond in the active set.
+The update first uses the link increment $\exp(w_j+r_j)$ and then the
+replica link. On forest bonds the update and the replica are both the
+identity, so the relative coordinates $w_j,d_j,r_j$ there are zero. Thus the
+actual fine field on each of these bonds is
 \begin{equation}\label{eq:readerB-fine-link}
- U_j=\exp(w_j+g z_j)\,\operatorname{replica}(V^o)_j,
- \qquad V^o=\operatorname{spine}(V,o),
+ U_j=\exp(w_j+r_j)\exp(b_j),\qquad \ell_j=d_j+b_j.
 \end{equation}
-where $w_j$ is the local portrait read and $z_j$ is the corresponding
-Gaussian coordinate combination. Write $d_j$ for the deterministic
-response, $b_j$ for the logarithm of the replica link, and $r_j=gz_j$.
-The source identities give $\ell=d+b$ and
-$\|w_j-d_j\|\leq n_Gx^{-7/8}$. The actual link is $\exp(w_j+r_j)\exp(b_j)$. Write $\mathsf M$ for the
-fixed unitary matrix representation, viewed as a real vector space, and
-$\Pi_{\mathfrak g}$ for the normalized real-linear color projection onto
-the Lie algebra, with operator norm at most $1/c_G$. The curvature
-coordinate is
+
+Write $\mathsf M$ for the fixed unitary representation and
+$\Pi_{\mathfrak g}$ for the real-linear color projection. In the physical
+normalization its operator norm for the Frobenius norm is at most $1/c_G$,
+while $\|\mathsf M(U)-I\|_F=c_G\operatorname{chord}(U)$.
+The curvature coordinate is
 \[
  \kappa_G(U)=\Pi_{\mathfrak g}\!\left(
-       \frac{\mathsf M(U)-\mathsf M(U^{-1})}{2}\right).
+       \frac{\mathsf M(U)-\mathsf M(U^{-1})}{2}\right)
+             =\Pi_{\mathfrak g}(\mathsf M(U)-I).
 \]
-For a unitary group element this also equals
-$\Pi_{\mathfrak g}(\mathsf M(U)-I)$. The latter identity gives the exact
-two-factor relation
-\[
+Here $\mathsf M(U^{-1})=\mathsf M(U)^*$, so removing the Hermitian part
+does not affect the projection onto the skew-Hermitian Lie algebra. It
+follows by expanding the product of the matrix increments that
+\begin{equation}\label{eq:readerB-product-defect}
  \kappa_G(UV)-\kappa_G(U)-\kappa_G(V)
    =\Pi_{\mathfrak g}((\mathsf M(U)-I)(\mathsf M(V)-I)).
+\end{equation}
+The Frobenius product inequality bounds its norm by
+$c_G\operatorname{chord}(U)\operatorname{chord}(V)$.
+
+Choose $r_G>0$ so that the exponential and its curvature coordinate
+have bounded second derivative on the closed ball of radius $r_G$.
+The matrix exponential is smooth, and its derivative at zero is the
+inclusion of the Lie algebra in the matrix space. Projecting this
+inclusion back to color space is the identity. Taylor's formula
+on radial segments therefore gives constants $C_{\exp},A_{\exp}>0$
+depending only on the gauge chart such that
+\[
+ \operatorname{chord}(\exp a)\le C_{\exp}\|a\|,
+ \qquad \|\kappa_G(\exp a)-a\|\le A_{\exp}\|a\|^2
+ \quad (\|a\|\le r_G).
 \]
-The Frobenius product inequality and
-the bound
-\[\|\mathsf M(U)-I\|_F\leq c_G\operatorname{chord}(U)\]
-bound this defect by $c_G\operatorname{chord}(U)\operatorname{chord}(V)$. Also use the radial
-chart estimate $\|\kappa_G(\exp a)-a\|\leq A_{\rm arc}\|a\|^2$
-for $\|a\|$ within the fixed chart, with $A_{\rm arc}=\operatorname{arcPrice}(G)$.
-Since $\operatorname{chord}(\exp a)\leq\|a\|$, for $U=\exp a$ and
-$V=\exp b$ we obtain
-\begin{align*}
- \|\kappa_G(UV)-(a+b)\|
- &\leq c_G\|a\|\|b\|+A_{\rm arc}(\|a\|^2+\|b\|^2)\\
- &\leq (c_G/4+A_{\rm arc})(\|a\|+\|b\|)^2.
-\end{align*}
-Choose $A_*\geq c_G+4A_{\rm arc}$. This is the stated curvature-coordinate
-bound, not a logarithmic estimate.
-Together with $x^{-7/8}\leq R^2$ it absorbs the portrait error into the
-fixed quadratic price. The guarded event is
+For $\|a\|,\|b\|\le R\le r_G$, chord subadditivity bounds the chord of
+$\exp a\exp b$ by $2C_{\exp}R$. Equation~\eqref{eq:readerB-product-defect}
+and the two radial estimates bound the curvature error from $a+b$ by
+$(c_G C_{\exp}^2+2A_{\exp})R^2$. Thus one may take
+$C_{\rm high}=2C_{\exp}$ and $A_*=c_G C_{\exp}^2+2A_{\exp}$ in the
+scalar estimates. Any increase of these fixed constants preserves
+the same eventual powers.
+
+The guarded event is
 \[
  \|g z_j\|\leq\kappa_0t
 \]
@@ -252,9 +268,8 @@ for every bond in the enlarged room. The paid room estimate is
 \[
  \|w_j+r_j\|\leq \|d_j\|+n_Gx^{-7/8}+\kappa_0t\leq R,
 \]
-and the blueprint estimate gives $\|b_j\|\leq R$. The source's two-link
-chart estimate, proved by Taylor expansion of the curvature coordinate at
-the identity, now gives
+and we have shown $\|b_j\|\le R$. Apply the two-exponential chart
+bound to $(w_j+r_j,b_j)$ to obtain
 \begin{align}
  \operatorname{chord}(U_j)&\leq C_{\rm high}R,\label{eq:readerB-bondchord}\\
  \|\kappa_G(U_j)-(\ell_j+r_j)\|&\leq e.
@@ -273,8 +288,8 @@ tube: on every readable address in the room, the fine response row differs
 from its shorter parent row by total absolute mass at most $\Delta$, the
 parent row has mass at most $P_0$, and the deterministic coarse curvature
 Taylor bounds stated below hold. Let
-$\Delta=\operatorname{cheque}(s,M_0,x)$, the source fee at base price
-$M_0=\operatorname{psiBudget}(z)/L^2$. Then for every interior fine
+$\Delta=m_2 M_0 e^{-s h_x}$, the absolute tail bound for the
+two-form row with strip bound $M_0$. Then for every interior fine
 plaquette $u$ and color coordinate $a$, with
 $f=\operatorname{faceCurl}(u,\ell)$,
 \begin{equation}\label{eq:readerB-pointing-conclusion}
@@ -308,34 +323,32 @@ Subtract the response sums and add/subtract $\sum_qK_{u,a;q}m_q$. Then
  \leq C_{\rm core}R\sum_q|P_{u,a;q}-K_{u,a;q}|
        +C_{\rm core}R^2\sum_q|K_{u,a;q}|
  \leq \Delta C_{\rm core}R+P_0C_{\rm core}R^2
- =\operatorname{retract}(x).
+ =E(x).
 \]
 For the normalized comparison, $|Q_{u,a}|\leq P_0\tau$ since the
 nonlinear parent curvature coordinates have modulus at most $\tau$. Thus
 \[
  \left|\frac{f_a}{g}-\frac{Q_{u,a}}{g'}\right|
  \leq\frac{|f_a-Q_{u,a}|+|Q_{u,a}|\,|g'^{-1}g-1|}{g}
- \leq\frac{\operatorname{retract}(x)+P_0\tau\operatorname{coupler}(x)}g
+ \leq\frac{E(x)+P_0\tau x^{-1/8}}g
  \leq x^{-1/16},
 \]
-by the relative-coupling receipt and \eqref{eq:readerB-ticket-bill}. For
-the vector bound, the same $|Q_{u,a}|\leq P_0\tau$ and
-$|f_a-Q_{u,a}|\leq\operatorname{retract}(x)$ hold for every color
-coordinate. The purchased torque inequality is
-\[
- n_G(P_0\tau+\operatorname{retract}(x))\leq t/2048,
-\]
-which gives $\|f\|\leq t/2048$ in the source color norm. All rows have
+by the coupling bound and \eqref{eq:readerB-ticket-bill}. For the vector
+bound, sum the component bounds to get
+$\|f\|\le n_G(P_0\tau+E(x))\le t/2048$ by the scalar estimates above.
+All rows have
 finite support in the selected window, and the bounds are period-uniform.
 \end{proof}
 
 \subsection{The four-bond curvature and the common gauge read}
 
-For a fine plaquette $u$, let its four oriented bonds be
-$j_1,j_2,j_3,j_4$, with signs $\epsilon_i$ determined by orientation, and
-let $\Xi_u=U_{j_1}U_{j_2}U_{j_3}^{-1}U_{j_4}^{-1}$. The face curl
-$\operatorname{faceCurl}_u(A)$ is the corresponding signed sum of the four
-link-direction coordinates $A_{j_i}$.
+For a fine plaquette $u$, order its bonds $j_1,j_2,j_3,j_4$ so that the
+plaquette product is
+\[
+ \Xi_u=U_{j_1}U_{j_2}U_{j_3}^{-1}U_{j_4}^{-1}.
+\]
+For a link field $A$, let $\operatorname{faceCurl}_u(A)$ be the signed
+sum of the four link coordinates in this order.
 Apply the two-factor relation above successively to the four oriented
 factors $U_{j_1},U_{j_2},U_{j_3}^{-1},U_{j_4}^{-1}$. Each has chord at most
 $M=C_{\rm high}R$, and inversion preserves chord while negating curvature.
@@ -347,14 +360,14 @@ $(1+2+3)c_GM^2=6c_GM^2$. Replacing the four
 individual link-curvature coordinates by their linear directions using
 \eqref{eq:readerB-bondcurv} costs at most $4e$. Consequently
 \begin{equation}\label{eq:readerB-four-product}
- \|\kappa_G(\Xi_u)-\operatorname{faceCurl}_u(\ell+gZ)\|
+ \|\kappa_G(\Xi_u)-\operatorname{faceCurl}_u(\ell+gz)\|
        \leq 6c_G(C_{\rm high}R)^2+4e\leq t/64,
 \end{equation}
 by \eqref{eq:readerB-four-budget}. Linearity of the face curl, the bound
 from Lemma~\ref{lem:readerB-pointing}, and the four guarded link increments
 give
 \[
- \|\operatorname{faceCurl}_u(\ell+gZ)\|
+ \|\operatorname{faceCurl}_u(\ell+gz)\|
        \leq t/2048+4\kappa_0t.
 \]
 Consequently the product curvature coordinate has norm at most
@@ -365,45 +378,75 @@ Since $\kappa_0=1/4096$,
 \]
 The plaquette chord is at most four times the link chord, so
 $4C_{\rm high}R\leq\delta_G$ keeps it inside the local curvature chart.
-The local quadratic curvature lower bound therefore converts the
-curvature norm bound into the required group-chord bound, with the source
-normalization giving
+The local lower bound $\tfrac34\operatorname{chord}(\Xi_u)^2
+\le\|\kappa_G(\Xi_u)\|^2$ therefore gives
 \begin{equation}\label{eq:readerB-healthy-face}
- \operatorname{chord}(\Xi_u)\leq t/8.
+ \operatorname{chord}(\Xi_u)\le\frac{2t}{32\sqrt3}<t/8.
 \end{equation}
 Thus if the health flag threshold is the phase $t$, the tested flag is
 strictly below threshold. Applying this to each plaquette in the tested
 patch proves the healthy-mask conclusion. It is a local conclusion on the
-guarded sample; it does not assert that the field is healthy outside the
-specified room.
+guarded sample; all plaquettes used in this deduction lie in the enlarged room.
 
-The final read uses the same patch gauge as the forecast. If $U'$ is any
-fine field with a gauge transform equal to $U$ on the patch, the exact
-four-corner identity gives
-\begin{multline*}
- \left|\operatorname{rigid}
-       \bigl(\operatorname{coloring}(f'(r))
-              (\operatorname{kiosk}_g(r,U'))\bigr)(j)
-      -\bigl(\mathcal P_{o,V,g'}(j)
-       +\mathcal G_{A,F,x}(Z)(j)\bigr)\right|\\
- \leq \operatorname{nautical}(G,C_{\rm high}R,g,w\operatorname{walls}(y))
-       +4e/g+x^{-1/16}.
-\end{multline*}
-The first two terms are the four-link gauge transport error: the corner
-product is compared with the four curvature rows and each row costs at most
-$e/g$. The last term is the parent-forecast discrepancy from
-\eqref{eq:readerB-pointing-conclusion}. By
-\eqref{eq:readerB-nautical}, this is at most
-$x^{-1/8}+x^{-1/16}\leq x^{-1/32}$ for large $x$. The gauge can vary in
-this final comparison, but the forecast, sample, and original pose do not.
+\subsection{Based transport for the fine read}
+\label{subsec:readerB-gauge-read}
+
+Let $r$ be the read center on the fine torus and $v_0$ the base vertex
+of the tested plaquette $u$. The read is in the based gauge obtained
+by transporting along the fixed coordinate paths from $r$. If the fine
+period is $n$, the condition $2(W_f+1)<n$ gives an unwrapped
+coordinate box of radius $W_f$ about $r$. When the plaquette is at least
+two steps inside this box, its four bonds and the coordinate path
+to $v_0$ lie in it. The latter path has at most $4W_f$ steps since
+each of the four displacements is at most $W_f$. Write $H$ for its
+ordered product in $U$. By the chord triangle and inverse identities,
+$\operatorname{chord}(H)\le 4W_fM$ and
+$\operatorname{chord}(\Xi_u)\le4M$.
+
+For a site gauge $k$ sending $U'$ to $U$, multiplying the gauge-transformed
+links along the path cancels the gauge factors at all intermediate sites.
+The path product transforms by $k(r)$ at the start and $k(v_0)^{-1}$ at
+the end. At the plaquette the factors telescope to conjugation by
+$k(v_0)$. Hence the based plaquette in $U$ is the based plaquette
+in $U'$ conjugated by $k(r)$. The curvature projection is equivariant
+under conjugation, since the adjoint action of the unitary representation
+preserves the Lie subspace and its orthogonal complement. It follows that
+the normalized curvature read in $U'$ after the color rotation by $k(r)$
+equals $g^{-1}\kappa_G(H\Xi_uH^{-1})$ in $U$.
+
+Apply \eqref{eq:readerB-product-defect} at $(H,\Xi_u)$ and
+$(H\Xi_u,H^{-1})$. The terms $\kappa_G(H)$ and $\kappa_G(H^{-1})$
+cancel. With $u_0=4W_fM$, the two defects give
+\[
+ \|\kappa_G(H\Xi_uH^{-1})-\kappa_G(\Xi_u)\|
+ \le c_G\{u_0(4M)+(u_0+4M)u_0\}.
+\]
+Before division by $g$, the difference between $\kappa_G(\Xi_u)$
+and the signed sum of the four bond curvature coordinates is bounded
+by $6c_GM^2$, as proved above. This yields exactly
+$\mathcal N_G(M,g,W_f)$ in \eqref{eq:readerB-transport-cost} as an upper bound
+for the discrepancy between the rotated read and the normalized signed sum.
+Replacing each bond curvature by $\ell_j+gz_j$ costs at most $e/g$
+per bond by \eqref{eq:readerB-bondcurv}. The signed sum then reads
+$g^{-1}f_a+\mathcal G_{A,F,x}(Z)(u,a)$ in color coordinate $a$, by linearity
+and the definition of $D_{A,F,x}$. Finally
+\eqref{eq:readerB-pointing-conclusion} replaces $g^{-1}f_a$ by the common
+parent forecast with error $x^{-1/16}$. The total is at most
+\[
+ \mathcal N_G(M,g,W_f)+4e/g+x^{-1/16}
+ \le x^{-1/8}+x^{-1/16}\le x^{-1/32}
+\]
+for large $x$. The gauge used to compare $U'$ to $U$ can vary. The
+within-room forecast, sample, and coarse pose are fixed throughout.
 
 \begin{proposition}[Actual-reader curvature and read estimate]
 \label{prop:readerB-curvature-read}
 Fix a selected transition tube and one posed coarse field with based gauge
 at $o$. Suppose the actual Gaussian reader estimates of
-Section~\ref{sec:actual-reader-local-gaussian-prices}, the paid scalar
-estimates above, and the local window/separation conditions hold. For each
-room-view sample whose Gaussian coordinates are below the guard threshold,
+Section~\ref{sec:actual-reader-local-gaussian-prices}, the paid row and chart
+bounds above, and the local window/separation conditions hold, including
+$2(W_f+1)<n$ for the fine period $n$. For each sample in the
+enlarged room with $\|gz_j\|\le\kappa_0t$ on every active bond,
 the resulting fine field is healthy on the selected patch. For every gauge-equivalent fine field and every incidence row $j=(u,a)$
 whose two-step neighborhood lies inside the patch, its rigid color read differs from the same parent
 forecast plus the transported Gaussian curvature by at most
@@ -411,9 +454,11 @@ $x^{-1/32}$. All conclusions are uniform in the period once the displayed
 fixed-data threshold is reached.
 \end{proposition}
 \begin{proof}
-Use \eqref{eq:readerB-fine-link} for all bonds in the enlarged room, then
-apply Lemma~\ref{lem:readerB-pointing} to each tested row. The four-bond calculation gives \eqref{eq:readerB-healthy-face}; the four-corner identity
-and \eqref{eq:readerB-nautical} give the read estimate. All statements use
+Use \eqref{eq:readerB-fine-link} for all bonds in the enlarged room,
+then apply Lemma~\ref{lem:readerB-pointing} to each tested row.
+Equation~\eqref{eq:readerB-healthy-face} gives the health estimate.
+The based-transport calculation and \eqref{eq:readerB-nautical} give
+the read estimate. All statements use
 the same base site and parent forecast, and their constants do not depend
 on the number of sites outside the tested patch.
 \end{proof}
@@ -426,8 +471,8 @@ read by the guard on the enlarged room. Its cardinality satisfies
  m_y:=|\mathcal I_y|\leq C_w(\log y)^{16}
 \end{equation}
 for a constant $C_w$ depending on the fixed width and color dimension, but
-not on the period. Indeed the room radius is $w\operatorname{walls}(y)+8$;
-$\operatorname{walls}(y)\leq4(\log y)^4$ for large $y$, and the number of
+not on the period. Indeed the room radius for the mask is $W_f+8$,
+$B(y)^2\le4(\log y)^4$ for large $y$, and the number of
 link-color coordinates in a four-dimensional box is at most a fixed
 multiple of its side to the fourth power.
 
@@ -451,9 +496,9 @@ independence, gives
  \mathbb P\{\max_i|X_i|\geq v\}
        \leq2m_y\exp(-v^2/(2U)).
 \]
-The source veil is a product over bonds, and its away event is
-$\max_b\|X_b\|\geq v$. If this occurs, one of the $n_G$ real coordinates
-of some $X_b$ has modulus at least $v/\sqrt{n_G}$. A union bound therefore
+For the bondwise guard, consider the event $\max_b\|X_b\|\ge v$.
+On this event one of the $n_G$ real coordinates of some $X_b$
+has modulus at least $v/\sqrt{n_G}$. A union bound therefore
 gives
 \[
  \mathbb P\{\max_b\|X_b\|\geq v\}
@@ -472,8 +517,7 @@ only its marginal variance bound and the finite union bound are used.
 
 Take the guard width
 \[
- v=\frac{\operatorname{haze}(y,\beta)}2
-   =\frac{\kappa_0}{2}\frac{\operatorname{phase}(y)}{g}.
+ v=\frac{\kappa_0 t}{2g}.
 \]
 For the band $x/2\leq\beta\leq3x$, the scalar coupling bound gives
 $v\geq\delta_0\,\operatorname{hot}(y)$ with a fixed $\delta_0>0$;
@@ -498,10 +542,10 @@ $\varrho_y v^2\geq(2+p)\log y$, and
        \leq e^2 y^{-(2+p)}\leq x^{-p}.
 \end{equation}
 
-Let $\Gamma$ be the actual source veil, the product of smooth radial
-cutoffs of the Lie-valued tape on each bond in the parasol. Each factor is
-in $[0,1]$, is supported below the full vector guard threshold, and equals
-one below half that threshold. Consequently
+Let $\Gamma$ be the smooth cutoff on the actual Gaussian vector: one
+radial factor for each active bond in the enlarged room. Each factor
+lies in $[0,1]$, vanishes outside the vector guard radius $\kappa_0t/g$,
+and equals one on the ball of half that radius. Consequently
 \[
  0\leq1-\Gamma(X)\leq
       \mathbf1_{\{\max_b\|X_b\|\geq v\}}.
@@ -510,8 +554,8 @@ Integrating and using \eqref{eq:readerB-tail-power} proves
 \[
  \mathbb E[1-\Gamma(X)]\leq x^{-p}.
 \]
-This is the lost-mask estimate for the same correlated Gaussian and its
-actual finite room. It is not a product of single-coordinate probabilities.
+The estimate uses the marginal variances of the actual correlated
+Gaussian on its finite room.
 
 \begin{lemma}[One-patch Gaussian guard]
 \label{lem:readerB-mask}
@@ -529,13 +573,9 @@ the expected mask loss.
 \end{proof}
 
 \begin{remark}[Boundary of this package]
-The result proves the posed reader's nonlinear curvature/read estimates
-and a power-small loss for its actual vector veil, conditional on the
-same-pose Gaussian comparison, the paid local chart/ticket bounds, and the
-fixed transition/window receipts. The source's sharper ShadePay input
-uses its exact finite-dimensional Gaussian reserve bound. This unit does not
-prove a different all-matched-palette socket assertion: that assertion
-quantifies over a distinct family of matched palettes and requires its
-separate local opacity estimate. Nor does this section produce the
-selected history or the paid reader purchases.
+The result proves the nonlinear curvature and read estimates and the power-small
+loss of the Gaussian cutoff for the fixed posed reader, under the stated
+Gaussian, chart, row and window hypotheses. The assertion that the
+warning factor vanishes for every compatible field/store palette requires
+the separate hypothesis of Section~\ref{sec:actual-corrected-body-compiler}.
 \end{remark}
