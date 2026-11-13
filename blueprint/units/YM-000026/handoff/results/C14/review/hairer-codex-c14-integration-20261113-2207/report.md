@@ -1,0 +1,29 @@
+# Review of the C14 chart and stress-normalization integration
+
+Refs #55, #280, #216, #256, #269, #284, #296, #297. Reviewed canonical merge `7daea59bf38af90e23214e627defd9bb1475741e` (replacement head `9c0441d9d83862bc1301eeae8a6fdabcbb6dd4e9`). This is a bounded review by Codex under the maintainer's session, with no authorship of the chart proof or the replacement merge. It records mathematical and textual source checks and leaves human acceptance to the maintainer.
+
+## Verdict
+
+No required change to the integrated chart-validity argument or its normalization interface. The analytic production of the joint curve remains open. In the C14 ledger, interpret `I-C14-one-stage-selection` per requested sequence; the universal version is the additional assertion that the input is available for every positive null sequence. Neither version is needed to apply chart validity to a supplied joint curve.
+
+## Mathematics
+
+- The validity theorem fixes the tables, extraction and ultrafilter before using the supplied charts. The bounded lift, ordered fixed-vector moments and multilinearity yield the estimate for each fixed smooth test. The late set may depend on the test: the ultralimit is taken first for each test, and the bound on its value has the same constant for all tests on the fixed compact set with the given supremum bound. This yields the supremum estimate without interchanging a supremum and an ultralimit.
+- The corrected-lift recursion preserves units, the signed action and reality, and gives exact inclusion compatibility wherever the two grades are defined. Expanding a corrected slot reduces either its grade or the number of corrected slots at that grade. Thus the expansion terminates and uses finitely many tuples determined by the original labels and the fixed retractions. The resulting error is bounded by a tuple-dependent constant times the test supremum and the cutoff tolerance. Separating tests give eventual injectivity by finite-dimensional operator-norm convergence; the dimension bound gives bijectivity. In zero reference dimension the dimension bound gives zero target dimension directly.
+- The prescribed-sequence corollary uses the one-stage input at each cutoff with the previous selected index and radius, then invokes validity on the resulting charts. Arbitrarily small good radii alone cannot give this input: for example, a set of radii consisting of (2^{-m}) is disjoint from the null sequence (3\cdot 2^{-n-2}). The stronger funded route must supply an exact member of the requested sequence with the requisite chart receipts.
+- The joint-curve paragraph requires the eventual optical formula and coherent-center identities on the very curve carrying the beam, trace and shell-flux receipts. On the common tail the positive scalar and invertible grade-five map give equality of the optical and divergence kernels for every tensor. This is the identity used to turn exact optical cancellation into conservation of the corrected tensor. For the normalization comparison, if (\widetilde T_i=\lambda_i R) in the conserved line on the tail, the two flux limits give (\lambda_i=\phi_i(\widetilde T_i)/\phi_i(R)\to1); the nonzero common limit guarantees eventual nonvanishing of the denominator. The chart theorem supplies no optical or flux estimates by itself.
+- The stress consumer uses the completed maps (U). For a fixed finite tuple, intersect the finitely many grade-agreement tails for (U=C). The tested correlations agree there for every test, so the supremum bound transfers on that same tail.
+
+## Textual source correspondence
+
+Pinned upstream revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+
+- `YM.Next.UVStress.Station.Admissible` in `Lean/YM/Next/UV_STRESS/Station.lean` specifies the lift bound, grade-zero unit, reality and signed actions, and the per-test ordered upper bound with the supremum charge. `Station.harvested` gives the quotient panel and the estimate for all admissible tests.
+- `YM.Next.UVStress.Stations.ranging` and `Stations.build_curve` in `Lean/YM/Next/UV_STRESS/Rates.lean` select radii below the previous radius and a vanishing bound. They work on the fixed order and do not select from a supplied sequence. `YM.Next.UVStress.Stations.equivalences` in `Lean/YM/Next/UV_STRESS/Invert.lean` supplies the correction, eventual bijectivity and completion on that chosen path, with the dimension and inclusion/orientation hypotheses explicit.
+- `YM.MergeProof.East.boatsSky` and `wakesSky` in `Lean/YM/TraceExtension/Prom/Zoom/Boats.lean` are the separate prescribed-sequence route. They retain the funded comparison inputs, including `Scrim` and `FiresSky`. The proof of `wakesSky` uses `boatsSky` with a lower bound on both sequence and chart indices and retains the exact radius equality. This explains the stronger one-stage hypothesis without promoting the chosen-radii route.
+
+## Evidence
+
+- The canonical merge and replacement head contain identical versions of the two reviewed chapters. Git blob IDs: `194d800df84dff76e7cf9e7e6637d27df2221be2` (chart) and `e7acd647ebb27fcbf40c2fd829496c50f4bf6e48` (stress). A three-way textual check of #284 over the merged #256 reproduced the chart file exactly. The four inspected local Lean blobs match the canonical merge's GitHub blob IDs.
+- In a temporary export of local `b9a7f5c`, overlaid with the canonical chart, stress and firesky chapters, `latexmk -pdf -interaction=nonstopmode -halt-on-error existence.tex` succeeded (972 pages). Rendered and visually checked pp. 827, 830–832, 836. This was a local overlay check, not a fresh canonical-tree build. #297 separately reports a successful merged-monograph build and checker.
+- `python3 scripts/check_blueprint.py` passed in the local checkout. `git diff --no-index --check` reported no whitespace errors for the changed chapter comparisons. No Lean elaboration or axiom replay was run. No historic review fingerprints were updated.
