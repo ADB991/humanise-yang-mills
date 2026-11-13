@@ -328,6 +328,14 @@ The dual stencil is exactly
 These identities follow by expanding the definitions of the two branches and
 the listed auxiliary matrices; they are not additional hypotheses.
 
+Write $\operatorname{chip}(z)=e^{iz}-1$ and
+$\operatorname{pullLine}_{P,a}(q)=m_P(q)\operatorname{rail}_L(q_a)$,
+where $\operatorname{rail}_L(z)=(e^{iLz}-1)/(L(e^{iz}-1))$ with its
+removable values filled in. The centered scalar factor
+$\operatorname{area}_L(q)$ is the product of the four centered
+one-dimensional block averages. For a scalar symbol $f$, write
+$\operatorname{yen}(f)(q)=f(q)f(-q)$.
+
 The response-space notation in those formulas is as follows. For a train
 $v$ and side $S$, set
 $\operatorname{fieldD}_{S,v}(p)=\mathcal M_1(S^{-2}\mathscr D_v(p))$,
@@ -410,17 +418,23 @@ port definitions and the divisor recovery identity give
 \qquad
 \operatorname{portD}_{P,l,a}(p)=L^{-2}\mathscr D_{P_{\rm wing},a}(q_l).
 \]
-The first equality follows by substituting
-$R_{P,l}=\operatorname{blow}_{P_{\rm wing}.mass,L}^2
-\beta_{P_{\rm wing}}(q)$ into $Y_{P,l}$ and then using
-$\mathfrak d_P^2\beta_{P_{\rm land}}/\beta_{P_{\rm wing}}$ for the ratio
-of the two bend factors; the second is the definition of the port vector
-after cancellation of its blow-up denominator. Also
+The scalar on the left is
+$m_P(q)m_P(-q)\rho_{P_{\rm land}}(p)/(L^4\rho_{P_{\rm wing}}(q))$.
+Divisor recovery gives $\rho_{P_{\rm land}}=s^2\beta_{P_{\rm land}}$
+and $L^4\rho_{P_{\rm wing}}(q)=R_{P,l}$, giving the first equality.
+The second follows by cancelling the blow-up denominator in the port vector.
+For the next calculation put
+\[
+ \operatorname{cloud}_P
+ =\mathcal P_{P_{\rm land}}(p)\Sigma_1^1(p)
+    \mathcal M_1(\mathscr D_{P_{\rm land}}(p))
+    \Sigma_1^1(-p)^{\mathsf T}.
+\] Also
 \[
  N_P=s^2 I-s\,\mathcal P_{P_{\rm land}}(p)\Sigma_1^1(p)D'
                    \Sigma_1^1(-p)^{\mathsf T},
  \qquad
- \operatorname{notch}_P=s^2(I-\operatorname{cloud}_P).
+ N_P=s^2(I-\operatorname{cloud}_P).
 \]
 For the first identity use
 $s\operatorname{fieldD}_{1,P_{\rm land}}=\mathcal M_1(b_{P_{\rm land}})$
@@ -474,7 +488,7 @@ $f_2=\operatorname{hinge}_{P,2}(q)$, $\lambda=\Lambda_{P,2}(p)$,
 $R=\mathcal M_1(\operatorname{tail}_P(p))$, $B=B_P(p)$,
 $D=\operatorname{fieldD}_{L,P_{\rm wing}}(q)$,
 $D'=\operatorname{fieldD}_{1,P_{\rm land}}(p)$, and
-$y=\operatorname{foot}_P(p)$. These symbols will be used in the brace,
+$y=f_P(p)$. These symbols will be used in the brace,
 one-form, and cancellation identities below.
 For the brace relation, abbreviate the land and wing bulb vectors at their
 respective arguments by $f$ and $g$, the two patch masses by
@@ -514,7 +528,7 @@ the right side is $\operatorname{heel}_{P,a}(p)/s$. The scalar toe-feed
 identity above says this equals
 $\mathscr D_{P_{\rm land},a}(p)-\operatorname{tail}_{P,a}(p)$, proving
 $f_1D u=D'-R$ entry by entry. The equality
-$\operatorname{chainY}_P(p,q_0)=\operatorname{foot}_P(p)$ follows as
+$\operatorname{chainY}_P(p,q_0)=f_P(p)$ follows as
 follows. Divisor recovery gives
 $\rho_{P_{\rm land}}=s^2\beta_{P_{\rm land}}$ and
 $\rho_{P_{\rm wing}}=d_w^2\beta_{P_{\rm wing}}$, where
@@ -555,7 +569,7 @@ commutation of noncommuting factors,
    &=H\lambda dD'm-yvH'dD'm-H\lambda dR\,m.
 \end{align*}
 For the first equality use $\delta=\lambda d f_1$ (which follows from
-$f_2\delta=df_1$ and $f_2\lambda=I$). For the second use
+$f_2\delta=df_1$ and $\lambda f_2=I$). For the second use
 $\operatorname{mouth}_P=sD'$ and $sB=H-yvH'f_2$, then cancel the adjacent
 $f_2\lambda$. Adding $yv$ to the second line yields
 $H\lambda d(D'-R)m+yv(I-H'dD'm)$, and its first term is
@@ -583,7 +597,11 @@ periodic by the plank identity. The scalar factor is exactly
  \operatorname{yen}(m_P)(q)\,
  \frac{\rho_{P_{\rm land}}(p)}{L^4\rho_{P_{\rm wing}}(q)}.
 \]
-It is periodic by the patch-mass and level-response identities. The other
+It is periodic by the patch-mass and level-response identities. Define
+$\operatorname{scriptT}_P(p,q)$ by the nonzero-branch display above, with
+$q$ now an independent fine momentum: use
+$D=\mathcal M_1(L^{-2}\mathscr D_{P_{\rm wing}}(q))$ and evaluate the
+reflected hinge factors at $-q$. The other
 factors in $\operatorname{scriptT}$ are level responses, pulses, signals,
 hinges, or fluxes already shown periodic. Substitution in its definition
 therefore yields
@@ -622,8 +640,7 @@ $q_{-l}(-p)=-q_l(p)$ give
 \]
 At $p=0$ this also holds: the zero-alias column is the real identity and
 the other columns vanish. The same argument gives this conjugation law for
-the one-form pilot column, using its own script formula and the same zero-mode
-values. Conjugating
+the one-form pilot column, using \eqref{eq:transport-A} and its zero-mode values. Conjugating
 \eqref{eq:ex-lattice-spread-symbol}, using
 $\overline{\chi_u(q)}=\chi_u(-q)$ and reindexing $l\mapsto-l$, yields
 \[
@@ -681,6 +698,14 @@ analytic width and cost, and $e$; no uniformity in these parameters is claimed.
 In particular $e=2$ gives the tower component $T$ the base cost
 $C_{2,j}/L^2$ and each first-difference cost $C_{2,j}/L^3$ required by
 Lemma~\ref{lem:ex-lattice-cross-atlas}.
+For the one-form transport the weighted input is
+Lemma~\ref{lem:ex-lattice-primal-entrywise-bound}, with $e=1$ and
+cost $C_{1,j}L^{-(1+s)}$. Its overlap follows from
+\eqref{eq:transport-A}: the responses and the two-sided factors
+are reciprocal-periodic, and the alias sums are invariant under the
+induced residue permutation. A nontrivial shift on the common real
+overlap keeps both momenta away from zero, so the punctured formula
+suffices there. For the two-form transport take $e=2$.
 \end{theorem}
 
 \begin{proof}
