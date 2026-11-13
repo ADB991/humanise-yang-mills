@@ -13,7 +13,7 @@ induction.
 
 A path is a collection of row, loop, cubic, and quartic coefficients. For a
 clip $p$, width $\tau$, row price $A$, and total price $\Lambda$, the
-predicate $R.\mathrm{Bounds}(p,\tau,A,\Lambda)$ is the source path budget:
+predicate $R.\mathrm{Bounds}(p,\tau,A,\Lambda)$ is the path budget:
 each exponentially weighted row family has sum at most $A$; the loop
 atom-budget family has sum at most $\Lambda$; and the cubic and quartic
 atom-budget families each have sum at most $A$. In addition, every atom is
@@ -133,13 +133,10 @@ Thus
        +\pi^2 A_2\mu^2(\mu^{-2}-1)\leq3\pi^2A_2.
 \]
 The pole integral is exactly the logarithmic term:
-$c_{\rm wt}\int_I h_G=-\lambda_G\log\mu^{-1}$, by the angular
-average of the gauge pole. The Fourier formula for $\alpha^{\mathrm{ann}}_j$ is
+$c_{\rm wt}\int_I h_G=-\lambda_G\log\mu^{-1}$, by the assumed pole identity. The Fourier formula for $\alpha^{\mathrm{ann}}_j$ is
 $c_{\rm wt}\int_{E_4}g$. Splitting the integral over
 $B_\mu\cup I\cup Q$ and using the three absolute bounds proves the
-claim. The angular identity and the two radial integrals are computed in
-the source by polar integration; no uniformity beyond the displayed radial
-estimates is used.
+claim. The radial integrals were evaluated above; the pole identity is a separate hypothesis. No uniformity beyond the displayed radial estimates is used.
 \end{proof}
 
 \subsection{The stationary chart receipts}
@@ -199,14 +196,14 @@ then over the box offsets in the site sum. Injectivity of the map from a
 coarse site/plaquette pair to its embedded fine plaquette prevents extra
 multiplicity. The resulting factor is exactly the product of the box
 cardinality, the plaquette count, and the site count appearing in the
-source's curl factor. The probe wire is summed over coarse bonds and paid
+curl factor. The probe wire is summed over coarse bonds and paid
 by the second factor, the probe factor. Combining the two with the floor
 bound yields
 \[
  \sum_e\|v_e\|^2\leq \beta_\ell\,\mathcal D(v)
                       +\gamma_\ell\,\mathcal P(v),
 \]
-where the source coefficients are exactly
+where the coefficients are
 \[
  \beta_\ell=(2C^2)|\operatorname{Site}(L)|\,|\operatorname{Axis}|
        (|X|\,|\operatorname{PlaqAxes}|)\,|X|,
@@ -292,7 +289,7 @@ for them.
 
 The exact interface for the one-step construction is the following. Fix a
 kernel choice, a phase $J$, positive $\varepsilon,w,\delta$, and
-nonnegative $D,Z,C,Z'$. The source theorem chooses a reel $R_1$ satisfying
+nonnegative $D,Z,C,Z'$. The one-step construction assumed as input \textup{(B)} in Proposition~\ref{prop:path-retained-plan} chooses a reel $R_1$ satisfying
 $R_1.\mathrm{Price}(s)$, nonnegative $\kappa$, and positive $s$. For every
 $\tau>0$ and $A\geq0$, assume
 $\mathrm{HorizCalc}(G,w,\varepsilon,D,Z,\tau,A)$. It then chooses
@@ -346,7 +343,7 @@ The one-step construction gives a path $Y$ and scalar $\alpha$ with
 \]
 for the coarse bed $T$ and the coarse clip $q$; thus the output path is
 attached to the coarse bed, while the incoming path was attached to the
-fine bed. All four source components of $Y.\mathrm{Bounds}(q,\eta',A',
+fine bed. All four components of $Y.\mathrm{Bounds}(q,\eta',A',
 \Lambda')$ obey the requested
 row/loop/cubic/quartic budgets whenever
 $0<\eta'\leq s$, $\kappa\leq A'$, $\Lambda_0(L)\leq\Lambda'$ and
@@ -401,12 +398,14 @@ below. The bounded path is obtained by adding the blank path to the produced
 row and higher-degree coefficients, then applying the sum-budget estimate
 to each degree separately.
 
+For the intermediate scalar-comparison explanation below, assume the following screened pole-comparison input for the same data: the screened determinant-response bound, contractibility and firm bounds, and the separated noncentral-nose and high-halo estimates described below. More precisely, for each fixed blocking ratio and nonprincipal alias, the annulus pairing with the full nose must equal its pairing with a horizontal representative, and that representative must be $O(|p|^2)$ near zero; the stated firm and high-halo bounds must make this valid for the same bridge and picture. The screened difference must obey the bound displayed below. This auxiliary input is used in that explanation; the retained-plan proposition uses the one-step output receipt and does not assume these intermediate estimates separately.
+
 The scalar $\alpha$ is the local quadratic coefficient of the constructed
 picture. Its normalization is compared with the annular coefficient
 $\alpha^{\mathrm{ann}}_j(Y_\pi)$ by a finite response identity. The response identity
 uses two determinant pictures. The first is the half-medal response minus
 the reference determinant; the second is the half-rank-up response minus
-the same reference determinant. The source's screened response estimate
+the same reference determinant. The screened pole-comparison input includes an estimate which
 bounds the difference of their quadratic coefficients by
 \[
  \left|\alpha^{\mathrm{ann}}_j(\text{medal}-\text{reference})
@@ -452,13 +451,12 @@ rows have their stated strip bounds; the fine bed has the required floor
 and sworn conditions and the incoming path is attached to it; the rank
 response is screened; the
 cofinal recorded errors tend to zero; and the period meshes are related by
-the source's injective replication map. These assumptions give the
+an injective replication map. These assumptions give the
 normalized pulled-back recording and the noise-free alias identity. For the
 Taylor step below, additionally use the exact second-bed identity
 ($N_X(0,0)=\mu I$), the transverse primal identity, and the annulus
 picture's second-order profile. The nonprincipal alias estimate uses the
-source contractibility, firm bounds, and the estimate for the separated
-noncentral noses; it
+contractibility, firm bounds, and separated noncentral-nose estimate required by the screened pole-comparison input; it
 does not follow from the pole recordings alone.
 
 The factor $L^4$ is essential. Here $L$ is the blocking ratio between the two periods, not the coarse physical period. Let $\ell=0$ denote the principal alias.
@@ -466,7 +464,7 @@ The second bed identity fixes the zero-momentum bridge nose at
 $N_X(0,0)=\mu I$. The annulus picture has a second-order Taylor remainder,
 so its principal pairing differs from $\mu^2\mathcal R_S(\mu p)$ by
 $O(|p|^3)$. For a nonprincipal alias, the full nose need not vanish to second order. The
-source high-halo estimate controls its horizontal and transverse components;
+high-halo estimate required by the same pole-comparison input controls its horizontal and transverse components;
 contractibility then replaces the full nose by its horizontal component
 inside the pairing, without changing that pairing. The transverse primal
 identity and the floor bound make this horizontal representative vanish to
@@ -543,7 +541,7 @@ $\Lambda_1\geq1$, then for every cutoff $a\geq0$,
 The proof uses only $s\leq k$ and nonnegative amplitudes. This is the
 finite-cutoff exponential-rate comparison used in the one-step conclusion.
 
-The source path budget is built in degree-specific steps. First, the blank
+The path budget in the assumed one-step construction is built in degree-specific steps. First, the blank
 row path copies the target bed roots; if those roots have strip price $M$,
 its row budget is $\mathrm{rowPrice}(w,M)=|\mathrm{PlaqAxes}|M e^{4w}$.
 Second, the cubic and quartic coefficients are those of the classical
@@ -556,8 +554,7 @@ Hessian, one for each pairing of the four external legs, divided by
 $4!$. This is the usual formula for the fourth derivative of a
 stationary value.
 If the cubic response price is $A'$, the quartic response price is $C'$,
-and the inverse vertical Hessian is bounded at price $D_*$, the source
-jet estimates give the price bounds
+and the inverse vertical Hessian is bounded at price $D_*$, assume the hypotheses of Proposition~\ref{prop:ex-classical-stationary-pictures}, with its constants $C_3,C_4,F$ equal to $A',C',D_*$ respectively. That proposition gives, at its specified strip widths and with its Taylor normalization, the price bounds
 \[
  \frac{A'}{3!},\qquad
  \frac{C'+3A'D_*A'}{4!}.
@@ -638,8 +635,7 @@ jets for every $n$, then $C_*-D_*\in S$ and all its jets vanish, so it lies
 in $K$. It also lies in $K^\perp$, whence
 $\|C_*-D_*\|^2=0$ and $C_*=D_*$. Apply this with the admissible correction
 series as $S$ and the derivatives at the tested periods as the maps $J_n$.
-The source admissible subspace is closed, and the joint invisible subspace is
-exactly the common kernel used in the orthogonal-complement selection.
+For this application assume the admissible subspace is closed; the joint invisible subspace is the common kernel used in the orthogonal-complement selection.
 When the tested side sequence exhausts all physical periods, this proves
 all-period jet injectivity on the chosen orthogonal complement. When it does
 not, the conclusion is exactly for the specified test sequence. This is the
@@ -678,7 +674,7 @@ the minimum of their positive decay rates. At $j=0$, the predecessor is
 interpreted as $0$, so the single available call is used twice. These choices
 make one set of output data valid whether the selected transition uses the
 same-scale receipt or the preceding-scale receipt. This is the second
-neighbor reindexing in the source construction; it is distinct from the
+neighbor reindexing in the construction; it is distinct from the
 width/price extrema at fixed output index above.
 
 In the public application, the arbitrary allowance sequence $C_j$ is passed
@@ -688,7 +684,7 @@ incoming path budget $64A'_j$; the factor 64 is part of the input allowance,
 not an output estimate obtained from a smaller path. At the selected level,
 $A'_j$ is the profile path price, so the row, cubic, and quartic incoming
 budgets are $64\,\mathrm{paths}_j$. The loop halo is separately defined with
-budget $64\,\mathrm{loopCap}_j$. The source's scale schedule verifies the
+budget $64\,\mathrm{loopCap}_j$. The selected schedule must satisfy the following
 loop charges used by the transition. For the transition from level
 $m+1$ to level $m$, let $j=J_{m+1}$ be the stage of the incoming level
 and $L_j$ the block side selected at stage $j$; the stage of the output
@@ -1039,7 +1035,7 @@ period sequence. Section~\ref{sec:selected-history-limits} then applies
 these limits to the same stationary construction and shows that the
 terminal Wilson normalization preserves every fixed-scale limit.
 
-\subsection{Exact source boundary}
+\subsection{Analytic input boundary}
 
 The selected route first supplies the horizontal annulus estimate, then
 applies the one-step flux construction at adjacent scale pairs, constructs
