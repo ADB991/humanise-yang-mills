@@ -130,8 +130,27 @@ For $r=300B$ this is the asserted $\exp(C_{\rm tag}d^4n)$
 bound. A tag used by several local tests is still charged only once
 in this product. There is no independent tag resampling at each use.
 
-A packet is set to zero if its seed and local flag conditions fail.
-When its value is nonzero, every retained mask is nonzero. The mask
+A packet is set to zero unless its seed support is contained in the
+sector seed support and its own flag set agrees with the actual coarse
+flags throughout its $300B$ neighbourhood. On a healthy packet
+neighbourhood, where there are no actual coarse flags, this flag test is
+equivalent to the packet's flag component being empty. The latter is
+the eligibility rule of the locally smooth stock extension used in the local
+jet argument; its equality with the physical packet also uses the
+funded room and manifest-sector conditions and a healthy neighbourhood
+through radius at least $500B$. Indeed, every packet flag lies in its
+own support and hence in its $300B$ neighbourhood, so the flag
+agreement forces the packet flag set to be empty when that neighbourhood
+is healthy; the converse follows because both flag sets then vanish
+there. For the remaining factors, the $500B$ health region contains the
+$200B$ energy addresses together with their clean read neighbourhoods,
+as well as the $300B$ and $304B$ mask regions. The clean-hull agreement
+of the clipped and unmasked rows and the manifest-sector mean identity
+therefore identify the two exponents; the held fine field, likelihoods,
+masks and normalization factors are the same in both products.
+Neither rule requires the sector
+store's flag component to be globally empty. When the packet value is
+nonzero, every retained mask is nonzero. The mask
 support conditions then give the local hypotheses of
 \eqref{eq:packet-assigned-energy}, including the control of the hot
 fluctuation bonds. Therefore
@@ -171,11 +190,11 @@ $UV\sum_{r=0}^k\binom kr v^rw^{k-r}=UV(v+w)^k$.
 Repeated application gives a product bound with multiplied amplitudes
 and added derivative scales.
 
-For the packet variation, the underlying fine configuration in its
-mask and likelihood factors is held fixed; the coarse field and its
+For the packet's stock-extension variation, the underlying fine
+configuration in its mask and likelihood factors is held fixed; the coarse field and its
 compensating fluctuation vary coherently. This matters at the boundary
 of a cutoff. If any of the retained mask products is identically zero
-on a neighbourhood of $y$, the packet and all its derivatives through
+on a neighbourhood of $y$, the extension and all its derivatives through
 order $j$ vanish at $y$. In the complementary case, every relevant
 individual mask has points of nonzero value arbitrarily close to $y$.
 Continuity of its argument therefore places that argument in the
@@ -187,8 +206,10 @@ The scalar estimate \eqref{eq:packet-normalization} and the core
 estimate must hold on these closed conditions; this is the closed
 support version of the local input used below.
 
-Separate the varied packet as $e^{\phi(v)}H(v)$, apart from its fixed
-seed-eligibility indicator. The local differentiated estimates give
+For the local jet estimate, use the locally smooth stock extension described
+above; its seed-eligibility indicator is fixed as the coarse field
+varies. Separate its expression as $e^{\phi(v)}H(v)$, apart from that
+indicator. The local differentiated estimates give
 \begin{equation}\label{eq:packet-local-jet-inputs}
  \begin{split}
  \phi-\phi(y)&\in\mathcal B_j(b(x)n,1;y),\\
