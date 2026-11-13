@@ -28,7 +28,7 @@ times the identity on colour. A linear probe $p$ of a homogeneous
 Maxwell jet of order $j$ acts on $D^jf(x)/j!$; write its value as
 $p[f;x]$. Its covariance pulse $P_{p,x}(y)$ is the covariance of that
 probe at $x$ with curvature at $y$. For a coordinate curvature probe
-$(c,i,l)$ this is $C_{ab;il}(y-x)e_c$; higher pulses are obtained by
+$(\gamma,i,l)$, with colour basis vector $e_\gamma$, this is $C_{ab;il}(y-x)e_\gamma$; higher pulses are obtained by
 the corresponding normalized derivatives in $x$. Such probes span the
 dual of the finite jet space, and these formulas extend linearly.
 The raised probe $\partial_u p$ is defined by
@@ -105,27 +105,27 @@ $h$, substitution $y=x+tz$ and dominated convergence therefore give
 \end{equation}
 The dominating function is $\rho_1(z)\|h\|_\infty$.
 
-Fix a coordinate probe $(c,i,l)$ and form a regulated pulse $R_t=dA_t$,
+Fix a coordinate probe $(\gamma,i,l)$ and form a regulated pulse $R_t=dA_t$,
 where
 \[
  (A_t)_b(y)=\bigl(\delta_{ib}\partial_lG_t(y-x)
-                    -\delta_{lb}\partial_iG_t(y-x)\bigr)e_c.
+                    -\delta_{lb}\partial_iG_t(y-x)\bigr)e_\gamma.
 \]
 It is closed and satisfies
 \[
  (\operatorname{div}R_t)_b
        =(\delta_{lb}\partial_i\rho_t(y-x)
-                    -\delta_{ib}\partial_l\rho_t(y-x))e_c.
+                    -\delta_{ib}\partial_l\rho_t(y-x))e_\gamma.
 \]
 For the latter identity, $\sum_b\partial_b(A_t)_b=0$ by commuting
 derivatives, so $\operatorname{div}dA_t=\Delta A_t$; now use
 $\Delta G_t=-\rho_t$. Away from $x$, $R_t$ and all its derivatives
-converge locally uniformly to $P_{(c,i,l),x}$.
+converge locally uniformly to $P_{(\gamma,i,l),x}$.
 
 Suppose $f$ is a Maxwell wave on a neighborhood of
 $\operatorname{supp}\chi$, and $\chi=1$ near $x$. Put
 $a_b(y)=\sum_uv_u(y)f_{ub}(y)$ and
-$H_b(y)=\chi(y)\langle e_c,a_b(y)\rangle$.
+$H_b(y)=\chi(y)\langle e_\gamma,a_b(y)\rangle$.
 Equation~\eqref{eq:maxwell-stress-divergence} gives
 \[
  \mathcal F_\chi(j(v;R_t,f))
@@ -140,8 +140,8 @@ The right side tends to $\partial_lH_i(x)-\partial_iH_l(x)$ by
 unregulated flux because $\operatorname{supp}d\chi$ is compact and
 separated from $x$. Hence
 \begin{equation}\label{eq:maxwell-coordinate-charge}
- \mathcal F_\chi(j(v;P_{(c,i,l),x},f))
-                       =-\langle e_c,(d\iota_v f)_{il}(x)\rangle.
+ \mathcal F_\chi(j(v;P_{(\gamma,i,l),x},f))
+                       =-\langle e_\gamma,(d\iota_v f)_{il}(x)\rangle.
 \end{equation}
 This proves the sign directly from the Green normalization and the
 outward-flux convention.
@@ -214,8 +214,10 @@ Fix distinct positions $x_0,\ldots,x_n$ and a smooth compact cutoff
 $\chi$ equal to one near $x_0$, whose support excludes every other
 $x_i$. Let $P_i$ be arbitrary Wick polynomials in finitely many jet
 probes at $x_i$. Extend $\mathscr D_v$ from probes to polynomials
-by the Leibniz rule, and denote this derivation by $\delta_v$.
-We claim
+by the Leibniz rule, and denote this derivation by $\delta_v$. Here
+$v=e_b$ for a coordinate direction $b$, or $v(y)=A(y-x_0)$ with $A$ real
+skew; by linearity the claim then also holds for every affine Killing
+field. We claim
 \begin{equation}\label{eq:maxwell-polynomial-ward}
  -\sum_{a,b}\int(\partial_a\chi)(y)v_b(y)
    \left\langle J^0_{ab}(y)\prod_{i=0}^nP_i(x_i)\right\rangle_0dy
@@ -278,9 +280,21 @@ covariant arrays and that its kernel is the line through this tensor.
 These facts supply the conserved-line certificate used in
 Section~\ref{sec:actual-stress-normalization}.
 
-The identification between invariant jet polynomials and the reference
-field table preserves their Wick moments, derivatives and rotations.
-Thus \eqref{eq:maxwell-polynomial-ward} descends to all its field
+We use three properties of the reference field table. They are part of
+its construction and are stated inputs of this section; they are not proved
+here.
+\begin{enumerate}
+\item[(R1)] Faithfulness: a field label whose separated correlations with
+  every spectator word vanish is zero.
+\item[(R2)] The reference field labels are the images of the invariant
+  Wick jet polynomials, and this identification preserves Wick moments,
+  sends the raised probe $\partial_up$ to the derivative plan in direction
+  $u$, and sends the rotation variation $\mathscr D_vp$, $v(y)=A(y-x)$, to
+  the infinitesimal rotation action.
+\item[(R3)] The canonical reference stress $J^0$ is the image of the Wick
+  polynomial \eqref{eq:maxwell-wick-stress}.
+\end{enumerate}
+By (R2) and (R3), \eqref{eq:maxwell-polynomial-ward} descends to all field
 labels. For the reference tensor $\tau J^0$, $\tau\in\mathbb R
 \setminus\{0\}$, both its translation and rotation Ward maps have
 the common coefficient $-\tau$. The sign comes from the collar
@@ -290,20 +304,23 @@ There is also a useful uniqueness check on the reference packaging.
 Suppose the same stress field has translation Ward identities with
 coefficients $c_0,c_1$ multiplying the same derivative plan. Subtracting
 the two identities shows that every separated correlation with
-$(c_0-c_1)\partial_bv$ vanishes. Faithfulness of the field table
+$(c_0-c_1)\partial_bv$ vanishes. Faithfulness (R1)
 gives $(c_0-c_1)\partial_bv=0$ for every label $v$. The derivative
 plan is nonzero already in grade four, as detected by the nonzero
-divergence probes in Section~\ref{sec:ex-lattice-trace-free-rank}.
+divergence probes in Section~\ref{sec:ex-lattice-trace-free-rank}; that
+detection uses the compatibility of the derivative plan with the field
+derivatives in (R2).
 Hence $c_0=c_1$. In particular, retaining the canonical tensor $J^0$
 and the same derivative plan forces the coefficient to be $-1$.
 
 In the native construction the reference is fixed before the weak
-comparison curve is chosen. Its canonical tensor has polynomial
+comparison curve is chosen. By (R3) its canonical tensor has polynomial
 \eqref{eq:maxwell-wick-stress}: the quadratic coordinate labels map
 to the corresponding products of curvature probes, their sum gives
 the first term, and subtracting one quarter of the diagonal sum
-gives the second. The reference packaging preserves the hierarchy,
-derivative plan, rotation and vacuum while selecting this tensor.
+gives the second. Selecting this tensor does not change the
+hierarchy, derivative plan, rotation or vacuum of the reference table, so
+(R1) and (R2) apply to the same data.
 The uniqueness argument therefore fixes its common Ward coefficient
 to $-1$ on that same data. Combined with the actual conserved-line
 certificate, this justifies the reference input to the physical

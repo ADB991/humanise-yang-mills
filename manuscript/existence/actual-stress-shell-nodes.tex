@@ -161,7 +161,8 @@ when the limit exists. The rate rules for the two channel weights give
 \]
 Explicitly, the unscaled grade-$d$ weight has rate $-dt$ and the unscaled
 grade-four weight has rate $-4t+h$, since it is divided by $r_m^h$ and
-$\operatorname{rate}(r_m)=-1$. Each channel transport contributes
+$\operatorname{rate}(r_m)=-1$ by the scale note (see the paragraph after
+Proposition~\ref{prop:ex-lattice-actual-shell-node}). Each channel transport contributes
 $4(1-t)$ from its fourth-power block ratio. Thus
 \[
  \operatorname{rate}(\rho_{m,-})=-dt+4(1-t),\qquad
@@ -174,7 +175,8 @@ exponential denominator has rate zero as well. In the displayed paid width,
 $\log\widehat\beta_j=o(\lambda_j)$ and
 $\sum_{\ell<j}\log C_{\ell+1}=o(\lambda_j)$, so its coupling and column
 factors have rate zero. Also $\operatorname{rate}(c_m)=1/32$,
-$\operatorname{rate}(a_{m+1}^D)=-D$, and
+$\operatorname{rate}(a_{m+1}^D)=-D$ (because $\lambda_{m+1}/\lambda_m\to1$, as
+shown in the same paragraph), and
 $\operatorname{rate}(X_m)=0$, because
 $X_m=\exp(\sqrt{\widehat\beta_{m+1}})$ is subexponential in $\lambda_m$.
 The finite column census is likewise subexponential. The exact definition
@@ -187,12 +189,17 @@ constants. Thus the correction-price left side has rate
  \frac1{32}-M-\frac18=-\frac5{64}<0;
 \]
 it tends to zero and is eventually below the displayed grade-$D$
-payment. For the marched estimate, the one-step growth bound and
-$\operatorname{fly}(D,m)\leq1$ give
+payment. For the marched estimate put
+$\upsilon_i=\widehat\beta_i^{-\nu_D}$, the same quantity as on the right
+of \eqref{eq:ex-lattice-shell-correction-price}; since
+$\widehat\beta_i\ge1$, $\upsilon_i\le1$.  The same-history one-step growth
+bound of the march is a stated input here, supplied with the menu and
+transfer receipts listed in Proposition~\ref{prop:ex-lattice-actual-shell-node}.
+Together with $\upsilon_m\leq1$ it gives
 \[
  \mathsf M_{k,m}(c_m)\leq
  \frac{c_m}{\upsilon_k}\left(\frac{a_m}{a_k}\right)^{D+1},
- \qquad \upsilon_i=\operatorname{fly}(D,i),\quad k\geq\operatorname{ref}(D).
+ \qquad k\geq\operatorname{ref}(D).
 \]
 For fixed $k$, the right side has rate $1/32-(D+1)$, while
 $\delta_mW_m/(16X_m)$ has rate $-D+M$. Their rate difference is
@@ -284,8 +291,10 @@ cost is exactly
 \]
 where $n_m$ is the column count; the factor $4$ is the source's two-channel
 and sign count. The correction has the purchased one-step remainder
-bound. No response coefficient is declared exact before that paid
-correction is included.
+bound, purchased with the same parameter $p'_m$; so the principal
+coefficient size plus the remainder bound is at most $2p'_m$, which is the
+quantity in the census identity.  No response coefficient is declared exact
+before that paid correction is included.
 
 Here is the exact density identity retained by the construction. The
 paid representation supplies regular coefficients $H_S(U)$ indexed by
@@ -358,8 +367,11 @@ birth-level bound is asserted:
  \|z\|_D\le Q_m^{\mathrm{quota}}\mathfrak q_{D,m,N,q}(z).
 \end{equation}
 Apply the ledger and the same-history coefficient-to-label transfer at a
-fixed collar anchor. The coefficient budget
-\eqref{eq:ex-lattice-shell-ledger-budget} and the finite census give
+fixed collar anchor. That transfer takes a coefficient whose size plus
+remainder bound is at most $c$, with census cost $4(1+n_m)c\le e$, to a
+grade-$D$ label $z$ with $\mathfrak q_{D,m,N,q}(z)\le2e$; the factor $2$
+is produced by this transfer step.  With $c=2p'_m$ and $e=e_m$, by the
+coefficient budget \eqref{eq:ex-lattice-shell-ledger-budget}, this gives
 $\mathfrak q_{D,m,N,q}(z)\le2e_m$, hence
 \[
  \|z\|_D\le2Q_m^{\mathrm{quota}}e_m.
