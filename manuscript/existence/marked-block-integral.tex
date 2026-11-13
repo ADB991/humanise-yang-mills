@@ -202,13 +202,14 @@ absorbed into the forced gas in Section~\ref{sec:soft-log-fusion}.
 That regrouping uses the same fixed background and gives
 $b(\theta)=G_\theta e^{R_0+S_0}$.
 
-The coarse exponent needs a separate identification. The following
-two inputs are required on the same coarse configuration $U$, at the
-same fixed background, path, clipping threshold and quadratic
-coefficient as in the block expansion above. Let $F$ be the exponent
+We identify the coarse exponent on the same configuration, background,
+path and clipping threshold as the integral above. The regular
+families have the summability, symmetry and local reset hypotheses of
+Section~\ref{sec:physical-reset-reorganization}, including its side-size
+and clipping conditions. Let $F$ be the exponent
 of the intermediate representation with regular terms frozen, and
 let $P$ be the path contribution subtracted with that quadratic
-coefficient included in it. The two inputs are
+coefficient included in it. We shall prove
 \begin{align}
  E_{\rm coarse}+S_0&=F-P,\label{eq:marked-output-exponent-input}\\
  e^{F+R_0-P}&=\mathscr O a(0).\label{eq:marked-regular-accounting-input}
@@ -230,9 +231,13 @@ entries and the path ledger take the form
 \]
 where $J$ is the sum of the lower and upper path corrections added
 to the regular terms, and $P$ is $\gamma$ times the masked path
-receipt. These identities require the regular splitting, the
-common path bounds and width, and the admissible clipping used in
-the reset. The reset uses vacuum $\tau-v/N$, regular sum $a+J$
+receipt. These are precisely \eqref{eq:reset-first-split} and
+\eqref{eq:reset-path-identity}: in that section's notation the present
+$(v,H,d,a,J,L_0,\gamma)$ are $(c_0,h,D,R_0,F,J,\alpha)$.
+The kinetic difference is $(\gamma+\Delta)\mathcal K$, since only
+its coupling changes; the loop term is unchanged. Thus these identities
+hold on every field, including unhealthy ones.
+The reset uses vacuum $\tau-v/N$, regular sum $a+J$
 and logarithmic sum $S_0=d+L_0$. Collecting the terms gives
 \[
  E_{\rm coarse}+S_0
@@ -242,25 +247,83 @@ The final regrouping preserves this exponent because it preserves
 the sum of the regular entries, leaving the vacuum and path terms
 unchanged.
 
-For the first regrouping, the transfer of the regular terms gives
-$F+R_0$ as the exponent before splitting the first logarithm family.
-Write that exponent as $v_* - K_* - A_*$. The signed channel
-average separates $K_*=K_{\rm base}+B_*$, where $B_*$ is the sum of
-the cubic and quartic bills weighted by the coarse coupling and the
-unweighted loop bill. The regular-term identity at each channel,
-summed with the normalized channel weights, gives
-$A_*=-\log a(0)-P-B_*$. The vacuum and base-path normalization gives
-$\mathscr O=e^{v_*-K_{\rm base}}$. Consequently
+For completeness, the first transfer can be checked directly on its
+entries. Let $A_*$ be the original regular sum and $A_{\rm rem}$
+the sum after removing its selected finite set $I_0$ of entries.
+Distribute each selected masked entry $f_i$ over sites with its
+allocation weights $\lambda_{oi}$, for which $\sum_o\lambda_{oi}=1$,
+and put $e_o=\sum_{i\in I_0}\lambda_{oi}f_i$. Hence
+$A_*=A_{\rm rem}+\sum_o e_o$. Let $c_*$ be the common flat value
+of the allocated local reference (independent of $o$ by translation),
+let $g_o$ be its local replacement, and write $\chi_o$ for that
+replacement's healthy mask. The discrepancy used by the transfer is
+\[
+ t_o=e_o-c_*-\chi_o g_o.
+\]
+Thus $A_*=A_{\rm rem}+Nc_*+\sum_o\chi_o g_o+\sum_o t_o$.
+This uses the actual masked entries and is valid on unhealthy fields
+too. The local replacement makes $t_o$ vanish on its larger healthy
+support, as required for absorbing $-t_o$ into the gas.
+
+Write $\langle\cdot\rangle$ for the uniform average over signed
+translations of the coarse lattice. The original and remaining
+regular sums are invariant under this average: their label
+permutations preserve values and masks, and their series converge
+absolutely. The new regular sum, vacuum and logarithmic correction are
+\[
+ A=A_{\rm rem}+\left\langle\sum_o\chi_o g_o\right\rangle,
+ \qquad \tau=\tau_*-c_*,
+ \qquad R_0=-\left\langle\sum_o t_o\right\rangle.
+\]
+The averaging factor is the reciprocal of the number of signed
+translations, so the constant $Nc_*$ is unchanged. Substitution gives
+$F+R_0=N\tau_*-K_*-A_*$. Enumerating the two disjoint label
+families changes no sum, so this also proves the identity for the
+actual enumerated arrays.
+
+We next identify $A_*$. Write $c_\Gamma(U)$ for the absolutely
+summable flag-free cluster logarithms of
+Section~\ref{sec:forest-average-log}. Their sum is $\log a(0)$
+and $a(0)=\exp(\sum_\Gamma c_\Gamma)>0$.
+The first part of the regular alphabet has values $-c_\Gamma$,
+transported to fixed addresses with the same full supports.
+Its assigned healthy mask changes no value, because $c_\Gamma$
+already vanishes off that healthy set. The transport is a bijection,
+so this part sums to $-\log a(0)$ without a multiplicity.
+
+The other part consists of the low-path receipts with coefficient
+$-\gamma$, the cubic and quartic atoms with coefficient $-\beta$,
+and the loop atoms with coefficient $-1$. Each retains its original
+mask and signed-channel weight. The low channels sum to $-P$ and
+the other three families sum to $-B_*$, where
+\[
+ B_*=\beta(\mathcal B_3+\mathcal B_4)+\mathcal B_{\rm loop},
+ \qquad K_*=K_{\rm base}+B_*.
+\]
+Each $\mathcal B$ is the signed average of its translated masked
+path atoms. Partitioning the path alphabet proves these equalities;
+the path bounds give absolute summability. Translation and signed
+averaging therefore commute with the sums. The cluster sum is
+invariant under the same symmetries by their bijections of cluster
+addresses. The further uniform signed-translation average of the
+whole regular alphabet leaves its sum unchanged. This proves
+$A_*=-\log a(0)-P-B_*$.
+
+Finally let $T_*>0$ be the field-independent factor in
+\eqref{eq:reassembly-overhead}, evaluated at the identity with the
+same forest and incoming vacuum. The extracted field-dependent part
+of the inherited exponent is $\exp(-K_{\rm base})$, whence
+$\mathscr O=T_*\exp(-K_{\rm base})$. The vacuum is defined by
+$\tau_*=N^{-1}\log T_*$; $N>0$ and $T_*>0$ justify this definition.
+Writing $v_*=N\tau_*$ now gives
 \[
  F+R_0-P=v_*-K_{\rm base}-B_*-A_*-P
         =v_*-K_{\rm base}+\log a(0).
 \]
 Exponentiating proves \eqref{eq:marked-regular-accounting-input}.
-The transfer, the signed-channel regular-term identity and the
-vacuum normalization use the same renewal and path bounds. In
-particular the receipt $P$ uses the same path, threshold, and
-coefficient in both calculations. These local identities of the
-reset and renewal are required on the actual selected data.
+Every reindexing above preserves the original threshold and path;
+in particular the receipt $P$ used in the reset is the one just
+summed in the regular alphabet.
 
 Indeed, adding $R_0$ to \eqref{eq:marked-output-exponent-input}
 and exponentiating, then using \eqref{eq:marked-regular-accounting-input},

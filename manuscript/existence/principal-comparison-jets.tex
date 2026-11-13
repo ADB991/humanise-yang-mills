@@ -238,12 +238,29 @@ the covariance difference, using
 chart from Sections~\ref{sec:haar-chart} and
 \ref{sec:mean-action-jets} supplies the required $u$.
 For a support anchored at $o$, its radius is at most $D_x$.
-Use the healthy base-field logarithm bound on this same read halo as an input to $\|u(0)\|\le v(x)$; the direction estimate alone controls only the positive-order derivatives. The chart derivative scale can be chosen as
+The value bound needs the base field as well as the direction bounds.
+Here is a direct local estimate. On the nonwrapping read box of radius
+$R=45(1+B)$, choose the gauge given by parallel transport from its
+anchor along coordinate-ordered paths. A gauged bond is the holonomy
+of the two such paths and that bond. Interchanging adjacent coordinate
+steps reduces this loop to the empty path using at most
+$C(1+R)^2$ plaquettes in the box, with $C$ depending only on dimension.
+Indeed each path has at most $4(2R+2)$ steps; moving each step past
+the earlier steps uses at most the square of this number of swaps.
+Each swap inserts a conjugate of one elementary plaquette.
+The representation norm is invariant under conjugation and satisfies
+$\|UV-1\|\le\|U-1\|+\|V-1\|$. Health therefore bounds the gauged
+bond chord by $C(1+R)^2\theta_c$. The logarithm is Lipschitz on its
+fixed smaller chart, so it obeys the same bound after enlarging $C$.
+The period and chart conditions used below ensure that this box lifts
+and that all these logarithms are defined.
+The positive-order derivatives instead follow from the direction
+bound. A common size and derivative scale is therefore
 \[
- v(x)=C_n\,2\theta_f(x)
-                    (1+\operatorname{reach}(x))^p(1+D_x)^p.
+ v(x)=C_n\left\{(1+R)^2\theta_c(x)+
+ 2\theta_f(x)(1+\operatorname{reach}(x))^p(1+D_x)^p\right\}.
 \]
-This follows by applying the weighted direction bound at $o$
+For the derivative part apply the weighted direction bound at $o$
 to every read site and using the uniform derivatives of the
 logarithm on the fixed chart. An ordered product of $k$ local
 variations contributes the $k$th power of that scale.

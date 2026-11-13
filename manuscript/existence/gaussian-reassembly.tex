@@ -12,7 +12,10 @@ include every variable read by their factors.
 
 \subsection{The Gaussian density and the scalar factor}
 Write $A$ for the completed sector precision, $A_0$ for its flat reference,
-and $C$ for the localized covariance. The precision $A$ comes from the
+and $C$ for the localized covariance. The reference $A_0$ is formed
+at the identity coarse field with no seeds and the same forest: all
+free bonds are active and only tree coordinates receive identity
+completion. The precision $A$ comes from the
 selected affine row square with an identity completion on inactive
 coordinates; $C$ is a positive finite-range approximation to its inverse.
 We retain the correction $C^{-1}-A$ below, rather than identifying the two.
@@ -27,7 +30,14 @@ coordinates. Put
  m=c_{\rm H}(bg)^q,
 \]
 where $c_{\rm H}>0$ is the constant in the local probability-Haar
-density of Section~\ref{sec:haar-chart}. With $u=\mu+gz$, the reference
+density of Section~\ref{sec:haar-chart}. The mean $\mu$ is the physical
+field associated with $-P^*\ell$, where $P$ is the padded,
+column-dependent principal inverse and $\ell$ the linear row source
+of Section~\ref{sec:local-mean}. This uses $P^*$, rather than $C$ or
+$A^{-1}$. Its inactive coordinates vanish: the precision has an
+inactive identity block, every principal inverse preserves that
+block, and the inactive source coordinates are zero.
+With $u=\mu+gz$, the reference
 Gaussian has density
 \begin{equation}\label{eq:reassembly-gaussian-density}
  \vartheta_C(z)=b^{-D}
@@ -101,9 +111,8 @@ The compulsory packet exponent, summed over the packet layout, is
 Here $D_{\rm near}(u)$ is the signed average of $d_p(u)$ over the
 posted rows at radius $200B$, and $Q_{\rm seed}(\mu)$ is the signed
 average of the extracted row squares at $\mu$ over those same posted
-rows. They are not complementary row sets. The two occurrences of
-``near'' in the following local sums use their respective radii, $200B$
-and $304B$; they are different sets. The packet layout uses disjoint
+rows. They are not complementary row sets. The correction sum $\sum c_e$ uses radius $200B$, whereas the Haar
+correction sum $\sum j_e$ uses radius $304B$; they are different sets. The packet layout uses disjoint
 halos of radius at least $500B$, so all reads through $304B$, including
 the extra two lattice steps, belong to a unique packet. Thus summing
 the packet exponents gives exactly \eqref{eq:reassembly-packet-log}.
@@ -216,7 +225,8 @@ $\sum_i|e^{f_i}-1|<\infty$: outside finitely many indices,
 $|e^{f_i}-1|\le2|f_i|$. The warning alphabet is finite and its
 expansion is the ordinary identity for $\prod_j(1+w_j)$.
 
-The Gaussian moment estimate gives, with the original probability
+The simultaneous product estimate \eqref{eq:warning-sector-mass}
+gives, with the original probability
 Haar variables $y$ retained,
 \[
  \int|\Phi_{K,I,J}(y,z)|\,d\nu_F(y)\,d\gamma_C(z)
@@ -249,7 +259,8 @@ its connected components. Connectivity is defined by intersection
 of the full assigned supports. For fixed tags, different components
 read disjoint Haar coordinates. Their Gaussian coordinates may be
 larger than their physical read sets; the assigned supports include
-the prescribed covariance buffer. If two components have disjoint
+the full covariance-range halo around every Gaussian coordinate read.
+If two components have disjoint
 assigned supports, any two Gaussian coordinates read by them are
 farther apart than the range of $C$. Their cross covariance is zero.
 The Gaussian characteristic function consequently splits into the

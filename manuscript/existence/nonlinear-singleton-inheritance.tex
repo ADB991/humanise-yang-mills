@@ -106,6 +106,8 @@ entrance coupling, with the block size already fixed. Denote a common
 nonnegative bound for the braces by $b(x)$.
 
 \subsection{The retained reference term}
+These principal and remainder prices feed the regular local return
+of Section~\ref{sec:regular-principal-producer}.
 We spell out the summation cost of the reference term, since a
 per-occurrence gain alone does not give the required coarse budget.
 Let $X_i$ be the fine support of occurrence $i$, $a_i$ its fine anchor,
@@ -123,11 +125,58 @@ $p$, and allocation radius $r_0$. The bounds through any smaller requested
 order follow by restriction. In particular, the degree-four attenuation
 used below requires the insertion regularity and moment cancellation of
 Section~\ref{sec:principal-reference-attenuation} through that degree.
-For the inherited activity the cancellation is a separate input on short
-nonwrapping supports: the coarse side must meet the side-size requirement
-for the screened polynomial moment test, and the directions must lie in
-the prescribed graded test spaces. The order-six regularity is required
-at the purchased budget order.
+Here that cancellation follows from the defining incoming regular-family
+conditions; it is not an extra moment assumption. We give the argument
+on a nonwrapping support $X$ anchored at $o$, on a fine torus of side
+at least four. Write $f$ for one inherited entry. It is local and gauge
+invariant, satisfies $f(1)=0$, is $C^n$ in logarithmic coordinates,
+and its Hessian at the identity vanishes on pairs of affine link
+fields. These are the regular-family conditions preserved by the reset.
+
+Put $F=f\circ\exp$. Its first derivative at zero vanishes: constant
+gauge transformations make its restriction to each link an invariant
+linear functional on the simple Lie algebra, and hence zero on the
+Lie algebra, which is spanned by commutators. Use the germ $\Psi(q,J)$
+and the filtered spaces $\mathcal K_a,\mathcal M_a$ of
+Section~\ref{sec:polynomial-moment-attenuation}, with $d=4$.
+By locality and gauge invariance, $F\circ\Psi$ is independent of $q$.
+Consequently a mixed derivative vanishes if any argument has weight
+one: such an argument has no radial coefficient, since those
+coefficients start at weight two.
+
+If every argument has weight at least two and their total weight is
+at most four, there are at most two arguments. With zero arguments
+the value is $f(1)=0$. With one argument the derivative is zero by
+$DF(0)=0$. With two arguments both weights equal two, and the
+second-order chain rule gives
+\[
+ D^2(F\circ\Psi)(0)[u,v]
+ =D^2F(0)[D\Psi(0)u,D\Psi(0)v],
+\]
+because the term containing $DF(0)$ vanishes. The two image
+directions lie in $\mathcal M_2$ by \eqref{eq:moment-filtration};
+they agree on $X$ with affine link fields. Locality and the
+incoming affine-Hessian condition kill this term too.
+Thus every derivative of $F\circ\Psi$ of total weight at most
+four vanishes.
+
+To transfer this assertion back to $F$, lift each polynomial
+direction of weight $a_i$ through the surjection
+\eqref{eq:moment-surjection} and induct on the number of arguments.
+In the partition form of the chain rule, the singleton partition
+is the desired derivative of $F$. Every other partition has fewer
+blocks; its block directions lie in the spaces with weights equal
+to the sums of the corresponding $a_i$, by
+\eqref{eq:moment-filtration}. The induction hypothesis kills
+those terms. The composite derivative was just shown to vanish,
+so the singleton term vanishes. Finally locality allows the
+directions to be screened to $X$, by differentiating
+$F=F\circ\operatorname{screen}_X$.
+This proves precisely \eqref{eq:polynomial-moment-null} through
+degree four for the inherited entry. Wrapping supports use the
+long-support estimate below and do not require this cancellation.
+The fine side-size condition follows in the application from the
+coarse-side bound and the positive block ratio.
 Let $t\ge0$ be the full requested coarse
 support exponent, including any reserve needed later.
 
