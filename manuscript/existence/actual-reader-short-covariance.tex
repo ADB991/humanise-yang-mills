@@ -239,13 +239,14 @@ its cut period-matrix entry is zero: every retained coarse displacement
 has length at most $H_x$, so none can connect those bases modulo the period. These two facts are the only geometric
 properties of the cut used in the short-history comparison.
 
-In the source normalization the row-tail payment for all output labels is
+For an input site and label, sum the omitted absolute mass over all
+output sites and labels. For each output label, the triangle inequality
+in the periodization sum bounds the omitted mass by the cover sum above.
+Summing over the output-label set $\mathcal C$ thus gives the row bound
 \[
- \operatorname{cheque}(t,A,x)
- = |\mathcal C|A\exp(-t h_x).
+ \mathcal T_{\mathcal C}(t,A,x)=|\mathcal C|A\exp(-t h_x).
 \]
-For the installed two-form path row, the incoming cover bound has a
-specific source. In cover-row notation it is
+For the installed two-form path row, the cover operator is
 \[
  \Psi=D_f^{-1}\,\mathrm{Fine}(T)\,D_c,
 \]
@@ -262,17 +263,18 @@ In the selected case where the three incoming factors are all bounded by
 $M_{\rm in}$, put $\psi_{\rm budget}(u)=m_2^2u^3$; then the installed row
 has bound $\psi_{\rm budget}(M_{\rm in})/L^2$. The factor $L^{-2}$ is
 already in the moving tower receipt, not produced by installation;
-installation preserves its per-entry bound and summing over output labels
-supplies the cheque factor. The paid movement error is therefore
-$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$. This is an
-incoming budget, separate from the turn-row cheque.
+installing the operator in residue coordinates preserves the bound on
+each cover sum. Let $\mathcal C_2$ be the set of two-form labels. The
+movement error is bounded by
+$\mathcal T_{\mathcal C_2}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$.
+The turn-row error uses its own output labels and strip parameters.
 
 Define the short transport matrix on a period by keeping each installed
 transport entry when the two coarse parent bases have separation at most
 $H_x$, and setting it to zero otherwise. The cut path row has zero at all
 omitted addresses. The installed-row estimate therefore bounds, for each
 input coordinate, the omitted row sum by
-$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$; in
+$\mathcal T_{\mathcal C_2}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$; in
 particular every omitted entry has this bound, while retained entries are
 unchanged. This is the same two-case finite-range comparison as for
 $Q_n^{\rm short}$ below.
@@ -314,7 +316,7 @@ matrix vanishes by the support condition, so the bound from
 Proposition~\ref{prop:ex-reader-short-covariance} gives
 \[
  |(C_n)_{(u,a),(v,b)}-Q^{\rm short}_{n}(u,a;v,b)|
- \le \operatorname{cheque}(t,A,x).
+ \le \mathcal T_{\mathcal C}(t,A,x).
 \]
 Thus the short comparison used at a reader is exact on retained pairs;
 the only error is the omitted covariance tail. This is the two-case form

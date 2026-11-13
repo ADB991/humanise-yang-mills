@@ -9,44 +9,72 @@ configuration, and agrees with the required logarithmic adjustment
 where the protected integrand can be nonzero.
 
 \subsection{A globally defined adjustment of one logarithm}
-We first specify the logarithm on nearby ambient matrices. Split the
-real matrix space as the colour space and its orthogonal complement.
-The map $(u,n)\mapsto\exp(u)\exp(n)$ has invertible derivative at
-$(0,0)$, so the inverse function theorem gives a smooth local inverse
-near the identity. Let $\operatorname{Log}_*$ be its colour component.
-For a group element near the identity this agrees with the local group
-logarithm: write the element as $\exp(u)$ and use uniqueness in the
-normal-coordinate chart. In particular, $\operatorname{Log}_*$ is
-colour-valued even when its matrix argument is not a group element.
+We first specify the logarithm on nearby ambient matrices. As in
+Section~\ref{sec:predictor-branch}, regard $\mathcal M=M_N(\mathbb C)$
+as a real inner-product space with
+$\langle A,B\rangle=\operatorname{Re}\operatorname{tr}(A^*B)$, and split
+it as the colour space $\mathfrak g$ and its orthogonal complement
+$\mathfrak g^\perp$. The map $(u,n)\mapsto\exp(u)\exp(n)$ on
+$\mathfrak g\times\mathfrak g^\perp$ has derivative $(u,n)\mapsto u+n$
+at $(0,0)$, which is invertible. By the inverse function theorem there
+is a neighbourhood $O$ of $(0,0)$ in $\mathfrak g\times\mathfrak g^\perp$
+such that this map is a diffeomorphism of $O$ onto an open neighbourhood
+$V$ of the identity $1$ in $\mathcal M$. Its inverse
+$V\to O$ is smooth; let $\operatorname{Log}_*\colon V\to\mathfrak g$
+be the colour component of this inverse.
+In particular, $\operatorname{Log}_*$ is colour-valued even when its
+matrix argument is not a group element.
 
-Choose fixed $d,A>0$ so small that
+For a group element $g$ near the identity, $\operatorname{Log}_*(g)$
+is the local group logarithm. This uses one fact from the theory of
+matrix Lie groups, already used in Section~\ref{sec:predictor-branch}:
+by Cartan's closed-subgroup theorem in the form of B.~C. Hall,
+\emph{Lie Groups, Lie Algebras, and Representations}, 2nd ed.,
+Springer, 2015, Theorem~3.42, there is $\theta>0$ such that every
+$g\in G$ with $\|g-1\|<\theta$ equals $\exp X$ for some
+$X\in\mathfrak g$, with $X\to0$ as $g\to1$. For such $g$ close
+enough to $1$, the pair $(X,0)$ lies in $O$ and is mapped to $g$, so
+$g\in V$ and, the map being injective on $O$, $\operatorname{Log}_*(g)=X$.
+Without this theorem one would know only that $g$ is a matrix near
+$1$, and its local preimage could have a nonzero
+$\mathfrak g^\perp$ component.
+
+Choose fixed $d_*,A>0$ so small that
 \[
- \operatorname{Log}_*(\exp u)=u\quad(\|u\|\le2d)
+ \operatorname{Log}_*(\exp u)=u\quad(u\in\mathfrak g,\ \|u\|\le2d_*)
 \]
 and this extension is smooth at $\exp(u)M$ whenever
-$\|u\|\le2d$ and $\|M-1\|\le A$. Also require
-$\exp\operatorname{Log}_*(\exp(u)g)=\exp(u)g$ for $\|u\|\le d$ and
-$\|g-1\|\le A$. Such constants exist by continuity of multiplication
+$\|u\|\le2d_*$ and $\|M-1\|\le A$. Also require
+\[
+ \exp\operatorname{Log}_*(\exp(u)g)=\exp(u)g
+ \qquad(u\in\mathfrak g,\ \|u\|\le d_*,\ g\in G,\ \|g-1\|\le A).
+\]
+This identity is asserted only for group elements $g$: for a matrix
+$X$ outside $G$ the left-hand side lies in $G$ and the right-hand side
+does not. Such constants exist by continuity of multiplication
 and the exponential at $(0,1)$, after choosing a smaller product
-neighbourhood inside the given logarithm domain. The constants are
-chosen before the coupling threshold and before the particular cutoff.
+neighbourhood inside the given logarithm domain; for the last identity
+note that $\exp(u)g\in G$ is close to $1$, so the previous paragraph
+applies to it. The constants are chosen before the coupling threshold
+and before the particular cutoff. The fixed chart radius $d_*$ is not
+the growing scale $d=1+B+(\log h)^2$ of \eqref{eq:warning-scales}.
 
 Using the same smooth cutoff as before, define
 \[
- \psi(M,u)=\chi(\|u\|^2/d^2)\{\operatorname{Log}_*(\exp(u)M)-u\},
+ \psi(M,u)=\chi(\|u\|^2/d_*^2)\{\operatorname{Log}_*(\exp(u)M)-u\},
  \qquad F_M(u)=u+\psi(M,u).
 \]
 Here group elements are represented by their unitary matrices in the
-logarithm expression. The correction is zero for $\|u\|\ge2d$.
+logarithm expression. The correction is zero for $\|u\|\ge2d_*$.
 On the closed ball it is smooth in $(M,u)$; outside the ball it
 vanishes locally, so these formulas define a smooth map everywhere
 for $M$ sufficiently near $1$. At $M=1$ the correction and all its
 $u$ derivatives vanish.
 
-Compactness of $\|u\|\le2d$ now supplies one neighbourhood of
+Compactness of $\|u\|\le2d_*$ now supplies one neighbourhood of
 $M=1$ on which, for every $u$,
 \begin{equation}\label{eq:compensator-small}
- \|\psi(M,u)\|<d/2,\qquad \|D_u\psi(M,u)\|<1/2.
+ \|\psi(M,u)\|<d_*/2,\qquad \|D_u\psi(M,u)\|<1/2.
 \end{equation}
 Indeed these inequalities hold at $(1,u)$, and their continuous
 left-hand sides are uniformly small on that compact set; off it they
@@ -69,7 +97,7 @@ is one outside it. Thus $F_M$ is a smooth bijection with positive
 Jacobian. Its local smooth inverses agree by injectivity, giving a
 global smooth inverse.
 
-For an actual group element $g$ near $1$ and $\|u\|\le d$, the
+For an actual group element $g$ near $1$ and $\|u\|\le d_*$, the
 cutoff equals one. Consequently
 \begin{equation}\label{eq:compensator-exact}
  \exp(F_g(u))=\exp(u)g.
@@ -111,10 +139,10 @@ on $z$.
 
 The fine field on an active bond is $\exp(u_i)\overline V_i$;
 on an inactive bond it is the fixed original fine field. Suppose
-$8at\le d/2$ and the varied active fluctuation satisfies
-$\|u_i(V)\|\le8at$. By \eqref{eq:compensator-small},
+$8a\tau\le d_*/2$ and the varied active fluctuation satisfies
+$\|u_i(V)\|\le8a\tau$. By \eqref{eq:compensator-small},
 \[
- \|u_{0,i}\|\le\|u_i(V)\|+\|\psi(M_i(V),u_{0,i})\|<d.
+ \|u_{0,i}\|\le\|u_i(V)\|+\|\psi(M_i(V),u_{0,i})\|<d_*.
 \]
 Equation~\eqref{eq:compensator-exact} therefore gives
 \begin{equation}\label{eq:compensator-held-fine}
@@ -123,16 +151,16 @@ Equation~\eqref{eq:compensator-exact} therefore gives
 \end{equation}
 Inactive bonds agree by definition. On the protected support all fine
 reads are consequently fixed, including their masks, likelihoods and
-selected branch tags. The larger $8at$ allowance is deliberate: at
+selected branch tags. The larger $8a\tau$ allowance is deliberate: at
 a point where the broader cutoff germ is not identically zero,
-continuity first gives $\|u_i(V_0)\|\le4at$, then gives the strict
-$8at$ bound on a neighbourhood. A finite set of protected bonds has
+continuity first gives $\|u_i(V_0)\|\le4a\tau$, then gives the strict
+$8a\tau$ bound on a neighbourhood. A finite set of protected bonds has
 one common such neighbourhood. No condition is imposed on the
 unprotected Gaussian coordinates.
 
 \subsection{Uniform derivative bounds for the compensation}
 Fix the derivative order $k$. On
-$\{1\}\times\{u:\|u\|\le2d\}$, all derivatives in $M$ of
+$\{1\}\times\{u:\|u\|\le2d_*\}$, all derivatives in $M$ of
 $\psi$ and $p$ through order $k$ have fixed bounds, by smoothness and
 compactness. Outside this set their $u$-sections are respectively
 zero and one as functions of $M$. Hence these bounds hold for every

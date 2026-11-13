@@ -1,0 +1,13 @@
+# Public-family identification: G02 O2 author response
+
+Issue253; session `mgubi-astra-public-family-20261113`, [claim253#6863900863](https://github.com/hairer/humanise-yang-mills/issues/253#issuecomment-6863900863), expiry2026-11-14 07:30UTC. Base `69b2631f7a3d3c4176ca0084d8607cb9d8d124a2`. This account authored C16 and contributed YM-000022; one Astra author agent with parent inspection, not independent acceptance.
+
+## Bounded result
+
+The added passage in `public-run-binding.tex` defines the public projection of the already retained C_R, before extraction. Its actual level block is ell_m=L_{J(m+1)}, so D_N is the product of these level blocks, a_N=D_N^-1=exp(-s_N), and the public bare coefficient is the actual history coefficient beta^R_{N,p,N}. It also identifies every public token insertion with the initial local-section observable composed with the **inverse terminal calibration** stored in the same transfer datum. The physical a_N^-d and selected threshold normalization remain part of that initial observable. The Wilson law and all finite moments therefore use exactly the retained family data; no new history, coefficient, label system or limiting identification is chosen.
+
+This addresses O2 at the manuscript definition/assembly interface. It does not prove production of the retained run or its analytic estimates. The same selected-run, transfer and finite-volume hypotheses already stated by the chapter and original-history attachment remain in force. The terminal isomorphism is data of every transfer record, including at small cutoffs; no eventual grade condition is inserted into its definition.
+
+The conditional running paragraph explicitly assumes the uniform actual-history estimate with fixed intercept and identified positive slope2*b0. It invokes the existing uniform extraction proposition of the running-coefficient pilot and specializes m=N; the threshold precedes all periods. The manuscript does not currently include the pilot in existence.tex, so it is named in prose rather than introducing an unresolved LaTeX reference. Its elementary proof is not duplicated. O1 (G02 patch application, include/bibliography work and related slope exposition) remains with the chapter owners/F01. The reference affine coupling is not substituted for the actual coefficient, and no physical-observable coupling identification is asserted.
+
+Only this local passage and new author records are changed. Other chapters, G02 proposals, earlier reports, source and shared metadata are read-only. New independent mathematics and textual source review by a different account is required; no global cycle result, formal approval, merge, closure or human acceptance.

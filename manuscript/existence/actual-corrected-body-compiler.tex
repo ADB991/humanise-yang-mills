@@ -14,7 +14,10 @@ Fix one step with fine and coarse tori, its actual path pair, clips
 and conditional Gaussian construction. Write $P$ for the fine
 representation, $\beta>0$ for its coupling, $\theta$ for its flag
 threshold, and $J$ for the local Haar chart ratio. Fix a reference
-forest $F_0$ and tag $k_0$. Put $y=r(x)$ for the recording
+forest $F_0$ and tag $k_0$. Use the signed orientation set $\mathcal S$ and its
+normalization $\omega_{\mathcal S}=1/|\mathcal S|$ from
+Section~\ref{subsec:owner-harvested-ceiling}. It is separate from the
+normalized tag average. Put $y=r(x)$ for the recording
 parameter, $B=\lceil(\log y)^2\rceil$, and $z=\beta_F(x)$
 for the adjacent fine parameter. All the objects below use this
 one choice of data. In particular, the fine path and clip in the
@@ -132,7 +135,7 @@ The actual decomposition has the following prices:
 
 We spell out the conversion of the earlier estimates into this
 table. Each exterior ceiling term is at most
-$4\,\mathrm{Aff.weight}\,y^{-1/4}$ on $\mathcal A$.
+$4\omega_{\mathcal S}\,y^{-1/4}$ on $\mathcal A$.
 Its support lies in a coarse halo of radius $420B$ at its
 assigned address. The bounded address density and halo volume
 cost only a fixed polynomial in $B$; the cover number at radius
@@ -170,13 +173,13 @@ label term costs at most a fixed multiple of $B^8\delta$,
 which is at most $y^{-1/8}$ eventually. The two fine/coarse
 tail terms each cost $k l\,\beta_F(y)^{-1}$, and the
 quadratic, cubic and quartic path terms each cost
-$k\beta_F(y)^{-1/12}$. Here $k$ is the number of signed
-orientations and $l$ the number of plaquette axes. The path
+$k\beta_F(y)^{-1/12}$. Here $k=|\mathcal S|$ and $l$ is the
+number of plaquette axes. The path
 coefficients have the required smallness because
 \[
- |\mathrm{Aff.weight}|\theta^2\Gamma,\quad
- |\beta\,\mathrm{Aff.weight}|\theta^3 C,\quad
- |\beta\,\mathrm{Aff.weight}|\theta^4 C
+ \omega_{\mathcal S}\theta^2\Gamma,\quad
+ \beta\omega_{\mathcal S}\theta^3 C,\quad
+ \beta\omega_{\mathcal S}\theta^4 C
  \le \beta_F(y)^{-1/8}
 \]
 eventually, with the fixed path bound $C$ and the hypotheses
@@ -292,7 +295,7 @@ coarse quadratic action by $e_0$, and the prediction mismatch
 cost by $M_0$. The charge decomposition and quadratic completion
 give respectively
 \begin{align*}
- \mathrm{Aff.weight}\sum\mathrm{levy}
+ \omega_{\mathcal S}\sum_j\mathrm{levy}_j
    &=M_0+(R_f-e_0)-G_0(m+gZ)+G_0(m),\\
  -\beta G_0(m)+\eta\cdot Z
        +\tfrac12 Z^\top(Q^{-1}-W)Z

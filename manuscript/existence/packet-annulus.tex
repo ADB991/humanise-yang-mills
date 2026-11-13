@@ -10,20 +10,29 @@ one. The argument needs only the local conditions stated below.
 Fix the block length $L$, the predictor patch, the positive direct
 coefficients $a_f,a_c$, and the predictor penalty $p>0$. Retain the
 exponent convention of Section~\ref{sec:packet-estimates}, with large
-parameter $h=h(x)$. Put $t=P(h)/\sqrt h$, let $s$ be the coarse
+parameter $h=h(x)$. Put $t=P(h)/\sqrt h$; this is the fluctuation
+scale written $\tau$ in \eqref{eq:warning-scales} and in
+Section~\ref{sec:packet-estimates} (not the coordinate warning threshold
+called $t$ there). Let $s$ be the coarse
 threshold, and let $B$ and $R$ be the shell and truncation radii.
 We use $s\le2t$, $R=\lfloor B/100000\rfloor$, and the eventual
-geometric inequalities
+geometric inequality
 \[
- 100(1+B)\le c,\qquad
  10000(\rho+R_{\rm macro}+L+10)\le B,
 \]
-where $c$ is the coarse period and $\rho$ the predictor reach.
+where $\rho$ is the predictor reach. In addition, the coarse period
+$c$ is assumed to satisfy
+\[
+ 100(1+B)\le c.
+\]
+This is not an eventual inequality: $c$ is arbitrary, and the
+condition is a standing hypothesis on the period, part of the
+funded-step condition under which the packet estimates are applied.
 Both $B$ and $R$ have upper exponent zero, whereas
 $e^{-\sigma R}$ has every negative upper exponent for fixed
 $\sigma>0$. These properties follow from $B\asymp(\log x)^2$.
 All thresholds in this section are chosen after the fixed local data;
-all estimates are uniform in $c$.
+all estimates are uniform over all periods $c$ with $100(1+B)\le c$.
 
 The incoming linear data are the path and kernel bounds of
 Section~\ref{sec:seed-guides}, the flat identities of
@@ -84,8 +93,9 @@ all of them. Every torus configuration whose lifted patch satisfies
 these restrictions belongs to the same neighbourhood, independently
 of its period. For large $x$ the patch fits within $B/2$ and its
 bonds satisfy the restrictions. In particular, the normalized tag
-likelihoods are exactly one there: each tag has probability the
-reciprocal of the number of tags in the minimizing branch.
+likelihoods are exactly one there: in the minimizing branch the frame
+is the selected minimizer, and each frame tag has probability the
+reciprocal of the total number of frame tags.
 The four-link triangle inequality also makes every touched fine
 plaquette chord at most $\delta$. These statements hold for the
 original tags, including tags retained after remote masks were erased.
@@ -277,7 +287,7 @@ subtract $K(e^b)X_c^0(b)$ to obtain
  \le C\|X_c(e^b)-X_c^0(b)\|_\infty
        +C\omega(R,H)\|X_c^0(b)\|_\infty,
 \]
-where $\omega(R,H)=(1+R)H+e^{-\tau R}$. The row bounds in
+where $\omega(R,H)=(1+R)H+e^{-\sigma R}$. The row bounds in
 \eqref{eq:unhit-kernel-near} justify this inequality. The globally
 small extension $b$ permits both supremum estimates on the right;
 no global bound on the original $V$ is required. The right side has

@@ -58,8 +58,7 @@ label in the selected frame.
 \subsection{The scale schedule and its numerical gates}
 
 Fix a simple compact gauge group, the selected Wilson family, and its
-same-history records. The scale estimates used by the source give the
-following schedule for each fixed triple $(d,D,h)$ satisfying
+same-history data. We assume the following shell-schedule input for each fixed triple $(d,D,h)$ satisfying
 \eqref{eq:ex-lattice-shell-grade}:
 \begin{equation}\label{eq:ex-lattice-shell-schedule}
  t=1+\frac{1}{64(d+12)},\qquad
@@ -117,7 +116,7 @@ input also contains the near allowance $\phi_{j_m}$. The channel weights $A_-$
 and $A_+$ are the paid prices for the grade-$d$
 and grade-four insertions; the latter includes $r_m^{-h}$, cancelled by
 $r_m^h$ in the fragment. Thus $W_m$ is a positive product fixed by the
-source formulas, not a free normalization parameter.
+displayed formulas, not a free normalization parameter.
 
 For a positive function $w$ on channel names, define its marched price
 from level $k$ by
@@ -170,7 +169,8 @@ $4(1-t)$ from its fourth-power block ratio. Thus
 \]
 and their sum is $h+8-(d+12)t=-D+(d+12)(1-t)$, using
 $D+h=d+4$. The renal and near allowances have rate zero. The explicit
-source bound $(s_i+1/2)q_i\leq\sqrt{\widehat\beta_{i+1}}$ shows that the
+bound $(s_i+1/2)q_i\leq\sqrt{\widehat\beta_{i+1}}$, included in the
+shell-schedule input, shows that the
 exponential denominator has rate zero as well. In the displayed paid width,
 $\log\widehat\beta_j=o(\lambda_j)$ and
 $\sum_{\ell<j}\log C_{\ell+1}=o(\lambda_j)$, so its coupling and column
@@ -189,12 +189,84 @@ constants. Thus the correction-price left side has rate
  \frac1{32}-M-\frac18=-\frac5{64}<0;
 \]
 it tends to zero and is eventually below the displayed grade-$D$
-payment. For the marched estimate put
-$\upsilon_i=\widehat\beta_i^{-\nu_D}$, the same quantity as on the right
-of \eqref{eq:ex-lattice-shell-correction-price}; since
-$\widehat\beta_i\ge1$, $\upsilon_i\le1$.  The same-history one-step growth
-bound of the march is a stated input here, supplied with the menu and
-transfer receipts listed in Proposition~\ref{prop:ex-lattice-actual-shell-node}.
+payment.
+
+\begin{lemma}[Paid-delay growth of the shell weights]
+\label{lem:ex-lattice-shell-paid-growth}
+Use the same selected history, block lengths and entrance delays as in
+Sections~\ref{sec:common-observable-purchases} and
+\ref{sec:common-scale-selection}. In particular, its final entry
+thresholds retain the marked-portfolio delay of
+Section~\ref{sec:ex-marked-portfolio-calibration}. Write $J(i)$ for its
+stage clock and $\ell_j$ for the block side fixed at stage $j$, so that
+\[
+ J(i)\le J(i+1)\le J(i)+1,\qquad
+ L_i=\ell_{J(i+1)}=a_i/a_{i+1},\qquad
+ \widehat\beta_{i+1}=\widehat\beta_i+s_G\log L_i,
+ \quad s_G>0.
+\]
+At step $i$, assume the history pays the retained entrance threshold of
+stage $J(i+1)$ with $\widehat\beta_i$. Use the public weights
+\[
+ \phi_i=\widehat\beta_{i+1}^{-1},\qquad
+ \upsilon_i=\widehat\beta_i^{-\nu_D},\qquad \nu_D=g_D+4,
+\]
+where $g_D$ is the maximal factor degree of the same selected grade-$D$
+frame. Assume the retained reference depths satisfy
+$D+3\le J(\operatorname{ref}(D))$ for every $D$. Then, for every $D\in\mathbb N$
+and every $i\ge\operatorname{ref}(D)$,
+\begin{equation}\label{eq:ex-lattice-shell-growth-input}
+ \phi_i L_i^{D+1}\upsilon_i\le\upsilon_{i+1}.
+\end{equation}
+This conclusion uses no cutoff or period parameter.
+\end{lemma}
+\begin{proof}
+The delay calibration in
+Section~\ref{sec:ex-marked-portfolio-calibration} is made after the
+stage block sides are fixed. For each stage $j$, it tests the two possible
+profiles $k=j$ and $k=j-1$ (only $k=0$ when $j=0$), and all grades
+$0\le d\le k$. Its numerical proof uses, for
+$x=\widehat\beta_i$, $b=s_G\log\ell_j$ and $y=x+b$, the sufficient
+bounds
+\[
+ x\ge1,\qquad x\ge b,\qquad
+ y\ge\max\{1,2^{g_d+4}\ell_j^{d+1}\}.
+\]
+These are thresholds for each fixed pair $(j,d)$, not one threshold
+independent of the block side or grade. The cited proof takes a finite
+maximum at each stage, includes the profile-cost and credit thresholds,
+and then takes prefix maxima together with the prior entrance requests.
+It proves the tail comparison for every coupling beyond the resulting
+threshold. Sections~\ref{sec:common-observable-purchases} and
+\ref{sec:common-scale-selection} retain this delay before constructing
+the history; enlarging an entry threshold preserves the comparison.
+Thus no new history is selected for the present application.
+
+Now fix $D$ and $i\ge\operatorname{ref}(D)$. Monotonicity of $J$ gives
+$D\le D+3\le J(\operatorname{ref}(D))\le J(i)$.
+The pair $(j,k)=(J(i+1),J(i))$ is one of the tested adjacent pairs,
+and the assumed payment permits evaluation at $x=\widehat\beta_i$.
+The block and coupling identities in the statement identify its
+$\ell_j$ and $y$ with $L_i$ and $\widehat\beta_{i+1}$.
+Finally the reciprocal tail $\mathsf f_D$ in
+\eqref{eq:ex-marked-height-jump} has exponent $g_D+4$, hence its values
+at these two couplings are exactly $\upsilon_i$ and $\upsilon_{i+1}$.
+That equation, with $d=D$, is the asserted inequality.
+\end{proof}
+
+For the marched estimate use Lemma~\ref{lem:ex-lattice-shell-paid-growth}.
+Since $\widehat\beta_i\ge1$, its weights satisfy
+$0<\upsilon_i\le1$ and $0<\phi_i\le1$. The retained delay and the
+reference-depth condition are conditions on the same history used by the
+menu and transfer inputs of
+Proposition~\ref{prop:ex-lattice-actual-shell-node}. The service theorem
+alone does not supply them; the named delay purchase above supplies the
+growth bound when those conditions hold. Merely knowing
+$\widehat\beta_i\to\infty$ would not imply it for varying $L_i$.
+For $m\ge k\ge\operatorname{ref}(D)$, multiplying
+it for $k\le i<m$ gives
+$\prod_{i=k}^{m-1}\phi_i\le
+(\upsilon_m/\upsilon_k)(a_m/a_k)^{D+1}$.
 Together with $\upsilon_m\leq1$ it gives
 \[
  \mathsf M_{k,m}(c_m)\leq
@@ -206,7 +278,7 @@ $\delta_mW_m/(16X_m)$ has rate $-D+M$. Their rate difference is
 $1/32-1-M=-61/64<0$, so the former is eventually smaller. This uses
 the same-history growth estimate, the rate-zero allowance, and the paid
 channel-rate identity above. The separate strict condition $M>-1/32$
-is a sufficient source condition for the correction price to be eventual.
+is a sufficient condition for the correction price to be eventual.
 Hence both price
 inequalities hold for each fixed opening.
 
@@ -269,8 +341,10 @@ injective migration preserves occupancy and the block map expands
 separation by at least $L_i$. The fine response uses occupancy
 $o_{m+1}=r(m+1)$.
 
-The two channels refer to the two inserted labels. Their graft is formed at the same base name, and source affine
-covariance fixes its quiet and singleton coefficients. The higher
+The two channels refer to the two inserted labels. Their graft is formed
+at the same base name; the assumed affine covariance of the graft
+determines its quiet and singleton coefficients. This covariance is part of the same-history
+menu input, not a consequence of the scalar price bounds. The higher
 many-name terms are pruned with the finite-mask receipt. With fine
 occupancy $o_{m+1}$ its mask cost is
 \[
@@ -289,7 +363,7 @@ cost is exactly
 \[
  4(1+n_m)\,2p'_m=e_m,
 \]
-where $n_m$ is the column count; the factor $4$ is the source's two-channel
+where $n_m$ is the column count; the factor $4$ is the two-channel
 and sign count. The correction has the purchased one-step remainder
 bound, purchased with the same parameter $p'_m$; so the principal
 coefficient size plus the remainder bound is at most $2p'_m$, which is the
@@ -350,9 +424,12 @@ Here $y_m=2\exp(-\mu_m\Delta_{G,L_m}(\widehat\beta_m)^2/16)$,
 where $\mu_m,\Delta_{G,L_m}$ are the selected shape strength and fine
 monitor. These are the exact coarse transfer inequalities; the fine
 backward transport and graft instead use $o_{m+1}$. The endpoint support
-exponents are at least $100$. The source tariff and same-history service
-proofs in Sections~\ref{sec:finite-menu-history-handoff} and
-\ref{sec:local-transfer} supply these paid conditions. This keeps the
+exponents are at least $100$. We retain these displayed inequalities as
+the paid-transfer input on the same adjacent transition and history.
+Sections~\ref{sec:finite-menu-history-handoff} and
+\ref{sec:local-transfer} give the conditional service and transfer
+arguments; verifying these numerical conditions for their selected
+parameters remains an input here. This keeps the
 regular and forced coefficient charges separate and does not assume
 equality of the interacting and reference actions.
 
@@ -404,8 +481,9 @@ the served coefficient identity, the throw coupon, the fixed opening, and
 the two inequalities \eqref{eq:ex-lattice-shell-march} and
 \eqref{eq:ex-lattice-shell-correction-price}.
 
-The placement and room thresholds are pointwise in the cover anchor. The
-anchor is assumed to lie in the stated collar. For fixed $x$, the period
+The birth-level threshold for the chamber receipt is uniform over all
+anchors in the level-$m$ collar. The placement event in the extraction
+filter is instead pointwise in the cover anchor. For fixed $x$, the period
 eventually places it at its intended grid site, so the radial bounds carry
 over to the finite-volume location. The first inequality in
 \eqref{eq:ex-lattice-shell-lightness} is the shell-smallness condition
@@ -427,12 +505,16 @@ scale and price gates displayed above, the lightness estimate
 \eqref{eq:ex-lattice-shell-lightness}, the finite-stencil room estimate,
 and the quota estimate \eqref{eq:ex-lattice-shell-quota} at each birth
 level.  Assume also the same-history chamber receipt in the following
-eventual form: for each fixed opened pair $(p_0,k)$, labels $B,T$, cover
-anchor $x$ and extraction order $\mathfrak f$, for all sufficiently large
-$m$ and $\mathfrak f$-almost every $(N,q)$, the readouts
+uniform eventual form: for each fixed opened pair $(p_0,k)$, labels $B,T$
+and extraction order $\mathfrak f$, there is $m_{\mathrm{ch}}$ such that,
+for every $m\ge m_{\mathrm{ch}}$ and every cover anchor $x$ whose
+level-$j_m$ location lies in $\mathcal C_{r_m}$, for
+$\mathfrak f$-almost every $(N,q)$ the readouts
 $\mathcal O_{N,q}(B,0)$, $\mathcal O_{N,q}(T,x_{m,N,q})$ and
 $\mathcal O_{N,q}(z,0)$, for every grade-$D$ label $z$, lie in the centered
-chamber of the opening $p_0$.
+chamber of the opening $p_0$. The threshold $m_{\mathrm{ch}}$ is
+independent of $x$; the late event in $(N,q)$ may depend on $m$ and $x$,
+but is common to all the grade-$D$ labels $z$.
 
 Fix grades with $D+h=d+4$.  Then there are $t>1$ and levels $j_m$, chosen
 before any opening, label or extraction order, with $j_m\to\infty$ and
@@ -471,7 +553,10 @@ $p_0\le k\le m$ and $p_0$ is opened at $k$; $j_m\ge\operatorname{ref}(d)$
 and $j_m\ge\operatorname{ref}(4)$, because $j_m\to\infty$; $j_m>m+1$,
 because $\lambda$ is increasing, $\lambda_{j_m}/\lambda_m\to t>1$ and
 $\lambda_{m+1}/\lambda_m\to1$ (see the scale note below); and
-the finite-stencil room threshold for $p_0$.  Fix $m\ge m_0$ and a cover
+the finite-stencil room threshold for $p_0$; and the uniform chamber
+threshold $m_{\mathrm{ch}}$ in the hypothesis. This last threshold is
+chosen before the anchor: finiteness of each individual collar would not
+suffice to choose it for the growing family of collars. Fix $m\ge m_0$ and a cover
 anchor $x$ in the collar.  Choose the late volume-period event of
 $\mathfrak f$ on which $N>j_m$ (so $p_0\le k\le m<j_m<N$), the image of $x$
 is its intended grid site, and the three readouts of the chamber receipt
@@ -516,4 +601,4 @@ support exponents are supplied by Theorem~\ref{thm:ex-selected-run-service}.
 The present argument supplies the remaining shell-specific composition:
 the two transported channel responses, finite mask and coupon steps,
 coefficient ledger, placement, and collar norm/root bounds. The collar's
-late event is pointwise in its fixed anchor, as required by the source.
+late event is pointwise in its fixed anchor.

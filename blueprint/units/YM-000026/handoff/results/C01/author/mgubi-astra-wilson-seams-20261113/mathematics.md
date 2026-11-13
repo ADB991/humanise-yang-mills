@@ -1,0 +1,38 @@
+# Mathematical audit of the existing finite-volume proof
+
+**Verdict:** the existing proof and its specified seam attachment are sound within the frozen scope. No manuscript repair is requested. Authoritative proof remains `subsec:ex-lattice-finite-reflection` / `prop:ex-lattice-finite-reflection` in `manuscript/existence/lattice.tex`; this report records checks, not a replacement proof.
+
+## Complete proof inspected
+
+The preceding finite-law subsection fixes the closed unitary matrix group in its faithful representation, representation dimension r_G, once-counted faces i<j and action 1−Re tr/r_G. Product probability Haar measure and positive finite partition function give the actual normalized Wilson law. Reflection positivity requires beta≥0; normalization itself holds for every real beta. The audit does not generalize the manuscript's fixed group class or replace the actual law by a reference Gaussian or modified Gibbs law.
+
+The temporal plaquette is X_e u_w Y_e^{-1} u_v^{-1}. With the manuscript's spatial gauge action, this is X_e (u·Y)_e^{-1}. Thus the temporal-only kernel H is the single average of H_0(X,u·Y) over one common vertex family u. Adjacent spatial edges sharing a vertex use the same u_v. No fictitious independent edge averages are introduced.
+
+For c=beta/r_G≥0, the real Frobenius inner product on all spatial links has tensor-power Gram kernels, including power zero. The exponential coefficients are nonnegative. Simultaneous gauge transformations act orthogonally for that inner product, so Haar invariance turns the common-thread average into the displayed double average. Its features are averages of the tensor powers, exactly as written. This verifies positivity, reality and symmetry of H. Compactness gives a uniform tensor bound and a convergent exponential majorant; the series may be integrated against bounded measurable probes. A product of two boundary kernels has the tensor-product features and nonnegative coefficients.
+
+For the link cut, the positive time slices are 0,...,h−1. The two crossing temporal-link families start at −1 and h−1. All other links form two reflected open halves. Each spatial plaquette is assigned to its own half; non-crossing temporal plaquettes stay in that half; only the two boundary temporal families enter the two H kernels. Product Haar measure factors over these disjoint link coordinates, and inversion of the reflected temporal links preserves Haar measure. Strict locality makes F independent of the crossing links, so crossing-link integration leaves exactly the displayed open-half double integral. Inserting the tensor features makes every term an absolute-square norm; boundedness and the uniform exponential majorant justify Fubini and series interchange. When h=1, the first and last spatial slice of a half coincide, but the two crossing temporal-link families are still distinct independent coordinates. Taking the product of two kernels on that coincident slice remains positive.
+
+For the site cut, spatial links at t=0,h are fixed under reflection. Conditional on these coordinates, every remaining link belongs to a positive half or its reflected half; temporal links transform by inversion. Temporal plaquettes at a boundary involve its fixed spatial slice and only one open half; no plaquette involves both open halves. The spatial plaquettes on the fixed planes give a positive common weight. The two half actions are reflected copies and their integrals with F are complex conjugates, giving the stated absolute square. At h=1 the strict sector is empty, so its local F is constant; the same factorization is valid. The bounded integrands on finite products of compact groups justify Fubini. Dividing by the same positive partition function preserves positivity. These are the actual ingredients of the existing proof, not new assumptions of a port or disintegration theorem.
+
+## Reflection invariance checked
+
+The producer's final sentence transports the result to every translated cut and axis. Its underlying invariance also supplies the separate invariance premise in286: the directed-link pullback is a permutation of the finitely many independent Haar coordinates with inversion on reversed edges. It preserves the prior. Reflection sends each oriented plaquette loop to the corresponding reflected loop, read with a possible cyclic base change or orientation reversal; real trace is unchanged by conjugation and inversion of unitary matrices. Reindexing the once-counted face sum therefore preserves the action, the weight and its normalization. This agrees with `YM.Wilson.prior_pull`, `YM.Wilson.energy_pull`, `YM.Wilson.law_pull` and `YM.Wilson.moment_pull`. This paragraph records the audit of the finite Haar/action argument underlying the existing manuscript references, not an additional authoritative proof unit.
+
+## Exact attachment to the frozen PR286 consumer
+
+| Consumer premise | Existing producer and identification |
+| --- | --- |
+| One normalized law on the tiling torus | Use the same mu_(n,beta) defined in the finite-law subsection; n=2h ell in286. There is no replacement of beta or normalization. |
+| Positive integral cell half-period h and width ell, arbitrary base b | Producer half-period is H=h ell, not the cell half-period h alone. The side is n=2H. No dyadic condition appears. |
+| Axis a, cell seam p, kind delta∈{0,1} | The native cut base is B=b_a+ell p_a. Reflection is x_a→2B−delta−x_a, with other coordinates fixed. This is precisely the translated site/link cut in the producer. |
+| Positive strict half | Relative coordinate in [0,H) for link kind, (0,H) for site kind. These are exactly286's intervals and the producer's strict sectors. |
+| Complex bounded measurable gauge-invariant half observable | Identical class, with locality on links whose **both endpoints** lie in the strict half. Borel/measurable coincide for the finite compact matrix-group configuration space used here. Finite products of chamber copies fit that same half by286's geometry. |
+| Reflection invariance | Same directed-link pullback as above; prior and Wilson action invariance give invariance of this law for every translated seam. |
+| Nonnegative real reflected form | `prop:ex-lattice-finite-reflection`, with native half H and beta≥0, yields E[F conjugate(F∘R)]≥0. The conjugation is outside the pullback, exactly as in286. |
+| Copy parity convention |286 reverses each odd cell coordinate and conjugates iff an odd number are reversed. One seam toggles exactly one parity; its configuration reflection is the same native cut. The producer does not change copy maps or add a conjugation per edge. |
+
+Thus the C01 finite-seam input is available for286's same-law finite-cell proposition. This does not itself verify selection of the actual law/coupling at a downstream cutoff, continuum limits, RG budgets, or all the other transfer/geometry assumptions of `ex-centered-producers`.
+
+## Prior independent evidence, carefully bounded
+
+PR83's part1 mathematics report explicitly rederived this entire reflection argument and covered both cuts and h=1. The report's lattice hash is exactly the current producer hash, and direct comparison with its reviewed commit165fb24 is empty. Its part1 correspondence report L1 correctly notes that the English proof is a reorganization: separate link-kernel/site-conditioning arguments, versus one unified port proof in the source. That distinction is retained here. Its small-model numerical checks are prior reviewer evidence only; they were not rerun in this audit and are not a substitute for the proof. Other PR83 requests, including its selected-coupling citation nit, are not reopened or marked resolved. No prior fingerprint is rewritten.
