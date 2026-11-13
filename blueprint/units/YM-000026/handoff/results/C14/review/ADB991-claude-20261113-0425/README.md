@@ -36,7 +36,7 @@ $\phi_iL_i^{D+1}\upsilon_i\le\upsilon_{i+1}$ for every $D$ and every $i\ge\opera
 - **Source match, checked through the instantiation, not only the structure field.** `YM.MergeProof.Scrim.jump` (`Lean/YM/MergeProof/Biscuit.lean` 33) reads `C.ref d ≤ i → φ i * (C.S.block i)^(d+1) * ζ d i ≤ ζ d (i+1)`. The parameter order is `Scrim C W u ψ φ δ ζ r D`. The caller `YM.PhysicalNext.Repeat.Legato.chaletrail` (`Lean/YM/MergeProof/Inns.lean` 33, 38) and `Almandine.lean` 34 instantiate it as `Scrim … (far a') (waybill a') (near a') (renal a') (fly a') (mutt a' Q) D`. So:
   - $\phi_i$ is `near a' i = sap (hatBeta (i+1))`, which is $\widehat\beta_{i+1}^{-1}$;
   - $\zeta(d,i)$ is `fly a' d i = fog G d (hatBeta i)`, which is $\widehat\beta_i^{-\mathrm{winter}(d)}$. Here `winter G d = degree (frames.level d) + 4` (`Stove.lean` 36–38, `Tender.lean` 11–13), which is the manuscript's $\nu_D=g_D+4$.
-  - `YM.Schedule.a m = (denominator m)⁻¹` and `denominator (k+1) = denominator k * block k` (`Lean/YM/Lattice/Scale.lean` 36–38, 99), so `block i` $=a_i/a_{i+1}=L_i$.
+  - `YM.Schedule.a m = (denominator m)⁻¹` and `denominator (k+1) = denominator k * block k` (`Lean/YM/Lattice/Scale.lean` 39–41, 99), so `block i` $=a_i/a_{i+1}=L_i$.
 
   Hence the display is `Scrim.jump` for the selected weights, with the same threshold $\operatorname{ref}(D)$ and no $N,p$ binders. The claim "uniform in the cutoff and period" is correct.
 - **Telescoping.** By the line before the march, $0<\phi_s\le1$, and $\upsilon_i>0$. So each one-step inequality can be divided to give $0<\phi_i\le(\upsilon_{i+1}/\upsilon_i)L_i^{-(D+1)}$. Products of inequalities between positive numbers are valid. Since $\prod_{i=k}^{m-1}L_i=a_k/a_m$, this gives $\prod_{i=k}^{m-1}\phi_i\le(\upsilon_m/\upsilon_k)(a_m/a_k)^{D+1}$, as displayed. The next estimate, $\mathsf M_{k,m}(c_m)\le(c_m/\upsilon_k)(a_m/a_k)^{D+1}$, then uses $\upsilon_m\le1$ (from $\widehat\beta_m\ge1$). Correct, and the case $m=k$ (empty product) is included.
@@ -67,7 +67,7 @@ None required. Not covered:
 - Build of the full monograph at the head, in a separate worktree: from `manuscript/`, `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=<scratch> existence.tex`. Exit 0, 982 pages, no undefined references. The only warnings are the existing amsmath `\atopwithdelims` warning and the existing 1.83pt overfull box at lines 39–47.
 - Rendered at 80 dpi with `pdftoppm` and inspected pages 849 (growth display), 857 (annulus lemma and empty case), 880 (window) and 886 (bracket lemma). All legible, with no clipped formulas.
 - `python3 scripts/check_blueprint.py` on this report branch: see the PR body.
-- Source files read: `Lean/YM/Bid/Angular.lean` 16–24, 70–78; `Lean/YM/Org/Input.lean` 126–130; `Lean/YM/Space/Index.lean` 23–35; `Lean/YM/MergeProof/Biscuit.lean` 29–36; `Lean/YM/MergeProof/Inns.lean` 25–60; `Lean/YM/MergeProof/Stove.lean` 36–40; `Lean/YM/MergeProof/Tender.lean` 11–14; `Lean/YM/MergeProof/Apres.lean` 36–52; `Lean/YM/Lattice/Scale.lean` 23–40, 99.
+- Source files read: `Lean/YM/Bid/Angular.lean` 16–24, 70–78; `Lean/YM/Org/Input.lean` 126–130; `Lean/YM/Space/Index.lean` 23–35; `Lean/YM/MergeProof/Biscuit.lean` 29–36; `Lean/YM/MergeProof/Inns.lean` 25–60; `Lean/YM/MergeProof/Stove.lean` 36–40; `Lean/YM/MergeProof/Tender.lean` 11–14; `Lean/YM/MergeProof/Apres.lean` 36–52; `Lean/YM/Lattice/Scale.lean` 23–41, 99; `Lean/YM/Pressure/Seeds.lean` 23 (`betaF x L = x + slopeConstant·log L`).
 
 ## Acceptance
 
