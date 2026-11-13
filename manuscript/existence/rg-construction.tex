@@ -158,8 +158,7 @@ uses the priced bed and flight receipts and the retained row and path bounds
 stated there; the block identities alone do not produce those inputs. On the
 selected run, the construction binds the resulting flat estimate to that
 run's own schedule and horizon, using its retained length floors and
-post-length stage payment. The auxiliary factorization used for the flat
-estimate preserves the quadratic output; it does not assert equality of all
+post-length stage payment. On the public route the world theorem uses auxiliary shadow levels and an auxiliary retained horizon; Lemma~\ref{lem:ex-lattice-flat-same-output} transfers its quadratic output to the selected run. This auxiliary factorization does not assert equality of all
 horizon data or higher-order kernels. Those payments and the horizon
 estimates remain inputs to this application. We use the earlier construction
 rather than repeating it here.
@@ -238,15 +237,18 @@ and the ungrouped expenditure identity
                             \operatorname{flags}(U)\right).
  \label{eq:ex-lattice-volant-play}
 \end{equation}
-The field coefficient identity is for each box $p$ and singleton mode $j$;
+Here $\operatorname{pass}$ is the truncated exponential $\sum_{j=0}^{|V|}P^j/j!$ in the finite marker algebra. The field coefficient identity is for each box $p$ and singleton mode $j$;
 higher coefficients are the full products in the field polynomial.
 
 \begin{theorem}[Paid menu assembly and shipment conversion]
 \label{thm:ex-lattice-volant-supplier}
 Assume the selected history provides the ungrouped paid terms and exact
 identities above, at lower exponent $b$ and upper exponent $e_1\geq100$.
-Assume the menu offer has exponent $e_1-4$ and allowance $a$, and that the
-birth estimate, foam, and radius hypotheses stated in the proof hold. Then
+Assume $Q.\mathrm{relative}\geq4$, $4\varepsilon_Q<e_1$, foam at scale $L$, $B_1\leq2B_0$, and parent-site occupancy at most $N$. Assume positive marker weights and the birth estimate displayed in the proof. The offer is a site-rooted ledger at exponent $e_1-4$ and allowance $a$, with the fine sites of its named origins in the crests, and the shipment tariff \eqref{eq:ex-lattice-volant-tariff} holds. Then, with $c=e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}a$, the birth-region weights $f_i$ defined in the proof satisfy, at every site $z$,
+\[
+ \sum_{i:z\in\mathrm{birth}_i}f_i e^{Q.\mathrm{relative}\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}\leq N\operatorname{siteFactor}(B_0)c\leq\operatorname{ribbon}(Q,L,\beta).
+\]
+Moreover,
 the grouped families
 \[
  F_s(U)=\sum_{i:s(i)=s}A_i(U),\qquad
@@ -272,9 +274,7 @@ number of its crest at radius $B_1$. The selected birth estimate is
 \]
 Here $\varepsilon_Q>0$. Let $w_i$ be the menu wage, equal to its intrinsic
 profit times its total menu fee, and set
-$f_i=w_i\exp(2\varepsilon_Q n_i^{\mathrm{crest}})$. Foam at scale $L$,
-$B_1\leq2B_0$, $Q.\mathrm{relative}\geq4$, and the profile hypotheses
-give $4\varepsilon_Q<e_1$. Hence
+$f_i=w_i\exp(2\varepsilon_Q n_i^{\mathrm{crest}})$. By the assumed inequality $4\varepsilon_Q<e_1$,
 \[
  \frac{13}{4}\varepsilon_Q<\frac{13}{16}e_1\leq e_1-4,
 \]
@@ -389,7 +389,7 @@ the corresponding tower carriers, and the response kernel used for the
 coarser history is a travelling kernel. Denote the finer-history response
 by $T_i$ and the coarser-history response by $U_i$. If $B_{i+1}$ is neutral and
 translation covariant and has folded cost $p\geq0$ at width
-$u=\sigma_{i+1}$, then the composed packet
+$u=\sigma_{i+1}$, where $\sigma_i>0$, $u>0$, $\sigma_i\leq\omega_i$, and $2\sigma_i\leq L_i u$, then the composed packet
 \[
  B_i=B_{i+1}\star(T_i,U_i)
 \]
@@ -419,8 +419,8 @@ fibres, are therefore absolutely summable. This also justifies the transpose
 matching rule when it is used in the mixed Schur step.
 The finite folded bound on $B_{i+1}$ likewise makes each of its displayed
 periodization fibres absolutely summable. In the two response compositions,
-the row bound for $U_i$, the uniform folded bound for $B_{i+1}$, and the
-column bound for $T_i$ give an absolute sum at most
+the column bound for $T_i$ (summed over input labels), the uniform folded bound for $B_{i+1}$, and the
+row bound for $U_i$ give an absolute sum at most
 $(m\mathcal A_iL_i^2)p(\mathcal A_iL_i^{-2})=m\mathcal A_i^2p$,
 with the coarse input position and both external face labels fixed, even
 after summing over all output cover points. Restricting that sum
@@ -428,15 +428,7 @@ to a periodization fibre proves the corresponding absolute convergence for
 the composed packet; the finite face-label sums introduce no further
 convergence requirement.
 
-For the remaining travel condition, the Wilson tower's zero-alias column
-is the toll-$L_i$ identity, namely $L_i^{-2}I$. Periodicity then makes the sum over the installed tower's second spatial
-argument independent of its first spatial argument, for each pair of face
-labels. This normalization is sufficient for the travel product. The fine cross-row bound
-and the inverse-precision row bound make the two preceding convolutions
-absolutely summable; absolute convergence permits changing their order.
-The sum of a convolution of two travelling kernels is the product of their
-position-independent row sums, so the full coarser response is travelling.
-These are precisely the finite matching, city, and travel hypotheses in
+The travel, city, and matching conditions are hypotheses of this lemma. These are precisely the finite matching, city, and travel hypotheses in
 Section~\ref{sec:ex-lattice-flat-step}; applying its proved Schur and
 weighted-packet estimate gives the asserted identities and cost
 $\nu_i(u)p$. The width, positivity, and folding assumptions in
@@ -505,8 +497,7 @@ This finite-scale producer is the one used by the flat supply in the
 selected construction. The public route first selects the Wilson run with
 treasury and period funding and retains its original sheet, quote, and
 post-length payments. Its native component choice includes the flat
-entrance supplier. Realization applies that supplier to the very same
-selected schedule and horizon. The flat entrance supplier obtains an
+entrance supplier. The flat entrance applies its world theorem to auxiliary shadow levels and an auxiliary retained horizon. Lemma~\ref{lem:ex-lattice-flat-same-output} transfers the resulting quadratic output to the selected run; it does not identify all horizon data. The flat entrance supplier obtains an
 admissible spacing schedule and invokes the finite-history supplier whose
 meshing step uses the world construction proved above. This chapter
 discharges that row-level producer conditional on the stated funding,
