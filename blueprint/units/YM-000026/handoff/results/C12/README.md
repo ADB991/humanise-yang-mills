@@ -52,3 +52,12 @@ All eleven chapters were read against the declarations named in their evidence f
 | `actual-phase-grid-approximants.tex` | `5f2b6050ae320e61cb0fdeada14bd07080d4ae31d162b7e2bb3fd3233ab4f685` | `243e556604d48e55bb7eb6b94d33af0392d8ca0c5d38b342768d0bebb4811993` |
 
 The canonical evidence files `blueprint/units/YM-000026/*-evidence.md` were not modified and describe the text before this pass.
+
+## Revision 1 (13 November 2026)
+
+Session `schmittj-claude-c12-rev1-20261113`, author revision answering finding E1 of the C02 review (`results/C02/review/schmittj-claude-20261112/part2-mathematics.md`, see also I8(c) there). Only `selected-centered-service.tex` changed; its SHA-256 is now `45d7f245cd2ecf15e19ee7eecb56728a1161aaccb60da1936f175d86154b4bdd` (the table above gives the hash after the original pass).
+
+- The chapter credited Section `ex-centered-site-geometry` with "the nested-support and footprint bounds". That section proves occupancy, migration and separation of label sites only. The footprint cover is now cited as the footprint-cover clause of the height record, item (iii) of `thm:ex-selected-run-service`, supplied by the fitted stencil with cover at most one; the support-size inequalities are item (ii) of the same theorem and are among the scale estimates already displayed in the chapter.
+- The site identity \(|\Lambda_k|=M(a_m/a_k)^4\) was attributed to the same section without derivation. It is now derived: one label at each site of the root level \(m\), so \(M=|\Lambda_m|\), and \(n_k=q_kn_m\) with \(q_k=a_m/a_k\), as recorded at the start of the geometry section. The text also says that \(m\) here is the root level, not the running level of the preceding paragraphs.
+
+No statement or estimate changed. Validation: full `latexmk` build of `manuscript/existence.tex` on base `be0e87d` with this edit, exit 0, 958 pages, 0 undefined references, 0 overfull boxes. The Lean source was not re-read for this revision beyond the existing evidence record of the chapter; the two corrected attributions were checked against the cited manuscript passages (`centered-public-service.tex` theorem statement and proof, `centered-geometry-producer.tex` opening paragraph, `centered-geyser-scale-estimates.tex` `prop:ex-geyser-service-fields`). This revision has not been independently reviewed.
