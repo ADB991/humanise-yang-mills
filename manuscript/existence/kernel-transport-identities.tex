@@ -8,14 +8,14 @@ satisfy $4\le t\le j\le t+1$.
 
 \subsection{Covariance recursion and exterior algebra}
 Fix a nonzero real coarse momentum $p$ in the common real cube
-containing the Brillouin cube, and write $q_l=(p+2\pi l)/L$
+containing the Brillouin cube, and write $q_l=(p+2\pi\ell_L(l))/L$
 for its centered aliases. In the following formulas the fine exterior
 symbol is rescaled: $\delta_r=Ld_r(q_l)$, whereas $d_r=d_r(p)$
 is the coarse symbol. Stars denote Hermitian adjoints at these real
 momenta. Let $H_l,H$ be the fine and coarse two-form pulse symbols.
-Let $D_l$ be the diagonal matrix with entries $L^{-2}D_{f,a}(q_l)$,
-and $D$ the diagonal matrix with entries $D_{c,a}(p)$, where
-$D_{v,a}$ is the propagated one-form covariance from
+Let $D_l$ be the diagonal matrix with entries $L^{-2}\mathscr D_{f,a}(q_l)$,
+and $D$ the diagonal matrix with entries $\mathscr D_{c,a}(p)$, where
+$\mathscr D_{v,a}$ is the propagated one-form covariance from
 Section~\ref{sec:ex-lattice-free-kernel-components}.
 Set
 \[
@@ -73,7 +73,7 @@ The noise-prefix list of the new train consists of its new unit
 prefix and the old prefixes with the block appended. Thus its noise
 feed is one plus the patch feed of the old noise. Applying these two
 facts to the free covariance and to each earlier independent noise
-gives $D_{c,a}=k^{-1}+\operatorname{slide}_aD_{f,a}$.
+gives $\mathscr D_{c,a}=k^{-1}+\operatorname{slide}_a\mathscr D_{f,a}$.
 The diagonal entries of \eqref{eq:transport-covariance-recursion}
 are precisely this equality. All off-diagonal entries vanish.
 
@@ -133,8 +133,7 @@ Finally \eqref{eq:transport-filter-chain} at degree zero,
 This is the identity that incorporates the new Gaussian noise.
 
 \subsection{Removing the puncture without changing the kernels}
-We check that these formulas are the analytic columns whose bounds
-were proved earlier. In this continuation every real-momentum
+We identify the analytic continuations to which the component bounds apply. In this continuation every real-momentum
 adjoint is written as transposition after reflection $p\mapsto-p$;
 for example, $|m(p)|^2$ continues as $m(p)m(-p)$.
 For an alias-indexed factor the reflection is $q_l\mapsto-q_l$,
@@ -184,13 +183,13 @@ terms in $a$. Then $sa=|m_0|^2\sum_a b_{0,a}+sh$, and
        g_{0,a}=m_0^{-1}\left(\frac{u_a}{b_a}-\frac{h}{sa}\right).
 \]
 These are exactly the principal and nonprincipal gain formulas.
-The denominators $b_a$, $sa$, and $m_0$ have the common analytic
-lower bounds established in the component estimates. Consequently
+The reciprocals of $b_a$, $sa$, and $m_0$ are uniformly bounded on
+the common smaller cube of Lemma~\ref{lem:ex-lattice-primal-entrywise-bound}. Consequently
 \[
                 \mathcal A_l=B_l+
                               \operatorname{diag}(g_{l,a})x_l\sigma
 \]
-is the already estimated analytic column, including at the origin.
+has the weighted bound of that lemma, including at the origin.
 
 For the two-form column, at a nonprincipal alias write
 $\lambda_l=|m_l|^2\operatorname{bend}_c/\operatorname{portR}_l$.
@@ -265,13 +264,28 @@ $\delta_r=Ld_r(q_l)$, the second and third identities in
                  TH_cd_{1,c}=H_fd_{1,f}A_0.
 \]
 The alias sum becomes $QA_0=I-k^{-1}d_{1,c}^*H_cd_{1,c}$.
-Fourier diagonalization on each finite torus now gives the real
-matrix identities
-\begin{equation}\label{eq:transport-installed-identities}
- T^{\mathsf T}d_{1,f}=d_{1,c}Q,\qquad
- TH_cd_{1,c}=H_fd_{1,f}A_0,\qquad
- QA_0=I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}.
-\end{equation}
+The first identity in \eqref{eq:transport-punctured-three} gives
+the primal identity as well: the fine rotor is $L^{-2}R_l$ in
+physical units, so its product with $L^{-1}\mathcal A_l$ is
+$L^{-3}F_{1,l}^*R$. On a torus of side $n$ we use
+$\widehat u(p)=n^{-4}\sum_x u(x)e^{-ip\cdot x}$, with the analogous
+normalization on the fine torus of side $Ln$. In the periodization
+of a cover row the sum over each period fibre can be interchanged
+with the finite Fourier sum by absolute summability. At a grid
+momentum the exponential is constant on each fibre; the resulting
+cover Fourier series is therefore evaluated at that momentum.
+For a cross row the centered-residue decomposition groups the fine
+frequencies into the aliases $q_l$ of each coarse $p$. The reality
+calculation in Section~\ref{sec:ex-lattice-free-kernel-estimates}
+ensures that the real coefficient rows recover these symbols.
+Fourier inversion then gives the real matrix identities
+\begin{align}\label{eq:transport-installed-identities}
+ d_{1,f}^{\mathsf T}H_fd_{1,f}A_0
+   &=Q^{\mathsf T}d_{1,c}^{\mathsf T}H_cd_{1,c},\notag\\
+ T^{\mathsf T}d_{1,f}&=d_{1,c}Q,
+ & TH_cd_{1,c}&=H_fd_{1,f}A_0,\notag\\
+ QA_0&=I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}.
+\end{align}
 This argument includes every finite period, including the one-site
 period, and uses the Fourier coefficients of the original analytic
 columns. No new choice of transport has been made.
