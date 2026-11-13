@@ -1,0 +1,225 @@
+--- a/manuscript/existence/assembly.tex
++++ b/manuscript/existence/assembly.tex
+@@ -116,6 +116,16 @@
+ hierarchy on that refinement.
+ \end{assumption}
+
++\begin{remark}[The running condition of the input]
++\label{rem:ex-joint-input-running}
++For a lattice family obtained from the selected shooting histories, with
++$D_N=e^{S_N}$ and bare coefficients $\beta_{N,p}=\beta_{N,p,N}$, the condition
++\eqref{ex-running-input} in Input~\ref{ex-joint-input} holds with
++$\sigma=2b_0(G)$, by Proposition~\ref{prop:shoot-public-running}. The
++identification of the public family with those histories is part of the
++input.
++\end{remark}
++
+ \begin{proposition}[Assembly from the joint input]\label{ex-conditional-existence}
+ Input~\ref{ex-joint-input} implies the full existence target stated in
+ Section~\ref{ex-statement}, including the operator-product and trace
+--- a/manuscript/existence/centered-geyser-scale-estimates.tex
++++ b/manuscript/existence/centered-geyser-scale-estimates.tex
+@@ -15,7 +15,7 @@
+  \operatorname{stain}(x)=\exp\!\left[-\exp\!\left(\tfrac15(\log\log x)^2\right)\right],
+  \qquad \operatorname{siteFactor}(B)=e\{2(16B+9)\}^4.
+ \]
+-Here $F_d$ is the finite frame at grade $d$. Fix a nonnegative integer occupancy schedule $Q$ and the positive gauge slope constant $c_G$. For a fixed stage $j$, write $L_j$ for its block side, $b_j=c_G\log L_j$, $y_j(x)=x+b_j$, and $p_j=Q(j)$ for its occupancy allowance. At stage $j$ fix the column count $C_j$ and support exponent $E_j$. For each grade fix its finite local-section constant $A_d$. These quantities remain fixed while $x\to\infty$. The stage index is not a finite-volume period index.
++Here $F_d$ is the finite frame at grade $d$. Fix a nonnegative integer occupancy schedule $Q$ and the positive gauge slope constant $c_G=s_G$ of \eqref{eq:shoot-slope}. For a fixed stage $j$, write $L_j$ for its block side, $b_j=c_G\log L_j$, $y_j(x)=x+b_j$, and $p_j=Q(j)$ for its occupancy allowance. At stage $j$ fix the column count $C_j$ and support exponent $E_j$. For each grade fix its finite local-section constant $A_d$. These quantities remain fixed while $x\to\infty$. The stage index is not a finite-volume period index.
+
+ \begin{lemma}[Uniform eventual scale estimates for one transition]
+ \label{lem:ex-geyser-radial}
+--- a/manuscript/existence/common-scale-selection.tex
++++ b/manuscript/existence/common-scale-selection.tex
+@@ -58,8 +58,10 @@
+ $t(x)=x^{-1/2}\exp((\log\log x)^2)\to0$. Set
+ \[
+                  \widehat\beta_m=\beta_*+s_Gs_m,
+-                       \qquad s_G>0.
+ \]
++where $s_G=\lambda_G=2b_0(G)>0$ is the slope constant
++\eqref{eq:shoot-slope} of Section~\ref{sec:surviving-interval-shooting};
++the intercept $\beta_*$ is the $\bar\beta$ of that section.
+ For each fixed stage $j>j_*$ there are only finitely many entry
+ and comparison bounds. Require, at sufficiently large $s$,
+ \begin{equation}\label{eq:common-stage-entries}
+--- a/manuscript/existence/marked-portfolio-calibration.tex
++++ b/manuscript/existence/marked-portfolio-calibration.tex
+@@ -276,7 +276,8 @@
+  \widehat\beta_{i+1}=\beta_F(\widehat\beta_i,L_i)
+        =\widehat\beta_i+c_G\log L_i,
+ \]
+-where $c_G$ is the slope constant of the gauge group, it reads
++where $c_G=s_G$ is the slope constant \eqref{eq:shoot-slope} of the
++gauge group, it reads
+ \begin{equation}\label{eq:ex-marked-height-jump}
+  \widehat\beta_{i+1}^{-1}L_i^{d+1}\,\mathsf f_d(\widehat\beta_i)
+       \leq\mathsf f_d(\widehat\beta_{i+1})\qquad(d\leq J(i)).
+--- a/manuscript/existence/rg-construction.tex
++++ b/manuscript/existence/rg-construction.tex
+@@ -129,7 +129,8 @@
+ This proves the paid condition and fixes its exponent from the actual
+ entrance-price formula.
+
+-For the top allowance let $s_G>0$ be the gauge slope constant and choose
++For the top allowance let $s_G>0$ be the gauge slope constant
++\eqref{eq:shoot-slope} and choose
+ $Z_x=3+\log\widehat\beta_{k_x}$. The selected spacing hypothesis includes $\widehat\beta_{k_x}>1$;
+ therefore $Z_x=3+\log\widehat\beta_{k_x}\geq0$. The schedule's
+ delayed-scale inequality and $\log r\leq r-1$ imply
+--- a/manuscript/existence/surviving-interval-shooting.tex
++++ b/manuscript/existence/surviving-interval-shooting.tex
+@@ -6,7 +6,16 @@
+ preserves the activity continuity needed for the subsequent step.
+
+ Fix the scale sequence and all the preceding nonlinear choices. Let
+-$s=s_G>0$, $L_i\ge2$ be the integer block sides, and set
++$s=s_G$ be the slope constant of the gauge group,
++\begin{equation}\label{eq:shoot-slope}
++ s_G=\lambda_G=\frac{11C_G}{24\pi^2}=2b_0(G)>0,
++\end{equation}
++where $\lambda_G$ and $C_G$ are as in (AT2)--(AT4) of
++Section~\ref{sec:ex-annulus-two-wave}. Since $C_G$ is defined there with the
++colour inner product $\langle u,v\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(uv)$
++and an orthonormal colour basis, it is the constant $C_{\mathfrak g}$ of
++Section~\ref{sec:running-coefficient}; hence $\lambda_G=2b_0(G)$, and
++$b_0(G)>0$ was proved there. Let $L_i\ge2$ be the integer block sides, and set
+ \[
+  S_0=0,\qquad S_{i+1}=S_i+\log L_i,\qquad
+  \widehat\beta_i=\bar\beta+sS_i,\qquad \bar\beta>0.
+@@ -31,6 +40,28 @@
+ of the schedule, whose block sides are chosen after the stage drift
+ allowances.
+
++The slope in \eqref{eq:shoot-adjacent-drift} is not a free parameter: it is
++fixed by the one-loop constant of the path construction. Indeed, at the
++step from level $i+1$ to level $i$ the reset of
++Section~\ref{sec:coupling-reset-selection} returns the coarse coupling
++$\beta_i=\beta_{i+1}+\alpha_{N,i}+d_i$, where $\beta_{i+1}$ is the input
++coupling (the $\beta_f$ of that section, so that $\beta_i=b+d_i$ in its
++notation), $\alpha_{N,i}$ is the scalar correction of the selected path step
++and $d_i$ is the selected dial, with $|d_i|\le w\le1$. The path step
++satisfies $|\alpha_{N,i}+\lambda_G\log L_i|+1\le D_{i+1}$
++(Section~\ref{sec:background-path-convergence}), where $D_{i+1}$ is the
++drift allowance of the stage assigned to level $i+1$. Hence
++\[
++ |\beta_{i+1}-\beta_i-\lambda_G\log L_i|
++ =|\alpha_{N,i}+\lambda_G\log L_i+d_i|
++ \le(D_{i+1}-1)+1=D_{i+1}.
++\]
++This is the first inequality in \eqref{eq:shoot-adjacent-drift} with
++$s=\lambda_G$ and $\varepsilon_{i+1}=D_{i+1}$. With any other slope
++$s'$ the same computation leaves the additional term
++$|s'-\lambda_G|\log L_i$, which is not bounded by a stage constant fixed
++before the block sides. This is why \eqref{eq:shoot-slope} is forced.
++
+ \subsection{Restricting a curve without crossing a barrier}
+ We first record the elementary interval argument. Let $f$ be continuous
+ on $[x,y]$, and suppose
+@@ -151,3 +182,46 @@
+ There is no assertion that the sum of the step errors is uniformly
+ bounded in the depth. The estimate uses their small ratio to the
+ accumulated logarithmic scale.
++
++\subsection{The public running condition}
++The last estimate is the input \eqref{eq:running} of
++Section~\ref{sec:running-coefficient} for the selected histories, read as
++follows. Write $\beta_{N,p,m}$ for the coupling at level $m\le N$ of the
++selected history at cutoff $N$ and period index $p$. Its scale is
++$s_m=S_m=\log(a_m^{-1})$, where $a_m=e^{-S_m}$ is the reciprocal of the
++integer product of the first $m$ block sides, and $S_m\to\infty$. Its
++intercept is $\bar\beta$, and $2b_0(G)=s$ by \eqref{eq:shoot-slope}. For
++every $\eta>0$ the preceding paragraph supplies a level after which
++$|\beta_{N,p,m}-(\bar\beta+2b_0(G)S_m)|\le\eta S_m$ for every $N\ge m$ and
++every $p$. When the coarse target $b$ of the descent equals $\bar\beta$,
++as in the selected run, the term $|b-\bar\beta|$ in
++\eqref{eq:shoot-running-error} vanishes. It is in any case a constant, and
++was absorbed above.
++
++\begin{proposition}[Public running condition]
++\label{prop:shoot-public-running}
++Let the public family have the selected histories as its runs: at cutoff $N$
++and period index $p$, its lattice has $P_pe^{S_N}$ sites per axis, so that
++$D_N=e^{S_N}$ and $a_N=D_N^{-1}$, and its bare coefficient $\beta_{N,p}$
++is the coupling $\beta_{N,p,N}$ of the bare Wilson density with which the
++selected history at cutoff $N$ starts. Then \eqref{ex-running-input} holds
++with $\sigma=s_G=2b_0(G)$.
++\end{proposition}
++
++\begin{proof}
++Apply Proposition~\ref{prop:uniform-extraction} with $A=\bar\beta$,
++$c=2b_0(G)$ and $s_m=S_m$; its hypothesis is the estimate just recorded.
++Given $\varepsilon>0$, it gives $N_0$ such that, for every $m\ge N_0$,
++$S_m>0$ and $|\beta_{N,p,m}/S_m-c|<\varepsilon$ for all $N\ge m$ and all
++$p$. Take $m=N$. For $N\ge N_0$ and every $p$, the identities
++$\beta_{N,p,N}=\beta_{N,p}$ and $S_N=\log(D_N)=\log(a_N^{-1})$ give
++\[
++ \left|\frac{\beta_{N,p}}{\log(a_N^{-1})}-c\right|<\varepsilon .
++\]
++The threshold $N_0$ does not depend on $p$. Finally $c=2b_0(G)>0$, so
++$\sigma=c$ satisfies \eqref{ex-running-input}.
++\end{proof}
++
++The proposition uses only the uniformity in $N\ge m$ and $p$ of the running
++estimate, at the diagonal $m=N$. It does not use the convergence of the
++histories as the cutoff is removed.
+--- a/manuscript/existence/symbolic-index.tex
++++ b/manuscript/existence/symbolic-index.tex
+@@ -79,7 +79,9 @@
+ \item[$\lambda_G$, $b_0(G)$, $s_G$] The annulus coefficient,
+ canonical running coefficient, and shooting-line slope, respectively.
+ The two Casimir definitions use the same color inner product, giving
+-$\lambda_G=2b_0(G)$. The match to $s_G$ is a separate input (Section~\ref{sec:surviving-interval-shooting}).
++$\lambda_G=2b_0(G)$. The shooting slope is the same constant,
++$s_G=\lambda_G$ \eqref{eq:shoot-slope}; it also appears as $c_G$ and
++$\kappa$.
+ \item[$E_d$, $\mathcal F_d$, $\pi_d$, $\tau_{I,D}$ in the annulus]
+ Reference label space, selected-table field space, quotient map, and
+ spectator tester (Section~\ref{sec:ex-lattice-actual-stress-annulus}).
+--- a/manuscript/existence/trace-calibration-producer.tex
++++ b/manuscript/existence/trace-calibration-producer.tex
+@@ -208,7 +208,8 @@
+ estimates and the coefficient bound below show that the false-sector term
+ vanishes, while the true-sector term is $-4c_i^1+o(1)$. Since the
+ uncorrected term tends to $-\kappa$, the true-sector coefficient tends to
+-$-\kappa/4$. In the selected construction $\kappa$ is the slope constant.
++$-\kappa/4$. In the selected construction $\kappa$ is the slope constant
++$s_G=2b_0(G)$ of \eqref{eq:shoot-slope}.
+ The source's limiting physical tensor is therefore fixed by its Ward flux,
+ not by an arbitrary rescaling.
+
+--- a/manuscript/existence/trace-local-charge.tex
++++ b/manuscript/existence/trace-local-charge.tex
+@@ -88,7 +88,7 @@
+ \[
+  |m+12\kappa|\le t^{-100},
+ \]
+-where $\kappa>0$ is the slope constant. Together with the proposition,
++where $\kappa=s_G>0$ is the slope constant \eqref{eq:shoot-slope}. Together with the proposition,
+ this gives
+ \[
+  |\ell(\sigma X)+\kappa|
+--- a/manuscript/existence.tex
++++ b/manuscript/existence.tex
+@@ -177,6 +177,7 @@
+ \input{existence/selected-nonlinear-offering}
+ \input{existence/physical-reset-reorganization}
+ \input{existence/coupling-reset-selection}
++\input{pilots/running-coupling}
+ \input{existence/surviving-interval-shooting}
+ \input{existence/terminal-normalization-transfer}
+ \input{existence/wilson-startup-construction}
+@@ -270,6 +271,14 @@
+ \input{existence/public-run-binding}
+ \input{existence/assembly}
+ \begin{thebibliography}{9}
++\bibitem{hall2000} B. C. Hall,
++\emph{An Elementary Introduction to Groups and Representations},
++arXiv:math-ph/0005032v1, 31 May 2000.
++\url{https://arxiv.org/pdf/math-ph/0005032v1}.
++\bibitem{lebl} J. Lebl,
++\emph{Basic Analysis: Introduction to Real Analysis}, Vol.~I,
++author-maintained electronic edition, Section~2.2.
++\url{https://jirilebl.github.io/ra/html/sec_factslimsseqs.html}.
+ \bibitem{OS75} K. Osterwalder and R. Schrader,
+ \emph{Axioms for Euclidean Green's functions II},
+ Communications in Mathematical Physics \textbf{42} (1975), 281--305,
