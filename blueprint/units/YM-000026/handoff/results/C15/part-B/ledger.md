@@ -48,3 +48,15 @@ Status words: **proved here** (detailed proof in the chapter from the listed pre
 | `C15-to-external33-weighted-receiver` | `trace-prosper-sensor.tex` l.532, 545, 552 | `lem:ex-lattice-trace-weighted-price` (unchanged statement); scalar medium limits of `sec:ex-lattice-trace-weighted-estimates` "at the postselected levels" | matched; no circularity (the sensor proposition does not use its own conclusion) |
 | `C15-to-C14-normalized-stress` | `trace-calibration-producer.tex` l.171–172, 334 | `lem:ex-lattice-trace-weighted-price`, `lem:trace-normalized-stress` (both unchanged) | matched |
 | intra-C15 | `trace-small-means.tex` (part-A) | `prop:ex-trace-mission-price-transfer` (statement unchanged) | matched |
+
+## Source-leakage inputs (#194)
+
+Named in the author response to the source-leakage audit (session `ADB991-claude-20261113-e4dd`; details and rows in `../source-leakage-response.md`). No producer is located for any of them.
+
+| Input | Statement | Consumer | Status |
+| --- | --- | --- | --- |
+| I-C15-probe-scales | `eq:ex-trace-probe-scales` for all sufficiently large j | `prop:ex-trace-probe-assembly` | open |
+| I-C15-scribe-scale-bounds | q_i ≤ 2z_i; ρ_i ≤ t_i ≤ z_i | `eq:ex-lattice-scribe-flux-limit` and, through ρ_i ≤ t_i, the conditional proof of c_i¹ → −κ/4 after `eq:ex-lattice-scribe-sensor-limits` | open (c_i¹ → −κ/4 removed after review R1 of PR #212: proved conditionally in the chapter) |
+| I-C15-finite-response-price | the finite-volume inequalities `eq:ex-lattice-trace-finite-response-price` on a set in the separation ultrafilter | `subsec:ex-lattice-trace-weighted-route` | open; expected from `prop:ex-lattice-charge-bounds` (t = p_i) and the field-transport error estimate |
+
+The arch comparison (E-clock) and the reference-chart calibration are now stated in the text as outstanding inputs. In `trace-local-pairing.tex` the bound t_i(1) ≥ 4 is now proved from p_i → ∞ (previously attributed to the source).
