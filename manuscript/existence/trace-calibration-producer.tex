@@ -319,13 +319,23 @@ identify the two weights or infer one from the other.
 \subsection{The calibrated stress sequence}
 
 Throughout this section the index $i$ runs along one comparison curve: the
-radii are $r_i=s_{n_i}$ and the charts are the corrected maps
-$U_{i,d}=C_{i,d}$ of Theorem~\ref{thm:ex-lattice-selected-trace-gallery}.
-This is the curve used in Section~\ref{sec:actual-stress-normalization}.
+radii are $r_i=s_{n_i}$. Write $U_{i,d}$ for the isomorphisms obtained
+from the corrected maps $C_{i,d}$ of
+Theorem~\ref{thm:ex-lattice-selected-trace-gallery} by the early-index
+completion described below. For each fixed grade $d$, $U_{i,d}=C_{i,d}$
+for all sufficiently large $i$; equality at every index is not required.
+The projected maps before correction are denoted $U^{\mathrm{raw}}_{i,d}$,
+never $U_{i,d}$. This is the curve used in
+Section~\ref{sec:actual-stress-normalization}. Every use of grades four
+and five below is restricted to a common tail on which their corrected
+maps are invertible and the stated optical and coherence identities hold.
 Write $U_i=U_{i,4}$ for its grade-four chart and, for a tensor $T$, set
 \[
  Y_i(T)=r_i^4U_i^{-1}T.
 \]
+For this application we assume the joint-curve input stated below:
+the correction, beam, trace and shell-flux receipts all concern these
+same radii, charts, physical table, derivative maps and reference fields.
 Apply Lemma~\ref{lem:ex-lattice-trace-correction-limits} with
 $\mathcal P_i=Y_i$, so that $\mathcal Y_i=B_i^{-1}Y_i$, and put
 $\widetilde T_i=B_i^{-1}T_i$ for the normalized corrected tensor.  It is
@@ -426,12 +436,12 @@ involution, so this second averaging preserves signed equivariance. Each
 conjugate remains a left inverse because the inclusion intertwines both
 actions. This is the finite-dimensional splitting used below.
 
-For each finite-volume index $k$, let $U_{k,d}:E_d\to S_d$ be the raw chart
-maps. Define the corrected maps recursively by
+For each cutoff $k$, let $U^{\mathrm{raw}}_{k,d}:E_d\to S_d$ ($d\le k$) be the raw
+projected chart maps. Define the corrected maps through grade $k$ by
 \begin{align}
- C_{k,0}&=U_{k,0},\\
+ C_{k,0}&=U^{\mathrm{raw}}_{k,0},\\
  C_{k,d+1}&=\iota^S_d C_{k,d}R_d
-       +U_{k,d+1}(1-\iota^E_dR_d).
+       +U^{\mathrm{raw}}_{k,d+1}(1-\iota^E_dR_d).
  \label{eq:ex-trace-corrected-lift}
 \end{align}
 The first summand corrects the part of a field already represented at the
@@ -440,27 +450,27 @@ $R_d\iota^E_d=1$ gives
 \begin{align*}
  C_{k,d+1}\iota^E_d
  &=\iota^S_d C_{k,d}R_d\iota^E_d
-   +U_{k,d+1}(\iota^E_d-\iota^E_dR_d\iota^E_d)\\
+   +U^{\mathrm{raw}}_{k,d+1}(\iota^E_d-\iota^E_dR_d\iota^E_d)\\
  &=\iota^S_d C_{k,d}.
 \end{align*}
-Induction and transitivity therefore give, for every pair $d\le e$,
+Induction and transitivity therefore give, for every pair $d\le e\le k$,
 \begin{equation}
  C_{k,e}\iota^E_{d,e}=\iota^S_{d,e}C_{k,d}.
  \label{eq:ex-trace-corrected-balanced}
 \end{equation}
-This is an exact identity at each index $k$, before the $k\to\infty$
+This is an exact identity whenever the displayed grades are at most $k$, before the $k\to\infty$
 limit. It is the needed balanced inclusion relation; unrelated
 isomorphisms at early indices are not used to obtain it.
 
 The same correction preserves the weak symmetry conditions by induction,
-since $R_d$, both inclusions, and $U_{k,d}$ intertwine the signed and real
+since $R_d$, both inclusions, and $U^{\mathrm{raw}}_{k,d}$ intertwine the signed and real
 structures. The unit in each grade is the iterated inclusion of the
 constant unit in grade zero. Thus the exact grade-zero unit identity, together
 with the balanced relation, gives the unit identity at every grade. It also
 preserves the tested approximation. To see the exact
 finite-slot identity, let $I$ be a subset of the tuple's slots already using
 $C$, and let $\mathcal W_k^I(v)$ be the tested chart correlation with $C$ in
-those slots and $U$ in the others. For $i\notin I$ with $v_i\in E_{d+1}$,
+those slots and $U^{\mathrm{raw}}$ in the others. For $i\notin I$ with $v_i\in E_{d+1}$,
 put $p_i=R_dv_i$ and $q_i=(1-\iota^E_dR_d)v_i$. Linearity in that slot,
 formula \eqref{eq:ex-trace-corrected-lift}, and the table inclusion identity
 give the exact equality
@@ -480,7 +490,7 @@ so corrected correlations approach the reference. The finite sum's size and
 label norms may depend on the tuple; this qualitative argument does not
 retain the raw numerical rate without tracking those factors.
 
-The raw maps $U_{k,d}$ below are formed by the finite-dimensional
+The raw maps $U^{\mathrm{raw}}_{k,d}$ below are formed by the finite-dimensional
 ultrafilter limits and grade projections. Apply the correction after this
 projection, exactly as in the source. The balanced identity
 \eqref{eq:ex-trace-corrected-balanced} is then exact for each fixed pair of
@@ -506,17 +516,17 @@ has a limit $Y_k\in\mathscr L_k$. This is done for each integer $k$ using
 the same ultrafilter. Let $P_d:A_d\to S_d$ be the selected table's
 projection. Put
 \[
- U_{k,d}=P_d\circ Y_k(d):E_d\longrightarrow S_d
+ U^{\mathrm{raw}}_{k,d}=P_d\circ Y_k(d):E_d\longrightarrow S_d
  \qquad(d\le k).
 \]
 The exact finite-volume reality, signed-reflection, and unit identities hold
 on a set belonging to the ultrafilter. Their maps are continuous, so they
-pass to $Y_k$ and then to $U_{k,d}$.
+pass to $Y_k$ and then to $U^{\mathrm{raw}}_{k,d}$.
 
 For fixed $k$, the calibrated-smearing argument also passes each
 finite-volume short-test bound to the limit. Let $A_{k,v}(t)$ denote the
 tested correlation of a fixed tuple $v=(v_1,\ldots,v_n)$ after applying
-$U_{k,d_a}$ and scaling by $s_{n_k}$; let $A_{0,v}(t)$ denote its reference
+$U^{\mathrm{raw}}_{k,d_a}$ and scaling by $s_{n_k}$; let $A_{0,v}(t)$ denote its reference
 correlation. For a tuple of arity $n\le k$, labels of grades at most $k$, and any smooth compactly
 supported test $t$ inside the cutoff window, with $\sup|t|\le M$, the bound
 is
@@ -541,7 +551,7 @@ that the linear functionals obtained by inserting a grade-$d$ field into
 smooth tested correlations separate points of $E_d$. Since $E_d$ is
 finite-dimensional, choose finitely many such tests
 $\lambda_1,\ldots,\lambda_m$ spanning its dual. The raw approach
-estimate gives convergence of their values for $U_{k,d}$, and the finite-sum
+estimate gives convergence of their values for $U^{\mathrm{raw}}_{k,d}$, and the finite-sum
 correction argument gives the same convergence for $C_{k,d}$. On a finite
 basis the combined maps $\Lambda_k=(\lambda_{j,k})$ therefore converge in
 operator norm to the injective reference map $\Lambda=(\lambda_j)$. The
@@ -551,6 +561,33 @@ functional factors through $C_{k,d}$, so is $C_{k,d}$. The dimension receipt
 gives $\dim S_d\le\dim E_d$; injectivity gives the reverse inequality.
 Thus $C_{k,d}$ is an isomorphism eventually for each fixed $d$. The
 exceptional tail may depend on $d$.
+
+\paragraph{Joint-curve input.}
+\label{par:ex-trace-joint-curve}
+Fix the physical and reference tables, their derivative maps, the physical
+tensor $R$, reference stress $R_0$, reference trace field $O$ and Ward
+normalization $\kappa$. Fix also the extraction and its ultrafilter. These
+data do not depend on the positive null sequence. For every such sequence
+$(s_n)$, assume that the one-stage choices and the finite-volume limits
+can be made so that all the correction and normalization receipts in the
+following theorem hold on the resulting corrected curve. The subsequence
+and charts may depend on $(s_n)$, but the fixed physical and reference
+data do not. In particular,
+the two-direction matrices and corrected tensors use its grade-four and
+grade-five maps; the beam and weighted trace limits use these same tensors
+and weights; and both shell-flux limits use the same physical tensor $R$,
+reference stress $R_0$ and nonzero Ward value $y$. The physical and reference
+Ward identities and separated-jet comparisons required in
+Section~\ref{sec:actual-stress-normalization} must hold for these same
+data. A further subsequence is allowed only if every receipt is restricted
+together with the radii and charts. Tails may depend on each fixed finite
+collection of grades, labels and tests.
+
+This is an outstanding joint input, not a consequence of having a curve
+for each receipt separately. Nor does a ratio of scalar normalizers tending
+to a constant identify two chart sequences or their derivative maps. The
+finite-dimensional arguments below do not produce these analytic receipts
+on a common curve.
 
 \begin{theorem}[Conditional gradewise ultralimit charts]
 \label{thm:ex-lattice-selected-trace-gallery}
@@ -566,7 +603,8 @@ stress normalization, assume separated shell-flux limits
 $\phi_i(R)\to y\ne0$ and $\phi_i(\widetilde T_i)\to y$. Finally, for each cutoff
 $k$, assume the finite-volume lift bound, exact unit and covariance
 identities, the dimension receipt, and the short-test bound for every tuple
-of arity at most $k$ described above. Then for every positive sequence
+of arity at most $k$ described above. Require these inputs jointly as in
+the \hyperref[par:ex-trace-joint-curve]{joint-curve input above}. Then for every positive sequence
 $s_n\to0$, there is a strictly increasing sequence $n_k$ such that
 $s_{n_k}$ strictly decreases to zero, and there are corrected maps
 $C_{k,d}:E_d\to S_d$ for $d\le k$ with the following properties:
@@ -591,7 +629,7 @@ $k$. The tail may depend on $(d,e)$.
 \begin{proof}
 Apply the recursive scale-selection lemma to choose $n_k$ with strictly
 decreasing $s_{n_k}$. At each cutoff $k$, the common-ultrafilter finite
-dimensional limit gives the raw projected maps $U_{k,d}$ and their tested
+dimensional limit gives the raw projected maps $U^{\mathrm{raw}}_{k,d}$ and their tested
 correlation estimates. The corrected-lift calculation above produces
 $C_{k,d}$; the finite slot argument transfers tested convergence, reality,
 and signed covariance to these maps. The finite separating-test argument
@@ -611,6 +649,24 @@ $Q$ and $k$ exceeds the arity and grades involved,
 $(k+1)^{-1}M\prod_a\|w_a\|$.  Summing, the supremum in
 \eqref{eq:ex-lattice-trace-uniform-tests} is at most $(k+1)^{-1}MK_v$ with
 a constant $K_v$ depending only on $v$, and it tends to zero.\end{proof}
+
+To obtain isomorphisms at every index, fix for each grade $d$ an index
+$k_d\ge d$ for which $C_{k_d,d}$ is invertible, and set
+\[
+ U_{k,d}=\begin{cases}
+ C_{k,d},&d\le k\text{ and }C_{k,d}\text{ is invertible},\\
+ C_{k_d,d},&\text{otherwise}.
+ \end{cases}
+\]
+For each fixed $d$ this changes only finitely many terms. Hence the tested
+limits for every fixed finite tuple are unchanged. For each fixed pair
+$d\le e$, intersecting the two agreement tails transfers the balanced
+inclusion identity to $U$; the same argument transfers the unit and
+symmetry identities. The exact identity for $C$ before completion is
+therefore distinct from the eventual identity for $U$. No tail uniform in
+all grades is needed or asserted. In the calibrated stress sequence above,
+$i$ is this same index $k$, with any further subsequence applied to all the
+data together as required by the joint-curve input.
 
 The corrected-lift construction proves the pairwise eventual inclusion
 identities for the corrected maps; it does not claim one tail uniform over
