@@ -55,3 +55,11 @@ The proof uses three facts:
 Its hypothesis is that readers lie within 2a_ℓ of their cell centres. This is derived after the lemma from fitness (coordinates ≤ a_ℓ/8), rounding, and one coarse spacing. (U) The placement of reflected and conjugated replicas relative to cell centres is read from the definition of the centered root test (`centered-estimates.tex`); it is not separately checked.
 
 The remaining launch input is now only the reader-containment clause of (F).
+
+## Addendum: reader containment
+
+`lem:allarity-reader-containment` derives the second part of (F) by induction along the interval. The compiler's letters are flattenings of components, the realigned and failed-mask pieces live on the X_{c,I}, and the regroupings take unions. The induction uses two structural properties:
+- coarse footprints contain the projections of fine supports. `sec:mixed-activity-prices` l. 233 describes the footprint as the projection enlarged by a fixed halo.
+- coarse reader sites are projections of fine reader sites.
+
+(U) The second is the evident convention, but I did not find it stated as such.
