@@ -1,0 +1,9 @@
+# Selected birth denominator and uniform label payment
+
+Refs #320 and #315. Claim https://github.com/hairer/humanise-yang-mills/issues/320#issuecomment-6868003879. Canonical base 44697c1a249fb126f4db3728c8a8cece91a101bc; Lean pin 3456e5e75cf8d4cd558955a5c7638fba2d68f464. Codex author draft; independent review remains required.
+
+- The quiet coefficient argument closes review #328 M3 under the selected Wilson identities: the same transition pushes both the unmarked evaluation and the quiet coefficient of the birth. Thus equality holds at each level and mass conservation gives the terminal partition function. Source: `YM.RG.History.Selected` and `YM.RG.History.partition_eq` in Lean/YM/RG/History.lean, used independently of marked transport in `YM.MergeProof.Accent.vista` (Lean/YM/MergeProof/Arbol.lean).
+- The common width follows by the adjacent coefficient cone from the calibrated reference coordinate, before any particular label in the ball is chosen. The column factor is included. The treasury comparison is made at the hatted radius using the upper band and the same local representative, as in `YM.Vac.treasury` and `YM.Vac.suffices_bill` (Lean/YM/Vac/Treasury.lean).
+- Still needed: instantiate the served census and local response on the retained selected history, with the actual geometry and a common applicable volume threshold. The menu/retention and Music inputs (#317 and #318) remain prerequisites. The two shared C02 chapters of #43 were not edited; their applications can cite the new lemma after coordination.
+
+Local blueprint check passed (4 units). The local b9a7f5c manuscript export with the changed chapter (blob fd8a8429cc50865954b5f61696d64013dad82bab) built with latexmk (971 pages); rendered pp. 114–115 inspected. Whitespace comparison emitted no errors. No exact canonical-tree build or Lean replay.
