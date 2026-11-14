@@ -1,0 +1,172 @@
+% Clock cap of the selected chart: zero-rate ticket and logarithmic zoom bound.
+\section{The tilt cap and the logarithmic zoom bound}
+\label{sec:ex-lattice-trace-clock-cap}
+
+The trace sections below compare scales along the selected run through the
+clock rate $\widehat\beta_j$. Two elementary facts about the cap on the
+chart zoom are used there: the cap has a ticket of rate zero
+(Section~\ref{subsec:ex-trace-small-means}), and the logarithm of the
+zoom factor is at most $(\log\widehat\beta_j)^{48}$ at the frame level
+$j$ (the clock paragraph of the scribe producer,
+Section~\ref{sec:ex-lattice-trace-scribe-producer}). This section defines
+the cap and proves both facts. They use only the definition of the clock;
+no analytic estimate enters.
+
+\emph{The clock.} The selected run has rates
+\[
+ \widehat\beta_j=\bar\beta+\kappa\log(\mathsf a_j^{-1}),
+ \qquad j\in\mathbb N,
+\]
+where $\mathsf a_j>0$ is the field scale at level $j$ and $\bar\beta,\kappa$
+are fixed constants with $\kappa>0$. We use only two properties of these
+numbers:
+\begin{equation}
+ \widehat\beta_j>1\quad\text{for every }j,
+ \qquad
+ \widehat\beta_j\longrightarrow\infty\quad(j\to\infty).
+ \label{eq:ex-lattice-clock-cap-rate}
+\end{equation}
+Put
+\[
+ L_j=\log\widehat\beta_j>0,
+ \qquad
+ u_j=\log L_j=\log\log\widehat\beta_j .
+\]
+By \eqref{eq:ex-lattice-clock-cap-rate}, $L_j\to\infty$, hence
+$u_j\to\infty$. The clock monitor of
+Section~\ref{sec:rank-root-normalization} is
+\[
+ \mathcal M_j=\exp\bigl(u_j^2\bigr)\ \geq1 .
+\]
+For a real exponent $c$ the \emph{magnified monitor} is
+$\mathcal M_j^{\,c}=\exp(c\,u_j^2)$. Since $\mathcal M_j\geq1$, the map
+$c\mapsto\mathcal M_j^{\,c}$ is nondecreasing on $\mathbb R$.
+
+\begin{definition}[Tilt cap]
+\label{def:ex-lattice-tiltcap}
+The \emph{tilt cap} at level $j$ is the magnified monitor at the exponent
+$u_j$:
+\[
+ \operatorname{tiltcap}(j)=\mathcal M_j^{\,u_j}
+ =\exp\bigl(u_j^3\bigr)
+ =\exp\bigl((\log\log\widehat\beta_j)^3\bigr).
+\]
+\end{definition}
+
+\emph{Tickets.} A sequence $(f_j)_{j\in\mathbb N}$ of real numbers has a
+\emph{ticket of rate} $\rho\in\mathbb R$ if for every $\rho'>\rho$ there
+is $j_0$ such that
+\[
+ 0\leq f_j\leq\exp\bigl(\rho'(\log\widehat\beta_j)^{48}\bigr)
+ \qquad\text{for all }j\geq j_0 .
+\]
+For a nonnegative sequence this is the notion used in
+Section~\ref{subsec:ex-trace-small-means}.
+
+\begin{lemma}[Zero-rate ticket of the tilt cap]
+\label{lem:ex-lattice-trace-tiltcap-ticket}
+\begin{enumerate}
+ \item For every $j$ with $\log\widehat\beta_j\geq1$,
+ \[
+  1\leq\operatorname{tiltcap}(j)\leq\exp\bigl((\log\widehat\beta_j)^3\bigr).
+ \]
+ \item For every integer $p\geq0$ the sequence
+ $j\mapsto\operatorname{tiltcap}(j)^p$ has a ticket of rate $0$. In
+ particular $\operatorname{tiltcap}$ itself and its fifth power have
+ tickets of rate $0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Let $L_j=\log\widehat\beta_j\geq1$. Then $u_j=\log L_j\geq0$, and the
+inequality $\log x\leq x-1<x$ for $x>0$ gives $u_j<L_j$. Hence
+$0\leq u_j^3\leq L_j^3$, and applying the increasing function $\exp$ gives
+$1\leq\exp(u_j^3)\leq\exp(L_j^3)$.
+
+(2) Fix $p\geq0$ and $\rho'>0$. Since $L_j\to\infty$, there is $j_0$
+such that for all $j\geq j_0$
+\[
+ L_j\geq1
+ \qquad\text{and}\qquad
+ L_j^{45}\geq\frac{p}{\rho'} .
+\]
+For such $j$, part (1) gives
+\[
+ 1\leq\operatorname{tiltcap}(j)^p=\exp\bigl(p\,u_j^3\bigr)
+ \leq\exp\bigl(p\,L_j^3\bigr)
+ \leq\exp\bigl(\rho'L_j^{45}L_j^3\bigr)
+ =\exp\bigl(\rho'(\log\widehat\beta_j)^{48}\bigr).
+\]
+In particular $0\leq\operatorname{tiltcap}(j)^p$ for $j\geq j_0$. As
+$\rho'>0$ was arbitrary, $\operatorname{tiltcap}^p$ has a ticket of rate $0$.
+\end{proof}
+
+\emph{The chart receipt.} Let $j_i$ be the frame level of the $i$th
+selected chart and $\mathsf b_i>0$ its zoom factor, so that the chart
+radius is $r_i=\mathsf a_{j_i}\mathsf b_i$. The selected chart is
+produced at an exact clock gap
+(Section~\ref{sec:ex-lattice-firesky-gallery}): its zoom factor is a
+magnified monitor $\mathsf b_i=\mathcal M_{j_i}^{\,c_i}$ whose base arc
+$c_i$ satisfies $5<c_i$ and is at most the permitted angular bound
+$\log\log\widehat\beta_{j_i}=u_{j_i}$. Because $c\mapsto\mathcal M_j^{\,c}$
+is nondecreasing and $\mathcal M_j\geq1$, these two inequalities give
+\begin{equation}
+ 1\leq\mathcal M_{j_i}^{\,5}\leq\mathsf b_i
+ \leq\mathcal M_{j_i}^{\,u_{j_i}}=\operatorname{tiltcap}(j_i)
+ \qquad\text{for every }i .
+ \label{eq:ex-lattice-clock-cap-receipt}
+\end{equation}
+This is the receipt $1\leq\mathsf b_i\leq\operatorname{tiltcap}(j_i)$
+used in Section~\ref{sec:ex-lattice-trace-mission-price} and the bound
+$0<\mathsf b_i\leq\operatorname{tiltcap}(j_i)$ used in
+Section~\ref{subsec:ex-trace-small-means}. The lemma below assumes only
+\eqref{eq:ex-lattice-clock-cap-receipt} on a tail, not the exponent form
+of $\mathsf b_i$.
+
+\begin{lemma}[Logarithmic zoom bound]
+\label{lem:ex-lattice-trace-log-zoom}
+Let $(j_i)$ be a sequence of levels with $j_i\to\infty$ and let
+$\mathsf b_i>0$ satisfy $1\leq\mathsf b_i\leq\operatorname{tiltcap}(j_i)$
+for all sufficiently large $i$. Then there is $i_0$ such that for all
+$i\geq i_0$
+\begin{equation}
+ 0\leq\log\mathsf b_i
+ \leq(\log\log\widehat\beta_{j_i})^3
+ \leq(\log\widehat\beta_{j_i})^3
+ \leq(\log\widehat\beta_{j_i})^{48}.
+ \label{eq:ex-lattice-trace-log-zoom}
+\end{equation}
+Consequently
+\[
+ \frac{\log\mathsf b_i}{\widehat\beta_{j_i}}\longrightarrow0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $j_i\to\infty$ and $\widehat\beta_j\to\infty$, we have
+$\widehat\beta_{j_i}\to\infty$; choose $i_0$ such that for $i\geq i_0$
+both $\log\widehat\beta_{j_i}\geq1$ and
+$1\leq\mathsf b_i\leq\operatorname{tiltcap}(j_i)$. Fix $i\geq i_0$ and
+write $L=\log\widehat\beta_{j_i}\geq1$ and $u=\log L$. Taking logarithms
+in $1\leq\mathsf b_i\leq\operatorname{tiltcap}(j_i)=\exp(u^3)$ gives
+$0\leq\log\mathsf b_i\leq u^3$. The proof of
+Lemma~\ref{lem:ex-lattice-trace-tiltcap-ticket}(1) gives $0\leq u<L$, so
+$u^3\leq L^3$; and $L^3\leq L^{48}$ because $L\geq1$. This proves
+\eqref{eq:ex-lattice-trace-log-zoom}.
+
+For the limit, put $t_i=\widehat\beta_{j_i}\to\infty$. By
+\eqref{eq:ex-lattice-trace-log-zoom},
+$0\leq\log\mathsf b_i/t_i\leq(\log t_i)^{48}/t_i$ for $i\geq i_0$. With
+$s=\log t$, $(\log t)^{48}/t=s^{48}e^{-s}\to0$ as $t\to\infty$, since the
+exponential dominates every power. The squeeze gives the claim.
+\end{proof}
+
+In the scribe clock inputs \eqref{eq:ex-lattice-scribe-clock-inputs} the
+third clause, $0\leq\log\mathsf b_i\leq(\log\widehat\beta_{j_i})^{48}$
+eventually, is therefore a consequence of the chart receipt
+\eqref{eq:ex-lattice-clock-cap-receipt} and the clock
+\eqref{eq:ex-lattice-clock-cap-rate}, with the stronger exponent $3$ in
+place of $48$. The other two clauses of
+\eqref{eq:ex-lattice-scribe-clock-inputs}, the ratio limits
+$\zeta(j)/\widehat\beta_j\to1$ and
+$\zeta(j)/\zeta(\operatorname{summit}(j))\to1$, are not addressed here.
