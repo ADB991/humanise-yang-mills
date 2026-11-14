@@ -25,3 +25,7 @@ The healthy-field construction is written at "the selected middle scale". I use 
 
 - `latexmk -g -pdf existence.tex`: rc 0, with no undefined references.
 - `python3 scripts/check_blueprint.py`: OK.
+
+## Addendum: per-rung amplitude
+
+`cor:allarity-rung-amplitude`: the masked principal insertion is bounded by H^A everywhere, so τ has upper exponent 0 and `lem:allarity-step-discrepancy` holds with κ_τ = 0 at every leading rung. The per-rung amplitude is no longer a separate input. (U) This identifies the insertion h of `sec:principal-gaussian-comparison` with the masked principal piece.
