@@ -1,0 +1,353 @@
+% Producer of the pointwise rounded comparison eq:trace-basis-error.
+% Issue #336 (parent #56, C15). Correspondence and evidence:
+% blueprint/units/YM-000026/handoff/results/C15/ADB991-claude-20261114-37f8/.
+\subsection{The pointwise comparison at rounded configurations}
+\label{subsec:trace-rounded-comparison}
+
+We now derive the pointwise clause \eqref{eq:trace-basis-error} of
+Input~\ref{input:trace-scales}, together with its window and continuity
+clauses, from the selected gallery data of
+Section~\ref{sec:ex-lattice-firesky-gallery}, the pairwise comparison
+receipt contained in those data, and the phase construction of
+Sections~\ref{ex-phases}--\ref{ex-phase-fields}. The derivation is
+conditional on the inputs (G1)--(G4) and (Ph1)--(Ph3) listed below; the
+only quantitative estimate it uses is the pairwise receipt (G3). All other
+steps are proved here or are results proved earlier in the text.
+
+\paragraph{Configurations and the comparison window.}
+For $n\ge1$ a configuration is $x=(x_0,\ldots,x_{n-1})\in(\mathbb
+R^4)^n$, with the Euclidean norm of $\mathbb R^{4n}$. It is
+\emph{coordinatewise separated} if for every coordinate direction
+$a\in\{0,1,2,3\}$ the numbers $x_{0,a},\ldots,x_{n-1,a}$ are pairwise
+distinct; such a configuration has distinct points. These configurations
+form an open set. The comparison window is
+\[
+ \mathcal W=\{x\in(\mathbb R^4)^2:\ |x_0-x_1|\ge10^{-2},\ |x|\le100\}.
+\]
+
+\paragraph{Rounding.}
+For $m>0$ and $x\in(\mathbb R^4)^n$ write $\lceil mx\rceil$ for the
+coordinatewise ceiling, an element of $(\mathbb Z^4)^n$, and put
+\[
+ \rho_m(x)=m^{-1}\lceil mx\rceil .
+\]
+Each coordinate of $\rho_m(x)-x$ lies in $[0,m^{-1})$, so
+\begin{equation}\label{eq:trace-rounding-error}
+ |\rho_m(x)-x|\le \frac{2\sqrt n}{m}.
+\end{equation}
+Rounding is idempotent: $\lceil m\rho_m(x)\rceil=\lceil mx\rceil$,
+because $m\rho_m(x)$ already has integer coordinates.
+
+\paragraph{The selected gallery data.}
+We use the following data, indexed by $i\in\mathbb N$, together with an
+extraction order and an ultrafilter $\mathcal L$ on mesh--period pairs
+$(N,p)$ finer than its fused filter, along which the mesh $N$ tends to
+infinity.
+\begin{enumerate}
+\item[(G1)] \emph{Levels and radii.} A chart level $k_i$ with
+ $k_i\to\infty$, a base arc $b_i>5$, and the radius
+ \[
+  r_i=a_{k_i}m_i,\qquad m_i=\mu_{k_i}^{\,b_i},
+ \]
+ where $a_k>0$ is the lattice spacing at depth $k$ and $\mu_k\ge1$ is the
+ clock monitor, so that $r_i=g_{b_i}(k_i)$ in the notation of
+ \eqref{eq:ex-lattice-firesky-gap}. The clock satisfies
+ $\mu_k^5\to\infty$ as $k\to\infty$.
+\item[(G2)] \emph{Chart readings and their limits.} For each grade $d$
+ and each $i\ge d$, the grade-$d$ chart of level $i$ provides linear maps
+ $X^{(i)}_{N,p}$ from the reference grade-$d$ field space $E_d$ into the
+ raw grade-$d$ label space, one for every $(N,p)$. For each fixed $d$,
+ eventually in $i$, these converge along $\mathcal L$ to a linear map
+ $Y_{i}$, and the moving chart map of
+ Input~\ref{input:trace-scales} at grade $d$ is
+ $U_i=\mathsf P_dY_i$, where $\mathsf P_d$ is the quotient projection of
+ the selected table. (This is the finite-dimensional extraction of
+ Section~\ref{sec:ex-lattice-firesky-gallery}.)
+\item[(G3)] \emph{Pairwise comparison receipt at cost
+ $\varepsilon_i=(i+1)^{-1}$.} This is part of the one-step chart output
+ recorded in Section~\ref{sec:ex-lattice-firesky-gallery}; its content is
+ stated precisely in the next paragraph.
+\item[(G4)] \emph{Chamber interiority.} There is a root depth
+ $w_i\le k_i$ such that, if $x$ is fit at level $i$ (defined below), then
+ for all sufficiently large meshes $N$ and every period $p$, every
+ grade-$d$ insertion at a site $a_{k_i}\lceil m_ix\rceil_c$ belongs to the
+ chamber-local domain of the centered tiling at depth $w_i$.
+\end{enumerate}
+A configuration $x\in(\mathbb R^4)^2$ is \emph{fit at level $i$} if the
+grid configuration $a_{k_i}\lceil m_ix\rceil$ is coordinatewise
+separated and each of its coordinates has absolute value at most one
+eighth of the spacing of the middle cell of the chart. Fitness depends on
+$x$ only through $\lceil m_ix\rceil$; by idempotence of rounding, $x$ is
+fit if and only if $\rho_{m_i}(x)$ is fit.
+
+\paragraph{The pairwise receipt.}
+Fix $i$, a grade $d\le i$, a configuration $x$ fit at level $i$, and two
+vectors $e,e'\in E_d$. Write $q=\rho_{m_i}(x)$. Put
+\[
+ j_0=S_0(e;q_0),\qquad j_1=S_0(e';q_1),\qquad
+ \kappa=S_0(e,e';q_0,q_1)-j_0j_1,
+\]
+the reference one-point values and the reference connected two-point
+value at the rounded points; these are defined because $q$ has distinct
+points. For $(N,p)$ let $f_0^{N,p}$ and $f_1^{N,p}$ be the finite-volume
+insertions of the labels $X^{(i)}_{N,p}e$ and $X^{(i)}_{N,p}e'$ at the
+two lattice sites $a_{k_i}\lceil m_ix\rceil_0$ and
+$a_{k_i}\lceil m_ix\rceil_1$. Let $\|\cdot\|_{\mathrm{root}}$ denote the
+root test of the centered tiling at depth $w_i$ for the Wilson law at
+$(N,p)$, as in
+Section~\ref{sec:actual-phase-detector-moments}.
+The receipt (G3) asserts: for every $i$, every $d\le i$, all basis vectors
+$e,e'$ of $E_d$, all $N>k_i$ and all $p$, and every $x$ that is fit at
+level $i$ with $q\in\mathcal W$,
+\begin{align}
+ \|f_c^{N,p}-j_c\|_{\mathrm{root}}&\le\varepsilon_i\qquad(c=0,1),
+ \label{eq:trace-rounded-receipt-one}\\
+ \|(f_0^{N,p}-j_0)(f_1^{N,p}-j_1)-\kappa\|_{\mathrm{root}}
+ &\le\varepsilon_i .
+ \label{eq:trace-rounded-receipt-two}
+\end{align}
+It also asserts the following \emph{width clause}: for every
+$t\in(\mathbb Z^4)^2$ such that $y=m_i^{-1}t$ is coordinatewise separated
+and $|y|\le100$, the configuration $y$ is fit at level $i$.
+
+The receipt is formulated with a cumulant-corrected polynomial, and we
+record why its three nonempty parts are exactly the left sides above. Let
+$F$ be the reference moment profile at $q$, with
+$F_\varnothing=1$, $F_{\{c\}}=j_c$ and $F_{\{0,1\}}=S_0(e,e';q_0,q_1)$.
+The corrected polynomial $\Phi$ is the unique family
+$(\Phi_s)_{s\subseteq\{0,1\}}$ with $\Phi_\varnothing=1$ and
+\[
+ \prod_{c\in s}f_c^{N,p}=\sum_{u\subseteq s}F_u\,\Phi_{s\setminus u}
+ \qquad(s\subseteq\{0,1\}).
+\]
+Uniqueness and existence follow by induction on $|s|$, since the term
+$u=\varnothing$ is $\Phi_s$. For $s=\{c\}$ the identity reads
+$f_c^{N,p}=\Phi_{\{c\}}+j_c$. For $s=\{0,1\}$ it reads
+\[
+ f_0^{N,p}f_1^{N,p}=\Phi_{\{0,1\}}+j_0\Phi_{\{1\}}+j_1\Phi_{\{0\}}
+     +S_0(e,e';q_0,q_1),
+\]
+and substituting the one-point parts gives
+$\Phi_{\{0,1\}}=(f_0^{N,p}-j_0)(f_1^{N,p}-j_1)-\kappa$.
+
+\paragraph{Phase inputs.}
+Let $\mathcal A$, $\Omega$, $\Xi$ and $\mu$ be the commutative ground
+algebra, the vacuum, the character space and the representing measure of
+Sections~\ref{ex-phases} and~\ref{ex-phase-selection}, built from the
+limiting (unselected) table of the same extraction order, and let
+$S_\chi(w)=\chi(M(w))$ be as in \eqref{ex-phase-word}. We assume:
+\begin{enumerate}
+\item[(Ph1)] the hypotheses of that construction, in particular the
+ separated-cluster limit of Lemma~\ref{ex-cluster-train}, the
+ representation \eqref{ex-spectral-state} with full support, and the
+ separating property of $\Omega$ for $\mathcal A$ used in the proof of
+ Proposition~\ref{ex-character-measure};
+\item[(Ph2)] the finite-volume hypotheses of the polynomial-packet
+ argument of Section~\ref{sec:actual-phase-detector-moments}, from
+ \eqref{eq:episode-cutoff-power} to \eqref{eq:episode-all-powers}:
+ the planted inequality for the Wilson law at every $(N,p)$, the
+ point-limit theorem for words with convergent labels along the selected
+ order, and admission of the fixed reference depth; and
+\item[(Ph3)] \emph{reality and null relations of the phases}: for every
+ $\chi\in\Xi$ and every distinct-point word $w$,
+ $S_\chi(\bar w)=\overline{S_\chi(w)}$, where $\bar w$ conjugates all
+ labels without moving the points; and for the selected character $\chi$
+ the phase correlations respect the null relations of the selected
+ table, so that for raw labels $y,y'$ and distinct points $z_0,z_1$,
+ \[
+  S_\chi(\mathsf P_dy,\mathsf P_dy';z_0,z_1)=\chi\bigl(M(y@z_0\,y'@z_1)\bigr).
+ \]
+ (By Proposition~\ref{ex-no-new-null}, the null relations are respected
+ under the detector hypotheses stated there.)
+\end{enumerate}
+
+\begin{lemma}[Conjugate words]\label{lem:trace-rounded-conjugate}
+Under (Ph1) and the reality clause of (Ph3), $M(\bar w)=M(w)^*$ for every
+distinct-point word $w$.
+\end{lemma}
+\begin{proof}
+Put $Z=M(\bar w)-M(w)^*\in\mathcal A$. Every character is a star
+homomorphism, so $\chi(Z)=S_\chi(\bar w)-\overline{S_\chi(w)}=0$ for
+every $\chi\in\Xi$. By \eqref{ex-spectral-state} applied to $Z^*Z$,
+\[
+ \|Z\Omega\|^2=\langle\Omega,Z^*Z\Omega\rangle
+   =\int_\Xi|\chi(Z)|^2\,d\mu(\chi)=0 .
+\]
+Since $\Omega$ is separating for $\mathcal A$, $Z=0$.
+\end{proof}
+
+Lemma~\ref{lem:trace-rounded-conjugate} supplies the identity
+\eqref{eq:episode-conjugate}, which
+Section~\ref{sec:actual-phase-detector-moments} takes as an input, in
+the present setting; there it is used only to identify the limits of the
+conjugated packets.
+
+\begin{proposition}[Pointwise rounded comparison]
+\label{prop:trace-rounded-comparison}
+Assume (G1)--(G4) and (Ph1)--(Ph3), and let $\chi$ be the selected
+character. Fix a grade $d$. There is $i_0$ such that for all $i\ge i_0$,
+all basis vectors $e,e'$ of $E_d$, and every configuration $x$ that is fit
+at level $i$ with $q=\rho_{m_i}(x)\in\mathcal W$,
+\begin{equation}\label{eq:trace-rounded-comparison}
+ \bigl|S_\chi(U_ie,U_ie';r_iq)-S_0(e,e';q)\bigr|
+ \le\varepsilon_i\bigl(1+|S_0(e;q_0)|+|S_0(e';q_1)|\bigr).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Choose $i_0\ge d$ such that the convergence in (G2) holds at grade $d$
+for all $i\ge i_0$. Fix such $i$, the vectors $e,e'$ and $x$. Put
+$y_0=Y_ie$, $y_1=Y_ie'$, so that
+$X^{(i)}_{N,p}e\to y_0$ and $X^{(i)}_{N,p}e'\to y_1$ along
+$\mathcal L$, and $\mathsf P_dy_0=U_ie$, $\mathsf P_dy_1=U_ie'$. Let $z$
+be the grid configuration $a_{k_i}\lceil m_ix\rceil$. By (G1),
+\[
+ z=a_{k_i}m_i\,\rho_{m_i}(x)=r_iq .
+\]
+It is coordinatewise separated because $x$ is fit; in particular its
+two points are distinct and lie on the depth-$k_i$ grid. Let $w$ be the
+two-slot word carrying $y_0$ at $z_0$ and $y_1$ at $z_1$, and $w_c$ its
+one-slot subwords.
+
+\emph{Step 1: the two corrected packets.} Consider the polynomial
+packets, in the sense of
+Section~\ref{sec:actual-phase-detector-moments},
+\begin{align*}
+ &\text{words }[w_c],\varnothing\text{ with coefficients }1,-j_c
+ &&(c=0,1),\\
+ &\text{words }[w],[w_1],[w_0],\varnothing\text{ with coefficients }
+ 1,-j_0,-j_1,j_0j_1-\kappa .
+\end{align*}
+Their cutoff polynomials at $(N,p)$ are respectively $f_c^{N,p}-j_c$ and
+\[
+ f_0^{N,p}f_1^{N,p}-j_0f_1^{N,p}-j_1f_0^{N,p}+j_0j_1-\kappa
+ =(f_0^{N,p}-j_0)(f_1^{N,p}-j_1)-\kappa ,
+\]
+and their compressed limits are
+\[
+ D_c=M(w_c)-j_cI,\qquad D_{01}=M(w)-j_0M(w_1)-j_1M(w_0)+(j_0j_1-\kappa)I .
+\]
+We check the hypotheses of the packet argument. The sites of every word
+lie on the depth-$k_i$ grid and are coordinatewise separated, since $z$
+is. The coefficients do not depend on $(N,p)$. The cutoff labels
+$X^{(i)}_{N,p}e$ and $X^{(i)}_{N,p}e'$ converge along $\mathcal L$ to the
+labels $y_0,y_1$ of the limiting words. The root depth satisfies
+$w_i\le k_i$. Since $N\to\infty$ along $\mathcal L$, the set of $(N,p)$
+with $N>k_i$ and $N$ beyond the threshold of (G4) belongs to
+$\mathcal L$. On that set, (G4) puts $f_0^{N,p}$ and $f_1^{N,p}$ in the
+chamber-local domain; constants, sums and products preserve that domain,
+so all three cutoff polynomials belong to it. On the same set the receipt
+\eqref{eq:trace-rounded-receipt-one}--\eqref{eq:trace-rounded-receipt-two}
+bounds their root tests by $\varepsilon_i$. This is the root-price
+hypothesis of the packet argument with $g=\varepsilon_i$ (and holds with
+$g+\varepsilon$ for every $\varepsilon>0$ a fortiori).
+
+By (Ph2) and Lemma~\ref{lem:trace-rounded-conjugate}, which supplies
+\eqref{eq:episode-conjugate}, the packet argument applies to each of the
+three packets and gives, by \eqref{eq:episode-all-powers},
+\[
+ \langle\Omega,(D^*D)^n\Omega\rangle\le\varepsilon_i^{2n}
+ \qquad(n=0,1,2,\ldots;\ D=D_0,D_1,D_{01}).
+\]
+
+\emph{Step 2: every character.} Lemma~\ref{ex-character-moments}, which
+uses the full-support representation of (Ph1), gives
+$|\chi(D)|\le\varepsilon_i$ for each of the three elements and every
+$\chi\in\Xi$. The two-point calculation following that lemma, with
+$a=w_0$, $b=w_1$, $ab=w$, then gives
+\[
+ \bigl|S_\chi(w)-(\kappa+j_0j_1)\bigr|
+ \le\varepsilon_i\bigl(1+|j_0|+|j_1|\bigr).
+\]
+For completeness: evaluating $\chi$ on $D_{01}$ and rearranging,
+$S_\chi(w)-(\kappa+j_0j_1)=\chi(D_{01})+j_0\chi(D_1)+j_1\chi(D_0)$, and
+the triangle inequality gives the bound.
+
+\emph{Step 3: identification.} By the definition of $\kappa$,
+$\kappa+j_0j_1=S_0(e,e';q_0,q_1)$. By the null-relation clause of (Ph3)
+and Step 1,
+\[
+ S_\chi(w)=\chi(M(y_0@z_0\,y_1@z_1))
+ =S_\chi(U_ie,U_ie';z_0,z_1)=S_\chi(U_ie,U_ie';r_iq).
+\]
+Substituting these identities and the definitions of $j_0,j_1$ proves
+\eqref{eq:trace-rounded-comparison}. The threshold $i_0$ depends only on
+$d$.
+\end{proof}
+
+\begin{corollary}[The pointwise clause of the trace input]
+\label{cor:trace-rounded-input}
+Assume (G1)--(G4) and (Ph1)--(Ph3), and that the selected chart
+sequence realizes the comparison subsequence $r_i$ of
+Input~\ref{input:trace-scales} at the grade $d=4$ of the reference
+field space $E_0=E_4$. Assume also that the reference correlations are
+continuous on configurations with distinct points. Put
+$q_i(x)=\rho_{m_i}(x)$ and, for a basis $(e_\alpha)$ of $E_0$,
+\[
+ M_{\alpha\beta}(q)=|S_0(e_\alpha;q_0)|+|S_0(e_\beta;q_1)| .
+\]
+Then the pointwise clause of Input~\ref{input:trace-scales} holds with
+these rounded configurations, with $\varepsilon_i=(i+1)^{-1}$, with this
+$M_{\alpha\beta}$, and with comparison window $\mathcal W$: $q_i(x)\to x$
+for every $x$, and at every coordinatewise separated $x$ in the interior
+of $\mathcal W$, eventually in $i$, \eqref{eq:trace-basis-error} holds for
+all $\alpha,\beta$. Moreover $M_{\alpha\beta}$ and the reference
+correlations are continuous near such $x$, and the interior of
+$\mathcal W$ contains a neighborhood of
+$x(t)=(0,(t/2,t/2,t/2,t/2))$ for every $1/2<t<2$.
+\end{corollary}
+\begin{proof}
+\emph{Convergence of the rounding.} Since $b_i>5$ and $\mu_k\ge1$,
+$m_i=\mu_{k_i}^{b_i}\ge\mu_{k_i}^5$, which tends to infinity because
+$k_i\to\infty$ (G1). Hence \eqref{eq:trace-rounding-error} gives
+$|q_i(x)-x|\le2\sqrt n/m_i\to0$ for every configuration $x$ of $n$ points.
+
+\emph{The estimate.} Let $x$ be coordinatewise separated and interior to
+$\mathcal W$. The interior of $\mathcal W$ and the set of coordinatewise
+separated configurations are open neighborhoods of $x$. Since
+$q_i(x)\to x$, there is $i_1$ with $q_i(x)$ in both for $i\ge i_1$. For
+such $i$ write $q_i(x)=m_i^{-1}t$ with $t=\lceil m_ix\rceil$. Then
+$q_i(x)$ is coordinatewise separated and $|q_i(x)|\le100$, so the width
+clause of (G3) shows that $q_i(x)$ is fit at level $i$; hence $x$ is fit,
+by idempotence of rounding. Proposition~\ref{prop:trace-rounded-comparison}
+applies for $i\ge\max(i_0,i_1)$ to every pair of basis vectors and gives
+\eqref{eq:trace-basis-error} with the stated $\varepsilon_i$ and
+$M_{\alpha\beta}$; note $\varepsilon_i\to0$.
+
+\emph{Continuity.} The one-point functions $q\mapsto S_0(e_\alpha;q_0)$
+and the two-point functions $q\mapsto S_0(e_\alpha,e_\beta;q)$ are
+reference correlations of configurations with distinct points, hence
+continuous on that open set by assumption; so is $M_{\alpha\beta}$, as a
+sum of absolute values of continuous functions. The configuration $x$ has
+distinct points, so these functions are continuous near $x$.
+
+\emph{The window.} For $1/2<t<2$, the two points of $x(t)$ are at
+distance $|x(t)_0-x(t)_1|=t>10^{-2}$, and $|x(t)|=t<100$. Both functions
+$x\mapsto|x_0-x_1|$ and $x\mapsto|x|$ are continuous, so the strict
+inequalities persist on a neighborhood of $x(t)$, which is therefore
+contained in $\mathcal W$; it lies in the interior of $\mathcal W$.
+Moreover $x(t)$ is coordinatewise separated, its coordinates being $0$
+and $t/2\ne0$ in each direction.
+\end{proof}
+
+\paragraph{Status.}
+Corollary~\ref{cor:trace-rounded-input} produces the pointwise,
+continuity and window clauses of Input~\ref{input:trace-scales} for a
+given comparison subsequence, conditional on (G1)--(G4) and
+(Ph1)--(Ph3). The quantitative content is the pairwise receipt (G3) at
+cost $(i+1)^{-1}$. Section~\ref{sec:ex-lattice-firesky-gallery} records
+it as part of the one-step chart output and attributes the quantitative
+estimates of that output to Section~\ref{sec:three-panel-weak-comparison}.
+That section, however, takes a comparison at grid points as its own input
+\eqref{eq:three-grid} and passes from grid points to smeared tests; it
+does not state the root-test bounds
+\eqref{eq:trace-rounded-receipt-one}--\eqref{eq:trace-rounded-receipt-two}.
+We have not located a producer of (G3) in the present text, and this
+subsection does not prove it; it remains an open input. Its required
+content is exactly the displayed pair of root-test bounds, for every pair
+of basis vectors, every $N>k_i$ and every period, at every fit
+configuration whose rounding lies in $\mathcal W$, together with the width
+clause.
+The identification of the chart sequence with the comparison
+subsequence of the input, the moving-label and logarithmic clauses, and
+the reference normalization are separate inputs, discussed after
+Input~\ref{input:trace-scales}.
