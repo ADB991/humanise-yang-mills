@@ -681,23 +681,66 @@ profile $\mathcal P(Q)$ is the function on tags
 \[
  \mathcal P(Q)(X,I)=\sum_{a:\ \operatorname{tag}(a)=(X,I)}k_a .
 \]
-Call a finite set $b$ of addresses admissible at $U$ if it satisfies the
-admissibility condition of the activity expansion of $R^+$. That
-condition depends on the addresses only through their supports and
-inventories, and two addresses of one admissible set have disjoint
-supports. The dressed field at an address $a$ is
+A finite set $b$ of addresses is \emph{admissible} at $U$ if the
+supports $S_c$, $c\in b$, are pairwise disjoint and the inventories
+$I_c$, $c\in b$, together cover exactly the flags of $U$. This is the
+admissibility condition of the gas sum of the activity expansion,
+stated in Section~\ref{sec:local-splitting} (subsection ``Putting the
+response into the existing gas''); the additional eligibility predicates
+of the addresses do not enter it. Two consequences are used below.
+First, admissibility of $b$ at $U$ depends on the addresses of $b$ only
+through their tags. Second, two distinct addresses of one admissible
+set have disjoint supports. The dressed field at an address $a$ is
 \[
  \operatorname{Dr}_a(U)=\sum_{b\ni a\ \text{admissible at }U}
             \ \prod_{c\in b\setminus\{a\}}K_c(U).
 \]
+
+\emph{Absolute bound on the dressed fields.} The stored representation
+$R^+$ is lawful. Indeed the selected history satisfies all its local
+activity bounds at every level
+(Section~\ref{sec:surviving-interval-shooting}). These are the
+retained-history conditions spelled out in the proof of
+Proposition~\ref{prop:wilson-startup-family}. In particular the forced
+activities of $R^+$ have the forced stage bound at the forced allowance
+$w^{\mathrm f}_{i+1}$ of level $i+1$. That bound is the rooted support
+sum (T3) of Section~\ref{sec:terminal-marked-construction}, at the
+support exponent $\alpha_{i+1}$: there are majorants $\bar K_c\ge0$
+with $|K_c|\le\bar K_c$ and
+\[
+ \sum_{c:\ x\in S_c}\operatorname{mass}(S_c,\bar K_c)\le w^{\mathrm f}_{i+1}
+ \qquad\text{for every site $x$ of the fine torus $\Lambda_{i+1}$,}
+\]
+where $\operatorname{mass}$ is the fine mass recalled below. Since
+$\operatorname{mass}(S,e)\ge e$ for $e\ge0$ (see the remainder
+convention below) and every support is nonempty, summing over
+$x\in\Lambda_{i+1}$ gives
+$\sum_c\bar K_c\le|\Lambda_{i+1}|\,w^{\mathrm f}_{i+1}$. Fix $a$. The map
+$b\mapsto b\setminus\{a\}$ is injective on the finite sets containing
+$a$. Hence, for every $U$,
+\begin{equation}\label{eq:selected-dressed-bound}
+ \sum_{b\ni a\ \text{admissible at }U}\ \prod_{c\in b\setminus\{a\}}|K_c(U)|
+ \le\sum_{T\ \text{finite}}\ \prod_{c\in T}\bar K_c
+ =\sup_{F\ \text{finite}}\ \prod_{c\in F}(1+\bar K_c)
+ \le\exp\bigl(|\Lambda_{i+1}|\,w^{\mathrm f}_{i+1}\bigr)=:D_{i+1}.
+\end{equation}
+The equality holds because every finite $T$ lies in some finite $F$,
+and $\prod_{c\in F}(1+\bar K_c)$ is the sum of
+$\prod_{c\in T}\bar K_c$ over the subsets $T\subseteq F$; the last
+inequality is $1+x\le e^x$. So each dressed series converges absolutely,
+and $|\operatorname{Dr}_a(U)|\le D_{i+1}$ uniformly in $a$ and $U$.
+
 The density of $Q$ is
 \[
  \operatorname{dens}(Q)(U)=R^+.\mathrm{eval}(U)\,\mathcal E(Q)(U)
    +e^{R^+.\mathrm{exponent}(U)}\sum_a k_a(U)\operatorname{Dr}_a(U),
 \]
 in which the forced series has been regrouped by its address. The
-regrouping is justified by the absolute bounds on the dressed sums
-of a lawful representation and by the forced majorants below.
+regrouping is justified by \eqref{eq:selected-dressed-bound}
+whenever the forced array is absolutely summable. For the fields $Q$
+with a remainder bound considered below this holds, since
+$\sum_a|k_a(U)|\le\sum_ae'_a<\infty$ by step~(v) of the proof of
+Proposition~\ref{prop:selected-zero-coordinate-coupon}.
 
 The terminal format at the origin requires several things of $Q$. Each
 regular atom is regular on its support, its support contains the
@@ -714,8 +757,12 @@ the regular atoms and $e'_a\ge0$ with $|k_a|\le e'_a$, such that
  \sum_a\operatorname{mass}(S_a,e'_a)\le\kappa\,a_{\rm f}.
 \]
 Here $\operatorname{mass}(X,e)=e^{\alpha_{i+1}\operatorname{coverNumber}(B_{i+1},X)}e$
-is the fine mass. It is linear in $e$ for a fixed support. This is the
-normalized remainder convention of Section~\ref{sec:local-splitting}.
+is the fine mass. It is linear in $e$ for a fixed support. The support
+exponent $\alpha_{i+1}$ of a budget is positive
+(Section~\ref{sec:local-splitting}) and the cover number is
+nonnegative, so $\operatorname{mass}(X,e)\ge e$ for every $e\ge0$. This
+is the normalized remainder convention of
+Section~\ref{sec:local-splitting}.
 
 A \emph{Coupon} across $D$ on a wing $W$ for input data
 $(\alpha,\rho,\delta,f)$ is defined as follows. Here $\alpha$ is an
@@ -844,9 +891,12 @@ nonempty, while distinct members of an admissible set have disjoint
 supports. Thus $b\mapsto\sigma(b)$ is a bijection from the admissible
 sets containing $a$ to those containing $a'$, and
 $\sigma(b)\setminus\{a'\}=b\setminus\{a\}$. Comparing the two series
-term by term gives $\operatorname{Dr}_a=\operatorname{Dr}_{a'}$. Write
+term by term gives $\operatorname{Dr}_a=\operatorname{Dr}_{a'}$; both
+series converge absolutely by \eqref{eq:selected-dressed-bound}. Write
 $\operatorname{Dr}_{(X,I)}$ for the common value. The forced series
-converges absolutely. Grouping it by tags therefore gives
+converges absolutely, since
+$|k_a(U)\operatorname{Dr}_a(U)|\le D_{i+1}e'_a$ and
+$\sum_ae'_a<\infty$ by (v). Grouping it by tags therefore gives
 \[
  \sum_ak_a(U)\operatorname{Dr}_a(U)
  =\sum_{(X,I)}\mathcal P(Q)(X,I)(U)\operatorname{Dr}_{(X,I)}(U),
@@ -871,9 +921,10 @@ part, put $e''_{\mathsf k(X,I)}=\sum_{\operatorname{tag}(a)=(X,I)}e'_a$
 and $e''=0$ elsewhere. Then $|k'|\le e''$ by the triangle inequality.
 Masses on the common support $X$ add, so
 $\sum_a\operatorname{mass}(S_a,e''_a)=\sum_a\operatorname{mass}(S_a,e'_a)\le\kappa a_{\rm f}$.
-The mass bound gives $\operatorname{mass}(S_a,e'_a)\ge e'_a\ge0$
-(the cover number is nonnegative), so $\sum_ae'_a<\infty$. This is the
-summability used in (iv).
+Since $\alpha_{i+1}>0$ and the cover number is nonnegative,
+$\operatorname{mass}(S_a,e'_a)\ge e'_a\ge0$, so
+$\sum_ae'_a\le\kappa a_{\rm f}<\infty$. This is the summability used
+in (iii) and (iv).
 
 Consequently $Q$ and $Q'$ have the same input data
 $(\mathcal E,\mathcal P,Q.x_0,\operatorname{dens})$, and it suffices to
@@ -888,8 +939,11 @@ term $\ell(U,0)$ vanishes. Thus
    +\sum_ae^{R^+.\mathrm{exponent}}k'_a\operatorname{Dr}_a .
 \]
 All three series converge absolutely and pointwise. For the density the
-regular and forced majorants are dominated by the coefficient envelope
-of the lawful representation and by the remainder bound. Tonelli's
+regular terms are dominated by the coefficient envelope of the lawful
+representation and the remainder bound. The forced terms are dominated
+by $e^{R^+.\mathrm{exponent}(U)}D_{i+1}e''_a$, by
+\eqref{eq:selected-dressed-bound}, and $\sum_ae''_a=\sum_ae'_a<\infty$
+by (v). Tonelli's
 theorem applied to these nonnegative majorants gives a dominated,
 measurable expansion, as in
 Section~\ref{ex-selected-linear-interpolation}. Put
@@ -938,7 +992,11 @@ the reduction of the Coupon for an arbitrary zero-coordinate
 coefficient to single insertions. The tuning inequality uses only the
 grade-zero threshold of the purchase. That threshold pays tuning; the
 Coupon itself is paid at the grade $d$ of the frame, through (K). The
-three inputs are not proved here.
+three inputs are not proved here. The admissibility facts and the
+absolute bound \eqref{eq:selected-dressed-bound} used in the repacking
+are not further inputs: they follow from the definition of the gas sum
+in Section~\ref{sec:local-splitting} and from the lawfulness of the
+stored representations, as shown before the proposition.
 \begin{itemize}
 \item The regular and forced estimates (K) are those of
   Section~\ref{sec:three-port-history}. They hold relative to the
