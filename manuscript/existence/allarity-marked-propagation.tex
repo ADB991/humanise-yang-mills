@@ -862,32 +862,137 @@ H^{Un}$, since $H>1$.
 
 The forced background is not covered by this lemma: a forced component
 may contain marked pieces from several cells, and its weight may then
-grow by more than $H^{Un}$. Its weight change is part of the following
-input.
+grow by more than $H^{Un}$. Its weight change is paid together with the
+failed-mask pieces, from a spare support exponent and from the smallness
+of the forced background.
 
-The launch requires one further input, which this section does not prove.
+\paragraph{Geometric and pricing hypotheses at the launch.}
+For a cell $c$ let $Y_c=\bigcup_IX_{c,I}$ be its halo, the union of its
+prescribed supports. For a support $X$ let $t(X)$ be the number of cells
+$c$ with $X\cap Y_c\ne\varnothing$. We assume:
 \begin{enumerate}
-\item[(L)] \emph{Failed-mask regrouping and weight change at the launch.}
- There is a constant $c_L\ge0$, fixed before $s$, with the following
- property. At the middle level, let the forced background have site price
- at most $\eta_-$ at the weight $\omega_-$. Move the failed-mask pieces
- $-(1-\chi)R\,z_I$ of all modes into the forced alphabet and regroup them
- with that background. Then the result is an exact representation of the
- same density, whose regular letters are unchanged and whose forced site
- price at the weight $\omega$ is at most $H^{c_L}\eta_-$.
+\item[(F)] at the middle level, the forced background has site price at
+ most $\eta_-$ at the weight $\omega_-$ and at the support exponent
+ $e+1+\sigma$, for a fixed spare exponent $\sigma>0$. The full support of
+ every marked forced piece contains the reader sites of its marks;
+\item[(S)] there is $\lambda=\lambda(s)$ with $\lambda/\log H\to\infty$
+ such that every connected full support $X$ of a forced piece with
+ $t(X)\ge2$ satisfies $\operatorname{cov}_BX\ge\lambda\,t(X)$.
 \end{enumerate}
-The input (L) needs a bound on the reference coefficients $R$ by a fixed
-power of $H$, control of the forced background at the larger weight, and
-the forced regrouping of Section~\ref{sec:soft-log-fusion} with an
-inflation exponent lowered by a multiple of $\log H$.
+The leading interval can be run at the support exponent $e+1+\sigma$
+instead of $e$: the recurrence and
+Lemma~\ref{lem:allarity-step-charge} hold at every fixed support exponent,
+with $R_{e+1+\sigma}$ in place of $R_e$. This gives the first part of (F)
+with $\eta_-=G(x_\ell)$.
+
+Hypothesis (S) holds as soon as the halos of distinct cells are at
+$\ell^\infty$-distance at least $D'$, with $D'/((2B+1)\log H)\to\infty$.
+Indeed, let $X$ be connected with $t=t(X)\ge2$, and pick
+$x_c\in X\cap Y_c$ for $t$ distinct cells. These points are pairwise at
+distance at least $D'$, so the $\ell^\infty$-balls of radius $D'/3$ around
+them are disjoint, and once $D'/3>2B+1$ no cube of side $2B+1$ meets two
+of them. Since $X$ is connected and meets a halo outside each ball, it
+contains a lattice path from $x_c$ to the boundary of the ball around
+$x_c$. That path has extent at least $D'/3$ in one coordinate, so at least
+$D'/(3(2B+1))$ cubes of side $2B+1$ are needed to cover it. Summing over
+the $t$ balls gives $\operatorname{cov}_BX\ge t\,D'/(3(2B+1))$.
+
+\begin{lemma}[Failed-mask regrouping and weight change]
+\label{lem:allarity-launch-regroup}
+Assume (F), (S) and the hypotheses of
+Lemma~\ref{lem:allarity-corrected-pieces}, and let $\eta_-$ decay faster
+than every negative power of $H$. Then, for all large $s$, the following
+holds. Move the failed-mask pieces $-(1-\chi)R\,z_I$ of all modes into the
+forced alphabet and regroup them with the forced background. The result is
+an exact representation of the same density, whose regular letters are
+unchanged. Its forced site price at the weight $\omega$ and the support
+exponent $e$ is at most
+\[
+ 4H^{Un+2^n}\eta_- .
+\]
+\end{lemma}
+\begin{proof}
+\emph{Exactness.} The marker algebra is commutative, so
+$\exp_*(\chi W-R)=\exp_*(\chi(W-R))\exp_*(-(1-\chi)R)$ letter by letter. Each
+failed-mask piece $\ell_f=-(1-\chi)R\,z_I$ has $I\ne\varnothing$, so
+$\ell_f^2=0$ and $\exp_*(\ell_f)=1+\ell_f$. It vanishes where its prescribed
+support $X_{c,I}$ is healthy, so a nonzero failed-mask factor has a flag
+in $X_{c,I}$. Flags are covered by the inventories of the old forced
+pieces. Hence, in the expansion of the product of the factors $1+\ell_f$
+with the old forced gas, every nonzero summand has each failed-mask factor
+meeting the support of an old forced piece. Taking connected components of
+the full-support intersection graph and flattening them is the exact
+regrouping of Section~\ref{sec:soft-log-fusion}, as in the mask change of
+the realignment subsection. The regular letters are not touched. Setting
+all markers to zero kills every failed-mask factor, so the background is
+unchanged.
+
+\emph{Prices of the failed-mask pieces.} By
+Lemma~\ref{lem:allarity-amplitude} and its proof, every reference
+coefficient satisfies $|R|\le C_*$. A failed-mask piece of mode $(c,I)$
+therefore has price at most $p_f=H^{1/8}C_*R_{e+1}$ at the weight $\omega$
+and the exponent $e+1$, by \eqref{eq:allarity-weight-cap}. Put $F=\log H$
+and give it the weight $w_f=e^{-F}p_f$. At a fixed site, all failed-mask
+pieces containing it belong to one cell, and there are at most $2^n$
+modes. So their site sum is at most $2^nC_*R_{e+1}H^{-7/8}$.
+
+\emph{Prices of the old forced pieces.} Let $o$ be an old forced piece
+with full support $X_o$, marker set $I_o$ and $t_o=t(X_o)$. By (F), the
+readers of its marks lie in $X_o$, hence in the halos it meets, so
+$|I_o|\le nt_o$. Raising the weight from $\omega_-$ to $\omega$ multiplies
+its price by $H^{U|I_o|}\le H^{Unt_o}$. Lowering the support exponent from
+$e+1+\sigma$ to $e+1$ multiplies it by
+$e^{-\sigma\operatorname{cov}_BX_o}$. Give $o$ the weight
+\[
+ w_o=e^{g}\,e^{2^nFt_o}\,p_o ,
+\]
+where $p_o$ is its price at $(\omega,e+1)$ and $g\ge0$ is chosen below.
+Then $w_o\le e^gH^{(Un+2^n)t_o}e^{-\sigma\operatorname{cov}_BX_o}p_o^-$,
+with $p_o^-$ its price at $(\omega_-,e+1+\sigma)$. If $t_o\le1$ this is at
+most $e^gH^{Un+2^n}p_o^-$. If $t_o\ge2$, then
+$\sigma\operatorname{cov}_BX_o\ge\sigma\lambda t_o\ge(Un+2^n)t_o\log H$ for
+large $s$, by (S), and $w_o\le e^gp_o^-$. In both cases
+$w_o\le e^gH^{Un+2^n}p_o^-$, so the old site sum is at most
+$e^gH^{Un+2^n}\eta_-$.
+
+\emph{Choice of $g$.} Put $\delta=H^{-1/2}$ and
+$e^g=\delta/(2H^{Un+2^n}\eta_-)$. This is at least $1$ for large $s$,
+because $\eta_-$ decays faster than every negative power of $H$. The total
+site sum of the weights at exponent $e+1$ is then
+\[
+ \Gamma\le\tfrac12\delta+2^nC_*R_{e+1}H^{-7/8}\le\delta
+\]
+for large $s$.
+
+\emph{Components.} Every nonzero surviving component contains an old
+forced piece. Charge each of its failed-mask pieces $f$, of cell $c$, to an
+old piece $o$ of the same component that it meets. Then $X_o$ meets $Y_c$,
+so $c$ is one of the $t_o$ cells counted for $o$. At most $2^nt_o$
+failed-mask pieces are charged to $o$. If the component has $s_f$
+failed-mask pieces and $r\ge1$ old pieces, then $s_f\le2^n\sum_ot_o$, and
+the product of the true prices over the component is
+\[
+ \prod_fp_f\prod_op_o
+ =e^{Fs_f-2^nF\sum_ot_o-gr}\prod_fw_f\prod_ow_o
+ \le e^{-g}\prod_fw_f\prod_ow_o ,
+\]
+since $g\ge0$. The distinct connected-set
+bound \eqref{eq:ope-forest-price}, with reserve one and counting factor
+$(2B+1)^4$, then bounds the new site price at the exponent $e$ by
+$e^{-g}(e^\Gamma-1)\le2\delta e^{-g}=4H^{Un+2^n}\eta_-$, provided
+$(2B+1)^4\delta\le1$ and $\delta\le1$. The first condition holds for large
+$s$ as in Lemma~\ref{lem:allarity-step-purchases}, since
+$(2B+1)^4\le\exp\{4\log9+16\log\log s\}\le H^{1/2}$ once
+$\log\log s\ge36$.
+\end{proof}
 
 \begin{proposition}[The launch receipt]
 \label{prop:allarity-launch}
 Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
 the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
 forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
-Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and the
-input (L). Assume the tolerance exponent satisfies
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level, and (F)
+and (S). Assume the tolerance exponent satisfies
 \[
  q\ge\kappa+Un+1 .
 \]
@@ -913,16 +1018,17 @@ healthy pieces become regular letters of incidence price at most
 $cH^{-27/32}$, by Lemma~\ref{lem:allarity-corrected-pieces}.
 
 \emph{Forced part.} The forced background has site price at most
-$\eta_-=G(x_\ell)$ at the weight $\omega_-$. This is the realigned forced
-price of the recurrence, not the compiler output $G(x_\ell)^2$ before
-realignment. By (L), after the failed-mask pieces are moved and
-regrouped, the forced site price at the weight $\omega$ is at most
-$H^{c_L}G(x_\ell)$.
+$\eta_-=G(x_\ell)$ at the weight $\omega_-$ and exponent $e+1+\sigma$, by
+(F). This is the realigned forced price of the recurrence, not the
+compiler output $G(x_\ell)^2$ before realignment. By
+Lemma~\ref{lem:allarity-launch-regroup}, after the failed-mask pieces are
+moved and regrouped, the forced site price at the weight $\omega$ is at
+most $4H^{Un+2^n}G(x_\ell)$.
 
 Adding the regular contributions gives at most $H^{-1}+cH^{-27/32}$, which
 is at most $H^{-3/4}$ once $H^{3/32}\ge c+1$. Since $G$ decays faster than
 every negative power of $H$ uniformly on $[s/2,s]$, eventually
-$H^{c_L}G(x_\ell)\le H^{-q}$.
+$4H^{Un+2^n}G(x_\ell)\le H^{-q}$.
 \end{proof}
 
 \subsection{The step counts without a block-length floor}
@@ -1057,7 +1163,10 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the failed-mask regrouping (L) at the launch;
+\item the launch hypotheses (F) (the marked forced pieces contain the
+ readers of their marks) and (S) (dispersal of multi-cell forced
+ supports), the latter following from a halo separation $D'$ with
+ $D'/((2B+1)\log H)\to\infty$;
 \item applicability of the lower calculation on $[w,\ell)$;
 \item the lawful representation at the output level $w$, with the
  suppositions of Section~\ref{sec:rank-root-normalization}.
