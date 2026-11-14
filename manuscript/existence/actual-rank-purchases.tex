@@ -331,26 +331,64 @@ through the history or the readout. For a chart at level $k$ with base
 arc $b\le\bar b$, let $\ell$ and $w$ be its middle level and root depth.
 Write $s=\widehat\beta_k$ and $y=\log\log s$.
 
-We use one further input, the running estimate of
-Section~\ref{sec:surviving-interval-shooting} with its slope identified
-with the clock slope $s_G$:
-\begin{enumerate}
-\item[(R)] for every $\eta>0$ there is $m_0(\eta)$ such that
- $|\beta_{N,p,m}-\widehat\beta_m|\le|\bar\beta-\beta_*|+\eta s_m$ for
- all $m\ge m_0(\eta)$, $N\ge m$ and $p$.
-\end{enumerate}
+We use the running estimate of the selected couplings relative to the
+clock line. Let $\bar\beta$ be the intercept of
+Section~\ref{sec:surviving-interval-shooting} and $b$ the prescribed
+level-zero coupling of the selected histories, so that
+$|b-\bar\beta|\le\bar\beta/2$, and put $c_R=|b-\bar\beta|+|\bar\beta-\beta_*|$.
+
+\begin{lemma}[The running estimate on the clock line]
+\label{lem:rank-trace-running}
+For every $\eta>0$ there is $m_0(\eta)$ such that
+\[
+ |\beta_{N,p,m}-\widehat\beta_m|\le c_R+\eta s_m
+\]
+for all $m\ge m_0(\eta)$, all $N\ge m$ and all $p$. Here
+$\widehat\beta_m=\beta_*+s_Gs_m$ is the clock of
+Section~\ref{sec:common-scale-selection}.
+\end{lemma}
+\begin{proof}
+In the notation of Section~\ref{sec:surviving-interval-shooting}, the
+block side of level $i$ is $L_i=L_{J(i+1)}$ and the stage allowance is
+$\varepsilon_{i+1}=\varepsilon_{J(i+1)}$, as recorded at the end of
+the drift paragraph of Section~\ref{sec:common-scale-selection}. Since
+$s_0=0$ and $s_{i+1}=s_i+\log L_{J(i+1)}$, the accumulated scale of that
+section is $S_i=s_i$, and its line is
+$\bar\beta+s_GS_i=\widehat\beta_i+(\bar\beta-\beta_*)$. The selected
+history at cutoff $N$ and period $p$ is a shooting history of that
+section, with level-zero coupling $b$
+(Section~\ref{sec:common-funded-history}). Hence
+\eqref{eq:shoot-running-error} gives
+\[
+ |\beta_{N,p,i}-\widehat\beta_i|
+   \le E_i+|b-\bar\beta|+|\bar\beta-\beta_*|=E_i+c_R ,
+\]
+with $E_i=\sum_{j<i}\varepsilon_{j+1}$, which depends only on the
+schedule, not on $N$ or $p$. The drift condition
+\eqref{eq:shoot-drift-ratio} holds on the selected schedule. As shown at
+the end of that section, for given $\eta>0$ choose $j$ with
+$J_{i+1}^{-2}\le\eta/2$ for $i\ge j$. Then
+$E_i\le E_j+\tfrac\eta2(s_i-s_j)$, and since $s_i\to\infty$, eventually
+$E_j\le\tfrac\eta2s_i$. So $E_i\le\eta s_i$ for all $i$ beyond a
+threshold depending only on $\eta$.
+\end{proof}
+
+The slope here is the clock slope $s_G$, which is the slope of the
+shooting construction by definition. Its identification with the one-loop
+coefficient $2b_0(G)$ is needed for the public running consequence, not
+here.
 
 \begin{lemma}[The endpoint coupling bound]
 \label{lem:rank-trace-endpoint}
-Under (R), for all sufficiently large $k$, every $N\ge k$ and every $p$,
+For all sufficiently large $k$, every $N\ge k$ and every $p$,
 \[
  |\beta_{N,p,k}-\widehat\beta_k|\le\widehat\beta_k/8 .
 \]
 \end{lemma}
 \begin{proof}
-Take $\eta=s_G/16$. Since $s_k\to\infty$, eventually
-$|\bar\beta-\beta_*|\le s_Gs_k/16$. Then the right side of (R) is at
-most $s_Gs_k/8\le\widehat\beta_k/8$, because
+Take $\eta=s_G/16$ in Lemma~\ref{lem:rank-trace-running}. Since
+$s_k\to\infty$, eventually $c_R\le s_Gs_k/16$. Then the right side there
+is at most $s_Gs_k/8\le\widehat\beta_k/8$, because
 $\widehat\beta_k=\beta_*+s_Gs_k\ge s_Gs_k$.
 \end{proof}
 
@@ -376,7 +414,7 @@ this section.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
-Assume (R), (V), (T) and the local inputs of this section. Include in the
+Assume (V), (T) and the local inputs of this section. Include in the
 all-stage payment \eqref{eq:common-allstage-payment} the thresholds of
 Section~\ref{sec:restarted-rank-history} and of the readout construction
 above, for each stage $j$ and for the finitely many block ratios
@@ -440,7 +478,7 @@ above.
 \end{proof}
 
 \paragraph{Status.}
-Under (R) with matched slope, (V) and the local inputs of this section,
+Under (V) and the local inputs of this section,
 Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
 history and its coupling bound throughout $[w,k]$ for every $N\ge k$
 and $p$. To obtain (F3), one still has to verify that each resulting
