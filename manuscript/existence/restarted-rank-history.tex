@@ -231,3 +231,58 @@ same component alphabet and the same hole normalization. Its leading
 and remainder estimates are separate from this unmarked construction;
 they must be verified on these actual densities before the rank tests
 can be applied.
+
+\subsection{Steps across a stage boundary}
+\label{subsec:restart-stage-boundary}
+
+The cost estimate above fixes one block ratio $L$. A comparison window may
+contain levels of two consecutive stages. We check that the construction
+needs no further hypothesis at a step whose fine and coarse levels lie in
+different stages.
+
+A step from a fine level $m+1$ to the coarse level $m$ uses only the
+following data:
+\begin{enumerate}
+\item the fine representation, through its path action, its forced gas
+ with prescribed supports, inventories and tests, and its additive family
+ with anchored cost $q_n$ at the support weight;
+\item the block side $L_{J(m+1)}$ of the step;
+\item the local bounds of the unmarked letters, purchased for the step
+ from stage $J(m+1)$ to the target stage $J(m)$;
+\item the support exponent, the threshold and the support radius of the
+ two levels.
+\end{enumerate}
+Its output is described by the same data at the coarse level: a path
+action, a forced gas with its tests, an additive family of anchored cost
+at most $q_{n+1}$, and the push identity \eqref{eq:restart-push}. None of
+these refers to the stage profile of the fine level. The support exponent
+is the same at every stage (Section~\ref{sec:ope-scale-purchases}). The
+threshold and the support radius are functions of the level coupling, not
+of the stage.
+
+\begin{lemma}[Stage changes inside the interval]
+\label{lem:restart-stage-boundary}
+Let the interval of the construction contain levels of the stages $r$ and
+$r-1$ only. Suppose the local bounds of item~3 are purchased for the stage
+pairs $(r,r)$, $(r,r-1)$ and $(r-1,r-1)$. Suppose also that the thresholds
+after which the eventual inequalities of the cost estimate hold are taken
+as the larger of those for $L_r$ and $L_{r-1}$. Then the inductive joining
+argument above holds on the whole interval, with the same costs $q_n$ and
+the same density identities.
+\end{lemma}
+\begin{proof}
+The induction hypothesis at a step consists of item~1 at the fine level.
+By the preceding paragraph, the output of the step satisfies item~1 at
+the coarse level, whatever the two stages are. The next step needs
+item~1, which has just been verified, and items~2--4 for its own pair,
+which are purchased by hypothesis. In the cost estimate the block ratio
+enters only through $h_1,h_2$ and the factor $C_{L,a,t}$. With $L$ the
+smaller of $L_{r-1},L_r$ in $h_1,h_2$, and $C_{L,a,t}$ the larger of the
+two constants, the bounds \eqref{eq:restart-decay} and
+\eqref{eq:restart-recurrence} hold for every step beyond the later of the
+two thresholds. The rest of the argument is unchanged.
+\end{proof}
+
+The purchases of item~3 for adjacent stage pairs are exactly those made in
+Section~\ref{sec:common-funded-history}, where at every stage $j$ the
+adjacent target stage is $j$ or $j-1$.
