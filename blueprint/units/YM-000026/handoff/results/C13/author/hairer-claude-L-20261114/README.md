@@ -40,3 +40,18 @@ The source bounds the reference coefficients by H^{1/4} (`warmingSky` `hV`). The
 - The rendered proof was inspected (`pdftotext`).
 - `python3 scripts/check_blueprint.py`: OK.
 - The Lean was read textually (`LocalShift.lean`, `DockBudget.lean`).
+
+## Addendum: the halo separation (session hairer-claude-S-20261114)
+
+`lem:allarity-halo-separation` proves, for the trace chart, that at every level of [ℓ, k]:
+- reader sites of distinct cells are more than 2QB apart, which is the hypothesis of `lem:allarity-step-charge`;
+- the halos are at lattice distance ≥ D' = c_k^{10}/2, with D'/((2B+1) log H) → ∞, which is (S).
+
+The proof uses three facts:
+- cells of the depth-w centered tiling have side a_w;
+- a_w/a_ℓ ≥ c_k^{10} by the root depth;
+- B_i ≤ 4(log s)⁴ on the plateau.
+
+Its hypothesis is that readers lie within 2a_ℓ of their cell centres. This is derived after the lemma from fitness (coordinates ≤ a_ℓ/8), rounding, and one coarse spacing. (U) The placement of reflected and conjugated replicas relative to cell centres is read from the definition of the centered root test (`centered-estimates.tex`); it is not separately checked.
+
+The remaining launch input is now only the reader-containment clause of (F).

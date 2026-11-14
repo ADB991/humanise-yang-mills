@@ -897,6 +897,58 @@ $x_c$. That path has extent at least $D'/3$ in one coordinate, so at least
 $D'/(3(2B+1))$ cubes of side $2B+1$ are needed to cover it. Summing over
 the $t$ balls gives $\operatorname{cov}_BX\ge t\,D'/(3(2B+1))$.
 
+For the chart of the pairwise receipt this separation holds, with room to
+spare. Distances below are $\ell^\infty$-distances in physical units;
+at level $i$ a lattice distance is the physical distance divided by
+$a_i$.
+
+\begin{lemma}[Halo separation for the trace chart]
+\label{lem:allarity-halo-separation}
+Consider a chart at level $k$ with middle level $\ell$ and root depth $w$,
+a configuration fit for it, and its replicas on the centered tiling at
+depth $w$. Assume that at every level $i$ of $[\ell,k]$ each reader site
+of a cell lies within distance $2a_\ell$ of the centre of that cell. Then
+for all sufficiently large $s$, uniformly in the chart, the following
+hold at every level $i$ of $[\ell,k]$, with $B=B_i$:
+\begin{enumerate}
+\item reader sites of distinct cells are at lattice distance greater than
+ $2QB$;
+\item the halos of distinct cells are at lattice distance at least
+ $D'=c_k^{10}/2$, and $D'/((2B+1)\log H)\to\infty$.
+\end{enumerate}
+In particular the separation hypothesis of
+Lemma~\ref{lem:allarity-step-charge} and hypothesis (S) hold.
+\end{lemma}
+\begin{proof}
+The cells of the centered tiling at depth $w$ are blocks of side $a_w$, and
+the centres of distinct cells are at distance at least $a_w$. By the
+hypothesis, readers of distinct cells are at physical distance at least
+$a_w-4a_\ell$. Since $a_i\le a_\ell$ for $\ell\le i\le k$, their lattice
+distance at level $i$ is at least $(a_w-4a_\ell)/a_\ell\ge c_k^{10}-4$, by
+the definition of the root depth, $a_w/a_\ell\ge c_k^{10}$. A halo lies
+within lattice distance $QB$ of the readers of its cell, so the halos of
+distinct cells are at lattice distance at least $c_k^{10}-4-2QB$.
+
+The rung couplings lie in $[s/2,s]$, so $B_i=\lceil(\log x_i)^2\rceil^2\le
+4(\log s)^4$ for $\log s\ge1$. Also $c_k=\lceil(\log s)^2\rceil\ge(\log s)^2$,
+so $c_k^{10}\ge(\log s)^{20}$. Hence $c_k^{10}-4-2QB\ge c_k^{10}/2>2QB$ for
+large $s$, which gives both separations. Finally
+$\log H=(\log\log s)^2$, so
+\[
+ \frac{D'}{(2B+1)\log H}\ge\frac{(\log s)^{20}}
+        {2(8(\log s)^4+1)(\log\log s)^2}\longrightarrow\infty .
+\]
+All thresholds depend only on $Q$ and not on the chart.
+\end{proof}
+
+The hypothesis on the readers holds for fit configurations. Every coordinate of
+the grid configuration $a_k\lceil mx\rceil$ has absolute value at most
+$a_\ell/8+a_k$ relative to the base point. The replicas are its images in
+the cells, centred and reflected or conjugated with the cells. A reader
+site at a coarser level $i$ is within one lattice spacing $a_i\le a_\ell$
+of the corresponding insertion site. So each reader is within
+$a_\ell/8+a_k+a_\ell\le2a_\ell$ of its cell centre.
+
 \begin{lemma}[Failed-mask regrouping and weight change]
 \label{lem:allarity-launch-regroup}
 Assume (F), (S) and the hypotheses of
@@ -1154,7 +1206,8 @@ following inputs, all on the common history of the chart:
  applicability of the upper calculation; the unweighted principal-source
  bound $H^A$ and the terminal-source purchase; the identification of the
  prescribed polynomial and the per-rung amplitude $\kappa_\tau<1/2$; the
- reader separation $2QB$;
+ reader separation $2QB$, which holds for the trace chart by
+ Lemma~\ref{lem:allarity-halo-separation};
 \item the two $H^{-3/2}$ inputs of Lemma~\ref{lem:allarity-corrected-pieces}
  at the middle level, which are proved in
  Sections~\ref{sec:allarity-cumulant-comparison}
@@ -1163,10 +1216,9 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the launch hypotheses (F) (the marked forced pieces contain the
- readers of their marks) and (S) (dispersal of multi-cell forced
- supports), the latter following from a halo separation $D'$ with
- $D'/((2B+1)\log H)\to\infty$;
+\item the launch hypothesis (F), that the marked forced pieces contain the
+ readers of their marks. Hypothesis (S) and the reader separation $2QB$
+ hold for the trace chart by Lemma~\ref{lem:allarity-halo-separation};
 \item applicability of the lower calculation on $[w,\ell)$;
 \item the lawful representation at the output level $w$, with the
  suppositions of Section~\ref{sec:rank-root-normalization}.
