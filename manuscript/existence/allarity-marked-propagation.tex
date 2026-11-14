@@ -443,8 +443,7 @@ $s$, with $A=D_*+(nz+1)\deg Q_n+1$.
 Under the hypotheses of Lemma~\ref{lem:allarity-principal-power}, the
 amplitude $\tau$ of the masked principal insertion at every leading rung
 is at most $H^A$. It therefore has upper exponent $0$, and the amplitude
-hypothesis of Lemma~\ref{lem:allarity-step-discrepancy} holds with
-$\kappa_\tau=0$.
+hypothesis of Lemma~\ref{lem:allarity-step-discrepancy} holds.
 \end{corollary}
 \begin{proof}
 The insertion is the masked principal piece. It vanishes off the healthy
@@ -492,32 +491,120 @@ $\operatorname{chg}_e$ is monotone in the cover number, the bound
 follows.
 \end{proof}
 
-\begin{lemma}[The per-step discrepancy]
-\label{lem:allarity-step-discrepancy}
-Suppose that at each leading rung the next prescribed connected
-polynomial is the Gaussian reference integral of
-Section~\ref{sec:principal-gaussian-comparison}, for the same insertion,
-forest and tags. Suppose also that the actual projected principal
-polynomial is the actual-sector integral there. Suppose finally that,
-at each leading rung, the amplitude $\tau$ of the principal insertion has
-upper exponent at most $\kappa_\tau<1/2$, uniformly in the rungs. Then,
-eventually in $s$, the two polynomials differ by at most $y$ on the
-required healthy regions, where $y$ satisfies
-\eqref{eq:allarity-weighted-discrepancy}. Hence the first purchase in
-\eqref{eq:allarity-step-purchases} holds.
+\paragraph{The prescribed polynomials are reference integrals.}
+Fix a cell and its mark set $J$, $|J|=n$, and work in the marker algebra
+$\mathscr A_J$ of Section~\ref{sec:allarity-planted-compiler}. For an
+element $X$ with zero constant coefficient put
+$\log_*(1+X)=\sum_{j=1}^n(-1)^{j-1}X^j/j$. Since every product of more
+than $n$ nonconstant monomials vanishes, $\exp_*$ and $\log_*$ are mutually
+inverse bijections between the elements with zero constant coefficient
+and those with constant coefficient one. This is the identity of formal
+power series, truncated. Moreover, if $X=\sum_{T\ne\varnothing}q_Tz_T$,
+then $X^j$ is the sum over ordered $j$-tuples of pairwise disjoint nonempty
+sets $T_1,\ldots,T_j$ of $\prod_lq_{T_l}z_{T_1\cup\cdots\cup T_j}$. Each
+unordered partition with $j$ blocks occurs $j!$ times, so
+\begin{equation}\label{eq:allarity-moment-cumulant}
+ \log_*\Bigl(1+\sum_{T\ne\varnothing}q_Tz_T\Bigr)
+  =\sum_{I\ne\varnothing}c_Iz_I,\qquad
+ c_I=\sum_{\pi\in\mathcal P(I)}(-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}q_B .
+\end{equation}
+These are exactly the connected polynomials of
+Section~\ref{sec:marked-healthy-cumulant-launch}.
+
+At a leading rung $i$ let $D^{(i)}=\sum_Ic^{(i)}_Iz_I$ be the prescribed
+principal polynomial of the cell, and $q^{(i)}_T$ its moment polynomials,
+so that $\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Let $\mathcal G_i$ be the
+reference integral of Section~\ref{sec:principal-gaussian-comparison} at
+the rung, that is, integration of the insertion against $R_9\chi_9\,
+d\gamma_{C_0}$ followed by the finite forest and tag averages, normalized
+so that $\mathcal G_i(1)=1$. It is linear, and we apply it to elements of
+$\mathscr A_J$ coefficientwise. We say that the Gaussian history is
+\emph{transported by the reference integrals} if
+$q^{(i-1)}_T=\mathcal G_i\,q^{(i)}_T$ for every $T$ and every leading
+rung. This fixes the Gaussian history used on the leading interval. Its
+relation to the polynomial step of
+Section~\ref{sec:marked-healthy-cumulant-launch} (a finite linear
+substitution followed by Wick contraction) is that the reference integral
+of a polynomial insertion differs from that step only through the
+reference density ratio $R_9$ and the cutoff $\chi_9$. When the transport
+bounds of that section are applied to this history, the step must be
+taken to be $\mathcal G_i$ itself.
+
+\begin{lemma}[The prescribed polynomial is the reference integral]
+\label{lem:allarity-prescribed-reference}
+If the Gaussian history is transported by the reference integrals, then
+at every leading rung
+\[
+ D^{(i-1)}=\log_*\mathcal G_i\bigl(\exp_*D^{(i)}\bigr).
+\]
 \end{lemma}
 \begin{proof}
-By \eqref{eq:principal-comparison-final} and the payment paragraph after
-it, the difference is at most $\tau$ times a multiplier $\Pi(x)$ of upper
-exponent $-1/2$. This holds uniformly in the period and after the finite
-forest and tag averages. Take $y=\tau\Pi$, which has upper exponent at
-most $\kappa_\tau-1/2<0$. By Lemma~\ref{lem:allarity-step-charge},
+By \eqref{eq:allarity-moment-cumulant} and the definition of the moment
+polynomials, $\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Applying the linear map
+$\mathcal G_i$ coefficientwise, and using $\mathcal G_i(1)=1$, gives
+$1+\sum_Tq^{(i-1)}_Tz_T=\exp_*D^{(i-1)}$. Apply $\log_*$.
+\end{proof}
+
+The compiler produces the actual projected principal polynomial in the
+same form. By \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
+the entirely leading components of the cell integrate to
+$\mathcal A_i(\exp_*P)$, where $P$ is the planted polynomial of the cell
+and $\mathcal A_i$ is the actual-sector integral (integration against
+$R_6\chi_6\,d\gamma_{C_0}$ and the same averages). On the leading interval
+the planted polynomial is the exact prescribed polynomial $D^{(i)}$, and
+the output leading letters are the coefficients of
+$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)})/\mathcal A_i(1)\bigr)$. The
+scalar factor $\mathcal A_i(1)>0$ belongs to the unmarked normalization.
+
+\begin{lemma}[The per-step discrepancy]
+\label{lem:allarity-step-discrepancy}
+Suppose that the Gaussian history is transported by the reference
+integrals, and that the actual projected principal polynomial is
+$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)})/\mathcal A_i(1)\bigr)$ as just
+described. Suppose finally that, at each leading rung, the amplitude
+$\tau$ of the masked principal pieces has upper exponent $0$, uniformly in
+the rungs. Then, eventually in $s$, the actual projected polynomial and the
+next prescribed polynomial differ by at most $y$ on the required healthy
+regions, where $y$ satisfies \eqref{eq:allarity-weighted-discrepancy}.
+Hence the first purchase in \eqref{eq:allarity-step-purchases} holds.
+\end{lemma}
+\begin{proof}
+Write $E=\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Each $q^{(i)}_T$ is a sum,
+over the at most $b_n$ set partitions of $T$ (the Bell number), of
+products of at most $n$ masked principal pieces. As an insertion it is
+measurable and bounded by $\tau_n=b_n\max(1,\tau)^n$. By
+\eqref{eq:principal-comparison-final} and the payment paragraph after it,
+applied to the insertions $q^{(i)}_T$ and $1$,
+\[
+ |\widetilde{\mathcal A}_i(q^{(i)}_T)-\mathcal G_i(q^{(i)}_T)|\le\tau_n\Pi,
+ \qquad |\widetilde{\mathcal A}_i(1)-1|\le\Pi,
+\]
+where $\widetilde{\mathcal A}_i$ is the unnormalized actual-sector
+integral and $\Pi$ has upper exponent $-1/2$, uniformly in the period and
+after the averages. For $\Pi\le1/2$ this gives
+$|\mathcal A_i(q^{(i)}_T)-\mathcal G_i(q^{(i)}_T)|\le4\tau_n\Pi$ for the
+normalized integral $\mathcal A_i=\widetilde{\mathcal A}_i/\widetilde{\mathcal A}_i(1)$.
+All coefficients of $\mathcal A_i(E)$ and $\mathcal G_i(E)$ are bounded by
+$K=2\tau_n$.
+
+The map $1+X\mapsto\log_*(1+X)$ is a polynomial of degree at most $n$ in
+the coefficients of $X$. On elements whose coefficients are bounded by
+$K\ge1$ it is Lipschitz in the coefficient $\ell^1$ norm, with constant at
+most $C_nK^{n-1}$ for a constant $C_n$ depending only on $n$. Hence, by
+Lemma~\ref{lem:allarity-prescribed-reference},
+\[
+ \Bigl\|\log_*\frac{\mathcal A_i(E)}{\mathcal A_i(1)}-D^{(i-1)}\Bigr\|_1
+ \le C_nK^{n-1}2^n\cdot4\tau_n\Pi=:y .
+\]
+Since $\tau$ has upper exponent $0$, so do $\tau_n$ and $K$, and $y$ has
+upper exponent $-1/2$. By Lemma~\ref{lem:allarity-step-charge},
 $2^nR_e$ is a constant, and $H^{q}$ has upper exponent $0$. Hence
-$2^nR_eyH^{q}$ has upper exponent at most $\kappa_\tau-1/2<0$, and is
-therefore at most $1$ for all large $s$. This is
-\eqref{eq:allarity-weighted-discrepancy}, which implies the first
-purchase in \eqref{eq:allarity-step-purchases} because
-$\omega_-\le1$.
+$2^nR_eyH^{q}$ has upper exponent $-1/2$, and is therefore at most $1$ for
+all large $s$. This is \eqref{eq:allarity-weighted-discrepancy}, which
+implies the first purchase in \eqref{eq:allarity-step-purchases} because
+$\omega_-\le1$. The bound is on coefficients of jets at the base
+configuration, as in \eqref{eq:principal-comparison-final}, and hence on
+the values on the healthy regions where that estimate applies.
 \end{proof}
 
 \begin{lemma}[The remaining step purchases]
@@ -582,8 +669,9 @@ The following inputs are not supplied here.
  purchase: the launched insertions must give the initial
  remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
 \item \emph{The identification in Lemma~\ref{lem:allarity-step-discrepancy}}
- of the prescribed connected polynomial with the Gaussian reference
- integral. The amplitude bound at every leading rung follows from item~2
+ is reduced by Lemma~\ref{lem:allarity-prescribed-reference} to the
+ convention that the Gaussian history is transported by the reference
+ integrals. The amplitude bound at every leading rung follows from item~2
  by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells
  assumed in Lemma~\ref{lem:allarity-step-charge}.
@@ -1291,9 +1379,11 @@ following inputs, all on the common history of the chart:
  Subsection~\ref{subsec:allarity-step-supply} for the leading interval:
  applicability of the upper calculation; the hypotheses of
  Section~\ref{sec:marked-healthy-cumulant-launch} at every leading rung
- and the terminal-source purchase; the identification of the
- prescribed polynomial (the per-rung amplitude then follows by
- Corollary~\ref{cor:allarity-rung-amplitude}); the
+ and the terminal-source purchase; the convention that the Gaussian
+ history is transported by the reference integrals, which gives the
+ identification of the prescribed polynomial by
+ Lemma~\ref{lem:allarity-prescribed-reference} (the per-rung amplitude
+ follows by Corollary~\ref{cor:allarity-rung-amplitude}); the
  reader separation $2QB$, which holds for the trace chart by
  Lemma~\ref{lem:allarity-halo-separation};
 \item the two $H^{-3/2}$ inputs of Lemma~\ref{lem:allarity-corrected-pieces}
