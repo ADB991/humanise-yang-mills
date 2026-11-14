@@ -471,19 +471,80 @@ $k$, not only at the unbounded set of levels used for the rank tests
 above.
 \end{proof}
 
+\begin{proposition}[The output representation meets the ticket suppositions]
+\label{prop:rank-trace-output-lawful}
+Assume the conclusions of Proposition~\ref{prop:rank-trace-chart-window}(1).
+Assume also that the auxiliary representation $P_w$ at the root depth $w$
+carries the prescribed threshold of (F3),
+\[
+ \theta_{P_w}=\widehat\beta_w^{-1/2}\exp\bigl((\log\log\widehat\beta_w)^{3/2}\bigr),
+\]
+and that the stage profiles have clip constants with
+$0<c_{\rm lin}<c_{\rm dir}/16$. Then, for all sufficiently large $k$,
+every chart at level $k$ with base arc $b\le\bar b$, every $N\ge k$ and
+every $p$, $P_w$ is a lawful representation satisfying the suppositions of
+Proposition~\ref{prop:rank-root-output-ticket}(2) at the output level $w$:
+\begin{enumerate}
+\item its coupling $\beta=\beta_{N,p,k}$ satisfies $g=\beta^{-1/2}\le\theta_{P_w}\le1$
+ and $\beta\le4\widehat\beta_w$;
+\item $\theta_{P_w}\le\theta_{\rm clock}(w)$;
+\item its loop budget satisfies $\Lambda\le\Lambda_{\rm clock}(w)$, and its
+ clip and row bound are those of the stage $\pi_{J(w)}$;
+\item its additive terms have value bound $\delta\le1$ per site.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{Lawfulness.} By Section~\ref{sec:restarted-rank-history}, the
+auxiliary representation has gauge-invariant, local and motion-covariant
+path action, additive terms and activities. Its density is the push
+\eqref{eq:restart-push} of the nonnegative density above it along a
+positive kernel, so it is nonnegative. The clip constants are those of the
+profile.
+
+\emph{Coupling.} By Lemma~\ref{lem:rank-trace-endpoint} and the plateau,
+$\beta\ge\tfrac78\widehat\beta_k\ge\tfrac78\widehat\beta_w$, so
+$g\le(8/7)^{1/2}\widehat\beta_w^{-1/2}\le\theta_{P_w}$ as soon as
+$\exp((\log\log\widehat\beta_w)^{3/2})\ge(8/7)^{1/2}$. Also
+$\theta_{P_w}\le1$ for large $\widehat\beta_w$, and
+$\beta\le4\widehat\beta_w$ is part of
+Proposition~\ref{prop:rank-trace-chart-window}(1). Since $w(k)\to\infty$,
+these thresholds are reached for all large $k$.
+
+\emph{Threshold.} Once $\log\log\widehat\beta_w\ge1$,
+$(\log\log\widehat\beta_w)^{3/2}\le(\log\log\widehat\beta_w)^2$, so
+$\theta_{P_w}\le\widehat\beta_w^{-1/2}\mathcal M_w=\theta_{\rm clock}(w)$.
+
+\emph{Paths.} Below $k$ the auxiliary history retains the coarse path
+action of the selected history (Section~\ref{sec:restarted-rank-history}).
+At level $w$ that is the path $R_{N,w}$ of
+Proposition~\ref{prop:path-retained-plan}. It is admissible at $(N,w)$,
+so by Definition~\ref{def:path-admissible} it satisfies
+$R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$. Its clip is
+$p_w$, its row price is $A_w$, and its loop budget is at most
+$\mathrm{loopCap}_w=2\mathcal M_w^{\theta_{J(w)}}=\Lambda_{\rm clock}(w)$, by
+Lemma~\ref{lem:common-loop-capacity} and
+Subsection~\ref{subsec:rank-root-clock-threshold}, with
+$\vartheta_j=\theta_j$.
+
+\emph{Additive terms.} By \eqref{eq:restart-anchored}, summing the
+anchored bounds gives $\sum_\alpha|E_\alpha(U)|\le|\Lambda|q_n$, so the
+value bound per site is at most $q_n\le s^{-1/400}\le1$ by
+Proposition~\ref{prop:rank-trace-chart-window}(1).
+\end{proof}
+
 \paragraph{Status.}
 Under the local inputs of this section,
 Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
 history and its coupling bound throughout $[w,k]$ for every $N\ge k$
-and $p$. To obtain (F3), one still has to verify that each resulting
-$P_j$ has the stage clip and row bound, the chart budget radius and
-prescribed threshold, and satisfies the representation bounds
-\[
- \theta_{P_j}\le\theta_{\rm clock}(j),\qquad
- \Lambda(P_j)\le\Lambda_{\rm clock}(j),\qquad \delta(P_j)\le1 .
-\]
-The numerical late-scale bounds of
-Section~\ref{sec:rank-root-normalization} concern the clock parameters. The comparisons above concern the actual
-auxiliary representations. The tested-readout part of (F5) is the input
-(T), and the stamp duty for (F5) still has to be established with that
-same readout.
+and $p$. Proposition~\ref{prop:rank-trace-output-lawful} verifies at the
+output level $w$ every supposition of
+Proposition~\ref{prop:rank-root-output-ticket}(2), which is where the
+propagation to the output torus uses (F3). It assumes the prescribed
+threshold of (F3) for the auxiliary representation, and the clip constants
+of the profiles. The field (F3) as displayed also asks for these
+properties at the other levels of $[w,k]$; the same argument gives them
+there, with $w$ replaced by $j$. The budget radius
+$\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
+normalization estimate. The tested-readout part of (F5) is the input (T),
+and the stamp duty for (F5) still has to be established with that same
+readout.
