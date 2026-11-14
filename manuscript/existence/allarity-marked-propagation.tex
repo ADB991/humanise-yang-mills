@@ -846,27 +846,46 @@ mark. Hence the incidence price is at most
 $2^nR_eH^{1/8}H^{-31/32}=cH^{-27/32}$.
 \end{proof}
 
-\begin{lemma}[Raising the weight]
+\begin{lemma}[Raising the regular marker weight]
 \label{lem:allarity-weight-raise}
-Let a family of regular letters, each carrying a marker set $I$ with
-$|I|\le n$, have marker-root or incidence price $p$ at the weight
-$\omega_-$. Then its price of the same kind at the weight $\omega$ is at
-most $H^{Un}p$.
+For each regular letter let $I$ be its marker set, $X$ its full support,
+and $t(I)$ the number of replica cells represented in $I$. Suppose the
+marker-root sum of letters with $t(I)=1$ is at most $p_1$ at weight
+$\omega_-$ and support exponent $e$. Suppose the corresponding sum of
+letters with $t(I)\ge2$ is at most $p_2$ at weight $\omega_-$ and support
+exponent $e+\sigma$, where $\sigma>0$, and that each of these letters
+satisfies
+\[
+ \sigma\operatorname{cov}_B(X)\ge Un\,t(I)\log H .
+\]
+Then the marker-root price at weight $\omega$ and support exponent $e$
+is at most $H^{Un}p_1+p_2$.
 \end{lemma}
 \begin{proof}
-These prices are sums of nonnegative terms, one for each letter, each
-proportional to the weight $\omega_-^{|I|}$ of that letter. Raising the
-weight multiplies the term by $(\omega/\omega_-)^{|I|}=H^{U|I|}\le
-H^{Un}$, since $H>1$.
+Empty marker sets contribute to neither sum. For a letter with
+$t(I)=1$, $|I|\le n$, so raising the weight costs at most $H^{Un}$.
+For a letter with $t(I)\ge2$, $|I|\le nt(I)$. Raising the weight and
+lowering the support exponent together multiply its price by
+\[
+ H^{U|I|}\exp\{-\sigma\operatorname{cov}_B(X)\}\le1.
+\]
+Summing at each fixed marker gives the claim, uniformly in the number
+of replica cells.
 \end{proof}
 
-The forced background is not covered by this lemma: a forced component
-may contain marked pieces from several cells, and its weight may then
-grow by more than $H^{Un}$. Its weight change is part of the following
-input.
-
-The launch requires one further input, which this section does not prove.
+The launch uses two inputs on the same middle-level representation.
 \begin{enumerate}
+\item[(W)] \emph{Regular remainder at the restored weight.}
+ The nonleading regular remainder has marker-root price at most $H^{-1}$
+ at weight $\omega$ and support exponent $e$, uniformly in the replica
+ cells and period. The small-weight recurrence supplies the single-cell
+ bound $p_1\le H^{\kappa-q}$. One way to obtain (W) is to buy the
+ multi-cell bound of Lemma~\ref{lem:allarity-weight-raise}, with
+ $p_2\le H^{\kappa-q}$ and the stated support inequality on the same
+ letters. If $q\ge\kappa+Un+2$, then
+ $H^{Un}p_1+p_2\le2H^{-2}\le H^{-1}$ for $H\ge2$.
+ The recurrence at exponent $e$ supplies neither the price with spare
+ exponent $\sigma$ nor that support inequality.
 \item[(L)] \emph{Failed-mask regrouping and weight change at the launch.}
  There is a constant $c_L\ge0$, fixed before $s$, with the following
  property. At the middle level, let the forced background have site price
@@ -886,11 +905,8 @@ inflation exponent lowered by a multiple of $\log H$.
 Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
 the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
 forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
-Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and the
-input (L). Assume the tolerance exponent satisfies
-\[
- q\ge\kappa+Un+1 .
-\]
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and
+inputs (W) and (L).
 Then, for all large $s$, the pushed invoice at the middle level has an
 exact representation at the weight $\omega$, without leading letters, with
 regular marker-root price at most $H^{-3/4}$ and forced site price at most
@@ -901,9 +917,8 @@ By the commuting reference factor, the pushed invoice at $\ell$ is the
 pushed insertion product times $\exp_*(-D_R)$. The representation from
 the leading interval has three parts. Their prices are as follows.
 
-\emph{Remainder.} By Lemma~\ref{lem:allarity-weight-raise}, the regular
-remainder has price at most $H^{Un}H^{\kappa-q}\le H^{-1}$ at the weight
-$\omega$.
+\emph{Remainder.} Input (W) supplies the price $H^{-1}$ at weight
+$\omega$ for the entire nonleading regular remainder.
 
 \emph{Leading family.} Its pieces are the exact prescribed principal
 polynomial. Multiplying by $\exp_*(-D_R)$ and splitting each corrected
@@ -985,10 +1000,11 @@ $d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$.
 The parameters are therefore fixed in the order $\alpha$, $\bar b$, then
 $U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
 \[
- q\ge\max\{6,\ \kappa+4,\ \kappa+Un+1\},
+ q\ge\max\{6,\ \kappa+4\},
 \]
-which covers Lemma~\ref{lem:allarity-step-outputs} and
-Proposition~\ref{prop:allarity-launch}. All are fixed before $s$.
+which covers Lemma~\ref{lem:allarity-step-outputs}. If (W) is obtained
+using Lemma~\ref{lem:allarity-weight-raise}, also require
+$q\ge\kappa+Un+2$ as above. All are fixed before $s$.
 
 \begin{lemma}[The forced inputs of the lower rungs]
 \label{lem:allarity-lower-forced}
@@ -1057,7 +1073,7 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the failed-mask regrouping (L) at the launch;
+\item the restored-weight regular remainder (W) and failed-mask regrouping (L) at the launch;
 \item applicability of the lower calculation on $[w,\ell)$;
 \item the lawful representation at the output level $w$, with the
  suppositions of Section~\ref{sec:rank-root-normalization}.
