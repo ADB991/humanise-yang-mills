@@ -1,0 +1,27 @@
+# Review: C15 `trace-regular-atom`, `trace-coffer-supplier`
+
+- Session: `ADB991-claude-20261113-e487`. Role: reviewer (mathematics and textual Lean correspondence). Prepared by Claude (Anthropic), running as a scheduled agent on behalf of ADB991. ADB991 had not read it before submission.
+- Task: #333 (parent #56, umbrella #26). Claim: https://github.com/hairer/humanise-yang-mills/issues/333#issuecomment-6867970144 (until 2026-11-14 12:00 UTC).
+- Target: `manuscript/existence/trace-regular-atom.tex` and `manuscript/existence/trace-coffer-supplier.tex` as they stand on `codex/existence-monograph` at `08e85a788378ae70be357c96f0091ea7f18bbd56`, with their two `*-evidence.md` files. Source pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. SHA-256 values of everything inspected are in `inspected-sha256.txt`.
+- Independence: ADB991 did not write #105, the evidence files, the part-A ledger rows or the mathematics of these chapters. ADB991 did write commit `a4a73dc9` (#194 / PR #207), which touched these files: regular-atom +7/−6 and coffer +5/−11. All of it is wording. It replaces "in the source" phrasing, and in the coffer chapter it replaces the source-derivation sentence of the planted-expansion input with "It is an outstanding input and is not proved in this monograph". mgubi's leakage review covers those hunks, and this report does not certify them. Every other line was checked independently.
+- Interface notes reused: hairer's #338 notes on #333 (`lem:ex-lattice-local-budget-choice` = `Quince.Bunk`/`foton`; tuition entry = `Medal.talent` at price `z`). I rechecked the identification `z = v` directly (see `lean-correspondence.md` §1.3). It holds inside `Quince.salaryT` itself, not only in `Quince.Soot`.
+
+## Verdict
+
+**Regular atom.** `prop:ex-lattice-regular-source-atom` is correct under its stated inputs. Both regimes were recomputed, and the statement matches `YM.Extra.Histories.PaidAtom` as concluded by `YM.PhysicalNext.Repeat.Quince.salaryT`: lead `0`, cost `sprite(ξ)·m₀ = ξχ⁻¹m₀`, remainder `Doors.rate L·m₀ = L^{-2/5}m₀`, and one `X` chosen before the motion. The budget inequalities are exactly `Bunk.reg`/`Bunk.huge`. No required change. Two minor items: N1 and N2.
+
+**Coffer transfer.** The algebra is correct. I checked every numerical step (column budget, payment, weight, the 5K exponent, the root extraction, `q_k` and the bias exponent `1/12+1/6−1/2 = −1/4`) and the quantifier order. All of it matches `YM.MergeProof.Accent.riches` and `YM.Trace.Terrace.purchasing`. One identity the text asserts without proof was verified from the source: `ϑ_k² Age_k(1/6) = β̂_k^{-1} Age_k(13/6)`, because `thetaP x = x^{-1/2}·Wave 1 x`. There are two should-fix gaps. Each is a step that the text uses but neither proves nor cites:
+
+| ID | File, lines | Kind | Summary |
+|---|---|---|---|
+| S1 | coffer l.286–323 | should | The step to `eq:ex-trace-spiker` rests on "the finite-volume denominator bound". That bound is not stated or cited anywhere in the chapter, or in the monograph under that name. It is `eq:ex-centered-sail` (`centered-construction.tex`) plus the treasury receipt, applied at radius `ĥ_m = β̂_m^{-1/2} ≤ ϑ_m`, with `Z_A = Z_{N,p}` (source `Accent.spiker` → `Accent.sail`, `Vac.suffices_bill`, `History.partition_eq`). Cite it and name these hypotheses. As written, the absorption of `E_m` and the box activities `b_P` into `|Λ_m|Treasury(m)` cannot be checked |
+| S2 | coffer l.338–402 | should | The Bill specialization never verifies the melting condition at `a = v' = Z^{-1}`, and the coffer transfer needs it. The final statement's "for all sufficiently large `k`" silently includes it. Source: `YM.Trace.Terrace.Meltdown`, from `supportQ` (support exponent ≥ 4 eventually) and the rate of `β̂_k`. The final statement should also name its other standing inputs: `c_k ≤ log β̂_k` (`PostT.share`), `Scrim`, `Sceptre` (SharpRead) and `Stock.Tabs` |
+| N1 | regular-atom l.81, l.136 | notation | `O\bigl(…\bigr)` reads as big-O. `O` is the motion-average factor (`Motion.orbitCost`), so write `O\cdot(…)` |
+| N2 | regular-atom l.199–216 vs l.252–273 | wording | The large-support argument appears twice, nearly verbatim. Keep one copy. Also, the source `desert` concludes `t ≤ sprite(z')·mass` directly. The intermediate `R_i = e^{(α_c+2)q_i}S_i` is the author's reading of the proof and should be labelled as such or dropped |
+| N3 | coffer l.59–60 | wording | "using `fly_d(k) ≤ Z`": the source fact is `fly_d(k) ≤ 1` (`MergeProof.fly_le`). Combined with `Z ≥ 1` (`fits.delayed`) it gives `Z·fly ≤ Z ≤ Z²`. The stated inequality is true but is not the input |
+| N4 | coffer l.161, l.327–329 | notation | `A_j` is called "the field dilation", but `stakes` and the tiling identity `|Λ_m| = K(A_J/A_m)^4` need `A_j = C.S.a j`, the lattice spacing (`Strudel.stakes`, `alto_norm: ‖alto_{j,d}‖ = a_j^{-d}`). Say "lattice spacing `A_j`, so the grade-`d` dilation has norm `A_j^{-d}`" |
+| N5 | coffer l.165 vs l.338ff | wording | The Bill's root clause assumes `g` interior to the window, while `riches` needs `G' = u g`. The step `Interior(g) ⇒ Interior(ug)` (source `hV.scale`) should get one sentence in the Bill subsection |
+
+Details: `mathematics.md` (proof checks) and `lean-correspondence.md` (source checks). `validation.md` lists the commands actually run and what was not checked.
+
+No approval is given or implied. A human reviewer takes responsibility for acceptance.
