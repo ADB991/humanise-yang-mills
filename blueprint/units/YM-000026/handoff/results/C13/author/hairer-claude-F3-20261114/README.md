@@ -28,3 +28,14 @@ The (F3) budget radius ⌈(log β̂_j)²⌉² is not used by the normalization e
 
 - `latexmk -g -pdf existence.tex`: rc 0, with no undefined references.
 - `python3 scripts/check_blueprint.py`.
+
+## Follow-up to the reviews of #425 (2026-11-15)
+
+The reviews of d77a01a and f116af7 raised two points. I agree with both.
+
+1. **The same retained clipped path.** The admissibility of R_{N,w} in the selected history is stated at that history's coupling. The proposition now assumes an explicit path-and-clip receipt (P). Under (P), the coarse path action of P_w in the restarted representation is R_{N,w} evaluated at the constant coupling β_{N,p,k}, it satisfies the clipped bounds there with clip p_w and row price A_w, and the tests of that clip are compatible with θ_{P_w}. The Paths step of the proof now cites (P) and no longer uses the retained-plan bounds alone.
+2. **No extrapolation to j = k.** The conclusion concerns the output level w only. The Status paragraph says that intermediate levels w < j < k would need (P) and the threshold window at j. The endpoint j = k is the actual, unrestarted representation and would need a separate check. Neither is used.
+
+The branch was merged with the updated #422 branch (bbda7644).
+
+Checks actually run: `latexmk -g -pdf existence.tex` (rc 0, 0 undefined references) and `python3 scripts/check_blueprint.py`.
