@@ -1,0 +1,267 @@
+@YangMills.WilsonRegularity : {g : YangMills.GaugeGroup} → YangMills.WilsonFamily g → Prop
+structure YangMills.WilsonRegularity {g : YangMills.GaugeGroup} (C : YangMills.WilsonFamily g) : Prop
+number of parameters: 2
+fields:
+  YangMills.WilsonRegularity.running : ∃ slope,
+      0 < slope ∧
+        ∀ (ε : ℝ), 0 < ε → ∀ᶠ (N : ℕ) in Filter.atTop, ∀ (p : ℕ), |C.beta N p / Real.log (C.mesh N)⁻¹ - slope| < ε
+  YangMills.WilsonRegularity.continuous : ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N)),
+      Continuous (C.insertion N p v x)
+  YangMills.WilsonRegularity.invariant : ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N))
+      (t : YangMills.Site (C.period p * C.denominator N) → ↥g.image)
+      (U : YangMills.Configuration g (C.period p * C.denominator N)),
+      (C.insertion N p v x fun e => t e.1 * U e * (t (e.1 + Pi.single e.2 1))⁻¹) = C.insertion N p v x U
+  YangMills.WilsonRegularity.localSupport : ∀ (v : C.Token),
+      ∃ stencil,
+        ∀ (N p : ℕ) (x : YangMills.Site (C.period p * C.denominator N)),
+          let sites := Finset.image (fun z => (fun i => ↑(z i)) + x) stencil;
+          ∀ (U V : YangMills.Configuration g (C.period p * C.denominator N)),
+            (∀ (e : YangMills.Site (C.period p * C.denominator N) × YangMills.Axis),
+                e.1 ∈ sites → e.1 + Pi.single e.2 1 ∈ sites → U e = V e) →
+              C.insertion N p v x U = C.insertion N p v x V
+constructor:
+  YangMills.WilsonRegularity.mk {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g}
+    (running :
+      ∃ slope,
+        0 < slope ∧
+          ∀ (ε : ℝ), 0 < ε → ∀ᶠ (N : ℕ) in Filter.atTop, ∀ (p : ℕ), |C.beta N p / Real.log (C.mesh N)⁻¹ - slope| < ε)
+    (continuous :
+      ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N)), Continuous (C.insertion N p v x))
+    (invariant :
+      ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N))
+        (t : YangMills.Site (C.period p * C.denominator N) → ↥g.image)
+        (U : YangMills.Configuration g (C.period p * C.denominator N)),
+        (C.insertion N p v x fun e => t e.1 * U e * (t (e.1 + Pi.single e.2 1))⁻¹) = C.insertion N p v x U)
+    (localSupport :
+      ∀ (v : C.Token),
+        ∃ stencil,
+          ∀ (N p : ℕ) (x : YangMills.Site (C.period p * C.denominator N)),
+            let sites := Finset.image (fun z => (fun i => ↑(z i)) + x) stencil;
+            ∀ (U V : YangMills.Configuration g (C.period p * C.denominator N)),
+              (∀ (e : YangMills.Site (C.period p * C.denominator N) × YangMills.Axis),
+                  e.1 ∈ sites → e.1 + Pi.single e.2 1 ∈ sites → U e = V e) →
+                C.insertion N p v x U = C.insertion N p v x V) :
+    YangMills.WilsonRegularity C
+@YangMills.regular : ∀ {g : YangMills.GaugeGroup} (C : YM.Family g.core),
+  g.IsSimple → C.Makes → YangMills.WilsonRegularity (YangMills.wilsonFamily C)
+'YangMills.regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+def YangMills.wilsonFamily : {g : YangMills.GaugeGroup} → YM.Family g.core → YangMills.WilsonFamily g :=
+fun {g} C =>
+  { period := C.S.period, denominator := C.S.denominator, periodStrict := ⋯, denominatorStrict := ⋯, beta := C.beta,
+    haar := g.core.probHaar, probability := ⋯, invariantHaar := ⋯, Token := C.book.Token,
+    insertion := fun N p v x => C.seen v x }
+def YangMills.WilsonFamily.mesh : {g : YangMills.GaugeGroup} → YangMills.WilsonFamily g → ℕ → ℝ :=
+fun {g} C N => (↑↑(C.denominator N))⁻¹
+@[reducible] def YM.Family.beta : {G : YM.Gauge} → YM.Family G → ℕ → ℕ → ℝ :=
+fun {G} C N p => C.path.β N p N
+structure YM.Family.Makes {G : YM.Gauge} (C : YM.Family G) : Prop
+number of parameters: 2
+fields:
+  YM.Family.Makes.wilson : C.path.Selected
+  YM.Family.Makes.sections : ∀ (d : ℕ), (C.localSection d).Sound C.params
+  YM.Family.Makes.stages : ∀ (d : ℕ),
+      d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+        ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power
+  YM.Family.Makes.places : ∀ (d N p : ℕ),
+      C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p)
+  YM.Family.Makes.priced : ∀ (d N p : ℕ),
+      C.ref d ≤ N →
+        let P := C.path.levels.budget N;
+        let F := C.labels.level d;
+        let D := C.localSection d;
+        ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+          P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+            P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+              ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2)
+  YM.Family.Makes.calibrated : ∀ (d N p : ℕ),
+      C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)
+constructor:
+  YM.Family.Makes.mk {G : YM.Gauge} {C : YM.Family G} (wilson : C.path.Selected)
+    (sections : ∀ (d : ℕ), (C.localSection d).Sound C.params)
+    (stages :
+      ∀ (d : ℕ),
+        d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+          ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power)
+    (places :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p))
+    (priced :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N →
+          let P := C.path.levels.budget N;
+          let F := C.labels.level d;
+          let D := C.localSection d;
+          ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+            P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+              P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+                ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2))
+    (calibrated : ∀ (d N p : ℕ), C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)) : C.Makes
+structure YM.RG.History.Selected {G : YM.Gauge} (A : YM.RG.History G) : Prop
+number of parameters: 2
+fields:
+  YM.RG.History.Selected.path_shared : ∀ (N p q m : ℕ), m ≤ N → (A.rep N p m).path = (A.rep N q m).path
+  YM.RG.History.Selected.represents : ∀ (N p m : ℕ), m ≤ N → A.Conv N p m
+  YM.RG.History.Selected.starts : ∀ (N p : ℕ), (A.rep N p N).v = 0 ∧ (A.rep N p N).eval = YM.Wilson.bare (A.β N p N)
+  YM.RG.History.Selected.steps : ∀ (N p m : ℕ), m < N → A.Transfer N p m
+  YM.RG.History.Selected.reaches : ∀ (N p : ℕ), A.β N p 0 = A.levels.clock.bar
+  YM.RG.History.Selected.running : A.Running
+constructor:
+  YM.RG.History.Selected.mk {G : YM.Gauge} {A : YM.RG.History G}
+    (path_shared : ∀ (N p q m : ℕ), m ≤ N → (A.rep N p m).path = (A.rep N q m).path)
+    (represents : ∀ (N p m : ℕ), m ≤ N → A.Conv N p m)
+    (starts : ∀ (N p : ℕ), (A.rep N p N).v = 0 ∧ (A.rep N p N).eval = YM.Wilson.bare (A.β N p N))
+    (steps : ∀ (N p m : ℕ), m < N → A.Transfer N p m) (reaches : ∀ (N p : ℕ), A.β N p 0 = A.levels.clock.bar)
+    (running : A.Running) : A.Selected
+def YM.RG.History.Running : {G : YM.Gauge} → YM.RG.History G → Prop :=
+fun {G} A =>
+  ∀ (ε : ℝ),
+    0 < ε → ∀ᶠ (m : ℕ) in Filter.atTop, ∀ (N p : ℕ), m ≤ N → |A.β N p m - A.levels.clock.hatBeta m| ≤ ε * A.S.scale m
+def YM.RG.Calendar.hatBeta : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.bar + G.slopeConstant * S.schedule.scale m
+def YM.Schedule.a : YM.Schedule → ℕ → ℝ :=
+fun S m => (↑↑(S.denominator m))⁻¹
+def YM.Schedule.scale : YM.Schedule → ℕ → ℝ :=
+fun S m => Real.log (S.a m)⁻¹
+def YM.Pert.Asymptotics.b0 : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (48 * Real.pi ^ 2)
+@YM.Pert.Asymptotics.b0_normalizes : ∀ {G : YM.Gauge}, 2 * YM.Pert.Asymptotics.b0 G = G.slopeConstant
+'YM.Pert.Asymptotics.b0_normalizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Pert.Asymptotics.zeroUp_bound : ∀ {G : YM.Gauge} (C : YM.Family G),
+  C.Makes →
+    ∀ {ε : ℝ},
+      0 < ε →
+        ∀ᶠ (m : ℕ) in Filter.atTop,
+          ∀ (N p : ℕ), m ≤ N → |C.path.β N p m / C.S.scale m - 2 * YM.Pert.Asymptotics.b0 G| < ε
+'YM.Pert.Asymptotics.zeroUp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+def YM.Gauge.casimir : YM.Gauge → ℝ :=
+fun G =>
+  have b := EuclideanSpace.basisFun G.ColorIndex ℝ;
+  (-∑ i, (LinearMap.trace ℝ G.Color) (G.ad (b i) ∘ₗ G.ad (b i))) / ↑G.lieDim
+def YM.Gauge.slopeConstant : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (24 * Real.pi ^ 2)
+@YM.Gauge.trace_adjoint : ∀ {G : YM.Gauge},
+  G.Simple → ∀ (x y : G.Color), -(LinearMap.trace ℝ G.Color) (G.ad x * G.ad y) = G.casimir * inner ℝ x y
+@YM.Gauge.casimir_pos : ∀ {G : YM.Gauge}, G.Simple → 0 < G.casimir
+YangMills.constructed : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ),
+  0 < b →
+    ∃ C,
+      C.path.levels.clock.kernel.penalty = b ∧
+        C.Makes ∧
+          YangMills.WilsonRegularity (YangMills.wilsonFamily C) ∧
+            ∀ (p : YM.Extraction.Order),
+              ∃ q S F L Q M X,
+                (YangMills.hierarchy F Q).Properties (p.refine q).per.choose ∧
+                  (YangMills.hierarchy F Q).Contacts ∧
+                    { mesh := YM.Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+                      YM.FullVolume.PositionsUV C YM.Extraction.Sequence.full ∧
+                        YM.Spec.Calibrated C ∧
+                          YM.Independent.Core ⋯ F L Q ∧
+                            YM.Nonperturbative.Headline.Reconstruction F L ∧
+                              (∀ (i : F.α.space.X), (YangMills.view (L.actors i)).Axioms) ∧
+                                YM.Nonperturbative.Headline.SeparatedOPE F Q ∧
+                                  YM.Nonperturbative.Headline.NestedOPE F Q ∧
+                                    YM.Nonperturbative.Headline.TraceExclusions F ∧
+                                      M.basis = Q.port ∧
+                                        YM.Contacts.Solstice.MultipleLight F M ∧
+                                          Nonempty (YM.Contacts.Transport.SystemBasis M) ∧
+                                            Nonempty (YM.Contacts.Solstice.Thresholds M) ∧
+                                              YM.Pert.FirstExtension F X ∧ YM.Pert.Position.FourMeters F X
+'Probe382i4.P0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P2b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P4' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Gauge.casimir : YM.Gauge → ℝ
+def YM.Gauge.casimir : YM.Gauge → ℝ :=
+fun G =>
+  have b := EuclideanSpace.basisFun G.ColorIndex ℝ;
+  (-∑ i, (LinearMap.trace ℝ G.Color) (G.ad (b i) ∘ₗ G.ad (b i))) / ↑G.lieDim
+YM.Gauge.slopeConstant : YM.Gauge → ℝ
+def YM.Gauge.slopeConstant : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (24 * Real.pi ^ 2)
+YM.Gauge.inner_frob_color : ∀ (G : YM.Gauge) (c d : G.Color),
+  inner ℝ (G.colorIso c) (G.colorIso d) = ↑G.repDim * inner ℝ c d
+'YM.Gauge.inner_frob_color' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Gauge.trace_color : ∀ (G : YM.Gauge) (c d : G.Color),
+  -(G.colorMat c * G.colorMat d).trace.re = ↑G.repDim * inner ℝ c d
+'YM.Gauge.trace_color' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Gauge.trace_adjoint : ∀ {G : YM.Gauge},
+  G.Simple → ∀ (x y : G.Color), -(LinearMap.trace ℝ G.Color) (G.ad x * G.ad y) = G.casimir * inner ℝ x y
+'YM.Gauge.trace_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Gauge.casimir_pos : ∀ {G : YM.Gauge}, G.Simple → 0 < G.casimir
+'YM.Gauge.casimir_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Gauge.slopeConstant_pos : ∀ {G : YM.Gauge}, G.Simple → 0 < G.slopeConstant
+'YM.Gauge.slopeConstant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Pert.Asymptotics.b0 : YM.Gauge → ℝ
+def YM.Pert.Asymptotics.b0 : YM.Gauge → ℝ :=
+fun G => 11 * G.casimir / (48 * Real.pi ^ 2)
+@YM.Pert.Asymptotics.b0_normalizes : ∀ {G : YM.Gauge}, 2 * YM.Pert.Asymptotics.b0 G = G.slopeConstant
+'YM.Pert.Asymptotics.b0_normalizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YangMills.GaugeGroup.coreSimple : ∀ {g : YangMills.GaugeGroup}, g.IsSimple → g.core.Simple
+YangMills.constructed : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ),
+  0 < b →
+    ∃ C,
+      C.path.levels.clock.kernel.penalty = b ∧
+        C.Makes ∧
+          YangMills.WilsonRegularity (YangMills.wilsonFamily C) ∧
+            ∀ (p : YM.Extraction.Order),
+              ∃ q S F L Q M X,
+                (YangMills.hierarchy F Q).Properties (p.refine q).per.choose ∧
+                  (YangMills.hierarchy F Q).Contacts ∧
+                    { mesh := YM.Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+                      YM.FullVolume.PositionsUV C YM.Extraction.Sequence.full ∧
+                        YM.Spec.Calibrated C ∧
+                          YM.Independent.Core ⋯ F L Q ∧
+                            YM.Nonperturbative.Headline.Reconstruction F L ∧
+                              (∀ (i : F.α.space.X), (YangMills.view (L.actors i)).Axioms) ∧
+                                YM.Nonperturbative.Headline.SeparatedOPE F Q ∧
+                                  YM.Nonperturbative.Headline.NestedOPE F Q ∧
+                                    YM.Nonperturbative.Headline.TraceExclusions F ∧
+                                      M.basis = Q.port ∧
+                                        YM.Contacts.Solstice.MultipleLight F M ∧
+                                          Nonempty (YM.Contacts.Transport.SystemBasis M) ∧
+                                            Nonempty (YM.Contacts.Solstice.Thresholds M) ∧
+                                              YM.Pert.FirstExtension F X ∧ YM.Pert.Position.FourMeters F X
+'YangMills.constructed' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe382i4_v2.lean:149:0: error: AddConstAsyncResult.commitConst: constant has level params [u, v] but expected []
+'Probe382i4.P3gen' does not depend on any axioms
+'Probe382i4.P3ch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Probe382i4.P5w' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe382i4.P3gen : ∀ (g : YangMills.GaugeGroup),
+  g.IsSimple →
+    ∀ (b : ℝ),
+      0 < b →
+        ∃ C,
+          C.path.levels.clock.kernel.penalty = b ∧
+            C.Makes ∧
+              Probe382i4.RunsAt (YangMills.wilsonFamily C) (11 * g.core.casimir / (24 * Real.pi ^ 2)) ∧
+                (∀ (s : ℝ),
+                    Probe382i4.RunsAt (YangMills.wilsonFamily C) s → s = 11 * g.core.casimir / (24 * Real.pi ^ 2)) ∧
+                  0 < 11 * g.core.casimir / (24 * Real.pi ^ 2)
+Probe382i4.P3ch : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ) (hb : 0 < b),
+  have C := ⋯.choose;
+  C.path.levels.clock.kernel.penalty = b ∧
+    C.Makes ∧
+      Probe382i4.RunsAt (YangMills.wilsonFamily C) (11 * g.core.casimir / (24 * Real.pi ^ 2)) ∧
+        (∀ (s : ℝ), Probe382i4.RunsAt (YangMills.wilsonFamily C) s → s = 11 * g.core.casimir / (24 * Real.pi ^ 2)) ∧
+          0 < 11 * g.core.casimir / (24 * Real.pi ^ 2)
+       22.44 real         2.40 user         3.24 sys
+          8210710528  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              434719  page reclaims
+              157876  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               22645  voluntary context switches
+              154570  involuntary context switches
+         53418371457  instructions retired
+         23148132910  cycles elapsed
+          1220054960  peak memory footprint
