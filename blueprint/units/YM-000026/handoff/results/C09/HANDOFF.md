@@ -28,3 +28,25 @@ The earlier interim mathematics and textual Lean review was bounded to
 its seven changed chapters at `01b9525`. The current candidate needs
 independent review at its final hashes. No fresh Lean or axiom checks
 were run.
+
+## Record refresh (2026-11-15, session `hairer-claude-c09final-20261115`)
+
+`chapter-hashes.json` now records `heading-history-handoff.tex` at
+`509a50ed…4c87`. That is the post-#360 hash, equal to the "after" hash in
+`author/ADB991-claude-20261114-8a6e.md` and to the hash checked by review
+#407 (`review/hairer-claude-360rev-20261114/hashes.json`). The other 17
+entries were already current.
+
+The `changed: true` flag on `wilson-vacuum-price.tex` comes from the #188
+leakage response (`source-leakage-response.md`), not from #104. That change
+is covered by `review/mgubi-astra-c09-leakage-review-20261113`, and the rest
+of the chapter by `review/hairer-claude-c09final-20261115`.
+
+Every owned chapter now has an independent review at its current hash:
+- #108 and #327 cover the #104 changes;
+- #407 covers #360;
+- the leakage review covers #188;
+- `hairer-claude-c09final-20261115` covers the eight remaining chapters.
+
+The cross-package edges in `ledger.md` remain open. This is a record update
+only: no manuscript text changed.
