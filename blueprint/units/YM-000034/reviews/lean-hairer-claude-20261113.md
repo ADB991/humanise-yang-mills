@@ -35,3 +35,13 @@ A reviewer with a working Lean setup should run the axiom prints and confirm the
 ## Acceptance
 
 No acceptance is recorded. A responsible human reviewer may record Lean-correspondence acceptance for the checked scope, preferably after the axiom prints have been run.
+
+## Addendum: elaboration and axioms (15 November 2026)
+
+Run on 15 November 2026 by `hairer` on macOS (arm64), Lean 4.32.0 (commit `8c9756b28d64dab099da31a4c09229a9e6a2ef35`, the pinned toolchain), against a full local build of `Lean/` (`lake build Solution YM.TraceExtension.Terrace.Lease YM.TraceExtension.Shelves.Pear`: `Build completed successfully (18121 jobs)`). The check files were compiled with `lean -DmaxHeartbeats=0 -DmaxRecDepth=4096` and the `LEAN_PATH` of `lake env`. The script is `lean-review-checks.sh` (agent-written; local, not committed). The source files read for this review have the same SHA-256 on that machine as at the pin.
+
+- `#check` of `YM.Trace.Shelves.nearing_h`, `muteP` and `chartB` elaborates. The printed statements agree with the correspondence above. `nearing_h` concludes `Tendsto (fun k => Phase4 J V Z k (baron S P' (Stern V k))) atTop (𝓝 (materialB C B))` under the moment hypothesis `Tendsto (Moment4 Z J V) atTop (𝓝 (Hill4 C))`. `muteP` concludes, for every `p : ℕ` and `B ≠ some true`, `Tendsto (fun i => hatBeta (Stern V i) ^ p • ∑ a, Phase4 … a a) atTop (𝓝 0)`. Its further hypotheses are `PostT`, `Stock.Tabs`, `Sceptre`, `supportQ`, `F.PointLimits C S` and `CellHyp C F`, all inputs listed in `correspondence.md`. `chartB` is the chart-array identity, with `inter`.
+- `#print axioms` for each of the three: `[propext, Classical.choice, Quot.sound]`.
+- `Pear.lean` `74005276…be09`.
+
+This closes the "not run" item above. No independent kernel replay was run.

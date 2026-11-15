@@ -50,3 +50,13 @@ The correspondence record states these as inputs, and I found nothing inconsiste
 ## Acceptance
 
 No acceptance is recorded. A responsible human reviewer may record Lean-correspondence acceptance for the checked scope, preferably after the axiom print has been run.
+
+## Addendum: elaboration and axioms (15 November 2026)
+
+Run on 15 November 2026 by `hairer` on macOS (arm64), Lean 4.32.0 (commit `8c9756b28d64dab099da31a4c09229a9e6a2ef35`, the pinned toolchain), against a full local build of `Lean/` (`lake build Solution YM.TraceExtension.Terrace.Lease YM.TraceExtension.Shelves.Pear`: `Build completed successfully (18121 jobs)`). The check files were compiled with `lean -DmaxHeartbeats=0 -DmaxRecDepth=4096` and the `LEAN_PATH` of `lake env`. The script is `lean-review-checks.sh` (agent-written; local, not committed). The source files read for this review have the same SHA-256 on that machine as at the pin.
+
+- `#check @YM.Trace.Terrace.Prosper` and `#check @YM.Trace.Terrace.springs` elaborate. The printed statement of `springs` has exactly the hypotheses and conclusion described above (`steep`, `C.Makes`, `𝓛 ≤ F.fuse`, `Scrim`, `Gondola`, `Sceptre`, `PostT`, `G.Simple`, `Spun`, and the three marked limits with weight `hueK … (Stern V i)`), with conclusion `Prosper V hG a s`.
+- `#print axioms YM.Trace.Terrace.springs`: `[propext, Classical.choice, Quot.sound]`.
+- `Lease.lean` `7a8a4bed…8dee`, `Delta.lean` `ed76fb26…e29d`, `Prism.lean` `c0360eee…7e81`.
+
+This closes the "not run" item above. No independent kernel replay (lean4checker or Comparator) was run.
