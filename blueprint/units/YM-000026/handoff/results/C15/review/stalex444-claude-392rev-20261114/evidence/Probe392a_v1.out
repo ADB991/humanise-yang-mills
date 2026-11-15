@@ -1,0 +1,477 @@
+def YM.Next.Rank.Station.gainSky : YM.Schedule → ℕ → ℝ → ℕ :=
+fun T i r => {j ∈ Finset.range (i + 1) | r ≤ T.a j / T.a i}.sup id
+def YM.Next.Rank.Station.middleSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S k (YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2)
+def YM.Next.Rank.Station.widthSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S (YM.Next.Rank.Station.middleSky A b k) (↑(A.clock.coverSize k) ^ 10)
+def YM.Next.Rank.Station.mag : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℝ :=
+fun {G} A b k => A.clock.monitor k ^ b
+def YM.Next.Rank.Station.leastL : {G : YM.Gauge} → YM.RG.Levels G → ℕ → YM.Lattice.Side :=
+fun {G} A k => min (A.clock.factor (A.clock.J k)) (A.clock.factor (A.clock.J k - 1))
+def YM.Next.Rank.Station.wheelSky : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℝ :=
+fun {G} A k => ↑↑(YM.Next.Rank.Station.leastL A k)
+structure YM.Next.Rank.Station.AllowedSky {G : YM.Gauge} (A : YM.RG.Levels G) (b : ℝ) (k : ℕ) : Prop
+number of parameters: 4
+fields:
+  YM.Next.Rank.Station.AllowedSky.dilation : YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2 ≤
+      A.S.a (YM.Next.Rank.Station.middleSky A b k) / A.S.a k
+  YM.Next.Rank.Station.AllowedSky.depth : ↑(A.clock.coverSize k) ^ 10 ≤
+      A.S.a (YM.Next.Rank.Station.widthSky A b k) / A.S.a (YM.Next.Rank.Station.middleSky A b k)
+  YM.Next.Rank.Station.AllowedSky.large : 2 ≤ YM.Next.Rank.Station.wheelSky A k
+  YM.Next.Rank.Station.AllowedSky.bracket : ∀ (m : ℕ),
+      YM.Next.Rank.Station.widthSky A b k ≤ m → m ≤ k → A.clock.J k - 1 ≤ A.clock.J m
+constructor:
+  YM.Next.Rank.Station.AllowedSky.mk {G : YM.Gauge} {A : YM.RG.Levels G} {b : ℝ} {k : ℕ}
+    (dilation :
+      YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2 ≤ A.S.a (YM.Next.Rank.Station.middleSky A b k) / A.S.a k)
+    (depth :
+      ↑(A.clock.coverSize k) ^ 10 ≤
+        A.S.a (YM.Next.Rank.Station.widthSky A b k) / A.S.a (YM.Next.Rank.Station.middleSky A b k))
+    (large : 2 ≤ YM.Next.Rank.Station.wheelSky A k)
+    (bracket : ∀ (m : ℕ), YM.Next.Rank.Station.widthSky A b k ≤ m → m ≤ k → A.clock.J k - 1 ≤ A.clock.J m) :
+    YM.Next.Rank.Station.AllowedSky A b k
+structure YM.Next.Rank.Tapes.CorridorSky {G : YM.Gauge} (A : YM.RG.Levels G) (s : ℝ) (p : YM.Next.Rank.Tapes.Purse)
+  (k : ℕ) : Prop
+number of parameters: 5
+fields:
+  YM.Next.Rank.Tapes.CorridorSky.heft : YM.Next.Rank.Station.AllowedSky A s k
+  YM.Next.Rank.Tapes.CorridorSky.races : YM.Next.Rank.Tapes.Racer p (YM.Next.Rank.Atlas.clim A k)
+      (k - YM.Next.Rank.Station.middleSky A s k)
+  YM.Next.Rank.Tapes.CorridorSky.spend : YM.Next.Rank.Tapes.Faring p (YM.Next.Rank.Atlas.clim A k)
+  YM.Next.Rank.Tapes.CorridorSky.court : ∀ (i : ℕ),
+      YM.Next.Rank.Station.widthSky A s k ≤ i →
+        i ≤ k → YM.Next.Rank.Atlas.clim A i ∈ Set.Icc (YM.Next.Rank.Atlas.clim A k / 2) (YM.Next.Rank.Atlas.clim A k)
+constructor:
+  YM.Next.Rank.Tapes.CorridorSky.mk {G : YM.Gauge} {A : YM.RG.Levels G} {s : ℝ} {p : YM.Next.Rank.Tapes.Purse} {k : ℕ}
+    (heft : YM.Next.Rank.Station.AllowedSky A s k)
+    (races : YM.Next.Rank.Tapes.Racer p (YM.Next.Rank.Atlas.clim A k) (k - YM.Next.Rank.Station.middleSky A s k))
+    (spend : YM.Next.Rank.Tapes.Faring p (YM.Next.Rank.Atlas.clim A k))
+    (court :
+      ∀ (i : ℕ),
+        YM.Next.Rank.Station.widthSky A s k ≤ i →
+          i ≤ k →
+            YM.Next.Rank.Atlas.clim A i ∈ Set.Icc (YM.Next.Rank.Atlas.clim A k / 2) (YM.Next.Rank.Atlas.clim A k)) :
+    YM.Next.Rank.Tapes.CorridorSky A s p k
+structure YM.Next.Rank.Ship.AllocatedSky {G : YM.Gauge} (A : YM.RG.Levels G) (M k : ℕ) (O : YM.Next.Rank.HaarBudget G)
+  (b : ℝ) : Prop
+number of parameters: 6
+fields:
+  YM.Next.Rank.Ship.AllocatedSky.permitted : YM.Next.Rank.Station.AllowedSky A b k
+  YM.Next.Rank.Ship.AllocatedSky.charge : YM.Next.Rank.Station.ticket O (A.params (YM.Next.Rank.Station.widthSky A b k))
+        M ≤
+      YM.Next.Rank.Ship.pot A M k
+constructor:
+  YM.Next.Rank.Ship.AllocatedSky.mk {G : YM.Gauge} {A : YM.RG.Levels G} {M k : ℕ} {O : YM.Next.Rank.HaarBudget G}
+    {b : ℝ} (permitted : YM.Next.Rank.Station.AllowedSky A b k)
+    (charge :
+      YM.Next.Rank.Station.ticket O (A.params (YM.Next.Rank.Station.widthSky A b k)) M ≤ YM.Next.Rank.Ship.pot A M k) :
+    YM.Next.Rank.Ship.AllocatedSky A M k O b
+def YM.Next.Rank.Ship.pot : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℕ → ℝ :=
+fun {G} A M k => Real.log (A.clock.monitor k) / (16 * ↑M)
+structure YM.Next.Rank.Peak.ChargeSky {G : YM.Gauge} (a : YM.RG.Levels G) (b : ℝ) (k slot : ℕ)
+  (O : YM.Next.Rank.HaarBudget G) (D : YM.Next.Rank.Perch.Era) : Prop
+number of parameters: 7
+fields:
+  YM.Next.Rank.Peak.ChargeSky.allot : YM.Next.Rank.Ship.AllocatedSky a slot k O b
+  YM.Next.Rank.Peak.ChargeSky.tally : YM.Next.Rank.Perch.Tally (YM.Next.Rank.Station.wheelSky a k) (a.clock.hatBeta k) D
+      slot
+  YM.Next.Rank.Peak.ChargeSky.assured : ∀ (u : ℕ),
+      YM.Next.Rank.Station.widthSky a b k ≤ u →
+        u ≤ YM.Next.Rank.Station.middleSky a b k →
+          a.clock.hatBeta u ∈ Set.Icc (a.clock.hatBeta k / 2) (a.clock.hatBeta k)
+constructor:
+  YM.Next.Rank.Peak.ChargeSky.mk {G : YM.Gauge} {a : YM.RG.Levels G} {b : ℝ} {k slot : ℕ}
+    {O : YM.Next.Rank.HaarBudget G} {D : YM.Next.Rank.Perch.Era} (allot : YM.Next.Rank.Ship.AllocatedSky a slot k O b)
+    (tally : YM.Next.Rank.Perch.Tally (YM.Next.Rank.Station.wheelSky a k) (a.clock.hatBeta k) D slot)
+    (assured :
+      ∀ (u : ℕ),
+        YM.Next.Rank.Station.widthSky a b k ≤ u →
+          u ≤ YM.Next.Rank.Station.middleSky a b k →
+            a.clock.hatBeta u ∈ Set.Icc (a.clock.hatBeta k / 2) (a.clock.hatBeta k)) :
+    YM.Next.Rank.Peak.ChargeSky a b k slot O D
+structure YM.Next.Rank.Tapes.LaunchSky {G : YM.Gauge} (C : YM.Family G) (k : ℕ) (ξ : YM.Next.Rank.Tapes.Purse)
+  (w e : ℝ) : Prop
+number of parameters: 6
+fields:
+  YM.Next.Rank.Tapes.LaunchSky.pane : YM.Next.Rank.Paint.TableReady C k w (YM.Next.Rank.Tapes.load ξ.era) ξ.era.coast.a
+  YM.Next.Rank.Tapes.LaunchSky.year : YM.Next.Rank.Spindle.year C ξ.taylor k
+  YM.Next.Rank.Tapes.LaunchSky.length : ξ.taylor + 1 ≤ (C.path.levels.params k).order
+  YM.Next.Rank.Tapes.LaunchSky.grant : YM.Next.Rank.Paint.Rocket ξ.f (YM.Next.Rank.Tapes.load ξ.era) w ξ.era.coast.a
+      ξ.goal ξ.era.coast.Q ξ.taylor e (YM.Next.Rank.Atlas.clim C.path.levels k) (C.path.levels.params k)
+  YM.Next.Rank.Tapes.LaunchSky.coup : YM.Next.Rank.Tapes.CorridorSky C.path.levels ξ.band ξ k
+  YM.Next.Rank.Tapes.LaunchSky.numbers : ∀ n ≤ 2,
+      YM.Next.Rank.Tapes.Awakening ξ (YM.Next.Rank.Atlas.clim C.path.levels k) n
+constructor:
+  YM.Next.Rank.Tapes.LaunchSky.mk {G : YM.Gauge} {C : YM.Family G} {k : ℕ} {ξ : YM.Next.Rank.Tapes.Purse} {w e : ℝ}
+    (pane : YM.Next.Rank.Paint.TableReady C k w (YM.Next.Rank.Tapes.load ξ.era) ξ.era.coast.a)
+    (year : YM.Next.Rank.Spindle.year C ξ.taylor k) (length : ξ.taylor + 1 ≤ (C.path.levels.params k).order)
+    (grant :
+      YM.Next.Rank.Paint.Rocket ξ.f (YM.Next.Rank.Tapes.load ξ.era) w ξ.era.coast.a ξ.goal ξ.era.coast.Q ξ.taylor e
+        (YM.Next.Rank.Atlas.clim C.path.levels k) (C.path.levels.params k))
+    (coup : YM.Next.Rank.Tapes.CorridorSky C.path.levels ξ.band ξ k)
+    (numbers : ∀ n ≤ 2, YM.Next.Rank.Tapes.Awakening ξ (YM.Next.Rank.Atlas.clim C.path.levels k) n) :
+    YM.Next.Rank.Tapes.LaunchSky C k ξ w e
+structure YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky {G : YM.Gauge} {C : YM.Family G}
+  (B : YM.PhysicalNext.RankCovariance.Binding C) (J : YM.Precision.ChartRatio G) (w z : ℝ)
+  (ξ : YM.Next.Rank.Tapes.Purse) (k u D : ℕ) (O : YM.Next.Rank.HaarBudget G) (l r : ℝ) : Prop
+number of parameters: 13
+fields:
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.moves : YM.Next.Rank.Tapes.LaunchSky C k ξ w z
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.age : YM.Next.Rank.Peak.ChargeSky C.path.levels ξ.band k u O ξ.era
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.hours : YM.PhysicalNext.InteractingRank.ShowHoursSky J B ξ k w l r
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.token : YM.PhysicalNext.InteractingRank.Soft.VentsSky B ξ J l r k
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.clears : YM.PhysicalNext.RankCovariance.EarkSky
+      (YM.PhysicalNext.RankCovariance.prepared C.path.levels.clock.kernel) u (C.path.levels.clock.J k) D ξ.taylor ξ.band
+      (YM.Next.Rank.Station.wheelSky C.path.levels k) (YM.Next.Rank.Atlas.clim C.path.levels k)
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.room : ∀ n ≤ u,
+      YM.Next.Rank.Tapes.West.Caff ξ (YM.Next.Rank.Atlas.clim C.path.levels k)
+        (k - YM.Next.Rank.Station.middleSky C.path.levels ξ.band k) u n
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.tariff : ∀ n ≤ u,
+      ∀ (i : ℕ),
+        YM.Next.Rank.Station.widthSky C.path.levels ξ.band k ≤ i →
+          i < k →
+            ∀ x ∈ Set.Icc (YM.Next.Rank.Atlas.clim C.path.levels k / 2) (YM.Next.Rank.Atlas.clim C.path.levels k),
+              ∀ y ∈ Set.Icc (YM.Next.Rank.Atlas.clim C.path.levels k / 2) (YM.Next.Rank.Atlas.clim C.path.levels k),
+                ∀ (P R : YM.RG.BudgetPoint),
+                  P.B = YM.Next.Rank.Perch.walls y →
+                    R.B = YM.Next.Rank.Perch.walls x →
+                      YM.PhysicalNext.InteractingRank.Display.Docking.TimeBand ξ.era (↑ξ.goal)
+                        (C.path.levels.clock.factor (C.path.levels.clock.J (i + 1))) P R x y
+                        (YM.Next.Rank.Atlas.clim C.path.levels k) n
+constructor:
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.mk {G : YM.Gauge} {C : YM.Family G}
+    {B : YM.PhysicalNext.RankCovariance.Binding C} {J : YM.Precision.ChartRatio G} {w z : ℝ}
+    {ξ : YM.Next.Rank.Tapes.Purse} {k u D : ℕ} {O : YM.Next.Rank.HaarBudget G} {l r : ℝ}
+    (moves : YM.Next.Rank.Tapes.LaunchSky C k ξ w z)
+    (age : YM.Next.Rank.Peak.ChargeSky C.path.levels ξ.band k u O ξ.era)
+    (hours : YM.PhysicalNext.InteractingRank.ShowHoursSky J B ξ k w l r)
+    (token : YM.PhysicalNext.InteractingRank.Soft.VentsSky B ξ J l r k)
+    (clears :
+      YM.PhysicalNext.RankCovariance.EarkSky (YM.PhysicalNext.RankCovariance.prepared C.path.levels.clock.kernel) u
+        (C.path.levels.clock.J k) D ξ.taylor ξ.band (YM.Next.Rank.Station.wheelSky C.path.levels k)
+        (YM.Next.Rank.Atlas.clim C.path.levels k))
+    (room :
+      ∀ n ≤ u,
+        YM.Next.Rank.Tapes.West.Caff ξ (YM.Next.Rank.Atlas.clim C.path.levels k)
+          (k - YM.Next.Rank.Station.middleSky C.path.levels ξ.band k) u n)
+    (tariff :
+      ∀ n ≤ u,
+        ∀ (i : ℕ),
+          YM.Next.Rank.Station.widthSky C.path.levels ξ.band k ≤ i →
+            i < k →
+              ∀ x ∈ Set.Icc (YM.Next.Rank.Atlas.clim C.path.levels k / 2) (YM.Next.Rank.Atlas.clim C.path.levels k),
+                ∀ y ∈ Set.Icc (YM.Next.Rank.Atlas.clim C.path.levels k / 2) (YM.Next.Rank.Atlas.clim C.path.levels k),
+                  ∀ (P R : YM.RG.BudgetPoint),
+                    P.B = YM.Next.Rank.Perch.walls y →
+                      R.B = YM.Next.Rank.Perch.walls x →
+                        YM.PhysicalNext.InteractingRank.Display.Docking.TimeBand ξ.era (↑ξ.goal)
+                          (C.path.levels.clock.factor (C.path.levels.clock.J (i + 1))) P R x y
+                          (YM.Next.Rank.Atlas.clim C.path.levels k) n) :
+    YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J w z ξ k u D O l r
+def YM.RG.Calendar.hatBeta : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.bar + G.slopeConstant * S.schedule.scale m
+def YM.RG.Calendar.hatCoupling : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => (√(S.hatBeta m))⁻¹
+def YM.RG.Calendar.monitor : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => Real.exp (Real.log (Real.log (S.hatBeta m)) ^ 2)
+def YM.RG.Calendar.coverSize : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℕ :=
+fun {G} S m => ⌈Real.log (S.hatBeta m) ^ 2⌉₊
+def YM.RG.Calendar.threshold : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.hatCoupling m * S.monitor m
+Probe392a_v1.lean:58:7: error(lean.unknownIdentifier): Unknown constant `YM.Next.Rank.clim`
+def YM.Next.Rank.Perch.y : ℝ → ℝ :=
+fun s => Real.log (Real.log s)
+def YM.Next.Rank.Perch.M : ℝ → ℕ :=
+fun s => ⌈Real.log s ^ 2⌉₊
+def YM.Next.Rank.Perch.walls : ℝ → ℕ :=
+fun s => YM.Next.Rank.Perch.M s ^ 2
+def YM.Next.Rank.Perch.hot : ℝ → ℝ :=
+fun s => Real.exp (YM.Next.Rank.Perch.y s ^ (3 / 2))
+structure YM.PhysicalNext.InteractingRank.Soft.Novice {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ}
+  (c : YM.Next.Rank.Course C N p k) (i : ℕ) (P : YM.RG.Rep G (C.side i p)) (h : i ≤ N) : Prop
+number of parameters: 9
+fields:
+  YM.PhysicalNext.InteractingRank.Soft.Novice.chand : YM.PhysicalNext.InteractingRank.Soft.Ferm P c h
+  YM.PhysicalNext.InteractingRank.Soft.Novice.budget : P.p.B = YM.Next.Rank.Perch.walls (C.path.levels.clock.hatBeta i)
+  YM.PhysicalNext.InteractingRank.Soft.Novice.threshold : P.p.threshold =
+      C.path.levels.clock.hatCoupling i * YM.Next.Rank.Perch.hot (C.path.levels.clock.hatBeta i)
+constructor:
+  YM.PhysicalNext.InteractingRank.Soft.Novice.mk {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ}
+    {c : YM.Next.Rank.Course C N p k} {i : ℕ} {P : YM.RG.Rep G (C.side i p)} {h : i ≤ N}
+    (chand : YM.PhysicalNext.InteractingRank.Soft.Ferm P c h)
+    (budget : P.p.B = YM.Next.Rank.Perch.walls (C.path.levels.clock.hatBeta i))
+    (threshold :
+      P.p.threshold = C.path.levels.clock.hatCoupling i * YM.Next.Rank.Perch.hot (C.path.levels.clock.hatBeta i)) :
+    YM.PhysicalNext.InteractingRank.Soft.Novice c i P h
+structure YM.PhysicalNext.InteractingRank.Soft.Ferm {G : YM.Gauge} {C : YM.Family G} {N i p k : ℕ}
+  (O : YM.RG.Rep G (C.side i p)) (c : YM.Next.Rank.Course C N p k) (hm : i ≤ N) : Prop
+number of parameters: 9
+fields:
+  YM.PhysicalNext.InteractingRank.Soft.Ferm.tied : c.Uses i hm O
+  YM.PhysicalNext.InteractingRank.Soft.Ferm.proper : ∃ σ g A δ w,
+      YM.Next.Rank.Station.Meets C.path.levels i p O g A δ ∧
+        YM.PhysicalNext.InteractingRank.Soft.Tissue O σ (C.path.levels.params i).paths A δ w
+constructor:
+  YM.PhysicalNext.InteractingRank.Soft.Ferm.mk {G : YM.Gauge} {C : YM.Family G} {N i p k : ℕ}
+    {O : YM.RG.Rep G (C.side i p)} {c : YM.Next.Rank.Course C N p k} {hm : i ≤ N} (tied : c.Uses i hm O)
+    (proper :
+      ∃ σ g A δ w,
+        YM.Next.Rank.Station.Meets C.path.levels i p O g A δ ∧
+          YM.PhysicalNext.InteractingRank.Soft.Tissue O σ (C.path.levels.params i).paths A δ w) :
+    YM.PhysicalNext.InteractingRank.Soft.Ferm O c hm
+structure YM.Next.Rank.Station.Meets {G : YM.Gauge} (A : YM.RG.Levels G) (m p : ℕ) (P : YM.RG.Rep G (A.S.side m p))
+  (g Λ δ : ℝ) : Prop
+number of parameters: 8
+fields:
+  YM.Next.Rank.Station.Meets.same : P.clip = (A.params m).clip
+  YM.Next.Rank.Station.Meets.cap : P.beta ≤ 4 * A.clock.hatBeta m
+  YM.Next.Rank.Station.Meets.assigned : P.beta * g ^ 2 = 1
+  YM.Next.Rank.Station.Meets.positive : 0 < g
+  YM.Next.Rank.Station.Meets.entrance : g ≤ P.p.threshold
+  YM.Next.Rank.Station.Meets.max_threshold : P.p.threshold ≤ A.clock.threshold m
+  YM.Next.Rank.Station.Meets.cap_E : δ ≤ 1
+  YM.Next.Rank.Station.Meets.loopCap : Λ ≤ A.clock.loopCap m
+constructor:
+  YM.Next.Rank.Station.Meets.mk {G : YM.Gauge} {A : YM.RG.Levels G} {m p : ℕ} {P : YM.RG.Rep G (A.S.side m p)}
+    {g Λ δ : ℝ} (same : P.clip = (A.params m).clip) (cap : P.beta ≤ 4 * A.clock.hatBeta m)
+    (assigned : P.beta * g ^ 2 = 1) (positive : 0 < g) (entrance : g ≤ P.p.threshold)
+    (max_threshold : P.p.threshold ≤ A.clock.threshold m) (cap_E : δ ≤ 1) (loopCap : Λ ≤ A.clock.loopCap m) :
+    YM.Next.Rank.Station.Meets A m p P g Λ δ
+structure YM.Next.Rank.Course.Uses {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ} (X : YM.Next.Rank.Course C N p k)
+  (m : ℕ) (hm : m ≤ N) (P : YM.RG.Rep G (C.side m p)) : Prop
+number of parameters: 9
+fields:
+  YM.Next.Rank.Course.Uses.density : X.vacuum m hm = P.eval
+  YM.Next.Rank.Course.Uses.coupling : X.changeβ m = P.beta
+constructor:
+  YM.Next.Rank.Course.Uses.mk {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ} {X : YM.Next.Rank.Course C N p k} {m : ℕ}
+    {hm : m ≤ N} {P : YM.RG.Rep G (C.side m p)} (density : X.vacuum m hm = P.eval) (coupling : X.changeβ m = P.beta) :
+    X.Uses m hm P
+structure YM.PhysicalNext.InteractingRank.Soft.NylonSky {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ}
+  (c : YM.Next.Rank.Course C N p k) (P : (i : ℕ) → YM.RG.Rep G (C.side i p)) (X : YM.Next.Rank.Atlas.AtlasData G C.S p)
+  (R : YM.Next.Rank.Tapes.Lead G C.S p) (ξ : YM.Next.Rank.Tapes.Purse) : Prop
+number of parameters: 10
+fields:
+  YM.PhysicalNext.InteractingRank.Soft.NylonSky.use_ : ∀ (i : ℕ),
+      YM.Next.Rank.Station.widthSky C.path.levels ξ.band k ≤ i →
+        ∀ (H : i ≤ k), YM.PhysicalNext.InteractingRank.Soft.Novice c i (P i) ⋯
+  YM.PhysicalNext.InteractingRank.Soft.NylonSky.backing : ∃ T c',
+      YM.Next.Rank.Tapes.MarketGrantSky c' T X R ξ ∧ T k = P k
+constructor:
+  YM.PhysicalNext.InteractingRank.Soft.NylonSky.mk {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ}
+    {c : YM.Next.Rank.Course C N p k} {P : (i : ℕ) → YM.RG.Rep G (C.side i p)}
+    {X : YM.Next.Rank.Atlas.AtlasData G C.S p} {R : YM.Next.Rank.Tapes.Lead G C.S p} {ξ : YM.Next.Rank.Tapes.Purse}
+    (use_ :
+      ∀ (i : ℕ),
+        YM.Next.Rank.Station.widthSky C.path.levels ξ.band k ≤ i →
+          ∀ (H : i ≤ k), YM.PhysicalNext.InteractingRank.Soft.Novice c i (P i) ⋯)
+    (backing : ∃ T c', YM.Next.Rank.Tapes.MarketGrantSky c' T X R ξ ∧ T k = P k) :
+    YM.PhysicalNext.InteractingRank.Soft.NylonSky c P X R ξ
+@YM.PhysicalNext.InteractingRank.Soft.embroideredSky : ∀ {G : YM.Gauge} {C : YM.Family G} {N p k : ℕ} {w r l a : ℝ}
+  (B : YM.PhysicalNext.RankCovariance.Binding C) (J : YM.Precision.ChartRatio G) (F : YM.Next.Rank.Course C N p k)
+  (ξ : YM.Next.Rank.Tapes.Purse),
+  C.Makes →
+    ∀ (H : YM.PhysicalNext.InteractingRank.ShowHoursSky J B ξ k w l r),
+      YM.PhysicalNext.InteractingRank.Soft.VentsSky B ξ J l r k →
+        ∀ (O : YM.Next.Rank.Tapes.LaunchSky C k ξ w a) (V : (i : ℕ) → YM.RG.Rep G (C.side i p)),
+          YM.PhysicalNext.InteractingRank.Soft.WhipSky B J ξ H O F V
+              (YM.Next.Rank.Station.widthSky C.path.levels ξ.band k) ⋯ →
+            0 ≤ ξ.band →
+              YM.PhysicalNext.InteractingRank.Soft.NylonSky F V (YM.PhysicalNext.RankCovariance.stamp C.path.levels N p)
+                (YM.PhysicalNext.InteractingRank.short B N p) ξ
+'YM.PhysicalNext.InteractingRank.Soft.embroideredSky' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YM.MergeProof.ActumSky {G : YM.Gauge} {C : YM.Family G} (B : YM.PhysicalNext.RankCovariance.Binding C)
+  (H : C.Makes) (O : YM.Next.Rank.HaarBudget G) (J : YM.Precision.ChartRatio G) {k N p d s : ℕ}
+  (M : YM.Next.Rank.Tapes.Panel d) {z l v : ℝ}
+  (Z : YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z (M.bag (C.path.levels.clock.J k)) k s d O l v)
+  (V : YM.RG.Rep G (C.side k p)) (h : N > k) : Prop
+number of parameters: 18
+fields:
+  YM.MergeProof.ActumSky.pays : YM.MergeProof.Emblem H (M.bag (C.path.levels.clock.J k)) k N p V
+  YM.MergeProof.ActumSky.acts : ∃ P,
+      P k = V ∧
+        YM.PhysicalNext.InteractingRank.Soft.WhipSky B J (M.bag (C.path.levels.clock.J k)) ⋯ ⋯
+          (YM.PhysicalNext.InteractingRank.Soft.isohypse H ⋯ p) P
+          (YM.Next.Rank.Station.widthSky C.path.levels (M.bag (C.path.levels.clock.J k)).band k) ⋯
+constructor:
+  YM.MergeProof.ActumSky.mk {G : YM.Gauge} {C : YM.Family G} {B : YM.PhysicalNext.RankCovariance.Binding C}
+    {H : C.Makes} {O : YM.Next.Rank.HaarBudget G} {J : YM.Precision.ChartRatio G} {k N p d s : ℕ}
+    {M : YM.Next.Rank.Tapes.Panel d} {z l v : ℝ}
+    {Z : YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z (M.bag (C.path.levels.clock.J k)) k s d O l v}
+    {V : YM.RG.Rep G (C.side k p)} {h : N > k} (pays : YM.MergeProof.Emblem H (M.bag (C.path.levels.clock.J k)) k N p V)
+    (acts :
+      ∃ P,
+        P k = V ∧
+          YM.PhysicalNext.InteractingRank.Soft.WhipSky B J (M.bag (C.path.levels.clock.J k)) ⋯ ⋯
+            (YM.PhysicalNext.InteractingRank.Soft.isohypse H ⋯ p) P
+            (YM.Next.Rank.Station.widthSky C.path.levels (M.bag (C.path.levels.clock.J k)).band k) ⋯) :
+    YM.MergeProof.ActumSky B H O J M Z V h
+structure YM.MergeProof.East.PoisedSky {G : YM.Gauge} {C : YM.Family G} {D : ℕ} {ι : Type}
+  (P : ι → YM.Next.Rank.Tapes.Panel D) (B : YM.PhysicalNext.RankCovariance.Binding C) (H : C.Makes)
+  (O : YM.Next.Rank.HaarBudget G) (J : YM.Precision.ChartRatio G) (n : ℕ) (z : ℝ) (k : ℕ)
+  (t : ℕ → ℕ → YM.MergeProof.East.TableL C D) : Prop
+number of parameters: 13
+fields:
+  YM.MergeProof.East.PoisedSky.early : ∀ d ≤ D, C.ref d ≤ k
+  YM.MergeProof.East.PoisedSky.limit : max ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k))
+        ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k - 1)) ≤
+      C.path.levels.clock.monitor k
+  YM.MergeProof.East.PoisedSky.charts : ∀ (N p : ℕ), k < N → YM.MergeProof.East.Charting D k (t N p) N p
+  YM.MergeProof.East.PoisedSky.bank : ∀ (N p : ℕ),
+      k < N → ∀ (i : Fin (D + 1)), YM.Next.Rank.East.InvoiceSky C k N p (↑i) (t N p i)
+  YM.MergeProof.East.PoisedSky.supply : ∀ (χ : ι),
+      ∃ l r,
+        ∃ (h :
+          YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z ((P χ).bag (C.path.levels.clock.J k)) k n D O l
+            r),
+          ∀ (N p : ℕ) (hx : k < N),
+            ∃ V, YM.MergeProof.ActumSky B H O J (P χ) h V hx ∧ ∀ (d : Fin (D + 1)), ∃ L, L.T = t N p d
+constructor:
+  YM.MergeProof.East.PoisedSky.mk {G : YM.Gauge} {C : YM.Family G} {D : ℕ} {ι : Type}
+    {P : ι → YM.Next.Rank.Tapes.Panel D} {B : YM.PhysicalNext.RankCovariance.Binding C} {H : C.Makes}
+    {O : YM.Next.Rank.HaarBudget G} {J : YM.Precision.ChartRatio G} {n : ℕ} {z : ℝ} {k : ℕ}
+    {t : ℕ → ℕ → YM.MergeProof.East.TableL C D} (early : ∀ d ≤ D, C.ref d ≤ k)
+    (limit :
+      max ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k))
+          ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k - 1)) ≤
+        C.path.levels.clock.monitor k)
+    (charts : ∀ (N p : ℕ), k < N → YM.MergeProof.East.Charting D k (t N p) N p)
+    (bank : ∀ (N p : ℕ), k < N → ∀ (i : Fin (D + 1)), YM.Next.Rank.East.InvoiceSky C k N p (↑i) (t N p i))
+    (supply :
+      ∀ (χ : ι),
+        ∃ l r,
+          ∃ (h :
+            YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z ((P χ).bag (C.path.levels.clock.J k)) k n D O
+              l r),
+            ∀ (N p : ℕ) (hx : k < N),
+              ∃ V, YM.MergeProof.ActumSky B H O J (P χ) h V hx ∧ ∀ (d : Fin (D + 1)), ∃ L, L.T = t N p d) :
+    YM.MergeProof.East.PoisedSky P B H O J n z k t
+def YM.MergeProof.East.Charting : {G : YM.Gauge} →
+  {C : YM.Family G} → (D0 : ℕ) → ℕ → YM.MergeProof.East.TableL C D0 → ℕ → ℕ → Prop :=
+fun {G} {C} D0 k p N P =>
+  ∀ (d : Fin (D0 + 1)),
+    YM.Next.Rank.Price.Tested C (↑d) k N P (p d) ∧
+      ∀ (s : YM.Signed) (x : (C.labels.level ↑d).Coeff),
+        (p d) ((YM.Next.Rank.East.mir (C.labels.level ↑d) s) x) =
+          (YM.Next.Rank.East.mir (C.labels.level ↑d) s) ((p d) x)
+structure YM.Next.Rank.Price.Tested {G : YM.Gauge} (C : YM.Family G) (d k N p : ℕ) (read : C.label d →ₗ[ℂ] C.label d) :
+  Prop
+number of parameters: 7
+fields:
+  YM.Next.Rank.Price.Tested.unit : read (C.refUnit d) = (C.labels.level d).e0
+  YM.Next.Rank.Price.Tested.preserves : ∀ (v : C.label d), read (star v) = star (read v)
+  YM.Next.Rank.Price.Tested.score : ∀ (v : C.label d),
+      let F := C.labels.level d;
+      let a := YM.Next.Rank.Price.awake C d k N p v;
+      F.coeffSize (a - read v) ≤ F.coeffSize a / 2
+constructor:
+  YM.Next.Rank.Price.Tested.mk {G : YM.Gauge} {C : YM.Family G} {d k N p : ℕ} {read : C.label d →ₗ[ℂ] C.label d}
+    (unit : read (C.refUnit d) = (C.labels.level d).e0) (preserves : ∀ (v : C.label d), read (star v) = star (read v))
+    (score :
+      ∀ (v : C.label d),
+        let F := C.labels.level d;
+        let a := YM.Next.Rank.Price.awake C d k N p v;
+        F.coeffSize (a - read v) ≤ F.coeffSize a / 2) :
+    YM.Next.Rank.Price.Tested C d k N p read
+@[reducible] def YM.Family.refUnit : {G : YM.Gauge} → (C : YM.Family G) → (d : ℕ) → (C.labels.level d).Coeff :=
+fun {G} C d => YM.Source.unitVec (C.labels.level d) C.path (C.ref d)
+def YM.Source.unitVec : {G : YM.Gauge} → {d : ℕ} → (F : YM.Labels.Frame G d) → YM.RG.History G → ℕ → F.Coeff :=
+fun {G} {d} F H m => ↑(H.S.a m) ^ d • F.e0
+def YM.Labels.Frame.e0 : {G : YM.Gauge} → {d : ℕ} → (F : YM.Labels.Frame G d) → F.Coeff :=
+fun {G} {d} F => Pi.single 0 1
+@YM.Next.Rank.Ribbon.StampDuty.T : {G : YM.Gauge} →
+  {C : YM.Family G} →
+    {k N p d D : ℕ} →
+      {Q : YM.RG.Rep G (C.side k p)} →
+        {q : ℕ} →
+          {X : YM.Next.Rank.Atlas.AtlasData G C.S p} →
+            YM.Next.Rank.Ribbon.StampDuty C k N p d D Q q X → Module.End ℂ (C.label d)
+def YM.Next.Rank.Price.awake : {G : YM.Gauge} → (C : YM.Family G) → (D : ℕ) → ℕ → ℕ → ℕ → C.label D → C.label D :=
+fun {G} C D k N p v => (↑(C.S.a k) ^ D)⁻¹ • YM.Next.Rank.Price.columns C D k N p v
+def YM.Next.Rank.Price.shrink : {G : YM.Gauge} → YM.Family G → ℕ → ℕ → ℕ → ℝ :=
+fun {G} C k N p => (√(C.path.β N p k))⁻¹ / C.path.levels.clock.threshold k
+def YM.Next.Rank.Price.weightTag : {G : YM.Gauge} → (C : YM.Family G) → (d : ℕ) → ℝ → C.label d →ₗ[ℂ] C.label d :=
+fun {G} C d ρ => { toFun := fun v i => ↑ρ ^ ((C.labels.level d).grades i).1 * v i, map_add' := ⋯, map_smul' := ⋯ }
+def YM.Next.Rank.Price.Solves : {G : YM.Gauge} →
+  (C : YM.Family G) → ℝ → (d : ℕ) → ℕ → ℕ → ℕ → (C.label d →ₗ[ℂ] C.label d) → C.label d → C.label d → Prop :=
+fun {G} C ρ d k N p T basis v =>
+  ((C.labels.level d).scaled (YM.Next.Rank.Price.shrink C k N p)) (T v) = (YM.Next.Rank.Price.weightTag C d ρ) basis
+@YM.Next.Rank.Price.Tested.bijective : ∀ {G : YM.Gauge} (C : YM.Family G) {d N p k : ℕ},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N → ∀ (read : C.label d →ₗ[ℂ] C.label d), YM.Next.Rank.Price.Tested C d k N p read → Function.Bijective ⇑read
+'YM.Next.Rank.Price.Tested.bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Price.reference_size : ∀ {G : YM.Gauge} (C : YM.Family G) {d N k : ℕ},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N →
+        ∀ (p : ℕ) (v : C.book.Ref d),
+          (C.labels.level d).coeffSize v ≤
+            YM.Next.Rank.Price.outward C d k * C.S.a k ^ d *
+              (C.labels.level d).coeffSize (YM.Next.Rank.Price.awake C d k N p v)
+'YM.Next.Rank.Price.reference_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Price.solve : ∀ {G : YM.Gauge} (C : YM.Family G) {d N p k : ℕ},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N →
+        ∀ {read : C.label d →ₗ[ℂ] C.label d},
+          YM.Next.Rank.Price.Tested C d k N p read →
+            ∀ (v : C.label d) (ρ : ℝ), ∃! u, YM.Next.Rank.Price.Solves C ρ d k N p read v u
+'YM.Next.Rank.Price.solve' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Price.shrink_pos : ∀ {G : YM.Gauge} (C : YM.Family G) {N k : ℕ},
+  C.Makes → k ≤ N → ∀ (p : ℕ), 0 < YM.Next.Rank.Price.shrink C k N p
+def YM.Next.Rank.East.ladd : {G : YM.Gauge} →
+  (C : YM.Family G) → ℝ → ℕ → ℕ → ℕ → (d : ℕ) → Module.End ℂ (C.label d) → C.label d →ₗ[ℂ] C.label d :=
+fun {G} C b k N p d T =>
+  if h : Function.Bijective ⇑T then
+    ↑(LinearEquiv.ofBijective T h).symm ∘ₗ
+      (C.labels.level d).scaled (YM.Next.Rank.Price.shrink C k N p)⁻¹ ∘ₗ YM.Next.Rank.Price.weightTag C d b
+  else 0
+@YM.Next.Rank.East.poured : ∀ {G : YM.Gauge} {d k N p : ℕ} {C : YM.Family G},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N →
+        ∀ (b : ℝ) (T : Module.End ℂ (C.label d)),
+          YM.Next.Rank.Price.Tested C d k N p T →
+            ∀ (x : C.label d), YM.Next.Rank.Price.Solves C b d k N p T x ((YM.Next.Rank.East.ladd C b k N p d T) x)
+'YM.Next.Rank.East.poured' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.East.pure_start : ∀ {G : YM.Gauge} {d k N p : ℕ} {C : YM.Family G},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N →
+        ∀ (b : ℝ) (T : Module.End ℂ (C.label d)),
+          YM.Next.Rank.Price.Tested C d k N p T →
+            (YM.Next.Rank.East.ladd C b k N p d T) (C.labels.level d).e0 = C.refUnit d
+@YM.Next.Rank.Station.gain_fee : ∀ {T : YM.Schedule} {i j : ℕ} {r : ℝ},
+  j ≤ i → r ≤ T.a j / T.a i → j ≤ YM.Next.Rank.Station.gainSky T i r
+@YM.Next.Rank.Station.gain_high : ∀ {T : YM.Schedule} {i j : ℕ} {r : ℝ},
+  j ≤ i → r ≤ T.a j / T.a i → r ≤ T.a (YM.Next.Rank.Station.gainSky T i r) / T.a i
+Probe392a_v1.lean:101:30: error(lean.unknownIdentifier): Unknown identifier `YM.RG.Schedule`
+Probe392a_v1.lean:102:62: error: unsolved goals
+T : sorry
+i : ℕ
+r : ℝ
+h : ∀ j ≤ i, ¬r ≤ sorry / sorry
+⊢ {j ∈ Finset.range (i + 1) | r ≤ sorry.a j / sorry.a i}.sup id = 0
+Probe392a_v1.lean:111:0: error: Not a definitional equality: the left-hand side
+  widthSky A b k
+is not definitionally equal to the right-hand side
+  gainSky A.S (middleSky A b k) ↑⌈Real.log (A.clock.hatBeta k) ^ 2⌉₊ ^ 10
+Probe392a_v1.lean:114:72: error: Type mismatch
+  ⋯
+has type
+  ?m.34 = ?m.34
+but is expected to have type
+  widthSky A b k = gainSky A.S (middleSky A b k) ↑⌈Real.log (A.clock.hatBeta k) ^ 2⌉₊ ^ 10
+'probe_gain_empty' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'probe_hot_le_monitor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_rep_le_clock' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_novice_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe392a_v1.lean:191:11: warning: Variable name `hw` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'probe_plateau_of_poised' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_history_of_poised' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_corrected_label_of_poised' depends on axioms: [propext, Classical.choice, Quot.sound]

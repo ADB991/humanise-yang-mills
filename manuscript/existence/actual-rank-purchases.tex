@@ -331,52 +331,131 @@ through the history or the readout. For a chart at level $k$ with base
 arc $b\le\bar b$, let $\ell$ and $w$ be its middle level and root depth.
 Write $s=\widehat\beta_k$ and $y=\log\log s$.
 
-We use one further input, the running estimate of
-Section~\ref{sec:surviving-interval-shooting} with its slope identified
-with the clock slope $s_G$:
-\begin{enumerate}
-\item[(R)] for every $\eta>0$ there is $m_0(\eta)$ such that
- $|\beta_{N,p,m}-\widehat\beta_m|\le|\bar\beta-\beta_*|+\eta s_m$ for
- all $m\ge m_0(\eta)$, $N\ge m$ and $p$.
-\end{enumerate}
+We use the running estimate of the selected couplings relative to the
+clock line. Let $\bar\beta$ be the intercept of
+Section~\ref{sec:surviving-interval-shooting} and $b$ the prescribed
+level-zero coupling of the selected histories, so that
+$|b-\bar\beta|\le\bar\beta/2$, and put $c_R=|b-\bar\beta|+|\bar\beta-\beta_*|$.
+
+\begin{lemma}[The running estimate on the clock line]
+\label{lem:rank-trace-running}
+For every $\eta>0$ there is $m_0(\eta)$ such that
+\[
+ |\beta_{N,p,m}-\widehat\beta_m|\le c_R+\eta s_m
+\]
+for all $m\ge m_0(\eta)$, all $N\ge m$ and all $p$. Here
+$\widehat\beta_m=\beta_*+s_Gs_m$ is the clock of
+Section~\ref{sec:common-scale-selection}.
+\end{lemma}
+\begin{proof}
+In the notation of Section~\ref{sec:surviving-interval-shooting}, the
+block side of level $i$ is $L_i=L_{J(i+1)}$ and the stage allowance is
+$\varepsilon_{i+1}=\varepsilon_{J(i+1)}$, as recorded at the end of
+the drift paragraph of Section~\ref{sec:common-scale-selection}. Since
+$s_0=0$ and $s_{i+1}=s_i+\log L_{J(i+1)}$, the accumulated scale of that
+section is $S_i=s_i$, and its line is
+$\bar\beta+s_GS_i=\widehat\beta_i+(\bar\beta-\beta_*)$. The selected
+history at cutoff $N$ and period $p$ is a shooting history of that
+section, with level-zero coupling $b$
+(Section~\ref{sec:common-funded-history}). Hence
+\eqref{eq:shoot-running-error} gives
+\[
+ |\beta_{N,p,i}-\widehat\beta_i|
+   \le E_i+|b-\bar\beta|+|\bar\beta-\beta_*|=E_i+c_R ,
+\]
+with $E_i=\sum_{j<i}\varepsilon_{j+1}$, which depends only on the
+schedule, not on $N$ or $p$. The drift condition
+\eqref{eq:shoot-drift-ratio} holds on the selected schedule. As shown at
+the end of that section, for given $\eta>0$ choose $j$ with
+$J_{i+1}^{-2}\le\eta/2$ for $i\ge j$. Then
+$E_i\le E_j+\tfrac\eta2(s_i-s_j)$, and since $s_i\to\infty$, eventually
+$E_j\le\tfrac\eta2s_i$. So $E_i\le\eta s_i$ for all $i$ beyond a
+threshold depending only on $\eta$.
+\end{proof}
+
+The slope here is the clock slope $s_G$, which is the slope of the
+shooting construction by definition. Its identification with the one-loop
+coefficient $2b_0(G)$ is needed for the public running consequence, not
+here.
 
 \begin{lemma}[The endpoint coupling bound]
 \label{lem:rank-trace-endpoint}
-Under (R), for all sufficiently large $k$, every $N\ge k$ and every $p$,
+For all sufficiently large $k$, every $N\ge k$ and every $p$,
 \[
  |\beta_{N,p,k}-\widehat\beta_k|\le\widehat\beta_k/8 .
 \]
 \end{lemma}
 \begin{proof}
-Take $\eta=s_G/16$. Since $s_k\to\infty$, eventually
-$|\bar\beta-\beta_*|\le s_Gs_k/16$. Then the right side of (R) is at
-most $s_Gs_k/8\le\widehat\beta_k/8$, because
+Take $\eta=s_G/16$ in Lemma~\ref{lem:rank-trace-running}. Since
+$s_k\to\infty$, eventually $c_R\le s_Gs_k/16$. Then the right side there
+is at most $s_Gs_k/8\le\widehat\beta_k/8$, because
 $\widehat\beta_k=\beta_*+s_Gs_k\ge s_Gs_k$.
 \end{proof}
 
 Two further inputs are needed on the chart window. They are not proved in
-this section.
+this book. The second collects in one statement four assumptions that are
+made separately in Sections~\ref{sec:allarity-coordinate-calibration},
+\ref{sec:allarity-cumulant-comparison}
+and~\ref{sec:marked-healthy-cumulant-launch}.
 \begin{enumerate}
-\item[(V)] \emph{Variable-profile one-step interface.} The one-step
- hypotheses of the constant-coupling auxiliary history of
- Section~\ref{sec:restarted-rank-history} are preserved by a step whose
- incoming and outgoing stage profiles are any of the pairs
- $(J(k),J(k))$, $(J(k),J(k)-1)$ and $(J(k)-1,J(k)-1)$. That is, the
- output of a step at one profile satisfies the hypotheses of the next
- step at the other. That section fixes one block ratio and does not state
- such a transition.
-\item[(T)] \emph{Local readout.} At every sufficiently large level $k$,
- on the same endpoint, for all sufficiently large $N$ uniformly in $p$,
- there is a tested map $T_{k,N,p}$ satisfying
- \eqref{eq:rank-common-tested} for every label vector. The readout used
- for the rank tests above is attributed to
- Section~\ref{sec:allarity-coordinate-calibration}. That section assumes a
- tested map with these properties and does not construct one.
+\item[(V)] \emph{Restarted steps of the window.} At every step of the
+ window $[w,k]$, from a level $m+1$ to $m$, the restarted step at the
+ constant coupling $\beta_{N,p,k}$, with the clips, budget radius and
+ support data of its stage pair $(J(m+1),J(m))$, satisfies the component
+ bounds (V1), the path correction (V2) and the reassembly (V3) of
+ Subsection~\ref{subsec:restart-stage-boundary}. The pair is one of
+ $(J(k),J(k))$, $(J(k),J(k)-1)$ and $(J(k)-1,J(k)-1)$. The purchases of
+ Section~\ref{sec:common-funded-history} concern the selected history and
+ do not supply these bounds for the restarted step.
+\item[(T)] \emph{Calibrated insertion receipt.} At every sufficiently
+ large level $k$, on the same endpoint, for all sufficiently large $N$
+ uniformly in $p$, and for every grade $d'\le d$, there are an actual
+ polynomial map $\mathcal H=\mathcal H_{k,N,p}$, assigning to each label
+ $u$ of grade $d'$ a local polynomial insertion $\mathcal Hu$ in the reader
+ coordinates, and a linear map $T=T_{k,N,p}$ with the following
+ properties.
+ \begin{enumerate}
+ \item[(T1)] \emph{Low-grade reading.} $T$ is the low-grade reading of
+  $\mathcal H$. For every label $u$, the grade truncation of $\mathcal Hu$,
+  after substitution of the actual linear reader map at level $k$, is the
+  free polynomial whose frame coefficients are $Tu$ in the retained common
+  normalization of Section~\ref{sec:allarity-coordinate-calibration},
+  that is, rescaled by the coupling factor of the reader coordinates at
+  level $k$. In particular, for the lifts
+  of \eqref{eq:rank-common-lifts} the exact low-grade identity of
+  Section~\ref{sec:allarity-cumulant-comparison} holds.
+ \item[(T2)] \emph{Tested.} $T$ satisfies \eqref{eq:rank-common-tested}:
+  $Te_0=e_0$, $T\bar v=\overline{Tv}$, and
+  $|A_{k,N,p}v-Tv|_1\le\frac12|A_{k,N,p}v|_1$.
+ \item[(T3)] \emph{Primal bound.} $|\mathcal Hu|_1\le H|A_{k,N,p}u|_1$,
+  with $H=\mathcal M_k$, and the degree of $\mathcal Hu$ is bounded
+  independently of $k,N,p$.
+ \item[(T4)] \emph{Stamp.} The terminal insertion $\mathcal Hu$ of each
+  lift has the paid price bound, on the halo of its reader, required as
+  the terminal paid insertion bound in
+  Section~\ref{sec:marked-healthy-cumulant-launch}.
+ \end{enumerate}
+ The same map $\mathcal H$ and the same map $T$ occur in all four
+ clauses. The insertions $\mathcal Hu$ are those integrated in the
+ cumulant comparison, $T$ is their reading, and the stamp of (T4) is
+ paid by those same insertions.
 \end{enumerate}
+The map $T=A_{k,N,p}$ satisfies (T2) trivially when $A_{k,N,p}$ fixes the
+unit and is real, but it need not satisfy (T1). The readout must be the
+exact low-grade reading of the insertions that are actually integrated,
+because the free cumulant comparison uses the exact low-grade identity.
+The content of (T2) for the reading of (T1) is therefore an estimate. It
+says that the primary coordinate of the selected history at level $k$
+agrees, to relative accuracy one half, with the low-grade reading of the
+polynomial insertion built from the same label. Neither that
+estimate nor the application of the stamp bound (T4) to the lifts is
+proved in this book. Given (T1) and that
+estimate, the unit and reality clauses follow from $\mathcal He_0=1$ and
+from the reality of $\mathcal H$.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
-Assume (R), (V), (T) and the local inputs of this section. Include in the
+Assume (V), (T) and the local inputs of this section. Include in the
 all-stage payment \eqref{eq:common-allstage-payment} the thresholds of
 Section~\ref{sec:restarted-rank-history} and of the readout construction
 above, for each stage $j$ and for the finitely many block ratios
@@ -419,7 +498,10 @@ construction uses the ratio only through the fixed factor $C_{L,a,t}$
 and the thresholds after which its eventual inequalities hold. Taking
 the larger of the two constants and the later of the two thresholds
 covers the numerical estimates for both ratios. The passage from a step
-at one profile to a step at the other is (V). The
+at one stage to a step at the other is
+Lemma~\ref{lem:restart-stage-boundary}, since the window contains levels
+of the stages $J(k)$ and $J(k)-1$ only. Its hypotheses at the steps of
+the window are the input (V). The
 thresholds depend only on the stage $J(k)$, on $\bar b$ and on the
 finite menu. They are therefore paid at every level by the all-stage
 payment, which gives $H_{J(k+1)}\le\widehat\beta_k$ for every $k$.
@@ -439,19 +521,103 @@ $k$, not only at the unbounded set of levels used for the rank tests
 above.
 \end{proof}
 
+\begin{proposition}[The output representation meets the ticket suppositions]
+\label{prop:rank-trace-output-lawful}
+Assume the conclusions of Proposition~\ref{prop:rank-trace-chart-window}(1).
+Assume also that the auxiliary representation $P_w$ at the root depth $w$
+carries a threshold with
+\begin{equation}\label{eq:rank-trace-threshold-window}
+ (8/7)^{1/2}\,\widehat\beta_w^{-1/2}\le\theta_{P_w}\le\theta_{\rm clock}(w),
+\end{equation}
+and that the stage profiles have clip constants with
+$0<c_{\rm lin}<c_{\rm dir}/16$. Assume finally the following
+path-and-clip receipt.
+\begin{enumerate}
+\item[(P)] The coarse path action of $P_w$ in the restarted representation
+ is the retained path $R_{N,w}$ of
+ Proposition~\ref{prop:path-retained-plan}, evaluated at the constant
+ coupling $\beta_{N,p,k}$. At that coupling it satisfies
+ $R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$, with the
+ clip $p_w$ and row price $A_w$ of the stage $\pi_{J(w)}$. The tests of
+ that clip are compatible with the threshold $\theta_{P_w}$.
+\end{enumerate}
+Then, for all sufficiently large $k$,
+every chart at level $k$ with base arc $b\le\bar b$, every $N\ge k$ and
+every $p$, $P_w$ is a lawful representation satisfying the suppositions of
+Proposition~\ref{prop:rank-root-output-ticket}(2) at the output level $w$:
+\begin{enumerate}
+\item its coupling $\beta=\beta_{N,p,k}$ satisfies $g=\beta^{-1/2}\le\theta_{P_w}\le1$
+ and $\beta\le4\widehat\beta_w$;
+\item $\theta_{P_w}\le\theta_{\rm clock}(w)$;
+\item its loop budget satisfies $\Lambda\le\Lambda_{\rm clock}(w)$, and its
+ clip and row bound are those of the stage $\pi_{J(w)}$;
+\item its additive terms have value bound $\delta\le1$ per site.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{Lawfulness.} By Section~\ref{sec:restarted-rank-history}, the
+auxiliary representation has gauge-invariant, local and motion-covariant
+path action, additive terms and activities. Its density is the push
+\eqref{eq:restart-push} of the nonnegative density above it along a
+positive kernel, so it is nonnegative. The clip constants are those of the
+profile.
+
+\emph{Coupling.} By Lemma~\ref{lem:rank-trace-endpoint} and the plateau,
+$\beta\ge\tfrac78\widehat\beta_k\ge\tfrac78\widehat\beta_w$, so
+$g\le(8/7)^{1/2}\widehat\beta_w^{-1/2}\le\theta_{P_w}$ by
+\eqref{eq:rank-trace-threshold-window}. Also
+$\theta_{P_w}\le\theta_{\rm clock}(w)\le1$ for large $\widehat\beta_w$, and
+$\beta\le4\widehat\beta_w$ is part of
+Proposition~\ref{prop:rank-trace-chart-window}(1). Since $w(k)\to\infty$,
+these thresholds are reached for all large $k$.
+
+\emph{Threshold.} This is the upper bound in
+\eqref{eq:rank-trace-threshold-window}.
+
+\emph{Paths.} By (P), the coarse path action of $P_w$ is $R_{N,w}$ at the
+coupling $\beta_{N,p,k}$, and it satisfies the bounds of
+Definition~\ref{def:path-admissible} there. Its clip is $p_w$, its row
+price is $A_w$, and its loop budget is at most
+$\mathrm{loopCap}_w=2\mathcal M_w^{\theta_{J(w)}}=\Lambda_{\rm clock}(w)$, by
+Lemma~\ref{lem:common-loop-capacity} and
+Subsection~\ref{subsec:rank-root-clock-threshold}, with
+$\vartheta_j=\theta_j$.
+
+\emph{Additive terms.} By \eqref{eq:restart-anchored}, summing the
+anchored bounds gives $\sum_\alpha|E_\alpha(U)|\le|\Lambda|q_n$, so the
+value bound per site is at most $q_n\le s^{-1/400}\le1$ by
+Proposition~\ref{prop:rank-trace-chart-window}(1).
+\end{proof}
+
+Two thresholds satisfy \eqref{eq:rank-trace-threshold-window} for all
+large $k$. The first is the threshold prescribed in (F3),
+$\widehat\beta_w^{-1/2}\exp((\log\log\widehat\beta_w)^{3/2})$, since
+$\log\log\widehat\beta_w\ge1$ on this clock and the exponential tends
+to infinity. The second is the clock threshold $\theta_{\rm clock}(w)$
+itself, since $\mathcal M_w\to\infty$. So the proposition applies whether
+the auxiliary history keeps the threshold of the selected history at
+level $w$ or carries the threshold of (F3).
+
 \paragraph{Status.}
-Under (R) with matched slope, (V) and the local inputs of this section,
+Under (V) and the local inputs of this section,
 Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
 history and its coupling bound throughout $[w,k]$ for every $N\ge k$
-and $p$. To obtain (F3), one still has to verify that each resulting
-$P_j$ has the stage clip and row bound, the chart budget radius and
-prescribed threshold, and satisfies the representation bounds
-\[
- \theta_{P_j}\le\theta_{\rm clock}(j),\qquad
- \Lambda(P_j)\le\Lambda_{\rm clock}(j),\qquad \delta(P_j)\le1 .
-\]
-The numerical late-scale bounds of
-Section~\ref{sec:rank-root-normalization} concern the clock parameters. The comparisons above concern the actual
-auxiliary representations. The tested-readout part of (F5) is the input
-(T), and the stamp duty for (F5) still has to be established with that
-same readout.
+and $p$. Proposition~\ref{prop:rank-trace-output-lawful} verifies at the
+output level $w$ every supposition of
+Proposition~\ref{prop:rank-root-output-ticket}(2), which is where the
+propagation to the output torus uses (F3). It assumes only that the
+auxiliary threshold lies in the window
+\eqref{eq:rank-trace-threshold-window}, and the clip constants of the
+profiles, and the path-and-clip receipt (P). The admissibility of
+$R_{N,w}$ in the selected history is stated at that history's coupling.
+It does not by itself give (P) at the constant coupling, nor the
+compatibility of the tests with the threshold. The conclusion concerns
+the output level $w$ only. The field (F3) as displayed also asks for these
+properties at the other levels $j$ of $[w,k]$. For $w<j<k$ the same
+argument applies, given (P) and the threshold window with $w$ replaced by
+$j$. At $j=k$ the representation is the actual one of the selected
+history, which is not restarted, and it has to be checked separately. We
+do not use these other levels here. The budget radius
+$\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
+normalization estimate. The readings of (F5) are (T1)--(T2) of the input
+(T), and its stamp duty is (T4).

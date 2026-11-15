@@ -231,3 +231,78 @@ same component alphabet and the same hole normalization. Its leading
 and remainder estimates are separate from this unmarked construction;
 they must be verified on these actual densities before the rank tests
 can be applied.
+
+\subsection{Steps across a stage boundary}
+\label{subsec:restart-stage-boundary}
+
+The cost estimate above fixes one block ratio $L$. A comparison window may
+contain levels of two consecutive stages. We state what a step whose fine
+and coarse levels lie in different stages has to be supplied with, and
+check that the numerical part of the construction then passes across the
+boundary.
+
+Consider the step from the fine level $m+1$ to the coarse level $m$, at the
+constant coupling $\beta=\beta_{N,p,k}$, with stage pair
+$(J(m+1),J(m))$ and input cost $q_n$. It is the restarted step of this
+section: it uses the fixed coupling $\beta$ and the new multiplier letters
+$h_\alpha$, and its fine and coarse clips, budget radius and support
+radius $B\le M_s^2$ are those of the two levels at that pair. We use the
+following three hypotheses for that step.
+\begin{enumerate}
+\item[(V1)] \emph{Component bounds.} The unmarked coarse letters of the
+ step other than the multiplier letters, built at the coupling $\beta$
+ with the clips, radii and support exponent $a$ of the pair, have weighted
+ allowance at most $\delta_n-\omega_n$ at the support weight. The
+ component estimate of Section~\ref{sec:mixed-activity-prices} applies to
+ the alphabet enlarged by the multiplier letters.
+\item[(V2)] \emph{Path correction.} With $A_c$ the retained coarse path
+ action of the coarse clip of the pair and $\beta B_c$ the reference
+ action of the fluctuation formula at the coupling $\beta$, the masked
+ local pieces of $\beta B_c-A_c$ have anchored cost at most $s^{-1/200}$.
+\item[(V3)] \emph{Reassembly.} The reassembly identity of
+ Section~\ref{sec:gaussian-reassembly} and the forced-exclusion identity
+ hold for that enlarged alphabet, with exact flag coverage and the
+ addresswise coarse forced activities of
+ Proposition~\ref{prop:corrected-forced-output}.
+\end{enumerate}
+At a fixed ratio $L$ these are the bounds used in the preceding
+subsections. Given (V1)--(V3), the output of the step is described by data
+of the same kind at the coarse level: a path action, a forced gas with its
+tests, an additive family of anchored cost at most $q_{n+1}$, and the push
+identity \eqref{eq:restart-push}. That output does not refer to the stage
+of the fine level.
+
+\begin{lemma}[Stage changes inside the interval]
+\label{lem:restart-stage-boundary}
+Let the interval of the construction contain levels of the stages $r$ and
+$r-1$ only. Suppose that (V1)--(V3) hold at every step of the interval,
+each for its own stage pair, which is one of $(r,r)$, $(r,r-1)$ and
+$(r-1,r-1)$. Suppose also that the thresholds after which the eventual
+inequalities of the cost estimate hold are taken as the larger of those
+for $L_r$ and $L_{r-1}$. Then the inductive joining argument above holds
+on the whole interval, with the same costs $q_n$ and the same density
+identities.
+\end{lemma}
+\begin{proof}
+The induction hypothesis at a step is an input of cost $q_n$ with its
+density. The multiplier letters cost at most $\omega_n$ by the footprint
+bound, in which the block ratio enters only through $C_{L,a,t}$; take the
+larger of the two constants. By (V1) the unmarked allowance is at most
+$\delta_n$, so the regular logarithm has cost at most $16\delta_n$. By (V2)
+and \eqref{eq:restart-newcost} the combined family has cost at most
+$s^{-1/200}+16\delta_n$, which is at most $q_{n+1}$ by
+\eqref{eq:restart-recurrence}. By (V3) the push identity
+\eqref{eq:restart-push} holds at that step. In $h_1,h_2$ take $L$ to be the
+smaller of $L_{r-1},L_r$. Then \eqref{eq:restart-decay} and
+\eqref{eq:restart-recurrence} hold for every step beyond the later of the
+two thresholds, and the rest of the argument is unchanged.
+\end{proof}
+
+The lemma does not purchase (V1)--(V3). The local bounds of
+Section~\ref{sec:common-funded-history} are bought for the selected
+history, with its own coupling profile and its own letters. The restarted
+step uses a fixed coupling and the new multiplier letters, with its own
+clips, budget and support data, so those purchases do not supply
+(V1)--(V3) here. A common support exponent at all stages does not supply
+them either. Hypotheses (V1)--(V3) at the steps of a comparison window are
+the input (V) of Section~\ref{sec:actual-rank-purchases}.

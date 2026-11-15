@@ -27,3 +27,7 @@ The key inputs are:
 
 - `latexmk -g … existence.tex`: exit 0, 1043 pages, 0 undefined references. pp. 888–889 inspected.
 - `python3 scripts/check_blueprint.py`: see the PR.
+
+## Erratum after review #426
+
+The producer of the clock fields in the source is in `Order/Graph.lean`. `Soft.office` in `Order/Sofa.lean` consumes `ShelterSky`; it does not produce it (review #426, L15). The root-depth repair `f1fbe95d` was certified independently in #426.

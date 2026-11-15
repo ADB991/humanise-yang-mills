@@ -1,0 +1,323 @@
+def YM.RG.Calendar.hatBeta : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.bar + G.slopeConstant * S.schedule.scale m
+def YM.RG.Calendar.monitor : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => Real.exp (Real.log (Real.log (S.hatBeta m)) ^ 2)
+def YM.RG.Calendar.coverSize : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℕ :=
+fun {G} S m => ⌈Real.log (S.hatBeta m) ^ 2⌉₊
+def YM.Schedule.a : YM.Schedule → ℕ → ℝ :=
+fun S m => (↑↑(S.denominator m))⁻¹
+def YM.Schedule.scale : YM.Schedule → ℕ → ℝ :=
+fun S m => Real.log (S.a m)⁻¹
+YM.Schedule.scale_succ : ∀ (S : YM.Schedule) (m : ℕ), S.scale (m + 1) = S.scale m + Real.log ↑↑(S.block m)
+YM.Schedule.a_step : ∀ (S : YM.Schedule) (m : ℕ), S.a (m + 1) = S.a m / ↑↑(S.block m)
+YM.Schedule.block_large : ∀ (self : YM.Schedule) (m : ℕ), 3 ≤ ↑(self.block m)
+@YM.RG.Calendar.Fits.sameFactor : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G},
+  S.Fits → ∀ (m : ℕ), S.factor (S.J (m + 1)) = S.schedule.block m
+@YM.RG.Calendar.Fits.delayed : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G}, S.Fits → ∀ (m : ℕ), 1 < S.hatBeta m
+@YM.RG.Calendar.Fits.mono : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G}, S.Fits → Monotone S.J
+@YM.RG.Calendar.Fits.stepSlow : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G}, S.Fits → ∀ (m : ℕ), S.J (m + 1) ≤ S.J m + 1
+structure YM.RG.Supply.Large {G : YM.Gauge} (p : YM.RG.Supply.Sheet G) (j : ℕ) (L : YM.Lattice.Side) : Prop
+number of parameters: 4
+fields:
+  YM.RG.Supply.Large.odd : Odd ↑L
+  YM.RG.Supply.Large.size : 3 ≤ ↑L
+  YM.RG.Supply.Large.need : p.floorL j ≤ ↑L
+  YM.RG.Supply.Large.kick : p.first ≤ j → (p.profile j).drift / Real.log ↑↑L ≤ G.slopeConstant / 4
+  YM.RG.Supply.Large.slow : p.first ≤ j → (p.profile j).drift / Real.log ↑↑L ≤ (↑j ^ 2)⁻¹
+  YM.RG.Supply.Large.fits : p.first ≤ j →
+      let X := p.profile j;
+      Real.log (1 + X.paths + X.width⁻¹ + X.columns + X.clip.relaxation + X.supportExponent) / Real.log ↑↑L ≤ (↑j ^ 2)⁻¹
+constructor:
+  YM.RG.Supply.Large.mk {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} {j : ℕ} {L : YM.Lattice.Side} (odd : Odd ↑L)
+    (size : 3 ≤ ↑L) (need : p.floorL j ≤ ↑L)
+    (kick : p.first ≤ j → (p.profile j).drift / Real.log ↑↑L ≤ G.slopeConstant / 4)
+    (slow : p.first ≤ j → (p.profile j).drift / Real.log ↑↑L ≤ (↑j ^ 2)⁻¹)
+    (fits :
+      p.first ≤ j →
+        let X := p.profile j;
+        Real.log (1 + X.paths + X.width⁻¹ + X.columns + X.clip.relaxation + X.supportExponent) / Real.log ↑↑L ≤
+          (↑j ^ 2)⁻¹) :
+    YM.RG.Supply.Large p j L
+structure YM.RG.Supply.Rolls {G : YM.Gauge} (p : YM.RG.Supply.Sheet G) : Type
+number of parameters: 2
+fields:
+  YM.RG.Supply.Rolls.L : ℕ → YM.Lattice.Side
+  YM.RG.Supply.Rolls.large : ∀ (j : ℕ), YM.RG.Supply.Large p j (self.L j)
+  YM.RG.Supply.Rolls.grow : Monotone fun j => ↑(self.L j)
+constructor:
+  YM.RG.Supply.Rolls.mk {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} (L : ℕ → YM.Lattice.Side)
+    (large : ∀ (j : ℕ), YM.RG.Supply.Large p j (L j)) (grow : Monotone fun j => ↑(L j)) : YM.RG.Supply.Rolls p
+structure YM.RG.Supply.Wait {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} {w : YM.RG.Supply.Rolls p}
+  {T : YM.RG.Supply.Protection w} {W : YM.RG.Supply.Delays T} (Y : YM.RG.Supply.Bar W) : Type
+number of parameters: 6
+fields:
+  YM.RG.Supply.Wait.readyHere : ℕ → ℝ
+  YM.RG.Supply.Wait.window : ℕ → ℝ → ℕ
+  YM.RG.Supply.Wait.sublin : ∀ (j : ℕ), Filter.Tendsto (fun s => ↑(self.window j s) / s) Filter.atTop (nhds 0)
+  YM.RG.Supply.Wait.minLength : ℕ
+constructor:
+  YM.RG.Supply.Wait.mk {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} {w : YM.RG.Supply.Rolls p}
+    {T : YM.RG.Supply.Protection w} {W : YM.RG.Supply.Delays T} {Y : YM.RG.Supply.Bar W} (readyHere : ℕ → ℝ)
+    (window : ℕ → ℝ → ℕ) (sublin : ∀ (j : ℕ), Filter.Tendsto (fun s => ↑(window j s) / s) Filter.atTop (nhds 0))
+    (minLength : ℕ) : YM.RG.Supply.Wait Y
+structure YM.RG.Supply.Paid {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} {w : YM.RG.Supply.Rolls p}
+  {T : YM.RG.Supply.Protection w} {W : YM.RG.Supply.Delays T} {Y : YM.RG.Supply.Bar W} (B : YM.RG.Supply.Wait Y)
+  (a : YM.RG.Levels G) : Prop
+number of parameters: 8
+fields:
+  YM.RG.Supply.Paid.kernel : a.clock.kernel = p.kernel
+  YM.RG.Supply.Paid.bar : a.clock.bar = Y.value
+  YM.RG.Supply.Paid.stage : a.clock.stage = p.profile
+  YM.RG.Supply.Paid.firstZero : a.clock.J 0 = p.first
+  YM.RG.Supply.Paid.firstOne : a.clock.J 1 = p.first
+  YM.RG.Supply.Paid.lengths : a.clock.factor = w.L
+  YM.RG.Supply.Paid.theta : a.clock.theta = T.theta
+  YM.RG.Supply.Paid.pays : ∀ (m : ℕ), W.betaEntry (a.clock.J (m + 1)) ≤ a.clock.hatBeta m
+  YM.RG.Supply.Paid.paysHigher : ∀ (m : ℕ),
+      p.first < a.clock.J (m + 1) → W.scaleEntry (a.clock.J (m + 1)) Y.value ≤ a.S.scale m
+  YM.RG.Supply.Paid.periods : ∀ (i : ℕ), B.minLength ≤ ↑(a.S.period i)
+  YM.RG.Supply.Paid.volume : ∀ (m i : ℕ),
+      let j := a.clock.J (m + 1);
+      W.shells j * (1 + a.clock.coverSize m + a.clock.coverSize (m + 1)) ^ W.growth j ≤ ↑(a.S.side m i)
+  YM.RG.Supply.Paid.run : ∀ (j : ℕ),
+      p.first ≤ j →
+        ∃ k,
+          B.readyHere j ≤ a.S.scale k ∧
+            B.window j (a.S.scale k) ≤ k ∧
+              ∀ (i : ℕ), k - B.window j (a.S.scale k) ≤ i → i ≤ k + B.window j (a.S.scale k) → a.clock.J i = j
+constructor:
+  YM.RG.Supply.Paid.mk {G : YM.Gauge} {p : YM.RG.Supply.Sheet G} {w : YM.RG.Supply.Rolls p}
+    {T : YM.RG.Supply.Protection w} {W : YM.RG.Supply.Delays T} {Y : YM.RG.Supply.Bar W} {B : YM.RG.Supply.Wait Y}
+    {a : YM.RG.Levels G} (kernel : a.clock.kernel = p.kernel) (bar : a.clock.bar = Y.value)
+    (stage : a.clock.stage = p.profile) (firstZero : a.clock.J 0 = p.first) (firstOne : a.clock.J 1 = p.first)
+    (lengths : a.clock.factor = w.L) (theta : a.clock.theta = T.theta)
+    (pays : ∀ (m : ℕ), W.betaEntry (a.clock.J (m + 1)) ≤ a.clock.hatBeta m)
+    (paysHigher : ∀ (m : ℕ), p.first < a.clock.J (m + 1) → W.scaleEntry (a.clock.J (m + 1)) Y.value ≤ a.S.scale m)
+    (periods : ∀ (i : ℕ), B.minLength ≤ ↑(a.S.period i))
+    (volume :
+      ∀ (m i : ℕ),
+        let j := a.clock.J (m + 1);
+        W.shells j * (1 + a.clock.coverSize m + a.clock.coverSize (m + 1)) ^ W.growth j ≤ ↑(a.S.side m i))
+    (run :
+      ∀ (j : ℕ),
+        p.first ≤ j →
+          ∃ k,
+            B.readyHere j ≤ a.S.scale k ∧
+              B.window j (a.S.scale k) ≤ k ∧
+                ∀ (i : ℕ), k - B.window j (a.S.scale k) ≤ i → i ≤ k + B.window j (a.S.scale k) → a.clock.J i = j) :
+    YM.RG.Supply.Paid B a
+structure YM.Next.Rank.Station.AllowedSky {G : YM.Gauge} (A : YM.RG.Levels G) (b : ℝ) (k : ℕ) : Prop
+number of parameters: 4
+fields:
+  YM.Next.Rank.Station.AllowedSky.dilation : YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2 ≤
+      A.S.a (YM.Next.Rank.Station.middleSky A b k) / A.S.a k
+  YM.Next.Rank.Station.AllowedSky.depth : ↑(A.clock.coverSize k) ^ 10 ≤
+      A.S.a (YM.Next.Rank.Station.widthSky A b k) / A.S.a (YM.Next.Rank.Station.middleSky A b k)
+  YM.Next.Rank.Station.AllowedSky.large : 2 ≤ YM.Next.Rank.Station.wheelSky A k
+  YM.Next.Rank.Station.AllowedSky.bracket : ∀ (m : ℕ),
+      YM.Next.Rank.Station.widthSky A b k ≤ m → m ≤ k → A.clock.J k - 1 ≤ A.clock.J m
+constructor:
+  YM.Next.Rank.Station.AllowedSky.mk {G : YM.Gauge} {A : YM.RG.Levels G} {b : ℝ} {k : ℕ}
+    (dilation :
+      YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2 ≤ A.S.a (YM.Next.Rank.Station.middleSky A b k) / A.S.a k)
+    (depth :
+      ↑(A.clock.coverSize k) ^ 10 ≤
+        A.S.a (YM.Next.Rank.Station.widthSky A b k) / A.S.a (YM.Next.Rank.Station.middleSky A b k))
+    (large : 2 ≤ YM.Next.Rank.Station.wheelSky A k)
+    (bracket : ∀ (m : ℕ), YM.Next.Rank.Station.widthSky A b k ≤ m → m ≤ k → A.clock.J k - 1 ≤ A.clock.J m) :
+    YM.Next.Rank.Station.AllowedSky A b k
+def YM.Next.Rank.Station.leastL : {G : YM.Gauge} → YM.RG.Levels G → ℕ → YM.Lattice.Side :=
+fun {G} A k => min (A.clock.factor (A.clock.J k)) (A.clock.factor (A.clock.J k - 1))
+def YM.Next.Rank.Station.wheelSky : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℝ :=
+fun {G} A k => ↑↑(YM.Next.Rank.Station.leastL A k)
+def YM.Next.Rank.Station.gainSky : YM.Schedule → ℕ → ℝ → ℕ :=
+fun T i r => {j ∈ Finset.range (i + 1) | r ≤ T.a j / T.a i}.sup id
+def YM.Next.Rank.Station.middleSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S k (YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2)
+def YM.Next.Rank.Station.widthSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S (YM.Next.Rank.Station.middleSky A b k) (↑(A.clock.coverSize k) ^ 10)
+def YM.Next.Rank.Station.mag : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℝ :=
+fun {G} A b k => A.clock.monitor k ^ b
+@[reducible] def YM.Next.Rank.Atlas.clim : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℝ :=
+fun {G} A k => A.clock.hatBeta k
+@YM.Next.Rank.Station.gain_high : ∀ {T : YM.Schedule} {i j : ℕ} {r : ℝ},
+  j ≤ i → r ≤ T.a j / T.a i → r ≤ T.a (YM.Next.Rank.Station.gainSky T i r) / T.a i
+@YM.Next.Rank.Station.gain_fee : ∀ {T : YM.Schedule} {i j : ℕ} {r : ℝ},
+  j ≤ i → r ≤ T.a j / T.a i → j ≤ YM.Next.Rank.Station.gainSky T i r
+structure YM.Next.Rank.Tapes.CorridorSky {G : YM.Gauge} (A : YM.RG.Levels G) (s : ℝ) (p : YM.Next.Rank.Tapes.Purse)
+  (k : ℕ) : Prop
+number of parameters: 5
+fields:
+  YM.Next.Rank.Tapes.CorridorSky.heft : YM.Next.Rank.Station.AllowedSky A s k
+  YM.Next.Rank.Tapes.CorridorSky.races : YM.Next.Rank.Tapes.Racer p (YM.Next.Rank.Atlas.clim A k)
+      (k - YM.Next.Rank.Station.middleSky A s k)
+  YM.Next.Rank.Tapes.CorridorSky.spend : YM.Next.Rank.Tapes.Faring p (YM.Next.Rank.Atlas.clim A k)
+  YM.Next.Rank.Tapes.CorridorSky.court : ∀ (i : ℕ),
+      YM.Next.Rank.Station.widthSky A s k ≤ i →
+        i ≤ k → YM.Next.Rank.Atlas.clim A i ∈ Set.Icc (YM.Next.Rank.Atlas.clim A k / 2) (YM.Next.Rank.Atlas.clim A k)
+constructor:
+  YM.Next.Rank.Tapes.CorridorSky.mk {G : YM.Gauge} {A : YM.RG.Levels G} {s : ℝ} {p : YM.Next.Rank.Tapes.Purse} {k : ℕ}
+    (heft : YM.Next.Rank.Station.AllowedSky A s k)
+    (races : YM.Next.Rank.Tapes.Racer p (YM.Next.Rank.Atlas.clim A k) (k - YM.Next.Rank.Station.middleSky A s k))
+    (spend : YM.Next.Rank.Tapes.Faring p (YM.Next.Rank.Atlas.clim A k))
+    (court :
+      ∀ (i : ℕ),
+        YM.Next.Rank.Station.widthSky A s k ≤ i →
+          i ≤ k →
+            YM.Next.Rank.Atlas.clim A i ∈ Set.Icc (YM.Next.Rank.Atlas.clim A k / 2) (YM.Next.Rank.Atlas.clim A k)) :
+    YM.Next.Rank.Tapes.CorridorSky A s p k
+structure YM.PhysicalNext.InteractingRank.Soft.ShelterSky {G : YM.Gauge} (T : YM.RG.Levels G) (m : ℕ) (b : ℝ) : Prop
+number of parameters: 4
+fields:
+  YM.PhysicalNext.InteractingRank.Soft.ShelterSky.covers : YM.Next.Rank.Station.AllowedSky T b m
+  YM.PhysicalNext.InteractingRank.Soft.ShelterSky.warm : ∀ (i : ℕ),
+      YM.Next.Rank.Station.widthSky T b m ≤ i →
+        i ≤ m →
+          3 / 4 * YM.Next.Rank.Atlas.clim T m ≤ YM.Next.Rank.Atlas.clim T i ∧
+            YM.Next.Rank.Atlas.clim T i ≤ YM.Next.Rank.Atlas.clim T m
+constructor:
+  YM.PhysicalNext.InteractingRank.Soft.ShelterSky.mk {G : YM.Gauge} {T : YM.RG.Levels G} {m : ℕ} {b : ℝ}
+    (covers : YM.Next.Rank.Station.AllowedSky T b m)
+    (warm :
+      ∀ (i : ℕ),
+        YM.Next.Rank.Station.widthSky T b m ≤ i →
+          i ≤ m →
+            3 / 4 * YM.Next.Rank.Atlas.clim T m ≤ YM.Next.Rank.Atlas.clim T i ∧
+              YM.Next.Rank.Atlas.clim T i ≤ YM.Next.Rank.Atlas.clim T m) :
+    YM.PhysicalNext.InteractingRank.Soft.ShelterSky T m b
+@slackSky : ∀ {G : YM.Gauge} {X : YM.RG.Supply.Sheet G} {D : YM.RG.Supply.Rolls X} {R : YM.RG.Supply.Protection D}
+  {E : YM.RG.Supply.Delays R} {Z : YM.RG.Supply.Bar E} (W : YM.RG.Supply.Wait Z) {A : YM.RG.Levels G},
+  YM.RG.Supply.Paid W A →
+    ∀ {i j k m : ℕ} {b u : ℝ},
+      A.clock.J k = m + 1 →
+        m = A.clock.J i →
+          i ≤ k →
+            0 ≤ b →
+              j = YM.PhysicalNext.InteractingRank.Soft.stretch (↑↑(D.L m)) b (YM.Next.Rank.Atlas.clim A k) →
+                j ≤ k - i →
+                  u ≤ b →
+                    YM.PhysicalNext.InteractingRank.Soft.runTicket Z b (m + 1) (A.S.scale k) →
+                      G.Simple → YM.PhysicalNext.InteractingRank.Soft.ShelterSky A k u
+'_private.YM.TraceExtension.Prom.Order.Graph.0.YM.PhysicalNext.InteractingRank.Soft.slackSky' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@YM.PhysicalNext.InteractingRank.Soft.atlasSky : ∀ {G : YM.Gauge} {X : YM.RG.Supply.Sheet G} {D : YM.RG.Supply.Rolls X}
+  {R : YM.RG.Supply.Protection D} {E : YM.RG.Supply.Delays R} {Z : YM.RG.Supply.Bar E} (W : YM.RG.Supply.Wait Z)
+  {A : YM.RG.Levels G},
+  YM.RG.Supply.Paid W A →
+    ∀ {k m : ℕ} {b u : ℝ},
+      A.clock.J k = m + 1 →
+        X.first ≤ m →
+          (∀ (s : ℝ),
+              W.readyHere m ≤ s →
+                YM.PhysicalNext.InteractingRank.Soft.runTicket Z b (m + 1) s ∧
+                  YM.Next.Rank.Ship.benchCost Z b m (3 * s) ≤ W.window m s) →
+            u ≤ b →
+              0 ≤ b → G.Simple → W.readyHere m ≤ A.S.scale k ∧ YM.PhysicalNext.InteractingRank.Soft.ShelterSky A k u
+'YM.PhysicalNext.InteractingRank.Soft.atlasSky' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.PhysicalNext.InteractingRank.Soft.forwardSky : ∀ {ι : Type} [Fintype ι] {G : YM.Gauge} {X : YM.RG.Supply.Sheet G}
+  {D : YM.RG.Supply.Rolls X} {R : YM.RG.Supply.Protection D} {E : YM.RG.Supply.Delays R} {Z : YM.RG.Supply.Bar E}
+  {u m : ℕ → ℕ} {c : (d : ℕ) → ι → YM.Next.Rank.Tapes.Panel d} {K : ℕ → Finset ℕ} (B : YM.Precision.MapPrices)
+  (U : YM.RG.Supply.Wait Z) {z : ℕ → ℝ},
+  YM.PhysicalNext.InteractingRank.Soft.AskSky X B u m c K →
+    ∀ (O : YM.Next.Rank.HaarBudget G) (J : YM.Precision.ChartRatio G),
+      YM.Precision.LocalRatio J →
+        (∀ (i : ℕ), m i ≤ ↑(D.L i)) →
+          (∀ (i : ℕ), 2 ≤ u i) →
+            (∀ (i : ℕ), 0 ≤ z i) →
+              G.Simple →
+                ∃ W P,
+                  U.minLength ≤ W.minLength ∧
+                    U.readyHere ≤ W.readyHere ∧
+                      U.window ≤ W.window ∧
+                        (∀ (d : ℕ) (k : ι), (c d k).arc = (P d k).arc ∧ (c d k).θ = (P d k).θ) ∧
+                          (∀ (d : ℕ) (i j : ι),
+                              (P d i).θ = (P d j).θ ∧
+                                ∀ (n : ℕ), ((P d i).bag n).era.coast.Q = ((P d j).bag n).era.coast.Q) ∧
+                            ∀ (C : YM.Family G),
+                              YM.RG.Supply.Paid W C.path.levels →
+                                ∀ (B' : YM.PhysicalNext.RankCovariance.Binding C),
+                                  B'.prices = B →
+                                    ∀ (d : ℕ) (x : ι),
+                                      ∀ᶠ (k : ℕ) in Filter.atTop,
+                                        have a := (P d x).bag (C.path.levels.clock.J k);
+                                        ∀ (y : ℝ),
+                                          0 ≤ y →
+                                            y ≤ a.band →
+                                              YM.MergeProof.East.topL C.path.levels k ≤ C.path.levels.clock.monitor k ∧
+                                                ∃ l r,
+                                                  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B' J (-3) (z d)
+                                                    (YM.PhysicalNext.InteractingRank.Soft.vent a y) k (u d) d O l r
+'YM.PhysicalNext.InteractingRank.Soft.forwardSky' depends on axioms: [propext, Classical.choice, Quot.sound]
+def YM.PhysicalNext.InteractingRank.Soft.runTicket : {G : YM.Gauge} →
+  {X : YM.RG.Supply.Sheet G} →
+    {D : YM.RG.Supply.Rolls X} →
+      {R : YM.RG.Supply.Protection D} → {E : YM.RG.Supply.Delays R} → YM.RG.Supply.Bar E → ℝ → ℕ → ℝ → Prop :=
+fun {G} {X} {D} {R} {E} Z b j s =>
+  have y := YM.Next.Rank.Ship.preHat Z s;
+  have L := ↑(D.L j);
+  have n := Real.log ↑L;
+  have p := YM.Next.Rank.Ship.benchCost Z b (j - 1) s;
+  Real.exp 1 ≤ y ∧ ↑p * n ≤ s / 2 ∧ ↑p * n * G.slopeConstant ≤ y / 4
+def YM.PhysicalNext.InteractingRank.Soft.stretch : ℝ → ℝ → ℝ → ℕ :=
+fun L b s => YM.Next.Rank.Station.bump L b s + YM.Next.Rank.Station.more L s
+def YM.Next.Rank.Station.want : ℝ → ℝ → ℕ :=
+fun u t => ⌈Real.log t / Real.log u⌉₊
+def YM.Next.Rank.Station.bump : ℝ → ℝ → ℝ → ℕ :=
+fun u b s => YM.Next.Rank.Station.want u (YM.Vac.Numbers.P s ^ b * YM.Vac.Numbers.P s ^ 2)
+def YM.Next.Rank.Station.more : ℝ → ℝ → ℕ :=
+fun u s => YM.Next.Rank.Station.want u (↑⌈Real.log s ^ 2⌉₊ ^ 10)
+@YM.Next.Rank.Station.wanted : ∀ {u t : ℝ}, 1 < u → 0 < t → ∀ (i : ℕ), t ≤ u ^ i ↔ YM.Next.Rank.Station.want u t ≤ i
+@YM.PhysicalNext.InteractingRank.Soft.office : ∀ {G : YM.Gauge} {X : YM.RG.Supply.Sheet G} (B : YM.Precision.MapPrices)
+  {D : YM.RG.Supply.Rolls X} {b : YM.Next.Rank.Tapes.Purse} {j u : ℕ},
+  (∀ i ∈ YM.PhysicalNext.InteractingRank.Soft.farSky j, YM.PhysicalNext.InteractingRank.Roh X B j b u (D.L i)) →
+    YM.Next.Rank.Tapes.West.Coul b u →
+      2 ≤ u →
+        ∀ (J : YM.Precision.ChartRatio G),
+          YM.Precision.LocalRatio J →
+            0 ≤ b.band →
+              ∀ (O : YM.Next.Rank.HaarBudget G) (z : ℝ) (n : ℕ),
+                0 ≤ z →
+                  ∃ W d δ,
+                    ∃ (he : 0 < δ),
+                      δ ≤ b.era.coast.a ∧
+                        ∀ᶠ (s : ℝ) in Filter.atTop,
+                          YM.PhysicalNext.InteractingRank.Soft.CapacitySky B D
+                            (YM.PhysicalNext.InteractingRank.trim b δ he) W d s O z J u j n
+'probe_items_of_shelter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_a_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_scale_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_hat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_more_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_more_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_wheel_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Station.FitSky.stencils : ∀ {G : YM.Gauge} {F : YM.Family G} {k n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    F.Makes →
+      ∀ (d : ℕ),
+        ∀ᶠ (N : ℕ) in Filter.atTop,
+          ∃ (hN : k ≤ N),
+            ∀ (p : ℕ) (i : Fin n) (v : F.label d),
+              have a := F.path.levels;
+              have T := YM.Cells.center F.S p ⋯ 0;
+              YM.Cells.Interior (T.chamber 0)
+                (F.O N p v (YM.Cells.location F.S k N p (YM.Next.Rank.Station.choose a b k x i)))
+'YM.Next.Rank.Station.FitSky.stencils' depends on axioms: [propext, Classical.choice, Quot.sound]
+       36.83 real         3.05 user         4.38 sys
+          6751797248  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              367168  page reclaims
+              158223  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               13544  voluntary context switches
+              296341  involuntary context switches
+         67972340418  instructions retired
+         27339857021  cycles elapsed
+          1039194104  peak memory footprint
