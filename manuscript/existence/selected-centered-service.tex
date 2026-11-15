@@ -691,6 +691,177 @@ prices $\widetilde c_i$ are the ones whose rooted site sums enter the
 mixed component estimate. In particular, a warning carries $E(x)T$,
 not $T$.
 
+\subsection{Adjacent quadratic data and the warning inputs}
+\label{sec:selected-local-warnings}
+
+The stationary cancellation used in Section~\ref{sec:warning-safety}
+requires identities between the two adjacent quadratic forms and their
+paths. We specify these identities on the retained history before using
+that cancellation. This also gives a precise meaning to the compatibility
+of the tube with its quadratic data.
+
+Fix $N,p$ and $i<N$. The tube of this step consists of the stored tower
+at $(N,i)$, the incoming path $R_{N,i+1}$ with its clip, and the outgoing
+path $R_{N,i}$ with its clip. Here $R_{N,m}$ denotes the path underlying
+the representation $R_{N,p,m}$, not its activity array. Its two beds are
+$H_f=M.H(N,i+1)$ and $H_c=M.H(N,i)$, periodized on the respective tori.
+Use the notation $D_f,D_c,J,J',A_0,T,\overline T,M_F,M_N,M_O$ of
+Section~\ref{sec:ex-lattice-rg-horizon-geometry} for these very data.
+By \emph{adjacent quadratic compatibility} we mean the following:
+\begin{enumerate}
+\item The diagonal two-scale identity holds for these beds and this
+ installed response, including the quadratic identity
+ \eqref{eq:mean-diagonal} and the transport identities
+ \eqref{eq:ex-lattice-horizon-diagonal}.
+\item The six block identities
+ \eqref{eq:ex-lattice-horizon-gram}--\eqref{eq:ex-lattice-horizon-orthogonal}
+ hold for this tower and these clips.
+\item Both full quadratic bilinear forms are invariant under signed
+ coordinate changes. The two paths are attached to their respective
+ beds, and those beds have the floor identities and bounds of the
+ retained horizon at the indicated periods and clips. In particular,
+ the full curvature factors obey $J^*J=W$ and $J'^*J'=W'$ for the
+ two metric matrices, with the same factors as in the block identities.
+\end{enumerate}
+The floors here include the metric and diagonal inverse identities,
+normalization of the metric zero mode, equality of the metric and
+ diagonal actions on exact curvatures, symmetry, and the stated lower
+and upper counting-norm bounds. They are the floor data of
+Section~\ref{sec:ex-lattice-rg-horizon-geometry}; positivity of an
+unrelated quadratic form would not replace them.
+
+\begin{lemma}[Compatibility of the stored adjacent tube]
+\label{lem:selected-tube-compatibility}
+Retain the common horizon and stationary plan used to construct the
+selected history, with their quadratic and path receipts as in
+Sections~\ref{sec:common-funded-history} and
+\ref{subsec:path-retained-plan}. Every stored tube at $i<N$ has
+adjacent quadratic compatibility. This includes $i=0$ when $N>0$,
+and holds on every admitted period for the same paths and tower.
+\end{lemma}
+
+\begin{proof}
+Take the two witnesses to be $M.H(N,i+1)$ and $M.H(N,i)$, without
+changing the horizon. Its adjacent crossing identity gives item (1).
+Its retained block completion gives item (2), by
+Proposition~\ref{prop:ex-lattice-horizon-roll}. The horizon construction
+retains these block identities after its price enlargement; this is
+part of the construction stated at the end of
+Section~\ref{sec:ex-lattice-rg-horizon-geometry}.
+The signed invariance of the beds is the invariance of their full
+quadratic forms proved in Section~\ref{sec:quadratic-lattice-symmetry}.
+The first clause of the stationary plan, Definition~\ref{def:path-plan},
+attaches $R_{N,i+1}$ and $R_{N,i}$ to these beds. The floor receipts
+belong to those same beds and clips by the retained-horizon input of
+that plan. This proves item (3).
+
+All clauses apply at $i+1\le N$ and $i\le N$. These inequalities follow
+from $i<N$, and do not require $i>0$. The argument therefore applies to
+the actual stored step at zero; it invokes no default comparison door.
+Likewise, it applies when $i+1=N$: we use the final retained horizon's
+receipts, not equality with a different horizon only valid away from
+the terminal level. Choosing the shooting parameter changes neither
+these paths nor the tower. The periodized identities and attachments
+thus remain the ones used in the replayed history.
+\end{proof}
+
+We next record what this supplies to the warning argument. Keep the
+funded path, shell, guide and local precision bounds used in
+Sections~\ref{sec:seed-guides}, \ref{sec:sector-gram},
+\ref{sec:local-covariance} and \ref{sec:local-mean}, on the stored tube.
+For a sector, compatibility of its store means that its coarse-flag
+component equals the flags of its coarse field at the coarse threshold;
+its other seed components need not vanish. Let $x=\widehat\beta_i$,
+$h=\widehat\beta_{i+1}$ and retain the scales of
+\eqref{eq:warning-scales}. In particular the fine representation has
+flag threshold $\tau$ and actual coupling $\beta\in[h/2,2h]$.
+
+\begin{lemma}[Warnings on the stored sectors]
+\label{lem:selected-warning-inputs}
+Under these funded local bounds and the common purchases of this section,
+the mean, plateau and covariance inputs of
+Section~\ref{sec:gaussian-warnings} hold simultaneously on every
+compatible sector of every stored step. More precisely, for each fixed
+allowed stage pair there are constants $C_\mu,M,a,\xi>0$ and a common
+lower threshold for $x$, independent of $N,p$, the forest, tags and
+coarse field, such that
+\[
+ \|\mu_e\|\le C_\mu\tau,\qquad
+ 0\le C_{\rm loc}\le M1,\qquad
+ C_\mu+1\le a,\qquad q\xi\le1.
+\]
+Here $C_{\rm loc}$ is the covariance of the single Gaussian vector
+used in that sector. Outside the $30B$ seed neighbourhood the event
+$\mathcal W_B(j)$ gives site and bond likelihoods equal to one, fine
+plaquette chords less than $\tau/4$, and predictor chords less than
+$W\tau$. Consequently every nonzero warning forces its excursion
+within distance $2B$, and its joint probability price can be taken to be
+\[
+ E(x)=2b_{2B}p_{\rm coord}\exp(-\xi\sqrt P/4).
+\]
+The same assertions hold with the reduced warning margin $\xi/2$,
+and the corresponding price, when the zero-germ statement of
+Section~\ref{sec:activity-jet-assembly} is required.
+\end{lemma}
+
+\begin{proof}
+The compatibility lemma supplies the diagonal identity, signed invariance,
+full curvature factors and stack identities used in
+\eqref{eq:mean-stationary-zero}. Thus the stationary cancellation and
+local mean comparison of Section~\ref{sec:local-mean} concern this tube,
+with its original paths and tags. Apply Section~\ref{sec:warning-safety}
+to it. Its explicit choice \eqref{eq:safety-mean-cap} gives $C_\mu$;
+\eqref{eq:safety-goals} fixes the fine and predictor margins, and
+\eqref{eq:safety-xi} gives $\xi$. The three errors in that proof are
+bounded using the same stationary cancellation, transported rows and
+local inverse. Its final choice $a\ge C_\mu+1$ gives the broad cutoff
+plateau. No new stationary field is selected for this application.
+
+To verify the covariance input, use the completed sector precision
+$A$ of Section~\ref{sec:sector-gram}. Its gap and weighted row bounds
+supply \eqref{eq:covariance-data}. Section~\ref{sec:local-covariance}
+constructs $C_{\rm loc}=(P_0+P_0^*)/2$ from the local window inverse
+$P_0$, and proves $C_{\rm loc}\ge0$ and
+$\|C_{\rm loc}\|_k\le S$ for fixed $S$. The weighted row-and-column
+norm dominates the Euclidean operator norm, so $M=\max\{S,1\}$ gives
+the claimed bound. Restriction to active coordinates preserves it by
+extension of a test vector by zero. This is the covariance of the
+sector Gaussian, not an identification with the full inverse $A^{-1}$
+or with the different derivative-row construction.
+
+The sector's flag identity makes a site farther than $30B$ from its
+seeds clean on the hulls required in the safety proof. That proof gives
+the claimed plateau conclusion on $\mathcal W_B(j)$. For the five mask, likelihood and contraction types, a warning outside
+its compulsory region has its address outside the $300B$ seed
+neighbourhood. Since $300B\ge30B+B$, the hypotheses of
+Lemma~\ref{lem:warning-vanishes} apply, including the fine-site
+contraction and the enlargement to $2B$. For a fine-bond cutoff the
+mean bound and $q\xi\le1$ give the broad-cutoff plateau directly;
+its additional hot-bond and $304B$ exclusions only set more factors
+to zero. Finally apply
+\eqref{eq:warning-actual-price} with the just established $M$ and $\xi$.
+It prices distinct addresses, including different types at one site.
+The strict margins in the safety proof persist at $\xi/2$, giving the
+zero-germ assertion and the same Gaussian calculation at that margin.
+
+For each fixed stage pair all constants above precede the final lower
+threshold for $x$. There are finitely many permitted lower stages for
+each upper stage. Take the maximum of these thresholds, and then its
+running maximum in the upper stage, in the common purchases before
+selecting the history. All estimates hold on upper tails, so this
+preserves the earlier purchases. The stored clock pays that threshold
+at $x=\widehat\beta_i$, also at $i=0$. The asserted uniformity follows
+from the uniformity over periods, sectors and tags in each cited local
+estimate. The already selected histories are not altered afterwards.
+\end{proof}
+
+This supplies the warning part of Lemma~\ref{lem:selected-residual-body}
+from the funded local construction. Its packet, forced and logarithmic
+pointwise bounds, and the component and differentiated entrance
+estimates, still require their own attachment. In particular no health
+condition for a packet's enlarged support follows from the sector's
+coarse-flag identity alone.
+
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
 $t_d\le k\le N$; in particular $k\ge1$. We verify the inputs of
