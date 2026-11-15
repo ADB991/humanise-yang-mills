@@ -521,17 +521,35 @@ polynomial. Its moment polynomials $Q^{(i)}_T$ are defined by
  Q^{(i)}_T=\sum_{\pi\in\mathcal P(T)}\prod_{B\in\pi}\chi_Bc^{(i)}_B .
 \]
 These are the insertions of both integrals below. The unmasked moment
-polynomials of $D^{(i)}$ are not used. Let $\mathcal G_i$ be the
-reference integral of Section~\ref{sec:principal-gaussian-comparison} at
-the rung, that is, integration of the insertion against $R_9\chi_9\,
-d\gamma_{C_0}$ followed by the finite forest and tag averages, normalized
-so that $\mathcal G_i(1)=1$. Let $\widetilde{\mathcal A}_i$ be the
-unnormalized actual-sector integral, against $R_6\chi_6\,d\gamma_{C_0}$
-and the same averages. Both are linear, and we apply them to elements of
-$\mathscr A_J$ coefficientwise. Their values are jets of a fixed order $m$
-at the base configuration. On jets we use the coefficient $\ell^1$ norm
-$\|\cdot\|$ of the truncated Taylor polynomial. It is submultiplicative
-for the truncated product, and $\|1\|=1$.
+polynomials of $D^{(i)}$ are not used.
+
+Fix a healthy base configuration $x$ of the required healthy region. Let
+$\widetilde{\mathcal G}_{i,x}$ be the raw reference integral of
+Section~\ref{sec:principal-gaussian-comparison} at the rung with base
+configuration $x$, that is, integration of the insertion against
+$R_9\chi_9\,d\gamma_{C_0}$ followed by the finite forest and tag
+averages. Let $\widetilde{\mathcal A}_{i,x}$ be the raw actual-sector
+integral, against $R_6\chi_6\,d\gamma_{C_0}$ and the same averages. Both
+are linear, and we apply them to elements of $\mathscr A_J$
+coefficientwise. Their values are jets of order $n$ at the base point of
+the local variation about $x$. On these jets we use the coefficient
+$\ell^1$ norm $\|\cdot\|$ of the truncated Taylor polynomial in the
+parameter $y\in\mathbb R^j$, $j\le n$. It is submultiplicative for the
+truncated product, $\|1\|=1$, and it dominates the absolute value of the
+zeroth coefficient, which is the value at $x$. Since $j\le n$, it is
+equivalent to the norm $\|\cdot\|_{J^n_0}$ of
+Section~\ref{sec:principal-gaussian-comparison} within a factor $c_n$
+depending only on $n$. Put
+\[
+ a_x=\widetilde{\mathcal A}_{i,x}(1),\qquad
+ b_x=\widetilde{\mathcal G}_{i,x}(1).
+\]
+The cutoff $\chi_9$ can change the mass of the reference integral, and
+$b_x$ may depend on the base parameter. Where $b_x$ is invertible, the
+normalized reference integral is
+$\mathcal G_{i,x}=b_x^{-1}\widetilde{\mathcal G}_{i,x}$, so that
+$\mathcal G_{i,x}(1)=1$. We write $\mathcal G_i$ for the family
+$(\mathcal G_{i,x})_x$, and similarly $\mathcal A_i$, $a$ and $b$.
 
 We use the following hypothesis on one common insertion.
 \begin{enumerate}
@@ -543,47 +561,67 @@ We use the following hypothesis on one common insertion.
   integrate to $\widetilde{\mathcal A}_i\bigl(\exp_*D^{(i)}_\chi\bigr)$,
   with the same masked insertions $Q^{(i)}_T$;
  \item[(b)] the Gaussian history is transported by the reference
-  integrals on those insertions:
-  $D^{(i-1)}=\log_*\mathcal G_i\bigl(\exp_*D^{(i)}_\chi\bigr)$, and this
-  is the Gaussian history used at the middle level and at the launch;
+  integrals on those insertions: at every healthy base configuration
+  $x$, $b_x$ is invertible and the jet of $D^{(i-1)}$ at $x$ is
+  $\log_*\mathcal G_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$. This is the
+  Gaussian history used at the middle level and at the launch;
  \item[(c)] the transport is bounded: with
   $\tau_n=b_n\max(1,\tau)^n$, where $b_n$ is the Bell number and $\tau$
   the amplitude of the masked principal pieces,
-  $\|\mathcal G_i(Q^{(i)}_T)\|\le\tau_n$ for every $T$.
+  $\|\mathcal G_{i,x}(Q^{(i)}_T)\|\le\tau_n$ for every $T$ and every
+  healthy base configuration $x$;
+ \item[(d)] the reference mass is invertible with a uniform jet bound:
+  $\|b_x^{-1}\|\le\beta_0$ for every healthy base configuration $x$,
+  where $\beta_0\ge1$ has upper exponent $0$, uniformly in the rungs;
+ \item[(e)] the comparison data of
+  Section~\ref{sec:principal-gaussian-comparison}, and the payment that
+  follows it, hold uniformly over the healthy base configurations $x$ of
+  the required healthy region. The insertion in that comparison is
+  $h=Q^{(i)}_T$ at the base configuration $x$, read on the union of the
+  read supports of the pieces in each partition product.
  \end{enumerate}
 \end{enumerate}
-Clause (c) is not automatic. On an unmasked or masked polynomial the
-cutoff $\chi_9$ makes $\mathcal G_i$ a smooth function of the base
-parameter rather than a polynomial, and the jet norm also involves its
-derivatives in that parameter. The polynomial step of
-Section~\ref{sec:marked-healthy-cumulant-launch} is a finite linear
-substitution followed by Wick contraction with the reference covariance.
-It is the same integral without the cutoff. Write $\mathcal T_i$ for it.
-If (b) is stated with $\mathcal T_i$ in place of $\mathcal G_i$, the proof
-below acquires the additional term
-$\max_T\|\mathcal G_i(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$, a Gaussian
-tail beyond the cutoff radius. That route needs this tail bound, with
-upper exponent below zero, in place of (c).
+Clauses (c) and (d) are not automatic. The cutoff $\chi_9$ makes
+$\mathcal G_i$ a smooth function of the base parameter rather than a
+polynomial, and the jet norm also involves its derivatives in that
+parameter. If the compensated change of variables were global, so that
+$\int R_9\,d\gamma_{C_0}=1$, then $b_x-1$ would be the mass of $R_9$
+outside the cutoff. The tail estimate \eqref{eq:principal-outage} would
+then bound it, after controlling the jets of $R_9$ there. We do not use
+this.
+
+The polynomial step of Section~\ref{sec:marked-healthy-cumulant-launch}
+is a finite linear substitution followed by Wick contraction with the
+reference covariance. Write $\mathcal T_i$ for it. If (b) is stated with
+$\mathcal T_i$ in place of $\mathcal G_i$, the proof below acquires the
+additional term $\max_T\|\mathcal G_{i,x}(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$.
+A small difference does not replace the norm bound (c) by itself. That
+route needs (c) for one of the two transports and a bound on the
+difference with upper exponent below zero. To call the difference a
+Gaussian tail, one must identify the uncut density with the Wick
+contraction and say which insertion masks survive on the region removed
+by the cutoff.
 
 \begin{lemma}[The prescribed polynomial is the reference integral]
 \label{lem:allarity-prescribed-reference}
-Under (CI)(b), at every leading rung the moment polynomials of
-$D^{(i-1)}$ are $\mathcal G_i(Q^{(i)}_T)$:
+Under (CI)(b), at every leading rung and every healthy base
+configuration $x$, the moment polynomials of the jet of $D^{(i-1)}$ at $x$
+are $\mathcal G_{i,x}(Q^{(i)}_T)$:
 \[
- \exp_*D^{(i-1)}=1+\sum_{T\ne\varnothing}\mathcal G_i(Q^{(i)}_T)\,z_T .
+ \exp_*D^{(i-1)}=1+\sum_{T\ne\varnothing}\mathcal G_{i,x}(Q^{(i)}_T)\,z_T .
 \]
 \end{lemma}
 \begin{proof}
-Apply the linear map $\mathcal G_i$ coefficientwise to
-$\exp_*D^{(i)}_\chi$, use $\mathcal G_i(1)=1$, and then $\exp_*\log_*=\mathrm{id}$
+Apply the linear map $\mathcal G_{i,x}$ coefficientwise to
+$\exp_*D^{(i)}_\chi$, use $\mathcal G_{i,x}(1)=1$, and then $\exp_*\log_*=\mathrm{id}$
 on elements with constant coefficient one.
 \end{proof}
 
 By (CI)(a) the output leading letters of the cell are the coefficients of
 $\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
-$\mathcal A_i=\widetilde{\mathcal A}_i/\widetilde{\mathcal A}_i(1)$ is
-the normalized actual-sector integral. The scalar factor
-$\widetilde{\mathcal A}_i(1)$ belongs to the unmarked normalization.
+$\mathcal A_{i,x}=a_x^{-1}\widetilde{\mathcal A}_{i,x}$ is the normalized
+actual-sector integral. The scalar factor $a_x$ belongs to the unmarked
+normalization. Its invertibility is part of the next proof.
 
 \begin{lemma}[Inverse of a jet close to one]
 \label{lem:allarity-jet-inverse}
@@ -608,50 +646,69 @@ regions, where $y$ satisfies \eqref{eq:allarity-weighted-discrepancy}.
 Hence the first purchase in \eqref{eq:allarity-step-purchases} holds.
 \end{lemma}
 \begin{proof}
-Each $Q^{(i)}_T$ is a sum, over the at most $b_n$ set partitions of $T$,
-of products of at most $n$ masked principal pieces. As an insertion it is
-measurable and bounded by $\tau_n$. By
+Fix a healthy base configuration $x$; by (CI)(e) all constants below are
+uniform in $x$. Each $Q^{(i)}_T$ is a sum, over the at most $b_n$ set
+partitions of $T$, of products of at most $n$ masked principal pieces. As
+an insertion it is measurable and bounded by $\tau_n$. By
 \eqref{eq:principal-comparison-final} and the payment paragraph after it,
-applied to the insertions $Q^{(i)}_T$ and $1$,
+applied with the base configuration $x$ to the insertions $Q^{(i)}_T$ and
+$1$,
 \[
- \|\widetilde{\mathcal A}_i(Q^{(i)}_T)-\mathcal G_i(Q^{(i)}_T)\|\le\tau_n\Pi,
- \qquad \|\widetilde{\mathcal A}_i(1)-1\|\le\Pi,
+ \|\widetilde{\mathcal A}_{i,x}(Q^{(i)}_T)-\widetilde{\mathcal G}_{i,x}(Q^{(i)}_T)\|
+  \le\tau_n\Pi,\qquad \|a_x-b_x\|\le\Pi,
 \]
-where $\Pi$ has upper exponent $-1/2$, uniformly in the period and after
-the averages. These are bounds on the jet coefficients at the base
-configuration, as in \eqref{eq:principal-comparison-final}. For
-$\Pi\le1/2$, Lemma~\ref{lem:allarity-jet-inverse} applies to
-$a=\widetilde{\mathcal A}_i(1)$. Writing
-$\mathcal A_i(Q)-\mathcal G_i(Q)
- =a^{-1}\bigl(\widetilde{\mathcal A}_i(Q)-\mathcal G_i(Q)\bigr)
- +(a^{-1}-1)\mathcal G_i(Q)$ and using (CI)(c),
-\[
- \|\mathcal A_i(Q^{(i)}_T)-\mathcal G_i(Q^{(i)}_T)\|
-  \le2\tau_n\Pi+2\Pi\tau_n=4\tau_n\Pi .
-\]
-Hence all coefficients of $\mathcal A_i(\exp_*D^{(i)}_\chi)$ and of
-$\mathcal G_i(\exp_*D^{(i)}_\chi)$ have norm at most $K=2\tau_n$ once
-$4\Pi\le1$.
+where $\Pi$, the multiplier of the amplitude in
+\eqref{eq:principal-comparison-final} times $c_n$, has upper exponent
+$-1/2$, uniformly in the period and after the averages.
 
-The map $1+X\mapsto\log_*(1+X)$ is a polynomial of degree at most $n$ in
-the coefficients of $X$, with products taken in the jet algebra. On
-elements whose coefficients have norm at most $K\ge1$ it is Lipschitz in
-the sum of the coefficient norms, with constant at most $C_nK^{n-1}$ for a
-constant $C_n$ depending only on $n$. Hence, by (CI)(b),
+\emph{Normalization.} Write $a_x=b_x(1+u)$ with $u=b_x^{-1}(a_x-b_x)$. By
+(CI)(d), $\|u\|\le\beta_0\Pi$. Once $\beta_0\Pi\le1/2$,
+Lemma~\ref{lem:allarity-jet-inverse} shows that $1+u$ is invertible with
+$\|(1+u)^{-1}\|\le2$. Hence $a_x$ is invertible and
+$\|a_x^{-1}\|\le2\beta_0$. For every insertion $h$,
 \[
- \Bigl\|\log_*\mathcal A_i\bigl(\exp_*D^{(i)}_\chi\bigr)-D^{(i-1)}\Bigr\|
- \le C_nK^{n-1}2^n\cdot4\tau_n\Pi=:y ,
+ \mathcal A_{i,x}(h)-\mathcal G_{i,x}(h)
+  =a_x^{-1}\Bigl[(\widetilde{\mathcal A}_{i,x}-\widetilde{\mathcal G}_{i,x})(h)
+    -(a_x-b_x)\,\mathcal G_{i,x}(h)\Bigr],
+\]
+as one checks by multiplying out and using
+$\widetilde{\mathcal G}_{i,x}=b_x\mathcal G_{i,x}$. With $h=Q^{(i)}_T$ and
+(CI)(c),
+\[
+ \|\mathcal A_{i,x}(Q^{(i)}_T)-\mathcal G_{i,x}(Q^{(i)}_T)\|
+  \le2\beta_0(\tau_n\Pi+\Pi\tau_n)=4\beta_0\tau_n\Pi .
+\]
+Hence all coefficients of $\mathcal A_{i,x}(\exp_*D^{(i)}_\chi)$ and of
+$\mathcal G_{i,x}(\exp_*D^{(i)}_\chi)$ have norm at most $K=2\tau_n$ once
+$4\beta_0\Pi\le1$.
+
+\emph{Logarithm.} The map $1+X\mapsto\log_*(1+X)$ is a polynomial of
+degree at most $n$ in the coefficients of $X$, with products taken in the
+jet algebra. On elements whose coefficients have norm at most $K\ge1$ it
+is Lipschitz in the sum of the coefficient norms, with constant at most
+$C_nK^{n-1}$ for a constant $C_n$ depending only on $n$. Hence, by
+(CI)(b),
+\[
+ \Bigl\|\log_*\mathcal A_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)-D^{(i-1)}\Bigr\|
+ \le C_nK^{n-1}2^n\cdot4\beta_0\tau_n\Pi=:y ,
 \]
 the norm on the left being the sum over the modes of the jet norms of
-the coefficients. Since $\tau$ has upper exponent $0$, so do $\tau_n$
-and $K$, and $y$ has upper exponent $-1/2$. By
+the coefficients at $x$.
+
+\emph{Values.} The zeroth coefficient of a jet product is the product of
+the zeroth coefficients, so the zeroth coefficient of the left side is the
+same expression evaluated at $x$. The jet norm dominates it. Hence the
+actual projected polynomial and $D^{(i-1)}$ differ by at most $y$ at
+every healthy base configuration $x$, which is the bound on the required
+healthy regions.
+
+\emph{Payment.} Since $\tau$ and $\beta_0$ have upper exponent $0$, so do
+$\tau_n$ and $K$, and $y$ has upper exponent $-1/2$. By
 Lemma~\ref{lem:allarity-step-charge}, $2^nR_e$ is a constant, and $H^{q}$
 has upper exponent $0$. Hence $2^nR_eyH^{q}$ has upper exponent $-1/2$,
 and is therefore at most $1$ for all large $s$. This is
 \eqref{eq:allarity-weighted-discrepancy}, which implies the first purchase
-in \eqref{eq:allarity-step-purchases} because $\omega_-\le1$. Jet
-coefficients bound the values on the healthy regions where
-\eqref{eq:principal-comparison-final} applies.
+in \eqref{eq:allarity-step-purchases} because $\omega_-\le1$.
 \end{proof}
 
 \begin{lemma}[The remaining step purchases]
@@ -719,8 +776,10 @@ The following inputs are not supplied here.
  Lemma~\ref{lem:allarity-step-discrepancy}: the compiler integrates the
  masked moments $Q^{(i)}_T$, the Gaussian history is transported by the
  reference integrals on those same insertions and is the one used at the
- middle level, and the transport is bounded in the jet norm. The
- normalization is handled by Lemma~\ref{lem:allarity-jet-inverse}. The
+ middle level, the transport is bounded in the jet norm, the reference
+ mass has a uniform inverse jet bound, and the comparison is uniform over
+ the healthy base configurations. The normalization is then handled by
+ Lemma~\ref{lem:allarity-jet-inverse}. The
  amplitude bound at every leading rung follows from item~2
  by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells

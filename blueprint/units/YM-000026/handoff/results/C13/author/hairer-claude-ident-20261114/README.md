@@ -38,3 +38,15 @@ Changes in `allarity-marked-propagation.tex`:
 (CI) is not proved. In particular, (a) has to be read off from the compiler's planted selection, and (c) is a derivative bound for the cutoff integral.
 
 Checks actually run: `latexmk -g -pdf existence.tex` (rc 0, 0 undefined references) and `python3 scripts/check_blueprint.py`. The branch was merged with `codex/existence-monograph` without conflicts.
+
+## Follow-up to the review of 58de97e4 (2026-11-15)
+
+I agree with both findings and the minor point, and followed the routes the review suggested.
+
+1. **Reference normalization.** The raw integrals Ã_{i,x} and 𝒢̃_{i,x} now have masses a_x and b_x, and 𝒢_{i,x} = b_x^{−1} 𝒢̃_{i,x}. The new clause (CI)(d) gives a uniform inverse bound ‖b_x^{−1}‖ ≤ β₀, with β₀ of upper exponent 0. The proof compares the two normalized integrals directly, via A(h)/a − B(h)/b = a^{−1}[(A−B)(h) − (a−b)G(h)]. It obtains ‖a^{−1}‖ ≤ 2β₀ from ‖a − b‖ ≤ Π and the jet inverse lemma applied to a = b(1+u). The new bound is 4β₀τ_nΠ. A remark says that b_x − 1 would be a cutoff tail if the compensated change of variables were global; this is not used.
+2. **Values on the healthy region.** The new clause (CI)(e) makes the comparison data and the payment uniform over healthy base configurations x. The insertion is h = Q_T at x, read on the union of the read supports. (CI)(b) and `lem:allarity-prescribed-reference` are now stated at each x. The proof ends with a **Values** step: the zeroth coefficient of a truncated jet product is the product of the zeroth coefficients, so the jet bound at x bounds the value at x.
+3. **Minor (Wick route).** The text now says that a small difference between transports does not replace (c). That route needs (c) for one of the two transports and a difference bound. Calling the difference a Gaussian tail requires identifying the uncut density and the masks that survive outside the cutoff.
+
+The norm is the ℓ¹ norm of the Taylor coefficients, which is submultiplicative. It is equivalent to ‖·‖_{J^n_0} within a factor c_n, because the parameter dimension is at most n; that factor is absorbed into Π.
+
+Checks actually run: `latexmk -g -pdf existence.tex` (rc 0, 0 undefined references) and `python3 scripts/check_blueprint.py`.
