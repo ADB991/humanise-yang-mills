@@ -46,3 +46,14 @@ All agree with the note and the ledger. I did not open `Lean/YM/Source/Construct
 - The `example : YangMills.JointExistence := …` check recorded in `formal/README.md`.
 
 A reviewer with network access to the Lean release and Mathlib cache hosts can close the first and third items in under a minute using the commands in `formal/README.md`.
+
+## Addendum: L4 run (15 November 2026)
+
+Run on 15 November 2026 by `hairer` on macOS (arm64), Lean 4.32.0 (commit `8c9756b28d64dab099da31a4c09229a9e6a2ef35`, the pinned toolchain), against a full local build of `Lean/` (`lake build Solution YM.TraceExtension.Terrace.Lease YM.TraceExtension.Shelves.Pear`: `Build completed successfully (18121 jobs)`). The check files were compiled with `lean -DmaxHeartbeats=0 -DmaxRecDepth=4096` and the `LEAN_PATH` of `lake env`. The script is `lean-review-checks.sh` (agent-written; local, not committed). The source files read for this review have the same SHA-256 on that machine as at the pin.
+
+- `Adequacy.lean` (`581880ef…18f3`) and `AdequacyFull.lean` (`a4f05230…706e`), as in `formal/README.md`, were compiled in a temporary directory: `lean … Adequacy.lean -o Adequacy.olean` and `lean … AdequacyFull.lean -o AdequacyFull.olean`. Both exited 0, with no errors and no `sorry`.
+- A check file importing `AdequacyFull` elaborates the three theorems. Their printed statements are exactly those quoted in L1 and L2.
+- `#print axioms`: `YangMills.constant_insertion_witness`, `YangMills.jointExistence_body_constant_insertions`, `YangMills.Adequacy.vanishes_of_homogeneous` and `YangMills.jointExistence_with_constant_insertions` all give `[propext, Classical.choice, Quot.sound]`.
+- `example : YangMills.JointExistence := YangMills.jointExistence` elaborates.
+
+L4 items 1 and 3 are now done. Item 2 (independent kernel replay with lean4checker or Comparator) remains open.
