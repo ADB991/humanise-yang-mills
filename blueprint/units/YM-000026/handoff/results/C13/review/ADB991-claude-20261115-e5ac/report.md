@@ -154,5 +154,9 @@ I inspected the source as text at the pin. I did not elaborate it (see §4).
 - `git grep` for remaining uses of "(R)", for `bar\beta`, for `beta_{N,p,` and for the `hatBeta`
   and `clim` definitions at `ab094b8`.
 - `sha256sum` of every inspected file at head and base (`hashes.json`).
-- LaTeX build and Lean checks: see the PR description. Lean was not elaborated: the Mathlib hosts
-  are blocked in this environment, so the Lean checks are textual only.
+- Full build of the reviewed head: `git archive ab094b8 manuscript`, then `latexmk -pdf -interaction=nonstopmode
+  -halt-on-error existence.tex`. Exit code 0, 1056 pages, no undefined references in the log. I inspected
+  p. 872 (Lemmas 203.1 and 203.2, start of Proposition 203.3); it renders correctly.
+- `python3 scripts/check_blueprint.py` (OK) and `python3 -m unittest discover -s tests` (22 tests, OK) on this
+  report branch.
+- Lean was not elaborated: the Mathlib hosts are blocked in this environment, so the Lean checks are textual only.
