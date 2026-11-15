@@ -1104,6 +1104,507 @@ the stock-extension argument of Section~\ref{sec:activity-jet-assembly}.
 Neither that additional hypothesis nor the precursor and vapor
 identifications follows from \eqref{eq:selected-value-component} alone.
 
+\subsection{Summing the actual component variants}
+\label{sec:selected-component-variants}
+
+We now supply the thin-component input left open in
+Section~\ref{subsec:ex-lattice-rg-usable}. Retain the local hypotheses
+of Proposition~\ref{prop:selected-value-prices} and the offer, occupancy
+and shipment hypotheses of Lemma~\ref{lem:selected-menu-alphabet}.
+They refer to the same stored representation. Write $E$ for the
+available component exponent, $\varepsilon>0$ for its length and
+polynomial reserve, and $\delta>0$ for its tree reserve. Its head
+exponent is $E+2\varepsilon+\delta$. Let $r\in(-1/2,0)$ be the
+chosen rate. These requests precede the common schedule.
+
+It is useful to retain a growing seed mark, rather than just the fixed
+marks in \eqref{eq:selected-packet-root-price}. Put
+\[
+ M=\mu P^2/4,\qquad
+ \gamma_0=h^r+e^{-M/4},\qquad
+ R_{\rm menu}=h^r e^{(E+2\varepsilon+\delta)c_*},\qquad
+ \gamma_1=\gamma_0+R_{\rm menu},\qquad \rho=h^{r/2},
+\]
+where $c_*$ is the fixed birth-halo cover constant in the shipment
+conversion. The optional menu price is at most $h^r+R_{\rm menu}$.
+The packet site estimate, with the additional seed weight
+$e^{Mn(A)}$, is at most $e^{-M/4}$ eventually. Indeed
+$\beta\mu\tau^2\ge\mu P^2/2=2M$. After extracting $M$ per seed,
+at least $M$ remains. The packet enumeration of
+Section~\ref{sec:mixed-activity-prices} adds $2\log D_B$ per seed,
+the fixed support and length costs, and the expense $Cd^5$.
+Their sum is $o(M)$, since $d=O((\log h)^2)$ and
+$P=\exp((\log\log h)^2)$. Eventually the geometric ratio is at
+most $e^{-M/2}$. Its rooted sum is at most
+$H_B e^{-M/2}/(1-e^{-M/2})\le e^{-M/4}$, because $H_B$ grows
+polynomially in $B$. This proves the asserted marked packet price,
+without treating $M$ as a fixed request.
+
+Both $\gamma_0$ and $\gamma_1$ have upper exponent $r$. Thus,
+after one further threshold increase,
+\[
+ \frac{4(2B+1)^4\gamma_0}{\delta}\le\frac12,
+ \qquad
+ \frac{4(2B+1)^4\gamma_1}{\delta}\le\rho\le\frac12.
+\]
+For an integer $k\ge0$ define the two positive component budgets
+\begin{equation}\label{eq:selected-component-budgets}
+ O_k=P_{\varepsilon,k}\frac{\gamma_0}{1-1/2},\qquad
+ U_k=P_{\varepsilon,k}\frac{\gamma_1}{1-\rho},\qquad
+ P_{\varepsilon,k}=e^\varepsilon k!\varepsilon^{-k}.
+\end{equation}
+Here $O_k$ pays the original alphabet and $U_k$ the augmented one.
+Both have upper exponent $r$.
+
+\begin{lemma}[Component fibers and the thin rooted bound]
+\label{lem:selected-component-fibers}
+Let $C$ be an actual connected finite set of elementary labels, with
+full support $X_C$ and total cover-plus-length charge $s_C$.
+Its menu replacement terms admit nonnegative majorants $b_{C,T}$
+such that
+\begin{equation}\label{eq:selected-component-fiber}
+ \sum_T b_{C,T}
+   =\left(\prod_{A\in C\ {\rm packet}}p_A\right)
+       \prod_{u\in C\ {\rm optional}}v_u^{\mathcal I}.
+\end{equation}
+The sum includes the distinct menu entries at a common address.
+The normalized forest and tag averages cost no additional factor.
+With
+\[
+ t_C=(1+s_C)^k\sum_T b_{C,T},
+\]
+the rooted sum over all such components is at most $U_k$ at
+exponent $E$. Restricting to thin components preserves this bound.
+Restricting instead to components containing a packet gives, for
+$k=0$, the stronger bound $U_0e^{-M}$. All these are bounds for the
+actual component labels and their summed replacement terms.
+\end{lemma}
+
+\begin{proof}
+A replacement set $T$ must occupy distinct optional addresses of $C$.
+Give it the majorant consisting of its wages, the original prices at
+unreplaced addresses and the unchanged packet prices. The residual-body
+lemma bounds the absolute integral by this product on the one Gaussian
+and Haar probability space. This bound is uniform in the forest and
+finite tags. Their averages have nonnegative coefficients summing to
+one; applying the triangle inequality before averaging preserves the
+same product. These averaging indices are not extra unweighted labels
+in the component alphabet. The only sum over replacement choices is
+exactly the finite product identity
+\eqref{eq:selected-menu-ticket-product}, which proves
+\eqref{eq:selected-component-fiber}.
+
+Apply \eqref{eq:mixed-ceiling} to the augmented alphabet with site
+price $\gamma_1$, tail ratio $\rho$, and mark $M$ on every packet
+seed. For the unrestricted components take minimum seed count zero,
+minimum extra cost zero and minimum excess label count zero. This
+gives $U_k$. A thin component is a subset of these distinct connected
+sets, not another copy of each set, so restriction decreases the
+nonnegative sum. If a component contains a packet, its total number
+of typed seeds is at least one. Taking minimum seed count one and
+$k=0$ gives $U_0e^{-M}$.
+
+If a later output groups several terms with the same component or
+barcode, the norm of their sum is bounded by the sum of these already
+assigned majorants. The argument uses support containment when an
+output has smaller support. No estimate is made by multiplying the
+component bound by an unbounded number of copies. For absolute
+convergence on the finite torus, every nonzero component has nonempty
+support and $E\ge0$. Summing the rooted bound over all sites gives
+\[
+             \sum_C t_C\le |\Lambda_c|U_k.
+\]
+Consequently every subseries and every regrouping just used converges
+absolutely. The volume factor is used only for this assertion; it is
+not inserted into the rooted estimate.
+\end{proof}
+
+Fix a field derivative order $j$. Choose the polynomial order
+$k=K+j$ returned by the integrated derivative estimate below, and a
+nonnegative upper-exponent-zero function $A_j(x)$ enlarged to dominate
+its constant. These choices precede the common schedule and are used
+in all the following pledges; a smaller arbitrary polynomial order
+would not pay the differentiated terms. Put
+\begin{equation}\label{eq:selected-thin-pledges}
+ P_0=(1+2^{j+2}A_j)(O_k+2U_k),\qquad
+ P_X=O_k+2U_0,\qquad V=10(P_0+P_X).
+\end{equation}
+Choose $a\ge0$ and $e>0$ with $a+2e\le E$. These are also fixed
+before the schedule. Since all three displayed prices have upper
+exponent $r<0$, eventually
+\begin{equation}\label{eq:selected-two-tree-smallness}
+ \frac{4(2B+1)^4P_0}{e}\le\rho\le\frac12,
+ \qquad \frac{4(2B+1)^4V}{e}\le\frac12,
+ \qquad V\le\frac12.
+\end{equation}
+For example the first left side divided by $\rho$ has upper exponent
+$r/2<0$; the other assertions follow directly from their negative
+upper exponent. All bounds are uniform in the finite menu.
+
+In particular the actual thin weights $t_C$ satisfy
+\[
+ \sup_z\sum_{C:\,z\in X_C}t_Ce^{(a+2e)c_B(X_C)}\le P_0.
+\]
+Indeed Lemma~\ref{lem:selected-component-fibers} gives $U_k$ at
+exponent $E$, and $U_k\le P_0$. This supplies both the vertex input
+and the tree smallness required in
+Section~\ref{subsec:ex-lattice-rg-usable}. Its factorial-normalized
+cluster proof now gives the actual fragrance fee bound
+$P_0/(1-\rho)$ at exponent $a+e$, and the subtracted response costs
+$2P_0/(1-\rho)$. Repeated component occurrences in a cluster retain
+their factorial normalization. This is not a new unpriced fiber.
+The separate packet-containing component budget is at most
+$P_Xe^{-M}$, since $U_0\le P_X$. These statements construct the
+thin input; the reconstruction of the full forced response from
+these two populations still uses the separate cluster identities.
+
+\subsection{The integrated derivative with an actual insertion}
+\label{sec:selected-inserted-derivative}
+
+We next construct the marked integral majorant, rather than assume
+that the scalar estimate can be differentiated. Fix one original
+optional label $u_*$, of fine crest cover $c_f$, whose normalized
+insertion has pointwise amplitude $w\ge0$. It is a regular or forced
+insertion, not a warning. Its local construction in
+Section~\ref{sec:marked-block-integral} multiplies the insertion by
+its larger protective cutoff. Use the compensated variation of
+Section~\ref{sec:compensated-variation}, holding the original fine
+configuration $U_*$ fixed. The inserted observable is then the constant
+$h(U_*)$. Each protective cutoff is a fixed smooth scalar function of
+a compensated increment divided by its threshold. The increment
+bounds in that section, divided by the threshold, have upper exponent
+zero; the fixed-order chain rule gives the same bound for each
+cutoff's derivative scale. The number of cutoff factors is bounded
+by a geometric function of upper exponent zero times the full cover
+plus length charge. The product rule adds these scales and retains
+amplitude $w$. It therefore gives scale at most
+$r_*(x)(1+c_B(X_{u_*})+d_{u_*})$, with $r_*$ of upper exponent zero.
+This representation with the original observable fixed is used on
+the protective cutoff's nonzero germ. Outside its closed support the
+factor is a zero germ; the protected extension and the strict room
+in the compensated chart cover the boundary as in that construction.
+No derivatives of the arbitrary original fine observable are taken.
+
+Choose the derivative order before the schedule, and retain the
+funded local jet hypotheses in Section~\ref{sec:activity-jet-assembly},
+including the differentiated precision and compensation estimates.
+The variation is a map $V$ from a finite-dimensional real normed
+parameter space, with $V(y_0)$ equal to the base coarse field. Its
+link jets through order $j$ obey the bounds of
+Section~\ref{sec:compensated-variation}, with order-$k$ bound
+$C_G v(x)^k$, where $v\ge0$ has upper exponent $-1/2$ and the
+fixed convention for $C_G$ is the one used there. The constants below
+are uniform over this class of variations, not over arbitrary
+rescalings of the parameter.
+These are stronger local inputs than the covariance norm used only
+for value estimates. Let $C$ be an admitted connected component
+containing $u_*$. At the base coarse field require its whole assigned
+union support $X_C$ to be healthy. Thus every packet's full $500B$
+neighbourhood and every other read support is healthy. Use the smooth
+stock extension for packets and the unmasked coarse-tail extension,
+as specified in that section. They agree in value with the physical
+factors on this domain; we do not differentiate a physical flag test.
+
+Let $a_u$ be the elementary jet amplitudes, with $a_u=T$ for a
+warning, and let $J_C$ be the joint reduced-margin warning event.
+Put $b_C=\#\{\text{warning labels in }C\}$ and
+$s=s_C$. On the common Gaussian space let $I$ be the full read-bond
+set and let $F_I$ be the polynomial defined in
+Section~\ref{sec:gaussian-moment-prices}. The product rule, including
+the density ratio and the compensation Jacobian, supplies fixed
+integers $q,K$ and nonnegative upper-exponent-zero functions $D_j,E_j$
+such that
+\begin{equation}\label{eq:selected-marked-integrand}
+ g_C(z)=w\!\prod_{u\in C\setminus\{u_*\}}a_u\,
+       D_j(x)(1+s)^j\mathbf1_{J_C}(z)F_I(z)^{qj}
+\end{equation}
+bounds every derivative through order $j$ of this transformed
+integrand at the base parameter. It is uniform in the frozen Haar
+variables. The original label's price has been removed exactly once.
+Removing this label removes no warning, so $J_C$ and $b_C$ are
+unchanged.
+
+For completeness, the scale bound follows by adding all factor
+scales. Every nonzero factor has nonempty support, so their sum is
+at most a fixed upper-exponent-zero function times $1+s$.
+Write $r_{\rm jet}(x)$ for the common factor scale.
+The density-ratio derivatives add a scale of the form $D F_I^q$.
+Since $F_I\ge1$, the total scale is bounded by
+$(1+D+2r_{\rm jet}+r_*)(1+s)F_I^q$. Raising this to order at most $j$ gives
+\eqref{eq:selected-marked-integrand}, after increasing $D_j$.
+Warnings outside $J_C$ vanish as germs by the reduced-margin argument,
+so no derivative of its indicator is involved.
+
+The read count is at most $(1+s)(2B+1)^4\rho_L$, where $\rho_L$
+is the fixed bond-density constant. The Gaussian moment estimate at
+order $2qj$ gives
+\[
+ (\mathbb E F_I^{2qj})^{1/2}\le E_j(x)(1+s)^K.
+\]
+Purchase the warning bound $\mathbb P(J_C)\le\eta^{2b_C}$ with
+a fixed arbitrarily negative upper exponent for $\eta$. Applying
+Cauchy--Schwarz on this one Gaussian space proves that $g_C$ is
+integrable and that
+\begin{equation}\label{eq:selected-marked-integral}
+ \int g_C\le A_j(x)\,w
+       \prod_{u\in C\setminus\{u_*\}}\widetilde a_u\,
+                    (1+s)^{K+j},
+ \qquad \widetilde a_u=
+ \begin{cases}T\eta,&u\text{ a warning},\\a_u,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+Haar integration costs one. The local common-neighbourhood dominator
+of Section~\ref{sec:gaussian-differentiation} justifies differentiating
+each component integral. The estimate above is a base-point derivative
+bound; it does not infer uniform differentiability of an infinite sum
+from bounds only at that point.
+
+There is an exact way to pay the marked factor before summing
+components. With $g=h^r$ and incoming support exponent $\nu_f$, set
+\[
+ j_*=g e^{-(\nu_f-\varepsilon)c_f},\qquad
+ D_*=\frac{w e^{(\nu_f-\varepsilon)c_f}}g.
+\]
+Then $D_*\ge0$ and $D_*j_*=w$, including $w=0$.
+The marked-footprint calculation in
+Section~\ref{sec:mixed-activity-prices} gives the extra rooted vertex
+price at most $g e^{(E+2\varepsilon+\delta)c_*}=R_{\rm menu}$.
+Replace the price at $u_*$ by $j_*$, retaining the same support and
+length charge. The array is bounded by the old array plus this one
+new entry, so its site price is at most $\gamma_1$; replacement is
+not assumed to increase the old price. Equation
+\eqref{eq:selected-marked-integral} is now $D_* A_j$ times the
+product price of that array, multiplied by $(1+s)^{K+j}$.
+The differentiated packet amplitudes have the same marked seed
+estimate used above: their added expense $3j d^5$ is still $o(M)$.
+The differentiated optional prices retain exponent $r$, by choosing
+the intermediate exponent strictly below $r$ before absorbing the
+fixed derivative constants.
+
+Consequently the sum of the integrated majorants for all admitted
+healthy components through a site, at exponent $E$, is at most
+\begin{equation}\label{eq:selected-marked-root}
+                 D_* A_j(x) U_{K+j}.
+\end{equation}
+This statement concerns the sum of the base-point integral majorants.
+For a fixed sector and forest, Tonelli's theorem applies to the
+nonnegative witnesses on its probability space. When the actual
+component construction assigns different sectors, use the disjoint
+union of the component probability spaces with counting measure;
+Tonelli then gives the same sum of integrals. On the finite torus
+the total integral is at most
+$|\Lambda_c|D_* A_j U_{K+j}$. Restricting to any actual subfamily
+or averaging the forest and tags preserves the bound. The unmarked
+version is obtained by retaining the original factor instead of
+replacing it; its price is $A_jO_{K+j}$.
+For a physical thin term with empty flag inventory, health on its
+support identifies this local extension with the physical value;
+outside that domain one uses its prescribed mask. No smoothness of
+that mask across the boundary is claimed. Thus the derivative input
+has the correct domain and a common integrable witness on the
+selected tube, including the directly stored step at index zero.
+
+\subsection{The precursor and the two local correction arrays}
+\label{sec:selected-precursor-vapor}
+
+The preceding bounds can now be used before either of the numerical
+response payments. We describe the actual arrays being paid. Retain
+the local return and its exact splitting and reset hypotheses from
+Sections~\ref{sec:selected-nonlinear-offering} and
+\ref{sec:physical-reset-reorganization}; in particular the truncation,
+folding, path and clipping data are those of the stored return.
+The small-field comparison and reset estimates in those sections are
+still local analytic premises. The argument here supplies the
+component, insertion and summation inputs and applies those estimates
+to their two distinct correction arrays.
+
+\paragraph{The hard precursor.}
+The thin-component cluster fees have rooted price
+$P_0/(1-\rho)$ at exponent $a+e$, and the packet-containing components
+have rooted price $P_Xe^{-M}$ there. A precursor label consists of a
+connected collection of the latter components decorated by regular
+cluster occurrences, with their actual positive integer multiplicities.
+Its price is the product of the component prices and the regular
+cluster fees divided by the occurrence factorials. The original
+compatibility and eligibility tests are retained in the physical
+array. For estimating its price, they may be dropped.
+
+Here is the multiplicity estimate with the present constants. On the
+alphabet of packet-containing components and regular cluster labels,
+write $w_i$ for these prices, and give a component the mark $m_i=M$
+and a regular cluster the mark zero. Inflate to $v_i=2w_i e^{m_i}$.
+The rooted price of $2v_i$ at exponent $a+e$ is at most
+\[
+ 4P_X+\frac{4P_0}{1-\rho}\le4P_X+8P_0\le V.
+\]
+By \eqref{eq:selected-two-tree-smallness}, $V\le1/2$ and the
+distinct connected-set tree ratio for these prices, with reserve $e$,
+is at most $1/2$. At a site in the nonempty support of $i$ the
+individual rooted summand gives
+$v_i'=v_i e^{a c_B(X_i)}\le1/2$. Thus, for each fixed distinct
+set of labels $S$,
+\[
+ \prod_{i\in S}\sum_{n\ge1}\frac{(v_i')^n}{n!}
+       \le\prod_{i\in S}2v_i'.
+\]
+The rooted connected-set sum is therefore at most $2V$.
+Every actual precursor label contains a packet-containing component,
+so its inflated product has gained at least $e^M$. It has also gained
+$2^m$ if it has at least $m$ occurrences. Extracting these factors
+proves the rooted precursor price
+\begin{equation}\label{eq:selected-precursor-hard}
+                 2^{-m}e^{-M}\,2V
+                     \quad\text{at support exponent }a.
+\end{equation}
+This is the price of the actual decorated labels, including repeated
+regular clusters, not a bound for a single decoration. The exact
+flattening identity of Section~\ref{sec:forced-exclusion} applies:
+connected components and flattening are inverse, and preserve the
+sign, inventory and both kinds of factorial. It identifies the
+priced array with the precursor gas. Its fixed flag gates are bounded
+by one and hence preserve every payment majorant. Since $V\le1/2$,
+the case $m=0$ is at most $e^{-M}=e^{-\mu P^2/4}$, the hard input
+of Lemma~\ref{lem:selected-response-payments}.
+
+The same construction applies to the finite menu: replace each
+component price by the summed ticket price from
+Lemma~\ref{lem:selected-component-fibers}. The score-product formula
+in Section~\ref{subsec:ex-lattice-rg-usable} bounds each finite product
+by the product of its payment prices. Division by the two occurrence
+factorials and the nonnegative summation above therefore give the
+same rooted payment for all its switching scores. This supplies the
+paid precursor, rather than merely a bound on each switched value.
+
+\paragraph{The scalar insertion interval.}
+The inserted and uninserted component values, say $b_C$ and $a_C$,
+obey $|a_C|\le A_C$ and $|b_C|\le D_* B_C$, with the original and
+single-replacement product prices respectively. These are the value
+cases of the residual-body and marked estimates. For every
+$|\theta|D_*\le1$, the affine term $a_C+\theta b_C$ has the joint
+value-and-derivative bound $A_C+2B_C$ of
+Section~\ref{sec:leaf-expansion}. The witnesses are
+$(A_C+B_C,B_C)$, so the sum of the two witnesses is exactly this
+price. The product rule for that joint norm incurs no arity factor.
+Thus the thin cluster series and the decorated precursor series have
+common summable majorants on the open interval
+$(-D_*^{-1},D_*^{-1})$ if $D_*>0$, and on all of $\mathbb R$ if
+$D_*=0$. In the latter case $b_C=0$ for every $C$.
+The budgets for $A_C+2B_C$ are bounded by $O_k+2U_k$ and the
+corresponding marked-seed price already included in
+\eqref{eq:selected-thin-pledges}. Nonempty supports turn their
+rooted bounds into absolute sums on each finite torus.
+Equation~\eqref{eq:leaf-differentiate-sum} now justifies differentiation
+of those scalar series. This interval argument is separate from the
+coarse-field jet argument at a healthy base point above. The latter
+supplies the regular local jet bounds for the resulting insertion;
+it is not used as a substitute for uniformity on the scalar interval.
+
+\paragraph{The first soft correction.}
+Write $D_o(U)$ for the discrepancy at anchor $o$ in
+\eqref{eq:selected-offer-exact-split}. This is the difference between
+the allocated finite short density, its constant value and its folded
+local replacement, on exactly the physical and auxiliary data of the
+stored return. That section proves its locality on the doubled
+neighbourhood $N_{2z}(o)$ and
+\[
+ D_o(U)=0\quad\text{if }N_{2z}(o)\text{ is healthy},\qquad
+ |D_o(U)|\le q,
+\]
+where
+\[
+ q=2h_{\rm val}\Bigl(1+\sum_{i=0}^4|a_i|\,|\Lambda_i|\Bigr),
+ \qquad h_{\rm val}=2\operatorname{ballCost}(r_0)
+                              C_{\rm turn}h^{-7/16}.
+\]
+Here $r_0$ is the local panel radius, not the negative rate $r$.
+Let $M_2$ be the fixed cover bound of $N_{2z}(o)$ at radius $B$.
+At a given site at most $\operatorname{ballCost}(2z)$ anchors
+contribute. The ordinary correction array $-D_o$, including its
+normalized symmetry copies, consequently has soft price
+\[
+ b_0=\operatorname{ballCost}(2z)q e^{(b_c+2)M_2}.
+\]
+The raised correction uses the same discrepancy and radius and adds
+one unit of support exponent, so its price is
+\[
+                         b_+=e^{M_2}b_0.
+\]
+This equality follows termwise from the cover bound; if the actual
+cover is smaller, it is an inequality in the favourable direction.
+The displayed expressions are the chosen uniform allowances.
+All factors except $h^{-7/16}$ have upper exponent zero, while the
+exponential cover factors are fixed stage constants. Let $C_{\rm cov}=e^{\chi_0}$ be the cover allowance already
+fixed in Lemma~\ref{lem:selected-response-payments}. The entry
+threshold can be chosen so that
+\[
+ b_0\le\min(1,C_{\rm cov}e^{-M_2})h^{-1/8},
+ \qquad b_+\le C_{\rm cov}h^{-1/8}.
+\]
+Indeed $b_0h^{1/8}$ tends to zero, and both constants in the
+minimum are strictly positive and fixed before the threshold.
+This explicitly matches the first payment even if the convenient
+cover bound $M_2$ differs from the purchased ticket $\chi_0$.
+The vanishing on healthy doubled supports is exactly the eligibility
+condition needed to absorb this logarithmic array. The signs follow
+from \eqref{eq:selected-offer-exact-split}: it is $-D_o$ that is
+absorbed. These are the ordinary and raised precursor soft prices;
+neither is the price of the final reset correction.
+
+\paragraph{The final local correction.}
+At the base budget point $p$ retain the actual path, clip $S$, width
+$\sigma$, path count $C$, reset $\alpha$ and regular allowance $H$.
+The reset decomposition of
+Section~\ref{sec:physical-reset-reorganization} gives two disjoint
+logarithmic families. The first is the local Taylor-subtraction
+discrepancy, whose amplitude is bounded by the reset-loss constant
+times the original regular majorant. The second is the low-path
+mask discrepancy, bounded by the boundary-hit coefficient times
+its original absolute path coefficient and relaxation weight.
+Both vanish on their assigned healthy supports, as proved by the
+reset identities. They are measurable, gauge invariant and local
+on those supports. Thus their nonnegative pointwise majorants,
+not only the sums of their values, are available for the payment.
+
+For the ordinary row use the ordinary footprint payments of that
+section, giving $f_0=\operatorname{softNeed}(p,S,\sigma,C,\alpha,H)$.
+For the raised row repeat the support estimate at exponent
+$p.\mathrm{supportExponent}+2$. The reset halo has population radius
+$4B+2$ and cover increment $81$; use width reserve $1/2$.
+The low-path support has population radius $B$, its original length
+charge and cover increment $C_{\rm low}$; use width reserve
+$\sigma/8$. The path-width hypothesis implies
+$(p.\mathrm{supportExponent}+2)/B\le\sigma/2$, leaving this
+positive reserve in the original path sum. Applying the footprint
+sum separately to the two families gives exactly
+\[
+ f_+=F(H)+N(p,\alpha,H)Q(p,S,\sigma,C)
+\]
+with $F,Q,N$ as in \eqref{eq:ex-lattice-multi-raised-demand}.
+The scalar boundary-hit bound $N$ follows from the same reset
+coefficient estimate and regular allowance $H$; it is uniform for
+$|\alpha|\le A_j$. This is a rooted bound on the actual reset and
+path arrays. Reindexing into the final dictionary is injective,
+with zero values at unused addresses, and preserves the bound.
+It is attached to the raised budget, whose radius is still $B$,
+although the displayed formula is evaluated at the base point $p$.
+
+Finally apply the first numerical payment to
+\eqref{eq:selected-precursor-hard} and $b_0$ or $b_+$, respectively.
+The compatible-family identity and payment argument in
+Section~\ref{sec:soft-log-fusion} produce hard price
+$2e^{-\mu P^2/8}$. Widening the dictionary sends old labels
+injectively to their unchanged supports and assigns zero elsewhere;
+it preserves both the scores and their majorants. Apply the second
+payment to that hard price and the corresponding final soft array,
+$f_0$ or $f_+$. The result is the price $2e^{-\mu P^2/16}$ on
+that row's actual output, with the two different support exponents.
+No output or rate from the ordinary row is substituted for the raised
+one. All component sums, local corrections and both payments use
+the same selected representation, including at index zero. The local
+funding, jet, short-panel and reset hypotheses explicitly retained
+above remain necessary; the argument does not establish them merely
+by increasing a threshold.
+
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
 $t_d\le k\le N$; in particular $k\ge1$. We verify the inputs of
