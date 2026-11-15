@@ -80,13 +80,19 @@ $[0,1]$. The intermediate value theorem supplies the desired $t$.
 
 The producers of the pairwise receipt use several fields of the
 finite-volume chart witness. We list them here, with the two scale
-definitions they require, and prove the one property that follows from
-definitions alone. The witness itself is part of the funded chart receipt
-above, which remains an input of this section. In this subsection, $k$
+definitions they require. We then prove three lemmas: the corrected labels
+solve their reading equation, the insertions lie inside the home chamber
+at the root depth, and the clock of
+Section~\ref{sec:common-scale-selection} supplies the dilation, depth,
+bracket and plateau. The lawful history (F3) and the readings (F5) remain
+inputs from the funded chart receipt above. In this subsection, $k$
 denotes the level of the chart and $\mu_k$ the monitor $m_k$ of
 \eqref{eq:ex-lattice-firesky-gap}. $J$ is the stage clock and $L_j$ are
 the block lengths of Section~\ref{sec:common-scale-selection}, and
-$c_k\ge1$ is the cover size of the clock at level $k$.
+$c_k=\lceil(\log\widehat\beta_k)^2\rceil$ is the cover size of the clock
+at level $k$. The monitor is $\mu_k=\mathcal M_k$ of
+Section~\ref{sec:rank-root-normalization}, and $\widehat\beta_j$ is the
+clock coupling of Section~\ref{sec:common-scale-selection}.
 
 \paragraph{Two levels attached to a chart.}
 Let the chart have base arc $b$, and put $m=\mu_k^b$. Its \emph{middle
@@ -110,8 +116,8 @@ arbitrary.
  \item dilation: $m\mu_k^2\le a_\ell/a_k$, so the set defining $\ell$
   is nonempty;
  \item depth: $c_k^{10}\le a_w/a_\ell$;
- \item wheel: the smaller of the clock factors of the stages $J(k)$ and
-  $J(k)-1$ is at least $2$;
+ \item wheel: $\min(L_{J(k)},L_{J(k)-1})\ge2$, where the clock factor of a
+  stage is its block length;
  \item bracket: $J(k)-1\le J(j)$ for every $w\le j\le k$.
  \end{itemize}
 \item[(F2)] \emph{Plateau.} $\widehat\beta_k/2\le\widehat\beta_j\le\widehat\beta_k$
@@ -133,27 +139,40 @@ arbitrary.
  allowance is replaced by the monitor $\mathcal M_j$; the numerical
  late-scale bounds there concern $\theta_{\rm clock}$.
 \item[(F4)] \emph{Ticket.} $T_M(\pi_{J(w)})\le\log\mu_k/(16M)$.
-\item[(F5)] \emph{Readings and stamps.} For every grade $d'\le d$ there is
- a linear reading $T_{d'}$ of the grade-$d'$ label space with three
- properties:
+\item[(F5)] \emph{Readings and stamps.} The level satisfies
+ $\operatorname{ref}(d')\le k$ for every grade $d'\le d$, where
+ $\operatorname{ref}$ is the reference level of
+ Section~\ref{sec:actual-rank-purchases}. This holds when the chart is an
+ output of the one-step construction, which covers all reference grades
+ through $d$, and in any case for all large $k$, since only finitely many
+ grades occur. For every grade $d'\le d$ there is a linear reading $T_{d'}$
+ of the grade-$d'$ label space with three properties:
  \begin{itemize}
  \item it fixes the reference unit;
  \item it commutes with the real structure;
  \item it satisfies the half-accuracy bound
-  $\|a(v)-T_{d'}v\|\le\frac12\|a(v)\|$ in coefficient size, where $a$
-  is the calibrated entry map at level $k$ for $(N,p)$.
+  $|a(v)-T_{d'}v|_1\le\frac12|a(v)|_1$, where $a=A_{k,N,p}$ is the
+  calibrated entry (primary-coordinate) map at level $k$ for $(N,p)$.
  \end{itemize}
- It also carries a stamp duty with the same reading.
+ It also carries a stamp duty with the same reading: a bound, in the
+ halo of the readers, on the price of the insertions whose low-grade
+ reading is $T_{d'}$. This clause is recorded here as in the funded
+ construction; it is not established in this book (see
+ Section~\ref{sec:actual-rank-purchases}).
 \end{enumerate}
 By (F1), every level of $[w,k]$ lies in the stage $J(k)$ or $J(k)-1$. Hence
 $J(w)\ge J(k)-1$, and $w\to\infty$ as $k\to\infty$ because $J$ diverges.
 
 \paragraph{Corrected labels.}
 Write $\sigma=\sigma_{k,N,p}=(\beta_{N,p,k}^{1/2}\,\theta_k)^{-1}>0$ for
-the shrink factor, where $\theta_k$ is the clock threshold. Write $W_\rho$
-for the linear map multiplying the grade-$j$ component of a label by
-$\rho^j$, and $S_\sigma$ for the frame scaling by $\sigma$. The
-\emph{corrected label} of a basis vector $e$ is
+the shrink factor, where $\beta_{N,p,k}$ is the actual coupling of
+Section~\ref{sec:actual-rank-purchases} and $\theta_k=\theta_{\rm clock}(k)$
+is the clock threshold. Write $W_\rho$ for the linear map multiplying each
+coordinate of a label by $\rho$ to its position degree, and $S_\sigma$ for
+multiplication by $\sigma$ to the factor degree. Both act on the
+grade-$d'$ label space $V_{d'}$. By Lemma~\ref{lem:ex-lattice-firesky-solves}
+below, $T_{d'}$ is invertible. The \emph{corrected label} of a basis
+vector $e$ of $V_{d'}$ is
 \[
  X_{N,p}e=T_{d'}^{-1}\bigl(S_{\sigma}^{-1}W_me\bigr).
 \]
@@ -170,7 +189,8 @@ with
 \end{equation}
 \end{lemma}
 \begin{proof}
-The calibrated entry map satisfies the reference inverse estimate
+Since $\operatorname{ref}(d')\le k<N$ by (F5), the calibrated entry map
+satisfies the reference inverse estimate
 \eqref{eq:rank-reference-inverse} of
 Section~\ref{sec:actual-rank-purchases}, $|v|_1\le D_k|a(v)|_1$. With the
 half-accuracy bound of (F5), the argument given there shows that $T_{d'}$
@@ -180,10 +200,12 @@ equation has the unique solution $X_{N,p}e$; this is
 \end{proof}
 
 \paragraph{Status.} Fields (F1)--(F5) are fields of the funded witness.
-This section records them but does not construct them. Their source
-construction is the cost and staging construction of the funded run,
-which this section already takes as input. With these fields, three
-of the inputs listed elsewhere are now displayed rather than missing:
+For the clock of Section~\ref{sec:common-scale-selection} and all
+sufficiently large $k$, with the requests of
+\eqref{eq:rank-root-ticket-requests} included, (F1), (F2) and (F4) are
+proved below: by Lemma~\ref{lem:ex-lattice-firesky-clock-fields}, the
+remark after it, and Proposition~\ref{prop:rank-root-output-ticket}. The
+inputs listed elsewhere that these fields supply are:
 \begin{itemize}
 \item the allowance and the root-depth identification used in
  Subsection~\ref{subsec:trace-rounded-receipt};
@@ -191,8 +213,7 @@ of the inputs listed elsewhere are now displayed rather than missing:
  Proposition~\ref{prop:rank-root-output-ticket};
 \item the ticket at the output level.
 \end{itemize}
-The plateau (F2) and the lawful history (F3) are the properties that the
-propagation to the output torus requires at every level of $[w,k]$.
+The lawful history (F3) and the readings (F5) remain inputs.
 
 \begin{lemma}[Chamber interiority at the root depth]
 \label{lem:ex-lattice-firesky-chamber}
@@ -201,7 +222,7 @@ root depth $w$. Let $x$ be fit for the chart: the grid configuration
 $z=a_k\lceil mx\rceil$ is coordinatewise separated and
 $|z_{c,\alpha}|\le a_\ell/8$ for $c=0,1$ and $\alpha=1,\dots,4$. Fix a grade
 $d$, and let $Z_d$ bound the coordinates of the finite stencil $S_d$ of
-the grade-$d$ insertions. Then, for every $N$ with
+the grade-$d$ insertions. Then, for every $N\ge k$ with
 \begin{equation}\label{eq:ex-lattice-firesky-chamber-mesh}
  a_N(Z_d+2)<\tfrac38\,a_w ,
 \end{equation}
@@ -215,11 +236,12 @@ Subsection~\ref{subsec:trace-rounded-comparison} holds with $w_i=w$ for
 the chart selected at index $i$.
 \end{lemma}
 \begin{proof}
-Measure positions in mesh steps of the level-$N$ lattice. The depth-$w$
+Measure positions in mesh steps of the level-$N$ lattice; since $N\ge k$,
+$a_k/a_N$ is an integer. The depth-$w$
 cell has an odd number $q=a_w/a_N$ of steps along each axis, as in the
 interiority argument of Section~\ref{ex-centered-construction}. Its home
 cell consists of the offsets $u$ with $|u_\alpha|\le(q-1)/2$ from the
-centre. Since $a_k/a_N$ is an integer, the site $z_c$ has integer
+centre. Hence the site $z_c$ has integer
 offset $u=z_c/a_N$. By fitness, and because $w\le\ell$ implies
 $a_\ell\le a_w$,
 \[
@@ -264,8 +286,8 @@ hold.
 \begin{proof}
 \emph{Growth of the scale.} At every step $m$ with $J(m+1)>j_*$, the
 entry requirement \eqref{eq:common-stage-entries} gives
-$\log L_{J(m+1)}\le s_m/J(m+1)$. In particular $s_{m+1}\le2s_m$ once
-$J(m+1)\ge1$. Hence $s_k\le C_02^k$ for a constant $C_0$, and
+$\log L_{J(m+1)}\le s_m/J(m+1)$, so $s_{m+1}\le2s_m$ at each such step.
+The steps of the first plateau are finitely many. Hence $s_k\le C_02^k$ for a constant $C_0$, and
 \[
  \log\log\widehat\beta_k\le\log k+C_1
 \]
@@ -335,7 +357,8 @@ because $\widehat\beta_k\ge s_Gs_k$.
 \end{proof}
 
 The wheel bound of (F1) is also immediate: the clock factor of a stage
-$j$ is its block length $L_j\ge3$. Consequently, of the witness fields,
+$j$ is its block length $L_j\ge3$. Consequently, for all sufficiently
+large $k$ and base arcs up to $\bar b$, of the witness fields,
 only the lawful history (F3) and the readings (F5) remain inputs from the
 funded construction. (F4) is replaced by
 Proposition~\ref{prop:rank-root-output-ticket}.
