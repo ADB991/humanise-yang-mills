@@ -475,10 +475,10 @@ above.
 \label{prop:rank-trace-output-lawful}
 Assume the conclusions of Proposition~\ref{prop:rank-trace-chart-window}(1).
 Assume also that the auxiliary representation $P_w$ at the root depth $w$
-carries the prescribed threshold of (F3),
-\[
- \theta_{P_w}=\widehat\beta_w^{-1/2}\exp\bigl((\log\log\widehat\beta_w)^{3/2}\bigr),
-\]
+carries a threshold with
+\begin{equation}\label{eq:rank-trace-threshold-window}
+ (8/7)^{1/2}\,\widehat\beta_w^{-1/2}\le\theta_{P_w}\le\theta_{\rm clock}(w),
+\end{equation}
 and that the stage profiles have clip constants with
 $0<c_{\rm lin}<c_{\rm dir}/16$. Then, for all sufficiently large $k$,
 every chart at level $k$ with base arc $b\le\bar b$, every $N\ge k$ and
@@ -503,16 +503,15 @@ profile.
 
 \emph{Coupling.} By Lemma~\ref{lem:rank-trace-endpoint} and the plateau,
 $\beta\ge\tfrac78\widehat\beta_k\ge\tfrac78\widehat\beta_w$, so
-$g\le(8/7)^{1/2}\widehat\beta_w^{-1/2}\le\theta_{P_w}$ as soon as
-$\exp((\log\log\widehat\beta_w)^{3/2})\ge(8/7)^{1/2}$. Also
-$\theta_{P_w}\le1$ for large $\widehat\beta_w$, and
+$g\le(8/7)^{1/2}\widehat\beta_w^{-1/2}\le\theta_{P_w}$ by
+\eqref{eq:rank-trace-threshold-window}. Also
+$\theta_{P_w}\le\theta_{\rm clock}(w)\le1$ for large $\widehat\beta_w$, and
 $\beta\le4\widehat\beta_w$ is part of
 Proposition~\ref{prop:rank-trace-chart-window}(1). Since $w(k)\to\infty$,
 these thresholds are reached for all large $k$.
 
-\emph{Threshold.} Once $\log\log\widehat\beta_w\ge1$,
-$(\log\log\widehat\beta_w)^{3/2}\le(\log\log\widehat\beta_w)^2$, so
-$\theta_{P_w}\le\widehat\beta_w^{-1/2}\mathcal M_w=\theta_{\rm clock}(w)$.
+\emph{Threshold.} This is the upper bound in
+\eqref{eq:rank-trace-threshold-window}.
 
 \emph{Paths.} Below $k$ the auxiliary history retains the coarse path
 action of the selected history (Section~\ref{sec:restarted-rank-history}).
@@ -532,6 +531,15 @@ value bound per site is at most $q_n\le s^{-1/400}\le1$ by
 Proposition~\ref{prop:rank-trace-chart-window}(1).
 \end{proof}
 
+Two thresholds satisfy \eqref{eq:rank-trace-threshold-window} for all
+large $k$. The first is the threshold prescribed in (F3),
+$\widehat\beta_w^{-1/2}\exp((\log\log\widehat\beta_w)^{3/2})$, since
+$\log\log\widehat\beta_w\ge1$ on this clock and the exponential tends
+to infinity. The second is the clock threshold $\theta_{\rm clock}(w)$
+itself, since $\mathcal M_w\to\infty$. So the proposition applies whether
+the auxiliary history keeps the threshold of the selected history at
+level $w$ or carries the threshold of (F3).
+
 \paragraph{Status.}
 Under the local inputs of this section,
 Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
@@ -539,9 +547,10 @@ history and its coupling bound throughout $[w,k]$ for every $N\ge k$
 and $p$. Proposition~\ref{prop:rank-trace-output-lawful} verifies at the
 output level $w$ every supposition of
 Proposition~\ref{prop:rank-root-output-ticket}(2), which is where the
-propagation to the output torus uses (F3). It assumes the prescribed
-threshold of (F3) for the auxiliary representation, and the clip constants
-of the profiles. The field (F3) as displayed also asks for these
+propagation to the output torus uses (F3). It assumes only that the
+auxiliary threshold lies in the window
+\eqref{eq:rank-trace-threshold-window}, and the clip constants of the
+profiles. The field (F3) as displayed also asks for these
 properties at the other levels of $[w,k]$; the same argument gives them
 there, with $w$ replaced by $j$. The budget radius
 $\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
