@@ -531,14 +531,203 @@ norm at most $c\,DtB(2B)^D|p|_1$ and $cB^D\varepsilon w_D|p|_1$. Since
 $|p|_1\le B|Au|_1$, the claim follows.
 \end{proof}
 
-If $D$, $B$ and $c$ stay bounded while $t$ and $\varepsilon$ tend to
-zero, the condition $\varepsilon+cBa_D\le\frac12$ holds eventually. The
-pin is then reduced to the pre-pin estimate, together with the structural
-items~1--3: the insertion is the normal ordering of a plain polynomial
-with the coefficient bound of (T3), the reader substitution has bounded
-linear and nonlinear parts at scale $t$, and the reading is bounded.
-Neither the pre-pin estimate nor the application of the stamp bound (T4)
-to the lifts is proved in this book.
+\paragraph{The polynomial pre-pin and its normalization.}
+The primary coefficient space and the polynomial jet space have different
+norms. Write $E:V_d\to\mathscr P_d$ for exposure in the fixed radial jet
+frame, where $\mathscr P_d$ is the space of polynomials of weighted grade
+at most $d$. The weights of the finitely many jet variables are positive
+integers. Fix $c_d\ge1$ such that
+\begin{equation}\label{eq:rank-exposure-cost}
+ |v|_1\le c_d|Ev|_1\qquad(v\in V_d).
+\end{equation}
+Such a constant exists because $E$ is injective between fixed
+finite-dimensional spaces. It does not depend on the lattice volume.
+A bound for $|EAu-q|_1$ is therefore not yet a bound with the same
+constant for the corresponding frame coefficients.
+
+Here is the precise near/wide reduction. Its hypotheses distinguish the
+regular-germ identity from the two analytic ray estimates that are
+needed to use that identity.
+\begin{lemma}[Near and wide Taylor readings]\label{lem:rank-near-wide-prepin}
+Fix $D\ge d$. There are finitely many real jet points
+$x_1,\ldots,x_J$ and $a_d\ge1$ such that
+$|q|_1\le a_d\max_j|q(x_j)|$ for $q\in\mathscr P_d$.
+Let $L_u=P_u+Q_u$ be polynomials of degree at most $D$ in local link
+coordinates, and let $\mathscr U$ be the linear operation taking their
+ordinary radial reading and truncating to weighted grade $d$.
+Suppose $M_u,\beta,C_b,\tau,\eta\ge0$ and, for each $j$, a linear
+functional $\mathscr R_j$ on those polynomials satisfy
+\begin{align}
+ |P_u|_1&\le3\beta M_u,& |Q_u|_1&\le\eta\beta M_u,
+       \label{eq:rank-near-wide-cost}\\
+ \mathscr R_j(P_u)&=(EAu)(x_j),
+       \label{eq:rank-near-germ}\\
+ |\mathscr R_j(P_u)-(\mathscr U P_u)(x_j)|
+       &\le C_b\tau|P_u|_1,&
+ |(\mathscr U Q_u)(x_j)|&\le C_b|Q_u|_1.
+       \label{eq:rank-ray-comparison}
+\end{align}
+Then
+\begin{equation}\label{eq:rank-polynomial-prepin}
+ |EAu-\mathscr U L_u|_1
+ \le3a_d C_b\beta M_u(\tau+\eta),\qquad
+ |L_u|_1\le(3+\eta)\beta M_u.
+\end{equation}
+The estimate is uniform in every parameter for which the displayed
+hypotheses hold with the same constants.
+\end{lemma}
+\begin{proof}
+The real evaluations separate $\mathscr P_d$: a polynomial vanishing
+on all real points is zero, as follows by successively treating it as
+a polynomial in each variable. In a finite-dimensional dual space a
+spanning set contains a finite basis. Choose evaluations forming such
+a basis, and let $q_j$ be the corresponding interpolation polynomials.
+Then $q=\sum_jq(x_j)q_j$, so one may take
+$a_d=\max(1,\sum_j|q_j|_1)$. If there are no jet variables, evaluation
+of the constant polynomial suffices.
+
+Both $EAu$ and $\mathscr U L_u$ belong to $\mathscr P_d$. At $x_j$,
+linearity and \eqref{eq:rank-near-germ} give
+\[
+ (EAu-\mathscr U L_u)(x_j)
+ =\mathscr R_j(P_u)-(\mathscr U P_u)(x_j)
+                         -(\mathscr U Q_u)(x_j).
+\]
+Its modulus is at most
+$C_b\beta M_u(3\tau+\eta)\le3C_b\beta M_u(\tau+\eta)$.
+Apply the sampling inequality. The last estimate is the triangle
+inequality and \eqref{eq:rank-near-wide-cost}.
+\end{proof}
+
+In the intended application $P_u$ sums the short-support terms of the
+actual regular insertion, and $Q_u$ sums the remaining terms.
+The functional $\mathscr R_j$ is its degree-$d$ reading along the
+threshold-dependent holonomy ray. Equation~\eqref{eq:rank-near-germ}
+uses the prescribed local-section jet and the vanishing regular
+remainder jet, with all short supports inside the nonwrapping patch.
+It is an exact identity about this insertion; finite-difference
+reconstruction of a closed cochain alone does not imply it.
+The ordinary radial reading $\mathscr U$ uses the linear edge integrals
+of the radial connection. The first estimate in
+\eqref{eq:rank-ray-comparison} compares the two ray readings; the wide
+part only needs the second, absolute bound. In particular, after this
+comparison the reader in Lemma~\ref{lem:rank-trace-pin-reduction} may
+have $a_i=0$. Its nonlinear correction need not be paid a second time.
+
+\begin{corollary}[Paying the pre-pin with growing coordinate costs]
+\label{cor:rank-prepin-payment}
+Let $H=\mathcal M_k\to\infty$, fix $D$, and put
+$\alpha=1/(4(D+2))$ and $\gamma=\alpha/4$. Suppose the data of
+Lemma~\ref{lem:rank-near-wide-prepin} satisfy, uniformly in $N,p,u$,
+\[
+ \beta\le H^\gamma,\qquad M_u\le H^\gamma|Au|_1,
+ \qquad 3a_dC_b\le H^\gamma,\qquad
+ \tau\le H^{-4},\quad\eta\le H^{-4}.
+\]
+Suppose also that converting $L_u$ to the plain reader polynomial
+$p_u$ uses a linear substitution whose rows have coefficient norm at
+most $J_k\ge1$, with $J_k^D\le H^\gamma$, and preserves its truncated
+reading: $\mathscr U L_u=\Pi_d(p_u\circ\ell)$.
+Then, eventually and uniformly in $N,p,u$,
+\[
+ |EAu-\Pi_d(p_u\circ\ell)|_1\le H^{-1}|Au|_1,
+ \qquad \deg p_u\le D,\qquad |p_u|_1\le H^\alpha|Au|_1.
+\]
+Here $\Pi_d$ denotes weighted grade truncation.
+\end{corollary}
+\begin{proof}
+The first bound in \eqref{eq:rank-polynomial-prepin} is at most
+$2H^{3\gamma-4}|Au|_1$. Since $3\gamma<3$, this is at most
+$H^{-1}|Au|_1$ eventually. Since $\eta\le1$ eventually, its second
+bound gives $|L_u|_1\le4H^{2\gamma}|Au|_1$. Substitution multiplies
+this by at most $J_k^D$, by the monomial argument in
+Lemma~\ref{lem:rank-trace-pin-reduction}, and does not increase degree.
+Finally $4H^{3\gamma}\le H^\alpha$ eventually because
+$\alpha-3\gamma=\gamma>0$.
+\end{proof}
+
+\begin{lemma}[Wick reading with scale-dependent bounds]
+\label{lem:rank-growing-wick-pin}
+Let $E,c_d,D,\alpha,H$ be as above and set $B=H^\alpha$, $\epsilon=H^{-1}$.
+Suppose $p_u$ is linear in $u$, has degree at most $D$, and obeys
+$|p_u|_1\le B|Au|_1$. Let $K$ be a symmetric matrix with
+$|K_{ij}|\le\epsilon$, and let
+$\mathcal W_K=\exp(\tfrac12\Delta_K)$ be the signed Gaussian
+polynomial operator. Suppose $|\ell_i|_1,|a_i|_1\le B$,
+$0<t\le H^{-1}$, and
+\[
+ |EAu-\Pi_d(p_u\circ(\ell+ta))|_1\le\epsilon|Au|_1.
+\]
+Assume the exact frame-membership condition
+$\Pi_d((\mathcal W_Kp_u)\circ\ell)\in E(V_d)$ for all $u$.
+Define $T$ uniquely by
+\[
+ ETu=\Pi_d((\mathcal W_Kp_u)\circ\ell).
+\]
+Then $T$ is linear and, eventually,
+\[
+ |Au-Tu|_1\le\tfrac12|Au|_1,\qquad
+ |\mathcal W_Kp_u|_1\le H|Au|_1,
+ \qquad\deg\mathcal W_Kp_u\le D.
+\]
+If $p_{e_0}=1$, $Ee_0=1$, and the construction commutes with complex
+conjugation, then $Te_0=e_0$ and $T\bar u=\overline{Tu}$.
+\end{lemma}
+\begin{proof}
+All operations defining $ET$ are linear and $E$ is injective, which
+proves existence, uniqueness and linearity of $T$ under the stated
+membership condition. Truncation has coefficient norm at most one.
+The three-term decomposition in Lemma~\ref{lem:rank-trace-pin-reduction},
+now made in polynomial coefficients before applying
+\eqref{eq:rank-exposure-cost}, gives
+\[
+ |Au-Tu|_1\le c_d\{\epsilon+B[DtB(2B)^D+
+                       \epsilon w_DB^D]\}|Au|_1,
+ \qquad w_D=\tfrac{D^2}{2}e^{D^2/2}.
+\]
+The Wick estimate is unchanged for the positive sign in
+$\mathcal W_K$: it used absolute values of the exponential series.
+With the present choices the expression in braces is at most
+\[
+ H^{-1}+D2^D H^{-1+\alpha(D+2)}
+                      +w_D H^{-1+\alpha(D+1)}.
+\]
+Both latter exponents are at most $-3/4$, since
+$\alpha(D+2)=1/4$. Thus the expression tends to zero despite the growth
+of $B$, and its product with the fixed $c_d$ is eventually at most
+$1/2$. The same series gives
+$|\mathcal W_Kp_u|_1\le(1+\epsilon w_D)B|Au|_1$ and preserves degree.
+This is at most $H|Au|_1$ eventually since $\alpha<1$.
+Finally $\mathcal W_K1=1$, linear substitution and truncation fix $1$,
+and injectivity of $E$ proves the unit and conjugation statements.
+\end{proof}
+
+The covariance sign and coupling normalization in this last lemma are
+part of its application. If $q_u$ is the unscaled insertion, put
+$z=\theta_k/g_{k,N,p}\ge1$ and $p_u(y)=q_u(zy)$. For the actual signed
+covariance $\Gamma$, differentiation gives the exact identity
+\[
+ (\mathcal W_\Gamma q_u)(zy)
+       =\mathcal W_{z^{-2}\Gamma}p_u(y).
+\]
+Indeed each pair of derivatives contributes $z^{-2}$ after this
+change of variables; sum the finite exponential series. Thus the $K$
+in the lemma is $z^{-2}\Gamma$. Normal ordering with covariance $C$
+corresponds to $\Gamma=-C$, not to changing the sign silently.
+Undoing the dilation $z\ge1$ cannot increase coefficient norm, so the
+primal bound also holds for the unscaled Wick insertion. Dilation
+commutes with the linear reader and weighted truncation; the resulting
+frame dilation is precisely the coupling rescaling in (T1).
+
+These results prove the near/wide reduction and its numerical payment,
+including the coefficient bound, without requiring bounded reader
+constants. To conclude (T) on the selected chart one must still supply
+\eqref{eq:rank-near-wide-cost}--\eqref{eq:rank-ray-comparison} for its
+actual Taylor reader, the conversion identity in
+Corollary~\ref{cor:rank-prepin-payment}, the real invariant-frame
+membership in Lemma~\ref{lem:rank-growing-wick-pin}, and the terminal
+price (T4) for that same insertion. These identifications are not
+consequences of the abstract estimates and remain open here.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
