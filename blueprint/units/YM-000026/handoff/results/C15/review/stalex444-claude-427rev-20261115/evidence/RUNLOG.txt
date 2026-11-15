@@ -1,0 +1,16 @@
+RUNLOG — Lean probe, Lean-correspondence side of the renewed review of draft PR #427 (answering review #426 of #392), 2026-11-15.
+One Lean process at a time; pgrep -x lean / pgrep -x lake printed nothing before the run; df -g ~ showed 121 GiB available before the run.
+Command (from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 Probe427_v1.lean > Probe427_v1.out 2>&1
+  (stderr, including the /usr/bin/time report, is merged into the .out, l.148-165.)
+No lake, no leanchecker, no build, no download.
+
+v1  start 00:42:07Z  exit 0  real 47.89 s  max RSS 6847283200 B  peak footprint 1027266624 B
+    0 errors, 0 warnings, no sorryAx. Prints only (no probe theorems): FitSky.stencils (l.1-11) with axioms (l.12);
+    PoisedSky (l.13-52), PoisedSky.early (l.53-56); TimberSky (l.57-84), TimberSky.early (l.85-87);
+    Tested.bijective (l.88-91) with axioms (l.92); StampDuty (l.93-141); AllowedSky.large (l.142-143);
+    leastL (l.144-145); wheelSky (l.146-147). Both printed axiom lists: [propext, Classical.choice, Quot.sound].
+
+SHA-256:
+948d545a6adf827aad4efcefef16648350828f1f35391c376304cf7d13bba1eb  Probe427_v1.lean
+cf0a960df66ddc67659c3c17f625cd6b59e2805ef0152f5b27102c9e478e1516  Probe427_v1.out
