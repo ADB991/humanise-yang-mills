@@ -32,10 +32,43 @@ C03 draft PR #69 is at `6fa64da98d307caccab7e625ca67ef6123af66a3`; C06 draft PR 
 
 ## Inputs named in the source-leakage pass (#182)
 
-Named by session `ADB991-claude-20261113-b6b4` (response table: `source-leakage-response.md`). Both are outstanding:
-no producer has been accepted.
+Named by session `ADB991-claude-20261113-b6b4` (response table: `source-leakage-response.md`). The original outstanding classifications below are superseded by the
+selected-history attachment recorded in the completion entry at the end of
+this file. The producer hypotheses remain explicit; this is not global
+closure of the upstream analytic estimates.
 
 | Input | Content | Used in | Status |
 | --- | --- | --- | --- |
-| I-C02-funded-record | The funded record on one selected trail, with the fields (i)–(v) of `thm:ex-selected-run-service`: one transition history with retention and terminal endowment; room and bank budgets and the scale inequalities of `prop:ex-geyser-service-fields`; gradewise height, coefficient, activity, adjacent-weight, terminal-bank, footprint-cover and local-section bounds; the calibrated finite music with linear voices; thresholds, scale prices and local tone tickets on the same doors. Includes the mode-slot and shipment estimates, uniformity over each bounded grade ball, and the four inputs of the terminal birth receipt (service certificate, local coefficient envelope, origin-counting response, vacuum lower bound). Ingredients: selected campaign purchase, transition tariff, delayed scale choices, same-trail transfer data, climbing doors, finite-transfer records. | `ex-centered-construction` (end of proof), `ex-selected-birth-receipt`, `ex-centered-public-service`, `centered-freight-producer` (scope) | outstanding |
-| I-C02-finite-interpolation | The finite interpolation statement of `centered-freight-producer.tex`: when the two fields at the selected spring parameter, slot table, motion/rate data, schedule-price bound and keeper are those of the selected history and `d+3 ≤ J_m^c`, there is one heading and one ticket for every wing containing the principal-field tags, with axis residual price `C_m`, lead price `η_m`, crossing allowance `t_m` and the regular and forced prices of that section; together with its three analytic coupon estimates (axis, regular, forced). | `centered-freight-producer` | outstanding; candidate producer C09 `sec:heading-history-handoff` (edge `C09-to-C02-heading-and-tickets`, not accepted) |
+| I-C02-funded-record | The funded record on one selected trail, with the fields (i)–(v) of `thm:ex-selected-run-service`: one transition history with retention and terminal endowment; room and bank budgets and the scale inequalities of `prop:ex-geyser-service-fields`; gradewise height, coefficient, activity, adjacent-weight, terminal-bank, footprint-cover and local-section bounds; the calibrated finite music with linear voices; thresholds, scale prices and local tone tickets on the same doors. Includes the mode-slot and shipment estimates, uniformity over each bounded grade ball, and the four inputs of the terminal birth receipt (service certificate, local coefficient envelope, origin-counting response, vacuum lower bound). Ingredients: selected campaign purchase, transition tariff, delayed scale choices, same-trail transfer data, climbing doors, finite-transfer records. | `ex-centered-construction` (end of proof), `ex-selected-birth-receipt`, `ex-centered-public-service`, `centered-freight-producer` (scope) | supplied under the common-purchase hypotheses by `prop:ex-c02-selected-record` and `cor:ex-c02-uniform-census`; see completion entry |
+| I-C02-finite-interpolation | The finite interpolation statement of `centered-freight-producer.tex`: when the two fields at the selected spring parameter, slot table, motion/rate data, schedule-price bound and keeper are those of the selected history and `d+3 ≤ J_m^c`, there is one heading and one ticket for every wing containing the principal-field tags, with axis residual price `C_m`, lead price `η_m`, crossing allowance `t_m` and the regular and forced prices of that section; together with its three analytic coupon estimates (axis, regular, forced). | `centered-freight-producer` | supplied conditionally by C09 `sec:heading-history-handoff` and `sec:three-port-history`, attached by `prop:selected-reprise`; retains the local analytic estimates and common purchases |
+
+## Selected-history completion: #43 / #315 (2026-11-15)
+
+Session `hairer-codex-c02-completion-20261115`; new detailed field ledger and
+validation under `author/hairer-codex-c02-completion-20261115/`. Historical
+review records and the provisional cross-package table above keep their original
+scope; this entry updates the two named missing inputs, not all package reviews.
+
+- **I-C02-funded-record / C12-to-C12-paid-record:** the same direct family
+  C_R, transfers S_R, reference t_R and doors D_R are used throughout.
+  `prop:ex-c02-selected-record` assembles (i)–(v); `cor:ex-c02-uniform-census`
+  verifies the remaining served-birth, grade-ball, denominator and geometry joins.
+  It uses #317 retention/endowment, #318 terminal voice and Music, #319 local
+  Coupon, #320 width/treasury/denominator, and #321 domain/budget projection.
+  Each is retained under its stated local analytic/common-purchase hypotheses.
+- **C09-to-C02-heading-and-tickets:** #313 and its consumer refinement #316
+  are implemented: C_m pays both triangular and graded remainder bounds;
+  E_{m+1}=b_f, profile title=τ_f and block side=L; common scale inequalities
+  are purchases, not deductions of the local interpolation theorem. The
+  countable merger and actual retained-door application are now supplied by #318.
+- **#328 corrections:** M1 terminal endowment comes from the separate numerical
+  scale estimates as exported by #317, not the terminal hook; M2 room/bank is
+  `prop:ex-stored-service-budget`; M3 the served representative is the actual
+  A_k and `lem:ex-selected-birth-denominator` gives its integral Z_{N,p}.
+
+The positive-reference/stock domains remain t_R(d)≤k≤N, k≥1; birth uses k<N.
+Uniformity is in period, site and labels in a fixed grade ball, with a volume
+tail allowed to depend on root depth and grade. No tail uniform over all depths
+or new run selection is asserted. Auxiliary-history convergence, separate
+upstream local analytic proofs, C03 extraction and G06 whole-proof acceptance
+are outside this finite-volume attachment.

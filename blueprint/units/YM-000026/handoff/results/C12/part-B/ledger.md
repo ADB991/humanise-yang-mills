@@ -26,7 +26,7 @@ Status words: **proved here** (detailed proof in the chapter, conditional on lis
 | E-imprint = `C12-to-C12-imprint` | part-A `marked-campaign-producer.tex` (`thm:marked-campaign-producer`, `cor:marked-campaign-actual`) → `thm:ex-marked-portfolio-section` | Imprint at each degree: unit, gauge invariance, Forms, Micro on the equation ideal, stamp and `Powered` clauses, both equivariances | same H, same label space and grading | input; label opened, statement not re-audited |
 | E-slot = `C06-to-C12-slot-estimate` | C06 `local-sections.tex`, "Threshold prices at every period" → item (5) | On configurations healthy on the translated stencil, each slot and its tested derivatives through order k are ≤ Cθ, uniformly in torus and anchor | same health notion, direction bound θ(1+dist)^P | input; passage opened and matches |
 | E-run = `C16-to-C12-selected-run` | C16 `public-run-binding.tex` / part-A → caller paragraph, `prop:ex-marked-solaris` | (a) the run's portfolio sections and regradings are the pre-schedule ones; (b) `paper` thresholds ≤ floor lengths; (c) `dusk` for the run's delay; (d) d+3 ≤ J(t_d) | literal R, T, W of the run; block sides; delay | open; (b) and (c) not found stated in any chapter |
-| E-record = `C12-to-C12-paid-record` | part-A `selected-centered-service.tex` (with C02 `centered-freight-producer`, `centered-geyser-scale-estimates`; C09 `heading-history-handoff`) → figment, solaris, phase grid | Items (R1)–(R7) of `actual-marked-portfolio-calibration.tex`, for one family and one door field, all d, N ≥ ref(d), p | same family, history, doors; ζ_{d,i}=β̂_i^{-(deg F_d+4)}, φ_i=β̂_{i+1}^{-1} | open; assumed in the text (second round: no longer described as produced); producer text gives the same prices, item-by-item match not done; the checker notes the adjacent three-identity formula is not the terminal hook identity |
+| E-record = `C12-to-C12-paid-record` | part-A `selected-centered-service.tex` (with C02 `centered-freight-producer`, `centered-geyser-scale-estimates`; C09 `heading-history-handoff`) → figment, solaris, phase grid | Items (R1)–(R7) of `actual-marked-portfolio-calibration.tex`, for one family and one door field, all d, N ≥ ref(d), p | same family, history, doors; ζ_{d,i}=β̂_i^{-(deg F_d+4)}, φ_i=β̂_{i+1}^{-1} | supplied under the stated common-purchase/local-analytic hypotheses: #317 retention/endowment; #318 actual terminal hook and Music; #319 zero-coordinate Coupon; #321 all-level budgets and direct-family domain. See `prop:ex-c02-selected-record` and C02 completion ledger for the per-field match; no global dependency closure is asserted |
 | E-keeper = `C12-to-C12-reserved-addresses` | part-A (history selection) / C11 `wilson-startup-construction.tex` → `prop:terminal-marked-voice` hyp. (2), `prop:ex-marked-invitation` input 3 | Terminal representation at every (N,p) has the reserved addresses | terminal dictionary of the same history | open; stated as an input in the text (second round); no chapter found that states it as a result; `wilson-startup-construction.tex` gives only dictionary packing |
 | E-fee = `C12-to-C12-fee-delay` | part-A `common-observable-purchases.tex`, C16 `common-scale-selection.tex` → `prop:terminal-marked-voice` final clause | Entrance delays include the fee thresholds, so that k(J(m+1)) ≤ β̂_m | same schedule | open; stated as an undischarged schedule condition (second round); not mentioned in the producer chapter |
 | E-opened-copy = `C02-to-C12-opened-copy` | C02 `centered-geometry-producer.tex`, `lem:ex-centered-opened-copy` → figment, grid basis | Opened-copy assignment: injective, migrating, separation ≥ B_j² for levels ≥ k | same opening schedule, radii B_j | input; statement opened and matches use |
@@ -67,3 +67,17 @@ Session `hairer-claude-20261113-c12m1s1`.
   `b_v = parent(o_v)`, as in `YM.MergeProof.Menu.Volant.reserves`
   (`Canopy S D (S.ratio.parent ∘ o) …`). The occupancy clause already
   refers to parents.
+
+## E-record reconciliation with #315 (2026-11-15)
+
+This entry supersedes only the historical **E-record** open status above and
+in the source-leakage discussion; other historical edge statuses are not
+silently refreshed. `prop:ex-c02-selected-record` assembles the shared centered
+core on C_R/S_R/D_R. The stronger fields are the prescribed occupancy lower
+bound, positive ζ, purchased height jump `eq:ex-marked-height-jump`, and the
+local tones of `prop:selected-zero-coordinate-coupon`. The adjacent comparison
+identity is not a terminal hook: the latter is `prop:selected-terminal-voice`
+carried by `prop:selected-music`. The C02 record is in
+`../../C02/author/hairer-codex-c02-completion-20261115/README.md`. The per-field table applies the three #328
+review corrections; source/independent-review limitations remain explicit.
+The common funded-history and local analytic hypotheses are preserved.
