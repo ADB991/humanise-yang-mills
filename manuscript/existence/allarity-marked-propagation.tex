@@ -1405,7 +1405,86 @@ exponent for $\epsilon$, with exponent-zero $A,B$, pays every such
 fixed monitor power.
 \end{proof}
 
-\paragraph{Attachment on a constant-order plateau.}
+\begin{lemma}[Reader comparison for an adjacent pair of stages]
+\label{lem:allarity-pair-reader}
+Fix an actual adjacent step, its fine block side $L$, its predictor,
+the two attached paths and clips, and its precision horizon. Suppose
+the two stages have positive strip widths $s_f,s_c$, strip price
+bounds $z_f,z_c$, and positive metric floors $a_f,a_c$ on the fine
+and coarse beds respectively. Retain the exact
+factorization, stationarity and transport identities of
+Section~\ref{sec:actual-reader-tree-covariance} for these two beds.
+Use the common strip and price bounds
+\[
+ s_\wedge=\min(s_f,s_c),\qquad z_\vee=\max(z_f,z_c),
+ \qquad a=a_f.
+\]
+Assume the local Gaussian, guard and room hypotheses of
+Section~\ref{sec:actual-reader-dawn-selection}, with these bounds,
+including its predictor purchase before $L$ and its actual coupling
+band. Then its joint reader conclusions hold on this step, whether
+or not its two stage indices agree. In particular, for any fixed $f$,
+at sufficiently large station scale $s$, uniformly for the reader
+parameter $x\in[s/2,s]$, the covariance and physical-coordinate
+errors are at most $H^{-f}$ and each guard loses mass at most
+$H^{-2f}$, where $H=\exp((\log\log s)^2)$.
+The choices are uniform in periods, fields, forests and tags within
+the stated purchased classes. They can be made simultaneously for
+any fixed finite list of admissible adjacent stage pairs.
+\end{lemma}
+\begin{proof}
+Restriction to a smaller strip decreases every exponentially weighted
+row sum. Replacing either price bound by $z_\vee$ increases its
+majorant. Thus both adjacent rows satisfy their original estimates
+at $s_\wedge,z_\vee$. The fine precision keeps its fine metric
+floor $a_f$; no equality with the coarse metric is asserted. In
+particular, the coarse metric and the diagonal operators in the
+two-form transport are not replaced by fine-stage objects.
+
+The tree calculation in
+Section~\ref{sec:actual-reader-tree-covariance} starts with separate
+metrics $M_f,M_c$ and separate curls on the two tori. Its exact
+conclusion is
+\[
+ (DI_F)A_F^{-1}(DI_F)^{\mathsf T}=P_f-JP_cJ^{\mathsf T}.
+\]
+It uses the retained root-gradient, stationarity and curvature
+intertwining identities, not equality of stage indices. The gap on
+the fine tree slice uses $a_f$ and the predictor penalty. Hence the
+common inverse and cover-row construction of
+Section~\ref{sec:actual-reader-short-covariance} applies with the
+fixed adjacent patch and these bounds. The installed transport row
+uses the actual fine inverse diagonal, tower and coarse diagonal;
+their row-product estimate is valid at the common strip width.
+The two omitted tails therefore have bounds $C e^{-c h_x}$ with
+$C<\infty$, $c>0$ fixed by this pair and
+$h_x=\lfloor\lceil(\log x)^2\rceil/10000\rfloor$.
+They are eventually at most $x^{-1/8}$, uniformly in the period.
+
+The actual-to-flat column comparison and removal of the bare path
+cut in Section~\ref{sec:actual-reader-local-gaussian-prices} use the
+same fine tree precision and the same adjacent predictor. Their
+proofs give the actual reader covariance error $x^{-1/8}$ and
+the corresponding mean estimate for this pair. Combining the
+covariance error with the cover tail gives $2x^{-1/8}$. The mean
+comparison retains the actual coarse coupling in its forecast.
+The one-pose construction and the nonlinear guarded comparison
+use the stipulated room and coupling inequalities; their estimates
+are $x^{-1/32}$ for the normalized physical error and $x^{-1}$
+for lost guard mass. None of these arguments changes the horizon,
+forest, recording parameter or sample space.
+
+Finally $2x^{-1/8}\le H^{-f}$, $x^{-1/32}\le H^{-f}$ and
+$x^{-1}\le H^{-2f}$ eventually, uniformly for $x\in[s/2,s]$,
+by \eqref{eq:reader-band-power}. This proves the asserted joint
+comparison, including off-diagonal covariance entries. For a finite
+list of pairs first retain each pair's constants and then take the
+maximum of its finitely many entrance thresholds. This is not a
+maximum over all stage indices or all periods. A growing stage
+profile must place each such finite purchase before its own delay.
+\end{proof}
+
+\paragraph{Attachment to the actual adjacent step.}
 For the actual joint reader model of
 Section~\ref{sec:ex-lattice-all-arity-reader-gaussian-model}, the
 probability space is \eqref{eq:ex-lattice-reader-space}, the physical
@@ -1420,8 +1499,10 @@ subsection supplies guard loss at most $H^{-2f}$ and the normalized
 physical-coordinate error at most $H^{-f}$. Its parent forecast is
 exactly the mean of the prescribed short step, with the actual coarse
 coupling retained. Thus it supplies the joint-law hypotheses of the
-lemma on a constant-order plateau, with the room, coupling band and
-common horizon stated there. The entry bounds and the prescribed
+lemma on a constant-order plateau. At a stage change use
+Lemma~\ref{lem:allarity-pair-reader} with the actual adjacent beds,
+the fine block side and the common horizon. Its explicit local
+hypotheses must hold for that pair. The entry bounds and the prescribed
 polynomial coefficient bounds provide the $H^c$ prices, after a fixed
 increase of $c$.
 
@@ -1442,20 +1523,21 @@ Consequently Corollary~\ref{cor:allarity-guarded-purchase} applies to
 these actual principal components. No claim about the full interacting
 block measure being Gaussian is used.
 
-This identifies the local discrepancy supplier on the plateau from
-existing canonical inputs. At a change of stage order the quoted reader
-selection explicitly assumes equal stage indices and does not suffice:
-the corresponding pair-indexed mean, covariance, guard and room
-receipts must still be supplied on the same course. Likewise the
-upper compiler's body, all-hole and warning purchases remain required
-at $e_*=e+1+\sigma$. Neither requirement follows from the moment
-calculation or from the numerical stage-boundary lemma.
+This identifies the local discrepancy supplier from the canonical
+local estimates, also for an adjacent pair satisfying
+Lemma~\ref{lem:allarity-pair-reader}. In the selected history the
+pair uses the minimum of its strip widths, the fine metric floor,
+the maximum of its prices and the fine stage's block side. The
+actual horizon must supply the algebraic identities and room on
+this pair; scalar bounds cannot replace them. Separately, the
+upper compiler's body, all-hole and warning purchases are required
+at $e_*=e+1+\sigma$. They do not follow from this reader comparison
+or from the numerical stage-boundary lemma.
 
 This route retains the prescribed polynomial class: the reference
 moments are finite Wick pairings, followed by the finite connected
-logarithm. Its remaining application beyond the plateau is the corresponding
-joint construction on that same course; the plateau attachment above
-retains the explicit upstream hypotheses of the cited reader and compiler
+logarithm. Its application on the selected course retains the
+explicit upstream hypotheses of the cited reader and compiler
 chapters. The health and covariance hypotheses must
 cover every read of every partition product. The component's unit
 normalization is the empty probability integral, not the mass of one
@@ -1963,10 +2045,113 @@ infinity. Indeed, \eqref{eq:common-drift-floor} gives
 $\log L_j\ge j^2\lambda_j$ for $j\ge j_*$, and $\lambda_j\ge\log101$
 because $\lambda_j$ includes the support exponent $100$. So the condition
 holds at every step of a comparison window at a sufficiently large level.
-The other purchases contained in the applicability of the upper calculation
-are not examined here at $e_*$. In particular, the unmarked compiler's
-purchase is stated in that section for the larger of its support
-exponents.
+For the other compiler purchases one must specify the larger exponent
+before constructing the alphabet. There is no need to leave the spare
+exponent arbitrary: the weight-restoration argument only requires
+$\sigma>0$. The following choice matches the two uses of the same
+local compiler.
+
+\begin{proposition}[One compiler pays the support reserve]
+\label{prop:allarity-compiler-reserve}
+Let $e>0$ be the final support exponent. Choose $0<\sigma\le1$,
+put $e_*=e+1+\sigma$ and $E=e+2$, and choose
+$\alpha\ge8T_E$. On an actual adjacent step retain the funded
+tube, paths, clips, alongside certificate, inherited-law and small
+remainder hypotheses of
+Section~\ref{sec:actual-local-compiler-handoff}. Make its support
+and product-price purchases for raw compiler exponent $E$, using
+the local support-cost exponent $\widehat E=E+8$, with the larger of the upper
+and lower multipliers in
+Section~\ref{sec:actual-mixed-marked-compiler}. Retain that
+construction's same-field, all-compatible-palette warning hypotheses.
+Then the body, all-hole, joint-warning and forced-embedding inputs
+for the upper calculation at $e_*$ and the lower calculation at $e$
+hold for one corrected alphabet and one coarse normalization.
+This choice does not depend on the marked family or on the incoming
+marker remainder price $z\in[H^{-q},H^{-4}]$.
+\end{proposition}
+\begin{proof}
+The local handoff is stated for any fixed support exponent including
+its reserve. Apply it at $\widehat E$, before choosing the large coupling.
+Indeed the mixed compiler uses $v=E+5$ and cover charge $v+2=E+7$;
+$\widehat E$ leaves one further support reserve. The corresponding
+fine-to-coarse purchase is
+$10\cdot15^4(E+7)\le L\sigma_f$, with $\sigma_f$ the
+incoming fine support exponent. It must be imposed before the block
+side is fixed. The raw compiler exponent and this larger local
+support-cost exponent are different parameters.
+Its two rooted word inventories, including the first coarse-field
+derivative needed for the determinant terms, use that same exponent.
+The itinerary ratio has positive exponential decay after including
+the fixed cover charge at $\widehat E$; increasing its entrance threshold
+pays both inventories. Its matrix, owner-energy and palette estimates
+are for the actual tube and actual representation. Thus the genuine
+body identity of Section~\ref{sec:actual-corrected-body-compiler}
+and its integrated product estimates use this one corrected alphabet,
+with its original forest/tag measure and positive loading.
+
+The regular logarithm is formed from the same unmarked alphabet.
+Its absolute connected-cluster estimate is part of this compiler
+purchase. Proposition~\ref{prop:corrected-regular-deletion} then
+gives the identity for every deleted support, using the factors
+$h_b=\exp(-c_b)-1$ attached to the full supports of the logarithmic
+entries. Proposition~\ref{prop:corrected-forced-output} constructs
+the forced output by the same connected components and boundary
+factors. In particular, the normalization and forced activities are
+constructed before selecting the arbitrary marked family. They are
+not taken from a second coarse representation with similar prices.
+
+For the upper call the regular multiplier is
+\[
+ l(z)=\max(1,H^{-3}/(\alpha z+H^{-q}))
+       \le\max(1,H^{q-3}).
+\]
+Purchase the right-hand bound once, and purchase the maximum of the
+two forced multipliers $G(x)^{-2}$ and $G(y)^{-1}$. The owner
+margin in the local handoff is the one that pays this forced
+inflation. The corrected product and hole estimates are purchased
+with these multipliers, not recovered from an uninflated site sum.
+The upper numerical calculation then has body allowance $K/16$,
+raised hole allowance $K/4$ and boundary allowance $K$, where
+$K=H^{-1/8}$. Its joint warning event remains the event on this
+same sector sample space; its mass bound $x^{-1}$ pays
+$l(z)x^{-1}\le1$ eventually. No estimate for a product of
+independent warning samples is substituted.
+
+Now $e_*\le E$. For any full support $X$,
+\[
+ \exp(e_*\operatorname{cov}_B X)
+ \le\exp(E\operatorname{cov}_B X).
+\]
+All site and rooted prices are sums of nonnegative majorants.
+Lowering this exponent and either multiplier therefore preserves
+the body product, hole, boundary and forced-embedding estimates.
+The all-hole and density identities are unchanged, since these
+parameters occur only in their estimates. Also $T_{e_*}\le T_E$,
+so the same $\alpha$ pays the numerical upper calculation at $e_*$.
+Lowering to $e$ gives the lower calculation from the identical
+alphabet. The local thresholds are uniform in periods, stores,
+fields, forests and tags. The common-band selection of the handoff
+therefore supplies one threshold for $x,y\in[s/2,s]$ on this
+fixed adjacent patch, before the marked family and $z$ are chosen.
+\end{proof}
+
+This proposition identifies the required analytic purchase rather than
+deriving it from growth of $L$. It uses the local compiler's actual
+product and all-hole estimates, with their hypotheses, for raw exponent $E$
+and the local support reserve $\widehat E$.
+Choosing $\sigma=1$ makes $e_*=E$, exactly its upper exponent.
+For a finite list of adjacent patches make these purchases on each
+patch and then take the maximum of their coupling thresholds. The
+stage profile must include them before choosing its delays, with
+the guide and support conditions imposed before the respective
+block sides. In applying this to a restarted history, its actual
+representations must still supply the alongside, inherited-law and
+small-remainder hypotheses on each adjacent step. The variable-profile
+one-step interface of Section~\ref{sec:restarted-rank-history}
+records that history-level obligation. Neither this proposition
+nor Lemma~\ref{lem:allarity-pair-reader} replaces it by a numerical
+stage-boundary bound.
 
 The second part of (F) is inherited along the history. The reader site
 of a mark at the top level is the site of its insertion. At a coarser
