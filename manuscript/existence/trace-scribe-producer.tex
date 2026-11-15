@@ -438,9 +438,16 @@ proved above, after (\ref{eq:ex-lattice-scribe-sensor-limits}), from the
 exact cancellation $X_i+\mathsf B_ic_i=0$, the sensor limits
 (\ref{eq:ex-lattice-scribe-sensor-limits}), the coefficient bound
 $\|c_i\|\le C\rho_i$ and the scale bound $\rho_i\le t_i$; it is therefore
-conditional on the same inputs. The scale bounds $q_i\le2z_i$ and
-$\rho_i\le t_i\le z_i$ themselves are outstanding inputs, not proved in
-this monograph.
+conditional on the same inputs. These scale inequalities need no additional receipt. In the notation
+of Section~\ref{sec:ex-lattice-trace-weighted-estimates},
+$\rho_i\le\exp((\log\log z_i)^2/6)$ and
+$t_i=\exp((\log\log z_i)^2/5)$, so $\rho_i\le t_i$ and
+$t_i\to\infty$. Since $(\log\log z)^2=o(\log z)$,
+$t_i/z_i\to0$. Finally the first clock input in
+\eqref{eq:ex-lattice-scribe-clock-inputs}, applied at $k_i$, gives
+$q_i/z_i\to1$, hence $q_i\le2z_i$ eventually and
+$\rho_i/q_i\to0$. These consequences still depend on the stated
+clock and response-size inputs.
 To see exactly how the weighted estimates enter, use
 $\mathcal P_i(T_i)=q_i\mathcal P_i(L_i)
 +c_i^0\mathcal P_i(\Omega_i)
@@ -532,8 +539,34 @@ is a consequence of rank one or of the field and flux limits.
  \end{enumerate}
 \end{enumerate}
 These inputs belong to the stress, Ward and reference-detector parts of
-the construction. No statement of this section produces them, and they
-are recorded as open incoming premises of the present argument.
+the construction. The centering step for the actual stress is proved
+below; its raw energy laws and the other inputs remain incoming premises
+of the present argument.
+
+\paragraph{Centering preserves the physical Ward normalization.}
+There is no scalar-normalization loss in passing from the raw energy to
+$R$. More precisely, suppose the raw energy $E_{ab}=A.\operatorname{energy}_{ab}$
+is real, symmetric and tensor covariant, is conserved, and satisfies the
+coefficient-one translation Ward identity
+of input~1 on this same table, whose derivative annihilates the unit and
+whose unit insertion removes that slot. Write
+$c_{ab}=\langle E_{ab}\rangle_S$, so $R_{ab}=E_{ab}-c_{ab}\mathbf1$.
+Then $\sum_a D_a^S R_{ab}=\sum_a D_a^S E_{ab}=0$.
+For fixed spectator fields, the contribution of the subtracted tensor
+to a translation shell is a sum of terms
+\[
+ -c_{ab}\,S(\text{spectator fields})
+          \int_{\mathbb R^4}\partial_a\chi(z)\,dz=0.
+\]
+The last equality follows by integrating a derivative of a compactly
+supported smooth function, one coordinate at a time. Thus the shell
+identity for $R$ has exactly the same coefficient one and the same
+derivative insertion as the identity for $E$. Centering is immediate;
+symmetry, reality and tensor covariance are preserved because expectation
+and the unit respect those structures. This proves the stress laws in
+input~1 from the raw energy laws. It does not prove those raw laws, or
+identify $R$ with a separately normalized tensor on the conserved line.
+In particular the scalar comparison proved below remains necessary.
 
 By input~3 fix an axis $a$, an
 observer $o$, and a reference grade-four field direction $v$ such that
