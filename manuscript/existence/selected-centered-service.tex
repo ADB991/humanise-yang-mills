@@ -324,6 +324,274 @@ asserted Keeper. Restricting to $n=0$ gives the assignment on pairs used
 in Proposition~\ref{prop:selected-zero-coordinate-coupon}.
 \end{proof}
 
+\subsection{The menu on the actual component alphabet}
+\label{sec:selected-menu-alphabet}
+
+The shipment bound must pay the whole finite menu, including several
+entries assigned to the same elementary activity. We record this step
+before applying either response estimate. Fix a stored door and its
+underlying mixed alphabet from Section~\ref{sec:mixed-activity-prices}.
+An optional label $a$ has nonnegative price $v_a$, birth support $X_a$
+and nonnegative length charge $d_a$. The mandatory packets and their
+prices are kept fixed. Let $\mathcal I$ be the finite menu, let
+$\sigma(\lambda)$ be the optional label modified by entry $\lambda$.
+Write $r_\lambda\ge0$ for its menu fee and $\ell_\lambda\ge0$
+for its leaf weight: the normalized local insertion $h_\lambda$
+satisfies the pointwise bound $|h_\lambda|\le\ell_\lambda$.
+Its wage is $w_\lambda=r_\lambda\ell_\lambda$.
+For this label the length charge is the fine crest cover
+number, and its birth support is the coarse birth region used in
+\eqref{eq:ex-lattice-volant-root-lift}. Define
+\begin{equation}\label{eq:selected-menu-augmentation}
+ v_a^{\mathcal I}=v_a+
+             \sum_{\lambda:\,\sigma(\lambda)=a}w_\lambda.
+\end{equation}
+The assignment $\sigma$ need not be injective.
+
+\begin{lemma}[Finite menus preserve the mixed component estimate]
+\label{lem:selected-menu-alphabet}
+Suppose the unmarked packet and optional prices satisfy the hypotheses
+of the mixed component estimate of
+Section~\ref{sec:mixed-activity-prices}, at its chosen head exponent
+$q$ and positive length reserve $\varepsilon$. For its application to
+the switched integrals, retain the common mixed-body estimate as well:
+after any admitted set of optional labels is removed, the integral of
+the absolute residual body is bounded by the product of the remaining
+optional prices and the unchanged packet prices, against the same
+Gaussian and Haar measures. Suppose also that the
+shipment conversion for the menu gives
+\begin{equation}\label{eq:selected-menu-extra-hit}
+ \sup_z\sum_{\lambda:\,z\in X_{\sigma(\lambda)}}
+ w_\lambda e^{2\varepsilon d_{\sigma(\lambda)}}
+ e^{q C_B(X_{\sigma(\lambda)})}\le\mathcal R.
+\end{equation}
+If the unmarked optional site price is $\Gamma_o$, the augmented
+alphabet has optional site price at most $\Gamma_o+\mathcal R$.
+Its packet prices are unchanged. Thus the mixed component estimate
+applies with total vertex price
+$\gamma'=\Gamma_p+\Gamma_o+\mathcal R$ whenever its tree smallness
+condition holds at $\gamma'$.
+
+For every finite component $A$ of the optional alphabet, its augmented
+product is exactly
+\begin{equation}\label{eq:selected-menu-ticket-product}
+ \prod_{a\in A}v_a^{\mathcal I}
+ =\sum_{\substack{T\subseteq\mathcal I:\ \sigma|_T\ \text{injective}\\
+                                  \sigma(T)\subseteq A}}
+       \left(\prod_{\lambda\in T}w_\lambda\right)
+       \left(\prod_{a\in A\setminus\sigma(T)}v_a\right).
+\end{equation}
+Consequently the component bound also pays the sum over all admitted
+menu replacements, with no factor depending on the cardinality of
+$\mathcal I$. In the selected shipment application,
+$q=Q.\mathrm{relative}$, $\varepsilon=\varepsilon_Q$ and
+$\mathcal R=\operatorname{ribbon}(Q,L,x)$.
+\end{lemma}
+
+\begin{proof}
+Insert \eqref{eq:selected-menu-augmentation} into the weighted
+optional site sum. The new part at a site $z$ is
+\[
+ \sum_{a:z\in X_a}
+   \sum_{\lambda:\sigma(\lambda)=a}
+     w_\lambda e^{2\varepsilon d_a}e^{q C_B(X_a)}
+ =\sum_{\lambda:z\in X_{\sigma(\lambda)}}
+     w_\lambda e^{2\varepsilon d_{\sigma(\lambda)}}
+                         e^{q C_B(X_{\sigma(\lambda)})}.
+\]
+The menu is finite and all terms are nonnegative, so this regrouping
+is valid even for a countable optional alphabet. The asserted site
+bound follows by addition. The packet population and its analytic
+weight estimate have not changed. Apply the combination of vertex
+populations and the reserved-tail estimate
+\eqref{eq:mixed-reserved-tail} with this new optional price and the
+same supports, lengths, seed marks and positive reserves.
+
+To prove \eqref{eq:selected-menu-ticket-product}, expand each factor
+of the finite product. At label $a$ one chooses either $v_a$ or one
+of the wages with $\sigma(\lambda)=a$. The chosen menu entries
+therefore form a subset $T$ on which $\sigma$ is injective. Conversely,
+such a $T$ specifies exactly one choice at every occupied label,
+and the unmarked choice at every remaining label. This is a
+bijection, including when several menu entries have the same image.
+Multiplying the corresponding factors proves the identity. Any
+restriction to admitted components or replacements decreases its
+nonnegative majorant. For the actual switched component, let
+$\mathcal B$ denote its remaining body after the labels in
+$\sigma(T)$ have been replaced. Before integration, the pointwise
+leaf bounds give
+\[
+ \left|\prod_{\lambda\in T}r_\lambda h_\lambda\,
+                  \mathcal B\right|
+ \le\left(\prod_{\lambda\in T}w_\lambda\right)|\mathcal B|.
+\]
+Integrate against the same positive Gaussian and Haar measures and
+use the unmarked mixed-body estimate for the remaining labels,
+with its unchanged mandatory packets. The forest and tag averages
+are probability averages, so they preserve this bound. Thus each
+replacement has precisely the product majorant in
+\eqref{eq:selected-menu-ticket-product}. This argument uses
+pointwise insertion bounds and a body estimate before summing
+components; it does not multiply bounds for separate integrals.
+All replacement choices are summed before the rooted estimate
+is applied.
+
+Finally, the shipment-conversion part of the proof of
+Theorem~\ref{thm:ex-lattice-volant-supplier} already proves
+\eqref{eq:selected-menu-extra-hit}: its $f_\lambda$ is
+$w_\lambda e^{2\varepsilon_Q n_\lambda^{\rm crest}}$ and
+$d_{\sigma(\lambda)}=n_\lambda^{\rm crest}$. In particular the
+length reserve is included in the shipment, not added afterwards.
+That part of the proof uses only the offer, its parent occupancy,
+the birth geometry and the tariff; it does not use the paid output
+terms assumed for the subsequent response assembly. It can therefore
+be used here before those terms have been constructed. The named
+origin condition follows from nonempty menu modes and the inclusion
+of their fine sites in their crests. This proves the stated
+application on the same elementary alphabet as the stored door.
+\end{proof}
+
+\subsection{Uniform payment of the two response rows}
+\label{sec:selected-response-payments}
+
+We separate the numerical part of the arrival hypothesis from the
+construction of the component majorants. This distinction is useful
+because the ordinary and raised rows have different soft prices, even
+though they have the same final allowance.
+
+Fix an allowed pair of stages $(j,h)$, its block side $L=L_j$, and
+its positive strength $\mu=\mu_{j,h}$. For a coarse coupling $x$ put
+\[
+ y=x+s_G\log L,\quad B=\lceil(\log x)^2\rceil,\quad
+ P=\exp((\log\log y)^2),\quad
+ H_1=2e^{-\mu P^2/8},\quad H_2=2e^{-\mu P^2/16}.
+\]
+Let $C_{\rm cov}=e^{\chi_0}\ge1$ be the fixed cover enlargement
+factor in Section~\ref{subsec:ex-lattice-rg-crowd}. The two final
+soft demands $f_0(x,\alpha)$ and $f_+(x,\alpha)$ are, respectively,
+\eqref{eq:ex-lattice-multi-softneed} and
+\eqref{eq:ex-lattice-multi-raised-demand}, evaluated with the profile
+at stage $h$, radius $B$, threshold
+$\theta(x)=x^{-1/2}\exp((\log\log x)^2)$, and regular allowance
+$c_hx^{-11/10}$, where $0<c_h\le1/64$. Both are evaluated at the
+\emph{base} budget point; the second pays the receipt at the raised
+point, whose radius is still $B$. Write $A_j$ for the fixed bound
+on the absolute value of the reset parameter after $L_j$ is chosen.
+
+\begin{lemma}[Simultaneous numerical response payment]
+\label{lem:selected-response-payments}
+There is a threshold $d_{j,h}$, independent of the period, cutoff,
+input representation and finite menu, with the following properties
+for every $x\ge d_{j,h}$. For any $a,b\ge0$ with
+\[
+ a\le e^{-\mu P^2/4},\qquad b\le C_{\rm cov}y^{-1/8},
+\]
+set $\kappa_1=\mu P^2/8$ and $I_1=e^{\kappa_1}a+2b$.
+Then
+\begin{equation}\label{eq:selected-first-response-payment}
+ b\le1,\qquad (2B+1)^4I_1\le1,\qquad
+ e^{-\kappa_1}(e^{I_1}-1)\le H_1.
+\end{equation}
+For every $|\alpha|\le A_j$ and $\epsilon\in\{0,+\}$, put
+$\kappa_2=\mu P^2/16$ and
+$I_{2,\epsilon}=e^{\kappa_2}H_1+2f_\epsilon(x,\alpha)$.
+Then
+\begin{equation}\label{eq:selected-second-response-payment}
+ \begin{gathered}
+ 0\le f_\epsilon(x,\alpha)\le y^{-1/4}\le1,\qquad
+ (2B+1)^4I_{2,\epsilon}\le1,\\
+ e^{-\kappa_2}(e^{I_{2,\epsilon}}-1)\le H_2.
+ \end{gathered}
+\end{equation}
+These statements can be included in the common delays before the
+history is selected. They then hold at every stored step $i<N$,
+with $(j,h)=(J(i+1),J(i))$ and $x=\widehat\beta_i$, including
+the direct stored step at $i=0$.
+\end{lemma}
+
+\begin{proof}
+The reset and path prices defining both soft demands are nonnegative.
+The footprint calculation \eqref{eq:nonlinear-soft-price}, applied
+separately to the two reserves, gives constants $C_0,C_+\ge0$ such
+that, for $|\alpha|\le A_j$,
+\[
+ 0\le f_\epsilon(x,\alpha)
+       \le C_\epsilon(1+B)^4\theta(x).
+\]
+The hypotheses used there hold eventually: $\theta\le1$ and
+$c_hx^{-11/10}\le x^{-1}\le\theta^2$. The base and raised
+demands have different constants, but the same bound on $\alpha$
+and the same $\theta,B$. Since $y/x\to1$, the logarithm of
+$(1+B)^4\theta(x)y^{1/4}$ tends to minus infinity. Indeed its
+nonconstant terms are
+$4\log(1+B)+(\log\log x)^2-\frac14\log x+o(1)$.
+Taking the maximum of the two thresholds proves the claimed
+$y^{-1/4}$ bound simultaneously for both demands.
+
+Write $b_B=(2B+1)^4$. We have
+\[
+ I_1\le e^{-\mu P^2/8}+2C_{\rm cov}y^{-1/8},\qquad
+ I_{2,\epsilon}\le2e^{-\mu P^2/16}+2y^{-1/4}.
+\]
+Each right side, multiplied by $b_B$, tends to zero. For the
+exponential terms this follows from $P^2/\log y\to\infty$;
+for the power terms it follows from $B=O((\log y)^2)$.
+Increase one threshold until both products are at most one and
+$C_{\rm cov}y^{-1/8}\le1$. Every corresponding $I$ lies in
+$[0,1]$. On this interval $e^I-1\le(e-1)I\le2$.
+Multiplying by $e^{-\kappa_1}$ or $e^{-\kappa_2}$ proves the
+two output estimates. In particular, the constants $\kappa_1$
+and $\kappa_2$ work for every admitted precursor and every reset
+parameter, rather than being selected after a menu is tested.
+
+At stage $j$ there are only finitely many permitted targets $h$.
+Take the maximum of their thresholds and the previously purchased
+delay, then its running maximum in $j$. All the inequalities hold
+on tails, so this operation preserves them and all previous
+purchases. This is an instance of \eqref{eq:nonlinear-entry-max}
+in the choice order of Section~\ref{sec:common-observable-purchases}.
+It is made before the scale sequence and shooting parameter are
+selected, not by altering an already selected history. The stored
+clock pays this delay at $\widehat\beta_i$ for the permitted pair
+$(J(i+1),J(i))$. Its fine coupling is exactly
+$\widehat\beta_{i+1}=\widehat\beta_i+s_G\log L_i$.
+The stored reset parameter obeys the same stage bound $A_{J(i+1)}$
+by the interval-return construction of
+Section~\ref{sec:common-funded-history}. Substitution proves the
+last assertion for every admitted cutoff and period. No positive
+lower bound on $i$ was used.
+\end{proof}
+
+For the precursor in Section~\ref{subsec:ex-lattice-rg-crowd},
+$a=2V_Qe^{-E_0}$, with $V_Q\le1/2$ and
+$E_0=\mu P^2/4$. Its ordinary soft price is at most $y^{-1/8}$,
+whereas its raised soft price is at most
+$C_{\rm cov}y^{-1/8}$. Thus the first payment covers both paths.
+After their respective widening and absorption, the second payment
+applies to $H_1$ and their respective final demands. It gives
+exactly $H_2$, the flagged response allowance $w_i$ of
+Proposition~\ref{prop:selected-centered-retention}. The argument
+does not substitute $f_0$ for $f_+$ or change the budget at which
+$f_+$ is evaluated.
+
+\paragraph{The remaining analytic attachment.}
+The two lemmas above supply the finite-menu augmentation and the four
+numerical absorption bounds. They do not derive the common mixed-body
+estimate retained in Lemma~\ref{lem:selected-menu-alphabet}, or the
+actual local component and differentiated entrance estimates used in
+Section~\ref{subsec:ex-lattice-rg-usable}. In particular that section
+requires the rooted thin-component majorant at its full exponent and
+the corresponding tree smallness bound before applying its cluster
+estimate. The precursor and vapor estimates in
+Section~\ref{subsec:ex-lattice-rg-crowd} must concern the same residual
+bodies, local return and profile, with the two distinct soft demands.
+The packet estimates include all analytic variants together.
+These are analytic inputs on the held local step, not additional
+consequences of increasing the delays. Matching them to their
+uniform local producers remains necessary before the arrival and
+raised-response hypothesis of
+Proposition~\ref{prop:selected-centered-retention} can be removed.
+
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
 $t_d\le k\le N$; in particular $k\ge1$. We verify the inputs of
