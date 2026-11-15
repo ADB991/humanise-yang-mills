@@ -1,0 +1,627 @@
+YangMills.constructed : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ),
+  0 < b →
+    ∃ C,
+      C.path.levels.clock.kernel.penalty = b ∧
+        C.Makes ∧
+          YangMills.WilsonRegularity (YangMills.wilsonFamily C) ∧
+            ∀ (p : YM.Extraction.Order),
+              ∃ q S F L Q M X,
+                (YangMills.hierarchy F Q).Properties (p.refine q).per.choose ∧
+                  (YangMills.hierarchy F Q).Contacts ∧
+                    { mesh := YM.Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+                      YM.FullVolume.PositionsUV C YM.Extraction.Sequence.full ∧
+                        YM.Spec.Calibrated C ∧
+                          YM.Independent.Core ⋯ F L Q ∧
+                            YM.Nonperturbative.Headline.Reconstruction F L ∧
+                              (∀ (i : F.α.space.X), (YangMills.view (L.actors i)).Axioms) ∧
+                                YM.Nonperturbative.Headline.SeparatedOPE F Q ∧
+                                  YM.Nonperturbative.Headline.NestedOPE F Q ∧
+                                    YM.Nonperturbative.Headline.TraceExclusions F ∧
+                                      M.basis = Q.port ∧
+                                        YM.Contacts.Solstice.MultipleLight F M ∧
+                                          Nonempty (YM.Contacts.Transport.SystemBasis M) ∧
+                                            Nonempty (YM.Contacts.Solstice.Thresholds M) ∧
+                                              YM.Pert.FirstExtension F X ∧ YM.Pert.Position.FourMeters F X
+'YangMills.constructed' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Nonperturbative.existence : ∀ (G : YM.Gauge) (hG : G.Simple) (b : ℝ),
+  0 < b → YM.Nonperturbative.Headline.WilsonExistence G hG b
+'YM.Nonperturbative.existence' depends on axioms: [propext, Classical.choice, Quot.sound]
+def YM.Nonperturbative.Headline.WilsonExistence.{u, v} : (G : YM.Gauge) → G.Simple → ℝ → Prop :=
+fun G hG b =>
+  ∃ C,
+    C.path.levels.clock.kernel.penalty = b ∧
+      C.Makes ∧
+        ∀ (p : YM.Extraction.Order),
+          ∃ q S F L Q M X,
+            { mesh := YM.Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+              YM.FullVolume.PositionsUV C YM.Extraction.Sequence.full ∧
+                YM.Spec.Calibrated C ∧
+                  YM.Independent.Core hG F L Q ∧
+                    YM.Nonperturbative.Headline.Reconstruction F L ∧
+                      YM.Nonperturbative.Headline.SeparatedOPE F Q ∧
+                        YM.Nonperturbative.Headline.NestedOPE F Q ∧
+                          YM.Nonperturbative.Headline.TraceExclusions F ∧
+                            M.basis = Q.port ∧
+                              YM.Contacts.Solstice.MultipleLight F M ∧
+                                Nonempty (YM.Contacts.Transport.SystemBasis M) ∧
+                                  Nonempty (YM.Contacts.Solstice.Thresholds M) ∧
+                                    YM.Pert.FirstExtension F X ∧ YM.Pert.Position.FourMeters F X
+structure YangMills.GaugeGroup : Type
+number of parameters: 0
+fields:
+  YangMills.GaugeGroup.n : ℕ
+  YangMills.GaugeGroup.image : Subgroup ↥(YangMills.UnitaryRepresentation self.n)
+  YangMills.GaugeGroup.imageClosed : IsClosed ↑self.image
+  YangMills.GaugeGroup.lieAlgebra : Submodule ℝ (Matrix (Fin (self.n + 1)) (Fin (self.n + 1)) ℂ)
+  YangMills.GaugeGroup.generates : ∀ (X : Matrix (Fin (self.n + 1)) (Fin (self.n + 1)) ℂ),
+      X ∈ self.lieAlgebra ↔ ∀ (t : ℝ), NormedSpace.exp (t • X) ∈ Set.range fun u => ↑↑u
+constructor:
+  YangMills.GaugeGroup.mk (n : ℕ) (image : Subgroup ↥(YangMills.UnitaryRepresentation n))
+    (imageClosed : IsClosed ↑image) (lieAlgebra : Submodule ℝ (Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ))
+    (generates :
+      ∀ (X : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ),
+        X ∈ lieAlgebra ↔ ∀ (t : ℝ), NormedSpace.exp (t • X) ∈ Set.range fun u => ↑↑u) :
+    YangMills.GaugeGroup
+def YangMills.GaugeGroup.IsSimple : YangMills.GaugeGroup → Prop :=
+fun gauge =>
+  (∃ X ∈ gauge.lieAlgebra, ∃ Y ∈ gauge.lieAlgebra, X * Y - Y * X ≠ 0) ∧
+    ∀ ideal ≤ gauge.lieAlgebra,
+      (∀ X ∈ gauge.lieAlgebra, ∀ Y ∈ ideal, X * Y - Y * X ∈ ideal) → ideal = ⊥ ∨ ideal = gauge.lieAlgebra
+def YangMills.GaugeGroup.core : YangMills.GaugeGroup → YM.Gauge :=
+fun g => { n := g.n, imageGroup := g.image, closed_imageGroup := ⋯ }
+@YangMills.GaugeGroup.coreSimple : ∀ {g : YangMills.GaugeGroup}, g.IsSimple → g.core.Simple
+structure YM.Extraction.Sequence : Type
+number of parameters: 0
+fields:
+  YM.Extraction.Sequence.choose : ℕ → ℕ
+  YM.Extraction.Sequence.monotone : StrictMono self.choose
+constructor:
+  YM.Extraction.Sequence.mk (choose : ℕ → ℕ) (monotone : StrictMono choose) : YM.Extraction.Sequence
+def YM.Extraction.Sequence.full : YM.Extraction.Sequence :=
+{ choose := id, monotone := ⋯ }
+def YM.Extraction.Sequence.after : YM.Extraction.Sequence → YM.Extraction.Sequence → YM.Extraction.Sequence :=
+fun s t => { choose := s.choose ∘ t.choose, monotone := ⋯ }
+structure YM.Extraction.Order : Type
+number of parameters: 0
+fields:
+  YM.Extraction.Order.mesh : YM.Extraction.Sequence
+  YM.Extraction.Order.per : YM.Extraction.Sequence
+constructor:
+  YM.Extraction.Order.mk (mesh per : YM.Extraction.Sequence) : YM.Extraction.Order
+def YM.Extraction.Order.refine : YM.Extraction.Order → YM.Extraction.Order → YM.Extraction.Order :=
+fun f g => { mesh := f.mesh.after g.mesh, per := f.per.after g.per }
+def YM.Extraction.Order.limits.{u_1} : {X : Type u_1} →
+  [TopologicalSpace X] → YM.Extraction.Order → (ℕ → Prop) → (ℕ → ℕ → X) → X → Prop :=
+fun {X} [TopologicalSpace X] f A W x =>
+  (∀ᶠ (k : ℕ) in Filter.atTop, A (f.per.choose k)) ∧
+    ∃ v,
+      (∀ (p : ℕ), A p → Filter.Tendsto (fun j => W (f.mesh.choose j) p) Filter.atTop (nhds (v p))) ∧
+        Filter.Tendsto (fun k => v (f.per.choose k)) Filter.atTop (nhds x)
+structure YM.Extraction.Order.Ordered {G : YM.Gauge} (f : YM.Extraction.Order) (C : YM.Family G) (S : YM.Table C.book) :
+  Prop
+number of parameters: 4
+fields:
+  YM.Extraction.Order.Ordered.reads : ∀ (n : ℕ) (v : Fin n → C.book.Token) (t : YM.Test n),
+      f.limits (fun p => YM.Extraction.suitable C.S p t) (fun N p => YM.Extraction.Order.smears C N p v t)
+        (t.applyTo fun x => S.read x v)
+constructor:
+  YM.Extraction.Order.Ordered.mk {G : YM.Gauge} {f : YM.Extraction.Order} {C : YM.Family G} {S : YM.Table C.book}
+    (reads :
+      ∀ (n : ℕ) (v : Fin n → C.book.Token) (t : YM.Test n),
+        f.limits (fun p => YM.Extraction.suitable C.S p t) (fun N p => YM.Extraction.Order.smears C N p v t)
+          (t.applyTo fun x => S.read x v)) :
+    f.Ordered C S
+def YM.Extraction.Order.smears : {G : YM.Gauge} →
+  (C : YM.Family G) → ℕ → ℕ → {n : ℕ} → (Fin n → C.book.Token) → YM.Test n → ℂ :=
+fun {G} C N p {n} v t => ↑(C.S.a N) ^ (4 * n) * ∑ r, t (YM.Extraction.Order.cells C N p r) * C.numeric N p v r
+structure YangMills.WilsonRegularity {g : YangMills.GaugeGroup} (C : YangMills.WilsonFamily g) : Prop
+number of parameters: 2
+fields:
+  YangMills.WilsonRegularity.running : ∃ slope,
+      0 < slope ∧
+        ∀ (ε : ℝ), 0 < ε → ∀ᶠ (N : ℕ) in Filter.atTop, ∀ (p : ℕ), |C.beta N p / Real.log (C.mesh N)⁻¹ - slope| < ε
+  YangMills.WilsonRegularity.continuous : ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N)),
+      Continuous (C.insertion N p v x)
+  YangMills.WilsonRegularity.invariant : ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N))
+      (t : YangMills.Site (C.period p * C.denominator N) → ↥g.image)
+      (U : YangMills.Configuration g (C.period p * C.denominator N)),
+      (C.insertion N p v x fun e => t e.1 * U e * (t (e.1 + Pi.single e.2 1))⁻¹) = C.insertion N p v x U
+  YangMills.WilsonRegularity.localSupport : ∀ (v : C.Token),
+      ∃ stencil,
+        ∀ (N p : ℕ) (x : YangMills.Site (C.period p * C.denominator N)),
+          let sites := Finset.image (fun z => (fun i => ↑(z i)) + x) stencil;
+          ∀ (U V : YangMills.Configuration g (C.period p * C.denominator N)),
+            (∀ (e : YangMills.Site (C.period p * C.denominator N) × YangMills.Axis),
+                e.1 ∈ sites → e.1 + Pi.single e.2 1 ∈ sites → U e = V e) →
+              C.insertion N p v x U = C.insertion N p v x V
+constructor:
+  YangMills.WilsonRegularity.mk {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g}
+    (running :
+      ∃ slope,
+        0 < slope ∧
+          ∀ (ε : ℝ), 0 < ε → ∀ᶠ (N : ℕ) in Filter.atTop, ∀ (p : ℕ), |C.beta N p / Real.log (C.mesh N)⁻¹ - slope| < ε)
+    (continuous :
+      ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N)), Continuous (C.insertion N p v x))
+    (invariant :
+      ∀ (N p : ℕ) (v : C.Token) (x : YangMills.Site (C.period p * C.denominator N))
+        (t : YangMills.Site (C.period p * C.denominator N) → ↥g.image)
+        (U : YangMills.Configuration g (C.period p * C.denominator N)),
+        (C.insertion N p v x fun e => t e.1 * U e * (t (e.1 + Pi.single e.2 1))⁻¹) = C.insertion N p v x U)
+    (localSupport :
+      ∀ (v : C.Token),
+        ∃ stencil,
+          ∀ (N p : ℕ) (x : YangMills.Site (C.period p * C.denominator N)),
+            let sites := Finset.image (fun z => (fun i => ↑(z i)) + x) stencil;
+            ∀ (U V : YangMills.Configuration g (C.period p * C.denominator N)),
+              (∀ (e : YangMills.Site (C.period p * C.denominator N) × YangMills.Axis),
+                  e.1 ∈ sites → e.1 + Pi.single e.2 1 ∈ sites → U e = V e) →
+                C.insertion N p v x U = C.insertion N p v x V) :
+    YangMills.WilsonRegularity C
+def YangMills.wilsonFamily : {g : YangMills.GaugeGroup} → YM.Family g.core → YangMills.WilsonFamily g :=
+fun {g} C =>
+  { period := C.S.period, denominator := C.S.denominator, periodStrict := ⋯, denominatorStrict := ⋯, beta := C.beta,
+    haar := g.core.probHaar, probability := ⋯, invariantHaar := ⋯, Token := C.book.Token,
+    insertion := fun N p v x => C.seen v x }
+def YangMills.WilsonFamily.mesh : {g : YangMills.GaugeGroup} → YangMills.WilsonFamily g → ℕ → ℝ :=
+fun {g} C N => (↑↑(C.denominator N))⁻¹
+@YangMills.smear_eq : ∀ {g : YangMills.GaugeGroup} (C : YM.Family g.core) (N p : ℕ) {n : ℕ} (v : Fin n → C.book.Token)
+  (t : YM.Test n), (YangMills.wilsonFamily C).smear N p v t = YM.Extraction.Order.smears C N p v t
+@YangMills.moment_eq : ∀ {g : YangMills.GaugeGroup} (C : YM.Family g.core) (N p : ℕ) {n : ℕ} (v : Fin n → C.book.Token)
+  (x : Fin n → YM.Lattice.Site (C.side N p)), (YangMills.wilsonFamily C).finiteMoment N p v x = C.numeric N p v x
+@YangMills.regular : ∀ {g : YangMills.GaugeGroup} (C : YM.Family g.core),
+  g.IsSimple → C.Makes → YangMills.WilsonRegularity (YangMills.wilsonFamily C)
+@[reducible] def YM.Labels.Jet : YM.Gauge → Type :=
+fun G => (j : ℕ) → YM.Labels.Taylor G j
+@[reducible] def YM.Labels.Taylor : YM.Gauge → ℕ → Type :=
+fun G j => ↥(YM.Labels.radial G j)
+def YM.Labels.read : {G : YM.Gauge} → YM.Labels.Jet G → YM.Labels.Pol G →ₐ[ℂ] ℂ :=
+fun {G} A => MvPolynomial.aeval (YM.Labels.coord A)
+def YM.Labels.coord : {G : YM.Gauge} → YM.Labels.Jet G → YM.Labels.Key G → ℂ :=
+fun {G} A v => ↑(((YM.Labels.axes G v.fst).repr (A v.fst)) v.snd)
+def YM.Labels.generation : {G : YM.Gauge} → YM.Labels.Key G → ℕ :=
+fun {G} k => k.fst + 2
+def YM.Labels.height : {G : YM.Gauge} → (YM.Labels.Key G →₀ ℕ) → ℕ :=
+fun {G} p => (Finsupp.weight YM.Labels.generation) p
+def YM.Labels.limited : (G : YM.Gauge) → ℕ → Submodule ℂ (YM.Labels.Pol G) :=
+fun G d => MvPolynomial.restrictSupport ℂ {b | YM.Labels.height b ≤ d}
+def YM.Labels.localFields : (G : YM.Gauge) → ℕ → Submodule ℂ (YM.Labels.Pol G) :=
+fun G d => YM.Labels.limited G d ⊓ YM.Labels.invariantSpace G
+@[reducible] def YM.Labels.Label : YM.Gauge → ℕ → Type :=
+fun G d => ↥(YM.Labels.localFields G d)
+@YM.Labels.eval_ext : ∀ {G : YM.Gauge} (p q : YM.Labels.Pol G),
+  (∀ (A : YM.Labels.Jet G), (YM.Labels.read A) p = (YM.Labels.read A) q) → p = q
+structure YM.Labels.Frame (G : YM.Gauge) (d : ℕ) : Type
+number of parameters: 2
+fields:
+  YM.Labels.Frame.extra : ℕ
+  YM.Labels.Frame.basis : Module.Basis (Fin (self.extra + 1)) ℂ (YM.Labels.Label G d)
+  YM.Labels.Frame.starts_unit : self.basis 0 = YM.Labels.unit G d
+  YM.Labels.Frame.grades : Fin (self.extra + 1) → ℕ × ℕ
+  YM.Labels.Frame.realForm : ∀ (i : Fin (self.extra + 1)), YM.Labels.realBar (self.basis i) = self.basis i
+  YM.Labels.Frame.bound : ∀ (i : Fin (self.extra + 1)), (self.grades i).1 ≤ d
+  YM.Labels.Frame.pure : ∀ (i : Fin (self.extra + 1)), self.basis i ∈ YM.Labels.Grade (self.grades i)
+constructor:
+  YM.Labels.Frame.mk {G : YM.Gauge} {d : ℕ} (extra : ℕ) (basis : Module.Basis (Fin (extra + 1)) ℂ (YM.Labels.Label G d))
+    (starts_unit : basis 0 = YM.Labels.unit G d) (grades : Fin (extra + 1) → ℕ × ℕ)
+    (realForm : ∀ (i : Fin (extra + 1)), YM.Labels.realBar (basis i) = basis i)
+    (bound : ∀ (i : Fin (extra + 1)), (grades i).1 ≤ d)
+    (pure : ∀ (i : Fin (extra + 1)), basis i ∈ YM.Labels.Grade (grades i)) : YM.Labels.Frame G d
+def YM.Labels.Frame.coords : {G : YM.Gauge} → {d : ℕ} → (F : YM.Labels.Frame G d) → YM.Labels.Label G d ≃ₗ[ℂ] F.Coeff :=
+fun {G} {d} F => F.basis.equivFun
+def YM.Labels.Frame.e0 : {G : YM.Gauge} → {d : ℕ} → (F : YM.Labels.Frame G d) → F.Coeff :=
+fun {G} {d} F => Pi.single 0 1
+def YM.Labels.Frame.scaled : {G : YM.Gauge} → {d : ℕ} → (F : YM.Labels.Frame G d) → ℝ → F.Coeff →ₗ[ℂ] F.Coeff :=
+fun {G} {d} F t => { toFun := fun x j => ↑(t ^ (F.grades j).2) * x j, map_add' := ⋯, map_smul' := ⋯ }
+@YM.Labels.Frame.coords_unit : ∀ {G : YM.Gauge} {d : ℕ} (F : YM.Labels.Frame G d), F.coords (YM.Labels.unit G d) = F.e0
+def YM.Source.scaleJet : {G : YM.Gauge} → YM.Labels.Jet G → ℝ → YM.Labels.Jet G :=
+fun {G} J t i => t ^ (i + 2) • J i
+def YM.Source.potential : {G : YM.Gauge} → ℕ → YM.Labels.Jet G → YM.Axis → YM.E4 → G.Color :=
+fun {G} d J i x => ∑ j ∈ Finset.range (d - 1), (J j).value i x
+def YM.Source.partConnection : {G : YM.Gauge} →
+  ℕ → YM.Labels.Jet G → ℝ → YM.Lattice.Edge YM.Lattice.Cover → ℝ → G.Color :=
+fun {G} d J h l t => h • YM.Source.potential d J l.2 (h • ((WithLp.toLp 2 fun i => ↑(l.1 i)) + t • YM.basis l.2))
+structure YM.Source.Hol (G : YM.Gauge) : Type
+number of parameters: 1
+fields:
+  YM.Source.Hol.flow : ℕ → YM.Labels.Jet G → ℝ → YM.Lattice.Edge YM.Lattice.Cover → ℝ → G.El
+  YM.Source.Hol.solves : ∀ (d : ℕ) (J : YM.Labels.Jet G) (h : ℝ) (l : YM.Lattice.Edge YM.Lattice.Cover),
+      YM.Source.SolvesLink (self.flow d J h l) (YM.Source.partConnection d J h l)
+constructor:
+  YM.Source.Hol.mk {G : YM.Gauge} (flow : ℕ → YM.Labels.Jet G → ℝ → YM.Lattice.Edge YM.Lattice.Cover → ℝ → G.El)
+    (solves :
+      ∀ (d : ℕ) (J : YM.Labels.Jet G) (h : ℝ) (l : YM.Lattice.Edge YM.Lattice.Cover),
+        YM.Source.SolvesLink (flow d J h l) (YM.Source.partConnection d J h l)) :
+    YM.Source.Hol G
+def YM.Source.Hol.links : {G : YM.Gauge} → YM.Source.Hol G → ℕ → YM.Labels.Jet G → ℝ → YM.Wilson.CoverConfig G :=
+fun {G} A d J h l => A.flow d J h l 1
+def YM.Source.Projects : {G : YM.Gauge} →
+  {d : ℕ} → YM.Source.Hol G → YM.Labels.Label G d → (YM.Wilson.CoverConfig G → ℂ) → Prop :=
+fun {G} {d} H p F =>
+  ∀ (J : YM.Labels.Jet G),
+    have f := fun h => F (H.links d J h);
+    have g := fun h => (YM.Labels.read (YM.Source.scaleJet J h)) ↑p;
+    ContDiffAt ℝ (↑↑d) f 0 ∧ ContDiffAt ℝ (↑↑d) g 0 ∧ ∀ k ≤ d, iteratedDeriv k f 0 = iteratedDeriv k g 0
+structure YM.Source.SectionData {G : YM.Gauge} {d : ℕ} (F : YM.Labels.Frame G d) : Type
+number of parameters: 3
+fields:
+  YM.Source.SectionData.stencil : Finset YM.Lattice.Cover
+  YM.Source.SectionData.evalC : F.Coeff →ₗ[ℂ] YM.Source.Formula G self.stencil
+constructor:
+  YM.Source.SectionData.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} (stencil : Finset YM.Lattice.Cover)
+    (evalC : F.Coeff →ₗ[ℂ] YM.Source.Formula G stencil) : YM.Source.SectionData F
+def YM.Source.SectionData.evaluate : {G : YM.Gauge} →
+  {d : ℕ} → {F : YM.Labels.Frame G d} → YM.Source.SectionData F → F.Coeff → YM.Wilson.CoverConfig G → ℂ :=
+fun {G} {d} {F} C c U => (MvPolynomial.aeval (YM.Source.entry U)) (C.evalC c)
+def YM.Source.SectionData.places : {G : YM.Gauge} →
+  {d : ℕ} →
+    {F : YM.Labels.Frame G d} →
+      YM.Source.SectionData F → {n : YM.Lattice.Side} → F.Coeff → YM.Lattice.Site n → YM.Wilson.Config G n → ℂ :=
+fun {G} {d} {F} C {n} c o U => C.evaluate c (YM.Lattice.expandAt o U)
+structure YM.Source.SectionData.Sound {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} (C : YM.Source.SectionData F)
+  (H : YM.Source.Hol G) : Prop
+number of parameters: 5
+fields:
+  YM.Source.SectionData.Sound.anchored : 0 ∈ C.stencil
+  YM.Source.SectionData.Sound.stable : ∀ (s : YM.Signed), Finset.image s.act C.stencil = C.stencil
+  YM.Source.SectionData.Sound.gaugeInvariant : ∀ (c : F.Coeff), YM.Lattice.GaugeInvariant (C.evaluate c)
+  YM.Source.SectionData.Sound.unit : C.evaluate F.e0 = 1
+  YM.Source.SectionData.Sound.Hpart : ∀ (s : YM.Signed) (c : F.Coeff) (U : YM.Lattice.Links ℤ G.El),
+      C.evaluate c (YM.Lattice.pull s 0 U) = C.evaluate ((F.act s.ortho) c) U
+  YM.Source.SectionData.Sound.ordinary_real : ∀ (c : F.Coeff) (U : YM.Wilson.CoverConfig G),
+      C.evaluate (star c) U = star (C.evaluate c U)
+  YM.Source.SectionData.Sound.projects : ∀ (c : F.Coeff), YM.Source.Projects H (F.coords.symm c) (C.evaluate c)
+constructor:
+  YM.Source.SectionData.Sound.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {C : YM.Source.SectionData F}
+    {H : YM.Source.Hol G} (anchored : 0 ∈ C.stencil)
+    (stable : ∀ (s : YM.Signed), Finset.image s.act C.stencil = C.stencil)
+    (gaugeInvariant : ∀ (c : F.Coeff), YM.Lattice.GaugeInvariant (C.evaluate c)) (unit : C.evaluate F.e0 = 1)
+    (Hpart :
+      ∀ (s : YM.Signed) (c : F.Coeff) (U : YM.Lattice.Links ℤ G.El),
+        C.evaluate c (YM.Lattice.pull s 0 U) = C.evaluate ((F.act s.ortho) c) U)
+    (ordinary_real : ∀ (c : F.Coeff) (U : YM.Wilson.CoverConfig G), C.evaluate (star c) U = star (C.evaluate c U))
+    (projects : ∀ (c : F.Coeff), YM.Source.Projects H (F.coords.symm c) (C.evaluate c)) : C.Sound H
+def YM.Source.initial : {G : YM.Gauge} →
+  {d : ℕ} →
+    {F : YM.Labels.Frame G d} →
+      YM.Source.SectionData F →
+        (H : YM.RG.History G) →
+          (N p : ℕ) → F.Coeff → YM.Lattice.Site (H.S.side N p) → YM.Wilson.Config G (H.S.side N p) → ℂ :=
+fun {G} {d} {F} C H N p v o => (↑(H.S.a N) ^ d)⁻¹ • C.places ((F.scaled (H.levels.clock.threshold N)⁻¹) v) o
+structure YM.Source.TransferData {G : YM.Gauge} {d : ℕ} (F : YM.Labels.Frame G d) (H : YM.RG.History G) (N p : ℕ) : Type
+number of parameters: 6
+fields:
+  YM.Source.TransferData.entries : (m : ℕ) → F.Coeff → YM.Source.Coefficient F (H.S.side m p)
+  YM.Source.TransferData.terminal : F.Coeff ≃ₗ[ℂ] F.Coeff
+constructor:
+  YM.Source.TransferData.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {H : YM.RG.History G} {N p : ℕ}
+    (entries : (m : ℕ) → F.Coeff → YM.Source.Coefficient F (H.S.side m p)) (terminal : F.Coeff ≃ₗ[ℂ] F.Coeff) :
+    YM.Source.TransferData F H N p
+def YM.Source.TransferData.cylinder : {G : YM.Gauge} →
+  {d : ℕ} →
+    {F : YM.Labels.Frame G d} →
+      {H : YM.RG.History G} →
+        {N p : ℕ} →
+          YM.Source.TransferData F H N p →
+            YM.Source.SectionData F →
+              F.Coeff → YM.Lattice.Site (H.S.side N p) → YM.Wilson.Config G (H.S.side N p) → ℂ :=
+fun {G} {d} {F} {H} {N p} T C v => YM.Source.initial C H N p (T.terminal.symm v)
+structure YM.Source.TransferData.Based {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {H : YM.RG.History G} {N p : ℕ}
+  (T : YM.Source.TransferData F H N p) (A : YM.Source.Hol G) (C : YM.Source.SectionData F) (r : ℕ) : Prop
+number of parameters: 10
+fields:
+  YM.Source.TransferData.Based.ref : r ≤ N
+  YM.Source.TransferData.Based.format : ∀ (m : ℕ),
+      r ≤ m → m ≤ N → ∀ (v : F.Coeff), (T.entries m v).Format 0 A (H.rep N p m)
+  YM.Source.TransferData.Based.cap : ∀ (m : ℕ),
+      r ≤ m →
+        m ≤ N →
+          ∀ (v : F.Coeff),
+            (T.entries m v).remBound 0 (H.rep N p m) (√(H.levels.clock.forcedAllowance m))
+              ((H.levels.params m).columns * F.coeffSize (F.core (T.entries m v).x))
+  YM.Source.TransferData.Based.back : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            F.coeffSize (T.entries (m + 1) v).x ≤ (H.levels.params (m + 1)).columns * F.coeffSize (T.entries m v).x
+  YM.Source.TransferData.Based.front : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            F.coeffSize (T.entries m v).x ≤
+              (H.levels.params (m + 1)).columns * ↑↑(H.S.block m) ^ d * F.coeffSize (T.entries (m + 1) v).x
+  YM.Source.TransferData.Based.linear : ∀ (m : ℕ),
+      r ≤ m →
+        m ≤ N →
+          (IsLinearMap ℂ fun v => (T.entries m v).x) ∧
+            (IsLinearMap ℂ fun v => (T.entries m v).regular) ∧
+              (IsLinearMap ℂ fun v => (T.entries m v).forced) ∧
+                ∀ (v : F.Coeff), (T.entries m v).support = (T.entries m 0).support
+  YM.Source.TransferData.Based.bare_coord : ∀ (v : F.Coeff), (T.entries N v).x = v
+  YM.Source.TransferData.Based.bare_germ : ∀ (v : F.Coeff), (T.entries N v).regular = 0
+  YM.Source.TransferData.Based.encode : ∀ (v : F.Coeff) (U : YM.Wilson.Config G (H.S.side N p)),
+      (T.entries N v).density 0 C (H.rep N p N) U =
+        ↑(H.S.a N) ^ d * ↑((H.rep N p N).eval U) * YM.Source.initial C H N p v 0 U
+  YM.Source.TransferData.Based.unnormalized : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            (T.entries m v).density 0 C (H.rep N p m) =
+              ↑↑(H.S.block m) ^ d •
+                (H.levels.clock.op m p).push (H.β N p (m + 1)) ((T.entries (m + 1) v).density 0 C (H.rep N p (m + 1)))
+  YM.Source.TransferData.Based.reads : ∀ (v : F.Coeff), (T.entries r v).x = T.terminal v
+  YM.Source.TransferData.Based.unit_coord : ∀ (m : ℕ),
+      r ≤ m → m ≤ N → (T.entries m (YM.Source.unitVec F H N)).x = YM.Source.unitVec F H m
+  YM.Source.TransferData.Based.realForm : ∀ (v : F.Coeff), T.terminal (star v) = star (T.terminal v)
+  YM.Source.TransferData.Based.orients : ∀ (k : YM.Signed) (v : F.Coeff),
+      T.terminal ((F.act k.ortho) v) = (F.act k.ortho) (T.terminal v)
+constructor:
+  YM.Source.TransferData.Based.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {H : YM.RG.History G} {N p : ℕ}
+    {T : YM.Source.TransferData F H N p} {A : YM.Source.Hol G} {C : YM.Source.SectionData F} {r : ℕ} (ref : r ≤ N)
+    (format : ∀ (m : ℕ), r ≤ m → m ≤ N → ∀ (v : F.Coeff), (T.entries m v).Format 0 A (H.rep N p m))
+    (cap :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m ≤ N →
+            ∀ (v : F.Coeff),
+              (T.entries m v).remBound 0 (H.rep N p m) (√(H.levels.clock.forcedAllowance m))
+                ((H.levels.params m).columns * F.coeffSize (F.core (T.entries m v).x)))
+    (back :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              F.coeffSize (T.entries (m + 1) v).x ≤ (H.levels.params (m + 1)).columns * F.coeffSize (T.entries m v).x)
+    (front :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              F.coeffSize (T.entries m v).x ≤
+                (H.levels.params (m + 1)).columns * ↑↑(H.S.block m) ^ d * F.coeffSize (T.entries (m + 1) v).x)
+    (linear :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m ≤ N →
+            (IsLinearMap ℂ fun v => (T.entries m v).x) ∧
+              (IsLinearMap ℂ fun v => (T.entries m v).regular) ∧
+                (IsLinearMap ℂ fun v => (T.entries m v).forced) ∧
+                  ∀ (v : F.Coeff), (T.entries m v).support = (T.entries m 0).support)
+    (bare_coord : ∀ (v : F.Coeff), (T.entries N v).x = v) (bare_germ : ∀ (v : F.Coeff), (T.entries N v).regular = 0)
+    (encode :
+      ∀ (v : F.Coeff) (U : YM.Wilson.Config G (H.S.side N p)),
+        (T.entries N v).density 0 C (H.rep N p N) U =
+          ↑(H.S.a N) ^ d * ↑((H.rep N p N).eval U) * YM.Source.initial C H N p v 0 U)
+    (unnormalized :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              (T.entries m v).density 0 C (H.rep N p m) =
+                ↑↑(H.S.block m) ^ d •
+                  (H.levels.clock.op m p).push (H.β N p (m + 1))
+                    ((T.entries (m + 1) v).density 0 C (H.rep N p (m + 1))))
+    (reads : ∀ (v : F.Coeff), (T.entries r v).x = T.terminal v)
+    (unit_coord : ∀ (m : ℕ), r ≤ m → m ≤ N → (T.entries m (YM.Source.unitVec F H N)).x = YM.Source.unitVec F H m)
+    (realForm : ∀ (v : F.Coeff), T.terminal (star v) = star (T.terminal v))
+    (orients : ∀ (k : YM.Signed) (v : F.Coeff), T.terminal ((F.act k.ortho) v) = (F.act k.ortho) (T.terminal v)) :
+    T.Based A C r
+structure YM.Family (G : YM.Gauge) : Type
+number of parameters: 1
+fields:
+  YM.Family.path : YM.RG.History G
+  YM.Family.params : YM.Source.Hol G
+  YM.Family.labels : YM.Labels.Frames G
+  YM.Family.localSection : (d : ℕ) → YM.Source.SectionData (self.labels.level d)
+  YM.Family.ref : ℕ → ℕ
+  YM.Family.factory : (d N p : ℕ) → YM.Source.TransferData (self.labels.level d) self.path N p
+constructor:
+  YM.Family.mk {G : YM.Gauge} (path : YM.RG.History G) (params : YM.Source.Hol G) (labels : YM.Labels.Frames G)
+    (localSection : (d : ℕ) → YM.Source.SectionData (labels.level d)) (ref : ℕ → ℕ)
+    (factory : (d N p : ℕ) → YM.Source.TransferData (labels.level d) path N p) : YM.Family G
+def YM.Family.O : {G : YM.Gauge} →
+  (C : YM.Family G) →
+    (N p : ℕ) →
+      {d : ℕ} → C.label d → YM.Lattice.Site (C.path.S.side N p) → YM.Wilson.Config G (C.path.S.side N p) → ℂ :=
+fun {G} C N p {d} v => (C.factory d N p).cylinder (C.localSection d) v
+structure YM.Family.Makes {G : YM.Gauge} (C : YM.Family G) : Prop
+number of parameters: 2
+fields:
+  YM.Family.Makes.wilson : C.path.Selected
+  YM.Family.Makes.sections : ∀ (d : ℕ), (C.localSection d).Sound C.params
+  YM.Family.Makes.stages : ∀ (d : ℕ),
+      d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+        ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power
+  YM.Family.Makes.places : ∀ (d N p : ℕ),
+      C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p)
+  YM.Family.Makes.priced : ∀ (d N p : ℕ),
+      C.ref d ≤ N →
+        let P := C.path.levels.budget N;
+        let F := C.labels.level d;
+        let D := C.localSection d;
+        ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+          P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+            P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+              ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2)
+  YM.Family.Makes.calibrated : ∀ (d N p : ℕ),
+      C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)
+constructor:
+  YM.Family.Makes.mk {G : YM.Gauge} {C : YM.Family G} (wilson : C.path.Selected)
+    (sections : ∀ (d : ℕ), (C.localSection d).Sound C.params)
+    (stages :
+      ∀ (d : ℕ),
+        d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+          ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power)
+    (places :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p))
+    (priced :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N →
+          let P := C.path.levels.budget N;
+          let F := C.labels.level d;
+          let D := C.localSection d;
+          ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+            P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+              P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+                ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2))
+    (calibrated : ∀ (d N p : ℕ), C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)) : C.Makes
+@YM.Family.normalized : ∀ {G : YM.Gauge} (C : YM.Family G) {N p d : ℕ},
+  C.Makes →
+    C.ref d ≤ N →
+      ∀ (v : C.label d),
+        have M := C.factory d N p;
+        (M.entries (C.ref d) (M.terminal.symm v)).x = v
+@YM.Family.translation : ∀ {G : YM.Gauge} (C : YM.Family G) {N p d : ℕ} (o b : YM.Lattice.Site (C.side N p))
+  (v : C.label d) (U : YM.Lattice.Links (YM.Lattice.Per (C.path.S.side N p)) G.El),
+  C.O N p v o (YM.Lattice.translate b U) = C.O N p v (o + b) U
+structure YM.RG.History (G : YM.Gauge) : Type
+number of parameters: 1
+fields:
+  YM.RG.History.levels : YM.RG.Levels G
+  YM.RG.History.rep : ℕ → (p m : ℕ) → YM.RG.Rep G (self.levels.S.side m p)
+constructor:
+  YM.RG.History.mk {G : YM.Gauge} (levels : YM.RG.Levels G) (rep : ℕ → (p m : ℕ) → YM.RG.Rep G (levels.S.side m p)) :
+    YM.RG.History G
+structure YM.RG.History.Selected {G : YM.Gauge} (A : YM.RG.History G) : Prop
+number of parameters: 2
+fields:
+  YM.RG.History.Selected.path_shared : ∀ (N p q m : ℕ), m ≤ N → (A.rep N p m).path = (A.rep N q m).path
+  YM.RG.History.Selected.represents : ∀ (N p m : ℕ), m ≤ N → A.Conv N p m
+  YM.RG.History.Selected.starts : ∀ (N p : ℕ), (A.rep N p N).v = 0 ∧ (A.rep N p N).eval = YM.Wilson.bare (A.β N p N)
+  YM.RG.History.Selected.steps : ∀ (N p m : ℕ), m < N → A.Transfer N p m
+  YM.RG.History.Selected.reaches : ∀ (N p : ℕ), A.β N p 0 = A.levels.clock.bar
+  YM.RG.History.Selected.running : A.Running
+constructor:
+  YM.RG.History.Selected.mk {G : YM.Gauge} {A : YM.RG.History G}
+    (path_shared : ∀ (N p q m : ℕ), m ≤ N → (A.rep N p m).path = (A.rep N q m).path)
+    (represents : ∀ (N p m : ℕ), m ≤ N → A.Conv N p m)
+    (starts : ∀ (N p : ℕ), (A.rep N p N).v = 0 ∧ (A.rep N p N).eval = YM.Wilson.bare (A.β N p N))
+    (steps : ∀ (N p m : ℕ), m < N → A.Transfer N p m) (reaches : ∀ (N p : ℕ), A.β N p 0 = A.levels.clock.bar)
+    (running : A.Running) : A.Selected
+def YM.RG.History.Transfer : {G : YM.Gauge} → YM.RG.History G → ℕ → ℕ → ℕ → Prop :=
+fun {G} A N p m =>
+  let C := A.levels.clock;
+  (A.rep N p m).eval = (C.op m p).push (A.β N p (m + 1)) (A.rep N p (m + 1)).eval ∧
+    |A.β N p (m + 1) - A.β N p m - G.slopeConstant * Real.log ↑↑(A.S.block m)| ≤ (C.params (m + 1)).drift
+def YM.RG.History.Running : {G : YM.Gauge} → YM.RG.History G → Prop :=
+fun {G} A =>
+  ∀ (ε : ℝ),
+    0 < ε → ∀ᶠ (m : ℕ) in Filter.atTop, ∀ (N p : ℕ), m ≤ N → |A.β N p m - A.levels.clock.hatBeta m| ≤ ε * A.S.scale m
+def YM.Spec.Calibrated : {G : YM.Gauge} → YM.Family G → Prop :=
+fun {G} C =>
+  ∃ S D T W Y I O K P B F,
+    B.bake.Stays F ∧ C.path = B.bake.make F ∧ ∀ (N m p : ℕ), m < N → B.Move N m p (F N p m) (F N p (m + 1))
+@[reducible] def YM.Family.book : {G : YM.Gauge} → YM.Family G → YM.Register G :=
+fun {G} C => { grid := C.labels, space := fun d => C.S.a (C.ref d), positive := ⋯ }
+def YM.Family.seen : {G : YM.Gauge} →
+  (C : YM.Family G) →
+    {N p : ℕ} → C.book.Token → YM.Lattice.Site (C.side N p) → YM.Wilson.Config G (C.path.S.side N p) → ℂ :=
+fun {G} C {N p} t y => C.O N p t.snd y
+def YM.Family.numeric : {G : YM.Gauge} →
+  (C : YM.Family G) → {n : ℕ} → (N p : ℕ) → (Fin n → C.book.Token) → (Fin n → YM.Lattice.Site (C.side N p)) → ℂ :=
+fun {G} C {n} N p v r => (C.ensemble (fun i => (v i).fst) r) fun i => (v i).snd
+@YM.Family.num : ∀ {G : YM.Gauge} (C : YM.Family G) {N p n : ℕ} (v : Fin n → C.book.Token)
+  (r : Fin n → YM.Lattice.Site (C.side N p)),
+  C.numeric N p v r =
+    ∫ (U : YM.Wilson.Config G (C.path.S.side N p)),
+      ∏ i, C.seen (v i) (r i) U ∂YM.Wilson.law G (C.path.S.side N p) (C.beta N p)
+def YM.Table.null : {G : YM.Gauge} → {L : YM.Register G} → YM.Table L → (d : ℕ) → Submodule ℂ (L.Ref d) :=
+fun {G} {L} S d => (S.replies d).ker
+@YM.Table.criterion : ∀ {G : YM.Gauge} {L : YM.Register G} (S : YM.Table L) (d : ℕ) (v : L.Ref d),
+  v ∈ S.null d ↔ ∀ (n : ℕ) (B : Fin n → L.Token), ∀ x ∈ YM.conf (n + 1), S.read x (Fin.cons ⟨d, v⟩ B) = 0
+def YM.Table.vanishes : {G : YM.Gauge} → {L : YM.Register G} → YM.Table L → (d : ℕ) → L.Ref d → Prop :=
+fun {G} {L} S d v =>
+  ∀ (n : ℕ) (w : Fin n → L.Token) (i : Fin n), w i = ⟨d, v⟩ → ∀ (f : YM.Test n), (f.applyTo fun x => S.read x w) = 0
+@YM.Table.equivalent : ∀ {G : YM.Gauge} {L : YM.Register G} (S : YM.Table L),
+  S.Smooth → S.Symmetric → ∀ (d : ℕ) (v : L.Ref d), v ∈ S.null d ↔ S.vanishes d v
+@[reducible] def YM.Table.Field : {G : YM.Gauge} → {L : YM.Register G} → YM.Table L → ℕ → Type :=
+fun {G} {L} S d => L.Ref d ⧸ S.null d
+structure YM.Spec.Seed {G : YM.Gauge} (C : YM.Family G) (f : YM.Extraction.Order) (S : YM.Table C.book) : Prop
+number of parameters: 4
+fields:
+  YM.Spec.Seed.cutoff : C.Makes
+  YM.Spec.Seed.ordered : f.Ordered C S
+  YM.Spec.Seed.generic : f.PointLimits C S
+  YM.Spec.Seed.kernel : S.Hierarchy
+  YM.Spec.Seed.copies : YM.Cells.CellHyp C f
+  YM.Spec.Seed.corrected : YM.Cells.RankWidths C f S
+constructor:
+  YM.Spec.Seed.mk {G : YM.Gauge} {C : YM.Family G} {f : YM.Extraction.Order} {S : YM.Table C.book} (cutoff : C.Makes)
+    (ordered : f.Ordered C S) (generic : f.PointLimits C S) (kernel : S.Hierarchy) (copies : YM.Cells.CellHyp C f)
+    (corrected : YM.Cells.RankWidths C f S) : YM.Spec.Seed C f S
+structure YM.Spec.Final {G : YM.Gauge} (C : YM.Family G) (f : YM.Extraction.Order) (S : YM.Table C.book) : Type 1
+number of parameters: 4
+fields:
+  YM.Spec.Final.calibration : YM.Spec.Calibrated C
+  YM.Spec.Final.room : YM.Spec.Seed C f S
+  YM.Spec.Final.sector : YM.Spec.Algebra S
+  YM.Spec.Final.α : YM.OS.Selection S
+  YM.Spec.Final.phase : YM.Spec.Materializes self.sector self.α ⋯
+  YM.Spec.Final.B : YM.Boundary.Contour S
+  YM.Spec.Final.A : YM.Boundary.Contour S
+  YM.Spec.Final.action : YM.Boundary.Wightman S
+  YM.Spec.Final.realization : YM.Spec.Relativistic self.sector self.α self.B self.A self.action ⋯
+constructor:
+  YM.Spec.Final.mk {G : YM.Gauge} {C : YM.Family G} {f : YM.Extraction.Order} {S : YM.Table C.book}
+    (calibration : YM.Spec.Calibrated C) (room : YM.Spec.Seed C f S) (sector : YM.Spec.Algebra S)
+    (α : YM.OS.Selection S) (phase : YM.Spec.Materializes sector α ⋯) (B A : YM.Boundary.Contour S)
+    (action : YM.Boundary.Wightman S) (realization : YM.Spec.Relativistic sector α B A action ⋯) : YM.Spec.Final C f S
+structure YM.Spec.Locals {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} (X : YM.Spec.Algebra S) (h : S.RealSpin) :
+  Prop
+number of parameters: 5
+fields:
+  YM.Spec.Locals.injection : X.derivatives.Inclusions S
+  YM.Spec.Locals.derivatives : X.derivatives.Derivatives S
+  YM.Spec.Locals.rights : X.derivatives.Orientation h
+  YM.Spec.Locals.spots : X.turns.Laws X.derivatives h
+  YM.Spec.Locals.motion : X.turns.Oriented S
+  YM.Spec.Locals.comparator : YM.Maxwell.Ranks S h
+  YM.Spec.Locals.conserved : YM.Table.Conserved X.derivatives h X.energy
+  YM.Spec.Locals.spin : YM.Table.Tensorial X.turns X.energy
+  YM.Spec.Locals.charges : YM.Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie
+constructor:
+  YM.Spec.Locals.mk {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} {X : YM.Spec.Algebra S} {h : S.RealSpin}
+    (injection : X.derivatives.Inclusions S) (derivatives : X.derivatives.Derivatives S)
+    (rights : X.derivatives.Orientation h) (spots : X.turns.Laws X.derivatives h) (motion : X.turns.Oriented S)
+    (comparator : YM.Maxwell.Ranks S h) (conserved : YM.Table.Conserved X.derivatives h X.energy)
+    (spin : YM.Table.Tensorial X.turns X.energy)
+    (charges : YM.Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie) : YM.Spec.Locals X h
+structure YM.DiffPlan.Inclusions {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} (P : YM.DiffPlan S)
+  (T : YM.Table L) : Prop
+number of parameters: 5
+fields:
+  YM.DiffPlan.Inclusions.kernels : ∀ {d e : ℕ} (h : d ≤ e) (B : S.Field d) {n : ℕ} {x : YM.Points (n + 1)},
+      x ∈ YM.conf (n + 1) →
+        ∀ (w : Fin n → S.Tag), S.useAt T x (Fin.cons ⟨e, (P.rise h) B⟩ w) = S.useAt T x (Fin.cons ⟨d, B⟩ w)
+constructor:
+  YM.DiffPlan.Inclusions.mk {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} {P : YM.DiffPlan S} {T : YM.Table L}
+    (kernels :
+      ∀ {d e : ℕ} (h : d ≤ e) (B : S.Field d) {n : ℕ} {x : YM.Points (n + 1)},
+        x ∈ YM.conf (n + 1) →
+          ∀ (w : Fin n → S.Tag), S.useAt T x (Fin.cons ⟨e, (P.rise h) B⟩ w) = S.useAt T x (Fin.cons ⟨d, B⟩ w)) :
+    P.Inclusions T
+@YM.DiffPlan.inject : ∀ {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} (P : YM.DiffPlan S),
+  S.Symmetric → P.Inclusions S → ∀ {d e : ℕ} (H : d ≤ e), Function.Injective ⇑(P.rise H)
+'probe_full_mesh' does not depend on any axioms
+'probe_full_per' does not depend on any axioms
+'probe_refine' does not depend on any axioms
+'probe_scaleJet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_O_unfold' depends on axioms: [propext, Classical.choice, Quot.sound]
+        3.80 real         2.20 user         2.19 sys
+          8225308672  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              589096  page reclaims
+                  55  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+               29467  involuntary context switches
+         45873498400  instructions retired
+         17603674207  cycles elapsed
+          1207422944  peak memory footprint

@@ -1,0 +1,29 @@
+RUNLOG -- Lean correspondence lane B (items 2, 3, 4) of the review of PR #437 (hairer/humanise-yang-mills), 2026-11-15.
+Session stalex444-claude-437rev-20261115. Release ~/ym-release/2026-11-11/OpenAI-YM-20261028 @ 3456e5e75cf8d4cd558955a5c7638fba2d68f464.
+Before each run: `pgrep -x lean` and `pgrep -x lake` printed nothing; `df -g ~` showed 122 GiB available.
+One Lean process at a time. No lake, no leanchecker, no build, no download, no network. Imports: `Construction` only.
+Command (from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 <file>.lean > <file>.out 2>&1
+
+v1  start 11:25:13Z  end 11:25:42Z  exit 1  (time: 28.88 s real; peak RSS 8213725184 bytes)
+    FAILED RUN, kept. Deviation: stderr (the /usr/bin/time report) went to Probe437b_v1.time instead of the .out file.
+    Two errors, both in probe theorem P4 at l.126: Unknown identifier `YM.Test4` (the abbrev is YM.Boundary.Test4,
+    YM/Distribution/Product.lean:122), and the resulting unsolved goal; P4 therefore depended on sorryAx in v1.
+    All prints and P1-P3 elaborated.
+v2  start 11:25:57Z  end 11:26:01Z  exit 0  (time: 3.93 s real; peak RSS 8249966592 bytes)
+    Only change: `YM.Test4` -> `YM.Boundary.Test4` in P4 (and the header line). 0 errors, 0 warnings.
+    Every printed declaration resolved. Axioms, all [propext, Classical.choice, Quot.sound]:
+      YM.OS.Spread.Resolution.barycenter (out l.100), YM.EveryPhase.recognizes (l.304), YM.EveryPhase.exactly_fixed (l.310),
+      YM.EveryPhase.all_characters (l.313), YangMills.publicTrace (l.824), YangMills.constructed (l.883),
+      probe_award (l.884), probe_award_public (l.885), probe_traceTwo_rfl (l.886), probe_every_character_acts (l.887).
+
+Standing limits: YM .olean files are those of the compiled release archive whose digest equals source/build.md l.37;
+dependency .olean files come from a local Lake package cache; the release sources were read and hashed, not put on
+LEAN_PATH; the release's proofs are loaded from compiled files, not replayed by an independent kernel checker;
+nothing was built from source. The private lemma at TraceBridge.lean:24 cannot be named from a probe; P2 re-proves
+its statement from public declarations.
+36e01655c3fe61afd385fe20765b01750569ae80c8b5ed64f98ca8904ee22b24  Probe437b_v1.lean
+218e919e4d36545119d381bd1feb8cdad92f6cfc67e8ef2b6bc02d3991816256  Probe437b_v1.out
+f514d57a9097bbac716d49ae8c250e778f96c0e3bac36618371038f4daffb0bb  Probe437b_v1.time
+4fc2ada838fd15e3cdf90699aee7e99fe71c6734a22102e8c76c87574e499155  Probe437b_v2.lean
+14dcc90813f05fa7cdda7b91aac90ecea9a3a10b07b13f4ccace2bc6072b6432  Probe437b_v2.out
