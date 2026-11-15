@@ -447,11 +447,98 @@ because the free cumulant comparison uses the exact low-grade identity.
 The content of (T2) for the reading of (T1) is therefore an estimate. It
 says that the primary coordinate of the selected history at level $k$
 agrees, to relative accuracy one half, with the low-grade reading of the
-polynomial insertion built from the same label. Neither that
-estimate nor the application of the stamp bound (T4) to the lifts is
-proved in this book. Given (T1) and that
+polynomial insertion built from the same label. Given (T1) and that
 estimate, the unit and reality clauses follow from $\mathcal He_0=1$ and
 from the reality of $\mathcal H$.
+
+The following lemma reduces that estimate to a \emph{pre-pin} estimate for
+the plain insertion before normal ordering, read through the actual
+nonlinear reader substitution. The two changes between that reading and
+the reading of (T1) are perturbative. On polynomials we use the
+coefficient $\ell^1$ norm $|\cdot|_1$. It is submultiplicative, and
+$|1|_1=1$.
+
+\begin{lemma}[Reduction of the pin]
+\label{lem:rank-trace-pin-reduction}
+Fix $k,N,p$ and a grade $d'\le d$, and constants $D\in\mathbb N$,
+$B\ge1$, $c\ge1$, $0<t\le1$ and $0\le\varepsilon\le1$. Suppose that for
+every label $u$ of grade $d'$ the following hold.
+\begin{enumerate}
+\item $\mathcal Hu=\mathcal N_Kp_u$, where $p_u$ is a polynomial of degree
+ at most $D$ in the reader variables $y_i$ with $|p_u|_1\le B|A_{k,N,p}u|_1$.
+ Here $\mathcal N_K=\exp(-\frac12\Delta_K)$, with
+ $\Delta_K=\sum_{i,j}K_{ij}\partial_{y_i}\partial_{y_j}$, is normal
+ ordering with respect to a symmetric matrix $K$ whose entries satisfy
+ $|K_{ij}|\le\varepsilon$.
+\item In the rescaled frame coordinates, the actual reader substitution
+ sends $y_i$ to $\ell_i+ta_i$. Here $\ell_i$ is linear, every monomial of
+ $a_i$ has degree at least $2$, and $|\ell_i|_1\le B$, $|a_i|_1\le B$.
+\item The reading $\Lambda$, grade truncation followed by passage to frame
+ coefficients, satisfies $|\Lambda q|_1\le c|q|_1$.
+\item \emph{Pre-pin.}
+ $|A_{k,N,p}u-\Lambda\bigl(p_u\circ(\ell+ta)\bigr)|_1\le\varepsilon|A_{k,N,p}u|_1$.
+\end{enumerate}
+Let $Tu=\Lambda\bigl((\mathcal Hu)\circ\ell\bigr)$ be the reading of
+(T1). Then
+\[
+ |A_{k,N,p}u-Tu|_1\le(\varepsilon+cB\,a_D)\,|A_{k,N,p}u|_1,\qquad
+ a_D=DtB(2B)^D+\varepsilon\,w_DB^D,\quad w_D=\tfrac{D^2}2e^{D^2/2}.
+\]
+In particular, if $\varepsilon+cBa_D\le\frac12$, then the estimate in (T2)
+holds at grade $d'$.
+\end{lemma}
+\begin{proof}
+Write $A=A_{k,N,p}$ and $p=p_u$. Three bounds are used, each for a
+polynomial $q$ of degree at most $D$.
+
+\emph{Linear substitution.} A monomial of degree $m\le D$ is sent to a
+product of $m$ linear forms, of norm at most $B^m\le B^D$. Hence
+$|q\circ\ell|_1\le B^D|q|_1$.
+
+\emph{Nonlinear correction.} For a monomial $y_{i_1}\cdots y_{i_m}$,
+telescoping gives
+\[
+ \prod_{r=1}^m(\ell_{i_r}+ta_{i_r})-\prod_{r=1}^m\ell_{i_r}
+ =\sum_{r=1}^m\prod_{r'<r}(\ell_{i_{r'}}+ta_{i_{r'}})\;ta_{i_r}
+  \prod_{r'>r}\ell_{i_{r'}} .
+\]
+Each summand has norm at most $(2B)^{m-1}tB$, since $t\le1$. Hence
+$|q\circ(\ell+ta)-q\circ\ell|_1\le DtB(2B)^D|q|_1$.
+
+\emph{Normal ordering.} For a monomial $y^\alpha$ of degree $m$,
+$\partial_i\partial_jy^\alpha=\alpha_i(\alpha_j-\delta_{ij})y^{\alpha-e_i-e_j}$
+vanishes unless $i,j$ lie in the support of $\alpha$. So
+$|\Delta_Ky^\alpha|_1\le\varepsilon\sum_{i,j}\alpha_i\alpha_j=\varepsilon
+m^2$, independently of the number of variables. Since $\Delta_K$ lowers the
+degree, $|\frac12\Delta_Kq|_1\le\frac12\varepsilon D^2|q|_1$ on polynomials
+of degree at most $D$. Summing the exponential series,
+\[
+ |\mathcal N_Kq-q|_1\le\bigl(e^{\varepsilon D^2/2}-1\bigr)|q|_1
+ \le\varepsilon w_D|q|_1 ,
+\]
+by $e^x-1\le xe^x$ with $x=\varepsilon D^2/2\le D^2/2$. Also $\mathcal N_Kq$
+has degree at most $D$.
+
+Now
+\[
+ Au-Tu=\bigl[Au-\Lambda(p\circ(\ell+ta))\bigr]
+  +\Lambda\bigl(p\circ(\ell+ta)-p\circ\ell\bigr)
+  +\Lambda\bigl((p-\mathcal N_Kp)\circ\ell\bigr).
+\]
+By the pre-pin estimate, the first term has norm at most
+$\varepsilon|Au|_1$. By item~3 and the two bounds above, the others have
+norm at most $c\,DtB(2B)^D|p|_1$ and $cB^D\varepsilon w_D|p|_1$. Since
+$|p|_1\le B|Au|_1$, the claim follows.
+\end{proof}
+
+If $D$, $B$ and $c$ stay bounded while $t$ and $\varepsilon$ tend to
+zero, the condition $\varepsilon+cBa_D\le\frac12$ holds eventually. The
+pin is then reduced to the pre-pin estimate, together with the structural
+items~1--3: the insertion is the normal ordering of a plain polynomial
+with the coefficient bound of (T3), the reader substitution has bounded
+linear and nonlinear parts at scale $t$, and the reading is bounded.
+Neither the pre-pin estimate nor the application of the stamp bound (T4)
+to the lifts is proved in this book.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
