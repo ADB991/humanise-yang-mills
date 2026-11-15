@@ -23,3 +23,18 @@
 - `latexmk -g -pdf existence.tex`: rc 0, with no undefined references.
 - The rendered lemma was inspected.
 - `python3 scripts/check_blueprint.py`.
+
+## Follow-up to the reviews of #423 (2026-11-15)
+
+The reviews of 643c722 and 86c0fd0 asked for one common insertion in the two integrals, a bounded transport, consistent use of masked moments, and an inverse bound in the jet norm for the normalization. I agree with all four points.
+
+Changes in `allarity-marked-propagation.tex`:
+- **One insertion.** The insertions are now the masked moments Q_T of D_χ = Σ χ_I c_I z_I, defined through exp_* D_χ = 1 + Σ Q_T z_T. They are used in both integrals. Unmasked moments are no longer used.
+- **Hypothesis (CI).** It has three parts: (a) the compiler integrates exactly Ã_i(exp_* D_χ); (b) D^{(i−1)} = log_* 𝒢_i(exp_* D_χ), and this is the Gaussian history used at the middle level and at the launch; (c) bounded transport ‖𝒢_i(Q_T)‖ ≤ τ_n in the jet norm. The Wick route 𝒯_i remains an alternative, which replaces (c) with a tail bound.
+- `lem:allarity-prescribed-reference` now states the moments of D^{(i−1)} under (CI)(b).
+- **New `lem:allarity-jet-inverse`.** In the jet ℓ¹ norm, which is submultiplicative with ‖1‖ = 1, ‖a − 1‖ ≤ Π ≤ ½ gives ‖a^{−1}‖ ≤ 2 and ‖a^{−1} − 1‖ ≤ 2Π, by a Neumann series. The discrepancy proof uses this for a = Ã_i(1), together with (CI)(c), so the normalization is controlled in the jet norm and not only at point values.
+- The two status lists now name (CI) as the input.
+
+(CI) is not proved. In particular, (a) has to be read off from the compiler's planted selection, and (c) is a derivative bound for the cutoff integral.
+
+Checks actually run: `latexmk -g -pdf existence.tex` (rc 0, 0 undefined references) and `python3 scripts/check_blueprint.py`. The branch was merged with `codex/existence-monograph` without conflicts.

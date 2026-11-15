@@ -512,108 +512,146 @@ These are exactly the connected polynomials of
 Section~\ref{sec:marked-healthy-cumulant-launch}.
 
 At a leading rung $i$ let $D^{(i)}=\sum_Ic^{(i)}_Iz_I$ be the prescribed
-principal polynomial of the cell, and $q^{(i)}_T$ its moment polynomials,
-so that $\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Let $\mathcal G_i$ be the
+principal polynomial of the cell. The pieces that are actually integrated
+are masked. Write $\chi_I$ for the mask of mode $I$ and
+$D^{(i)}_\chi=\sum_I\chi_Ic^{(i)}_Iz_I$ for the masked principal
+polynomial. Its moment polynomials $Q^{(i)}_T$ are defined by
+\[
+ \exp_*D^{(i)}_\chi=1+\sum_{T\ne\varnothing}Q^{(i)}_Tz_T,\qquad
+ Q^{(i)}_T=\sum_{\pi\in\mathcal P(T)}\prod_{B\in\pi}\chi_Bc^{(i)}_B .
+\]
+These are the insertions of both integrals below. The unmasked moment
+polynomials of $D^{(i)}$ are not used. Let $\mathcal G_i$ be the
 reference integral of Section~\ref{sec:principal-gaussian-comparison} at
 the rung, that is, integration of the insertion against $R_9\chi_9\,
 d\gamma_{C_0}$ followed by the finite forest and tag averages, normalized
-so that $\mathcal G_i(1)=1$. It is linear, and we apply it to elements of
-$\mathscr A_J$ coefficientwise. We say that the Gaussian history is
-\emph{transported by the reference integrals} if
-$q^{(i-1)}_T=\mathcal G_i\,q^{(i)}_T$ for every $T$ and every leading
-rung. This fixes the Gaussian history used on the leading interval.
+so that $\mathcal G_i(1)=1$. Let $\widetilde{\mathcal A}_i$ be the
+unnormalized actual-sector integral, against $R_6\chi_6\,d\gamma_{C_0}$
+and the same averages. Both are linear, and we apply them to elements of
+$\mathscr A_J$ coefficientwise. Their values are jets of a fixed order $m$
+at the base configuration. On jets we use the coefficient $\ell^1$ norm
+$\|\cdot\|$ of the truncated Taylor polynomial. It is submultiplicative
+for the truncated product, and $\|1\|=1$.
 
-Two remarks on this convention. First, on an unmasked polynomial the
+We use the following hypothesis on one common insertion.
+\begin{enumerate}
+\item[(CI)] \emph{Common insertion and transport.} At each leading rung of
+ the leading interval:
+ \begin{enumerate}
+ \item[(a)] the entirely leading components of the cell, produced by the
+  compiler through \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
+  integrate to $\widetilde{\mathcal A}_i\bigl(\exp_*D^{(i)}_\chi\bigr)$,
+  with the same masked insertions $Q^{(i)}_T$;
+ \item[(b)] the Gaussian history is transported by the reference
+  integrals on those insertions:
+  $D^{(i-1)}=\log_*\mathcal G_i\bigl(\exp_*D^{(i)}_\chi\bigr)$, and this
+  is the Gaussian history used at the middle level and at the launch;
+ \item[(c)] the transport is bounded: with
+  $\tau_n=b_n\max(1,\tau)^n$, where $b_n$ is the Bell number and $\tau$
+  the amplitude of the masked principal pieces,
+  $\|\mathcal G_i(Q^{(i)}_T)\|\le\tau_n$ for every $T$.
+ \end{enumerate}
+\end{enumerate}
+Clause (c) is not automatic. On an unmasked or masked polynomial the
 cutoff $\chi_9$ makes $\mathcal G_i$ a smooth function of the base
-parameter rather than a polynomial, so the moment polynomials of this
-history are jets of fixed order. Second, the polynomial step of
-Section~\ref{sec:marked-healthy-cumulant-launch}, a finite linear
-substitution followed by Wick contraction with the reference covariance,
-is the same integral without the cutoff. Write $\mathcal T_i$ for it. If
-the history is instead transported by $\mathcal T_i$, then
-Lemma~\ref{lem:allarity-prescribed-reference} holds with $\mathcal T_i$ in
-place of $\mathcal G_i$. The discrepancy lemma below then acquires the
-additional term $\max_T|\mathcal G_i(q^{(i)}_T)-\mathcal T_i(q^{(i)}_T)|$
-on the moments, a Gaussian tail beyond the cutoff radius. Either route
-needs one further estimate: in the first, the transport bounds of
-Section~\ref{sec:marked-healthy-cumulant-launch} for $\mathcal G_i$; in
-the second, this tail bound with upper exponent below zero.
+parameter rather than a polynomial, and the jet norm also involves its
+derivatives in that parameter. The polynomial step of
+Section~\ref{sec:marked-healthy-cumulant-launch} is a finite linear
+substitution followed by Wick contraction with the reference covariance.
+It is the same integral without the cutoff. Write $\mathcal T_i$ for it.
+If (b) is stated with $\mathcal T_i$ in place of $\mathcal G_i$, the proof
+below acquires the additional term
+$\max_T\|\mathcal G_i(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$, a Gaussian
+tail beyond the cutoff radius. That route needs this tail bound, with
+upper exponent below zero, in place of (c).
 
 \begin{lemma}[The prescribed polynomial is the reference integral]
 \label{lem:allarity-prescribed-reference}
-If the Gaussian history is transported by the reference integrals, then
-at every leading rung
+Under (CI)(b), at every leading rung the moment polynomials of
+$D^{(i-1)}$ are $\mathcal G_i(Q^{(i)}_T)$:
 \[
- D^{(i-1)}=\log_*\mathcal G_i\bigl(\exp_*D^{(i)}\bigr).
+ \exp_*D^{(i-1)}=1+\sum_{T\ne\varnothing}\mathcal G_i(Q^{(i)}_T)\,z_T .
 \]
 \end{lemma}
 \begin{proof}
-By \eqref{eq:allarity-moment-cumulant} and the definition of the moment
-polynomials, $\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Applying the linear map
-$\mathcal G_i$ coefficientwise, and using $\mathcal G_i(1)=1$, gives
-$1+\sum_Tq^{(i-1)}_Tz_T=\exp_*D^{(i-1)}$. Apply $\log_*$.
+Apply the linear map $\mathcal G_i$ coefficientwise to
+$\exp_*D^{(i)}_\chi$, use $\mathcal G_i(1)=1$, and then $\exp_*\log_*=\mathrm{id}$
+on elements with constant coefficient one.
 \end{proof}
 
-The compiler produces the actual projected principal polynomial in the
-same form. By \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
-the entirely leading components of the cell integrate to
-$\mathcal A_i(\exp_*P)$, where $P$ is the planted polynomial of the cell
-and $\mathcal A_i$ is the actual-sector integral (integration against
-$R_6\chi_6\,d\gamma_{C_0}$ and the same averages). On the leading interval
-the planted polynomial is the exact prescribed polynomial $D^{(i)}$, and
-the output leading letters are the coefficients of
-$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)})/\mathcal A_i(1)\bigr)$. The
-scalar factor $\mathcal A_i(1)>0$ belongs to the unmarked normalization.
+By (CI)(a) the output leading letters of the cell are the coefficients of
+$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
+$\mathcal A_i=\widetilde{\mathcal A}_i/\widetilde{\mathcal A}_i(1)$ is
+the normalized actual-sector integral. The scalar factor
+$\widetilde{\mathcal A}_i(1)$ belongs to the unmarked normalization.
+
+\begin{lemma}[Inverse of a jet close to one]
+\label{lem:allarity-jet-inverse}
+Let $a$ be a jet of order $m$ with $\|a-1\|\le\Pi\le1/2$. Then $a$ is
+invertible in the truncated jet algebra, $\|a^{-1}\|\le2$ and
+$\|a^{-1}-1\|\le2\Pi$.
+\end{lemma}
+\begin{proof}
+Put $u=1-a$, so $\|u\|\le\Pi$. The series $\sum_{k\ge0}u^k$ converges
+absolutely by submultiplicativity, and its sum $v$ satisfies $av=va=1$.
+Moreover $\|v\|\le(1-\Pi)^{-1}\le2$ and
+$\|v-1\|\le\Pi(1-\Pi)^{-1}\le2\Pi$.
+\end{proof}
 
 \begin{lemma}[The per-step discrepancy]
 \label{lem:allarity-step-discrepancy}
-Suppose that the Gaussian history is transported by the reference
-integrals, and that the actual projected principal polynomial is
-$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)})/\mathcal A_i(1)\bigr)$ as just
-described. Suppose finally that, at each leading rung, the amplitude
-$\tau$ of the masked principal pieces has upper exponent $0$, uniformly in
-the rungs. Then, eventually in $s$, the actual projected polynomial and the
+Assume (CI). Suppose that, at each leading rung, the amplitude $\tau$ of
+the masked principal pieces has upper exponent $0$, uniformly in the
+rungs. Then, eventually in $s$, the actual projected polynomial and the
 next prescribed polynomial differ by at most $y$ on the required healthy
 regions, where $y$ satisfies \eqref{eq:allarity-weighted-discrepancy}.
 Hence the first purchase in \eqref{eq:allarity-step-purchases} holds.
 \end{lemma}
 \begin{proof}
-Write $E=\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$. Each $q^{(i)}_T$ is a sum,
-over the at most $b_n$ set partitions of $T$ (the Bell number), of
-products of at most $n$ masked principal pieces. As an insertion it is
-measurable and bounded by $\tau_n=b_n\max(1,\tau)^n$. By
+Each $Q^{(i)}_T$ is a sum, over the at most $b_n$ set partitions of $T$,
+of products of at most $n$ masked principal pieces. As an insertion it is
+measurable and bounded by $\tau_n$. By
 \eqref{eq:principal-comparison-final} and the payment paragraph after it,
-applied to the insertions $q^{(i)}_T$ and $1$,
+applied to the insertions $Q^{(i)}_T$ and $1$,
 \[
- |\widetilde{\mathcal A}_i(q^{(i)}_T)-\mathcal G_i(q^{(i)}_T)|\le\tau_n\Pi,
- \qquad |\widetilde{\mathcal A}_i(1)-1|\le\Pi,
+ \|\widetilde{\mathcal A}_i(Q^{(i)}_T)-\mathcal G_i(Q^{(i)}_T)\|\le\tau_n\Pi,
+ \qquad \|\widetilde{\mathcal A}_i(1)-1\|\le\Pi,
 \]
-where $\widetilde{\mathcal A}_i$ is the unnormalized actual-sector
-integral and $\Pi$ has upper exponent $-1/2$, uniformly in the period and
-after the averages. For $\Pi\le1/2$ this gives
-$|\mathcal A_i(q^{(i)}_T)-\mathcal G_i(q^{(i)}_T)|\le4\tau_n\Pi$ for the
-normalized integral $\mathcal A_i=\widetilde{\mathcal A}_i/\widetilde{\mathcal A}_i(1)$.
-All coefficients of $\mathcal A_i(E)$ and $\mathcal G_i(E)$ are bounded by
-$K=2\tau_n$.
+where $\Pi$ has upper exponent $-1/2$, uniformly in the period and after
+the averages. These are bounds on the jet coefficients at the base
+configuration, as in \eqref{eq:principal-comparison-final}. For
+$\Pi\le1/2$, Lemma~\ref{lem:allarity-jet-inverse} applies to
+$a=\widetilde{\mathcal A}_i(1)$. Writing
+$\mathcal A_i(Q)-\mathcal G_i(Q)
+ =a^{-1}\bigl(\widetilde{\mathcal A}_i(Q)-\mathcal G_i(Q)\bigr)
+ +(a^{-1}-1)\mathcal G_i(Q)$ and using (CI)(c),
+\[
+ \|\mathcal A_i(Q^{(i)}_T)-\mathcal G_i(Q^{(i)}_T)\|
+  \le2\tau_n\Pi+2\Pi\tau_n=4\tau_n\Pi .
+\]
+Hence all coefficients of $\mathcal A_i(\exp_*D^{(i)}_\chi)$ and of
+$\mathcal G_i(\exp_*D^{(i)}_\chi)$ have norm at most $K=2\tau_n$ once
+$4\Pi\le1$.
 
 The map $1+X\mapsto\log_*(1+X)$ is a polynomial of degree at most $n$ in
-the coefficients of $X$. On elements whose coefficients are bounded by
-$K\ge1$ it is Lipschitz in the coefficient $\ell^1$ norm, with constant at
-most $C_nK^{n-1}$ for a constant $C_n$ depending only on $n$. Hence, by
-Lemma~\ref{lem:allarity-prescribed-reference},
+the coefficients of $X$, with products taken in the jet algebra. On
+elements whose coefficients have norm at most $K\ge1$ it is Lipschitz in
+the sum of the coefficient norms, with constant at most $C_nK^{n-1}$ for a
+constant $C_n$ depending only on $n$. Hence, by (CI)(b),
 \[
- \Bigl\|\log_*\frac{\mathcal A_i(E)}{\mathcal A_i(1)}-D^{(i-1)}\Bigr\|_1
- \le C_nK^{n-1}2^n\cdot4\tau_n\Pi=:y .
+ \Bigl\|\log_*\mathcal A_i\bigl(\exp_*D^{(i)}_\chi\bigr)-D^{(i-1)}\Bigr\|
+ \le C_nK^{n-1}2^n\cdot4\tau_n\Pi=:y ,
 \]
-Since $\tau$ has upper exponent $0$, so do $\tau_n$ and $K$, and $y$ has
-upper exponent $-1/2$. By Lemma~\ref{lem:allarity-step-charge},
-$2^nR_e$ is a constant, and $H^{q}$ has upper exponent $0$. Hence
-$2^nR_eyH^{q}$ has upper exponent $-1/2$, and is therefore at most $1$ for
-all large $s$. This is \eqref{eq:allarity-weighted-discrepancy}, which
-implies the first purchase in \eqref{eq:allarity-step-purchases} because
-$\omega_-\le1$. The bound is on coefficients of jets at the base
-configuration, as in \eqref{eq:principal-comparison-final}, and hence on
-the values on the healthy regions where that estimate applies.
+the norm on the left being the sum over the modes of the jet norms of
+the coefficients. Since $\tau$ has upper exponent $0$, so do $\tau_n$
+and $K$, and $y$ has upper exponent $-1/2$. By
+Lemma~\ref{lem:allarity-step-charge}, $2^nR_e$ is a constant, and $H^{q}$
+has upper exponent $0$. Hence $2^nR_eyH^{q}$ has upper exponent $-1/2$,
+and is therefore at most $1$ for all large $s$. This is
+\eqref{eq:allarity-weighted-discrepancy}, which implies the first purchase
+in \eqref{eq:allarity-step-purchases} because $\omega_-\le1$. Jet
+coefficients bound the values on the healthy regions where
+\eqref{eq:principal-comparison-final} applies.
 \end{proof}
 
 \begin{lemma}[The remaining step purchases]
@@ -677,10 +715,13 @@ The following inputs are not supplied here.
  Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
  purchase: the launched insertions must give the initial
  remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
-\item \emph{The identification in Lemma~\ref{lem:allarity-step-discrepancy}}
- is reduced by Lemma~\ref{lem:allarity-prescribed-reference} to the
- convention that the Gaussian history is transported by the reference
- integrals. The amplitude bound at every leading rung follows from item~2
+\item \emph{The common insertion (CI)} of
+ Lemma~\ref{lem:allarity-step-discrepancy}: the compiler integrates the
+ masked moments $Q^{(i)}_T$, the Gaussian history is transported by the
+ reference integrals on those same insertions and is the one used at the
+ middle level, and the transport is bounded in the jet norm. The
+ normalization is handled by Lemma~\ref{lem:allarity-jet-inverse}. The
+ amplitude bound at every leading rung follows from item~2
  by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells
  assumed in Lemma~\ref{lem:allarity-step-charge}.
@@ -1415,10 +1456,9 @@ following inputs, all on the common history of the chart:
  Subsection~\ref{subsec:allarity-step-supply} for the leading interval:
  applicability of the upper calculation; the hypotheses of
  Section~\ref{sec:marked-healthy-cumulant-launch} at every leading rung
- and the terminal-source purchase; the convention that the Gaussian
- history is transported by the reference integrals, which gives the
- identification of the prescribed polynomial by
- Lemma~\ref{lem:allarity-prescribed-reference} (the per-rung amplitude
+ and the terminal-source purchase; the common insertion and bounded
+ transport (CI), which gives the identification of the prescribed
+ polynomial by Lemma~\ref{lem:allarity-prescribed-reference} (the per-rung amplitude
  follows by Corollary~\ref{cor:allarity-rung-amplitude}); the
  reader separation $2QB$, which holds for the trace chart by
  Lemma~\ref{lem:allarity-halo-separation};
