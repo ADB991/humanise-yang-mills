@@ -665,6 +665,62 @@ paragraph of Section~\ref{sec:principal-gaussian-comparison}. A fixed
 polynomial in them, and a fixed power of it, also have upper exponent $0$.
 \end{proof}
 
+Inside the reference integral the masks play no role. Write
+$q^{(i)}_T=\sum_{\pi\in\mathcal P(T)}\prod_{B\in\pi}c^{(i)}_B$ for the
+unmasked moment polynomials of $D^{(i)}$, so that
+$\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$.
+
+\begin{lemma}[Masks under the reference cutoff]
+\label{lem:allarity-reference-mask-removal}
+Assume (CI)(c), and that the read support of each masked principal piece
+contains the support $X_{c,I}$ on which its mask $\chi_I$ is inspected.
+Then, for every $T$ and every healthy base configuration $x$,
+\[
+ \widetilde{\mathcal G}_{i,x}\bigl(Q^{(i)}_T\bigr)
+   =\widetilde{\mathcal G}_{i,x}\bigl(q^{(i)}_T\bigr),
+ \qquad\text{hence}\qquad
+ \mathcal G_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)
+   =\mathcal G_{i,x}\bigl(\exp_*D^{(i)}\bigr).
+\]
+\end{lemma}
+\begin{proof}
+By (CI)(c) the insertion of the comparison for $Q^{(i)}_T$ is read on the
+union $Y$ of the read supports of the pieces in its partition products. By
+the second identity of Section~\ref{sec:principal-gaussian-comparison},
+wherever the reference cutoff $\chi_9$ is nonzero, the fixed configuration
+is healthy on the support of the insertion, here $Y$. Each $X_{c,B}$ with
+$B\subseteq T$ lies in $Y$, so each mask $\chi_B$ equals one there. Hence
+$R_9\chi_9Q^{(i)}_T=R_9\chi_9q^{(i)}_T$ pointwise. Where $\chi_9=0$ both
+sides vanish. Integrate and average. The second identity follows
+coefficientwise, after dividing by $b_x$.
+\end{proof}
+
+So in (CI)(b) the masked and unmasked prescribed polynomials give the
+same reference transport. The masked moments are still the insertions of
+the actual-sector integral $\widetilde{\mathcal A}_{i,x}$, where the
+actual cutoff does not force health on the larger prescribed supports.
+That is why the comparison in Lemma~\ref{lem:allarity-step-discrepancy}
+uses $Q^{(i)}_T$ on both sides.
+
+Clause (b) can be read as a definition of the prescribed polynomials on
+the leading interval, by recursion from the first leading rung. Read this
+way, it costs nothing on the leading interval, since the recurrence only
+uses that the prescribed polynomial is the next realignment target. The
+cost appears at the middle level. There, Lemma~\ref{lem:allarity-corrected-pieces}
+assumes the healthy local error $H^{-3/2}$ of
+Section~\ref{sec:marked-healthy-cumulant-launch} between the planted leading
+coefficient and the coefficient of $D_Q$. Here $D_Q$ is the connected
+polynomial of the actual polynomial history of that section, obtained by
+finite linear substitutions and Wick contractions. After the last
+realignment of the leading interval, the planted leading coefficient at
+the middle level is that of the prescribed polynomial there. The
+matching clause of (b) is therefore exactly this hypothesis of
+Lemma~\ref{lem:allarity-corrected-pieces} for the history defined by (b).
+It holds if the reference-transported history and the polynomial history
+agree within $H^{-3/2}$ on the healthy regions at the middle level. That
+comparison of the two transports over the leading interval is not proved
+here.
+
 The polynomial step of Section~\ref{sec:marked-healthy-cumulant-launch}
 is a finite linear substitution followed by Wick contraction with the
 reference covariance. Write $\mathcal T_i$ for it. If (b) is stated with
@@ -673,10 +729,14 @@ additional term $\max_T\|\mathcal G_{i,x}(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$.
 A small difference does not replace the norm bound of
 Lemma~\ref{lem:allarity-reference-bounds}(4) by itself. That route needs
 such a bound for one of the two transports and a bound on the
-difference with upper exponent below zero. To call the difference a
-Gaussian tail, one must identify the uncut density with the Wick
-contraction and say which insertion masks survive on the region removed
-by the cutoff.
+difference with upper exponent below zero. By
+Lemma~\ref{lem:allarity-reference-mask-removal}, no insertion mask survives
+in the reference integral, so the difference concerns the cutoff
+$\chi_9$ alone. To call it a Gaussian tail, one must still identify the
+uncut reference density with the Wick contraction, that is, show that the
+reference coordinate map $w_9$ is affine in $z$ with the reference
+covariance. One must also control the jets of $R_9$ outside the cutoff
+radius.
 
 \begin{lemma}[The prescribed polynomial is the reference integral]
 \label{lem:allarity-prescribed-reference}
@@ -745,8 +805,63 @@ insertions $Q^{(i)}_T$.
 Consequently, under (CI)(a), the leading part of every cell integrates as
 stated at every leading rung, provided that the leading family has the
 displayed form at the first one. There the leading family is the
-top-level principal insertion. Its form $\chi_Ic^{(i)}_Iz_{(c,I)}$, one
-piece per mode, is part of the terminal-source purchase.
+top-level principal insertion. By the top initialization at the end of
+Section~\ref{sec:marked-healthy-cumulant-launch}, it consists of the
+calibrated singletons, one per mark, with the support, marker and masked
+value of the terminal birth term. All connected coefficients with at least
+two markers vanish. So the displayed form holds at the first rung, with
+$c_{\{j\}}$ the calibrated singleton and $c_I=0$ for $|I|\ge2$, provided
+the mask of each birth term is inspected on its prescribed support
+$X_{c,\{j\}}$. Otherwise a realignment with zero discrepancy at the top
+level moves the difference of the two masks into the forced alphabet, at
+the price of the forced regrouping. This mask condition is the part of the
+terminal-source purchase used here.
+
+Clause (a) reduces to a description of the measures in
+\eqref{eq:planted-integral}. Consider the following condition.
+\begin{enumerate}
+\item[(M)] For a fixed coarse configuration, forest and tag, the measure
+ $\nu_t$ of \eqref{eq:planted-integral} is a positive constant $\Lambda$,
+ the same for all insertions, times the product of three factors: the
+ Gaussian law of the chart with covariance $C(y)$, the sector cutoff
+ $\chi_6$, and the Haar law of the frozen variables. The weights
+ $\lambda_t$ are the forest and tag weights. These are nonnegative and
+ sum to one.
+\end{enumerate}
+
+\begin{lemma}[Measure identification from the chart law]
+\label{lem:allarity-measure-identification}
+Assume (M) and (CI)(c). Then, for each partition product of leading
+pieces, the integral of \eqref{eq:planted-integral} equals $\Lambda$ times
+$\widetilde{\mathcal A}_{i,x}$ applied to that product on the union of its
+read supports. Hence (CI)(a) holds up to the factor $\Lambda$, which is
+common to all insertions. That factor does not change the normalized
+integrals $a_x^{-1}\widetilde{\mathcal A}_{i,x}$ used in
+Lemma~\ref{lem:allarity-step-discrepancy}, where $a_x$ is the raw mass of
+$\widetilde{\mathcal A}_{i,x}$ itself.
+\end{lemma}
+\begin{proof}
+A partition product depends on the field only through the coordinates in
+the union $I$ of the read supports of its pieces, together with the
+frozen variables. By the projection paragraph of
+Section~\ref{sec:gaussian-differentiation}, its Gaussian integral is the
+integral against the marginal with covariance $C_I$, the principal
+submatrix on $I$. This is a joint marginal: the coordinates of different
+pieces need not be independent. By \eqref{eq:gaussian-relative-identity},
+with the compensated map on $I$, that integral equals the integral against
+$R_6\,d\gamma_{C_0}$. With the sector cutoff, this is the first integrand
+of \eqref{eq:principal-two-integrands} for this insertion. Averaging over
+forests and tags with the weights $\lambda_t$ gives
+$\widetilde{\mathcal A}_{i,x}$, and the factor $\Lambda$ is common to all
+insertions, including $h=1$. It therefore cancels in
+$a_x^{-1}\widetilde{\mathcal A}_{i,x}$.
+\end{proof}
+
+Condition (M) is the statement that the chart expansion
+\eqref{eq:planted-body}, with its positive loading $\Lambda$, is integrated
+against the sector-cut Gaussian and Haar laws of the forest and tag. It is
+not verified here against the sector partition of
+Section~\ref{sec:gaussian-reassembly}.
 
 By Lemma~\ref{lem:allarity-common-insertion-realigned} the output leading
 letters of the cell are the coefficients of
@@ -903,7 +1018,8 @@ The following inputs are not supplied here.
  Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
  purchase: the launched insertions must give the initial
  remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$,
- and a leading family of one piece $\chi_Ic_Iz_{(c,I)}$ per cell and mode.
+ and, for the leading family of calibrated singletons, masks inspected on
+ the prescribed supports $X_{c,\{j\}}$.
 \item \emph{The common insertion (CI)} of
  Lemma~\ref{lem:allarity-step-discrepancy}. That the compiler integrates the
  masked moments $Q^{(i)}_T$ follows from the realignment by
