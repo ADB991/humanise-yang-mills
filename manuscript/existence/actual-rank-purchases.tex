@@ -999,7 +999,7 @@ $H=\exp((\log\log s)^2)$ and
  \theta=s^{-1/2}H,\qquad
  \tau=s^{-1/2}\exp((\log\log s)^{3/2}).
 \]
-The patch radius $b=8\lceil\log^2s\rceil$ grows more slowly than
+The patch radius $b=8\lceil\log^2s\rceil^2$ grows more slowly than
 every positive power of $H$. Thus for every $\epsilon>0$,
 $r\le H^{-1+\epsilon}$ eventually. Also $R$ and
 $\eta=\exp(-e\lceil\log^2s\rceil)$, with $e$ bounded below by a
@@ -1025,14 +1025,19 @@ $|Au|_1\le H^{bd+q_*+2}$ eventually, on a fixed bounded target set.
 Thus any fixed $D>bd+q_*+2+v$ makes this error at most $H^{-v}$.
 Here the amplification exponent $b$ is the one in the calibration
 equation, not the patch radius. It is chosen before $D$ and before
-the stage's derivative order. The raw coefficient bound follows
-from the pre-pin bound by undoing the dilation, just as for the
-Gaussian reading. These are the local value and coefficient bounds
+the stage's derivative order. For the raw coefficient bound, each axial
+row has coefficient sum at most $4b\,g/\theta$. Here
+$g/\theta=H^{-1}\sqrt{s/\beta_{N,p,k}}\le\sqrt{8/7}\,H^{-1}$.
+Substitution into a degree-$D$ polynomial costs at most
+$\max\{1,4b\,g/\theta\}^D$, which is eventually one. Alternatively
+keeping $(4b)^D$ as a price costs only $H^{o(1)}$. Thus the same
+column and dimension purchases give $|W_u|_1\le H|Au|_1$. These are the local value and coefficient bounds
 needed for a terminal stamp; they are not a bound for evaluating
 $\mathcal H u$ on the physical field.
 
 \paragraph{The terminal mask correction and the lift's price.}
-Let $f_u$ be the near sum with each original support mask restored,
+Let $f_u$ be the near sum with each original support mask restored
+except for the scalar unit, which remains unmasked,
 and let $X$ be the terminal halo containing all those supports and
 all raw polynomial reads. Put $\chi=\mathbf1_{\mathrm{Healthy}(\tau,X)}$.
 Since $\tau\le\theta$ eventually, $f_u=F_u^{\rm near}$ wherever
@@ -1071,20 +1076,179 @@ and degree prices of the marked compiler must still be applied to
 these same supports and pieces; the value estimate is not a substitute
 for those separate compiler hypotheses.
 
-The local construction above supplies the Taylor reading, invariant
-frame and raw terminal approximation from the calibrated regular-list
-bounds. Its attachment to (T) still requires those bounds for the
-actual selected family with the stated order and column prices,
-and the identification of its terminal birth term with the original
-masked near list in \eqref{eq:rank-terminal-three-pieces}.
-Lemma~\ref{lem:rank-raw-wick-identity} supplies the Gaussian part of
-that identification. It does not identify the nonlinear sector law
-or its reference transport; those are the separate inputs of
+\paragraph{Attaching the lists to the selected coefficient.}
+Here are the precise data furnished by the calibrated family used at the
+start of this section. At $(k,N,p)$ let $x_u$ be the coordinate of its
+actual coefficient and put $r_k=(a_k^{\rm mesh})^{-d}$, so that
+$Au=r_kx_u$. Write $C_k\ge1$ for the column count and $\theta$ for
+its threshold. Its regular remainder is a countable family
+$(X_a,h_a)$, with nonnegative direction prices $e_a$, such that
+\begin{equation}\label{eq:rank-selected-cap}
+ \sum_a e^{e_k q_a}e_a\le C_k|x_u^\circ|_1,
+ \qquad q_a=\operatorname{cov}_{M_k}(X_a),
+ \qquad M_k=\lceil(\log s)^2\rceil.
+\end{equation}
+The supports are connected and contain the anchor; the remainder has
+zero local reading. These are the format and remainder-cap clauses of
+the calibrated coefficient, obtained by the finite backward construction
+of Section~\ref{ex-centered-freight-producer} and the splitting of
+Section~\ref{sec:local-splitting}. In particular this cap is for the
+coefficient of the selected family, not a separately normalized list.
+As throughout this section, the funded calibrated-family input is retained;
+we are spelling out its use, not constructing a new family.
+
+Let $S_\alpha$ be the fixed local section for a nonconstant frame axis,
+and let $r_\alpha$ count its curvature factors. Its purchased direction
+price is $C_k\theta^{r_\alpha}$. Its coefficient in the original
+exponential entry is $\theta^{-r_\alpha}(x_u)_\alpha$.
+Consequently its price after multiplication by $r_k$ is exactly
+$r_k C_k|(x_u)_\alpha|$. The unit contributes $r_k|(x_u)_0|$,
+with no support mask. Their total is at most $2C_k|Au|_1$.
+Multiplying \eqref{eq:rank-selected-cap} by $r_k$ gives at most
+$C_k|Au|_1$ for all the regular terms. Split this very list at
+$q_a\le M_k$. The near and wide prices are therefore
+$3C_k|Au|_1$ and $e^{-e_kM_k}C_k|Au|_1$, respectively.
+Thus \eqref{eq:rank-list-input} holds with
+\[
+ M_u=C_k|Au|_1,\qquad \eta=e^{-e_kM_k}.
+\]
+No lower bound on $|Au|_1$ is needed: if it vanishes, all these
+nonnegative prices vanish.
+
+The original covering radius in this calculation is $M_k$. The
+auxiliary terminal covering radius is $B_k=M_k^2$. They must not be
+interchanged. A connected support containing the anchor with covering
+number $q_a$ at radius $M_k$ has distance from that anchor at most
+$q_a(4M_k+2)+2M_k$: order a connected chain of covering boxes from
+an anchor box to the point's box, paying at most $4M_k+2$ for each
+link and $2M_k$ for the endpoint boxes. A chain uses at most $q_a$
+boxes, after deleting loops. For a near support this is at most
+$4M_k^2+4M_k\le8M_k^2$. The fixed local-section stencil also lies
+in this patch eventually. Hence all near supports lie in the very
+patch $b=8B_k$ used for $W_u$. The purchased room gives $10b$ less
+than the torus side, so these supports are nonwrapping, and a
+terminal halo of radius $qB_k$, $q\ge8$, contains them and all
+axial reads. This checks the support, projection and locality
+conditions of the Taylor construction.
+
+\paragraph{Paying the order and columns on one calendar.}
+Choose $D$ before the stage profile, large enough for the fixed finite
+grade menu, the solved-lift amplification and the requested terminal
+error. Include $D+1$ in the stage derivative-order request. The column
+count $c_j$ of stage $j$ is fixed after these order requests and before
+its block length; at level $k$ it is $C_k=c_{J(k)}$. Put
+$\gamma=1/(16(D+2))$. For fixed $c_j$ there is a finite threshold
+$s_j$ such that
+\[
+ c_j\le \exp\{\gamma(\log\log s)^2\}\quad(s\ge s_j).
+\]
+This follows directly by taking logarithms; it is enough that
+$\log\log s\ge\sqrt{\log c_j/\gamma}$. Include $s_j$ among the
+post-length delays in the purchase at the beginning of this section.
+It is independent of $N,p,u$. For a stage with several requests take
+the largest threshold and derivative order; the menu is finite.
+The all-stage payment then gives $C_k\le H^\gamma$ at every admitted
+level, not merely on a subsequence. Increasing delays does not change
+already selected profiles or columns. This is the exact column purchase
+needed above; the weaker $C_k\le H$ in the forced-price calculation
+is an immediate consequence.
+
+There are at most $c_G(2b+1)^4$ real link coordinates in the patch,
+uniformly in the period. Since $b=8M_k^2$, its logarithm is
+$O(\log\log s)$, whereas $\log H=(\log\log s)^2$.
+Thus $C_D(1+n_b)^D\le H^\gamma$ eventually. The Taylor estimate
+now gives both $M_u\le H^\gamma|Au|_1$ and
+$|L_u|_1\le4H^{2\gamma}|Au|_1$. The same argument absorbs every
+fixed power of $b$ in the ray and raw-coefficient estimates.
+The positive support exponent can be kept bounded below, for example
+by one, in the finite stage requests. Its wide price is then smaller
+than every power of $H^{-1}$. All these delays precede the selection
+of the finite-volume endpoint. They prove the quantitative hypotheses
+of the pre-pin and terminal estimates on that endpoint simultaneously.
+
+\paragraph{Which part of the birth is replaced.}
+Write $h_u^{\rm wide}$ for the wide sum with its original masks.
+The selected coefficient's exponential entry, in physical normalization,
+is exactly
+\begin{equation}\label{eq:rank-selected-entry-split}
+ F_u^{\rm exp}=f_u+h_u^{\rm wide}.
+\end{equation}
+Indeed its definition is the global scalar, the masked local section
+and the masked regular series. Expand the local section in its frame
+axes and split the regular series at $q_a\le M_k$. The absolute
+majorant in \eqref{eq:rank-selected-cap} permits this partition on
+every configuration, including configurations on mask boundaries.
+This proves \eqref{eq:rank-selected-entry-split} with precisely the
+lists used to construct $L_u$ and $W_u$.
+
+The actual coefficient density also has its original forced terms;
+\eqref{eq:rank-selected-entry-split} does not discard them. Replace
+only $f_u$ by \eqref{eq:rank-terminal-three-pieces}. Keep
+$h_u^{\rm wide}$ and all original forced terms at their original
+addresses. This is an exact equality of the single-mark density on
+the same configuration and background representation. For several
+marks the terminal expression is the finite squarefree exponential
+of these marked contributions, together with their prescribed
+background factors. Substitution of the single-mark equality in
+each factor preserves every coefficient: expand the finite exponential,
+and distribute each chosen singleton among its three replacement
+terms. The wide and original forced factors are unchanged. Absolute
+support prices justify any countable regular sums before this finite
+algebraic operation. Translations, signed coordinate changes and
+conjugation preserve the identity by pullback. The new principal
+singleton is $\chi W_u$; its supported error and mask correction
+are exactly the other two terms of
+\eqref{eq:rank-terminal-three-pieces}, with the prices already proved.
+In particular the raw polynomial is not asserted to equal the full
+birth coefficient, nor to equal its near part off the healthy set.
+
+\begin{proposition}[Selected-family tested readout]
+\label{prop:rank-selected-tested-readout}
+For the funded calibrated family and atlas of this section, include
+the order, column and room purchases just described in its common
+calendar. Then the construction supplies (T1)--(T4) at every
+sufficiently large admitted level, for all the stated cutoffs and
+periods, with one pair $(\mathcal H,T)$ for all labels of each
+fixed grade. It uses the same endpoint and the same masked terminal
+coefficient as the rank-test construction.
+\end{proposition}
+\begin{proof}
+The selected cap, section-price cancellation and patch containment
+verify the list hypotheses. Their Taylor polynomial is linear, real
+and unit preserving by Lemma~\ref{lem:rank-list-taylor}. Form $W_u$
+by the axial substitution and $\mathcal Hu=\mathcal W_{K_k}W_u$,
+and define $T$ to be its low-grade reading. This proves (T1).
+For clarity, apply the pre-pin to $p_u(y)=W_u(zy)$, with
+$z=\theta/g$. Its axial rows have coefficient norm at most $4b$;
+thus $J_k=\max(1,4b)$ satisfies $J_k^D\le H^\gamma$ eventually.
+The normalized radial cochain reader has fixed degree in the lattice
+location, so each row on the radius-$b$ patch has coefficient sum
+at most a fixed power of $1+b$, hence at most $H^\alpha$ eventually,
+where $\alpha=4\gamma$. The ray estimate has the same polynomial
+cost, and $\theta,\eta\le H^{-4}$ eventually. These verify
+Corollary~\ref{cor:rank-prepin-payment}, with zero additional
+nonlinear defect after axial conversion. The original chart covariance
+has its reserved entry cost at most $H^{1/4}$ by
+Section~\ref{sec:actual-covariance-fourier-window}; since
+$z^2\ge(7/8)H^2$, its rescaled entries are at most
+$(8/7)H^{-7/4}\le H^{-1}$ eventually. The invariant-frame argument
+therefore applies to Lemma~\ref{lem:rank-growing-wick-pin}, giving
+(T2) and (T3) in precisely the coupling normalization of (T1).
+The healthy raw estimate and its payment give (T4), with the terminal
+identification proved in \eqref{eq:rank-selected-entry-split}.
+The covariance conversion is Lemma~\ref{lem:rank-raw-wick-identity}.
+Every operation uses the original coefficient at $(k,N,p)$, so the
+same $W_u$, $\mathcal Hu$ and $Tu$ occur throughout. The finite grade
+menu allows a common maximum of all thresholds. No Gaussian
+identification of the full nonlinear density is used; the remaining
+per-step compiler and reader inputs belong to
 Section~\ref{subsec:allarity-step-supply}.
+\end{proof}
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
-Assume (V), (T) and the local inputs of this section. Include in the
+Assume (V) and the local inputs of this section, including the funded
+calibrated family of Proposition~\ref{prop:rank-selected-tested-readout}. Include in the
 all-stage payment \eqref{eq:common-allstage-payment} the thresholds of
 Section~\ref{sec:restarted-rank-history} and of the readout construction
 above, for each stage $j$ and for the finitely many block ratios
@@ -1144,10 +1308,11 @@ coupling in the purchased band, and gives
 $\beta_{N,p,k}\le9s/8\le\tfrac94\widehat\beta_j\le4\widehat\beta_j$.
 Item~1 follows by composition, as there.
 
-\emph{Readout.} Item~2 is the input (T). The stage purchases it uses
-are paid at every level, so it is required at every sufficiently large
-$k$, not only at the unbounded set of levels used for the rank tests
-above.
+\emph{Readout.} Proposition~\ref{prop:rank-selected-tested-readout}
+supplies (T), hence item~2, on this same endpoint. Its finite-menu
+purchases are included in the all-stage payment, so it holds at every
+sufficiently large admitted level, not just the unbounded subsequence
+used for the rank tests above.
 \end{proof}
 
 \begin{proposition}[The output representation meets the ticket suppositions]
