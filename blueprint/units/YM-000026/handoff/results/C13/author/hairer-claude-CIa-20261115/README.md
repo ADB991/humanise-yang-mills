@@ -29,3 +29,7 @@ K₀, β₀ and γ₀ are fixed polynomials in N, Q, S, so they have upper expon
 
 - `latexmk -g -pdf existence.tex`: rc 0, with no undefined references.
 - `python3 scripts/check_blueprint.py`.
+
+## Third commit: what (CI)(c) amounts to
+
+A paragraph after (CI) notes that in the payment paragraph of `sec:principal-gaussian-comparison`, every scale is a function of the rung coupling alone, except the primitive mean and covariance bounds J₀ and V₀ and their absolute jet bounds. So (CI)(c) is exactly the primitive comparison `eq:principal-primitive-comparison`, taken uniformly over healthy base configurations. That section already lists the primitive comparison as an input.
