@@ -369,3 +369,59 @@ finite-profile exclusion from the same trace comparison input. The rank,
 Ward, approximation and scale-selection estimates identified above still
 need to be supplied by the construction; the algebraic and limiting
 passages do not replace them.
+
+% Issue #406 (parent #56, C15): the dilation current at short separation.
+% Conditional as thm:trace-asymptotic, plus two stated assumptions; #337 open.
+\begin{remark}[The dilation current at short separation]
+\label{rem:trace-dilation-current}
+Let $T_{ab}$, $\tau$ and $\Theta=\tau-c\mathbf1$ be as in
+Section~\ref{sec:trace-spectrum}, let $T$ be the two-point function of
+\eqref{eq:trace-radial}, and let $V$ be a continuously
+differentiable vector field on $\mathbb R^4$ with
+$\partial_aV_b+\partial_bV_a=2\varphi\delta_{ab}$ for a real function
+$\varphi$. Assume in addition, in the selected phase and for
+$x_0\neq x_1$, that $x_0\mapsto S_\chi(T_{ab},\Theta;x_0,x_1)$ is
+continuously differentiable with
+$\sum_a\partial_{(x_0)_a}S_\chi(T_{ab},\Theta;x_0,x_1)=0$ for each $b$
+(the stress is conserved at separated points), and that
+$S_\chi(\mathbf1,\Theta;x_0,x_1)=\langle\Theta\rangle_\chi$, as used in
+Remark~\ref{rem:ex-selection-ground-only}. Section~\ref{sec:trace-spectrum}
+does not assume the first; for the normalized stress of
+Section~\ref{sec:physical-angular-actions} it follows, under their
+hypotheses, from Propositions~\ref{prop:phase-ward-inheritance} (vary the
+cutoff away from $x_1$) and~\ref{ex-phase-caps}. Put
+$j_a(x_0)=\sum_bV_b(x_0)S_\chi(T_{ab},\Theta;x_0,x_1)$, the current
+$\sum_bT_{ab}V_b$ at $x_0$ against the centered trace at $x_1$. Then
+\[
+ \sum_a\partial_{(x_0)_a}j_a(x_0)=\varphi(x_0)S_\chi(\tau,\Theta;x_0,x_1)
+       =\varphi(x_0)T(|x_0-x_1|)\quad(x_0\neq x_1).
+\]
+Indeed, the product rule gives two sums. The one containing the
+derivatives of $S_\chi(T_{ab},\Theta;x_0,x_1)$ vanishes by
+conservation. The other is
+$\sum_{a,b}\partial_aV_b\,S_\chi(T_{ab},\Theta;x_0,x_1)$; since
+$T_{ab}=T_{ba}$, $\partial_aV_b$ may be replaced by
+$\frac12(\partial_aV_b+\partial_bV_a)=\varphi\delta_{ab}$, and
+bilinearity leaves $\varphi S_\chi(\tau,\Theta;x_0,x_1)$. Finally
+$\tau=\Theta+c\mathbf1$, so bilinearity, the second assumption and
+$\langle\Theta\rangle_\chi=0$ give
+$S_\chi(\tau,\Theta;x_0,x_1)=S_\chi(\Theta,\Theta;x_0,x_1)$, which is
+$T(|x_0-x_1|)$ by \eqref{eq:trace-radial}.
+
+For the dilation field $V(z)=z$ one has $\varphi=1$, so for a pair at
+distance $r$ the divergence of $j$ is $T(r)$. Under the hypotheses of
+Theorem~\ref{thm:trace-asymptotic}, its conclusion
+$r^8\log^2(r^{-1})T(r)\to3N/\pi^4>0$ as $r\downarrow0$, the limit required in
+\eqref{ex-trace-limit}, gives $r_0>0$ with $T(r)>0$ for $0<r<r_0$.
+Thus the divergence of $j$ is positive whenever
+$0<|x_0-x_1|<r_0$: against the centered trace, the dilation current is
+not divergence free at short separation. In fact $T(r)>0$ for every
+$r>0$: in \eqref{eq:trace-positive-laplace} the measure is positive, and
+nonzero since the limit is positive. Like the theorem, this
+conclusion is conditional: it uses the four hypotheses of
+Theorem~\ref{thm:trace-asymptotic} and the two assumptions above, none of
+which is proved in this section. In the free Maxwell setting of
+Section~\ref{sec:free-maxwell-radial-flux} the polarized stress of two
+closed two-forms $f,g$ has zero trace, and its dilation current is
+divergence free wherever $f$ and $g$ are Maxwell waves.
+\end{remark}

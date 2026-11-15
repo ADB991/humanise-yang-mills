@@ -400,6 +400,60 @@ $\omega_-\le1$. Multiplying the unweighted budget by this factor gives
 the claim.
 \end{proof}
 
+\begin{lemma}[The unweighted principal bound]
+\label{lem:allarity-principal-power}
+Assume the hypotheses of Section~\ref{sec:marked-healthy-cumulant-launch}
+at every rung of the leading interval:
+\begin{itemize}
+\item the calibrated incoming polynomials, with $|p_i|_1\le H^z$ and
+ degree at most $K$;
+\item the polynomial-transport purchase $2(b+2)\log A_{nK}\le\log L$;
+\item the healthy-field bounds \eqref{eq:healthy-middle-purchases} at the
+ rung coupling.
+\end{itemize}
+Then there is a constant $A\ge0$, depending only on $n$, $z$, $K$ and the
+fixed word, such that for all large $s$ the hypothesis of
+Lemma~\ref{lem:allarity-leading-budget} holds: at every leading rung the
+prescribed principal sources have unweighted marker budget at most $H^A$.
+\end{lemma}
+\begin{proof}
+At rung $i$ the prescribed principal source of mode $I$ is the connected
+polynomial $c_I$ of the subset moments transported over $k-i\le k-\ell$
+steps. By maximality of $\ell$ and the bracket of
+Lemma~\ref{lem:ex-lattice-firesky-clock-fields}, every block length on
+$[\ell,k]$ is at least $L=L_{J(k)-1}$, so
+$(k-\ell-1)\log L<(b+2)\log H$, as in the proof of
+Lemma~\ref{lem:allarity-upper-count-power}. With the transport purchase at
+this $L$, $A_{nK}^{k-i}\le A_{nK}\,H^{1/2}\le H$ eventually. By
+\eqref{eq:healthy-transport-telescope} and the norm bound $A_{nK}$ per step,
+every transported subset moment has norm at most $R=H^{nz+1}$, as in that
+section. The partition expansion gives $|c_I|_1\le Q_n(R)$ and degree at
+most $D_*$. On the healthy region of its prescribed support, the
+coordinates are bounded by $M=H$, by the healthy-field construction at the
+rung coupling, since its purchases hold uniformly for couplings in
+$[s/2,s]$. Hence $|c_I(X)|\le Q_n(H^{nz+1})H^{D_*}$. The support charge is
+at most $R_e$ (Lemma~\ref{lem:allarity-step-charge}), and at most $2^n$
+modes contain a given mark. Since $Q_n$ is a fixed polynomial, the
+unweighted budget is at most $2^nR_eQ_n(H^{nz+1})H^{D_*}\le H^A$ for large
+$s$, with $A=D_*+(nz+1)\deg Q_n+1$.
+\end{proof}
+
+\begin{corollary}[The per-rung amplitude]
+\label{cor:allarity-rung-amplitude}
+Under the hypotheses of Lemma~\ref{lem:allarity-principal-power}, the
+amplitude $\tau$ of the masked principal insertion at every leading rung
+is at most $H^A$. It therefore has upper exponent $0$, and the amplitude
+hypothesis of Lemma~\ref{lem:allarity-step-discrepancy} holds with
+$\kappa_\tau=0$.
+\end{corollary}
+\begin{proof}
+The insertion is the masked principal piece. It vanishes off the healthy
+region of its prescribed support, and on that region it is bounded by
+$|c_I(X)|\le H^A$, by the proof of
+Lemma~\ref{lem:allarity-principal-power}. So $|h|\le H^A$ everywhere, and
+$H^A$ has upper exponent $0$.
+\end{proof}
+
 The launch bounds available for the funded chart bound the principal
 source by a fixed positive power of $H$. This is why the leading interval
 is run at the weight $\omega_-$: at the large weight $\omega$ the budget
@@ -521,14 +575,16 @@ The following inputs are not supplied here.
  This includes its primitive body-compiler, all-hole and joint-warning
  purchases, which Section~\ref{sec:actual-mixed-marked-compiler} lists as
  inputs on the same body alphabet and coarse representation.
-\item \emph{The unweighted principal-source bound} $H^A$ of
- Lemma~\ref{lem:allarity-leading-budget} at every leading rung, and the
- terminal-source purchase: the launched insertions must give the initial
+\item \emph{The hypotheses of
+ Section~\ref{sec:marked-healthy-cumulant-launch} at every leading rung},
+ which give the unweighted principal-source bound $H^A$ by
+ Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
+ purchase: the launched insertions must give the initial
  remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
 \item \emph{The identification in Lemma~\ref{lem:allarity-step-discrepancy}}
  of the prescribed connected polynomial with the Gaussian reference
- integral, and the bound $\kappa_\tau<1/2$ on the upper exponent of the
- amplitude at every leading rung.
+ integral. The amplitude bound at every leading rung follows from item~2
+ by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells
  assumed in Lemma~\ref{lem:allarity-step-charge}.
 \end{enumerate}
@@ -846,51 +902,266 @@ mark. Hence the incidence price is at most
 $2^nR_eH^{1/8}H^{-31/32}=cH^{-27/32}$.
 \end{proof}
 
-\begin{lemma}[Raising the weight]
+\begin{lemma}[Raising the regular marker weight]
 \label{lem:allarity-weight-raise}
-Let a family of regular letters, each carrying a marker set $I$ with
-$|I|\le n$, have marker-root or incidence price $p$ at the weight
-$\omega_-$. Then its price of the same kind at the weight $\omega$ is at
-most $H^{Un}p$.
+For each regular letter let $I$ be its marker set, $X$ its full support,
+and $t(I)$ the number of replica cells represented in $I$. Suppose the
+marker-root sum of letters with $t(I)=1$ is at most $p_1$ at weight
+$\omega_-$ and support exponent $e$. Suppose the corresponding sum of
+letters with $t(I)\ge2$ is at most $p_2$ at weight $\omega_-$ and support
+exponent $e+\sigma$, where $\sigma>0$, and that each of these letters
+satisfies
+\[
+ \sigma\operatorname{cov}_B(X)\ge Un\,t(I)\log H .
+\]
+Then the marker-root price at weight $\omega$ and support exponent $e$
+is at most $H^{Un}p_1+p_2$.
 \end{lemma}
 \begin{proof}
-These prices are sums of nonnegative terms, one for each letter, each
-proportional to the weight $\omega_-^{|I|}$ of that letter. Raising the
-weight multiplies the term by $(\omega/\omega_-)^{|I|}=H^{U|I|}\le
-H^{Un}$, since $H>1$.
+Empty marker sets contribute to neither sum. For a letter with
+$t(I)=1$, $|I|\le n$, so raising the weight costs at most $H^{Un}$.
+For a letter with $t(I)\ge2$, $|I|\le nt(I)$. Raising the weight and
+lowering the support exponent together multiply its price by
+\[
+ H^{U|I|}\exp\{-\sigma\operatorname{cov}_B(X)\}\le1.
+\]
+Summing at each fixed marker gives the claim, uniformly in the number
+of replica cells.
 \end{proof}
+
+The launch uses two inputs on the same middle-level representation.
+\begin{enumerate}
+\item[(W)] \emph{Regular remainder at the restored weight.}
+ The nonleading regular remainder has marker-root price at most $H^{-1}$
+ at weight $\omega$ and support exponent $e$, uniformly in the replica
+ cells and period. The small-weight recurrence supplies the single-cell
+ bound $p_1\le H^{\kappa-q}$. One way to obtain (W) is to buy the
+ multi-cell bound of Lemma~\ref{lem:allarity-weight-raise}, with
+ $p_2\le H^{\kappa-q}$ and the stated support inequality on the same
+ letters. If $q\ge\kappa+Un+2$, then
+ $H^{Un}p_1+p_2\le2H^{-2}\le H^{-1}$ for $H\ge2$.
+ The recurrence at exponent $e$ supplies neither the price with spare
+ exponent $\sigma$ nor that support inequality.
+\end{enumerate}
 
 The forced background is not covered by this lemma: a forced component
 may contain marked pieces from several cells, and its weight may then
-grow by more than $H^{Un}$. Its weight change is part of the following
-input.
+grow by more than $H^{Un}$. Its weight change is paid together with the
+failed-mask pieces, from a spare support exponent and from the smallness
+of the forced background.
 
-The launch requires one further input, which this section does not prove.
+\paragraph{Geometric and pricing hypotheses at the launch.}
+For a cell $c$ let $Y_c=\bigcup_IX_{c,I}$ be its halo, the union of its
+prescribed supports. For a support $X$ let $t(X)$ be the number of cells
+$c$ with $X\cap Y_c\ne\varnothing$. We assume:
 \begin{enumerate}
-\item[(L)] \emph{Failed-mask regrouping and weight change at the launch.}
- There is a constant $c_L\ge0$, fixed before $s$, with the following
- property. At the middle level, let the forced background have site price
- at most $\eta_-$ at the weight $\omega_-$. Move the failed-mask pieces
- $-(1-\chi)R\,z_I$ of all modes into the forced alphabet and regroup them
- with that background. Then the result is an exact representation of the
- same density, whose regular letters are unchanged and whose forced site
- price at the weight $\omega$ is at most $H^{c_L}\eta_-$.
+\item[(F)] at the middle level, the forced background has site price at
+ most $\eta_-$ at the weight $\omega_-$ and at the support exponent
+ $e+1+\sigma$, for a fixed spare exponent $\sigma>0$. The full support of
+ every marked forced piece contains the reader sites of its marks;
+\item[(S)] there is $\lambda=\lambda(s)$ with $\lambda/\log H\to\infty$
+ such that every full support $X$ of a forced piece with
+ $t(X)\ge2$ satisfies $\operatorname{cov}_BX\ge\lambda\,t(X)$.
 \end{enumerate}
-The input (L) needs a bound on the reference coefficients $R$ by a fixed
-power of $H$, control of the forced background at the larger weight, and
-the forced regrouping of Section~\ref{sec:soft-log-fusion} with an
-inflation exponent lowered by a multiple of $\log H$.
+To obtain the site-price clause of (F) with $\eta_-=G(x_\ell)$,
+the compiler, realignment and support-reserve bounds must hold at exponent
+$e+1+\sigma$ throughout the leading interval on the same history. This is
+a separate purchase from the recurrence at exponent $e$.
+
+The second part of (F) is inherited along the history. The reader site
+of a mark at the top level is the site of its insertion. At a coarser
+level we \emph{define} the reader site of the mark to be the image of the
+reader site of the next finer level under the block map, that is, the
+coarse site whose block contains it. Say that a representation
+\emph{contains its readers} if the full support of every letter carrying
+a mark contains the reader site of that mark at its level.
+
+\begin{lemma}[Reader containment is inherited]
+\label{lem:allarity-reader-containment}
+Suppose that at the top level every insertion letter contains the reader
+site of its mark. Suppose also that at every step the coarse footprint of a
+fine support contains the projections of its points. Then every
+representation of the comparison interval contains its readers, before and
+after realignment and after the launch. In particular the second part of
+(F) holds.
+\end{lemma}
+\begin{proof}
+We argue by induction along the interval. Every letter of the coarse
+representation produced by the compiler is the flattening of a connected
+component of fine letters. Its full support contains the coarse footprint
+of the union of their supports, and its marker set is the union of their
+marker sets. If each fine marked letter contains its fine readers, then
+the component's support contains the fine reader of each of its marks. So
+the coarse footprint contains its projection, which is the coarse reader.
+The realignment replaces leading pieces by pieces on the prescribed
+supports $X_{c,I}$, and these contain the readers because they contain the full support of
+the principal component of that mode by Lemma~\ref{lem:allarity-step-charge}.
+The launch uses those same modes. The complementary mask pieces keep their original supports.
+The forced regrouping again takes unions over components. At the launch,
+the failed-mask pieces live on the $X_{c,I}$, and the regrouping takes
+unions. Each operation therefore preserves the property.
+\end{proof}
+
+Hypothesis (S) holds as soon as the halos of distinct cells are at
+$\ell^\infty$-distance at least $D'$, with $D'/((2B+1)\log H)\to\infty$.
+Indeed, use a connected cover of $X$ by radius-$B$ cubes and pick
+$x_c\in X\cap Y_c$ for each of the $t(X)\ge2$ cells. The union of the cover
+contains a unit-step path from each $x_c$ to another chosen point. Stop the
+path at distance $\lfloor D'/3\rfloor$ from $x_c$. Its distances from $x_c$
+take at least $\lfloor D'/3\rfloor+1$ distinct values, of which a single
+cube can cover at most $2B+1$ since distance is 1-Lipschitz. The segments
+stay in their respective balls of radius $D'/3$, and no cube can meet
+two such balls once $D'/3>2B+1$. Thus
+$\operatorname{cov}_BX\ge t(X)D'/(3(2B+1))$, also for disconnected $X$.
+
+
+For the chart of the pairwise receipt this separation holds, with room to
+spare. Distances below are $\ell^\infty$-distances in physical units;
+at level $i$ a lattice distance is the physical distance divided by
+$a_i$.
+
+\begin{lemma}[Halo separation for the trace chart]
+\label{lem:allarity-halo-separation}
+Consider a chart at level $k$ with middle level $\ell$ and root depth $w$,
+a configuration fit for it, and its replicas on the centered tiling at
+depth $w$. Assume that at every level $i$ of $[\ell,k]$ each reader site
+of a cell lies within distance $2a_\ell$ of the centre of that cell. Then
+for all sufficiently large $s$, uniformly in the chart, the following
+hold at every level $i$ of $[\ell,k]$, with $B=B_i$:
+\begin{enumerate}
+\item reader sites of distinct cells are at lattice distance greater than
+ $2QB$;
+\item the halos of distinct cells are at lattice distance at least
+ $D'=c_k^{10}/2$, and $D'/((2B+1)\log H)\to\infty$.
+\end{enumerate}
+In particular the separation hypothesis of
+Lemma~\ref{lem:allarity-step-charge} and hypothesis (S) hold.
+\end{lemma}
+\begin{proof}
+The cells of the centered tiling at depth $w$ are blocks of side $a_w$, and
+the centres of distinct cells are at distance at least $a_w$. By the
+hypothesis, readers of distinct cells are at physical distance at least
+$a_w-4a_\ell$. Since $a_i\le a_\ell$ for $\ell\le i\le k$, their lattice
+distance at level $i$ is at least $(a_w-4a_\ell)/a_\ell\ge c_k^{10}-4$, by
+the definition of the root depth, $a_w/a_\ell\ge c_k^{10}$. A halo lies
+within lattice distance $QB$ of the readers of its cell, so the halos of
+distinct cells are at lattice distance at least $c_k^{10}-4-2QB$.
+
+The rung couplings lie in $[s/2,s]$, so $B_i=\lceil(\log x_i)^2\rceil^2\le
+4(\log s)^4$ for $\log s\ge1$. Also $c_k=\lceil(\log s)^2\rceil\ge(\log s)^2$,
+so $c_k^{10}\ge(\log s)^{20}$. Hence $c_k^{10}-4-2QB\ge c_k^{10}/2>2QB$ for
+large $s$, which gives both separations. Finally
+$\log H=(\log\log s)^2$, so
+\[
+ \frac{D'}{(2B+1)\log H}\ge\frac{(\log s)^{20}}
+        {2(8(\log s)^4+1)(\log\log s)^2}\longrightarrow\infty .
+\]
+All thresholds depend only on $Q$ and not on the chart.
+\end{proof}
+
+The hypothesis on the readers holds for fit configurations. Every coordinate of
+the grid configuration $a_k\lceil mx\rceil$ has absolute value at most
+$a_\ell/8+a_k$ relative to the base point. The replicas are its images in
+the cells, centred and reflected or conjugated with the cells. A reader
+site at a coarser level $i$ is within one lattice spacing $a_i\le a_\ell$
+of the corresponding insertion site. So each reader is within
+$a_\ell/8+a_k+a_\ell\le2a_\ell$ of its cell centre.
+
+\begin{lemma}[Failed-mask regrouping and weight change]
+\label{lem:allarity-launch-regroup}
+Assume (F), (S) and the hypotheses of
+Lemma~\ref{lem:allarity-corrected-pieces}, and let $\eta_->0$ decay faster
+than every negative power of $H$. Then, for all large $s$, the following
+holds. Move the failed-mask pieces $-(1-\chi)R\,z_I$ of all modes into the
+forced alphabet and regroup them with the forced background. The result is
+an exact representation of the same density, whose regular letters are
+unchanged. Its forced site price at the weight $\omega$ and the support
+exponent $e$ is at most
+\[
+ 4H^{Un+2^n}\eta_- .
+\]
+\end{lemma}
+\begin{proof}
+\emph{Exactness.} The marker algebra is commutative, so
+$\exp_*(\chi W-R)=\exp_*(\chi(W-R))\exp_*(-(1-\chi)R)$ letter by letter. Each
+failed-mask piece $\ell_f=-(1-\chi)R\,z_I$ has $I\ne\varnothing$, so
+$\ell_f^2=0$ and $\exp_*(\ell_f)=1+\ell_f$. It vanishes where its prescribed
+support $X_{c,I}$ is healthy, so a nonzero failed-mask factor has a flag
+in $X_{c,I}$. Flags are covered by the inventories of the old forced
+pieces. Hence, in the expansion of the product of the factors $1+\ell_f$
+with the old forced gas, every nonzero summand has each failed-mask factor
+meeting the support of an old forced piece. Taking connected components of
+the full-support intersection graph and flattening them is the exact
+regrouping of Section~\ref{sec:soft-log-fusion}, as in the mask change of
+the realignment subsection. The regular letters are not touched. Setting
+all markers to zero kills every failed-mask factor, so the background is
+unchanged.
+
+\emph{Prices of the failed-mask pieces.} By
+Lemma~\ref{lem:allarity-amplitude} and its proof, every reference
+coefficient satisfies $|R|\le C_*$. A failed-mask piece of mode $(c,I)$
+therefore has price at most $p_f=H^{1/8}C_*R_{e+1}$ at the weight $\omega$
+and the exponent $e+1$, by \eqref{eq:allarity-weight-cap}. Put $F=\log H$
+and give it the weight $w_f=e^{-F}p_f$. At a fixed site, all failed-mask
+pieces containing it belong to one cell, and there are at most $2^n$
+modes. So their site sum is at most $2^nC_*R_{e+1}H^{-7/8}$.
+
+\emph{Prices of the old forced pieces.} Let $o$ be an old forced piece
+with full support $X_o$, marker set $I_o$ and $t_o=t(X_o)$. By (F), the
+readers of its marks lie in $X_o$, hence in the halos it meets, so
+$|I_o|\le nt_o$. Raising the weight from $\omega_-$ to $\omega$ multiplies
+its price by $H^{U|I_o|}\le H^{Unt_o}$. Lowering the support exponent from
+$e+1+\sigma$ to $e+1$ multiplies it by
+$e^{-\sigma\operatorname{cov}_BX_o}$. Give $o$ the weight
+\[
+ w_o=e^{g}\,e^{2^nFt_o}\,p_o ,
+\]
+where $p_o$ is its price at $(\omega,e+1)$ and $g\ge0$ is chosen below.
+Then $w_o\le e^gH^{(Un+2^n)t_o}e^{-\sigma\operatorname{cov}_BX_o}p_o^-$,
+with $p_o^-$ its price at $(\omega_-,e+1+\sigma)$. If $t_o\le1$ this is at
+most $e^gH^{Un+2^n}p_o^-$. If $t_o\ge2$, then
+$\sigma\operatorname{cov}_BX_o\ge\sigma\lambda t_o\ge(Un+2^n)t_o\log H$ for
+large $s$, by (S), and $w_o\le e^gp_o^-$. In both cases
+$w_o\le e^gH^{Un+2^n}p_o^-$, so the old site sum is at most
+$e^gH^{Un+2^n}\eta_-$.
+
+\emph{Choice of $g$.} Put $\delta=H^{-1/2}$ and
+$e^g=\delta/(2H^{Un+2^n}\eta_-)$. This is at least $1$ for large $s$,
+because $\eta_-$ decays faster than every negative power of $H$. The total
+site sum of the weights at exponent $e+1$ is then
+\[
+ \Gamma\le\tfrac12\delta+2^nC_*R_{e+1}H^{-7/8}\le\delta
+\]
+for large $s$.
+
+\emph{Components.} Every nonzero surviving component contains an old
+forced piece. Charge each of its failed-mask pieces $f$, of cell $c$, to an
+old piece $o$ of the same component that it meets. Then $X_o$ meets $Y_c$,
+so $c$ is one of the $t_o$ cells counted for $o$. At most $2^nt_o$
+failed-mask pieces are charged to $o$. If the component has $s_f$
+failed-mask pieces and $r\ge1$ old pieces, then $s_f\le2^n\sum_ot_o$, and
+the product of the true prices over the component is
+\[
+ \prod_fp_f\prod_op_o
+ =e^{Fs_f-2^nF\sum_ot_o-gr}\prod_fw_f\prod_ow_o
+ \le e^{-g}\prod_fw_f\prod_ow_o ,
+\]
+since $g\ge0$. The distinct connected-set
+bound \eqref{eq:ope-forest-price}, with reserve one and counting factor
+$(2B+1)^4$, then bounds the new site price at the exponent $e$ by
+$e^{-g}(e^\Gamma-1)\le2\delta e^{-g}=4H^{Un+2^n}\eta_-$, provided
+$(2B+1)^4\delta\le1$ and $\delta\le1$. The first condition holds for large
+$s$ as in Lemma~\ref{lem:allarity-step-purchases}, since
+$(2B+1)^4\le\exp\{4\log9+16\log\log s\}\le H^{1/2}$ once
+$\log\log s\ge36$.
+\end{proof}
 
 \begin{proposition}[The launch receipt]
 \label{prop:allarity-launch}
 Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
 the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
 forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
-Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and the
-input (L). Assume the tolerance exponent satisfies
-\[
- q\ge\kappa+Un+1 .
-\]
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and inputs (W), (F) and (S).
 Then, for all large $s$, the pushed invoice at the middle level has an
 exact representation at the weight $\omega$, without leading letters, with
 regular marker-root price at most $H^{-3/4}$ and forced site price at most
@@ -901,9 +1172,8 @@ By the commuting reference factor, the pushed invoice at $\ell$ is the
 pushed insertion product times $\exp_*(-D_R)$. The representation from
 the leading interval has three parts. Their prices are as follows.
 
-\emph{Remainder.} By Lemma~\ref{lem:allarity-weight-raise}, the regular
-remainder has price at most $H^{Un}H^{\kappa-q}\le H^{-1}$ at the weight
-$\omega$.
+\emph{Remainder.} Input (W) supplies the price $H^{-1}$ at weight
+$\omega$ for the entire nonleading regular remainder.
 
 \emph{Leading family.} Its pieces are the exact prescribed principal
 polynomial. Multiplying by $\exp_*(-D_R)$ and splitting each corrected
@@ -913,16 +1183,17 @@ healthy pieces become regular letters of incidence price at most
 $cH^{-27/32}$, by Lemma~\ref{lem:allarity-corrected-pieces}.
 
 \emph{Forced part.} The forced background has site price at most
-$\eta_-=G(x_\ell)$ at the weight $\omega_-$. This is the realigned forced
-price of the recurrence, not the compiler output $G(x_\ell)^2$ before
-realignment. By (L), after the failed-mask pieces are moved and
-regrouped, the forced site price at the weight $\omega$ is at most
-$H^{c_L}G(x_\ell)$.
+$\eta_-=G(x_\ell)$ at the weight $\omega_-$ and exponent $e+1+\sigma$, by
+(F). This is the realigned forced price of the recurrence, not the
+compiler output $G(x_\ell)^2$ before realignment. By
+Lemma~\ref{lem:allarity-launch-regroup}, after the failed-mask pieces are
+moved and regrouped, the forced site price at the weight $\omega$ is at
+most $4H^{Un+2^n}G(x_\ell)$.
 
 Adding the regular contributions gives at most $H^{-1}+cH^{-27/32}$, which
 is at most $H^{-3/4}$ once $H^{3/32}\ge c+1$. Since $G$ decays faster than
 every negative power of $H$ uniformly on $[s/2,s]$, eventually
-$H^{c_L}G(x_\ell)\le H^{-q}$.
+$4H^{Un+2^n}G(x_\ell)\le H^{-q}$.
 \end{proof}
 
 \subsection{The step counts without a block-length floor}
@@ -985,10 +1256,11 @@ $d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$.
 The parameters are therefore fixed in the order $\alpha$, $\bar b$, then
 $U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
 \[
- q\ge\max\{6,\ \kappa+4,\ \kappa+Un+1\},
+ q\ge\max\{6,\ \kappa+4\},
 \]
-which covers Lemma~\ref{lem:allarity-step-outputs} and
-Proposition~\ref{prop:allarity-launch}. All are fixed before $s$.
+which covers Lemma~\ref{lem:allarity-step-outputs}. If (W) is obtained
+using Lemma~\ref{lem:allarity-weight-raise}, also require
+$q\ge\kappa+Un+2$ as above. All are fixed before $s$.
 
 \begin{lemma}[The forced inputs of the lower rungs]
 \label{lem:allarity-lower-forced}
@@ -1034,10 +1306,9 @@ within $H^{-31/32}\le1$ of a coefficient of $D_R$. Take
 $C_*=1+\sum_{j=1}^nM_{\mathcal W}^j/j$.
 \end{proof}
 
-The lemma bounds the amplitude at the middle level only. The discrepancy
-lemma needs the amplitude bound $\kappa_\tau<1/2$ at every leading rung,
-which is listed below as an input. Any bound $CH^{A'}$ with fixed $A'$
-would suffice there, since such a bound has upper exponent $0$.
+The lemma bounds the amplitude at the middle level only. At the other
+leading rungs the discrepancy lemma uses the power bound of
+Corollary~\ref{cor:allarity-rung-amplitude}.
 
 \paragraph{Status of the propagation to the output.}
 Proposition~\ref{prop:allarity-output-price} is proved from the
@@ -1045,10 +1316,13 @@ following inputs, all on the common history of the chart:
 \begin{enumerate}
 \item the four inputs listed at the end of
  Subsection~\ref{subsec:allarity-step-supply} for the leading interval:
- applicability of the upper calculation; the unweighted principal-source
- bound $H^A$ and the terminal-source purchase; the identification of the
- prescribed polynomial and the per-rung amplitude $\kappa_\tau<1/2$; the
- reader separation $2QB$;
+ applicability of the upper calculation; the hypotheses of
+ Section~\ref{sec:marked-healthy-cumulant-launch} at every leading rung
+ and the terminal-source purchase; the identification of the
+ prescribed polynomial (the per-rung amplitude then follows by
+ Corollary~\ref{cor:allarity-rung-amplitude}); the
+ reader separation $2QB$, which holds for the trace chart by
+ Lemma~\ref{lem:allarity-halo-separation};
 \item the two $H^{-3/2}$ inputs of Lemma~\ref{lem:allarity-corrected-pieces}
  at the middle level, which are proved in
  Sections~\ref{sec:allarity-cumulant-comparison}
@@ -1057,7 +1331,14 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the failed-mask regrouping (L) at the launch;
+\item the restored-weight regular remainder (W) at the launch;
+\item the spare-exponent purchase in (F) and the structural property used in
+ Lemma~\ref{lem:allarity-reader-containment}, that coarse footprints
+ contain the projections of fine supports
+ (Section~\ref{sec:mixed-activity-prices}). It gives the second part of
+ (F). Hypothesis (S) and the
+ reader separation $2QB$ hold for the trace chart by
+ Lemma~\ref{lem:allarity-halo-separation};
 \item applicability of the lower calculation on $[w,\ell)$;
 \item the lawful representation at the output level $w$, with the
  suppositions of Section~\ref{sec:rank-root-normalization}.
