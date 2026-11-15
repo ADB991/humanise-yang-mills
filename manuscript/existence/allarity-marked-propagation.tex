@@ -313,7 +313,8 @@ and $y_i$ (fine) of rung $i$ lie in $[s/2,s]$. The arity $n\le u$, the
 support exponent $e$, the slice multiplier $a$, the support radius
 $Q\ge a$, the weight exponent $U$, the tolerance exponent $q\ge6$ and the
 step multiplier $\alpha\ge8T_e$ are fixed before $s$, in this order
-except that $\alpha$ may be fixed first. Here $T_e$ is the constant of
+except that $\alpha$ may be fixed right after $e$ and the spare exponent
+$\sigma$ of Subsection~\ref{subsec:allarity-corrected-budget}. Here $T_e$ is the constant of
 \eqref{eq:mixed-cover-charge}. A function $f$ of the clock scale has
 \emph{upper exponent} $c$ if for every $\varepsilon>0$, eventually
 $|f(x)|\le x^{c+\varepsilon}$ uniformly for $x\in[s/2,s]$. In particular
@@ -581,9 +582,10 @@ The following inputs are not supplied here.
  Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
  purchase: the launched insertions must give the initial
  remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
-\item \emph{The identification in Lemma~\ref{lem:allarity-step-discrepancy}}
- of the prescribed connected polynomial with the Gaussian reference
- integral. The amplitude bound at every leading rung follows from item~2
+\item \emph{The common insertion (CI)} of
+ Lemma~\ref{lem:allarity-step-discrepancy}, which identifies the
+ prescribed connected polynomial with the Gaussian reference integral. The
+ amplitude bound at every leading rung follows from item~2
  by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells
  assumed in Lemma~\ref{lem:allarity-step-charge}.
@@ -956,18 +958,58 @@ $c$ with $X\cap Y_c\ne\varnothing$. We assume:
 \end{enumerate}
 The site-price clause of (F), with $\eta_-=G(x_\ell)$, and the price of
 the regular remainder used in Lemma~\ref{lem:allarity-remainder-restored}
-come from one purchase:
+both come from running the leading interval at the larger exponent
+$e_*=e+1+\sigma$. We fix $\sigma\in(0,1]$ together with $e$, before
+$\alpha$. The inputs of Subsection~\ref{subsec:allarity-step-supply} are
+then required at $e_*$:
 \begin{enumerate}
-\item[(E)] \emph{Spare-exponent run.} The compiler, realignment and
- support-reserve bounds hold at the support exponent $e+1+\sigma$ throughout
- the leading interval on the same history, so that the conclusions of
- Subsection~\ref{subsec:allarity-step-supply} hold at that exponent. At the
- middle level, the nonleading regular remainder has marker-root price at
- most $H^{\kappa-q}$, and the forced background has site price at most
- $G(x_\ell)$, both at the weight $\omega_-$ and the exponent $e+1+\sigma$.
+\item[(E)] \emph{The leading interval at the exponent $e_*$.} The inputs
+ listed at the end of Subsection~\ref{subsec:allarity-step-supply}, namely
+ the applicability of the upper calculation at each leading rung and the
+ terminal-source purchase, hold with the support exponent $e_*$ in place
+ of $e$. The step multiplier satisfies $\alpha\ge8T_{e_*}$.
 \end{enumerate}
-This is a separate purchase from the recurrence at exponent $e$. It gives
-the first clause of (F).
+This replaces the run at the exponent $e$: by monotonicity of
+$\operatorname{chg}_e$ in $e$, every price at $e_*$ bounds the price of the
+same letters at $e$.
+
+\begin{lemma}[The run at the exponent $e_*$]
+\label{lem:allarity-spare-run}
+Assume (E) and the remaining inputs of
+Subsection~\ref{subsec:allarity-step-supply}. Then, for all large $s$, the
+conclusions of that subsection hold at the support exponent $e_*$. In
+particular, at the middle level the nonleading regular remainder has
+marker-root price at most $H^{\kappa-q}$, and the realigned forced
+background has site price at most $G(x_\ell)$, both at the weight
+$\omega_-$ and the exponent $e_*$. The exponent $\kappa$ is the same as at
+$e$.
+\end{lemma}
+\begin{proof}
+That subsection uses the support exponent only through the constants
+$R_e$, $R_{e+1}$ and $T_e$, and through the inputs, which (E) supplies at
+$e_*$. The constants $R_{e_*}$ and $R_{e_*+1}$ of
+Lemma~\ref{lem:allarity-step-charge} are fixed before $s$. The multiplier
+condition $\alpha\ge8T_{e_*}$ is part of (E), and it implies
+$\alpha\ge8T_e$ because $T_e$ is increasing in $e$. Every purchase of the
+subsection is an eventual inequality in $s$ with these constants. Hence the
+proofs apply verbatim at $e_*$. The exponent $\kappa$ of
+Lemma~\ref{lem:allarity-upper-count-power} depends only on $\alpha$ and
+$\bar b$.
+\end{proof}
+
+The support purchase of the upper calculation at a fixed exponent does
+not need to be bought separately on the selected history. In
+Section~\ref{sec:actual-mixed-marked-compiler} it is the block-length
+condition $10\cdot15^4(e_*+7)\le Le_*$, since the incoming exponent of the
+upper calculation is its own exponent. The selected block sides tend to
+infinity. Indeed, \eqref{eq:common-drift-floor} gives
+$\log L_j\ge j^2\lambda_j$ for $j\ge j_*$, and $\lambda_j\ge\log101$
+because $\lambda_j$ includes the support exponent $100$. So the condition
+holds at every step of a comparison window at a sufficiently large level.
+The other purchases contained in the applicability of the upper calculation
+are not examined here at $e_*$. In particular, the unmarked compiler's
+purchase is stated in that section for the larger of its support
+exponents.
 
 The second part of (F) is inherited along the history. The reader site
 of a mark at the top level is the site of its insertion. At a coarser
@@ -1075,7 +1117,8 @@ $a_\ell/8+a_k+a_\ell\le2a_\ell$ of its cell centre.
 
 \begin{lemma}[The regular remainder at the restored weight]
 \label{lem:allarity-remainder-restored}
-Assume (E), the hypotheses of Lemma~\ref{lem:allarity-reader-containment},
+Assume the hypotheses of Lemma~\ref{lem:allarity-spare-run}, those of
+Lemma~\ref{lem:allarity-reader-containment},
 and that the halos of distinct cells are at distance at least $D'$ at the
 middle level, with $D'/((2B+1)\log H)\to\infty$. Assume
 $q\ge\kappa+Un+2$. Then, for all large $s$, the nonleading regular
@@ -1086,7 +1129,8 @@ cells and the period.
 \begin{proof}
 Split the remainder as in Lemma~\ref{lem:allarity-weight-raise}, according
 to $t(I)=1$ or $t(I)\ge2$. Prices are monotone in the support exponent,
-since $\operatorname{chg}_e$ is increasing in $e$. So (E) gives $p_1\le
+since $\operatorname{chg}_e$ is increasing in $e$. So
+Lemma~\ref{lem:allarity-spare-run} gives $p_1\le
 H^{\kappa-q}$ at the exponent $e$, and $p_2\le H^{\kappa-q}$ at the
 exponent $e+\sigma$, both at the weight $\omega_-$.
 
@@ -1200,8 +1244,9 @@ $\log\log s\ge36$.
 Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
 the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
 forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
-Lemma~\ref{lem:allarity-corrected-pieces} at the middle level, the input
-(E), the hypotheses of Lemma~\ref{lem:allarity-reader-containment}, and that
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level, the
+hypotheses of Lemma~\ref{lem:allarity-spare-run}, those of
+Lemma~\ref{lem:allarity-reader-containment}, and that
 the halos of distinct cells are at distance at least $D'$ at the middle
 level, with $D'/((2B+1)\log H)\to\infty$. Assume $q\ge\kappa+Un+2$.
 Then, for all large $s$, the pushed invoice at the middle level has an
@@ -1216,7 +1261,8 @@ the leading interval has three parts. Their prices are as follows.
 
 \emph{Remainder.} Lemma~\ref{lem:allarity-remainder-restored} gives the
 price $H^{-1}$ at the weight $\omega$ for the entire nonleading regular
-remainder. Hypotheses (F) and (S) hold: the first clause of (F) is (E),
+remainder. Hypotheses (F) and (S) hold: the first clause of (F) is
+Lemma~\ref{lem:allarity-spare-run}, with $\eta_-=G(x_\ell)$,
 its second clause is Lemma~\ref{lem:allarity-reader-containment}, and (S)
 is \eqref{eq:allarity-dispersal}.
 
@@ -1298,7 +1344,8 @@ once $\log H\ge\log(\alpha+2)$. Then
 $d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$.
 \end{proof}
 
-The parameters are therefore fixed in the order $\alpha$, $\bar b$, then
+The parameters are therefore fixed in the order $e$, $\sigma$, then
+$\alpha\ge8T_{e+1+\sigma}$, $\bar b$, then
 $U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
 \[
  q\ge\max\{6,\ \kappa+4\},
@@ -1376,9 +1423,10 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the spare-exponent run (E) of the leading interval, which gives the
- forced clause of (F) and, by Lemma~\ref{lem:allarity-remainder-restored},
- the regular remainder at the restored weight; and the structural property used in
+\item the inputs of item~1 at the exponent $e_*=e+1+\sigma$, which is (E).
+ By Lemma~\ref{lem:allarity-spare-run} this gives the forced clause of (F)
+ and, by Lemma~\ref{lem:allarity-remainder-restored}, the regular
+ remainder at the restored weight. Also needed is the structural property used in
  Lemma~\ref{lem:allarity-reader-containment}, that coarse footprints
  contain the projections of fine supports
  (Section~\ref{sec:mixed-activity-prices}). It gives the second part of
