@@ -134,7 +134,11 @@ Validation on the final manuscript bytes:
   centering additions are legible, with formulas and paragraph breaks intact.
 - No Lean elaboration performed.
 
-The build used the current merged monograph baseline cb642a203ea9ba2826843b5fe2186fefadf173ad,
-including its seven upstream manuscript updates over the local checkout.
-Only the six C15 repairs and this author record belong to this submission;
-no changes from draft PR #460 are included.
+The first build used monograph baseline cb642a203ea9ba2826843b5fe2186fefadf173ad.
+The submission branch was created from the newer merged baseline
+72eabe5453958edb70efd8e3548834b1a5657f50. A second full build after bringing
+its five updated C02/C12 manuscript files into the validation checkout also
+passed: 1127 pages, no undefined or multiply defined references. The earlier
+rendered-page numbers refer to the first build.
+Only the six C15 repairs and this author record differ from the submission
+base; the remote comparison confirms exactly these eight files.
