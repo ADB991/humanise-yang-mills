@@ -1,0 +1,25 @@
+RUNLOG — Lean probes, lane A (definitions, (F1)-(F5), corrected labels, solves lemma) of the review of #392 (2026-11-14).
+One Lean process at a time; pgrep -x lean / pgrep -x lake printed nothing before each run; df -g ~ showed 49 GiB free before each run.
+Command (from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 <file>.lean > <file>.out 2>&1
+  (v1 only: stderr went to Probe392a_v1.time instead of being merged into the .out; v2 and v3 use the command exactly as written.)
+No lake, no leanchecker, no build, no download.
+
+v1  start 22:17:58Z  exit 1  real 42.65 s  max RSS 6741639168 B  peak footprint 1042321384 B
+    FAILED: errors at l.58 (YM.Next.Rank.clim unknown; the release name is YM.Next.Rank.Atlas.clim), l.101 (YM.RG.Schedule unknown;
+    the release name is YM.Schedule; probe_gain_empty then fails, sorryAx in its axioms), l.111/114 (probe_width_formula not rfl:
+    the threshold argument was unparenthesised and parsed as (gainSky .. c)^10). One unused-variable warning (l.191).
+    All other probe theorems elaborated with axioms [propext, Classical.choice, Quot.sound]. Kept with its .out and .time.
+v2  start 22:18:58Z  exit 1  real 38.14 s  max RSS 6735560704 B  peak footprint 1040453752 B
+    FAILED: one error, probe_width_formula (same parse fault, coverSize form). Kept.
+v3  start 22:19:49Z  exit 0  real 30.84 s  max RSS 6737215488 B  peak footprint 1041764448 B
+    0 errors, 0 warnings, no sorryAx. Probe theorem axioms at v3.out l.450-456: [propext, Classical.choice, Quot.sound].
+
+SHA-256:
+c442a3e75fd412e0b9c95cf12102ffbb658d62dbc8a4f897ae83a42ec274bc8d  Probe392a_v1.lean
+5519bc43a424d70e6147eaebf7c36154b2984347666620bf823a26fcc8d9568c  Probe392a_v1.out
+c343fba65572d0b1c55f16c86a79374e6a5f98ba874db0a877ed3329dda19954  Probe392a_v1.time
+c08d86a8e9637744a5be8e381a45ed1380954559a48d7eefb1d46b73dbc279ff  Probe392a_v2.lean
+5be621fc8ef7b7924fe70ce9574897fee0134dcdd8560df330f10f0d7b03ac45  Probe392a_v2.out
+0e383473587395c842860305db06cfa335d3a19883fc9d1e30c3671efb426ef5  Probe392a_v3.lean
+b0f7ae4fd3630976f4bf007f0421f1da035a9bd140d76263a049e7e5ade4d6d8  Probe392a_v3.out
