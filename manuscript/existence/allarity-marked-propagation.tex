@@ -98,6 +98,7 @@ This is why the spatial charge is proportional to $n$, while the
 number of principal subset types is bounded by $2^n$.
 
 \subsection{Replacing the leading pieces on their prescribed supports}
+\label{subsec:allarity-realign}
 
 Write the current regular source as a sum of remainder pieces $H_a$
 and leading pieces $S_b$. Let $F_{c,I}$ be the desired principal source
@@ -558,8 +559,10 @@ We use the following hypothesis on one common insertion.
  \begin{enumerate}
  \item[(a)] the entirely leading components of the cell, produced by the
   compiler through \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
-  integrate to $\widetilde{\mathcal A}_i\bigl(\exp_*D^{(i)}_\chi\bigr)$,
-  with the same masked insertions $Q^{(i)}_T$;
+  integrate to $\widetilde{\mathcal A}_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$,
+  with the same masked insertions $Q^{(i)}_T$ (this follows from the
+  realignment by Lemma~\ref{lem:allarity-common-insertion-realigned}
+  below, except at the first leading rung);
  \item[(b)] the Gaussian history is transported by the reference
   integrals on those insertions: at every healthy base configuration
   $x$, $b_x$ is invertible and the jet of $D^{(i-1)}$ at $x$ is
@@ -616,6 +619,51 @@ Apply the linear map $\mathcal G_{i,x}$ coefficientwise to
 $\exp_*D^{(i)}_\chi$, use $\mathcal G_{i,x}(1)=1$, and then $\exp_*\log_*=\mathrm{id}$
 on elements with constant coefficient one.
 \end{proof}
+
+Clause (a) of (CI) is a consequence of the realignment and of the planted
+identity. Only the first leading rung needs a separate check.
+
+\begin{lemma}[The common insertion after realignment]
+\label{lem:allarity-common-insertion-realigned}
+Let $i$ be a leading rung. Suppose that the leading family entering rung
+$i$ is the output of the realignment of
+Subsection~\ref{subsec:allarity-realign} at the preceding rung, with
+desired principal sources $F_{c,I}=c^{(i)}_I$, or, at the first leading
+rung, that it consists of one piece $\chi_Ic^{(i)}_Iz_{(c,I)}$ per cell
+$c$ and mode $I$. Then (CI)(a) holds at rung $i$.
+\end{lemma}
+\begin{proof}
+\emph{The leading family.} On the healthy region of $X_{c,I}$, the
+realignment writes the sum of the leading pieces of mode $(c,I)$ as
+$F_{c,I}+L_{c,I}$. It moves $L_{c,I}$, with the mask of $X_{c,I}$, into
+the regular remainder, and moves the part of the original masked values
+off that healthy region into the forced alphabet. What remains designated
+leading at mode $(c,I)$ is therefore the single piece
+$\chi_IF_{c,I}z_{(c,I)}=\chi_Ic^{(i)}_Iz_{(c,I)}$, where $\chi_I$ is the
+healthy mask of $X_{c,I}$. In the cell $c$ the leading family is thus
+$\iota_c(D^{(i)}_\chi)$. At the first leading rung this is the
+hypothesis.
+
+\emph{The integral.} Apply \eqref{eq:planted-selection} and
+\eqref{eq:planted-integral} to the leading letters alone, with
+$T=\{c\}\times J$. The selected pieces are those of cell $c$, so the planted
+polynomial is $P_T=D^{(i)}_\chi$. Its values are the masked values, as
+shown after \eqref{eq:planted-selection}. By \eqref{eq:planted-exp} the
+product of the factors $1+\chi_Ic^{(i)}_Iz_I$ is $\exp_*D^{(i)}_\chi$,
+whose coefficients are the insertions $Q^{(i)}_T$. The sector and tag
+measures with their weights in \eqref{eq:planted-integral} are the
+integration against $R_6\chi_6\,d\gamma_{C_0}$ and the averages of
+$\widetilde{\mathcal A}_{i,x}$, by the first identity of
+Section~\ref{sec:principal-gaussian-comparison}. Hence the entirely leading
+part of the cell integrates to
+$\iota_c\widetilde{\mathcal A}_{i,x}(\exp_*D^{(i)}_\chi)$, with the
+insertions $Q^{(i)}_T$.
+\end{proof}
+
+Consequently, (CI)(a) holds at every leading rung, provided that it holds
+at the first one. There the leading family is the top-level principal
+insertion. Its form $\chi_Ic^{(i)}_Iz_{(c,I)}$, one piece per mode, is
+part of the terminal-source purchase.
 
 By (CI)(a) the output leading letters of the cell are the coefficients of
 $\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
@@ -771,10 +819,13 @@ The following inputs are not supplied here.
  which give the unweighted principal-source bound $H^A$ by
  Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
  purchase: the launched insertions must give the initial
- remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
+ remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$,
+ and a leading family of one piece $\chi_Ic_Iz_{(c,I)}$ per cell and mode.
 \item \emph{The common insertion (CI)} of
- Lemma~\ref{lem:allarity-step-discrepancy}: the compiler integrates the
- masked moments $Q^{(i)}_T$, the Gaussian history is transported by the
+ Lemma~\ref{lem:allarity-step-discrepancy}. That the compiler integrates the
+ masked moments $Q^{(i)}_T$ follows from the realignment by
+ Lemma~\ref{lem:allarity-common-insertion-realigned}, given the form of the
+ top-level principal insertion in item~2. The remaining clauses say that the Gaussian history is transported by the
  reference integrals on those same insertions and is the one used at the
  middle level, the transport is bounded in the jet norm, the reference
  mass has a uniform inverse jet bound, and the comparison is uniform over
