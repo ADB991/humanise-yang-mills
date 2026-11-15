@@ -393,7 +393,10 @@ $\widehat\beta_k=\beta_*+s_Gs_k\ge s_Gs_k$.
 \end{proof}
 
 Two further inputs are needed on the chart window. They are not proved in
-this section.
+this book. The second collects in one statement four assumptions that are
+made separately in Sections~\ref{sec:allarity-coordinate-calibration},
+\ref{sec:allarity-cumulant-comparison}
+and~\ref{sec:marked-healthy-cumulant-launch}.
 \begin{enumerate}
 \item[(V)] \emph{Restarted steps of the window.} At every step of the
  window $[w,k]$, from a level $m+1$ to $m$, the restarted step at the
@@ -404,14 +407,51 @@ this section.
  $(J(k),J(k))$, $(J(k),J(k)-1)$ and $(J(k)-1,J(k)-1)$. The purchases of
  Section~\ref{sec:common-funded-history} concern the selected history and
  do not supply these bounds for the restarted step.
-\item[(T)] \emph{Local readout.} At every sufficiently large level $k$,
- on the same endpoint, for all sufficiently large $N$ uniformly in $p$,
- there is a tested map $T_{k,N,p}$ satisfying
- \eqref{eq:rank-common-tested} for every label vector. The readout used
- for the rank tests above is attributed to
- Section~\ref{sec:allarity-coordinate-calibration}. That section assumes a
- tested map with these properties and does not construct one.
+\item[(T)] \emph{Calibrated insertion receipt.} At every sufficiently
+ large level $k$, on the same endpoint, for all sufficiently large $N$
+ uniformly in $p$, and for every grade $d'\le d$, there are an actual
+ polynomial map $\mathcal H=\mathcal H_{k,N,p}$, assigning to each label
+ $u$ of grade $d'$ a local polynomial insertion $\mathcal Hu$ in the reader
+ coordinates, and a linear map $T=T_{k,N,p}$ with the following
+ properties.
+ \begin{enumerate}
+ \item[(T1)] \emph{Low-grade reading.} $T$ is the low-grade reading of
+  $\mathcal H$. For every label $u$, the grade truncation of $\mathcal Hu$,
+  after substitution of the actual linear reader map at level $k$, is the
+  free polynomial whose frame coefficients are $Tu$ in the retained common
+  normalization of Section~\ref{sec:allarity-coordinate-calibration},
+  that is, rescaled by the coupling factor of the reader coordinates at
+  level $k$. In particular, for the lifts
+  of \eqref{eq:rank-common-lifts} the exact low-grade identity of
+  Section~\ref{sec:allarity-cumulant-comparison} holds.
+ \item[(T2)] \emph{Tested.} $T$ satisfies \eqref{eq:rank-common-tested}:
+  $Te_0=e_0$, $T\bar v=\overline{Tv}$, and
+  $|A_{k,N,p}v-Tv|_1\le\frac12|A_{k,N,p}v|_1$.
+ \item[(T3)] \emph{Primal bound.} $|\mathcal Hu|_1\le H|A_{k,N,p}u|_1$,
+  with $H=\mathcal M_k$, and the degree of $\mathcal Hu$ is bounded
+  independently of $k,N,p$.
+ \item[(T4)] \emph{Stamp.} The terminal insertion $\mathcal Hu$ of each
+  lift has the paid price bound, on the halo of its reader, required as
+  the terminal paid insertion bound in
+  Section~\ref{sec:marked-healthy-cumulant-launch}.
+ \end{enumerate}
+ The same map $\mathcal H$ and the same map $T$ occur in all four
+ clauses. The insertions $\mathcal Hu$ are those integrated in the
+ cumulant comparison, $T$ is their reading, and the stamp of (T4) is
+ paid by those same insertions.
 \end{enumerate}
+The map $T=A_{k,N,p}$ satisfies (T2) trivially when $A_{k,N,p}$ fixes the
+unit and is real, but it need not satisfy (T1). The readout must be the
+exact low-grade reading of the insertions that are actually integrated,
+because the free cumulant comparison uses the exact low-grade identity.
+The content of (T2) for the reading of (T1) is therefore an estimate. It
+says that the primary coordinate of the selected history at level $k$
+agrees, to relative accuracy one half, with the low-grade reading of the
+polynomial insertion built from the same label. Neither that
+estimate nor the application of the stamp bound (T4) to the lifts is
+proved in this book. Given (T1) and that
+estimate, the unit and reality clauses follow from $\mathcal He_0=1$ and
+from the reality of $\mathcal H$.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
@@ -579,6 +619,5 @@ $j$. At $j=k$ the representation is the actual one of the selected
 history, which is not restarted, and it has to be checked separately. We
 do not use these other levels here. The budget radius
 $\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
-normalization estimate. The tested-readout part of (F5) is the input (T),
-and the stamp duty for (F5) still has to be established with that same
-readout.
+normalization estimate. The readings of (F5) are (T1)--(T2) of the input
+(T), and its stamp duty is (T4).
