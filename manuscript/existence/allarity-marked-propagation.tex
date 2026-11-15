@@ -929,20 +929,11 @@ Summing at each fixed marker gives the claim, uniformly in the number
 of replica cells.
 \end{proof}
 
-The launch uses two inputs on the same middle-level representation.
-\begin{enumerate}
-\item[(W)] \emph{Regular remainder at the restored weight.}
- The nonleading regular remainder has marker-root price at most $H^{-1}$
- at weight $\omega$ and support exponent $e$, uniformly in the replica
- cells and period. The small-weight recurrence supplies the single-cell
- bound $p_1\le H^{\kappa-q}$. One way to obtain (W) is to buy the
- multi-cell bound of Lemma~\ref{lem:allarity-weight-raise}, with
- $p_2\le H^{\kappa-q}$ and the stated support inequality on the same
- letters. If $q\ge\kappa+Un+2$, then
- $H^{Un}p_1+p_2\le2H^{-2}\le H^{-1}$ for $H\ge2$.
- The recurrence at exponent $e$ supplies neither the price with spare
- exponent $\sigma$ nor that support inequality.
-\end{enumerate}
+The recurrence at exponent $e$ supplies neither the price of the
+multi-cell letters with a spare exponent $\sigma$ nor the support
+inequality of the lemma. Both are obtained in
+Lemma~\ref{lem:allarity-remainder-restored} below, from one spare-exponent
+run of the leading interval and from the geometry of the halos.
 
 The forced background is not covered by this lemma: a forced component
 may contain marked pieces from several cells, and its weight may then
@@ -963,10 +954,20 @@ $c$ with $X\cap Y_c\ne\varnothing$. We assume:
  such that every full support $X$ of a forced piece with
  $t(X)\ge2$ satisfies $\operatorname{cov}_BX\ge\lambda\,t(X)$.
 \end{enumerate}
-To obtain the site-price clause of (F) with $\eta_-=G(x_\ell)$,
-the compiler, realignment and support-reserve bounds must hold at exponent
-$e+1+\sigma$ throughout the leading interval on the same history. This is
-a separate purchase from the recurrence at exponent $e$.
+The site-price clause of (F), with $\eta_-=G(x_\ell)$, and the price of
+the regular remainder used in Lemma~\ref{lem:allarity-remainder-restored}
+come from one purchase:
+\begin{enumerate}
+\item[(E)] \emph{Spare-exponent run.} The compiler, realignment and
+ support-reserve bounds hold at the support exponent $e+1+\sigma$ throughout
+ the leading interval on the same history, so that the conclusions of
+ Subsection~\ref{subsec:allarity-step-supply} hold at that exponent. At the
+ middle level, the nonleading regular remainder has marker-root price at
+ most $H^{\kappa-q}$, and the forced background has site price at most
+ $G(x_\ell)$, both at the weight $\omega_-$ and the exponent $e+1+\sigma$.
+\end{enumerate}
+This is a separate purchase from the recurrence at exponent $e$. It gives
+the first clause of (F).
 
 The second part of (F) is inherited along the history. The reader site
 of a mark at the top level is the site of its insertion. At a coarser
@@ -1004,6 +1005,11 @@ unions. Each operation therefore preserves the property.
 
 Hypothesis (S) holds as soon as the halos of distinct cells are at
 $\ell^\infty$-distance at least $D'$, with $D'/((2B+1)\log H)\to\infty$.
+More precisely, every support $X$, of a forced or a regular letter, with
+$t(X)\ge2$ then satisfies
+\begin{equation}\label{eq:allarity-dispersal}
+ \operatorname{cov}_BX\ge\lambda\,t(X),\qquad \lambda=\frac{D'}{3(2B+1)} .
+\end{equation}
 Indeed, use a connected cover of $X$ by radius-$B$ cubes and pick
 $x_c\in X\cap Y_c$ for each of the $t(X)\ge2$ cells. The union of the cover
 contains a unit-step path from each $x_c$ to another chosen point. Stop the
@@ -1066,6 +1072,39 @@ the cells, centred and reflected or conjugated with the cells. A reader
 site at a coarser level $i$ is within one lattice spacing $a_i\le a_\ell$
 of the corresponding insertion site. So each reader is within
 $a_\ell/8+a_k+a_\ell\le2a_\ell$ of its cell centre.
+
+\begin{lemma}[The regular remainder at the restored weight]
+\label{lem:allarity-remainder-restored}
+Assume (E), the hypotheses of Lemma~\ref{lem:allarity-reader-containment},
+and that the halos of distinct cells are at distance at least $D'$ at the
+middle level, with $D'/((2B+1)\log H)\to\infty$. Assume
+$q\ge\kappa+Un+2$. Then, for all large $s$, the nonleading regular
+remainder at the middle level has marker-root price at most $H^{-1}$ at
+the weight $\omega$ and the support exponent $e$, uniformly in the replica
+cells and the period.
+\end{lemma}
+\begin{proof}
+Split the remainder as in Lemma~\ref{lem:allarity-weight-raise}, according
+to $t(I)=1$ or $t(I)\ge2$. Prices are monotone in the support exponent,
+since $\operatorname{chg}_e$ is increasing in $e$. So (E) gives $p_1\le
+H^{\kappa-q}$ at the exponent $e$, and $p_2\le H^{\kappa-q}$ at the
+exponent $e+\sigma$, both at the weight $\omega_-$.
+
+Let a regular letter have marker set $I$, with $t(I)\ge2$, and full
+support $X$. By Lemma~\ref{lem:allarity-reader-containment}, $X$ contains
+the reader site $r_{c,j}$ of each of its marks $(c,j)$. Since
+$r_{c,j}\in X_{c,\{j\}}\subseteq Y_c$, the support meets the halo of every
+cell represented in $I$, so $t(X)\ge t(I)\ge2$. By
+\eqref{eq:allarity-dispersal},
+\[
+ \sigma\operatorname{cov}_BX\ge\sigma\lambda\,t(I)\ge Un\,t(I)\log H
+\]
+as soon as $\sigma\lambda\ge Un\log H$. This holds for all large $s$,
+because $\lambda/\log H\to\infty$ and $\sigma,U,n$ are fixed. This is the
+support inequality of Lemma~\ref{lem:allarity-weight-raise}. That lemma
+gives the price $H^{Un}p_1+p_2\le2H^{Un+\kappa-q}\le2H^{-2}\le H^{-1}$ at
+the weight $\omega$ and the exponent $e$, for $H\ge2$.
+\end{proof}
 
 \begin{lemma}[Failed-mask regrouping and weight change]
 \label{lem:allarity-launch-regroup}
@@ -1161,7 +1200,10 @@ $\log\log s\ge36$.
 Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
 the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
 forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
-Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and inputs (W), (F) and (S).
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level, the input
+(E), the hypotheses of Lemma~\ref{lem:allarity-reader-containment}, and that
+the halos of distinct cells are at distance at least $D'$ at the middle
+level, with $D'/((2B+1)\log H)\to\infty$. Assume $q\ge\kappa+Un+2$.
 Then, for all large $s$, the pushed invoice at the middle level has an
 exact representation at the weight $\omega$, without leading letters, with
 regular marker-root price at most $H^{-3/4}$ and forced site price at most
@@ -1172,8 +1214,11 @@ By the commuting reference factor, the pushed invoice at $\ell$ is the
 pushed insertion product times $\exp_*(-D_R)$. The representation from
 the leading interval has three parts. Their prices are as follows.
 
-\emph{Remainder.} Input (W) supplies the price $H^{-1}$ at weight
-$\omega$ for the entire nonleading regular remainder.
+\emph{Remainder.} Lemma~\ref{lem:allarity-remainder-restored} gives the
+price $H^{-1}$ at the weight $\omega$ for the entire nonleading regular
+remainder. Hypotheses (F) and (S) hold: the first clause of (F) is (E),
+its second clause is Lemma~\ref{lem:allarity-reader-containment}, and (S)
+is \eqref{eq:allarity-dispersal}.
 
 \emph{Leading family.} Its pieces are the exact prescribed principal
 polynomial. Multiplying by $\exp_*(-D_R)$ and splitting each corrected
@@ -1258,9 +1303,9 @@ $U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
 \[
  q\ge\max\{6,\ \kappa+4\},
 \]
-which covers Lemma~\ref{lem:allarity-step-outputs}. If (W) is obtained
-using Lemma~\ref{lem:allarity-weight-raise}, also require
-$q\ge\kappa+Un+2$ as above. All are fixed before $s$.
+which covers Lemma~\ref{lem:allarity-step-outputs}. The launch also
+requires $q\ge\kappa+Un+2$, for
+Lemma~\ref{lem:allarity-remainder-restored}. All are fixed before $s$.
 
 \begin{lemma}[The forced inputs of the lower rungs]
 \label{lem:allarity-lower-forced}
@@ -1331,8 +1376,9 @@ following inputs, all on the common history of the chart:
  calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
  mixed compiler's per-step row and covariance comparison, the terminal
  paid insertion bound and the common purchases);
-\item the restored-weight regular remainder (W) at the launch;
-\item the spare-exponent purchase in (F) and the structural property used in
+\item the spare-exponent run (E) of the leading interval, which gives the
+ forced clause of (F) and, by Lemma~\ref{lem:allarity-remainder-restored},
+ the regular remainder at the restored weight; and the structural property used in
  Lemma~\ref{lem:allarity-reader-containment}, that coarse footprints
  contain the projections of fine supports
  (Section~\ref{sec:mixed-activity-prices}). It gives the second part of
