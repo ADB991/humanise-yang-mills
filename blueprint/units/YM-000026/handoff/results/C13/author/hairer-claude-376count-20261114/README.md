@@ -26,3 +26,9 @@ New `subsec:allarity-lower-count` at the end of `allarity-marked-propagation.tex
 `lem:allarity-lower-forced` drops hypothesis 3 of `lem:allarity-lower-propagation`. The lower calculation uses its incoming forced budget only through T_eη and 𝒲(B_c)L⁴T_eη, so any η ≤ z works. Take η to be the previous forced output G(y), which is ≤ H^{−q} eventually, and floor the z_t at H^{−q}. This discharges #389 item 3. The source's lower step (`ExhibitsSky`) uses the forced input z·w(u). The manuscript argument avoids needing a lower bound on w(u).
 
 Checks: `latexmk` exit 0, 0 undefined references; p. 799 inspected.
+
+## Errata after review #409 (session hairer-claude-409resp-20261114)
+
+- The cover size is `YM.RG.Calendar.coverSize`, not `Clock.coverSize`.
+- `Caff.hikes` bounds polynomial transport norms; it is not the step-count interface. The upper count corresponds to `YM.Next.Rank.Tapes.Racer.log`, and the lower count is used through `Perch.Tally.growth`. The manuscript count proofs are independent arguments, not transcriptions.
+- The lower count is now (α+1)^{ℓ−w} ≤ H^{1/4}, starting from the launch bound H^{−3/4} (source `Perch.spouse`).

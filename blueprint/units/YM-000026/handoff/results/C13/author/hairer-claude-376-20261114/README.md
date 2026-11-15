@@ -42,3 +42,9 @@ New `subsec:allarity-output-transport`, appended at the end of `manuscript/exist
 - `latexmk -pdf -interaction=nonstopmode -halt-on-error existence.tex` (on top of #387): exit 0, 1046 pages, 0 undefined references. pp. 793–795 inspected.
 - `python3 scripts/check_blueprint.py`: see the PR.
 - No Lean elaboration.
+
+## Errata after review #409 (session hairer-claude-409resp-20261114)
+
+- `Path_Sky` quantifies over [w, ℓ], not [w, k].
+- `Ferm` supplies `Tissue` (lawfulness after removing the additive remainder, plus value control of that remainder), not full `Rep.Lawful` of the genuine representation.
+- `prop:allarity-output-price` now takes its middle-level input from `prop:allarity-launch` (total regular budget H^{−3/4}, source `Peak.Meter`/`launchedSky`). It states the root conclusion for u = M.

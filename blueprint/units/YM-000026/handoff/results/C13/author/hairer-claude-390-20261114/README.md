@@ -56,3 +56,10 @@ Following AGENTS.md (reuse canonical proof units), the following changes were ma
   - the common purchases.
 
 Rebuilt: exit 0, 1048 pages, 0 undefined references; pp. 796–797 inspected.
+
+## Errata after review #409 (session hairer-claude-409resp-20261114)
+
+- `h4`/`hh` are local proof variables in `x_crushedSky`. The declaration supplying one common background per cell is `YM.Next.Rank.Tapes.West.ChastSky`.
+- `hU` is an argument of `YM.Next.Rank.Peak.warmingSky`, not a declaration `warmingSky.hU`. Its second hypothesis `hV` (reference coefficients ≤ H^{1/4}) was missing from this record.
+- The finding posted on #375 that the leading family is never priced at H^{−4} was too broad. The source prices it at H^{−4} on the upper interval at the smaller weight `loot` (`divySky`) and launches the corrected invoice once at the middle level.
+- `lem:allarity-upper-retuned` and `lem:allarity-forced-retuned` are withdrawn. The corrected budget is used only at the launch (`subsec:allarity-corrected-budget`, now 'The launch at the middle level'). The failed-mask and weight-change purchases are the stated input (L) (source `Shift.fail`, `Dock.grant`, `Peak.Meter`).

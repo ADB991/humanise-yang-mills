@@ -235,60 +235,62 @@ density along the same transition kernel; the realignment changes only
 its representation. Hence this is an estimate on the original launched
 observable, not a sequence of separately chosen approximants.
 
-The total number of steps is purchased so that
-$(\alpha+2)^{k-l}\le H$. It follows that
-$d_{k-l}\le H^{1-q}$.
+The number of steps satisfies $(\alpha+2)^{k-l}\le H^{\kappa}$ for a
+constant $\kappa$, by Lemma~\ref{lem:allarity-upper-count-power} below.
+It follows that $d_{k-l}\le H^{\kappa-q}$.
 
-\subsubsection*{The marker weight}
-Throughout the comparison interval, at every level from the launch
-at the top to the output torus of the replica estimate, the marker
-weight is
+\subsubsection*{The marker weights}
+Two marker weights are used, each the same at every mark, replica and
+finite period. Put $H=\mathcal M_k$, where
+$\mathcal M_k=\exp\{(\log\log\widehat\beta_k)^2\}$ is the clock monitor
+at the comparison depth, as in Section~\ref{sec:rank-root-normalization}.
+From the launch at the middle level $\ell$ down to the output torus of
+the replica estimate, the weight is
 \begin{equation}\label{eq:allarity-marker-weight}
- \omega=H^{1/(8u)},\qquad H=\mathcal M_k ,
+ \omega=H^{1/(8u)} .
 \end{equation}
-the same at every mark, replica and finite period. Here
-$\mathcal M_k=\exp\{(\log\log\widehat\beta_k)^2\}$ is the clock
-monitor at the comparison depth, as in
-Section~\ref{sec:rank-root-normalization}. Every price in the
-recurrence, namely the remainder prices $d_j$, the forced prices
+On the leading part of the interval, from the top $k$ down to $\ell$,
+the recurrence above is run at the smaller weight
+\begin{equation}\label{eq:allarity-upper-weight}
+ \omega_-=H^{1/(8u)-U},\qquad U\ge\frac1{8u},
+\end{equation}
+where the weight exponent $U$ is a constant fixed before the clock scale
+(Lemma~\ref{lem:allarity-leading-budget} below says how). Every price
+of the recurrence, namely the remainder prices $d_j$, the forced prices
 $G_i$, the principal incidence price $H^{-2}$, the discrepancy
 contribution \eqref{eq:allarity-realign-regular} and the terminal
-prices, is a price in the $\|\cdot\|_\omega$ norm at this one weight.
-The marker weight is never changed inside the interval, so no
-rescaling identity between two weighted norms is needed.
+prices, is a price in the $\|\cdot\|_{\omega_-}$ norm. The weight is
+changed exactly once, at the launch
+(Subsection~\ref{subsec:allarity-corrected-budget}), and the cost of
+that change is computed there.
 
-Since $H>1$, $\omega\ge1$. As $n\le u$, \eqref{eq:allarity-mode-weight}
-gives
+Since $U\ge1/(8u)$, we have $\omega_-\le1$, so
+\eqref{eq:allarity-mode-weight} gives $\omega_-^{|I|}\le1$ for every
+mode. Thus the first purchase in \eqref{eq:allarity-step-purchases} is
+implied by
+\begin{equation}\label{eq:allarity-weighted-discrepancy}
+ 2^nR_ey\le d_0=H^{-q}.
+\end{equation}
+At the large weight, since $H>1$ and $n\le u$,
 \begin{equation}\label{eq:allarity-weight-cap}
  \omega^{|I|}\le\bar\omega_n=\omega^n\le\omega^u=H^{1/8}
  \qquad (I\subseteq\{1,\ldots,n\}).
 \end{equation}
-Thus the first purchase in \eqref{eq:allarity-step-purchases} is
-implied by
-\begin{equation}\label{eq:allarity-weighted-discrepancy}
- 2^nR_eH^{1/8}y\le d_0=H^{-q}.
-\end{equation}
-The large weight costs exactly the factor $H^{1/8}$ in the
-discrepancy purchase and nothing else in this section: the
-incidence and spatial counts, the forced regrouping and the scalar
+The incidence and spatial counts, the forced regrouping and the scalar
 envelope below hold for every positive weight. The one-step outputs
 assumed above, the principal-source bounds and the terminal-source
-purchase are hypotheses on prices at the weight
-\eqref{eq:allarity-marker-weight}; this section does not derive them
-from estimates at a smaller weight. When such an input is available
-as an unweighted bound $b$ on the values of pieces carrying at most
-$n$ markers, with the support charge already included,
-\eqref{eq:allarity-weight-cap} converts it to the weighted price
-$H^{1/8}b$. In particular the per-step discrepancy must be supplied
-with $y\le2^{-n}R_e^{-1}H^{-q-1/8}$; this is a factor $H^{1/8}$
-stronger than the bound $2^nR_ey\le d_0$ that would suffice at a
-weight $\omega\le1$.
+purchase are hypotheses on prices at the weight $\omega_-$. When such an
+input is available as an unweighted bound $b$ on the values of pieces
+carrying between one and $n$ markers, with the support charge already
+included, it is also a bound on the $\omega_-$-price, because
+$\omega_-\le1$.
 
 If the later propagation requires an extra factor $H^{uV+2}$ in the
-regular price, purchase $1-q\le-uV-2$. Then
-$H^{1-q}\le H^{-uV-2}$ supplies that margin. These two inequalities
-are separate purchases: a small initial error does not alone control
-arbitrarily many steps or an arbitrary later marker-weight change.
+regular price, purchase $q\ge\kappa+uV+2$, with $\kappa$ the exponent of
+Lemma~\ref{lem:allarity-upper-count-power}; this supplies that margin at
+the middle level. These two inequalities are separate purchases: a
+small initial error does not alone control arbitrarily many steps or an
+arbitrary later marker-weight change.
 
 \subsection{Supplying the one-step hypotheses on the leading interval}
 \label{subsec:allarity-step-supply}
@@ -298,23 +300,25 @@ leading part of the comparison interval, from the upper calculation of
 Section~\ref{sec:actual-mixed-marked-compiler} and from the principal
 comparison of Section~\ref{sec:principal-gaussian-comparison}. We also
 show that the purchases
-\eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small} and
-the step count hold at large clock scale. Throughout, the top comparison
-depth is $k$, the leading interval consists of the rungs $i$ with
-$\ell\le i<k$, and $s=\widehat\beta_k$ is the clock scale. We put
+\eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small} hold
+at large clock scale. Throughout, the top comparison depth is $k$, the
+leading interval consists of the rungs $i$ with $\ell\le i<k$, and
+$s=\widehat\beta_k$ is the clock scale. We put
 \[
  H=\exp((\log\log s)^2)=\mathcal M_k,\qquad
- \omega=H^{1/(8u)},
+ \omega_-=H^{1/(8u)-U},
 \]
-as in \eqref{eq:allarity-marker-weight}. The rung couplings $x_i$ (coarse)
+as in \eqref{eq:allarity-upper-weight}. The rung couplings $x_i$ (coarse)
 and $y_i$ (fine) of rung $i$ lie in $[s/2,s]$. The arity $n\le u$, the
-support exponent $e$, the slice multiplier $a$, the tolerance exponent
-$q\ge6$ and the step multiplier $\alpha\ge8T_e$ are fixed before $s$.
-Here $T_e$ is the constant of \eqref{eq:mixed-cover-charge}. A function
-$f$ of the clock scale has \emph{upper exponent} $c$ if for every
-$\varepsilon>0$, eventually $|f(x)|\le x^{c+\varepsilon}$ uniformly for
-$x\in[s/2,s]$. In particular $H^{c}$ has upper exponent $0$ for every
-real $c$, because $(\log\log s)^2=o(\log s)$.
+support exponent $e$, the slice multiplier $a$, the support radius
+$Q\ge a$, the weight exponent $U$, the tolerance exponent $q\ge6$ and the
+step multiplier $\alpha\ge8T_e$ are fixed before $s$, in this order
+except that $\alpha$ may be fixed first. Here $T_e$ is the constant of
+\eqref{eq:mixed-cover-charge}. A function $f$ of the clock scale has
+\emph{upper exponent} $c$ if for every $\varepsilon>0$, eventually
+$|f(x)|\le x^{c+\varepsilon}$ uniformly for $x\in[s/2,s]$. In particular
+$H^{c}$ has upper exponent $0$ for every real $c$, because
+$(\log\log s)^2=o(\log s)$.
 
 \begin{lemma}[Compiler outputs on a leading rung]
 \label{lem:allarity-step-outputs}
@@ -328,8 +332,8 @@ Assume the incoming data are:
 \item a leading family of marker budget at most $H^{-4}$;
 \item a forced background of site price at most $G(y_i)$.
 \end{itemize}
-All prices are taken at the weight $\omega$. Then, after the marked push,
-the output has:
+All prices are taken at the weight $\omega_-$. Then, after the marked
+push, the output has:
 \begin{enumerate}
 \item nonleading regular marker-root price at most $(\alpha+1)z$;
 \item leading marker-root (principal incidence) price at most $H^{-3}\le H^{-2}$;
@@ -367,31 +371,71 @@ Hence:
 \end{enumerate}
 The calculation of that section holds at every positive marker weight,
 since its prices include the weights. So these are prices at the weight
-$\omega$.
+$\omega_-$. The multiplier $l$ is at most $\max(1,H^{q-3})$, as in that
+section, so the compiler purchase made there covers it.
 \end{proof}
 
 The upper bound $z\le H^{-4}$ in the lemma is preserved along the
-recurrence. Indeed $d_{k-i}\le d_{k-l}\le H^{1-q}\le H^{-5}\le H^{-4}$,
-because $q\ge6$ and the step count is bought below. The lower bound
-$z\ge d_0=H^{-q}$ is the convention of the recurrence: a smaller
-incoming price may be enlarged to $d_0$.
+recurrence. Indeed $d_{k-i}\le d_{k-\ell}\le H^{\kappa-q}\le H^{-4}$ by
+Lemma~\ref{lem:allarity-upper-count-power}, once $q\ge\kappa+4$. The
+lower bound $z\ge d_0=H^{-q}$ is the convention of the recurrence: a
+smaller incoming price may be enlarged to $d_0$.
+
+\begin{lemma}[The leading budget at the small weight]
+\label{lem:allarity-leading-budget}
+Suppose that at every leading rung the prescribed principal sources have
+\emph{unweighted} marker budget at most $H^{A}$, for a constant $A\ge0$
+fixed before $s$. That is, for every mark, the sum over the modes
+containing it of the value bound times the support charge is at most
+$H^{A}$. If
+\[
+ U\ge A+4+\frac1{8u},
+\]
+then their marker budget at the weight $\omega_-$ is at most $H^{-4}$.
+\end{lemma}
+\begin{proof}
+Every principal piece has a nonempty marker set $I$, so its weight is
+$\omega_-^{|I|}\le\omega_-=H^{1/(8u)-U}\le H^{-A-4}$, because
+$\omega_-\le1$. Multiplying the unweighted budget by this factor gives
+the claim.
+\end{proof}
+
+The launch bounds available for the funded chart bound the principal
+source by a fixed positive power of $H$. This is why the leading interval
+is run at the weight $\omega_-$: at the large weight $\omega$ the budget
+$H^{-4}$ is not available, and at the top comparison level the
+connected polynomial $\sum_iz_iP_i$ is not small at all.
 
 \begin{lemma}[A fixed bound for the support charge]
 \label{lem:allarity-step-charge}
-Every prescribed support $X_{c,I}$ satisfies
-$\operatorname{cov}_B X_{c,I}\le(\lceil a\rceil+1)^4$. Hence one may take
+For a cell $c$ and a nonempty mode $I$, let $r_{c,j}$ be the reader site
+of mark $j$ in cell $c$, and define the prescribed support
 \[
- R_e=\exp\{e(\lceil a\rceil+1)^4\},
+ X_{c,I}=\{v:\ |v-r_{c,j}|\le QB\ \text{for every } j\in I\}.
+\]
+Assume that reader sites in distinct replica cells are at distance
+greater than $2QB$. Then the geometric hypotheses of the subsection on
+marker and spatial prices hold, and every prescribed support satisfies
+$\operatorname{cov}_BX_{c,I}\le(\lceil Q\rceil+1)^4$. Hence one may take
+\[
+ R_e=\exp\{e(\lceil Q\rceil+1)^4\},
 \]
 a constant fixed before $s$.
 \end{lemma}
 \begin{proof}
-By the first subsection, every point of $X_{c,I}$ lies within distance
-$aB$ of each marked reader of its component. Fix one such reader. Then
-$X_{c,I}$ is contained in the cube of side $2aB$ centred there. That cube
-is covered by a grid of at most $(\lceil a\rceil+1)^4$ radius-$B$ cubes
-whose union is connected. Since $\operatorname{chg}_e$ is monotone in the
-cover number, the bound follows.
+By the first subsection, every point of the full support of a principal
+piece of mode $I$ in cell $c$ lies within distance
+$(2n+1)\rho\le aB\le QB$ of each of its marked readers, which are the
+$r_{c,j}$ with $j\in I$. So the actual support is contained in $X_{c,I}$.
+The prescribed support depends only on the mode, by definition. If a site
+$v$ lies in $X_{c,I}$ and in $X_{c',I'}$, then a reader of $c$ and a
+reader of $c'$ are both within $QB$ of $v$, hence within $2QB$ of each
+other. By the separation assumption $c=c'$. Finally, fix one $j\in I$.
+Then $X_{c,I}$ is contained in the cube of side $2QB$ centred at
+$r_{c,j}$. That cube is covered by a grid of at most
+$(\lceil Q\rceil+1)^4$ radius-$B$ cubes whose union is connected. Since
+$\operatorname{chg}_e$ is monotone in the cover number, the bound
+follows.
 \end{proof}
 
 \begin{lemma}[The per-step discrepancy]
@@ -400,8 +444,9 @@ Suppose that at each leading rung the next prescribed connected
 polynomial is the Gaussian reference integral of
 Section~\ref{sec:principal-gaussian-comparison}, for the same insertion,
 forest and tags. Suppose also that the actual projected principal
-polynomial is the actual-sector integral there. Let the amplitude $\tau$
-of the principal insertion have upper exponent $\kappa<1/2$. Then,
+polynomial is the actual-sector integral there. Suppose finally that,
+at each leading rung, the amplitude $\tau$ of the principal insertion has
+upper exponent at most $\kappa_\tau<1/2$, uniformly in the rungs. Then,
 eventually in $s$, the two polynomials differ by at most $y$ on the
 required healthy regions, where $y$ satisfies
 \eqref{eq:allarity-weighted-discrepancy}. Hence the first purchase in
@@ -412,33 +457,24 @@ By \eqref{eq:principal-comparison-final} and the payment paragraph after
 it, the difference is at most $\tau$ times a multiplier $\Pi(x)$ of upper
 exponent $-1/2$. This holds uniformly in the period and after the finite
 forest and tag averages. Take $y=\tau\Pi$, which has upper exponent at
-most $\kappa-1/2<0$. By Lemma~\ref{lem:allarity-step-charge},
-$2^nR_e$ is a constant, and $H^{q+1/8}$ has upper exponent $0$. Hence
-$2^nR_eH^{1/8}y\,H^{q}$ has upper exponent at most
-$\kappa-1/2<0$, and is therefore at most $1$ for all large $s$. This is
+most $\kappa_\tau-1/2<0$. By Lemma~\ref{lem:allarity-step-charge},
+$2^nR_e$ is a constant, and $H^{q}$ has upper exponent $0$. Hence
+$2^nR_eyH^{q}$ has upper exponent at most $\kappa_\tau-1/2<0$, and is
+therefore at most $1$ for all large $s$. This is
 \eqref{eq:allarity-weighted-discrepancy}, which implies the first
-purchase in \eqref{eq:allarity-step-purchases} by
-\eqref{eq:allarity-weight-cap}.
+purchase in \eqref{eq:allarity-step-purchases} because
+$\omega_-\le1$.
 \end{proof}
 
-\begin{lemma}[The remaining step purchases and the step count]
+\begin{lemma}[The remaining step purchases]
 \label{lem:allarity-step-purchases}
-Let the middle level be
-$\ell=\max\{j\le k:a_j/a_k\ge m\mu_k^2\}$, where $m=\mu_k^b$ for the
-chart's base arc $b\le\bar b$. Assume that every level $j$ with
-$\ell\le j\le k$ satisfies $J(j)\ge J(k)-1$. Assume also the block-length
-floor
-\begin{equation}\label{eq:allarity-length-floor}
- \log L_j\ge2(\bar b+2)\log(\alpha+2)
-\end{equation}
-at every stage $j\ge J(k)-1$. Then for all sufficiently large $s$,
-uniformly in the rungs of the leading interval, the following hold:
+For all sufficiently large $s$, uniformly in the rungs of the leading
+interval, the following hold:
 \begin{enumerate}
 \item the second purchase in \eqref{eq:allarity-step-purchases}, with
  $G_i=G(x_i)$;
 \item both purchases in \eqref{eq:allarity-step-small}, with
- $B_i=\lceil(\log x_i)^2\rceil^2$;
-\item the step count $(\alpha+2)^{k-\ell}\le H$.
+ $B_i=\lceil(\log x_i)^2\rceil^2$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -455,63 +491,51 @@ $B_i\le((\log s)^2+1)^2\le4(\log s)^4$. Hence
  =\exp\{4\log9+16\log\log s\}\le\exp\{(\log\log s)^2\}=H
 \]
 once $\log\log s\ge17$. Also $e^{H^{-1}}-1\le1$ as soon as
-$H\ge1/\log2$.
-
-\emph{Step count.} If $\ell=k$ there is nothing to prove. Otherwise,
-by maximality, $j=\ell+1$ violates the defining inequality:
-$a_{\ell+1}/a_k<m\mu_k^2=H^{b+2}$, since $\mu_k=H$. By
-Section~\ref{sec:common-scale-selection},
-$a_{\ell+1}/a_k=\prod_{t=\ell+2}^{k}L_{J(t)}$. Each factor is at least
-$L_{J(k)-1}$, by the stage assumption and the monotonicity of the
-selected block lengths. Hence
-\[
- (k-\ell-1)\log L_{J(k)-1}<(b+2)\log H .
-\]
-By \eqref{eq:allarity-length-floor}, the right side divided by
-$\log L_{J(k)-1}$ is at most $\log H/(2\log(\alpha+2))$. Therefore
-$(k-\ell)\log(\alpha+2)\le\log(\alpha+2)+\tfrac12\log H\le\log H$,
-the last step once $H\ge(\alpha+2)^2$.
+$H^{-1}\le\log2$.
 \end{proof}
 
+The step count of the recurrence is
+Lemma~\ref{lem:allarity-upper-count-power} below. It uses only $L_j\ge3$
+and the maximality of $\ell$; no floor on the block lengths and no stage
+condition is needed.
+
 \paragraph{What this supplies and what remains.}
-On the leading interval, the four lemmas give the following, all at the
-single marker weight $\omega$ and eventually in $s$ uniformly in the
-finite period:
+On the leading interval, the lemmas of this subsection and
+Lemma~\ref{lem:allarity-upper-count-power} give the following, all at
+the weight $\omega_-$ and eventually in $s$ uniformly in the finite
+period:
 \begin{itemize}
 \item the remainder multiplier $(\alpha+1)z$;
 \item the principal incidence price $H^{-2}$;
 \item the forced price $G_i^2$ with $G_i=G(x_i)$;
+\item the leading budget $H^{-4}$, given the unweighted bound $H^A$;
 \item the discrepancy purchase \eqref{eq:allarity-weighted-discrepancy};
 \item the purchases
  \eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small};
-\item the step count.
+\item the step count, with remainder $d_{k-\ell}\le H^{\kappa-q}$ at the
+ middle level.
 \end{itemize}
-The stage assumption of Lemma~\ref{lem:allarity-step-purchases} is the
-bracket property of the chart's scale allowance. The following inputs
-are not supplied here.
+The following inputs are not supplied here.
 \begin{enumerate}
 \item \emph{Applicability of the upper calculation} at each leading rung.
  This includes its primitive body-compiler, all-hole and joint-warning
  purchases, which Section~\ref{sec:actual-mixed-marked-compiler} lists as
  inputs on the same body alphabet and coarse representation.
-\item \emph{The leading budget and the terminal-source purchase.} The
- prescribed principal sources must have weighted marker budget at most
- $H^{-4}$ at every leading rung. The launched insertions must give the
- initial remainder price $d_0$ and forced price $G_k$. The launch bounds
- available for the funded chart bound the principal source only by a
- positive power of $H$. We have not located the normalization that
- converts them into the budget $H^{-4}$.
+\item \emph{The unweighted principal-source bound} $H^A$ of
+ Lemma~\ref{lem:allarity-leading-budget} at every leading rung, and the
+ terminal-source purchase: the launched insertions must give the initial
+ remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
 \item \emph{The identification in Lemma~\ref{lem:allarity-step-discrepancy}}
  of the prescribed connected polynomial with the Gaussian reference
- integral, and the bound on the upper exponent of the amplitude $\tau$.
-\item \emph{The block-length floor} \eqref{eq:allarity-length-floor}. It
- is a floor on the selected block lengths, and must be included among
- the floors of Section~\ref{sec:public-run-binding} with $\alpha$ and
- $\bar b$ fixed before the block lengths are chosen.
+ integral, and the bound $\kappa_\tau<1/2$ on the upper exponent of the
+ amplitude at every leading rung.
+\item \emph{The reader separation} $2QB$ between distinct replica cells
+ assumed in Lemma~\ref{lem:allarity-step-charge}.
 \end{enumerate}
 The rungs below the middle level use the lower calculation of
-Section~\ref{sec:actual-mixed-marked-compiler}. They belong to the
-propagation to the output torus and are not treated here.
+Section~\ref{sec:actual-mixed-marked-compiler} at the large weight
+$\omega$, after the launch of
+Subsection~\ref{subsec:allarity-corrected-budget}.
 
 \subsection{The scalar envelope used in the replica estimate}
 
@@ -644,9 +668,11 @@ the output torus is the level-$w$ torus.
 \paragraph{Propagation below the middle level.}
 On the rungs $j$ with $w\le j<\ell$ there are no leading letters, and the
 lower calculation of Section~\ref{sec:actual-mixed-marked-compiler}
-applies. With incoming regular marker-root price $z\le H^{-1/2}$ and
-incoming forced budget $z\,\omega_j$, where $\omega_j\in[0,1]$ is the
-actual lower-interval attenuation, it gives two outputs:
+applies. All prices from the launch at $\ell$ downwards are taken at the
+large weight $\omega=H^{1/(8u)}$. With incoming regular marker-root price
+$z\le H^{-1/2}$ and incoming forced budget $z\,\omega_j$, where
+$\omega_j\in[0,1]$ is the actual lower-interval attenuation, the lower
+calculation gives two outputs:
 \begin{itemize}
 \item regular marker-root price at most
  $\tfrac12(\alpha z+H^{1/2}z^2)\le\alpha z+H^{1/2}z^2$;
@@ -659,55 +685,48 @@ These require the rung couplings to lie in $[s/2,s]$.
 Assume the following.
 \begin{enumerate}
 \item At level $\ell$ the regular marker-root price is at most
- $z_0\le H^{1-q}$.
+ $z_0\le H^{-3/4}$, and there are no leading letters.
 \item Every rung of $[w,\ell)$ satisfies the hypotheses of the lower
  calculation, with couplings in $[s/2,s]$.
 \item The forced input of each lower rung is admissible:
- $G(y_{j+1})\le z_{j}\,\omega_{j}$ along the iteration below. Prices are
- upper bounds, so $z_j$ may be enlarged for this.
+ its forced budget is at most $z_t\,\omega_j$ along the iteration below.
+ Prices are upper bounds, so $z_t$ may be enlarged for this.
 \item The lower step count satisfies
  \begin{equation}\label{eq:allarity-lower-count}
-  (\alpha+1)^{\ell-w}\le H^{q-3/2}.
+  (\alpha+1)^{\ell-w}\le H^{1/4}.
  \end{equation}
 \end{enumerate}
-Then at every level $w\le j\le\ell$ the regular marker-root price is at
-most $(\alpha+1)^{\ell-j}z_0\le H^{-1/2}\le1$, and every forced site price
-is at most $1$.
+Let $z_t$ be the regular bound after $t$ lower steps, so that level
+$\ell-t$ carries $z_t$. Then $z_t\le(\alpha+1)^tz_0\le H^{-1/2}\le1$ for
+$0\le t\le\ell-w$, and every forced site price on $[w,\ell]$ is at most
+$1$.
 \end{lemma}
 \begin{proof}
-Let $z_t$ be the bound after $t$ lower steps. If $H^{1/2}z_t\le1$, then
+If $H^{1/2}z_t\le1$, then
 \[
  z_{t+1}\le(\alpha+H^{1/2}z_t)z_t\le(\alpha+1)z_t .
 \]
 By induction $z_t\le(\alpha+1)^tz_0$ for $t\le\ell-w$, as long as
 $H^{1/2}z_t\le1$. This condition holds throughout, because
-$(\alpha+1)^tz_0\le H^{q-3/2}H^{1-q}=H^{-1/2}$ by
+$(\alpha+1)^tz_0\le H^{1/4}H^{-3/4}=H^{-1/2}$ by
 \eqref{eq:allarity-lower-count}. That is also the domain bound
-$z\le H^{-1/2}$ of the lower calculation. The forced outputs are at most
-$G(y_j)\le1$.
+$z\le H^{-1/2}$ of the lower calculation. The forced outputs of the lower
+rungs are at most $G(y_j)\le1$. At $t=0$ the forced price is the one
+delivered by the launch, which is at most $1$ by
+Proposition~\ref{prop:allarity-launch}.
 \end{proof}
 
-The count \eqref{eq:allarity-lower-count} is a purchase of the same kind
-as the step count of Lemma~\ref{lem:allarity-step-purchases}. The root
-depth $w$ is the largest $j\le\ell$ with
-$a_j/a_\ell\ge c_k^{10}$, where $c_k$ is the clock's cover size at $k$.
-By maximality, $a_{w+1}/a_\ell<c_k^{10}$, so the same argument as there
-gives
-$(\ell-w-1)\log L_{J(k)-1}<10\log c_k$. Hence
-\eqref{eq:allarity-lower-count} holds whenever both of the following
-hold:
-\begin{itemize}
-\item $\log(\alpha+1)\,(1+10\log c_k/\log L_{J(k)-1})\le(q-3/2)\log H$;
-\item the stage condition $J(j)\ge J(k)-1$ holds on $[w,k]$.
-\end{itemize}
+By Lemma~\ref{lem:allarity-lower-count-free} below, the lower count
+\eqref{eq:allarity-lower-count} holds for all large $s$, uniformly in the
+chart, and by Lemma~\ref{lem:allarity-lower-forced} hypothesis~3 can be
+dropped.
 
 \begin{proposition}[The coefficient price at the output]
 \label{prop:allarity-output-price}
 Assume the following.
 \begin{enumerate}
-\item The leading-interval conclusions of
- Subsection~\ref{subsec:allarity-step-supply}, giving the price
- $d_{k-\ell}\le H^{1-q}$ at the middle level.
+\item The launch receipt of Proposition~\ref{prop:allarity-launch} at the
+ middle level.
 \item The hypotheses of Lemma~\ref{lem:allarity-lower-propagation}.
 \item The representation at the output level $w$ is lawful, with the
  suppositions of Section~\ref{sec:rank-root-normalization} at the stage
@@ -721,13 +740,13 @@ nonempty $s\subseteq\{0,1\}$:
 \]
 Here $\mathcal D$ is the push to the level-$w$ torus of the replicated
 marked density of the invoice $\mathcal I$, and $\mathcal D_s^{\otimes}$
-is its coefficient carrying $s$ in every cell. This is the coefficient
-price $a^{q_0|s|}$ with per-site expense $X\le1+n\le1+M$ required by
-\eqref{eq:rank-root}, with $a=\omega$ when $u=M$. The normalizing
+is its coefficient carrying $s$ in every cell. The normalizing
 denominator is the partition function of the same pushed density, by the
-unmarked coefficient identity at every step. Consequently, for
-$k\ge K_M$ of Proposition~\ref{prop:rank-root-output-ticket}, the root
-test of $\Phi_s$ on the centered tiling at depth $w$ is at most
+unmarked coefficient identity at every step. Taking $u=M$, so that
+$\omega=a$, this is the coefficient price $a^{q_0|s|}$ with per-site
+expense $X\le1+n\le1+M$ required by \eqref{eq:rank-root}. Consequently,
+for $u=M$ and $k\ge K_M$ of Proposition~\ref{prop:rank-root-output-ticket},
+the root test of $\Phi_s$ on the centered tiling at depth $w$ is at most
 $\mathcal M_k^{-1/(16M)}$.
 \end{proposition}
 \begin{proof}
@@ -742,53 +761,51 @@ invoice are the $\Phi_s$, so the replicated coefficient is that of
 $\Phi_s$ in every cell. The last statement is
 Proposition~\ref{prop:rank-root-output-ticket}, applied with $w(k)=w$,
 together with \eqref{eq:rank-root} and the lawful representation at $w$.
+For general $u$ the weight is $\omega=H^{1/(8u)}$ and the same argument
+gives the bound $H^{1/(16M)-|s|/(8u)}$ only; the root conclusion uses
+$u=M$.
 \end{proof}
 
-\paragraph{Status of the output transport.}
-Lemma~\ref{lem:allarity-invoice-parts}, the cells-and-sites count and
-Lemma~\ref{lem:allarity-lower-propagation} are proved above.
-Proposition~\ref{prop:allarity-output-price} reduces the coefficient price
-to five inputs:
-\begin{enumerate}
-\item the leading-interval inputs listed at the end of
- Subsection~\ref{subsec:allarity-step-supply};
-\item the plateau condition that the couplings of the rungs of $[w,\ell]$
- lie in $[s/2,s]$;
-\item the admissible forced inputs of the lower rungs;
-\item the lower step count \eqref{eq:allarity-lower-count}, through a
- bound on the cover size $c_k$ against $H$;
-\item the lawful representation at $w$.
-\end{enumerate}
-Items 2 and 5 are properties that the funded chart's actuation path and
-allowance must supply at every level of $[w,k]$. We have not located
-their display in Section~\ref{sec:ex-lattice-firesky-gallery}. Item 3
-requires a lower bound on the attenuations $\omega_j$, which we have not
-located.
-
-\subsection{The corrected leading budget}
+\subsection{The launch at the middle level}
 \label{subsec:allarity-corrected-budget}
 
-Lemma~\ref{lem:allarity-step-outputs} assumed a leading family of
-weighted marker budget $H^{-4}$. The actual leading family is much
-larger: it is controlled at the level $H^{-27/32}$. We show that this
-is enough, after re-tuning two parameters of the upper calculation and
-of the forced purchase. We keep the notation of
+At the middle level $\ell$ the representation produced by the leading
+interval is converted into one suitable for the lower interval. Three
+things change at once: the marker weight is raised from $\omega_-$ to
+$\omega$; the leading family is replaced by its corrected form; and the
+leading designation is dropped, so that the corrected pieces become
+ordinary regular letters. We keep the notation of
 Subsections~\ref{subsec:allarity-step-supply}
 and~\ref{subsec:allarity-output-transport}. In particular
-$\mathcal I=\exp_*(-D_R)\prod_c(1+f_cz_c)$ is the invoice, with
-$D_R=D$ the reference cumulant polynomial.
+$\mathcal I=\exp_*(-D_R)\prod_c(1+f_cz_c)$ is the invoice, with $D_R=D$ the
+reference cumulant polynomial.
 
 \paragraph{The reference factor commutes with every push.}
 The polynomial $\exp_*(-D_R)$ has field-independent coefficients. Every
 block integration and every push acts linearly and coefficientwise on
 the marker algebra. So each of them commutes with multiplication by
 $\exp_*(-D_R)$. Hence the pushed invoice at any level is
-$\exp_*(-D_R)$ times the pushed product of the insertions. If the
-latter has principal part $\exp_*(D_Q)$, with $D_Q$ the connected
-polynomial of the same Gaussian history, then the principal part of the
-pushed invoice is $\exp_*(D_Q-D_R)$. The leading family to be
-propagated is therefore the \emph{corrected} connected polynomial
-$D_Q-D_R$, not $D_Q$ itself.
+$\exp_*(-D_R)$ times the pushed product of the insertions. At the middle
+level the latter has principal part $\exp_*(D_Q)$, with $D_Q$ the
+connected polynomial of the same Gaussian history. The invoice is
+therefore launched at the middle level with corrected principal
+polynomial $D_Q-D_R$. This is an identity of densities. It does not by
+itself give a priced representation, for the following reason.
+
+\paragraph{The failed mask.}
+For one mode, let $\chi$ be the healthy mask of its prescribed support,
+$W$ the actual leading coefficient and $R$ the corresponding coefficient
+of $D_R$. The leading letter carries $\chi W$, while the reference factor
+contributes $R$ everywhere. Hence
+\[
+ \chi W-R=\chi(W-R)-(1-\chi)R .
+\]
+The first term is a regular letter controlled by the healthy bound on
+$W-R$ (Lemma~\ref{lem:allarity-corrected-pieces}). The second term is
+supported where the prescribed support contains a flag. It must be moved
+into the forced alphabet and regrouped with the forced background, as in
+the mask change of the realignment subsection. Its price is controlled by
+a bound on the reference coefficients $R$, not by the healthy bound.
 
 \paragraph{The corrected budget.}
 The bound on the corrected pieces is already proved in
@@ -802,18 +819,17 @@ error is \eqref{eq:allarity-moment-error} at the powers of its scale
 paragraph. The actual healthy local error between a planted leading
 coefficient and the coefficient of $D_Q$ is at most $H^{-3/2}$ by
 Section~\ref{sec:marked-healthy-cumulant-launch}. Both statements hold
-under the hypotheses stated in those sections, which are recalled in the
-status paragraph below.
+under the hypotheses stated in those sections.
 
 \begin{lemma}[Corrected leading pieces]
 \label{lem:allarity-corrected-pieces}
 Assume the moment error $H^{-3/2}$ of
 Section~\ref{sec:allarity-cumulant-comparison} and the healthy local error
 $H^{-3/2}$ of Section~\ref{sec:marked-healthy-cumulant-launch}, at the
-launch level. Then, for all large $s$, every corrected leading piece, that
-is, an actual leading piece minus the corresponding coefficient of $D_R$,
-is at most $H^{-31/32}$ on its healthy region. Its incidence price at the
-weight $\omega$ is at most
+middle level. Then, for all large $s$, every corrected leading piece at
+that level, that is, an actual leading piece minus the corresponding
+coefficient of $D_R$, is at most $H^{-31/32}$ on its healthy region. Its
+incidence price at the weight $\omega$ is at most
 \[
  h=c\,H^{-27/32},\qquad c=2^nR_e .
 \]
@@ -830,106 +846,99 @@ mark. Hence the incidence price is at most
 $2^nR_eH^{1/8}H^{-31/32}=cH^{-27/32}$.
 \end{proof}
 
-\begin{lemma}[The upper calculation at the corrected budget]
-\label{lem:allarity-upper-retuned}
-Make the assumptions of Lemma~\ref{lem:allarity-step-outputs}, except that
-the leading family has marker budget at most $h=cH^{-27/32}$. Put
+\begin{lemma}[Raising the regular marker weight]
+\label{lem:allarity-weight-raise}
+For each regular letter let $I$ be its marker set, $X$ its full support,
+and $t(I)$ the number of replica cells represented in $I$. Suppose the
+marker-root sum of letters with $t(I)=1$ is at most $p_1$ at weight
+$\omega_-$ and support exponent $e$. Suppose the corresponding sum of
+letters with $t(I)\ge2$ is at most $p_2$ at weight $\omega_-$ and support
+exponent $e+\sigma$, where $\sigma>0$, and that each of these letters
+satisfies
 \[
- Y=3T_ecH^{-27/32},\qquad
- l=\max\Bigl(1,\frac{Y}{\alpha z+H^{-q}}\Bigr),\qquad m=G(x_i)^{-2}.
+ \sigma\operatorname{cov}_B(X)\ge Un\,t(I)\log H .
 \]
-Then, for all large $s$, the upper calculation of
-Section~\ref{sec:actual-mixed-marked-compiler} holds with $Y$ in place of
-$H^{-3}$. Its output has:
+Then the marker-root price at weight $\omega$ and support exponent $e$
+is at most $H^{Un}p_1+p_2$.
+\end{lemma}
+\begin{proof}
+Empty marker sets contribute to neither sum. For a letter with
+$t(I)=1$, $|I|\le n$, so raising the weight costs at most $H^{Un}$.
+For a letter with $t(I)\ge2$, $|I|\le nt(I)$. Raising the weight and
+lowering the support exponent together multiply its price by
+\[
+ H^{U|I|}\exp\{-\sigma\operatorname{cov}_B(X)\}\le1.
+\]
+Summing at each fixed marker gives the claim, uniformly in the number
+of replica cells.
+\end{proof}
+
+The launch uses two inputs on the same middle-level representation.
 \begin{enumerate}
-\item nonleading regular marker-root price at most $(\alpha+1)z$;
-\item leading marker-root price at most $Y$;
-\item forced site price at most $G(x_i)^2$.
+\item[(W)] \emph{Regular remainder at the restored weight.}
+ The nonleading regular remainder has marker-root price at most $H^{-1}$
+ at weight $\omega$ and support exponent $e$, uniformly in the replica
+ cells and period. The small-weight recurrence supplies the single-cell
+ bound $p_1\le H^{\kappa-q}$. One way to obtain (W) is to buy the
+ multi-cell bound of Lemma~\ref{lem:allarity-weight-raise}, with
+ $p_2\le H^{\kappa-q}$ and the stated support inequality on the same
+ letters. If $q\ge\kappa+Un+2$, then
+ $H^{Un}p_1+p_2\le2H^{-2}\le H^{-1}$ for $H\ge2$.
+ The recurrence at exponent $e$ supplies neither the price with spare
+ exponent $\sigma$ nor that support inequality.
+\item[(L)] \emph{Failed-mask regrouping and weight change at the launch.}
+ There is a constant $c_L\ge0$, fixed before $s$, with the following
+ property. At the middle level, let the forced background have site price
+ at most $\eta_-$ at the weight $\omega_-$. Move the failed-mask pieces
+ $-(1-\chi)R\,z_I$ of all modes into the forced alphabet and regroup them
+ with that background. Then the result is an exact representation of the
+ same density, whose regular letters are unchanged and whose forced site
+ price at the weight $\omega$ is at most $H^{c_L}\eta_-$.
 \end{enumerate}
-\end{lemma}
+The input (L) needs a bound on the reference coefficients $R$ by a fixed
+power of $H$, control of the forced background at the larger weight, and
+the forced regrouping of Section~\ref{sec:soft-log-fusion} with an
+inflation exponent lowered by a multiple of $\log H$.
+
+\begin{proposition}[The launch receipt]
+\label{prop:allarity-launch}
+Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
+the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
+forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level and
+inputs (W) and (L).
+Then, for all large $s$, the pushed invoice at the middle level has an
+exact representation at the weight $\omega$, without leading letters, with
+regular marker-root price at most $H^{-3/4}$ and forced site price at most
+$H^{-q}$.
+\end{proposition}
 \begin{proof}
-We recheck the three numerical facts that the upper calculation uses.
-\begin{itemize}
-\item \emph{Marker-root price.} Here $T_e\eta+a\le Y$, where
- $a=lT_ez+2T_eh$ and $\eta=G(y_i)$. If $l>1$, then
- $lT_ez\le YT_ez/(\alpha z)\le Y/8$ because $\alpha\ge8T_e$. If $l=1$,
- then $T_ez\le T_eH^{-4}\le Y/8$ for large $s$. Next,
- $2T_eh=\tfrac23Y$. Finally $T_e\eta\le Y/8$ for large $s$, since $G$
- decays faster than every power of $H$. The sum is at most
- $(\tfrac18+\tfrac23+\tfrac18)Y<Y$.
-\item \emph{Site price.} The site price satisfies $\Sigma\le K/4$ with
- $K=H^{-1/8}$. Its new term is $\mathcal W(B_c)\,n\,a\le\mathcal W(B_c)nY$.
- Since $\mathcal W(B_c)=H^{o(1)}$, this is $H^{o(1)-27/32}\le K/16$ for
- large $s$. The other two terms are as before.
-\item \emph{Shadow condition.} The condition $lx_i^{-1}\le1$ holds, since
- $l\le\max(1,YH^{q})\le H^{q}$ and $H^{q}=x_i^{o(1)}$.
-\end{itemize}
-The outputs then follow exactly as in the proof of
-Lemma~\ref{lem:allarity-step-outputs}, with $Y$ in place of $H^{-3}$. The
-nonleading price is at most $Y/l\le\alpha z+H^{-q}\le(\alpha+1)z$. The
-leading price is at most $T_e\eta+a\le Y$. The forced site price is at most
-$(e^\Sigma-1)/m\le G(x_i)^2$.
+By the commuting reference factor, the pushed invoice at $\ell$ is the
+pushed insertion product times $\exp_*(-D_R)$. The representation from
+the leading interval has three parts. Their prices are as follows.
+
+\emph{Remainder.} Input (W) supplies the price $H^{-1}$ at weight
+$\omega$ for the entire nonleading regular remainder.
+
+\emph{Leading family.} Its pieces are the exact prescribed principal
+polynomial. Multiplying by $\exp_*(-D_R)$ and splitting each corrected
+coefficient by the failed-mask identity gives healthy pieces
+$\chi(W-R)$ and failed-mask pieces. Drop the leading designation. The
+healthy pieces become regular letters of incidence price at most
+$cH^{-27/32}$, by Lemma~\ref{lem:allarity-corrected-pieces}.
+
+\emph{Forced part.} The forced background has site price at most
+$\eta_-=G(x_\ell)$ at the weight $\omega_-$. This is the realigned forced
+price of the recurrence, not the compiler output $G(x_\ell)^2$ before
+realignment. By (L), after the failed-mask pieces are moved and
+regrouped, the forced site price at the weight $\omega$ is at most
+$H^{c_L}G(x_\ell)$.
+
+Adding the regular contributions gives at most $H^{-1}+cH^{-27/32}$, which
+is at most $H^{-3/4}$ once $H^{3/32}\ge c+1$. Since $G$ decays faster than
+every negative power of $H$ uniformly on $[s/2,s]$, eventually
+$H^{c_L}G(x_\ell)\le H^{-q}$.
 \end{proof}
-
-\begin{lemma}[The forced step at the corrected budget]
-\label{lem:allarity-forced-retuned}
-Let $Z=Y$ be the principal incidence price and put $\delta=H^{-1/2}$.
-Then, for all large $s$, uniformly in the leading rungs,
-\begin{equation}\label{eq:allarity-retuned-purchases}
- G_i+nYR_{e+1}\le\delta,\qquad(2B_i+1)^4\delta\le1,\qquad
- e^{\delta}-1\le1 .
-\end{equation}
-Hence \eqref{eq:allarity-realign-forced-input} holds with $s=G_i^2$,
-$g=g_i$ and this $\delta$. The regrouped forced price is at most
-$e^{-g_i}(e^{\delta}-1)\le G_i$. The recurrence of this section therefore
-holds with \eqref{eq:allarity-retuned-purchases} in place of the second
-purchase in \eqref{eq:allarity-step-purchases} and of
-\eqref{eq:allarity-step-small}. Its conclusions are unchanged: remainder
-$d_{k-i}$, forced price $G_i$, and the exact prescribed principal
-polynomial.
-\end{lemma}
-\begin{proof}
-First, $G_i=G(x_i)\le\delta/2$ for large $s$. Second,
-$nYR_{e+1}=3nT_ecR_{e+1}H^{-27/32}\le\delta/2$ once
-$H^{11/32}\ge6nT_ecR_{e+1}$. As in
-Lemma~\ref{lem:allarity-step-purchases},
-$(2B_i+1)^4\le\exp\{4\log9+16\log\log s\}$. This is at most
-$H^{1/2}=\exp\{(\log\log s)^2/2\}$ once $\log\log s\ge36$. Last,
-$e^{\delta}-1\le1$ since $\delta\le1$. With $e^{g_i}G_i^2=G_i$, the first
-inequality is the first condition of
-\eqref{eq:allarity-realign-forced-input}. The output bound is
-\eqref{eq:allarity-realign-forced-output}, and
-$e^{-g_i}(e^\delta-1)\le e^{-g_i}=G_i$. The regular realignment and the
-discrepancy purchase are unaffected.
-\end{proof}
-
-\paragraph{Status.}
-Lemmas~\ref{lem:allarity-corrected-pieces}--\ref{lem:allarity-forced-retuned}
-replace three things: the budget $H^{-4}$ of
-Lemma~\ref{lem:allarity-step-outputs}, the incidence $H^{-2}$, and the
-purchases with $\delta=H^{-1}$. In their place they use the actual
-corrected budget $cH^{-27/32}$, the incidence $Y$, and $\delta=H^{-1/2}$.
-The two $H^{-3/2}$ inputs are proved in
-Sections~\ref{sec:allarity-cumulant-comparison}
-and~\ref{sec:marked-healthy-cumulant-launch}, conditionally on the
-hypotheses stated there:
-\begin{itemize}
-\item the reader covariance and vertex bounds at the powers
- $\xi=\varepsilon=H^{-2}$, $B=H^{\lambda}$;
-\item the exact low-grade calibration of
- Section~\ref{sec:allarity-coordinate-calibration};
-\item the actual mixed compiler's per-step row and covariance comparison;
-\item the terminal paid insertion bound;
-\item the common purchases.
-\end{itemize}
-These are the remaining inputs of the corrected budget.
-
-The application also uses a structural simplification, which we only
-record here. The leading family need only be launched once, at the
-middle level, rather than propagated step by step from $k$. By the
-commuting reference factor, the launch only has to produce
-$\exp_*(D_Q-D_R)$ at that level. Whether the per-step recurrence on
-$[\ell,k)$ can be replaced in this way is left open.
 
 \subsection{The step counts without a block-length floor}
 \label{subsec:allarity-lower-count}
@@ -939,10 +948,10 @@ $[\ell,k)$ can be replaced in this way is left open.
 Let the clock's cover size at level $k$ be
 $c_k=\lceil(\log\widehat\beta_k)^2\rceil$, and let the root depth be
 $w=\max\{j\le\ell:a_j/a_\ell\ge c_k^{10}\}$. Since all block lengths
-satisfy $L_j\ge3$, for all sufficiently large $s=\widehat\beta_k$,
-uniformly in the chart, the lower step count
-\eqref{eq:allarity-lower-count} holds:
-$(\alpha+1)^{\ell-w}\le H^{q-3/2}$.
+satisfy $L_j\ge3$, for every fixed $\gamma>0$ and all sufficiently large
+$s=\widehat\beta_k$, uniformly in the chart,
+$(\alpha+1)^{\ell-w}\le H^{\gamma}$. In particular the lower step count
+\eqref{eq:allarity-lower-count} holds.
 \end{lemma}
 \begin{proof}
 If $w=\ell$ there is nothing to prove. Otherwise, by maximality of $w$,
@@ -958,13 +967,10 @@ Therefore
    \Bigl(1+\frac{10\log2+20\log\log s}{\log3}\Bigr)
  =A_0+A_1\log\log s ,
 \]
-with constants $A_0,A_1\ge0$ fixed by $\alpha$. Since $q-3/2>0$ and
-$\log H=(\log\log s)^2$, the right side is at most $(q-3/2)\log H$ for all
+with constants $A_0,A_1\ge0$ fixed by $\alpha$. Since $\gamma>0$ and
+$\log H=(\log\log s)^2$, the right side is at most $\gamma\log H$ for all
 large $s$. No block-length floor and no stage condition is used.
 \end{proof}
-
-Consequently, item~4 of the status list of
-Subsection~\ref{subsec:allarity-output-transport} is discharged.
 
 \begin{lemma}[The upper step count at a fixed power]
 \label{lem:allarity-upper-count-power}
@@ -973,14 +979,10 @@ Let the base arc satisfy $b\le\bar b$, and put
  \kappa=1+\frac{(\bar b+2)\log(\alpha+2)}{\log3}.
 \]
 For all sufficiently large $s$, uniformly in the chart,
-$(\alpha+2)^{k-\ell}\le H^{\kappa}$. Consequently, if the tolerance
-exponent is fixed with $q\ge\kappa+4$ (it is fixed before $s$, after
-$\alpha$ and $\bar b$), then the remainder price at the middle level is
-$d_{k-\ell}\le H^{\kappa-q}\le H^{-4}$. Every conclusion of
-Subsections~\ref{subsec:allarity-step-supply}--\ref{subsec:allarity-corrected-budget}
-holds with $H^{\kappa-q}$ in place of $H^{1-q}$. In particular, the step
-count of Lemma~\ref{lem:allarity-step-purchases} and the block-length floor
-\eqref{eq:allarity-length-floor} are not needed.
+$(\alpha+2)^{k-\ell}\le H^{\kappa}$. Consequently the remainder price of
+the recurrence at the middle level is $d_{k-\ell}\le H^{\kappa-q}$ at the
+weight $\omega_-$. If $q\ge\kappa+4$, this is at most $H^{-4}$, which is
+the window required in Lemma~\ref{lem:allarity-step-outputs}.
 \end{lemma}
 \begin{proof}
 If $\ell=k$ there is nothing to prove. Otherwise
@@ -992,25 +994,27 @@ $(k-\ell-1)\log3<(b+2)\log H$, and
    +\frac{(\bar b+2)\log(\alpha+2)}{\log3}\log H\le\kappa\log H
 \]
 once $\log H\ge\log(\alpha+2)$. Then
-$d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$. The two places
-that used $d_{k-\ell}\le H^{1-q}$ only need a window. In
-Lemma~\ref{lem:allarity-step-outputs} and its re-tuned form, the window is
-$z\le H^{-4}$, which holds since $q\ge\kappa+4$. In
-Lemma~\ref{lem:allarity-lower-propagation}, the starting price is
-$z_0\le H^{\kappa-q}$. That lemma's count requirement then becomes
-$(\alpha+1)^{\ell-w}\le H^{q-\kappa-1/2}$, which holds by
-Lemma~\ref{lem:allarity-lower-count-free} with $q-\kappa-1/2>0$ in place
-of $q-3/2$. Its proof applies verbatim to any fixed positive exponent.
+$d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$.
 \end{proof}
+
+The parameters are therefore fixed in the order $\alpha$, $\bar b$, then
+$U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
+\[
+ q\ge\max\{6,\ \kappa+4\},
+\]
+which covers Lemma~\ref{lem:allarity-step-outputs}. If (W) is obtained
+using Lemma~\ref{lem:allarity-weight-raise}, also require
+$q\ge\kappa+Un+2$ as above. All are fixed before $s$.
 
 \begin{lemma}[The forced inputs of the lower rungs]
 \label{lem:allarity-lower-forced}
 In Lemma~\ref{lem:allarity-lower-propagation}, hypothesis~3 can be
 dropped. More precisely, take the incoming forced budget of each lower
-rung to be the forced output $G(y)$ of the preceding rung, at the
-transition the forced output $G(x_\ell)^2$ of the leading interval, and
-replace the bounds $z_t$ by $\max(z_t,H^{-q})$. Then the conclusions of
-that lemma hold for all large $s$.
+rung to be the forced output $G(y)$ of the preceding lower rung, and at
+the transition the forced output of the launch, which is at most $H^{-q}$
+by Proposition~\ref{prop:allarity-launch}. Replace the bounds $z_t$ by
+$\max(z_t,H^{-q})$. Then the conclusions of that lemma hold for all large
+$s$.
 \end{lemma}
 \begin{proof}
 The lower calculation of Section~\ref{sec:actual-mixed-marked-compiler}
@@ -1018,29 +1022,23 @@ uses its incoming forced budget $\eta$ in exactly two places: the
 marker-root term $T_e\eta$, and the site term
 $\mathcal W(B_c)L^4T_e\eta$. With $\eta=z\omega_j\le z$, it bounds them by
 $T_ez$ and by $K/16$ for $z\le H^{-1/2}$. Both bounds hold verbatim for
-any $\eta\le z$. Now $G$, and hence $G^2$, decays faster than every power
-of $H$ uniformly on $[s/2,s]$. So for large $s$ every incoming forced
-budget is at most $H^{-q}\le\max(z_t,H^{-q})$. Replacing $z_t$ by
-$\max(z_t,H^{-q})$ keeps the induction of
-Lemma~\ref{lem:allarity-lower-propagation}. Indeed, if
-$H^{-q}\le z_t$, then
+any $\eta\le z$. Now $G$ decays faster than every power of $H$ uniformly
+on $[s/2,s]$, so for large $s$ every incoming forced budget of a lower
+rung is at most $H^{-q}\le\max(z_t,H^{-q})$; at the transition this is
+the launch bound. Replacing $z_t$ by $\max(z_t,H^{-q})$ keeps the
+induction of Lemma~\ref{lem:allarity-lower-propagation}: if
+$H^{-q}\le z_t\le H^{-1/2}$, then
 $\max(\alpha z_t+H^{1/2}z_t^2,H^{-q})\le(\alpha+1)z_t$, since
-$\alpha\ge1$. The starting value $\max(z_0,H^{-q})$ is at most
-$H^{\kappa-q}$ under Lemma~\ref{lem:allarity-upper-count-power}. The forced
-outputs are at most $G(y_j)\le1$ as before.
+$\alpha\ge1$. The starting value is $\max(z_0,H^{-q})\le H^{-3/4}$. The
+forced outputs are at most $G(y_j)\le1$ as before.
 \end{proof}
 
-Consequently item~3 of the status list of
-Subsection~\ref{subsec:allarity-output-transport} is also discharged.
-
-\begin{lemma}[The amplitude of the principal insertions]
+\begin{lemma}[The amplitude at the middle level]
 \label{lem:allarity-amplitude}
 Under the hypotheses of Lemma~\ref{lem:allarity-corrected-pieces} there is
 a constant $C_*$, depending on the fixed word and the compact window,
-such that for all large $s$ every actual leading piece is bounded by
-$C_*$ on its healthy region. Consequently the amplitude $\tau$ in
-Lemma~\ref{lem:allarity-step-discrepancy} is bounded by a constant, has
-upper exponent $0<1/2$, and that lemma applies.
+such that for all large $s$ every actual leading piece at the middle level
+is bounded by $C_*$ on its healthy region.
 \end{lemma}
 \begin{proof}
 The reference moment polynomial $1+X_R$ varies continuously on the
@@ -1051,3 +1049,39 @@ Lemma~\ref{lem:allarity-corrected-pieces}, each actual leading piece is
 within $H^{-31/32}\le1$ of a coefficient of $D_R$. Take
 $C_*=1+\sum_{j=1}^nM_{\mathcal W}^j/j$.
 \end{proof}
+
+The lemma bounds the amplitude at the middle level only. The discrepancy
+lemma needs the amplitude bound $\kappa_\tau<1/2$ at every leading rung,
+which is listed below as an input. Any bound $CH^{A'}$ with fixed $A'$
+would suffice there, since such a bound has upper exponent $0$.
+
+\paragraph{Status of the propagation to the output.}
+Proposition~\ref{prop:allarity-output-price} is proved from the
+following inputs, all on the common history of the chart:
+\begin{enumerate}
+\item the four inputs listed at the end of
+ Subsection~\ref{subsec:allarity-step-supply} for the leading interval:
+ applicability of the upper calculation; the unweighted principal-source
+ bound $H^A$ and the terminal-source purchase; the identification of the
+ prescribed polynomial and the per-rung amplitude $\kappa_\tau<1/2$; the
+ reader separation $2QB$;
+\item the two $H^{-3/2}$ inputs of Lemma~\ref{lem:allarity-corrected-pieces}
+ at the middle level, which are proved in
+ Sections~\ref{sec:allarity-cumulant-comparison}
+ and~\ref{sec:marked-healthy-cumulant-launch} under their stated
+ hypotheses (the reader covariance and vertex bounds, the exact low-grade
+ calibration of Section~\ref{sec:allarity-coordinate-calibration}, the
+ mixed compiler's per-step row and covariance comparison, the terminal
+ paid insertion bound and the common purchases);
+\item the restored-weight regular remainder (W) and failed-mask regrouping (L) at the launch;
+\item applicability of the lower calculation on $[w,\ell)$;
+\item the lawful representation at the output level $w$, with the
+ suppositions of Section~\ref{sec:rank-root-normalization}.
+\end{enumerate}
+The rung couplings lie in $[s/2,s]$ on the whole window $[w,k]$ by the
+plateau field of the chart witness, which is proved from the clock in
+Lemma~\ref{lem:ex-lattice-firesky-clock-fields}; the same lemma proves the
+bracket. The step counts, the forced inputs of the lower rungs and the
+leading budget at the small weight are proved above. The polynomial
+transport purchase of Section~\ref{sec:marked-healthy-cumulant-launch} is
+separate from the step counts and remains one of the common purchases.

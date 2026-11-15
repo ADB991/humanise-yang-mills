@@ -49,3 +49,10 @@ The source buys these purchases in the cost witness (`Order/Sofa.lean`, `office`
 - `latexmk -pdf -interaction=nonstopmode -halt-on-error existence.tex`: exit 0, 1043 pages, 0 undefined references. pp. 789–792 inspected.
 - `python3 scripts/check_blueprint.py`: see the PR.
 - No Lean elaboration.
+
+## Errata after review #409 (session hairer-claude-409resp-20261114)
+
+- `loot` is the marker weight H^{1/(8u)−U} of the upper interval (`YM.Next.Rank.Tapes.West.loot`, `cashFt`), not a remainder-price multiplier.
+- In `Caff`, the field roles are: `lit` buys the leading budget H^{−4} at weight `loot`; `buys` buys the discrepancy; `hikes` bounds polynomial transport growth.
+- The source counterpart of the step count (α+2)^{k−ℓ} ≤ H is `YM.Next.Rank.Tapes.Racer.log` (`Purse.race = α+2`).
+- The manuscript now runs the leading interval at the smaller weight ω₋ = H^{1/(8u)−U}, as the source does (`divySky`). The step count is `lem:allarity-upper-count-power`. The block-length floor and the old step-count purchase are removed. The prescribed supports are defined with radius QB, Q ≥ a (source: `d_olmSky`, `roomTestSky.radius`).

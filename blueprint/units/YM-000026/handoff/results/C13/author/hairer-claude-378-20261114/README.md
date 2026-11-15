@@ -47,3 +47,8 @@ New `subsec:rank-root-output-ticket`, appended at the end of `manuscript/existen
 - `latexmk -pdf -interaction=nonstopmode -halt-on-error existence.tex`: exit 0, 1039 pages, 0 undefined references. pp. 794–795 inspected.
 - `python3 scripts/check_blueprint.py`: see the PR.
 - No Lean elaboration.
+
+## Errata after review #409 (session hairer-claude-409resp-20261114)
+
+- The monitor is `YM.Vac.Numbers.P` (`Lean/YM/Vac/Treasury.lean:72`); `Treasury` is the module file, not a namespace.
+- The loop exponent of `subsec:rank-root-clock-threshold` is now identified with the clock's protection exponent θ_j (`Calendar.theta`). It is not a field of the stage profile.
