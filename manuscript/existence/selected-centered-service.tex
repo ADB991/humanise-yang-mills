@@ -576,8 +576,12 @@ $f_+$ is evaluated.
 
 \paragraph{The remaining analytic attachment.}
 The two lemmas above supply the finite-menu augmentation and the four
-numerical absorption bounds. They do not derive the common mixed-body
-estimate retained in Lemma~\ref{lem:selected-menu-alphabet}, or the
+numerical absorption bounds. The common mixed-body estimate retained in
+Lemma~\ref{lem:selected-menu-alphabet} is not an independent input: it
+is derived in Lemma~\ref{lem:selected-residual-body} below from the
+simultaneous product estimate of Section~\ref{sec:gaussian-warnings},
+and so reduces to the local hypotheses of that estimate on the held
+tree sectors. The lemmas do not supply those local hypotheses, or the
 actual local component and differentiated entrance estimates used in
 Section~\ref{subsec:ex-lattice-rg-usable}. In particular that section
 requires the rooted thin-component majorant at its full exponent and
@@ -591,6 +595,101 @@ consequences of increasing the delays. Matching them to their
 uniform local producers remains necessary before the arrival and
 raised-response hypothesis of
 Proposition~\ref{prop:selected-centered-retention} can be removed.
+
+\subsection{The residual body on the actual alphabet}
+\label{sec:selected-residual-body}
+
+We show that the body hypothesis of
+Lemma~\ref{lem:selected-menu-alphabet} follows from the estimate that
+already controls the integrated activities of a sector. Fix a tree
+sector of the held step. As in Section~\ref{sec:gaussian-warnings},
+its integration variables are a Haar variable $Y$ and the single
+Gaussian vector $Z$, with the product probability measure
+$\nu(dY)\gamma_A(dZ)$. The vertices are of four types: connected
+packets, which are mandatory, and the three optional types, namely
+forced activities, exponential logarithmic corrections and warnings.
+Warning vertices are indexed by the warning addresses of that section,
+so distinct warning vertices have distinct addresses. Different warning
+types at the same site are different addresses. Every factor is evaluated at the same $(Y,Z)$.
+
+\begin{lemma}[Residual bodies on one tree sector]
+\label{lem:selected-residual-body}
+Assume that the vertex factors $f_i$ of this sector are measurable and
+satisfy the uniform pointwise bounds $|f_i|\le c_i$ of the table
+preceding \eqref{eq:warning-sector-mass}: $c_i=C_0e^{(s-g)n_i}$ for a
+packet with $n_i$ seeds, $c_i=v_i$ for a forced activity, $c_i=w_i$ for
+the factor $e^{\ell_i}-1$ of a logarithmic correction, and $c_i=T$ for
+a warning. Assume that each nonzero warning forces its coordinate
+excursion within distance $2B$ of its address, and that
+\eqref{eq:warning-actual-price} holds. Put $\widetilde c_i=E(x)T$ for
+a warning and $\widetilde c_i=c_i$ otherwise. Then for every finite set
+$S$ of distinct vertices and every set $O\subseteq S$ of optional
+vertices,
+\begin{equation}\label{eq:selected-residual-body}
+ \int\Bigl|\prod_{i\in S\setminus O}f_i(Y,Z)\Bigr|
+        \,d\nu\,d\gamma_A
+ \le\prod_{i\in S\setminus O}\widetilde c_i .
+\end{equation}
+The same bound holds after the probability averages over forests and
+tags. Consequently, the common mixed-body estimate retained in
+Lemma~\ref{lem:selected-menu-alphabet} holds on the held step with the
+optional prices $\widetilde c_i$ and the packet prices
+$C_0e^{(s-g)n_i}$. These prices do not depend on the removed set.
+\end{lemma}
+
+\begin{proof}
+The set $S'=S\setminus O$ is again a finite set of distinct vertices
+of the four types. The pointwise bounds are assumptions on individual
+vertices, so they hold for every member of $S'$. The excursion
+implication is also a property of each warning separately. If
+$\prod_{i\in S'}f_i(Y,Z)\ne0$, then every warning factor in $S'$ is
+nonzero. Hence $Z$ lies in the excursion event of each of these
+warnings, that is, in $\mathcal C(X(S');t,2B)$. These are exactly the
+hypotheses of \eqref{eq:warning-sector-mass} for $S'$.
+
+For completeness we recall its proof in this case. Pointwise,
+\[
+ \Bigl|\prod_{i\in S'}f_i(Y,Z)\Bigr|
+ \le\mathbf1_{\mathcal C(X(S');t,2B)}(Z)\prod_{i\in S'}c_i .
+\]
+The left side is measurable and bounded on a probability space, so it
+is integrable. By Fubini's theorem, integrate first in $Z$ for fixed
+$Y$. The Gaussian law $\gamma_A$ does not depend on $Y$, so
+\eqref{eq:warning-actual-price} bounds the inner integral by
+$E(x)^{|X(S')|}\prod_{i\in S'}c_i$. Integrating this constant against
+the probability measure $\nu$ leaves it unchanged. Since distinct
+warnings of $S'$ have distinct addresses, $|X(S')|$ is the number of
+warnings in $S'$, and the bound equals
+$\prod_{i\in S'}\widetilde c_i$. Only the warnings that remain in
+$S'$ enter the event, so a removed warning takes its probability price
+$E(x)$ with it. No product of separate warning probabilities is used.
+
+The right side of \eqref{eq:selected-residual-body} does not depend on
+the forest, the tags or the configuration. Averaging the left side
+with probability weights therefore preserves the bound. The admitted
+removals in Lemma~\ref{lem:selected-menu-alphabet} replace only
+optional labels, those in $\sigma(T)$. So the residual body is the
+product over $S\setminus\sigma(T)$, the packet prices are those of the
+retained packets, and \eqref{eq:selected-residual-body} with
+$O=\sigma(T)$ is the stated common estimate. In that lemma, the
+inserted factors are bounded pointwise by their wages before this
+single integration. The switched integral is therefore at most
+$\prod_{\lambda\in T}w_\lambda\prod_{i\in S\setminus\sigma(T)}
+\widetilde c_i$, without multiplying bounds for separate integrals.
+\end{proof}
+
+The lemma removes no hypothesis of
+Section~\ref{sec:gaussian-warnings}. It uses the pointwise vertex bounds,
+the plateau and mean inputs behind the excursion implication, and the
+uniform covariance bound behind \eqref{eq:warning-actual-price}. On the
+held step these remain to be supplied by their local producers:
+Section~\ref{sec:packet-estimates} for packets, the inherited, remote
+and itinerary prices for the logarithmic corrections, and
+Section~\ref{sec:warning-safety} for the warning plateau. That
+attachment is part of the remaining analytic work listed above. The
+prices $\widetilde c_i$ are the ones whose rooted site sums enter the
+mixed component estimate. In particular, a warning carries $E(x)T$,
+not $T$.
 
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
