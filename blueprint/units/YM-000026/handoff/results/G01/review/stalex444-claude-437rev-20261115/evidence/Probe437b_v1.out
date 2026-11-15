@@ -1,0 +1,903 @@
+structure YM.OS.Selection {G : Gauge} {L : Register G} (B : Table L) : Type 1
+number of parameters: 3
+fields:
+  YM.OS.Selection.room : OS.Chamber B timeAxis
+  YM.OS.Selection.unselected : OS.Spread self.room
+  YM.OS.Selection.space : self.unselected.Resolution
+  YM.OS.Selection.ensemble : self.space.X → Table L
+  YM.OS.Selection.atPoint : self.space.X
+  YM.OS.Selection.leaps : OS.Chamber (self.ensemble self.atPoint) timeAxis
+  YM.OS.Selection.slabs : OS.Spread self.leaps
+constructor:
+  YM.OS.Selection.mk {G : Gauge} {L : Register G} {B : Table L} (room : OS.Chamber B timeAxis)
+    (unselected : OS.Spread room) (space : unselected.Resolution) (ensemble : space.X → Table L) (atPoint : space.X)
+    (leaps : OS.Chamber (ensemble atPoint) timeAxis) (slabs : OS.Spread leaps) : OS.Selection B
+structure YM.OS.Spread.Resolution {G : Gauge} {L : Register G} {S : Table L} {V : OS.Chamber S timeAxis}
+  (P : OS.Spread V) : Type 1
+number of parameters: 5
+fields:
+  YM.OS.Spread.Resolution.X : Type
+  YM.OS.Spread.Resolution.metric : MetricSpace self.X
+  YM.OS.Spread.Resolution.sets : MeasurableSpace self.X
+  YM.OS.Spread.Resolution.borel : BorelSpace self.X
+  YM.OS.Spread.Resolution.compact : CompactSpace self.X
+  YM.OS.Spread.Resolution.μ : MeasureTheory.Measure self.X
+  YM.OS.Spread.Resolution.character : self.X → ↥P.algebra →⋆ₐ[ℂ] ℂ
+constructor:
+  YM.OS.Spread.Resolution.mk {G : Gauge} {L : Register G} {S : Table L} {V : OS.Chamber S timeAxis} {P : OS.Spread V}
+    (X : Type) [metric : MetricSpace X] [sets : MeasurableSpace X] [borel : BorelSpace X] [compact : CompactSpace X]
+    (μ : MeasureTheory.Measure X) (character : X → ↥P.algebra →⋆ₐ[ℂ] ℂ) : P.Resolution
+structure YM.OS.Spread.Resolution.Out {G : Gauge} {L : Register G} {S : Table L} {V : OS.Chamber S timeAxis}
+  {P : OS.Spread V} (R : P.Resolution) : Prop
+number of parameters: 6
+fields:
+  YM.OS.Spread.Resolution.Out.abelian : ∀ (x y : ↥P.algebra), x * y = y * x
+  YM.OS.Spread.Resolution.Out.normalized : MeasureTheory.IsProbabilityMeasure R.μ
+  YM.OS.Spread.Resolution.Out.support : R.μ.IsOpenPosMeasure
+  YM.OS.Spread.Resolution.Out.onto : Function.Bijective R.character
+  YM.OS.Spread.Resolution.Out.values : ∀ (x : R.X), Continuous ⇑(R.character x)
+  YM.OS.Spread.Resolution.Out.weak : ∀ (p : ↥P.algebra), Continuous fun x => (R.character x) p
+  YM.OS.Spread.Resolution.Out.ground : ∀ (p : ↥P.algebra),
+      ∫ (x : R.X), (R.character x) p ∂ R.μ = inner ℂ V.omega0 (↑p V.omega0)
+constructor:
+  YM.OS.Spread.Resolution.Out.mk {G : Gauge} {L : Register G} {S : Table L} {V : OS.Chamber S timeAxis}
+    {P : OS.Spread V} {R : P.Resolution} (abelian : ∀ (x y : ↥P.algebra), x * y = y * x)
+    (normalized : MeasureTheory.IsProbabilityMeasure R.μ) (support : R.μ.IsOpenPosMeasure)
+    (onto : Function.Bijective R.character) (values : ∀ (x : R.X), Continuous ⇑(R.character x))
+    (weak : ∀ (p : ↥P.algebra), Continuous fun x => (R.character x) p)
+    (ground : ∀ (p : ↥P.algebra), ∫ (x : R.X), (R.character x) p ∂ R.μ = inner ℂ V.omega0 (↑p V.omega0)) : R.Out
+def YM.OS.Spread.Resolution.receives : {G : Gauge} →
+  {L : Register G} →
+    {S : Table L} → {V : OS.Chamber S timeAxis} → {P : OS.Spread V} → (R : P.Resolution) → Table L → R.X → Prop :=
+fun {G} {L} {S} {V} {P} R T i =>
+  ∀ (w : L.Word),
+    Word.distinct w →
+      ∀ (s : E4) (d : NNReal) (h : OS.Slab timeAxis d (Word.carry w s)),
+        T.expect w = (R.character i) (P.slot (Word.carry w s) d h)
+def YM.OS.Spread.algebra : {G : Gauge} →
+  {L : Register G} → {S : Table L} → {V : OS.Chamber S timeAxis} → OS.Spread V → StarSubalgebra ℂ V.VacuumOp :=
+fun {G} {L} {S} {V} P => (StarAlgebra.adjoin ℂ P.generators).topologicalClosure
+def YM.OS.Spread.atom : {G : Gauge} →
+  {L : Register G} → {S : Table L} → {V : OS.Chamber S timeAxis} → OS.Spread V → L.Word → NNReal → V.VacuumOp :=
+fun {G} {L} {S} {V} P w d => V.D.orthogonalProjectionOnto ∘SL P.place d w ∘SL V.D.subtypeL
+@[reducible] def YM.OS.Chamber.D : {G : Gauge} →
+  {L : Register G} → {S : Table L} → {a : Axis} → (C : OS.Chamber S a) → Submodule ℂ C.H.space :=
+fun {G} {L} {S} {a} C => C.flow.ground
+def YM.OS.Chamber.UniqueHeat : {G : Gauge} → {L : Register G} → {S : Table L} → {a : Axis} → OS.Chamber S a → Prop :=
+fun {G} {L} {S} {a} C => ∀ (v : ↥C.D), ∃ z, z • C.omega0 = v
+structure YM.OS.Selection.Certificate {G : Gauge} {L : Register G} {S : Table L} {P : DiffPlan S} (R : S.Rotation)
+  (J : S.Stress) (C : OS.Selection S) : Prop
+number of parameters: 7
+fields:
+  YM.OS.Selection.Certificate.lengths : C.unselected.Laws P
+  YM.OS.Selection.Certificate.still : ∀ (x : ↥C.room.D) (i : OS.Cross timeAxis), (C.room.flow.U i) ↑x = ↑x
+  YM.OS.Selection.Certificate.decomposition : C.space.Out
+  YM.OS.Selection.Certificate.chosen : ∀ (i : C.space.X), C.space.receives (C.ensemble i) i
+  YM.OS.Selection.Certificate.states : ∀ (i : C.space.X), (C.ensemble i).Hierarchy
+  YM.OS.Selection.Certificate.sym : ∀ (i : C.space.X), R.Oriented (C.ensemble i)
+  YM.OS.Selection.Certificate.retains : ∀ (i : C.space.X) (d : ℕ), (C.ensemble i).null d = S.null d
+  YM.OS.Selection.Certificate.coordinates : ∀ (i : C.space.X), P.Inclusions (C.ensemble i)
+  YM.OS.Selection.Certificate.calculus : ∀ (i : C.space.X), P.Derivatives (C.ensemble i)
+  YM.OS.Selection.Certificate.flux : ∀ (i : C.space.X), Table.StressLaws (C.ensemble i) J P.deriv R.lie
+  YM.OS.Selection.Certificate.goes : C.slabs.Laws P
+  YM.OS.Selection.Certificate.heat : C.leaps.UniqueHeat
+constructor:
+  YM.OS.Selection.Certificate.mk {G : Gauge} {L : Register G} {S : Table L} {P : DiffPlan S} {R : S.Rotation}
+    {J : S.Stress} {C : OS.Selection S} (lengths : C.unselected.Laws P)
+    (still : ∀ (x : ↥C.room.D) (i : OS.Cross timeAxis), (C.room.flow.U i) ↑x = ↑x) (decomposition : C.space.Out)
+    (chosen : ∀ (i : C.space.X), C.space.receives (C.ensemble i) i)
+    (states : ∀ (i : C.space.X), (C.ensemble i).Hierarchy) (sym : ∀ (i : C.space.X), R.Oriented (C.ensemble i))
+    (retains : ∀ (i : C.space.X) (d : ℕ), (C.ensemble i).null d = S.null d)
+    (coordinates : ∀ (i : C.space.X), P.Inclusions (C.ensemble i))
+    (calculus : ∀ (i : C.space.X), P.Derivatives (C.ensemble i))
+    (flux : ∀ (i : C.space.X), Table.StressLaws (C.ensemble i) J P.deriv R.lie) (goes : C.slabs.Laws P)
+    (heat : C.leaps.UniqueHeat) : OS.Selection.Certificate R J C
+@OS.Spread.Resolution.barycenter : ∀ {G : Gauge} {L : Register G} {S : Table L} {V : OS.Chamber S timeAxis}
+  {P : OS.Spread V} (R : P.Resolution) (T : R.X → Table L),
+  R.Out →
+    (∀ (i : R.X), R.receives (T i) i) →
+      S.Homogeneous → ∀ (q : L.Word), Word.distinct q → ∫ (i : R.X), (T i).expect q ∂ R.μ = S.expect q
+'YM.OS.Spread.Resolution.barycenter' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YM.Table.Hierarchy {G : Gauge} {L : Register G} (S : Table L) : Prop
+number of parameters: 3
+fields:
+  YM.Table.Hierarchy.laws : S.Basic
+  YM.Table.Hierarchy.spin : S.RealSpin
+  YM.Table.Hierarchy.translations : S.Homogeneous
+  YM.Table.Hierarchy.positive : S.RP
+  YM.Table.Hierarchy.onTests : S.RPSmear
+  YM.Table.Hierarchy.smooth : S.Smooth
+  YM.Table.Hierarchy.order : S.Capped
+constructor:
+  YM.Table.Hierarchy.mk {G : Gauge} {L : Register G} {S : Table L} (laws : S.Basic) (spin : S.RealSpin)
+    (translations : S.Homogeneous) (positive : S.RP) (onTests : S.RPSmear) (smooth : S.Smooth) (order : S.Capped) :
+    S.Hierarchy
+structure YM.Nonperturbative.Headline.WightmanAxioms {G : Gauge} {C : Family G} {S : Table C.book}
+  (A : Boundary.Wightman S) (W : Boundary.Surface S) : Prop
+number of parameters: 5
+fields:
+  YM.Nonperturbative.Headline.WightmanAxioms.norm : ‖A.operators.vacuum‖ = 1
+  YM.Nonperturbative.Headline.WightmanAxioms.dense : Dense ↑A.operators.domain
+  YM.Nonperturbative.Headline.WightmanAxioms.cyclic : A.operators.domain =
+      Submodule.span ℂ (Set.range A.operators.vector)
+  YM.Nonperturbative.Headline.WightmanAxioms.tempered : ∀ (x : S.Union) (v : ↥A.operators.domain),
+      Continuous fun f => ↑(((A.operators.field x) f) v)
+  YM.Nonperturbative.Headline.WightmanAxioms.adjoints : ∀ (x : S.Union) (f : Boundary.Test4)
+      (v w : ↥A.operators.domain),
+      inner ℂ ↑(((A.operators.field x) f) v) ↑w = inner ℂ ↑v ↑(((A.operators.field (A.J x)) (Boundary.Probe.bar f)) w)
+  YM.Nonperturbative.Headline.WightmanAxioms.moments : ∀ (b : Boundary.Sentence S),
+      inner ℂ A.operators.vacuum (A.operators.vector b) = W.expect b
+  YM.Nonperturbative.Headline.WightmanAxioms.positive : W.wordsPositive A.J
+  YM.Nonperturbative.Headline.WightmanAxioms.localFields : ∀ (x y : S.Union) (f g : Boundary.Test4),
+      Boundary.Fields.causal f g →
+        ∀ (v : ↥A.operators.domain),
+          ((A.operators.field x) f) (((A.operators.field y) g) v) =
+            ((A.operators.field y) g) (((A.operators.field x) f) v)
+  YM.Nonperturbative.Headline.WightmanAxioms.symmetries : Boundary.Symmetries A.spin A.action
+  YM.Nonperturbative.Headline.WightmanAxioms.strong : ∀ (v : A.operators.H.space), Continuous fun g => (A.action.V g) v
+  YM.Nonperturbative.Headline.WightmanAxioms.spectral : A.action.orbit.Spectrum A.momentum
+  YM.Nonperturbative.Headline.WightmanAxioms.forward : A.momentum.region Mink.coneᶜ = 0
+  YM.Nonperturbative.Headline.WightmanAxioms.unique : ∀ (v : A.operators.H.space),
+      (∀ (x : E4), (A.action.orbit.translation x) v = v) → ∃ z, z • A.operators.vacuum = v
+constructor:
+  YM.Nonperturbative.Headline.WightmanAxioms.mk {G : Gauge} {C : Family G} {S : Table C.book} {A : Boundary.Wightman S}
+    {W : Boundary.Surface S} (norm : ‖A.operators.vacuum‖ = 1) (dense : Dense ↑A.operators.domain)
+    (cyclic : A.operators.domain = Submodule.span ℂ (Set.range A.operators.vector))
+    (tempered : ∀ (x : S.Union) (v : ↥A.operators.domain), Continuous fun f => ↑(((A.operators.field x) f) v))
+    (adjoints :
+      ∀ (x : S.Union) (f : Boundary.Test4) (v w : ↥A.operators.domain),
+        inner ℂ ↑(((A.operators.field x) f) v) ↑w =
+          inner ℂ ↑v ↑(((A.operators.field (A.J x)) (Boundary.Probe.bar f)) w))
+    (moments : ∀ (b : Boundary.Sentence S), inner ℂ A.operators.vacuum (A.operators.vector b) = W.expect b)
+    (positive : W.wordsPositive A.J)
+    (localFields :
+      ∀ (x y : S.Union) (f g : Boundary.Test4),
+        Boundary.Fields.causal f g →
+          ∀ (v : ↥A.operators.domain),
+            ((A.operators.field x) f) (((A.operators.field y) g) v) =
+              ((A.operators.field y) g) (((A.operators.field x) f) v))
+    (symmetries : Boundary.Symmetries A.spin A.action)
+    (strong : ∀ (v : A.operators.H.space), Continuous fun g => (A.action.V g) v)
+    (spectral : A.action.orbit.Spectrum A.momentum) (forward : A.momentum.region Mink.coneᶜ = 0)
+    (unique :
+      ∀ (v : A.operators.H.space),
+        (∀ (x : E4), (A.action.orbit.translation x) v = v) → ∃ z, z • A.operators.vacuum = v) :
+    Headline.WightmanAxioms A W
+structure YM.Nonperturbative.Headline.Reconstruction {G : Gauge} {C : Family G} {p : Extraction.Order}
+  {S : Table C.book} (F : Final C p S) (L : EveryPhase.Almanac F) : Prop
+number of parameters: 6
+fields:
+  YM.Nonperturbative.Headline.Reconstruction.unselected : F.B.From S
+  YM.Nonperturbative.Headline.Reconstruction.selected : F.A.From (F.α.ensemble F.α.atPoint)
+  YM.Nonperturbative.Headline.Reconstruction.chosen : Headline.WightmanAxioms F.action F.A.world
+  YM.Nonperturbative.Headline.Reconstruction.characters : ∀ (i : F.α.space.X),
+      Headline.WightmanAxioms (L.actors i) (L.contours i).world
+  YM.Nonperturbative.Headline.Reconstruction.average : ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n),
+      ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g
+constructor:
+  YM.Nonperturbative.Headline.Reconstruction.mk {G : Gauge} {C : Family G} {p : Extraction.Order} {S : Table C.book}
+    {F : Final C p S} {L : EveryPhase.Almanac F} (unselected : F.B.From S)
+    (selected : F.A.From (F.α.ensemble F.α.atPoint)) (chosen : Headline.WightmanAxioms F.action F.A.world)
+    (characters : ∀ (i : F.α.space.X), Headline.WightmanAxioms (L.actors i) (L.contours i).world)
+    (average :
+      ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n),
+        ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g) :
+    Headline.Reconstruction F L
+structure YM.EveryPhase.Almanac {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} (F : Final C f S) :
+  Type 1
+number of parameters: 5
+fields:
+  YM.EveryPhase.Almanac.chambers : (i : F.α.space.X) → OS.Chamber (F.α.ensemble i) timeAxis
+  YM.EveryPhase.Almanac.spreads : (i : F.α.space.X) → OS.Spread (self.chambers i)
+  YM.EveryPhase.Almanac.pantries : ∀ (i : F.α.space.X),
+      Bid.Pantry S (F.α.ensemble i) (self.chambers i) F.sector.derivatives (self.spreads i)
+  YM.EveryPhase.Almanac.contours : F.α.space.X → Boundary.Contour S
+  YM.EveryPhase.Almanac.cards : ∀ (i : F.α.space.X),
+      Next.BOUNDARY.Compatible S (self.spreads i) F.sector F.action.spin ⋯ (self.contours i)
+  YM.EveryPhase.Almanac.actors : F.α.space.X → Boundary.Wightman S
+  YM.EveryPhase.Almanac.letters : ∀ (i : F.α.space.X), (self.actors i).J = F.action.J
+  YM.EveryPhase.Almanac.spins : ∀ (i : F.α.space.X), (self.actors i).spin = F.action.spin
+  YM.EveryPhase.Almanac.cores : ∀ (i : F.α.space.X),
+      Next.BOUNDARY.FieldCore (self.contours i).world F.sector.turns ⋯ (self.actors i)
+  YM.EveryPhase.Almanac.J : (i : F.α.space.X) → (self.actors i).operators.H.space →L[ℂ] (self.chambers i).H.space
+  YM.EveryPhase.Almanac.links : ∀ (i : F.α.space.X),
+      Next.BOUNDARY.Attachment (self.actors i) (self.chambers i) (self.J i)
+  YM.EveryPhase.Almanac.baseC : self.chambers F.α.atPoint = F.α.leaps
+  YM.EveryPhase.Almanac.baseS : self.spreads F.α.atPoint ≍ F.α.slabs
+  YM.EveryPhase.Almanac.baseB : self.contours F.α.atPoint = F.A
+  YM.EveryPhase.Almanac.baseR : self.actors F.α.atPoint = F.action
+constructor:
+  YM.EveryPhase.Almanac.mk {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} {F : Final C f S}
+    (chambers : (i : F.α.space.X) → OS.Chamber (F.α.ensemble i) timeAxis)
+    (spreads : (i : F.α.space.X) → OS.Spread (chambers i))
+    (pantries : ∀ (i : F.α.space.X), Bid.Pantry S (F.α.ensemble i) (chambers i) F.sector.derivatives (spreads i))
+    (contours : F.α.space.X → Boundary.Contour S)
+    (cards : ∀ (i : F.α.space.X), Next.BOUNDARY.Compatible S (spreads i) F.sector F.action.spin ⋯ (contours i))
+    (actors : F.α.space.X → Boundary.Wightman S) (letters : ∀ (i : F.α.space.X), (actors i).J = F.action.J)
+    (spins : ∀ (i : F.α.space.X), (actors i).spin = F.action.spin)
+    (cores : ∀ (i : F.α.space.X), Next.BOUNDARY.FieldCore (contours i).world F.sector.turns ⋯ (actors i))
+    (J : (i : F.α.space.X) → (actors i).operators.H.space →L[ℂ] (chambers i).H.space)
+    (links : ∀ (i : F.α.space.X), Next.BOUNDARY.Attachment (actors i) (chambers i) (J i))
+    (baseC : chambers F.α.atPoint = F.α.leaps) (baseS : spreads F.α.atPoint ≍ F.α.slabs)
+    (baseB : contours F.α.atPoint = F.A) (baseR : actors F.α.atPoint = F.action) : EveryPhase.Almanac F
+structure YM.EveryPhase.Completed {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} (F : Final C f S)
+  (L : EveryPhase.Almanac F) : Prop
+number of parameters: 6
+fields:
+  YM.EveryPhase.Completed.isTheory : ∀ (i : F.α.space.X), (L.actors i).Realizes F.sector.turns ⋯
+  YM.EveryPhase.Completed.into_onto : ∀ (i : F.α.space.X), Function.Surjective ⇑(L.J i)
+  YM.EveryPhase.Completed.euclid : ∀ (i : F.α.space.X), (L.chambers i).UniqueHeat
+  YM.EveryPhase.Completed.mink : ∀ (i : F.α.space.X) (x : (L.actors i).operators.H.space),
+      ((L.actors i).momentum.region EveryPhase.zeroE) x = x ↔ ∃ z, z • (L.actors i).operators.vacuum = x
+  YM.EveryPhase.Completed.light : ∀ (A : EveryPhase.SumOfWords S),
+      EveryPhase.finite A →
+        ∃ M,
+          0 ≤ M ∧
+            ∀ (i : F.α.space.X), ∀ u ∈ Set.Ioc 0 1, (EveryPhase.νletter L i A).real (EveryPhase.lowE u) ≤ M * u ^ 2
+  YM.EveryPhase.Completed.heat : ∀ (A : EveryPhase.SumOfWords S),
+      EveryPhase.finite A →
+        ∃ M,
+          0 ≤ M ∧
+            ∀ (i : F.α.space.X),
+              ∀ s ≥ 1,
+                let x := EveryPhase.stands (L.actors i).operators A;
+                let P := (L.actors i).momentum.region EveryPhase.zeroE;
+                let r := inner ℂ x ((EveryPhase.bHeat (L.J i) s - P) x);
+                0 ≤ r ∧ r ≤ ↑(M * (↑s)⁻¹ ^ 2)
+  YM.EveryPhase.Completed.commutant : ∀ (i : F.α.space.X) (B : (L.actors i).operators.H.Op),
+      EveryPhase.member (L.actors i) B ↔ ∃ a, B = a • ContinuousLinearMap.id ℂ (L.actors i).operators.H.space
+  YM.EveryPhase.Completed.continued_stress : ∀ (i : F.α.space.X),
+      EveryPhase.Stress.Force S (F.α.ensemble i) (L.contours i) F.sector.turns F.sector.derivatives ⋯ (L.actors i)
+        F.sector.energy
+  YM.EveryPhase.Completed.depends : ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n),
+      Continuous fun i => (((L.contours i).world.W n) v) g
+  YM.EveryPhase.Completed.at_words : ∀ (v : C.book.Word),
+      Word.distinct v → ∫ (i : F.α.space.X), (F.α.ensemble i).expect v ∂F.α.space.μ = S.expect v
+  YM.EveryPhase.Completed.at_boundary : ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n),
+      ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g
+constructor:
+  YM.EveryPhase.Completed.mk {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} {F : Final C f S}
+    {L : EveryPhase.Almanac F} (isTheory : ∀ (i : F.α.space.X), (L.actors i).Realizes F.sector.turns ⋯)
+    (into_onto : ∀ (i : F.α.space.X), Function.Surjective ⇑(L.J i))
+    (euclid : ∀ (i : F.α.space.X), (L.chambers i).UniqueHeat)
+    (mink :
+      ∀ (i : F.α.space.X) (x : (L.actors i).operators.H.space),
+        ((L.actors i).momentum.region EveryPhase.zeroE) x = x ↔ ∃ z, z • (L.actors i).operators.vacuum = x)
+    (light :
+      ∀ (A : EveryPhase.SumOfWords S),
+        EveryPhase.finite A →
+          ∃ M,
+            0 ≤ M ∧
+              ∀ (i : F.α.space.X), ∀ u ∈ Set.Ioc 0 1, (EveryPhase.νletter L i A).real (EveryPhase.lowE u) ≤ M * u ^ 2)
+    (heat :
+      ∀ (A : EveryPhase.SumOfWords S),
+        EveryPhase.finite A →
+          ∃ M,
+            0 ≤ M ∧
+              ∀ (i : F.α.space.X),
+                ∀ s ≥ 1,
+                  let x := EveryPhase.stands (L.actors i).operators A;
+                  let P := (L.actors i).momentum.region EveryPhase.zeroE;
+                  let r := inner ℂ x ((EveryPhase.bHeat (L.J i) s - P) x);
+                  0 ≤ r ∧ r ≤ ↑(M * (↑s)⁻¹ ^ 2))
+    (commutant :
+      ∀ (i : F.α.space.X) (B : (L.actors i).operators.H.Op),
+        EveryPhase.member (L.actors i) B ↔ ∃ a, B = a • ContinuousLinearMap.id ℂ (L.actors i).operators.H.space)
+    (continued_stress :
+      ∀ (i : F.α.space.X),
+        EveryPhase.Stress.Force S (F.α.ensemble i) (L.contours i) F.sector.turns F.sector.derivatives ⋯ (L.actors i)
+          F.sector.energy)
+    (depends :
+      ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n), Continuous fun i => (((L.contours i).world.W n) v) g)
+    (at_words :
+      ∀ (v : C.book.Word), Word.distinct v → ∫ (i : F.α.space.X), (F.α.ensemble i).expect v ∂F.α.space.μ = S.expect v)
+    (at_boundary :
+      ∀ (n : ℕ) (v : Fin n → S.Union) (g : Boundary.Joint n),
+        ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g) :
+    EveryPhase.Completed F L
+@EveryPhase.recognizes : ∀ {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} (F : Final C f S)
+  {L : EveryPhase.Almanac F},
+  EveryPhase.Completed F L →
+    ∀ (i : F.α.space.X) (d : ℕ) (v : C.book.Ref d),
+      (F.α.ensemble i).vanishes d v ↔
+        ∀ (f_1 : Boundary.Test4), ((L.actors i).operators.field ((S.pin d) ((S.project d) v))) f_1 = 0
+'YM.EveryPhase.recognizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EveryPhase.exactly_fixed : ∀ {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} (F : Final C f S)
+  {L : EveryPhase.Almanac F},
+  EveryPhase.Completed F L →
+    ∀ (i : F.α.space.X) (x : (L.actors i).operators.H.space),
+      (∀ (p : E4), ((L.actors i).action.orbit.translation p) x = x) ↔ ∃ z, z • (L.actors i).operators.vacuum = x
+'YM.EveryPhase.exactly_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EveryPhase.all_characters : ∀ {G : Gauge} {C : Family G} {S : Table C.book} {f : Extraction.Order} (F : Final C f S),
+  ∃ L, EveryPhase.Completed F L
+'YM.EveryPhase.all_characters' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YM.Boundary.Wightman.Realizes {G : Gauge} {L : Register G} {S : Table L} {W : Boundary.Surface S}
+  (R : Boundary.Wightman S) (V : S.Rotation) (h : S.RealSpin) : Prop
+number of parameters: 7
+fields:
+  YM.Boundary.Wightman.Realizes.induced : Boundary.starRead R.J h
+  YM.Boundary.Wightman.Realizes.letters : R.spin.Descends V h
+  YM.Boundary.Wightman.Realizes.total : R.operators.Total
+  YM.Boundary.Wightman.Realizes.adj : R.operators.sharpPair R.J
+  YM.Boundary.Wightman.Realizes.meets : R.operators.realizes W
+  YM.Boundary.Wightman.Realizes.localPairs : R.operators.commutes
+  YM.Boundary.Wightman.Realizes.faithful : R.operators.notLost
+  YM.Boundary.Wightman.Realizes.covariance : Boundary.Symmetries R.spin R.action
+  YM.Boundary.Wightman.Realizes.spectral : R.action.orbit.Spectrum R.momentum
+  YM.Boundary.Wightman.Realizes.forward : R.momentum.region Mink.coneᶜ = 0
+  YM.Boundary.Wightman.Realizes.unique : ∀ (v : R.operators.H.space),
+      (∀ (x : E4), (R.action.orbit.translation x) v = v) → ∃ z, z • R.operators.vacuum = v
+constructor:
+  YM.Boundary.Wightman.Realizes.mk {G : Gauge} {L : Register G} {S : Table L} {W : Boundary.Surface S}
+    {R : Boundary.Wightman S} {V : S.Rotation} {h : S.RealSpin} (induced : Boundary.starRead R.J h)
+    (letters : R.spin.Descends V h) (total : R.operators.Total) (adj : R.operators.sharpPair R.J)
+    (meets : R.operators.realizes W) (localPairs : R.operators.commutes) (faithful : R.operators.notLost)
+    (covariance : Boundary.Symmetries R.spin R.action) (spectral : R.action.orbit.Spectrum R.momentum)
+    (forward : R.momentum.region Mink.coneᶜ = 0)
+    (unique :
+      ∀ (v : R.operators.H.space),
+        (∀ (x : E4), (R.action.orbit.translation x) v = v) → ∃ z, z • R.operators.vacuum = v) :
+    R.Realizes V h
+def YM.Boundary.Fields.notLost : {G : Gauge} → {L : Register G} → {S : Table L} → Boundary.Fields S → Prop :=
+fun {G} {L} {S} F => ∀ (p : S.Union), p ≠ 0 → ∃ f, (F.field p) f ≠ 0
+structure YM.Next.BOUNDARY.Compatible {G : Gauge} {C : Family G} (S : Table C.book) {T : Table C.book}
+  {V : OS.Chamber T timeAxis} (A : OS.Spread V) (X : Spec.Algebra S) (K : Boundary.Spins S) (h : S.RealSpin)
+  (B : Boundary.Contour S) : Prop
+number of parameters: 10
+fields:
+  YM.Next.BOUNDARY.Compatible.fromPhase : B.From T
+  YM.Next.BOUNDARY.Compatible.corner : B.waves.NonTangentialFree B.world
+  YM.Next.BOUNDARY.Compatible.reveals : ∃ Y,
+      Y.lift = B.waves ∧
+        ∀ (J : Boundary.StarOp S), Boundary.starRead J h → Org.Show.Reveals X K J Y B.world ∧ Bid.Hull Y.bits Y.lift J
+  YM.Next.BOUNDARY.Compatible.core : ∃ F, Next.BOUNDARY.FieldCore B.world X.turns h F
+  YM.Next.BOUNDARY.Compatible.attachments : ∀ (F : Boundary.Wightman S),
+      Next.BOUNDARY.FieldCore B.world X.turns h F → F.spin = K ∧ ∃! U, Next.BOUNDARY.Attachment F V U
+constructor:
+  YM.Next.BOUNDARY.Compatible.mk {G : Gauge} {C : Family G} {S T : Table C.book} {V : OS.Chamber T timeAxis}
+    {A : OS.Spread V} {X : Spec.Algebra S} {K : Boundary.Spins S} {h : S.RealSpin} {B : Boundary.Contour S}
+    (fromPhase : B.From T) (corner : B.waves.NonTangentialFree B.world)
+    (reveals :
+      ∃ Y,
+        Y.lift = B.waves ∧
+          ∀ (J : Boundary.StarOp S),
+            Boundary.starRead J h → Org.Show.Reveals X K J Y B.world ∧ Bid.Hull Y.bits Y.lift J)
+    (core : ∃ F, Next.BOUNDARY.FieldCore B.world X.turns h F)
+    (attachments :
+      ∀ (F : Boundary.Wightman S),
+        Next.BOUNDARY.FieldCore B.world X.turns h F → F.spin = K ∧ ∃! U, Next.BOUNDARY.Attachment F V U) :
+    Next.BOUNDARY.Compatible S A X K h B
+structure YM.Independent.Core.{u, v} {G : Gauge} {C : Family G} {f : Extraction.Order} {S : Table C.book}
+  (hG : G.Simple) (F : Final C f S) (L : EveryPhase.Almanac F) (Q : Reader F.sector.derivatives F.sector.turns ⋯) : Prop
+number of parameters: 8
+fields:
+  YM.Independent.Core.services : OPE.Services C f S
+  YM.Independent.Core.reconstruction : EveryPhase.Completed F L
+  YM.Independent.Core.trace : Integration.ManuscriptTraceTests.Tests F hG
+  YM.Independent.Core.ope : Foundation F Q
+  YM.Independent.Core.joint : ∀ (I J : Type) [inst : Fintype I] [inst_1 : Fintype J] (d : I → ℕ) (e : J → ℕ)
+      (a : Labels S d) (b : Labels S e) (M η c ε : ℝ),
+      0 ≤ M →
+        0 < η →
+          0 < c →
+            0 < ε →
+              ∀ (D : ℕ) (K : Type) [inst_2 : MeasurableSpace K] (B : ℝ),
+                ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                  ∀ (μ : MeasureTheory.Measure K) (w : K → ℂ) (p : K → Loc I J),
+                    AEMeasurable p μ →
+                      MeasureTheory.Integrable w μ →
+                        ∫ (s : K), ‖w s‖ ∂μ ≤ B →
+                          (∀ᵐ (s : K) ∂μ, w s ≠ 0 → p s ∈ FitsOn I J M η c r) →
+                            (∀ (χ : K → F.α.space.X),
+                                AEMeasurable χ μ →
+                                  JointEstimate F Q D a b (B * costRemainder D d ε r) μ w p (some ∘ χ)) ∧
+                              JointEstimate F Q D a b (B * costRemainder D d ε r) μ w p fun x => none
+constructor:
+  YM.Independent.Core.mk.{u, v} {G : Gauge} {C : Family G} {f : Extraction.Order} {S : Table C.book} {hG : G.Simple}
+    {F : Final C f S} {L : EveryPhase.Almanac F} {Q : Reader F.sector.derivatives F.sector.turns ⋯}
+    (services : OPE.Services C f S) (reconstruction : EveryPhase.Completed F L)
+    (trace : Integration.ManuscriptTraceTests.Tests F hG) (ope : Foundation F Q)
+    (joint :
+      ∀ (I J : Type) [inst : Fintype I] [inst_1 : Fintype J] (d : I → ℕ) (e : J → ℕ) (a : Labels S d) (b : Labels S e)
+        (M η c ε : ℝ),
+        0 ≤ M →
+          0 < η →
+            0 < c →
+              0 < ε →
+                ∀ (D : ℕ) (K : Type) [inst_2 : MeasurableSpace K] (B : ℝ),
+                  ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                    ∀ (μ : MeasureTheory.Measure K) (w : K → ℂ) (p : K → Loc I J),
+                      AEMeasurable p μ →
+                        MeasureTheory.Integrable w μ →
+                          ∫ (s : K), ‖w s‖ ∂μ ≤ B →
+                            (∀ᵐ (s : K) ∂μ, w s ≠ 0 → p s ∈ FitsOn I J M η c r) →
+                              (∀ (χ : K → F.α.space.X),
+                                  AEMeasurable χ μ →
+                                    JointEstimate F Q D a b (B * costRemainder D d ε r) μ w p (some ∘ χ)) ∧
+                                JointEstimate F Q D a b (B * costRemainder D d ε r) μ w p fun x => none) :
+    Independent.Core hG F L Q
+def YM.Mink.cone : Set E4 :=
+{x | ‖spatial x‖ ≤ time x}
+@[reducible] def YM.timeAxis : Axis :=
+Fin.last 3
+structure YM.Nonperturbative.Headline.SeparatedOPE {G : Gauge} {C : Family G} {p : Extraction.Order} {S : Table C.book}
+  (F : Final C p S) (Q : Reader F.sector.derivatives F.sector.turns ⋯) : Prop
+number of parameters: 6
+fields:
+  YM.Nonperturbative.Headline.SeparatedOPE.coefficient : ∀ (I : Type) [inst : Fintype I] (d : I → ℕ) (a : Labels S d)
+      (M η ε : ℝ),
+      0 ≤ M →
+        0 < η →
+          0 < ε →
+            ∀ (j : ℕ) (i : Q.channels j),
+              ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                ∀ (x : I → E4) (o : E4), OPE.WithinRoom r M η x o → ‖Q.coef j i x a o‖ ≤ r ^ (↑j - weight d - ε)
+  YM.Nonperturbative.Headline.SeparatedOPE.remainder : ∀ {I J : Type} [inst : Fintype I] [inst_1 : Fintype J]
+      {d : I → ℕ} {e : J → ℕ} (a : Labels S d) (b : Labels S e) {M η c ε : ℝ},
+      0 ≤ M →
+        0 < η →
+          0 < c →
+            0 < ε →
+              ∀ (D : ℕ),
+                ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                  ∀ (x : I → E4) (o : E4) (y : J → E4),
+                    OPE.WithinRoom r M η x o →
+                      OPE.ClearOf o y c →
+                        ∀ (s : OPE.Viewers F),
+                          ‖whole (OPE.spectator F s) x a y b -
+                                ∑ j,
+                                  ∑ i,
+                                    Q.coef (↑j) i x a o *
+                                      whole (OPE.spectator F s) (OPE.sole o) (OPE.sole (Q.actor (↑j) i)) y b‖ ≤
+                            r ^ (↑D + 1 - weight d - ε)
+  YM.Nonperturbative.Headline.SeparatedOPE.profiles : ∀ (I J : Type) [inst : Fintype I] [inst_1 : Fintype J] (d : I → ℕ)
+      (e : J → ℕ) (a : Labels S d) (b : Labels S e) (M η c ε : ℝ),
+      0 ≤ M →
+        0 < η →
+          0 < c →
+            0 < ε →
+              ∀ (D : ℕ) (K : Type) [inst_2 : MeasurableSpace K] (B : ℝ),
+                ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                  ∀ (μ : MeasureTheory.Measure K) (w : K → ℂ) (z : K → Loc I J),
+                    AEMeasurable z μ →
+                      MeasureTheory.Integrable w μ →
+                        ∫ (i : K), ‖w i‖ ∂μ ≤ B →
+                          (∀ᵐ (i : K) ∂μ, w i ≠ 0 → z i ∈ FitsOn I J M η c r) →
+                            (∀ (χ : K → F.α.space.X),
+                                AEMeasurable χ μ →
+                                  JointEstimate F Q D a b (B * r ^ (↑D + 1 - weight d - ε)) μ w z (some ∘ χ)) ∧
+                              JointEstimate F Q D a b (B * r ^ (↑D + 1 - weight d - ε)) μ w z fun x => none
+constructor:
+  YM.Nonperturbative.Headline.SeparatedOPE.mk {G : Gauge} {C : Family G} {p : Extraction.Order} {S : Table C.book}
+    {F : Final C p S} {Q : Reader F.sector.derivatives F.sector.turns ⋯}
+    (coefficient :
+      ∀ (I : Type) [inst : Fintype I] (d : I → ℕ) (a : Labels S d) (M η ε : ℝ),
+        0 ≤ M →
+          0 < η →
+            0 < ε →
+              ∀ (j : ℕ) (i : Q.channels j),
+                ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                  ∀ (x : I → E4) (o : E4), OPE.WithinRoom r M η x o → ‖Q.coef j i x a o‖ ≤ r ^ (↑j - weight d - ε))
+    (remainder :
+      ∀ {I J : Type} [inst : Fintype I] [inst_1 : Fintype J] {d : I → ℕ} {e : J → ℕ} (a : Labels S d) (b : Labels S e)
+        {M η c ε : ℝ},
+        0 ≤ M →
+          0 < η →
+            0 < c →
+              0 < ε →
+                ∀ (D : ℕ),
+                  ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                    ∀ (x : I → E4) (o : E4) (y : J → E4),
+                      OPE.WithinRoom r M η x o →
+                        OPE.ClearOf o y c →
+                          ∀ (s : OPE.Viewers F),
+                            ‖whole (OPE.spectator F s) x a y b -
+                                  ∑ j,
+                                    ∑ i,
+                                      Q.coef (↑j) i x a o *
+                                        whole (OPE.spectator F s) (OPE.sole o) (OPE.sole (Q.actor (↑j) i)) y b‖ ≤
+                              r ^ (↑D + 1 - weight d - ε))
+    (profiles :
+      ∀ (I J : Type) [inst : Fintype I] [inst_1 : Fintype J] (d : I → ℕ) (e : J → ℕ) (a : Labels S d) (b : Labels S e)
+        (M η c ε : ℝ),
+        0 ≤ M →
+          0 < η →
+            0 < c →
+              0 < ε →
+                ∀ (D : ℕ) (K : Type) [inst_2 : MeasurableSpace K] (B : ℝ),
+                  ∀ᶠ (r : ℝ) in nhdsWithin 0 (Set.Ioi 0),
+                    ∀ (μ : MeasureTheory.Measure K) (w : K → ℂ) (z : K → Loc I J),
+                      AEMeasurable z μ →
+                        MeasureTheory.Integrable w μ →
+                          ∫ (i : K), ‖w i‖ ∂μ ≤ B →
+                            (∀ᵐ (i : K) ∂μ, w i ≠ 0 → z i ∈ FitsOn I J M η c r) →
+                              (∀ (χ : K → F.α.space.X),
+                                  AEMeasurable χ μ →
+                                    JointEstimate F Q D a b (B * r ^ (↑D + 1 - weight d - ε)) μ w z (some ∘ χ)) ∧
+                                JointEstimate F Q D a b (B * r ^ (↑D + 1 - weight d - ε)) μ w z fun x => none) :
+    Headline.SeparatedOPE F Q
+@[reducible] def YM.OPE.Viewers : {G : Gauge} →
+  {C : Family G} → {S : Table C.book} → {F : Extraction.Order} → Final C F S → Type :=
+fun {G} {C} {S} {F} U => Option U.α.space.X
+def YM.OPE.spectator : {G : Gauge} →
+  {C : Family G} → {S : Table C.book} → {F : Extraction.Order} → (U : Final C F S) → OPE.Viewers U → Table C.book :=
+fun {G} {C} {S} {F} U v => Option.elim v S U.α.ensemble
+structure YM.Spec.Seed {G : Gauge} (C : Family G) (f : Extraction.Order) (S : Table C.book) : Prop
+number of parameters: 4
+fields:
+  YM.Spec.Seed.cutoff : C.Makes
+  YM.Spec.Seed.ordered : f.Ordered C S
+  YM.Spec.Seed.generic : f.PointLimits C S
+  YM.Spec.Seed.kernel : S.Hierarchy
+  YM.Spec.Seed.copies : Cells.CellHyp C f
+  YM.Spec.Seed.corrected : Cells.RankWidths C f S
+constructor:
+  YM.Spec.Seed.mk {G : Gauge} {C : Family G} {f : Extraction.Order} {S : Table C.book} (cutoff : C.Makes)
+    (ordered : f.Ordered C S) (generic : f.PointLimits C S) (kernel : S.Hierarchy) (copies : Cells.CellHyp C f)
+    (corrected : Cells.RankWidths C f S) : Seed C f S
+structure YM.Spec.Algebra {G : Gauge} {L : Register G} (S : Table L) : Type
+number of parameters: 3
+fields:
+  YM.Spec.Algebra.derivatives : DiffPlan S
+  YM.Spec.Algebra.turns : S.Rotation
+  YM.Spec.Algebra.energy : S.Stress
+constructor:
+  YM.Spec.Algebra.mk {G : Gauge} {L : Register G} {S : Table L} (derivatives : DiffPlan S) (turns : S.Rotation)
+    (energy : S.Stress) : Spec.Algebra S
+structure YM.Spec.Locals {G : Gauge} {L : Register G} {S : Table L} (X : Spec.Algebra S) (h : S.RealSpin) : Prop
+number of parameters: 5
+fields:
+  YM.Spec.Locals.injection : X.derivatives.Inclusions S
+  YM.Spec.Locals.derivatives : X.derivatives.Derivatives S
+  YM.Spec.Locals.rights : X.derivatives.Orientation h
+  YM.Spec.Locals.spots : X.turns.Laws X.derivatives h
+  YM.Spec.Locals.motion : X.turns.Oriented S
+  YM.Spec.Locals.comparator : Maxwell.Ranks S h
+  YM.Spec.Locals.conserved : Table.Conserved X.derivatives h X.energy
+  YM.Spec.Locals.spin : Table.Tensorial X.turns X.energy
+  YM.Spec.Locals.charges : Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie
+constructor:
+  YM.Spec.Locals.mk {G : Gauge} {L : Register G} {S : Table L} {X : Spec.Algebra S} {h : S.RealSpin}
+    (injection : X.derivatives.Inclusions S) (derivatives : X.derivatives.Derivatives S)
+    (rights : X.derivatives.Orientation h) (spots : X.turns.Laws X.derivatives h) (motion : X.turns.Oriented S)
+    (comparator : Maxwell.Ranks S h) (conserved : Table.Conserved X.derivatives h X.energy)
+    (spin : Table.Tensorial X.turns X.energy) (charges : Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie) :
+    Locals X h
+structure YM.Spec.Materializes {G : Gauge} {C : Family G} {Z : Table C.book} (X : Spec.Algebra Z) (Y : OS.Selection Z)
+  (h : Z.RealSpin) : Prop
+number of parameters: 6
+fields:
+  YM.Spec.Materializes.transport : Locals X h
+  YM.Spec.Materializes.phase : OS.Selection.Certificate X.turns X.energy Y
+constructor:
+  YM.Spec.Materializes.mk {G : Gauge} {C : Family G} {Z : Table C.book} {X : Spec.Algebra Z} {Y : OS.Selection Z}
+    {h : Z.RealSpin} (transport : Locals X h) (phase : OS.Selection.Certificate X.turns X.energy Y) : Materializes X Y h
+def YM.Spec.Calibrated : {G : Gauge} → Family G → Prop :=
+fun {G} C =>
+  ∃ S D T W Y I O K P B F,
+    B.bake.Stays F ∧ C.path = B.bake.make F ∧ ∀ (N m p : ℕ), m < N → B.Move N m p (F N p m) (F N p (m + 1))
+structure YM.Spec.Final {G : Gauge} (C : Family G) (f : Extraction.Order) (S : Table C.book) : Type 1
+number of parameters: 4
+fields:
+  YM.Spec.Final.calibration : Calibrated C
+  YM.Spec.Final.room : Seed C f S
+  YM.Spec.Final.sector : Spec.Algebra S
+  YM.Spec.Final.α : OS.Selection S
+  YM.Spec.Final.phase : Materializes self.sector self.α ⋯
+  YM.Spec.Final.B : Boundary.Contour S
+  YM.Spec.Final.A : Boundary.Contour S
+  YM.Spec.Final.action : Boundary.Wightman S
+  YM.Spec.Final.realization : Relativistic self.sector self.α self.B self.A self.action ⋯
+constructor:
+  YM.Spec.Final.mk {G : Gauge} {C : Family G} {f : Extraction.Order} {S : Table C.book} (calibration : Calibrated C)
+    (room : Seed C f S) (sector : Spec.Algebra S) (α : OS.Selection S) (phase : Materializes sector α ⋯)
+    (B A : Boundary.Contour S) (action : Boundary.Wightman S) (realization : Relativistic sector α B A action ⋯) :
+    Final C f S
+@[reducible] def YM.Table.Stress : {G : Gauge} → {L : Register G} → Table L → Type :=
+fun {G} {L} S => Axis → Axis → S.Field 4
+structure YM.Table.Conserved {G : Gauge} {L : Register G} {S : Table L} (P : DiffPlan S) (H : S.RealSpin)
+  (J : S.Stress) : Prop
+number of parameters: 6
+fields:
+  YM.Table.Conserved.symmetric : ∀ (a b : Axis), J a b = J b a
+  YM.Table.Conserved.real : ∀ (a b : Axis), (S.conj H 4) (J a b) = J a b
+  YM.Table.Conserved.divergence : ∀ (b : Axis), ∑ a, (P.deriv 4 a) (J a b) = 0
+constructor:
+  YM.Table.Conserved.mk {G : Gauge} {L : Register G} {S : Table L} {P : DiffPlan S} {H : S.RealSpin} {J : S.Stress}
+    (symmetric : ∀ (a b : Axis), J a b = J b a) (real : ∀ (a b : Axis), (S.conj H 4) (J a b) = J a b)
+    (divergence : ∀ (b : Axis), ∑ a, (P.deriv 4 a) (J a b) = 0) : Table.Conserved P H J
+def YM.Table.Tensorial : {G : Gauge} → {L : Register G} → {S : Table L} → S.Rotation → S.Stress → Prop :=
+fun {G} {L} {S} R J => ∀ (K : Ortho) (a b : Axis), (R.act 4 K) (J a b) = ∑ i, ∑ j, ↑(↑K i a * ↑K j b) • J i j
+structure YM.Table.StressLaws {G : Gauge} {L : Register G} {S : Table L} (T : Table L) (J : S.Stress)
+  (Y : (d : ℕ) → Axis → S.Field d →ₗ[ℂ] S.Field (d + 1)) (A : (d : ℕ) → Ortho.Skew →ₗ[ℝ] S.Field d →ₗ[ℂ] S.Field d) :
+  Prop
+number of parameters: 7
+fields:
+  YM.Table.StressLaws.translation : ∀ {n : ℕ} {x : Points (n + 1)},
+      x ∈ conf (n + 1) →
+        ∀ (q : Fin n → S.Tag) {χ : E4 → ℝ},
+          Table.Window x χ →
+            ∀ (b : Axis) (d : ℕ) (B : S.Field d),
+              Table.shellGrad T J χ b x q B = S.useAt T x (Fin.cons ⟨d + 1, (Y d b) B⟩ q)
+  YM.Table.StressLaws.rotation : ∀ {n : ℕ} {x : Points (n + 1)},
+      x ∈ conf (n + 1) →
+        ∀ (q : Fin n → S.Tag) {χ : E4 → ℝ},
+          Table.Window x χ →
+            ∀ (g : Ortho.Skew) (d : ℕ) (B : S.Field d),
+              Table.shellSpin T J χ g x q B = S.useAt T x (Fin.cons ⟨d, ((A d) g) B⟩ q)
+constructor:
+  YM.Table.StressLaws.mk {G : Gauge} {L : Register G} {S T : Table L} {J : S.Stress}
+    {Y : (d : ℕ) → Axis → S.Field d →ₗ[ℂ] S.Field (d + 1)} {A : (d : ℕ) → Ortho.Skew →ₗ[ℝ] S.Field d →ₗ[ℂ] S.Field d}
+    (translation :
+      ∀ {n : ℕ} {x : Points (n + 1)},
+        x ∈ conf (n + 1) →
+          ∀ (q : Fin n → S.Tag) {χ : E4 → ℝ},
+            Table.Window x χ →
+              ∀ (b : Axis) (d : ℕ) (B : S.Field d),
+                Table.shellGrad T J χ b x q B = S.useAt T x (Fin.cons ⟨d + 1, (Y d b) B⟩ q))
+    (rotation :
+      ∀ {n : ℕ} {x : Points (n + 1)},
+        x ∈ conf (n + 1) →
+          ∀ (q : Fin n → S.Tag) {χ : E4 → ℝ},
+            Table.Window x χ →
+              ∀ (g : Ortho.Skew) (d : ℕ) (B : S.Field d),
+                Table.shellSpin T J χ g x q B = S.useAt T x (Fin.cons ⟨d, ((A d) g) B⟩ q)) :
+    Table.StressLaws T J Y A
+structure YM.Nonperturbative.Headline.TraceExclusions.{u, v} {G : Gauge} {C : Family G} {p : Extraction.Order}
+  {S : Table C.book} (F : Final C p S) : Prop
+number of parameters: 5
+fields:
+  YM.Nonperturbative.Headline.TraceExclusions.centered : ∀ (f : Boundary.Test4),
+      inner ℂ F.action.operators.vacuum (TraceExtension.excitation F.action.operators (TraceExtension.pinned F) f) = 0
+  YM.Nonperturbative.Headline.TraceExclusions.identified : ∀ (f : Boundary.Test4),
+      (F.action.operators.field (TraceExtension.pinned F)) f =
+        (F.action.operators.field ((S.pin 4) (TraceExtension.stressTrace F.sector.energy))) f -
+          (TraceExtension.euclideanVEV S (TraceExtension.selected F) (TraceExtension.stressTrace F.sector.energy) *
+              ∫ (x : E4), f x) •
+            LinearMap.id
+  YM.Nonperturbative.Headline.TraceExclusions.shortDistance : Filter.Tendsto
+      (fun s => (s ^ 8 * Real.log s⁻¹ ^ 2) • TraceExtension.euclidean F s) (nhdsWithin 0 (Set.Ioi 0))
+      (nhds ↑(Trace.Verse.award G))
+  YM.Nonperturbative.Headline.TraceExclusions.positive : 0 < Trace.Verse.award G
+  YM.Nonperturbative.Headline.TraceExclusions.wick : ∀ (Color : Type u) (palette : TraceExtension.Wick.Palette Color)
+      (left right : TraceExtension.Wick.PolyField Color),
+      ∃ x y,
+        HasCompactSupport ⇑(TraceExtension.waveTest (TraceExtension.productTest x y)) ∧
+          ((F.A.world.W 2) (TraceExtension.pairV F.action.J (TraceExtension.pinned F)))
+              (TraceExtension.productTest x y) ≠
+            palette.wicks left right ⇑(TraceExtension.waveTest (TraceExtension.productTest x y))
+  YM.Nonperturbative.Headline.TraceExclusions.maxwell : ∀ (n : ℕ)
+      (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(TraceExtension.Photons.Ambient n)),
+      (∀ (w : F.action.operators.H.space), TraceExtension.Photons.PhysicalWave (U w)) →
+        U F.action.operators.vacuum = TraceExtension.Photons.vacuum n →
+          (∀ (w : F.action.operators.H.space) (b : E4),
+              ∀ᵐ (x : TraceExtension.Photons.Wavespace n) ∂TraceExtension.Photons.sumMeasure n,
+                ↑↑(U ((F.action.action.orbit.translation b) w)) x =
+                  Boundary.Probe.plane (TraceExtension.Photons.forward x) b * ↑↑(U w) x) →
+            ∃ f h,
+              HasCompactSupport ⇑f ∧
+                (∀ (i : TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                  (∀ (i : TraceExtension.Photons.Label n), Boundary.Probe.bar (h i) = h i) ∧
+                    (∀ (i : TraceExtension.Photons.Label n), Boundary.Fields.causal f (h i)) ∧
+                      inner ℂ (TraceExtension.Photons.coherent (-h)) (TraceExtension.Photons.signal F U f) ≠
+                        inner ℂ (TraceExtension.Photons.signal F U (Boundary.Probe.bar f))
+                          (TraceExtension.Photons.coherent h)
+  YM.Nonperturbative.Headline.TraceExclusions.invariant : ∀ (n : ℕ)
+      (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(TraceExtension.Photons.Ambient n)),
+      TraceExtension.Photons.Comparison F U →
+        ∀ (I : Type v) [inst : MeasurableSpace I] (μ : MeasureTheory.Measure I) [MeasureTheory.IsProbabilityMeasure μ]
+          (P : I → ↥(TraceExtension.Photons.Ambient n) → ↥(TraceExtension.Photons.Ambient n)),
+          (∀ (z : I) (x y : ↥(TraceExtension.Photons.Ambient n)),
+              TraceExtension.Photons.PhysicalWave x →
+                TraceExtension.Photons.PhysicalWave y → inner ℂ (P z x) (P z y) = inner ℂ x y) →
+            (∀ (z : I) (x : F.action.operators.H.space), P z (U x) = U x) →
+              ∀ (r : ℝ),
+                0 < r →
+                  ∃ A B,
+                    IsOpen A ∧
+                      IsOpen B ∧
+                        closure A ⊆ Metric.ball 0 r ∧
+                          (∀ x ∈ closure A, ∀ y ∈ closure B, x - y ∈ Mink.spacelike) ∧
+                            ∃ f h,
+                              tsupport ⇑f ⊆ A ∧
+                                HasCompactSupport ⇑f ∧
+                                  (∀ (i : TraceExtension.Photons.Label n), tsupport ⇑(h i) ⊆ B) ∧
+                                    (∀ (i : TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                                      (∀ (i : TraceExtension.Photons.Label n), Boundary.Probe.bar (h i) = h i) ∧
+                                        ∫ (z : I),
+                                            inner ℂ (P z (TraceExtension.Photons.coherent (-h)))
+                                              (TraceExtension.Photons.signal F U f) ∂μ ≠
+                                          ∫ (z : I),
+                                            inner ℂ (TraceExtension.Photons.signal F U (Boundary.Probe.bar f))
+                                              (P z (TraceExtension.Photons.coherent h)) ∂μ
+constructor:
+  YM.Nonperturbative.Headline.TraceExclusions.mk.{u, v} {G : Gauge} {C : Family G} {p : Extraction.Order}
+    {S : Table C.book} {F : Final C p S}
+    (centered :
+      ∀ (f : Boundary.Test4),
+        inner ℂ F.action.operators.vacuum (TraceExtension.excitation F.action.operators (TraceExtension.pinned F) f) =
+          0)
+    (identified :
+      ∀ (f : Boundary.Test4),
+        (F.action.operators.field (TraceExtension.pinned F)) f =
+          (F.action.operators.field ((S.pin 4) (TraceExtension.stressTrace F.sector.energy))) f -
+            (TraceExtension.euclideanVEV S (TraceExtension.selected F) (TraceExtension.stressTrace F.sector.energy) *
+                ∫ (x : E4), f x) •
+              LinearMap.id)
+    (shortDistance :
+      Filter.Tendsto (fun s => (s ^ 8 * Real.log s⁻¹ ^ 2) • TraceExtension.euclidean F s) (nhdsWithin 0 (Set.Ioi 0))
+        (nhds ↑(Trace.Verse.award G)))
+    (positive : 0 < Trace.Verse.award G)
+    (wick :
+      ∀ (Color : Type u) (palette : TraceExtension.Wick.Palette Color)
+        (left right : TraceExtension.Wick.PolyField Color),
+        ∃ x y,
+          HasCompactSupport ⇑(TraceExtension.waveTest (TraceExtension.productTest x y)) ∧
+            ((F.A.world.W 2) (TraceExtension.pairV F.action.J (TraceExtension.pinned F)))
+                (TraceExtension.productTest x y) ≠
+              palette.wicks left right ⇑(TraceExtension.waveTest (TraceExtension.productTest x y)))
+    (maxwell :
+      ∀ (n : ℕ) (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(TraceExtension.Photons.Ambient n)),
+        (∀ (w : F.action.operators.H.space), TraceExtension.Photons.PhysicalWave (U w)) →
+          U F.action.operators.vacuum = TraceExtension.Photons.vacuum n →
+            (∀ (w : F.action.operators.H.space) (b : E4),
+                ∀ᵐ (x : TraceExtension.Photons.Wavespace n) ∂TraceExtension.Photons.sumMeasure n,
+                  ↑↑(U ((F.action.action.orbit.translation b) w)) x =
+                    Boundary.Probe.plane (TraceExtension.Photons.forward x) b * ↑↑(U w) x) →
+              ∃ f h,
+                HasCompactSupport ⇑f ∧
+                  (∀ (i : TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                    (∀ (i : TraceExtension.Photons.Label n), Boundary.Probe.bar (h i) = h i) ∧
+                      (∀ (i : TraceExtension.Photons.Label n), Boundary.Fields.causal f (h i)) ∧
+                        inner ℂ (TraceExtension.Photons.coherent (-h)) (TraceExtension.Photons.signal F U f) ≠
+                          inner ℂ (TraceExtension.Photons.signal F U (Boundary.Probe.bar f))
+                            (TraceExtension.Photons.coherent h))
+    (invariant :
+      ∀ (n : ℕ) (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(TraceExtension.Photons.Ambient n)),
+        TraceExtension.Photons.Comparison F U →
+          ∀ (I : Type v) [inst : MeasurableSpace I] (μ : MeasureTheory.Measure I) [MeasureTheory.IsProbabilityMeasure μ]
+            (P : I → ↥(TraceExtension.Photons.Ambient n) → ↥(TraceExtension.Photons.Ambient n)),
+            (∀ (z : I) (x y : ↥(TraceExtension.Photons.Ambient n)),
+                TraceExtension.Photons.PhysicalWave x →
+                  TraceExtension.Photons.PhysicalWave y → inner ℂ (P z x) (P z y) = inner ℂ x y) →
+              (∀ (z : I) (x : F.action.operators.H.space), P z (U x) = U x) →
+                ∀ (r : ℝ),
+                  0 < r →
+                    ∃ A B,
+                      IsOpen A ∧
+                        IsOpen B ∧
+                          closure A ⊆ Metric.ball 0 r ∧
+                            (∀ x ∈ closure A, ∀ y ∈ closure B, x - y ∈ Mink.spacelike) ∧
+                              ∃ f h,
+                                tsupport ⇑f ⊆ A ∧
+                                  HasCompactSupport ⇑f ∧
+                                    (∀ (i : TraceExtension.Photons.Label n), tsupport ⇑(h i) ⊆ B) ∧
+                                      (∀ (i : TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                                        (∀ (i : TraceExtension.Photons.Label n), Boundary.Probe.bar (h i) = h i) ∧
+                                          ∫ (z : I),
+                                              inner ℂ (P z (TraceExtension.Photons.coherent (-h)))
+                                                (TraceExtension.Photons.signal F U f) ∂μ ≠
+                                            ∫ (z : I),
+                                              inner ℂ (TraceExtension.Photons.signal F U (Boundary.Probe.bar f))
+                                                (P z (TraceExtension.Photons.coherent h)) ∂μ) :
+    Headline.TraceExclusions F
+@[reducible] def YM.TraceExtension.selected : {G : Gauge} →
+  {C : Family G} → {f : Extraction.Order} → {S : Table C.book} → Final C f S → Table C.book :=
+fun {G} {C} {f} {S} F => F.α.ensemble F.α.atPoint
+def YM.TraceExtension.center : {G : Gauge} →
+  {C : Family G} → {f : Extraction.Order} → {S : Table C.book} → Final C f S → S.Field 4 :=
+fun {G} {C} {f} {S} F => TraceExtension.theta (TraceExtension.selected F) F.sector.energy
+def YM.TraceExtension.pinned : {G : Gauge} →
+  {C : Family G} → {f : Extraction.Order} → {S : Table C.book} → Final C f S → S.Union :=
+fun {G} {C} {f} {S} F => (S.pin 4) (TraceExtension.center F)
+def YM.TraceExtension.opposed : ℝ → Points 2 :=
+fun r => Boundary.place 0 (TraceExtension.pairH (r / 2))
+def YM.TraceExtension.euclidean : {G : Gauge} →
+  {C : Family G} → {f : Extraction.Order} → {S : Table C.book} → Final C f S → ℝ → ℂ :=
+fun {G} {C} {f} {S} F r =>
+  S.useAt (TraceExtension.selected F) (TraceExtension.opposed r) fun x => ⟨4, TraceExtension.center F⟩
+def YM.TraceExtension.stressTrace : {G : Gauge} → {L : Register G} → {S : Table L} → S.Stress → S.Field 4 :=
+fun {G} {L} {S} J => ∑ i, J i i
+def YM.TraceExtension.euclideanVEV : {G : Gauge} →
+  {L : Register G} → (S : Table L) → Table L → {d : ℕ} → S.Field d → ℂ :=
+fun {G} {L} S T {d} v => S.useAt T 0 fun x => ⟨d, v⟩
+def YM.TraceExtension.centerIn : {G : Gauge} →
+  {L : Register G} → (S : Table L) → Table L → {d : ℕ} → S.Field d → S.Field d :=
+fun {G} {L} S T {d} v => v - TraceExtension.euclideanVEV S T v • S.unit d
+def YM.TraceExtension.theta : {G : Gauge} → {L : Register G} → {S : Table L} → Table L → S.Stress → S.Field 4 :=
+fun {G} {L} {S} T J => TraceExtension.centerIn S T (TraceExtension.stressTrace J)
+def YM.Trace.Verse.award : Gauge → ℝ :=
+fun G => 12 * (Trace.Over.d2 G ^ 2 / Trace.Over.b0 G ^ 2) * ↑G.lieDim / Real.pi ^ 4
+@[reducible] def YM.Trace.Over.d2 : Gauge → ℝ :=
+fun G => Trace.Over.forceR G
+@[reducible] def YM.Trace.Over.forceR : Gauge → ℝ :=
+fun G => -G.slopeConstant / 4
+@[reducible] def YM.Trace.Over.b0 : Gauge → ℝ :=
+fun G => 11 * G.casimir / (48 * Real.pi ^ 2)
+def YM.Gauge.slopeConstant : Gauge → ℝ :=
+fun G => 11 * G.casimir / (24 * Real.pi ^ 2)
+@[reducible] def YM.Gauge.lieDim : Gauge → ℕ :=
+fun G => Module.finrank ℝ G.Alg
+@YangMills.publicTrace : ∀ {g : YangMills.GaugeGroup} {C : Family g.core} {p : Extraction.Order} {S : Table C.book}
+  (F : Final C p S) (Q : Reader F.sector.derivatives F.sector.turns ⋯),
+  g.IsSimple → Headline.TraceExclusions F → (YangMills.hierarchy F Q).TraceTest
+'YangMills.publicTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YangMills.Hierarchy.TraceTest {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g}
+  (T : YangMills.Hierarchy C) : Prop
+number of parameters: 3
+fields:
+  YangMills.Hierarchy.TraceTest.centered : ∀ (f : YangMills.TestFunction),
+      inner ℂ ↑T.theory.fields.vacuum
+          ↑(((T.theory.fields.field ((T.toLabel 4) T.centeredTrace)) f) T.theory.fields.vacuum) =
+        0
+  YangMills.Hierarchy.TraceTest.amplitudePositive : 0 < 3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4
+  YangMills.Hierarchy.TraceTest.shortDistance : Filter.Tendsto (fun r => (r ^ 8 * Real.log r⁻¹ ^ 2) • T.traceTwo r)
+      (nhdsWithin 0 (Set.Ioi 0)) (nhds ↑(3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4))
+  YangMills.Hierarchy.TraceTest.excludes : ∀ (terms : List (ℂ × YangMills.Hierarchy.Track)),
+      ¬T.traceTwo =ᶠ[nhdsWithin 0 (Set.Ioi 0)] YangMills.Hierarchy.wickProfile terms
+constructor:
+  YangMills.Hierarchy.TraceTest.mk {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g} {T : YangMills.Hierarchy C}
+    (centered :
+      ∀ (f : YangMills.TestFunction),
+        inner ℂ ↑T.theory.fields.vacuum
+            ↑(((T.theory.fields.field ((T.toLabel 4) T.centeredTrace)) f) T.theory.fields.vacuum) =
+          0)
+    (amplitudePositive : 0 < 3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4)
+    (shortDistance :
+      Filter.Tendsto (fun r => (r ^ 8 * Real.log r⁻¹ ^ 2) • T.traceTwo r) (nhdsWithin 0 (Set.Ioi 0))
+        (nhds ↑(3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4)))
+    (excludes :
+      ∀ (terms : List (ℂ × YangMills.Hierarchy.Track)),
+        ¬T.traceTwo =ᶠ[nhdsWithin 0 (Set.Ioi 0)] YangMills.Hierarchy.wickProfile terms) :
+    T.TraceTest
+def YangMills.Hierarchy.timePair : ℝ → YangMills.Points 2 :=
+fun r =>
+  WithLp.toLp 2 fun i => WithLp.toLp 2 (Fin.snoc (fun x => 0) (Fin.append (fun x => -(r / 2)) (fun x => r / 2) i))
+def YangMills.Hierarchy.traceTwo : {g : YangMills.GaugeGroup} →
+  {C : YangMills.WilsonFamily g} → YangMills.Hierarchy C → ℝ → ℂ :=
+fun {g} {C} T r => T.correlation (some T.selected) (fun x => ⟨4, T.centeredTrace⟩) (YangMills.Hierarchy.timePair r)
+YangMills.constructed : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ),
+  0 < b →
+    ∃ C,
+      C.path.levels.clock.kernel.penalty = b ∧
+        C.Makes ∧
+          YangMills.WilsonRegularity (YangMills.wilsonFamily C) ∧
+            ∀ (p : Extraction.Order),
+              ∃ q S F L Q M X,
+                (YangMills.hierarchy F Q).Properties (p.refine q).per.choose ∧
+                  (YangMills.hierarchy F Q).Contacts ∧
+                    { mesh := Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+                      FullVolume.PositionsUV C Extraction.Sequence.full ∧
+                        Calibrated C ∧
+                          Independent.Core ⋯ F L Q ∧
+                            Headline.Reconstruction F L ∧
+                              (∀ (i : F.α.space.X), (YangMills.view (L.actors i)).Axioms) ∧
+                                Headline.SeparatedOPE F Q ∧
+                                  Headline.NestedOPE F Q ∧
+                                    Headline.TraceExclusions F ∧
+                                      M.basis = Q.port ∧
+                                        Contacts.Solstice.MultipleLight F M ∧
+                                          Nonempty (Contacts.Transport.SystemBasis M) ∧
+                                            Nonempty (Contacts.Solstice.Thresholds M) ∧
+                                              Pert.FirstExtension F X ∧ Pert.Position.FourMeters F X
+'YangMills.constructed' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe437b_v1.lean:126:25: error(lean.unknownIdentifier): Unknown identifier `YM.Test4`
+Probe437b_v1.lean:126:76: error: unsolved goals
+G : Gauge
+C : Family G
+f : Extraction.Order
+S : Table C.book
+F : Final C f S
+L : EveryPhase.Almanac F
+H : EveryPhase.Completed F L
+i : F.α.space.X
+ht : (F.α.ensemble i).Hierarchy
+hs : (F.α.ensemble i).respects S
+h1 : TraceExtension.euclideanVEV S (F.α.ensemble i) (S.unit 0) = 1
+hu : S.unit 0 ≠ 0
+hp : (S.pin 0) (S.unit 0) ≠ 0
+⊢ ∃ x φ, ((L.actors i).operators.field x) sorry ≠ 0
+'probe_award' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_award_public' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_traceTwo_rfl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_every_character_acts' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
