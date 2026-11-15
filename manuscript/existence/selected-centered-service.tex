@@ -862,6 +862,248 @@ estimates, still require their own attachment. In particular no health
 condition for a packet's enlarged support follows from the sector's
 coarse-flag identity alone.
 
+\subsection{The value prices on the selected input}
+\label{sec:selected-value-prices}
+
+We now attach the scalar prices to the actual incoming representation.
+Fix an allowed pair of stages $j=J(i+1)$ and $k=J(i)$, and put
+$x=\widehat\beta_i$, $h=\widehat\beta_{i+1}=x+s_G\log L$ and
+$P=\exp((\log\log h)^2)$. The radius used for the component expansion
+is $B=B(x)$; the incoming representation has radius $B(h)$.
+These two radii are not identified.
+
+\begin{lemma}[The stored representation is an admissible input]
+\label{lem:selected-value-input}
+For every $i<N$, every admitted period and every retained member of the
+shooting interval, its representation at $i+1$ has the incoming path
+and high clip of the stored tube. Its threshold is $P/\sqrt h$, its
+radius is $B(h)$, and its support exponent is that of stage $j$.
+Its coupling belongs to $[h/2,2h]$. Its regular and forced activity
+bounds are, respectively, no larger than
+\[
+                   h^{-11/10},\qquad e^{-P^{1/5}},
+\]
+and its path bounds may be used with loop allowance $2P$.
+The tube retains its funded step and the coarse period bound
+$c\ge100(1+B(x))$. These statements also hold at $i=0$.
+\end{lemma}
+
+\begin{proof}
+The interval construction in Section~\ref{sec:common-funded-history}
+appends the actual reset batch to the incoming history. The batch relation
+retains its paths, clips, budget points and label bounds; it does not
+only identify the resulting density. At the top these data are supplied
+by the Wilson startup, and at every lower level they are part of the
+retained-history assertion of that construction. The path and clip at
+$i+1$ are therefore precisely the upward path and high clip of the
+stored tube at $i$. The budget point there is the one assigned by the
+common clock. Its threshold and radius are $P/\sqrt h$ and $B(h)$,
+and its profile is the stage-$j$ profile. The regular allowance is at
+most $h^{-11/10}$ and the forced allowance is $e^{-P^{1/5}}$, by the
+calendar allowances and the final absorption in that construction.
+The chosen member stays in the level band; substitution of the clock
+identity $h=x+s_G\log L$ makes this exactly $[h/2,2h]$.
+
+The purchased protection exponent obeys $0<\theta_j\le1$ and $P\ge1$.
+Hence the retained loop capacity $2P^{\theta_j}$ is at most $2P$.
+Increasing this numerical allowance preserves the same path coefficients
+and all their bounds. The funded step and the size inequality are those
+of the common schedule, at coarse level $i$; no limiting argument in the
+period is used. Each argument requires only $i<N$, which supplies the
+existing fine level $i+1\le N$. Thus it also covers zero. Finally,
+selecting a member of the interval retains all these assertions and
+introduces no new path, budget point or label family.
+\end{proof}
+
+Choose a halo multiplier $\ell\ge500$ containing all read radii in the
+local construction, an output support exponent $a\ge0$, a length
+reserve $\varepsilon>0$ and a tree reserve $\delta>0$. Write
+\[
+                         H=a+2\varepsilon+\delta.
+\]
+As in the common purchases, choose the reserves before $L$, with
+$4\varepsilon$ strictly below the incoming support exponent and
+$8\varepsilon$ strictly below both adjacent path widths. Choose $L$
+large enough for the cover conversions in
+Section~\ref{sec:inherited-activity-prices} at exponent $H$.
+Fix $r\in(-1/2,0)$.
+
+Use the disjoint union of the original forced labels, logarithmic labels
+and warning addresses. Equal supports do not identify labels. For a
+forced label $u$, its support $X_u$ is its fine support projected and
+enlarged by the prescribed $\ell B$ halo, and its extra charge $d_u$
+is the cover number of that original fine support at radius $B(h)$.
+For a logarithmic label use its full enlarged read support and the
+charge assigned in the inherited or itinerary construction: the old
+cover, the true path length (including winding and repeated edges),
+or the correction order. The three short families have charge zero.
+For a warning use its full warning footprint and charge zero.
+
+\begin{proposition}[One common value-price array]
+\label{prop:selected-value-prices}
+Retain the funded local estimates used above, including their seed
+energy, chart and normalization constructions. On each stored step
+there are nonnegative prices $v_u,w_z$ for the original forced and
+logarithmic labels, independent of forest, tags, sector and integration
+variables, such that the forced factor is bounded by $v_u$, and both
+the logarithmic factor $\ell_z$ and $e^{\ell_z}-1$ are bounded in
+absolute value by $w_z$. With warning price $T E(x)$ from
+Lemma~\ref{lem:selected-warning-inputs}, their combined array $f$ obeys
+\begin{equation}\label{eq:selected-optional-price}
+ \sup_y\sum_{u:y\in X_u}
+             f_u e^{2\varepsilon d_u+H c_B(X_u)}\le h^r.
+\end{equation}
+For every fixed list of forced labels used in the contraction factors,
+the actual connected packet with seed set $A$ obeys, uniformly in that
+list,
+\begin{equation}\label{eq:selected-packet-price}
+ |\mathcal P_A|\le p_A:=\exp\{(C d^5-\beta\mu\tau^2)n(A)\},
+ \qquad d=1+B+(\log h)^2,\quad\tau=P/\sqrt h,
+\end{equation}
+with one $C\ge0$ and the purchased $\mu>0$.
+For any fixed extra charge $b\ge0$ and seed mark $\nu\ge0$,
+\begin{equation}\label{eq:selected-packet-root-price}
+ \sup_y\sum_{A:y\in X_A}
+ p_A e^{(2\varepsilon b+\nu)n(A)+H c_B(X_A)}
+ \le e^{-\mu P^2/8}.
+\end{equation}
+The requests $b,\nu,r$, halo and exponent reserves are fixed before
+the common schedule is purchased. All three estimates hold at one common
+threshold, which may depend on these requests and is chosen before the
+history, uniformly in the cutoff, period and admitted input member.
+Disconnected packets have factor and price zero.
+\end{proposition}
+
+\begin{proof}
+We first verify the inputs rather than selecting new activity arrays.
+Lemma~\ref{lem:selected-value-input} supplies the incoming coefficient
+bounds, path budgets, threshold, support exponent, radius and coupling
+window on precisely this tube. The exponential forced allowance has
+every negative upper exponent: with $y=\log\log h$,
+$P^{1/5}/\log h=\exp(y^2/5-y)\to\infty$.
+The incoming regular allowance has upper exponent $-11/10$ and the
+loop allowance has upper exponent zero. The inherited support conversion
+therefore applies with its original labels and masks. Its radius condition
+$B(h)\le2B(x)$ holds eventually since $h-x$ is fixed for this stage pair.
+The strict width and support reserves imposed above are exactly those
+needed for its factor $e^{2\varepsilon d_u}$. This includes the squared
+path tails, whose reserve is $8\varepsilon$, not $4\varepsilon$.
+
+Choose $s$ with $-1/2<s<r$. The inherited construction gives the forced
+rooted bound and the six inherited logarithmic rooted bounds at upper
+exponent at most $s$, with head exponent $H$ and the stated extra
+charges. The three remote short families have upper exponent $-1/2$
+by \eqref{eq:remote-short-price} and its support count. Their sector
+indicators remove the packet neighbourhoods, leaving the clean read
+regions on which that estimate is proved; their values use the original
+tags. The correction itineraries have every negative upper exponent by
+\eqref{eq:itinerary-site-series}, with their full read supports and
+correction-order charge. Its count sums ordered words, including repeated
+bonds. Together these are all the logarithmic labels. Take the disjoint
+union of these nonnegative price arrays, including their finite channel
+multiplicities. Their rooted sum $J(x)$ has upper exponent at most $s$.
+No prices are selected separately for different forests or configurations:
+the quoted bounds are uniform over these variables and depend only on
+the fixed input coefficients and geometric labels.
+
+Every nonzero logarithmic label has nonempty support. Since all support
+and extra-cost exponents are nonnegative, its scalar price $b_z$ is at
+most $J(x)$, by retaining its term in the rooted sum at any point of its
+support. Eventually $J(x)\le1$. For $|\ell_z|\le b_z\le1$, the mean
+value theorem gives
+\[
+                  |e^{\ell_z}-1|\le e b_z.
+\]
+Thus $w_z=e b_z$ pays both $|\ell_z|$ and $|e^{\ell_z}-1|$.
+It multiplies the rooted sum by a fixed constant and preserves its upper
+exponent. A label with identically zero factor can be priced by zero.
+The forced price needs no exponentiation.
+
+The warning support is contained in a fixed-multiple-$B$ ball and has
+bounded $B$-cover number. There are a fixed number of warning types per
+coarse site and at most a polynomial in $B$ possible addresses whose
+footprints meet a given site. Consequently the warning rooted price,
+including $e^{Hc_B(X_u)}$, is at most a fixed constant times a polynomial
+in $B$ times $T E(x)$. It has every negative upper exponent by the
+Gaussian warning estimate. Summing the forced, logarithmic and warning
+arrays therefore gives a function of upper exponent at most $s$.
+As $s<r$, that sum is at most $h^r$ eventually. This proves
+\eqref{eq:selected-optional-price}, including all three families and
+both reserves in one bound.
+
+For packets, the seed-energy allocation of
+Section~\ref{sec:seed-energy} gives the core gain $\mu\tau^2n(A)$.
+If a physical packet is nonzero, its retained masks enforce the hot-bond
+control and flag agreement needed in the $200B$ annular comparison;
+Section~\ref{sec:packet-annulus} gives the remainder of upper exponent
+$-3/2$. The normalization corrections are bounded by
+Section~\ref{sec:local-covariance}, and the protected chart logarithm
+is eventually at most one by Section~\ref{sec:haar-chart}.
+The finite tag probabilities, with their actual multiplicities, give
+the ticket count in Section~\ref{sec:packet-estimates}. Its proof of
+\eqref{eq:packet-value-price} now gives
+\eqref{eq:selected-packet-price}. Vanishing packets satisfy the same
+bound. The contraction factors for any fixed forced list take values
+in $[0,1]$; the proof drops them, so its price is uniform in that list.
+This is a value estimate and imposes no global health condition on the
+packet neighbourhood.
+
+Finally $\beta\ge h/2$ gives
+$\beta\mu\tau^2\ge\mu P^2/2$. In the absorption argument of
+Section~\ref{sec:packet-estimates} take $u=1/2$ and replace its seed
+expense $Cd^5$ by $Cd^5+2\varepsilon b+\nu$. These additional fixed
+costs are absorbed by increasing the coefficient of $d^5$, since
+$d\ge1$. Use the head exponent $H$ and $n_0=1$ there. Its bound
+$e^{-\mu uP^2/4}$ is exactly \eqref{eq:selected-packet-root-price}.
+All constants are fixed before the final threshold in $x$.
+The same finite-stage maximum and running-maximum purchase as in
+Lemma~\ref{lem:selected-warning-inputs} makes every required threshold
+hold at the stored steps. The bounds are uniform over the members of
+the original input interval, so selecting its retained member preserves
+them.
+\end{proof}
+
+For clarity we spell out the resulting component input. Give a packet
+extra cost $bn(A)$ and mark $\nu n(A)$, and give an optional label its
+charge $d_u$ and zero mark. Set
+\[
+ \Gamma=h^r+e^{-\mu P^2/8},\qquad
+ q_x=h^{r/2},\qquad h_B=(2B+1)^4.
+\]
+For sufficiently large $x$,
+\begin{equation}\label{eq:selected-value-tree}
+ \Gamma\le2h^r,\qquad
+       4h_B\Gamma/\delta\le q_x<1.
+\end{equation}
+Indeed the exponential packet price is smaller than $h^r$ eventually,
+and $8h_Bh^{r/2}/\delta\to0$, since $B=O((\log h)^2)$ and $r<0$.
+The two rooted bounds above are precisely the vertex condition of
+Section~\ref{sec:mixed-activity-prices}, at head exponent
+$a+2\varepsilon+\delta$. In particular the common-body estimate of
+Lemma~\ref{lem:selected-residual-body} and the component summation
+apply to this actual value alphabet, with its original Gaussian and
+Haar measures.
+
+For example, for connected sets of labels with at least $m+1$ labels,
+at least $r_0$ seeds and total cover-plus-extra-cost at least $D_0$,
+\eqref{eq:mixed-ceiling} gives the rooted sum of their value majorants,
+weighted by output support exponent $a$ and polynomial order $k_0$,
+at most
+\begin{equation}\label{eq:selected-value-component}
+ P_{\varepsilon,k_0}e^{-\varepsilon D_0-\nu r_0}
+                         \frac{\Gamma q_x^m}{1-q_x}.
+\end{equation}
+Use $r_0=0$ unless the component is required to contain a packet.
+This is an estimate for the one actual value alphabet and a fixed forced
+list. Uniformity in that list is not permission to sum unpriced copies.
+If a later response assigns several analytic outputs to the same
+component, their majorants must first be summed over that component's
+fiber as required by Section~\ref{sec:mixed-activity-prices}.
+The differentiated entrance still requires healthy full supports and
+the stock-extension argument of Section~\ref{sec:activity-jet-assembly}.
+Neither that additional hypothesis nor the precursor and vapor
+identifications follows from \eqref{eq:selected-value-component} alone.
+
 \subsection{The service at every reference level}
 Fix a grade $d$, a period $p$, a cutoff $N$, and
 $t_d\le k\le N$; in particular $k\ge1$. We verify the inputs of
