@@ -1,0 +1,15 @@
+RUNLOG -- Lean probe for the review of hairer/humanise-yang-mills #392, lane B (clock-fields lemma, wheel remark, chamber re-check). 2026-11-14.
+Command (from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 <file>.lean > <file>.out 2>&1
+No lake, no leanchecker, no build, no download.
+
+v1  start 22:18:04Z  exit 0  real 36.83 s  max RSS 6751797248 B  peak footprint 1039194104 B
+    0 errors, 0 warnings, no sorryAx (output l.1-305; time block l.306-323).
+    PROCESS-RULE DEVIATION, disclosed: the pre-run check `pgrep -x lean; pgrep -x lake` printed one PID (69487)
+    and the run was started in the same shell command without waiting, so it may have overlapped with one other
+    Lean/Lake process for up to ~37 s. `ps -p 69487` immediately after the run showed that process had exited.
+    df -g ~ showed 49 GiB free before the run. Only one run was made; no re-run was needed.
+
+SHA-256:
+8116c076da306e5d2ad6f8c72e606e8e4a4c55816e9328061dd5df713c3c1b75  Probe392b_v1.lean
+0b14e8b1dddb1527df2ab99bd6ec4dd18ea48da8814abf78fe162c80d97e157c  Probe392b_v1.out

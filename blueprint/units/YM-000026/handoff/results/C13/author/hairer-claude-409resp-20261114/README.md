@@ -15,11 +15,11 @@ The source route is adopted. In `allarity-marked-propagation.tex`:
 - **The launch.** `subsec:allarity-corrected-budget`, now titled "The launch at the middle level", has four parts:
   - the commuting reference factor, qualified;
   - the failed-mask identity χW − R = χ(W − R) − (1 − χ)R (M3);
-  - `lem:allarity-corrected-pieces` at the middle level, and `lem:allarity-weight-raise` (regular letters, factor H^{Un});
-  - the stated input **(L)**, failed-mask regrouping and forced weight change, with forced output ≤ H^{c_L} η₋, and `prop:allarity-launch`: regular ≤ H^{−3/4} and forced ≤ H^{−q} at ω, provided q ≥ κ + Un + 1.
+  - `lem:allarity-corrected-pieces` at the middle level, and input **(W)** for the regular remainder at the restored weight. The factor H^{Un} applies to single-cell letters. For multi-cell letters, `lem:allarity-weight-raise` gives a sufficient condition using a spare support exponent and a covering-number bound on the same letters.
+  - the stated input **(L)**, failed-mask regrouping and forced weight change, with forced output ≤ H^{c_L} η₋, and `prop:allarity-launch`: regular ≤ H^{−3/4} and forced ≤ H^{−q} at ω, under (W) and (L).
 - **Middle-level receipt (M1).** The lower propagation now starts from H^{−3/4} and needs (α+1)^{ℓ−w} ≤ H^{1/4}. `lem:allarity-lower-count-free` now proves this for every fixed positive power. Source: `Perch.spouse`.
 - **Amplitude (M5).** `lem:allarity-amplitude` is restricted to the middle level. The per-rung amplitude κ_τ < 1/2 is now a hypothesis of `lem:allarity-step-discrepancy`, and it appears in the input list.
-- **Parameter order.** α, b̄, then U, then q ≥ max{6, κ+4, κ+Un+1}. All of these are fixed before s.
+- **Parameter order.** α, b̄, then U, then q ≥ max{6, κ+4}. The sufficient condition for (W) also uses q ≥ κ+Un+2. All of these are fixed before s.
 
 ## Other items
 
@@ -49,3 +49,14 @@ The source route is adopted. In `allarity-marked-propagation.tex`:
 - The launch section was inspected in the rendered text (`pdftotext`).
 - `python3 scripts/check_blueprint.py`: OK.
 - The Lean source was read textually for `loot`/`cashFt` and `divySky` (`Dink.lean`). No Lean was elaborated.
+
+## Follow-up to the review of #411
+
+The nonleading regular alphabet can contain mixed-cell letters.
+`YM.Next.Rank.Dock.Change.Reception.regular` (in
+`Lean/YM/Next/RANK/DockBudget.lean`) distinguishes the single-cell and
+mixed-cell receipts, and `YM.Next.Rank.Dock.Change.mixed_cost` uses `dispersal_cost` to trade
+support charge for marker weight. The manuscript now proves that trade
+under an explicit support inequality and leaves the corresponding
+spare-exponent purchase on the actual regular remainder as an input.
+This does not use the separate forced-background receipt (L).

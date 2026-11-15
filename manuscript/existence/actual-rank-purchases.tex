@@ -392,12 +392,21 @@ is at most $s_Gs_k/8\le\widehat\beta_k/8$, because
 $\widehat\beta_k=\beta_*+s_Gs_k\ge s_Gs_k$.
 \end{proof}
 
-One further input is needed on the chart window. It is not proved in
-this book. It collects in one statement four assumptions that are made
-separately in Sections~\ref{sec:allarity-coordinate-calibration},
+Two further inputs are needed on the chart window. They are not proved in
+this book. The second collects in one statement four assumptions that are
+made separately in Sections~\ref{sec:allarity-coordinate-calibration},
 \ref{sec:allarity-cumulant-comparison}
 and~\ref{sec:marked-healthy-cumulant-launch}.
 \begin{enumerate}
+\item[(V)] \emph{Restarted steps of the window.} At every step of the
+ window $[w,k]$, from a level $m+1$ to $m$, the restarted step at the
+ constant coupling $\beta_{N,p,k}$, with the clips, budget radius and
+ support data of its stage pair $(J(m+1),J(m))$, satisfies the component
+ bounds (V1), the path correction (V2) and the reassembly (V3) of
+ Subsection~\ref{subsec:restart-stage-boundary}. The pair is one of
+ $(J(k),J(k))$, $(J(k),J(k)-1)$ and $(J(k)-1,J(k)-1)$. The purchases of
+ Section~\ref{sec:common-funded-history} concern the selected history and
+ do not supply these bounds for the restarted step.
 \item[(T)] \emph{Calibrated insertion receipt.} At every sufficiently
  large level $k$, on the same endpoint, for all sufficiently large $N$
  uniformly in $p$, and for every grade $d'\le d$, there are an actual
@@ -408,8 +417,11 @@ and~\ref{sec:marked-healthy-cumulant-launch}.
  \begin{enumerate}
  \item[(T1)] \emph{Low-grade reading.} $T$ is the low-grade reading of
   $\mathcal H$. For every label $u$, the grade truncation of $\mathcal Hu$,
-  after substitution of the actual linear reader map, is the free
-  polynomial with frame coefficients $Tu$. In particular, for the lifts
+  after substitution of the actual linear reader map at level $k$, is the
+  free polynomial whose frame coefficients are $Tu$ in the retained common
+  normalization of Section~\ref{sec:allarity-coordinate-calibration},
+  that is, rescaled by the coupling factor of the reader coordinates at
+  level $k$. In particular, for the lifts
   of \eqref{eq:rank-common-lifts} the exact low-grade identity of
   Section~\ref{sec:allarity-cumulant-comparison} holds.
  \item[(T2)] \emph{Tested.} $T$ satisfies \eqref{eq:rank-common-tested}:
@@ -423,6 +435,10 @@ and~\ref{sec:marked-healthy-cumulant-launch}.
   the terminal paid insertion bound in
   Section~\ref{sec:marked-healthy-cumulant-launch}.
  \end{enumerate}
+ The same map $\mathcal H$ and the same map $T$ occur in all four
+ clauses. The insertions $\mathcal Hu$ are those integrated in the
+ cumulant comparison, $T$ is their reading, and the stamp of (T4) is
+ paid by those same insertions.
 \end{enumerate}
 The map $T=A_{k,N,p}$ satisfies (T2) trivially when $A_{k,N,p}$ fixes the
 unit and is real, but it need not satisfy (T1). The readout must be the
@@ -431,13 +447,15 @@ because the free cumulant comparison uses the exact low-grade identity.
 The content of (T2) for the reading of (T1) is therefore an estimate. It
 says that the primary coordinate of the selected history at level $k$
 agrees, to relative accuracy one half, with the low-grade reading of the
-polynomial insertion built from the same label. Given (T1) and that
+polynomial insertion built from the same label. Neither that
+estimate nor the application of the stamp bound (T4) to the lifts is
+proved in this book. Given (T1) and that
 estimate, the unit and reality clauses follow from $\mathcal He_0=1$ and
 from the reality of $\mathcal H$.
 
 \begin{proposition}[History and readout on the chart window]
 \label{prop:rank-trace-chart-window}
-Assume (T) and the local inputs of this section. Include in the
+Assume (V), (T) and the local inputs of this section. Include in the
 all-stage payment \eqref{eq:common-allstage-payment} the thresholds of
 Section~\ref{sec:restarted-rank-history} and of the readout construction
 above, for each stage $j$ and for the finitely many block ratios
@@ -482,7 +500,8 @@ the larger of the two constants and the later of the two thresholds
 covers the numerical estimates for both ratios. The passage from a step
 at one stage to a step at the other is
 Lemma~\ref{lem:restart-stage-boundary}, since the window contains levels
-of the stages $J(k)$ and $J(k)-1$ only. The
+of the stages $J(k)$ and $J(k)-1$ only. Its hypotheses at the steps of
+the window are the input (V). The
 thresholds depend only on the stage $J(k)$, on $\bar b$ and on the
 finite menu. They are therefore paid at every level by the all-stage
 payment, which gives $H_{J(k+1)}\le\widehat\beta_k$ for every $k$.
@@ -511,7 +530,18 @@ carries a threshold with
  (8/7)^{1/2}\,\widehat\beta_w^{-1/2}\le\theta_{P_w}\le\theta_{\rm clock}(w),
 \end{equation}
 and that the stage profiles have clip constants with
-$0<c_{\rm lin}<c_{\rm dir}/16$. Then, for all sufficiently large $k$,
+$0<c_{\rm lin}<c_{\rm dir}/16$. Assume finally the following
+path-and-clip receipt.
+\begin{enumerate}
+\item[(P)] The coarse path action of $P_w$ in the restarted representation
+ is the retained path $R_{N,w}$ of
+ Proposition~\ref{prop:path-retained-plan}, evaluated at the constant
+ coupling $\beta_{N,p,k}$. At that coupling it satisfies
+ $R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$, with the
+ clip $p_w$ and row price $A_w$ of the stage $\pi_{J(w)}$. The tests of
+ that clip are compatible with the threshold $\theta_{P_w}$.
+\end{enumerate}
+Then, for all sufficiently large $k$,
 every chart at level $k$ with base arc $b\le\bar b$, every $N\ge k$ and
 every $p$, $P_w$ is a lawful representation satisfying the suppositions of
 Proposition~\ref{prop:rank-root-output-ticket}(2) at the output level $w$:
@@ -544,13 +574,10 @@ these thresholds are reached for all large $k$.
 \emph{Threshold.} This is the upper bound in
 \eqref{eq:rank-trace-threshold-window}.
 
-\emph{Paths.} Below $k$ the auxiliary history retains the coarse path
-action of the selected history (Section~\ref{sec:restarted-rank-history}).
-At level $w$ that is the path $R_{N,w}$ of
-Proposition~\ref{prop:path-retained-plan}. It is admissible at $(N,w)$,
-so by Definition~\ref{def:path-admissible} it satisfies
-$R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$. Its clip is
-$p_w$, its row price is $A_w$, and its loop budget is at most
+\emph{Paths.} By (P), the coarse path action of $P_w$ is $R_{N,w}$ at the
+coupling $\beta_{N,p,k}$, and it satisfies the bounds of
+Definition~\ref{def:path-admissible} there. Its clip is $p_w$, its row
+price is $A_w$, and its loop budget is at most
 $\mathrm{loopCap}_w=2\mathcal M_w^{\theta_{J(w)}}=\Lambda_{\rm clock}(w)$, by
 Lemma~\ref{lem:common-loop-capacity} and
 Subsection~\ref{subsec:rank-root-clock-threshold}, with
@@ -572,7 +599,7 @@ the auxiliary history keeps the threshold of the selected history at
 level $w$ or carries the threshold of (F3).
 
 \paragraph{Status.}
-Under the local inputs of this section,
+Under (V) and the local inputs of this section,
 Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
 history and its coupling bound throughout $[w,k]$ for every $N\ge k$
 and $p$. Proposition~\ref{prop:rank-trace-output-lawful} verifies at the
@@ -581,9 +608,16 @@ Proposition~\ref{prop:rank-root-output-ticket}(2), which is where the
 propagation to the output torus uses (F3). It assumes only that the
 auxiliary threshold lies in the window
 \eqref{eq:rank-trace-threshold-window}, and the clip constants of the
-profiles. The field (F3) as displayed also asks for these
-properties at the other levels of $[w,k]$; the same argument gives them
-there, with $w$ replaced by $j$. The budget radius
+profiles, and the path-and-clip receipt (P). The admissibility of
+$R_{N,w}$ in the selected history is stated at that history's coupling.
+It does not by itself give (P) at the constant coupling, nor the
+compatibility of the tests with the threshold. The conclusion concerns
+the output level $w$ only. The field (F3) as displayed also asks for these
+properties at the other levels $j$ of $[w,k]$. For $w<j<k$ the same
+argument applies, given (P) and the threshold window with $w$ replaced by
+$j$. At $j=k$ the representation is the actual one of the selected
+history, which is not restarted, and it has to be checked separately. We
+do not use these other levels here. The budget radius
 $\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
 normalization estimate. The readings of (F5) are (T1)--(T2) of the input
 (T), and its stamp duty is (T4).
