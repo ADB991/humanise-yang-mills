@@ -229,6 +229,77 @@ then gives the zero-site paid-response duet required by SharpRead, and its
 endpoint inequality is exactly \eqref{eq:ex-trace-coffer-column}. Here zero refers to the left coefficient
 vector and to the duet's marked spatial site being the origin. It does not
 assert that the observed field values vanish.
+\paragraph{The planted polynomial and its full moment.}
+Fix an admitted window $(J,m,l)$ and retain the label $b$ already chosen.
+Let $V$ be its finite set of cells. Work in the square-free polynomial
+algebra with generators $\mathsf t_a$, $a\in V$; for $I\subseteq V$
+write $[I]Q$ for the coefficient of $\prod_{a\in I}\mathsf t_a$.
+Let $D=\mathcal O_{N,p}b$ and $F=G'$, and denote their prescribed copies
+at levels $N$ and $k$ by $D_a$ and $F_a$. A copy includes complex
+conjugation when its reflected chamber requires it. Write $R_N$ for the
+unnormalized Wilson density, $\mathsf P_{v,u}$ for density transfer
+from level $u$ to $v\le u$, and $\mathsf B_{v,u}$ for its observable
+adjoint. Define the following actual polynomials:
+\begin{equation}\label{eq:coffer-planted-polynomial}
+ Q_N=R_N\prod_{a\in V}(1-\mathsf t_aD_a),\qquad
+ Q_k=\mathsf P_{k,N}Q_N,\qquad
+ X_k=Q_k\prod_{a\in V}(1+\mathsf t_aF_a),\qquad
+ X_m=\mathsf P_{m,k}X_k.
+\end{equation}
+Transfer acts coefficientwise. For bounded measurable $F$ these
+coefficients are integrable: $D$ is a continuous finite-volume field,
+the configuration spaces are compact, and the selected transition
+kernels have bounded densities. More generally it suffices that
+$\int\prod_{a\in A}|F_a|\,d\mu_k<\infty$ for every $A\subseteq V$.
+Since $R_N$, the $D_a$ and the composed kernel density are bounded,
+this gives absolute integrability of every mixed double integral below.
+
+For every $I\subseteq V$, multiplication in the square-free algebra gives
+\begin{equation}\label{eq:coffer-full-join}
+ [I]X_k=\sum_{A\subseteq I}
+  \mathsf P_{k,N}\left(R_N\prod_{a\in I\setminus A}(-D_a)\right)
+                         \prod_{a\in A}F_a.
+\end{equation}
+Indeed a generator can occur in only one of the two factors in
+\eqref{eq:coffer-planted-polynomial}; choosing the generators taken from
+the second factor is exactly choosing $A$. No product of expectations
+has been substituted for the transferred old product.
+
+The room and interiority assumptions of the window put every propagated
+read set inside its own chamber at each intervening step. Consequently
+\eqref{eq:actual-grid-factor}, including equivariance under the prescribed
+copies, gives
+\[
+ \mathsf B_{k,N}\Bigl(\prod_{a\in A}F_a\Bigr)
+       =\prod_{a\in A}\operatorname{copy}_a
+                              (\mathsf B_{k,N}F).
+\]
+This factorization uses disjoint kernel read sets, not just mass one.
+For the integrable extension, truncate each local factor, retaining its
+read set, and pass to the limit by absolute integrability and Fubini.
+In the bounded case all the following interchanges follow from the
+kernel-slice bounds and Fubini; in the integrable version they use the
+absolute integrability just specified. Apply adjointness to each summand
+of \eqref{eq:coffer-full-join} and expand the finite product. This gives
+\begin{align}
+ \int[I]X_k\,d\mu_k
+ &=\int R_N\sum_{A\subseteq I}
+       \prod_{a\in I\setminus A}(-D_a)
+       \prod_{a\in A}\operatorname{copy}_a(\mathsf B_{k,N}F)
+                                                    \,d\mu_N\nonumber\\
+ &=Z_{N,p}\,\mathbb E_{N,p}
+       \prod_{a\in I}\operatorname{copy}_a
+                               (\mathsf B_{k,N}F-D).
+ \label{eq:coffer-planted-moment}
+\end{align}
+Every further density transfer preserves the integral of every
+coefficient, by its normalized mass. Therefore the left-hand side can
+also be written $\int[I]X_m\,d\mu_m$. For $I=V$ this is exactly
+$Z_{N,p}M$, with $M$ the moment in the root functional. For $I=\varnothing$
+it is $Z_{N,p}$. This proves the full moment identity, including all
+mixed terms, with the same partition function. It is stronger than a
+check of the singleton densities.
+
 For the rooted estimate, fix a window \((J,m,l)\) as above; the label
 \(b\) is already fixed. The same dual chain is planted once at each site of
 the finite scale-\(J\) census. The construction couples each translated
@@ -237,9 +308,9 @@ polynomial to level \(m\). The properties of this planted expansion that
 are used below are an input from the response construction, not proved in
 this section; we state them explicitly. \emph{Planted-expansion input.}
 Let \(V\) be the set of census sites, \(K=|V|\), with marks \(o_a\),
-\(a\in V\), in the level-\(m\) lattice. The level-\(m\) census polynomial
-\(\mathsf X(U)\) is integrable against the reference
-measure and has the following structure. There are singleton site
+\(a\in V\), in the level-\(m\) lattice. The polynomial $\mathsf X=X_m$ of
+\eqref{eq:coffer-planted-polynomial}, whose integrability and moment
+identity were just established, must have the following structure. There are singleton site
 amplitudes \(\Phi_a(U)\) and singleton box amplitudes \(\omega_{a,P}(U)\),
 \(a\in V\), \(P\) a box, with
 \[
@@ -273,15 +344,11 @@ Consequently, summing the anchored bound over the \(K\) marks,
  \qquad\text{for every }U.
  \label{eq:ex-trace-coffer-corrections}
 \end{equation}
-Finally, the
-planted coefficient is
-the moment in the root functional: integrating it against the level-\(m\)
-reference measure gives the volume-\(N\) Wilson partition function times
-the normalized moment \(M\) of
-\(\prod_{x\in\mathcal T_J}\operatorname{copy}_x(\widetilde G'-
-\mathcal O_{N,p}b)\). This completes the statement of the
-planted-expansion input. It is an outstanding input and is not proved in
-this monograph.
+The required support-price structure is a statement about this precise
+polynomial $X_m$. Its full moment identity is
+\eqref{eq:coffer-planted-moment}, already proved independently of those
+price bounds. The remaining planted-expansion input is its served
+support decomposition with the stated prices.
 
 The polynomial-price calculation behind the finite-gas estimate is as
 follows. For a finite census polynomial \(Q\), write
@@ -306,9 +373,8 @@ ordinary and the flagged correction families contribute \(K\) each, by
 activity terms \(\mathsf b_P\) and the exponent \(E_m\) are paid by the
 finite-volume denominator bound used next.
 
-By the planted-expansion input, the integral of the selected coefficient
-equals the
-volume-\(N\) Wilson partition function times the normalized moment \(M\).
+By \eqref{eq:coffer-planted-moment}, the integral of the selected coefficient
+equals the volume-$N$ Wilson partition function times $M$.
 To specify the denominator estimate, let $A_m$ be the lawful local
 representative used in this very expansion, and take
 $\rho=\widehat\beta_m^{-1/2}\le\min\{1,\vartheta_m\}$.
