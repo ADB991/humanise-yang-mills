@@ -208,6 +208,216 @@ $[s/2,s]$. It therefore pays the support-counting factors in the
 normalization-with-holes estimates. All these are eventual conditions
 after $L,b$ and the finite menu have been fixed.
 
+\subsection{Re-expressing the starting density}
+\label{subsec:restart-endpoint-construction}
+
+We first supply the stronger forced allowance at the starting level.
+This is a change of presentation on one torus, before applying a
+blocking kernel. Write $c_{\rm lin}$ and $c_{\rm dir}$ for the two
+positive coefficients of its clip; the clip condition includes
+$c_{\rm lin}<c_{\rm dir}/16$. Fix a positive path rate $\sigma$, a
+path coefficient bound $C$, and a support exponent $a>0$. All these
+parameters are fixed before the scale $s$ tends to infinity. In particular,
+each quadratic path row has
+$\sum_j|c_j|e^{\sigma\,\mathrm{length}_j}\le C$; each cubic and
+quartic atom family has the corresponding absolute true-length
+coefficient sum at most $C$. The loop family has that bound with
+$\Gamma_s$ in place of $C$. The forced gas uses its full support and
+inventory addresses with the original eligibility and exclusion tests;
+its stated allowance is an absolute weighted site-sum bound.
+Put
+\[
+ H_s=\exp((\log\log s)^2),\quad
+ h_s=\exp((\log\log s)^{3/2}),\quad
+ t=s^{-1/2}H_s,\quad \tau=s^{-1/2}h_s,
+ \quad M=\lceil(\log s)^2\rceil,\quad B=M^2.
+\]
+The old budget has radius $M$ and threshold $t$; the new one has
+radius $B$ and threshold $\tau$. Their support exponent and derivative
+order are unchanged. Denote the corresponding masked additive sums by
+$E_t,E_\tau$ and path actions by $A_t,A_\tau$.
+
+\begin{proposition}[Exact endpoint re-expression]
+\label{prop:restart-endpoint}
+Suppose the original endpoint has coupling $s/2\le\beta\le2s$, the
+fixed path and clip bounds above, quadratic-loop coefficient bound
+$\Gamma_s\le2H_s$, additive allowance $s^{-11/10}$, and forced allowance
+$w_s=\exp(-H_s^{1/5})$. Fix
+$0<a_0\le c_{\rm lin}/20$. For all sufficiently large $s$, uniformly
+in the period and endpoint field, there is a presentation of exactly
+the same density with the same path, clip, coupling and scalar, budget
+$(B,\tau)$, additive allowance at most $s^{-11/10}$, and forced
+allowance
+\[
+                         G(s)=e^{-a_0h_s^2}.
+\]
+It retains the original additive coefficients with their new masks.
+In particular its additive value allowance is at most $q_0=s^{-1/200}$,
+and deleting those coefficients gives the neutral incoming law needed
+by the local compiler.
+\end{proposition}
+
+\begin{proof}
+We construct all factors before grouping them. A flagged site at
+threshold $\tau$ is a site touched by a plaquette whose chord exceeds
+$\tau$. Write $F_\tau(U)$ for this set. Eventually $2\tau\le t$.
+For a plaquette chord $r$ put
+\[
+ d_t(r)=\begin{cases}c_{\rm dir}r^2/2,&r\le t,\\
+                     c_{\rm lin}tr,&r>t,\end{cases}
+ \qquad \Delta(r)=d_t(r)-d_\tau(r).
+\]
+Then $\Delta\ge0$, and $\Delta(r)\ge c_{\rm lin}\tau^2$ for
+$r>\tau$. On $\tau<r\le t$ this follows from
+$\Delta(r)=c_{\rm dir}r^2/2-c_{\rm lin}\tau r
+\ge(c_{\rm dir}/2-c_{\rm lin})r^2\ge c_{\rm lin}\tau^2$;
+on $r>t$ use $t-\tau\ge\tau$. Distribute $\Delta(r)$ equally among the sites
+touched by its plaquette. There are at most five such sites, including
+on a wrapping torus. The resulting local charges $d_x$ satisfy
+\[
+ \sum_{x\in F_\tau}d_x=\sum_{\text{plaquettes }p}\Delta(r_p),
+ \qquad d_x\ge c_{\rm lin}\tau^2/5\quad(x\in F_\tau).
+\]
+A plaquette with nonzero charge has all its touched sites in $F_\tau$,
+which proves the equality without discarding charges at healthy sites.
+
+The other quadratic contribution to $A_t-A_\tau$ is the squared
+path row on the event that the old kept test holds and the new one
+fails. Truncate the row at true path length $B$, before squaring,
+and call its resulting nonnegative half-square $b_x$ at anchor $x$,
+including that event indicator and the signed-channel average.
+The kept test at threshold $\tau$ reads only a radius-$B$ neighborhood
+once $2\le\tau\exp(B/c_{\rm relax})$: beyond that neighborhood the
+chord bound two makes its test automatic. Thus $b_x$ reads at most
+a radius-$2B$ neighborhood, and vanishes if the radius-$B$
+neighborhood is $\tau$-healthy. Distribute $b_x$ equally among the
+sites of $F_\tau$ in that neighborhood. If there are none, $b_x=0$
+and no division is made. Summing these shares gives nonnegative
+charges $b'_z$, with $\sum_zb'_z=\sum_xb_x$, supported within radius
+$4B$ of $z$. Perform the same operation for each signed channel with
+its original averaging weight.
+
+Set $u=a_0h_s^2$ and, at a flagged site, set
+\[
+ X_z(U)=\exp[-\beta(d_z(U)+b'_z(U))];
+\]
+set $X_z=0$ when the site is unflagged. Since
+$\beta\tau^2\ge h_s^2/2$ and $a_0\le c_{\rm lin}/20$,
+\begin{equation}\label{eq:restart-endpoint-signal}
+ |X_z|\le e^{-2u},\qquad
+ \prod_{z\in F_\tau}X_z
+       =\exp[-\beta\sum_z(d_z+b'_z)].
+\end{equation}
+In particular each selected site factor supplies one factor $e^{-u}$
+which can be reserved for its connected component.
+
+Here are the remaining exponent changes and their prices. Write
+\[
+ D=-(A_t-A_\tau)+\beta\sum_z(d_z+b'_z)+(E_\tau-E_t).
+\]
+This is the sum of the omitted quadratic row pairs, the differences
+of the cubic, quartic and loop masks, and the difference of the
+additive masks. Each summand has a nonempty full read support and
+vanishes when that support is $\tau$-healthy. Their absolute site
+price at any fixed enlarged exponent $a+2$ is bounded by
+\begin{equation}\label{eq:restart-endpoint-error}
+ \epsilon_s\le C_1B^{C_2}
+ \left[\beta C^2e^{-\sigma B/4}
+       +\Gamma_st^2+\beta C(t^3+t^4)+s^{-11/10}\right]
+                         =s^{-1/2+o(1)}.
+\end{equation}
+The constants depend only on the fixed profile and exponent. To verify
+this bound, expand the difference of a full square and its truncated
+square as ordered pairs of path labels, with at least one length
+exceeding $B$. Extract $e^{-\sigma B/4}$ from the two absolute
+exponential row sums after paying their full path supports, as in
+\eqref{eq:inherited-tail-budget}. The kept-test support adds a
+radius-$2B$ halo, whose cover cost is fixed. The difference of two
+nested masks has absolute value at most the old masked atom bound;
+for an order-$j$ atom this is its coefficient times $t^j$.
+The full path support has $B$-cover at most $1+2j+\mathrm{length}/B$,
+so $(a+2)/B\le\sigma/2$ eventually leaves a positive length reserve.
+For an old additive support $Y$, the connected-cover construction gives
+\[
+ c_B(\operatorname{halo}_8Y)
+       \le C_3+C_3(M/B)c_M(Y).
+\]
+Take $s$ large enough that $C_3(a+3)M/B\le a$. This converts its
+old weighted bound to the new one. Converting anchors to site hits
+costs a polynomial in $B$, by the shell sum in
+Section~\ref{sec:inherited-activity-prices}, with the extra unit of
+cover exponent reserved for this conversion. The same calculation
+prices the halo-enlarged old forced labels by
+$C_1B^{C_2}w_s$. These arguments retain all label multiplicities and
+true path lengths. Finally $H_s=s^{o(1)}$, giving the last equality
+in \eqref{eq:restart-endpoint-error}.
+
+Coalesce the summands of $D$ with the same full support, giving $D_Y$.
+There are finitely many supports on this torus, and the coalescing is
+absolutely convergent by the site bound. For large $s$, each
+$|D_Y|\le\epsilon_s\le1/4$. Put $W_Y=e^{D_Y}-1$. Then
+\[
+ e^D=\prod_Y(1+W_Y),\qquad |W_Y|\le2|D_Y|,
+\]
+and $W_Y=0$ on a $\tau$-healthy support. Combining with
+\eqref{eq:restart-endpoint-signal} gives the exact identity
+\begin{equation}\label{eq:restart-endpoint-factor}
+ e^{-A_t-E_t}=e^{-A_\tau-E_\tau}
+                   \prod_Y(1+W_Y)\prod_{z\in F_\tau}X_z.
+\end{equation}
+
+Multiply by the original forced gas and expand the optional factors.
+Enlarge old forced supports by eight sites to read their original
+eligibility tests; retain those tests and their original mutual
+exclusions inside every term. Form connected components using
+intersections of these enlarged supports, the $Y$'s and the
+radius-$4B$ supports of $X_z$. Every nonzero component contains a
+selected $X_z$: a nonzero $W_Y$ meets a new flag, and an old forced
+label contains an old flag, which is also a new flag. The factor for
+that flag has intersecting support and is present in the product.
+Record as the new inventory exactly the selected flag sites in each
+component, requiring it to equal $F_\tau$ on that component's support.
+Require also that the union of old inventories is exactly the set of
+old flags on this component's support, and retain each old label's
+eligibility test. The components then
+have disjoint supports and cover all new flags. Conversely their
+constituents recover the original compatible forced collection and
+optional subset uniquely. This proves equality of the two gas sums, first for finite label
+families. The old absolute site bound, the finite-volume sum of the
+optional prices, and the connected majorants below permit passage to
+countable families by absolute convergence.
+
+After reserving $e^{-u}$ per selected site factor, the combined
+weighted site price is at most
+\[
+ \rho_s=2\epsilon_s+C_1B^{C_2}w_s
+                 +(8B+1)^4e^{(a+1)9^4}e^{-u}.
+\]
+Indeed a radius-$4B$ ball has $B$-cover at most $9^4$, and at most
+$(8B+1)^4$ of these balls contain a given site. Here
+$\rho_s=s^{-1/2+o(1)}$, so $(2B+1)^4\rho_s\le1$ and
+$e^{\rho_s}-1\le1$ eventually. The rooted connected-set estimate
+proved in Section~\ref{sec:actual-mixed-marked-compiler}, using one
+unit of support reserve, bounds the resulting forced site sum by
+$e^{-u}(e^{\rho_s}-1)\le e^{-u}$. No enumeration of possible flag
+subsets costs an additional factor: the selected site labels already
+specify the inventory, and its equality test only removes terms.
+Sum the resulting majorants and values at each full support and
+inventory address to obtain the new forced activities.
+
+All constructions preserve locality, measurability and gauge symmetry.
+Signed motions permute their labels; averaging the original channel
+convention, or reindexing each full orbit, preserves the bounds.
+The old regular coefficients need no replacement. Their derivative
+bounds restrict to the smaller healthy domain and smaller allowed
+coordinate directions, while increasing the cover radius decreases
+its weight. They therefore retain their old additive allowance.
+Equation~\ref{eq:restart-endpoint-factor} and the gas bijection prove
+exact equality of densities with unchanged scalar and coupling.
+Deleting the additive coefficients leaves the same path and forced
+bounds and zero additive cost, proving the final assertion.
+\end{proof}
+
 \subsection{Joining to the endpoint}
 
 Choose a comparison depth $k$ and cutoff $N\ge k$. Above $k$, retain
@@ -220,17 +430,13 @@ $|\beta_{N,p,k}-s|\le s/8$ places this constant coupling in the
 purchased band $x/2\le\beta_{N,p,k}\le3x$ throughout the interval:
 $7s/8\ge x/2$ and $9s/8\le3x$ for $s/2\le x\le s$.
 
-The endpoint presentation in this statement is a substantive input.
-It must have the chosen budget and threshold, the prescribed path and
-clip, additive cost at most $q_0$, and forced allowance $G$ of this
-construction, while representing exactly the original endpoint density.
-A bound by a larger forced allowance cannot be weakened to $G$ merely
-by increasing the coupling. Nor does deleting the additive remainder
-improve the forced allowance: it leaves every forced activity unchanged.
-Thus a separately proved re-expression of the endpoint density is needed
-if its original presentation has only the weaker allowance. The
-induction below begins with the re-expressed endpoint; it does not prove
-that re-expression.
+Use Proposition~\ref{prop:restart-endpoint} for the presentation at $k$,
+with $a_0=a_{\rm coast}$. Its fixed-profile restrictions are included in
+the local purchases; for a finite adjacent-profile menu take the smaller
+positive admissible $a_0$. The endpoint has exactly the original density,
+the prescribed path and clip, additive cost at most $q_0$, and forced
+allowance $G(s)$. It is this re-expressed endpoint that starts the
+induction.
 
 Inductively, the input at a step has cost $q_n$, the output has cost
 at most $q_{n+1}$ by \eqref{eq:restart-recurrence}, and their unnormalized
@@ -310,11 +516,225 @@ smaller of $L_{r-1},L_r$. Then \eqref{eq:restart-decay} and
 two thresholds, and the rest of the argument is unchanged.
 \end{proof}
 
-The lemma does not purchase (V1)--(V3). The local bounds of
-Section~\ref{sec:common-funded-history} are bought for the selected
-history, with its own coupling profile and its own letters. The restarted
-step uses a fixed coupling and the new multiplier letters, with its own
-clips, budget and support data, so those purchases do not supply
-(V1)--(V3) here. A common support exponent at all stages does not supply
-them either. Hypotheses (V1)--(V3) at the steps of a comparison window are
-the input (V) of Section~\ref{sec:actual-rank-purchases}.
+\subsection{Purchasing the actual adjacent steps}
+\label{subsec:restart-actual-purchases}
+
+We now verify (V1)--(V3) for the local construction, rather than
+assuming them for a restarted history. The fixed input is the funded
+chart/stamp contract: the original path bounds and binding, the actual
+adjacent tubes and their metric floors, the room and chart parameters,
+and the local reserve choices of
+Section~\ref{sec:actual-local-compiler-handoff}. The support purchases
+are made at the larger raw exponent and its reserve in
+Proposition~\ref{prop:allarity-compiler-reserve}. These are purchases
+on each stage pair, before the coupling and before the period; they do
+not assume any estimates on the restarted representations. As in the
+all-stage selection, a statement for a fixed pair below is made into a
+request at that pair, and the finite set of requests at a stage is
+intersected before choosing its ready time. No supremum of constants
+over infinitely many profiles is taken.
+
+First record the path correction explicitly. On a coarse level with
+threshold $\tau_x=x^{-1/2}\mathrm{hot}(x)$, support exponent $a$ and
+radius $B_c$, let $C_c$ bound each of its cubic and quartic coefficient
+sums at path rate $\sigma_c>0$, and let $\Gamma_c$ bound its quadratic
+loop sum. If $a/B_c\le\sigma_c$, the anchored price of the correction
+$\beta B_c^{\rm ref}-A_c$ is at most
+\begin{equation}\label{eq:restart-path-price}
+ \beta e^{7a}C_c\tau_x^3+
+ \beta e^{9a}C_c\tau_x^4+e^{5a}\Gamma_c\tau_x^2.
+\end{equation}
+Here $B_c^{\rm ref}$ denotes the reference base action, not the budget
+radius. Indeed its difference from the full path action consists of
+minus the cubic and quartic terms with coefficient $\beta$, and minus
+the loop terms with coefficient one, with their original healthy masks.
+An order-$j$ atom of true length $d$ has cover at most $1+2j+d/B_c$.
+Its weighted value is therefore bounded by
+$e^{a(1+2j)}\tau_x^j$ times its coefficient weighted by
+$e^{\sigma_cd}$. Sum these coefficient bounds at each anchor, and
+average the signed channels with their probability weights. This proves
+\eqref{eq:restart-path-price}, including all winding paths.
+Since $\Gamma_c\le2\exp((\log\log x)^2)$ and $\beta\le4x$, its
+right side is $x^{-1/2+o(1)}$. Also $a/B_c\le\sigma_c$ eventually.
+Uniformly for $x\in[s/2,s]$, this proves (V2), with bound $s^{-1/200}$.
+
+\begin{proposition}[Closure of the restarted local construction]
+\label{prop:restart-actual-closure}
+With the funded chart/stamp data just specified and the original
+endpoint bounds of Proposition~\ref{prop:restart-endpoint}, the
+restarted representations can be constructed throughout the comparison
+interval. At level $i$, their path and clip are those of the original
+level, their coupling is $\beta_{N,p,k}$, their additive value cost is
+at most $q_{k-i}$, and their forced allowance is
+$G(x_i)=\exp(-a_{\rm coast}\mathrm{hot}(x_i)^2)$, where
+$x_i=\widehat\beta_i$. Their neutral versions have the inherited law
+required by the actual local compiler. On every adjacent step the
+construction satisfies (V1)--(V3) on its own corrected alphabet and
+has the exact density identity \eqref{eq:restart-push}. The upper and
+lower compiler estimates use this same alphabet and normalization.
+All thresholds are uniform in cutoff, period, fields and marked
+families with the fixed arity cap and price parameters, with the
+fixed-profile dependence allowed by the funded contract.
+\end{proposition}
+
+\begin{proof}
+\emph{Matching the geometric data.}
+The clock estimate in the proof of
+Lemma~\ref{lem:ex-lattice-firesky-clock-fields} gives more than its
+stated half-band. Its upper bound for the total logarithmic scale loss
+is $o(s_k)$, so, increasing the ready threshold, one has
+$3s/4\le x_i\le s$ on the whole interval. Since
+$|\beta_{N,p,k}-s|\le s/8$, this gives
+\[
+                 x_i/2\le\beta_{N,p,k}\le2x_i.
+\]
+The clock relation on a step is exactly
+$x_{i+1}=\beta_F(x_i)$ for its own fine block size. Retiming gives
+the coarse threshold $\operatorname{temp}(r(x_i))$, while the fine
+threshold is $x_{i+1}^{-1/2}\mathrm{hot}(x_{i+1})$. The logarithmic
+radii have the required comparison $B_f\le2B_c$ eventually, and the
+budget wall dominates the fixed multiples of the local radius.
+These are the local radius and band conditions of the corrected
+compiler. Its remaining room and chart inequalities are the requests
+at the actual stage pair in the funded contract.
+
+Retain the two original beds and the original tube at this step.
+Their path attachment, diagonal identity, tower roll, metric floors
+and path bounds are properties of those paths and clips, not of the
+additive or forced coefficients. Consequently the alongside certificate
+is unchanged when those coefficients are replaced. The induction below
+always retains the prescribed path and clip, so the upward path and
+high clip of this actual tube are exactly those of its incoming
+representation. This verifies the same-data requirement of the local
+handoff, including at a stage boundary; equality of the two stage
+indices is not used.
+
+\emph{The incoming law.}
+Start with Proposition~\ref{prop:restart-endpoint}. Inductively suppose
+the stated bounds hold at level $i+1$. Delete only its additive family.
+The forced activities, their eligibility tests, path and clip remain
+unchanged, and the additive cost is zero. This gives the neutral law
+with any nonnegative additive allowance, in particular the calendar
+allowance used by the inherited estimate. Its loop coefficient bound
+is the original $\Gamma_{i+1}\le2H_{x_{i+1}}$, which is eventually
+smaller than the required positive power of the local fine parameter.
+The genuine representation separately has value cost $q_n$, where
+$n=k-(i+1)$. There is no assertion that $q_n$ meets the much smaller
+calendar derivative allowance. The correction letters use only its
+value bound and their full local supports.
+
+\emph{Prices on this alphabet.}
+Apply the actual local handoff to this tuple. Its matrix and both word
+inventories, owner bound, and all-matched warning estimate are uniform
+in the incoming field and store. In particular
+Lemma~\ref{lem:actual-neutral-warning} prices a product of warning
+factors and genuine remainder factors in the same Gaussian integral.
+Let $m$ be the larger of $G(x_i)^{-2}$ and $G(x_{i+1})^{-1}$, and let
+$l$ be the larger unforced multiplier needed by the two compiler uses.
+The latter has $\log l=O((\log\log s)^2)$ by the upper calculation
+($l\le\max(1,H_s^{q-3})$); the lower use has multiplier one.
+Fix these before introducing any marked family.
+
+We verify the inflated body-product premise, including its site bound.
+Each forced body component contains an owner. Charge its factor $m$
+to such an owner, bounding it by $m$ for each owner if there are several.
+For unforced components charge $l$ to a constituent; bounding by $l$
+for every constituent only increases the price. An owner of $r$ seed
+shares is bounded by $\exp[-K\mathrm{hot}(x_{i+1})^2r]$ after its
+normalization is paid, with the positive margin $K$ of the local
+handoff. Uniformly for $x_i,x_{i+1}\in[3s/4,s]$,
+\[
+ \frac{\mathrm{hot}(x_i)^2}{\mathrm{hot}(x_{i+1})^2}\longrightarrow1.
+\]
+To check this, the difference of their $\log\log$ arguments is
+$O(1/\log s)$; the mean value theorem applied to $2t^{3/2}$
+bounds the difference of the logarithms by
+$O(\sqrt{\log\log s}/\log s)$. Hence $\log m\le
+4a_{\rm coast}\mathrm{hot}(x_{i+1})^2$ eventually. The purchased
+inequality $2a_{\rm coast}\le K/4$ leaves at least half the owner
+suppression. The factor $l$, the finite decoration costs and the
+packet count $H_BD_B^{2r}$ from
+Section~\ref{sec:mixed-activity-prices} are absorbed in the remaining
+margin: their logarithms per seed are $O((\log\log s)^2+\log B)$,
+whereas $\mathrm{hot}(x_{i+1})^2$ dominates every fixed multiple of
+these quantities. Thus the inflated owner site price is smaller than
+any fixed negative power of $s$. The joint warning price has the same
+property, even after the fixed halo counts and $l$ are paid, by
+\eqref{eq:warning-price}. Its exponent grows like a positive constant
+times $\exp(\tfrac12(\log\log s)^2)$, which dominates $\log s$.
+
+The remaining neutral auxiliary letters have site price at most
+$r(x_i)^{-1/48}$ by the corrected exponent decomposition. Multiplication
+by $l$ and fixed cover/counting costs changes this to
+$s^{-1/48+o(1)}$. The projected old forced background has price at
+most $\mathcal W(B_c)L^4T_EG(x_{i+1})$, by
+\eqref{eq:mixed-cover-charge} and its site version. This too is smaller
+than any fixed negative power of $s$. The background need not itself
+pay $m$: exact inventory coverage places every forced background
+inventory in a body owner component, which supplies that inflation,
+as in the proof of \eqref{eq:mixed-club-integral}.
+
+Finally, the genuine additive letters have uninflated footprint price
+at most $C(42B_c+1)^4q_n$. All fixed powers of $B_c$ and all factors
+$l$ are $\exp(O((\log\log s)^2))$. Since
+$A_s=\exp((\log\log s)^3)$, each fixed product of these factors is
+at most $A_s^{1/4}$ eventually. In particular the inflated additive
+site price is at most $q_nA_s^{1/4}$. There are finitely many such
+products in this argument; choose their thresholds together, uniformly
+for $n\le h$. The incoming bound \eqref{eq:restart-decay} makes the
+combined site price times every fixed radius polynomial tend to zero.
+The rooted-tree estimate of
+Section~\ref{sec:actual-mixed-marked-compiler} therefore applies.
+For components containing an additive letter, root at such a letter;
+its tree estimate bounds their site sum by its inflated site price,
+with the fixed support-conversion factors just paid. Enlarging to
+$q_nA_s=\omega_n$ leaves room for these factors. Components with no
+additive letter have site price $s^{-1/48+o(1)}$, eventually at most
+$\delta_n-\omega_n$: indeed $q_n\ge s^{-1/200}$ and
+$\delta_n-\omega_n=q_n(A_s^3-A_s)$. This proves (V1), with the
+specified separate allowances for the two classes. It also proves
+the inflated product estimate itself: use the pointwise owner and
+auxiliary bounds and the single joint warning event, and then group
+connected constituents. All these estimates use the full supports.
+
+\emph{Reconstruction and renewal.}
+Choose the scalar using the positive original loading, the additive
+family from the regular logarithm and the correction
+\eqref{eq:restart-path-price}, and the forced family by
+Proposition~\ref{prop:corrected-forced-output}. Its proof, applied to
+the genuine corrected body identity, supplies (V3). The absolute
+component bounds just proved justify its reassembly and every
+hole-deletion identity. Their normalization is the same one used by
+the mixed compiler. The path bound proves (V2), so the new additive
+cost is at most $s^{-1/200}+16\delta_n\le q_{n+1}$.
+
+For completeness the hole corrections do not exhaust the forced
+margin. Their raised site cost is at most
+$16l\delta_n e^{16\delta_n}$ by
+$|e^{-c}-1|\le e^{|c|}|c|$. The path correction has been absorbed entirely into the coarse
+additive family, so there is no residual boundary factor. The component
+and raised-hole site costs are consequently $s^{-1/400+o(1)}$ by
+\eqref{eq:restart-decay}. They satisfy the rooted smallness and
+normalization conditions of the mixed compiler, with its available
+$H_s^{-1/8}$ reserve. Its forced output is bounded by $1/m$, hence
+by $G(x_i)^2\le G(x_i)$. Attach and sum at full addresses as in
+that proposition; this preserves the bound and all eligibility tests.
+The resulting neutral law has the retained original path bounds, zero
+additive cost and this new forced allowance. The symmetrization above
+supplies the motion properties of the genuine additive family.
+This proves the induction hypothesis at level $i$ together with the
+exact push of the genuine incoming density.
+
+Only the newly constructed entry at $i$ is installed. Thus subsequent
+backward steps retain the endpoint and every already constructed
+higher entry. The equality of consecutive couplings makes them all
+$\beta_{N,p,k}$, and composition gives the density identities on the
+same auxiliary course. For the three possible adjacent stage pairs,
+use their own positive path rates, floors and clips throughout and
+intersect their finitely many thresholds. The numerical argument of
+Lemma~\ref{lem:restart-stage-boundary} now applies with (V1)--(V3)
+proved. Finally the alphabet, loading and all-hole identities were
+selected before any marked family. Decreasing the raw exponent and
+inflations gives the upper and lower uses on this same output,
+as asserted in Proposition~\ref{prop:allarity-compiler-reserve}.
+\end{proof}
