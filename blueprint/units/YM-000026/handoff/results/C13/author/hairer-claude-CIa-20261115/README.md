@@ -33,3 +33,10 @@ K₀, β₀ and γ₀ are fixed polynomials in N, Q, S, so they have upper expon
 ## Third commit: what (CI)(c) amounts to
 
 A paragraph after (CI) notes that in the payment paragraph of `sec:principal-gaussian-comparison`, every scale is a function of the rung coupling alone, except the primitive mean and covariance bounds J₀ and V₀ and their absolute jet bounds. So (CI)(c) is exactly the primitive comparison `eq:principal-primitive-comparison`, taken uniformly over healthy base configurations. That section already lists the primitive comparison as an input.
+
+## Follow-up to the review of 32be344 (2026-11-15)
+
+- **Build artefacts removed.** `existence.aux`, `.fdb_latexmk`, `.fls`, `.log`, `.out` and `.toc` had been committed by mistake in 32be344, and are now removed from the branch.
+- **Measure identification is now an assumption.** The review pointed out that `eq:planted-integral` holds with its own supplied sector and tag measures, and does not by itself identify their joint loading and weights with the principal comparison integral for each partition product. I did not find a same-course bridge in the book that covers the union of read supports. That identification is now the assumption (CI)(a). The lemma assumes it and derives the integral statement from the realignment, and its proof says explicitly that the planted identity alone does not make the identification. The status item is updated to match.
+
+Checks actually run: `latexmk -g -pdf existence.tex` (rc 0, 0 undefined references) and `python3 scripts/check_blueprint.py`.

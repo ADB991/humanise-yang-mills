@@ -557,12 +557,12 @@ We use the following hypothesis on one common insertion.
 \item[(CI)] \emph{Common insertion and transport.} At each leading rung of
  the leading interval:
  \begin{enumerate}
- \item[(a)] the entirely leading components of the cell, produced by the
-  compiler through \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
-  integrate to $\widetilde{\mathcal A}_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$,
-  with the same masked insertions $Q^{(i)}_T$ (this follows from the
-  realignment by Lemma~\ref{lem:allarity-common-insertion-realigned}
-  below, except at the first leading rung);
+ \item[(a)] \emph{measure identification}: for the leading letters of
+  each cell and every partition product of their pieces, the sector and
+  tag measures of \eqref{eq:planted-integral} are those of the principal
+  comparison integral $\widetilde{\mathcal A}_{i,x}$ on the union of the
+  read supports of the pieces in that product, with the same joint loading
+  and the same weights;
  \item[(b)] the Gaussian history is transported by the reference
   integrals on those insertions: at every healthy base configuration
   $x$ the jet of $D^{(i-1)}$ at $x$ is
@@ -702,7 +702,11 @@ $i$ is the output of the realignment of
 Subsection~\ref{subsec:allarity-realign} at the preceding rung, with
 desired principal sources $F_{c,I}=c^{(i)}_I$, or, at the first leading
 rung, that it consists of one piece $\chi_Ic^{(i)}_Iz_{(c,I)}$ per cell
-$c$ and mode $I$. Then (CI)(a) holds at rung $i$.
+$c$ and mode $I$. Assume (CI)(a) at rung $i$. Then the entirely leading
+components of each cell $c$, produced by the compiler through
+\eqref{eq:planted-selection}--\eqref{eq:planted-integral}, integrate to
+$\iota_c\widetilde{\mathcal A}_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$, with
+the masked insertions $Q^{(i)}_T$.
 \end{lemma}
 \begin{proof}
 \emph{The leading family.} On the healthy region of $X_{c,I}$, the
@@ -722,22 +726,29 @@ $T=\{c\}\times J$. The selected pieces are those of cell $c$, so the planted
 polynomial is $P_T=D^{(i)}_\chi$. Its values are the masked values, as
 shown after \eqref{eq:planted-selection}. By \eqref{eq:planted-exp} the
 product of the factors $1+\chi_Ic^{(i)}_Iz_I$ is $\exp_*D^{(i)}_\chi$,
-whose coefficients are the insertions $Q^{(i)}_T$. The sector and tag
-measures with their weights in \eqref{eq:planted-integral} are the
-integration against $R_6\chi_6\,d\gamma_{C_0}$ and the averages of
-$\widetilde{\mathcal A}_{i,x}$, by the first identity of
-Section~\ref{sec:principal-gaussian-comparison}. Hence the entirely leading
+whose coefficients are the insertions $Q^{(i)}_T$. The identity
+\eqref{eq:planted-integral} holds with the sector and tag measures and
+weights supplied with it. By (CI)(a), for each partition product these
+are the measures, joint loading and weights of
+$\widetilde{\mathcal A}_{i,x}$ on the union of the read supports of its
+pieces. By the first identity of
+Section~\ref{sec:principal-gaussian-comparison}, that integral is
+integration against $R_6\chi_6\,d\gamma_{C_0}$ followed by the forest and
+tag averages. The planted identity alone does not make this
+identification. Hence the entirely leading
 part of the cell integrates to
 $\iota_c\widetilde{\mathcal A}_{i,x}(\exp_*D^{(i)}_\chi)$, with the
 insertions $Q^{(i)}_T$.
 \end{proof}
 
-Consequently, (CI)(a) holds at every leading rung, provided that it holds
-at the first one. There the leading family is the top-level principal
-insertion. Its form $\chi_Ic^{(i)}_Iz_{(c,I)}$, one piece per mode, is
-part of the terminal-source purchase.
+Consequently, under (CI)(a), the leading part of every cell integrates as
+stated at every leading rung, provided that the leading family has the
+displayed form at the first one. There the leading family is the
+top-level principal insertion. Its form $\chi_Ic^{(i)}_Iz_{(c,I)}$, one
+piece per mode, is part of the terminal-source purchase.
 
-By (CI)(a) the output leading letters of the cell are the coefficients of
+By Lemma~\ref{lem:allarity-common-insertion-realigned} the output leading
+letters of the cell are the coefficients of
 $\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
 $\mathcal A_{i,x}=a_x^{-1}\widetilde{\mathcal A}_{i,x}$ is the normalized
 actual-sector integral. The scalar factor $a_x$ belongs to the unmarked
@@ -896,7 +907,9 @@ The following inputs are not supplied here.
  Lemma~\ref{lem:allarity-step-discrepancy}. That the compiler integrates the
  masked moments $Q^{(i)}_T$ follows from the realignment by
  Lemma~\ref{lem:allarity-common-insertion-realigned}, given the form of the
- top-level principal insertion in item~2. The remaining clauses say that the Gaussian history is transported by the
+ top-level principal insertion in item~2 and the measure identification
+ (CI)(a) of the planted sector and tag measures with those of the
+ principal comparison. The remaining clauses say that the Gaussian history is transported by the
  reference integrals on those same insertions and is the one used at the
  middle level, and that the comparison data are uniform over the healthy
  base configurations. The bounded transport and the inverse bound for the
