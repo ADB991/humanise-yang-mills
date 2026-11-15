@@ -98,6 +98,7 @@ This is why the spatial charge is proportional to $n$, while the
 number of principal subset types is bounded by $2^n$.
 
 \subsection{Replacing the leading pieces on their prescribed supports}
+\label{subsec:allarity-realign}
 
 Write the current regular source as a sum of remainder pieces $H_a$
 and leading pieces $S_b$. Let $F_{c,I}$ be the desired principal source
@@ -557,24 +558,18 @@ We use the following hypothesis on one common insertion.
 \item[(CI)] \emph{Common insertion and transport.} At each leading rung of
  the leading interval:
  \begin{enumerate}
- \item[(a)] the entirely leading components of the cell, produced by the
-  compiler through \eqref{eq:planted-selection}--\eqref{eq:planted-integral},
-  integrate to $\widetilde{\mathcal A}_i\bigl(\exp_*D^{(i)}_\chi\bigr)$,
-  with the same masked insertions $Q^{(i)}_T$;
+ \item[(a)] \emph{measure identification}: for the leading letters of
+  each cell and every partition product of their pieces, the sector and
+  tag measures of \eqref{eq:planted-integral} are those of the principal
+  comparison integral $\widetilde{\mathcal A}_{i,x}$ on the union of the
+  read supports of the pieces in that product, with the same joint loading
+  and the same weights;
  \item[(b)] the Gaussian history is transported by the reference
   integrals on those insertions: at every healthy base configuration
-  $x$, $b_x$ is invertible and the jet of $D^{(i-1)}$ at $x$ is
+  $x$ the jet of $D^{(i-1)}$ at $x$ is
   $\log_*\mathcal G_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$. This is the
   Gaussian history used at the middle level and at the launch;
- \item[(c)] the transport is bounded: with
-  $\tau_n=b_n\max(1,\tau)^n$, where $b_n$ is the Bell number and $\tau$
-  the amplitude of the masked principal pieces,
-  $\|\mathcal G_{i,x}(Q^{(i)}_T)\|\le\tau_n$ for every $T$ and every
-  healthy base configuration $x$;
- \item[(d)] the reference mass is invertible with a uniform jet bound:
-  $\|b_x^{-1}\|\le\beta_0$ for every healthy base configuration $x$,
-  where $\beta_0\ge1$ has upper exponent $0$, uniformly in the rungs;
- \item[(e)] the comparison data of
+ \item[(c)] the comparison data of
   Section~\ref{sec:principal-gaussian-comparison}, and the payment that
   follows it, hold uniformly over the healthy base configurations $x$ of
   the required healthy region. The insertion in that comparison is
@@ -582,22 +577,102 @@ We use the following hypothesis on one common insertion.
   read supports of the pieces in each partition product.
  \end{enumerate}
 \end{enumerate}
-Clauses (c) and (d) are not automatic. The cutoff $\chi_9$ makes
-$\mathcal G_i$ a smooth function of the base parameter rather than a
-polynomial, and the jet norm also involves its derivatives in that
-parameter. If the compensated change of variables were global, so that
-$\int R_9\,d\gamma_{C_0}=1$, then $b_x-1$ would be the mass of $R_9$
-outside the cutoff. The tail estimate \eqref{eq:principal-outage} would
-then bound it, after controlling the jets of $R_9$ there. We do not use
-this.
+In the payment paragraph of Section~\ref{sec:principal-gaussian-comparison}
+every scale except two is a function of the rung coupling alone: the read
+dimension, the direction bound, the aperture, the support radius and the
+good-coordinate radius $v$. The two exceptions are the primitive mean and
+covariance bounds $J_0,V_0$ of \eqref{eq:principal-primitive-comparison},
+with their absolute jet bounds. These are bounds on actual and reference
+covariances read at the base configuration. Clause (c) therefore amounts
+to requiring \eqref{eq:principal-primitive-comparison} and those absolute
+jet bounds with $J_0$ and $V_0$, as functions of the rung coupling, taken
+as suprema over the healthy base configurations of the region. That section already lists the
+primitive comparison as an input.
+The cutoff $\chi_9$ makes $\mathcal G_i$ a smooth function of the base
+parameter rather than a polynomial, and the jet norm also involves its
+derivatives in that parameter. The bounds on the transport and on the
+reference mass that the comparison needs are nevertheless consequences of
+(CI)(c). We prove them next. Put $\tau_n=b_n\max(1,\tau)^n$, where $b_n$
+is the Bell number and $\tau$ the amplitude of the masked principal
+pieces.
+
+\begin{lemma}[Jet bounds for the two integrals]
+\label{lem:allarity-reference-bounds}
+Assume (CI)(c). There is a polynomial $\widetilde P_n$, depending only on
+$n$, with the following property. Put
+$K_0=c_n\widetilde P_n(N,Q,S)$, where $c_n$ is the norm-equivalence factor
+above, and
+\[
+ \beta_0=2(n+1)(2K_0+3)^n,\qquad \gamma_0=\beta_0(K_0+1),
+\]
+and let $\Pi$ be $c_n$ times the multiplier of the amplitude in
+\eqref{eq:principal-comparison-final}, which has upper exponent $-1/2$.
+Then $K_0,\beta_0,\gamma_0$ have upper exponent $0$, and for all large
+$s$, every leading rung and every healthy base configuration $x$:
+\begin{enumerate}
+\item $\|\widetilde{\mathcal A}_{i,x}(h)\|\le K_0\sup|h|$ for every bounded
+ measurable insertion $h$;
+\item the zeroth coefficient of $a_x$ lies in $[1-2Ne^{-v+M/2},1]$;
+\item $b_x$ is invertible in the truncated jet algebra and
+ $\|b_x^{-1}\|\le\beta_0$;
+\item $\|\mathcal G_{i,x}(h)\|\le\gamma_0\sup|h|$ for every bounded
+ measurable insertion $h$; in particular
+ $\|\mathcal G_{i,x}(Q^{(i)}_T)\|\le\gamma_0\tau_n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Item 1.} On $\|z\|_\infty\le S$, \eqref{eq:principal-density-jets},
+the cutoff jet bound of hypothesis~4 of
+Section~\ref{sec:principal-gaussian-comparison} and the product rule bound
+the $J^n_0$ norm of $R_6\chi_6(\cdot,z)$ by $\widetilde P_n(N,Q,S)$, after
+enlarging the polynomial. Beyond that ball the integrand vanishes on a
+common neighbourhood of zero. Differentiation under the integral, as
+justified in that section without derivatives of $h$, and integration
+against the probability measure $\gamma_{C_0}$ give
+$\|\int R_6\chi_6h\,d\gamma_{C_0}\|_{J^n_0}\le\widetilde P_n\sup|h|$. The
+forest and tag averages have nonnegative weights summing to one, so they
+preserve this bound. Passing to the Taylor $\ell^1$ norm costs $c_n$.
+
+\emph{Item 2.} At the base point the compensated map is the identity,
+$T_{y_0}z=z$ (Section~\ref{sec:gaussian-differentiation}). So the
+Jacobian is one there, $w_6(0,z)=z$ and $C_6(0)=C_0$, hence
+$R_6(0,z)=1$. The zeroth coefficient of $a_x$ is therefore an average of
+the numbers $\int\chi_6(0,z)\,d\gamma_{C_0}(z)$. They lie in $[0,1]$
+because $0\le\chi_6\le1$. They are at least
+$\gamma_{C_0}\{\|z\|_\infty<v\}\ge1-2Ne^{-v+M/2}$, because $\chi_6=1$
+there by hypothesis~4 and by \eqref{eq:principal-outage}.
+
+\emph{Item 3.} By \eqref{eq:principal-comparison-final} with $h=1$,
+$\|b_x-a_x\|\le\Pi$. The zeroth
+coefficient $b_0$ of $b_x$ therefore satisfies
+$b_0\ge1-2Ne^{-v+M/2}-\Pi\ge\frac12$ for large $s$, since $e^{-v}$ has
+every negative upper exponent. Also $\|b_x\|\le K_0+\Pi\le K_0+1$. Write
+$b_x=b_0(1+u)$. Then $u$ has zero constant coefficient and
+$\|u\|\le2(K_0+1)+1$. In the algebra of jets of order $n$, a product of
+$n+1$ elements with zero constant coefficient vanishes. So
+$(1+u)^{-1}=\sum_{r=0}^n(-u)^r$, and
+\[
+ \|b_x^{-1}\|\le b_0^{-1}\sum_{r=0}^n\|u\|^r\le2(n+1)(2K_0+3)^n=\beta_0 .
+\]
+
+\emph{Item 4.} By \eqref{eq:principal-comparison-final} and item~1,
+$\|\widetilde{\mathcal G}_{i,x}(h)\|\le(K_0+\Pi)\sup|h|\le(K_0+1)\sup|h|$.
+Multiply by $b_x^{-1}$ and use item~3. Since $|Q^{(i)}_T|\le\tau_n$, the
+last claim follows.
+
+Finally, $N$, $Q$ and $S$ have upper exponent $0$ by the payment
+paragraph of Section~\ref{sec:principal-gaussian-comparison}. A fixed
+polynomial in them, and a fixed power of it, also have upper exponent $0$.
+\end{proof}
 
 The polynomial step of Section~\ref{sec:marked-healthy-cumulant-launch}
 is a finite linear substitution followed by Wick contraction with the
 reference covariance. Write $\mathcal T_i$ for it. If (b) is stated with
 $\mathcal T_i$ in place of $\mathcal G_i$, the proof below acquires the
 additional term $\max_T\|\mathcal G_{i,x}(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$.
-A small difference does not replace the norm bound (c) by itself. That
-route needs (c) for one of the two transports and a bound on the
+A small difference does not replace the norm bound of
+Lemma~\ref{lem:allarity-reference-bounds}(4) by itself. That route needs
+such a bound for one of the two transports and a bound on the
 difference with upper exponent below zero. To call the difference a
 Gaussian tail, one must identify the uncut density with the Wick
 contraction and say which insertion masks survive on the region removed
@@ -618,7 +693,63 @@ $\exp_*D^{(i)}_\chi$, use $\mathcal G_{i,x}(1)=1$, and then $\exp_*\log_*=\mathr
 on elements with constant coefficient one.
 \end{proof}
 
-By (CI)(a) the output leading letters of the cell are the coefficients of
+Clause (a) of (CI) is a consequence of the realignment and of the planted
+identity. Only the first leading rung needs a separate check.
+
+\begin{lemma}[The common insertion after realignment]
+\label{lem:allarity-common-insertion-realigned}
+Let $i$ be a leading rung. Suppose that the leading family entering rung
+$i$ is the output of the realignment of
+Subsection~\ref{subsec:allarity-realign} at the preceding rung, with
+desired principal sources $F_{c,I}=c^{(i)}_I$, or, at the first leading
+rung, that it consists of one piece $\chi_Ic^{(i)}_Iz_{(c,I)}$ per cell
+$c$ and mode $I$. Assume (CI)(a) at rung $i$. Then the entirely leading
+components of each cell $c$, produced by the compiler through
+\eqref{eq:planted-selection}--\eqref{eq:planted-integral}, integrate to
+$\iota_c\widetilde{\mathcal A}_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$, with
+the masked insertions $Q^{(i)}_T$.
+\end{lemma}
+\begin{proof}
+\emph{The leading family.} On the healthy region of $X_{c,I}$, the
+realignment writes the sum of the leading pieces of mode $(c,I)$ as
+$F_{c,I}+L_{c,I}$. It moves $L_{c,I}$, with the mask of $X_{c,I}$, into
+the regular remainder, and moves the part of the original masked values
+off that healthy region into the forced alphabet. What remains designated
+leading at mode $(c,I)$ is therefore the single piece
+$\chi_IF_{c,I}z_{(c,I)}=\chi_Ic^{(i)}_Iz_{(c,I)}$, where $\chi_I$ is the
+healthy mask of $X_{c,I}$. In the cell $c$ the leading family is thus
+$\iota_c(D^{(i)}_\chi)$. At the first leading rung this is the
+hypothesis.
+
+\emph{The integral.} Apply \eqref{eq:planted-selection} and
+\eqref{eq:planted-integral} to the leading letters alone, with
+$T=\{c\}\times J$. The selected pieces are those of cell $c$, so the planted
+polynomial is $P_T=D^{(i)}_\chi$. Its values are the masked values, as
+shown after \eqref{eq:planted-selection}. By \eqref{eq:planted-exp} the
+product of the factors $1+\chi_Ic^{(i)}_Iz_I$ is $\exp_*D^{(i)}_\chi$,
+whose coefficients are the insertions $Q^{(i)}_T$. The identity
+\eqref{eq:planted-integral} holds with the sector and tag measures and
+weights supplied with it. By (CI)(a), for each partition product these
+are the measures, joint loading and weights of
+$\widetilde{\mathcal A}_{i,x}$ on the union of the read supports of its
+pieces. By the first identity of
+Section~\ref{sec:principal-gaussian-comparison}, that integral is
+integration against $R_6\chi_6\,d\gamma_{C_0}$ followed by the forest and
+tag averages. The planted identity alone does not make this
+identification. Hence the entirely leading
+part of the cell integrates to
+$\iota_c\widetilde{\mathcal A}_{i,x}(\exp_*D^{(i)}_\chi)$, with the
+insertions $Q^{(i)}_T$.
+\end{proof}
+
+Consequently, under (CI)(a), the leading part of every cell integrates as
+stated at every leading rung, provided that the leading family has the
+displayed form at the first one. There the leading family is the
+top-level principal insertion. Its form $\chi_Ic^{(i)}_Iz_{(c,I)}$, one
+piece per mode, is part of the terminal-source purchase.
+
+By Lemma~\ref{lem:allarity-common-insertion-realigned} the output leading
+letters of the cell are the coefficients of
 $\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
 $\mathcal A_{i,x}=a_x^{-1}\widetilde{\mathcal A}_{i,x}$ is the normalized
 actual-sector integral. The scalar factor $a_x$ belongs to the unmarked
@@ -647,7 +778,7 @@ regions, where $y$ satisfies \eqref{eq:allarity-weighted-discrepancy}.
 Hence the first purchase in \eqref{eq:allarity-step-purchases} holds.
 \end{lemma}
 \begin{proof}
-Fix a healthy base configuration $x$; by (CI)(e) all constants below are
+Fix a healthy base configuration $x$; by (CI)(c) all constants below are
 uniform in $x$. Each $Q^{(i)}_T$ is a sum, over the at most $b_n$ set
 partitions of $T$, of products of at most $n$ masked principal pieces. As
 an insertion it is measurable and bounded by $\tau_n$. By
@@ -658,12 +789,11 @@ $1$,
  \|\widetilde{\mathcal A}_{i,x}(Q^{(i)}_T)-\widetilde{\mathcal G}_{i,x}(Q^{(i)}_T)\|
   \le\tau_n\Pi,\qquad \|a_x-b_x\|\le\Pi,
 \]
-where $\Pi$, the multiplier of the amplitude in
-\eqref{eq:principal-comparison-final} times $c_n$, has upper exponent
-$-1/2$, uniformly in the period and after the averages.
+with $\Pi$ as in Lemma~\ref{lem:allarity-reference-bounds}, uniformly in
+the period and after the averages.
 
 \emph{Normalization.} Write $a_x=b_x(1+u)$ with $u=b_x^{-1}(a_x-b_x)$. By
-(CI)(d), $\|u\|\le\beta_0\Pi$. Once $\beta_0\Pi\le1/2$,
+Lemma~\ref{lem:allarity-reference-bounds}(3), $\|u\|\le\beta_0\Pi$. Once $\beta_0\Pi\le1/2$,
 Lemma~\ref{lem:allarity-jet-inverse} shows that $1+u$ is invertible with
 $\|(1+u)^{-1}\|\le2$. Hence $a_x$ is invertible and
 $\|a_x^{-1}\|\le2\beta_0$. For every insertion $h$,
@@ -674,14 +804,14 @@ $\|a_x^{-1}\|\le2\beta_0$. For every insertion $h$,
 \]
 as one checks by multiplying out and using
 $\widetilde{\mathcal G}_{i,x}=b_x\mathcal G_{i,x}$. With $h=Q^{(i)}_T$ and
-(CI)(c),
+Lemma~\ref{lem:allarity-reference-bounds}(4),
 \[
  \|\mathcal A_{i,x}(Q^{(i)}_T)-\mathcal G_{i,x}(Q^{(i)}_T)\|
-  \le2\beta_0(\tau_n\Pi+\Pi\tau_n)=4\beta_0\tau_n\Pi .
+  \le2\beta_0(\tau_n\Pi+\Pi\gamma_0\tau_n)=2\beta_0(1+\gamma_0)\tau_n\Pi .
 \]
 Hence all coefficients of $\mathcal A_{i,x}(\exp_*D^{(i)}_\chi)$ and of
-$\mathcal G_{i,x}(\exp_*D^{(i)}_\chi)$ have norm at most $K=2\tau_n$ once
-$4\beta_0\Pi\le1$.
+$\mathcal G_{i,x}(\exp_*D^{(i)}_\chi)$ have norm at most
+$K=(1+\gamma_0)\tau_n$ once $2\beta_0(1+\gamma_0)\Pi\le1$.
 
 \emph{Logarithm.} The map $1+X\mapsto\log_*(1+X)$ is a polynomial of
 degree at most $n$ in the coefficients of $X$, with products taken in the
@@ -691,7 +821,7 @@ $C_nK^{n-1}$ for a constant $C_n$ depending only on $n$. Hence, by
 (CI)(b),
 \[
  \Bigl\|\log_*\mathcal A_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)-D^{(i-1)}\Bigr\|
- \le C_nK^{n-1}2^n\cdot4\beta_0\tau_n\Pi=:y ,
+ \le C_nK^{n-1}2^n\cdot2\beta_0(1+\gamma_0)\tau_n\Pi=:y ,
 \]
 the norm on the left being the sum over the modes of the jet norms of
 the coefficients at $x$.
@@ -703,8 +833,8 @@ actual projected polynomial and $D^{(i-1)}$ differ by at most $y$ at
 every healthy base configuration $x$, which is the bound on the required
 healthy regions.
 
-\emph{Payment.} Since $\tau$ and $\beta_0$ have upper exponent $0$, so do
-$\tau_n$ and $K$, and $y$ has upper exponent $-1/2$. By
+\emph{Payment.} Since $\tau$, $\beta_0$ and $\gamma_0$ have upper exponent
+$0$, so do $\tau_n$ and $K$, and $y$ has upper exponent $-1/2$. By
 Lemma~\ref{lem:allarity-step-charge}, $2^nR_e$ is a constant, and $H^{q}$
 has upper exponent $0$. Hence $2^nR_eyH^{q}$ has upper exponent $-1/2$,
 and is therefore at most $1$ for all large $s$. This is
@@ -772,15 +902,21 @@ The following inputs are not supplied here.
  which give the unweighted principal-source bound $H^A$ by
  Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
  purchase: the launched insertions must give the initial
- remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$.
+ remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$,
+ and a leading family of one piece $\chi_Ic_Iz_{(c,I)}$ per cell and mode.
 \item \emph{The common insertion (CI)} of
- Lemma~\ref{lem:allarity-step-discrepancy}: the compiler integrates the
- masked moments $Q^{(i)}_T$, the Gaussian history is transported by the
+ Lemma~\ref{lem:allarity-step-discrepancy}. That the compiler integrates the
+ masked moments $Q^{(i)}_T$ follows from the realignment by
+ Lemma~\ref{lem:allarity-common-insertion-realigned}, given the form of the
+ top-level principal insertion in item~2 and the measure identification
+ (CI)(a) of the planted sector and tag measures with those of the
+ principal comparison. The remaining clauses say that the Gaussian history is transported by the
  reference integrals on those same insertions and is the one used at the
- middle level, the transport is bounded in the jet norm, the reference
- mass has a uniform inverse jet bound, and the comparison is uniform over
- the healthy base configurations. The normalization is then handled by
- Lemma~\ref{lem:allarity-jet-inverse}. The
+ middle level, and that the comparison data are uniform over the healthy
+ base configurations. The bounded transport and the inverse bound for the
+ reference mass follow from the latter by
+ Lemma~\ref{lem:allarity-reference-bounds}, and the normalization is then
+ handled by Lemma~\ref{lem:allarity-jet-inverse}. The
  amplitude bound at every leading rung follows from item~2
  by Corollary~\ref{cor:allarity-rung-amplitude}.
 \item \emph{The reader separation} $2QB$ between distinct replica cells
