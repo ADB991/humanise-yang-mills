@@ -835,12 +835,10 @@ Lemma~\ref{lem:allarity-reference-bounds}(4) by itself. That route needs
 such a bound for one of the two transports and a bound on the
 difference with upper exponent below zero. By
 Lemma~\ref{lem:allarity-reference-mask-removal}, no insertion mask survives
-in the reference integral, so the difference concerns the cutoff
-$\chi_9$ alone. To call it a Gaussian tail, one must still identify the
-uncut reference density with the Wick contraction, that is, show that the
-reference coordinate map $w_9$ is affine in $z$ with the reference
-covariance. One must also control the jets of $R_9$ outside the cutoff
-radius.
+in the reference integral. The remaining difference includes both the
+reference cutoff and the nonlinear physical coordinate reading. The local
+comparison below treats these separately; no affineness of the compensated
+coordinate map is required.
 
 \begin{lemma}[The prescribed polynomial is the reference integral]
 \label{lem:allarity-prescribed-reference}
@@ -975,6 +973,51 @@ $\int\psi\,d\gamma_1$, not to $1$. If the conditional law of the
 omitted variables varies with a coarse parameter, the projected cutoff
 can vary with that parameter too. Bounds on the full cutoff do not by
 themselves give its projected parameter-jet bounds.
+
+\paragraph{Which sector law has to be identified.}
+The measure in (CI)(a) is the measure of the selected principal component,
+not the complete interacting block density. The distinction can already
+be seen in the dictionary of Section~\ref{sec:gaussian-reassembly}.
+Its full integrand contains the compulsory packet factors and
+$\exp(\sum_i f_i)$ in addition to the Gaussian and local cutoffs.
+Neither factor is generally constant in the Gaussian variables.
+It cannot be absorbed into the common scalar $\Lambda(y)$ of (M).
+Setting a body's marker variables to zero does not remove its unmarked
+activity; selecting the component with no body letters does.
+
+For clarity, consider a fixed principal-only component whose integrand,
+before Gaussian integration, is
+\[
+             \prod_{a\in A}\chi_a(z,h)f_a(U(z,h)).
+\]
+Here the product over other selected dictionary letters is empty and
+therefore equals one. Let $I$ contain every real coordinate inspected
+by every factor, including the $\chi_a$. The joint integral is exactly
+\[
+ \int\prod_{a\in A}\chi_a(z_I,h)f_a(U(z_I,h))
+                  \,d\gamma_{C_I}(z_I)d\rho(h).
+\]
+Indeed the characteristic-function marginal calculation in
+Section~\ref{sec:gaussian-differentiation} projects the Gaussian;
+the integrand already depends only on the retained variables, so no
+conditional cutoff remains. If the local coordinate display is
+independent of a frozen Haar variable, its probability integral is one;
+otherwise that variable stays in $h$. No product of marginal Gaussian
+laws has been substituted for this joint law.
+In the singleton case the same argument applies to
+$\chi_a f_a$, including its entire local cutoff. The compensated
+change of variables then gives the first integrand of
+\eqref{eq:principal-two-integrands} exactly.
+
+This calculation explains how a local principal law can have the form
+(M) without the full sector density having that form. To apply it to a
+partition product, the component construction must give the displayed
+principal-only integrand on the union of its reads, with the same
+sector, forest, tag and loading for all factors. A singleton identity
+alone does not establish that property for a product. Nor may its unit
+normalization be replaced by the full interacting partition function.
+These are the precise component-selection and normalization matches
+required in (CI)(a); enlarging a read set cannot fix a mismatch in them.
 
 Here is a sufficient version of the chart-law input. Its domain is
 chosen once for a cell, before selecting a partition product.
@@ -1148,6 +1191,278 @@ and is therefore at most $1$ for all large $s$. This is
 in \eqref{eq:allarity-step-purchases} because $\omega_-\le1$.
 \end{proof}
 
+\paragraph{A polynomial history with a local transport error.}
+The compensated coordinate map need not be affine. Indeed, on the protected
+ball it is obtained from
+$u\mapsto\log(\exp(u)M)$, as in
+\eqref{eq:compensator-exact}; away from that ball it uses a smooth extension.
+Undoing this change of variables removes its Jacobian, but leaves the
+nonlinear physical insertion in the reference Gaussian integral.
+It does not turn that insertion into its linear curvature polynomial.
+Consequently (CI)(b) is a sufficient convention, not an identity supplied
+by the compensated change of variables. We now give an alternative which
+keeps the prescribed polynomial history throughout.
+
+\begin{lemma}[Local error in the prescribed transport]
+\label{lem:allarity-local-transport-defect}
+Assume (CI)(a),(c) and the amplitude hypotheses of
+Lemma~\ref{lem:allarity-step-discrepancy}. Replace (CI)(b) by the following
+condition. For each nonempty $T\subseteq J$, let $q^-_T$ be the moment
+coefficient of the prescribed polynomial at the next rung. Uniformly on
+its healthy region, suppose
+\[
+ \|\mathcal G_{i,x}(Q^{(i)}_T)-q^-_T\|\le\eta_i,
+ \qquad \|q^-_T\|\le K_i,
+\]
+where $K_i\ge1$ has upper exponent zero, as do the principal amplitudes,
+and $\eta_i$ has a strictly negative upper exponent, uniformly in the
+rungs. Then the conclusion of Lemma~\ref{lem:allarity-step-discrepancy}
+holds with this prescribed history.
+\end{lemma}
+\begin{proof}
+The normalization calculation in that lemma uses only (a),(c), and gives
+\[
+ \|\mathcal A_{i,x}(Q^{(i)}_T)-\mathcal G_{i,x}(Q^{(i)}_T)\|
+ \le d_i:=2\beta_0(1+\gamma_0)\tau_n\Pi.
+\]
+Hence the actual and prescribed moment coefficients differ by at most
+$d_i+\eta_i$. Increase $K_i$ to bound both families; it still has upper
+exponent zero. In the coefficient sum norm on the marker algebra their
+nonconstant parts have norms at most $R_i=(2^n-1)K_i$ and their
+difference has norm at most $(2^n-1)(d_i+\eta_i)$.
+The finite logarithm estimate of Lemma~\ref{lem:allarity-two-route-budget}
+therefore bounds the connected error by
+\[
+ y_i=(2^n-1)\left(\sum_{r=0}^{n-1}R_i^r\right)(d_i+\eta_i).
+\]
+This has strictly negative upper exponent. Its value bounds the healthy
+local discrepancy because the jet norm dominates evaluation at zero.
+For every fixed $q$, the factors $2^nR_eH^q$ have upper exponent zero,
+so $2^nR_eH^qy_i\le1$ eventually, uniformly in the rungs.
+This is exactly the discrepancy purchase used in the recurrence.
+\end{proof}
+
+This argument compares one step on the actual prescribed polynomial
+input and then realigns to the prescribed next polynomial. It does not
+iterate a reference cutoff operator on smooth nonpolynomial outputs.
+The recurrence already propagates the resulting regular and forced
+errors. Thus this route needs no additional invariant function space
+for a second, reference-transported history.
+
+\paragraph{The joint Gaussian construction with separate guards.}
+There is a more direct route for the selected principal components.
+Here the cutoff belongs to each insertion, rather than to a common
+subprobability measure. The empty product then has integral exactly one.
+The following argument supplies the finite-arity comparison without
+assuming either (M) or exact reference transport (CI)(b).
+
+\begin{lemma}[Guarded joint Gaussian moments]
+\label{lem:allarity-guarded-gaussian}
+Fix $n,D\in\mathbb N$, $A,B\ge1$, and $0\le\epsilon\le1$.
+For every nonempty mode $I\subseteq\{1,\ldots,n\}$ let $p_I$ be an
+invariant polynomial of degree at most $D$ and coefficient norm at most
+$A$ in a finite set of real curvature coordinates. Fix a real mean $a$
+and a real symmetric covariance array $C_*$ on the union of these
+coordinates, with entries bounded by $B$ in absolute value.
+
+For each member $t$ of a finite mixture let $\mu_t$ be a probability
+measure carrying a jointly centred Gaussian array $\eta_t$, with
+covariance $C_t$. Require, on every coordinate used here,
+\[
+ |a_j|\le B,\quad |(C_t)_{jk}|\le B,\quad
+                         |(C_t-C_*)_{jk}|\le\epsilon.
+\]
+For each mode let $0\le\Gamma_{t,I}\le1$ be a measurable guard with
+$\int(1-\Gamma_{t,I})\,d\mu_t\le\epsilon^2$.
+Let $U_t$ be the actual fine configuration on this same probability
+space. On $\Gamma_{t,I}>0$, assume it is healthy on the full prescribed
+support of $p_I$, and that, after a gauge rotation allowed to depend on
+$t,I,U_t$, its normalized curvature coordinates $\xi_{t,I}$ satisfy
+\[
+                 |\xi_{t,I,j}-a_j-\eta_{t,j}|\le\epsilon
+\]
+on every coordinate used by $p_I$. The polynomial's invariance must
+remove that rotation from its physical value. All physical evaluations
+and guarded products are assumed measurable.
+
+Use the same nonnegative mixture weights $\lambda_t$, of sum one,
+for every partition and for the empty product. Define, for $S\ne\varnothing$,
+\[
+ M_S=\sum_{\pi\in\mathcal P(S)}\sum_t\lambda_t
+       \int\prod_{I\in\pi}\Gamma_{t,I}p_I(\xi_{t,I})\,d\mu_t,
+ \qquad
+ M^*_S=\sum_{\pi\in\mathcal P(S)}
+       \mathbb E_{C_*}\prod_{I\in\pi}p_I(a+Z),
+\]
+and $M_\varnothing=M^*_\varnothing=1$. Here $\mathbb E_{C_*}$ means
+the finite Gaussian pairing functional; $C_*$ need not be positive.
+Then all the physical integrals exist.
+There is a polynomial $P_{n,D}$ with positive coefficients such that
+\[
+ \sum_{S\ne\varnothing}|M_S-M^*_S|
+              \le\epsilon P_{n,D}(A,B),\qquad
+ \left|\log_*M-\log_*M^*\right|_1
+              \le\epsilon P_{n,D}(A,B),
+\]
+after increasing the same polynomial if necessary. Its coefficients and
+degree are independent of the number of curvature coordinates and the
+number of mixture members.
+\end{lemma}
+\begin{proof}
+Fix a partition with $l\le n$ blocks, put $d=lD$, and abbreviate
+$P=\prod_{I\in\pi}p_I$ and $\Gamma=\prod_{I\in\pi}\Gamma_{t,I}$.
+The product guard satisfies
+\[
+ 0\le1-\Gamma\le\sum_{I\in\pi}(1-\Gamma_{t,I}),\qquad
+                   \int(1-\Gamma)\,d\mu_t\le l\epsilon^2.
+\]
+No independence of the guards is required.
+
+We use Gaussian moment bounds that do not count unused coordinates.
+For $Y_j=a_j+\eta_{t,j}$ and every fixed integer $r\ge1$, the
+one-dimensional Gaussian moment formula and $|a_j|,\operatorname{Var}
+\eta_{t,j}\le B$ give
+$\mathbb E(1+|Y_j|)^r\le c_r(1+B)^r$.
+For a product of at most $r$ such factors, the arithmetic--geometric
+mean inequality bounds its expectation by the largest of these marginal
+$r$th moments, padding with factors one if needed. The bound applies
+also to repeated coordinates, without independence. Thus expectations
+of the absolute values of monomials of fixed degree, and of their
+squares, have bounds polynomial in $B$ depending only on that degree.
+
+On $\Gamma>0$ all the coordinate comparisons hold simultaneously.
+Expand each $p_I$ into monomials and replace the factors one at a time.
+For every product monomial there are at most $d$ replacements, each
+costing $\epsilon$ times at most $d-1$ factors bounded by
+$1+|Y_j|$. The sum of absolute coefficients of the product expansion
+is at most $A^l$. Integrating the preceding moment bound proves
+\[
+ \int\Gamma\left|\prod_{I\in\pi}p_I(\xi_{t,I})-P(Y)\right|d\mu_t
+                           \le\epsilon A^l c_d(1+B)^d.
+\]
+The case $d=0$ has zero error. This estimate and the Gaussian moment
+bound also prove integrability of the guarded physical product.
+On $\Gamma=0$ its value is defined as zero, so no control of physical
+coordinates on a failed guard is needed.
+
+To remove the guard from $P(Y)$, Cauchy--Schwarz gives
+\[
+ \left|\int(1-\Gamma)P(Y)\,d\mu_t\right|
+ \le\left(\int(1-\Gamma)^2d\mu_t\right)^{1/2}
+                  \left(\int|P(Y)|^2d\mu_t\right)^{1/2}
+ \le\sqrt l\,\epsilon A^l c_d'(1+B)^d.
+\]
+Here $(1-\Gamma)^2\le1-\Gamma$, and the second moment follows by
+expanding $P\overline P$, of degree at most $2d$ and coefficient
+norm at most $A^{2l}$.
+
+Finally compare the Gaussian expectations of $P$ with covariances
+$C_t$ and $C_*$. The mean is the same. In the pairing formula for a
+monomial of degree at most $d$, subtract corresponding products one
+factor at a time. Every difference contains a covariance difference
+at most $\epsilon$, and at most $d$ remaining bounded mean or
+covariance factors. The number of pairings depends only on $d$.
+Hence the difference is at most
+$\epsilon A^l c_d''(1+B)^d$.
+Adding the three errors and averaging with $\lambda_t$ preserves the
+bound. There are only a number depending on $n$ of subsets and
+partitions. Summing gives the moment bound and bounds both families
+of moments by a polynomial in $A,B$.
+
+The constant coefficients of both moment elements are one: the empty
+product has no guard and every $\mu_t$ is a probability measure.
+Apply the finite logarithm estimate of
+Lemma~\ref{lem:allarity-two-route-budget} in the scalar marker algebra.
+This proves the connected bound with an enlarged polynomial.
+\end{proof}
+
+The construction is simultaneous in the modes. Although the allowed
+gauge rotation can differ from one polynomial to another, the array
+$\eta_t$ and its measure are common to all of them. Selecting an
+independent Gaussian sample for each factor would destroy the cross
+covariances in $M^*_S$ and invalidate the argument.
+
+\begin{corollary}[The discrepancy purchase from a joint guarded law]
+\label{cor:allarity-guarded-purchase}
+At each leading rung and every healthy coarse configuration, suppose
+the principal-component integral is the moment element $M$ in
+Lemma~\ref{lem:allarity-guarded-gaussian}, and the prescribed next
+polynomial is $\log_*M^*$ for the same mean, covariance and incoming
+polynomials. Let $A,B\le H^c$, with fixed $c\ge0$. For every fixed
+requested $q$, one can choose $f$ before the final coupling threshold
+so that $\epsilon\le H^{-f}$ implies
+\eqref{eq:allarity-weighted-discrepancy}, uniformly in the rungs and
+healthy configurations.
+\end{corollary}
+\begin{proof}
+Write $r$ for the total degree of $P_{n,D}$ and $C$ for the sum of its
+coefficients. The lemma bounds the discrepancy by
+$y\le C H^{cr-f}$. Choose $f>q+cr$. Then
+$2^nR_eH^qy\le 2^nR_e C H^{q+cr-f}\le1$ eventually.
+All constants are uniform by hypothesis. No parameter derivatives of
+a guard have been taken. Alternatively any strictly negative upper
+exponent for $\epsilon$, with exponent-zero $A,B$, pays every such
+fixed monitor power.
+\end{proof}
+
+\paragraph{Attachment on a constant-order plateau.}
+For the actual joint reader model of
+Section~\ref{sec:ex-lattice-all-arity-reader-gaussian-model}, the
+probability space is \eqref{eq:ex-lattice-reader-space}, the physical
+field is \eqref{eq:ex-lattice-reader-fine-field}, and the joint
+incidence vector is its stated linear image of the same Gaussian
+coordinate. The guards are the individual reader guards, retained
+inside each product. With the same-history and prior-purchase hypotheses
+of Section~\ref{sec:actual-reader-dawn-selection},
+\eqref{eq:reader-selected-sight} supplies $|C_t-C_*|\le H^{-f}$,
+where $C_*$ is the prescribed short covariance. That section's last
+subsection supplies guard loss at most $H^{-2f}$ and the normalized
+physical-coordinate error at most $H^{-f}$. Its parent forecast is
+exactly the mean of the prescribed short step, with the actual coarse
+coupling retained. Thus it supplies the joint-law hypotheses of the
+lemma on a constant-order plateau, with the room, coupling band and
+common horizon stated there. The entry bounds and the prescribed
+polynomial coefficient bounds provide the $H^c$ prices, after a fixed
+increase of $c$.
+
+The component identification uses
+Section~\ref{sec:actual-mixed-marked-compiler}, specifically its
+split $W_h=\Gamma_hW_h+(1-\Gamma_h)W_h$ on this same measure.
+An entirely leading component contains no body letter; compatibility
+then excludes background packets. Its integrand is therefore the
+product of the guarded principal values. On each positive guard the
+fine field is healthy on the full original mask support, so the masked
+value is $p_I(\xi_{t,I})$. Whole-mode selection and
+\eqref{eq:planted-integral} sum these products over the partitions.
+This gives precisely $M$, with empty coefficient one, under the
+compiler's same-guard and same-measure hypotheses. Invariance removes
+the one gauge supplied on each patch. The same mean and short covariance
+in the polynomial step give $M^*$ by finite Wick contraction.
+Consequently Corollary~\ref{cor:allarity-guarded-purchase} applies to
+these actual principal components. No claim about the full interacting
+block measure being Gaussian is used.
+
+This identifies the local discrepancy supplier on the plateau from
+existing canonical inputs. At a change of stage order the quoted reader
+selection explicitly assumes equal stage indices and does not suffice:
+the corresponding pair-indexed mean, covariance, guard and room
+receipts must still be supplied on the same course. Likewise the
+upper compiler's body, all-hole and warning purchases remain required
+at $e_*=e+1+\sigma$. Neither requirement follows from the moment
+calculation or from the numerical stage-boundary lemma.
+
+This route retains the prescribed polynomial class: the reference
+moments are finite Wick pairings, followed by the finite connected
+logarithm. Its remaining application beyond the plateau is the corresponding
+joint construction on that same course; the plateau attachment above
+retains the explicit upstream hypotheses of the cited reader and compiler
+chapters. The health and covariance hypotheses must
+cover every read of every partition product. The component's unit
+normalization is the empty probability integral, not the mass of one
+insertion's guard. The existing common-cutoff route is a separate
+sufficient criterion; it must not be substituted for this joint
+construction without proving its additional measure identities.
+
 \begin{lemma}[The remaining step purchases]
 \label{lem:allarity-step-purchases}
 For all sufficiently large $s$, uniformly in the rungs of the leading
@@ -1212,7 +1527,10 @@ The following inputs are not supplied here.
  and, for the leading family of calibrated singletons, masks inspected on
  the prescribed supports $X_{c,\{j\}}$.
 \item \emph{The common insertion (CI)} of
- Lemma~\ref{lem:allarity-step-discrepancy}. That the compiler integrates the
+ Lemma~\ref{lem:allarity-step-discrepancy}, or its clauses (a),(c)
+ together with the local transport error of
+ Lemma~\ref{lem:allarity-local-transport-defect}, or the joint guarded
+ law of Corollary~\ref{cor:allarity-guarded-purchase}. That the compiler integrates the
  masked moments $Q^{(i)}_T$ follows from the realignment by
  Lemma~\ref{lem:allarity-common-insertion-realigned}, given the form of the
  top-level principal insertion in item~2 and the measure identification
