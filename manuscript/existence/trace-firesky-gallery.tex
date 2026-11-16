@@ -22,13 +22,262 @@ offset. The other fields of this witness are the chart, invoice,
 legacy-cost, actuation, and stamp data used by the quantitative chart
 estimate. The single offset changes only the three arc coordinates.
 
-The funded run constructs these panels from its paid multi-scale request.
-The request gives charts with a common added offset and fixed currency and
-angle. Forward chart estimates supply legacy costs at all large levels;
-the staging estimate at the common angle supplies simultaneous actuation
-and stamp receipts. Clipping the offset to $[0,1]$ preserves the arc lower
-bound, chart factor, currency, and angle. The resulting finite-level data
-are the hypotheses of the one-step chart theorem.
+The simultaneous choice needed here is stronger than choosing a funded
+run separately at every grade. We give its construction next. The local
+analytic inputs are stated separately, so that the choice of a common
+schedule does not hide an estimate.
+
+\begin{lemma}[A quantitative, signed-equivariant reading]
+\label{lem:trace-quantitative-invoice}
+Keep the funded hypotheses and notation of
+Proposition~\ref{prop:rank-selected-tested-readout}. At each fixed grade
+$d$, its reading can be chosen so that, for all sufficiently large levels,
+uniformly in $N,p,u$,
+\begin{equation}\label{eq:trace-quantitative-invoice}
+ |Au-Tu|_1\le H^{-1/2}|Au|_1,\qquad H=\mathcal M_k.
+\end{equation}
+Assume that the calibrated map $A$ intertwines the signed coordinate
+symmetries of its label space. The reading can then also be chosen to
+intertwine those symmetries, preserving its exact unit and real structure.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:rank-growing-wick-pin} gives, before discarding
+its rate,
+\[
+ |Au-Tu|_1\le c_d\{H^{-1}+D2^DH^{-3/4}
+                 +w_DH^{-1+\alpha(D+1)}\}|Au|_1,
+ \qquad \alpha=\frac1{4(D+2)}.
+\]
+Since $-1+\alpha(D+1)<-3/4$, this is at most
+$C_dH^{-3/4}|Au|_1$, with
+$C_d=c_d(1+D2^D+w_D)$, for $H\ge1$. Thus it is at most
+$H^{-1/2}|Au|_1$ once $H^{1/4}\ge C_d$.
+
+For the symmetry assertion, let $\Sigma$ be the finite signed coordinate
+group, with representation $\rho$ on the grade-$d$ label space, and put
+$a_d=\max(1,\max_{\sigma\in\Sigma}\|\rho(\sigma)\|_{1\to1})$.
+Set
+\[
+ \overline T=\frac1{|\Sigma|}\sum_{\sigma\in\Sigma}
+                \rho(\sigma)T\rho(\sigma)^{-1}.
+\]
+Reindexing this finite sum proves equivariance. Since $A\rho(\sigma)
+=\rho(\sigma)A$, each summand's error on $u$ is bounded by
+$a_d^2 C_dH^{-3/4}|Au|_1$. The triangle inequality gives the same bound
+for the average. Enlarging the common threshold until
+$H^{1/4}\ge a_d^2C_d$ proves \eqref{eq:trace-quantitative-invoice}
+for $\overline T$. Every summand fixes the unit, and signed coordinate
+actions commute with complex conjugation, so these identities survive
+the average. The finite group and constants depend only on the grade,
+not on $k,N,p$. Hence taking the maximum for $0\le d'\le d$ gives
+one finite-cutoff threshold.
+\end{proof}
+
+The averaging of a reading must also be performed on its raw and Wick
+polynomials when a stamp is required. One cannot change $T$ alone and
+retain a stamp for the old reading. Signed pullback preserves the healthy
+cube and the halo; it carries the raw polynomial, its Wick polynomial and
+their reading together because the atlas and its covariance have the
+same signed symmetry. The finite sum commutes with these linear
+operations. The degree bound is unchanged, and coefficient and ticket
+bounds follow by the triangle inequality. Their fixed symmetry constants
+must be included in the local price purchase. The bound above has the
+explicit $H^{1/4}$ margin that absorbs those constants in the invoice;
+the raw-polynomial and healthy-ticket bounds must retain their own
+reserved constants from the selected-family construction.
+
+\paragraph{Local inputs for the simultaneous purchase.}
+Write $p_j$ for the order of the stage-$j$ profile and assume $p_j\to\infty$.
+For each $d$ choose three base arcs $b_{d,i}\ge d+6$, $i=0,1,2$, satisfying
+\eqref{eq:three-checks}, with arity $n_d=\operatorname{trays}(d)\ge2$.
+The explicit choice after that equation gives such arcs. Purchase the
+three panels initially at the larger arcs $b_{d,i}+1$. The local panel
+purchase has the following precise interface.
+\begin{enumerate}
+\item The panels have one common Taylor order $\vartheta_d\ge d$ and,
+ at each stage $j$, one common polynomial reading order $Q_{d,j}$.
+ Their remaining constants, including currencies, are fixed before
+ choosing a scale schedule. If $\vartheta_d+1\le p_{j-1}$, there is a
+ block floor $\mu_{d,i,j}$ such that the local comparison estimates
+ apply whenever both adjacent block lengths $L_{j-1},L_j$ exceed
+ $\mu_{d,i,j}$. The Coulomb estimates for the same panels also hold.
+\item After those lengths have been fixed, one may decrease the positive
+ local accuracy parameter of each panel, preserving its arc, Taylor
+ order and reading order, so that all its local capacity estimates
+ hold for every sufficiently large coupling. This threshold is chosen
+ at fixed $(d,i,j)$, before the background history and its finite volumes.
+ The estimates are uniform over every reduced arc in
+ $[0,b_{d,i}+1]$. They supply the finite-volume legacy costs whenever
+ the chart window has the dilation, depth and bracket of (F1), with
+ coupling between $3\widehat\beta_k/4$ and $\widehat\beta_k$ throughout
+ that window. They include the adjacent-stage estimates for each pair
+ of stages in $\{j-1,j\}$ that can occur on that window.
+\item On any one resulting background history, at fixed $d$ and common
+ Taylor order $\vartheta_d$, the local chart and stamp construction is
+ valid at every sufficiently large level. Its threshold is uniform
+ over the three panels and over reduced arcs. The stamp consists of its raw polynomial, its Wick polynomial and
+ its linear reading, with degree and coefficient bounds and a local
+ ticket. The representation enters this ticket only through its budget
+ radius and healthy threshold; its halo is $Q_{d,j}$ times that radius.
+ The covariance and the paid label norm are those of the one selected
+ history. These data can therefore be reused in all three panels, as
+ checked below; independently chosen readings need not coincide.
+\end{enumerate}
+These are local analytic hypotheses, not consequences of the
+scale-selection argument. In particular item 2 requires the component
+comparison estimates. The half-accuracy and stamp portion of item 3 is
+supplied by Proposition~\ref{prop:rank-selected-tested-readout}, under
+its funded calibrated-family hypotheses. The quantitative invoice is supplied by
+Lemma~\ref{lem:trace-quantitative-invoice}; the actuation estimates and
+the reserved constants for the signed stamp remain local inputs here.
+Mere existence of three invertible maps does not imply them.
+
+\begin{proposition}[One request for all grades and offsets]
+\label{prop:trace-joint-chart-purchase}
+Assume the preceding local inputs on the common profiles, together with
+the common paid scale construction of
+Section~\ref{sec:common-scale-selection}. There is one enlargement of its
+block floors, entry thresholds and sublinear comparison windows such that
+every history on the resulting common calendar has the following property.
+Here paying the requirements includes the constant-stage comparison
+intervals of \eqref{eq:common-long-plateau}, not merely the block and
+entry inequalities.
+For every fixed $d$, at every sufficiently large level $k$, the three
+panels are available simultaneously at arcs $b_{d,i}+t$ for every
+$t\in[0,1]$, with fixed currency and Taylor order. All their charts use
+one reading at each grade through $d$. The background history and its
+requirements are chosen before any prescribed null sequence of radii.
+\end{proposition}
+\begin{proof}
+\emph{Active grades and block lengths.}
+Set, with the predecessor $0-1$ interpreted as $0$,
+\[
+ K_j=\{d\le j:\vartheta_d+1\le p_{j-1}\},\qquad
+ M_j=\max\bigl(\{0\}\cup
+       \{\mu_{d,i,j}:d\in K_j,\ 0\le i\le2\}\bigr).
+\]
+Each $K_j$ is finite. For every fixed $d$, the convergence $p_j\to\infty$
+shows that $d\in K_j$ for all sufficiently large $j$; no monotonicity of
+$p_j$ is needed for this assertion. Enlarge the block floor at stage $j$
+by $\max(M_j,M_{j+1})$, and take a nondecreasing odd sequence above the
+enlarged floors, as in the common construction. If $d\in K_j$, then
+$L_j\ge M_j\ge\mu_{d,i,j}$ and
+$L_{j-1}\ge M_j\ge\mu_{d,i,j}$, including $j=0$ by convention.
+Thus one choice of block lengths pays the two adjacent lengths for every
+active panel. The maximum with $M_{j+1}$ is essential at a stage change.
+
+\emph{Entry thresholds.}
+Now apply local input 2 at these actual lengths. Denote by
+$h_{d,i,j}$ a coupling threshold beyond which its conclusion holds for
+the resulting, trimmed panel. The trimming leaves $\vartheta_d$ and
+$Q_{d,j}$ unchanged, so the common-reading condition is retained.
+For inactive triples leave the accuracy parameter unchanged; all these
+choices are made before choosing any history. Let
+$x(s)=\beta_*+s_Gs$. At a fixed stage $j$, increase the scale-entry
+threshold until $x(s)\ge h_{d,i,j+1}$ for every
+$d\in K_{j+1}$ and $i=0,1,2$. This is possible because $s_G>0$ and
+there are finitely many demands. Include also the finitely many local
+capacity and geometric thresholds described below and all the previous
+entry thresholds. Taking their maximum preserves every conclusion.
+
+\emph{One comparison window.}
+For a fixed block length $L>1$, nonnegative arc $b$, and sufficiently
+large $x$, put
+\[
+ \mathcal M(x)=\exp((\log\log x)^2),\quad
+ C(x)=\lceil(\log x)^2\rceil,
+ \quad
+ h_{L,b}(x)=
+ \left\lceil\frac{(b+2)\log\mathcal M(x)}{\log L}\right\rceil
+ +\left\lceil\frac{10\log C(x)}{\log L}\right\rceil.
+\]
+Extend this as any nonnegative integer-valued function below its large-$x$
+domain. For fixed $L,b$,
+$h_{L,b}(x)=O(1+(\log\log x)^2)$, hence
+$h_{L,b}(x(s))/s\to0$. Indeed
+$C(x)\le2(\log x)^2$ eventually, so
+$\log C(x)\le\log2+2\log\log x$, and rounding adds at most two.
+If $w_j^0(s)=o(s)$ is the old stage-$j$ window, replace it by
+\begin{equation}\label{eq:trace-joint-window}
+ w_j(s)=w_j^0(s)+
+   \sum_{d\in K_{j+1}}\sum_{i=0}^2
+           h_{L_j,b_{d,i}+1}(x(3s)).
+\end{equation}
+The sum is finite at fixed $j$, so $w_j(s)=o(s)$. No uniform bound in $j$
+is required by the common scale construction. Each summand is bounded
+by the whole nonnegative window, which therefore pays every active
+panel separately. The construction preserves the previous minimum
+physical length and all previous windows and entry thresholds.
+
+For completeness, this window also protects a chart whose level has
+advanced beyond the paid stage-$j$ interval. Take $i_0=k_{j-j_*}$, the center of the constant-stage interval
+\eqref{eq:common-long-plateau}, chosen with the enlarged entry threshold
+and window. Thus $[i_0,i_0+w_j(s_{i_0})]$ has stage $j$.
+Write $s=s_{i_0}$, and let $k$ be a later level with $J(k)=j+1$
+and $t=s_k$. Put $H=h_{L_j,b}(x(t))$, where $b=b_{d,i}+1$.
+Increase the stage-$j$ entry threshold beforehand so that, for every
+later $t$,
+\[
+ h_{L_j,b}(x(t))\log L_{j+1}\le t/2,\qquad
+ s_Gh_{L_j,b}(x(t))\log L_{j+1}\le x(t)/4.
+\]
+These inequalities are possible by the sublinear bound just proved.
+If $t\le3s$, monotonicity of
+$h_{L_j,b}$ on its large-$x$ domain gives
+$H\le h_{L_j,b}(x(3s))\le w_j(s)$, and the end of the paid interval
+lies strictly before $k$. Hence $H\le k-i_0$. If $t>3s$, use the first of these inequalities. Since block lengths are nondecreasing and the stages
+from $i_0$ to $k$ are $j$ or $j+1$,
+$t-s\le(k-i_0)\log L_{j+1}$. Now $t-s>2t/3>t/2$, so again
+$H\le k-i_0$. Thus the backward depth paid by $H$ cannot leave the two
+stages. Write $d_1,d_2$ for its first and second summands. All block
+lengths between $i_0$ and $k$ are at least $L_j$. Hence, for every
+reduced arc $0\le u\le b$,
+\[
+ \frac{a_{k-d_1}}{a_k}\ge L_j^{d_1}\ge\mathcal M(x(t))^{u+2}.
+\]
+The middle level therefore satisfies $\ell\ge k-d_1$. Since
+$k-i_0\ge d_1+d_2$, the level $\ell-d_2$ is still at least $i_0$,
+and
+\[
+ \frac{a_{\ell-d_2}}{a_\ell}\ge L_j^{d_2}\ge C(x(t))^{10}.
+\]
+The root depth consequently satisfies $w\ge\ell-d_2\ge k-H$.
+This proves the dilation, depth and two-stage bracket. Since every block
+length on $[w,k]$ is at most $L_{j+1}$,
+\[
+ \widehat\beta_k-\widehat\beta_w
+   =s_G\log(a_w/a_k)\le s_GH\log L_{j+1}\le x(t)/4.
+\]
+Thus the second displayed entry inequality bounds the coupling decrease
+in both cases. This proves the
+$3/4$ plateau required in local input 2, not merely the weaker $1/2$
+plateau used elsewhere. Include also the eventual monitor bound
+$\max(L_j,L_{j+1})\le\mathcal M(x(t))$ in the entry threshold.
+
+\emph{Offsets and common readings.}
+Fix $d$. Since the stage map diverges, $d\in K_{J(k)}$ for all large
+$k$. The preceding construction and local input 2 therefore give the
+legacy costs for all three panels, uniformly for every smaller
+nonnegative arc. Replace their arcs by $b_{d,i}+t$, $0\le t\le1$.
+Their lower bounds are preserved because $b_{d,i}\ge d+6$; their other
+data are unchanged. Intersect the finitely many eventual level sets
+for the three panels with the set supplied by local input 3, and with
+$k\ge\max_{e\le d}\operatorname{ref}(e)$. The resulting tail is
+independent of $t$. Use the reading of panel $0$ for the chart maps.
+For another panel retain exactly the same raw polynomial, Wick
+polynomial and reading. The degree and coefficient bounds are unchanged.
+The halo is unchanged because $Q_{d,j}$ and the budget radius agree;
+the locality and healthy-set estimate are unchanged because the healthy
+threshold also agrees. Finally the covariance and paid label norm belong
+to the same history. Thus every clause of the stamp still holds, now
+for this panel's representation. Its individual actuation witness and
+this transported stamp certify the same chart. This is a reuse of one
+stamp, not an assertion that independently chosen stamps have equal
+readings. This proves
+simultaneous availability, rather than three unrelated chart choices.
+Every choice preceded the null sequence; the later interpolation and
+subsequence selection only query these already constructed panels.
+\end{proof}
 
 That theorem also requires a simple gauge group, the funded chart-control
 estimate, a bound on the generator through grade $d$, an index $l$ with
@@ -84,8 +333,10 @@ definitions they require. We then prove three lemmas: the corrected labels
 solve their reading equation, the insertions lie inside the home chamber
 at the root depth, and the clock of
 Section~\ref{sec:common-scale-selection} supplies the dilation, depth,
-bracket and plateau. The lawful history (F3) and the readings (F5) remain
-inputs from the funded chart receipt above. In this subsection, $k$
+bracket and plateau. The lawful history (F3) is supplied by
+Corollary~\ref{cor:rank-trace-all-levels}, and the readings and stamps
+of (F5) by Proposition~\ref{prop:rank-selected-tested-readout}, under
+their stated funded construction hypotheses. In this subsection, $k$
 denotes the level of the chart and $\mu_k$ the monitor $m_k$ of
 \eqref{eq:ex-lattice-firesky-gap}. $J$ is the stage clock and $L_j$ are
 the block lengths of Section~\ref{sec:common-scale-selection}, and
@@ -156,9 +407,9 @@ arbitrary.
  \end{itemize}
  It also carries a stamp duty with the same reading: a bound, in the
  halo of the readers, on the price of the insertions whose low-grade
- reading is $T_{d'}$. This clause is recorded here as in the funded
- construction; it is not established in this book (see
- Section~\ref{sec:actual-rank-purchases}).
+ reading is $T_{d'}$. This clause is supplied for the funded calibrated family by
+ Proposition~\ref{prop:rank-selected-tested-readout}; its hypotheses
+ concern the same raw polynomial and reading, not separate choices.
 \end{enumerate}
 By (F1), every level of $[w,k]$ lies in the stage $J(k)$ or $J(k)-1$. Hence
 $J(w)\ge J(k)-1$, and $w\to\infty$ as $k\to\infty$ because $J$ diverges.
@@ -213,7 +464,10 @@ inputs listed elsewhere that these fields supply are:
  Proposition~\ref{prop:rank-root-output-ticket};
 \item the ticket at the output level.
 \end{itemize}
-The lawful history (F3) and the readings (F5) remain inputs.
+Corollary~\ref{cor:rank-trace-all-levels} supplies (F3) on the entire
+window, while Proposition~\ref{prop:rank-selected-tested-readout}
+supplies (F5), under their stated funded hypotheses. These local results
+do not replace the common all-grade purchase proved above.
 
 \begin{lemma}[Chamber interiority at the root depth]
 \label{lem:ex-lattice-firesky-chamber}
@@ -359,8 +613,9 @@ because $\widehat\beta_k\ge s_Gs_k$.
 The wheel bound of (F1) is also immediate: the clock factor of a stage
 $j$ is its block length $L_j\ge3$. Consequently, for all sufficiently
 large $k$ and base arcs up to $\bar b$, of the witness fields,
-only the lawful history (F3) and the readings (F5) remain inputs from the
-funded construction. (F4) is replaced by
+(F3) and (F5) are supplied by the conditional constructions just cited;
+the remaining issue is to pay their hypotheses on the same selected
+history, as in Proposition~\ref{prop:trace-joint-chart-purchase}. (F4) is replaced by
 Proposition~\ref{prop:rank-root-output-ticket}.
 
 \subsection{Choosing scales and chart levels}
