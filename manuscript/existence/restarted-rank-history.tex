@@ -738,3 +738,94 @@ selected before any marked family. Decreasing the raw exponent and
 inflations gives the upper and lower uses on this same output,
 as asserted in Proposition~\ref{prop:allarity-compiler-reserve}.
 \end{proof}
+
+\subsection{One auxiliary family on the whole chart window}
+\label{subsec:restart-chart-family}
+
+The family used in a chart is the one just constructed, including its
+re-expressed entry at the top. We record its budget and density at every
+level; equality of two endpoint representations is not needed.
+Put
+\[
+ b(x)=\lceil(\log x)^2\rceil,\qquad
+ x_j=\widehat\beta_j,\qquad b_j=b(x_j),
+ \qquad B_j=b_j^2,\qquad
+ \tau_j=x_j^{-1/2}\exp((\log\log x_j)^{3/2}).
+\]
+The radius $B_j$ is the representation's budget radius. It is distinct
+from the recording radius $b(r(x_j))$ in the local Gaussian calculation.
+The retiming of Section~\ref{sec:actual-reader-dawn-selection} is chosen
+so that its recording threshold equals $\tau_j$; it satisfies
+$x_j\le r(x_j)\le x_j^2$ and $b(r(x_j))\le4b_j$.
+Thus, for all large $x_j$,
+\[
+ 25b(r(x_j))+30\le b_j^2\le b(r(x_j))^2.
+\]
+The first inequality follows from $100b_j+30\le b_j^2$ eventually,
+and the second from $b_j\le b(r(x_j))$. Also
+$B_{j+1}\le2B_j$ eventually: on each fixed stage pair
+$x_{j+1}=x_j+c_G\log L_j$, so $b_{j+1}/b_j\to1$.
+The finite adjacent-pair purchases make these inequalities simultaneous
+on the window. These are precisely the budget-radius conditions of
+Section~\ref{sec:actual-corrected-body-compiler}. We can therefore use
+the exact budgets $(B_j,\tau_j)$, rather than merely comparable radii.
+
+\begin{proposition}[The retained auxiliary chart family]
+\label{prop:restart-chart-family}
+Fix a finite grade menu and an arc bound $\bar b>0$. Under the funded
+hypotheses of Proposition~\ref{prop:restart-actual-closure}, for every
+sufficiently large level $k$, every chart with arc $0<b\le\bar b$,
+every $N\ge k$ and every
+period $p$, choose the endpoint presentation and then the backward
+steps once. Denote the resulting representations on $[w,k]$ by $P_j$.
+They have budgets $(B_j,\tau_j)$, the original paths and stage clips,
+and common coupling $\beta=\beta_{N,p,k}$. Their additive value costs
+are bounded by $q_{k-j}$, and their densities are nonnegative.
+
+Let $D_k$ be the density of the original selected representation at $k$,
+and define, using the selected kernels at the frozen coupling $\beta$,
+\[
+ D_j=\mathcal K_{j,\beta}D_{j+1}\quad(w\le j<k).
+\]
+Then
+\begin{equation}\label{eq:restart-chart-density}
+ \operatorname{eval}(P_j)=D_j\quad(w\le j\le k),\qquad
+ \int D_j\,d\mu_j=Z_{N,p}.
+\end{equation}
+All the local compiler and marked comparisons on this chart use these
+same $P_j$ and the alphabets chosen in their construction.
+\end{proposition}
+\begin{proof}
+At $k$, Proposition~\ref{prop:restart-endpoint} supplies exactly the
+budget $(b_k^2,\tau_k)$ while retaining the original path, clip,
+coupling and density. It supplies cost at most $q_0$. In particular,
+$P_k$ is a new presentation of $D_k$, not an assertion that its smaller
+threshold equals the threshold of the original presentation.
+
+Suppose the entries $P_{i+1},\ldots,P_k$ have been fixed. Apply
+Proposition~\ref{prop:restart-actual-closure} to this very incoming
+$P_{i+1}$ and the original adjacent tube, with the coarse budget
+$(B_i,\tau_i)$ verified above. Retain its output as $P_i$ and retain
+its corrected alphabet. That proposition gives the original coarse
+path and clip, coupling $\beta$, the cost $q_{k-i}$ and
+\[
+ \operatorname{eval}(P_i)
+   =\mathcal K_{i,\beta}\operatorname{eval}(P_{i+1}).
+\]
+No higher entry is changed. Finite descending induction proves all
+these assertions together, and the recursion defining $D_i$ proves
+\eqref{eq:restart-chart-density}'s first assertion. Positivity follows
+from the nonnegative endpoint and positive kernels, not from any sign
+claim about the individual terms of the expansion.
+
+Each selected kernel has mass one in its coarse variable.
+The endpoint density is integrable on the finite-volume space; the
+bounded positive kernels preserve integrability. Fubini therefore gives
+$\int D_i\,d\mu_i=\int D_{i+1}\,d\mu_{i+1}$. At $k$ the original
+selected transition identities identify this integral with $Z_{N,p}$.
+This proves the second assertion. Finally the local construction chooses
+its alphabet before the marked insertions and supplies both compiler
+uses on that alphabet. Keeping those choices at each step gives the
+last assertion. This is a construction of one family with its estimates;
+it makes no uniqueness claim for representations having the same density.
+\end{proof}

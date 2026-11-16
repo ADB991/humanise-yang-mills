@@ -1332,8 +1332,7 @@ path-and-clip receipt.
  Proposition~\ref{prop:path-retained-plan}, evaluated at the constant
  coupling $\beta_{N,p,k}$. At that coupling it satisfies
  $R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$, with the
- clip $p_w$ and row price $A_w$ of the stage $\pi_{J(w)}$. The tests of
- that clip are compatible with the threshold $\theta_{P_w}$.
+ clip $p_w$ and row price $A_w$ of the stage $\pi_{J(w)}$.
 \end{enumerate}
 Then, for all sufficiently large $k$,
 every chart at level $k$ with base arc $b\le\bar b$, every $N\ge k$ and
@@ -1392,9 +1391,11 @@ itself, since $\mathcal M_w\to\infty$. So the proposition applies whether
 the auxiliary history keeps the threshold of the selected history at
 level $w$ or carries the threshold of (F3).
 
-The first two sentences of (P) follow from the restart construction once
-its local hypotheses hold on the window. Only the compatibility of the
-tests with the threshold remains.
+The path and clip assertions in (P) follow from the restart construction
+once its local hypotheses hold on the window. The threshold conditions
+are the two explicit inequalities in
+\eqref{eq:rank-trace-threshold-window}; there is no additional
+compatibility test left implicit here.
 
 \begin{lemma}[The path part of the receipt (P)]
 \label{lem:rank-trace-path-part}
@@ -1405,14 +1406,14 @@ in the restarted representation is the retained path $R_{N,w}$, and its
 clip is $p_w$. Moreover
 $R_{N,w}.\mathrm{Bounds}(p_w,\sigma_w,A_w,\mathrm{loopCap}_w)$ holds, with
 the clip $p_w$ and the row price $A_w$ of the stage $\pi_{J(w)}$, whatever
-the coupling of the representation. Hence (P) holds as soon as the tests of
-the clip $p_w$ are compatible with the threshold $\theta_{P_w}$.
+the coupling of the representation. Hence the path-and-clip receipt (P) holds.
 \end{lemma}
 \begin{proof}
 The selected history carries the selected paths $R_{N,j}$ and the stage
 clips $p_j$ at every level $j$ (Section~\ref{sec:common-funded-history}). At
-$k$ the restarted history uses the actual representation of the selected
-history. Each restart step sets the new coarse coupling equal to the
+$k$ the restarted history uses the endpoint re-expression of
+Proposition~\ref{prop:restart-endpoint}, which preserves the selected
+path and clip while changing the budget and keeping the density. Each restart step sets the new coarse coupling equal to the
 incoming one and preserves the original coarse path and clip, that is,
 those of the same step of the selected history
 (Section~\ref{sec:actual-local-compiler-handoff}). By induction down the
@@ -1431,26 +1432,73 @@ nothing to the path bounds: the coupling enters the density, not the path
 coefficients. The same-course conditions are the local hypotheses of the
 restarted step, which the input (V) also concerns.
 
+\begin{corollary}[All-level lawful history for the trace chart]
+\label{cor:rank-trace-all-levels}
+Fix a finite grade menu and $\bar b>0$. Keep the funded chart/stamp
+hypotheses and finite adjacent-pair purchases of Proposition~\ref{prop:restart-actual-closure}, together
+with the selected path bounds and the stage clip constants
+$0<c_{\rm lin}<c_{\rm dir}/16$. Then the family of
+Proposition~\ref{prop:restart-chart-family} supplies (F3) of
+Subsection~\ref{subsec:ex-lattice-firesky-witness} at every sufficiently
+large level $k$, for every chart with arc $0<b\le\bar b$.
+The assertion holds simultaneously for every
+$j\in[w,k]$, every $N>k$ and every period $p$.
+\end{corollary}
+\begin{proof}
+Use the constructed $P_j$ themselves throughout. Their budget radius is
+$\lceil(\log\widehat\beta_j)^2\rceil^2$ and their threshold is exactly
+$\tau_j=\widehat\beta_j^{-1/2}
+\exp((\log\log\widehat\beta_j)^{3/2})$, by
+Proposition~\ref{prop:restart-chart-family}. The same proposition supplies
+the density identities, nonnegativity, local format, and unchanged
+path and clip at every level, including the re-expressed top $k$.
+The path bounds of Definition~\ref{def:path-admissible} concern the
+coefficients and are independent of the coupling. Thus the argument of
+Lemma~\ref{lem:rank-trace-path-part} applies to every $j$.
+
+Here are all the numerical tests for the normalization estimate.
+Set $\beta=\beta_{N,p,k}$ and $g=\beta^{-1/2}$. The endpoint running
+estimate and the plateau give, for every $j\in[w,k]$,
+\[
+ \tfrac78\widehat\beta_k\le\beta\le\tfrac98\widehat\beta_k,
+ \qquad \tfrac12\widehat\beta_k\le\widehat\beta_j
+                        \le\widehat\beta_k.
+\]
+Consequently $\beta>0$, $\beta g^2=1$,
+$\beta\le\tfrac94\widehat\beta_j\le4\widehat\beta_j$ and
+$g\le\sqrt{8/7}\,\widehat\beta_j^{-1/2}$. The factor
+$\exp((\log\log\widehat\beta_j)^{3/2})$ eventually exceeds
+$\sqrt{8/7}$, so $g\le\tau_j$.
+For $\log\log\widehat\beta_j\ge1$, its exponent is no larger than
+$(\log\log\widehat\beta_j)^2$; hence
+$\tau_j\le\theta_{\rm clock}(j)\le1$ on the purchased tail.
+The clip is exactly the stage clip, not merely bounded by one.
+Its row bound is $A_j$ and its loop allowance is bounded by
+$\mathrm{loopCap}_j=\Lambda_{\rm clock}(j)$, by the selected path
+bounds and Lemma~\ref{lem:common-loop-capacity}.
+Finally the additive value cost is at most
+$q_{k-j}\le s^{-1/400}\le1$, where $s=\widehat\beta_k$.
+These are the clip, coupling, entrance, upper-threshold, additive and
+loop tests used in Proposition~\ref{prop:rank-root-output-ticket}(2).
+They leave no separate test--threshold assumption.
+
+The costs are uniform for $0\le k-j\le k-w$, and the plateau makes
+$\widehat\beta_j\ge s/2$ throughout. For each fixed stage pair the
+remaining tails depend only on its purchased parameters; the all-stage
+payment includes their finite maximum. Thus one large-level threshold
+works for the whole window and is independent of $N,p$ and of the
+chosen chart with bounded arc. This proves (F3).
+\end{proof}
+
 \paragraph{Status.}
-Under (V) and the local inputs of this section,
-Proposition~\ref{prop:rank-trace-chart-window}(1) gives the auxiliary
-history and its coupling bound throughout $[w,k]$ for every $N\ge k$
-and $p$. Proposition~\ref{prop:rank-trace-output-lawful} verifies at the
-output level $w$ every supposition of
-Proposition~\ref{prop:rank-root-output-ticket}(2), which is where the
-propagation to the output torus uses (F3). It assumes only that the
-auxiliary threshold lies in the window
-\eqref{eq:rank-trace-threshold-window}, and the clip constants of the
-profiles, and the path-and-clip receipt (P). The admissibility of
-$R_{N,w}$ in the selected history is stated at that history's coupling.
-It does not by itself give (P) at the constant coupling, nor the
-compatibility of the tests with the threshold. The conclusion concerns
-the output level $w$ only. The field (F3) as displayed also asks for these
-properties at the other levels $j$ of $[w,k]$. For $w<j<k$ the same
-argument applies, given (P) and the threshold window with $w$ replaced by
-$j$. At $j=k$ the representation is the actual one of the selected
-history, which is not restarted, and it has to be checked separately. We
-do not use these other levels here. The budget radius
-$\lceil(\log\widehat\beta_j)^2\rceil^2$ of (F3) is not used by the
-normalization estimate. The readings of (F5) are (T1)--(T2) of the input
-(T), and its stamp duty is (T4).
+The actual restarted construction now supplies (V), and the preceding
+corollary supplies (F3) on its entire window, under the funded
+chart/stamp and selected-path hypotheses explicitly stated there.
+The endpoint is re-expressed at the smaller threshold with equal
+density; it is not left in its original budget. The chosen family is
+retained in every subsequent comparison, so no equality with a second
+family is inferred from endpoint agreement. The readout and its stamp
+are supplied by Proposition~\ref{prop:rank-selected-tested-readout}
+under its stated funded hypotheses. These local conclusions do not by
+themselves perform the joint chart selection or the stress calibration
+required by the trace endpoint.
