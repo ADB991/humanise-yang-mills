@@ -500,8 +500,7 @@ opened at $k$, and every motion $s$,
        \leq \operatorname{cider}(d,m,k)\,E\,
                \operatorname{flight}_{-\gamma}(N,p).
 \]
-The root-test bound is conditional on the served-representation step
-identified in the proof, which is not proved here. Here $X_N$ is the
+Here $X_N$ is the
 terminal coefficient calibration isomorphism on the selected family, and
 $C.O(v)=a_N^{-d}T(\theta_N^{-1}\mathbin{\cdot_F}
 X_N^{-1}v)(0,\cdot)$ is its local observable at the origin.
@@ -634,21 +633,206 @@ occupancy schedule (R3), the scale bounds (R2), the transition service
 $b-C.O(v)$, which holds because $b$ is continuous by the Cream and
 $C.O(v)$ is a polynomial cylinder.
 
-We require a separate served-residual input: the residual coefficient
-records have a served representation of their finite birth polynomial at
-the opened scale, with support exponent $\alpha_k$ and action allowance
-$1$. This passage is not proved in this section. Its required profile
-transport uses (R4), the Tale witnesses, and the two numerical prices
+\paragraph{Serving the residual polynomial.}
+\label{par:figment-served-residual}
+We now construct the representation needed for this census. This step
+uses the full transition and profile records in (R4), (R6), (R7), not
+only their numerical inequalities. Let $I$ be its finite set of slots,
+and use the algebra with commuting generators $z_\nu$, $\nu\in I$,
+satisfying $z_\nu^2=0$. Write $F_\nu$ for the prescribed oriented copy of
+$b-C.O(v)$. All subsets of $I$ are retained. Define the terminal polynomial
 \[
- 2w_{i+1}a_{i+1}^{-d}\,\mathcal O_d(\psi_i+2C_{i+1})
-     (c_{i+1}+\|x_{i+1}\|_1)\leq2\mathcal O_d(\psi_i+2C_{i+1})\zeta_{i+1}
-     \leq1,
- \qquad w_{i+1}a_i^{-d}c_i\leq\zeta_iC_i\leq1,
+ A_N(U)=R_N.\mathrm{eval}(U)\prod_{\nu\in I}(1+z_\nu F_\nu(U)).
+ \tag{\(*\)}
 \]
-which follow from the finite-copy rate bound, (R5) and $w_{i+1}\leq w_i$. The
-following moment calculation is conditional on that representation, with
-support exponent $\alpha_k$ and action allowance $1$; this is recorded as
-an open input. With constant positive slot weight
+In particular its coefficient at any subset $J\subseteq I$ is
+$R_N.\mathrm{eval}\prod_{\nu\in J}F_\nu$. We construct local arrays for
+this polynomial; identifying its singleton coefficients alone would not
+suffice.
+
+At level $i$ orient the translated voice $\mathcal Z_i(-a)$ at the
+site of slot $\nu$ and multiply it by $a_i^{-d}$. Let $g_{i,\nu}$ be
+its ordinary exponential entry and $q_{i,\nu}$ its forced profile.
+Denote its full density by $\chi_{i,\nu}$. The density decomposition
+\eqref{eq:ope-single-coin} expresses $\chi_{i,\nu}$ as
+$R_i.\mathrm{eval}\,g_{i,\nu}$ plus the gas with exactly one insertion
+of $q_{i,\nu}$. The format and remainder bounds give summable majorants
+for these profiles. Linearity, the adjacent density identity, and
+$a_{i+1}^{-d}=L_i^d a_i^{-d}$ give
+\[
+ \chi_{i,\nu}=\mathsf P_i\chi_{i+1,\nu},\qquad
+ \chi_{N,\nu}=R_N.\mathrm{eval}\,F_\nu.
+\]
+The site migration and the soundness of the same door justify these
+identities after orientation as well. A conjugating orientation conjugates
+all coefficients and responses and preserves their absolute prices.
+
+The sum of the Cream attainment and the negative played attainment
+constructed above, rescaled and oriented at slot $\nu$, is a response
+$\Psi_\nu(X,U)$ with hook $q_{N,\nu}$. It is local, gauge invariant,
+measurable, anchored at that slot, and zero when $X$ is healthy. Its
+weighted reserved mass is at most $u_N$. Set
+$h_\nu(U)=\sum_X\Psi_\nu(X,U)$. The hook identity, or equivalently the
+singleton coefficient of \eqref{eq:transfer-closure}, says that the gas
+with one insertion of $q_{N,\nu}$ is
+$R_N.\mathrm{eval}\,h_\nu$. Consequently
+\[
+ R_N.\mathrm{eval}\,F_\nu
+   =R_N.\mathrm{eval}\,(g_{N,\nu}+h_\nu).
+\]
+Telescoping a finite product proves this identity for every product of
+slots with the same factor $R_N.\mathrm{eval}$. Thus it holds without
+dividing by that factor, even at its zeros. Since the generators have
+square zero, (\(*\)) is exactly
+\[
+ e^{E_N}\exp\!\left(\sum_\nu z_\nu g_{N,\nu}\right)
+ \mathcal G(k_N^0)
+ \exp\!\left(\sum_{\nu,X}z_\nu\Psi_\nu(X,\cdot)\right),
+ \tag{\(**\)}
+\]
+where $R_N.\mathrm{eval}=e^{E_N}\mathcal G(k_N^0)$ denotes the actual
+background gas, with its background ordinary contribution included in
+$E_N$.
+
+Apply the connected-component construction of
+\eqref{eq:transfer-closure} to (\(**\)). Its vertices are the selected
+background forced factors and the response factors $(\nu,X)$; edges
+mean intersecting supports. Every nonzero response factor meets a flag,
+which is covered by a background forced factor, so every component has
+such a background vertex. Replace each component by the product of its
+factors, on their union support with their union inventory, and sum
+components with that output pair and marker mode. Conversely, components
+with disjoint union supports recover uniquely the original selected
+factors. This bijection preserves products and all marker modes. The
+empty-mode array is $k_N^0$, and the singleton array is the hook
+$q_{N,\nu}$: a component with one response consists of that response
+and the background factors meeting its support. Remove these prescribed
+modes to define the higher flagged array. The ordinary higher array is
+zero. In particular we have constructed the higher coefficients rather
+than replaced them by products of singleton densities.
+
+For convergence and payment, the anchored estimate
+\eqref{eq:transfer-root-hit} converts the per-slot weighted response
+mass $u_N$ into site price $r_N\mathsf s(B_N)u_N$ at exponent
+$\alpha_N$: the reserved mass is measured at exponent $\alpha_N+2$,
+so it pays the one extra exponent in that anchored estimate. The
+background forced price $w_N^{\rm f}$ is measured at $\alpha_N$. With
+$D_N=w_N^{\rm f}+r_N\mathsf s(B_N)u_N$, (R4) gives
+\[
+ (2B_N+1)^4D_N\le3,\qquad e^{D_N}-1\le1.
+\]
+The connected-support bound \eqref{eq:ope-forest-price}, with spare
+exponent three, therefore bounds the flagged array at exponent
+$\alpha_N-3$ by one. Removing modes cannot increase a price. The same
+majorants justify the component regrouping for countable background
+addresses by absolute convergence. This proves terminal servedness with
+reserve one at pitch $\pi_N=\alpha_N-3$.
+
+Here are the adjacent profile inputs to the descent, explicitly in the
+notation of Section~\ref{sec:local-transfer}. For each slot at a door
+there is a constant $\ell_\nu$, an anchored family of elementary
+insertions $M_{\nu j}$ using finitely many slots, and a lower response
+$\Psi'_{\nu}$, such that
+\[
+ \begin{aligned}
+ g_{i+1,\nu}-\ell_\nu&=\sum_j z_{\nu j}\operatorname{ord}(M_{\nu j}),&
+ q_{i+1,\nu}&=\sum_j z_{\nu j}\operatorname{flag}(M_{\nu j}),\\
+ q_{i,\nu}&=\sum_j z_{\nu j}\mathcal Q_i(M_{\nu j})
+                         +\mathcal H_{R_i}(\Psi'_\nu).
+ \end{aligned}
+\]
+Here $\mathcal Q_i$ is the same door's quoted profile map and
+$\mathcal H_{R_i}$ its lower hook. These are the finite Tale identities
+in (R6)--(R7). To obtain them for the translated voice, take the union
+of the Coupon wing for the keyed upper residual and the Carol wing
+for the played displacement $\varpi_{i+1}-a$, and add the two expansions.
+In the lower state the recentering terms cancel:
+\[
+ Z_i+\Pi_i(\varpi_i-a)
+   =V+\Pi_i(-h)+\Pi_i(\varpi_{i+1}+h-a)
+   =V+\Pi_i(\varpi_{i+1}-a),
+\]
+where $V,h$ are the one-step correction and primary defined before
+Lemma~\ref{lem:actual-marked-antilles}. The cancellation holds for the
+ordinary entry, density, and forced profile separately. Thus the lower
+profile in the displayed Tale is exactly the required one. Taking a
+union of wings does not change their door, supports or parent map;
+the absolute prices add. Before physical rescaling their upper price
+is at most
+\[
+ \mathcal O_d\|x_{i+1}\|_1(\psi_i+2C_{i+1})+2c_{i+1}
+ \le\mathcal O_d(\psi_i+2C_{i+1})(c_{i+1}+\|x_{i+1}\|_1),
+\]
+since $\mathcal O_d,C_{i+1}\ge1$ and $\psi_i\ge0$. More precisely the
+Coupon term costs $2b_{i+1}\le2c_{i+1}$. The lower response price at
+exponent $\alpha_i+2$ is bounded by
+\[
+ \eta_i b_{i+1}+g_i(\varpi_{i+1}-a)
+ \le\eta_i b_{i+1}+g_i(-h)+g_i(\varpi_{i+1}+h-a)=c_i,
+\]
+by subadditivity of the played charge and the defining formula for $b_i$.
+After rescaling, call
+these prices $s_{i,\nu}$ and $t_{i,\nu}$. The required two payments are
+\[
+ \begin{split}
+ 2w_{i+1}s_{i,\nu}
+ &\le2w_{i+1}a_{i+1}^{-d}\mathcal O_d(\psi_i+2C_{i+1})
+             (c_{i+1}+\|x_{i+1}\|_1)\le1,\\
+ w_{i+1}t_{i,\nu}&\le w_{i+1}a_i^{-d}c_i
+                  \le\zeta_i C_i\le1.
+ \end{split}
+\]
+These follow from the rate bounds, (R5), $w_{i+1}\le w_i$, and
+$C_i\ge1$. Both profiles and the upper exponential entry are therefore
+paid; a bound on only one profile would not establish this transition.
+
+Now define $A_i=\mathsf P_i A_{i+1}$, acting coefficientwise, and
+$\pi_i=\alpha_i$ for $i<N$. Suppose $A_{i+1}$ has the constructed
+representation at pitch $\pi_{i+1}$ and reserve one. In particular
+$\pi_{i+1}\ge\alpha_{i+1}-4$, including the terminal step. Apply
+Section~\ref{sec:local-transfer} with upper weights $w_{i+1}$ and
+shrinkage $\delta_i$. The Tale just constructed gives singleton cost
+$\delta_i$ after real/imaginary compression, while the higher arrays
+cost at most $4\delta_i$. Occupancy gives total prepared site cost
+$T=r_i\mathsf s(B_{i+1})\delta_i+4\delta_i$.
+The compatible-product expansion costs at most $T+e^TT\le y$.
+Hence (R4) applies to this entire prepared polynomial, including every
+higher mode. Its ordinary and flagged output bounds and
+$(2B_i+1)^4c\le\tfrac12$, $e^c-1\le1$ permit the lower response
+closure at exponent $\alpha_i+\tfrac12$. The exact pushed singleton
+density and the lower hook identify the prescribed $g_{i,\nu}$ and
+$q_{i,\nu}$ by \eqref{eq:ope-single-coin}, using the nonzero selected
+Wilson density at this scale, whose strict positivity is proved in
+Proposition~\ref{prop:selected-reprise}.
+
+Finally, the separation estimate in
+Section~\ref{ex-centered-construction} gives, for each supported mode
+$J$ with $|J|\ge2$,
+\[
+ \prod_{\nu\in J}w_i
+ \le\prod_{\nu\in J}(\delta_iw_{i+1})
+       e^{\operatorname{coverNumber}(B_i,X)/2}.
+\]
+Indeed $w_i\le\delta_iw_{i+1}e^{B_i/128}$ by (R2), and the tour
+bound is $B_i|J|\le64\operatorname{coverNumber}(B_i,X)$.
+This pays the change back to $w_i$ and leaves exponent $\alpha_i$ and
+reserve one. It completes the induction down to $k$. Higher modes
+throughout are those of $A_i$, never reset to products of the
+single-insertion pushes.
+
+The terminal coefficients are integrable, since the fields are
+continuous on the finite-volume compact configuration space. The
+bounded measurable transition kernels preserve integrability; Fubini
+and their mass identity preserve every coefficient integral and the
+common partition normalization. Therefore, for every $J\subseteq I$,
+\[
+ \frac{\int[z_J]A_k}{\int R_k.\mathrm{eval}}
+       =\int\prod_{\nu\in J}F_\nu\,d\mu_{N,p}.
+\]
+All integrals on the left use the respective normalized priors. In
+particular the full mode is the original residual census moment.
+We have proved the required served representation at $k<N$ with
+exponent $\alpha_k$ and reserve one. With constant positive slot weight
 $w$, the finite census estimate (obtained by applying the marked
 estimate to the product over all $K$ slots) is
 \[
