@@ -160,9 +160,27 @@ $O(L^{-3})$. Multiplying the lift identity by $B_c$ gives
 \begin{equation}\label{eq:curvature-charge-lift}
                      S d_{2,c}B_c=d_{2,f}B_fT.
 \end{equation}
+For this mixed kernel, perform the right lift separately for each fine
+residue and fine three-form label. These indices belong to the output
+space of the lift; the division and contraction act only on its coarse
+form columns. No sum over the $L^4$ output residues occurs in the lift
+bound. Thus its constant remains independent of $L$.
 The row $S^{\mathsf T}S$ now has cost $O(L^{-2})$:
 its summation has $L^4$ residues, while both factors cost
-$L^{-3}$. Retaining this count is essential.
+$L^{-3}$. More explicitly, if each row entry at a fixed residue has
+weighted coefficient sum at most $cL^{-3}$ at width $\alpha$, then
+an entry of the Gram row has weighted sum at most
+\[
+ L^4 n_3(cL^{-3})^2=n_3c^2L^{-2},
+\]
+where $n_3$ is the fixed number of three-form labels. For each residue
+this is the convolution inequality
+$e^{\alpha|x-y|_1}\le e^{\alpha|x|_1}e^{\alpha|y|_1}$,
+followed by Tonelli; transposition reverses a displacement and does not
+change its weight. The same argument with two $L^{-2}$ factors gives
+the earlier uniform bound on $T^{\mathsf T}B_fT$. These are bounds on
+cover rows before periodization, so they hold simultaneously on every
+period. Retaining the residue count is essential.
 
 \subsection{Making the curvature row positive}
 Choose amendment coefficients $m,l\ge0$ for the fine and
@@ -192,7 +210,13 @@ bounded operator norm, say at most $K$. Therefore
            \langle u,Ru\rangle\ge\|D_cu\|^2
                                       \ge K^{-2}\|u\|^2.
 \]
-The products defining $R$ have a uniform exponential row bound.
+The inverse construction of Section~\ref{sec:positive-row-producer},
+applied to $I+l d_{2,c}B_cd_{2,c}^{\mathsf T}\ge I$ as in
+\eqref{eq:positive-amendment}, supplies a common exponential row bound
+for $D_c$. Here $l$ is already fixed; the original row has an upper
+bound uniform over the trains. Together with the preceding bounds on
+$C$ and $S^{\mathsf T}S$, this proves a uniform exponential row bound
+for every product defining $R$.
 Section~\ref{sec:positive-row-producer} supplies its positive
 square-root row $P$, uniformly over all flights of these stages.
 
@@ -250,9 +274,9 @@ along those very block lengths. At each level use its positive
 bed from Section~\ref{sec:positive-row-producer}; at each step
 use \eqref{eq:curvature-paid-factor} and the exact block completion
 of Section~\ref{sec:ex-lattice-rg-horizon-geometry}. The latter's
-strip calculation supplies the prescribed iterated difference bounds
-for its unchanged $A_0,T$ rows and the displayed strip bounds for
-its remaining blocks. This changes neither the bed rows nor the
+strip calculation inherits the prescribed iterated difference bounds
+for its unchanged $A_0,T$ rows, narrowing their width if necessary,
+and proves the displayed strip bounds for its remaining blocks. This changes neither the bed rows nor the
 original one-form and two-form transports $A_0,T$. It only
 constructs the remaining three blocks from their common positive
 curvature factor. Taking the indicated finite minima and maxima at each

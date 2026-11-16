@@ -299,3 +299,64 @@ local insertions at all cutoffs and periods. The extraction argument in the
 next section isolates a local modulus of continuity and a local size bound;
 the renormalization construction must supply those estimates with the indicated
 order of quantifiers.
+
+\begin{corollary}[Finite smeared reflection forms on the selected grids]
+\label{cor:ex-lattice-smeared-reflection}
+Fix finitely many positive-time words, of lengths $n_\nu\ge0$, with
+continuous gauge-invariant insertions and compactly supported test
+functions $f_\nu$. Suppose every time coordinate in their supports lies
+in $[\varepsilon,R]$, where $\varepsilon>0$, and every spatial
+coordinate lies in $[-R,R]$. Suppose the insertions in these words read
+only links whose endpoints are within $b$ lattice steps of their insertion
+site, for one fixed $b<\infty$. For a fixed selected physical period
+$P_p>2R$, define
+\[
+ A_{\nu,N,p}(U)=a_N^{4n_\nu}
+  \sum_{z_1,\ldots,z_{n_\nu}\in\Lambda_{N,p}}
+  f_\nu(a_N\ell(z_1),\ldots,a_N\ell(z_{n_\nu}))
+  \prod_{j=1}^{n_\nu}O_{N,p}(v_{\nu,j},z_j;U),
+\]
+where $\ell$ is the centered lift on this torus; a word of length zero
+is its constant coefficient. For all sufficiently large $N$, the matrix
+\[
+ \left(\int A_{\nu,N,p}(U)
+       \overline{A_{\mu,N,p}(\Theta U)}\,d\mu_{\ell_{N,p},\beta_{N,p}}(U)
+       \right)_{\nu,\mu}
+\]
+is positive semidefinite. The same mesh threshold works for every selected
+period $P_p\ge P_*>2R$.
+\end{corollary}
+
+\begin{proof}
+Choose $N_0$ so that for $N\ge N_0$,
+\[
+ b a_N<\tfrac12\min\{\varepsilon,P_*/2-R\}.
+\]
+Such a threshold exists because the strictly increasing integer
+ denominators $D_N$ tend to infinity. A nonzero summand has every
+insertion time between $\varepsilon$ and $R$. Every endpoint read by
+its insertions therefore has physical time strictly between $0$ and
+$P_p/2$. In lattice coordinates this is exactly the strict positive
+sector of the site reflection on the even torus of side $P_pD_N$.
+The same margin keeps all stencil endpoints away from the boundary of
+the centered coordinate box. Thus each $A_{\nu,N,p}$ depends only on
+links with both endpoints in that sector. It is bounded and Borel:
+it is a finite sum of products of continuous functions on the compact
+configuration space. It is gauge invariant for the same reason, using
+the gauge invariance of each insertion. These properties hold also for
+any finite linear combination $F=\sum_\nu c_\nu A_{\nu,N,p}$.
+Apply Proposition~\ref{prop:ex-lattice-finite-reflection} to $F$ and
+expand the finite sum to obtain the stated positive form. The bounds
+used only $P_p\ge P_*$, which proves the uniformity assertion.
+
+Expanding an entry of the matrix gives the product of the two smearing
+weights, namely $a_N^{4(n_\nu+n_\mu)}$, and the corresponding finite
+Wilson moment under its normalized law. If the reflected insertion is
+written using its reflected label and reflected site, its exact
+covariance identity identifies this with the usual reflected smeared
+moment; there is no extra volume or partition-function factor. The
+corollary provides its finite positivity. Passing that identity through
+an ordered mesh and volume limit uses the convergence and reflected-label
+matching of Proposition~\ref{prop:ex-limits-euclidean}; those are separate
+from the support-margin argument proved here.
+\end{proof}
