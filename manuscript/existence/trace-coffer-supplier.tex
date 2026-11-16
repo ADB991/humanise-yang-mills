@@ -301,16 +301,15 @@ mixed terms, with the same partition function. It is stronger than a
 check of the singleton densities.
 
 \paragraph{Constructing the two support ledgers.}
-We use the paid local-transition hypotheses already imposed on the
-selected response hierarchy. Their content is important here: these are
-the elementary integration estimate
-\eqref{eq:transfer-nonlinear-input}, the singleton expansions in
-Section~\ref{sec:reference-difference}, and the terminal birth,
-place and bank estimates used in Section~\ref{ex-centered-construction}.
-They hold on this one history, with its actual transition operators,
-not on a separately chosen representation. Below we construct the
-higher support arrays from these inputs. In particular, we do not
-assume a served representation of $X_m$.
+We construct the served representation on the opened centered-cell
+census using the fixed label $b$ and the terminal birth in
+\eqref{eq:coffer-planted-polynomial}. Throughout, the same selected
+history supplies the coefficient identities, density pushes, forced
+profiles, support rooms, bank and place bounds, migration, separation,
+and terminal hook. The local response certificate is
+\eqref{eq:coffer-response-coin}; its support and attainment bounds
+are used below at their actual selected doors. The served representation
+and both support ledgers will be built from these data.
 
 Write $\tau_i$ for the weight $w_m$ marched from $m$ to $i$, and
 $\Omega_i$ for the weight $w_m/a$ marched by the same positive
@@ -341,22 +340,30 @@ weight $\tau_i$, and at level $k$ gives
  \Omega_k\|\operatorname{alto}_{k,d}\|\|I_kv\|_{\rm coeff}
        \le\zeta_k.
 \]
-The second inequality pays for the negative reference label in the
-terminal birth. Its label is still $-b$, independently of the window.
-The larger weight $\Omega_k$ is essential; payment at $\tau_k$ alone
-would not imply it. Linearity of the reference hierarchy makes the
-bond of $-b$ equal to the bond of $b$.
+The second inequality pays the negative reference label in the
+terminal birth; the label remains $-b$ for every window. The larger
+weight $\Omega_k$ is essential; payment at $\tau_k$ alone would not
+imply it. The first inequality pays the local response because
+\[
+ \tau_k\|\operatorname{alto}_{k,d}\|e
+ \leq a\zeta_k e/(2B)\leq v'.
+\]
+Linearity of the reference hierarchy makes the bond of $-b$ equal to
+that of $b$. The opened cell embeddings give occupancy one,
+migration, and separation; the old-level multiplicity bound is the
+admitted schedule.
 
 Apply the terminal birth construction and its finite downward
-induction in Section~\ref{ex-centered-construction} to this negative
-label, starting with the second payment. At the finest level its
+induction to this negative label, starting with the second payment.
+The terminal birth expansion starts with the actual background and
+linear insertions and transports them through the selected transition
+identities, retaining the forced hook. At the finest level its
 polynomial is precisely $Q_N$ in
-\eqref{eq:coffer-planted-polynomial}. The birth construction begins
-with the background box factors and the linear terminal insertions;
-it moves their forced responses into the boxes by
-\eqref{eq:transfer-closure} and removes the constant and singleton
-coefficients. This defines the two higher arrays, rather than merely
-bounding a proposed array. More explicitly, the terminal place bound has a footprint of cover
+\eqref{eq:coffer-planted-polynomial}. The construction begins with the background box factors and linear
+terminal insertions, moves forced responses into boxes by connected
+component closure, and removes the constant and singleton
+coefficients. This defines the higher arrays, rather than merely
+bounding proposed arrays. More explicitly, the terminal place bound has a footprint of cover
 number at most one and section budget $t_N\ge1$. The bank inequality is
 \[
  e^{\alpha_N+2}\mathfrak c_N(t_N)\zeta_N\le u_N.
@@ -370,6 +377,12 @@ requires
  \quad (2B_N+1)^4C_N\le3,
  \quad e^{C_N}-1\le1,\quad \alpha_N\ge3.
 \]
+The place clause here is the cover-number-at-most-one receipt. The
+birth polynomial is integrable by the compact-continuity estimate for
+the terminal cylinder observable. The mixed polynomial is integrable under each transition: on this
+finite-volume compact configuration space its cylinder factors are
+bounded, and the selected transition kernels are normalized with
+bounded densities.
 Thus the component construction of \eqref{eq:transfer-closure} and
 \eqref{eq:ope-forest-price}, with spare exponent three, gives a flagged
 higher array of price at most one at exponent $\alpha_N-3$.
@@ -377,14 +390,27 @@ The ordinary exponent started linear and remains linear after the
 response shift, so its higher array is zero. The terminal hook and
 singleton coin identities identify the prescribed singletons; the
 higher-degree projection retains the exact birth polynomial.
-These are the terminal estimates used in the cited centered construction. Each subsequent step is the one-scale
-construction of Section~\ref{sec:local-transfer}; its admitted fine
-exponent is $\alpha_{i+1}-4$, so both the terminal exponent and the
-full exponents at later steps are sufficient. The resulting
-representation of $Q_k$ has ordinary and flagged higher arrays
-$H^0_Y,K^0_P$, each of site price at most one, at exponent
-$\alpha_k$ and weights $\Omega_k$. Its singletons are those of the
-negative reference coefficient on the same history.
+At level $k$, the seeded negative polynomial $Q_k$ has the negative
+reference singletons and higher arrays of price one at weights
+$\Omega_k$. Reweighting only degrees at least two from $\Omega_k$
+to $\tau_k=a\Omega_k$ reduces those prices to $a$. Multiply by the
+positive factors $\prod_a(1+\mathsf t_aF_a)$ and insert their local
+response, whose singleton coin and forced profile are
+\eqref{eq:coffer-response-coin}. This forms the mixed polynomial
+$X_k$, with singleton equal to positive primary plus negative reference
+plus response. Before component closure, the ordinary higher array
+still has price at most $a$; the flagged background, forced profiles
+and reweighted old boxes are priced explicitly below.
+For each nonzero term, connect its old flagged boxes and response
+supports by support intersection, require an old flagged box, and put
+the product at the union support with the union flag set. This finite
+component regrouping preserves the full polynomial. A component with
+one response contributes exactly its forced hook; components with two
+or more responses have degree at least two. The resulting representation
+of $X_k$ has ordinary and flagged higher arrays $H^0_Y,K^0_P$, each
+with site price at most one at exponent $\alpha_k-4$. The flagged
+price is the component bound proved below; the ordinary higher array
+remains at price $a$.
 
 Here and below a site price $C$ means that the weighted absolute
 coefficient sums have nonnegative majorants $h_Y$ satisfying
@@ -499,9 +525,14 @@ invariance, locality and containment of each occurring mark in
 its support. Both higher ledgers therefore have price one at
 exponent $\alpha_k-4$.
 
-Now descend from $k$ to $m$. At step $i$, use the signed
-singleton expansion retained in Section~\ref{sec:reference-difference}
-and the same elementary integration estimate used above $k$.
+Now descend from $k$ to $m$ along the same selected history. At each
+step the signed singleton expansion in Section~\ref{sec:reference-difference}
+has its exact density push, forced-profile identity and finite support
+witness on the chosen door. Transporting the higher arrays through that
+witness preserves the full polynomial; the newly added response terms
+have degree at least two, and their connected supports are grouped by
+union. Thus the descent transports the representation already
+constructed at $k$ rather than postulating a new served object.
 For specificity the required paid local data are
 \[
  0<\delta_i\le1,\quad \alpha_i,\alpha_{i+1}\ge100,\quad
@@ -513,10 +544,10 @@ For specificity the required paid local data are
  \qquad (2B_i+1)^4A_i\le\tfrac12,
  \qquad e^{A_i}-1\le1.
 \]
-Here $M_i$ is the elementary integration allowance, $u_i$ its
-flagged output price, and $n_i$ bounds the two adjacent
-occupancies. These are the one-step payment inequalities of the
-selected history, not additional conclusions of melting at $k$.
+Here $M_i$ is the available input budget, $u_i$ is the flagged
+response price, and $n_i$ bounds the two adjacent occupancies. These
+are the one-step payment inequalities of the selected history, not
+additional conclusions of melting at $k$.
 Here is the singleton payment check. Put
 $C_i^{\rm wing}=\operatorname{orb}(d)(\psi_i+2c_{i+1})\ge2$.
 The retained signed expansion has dilated fine cost
@@ -532,14 +563,15 @@ $2C_i^{\rm wing}\zeta_{i+1}\le1$; hence
 $2\tau_{i+1}s_i\le1$. Its coarse response cost is at most
 $t_i\le\|\operatorname{alto}_{i,d}\|r_i$. Since the march has
 $\tau_{i+1}\le\tau_i$ and $\zeta_i\le1$, the same paid comparison
-gives $\tau_{i+1}t_i\le1$. These are exactly the two singleton
-inequalities required in Section~\ref{sec:local-transfer}. The parent-site identity,
-occupancy and the cover-price comparison are the same migration
-and separation data as in the centered induction. At each step,
-construct the elementary insertion list, integrate it, regroup
-its response components, and project to degrees at least two
-as specified there. Its conclusion recovers exponent $\alpha_i$
-and separately bounds both ledgers by one. The first step accepts
+gives $\tau_{i+1}t_i\le1$. These pay the input and output sides of the actual finite-support
+comparison. The parent-site identity, occupancy and cover-price
+comparison are the same migration and separation data as in the
+centered induction. The adjacent transition preserves the singleton
+entries; every added response term has marker degree at least two.
+The component-closure estimate therefore recovers exponent $\alpha_i$
+and separately bounds both higher ledgers by one. At the last level, the forced remainder allowance
+$\sqrt{\gamma_m}$ and the marched coefficient-plus-remainder
+payment give the Vault constants $2,1$. The first step accepts
 $\alpha_k-4$; every subsequent step accepts the full exponent
 already obtained. The actual polynomial at the next level is
 $\mathsf P_{i,i+1}X_{i+1}$, so finite induction constructs the
@@ -561,10 +593,13 @@ $\sqrt{\gamma_m}\le1$. Motion preserves absolute values.
 Since $w_m\|\operatorname{alto}_{m,d}\|(r_m+z_m)\le\zeta_m$
 and $\zeta_mc_m\le1$, the ordinary singleton has weighted
 absolute value at most $2$ and the summed flagged singleton at
-most $1$. These are exactly the two bounds used below.
+most $1$. These are exactly the two singleton bounds used by the finite-census
+price estimate below. Together with the constructed higher arrays and
+their site budgets, they give the required served representation and
+its support bounds at level $m$.
 
-Thus the following support decomposition has been constructed from the
-paid local-transition inputs.
+Thus the following support decomposition has been constructed by the
+paid same-history transition and its finite-support witnesses.
 Let \(V\) be the set of census sites, \(K=|V|\), with marks \(o_a\),
 \(a\in V\), in the level-\(m\) lattice. The polynomial $\mathsf X=X_m$ of
 \eqref{eq:coffer-planted-polynomial}, whose integrability and moment
@@ -695,12 +730,15 @@ exactly the native Bill denominator.
 The melting inequalities also hold eventually for this specialization.
 To see this directly, write $x=\widehat\beta_k$, $B_x=\lceil(\log x)^2\rceil$
 and $R_x=\exp(1)[2(16B_x+9)]^4$ for the spatial radius and site factor.
-The selected forced allowance is $\exp(-H^{1/5})$ with
-$H=\exp((\log\log x)^2)$, that is,
+The selected forced allowance
+$\exp\{-\exp[(\log\log(x^{1/5}))^2]\}$ is bounded above,
+for all sufficiently large $x$, by
 \[
  f(x)=\exp\{-\exp[(\log\log x)^2/5]\}.
 \]
-For large $x$ put $y=\log\log x$. Then
+Indeed, with $y=\log\log x$, one has
+$\log\log(x^{1/5})=y-\log5$ and $(y-\log5)^2\ge y^2/5$
+eventually. Moreover
 $\exp(y^2/5)/\log x=\exp(y^2/5-y)\to\infty$.
 Consequently, for every $A>0$, $\sqrt{f(x)}\le x^{-A}$ eventually;
 also $0<f(x)\le\sqrt{f(x)}$ eventually. With $a=v'=x^{-1}$, the
