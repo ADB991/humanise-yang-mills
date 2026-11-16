@@ -153,18 +153,60 @@ is the cover size. These choices are made on the common clock, before
 any terminal volume or label is chosen.
 
 Here are the clock bounds needed in the argument, including their
-payment. At a fixed stage the block, column constant $c$, and positive
-threshold parameters are fixed. The vacuum majorant has the form
-$C_0+C_1\log x$. Increasing the stage entry therefore pays
+payment. We choose the numerical stage delays before extracting the
+common history. At a fixed stage, write $r$ for its loop-path price,
+$c_{\rm dir}$ for its direct quadratic-action price, and $D_G$ for the
+fixed real dimension of the matrix coordinate space of the gauge group.
+Let $n_{\rm plaq}$ be the number of plaquette orientations. The vacuum
+majorant at coupling $z>1$ is
+\[
+ F_{\rm stage}(z)
+ =2(1+4r+1)+1+n_{\rm plaq}(c_{\rm dir}+r^2)
+       +4D_G\bigl(\log16+\tfrac12\log z\bigr)
+ =C_{\rm stage}+2D_G\log z.
+\]
+We verify the majorization, rather than assume a bound for the treasury.
+Its terms are twice the ordinary allowance plus twice the loop price,
+the forced allowance, the quadratic action price, and the logarithmic
+small-ball cost. The ordinary and forced allowances are at most one.
+With $\vartheta$ the selected threshold, $\Lambda$ the allowed loop
+cutoff, and $h=z^{-1/2}$, the loop term is
+$2z(r\vartheta^3+r\vartheta^4)+\Lambda\vartheta^2$.
+The clock has $\vartheta\le z^{-1/2}\exp((\log\log z)^2)$ and
+$\Lambda\vartheta^2\le1$ on the late-scale tail of
+Lemma~\ref{lem:rank-root-late-scale}, applied to that same clock.
+The lemma's stage thresholds are among the common entry requests.
+Hence $z\vartheta^3\le1$ and
+$z\vartheta^4\le1$ eventually, independently of the stage constants,
+and the loop price is at most $4r+1$.
+The action term is exactly $n_{\rm plaq}(c_{\rm dir}+r^2)$,
+since $zh^2=1$. Finally $\log(16/h)=\log16+\tfrac12\log z$.
+Adding the four bounds proves $\mathcal T\le F_{\rm stage}(z)$
+on a fixed coupling tail.
+
+Now let $L$ and $c$ be the block and column constants at that stage.
+For all sufficiently large $z$, impose
+\[
+ \log z\ge\max\{1,L,c,C_{\rm stage},2D_G+1\}.
+\]
+Writing $u=\log z$, we have
+$C_{\rm stage}+2D_Gu\le u+2D_Gu\le u^2$.
+Thus these eventual requests give, at every rung $r$ in that stage,
 \[
  L_r\le\log\widehat\beta_r,\qquad
  c_r\le\log\widehat\beta_r,\qquad
  \mathcal T_r\le(\log\widehat\beta_r)^2.
 \]
-The last assertion uses the vacuum treasury bound by that majorant.
-There are finitely many active and next-stage requirements at each
-entry, so their thresholds are included in the same finite maximum of
-Section~\ref{sec:ex-lattice-firesky-gallery}.
+At each stage entry there are only finitely many active and next-stage
+requests. Include the displayed bounds and their adjacent-stage versions
+in the finite maximum defining the entry threshold of
+Proposition~\ref{prop:trace-joint-chart-purchase}, and then take prefix
+maxima to preserve earlier entries. Each request holds on an entire
+coupling tail with that stage fixed, so this operation is legitimate even
+though the constants vary from stage to stage. These bounds therefore
+hold on the one history selected with these delays; no history is changed
+after the extraction, and no uniform fixed-stage constant is asserted
+across all stages.
 The block lower bound $L_r\ge1024(J_{r+1}+10)$ is a choice of the
 stage block before its entry threshold is paid. These purchases involve
 no new finite-volume analytic estimate.
@@ -203,6 +245,7 @@ summit coupling bound. In particular
 $\log\widehat\beta_r\le2y$ and $B_r\le5y^2$ for $j\le r\le k$.
 At $k-1$ the gap is at least $H-2y$; hence
 $\exp\Delta(j,k-1)\ge(5y^2)^2$ eventually. This proves $m<k$.
+Eventually $B_j>1$, so $a_j/a_j=1<B_j^2$ and $m>j$.
 By minimality of $m$, the preceding ratio is less than $B_{m-1}^2$;
 the last block is at most $2y$. Consequently
 $a_j/a_m\le2y(5y^2)^2\le y^6$ for large $y$.
@@ -424,7 +467,7 @@ the same frame tiling. This proves the moment identity needed for the
 root bound. It supplies the intermediate representation omitted from
 the generic phase-grid discussion for the primary insertions used here.
 
-\paragraph{Assembly of the actual Crown witness.}
+\paragraph{Assembly of the actual Crown witness.}\label{par:trace-actual-crown}
 The localizer just constructed is the grade-four test of the probe;
 it is not the probe's grade-five Crown witness. The source construction
 of that witness has the following explicit quantitative form. At the

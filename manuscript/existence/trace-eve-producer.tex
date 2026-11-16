@@ -344,6 +344,83 @@ $P.\mathrm{power}$ is the power of $P_0$; and the cap's cover bound
 is at most one, so the support allowance in
 \eqref{eq:ex-lattice-budget-support} can be chosen to be the constant one.
 The lower coupling bound is the same in both statements. These verify
-all the support and budget conditions of that application. The probe
-receipt and the cloud receipt (4) are separate inputs, not proved in this
-section.
+all the support and budget conditions of that application. The two remaining receipts are proved next for these same local data.
+
+\subsection{The actual probe and cloud bounds}
+\label{subsec:trace-eve-probe-cloud}
+Fix a probe $p$ of order $k$ and a frame column $\alpha$ of
+amplitude degree $\ell_\alpha$. The constants below depend on these
+finite choices and the installed kernel and block, but not on the
+period or on the two thresholds $w,y\in(0,1]$ with
+$1/2\le y/w\le2$. Let $R=\rho(x)=45(1+\lceil(\log x)^2\rceil)$.
+We apply the cropped-probe calculation of
+Section~\ref{sec:primary-calibration-producer} with fine threshold
+$w$ and coarse probe threshold $y$. Its actual curve is exactly the
+one defining $U_\alpha(V_p(s))$: it crops to radius $R$ and applies
+the installed first-order row. The room condition $2R<c$ ensures
+that the crop uses the canonical covering-lattice lifts. The
+full polynomial curve uses the same row. Absolute convergence of
+its Fourier kernel identifies the periodized convolution with the
+covering sum regrouped by residue classes.
+
+In the notation of \eqref{eq:primary-probe-tail}, the jets of the
+two normalized input curves through order $k$ differ by at most
+\[
+ e_R=C\{1+K(1+4R)^{dk}\}\exp(-\sigma R/2),\qquad \sigma>0.
+\]
+Here the polynomial factor bounds the probe's link-log jets outside
+the crop; inside the crop the two arrays agree. The constants are
+uniform in $w,y$: each nonempty chain-rule block contributes a
+threshold factor $y^r/w\le y/w\le2$.
+The full predicted jets have a fixed bound $U$ given by the weighted
+kernel moments. The normalized local-section estimate
+\eqref{eq:primary-stencil-stability} therefore bounds the output
+jet difference, including the physical factor, by
+\begin{equation}\label{eq:trace-eve-probe-envelope}
+ E_{p,\alpha}(x)
+   =L^d C_{k,\alpha,U}(1+e_R)^{\ell_\alpha+k}e_R.
+\end{equation}
+The full polynomial forecast in that section has exactly the
+coefficient transport $\mathcal L\mathsf e_\alpha$: its three
+fine-grade factors multiply to $L^d w^{-\ell_\alpha}$, and its
+coarse scaling inserts $y$ in the probe. Thus its reading is
+$R_p(\mathcal L\mathsf e_\alpha)$, with no change of coefficient
+map. This identifies the difference estimated in
+\eqref{eq:trace-eve-probe-envelope} with the probe-to-run difference
+in Theorem~\ref{thm:ex-lattice-eve-producer}. For the unit column the
+local section is constant and both readings agree exactly.
+
+Since $R\asymp(\log x)^2$, the logarithm of $e_R$ is at most
+$-c_0(\log x)^2+O(\log\log x)$ for some $c_0>0$.
+Also $\log\chi(x)=\tfrac12(\log\log\beta(x))^2$ and
+$\beta(x)=x+c_L$. It follows directly that
+$\chi(x)E_{p,\alpha}(x)\to0$. There are finitely many probes
+and columns. Taking the maximum of their eventual thresholds gives
+$E_{p,\alpha}(x)\le Q/\chi(x)$ simultaneously, uniformly over
+all the steps, periods and thresholds allowed in the receipt.
+This proves the probe estimate with its required order of quantifiers.
+
+For the cloud, let $q_*<0$ be the fixed rate of the selected target
+and $\epsilon_*>0$ its support reserve. The actual cloud response
+is the quantity in Lemma~\ref{lem:ex-lattice-medal-cloud-price}, with
+its coefficient now specified explicitly:
+\begin{equation}\label{eq:trace-eve-cloud-formula}
+ \mathcal M_x(Z_0)
+ =m_0\exp(-\epsilon_*N(Z_0))\,\beta(x)^{q_*/4},
+ \qquad N(Z_0)\ge0.
+\end{equation}
+The coefficient is a negative power of $\beta$, so it has the
+strict-power rate required in that lemma. In particular
+$0\le\mathcal M_x(Z_0)\le m_0\beta(x)^{q_*/4}$ uniformly
+over clouds and representations. Choose one scale threshold with
+$2L^d\beta(x)^{q_*/4}\le S=\nu/(2cTh)$.
+Multiplying by $m_0\ge0$ proves (4), including the case $m_0=0$
+without division. The same formula gives the stronger statement
+\[
+ \mathcal M_x(Z_0)\le (v/\chi(x))m_0
+\]
+for every prescribed $v>0$ on a later common tail, since
+$\chi(x)\beta(x)^{q_*/4}\to0$. This is the cloud estimate
+used for regular and primary atoms. Thus the probe, cap, cloud,
+and insertion estimates are all supplied before their common
+finite intersection is used to construct the response package.
