@@ -1,5 +1,12 @@
-\section{Local inverses and Gaussian normalization}
+\subsection{Local inverses and Gaussian normalization}
 \label{sec:local-covariance}
+
+For comparison, Demko, Moss and Smith
+\cite[Theorem~2.4]{DemkoMossSmith} prove exponential inverse decay for
+band matrices from spectral bounds. A fixed bandwidth in a linear
+ordering is unavailable here. We use the distance between anchors
+and exponential row and column sums instead.
+
 The Gaussian covariance used in the expansion is assembled from local
 principal inverses. It is not the full inverse of the precision matrix.
 We prove its positivity, estimate the resulting error, and express the
@@ -28,20 +35,16 @@ Let $A=A^*$ and suppose
  A\ge r1,\qquad \|A\|_\eta\le Q,
  \qquad 0<r\le1,\quad Q\ge1,\quad\eta>0.
 \end{equation}
-Section~\ref{sec:sector-gram} supplies these constants for the
+Subsection~\ref{sec:sector-gram} supplies these constants for the
 actual completed sector precision, after fixing $L$ and then
 taking the large parameter sufficiently large. Every principal
 submatrix has the same lower bound and weighted estimate: extend
 a test vector by zero for the first assertion, and restrict the
 nonnegative row and column sums for the second.
 
-\subsection{Exponential decay of the inverse}
+\subsubsection{Exponential decay of the inverse}
 The qualitative exponential decay of the inverse is a special case of
-Jaffard's inverse-decay theorem.\footnote{S.~Jaffard,
-``Propriétés des matrices « bien localisées » près de leur diagonale et
-quelques applications,'' \emph{Annales de l'Institut Henri Poincaré,
-Analyse non linéaire} \textbf{7} (1990), 461--476, Proposition~2,
-p.~464.} His hypothesis requires exponential distance sums to be
+Jaffard's inverse-decay theorem \cite[Proposition~2, p.~464]{Jaffard}. His hypothesis requires exponential distance sums to be
 uniformly finite. For the finite coordinate set here, put
 $d'(i,j)=\operatorname{dist}(a_i,a_j)+\mathbf1_{\{i\ne j\}}$.
 This is a metric, and bounded anchor multiplicity gives
@@ -108,9 +111,9 @@ Put $k=\gamma/3$ and
 Summing \eqref{eq:covariance-entry} at $u=0$ with weight
 $e^{2k\operatorname{dist}}$ gives $\|A^{-1}\|_{2k}\le S$.
 The summation uses the anchor multiplicity $m$ and the same
-distance-shell count as in Section~\ref{sec:sector-gram}.
+distance-shell count as in Subsection~\ref{sec:sector-gram}.
 
-\subsection{Principal windows and their error}
+\subsubsection{Principal windows and their error}
 For each coordinate $j$, choose a window $W_j$ containing every
 coordinate within distance $B$ of $a_j$ and no coordinate farther
 than $B+2$. Define $P$ by its columns:
@@ -168,8 +171,8 @@ bond's parent anchor. Choosing the two anchors proves the inner bound;
 the triangle inequality proves the outer bound $B+2$. Thus complete
 colour blocks occur together, and $C$ has range at most $B+2$.
 
-A different panel is used for the global selected-source estimates in
-Section~\ref{sec:actual-global-row-prices}. There membership requires
+A different panel is used for the global source-row estimates in
+Subsection~\ref{sec:actual-global-row-prices}. There membership requires
 \emph{every} pair of coarse endpoints to be within an integer threshold
 $R=\lfloor\operatorname{radiusB}(x)/20\rfloor$. For $R\geq2$, it contains
 the anchor ball of radius $R-2$ and is contained in the anchor ball of
@@ -188,7 +191,7 @@ coordinates, so the chosen local mean $-P^*M^*b$ vanishes there.
 These observations justify restricting the local Gaussian to the
 active coordinates without changing its physical entries.
 
-\subsection{Ordered inverse series}
+\subsubsection{Ordered inverse series}
 If a matrix $E$ satisfies $\|E\|_k\le\epsilon<1$, then
 \[
  (1+E)^{-1}=\sum_{n=0}^\infty(-E)^n.
@@ -211,7 +214,7 @@ fixed after $L$, $\epsilon_B$ and $\delta_B$ have every negative
 upper exponent. Both convergence conditions can thus be met on
 one sufficiently late tail, uniformly over sectors and periods.
 
-\subsection{Logarithms as local terms and correction series}
+\subsubsection{Logarithms as local terms and correction series}
 For $0\le s\le1$ put $A_s=1+s(A-1)$. The hypotheses
 \eqref{eq:covariance-data} hold for $A_s$ with the same
 $r,Q,\eta$, since $r\le1\le Q$. Let $P_s$ be its window
@@ -269,7 +272,7 @@ is used. The integral of its $n$th term is
 $(-1)^n(D^{n+1})_{ii}/(n+1)$, with absolute value at most
 $\|D\|_k^{n+1}/(n+1)$.
 
-\subsection{Local comparison of normalization terms}
+\subsubsection{Local comparison of normalization terms}
 For a physical bond $v$, group its colour coordinates and set
 $J_v(A)=\sum_{i:\,i\text{ lies over }v}\ell_i$.
 The term $\ell_i$ reads only the principal window $W_i$:

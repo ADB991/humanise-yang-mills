@@ -1,5 +1,11 @@
-\section{The trace coefficient and the passage to all radii}
+\subsection{The trace coefficient and the passage to all radii}
 \label{sec:trace-asymptotic}
+
+For the perturbative trace anomaly in non-Abelian gauge theory, see
+Collins, Duncan and Joglekar \cite{CollinsDuncanJoglekar}. The
+short-distance two-point function in the selected continuum phase
+requires the estimates on the Wilson hierarchy given here.
+
 Two different normalizations enter the trace asymptotic. Translation Ward
 identities fix the amplitude of the stress tensor, while the running Wilson
 coefficient fixes the logarithmic scale. After those normalizations, the
@@ -8,7 +14,7 @@ must remove the rounded positions and the chosen sequence of scales. We
 separate these operations because none can be replaced by choosing a
 convenient normalization of the trace after the fact.
 
-\subsection{The free scalar contraction}
+\subsubsection{The free scalar contraction}
 Put $N=\dim_{\mathbb R}\mathfrak g$ and use an orthonormal color basis.
 The reference potential covariance in four Euclidean dimensions is
 $\delta^{AB}\delta_{ab}D(x)$, where
@@ -59,25 +65,22 @@ $\sum_{A,B}(\delta^{AB})^2=N$, and therefore
  =\frac{2N}{16}\sum_{a,b,i,j}C_{abij}(x)^2
  =\frac{3N}{\pi^4|x|^8}.
 \end{equation}
-This computation uses the stated reference covariance and Wick rule. They
-are the normalized free curvature covariance and the Wick polynomial
-fields of Section~\ref{sec:ex-lattice-trace-free-rank}, where
-$D=\nu|x|^{-2}$ with $\nu=(4\pi^2)^{-1}$. The computation does not
-establish that the reference table entering the comparison below is this
-free hierarchy, nor that its label $O$ is the curvature-square field
-denoted $\mathcal O$ in Section~\ref{sec:ex-lattice-trace-scribe-producer}
-and in the external unit YM-000034 (file
-\texttt{trace-branch-moments.tex}, label
-\texttt{sec:ex-trace-branch-moments}). This identification is a
-requirement on the construction, which we call the \emph{reference
-normalization}: the reference two-point function used below satisfies
+This computation applies to the actual reference table used in the
+selected comparison. Indeed,
+\eqref{eq:scribe-reference-dictionary} identifies its correlations with
+Wick contractions for the potential kernel $D=(4\pi^2|x|^2)^{-1}$,
+and \eqref{eq:scribe-reference-scalar-identification} identifies its
+field $\mathcal O$ with precisely the ordered quarter-square field $O$
+above. Thus the \emph{reference normalization} is a consequence of
+that same-table dictionary and the calculation, rather than an
+independent choice of a free comparison model:
 \begin{equation}\label{eq:trace-reference-normalization}
  S_0(O,O;x_0,x_1)=\frac{3N}{\pi^4|x_0-x_1|^8}\qquad(x_0\neq x_1).
 \end{equation}
 The factor $1/4$ and the use of ordered
 pairs are essential to the coefficient.
 
-\subsection{Fixing the physical stress amplitude}
+\subsubsection{Fixing the physical stress amplitude}
 Here is the finite-dimensional step that prevents an arbitrary scalar
 multiple of the stress tensor from entering the answer. All vector spaces
 in this paragraph are real, including the real spaces of self-adjoint
@@ -101,8 +104,20 @@ In the construction the surjectivity of $Q$ is obtained from a surjective
 finite-dimensional comparison composed with a test map into $\mathcal K$;
 a surjective composition is sufficient to make $Q$ itself surjective.
 The statements about $D_0$ are proved in
-Proposition~\ref{prop:ex-trace-free-closure-rank}. The equality of
-dimensions, the comparison map and the kernel equality remain inputs here.
+Proposition~\ref{prop:ex-trace-free-closure-rank}. The other properties are supplied by the conserved-line construction
+of Subsection~\ref{sec:actual-stress-normalization}, on the completed
+maps of the selected trace gallery, as follows. The map
+$C_iB=\operatorname{center}(U_{i,4}B)$ is an isomorphism of the two
+centered tensor spaces: its inverse centers $U_{i,4}^{-1}$, and the
+unit corrections cancel because $U_{i,4}1=1$. This proves the dimension
+identity. With $V_i$ the induced isomorphism of vector arrays,
+$V_i^{-1}r_iDC_i$ converges to $D_0$ by the derivative-transport
+argument there. If $R^{\rm right}$ is any linear right inverse of $D_0$, then
+$V_i^{-1}r_iDC_iR^{\rm right}\to I$ and is invertible for large $i$. Thus
+$Q_i=V_i^{-1}r_iD$ is onto and, since $r_i>0$ and $V_i$ is invertible,
+$\ker Q_i=\ker D$. Choose any one such large $i$ for $Q$.
+This construction uses only the uniform short-test estimate and
+coherence of the gallery, not the trace asymptotic or its normalization.
 
 Let $R\in\ker D$ be the physical centered stress tensor. At scales
 $r_i>0$ let $U_i$ be the calibrated isomorphism from reference grade-four
@@ -117,8 +132,8 @@ $T_i\in\mathcal K$ and positive numbers $B_i$ with
  B_i\operatorname{tr}Y_i(T_i)\longrightarrow4d_2O.
 \end{equation}
 In the selected construction these are the corrected tensors $T_i$ and
-the effective couplings $B_i=q_i$ of
-Section~\ref{sec:ex-lattice-trace-scribe-producer}, with $R_0=M_0$ and
+the arch scales $B_i=q_i$ of
+Subsection~\ref{sec:ex-lattice-trace-scribe-producer}, with $R_0=M_0$ and
 $4d_2=-\kappa$ there; the two limits are
 \eqref{eq:ex-lattice-scribe-field-limit} and
 \eqref{eq:ex-lattice-scribe-flux-limit}, which are conditional on the
@@ -142,11 +157,10 @@ integral has the following exact consequence:
  \qquad \ell_i(T_i)\longrightarrow y.
 \end{equation}
 The same nonzero $y$ occurs because $R_0$ has the reference translation
-Ward identity. The existence of a detecting reference derivative field,
-and the jet estimates justifying these two limits, are part of the stress
-comparison input, rather than consequences of rank--nullity. They are the
-four inputs listed in the proportionality argument of
-Section~\ref{sec:ex-lattice-trace-scribe-producer}, where the two limits
+Ward identity. The detecting reference derivative field and the jet estimates
+justifying these two limits are proved for the actual reference table
+and the completed gallery charts in the proportionality argument of
+Subsection~\ref{sec:ex-lattice-trace-scribe-producer}, where the two limits
 appear as \eqref{eq:ex-lattice-scribe-common-test}.
 
 \begin{lemma}\label{lem:trace-normalized-stress}
@@ -182,8 +196,8 @@ Consequently the selected centered trace $\Theta$ has the same limit
 The identities above explain how the physical Ward normalization, rather
 than a later rescaling of $\Theta$, determines this coefficient.
 
-\subsection{Rounded correlations and moving labels}
-We next state exactly the remaining approximation data used to pass from
+\subsubsection{Rounded correlations and moving labels}
+We next state exactly the approximation data used to pass from
 \eqref{eq:trace-moving-label} to the trace asymptotic. Write
 $S_\chi(v,w;x_0,x_1)$ for the selected two-point function and
 $S_0(v,w;x_0,x_1)$ for the reference one. Both are bilinear in the field
@@ -207,10 +221,13 @@ $r_i=s_{n_i}$, with $n_i$ strictly increasing, and comparison data with
 the following properties. The maps $U_i$ and numbers $B_i>0$ satisfy
 \eqref{eq:trace-moving-label} and
 \[
- \frac{\log(r_i^{-1})}{B_i}\longrightarrow\frac1{2b_0},\qquad
- b_0=\frac{11C_{\mathfrak g}}{48\pi^2}>0,\qquad d_2=-\frac{b_0}{2},
+ \frac{\log(r_i^{-1})}{B_i}\longrightarrow\frac1\kappa,
+ \qquad \kappa>0,\qquad d_2=-\frac\kappa4,
 \]
-where $C_{\mathfrak g}>0$ is the adjoint Casimir in the fixed normalization.
+where $\kappa$ is the slope of the selected running clock and the same
+constant in its local response payment. Only this equality of the two
+constants, not their separate numerical evaluation, enters the trace
+coefficient.
 There are rounded configurations $q_i(x)\to x$ and errors
 $\varepsilon_i\to0$. Let $E_0$ be the reference grade-four field space
 and fix its finite basis $(e_\alpha)$. At every coordinatewise separated
@@ -225,41 +242,86 @@ where $M_{\alpha\beta}$ is continuous near $x$. The reference correlations
 are continuous there. The comparison window includes a neighborhood of
 $x(t)=(0,(t/2,t/2,t/2,t/2))$ for each $1/2<t<2$.
 \end{assumption}
-This input is the ultraviolet and stress comparison problem, and no
-statement of this section produces it. In the source the ultrafilter, the
-arch scale from which the numbers $B_i$ are read off, and the reference
-hierarchy are chosen once, before
-the sequence $(s_n)$ is given; the input as stated, in which the
-comparison data may depend on the sequence, is all that is used below.
-Its clauses are addressed in the present text as follows, in each case
-conditionally. The selection, after an arbitrary positive null sequence,
-of a strictly increasing subsequence with exactly those radii and of
-compatible charts is Lemma~\ref{lem:ex-lattice-firesky-selection}, under
-its one-step chart producer. The moving-label limit
-\eqref{eq:trace-moving-label} and the logarithmic limit are derived in
-Section~\ref{sec:ex-lattice-trace-scribe-producer}, with $B_i=q_i$ and
-$2b_0=\kappa$; see \eqref{eq:ex-lattice-scribe-physical-transfer},
-\eqref{eq:ex-lattice-scribe-clock} and the zoomed trace limit proved
-there, applied to the selected phase. That derivation rests on the
-rank-one conclusion of Lemma~\ref{lem:ex-lattice-trace-rank-one}, on the
-sensor estimates of the proposition `Selected trace sensor' of the
-external unit YM-000033 (file \texttt{trace-prosper-sensor.tex}, label
-\texttt{prop:trace-prosper-sensor}), on the
-branch limits and trace washout of the propositions `Three branch field
-limits' and `Principal and false trace washout' of the external unit
-YM-000034 (file \texttt{trace-branch-moments.tex}, labels
-\texttt{prop:ex-branch-moments} and \texttt{prop:ex-branch-washout}),
-and on the paid response, shell
-comparison and clock inputs listed in that section. The sensor and branch
-propositions belong to two separately owned units; they are distinct
-inputs, and each is conditional on its own stated hypotheses. For the pointwise comparison
-\eqref{eq:trace-basis-error} at rounded configurations, with its window
-and continuity clauses, we have not located a producer statement in the
-present text; it remains an open input. The positive
-trace spectral measure and its Laplace formula are supplied by
-Section~\ref{sec:trace-spectrum} for the same reconstructed centered trace,
-under the hypotheses of that section.
-We have not inferred the comparison estimates from compactness.
+\begin{proposition}[The same-history scale supplier]
+\label{prop:trace-scale-supplier}
+Fix the common selected history and its extraction before choosing any
+sequence of radii. Use its completed gallery, its physical stress and
+centered trace, and the physical transfer
+\eqref{eq:ex-lattice-scribe-physical-transfer} with the clock limit
+\eqref{eq:ex-lattice-scribe-clock}. Then these objects supply
+Input~\ref{input:trace-scales} for the same selected phase.
+\end{proposition}
+\begin{proof}
+The scale estimates for the paid response, including the gain bound,
+are supplied by Lemma \ref{lem:trace-bill-scale-tickets}. The actual
+coupling band is verified in
+Subsection~\ref{sec:ex-lattice-trace-probe-assembly}. Its local atom
+bounds are supplied by Subsection~\ref{subsec:trace-paid-atom-suppliers},
+using the probe and cloud estimates of
+Subsection~\ref{subsec:trace-eve-probe-cloud}; their thresholds are
+included before the common history is chosen. Its grade-five buffer
+uses the \hyperref[par:trace-actual-crown]{actual Crown witness}.
+The sensor used in the scribe is the one on these completed charts:
+its estimate is uniform over all vectors, so it applies to the growing
+principal forecast of norm $O(t_i)$, not just to fixed reference labels.
+The three actual branch tensors are recorded along the same fixed-level
+ultrafilter. The principal and false traces use the exponent-one
+washout of the branch theorem; the true trace instead uses its exact
+normalization $4\mathcal O$. These are distinct conclusions, as verified
+in the sensor and branch application of
+Subsection~\ref{sec:ex-lattice-trace-scribe-producer}. Its arch identity
+\eqref{eq:scribe-same-arch} identifies the branch coupling with the
+summit arch scale; alternatively the ratio lemma there transfers all
+three conclusions without assuming an unsupported equality.
+The conserved-line dimension is \eqref{eq:stress-physical-line},
+with the same-table application explained above. Thus the local
+estimates in the physical transfer are those of the selected objects,
+not additional freely postulated responses or maps.
+
+Let $s_n>0$ tend to zero. Apply
+Lemma~\ref{lem:ex-lattice-firesky-selection} to this sequence. It
+extracts strictly increasing indices $n_i$ and charts with radii
+exactly $r_i=s_{n_i}$. The background history and its extraction
+remain the already fixed ones; only charts and their indices are
+selected after the sequence is given. All finite-grade requirements
+use tails of these charts. Apply the threshold refinement of
+Proposition~\ref{prop:trace-rounded-receipt} in this selection:
+Corollary~\ref{prop:trace-selected-rounded-receipt} supplies its
+allowance and level budget on the same funded family. Thus (G3) holds
+at the selected root depth with cost $(i+1)^{-1}$, and the chamber
+lemma supplies (G4) at that very depth.
+
+Take $U_i$ to be the completed grade-four map and $B_i=q_i$ to be
+the actual summit arch scale. The physical transfer gives
+$U_i^{-1}(B_i r_i^4\operatorname{tr}R)\to-\kappa O$.
+The phase-centered trace differs from $\operatorname{tr}R$ by one
+fixed scalar multiple of the unit. Unit preservation and
+\eqref{eq:ex-lattice-scribe-band-cost} remove this difference after
+pullback. Hence \eqref{eq:trace-moving-label} holds with
+$4d_2=-\kappa$. The clock limit uses this same arch and same
+positive slope $\kappa$, giving the required logarithmic ratio.
+Neither the tensor nor its scalar normalization is reselected along
+this subsequence.
+
+Corollary~\ref{cor:trace-rounded-input} supplies the rounded
+configurations, pairwise basis errors and common comparison window
+for these maps and this phase. Its rounding bound tends to zero;
+the reference kernels are smooth off the diagonals by their explicit
+Wick formula. In particular they are continuous at every eligible
+configuration, and the control functions there are bounded in a
+neighborhood of that configuration. The window contains a
+neighborhood of every $x(t)$ with $1/2<t<2$. These are all the
+remaining clauses of Input~\ref{input:trace-scales}.
+\end{proof}
+The physical transfer in this proposition is the output of the
+same-history response, sensor, branch and shell constructions of
+Subsection~\ref{sec:ex-lattice-trace-scribe-producer}. The external
+sensor and branch units are used there as distinct statements, with
+their actual inputs matched separately. The proposition records the
+order of choices needed at the endpoint; it does not replace any of
+those quantitative constructions by compactness. The positive trace
+spectral measure is constructed in Subsection~\ref{sec:trace-spectrum}
+from this same phase and centered tensor.
 
 \begin{lemma}\label{lem:trace-moving-correlation}
 Assume Input~\ref{input:trace-scales}, the radial form
@@ -294,14 +356,18 @@ of $x$ are distinct.
 Multiply by $(\log(r_i^{-1})/B_i)^2$ and use
 \eqref{eq:trace-reference-normalization}. The limiting coefficient is
 \[
- \frac{(4d_2)^2}{(2b_0)^2}\frac{3N}{\pi^4}
-       =\frac{12d_2^2N}{b_0^2\pi^4}
+ \frac{(4d_2)^2}{\kappa^2}\frac{3N}{\pi^4}
+       =\frac{(-\kappa)^2}{\kappa^2}\frac{3N}{\pi^4}
        =\frac{3N}{\pi^4}.
 \]
-All divisions are legitimate since $b_0>0$ and $B_i>0$.
+All divisions are legitimate since $\kappa>0$ and $B_i>0$.
+The common slope cancels before its numerical value is needed; this is
+also the cancellation in \eqref{eq:scribe-slope-cancellation}.
 \end{proof}
 
-\subsection{Removing rounding and subsequences}
+\input{existence/trace-rounded-comparison}
+
+\subsubsection{Removing rounding and subsequences}
 The rounded separation need not equal the intended radius. Pointwise
 convergence at rounded arguments alone does not identify $T(r_i)$.
 The positive spectral representation resolves this: $T$ is real,
@@ -310,12 +376,12 @@ each $p_0\geq0$. Integrability at the smaller positive time permits the
 comparison under the integral.
 
 \begin{theorem}\label{thm:trace-asymptotic}
-Let $\Theta$ be the centered trace of Section~\ref{sec:trace-spectrum},
+Let $\Theta$ be the centered trace of Subsection~\ref{sec:trace-spectrum},
 let $T$ be its two-point function in the selected phase as in
 \eqref{eq:trace-radial}, and let $N=\dim_{\mathbb R}\mathfrak g$. Assume:
 \begin{enumerate}
 \item the reconstruction and stress hypotheses of
- Section~\ref{sec:trace-spectrum}, under which $T$ has the positive
+ Subsection~\ref{sec:trace-spectrum}, under which $T$ has the positive
  Laplace representation \eqref{eq:trace-positive-laplace};
 \item invariance of the selected correlations under Euclidean translations
  and orthogonal transformations, together with the scalar law of
@@ -329,10 +395,10 @@ Then
  \lim_{r\downarrow0}r^8\log^2(r^{-1})T(r)=\frac{3N}{\pi^4}>0.
 \]
 \end{theorem}
-The theorem is conditional: none of its four hypotheses is proved in this
-section, and the paragraph following Input~\ref{input:trace-scales}
-records how that input depends on the two external units and on the
-remaining construction inputs.
+The reconstruction hypotheses and the selected-scale comparison are
+matched to their producers below; the reference normalization has just
+been proved for the actual comparator. The proof of the limiting passage
+uses these statements separately.
 \begin{proof}
 First fix any one comparison subsequence $r_i$. Let
 $c_i=r_i^8\log^2(r_i^{-1})\geq0$. For $1/2<t<2$ take the configuration
@@ -360,8 +426,161 @@ same sequence. The preceding argument makes its weighted values converge
 to $A$, contradicting that inequality. Finally $N>0$ for the nonabelian
 simple Lie algebra under consideration, so $A>0$.
 \end{proof}
-Combining this theorem with Theorem~\ref{thm:profile-exclusion} proves the
-finite-profile exclusion from the same trace comparison input. The rank,
-Ward, approximation and scale-selection estimates identified above still
-need to be supplied by the construction; the algebraic and limiting
-passages do not replace them.
+\subsubsection{The trace requirement on the fixed hierarchy}
+
+\begin{theorem}[The selected hierarchy satisfies the trace requirement]
+\label{thm:trace-selected-endpoint}
+Fix the selected funded family, its ordered limiting hierarchy $S$, and
+its extraction and arch. Let $\chi_*$ be its selected phase, and take
+the reconstruction of this phase from
+Sections~\ref{sec:complex-heat}--\ref{sec:spectral-measure}, retaining
+the hypotheses of those constructions. Use the normalized physical
+stress $T_{ab}$ of Subsection~\ref{sec:physical-angular-actions} on this
+hierarchy, with its proved Ward and symmetry properties. Define in
+the grade-four field space
+\[
+ \tau=\sum_a T_{aa},\qquad
+ \Theta=\tau-\langle\tau\rangle_{\chi_*}\mathbf1,
+ \qquad
+ T(r)=S^{\chi_*}_{\Theta,\Theta}
+       ((\boldsymbol0,-r/2),(\boldsymbol0,r/2)).
+\]
+Then the vacuum one-point functional of the reconstructed field
+$\phi(\Theta,f)$ vanishes for every Schwartz test $f$, and
+\[
+ \lim_{r\downarrow0}r^8\log^2(r^{-1})T(r)
+             =\frac{3\dim_{\mathbb R}\mathfrak g}{\pi^4}>0.
+\]
+Moreover $T$ is not equal on any interval $(0,\delta)$ to a finite
+complex linear combination of finite products of the mode profiles
+\eqref{eq:profile-mode}, including empty products. Thus these objects
+satisfy the trace requirement \eqref{ex-trace-limit} and its profile
+exclusion on this very hierarchy. No further choice of hierarchy,
+phase, stress normalization or extraction is needed for the trace
+assertion.
+\end{theorem}
+\begin{proof}
+The physical stress is real, symmetric and covariant under orthogonal
+transformations on the selected label space. By the centered-trace
+application in Subsection~\ref{sec:trace-spectrum}, the displayed $\Theta$
+is a self-adjoint Euclidean and Lorentz scalar with zero vacuum
+one-point functional. That construction also gives
+$T(r)=\int e^{-rp_0}\,d\mu_\Theta(p)$ with a positive measure supported
+on $p_0\ge0$. It uses the point vectors, continued correlations and
+field operators of this same phase reconstruction. Consequently this
+$T$ is real, nonnegative and decreasing. Its argument is the separation
+$r$ of the two time-axis points, not the heat height $r/2$.
+
+The mixed-state centering in the scribe introduces no different
+physical field. If
+\[
+ R=\operatorname{reCenter}_S(T),
+\]
+then
+\[
+ \Theta=\operatorname{tr}R-
+                  \langle\operatorname{tr}R\rangle_{\chi_*}\mathbf1.
+\]
+Indeed both centerings subtract constant multiples of the same unit,
+and the constants cancel in the displayed identity. The phase mean
+is fixed before any radius sequence is chosen. Unit preservation of
+the charts and $q_ir_i^4\to0$ remove this fixed scalar after scaled
+pullback, as in \eqref{eq:trace-moving-label}. The coefficient of
+$\mathcal O$ remains $-\kappa$, fixed by the nonzero shell test for the
+Ward-normalized $R$; no rescaling of $\Theta$ is made here.
+
+Apply Proposition~\ref{prop:trace-scale-supplier} with this family,
+extraction, phase and stress. The optical, sensor, branch, shell and
+rounded comparison data it uses are on the same charts. In its rounded
+notation $k_i$ is the frame level $j_i$ of the scribe; the scribe's
+$k_i=\operatorname{summit}(j_i)$ is the different level at which
+$B_i=q_i=\zeta(k_i)$ is evaluated. These notational roles do not change
+$U_i$ or $r_i$. For every positive null sequence the supplier selects
+strictly increasing indices with exact radii $r_i=s_{n_i}$, while the
+hierarchy, filter and phase remain fixed. The supremum over finite
+basis pairs is taken on those charts, rather than by selecting another
+subsequence for a basis pair or a branch.
+
+Thus all four hypotheses of Theorem~\ref{thm:trace-asymptotic} have
+been matched: the positive Laplace representation above; Euclidean
+covariance and the scalar law of $\Theta$; the reference normalization
+\eqref{eq:trace-reference-normalization} for the actual comparison
+table; and the same-history scale supplier. That theorem removes
+rounding by monotonicity and then removes the subsequence. Its result
+is the displayed limit at all positive radii tending to zero. The
+constant is positive because the nonabelian simple Lie algebra has
+positive real dimension. Real convergence here also gives the same
+limit after the usual inclusion into $\mathbb C$.
+
+Finally the mode in \eqref{eq:profile-mode} has mass $m\ge0$, natural
+orders $j,k$, and a continuous real numerator homogeneous of degree
+$j$ under positive scaling. It uses Lebesgue momentum measure and
+factor $1/(2\sqrt{m^2+|p|^2})$, exactly the mode normalization in the
+trace requirement. Finite products are the tracks of
+Subsection~\ref{sec:trace-profiles}; a zero-factor product is one and a
+zero-term linear combination is zero. Theorem~\ref{thm:profile-exclusion}
+applies with the just-proved strictly positive coefficient and rules
+out eventual equality with every such finite complex combination.
+This is equality on a punctured positive neighborhood of zero, which
+is exactly equality on some $(0,\delta)$. It proves the last claim
+without selecting another trace field.
+\end{proof}
+
+% Issue #406 (parent #56, C15): the dilation current at short separation.
+% General form: thm:trace-asymptotic plus the two displayed assumptions.
+\begin{remark}[The dilation current at short separation]
+\label{rem:trace-dilation-current}
+Let $T_{ab}$, $\tau$ and $\Theta=\tau-c\mathbf1$ be as in
+Subsection~\ref{sec:trace-spectrum}, let $T$ be the two-point function of
+\eqref{eq:trace-radial}, and let $V$ be a continuously
+differentiable vector field on $\mathbb R^4$ with
+$\partial_aV_b+\partial_bV_a=2\varphi\delta_{ab}$ for a real function
+$\varphi$. Assume in addition, in the selected phase and for
+$x_0\neq x_1$, that $x_0\mapsto S_\chi(T_{ab},\Theta;x_0,x_1)$ is
+continuously differentiable with
+$\sum_a\partial_{(x_0)_a}S_\chi(T_{ab},\Theta;x_0,x_1)=0$ for each $b$
+(the stress is conserved at separated points), and that
+$S_\chi(\mathbf1,\Theta;x_0,x_1)=\langle\Theta\rangle_\chi$, as used in
+Remark~\ref{rem:ex-selection-ground-only}. Subsection~\ref{sec:trace-spectrum}
+does not assume the first; for the normalized stress of
+Subsection~\ref{sec:physical-angular-actions} it follows, under their
+hypotheses, from Propositions~\ref{prop:phase-ward-inheritance} (vary the
+cutoff away from $x_1$) and~\ref{ex-phase-caps}. Put
+$j_a(x_0)=\sum_bV_b(x_0)S_\chi(T_{ab},\Theta;x_0,x_1)$, the current
+$\sum_bT_{ab}V_b$ at $x_0$ against the centered trace at $x_1$. Then
+\[
+ \sum_a\partial_{(x_0)_a}j_a(x_0)=\varphi(x_0)S_\chi(\tau,\Theta;x_0,x_1)
+       =\varphi(x_0)T(|x_0-x_1|)\quad(x_0\neq x_1).
+\]
+Indeed, the product rule gives two sums. The one containing the
+derivatives of $S_\chi(T_{ab},\Theta;x_0,x_1)$ vanishes by
+conservation. The other is
+$\sum_{a,b}\partial_aV_b\,S_\chi(T_{ab},\Theta;x_0,x_1)$; since
+$T_{ab}=T_{ba}$, $\partial_aV_b$ may be replaced by
+$\frac12(\partial_aV_b+\partial_bV_a)=\varphi\delta_{ab}$, and
+bilinearity leaves $\varphi S_\chi(\tau,\Theta;x_0,x_1)$. Finally
+$\tau=\Theta+c\mathbf1$, so bilinearity, the second assumption and
+$\langle\Theta\rangle_\chi=0$ give
+$S_\chi(\tau,\Theta;x_0,x_1)=S_\chi(\Theta,\Theta;x_0,x_1)$, which is
+$T(|x_0-x_1|)$ by \eqref{eq:trace-radial}.
+
+For the dilation field $V(z)=z$ one has $\varphi=1$, so for a pair at
+distance $r$ the divergence of $j$ is $T(r)$. Under the hypotheses of
+Theorem~\ref{thm:trace-asymptotic}, its conclusion
+$r^8\log^2(r^{-1})T(r)\to3N/\pi^4>0$ as $r\downarrow0$, the limit required in
+\eqref{ex-trace-limit}, gives $r_0>0$ with $T(r)>0$ for $0<r<r_0$.
+Thus the divergence of $j$ is positive whenever
+$0<|x_0-x_1|<r_0$: against the centered trace, the dilation current is
+not divergence free at short separation. In fact $T(r)>0$ for every
+$r>0$: in \eqref{eq:trace-positive-laplace} the measure is positive, and
+nonzero since the limit is positive. Like the theorem, this
+conclusion for a general tensor retains the four hypotheses of
+Theorem~\ref{thm:trace-asymptotic} and the two assumptions above.
+For the canonical selected stress, the trace hypotheses are matched
+in Theorem~\ref{thm:trace-selected-endpoint}; the additional
+conservation and unit identities are supplied by the Ward and phase
+statements cited at the start of this remark. In the free Maxwell setting of
+Subsection~\ref{sec:free-maxwell-radial-flux} the polarized stress of two
+closed two-forms $f,g$ has zero trace, and its dilation current is
+divergence free wherever $f$ and $g$ are Maxwell waves.
+\end{remark}

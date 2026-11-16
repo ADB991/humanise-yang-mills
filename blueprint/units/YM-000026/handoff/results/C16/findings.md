@@ -90,3 +90,7 @@ individual markers before grouping, states the full-fiber rule, and gives the
 two-slot exponential calculation. The zero-mark background identity remains
 unchanged. This repairs an ambiguity with mathematical consequences, not just
 notation. C05 independently owns the regrouping proof.
+
+## Revision 1 (session ADB991-claude-20261113-33ce): answers to review PR #97 and the G01 handoff
+
+See `revision-1.md` for the item-by-item table. R4: G01 P2 is now adopted in `statement.tex` (compactness, no connectedness, no irreducibility, normalization by r_G, checked against `lattice.tex` 35); P6's remaining sentences are adopted; P7 is adopted as one sentence pointing to `ex-conditional-existence`; P5's withdrawn sentence stays out. G01 Finding 1 is added as `rem:ex-target-adequacy`; G01 M3 (group transfer) is not mentioned in the manuscript, so its hypotheses are not needed there.

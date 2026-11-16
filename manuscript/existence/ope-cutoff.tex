@@ -1,6 +1,6 @@
-\section{Capturing a cluster and paying for a cutoff match}
+\subsection{Capturing a cluster and paying for a cutoff match}
 \label{sec:ope-cutoff}
-The local match used in Section~\ref{sec:ope-grid} is constructed before
+The local match used in Subsection~\ref{sec:ope-grid} is constructed before
 any continuum limit. One follows a product of local observables down
 through the scales, merging groups whenever their parent sites cease
 to be separated. The bookkeeping must be independent of the number of
@@ -8,7 +8,7 @@ replicated cells. Otherwise it would be unusable in the centered root
 estimate. We give the geometric selection and the scale accounting
 explicitly, and state where the remaining local RG estimates enter.
 
-\subsection{Regrouping without a growing arity cost}
+\subsubsection{Regrouping without a growing arity cost}
 Let a cluster have $h\geq1$ marked sites and distinguish one of its
 marks. At a given scale, call sites separated if their periodic
 maximum-coordinate distance is at least $B^2$, where $B\geq1$ is the
@@ -60,7 +60,7 @@ new weights can be taken to be
 \end{equation}
 Here $\nu$ is the purchased support exponent and $\delta>0$ the local
 smallness parameter. The connecting-cover bound $\ell$ is the quantity
-written $k$ in Section~\ref{sec:ope-grouping}, where $\ell$ denotes
+written $k$ in Subsection~\ref{sec:ope-grouping}, where $\ell$ denotes
 instead the site occupancy. Each factor $\lambda W_r$ is the new weight
 $\delta^2W_re^{-(\nu+1/2)k}/h$ of the single old mark $r$, and their
 product over $r\in A$ is the numerator computed at the end of that
@@ -130,7 +130,7 @@ above, is still an analytic input. The preceding argument proves the
 precise scale cost it must be given; no factor depends on the number
 of copies.
 
-\subsection{A single subpower allowance for all intermediate levels}
+\subsubsection{A single subpower allowance for all intermediate levels}
 The halo estimate ensures that each grouping factor has zero
 logarithmic rate. Explicitly the purchased bound is
 $(\nu_{i+1}+1)\ell_i\leq16\sqrt{\widehat\beta_i}$,
@@ -139,17 +139,17 @@ $\log\delta_{i+1}=o(s_i)$. Taking logarithms of
 \eqref{eq:ope-group-weight} therefore gives
 $\log\lambda_i=o(s_i)$ for fixed $h$. These are schedule and
 running-coupling estimates; their production is a separate input.
-The cover inequality is the form in which condition~(O1) of
-Section~\ref{sec:ope-scale-purchases} is used: by
+The cover inequality is the form in which condition~\eqref{eq:ope-scale-purchases-display-O1} of
+Subsection~\ref{sec:ope-scale-purchases} is used: by
 \eqref{eq:ope-pair-halo}, with parent and child radii
 $\lceil(\log x)^2\rceil$ and $\lceil(\log y)^2\rceil$ for the
 hatted couplings $x,y$ of the transition, the connecting cover is at
-most $16H_L(x,y)$, and (O1) with $A=101=\nu+1$ gives
+most $16H_L(x,y)$, and \eqref{eq:ope-scale-purchases-display-O1} with $A=101=\nu+1$ gives
 $(\nu+1)\ell_i\le16\sqrt{x}$. At the transition from level $i$ the
 hatted couplings are $x=\widehat\beta_i$ and $y=\widehat\beta_{i+1}$,
-as displayed in Section~\ref{sec:ope-scale-purchases}.
+as displayed in Subsection~\ref{sec:ope-scale-purchases}.
 Since $\widehat\beta_i$ is an affine function of $s_i$ on the selected
-scale sequence (Section~\ref{sec:common-scale-selection}),
+scale sequence (Subsection~\ref{sec:common-scale-selection}),
 $\sqrt{\widehat\beta_i}/s_i\to0$.
 
 This pointwise-in-scale fact also gives a uniform allowance for all
@@ -164,7 +164,7 @@ $e^{-\epsilon s_j}\leq\alpha_j\leq1$. Apply this to the grouping
 factors. Arbitrarily many intermediate scales thus require only one
 subpower allowance for the fixed cluster arity.
 
-\subsection{The two output prices}
+\subsubsection{The two output prices}
 Take sequences of levels $k,m,j$ of logarithmic rates $b,a,c$ relative
 to $t_n\to\infty$, with $0<b<a<c$. Here $k$ sets the centered test
 scale, $m$ the matching scale, and $j$ the insertion grid. All level
@@ -187,14 +187,20 @@ Set
 \end{equation}
 Equations \eqref{eq:ope-terminal-coefficient} and
 \eqref{eq:ope-terminal-price} give rate $\tau-qa$ for both $E,V$.
-The final comparison of the local coefficient with the normalized
-reference fields has the following quantitative form. Provided its
+Let $K(k)\ge k$ be the chosen opened level, with $K(k)\le m$,
+and put $k^\circ=K(k)$ and $u=a_k/a_{k^\circ}$. The opening condition
+is $B_{k^\circ}^2\le a_k/a_{k^\circ}$, with $B_{k^\circ}$ the purchased
+covering radius, as in Subsection~\ref{sec:reference-match}. The opening
+is a separate requirement from the room condition. The fact that $k^\circ$
+has logarithmic rate $b$ is checked below. The final comparison of
+the local coefficient with the normalized reference fields has the following
+quantitative form. Provided its
 positive matching allowance $z$ satisfies
 \begin{align}
- \mathcal M(z;k,m)&\leq\delta_m X/(16\mathcal B_m),
+ \mathcal M(z;k^\circ,m)&\leq\delta_m X/(16\mathcal B_m),
        \label{eq:ope-match-pay-one}\\
- 32(1+\zeta_m)z\,a_k^{-q}
-       E/G(m,k)&\leq\vartheta_q(k)/2,
+ 32(1+\zeta_m)z\,a_{k^\circ}^{-q}
+       E/G(m,k^\circ)&\leq\vartheta_q(k^\circ)/2,
        \label{eq:ope-match-pay-two}
 \end{align}
 it produces a reference label $Q_{N,p}$ with quota at most $V$ and
@@ -202,25 +208,23 @@ centered discrepancy price at most
 \begin{equation}\label{eq:ope-cutoff-discrepancy}
  A=2\mathcal S(k)/z.
 \end{equation}
-Here $G(m,k)=\exp((s_m-s_k)/8)$, $\vartheta_q$ is positive with
-zero logarithmic rate, and $\mathcal M$ is the allowance transported
-from the centered scale to $m$. Its bound is
+For levels $\ell\le m$ write $G(m,\ell)=\exp((s_m-s_\ell)/8)$.
+The allowance $\vartheta_q$ is positive with zero logarithmic rate, and
+$\mathcal M$ is transported from the opened level $k^\circ$ to $m$.
+Its bound is
 \[
- \mathcal M(z;k,m)\leq
- z(a_m/a_k)^{q+1}\frac{\vartheta_q(m)}{\vartheta_q(k)}.
+ \mathcal M(z;k^\circ,m)\leq
+ z(a_m/a_{k^\circ})^{q+1}\frac{\vartheta_q(m)}{\vartheta_q(k^\circ)}.
 \]
-If the centered scale has first been opened to a finer admissible
-level, use that opened level in these formulas. The opening retains
-rate $b$, as checked below. Precisely, $\mathcal M(z;k,m)$ is the
-mark weight at scale $m$ obtained from the opening weight $z$ at $k$
+The opening retains rate $b$, as checked below. Precisely,
+$\mathcal M(z;k^\circ,m)$ is the mark weight at scale $m$ obtained
+from the opening weight $z$ at $k^\circ$
 by the scheduled one-step reduction factors (the evolution
-$b_{i+1}=\eta_ib_i$ of Section~\ref{sec:reference-cone}); the displayed
+$b_{i+1}=\eta_ib_i$ of Subsection~\ref{sec:reference-cone}); the displayed
 bound for it is a property of that schedule.
 
 The comparison producing \eqref{eq:ope-cutoff-discrepancy} is the
-matched construction of Section~\ref{sec:reference-match}. That section,
-like Sections~\ref{sec:reference-cone} and~\ref{sec:reference-difference},
-uses three depths: a centered depth $J$ (the replicated cells and the
+matched construction of Subsection~\ref{sec:reference-match}. That section uses three depths: a centered depth $J$ (the replicated cells and the
 root test), an opening depth $m$ (start of the weight evolution) and a
 matching depth $k$. Here they are, respectively, the centered level $k$,
 its opened level $K(k)$, and $m$. The centered and opened levels are
@@ -228,15 +232,15 @@ different in general: equal logarithmic rates do not identify them.
 The quantities correspond as follows.
 \begin{center}
 \begin{tabular}{ll}
-Section~\ref{sec:reference-match} & this section\\ \hline
+Subsection~\ref{sec:reference-match} & this section\\ \hline
 centered $J$, opening $m$, matching $k$ & $k$, $K(k)$, $m$\\
 degree $d$ & $q$\\
 coefficient field $Q$ with bound $c$ & terminal projection, $c=2P$\\
 column allowance $C_k$ & $\zeta_m$\\
 $E\geq4(1+C_k)c$ & $E=4(1+\zeta_m)(2P)$\\
 opening weight $w$ & $z$\\
-gain $G=e^{(s_k-s_m)/8}$ & $G(m,k)$\\
-single-source allowance $\theta_m$ & $\vartheta_q(k)$\\
+gain $G=e^{(s_k-s_m)/8}$ & $G(m,k^\circ)$\\
+single-source allowance $\theta_m$ & $\vartheta_q(k^\circ)$\\
 cell price $S_0=\exp((a_J/a_m)^4t_m+5)$ & $\mathcal S(k)=\exp(u^4t_{K(k)}+5)$\\
 bare label $b$ & $b$\\
 quota $\mu(I_kb)\le2E$; price $2S_0/w$ & quota of $Q_{N,p}$ at $m$ $\le V$; $A$
@@ -251,21 +255,21 @@ cutoff, the compactness argument below is applied to the labels
 $Q_{N,p}$, not to $b$. Under this dictionary
 \eqref{eq:reference-match-afford} is literally
 \eqref{eq:ope-match-pay-two}. The coefficient field is the terminal
-projection of Section~\ref{sec:ope-local-projection} with grouped weight
+projection of Subsection~\ref{sec:ope-local-projection} with grouped weight
 $X$ and projection allowance $\mathcal B_m$. Its coefficient-size and
 remainder are each at most $a_{m+1}^q\,4\mathcal B_m/X=P$, by
 \eqref{eq:ope-terminal-projection-price}, so $c=2P$. Condition
 \eqref{eq:ope-match-pay-one} says that the weight transported to the
 matching scale does not exceed the outgoing weight $\delta_mI_v$
 permitted there after that projection, where $I_v=X/(16\mathcal B_m)$.
-The two conclusions of Section~\ref{sec:reference-match}, the quota
+The two conclusions of Subsection~\ref{sec:reference-match}, the quota
 bound $\mu(I_kb)\le2E$ and the centered root bound $2S_0/w$ for the
 difference, are then the quota bound $V=2E$ and the price
 \eqref{eq:ope-cutoff-discrepancy}. This comparison is conditional on
 the analytic hypotheses listed at the start of
-Section~\ref{sec:reference-match}: the signed transitions of
-Section~\ref{sec:reference-difference}, the one-scale marked transport
-of Section~\ref{sec:local-transfer}, the complete-moment estimate, cell
+Subsection~\ref{sec:reference-match}: the signed transitions of
+Subsection~\ref{sec:reference-difference}, the one-scale marked transport
+of Subsection~\ref{sec:local-transfer}, the complete-moment estimate, cell
 separation and chamber locality, and the terminal reference
 identification, all on the same history. Those hypotheses remain inputs
 here; the displayed inequalities are exactly the budget they need.
@@ -290,24 +294,24 @@ Since $\mathcal S$ has upper rate zero, \eqref{eq:ope-cutoff-discrepancy}
 has upper rate $\tau-(q+1/16)(a-b)$, as required in
 Input~\ref{input:ope-match}.
 
-Here is the opening check. Write $K(k)\geq k$ for the opened level,
-$u=a_k/a_{K(k)}\geq1$, and $B_{K(k)}\geq1$ for its positive vacuum
-budget. The schedule ensures, for every $\epsilon>0$,
+Here is the opening check. The ratio $u=a_k/a_{K(k)}$ is at least one. Write
+$V^{\rm vac}_{K(k)}\geq1$ for the positive vacuum budget at the opened
+level, distinct from its covering radius $B_{K(k)}$. The schedule ensures, for every $\epsilon>0$,
 \[
- u^4 B_{K(k)}\leq\epsilon s_{K(k)}\quad\hbox{eventually in }k.
+ u^4 V^{\rm vac}_{K(k)}\leq\epsilon s_{K(k)}\quad\hbox{eventually in }k.
 \]
-Since $s_{K(k)}-s_k=\log u\leq u\leq u^4B_{K(k)}$,
+Since $s_{K(k)}-s_k=\log u\leq u\leq u^4V^{\rm vac}_{K(k)}$,
 we have $s_k/s_{K(k)}\to1$. Opening a sequence of rate $b$
 therefore retains that rate. The actual centered factor is
 \[
  \mathcal S(k)=\exp\bigl(u^4 t_{K(k)}+5\bigr),
 \]
-where $t_{K(k)}\leq B_{K(k)}$ eventually. Its logarithm divided
+where $t_{K(k)}\leq V^{\rm vac}_{K(k)}$ eventually. Its logarithm divided
 by $t_n$ is at most $\epsilon s_{K(k)}/t_n+5/t_n$.
 Taking the upper limit and then $\epsilon\downarrow0$ proves its
 upper rate zero.
 
-\subsection{Keeping the match in the continuum limit}
+\subsubsection{Keeping the match in the continuum limit}
 For fixed intermediate levels and a fixed cluster on the $j$-grid,
 require
 \[
@@ -344,13 +348,13 @@ elsewhere. Their quotas are bounded by the same $V$. Equation
 constant depending on the fixed matching level, so finite-dimensional
 compactness gives a convergent family on a finer nontrivial filter.
 Every eventual discrepancy and quota bound persists on that same
-filter. Section~\ref{sec:ope-phase-prices} converts the discrepancy
-bound to all character phases, and Section~\ref{sec:ope-filtration}
+filter. Subsection~\ref{sec:ope-phase-prices} converts the discrepancy
+bound to all character phases, and Subsection~\ref{sec:ope-filtration}
 gives the physical low-degree distances and the whole-label bound.
 These are all statements about the same limiting label $Q$.
 
 Finally the geometric requirements hold for the grid clusters of
-Section~\ref{sec:ope-grid}. If their scale is $x$ with $a<x<c$,
+Subsection~\ref{sec:ope-grid}. If their scale is $x$ with $a<x<c$,
 their radius has rate $-x<-a$, so they fit strictly inside the
 $m+1$ block. Their pairwise separation is eventually larger than
 $e^{-(x+\epsilon)t_n}$, while $a_jB_j^2$ has rate $-c$ because
@@ -362,9 +366,9 @@ the centered scale $a_k$. This completes the accounting and extraction
 of the local matching input, conditional on the explicit analytic
 representation and comparison estimates above.
 
-\subsection{Assembly of the local matching input}
+\subsubsection{Assembly of the local matching input}
 We now record precisely how the three preceding constructions combine
-into Input~\ref{input:ope-match} of Section~\ref{sec:ope-grid}. The
+into Input~\ref{input:ope-match} of Subsection~\ref{sec:ope-grid}. The
 point is that one label $Q_n$ carries all the required bounds; no
 separate choice is made for a phase, a spectator list or a low degree.
 The letter $m$ denotes the matching level throughout this section, so we
@@ -375,15 +379,15 @@ Assume, on one selected history and one ordered cutoff filter, the
 analytic inputs used above: the marked descent and regrouping estimates
 with the weight rule \eqref{eq:ope-group-weight} and the support
 propagation bound; the terminal local projection of
-Section~\ref{sec:ope-local-projection}; the comparison hypotheses of
-Section~\ref{sec:reference-match}; the schedule properties used in
+Subsection~\ref{sec:ope-local-projection}; the comparison hypotheses of
+Subsection~\ref{sec:reference-match}; the schedule properties used in
 this section; the centered estimates and separated-cluster limit used in
-Section~\ref{sec:ope-phase-prices}, together with the unreflected
+Subsection~\ref{sec:ope-phase-prices}, together with the unreflected
 conjugation identity \eqref{eq:episode-conjugate} and the continuity of
 the correlations in every character phase
 (Proposition~\ref{ex-phase-caps}) used there; and the one-step triangular,
 calibrated column and local comparison and projection inputs of
-Section~\ref{sec:ope-filtration}. Then Input~\ref{input:ope-match} holds.
+Subsection~\ref{sec:ope-filtration}. Then Input~\ref{input:ope-match} holds.
 In it the cluster arity is $|I|=h$, the mesh rate $d$ of the input is
 the rate $c$ of the insertion grid here, and its rates $a,b$ are those
 of the matching and centered levels. Thus $\tau(p;a,d)$ there equals
@@ -395,7 +399,7 @@ Fix $0<b<a<x<d$, a nonempty label list $p$ of arity $h$, an integer
 $q\ge0$, and a coordinate-generic sequence $X_n$ at scale $x$ on meshes
 $a_{j_n}$ with $s_{j_n}/t_n\to d$. Choose levels $k_n,m_n$ with
 $s_{k_n}/t_n\to b$ and $s_{m_n}/t_n\to a$; they exist by the
-level-selection argument at the start of Section~\ref{sec:ope-grid}.
+level-selection argument at the start of Subsection~\ref{sec:ope-grid}.
 Put $c=d$. The preceding subsection shows that the geometric
 requirements hold for $X_n$ eventually, since $a<x<c$.
 
@@ -407,7 +411,7 @@ Extract, as in the preceding subsection, a limit $Q_n$ on a finer
 nontrivial filter. Each of the following assertions concerns this one
 limit.
 
-First, the final paragraph of Section~\ref{sec:ope-phase-prices},
+First, the final paragraph of Subsection~\ref{sec:ope-phase-prices},
 applied with centered level $k_n$ of rate $b>0$ and
 $\gamma=\tau-(q+\tfrac1{16})(a-b)$, bounds the complete discrepancy
 between the cluster product and $Q_n$ at the origin. The bound has
@@ -420,11 +424,11 @@ Second, apply \eqref{eq:ope-whole-distance} at the matching level
 $m_n$, with degree $q$. The quota of $Q_{N,p}$ at that level is at most
 $V_n$ eventually, and the bound passes to the limit label. Hence
 $\|Q_n\|\le J_nV_n$ with $J_n=J_{m_n}(a_U/a_{m_n})^q$. The last
-paragraph of Section~\ref{sec:ope-filtration} gives $J_n$ upper rate
+paragraph of Subsection~\ref{sec:ope-filtration} gives $J_n$ upper rate
 $qa$, because $J_{m_n}$ has rate zero and $s_U$ is fixed. This is
 \eqref{eq:ope-match-norm}.
 
-Third, fix $0\le e<q$. Section~\ref{sec:ope-filtration}, applied with
+Third, fix $0\le e<q$. Subsection~\ref{sec:ope-filtration}, applied with
 $d=q$, this $e$ and $k=m_n$, gives a label $y$ with $[y]\in E_e$ and
 $\|Q_n-y\|\le F_{m_n,q,e}V_n$, by \eqref{eq:ope-physical-distance}.
 Only $y$ requires a further extraction; $Q_n$ is unchanged. Its factor
@@ -438,7 +442,7 @@ and $V_n$ are those required. Hence Input~\ref{input:ope-match} holds.
 
 The proposition does not prove the analytic inputs it lists. In
 particular it does not supply the comparison hypotheses of
-Section~\ref{sec:reference-match} or the local comparison and
-projection inputs of Section~\ref{sec:ope-filtration}. It records that
+Subsection~\ref{sec:reference-match} or the local comparison and
+projection inputs of Subsection~\ref{sec:ope-filtration}. It records that
 no further argument, and no further choice of label, is needed to
 combine them.

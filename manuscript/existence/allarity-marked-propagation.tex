@@ -1,4 +1,4 @@
-\section{Realigning and propagating the marked comparison}
+\subsection{Realigning and propagating the marked comparison}
 \label{sec:allarity-marked-propagation}
 
 The finite polynomial comparison must survive each block integration.
@@ -8,22 +8,22 @@ We explain how its leading pieces are reassigned to the prescribed
 supports and how the resulting errors accumulate. The identities use
 the actual representation at that level.
 
-\subsection{Why a connected principal component stays in one cell}
+\subsubsection{Why a connected principal component stays in one cell}
 
 Let $\rho\ge0$ be an elementary slice radius. Each elementary principal
 piece has a nonempty set of marked reader sites; each such reader belongs
 to its full support, and the full support is within distance $\rho$ of
 every one of those readers. Assume distinct
-replica cells have reader separation strictly greater than $dB$, and
+replica cells have reader separation strictly greater than $2\rho$, and
 \[
-                  (3+2n)\rho\le dB\le bB.
+                  (3+2n)\rho\le dB.
 \]
 Consider a connected component in the graph joining elementary pieces
 whose full supports intersect. Two marked readers on the same piece
 are at distance at most $\rho$, since a reader lies in that piece's
 support. Readers on two adjacent pieces have distance at most
 $2\rho$, by using a point in the intersection. Both bounds are at most
-$dB$, so the readers belong to the same replica cell. Following a
+$2\rho$, so the readers belong to the same replica cell. Following a
 path of intersecting pieces shows that all marked readers of the
 component belong to one cell.
 
@@ -40,17 +40,16 @@ reader of the component. Its marker diameter is also at most $dB$.
 This proves the required enlarged-support bounds independently of
 how many elementary pieces the component contains.
 
-For the selected construction take the integer slice radius supplied
-by the local expansion, bounded by
-$aB/(3+2n)$, where $a$ is the chosen horizon. The purchase
-$6n+3\le a/(3+2n)$ is the separate local room condition needed to
-produce these elementary slices. Once they are available, the
-argument above uses $(3+2n)\rho\le aB$ and the strict separation
-of the replica cells. Subsequent regrouping of pure principal
+For the selected construction the elementary slice radius is $\rho=3B$.
+The purchase $6n+3\le a/(3+2n)$ gives the final distance bound
+$(2n+1)\rho=(6n+3)B\le aB/(3+2n)$; it does not construct
+the slices. In particular it supplies the bound $aB$ required for
+the enlarged full supports in the regrouping below. The selected
+replica separation is stronger than $2\rho$. Subsequent regrouping of pure principal
 components preserves their full supports and marker unions, so the
 same argument applies to the principal connected logarithm.
 
-\subsection{Marker prices and spatial prices}
+\subsubsection{Marker prices and spatial prices}
 
 Fix $n\ge1$ marks in each replica cell. Every principal piece has a
 nonempty marker subset $I\subseteq\{1,\ldots,n\}$ and a prescribed
@@ -65,8 +64,16 @@ supports, including the masks. Let
  \operatorname{chg}_e(X_{c,I})\le R_e,
 \]
 where $e\ge0$ is the support exponent, $B$ the current radius and
-$\operatorname{cov}_B$ its covering number. Use the constant marker
-weight $0<r\le1$. The weight of a mode $I$ is $r^{|I|}\le1$.
+$\operatorname{cov}_B$ its covering number. Use one constant marker
+weight $\omega>0$ at every mark, of every cell, replica and period.
+The weight of a mode $I$ is $\omega^{|I|}$. We do not assume
+$\omega\le1$; in the application below $\omega\ge1$. Since
+$I\subseteq\{1,\ldots,n\}$, every mode satisfies
+\begin{equation}\label{eq:allarity-mode-weight}
+ \omega^{|I|}\le\bar\omega_n,\qquad
+ \bar\omega_n=\max(1,\omega)^n .
+\end{equation}
+For $\omega\le1$ this is the bound $\omega^{|I|}\le1$.
 
 If each prescribed piece has weighted coefficient price at most $Z$,
 its total incidence price at a fixed mark $(c,j)$ is at most $2^nZ$.
@@ -90,7 +97,8 @@ mark in that cell. It follows that
 This is why the spatial charge is proportional to $n$, while the
 number of principal subset types is bounded by $2^n$.
 
-\subsection{Replacing the leading pieces on their prescribed supports}
+\subsubsection{Replacing the leading pieces on their prescribed supports}
+\label{subsec:allarity-realign}
 
 Write the current regular source as a sum of remainder pieces $H_a$
 and leading pieces $S_b$. Let $F_{c,I}$ be the desired principal source
@@ -104,10 +112,13 @@ Assume $|L_{c,I}(U)|\le y$ there. Attach the full support $X_{c,I}$
 to $L_{c,I}$ and apply its healthy mask. The incidence price of these
 new regular remainders is at most
 \begin{equation}\label{eq:allarity-realign-regular}
-                         2^n R_e y.
+                         2^n \bar\omega_n R_e y.
 \end{equation}
-Indeed each individual weighted price is at most $R_e y$, because
-$r^{|I|}\le1$, and the preceding subset count applies.
+Indeed the new piece at mode $(c,I)$ has value at most $y$ on its
+healthy region, support charge at most $R_e$ and marker weight
+$\omega^{|I|}$, so its weighted price is at most
+$\omega^{|I|}R_ey\le\bar\omega_nR_ey$ by
+\eqref{eq:allarity-mode-weight}. The preceding subset count applies.
 
 The mask change also has a forced part. A leading piece may be healthy
 on its smaller support while its prescribed larger support is not
@@ -119,7 +130,7 @@ The identity is an identity of functions on every field: on the larger
 healthy region it is the defining equality for $L_{c,I}$; on its
 complement the difference has just been assigned to the forced part.
 Apply the exact regular/forced regrouping of
-Section~\ref{sec:soft-log-fusion} to the enlarged supports. No division
+Subsection~\ref{sec:soft-log-fusion} to the enlarged supports. No division
 by an activity value is involved.
 
 Here is its quantitative form. Suppose the previous forced spatial
@@ -133,19 +144,51 @@ then the regrouped forced price is at most
 \begin{equation}\label{eq:allarity-realign-forced-output}
                            e^{-g}(e^\delta-1).
 \end{equation}
-To apply the canonical regrouping estimate, the old forced pieces
-contribute $e^g s$ and the newly moved pieces contribute at most
-$n Z R_{e+1}$ by \eqref{eq:allarity-spatial-incidence}. These are the
-two terms of its local inflation budget. Its support-counting factor
-is exactly $(2B+1)^4$, so \eqref{eq:allarity-realign-forced-input}
-is its smallness condition. Its exponential product bound gives
-\eqref{eq:allarity-realign-forced-output}. The same regrouping bijection
-preserves the archived background coefficient at each address.
-Thus a regular remainder price $z$ becomes at most
-$z+2^nR_e y$, while the forced price changes as displayed, and the
-polynomial density is unchanged.
+Here is the proof for the marker-valued factors. Work in the
+commutative algebra generated by the marker variables $z_j$ with
+$z_j^2=0$. For $I$ a subset of markers write $z_I=\prod_{j\in I}z_j$.
+The norm $\|\sum_I a_I z_I\|_\omega=\sum_I |a_I|\omega^{|I|}$ is
+submultiplicative for every $\omega>0$: a pair of monomials with
+overlapping marker sets multiplies to zero, and otherwise, for
+disjoint $I,J$, the weight $\omega^{|I\cup J|}=\omega^{|I|}\omega^{|J|}$
+is the product of their weights. No bound $\omega\le1$ is used. Every moved piece is a single $\ell_j=z_{I_j}h_j$ with
+$I_j\ne\varnothing$. Thus $\ell_j^2=0$ and $\exp(\ell_j)=1+\ell_j$.
+The mask difference defining $h_j$ vanishes whenever the enlarged
+support is healthy, so a nonzero moved factor has a flag in its full
+support.
 
-\subsection{The recurrence along the comparison interval}
+Expand the exponential of the sum of the moved pieces as the product
+of the factors $1+\ell_j$ and multiply by the old forced gas. In a
+nonzero summand each moved factor meets an old forced support: its flag
+is covered by the old forced inventories. Taking connected components
+of the full-support intersection graph and flattening them back
+therefore gives the bijection of
+Subsection~\ref{sec:soft-log-fusion}. This argument preserves the
+inventory and the product in the marker algebra. Overlapping marker
+sets contribute zero on both sides. The expansion is justified by
+absolute convergence in the weighted norm, since the constituent
+prices are summable on the finite spatial lattice.
+
+Assign inflated weights $e^g p_i$ to old forced pieces of price $p_i$
+and unchanged weights to the moved pieces. At exponent $e+1$ the
+site sum is at most $\Gamma=e^g s+nZR_{e+1}$ by
+\eqref{eq:allarity-spatial-incidence}. Every surviving connected
+component contains an old forced piece, so its product norm is
+bounded by $e^{-g}$ times the product of the inflated weights.
+The distinct connected-set bound \eqref{eq:ope-forest-price},
+with reserve one and counting factor $(2B+1)^4$, bounds the new
+site price at exponent $e$ by $e^{-g}(e^\Gamma-1)$.
+Since $\Gamma\le\delta$, this proves
+\eqref{eq:allarity-realign-forced-output}. The regrouping does not
+change the archived background: setting all markers to zero kills
+every moved factor, leaving the original background at its original
+address.
+Thus a regular remainder price $z$ becomes at most
+$z+2^n\bar\omega_nR_e y$, by \eqref{eq:allarity-realign-regular},
+while the forced price changes as displayed, and the polynomial
+density is unchanged.
+
+\subsubsection{The recurrence along the comparison interval}
 
 Fix a top comparison depth $k$, an intermediate level $l$, a larger
 arity allowance $u\ge\max(2,n)$, and a monitor $H>1$ fixed by $k$.
@@ -175,7 +218,7 @@ $G_i=e^{-g_i}\le1$ is the required final forced price. Its projected
 principal polynomial differs from the next prescribed connected
 polynomial by at most $y$ on every required healthy region. Purchase
 \begin{gather}
- 2^nR_e y\le d_0,\qquad
+ 2^n\bar\omega_nR_e y\le d_0,\qquad
  G_i+n H^{-2}R_{e+1}\le H^{-1},\label{eq:allarity-step-purchases}\\
  (2B_i+1)^4H^{-1}\le1,\qquad e^{H^{-1}}-1\le1.
  \label{eq:allarity-step-small}
@@ -193,21 +236,1415 @@ density along the same transition kernel; the realignment changes only
 its representation. Hence this is an estimate on the original launched
 observable, not a sequence of separately chosen approximants.
 
-The total number of steps is purchased so that
-$(\alpha+2)^{k-l}\le H$. It follows that
-$d_{k-l}\le H^{1-q}$. The marker weight throughout this interval is
-$r=H^{1/(8u)-U}$, with the fixed cost exponent $U$ chosen so that
-$0<r\le1$. The same radius is used at all replicas and finite periods.
-If the later propagation requires an extra factor $H^{uV+2}$ in the
-regular price, purchase $1-q\le-uV-2$. Then
-$H^{1-q}\le H^{-uV-2}$ supplies that margin. These two inequalities
-are separate purchases: a small initial error does not alone control
-arbitrarily many steps or an arbitrary later marker-weight change.
+The number of steps satisfies $(\alpha+2)^{k-l}\le H^{\kappa}$ for a
+constant $\kappa$, by Lemma~\ref{lem:allarity-upper-count-power} below.
+It follows that $d_{k-l}\le H^{\kappa-q}$.
 
-\subsection{The scalar envelope used in the replica estimate}
+\paragraph*{The marker weights}
+Two marker weights are used, each the same at every mark, replica and
+finite period. Put $H=\mathcal M_k$, where
+$\mathcal M_k=\exp\{(\log\log\widehat\beta_k)^2\}$ is the clock monitor
+at the comparison depth, as in Subsection~\ref{sec:rank-root-normalization}.
+From the launch at the middle level $\ell$ down to the output torus of
+the replica estimate, the weight is
+\begin{equation}\label{eq:allarity-marker-weight}
+ \omega=H^{1/(8u)} .
+\end{equation}
+On the leading part of the interval, from the top $k$ down to $\ell$,
+the recurrence above is run at the smaller weight
+\begin{equation}\label{eq:allarity-upper-weight}
+ \omega_-=H^{1/(8u)-U},\qquad U\ge\frac1{8u},
+\end{equation}
+where the weight exponent $U$ is a constant fixed before the clock scale
+(Lemma~\ref{lem:allarity-leading-budget} below says how). Every price
+of the recurrence, namely the remainder prices $d_j$, the forced prices
+$G_i$, the principal incidence price $H^{-2}$, the discrepancy
+contribution \eqref{eq:allarity-realign-regular} and the terminal
+prices, is a price in the $\|\cdot\|_{\omega_-}$ norm. The weight is
+changed exactly once, at the launch
+(Subsection~\ref{subsec:allarity-corrected-budget}), and the cost of
+that change is computed there.
+
+Since $U\ge1/(8u)$, we have $\omega_-\le1$, so
+\eqref{eq:allarity-mode-weight} gives $\omega_-^{|I|}\le1$ for every
+mode. Thus the first purchase in \eqref{eq:allarity-step-purchases} is
+implied by
+\begin{equation}\label{eq:allarity-weighted-discrepancy}
+ 2^nR_ey\le d_0=H^{-q}.
+\end{equation}
+At the large weight, since $H>1$ and $n\le u$,
+\begin{equation}\label{eq:allarity-weight-cap}
+ \omega^{|I|}\le\bar\omega_n=\omega^n\le\omega^u=H^{1/8}
+ \qquad (I\subseteq\{1,\ldots,n\}).
+\end{equation}
+The incidence and spatial counts, the forced regrouping and the scalar
+envelope below hold for every positive weight. The one-step outputs
+assumed above, the principal-source bounds and the terminal-source
+purchase are hypotheses on prices at the weight $\omega_-$. When such an
+input is available as an unweighted bound $b$ on the values of pieces
+carrying between one and $n$ markers, with the support charge already
+included, it is also a bound on the $\omega_-$-price, because
+$\omega_-\le1$.
+
+If the later propagation requires an extra factor $H^{uV+2}$ in the
+regular price, purchase $q\ge\kappa+uV+2$, with $\kappa$ the exponent of
+Lemma~\ref{lem:allarity-upper-count-power}; this supplies that margin at
+the middle level. These two inequalities are separate purchases: a
+small initial error does not alone control arbitrarily many steps or an
+arbitrary later marker-weight change.
+
+\subsubsection{Supplying the one-step hypotheses on the leading interval}
+\label{subsec:allarity-step-supply}
+
+We now show how the one-step hypotheses of the recurrence follow, on the
+leading part of the comparison interval, from the upper calculation of
+Subsection~\ref{sec:actual-mixed-marked-compiler} and from the principal
+comparison of Subsection~\ref{sec:principal-gaussian-comparison}. We also
+show that the purchases
+\eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small} hold
+at large clock scale. Throughout, the top comparison depth is $k$, the
+leading interval consists of the rungs $i$ with $\ell\le i<k$, and
+$s=\widehat\beta_k$ is the clock scale. We put
+\[
+ H=\exp((\log\log s)^2)=\mathcal M_k,\qquad
+ \omega_-=H^{1/(8u)-U},
+\]
+as in \eqref{eq:allarity-upper-weight}. The rung couplings $x_i$ (coarse)
+and $y_i$ (fine) of rung $i$ lie in $[s/2,s]$. The arity $n\le u$, the
+support exponent $e$, the slice multiplier $a$, the support radius
+$Q\ge a$, the weight exponent $U$, the tolerance exponent $q\ge6$ and the
+step multiplier $\alpha\ge8T_e$ are fixed before $s$, in this order
+except that $\alpha$ may be fixed right after $e$ and the spare exponent
+$\sigma$ of Subsection~\ref{subsec:allarity-corrected-budget}. Here $T_e$ is the constant of
+\eqref{eq:mixed-cover-charge}. A function $f$ of the clock scale has
+\emph{upper exponent} $c$ if for every $\varepsilon>0$, eventually
+$|f(x)|\le x^{c+\varepsilon}$ uniformly for $x\in[s/2,s]$. In particular
+$H^{c}$ has upper exponent $0$ for every real $c$, because
+$(\log\log s)^2=o(\log s)$.
+
+\begin{lemma}[Compiler outputs on a leading rung]
+\label{lem:allarity-step-outputs}
+Assume that, at rung $i$, the upper calculation of
+Subsection~\ref{sec:actual-mixed-marked-compiler} applies at the scale $s$
+with the multiplier $\alpha$ and tolerance exponent $q$ fixed above.
+Assume the incoming data are:
+\begin{itemize}
+\item a regular remainder of marker-root price $z$ with
+ $H^{-q}\le z\le H^{-4}$;
+\item a leading family of marker budget at most $H^{-4}$;
+\item a forced background of site price at most $G(y_i)$.
+\end{itemize}
+All prices are taken at the weight $\omega_-$. Then, after the marked
+push, the output has:
+\begin{enumerate}
+\item nonleading regular marker-root price at most $(\alpha+1)z$;
+\item leading marker-root (principal incidence) price at most $H^{-3}\le H^{-2}$;
+\item forced site price at most $G(x_i)^2$.
+\end{enumerate}
+Thus the one-step hypotheses of the recurrence hold at rung $i$ with
+$G_i=G(x_i)$.
+\end{lemma}
+\begin{proof}
+In the upper calculation the multipliers are
+$l=\max(1,H^{-3}/(\alpha z+H^{-q}))$ and $m=G(x_i)^{-2}$. The incoming
+forced budget is $\eta=G(y_i)$, and the leading-family budget is
+$h=H^{-4}$. That calculation proves $T_e\eta+a\le H^{-3}$ and
+$\Sigma\le K/4$, with $K=H^{-1/8}$. Its rooted connected-set bound then
+gives every marker a total marker-root price of at most $T_e\eta+a$ over
+the components carrying it. It also gives every site a total site price
+of at most $\Sigma\le e^{\Sigma}-1$ over the components containing it.
+By \eqref{eq:mixed-club-integral}, the integrated coefficient of a
+component is divided by $t_C$:
+\begin{itemize}
+\item $t_C=1$ for an entirely leading component;
+\item $t_C=l$ for an unforced component that is not entirely leading;
+\item $t_C=m$ for a component with nonempty forced inventory.
+\end{itemize}
+Hence:
+\begin{enumerate}
+\item The nonleading regular components have marker-root price at most
+ $H^{-3}/l$. Since \[
+ l\ge H^{-3}/(\alpha z+H^{-q})
+\], this is at most
+ $\alpha z+H^{-q}\le\alpha z+z=(\alpha+1)z$, because $z\ge H^{-q}$.
+\item The entirely leading components have marker-root price at most
+ $T_e\eta+a\le H^{-3}\le H^{-2}$, since $H\ge1$.
+\item The forced components have site price at most
+ $(e^\Sigma-1)/m\le(e^{K/4}-1)G(x_i)^2\le G(x_i)^2$, because
+ $e^{K/4}-1\le K\le1$.
+\end{enumerate}
+The calculation of that section holds at every positive marker weight,
+since its prices include the weights. So these are prices at the weight
+$\omega_-$. The multiplier $l$ is at most $\max(1,H^{q-3})$, as in that
+section, so the compiler purchase made there covers it.
+\end{proof}
+
+The upper bound $z\le H^{-4}$ in the lemma is preserved along the
+recurrence. Indeed $d_{k-i}\le d_{k-\ell}\le H^{\kappa-q}\le H^{-4}$ by
+Lemma~\ref{lem:allarity-upper-count-power}, once $q\ge\kappa+4$. The
+lower bound $z\ge d_0=H^{-q}$ is the convention of the recurrence: a
+smaller incoming price may be enlarged to $d_0$.
+
+\begin{lemma}[The leading budget at the small weight]
+\label{lem:allarity-leading-budget}
+Suppose that at every leading rung the prescribed principal sources have
+\emph{unweighted} marker budget at most $H^{A}$, for a constant $A\ge0$
+fixed before $s$. That is, for every mark, the sum over the modes
+containing it of the value bound times the support charge is at most
+$H^{A}$. If
+\[
+ U\ge A+4+\frac1{8u},
+\]
+then their marker budget at the weight $\omega_-$ is at most $H^{-4}$.
+\end{lemma}
+\begin{proof}
+Every principal piece has a nonempty marker set $I$, so its weight is
+$\omega_-^{|I|}\le\omega_-=H^{1/(8u)-U}\le H^{-A-4}$, because
+$\omega_-\le1$. Multiplying the unweighted budget by this factor gives
+the claim.
+\end{proof}
+
+\begin{lemma}[The unweighted principal bound]
+\label{lem:allarity-principal-power}
+Assume the hypotheses of Subsection~\ref{sec:marked-healthy-cumulant-launch}
+at every rung of the leading interval:
+\begin{itemize}
+\item the calibrated incoming polynomials, with $|p_i|_1\le H^z$ and
+ degree at most $K$;
+\item the polynomial-transport purchase $2(b+2)\log A_{nK}\le\log L$;
+\item the healthy-field bounds \eqref{eq:healthy-middle-purchases} at the
+ rung coupling.
+\end{itemize}
+Then there is a constant $A\ge0$, depending only on $n$, $z$, $K$ and the
+fixed word, such that for all large $s$ the hypothesis of
+Lemma~\ref{lem:allarity-leading-budget} holds: at every leading rung the
+prescribed principal sources have unweighted marker budget at most $H^A$.
+\end{lemma}
+\begin{proof}
+At rung $i$ the prescribed principal source of mode $I$ is the connected
+polynomial $c_I$ of the subset moments transported over $k-i\le k-\ell$
+steps. By maximality of $\ell$ and the bracket of
+Lemma~\ref{lem:ex-lattice-firesky-clock-fields}, every block length on
+$[\ell,k]$ is at least $L=L_{J(k)-1}$, so
+$(k-\ell-1)\log L<(b+2)\log H$, as in the proof of
+Lemma~\ref{lem:allarity-upper-count-power}. With the transport purchase at
+this $L$, $A_{nK}^{k-i}\le A_{nK}\,H^{1/2}\le H$ eventually. By
+\eqref{eq:healthy-transport-telescope} and the norm bound $A_{nK}$ per step,
+every transported subset moment has norm at most $R=H^{nz+1}$, as in that
+section. The partition expansion gives $|c_I|_1\le Q_n(R)$ and degree at
+most $D_*$. On the healthy region of its prescribed support, the
+coordinates are bounded by $M=\max(1,16B\tau(t))=H^{o(1)}$,
+uniformly for $t\in[s/2,s]$, by the healthy-field construction.
+For every fixed degree $D_*$, therefore, $M^{D_*}\le H$ eventually
+(the degree-zero case is immediate). Hence
+$|c_I(X)|\le Q_n(H^{nz+1})H$. The support charge is at most $R_e$
+(Lemma~\ref{lem:allarity-step-charge}), and at most $2^n$ modes contain
+a given mark. Since $Q_n$ has degree at most $n$, the unweighted
+budget is at most $2^nR_eQ_n(H^{nz+1})H\le H^A$ eventually, where
+$A=n(nz+1)+2$. In particular this exponent does not depend on the
+Taylor degree $K$; only its threshold does. This distinction permits
+the later choice of Taylor order after the marker weight and remainder
+exponent have been fixed.
+\end{proof}
+
+\begin{corollary}[The per-rung amplitude]
+\label{cor:allarity-rung-amplitude}
+Under the hypotheses of Lemma~\ref{lem:allarity-principal-power}, the
+amplitude $\tau$ of the masked principal insertion at every leading rung
+is at most $H^A$. It therefore has upper exponent $0$, and the amplitude
+hypothesis of Lemma~\ref{lem:allarity-step-discrepancy} holds.
+\end{corollary}
+\begin{proof}
+The insertion is the masked principal piece. It vanishes off the healthy
+region of its prescribed support, and on that region it is bounded by
+$|c_I(X)|\le H^A$, by the proof of
+Lemma~\ref{lem:allarity-principal-power}. So $|h|\le H^A$ everywhere, and
+$H^A$ has upper exponent $0$.
+\end{proof}
+
+The launch bounds available for the funded chart bound the principal
+source by a fixed positive power of $H$. This is why the leading interval
+is run at the weight $\omega_-$: at the large weight $\omega$ the budget
+$H^{-4}$ is not available, and at the top comparison level the
+connected polynomial $\sum_iz_iP_i$ is not small at all.
+
+\begin{lemma}[A fixed bound for the support charge]
+\label{lem:allarity-step-charge}
+For a cell $c$ and a nonempty mode $I$, let $r_{c,j}$ be the reader site
+of mark $j$ in cell $c$, and define the prescribed support
+\[
+ X_{c,I}=\{v:\ |v-r_{c,j}|\le QB\ \text{for every } j\in I\}.
+\]
+Assume that reader sites in distinct replica cells are at distance
+greater than $2QB$. Then the geometric hypotheses of the subsection on
+marker and spatial prices hold, and every prescribed support satisfies
+$\operatorname{cov}_BX_{c,I}\le(\lceil Q\rceil+1)^4$. Hence one may take
+\[
+ R_e=\exp\{e(\lceil Q\rceil+1)^4\},
+\]
+a constant fixed before $s$.
+\end{lemma}
+\begin{proof}
+By the first subsection, every point of the full support of a principal
+piece of mode $I$ in cell $c$ lies within distance
+$(2n+1)\rho\le aB\le QB$ of each of its marked readers, which are the
+$r_{c,j}$ with $j\in I$. So the actual support is contained in $X_{c,I}$.
+The prescribed support depends only on the mode, by definition. If a site
+$v$ lies in $X_{c,I}$ and in $X_{c',I'}$, then a reader of $c$ and a
+reader of $c'$ are both within $QB$ of $v$, hence within $2QB$ of each
+other. By the separation assumption $c=c'$. Finally, fix one $j\in I$.
+Then $X_{c,I}$ is contained in the cube of side $2QB$ centred at
+$r_{c,j}$. That cube is covered by a grid of at most
+$(\lceil Q\rceil+1)^4$ radius-$B$ cubes whose union is connected. Since
+$\operatorname{chg}_e$ is monotone in the cover number, the bound
+follows.
+\end{proof}
+
+\subparagraph{The prescribed polynomials are reference integrals.}
+Fix a cell and its mark set $J$, $|J|=n$, and work in the marker algebra
+$\mathscr A_J$ of Subsection~\ref{sec:allarity-planted-compiler}. For an
+element $X$ with zero constant coefficient put
+$\log_*(1+X)=\sum_{j=1}^n(-1)^{j-1}X^j/j$. Since every product of more
+than $n$ nonconstant monomials vanishes, $\exp_*$ and $\log_*$ are mutually
+inverse bijections between the elements with zero constant coefficient
+and those with constant coefficient one. This is the identity of formal
+power series, truncated. Moreover, if $X=\sum_{T\ne\varnothing}q_Tz_T$,
+then $X^j$ is the sum over ordered $j$-tuples of pairwise disjoint nonempty
+sets $T_1,\ldots,T_j$ of $\prod_lq_{T_l}z_{T_1\cup\cdots\cup T_j}$. Each
+unordered partition with $j$ blocks occurs $j!$ times, so
+\begin{equation}\label{eq:allarity-moment-cumulant}
+ \log_*\Bigl(1+\sum_{T\ne\varnothing}q_Tz_T\Bigr)
+  =\sum_{I\ne\varnothing}c_Iz_I,\qquad
+ c_I=\sum_{\pi\in\mathcal P(I)}(-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}q_B .
+\end{equation}
+These are exactly the connected polynomials of
+Subsection~\ref{sec:marked-healthy-cumulant-launch}.
+
+At a leading rung $i$ let $D^{(i)}=\sum_Ic^{(i)}_Iz_I$ be the prescribed
+principal polynomial of the cell. The pieces that are actually integrated
+are masked. Write $\chi_I$ for the mask of mode $I$ and
+$D^{(i)}_\chi=\sum_I\chi_Ic^{(i)}_Iz_I$ for the masked principal
+polynomial. Its moment polynomials $Q^{(i)}_T$ are defined by
+\[
+ \exp_*D^{(i)}_\chi=1+\sum_{T\ne\varnothing}Q^{(i)}_Tz_T,\qquad
+ Q^{(i)}_T=\sum_{\pi\in\mathcal P(T)}\prod_{B\in\pi}\chi_Bc^{(i)}_B .
+\]
+These are the insertions of both integrals below. The unmasked moment
+polynomials of $D^{(i)}$ are not used.
+
+Fix a healthy base configuration $x$ of the required healthy region. Let
+$\widetilde{\mathcal G}_{i,x}$ be the raw reference integral of
+Subsection~\ref{sec:principal-gaussian-comparison} at the rung with base
+configuration $x$, that is, integration of the insertion against
+$R_9\chi_9\,d\gamma_{C_0}$ followed by the finite forest and tag
+averages. Let $\widetilde{\mathcal A}_{i,x}$ be the raw actual-sector
+integral, against $R_6\chi_6\,d\gamma_{C_0}$ and the same averages. Both
+are linear, and we apply them to elements of $\mathscr A_J$
+coefficientwise. Their values are jets of order $n$ at the base point of
+the local variation about $x$. On these jets we use the coefficient
+$\ell^1$ norm $\|\cdot\|$ of the truncated Taylor polynomial in the
+parameter $y\in\mathbb R^j$, $j\le n$. It is submultiplicative for the
+truncated product, $\|1\|=1$, and it dominates the absolute value of the
+zeroth coefficient, which is the value at $x$. Since $j\le n$, it is
+equivalent to the norm $\|\cdot\|_{J^n_0}$ of
+Subsection~\ref{sec:principal-gaussian-comparison} within a factor $c_n$
+depending only on $n$. Put
+\[
+ a_x=\widetilde{\mathcal A}_{i,x}(1),\qquad
+ b_x=\widetilde{\mathcal G}_{i,x}(1).
+\]
+The cutoff $\chi_9$ can change the mass of the reference integral, and
+$b_x$ may depend on the base parameter. Where $b_x$ is invertible, the
+normalized reference integral is
+$\mathcal G_{i,x}=b_x^{-1}\widetilde{\mathcal G}_{i,x}$, so that
+$\mathcal G_{i,x}(1)=1$. We write $\mathcal G_i$ for the family
+$(\mathcal G_{i,x})_x$, and similarly $\mathcal A_i$, $a$ and $b$.
+
+We use the following hypothesis on one common insertion.
+\begin{enumerate}
+\item[(CI)] \emph{Common insertion and transport.} At each leading rung of
+ the leading interval:
+ \begin{enumerate}
+ \item[(a)] \emph{measure identification}: for the leading letters of
+  each cell and every partition product of their pieces, the sector and
+  tag measures of \eqref{eq:planted-integral} are those of the principal
+  comparison integral $\widetilde{\mathcal A}_{i,x}$ on the union of the
+  read supports of the pieces in that product, with the same joint loading
+  and the same weights;
+ \item[(b)] the Gaussian history is transported by the reference
+  integrals on those insertions: at every healthy base configuration
+  $x$ the jet of $D^{(i-1)}$ at $x$ is
+  $\log_*\mathcal G_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$. This is the
+  Gaussian history used at the middle level and at the launch;
+ \item[(c)] the comparison data of
+  Subsection~\ref{sec:principal-gaussian-comparison}, and the payment that
+  follows it, hold uniformly over the healthy base configurations $x$ of
+  the required healthy region. The insertion in that comparison is
+  $h=Q^{(i)}_T$ at the base configuration $x$, read on the union of the
+  read supports of the pieces in each partition product.
+ \end{enumerate}
+\end{enumerate}
+In the payment paragraph of Subsection~\ref{sec:principal-gaussian-comparison}
+every scale except two is a function of the rung coupling alone: the read
+dimension, the direction bound, the aperture, the support radius and the
+good-coordinate radius $v$. The two exceptions are the primitive mean and
+covariance bounds $J_0,V_0$ of \eqref{eq:principal-primitive-comparison},
+with their absolute jet bounds. These are bounds on actual and reference
+covariances read at the base configuration. Clause (c) therefore amounts
+to requiring \eqref{eq:principal-primitive-comparison} and those absolute
+jet bounds with $J_0$ and $V_0$, as functions of the rung coupling, taken
+as suprema over the healthy base configurations of the region. That section already lists the
+primitive comparison as an input.
+\subparagraph{Uniformity of the primitive comparison.}
+There is already a producer for the primitive rates:
+Subsection~\ref{sec:principal-comparison-jets}. Its conclusion is uniform
+in the healthy base field, provided its local geometric hypotheses
+hold. We record exactly the specialization needed here. At a fixed
+stage pair and derivative order $n\ge2$, require, for every coordinate
+of the retained joint domain $I_*$, a nonwrapping allocated healthy
+halo of radius $45(1+B)+4$, disjoint from the sector seeds. Use the
+same forest, tag, selected path and local window rules as that section,
+including the distinct sector and reference windows. Require its
+positive precision and path-derivative purchases through order $n+1$,
+and its local direction bounds. These conditions must hold for the
+cutoff coordinates as well as the insertion coordinates.
+
+Under these hypotheses there are functions $C(s),v(s),t(s)$, independent
+of the period, forest, tag and healthy base point, such that $C$ has
+upper exponent zero, $v$ has upper exponent $-1/2$, and $t$ has every
+negative upper exponent. After absorbing the fixed colour-coordinate
+factor into $C$, one can use
+\begin{equation}\label{eq:allarity-uniform-primitive-supplier}
+ J_0(s)=n!2^n C(s)\{(t(s)+v(s))v(s)+v(s)^2\},\qquad
+ V_0(s)=n!2^n\{t(s)+2C(s)v(s)\}.
+\end{equation}
+Indeed the gauge fixed at each base point places the field in the
+same logarithmic ball of radius $v(s)$. The fixed-gauge local
+identification in that section identifies both physical readings with
+the corresponding local formulas on a neighbourhood. Apply
+\eqref{eq:comparison-quadratic-jet-gain} to the mean difference and
+\eqref{eq:comparison-linear-jet-gain} to the covariance difference.
+Although the gauge depends on the base point, it is fixed during
+parameter differentiation and is an isometry on colour space. Thus
+no derivative of a base-dependent gauge choice enters these estimates.
+Their right sides depend only on $s$ and the purchased stage data;
+taking suprema over all allowed healthy base points leaves the same
+bounds. The exponent rules give $-1$ for $J_0$ and $-1/2$ for $V_0$.
+Multiplying $J_0$ by $g^{-1}$, of exponent $1/2$, gives the required
+rescaled difference of exponent $-1/2$. The absolute jets have
+exponent zero by the same kernel bounds.
+
+This discharges the analytic uniformity step of (CI)(c) under the
+listed local hypotheses. It does not prove those hypotheses for the
+chart's enlarged cutoff domain. In particular, adding distant cutoff
+coordinates can invalidate the allocated seed-free halo or dimension
+bound, and one cannot replace the prescribed reference windows by the
+sector windows. Checking these geometric and same-history conditions
+is the remaining application of this producer.
+
+The cutoff $\chi_9$ makes $\mathcal G_i$ a smooth function of the base
+parameter rather than a polynomial, and the jet norm also involves its
+derivatives in that parameter. The bounds on the transport and on the
+reference mass that the comparison needs are nevertheless consequences of
+(CI)(c). We prove them next. Put $\tau_n=b_n\max(1,\tau)^n$, where $b_n$
+is the Bell number and $\tau$ the amplitude of the masked principal
+pieces.
+
+\begin{lemma}[Jet bounds for the two integrals]
+\label{lem:allarity-reference-bounds}
+Assume (CI)(c). There is a polynomial $\widetilde P_n$, depending only on
+$n$, with the following property. Put
+$K_0=c_n\widetilde P_n(N,Q,S)$, where $c_n$ is the norm-equivalence factor
+above, and
+\[
+ \beta_0=2(n+1)(2K_0+3)^n,\qquad \gamma_0=\beta_0(K_0+1),
+\]
+and let $\Pi$ be $c_n$ times the multiplier of the amplitude in
+\eqref{eq:principal-comparison-final}, which has upper exponent $-1/2$.
+Then $K_0,\beta_0,\gamma_0$ have upper exponent $0$, and for all large
+$s$, every leading rung and every healthy base configuration $x$:
+\begin{enumerate}
+\item $\|\widetilde{\mathcal A}_{i,x}(h)\|\le K_0\sup|h|$ for every bounded
+ measurable insertion $h$;
+\item the zeroth coefficient of $a_x$ lies in $[1-2Ne^{-v+M/2},1]$;
+\item $b_x$ is invertible in the truncated jet algebra and
+ $\|b_x^{-1}\|\le\beta_0$;
+\item $\|\mathcal G_{i,x}(h)\|\le\gamma_0\sup|h|$ for every bounded
+ measurable insertion $h$; in particular
+ $\|\mathcal G_{i,x}(Q^{(i)}_T)\|\le\gamma_0\tau_n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Item 1.} On $\|z\|_\infty\le S$, \eqref{eq:principal-density-jets},
+the cutoff jet bound of hypothesis~4 of
+Subsection~\ref{sec:principal-gaussian-comparison} and the product rule bound
+the $J^n_0$ norm of $R_6\chi_6(\cdot,z)$ by $\widetilde P_n(N,Q,S)$, after
+enlarging the polynomial. Beyond that ball the integrand vanishes on a
+common neighbourhood of zero. Differentiation under the integral, as
+justified in that section without derivatives of $h$, and integration
+against the probability measure $\gamma_{C_0}$ give
+$\|\int R_6\chi_6h\,d\gamma_{C_0}\|_{J^n_0}\le\widetilde P_n\sup|h|$. The
+forest and tag averages have nonnegative weights summing to one, so they
+preserve this bound. Passing to the Taylor $\ell^1$ norm costs $c_n$.
+
+\emph{Item 2.} At the base point the compensated map is the identity,
+$T_{y_0}z=z$ (Subsection~\ref{sec:gaussian-differentiation}). So the
+Jacobian is one there, $w_6(0,z)=z$ and $C_6(0)=C_0$, hence
+$R_6(0,z)=1$. The zeroth coefficient of $a_x$ is therefore an average of
+the numbers $\int\chi_6(0,z)\,d\gamma_{C_0}(z)$. They lie in $[0,1]$
+because $0\le\chi_6\le1$. They are at least
+$\gamma_{C_0}\{\|z\|_\infty<v\}\ge1-2Ne^{-v+M/2}$, because $\chi_6=1$
+there by hypothesis~4 and by \eqref{eq:principal-outage}.
+
+\emph{Item 3.} By \eqref{eq:principal-comparison-final} with $h=1$,
+$\|b_x-a_x\|\le\Pi$. The zeroth
+coefficient $b_0$ of $b_x$ therefore satisfies
+$b_0\ge1-2Ne^{-v+M/2}-\Pi\ge\frac12$ for large $s$, since $e^{-v}$ has
+every negative upper exponent. Also $\|b_x\|\le K_0+\Pi\le K_0+1$. Write
+$b_x=b_0(1+u)$. Then $u$ has zero constant coefficient and
+$\|u\|\le2(K_0+1)+1$. In the algebra of jets of order $n$, a product of
+$n+1$ elements with zero constant coefficient vanishes. So
+$(1+u)^{-1}=\sum_{r=0}^n(-u)^r$, and
+\[
+ \|b_x^{-1}\|\le b_0^{-1}\sum_{r=0}^n\|u\|^r\le2(n+1)(2K_0+3)^n=\beta_0 .
+\]
+
+\emph{Item 4.} By \eqref{eq:principal-comparison-final} and item~1,
+$\|\widetilde{\mathcal G}_{i,x}(h)\|\le(K_0+\Pi)\sup|h|\le(K_0+1)\sup|h|$.
+Multiply by $b_x^{-1}$ and use item~3. Since $|Q^{(i)}_T|\le\tau_n$, the
+last claim follows.
+
+Finally, $N$, $Q$ and $S$ have upper exponent $0$ by the payment
+paragraph of Subsection~\ref{sec:principal-gaussian-comparison}. A fixed
+polynomial in them, and a fixed power of it, also have upper exponent $0$.
+\end{proof}
+
+Inside the reference integral the masks play no role. Write
+$q^{(i)}_T=\sum_{\pi\in\mathcal P(T)}\prod_{B\in\pi}c^{(i)}_B$ for the
+unmasked moment polynomials of $D^{(i)}$, so that
+$\exp_*D^{(i)}=1+\sum_Tq^{(i)}_Tz_T$.
+
+\begin{lemma}[Masks under the reference cutoff]
+\label{lem:allarity-reference-mask-removal}
+Assume (CI)(c), and that the read support of each masked principal piece
+contains the support $X_{c,I}$ on which its mask $\chi_I$ is inspected.
+Then, for every $T$ and every healthy base configuration $x$,
+\[
+ \widetilde{\mathcal G}_{i,x}\bigl(Q^{(i)}_T\bigr)
+   =\widetilde{\mathcal G}_{i,x}\bigl(q^{(i)}_T\bigr),
+ \qquad\text{hence}\qquad
+ \mathcal G_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)
+   =\mathcal G_{i,x}\bigl(\exp_*D^{(i)}\bigr).
+\]
+\end{lemma}
+\begin{proof}
+By (CI)(c) the insertion of the comparison for $Q^{(i)}_T$ is read on the
+union $Y$ of the read supports of the pieces in its partition products. By
+the second identity of Subsection~\ref{sec:principal-gaussian-comparison},
+wherever the reference cutoff $\chi_9$ is nonzero, the fixed configuration
+is healthy on the support of the insertion, here $Y$. Each $X_{c,B}$ with
+$B\subseteq T$ lies in $Y$, so each mask $\chi_B$ equals one there. Hence
+$R_9\chi_9Q^{(i)}_T=R_9\chi_9q^{(i)}_T$ pointwise. Where $\chi_9=0$ both
+sides vanish. Integrate and average. The second identity follows
+coefficientwise, after dividing by $b_x$.
+\end{proof}
+
+So in (CI)(b) the masked and unmasked prescribed polynomials give the
+same reference transport. The masked moments are still the insertions of
+the actual-sector integral $\widetilde{\mathcal A}_{i,x}$, where the
+actual cutoff does not force health on the larger prescribed supports.
+That is why the comparison in Lemma~\ref{lem:allarity-step-discrepancy}
+uses $Q^{(i)}_T$ on both sides.
+
+Clause (b) defines reference-transported targets recursively, but this
+alone does not give admissible principal pieces at the next rung.
+The normalized cutoff integral can produce smooth nonpolynomial
+functions of the base configuration. At each rung one must preserve a
+class of insertions on which the next transport is defined and prove
+the required support, amplitude, jet and representation bounds there.
+In particular, the polynomial degree bound used in
+Lemma~\ref{lem:allarity-principal-power} cannot be inferred from the
+recursion with $\mathcal G_i$ alone.
+
+At the middle level, let $D_Q$ be the connected polynomial of the
+actual polynomial history of
+Subsection~\ref{sec:marked-healthy-cumulant-launch}. The healthy local
+error required by Lemma~\ref{lem:allarity-corrected-pieces} concerns
+the actual planted leading coefficient and this same $D_Q$.
+If a reference-transported intermediate history is used, its error
+against the planted coefficient and its error against $D_Q$ add.
+For a target tolerance $\varepsilon_*$ one must allocate
+$\varepsilon_{\rm planted}+\varepsilon_{\rm transport}\le\varepsilon_*$;
+two separate bounds by $\varepsilon_*$ do not give the required bound.
+The following calculation gives a precise sufficient transport budget.
+
+\begin{lemma}[Comparing two finite transport histories]
+\label{lem:allarity-two-route-budget}
+For $0\le j\le r$ let $\mathcal B_j$ be normed spaces of admissible
+coefficient functions. Let $G_j,T_j:\mathcal B_{j+1}\to\mathcal B_j$
+be bounded linear maps for $j<r$, with $\|G_j\|\le C_j$.
+For one terminal coefficient $f\in\mathcal B_r$ write
+$f_j=T_j\cdots T_{r-1}f$ and suppose
+$\|(G_j-T_j)f_{j+1}\|\le\delta_j$. Then
+\[
+ \|G_0\cdots G_{r-1}f-T_0\cdots T_{r-1}f\|
+ \le\sum_{j=0}^{r-1}\delta_j\prod_{a=0}^{j-1}C_a.
+\]
+Use the empty-product convention $1$. Suppose this holds for all
+nonempty moment coefficients in a marker algebra on $n$ marks.
+If the two resulting moments are $1+X$ and $1+Y$, and
+$\|X\|,\|Y\|\le R$ in its submultiplicative coefficient norm, then
+\[
+ \|\log_*(1+X)-\log_*(1+Y)\|
+ \le \left(\sum_{q=0}^{n-1}R^q\right)\|X-Y\|.
+\]
+For the unweighted sum norm on marker coefficients, the first bound
+therefore gives a connected-coefficient error at most
+\[
+ (2^n-1)\left(\sum_{q=0}^{n-1}R^q\right)
+       \sum_{j=0}^{r-1}\delta_j\prod_{a=0}^{j-1}C_a.
+\]
+\end{lemma}
+\begin{proof}
+Replace the maps in the product one at a time, starting from the left:
+\[
+ G_0\cdots G_{r-1}-T_0\cdots T_{r-1}
+ =\sum_{j=0}^{r-1}G_0\cdots G_{j-1}
+             (G_j-T_j)T_{j+1}\cdots T_{r-1}.
+\]
+Apply this identity to $f$ and take norms. For the logarithms use
+$X^q-Y^q=\sum_{a=0}^{q-1}X^a(X-Y)Y^{q-1-a}$.
+Submultiplicativity bounds this by $qR^{q-1}\|X-Y\|$; the factor $q$
+cancels the denominator in $\log_*$. Summing over $1\le q\le n$
+proves the second bound, and summing the at most $2^n-1$ moment errors
+proves the last one.
+\end{proof}
+
+For the intended application $G_j=\mathcal G_j$ and $T_j=\mathcal T_j$,
+with the same initial moments and normalization. The spaces
+$\mathcal B_j$ must include both histories and all intermediate
+functions in the telescoping identity. A jet bound for one fixed
+insertion is not an operator bound on such a space. If masks are
+removed using Lemma~\ref{lem:allarity-reference-mask-removal}, that
+identity must hold at each intermediate insertion. After checking
+these domain conditions, making the last displayed quantity at most
+$\varepsilon_{\rm transport}$ gives the allocated middle-level error.
+Neither the required operator products nor this error purchase has
+been established here for the actual chart history.
+
+The polynomial step of Subsection~\ref{sec:marked-healthy-cumulant-launch}
+is a finite linear substitution followed by Wick contraction with the
+reference covariance. Write $\mathcal T_i$ for it. If (b) is stated with
+$\mathcal T_i$ in place of $\mathcal G_i$, the proof below acquires the
+additional term $\max_T\|\mathcal G_{i,x}(Q^{(i)}_T)-\mathcal T_i(Q^{(i)}_T)\|$.
+A small difference does not replace the norm bound of
+Lemma~\ref{lem:allarity-reference-bounds}(4) by itself. That route needs
+such a bound for one of the two transports and a bound on the
+difference with upper exponent below zero. By
+Lemma~\ref{lem:allarity-reference-mask-removal}, no insertion mask survives
+in the reference integral. The remaining difference includes both the
+reference cutoff and the nonlinear physical coordinate reading. The local
+comparison below treats these separately; no affineness of the compensated
+coordinate map is required.
+
+\begin{lemma}[The prescribed polynomial is the reference integral]
+\label{lem:allarity-prescribed-reference}
+Under (CI)(b), at every leading rung and every healthy base
+configuration $x$, the moment polynomials of the jet of $D^{(i-1)}$ at $x$
+are $\mathcal G_{i,x}(Q^{(i)}_T)$:
+\[
+ \exp_*D^{(i-1)}=1+\sum_{T\ne\varnothing}\mathcal G_{i,x}(Q^{(i)}_T)\,z_T .
+\]
+\end{lemma}
+\begin{proof}
+Apply the linear map $\mathcal G_{i,x}$ coefficientwise to
+$\exp_*D^{(i)}_\chi$, use $\mathcal G_{i,x}(1)=1$, and then $\exp_*\log_*=\mathrm{id}$
+on elements with constant coefficient one.
+\end{proof}
+
+Clause (a) of (CI) is a consequence of the realignment and of the planted
+identity. Only the first leading rung needs a separate check.
+
+\begin{lemma}[The common insertion after realignment]
+\label{lem:allarity-common-insertion-realigned}
+Let $i$ be a leading rung. Suppose that the leading family entering rung
+$i$ is the output of the realignment of
+Subsection~\ref{subsec:allarity-realign} at the preceding rung, with
+desired principal sources $F_{c,I}=c^{(i)}_I$, or, at the first leading
+rung, that it consists of one piece $\chi_Ic^{(i)}_Iz_{(c,I)}$ per cell
+$c$ and mode $I$. Assume (CI)(a) at rung $i$. Then the entirely leading
+components of each cell $c$, produced by the compiler through
+\eqref{eq:planted-selection}--\eqref{eq:planted-integral}, integrate to
+$\iota_c\widetilde{\mathcal A}_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)$, with
+the masked insertions $Q^{(i)}_T$.
+\end{lemma}
+\begin{proof}
+\emph{The leading family.} On the healthy region of $X_{c,I}$, the
+realignment writes the sum of the leading pieces of mode $(c,I)$ as
+$F_{c,I}+L_{c,I}$. It moves $L_{c,I}$, with the mask of $X_{c,I}$, into
+the regular remainder, and moves the part of the original masked values
+off that healthy region into the forced alphabet. What remains designated
+leading at mode $(c,I)$ is therefore the single piece
+$\chi_IF_{c,I}z_{(c,I)}=\chi_Ic^{(i)}_Iz_{(c,I)}$, where $\chi_I$ is the
+healthy mask of $X_{c,I}$. In the cell $c$ the leading family is thus
+$\iota_c(D^{(i)}_\chi)$. At the first leading rung this is the
+hypothesis.
+
+\emph{The integral.} Apply \eqref{eq:planted-selection} and
+\eqref{eq:planted-integral} to the leading letters alone, with
+$T=\{c\}\times J$. The selected pieces are those of cell $c$, so the planted
+polynomial is $P_T=D^{(i)}_\chi$. Its values are the masked values, as
+shown after \eqref{eq:planted-selection}. By \eqref{eq:planted-exp} the
+product of the factors $1+\chi_Ic^{(i)}_Iz_I$ is $\exp_*D^{(i)}_\chi$,
+whose coefficients are the insertions $Q^{(i)}_T$. The identity
+\eqref{eq:planted-integral} holds with the sector and tag measures and
+weights supplied with it. By (CI)(a), for each partition product these
+are the measures, joint loading and weights of
+$\widetilde{\mathcal A}_{i,x}$ on the union of the read supports of its
+pieces. By the first identity of
+Subsection~\ref{sec:principal-gaussian-comparison}, that integral is
+integration against $R_6\chi_6\,d\gamma_{C_0}$ followed by the forest and
+tag averages. The planted identity alone does not make this
+identification. Hence the entirely leading
+part of the cell integrates to
+$\iota_c\widetilde{\mathcal A}_{i,x}(\exp_*D^{(i)}_\chi)$, with the
+insertions $Q^{(i)}_T$.
+\end{proof}
+
+Consequently, under (CI)(a), the leading part of every cell integrates as
+stated at every leading rung, provided that the leading family has the
+displayed form at the first one. There the leading family is the
+top-level principal insertion. By the top initialization at the end of
+Subsection~\ref{sec:marked-healthy-cumulant-launch}, it consists of the
+calibrated singletons, one per mark, with the support, marker and masked
+value of the terminal birth term. All connected coefficients with at least
+two markers vanish. So the displayed form holds at the first rung, with
+$c_{\{j\}}$ the calibrated singleton and $c_I=0$ for $|I|\ge2$, provided
+the mask of each birth term is inspected on its prescribed support
+$X_{c,\{j\}}$. Otherwise a realignment with zero discrepancy at the top
+level moves the difference of the two masks into the forced alphabet, at
+the price of the forced regrouping. This mask condition is the part of the
+terminal-source purchase used here.
+
+Clause (a) concerns the measure after all sector cutoffs have been
+included. Projection of the Gaussian alone does not determine this
+measure. The following elementary identity states exactly what must be
+retained.
+
+\begin{lemma}[Projection of a sector-cut Gaussian]
+\label{lem:allarity-cutoff-marginal}
+Let $Z$ have a centred Gaussian law $\gamma_C$ on a finite coordinate
+space, let $H$ have a probability Haar law $\rho$ independent of $Z$,
+and let $0\le\chi(Z,H)\le1$ be measurable. For a coordinate set $I$ put
+$X=Z_I$ and $C_I=C|_{I\times I}$. There is a measurable function
+$0\le\bar\chi_I(x,h)\le1$, defined almost everywhere, such that
+\begin{equation}\label{eq:allarity-cutoff-pushforward}
+ (Z,H)\mapsto(Z_I,H)\quad\hbox{pushes }\quad
+ \chi\,d\gamma_C\,d\rho
+ \quad\hbox{to}\quad
+ \bar\chi_I\,d\gamma_{C_I}\,d\rho.
+\end{equation}
+It is the conditional expectation of $\chi$ given $(Z_I,H)$. If
+$\chi$ already depends only on $(Z_I,H)$, then $\bar\chi_I=\chi$.
+For positive definite $C$, writing $J=I^c$, an explicit version is
+\[
+ \bar\chi_I(x,h)=\int\chi(x,z,h)\,
+ d\gamma_{S}(z-C_{JI}C_I^{-1}x),\qquad
+ S=C_{JJ}-C_{JI}C_I^{-1}C_{IJ}.
+\]
+The pushforward identity includes the constant insertion $1$.
+\end{lemma}
+\begin{proof}
+Let $\mu$ be the law of $(Z_I,H)$ and let $\nu$ be the pushforward of
+$\chi\,d\gamma_C\,d\rho$. For every measurable set $B$,
+$0\le\nu(B)\le\mu(B)$, so the Radon--Nikodym derivative
+$d\nu/d\mu$ exists and lies between zero and one. This proves
+\eqref{eq:allarity-cutoff-pushforward} and its characterization by
+conditional expectation. The unweighted marginal is
+$\gamma_{C_I}\otimes\rho$, since linear projections of a Gaussian
+have the restricted covariance and $H$ is independent. The identity
+for integrals follows first for indicators, then for simple functions
+and by dominated convergence for bounded measurable insertions. It
+also holds for every absolutely integrable insertion by truncation.
+If $\chi$ is measurable in the retained coordinates it can be taken
+outside the conditional integral. Finally, when $C$ is positive
+definite, completing the square in the joint Gaussian density gives
+conditional mean $C_{JI}C_I^{-1}x$ and covariance $S$, proving the
+formula. The Radon--Nikodym argument does not require positive
+definiteness.
+\end{proof}
+
+For example, with independent standard Gaussian coordinates $X,Y$,
+a cutoff $\chi(X,Y)=\psi(Y)$ projects to the constant
+$\int\psi\,d\gamma_1$, not to $1$. If the conditional law of the
+omitted variables varies with a coarse parameter, the projected cutoff
+can vary with that parameter too. Bounds on the full cutoff do not by
+themselves give its projected parameter-jet bounds.
+
+\subparagraph{Which sector law has to be identified.}
+The measure in (CI)(a) is the measure of the selected principal component,
+not the complete interacting block density. The distinction can already
+be seen in the dictionary of Subsection~\ref{sec:gaussian-reassembly}.
+Its full integrand contains the compulsory packet factors and
+$\exp(\sum_i f_i)$ in addition to the Gaussian and local cutoffs.
+Neither factor is generally constant in the Gaussian variables.
+It cannot be absorbed into the common scalar $\Lambda(y)$ of (M).
+Setting a body's marker variables to zero does not remove its unmarked
+activity; selecting the component with no body letters does.
+
+For clarity, consider a fixed principal-only component whose integrand,
+before Gaussian integration, is
+\[
+             \prod_{a\in A}\chi_a(z,h)f_a(U(z,h)).
+\]
+Here the product over other selected dictionary letters is empty and
+therefore equals one. Let $I$ contain every real coordinate inspected
+by every factor, including the $\chi_a$. The joint integral is exactly
+\[
+ \int\prod_{a\in A}\chi_a(z_I,h)f_a(U(z_I,h))
+                  \,d\gamma_{C_I}(z_I)d\rho(h).
+\]
+Indeed the characteristic-function marginal calculation in
+Subsection~\ref{sec:gaussian-differentiation} projects the Gaussian;
+the integrand already depends only on the retained variables, so no
+conditional cutoff remains. If the local coordinate display is
+independent of a frozen Haar variable, its probability integral is one;
+otherwise that variable stays in $h$. No product of marginal Gaussian
+laws has been substituted for this joint law.
+In the singleton case the same argument applies to
+$\chi_a f_a$, including its entire local cutoff. The compensated
+change of variables then gives the first integrand of
+\eqref{eq:principal-two-integrands} exactly.
+
+This calculation explains how a local principal law can have the form
+(M) without the full sector density having that form. To apply it to a
+partition product, the component construction must give the displayed
+principal-only integrand on the union of its reads, with the same
+sector, forest, tag and loading for all factors. A singleton identity
+alone does not establish that property for a product. Nor may its unit
+normalization be replaced by the full interacting partition function.
+These are the precise component-selection and normalization matches
+required in (CI)(a); enlarging a read set cannot fix a mismatch in them.
+
+Here is a sufficient version of the chart-law input. Its domain is
+chosen once for a cell, before selecting a partition product.
+\begin{enumerate}
+\item[(M)] Fix a leading rung and a cell. On a common neighbourhood of
+ each healthy base parameter $y=0$, the planted sector/tag measure,
+ indexed by $t$, is
+ \[
+ d\nu_{t,y}=\Lambda(y)\chi_{6,t}(y,z,h)
+                    d\gamma_{C_t(y)}(z)d\rho_t(h).
+ \]
+ The smooth factor $\Lambda(y)>0$ is independent of $t$ and of the
+ insertion, including the unit. The forest/tag weights $\lambda_t$
+ are the same as those of the principal comparison, are fixed on this
+ neighbourhood, and are nonnegative with sum one. There is a finite
+ coordinate set $I_*$, independent of $y$ on this neighbourhood,
+ containing every coordinate inspected by every partition-product
+ insertion and by $\chi_{6,t}$, for all retained $t$. On this enlarged
+ domain the compensated identities
+ \eqref{eq:principal-two-integrands} and all comparison data (CI)(c)
+ hold, including the read-dimension and parameter-jet bounds.
+\end{enumerate}
+One may instead keep a smaller read domain only after proving that
+its cutoff-weighted pushforward in
+\eqref{eq:allarity-cutoff-pushforward} is the law used by the principal
+comparison, with that law's quantitative jet bounds. A merely
+unweighted Gaussian marginal identity does not suffice.
+
+\begin{lemma}[Measure identification from the joint chart law]
+\label{lem:allarity-measure-identification}
+Under (M), every partition-product insertion $h$, including $h=1$,
+satisfies, on the common parameter neighbourhood,
+\[
+ \sum_t\lambda_t\int h\,d\nu_{t,y}
+                 =\Lambda(y)\widetilde{\mathcal A}_{i,x}(h)(y).
+\]
+Consequently (CI)(a) holds with the common loading retained. If the raw
+unit integral is invertible as a jet, normalization cancels that
+loading in the full jet algebra, not just at its zeroth coefficient.
+\end{lemma}
+\begin{proof}
+For fixed $t,y,h$, both the insertion and the cutoff are measurable in
+$(z_{I_*},h')$, where $h'$ denotes the frozen Haar variable. Apply
+Lemma~\ref{lem:allarity-cutoff-marginal} on $I_*$: the joint Gaussian
+marginal has covariance $C_t(y)|_{I_*\times I_*}$ and the cutoff is
+unchanged. No independence between the pieces' coordinates is used.
+The compensated change of variables on this same domain gives
+$R_6\chi_6h\,d\gamma_{C_0}$ by (M). Integrate the frozen variables and
+average with the prescribed weights. The factor $\Lambda(y)$ can be
+pulled out of this average precisely because it is independent of $t$.
+This proves the displayed identity, also for $h=1$ on the identical
+domain and law. Smoothness and the common dominated differentiation
+hypotheses give the identity of jets.
+
+Write $a$ for the jet of $\widetilde{\mathcal A}_{i,x}(1)$ and $L$ for
+the jet of $\Lambda$. Since $\Lambda(0)>0$, $L$ is invertible: divide
+by its constant coefficient and use the finite Neumann series for its
+nilpotent part. Hence, whenever $a$ is invertible,
+\[
+ (La)^{-1}\,L\widetilde{\mathcal A}_{i,x}(h)
+                         =a^{-1}\widetilde{\mathcal A}_{i,x}(h).
+\]
+This is the required normalization, with the same unit insertion.
+\end{proof}
+
+If a loading $\Lambda_t$ depends on the sector or tag, it cannot in
+general be pulled out of the average. The correct normalized integral
+is then
+\[
+ \left(\sum_t\lambda_t\Lambda_t\widetilde{\mathcal A}_t(1)\right)^{-1}
+       \sum_t\lambda_t\Lambda_t\widetilde{\mathcal A}_t(h).
+\]
+Any change to the averaging weights must preserve this formula and its
+jets. The sector expansion of Subsection~\ref{sec:gaussian-reassembly}
+must supply (M), or this more general formula, on the actual course.
+Enlarging the domain to include the cutoff also requires checking the
+read-dimension and comparison bounds on that larger domain. Neither
+identification is proved by the planted marker identity alone.
+
+By Lemma~\ref{lem:allarity-common-insertion-realigned} the output leading
+letters of the cell are the coefficients of
+$\log_*\bigl(\mathcal A_i(\exp_*D^{(i)}_\chi)\bigr)$, where
+$\mathcal A_{i,x}=a_x^{-1}\widetilde{\mathcal A}_{i,x}$ is the normalized
+actual-sector integral. The scalar factor $a_x$ belongs to the unmarked
+normalization. Its invertibility is part of the next proof.
+
+\begin{lemma}[Inverse of a jet close to one]
+\label{lem:allarity-jet-inverse}
+Let $a$ be a jet of order $m$ with $\|a-1\|\le\Pi\le1/2$. Then $a$ is
+invertible in the truncated jet algebra, $\|a^{-1}\|\le2$ and
+$\|a^{-1}-1\|\le2\Pi$.
+\end{lemma}
+\begin{proof}
+Put $u=1-a$, so $\|u\|\le\Pi$. The series $\sum_{k\ge0}u^k$ converges
+absolutely by submultiplicativity, and its sum $v$ satisfies $av=va=1$.
+Moreover $\|v\|\le(1-\Pi)^{-1}\le2$ and
+$\|v-1\|\le\Pi(1-\Pi)^{-1}\le2\Pi$.
+\end{proof}
+
+\begin{lemma}[The per-step discrepancy]
+\label{lem:allarity-step-discrepancy}
+Assume (CI). Suppose that, at each leading rung, the amplitude $\tau$ of
+the masked principal pieces has upper exponent $0$, uniformly in the
+rungs. Then, eventually in $s$, the actual projected polynomial and the
+next prescribed polynomial differ by at most $y$ on the required healthy
+regions, where $y$ satisfies \eqref{eq:allarity-weighted-discrepancy}.
+Hence the first purchase in \eqref{eq:allarity-step-purchases} holds.
+\end{lemma}
+\begin{proof}
+Fix a healthy base configuration $x$; by (CI)(c) all constants below are
+uniform in $x$. Each $Q^{(i)}_T$ is a sum, over the at most $b_n$ set
+partitions of $T$, of products of at most $n$ masked principal pieces. As
+an insertion it is measurable and bounded by $\tau_n$. By
+\eqref{eq:principal-comparison-final} and the payment paragraph after it,
+applied with the base configuration $x$ to the insertions $Q^{(i)}_T$ and
+$1$,
+\[
+ \|\widetilde{\mathcal A}_{i,x}(Q^{(i)}_T)-\widetilde{\mathcal G}_{i,x}(Q^{(i)}_T)\|
+  \le\tau_n\Pi,\qquad \|a_x-b_x\|\le\Pi,
+\]
+with $\Pi$ as in Lemma~\ref{lem:allarity-reference-bounds}, uniformly in
+the period and after the averages.
+
+\emph{Normalization.} Write $a_x=b_x(1+u)$ with $u=b_x^{-1}(a_x-b_x)$. By
+Lemma~\ref{lem:allarity-reference-bounds}(3), $\|u\|\le\beta_0\Pi$. Once $\beta_0\Pi\le1/2$,
+Lemma~\ref{lem:allarity-jet-inverse} shows that $1+u$ is invertible with
+$\|(1+u)^{-1}\|\le2$. Hence $a_x$ is invertible and
+$\|a_x^{-1}\|\le2\beta_0$. For every insertion $h$,
+\[
+ \mathcal A_{i,x}(h)-\mathcal G_{i,x}(h)
+  =a_x^{-1}\Bigl[(\widetilde{\mathcal A}_{i,x}-\widetilde{\mathcal G}_{i,x})(h)
+    -(a_x-b_x)\,\mathcal G_{i,x}(h)\Bigr],
+\]
+as one checks by multiplying out and using
+$\widetilde{\mathcal G}_{i,x}=b_x\mathcal G_{i,x}$. With $h=Q^{(i)}_T$ and
+Lemma~\ref{lem:allarity-reference-bounds}(4),
+\[
+ \|\mathcal A_{i,x}(Q^{(i)}_T)-\mathcal G_{i,x}(Q^{(i)}_T)\|
+  \le2\beta_0(\tau_n\Pi+\Pi\gamma_0\tau_n)=2\beta_0(1+\gamma_0)\tau_n\Pi .
+\]
+Hence all coefficients of $\mathcal A_{i,x}(\exp_*D^{(i)}_\chi)$ and of
+$\mathcal G_{i,x}(\exp_*D^{(i)}_\chi)$ have norm at most
+$K=(1+\gamma_0)\tau_n$ once $2\beta_0(1+\gamma_0)\Pi\le1$.
+
+\emph{Logarithm.} The map $1+X\mapsto\log_*(1+X)$ is a polynomial of
+degree at most $n$ in the coefficients of $X$, with products taken in the
+jet algebra. On elements whose coefficients have norm at most $K\ge1$ it
+is Lipschitz in the sum of the coefficient norms, with constant at most
+$C_nK^{n-1}$ for a constant $C_n$ depending only on $n$. Hence, by
+(CI)(b),
+\[
+ \Bigl\|\log_*\mathcal A_{i,x}\bigl(\exp_*D^{(i)}_\chi\bigr)-D^{(i-1)}\Bigr\|
+ \le C_nK^{n-1}2^n\cdot2\beta_0(1+\gamma_0)\tau_n\Pi=:y ,
+\]
+the norm on the left being the sum over the modes of the jet norms of
+the coefficients at $x$.
+
+\emph{Values.} The zeroth coefficient of a jet product is the product of
+the zeroth coefficients, so the zeroth coefficient of the left side is the
+same expression evaluated at $x$. The jet norm dominates it. Hence the
+actual projected polynomial and $D^{(i-1)}$ differ by at most $y$ at
+every healthy base configuration $x$, which is the bound on the required
+healthy regions.
+
+\emph{Payment.} Since $\tau$, $\beta_0$ and $\gamma_0$ have upper exponent
+$0$, so do $\tau_n$ and $K$, and $y$ has upper exponent $-1/2$. By
+Lemma~\ref{lem:allarity-step-charge}, $2^nR_e$ is a constant, and $H^{q}$
+has upper exponent $0$. Hence $2^nR_eyH^{q}$ has upper exponent $-1/2$,
+and is therefore at most $1$ for all large $s$. This is
+\eqref{eq:allarity-weighted-discrepancy}, which implies the first purchase
+in \eqref{eq:allarity-step-purchases} because $\omega_-\le1$.
+\end{proof}
+
+\subparagraph{A polynomial history with a local transport error.}
+The compensated coordinate map need not be affine. Indeed, on the protected
+ball it is obtained from
+$u\mapsto\log(\exp(u)M)$, as in
+\eqref{eq:compensator-exact}; away from that ball it uses a smooth extension.
+Undoing this change of variables removes its Jacobian, but leaves the
+nonlinear physical insertion in the reference Gaussian integral.
+It does not turn that insertion into its linear curvature polynomial.
+Consequently (CI)(b) is a sufficient convention, not an identity supplied
+by the compensated change of variables. We now give an alternative which
+keeps the prescribed polynomial history throughout.
+
+\begin{lemma}[Local error in the prescribed transport]
+\label{lem:allarity-local-transport-defect}
+Assume (CI)(a),(c) and the amplitude hypotheses of
+Lemma~\ref{lem:allarity-step-discrepancy}. Replace (CI)(b) by the following
+condition. For each nonempty $T\subseteq J$, let $q^-_T$ be the moment
+coefficient of the prescribed polynomial at the next rung. Uniformly on
+its healthy region, suppose
+\[
+ \|\mathcal G_{i,x}(Q^{(i)}_T)-q^-_T\|\le\eta_i,
+ \qquad \|q^-_T\|\le K_i,
+\]
+where $K_i\ge1$ has upper exponent zero, as do the principal amplitudes,
+and $\eta_i$ has a strictly negative upper exponent, uniformly in the
+rungs. Then the conclusion of Lemma~\ref{lem:allarity-step-discrepancy}
+holds with this prescribed history.
+\end{lemma}
+\begin{proof}
+The normalization calculation in that lemma uses only (a),(c), and gives
+\[
+ \|\mathcal A_{i,x}(Q^{(i)}_T)-\mathcal G_{i,x}(Q^{(i)}_T)\|
+ \le d_i:=2\beta_0(1+\gamma_0)\tau_n\Pi.
+\]
+Hence the actual and prescribed moment coefficients differ by at most
+$d_i+\eta_i$. Increase $K_i$ to bound both families; it still has upper
+exponent zero. In the coefficient sum norm on the marker algebra their
+nonconstant parts have norms at most $R_i=(2^n-1)K_i$ and their
+difference has norm at most $(2^n-1)(d_i+\eta_i)$.
+The finite logarithm estimate of Lemma~\ref{lem:allarity-two-route-budget}
+therefore bounds the connected error by
+\[
+ y_i=(2^n-1)\left(\sum_{r=0}^{n-1}R_i^r\right)(d_i+\eta_i).
+\]
+This has strictly negative upper exponent. Its value bounds the healthy
+local discrepancy because the jet norm dominates evaluation at zero.
+For every fixed $q$, the factors $2^nR_eH^q$ have upper exponent zero,
+so $2^nR_eH^qy_i\le1$ eventually, uniformly in the rungs.
+This is exactly the discrepancy purchase used in the recurrence.
+\end{proof}
+
+This argument compares one step on the actual prescribed polynomial
+input and then realigns to the prescribed next polynomial. It does not
+iterate a reference cutoff operator on smooth nonpolynomial outputs.
+The recurrence already propagates the resulting regular and forced
+errors. Thus this route needs no additional invariant function space
+for a second, reference-transported history.
+
+\subparagraph{The joint Gaussian construction with separate guards.}
+There is a more direct route for the selected principal components.
+Here the cutoff belongs to each insertion, rather than to a common
+subprobability measure. The empty product then has integral exactly one.
+The following argument supplies the finite-arity comparison without
+assuming either (M) or exact reference transport (CI)(b).
+
+\begin{lemma}[Guarded joint Gaussian moments]
+\label{lem:allarity-guarded-gaussian}
+Fix $n,D\in\mathbb N$, $A,B\ge1$, and $0\le\epsilon\le1$.
+For every nonempty mode $I\subseteq\{1,\ldots,n\}$ let $p_I$ be an
+invariant polynomial of degree at most $D$ and coefficient norm at most
+$A$ in a finite set of real curvature coordinates. Fix a real mean $a$
+and a real symmetric covariance array $C_*$ on the union of these
+coordinates, with entries bounded by $B$ in absolute value.
+
+For each member $t$ of a finite mixture let $\mu_t$ be a probability
+measure carrying a jointly centred Gaussian array $\eta_t$, with
+covariance $C_t$. Require, on every coordinate used here,
+\[
+ |a_j|\le B,\quad |(C_t)_{jk}|\le B,\quad
+                         |(C_t-C_*)_{jk}|\le\epsilon.
+\]
+For each mode let $0\le\Gamma_{t,I}\le1$ be a measurable guard with
+$\int(1-\Gamma_{t,I})\,d\mu_t\le\epsilon^2$.
+Let $U_t$ be the actual fine configuration on this same probability
+space. On $\Gamma_{t,I}>0$, assume it is healthy on the full prescribed
+support of $p_I$, and that, after a gauge rotation allowed to depend on
+$t,I,U_t$, its normalized curvature coordinates $\xi_{t,I}$ satisfy
+\[
+                 |\xi_{t,I,j}-a_j-\eta_{t,j}|\le\epsilon
+\]
+on every coordinate used by $p_I$. The polynomial's invariance must
+remove that rotation from its physical value. All physical evaluations
+and guarded products are assumed measurable.
+
+Use the same nonnegative mixture weights $\lambda_t$, of sum one,
+for every partition and for the empty product. Define, for $S\ne\varnothing$,
+\[
+ M_S=\sum_{\pi\in\mathcal P(S)}\sum_t\lambda_t
+       \int\prod_{I\in\pi}\Gamma_{t,I}p_I(\xi_{t,I})\,d\mu_t,
+ \qquad
+ M^*_S=\sum_{\pi\in\mathcal P(S)}
+       \mathbb E_{C_*}\prod_{I\in\pi}p_I(a+Z),
+\]
+and $M_\varnothing=M^*_\varnothing=1$. Here $\mathbb E_{C_*}$ means
+the finite Gaussian pairing functional; $C_*$ need not be positive.
+Then all the physical integrals exist.
+There is a polynomial $P_{n,D}$ with positive coefficients such that
+\[
+ \sum_{S\ne\varnothing}|M_S-M^*_S|
+              \le\epsilon P_{n,D}(A,B),\qquad
+ \left|\log_*M-\log_*M^*\right|_1
+              \le\epsilon P_{n,D}(A,B),
+\]
+after increasing the same polynomial if necessary. Its coefficients and
+degree are independent of the number of curvature coordinates and the
+number of mixture members.
+\end{lemma}
+\begin{proof}
+Fix a partition with $l\le n$ blocks, put $d=lD$, and abbreviate
+$P=\prod_{I\in\pi}p_I$ and $\Gamma=\prod_{I\in\pi}\Gamma_{t,I}$.
+The product guard satisfies
+\[
+ 0\le1-\Gamma\le\sum_{I\in\pi}(1-\Gamma_{t,I}),\qquad
+                   \int(1-\Gamma)\,d\mu_t\le l\epsilon^2.
+\]
+No independence of the guards is required.
+
+We use Gaussian moment bounds that do not count unused coordinates.
+For $Y_j=a_j+\eta_{t,j}$ and every fixed integer $r\ge1$, the
+one-dimensional Gaussian moment formula and $|a_j|,\operatorname{Var}
+\eta_{t,j}\le B$ give
+$\mathbb E(1+|Y_j|)^r\le c_r(1+B)^r$.
+For a product of at most $r$ such factors, the arithmetic--geometric
+mean inequality bounds its expectation by the largest of these marginal
+$r$th moments, padding with factors one if needed. The bound applies
+also to repeated coordinates, without independence. Thus expectations
+of the absolute values of monomials of fixed degree, and of their
+squares, have bounds polynomial in $B$ depending only on that degree.
+
+On $\Gamma>0$ all the coordinate comparisons hold simultaneously.
+Expand each $p_I$ into monomials and replace the factors one at a time.
+For every product monomial there are at most $d$ replacements, each
+costing $\epsilon$ times at most $d-1$ factors bounded by
+$1+|Y_j|$. The sum of absolute coefficients of the product expansion
+is at most $A^l$. Integrating the preceding moment bound proves
+\[
+ \int\Gamma\left|\prod_{I\in\pi}p_I(\xi_{t,I})-P(Y)\right|d\mu_t
+                           \le\epsilon A^l c_d(1+B)^d.
+\]
+The case $d=0$ has zero error. This estimate and the Gaussian moment
+bound also prove integrability of the guarded physical product.
+On $\Gamma=0$ its value is defined as zero, so no control of physical
+coordinates on a failed guard is needed.
+
+To remove the guard from $P(Y)$, Cauchy--Schwarz gives
+\[
+ \left|\int(1-\Gamma)P(Y)\,d\mu_t\right|
+ \le\left(\int(1-\Gamma)^2d\mu_t\right)^{1/2}
+                  \left(\int|P(Y)|^2d\mu_t\right)^{1/2}
+ \le\sqrt l\,\epsilon A^l c_d'(1+B)^d.
+\]
+Here $(1-\Gamma)^2\le1-\Gamma$, and the second moment follows by
+expanding $P\overline P$, of degree at most $2d$ and coefficient
+norm at most $A^{2l}$.
+
+Finally compare the Gaussian expectations of $P$ with covariances
+$C_t$ and $C_*$. The mean is the same. In the pairing formula for a
+monomial of degree at most $d$, subtract corresponding products one
+factor at a time. Every difference contains a covariance difference
+at most $\epsilon$, and at most $d$ remaining bounded mean or
+covariance factors. The number of pairings depends only on $d$.
+Hence the difference is at most
+$\epsilon A^l c_d''(1+B)^d$.
+Adding the three errors and averaging with $\lambda_t$ preserves the
+bound. There are only a number depending on $n$ of subsets and
+partitions. Summing gives the moment bound and bounds both families
+of moments by a polynomial in $A,B$.
+
+The constant coefficients of both moment elements are one: the empty
+product has no guard and every $\mu_t$ is a probability measure.
+Apply the finite logarithm estimate of
+Lemma~\ref{lem:allarity-two-route-budget} in the scalar marker algebra.
+This proves the connected bound with an enlarged polynomial.
+\end{proof}
+
+The construction is simultaneous in the modes. Although the allowed
+gauge rotation can differ from one polynomial to another, the array
+$\eta_t$ and its measure are common to all of them. Selecting an
+independent Gaussian sample for each factor would destroy the cross
+covariances in $M^*_S$ and invalidate the argument.
+
+\begin{corollary}[The discrepancy purchase from a joint guarded law]
+\label{cor:allarity-guarded-purchase}
+At each leading rung and every healthy coarse configuration, suppose
+the principal-component integral is the moment element $M$ in
+Lemma~\ref{lem:allarity-guarded-gaussian}, and the prescribed next
+polynomial is $\log_*M^*$ for the same mean, covariance and incoming
+polynomials. Let $A,B\le H^c$, with fixed $c\ge0$. For every fixed
+requested $q$, one can choose $f$ before the final coupling threshold
+so that $\epsilon\le H^{-f}$ implies
+\eqref{eq:allarity-weighted-discrepancy}, uniformly in the rungs and
+healthy configurations.
+\end{corollary}
+\begin{proof}
+Write $r$ for the total degree of $P_{n,D}$ and $C$ for the sum of its
+coefficients. The lemma bounds the discrepancy by
+$y\le C H^{cr-f}$. Choose $f>q+cr$. Then
+$2^nR_eH^qy\le 2^nR_e C H^{q+cr-f}\le1$ eventually.
+All constants are uniform by hypothesis. No parameter derivatives of
+a guard have been taken. Alternatively any strictly negative upper
+exponent for $\epsilon$, with exponent-zero $A,B$, pays every such
+fixed monitor power.
+\end{proof}
+
+\begin{lemma}[Reader comparison for an adjacent pair of stages]
+\label{lem:allarity-pair-reader}
+Fix an actual adjacent step, its fine block side $L$, its predictor,
+the two attached paths and clips, and its precision horizon. Suppose
+the two stages have positive strip widths $s_f,s_c$, strip price
+bounds $z_f,z_c$, and positive metric floors $a_f,a_c$ on the fine
+and coarse beds respectively. Retain the exact
+factorization, stationarity and transport identities of
+Subsection~\ref{sec:actual-reader-tree-covariance} for these two beds.
+Use the common strip and price bounds
+\[
+ s_\wedge=\min(s_f,s_c),\qquad z_\vee=\max(z_f,z_c),
+ \qquad a=a_f.
+\]
+Assume the local Gaussian, guard and room hypotheses of
+Subsection~\ref{sec:actual-reader-dawn-selection}, with these bounds,
+including its predictor purchase before $L$ and its actual coupling
+band. Then its joint reader conclusions hold on this step, whether
+or not its two stage indices agree. In particular, for any fixed $f$,
+at sufficiently large station scale $s$, uniformly for the reader
+parameter $x\in[s/2,s]$, the covariance and physical-coordinate
+errors are at most $H^{-f}$ and each guard loses mass at most
+$H^{-2f}$, where $H=\exp((\log\log s)^2)$.
+The choices are uniform in periods, fields, forests and tags within
+the stated purchased classes. They can be made simultaneously for
+any fixed finite list of admissible adjacent stage pairs.
+\end{lemma}
+\begin{proof}
+Restriction to a smaller strip decreases every exponentially weighted
+row sum. Replacing either price bound by $z_\vee$ increases its
+majorant. Thus both adjacent rows satisfy their original estimates
+at $s_\wedge,z_\vee$. The fine precision keeps its fine metric
+floor $a_f$; no equality with the coarse metric is asserted. In
+particular, the coarse metric and the diagonal operators in the
+two-form transport are not replaced by fine-stage objects.
+
+The tree calculation in
+Subsection~\ref{sec:actual-reader-tree-covariance} starts with separate
+metrics $M_f,M_c$ and separate curls on the two tori. Its exact
+conclusion is
+\[
+ (DI_F)A_F^{-1}(DI_F)^{\mathsf T}=P_f-JP_cJ^{\mathsf T}.
+\]
+It uses the retained root-gradient, stationarity and curvature
+intertwining identities, not equality of stage indices. The gap on
+the fine tree slice uses $a_f$ and the predictor penalty. Hence the
+common inverse and cover-row construction of
+Subsection~\ref{sec:actual-reader-short-covariance} applies with the
+fixed adjacent patch and these bounds. The installed transport row
+uses the actual fine inverse diagonal, tower and coarse diagonal;
+their row-product estimate is valid at the common strip width.
+The two omitted tails therefore have bounds $C e^{-c h_x}$ with
+$C<\infty$, $c>0$ fixed by this pair and
+$h_x=\lfloor\lceil(\log x)^2\rceil/10000\rfloor$.
+They are eventually at most $x^{-1/8}$, uniformly in the period.
+
+The actual-to-flat column comparison and removal of the bare path
+cut in Subsection~\ref{sec:actual-reader-local-gaussian-prices} use the
+same fine tree precision and the same adjacent predictor. Their
+proofs give the actual reader covariance error $x^{-1/8}$ and
+the corresponding mean estimate for this pair. Combining the
+covariance error with the cover tail gives $2x^{-1/8}$. The mean
+comparison retains the actual coarse coupling in its forecast.
+The one-pose construction and the nonlinear guarded comparison
+use the stipulated room and coupling inequalities; their estimates
+are $x^{-1/32}$ for the normalized physical error and $x^{-1}$
+for lost guard mass. None of these arguments changes the horizon,
+forest, recording parameter or sample space.
+
+Finally $2x^{-1/8}\le H^{-f}$, $x^{-1/32}\le H^{-f}$ and
+$x^{-1}\le H^{-2f}$ eventually, uniformly for $x\in[s/2,s]$,
+by \eqref{eq:reader-band-power}. This proves the asserted joint
+comparison, including off-diagonal covariance entries. For a finite
+list of pairs first retain each pair's constants and then take the
+maximum of its finitely many entrance thresholds. This is not a
+maximum over all stage indices or all periods. A growing stage
+profile must place each such finite purchase before its own delay.
+\end{proof}
+
+\subparagraph{Attachment to the actual adjacent step.}
+For the actual joint reader model of
+Subsection~\ref{sec:ex-lattice-all-arity-reader-gaussian-model}, the
+probability space is \eqref{eq:ex-lattice-reader-space}, the physical
+field is \eqref{eq:ex-lattice-reader-fine-field}, and the joint
+incidence vector is its stated linear image of the same Gaussian
+coordinate. The guards are the individual reader guards, retained
+inside each product. With the same-history and prior-purchase hypotheses
+of Subsection~\ref{sec:actual-reader-dawn-selection},
+\eqref{eq:reader-selected-sight} supplies $|C_t-C_*|\le H^{-f}$,
+where $C_*$ is the prescribed short covariance. That section's last
+subsection supplies guard loss at most $H^{-2f}$ and the normalized
+physical-coordinate error at most $H^{-f}$. Its parent forecast is
+exactly the mean of the prescribed short step, with the actual coarse
+coupling retained. Thus it supplies the joint-law hypotheses of the
+lemma on a constant-order plateau. At a stage change use
+Lemma~\ref{lem:allarity-pair-reader} with the actual adjacent beds,
+the fine block side and the common horizon. Its explicit local
+hypotheses must hold for that pair. The entry bounds and the prescribed
+polynomial coefficient bounds provide the $H^c$ prices, after a fixed
+increase of $c$.
+
+The component identification uses
+Subsection~\ref{sec:actual-mixed-marked-compiler}, specifically its
+split $W_h=\Gamma_hW_h+(1-\Gamma_h)W_h$ on this same measure.
+An entirely leading component contains no body letter; compatibility
+then excludes background packets. Its integrand is therefore the
+product of the guarded principal values. On each positive guard the
+fine field is healthy on the full original mask support, so the masked
+value is $p_I(\xi_{t,I})$. Whole-mode selection and
+\eqref{eq:planted-integral} sum these products over the partitions.
+This gives precisely $M$, with empty coefficient one, under the
+compiler's same-guard and same-measure hypotheses. Invariance removes
+the one gauge supplied on each patch. The same mean and short covariance
+in the polynomial step give $M^*$ by finite Wick contraction.
+Consequently Corollary~\ref{cor:allarity-guarded-purchase} applies to
+these actual principal components. No claim about the full interacting
+block measure being Gaussian is used.
+
+This identifies the local discrepancy supplier from the canonical
+local estimates, also for an adjacent pair satisfying
+Lemma~\ref{lem:allarity-pair-reader}. In the selected history the
+pair uses the minimum of its strip widths, the fine metric floor,
+the maximum of its prices and the fine stage's block side. The
+actual horizon must supply the algebraic identities and room on
+this pair; scalar bounds cannot replace them. Separately, the
+upper compiler's body, all-hole and warning purchases are required
+at $e_*=e+1+\sigma$. They do not follow from this reader comparison
+or from the numerical stage-boundary lemma.
+
+This route retains the prescribed polynomial class: the reference
+moments are finite Wick pairings, followed by the finite connected
+logarithm. Its application on the selected course retains the
+explicit upstream hypotheses of the cited reader and compiler
+chapters. The health and covariance hypotheses must
+cover every read of every partition product. The component's unit
+normalization is the empty probability integral, not the mass of one
+insertion's guard. The existing common-cutoff route is a separate
+sufficient criterion; it must not be substituted for this joint
+construction without proving its additional measure identities.
+
+\begin{lemma}[The remaining step purchases]
+\label{lem:allarity-step-purchases}
+For all sufficiently large $s$, uniformly in the rungs of the leading
+interval, the following hold:
+\begin{enumerate}
+\item the second purchase in \eqref{eq:allarity-step-purchases}, with
+ $G_i=G(x_i)$;
+\item both purchases in \eqref{eq:allarity-step-small}, with
+ $B_i=\lceil(\log x_i)^2\rceil^2$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Second purchase.} By Subsection~\ref{sec:actual-mixed-marked-compiler},
+$G$ decays faster than every negative power of $H$ uniformly on
+$[s/2,s]$. So eventually $G(x_i)\le H^{-1}/2$. The quantity
+$nR_{e+1}$ is a constant by Lemma~\ref{lem:allarity-step-charge}, so
+$nR_{e+1}H^{-2}\le H^{-1}/2$ once $H\ge2nR_{e+1}$.
+
+\emph{Smallness.} For $\log s\ge1$ and $x_i\le s$,
+$B_i\le((\log s)^2+1)^2\le4(\log s)^4$. Hence
+\[
+ (2B_i+1)^4\le9^4(\log s)^{16}
+ =\exp\{4\log9+16\log\log s\}\le\exp\{(\log\log s)^2\}=H
+\]
+once $\log\log s\ge17$. Also $e^{H^{-1}}-1\le1$ as soon as
+$H^{-1}\le\log2$.
+\end{proof}
+
+The step count of the recurrence is
+Lemma~\ref{lem:allarity-upper-count-power} below. It uses only $L_j\ge3$
+and the maximality of $\ell$; no floor on the block lengths and no stage
+condition is needed.
+
+\subparagraph{What this supplies and what remains.}
+On the leading interval, the lemmas of this subsection and
+Lemma~\ref{lem:allarity-upper-count-power} give the following, all at
+the weight $\omega_-$ and eventually in $s$ uniformly in the finite
+period:
+\begin{itemize}
+\item the remainder multiplier $(\alpha+1)z$;
+\item the principal incidence price $H^{-2}$;
+\item the forced price $G_i^2$ with $G_i=G(x_i)$;
+\item the leading budget $H^{-4}$, given the unweighted bound $H^A$;
+\item the discrepancy purchase \eqref{eq:allarity-weighted-discrepancy};
+\item the purchases
+ \eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small};
+\item the step count, with remainder $d_{k-\ell}\le H^{\kappa-q}$ at the
+ middle level.
+\end{itemize}
+The following inputs are not supplied here.
+\begin{enumerate}
+\item \emph{Applicability of the upper calculation} at each leading rung.
+ This includes its primitive body-compiler, all-hole and joint-warning
+ purchases, which Subsection~\ref{sec:actual-mixed-marked-compiler} lists as
+ inputs on the same body alphabet and coarse representation.
+\item \emph{The hypotheses of
+ Subsection~\ref{sec:marked-healthy-cumulant-launch} at every leading rung},
+ which give the unweighted principal-source bound $H^A$ by
+ Lemma~\ref{lem:allarity-principal-power}, and the terminal-source
+ purchase: the launched insertions must give the initial
+ remainder price $d_0$ and forced price $G_k$ at the weight $\omega_-$,
+ and, for the leading family of calibrated singletons, masks inspected on
+ the prescribed supports $X_{c,\{j\}}$.
+\item \emph{The common insertion (CI)} of
+ Lemma~\ref{lem:allarity-step-discrepancy}, or its clauses (a),(c)
+ together with the local transport error of
+ Lemma~\ref{lem:allarity-local-transport-defect}, or the joint guarded
+ law of Corollary~\ref{cor:allarity-guarded-purchase}. That the compiler integrates the
+ masked moments $Q^{(i)}_T$ follows from the realignment by
+ Lemma~\ref{lem:allarity-common-insertion-realigned}, given the form of the
+ top-level principal insertion in item~2 and the measure identification
+ (CI)(a) of the planted sector and tag measures with those of the
+ principal comparison. The remaining clauses say that the Gaussian history is transported by the
+ reference integrals on those same insertions and is the one used at the
+ middle level, and that the comparison data are uniform over the healthy
+ base configurations. The bounded transport and the inverse bound for the
+ reference mass follow from the latter by
+ Lemma~\ref{lem:allarity-reference-bounds}, and the normalization is then
+ handled by Lemma~\ref{lem:allarity-jet-inverse}. The
+ amplitude bound at every leading rung follows from item~2
+ by Corollary~\ref{cor:allarity-rung-amplitude}.
+\item \emph{The reader separation} $2QB$ between distinct replica cells
+ assumed in Lemma~\ref{lem:allarity-step-charge}.
+\end{enumerate}
+The rungs below the middle level use the lower calculation of
+Subsection~\ref{sec:actual-mixed-marked-compiler} at the large weight
+$\omega$, after the launch of
+Subsection~\ref{subsec:allarity-corrected-budget}.
+
+\subsubsection{The scalar envelope used in the replica estimate}
 
 We record the final elementary step linking a paid marked representation
-to Section~\ref{sec:rank-root-normalization}. Suppose a polynomial
+to Subsection~\ref{sec:rank-root-normalization}. Suppose a polynomial
 density on a torus of $q_0$ sites has the form
 \[
  D(U)=e^{\operatorname{exponent}_P(U)}
@@ -247,7 +1684,22 @@ are $M_0=q_0 n$ marks. Thus $L,\ell\le1$
 give per-site expense at most $1+n$, exactly the arity dependence
 in the determinant ticket. The weight of the coefficient carrying
 a chosen nonempty subset $I$ in each of the $q_0$ cells is the
-$q_0$th power of its single-cell weight. Apply the normalization
+$q_0$th power of its single-cell weight. At the constant weight
+\eqref{eq:allarity-marker-weight} this is $\omega^{q_0|I|}$, and
+since the coefficient norm dominates each weighted coefficient,
+\eqref{eq:allarity-density-envelope} gives pointwise, for the
+coefficient $D_{I}^{\otimes}(U)$ of the monomial carrying $I$ in every
+cell,
+\[
+ \omega^{q_0|I|}\,\bigl|D_{I}^{\otimes}(U)\bigr|
+   \le\exp\{\operatorname{exponent}_P(U)+q_0(L+n\ell)\}.
+\]
+With $u=M$ the marker allowance of
+Subsection~\ref{sec:rank-root-normalization}, $\omega=\mathcal
+M_k^{1/(8M)}=e^{2I_k}$ is the weight $a$ used there, because
+$I_k=\log\mathcal M_k/(16M)$. Hence this is the coefficient price
+$a^{q_0|I|}$ with per-site expense $X=L+n\ell\le1+M$ required there,
+on the same pushed density. Apply the normalization
 estimate and then take the $q_0$th root. The denominator is the
 partition function of the same pushed density, preserved by the
 unmarked coefficient identity at every step.
@@ -260,3 +1712,1106 @@ construction must buy all of these on the common history, including
 the later propagation below $l$. Neither the recurrence nor the
 scalar envelope asserts those upstream estimates without their
 corresponding purchases.
+
+\subsubsection{Transport to the output torus}
+\label{subsec:allarity-output-transport}
+
+We complete the propagation in the application to the pairwise receipt.
+The chart has level $k$, middle level $\ell$ and root depth $w\le\ell$, and
+the arity is $n=2$. We identify the marked density at the output, show
+that its pushed version below the middle level keeps prices at most one,
+and conclude with the coefficient price of
+Subsection~\ref{sec:rank-root-normalization}. As before, $s=\widehat\beta_k$,
+$H=\mathcal M_k$, $\omega=H^{1/(8u)}$, and the fixed constants
+$\alpha\ge8T_e$ and $q\ge6$ are those of
+Subsection~\ref{subsec:allarity-step-supply}.
+
+\subparagraph{The invoice and its parts.}
+Let $f_0,f_1$ be the two finite-volume insertions of a fit configuration,
+as in Subsection~\ref{subsec:trace-rounded-receipt}. Let $S_0(T)$
+($T\subseteq\{0,1\}$) be the reference moments at the rounded
+configuration, with $S_0(\varnothing)=1$. In the marker algebra
+$\mathscr A_{\{0,1\}}$ of Subsection~\ref{sec:allarity-planted-compiler},
+the polynomial $\sum_TS_0(T)z_T$ has constant coefficient one. So it is
+$\exp_*D$ for a unique $D$ with zero constant coefficient, namely
+\[
+ D=j_0z_0+j_1z_1+\kappa z_0z_1,\qquad
+ j_c=S_0(\{c\}),\quad\kappa=S_0(\{0,1\})-j_0j_1 .
+\]
+Indeed $\exp_*D=1+D+D^2/2$ and $D^2=2j_0j_1z_0z_1$. The \emph{invoice} is
+\[
+ \mathcal I=\exp_*(-D)\,(1+f_0z_0)(1+f_1z_1).
+\]
+
+\begin{lemma}[The parts of the invoice]\label{lem:allarity-invoice-parts}
+The coefficients of $\mathcal I$ are
+\[
+ \mathcal I_{\{c\}}=f_c-j_c\quad(c=0,1),\qquad
+ \mathcal I_{\{0,1\}}=(f_0-j_0)(f_1-j_1)-\kappa ,
+\]
+that is, $\mathcal I_s=\Phi_s$ for every nonempty $s$.
+\end{lemma}
+\begin{proof}
+First,
+$\exp_*(-D)=1-D+D^2/2=1-j_0z_0-j_1z_1+(j_0j_1-\kappa)z_0z_1$.
+Multiply by $1+f_0z_0+f_1z_1+f_0f_1z_0z_1$, using $z_c^2=0$. The
+coefficient of $z_c$ is $f_c-j_c$. The coefficient of $z_0z_1$ is
+\[
+ f_0f_1-j_0f_1-j_1f_0+j_0j_1-\kappa
+ =(f_0-j_0)(f_1-j_1)-\kappa .\qedhere
+\]
+\end{proof}
+
+\subparagraph{Cells and sites.}
+The cells of the centered tiling at depth $w$ of the level-$N$ torus are
+indexed by the sites of the level-$w$ torus, one cell for each site.
+Hence the number $q_0$ of replica cells equals the site count of the
+level-$w$ torus. This is the equality required in the scalar envelope:
+the output torus is the level-$w$ torus.
+
+\subparagraph{Propagation below the middle level.}
+On the rungs $j$ with $w\le j<\ell$ there are no leading letters, and the
+lower calculation of Subsection~\ref{sec:actual-mixed-marked-compiler}
+applies. All prices from the launch at $\ell$ downwards are taken at the
+large weight $\omega=H^{1/(8u)}$. With incoming regular marker-root price
+$z\le H^{-1/2}$ and incoming forced budget $z\,\omega_j$, where
+$\omega_j\in[0,1]$ is the actual lower-interval attenuation, the lower
+calculation gives two outputs:
+\begin{itemize}
+\item regular marker-root price at most
+ $\tfrac12(\alpha z+H^{1/2}z^2)\le\alpha z+H^{1/2}z^2$;
+\item forced site price at most $(e^{\Sigma}-1)/m\le G(y_j)$, where
+ $m=G(y_j)^{-1}$ and $y_j$ is the fine coupling of the rung.
+\end{itemize}
+These require the rung couplings to lie in $[s/2,s]$.
+
+\begin{lemma}[Lower propagation]\label{lem:allarity-lower-propagation}
+Assume the following.
+\begin{enumerate}
+\item At level $\ell$ the regular marker-root price is at most
+ $z_0\le H^{-3/4}$, and there are no leading letters.
+\item Every rung of $[w,\ell)$ satisfies the hypotheses of the lower
+ calculation, with couplings in $[s/2,s]$.
+\item The forced input of each lower rung is admissible:
+ its forced budget is at most $z_t\,\omega_j$ along the iteration below.
+ Prices are upper bounds, so $z_t$ may be enlarged for this.
+\item The lower step count satisfies
+ \begin{equation}\label{eq:allarity-lower-count}
+  (\alpha+1)^{\ell-w}\le H^{1/4}.
+ \end{equation}
+\end{enumerate}
+Let $z_t$ be the regular bound after $t$ lower steps, so that level
+$\ell-t$ carries $z_t$. Then $z_t\le(\alpha+1)^tz_0\le H^{-1/2}\le1$ for
+$0\le t\le\ell-w$, and every forced site price on $[w,\ell]$ is at most
+$1$.
+\end{lemma}
+\begin{proof}
+If $H^{1/2}z_t\le1$, then
+\[
+ z_{t+1}\le(\alpha+H^{1/2}z_t)z_t\le(\alpha+1)z_t .
+\]
+By induction $z_t\le(\alpha+1)^tz_0$ for $t\le\ell-w$, as long as
+$H^{1/2}z_t\le1$. This condition holds throughout, because
+$(\alpha+1)^tz_0\le H^{1/4}H^{-3/4}=H^{-1/2}$ by
+\eqref{eq:allarity-lower-count}. That is also the domain bound
+$z\le H^{-1/2}$ of the lower calculation. The forced outputs of the lower
+rungs are at most $G(y_j)\le1$. At $t=0$ the forced price is the one
+delivered by the launch, which is at most $1$ by
+Proposition~\ref{prop:allarity-launch}.
+\end{proof}
+
+By Lemma~\ref{lem:allarity-lower-count-free} below, the lower count
+\eqref{eq:allarity-lower-count} holds for all large $s$, uniformly in the
+chart, and by Lemma~\ref{lem:allarity-lower-forced} hypothesis~3 can be
+dropped.
+
+\begin{proposition}[The coefficient price at the output]
+\label{prop:allarity-output-price}
+Assume the following.
+\begin{enumerate}
+\item The launch receipt of Proposition~\ref{prop:allarity-launch} at the
+ middle level.
+\item The hypotheses of Lemma~\ref{lem:allarity-lower-propagation}.
+\item The representation at the output level $w$ is lawful, with the
+ suppositions of Subsection~\ref{sec:rank-root-normalization} at the stage
+ of level $w$.
+\end{enumerate}
+Then, at the weight $\omega=H^{1/(8u)}$, the following hold for every
+nonempty $s\subseteq\{0,1\}$:
+\[
+ \omega^{q_0|s|}\,\bigl|\mathcal D_s^{\otimes}(U)\bigr|
+ \le\exp\{\operatorname{exponent}_P(U)+q_0(1+n)\}.
+\]
+Here $\mathcal D$ is the push to the level-$w$ torus of the replicated
+marked density of the invoice $\mathcal I$, and $\mathcal D_s^{\otimes}$
+is its coefficient carrying $s$ in every cell. The normalizing
+denominator is the partition function of the same pushed density, by the
+unmarked coefficient identity at every step. Taking $u=M$, so that
+$\omega=a$, this is the coefficient price $a^{q_0|s|}$ with per-site
+expense $X\le1+n\le1+M$ required by \eqref{eq:rank-root}. Consequently,
+for $u=M$ and $k\ge K_M$ of Proposition~\ref{prop:rank-root-output-ticket},
+the root test of $\Phi_s$ on the centered tiling at depth $w$ is at most
+$\mathcal M_k^{-1/(16M)}$.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:allarity-lower-propagation}, at level $w$ the regular
+incidence price per mark is $\ell_w\le1$ and the forced site price is
+$L_w\le1$. By the cells-and-sites paragraph, the output torus has $q_0$
+sites, and there are $M_0=q_0n$ marks. The scalar envelope
+\eqref{eq:allarity-density-envelope} and the paragraph after it give the
+displayed inequality with expense $L_w+n\ell_w\le1+n$. By
+Lemma~\ref{lem:allarity-invoice-parts}, the coefficients of the
+invoice are the $\Phi_s$, so the replicated coefficient is that of
+$\Phi_s$ in every cell. The last statement is
+Proposition~\ref{prop:rank-root-output-ticket}, applied with $w(k)=w$,
+together with \eqref{eq:rank-root} and the lawful representation at $w$.
+For general $u$ the weight is $\omega=H^{1/(8u)}$ and the same argument
+gives the bound $H^{1/(16M)-|s|/(8u)}$ only; the root conclusion uses
+$u=M$.
+\end{proof}
+
+\subsubsection{The launch at the middle level}
+\label{subsec:allarity-corrected-budget}
+
+At the middle level $\ell$ the representation produced by the leading
+interval is converted into one suitable for the lower interval. Three
+things change at once: the marker weight is raised from $\omega_-$ to
+$\omega$; the leading family is replaced by its corrected form; and the
+leading designation is dropped, so that the corrected pieces become
+ordinary regular letters. We keep the notation of
+Subsections~\ref{subsec:allarity-step-supply}
+and~\ref{subsec:allarity-output-transport}. In particular
+$\mathcal I=\exp_*(-D_R)\prod_c(1+f_cz_c)$ is the invoice, with $D_R=D$ the
+reference cumulant polynomial.
+
+\subparagraph{The reference factor commutes with every push.}
+The polynomial $\exp_*(-D_R)$ has field-independent coefficients. Every
+block integration and every push acts linearly and coefficientwise on
+the marker algebra. So each of them commutes with multiplication by
+$\exp_*(-D_R)$. Hence the pushed invoice at any level is
+$\exp_*(-D_R)$ times the pushed product of the insertions. At the middle
+level the latter has principal part $\exp_*(D_Q)$, with $D_Q$ the
+connected polynomial of the same Gaussian history. The invoice is
+therefore launched at the middle level with corrected principal
+polynomial $D_Q-D_R$. This is an identity of densities. It does not by
+itself give a priced representation, for the following reason.
+
+\subparagraph{The failed mask.}
+For one mode, let $\chi$ be the healthy mask of its prescribed support,
+$W$ the actual leading coefficient and $R$ the corresponding coefficient
+of $D_R$. The leading letter carries $\chi W$, while the reference factor
+contributes $R$ everywhere. Hence
+\[
+ \chi W-R=\chi(W-R)-(1-\chi)R .
+\]
+The first term is a regular letter controlled by the healthy bound on
+$W-R$ (Lemma~\ref{lem:allarity-corrected-pieces}). The second term is
+supported where the prescribed support contains a flag. It must be moved
+into the forced alphabet and regrouped with the forced background, as in
+the mask change of the realignment subsection. Its price is controlled by
+a bound on the reference coefficients $R$, not by the healthy bound.
+
+\subparagraph{The corrected budget.}
+The bound on the corrected pieces is already proved in
+Subsection~\ref{sec:allarity-cumulant-comparison}. There the free moment
+polynomial $q'$ is the reference moment polynomial $1+X_R$, and the
+moment polynomial $q$ of the same Gaussian history is $1+X_Q$. If the
+coefficientwise moment error is at most $H^{-3/2}$, then
+\eqref{eq:allarity-cumulant-error} gives
+$\|D_Q-D_R\|_1+H^{-3/2}\le H^{-31/32}$ for all large $s$. That moment
+error is \eqref{eq:allarity-moment-error} at the powers of its scale
+paragraph. The actual healthy local error between a planted leading
+coefficient and the coefficient of $D_Q$ is at most $H^{-3/2}$ by
+Subsection~\ref{sec:marked-healthy-cumulant-launch}. Both statements hold
+under the hypotheses stated in those sections.
+
+\begin{lemma}[Corrected leading pieces]
+\label{lem:allarity-corrected-pieces}
+Assume the moment error $H^{-3/2}$ of
+Subsection~\ref{sec:allarity-cumulant-comparison} and the healthy local error
+$H^{-3/2}$ of Subsection~\ref{sec:marked-healthy-cumulant-launch}, at the
+middle level. Then, for all large $s$, every corrected leading piece at
+that level, that is, an actual leading piece minus the corresponding
+coefficient of $D_R$, is at most $H^{-31/32}$ on its healthy region. Its
+incidence price at the weight $\omega$ is at most
+\[
+ h=c\,H^{-27/32},\qquad c=2^nR_e .
+\]
+\end{lemma}
+\begin{proof}
+The first assertion is the triangle inequality applied to the healthy
+local error and \eqref{eq:allarity-cumulant-error}, as in the last
+paragraph of Subsection~\ref{sec:allarity-cumulant-comparison}. Each
+coefficient is bounded by the coefficient $\ell^1$ norm. For the price, a
+piece of mode $I$ carries weight $\omega^{|I|}\le H^{1/8}$ by
+\eqref{eq:allarity-weight-cap}, and support charge at most $R_e$ by
+Lemma~\ref{lem:allarity-step-charge}. At most $2^n$ modes contain a given
+mark. Hence the incidence price is at most
+$2^nR_eH^{1/8}H^{-31/32}=cH^{-27/32}$.
+\end{proof}
+
+\begin{lemma}[Raising the regular marker weight]
+\label{lem:allarity-weight-raise}
+For each regular letter let $I$ be its marker set, $X$ its full support,
+and $t(I)$ the number of replica cells represented in $I$. Suppose the
+marker-root sum of letters with $t(I)=1$ is at most $p_1$ at weight
+$\omega_-$ and support exponent $e$. Suppose the corresponding sum of
+letters with $t(I)\ge2$ is at most $p_2$ at weight $\omega_-$ and support
+exponent $e+\sigma$, where $\sigma>0$, and that each of these letters
+satisfies
+\[
+ \sigma\operatorname{cov}_B(X)\ge Un\,t(I)\log H .
+\]
+Then the marker-root price at weight $\omega$ and support exponent $e$
+is at most $H^{Un}p_1+p_2$.
+\end{lemma}
+\begin{proof}
+Empty marker sets contribute to neither sum. For a letter with
+$t(I)=1$, $|I|\le n$, so raising the weight costs at most $H^{Un}$.
+For a letter with $t(I)\ge2$, $|I|\le nt(I)$. Raising the weight and
+lowering the support exponent together multiply its price by
+\[
+ H^{U|I|}\exp\{-\sigma\operatorname{cov}_B(X)\}\le1.
+\]
+Summing at each fixed marker gives the claim, uniformly in the number
+of replica cells.
+\end{proof}
+
+The recurrence at exponent $e$ supplies neither the price of the
+multi-cell letters with a spare exponent $\sigma$ nor the support
+inequality of the lemma. Both are obtained in
+Lemma~\ref{lem:allarity-remainder-restored} below, from one spare-exponent
+run of the leading interval and from the geometry of the halos.
+
+The forced background is not covered by this lemma: a forced component
+may contain marked pieces from several cells, and its weight may then
+grow by more than $H^{Un}$. Its weight change is paid together with the
+failed-mask pieces, from a spare support exponent and from the smallness
+of the forced background.
+
+\subparagraph{Geometric and pricing hypotheses at the launch.}
+For a cell $c$ let $Y_c=\bigcup_IX_{c,I}$ be its halo, the union of its
+prescribed supports. For a support $X$ let $t(X)$ be the number of cells
+$c$ with $X\cap Y_c\ne\varnothing$. We assume:
+\begin{enumerate}
+\item[(F)] at the middle level, the forced background has site price at
+ most $\eta_-$ at the weight $\omega_-$ and at the support exponent
+ $e+1+\sigma$, for a fixed spare exponent $\sigma>0$. The full support of
+ every marked forced piece contains the reader sites of its marks;
+\item[(S)] there is $\lambda=\lambda(s)$ with $\lambda/\log H\to\infty$
+ such that every full support $X$ of a forced piece with
+ $t(X)\ge2$ satisfies $\operatorname{cov}_BX\ge\lambda\,t(X)$.
+\end{enumerate}
+The site-price clause of (F), with $\eta_-=G(x_\ell)$, and the price of
+the regular remainder used in Lemma~\ref{lem:allarity-remainder-restored}
+both come from running the leading interval at the larger exponent
+$e_*=e+1+\sigma$. We fix $\sigma\in(0,1]$ together with $e$, before
+$\alpha$. The inputs of Subsection~\ref{subsec:allarity-step-supply} are
+then required at $e_*$:
+\begin{enumerate}
+\item[(E)] \emph{The leading interval at the exponent $e_*$.} The inputs
+ listed at the end of Subsection~\ref{subsec:allarity-step-supply}, namely
+ the applicability of the upper calculation at each leading rung and the
+ terminal-source purchase, hold with the support exponent $e_*$ in place
+ of $e$. The step multiplier satisfies $\alpha\ge8T_{e_*}$.
+\end{enumerate}
+This replaces the run at the exponent $e$: by monotonicity of
+$\operatorname{chg}_e$ in $e$, every price at $e_*$ bounds the price of the
+same letters at $e$.
+
+\begin{lemma}[The run at the exponent $e_*$]
+\label{lem:allarity-spare-run}
+Assume (E) and the remaining inputs of
+Subsection~\ref{subsec:allarity-step-supply}. Then, for all large $s$, the
+conclusions of that subsection hold at the support exponent $e_*$. In
+particular, at the middle level the nonleading regular remainder has
+marker-root price at most $H^{\kappa-q}$, and the realigned forced
+background has site price at most $G(x_\ell)$, both at the weight
+$\omega_-$ and the exponent $e_*$. The exponent $\kappa$ is the same as at
+$e$.
+\end{lemma}
+\begin{proof}
+That subsection uses the support exponent only through the constants
+$R_e$, $R_{e+1}$ and $T_e$, and through the inputs, which (E) supplies at
+$e_*$. The constants $R_{e_*}$ and $R_{e_*+1}$ of
+Lemma~\ref{lem:allarity-step-charge} are fixed before $s$. The multiplier
+condition $\alpha\ge8T_{e_*}$ is part of (E), and it implies
+$\alpha\ge8T_e$ because $T_e$ is increasing in $e$. Every purchase of the
+subsection is an eventual inequality in $s$ with these constants. Hence the
+proofs apply verbatim at $e_*$. The exponent $\kappa$ of
+Lemma~\ref{lem:allarity-upper-count-power} depends only on $\alpha$ and
+$\bar b$.
+\end{proof}
+
+The support purchase of the upper calculation at a fixed exponent does
+not need to be bought separately on the selected history. In
+Subsection~\ref{sec:actual-mixed-marked-compiler} it is the block-length
+condition $10\cdot15^4(e_*+7)\le Le_*$, since the incoming exponent of the
+upper calculation is its own exponent. The selected block sides tend to
+infinity. Indeed, \eqref{eq:common-drift-floor} gives
+$\log L_j\ge j^2\lambda_j$ for $j\ge j_*$, and $\lambda_j\ge\log101$
+because $\lambda_j$ includes the support exponent $100$. So the condition
+holds at every step of a comparison window at a sufficiently large level.
+For the other compiler purchases one must specify the larger exponent
+before constructing the alphabet. There is no need to leave the spare
+exponent arbitrary: the weight-restoration argument only requires
+$\sigma>0$. The following choice matches the two uses of the same
+local compiler.
+
+\begin{proposition}[One compiler pays the support reserve]
+\label{prop:allarity-compiler-reserve}
+Let $e>0$ be the final support exponent. Choose $0<\sigma\le1$,
+put $e_*=e+1+\sigma$ and $E=e+2$, and choose
+$\alpha\ge8T_E$. On an actual adjacent step retain the funded
+tube, paths, clips, alongside certificate, inherited-law and small
+remainder hypotheses of
+Subsection~\ref{sec:actual-local-compiler-handoff}. Make its support
+and product-price purchases for raw compiler exponent $E$, using
+the local support-cost exponent $\widehat E=E+8$, with the larger of the upper
+and lower multipliers in
+Subsection~\ref{sec:actual-mixed-marked-compiler}. Retain that
+construction's same-field selected all-pilot package. Lemma~\ref{lem:actual-neutral-warning} supplies its all-compatible-palette and joint-warning transfer to the genuine corrected alphabet.
+Then the body, all-hole, joint-warning and forced-embedding inputs
+for the upper calculation at $e_*$ and the lower calculation at $e$
+hold for one corrected alphabet and one coarse normalization.
+This choice does not depend on the marked family or on the incoming
+marker remainder price $z\in[H^{-q},H^{-4}]$.
+\end{proposition}
+\begin{proof}
+The local handoff is stated for any fixed support exponent including
+its reserve. Apply it at $\widehat E$, before choosing the large coupling.
+Indeed the mixed compiler uses $v=E+5$ and cover charge $v+2=E+7$;
+$\widehat E$ leaves one further support reserve. The corresponding
+fine-to-coarse purchase is
+$10\cdot15^4(E+7)\le L\sigma_f$, with $\sigma_f$ the
+incoming fine support exponent. It must be imposed before the block
+side is fixed. The raw compiler exponent and this larger local
+support-cost exponent are different parameters.
+Its two rooted word inventories, including the first coarse-field
+derivative needed for the determinant terms, use that same exponent.
+The itinerary ratio has positive exponential decay after including
+the fixed cover charge at $\widehat E$; increasing its entrance threshold
+pays both inventories. Its matrix, owner-energy and palette estimates
+are for the actual tube and actual representation. Thus the genuine
+body identity of Subsection~\ref{sec:actual-corrected-body-compiler}
+and its integrated product estimates use this one corrected alphabet,
+with its original forest/tag measure and positive loading.
+
+The regular logarithm is formed from the same unmarked alphabet.
+Its absolute connected-cluster estimate is part of this compiler
+purchase. Proposition~\ref{prop:corrected-regular-deletion} then
+gives the identity for every deleted support, using the factors
+$h_b=\exp(-c_b)-1$ attached to the full supports of the logarithmic
+entries. Proposition~\ref{prop:corrected-forced-output} constructs
+the forced output by the same connected components and boundary
+factors. In particular, the normalization and forced activities are
+constructed before selecting the arbitrary marked family. They are
+not taken from a second coarse representation with similar prices.
+
+For the upper call the regular multiplier is
+\[
+ l(z)=\max(1,H^{-3}/(\alpha z+H^{-q}))
+       \le\max(1,H^{q-3}).
+\]
+Purchase the right-hand bound once, and purchase the maximum of the
+two forced multipliers $G(x)^{-2}$ and $G(y)^{-1}$. The owner
+margin in the local handoff is the one that pays this forced
+inflation. The corrected product and hole estimates are purchased
+with these multipliers, not recovered from an uninflated site sum.
+The upper numerical calculation then has body allowance $K/16$,
+raised hole allowance $K/4$ and boundary allowance $K$, where
+$K=H^{-1/8}$. Its joint warning event remains the event on this
+same sector sample space; its mass bound $x^{-1}$ pays
+$l(z)x^{-1}\le1$ eventually. No estimate for a product of
+independent warning samples is substituted.
+
+Now $e_*\le E$. For any full support $X$,
+\[
+ \exp(e_*\operatorname{cov}_B X)
+ \le\exp(E\operatorname{cov}_B X).
+\]
+All site and rooted prices are sums of nonnegative majorants.
+Lowering this exponent and either multiplier therefore preserves
+the body product, hole, boundary and forced-embedding estimates.
+The all-hole and density identities are unchanged, since these
+parameters occur only in their estimates. Also $T_{e_*}\le T_E$,
+so the same $\alpha$ pays the numerical upper calculation at $e_*$.
+Lowering to $e$ gives the lower calculation from the identical
+alphabet. The local thresholds are uniform in periods, stores,
+fields, forests and tags. The common-band selection of the handoff
+therefore supplies one threshold for $x,y\in[s/2,s]$ on this
+fixed adjacent patch, before the marked family and $z$ are chosen.
+\end{proof}
+
+This proposition identifies the required analytic purchase rather than
+deriving it from growth of $L$. It uses the local compiler's actual
+product and all-hole estimates, with their hypotheses, for raw exponent $E$
+and the local support reserve $\widehat E$.
+Choosing $\sigma=1$ makes $e_*=E$, exactly its upper exponent.
+For a finite list of adjacent patches make these purchases on each
+patch and then take the maximum of their coupling thresholds. The
+stage profile must include them before choosing its delays, with
+the guide and support conditions imposed before the respective
+block sides. Proposition~\ref{prop:restart-endpoint} supplies the exact starting
+presentation. Proposition~\ref{prop:restart-actual-closure} then constructs
+the actual restarted course, verifies the alongside and neutral-law
+hypotheses, and proves its genuine small-remainder, inflated-product and
+all-hole estimates on each adjacent step. Thus the local purchase above
+applies on that course under the funded chart/stamp contract, also across
+its adjacent-stage transition. Combining it with
+Lemma~\ref{lem:allarity-pair-reader} supplies the Gaussian-reader and
+compiler inputs of \eqref{eq:allarity-step-purchases}--\eqref{eq:allarity-step-small}
+at the common marker weight, including the spare exponent $e_*$.
+This attachment does not assert the upstream construction of the funded
+family or the subsequent identification of the prescribed marked
+insertion; those are the separate hypotheses of the propagation theorem.
+
+The second part of (F) is inherited along the history. The reader site
+of a mark at the top level is the site of its insertion. At a coarser
+level we \emph{define} the reader site of the mark to be the image of the
+reader site of the next finer level under the block map, that is, the
+coarse site whose block contains it. Say that a representation
+\emph{contains its readers} if the full support of every letter carrying
+a mark contains the reader site of that mark at its level.
+
+\begin{lemma}[Reader containment is inherited]
+\label{lem:allarity-reader-containment}
+Suppose that at the top level every insertion letter contains the reader
+site of its mark. Suppose also that at every step the coarse footprint of a
+fine support contains the projections of its points. Then every
+representation of the comparison interval contains its readers, before and
+after realignment and after the launch. In particular the second part of
+(F) holds.
+\end{lemma}
+\begin{proof}
+We argue by induction along the interval. Every letter of the coarse
+representation produced by the compiler is the flattening of a connected
+component of fine letters. Its full support contains the coarse footprint
+of the union of their supports, and its marker set is the union of their
+marker sets. If each fine marked letter contains its fine readers, then
+the component's support contains the fine reader of each of its marks. So
+the coarse footprint contains its projection, which is the coarse reader.
+The realignment replaces leading pieces by pieces on the prescribed
+supports $X_{c,I}$, and these contain the readers because they contain the full support of
+the principal component of that mode by Lemma~\ref{lem:allarity-step-charge}.
+The launch uses those same modes. The complementary mask pieces keep their original supports.
+The forced regrouping again takes unions over components. At the launch,
+the failed-mask pieces live on the $X_{c,I}$, and the regrouping takes
+unions. Each operation therefore preserves the property.
+\end{proof}
+
+Hypothesis (S) holds as soon as the halos of distinct cells are at
+$\ell^\infty$-distance at least $D'$, with $D'/((2B+1)\log H)\to\infty$.
+More precisely, every support $X$, of a forced or a regular letter, with
+$t(X)\ge2$ then satisfies
+\begin{equation}\label{eq:allarity-dispersal}
+ \operatorname{cov}_BX\ge\lambda\,t(X),\qquad \lambda=\frac{D'}{3(2B+1)} .
+\end{equation}
+Indeed, use a connected cover of $X$ by radius-$B$ cubes and pick
+$x_c\in X\cap Y_c$ for each of the $t(X)\ge2$ cells. The union of the cover
+contains a unit-step path from each $x_c$ to another chosen point. Stop the
+path at distance $\lfloor D'/3\rfloor$ from $x_c$. Its distances from $x_c$
+take at least $\lfloor D'/3\rfloor+1$ distinct values, of which a single
+cube can cover at most $2B+1$ since distance is 1-Lipschitz. The segments
+stay in their respective balls of radius $D'/3$, and no cube can meet
+two such balls once $D'/3>2B+1$. Thus
+$\operatorname{cov}_BX\ge t(X)D'/(3(2B+1))$, also for disconnected $X$.
+
+
+For the chart of the pairwise receipt this separation holds, with room to
+spare. Distances below are $\ell^\infty$-distances in physical units;
+at level $i$ a lattice distance is the physical distance divided by
+$a_i$.
+
+\begin{lemma}[Halo separation for the trace chart]
+\label{lem:allarity-halo-separation}
+Consider a chart at level $k$ with middle level $\ell$ and root depth $w$,
+a configuration fit for it, and its replicas on the centered tiling at
+depth $w$. Assume that at every level $i$ of $[\ell,k]$ each reader site
+of a cell lies within distance $2a_\ell$ of the centre of that cell. Then
+for all sufficiently large $s$, uniformly in the chart, the following
+hold at every level $i$ of $[\ell,k]$, with $B=B_i$:
+\begin{enumerate}
+\item reader sites of distinct cells are at lattice distance greater than
+ $2QB$;
+\item the halos of distinct cells are at lattice distance at least
+ $D'=c_k^{10}/2$, and $D'/((2B+1)\log H)\to\infty$.
+\end{enumerate}
+In particular the separation hypothesis of
+Lemma~\ref{lem:allarity-step-charge} and hypothesis (S) hold.
+\end{lemma}
+\begin{proof}
+The cells of the centered tiling at depth $w$ are blocks of side $a_w$, and
+the centres of distinct cells are at distance at least $a_w$. By the
+hypothesis, readers of distinct cells are at physical distance at least
+$a_w-4a_\ell$. Since $a_i\le a_\ell$ for $\ell\le i\le k$, their lattice
+distance at level $i$ is at least $(a_w-4a_\ell)/a_\ell\ge c_k^{10}-4$, by
+the definition of the root depth, $a_w/a_\ell\ge c_k^{10}$. A halo lies
+within lattice distance $QB$ of the readers of its cell, so the halos of
+distinct cells are at lattice distance at least $c_k^{10}-4-2QB$.
+
+The rung couplings lie in $[s/2,s]$, so $B_i=\lceil(\log x_i)^2\rceil^2\le
+4(\log s)^4$ for $\log s\ge1$. Also $c_k=\lceil(\log s)^2\rceil\ge(\log s)^2$,
+so $c_k^{10}\ge(\log s)^{20}$. Hence $c_k^{10}-4-2QB\ge c_k^{10}/2>2QB$ for
+large $s$, which gives both separations. Finally
+$\log H=(\log\log s)^2$, so
+\[
+ \frac{D'}{(2B+1)\log H}\ge\frac{(\log s)^{20}}
+        {2(8(\log s)^4+1)(\log\log s)^2}\longrightarrow\infty .
+\]
+All thresholds depend only on $Q$ and not on the chart.
+\end{proof}
+
+The hypothesis on the readers holds for fit configurations. Every coordinate of
+the grid configuration $a_k\lceil mx\rceil$ has absolute value at most
+$a_\ell/8+a_k$ relative to the base point. The replicas are its images in
+the cells, centred and reflected or conjugated with the cells. A reader
+site at a coarser level $i$ is within one lattice spacing $a_i\le a_\ell$
+of the corresponding insertion site. So each reader is within
+$a_\ell/8+a_k+a_\ell\le2a_\ell$ of its cell centre.
+
+\begin{lemma}[The regular remainder at the restored weight]
+\label{lem:allarity-remainder-restored}
+Assume the hypotheses of Lemma \ref{lem:allarity-spare-run}, those of
+Lemma~\ref{lem:allarity-reader-containment},
+and that the halos of distinct cells are at distance at least $D'$ at the
+middle level, with $D'/((2B+1)\log H)\to\infty$. Assume
+$q\ge\kappa+Un+2$. Then, for all large $s$, the nonleading regular
+remainder at the middle level has marker-root price at most $H^{-1}$ at
+the weight $\omega$ and the support exponent $e$, uniformly in the replica
+cells and the period.
+\end{lemma}
+\begin{proof}
+Split the remainder as in Lemma~\ref{lem:allarity-weight-raise}, according
+to $t(I)=1$ or $t(I)\ge2$. Prices are monotone in the support exponent,
+since $\operatorname{chg}_e$ is increasing in $e$. So
+Lemma~\ref{lem:allarity-spare-run} gives $p_1\le
+H^{\kappa-q}$ at the exponent $e$, and $p_2\le H^{\kappa-q}$ at the
+exponent $e+\sigma$, both at the weight $\omega_-$.
+
+Let a regular letter have marker set $I$, with $t(I)\ge2$, and full
+support $X$. By Lemma~\ref{lem:allarity-reader-containment}, $X$ contains
+the reader site $r_{c,j}$ of each of its marks $(c,j)$. Since
+$r_{c,j}\in X_{c,\{j\}}\subseteq Y_c$, the support meets the halo of every
+cell represented in $I$, so $t(X)\ge t(I)\ge2$. By
+\eqref{eq:allarity-dispersal},
+\[
+ \sigma\operatorname{cov}_BX\ge\sigma\lambda\,t(I)\ge Un\,t(I)\log H
+\]
+as soon as $\sigma\lambda\ge Un\log H$. This holds for all large $s$,
+because $\lambda/\log H\to\infty$ and $\sigma,U,n$ are fixed. This is the
+support inequality of Lemma~\ref{lem:allarity-weight-raise}. That lemma
+gives the price $H^{Un}p_1+p_2\le2H^{Un+\kappa-q}\le2H^{-2}\le H^{-1}$ at
+the weight $\omega$ and the exponent $e$, for $H\ge2$.
+\end{proof}
+
+\begin{lemma}[Failed-mask regrouping and weight change]
+\label{lem:allarity-launch-regroup}
+Assume (F), (S) and the hypotheses of
+Lemma~\ref{lem:allarity-corrected-pieces}, and let $\eta_->0$ decay faster
+than every negative power of $H$. Then, for all large $s$, the following
+holds. Move the failed-mask pieces $-(1-\chi)R\,z_I$ of all modes into the
+forced alphabet and regroup them with the forced background. The result is
+an exact representation of the same density, whose regular letters are
+unchanged. Its forced site price at the weight $\omega$ and the support
+exponent $e$ is at most
+\[
+ 4H^{Un+2^n}\eta_- .
+\]
+\end{lemma}
+\begin{proof}
+\emph{Exactness.} The marker algebra is commutative, so
+\[
+ \exp_*(\chi W-R)=\exp_*(\chi(W-R))\exp_*(-(1-\chi)R)
+\] letter by letter. Each
+failed-mask piece $\ell_f=-(1-\chi)R\,z_I$ has $I\ne\varnothing$, so
+$\ell_f^2=0$ and $\exp_*(\ell_f)=1+\ell_f$. It vanishes where its prescribed
+support $X_{c,I}$ is healthy, so a nonzero failed-mask factor has a flag
+in $X_{c,I}$. Flags are covered by the inventories of the old forced
+pieces. Hence, in the expansion of the product of the factors $1+\ell_f$
+with the old forced gas, every nonzero summand has each failed-mask factor
+meeting the support of an old forced piece. Taking connected components of
+the full-support intersection graph and flattening them is the exact
+regrouping of Subsection~\ref{sec:soft-log-fusion}, as in the mask change of
+the realignment subsection. The regular letters are not touched. Setting
+all markers to zero kills every failed-mask factor, so the background is
+unchanged.
+
+\emph{Prices of the failed-mask pieces.} By
+Lemma~\ref{lem:allarity-amplitude} and its proof, every reference
+coefficient satisfies $|R|\le C_*$. A failed-mask piece of mode $(c,I)$
+therefore has price at most $p_f=H^{1/8}C_*R_{e+1}$ at the weight $\omega$
+and the exponent $e+1$, by \eqref{eq:allarity-weight-cap}. Put $F=\log H$
+and give it the weight $w_f=e^{-F}p_f$. At a fixed site, all failed-mask
+pieces containing it belong to one cell, and there are at most $2^n$
+modes. So their site sum is at most $2^nC_*R_{e+1}H^{-7/8}$.
+
+\emph{Prices of the old forced pieces.} Let $o$ be an old forced piece
+with full support $X_o$, marker set $I_o$ and $t_o=t(X_o)$. By (F), the
+readers of its marks lie in $X_o$, hence in the halos it meets, so
+$|I_o|\le nt_o$. Raising the weight from $\omega_-$ to $\omega$ multiplies
+its price by $H^{U|I_o|}\le H^{Unt_o}$. Lowering the support exponent from
+$e+1+\sigma$ to $e+1$ multiplies it by
+$e^{-\sigma\operatorname{cov}_BX_o}$. Give $o$ the weight
+\[
+ w_o=e^{g}\,e^{2^nFt_o}\,p_o ,
+\]
+where $p_o$ is its price at $(\omega,e+1)$ and $g\ge0$ is chosen below.
+Then $w_o\le e^gH^{(Un+2^n)t_o}e^{-\sigma\operatorname{cov}_BX_o}p_o^-$,
+with $p_o^-$ its price at $(\omega_-,e+1+\sigma)$. If $t_o\le1$ this is at
+most $e^gH^{Un+2^n}p_o^-$. If $t_o\ge2$, then
+$\sigma\operatorname{cov}_BX_o\ge\sigma\lambda t_o\ge(Un+2^n)t_o\log H$ for
+large $s$, by (S), and $w_o\le e^gp_o^-$. In both cases
+$w_o\le e^gH^{Un+2^n}p_o^-$, so the old site sum is at most
+$e^gH^{Un+2^n}\eta_-$.
+
+\emph{Choice of $g$.} Put $\delta=H^{-1/2}$ and
+$e^g=\delta/(2H^{Un+2^n}\eta_-)$. This is at least $1$ for large $s$,
+because $\eta_-$ decays faster than every negative power of $H$. The total
+site sum of the weights at exponent $e+1$ is then
+\[
+ \Gamma\le\tfrac12\delta+2^nC_*R_{e+1}H^{-7/8}\le\delta
+\]
+for large $s$.
+
+\emph{Components.} Every nonzero surviving component contains an old
+forced piece. Charge each of its failed-mask pieces $f$, of cell $c$, to an
+old piece $o$ of the same component that it meets. Then $X_o$ meets $Y_c$,
+so $c$ is one of the $t_o$ cells counted for $o$. At most $2^nt_o$
+failed-mask pieces are charged to $o$. If the component has $s_f$
+failed-mask pieces and $r\ge1$ old pieces, then $s_f\le2^n\sum_ot_o$, and
+the product of the true prices over the component is
+\[
+ \prod_fp_f\prod_op_o
+ =e^{Fs_f-2^nF\sum_ot_o-gr}\prod_fw_f\prod_ow_o
+ \le e^{-g}\prod_fw_f\prod_ow_o ,
+\]
+since $g\ge0$. The distinct connected-set
+bound \eqref{eq:ope-forest-price}, with reserve one and counting factor
+$(2B+1)^4$, then bounds the new site price at the exponent $e$ by
+$e^{-g}(e^\Gamma-1)\le2\delta e^{-g}=4H^{Un+2^n}\eta_-$, provided
+$(2B+1)^4\delta\le1$ and $\delta\le1$. The first condition holds for large
+$s$ as in Lemma~\ref{lem:allarity-step-purchases}, since
+$(2B+1)^4\le\exp\{4\log9+16\log\log s\}\le H^{1/2}$ once
+$\log\log s\ge36$.
+\end{proof}
+
+\begin{proposition}[The launch receipt]
+\label{prop:allarity-launch}
+Assume the conclusions of Subsection~\ref{subsec:allarity-step-supply} on
+the leading interval, with remainder $d_{k-\ell}\le H^{\kappa-q}$ and
+forced price $G(x_\ell)$ at the weight $\omega_-$. Assume
+Lemma~\ref{lem:allarity-corrected-pieces} at the middle level, the
+hypotheses of Lemma~\ref{lem:allarity-spare-run}, those of
+Lemma~\ref{lem:allarity-reader-containment}, and that
+the halos of distinct cells are at distance at least $D'$ at the middle
+level, with $D'/((2B+1)\log H)\to\infty$. Assume $q\ge\kappa+Un+2$.
+Then, for all large $s$, the pushed invoice at the middle level has an
+exact representation at the weight $\omega$, without leading letters, with
+regular marker-root price at most $H^{-3/4}$ and forced site price at most
+$H^{-q}$.
+\end{proposition}
+\begin{proof}
+By the commuting reference factor, the pushed invoice at $\ell$ is the
+pushed insertion product times $\exp_*(-D_R)$. The representation from
+the leading interval has three parts. Their prices are as follows.
+
+\emph{Remainder.} Lemma~\ref{lem:allarity-remainder-restored} gives the
+price $H^{-1}$ at the weight $\omega$ for the entire nonleading regular
+remainder. Hypotheses (F) and (S) hold: the first clause of (F) is
+Lemma~\ref{lem:allarity-spare-run}, with $\eta_-=G(x_\ell)$,
+its second clause is Lemma~\ref{lem:allarity-reader-containment}, and (S)
+is \eqref{eq:allarity-dispersal}.
+
+\emph{Leading family.} Its pieces are the exact prescribed principal
+polynomial. Multiplying by $\exp_*(-D_R)$ and splitting each corrected
+coefficient by the failed-mask identity gives healthy pieces
+$\chi(W-R)$ and failed-mask pieces. Drop the leading designation. The
+healthy pieces become regular letters of incidence price at most
+$cH^{-27/32}$, by Lemma~\ref{lem:allarity-corrected-pieces}.
+
+\emph{Forced part.} The forced background has site price at most
+$\eta_-=G(x_\ell)$ at the weight $\omega_-$ and exponent $e+1+\sigma$, by
+(F). This is the realigned forced price of the recurrence, not the
+compiler output $G(x_\ell)^2$ before realignment. By
+Lemma~\ref{lem:allarity-launch-regroup}, after the failed-mask pieces are
+moved and regrouped, the forced site price at the weight $\omega$ is at
+most $4H^{Un+2^n}G(x_\ell)$.
+
+Adding the regular contributions gives at most $H^{-1}+cH^{-27/32}$, which
+is at most $H^{-3/4}$ once $H^{3/32}\ge c+1$. Since $G$ decays faster than
+every negative power of $H$ uniformly on $[s/2,s]$, eventually
+$4H^{Un+2^n}G(x_\ell)\le H^{-q}$.
+\end{proof}
+
+\subsubsection{The step counts without a block-length floor}
+\label{subsec:allarity-lower-count}
+
+\begin{lemma}[The lower step count is free]
+\label{lem:allarity-lower-count-free}
+Let the clock's cover size at level $k$ be
+$c_k=\lceil(\log\widehat\beta_k)^2\rceil$, and let the root depth be
+$w=\max\{j\le\ell:a_j/a_\ell\ge c_k^{10}\}$. Since all block lengths
+satisfy $L_j\ge3$, for every fixed $\gamma>0$ and all sufficiently large
+$s=\widehat\beta_k$, uniformly in the chart,
+$(\alpha+1)^{\ell-w}\le H^{\gamma}$. In particular the lower step count
+\eqref{eq:allarity-lower-count} holds.
+\end{lemma}
+\begin{proof}
+If $w=\ell$ there is nothing to prove. Otherwise, by maximality of $w$,
+$a_{w+1}/a_\ell<c_k^{10}$. By Subsection~\ref{sec:common-scale-selection},
+$a_{w+1}/a_\ell=\prod_{t=w+2}^{\ell}L_{J(t)}\ge3^{\ell-w-1}$. For
+$\log s\ge1$ we have $c_k\le2(\log s)^2$. Hence
+\[
+ (\ell-w-1)\log3<10\log c_k\le10\log2+20\log\log s .
+\]
+Therefore
+\[
+ (\ell-w)\log(\alpha+1)\le\log(\alpha+1)
+   \Bigl(1+\frac{10\log2+20\log\log s}{\log3}\Bigr)
+ =A_0+A_1\log\log s ,
+\]
+with constants $A_0,A_1\ge0$ fixed by $\alpha$. Since $\gamma>0$ and
+$\log H=(\log\log s)^2$, the right side is at most $\gamma\log H$ for all
+large $s$. No block-length floor and no stage condition is used.
+\end{proof}
+
+\begin{lemma}[The upper step count at a fixed power]
+\label{lem:allarity-upper-count-power}
+Let the base arc satisfy $b\le\bar b$, and put
+\[
+ \kappa=1+\frac{(\bar b+2)\log(\alpha+2)}{\log3}.
+\]
+For all sufficiently large $s$, uniformly in the chart,
+$(\alpha+2)^{k-\ell}\le H^{\kappa}$. Consequently the remainder price of
+the recurrence at the middle level is $d_{k-\ell}\le H^{\kappa-q}$ at the
+weight $\omega_-$. If $q\ge\kappa+4$, this is at most $H^{-4}$, which is
+the window required in Lemma~\ref{lem:allarity-step-outputs}.
+\end{lemma}
+\begin{proof}
+If $\ell=k$ there is nothing to prove. Otherwise
+$a_{\ell+1}/a_k<m\mu_k^2=H^{b+2}$ by maximality of $\ell$. Also
+$a_{\ell+1}/a_k=\prod_{t=\ell+2}^{k}L_{J(t)}\ge3^{k-\ell-1}$. Hence
+$(k-\ell-1)\log3<(b+2)\log H$, and
+\[
+ (k-\ell)\log(\alpha+2)\le\log(\alpha+2)
+   +\frac{(\bar b+2)\log(\alpha+2)}{\log3}\log H\le\kappa\log H
+\]
+once $\log H\ge\log(\alpha+2)$. Then
+$d_{k-\ell}=(\alpha+2)^{k-\ell}H^{-q}\le H^{\kappa-q}$.
+\end{proof}
+
+The parameters are therefore fixed in the order $e$, $\sigma$, then
+$\alpha\ge8T_{e+1+\sigma}$, $\bar b$, then
+$U$ (by Lemma~\ref{lem:allarity-leading-budget}), then
+\[
+ q\ge\max\{6,\ \kappa+4\},
+\]
+which covers Lemma~\ref{lem:allarity-step-outputs}. The launch also
+requires $q\ge\kappa+Un+2$, for
+Lemma~\ref{lem:allarity-remainder-restored}. All are fixed before $s$.
+
+\begin{lemma}[The forced inputs of the lower rungs]
+\label{lem:allarity-lower-forced}
+In Lemma~\ref{lem:allarity-lower-propagation}, hypothesis~3 can be
+dropped. More precisely, take the incoming forced budget of each lower
+rung to be the forced output $G(y)$ of the preceding lower rung, and at
+the transition the forced output of the launch, which is at most $H^{-q}$
+by Proposition~\ref{prop:allarity-launch}. Replace the bounds $z_t$ by
+$\max(z_t,H^{-q})$. Then the conclusions of that lemma hold for all large
+$s$.
+\end{lemma}
+\begin{proof}
+The lower calculation of Subsection~\ref{sec:actual-mixed-marked-compiler}
+uses its incoming forced budget $\eta$ in exactly two places: the
+marker-root term $T_e\eta$, and the site term
+$\mathcal W(B_c)L^4T_e\eta$. With $\eta=z\omega_j\le z$, it bounds them by
+$T_ez$ and by $K/16$ for $z\le H^{-1/2}$. Both bounds hold verbatim for
+any $\eta\le z$. Now $G$ decays faster than every power of $H$ uniformly
+on $[s/2,s]$, so for large $s$ every incoming forced budget of a lower
+rung is at most $H^{-q}\le\max(z_t,H^{-q})$; at the transition this is
+the launch bound. Replacing $z_t$ by $\max(z_t,H^{-q})$ keeps the
+induction of Lemma~\ref{lem:allarity-lower-propagation}: if
+$H^{-q}\le z_t\le H^{-1/2}$, then
+$\max(\alpha z_t+H^{1/2}z_t^2,H^{-q})\le(\alpha+1)z_t$, since
+$\alpha\ge1$. The starting value is $\max(z_0,H^{-q})\le H^{-3/4}$. The
+forced outputs are at most $G(y_j)\le1$ as before.
+\end{proof}
+
+\begin{lemma}[The amplitude at the middle level]
+\label{lem:allarity-amplitude}
+Under the hypotheses of Lemma~\ref{lem:allarity-corrected-pieces} there is
+a constant $C_*$, depending on the fixed word and the compact window,
+such that for all large $s$ every actual leading piece at the middle level
+is bounded by $C_*$ on its healthy region.
+\end{lemma}
+\begin{proof}
+The reference moment polynomial $1+X_R$ varies continuously on the
+compact window, which consists of configurations with distinct points.
+So $\|X_R\|_1\le M_{\mathcal W}$ for a constant $M_{\mathcal W}$, and
+$\|D_R\|_1\le\sum_{j=1}^n M_{\mathcal W}^j/j$ by submultiplicativity. By
+Lemma~\ref{lem:allarity-corrected-pieces}, each actual leading piece is
+within $H^{-31/32}\le1$ of a coefficient of $D_R$. Take
+$C_*=1+\sum_{j=1}^nM_{\mathcal W}^j/j$.
+\end{proof}
+
+The lemma bounds the amplitude at the middle level only. At the other
+leading rungs the discrepancy lemma uses the power bound of
+Corollary~\ref{cor:allarity-rung-amplitude}.
+
+\subparagraph{Status of the propagation to the output.}
+Proposition~\ref{prop:allarity-output-price} is proved from the
+following inputs, all on the common history of the chart:
+\begin{enumerate}
+\item the four inputs listed at the end of
+ Subsection~\ref{subsec:allarity-step-supply} for the leading interval:
+ applicability of the upper calculation; the hypotheses of
+ Subsection~\ref{sec:marked-healthy-cumulant-launch} at every leading rung
+ and the terminal-source purchase; the common insertion and bounded
+ transport (CI), which gives the identification of the prescribed
+ polynomial by Lemma~\ref{lem:allarity-prescribed-reference} (the per-rung amplitude
+ follows by Corollary~\ref{cor:allarity-rung-amplitude}); the
+ reader separation $2QB$, which holds for the trace chart by
+ Lemma~\ref{lem:allarity-halo-separation};
+\item the two $H^{-3/2}$ inputs of Lemma~\ref{lem:allarity-corrected-pieces}
+ at the middle level, which are proved in
+ Sections~\ref{sec:allarity-cumulant-comparison}
+ and~\ref{sec:marked-healthy-cumulant-launch} under their stated
+ hypotheses (the reader covariance and vertex bounds, the exact low-grade
+ calibration of Subsection~\ref{sec:allarity-coordinate-calibration}, the
+ mixed compiler's per-step row and covariance comparison, the terminal
+ paid insertion bound and the common purchases);
+\item the inputs of item~1 at the exponent $e_*=e+1+\sigma$, which is (E).
+ By Lemma~\ref{lem:allarity-spare-run} this gives the forced clause of (F)
+ and, by Lemma~\ref{lem:allarity-remainder-restored}, the regular
+ remainder at the restored weight. Also needed is the structural property used in
+ Lemma~\ref{lem:allarity-reader-containment}, that coarse footprints
+ contain the projections of fine supports
+ (Subsection~\ref{sec:mixed-activity-prices}). It gives the second part of
+ (F). Hypothesis (S) and the
+ reader separation $2QB$ hold for the trace chart by
+ Lemma~\ref{lem:allarity-halo-separation};
+\item applicability of the lower calculation on $[w,\ell)$;
+\item the lawful representation at the output level $w$, with the
+ suppositions of Subsection~\ref{sec:rank-root-normalization}.
+\end{enumerate}
+The rung couplings lie in $[s/2,s]$ on the whole window $[w,k]$ by the
+plateau field of the chart witness, which is proved from the clock in
+Lemma~\ref{lem:ex-lattice-firesky-clock-fields}; the same lemma proves the
+bracket. The step counts, the forced inputs of the lower rungs and the
+leading budget at the small weight are proved above. The polynomial
+transport purchase of Subsection~\ref{sec:marked-healthy-cumulant-launch} is
+separate from the step counts and remains one of the common purchases.
+
+\subsubsection{The selected marked polynomial on the common history}
+
+The preceding abstract hypotheses can now be checked for the selected
+family. In making this check it is important to retain the higher
+coefficients already produced above the opening level. Write $q_N$ for
+its terminal marked density and $q_k$ for its actual push to the opening
+level. In general $q_k$ is not the product of the unmarked density and
+its singleton insertions.
+
+\begin{lemma}[The complete opening polynomial]
+\label{lem:allarity-selected-opening}
+Fix the finite grade menu, the compact distinct-point window, the
+finite census of signed copies, and the requested support exponent
+$e_*=e+1+\sigma$. For any fixed $q$, the selected calibrated family
+admits, on its actual restarted endpoint, a presentation of $q_k$ with
+regular remainder at most $H^{-q}$ and forced site price at most $G(s)$,
+at a weight $\omega_-=H^{1/(8u)-U}$ with $U$ fixed before the coupling
+threshold. Its leading letters are exactly the masked calibrated raw
+singletons of Proposition~\ref{prop:rank-selected-tested-readout}; all
+other connected coefficients belong to the remainder or the forced
+family. The statement holds simultaneously at all smaller support
+exponents and uniformly in the permitted periods and cutoffs.
+\end{lemma}
+\begin{proof}
+Start with the complete served polynomial, rather than constructing a
+new product at $k$. The finite-menu push identity gives the ordinary
+and forced families $A_\nu,K_\lambda$ of the original mixed-grade
+expansion in Subsection~\ref{sec:ex-lattice-firesky-gallery}. Its proof preceding
+\eqref{eq:trace-original-marked-payment} uses only the selected service,
+its finite-menu propagation and the planted recombination identity;
+it does not use the present output estimate. It gives a rooted budget
+one for the entire higher-mode family at the original radius
+$x=s^{-z/2}$. The census and label payments there are verified from the
+calibrated coefficient norm, including the signed copies.
+
+Put $f=1/(8u)-U$. Increase $U$ so that $f\le0$ and the weighted
+singleton column price is at most $H^{-8}$. The change of weights
+\eqref{eq:trace-endpoint-marked-budget}, with $g=q+2$ and support
+exponent $e_*$, bounds the sum of all higher ordinary modes at each
+marked root by $H^{-q-10}$. It applies to the forced modes as well,
+without deleting their original inventories or eligibility tests.
+This purchase uses $C\sim(\log s)^2$, $B=C^2$ and the separated
+origins, not a comparison of $H^f$ with the much smaller radius $x$.
+Its support reserve pays the conversion of marked roots to spatial
+hits, with factor $W(B)=H^{o(1)}$.
+
+For each singleton use the exact split
+\eqref{eq:rank-terminal-three-pieces}, leaving its wide tail in the
+remainder. The near Taylor error has weighted price
+$H^{f+E-D}$ and the wide tail has price at most
+$H^{f+E}\exp(-\theta C)$, with $E$ the fixed solved-lift exponent.
+Take $D>E+q+|f|+3$. Both are at most $H^{-q-2}$ eventually,
+including their fixed halo prices. The finitely many contributions
+and the higher-mode price therefore sum to at most $H^{-q}$.
+The near polynomial has precisely the prescribed axial reads and
+mask; changing an old mask to that mask puts their difference among
+the failed-mask terms. Their weighted price is at most a constant
+times $H^{-8}$, by increasing $U$ once more if necessary.
+
+This last price is not by itself bounded by $G(s)$. To obtain the
+forced bound, perform the endpoint expansion of
+Proposition~\ref{prop:restart-endpoint} jointly with these marked
+letters. Retain its site factors $X_z$, its optional factors $W_Y$,
+and the old forced collection before summing connected components.
+Every failed-mask term meets a new flag. Every old forced letter,
+including a higher marked mode, contains an old flag and hence a new
+flag. Join intersecting enlarged supports, including the radius-$4B$
+support of every selected $X_z$. Thus each forced component contains
+an $X_z$. Reserve its factor $e^{-u}=G(s)$ once per component.
+Record the full marker mode and both old and new inventories; preserve
+all old compatibility and eligibility tests inside the component.
+Decomposition into components is reversible coefficient by coefficient
+in the finite squarefree algebra, just as in
+\eqref{eq:restart-endpoint-factor}. In particular no higher coefficient
+of $q_k$ has been discarded.
+
+After reserving this factor the remaining weighted rooted sum is
+bounded by
+\[
+ r_s=2H^{-3}+t_s+m_s+b_s,
+\]
+where the four explicit endpoint prices in the paragraph following
+\eqref{eq:trace-endpoint-marked-budget} are taken at $g=q+2$ and
+$e_*$. The singleton forced part uses its original
+$\sqrt{\exp(-H^{1/5})}$ allowance; the higher forced part uses the
+proved change of weights. The new failed masks contribute to $t_s$,
+not a separate unweighted forced gas. Those estimates give
+$r_s\le H^{-1}$ and $Z(B)r_s\le1$ on one tail. The rooted connected
+sum is consequently bounded by
+\[
+             G(s)(e^{r_s}-1)\le G(s).
+\]
+This argument also proves absolute convergence when original local
+labels are countable. All sums used to group equal supports, modes
+and inventories are dominated by these positive majorants. The exact
+unmarked coefficient and its scalar normalization are unchanged.
+\end{proof}
+
+\begin{proposition}[Application to the selected chart]
+\label{prop:allarity-selected-application}
+For the selected funded family, with the common chart purchase of
+Proposition~\ref{prop:trace-joint-chart-purchase}, the calibrated readout
+of Proposition~\ref{prop:rank-selected-tested-readout}, and the clock
+of Lemma~\ref{lem:ex-lattice-firesky-clock-fields}, all hypotheses of
+Proposition~\ref{prop:allarity-output-price} hold on a tail of its
+purchased stages. They hold for the complete pushed marked polynomial
+$q_k$ and the invoice formed from its prescribed Gaussian moments.
+The output coefficient price and root test of that proposition
+therefore apply on this same family and with its original partition
+denominator.
+\end{proposition}
+\begin{proof}
+Fix the word and window first. Choose $e,\sigma$, the raw compiler
+reserve of Proposition~\ref{prop:allarity-compiler-reserve}, and
+$\alpha\ge8T_{e+2}$. Choose $U$ to pay both
+Lemma~\ref{lem:allarity-leading-budget} and
+Lemma~\ref{lem:allarity-selected-opening}; then choose
+$q\ge\max(6,\kappa+4,\kappa+Un+2)$ and the Taylor order $D$ in that
+lemma. These requests precede the stage orders, block sides and entry
+delays. In this order use the degree-independent exponent
+$A=n(nz+1)+2$ of Lemma~\ref{lem:allarity-principal-power}, with $z$
+the solved-lift coefficient exponent, which depends only on the fixed
+grade menu. After $D$ and the smoothing orders, the row bound
+\eqref{eq:actual-transport-difference} and the normalized covariance
+bound of Subsection~\ref{sec:actual-covariance-transport} give a common
+constant $C$ before the block side. Thus the polynomial norm
+$A_{nD}=[2(nD+2)C]^{nD}$ is fixed before imposing
+$2(\bar b+2)\log A_{nD}\le\log L$ on both adjacent sides. The endpoint support suppression can be requested at any
+fixed $q$, so this ordering does not require changing $U$ after $q$.
+
+Proposition~\ref{prop:restart-actual-closure} constructs the actual
+restarted course with the original paths, clips and fine-to-coarse
+maps. On each step its corrected alphabet has the body, deleted-support
+and forced identities at the raw reserved exponent. Proposition
+\ref{prop:allarity-compiler-reserve} therefore supplies the upper
+calculation at $e_*$ and the lower one at $e$, for this same alphabet.
+The original forced family is kept before aggregation at each forced
+address. This is exactly the family required by the planted expansion;
+an arbitrary presentation of the same aggregate would not suffice.
+
+At a leading step use the one joint Gaussian reader of
+Subsection~\ref{sec:actual-reader-dawn-selection}. Its sample and loading
+are those of the corrected principal integral. For a product, use the
+union of its read supports and keep every factor's guard on this same
+sample. Lemma~\ref{lem:allarity-pair-reader} applies at a stage boundary
+with the minimum of the two strip widths and the separate metric
+floors. The mean is the actual installed transport row; its covariance
+is the short covariance of this same step. The polynomial comparison
+is defined by Wick contraction with these data. To identify the principal component explicitly, observe that an
+entirely leading component has no body letter and compatibility excludes
+background packets. Its integrand is a product of guarded principal
+values on the common Haar--Gaussian sample space. On a positive guard,
+the field is healthy on the full prescribed mask support, and that value
+is $p_I(\xi_{t,I})$. Gauge invariance removes the patch gauge from each
+physical value. Whole-mode selection sums these products over partitions,
+with the same nonnegative forest/tag weights and loading for every
+product, including the empty product, whose integral is one. These are
+exactly the moments $M_S$ of
+Lemma~\ref{lem:allarity-guarded-gaussian}; Wick contraction with the
+same forecast and short covariance gives its prescribed moments
+$M_S^*$. This identifies the principal component, without identifying the
+whole interacting density as Gaussian or replacing its loading by a
+second partition function. Taking the finite logarithm therefore gives
+the discrepancy to which that lemma applies. Corollary~\ref{cor:allarity-guarded-purchase}
+pays their discrepancy at the requested power of $H$.
+
+The mean-row and covariance comparisons in
+Subsection~\ref{sec:actual-covariance-transport} use these very rows and
+covariances. Their atlas is determined by the selected horizon, and
+Proposition~\ref{prop:rank-selected-tested-readout} supplies its common
+calibrated axes. Hence its exact low-grade equalities are those of
+Subsection~\ref{sec:allarity-coordinate-calibration}. Apply the polynomial
+transport comparison and the closed-cochain construction of
+Subsection~\ref{sec:marked-healthy-cumulant-launch} with these axes.
+The transport norm is bounded by Lemma~\ref{lem:allarity-principal-power};
+the per-step error is purchased before the final threshold to dominate
+that fixed power and the step count. The two middle errors are therefore
+the $H^{-3/2}$ errors in Lemma~\ref{lem:allarity-corrected-pieces}, for
+one prescribed moment element. The finite logarithm estimate of
+Subsection~\ref{sec:allarity-cumulant-comparison} then gives the stated
+$H^{-31/32}$ healthy comparison.
+
+The opening lemma starts the upper recurrence at $H^{-q},G(s)$,
+including the original higher modes. Lemma
+\ref{lem:allarity-upper-count-power} keeps it inside its domain.
+Run it also at $e_*$; reader containment follows from
+Lemma~\ref{lem:allarity-reader-containment}, and the actual chart
+separation from Lemma~\ref{lem:allarity-halo-separation}.
+The spare-run and remainder-restoration lemmas thus apply to the
+same coefficients. Proposition~\ref{prop:allarity-launch} raises the
+weight once, at the middle level, to $H^{1/(8u)}$. The lower step
+count and forced-input lemmas then give the lower propagation through
+$w$, including a possible adjacent-stage transition.
+
+Finally the all-level lawful family of
+Corollary~\ref{cor:rank-trace-all-levels} is obtained by the same
+unmarked endpoint rewrite and exact transitions. Its local lawfulness
+and root-normalization proof do not use the marked coefficient price
+being established here. Apply Proposition~\ref{prop:allarity-output-price}
+to that representation. Every polynomial operation above was applied to $q_k$. More
+precisely, let $D^{\rm ref}_c$ be the prescribed reference cumulant
+polynomial in cell $c$, and put
+$J=\exp_*(-\sum_cD^{\rm ref}_c)$. The factor to multiply into $q_k$
+is $J$, not the full invoice, which already contains the insertions.
+At the terminal level the replicated invoice density is $Jq_N$ by
+Lemma~\ref{lem:allarity-invoice-parts}. Its push to $k$ is $Jq_k$:
+$J$ is independent of the gauge field, and each transition acts linearly
+on each coefficient in the finite marker algebra. The same identity
+holds down to $w$. Since the empty coefficient of $J$ is one, the
+empty density remains the original unmarked density. This proves
+both the asserted identification and the normalization.
+\end{proof}

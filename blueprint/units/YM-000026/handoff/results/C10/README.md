@@ -81,3 +81,14 @@ The chapter defined \(C_G\) through "the chosen invariant inner product" without
 Not settled here: the positive constant \(s_G\) in `common-scale-selection.tex` (package C16) is introduced there only as "\(s_G>0\)"; whether it is `slopeConstant` was not checked. That is the remaining half of G04-F1 and belongs to C16.
 
 No statement or estimate changed. Validation: full `latexmk` build of `manuscript/existence.tex` on base `ce1b3a4` with this edit, exit 0, 966 pages, 0 undefined references, 0 overfull boxes. Not independently reviewed.
+
+## Revision 3 (13 November 2026)
+
+Session `hairer-claude-c10-rev3-20261113` (issue #155) answered the required changes of the independent reviews in PRs #148, #149 and #150. PR #151 requested none. The changes are:
+- the justification of the $4\mu$ bound in the Fourier legs, and the summand law and support of $\omega$ in `weighted-frame-penalty.tex`;
+- the source's side conditions for the two determinant identities in `stationary-germ-symmetry.tex`;
+- the packaged hypotheses that the proofs do not use, now named in `inherited-loop-transport.tex`;
+- the block representatives in the standing data of `quadratic-pole-transport.tex`;
+- the ticket input (T), now carried in the Scope of `annulus-recording-yield.tex` and in two `part-B/ledger.md` rows.
+
+No estimate or label changed. The response table and the new hashes are in `revision-3.md`. The five changed chapters need renewed independent review.

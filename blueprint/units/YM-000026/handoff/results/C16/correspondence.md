@@ -42,7 +42,29 @@ files were used as evidence only.
 F7 follow-up inspected `YM.MergeProof.Ribbons.Fibers.{contents,plena,reap,
 harvest,recomp}` in `Lean/YM/OPE/Grouping/Fibers.lean` and the singleton
 `fire j` clause of `YM.MergeProof.Ribbons.Unites` in
-`Lean/YM/MergeProof/North/Price.lean`. The canonical regrouping chapter was read
+`Lean/YM/MergeProof/North/Price.lean`. Revision 1 (L3): the cell-by-slot
+statement used by `ope-history-service.tex` is
+`YM.MergeProof.Ribbons.ManyCopies.Unites` (`Lean/YM/OPE/Replicas/Price.lean` 18–19),
+which has the same `fire j` clause and the hypotheses `∀ i, 0 < r i`,
+`Occupancy (S.ratio.parent ∘ o) N` (`YM.Extra.Multi.Occupancy`,
+`Lean/YM/Extra/MULTISOURCE_BOUNDS/Root.lean` 95: at most `N` markers per site) and
+`Offer o q r R.p.B d c'` (`YM.MergeProof.Menu.Offer`, `Lean/YM/MergeProof/Fruit.lean` 19:
+sites in the crests and the `Ac.Hit` budget); `YM.PhysicalNext.Repeat.Legato.Bandage.sewedN`
+(`Lean/YM/OPE/Replicas/Sponsor.lean` 44–57) instantiates `N := Q ((P!).J (m+1))`,
+`d := supportExponent(m+1) - 4`. The canonical regrouping chapter was read
 in full. `reap` takes the old coefficient at `plena`, so its singleton cell
 coefficient uses the entire fiber; the before-grouping marker identity cannot
 be substituted for this.
+
+## Revision 1 additions (session ADB991-claude-20261113-33ce)
+
+Source text read for revision 1 (no elaboration):
+
+| Manuscript item | Declarations | Path |
+| --- | --- | --- |
+| M1 hypotheses in `ope-history-service.tex` | `YM.MergeProof.Ribbons.ManyCopies.Unites`; `YM.Extra.Multi.Occupancy`; `YM.MergeProof.Menu.Offer`; `YM.PhysicalNext.Repeat.Legato.Bandage.sewedN` | `YM/OPE/Replicas/Price.lean`, `YM/Extra/MULTISOURCE_BOUNDS/Root.lean`, `YM/MergeProof/Fruit.lean`, `YM/OPE/Replicas/Sponsor.lean` |
+| `eq:common-drift-floor` | `YM.RG.Supply.Large` (fields `kick`, `slow`, `fits`), `Rolls.eventually_large`; consumed as `Calendar.Fits.driftSmall`, `.logCost` in `YM.RG.Supply.Wait.ready` | `YM/Price/Intent.lean` 40–80, `YM/RG/History.lean` 97–118, `YM/Price/Waits.lean` 200–210 |
+| `lem:common-loop-capacity` | `YM.Stationary.clocks`, `YM.Stationary.bump`; `Calendar.loopCap`, `Calendar.monitor`; `Fits.thetaRange`, `.thetaMono` | `YM/Next/STATIONARY/Level/Recurse.lean` 1–80, `YM/RG/History.lean` 81–86, 111–112 |
+| C12 floor and delay items | `YM.PhysicalNext.Repeat.Legato.paper`, `oyster`, `dusk`, `shower` | `YM/MergeProof/Apres.lean` 1–60 |
+
+The manuscript proof of `lem:common-loop-capacity` follows `bump`/`clocks`: thresholds chosen per stage from `2 P(x)^θ_j → ∞` and `P(x+v_j)^θ_j ≤ 2 P(x)^θ_j` eventually, then `θ_{J(m+1)} ≤ θ_{J(m)}` and `P ≥ 1`. The manuscript bound for the second property (`(log ℓ')² - (log ℓ)² ≤ 3v/x`) is the one in `bump`. `eq:common-drift-floor` is `Large.kick`/`.slow`/`.fits` at stage `j ≥ first`; its existence is `Rolls.eventually_large` (`c/log n → 0`).

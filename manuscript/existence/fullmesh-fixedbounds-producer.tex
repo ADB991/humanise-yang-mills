@@ -1,4 +1,4 @@
-\section{Buying the full-mesh finite-difference bounds}
+\subsection{Buying the full-mesh finite-difference bounds}
 \label{sec:ex-fullmesh-fixedbounds}
 
 We prove the finite-volume estimate needed before any continuum extraction. The
@@ -33,34 +33,34 @@ Let $I$ be the mesh-period index set just described, and let $X_i$ be a
 finite-dimensional normed coefficient space. Suppose that for each $i$ there
 are a projection $P_i:X_i\to X_i$, a linear map $L_i:X_i\to Y_i$, and a constant $Z>0$
 such that
-\[
-   \|P_i z\|\le Z\|L_i(P_i z)\|.                         \tag{1}\label{eq:ex-cap-rank}
-\]
+\begin{equation}
+   \|P_i z\|\le Z\|L_i(P_i z)\|.                         \label{eq:ex-cap-rank}
+\end{equation}
 Let $x_i\in X_i$, put $X_i^0=P_i x_i$, and set
 $\lambda_i=(1+\|X_i^0\|)^{-1}$. Assume the following estimates hold
 eventually in $I$:
 \begin{align}
- \|L_i x_i\|&\le c,                                         \tag{2}\label{eq:ex-cap-tested}\\
- \|L_i(\lambda_i(x_i-X_i^0))\|&\le \frac{1}{2Z}.             \tag{3}\label{eq:ex-cap-remainder}
+ \|L_i x_i\|&\le c,                                         \label{eq:ex-cap-tested}\\
+ \|L_i(\lambda_i(x_i-X_i^0))\|&\le \frac{1}{2Z}.             \label{eq:ex-cap-remainder}
 \end{align}
 Then eventually
-\[
-                    \|X_i^0\|\le 2Zc+1.                    \tag{5}\label{eq:ex-cap-conclusion}
-\]
+\begin{equation}
+                    \|X_i^0\|\le 2Zc+1.                    \label{eq:ex-cap-conclusion}
+\end{equation}
 \end{lemma}
 
 \begin{proof}
-Write $R_i=x_i-X_i^0$. By linearity and (2),
+Write $R_i=x_i-X_i^0$. By linearity and \eqref{eq:ex-cap-tested},
 \[
  \|X_i^0\|\le Z\|L_iX_i^0\|
  \le Zc+Z\|L_iR_i\|.
 \]
-Since $\lambda_i=(1+\|X_i^0\|)^{-1}$, (3) implies
+Since $\lambda_i=(1+\|X_i^0\|)^{-1}$, \eqref{eq:ex-cap-remainder} implies
 $Z\|L_iR_i\|\le(1+\|X_i^0\|)/2$. Therefore
 \[
  \|X_i^0\|\le Zc+\tfrac12(1+\|X_i^0\|),
 \]
-and rearranging gives (5). All estimates were eventual, so their two mesh
+and rearranging gives \eqref{eq:ex-cap-conclusion}. All estimates were eventual, so their two mesh
 thresholds can be replaced by their maximum.
 \end{proof}
 
@@ -84,8 +84,7 @@ uniformly over all periods,
                         \|P_i x_i\|\le 2Z(v+1)+1.
 \]
 The uniformity means that the limits in items~2 and~3 are taken in $I$:
-they hold beyond one mesh threshold for every period, as in the source
-full-mesh receipts.
+they hold beyond one mesh threshold for every period.
 \end{proposition}
 
 \begin{proof}
@@ -101,7 +100,7 @@ it belongs to $C$ as well. Therefore $z=\lambda(x-X^0)\in C$ by subtraction,
 and $P_i z_i=0$ because
 $P_i(x_i-P_ix_i)=0$. By item~3,
 for all sufficiently fine meshes $\|L_i z_i\|\le(2Z)^{-1}$. Since
-$L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate (1) gives
+$L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate \eqref{eq:ex-cap-rank} gives
 \[
  \|X_i^0\|\le Z\|L_iX_i^0\|
  \le Zc+Z\|L_i(x_i-X_i^0)\|
@@ -111,8 +110,14 @@ Rearranging proves the claim. The common mesh threshold is the maximum of the
 mesh thresholds in items~2 and~3.
 \end{proof}
 
-The cap alone bounds a projected row; the source separately uses that bound
-to pay the difference trial. Here are the precise closure steps. Let $x$ be
+The cap alone bounds a projected row. The difference trial is paid by a
+separate closure argument which uses that bound; we give its steps. The
+primary paid trial, the exact equation with its vanishing owed cost, the
+bounded-coefficient receipt and the sweep for rows with zero projection are
+first kept explicit in
+Theorem~\ref{thm:ex-fullmesh-fixedbounds-producer} below.
+Proposition~\ref{prop:fullmesh-selected-supplier} verifies them for the
+retained public family. Let $x$ be
 the coefficient row for the requested insertion and let $F$ be its primary
 paid trial. The exact equation gives an owed row
 $e=\operatorname{upper}(x)-\operatorname{hops}(F)$, with a root-test cost
@@ -120,8 +125,8 @@ $u$ tending to zero. Applying the cap to $(x,F,e)$ bounds $Px$ uniformly.
 Thus $y=Px$ is a uniformly bounded row family and its primary insertion is
 paid by the bounded-coefficient receipt. The row $x-y$ lies in the normalized
 cost class by the class closure, and $P(x-y)=0$. The sweep theorem therefore
-makes $\operatorname{upper}(x-y)$ owed with a cost tending to zero. The
-source identity is
+makes $\operatorname{upper}(x-y)$ owed with a cost tending to zero. We
+have the identity
 \[
   \operatorname{hops}(F)
    =\operatorname{upper}(y)+\operatorname{upper}(x-y)-e.
@@ -139,13 +144,16 @@ that depends on $\|Px\|$.
 \label{thm:ex-fullmesh-fixedbounds-producer}
 Fix a family for which the preceding coefficient-row estimate and the
 paid-remainder decomposition just described apply to every finite list of
-fields and difference directions. Assume that bounded primary coefficient
-rows have paid root-test budgets in the following sense: for each bounded
-row family there is a depth $k_0$ such that, for every centred scale
-$k\ge k_0$, there are a budget $b<\infty$ and a mesh threshold valid for
-every period beyond which the centred root test at scale $k$ is at most $b$.
-Assume also that the exact periodic one-step difference
-identity holds, and that translated insertions satisfy the product root-test
+fields and difference directions, including each resulting difference trial
+transformed by a signed-coordinate action, with or without coefficientwise
+conjugation. Assume that each bounded primary coefficient row family and each
+of its finitely many corresponding orientations has a paid root-test
+budget in the following sense: for each such oriented row family there is a
+depth $k_0$ such that, for every centred scale $k\ge k_0$, there are a
+budget $b<\infty$ and a mesh threshold valid for every period beyond which
+the centred root test at scale $k$ is at most $b$. The bounds and thresholds
+may depend on the oriented family and $k$. Assume also that the exact
+periodic one-step difference identity holds, and that translated insertions satisfy the product root-test
 inequality in distinct interior cells.
 Then for each finite field list $v$, difference list $l$, and $r>0$, there
 are $B<\infty$ and a mesh threshold $N_0$ such that for every $N\ge N_0$,
@@ -155,9 +163,9 @@ distinct slot indices $u\ne u'$ have sites $x_u,x_{u'}$ with
  a_N\,\operatorname{sep}_{N,p}(x_u,x_{u'})\ge r
 \]
 (even if the corresponding insertions agree),
-\[
-                         |K_{N,p;v,l}(x)|\le B.              \tag{7}\label{eq:ex-fullmesh-bound}
-\]
+\begin{equation}
+                         |K_{N,p;v,l}(x)|\le B.              \label{eq:ex-fullmesh-bound}
+\end{equation}
 The threshold is independent of $p$; the bound is independent of both $N$
 and $p$. Here $\operatorname{sep}_{N,p}(y,y')=\max_{\alpha}|y_\alpha-y'_\alpha|_{\rm per}$
 is the periodic maximum-coordinate distance of two sites of the period-$p$
@@ -235,11 +243,12 @@ planted inequality bounds the root test of each insertion relative to the
 coarse tiling at a home point on the fine centre grid by the fine budget,
 the one-dimensional maximum principle moves the home point to the assigned
 site, and signed-coordinate covariance identifies the oriented copy in each
-occupied cell with the original insertion. This needs the root-test
-budgets for the finitely many reflected and conjugated orientations of each
-trial; we include them in the finite list of paid records above, as in
-Lemma~\ref{ex-centered-finite}, and this is part of the hypothesis that
-bounded primary rows have paid budgets. This transports both the
+occupied cell with the original insertion. The hypothesis supplies the
+root-test budgets for the finitely many signed-coordinate and conjugated
+orientations of each trial. Include their paid records in the finite list
+above, as in Lemma~\ref{ex-centered-finite}, before taking the maximum of the
+depth thresholds and the maximum of the mesh thresholds at the chosen scale.
+This transports both the
 interior support condition and the same root-test budget to the occupied
 cell. No statistical independence is asserted: all factors
 are evaluated under the same Wilson law. Instead, the planted-cell
@@ -253,6 +262,289 @@ product is a constant independent of mesh and period. This proves
 \eqref{eq:ex-fullmesh-bound}.
 \end{proof}
 
+\subsubsection{The uniform supplier on the retained family}
+
+We now verify the hypotheses above on $C_R$. In this subsection every
+occurrence of ``eventually'' means eventually in $I$, including periods
+smaller than any prescribed comparison level. This is stronger than an
+ordered extraction statement.
+
+Call a row $x=(x_{N,p})$ of grade $d$ \emph{uniformly subpower} if
+\[
+ \forall\epsilon>0\ \exists N_\epsilon\ \forall N\ge N_\epsilon\
+ \forall p,\qquad |X_{N,p}^{-1}x_{N,p}|_1\le e^{\epsilon s_N}.
+\]
+Here $X$ is the actual terminal calibration of
+Subsection~\ref{sec:actual-equation-kernel-relay}. Denote this class by
+$\mathscr C_d$. It is closed under addition, subtraction and scalar
+multiplication by families of modulus at most one: split the target
+exponent between the finitely many prices and absorb their fixed sum
+using $s_N\to\infty$. Every norm-bounded row belongs to it. Indeed the
+reverse-column estimate of Subsubsection~\ref{ex-column-subpower} bounds its
+inverse coordinates by a constant times $J_N$, and the displayed
+proof $\log J_N=o(s_N)$ involves only the schedule index $N$, not $p$.
+The same observation applies to the prices used below. The threshold
+powers, column allowances, profile costs and reserve inverses are
+sequences of $N$ alone. Their subpower proofs use the clock and finite
+stage purchases; in particular the reserve inverse is bounded by
+$4\widehat\beta_N$ and the derivative-shift price by
+$\widehat\beta_N$. Their finite products therefore have one subpower
+majorant independent of $p$.
+
+\begin{lemma}[Uniform equation sweep and local encoding]
+\label{lem:fullmesh-uniform-sweep}
+Let $\Pi_{N,p}$ be the uniformly bounded finite projection with kernel
+$K_{N,p}$ constructed in
+Subsection~\ref{sec:actual-equation-kernel-relay}, using
+Subsection~\ref{sec:finite-rank-kernel-transport}.
+For $z\in\mathscr C_d$ with $\Pi_{N,p}z_{N,p}=0$, the physical insertion
+$O(z)$ has centered root price tending to zero in $I$, at every
+sufficiently fine fixed cell depth, in all its finitely many signed and
+conjugated orientations. The same holds in translated cells with a fixed
+relative interior margin.
+
+Every continuous protected trial whose two prices are uniformly
+subpower has, on the same family, a comparison row $x\in\mathscr C_e$
+and a discrepancy $O(x)-F$ with such a vanishing root price. In
+particular this applies to every finite difference word of a bounded
+primary row, with $e$ increased by the word length.
+\end{lemma}
+\begin{proof}
+The columns in \eqref{eq:equation-column-root} are constructed beyond
+one $N$-threshold for every $p$, with the same price $E_N$.
+All factors in that price are the $N$-only factors just described.
+Consequently its subpower bound holds in $I$. For a row in the kernel,
+put $v=P_{N,p}^{-1}X_{N,p}^{-1}z$ in the notation of that section;
+$|P_{N,p}^{-1}|\le2$. Thus $v$ has a uniform subpower price and the
+finite sum of oriented column errors has price
+\[
+              c_{d,m,k} E_N |v_{N,p}|_1 e^{-s_N/8}.
+\]
+For each fixed opened pair this is at most $e^{-s_N/16}$ eventually
+in $I$. The common-tiling argument there transfers it to any prescribed
+coarser cell and relative margin, using a finer fixed opened depth.
+Its finite sum and fixed geometric factors can, if needed, be absorbed
+by reducing the rate to $e^{-s_N/32}$. The alignment identities and
+interiority thresholds depend on $a_N$ and the fixed stencils, not on $p$.
+
+It remains essential to dispose of the comparison insertion itself,
+without using an ordered spectator estimate. Since $z\in K_{N,p}$,
+the comparison is the campaign insertion of an element of the exact
+Maxwell equation ideal: the factors $S_{\theta_N^{-1}}S_{\theta_N}$
+cancel exactly. Choose a finite basis of that ideal and one radius
+containing all its microscopic equation stencils. In a centered root
+test at a fixed physical cell size, the other reflected copies depend
+only on links outside this radius once $N$ is large. The smallest
+admitted physical period is positive, so the finite nonwrapping floors
+are also reached by one $N$-threshold for every $p$. Apply the exact
+microscopic integration identity to one copy and the product of all
+other copies. This product is bounded and measurable at each finite
+cutoff. Its integral is exactly zero, even if the coefficients of the
+equation vector are large. The centered root of the comparison is
+therefore zero. Linearity covers every vector in the ideal, including
+cutoff-dependent vectors; the stencil threshold is independent of those
+coefficients. The root triangle inequality now gives the claimed sweep.
+No conversion to an ordered spectator limit occurs.
+
+For the second assertion use the terminal construction in
+Subsection~\ref{sec:actual-insertion-derivative-relay}. Its price
+$E_{N,p}$ is a finite sum of products of the two protected prices and
+the same schedule factors. It has a uniform subpower majorant.
+The actual descent gives
+$|X_{N,p}^{-1}x_{N,p}|_1\le2E_{N,p}$ and root discrepancy
+$c_{e,m,k}E_{N,p}e^{-s_N/8}$. The preceding common-tiling argument is
+therefore uniform in $p$ here as well. For a word of length $q$, repeat
+\eqref{eq:relay-difference-weight} $q$ times. At engineering weight
+$d+q$ the powers $a_N^{-q}$ cancel; the stencil is a finite union of
+at most $2^q$ fixed translates. The derivative price is at most
+$(J_N+1)^q$ times the initial price and the global price at most $2^q$
+times it. These are uniformly subpower. This proves the assertion for
+all finite words and their orientations without assuming a bound for
+the differentiated correlations.
+\end{proof}
+
+\begin{lemma}[A uniformly bounded primary and a finite detector]
+\label{lem:fullmesh-uniform-detector}
+Fix a grade $e$ and a finite direction word $l$. There are finite linear
+detectors $L_i$ on its reference coefficient space and $Z>0$, chosen
+before $N,p$, such that eventually in $I$
+\[
+          |\Pi_i v|\le Z|L_i\Pi_i v|\qquad(v\in V_e).
+\]
+The detectors are averages of correlations with finitely many bounded
+primary spectator rows in small neighborhoods of the purchased generic
+detector configurations. They have the following two properties:
+\begin{enumerate}
+\item If $F$ has a uniform paid primary root budget, the assay of
+$D_lF$ is bounded eventually in $I$.
+\item A continuous trial with a vanishing uniform root price has assay
+ tending to zero in $I$.
+\end{enumerate}
+Every bounded primary row has the required uniform root budget, at
+every sufficiently fine fixed centered depth, as do its orientations.
+\end{lemma}
+\begin{proof}
+The last assertion follows directly from
+Corollary~\ref{cor:ex-c02-uniform-census}. At a fixed grade and radius
+its width $w_k$ is independent of $N,p$ and the label in that ball;
+its displayed normalized moment bound gives a finite root budget.
+For a requested cell depth choose a finer opened depth and transfer
+that budget by the replicated-orbit and maximum-principle argument of
+Theorem~\ref{ex-centered-producers}. All thresholds are stencil
+interiority thresholds or $N>k$, uniformly in $p$. Finitely many
+orientations remain in a bounded ball because their coefficient maps
+are fixed linear or conjugate-linear maps.
+
+Write $r=\dim(V_e/\mathcal I_e)$ for the free quotient dimension,
+with the campaign identification understood. The exact calibrated
+isomorphism taking $\mathcal I_e$ to $K_i$ gives
+$\operatorname{rank}\Pi_i=r$ at each finite cutoff; this does not use a
+limiting null-space assertion. If $r=0$ the projection vanishes and
+there is nothing to prove. Otherwise choose the $r$ independent free
+columns and finitely many separating rows used in
+Subsection~\ref{sec:actual-rank-purchases}. Their target matrix $G$ is
+injective. In supremum norms choose $K$ with $|c|\le K|Gc|$.
+If every entry of $Q-G$ is less than $\delta=(2Kr)^{-1}$, then
+$|c|\le K|Qc|+\tfrac12|c|$, hence $|c|\le2K|Qc|$.
+
+The purchased comparison in that section holds before extraction:
+its corrected root error is $\epsilon_k$, and undoing the finitely
+many connected subtractions costs the free-subset moment polynomial
+$P_k$ of \eqref{eq:rank-purchased-point-comparison}. At each fixed
+comparison level its rescaled lattice configurations are fixed before
+$N,p$; let $G_k$ be their free measurement matrix. These configurations
+converge to the prescribed generic configurations as $k$ increases.
+Continuity of the finitely many free moments on a common separated
+neighborhood gives $G_k\to G$ and bounds $P_k$. Choose one sufficiently
+deep comparison level $k$ so that, entrywise,
+$|G_k-G|<\delta/8$ and $P_k\epsilon_k<\delta/8$.
+Before either cutoff limit is taken, the finite-cell inequality applied
+to the paid corrected coefficient therefore puts the actual point
+measurement matrix within $\delta/4$ of $G$, beyond one mesh threshold
+for every period. This is the finite-cutoff estimate used here; its
+later passage to the ordered limits is not needed. Its lifts $u_{j,i}$ have
+one norm bound $B_k$ for all $N,p$, by
+\eqref{eq:rank-fixed-scale-bounded}. Their detector positions have a
+fixed interior margin in the comparison cell. Choose small closed
+neighborhoods of those positions inside the smallest admitted torus
+and the generic set. All coordinate gaps there are at least $4\rho>0$
+modulo every period: for the smallest period this follows by a compact
+minimum; larger periods cannot create a wrap inside this common
+interior box. Shrink the neighborhoods if necessary.
+
+The primary budgets just established give, on these neighborhoods, the
+uniform lattice modulus proved in the directional part of
+Theorem~\ref{ex-centered-producers}:
+\[
+ |H_i(x)-H_i(y)|\le 4n A^n\rho^{-1}|x-y|.
+\]
+Here $n$ is the arity of the detector row, all its labels lie in the
+fixed ball containing the lifts, and the centered depth is chosen with
+$a_m<\rho$. The proof uses the bounded primary bricks and the
+Schatten--Cauchy transfer estimate; it does not use a derivative-field
+bound. All gaps and primary budgets here are uniform over every period,
+so the displayed proof gives one mesh threshold for this neighborhood.
+The exact aligned detector sites represent the same physical centers
+once $N$ exceeds their fixed depth.
+
+We specify the averaging operation, also to control derivatives. Choose
+$b>0$ small enough and put $h_N=\lceil b/a_N\rceil$. Average a detector
+correlation over shifts $0,\ldots,h_N-1$ in the distinguished slot,
+once for each direction in $l$. The total physical displacement is
+at most $2|l|b$ eventually. Choose $b$ so that this lies inside the
+neighborhoods and changes each primary detector entry by less than
+$\delta/4$. For the empty word the averaging is the identity.
+These averages define $L_i$. The sweep lemma applies to the bounded
+rows $(I-\Pi_i)u_{j,i}$: both the rows and their projected parts are
+bounded uniformly, and thus belong to $\mathscr C_e$. Planting with
+the other bounded detector rows bounds each averaged swept correlation
+by a constant times its vanishing root price, uniformly on these
+neighborhoods. Consequently the matrix
+$Q_i=(L_i\Pi_i u_{j,i})_j$ is within $\delta$ of $G$ eventually in $I$.
+
+It follows that the $r$ vectors $\Pi_i u_{j,i}$ are independent and
+therefore span $\operatorname{ran}\Pi_i$. Write
+$\Pi_i v=\sum_j c_j\Pi_i u_{j,i}$. If $A$ bounds $\|\Pi_i\|$, then
+\[
+ |\Pi_i v|\le ArB_k|c|\le 2ArB_kK|L_i\Pi_i v|.
+\]
+Take $Z\ge1$ at least this last constant. This proves the detector
+bound on every vector, not merely on the purchased columns.
+
+For its assay properties, use the same separated neighborhoods and
+plant the distinguished trial with the bounded primary spectators in
+distinct cells. If its root price is $u_i$, the result is bounded by
+$C u_i$, with $C$ independent of $N,p$ and the point in the neighborhood.
+Averages have total mass one, so this also proves assertion (2).
+For (1), move differences through the expectation by linearity. One
+box average telescopes a difference exactly:
+\[
+ \frac1{h_N}\sum_{j=0}^{h_N-1}
+ \frac{H(x+(j+1)e_\alpha)-H(x+je_\alpha)}{a_N}
+       =\frac{H(x+h_Ne_\alpha)-H(x)}{h_Na_N}.
+\]
+The difference and averaging operators commute. Applying this identity
+once for each entry of $l$ bounds the averaged derivative by
+$(2/b)^{|l|}$ times the undifferentiated correlation bound, since
+$h_Na_N\ge b$. That bound follows from the paid root budget of $F$
+and the bounded spectator budgets. All translated endpoints remain
+in the chosen neighborhoods. This proves (1) without estimating
+$D_lF$ pointwise in advance.
+\end{proof}
+
+\begin{proposition}[All-period payment for the actual difference trials]
+\label{prop:fullmesh-selected-supplier}
+The retained public family supplies every coefficient, remainder,
+orientation and root-budget hypothesis of
+Theorem~\ref{thm:ex-fullmesh-fixedbounds-producer}. Consequently that
+theorem's conclusion holds for its actual normalized insertions, with
+one mesh threshold valid for every period.
+\end{proposition}
+\begin{proof}
+Let $F$ be a bounded primary row, initially a fixed public label, and
+$l$ a finite direction word. At grade $e=d+|l|$, the encoding lemma
+gives $x\in\mathscr C_e$ and $E=O(x)-D_lF$ with uniform vanishing
+root price. Apply the detector lemma at this grade and word. Its assay
+of $D_lF$ is bounded and that of $E$ tends to zero. Thus $|L_ix_i|\le c$
+eventually for some $c$ independent of $p$.
+
+Put $y_i=\Pi_i x_i$ and
+$z_i=(1+|y_i|)^{-1}(x_i-y_i)$. The first term in this subtraction
+belongs to $\mathscr C_e$ by its scalar closure, and the second is
+norm-bounded by one. Thus $z\in\mathscr C_e$, and $\Pi_i z_i=0$.
+The sweep and assay lemmas give $|L_i z_i|\to0$ in $I$.
+Lemma~\ref{lem:ex-fullmesh-cap} now gives $|y_i|\le2Zc+1$ eventually.
+Changing $y_i$ to zero at earlier mesh cutoffs makes it a globally
+bounded row without affecting any eventual assertion.
+
+This bounded row has a uniform paid primary budget by the detector
+lemma. The difference $x-y$ belongs to $\mathscr C_e$ and has exact
+projected kernel zero on the tail, so its insertion has a vanishing
+uniform root price. The exact identity
+\[
+               D_lF=O(y)+O(x-y)-E
+\]
+therefore gives a finite root budget for $D_lF$, at every sufficiently
+fine fixed cell depth. Each of its two vanishing prices is eventually
+at most one. The root triangle inequality gives the sum of the primary
+budget and two, with one common mesh threshold valid for all $p$.
+Apply the same argument to the finitely many orientations, or retain
+them in the finite lists throughout; take maxima only after fixing the
+cell depth. No limit of a moving projection is used.
+
+Finally the periodic difference formula is the definition of these
+trials and is exact also at wrapped sites. The planted-cell product
+inequality is the Wilson reflection-positive inequality of
+Subsection~\ref{ex-centered-estimates}; its chamber interiority follows
+from the fixed finite stencils. These verify the remaining hypotheses
+of the full-mesh theorem. Its two-scale packing argument now applies
+to each finite list of actual insertions and difference directions.
+The use of full-mesh estimates has been confined throughout to
+uniformly subpower rows and uniform primary budgets; no assertion for
+arbitrary ordered subpower rows has been strengthened by changing its
+quantifiers.
+\end{proof}
+
 \begin{remark}[What this estimate supplies]
 The statement is the full-mesh separated-kernel estimate: each finite difference
 order and each positive separation have one eventual mesh threshold valid at
@@ -261,5 +553,5 @@ separated positions and their coordinate ties. The estimate does not itself
 give convergence of smeared correlations; that is the separate
 same-history convergence estimate. With both inputs, the positional theorem
 follows by the interpolation, compactness, and dominated-convergence argument
-in Section~\ref{sec:ex-limits}.
+in Subsection~\ref{sec:ex-limits}.
 \end{remark}

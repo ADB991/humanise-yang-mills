@@ -1,12 +1,12 @@
-\section{The curvature factor and the retained horizon}
+\subsection{The curvature factor and the retained horizon}
 \label{sec:curvature-horizon-producer}
-The positive beds of Section~\ref{sec:positive-row-producer} must
+The positive beds of Subsection~\ref{sec:positive-row-producer} must
 be joined by one common family of transports. The remaining issue
 is the positivity of the curvature defect. The construction first
 writes that defect as a double exterior derivative, then adds a
 fixed positive amendment before taking its square root.
 
-\subsection{An exponentially summable exterior lift}
+\subsubsection{An exponentially summable exterior lift}
 We give the row-level lifting argument, because a cycle on a
 single finite torus would not suffice. Write
 $q_a(p)=e^{ip_a}-1$ and $d_r(p)=q(p)\wedge\cdot$ on $r$-forms.
@@ -100,7 +100,7 @@ If $E$ is symmetric, replace $C$ by
 $(C+C^{\mathsf T})/2$. The identity and exponential row bounds
 are preserved, and the new $C$ is symmetric.
 
-\subsection{The unamended defect and its scale factor}
+\subsubsection{The unamended defect and its scale factor}
 For one flight let $H_c,B_c$ and $H_f,B_f$ be the reciprocal
 pulse and dual-pulse rows on the coarse and fine lattices.
 Let $T$ be its two-form transport and $A_0$ its one-form
@@ -112,7 +112,7 @@ unamended transport identities are
  QA_0=I-k^{-1}d_{1,c}^{\mathsf T}H_cd_{1,c}.
 \end{equation}
 These identities were proved for the original kernel in
-Section~\ref{sec:kernel-transport-identities};
+Subsection~\ref{sec:kernel-transport-identities};
 the amendment does not alter them on exact forms, by
 \eqref{eq:positive-amendment-intertwine} and $Gd_1=Hd_1$.
 Define
@@ -160,11 +160,29 @@ $O(L^{-3})$. Multiplying the lift identity by $B_c$ gives
 \begin{equation}\label{eq:curvature-charge-lift}
                      S d_{2,c}B_c=d_{2,f}B_fT.
 \end{equation}
+For this mixed kernel, perform the right lift separately for each fine
+residue and fine three-form label. These indices belong to the output
+space of the lift; the division and contraction act only on its coarse
+form columns. No sum over the $L^4$ output residues occurs in the lift
+bound. Thus its constant remains independent of $L$.
 The row $S^{\mathsf T}S$ now has cost $O(L^{-2})$:
 its summation has $L^4$ residues, while both factors cost
-$L^{-3}$. Retaining this count is essential.
+$L^{-3}$. More explicitly, if each row entry at a fixed residue has
+weighted coefficient sum at most $cL^{-3}$ at width $\alpha$, then
+an entry of the Gram row has weighted sum at most
+\[
+ L^4 n_3(cL^{-3})^2=n_3c^2L^{-2},
+\]
+where $n_3$ is the fixed number of three-form labels. For each residue
+this is the convolution inequality
+$e^{\alpha|x-y|_1}\le e^{\alpha|x|_1}e^{\alpha|y|_1}$,
+followed by Tonelli; transposition reverses a displacement and does not
+change its weight. The same argument with two $L^{-2}$ factors gives
+the earlier uniform bound on $T^{\mathsf T}B_fT$. These are bounds on
+cover rows before periodization, so they hold simultaneously on every
+period. Retaining the residue count is essential.
 
-\subsection{Making the curvature row positive}
+\subsubsection{Making the curvature row positive}
 Choose amendment coefficients $m,l\ge0$ for the fine and
 coarse beds. With $D_c=(I+l d_{2,c}B_cd_{2,c}^{\mathsf T})^{-1}$,
 set
@@ -192,8 +210,14 @@ bounded operator norm, say at most $K$. Therefore
            \langle u,Ru\rangle\ge\|D_cu\|^2
                                       \ge K^{-2}\|u\|^2.
 \]
-The products defining $R$ have a uniform exponential row bound.
-Section~\ref{sec:positive-row-producer} supplies its positive
+The inverse construction of Subsection~\ref{sec:positive-row-producer},
+applied to $I+l d_{2,c}B_cd_{2,c}^{\mathsf T}\ge I$ as in
+\eqref{eq:positive-amendment}, supplies a common exponential row bound
+for $D_c$. Here $l$ is already fixed; the original row has an upper
+bound uniform over the trains. Together with the preceding bounds on
+$C$ and $S^{\mathsf T}S$, this proves a uniform exponential row bound
+for every product defining $R$.
+Subsection~\ref{sec:positive-row-producer} supplies its positive
 square-root row $P$, uniformly over all flights of these stages.
 
 It remains to identify this factor with the actual amended
@@ -218,11 +242,11 @@ on both sides to obtain
                          =d_{2,c}^{\mathsf T}P^{\mathsf T}P d_{2,c}.
 \end{equation}
 This is precisely the curvature factorization in
-Section~\ref{sec:ex-lattice-rg-horizon-geometry}, with the actual
+Subsection~\ref{sec:ex-lattice-rg-horizon-geometry}, with the actual
 amended beds. All formulas hold on every finite period, since
 they were constructed from the same Laurent rows.
 
-\subsection{Choosing the prices before the scale sequence}
+\subsubsection{Choosing the prices before the scale sequence}
 For each adjacent pair of stages $j,t$, where $t=j$ or $t=j-1$,
 let $a_{j,t}>0$ be the lower requirement on the coarse amendment
 coefficient just obtained. Select
@@ -241,18 +265,18 @@ Choose the stage's direct precision below its positive bed
 ceiling. Choose its block length above the flight floor. These
 are requirements on the original stage profiles and pre-length
 floors; they are imposed before the common schedule of
-Section~\ref{sec:common-scale-selection}. They hold for both
+Subsection~\ref{sec:common-scale-selection}. They hold for both
 within-stage steps and a change to the next stage, however many
 times either occurs.
 
 At a terminal cutoff $N$, start with the top train and descend
 along those very block lengths. At each level use its positive
-bed from Section~\ref{sec:positive-row-producer}; at each step
+bed from Subsection~\ref{sec:positive-row-producer}; at each step
 use \eqref{eq:curvature-paid-factor} and the exact block completion
-of Section~\ref{sec:ex-lattice-rg-horizon-geometry}. The latter's
-strip calculation supplies the prescribed iterated difference bounds
-for its unchanged $A_0,T$ rows and the displayed strip bounds for
-its remaining blocks. This changes neither the bed rows nor the
+of Subsection~\ref{sec:ex-lattice-rg-horizon-geometry}. The latter's
+strip calculation inherits the prescribed iterated difference bounds
+for its unchanged $A_0,T$ rows, narrowing their width if necessary,
+and proves the displayed strip bounds for its remaining blocks. This changes neither the bed rows nor the
 original one-form and two-form transports $A_0,T$. It only
 constructs the remaining three blocks from their common positive
 curvature factor. Taking the indicated finite minima and maxima at each

@@ -1,4 +1,4 @@
-\section{Excluding finite mass-shell profiles}
+\subsection{Excluding finite mass-shell profiles}
 \label{sec:trace-profiles}
 The centered trace has a short-distance behavior that can distinguish it from
 finite polynomial expressions in free fields. The relevant distinction is the
@@ -7,7 +7,7 @@ mass-shell profiles appearing in the statement. The proof proceeds through
 finite power--logarithm approximations to Laplace integrals; it does not
 assume a convergent asymptotic series.
 
-\subsection{An algebra of finite asymptotic approximations}
+\subsubsection{An algebra of finite asymptotic approximations}
 Let $\mathcal P$ be the real vector space of finite sums of the functions
 $s^a(\log s)^k$, where $a\in\mathbb Z$, $k\in\mathbb N$ and $s>0$.
 It is an algebra containing the constants. Say that $f$ has an approximation
@@ -45,121 +45,42 @@ the required approximation. In particular it proves closure under every
 finite product, including the empty product $1$.
 \end{proof}
 
-\begin{lemma}[Integrating an approximation]\label{lem:profile-primitive}
-Suppose $F$ is differentiable on $(0,\infty)$, $F'=g$, and $g$ has an
-approximation of integer order $b\neq-1$. Then $F$ has an approximation
-of order $b+1$.
-\end{lemma}
-\begin{proof}
-Every monomial has an antiderivative in $\mathcal P$. For $a=-1$ it is
-$(\log s)^{k+1}/(k+1)$. For $a\neq-1$, integration by parts gives the
-recursion
+\subsubsection{Radial Laplace integrals}
+For $m\geq0$ and $j,k\in\mathbb N$, put
 \[
- I_{a,k}(s)=\frac{s^{a+1}(\log s)^k}{a+1}
-       -\frac{k}{a+1}I_{a,k-1}(s),\qquad
- I_{a,0}(s)=\frac{s^{a+1}}{a+1}.
+ M_{j,k}(s)=\int_0^\infty r^{j+2}(m^2+r^2)^{(k-1)/2}
+                         e^{-s\sqrt{m^2+r^2}}\,dr,\qquad s>0.
 \]
-These formulas are verified by differentiation, so no integrability at zero
-is being assumed. If $g=P+O(s^b)$, subtract a primitive of $P$ from $F$.
-It remains to treat a differentiable $R$ with
-$|R'(s)|\leq Cs^b$ on $(0,\delta)$, where $C\geq0$.
-
-Put $d=b+1\neq0$ and $A=C/d$. The derivatives of
-$As^d+R(s)$ and $As^d-R(s)$ are nonnegative. The mean value theorem
-therefore makes both functions increasing. Consequently, for
-$0<x<y<\delta$,
-\begin{equation}\label{eq:profile-comparison}
- |R(y)-R(x)|\leq A(y^d-x^d).
-\end{equation}
-The right-hand side is nonnegative also when $d<0$. In that case fix
-$y\in(0,\delta)$; the inequality bounds $|R(x)|$ by a constant plus
-$|A|x^d$. Since $x^d\geq1$ for small $x$, we obtain $R=O(s^d)$.
-If $d>0$, the same inequality shows that $R(x)$ is Cauchy as $x\downarrow0$:
-for $x,y<\eta$, its oscillation is at most $A\eta^d$. Let its limit be
-$c$. Sending $x\downarrow0$ in \eqref{eq:profile-comparison} gives
-$|R(y)-c|\leq Ay^d$. The constant $c$ belongs to $\mathcal P$.
-Adding back the subtracted primitive proves the result in both cases.
-\end{proof}
-The exceptional order $-1$ is excluded only from this estimate for an
-arbitrary remainder. The logarithmic monomial itself has already been
-integrated explicitly. In the argument below the exceptional remainder
-order is handled by weakening it to order $-2$ before integrating.
-
-\subsection{Radial Laplace integrals and their Euler equation}
-For $m\geq0$ and $j,k\in\mathbb N$, set
-\[
- \omega(r)=\sqrt{m^2+r^2},\qquad
- M_{j,k}(s)=\int_0^\infty r^{j+2}\omega(r)^{k-1}
-                                      e^{-s\omega(r)}\,dr,\quad s>0.
-\]
-The value of the integrand at $r=0$ is immaterial. For $r>0$,
-$\omega(r)\geq r>0$. The integrands for $k=0$ and $k=1$ are respectively
-bounded by $r^{j+1}e^{-sr}$ and $r^{j+2}e^{-sr}$. These are integrable:
-scaling and repeated integration by parts give
-\[
- \int_0^\infty r^q e^{-sr}\,dr=q!s^{-q-1}\quad(q\in\mathbb N).
-\]
-The boundary terms vanish at infinity by exponential decay and at zero
-when $q>0$; the initial case is $\int_0^\infty e^{-sr}dr=s^{-1}$.
-The identity $\omega^2=m^2+r^2$ now proves integrability for every $k$,
-by induction in steps of two, and gives
-\begin{equation}\label{eq:profile-moment-recur}
- M_{j,k+2}=m^2M_{j,k}+M_{j+2,k}.
-\end{equation}
-For a fixed $s>0$, differentiation of the integrand in a neighborhood
-where the parameter is at least $s/2$ is dominated in absolute value by
-the integrand for $M_{j,k+1}(s/2)$. Dominated differentiation gives
-\begin{equation}\label{eq:profile-moment-deriv}
- M_{j,k}'(s)=-M_{j,k+1}(s).
-\end{equation}
-
-There is a second relation which improves the approximation order. For
-$r>0$, differentiation in the radial variable gives
-\[
- \frac{d}{dr}\bigl(r^{j+3}e^{-s\omega(r)}\bigr)
- =(j+3)r^{j+2}e^{-s\omega(r)}
-       -s\frac{r^{j+4}}{\omega(r)}e^{-s\omega(r)}.
-\]
-The two terms are integrable by the bounds just proved. The primitive
-vanishes at zero and infinity, including when $m=0$. Integration therefore
-yields the Euler identity
-\begin{equation}\label{eq:profile-euler}
- sM_{j+2,0}(s)=(j+3)M_{j,1}(s).
-\end{equation}
-Combining \eqref{eq:profile-moment-recur}--\eqref{eq:profile-euler} gives
-\begin{equation}\label{eq:profile-weighted-deriv}
- \frac{d}{ds}\bigl(s^{j+3}M_{j,1}(s)\bigr)
-                      =-m^2s^{j+3}M_{j,0}(s).
-\end{equation}
-Indeed the derivative on the left is
-$(j+3)s^{j+2}M_{j,1}-s^{j+3}(m^2M_{j,0}+M_{j+2,0})$,
-and the Euler identity cancels the first and last terms.
-
 \begin{proposition}\label{prop:profile-moments}
 Every $M_{j,k}$ has power--logarithm approximations.
 \end{proposition}
 \begin{proof}
-The initial bound is $0\leq M_{j,0}(s)\leq(j+1)!s^{-j-2}$, so the zero
-polynomial gives an approximation of order $b_0=-j-2$. Suppose $M_{j,0}$
-has an approximation of order $b\geq b_0$. The right-hand side of
-\eqref{eq:profile-weighted-deriv} then has an approximation of order
-$j+3+b\geq1$. Lemma~\ref{lem:profile-primitive}, followed by division
-by $s^{j+3}$, gives an approximation of order $b+1$ to $M_{j,1}$.
-Since $M_{j,0}'=-M_{j,1}$, another application of the same lemma gives
-an approximation to $M_{j,0}$ of order $b+2$, hence of order $b+1$,
-provided $b+1\neq-1$. In the remaining case $b=-2$, weaken the
-approximation to $M_{j,1}$ from order $-1$ to order $-2$. Integration
-then gives precisely the required order $-1$ for $M_{j,0}$.
-
-Induction from $b_0$ proves all larger orders, and weakening covers every
-smaller integer order. The first half of the argument now gives every
-order for $M_{j,1}$ as well: choose $b\geq b_0$ as large as needed.
-Finally \eqref{eq:profile-moment-recur} and closure under addition and
-scalar multiplication prove the assertion for all $k$, by induction in
-steps of two, simultaneously for every $j$.
+If $m=0$ the integral is $(j+k+1)!s^{-(j+k+2)}$. If $m>0$, set
+$t=\sqrt{1+(r/m)^2}$ and $\nu=(j+2)/2$. The integral for $k=0$
+becomes $m^{j+2}\int_1^\infty e^{-mst}(t^2-1)^{\nu-1/2}\,dt$.
+Since $ms>0$ and $\nu>-1/2$, the Bessel integral
+\cite[Eq.~10.32.8]{DLMF} gives
+\[
+ M_{j,0}(s)=\frac{m^{j+2}\Gamma(\nu+1/2)}{\sqrt\pi}
+                    \left(\frac{2}{ms}\right)^\nu K_\nu(ms).
+\]
+For integer $\nu$, Eq.~10.31.1 of \cite{DLMF} writes
+$z^{-\nu}K_\nu(z)$ as a Laurent series with finitely many negative
+powers plus $\log z$ times a power series. For noninteger $\nu$,
+Eqs.~10.25.2 and 10.27.4 express it as a power series plus
+$z^{-2\nu}$ times a power series. Here $2\nu=j+2$ is integral.
+To control derivatives of any fixed order, truncate the analytic
+factors sufficiently far. Differentiating an analytic tail $s^a h(s)$
+lowers its order by at most the number of derivatives. A log factor
+costs at most one further power in the bound.
+Replacing $z$ by $ms$ changes $\log z$ to $\log s+\log m$.
+Finally $M_{j,k}=(-\partial_s)^k M_{j,0}$ by dominated differentiation
+on compact subsets of $s>0$, since $m>0$ and the differentiated
+integrands decay exponentially at infinity. This supplies the
+approximations of every integer order.
 \end{proof}
 
-\subsection{From modes to the logarithmic obstruction}
+\subsubsection{From modes to the logarithmic obstruction}
 A mode consists of a mass $m\geq0$, integers $j,k\geq0$, and a continuous
 real function $P$ on $\mathbb R^3$ homogeneous of degree $j$ under positive
 scalings. Its Euclidean profile is

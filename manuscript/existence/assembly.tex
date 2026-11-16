@@ -1,12 +1,14 @@
-\section{The final handoffs and the remaining construction theorem}
+\subsection{The final assembly on one Wilson construction}
 \label{ex-assembly}
 
 The final assembly must use one hierarchy throughout. An operator-product
 expansion for one subsequential limit and a reconstruction for another would
-not establish the desired result. We first state the remaining two properties
-of that common hierarchy, then isolate precisely what is needed to assemble it.
+not establish the desired result. We first state its operator-product and trace requirements, attach the
+proved trace result to that hierarchy, and then assemble the normalized
+Wilson family, all of its character reconstructions and its physical stress
+on the same limiting data.
 
-\subsection{The operator-product and trace requirements}
+\subsubsection{The operator-product and trace requirements}
 Let \(\boldsymbol A=(A_i)_{i\in I}\) and
 \(\boldsymbol B=(B_j)_{j\in J}\) be finite lists of graded fields and
 write \(w(\boldsymbol A)=\sum_{i\in I}\deg A_i\). For each grade
@@ -58,11 +60,117 @@ Its vacuum one-point functional vanishes, and the required asymptotic is
 Theorem~\ref{thm:profile-exclusion} shows that this asymptotic implies the
 required exclusion of finite complex linear combinations of mass-shell
 tracks, including empty products. The class of profiles and their exact
-normalization are given in Section~\ref{sec:trace-profiles}.
-Theorem~\ref{thm:trace-asymptotic} supplies the limiting argument from
-the trace comparison estimates; producing those estimates remains necessary.
+normalization are given in Subsection~\ref{sec:trace-profiles}.
+Theorem~\ref{thm:trace-selected-endpoint} supplies this entire trace
+requirement, including the zero vacuum one-point functional and the
+precise profile exclusion, for the selected funded hierarchy with its
+own phase reconstruction and normalized physical stress. Its $\Theta$
+and $\chi_*$ are the ones just used to define $T$: orthogonal covariance
+identifies the radial correlation with this time-axis pair, whose
+separation is $r$. The hierarchy and extraction are fixed before the
+arbitrary positive null sequence used in that theorem. Thus the trace
+assertion introduces no further subsequence of the hierarchy or new
+normalization of its grade-four field. This discharges the trace part
+of item~3 below whenever the joint construction uses these canonical
+data; the operator-product and other joint-construction clauses retain
+their separate suppliers.
 
-\subsection{A precise conditional assembly}
+\subsubsection{The phase mixture on joint boundary tests}
+
+The mixture identity for separated Euclidean correlations must also hold
+for the joint tempered boundary distributions. It is not enough to verify
+it on products of one-variable tests and then use pointwise convergence.
+Here the uniform slab bounds supply the needed common domination.
+
+\begin{proposition}[Boundary barycenter]\label{prop:assembly-boundary-barycenter}
+Use one mixed table and its character tables from
+Subsection~\ref{ex-phase-selection}, with their common field union and the
+slab bounds of Proposition~\ref{ex-phase-slab-bounds}. Let
+$W_n^{\rm mix}$ and $W_n^\chi$ be the joint boundary distributions
+constructed from those tables by Theorem~\ref{thm:joint-boundary}.
+For every fixed finite field tuple $\boldsymbol v$ and every joint
+Schwartz test $f\in\mathscr S((\mathbb R^4)^n)$, the map
+$\chi\mapsto W_n^\chi(\boldsymbol v)(f)$ is continuous and
+\begin{equation}\label{eq:assembly-boundary-barycenter}
+ W_n^{\rm mix}(\boldsymbol v)(f)
+       =\int_X W_n^\chi(\boldsymbol v)(f)\,d\nu(\chi).
+\end{equation}
+More generally, character continuity and the mixture identity hold for
+the tested continuation at each fixed weakly ordered height tuple.
+The same constants bound all these distributions by one continuous
+Schwartz seminorm for the fixed tuple. No exceptional set of characters
+or further extraction is used.
+\end{proposition}
+\begin{proof}
+At arity zero every table and boundary functional is the constant one,
+so consider $n>0$. Fix the labels and the strictly ordered imaginary
+heights. The phase slab operators have the same norm bounds as the mixed
+operators. Applying the padding and matrix estimate of
+Subsection~\ref{sec:analytic-boundary} therefore gives a single exponent
+$m\in\mathbb N$ and constant $C$ such that the continued scalar
+functions $F_\chi$, including the mixed one, satisfy the gap bound
+\eqref{eq:gap-power}. The bound is independent of $\chi$ and of the real
+positions. The same observation applies after any fixed finite list of
+label operations used in the continuation.
+
+We first verify the mixture identity in the strict interior. Fix real
+times $t_i$, spatial positions $x_i$ and ordered heights $y_i$. Along
+$z_i(c)=iy_i+ct_i$, the functions $F_\chi(z(c),x;\boldsymbol v)$
+are holomorphic in an open horizontal strip about the real axis: choose
+the strip so that the finitely many imaginary gaps remain positive.
+On each compact substrip they are bounded uniformly in $\chi$ by the
+gap estimate. For $c=i\tau$ close to zero they are the separated
+Euclidean functions, which depend continuously on $\chi$ by their
+character representation. It follows that they depend continuously on
+$\chi$ throughout the strip. Here is the normal-family argument for
+this last step. Given $\chi_j\to\chi$, Cauchy's formula on slightly
+larger discs gives uniform bounds for the derivatives of the functions
+on each compact disc. Arzel\`a--Ascoli and a diagonal subsequence over
+a countable exhaustion give a locally uniform holomorphic subsequential
+limit. On the imaginary interval it equals $F_\chi$, by the already
+known continuity there, and the one-variable identity theorem makes it
+equal to $F_\chi$ everywhere. Every convergent subsequence has this
+limit; if convergence at a point failed, the violating subsequence
+would have a further locally uniform subsequence, a contradiction.
+Thus the full sequence converges. Metrizability of $X$ turns this
+sequential assertion into continuity.
+
+The integral over $X$ is holomorphic in $c$: the same compact bound
+permits interchanging the probability integral with contour integrals,
+and Cauchy's formula on a disc then proves holomorphy. At imaginary
+$c$ close to zero, the Euclidean mixture identity identifies it with
+the mixed continued function. The identity theorem and $c=1$ give
+\[
+ F_{\rm mix}(t+iy,x;\boldsymbol v)
+       =\int_X F_\chi(t+iy,x;\boldsymbol v)\,d\nu(\chi).
+\]
+The integrands are measurable jointly in $\chi$ and the real positions:
+they are continuous in each variable separately, and on the separable
+position space the continuous-position functions are pointwise limits
+of their values on successively finer countable grids. This supplies
+Borel simple approximations in the position variable with measurable
+coefficients in $\chi$. The fixed-height bound and $f\in L^1$ permit
+Fubini, so the same identity holds for the tested functions
+$\psi_y(f)$ on every strictly ordered height tuple.
+
+Use the same $m,C$ and direction $r$ in the boundary formula
+\eqref{eq:edge-taylor} for every character. For $0<s\le1$ its integral
+remainder is bounded by
+$C\|D^{m+1}f\|_{L^1}/m!$, uniformly in the weakly ordered $y$ and
+$\chi$. Its finite sum is bounded by
+$C\sum_{j=0}^m\|D^jf\|_{L^1}/j!$. Both are integrable with respect
+to the probability $\nu$, and their sum is a continuous Schwartz
+seminorm, as proved in Theorem~\ref{thm:joint-boundary}. Substitute the
+strict-interior mixture in this formula and apply Fubini to its
+absolutely dominated remainder. This proves the identity at every weakly ordered $y$; at $y=0$ it is
+\eqref{eq:assembly-boundary-barycenter}. The same domination and the
+strict-interior character continuity proved above give continuity in
+$\chi$ of each finite term and of the remainder by dominated
+convergence. This proves the asserted character continuity and common
+seminorm bound directly on joint tests.
+\end{proof}
+
+\subsubsection{A precise conditional assembly}
 An internal extraction order is a pair \((u,p)\) of strictly increasing
 maps \(\mathbb N\to\mathbb N\). Refining by \((v,q)\) gives
 \((u\circ v,p\circ q)\). The full mesh order is \(u(N)=N\).
@@ -72,10 +180,13 @@ convergence just along \(u\circ v\).
 \begin{lemma}[Identifying the full mesh limit]\label{ex-full-mesh}
 Fix a test and its insertion labels. Suppose that at every suitable period
 \(p\) the full sequence \(W_{N,p}\) converges to some \(\ell_p\).
-Suppose also that an ordered extraction supplies numbers \(w_p\) such that
-\(W_{u(j),p}\to w_p\), where \(u\) is strictly increasing, and
-\(w_{p(q(k))}\to s\). Then \(\ell_p=w_p\) at every suitable period,
-and the same volume limit \(s\) holds with the full mesh limits.
+Suppose also that an ordered extraction supplies, at every suitable period
+\(p\), numbers \(w_p\) such that \(W_{u(j),p}\to w_p\), where \(u\) is
+strictly increasing; that the period \(p(q(k))\) is suitable for all
+sufficiently large \(k\); and that \(w_{p(q(k))}\to s\). Then
+\(\ell_p=w_p\) at every suitable period, and
+\(\ell_{p(q(k))}\to s\), that is, the same volume limit \(s\) holds with
+the full mesh limits.
 \end{lemma}
 \begin{proof}
 Strict increase implies \(u(j)\ge j\) by induction, so \(u(j)\to\infty\).
@@ -83,9 +194,11 @@ The full mesh convergence therefore implies
 \(W_{u(j),p}\to\ell_p\). To see uniqueness explicitly, for any
 \(\epsilon>0\), take \(j\) sufficiently large that this term is within
 \(\epsilon/2\) of each proposed limit. The triangle inequality gives
-\(|\ell_p-w_p|<\epsilon\), hence equality. Suitability holds eventually
-on the volume sequence, so the two sequences of row limits eventually agree
-and have the same limit.
+\(|\ell_p-w_p|<\epsilon\), hence equality. By hypothesis there is
+\(k_0\) such that \(p(q(k))\) is suitable for \(k\ge k_0\); for those
+\(k\) the equality just proved gives \(\ell_{p(q(k))}=w_{p(q(k))}\).
+The two sequences of row limits therefore agree from \(k_0\) on and have
+the same limit \(s\).
 \end{proof}
 
 This lemma explains how a full ultraviolet convergence result can be combined
@@ -99,8 +212,12 @@ For the fixed group \(G\) and each chosen positive blocking penalty
 Its insertions are continuous, gauge-invariant and uniformly local, and its
 bare coefficients satisfy \eqref{ex-running-input}.
 For every extraction order \((u,p)\), there is a refinement \((v,q)\)
-and one set of graded fields, phase data, correlations and selected
-relativistic theory as in Definition~\ref{ex-reconstructed}, for which
+and one set of limiting data as described in Section~\ref{ex-statement}
+(graded fields with their injections, covering and token conditions, phase
+data consisting of a compact metric space with a probability measure of
+full support and a selected character, and phase and mixed correlations),
+together with a selected relativistic theory as in
+Definition~\ref{ex-reconstructed}, for which
 all of the following hold simultaneously:
 \begin{enumerate}
 \item The mixed correlations satisfy \eqref{ex-row-target} along the
@@ -139,14 +256,181 @@ Theorem~\ref{thm:profile-exclusion}. The construction of the family preceded the
 as required.
 \end{proof}
 
-The proposition is only the final logical assembly. The main outstanding
-work is to establish Input~\ref{ex-joint-input} from the Wilson measure.
-In particular, the finite-dimensional normalization proof does not supply
-the estimates uniform in spacing and volume; a convergent mesh subsequence
-does not establish the full mesh limit; the Euclidean Hilbert space of
-Section~\ref{ex-reflection} needs the subsequent slab and phase estimates
-to support the phase decomposition and the relativistic reconstruction proved
-in the later sections; and separated-correlation
-compactness does not supply the operator-product remainder or the trace
-asymptotic. Until those inputs have detailed proofs or checked applicable
-references, this article does not contain a complete existence proof.
+The proposition isolates the elementary logical projection to the public
+target. The following assembly retains the additional normalization and
+every-character assertions of the stronger headline. The all-period
+supplier of Proposition~\ref{prop:fullmesh-selected-supplier} applies
+to the retained family itself.
+
+\subsubsection{Assembly of the construction-bound theorem}
+
+\begin{theorem}[Assembly of the retained construction]
+\label{thm:ex-construction-assembly}
+The selected construction of Subsection~\ref{sec:public-run-binding} satisfies
+Theorem~\ref{thm:ex-construction-headline}. In particular it
+supplies Input~\ref{ex-joint-input}, and hence the public existence target.
+The lattice family is fixed before the requested extraction order; all
+limiting fields, phase decompositions, boundary distributions, local
+products and the physical stress in the conclusion are constructed from
+one limiting table on one refinement of that order.
+\end{theorem}
+\begin{proof}
+Fix $G$ and the positive blocking penalty $b$. We describe the choices
+in their order, then verify the four headline clauses.
+
+\emph{The finite family.}
+The local sections are chosen by Subsection~\ref{sec:local-sections}.
+The common funded-history and observable purchases are made before
+realizing the schedule: profiles and floors precede lengths; local
+prices and protection precede the final entry delays; the realized
+clock and periods come last. The maxima in these choices are finite
+at each stage, and subsequent enlargements preserve every previously
+purchased lower bound. Subsection~\ref{sec:common-scale-selection}
+therefore realizes all the requests with one schedule.
+The annulus estimate and the retained path construction apply to its
+one free horizon. The selected nonlinear return and the exact Wilson
+startup then have their hypotheses on these paths and their original
+quadratic data. Subsection~\ref{sec:surviving-interval-shooting} chooses
+finite histories on every cutoff and period without changing that
+schedule. The common-data identification of
+Subsection~\ref{sec:public-run-binding} retains these histories together
+with their transition witnesses and one marked portfolio.
+
+Proposition~\ref{prop:ex-c02-selected-record} places the complete
+service record on that history, with its stored transitions and one
+reference-normalized transfer. It is important to retain this transfer,
+not merely the assertion that some valid transfer exists. The reference
+normalization and the physical unit are exactly those of
+Proposition~\ref{prop:public-normalized-observables}. Thus the public
+family has the sections, the jet normalization and the exact inserted
+density transport claimed in the headline. Its finite law is the
+normalized Wilson law, by \eqref{eq:public-family-coordinates}; its
+bare coefficient satisfies \eqref{eq:public-family-running}. All of
+these choices have been made before an extraction order is mentioned.
+
+\emph{One table and its field quotient.}
+Now prescribe strictly increasing mesh and period maps $(u,p)$.
+First retain the coupling and stationary limits along a refinement,
+as in Subsection~\ref{sec:selected-history-limits}. Proposition~\ref{prop:fullmesh-selected-supplier} supplies the cap,
+sweep and primary budgets for the actual retained insertions, with one
+mesh threshold valid for every period. Thus the full-mesh bounds of
+Theorem~\ref{thm:ex-fullmesh-fixedbounds-producer} and the common-history
+Cauchy argument of Subsection~\ref{sec:fullmesh-correlation-cauchy}
+apply to the same inserted densities. Theorem~\ref{ex-smooth-grid-limit}
+gives their full mesh limits at every suitable fixed period. Separately,
+Proposition~\ref{prop:ex-limits-extraction} and the finite-dimensional
+extractions in Subsection~\ref{sec:finite-rank-kernel-transport} give a
+common refinement for the table and all finite-grade projection data.
+There are countably many grades, basis signatures and compact exhaustion
+sets. The common diagonal extraction is made on these data; multilinearity
+and the compact estimates then give the conclusions for every label and
+test, rather than choosing a further subsequence for each test.
+All previously obtained limits persist under this refinement.
+Lemma~\ref{ex-full-mesh} identifies every extracted row with its full
+mesh limit. Hence the mixed correlation formula has exactly the order
+\eqref{eq:headline-wilson-limit}: full mesh at fixed suitable period,
+then the chosen refinement of the prescribed period sequence.
+
+The denominator, insertion and reflection identities are finite
+identities of that same family. Proposition~\ref{prop:ex-limits-euclidean}
+passes them to its table, with finite smeared positivity supplied by
+Corollary~\ref{cor:ex-lattice-smeared-reflection}. Smoothness and the
+local bounds pass by the smooth-limit and centered-moment estimates.
+Take the null space of all separated mixed correlations with arbitrary
+finite spectators, not only two-point correlations. The equation-kernel
+relay and finite-rank construction identify precisely this null space.
+The raw inclusion comparison is supplied by
+Subsection~\ref{sec:actual-insertion-derivative-relay};
+Proposition~\ref{prop:phase-field-inclusions} descends these comparisons,
+and Proposition~\ref{prop:phase-field-union} forms the common union.
+The calibrated physical unit gives Proposition~\ref{prop:ex-limits-unit}.
+The derivative comparison and
+Proposition~\ref{prop:phase-field-derivatives} give its compatible
+positional derivatives. The conjugation and reflected adjoint are those
+of Proposition~\ref{prop:phase-union-adjoint}. Each construction uses
+the same all-spectator null spaces and the same table. This proves the
+field and Wilson-limit assertions in item 1.
+
+\emph{The actual character space and every character.}
+Construct the mixed Euclidean Hilbert space from this table, then its
+bounded slab operators and their compression to the heat-fixed space.
+Subsection~\ref{ex-phases} proves that their algebra is commutative;
+Proposition~\ref{ex-character-measure} gives its compact metrizable
+character space and full-support vacuum probability. Its whole-word
+character evaluations define the phase correlations, with the mixture
+identity \eqref{ex-phase-barycenter}. Thus neither the phase space nor
+its measure has been chosen independently of the Wilson limit.
+
+Propositions~\ref{ex-phase-caps} and~\ref{ex-phase-slab-bounds}
+give the common smoothness, caps and slab bounds in every character.
+Lemma~\ref{ex-phase-original-null}, the finite detectors of
+Proposition~\ref{ex-no-new-null} and their actual comparisons give the
+same field null relations, including no additional null labels.
+Proposition~\ref{prop:phase-inclusion-every-character} carries the same
+inclusions into each phase. Reflection positivity, ordinary conjugation
+and orthogonal covariance are those of
+Sections~\ref{ex-phase-regularity} and~\ref{ex-reflection-transport}.
+This verifies item 2 with its universal character quantifier.
+
+For each character apply the complex heat construction, the joint
+boundary theorem and Proposition~\ref{prop:heat-cups}. Their hypotheses
+are the slab, differential and reflection properties just obtained,
+which hold in every character. Propositions~\ref{prop:word-fields}
+and~\ref{prop:word-motion} give the common invariant domain, cyclic
+vacuum, adjoints, tempered fields and strongly continuous symmetry.
+The calibrated label action descends by
+Proposition~\ref{prop:lorentz-label-descent};
+Theorem~\ref{thm:lorentz-covariance} and
+Theorem~\ref{thm:spacelike-exchange} give covariance and locality.
+Boundary detection and Proposition~\ref{prop:word-locality} retain
+nonzero field labels. The positive-energy part of
+Theorem~\ref{thm:field-spectrum} applies to every character.
+The every-character vacuum result
+Theorem~\ref{thm:ex-every-character-vacuum} supplies uniqueness of
+the translation-invariant vacuum there; the almost-everywhere
+selection theorem alone would not give this conclusion.
+Finally Proposition~\ref{prop:assembly-boundary-barycenter} identifies
+the phase mixture on all joint Schwartz tests with the boundary of the
+mixed table. These are exactly the reconstructions in item 3.
+
+\emph{One local product expansion and one physical stress.}
+Apply the finite-menu and cluster estimates of
+Subsection~\ref{sec:ope-history-service} to the stored transitions.
+The terminal local projection and reference matching are performed on
+the same insertion family and the same opened cells; their full
+replicated difference, not products of separately transferred moments,
+is estimated in Subsection~\ref{sec:reference-match}.
+Lemma~\ref{lem:ope-selected-triangle} supplies the actual triangular
+readouts, and Proposition~\ref{prop:ope-local-trial-comparison} supplies
+the local-trial part of the physical-filtration argument. The
+finite-rank projections above have exactly its all-test kernel.
+Thus Proposition~\ref{prop:ope-match-assembly} supplies its matching
+estimates on the one table. The grid argument and phase prices give
+Input~\ref{input:ope-raw-estimates}; the detector prescription is fixed
+before choosing a phase, spectators or truncation degree. Its common
+homogeneous version and Theorem~\ref{thm:ope-quantitative} give
+\eqref{ex-ope-coefficient}--\eqref{ex-ope-remainder} simultaneously
+for the mixed state and every character. Dependence of the small-radius
+threshold on a fixed truncation degree is retained.
+
+The finite-rank and comparison data used for the physical stress are
+on this same quotient. Subsection~\ref{sec:actual-stress-normalization}
+fixes its nonzero scalar normalization once across grades.
+Corollary~\ref{cor:selected-ward-package} and
+Proposition~\ref{prop:phase-ward-inheritance} give its conserved,
+symmetric tensor and its translation and rotation charges in these
+fields. Retain the distinguished character $\chi_*$ used in the
+selected trace endpoint. Theorem~\ref{thm:trace-selected-endpoint}
+applies to precisely this stress, hierarchy and character, with the
+reconstruction just made. It centers the trace by this character's
+one-point functional, proves the stated positive short-distance
+coefficient and the finite-profile exclusion, and introduces no new
+hierarchy or field normalization. This is item 4.
+
+All four clauses consequently hold on the same refinement. Their
+extraction-dependent choices were made only after the public family
+was fixed. Forgetting the extra normalization and all-character
+information supplies Input~\ref{ex-joint-input}; applying
+Proposition~\ref{ex-conditional-existence} proves the weaker public
+target without changing the family or the order of its limits.
+\end{proof}

@@ -1,11 +1,12 @@
-\section{Characters and selection of a vacuum}
+\subsection{Characters and selection of a vacuum}
 \label{ex-phase-selection}
 
 The preceding section constructs a commutative algebra on the whole ground
 space. Its characters provide a useful way of separating the vacuum state
 into components. The argument below also explains why a one-dimensional
-ground space is an almost-everywhere conclusion, rather than an assumption
-about the unselected table.
+ground space is first obtained almost everywhere, rather than assumed
+for the unselected table. After relativistic reconstruction, a uniform
+low-energy estimate extends vacuum uniqueness to every character.
 
 \begin{proposition}[The representing probability]\label{ex-character-measure}
 Suppose the algebra \(\mathcal A\) of
@@ -173,8 +174,222 @@ therefore implies \(\operatorname{ran}P_{\chi,0}\subset
 is fixed. Finally a set of measure one in a probability space is nonempty.
 \end{proof}
 
+\begin{remark}[Only the ground space is used in the selection]
+\label{rem:ex-selection-ground-only}
+The character \(\chi_*\) is chosen from the full-measure set of
+Theorem~\ref{ex-pure-ground}. No condition on the short-distance
+behaviour of its correlations enters the choice. The trace asymptotic of
+Theorem~\ref{thm:trace-asymptotic} is proved afterwards at the selected
+character. The comparison bounds in Step~2 of
+Subsection~\ref{subsec:trace-rounded-comparison} hold uniformly over all
+characters, and the identification in its Step~3 uses the null relations at
+the selected character. One could add a second condition to the selection:
+for every \(e\in\mathbb R\), the product \(r^8\) times the two-point function
+of the shifted trace \(\Theta+e\) tends to zero along a fixed subsequence of
+radii. This would change nothing. That two-point function equals
+\(T(r)+e^2\), because the one-point function of \(\Theta\) vanishes. The
+conclusion \eqref{ex-trace-limit} gives \(r^8T(r)\to0\), so the condition
+holds at \(\chi_*\) for every \(e\) and along every sequence \(r\downarrow0\).
+\end{remark}
+
 This selection argument requires the phase Hilbert spaces and their
 contraction semigroups before it can be applied. It does not construct
 them from a probability decomposition alone. Retention of the raw-label
 null spaces, field derivatives, stress tensor and relativistic
 reconstruction remain additional obligations for the chosen phase.
+
+\subsubsection{Vacuum uniqueness at every character}
+
+Almost-everywhere vacuum uniqueness does not by itself imply uniqueness
+at every character: a positive spectral value could approach zero at an
+exceptional character. The following quantitative argument excludes this
+possibility. It uses the relativistic reconstruction of each character
+\emph{without} its vacuum-uniqueness clause. That construction uses the
+common phase caps and slab estimates of Subsection~\ref{ex-phase-regularity},
+the continuation and boundary arguments, and the word construction.
+Its forward spectrum follows from the first assertion of
+Theorem~\ref{thm:field-spectrum}, which does not assume a unique vacuum.
+Thus the use of that assertion below is not circular.
+
+For a character $\chi$, write $U_\chi(t,x)$ for the reconstructed
+translations, with $t\in\mathbb R$ and $x\in\mathbb R^3$, and let
+$P_\chi$ be their momentum measure. Our convention is
+$U_\chi(t,x)=\int e^{i(Et+p\cdot x)}\,dP_\chi(E,p)$.
+Write $H_\chi$ for the nonnegative energy generator and
+$Q_\chi=P_\chi(\{E=0\})$. Its range is the translation-invariant
+space, since the forward cone intersects $\{E=0\}$ only at the origin.
+The vacuum belongs to this range.
+
+A compactly smeared word sum is a finite linear combination $A_\chi$
+of products of fields with smooth compactly supported spacetime tests,
+acting on the common invariant domain. The labels, coefficients and tests
+are fixed independently of $\chi$. Its formal adjoint $A_\chi^*$ is
+obtained by reversing each word and conjugating labels, tests and
+coefficients. Both $A_\chi\Omega_\chi$ and
+$A_\chi^*\Omega_\chi$ are well defined. All norms and scalar products
+below are vacuum word correlations, so their dependence on $\chi$ is
+controlled by the common boundary construction.
+
+\begin{lemma}[A uniform low-energy estimate]
+\label{lem:phase-uniform-low-energy}
+For each compactly smeared word sum there is $D_A<\infty$, independent
+of the character, such that its positive spectral measure
+\[
+ \mu_\chi(B)=\langle A_\chi\Omega_\chi,
+                  P_\chi(B)A_\chi\Omega_\chi\rangle
+\]
+satisfies
+\begin{equation}\label{eq:phase-low-energy}
+ \mu_\chi\{0<E\le u\}\le D_Au^2\qquad(u>0).
+\end{equation}
+Consequently, for every $s>0$,
+\begin{equation}\label{eq:phase-heat-remainder}
+ 0\le\langle A_\chi\Omega_\chi,
+       (e^{-sH_\chi}-Q_\chi)A_\chi\Omega_\chi\rangle
+       \le 2D_As^{-2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $\nu_\chi$ be the analogous spectral measure for
+$A_\chi^*\Omega_\chi$. The boundary continuity in Proposition~\ref{prop:assembly-boundary-barycenter} makes both total masses
+continuous in $\chi$. Compactness of the character space gives one
+$M<\infty$ bounding their sum. Both measures are supported in the
+forward cone.
+
+Choose $T,S<\infty$ so that every test support lies in
+$\{|t|\le T,\ |x|\le S\}$, and take $R>1+2T+2S$.
+For $|t|\le1$ and $|x|>R$, every point in a test support translated
+by $(t,x)$ is spacelike separated from every point in any untranslated
+test support: the spatial distance exceeds $|x|-2S>1+2T$, whereas
+the time difference is at most $1+2T$. Locality allows all factors
+in the translated word sum to commute past all factors of the
+untranslated adjoint word sum on the invariant domain. Vacuum
+translation invariance therefore gives
+\[
+ \delta_\chi(t,x):=
+ \int e^{i(Et+p\cdot x)}\,d\mu_\chi(E,p)
+ -\int e^{-i(Et+p\cdot x)}\,d\nu_\chi(E,p)=0.
+\]
+Indeed these two terms are respectively
+$\langle\Omega_\chi,A_\chi^*A_\chi(t,x)\Omega_\chi\rangle$
+and
+$\langle\Omega_\chi,A_\chi(t,x)A_\chi^*\Omega_\chi\rangle$.
+The same argument covers finite sums and the empty word.
+
+Put
+\[
+ h(E)=\int_0^1\sin(tE)\,dt
+ =\begin{cases}(1-\cos E)/E,&E>0,\\0,&E=0,\end{cases}
+ \qquad
+ g_\chi(x)=\int_0^1
+       \frac{\delta_\chi(t,x)-\delta_\chi(-t,x)}{2i}\,dt.
+\]
+For $E\ge0$, $0\le h(E)\le1$; for $0\le E\le1$,
+$\sin(tE)\ge2tE/\pi$ and hence $h(E)\ge E/\pi$.
+Fubini is justified by the finite masses. It expresses $g_\chi$ as
+the Fourier transform, with positive exponent, of the positive measure
+\[
+ \rho_\chi=(p)_*(h(E)\mu_\chi)
+                    +(-p)_*(h(E)\nu_\chi)
+             \quad\hbox{on }\mathbb R^3.
+\]
+The plus sign in the second term is important: time reversal changes
+the sign of its sine as well as the sign preceding $\nu_\chi$.
+We have $|g_\chi(x)|\le M$ and $g_\chi(x)=0$ for $|x|>R$.
+
+For $0<u\le1$, choose a smooth $B_u:\mathbb R^3\to[0,1]$
+equal to one on the ball of radius $u$ and supported in the ball of
+radius $2u$. Define
+$\widehat B_u(x)=\int e^{-ip\cdot x}B_u(p)\,dp$.
+Then $|\widehat B_u(x)|\le\operatorname{vol}(B_{2u})$.
+Fourier inversion and Fubini give
+\[
+ (2\pi)^3\int B_u\,d\rho_\chi
+ =\int g_\chi(x)\widehat B_u(x)\,dx
+ \le M\operatorname{vol}(B_R)\operatorname{vol}(B_2)u^3.
+\]
+For Fubini one may use the rapid decay of $\widehat B_u$ and the
+finite mass of $\rho_\chi$. The left side is real and nonnegative;
+the inequality follows by taking the absolute value of the right side.
+On $u/2<E\le u$, cone support gives $|p|\le u$, so $B_u(p)=1$
+and $h(E)\ge u/(2\pi)$. Positivity of both terms in $\rho_\chi$
+therefore yields
+\[
+ \mu_\chi\{u/2<E\le u\}\le C_Au^2,
+ \qquad
+ C_A=\frac{M\operatorname{vol}(B_R)\operatorname{vol}(B_2)}{(2\pi)^2}.
+\]
+The disjoint dyadic rings with upper endpoints $2^{-j}u$ cover
+$\{0<E\le u\}$. Summing their bounds gives at most
+$(4/3)C_Au^2\le2C_Au^2$. For $u>1$ use
+$\mu_\chi(\mathbb R^4)\le M\le Mu^2$.
+Thus \eqref{eq:phase-low-energy} holds with $D_A=\max(M,2C_A)$.
+
+Finally the spectral theorem identifies the middle expression of
+\eqref{eq:phase-heat-remainder} with
+$\int_{E>0}e^{-sE}\,d\mu_\chi$. Since
+$e^{-sE}=\int_E^\infty se^{-st}\,dt$, Tonelli and
+\eqref{eq:phase-low-energy} bound this by
+\[
+ s\int_0^\infty e^{-st}\mu_\chi\{0<E\le t\}\,dt
+ \le D_As\int_0^\infty t^2e^{-st}\,dt=2D_As^{-2}.
+\]
+All constants depend on the fixed word sum, not on the character.
+\end{proof}
+
+\begin{theorem}[The vacuum line in every reconstructed character]
+\label{thm:ex-every-character-vacuum}
+For every character $\chi$, the translation-invariant vectors in its
+reconstructed Hilbert space are exactly $\mathbb C\Omega_\chi$.
+\end{theorem}
+\begin{proof}
+For almost every character, Theorem~\ref{ex-pure-ground} and the
+heat-vector isometry imply this assertion by the last part of
+Theorem~\ref{thm:field-spectrum}. Fix a compactly smeared word sum and
+$s>0$. The scalar function
+\[
+ \chi\longmapsto
+ \langle A_\chi\Omega_\chi,e^{-sH_\chi}A_\chi\Omega_\chi\rangle
+       -|\langle\Omega_\chi,A_\chi\Omega_\chi\rangle|^2
+\]
+is continuous by Proposition~\ref{prop:assembly-boundary-barycenter}:
+the heat pairing is the same vacuum word distribution at a fixed
+nonnegative imaginary gap $s$ between its two halves. Indeed the
+mixed Gram identity \eqref{eq:point-gram-continuation}, integrated
+against the tests, gives this identity at strictly positive internal
+heights. Send those heights to zero using the independent-height
+vector limits of Subsection~\ref{sec:heat-vectors}. The insertion of
+$e^{-sH_\chi}$ is a bounded contraction and commutes with the
+translation intertwiner, so the vector pairings converge. The common
+weakly ordered boundary limit gives the stated fixed-gap distribution. On the
+full-measure set just obtained, $Q_\chi$ is the vacuum projection, so
+\eqref{eq:phase-heat-remainder} places this function in the closed
+interval $[0,2D_As^{-2}]$. The bound holds everywhere. Otherwise
+continuity would give a nonempty open set on which it fails, and full
+support of $\mu$ would give this set positive measure, a contradiction.
+
+Fix now any character and let $s\to\infty$. Spectral dominated
+convergence gives $e^{-sH_\chi}\to Q_\chi$ strongly. The preceding
+bound implies
+\[
+ \|Q_\chi A_\chi\Omega_\chi\|^2
+       =|\langle\Omega_\chi,A_\chi\Omega_\chi\rangle|^2.
+\]
+Since $Q_\chi\Omega_\chi=\Omega_\chi$, orthogonal decomposition along
+the unit vector $\Omega_\chi$ shows
+\[
+ Q_\chi A_\chi\Omega_\chi
+=\langle\Omega_\chi,A_\chi\Omega_\chi\rangle\Omega_\chi.
+\]
+
+Such compactly smeared word vectors span densely. To verify the compact
+support restriction, choose a smooth cutoff $\zeta=1$ near zero and
+replace each Schwartz test $f$ by $\zeta(\,\cdot/n)f$. These converge
+to $f$ in every Schwartz seminorm, by Leibniz' rule and rapid decay on
+the escaping support of the cutoff derivatives. Joint continuity of
+word correlations implies convergence of the resulting word vectors:
+the squared norm difference is a finite sum of convergent Gram values.
+Cyclicity then gives density. Since $Q_\chi$ is bounded and the vacuum
+line is closed, its range on the whole Hilbert space lies in that line.
+The reverse inclusion follows from vacuum invariance.
+\end{proof}

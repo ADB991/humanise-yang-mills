@@ -1,4 +1,4 @@
-\section{Joint tests and survival of field labels}
+\subsection{Joint tests and survival of field labels}
 \label{sec:boundary-detection}
 Two details complete the common-domain reconstruction, apart from locality
 and the momentum projection measure. First, the joint tempered distributions
@@ -22,43 +22,14 @@ Thus each weighted derivative supremum of the product is bounded by a
 constant times a product of single-slot Schwartz seminorms. This proves
 continuous multilinearity.
 
-For density, compactly supported smooth joint tests are already dense by
-the cutoff argument in Proposition~\ref{prop:boost-ward}. Fix such a test
-$f$, and choose single-slot smooth compact cutoffs $\chi_i$ with product
-$\chi(X)=\prod_i\chi_i(X_i)$ equal to one on $\operatorname{supp}f$.
-Let $\eta_R=\eta(\cdot/R)$, where $\eta$ is a smooth compactly supported
-frequency cutoff equal to one near zero. By the cutoff argument of
-Proposition~\ref{prop:boost-ward}, applied in frequency space,
-$\eta_R\widehat f\to\widehat f$ in Schwartz space as $R\to\infty$.
-Since Fourier inversion is continuous on Schwartz space and multiplication
-by the fixed function $\chi\in C_c^\infty$ is continuous there,
-\[
- f_R=\chi\,\mathcal F^{-1}(\eta_R\widehat f)\longrightarrow\chi f=f
-\]
-in Schwartz space. Here the Fourier transform and its inverse are continuous
-inverse maps on that space, with the convention of
-Section~\ref{sec:fourier-support}; see \cite[Theorem 1.3, p.22]{Melrose}.
-Multiplication by the fixed compact cutoff is continuous by the Leibniz rule.
-
-For fixed $R$, put $g=\eta_R\widehat f$. Fourier inversion writes
-\[
- f_R(X)=(2\pi)^{-4n}\int_{\operatorname{supp}g}
-       g(p)\prod_i\big[\chi_i(X_i)e^{ip_i\cdot X_i}\big],dp.
-\]
-This integral is a limit in Schwartz space of finite sums of its displayed
-product tests. To verify that assertion explicitly, enclose the compact
-frequency support in a box and use ordinary rectangular Riemann sums.
-All summands and the integral have the fixed compact position support
-$\operatorname{supp}\chi$. On the product of that support with the
-frequency box, every position derivative of the integrand is continuous,
-hence uniformly continuous. The error in each weighted derivative
-supremum is bounded by the frequency-box volume times its uniform modulus
-of continuity at the partition diameter, times the maximum position weight
-on the compact support. It tends to zero. Thus the same sequence of
-partitions converges in every Schwartz seminorm. Each Riemann sum belongs
-to the stated span, so does $f_R$ in its closure, and taking $R\to\infty$
-proves density. For $n=0$ the joint space is one-dimensional and the empty
-product one already spans it.
+For density, the canonical map
+$\mathscr S(\mathbb R^a)\widehat\otimes\mathscr S(\mathbb R^b)
+ \to\mathscr S(\mathbb R^{a+b})$ is an isomorphism
+\cite[Theorem~51.6, Eq.~(51.3)]{Treves67}. The algebraic tensor
+product is dense in the completed product. Iterate with
+$a=4(n-1)$ and $b=4$, using continuity of the product map to
+approximate each $(n-1)$-slot factor. The case $n=1$ is immediate. For $n=0$ the empty product spans the
+scalar space.
 \end{proof}
 
 \begin{corollary}\label{cor:word-test-inputs}
@@ -94,7 +65,7 @@ trivially. Define
 \]
 on letters, extend it letter by letter to words, and let it fix the empty
 word. The word construction uses the label involution $J$ of
-Section~\ref{ex-reflection}, the reflected conjugate. The following
+Subsection~\ref{ex-reflection}, the reflected conjugate. The following
 corollary assumes that this is the involution with which
 Proposition~\ref{prop:lorentz-label-descent} proves commutation, that is,
 the involution of Input~\ref{input:calibrated-actions}.
@@ -245,7 +216,76 @@ Proposition~\ref{prop:word-locality}; that proposition then supplies the
 nonzero smeared operator for every nonzero label.
 \end{proof}
 
-This argument closes the boundary-detection step conditional on the already
-specified equality of Euclidean null spaces. The estimate and finite-rank
-inputs establishing that equality remain part of the quantitative phase
-construction.
+Proposition~\ref{prop:boundary-detection} does not by itself produce a
+nonzero field: if every field space were zero, all of its hypotheses would
+hold and every smeared field would vanish. A nonzero label comes from the
+unit insertion of the unselected limiting hierarchy, whose field quotients
+$E_d=(\text{raw labels of grade }d)/N_d$ form the union $E$ (the null
+spaces $N_d$ are those of Lemma~\ref{ex-phase-original-null}). The
+following property of that hierarchy is used.
+
+\begin{assumption}[Unit insertion in the unselected limit]
+\label{input:unit-insertion}
+There is a grade $d_0$ and a raw label $\mathbf 1$ of grade $d_0$ with the
+following two properties, for the unselected limiting correlations $S$.
+\begin{enumerate}
+\item (Unit law.) For every $n\geq0$, all raw labels $v_1,\ldots,v_n$ of
+  arbitrary grades and every configuration $(x_0,x_1,\ldots,x_n)$ of
+  pairwise distinct points,
+  \[
+   S\big(\mathbf 1,v_1,\ldots,v_n;\,x_0,x_1,\ldots,x_n\big)
+   =S\big(v_1,\ldots,v_n;\,x_1,\ldots,x_n\big).
+  \]
+\item (Normalization.) The correlation of the empty word is $1$.
+\end{enumerate}
+\end{assumption}
+
+In the defining condition of $N_d$, ``arbitrary finitely many spectator
+labels'' includes the case of no spectators; then the word is the single
+insertion at one point, a configuration of pairwise distinct points.
+
+\begin{corollary}[A nonzero smeared field]
+\label{cor:nonzero-field}
+Assume the hypotheses of Proposition~\ref{prop:boundary-detection} and
+Assumption~\ref{input:unit-insertion}. Let $u\in E$ be the image of the
+class of $\mathbf 1$ in $E_{d_0}$. Then $u\neq0$, and there is
+$f\in\mathscr S(\mathbb R^4)$ with $\Phi(u,f)\neq0$ in
+Proposition~\ref{prop:word-fields}. In particular at least one smeared
+field operator is nonzero.
+\end{corollary}
+\begin{proof}
+Suppose the class of $\mathbf 1$ in $E_{d_0}$ were zero, that is,
+$\mathbf 1\in N_{d_0}$. Then every unselected correlation of a
+distinct-point word containing $\mathbf 1$ vanishes. Take the word with
+no spectators, the single insertion of $\mathbf 1$ at a point $x_0$. By the
+unit law with $n=0$ and by normalization,
+\[
+ 0=S(\mathbf 1;x_0)=S(\varnothing)=1,
+\]
+a contradiction. Hence the class of $\mathbf 1$ in $E_{d_0}$ is nonzero.
+The embedding $E_{d_0}\to E$ is injective by the standing assumption
+before Proposition~\ref{prop:boundary-detection}, so $u\ne0$.
+
+By Proposition~\ref{prop:boundary-detection}, applied in contrapositive
+form, there are exterior words $b,c$ and a test $f$ with
+$w(b(u,f)c)\neq0$. By the defining formula of the fields in
+Proposition~\ref{prop:word-fields} and $(b^*)^*=b$,
+\[
+ w(b(u,f)c)=\langle[b^*],\Phi(u,f)[c]\rangle .
+\]
+Hence $\Phi(u,f)[c]\neq0$, and so $\Phi(u,f)\neq0$.
+\end{proof}
+
+Proposition~\ref{prop:ex-limits-unit} supplies
+Assumption~\ref{input:unit-insertion} in grade zero for the original,
+unselected limiting hierarchy, under the same-family calibration and
+ordered-limit hypotheses stated there. It proves both the unit insertion
+law and normalization. The present corollary uses no unit of a separately
+selected hierarchy; the grade-zero unit already suffices.
+
+Boundary detection uses equality of the original and character null
+spaces. Proposition~\ref{ex-no-new-null} gives that equality using the
+same-label rank construction of Subsection~\ref{sec:actual-rank-purchases},
+the kernel transport of Subsection~\ref{sec:finite-rank-kernel-transport},
+the moments of Subsection~\ref{sec:actual-phase-detector-moments}, and the
+free separating tests of Theorem~\ref{thm:ex-lattice-all-grade-free-detector}.

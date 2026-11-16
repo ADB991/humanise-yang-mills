@@ -1,3 +1,15 @@
+# G05 R1 revision validation at ddc3c90
+
+- Rechecked live #61 and comments, including the author renewal through 2026-11-14 12:00 UTC and the released #141 reviewer claim; #136 has a separate active review. Base `ddc3c90f7fcc4e10048b173e58d41f25f0107730`; Lean pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+- Live upstream advanced from `ddc3c90` to `cea08717b1d2894e705628636b400e0d359bd4cf` during the revision; GitHub compare reports only two added YM-000033 review reports, no chapter, include or G05 changes. The recorded build and inventory remain at `ddc3c90`.
+- All 241 included-chapter SHA-256 hashes matched `chapter-hashes.sha256`; the proposed order is a duplicate-free permutation of the current include. All 28 numbered insertion anchors match their stated chapter paths; 59 restricted exception rows remain forward under the revised order.
+- Ran the independent #141 `forward_scan.py` on current and revised orders: 1,874 labels, 3,249 references, zero missing and duplicate labels; 331 versus 318 cross-file forward references, 22 same-file references each. The revised order adds 15 and removes 28 compared with current. The added 15 are classified in `r1-revision.md` and `r1-added-forward-references.tsv`; this is not a proof of a complete DAG.
+- Ran G05 `scan.py`: 16,118 lexical candidates, 3,249 literal ref/eqref references, zero unresolved and duplicate labels. Ran `python3 scripts/check_blueprint.py`: structure OK, 4 units; it does not verify mathematics or Lean. `git diff --check` passed.
+- From `manuscript/`, ran `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/private/tmp/g05-revision-build /private/tmp/g05-revision-build/wrapper.tex`. The external wrapper adds only `\\input{existence/symbolic-index}` before the bibliography; exit 0, 969 pages, no matching undefined-reference, undefined-citation, duplicate-reference or overfull warnings. Rendered pages 968–969 with `pdftoppm` and visually inspected them, including the two-section drive/response pointer. An attempted `pdftotext` page-location check could not run because that command was unavailable; rendering and inspection succeeded.
+- No Lean elaboration or axiom replay was run. The unchanged checker did not require a test-suite run. No independent review of this revision is claimed here.
+
+The following earlier validation entries are historical; their counts and bases describe earlier candidates.
+
 # G05 validation record
 
 Session `TrishenGunaratnam-terra-g05-20261113`. Base

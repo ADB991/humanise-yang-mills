@@ -1,0 +1,17 @@
+Elaborated Lean probes for #377 (lem:ex-lattice-scribe-normalization-ratio, trace-scribe-producer.tex; #337 F1), 2026-11-14. Nothing posted.
+Release sources: ~/ym-release/2026-11-11/OpenAI-YM-20261028 @ 3456e5e75cf8d4cd558955a5c7638fba2d68f464 (read only; git status clean).
+  The 14 source files read are hashed in SOURCE_SHA256.txt; all 14 digests equal the release's own SOURCES.sha256 entries.
+Oleans: ~/ym-release/full/tree/lib/lean (restored from ym-build-3456e5e.tgz, SHA-256 07c145c3...4707 in ~/ym-release/full/SHA256SUMS,
+  equal to source/build.md l.37 at bdd348cd) + Mathlib and packages per ~/ym-release/full/checks/LEAN_PATH.txt.
+  YM sources are NOT on LEAN_PATH: only the compiled .olean files are loaded.
+Toolchain: ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean. No lake, no leanchecker, no build, no download.
+Command for every run (cwd = this directory; pgrep -x lean / pgrep -x lake empty before each; one process at a time):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l <lean> -DmaxHeartbeats=0 -DmaxRecDepth=4096 <f>.lean > <f>.out 2> <f>.time
+Free disk before runs: 12 GiB (df -g ~).
+
+run  file                 exit  real     max RSS (bytes)  notes
+v1   Probe377_v1.lean     0     61.24 s  7,000,096,768    sections A-D; 0 errors; four probe theorems (C1-C4) accepted, axioms propext/Classical.choice/Quot.sound only
+v2   Probe377_v2.lean     0     29.67 s  7,025,000,448    v1 + E: same scan by FVarId against the statement's own binders; Scribe field types; 0 errors
+No failed runs.
+What the runs establish: the elaborator, loading the release's compiled declarations, accepts the statements printed in the .out files
+and the probe theorems; the release's proofs are loaded from .olean files and were NOT replayed by an independent kernel checker.

@@ -1,0 +1,13 @@
+# Validation and limits
+
+Author session `mgubi-astra-c14-shift-purchase-20261113`, issue 276. All commands below were run in `/tmp/ym-astra-c14-shift-purchase-20261113`, except the LaTeX command run from its `manuscript/` subdirectory.
+
+- `python3 scripts/check_blueprint.py`: PASS, “Blueprint structure OK: 4 units. Lean and mathematics were not verified.” No checker changes or checker test run.
+- `git diff --check`: PASS.
+- `python3 blueprint/units/YM-000026/handoff/results/C14/author/mgubi-astra-c14-shift-purchase-20261113/verify.py`: PASS, 17 immutable/current input versions, canonical imported Lean tree identity, and no changes to Lean/source. Before and after manuscript fingerprints are separate entries; no reviewer fingerprint was refreshed.
+- `git diff --exit-code -- Lean source blueprint/background Bots`: PASS. The final diff consists only of the owned chapter and this new author directory. Shared chapters and old records remain unchanged.
+- `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/ym-c14-shift-build existence.tex > /tmp/ym-c14-shift-build.log 2>&1`: PASS, 983 pages. Final log `/tmp/ym-c14-shift-build/existence.log`, PDF `/tmp/ym-c14-shift-build/existence.pdf`. No unresolved-reference warning in the final log. The log retains the amsmath foreign-command warning and the pre-existing 1.82599pt overfull box in unchanged `public-run-binding.tex` lines 39–47; none in the changed passage.
+- Rendered using PyMuPDF from `/tmp/c14-pdf-env/bin/python`, then visually inspected PDF pages 826, 827 and 828, including the changed introduction, complete lemma/proof, and following boundary paragraph. Images `/tmp/ym-c14-shift-page-{826,827,828}.png`. Layout readable, equations and proof end unclipped. Rendering is a presentation check, not mathematical validation.
+- Live issue 276 read at start and again before submission: the sole comment remained claim `6865186310`; no overlap identified. Final recheck recorded 2026-11-13 21:25 UTC. Full fresh response cached at `/tmp/c14-shift276-final.json`. The issue 55 history records the preceding author/reviewer claims as released; this new bounded task is separately claimed.
+
+No Lean elaboration, pinned-toolchain build, transitive axiom audit or global supplier validation was run. Source correspondence is based on direct reading of the listed definitions and immediate caller/consumer proofs. Existing source import status is not upgraded. Temporary build/render logs are local artifacts, not additional committed outputs. Parent inspection is author-side integration checking only; this draft requires different-account independent mathematical and correspondence review.

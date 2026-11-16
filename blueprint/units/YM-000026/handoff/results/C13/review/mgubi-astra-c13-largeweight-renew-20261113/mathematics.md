@@ -1,0 +1,11 @@
+# Renewed mathematical review: M1 resolved
+
+Reviewer: mgubi with delegated GPT-6 Astra assistance; session `mgubi-astra-c13-largeweight-renew-20261113`. This account did not author C13 or PR255. Claim [54#6864861465](https://github.com/hairer/humanise-yang-mills/issues/54#issuecomment-6864861465). This is a bounded independent follow-up, not human acceptance.
+
+Frozen response: PR255 `b9e0a014bed8d03e971e2bf000a17ce598eb5b66`, compared in full against previously reviewed `a7f0824024941171cb0663b2f74e76208e54c197`. Prior report PR262 `09ca7f223c8215c0b10b0dcf3a921a034e07196f` remains unchanged.
+
+**Verdict: M1 is resolved; no further mathematical correction identified in this two-file delta.** The only mathematical edit replaces the regular-realignment summary by `z + 2^n baromega_n R_e y` and explicitly cites `eq:allarity-realign-regular`. Here `baromega_n=max(1,omega)^n`, exactly as defined by `eq:allarity-mode-weight`. The unchanged displayed estimate prices each mode by `omega^|I| R_e y <= baromega_n R_e y`, then counts at most `2^n` subsets. Adding the old remainder price z gives precisely the corrected summary.
+
+The unchanged purchase `eq:allarity-step-purchases` already bounds `2^n baromega_n R_e y` by `d_0`. Consequently the unchanged step `(alpha+1)z+d_0 <= (alpha+2)z` for z>=d_0 agrees with the corrected sentence. Neither a new weight nor a different history is introduced. Full diff inspection confirms that there are no other mathematical changes; rank-root-normalization.tex is byte-identical between these two frozen heads. The added author response accurately describes this repair.
+
+The preceding review's conditional verdict is retained, with M1 discharged only at this new fingerprint. The four open inputs remain: actual mixed-compiler quantitative receipts at the enlarged weight; the stronger per-step discrepancy on the same reader/history; the terminal launch receipt at omega>=1 (not supplied by shrinking-radius monotonicity); and matching the top-down manuscript organization to the source's middle-level launch/step construction. This review constructs none of them. Prior PR213's unaggregated component-family versus address-summed activity distinction and auxiliary-history continuity/stronger-comparison join remain outside renewed scope. No whole-C13 or supplier acceptance is asserted.

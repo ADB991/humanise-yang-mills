@@ -1,7 +1,7 @@
-\section{The local annular remainder}
+\subsection{The local annular remainder}
 \label{sec:packet-annulus}
 This section proves the annular estimate used in
-Section~\ref{sec:packet-estimates}. The comparison is made before
+Subsection~\ref{sec:packet-estimates}. The comparison is made before
 Gaussian integration, on the actual fine configuration, coarse
 configuration and predictor tags. In particular, removing a remote
 cutoff does not permit us to replace the predictor by a newly chosen
@@ -9,24 +9,33 @@ one. The argument needs only the local conditions stated below.
 
 Fix the block length $L$, the predictor patch, the positive direct
 coefficients $a_f,a_c$, and the predictor penalty $p>0$. Retain the
-exponent convention of Section~\ref{sec:packet-estimates}, with large
-parameter $h=h(x)$. Put $t=P(h)/\sqrt h$, let $s$ be the coarse
+exponent convention of Subsection~\ref{sec:packet-estimates}, with large
+parameter $h=h(x)$. Put $t=P(h)/\sqrt h$; this is the fluctuation
+scale written $\tau$ in \eqref{eq:warning-scales} and in
+Subsection~\ref{sec:packet-estimates} (not the coordinate warning threshold
+called $t$ there). Let $s$ be the coarse
 threshold, and let $B$ and $R$ be the shell and truncation radii.
 We use $s\le2t$, $R=\lfloor B/100000\rfloor$, and the eventual
-geometric inequalities
+geometric inequality
 \[
- 100(1+B)\le c,\qquad
  10000(\rho+R_{\rm macro}+L+10)\le B,
 \]
-where $c$ is the coarse period and $\rho$ the predictor reach.
+where $\rho$ is the predictor reach. In addition, the coarse period
+$c$ is assumed to satisfy
+\[
+ 100(1+B)\le c.
+\]
+This is not an eventual inequality: $c$ is arbitrary, and the
+condition is a standing hypothesis on the period, part of the
+funded-step condition under which the packet estimates are applied.
 Both $B$ and $R$ have upper exponent zero, whereas
 $e^{-\sigma R}$ has every negative upper exponent for fixed
 $\sigma>0$. These properties follow from $B\asymp(\log x)^2$.
 All thresholds in this section are chosen after the fixed local data;
-all estimates are uniform in $c$.
+all estimates are uniform over all periods $c$ with $100(1+B)\le c$.
 
 The incoming linear data are the path and kernel bounds of
-Section~\ref{sec:seed-guides}, the flat identities of
+Subsection~\ref{sec:seed-guides}, the flat identities of
 \eqref{eq:unhit-flat-stack}, and the additional orthogonality
 \begin{equation}\label{eq:annulus-null-row}
  N_0B_cd_c=0.
@@ -35,10 +44,10 @@ The last identity is the null-row part of the same flat decomposition.
 Its construction, like that of the flat identities, belongs to the
 flat-stack input. We will identify exactly where it is used.
 
-\subsection{A common local chart}
+\subsubsection{A common local chart}
 Call a coarse patch clean when no coarse flag occurs there. On a
 clean patch every plaquette chord is at most $s$. The axial gauge
-argument in Section~\ref{sec:seed-tree-patch}, applied on a box of
+argument in Subsection~\ref{sec:seed-tree-patch}, applied on a box of
 radius $d+1$ with $d\le32B$, gives a gauge in which the bond chords
 on the smaller box are bounded by
 \[
@@ -73,7 +82,7 @@ small such patch lie in the minimizing branch and have chord at
 most $\delta$. Here is the uniformity argument. At the identity
 configuration the normalized minimizing frames and the best
 connector are the identity. Their continuity was proved in
-Section~\ref{sec:predictor-branch}. The branch inequalities are
+Subsection~\ref{sec:predictor-branch}. The branch inequalities are
 strict there. The finitely many frame tags, connector tags and axes
 therefore have a common neighbourhood on which these inequalities
 hold and the predictor chord is less than $\delta$.
@@ -84,13 +93,14 @@ all of them. Every torus configuration whose lifted patch satisfies
 these restrictions belongs to the same neighbourhood, independently
 of its period. For large $x$ the patch fits within $B/2$ and its
 bonds satisfy the restrictions. In particular, the normalized tag
-likelihoods are exactly one there: each tag has probability the
-reciprocal of the number of tags in the minimizing branch.
+likelihoods are exactly one there: in the minimizing branch the frame
+is the selected minimizer, and each frame tag has probability the
+reciprocal of the total number of frame tags.
 The four-link triangle inequality also makes every touched fine
 plaquette chord at most $\delta$. These statements hold for the
 original tags, including tags retained after remote masks were erased.
 
-\subsection{Affine approximation at the actual coarse field}
+\subsubsection{Affine approximation at the actual coarse field}
 Let $\mathcal C(U,V)$ be the row field consisting of the two fine
 curvature rows and the predictor row:
 \[
@@ -104,7 +114,7 @@ addresses. No whole-volume Euclidean norm is used in these estimates. Its full l
  \mathcal C^0(a,b)
    =\bigl(B_fd_fa,\sqrt p\,(b-\mathcal Qa)\bigr).
 \]
-The chart estimates of Section~\ref{sec:seed-unhit-comparison}
+The chart estimates of Subsection~\ref{sec:seed-unhit-comparison}
 give, for $\|a\|,\|b\|\le H$,
 \begin{equation}\label{eq:annulus-origin-error}
  \|\mathcal C^0(a,b)\|_\infty\le C H,\qquad
@@ -194,7 +204,7 @@ follows from its linear bound plus $E_0$. Gauge covariance of all
 three actual rows and invariance of the colour norm return the
 estimate to the original gauge.
 
-\subsection{Subtracting the selected squares}
+\subsubsection{Subtracting the selected squares}
 Let $g$ be the coarse guide row and assume the already established
 guide bound $\|g\|\le A t$. Define the actual and affine residuals
 \[
@@ -211,7 +221,7 @@ Indeed $|\|v\|-\|v_0\||\le E$ and
 $\|v_0\|\le m+E$. Hence $Z$ has upper exponent $-3/2$.
 
 Write $\operatorname{flaw}(q)=(r(q)^2-\|F(q)\|^2)/2$.
-The curvature argument in Section~\ref{sec:seed-energy} gives
+The curvature argument in Subsection~\ref{sec:seed-energy} gives
 \[
  0\le\operatorname{flaw}(q)\le K r(q)^4/2,
  \qquad \|F(q)\|^2\ge3r(q)^2/4
@@ -251,7 +261,7 @@ subtracted. Its corresponding displayed energy is nonnegative.
 This gives the required one-sided bound there, without asserting
 an absolute bound on an unselected row.
 
-\subsection{The remaining coarse rows}
+\subsubsection{The remaining coarse rows}
 Three further terms occur in the assigned energy. First, on a
 coarse plaquette with $r\le s$, the coarse counterterm is
 \[
@@ -277,7 +287,7 @@ subtract $K(e^b)X_c^0(b)$ to obtain
  \le C\|X_c(e^b)-X_c^0(b)\|_\infty
        +C\omega(R,H)\|X_c^0(b)\|_\infty,
 \]
-where $\omega(R,H)=(1+R)H+e^{-\tau R}$. The row bounds in
+where $\omega(R,H)=(1+R)H+e^{-\sigma R}$. The row bounds in
 \eqref{eq:unhit-kernel-near} justify this inequality. The globally
 small extension $b$ permits both supremum estimates on the right;
 no global bound on the original $V$ is required. The right side has
@@ -301,7 +311,7 @@ absolute cost is at most
 of upper exponent $-3/2$. Adding all row costs gives one
 nonnegative function $r(x)$ of upper exponent $-3/2$.
 
-\subsection{The protected annulus of an actual packet}
+\subsubsection{The protected annulus of an actual packet}
 We verify the local hypotheses on the packet itself. Its fine
 configuration is formed in a fixed tree slice. On active free
 bonds it is $\exp(u_e)V^\uparrow_e$; on frozen free bonds it is

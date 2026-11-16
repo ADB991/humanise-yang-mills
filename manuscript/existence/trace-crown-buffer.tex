@@ -1,5 +1,5 @@
 % Finite-volume buffer which transfers a Crown witness to a two-point probe.
-\section{The finite-volume Crown buffer}
+\subsection{The finite-volume Crown buffer}
 \label{sec:ex-lattice-trace-crown-buffer}
 
 We record the buffer argument used to pass from a local Crown approximation to
@@ -22,8 +22,8 @@ $i<k=\operatorname{summit}(i)\le N$. Put $k_-=k-1$. Write
 \end{align*}
 Here $T$ is the tiling of the volume-$N$ lattice by the cells of scale
 $i$. For a tiling $T$ with cell set $I$, its rooted functional is
-$\mathsf R_T^\beta(h)=|\mathbb E_\beta[\prod_{q\in I}T.\mathrm{copy}(q,h)]|^{1/|I|}$,
-with the normalized-root convention of the source.
+$\mathsf R_T^\beta(h)=|\mathbb E_\beta[\prod_{q\in I}T.\mathrm{copy}(q,h)]|^{1/|I|}$;
+the root is normalized by the number $|I|$ of cells.
 
 Three conditions are used repeatedly. A complex function $h$ of the
 lattice configuration is \emph{interior} to a set $K$ of sites if it is
@@ -47,9 +47,12 @@ tiled-product inequality
  \le\prod_{q\in I}\mathsf R_T^\beta(h_q)
 \]
 for every tiling $T$ and all fields $h_q$ interior to its base chamber, and
-subadditivity of $\mathsf R_T^\beta$ on such fields. It holds for every
-$\beta\ge0$ by reflection positivity; only the tiled-product inequality is
-used in this section.
+subadditivity of $\mathsf R_T^\beta$ on such fields. For $\beta\ge0$, reflection invariance of the Wilson law and
+Proposition~\ref{prop:ex-lattice-finite-reflection} give positivity at each
+translated seam. Proposition~\ref{prop:ex-centered-planted} then gives the
+tiled-product inequality with exactly these strict chambers and oriented
+copies. Only that inequality is used below; subadditivity is not an
+additional premise of the buffer argument.
 Write $\mathcal B_{N,k}$ for the local extension from scale $k$ to volume
 $N$. For distinct coarse sites $a,b$ at scale $i$, let $\alpha_{i,k}(a)$
 and $\alpha_{i,k}(b)$ denote their scale-$k$ anchors, and let
@@ -191,9 +194,18 @@ distinct cells $a\ne b$, gives
  |\mathcal Q(w,g)|\le \mathsf R_T^\beta(\mathcal B_{N,k}w)\,
       \mathsf R_T^\beta(\mathcal B_{N,k}g).
 \]
-Its proof represents each anchored factor by a tiling copy of an oriented,
-possibly conjugated chamber-interior field; this preserves the rooted
-functional. The Crown bound controls the first factor by
+Here is the reduction to Proposition~\ref{prop:ex-centered-planted}.
+In each occupied cell, undo the coordinate reflections prescribed by the
+parity of that cell, and conjugate the home field if that parity is odd.
+The resulting home field is still bounded, measurable, gauge invariant
+and chamber-interior. Copying it to the occupied cell cancels those
+reflections and conjugations, leaving the desired translated factor.
+In the product over all cells, changing a home field by one of these
+reflections permutes the cell indices; an odd parity can additionally
+conjugate the full product. Thus its absolute expectation, and hence its
+rooted functional, is unchanged. Apply the planted inequality to these
+two home fields in the distinct cells $a,b$ (equivalently put the unit
+field in every other cell). This proves the displayed estimate. The Crown bound controls the first factor by
 $F_i(-1{,}200{,}000)$. For the second, the rooted sup estimate says
 that a field bounded pointwise by $R\ge0$ has root at most $R$; hence it is at
 most $F_i(150{,}000)$. Multiplying and using
@@ -273,5 +285,11 @@ $3\le F_i(1)$, this is at most
 \end{proof}
 
 The proof uses the stated Crown witness and the finite-volume buffer
-estimate. The source's witness construction is a separate input to this
-transfer proposition.
+estimate. For the grade-five field used in the probe assembly, the witness is
+constructed in the \hyperref[par:trace-actual-crown]{actual Crown assembly}
+of Subsection~\ref{sec:ex-lattice-trace-local-pairing}. Its paired-lens
+estimate and healthy-region identity give, after the same dilation and
+signed average, precisely the three bounds in
+\eqref{eq:ex-trace-crown-witness}. The proposition is stated for any
+field with such a witness; it does not assert a witness for an arbitrary
+field.

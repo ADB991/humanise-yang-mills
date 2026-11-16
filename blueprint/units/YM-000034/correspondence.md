@@ -152,3 +152,30 @@ Integration question for the parent: `manuscript/existence/trace-scribe-producer
 - The imported reachability inventory gives additional, conditional replay evidence for all three target declarations. `Lean/verification/declaration-usage.tsv` records `chartB → nearing_h → YM.Trace.Over.blossoms` and `muteP → YM.Trace.Over.blossoms`; the recorded witness chains continue to `YM.Nonperturbative.continuum_with_position_tests`. The local TSV SHA-256 is `1f16d6cbf7cd650c7edccd08f95967ce92cd7e36ec68cfdd081621aec126c5e9`, matching the checked-in digest in [the regenerated-usage evidence](../../../source/evidence/usage-3456e5e.md), which reports that the declaration, status, root and parent columns reproduce from the pinned compiled artifact. The imported verifier traversed the same constant-dependency mechanism from the same root list and reports kernel replay of the resulting 100,168 project declarations. Thus, assuming that imported evidence and artifact correspondence, these target declarations lie within the previously replayed closure. The verifier recursively rejects project axioms and checks that external-boundary axioms are among `propext`, `Classical.choice` and `Quot.sound`; this supplies an inherited upper bound on their axiom dependencies in that archived environment. It does not establish which of those three each target actually uses. Both conclusions are inferences from the archived inventory and replay, not a new run, an individual `#print axioms` result, or a verification of their hypotheses and mathematical interpretation.
 - Exact source-to-prose correspondence, normalization, every upstream hypothesis, and mathematical proof require independent review. No independent approval is recorded.
 - Lean build and axiom audit: **unrun**. The pinned toolchain is `leanprover/lean4:v4.32.0`; the available checking environment has only `v4.35.0` and no matching dependency/build cache. No replacement toolchain or dependency download was attempted. Inspected Lean text is not a kernel replay. The full existence theorem and physical stress construction remain outside scope.
+
+## Revision response to independent review #128
+
+Revision basis `bac6004b01919c9d0e5958bdadc85e2d34f22732` on
+`codex/existence-monograph`; session `TrishenGunaratnam-terra-issue34-revision-20261113`.
+Existing review reports are read-only and their old fingerprint is not renewed.
+
+| Item | Response and evidence |
+| --- | --- |
+| R1 | `prop:ex-branch-raw-fast` now cites all three recording inequalities `eq:ex-branch-book-current`–`eq:ex-branch-book-tensor`, the finite-volume linearity and difference identity `eq:ex-branch-recorded-difference`, and the explicitly labelled tested trace identities `eq:ex-branch-recorded-traces`. `eq:ex-branch-test-properties` states continuity and separation; `eq:ex-branch-grade-three-unit` states the unit-insertion property and is cited at the telescoping step. The trace identities make explicit the old prose's exact false-zero and principal-divergence inputs; they do not replace the recording or finite-volume purchases. The bound derived from calibrated finite-volume columns and the fixed-scale limit is labelled `eq:ex-branch-transport-bound` and cited in `prop:ex-branch-washout` and its proof, with `ell_k=o(s_k)` and the affine clock. |
+| R2 | The owned chapter's `ref`/`eqref`/`autoref` targets have empty intersection with all labels in `ope-filtration.tex`; that file defines no local TeX macros or theorem environments. A two-pass wrapper after removing it from `unit.json` and the wrapper has no unresolved references. `trace-free-rank.tex` and the preamble remain the actual support files. The support-list change alters the fingerprint; the existing null approval fields are unchanged. |
+
+At pinned source `3456e5e75cf8d4cd558955a5c7638fba2d68f464`, reread
+`YM.Trace.Shelves.chartB`, `.nearing_h`, `.muteP`, `.materialB` and `.Zees`
+in `Lean/YM/TraceExtension/Shelves/Pear.lean`: the coefficient and moment
+limits retain the same branch and selected data; the washout quantifies over
+each fixed `p : ℕ` for `B ≠ some true`. The `Bend`/`BornZ` mapping in the
+existing table above remains `none`, `some false`, `some true` = `0,-,+`;
+no branch or limit has been identified with another. The raw recorded trace
+identities are the tested-correlation versions of the finite-volume identities
+already identified above as `YM.Trace.Margin.Plint_thin`,
+`YM.Trace.Turret.cones`, `YM.Trace.Shelves.beacon_h` and `.fade_w`. The
+labelled bound retains the fixed-`k`, fixed-vector ultrafilter passage; the
+source route remains `.simG`, `.hawker` and `.cine` in
+`Lean/YM/TraceExtension/Shelves/Route.lean`. These are textual correspondence
+checks and preserve the chart, recording, transport and purchase inputs, not
+proof that their full upstream construction has been closed.

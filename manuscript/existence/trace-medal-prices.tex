@@ -1,5 +1,5 @@
 % Three scalar price bounds used by the selected trace construction.
-\section{Three local scalar price bounds}
+\subsection{Three local scalar price bounds}
 \label{sec:ex-lattice-trace-medal-prices}
 
 This section proves three scalar price conversions used by the selected
@@ -7,7 +7,7 @@ trace construction. The arguments are independent of the construction of the
 local response and chart records that consume these bounds.
 
 Fix a block side \(L\), and retain \(\beta(x)\), \(H(x)\), and
-\(\chi(x)=H(x)^{1/2}\) from Section~\ref{sec:ex-lattice-trace-local-rate-selection}.
+\(\chi(x)=H(x)^{1/2}\) from Subsection~\ref{sec:ex-lattice-trace-local-rate-selection}.
 For a fixed price \(a>0\), write
 \[
                  \mathsf s_a(x)=a/\chi(x).
@@ -28,10 +28,10 @@ cloud response for a cloud \(Z\) on a representation \(R\) by
  \qquad m_R(Z)\ge0,\quad N_R(Z)\ge0,\quad \epsilon_Q>0.
 \]
 Then for every \(a>0\), eventually, uniformly over all clouds,
-\[
+\begin{equation}
              |\mathcal M_Q(Z;x)|\le \mathsf s_a(x)m_R(Z).
- \tag{1}\label{eq:ex-lattice-cloud-price}
-\]
+ \label{eq:ex-lattice-cloud-price}
+\end{equation}
 \end{lemma}
 \begin{proof}
 Since \(q<0\), choose \(v\) with \(q/4<v<0\). The rate hypothesis
@@ -46,10 +46,10 @@ these inequalities by the nonnegative mass \(m_R(Z)\).
 Let \(g(x)=\exp(-H(x)^{1/5}/2)\), and let
 \(\operatorname{DoorsRate}(L)=L^{-2/5}>0\) be the block remainder-cost
 factor. For every \(a>0\), eventually
-\[
+\begin{equation}
                     \operatorname{DoorsRate}(L)g(x)\le\mathsf s_a(x).
- \tag{2}\label{eq:ex-lattice-gas-price}
-\]
+ \label{eq:ex-lattice-gas-price}
+\end{equation}
 \end{lemma}
 \begin{proof}
 Set \(t=\log\log\beta(x)\), so \(\log H=t^2\) and
@@ -59,20 +59,20 @@ Set \(t=\log\log\beta(x)\), so \(\log H=t^2\) and
 \]
 because \(e^{t^2/5}\) grows faster than \(t^2\). Thus
 \(\chi g\to0\); multiplying by the fixed positive \(\operatorname{DoorsRate}(L)\)
-and making the product at most \(a\) proves (2).
+and making the product at most \(a\) proves \eqref{eq:ex-lattice-gas-price}.
 \end{proof}
 
 \begin{lemma}[Tuition price]
 \label{lem:ex-lattice-medal-tuition-price}
 For a target with goal \(\beta(x)^q\), define its tuition at fixed integers
 \(s,n\ge0\) by
-\[
+\begin{equation}
  \mathcal T_Q(x;s,n)=A(x)^{sn}\,P_{1/2}(sn)\,\beta(x)^{-q}
                          \exp(-b(x)/2),
- \tag{3}\label{eq:ex-lattice-tuition}
-\]
+ \label{eq:ex-lattice-tuition}
+\end{equation}
 where \(A\) and the polynomial price \(P_{1/2}(sn)\) have rate zero and
-\(b(x)=\lceil(\log x)^2\rceil\). In the source,
+\(b(x)=\lceil(\log x)^2\rceil\). Explicitly,
 \[
  A(x)=4(2b(x)+1),\qquad P_{1/2}(k)=2^k\,k!\,e^{1/2},
 \]
@@ -80,27 +80,27 @@ so that \(A\) is a fixed polynomial in \(b(x)\) and \(P_{1/2}(sn)\) is a
 constant; both have rate zero. Then
 \(\mathcal T_Q(\cdot;s,n)\in\mathcal R_z\) for every real \(z\). In
 particular, for every \(a>0\), eventually
-\[
+\begin{equation}
                        \mathcal T_Q(x;s,n)\le\mathsf s_a(x).
- \tag{4}\label{eq:ex-lattice-tuition-price}
-\]
+ \label{eq:ex-lattice-tuition-price}
+\end{equation}
 \end{lemma}
 \begin{proof}
-The first two factors in (3) have rate zero, and \(\beta^{-q}\) has rate
+The first two factors in \eqref{eq:ex-lattice-tuition} have rate zero, and \(\beta^{-q}\) has rate
 \(-q\). The last factor has every strict-power rate: for every fixed
 \(c>0\), \(b(x)/2\ge c\log\beta(x)\) eventually, since
 \(b(x)\asymp(\log x)^2\) while \(\log\beta(x)\asymp\log x\). Thus
 \(e^{-b/2}\le\beta^{-c}\) eventually. Choose
 \(c>\max(0,-q-z)\); the product rate \(-q-c\) is then less than \(z\),
 so the strict-power definition gives the claimed rate. Taking \(z=-1\) and using the negative-rate consequence
-above proves (4).
+above proves \eqref{eq:ex-lattice-tuition-price}.
 \end{proof}
 
 The three bounds enter the selected local record with two different
 prices. For one transition with block side \(L\) and one value of \(x\),
-the cloud bound (1) and the tuition bound (4) are used with the same price
+the cloud bound \eqref{eq:ex-lattice-cloud-price} and the tuition bound \eqref{eq:ex-lattice-tuition-price} are used with the same price
 \(a=z\) as the response and chart estimates of that record, while the gas
-bound (2) is used with the separate price \(a=y\); both \(y,z>0\) are
+bound \eqref{eq:ex-lattice-gas-price} is used with the separate price \(a=y\); both \(y,z>0\) are
 fixed before the eventual threshold in \(x\) is taken. The three lemmas
 produce only these scalar entries of the record, not its response and chart
 entries.

@@ -1,4 +1,4 @@
-\section{Shooting through the coupling bands}
+\subsection{Shooting through the coupling bands}
 \label{sec:surviving-interval-shooting}
 A nonlinear step is available when its input coupling belongs to the
 prescribed band. Its output need not belong to the next band for every
@@ -6,7 +6,16 @@ input parameter. We construct a surviving interval at each level; this
 preserves the activity continuity needed for the subsequent step.
 
 Fix the scale sequence and all the preceding nonlinear choices. Let
-$s=s_G>0$, $L_i\ge2$ be the integer block sides, and set
+$s=s_G$ be the slope constant of the gauge group,
+\begin{equation}\label{eq:shoot-slope}
+ s_G=\lambda_G=\frac{11C_G}{24\pi^2}=2b_0(G)>0,
+\end{equation}
+where $\lambda_G$ and $C_G$ are as in \eqref{eq:annulus-two-wave-estimates-display-AT2}--\eqref{eq:annulus-two-wave-estimates-display-AT4} of
+Subsection~\ref{sec:ex-annulus-two-wave}. Since $C_G$ is defined there with the
+colour inner product $\langle u,v\rangle=-r_G^{-1}\operatorname{Re}\operatorname{tr}(uv)$
+and an orthonormal colour basis, it is the constant $C_{\mathfrak g}$ of
+Subsection~\ref{sec:running-coefficient}; hence $\lambda_G=2b_0(G)$, and
+$b_0(G)>0$ was proved there. Let $L_i\ge2$ be the integer block sides, and set
 \[
  S_0=0,\qquad S_{i+1}=S_i+\log L_i,\qquad
  \widehat\beta_i=\bar\beta+sS_i,\qquad \bar\beta>0.
@@ -31,7 +40,34 @@ width of the preceding section. The second inequality is a property
 of the schedule, whose block sides are chosen after the stage drift
 allowances.
 
-\subsection{Restricting a curve without crossing a barrier}
+The slope in \eqref{eq:shoot-adjacent-drift} is not a free parameter: it is
+fixed by the one-loop constant of the path construction. Indeed, at the
+step from level $i+1$ to level $i$ the reset of
+Subsection~\ref{sec:coupling-reset-selection} returns the coarse coupling
+$\beta_i=\beta_{i+1}+\alpha_{N,i}+d_i$, where $\beta_{i+1}$ is the input
+coupling (the $\beta_f$ of that section, so that $\beta_i=b+d_i$ in its
+notation), $\alpha_{N,i}$ is the scalar correction of the selected path step
+and $d_i$ is the selected dial, with $|d_i|\le w\le1$.
+This bound holds for every input on the shooting interval: the scalar
+$\alpha_{N,i}$ is fixed with the path and the reset bound holds for every
+parameter value. The path step
+satisfies $|\alpha_{N,i}+\lambda_G\log L_i|+1\le D_{i+1}$
+(Subsection~\ref{sec:background-path-convergence}), where $D_{i+1}$ is the
+drift allowance of the stage assigned to level $i+1$. Hence
+\[
+ |\beta_{i+1}-\beta_i-\lambda_G\log L_i|
+ =|\alpha_{N,i}+\lambda_G\log L_i+d_i|
+ \le(D_{i+1}-1)+1=D_{i+1}.
+\]
+This is the first inequality in \eqref{eq:shoot-adjacent-drift} with
+$s=\lambda_G$ and $\varepsilon_{i+1}=D_{i+1}$; these allowances satisfy
+\eqref{eq:shoot-drift-ratio}. If another slope $s'$ satisfied the same
+estimate with allowances $\varepsilon'_{i+1}$ obeying that ratio bound,
+then $|s'-\lambda_G|\log L_i\leq\varepsilon'_{i+1}+D_{i+1}$.
+Dividing by $\log L_i>0$ gives
+$|s'-\lambda_G|\leq2J_{i+1}^{-2}\to0$, hence $s'=\lambda_G$.
+
+\subsubsection{Restricting a curve without crossing a barrier}
 We first record the elementary interval argument. Let $f$ be continuous
 on $[x,y]$, and suppose
 $f(x)\le d\le u\le f(y)$. There are $z\le w$ in $[x,y]$ such that
@@ -70,7 +106,7 @@ If the input coupling is $u_{i+1}$, the corresponding lower bound is
 Thus the two endpoints cross the next two barriers in the required
 order, even though the intermediate output curve may oscillate.
 
-\subsection{Descending through a finite history}
+\subsubsection{Descending through a finite history}
 At cutoff $N$ restrict the initial bare-action family to
 $[\ell_N,u_N]$. Its coupling is its parameter, it is continuous in the
 labelled activity norms, and it satisfies the prescribed initial
@@ -118,7 +154,7 @@ by taking them as part of the next-step requirement throughout the
 interval induction. The induction selects no new bridges, paths or
 support exponents.
 
-\subsection{The running-coupling estimate}
+\subsubsection{The running-coupling estimate}
 Let
 $E_0=0$ and $E_i=\sum_{j<i}\varepsilon_{j+1}$.
 Telescoping \eqref{eq:shoot-adjacent-drift} gives, uniformly over every
@@ -151,3 +187,46 @@ uniformly in cutoff and period. In particular the error is $o(S_i)$.
 There is no assertion that the sum of the step errors is uniformly
 bounded in the depth. The estimate uses their small ratio to the
 accumulated logarithmic scale.
+
+\subsubsection{The public running condition}
+The last estimate is the input \eqref{eq:running} of
+Subsection~\ref{sec:running-coefficient} for the selected histories, read as
+follows. Write $\beta_{N,p,m}$ for the coupling at level $m\le N$ of the
+selected history at cutoff $N$ and period index $p$. Its scale is
+$s_m=S_m=\log(a_m^{-1})$, where $a_m=e^{-S_m}$ is the reciprocal of the
+integer product of the first $m$ block sides, and $S_m\to\infty$. Its
+intercept is $\bar\beta$, and $2b_0(G)=s$ by \eqref{eq:shoot-slope}. For
+every $\eta>0$ the preceding paragraph supplies a level after which
+$|\beta_{N,p,m}-(\bar\beta+2b_0(G)S_m)|\le\eta S_m$ for every $N\ge m$ and
+every $p$. When the coarse target $b$ of the descent equals $\bar\beta$,
+as in the selected run, the term $|b-\bar\beta|$ in
+\eqref{eq:shoot-running-error} vanishes. It is in any case a constant, and
+was absorbed above.
+
+\begin{proposition}[Public running condition]
+\label{prop:shoot-public-running}
+Let the public family have the selected histories as its runs: at cutoff $N$
+and period index $p$, its lattice has $P_pe^{S_N}$ sites per axis, so that
+$D_N=e^{S_N}$ and $a_N=D_N^{-1}$, and its bare coefficient $\beta_{N,p}$
+is the coupling $\beta_{N,p,N}$ of the bare Wilson density with which the
+selected history at cutoff $N$ starts. Then \eqref{ex-running-input} holds
+with $\sigma=s_G=2b_0(G)$.
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:uniform-extraction} with $A=\bar\beta$,
+$c=2b_0(G)$ and $s_m=S_m$; its hypothesis is the estimate just recorded.
+Given $\varepsilon>0$, it gives $N_0$ such that, for every $m\ge N_0$,
+$S_m>0$ and $|\beta_{N,p,m}/S_m-c|<\varepsilon$ for all $N\ge m$ and all
+$p$. Take $m=N$. For $N\ge N_0$ and every $p$, the identities
+$\beta_{N,p,N}=\beta_{N,p}$ and $S_N=\log(D_N)=\log(a_N^{-1})$ give
+\[
+ \left|\frac{\beta_{N,p}}{\log(a_N^{-1})}-c\right|<\varepsilon .
+\]
+The threshold $N_0$ does not depend on $p$. Finally $c=2b_0(G)>0$, so
+$\sigma=c$ satisfies \eqref{ex-running-input}.
+\end{proof}
+
+The proposition uses only the uniformity in $N\ge m$ and $p$ of the running
+estimate, at the diagonal $m=N$. It does not use the convergence of the
+histories as the cutoff is removed.

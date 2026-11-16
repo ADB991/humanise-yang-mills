@@ -1,4 +1,4 @@
-\section{Attaching the funded service to the selected history}
+\subsection{Attaching the funded service to the selected history}
 \label{sec:original-history-portfolio-attachment}
 
 The finite-volume service is useful only if its data belong to the history
@@ -7,7 +7,7 @@ construction selects one run and applies the funded continuation to that
 run's own history, schedule, transitions, and finite-volume data. No cutoff,
 period, or extraction order is used to select a second history. The common
 schedule and its numerical prices are organized in
-Section~\ref{sec:common-funded-history}; here we check the remaining
+Subsection~\ref{sec:common-funded-history}; here we check the remaining
 same-witness interface.
 
 Let $R$ denote the selected run. Write $Y_R$ for its stored finite
@@ -47,10 +47,13 @@ same family $C_R$ with the following properties:
 \end{enumerate}
 The first three items and the finite-volume identities hold simultaneously
 for all cutoffs and periods in their stated domains. For each fixed grade
-and section in the purchased portfolio, the terminal marked estimate holds
-for all sufficiently large cutoffs, uniformly in the period; its threshold may depend on that grade
-and section. It is a separate local estimate, not a field included
-implicitly in the centered service.
+and section in the purchased portfolio, the terminal marked estimate is
+conditional on the reserved addresses and fee, the local forced-family
+attachment, and the paid selected-history record used in Propositions~\ref{prop:ex-marked-invitation} and
+\ref{prop:actual-marked-figment}. Under these conditions on the same
+$C_R$, it holds for all sufficiently large cutoffs, uniformly in the period;
+its threshold may depend on that grade and section. It is a separate local
+estimate, not a field included implicitly in the centered service.
 \end{proposition}
 
 \begin{proof}
@@ -91,7 +94,7 @@ The funded continuation supplies two quantitative inputs to the centered
 construction: bounds on the delayed nonlinear response and its tariff, and
 uniform estimates for each allowed adjacent-scale step. The latter are the
 scale inequalities proved in
-Section~\ref{ex-centered-geyser-scale-estimates}. That section applies them
+Subsection~\ref{ex-centered-geyser-scale-estimates}. That section applies them
 to the selected adjacent levels and block size, and supplies a common
 monotone threshold. It does not change the selected history, nor does it
 by itself establish the nonlinear-response bounds.
@@ -119,7 +122,7 @@ estimate: specializing the tariff inequality to the zero-grade section
 gives the required relay bounds. The separate growth and jump estimates
 follow from positivity and the selected scale payment. The three-card
 coefficient, exponential-entry, and forced-profile identities are proved
-in Section~\ref{sec:three-port-history}; we use those identities here
+in Subsection~\ref{sec:three-port-history}; we use those identities here
 rather than constructing a second interpolation or repeating their price
 proof.
 
@@ -127,10 +130,9 @@ The funded continuation returns the centered service together with its
 finite-volume bounds and marked portfolio. Its local transition estimates
 use the same nonlinear-response bounds, adjacent-scale estimates, nesting
 family, transition records, finite-volume witnesses, and schedule just
-described. The core centered-service assembly and its stronger funded
-version are distinguished in the source, but both use the supplied
-configuration, schedule, transfer data, and transition family. Neither
-creates a second history.
+described. Both the core centered-service assembly and its stronger funded version
+use the supplied configuration, schedule, transfer data, and transition
+family. Neither creates a second history.
 
 Finally, the terminal marked-field estimate is attached only after $C_R$
 has been fixed. The reserved addresses of the terminal representation
@@ -144,18 +146,25 @@ Proposition~\ref{prop:terminal-marked-voice} constructs the terminal
 marked coefficients on this same family, with their density and
 forced-profile identities, provided its fee inequality holds; that
 inequality is the terminal fee purchased in
-Section~\ref{sec:common-observable-purchases}. The quantitative local
-bounds are proved in Section~\ref{sec:ex-marked-field-local}, and their
+Subsection~\ref{sec:common-observable-purchases}. The quantitative local
+bounds are proved in Subsection~\ref{sec:ex-marked-field-local}, and their
 eventual uniformity for each fixed grade and section in
 Proposition~\ref{prop:ex-marked-solaris}. The local estimate requires soundness,
 reference-level eligibility, fit of the union of the stencils, nonnegative
 credit, a keeper, the regional card-times-allowance bound, cover at most
 $81$, the square-root allowance-times-storm bound, and the stated positive
-terminal weight and nonnegative reserve. The purchased local-estimates
-section supplies these conditions for all sufficiently large cutoffs for
-each fixed grade and section in the purchased portfolio, uniformly in the
-period. The marked density
-and forced-profile identity then give the terminal estimate on $C_R$.
+terminal weight and nonnegative reserve. The local estimates supply the
+numerical bounds for all sufficiently large cutoffs for each fixed grade
+and section in the purchased portfolio, uniformly in the period, subject to
+the stated schedule and matching inputs. In addition, the local
+forced-family attachment must be supplied for each relevant correction,
+on the terminal representation of this same $C_R$, uniformly in the
+period. The root-test conclusion also uses the paid selected-history
+record. Given that record and the terminal attachment,
+paragraph~\ref{par:figment-served-residual} constructs the full served
+residual polynomial. Thus no separate residual-representation hypothesis
+is required. The marked density and forced-profile identity then give
+the terminal estimate on this same $C_R$.
 Throughout, its history, schedule, transfer family, and terminal
 representation remain those of $C_R$. No uniqueness assertion for a
 terminal field is needed.
@@ -189,3 +198,93 @@ chosen, and use it throughout. Reopening the existence statement at a
 later point may produce a different portfolio and is not a same-object
 argument.
 \end{remark}
+
+\subsubsection{Budget and domain of the stored service}
+\label{sec:ex-stored-service-budget}
+
+Write $W(j)$ for the worth fixed in the purchase, $c_j$ for the
+column count of stage $j$, and $\ell_j$ for its chosen block side.
+At level $i$ put $C_i=c_{J(i)}$ and $L_i=\ell_{J(i+1)}$.
+Thus $C_i$ is the column count denoted by $\Gamma_i$ in
+Theorem~\ref{thm:ex-selected-run-service}; it is unrelated to the
+running-coupling increment. Notice that the level-$i$ block is
+chosen at the \emph{entrance} stage $J(i+1)$.
+
+\begin{proposition}[Room and bank on the purchased levels]
+\label{prop:ex-stored-service-budget}
+The stage purchase can be made so that every allowed schedule has,
+at every level $i\geq0$,
+\[
+ 64 W(J(i)+1)^2\le C_i,\qquad
+ 100000 W(J(i+1)+1)^6(1+C_{i+1})^2\le L_i^{1/8}.
+\]
+In particular the same inequalities hold for the selected run,
+independently of grade, cutoff and period.
+\end{proposition}
+
+\begin{proof}
+After fixing worth and the orders, choose the stage column count
+as a running maximum of the room request $64W(j+1)^2$, the
+factorial of the stage derivative order and the other pre-length
+column requests. An integer count can be used by taking ceilings.
+In particular the profile already pays the room request before any
+length is chosen. With these columns fixed, let
+\[
+ A_j=100000W(j+1)^6(1+c_j)^2,\qquad
+ n_j=\max\{1,\lceil A_j^8\rceil\}.
+\]
+Include $n_j$ in the stage length floor before selecting $\ell_j$.
+This is compatible with all other lower floors: take their maximum
+and, if nondecreasing floors are required, take the running maximum
+of that maximum. Any subsequent increase preserves the two
+purchases. Since $\ell_j\ge n_j$ and the eighth root is increasing
+on the nonnegative reals, $A_j\le\ell_j^{1/8}$. Substitute $j=J(i)$
+in the column inequality and $j=J(i+1)$ in the length inequality.
+The same substitutions apply at $i=0$. The later entrance delays
+and the selection of finite-volume histories do not change the
+stage columns or these lengths.
+\end{proof}
+
+For the common C02 and C12 interface use the direct specialization
+of the funded continuation in
+Proposition~\ref{prop:ex-original-history-attachment}, with family
+$C_R$, reference map $t_R$, transfer data $S_R$ and doors $D_R$.
+The stronger funded service is on precisely these objects. Its
+centered part restricts to each reference level $k$ by retaining
+the transition receipts with $k\le i<N$ and the terminal receipt
+at $N$. The stock clause for grade $d$ is needed only for
+$t_R(d)\le k\le N$, and the music clause for $t_R(d)\le N$ with
+doors $t_R(d)\le i<N$. The restriction makes sense even when
+$k=N$, with no intervening door. The centered birth estimate uses
+the stricter domain $k<N$. All period and cutoff indices range
+over entries of this one run. The local analytic attachments
+needed for retention, music, the paid local coupon and the uniform
+birth estimate are separate from this projection and the numerical
+budget proposition.
+
+There is also a campaign construction with its own chosen
+finite-volume history, transfers and doors. In the stamped original
+campaign the history is $Y_R$ and the transfers are $S_R$, so
+forming its family gives $C_R$ by substitution. The campaign
+service uses the recorded gate of its campaign step for $i\ge1$
+and its $k$-restricted retention is asserted for $k\ge1$.
+At $i=0$ its door is a default. The common interface above uses
+$D_R$ directly, including at level zero, and needs no identification
+of campaign gates with these doors.
+
+For this direct interface put $x_i=\widehat\beta_i$ and
+$r_i=N_{J(i+1)}$, where $N_j$ is the stage occupancy bound.
+The marched weight multiplier is $\phi_i=x_{i+1}^{-1}$ and the
+probe price is $\delta_i=x_{i+1}^{-2}$; both use the fine coupling.
+The grade height is
+$\zeta_{d,i}=x_i^{-(\deg F_d+4)}$ and the response waybill
+$\psi_i$ is twice the title cost at level $i+1$ multiplied by
+the exponential of that level's support exponent.
+The terminal-bank reserve is $u_i=x_i^{-1/2}/4$.
+In particular it is neither the marched multiplier nor the
+adjacent coupon rate. Proposition~\ref{prop:selected-centered-retention}
+gives the separate terminal endowment from the paid delay at $J(N+1)$:
+for $C_N^{\rm end}=w_N^{\rm f}+r_N\mathsf s(B_N)u_N$,
+the bounds are $(2B_N+1)^4 C_N^{\rm end}\le3$ and
+$e^{C_N^{\rm end}}-1\le1$, where $w_N^{\rm f}$ is the forced
+allowance. These numerical bounds require no door beyond the cutoff.

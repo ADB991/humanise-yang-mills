@@ -1,4 +1,4 @@
-\section{The minimizing branches and the predictor derivative}
+\subsection{The minimizing branches and the predictor derivative}
 \label{sec:predictor-branch}
 We establish the branch properties used in the local comparison.
 The cutoffs for uniqueness can be chosen using only the group, before
@@ -6,7 +6,7 @@ choosing a patch. Analyticity near the identity is then a local
 finite-dimensional statement, and its derivative includes the root
 normalization explicitly.
 
-\subsection{The nearest-point projection onto the group}
+\subsubsection{The nearest-point projection onto the group}
 The gauge group $G$ is a closed subgroup of $U(N)$. We regard
 $\mathcal M=M_N(\mathbb C)$ as a real vector space with the Frobenius
 inner product $\langle A,B\rangle=\operatorname{Re}\operatorname{tr}(A^*B)$
@@ -37,31 +37,37 @@ $2\rho$ about $1$ in $\mathcal M$, with the following properties.
 \end{lemma}
 
 \begin{proof}
-We use one fact from the theory of matrix Lie groups. Since $U(N)$ is
-closed in $GL(N,\mathbb C)$, $G$ is a closed subgroup of
-$GL(N,\mathbb C)$, that is a matrix Lie group in the sense of B.~C. Hall,
-\emph{Lie Groups, Lie Algebras, and Representations}, 2nd ed.,
-Graduate Texts in Mathematics 222, Springer, 2015, Definition~1.4,
-and $\mathfrak g$ is its Lie algebra in the sense of Definition~3.18
-there. By Theorem~3.42 of the same book there is $\varepsilon_0\in(0,\log2)$
-such that, for every matrix $A=\exp X$ with $\|X\|<\varepsilon_0$,
-one has $A\in G$ if and only if $X\in\mathfrak g$. The matrix
-exponential is a real-analytic diffeomorphism from a neighbourhood
-of $0$ in $\mathcal M$ onto a neighbourhood of $1$, with derivative
-the identity at $0$, so there is $\theta>0$ such that every
-$u\in G$ with $\|u-1\|<\theta$ equals $\exp X$ for one
-$X\in\mathfrak g$ with $\|X\|<\varepsilon_0$, and $X\to0$ as
-$u\to1$. (Equivalently: near $1$, $G$ is the embedded analytic
-submanifold $\exp(\mathfrak g)$; this is Cartan's closed-subgroup
-theorem.)
+Since $U(N)$ is closed in $GL(N,\mathbb C)$, $G$ is a matrix Lie
+group in the sense of \cite[Definition~2.2]{hall2000}. Its Lie algebra
+uses the one-parameter subgroup criterion of \cite[Definition~3.13]{hall2000}.
+By \cite[Theorem~3.23]{hall2000}, the exponential maps a neighborhood
+of zero in $\mathfrak g$ homeomorphically onto a neighborhood of $1$ in $G$.
+The ambient logarithm is its inverse by \cite[Theorem~3.6]{hall2000}.
+Thus, on a sufficiently small ambient ball of radius
+$\varepsilon_0<\log 2$, $\exp X\in G$ if and only if $X\in\mathfrak g$.
+Indeed, if $\exp X\in G$, it is the exponential of a small algebra
+element, which the ambient logarithm identifies with $X$. The
+ambient maps are analytic by their power series. Every $u\in G$
+with $\|u-1\|<\theta$, for sufficiently small $\theta>0$, therefore has
+a unique logarithm in this ball, tending to zero as $u\to1$.
 
 \emph{The normal chart.} Define
 $\Phi:\mathfrak g\times\mathfrak g^\perp\to\mathcal M$ by
 $\Phi(X,N)=\exp(X)(1+N)$. It is real-analytic, $\Phi(0,0)=1$, and
 $D\Phi(0,0)(X,N)=X+N$. Since $\mathcal M=\mathfrak g\oplus\mathfrak g^\perp$,
-this derivative is a linear isomorphism. By the real-analytic inverse
-function theorem (S.~G. Krantz and H.~R. Parks, \emph{A Primer of Real
-Analytic Functions}, 2nd ed., Birkh\"auser, 2002, Section~2.5) there is
+this derivative is a linear isomorphism. Complexify the finite-dimensional real spaces. The convergent power series
+of $\Phi$ gives a holomorphic extension whose derivative at zero is the
+complexification of $(X,N)\mapsto X+N$, hence an isomorphism. After translating the base point and composing with the inverse of the
+derivative, the complexified map has the form $z\mapsto z+h(z)$ with
+$h(0)=0$ and $Dh(0)=0$. On a sufficiently small closed complex ball of
+radius $r_0$, we have $\sup\|Dh\|\le 1/2$. For $\|w\|<r_0/2$,
+the iteration $z_{n+1}=w-h(z_n)$, starting at zero, stays in the ball
+and converges uniformly there as a function of $w$ by the contraction
+estimate. Its limit is holomorphic in $w$ and is the unique preimage
+in the ball. This gives the local holomorphic inverse.
+Conjugation invariance of $\Phi$ and uniqueness of that inverse imply that
+it maps real points to real points. Its restriction is therefore
+real-analytic. Thus there is
 $r\in(0,\varepsilon_0)$ such that, with
 $O_r=\{(X,N):\|X\|<r,\ \|N\|<r\}$, the set $\Phi(O_r)$ is an open
 neighbourhood of $1$ and $\Phi:O_r\to\Phi(O_r)$ is a real-analytic
@@ -102,9 +108,9 @@ In the rest of this chapter and in Sections~\ref{sec:seed-geometry}
 and~\ref{sec:seed-energy}, $\pi$ denotes this map. Its construction
 uses only $G$; no other part of the data enters.
 
-\subsection{Uniform uniqueness of minimizing frames}
+\subsubsection{Uniform uniqueness of minimizing frames}
 Use the finite path family $W_{ij\alpha}$ and minimizing energy from
-Section~\ref{sec:seed-geometry}. Let $\pi$ and $\rho$ be as in
+Subsection~\ref{sec:seed-geometry}. Let $\pi$ and $\rho$ be as in
 Lemma~\ref{lem:branch-nearest-projection}. By continuity of
 $D\pi$ at $1$ and $D\pi(1)=\Pi$, there is a convex ball about $1$,
 contained in $B(1,\rho)$, on which $\|D\pi-\Pi\|\le\tfrac14$; for all
@@ -192,7 +198,7 @@ eligible choice by \eqref{eq:geometry-axial} with axial factor $16$.
 Together these facts construct the required branch constants for any
 fixed positive predictor penalty.
 
-\subsection{Analyticity of the normalized frame}
+\subsubsection{Analyticity of the normalized frame}
 Fix a patch and a finite torus for the moment. Write $a$ for the
 fine logarithmic bond field and $h_i(a)$ for the actual frame
 matrices. At $a=0$ they are all $1$. The chosen minimizer is
@@ -229,12 +235,15 @@ Then $v_o=0$ and $v_i=A$ for $i\ne o$. If the patch has $n$ points,
 $\bar v=(n-1)A/n$, so applying $\Pi$ gives $A=(n-1)A/n$ and
 $A=0$. The derivative is an injective endomorphism of a finite
 -dimensional space and is therefore bijective. The analytic implicit
-function theorem gives a unique analytic local solution. Continuity
+function theorem gives a unique analytic local solution. Here this theorem
+follows from the same inverse theorem: for an equation $F(x,y)=0$ with
+invertible $D_yF$, apply it to $(x,y)\mapsto(x,F(x,y))$ and restrict the
+inverse to $(x,0)$. Continuity
 places the actual frame in that local solution neighbourhood, so
 $h(a)$ is analytic. This argument works in ambient matrices; it does
 not require choosing coordinates for a complement at every frame.
 
-\subsection{The root correction in the derivative}
+\subsubsection{The root correction in the derivative}
 For a Lie-algebra-valued bond perturbation $a$, write
 $\int_\gamma a$ for its signed sum along a path. Define
 \[
@@ -257,7 +266,7 @@ The feedback identity holds also at the centre: the cost is
 invariant under a common left multiplication, so the
 centre-normalized minimizer is an unconstrained minimizer and
 \eqref{eq:geometry-feedback} applies at $o$ as well (see
-Section~\ref{sec:seed-geometry}). Since the normalized
+Subsection~\ref{sec:seed-geometry}). Since the normalized
 frame has $h_o(a)=1$, its centre derivative is zero. Subtraction
 therefore yields
 \begin{equation}\label{eq:branch-frame-derivative}
@@ -307,7 +316,7 @@ For a fine gradient $a=d_f^{(0)}v$, path sums telescope, giving
 This checks the root normalization directly. Equations
 \eqref{eq:branch-frame-derivative} and \eqref{eq:branch-probe} prove
 the analytic predictor law and derivative used in
-Section~\ref{sec:seed-unhit-comparison}. Its transplantation argument
+Subsection~\ref{sec:seed-unhit-comparison}. Its transplantation argument
 then supplies a uniform fixed-patch Taylor radius for all periods.
 
 The covariance needed there follows from the same definitions.

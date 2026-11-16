@@ -1,4 +1,4 @@
-\section{Applying the convergence estimates to the selected histories}
+\subsection{Applying the convergence estimates to the selected histories}
 \label{sec:selected-history-limits}
 The preceding convergence arguments concern particular arrays, paths and
 stationary branches. We now identify these objects along one construction.
@@ -7,10 +7,10 @@ period would not identify their coefficient arrays, and because a
 cutoff-dependent change of the top boundary need not preserve a limit
 unless it eventually leaves each fixed scale unchanged.
 
-\subsection{One simultaneous stationary construction}
+\subsubsection{One simultaneous stationary construction}
 Fix the scale schedule, clipping data and coordinate conventions. Denote
 the terminal cutoff by $N$ and the scale by $m\le N$. The finite
-stationary construction of Section~\ref{sec:path-attachment-producer}
+stationary construction of Subsection~\ref{sec:path-attachment-producer}
 gives paths $R_{N,m}$, scalar corrections $\alpha_{N,m}$ and stationary
 maps $\rho_{N,m}^{p,F}$, where $p$ is a period and $F$ an allowed forest.
 All these objects are chosen together. Their one-step identities use
@@ -30,7 +30,7 @@ matching identities on every period and forest. Finally, the underlying
 free horizon converges at each scale in all of its retained components,
 and the root rows have an eventual bound at some width $v_m>w_m$.
 These are the extended-domain, canonical-readout and retained-horizon
-hypotheses used in Section~\ref{sec:background-path-convergence}.
+hypotheses used in Subsection~\ref{sec:background-path-convergence}.
 They belong to the one-step analytic construction; neither finite
 backward induction nor the argument below supplies them.
 
@@ -47,7 +47,7 @@ closed linear constraints and their separate budgets are preserved.
 The enlarged input domain therefore supplies exactly the additional
 steps used in the contraction argument.
 
-Apply Section~\ref{sec:background-path-convergence} to these data.
+Apply Subsection~\ref{sec:background-path-convergence} to these data.
 At every fixed scale there are one limiting path $R_m$ and one
 scalar $\alpha_m$ such that every coefficient of $R_{N,m}$ converges
 to the corresponding coefficient of $R_m$, and
@@ -63,7 +63,7 @@ or derivative order is involved in \eqref{eq:selected-stationary-limit}.
 The scalar limit is the one obtained from these same paths and thermal
 identities.
 
-\subsection{A single width for all four coefficient families}
+\subsubsection{A single width for all four coefficient families}
 The common dictionaries are part of the conclusion just obtained.
 Write $r_{N,m}(a)$ and $r_m(a)$ for row coefficients on the canonical
 row dictionary, and $c_{N,m,q}(a,\nu)$ and $c_{m,q}(a,\nu)$ for the
@@ -98,7 +98,7 @@ differences have absolute value at most $2C_{m,q}$. Their weighted
 majorant is therefore
 $2C_{m,q}e^{-(\delta_{m,q}-\widetilde w_m)\ell(a)}$.
 Both majorants are summable on the canonical dictionaries by the
-geometric sums in Section~\ref{sec:fixed-rung-convergence}. The
+geometric sums in Subsection~\ref{sec:fixed-rung-convergence}. The
 coordinate limits and a finite-head, summable-tail argument prove
 \eqref{eq:selected-row-width}--\eqref{eq:selected-atom-width}.
 There are only four families and finitely many row directions, so
@@ -106,7 +106,7 @@ their eventual estimates hold on one tail. This gives one path
 limit with one strictly larger width, as required in the local
 integral comparison.
 
-\subsection{Changing the terminal normalization}
+\subsubsection{Changing the terminal normalization}
 The final Wilson normalization replaces the top path at $m=N$.
 Let $\widetilde R_{N,m}$, $\widetilde\alpha_{N,m}$ and
 $\widetilde\rho_{N,m}^{p,F}$ denote the resulting data. The change
@@ -130,11 +130,195 @@ has exactly the same $R_m$, $\alpha_m$ and stationary jets. In
 particular, replacing the terminal path has not introduced a second
 background for the activity estimates.
 
-\subsection{The activity and coupling limits on this background}
+\subsubsection{The auxiliary stationary service}
+
+We supply the auxiliary input used in
+Subsection~\ref{sec:selected-nonlinear-offering}. Fix one adjacent stage
+pair, its paths and clips, its block side $L$, and a derivative order
+$r$. Write $j=J_{m+1}$ for the incoming stage. All constants below may depend on these purchased data, but not
+on the auxiliary period, forest or cutoff. The incoming loop allowance
+is denoted by $\Lambda\ge1$. The auxiliary coarse side is at least two;
+its fine side $Lc$ satisfies the larger-datum room bound
+$Lc\ge100(j+7)L$. These are restrictions on $c$ after the stage
+has been fixed. The selected kernel has the branch compatibility of
+Subsubsection~\ref{subsec:path-stationary-chart}.
+
+\begin{lemma}[Stationary matching on auxiliary periods]
+\label{lem:selected-auxiliary-service}
+The paths of the selected retained plan admit the uniform stationary
+service on every sufficiently large auxiliary one-step torus. Its
+critical graph agrees as a germ with the selected plan wherever that
+plan is defined. On a coarse auxiliary side $c$, its classical matching
+is exact and its thermal quadratic matching has bound
+\begin{equation}\label{eq:selected-auxiliary-thermal}
+ |D^2(\mathcal T_c-\mathcal D_c)(0)[h,h']|
+ \le |\operatorname{Site}(c)|(A+\Gamma_j)\Lambda
+              e^{-\min(\nu,c_j)c}
+ \qquad(\|h\|_\infty,\|h'\|_\infty\le1),
+\end{equation}
+for the tested directions in the plan. Here $A<\infty$, $\nu>0$
+are auxiliary service constants; $\Gamma_j,c_j>0$ are the retained
+plan's thermal constants; and $\mathcal D_c$ is the draft formed from
+its same outgoing path and scalar. The chart table is the plan's
+local-ratio chart. These choices are uniform over the admissible
+incoming paths with the purchased bounds.
+\end{lemma}
+\begin{proof}
+\emph{Uniform local data.} Use the tree-gauge coordinates of
+Subsubsection~\ref{subsec:path-stationary-chart}. A fixed block has a bounded
+number $K$ of free coordinates per site, uniformly in the period and
+allowed forest. Exponential path bounds give the local derivative
+estimate \eqref{eq:stationary-scatter-input} at every fixed required
+order. Here is the length payment in that assertion. Differentiating
+a path word $r$ times selects at most $(1+\ell)^r$ positions. If the
+selected coordinates are prescribed, the word visits all their anchors;
+the sum of their distances from any one of them is at most $r\ell$.
+From its weight $e^{\sigma\ell}$ reserve $e^{\sigma\ell/2}$ for
+summation and use the rest to pay those distances and
+$(1+\ell)^r$. Thus one can use a positive decay width smaller than
+$\sigma/(4r)$ and a finite constant depending only on $r,\sigma$
+and the path budget. Products of a bounded number of words obey the
+same estimate after splitting the width between their factors.
+The block coordinate maps, clip and local Haar logarithm have bounded
+fixed-order derivatives on a fixed smaller coordinate ball; their
+stencils have bounded diameter at this fixed $L$. Composition only
+changes these constants and the decay width. Summing free derivative
+indices costs the shell sum $K\sum_{n\ge0}(2n+1)^4e^{-an}$, independently
+of the torus. This proves the local derivative input for the actual
+path action. The classical action uses the fixed path allowance;
+the loop derivatives have in addition their factor $\Lambda$.
+
+The positive Hessian gap is the all-period tree-gauge gap of the same
+selected horizon. Subsection~\ref{sec:uniform-stationary-chart} now
+constructs a common coordinate ball and the unique critical graph
+$\rho_c$, with positive smaller protection radii, smoothness through
+the requested order, and a uniform inverse bound. Increase the local
+order to at least $\max(r+2,4)$ when necessary. The argument there
+uses supremum norms for the radii, so none shrink with the auxiliary
+volume. Its estimates for loop and Haar derivatives give the remaining
+chart prices, with at most the stated loop factor.
+
+We shall also need exponential entry bounds for the Hessian and its
+first two derivatives along $\rho_c$. These follow from the same
+local derivative estimate, not from a dimension-dependent norm
+conversion. Indeed $D\rho=-H^{-1}D_xF$, and differentiating the
+critical equation twice expresses $D^2\rho$ as $H^{-1}$ times a sum
+of third derivatives of the action evaluated on first graph derivatives.
+The inverse decays exponentially by Subsection~\ref{sec:local-covariance}.
+Root each derivative at its unsummed matrix index and sum the remaining
+indices with the preceding shell bound, reducing the decay width at
+each of these finitely many convolutions. The chain rule for
+$H(x,\rho_c(x))$ through order two then yields constants
+$d,B,T,Q>0$, uniform in the period and forest, such that its inverse,
+first jets and second jets have entry bounds respectively
+$Be^{-d\operatorname{dist}}$, $Te^{-d\operatorname{dist}}$ and
+$Qe^{-d\operatorname{dist}}$, for external directions of supremum norm
+at most one. The gap fixes $B$; these constants involve classical
+path derivatives only, so the loop factor is not squared.
+
+\emph{Replication and uniqueness.} Choose a scheduled coarse side
+$C=nc$, beyond the plan's volume threshold, using
+Subsection~\ref{sec:common-scale-selection}. Lift the auxiliary forest
+and its local coordinate conventions periodically. There are $n^4$
+copies of each free coordinate. Replication copies the same path words,
+block maps and local chart ratios. The stationary equation on a
+replicated field is therefore the replication of the smaller stationary
+equation. Both critical graphs tend to zero and belong to the common
+uniqueness zone near zero. Their pullbacks under replication agree
+there. The scheduled plan's graph has the same criticality and lies in
+that zone after restricting its germ, so it too is the same graph.
+This proves branch identification, rather than choosing a new branch
+for the auxiliary estimates. Classical action and outgoing path sums
+on replicated fields are exactly $n^4$ copies. The plan's classical
+matching therefore descends after division by $n^4$.
+
+\emph{The determinant error.} We give the finite-matrix calculation
+because the thermal term does not replicate exactly. Let $\pi$ map
+large free coordinates to their small-period addresses and let
+$E_{ia}=\mathbf1_{\{\pi(i)=a\}}$. Write $S(x)$ for the large Hessian
+on replicated coarse fields and $T(x)$ for the small Hessian. Equality
+of the replicated stationary equations, differentiated in the free
+variables, gives
+\[
+                    S(x)E=ET(x).
+\]
+Equivalently, the row sum of $S$ over a fibre equals the corresponding
+entry of $T$. It is not an equality of individual inverse blocks.
+Inverting and differentiating once or twice preserves this intertwining
+relation, as does multiplication. If $PE=ER$, the equal fibre sizes
+imply the exact trace identity
+\begin{equation}\label{eq:selected-fibre-trace}
+ n^4\operatorname{tr}R-\operatorname{tr}P
+   =\sum_i\sum_{\substack{a\ne i\\\pi(a)=\pi(i)}}P_{ia}.
+\end{equation}
+Distinct coordinates in one fibre have anchor distance at least $c$.
+With $S_K(t)=K\sum_{r\ge0}(2r+1)^4e^{-tr}$, an entry bound
+$|P_{ia}|\le C_Pe^{-2t\operatorname{dist}(i,a)}$ consequently gives
+\[
+ |n^4\operatorname{tr}R-\operatorname{tr}P|
+       \le |I_C|C_PS_K(t)e^{-tc}.
+\]
+This follows by extracting $e^{-tc}$ and summing the remaining
+$e^{-t\operatorname{dist}}$ over all coordinates, which only enlarges
+the sum over the fibre.
+
+For clarity, exponential entry bounds are stable under the products
+needed here: if two matrices have bounds $A e^{-a\operatorname{dist}}$
+and $B'e^{-a\operatorname{dist}}$, then their product has bound
+$AB'S_K(a/2)e^{-(a/2)\operatorname{dist}}$. Extract the last exponential
+by the triangle inequality and sum a remaining exponential over the
+intermediate index. Set $I=S(0)^{-1}$ and use
+\[
+ D^2\tfrac12\log\det S[h,h']
+   =\tfrac12\operatorname{tr}(I S_{hh'}-I S_h I S_{h'}).
+\]
+The first product is bounded at width $d/4$ by
+$BQ S_K(d/4)$, and each $I S_h$ is bounded at width $d/2$ by
+$H_0=BT S_K(d/2)$. Thus the second product is bounded at width $d/4$
+by $H_0^2 S_K(d/4)$. Apply \eqref{eq:selected-fibre-trace} with
+$t=d/8$ to the two products. The absolute difference of the determinant
+jets, with the small jet multiplied by $n^4$, is at most
+\[
+ |I_C|[BQ+H_0^2]S_K(d/4)S_K(d/8)e^{-dc/8}.
+\]
+The local Haar logarithm and the incoming loop sum replicate exactly
+along the identified graphs, so their jets cancel in this difference.
+There are at most $K L^4 C^4$ free coordinates. Dividing by $n^4$
+therefore gives constants $A<\infty$, $\nu=d/8>0$ for which
+\[
+ |D^2\mathcal T_c-n^{-4}D^2(\mathcal T_C\circ E_c)|
+        \le c^4 A e^{-\nu c},
+\]
+where $E_c$ is coarse-field replication and the directions have norm
+at most one. This also explains the local-ratio requirement: the
+Jacobian terms must be the same copied coordinate terms in both
+expressions.
+
+\emph{Transfer of the retained estimate.} Proposition
+\ref{prop:path-retained-plan}, on the selected horizon and paths,
+retains the scheduled estimate with amplitude $\Gamma_j\Lambda$ and
+rate $c_j$. Its hypotheses are the same purchased one-step path
+construction and quadratic horizon used at the beginning of this
+section; no new stationary plan is selected for the auxiliary torus.
+Apply that estimate to the replicated tested directions. They retain
+supremum norm one, and the draft copies exactly. Division by $n^4$
+turns its site factor into $c^4$. The triangle inequality yields
+\[
+ |D^2(\mathcal T_c-\mathcal D_c)|
+ \le c^4\{A e^{-\nu c}+\Gamma_j\Lambda e^{-c_j C}\}.
+\]
+Since $C\ge c$ and $\Lambda\ge1$, this implies
+\eqref{eq:selected-auxiliary-thermal}. All constants were fixed before
+$c,C$ and the forest. The same reasoning applies to any allowed
+auxiliary forest and its periodic lift; uniqueness identifies any
+other admissible germ on it without changing the constants.
+\end{proof}
+
+\subsubsection{The activity and coupling limits on this background}
 Fix a period $p$. The regular supports, forced inventories and norms
 at scale $m$ depend on the fixed scale and period, not on $N$.
 Embed their actual arrays into the one completion $\mathcal H_{m,p}$
-of Section~\ref{sec:coupled-background-convergence}. The representative
+of Subsection~\ref{sec:coupled-background-convergence}. The representative
 of each finite history has exactly its prescribed activities; the
 embedding is the same one used in the finite-test estimates. Its
 norm is at most $1/8$. At every retained scale its path is
@@ -143,19 +327,19 @@ The scalar in its coupling recursion is
 $\widetilde\alpha_{N,m}$, not a newly chosen correction.
 
 The finite real-test estimates and their ray consequence in
-Section~\ref{sec:background-ray-estimates} give the two one-step
+Subsection~\ref{sec:background-ray-estimates} give the two one-step
 comparison bounds in
 \eqref{eq:coupled-activity-step}--\eqref{eq:coupled-cost-step}.
 Their constants are $8/128$ for the activity and $4s_m$ for the
 scalar correction. The entry-threshold calculation at the end of
-Section~\ref{sec:coupled-background-convergence} gives
+Subsection~\ref{sec:coupled-background-convergence} gives
 $\sum_{j<m}s_j\le B_m/128$ for these same allowances. The
 larger-width path limit above, the convergent stationary jets and
 the retained free horizon supply the background data in the
 common-variable comparison. The compensated parameter estimates
 of Sections~\ref{sec:local-parameter-comparison} and
 \ref{sec:finite-volume-parameter-continuity}, with the suppliers
-of Section~\ref{sec:parameter-comparison-suppliers}, then give its
+of Subsection~\ref{sec:parameter-comparison-suppliers}, then give its
 local continuity, including the projected scalar output. Each
 application retains the funded transition and output identities
 stated there. To apply this continuity to every auxiliary history
@@ -165,11 +349,137 @@ step. In particular, the protected chart, funding and renewed prices,
 downward-map bounds and output identification must refer to that input
 and the same path and dictionaries. Availability of a one-step map on
 the allowed ball alone does not establish these supplier hypotheses.
-Their matching for the auxiliary inputs remains an input to the
-application here.
+For the auxiliary zero-array inputs, Lemmas~\ref{lem:selected-auxiliary-service}
+and~\ref{lem:selected-chartlet-matching} below verify this matching.
+The ordered derivative prices of the cited comparison argument are
+not a further ingredient beyond this matching. Their supplier
+construction in Subsection~\ref{sec:parameter-comparison-suppliers} is
+stated at a fixed derivative order $j$ for the fine representation
+satisfying the local hypotheses of Subsection~\ref{sec:activity-jet-assembly}.
+It yields the jet prices at every order through $j$ by the same local
+estimates that give the value prices: the elementary compensated
+factors with their support-dependent derivative scale, the cluster jet
+prices, and the cluster criterion for $2^ju_P$ with its reserve. The
+order needed in the continuity argument is at most the order $j$
+supplied. Hence no value-order continuity theorem is required. What
+remains is a matching statement, not a new estimate. The auxiliary
+dictionary of Subsection~\ref{sec:selected-nonlinear-offering}, that is
+the chartlet with zero regular activity at the stage coupling, must
+satisfy the local hypotheses of
+Sections~\ref{sec:activity-jet-assembly}
+and~\ref{sec:parameter-comparison-suppliers}, on the same input, path
+and dictionaries, with the healthy-mask, width and cutoff premises
+retained there. Lemma~\ref{lem:selected-auxiliary-service} supplies its stationary service
+on these same paths, and Lemma~\ref{lem:selected-chartlet-matching}
+checks the remaining local hypotheses. Thus the auxiliary matching
+required by the convergence argument is available on this construction.
 
-When these same-input hypotheses are supplied, all hypotheses of
-Section~\ref{sec:coupled-background-convergence} are on one and the
+\begin{lemma}[The auxiliary chartlet meets the comparison hypotheses]
+\label{lem:selected-chartlet-matching}
+Fix a stage and a point $x$ of an input interval. Consider the auxiliary
+torus of Subsection~\ref{sec:selected-nonlinear-offering}, carrying the
+same block bridge, the same two paths and clips, and the fine threshold,
+radius and band at $\beta_F(x_0)$. Consider its reference fine
+representation, the bare path action with the zero activity array.
+Use the auxiliary stationary service of
+Lemma~\ref{lem:selected-auxiliary-service}, on the same incoming path,
+one-step datum and local-ratio chart. Then this
+representation satisfies the incoming hypotheses of
+Sections~\ref{sec:activity-jet-assembly}
+and~\ref{sec:parameter-comparison-suppliers}, at every fixed derivative
+order $j$, as follows:
+\begin{enumerate}
+\item \emph{Incoming activity budgets.} The regular and forced arrays
+  are zero. Hence their regular and forced costs vanish, and every
+  activity budget, packet hypothesis and cluster hypothesis imposed on
+  them holds trivially.
+\item \emph{Sector and shell access.} The block equation, the two
+  adjacent kernel bounds and the all-period positive lower bounds are
+  those of the selected horizon. They apply on every auxiliary torus, so
+  the local expansion and its differentiated remainder bounds are
+  available there. The shell-access constants are those of the same
+  sector construction.
+\item \emph{Warnings.} The deterministic safety and plateau inequalities
+  of Subsection~\ref{sec:gaussian-warnings} hold, with their safety
+  conditions produced in Subsection~\ref{sec:warning-safety}. That
+  production concerns the fixed sector data and does not involve the
+  activity array.
+\item \emph{Protected chart.} The comparison chart is the stationary
+  chart of Subsection~\ref{sec:uniform-stationary-chart}, restricted to the
+  coarse horizon. Its identification with the graph used in the
+  stationary estimates is the branch identification in Lemma~\ref{lem:selected-auxiliary-service}, on the same block, path and
+  clipping data.
+\item \emph{Running-curve data.} The renewed price bounds are the zero
+  costs of (1) together with the fine path bounds and the clock
+  inequality for the loop allowance. The geometric bounds on the
+  downward map are the kernel bounds of (2). The initial action is the
+  admissible bare path action. The inequality
+  $\operatorname{preExponent}/B\le\operatorname{width}/2$ is
+  \eqref{eq:selected-offer-width}, which gives
+  $A_c/B_c\le\sigma_c/4$. The clipping, the path and the regular and
+  forced dictionaries are those of the physical comparison, with
+  elementary labels identified by the identity. The displayed output is
+  the constructed output of the local expansion on that torus.
+\end{enumerate}
+The healthy-support condition on a tested family of labels is not a
+property of the representation. It is a premise of
+Subsection~\ref{sec:activity-jet-assembly} for each family to which the
+product estimate is applied, and it is retained there unchanged.
+Consequently the supplier construction of
+Subsection~\ref{sec:parameter-comparison-suppliers} applies to the
+auxiliary chartlet at order $j$. It yields the ordered derivative
+prices at every order through $j$ by the same estimates as the value
+prices.
+\end{lemma}
+
+\begin{proof}
+Each item is read off from the construction of the auxiliary data in
+the subsection ``Keeping the physical and auxiliary data fixed'' of
+Subsection~\ref{sec:selected-nonlinear-offering}, together with the
+sections cited in the statement.
+
+(1) The array is zero, so every coefficient vanishes. Regular and
+forced costs are suprema of sums of nonnegative multiples of the
+absolute values of these coefficients, hence zero. Every incoming
+budget of the two cited sections is an upper bound by a nonnegative
+allowance, so it holds.
+
+(2) The cited subsection states that the auxiliary tori carry the same
+block bridge and paths, and that the all-period kernel bounds apply on
+every such torus, so that the local expansion and its differentiated
+remainder bounds are available there. The shell-access constants are
+constants of the sector construction on the selected horizon, which is
+the same on these tori.
+
+(3) The safety and plateau inequalities are deterministic statements
+about the fixed sector, warning catalogue and thresholds, produced in
+Subsection~\ref{sec:warning-safety}. They do not involve the activity
+array.
+
+(4) This is the protected-chart requirement of
+Subsection~\ref{sec:parameter-comparison-suppliers}. That section
+identifies a stationary chart with the graph of its estimates exactly
+when its representative is a critical point of the same tested action
+in the fine zone. On the auxiliary torus, this is the identification of
+the auxiliary stationary branch with the plan's branch, proved in
+Lemma~\ref{lem:selected-auxiliary-service}. Its eventual protected-field
+condition holds because $\tau(x)\to0$.
+
+(5) Each clause is quoted from the cited subsection and from
+\eqref{eq:selected-offer-width}, since
+$A_c/B_c\le\sigma_c/4\le\sigma_c/2$. The output identification holds
+because the auxiliary output is, by definition, the output of the local
+expansion applied to this representation.
+
+Finally, Subsection~\ref{sec:parameter-comparison-suppliers} chooses its
+thresholds before the incoming representation is supplied, and then
+instantiates its constants at that representation. Its conclusions
+therefore apply to every representation satisfying (1)--(5), and in
+particular to the chartlet.
+\end{proof}
+
+With these same-input verifications, all hypotheses of
+Subsection~\ref{sec:coupled-background-convergence} are on one and the
 same family. For any terminal sequence
 $N\to\infty$ and any corresponding finite trajectories whose bottom
 couplings tend to $b$, there are, at every fixed $m,p$, limits
@@ -187,7 +497,7 @@ Two sequences with the same bottom limit $b$ give the same limits:
 interleave them, whose terminal indices still tend to infinity,
 and apply the same uniqueness proof. No compactness of a ball in
 $\mathcal H_{m,p}$ is used. The norm convergence and the positive
-partition lower bound in Section~\ref{sec:fixed-rung-convergence}
+partition lower bound in Subsection~\ref{sec:fixed-rung-convergence}
 now apply to the actual normalized densities at that scale.
 
 This application retains the strengthened stationary construction,

@@ -1,4 +1,4 @@
-\section{Propagating the selected terminal birth to a moment bound}\label{ex-selected-birth-receipt}
+\subsection{Propagating the selected terminal birth to a moment bound}\label{ex-selected-birth-receipt}
 
 This section records the finite-volume terminal receipt used on the public selected-history route. It starts from the calibrated family, its same-history multiscale data, and the birth polynomial made from a finite list of observables. The result is a mode-by-mode normalized moment estimate. It is a conditional receipt: it uses the selected-history service and migration data stated below, rather than deriving those upstream construction inputs.
 
@@ -36,12 +36,12 @@ where $\mathfrak m_a=\Gamma_k\,\mathrm{paid}_a$ is the column-weighted coefficie
  A_k+D_k\leq |\Lambda_k|\mathcal T_k+|\mathcal V|(x+y+2f),
 \]
 where $w_I=\prod_{a\in I}w_a$, $x=3\mathfrak f_k$, and $y=\mathfrak f_k$. The same-history receipt identifies $H_I$ with the scale-$k$ coefficient of the backward birth. Then for every census mode $I$,
-\[
+\begin{equation}
  \left|\omega_{N,p}\!\left(\prod_{a\in I}T_a\right)\right|
  \prod_{a\in I}w_a
  \leq \exp\!\left( |\Lambda_k|\,\mathcal T_k+6|\mathcal V|\right),
  \label{ex-selected-birth-bound}
-\]
+\end{equation}
 where $\omega_{N,p}$ is the normalized finite-volume Wilson expectation, $\Lambda_k$ is the scale-$k$ lattice, and $\mathcal T_k$ is the finite-volume vacuum treasury cost. The conclusion is conditional on the listed service, geometry, and paid-coefficient hypotheses.
 \end{theorem}
 
@@ -68,12 +68,12 @@ where $U$ is fine and $V$ is coarse. For an integrable coefficient $F$, slice in
  =\int F(U)\,d\mu_{i+1}(U).
 \]
 For this terminal birth, $R_N$ is the bare Wilson density, so $Z_{N,p}=\int R_N\,d\mu_N$. The selected transition density is jointly measurable, nonnegative and uniformly bounded on the product of the finite-volume configuration spaces. Multiplying an integrable coefficient by that density gives an integrable function on the product of the priors; the same bound also gives integrability on every fixed coarse slice. Fubini therefore applies at each step. Since coefficient extraction is a continuous linear map on the finite-dimensional marker algebra, it commutes with this finite integral. Inductively, for each mode $I$,
-\[
+\begin{equation}
  \int (\mathcal B_k(U))_I\,d\mu_k(U)
  =\int (\mathcal B_N(U))_I\,d\mu_N(U)
  =Z_{N,p}\,\omega_{N,p}\!\left(\prod_{a\in I}T_a\right),
  \label{ex-selected-birth-integral}
-\]
+\end{equation}
 where $Z_{N,p}>0$ is the finite-volume Wilson partition function. The second equality uses the terminal birth identity and the definition of normalized expectation. This establishes the exact finite-volume transfer of the moment; no continuum limit or interchange of an infinite sum is involved.
 
 At scale $k$, the same-history receipt yields a served marked representation of $\mathcal B_k$. Its finite response estimate gives at marker $a$ a coefficient bound by three times the column-weighted coefficient size $\mathfrak m_a$ and a total activity bound by $\mathfrak m_a$. Multiplying by $w_a$ and using $w_a\mathfrak m_a\leq\mathfrak f_k$ gives the coefficient and activity bills $x=3\mathfrak f_k$ and $y=\mathfrak f_k$. The factor three is the local coefficient bound from the response estimate; the activity bill is its unmultiplied support charge. The separated-origin condition and occupancy estimate are what make this finite response estimate valid for a whole mode, and migration transports those facts through the backward scales. Since $\mathfrak f_k\leq1$, these satisfy $x+y+2\leq6$.
@@ -106,4 +106,106 @@ Divide by the positive denominator lower bound. The scalar $\sigma$ cancels:
 using $x+y+2f=4\mathfrak f_k+2\leq6$. Equation \eqref{ex-selected-birth-integral} identifies this normalized coefficient integral with the desired Wilson moment and proves the result.
 \end{proof}
 
-The terminal product, continuity, and exact backward integration have been proved above. The service certificate, its local coefficient envelope, the origin-counting response, and the finite-volume vacuum lower bound remain explicit inputs to this receipt. Their source correspondence and the exact producer boundary are recorded in the evidence ledger.
+The terminal product, continuity, and exact backward integration have been proved above. For a general history the service certificate, its local coefficient
+envelope, the origin-counting response and the finite-volume vacuum
+lower bound are explicit inputs. For the retained public family,
+Proposition~\ref{prop:ex-c02-selected-record} and
+Corollary~\ref{cor:ex-c02-uniform-census} attach them to this receipt
+under the common-purchase hypotheses.
+
+\subsubsection{The local denominator on the retained history}
+
+\begin{lemma}[Quiet coefficient and partition function]
+\label{lem:ex-selected-birth-denominator}
+Fix the selected history at $(N,p)$. For each $i\le N$ let $A_i$
+be its unmarked representative, and put $A_i^{\rm ev}(U)=\operatorname{eval}(A_i)(U)$.
+Assume the selected Wilson identities
+$A_N^{\rm ev}=R_N$ and $A_i^{\rm ev}=\operatorname{Push}_i A_{i+1}^{\rm ev}$ for $i<N$,
+where the push is the normalized transition in
+Subsection~\ref{ex-selected-birth-receipt}. Its kernel is that of step $i$
+at the coupling $\beta_{N,p,i+1}$, the same coupling used by the
+transfer and by the birth chain. Then
+\[
+ \int A_i^{\rm ev}\,d\mu_i=Z_{N,p}\quad\text{for all }i\le N,
+ \qquad
+ (\mathcal B_i)_\varnothing=A_i^{\rm ev}\quad\text{for }k\le i\le N,
+\]
+the range on which the chain $\mathcal B_i$ is defined.
+\end{lemma}
+\begin{proof}
+At $N$, the constant coefficient of the finite exponential is one,
+so $(\mathcal B_N)_\varnothing=R_N=A_N^{\rm ev}$. If the assertion holds at
+$i+1$, extracting the quiet coefficient commutes with the normalized
+push by the same finite-dimensional integration argument used in
+\eqref{ex-selected-birth-integral}. Thus
+\[
+ (\mathcal B_i)_\varnothing
+ =\operatorname{Push}_i(\mathcal B_{i+1})_\varnothing
+ =\operatorname{Push}_i A_{i+1}^{\rm ev}=A_i^{\rm ev}.
+\]
+For the integral identity, each $A_{i+1}^{\rm ev}$ is integrable. At
+$i+1=N$ it is continuous on a compact space. Below $N$ it is the push of
+an integrable function by the bounded normalized kernel, by the argument
+used for \eqref{ex-selected-birth-integral}. Integrating and using the
+normalized transition mass at every step gives the claimed equality
+with the positive terminal partition function.
+\end{proof}
+
+\subparagraph{Common width and the vacuum cutoff.}
+Fix an admitted grade $d$ and radius $R>0$. Let $g_{d,R}\ge1$
+bound the coefficient norm on the closed grade ball, which is
+compact in the finite-dimensional grade space. Using the
+calibrated reference readout and the adjacent coefficient cone of
+Subsection~\ref{ex-centered-freight-producer}, the coefficient at level
+$k$ satisfies $q_k(v)\le g_{d,R}D_k$ throughout the ball, with
+$D_k=\prod_{i<k}\Gamma_{i+1}$. Indeed the reference coefficient is
+$v$ and each forward bound multiplies by at most the next column
+count. Extending the product back to zero only increases it. Here
+$\Gamma_i\ge1$ are the columns of the fixed schedule. Writing $a_k^{\rm mesh}$
+for the mesh spacing, take the single positive weight
+\[
+ \omega_k=\frac{(a_k^{\rm mesh})^d\zeta_{d,k}}
+                 {\Gamma_k g_{d,R}D_k}.
+\]
+Multiplication by the local column-weighted price
+$\Gamma_k(a_k^{\rm mesh})^{-d}q_k(v)$ gives at most
+$\zeta_{d,k}$ for every label in the ball. The weight is independent
+of the terminal volume, period, site and particular label. Moreover
+$\zeta_{d,k}\le1$. This follows from the coin condition
+$\zeta_{d,k}\Gamma_k\le1$ of the purchased schedule, item~(R5) of
+Subsection~\ref{sec:actual-marked-portfolio-calibration}, together with
+$\Gamma_k\ge1$. So the small price $\mathfrak f_k=\zeta_{d,k}$ satisfies
+the hypothesis $\mathfrak f_k\le1$ of
+Theorem~\ref{thm:ex-selected-birth-moment}.
+
+On a served census at $k<N$, use the local prices
+$x=3\zeta_{d,k}$, $y=\zeta_{d,k}$ and reserve one in
+\eqref{ex-centered-steer}. In the small-ball bound of
+Subsection~\ref{ex-centered-construction} choose the radius
+$s_k=\widehat\beta_k^{-1/2}$. The paid scale has
+$\widehat\beta_k>1$ and the selected threshold is $s_k$ times an
+exponential of a square, so $0<s_k\le1$ and $s_k$ is at most the
+threshold. Write $E$ for the local excess cost, $\kappa$ for the
+unmarked activity allowance, and $\beta$ for the local coupling.
+The numerator pays per site $E+\kappa$ and the denominator pays
+$E+\beta\,\operatorname{baseBudget}(s_k)+4d_G\log(16/s_k)$,
+with the same scalar in both. To compare their sum with the selected
+treasury, use the selected representation bounds: the local excess
+cost is at most the regular allowance plus the loop price at its
+coupling, the activity allowance is bounded by the scheduled forced
+allowance, and $0\le\beta\le2\widehat\beta_k$. The loop price is an
+affine function of the coupling with nonnegative slope, and the
+base budget is nonnegative. Replacing the coupling in both costs
+by $2\widehat\beta_k$ therefore gives at most the scheduled treasury
+at radius $s_k$. The denominator in this calculation is
+$\int\operatorname{eval}(A)\,d\mu_k$, where $A$ is the representative of
+the served representation at scale $k$. The served census input is
+taken over the history's own representative, that is $A=A_k$; this is
+part of the conditional served-census input below. Hence, by
+Lemma~\ref{lem:ex-selected-birth-denominator}, the denominator is
+$\int A_k^{\rm ev}\,d\mu_k=Z_{N,p}$.
+Thus, whenever the shared retention and transfer give the served
+census and its local response on the actual geometry, the bound
+\eqref{ex-selected-birth-bound} holds with this same width throughout
+the grade ball. This argument uses the conditional served response
+only at the opened scale and makes no new choice of history.

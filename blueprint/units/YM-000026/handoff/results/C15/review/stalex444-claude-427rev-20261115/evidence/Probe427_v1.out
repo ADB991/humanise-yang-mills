@@ -1,0 +1,165 @@
+@YM.Next.Rank.Station.FitSky.stencils : ∀ {G : YM.Gauge} {F : YM.Family G} {k n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    F.Makes →
+      ∀ (d : ℕ),
+        ∀ᶠ (N : ℕ) in Filter.atTop,
+          ∃ (hN : k ≤ N),
+            ∀ (p : ℕ) (i : Fin n) (v : F.label d),
+              have a := F.path.levels;
+              have T := YM.Cells.center F.S p ⋯ 0;
+              YM.Cells.Interior (T.chamber 0)
+                (F.O N p v (YM.Cells.location F.S k N p (YM.Next.Rank.Station.choose a b k x i)))
+'YM.Next.Rank.Station.FitSky.stencils' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YM.MergeProof.East.PoisedSky {G : YM.Gauge} {C : YM.Family G} {D : ℕ} {ι : Type}
+  (P : ι → YM.Next.Rank.Tapes.Panel D) (B : YM.PhysicalNext.RankCovariance.Binding C) (H : C.Makes)
+  (O : YM.Next.Rank.HaarBudget G) (J : YM.Precision.ChartRatio G) (n : ℕ) (z : ℝ) (k : ℕ)
+  (t : ℕ → ℕ → YM.MergeProof.East.TableL C D) : Prop
+number of parameters: 13
+fields:
+  YM.MergeProof.East.PoisedSky.early : ∀ d ≤ D, C.ref d ≤ k
+  YM.MergeProof.East.PoisedSky.limit : max ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k))
+        ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k - 1)) ≤
+      C.path.levels.clock.monitor k
+  YM.MergeProof.East.PoisedSky.charts : ∀ (N p : ℕ), k < N → YM.MergeProof.East.Charting D k (t N p) N p
+  YM.MergeProof.East.PoisedSky.bank : ∀ (N p : ℕ),
+      k < N → ∀ (i : Fin (D + 1)), YM.Next.Rank.East.InvoiceSky C k N p (↑i) (t N p i)
+  YM.MergeProof.East.PoisedSky.supply : ∀ (χ : ι),
+      ∃ l r,
+        ∃ (h :
+          YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z ((P χ).bag (C.path.levels.clock.J k)) k n D O l
+            r),
+          ∀ (N p : ℕ) (hx : k < N),
+            ∃ V, YM.MergeProof.ActumSky B H O J (P χ) h V hx ∧ ∀ (d : Fin (D + 1)), ∃ L, L.T = t N p d
+constructor:
+  YM.MergeProof.East.PoisedSky.mk {G : YM.Gauge} {C : YM.Family G} {D : ℕ} {ι : Type}
+    {P : ι → YM.Next.Rank.Tapes.Panel D} {B : YM.PhysicalNext.RankCovariance.Binding C} {H : C.Makes}
+    {O : YM.Next.Rank.HaarBudget G} {J : YM.Precision.ChartRatio G} {n : ℕ} {z : ℝ} {k : ℕ}
+    {t : ℕ → ℕ → YM.MergeProof.East.TableL C D} (early : ∀ d ≤ D, C.ref d ≤ k)
+    (limit :
+      max ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k))
+          ↑↑(C.path.levels.clock.factor (C.path.levels.clock.J k - 1)) ≤
+        C.path.levels.clock.monitor k)
+    (charts : ∀ (N p : ℕ), k < N → YM.MergeProof.East.Charting D k (t N p) N p)
+    (bank : ∀ (N p : ℕ), k < N → ∀ (i : Fin (D + 1)), YM.Next.Rank.East.InvoiceSky C k N p (↑i) (t N p i))
+    (supply :
+      ∀ (χ : ι),
+        ∃ l r,
+          ∃ (h :
+            YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J (-3) z ((P χ).bag (C.path.levels.clock.J k)) k n D O
+              l r),
+            ∀ (N p : ℕ) (hx : k < N),
+              ∃ V, YM.MergeProof.ActumSky B H O J (P χ) h V hx ∧ ∀ (d : Fin (D + 1)), ∃ L, L.T = t N p d) :
+    YM.MergeProof.East.PoisedSky P B H O J n z k t
+@YM.MergeProof.East.PoisedSky.early : ∀ {G : YM.Gauge} {C : YM.Family G} {D : ℕ} {ι : Type}
+  {P : ι → YM.Next.Rank.Tapes.Panel D} {B : YM.PhysicalNext.RankCovariance.Binding C} {H : C.Makes}
+  {O : YM.Next.Rank.HaarBudget G} {J : YM.Precision.ChartRatio G} {n : ℕ} {z : ℝ} {k : ℕ}
+  {t : ℕ → ℕ → YM.MergeProof.East.TableL C D}, YM.MergeProof.East.PoisedSky P B H O J n z k t → ∀ d ≤ D, C.ref d ≤ k
+structure YM.MergeProof.East.TimberSky {G : YM.Gauge} {C : YM.Family G} (F : YM.Extraction.Order)
+  (a : (YM.Cells.standard C).Hierarchy) (d i j : ℕ) (b c : ℝ) (R : ℕ → ℕ → YM.MergeProof.East.TableL C d) : Prop
+number of parameters: 10
+fields:
+  YM.MergeProof.East.TimberSky.high : 5 < b ∧ b ≤ YM.Next.Rank.Perch.y (YM.Next.Rank.Atlas.clim C.path.levels i)
+  YM.MergeProof.East.TimberSky.early : ∀ (u : Fin (d + 1)), C.ref ↑u ≤ i
+  YM.MergeProof.East.TimberSky.rate : ∀ (N p : ℕ),
+      i < N →
+        YM.MergeProof.East.Charting d i (R N p) N p ∧
+          ∀ (u : Fin (d + 1)), YM.Next.Rank.East.InvoiceSky C i N p (↑u) (R N p u)
+  YM.MergeProof.East.TimberSky.plate : YM.MergeProof.East.SeqPair i b d R (YM.Next.UVStress.costHint j)
+  YM.MergeProof.East.TimberSky.fares : (YM.MergeProof.East.wok C d i b c R).Admissible F ⋯ j
+      (YM.Next.UVStress.sizeHint j) (YM.Next.UVStress.costHint j)
+constructor:
+  YM.MergeProof.East.TimberSky.mk {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order}
+    {a : (YM.Cells.standard C).Hierarchy} {d i j : ℕ} {b c : ℝ} {R : ℕ → ℕ → YM.MergeProof.East.TableL C d}
+    (high : 5 < b ∧ b ≤ YM.Next.Rank.Perch.y (YM.Next.Rank.Atlas.clim C.path.levels i))
+    (early : ∀ (u : Fin (d + 1)), C.ref ↑u ≤ i)
+    (rate :
+      ∀ (N p : ℕ),
+        i < N →
+          YM.MergeProof.East.Charting d i (R N p) N p ∧
+            ∀ (u : Fin (d + 1)), YM.Next.Rank.East.InvoiceSky C i N p (↑u) (R N p u))
+    (plate : YM.MergeProof.East.SeqPair i b d R (YM.Next.UVStress.costHint j))
+    (fares :
+      (YM.MergeProof.East.wok C d i b c R).Admissible F ⋯ j (YM.Next.UVStress.sizeHint j)
+        (YM.Next.UVStress.costHint j)) :
+    YM.MergeProof.East.TimberSky F a d i j b c R
+@YM.MergeProof.East.TimberSky.early : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order}
+  {a : (YM.Cells.standard C).Hierarchy} {d i j : ℕ} {b c : ℝ} {R : ℕ → ℕ → YM.MergeProof.East.TableL C d},
+  YM.MergeProof.East.TimberSky F a d i j b c R → ∀ (u : Fin (d + 1)), C.ref ↑u ≤ i
+@YM.Next.Rank.Price.Tested.bijective : ∀ {G : YM.Gauge} (C : YM.Family G) {d N p k : ℕ},
+  C.Makes →
+    C.ref d ≤ k →
+      k ≤ N → ∀ (read : C.label d →ₗ[ℂ] C.label d), YM.Next.Rank.Price.Tested C d k N p read → Function.Bijective ⇑read
+'YM.Next.Rank.Price.Tested.bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure YM.Next.Rank.Ribbon.StampDuty {G : YM.Gauge} (C : YM.Family G) (k N p d D : ℕ) (Q : YM.RG.Rep G (C.side k p))
+  (q : ℕ) (X : YM.Next.Rank.Atlas.AtlasData G C.S p) : Type
+number of parameters: 10
+fields:
+  YM.Next.Rank.Ribbon.StampDuty.r : 4 * YM.Next.Rank.Spindle.sizeQ C k ≤ YM.Next.Rank.Atlas.wood C.path.levels k
+  YM.Next.Rank.Ribbon.StampDuty.W : C.label d →
+      YM.Next.Rank.Normal.poly (YM.Next.Rank.Spindle.slotC G (YM.Next.Rank.Spindle.sizeQ C k))
+  YM.Next.Rank.Ribbon.StampDuty.crystal : ∀ (x : C.label d), YM.Next.Rank.Spindle.Spirit (self.W x)
+  YM.Next.Rank.Ribbon.StampDuty.duration : ∀ (x : C.label d), MvPolynomial.totalDegree (self.W x) ≤ D
+  YM.Next.Rank.Ribbon.StampDuty.weight : ∀ (x : C.label d),
+      YM.Next.Rank.Rise.coin (self.W x) ≤
+        YM.Next.Rank.Perch.bill 1 (YM.Next.Rank.Atlas.clim C.path.levels k) * YM.Next.Rank.Spindle.paid C d k N p x
+  YM.Next.Rank.Ribbon.StampDuty.heater : YM.Next.Rank.Atlas.Heater C k d
+  YM.Next.Rank.Ribbon.StampDuty.head : ∀ (x : C.label d),
+      self.heater x =
+        (YM.Next.Rank.Normal.milk (YM.Next.Rank.Atlas.control X 0 (YM.Next.Rank.Atlas.wood C.path.levels k)))
+          ((MvPolynomial.rename (YM.Next.Rank.Spindle.calls ⋯)) (self.W x))
+  YM.Next.Rank.Ribbon.StampDuty.T : Module.End ℂ (C.label d)
+  YM.Next.Rank.Ribbon.StampDuty.lights : YM.Next.Rank.Atlas.Heating C k N p d D self.heater self.T
+  YM.Next.Rank.Ribbon.StampDuty.coupon : ∀ (t : C.label d),
+      YM.Next.Rank.Edition.Ticket t (YM.Next.Rank.Spindle.scouts C k) k N p Q.p ⟨YM.Lattice.halo (q * Q.p.B) {0}, ⋯⟩
+        (YM.Next.Rank.Spindle.signet 0 (YM.Next.Rank.LiftMark.GaugeScale C k N p) (self.W t))
+        (YM.Next.Rank.Perch.bill (-↑D) (YM.Next.Rank.Atlas.clim C.path.levels k) *
+          YM.Next.Rank.Spindle.paid C d k N p t)
+constructor:
+  YM.Next.Rank.Ribbon.StampDuty.mk {G : YM.Gauge} {C : YM.Family G} {k N p d D : ℕ} {Q : YM.RG.Rep G (C.side k p)}
+    {q : ℕ} {X : YM.Next.Rank.Atlas.AtlasData G C.S p}
+    (r : 4 * YM.Next.Rank.Spindle.sizeQ C k ≤ YM.Next.Rank.Atlas.wood C.path.levels k)
+    (W : C.label d → YM.Next.Rank.Normal.poly (YM.Next.Rank.Spindle.slotC G (YM.Next.Rank.Spindle.sizeQ C k)))
+    (crystal : ∀ (x : C.label d), YM.Next.Rank.Spindle.Spirit (W x))
+    (duration : ∀ (x : C.label d), MvPolynomial.totalDegree (W x) ≤ D)
+    (weight :
+      ∀ (x : C.label d),
+        YM.Next.Rank.Rise.coin (W x) ≤
+          YM.Next.Rank.Perch.bill 1 (YM.Next.Rank.Atlas.clim C.path.levels k) * YM.Next.Rank.Spindle.paid C d k N p x)
+    (heater : YM.Next.Rank.Atlas.Heater C k d)
+    (head :
+      ∀ (x : C.label d),
+        heater x =
+          (YM.Next.Rank.Normal.milk (YM.Next.Rank.Atlas.control X 0 (YM.Next.Rank.Atlas.wood C.path.levels k)))
+            ((MvPolynomial.rename (YM.Next.Rank.Spindle.calls r)) (W x)))
+    (T : Module.End ℂ (C.label d)) (lights : YM.Next.Rank.Atlas.Heating C k N p d D heater T)
+    (coupon :
+      ∀ (t : C.label d),
+        YM.Next.Rank.Edition.Ticket t (YM.Next.Rank.Spindle.scouts C k) k N p Q.p ⟨YM.Lattice.halo (q * Q.p.B) {0}, ⋯⟩
+          (YM.Next.Rank.Spindle.signet 0 (YM.Next.Rank.LiftMark.GaugeScale C k N p) (W t))
+          (YM.Next.Rank.Perch.bill (-↑D) (YM.Next.Rank.Atlas.clim C.path.levels k) *
+            YM.Next.Rank.Spindle.paid C d k N p t)) :
+    YM.Next.Rank.Ribbon.StampDuty C k N p d D Q q X
+@YM.Next.Rank.Station.AllowedSky.large : ∀ {G : YM.Gauge} {A : YM.RG.Levels G} {b : ℝ} {k : ℕ},
+  YM.Next.Rank.Station.AllowedSky A b k → 2 ≤ YM.Next.Rank.Station.wheelSky A k
+def YM.Next.Rank.Station.leastL : {G : YM.Gauge} → YM.RG.Levels G → ℕ → YM.Lattice.Side :=
+fun {G} A k => min (A.clock.factor (A.clock.J k)) (A.clock.factor (A.clock.J k - 1))
+def YM.Next.Rank.Station.wheelSky : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℝ :=
+fun {G} A k => ↑↑(YM.Next.Rank.Station.leastL A k)
+       47.89 real         1.87 user         4.19 sys
+          6847283200  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              168452  page reclaims
+              331521  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               63501  voluntary context switches
+              303153  involuntary context switches
+         57629583291  instructions retired
+         25272234731  cycles elapsed
+          1027266624  peak memory footprint

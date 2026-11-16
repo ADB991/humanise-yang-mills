@@ -1,0 +1,631 @@
+@YM.Trace.Terrace.Arch.β : {G : YM.Gauge} → {C : YM.Family G} → YM.Trace.Terrace.Arch C → ℕ → ℝ
+structure YM.Trace.Terrace.Arch {G : YM.Gauge} (C : YM.Family G) : Type
+number of parameters: 2
+fields:
+  YM.Trace.Terrace.Arch.β : ℕ → ℝ
+  YM.Trace.Terrace.Arch.M : (d : ℕ) → ℕ → C.label d ≃ₗ[ℂ] C.label d
+constructor:
+  YM.Trace.Terrace.Arch.mk {G : YM.Gauge} {C : YM.Family G} (β : ℕ → ℝ) (M : (d : ℕ) → ℕ → C.label d ≃ₗ[ℂ] C.label d) :
+    YM.Trace.Terrace.Arch C
+structure YM.Trace.Terrace.steep {G : YM.Gauge} {C : YM.Family G} (𝓛 : Ultrafilter (ℕ × ℕ))
+  (Z : YM.Trace.Terrace.Arch C) : Prop
+number of parameters: 4
+fields:
+  YM.Trace.Terrace.steep.mintS : ∀ (i : ℕ), Filter.Tendsto (fun j => C.path.β j.1 j.2 i) (↑𝓛) (nhds (Z.β i))
+  YM.Trace.Terrace.steep.terms : ∀ (d k : ℕ),
+      C.ref d ≤ k →
+        ∀ (v : ℕ × ℕ → C.label d) (z : C.label d),
+          Filter.Tendsto v (↑𝓛) (nhds z) →
+            Filter.Tendsto (fun i => YM.Trace.Terrace.Cturn C d k i.1 i.2 (v i)) (↑𝓛) (nhds ((Z.M d k) z))
+constructor:
+  YM.Trace.Terrace.steep.mk {G : YM.Gauge} {C : YM.Family G} {𝓛 : Ultrafilter (ℕ × ℕ)} {Z : YM.Trace.Terrace.Arch C}
+    (mintS : ∀ (i : ℕ), Filter.Tendsto (fun j => C.path.β j.1 j.2 i) (↑𝓛) (nhds (Z.β i)))
+    (terms :
+      ∀ (d k : ℕ),
+        C.ref d ≤ k →
+          ∀ (v : ℕ × ℕ → C.label d) (z : C.label d),
+            Filter.Tendsto v (↑𝓛) (nhds z) →
+              Filter.Tendsto (fun i => YM.Trace.Terrace.Cturn C d k i.1 i.2 (v i)) (↑𝓛) (nhds ((Z.M d k) z))) :
+    YM.Trace.Terrace.steep 𝓛 Z
+structure YM.Climb.Scaling {G : YM.Gauge} {L : YM.Register G} (S : YM.Table L) : Type
+number of parameters: 3
+fields:
+  YM.Climb.Scaling.U : ℕ → (d : ℕ) → YM.Spin.change S d
+  YM.Climb.Scaling.xi : ℕ → ℝ
+  YM.Climb.Scaling.r : ℕ → ℝ
+  YM.Climb.Scaling.sign : ∀ (k : ℕ), 0 < self.xi k
+  YM.Climb.Scaling.positive : ∀ (k : ℕ), 0 < self.r k
+  YM.Climb.Scaling.later : StrictAnti self.r
+  YM.Climb.Scaling.drips : Filter.Tendsto self.r Filter.atTop (nhds 0)
+constructor:
+  YM.Climb.Scaling.mk {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} (U : ℕ → (d : ℕ) → YM.Spin.change S d)
+    (xi r : ℕ → ℝ) (sign : ∀ (k : ℕ), 0 < xi k) (positive : ∀ (k : ℕ), 0 < r k) (later : StrictAnti r)
+    (drips : Filter.Tendsto r Filter.atTop (nhds 0)) : YM.Climb.Scaling S
+@[reducible] def YM.Trace.Over.BQ : {G : YM.Gauge} →
+  {C : YM.Family G} → YM.Trace.Terrace.Arch C → ((i : ℕ) → YM.MergeProof.East.Vane C i) → ℕ → ℝ :=
+fun {G} {C} Z V => Z.β ∘ YM.Trace.Terrace.Stern V
+@[reducible] def YM.Trace.Over.ZoomValue : {G : YM.Gauge} →
+  {C : YM.Family G} →
+    {S : YM.Table C.book} → YM.Climb.Scaling S → (ℕ → ℝ) → S.Field 4 → ℕ → (YM.Spin.comparator C.book).Field 4 :=
+fun {G} {C} {S} X B v k => (LinearEquiv.symm (X.U k 4)) ((B k * X.r k ^ 4) • v)
+@[reducible] def YM.Trace.Over.LogZoom : {G : YM.Gauge} →
+  {C : YM.Family G} → {S : YM.Table C.book} → YM.Climb.Scaling S → ℕ → ℝ :=
+fun {G} {C} {S} X i => Real.log (X.r i)⁻¹
+def YM.Trace.Over.Year : {G : YM.Gauge} →
+  {C : YM.Family G} → {S : YM.Table C.book} → YM.Climb.Scaling S → ℕ → S.Stress →ₗ[ℝ] (YM.Cells.standard C).Stress :=
+fun {G} {C} {S} J k => J.r k ^ 4 • YM.Next.UVStress.transformed (LinearEquiv.symm (J.U k 4))
+structure YM.Trace.Over.Scribe {G : YM.Gauge} {C : YM.Family G} {S : YM.Table C.book} (Q : YM.Extraction.Order)
+  (J : YM.Climb.Scaling S) (V : (i : ℕ) → YM.MergeProof.East.Vane C i) (Z : YM.Trace.Terrace.Arch C)
+  (A' : YM.Spec.Algebra S) (𝓛 : Ultrafilter (ℕ × ℕ)) (H' : S.Hierarchy) (H : (YM.Climb.Bel C.book).Hierarchy) : Prop
+number of parameters: 11
+fields:
+  YM.Trace.Over.Scribe.grows : Filter.Tendsto (YM.Trace.Over.BQ Z V) Filter.atTop Filter.atTop
+  YM.Trace.Over.Scribe.clock : Filter.Tendsto (fun i => YM.Trace.Over.LogZoom J i / YM.Trace.Over.BQ Z V i) Filter.atTop
+      (nhds G.slopeConstant⁻¹)
+  YM.Trace.Over.Scribe.meters : ∃ Y, YM.Trace.Terrace.Gondola Q H J 𝓛 V Y
+  YM.Trace.Over.Scribe.monorail : YM.MergeProof.East.StarPath Q H J H' 𝓛
+  YM.Trace.Over.Scribe.gallery : ∀ (T : YM.Table C.book),
+      T.Hierarchy →
+        T.respects S →
+          ∃ d e,
+            (∀ᶠ (i : ℕ) in Filter.atTop,
+                (LinearEquiv.symm (J.U i 4)) (J.r i ^ 4 • YM.TraceExtension.theta T A'.energy) =
+                  (YM.Trace.Over.ScalarP C) ![e i, d i]) ∧
+              Filter.Tendsto (fun i => YM.Trace.Over.BQ Z V i * d i) Filter.atTop (nhds (YM.Trace.Over.d2 G)) ∧
+                Filter.Tendsto (fun i => YM.Trace.Over.BQ Z V i * e i) Filter.atTop (nhds 0)
+  YM.Trace.Over.Scribe.main : Filter.Tendsto
+      (fun k => (YM.Trace.Over.Year J k) ((YM.Next.UVStress.reCenter S) A'.energy)) Filter.atTop
+      (nhds (YM.Trace.Shelves.materialB C none))
+  YM.Trace.Over.Scribe.goal : ∀ (T : YM.Table C.book),
+      Filter.Tendsto (YM.Trace.Over.ZoomValue J (YM.Trace.Over.BQ Z V) (YM.TraceExtension.theta T A'.energy))
+        Filter.atTop (nhds ((4 * YM.Trace.Over.d2 G) • YM.Trace.Over.OScale C.book))
+constructor:
+  YM.Trace.Over.Scribe.mk {G : YM.Gauge} {C : YM.Family G} {S : YM.Table C.book} {Q : YM.Extraction.Order}
+    {J : YM.Climb.Scaling S} {V : (i : ℕ) → YM.MergeProof.East.Vane C i} {Z : YM.Trace.Terrace.Arch C}
+    {A' : YM.Spec.Algebra S} {𝓛 : Ultrafilter (ℕ × ℕ)} {H' : S.Hierarchy} {H : (YM.Climb.Bel C.book).Hierarchy}
+    (grows : Filter.Tendsto (YM.Trace.Over.BQ Z V) Filter.atTop Filter.atTop)
+    (clock :
+      Filter.Tendsto (fun i => YM.Trace.Over.LogZoom J i / YM.Trace.Over.BQ Z V i) Filter.atTop
+        (nhds G.slopeConstant⁻¹))
+    (meters : ∃ Y, YM.Trace.Terrace.Gondola Q H J 𝓛 V Y) (monorail : YM.MergeProof.East.StarPath Q H J H' 𝓛)
+    (gallery :
+      ∀ (T : YM.Table C.book),
+        T.Hierarchy →
+          T.respects S →
+            ∃ d e,
+              (∀ᶠ (i : ℕ) in Filter.atTop,
+                  (LinearEquiv.symm (J.U i 4)) (J.r i ^ 4 • YM.TraceExtension.theta T A'.energy) =
+                    (YM.Trace.Over.ScalarP C) ![e i, d i]) ∧
+                Filter.Tendsto (fun i => YM.Trace.Over.BQ Z V i * d i) Filter.atTop (nhds (YM.Trace.Over.d2 G)) ∧
+                  Filter.Tendsto (fun i => YM.Trace.Over.BQ Z V i * e i) Filter.atTop (nhds 0))
+    (main :
+      Filter.Tendsto (fun k => (YM.Trace.Over.Year J k) ((YM.Next.UVStress.reCenter S) A'.energy)) Filter.atTop
+        (nhds (YM.Trace.Shelves.materialB C none)))
+    (goal :
+      ∀ (T : YM.Table C.book),
+        Filter.Tendsto (YM.Trace.Over.ZoomValue J (YM.Trace.Over.BQ Z V) (YM.TraceExtension.theta T A'.energy))
+          Filter.atTop (nhds ((4 * YM.Trace.Over.d2 G) • YM.Trace.Over.OScale C.book))) :
+    YM.Trace.Over.Scribe Q J V Z A' 𝓛 H' H
+@YM.Trace.Over.YearP : ∀ {G : YM.Gauge} {C : YM.Family G} {Z : YM.Trace.Terrace.Arch C} {S : YM.Table C.book}
+  {J : YM.Climb.Scaling S} {V : (i : ℕ) → YM.MergeProof.East.Vane C i} (k : ℕ) (U : S.Stress),
+  (YM.Trace.Shelves.Phase4 J V Z k) U = (YM.Trace.Over.Year J k) (YM.Trace.Over.BQ Z V k • U)
+@YM.Trace.Over.tweak : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    ∀ (h : G.Simple),
+      YM.Trace.Terrace.PostT C.path.levels →
+        YM.Stock.Tabs C.path.levels →
+          ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+            {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+            YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+              YM.Trace.Terrace.Sceptre C W →
+                YM.Trace.Terrace.supportQ C.path.levels →
+                  ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+                    ↑𝓛 ≤ F.fuse →
+                      ∀ {t : YM.Trace.Margin.Tickets C},
+                        YM.Trace.Margin.Grant C (↑𝓛) t →
+                          ∀ {Z : YM.Trace.Terrace.Arch C},
+                            YM.Trace.Terrace.steep 𝓛 Z →
+                              ∀ {L : YM.Trace.Slate.PaceBook C},
+                                YM.Trace.Slate.Rod t none (↑𝓛) L →
+                                  ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                                    {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                                    {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                                    YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                                      ∀ (H' : S.Hierarchy),
+                                        F.PointLimits C S →
+                                          YM.MergeProof.East.StarPath F H J H' 𝓛 →
+                                            ∀ {S₁ : YM.DiffPlan S} {P₁ : YM.DiffPlan (YM.Cells.standard C)},
+                                              S₁.Derivatives S →
+                                                P₁.Derivatives (YM.Cells.standard C) →
+                                                  P₁.Orientation ⋯ →
+                                                    ∀
+                                                      {s :
+                                                        ℕ →
+                                                          ↥(YM.Trace.Terrace.Bowl (C.labels.level 5)) →L[ℝ]
+                                                            ↥(YM.StressFlux.TableOne ⋯)},
+                                                      YM.Trace.Terrace.Spun Z J V H s →
+                                                        ∀ (ho' : S₁.Orientation ⋯),
+                                                          YM.Cells.CellHyp C F →
+                                                            YM.Trace.Terrace.Prosper V h H s →
+                                                              ∀ {Δ Ω : YM.Trace.Slate.PaceBook C},
+                                                                YM.Trace.Slate.Rod t (some true) (↑𝓛) Δ →
+                                                                  YM.Trace.Slate.Rod t (some false) (↑𝓛) Ω →
+                                                                    ∀ (c : ℕ → YM.Trace.Over.CP) (I : ℝ),
+                                                                      0 ≤ I →
+                                                                        (∀ᶠ (i : ℕ) in Filter.atTop,
+                                                                            ‖c i‖ ≤ I * YM.Trace.Over.RQ V i ∧ ⋯ = ⋯) →
+                                                                          Filter.Tendsto
+                                                                              (YM.Trace.Terrace.Moment4 Z J V)
+                                                                              Filter.atTop
+                                                                              (nhds (YM.Trace.Terrace.Hill4 C)) →
+                                                                            ∀ (k : ℕ) (v : ⋯), ⋯
+@YM.Trace.Over.zoom_BQ : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      YM.Trace.Terrace.PostT C.path.levels →
+        ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+          ↑𝓛 ≤ F.fuse →
+            ∀ {Z : YM.Trace.Terrace.Arch C},
+              YM.Trace.Terrace.steep 𝓛 Z →
+                ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                  {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                  {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                  YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                    Filter.Tendsto (fun i => YM.Trace.Over.LogZoom J i / YM.Trace.Over.BQ Z V i) Filter.atTop
+                      (nhds G.slopeConstant⁻¹)
+@YM.Trace.Over.band_cost : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      YM.Trace.Terrace.PostT C.path.levels →
+        ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+          ↑𝓛 ≤ F.fuse →
+            ∀ {Z : YM.Trace.Terrace.Arch C},
+              YM.Trace.Terrace.steep 𝓛 Z →
+                ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                  {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                  {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                  YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                    Filter.Tendsto (fun i => YM.Trace.Over.BQ Z V i * J.r i ^ 4) Filter.atTop (nhds 0)
+@YM.Trace.Over.sum_delta : ∀ {G : YM.Gauge} {C : YM.Family G},
+  ∑ i, YM.Trace.Shelves.materialB C (some true) i i = 4 • YM.Trace.Over.OScale C.book
+@YM.Trace.Over.yields : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    ∀ (h : G.Simple),
+      YM.Trace.Terrace.PostT C.path.levels →
+        YM.Stock.Tabs C.path.levels →
+          ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+            {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+            YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+              YM.Trace.Terrace.Sceptre C W →
+                YM.Trace.Terrace.supportQ C.path.levels →
+                  ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+                    ↑𝓛 ≤ F.fuse →
+                      ∀ {t : YM.Trace.Margin.Tickets C},
+                        YM.Trace.Margin.Grant C (↑𝓛) t →
+                          ∀ {Z : YM.Trace.Terrace.Arch C},
+                            YM.Trace.Terrace.steep 𝓛 Z →
+                              ∀ {L : YM.Trace.Slate.PaceBook C},
+                                YM.Trace.Slate.Rod t none (↑𝓛) L →
+                                  ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                                    {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                                    {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                                    YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                                      ∀ (H' : S.Hierarchy),
+                                        F.PointLimits C S →
+                                          YM.MergeProof.East.StarPath F H J H' 𝓛 →
+                                            ∀ {S₁ : YM.DiffPlan S} {P₁ : YM.DiffPlan (YM.Cells.standard C)},
+                                              S₁.Derivatives S →
+                                                P₁.Derivatives (YM.Cells.standard C) →
+                                                  P₁.Orientation ⋯ →
+                                                    ∀
+                                                      {s :
+                                                        ℕ →
+                                                          ↥(YM.Trace.Terrace.Bowl (C.labels.level 5)) →L[ℝ]
+                                                            ↥(YM.StressFlux.TableOne ⋯)},
+                                                      YM.Trace.Terrace.Spun Z J V H s →
+                                                        ∀ (ho' : S₁.Orientation ⋯),
+                                                          YM.Cells.CellHyp C F →
+                                                            YM.Trace.Terrace.Prosper V h H s →
+                                                              ∀ {Δ Ω : YM.Trace.Slate.PaceBook C},
+                                                                YM.Trace.Slate.Rod t (some true) (↑𝓛) Δ →
+                                                                  YM.Trace.Slate.Rod t (some false) (↑𝓛) Ω →
+                                                                    ∀ (c : ℕ → YM.Trace.Over.CP) (I : ℝ),
+                                                                      0 ≤ I →
+                                                                        (∀ᶠ (i : ℕ) in Filter.atTop,
+                                                                            ‖c i‖ ≤ I * YM.Trace.Over.RQ V i ∧ ⋯ = ⋯) →
+                                                                          Filter.Tendsto
+                                                                              (YM.Trace.Terrace.Moment4 Z J V)
+                                                                              Filter.atTop
+                                                                              (nhds (YM.Trace.Terrace.Hill4 C)) →
+                                                                            Filter.Tendsto (fun i => ⋯) Filter.atTop
+                                                                              (nhds (YM.Trace.Shelves.materialB C none))
+@YM.Trace.Over.blossoms : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    ∀ (h : G.Simple),
+      YM.Trace.Terrace.PostT C.path.levels →
+        YM.Stock.Tabs C.path.levels →
+          ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+            {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+            YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+              YM.Trace.Terrace.Sceptre C W →
+                YM.Trace.Terrace.supportQ C.path.levels →
+                  ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+                    ↑𝓛 ≤ F.fuse →
+                      ∀ {t : YM.Trace.Margin.Tickets C},
+                        YM.Trace.Margin.Grant C (↑𝓛) t →
+                          ∀ {Z : YM.Trace.Terrace.Arch C},
+                            YM.Trace.Terrace.steep 𝓛 Z →
+                              ∀ {L : YM.Trace.Slate.PaceBook C},
+                                YM.Trace.Slate.Rod t none (↑𝓛) L →
+                                  ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                                    {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                                    {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                                    YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                                      ∀ (H' : S.Hierarchy),
+                                        F.PointLimits C S →
+                                          YM.MergeProof.East.StarPath F H J H' 𝓛 →
+                                            ∀ {S₁ : YM.DiffPlan S} {P₁ : YM.DiffPlan (YM.Cells.standard C)},
+                                              S₁.Derivatives S →
+                                                P₁.Derivatives (YM.Cells.standard C) →
+                                                  P₁.Orientation ⋯ →
+                                                    ∀
+                                                      {s :
+                                                        ℕ →
+                                                          ↥(YM.Trace.Terrace.Bowl (C.labels.level 5)) →L[ℝ]
+                                                            ↥(YM.StressFlux.TableOne ⋯)},
+                                                      YM.Trace.Terrace.Spun Z J V H s →
+                                                        ∀ (ho' : S₁.Orientation ⋯),
+                                                          YM.Cells.CellHyp C F →
+                                                            YM.Trace.Terrace.Prosper V h H s →
+                                                              ∀ {Δ Ω : YM.Trace.Slate.PaceBook C},
+                                                                YM.Trace.Slate.Rod t (some true) (↑𝓛) Δ →
+                                                                  YM.Trace.Slate.Rod t (some false) (↑𝓛) Ω →
+                                                                    ∀ (c : ℕ → YM.Trace.Over.CP) (I : ℝ),
+                                                                      0 ≤ I →
+                                                                        (∀ᶠ (i : ℕ) in Filter.atTop,
+                                                                            ‖c i‖ ≤ I * YM.Trace.Over.RQ V i ∧ ⋯ = ⋯) →
+                                                                          Filter.Tendsto (fun i => c i 1) Filter.atTop
+                                                                              (nhds (YM.Trace.Over.forceR G)) →
+                                                                            Filter.Tendsto
+                                                                                (YM.Trace.Terrace.Moment4 Z J V)
+                                                                                Filter.atTop ⋯ →
+                                                                              Filter.Tendsto ⋯ Filter.atTop ⋯
+@YM.Trace.Over.Store_l : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      YM.Trace.Terrace.PostT C.path.levels →
+        YM.Stock.Tabs C.path.levels →
+          ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+            {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+            YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+              YM.Trace.Terrace.Sceptre C W →
+                YM.Trace.Terrace.supportQ C.path.levels →
+                  ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+                    ↑𝓛 ≤ F.fuse →
+                      ∀ {t : YM.Trace.Margin.Tickets C},
+                        YM.Trace.Margin.Grant C (↑𝓛) t →
+                          ∀ {Z : YM.Trace.Terrace.Arch C},
+                            YM.Trace.Terrace.steep 𝓛 Z →
+                              YM.MergeProof.Accent.Moonlit C.path r
+                                  (YM.PhysicalNext.Repeat.Legato.Bandage.renal C.path.levels) u D →
+                                (∀ᶠ (i : ℕ) in Filter.atTop, 2 ≤ r i) →
+                                  YM.Trace.Terrace.auraQ C.path.levels YM.Trace.Weir.TileNo →
+                                    ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S}
+                                      {H : (YM.Cells.standard C).Hierarchy} {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                                      {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                                      YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                                        ∀ (H' : S.Hierarchy),
+                                          F.PointLimits C S →
+                                            YM.MergeProof.East.StarPath F H J H' 𝓛 →
+                                              ∀ {P₁ : YM.DiffPlan (YM.Cells.standard C)},
+                                                P₁.Derivatives (YM.Cells.standard C) →
+                                                  P₁.Orientation ⋯ →
+                                                    ∀ {X₁ : YM.Spec.Algebra S},
+                                                      YM.Spec.Locals X₁ ⋯ →
+                                                        YM.Trace.Over.Marvel (YM.Climb.Bel C.book) ⋯
+                                                            (YM.Trace.Shelves.materialB C none) P₁ →
+                                                          YM.Cells.CellHyp C F → YM.Trace.Over.Scribe F J V Z X₁ 𝓛 H' H
+structure YM.Trace.Over.Gallery {G : YM.Gauge} (C : YM.Family G) (F : YM.Extraction.Order) : Prop
+number of parameters: 3
+fields:
+  YM.Trace.Over.Gallery.lead : ∀ (S : YM.Table C.book) (X : YM.Spec.Seed C F S) (T : YM.Spec.Algebra S),
+      YM.Spec.Locals T ⋯ →
+        ∃ 𝓛 Z,
+          ∃ (a : (YM.Climb.Bel C.book).Hierarchy),
+            ↑𝓛 ≤ F.fuse ∧
+              YM.Trace.Terrace.steep 𝓛 Z ∧
+                YM.Trace.Terrace.PostT C.path.levels ∧
+                  (∀ (J : YM.Climb.Scaling S),
+                      YM.MergeProof.East.StarPath F a J ⋯ 𝓛 →
+                        ∀ (w : (i : ℕ) → YM.MergeProof.East.Vane C i)
+                          (Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d),
+                          YM.Trace.Terrace.Gondola F a J 𝓛 w Y → YM.Trace.Over.Scribe F J w Z T 𝓛 ⋯ a) ∧
+                    ∀ (s : ℕ → ℝ),
+                      Filter.Tendsto s Filter.atTop (nhds 0) →
+                        (∀ (i : ℕ), 0 < s i) →
+                          ∃ f, StrictMono f ∧ ∃ J, J.r = s ∘ f ∧ ∃ V, YM.Trace.Over.Scribe F J V Z T 𝓛 ⋯ a
+constructor:
+  YM.Trace.Over.Gallery.mk {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order}
+    (lead :
+      ∀ (S : YM.Table C.book) (X : YM.Spec.Seed C F S) (T : YM.Spec.Algebra S),
+        YM.Spec.Locals T ⋯ →
+          ∃ 𝓛 Z,
+            ∃ (a : (YM.Climb.Bel C.book).Hierarchy),
+              ↑𝓛 ≤ F.fuse ∧
+                YM.Trace.Terrace.steep 𝓛 Z ∧
+                  YM.Trace.Terrace.PostT C.path.levels ∧
+                    (∀ (J : YM.Climb.Scaling S),
+                        YM.MergeProof.East.StarPath F a J ⋯ 𝓛 →
+                          ∀ (w : (i : ℕ) → YM.MergeProof.East.Vane C i)
+                            (Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d),
+                            YM.Trace.Terrace.Gondola F a J 𝓛 w Y → YM.Trace.Over.Scribe F J w Z T 𝓛 ⋯ a) ∧
+                      ∀ (s : ℕ → ℝ),
+                        Filter.Tendsto s Filter.atTop (nhds 0) →
+                          (∀ (i : ℕ), 0 < s i) →
+                            ∃ f, StrictMono f ∧ ∃ J, J.r = s ∘ f ∧ ∃ V, YM.Trace.Over.Scribe F J V Z T 𝓛 ⋯ a) :
+    YM.Trace.Over.Gallery C F
+def YM.Trace.Terrace.Stern : {G : YM.Gauge} → {C : YM.Family G} → ((i : ℕ) → YM.MergeProof.East.Vane C i) → ℕ → ℕ :=
+fun {G} {C} V i => YM.Trace.Terrace.summit C.path.levels (V i).k
+def YM.Trace.Terrace.crown : {G : YM.Gauge} →
+  {C : YM.Family G} → {S : YM.Table C.book} → YM.Trace.Terrace.Arch C → YM.Climb.Scaling S → (ℕ → ℕ) → ℕ → ℕ → ℝ :=
+fun {G} {C} {S} Z X Q d i => Z.β (Q i) * X.r i ^ d
+def YM.Trace.Shelves.Hero : {G : YM.Gauge} →
+  {C : YM.Family G} →
+    {S : YM.Table C.book} →
+      YM.Climb.Scaling S →
+        ((i : ℕ) → YM.MergeProof.East.Vane C i) →
+          YM.Trace.Terrace.Arch C → (d : ℕ) → ℕ → S.Field d →ₗ[ℂ] (YM.Cells.standard C).Field d :=
+fun {G} {C} {S} J V Z d i => YM.Trace.Terrace.crown Z J (YM.Trace.Terrace.Stern V) d i • ↑(LinearEquiv.symm (J.U i d))
+def YM.Trace.Shelves.Phase4 : {G : YM.Gauge} →
+  {C : YM.Family G} →
+    {S : YM.Table C.book} →
+      YM.Climb.Scaling S →
+        ((i : ℕ) → YM.MergeProof.East.Vane C i) →
+          YM.Trace.Terrace.Arch C → ℕ → S.Stress →ₗ[ℝ] (YM.Cells.standard C).Stress :=
+fun {G} {C} {S} X V Z k =>
+  { toFun := fun f i j => (YM.Trace.Shelves.Hero X V Z 4 k) (f i j), map_add' := ⋯, map_smul' := ⋯ }
+def YM.Trace.Terrace.Moment4 : {G : YM.Gauge} →
+  {C : YM.Family G} →
+    {S : YM.Table C.book} →
+      YM.Trace.Terrace.Arch C →
+        YM.Climb.Scaling S →
+          ((i : ℕ) → YM.MergeProof.East.Vane C i) → ℕ → C.label 4 →L[ℂ] (YM.Cells.standard C).Field 4 :=
+fun {G} {C} {S} Z X V i =>
+  LinearMap.toContinuousLinearMap
+    (↑(LinearEquiv.symm (X.U i 4)) ∘ₗ
+      YM.Next.UVStress.centering S 4 ∘ₗ
+        YM.Trace.Terrace.Vault S Z 4 (YM.Trace.Terrace.Stern V i)
+          (YM.Trace.Terrace.crown Z X (YM.Trace.Terrace.Stern V) 4 i))
+@YM.Trace.Terrace.unveil : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)}
+  {Z : YM.Trace.Terrace.Arch C},
+  YM.Trace.Terrace.steep 𝓛 Z →
+    ∀ {S : YM.Table C.book} {X : YM.Climb.Scaling S} {a : (YM.Cells.standard C).Hierarchy},
+      C.Makes →
+        ↑𝓛 ≤ F.fuse →
+          ∀ (h : S.Hierarchy),
+            YM.MergeProof.East.StarPath F a X h 𝓛 →
+              ∀ {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                YM.Trace.Terrace.Gondola F a X 𝓛 V Y →
+                  ∀ {W : YM.Bid.Worth},
+                    YM.Trace.Terrace.Sceptre C W →
+                      YM.Trace.Terrace.PostT C.path.levels →
+                        G.Simple →
+                          ∀ {J : YM.DiffPlan S} {P : YM.DiffPlan (YM.Cells.standard C)},
+                            J.Derivatives S →
+                              P.Derivatives (YM.Cells.standard C) →
+                                Filter.Tendsto (YM.Trace.Terrace.Moment4 Z X V) Filter.atTop
+                                  (nhds (YM.Trace.Terrace.Hill4 C))
+@YM.Trace.Shelves.chartB : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+        {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+        YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+          ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+            ↑𝓛 ≤ F.fuse →
+              ∀ {t : YM.Trace.Margin.Tickets C},
+                YM.Trace.Margin.Grant C (↑𝓛) t →
+                  ∀ {Z : YM.Trace.Terrace.Arch C},
+                    YM.Trace.Terrace.steep 𝓛 Z →
+                      ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                        {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                        {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                        YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                          S.Hierarchy →
+                            ∀ (k j : ℕ),
+                              YM.Trace.Terrace.Stern V j = k →
+                                ∀ (X : YM.Trace.Slate.PaceBook C),
+                                  C.ref 4 ≤ k →
+                                    (YM.Trace.Shelves.Phase4 J V Z j) (YM.Trace.Shelves.baron S X k) = fun a b =>
+                                      YM.Trace.Shelves.inter
+                                        (fun i j' =>
+                                          (YM.Trace.Terrace.Moment4 Z J V j) (YM.Trace.Slate.Shine4 Z X k i j'))
+                                        a b
+@YM.Trace.Shelves.nearing_h : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+        {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+        YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+          ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+            ↑𝓛 ≤ F.fuse →
+              ∀ {t : YM.Trace.Margin.Tickets C},
+                YM.Trace.Margin.Grant C (↑𝓛) t →
+                  ∀ {Z : YM.Trace.Terrace.Arch C},
+                    YM.Trace.Terrace.steep 𝓛 Z →
+                      ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                        {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                        {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                        YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                          S.Hierarchy →
+                            ∀ {B : YM.Trace.Slate.Bend} {P' : YM.Trace.Slate.PaceBook C},
+                              YM.Trace.Slate.Rod t B (↑𝓛) P' →
+                                Filter.Tendsto (YM.Trace.Terrace.Moment4 Z J V) Filter.atTop
+                                    (nhds (YM.Trace.Terrace.Hill4 C)) →
+                                  Filter.Tendsto
+                                    (fun k =>
+                                      (YM.Trace.Shelves.Phase4 J V Z k)
+                                        (YM.Trace.Shelves.baron S P' (YM.Trace.Terrace.Stern V k)))
+                                    Filter.atTop (nhds (YM.Trace.Shelves.materialB C B))
+@YM.Trace.Shelves.muteP : ∀ {G : YM.Gauge} {C : YM.Family G},
+  C.Makes →
+    G.Simple →
+      YM.Trace.Terrace.PostT C.path.levels →
+        YM.Stock.Tabs C.path.levels →
+          ∀ {W : YM.Bid.Worth} {u ψ φ δ : ℕ → ℝ} {r : ℕ → ℕ}
+            {D : (N p i : ℕ) → i < N → YM.MergeProof.GaugeDoor (C.path.rep N p (i + 1)) (C.path.rep N p i)},
+            YM.MergeProof.Scrim C W u ψ φ δ (YM.PhysicalNext.Repeat.Legato.Bandage.fly C.path.levels) r D →
+              YM.Trace.Terrace.Sceptre C W →
+                YM.Trace.Terrace.supportQ C.path.levels →
+                  ∀ {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+                    ↑𝓛 ≤ F.fuse →
+                      ∀ {t : YM.Trace.Margin.Tickets C},
+                        YM.Trace.Margin.Grant C (↑𝓛) t →
+                          ∀ {Z : YM.Trace.Terrace.Arch C},
+                            YM.Trace.Terrace.steep 𝓛 Z →
+                              ∀ {S : YM.Table C.book} {J : YM.Climb.Scaling S} {H : (YM.Cells.standard C).Hierarchy}
+                                {V : (i : ℕ) → YM.MergeProof.East.Vane C i}
+                                {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+                                YM.Trace.Terrace.Gondola F H J 𝓛 V Y →
+                                  S.Hierarchy →
+                                    F.PointLimits C S →
+                                      ∀ {B : YM.Trace.Slate.Bend} {P' : YM.Trace.Slate.PaceBook C},
+                                        YM.Trace.Slate.Rod t B (↑𝓛) P' →
+                                          Filter.Tendsto (YM.Trace.Terrace.Moment4 Z J V) Filter.atTop
+                                              (nhds (YM.Trace.Terrace.Hill4 C)) →
+                                            YM.Cells.CellHyp C F →
+                                              ∀ (p : ℕ),
+                                                B ≠ some true →
+                                                  Filter.Tendsto
+                                                    (fun i =>
+                                                      C.path.levels.clock.hatBeta (YM.Trace.Terrace.Stern V i) ^ p •
+                                                        ∑ a,
+                                                          (YM.Trace.Shelves.Phase4 J V Z i)
+                                                            (YM.Trace.Shelves.baron S P' (YM.Trace.Terrace.Stern V i)) a
+                                                            a)
+                                                    Filter.atTop (nhds 0)
+@YM.Trace.Terrace.gamut : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+  ↑𝓛 ≤ F.fuse →
+    C.Makes →
+      ∀ {Z : YM.Trace.Terrace.Arch C},
+        YM.Trace.Terrace.steep 𝓛 Z →
+          G.Simple → Filter.Tendsto (fun i => Z.β i / C.path.levels.clock.hatBeta i) Filter.atTop (nhds 1)
+@YM.Trace.Terrace.Barry : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)}
+  {Z : YM.Trace.Terrace.Arch C},
+  YM.Trace.Terrace.steep 𝓛 Z →
+    C.Makes →
+      ↑𝓛 ≤ F.fuse →
+        G.Simple →
+          YM.Trace.Terrace.PostT C.path.levels →
+            Filter.Tendsto (fun i => Z.β i / Z.β (YM.Trace.Terrace.summit C.path.levels i)) Filter.atTop (nhds 1)
+@YM.Trace.Terrace.holds : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+  ↑𝓛 ≤ F.fuse →
+    C.Makes →
+      ∀ {Z : YM.Trace.Terrace.Arch C},
+        YM.Trace.Terrace.steep 𝓛 Z →
+          ∀ (k : ℕ), C.path.levels.clock.hatBeta k / 2 ≤ Z.β k ∧ Z.β k ≤ 2 * C.path.levels.clock.hatBeta k
+@YM.Trace.Terrace.dex : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+  ↑𝓛 ≤ F.fuse →
+    C.Makes →
+      ∀ {Z : YM.Trace.Terrace.Arch C}, YM.Trace.Terrace.steep 𝓛 Z → ∀ (k : ℕ), Z.β k ≤ 2 * C.path.levels.clock.hatBeta k
+@YM.Trace.Terrace.measured : ∀ {G : YM.Gauge} {C : YM.Family G} {F : YM.Extraction.Order} {𝓛 : Ultrafilter (ℕ × ℕ)},
+  ↑𝓛 ≤ F.fuse → C.Makes → ∀ {Z : YM.Trace.Terrace.Arch C}, YM.Trace.Terrace.steep 𝓛 Z → ∀ (k : ℕ), 0 < Z.β k
+'YM.Trace.Over.YearP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.tweak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.zoom_BQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.sum_delta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.yields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.blossoms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.Store_l' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.gang' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Shelves.nearing_h' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Shelves.muteP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Terrace.unveil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Terrace.gamut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Terrace.Barry' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE CONSTS of YM.Trace.Over.YearP: [YM.Trace.Shelves.Phase4, YM.Trace.Over.Year, YM.Trace.Over.BQ]
+TYPE CONSTS of YM.Trace.Over.tweak: [YM.Trace.Over.BQ,
+ YM.Trace.Terrace.Moment4,
+ YM.Trace.Over.Year,
+ YM.Trace.Shelves.Phase4]
+TYPE CONSTS of YM.Trace.Over.zoom_BQ: [YM.Trace.Over.LogZoom, YM.Trace.Over.BQ]
+TYPE CONSTS of YM.Trace.Over.yields: [YM.Trace.Over.BQ, YM.Trace.Terrace.Moment4, YM.Trace.Over.Year]
+TYPE CONSTS of YM.Trace.Over.blossoms: [YM.Trace.Over.BQ, YM.Trace.Terrace.Moment4, YM.Trace.Over.Year]
+TYPE CONSTS of YM.Trace.Over.Store_l: []
+TYPE CONSTS of YM.Trace.Over.Scribe: []
+TYPE CONSTS of YM.Trace.Over.Gallery: []
+TYPE CONSTS of YM.Trace.Shelves.nearing_h: [YM.Trace.Terrace.Moment4, YM.Trace.Shelves.Phase4, YM.Trace.Terrace.Stern]
+TYPE CONSTS of YM.Trace.Shelves.muteP: [YM.Trace.Terrace.Moment4,
+ YM.RG.Calendar.hatBeta,
+ YM.Trace.Terrace.Stern,
+ YM.Trace.Shelves.Phase4]
+TYPE CONSTS of YM.Trace.Shelves.chartB: [YM.Trace.Terrace.Stern, YM.Trace.Shelves.Phase4, YM.Trace.Terrace.Moment4]
+TYPE CONSTS of YM.Trace.Terrace.unveil: [YM.Trace.Terrace.Moment4]
+TYPE CONSTS of YM.Trace.Terrace.gamut: [YM.Trace.Terrace.Arch.β, YM.RG.Calendar.hatBeta]
+TYPE CONSTS of YM.Trace.Terrace.Barry: [YM.Trace.Terrace.Arch.β]
+'YM.Trace.Over.probe_crown_eq_BQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.probe_Hero_eq_BQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.probe_ZoomValue_eq_crown' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Trace.Over.probe_lambda_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+APPS in YM.Trace.Over.blossoms (8):
+YM.Trace.Over.BQ <- #[Z : YM.Trace.Terrace.Arch C, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Shelves.Phase4 <- #[J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i, Z : YM.Trace.Terrace.Arch C]
+YM.Trace.Terrace.measured <- #[Z : YM.Trace.Terrace.Arch C]
+YM.Trace.Terrace.dex <- #[Z : YM.Trace.Terrace.Arch C]
+YM.Trace.Shelves.muteP <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Over.sum_delta <- #[]
+YM.Trace.Shelves.nearing_h <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Over.YearP <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+APPS in YM.Trace.Over.yields (6):
+YM.Trace.Shelves.Phase4 <- #[J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i, Z : YM.Trace.Terrace.Arch C]
+YM.Trace.Over.BQ <- #[Z : YM.Trace.Terrace.Arch C, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Over.tweak <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Over.YearP <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Terrace.measured <- #[Z : YM.Trace.Terrace.Arch C]
+YM.Trace.Shelves.nearing_h <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+APPS in YM.Trace.Over.Store_l (4):
+YM.Trace.Over.zoom_BQ <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Over.leaderB <- #[J : YM.Climb.Scaling S]
+YM.Trace.Over.BQ <- #[Z : YM.Trace.Terrace.Arch C, V : (i : ℕ) → YM.MergeProof.East.Vane C i]
+YM.Trace.Terrace.measured <- #[Z : YM.Trace.Terrace.Arch C]
+APPS in YM.Trace.Over.gang (2):
+YM.Trace.Terrace.styling <- #[]
+YM.Trace.Over.Store_l <- #[Z : YM.Trace.Terrace.Arch C, J : YM.Climb.Scaling S, w : (i : ℕ) → YM.MergeProof.East.Vane C i]
+APPS-BY-ID in YM.Trace.Over.blossoms (statement binders: 54; entries 8):
+YM.Trace.Over.BQ <- #[statement binder #21 (Z), statement binder #28 (V)]
+YM.Trace.Shelves.Phase4 <- #[statement binder #26 (J), statement binder #28 (V), statement binder #21 (Z)]
+YM.Trace.Terrace.measured <- #[statement binder #21 (Z)]
+YM.Trace.Terrace.dex <- #[statement binder #21 (Z)]
+YM.Trace.Shelves.muteP <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+YM.Trace.Over.sum_delta <- #[]
+YM.Trace.Shelves.nearing_h <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+YM.Trace.Over.YearP <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+APPS-BY-ID in YM.Trace.Over.yields (statement binders: 53; entries 6):
+YM.Trace.Shelves.Phase4 <- #[statement binder #26 (J), statement binder #28 (V), statement binder #21 (Z)]
+YM.Trace.Over.BQ <- #[statement binder #21 (Z), statement binder #28 (V)]
+YM.Trace.Over.tweak <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+YM.Trace.Over.YearP <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+YM.Trace.Terrace.measured <- #[statement binder #21 (Z)]
+YM.Trace.Shelves.nearing_h <- #[statement binder #21 (Z), statement binder #26 (J), statement binder #28 (V)]
+APPS-BY-ID in YM.Trace.Over.Store_l (statement binders: 42; entries 4):
+YM.Trace.Over.zoom_BQ <- #[statement binder #21 (Z), statement binder #27 (J), statement binder #29 (V)]
+YM.Trace.Over.leaderB <- #[statement binder #27 (J)]
+YM.Trace.Over.BQ <- #[statement binder #21 (Z), statement binder #29 (V)]
+YM.Trace.Terrace.measured <- #[statement binder #21 (Z)]
+@YM.Trace.Over.Scribe.goal : ∀ {G : YM.Gauge} {C : YM.Family G} {S : YM.Table C.book} {Q : YM.Extraction.Order}
+  {J : YM.Climb.Scaling S} {V : (i : ℕ) → YM.MergeProof.East.Vane C i} {Z : YM.Trace.Terrace.Arch C}
+  {A' : YM.Spec.Algebra S} {𝓛 : Ultrafilter (ℕ × ℕ)} {H' : S.Hierarchy} {H : (YM.Climb.Bel C.book).Hierarchy},
+  YM.Trace.Over.Scribe Q J V Z A' 𝓛 H' H →
+    ∀ (T : YM.Table C.book),
+      Filter.Tendsto (YM.Trace.Over.ZoomValue J (YM.Trace.Over.BQ Z V) (YM.TraceExtension.theta T A'.energy))
+        Filter.atTop (nhds ((4 * YM.Trace.Over.d2 G) • YM.Trace.Over.OScale C.book))
+@YM.Trace.Over.Scribe.clock : ∀ {G : YM.Gauge} {C : YM.Family G} {S : YM.Table C.book} {Q : YM.Extraction.Order}
+  {J : YM.Climb.Scaling S} {V : (i : ℕ) → YM.MergeProof.East.Vane C i} {Z : YM.Trace.Terrace.Arch C}
+  {A' : YM.Spec.Algebra S} {𝓛 : Ultrafilter (ℕ × ℕ)} {H' : S.Hierarchy} {H : (YM.Climb.Bel C.book).Hierarchy},
+  YM.Trace.Over.Scribe Q J V Z A' 𝓛 H' H →
+    Filter.Tendsto (fun i => YM.Trace.Over.LogZoom J i / YM.Trace.Over.BQ Z V i) Filter.atTop (nhds G.slopeConstant⁻¹)
+@YM.Trace.Over.Scribe.meters : ∀ {G : YM.Gauge} {C : YM.Family G} {S : YM.Table C.book} {Q : YM.Extraction.Order}
+  {J : YM.Climb.Scaling S} {V : (i : ℕ) → YM.MergeProof.East.Vane C i} {Z : YM.Trace.Terrace.Arch C}
+  {A' : YM.Spec.Algebra S} {𝓛 : Ultrafilter (ℕ × ℕ)} {H' : S.Hierarchy} {H : (YM.Climb.Bel C.book).Hierarchy},
+  YM.Trace.Over.Scribe Q J V Z A' 𝓛 H' H → ∃ Y, YM.Trace.Terrace.Gondola Q H J 𝓛 V Y

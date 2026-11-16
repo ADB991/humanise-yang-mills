@@ -1,0 +1,16 @@
+Elaborated Lean probes for #372 (trace-rounded-receipt.tex), 2026-11-14. Nothing posted.
+Release sources: ~/ym-release/2026-11-11/OpenAI-YM-20261028 @ 3456e5e7 (read only). Oleans: ~/ym-release/full/tree/lib/lean (+ Mathlib etc. per ~/ym-release/full/checks/LEAN_PATH.txt).
+Toolchain: ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean. No lake, no leanchecker, no build, no download.
+Command for every run (cwd = this directory, one process at a time, checked with pgrep before each):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l <lean> -DmaxHeartbeats=0 -DmaxRecDepth=4096 <f>.lean > <f>.out 2> <f>.time
+Free disk before runs: 12 GiB.
+
+run  file                 exit  real     max RSS (bytes)  notes
+v1   Probe372_v1.lean     0     47.16 s  6,840,434,688    = ../Probe372.lean unchanged; 0 errors; three rfl examples pass
+v2   Probe372_v2.lean     1      6.47 s  6,893,453,312    sections A,B,C ok; D failed (run_cmd arg list split across lines); E failed (h16 tactic layout) -> sorryAx
+v3   Probe372_v3.lean     0      3.21 s  6,892,847,104    D ran but value? returned none for theorems
+v4   Probe372_v4.lean     0      3.15 s  6,893,813,760    D with value? (allowOpaque := true); all sections ok; E without sorryAx
+v5   Probe372_v5.lean     0      3.19 s  6,898,810,880    v4 + F: probe copies' types == open_readSky's type (syntactic and defeq)
+(later runs fast: imports were in the OS file cache)
+Note: one pre-run pgrep -fl 'lake|bin/lean' matched only a zsh monitor whose command line contained that pattern;
+pgrep -x lean / pgrep -x lake showed no Lean or lake process, and v5 was then run.

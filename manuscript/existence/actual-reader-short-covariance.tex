@@ -1,15 +1,15 @@
-\section{A common short-range covariance on every period}
+\subsection{A common short-range covariance on every period}
 \label{sec:actual-reader-short-covariance}
 
 This section records the finite-period covariance output used by the local
 reader comparison. The construction keeps one bed, one forest, one blocking
 history, and one cover row throughout. In particular, the row is not chosen
 again when the period changes. The exact curvature covariance on the tree
-slice is identified in Section~\ref{sec:actual-reader-tree-covariance}; we
+slice is identified in Subsection~\ref{sec:actual-reader-tree-covariance}; we
 use that identity here and construct its common exponentially localized
 cover representative and its finite-range approximation.
 
-\subsection{Period folding and the common inverse}
+\subsubsection{Period folding and the common inverse}
 
 Let $\mathcal I$ be the finite set of asked coordinates for a
 fixed forest and gauge branch. Its labels include the intra-block residue
@@ -72,7 +72,7 @@ lower bound gives the finite-volume resolvent bound. The exponential row
 estimate gives a uniform weighted row and column bound on every
 periodization: the internal label set is finite and each periodic
  displacement sum is bounded by the corresponding cover sum. The diagonal
-conjugation estimate of Section~\ref{sec:local-covariance}, applied to
+conjugation estimate of Subsection~\ref{sec:local-covariance}, applied to
 these finite matrices, gives constants $C_1,r_1>0$, independent of the
 period, such that each inverse entry is bounded by
 $C_1e^{-r_1d_n(x,y)}$. This is the finite-dimensional weighted-resolvent
@@ -103,7 +103,7 @@ majorant. Passing to the limit in the factorial periods divisible by $n$
 therefore identifies that periodization with $(P^{(n)})^{-1}$. This is the
 period-independent inverse construction used below.
 
-\subsection{The selected tree slice on the same history}
+\subsubsection{The selected tree slice on the same history}
 
 Fix a blocking patch, gauge, kernel, forest, and bed $H$. At each period
 $n$, repeat the same forest by the zero-offset lift. Let $\mathcal A_n$
@@ -129,7 +129,7 @@ Also assume the exact root-gradient identity
 \eqref{eq:reader-root-gradient}, the same-bed stationarity identities
 \eqref{eq:reader-stationarity-input}, and the two-form transport identity
 \eqref{eq:reader-curvature-intertwiner} from
-Section~\ref{sec:actual-reader-tree-covariance}. The displayed numerical
+Subsection~\ref{sec:actual-reader-tree-covariance}. The displayed numerical
 bounds produce the gap; these algebraic identities identify the
 conditional covariance. They are distinct inputs. The construction fixes
 its positive width $t$ and row constant $A$ from the patch, kernel, branch,
@@ -137,7 +137,7 @@ forest template, and $s,M,a$ before selecting the bed within this class;
 the same pair works uniformly for every bed satisfying the stated strip
 and floor bounds.
 
-The finite block estimate of Section~\ref{sec:path-attachment-producer} gives the
+The finite block estimate of Subsection~\ref{sec:path-attachment-producer} gives the
 lower bound
 \[
  \frac{\min(a,K_{\rm pen})}{1+\beta+\gamma},
@@ -153,7 +153,7 @@ finite costs are
  \qquad \gamma_\ell=2|\operatorname{Site}(L)|.
 \]
 They are the curl and rooted-probe coefficients proved in
-Section~\ref{sec:path-attachment-producer}; in the gap formula above
+Subsection~\ref{sec:path-attachment-producer}; in the gap formula above
 $\beta=\beta_\ell$ and $\gamma=\gamma_\ell$.
 The cover coefficients are obtained by composing the bed row with the
 fixed local blocking maps. The weighted row norm of a product is bounded
@@ -192,7 +192,7 @@ uses the same bed and the same forest on both sides; it does not replace a
 curved bed by the flat one or compare two different histories. The
 finite-dimensional curl-through identity and the resulting exact
 conditional curvature formula are the ones proved in
-Section~\ref{sec:actual-reader-tree-covariance}.
+Subsection~\ref{sec:actual-reader-tree-covariance}.
 
 The row norm of $Z$ is bounded by the product of the row norms of the two
 rooted path rows and the inverse row. For convolution, the weighted row
@@ -214,7 +214,7 @@ row bound is no larger than the original bound. The reversal is essential:
 transposition reverses the displacement as well as exchanging the two
 indices.
 
-\subsection{Cutting to short paths}
+\subsubsection{Cutting to short paths}
 
 For a scale parameter $x>1$, set the integer radius
 $B_x=\lceil(\log x)^2\rceil$ and the natural-number cut radii
@@ -239,13 +239,14 @@ its cut period-matrix entry is zero: every retained coarse displacement
 has length at most $H_x$, so none can connect those bases modulo the period. These two facts are the only geometric
 properties of the cut used in the short-history comparison.
 
-In the source normalization the row-tail payment for all output labels is
+For an input site and label, sum the omitted absolute mass over all
+output sites and labels. For each output label, the triangle inequality
+in the periodization sum bounds the omitted mass by the cover sum above.
+Summing over the output-label set $\mathcal C$ thus gives the row bound
 \[
- \operatorname{cheque}(t,A,x)
- = |\mathcal C|A\exp(-t h_x).
+ \mathcal T_{\mathcal C}(t,A,x)=|\mathcal C|A\exp(-t h_x).
 \]
-For the installed two-form path row, the incoming cover bound has a
-specific source. In cover-row notation it is
+For the installed two-form path row, the cover operator is
 \[
  \Psi=D_f^{-1}\,\mathrm{Fine}(T)\,D_c,
 \]
@@ -262,17 +263,18 @@ In the selected case where the three incoming factors are all bounded by
 $M_{\rm in}$, put $\psi_{\rm budget}(u)=m_2^2u^3$; then the installed row
 has bound $\psi_{\rm budget}(M_{\rm in})/L^2$. The factor $L^{-2}$ is
 already in the moving tower receipt, not produced by installation;
-installation preserves its per-entry bound and summing over output labels
-supplies the cheque factor. The paid movement error is therefore
-$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$. This is an
-incoming budget, separate from the turn-row cheque.
+installing the operator in residue coordinates preserves the bound on
+each cover sum. Let $\mathcal C_2$ be the set of two-form labels. The
+movement error is bounded by
+$\mathcal T_{\mathcal C_2}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$.
+The turn-row error uses its own output labels and strip parameters.
 
 Define the short transport matrix on a period by keeping each installed
 transport entry when the two coarse parent bases have separation at most
 $H_x$, and setting it to zero otherwise. The cut path row has zero at all
 omitted addresses. The installed-row estimate therefore bounds, for each
 input coordinate, the omitted row sum by
-$\operatorname{cheque}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$; in
+$\mathcal T_{\mathcal C_2}(s,\psi_{\rm budget}(M_{\rm in})/L^2,x)$; in
 particular every omitted entry has this bound, while retained entries are
 unchanged. This is the same two-case finite-range comparison as for
 $Q_n^{\rm short}$ below.
@@ -314,13 +316,13 @@ matrix vanishes by the support condition, so the bound from
 Proposition~\ref{prop:ex-reader-short-covariance} gives
 \[
  |(C_n)_{(u,a),(v,b)}-Q^{\rm short}_{n}(u,a;v,b)|
- \le \operatorname{cheque}(t,A,x).
+ \le \mathcal T_{\mathcal C}(t,A,x).
 \]
 Thus the short comparison used at a reader is exact on retained pairs;
 the only error is the omitted covariance tail. This is the two-case form
 needed for a finite-range covariance comparator on one fixed history.
 
-\subsection{How the estimate enters the path telescope}
+\subsubsection{How the estimate enters the path telescope}
 
 For clarity, the quantitative input used by the path telescope consists of
 two payments, not a free approximation assertion. If $\Psi$ is the

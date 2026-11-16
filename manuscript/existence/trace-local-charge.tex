@@ -1,5 +1,5 @@
 % Local charged-configuration estimate used in the trace response bound.
-\section{The local charged-configuration estimate}
+\subsection{The local charged-configuration estimate}
 \label{sec:ex-lattice-trace-local-charge}
 
 We isolate the finite-volume algebra that turns a charged configuration
@@ -18,8 +18,10 @@ $t\to\infty$.
 
 Let $I$ be a finite set of lattice directions, $Y$ a finite-dimensional
 real normed coefficient space, and let $\ell:Y^I\to\mathbb R$ be a
-continuous linear flux functional. Let $s:Y^I\to[0,\infty)$ be the source coefficient size, satisfying
-$\|A\|_\infty\le s(A)$ for every coefficient array $A$. Write
+continuous linear flux functional. Let $s:Y^I\to[0,\infty)$ be a size
+function on coefficient arrays satisfying
+$\|A\|_\infty\le s(A)$ for every coefficient array $A$; this domination is
+the only property of $s$ used below. Write
 $\sigma=\theta^{-2}$ with $\theta>0$ for the local normalization. The
 nonlinear local coefficient map has already been evaluated in the arrays
 $B',K',D'\in Y^I$; these are outputs of that local construction, not images
@@ -88,7 +90,7 @@ The construction supplies in addition the accuracy bound
 \[
  |m+12\kappa|\le t^{-100},
 \]
-where $\kappa>0$ is the slope constant. Together with the proposition,
+where $\kappa=s_G>0$ is the slope constant \eqref{eq:shoot-slope}. Together with the proposition,
 this gives
 \[
  |\ell(\sigma X)+\kappa|
@@ -97,7 +99,7 @@ this gives
 and the right side tends to zero as $t\to\infty$. The proposition and
 this consequence concern the evaluated array $\sigma X$ of one
 finite-volume configuration. The response whose size and flux are used in
-Section~\ref{subsec:ex-lattice-trace-weighted-route} is instead the limit,
+Subsubsection~\ref{subsec:ex-lattice-trace-weighted-route} is instead the limit,
 along the separation ultrafilter at a fixed level, of transported
 finite-volume fields. Passing to it requires two further inputs, which do
 not follow from the proposition: a transport bound of size $W_{-1/4}(t)$
@@ -110,6 +112,772 @@ linear maps transfers them to the ultrafilter limit, and division of the
 size bound by the arch scale gives a quantity tending to zero by
 \eqref{eq:ex-lattice-trace-age-over-arch}. That passage is carried out,
 conditionally on these inputs, in
-Section~\ref{subsec:ex-lattice-trace-weighted-route}. The component
+Subsubsection~\ref{subsec:ex-lattice-trace-weighted-route}. The component
 receipts themselves are separate finite-volume producer statements; this
 proposition does not prove them from the charged-configuration hypotheses.
+
+\subsubsection{Constructing the charged coefficient from its local pieces}
+\label{subsec:trace-charge-construction}
+
+We give the finite construction which precedes the proposition. This also
+fixes which nonlinear projections occur in its six terms. All pieces are
+on the same finite-volume representation and use its threshold $\theta$;
+write $H=W_1(t)$ and put
+\[
+ c_0=\theta^2H^{-2},\qquad c_1=\theta^2H^{1/8},\qquad
+ \epsilon_0=\theta^2t^{-1/100}.
+\]
+Let $\Pi_P f$ denote the weighted local coefficient of a regular observable
+$f$ on a support $P$ containing the section footprint. Its readout constant
+$r\ge1$ and residual constant $a\ge1$ are fixed at the stage. If the
+section price is $p\ge0$, set $K=(1+p)r+a$.
+
+First, the elementary local coefficient is an actual observable. Set
+\[
+ z=\Pi_P f,\qquad h=f-\operatorname{present}_\theta(z),\qquad
+ Q_f=\operatorname{primary}_\theta(z)+{\bf1}_{\{P\ \mathrm{healthy}\}}h.
+\]
+Here the primary includes its own footprint mask. On a configuration
+healthy on $P$, the two masks are one and $Q_f=f$. The residual has zero
+local coefficient by construction. If the healthy derivative bound of $f$
+is $u\ge0$, coefficient recovery and residual subtraction give
+\[
+ |z|_{\rm coeff}\le ru,\qquad
+ |h|_{\rm healthy}\le au.
+\]
+Put $M_P(u)=e^{\alpha\operatorname{cov}(P)}u$, where $\alpha$ is the
+support exponent. The coefficient with coordinate $z$, one regular
+residual $h$ on $P$, and zero forced part has coefficient-plus-remainder
+price at most
+\[
+ ru+M_P(au)\le (r+a)M_P(u)
+\]
+and pointwise exponential-entry bound at most
+$((1+p)r+a)u\le K M_P(u)$. These inequalities use
+$\operatorname{cov}(P)\ge0$ and the nonnegative support exponent
+$\alpha$ (in the application $\alpha\ge4$), hence $M_P(u)\ge u$.
+The construction is measurable, gauge invariant and depends only on the
+links and healthy flags on $P$: these facts hold for the local projection,
+its primary and the masked residual separately. Adding such coefficients
+adds both prices and their exponential entries exactly. Thus this is a
+construction of one coefficient, not a choice of its coordinate alone.
+
+For each direction $b$, let $f_b^0,f_b^1,f_b^2,f_b^3$ be respectively the
+local residual, the distinguished current term, the truncated loop term
+and the Taylor remainder of the selected local decomposition. Their
+healthy derivative bounds on the common patch $P$ are respectively
+$c_0,c_1,c_1,c_0$. Let $g_{b,j}$, $j\in I_b$, be its finite additional
+terms, supported on $P_{b,j}$ in the same enclosing patch, with healthy
+bounds $u_{b,j}$ and
+\begin{equation}
+ \sum_{j\in I_b}M_{P_{b,j}}(u_{b,j})\le\epsilon_0.
+ \label{eq:trace-charge-tail-price}
+\end{equation}
+Construct the elementary coefficient of
+$f_b^0+f_b^1-f_b^2+f_b^3$, with derivative bound $2c_0+2c_1$, and add
+those of the $g_{b,j}$. Denote the resulting coefficient by $X_b$.
+The healthy observable and its coordinate are exactly
+\begin{align*}
+ Q_{X_b}&=f_b^0+f_b^1-f_b^2+f_b^3+\sum_jg_{b,j}
+                      &&\text{on the common healthy patch},\\
+ X_b.x&=\Pi_P f_b^0+\Pi_P f_b^1-\Pi_P f_b^2+\Pi_P f_b^3
+                                      +\sum_j\Pi_{P_{b,j}}g_{b,j}.
+\end{align*}
+The second equality uses linearity of the local Taylor projection on
+regular functions on the same patch; it makes no assertion of global
+linearity for different nonlinear local charts.
+Both prices are at most
+\[
+ K\{M_P(2c_0+2c_1)+\epsilon_0\}.
+\]
+The fixed patch cover bound gives $M_P(1)\le A$ with
+$A=\exp(\alpha\,\mathrm{TileNo})$. For large $t$,
+$\epsilon_0\le c_0\le c_1$ and therefore
+\[
+ K\{M_P(2c_0+2c_1)+\epsilon_0\}
+ \le(4A+1)K\theta^2H^{1/8}\le\theta^2H^{1/6}.
+\]
+Indeed the last ratio is $(4A+1)K H^{-1/24}\to0$, while
+$\epsilon_0/c_0=t^{-1/100}H^2\to0$. The sum of added coordinates has
+size at most $(r+a)\epsilon_0\le K\epsilon_0\le c_0$.
+Also $rc_0\le\theta^2H^{-1}$ eventually. Thus the local residual,
+Taylor remainder, and added-coordinate terms have the prices asserted in
+\eqref{eq:ex-lattice-charge-error-one}--
+\eqref{eq:ex-lattice-charge-error-two}.
+These are fixed-stage estimates. To use them along increasing stages,
+choose the threshold separately at each stage, simultaneously for the
+finitely many grades at most five and all its fixed readout constants.
+Lemma~\ref{lem:ex-lattice-monotone-threshold} gives the monotone delay
+envelope. The selected paid schedule meets these thresholds before the
+period, volume and finite truncations are chosen; this is not an assertion
+that unbounded stage constants are controlled by one fixed-stage tail.
+The coefficient has zero forced part. Its density is consequently the
+background density times its own exponential entry. The zero paid forced
+response has attainment cost zero, hence at most $t$. This supplies the
+atomic certificate used in the Coffer application, with charge
+$\theta^2H^{1/6}$.
+
+To obtain the six-term decomposition of the proposition, use the exact
+loop splitting
+\[
+ f_b^2=k_b-d_b
+\]
+on this same patch, where $d_b$ has healthy derivative bound $c_0$.
+Define
+\[
+ W_b=\Pi_P f_b^0,\quad B'_b=\Pi_P f_b^1,\quad
+ K'_b=\Pi_P k_b,\quad D'_b=\Pi_P d_b,\quad
+ E_b=\Pi_P f_b^3,\quad L_b=\sum_j\Pi_{P_{b,j}}g_{b,j}.
+\]
+Local projection of the splitting gives $X=W+B'-K'+D'+E+L$.
+The $D'$ bound follows from $rc_0\le\theta^2H^{-1}$ as well. The
+coefficient charge bounds $|X_b.x|_{\rm coeff}$ by
+$\theta^2H^{1/6}$; taking the maximum over directions proves the full
+array size estimate, rather than summing that estimate four times.
+
+The two remaining flux statements have a different origin from these
+size bounds. The local radial reading identifies the normalized flux of
+$\Pi_P f$ with one twelfth of the cubic current probe of $f$. Thus the
+loop cancellation and distinguished-current comparison needed here are
+\begin{equation}
+ \mathfrak H(k)=0,\qquad
+ |\mathfrak H(f^1)-m|\le t^{-30},\qquad
+ \ell(\theta^{-2}\Pi_P f)=\mathfrak H(f)/12.
+ \label{eq:trace-charge-current-identities}
+\end{equation}
+They give exactly the two identities in
+\eqref{eq:ex-lattice-charge-price-identities}, with
+$h=\mathfrak H(f^1)$. In particular the cancellation concerns $k$, not
+$f^2$: the small loop correction $d$ must remain among the four errors.
+A bound on $f^2$ alone would not prove the flux identity.
+
+The following subsections construct the remaining local prices and
+identities on these same fields: the corrected-loop cancellation and
+counterterm size, the actual nonlinear localization, the support-weighted
+tail, and the fifth-order residual and finite-difference remainder.
+They use the selected history's inherited action equation and local
+analytic probes. The exact finite tensor corrections are displayed
+below, so the trace and antisymmetric calibration identities are not
+additional assumptions. Once these constructions are combined, the
+coefficient and all its prices above are produced by the displayed
+finite sum.
+
+\subsubsection{Why the corrected loop has zero current price}
+\label{subsec:trace-charge-loop-cancellation}
+
+The cancellation in \eqref{eq:trace-charge-current-identities} can be
+checked before estimating any norms. A quadratic loop word has two
+plaquette legs, at offsets $o_{j,0},o_{j,1}$, and a color coefficient
+$c_j$. All sums below can be taken separately for each pair of plaquette
+orientations and each pair of color indices. Put
+$\delta_j=o_{j,1}-o_{j,0}$. The corrected finite loop family is chosen with
+\begin{equation}
+ \sum_jc_j=0,\qquad \sum_jc_j\delta_j=0.
+ \label{eq:trace-charge-loop-moments}
+\end{equation}
+These conditions have a concrete finite construction: subtract the local
+zeroth-moment word and the first-moment difference words from the original
+finite family, separately in each orientation/color component. A difference
+word with offsets $0,e_a$, minus the word with offsets $0,0$, has zero
+zeroth moment and first moment $e_a$. Taking its coefficient to be the
+$a$th component of the original first moment, and the local word's
+coefficient to be the original zeroth moment, cancels both moments
+exactly. The original loop equals the corrected family minus its added
+counterterms. The color coefficients of every added word are linear combinations of
+the original invariant color coefficients, so they remain invariant.
+These counterterms are the observable denoted $d$ above;
+they cannot be discarded when estimating its size.
+
+Let $F$ be the translated and signed-averaged sum of the corrected words.
+At the identity configuration every curvature factor is zero, so
+$F(0)=DF(0)=0$. Write $dA$ for the linear plaquette curl of a link
+variation $A$. Differentiating the product of two curvature factors twice
+therefore gives, before signed averaging,
+\[
+ D^2F(0)[A,B]=\sum_{j,z}c_j\bigl(
+ (dA)(z+o_{j,0})(dB)(z+o_{j,1})
+ +(dB)(z+o_{j,0})(dA)(z+o_{j,1})\bigr).
+\]
+The displayed products retain their prescribed color contractions.
+Suppose $A$ has bounded support and $dB$ is affine on the support enlarged
+by the word lengths. Translate the first leg to $z$. The inner sum of
+the first term is a multiple of
+\[
+ \sum_jc_j\{b_0+L(z)+L(\delta_j)\}
+ =(b_0+L(z))\sum_jc_j+L\Bigl(\sum_jc_j\delta_j\Bigr)=0.
+\]
+The other term has offsets $-\delta_j$ and vanishes for the same reason.
+Nonwrapping of the enlarged patch justifies these ordinary integer
+translations; it avoids replacing an affine function by a discontinuous
+periodic representative. Signed averaging preserves the conclusion, since
+it preserves support and the property of having affine curl. Thus
+\begin{equation}
+ D^2F(0)[A,B]=0
+ \quad\text{if $A$ is supported in the patch and $dB$ is affine there.}
+ \label{eq:trace-charge-loop-hessian}
+\end{equation}
+
+Now let $Y_b$ be the local gauge-covariant vector field of the chosen
+current, vanishing at the identity, and let $k_b=DF\,Y_b$. The support
+of $DY_b(0)A$ is contained in the same patch. Twice applying the product
+rule, using $DF(0)=0$ and $Y_b(0)=0$, gives
+\[
+ D^2k_b(0)[A,B]
+ =D^2F(0)[A,DY_b(0)B]+D^2F(0)[B,DY_b(0)A].
+\]
+For the polynomial link probes of degrees zero, one and two entering the
+local cubic current test, their curls are affine. Each term consequently
+vanishes by \eqref{eq:trace-charge-loop-hessian} and symmetry of the
+Hessian. The constant-direction terms require a separate argument. The function
+$k_b=DF\,Y_b$ is gauge invariant, since $F$ is gauge invariant and $Y_b$
+is gauge covariant. Moreover $k_b(0)=Dk_b(0)=0$. Differentiating gauge
+invariance once in a gauge parameter and once in an arbitrary variation
+therefore says that $D^2k_b(0)$ annihilates every infinitesimal gauge
+direction. On the nonwrapping patch a constant link variation is such a
+direction: use the gauge parameter linear in the lattice coordinate and
+extend it outside the patch. This kills the $(0,3)$ and $(3,0)$ terms
+without claiming that a cubic probe has affine curl.
+The radial current reading is a finite linear combination of these
+Hessian probes: its cubic spatial coefficient is the polarization of the
+pairs of spatial degrees $(0,3),(1,2),(2,1),(3,0)$, with the constant-curl
+terms removed by the gauge identity. The middle two pairs are exactly the
+quadratic link probes just treated. Hence every term of its current
+reading is zero and $\mathfrak H(k)=0$.
+This proof uses moment cancellation of the corrected loop, rather than
+smallness or a limiting Ward identity.
+
+\subsubsection{The exact reference-profile price}
+\label{subsec:trace-reference-local-calibration}
+
+The stress probe and its divergence are read in grades four and five,
+respectively. Grade four is particularly useful here: its nonconstant
+invariant labels are quadratic in curvature, so the local reading is
+determined by its Hessian on constant-curvature radial jets. A translated
+finite difference has zero such reading. Indeed translation leaves these
+Hessian tests unchanged, and the difference of the two equal readings is
+zero. This statement concerns the local grade-four reading, not the
+observable itself.
+
+To make the same-object identities explicit, let $\widetilde J$ be
+the componentwise localized tensor of the selected field, and let $Q_i$
+and $A_{abi}$ be its localized trace and antisymmetric auxiliary
+currents. Write $\Delta_i$ for the unit translated difference. The
+corrected local tensor $M$ keeps $\widetilde J_{ab}$ for $a<b$ and
+$\widetilde J_{aa}$ for $a\ne0$, and is defined on the remaining entries by
+\[
+ M_{ba}=M_{ab}-\sum_i\Delta_i A_{abi}\quad(a<b),\qquad
+ M_{00}=\sum_i\Delta_iQ_i-\sum_{i\ne0}M_{ii}.
+\]
+Consequently, before any projection or averaging,
+\[
+ \sum_iM_{ii}=\sum_i\Delta_i Q_i,\qquad
+ M_{ab}-M_{ba}=\sum_i\Delta_i A_{abi}\quad(a<b).
+\]
+All these auxiliary fields and their translated differences use the same
+finite nonwrapping support and the same healthy regular construction.
+Thus linearity of the weighted local projection applies to these exact
+identities. Applying the preceding zero-reading observation proves that
+its grade-four reading is symmetric and trace free. Signed averaging
+preserves both statements: each diagonal receives the square of the sign,
+and permutations only reorder the trace sum. The grade-four classification
+in Lemma~\ref{lem:ex-trace-free-stress-basis} therefore writes the averaged
+reading uniquely as the three-parameter nonconstant stress array
+$\mathsf S(a)$, $a\in\mathbb R^3$. Reading the local divergence commutes
+with taking the grade-five derivative: this follows by differentiating the
+finite radial Taylor polynomial and comparing each jet coefficient.
+Consequently its vector reading is the same $Va$ used in
+\eqref{eq:trace-weighted-calibration-price}; it is not independently
+calibrated.
+
+The trace and vector price in these coordinates are
+\[
+ \sum_b\mathsf S(a)_{bb}=4(a_0+4a_1)\mathcal O,\qquad
+ \rho(Va)=-4(a_0+4a_1).
+\]
+Since $\mathcal O\ne0$ for a nontrivial simple gauge group, the zero
+trace gives $a_0+4a_1=0$, hence $\rho(Va)=0$ exactly at finite volume.
+For the two elementary correction tensors the local reading has the
+fixed triples $a^0,a^1$, so their prices equal $\rho(Va^P)$ exactly.
+This proves the exact price part of
+\eqref{eq:trace-weighted-calibration-price} without a quantitative limit
+for the stress coefficients.
+
+For the qualitative stress calibration, let $J_{bc}$ be the unmodified
+stress probe and $\widetilde J_{bc}$ its local version. On each fixed
+constant-curvature test pair the selected local estimates give
+\[
+ \big|D^2J_{bc}(0)[u,v]-D^2(-\mathsf S_{\rm Maxwell})_{bc}(0)[u,v]\big|
+ \le t^{-100},\qquad
+ \big|D^2(J_{bc}-\widetilde J_{bc})(0)[u,v]\big|
+ \le16t^{-30}.
+\]
+The factor $16$ is the product of the two factor-four link bounds for a
+constant-curvature radial test. There are finitely many tests determining
+the grade-four frame: evaluation on all radial jets is injective, and in
+finite dimension a finite subset already has zero common kernel.
+Their inverse on its image has finite operator norm. The triangle
+inequality therefore gives convergence of the entire local coefficient
+to the negative Maxwell coefficient. Applying the continuous inverse of
+$a\mapsto\mathsf S(a)$ gives $a\to(-1,1/4,-1)$, uniformly on any sets on
+which these two test bounds hold. This is precisely the qualitative
+reference limit used in the weighted estimate; its weighted price uses
+the exact zero above and does not multiply this qualitative error by
+$A_{1/5}$.
+
+\subsubsection{The localization error in the current comparison}
+\label{subsec:trace-charge-localization}
+
+The current comparison uses a shrinking analytic width, so its loss
+cannot be treated as a fixed constant. At scale $t$, the width is
+$a=(\log t)^{-1}$ and the localization radius is
+$R=1000\lceil(\log t)^2\rceil$. Here is the nonlinear localization estimate for the actual localizer.
+Write $F$ for the scalar reading of a gauge-invariant local field, $J_4F$
+for its Taylor polynomial of degree four, $S_R$ for restriction of link
+coordinates to distance at most $R$, and $W$ for the degree-four local
+gauge-coordinate map. These readings are analytic at the zero field and
+satisfy $F=F\circ\mathrm{exactP}_o$ as germs there: this is the local
+gauge reconstruction identity of the constructed invariant field.
+The Taylor polynomial of that reconstruction is $W$. Thus the defining
+coordinate identity gives equality of four-jets
+\[
+ F-(J_4F\circ S_R)\circ W
+       \equiv_4 (J_4F-J_4F\circ S_R)\circ W.
+\]
+This is an identity of jets, not an assertion of equality of the full
+nonlinear fields. In a coordinate derivative indexed by links
+$(e_1,\ldots,e_j)$, $j\le4$, the jet in parentheses is zero if
+$\max_i d(o,e_i)\le R$, and otherwise is the original derivative of $F$.
+Thus every retained term has at least one input outside the radius.
+
+For completeness, the local coordinate map has derivative row sums,
+through order four and on a radius-$g$ set, bounded by
+$B(1+g)^L\exp(4(a/100)(g+2))$, with $B,L$ depending only on the gauge
+group and derivative order. To see the volume independence of these bounds, a coordinate at distance
+$g$ depends only on coordinates within radius $4(g+2)$. There are at most
+$2(2\cdot4(g+2)+1)^4\dim(\mathrm{Loc})$ such coordinates. Its derivatives
+through order four have a polynomial bound in $g$ by the finite product
+rule for the local gauge-coordinate map. Multiplying that bound by the
+fourth power of this coordinate count and by the polynomial spatial
+weight gives $B(1+g)^L$; the exponential weight contributes the displayed
+exponential. Thus the count concerns only this finite neighborhood. The chain rule is a sum over the
+ordered partitions of $j\le4$. For each partition, there are at most
+four such row factors. Using $g>R$, their product, together with the
+output weight of width $a/100$, is bounded by the original input weight
+of width $a$, times
+\[
+ B^4 e^{100}\operatorname{momentPrice}(4L,a/4)e^{-aR/4}.
+\]
+Indeed $(1+g)^{4L}\le\operatorname{momentPrice}(4L,a/4)e^{ag/4}$,
+and the remaining exponent satisfies
+$(a/100)g+16(a/100)(g+2)+ag/4
+ \le ag+100-aR/4$ for $0<a\le1$.
+In the following display $\|\cdot\|_{a,\le4}$ denotes the maximum of
+the exponentially weighted coordinate-derivative sums \emph{at zero},
+through order four, with the degree-four polynomial spatial weight.
+It is not a supremum of derivatives over the healthy domain.
+Summing over the finitely many ordered partitions gives a constant $D$
+and an integer $P$, independent of the volume, such that
+\begin{equation}
+ \|F-F^R\|_{a/100,\,\le4}
+ \le D\operatorname{momentPrice}(P,a/4)e^{-aR/4}
+          \|F\|_{a,\,\le4}.
+ \label{eq:trace-charge-nonlinear-localization}
+\end{equation}
+The scalar readings of the actual vector and tensor localizers are
+exactly $(J_4F\circ S_R)\circ W$: this follows by substituting their
+linkwise polynomial definition and contracting the link index. Their
+zero and first derivatives vanish; thus the weighted estimate for
+orders two through four supplies all the input derivatives in the
+calculation. This proves the estimate for those localizers, without
+promoting a scalar convolution estimate to a nonlinear one.
+
+The selected input price is bounded by $C H^q$ for a fixed $q$.
+The moment price above is a fixed polynomial in $a^{-1}$.
+Since $aR/4\ge250\log t$, the right side of
+\eqref{eq:trace-charge-nonlinear-localization} is $t^{-250+o(1)}$,
+and is eventually at most $t^{-98}$. Only orders at most four are used
+here; they suffice for the second-derivative current test and its one
+divergence derivative.
+
+To make the current test estimate explicit, write $Y_b$ for the original
+local vector field and $Y_b^R$ for its localized field. The divergence
+operator defining the current has one more derivative and a finite
+weighted link sum. Applying the product rule and the preceding tail
+bound, with the analytic width decreased to $a/100$, gives an error at
+most $t^{-70}$ in the weighted derivative norm needed for this operator.
+The spare exponent absorbs all fixed derivative orders and polynomial
+support factors. The current probe is a fixed finite sum of spatial
+moments of its second derivatives. If $c=a/(100\cdot5\cdot4\cdot5)$,
+the sums of the moment weights of degrees two and three are bounded by
+$C(c^{-1}+1)^m$ for a fixed $m$: sum the four-dimensional geometric
+series and differentiate it at most three times. Consequently
+\[
+ |\mathfrak H(\operatorname{div}Y)
+      -\mathfrak H(\operatorname{div}Y^R)|
+ \le C(1+\log t)^m t^{-70}\le t^{-30}
+\]
+for all sufficiently large $t$. Subtracting the constant value of
+$\operatorname{div}Y^R$ does not change this test, which uses its second
+derivatives. This proves the distinguished-current error in
+\eqref{eq:trace-charge-current-identities} for the localized field.
+The same argument with the two constant-curvature directions gives the
+$16t^{-30}$ local stress-probe error used above. The other stress-probe
+error, $t^{-100}$, is the chosen accuracy of the original finite-volume
+probe; the two bounds concern different comparisons.
+
+\subsubsection{Paying the full reference observable}
+\label{subsec:trace-reference-atomic-certificate}
+
+The reference profiles require their full observable, including its value
+on unhealthy configurations. They therefore use the following guarded
+construction rather than the zero-forced coefficient above. Let $f$ be one
+of the reference tensor or divergence probes on $P$, with global bound
+$b=H^{1/50}$ and healthy derivative bound $c=\theta^2H^{1/8}$. These are
+the local regularity prices for this profile. Set $z=\Pi_P f$ and let
+$h=f-\operatorname{present}_\theta z$ be its zero-reading residual.
+The primary's footprint mask differs from the mask on $P$; keep this
+difference by defining
+\[
+ q=f-\operatorname{primary}_\theta z
+                       -{\bf1}_{\{P\ \mathrm{healthy}\}}h.
+\]
+Then the equality $f=\operatorname{primary}_\theta z+
+{\bf1}_{\{P\ \mathrm{healthy}\}}h+q$ holds on every configuration.
+Here $a=1+(1+\mathrm{readable})r$ is the canonical atomic price,
+so the local residual construction bounds $h$ by $ac$ on the healthy set
+and bounds the footprint-mask discrepancy by $ac$ globally. Hence
+$q$ is zero on the healthy set and $|q|\le b+ac$ everywhere. It is
+measurable, invariant, supported on $P$ and depends only on its links and
+flags, so $q$ is an admissible supported forced response. Its attainment
+price is
+\[
+ e^{(\alpha+2)\operatorname{cov}(P)}(b+ac).
+\]
+
+The retained forced-activity expansion installs this supported response
+in the same background density. To recall its quantitative content, mark
+one copy of $q$ on $P$, expand the background activities and collect
+each nonempty subset meeting $P$ into a supported forced slot, grouping
+by its union with $P$. Untouched activities remain outside this slot.
+There is no empty-slot contribution: $q$ vanishes when $P$ is healthy.
+If the rooted
+forced budget is $v$, their total absolute price is bounded by
+\[
+ M_P(b+ac)(e^{|P|v}-1).
+\]
+Indeed for $j$ selected factors the rooted product sum is at most
+$(|P|v)^j/j!$; sum over $j\ge1$. This is the same supported forcing
+expansion used by the atomic input of
+Subsection~\ref{sec:ex-lattice-trace-coffer-supplier}; all terms retain the
+same marked origin and its flags. Its exact product expansion makes the
+resulting coefficient density equal to $\operatorname{eval}\,f$, not
+just equal on the healthy set. For $|P|v\le1$,
+$e^{|P|v}-1\le2|P|v$. In the remainder norm with tolerance $\sqrt v$
+the resulting price is consequently at most
+$2|P|\sqrt v\,M_P(b+ac)$. Together with the ordinary residual and the
+coefficient this gives
+\begin{equation}
+ |z|_{\rm coeff}+\mathrm{rem}
+ \le rc+M_P(ac)+2|P|\sqrt v\,M_P(b+ac).
+ \label{eq:trace-reference-guarded-price}
+\end{equation}
+This explains both the reserved support exponent $\alpha+2$ in the
+attainment price and the extra masked-remainder term; dropping either
+would not give the reference atomic certificate.
+
+Here the actual forced budget is
+$v=\exp\{-\exp[(\log\log(t^{1/5}))^2]\}$,
+$|P|=O((\log t)^8)$ and
+$\operatorname{cov}(P)\le\mathrm{TileNo}$. The last term of
+\eqref{eq:trace-reference-guarded-price} is smaller than every negative
+power of $t$: take logarithms and use
+$\exp[(\log\log(t^{1/5}))^2]/\log t\to\infty$. It is eventually at most $\theta^2$.
+The other terms are at most $(r+Aa)\theta^2H^{1/8}$, so the whole price
+is at most $\theta^2H^{1/6}$ after the stage delay has been paid.
+Similarly
+\[
+ e^{(\alpha+2)\mathrm{TileNo}}(H^{1/50}+a\theta^2H^{1/8})\le t
+\]
+eventually. Thus each reference profile has the atomic charge and
+attainment price used in \eqref{eq:trace-weighted-reference-bias}, with
+its original full observable and the same weighted local coefficient.
+Taking the maximum of the finitely many thresholds covers all three
+profiles and their tensor and divergence entries.
+
+\subsubsection{The weighted nonempty-support tail}
+\label{subsec:trace-charge-support-tail}
+
+The added supports in \eqref{eq:trace-charge-tail-price} are the
+nonempty subsets of the activity increments in the finite shifted
+product. Here is the estimate which keeps their support weights intact.
+Fix a marked link, let $Q$ be the core support, and let $X_i$ be the
+supports of its activity increments $f_i$, all containing the marked
+site. Write $p_i$ for their derivative prices and $A$ for the price of
+the unshifted local factor. If the derivative order is $k$, set
+$c_k=2^k\mathrm{budC}(k)$. The product rule and the derivative series for
+$e^{f_i}-1$ give the price
+\[
+ A\prod_{i\in I}c_kp_i
+\]
+for the term with nonempty index set $I$. The $2^k$ factor pays the
+product rule; $\mathrm{budC}(k)p_i$ pays the exponential increment when
+$p_i\le1$. Its support is $Q\cup\bigcup_{i\in I}X_i$. Since these
+supports share their marked site, their covering numbers satisfy
+\[
+ \operatorname{cov}(Q\cup\bigcup_{i\in I}X_i)
+ \le\operatorname{cov}(Q)+\sum_{i\in I}\operatorname{cov}(X_i).
+\]
+If $\sum_i M_{X_i}(p_i)\le\delta$ and $c_k\delta\le1$, positivity
+and the exact finite-product expansion therefore give
+\begin{align*}
+ \sum_{\varnothing\ne I}M_{Q\cup\cup_{i\in I}X_i}
+       (A\prod_{i\in I}c_kp_i)
+ &\le M_Q(A)\left[\prod_i(1+c_kM_{X_i}(p_i))-1\right]\\
+ &\le M_Q(A)(e^{c_k\delta}-1)
+ \le2c_k\delta M_Q(A).
+\end{align*}
+This also proves regularity term by term: the increments and the local
+factor are regular, and the finite product is regular on the displayed
+union. No unweighted cardinality estimate is substituted for this sum.
+
+For the actual shifted activity family, the individual prices are the
+sum of the exterior-path increment price and the local regular-activity
+increment price. Summing them gives
+\[
+ \delta\le\mathrm{beamAmt}+\mathrm{vat}\,
+                  (2r+1)^4\mathrm{hue}(t)\le t^{-109/100}.
+\]
+Here $r$ is the retained truncation radius. The exterior contribution
+contains $e^{-\sigma R/4}$, with fixed $\sigma>0$ and
+$R=1000\lceil\log^2t\rceil$, times fixed powers of $t$ and logarithms,
+so is smaller than every negative power of $t$.
+The regular contribution is bounded by $t^{-11/10+o(1)}$: the radius factors
+are subpolynomial under the retained tower bound, and its activity
+receipt obeys $\mathrm{hue}(t)\le t^{-11/10+o(1)}$. Thus both terms are
+bounded together by $t^{-109/100}$ after increasing the stage threshold.
+The local shifted factor, after the fixed derivative composition, has
+price $A\le t^{-1/2+o(1)}$. Its support has at most $\mathrm{TileNo}$
+covering blocks. These facts give the per-link, per-difference-node
+nonempty price
+\[
+ S(t)\le2c_k t^{-109/100}
+                e^{\alpha\mathrm{TileNo}}t^{-1/2+o(1)}.
+\]
+There are $t^{o(1)}$ marked links, the fixed finite-difference weights
+have total absolute value $\sum_{j<m}|w_j|$, and the inverse difference
+step is bounded by $t^{1/2+1/24+o(1)}$. Consequently the \emph{actual} support sum,
+including the difference weights and normalization, is bounded by
+\[
+ t^{-109/100-1/2+1/2+1/24+o(1)}
+   =t^{-629/600+o(1)}\le t^{-101/100}
+   \le\theta^2t^{-1/100}.
+\]
+The last inequality is the retained threshold bound $t^{-1}\le\theta^2$.
+The strict gap between $629/600$ and $101/100$ absorbs the fixed stage
+constants. This proves \eqref{eq:trace-charge-tail-price} for the finite
+activity family, uniformly in its finite truncations, with no additional
+factor $H^2$.
+
+\subsubsection{From the constructed probes to healthy derivative prices}
+\label{subsec:trace-charge-healthy-prices}
+
+The local stress, its divergence, and the elementary correction probes
+are the entries and first spatial differences of the same localized
+polynomial field: the localized stress (\texttt{Meld}), the two fixed
+quadratic probes (\texttt{Plint}), the trace current (\texttt{pluck})
+and the antisymmetric current (\texttt{pluckD}). This includes their
+tensor, single-derivative and divergence entries through grade five. Their local analytic construction gives derivative
+bounds $A\le H^{1/50}$ on translated link-coordinate balls of the fixed
+collar radius $B\ge1$. Each probe is gauge invariant, local, and has
+zero constant and linear Taylor coefficients at the flat field. The
+last property must be retained in passing to a healthy chart: an
+arbitrary bounded local observable would not have the factor $\theta^2$.
+
+The healthy axial chart has size
+$s=\theta(1+r)^p$, with $r$ the support radius and $p$ the fixed stage
+power. On this chart use the weighted derivative norm in which a
+$j$th derivative is multiplied by $s^j$. Taylor's formula twice gives
+$|f(su)|\le C_B A s^2$, and once gives
+$s\|Df(su)\|\le C_B A s^2$. For $j\ge2$, the original bound gives
+$s^j\|D^jf(su)\|\le A s^2$ since $s\le1$. Thus the entire weighted
+norm through the retained order is at most $C_B A s^2$. Pullback through
+the healthy collar chart, by the finite chain rule, costs at most
+$k!(1+B)^k$. It follows that the healthy derivative price is
+\[
+ k!(1+B)^k C_B A\theta^2(1+r)^{2p}.
+\]
+For $r=O(\log^2t)$ the last polynomial is $H^{o(1)}$. Since
+$1/50<1/8$, the displayed expression is at most
+$\theta^2H^{1/8}$. At the origin of each translated coordinate chart,
+the original zeroth-order bound also gives the global estimate
+$|f(U)|\le A\le H^{1/50}$. This proves the two distinct prices used in
+Subsubsection~\ref{subsec:trace-reference-atomic-certificate} from the local
+probe bounds, on the original full observable.
+
+For the distinguished divergence subtract its value at the flat field.
+Its first jet vanishes by global conjugation invariance and simplicity
+of the gauge Lie algebra: restricting that derivative to any one link
+gives an adjoint-invariant linear functional, which vanishes on all
+commutators, hence on the entire simple Lie algebra. The link-coordinate
+derivatives therefore all vanish. Subtracting the constant supplies the
+zero value, and does not alter this first-derivative argument.
+Its derivative price before the subtraction is $H^{1/200}$, and the
+subtracted constant has absolute value at most this same number. Hence
+$A\le2H^{1/200}$ suffices, and the same argument again gives the healthy
+price $\theta^2H^{1/8}$. For the small loop counterterm the corresponding
+analytic price is $\mathrm{calorie}(t)$; its decay is faster than the
+fixed $H^{-2}$ price after the same polynomial chart factors. The
+healthy counterterm price is consequently $\theta^2H^{-2}$. Finally,
+if a residual or Taylor error has already been bounded in the axial
+chart by $\theta^2t^{-1/100}$, the finite pullback factor gives
+\[
+ k!(1+B)^k\theta^2t^{-1/100}\le\theta^2H^{-2}.
+\]
+All constants here belong to the selected finite stage and are paid by
+the same prior stage-delay envelope as the atomic construction.
+
+\subsubsection{Size of the moment counterterms}
+\label{subsec:trace-charge-counterterm-size}
+
+The zero and first moments used to correct the finite loop family are
+small for a reason independent of their exact cancellation. The infinite loop family of the selected retained path has exactly
+zero zeroth and first moments, by its path law. Restricting that same
+family to the radius $R$ loses at most
+\[
+ e^{-\sigma R/4}\operatorname{momentPrice}(1,\sigma/2)
+                \mathrm{humble}(t)
+\]
+in the combined zeroth- and first-moment norm: insert the factor distance
+into the absolutely
+summable loop coefficients and spend half of the exponential decay to
+pay it. For each fixed $t$, finite truncation of that summable family
+can be chosen so that its additional moment error is at most
+$t^{-100}$. The combined moment error is therefore bounded by
+$t^{-98}$ for all sufficiently large $t$, uniformly after this finite
+truncation threshold.
+
+The explicit correction in
+Subsubsection~\ref{subsec:trace-charge-loop-cancellation} depends linearly on
+these finitely many moments. Its words have length at most ten and
+fixed offsets $0,e_a$. Differentiating any such word a fixed number of
+times costs a fixed constant; translating it over the support costs at
+most $C(1+\mathrm{puff}(t))^4$. Hence its analytic derivative price is
+at most $t^{-95}$, after enlarging the stage threshold. Applying the
+localized vector field in the directional derivative adds only the
+fixed product-rule constant and its subpolynomial derivative price.
+The resulting counterterm $d_b$ has analytic price at most $t^{-94}$,
+and in particular at most $\mathrm{calorie}(t)=t^{-30}$.
+Subsubsection~\ref{subsec:trace-charge-healthy-prices} now gives its healthy
+price $\theta^2H^{-2}$. This establishes smallness of the same finite
+counterterms which enforce the exact moments; no second family is
+chosen for the size bound.
+
+\subsubsection{The fifth-order residual and finite-difference remainder}
+\label{subsec:trace-charge-taylor-remainders}
+
+Let $s=\theta(1+r)^p$ be the same axial-chart scale. The action residual
+is the actual difference
+\[
+ K_b=\operatorname{div}M_b-D F_{\rm main}[Y_b^R],
+ \qquad f_b^0=\beta K_b.
+\]
+Here the small four-jet input follows from the inherited action identity,
+not from locality alone. Let $J,Y,F$ be the original stress, current and
+full main interaction, and let $F_L$ be the same main interaction
+restricted to the retained finite family and radius. In this paragraph
+$\operatorname{div}M$ is the spatial finite-difference divergence of
+the stress, as opposed to the field-space divergence of $Y$ in the
+current-price calculation. Then exactly
+\[
+ \operatorname{div}M-DF_L[Y^R]
+ = (\operatorname{div}J-DF[Y])
+    +\operatorname{div}(M-J)
+    +DF[Y-Y^R]+D(F-F_L)[Y^R].
+\]
+The first summand has weighted four-jet price at most $t^{-100}$ by
+the inherited action equation of the selected field. The second has
+price at most $t^{-70}$ times a fixed polynomial in $a^{-1}$ by the
+localization estimate. For the third, the weighted product rule pairs
+the localized-current tail $t^{-70}$ with the full action's link
+derivative price through four further field derivatives (thus through
+five derivatives of the scalar action), bounded by a fixed power of
+$H$ and $a^{-1}$. The retained action family has exactly this bound;
+its four-derivative bound for the scalar action alone would not suffice. Finally absolute
+summability of the action family permits its finite truncation error to
+be at most $t^{-100}$, and the radius restriction costs at most
+$C\operatorname{momentPrice}(P,\sigma/2)e^{-\sigma R/4}$ times the
+same fixed support price. Multiplying this by the original-current
+price plus its $t^{-70}$ tail bounds the last summand. All spatial
+contractions here are exponentially weighted link sums; their moment
+losses are polynomials in $a^{-1}$, independent of total volume.
+The sum is $t^{-70+o(1)}+t^{-100+o(1)}$, hence at most $t^{-30}$
+eventually. This proves the claimed origin four-jet bound for the exact
+$K_b$ above. Meanwhile the local analytic construction
+bounds all derivatives through the required fixed order by $C H^{q_0}$
+for fixed $C,q_0$
+on the radius-$Bs$ ball. Both statements concern the same finite main
+interaction: its finite truncation is chosen after the local four-jet
+comparison. For $0\le j\le4$ and sufficiently large $t$,
+\[
+ t^{-30}\le C H^{q_0}s^{5-j},\qquad t^{-1}\le s\le1.
+\]
+Taylor's formula for $D^jK_b(su)$ through degree $4-j$, with the fifth
+and higher derivatives bounded on the line segment, therefore bounds
+each scaled derivative by $C_B C H^{q_0}s^5$. For $j\ge5$, the same
+bound follows directly from $s^j\le s^5$. The finite Taylor constants
+are the fixed fifth-order interpolation constant $C_B$. Multiplying by
+$|\beta|\le4t$ gives
+\[
+ \|\beta K_b(s\,\cdot)\|_{C^k(B)}
+ \le4t\,C_B C H^{q_0}s^5
+ \le\theta^2t^{-1/100}.
+\]
+Indeed, after division by $\theta^2$, the left side is
+$t^{-1/2}$ times a fixed power of $H$ and $1+r$, hence is
+$t^{-1/2+o(1)}$. This is the actual fifth-order residual estimate; the
+quadratic healthy-price argument alone would not prove it.
+
+For the finite-difference remainder let $h=\theta t^{-1/24}$ be the
+chosen step and $m\ge48$ its order. At each marked link and color,
+write the shifted integrand as the product of the local current factor
+and the exponential action increment. The latter increment is zero at
+zero shift. The derivative bound for that increment is
+$Z(t)=2\,\mathrm{shear}(t)C_Bs^2\le H^c$. The segment has length at
+most $\kappa_m h/s$, where $\kappa_m$ depends only on the fixed
+finite-difference stencil. Thus
+$Z(t)\kappa_m h/s\le H^c\kappa_m t^{-1/24}\le1$ eventually.
+Integrating its first derivative along this segment bounds the increment
+itself by one. The scalar exponential has bounded outer derivatives on
+$[-1,1]$; after composition its derivatives through order $k+m+1$ are
+bounded by fixed powers of $H$, not by an absolute constant. The chain
+rule and the product rule therefore bound the full integrand by
+\[
+ C(t)s,\qquad C(t)\le H^c
+\]
+for some fixed $c$, after including the local-current price and the
+finite coordinate-chart factors. For clarity, the action-dependent
+composition factor contains $\mathrm{shear}(t)s^2$; since
+$\mathrm{shear}(t)\le5tH^{1/50}$ and
+$s^2=t^{-1}H^2(1+r)^{2p}$, this factor is bounded by a fixed power of
+$H$. All further powers are fixed by $k+m+1$.
+
+The finite-difference weights cancel the Taylor coefficients through
+order $m$. Taylor's integral remainder, differentiated up to order $k$,
+then bounds the error at each marked link and color by
+$C(t)s(h/s)^{m+1}$. Summing over the actual finite support multiplies
+$C(t)$ by at most $O((1+r)^4)\dim\mathfrak g$, still a fixed power of
+$H$. Since $h/s\le t^{-1/24}$,
+\[
+ C(t)s(h/s)^{m+1}
+   = C(t)h(h/s)^m
+   \le t^{-2+o(1)}h
+   \le\theta^2t^{-1/100}h.
+\]
+The observable $f_b^3$ divides this Taylor error by $h$. That division
+cancels the displayed factor $h$ exactly, leaving the same axial price
+$\theta^2t^{-1/100}$ as for $f_b^0$. The finite collar pullback established
+above therefore gives the healthy price $\theta^2H^{-2}$ for both errors.
+The finite-difference integrand estimate also proves the shifted local
+factor price $t^{-1/2+o(1)}$ used in
+Subsubsection~\ref{subsec:trace-charge-support-tail}: it is $s$ times fixed
+powers of $H$, before taking the Taylor remainder or dividing by $h$.

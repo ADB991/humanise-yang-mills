@@ -1,4 +1,4 @@
-\section{The algebra of time-invariant observables}
+\subsection{The algebra of time-invariant observables}
 \label{ex-phases}
 
 The Hilbert space constructed from an unselected correlation table need not
@@ -17,27 +17,18 @@ is closed. If \(P_0\) denotes its orthogonal projection, then
 \(E_tv\to P_0v\) in norm as \(t\to\infty\), for every \(v\in\mathcal H\).
 \end{proposition}
 \begin{proof}
-Each \(E_t-I\) is continuous, so its kernel is closed; their intersection
-is \(\mathcal H_0\). Fix \(v\). Contractivity and the semigroup law show
-that \(a(t)=\|E_tv\|^2\) decreases to its nonnegative infimum \(\ell\).
-Self-adjointness gives, for \(s\le t\),
-\[
- \langle E_sv,E_tv\rangle
- =\langle v,E_{s+t}v\rangle
- =\|E_{(s+t)/2}v\|^2.
-\]
-The scalar on the right is real. Consequently
-\[
- \|E_sv-E_tv\|^2
- =a(s)+a(t)-2a((s+t)/2)\le a(s)-a(t)\le a(s)-\ell.
-\]
-For large \(s,t\) this tends to zero, after exchanging \(s,t\) if
-necessary. Completeness gives a norm limit \(v_0\). For fixed \(r\ge0\),
-continuity of \(E_r\) and \(E_rE_t=E_{r+t}\) give \(E_rv_0=v_0\).
-For \(z\in\mathcal H_0\), self-adjointness gives
-\(\langle E_tv,z\rangle=\langle v,E_tz\rangle=\langle v,z\rangle\).
-Passing to the limit shows \(v-v_0\perp\mathcal H_0\). These two
-properties characterize the orthogonal projection, so \(v_0=P_0v\).
+Put $A=E_1$. This is a positive contraction since $E_1=E_{1/2}^2$.
+If $Av=v$, contractivity gives $\|v\|\le\|E_sv\|\le\|v\|$
+for $0<s<1$, using $E_1=E_{1-s}E_s$. Since $E_s$ is positive,
+$I-E_s^2\ge0$ and equality of norms implies $E_s^2v=v$, hence
+$E_sv=v$ by the positive square root. The semigroup law then shows
+$\ker(I-A)=\mathcal H_0$, which is closed.
+By the bounded Borel functional calculus
+\cite[Theorem~VII.2]{ReedSimonI}, the powers $A^n$ converge strongly
+to the spectral projection at $1$, by dominated convergence on
+$[0,1]$. This projection is $P_0$. For $t=n+s$ with integer $n$
+and $0\le s<1$, contractivity on $A^nv-P_0v$ gives the same
+convergence for $E_t$.
 \end{proof}
 
 We next explain the analytic estimate needed to insert an entire word as a
@@ -115,7 +106,7 @@ All extend from the dense word span by boundedness. Spatial translation
 also gives
 \(U_yA_d(w)=A_d(w+y)U_y\), by the same calculation on words.
 
-\subsection{Spatial invariance of the ground space}
+\subsubsection{Spatial invariance of the ground space}
 Assume now full orthogonal covariance of the correlation table: there is
 an action on quotient field labels such that, for every \(K\in O(4)\) and every
 distinct-point word \(w\), the jointly rotated word \(Kw\) satisfies
@@ -166,7 +157,7 @@ Density of word vectors first gives \((U_y-I)P_0[w]=0\) and then
 the conclusion follows.
 \end{proof}
 
-\subsection{Compression and separation of clusters}
+\subsubsection{Compression and separation of clusters}
 For a slab word define
 \(M(w)=P_0A_d(w)|_{\mathcal H_0}\). The width is immaterial:
 increasing it appends an \(E_r\), which is the identity on

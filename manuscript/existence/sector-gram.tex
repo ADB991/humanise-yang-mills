@@ -1,15 +1,16 @@
-\section{The Gaussian quadratic form in a sector}
+\subsection{The Gaussian quadratic form in a sector}
 \label{sec:sector-gram}
 The quadratic reference must remain nondegenerate after the large-field
 bonds have been frozen. A lower bound for a flat Hessian alone would
-not establish this. We prove the lower bound for the actual transported,
-selected rows, using a separate local gauge around each active bond.
+not establish this. We prove the lower bound for the transported-flat selected rows
+$A^V_{s,a}$ defined below (not for the curved derivative rows, which
+are treated in Subsection~\ref{sec:actual-global-row-prices}), using a separate local gauge around each active bond.
 All norms in the quadratic inequalities below are physical counting
 norms: squared colour norms are summed over bonds without dividing
 by the volume.
 
 Fix the tree, seed set, coarse field and original predictor tags of
-Section~\ref{sec:packet-annulus}. Let $\mathcal H$ be the active
+Subsection~\ref{sec:packet-annulus}. Let $\mathcal H$ be the active
 free bonds and let $P_{\mathcal H}$ denote restriction to them,
 extended by zero on all other bonds. The seed store's coarse-flag
 component equals the actual coarse flags; it may have other seed
@@ -58,9 +59,9 @@ $\lambda^2=1/q$ supplies its normalization. In particular,
 The same fine field, tags and orientation choices are used in every
 term. We have not averaged independently chosen Gaussian matrices.
 
-\subsection{A local linear inequality from the tree comparison}
+\subsubsection{A local linear inequality from the tree comparison}
 Let $w$ be a fine colour array which vanishes on the fixed tree.
-The tree comparison of Section~\ref{sec:seed-tree-patch}, with
+The tree comparison of Subsection~\ref{sec:seed-tree-patch}, with
 coarse configuration equal to the identity, implies
 \begin{equation}\label{eq:sector-local-linear}
  \|w_e\|\le K\sum_{z\in\mathcal B}\sum_\alpha
@@ -89,13 +90,13 @@ colour matrix of $v$, then
 This follows directly from differentiability and the physical
 normalization of the chord. The derivatives of the fine links,
 plaquettes and predictor are respectively $w$, $d_fw$ and
-$\mathcal Qw$, the last by Section~\ref{sec:predictor-branch}.
+$\mathcal Qw$, the last by Subsection~\ref{sec:predictor-branch}.
 Passing through the finite box sum proves
 \eqref{eq:sector-local-linear}. The limiting neighbourhood can
 depend on the finite torus; the resulting constant $K$, inherited
 from the nonlinear tree inequality, does not.
 
-\subsection{A lower bound for the actual selected rows}
+\subsubsection{A lower bound for the transported selected rows}
 For an anchor $o$, define
 \[
  \begin{split}
@@ -125,7 +126,7 @@ vanishes on the tree. For every required row, the transport estimate
  \|(A_Rw)_a\|\le R_o(u)+\varepsilon(x)J_o(u),
  \qquad \varepsilon(x)=C\,2D_{\rm col}(B+1)h_0(x).
 \end{equation}
-Indeed the actual row in the chosen gauge has the same norm as
+Indeed the transported row in the chosen gauge has the same norm as
 its selected original row and is at most $R_o(u)$. Every input
 used in the comparison lies within $3B$ of $o$, so its norm is
 at most $J_o(u)$. All comparison routes lie inside the radius
@@ -187,7 +188,7 @@ orthogonal active/inactive decomposition proves
 This includes an empty active set, in which case $A=1$.
 No globally small gauge for $V$ has been constructed or assumed.
 
-\subsection{Upper bounds with spatial weights}
+\subsubsection{Upper bounds with spatial weights}
 We also need a bound independent of the period on the matrix
 entries and their weighted sums. The cut row $A_R$ vanishes on
 an impulse at a bond farther than $R+\rho+4$ from its anchor.
@@ -207,7 +208,7 @@ $C\|v\|e^{-\sigma r}$ each. This proves the stated bound.
 Signed displacement and parallel transport send a single impulse
 to a single impulse with unchanged colour norm. The coarse anchor
 may move by one under reversal of a bond. Thus the preceding
-constant becomes $2Ce^{\sigma(\rho+7)}$ for the actual oriented
+constant becomes $2Ce^{\sigma(\rho+7)}$ for the transported oriented
 row. Selection and restriction to active bonds only set entries
 to zero. In scalar coordinates,
 \[
@@ -247,8 +248,8 @@ Also $M_{ij}=0$ beyond distance $B/4$ by its stencil, so
 $A_{ij}=0$ beyond $B/2$.
 
 Combining \eqref{eq:sector-gram-floor} and
-\eqref{eq:sector-gram-upper} proves a strictly positive, uniform
-spectral interval for the actual completed precision matrix.
+\eqref{eq:sector-gram-upper} proves a strictly positive, uniform\linebreak
+spectral interval for the transported-flat completed precision matrix.
 In particular its inverse exists and satisfies
 $0<A^{-1}\le\kappa^{-1}1$. For $\beta>0$, the centered finite-dimensional
 Gaussian with covariance $\beta^{-1}A^{-1}$ is consequently

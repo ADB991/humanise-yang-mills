@@ -1,0 +1,34 @@
+# Two C12/C16 endpoints
+
+Session `mgubi-astra-c12-c16-endpoints-20261113`; issue178 claim [6862959574](https://github.com/hairer/humanise-yang-mills/issues/178#issuecomment-6862959574). C16 is frozen at `69b2631f7a3d3c4176ca0084d8607cb9d8d124a2`; C12 is PR224 at `5b985d09dc6b31491afae802fa7aed5ffac74975`. File identities are in inputs.json. This account reviewed C12 and authored C16: the C16 side is an author-side comparison, not independent approval. No whole-package or human acceptance is asserted.
+
+**Verdict:** the stated numerical and common-data obligations of `C16-to-C12-selected-run` match. `C12-to-C16-funded-service` matches conditionally on the same retained data, with one optional premise-visibility clarification, V1; no mathematical endpoint mismatch was established. This is not production of its analytic inputs.
+
+## Selected-run clauses
+
+All chapter paths below are in manuscript/existence. C16 labels refer to the frozen C16 version; C12 labels to the frozen C12 version.
+
+| Clause | C16 producer | C12 consumer and result |
+|---|---|---|
+| (a) Before-schedule sections and regradings | `sec:public-run-binding`, paragraph beginning “Fix a simple gauge group”, fixes the portfolio before profile price maps and floors and retains it unchanged. | `sec:common-observable-purchases`, final portfolio paragraphs, and `sec:ex-marked-portfolio-calibration`, fixed sections/regradings before credits and floors. Matched choice order. Purchased sections are not the canonical local-section map defining the history. |
+| (b) Marked floors | `sec:common-scale-selection` floor list includes marked thresholds; public binding takes their maximum into n_j and selects L_j≥n_j. | Marked calibration requires its n_i below the selected floor. Thus its finite maximum over grades/adjacent stages is paid before lengths. Matched, with no circular choice of a floor from a later length. |
+| (c) Marked delay | Common scale selection puts the marked entrance threshold in the final delay after lengths/protection; `eq:public-native-allstage` and the all-stage entry payment keep m=0. | Marked calibration's profile cost, nonnegative credits and height-jump estimates hold above that threshold for both allowed adjacent stages. Its end-of-section index comparison uses J(N) for the preceding block and J(N+1) for the paid entry; these are not silently equated. Matched. |
+| Fee | Final d_j contains k_j from common observable purchases. The payment is k_{J(m+1)}≤hatβ_m. | That chapter takes a finite sum of nonnegative thresholds over grades/profile indices ≤j. Monotonicity J(m)≤J(m+1) includes each d≤J(m) and the current profile. This yields the terminal fee uniformly in the period. Matched numerical fee, not a reserved-address or attachment proof. |
+| (d) Reference | `sec:ope-history-service` retains t_d with d+3≤J(t_d), using J→∞; public binding retains the selected references. | `prop:ex-original-history-attachment` uses the same t_R, with transfer witnesses only when t_R(d)≤N and default transfers otherwise. Matched; monotonicity gives eligibility at all later reference levels. |
+| Objects | Public binding retains R (full run), T (campaign), W (transition/finite-volume witnesses), fixed penalty/kernel/profile/lengths/horizon and bills. | Original-history attachment identifies C_R=(trail(Y_R),t_R,S_R) with fixed holonomy, frames and local-section map. Its continuation receives exactly these objects; no new history, sections or reconstruction by arbitrary reselection. Matched. |
+
+These statements supersede the older C12 “not found” observations about C16's floor/delay wording only at this frozen statement level. They do not edit historical reviews or certify all local suppliers. In particular numerical large-scale choices cannot create the attachment or served-history inputs.
+
+## Conditional reverse edge and V1
+
+The C12 proposition assumes a funded continuation and applies it to the literal stored configuration, nesting receipt, reference inequalities, transitions, regularity and finite-volume transfer witnesses. Items 1–3 and finite-volume identities are simultaneous over cutoffs/periods in their stated domains. The terminal marked estimate is instead eventual for each fixed grade/section, uniformly in period; its threshold may depend on that grade/section. These quantifiers must remain distinct.
+
+**V1 — optional premise-visibility clarification, not a mathematical mismatch.** At C16 `public-run-binding.tex`, paragraph beginning “The funded continuation is now evaluated”, the consumer cites `prop:ex-original-history-attachment` broadly and then speaks of simultaneous canonical applications. It does not explicitly carry the added C12 proposition's terminal premises (target lines 50–57 and 138–165): reserved addresses and fee, local forced-family attachment, the paid selected-history record, and the served-representation input on this same C_R. The C16 ledger's reverse-edge row likewise says only “Existing conditional producer read; analytic funded estimates ... pending.” This paragraph invokes family identity and trace/coverage, not explicitly the terminal marked estimate. The opening caveat and producer citation preserve conditionality. Therefore absence of this reminder does not establish a stronger mathematical claim or an endpoint mismatch. A future use of the terminal marked conclusion must carry these premises; spelling this out here would improve visibility.
+
+Suggested bounded C16 sentence: “The terminal marked conclusion is conditional on the reserved addresses and fee, the local forced-family attachment, and the paid selected-history and served-representation inputs of Proposition [original-history attachment], all on this same C_R; the selection and centered service do not supply these additional inputs.” The reverse-edge ledger could likewise name these residual inputs in a future authorized update. No manuscript or ledger is changed by this report.
+
+Finite centered-service output is distinct from limiting full-mesh convergence and derivative continuity. Public binding itself says full-mesh convergence additionally uses the full-mesh estimates. PR116 N1's auxiliary-history/dependency precision remains open; neither family identity nor the finite service proves the extended-domain/limit hypotheses. Trace, coverage and OPE calls also retain their separate funded fields and W; they are not deduced solely from the centered-service tuple.
+
+## Limits
+
+Only these two endpoint contracts and immediate source calls were examined. No C11 schedule edge, global cycle audit, independent C16 approval, new analytic construction, whole C12 re-review, full selector proof or complete Lean dependency audit is claimed. PR232's lower-marker-site clarification and invitation/Solaris premise reconciliation remain recorded findings, not repaired here. All attachment, paid/served joint-production and relevant analytic suppliers remain conditional.

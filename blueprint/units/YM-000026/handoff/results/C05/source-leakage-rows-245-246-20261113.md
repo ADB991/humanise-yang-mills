@@ -1,0 +1,20 @@
+# C05 source-leakage response: rows 245–246
+
+Issue #185; author session `TrishenGunaratnam-codex-c05-ope-20261113`, claim [comment 6859978556](https://github.com/hairer/humanise-yang-mills/issues/185#issuecomment-6859978556), until 2026-11-14 12:00 UTC. Basis `2017d6f3ee648beb054322e9b994eb3c757cbcf6`; Lean source revision `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Source citations below are text inspections, not Lean elaboration.
+
+| Row | Disposition and retained content | Source correspondence and boundary |
+| --- | --- | --- |
+| 245 | B: `ope-grid.tex` now describes the finite-dimensional limit of cutoff matches on a nontrivial refinement as a conditional construction, with discrepancy and quota retained on that same refinement. `prop:ope-match-assembly` and `ope-cutoff.tex`, “Keeping the match in the continuum limit,” state its conditions and same-label use. This does not prove the outstanding analytic inputs. | `YM.OPE.Survival` and `YM.OPE.price_plot`, `Lean/YM/OPE/Eye/Remit.lean:42–47`, require a nontrivial filter finer than the fused order, convergence of the cutoff labels, `Remains` and an eventual quota bound together; `YM.OPE.for_plot`, `Lean/YM/OPE/Eye/Extract.lean:25–32`, chooses a label family carrying that survival predicate under the specified height and geometry hypotheses. Compactness alone does not yield the discrepancy or quota without those conditions. |
+| 246 | B: `ope-estimates.tex` retains the fixed positive exterior-clearance hypothesis and uniformity over moving configurations and phases in `input:ope-raw-estimates`. The observation that the formal development also treats multiple logarithmic scales is recorded here rather than asserted as an additional result of that assumption. | `YM.OPE.common_rate` and `YM.OPE.early_rate`, `Lean/YM/OPE/Schemes/Corridor.lean:37,68`, give raw prescription coefficient and truncation-discrepancy rates for a positive cluster scale and more general power-separated exterior data. Equivalently, the translated raw-prescription endpoints `YM.OPE.available_cost` and `YM.OPE.arrangement_cost`, `Lean/YM/OPE/Exchange/Arrangement.lean:65–72`, use cluster rate `s>0` and exterior separation rates `u,v` with `0≤u≤v` and `u<s`. `YM.OPE.room_regime` and `YM.OPE.free_clear`, `Lean/YM/OPE/Exchange/Regime.lean:38–48`, supply the fixed-positive-clearance specialization `s=1`, `u=v=0`. These statements require their stated services, coherent prescription, common construction, geometry and hierarchy hypotheses; they do not establish the manuscript's raw input unconditionally. The `YM.OPE.Orbits` results in `Separated.lean` concern the downstream homogeneous reader and are not direct raw-input anchors. |
+
+The mixed covariance/reality and O(4) producer, matching and other analytic supplier obligations remain as in the C05 ledger; no new input is asserted closed. This edits mathematical sentences, so #185 requires independent review by a different GitHub account, in addition to the requested exact-version agent check. No reviewer records or canonical evidence are changed.
+
+## Validation
+
+- `python3 scripts/check_blueprint.py`: passed (4 units); the checker does not verify mathematics or Lean.
+- `git diff --check`: passed.
+- From `manuscript/`, `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/private/tmp/c05-ope-rows-build existence.tex`: passed, 978 pages. The final log had no matching undefined-reference, undefined-citation or duplicate-label warnings. One 1.83pt overfull box occurs in the unchanged `public-run-binding.tex` at lines 39–47; it is outside this scope.
+- `pdftoppm` rendered pages 774–779; they were visually inspected, including both changed passages on pages 776 and 779.
+- Source checked textually at the declarations named above; `Lean/` tree remains `328ad19b404d2db2a578319ea3e4eba4b27e34ef`. No Lean elaboration or axiom replay, independent review, or checker test-suite run was performed. The checker itself was not changed.
+
+Checker Alpha identified the raw-versus-homogeneous anchor distinction in the first frozen candidate; this record-only correction precedes renewed exact-version review.

@@ -1,4 +1,4 @@
-\section{A fixed marked section and its calibration budgets}
+\subsection{A fixed marked section and its calibration budgets}
 \label{sec:ex-marked-portfolio-calibration}
 
 The marked finite-volume route needs a single local section at each label
@@ -7,7 +7,7 @@ budget is known. It must also price every later derivative request at that
 degree. We construct that section first, then show how the schedule selects
 its budgets and how the approximate field change is made invertible.
 
-\subsection{One section for every later derivative budget}
+\subsubsection{One section for every later derivative budget}
 
 Let $H$ be the fixed holomorphic gauge action. At a fixed degree $d$, let
 $E_d$ be a finite-dimensional complex label space with a real homogeneous
@@ -29,7 +29,7 @@ $A_d1=1$, $B_d1=1$, gauge invariance of $B_dp$,
 $\operatorname{Forms}(H,d,B_dp,A_dp)$, and $B_dp\in\operatorname{Micro}$
 whenever $p$ belongs to the equation ideal, together with the campaign's
 exact-action identity. They also have
-the following filtration clauses. The source stamp of a grade is
+the following filtration clauses. The stamp of a grade is
 \[
                          \operatorname{st}(r,s)=(s,r),
 \]
@@ -51,7 +51,7 @@ $B_d$ would not suffice to pass it through $A_d^{-1}$. A campaign without
 these two equivariances is turned into such an imprint by the finite group
 and conjugation averages recalled next; the campaign producer itself is a
 separate input to this local theorem. It is constructed in
-Section~\ref{sec:marked-campaign-producer}.
+Subsection~\ref{sec:marked-campaign-producer}.
 
 For clarity, the symmetrization just mentioned is finite-dimensional. If
 $\Phi_s$ is the joint signed action on labels and fields, and $\mathfrak c$
@@ -63,7 +63,7 @@ is the joint real-conjugation involution, put
 \]
 where $\mathcal S$ is the signed-coordinate group. Each summand is still a
 campaign: the grade is preserved, the correction remains strictly above
-its source stamp, the field remains in $\mathcal P_{\geq s}$, and the unit
+its stamp, the field remains in $\mathcal P_{\geq s}$, and the unit
 and exact action identities are preserved. A finite average preserves
 these linear conditions. Reindexing the first sum by left multiplication
 shows that $F_0$ commutes with every signed action; the involution identity
@@ -91,7 +91,7 @@ and an invertible linear regrading $R_d:E_d\to E_d$ such that
 \item each basis entry has a finite pose supported in $S_d$ whose degree
   is at least $s_j$;
 \item for every derivative order $k$ and power $P$, there is a finite
-  number $C_{d,k,P}$ such that each basis entry has source rate
+  number $C_{d,k,P}$ such that each basis entry has section rate
   $C_{d,k,P}$ at factor degree $s_j$. This is a bound on the healthy part
   of the translated stencil, for every budget point of order $k$ and
   power $P$, torus, anchor, and tested direction list allowed by that
@@ -143,7 +143,7 @@ and by the exact evaluation identity the field attached to $R_dp$ is
 $B_dp$, which is microscopic for $p$ in the equation ideal.
 
 It remains to show the derivative budgets for all later queries. The
-source rate statement is localized: for a stencil $S$, order $k$, power
+section rate statement is localized: for a stencil $S$, order $k$, power
 $P$, side $n$, and anchor $o$, it controls derivatives after expansion
 at $o$ on $\mathrm{Healthy}(\theta,S+o)$, for direction lists obeying
 the budget point's direction bound at $o$. The extra derivative-rate
@@ -153,7 +153,7 @@ Each color-coordinate curvature slot has rate degree one: on
 configurations healthy on the translated stencil, the slot and each of
 its tested derivatives through order $k$ have norm at most a constant
 times $\theta$, uniformly in the torus and the anchor. This is the slot
-estimate proved in Section~\ref{sec:local-sections} (the value is bounded
+estimate proved in Subsection~\ref{sec:local-sections} (the value is bounded
 by health and the isometry of parallel transport, and every derivative of
 positive order $\ell$ by a constant times $\theta^\ell\leq\theta$ because
 each tested direction on a link of the stencil has size at most a
@@ -179,11 +179,11 @@ one available amount $a_{di}\geq0$ for this request. It remains a valid
 credit after replacing a negative amount by zero, since all budgets are
 nonnegative. The section is not rebuilt when these requests change.
 
-\subsection{Buying all stage and degree conditions}
+\subsubsection{Buying all stage and degree conditions}
 
 For a stage $i$, let $c_i$ be its column count, let $q_d$ be the stencil
 size of the chosen section together with the fixed local section, and let
-$\alpha_i$ be its support exponent. The source sphere price is
+$\alpha_i$ be its support exponent. The sphere price is
 \[
  \mathsf S_i(q_d,a)=2+e^{81\alpha_i}(a+c_i+2q_d).
 \]
@@ -211,7 +211,7 @@ for each $j$ choose $v_j$ so that
        (1+2c_j)\,\mathsf D(L)\leq\overline{\mathsf P}(L)
                   \qquad(L\geq v_j),
 \]
-where the source door toll and purse are
+where the door toll and purse are
 $\mathsf D(L)=\mathrm{rate}(L)=L^{-2/5}$ and
 $\overline{\mathsf P}(L)=\mathrm{barunit}(L)=L^{-3/8}$. Their ratio is
 $L^{-1/40}$, so the inequality holds once $L^{1/40}\geq1+2c_j$. For a fixed stage $i$, take
@@ -276,14 +276,15 @@ separately: with the schedule identity
  \widehat\beta_{i+1}=\beta_F(\widehat\beta_i,L_i)
        =\widehat\beta_i+c_G\log L_i,
 \]
-where $c_G$ is the slope constant of the gauge group, it reads
+where $c_G=s_G$ is the slope constant \eqref{eq:shoot-slope} of the
+gauge group, it reads
 \begin{equation}\label{eq:ex-marked-height-jump}
  \widehat\beta_{i+1}^{-1}L_i^{d+1}\,\mathsf f_d(\widehat\beta_i)
       \leq\mathsf f_d(\widehat\beta_{i+1})\qquad(d\leq J(i)).
 \end{equation}
 This is the height recurrence
 $\phi_iL_i^{d+1}\zeta_{d,i}\leq\zeta_{d,i+1}$ consumed in
-Section~\ref{sec:actual-marked-portfolio-calibration}, for the public
+Subsection~\ref{sec:actual-marked-portfolio-calibration}, for the public
 choices $\phi_i=\widehat\beta_{i+1}^{-1}$ and
 $\zeta_{d,i}=\mathsf f_d(\widehat\beta_i)$.
 Thus, at every sufficiently late stage for this fixed degree,
@@ -293,7 +294,7 @@ marked budget package used by the selected field-calibration call. It uses
 the same portfolio section throughout: the delay changes available budget,
 not the section or its stencil.
 
-\subsection{A small coordinate error gives an invertible calibration}
+\subsubsection{A small coordinate error gives an invertible calibration}
 
 The section is now fixed. At a given cutoff, the field calculation
 produces, for each coefficient basis vector $e_j$, a proposed correction
@@ -312,7 +313,7 @@ coordinate basis to the section's coefficient coordinates.
 Let $E$ be the coefficient space of the chosen frame, with its $\ell^1$
 norm. Let $\mathcal O\geq1$ bound both the sum of the chip coefficients
 and the $\ell^1$ norm of each symmetry action on the frame. For columns
-$u_j$, define the source repainting map by
+$u_j$, define the repainting map by
 \[
  D x=\sum_{(g,j)}\chi_{g,j}(x)\,\rho_g u_j,
  \qquad
@@ -341,7 +342,7 @@ surjective and invertible. The same lower bound with $x=D^{-1}y$ gives
 $\|D^{-1}y\|_1\leq2\|y\|_1$.
 \end{proof}
 
-\subsection{Application to the selected field calibration}
+\subsubsection{Application to the selected field calibration}
 
 We now state how the fixed section is compared, at each cutoff, with the
 local section of a selected family. The statement assembles two results
@@ -382,9 +383,12 @@ $\theta_N^{-s_j}$. The inputs are the following.
   discharge of those conditions on the selected public run is an open
   input.
 \item \emph{The paid selected-history record}
-  of Section~\ref{sec:actual-marked-portfolio-calibration}, with its
+  of Subsection~\ref{sec:actual-marked-portfolio-calibration}, with its
   allowances $u_N>0$ and heights $\zeta_{d,N}\geq0$, and a terminal Keeper
-  at every $(N,p)$ (Section~\ref{sec:terminal-marked-construction}).
+  at every $(N,p)$ (Subsection~\ref{sec:terminal-marked-construction}).
+  Assume also that the local forced-family attachment input of
+  Proposition~\ref{prop:ex-marked-invitation} holds for its correction at
+  every sufficiently large $N$ and every period $p$.
 \item \emph{Slow growth of the reserves.} Call a real sequence $x_N$
   \emph{slow} if for every $\varepsilon>0$ one has
   $|x_N|\leq e^{\varepsilon\sigma_N}$ for all sufficiently large $N$
@@ -429,7 +433,7 @@ period $p$ there are columns $u_j=u_j(N,p)\in F$, $j\in J_d$, such that:
   coordinate permutation, possibly composed with complex conjugation),
   the centered root test at depth $m$ for the finite-volume law at
   $(N,p)$, in the notation of
-  Section~\ref{sec:actual-marked-portfolio-calibration}, satisfies
+  Subsection~\ref{sec:actual-marked-portfolio-calibration}, satisfies
   \[
    \operatorname{rootTest}_{m;N,p}\Bigl(
       s\cdot\bigl(\mathcal O^{V}_{N,p}(e_j)
@@ -438,9 +442,9 @@ period $p$ there are columns $u_j=u_j(N,p)\in F$, $j\in J_d$, such that:
           e^{-\gamma\sigma_N},
   \]
   with the constant $\operatorname{cider}(d,m,k)$ and the exponent
-  $\gamma=1/8$ of Proposition~\ref{prop:actual-marked-figment}. This
-  assertion inherits the condition of that proposition: it depends on
-  the served-representation step which is not proved there.
+  $\gamma=1/8$ of Proposition~\ref{prop:actual-marked-figment}. Its
+  proof constructs the served representation for this residual, including
+  all marker modes, in paragraph~\ref{par:figment-served-residual}.
 \item The sequence $E_N$ is slow for every extraction order.
 \end{enumerate}
 The threshold in $N$ depends on $d$ but not on $p$.
@@ -455,10 +459,11 @@ sides tend to infinity uniformly in $p$. Finally the three local reserve
 conditions of Lemma~\ref{lem:ex-marked-sanded} and
 \eqref{eq:ex-marked-cover} hold for the stencil $X$ and the two constants
 $\mathsf C(V),\mathsf C(T)$; here simplicity of the gauge group is used,
-through $\widehat\beta_N\to\infty$.
+through $\widehat\beta_N\to\infty$ and the selected-budget radius
+formula in Subsection~\ref{sec:ex-marked-field-local}.
 
 Fix $p$ and $j$. These are exactly the inputs of
-Proposition~\ref{prop:ex-marked-invitation}, with the terminal Keeper,
+Proposition~\ref{prop:ex-marked-invitation}, with the terminal Keeper and local forced-family attachment,
 $u_N>0$ and $\zeta_{d,N}\geq0$ from the second input. It supplies a
 terminal coefficient $Z_j$ with leading coordinate $Z_j.x=e_j$, charge
 bound $Q_N=\mathsf S_N(q_d,b_N)$, budget $E_N$, and field
@@ -504,5 +509,5 @@ stated floor and delay conditions, the three eventual field-budget
 inputs. The local invitation and the same-history calibration
 used in Proposition~\ref{prop:ex-marked-solaris} remain separate
 substantive suppliers; they do not follow from existence of the section or
-from the inverse lemma. Their source declarations, actual selected caller,
-and remaining estimate boundary are listed in the evidence file.
+from the inverse lemma. Their application requires the common-data matching and the remaining
+estimate boundary stated above.

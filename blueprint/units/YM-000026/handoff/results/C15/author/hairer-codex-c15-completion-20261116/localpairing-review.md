@@ -1,0 +1,29 @@
+# Independent local-pairing review (in progress)
+
+Candidate reviewed initially: `/tmp/ym56-pairing-final-20261116/manuscript/existence/trace-local-pairing.tex`, author fingerprint `1c63c8b1b499c42bbff027ed30481e621217d3e28f65f025b4a4afaa696b662b`.
+
+Pending corrections; no final PASS yet.
+
+1. Healthy-action factorization: the initial candidate expands all of F_q into support activities, making the empty subset term J(U')-J(U), but later assigns divY+D_YF to that term. The source `Wicket/Sum.calls_sum` instead separates the core F=ochre=-beta mainP-loopP from the residual activity product; the core exponential remains outside the product. Author was asked to make this factorization explicit. `Weir/Symph.Symphony` then confirms the final constant and sign: callX/peace=composedZ-beta boom+lushY(1).
+
+2. Actual geometric supplier: the final paragraph invokes inherited finite-height bounds. Source `Perfect/Pallas.treasury` genuinely supplies this from actual Bolt and Vigil, via `Perfect/Flo.through` iterating `pay_step` from `stanch/dawn/ivy`, then `cash_viz`. Need concrete same-history manuscript binding or proof of that input; the tested chart's half-accuracy is unrelated. Choosing a fixed approximation height before the N,p tail is otherwise sound. Uniformity over sites is justified by the violating-site selection argument in cash_ear/cash_tip.
+
+Checks already passed: moving-depth first-crossing arithmetic, frame-index Tau, exponent bills, paired lens bounty recurrence and square-weight census, and the finite-stage expense calculation. Independently checked `Terrace/BackWind.rateD`, `Terrace/Heli.trod`, and `Terrace/Vapid.priest`, including 1000000/-1900000 and the division by bounty². Localized-current arbitrary fixed derivative bounds have a source: `Pills/Joy.allp` uses `Turret.entire`; `Zn/Largish.weather` supplies Climate at arbitrary fixed order. This does not follow from bounds on four jets of an arbitrary smooth field alone; it uses the specific local polynomial extension. Served augmentation and root discrepancy correspond to `MergeProof/South/Block.quakes`, retaining the whole coupled polynomial and its integrability.
+
+This is an interim review, not approval of the whole production chain.
+
+## Final revised review
+
+PASS for candidate SHA256 `890bf5d94ebdadbcad05476d90250ed5d75d92c2c80e6a9df505134694aa8844`, superseding the interim pending verdict above.
+
+The healthy-action correction now explicitly distinguishes the whole-action price expansion from the healthy core/residual factorization. It keeps exp(Delta F), F=-beta M-L, outside the residual product; the empty residual term is the finite difference of the core. The resulting divY+D_YF+remainder and the corrected-primary sum give exactly Z-beta B+divY(1), as in Wicket.calls_sum and Weir.Symphony. The constant and sign are correct.
+
+The geometric supplier now defines the actual top seed: negative Maxwell plaquette tensor, link-local curvature current, zero auxiliary/twist and error equal to divergence minus actual action variation. Independently checked these against Perfect/Plants, Honey.born/mist and Blunt.dawn. Finite plaquette differentiation gives bounded fixed jets, and Blunt.verdant/varsity verify the no-wrap discrete-curl test argument. The manuscript now specifies the actual geometric descent (engineering factors, sheaves and trace corrections) and same selected-course binding. Its common-calendar block and radius requirements supply the actual Eon-style entrance conditions before realization. The displayed full non-atomic ordered-partition majorant, one-third reserves and error halving agree with the reviewed source chain Flo.through/Pallas.treasury and the source helper's Native/Happy/Amaze audit. Fixing approximation height before passing to the terminal-depth/period tail and selecting a violating site for uniformity are valid. Translation/signed averaging preserves the equations and convex bounds.
+
+The arbitrary fixed derivative localization is correctly tied to this specific polynomial local extension, not an inference about arbitrary smooth fields from four jets. Joy.allp and Largish.weather supply exactly that distinction. Applying the same scalar localizer to the stress, auxiliary and first-difference family is compatible with the finite linear identities. Separate small residual K and corrected-profile prices still use the actual action derivative estimates and coefficient-tail construction audited by the weighted-estimate reviewer; this paragraph alone does not replace those estimates.
+
+All 15 directly checked source files (Pallas, Flo, Honey, Blunt, Plants, Zippy, Joy, Largish, Lotus, Sum, Symph, BackWind, Heli, Vapid and South/Block) match SOURCES.sha256. The candidate diff passes whitespace checks. This is a mathematical/textual-source audit; no Lean elaboration was performed. Approval retains the existing selected-history stationary/path derivative and finite-menu analytic prerequisites; it does not assert those foundational producers are reproved in this paragraph.
+
+Final source-fidelity follow-up: PASS at SHA256 `72b1e8e81033d02fa8f1b7287f84b894d777db697706d8e09a823222f119c0d3`. The Sight construction now averages only translations on the same torus, matching Zippy.gull/singed/voted/voted_tip; the separate signed axial average remains in the later Crown step. No other change to the reviewed construction. This is the final candidate fingerprint, superseding 890bf5.
+
+Ordering follow-up: PASS at final candidate SHA256 `977ef0c9da5c2fcb077858e0c2686cae9300bdbac71f7c3fa9eaf951618a2b08`. Checked the three-sentence change: select early H before block L, choose L using only H, then take late D and radius b. This respects the actual supplier order and avoids a circular block choice. Other reviewed content is unchanged.

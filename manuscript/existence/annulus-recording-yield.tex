@@ -1,4 +1,4 @@
-\section{Finite-volume recording and uniform drift}
+\subsection{Finite-volume recording and uniform drift}
 \label{sec:ex-annulus-recording}
 
 The continuum pole calculation controls a coefficient of the analytically
@@ -22,7 +22,7 @@ when every mixed two-leg coefficient of the finite test $\mathcal P$
 differs from this finite-volume realization for $\mathcal Y$ by at most
 $\ell^4\delta$.
 
-\subsection{A torus mean differs from the zero mode by an exponential tail}
+\subsubsection{A torus mean differs from the zero mode by an exponential tail}
 
 Let $\ell\geq1$ be an integer and let $f$ be a periodic function of four
 real momenta, holomorphic and bounded by $A$ on the complex strip of width
@@ -47,11 +47,11 @@ nonzero Fourier coefficients whose indices lie in $\ell\mathbb Z^4$.
 Every such index satisfies $|n|_1\geq\ell$. Cauchy's integral formula,
 applied after shifting each coordinate contour by $\pm i(\sigma/2)$,
 and the geometric-series bound in four coordinates give
-\[
+\begin{equation}
  \sum_{n\in\mathbb Z^4}e^{(\sigma/4)|n|_1}|c_n|
  \leq A\left(2\frac{1+\sigma/4}{\sigma/4}\right)^4.
- \tag{RY1}
-\]
+ \label{eq:annulus-recording-yield-display-RY1}
+\end{equation}
 For completeness, the one-coordinate sum used here is bounded by
 \[
  \sum_{k\in\mathbb Z}e^{-h|k|}
@@ -60,14 +60,14 @@ For completeness, the one-coordinate sum used here is bounded by
 \]
 the last inequality follows from $e^h\geq1+h$. The contour shift gives
 the factor $e^{-(\sigma/2)|n|_1}$ for an individual coefficient, leaving
-the weight $e^{(\sigma/4)|n|_1}$ in (RY1). Therefore
-\[
+the weight $e^{(\sigma/4)|n|_1}$ in \eqref{eq:annulus-recording-yield-display-RY1}. Therefore
+\begin{equation}
  |\langle f\rangle_\ell-c_0|
  \leq \mathfrak r(\sigma,A)e^{-\sigma\ell/4},\qquad
  \mathfrak r(\sigma,A)
    =A\left(2\frac{1+\sigma/4}{\sigma/4}\right)^4.
- \tag{RY2}
-\]
+ \label{eq:annulus-recording-yield-display-RY2}
+\end{equation}
 This estimate is for the actual full grid at each $\ell$; no subsequence
 selection is involved.
 
@@ -79,10 +79,10 @@ be a real finite-volume test and
 assume its exact local coefficient identity: for every pair of colored
 sites $q,q'$, the mixed second coefficient of $\mathcal P_\ell$ is zero
 when $q+q'\ne0$, and otherwise is
-\[
+\begin{equation}
  \ell^4\,\langle F_{ij}(\operatorname{mon}(q'),\,\cdot\,)\rangle_\ell.
- \tag{RY3}
-\]
+ \label{eq:annulus-recording-yield-display-RY3}
+\end{equation}
 Define the internal zero mode and limiting picture by
 \[
  \widehat F_{ij,0}(p)=\int_{\mathbb T^4}F_{ij}(p,q)\,dq,
@@ -100,20 +100,20 @@ its mixed coefficient at external momenta $p,p'$ is zero unless
 $p+p'=0$, and in the conserving case is
 $2\mathcal Y_{ij}(p')=\widehat F_{ij,0}(p')$.
 $\mathcal Y\in\mathcal H_{\sigma/2}(A)$, and for every side $\ell$,
-\[
+\begin{equation}
  \operatorname{Err}_\ell(\mathcal Y,\mathcal P_\ell;
      \mathfrak r(\sigma,A)e^{-\sigma\ell/4}).
- \tag{RY4}
-\]
+ \label{eq:annulus-recording-yield-display-RY4}
+\end{equation}
 In the normalized convention $C_2=D^2/2!$ used for coefficient pictures
-elsewhere (see \eqref{eq:output-record}), (RY4) says that for unit
+elsewhere (see \eqref{eq:output-record}), \eqref{eq:annulus-recording-yield-display-RY4} says that for unit
 Fourier waves $v,w$ of momenta $p,p'$ and marks $i,j$
-\[
+\begin{equation}
  \Bigl|C_2(\mathcal P_\ell)[v,w]
    -\mathbf 1_{p+p'=0}\,\ell^4\,\mathcal Y_{ij}(p')\Bigr|
   \leq\tfrac12\,\ell^4\,\mathfrak r(\sigma,A)e^{-\sigma\ell/4};
- \tag{RY4$'$}
-\]
+ \label{eq:annulus-recording-yield-display-RY4-prime}
+\end{equation}
 in particular $\mathcal Y$ records $\mathcal P_\ell$ in the sense of
 \eqref{eq:output-record} with error
 $\ell^4\mathfrak r(\sigma,A)e^{-\sigma\ell/4}$.
@@ -124,7 +124,7 @@ in $p$ on the width-$\sigma$ strip: on each compact substrip its integrand
 and derivatives are uniformly bounded, so differentiation under the
 integral is valid. Its norm is at most $A$, hence the half-scaled picture
 is bounded by $A$ on the width-$\sigma/2$ strip. For each fixed real $p$,
-apply (RY2) to the one-variable function $q\mapsto F_{ij}(p,q)$; its
+apply \eqref{eq:annulus-recording-yield-display-RY2} to the one-variable function $q\mapsto F_{ij}(p,q)$; its
 Fourier zero mode is exactly $\widehat F_{ij,0}(p)$. This gives
 \[
  |\langle F_{ij}(p,\cdot)\rangle_\ell
@@ -135,9 +135,9 @@ on the real external momentum torus. If $q+q'\ne0$, both mixed
 coefficients in the definition of $\operatorname{Err}_\ell$ vanish by
 momentum conservation. If $q+q'=0$, the second Taylor coefficient of
 $\mathcal Y=\frac12\widehat F_{ij,0}$ has the factor $2!=2$, so it equals
-$\widehat F_{ij,0}$; subtracting (RY3) and multiplying the mean estimate
-by the number $\ell^4$ of sites gives (RY4). Dividing by $2!$ gives
-(RY4$'$).
+$\widehat F_{ij,0}$; subtracting \eqref{eq:annulus-recording-yield-display-RY3} and multiplying the mean estimate
+by the number $\ell^4$ of sites gives \eqref{eq:annulus-recording-yield-display-RY4}. Dividing by $2!$ gives
+\eqref{eq:annulus-recording-yield-display-RY4-prime}.
 \end{proof}
 
 For a finite side $\ell$, set
@@ -145,37 +145,37 @@ For a finite side $\ell$, set
  \mathcal Y_{\ell,ij}(p)=\tfrac12\,\ell^{-4}
         \sum_{q\in(\mathbb Z/\ell\mathbb Z)^4}F_{ij}(p,2\pi q/\ell)
 \]
-at each external grid momentum. By (RY3), its second
+at each external grid momentum. By \eqref{eq:annulus-recording-yield-display-RY3}, its second
 finite-volume coefficient is $2\ell^4\mathcal Y_{\ell,ij}(p)$.
 The limiting picture also has the exchange and reality symmetries
-\[
+\begin{equation}
  \mathcal Y_{ij}(p)=\mathcal Y_{ji}(-p),\qquad
  \overline{\mathcal Y_{ij}(p)}=\mathcal Y_{ij}(-p).
-\tag{RY4a}
-\]
+\label{eq:annulus-recording-yield-display-RY4a}
+\end{equation}
 At each finite side, the logarithmic determinant is a real scalar
 function of real field coordinates. Equality of its mixed derivatives
 gives exchange of the two external legs, while reality of its Hessian
 gives conjugation under Fourier inversion. Thus the finite-volume
 normalized pictures have both relations at every allowed grid momentum.
-Estimate (RY2) says $\mathcal Y_{\ell,ij}(p)\to\mathcal Y_{ij}(p)$
+Estimate \eqref{eq:annulus-recording-yield-display-RY2} says $\mathcal Y_{\ell,ij}(p)\to\mathcal Y_{ij}(p)$
 uniformly over the external grid points as $\ell\to\infty$. Thus their
 difference from $\mathcal Y$ tends uniformly to zero on
 these grids as the side tends to infinity. The union of the full side
 grids is dense in the momentum torus, and $\mathcal Y$ is continuous by
 its analytic strip bound. Passing along cofinal sides and then using
-density proves (RY4a) everywhere. This supplies the Hessian symmetry and
+density proves \eqref{eq:annulus-recording-yield-display-RY4a} everywhere. This supplies the Hessian symmetry and
 reality of the half-scaled zero-mode picture; it does not follow from
 factorial normalization alone.
 
 The factor $1/2$ in $\mathcal Y$ is essential: the finite-volume mixed
 second derivative of $\frac12\widehat F_{ij,0}$ contributes
-$2!\,\frac12\widehat F_{ij,0}=\widehat F_{ij,0}$. This is why (RY3)
+$2!\,\frac12\widehat F_{ij,0}=\widehat F_{ij,0}$. This is why \eqref{eq:annulus-recording-yield-display-RY3}
 compares the normalized grid mean to the continuum coefficient and why the
 error is the per-site Fourier error multiplied by the site count exactly
 once.
 
-\subsection{Determinant identity and positive-matrix domain}
+\subsubsection{Determinant identity and positive-matrix domain}
 
 In the application, the pole test is
 \[
@@ -189,31 +189,31 @@ and those of $V_\ell$ with the reference response. The floor and
 positive-regulator hypotheses make both matrices positive definite at
 $x=0$; by continuity their real logarithmic determinants are smooth
 nearby. Ordinary matrix differentiation gives
-\[
+\begin{equation}
  \begin{aligned}
  D\log\det P[H]&=\operatorname{tr}(P^{-1}DP[H]),\\
  D^2\log\det P[H,K]
  &=\operatorname{tr}\!\left(P^{-1}D^2P[H,K]
        -P^{-1}DP[K]P^{-1}DP[H]\right).
  \end{aligned}
- \tag{RY8}
-\]
+ \label{eq:annulus-recording-yield-display-RY8}
+\end{equation}
 and the same formulas for $V$. Write $A(r)$ for either matrix family,
 $B_i(p,r)$ for its first variation (from background momentum $r$ to
 $r+p$), and $C_{ij}(p,q,r)$ for its mixed second variation (from $r$ to
 $r+p+q$). The shifted fiber block of the mixed derivative of the
 logarithmic determinant at the ordered pair of legs is the trace of
-\[
+\begin{equation}
  A(r+p+q)^{-1}C_{ij}(p,q,r)
  -A(r+p+q)^{-1}B_i(p,r+q)A(r+q)^{-1}B_j(q,r).
- \tag{RY8a}
-\]
+ \label{eq:annulus-recording-yield-display-RY8a}
+\end{equation}
 This follows by differentiating
 $D\log\det A[H]=\operatorname{tr}(A^{-1}DA[H])$ and using
 \[D(A^{-1})[K]=-A^{-1}DA[K]A^{-1}.\] There is one ordered product for
 the specified ordered pair; exchanging the legs gives the corresponding
-other entry, not an extra copy in (RY8a). Sum this expression over internal
-momentum and apply the weights in the finite ticket. Formula (RY8a) is the
+other entry, not an extra copy in \eqref{eq:annulus-recording-yield-display-RY8a}. Sum this expression over internal
+momentum and apply the weights in the finite ticket. Formula \eqref{eq:annulus-recording-yield-display-RY8a} is the
 shifted fiber block of the Hessian. Translation invariance makes the full
 trace entry zero unless the external momenta conserve; in the conserving
 case summing the fiber blocks gives the normalized torus mean multiplied by
@@ -224,7 +224,7 @@ The Fourier estimate is entrywise. Any closed-cone passage for finite
 reflection matrices and the smooth-word approximation to point
 configurations belong to the separate reflection argument.
 
-\subsection{Order of choices in the all-period output}
+\subsubsection{Order of choices in the all-period output}
 
 Here is the exact downstream implication, with its inputs exposed. Fix
 $\sigma,\epsilon,\tau>0$ and $C,Z,A\geq0$. Assume a baseline analytic
@@ -253,12 +253,12 @@ common-layer content needed for the full-grid limit; positivity at the
 origin alone does not imply it. Assume also the uniform two-wave output: for every
 combined family below, every color $c$, and every regulator $0<y\leq1$,
 the same constants $a,b\geq0$ give
-\[
+\begin{equation}
  |\kappa_{y,c}(x)|\leq a(|x|+y)^{-4},\qquad
  |\kappa_{y,c}(x)-\Pi_{G,c}(x)|
       \leq b|x|^{-3}+by^2|x|^{-6}\quad(y\leq|x|\leq1)
- \tag{RY9}
-\]
+ \label{eq:annulus-recording-yield-display-RY9}
+\end{equation}
 on the centered momentum box. This states the uniform local estimate
 needed from the next producer; it is not deduced from the finite-volume
 recording argument.
@@ -269,38 +269,38 @@ Under these hypotheses, for every admissible path datum, every odd integer
 $L\geq1$, and every side sequence $\ell_j\to\infty$ there are a picture
 $\mathcal Y_L$, constants
 $z_L>0$, $K_L\geq0$, and numbers $e_{L,j}\geq0$ such that
-\[
+\begin{equation}
  \mathcal Y_L\in\mathcal H_{z_L/2}(K_L),\qquad
  e_{L,j}=\mathfrak r(z_L,K_L)e^{-z_L\ell_j/4}\longrightarrow0,
  \qquad
  \operatorname{Err}_{\ell_j}(\mathcal Y_L,\mathcal P_{\ell_j};e_{L,j}),
- \tag{RY10}
-\]
+ \label{eq:annulus-recording-yield-display-RY10}
+\end{equation}
 and, for every color $c$,
-\[
+\begin{equation}
  \left|\alpha_c(\mathcal Y_L)+\lambda_G\log L\right|
  \leq D_0,
  \quad D_0=c_{\mathrm{wt}}\left[
      a\left(\frac{\pi^2}{2}+|E_4|\right)+3\pi^2 b\right].
- \tag{RY11}
-\]
+ \label{eq:annulus-recording-yield-display-RY11}
+\end{equation}
 The constant $D_0$ is independent of $L$ and of the side sequence.
 \end{theorem}
 \begin{proof}
 Choose the baseline before the response family. Put $w=\min(k,v)>0$;
 restrict both fee bounds to $w$ and add the families, obtaining fee
 $(w,M+E)$. Now fix $L$ and set
-\[
+\begin{equation}
  y=L^{-1},\qquad
  s=\min\{\sigma,w,y/128\}>0.
- \tag{RY5}
-\]
+ \label{eq:annulus-recording-yield-display-RY5}
+\end{equation}
 Then $0<y\leq1$, and $s\leq y/128$ is the phase condition in the local
 determinant-floor estimate. At every $\ell_j$, the response ticket matches
 the target minus the Wilson term, while the baseline ticket matches the
 Wilson term. Adding their zero-, one-, and two-leg Taylor identities gives
-the target ticket. The finite determinant formula (RY8) turns this into
-the exact local coefficient identity (RY3), and the floor and positive
+the target ticket. The finite determinant formula \eqref{eq:annulus-recording-yield-display-RY8} turns this into
+the exact local coefficient identity \eqref{eq:annulus-recording-yield-display-RY3}, and the floor and positive
 regulator bounds ensure both determinants are nonzero at zero. The
 floors at every torus side and the metric assumptions identify the
 regulated interacting table
@@ -311,45 +311,47 @@ finite-layer and common-strip receipt in the hypotheses supplies
 $z_L>0$, $K_L\geq0$ and the common analytic two-momentum kernel in
 $\mathcal H_{z_L}(K_L)$. Applying
 Lemma~\ref{lem:ex-pole-recording} yields
-\[
+\begin{equation}
  e_{L,j}=\mathfrak r(z_L,K_L)e^{-z_L\ell_j/4},\qquad
  \operatorname{Err}_{\ell_j}(\mathcal Y_L,\mathcal P_{\ell_j};e_{L,j}).
- \tag{RY12}
-\]
+ \label{eq:annulus-recording-yield-display-RY12}
+\end{equation}
 The positive $z_L$ and $\ell_j\to\infty$ imply $e_{L,j}\to0$ for this
 fixed $L$. No uniformity of $z_L,K_L$ in $L$ is required or asserted.
 
-The same response satisfies (RY9), uniformly in color $c$, at regulator
-$y$. The coefficient-integral identity (AT1) of
-Section~\ref{sec:ex-annulus-two-wave} identifies
+The same response satisfies \eqref{eq:annulus-recording-yield-display-RY9}, uniformly in color $c$, at regulator
+$y$. The coefficient-integral identity \eqref{eq:annulus-two-wave-estimates-display-AT1} of
+Subsection~\ref{sec:ex-annulus-two-wave} identifies
 $\alpha_c(\mathcal Y_L)$ with the normalized integral over $E_4$ of
 $g=\operatorname{Re}\kappa_{y,c}$, which is bounded and continuous, and
-(AT4) gives the pole integral
+\eqref{eq:annulus-two-wave-estimates-display-AT4} gives the pole integral
 $c_{\rm wt}\int_{y<|x|\leq1}\Pi_G=-\lambda_G\log y^{-1}$. These are the
 hypotheses of Lemma~\ref{lem:path-radial-log}, with $A_1=a$, $A_2=b$
-and $\mu=y$; its conclusion is (RY11), with the same $D_0$ for every
+and $\mu=y$; its conclusion is \eqref{eq:annulus-recording-yield-display-RY11}, with the same $D_0$ for every
 color. Explicitly, split $E_4$ into the ball $|x|\leq y$, the annulus
-$y<|x|\leq1$ and the rest. On the ball the first bound in (RY9) gives
+$y<|x|\leq1$ and the rest. On the ball the first bound in \eqref{eq:annulus-recording-yield-display-RY9} gives
 $|g|\leq ay^{-4}$ and the volume is $\pi^2y^4/2$. Outside the unit ball
 $|g|\leq a$. On the annulus
 $\int|x|^{-3}dx=2\pi^2(1-y)$ and
-$y^2\int|x|^{-6}dx=\pi^2(1-y^2)$, so the second bound in (RY9)
+$y^2\int|x|^{-6}dx=\pi^2(1-y^2)$, so the second bound in \eqref{eq:annulus-recording-yield-display-RY9}
 contributes at most $3\pi^2b$. Finally $\log y^{-1}=\log L$, while
 $a,b$ were fixed uniformly before choosing $L$. Taking $L_{\min}=1$ supplies the all-odd-side clause needed by the
 outer construction; oddness is not otherwise used in this estimate.
 \end{proof}
 
-\paragraph{Scope.}
+\subparagraph{Scope.}
 This proves the finite Fourier tail, the exact conversion of local
 coefficient identities into a site-count-scaled recording error, and the
 downstream assembly from the stated baseline, response-service,
 local-positivity/floor, and uniform two-wave outputs. Of these four
 hypotheses, the finite-layer realization with its common strip is
-proved in Lemmas~\ref{lem:ex-annulus-same-data}
-and~\ref{lem:ex-annulus-common-strip}, and the uniform two-wave output
-(RY9) is the conclusion (F11) of
-Section~\ref{sec:ex-annulus-fleet-faces}. The resulting statement, in
-which only the baseline and the response service remain as inputs, is
-Proposition~\ref{prop:ex-annulus-estimate}. No
+obtained in Lemmas~\ref{lem:ex-annulus-same-data}
+and~\ref{lem:ex-annulus-common-strip}. The fixed-film identities are
+proved in Lemma~\ref{lem:annulus-fixed-film-tickets}, and the Wilson
+and correction response services in Lemma~\ref{lem:annulus-priced-responses}
+and its applications. The uniform two-wave output \eqref{eq:annulus-recording-yield-display-RY9} is conclusion
+\eqref{eq:annulus-fleet-face-estimates-display-F11} of Subsection~\ref{sec:ex-annulus-fleet-faces}. Their combined
+statement is Proposition~\ref{prop:ex-annulus-estimate}, with the path,
+metric and floor hypotheses displayed there. No
 finite-volume coefficient is identified with the continuum integral
-without first passing through (RY12).
+without first passing through \eqref{eq:annulus-recording-yield-display-RY12}.

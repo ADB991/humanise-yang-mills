@@ -1,4 +1,4 @@
-\section{Retaining the selected data through the final construction}
+\subsection{Retaining the selected data through the final construction}
 \label{sec:public-run-binding}
 
 We finish the selection argument by specifying which common data are
@@ -13,14 +13,20 @@ application; it supplies no replacement for an outstanding local estimate.
 Fix a simple gauge group $G$ and a positive kernel penalty $b$.
 Use the profile construction with support exponent exactly $100$ at
 every stage, derivative order at least $6+j$ and spatial power at least
-$2+j$ at stage $j$, as in Section~\ref{sec:ope-scale-purchases}. Denote the selected kernel by $K$, its stage profiles
+$2+j$ at stage $j$, as in Subsection~\ref{sec:ope-scale-purchases}. Denote the selected kernel by $K$, its stage profiles
 by $\pi_j$, and its primary and secondary row-price families by $P$ and
 $P'$. The flat-step, curvature-quadratic symmetry and dual-support estimates select their
 floors from these data before the block lengths are chosen. Take their
 maximum together with the original, comparison, treasury and period
-floors, and call it $n_j$. Raising the floor to $n_j$ changes neither
-$K$ nor $\pi_j$ nor $P$. Select block lengths $L_j\ge n_j$ and retain
-all these data when applying the scheduling construction.
+floors, the marked-portfolio thresholds and the drift floors of
+Subsection~\ref{sec:common-scale-selection}, and call it $n_j$. Raising the
+floor to $n_j$ changes neither $K$ nor $\pi_j$ nor $P$. Select block
+lengths $L_j\ge n_j$ and retain all these data when applying the
+scheduling construction. The marked portfolio, with its sections and
+regradings, was fixed before the profiles' price maps and the floors
+(Subsection~\ref{sec:common-observable-purchases}); the run retains exactly
+that portfolio, and no section or regrading is chosen after the
+schedule.
 
 Let $J(m)$ be the resulting stage clock, $\widehat\beta_m$ its hatted
 coupling, and $H$ its quadratic horizon. Its actual block at step $m$
@@ -32,7 +38,13 @@ index $E$, the countable purchase is
  \quad U_{E,j}^{-1}\le 1+\log\log\widehat\beta_m.
 \]
 The same construction keeps $1\le1+\log\log\widehat\beta_m$ for
-all $m$. After the lengths are fixed, let $A_j(L)$ and $B_j(L)$
+all $m$: the countable purchase includes \[
+ \exp(\exp E_j)
+\]
+with
+$E_j\ge1$ in every $d_j$, so
+$\widehat\beta_m\ge\beta_*\ge d_{j_*}\ge e^e$ and
+$\log\log\widehat\beta_m\ge1$. After the lengths are fixed, let $A_j(L)$ and $B_j(L)$
 be the two actual post-length costs and set
 $F_j(L)=\max\{A_j(L),B_j(L)\}$. The all-stage purchase is
 \begin{equation}\label{eq:public-native-allstage}
@@ -50,7 +62,15 @@ used in computing $F_{J(m+1)}(L)$ agree, because a patch is determined
 by its stage and block length. Thus \eqref{eq:public-native-allstage}
 pays both actual costs. In the cost that has the form $e^{a_j}$, its
 payment gives $a_j\le\log\widehat\beta_m$ by monotonicity of the
-logarithm. The other payment supplies the flat-step delay. The flat,
+logarithm. The other payment supplies the flat-step delay. The entry delays of
+the run are the final thresholds $d_j$ of
+Subsection~\ref{sec:common-scale-selection}; they contain the terminal fee
+threshold, the marked-portfolio delay, the startup and reset delays and
+the loop-capacity thresholds listed there, so every schedule condition
+of Sections~\ref{sec:ex-marked-portfolio-calibration},
+\ref{sec:surviving-interval-shooting} and
+\ref{sec:path-attachment-producer} that is stated as an entry delay
+holds for this run's delays. The flat,
 dual-support and curvature-quadratic symmetry suppliers therefore apply with the original
 levels and $H$, at every allowed cutoff and level. No new horizon is
 chosen in this application.
@@ -61,7 +81,7 @@ $R$, $T$ and $W$, respectively. Here $R$ names the full selected
 history and scale data, $T$ names its campaign of parameter paths,
 and $W$ keeps the transition and finite-volume witnesses for that
 campaign. The family $C_R$ is the family of
-Section~\ref{sec:original-history-portfolio-attachment}. In addition
+Subsection~\ref{sec:original-history-portfolio-attachment}. In addition
 to the fixed penalty $b$, keep the treasury and common-period estimates
 and the order and power inequalities when making this simultaneous
 choice. They are conclusions of the selection before the history is
@@ -79,15 +99,169 @@ increasing support-exponent profile.
 
 The funded continuation is now evaluated at the history, reference
 schedule, local sections, transition data and finite-volume witnesses
-stored in $R$. Proposition~\ref{prop:ex-original-history-attachment}
+stored in $R$; its portfolio sections and regradings are the ones fixed
+before the schedule, as above. Proposition~\ref{prop:ex-original-history-attachment}
 identifies its output family with $C_R$. Its trace and coverage
 conclusions consequently concern that same family. For the
 operator-product estimates, keep $W$ as well as $R,T$: the finite
 transition witnesses enter the service of
-Section~\ref{sec:ope-history-service}. The fixed exponent, common
+Subsection~\ref{sec:ope-history-service}. The fixed exponent, common
 clock, halo and logarithmic estimates are those just selected.
 Thus the common-history, observable and operator-product applications
 are simultaneous applications of their canonical arguments.
+
+\subparagraph{The public family of this retained history.}
+Write $\beta^R_{N,p,m}$ for the actual coupling of the stored history at
+level $m\le N$, cutoff $N$ and period index $p$. Let $P_p$ be its selected
+physical periods. To distinguish levels from stages, put
+\[
+ \ell_m=L_{J(m+1)},\qquad D_0=1,\qquad
+ D_N=\prod_{m=0}^{N-1}\ell_m.
+\]
+Thus $\ell_m$ is the block used in the transition from level $m+1$ to
+level $m$; it is not the stage length $L_m$ unless those indices agree.
+All these data belong to $R$ and are fixed before an extraction order is
+requested. Define its public Wilson family by retaining these periods,
+using $P_pD_N$ sites on each axis, and setting
+\begin{equation}\label{eq:public-family-coordinates}
+ a_N=D_N^{-1}=e^{-s_N},\qquad
+ \beta^{\rm pub}_{N,p}=\beta^R_{N,p,N}.
+\end{equation}
+The Haar measure and the Wilson action are those of
+Subsection~\ref{ex-lattice}, in the fixed representation of $G$.
+
+The insertion maps also retain the calibrated finite-volume data.
+For a grade $d$ and cutoff-period pair $(N,p)$, let
+$A^R_{d,N,p}$ be the terminal linear isomorphism of the coefficient space
+stored in the transfer datum $S_R(d,N,p)$. Let
+$\mathrm{Init}^R_{d,N,p}(w;x;U)$ be its initial local-section observable,
+at site $x$ and configuration $U$, with coefficient $w$.
+Here is its exact normalization. In the fixed grade-$d$ coefficient frame,
+let $c_{d,\alpha}\in\mathbb N$ be the colour-factor count of coordinate
+$\alpha$, and define the linear dilation
+$(\Delta_d(t)w)_\alpha=t^{c_{d,\alpha}}w_\alpha$.
+Write $\vartheta_N>0$ for the selected threshold and
+$\mathcal L^R_d(w;x;U)$ for placement of the fixed local section with
+coefficient $w$ at $x$. Then
+\[
+ \mathrm{Init}^R_{d,N,p}(w;x;U)
+ =a_N^{-d}\mathcal L^R_d\bigl(\Delta_d(\vartheta_N^{-1})w;x;U\bigr).
+\]
+The dilation exponent is the coordinate's colour-factor count, whereas
+the physical prefactor uses the grade $d$. These are the initial
+observables used in Subsection~\ref{sec:selected-centered-service}.
+The public token $(d,v)$ uses the same coefficient space and has insertion
+\begin{equation}\label{eq:public-family-insertion}
+ O^{\rm pub}_{N,p,(d,v)}(x;U)
+ =\mathrm{Init}^R_{d,N,p}\bigl((A^R_{d,N,p})^{-1}v;x;U\bigr).
+\end{equation}
+In particular the terminal inverse is part of the insertion calibration;
+the token $v$ is not substituted directly for its initial coefficient.
+The formulas define the insertions at every cutoff using the stored
+transfer datum there. Calibration and transport estimates are still
+asserted only in their stated domains, in particular $N\ge t_R(d)$
+when the reference-level hypothesis is required.
+
+These identities follow from the retained construction, rather than
+from a new choice of family. The schedule starts with denominator one
+and multiplies it by its actual block $\ell_m$ at each level. Its scale
+recurrence is $s_0=0$, $s_{m+1}=s_m+\log\ell_m$, so induction gives
+$s_N=\log D_N$ and the first identity in
+\eqref{eq:public-family-coordinates}. Since every $\ell_m\ge3$, the
+positive integer denominators strictly increase. The stored history
+starts at cutoff $N$ with bare Wilson density of coefficient
+$\beta^R_{N,p,N}$ and zero vacuum parameter; this gives the second
+identity. Finally, the finite insertion assigned by the transfer datum
+is, by its definition, the initial local-section observable after its
+terminal inverse. This is exactly \eqref{eq:public-family-insertion}.
+Thus, for every $N,p$, every finite token tuple and every tuple of lattice
+sites, the public finite moment is the moment of these same insertions
+under the same normalized Wilson law of $C_R$. Neither a limiting
+identification nor a replacement by the reference coupling
+$\widehat\beta_N$ is used.
+
+\begin{proposition}[The normalized observables of the retained family]
+\label{prop:public-normalized-observables}
+On the retained family $C_R$, the sections and insertions in
+\eqref{eq:public-family-insertion} are the sections and insertions of
+\eqref{eq:headline-jet-normalization}--\eqref{eq:headline-insertion}, with
+$r_d=t_R(d)$, $R_{d,N,p}=A^R_{d,N,p}$ and
+$D_{\theta_N^{-1}}=\Delta_d(\vartheta_N^{-1})$.
+The sections have one fixed finite stencil at each grade, are polynomial,
+linear in the labels, gauge invariant, unit preserving and compatible
+with conjugation and signed lattice symmetries. Their jets obey
+\eqref{eq:headline-jet-normalization}.
+For $N\ge t_R(d)$ the unnormalized inserted density has exact transport
+along the stored block integrations; its reference coefficient is the
+specified label $v$, and its adjacent remainders obey the cone and
+charge bounds of Proposition~\ref{prop:selected-music}.
+At grade $d$ the physical unit is the reference label
+$a_{t_R(d)}^d e_0$, where $e_0$ is the constant polynomial.
+Every assertion uses the same history, not a separately selected
+regular Wilson family.
+\end{proposition}
+\begin{proof}
+The local-section construction in Subsection~\ref{sec:local-sections}
+chooses one finite jet sampler, one polynomial recovery map and its
+finite signed-symmetry average before the period or threshold is
+chosen. Its Taylor identity proves
+\eqref{eq:headline-jet-normalization} on every radial jet. The finite
+union of the averaged stencils is the required fixed stencil; the
+polynomial and covariance assertions are proved there on that very
+union. The portfolio in the present selection retains these sections
+before choosing its profiles and floors, so its local section
+$\mathcal L^R_d$ is this section, rather than a new right inverse.
+
+The formula for $\mathrm{Init}^R$ and
+\eqref{eq:public-family-insertion} give the headline insertion by
+substitution. The inverse $A^R_{d,N,p}$ is not selected for this
+identity. It is the reference-normalized terminal readout of the
+stored finite transfer. Proposition~\ref{prop:ex-c02-selected-record}
+identifies that transfer with the single backward family of
+Proposition~\ref{prop:selected-music}, normalized once by its
+reference readout. Thus its unnormalized density push, its
+coefficient readout and both remainder bounds all hold for the same
+insertion. At each step the grade factor is the one in its physical
+transport map. Composing the finitely many identities from $N$ to
+$t_R(d)$ gives the exact reference transport, with no division by a
+partition function at an intermediate level.
+
+At the physical unit, the same adjacent maps carry
+$a_{m+1}^de_0$ to $a_m^de_0$ and their error and charge vanish.
+Their finite composition therefore carries the terminal physical
+unit to $a_{t_R(d)}^de_0$. Reference normalization gives its initial
+observable identically one. This also explains why the same
+constant polynomial at two different grades cannot be identified
+without the reference-scale factor. All the constructions in this
+proof were fixed on $R$ before a correlation tuple, period
+subsequence or extraction order was requested.
+\end{proof}
+
+\subparagraph{Running of the public bare coefficient.}
+The histories just retained are the histories constructed by
+Subsection~\ref{sec:surviving-interval-shooting}: their level-zero value is
+$\bar\beta$, their reset shift and stationary scalar obey the adjacent
+estimate with $s_G=2b_0(G)$, and their scale is $s_m$ above.
+The drift floor in Subsection~\ref{sec:common-scale-selection} gives
+$\varepsilon_{m+1}/\log\ell_m\le J(m+1)^{-2}$ and $J(m)\to\infty$.
+Consequently the running estimate of that section holds uniformly for
+these very coefficients $\beta^R_{N,p,m}$, all $N\ge m$ and all $p$.
+There is no additional running hypothesis on $R$ here.
+
+Both identifications required by
+Proposition~\ref{prop:shoot-public-running} are precisely
+\eqref{eq:public-family-coordinates}. Applying that proposition therefore gives
+\begin{equation}\label{eq:public-family-running}
+ \forall\varepsilon>0\ \exists N_0\ \forall N\ge N_0\ \forall p:
+ \quad
+ \left|\frac{\beta^{\rm pub}_{N,p}}{\log(a_N^{-1})}-2b_0(G)\right|
+ <\varepsilon.
+\end{equation}
+This is \eqref{ex-running-input}, with the value of the slope fixed by
+\eqref{eq:shoot-slope}. The denominator is positive on the tail because
+$s_N\ge N\log3$. The coefficient used here is the actual terminal bare
+coefficient, not the comparison value $\widehat\beta_N$. No coupling defined
+through a continuum physical observable is being identified with it.
 
 Finally this binding persists through the ordered extractions. Given
 an initial extraction order $f$, first refine it to obtain the coupling

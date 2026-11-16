@@ -22,10 +22,53 @@ These are statement-level candidate matches, not accepted edges. Each requires t
 | `C02-to-C03-density-and-menu` | C02 `ex-centered-sail`, `sec:finite-menu-history-handoff` and `ex-centered-public-service` → C03 `sec:fullmesh-correlation-cauchy`, including `eq:fullmesh-root-bound`. Match the finite period, selected history and door, positive marker weights, complex polynomial price and terminal partition function. C03 calls related inputs `I-C02-centered` and `I-C02-service`; these labels do not accept the combined edge. |
 | `C02-to-C16-ope-menu` | C02 finite-menu handoff → C16 `sec:ope-history-service`. Match the same selected transition and door with exact support exponents 100, giving input 96 and outputs 100+1/2 and 101, ordinary price one and forced allowance `χ_m`. The source has a constant-100 selected run; the manuscript endpoints still need to identify that same run. |
 | `C02-to-C05-reference-density` / `C02-to-C12-marked-density` | C02 `ex-centered-sail` → reference and marked-portfolio consumers. Match the same served representation, positive tolls, lawful nonnegative background and terminal normalization. These applications use bills `x=2`, `y=1`, `f=1`, giving per-marker charge five; they are distinct from the public charge-six specialization. |
-| `C02-to-C14-shell-service` | C02 menu and local-transfer duty → C14 `sec:actual-stress-shell-nodes`. Match history and door, fine/coarse radii, ordinary and flagged budgets, and both smallness inequalities; collar-specific labels and transported prices remain C14 obligations. |
+| `C02-to-C14-shell-service` | C02 menu and local-transfer duty → C14 `sec:ex-lattice-actual-stress-shell-nodes`. Match history and door, fine/coarse radii, ordinary and flagged budgets, and both smallness inequalities; collar-specific labels and transported prices remain C14 obligations. |
 | `C02-to-C12-selected-service` | C02 voice reconstruction, common menu/door, scale estimates and opened-copy geometry → C12 `sec:selected-centered-service`. Match the family, terminal keeper and paid tickets; supply the coarse-clock grade condition and distinguish individual voice profiles from the full propagated census. |
 | `C02-to-C08-scalar-rates` | C02 scalar rate and radius estimates → C08 `sec:projection-payment-producer` and `sec:marked-activity-jets`. The fixed stage/order and block precede the entrance limit; C08's occupancy, projection and marked-derivative estimates remain separate. |
 | `C02-to-C13-paid-score-algebra` | C02 finite-switch product and exponential algebra → C13 `sec:allarity-planted-compiler`. C13 must supply summable score majorants, common Gaussian/Haar integrability and its chart identity. |
 | `C02-to-C12-menu-purchase` | C02 station, probe and flagged-price estimates → C12 `sec:common-observable-purchases`, on the same selected step. The geometric floor, block length and numerical thresholds must be chosen in the consumer's required order. |
 
 C03 draft PR #69 is at `6fa64da98d307caccab7e625ca67ef6123af66a3`; C06 draft PR #73 is at `5d91921339150dfe35aed5caf239b777ea341021`. Neither draft is incorporated or accepted here. G05 owns shared notation/order coordination and G06 owns whole-argument closure.
+
+## Inputs named in the source-leakage pass (#182)
+
+Named by session `ADB991-claude-20261113-b6b4` (response table: `source-leakage-response.md`). The original outstanding classifications below are superseded by the
+selected-history attachment recorded in the completion entry at the end of
+this file. The producer hypotheses remain explicit; this is not global
+closure of the upstream analytic estimates.
+
+| Input | Content | Used in | Status |
+| --- | --- | --- | --- |
+| I-C02-funded-record | The funded record on one selected trail, with the fields (i)–(v) of `thm:ex-selected-run-service`: one transition history with retention and terminal endowment; room and bank budgets and the scale inequalities of `prop:ex-geyser-service-fields`; gradewise height, coefficient, activity, adjacent-weight, terminal-bank, footprint-cover and local-section bounds; the calibrated finite music with linear voices; thresholds, scale prices and local tone tickets on the same doors. Includes the mode-slot and shipment estimates, uniformity over each bounded grade ball, and the four inputs of the terminal birth receipt (service certificate, local coefficient envelope, origin-counting response, vacuum lower bound). Ingredients: selected campaign purchase, transition tariff, delayed scale choices, same-trail transfer data, climbing doors, finite-transfer records. | `ex-centered-construction` (end of proof), `ex-selected-birth-receipt`, `ex-centered-public-service`, `centered-freight-producer` (scope) | supplied under the common-purchase hypotheses by `prop:ex-c02-selected-record` and `cor:ex-c02-uniform-census`; see completion entry |
+| I-C02-finite-interpolation | The finite interpolation statement of `centered-freight-producer.tex`: when the two fields at the selected spring parameter, slot table, motion/rate data, schedule-price bound and keeper are those of the selected history and `d+3 ≤ J_m^c`, there is one heading and one ticket for every wing containing the principal-field tags, with axis residual price `C_m`, lead price `η_m`, crossing allowance `t_m` and the regular and forced prices of that section; together with its three analytic coupon estimates (axis, regular, forced). | `centered-freight-producer` | supplied conditionally by C09 `sec:heading-history-handoff` and `sec:three-port-history`, attached by `prop:selected-reprise`; retains the local analytic estimates and common purchases |
+
+## Selected-history completion: #43 / #315 (2026-11-15)
+
+Session `hairer-codex-c02-completion-20261115`; new detailed field ledger and
+validation under `author/hairer-codex-c02-completion-20261115/`. Historical
+review records and the provisional cross-package table above keep their original
+scope; this entry updates the two named missing inputs, not all package reviews.
+
+- **I-C02-funded-record / C12-to-C12-paid-record:** the same direct family
+  C_R, transfers S_R, reference t_R and doors D_R are used throughout.
+  `prop:ex-c02-selected-record` assembles (i)–(v); `cor:ex-c02-uniform-census`
+  verifies the remaining served-birth, grade-ball, denominator and geometry joins.
+  It uses #317 retention/endowment, #318 terminal voice and Music, #319 local
+  Coupon, #320 width/treasury/denominator, and #321 domain/budget projection.
+  Each is retained under its stated local analytic/common-purchase hypotheses.
+- **C09-to-C02-heading-and-tickets:** #313 and its consumer refinement #316
+  are implemented: C_m pays both triangular and graded remainder bounds;
+  E_{m+1}=b_f, profile title=τ_f and block side=L; common scale inequalities
+  are purchases, not deductions of the local interpolation theorem. The
+  countable merger and actual retained-door application are now supplied by #318.
+- **#328 corrections:** M1 terminal endowment comes from the separate numerical
+  scale estimates as exported by #317, not the terminal hook; M2 room/bank is
+  `prop:ex-stored-service-budget`; M3 the served representative is the actual
+  A_k and `lem:ex-selected-birth-denominator` gives its integral Z_{N,p}.
+
+The positive-reference/stock domains remain t_R(d)≤k≤N, k≥1; birth uses k<N.
+Uniformity is in period, site and labels in a fixed grade ball, with a volume
+tail allowed to depend on root depth and grade. No tail uniform over all depths
+or new run selection is asserted. Auxiliary-history convergence, separate
+upstream local analytic proofs, C03 extraction and G06 whole-proof acceptance
+are outside this finite-volume attachment.

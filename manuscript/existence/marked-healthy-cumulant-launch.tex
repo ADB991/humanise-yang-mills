@@ -1,4 +1,4 @@
-\section{The healthy-field comparison at the middle scale}
+\subsection{The healthy-field comparison at the middle scale}
 \label{sec:marked-healthy-cumulant-launch}
 
 The Gaussian comparison must approximate the actual local coefficient
@@ -7,7 +7,7 @@ real curvature cochain from that configuration, and by comparing the
 actual polynomial transport with the transport of its covariance atlas.
 Both comparisons are simultaneous for every subset of the insertion word.
 
-\subsection{A closed cochain from a healthy gauge field}
+\subsubsection{A closed cochain from a healthy gauge field}
 
 Work on a lattice of integer side $N_{\rm per}>0$, with a patch
 of integer radius $B\ge0$ about $o$, and assume $2(B+1)<N_{\rm per}$.
@@ -70,14 +70,14 @@ Thus \eqref{eq:healthy-closed-cochain} supplies exactly a closed real
 background admitted by the covariance comparison, while
 \eqref{eq:healthy-curvature-linear-error} is at most $\varepsilon$.
 
-\subsection{Comparing two polynomial transports}
+\subsubsection{Comparing two polynomial transports}
 
 A polynomial step consists of a finite linear substitution followed
 by Wick contraction. Suppose the coefficient sum of every substituted
 coordinate and every covariance entry is at most $C\ge1$.
 For degree at most $D$, put $A_D=[2(D+2)C]^D$.
 The Wick recurrence used in
-Section~\ref{sec:allarity-cumulant-comparison} applies equally when
+Subsection~\ref{sec:allarity-cumulant-comparison} applies equally when
 its mean is a linear polynomial. Submultiplicativity of coefficient
 sums then proves that the step preserves degree and has norm at most
 $A_D$ on this finite-degree space. If a second step has the same
@@ -85,7 +85,11 @@ bounds and each linear row and covariance entry differs by at most
 $\varepsilon\ge0$, the same induction, subtracting products one factor
 at a time, bounds the difference operator by $\varepsilon A_D$.
 The row error here is a coefficient sum, not an entrywise error
-followed by an unbounded sum over sites.
+followed by an unbounded sum over sites. In the application below,
+purchase this per-step discrepancy at most the same
+$\varepsilon=H^{-v}$ that bounds the field-coordinate error.
+These are two separate purchases; a bound for one does not imply
+the other.
 
 For $m$ successive steps $T_i,T'_i$, expand
 \[
@@ -136,7 +140,7 @@ at most a fixed polynomial $Q_n(R)$ in $R$, obtained by the same
 partition expansion. These constants depend on the finite word,
 not on the lattice period.
 
-\subsection{Evaluation and the initial connected error}
+\subsubsection{Evaluation and the initial connected error}
 
 For a polynomial $p$ of degree at most $D_*$, two real coordinate
 vectors bounded by $M\ge1$ on its variables, and coordinate error
@@ -167,7 +171,7 @@ The atlas connected polynomial $c'_I(X)$ is the finite logarithm
 of its jointly evaluated Gaussian moments. The exact common-coordinate
 and calibration construction, followed by the actual covariance bounds,
 compares those moments with the free moments with error $H^{-3/2}$.
-Section~\ref{sec:allarity-cumulant-comparison} consequently gives
+Subsection~\ref{sec:allarity-cumulant-comparison} consequently gives
 \[
  |c'_I(X)-c_I^{\rm free}|+H^{-3/2}\le H^{-31/32}
 \]
@@ -181,10 +185,17 @@ singletons only. The transport has zero length there and is the
 identity. Hence its moment polynomial is
 $\prod_i(1+z_ip_i)$ in the squarefree marker algebra, and its
 finite logarithm is $\sum_i z_ip_i$. Every connected coefficient
-with at least two markers vanishes. The singleton is exactly the
-calibrated local section; its support, marker and masked value agree
-with the terminal birth term. The algebraic reindexing therefore
-adds zero higher coefficients and leaves the pushed density unchanged.
+with at least two markers vanishes. The principal singleton is the
+masked raw polynomial constructed from the calibrated near list.
+Its identification with the actual birth uses the exact decomposition
+\eqref{eq:rank-terminal-three-pieces} and the selected-entry identity
+\eqref{eq:rank-selected-entry-split}: the supported approximation
+error, the mask correction, the wide list and the original forced
+terms are all retained. The scalar unit in the original list is
+unmasked. Thus the polynomial is not substituted for the whole
+calibrated coefficient by an equality. The algebraic reindexing
+adds zero higher principal coefficients and, with these remainder
+terms, leaves the pushed density unchanged.
 Shrinking the marker radius preserves regular and forced bounds,
 since every marker monomial acquires a smaller nonnegative weight.
 This identifies the top initialization used in the all-arity marked

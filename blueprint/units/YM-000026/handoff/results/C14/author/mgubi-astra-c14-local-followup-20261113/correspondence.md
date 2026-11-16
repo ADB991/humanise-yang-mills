@@ -1,0 +1,11 @@
+# Immediate source correspondence
+
+Pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`, imported tree `328ad19b404d2db2a578319ea3e4eba4b27e34ef`. Textual author inspection only; no elaboration or new axiom/kernel audit.
+
+- `YM.Bid.Hyper.hex`, `Lean/YM/Bid/Angular.lean`, quantifies over every grade d, `g : Signed`, generator u and field v. It intertwines the spin response with `S.mirror` and `orients g u`. `YM.Org.orients`, `Lean/YM/Org/Input.lean`, is conjugation by the signed orthogonal matrix, k u k^T. This is precisely the new bracket-lemma hypothesis. Hyper's reality, inclusion and unit clauses remain separate; no full orthogonal or Euclidean covariance is inferred.
+- `YM.MergeProof.Scrim.jump`, `Lean/YM/MergeProof/Biscuit.lean`, is `forall d i, C.ref d <= i -> phi i * (C.S.block i)^(d+1) * zeta d i <= zeta d (i+1)`. `Scrim.grows` supplies positivity at the same reference threshold. The shell text specializes zeta(D,i) to its existing upsilon_i=beta-hat_i^(-nu_D), and names the actual block L_i=a_i/a_(i+1). The inequality is schedule/history data with no N,p binders; it applies uniformly when those vary. No claim is made that an arbitrary weight choice satisfies it.
+- `Scrim` is an assumed structure in the source consumer. The manuscript's selected service also retains adjacent growth inputs; neither the structure name nor the service theorem constructs the added inequality. Its existence for the selected data remains an analytic/schedule obligation.
+- For the window, the finite minimum is only used for a nonempty spectator list. With no spectators any positive radius gives a bump equal to one near x0 and compact support excluding the empty set. This elementary convention adds no source hypothesis.
+- For the watch family, taking p0=0 in the empty case is compatible with `lem:ex-lattice-opening-exists`, which opens every reference level and allows a sufficiently large k. The flux conclusion is then the empty sum. This is a manuscript indexing convention, not a new analytic argument or an interpretation of maximum over an empty set.
+
+The full PR177 report and relevant local definitions were inspected. Prior free-rank and optical/chamber corrections and their external reviews are not reissued here. Shared literature/Bots guidance is reused; no external theorem is needed for these local algebraic/indexing clarifications.

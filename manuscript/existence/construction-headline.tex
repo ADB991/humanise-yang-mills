@@ -1,0 +1,218 @@
+\subsection{A construction-bound main theorem}
+\label{ex-construction-headline}
+
+The following theorem retains the connection between classical observables,
+lattice representatives and quantum fields. Its normalizations and local
+statements are specified below. Theorem~\ref{thm:ex-construction-assembly}
+assembles their proofs on one retained Wilson family and one limiting
+hierarchy.
+
+Let $V_d$ be the finite-dimensional space of gauge-invariant polynomials
+in radial curvature jets of weighted degree at most $d$, a curvature
+derivative of order $j$ having weight $j+2$; see
+Sections~\ref{sec:local-splitting} and~\ref{sec:local-sections}.
+Fix a real polynomial basis, homogeneous in the number of curvature factors,
+and use its complexification as coordinates on $V_d$, with the constant
+polynomial as the unit coordinate.
+A local section $L_d$ assigns to $v\in V_d$ a polynomial in the entries of
+finitely many links and their conjugates, linearly in $v$, invariant under
+lattice gauge transformations. Its stencil is independent of spacing and
+period. It preserves the unit, conjugation and signed coordinate symmetries.
+For every radial jet $J$ it satisfies the normalization
+\begin{equation}\label{eq:headline-jet-normalization}
+ \left.\frac{d^k}{dh^k}L_d(v;H(J,h))\right|_{h=0}
+ =\left.\frac{d^k}{dh^k}v(h\cdot J)\right|_{h=0},\qquad 0\le k\le d.
+\end{equation}
+Here $H(J,h)$ is parallel transport along lattice links for the polynomial
+radial connection at scale $h$, and $h\cdot J$ multiplies the weight-$j+2$
+component by $h^{j+2}$. Thus small-field testing recovers the prescribed
+classical polynomial.
+
+Write $a_N=D_N^{-1}$ for the lattice spacing, $P_p$ for the physical
+period, and $U$ for a link configuration on the corresponding torus.
+For each $d$ choose a reference level $r_d$. At cutoff $(N,p)$, $N\ge r_d$,
+the renormalized insertion has the form
+\begin{equation}\label{eq:headline-insertion}
+ I^{(d)}_{N,p}(v;x;U)=a_N^{-d}
+ L_d\bigl(D_{\theta_N^{-1}}R_{d,N,p}^{-1}v;x;U\bigr).
+\end{equation}
+Here $\theta_N>0$ is the small-field threshold and $D_t$ multiplies a
+coordinate with $s$ curvature factors by $t^s$. The invertible linear map
+$R_{d,N,p}$ is fixed by transporting the inserted Wilson density from
+level $N$ to $r_d$ and reading its polynomial coefficient there. This is
+exact transport of the unnormalized inserted density by the same block
+integrations as the uninserted density, with the scale factors and remainder
+bounds of Sections~\ref{sec:local-splitting},
+\ref{sec:terminal-marked-construction} and~\ref{sec:ex-marked-field-local}.
+In particular, transporting $R_{d,N,p}^{-1}v$ gives coefficient $v$ at the
+reference level. The maps in \eqref{eq:headline-insertion} must have this
+transport and normalization; freely chosen renormalization matrices are
+not an alternative definition. The same maps are used at every translated
+anchor. Choices at the finitely many levels $N<r_d$ do not affect the limits.
+
+\begin{remark}[The local normalization has content]
+\label{rem:headline-nonconstant-sections}
+If $L_d(v)$ is constant, with value $c$, then
+\eqref{eq:headline-jet-normalization} says that the polynomial
+$h\mapsto v(h\cdot J)$ has constant term $c$ and all other coefficients
+zero: its degree is at most $d$. Taking $h=1$ gives $v(J)=c$ for every
+$J$. In particular $L_d$ is injective, and a nonconstant curvature
+polynomial cannot have a constant local representative. Since both $D_t$
+for $t>0$ and $R_{d,N,p}$ are invertible, the insertion space in
+\eqref{eq:headline-insertion} contains nonconstant functions whenever
+$V_d$ contains nonconstant polynomials. On sufficiently large tori the
+stencil does not wrap, so its link assignments extend to torus
+configurations and this remains true there. This rules out the specific
+replacement of \emph{all} lattice insertions by constants. It does not
+by itself prove that the continuum field space contains a field independent
+of the unit, or that its correlations are non-Gaussian.
+\end{remark}
+
+\begin{theorem}[The Wilson construction]
+\label{thm:ex-construction-headline}
+For every compact matrix group $G$ with nonabelian simple Lie algebra as
+specified above, and every positive blocking penalty $b$, one can choose
+one sequence of lattice spacings $a_N\downarrow0$, one increasing sequence
+of physical periods $P_p\uparrow\infty$, bare Wilson coefficients
+$\beta_{N,p}$, and local observables \eqref{eq:headline-insertion} satisfying
+\eqref{eq:headline-jet-normalization}, all on a single Wilson construction.
+The coefficients satisfy \eqref{ex-running-input}. These choices precede
+any choice of a subsequence of periods.
+
+For every pair of strictly increasing index maps $(u,p)$ there is a
+refinement $(u\circ v,p\circ q)$ and one common system of limiting fields,
+correlations and phases with the following properties.
+\begin{enumerate}
+\item \emph{Wilson limits and field labels.}
+The physical fields of degree at most $d$ are quotients
+$\mathcal F_d=V_d/\mathcal N_d$, where $\mathcal N_d$ consists of labels
+whose insertion vanishes in all separated mixed correlations with arbitrary
+spectators. They have compatible injective grade inclusions, a unit,
+conjugation, derivatives and spacetime symmetry actions. Write $[v]_d$ for
+the field represented by $v\in V_d$. At grade $d$ the unit is represented
+by $a_{r_d}^{d}\mathbf1$, not in general by the constant polynomial
+$\mathbf1$. The grade inclusions are the compatible maps constructed in
+Subsection~\ref{ex-phase-fields}; they need not send the class of a polynomial
+to the class of the same polynomial at a larger grade. For every finite
+list of graded labels $v_i\in V_{d_i}$, $1\le i\le n$, and
+every smooth compactly supported test $f$ away from the coincidence diagonals,
+\begin{equation}\label{eq:headline-wilson-limit}
+\begin{split}
+ \lim_{k\to\infty}\lim_{N\to\infty}
+ a_N^{4n}\!\sum_{\boldsymbol x} f(\boldsymbol x)
+ \mathbb E_{\mu_{N,p(q(k))}}
+ \!\left[\prod_{i=1}^n I^{(d_i)}_{N,p(q(k))}(v_i;x_i;U)\right]\\
+ =\int f(\boldsymbol x)S^{\rm mix}_{[v_1]_{d_1},\ldots,[v_n]_{d_n}}
+                     (\boldsymbol x)\,d\boldsymbol x .
+\end{split}
+\end{equation}
+Here $\mu_{N,p}$ is the Wilson probability measure of
+Subsection~\ref{ex-lattice}, and the sum uses the physical lattice points in
+its fundamental box, with the convention of \eqref{ex-smearing}.
+The inner limit exists along the \emph{full} mesh sequence at every
+suitable fixed period. One refinement works for all labels, arities and
+tests. Auxiliary field comparisons may use the refined mesh $u\circ v$;
+the Wilson limit displayed here does not.
+
+\item \emph{Phases of that same limit.}
+There is a compact metrizable space $X$ with a full-support probability
+measure $\nu$ and smooth separated correlations $S^\chi$, multilinear in
+the fields, such that
+\[
+ S^{\rm mix}_{\boldsymbol A}(\boldsymbol x)
+   =\int_X S^\chi_{\boldsymbol A}(\boldsymbol x)\,d\nu(\chi).
+\]
+These are the characters of the commutative algebra obtained by compressing
+the mixed theory's slab observables to its zero-energy space; $\nu$
+represents its vacuum state. Thus the phase space and component correlations
+come from the mixed Wilson limit, as in Sections~\ref{ex-phases}
+and~\ref{ex-phase-selection}. Every component has reflection positivity
+and the same field null relations as the mixed hierarchy; see
+Sections~\ref{ex-phase-regularity} and~\ref{ex-phase-fields}.
+
+\item \emph{Relativistic reconstruction.}
+For every $\chi\in X$, these correlations reconstruct a nontrivial local
+relativistic field theory on a Hilbert space with a common dense invariant
+domain, cyclic vacuum, adjoints, tempered fields, strongly continuous
+Poincar\'e symmetry and translation spectrum in the closed forward cone.
+The translation-invariant vectors form precisely the vacuum line, and
+nonzero field labels act nontrivially. Its vacuum distributions are the
+analytic boundary values of $S^\chi$, in the sense of
+Definition~\ref{ex-reconstructed} with $\chi$ in place of $\chi_*$.
+The boundary distributions also obey the phase-mixture identity on joint
+Schwartz tests. The analytic and field constructions are described in
+Theorem~\ref{thm:joint-boundary} and Subsection~\ref{sec:word-reconstruction}.
+There is a character $\chi_*\in X$, with one-dimensional ground space
+as in Theorem~\ref{ex-pure-ground}, for which all the conclusions below
+hold; they use these same data.
+
+\item \emph{Local products and the physical stress tensor.}
+There is one operator-product expansion for the mixed state and every
+component, with the coefficient and remainder bounds
+\eqref{ex-ope-coefficient}--\eqref{ex-ope-remainder}. The physical field
+system contains a symmetric conserved stress tensor $T_{\mu\nu}$ whose
+translation and rotation charges implement the field derivatives and
+rotation action. Its normalization is that of
+Subsection~\ref{sec:actual-stress-normalization}; its separated Ward identities
+are those of Subsection~\ref{sec:physical-ward-propagation}.
+In the selected theory set
+\[
+ \Theta=\sum_{\mu=1}^4T_{\mu\mu}
+       -\left\langle\sum_{\mu=1}^4T_{\mu\mu}\right\rangle_{\chi_*}\mathbf1 .
+\]
+This very field, rather than a separately chosen grade-four field, satisfies
+\[
+ \lim_{r\downarrow0}r^8\log^2(r^{-1})
+ S^{\chi_*}_{\Theta,\Theta}(-re_t/2,re_t/2)
+       =\frac{3\dim_{\mathbb R}\mathfrak g}{\pi^4},
+ \qquad e_t=(0,0,0,1).
+\]
+Its vacuum one-point functional vanishes and its two-point function has
+the finite mass-shell-profile exclusion of
+Subsection~\ref{sec:trace-profiles}. The comparison and limit use this same
+normalized stress tensor; see Lemma~\ref{lem:trace-normalized-stress}
+and Theorem~\ref{thm:trace-asymptotic}.
+\end{enumerate}
+The quotients, phases and reconstructed theories may depend on the
+requested order and refinement. The lattice family does not.
+\end{theorem}
+
+\paragraph{Scope.}
+This formulation selects conclusions of the construction; it does not
+restate every source result. Contact extensions, nested operator products,
+effective couplings and Maxwell scaling comparisons require separate precise
+statements and are not asserted here. The running slope in
+\eqref{ex-running-input} is $11C_{\mathfrak g}/(24\pi^2)$, with the
+Casimir for the normalized trace inner product. Proposition~\ref{prop:shoot-public-running}
+and \eqref{eq:public-family-running} identify this value with the bare
+coefficients of this very Wilson family.
+
+No uniqueness of the infinite-volume limit or independence of the spacing
+sequence, local sections or blocking scheme is claimed. The result constructs
+correlations and fields, not a probability measure on continuum connections,
+Wilson-loop observables, particle states or a mass gap. The operator-product
+bounds do not assert agreement with a perturbative series, and the trace test
+does not exclude every generalized free-field description. These distinctions
+matter in comparing the result with the Yang--Mills existence and mass-gap
+problem; see \cite[Sections~1--2, 7--9]{YMG26}. In that comparison, the
+axiomatic field theory and its curvature-polynomial representatives address
+the first two requirements. The stress tensor, running law, operator-product
+bounds and trace asymptotic give specific short-distance conclusions, but
+not the full agreement with perturbative renormalization theory requested
+in the third requirement. The fourth requirement, a positive spectral gap
+above the vacuum, remains outside the result. The inverse reference maps
+are constructed with quantitative bounds; explicit formulas for all their
+matrix entries are not part of the assertion.
+
+Forgetting the normalization, the character-algebra construction, the
+reconstructions away from $\chi_*$ and the stress-tensor identification
+gives, together with the unit, covering and token compatibility specified
+below and proved in the field construction, the weaker public target.
+Its insufficiency is discussed in
+Subsection~\ref{ex-target-free-witness}. Theorem~\ref{thm:ex-construction-assembly} proves the stronger
+same-data assertion: normalized insertions, field quotients, phase algebra,
+every-character reconstruction and physical stress all use the same
+extraction. Proposition~\ref{ex-conditional-existence} records the logical
+projection to the weaker target. In particular the every-character
+assertion in item~3 is supplied by its own vacuum argument, whereas the
+trace asymptotic in item~4 concerns the distinguished selected character.

@@ -1,4 +1,4 @@
-\section{From the collinear stress identity to global Ward identities}
+\subsection{From the collinear stress identity to global Ward identities}
 \label{sec:physical-ward-propagation}
 
 This section records the finite-configuration argument which turns a collinear
@@ -32,10 +32,19 @@ Here $q[i\mapsto\cdot]$ changes only the indicated slot.  The condition
 \emph{Still at $x$} means $\mathcal A_K(q;x)=0$ for every word $q$ and every
 $K$.  The condition \emph{collinear} means this identity holds whenever the
 points lie on one coordinate axis $\mathbb Re_a$ through the origin and
-remain pairwise distinct.  Because the orbital term contains $Kx_i$, the
-expression is not translation invariant, so this is weaker than the
-identity on all lines parallel to an axis; only the axis version is proved
-and used below.
+remain pairwise distinct. This axis formulation is sufficient below.
+In fact the angular expression is invariant under simultaneous translation.
+For a common shift $h$, translation invariance of every moment, including
+those with a changed label, and the positional derivative rule give
+\[
+ \mathcal A_K(q;x+h)-\mathcal A_K(q;x)
+ =\sum_{b=1}^4(Kh)_b\sum_{i=1}^n
+       \partial_{x_{i,b}}S(q;x)=0.
+\]
+The last equality follows by differentiating
+$S(q;x+s e_b)=S(q;x)$ at $s=0$, with the same shift applied to every
+point. Hence the axis formulation also gives the identity on every line
+parallel to that axis.
 The compatibility relation between position and spin derivatives is
 \begin{equation}
  \mathcal P_{d,b}\mathcal Y_d(K)v
@@ -54,7 +63,7 @@ Assume the hierarchy is smooth on the configuration space
 the spin rows obey \eqref{eq:ward-commutation}, and the angular expression
 \eqref{eq:ward-angular-expression} is zero at every separated collinear
 configuration.  Assume also the extreme-segment analyticity established in
-Section~\ref{sec:physical-ward-analytic-continuation}: on every coordinate
+Subsection~\ref{sec:physical-ward-analytic-continuation}: on every coordinate
 segment used below, the angular expression for each fixed word and generator
 is real analytic on a neighborhood of the segment.  Then it is zero at every
 $x\in\operatorname{Conf}_n$.
@@ -105,7 +114,7 @@ is real analytic on a neighborhood of the interval by the stated
 extreme-segment analyticity input.  This input applies to moment rows with
 the moving point at either end and to every raised row appearing in the
 angular expression.  It is precisely the result of
-Section~\ref{sec:physical-ward-analytic-continuation}; smoothness on
+Subsection~\ref{sec:physical-ward-analytic-continuation}; smoothness on
 $\operatorname{Conf}_n$ alone is not enough.
 
 At an endpoint where Still holds, all derivatives of this analytic scalar
@@ -130,7 +139,7 @@ tuple.  This also covers $n=0,1$, where there are no pairwise collision
 constraints and the sums are empty or single-term.
 \end{proof}
 
-\paragraph{The collinear identity from the stress tensor.}
+\subparagraph{The collinear identity from the stress tensor.}
 The preceding theorem needs no stress tensor once its collinear hypothesis
 is available.  In the application, let $J_{ab}$ be a symmetric conserved
 stress insertion, let $p_{d,b}$ be the local positional response, and let
@@ -138,8 +147,15 @@ $Y_d(K)$ be the spin response.  The stress-law package consists of the
 conservation law, the symmetric raw stress identity, and the flux identity
 that identifies the infinitesimal rotation of a moment with the integral
 of the stress flux; its precise form is (S1)--(S3) before
-Lemma~\ref{lem:ward-local-response-laws}.  The actual source constructs the flux test rather
-than assuming a noncompact rotation field is admissible.
+Lemma~\ref{lem:ward-local-response-laws}. The flux argument uses the
+compactly supported test described below; it does not assume that a
+noncompact rotation field is admissible.
+
+Until the scalar comparison $p=c\mathcal P$ is proved, write
+$\mathcal A_K(p,Y;q;x)$ for the expression
+\eqref{eq:ward-angular-expression} with $p,Y$ substituted for
+$\mathcal P,\mathcal Y$. The compact stress argument below proves its
+vanishing. It does not yet identify $p$ with a positional derivative.
 
 The following paragraph is motivation only; the test actually used is the
 growing anisotropic petal described after the price estimates.  For fixed
@@ -219,9 +235,9 @@ Denote by $Z_{r,n}$ its cone-weighted variant
 \]
 The following are the precise price bounds needed from the collinear
 spectral estimates.  The positive line and point prices are supplied by
-Section~\ref{sec:physical-ward-packet-prices}; the cone-weighted bound is
+Subsection~\ref{sec:physical-ward-packet-prices}; the cone-weighted bound is
 proved by the fixed-band stress-conservation argument in
-Section~\ref{sec:physical-ward-stress-cone}.  In these notations the
+Subsection~\ref{sec:physical-ward-stress-cone}.  In these notations the
 required bounds are
 \begin{align}
  \int D_{-3000,n}\,d\nu_B&=O_u,&
@@ -268,7 +284,7 @@ the differentiated-packet bound
 \label{eq:ward-packet-tail}
 \end{equation}
 To derive it, use the exterior computation of
-Section~\ref{sec:physical-ward-packet-prices}.  For $p_d\ge0$ the temporal
+Subsection~\ref{sec:physical-ward-packet-prices}.  For $p_d\ge0$ the temporal
 factor is at most
 \[
  \|\widehat\varphi_d\|_1\exp(-p_d/e^{w_dn}),
@@ -444,7 +460,7 @@ orbital term, translating every point by $e_b$ changes $(K_{j,b}x_i)_c$
 to $(K_{j,b}x_i)_c+(K_{j,b}e_b)_c$.  Only the $c=j$ component changes,
 by one.  Therefore
 \[
- \mathcal A_{K_{j,b}}(q;x+e_b)=\mathcal A_{K_{j,b}}(q;x)
+ \mathcal A_{K_{j,b}}(p,Y;q;x+e_b)=\mathcal A_{K_{j,b}}(p,Y;q;x)
    +\sum_i S(q[i\mapsto(d+1,p_{d,j}v_i)];x).
 \]
 Both tuples remain separated and lie on the same line, so both angular
@@ -452,12 +468,12 @@ terms vanish.  Subtracting gives the stated line identity.  For the empty
 word it is the empty sum.
 \end{proof}
 
-\paragraph{Finite-level bridges used by the selected scale.}
+\subparagraph{Finite-level bridges used by the selected scale.}
 The line identity and the collinear rotational identity are only the
 geometric part of the finite-level argument.  The selected scale uses the
 following additional bridges; their order matters.
 
-\paragraph{The stress-law package.}
+\subparagraph{The stress-law package.}
 At the local algebraic stage the commutation relation and the covariance,
 reality, unit and inclusion rules for the raw responses are derived from
 the stress-law package rather than postulated separately.  We first state
@@ -469,7 +485,8 @@ one on a neighborhood of $x_0$ and whose support contains none of
 $x_1,\ldots,x_n$.  Every separated tuple has a window: take a bump function
 equal to one on the ball about $x_0$ of radius $\rho/4$ and supported in
 the ball of radius $\rho/2$, where $\rho$ is the least distance from $x_0$
-to the other points.  If $\chi$ is a window, then $\nabla\chi$ vanishes on
+to the other points when $n\ge1$; for $n=0$, choose any $\rho>0$
+(for example $\rho=1$).  If $\chi$ is a window, then $\nabla\chi$ vanishes on
 an open set $U\ni x_0$, so the compact set
 $C_\chi=\operatorname{supp}\nabla\chi$ misses $U$ and all $x_i$ with
 $i\ge1$.  For a label $v\in\mathcal F_d$ at $x_0$ and a spectator word
@@ -667,10 +684,10 @@ $(kx_0,k\boldsymbol x)$ with labels $\mathsf m_kv$, $\mathsf m_k\boldsymbol q$,
 and faithfulness gives the claim.
 \end{proof}
 
-\paragraph{Readout limits on the comparison curve.}
+\subparagraph{Readout limits on the comparison curve.}
 We next prove the two limits that compare the raw responses with the
 reference derivative and rotation action along the comparison curve.  Use
-the notation of Section~\ref{sec:actual-stress-normalization}: $E_d$ is the
+the notation of Subsection~\ref{sec:actual-stress-normalization}: $E_d$ is the
 reference field space, $F_d=\mathcal F_d$ the physical one,
 $U_{k,d}:E_d\to F_d$ the comparison maps, $r_k\downarrow0$ the radii,
 $\xi_k>0$ the stress normalizers, $J$ the physical and $J^0$ the reference
@@ -686,11 +703,11 @@ Assume the following.
   with responses $\kappa\partial^0$ and $\kappa C$, where $\partial^0$ is the
   reference derivative, $C$ is the reference infinitesimal rotation action,
   and $\kappa\ne0$ is the reference Ward coefficient
-  ($\kappa=-1$ by Section~\ref{sec:free-maxwell-ward-flux}).
+  ($\kappa=-1$ by Subsection~\ref{sec:free-maxwell-ward-flux}).
 \item[(c)] The normalization \eqref{eq:stress-fixed-normalization} holds:
   $\widetilde J_{k,ab}:=U_{k,4}^{-1}(\xi_k^{-1}r_k^4J_{ab})\to J^0_{ab}$.
 \item[(d)] Order zero of the compact convergence of
-  Section~\ref{sec:actual-stress-normalization} holds: for every fixed
+  Subsection~\ref{sec:actual-stress-normalization} holds: for every fixed
   tuple $\boldsymbol v$ of reference labels and every compact
   $Q\subset\operatorname{Conf}$,
   $\sup_{\boldsymbol z\in Q}
@@ -725,7 +742,7 @@ reads, and $M_k$ the map formed by the scaled physical reads
 \]
 By (d), applied at the single point of each observer, $M_kw\to Mw$ for
 every $w$, hence $M_k\to M$ in operator norm.  As in
-Section~\ref{sec:actual-stress-normalization}, compactness of the unit
+Subsection~\ref{sec:actual-stress-normalization}, compactness of the unit
 sphere gives $\gamma>0$ with $\|Mw\|\ge\gamma\|w\|$, hence
 $\|M_kw\|\ge(\gamma/2)\|w\|$ for all large $k$.  Consequently, if
 $w_k\in E_e$ and $M_kw_k\to Mw$, then
@@ -809,7 +826,7 @@ a fixed grade, so a single tail of the comparison curve serves all of them.
 In the translation limit the extra factor $r_k$ compensates the one power
 lost by the gradient of the rescaled window.  In the rotation limit the
 arm of the rotational weight supplies that power.  These are exactly the
-normalizations used in Section~\ref{sec:physical-angular-actions}.
+normalizations used in Subsection~\ref{sec:physical-angular-actions}.
 
 To obtain the all-order line jets, do not differentiate an identity known
 only on the line.  First form the mixed-cap row which sums, over the marked
@@ -895,8 +912,8 @@ parts (ii)--(v) of Lemma~\ref{lem:ward-local-response-laws}, for the
 derivative they are the corresponding properties of the derivative plan.
 The aligned comparison maps of the selected scale preserve units,
 conjugations, signed actions and inclusions through grade $d+1$, so they
-carry such arrays into $V_d$.  The source
-row identity is $R_\nu A_\nu p=R_\nu A_\nu\partial=0$.  Since
+carry such arrays into $V_d$. The common zero-row property stated above
+gives $R_\nu A_\nu p=R_\nu A_\nu\partial=0$.  Since
 $A_\nu$ is injective and $\partial\ne0$, $\partial_\nu\ne0$.  If
 $\ell(\partial_\nu)=0$, then augmented injectivity of
 $(R_\nu,\ell)$ would force $\partial_\nu=0$; thus this denominator is
@@ -936,8 +953,13 @@ a fixed basis and does not assume convergence on a moving map.
 \begin{lemma}[Differentiated Ward identity and brackets]
 \label{lem:ward-brackets}
 Suppose Still holds at every separated configuration; suppose also the
-spin rows satisfy Euclidean covariance and reality, preserve the unit,
-and commute with grade inclusion.  If the selected table has the erasure
+spin rows satisfy reality, preserve the unit, commute with grade inclusion,
+and obey signed-permutation covariance: for every grade $d$, signed
+permutation matrix $k$, $u\in\mathfrak{so}(4)$ and $v\in\mathcal F_d$,
+\[
+ \mathsf m_k\mathcal Y_d(u)v
+   =\mathcal Y_d(kuk^{\mathsf T})\mathsf m_kv.
+\]  If the selected table has the erasure
 property just described, then for every grade $d$ and $u,v\in\mathfrak{so}(4)$,
 \[
  [\mathcal Y_d(u),\mathcal Y_d(v)] = \mathcal Y_d([u,v]).
@@ -950,10 +972,10 @@ For a fixed word $q$ define the simultaneous orbital vector field
  X_u(x)_i=u x_i.
 \]
 The Ward identity and the derivative rule give
-\[
+\begin{equation}
  X_u S(q;x)=-\sum_i S(q[i\mapsto\mathcal Y(u)q_i];x).
-\tag{1}\label{eq:ward-orbital}
-\]
+\label{eq:ward-orbital}
+\end{equation}
 The minus sign is fixed by the convention in the angular expression.
 Because Still holds throughout the open configuration space, (1) can be
 differentiated there and used again on each substituted word.  The vector
@@ -962,7 +984,7 @@ differentiating the linear maps $x\mapsto ux$ and $x\mapsto vx$.
 Consequently the commutator of the two orbital derivatives on a moment
 is $-X_{[u,v]}S(q;x)$.
 
-On the other hand, apply (1) twice.  Terms where the two spin substitutions
+On the other hand, apply \eqref{eq:ward-orbital} twice.  Terms where the two spin substitutions
 hit distinct slots cancel in pairs: the term indexed by $(i,j)$ in one
 order is the same moment as the term indexed by $(j,i)$ in the reverse
 order.  The terms with both substitutions at slot $i$ leave the positive
@@ -971,7 +993,7 @@ commutator
  \sum_i S\bigl(q[i\mapsto
   ([\mathcal Y_d(u),\mathcal Y_d(v)]q_i)];x\bigr).
 \]
-The orbital vector-field bracket is $-X_{[u,v]}$, and by (1) its action on
+The orbital vector-field bracket is $-X_{[u,v]}$, and by \eqref{eq:ward-orbital} its action on
 the moment is $+\sum_i S(q[i\mapsto\mathcal Y_d([u,v])q_i];x)$.  Equating
 the two computations gives zero row sum for the defect
 \[
@@ -993,7 +1015,7 @@ This proves the bracket identity at every grade.
 \begin{corollary}[Selected finite-level Ward package]
 \label{cor:selected-ward-package}
 Assume the selected finite-level data supplied by
-Section~\ref{sec:actual-stress-normalization} and the finite-row
+Subsection~\ref{sec:actual-stress-normalization} and the finite-row
 comparisons above.  In particular, for one $c\ne0$ the
 raw responses obey $p=cV$ and $Y=c\widetilde Y$, where $V$ is the genuine
 positional derivative and $\widetilde Y$ is the normalized spin action.
@@ -1027,10 +1049,10 @@ with an uncountable family of tests.
 \end{proof}
 
 The cove, line, mass, point and exterior prices used by the stress packet
-are the exact inputs of Section~\ref{sec:physical-ward-packet-prices}; their
+are the exact inputs of Subsection~\ref{sec:physical-ward-packet-prices}; their
 exponent composition and the $-101+100=-1$ normalization are proved above.
 The common selected curve, finite observer/jet convergence and scalar
-normalization are supplied by Section~\ref{sec:actual-stress-normalization}.
+normalization are supplied by Subsection~\ref{sec:actual-stress-normalization}.
 For the Maxwell reference table, Theorems~\ref{thm:free-quiet-classification}
 and~\ref{thm:free-collinear-scenes} supply the quiet-charge classifier and its
 finite collinear tests at grades above their common threshold.

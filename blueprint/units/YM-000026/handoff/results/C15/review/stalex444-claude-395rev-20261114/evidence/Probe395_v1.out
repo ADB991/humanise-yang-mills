@@ -1,0 +1,208 @@
+structure YM.Next.Rank.Station.FitSky {G : YM.Gauge} (a : YM.RG.Levels G) (b : ℝ) (k : ℕ) {n : ℕ} (x : YM.Points n) :
+  Prop
+number of parameters: 6
+fields:
+  YM.Next.Rank.Station.FitSky.usable : YM.Next.Rank.Station.key a b k x ∈ YM.generic n
+  YM.Next.Rank.Station.FitSky.deep : ∀ (i : Fin n) (j : YM.Axis),
+      |((YM.Next.Rank.Station.key a b k x).ofLp i).ofLp j| ≤ a.S.a (YM.Next.Rank.Station.middleSky a b k) / 8
+constructor:
+  YM.Next.Rank.Station.FitSky.mk {G : YM.Gauge} {a : YM.RG.Levels G} {b : ℝ} {k n : ℕ} {x : YM.Points n}
+    (usable : YM.Next.Rank.Station.key a b k x ∈ YM.generic n)
+    (deep :
+      ∀ (i : Fin n) (j : YM.Axis),
+        |((YM.Next.Rank.Station.key a b k x).ofLp i).ofLp j| ≤ a.S.a (YM.Next.Rank.Station.middleSky a b k) / 8) :
+    YM.Next.Rank.Station.FitSky a b k x
+@YM.Next.Rank.Station.FitSky.usable : ∀ {G : YM.Gauge} {a : YM.RG.Levels G} {b : ℝ} {k n : ℕ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky a b k x → YM.Next.Rank.Station.key a b k x ∈ YM.generic n
+@YM.Next.Rank.Station.FitSky.deep : ∀ {G : YM.Gauge} {a : YM.RG.Levels G} {b : ℝ} {k n : ℕ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky a b k x →
+    ∀ (i : Fin n) (j : YM.Axis),
+      |((YM.Next.Rank.Station.key a b k x).ofLp i).ofLp j| ≤ a.S.a (YM.Next.Rank.Station.middleSky a b k) / 8
+def YM.Next.Rank.Station.gainSky : YM.Schedule → ℕ → ℝ → ℕ :=
+fun T i r => {j ∈ Finset.range (i + 1) | r ≤ T.a j / T.a i}.sup id
+def YM.Next.Rank.Station.middleSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S k (YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2)
+def YM.Next.Rank.Station.widthSky : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → ℕ :=
+fun {G} A b k => YM.Next.Rank.Station.gainSky A.S (YM.Next.Rank.Station.middleSky A b k) (↑(A.clock.coverSize k) ^ 10)
+def YM.Next.Rank.Station.choose : {G : YM.Gauge} →
+  YM.RG.Levels G → ℝ → ℕ → {n : ℕ} → YM.Points n → Fin n → YM.Lattice.Cover :=
+fun {G} a b k {n} x => YM.Extraction.address (YM.Next.Rank.Station.mag a b k)⁻¹ x
+def YM.Next.Rank.Station.key : {G : YM.Gauge} → YM.RG.Levels G → ℝ → ℕ → {n : ℕ} → YM.Points n → YM.Points n :=
+fun {G} a b k {n} x => YM.Extraction.tag (a.S.a k) (YM.Next.Rank.Station.choose a b k x)
+def YM.Extraction.address : {n : ℕ} → ℝ → YM.Points n → Fin n → YM.Lattice.Cover :=
+fun {n} t x i a => ⌈(x.ofLp i).ofLp a / t⌉
+def YM.Extraction.tag : {n : ℕ} → ℝ → (Fin n → YM.Lattice.Cover) → YM.Points n :=
+fun {n} t p => YM.points fun i => WithLp.toLp 2 fun a => t * ↑(p i a)
+@YM.Next.Rank.Station.FitSky.margin : ∀ {G : YM.Gauge} {F : YM.Family G} {k N n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    ∀ (p : ℕ) (hN : k ≤ N) (i : Fin n),
+      have a := F.path.levels;
+      have T := YM.Cells.center F.S p ⋯ 0;
+      YM.Cells.location F.S k N p (YM.Next.Rank.Station.choose a b k x i) ∈ T.margin 0 (↑T.side / 8)
+'YM.Next.Rank.Station.FitSky.margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Station.FitSky.stencils : ∀ {G : YM.Gauge} {F : YM.Family G} {k n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    F.Makes →
+      ∀ (d : ℕ),
+        ∀ᶠ (N : ℕ) in Filter.atTop,
+          ∃ (hN : k ≤ N),
+            ∀ (p : ℕ) (i : Fin n) (v : F.label d),
+              have a := F.path.levels;
+              have T := YM.Cells.center F.S p ⋯ 0;
+              YM.Cells.Interior (T.chamber 0)
+                (F.O N p v (YM.Cells.location F.S k N p (YM.Next.Rank.Station.choose a b k x i)))
+'YM.Next.Rank.Station.FitSky.stencils' depends on axioms: [propext, Classical.choice, Quot.sound]
+@lifted_costSky : ∀ {G : YM.Gauge} {F : YM.Family G} {k n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    ∀ (p : ℕ) (i : Fin n) (a : YM.Axis),
+      have A := F.path.levels;
+      8 * (YM.Next.Rank.Station.choose A b k x i a).natAbs ≤ ↑(A.S.toDepth ⋯ p).count
+@spread_costSky : ∀ {G : YM.Gauge} {F : YM.Family G} {k N n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    ∀ (hN : k ≤ N) (p : ℕ) (i : Fin n) (j : YM.Axis),
+      have a := F.path.levels;
+      have T := F.S.toDepth ⋯ p;
+      have r := F.S.toDepth hN p;
+      8 * ((↑r.count • YM.Next.Rank.Station.choose a b k x i) j).natAbs ≤ ↑T.count
+@interiorsSky : ∀ {G : YM.Gauge} {F : YM.Family G} {k : ℕ} {b : ℝ} (d : ℕ),
+  ∀ᶠ (N : ℕ) in Filter.atTop,
+    ∃ (hN : k ≤ N),
+      ∀ (p : ℕ),
+        ∀ z ∈ (F.localSection d).stencil,
+          ∀ (j : YM.Axis),
+            have A := F.path.levels;
+            have T := YM.Cells.center F.S p ⋯ 0;
+            (z j).natAbs < ↑T.side / 8
+'_private.YM.TraceExtension.Prom.Hill.Coordinates.0.YM.Next.Rank.Station.interiorsSky' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@YM.Extraction.Around.figure : ∀ {G : YM.Gauge} {C : YM.Family G} {N p : ℕ},
+  C.Makes →
+    ∀ (T : YM.Cells.Tiling (C.side N p)) (v : C.book.Token) (K : ℕ),
+      ∀ x ∈ T.margin 0 K,
+        (∀ z ∈ (C.localSection v.fst).stencil, ∀ (a : YM.Axis), (z a).natAbs < K) →
+          YM.Cells.Interior (T.chamber 0) (C.seen v x)
+'YM.Extraction.Around.figure' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Cells.Tiling.fits_stencil : ∀ {n : YM.Lattice.Side} (T : YM.Cells.Tiling n) {x : YM.Lattice.Site n} {v : T.Cell}
+  {k : ℕ},
+  x ∈ T.margin v k →
+    ∀ {z : YM.Lattice.Cover}, (∀ (a : YM.Axis), (z a).natAbs < k) → (YM.Lattice.wrap n) z + x ∈ T.chamber v
+'YM.Cells.Tiling.fits_stencil' depends on axioms: [propext, Classical.choice, Quot.sound]
+def YM.Cells.Tiling.margin : {n : YM.Lattice.Side} → (T : YM.Cells.Tiling n) → T.Cell → ℕ → Set (YM.Lattice.Site n) :=
+fun {n} T v k =>
+  {x | x ∈ T.chamber v ∧ ∀ (a : YM.Axis), k ≤ T.coordinated v x a ∧ T.coordinated v x a + k + T.kind.shift ≤ ↑T.side}
+def YM.Cells.Tiling.chamber : {n : YM.Lattice.Side} → (T : YM.Cells.Tiling n) → T.Cell → Set (YM.Lattice.Site n) :=
+fun {n} T v => {x | ∀ (i : YM.Axis), T.kind.Strict (↑T.side) (ZMod.val (x i - T.starts v i))}
+def YM.Cells.Tiling.coordinated : {n : YM.Lattice.Side} →
+  (T : YM.Cells.Tiling n) → T.Cell → YM.Lattice.Site n → YM.Axis → ℕ :=
+fun {n} T v x a => ZMod.val (x a - T.starts v a)
+def YM.Cells.Kind.Strict : YM.Cells.Kind → ℕ → ℕ → Prop :=
+fun x x_1 x_2 =>
+  match x, x_1, x_2 with
+  | YM.Cells.Kind.site, w, r => 0 < r ∧ r < w
+  | YM.Cells.Kind.link, w, r => r < w
+def YM.Cells.Kind.shift : YM.Cells.Kind → ℕ :=
+fun x =>
+  match x with
+  | YM.Cells.Kind.site => 0
+  | YM.Cells.Kind.link => 1
+def YM.Cells.center : (S : YM.Schedule) →
+  {m N : ℕ} → (p : ℕ) → m ≤ N → YM.Lattice.Site (S.side N p) → YM.Cells.Tiling (S.side N p) :=
+fun S {m N} p h o =>
+  { period := S.side m p, units := S.toDepth h p, widthHalf := YM.Cells.half S m p, even := ⋯,
+    kind := YM.Cells.Kind.link, base := fun i => o i - ↑(↑(S.toDepth h p).count / 2) }
+def YM.Cells.location : (S : YM.Schedule) → ℕ → (N p : ℕ) → YM.Lattice.Cover → YM.Lattice.Site (S.side N p) :=
+fun S k N p x => if h : k ≤ N then (S.toDepth h p).embed ((YM.Lattice.wrap (S.side k p)) x) else 0
+structure YM.Cells.Interior {n : YM.Lattice.Side} {G : YM.Gauge} (K : Set (YM.Lattice.Site n))
+  (F : YM.Wilson.Config G n → ℂ) : Prop
+number of parameters: 4
+fields:
+  YM.Cells.Interior.gauge : YM.Lattice.GaugeInvariant F
+  YM.Cells.Interior.borel : Measurable F
+  YM.Cells.Interior.localSites : YM.Lattice.LocalOn K F
+  YM.Cells.Interior.cost : ∃ c, ∀ (U : YM.Wilson.Config G n), ‖F U‖ ≤ c
+constructor:
+  YM.Cells.Interior.mk {n : YM.Lattice.Side} {G : YM.Gauge} {K : Set (YM.Lattice.Site n)} {F : YM.Wilson.Config G n → ℂ}
+    (gauge : YM.Lattice.GaugeInvariant F) (borel : Measurable F) (localSites : YM.Lattice.LocalOn K F)
+    (cost : ∃ c, ∀ (U : YM.Wilson.Config G n), ‖F U‖ ≤ c) : YM.Cells.Interior K F
+def YM.Source.SectionData.footprint : {G : YM.Gauge} →
+  {d : ℕ} →
+    {F : YM.Labels.Frame G d} →
+      YM.Source.SectionData F → {n : YM.Lattice.Side} → YM.Lattice.Site n → Finset (YM.Lattice.Site n) :=
+fun {G} {d} {F} C {n} o => Finset.image (fun x => (YM.Lattice.wrap n) x + o) C.stencil
+def YM.Lattice.LocalOn.{u_1, u_2, u_3} : {R : Type u_1} →
+  {K : Type u_2} → [AddCommGroup R] → [One R] → {B : Type u_3} → Set (YM.Four R) → (YM.Lattice.Links R K → B) → Prop :=
+fun {R} {K} [AddCommGroup R] [One R] {B} X F => ∀ (U V : YM.Lattice.Links R K), YM.Lattice.Agrees X U V → F U = F V
+def YM.Lattice.Agrees.{u_1, u_2} : {R : Type u_1} →
+  {K : Type u_2} → [AddCommGroup R] → [One R] → Set (YM.Four R) → YM.Lattice.Links R K → YM.Lattice.Links R K → Prop :=
+fun {R} {K} [AddCommGroup R] [One R] X U V =>
+  ∀ (e : YM.Lattice.Edge (YM.Four R)), e.1 ∈ X → e.1 + YM.Lattice.step e.2 ∈ X → U e = V e
+YM.Cells.trueLength : ∀ (S : YM.Schedule) {m N p : ℕ} (h : m ≤ N) (o : YM.Lattice.Site (S.side N p)),
+  S.a N * ↑↑(YM.Cells.center S p h o).side = S.a m
+@YM.Trace.Verse.seat : ∀ {G : YM.Gauge} {C : YM.Family G} {𝓛 : Ultrafilter (ℕ × ℕ)} {f : YM.Extraction.Order}
+  {S : YM.Table C.book} {V : YM.OS.Chamber S YM.timeAxis} {A : YM.OS.Spread V} {p : A.Resolution} {d : ℕ}
+  {H : (YM.Cells.standard C).Hierarchy} {J : YM.Climb.Scaling S} {W : (i : ℕ) → YM.MergeProof.East.Vane C i}
+  {Y : (d : ℕ) → ℕ → (YM.Cells.standard C).Field d →L[ℂ] C.label d},
+  YM.Trace.Terrace.Gondola f H J 𝓛 W Y →
+    YM.Spec.Seed C f S →
+      ↑𝓛 ≤ f.fuse →
+        p.Out →
+          YM.OS.Ground.Steady V →
+            ∀ {K : p.X → YM.Table C.book},
+              (∀ (i : p.X), (K i).Hierarchy) →
+                (∀ (i : p.X), p.receives (K i) i) →
+                  ∀ (t : Fin 2 → YM.MergeProof.East.PegC C d) (x' : p.X),
+                    (K x').respects S →
+                      ∀ᶠ (i : ℕ) in Filter.atTop,
+                        ∀ (x : YM.Points 2),
+                          YM.Next.Rank.Station.FitSky C.path.levels (W i).b (W i).k x →
+                            YM.Trace.Verse.fad (W i) x ∈ YM.Climb.Scaling.window 100 2 →
+                              have T := fun j => (YM.MergeProof.East.PoleC C d) (t j);
+                              have Q := YM.Trace.Verse.fad (W i) x;
+                              have m := YM.Next.Rank.Read.maxProfile C Q fun j => ⟨d, T j⟩;
+                              ‖((S.classMoment (K x') (fun x => d) (YM.Trace.Verse.rum (W i) x)) fun j =>
+                                      (J.U i d) (T j)) -
+                                    ((YM.Cells.standard C).classMoment (YM.Cells.standard C) (fun x => d) Q) T‖ ≤
+                                YM.Next.UVStress.costHint i +
+                                  (‖YM.Marker.Poly.part m (YM.Next.Rank.Glyph.slot 0)‖ +
+                                      ‖YM.Marker.Poly.part m (YM.Next.Rank.Glyph.slot 1)‖) *
+                                    YM.Next.UVStress.costHint i
+'YM.Trace.Verse.seat' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe395_v1.lean:75:21: error(lean.unknownIdentifier): Unknown constant `Lattice.Axis`
+Probe395_v1.lean:79:42: error(lean.unknownIdentifier): Unknown constant `Lattice.Axis`
+'probe_key_scale' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'probe_fit_middle' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+Probe395_v1.lean:100:18: error: don't know how to synthesize placeholder for argument `h`
+context:
+G : Gauge
+F : Family G
+b : ℝ
+k N : ℕ
+hN : k ≤ N
+p : ℕ
+⊢ widthSky F.path.levels b k ≤ N
+Probe395_v1.lean:110:28: error(lean.unknownIdentifier): Unknown constant `Lattice.Axis`
+'probe_side_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_side_odd' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'probe_kind_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_chamber_closed' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'probe_stencil_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_stencils_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+       32.73 real         3.15 user         3.57 sys
+          6950027264  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              295867  page reclaims
+              215204  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               38192  voluntary context switches
+              196370  involuntary context switches
+         75244099883  instructions retired
+         27330568325  cycles elapsed
+          1052362984  peak memory footprint

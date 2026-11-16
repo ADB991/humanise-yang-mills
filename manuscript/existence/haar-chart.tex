@@ -1,4 +1,4 @@
-\section{The actual Haar density in exponential coordinates}
+\subsection{The actual Haar density in exponential coordinates}
 \label{sec:haar-chart}
 The chart factor in the packet is the density of probability Haar
 measure. We construct it from the given local exponential and logarithm,
@@ -17,84 +17,44 @@ For a group element $u$, where the expression stays in the chart set
  T_u(b)=\log(u\exp b),\qquad
  H(b)=D T_{(\exp b)^{-1}}(b),\qquad J(b)=\det H(b).
 \]
-The map $(b,c)\mapsto\log((\exp b)^{-1}\exp c)$ is analytic
-near every point $(b,b)$: its matrix argument is the identity there,
-where the specified logarithm is analytic. Differentiating in $c$
-and restricting to the diagonal shows that $H$, and hence $J$, is
-analytic. At zero, $T_1$ agrees with the identity on a neighbourhood,
-so $H(0)=1$ and $J(0)=1$. Shrink $D$ so that
-$1/2<J(b)<2$ throughout $D$.
-
-\subsection{The overlap identity and normalization}
-If $b,T_u(b)\in D$, put $y=T_u(b)$. Locally at $b$,
+In the left trivialization, $H(b)=(dL_{\exp(-b)})_{\exp b}
+D\exp(b)$. The exponential differential formula
+\cite[Theorem~1.5.3, Eq.~(1.5.1)]{DuistermaatKolk} gives
 \[
- T_{(\exp b)^{-1}}
-       =T_{(\exp y)^{-1}}\circ T_u.
+ H(b)=\int_0^1 e^{-t\operatorname{ad}b}\,dt .
 \]
-Indeed $\exp y=u\exp b$, and the intermediate exponential and
-logarithm cancel on this overlap. Differentiate at $b$ and take
-determinants to obtain
-\begin{equation}\label{eq:haar-overlap}
- J(T_u(b))\det D T_u(b)=J(b).
-\end{equation}
-Both densities are positive, so the transition determinant is positive
-as well.
-
-Let $\nu=\exp_*(1_DJ(b)\,db)$. It is a nonzero finite measure,
-supported on $U$: positivity gives nonzero mass, and the upper bound
-$J<2$ on the bounded ball gives finiteness. For a measurable
-$A\subset U$, change variables by $T_u$ on
-$\{b\in D:u\exp b\in A\}$. This map is injective there and has
-image $\{y\in D:\exp y\in A,\ u^{-1}\exp y\in U\}$;
-its inverse is $T_{u^{-1}}$. Equation~\eqref{eq:haar-overlap}
-therefore gives
-\begin{equation}\label{eq:haar-local-translation}
- \nu(u^{-1}A)=\nu(A\cap uU).
-\end{equation}
-All sets lie in open chart domains, so the ordinary finite-dimensional
-change-of-variables formula applies also to their measurable subsets.
-
-Let $h$ be probability Haar measure on the compact group. Integrate
-\eqref{eq:haar-local-translation} over $u$ with respect to $h$.
-Tonelli's theorem and right invariance give
-\[
- \int\nu(u^{-1}A)\,dh(u)
- =\int\!\int 1_A(ux)\,dh(u)\,d\nu(x)
- =\nu(G)h(A).
-\]
-On the other side, inversion and right translation preserve $h$, so
-\[
- \int\nu(A\cap uU)\,dh(u)
- =\int 1_A(x)\!\int1_U(u^{-1}x)\,dh(u)\,d\nu(x)
- =h(U)\nu(A).
-\]
-The open nonempty set $U$ has positive Haar measure. Define
-$c_{\rm chart}=h(U)/\nu(G)>0$. Then, for every measurable $A\subset U$,
-$h(A)=c_{\rm chart}\nu(A)$. Since $\nu$ is supported on $U$, this
-is the exact identity of measures
+Thus $J$ is analytic with $J(0)=1$. Shrink $D$ so that $1/2<J<2$
+there. Transporting Lebesgue density at the identity by left
+translations defines a smooth left-invariant density on all of $G$.
+It has finite nonzero total mass by compactness, so its normalization
+is probability Haar measure by uniqueness. Its pullback to $D$ has
+density $J(b)$ by the left trivialization above. In particular, with
+$m_G$ denoting probability Haar measure and
+$c_{\rm chart}=m_G(U)/\int_D J(b)\,db$, we have
 \begin{equation}\label{eq:haar-chart-measure}
- \exp_*\bigl(1_D c_{\rm chart}J(b)\,db\bigr)=h|_U.
+ \exp_*\bigl(1_D c_{\rm chart}J(b)\,db\bigr)=m_G|_U.
 \end{equation}
-This argument constructs both the analytic density and its scalar
-normalization from the local chart and the given probability Haar
-measure. It makes no assertion that additive Lebesgue measure is a
-Haar measure on the group.
+The normalization uses the entire compact group, including all
+components if $G$ is disconnected.
 
-\subsection{The protected chart correction}
-Fix $a>0$ and use the prescribed small scale
-$t=P(h)/\sqrt h>0$ from \eqref{eq:warning-scales}. It has upper
-exponent $-1/2$, and $t^{-1}\le\sqrt h$ because $P(h)\ge1$;
+\subsubsection{The protected chart correction}
+Fix $a>0$ and use the prescribed small fluctuation scale
+$\tau=P/\sqrt h>0$ from \eqref{eq:warning-scales}, where $h$ is the
+fine reference coupling. (In \eqref{eq:warning-scales} the letter $t$
+denotes the larger coordinate warning threshold $\xi\tau\sqrt\beta$;
+it does not occur in this section.) The scale $\tau$ has upper
+exponent $-1/2$, and $\tau^{-1}\le\sqrt h$ because $P\ge1$;
 thus its reciprocal has upper exponent $1/2$. Let $\chi:[0,\infty)\to[0,1]$
 be the smooth cutoff, equal to one on $[0,1]$ and zero on $[4,\infty)$.
 For a fluctuation bond $u_i$ set
 \[
- \gamma_a(u_i)=\chi\!\left(\frac{\|u_i\|^2}{a^2t^2}\right),
+ \gamma_a(u_i)=\chi\!\left(\frac{\|u_i\|^2}{a^2\tau^2}\right),
  \qquad j_i(u)=\gamma_{2a}(u_i)\log J(u_i).
 \]
 Outside the chart this last expression can use any specified measurable
 extension of $J$ and the total real logarithm convention; the cutoff
-makes its value zero there once $4at$ is smaller than the chart radius.
-Where $\gamma_a(u_i)\ne0$, we have $\|u_i\|\le2at$, and hence
+makes its value zero there once $4a\tau$ is smaller than the chart radius.
+Where $\gamma_a(u_i)\ne0$, we have $\|u_i\|\le2a\tau$, and hence
 $\gamma_{2a}(u_i)=1$. Positivity of $J$ then proves
 \begin{equation}\label{eq:haar-chart-exact}
  e^{j_i(u)}=J(u_i)\quad\hbox{where }\gamma_a(u_i)\ne0.
@@ -105,9 +65,9 @@ of the narrower protected integral.
 Since $\log J$ is analytic near zero and vanishes there, the
 fundamental theorem of calculus on a smaller closed ball gives
 $|\log J(v)|\le C\|v\|$. If $\gamma_{2a}(u_i)$ is nonzero,
-$\|u_i\|\le4at$; if it is zero, $j_i=0$. Therefore, globally in $u$,
+$\|u_i\|\le4a\tau$; if it is zero, $j_i=0$. Therefore, globally in $u$,
 \begin{equation}\label{eq:haar-chart-value}
- |j_i(u)|\le4aCt.
+ |j_i(u)|\le4aC\tau.
 \end{equation}
 In particular the bound $|j_i|\le1$ used in the packet estimate holds
 at one sufficiently large coupling threshold, uniformly in the period
@@ -120,11 +80,11 @@ $v(x)$, where $v$ has upper exponent $-1/2$. This is the compensated
 variation supplied by the Gaussian change of variables; its production
 is separate from the chart calculation here. If $\gamma_b(u_i(y))$
 is zero on a neighbourhood of $y_0$, all its jets vanish. Otherwise
-continuity gives $\|u_i(y_0)\|\le2bt$. Thus every derivative,
-including order zero, of $u_i$ at $y_0$ is bounded by $v+2bt$.
-For $g=u_i/(bt)$ these bounds are at most
+continuity gives $\|u_i(y_0)\|\le2b\tau$. Thus every derivative,
+including order zero, of $u_i$ at $y_0$ is bounded by $v+2b\tau$.
+For $g=u_i/(b\tau)$ these bounds are at most
 \[
- K_b=(bt)^{-1}(v+2bt),
+ K_b=(b\tau)^{-1}(v+2b\tau),
 \]
 which has upper exponent zero. The derivatives of $\|g\|^2$ are
 bounded by a fixed polynomial in $K_b$; this follows directly by the
@@ -140,8 +100,8 @@ uses the range of $\chi$; a uniform amplitude from the positive-order
 bounds can be absorbed into $L_b$.
 
 Apply this to the broader cutoff $b=2a$. If its germ vanishes, so do
-all jets of $j_i$. Otherwise $\|u_i(y_0)\|\le4at$, and all jets
-of $u_i$ are bounded by $V=v+4at$, which tends to zero. All derivatives
+all jets of $j_i$. Otherwise $\|u_i(y_0)\|\le4a\tau$, and all jets
+of $u_i$ are bounded by $V=v+4a\tau$, which tends to zero. All derivatives
 of $\log J$ through order $k$ are bounded on a fixed smaller chart
 ball. For positive derivative order, each partition term in the
 chain rule contains at least one derivative of $u_i$; since $V\le1$,

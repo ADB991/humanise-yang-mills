@@ -1,0 +1,12 @@
+# Actual validation and scope limits
+
+Session `mgubi-astra-centered-root-seminorm-20261113`; author-side only. Repository AGENTS/contribution/coordination/proof-standard/source instructions are the unchanged canonical versions used in the preceding bounded sessions. Read task268 body/claim, relevant live43/182/122 histories and exact output boundaries. Issue43's unreleased four-chapter author claim excludes centered-estimates.tex; issue182 owns other passages; the C03 revision is released. Read C03 ledger/consumer, PR219's exact relevant reports and the immediate source definitions listed in correspondence.md. No whole-package review or source-tree traversal.
+
+- `verify.py`: PASS 15 frozen versions, 13 current hashes, 10 source-manifest entries. Verifies the manuscript input/output, consumer, ledger, immediate Lean files and two frozen PR219 reports. Full Lean/source and C03 directories unchanged.
+- `python3 scripts/check_blueprint.py`: PASS, four units; does not verify Lean or mathematics. `git diff --check`: PASS.
+- From manuscript/: `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/ym-centered-root-build existence.tex`: final exit0, 984 pages. Log `/tmp/ym-centered-root-build/build-final.log`, PDF `/tmp/ym-centered-root-build/existence.pdf`. Rebuilt after removing the new subsection heading at parent request, preserving the original chapter structure. Final LaTeX log has no undefined references or duplicate labels; existing amsmath atopwithdelims warning and 1.82599pt overfull box at public-run-binding lines39–47 remain.
+- Rendered final PDF with PyMuPDF and visually inspected pages90–92, files `/tmp/ym-centered-root-build/page-90.png`, `page-91.png`, `page-92.png`. Statement, finite-expansion proof, real projection and return to the original quantitative paragraph are legible with no clipped equations/new layout defect.
+
+No Lean elaboration/build, transitive axiom audit, checker tests or combined unmerged-author builds. No external literature theorem was adopted. Proof is conditional on the explicit planted estimate; the reflection-positive/chessboard supplier remains outside scope. Only centered-estimates.tex and this new author directory change. Parent owns final live recheck/handoff coordination and claim release; no approval, merge, closure or human acceptance.
+
+Final live task268 recheck found the issue open with only this active bounded claim. Parent inspected the complete proof and records, replayed the verifier and checked the final build/render before draft submission.

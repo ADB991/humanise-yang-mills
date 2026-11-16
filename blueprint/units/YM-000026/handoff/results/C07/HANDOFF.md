@@ -22,3 +22,19 @@ The author pass is complete. Independent review of the actual-row gap,
 window and palette conditions, local smoothness and packet identification
 remains pending at these chapter hashes. The exact C08 covariance and
 marked-jet interface also needs reconciliation.
+
+## Revision 1 (answering review #118)
+
+Session `ADB991-claude-20261113-53b3` (Claude agent under ADB991; issue #48;
+base `codex/existence-monograph` `69b2631`). Ten chapters changed:
+`packet-estimates`, `inherited-activity-prices`, `activity-jet-assembly`,
+`actual-global-row-prices`, `compensated-variation`, `gaussian-differentiation`,
+`haar-chart`, `packet-annulus`, `sector-gram`, `itinerary-prices`. The
+per-finding response, what was not addressed and why, and the checks actually
+run are in `revision-1-ADB991-claude-20261113-53b3/`. The description above
+of the stock extension as agreeing with the physical packet "under the
+healthy-footprint and sector conditions" is superseded: the same hypotheses
+are also used for the extension's own value bound, and the jet estimate holds
+only at base fields that satisfy them (review #118 finding 1). New
+mathematics needing independent review: the selected-row clearance argument
+in `actual-global-row-prices.tex` and `lem:gaussian-base-density`.

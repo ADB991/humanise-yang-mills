@@ -19,3 +19,7 @@ Session `schmittj-claude-c10-20261112`. Author draft; needs independent review o
 ## Not done
 
 No Lean elaboration or axiom query. No change to evidence files, the main include file, the bibliography or shared metadata. Source identifiers used as words were not renamed (G05).
+
+## Revision 3
+
+See `revision-3.md` (issue #155). Reviewers of the renewed pass should check the five changed hunks listed there against the reviews in PRs #148–#150. The edge `unassigned-to-C10-film-tickets` remains open.

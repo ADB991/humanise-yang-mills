@@ -1,12 +1,13 @@
-\section{From one-field purchases to the public comparison grid}
+\subsection{From one-field purchases to the public comparison grid}
 \label{ex-public-grill-producer}
 
 This section isolates the quantitative steps on the selected finite-volume
 route to the comparison grid. It proves the finite-frame price estimate, the
 radial decay once the trajectory bounds hold, and the realification and
 four-term assembly steps. The local approximation and separated-pair
-receipts are substantive upstream inputs; they are recorded explicitly at
-the end rather than treated as consequences of the assembly.
+receipts are substantive upstream inputs to this finite assembly. Their
+construction from the paid selected history is given in
+Subsection~\ref{sec:actual-phase-grid-approximants}.
 
 Write $a_j$ for the physical spacing at depth $j$, $c_j$ for the number of
 columns there, and $\sigma_j$ for its running scale. For a coefficient $L$
@@ -22,7 +23,12 @@ block of side at depth $m$, compared with a fine observable at depth $j$, is
                         \mathcal T_j+5\right),
 \]
 with $\mathcal T_j$ the vacuum treasury. This is the four-dimensional
-marked-copy estimate~\eqref{ex-centered-sail}.
+marked-copy estimate~\eqref{ex-centered-sail}. For depths $m\le j$ the gain
+is the calibrated factor
+\[
+  \operatorname{gain}(j,m)=e^{(\sigma_j-\sigma_m)/8}
+\]
+of Subsection~\ref{sec:actual-marked-portfolio-calibration}.
 
 \begin{lemma}[Finite-frame recovery from approximate coordinate atoms]
 \label{lem:ex-public-frame-recovery}
@@ -93,9 +99,14 @@ carries the support and the rooted test. The depth $m$ enters only through the
 opening condition in item~4, the scale inequality and the error
 $S_{J,m}$. Assume the
 following selected-history data at these depths. The rooted quantity below
-is the source root test for the same finite-volume law and centered chamber;
-we assume its triangle inequality, homogeneity, and invariance under complex
-conjugation, as in the selected root-test receipts.
+is the centered root test of Definition~\ref{ex-centered-budget}, for the
+same finite-volume law and centered chamber. It is absolutely homogeneous:
+multiplying the observable by $t\in\mathbb C$ multiplies each of the $M$
+copies, original or conjugated, by $t$ or $\bar t$, hence the product by a
+number of modulus $|t|^M$, and the $M$th root by $|t|$. We assume, in
+addition, its triangle inequality and its invariance under complex
+conjugation on the chamber-interior test class; these two properties are
+inputs here and are not proved in this section.
 \begin{enumerate}
 \item each coordinate coefficient has a complex local approximation in the
       window of radius $R_d+4$, with supremum bound $A_0$ and rooted error at
@@ -241,15 +252,35 @@ eventually at most $\exp(\eta\sigma_j)$. Choose $\eta<\gamma/3$. The gain
 factor is bounded by a constant times $e^{-\gamma\sigma_j}$, after absorbing
 $e^{\gamma\sigma_m}$ into that constant. The product is thus bounded by a
 constant times $e^{-(\gamma-2\eta)\sigma_j}$, which tends to zero. This gives
-the claimed threshold. The source obtains the first two subpower estimates
-from the accumulated column logarithm and column-count bounds; the gain decay
-is the scale-flight estimate.
+the claimed threshold.
 \end{proof}
+
+\begin{remark}[The schedule hypotheses]
+\label{rem:ex-public-radial-schedule}
+For the calibrated gain the last hypothesis of
+Lemma~\ref{lem:ex-public-radial-choice} holds with equality, $C_m=1$ and
+$\gamma=1/8$. The first two are consequences of a logarithmic-cost bound on
+the schedule, of the kind used in Subsubsection~\ref{ex-column-subpower}. Suppose
+that $\ell_j=\sum_{i<j}\log c_{i+1}$, that every column count satisfies
+$c_i\geq1$, that $\sigma_{i+1}-\sigma_i=\log L_i>0$ with $L_i$ the block side,
+and that there are numbers $h_i\to\infty$ with
+$\log c_{i+1}\leq h_i^{-2}\log L_i$. Given $\epsilon>0$, choose $k$ with
+$h_i^{-2}\leq\epsilon/2$ for $i\geq k$; telescoping gives
+$\ell_j\leq\ell_k+\tfrac\epsilon2(\sigma_j-\sigma_k)$ for $j\geq k$, and
+$\ell_k-\tfrac\epsilon2\sigma_k\le\tfrac\epsilon2\sigma_j$ eventually because
+$\sigma_j\to\infty$. Thus $0\leq\ell_j\leq\epsilon\sigma_j$ eventually, that is,
+$\ell_j=o(\sigma_j)$. Since $c_j\geq1$,
+$\log(1+c_j)\leq\log2+\log c_j\leq\log2+\ell_j$, so also
+$\log(1+c_j)=o(\sigma_j)$. That the selected schedule satisfies the
+logarithmic-cost bound with its column counts included, and diverges, is an
+input of this section.
+\end{remark}
 
 \begin{theorem}[Conditional assembly of the public comparison grid]
 \label{thm:ex-public-grill}
-Fix a finite list of star-real tokens $v_i$ satisfying the source plainness
-condition, and a generic grid of pairwise separated positions $x_i$. Write
+Fix a finite list of star-real tokens $v_i$, that is, tokens whose label is
+fixed by complex conjugation, $v_i^*=v_i$, and a generic grid of pairwise
+separated positions $x_i$. Write
 $H_i$ and $R_i$ for the exact unreflected and reflected whole-word insertions
 at common volume, period, and translation; reflection acts on both labels
 and positions. For each approximation index $k$, suppose there are real
@@ -310,8 +341,8 @@ history records, then uses the finite-dimensional insertion recovery, a
 finite real sum, a radial choice of the intermediate depth, and the
 four-term reflection expansion. The arguments above prove the coefficient
 recovery, finite-sum estimates, radial decay under the displayed scale
-bounds, and the final four-term assembly. The selected-history receipts that
-remain inputs are: the real local coordinate approximations, their rooted
+bounds, and the final four-term assembly. The selected-history receipts supplied by
+Subsection~\ref{sec:actual-phase-grid-approximants} are: the real local coordinate approximations, their rooted
 one-field errors, the back-transport support and price estimate, and the
 separated pair integral estimates. These are the substantive content of the
 history lemmas producing the local approximants and their served pair bounds;
@@ -321,13 +352,13 @@ correlations. This chapter supplies the real grid estimate on its own
 hypotheses and does not identify it with that convergence theorem.
 \end{remark}
 
-\section{The selected one-scale linear interpolation}
+\subsection{The selected one-scale linear interpolation}
 \label{ex-selected-linear-interpolation}
 
 We next expand the finite construction that turns the one-column coupons into
-one coherent coarser voice. It is essential that the coupons be combined
+one coherent coarser coefficient family. It is essential that the coupons be combined
 before the coefficient is chosen: choosing separately for each label would
-not give a single linear voice, and the next scale's cone estimate would not
+not give a single linear coefficient family, and the next scale's cone estimate would not
 apply. Let $\mathcal T_m$ denote the actual fine-to-coarse density map,
 $\mathcal T_mf=L^d\operatorname{push}_mf$ on grade $d$, where $L$ is the
 block scale and $\operatorname{push}_m$ integrates against the selected
@@ -335,8 +366,8 @@ transition kernel. It is integration against the
 selected transition kernel, so its linearity on the displayed integrable
 columns follows from the probability-kernel identity.
 
-Let $F$ be the finite coefficient frame, $V$ a voice at the fine scale, and
-write $I$ for its invertible coefficient readout. Assume the heard identities
+Let $F$ be the finite coefficient frame, $V$ a coefficient family at the fine scale, and
+write $I$ for its invertible coefficient readout. Assume the admissible identities
 hold:
 \begin{enumerate}
 \item[(H1)] the played coefficient has $x$-coordinate $I(v)$;
@@ -395,10 +426,10 @@ For each fixed motion, the weighted coordinate sum is exactly
 $h(g^{-1}z)$, by expanding in the frame basis; the core and grade weights
 commute with motion. The finite patch-cost estimate gives
 $h(g^{-1}z)\le R_Fh(z)$, and therefore yields
-\[
+\begin{equation}
  \sum_{g,j}|\chi_{g,j}(z)|h(e_j)\le R_Fh(z).
- \tag{2}\label{eq:ex-motion-weighted}
-\]
+ \label{eq:ex-motion-weighted}
+\end{equation}
 This weighted identity also explains why one must include the motion cost:
 a motion need not preserve the frame's $\ell^1$ norm.
 The same coefficient formula with $h(z)=\|z\|_1$ gives the unweighted
@@ -409,12 +440,12 @@ budget used for finite-wing additions:
 by the same finite patch-cost estimate.
 Assume each grade weight in $\operatorname{vowel}_L$ lies in $[1,L^d]$;
 this is the grading convention used below. The selected purchase inequalities are
-\[
+\begin{equation}
  C\ge1,\quad \eta\ge0,\quad
  \eta(1+s)R_F\le\operatorname{barunit}(L),\quad
  (C+\eta s)R_F\le K_{J(m+1)}.
- \tag{1}\label{eq:ex-interpolation-buy}
-\]
+ \label{eq:ex-interpolation-buy}
+\end{equation}
 For each basis vector $e_j$, set $v_j=I^{-1}e_j$. The fine played column
 $V(v_j)$ is formatted and integrable, and its remainder is bounded by its
 charge. The selected one-column purchase record has three clauses: the
@@ -432,14 +463,32 @@ applies to the nonnegative majorants, and each scalar cost sum is bounded by
 the given purchase budget. We use the merger in the following form, which
 this chapter does not prove: for a countable family of formatted coefficients
 $P_i$ with the same vacuum, each with remainder bound $t_i$ at a common
-positive allowance and with $\sum_it_i<\infty$, the merged coefficient (whose
-lead is $\sum_iP_i.x$, whose regular atoms are those of the $P_i$, kept
-separately, and whose forced coefficient at each address is
+positive allowance, with $\sum_it_i<\infty$ and
+$\sum_i\|P_i.x\|_1<\infty$, the merged coefficient (whose lead is the
+absolutely convergent sum $\sum_iP_i.x$, whose regular atoms are those of
+the $P_i$, kept separately, and whose forced coefficient at each address is
 $\sum_iP_i.\mathrm{forced}$) is formatted, has remainder bound $\sum_it_i$,
-and its forced profile is the sum of the forced profiles of the $P_i$. The
-statement and proof of this merger, which require the definition of the
-remainder bound, are an outstanding input of this section. This gives the exact basis coupon with lead
-$T(L)e_j$. Before simplification its three budgets are
+and its forced profile is the sum of the forced profiles of the $P_i$.
+The summable remainder budgets control the regular and forced series; they
+do not by themselves control the leads. For the density identity the same
+lawful representation and the required dominated, measurable density
+expansion are also retained. The merger, including the coefficient remainder bound and the Tale
+witnesses, is proved in Lemmas~\ref{lem:selected-coefficient-merger}
+and~\ref{lem:selected-coupon-merger}, under the summability and dominated
+density hypotheses just stated.
+
+In the column application, let $u_i$ be the predicted lead and let $x_i$
+be the actual lead chosen by the component coupon, in each of the finitely
+many required motion orientations. The separate lead-price receipt must give
+$\sum_i\|u_i\|_1<\infty$ and summable nonnegative errors
+$c_i$ with $\|x_i-u_i\|_1\le c_i$. Then the triangle inequality gives
+$\sum_i\|x_i\|_1<\infty$. The predicted family has one principal lead
+$T(L)e_j$ and zero leads for the regular and forced components, so its
+lead sum is finite; the summable error and remainder prices are separate
+requirements on the purchased coupons. Subject to these receipts and the
+merger of Lemma~\ref{lem:selected-coupon-merger}, this gives the basis coupon with predicted lead
+$T(L)e_j$ and the lead-error budget displayed below. Before simplification
+its three budgets are
 \[
  \eta(\|\operatorname{core}e_j\|_1+V.\operatorname{charge}(v_j)),\quad
  C D(e_j)+\eta V.\operatorname{charge}(v_j),\quad
@@ -449,18 +498,20 @@ Each paid column receipt controls its lead after every motion: the transported
 coefficient $X_{g,j}$ satisfies
 $\|X_{g,j}-T(L)(g e_j)\|_1\le\epsilon\|\operatorname{core}e_j\|_1$
 for all $g,j$. This is the all-motion clause in the one-column payment;
-no norm-isometry of a motion is used. The heard charge estimate gives
+no norm-isometry of a motion is used. The admissible charge estimate gives
 $V.\operatorname{charge}(v_j)\le s\|\operatorname{core}e_j\|_1$;
 $\|\operatorname{core}e_j\|_1\le1$ and
 $D(e_j)\ge\|\operatorname{core}e_j\|_1$. Hence the budgets are at most
 $\epsilon\|\operatorname{core}e_j\|_1$, $cD(e_j)$, and $t+2s$.
 The marked coefficient/profile payment is proved in
-Section~\ref{sec:projection-payment-producer}. The forced component is
+Subsection~\ref{sec:projection-payment-producer}. The forced component is
 paid there after the forced allowance is at most one. The selected primary
-and regular-card comparisons remain explicit analytic inputs; the
-one-scale local transition estimate of Section~\ref{sec:local-transfer}
-does not itself show that the selected history satisfies those two
-purchase clauses. Every component here is evaluated under one
+and regular-card comparisons are supplied by
+Sections~\ref{sec:primary-calibration-producer} and
+\ref{sec:regular-principal-producer}, assembled on the retained transition
+in Subsection~\ref{sec:three-port-history}. Proposition~\ref{prop:selected-reprise}
+attaches these component estimates to the stored doors under the common
+selected-history purchase hypotheses. Every component here is evaluated under one
 background law and one transition kernel.
 
 \begin{lemma}[The paid one-step cone used in the interpolation]
@@ -548,13 +599,15 @@ room bounds
 with $\operatorname{barunit}(L)=L^{-3/8}$ and the purchase inequalities
 \eqref{eq:ex-interpolation-buy}. These are exactly the scalar hypotheses of
 Lemma~\ref{lem:ex-selected-cone-step}, with $K=D=D_0$.
-Assume that the fine voice $V$ satisfies the heard identities (H1)--(H6)
+Assume that the fine coefficient family $V$ satisfies the admissible identities (H1)--(H6)
 and the profile hypotheses stated before \eqref{eq:ex-interpolation-buy}.
 The basis
-coupons have their stated exact density/profile identities and a common
-gauge door; their wings are the motion images of the common funded wing.
+coupons have their stated exact density/profile identities, summable
+remainder and lead-error prices as above, and a common gauge door. Assume
+the merger of Lemma~\ref{lem:selected-coupon-merger} applies to these component coupons. Their wings
+are the motion images of the common funded wing.
 There is a coarser
-voice $Q$ with:
+coefficient family $Q$ with:
 \begin{enumerate}
 \item every $Q(v)$ is formatted and has remainder bound
       $a(v)=cR_FD(Iv)$ at the coarse forced allowance;
@@ -581,7 +634,7 @@ address dictionaries; the conjugation flag is independent of orientation.
 
 \begin{proof}
 For each basis coordinate put $v_j=I^{-1}e_j$. Its played coefficient has
-$x$-coordinate $e_j$ by the heard identity. Let $Z_j$ be the coefficient
+$x$-coordinate $e_j$ by the admissible identity. Let $Z_j$ be the coefficient
 from its elementary coupon. For each motion $g$, the transition slice has a
 move taking the coarse origin to the required fine anchor. Reorient $Z_j$
 by that move and, on the conjugating branch, apply complex conjugation to all
@@ -609,11 +662,11 @@ For a vector $v$, assign weight
 \]
 The finite orbit coefficients are the averaging/rebasing coefficients; their
 identity is the finite reconstruction formula
-\[
+\begin{equation}
        Iv=\sum_{(g,j)\in\mathcal I}
                 w_v(g,j)\,g(e_j).
-       \tag{2}\label{eq:ex-interpolation-chips}
-\]
+       \label{eq:ex-interpolation-chips}
+\end{equation}
 Define $Q(v)$ by summing the transported coefficients with these weights,
 using the disjoint-address merge that retains their support and label data.
 Equation~\eqref{eq:ex-interpolation-chips} makes the operation complex-linear
@@ -648,11 +701,11 @@ The finite coefficient merge preserves formatting and adds these remainder
 budgets, proving item 1.
 
 For the density, linearity of the transition integral is justified by the
-integrability of each played column. Motion covariance of the heard density
+integrability of each played column. Motion covariance of the admissible density
 identifies the transported coupon density with the corresponding motion of
 the transitioned basis density, so that
 $Z_{g,j}.\mathrm{density}=\mathcal T_m(V(gv_j).\mathrm{density})$. By (H4),
-$gv_j=gI^{-1}e_j=I^{-1}(ge_j)$. Sum with the weights in (2) and use the
+$gv_j=gI^{-1}e_j=I^{-1}(ge_j)$. Sum with the weights in \eqref{eq:ex-motion-weighted} and use the
 linearity of the density (H2) and of $I^{-1}$: the result is $\mathcal T_m$
 applied to the density of
 $V\bigl(I^{-1}\sum_{g,j}\chi_{g,j}(Iv)\,g e_j\bigr)=V(v)$, by
@@ -663,7 +716,7 @@ then follows from the dressing identity below. Without (H4) the weighted sum
 would be $V$ evaluated at $\sum_{g,j}\chi_{g,j}(Iv)\,gI^{-1}e_j$, which need
 not equal $v$. The regular and forced address arrays are finite coefficient sums, hence
 complex-linear in $v$; their address dictionaries are reindexed by motion
-and need not themselves be invariant. The heard density is motion-covariant
+and need not themselves be invariant. The admissible density is motion-covariant
 by hypothesis. The forced profile covariance is an explicit assumption. For the
 exponential entry, use the coefficient identity
 $\mathrm{density}(U)=\mathrm{eval}(U)\,\mathrm{exponentialEntry}(U)
@@ -681,7 +734,7 @@ preserves the unit coordinate; the unit at each scale is $u_m=a_m^de_0$.
 
 For each $v$, put $u=Q(v).x$ and $y=\operatorname{vowel}_L(Iv)$.
 The heading map gives the two-sided map bound with $K=K_{J(m+1)}$;
-(1) bounds the leading error by
+\eqref{eq:ex-interpolation-buy} bounds the leading error by
 $\operatorname{barunit}(L)\|\operatorname{core}(Iv)\|_1$ and the
 new charge $a(v)=cR_FD(Iv)$ by $K\|\operatorname{core}y\|_1$.
 Heard gives $V.\operatorname{charge}(v)\le s\|\operatorname{core}(Iv)\|_1$.
@@ -689,7 +742,7 @@ Apply Lemma~\ref{lem:ex-selected-cone-step} with the room and bank bounds.
 It yields the new charge cone and the forward/backward coordinate
 estimates. In particular, if $Q(v).x=0$, its estimate
 $\|Iv\|_1\le c_+\|Q(v).x\|_1$ gives $Iv=0$, and therefore $v=0$.
-Thus the linear coordinate map of the new voice is injective and, in finite
+Thus the linear coordinate map of the new coefficient family is injective and, in finite
 dimension, is an isomorphism.
 
 Finally, transport each finite-wing witness to its motion address, multiply
@@ -706,19 +759,23 @@ proves item 5 and completes the common-pencil construction.
 \end{proof}
 
 The proposition is the finite assembly used by the selected one-scale
-transition. The source status of its three purchase clauses is not uniform.
-The forced clause is supplied by the large-projection estimate after the
-forced allowance is at most one and the keeper contains every nonzero slot.
-The regular clause still requires the regular-card estimate for the
-small-support, vanishing-jet principal term. The main clause for each
-nonunit basis coordinate still requires the selected primary-card and
-budget-card comparison. Neither missing clause follows from the finite
-pencil. Once the exact component receipts are supplied, their absolutely
-convergent density decomposition is merged by the dominated-series argument
+transition. Its three purchase clauses do not have the same status in this
+monograph. The forced clause is supplied by the large-projection estimate
+after the forced allowance is at most one and the keeper contains every
+nonzero slot. The other two are supplied on the retained interpolation by
+Sections~\ref{sec:regular-principal-producer} and
+\ref{sec:primary-calibration-producer}, with their common-history attachment
+in Proposition~\ref{prop:selected-reprise}:
+\emph{(regular clause)} the regular-card estimate for the small-support,
+vanishing-jet principal term; and \emph{(main clause)} for each nonunit
+basis coordinate, the selected primary-card and budget-card comparison.
+Neither follows from the finite pencil. Once the exact component receipts are supplied, their absolutely
+convergent density decomposition is merged using the merger of Lemma~\ref{lem:selected-coupon-merger},
+the summable lead and remainder receipts, and the dominated-series argument
 above, and the finite-wing merger sums the two budgets using the same motion
 coefficients. No compactness or diagonal extraction is involved.
 
-\section{Same-run Cauchy input for the full mesh}
+\subsection{Same-run Cauchy input for the full mesh}
 \label{ex-public-same-run-cauchy}
 
 We record the actual Cauchy route used to upgrade the positioned limit to the
@@ -732,8 +789,10 @@ both non-hit and an ancestor point, write
  \qquad
  U_i(x)=C_i.\operatorname{numeric}\bigl(f_i,p,v,o_{f_i}(x)\bigr).
 \]
-The selected source route proves that $(U_i(x))_i$ is Cauchy from the
-growth, price, transfer, and geometric receipts of one fixed run.
+We show that $(U_i(x))_i$ is Cauchy, conditional on the growth, price,
+transfer and geometric receipts of one fixed run listed at the end of this
+section; the same conclusion is proved in
+Subsection~\ref{sec:fullmesh-correlation-cauchy}.
 For the full-mesh conclusion at the end of this section we use the
 specialisation $f_i=i$ for every $i$ and $C_i=C$, one fixed selected history
 table for all cutoffs; the grade-dependent reference depth that enters the
@@ -742,9 +801,10 @@ With this specialisation $U_i(x)$ is the finite-volume correlation of the
 fixed family at the cutoff $i$ itself. For a general growth function or
 $i$-dependent tables, Cauchyness of $(U_i(x))_i$ would not by itself give
 convergence of the cutoff sequence of one family. This
-subsection translates the Cauchy implication and the analytic interpolation
-step; the upstream proof that the selected run supplies all the receipts is
-recorded separately below.
+section proves the Cauchy implication and the analytic interpolation step.
+The selected-history limits and fixed-level comparisons supplying the
+inputs below are constructed in Subsections~\ref{sec:selected-history-limits}
+and~\ref{sec:fixed-rung-convergence}.
 
 The Cauchy step uses one quantitative insertion comparison. We state its
 exact logical form so the upstream estimate is visible. Fix a finite label
@@ -752,11 +812,11 @@ set $A$, a reference rung $k$, a later rung $j$, and a terminal mesh index
 $i$. Let $U_i$ be the full-volume pilot and $V_{j,i}$ its fixed-rung
 interpolant. Suppose $F_0<\infty$ is independent of $j$, $G_j\to\infty$,
 and, for every sufficiently large fixed $j$, the same-history receipts give
-\[
+\begin{equation}
  |U_i-V_{j,i}|\leq \frac{F_0}{G_j/2}
  \quad\text{for all sufficiently large }i,
- \tag{3}\label{eq:ex-fixed-rung-comparison}
-\]
+ \label{eq:ex-fixed-rung-comparison}
+\end{equation}
 and $(V_{j,i})_i$ is Cauchy at each such fixed $j$. A sufficient exact
 condition for this fixed-rung Cauchyness is that its finite mode integrand is
 a polynomial in finitely many measurable coefficient fields that converge
@@ -778,16 +838,16 @@ error $\varepsilon/4$. For later $i,i'$,
 \label{lem:ex-holomorphic-insertion}
 Let $S>2$ and let $\Phi$ be holomorphic on $B(0,S)$. If
 $|\Phi(z)|\leq F_0$ for all $|z|<S$, then
-\[
+\begin{equation}
  |\Phi(1)-\Phi(0)|\leq F_0/(S/2).
- \tag{4}\label{eq:ex-holomorphic-insertion}
-\]
+ \label{eq:ex-holomorphic-insertion}
+\end{equation}
 \end{lemma}
 \begin{proof}
 Put $r=S/2$. For every $w$ with $|w|\leq1$, the closed disk
 $\overline B(w,r)$ lies in $B(0,S)$ since $1+S/2<S$. The Cauchy integral
 formula on its boundary gives $|\Phi'(w)|\leq F_0/r$. Integrating
-the derivative on the real segment from $0$ to $1$ proves (4).
+the derivative on the real segment from $0$ to $1$ proves \eqref{eq:ex-holomorphic-insertion}.
 \end{proof}
 
 \begin{lemma}[Uniform confluence supplies the fixed-rung vault]
@@ -817,13 +877,16 @@ index $n_0$ after which all hold at once. For each fixed $i$, positivity of
 the weights and nonnegativity of every summand give
 $w_i|F_{n,i}(x)|\leq w_i c_i\leq x_0$. Likewise
 $\sum_b w_i|G_{n,i,b}(x)|\leq\sum_b w_i d_{i,b}\leq y_0$.
-This is precisely the two-part vault bound used for the scalar and box-marked
-fields. In the selected construction, the source confluence statement gives
-an eventual uniform bound over configurations for each fixed rung and each
-field. Since the label set and the box set of a fixed finite torus are finite,
-their thresholds can be intersected once. No compactness or extraction is
-needed.
+No compactness or extraction is needed.
 \end{proof}
+
+This is the two-part vault bound used for the scalar and box-marked fields.
+In the application, the eventual uniform bound over configurations for each
+fixed rung and each field is the eventual uniform boundedness supplied by
+the fixed-level comparison of Subsection~\ref{sec:fixed-rung-convergence}, as
+in~\eqref{eq:fullmesh-vault}; it is an input here. Since the label set and
+the box set of a fixed finite torus are finite, their thresholds can be
+intersected once.
 
 The fixed-rung vaults in this argument are produced by the same history, not
 by an additional choice of subsequence. At a fixed rung $j$, the retained
@@ -868,7 +931,7 @@ For a nonzero polynomial component on a support $X$, each nonzero mode has at
 least two markers, and the support-placement condition puts every named
 origin of those markers in $X$. Drake separation says distinct origins of
 that mode are at max-distance at least $B_j^2$.
-The connected-halo tour estimate in Section~\ref{ex-centered-construction}
+The connected-halo tour estimate in Subsection~\ref{ex-centered-construction}
 therefore gives
 \[
  B_j\,|I|\leq64\operatorname{cover}(B_j,X),
@@ -903,7 +966,7 @@ the retained matchup and wake data give the transition hypotheses, and the
 exact push identity fixes each marked coefficient. The induction's
 integrability step follows from the transition's finite probability mass.
 This is the served-transfer result of
-Section~\ref{ex-centered-construction}, with its displayed one-step response
+Subsection~\ref{ex-centered-construction}, with its displayed one-step response
 and payment hypotheses; Fubini supplies the mode-integral identity below,
 but by itself does not imply servedness. The backward transition from rung
 $j$ to $k$ is finite, and at each transition, if $K_m(U,V)$ denotes its
@@ -948,7 +1011,7 @@ the later-rung restoration with its correction families set to zero supplies
 the value at $z=0$. The opened rung $k$ is used to price this value after
 transfer. The transition
 preserves each mode integral, so this identification introduces no change of
-partition function. Thus (4) is precisely
+partition function. Thus \eqref{eq:ex-holomorphic-insertion} is precisely
 \eqref{eq:ex-fixed-rung-comparison}, not an additional compactness input.
 
 There is an exact finite identity connecting this pilot observable to the
@@ -973,7 +1036,7 @@ compare their values at $x$ to the value at a net center: the two modulus
 errors are each below $\varepsilon/3$, and the center values differ by
 less than $\varepsilon/3$. Hence the functions are uniformly Cauchy on $K$;
 completeness gives a uniform limit, and the same modulus makes it continuous.
-The generic finite-difference bounds in Section~\ref{sec:ex-fullmesh-fixedbounds}
+The generic finite-difference bounds in Subsection~\ref{sec:ex-fullmesh-fixedbounds}
 provide the required bounds and local Lipschitz receipts from the same run.
 The application is conditional on the following same-run receipts: uniform
 branch confluence and a paid credit for each fixed finite label set; the
@@ -981,26 +1044,19 @@ pond, migration, occupancy, and Drake data needed to construct the transition
 fields; a served witness at each chosen later rung with its displayed
 support-price bounds; the finite downward service-transfer hypotheses; and a
 fixed-rung Cauchy sequence. It also uses the full-mesh local Lipschitz bound
-on each compact subset. Given these receipts, (3) is the quantitative
+on each compact subset. Given these receipts, \eqref{eq:ex-fixed-rung-comparison} is the quantitative
 insertion estimate just proved, and the pointwise Cauchy and compact-uniform
 limits required by the full-mesh positioned construction follow for every
 period, length, and label word.
 Together with the same-run finite-difference bounds in
-Section~\ref{sec:ex-fullmesh-fixedbounds}, and with the specialisation
+Subsection~\ref{sec:ex-fullmesh-fixedbounds}, and with the specialisation
 $f_i=i$, $C_i=C$ fixed above, these receipts yield the smooth
 positioned correlation along the full mesh, without further extraction.
 The same conclusion, for the cutoff sequence itself, is stated in
-Section~\ref{sec:fullmesh-correlation-cauchy}.
-For source correspondence, the branch-stability result at a fixed rung gives
-confluence of the scalar insertion and of every box-marked insertion; the
-credit result gives the paid amounts. The finite-sum lemma above converts
-those uniform bounds into the two vault inequalities. At the opened rung the
-positive weights are fixed, and at a later rung the marched weights are used
-with later-rung confluence. The pond package is passed from the selected
-run's scale-field package, and its history recurrence builds the per-label
-transition fields used by the served-slab step. These source fields are
-mapped in the evidence record; the mathematical production of them is not
-claimed here. The detailed local service propagation and its explicit
-nonlinear response input are stated in Section~\ref{ex-centered-construction}.
-The alternative detector route through trained rows and null-row sweeps is
-not called by this public construction.
+Subsection~\ref{sec:fullmesh-correlation-cauchy}.
+The per-label transition fields used in the served-slab step are among
+these inputs. The marked coefficients and one-step comparisons are
+constructed in Subsection~\ref{sec:selected-centered-service}, using
+the component merger of Lemma~\ref{lem:selected-coupon-merger}.
+Subsection~\ref{ex-centered-construction} gives the centered estimates
+from these transition data.

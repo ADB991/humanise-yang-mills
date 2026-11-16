@@ -1,0 +1,18 @@
+RUNLOG -- scope-lane feasibility probe for a possible independent review of PR #437 (hairer/humanise-yang-mills), 2026-11-15.
+One Lean process; `pgrep -x lean` and `pgrep -x lake` printed nothing before the run (checked twice, immediately before); `df -g ~` showed 122 GiB available.
+Command (from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 Probe437_scope_v1.lean > Probe437_scope_v1.out 2>&1
+No lake, no leanchecker, no build, no download, no network.
+
+v1  start 11:03:54Z  end 11:04:49Z  exit 1  (about 55 s)
+    The single error is the deliberate negative test at the last line (l.53):
+      Unknown identifier `YangMills.award_eq`  -- the declaration is `private` in TraceBridge.lean l.24.
+    Every other name resolved and printed: YangMills.constructed (axioms: [propext, Classical.choice, Quot.sound]),
+    YM.Nonperturbative.existence, YM.Source.Projects, YM.Source.SectionData.Sound, YM.Family.O, YM.Family.Makes,
+    YM.Family.normalized, YM.Source.TransferData.Based, YM.Table.criterion, YM.Spec.Locals,
+    YM.Nonperturbative.Headline.Reconstruction, YM.Nonperturbative.Headline.TraceExclusions, YM.Trace.Verse.award,
+    YangMills.publicTrace, YangMills.Hierarchy.TraceTest. 0 warnings. Imports: `Construction` only.
+
+SHA-256:
+cfb6213d5bdf2c4c1b7ec7049e6d034dc82936efe86cab47e3ab8f22a935190c  Probe437_scope_v1.lean
+9decbcd3bb47a50ccaad3b41cf90fac6e0f697a0ab365025f951c2d502c4560f  Probe437_scope_v1.out

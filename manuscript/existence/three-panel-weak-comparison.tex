@@ -1,4 +1,4 @@
-\section{Three comparison scales and weak convergence}
+\subsection{Three comparison scales and weak convergence}
 \label{sec:three-panel-weak-comparison}
 
 The comparison estimate is initially available at grid points whose coordinate
@@ -8,7 +8,7 @@ one for the numerical comparison, one for a bound everywhere on a compact
 noncoincident set, and one for a derivative bound away from thin strips.
 Their different costs are essential to the argument.
 
-\subsection{The geometric and analytic estimates}
+\subsubsection{The geometric and analytic estimates}
 
 Fix an arity $m\ge1$ and use the Euclidean norm on
 $E_4^m=(\mathbb R^4)^m$, retaining the maximum norm for pair separation. For $R>0$ set
@@ -116,7 +116,7 @@ normalizations have been matched to these panels. Both integrands are
 continuous on a neighborhood of the support, so these are ordinary
 integrals; no extension across coincident configurations is involved.
 
-\subsection{Returning to cutoff-dependent insertions}
+\subsubsection{Returning to cutoff-dependent insertions}
 
 It is necessary to apply this estimate to the actual insertion maps, whose
 values depend on the cutoff. Fix $k$. Their eventual boundedness gives a
@@ -154,7 +154,7 @@ limiting insertion tuple, but
 this argument does not claim one cutoff that works for all tests at once.
 It does not replace the original ordered extraction by a new continuum table.
 
-\subsection{The three scale inequalities}
+\subsubsection{The three scale inequalities}
 
 We describe precisely the estimates needed from the marked construction.
 Fix an upper arity $n\ge2$, a maximum grade $D$, and a word of length
@@ -187,7 +187,7 @@ The analogous centered difference bound at the $e$-panel supplies
           B_k=C_eH_k^{(a-e)D}.
 \]
 Here the product and difference estimates are the centered cell estimates
-of Section~\ref{ex-centered-estimates}. Their use requires actual cell
+of Subsection~\ref{ex-centered-estimates}. Their use requires actual cell
 widths, not just these coefficient prices. If $w_b,w_e$ are the output
 levels of the latter two panels, the schedule estimates are
 \begin{gather}
@@ -202,21 +202,30 @@ continuum limits then gives \eqref{eq:three-bulk} and the directional
 bound $B_k^m/\sigma_k$. Summing over the $4m$ coordinate directions
 gives exactly \eqref{eq:three-slope}.
 
-Here is the elementary rounding calculation underlying the width expenses
-$5$ and $6$. On the relevant constant-block interval let its block factor
-be $L\le H_k$ and let $V$ be its cover parameter, with $V^{10}\le H_k$.
-The panel height is the least $h$ with $L^h\ge H_k^{b+2}$, and its
-surplus is the least $s$ with $L^s\ge V^{10}$. Minimality gives
-$L^h\le L H_k^{b+2}$ and $L^s\le L V^{10}$. Thus
+The width calculation also covers a change of stage inside a panel.
+Let $L_{\max}$ bound every block factor between its output predecessor
+and $k$, and let $V$ be the clock cover parameter. On the selected
+window the bracket of Lemma~\ref{lem:ex-lattice-firesky-clock-fields}
+permits only the two adjacent stages. Their paid monitor bound gives
+$L_{\max}\le H_k$, and $V^{10}\le H_k$ eventually.
+By maximality of the middle level $\ell_b$ and the root level $w_b$,
+the first level on the other side of each threshold fails its defining
+inequality. Restoring that one block costs at most $L_{\max}$, so
 \[
- a_{w_b}/a_k=L^{h+s}\le H_k^{b+5}.
+ \frac{a_{\ell_b}}{a_k}\le L_{\max}H_k^{b+2},\qquad
+ \frac{a_{w_b}}{a_{\ell_b}}\le L_{\max}V^{10}.
 \]
-One earlier block costs at most another $H_k$, giving the first inequality
-in \eqref{eq:three-width-b}. The block factors at these output levels
-tend to infinity; hence they eventually exceed $6m$, proving its second
-inequality. The identical calculation with $e$ gives
-\eqref{eq:three-width-e}. The allowance of each panel must place all
-these levels in the same constant-block interval.
+Multiplication gives $a_{w_b}/a_k\le H_k^{b+5}$. Its predecessor costs
+at most one further block factor, proving the first inequality of
+\eqref{eq:three-width-b}. The smaller of the two adjacent block factors
+tends to infinity along the selected stages, so
+$a_{w_b-1}/a_{w_b}>6m$ eventually for each fixed arity. This proves
+its strict second inequality. Repeating the same argument for the
+$e$-panel proves \eqref{eq:three-width-e}. Only the two adjacent block
+bounds and the maximality of the levels are used; a constant-block
+interval is unnecessary. A common bounded offset of the three arcs
+leaves this calculation uniform, since it only changes the displayed
+powers $b+2$ and $e+2$ by that offset.
 
 It remains to choose the exponents so that both integral errors decay.
 The exact sufficient inequalities are
@@ -273,7 +282,8 @@ each finite grade, arity and window request, and the corresponding radii
 tend to zero. At request $h\ge2$, take $n=D=h$ and a window containing the
 first $h$ members of a prescribed compact exhaustion at each arity at most
 $h$. Write $\epsilon_k^{(h)}$ for the finite basis maximum for that request.
-Choose the next depth $k\ge h$ so large that those bounds hold and
+Choose the next depth $k\ge h$, strictly larger than the preceding
+chosen depth, so large that those bounds hold and
 $C_h^h\epsilon_k^{(h)}\le1/(h+1)$; also make its radius smaller than the
 previous one and at most $1/(h+1)$. This gives one increasing comparison sequence with the
 bound $(h+1)^{-1}\|f\|_\infty\prod_i\|v_i\|$ for that finite request.

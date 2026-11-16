@@ -1,5 +1,5 @@
 % Mathematical derivation of the local neutral flat-sector RG propagation.
-\section{One-step propagation of a neutral curvature representative}
+\subsection{One-step propagation of a neutral curvature representative}
 \label{sec:ex-lattice-flat-step}
 
 This section gives the local mathematical content of the one-step flat-sector
@@ -8,7 +8,7 @@ assert convergence of the full Wilson theory. The inputs are exact one-step
 Schur data and weighted kernel estimates. All cost sums below are absolute weighted sums in $[0,\infty]$; signed
 kernel sums are used only after their absolute convergence has been established.
 
-\subsection{Spaces and estimates}
+\subsubsection{Spaces and estimates}
 
 Let $\mathcal C=\mathbb Z^4$ be the cover with Laurent distance
 $\operatorname{sep}(x,y)=\sum_{a=1}^4|x_a-y_a|$. For a positive integer scale
@@ -62,7 +62,7 @@ same finite type set $I$, $|I|=m$. The push is
 Its folded cost is defined by the same formula as for $P$, with fine labels
 replaced by coarse labels and $\tau$ replaced by $\sigma$.
 
-\subsection{Centering and the kernel row bound}
+\subsubsection{Centering and the kernel row bound}
 
 \begin{lemma}[Centering bound from an order-two atlas]
 \label{lem:ex-lattice-flat-step-center}
@@ -116,7 +116,7 @@ No cancellation has yet been used. Neutrality is used next to replace $U$ by
 this centered kernel inside the convolution.
 \end{remark}
 
-\subsection{Weighted push estimate}
+\subsubsection{Weighted push estimate}
 
 \begin{lemma}[Weighted convolution]
 \label{lem:ex-lattice-flat-step-convolution}
@@ -192,7 +192,7 @@ coarse-root column cost contributes $L^2$. Without neutrality, the centering
 identity is unavailable and the stated contraction does not follow.
 \end{remark}
 
-\subsection{Periodization and matching of the pushed representative}
+\subsubsection{Periodization and matching of the pushed representative}
 
 For each positive integer $n$, let $\Lambda_n=(\mathbb Z/n\mathbb Z)^4$,
 let $\pi_n: \mathcal C\to\Lambda_n$ be coordinatewise reduction, and let
@@ -311,7 +311,7 @@ then to $\operatorname{swap}T$ and that composition. The transpose calculation
 above supplies the match $M^{\mathsf T}$ for $\operatorname{swap}T$.
 The resulting displayed coarse matrix is exactly $M^{\mathsf T}AN$.
 
-\subsection{Exact propagation of the quadratic representative}
+\subsubsection{Exact propagation of the quadratic representative}
 
 Let $E_n^1=\mathbb R^{\Lambda_n\times I_1}$ and
 $E_n^2=\mathbb R^{\Lambda_n\times I_2}$ be the one-form and curvature
@@ -439,7 +439,7 @@ At a fixed block size $L$, if the displayed hypotheses hold for every coarse
 period $n_c$ with the same $p,q,r,\tau,\sigma,\omega$ and type set, then the
 folded-cost bound holds uniformly in $n_c$. The proof made no additional choice
 or estimate depending on that period. The retained-horizon construction in
-Section~\ref{sec:ex-lattice-rg-horizon-geometry} supplies the two response
+Subsection~\ref{sec:ex-lattice-rg-horizon-geometry} supplies the two response
 atlases on its fixed adjacent stages; Proposition~\ref{prop:ex-lattice-response-travel}
 supplies the matching and travel assertions for the retained wire response.
 The remaining packet, floor, width and funding hypotheses must still be
@@ -447,11 +447,15 @@ matched to the selected history.
 
 \begin{lemma}[The quadratic output is independent of the completion]
 \label{lem:ex-lattice-flat-same-output}
-Fix a level schedule, a cutoff $N$, and two admissible quadratic horizons
-with the same blocking geometry, blocking mean and penalty at each step.
-Suppose their
-terminal one-form precisions at level $N$ agree on every scheduled torus,
-and their adjacent steps obey the Schur hypotheses above. Then their
+Fix a level schedule, a cutoff $N$, and two sequences of quadratic
+precisions on the scheduled tori. At each step assume a common blocking
+map $B$ and penalty $\lambda>0$, and transports $M_A,N_A$ satisfying
+\[
+ Q_HM_A=B^{\mathsf T}Q_{H'},\quad BM_A=I-\lambda^{-1}Q_{H'},\qquad
+ Q_YN_A=B^{\mathsf T}Q_{Y'},\quad BN_A=I-\lambda^{-1}Q_{Y'}.
+\]
+Assume $Q_Y$ and $Q_{Y'}$ are symmetric and that the two terminal
+one-form precisions at level $N$ agree on every scheduled torus. Then their
 one-form precisions agree at every level $i\leq N$ on every scheduled
 torus. If, at that level, their corresponding cover kernels have absolutely
 summable rows and both periodize to those finite precisions, and if the
@@ -479,13 +483,13 @@ are equal by the first part, hence their limits are equal. No equality of
 the two curvature metrics, their square roots, or their transports is implied.
 \end{proof}
 
-\begin{remark}[Inputs still required from the RG construction]
+\begin{remark}[Application to the selected RG construction]
 The proposition proves the one-step packet algebra and weighted estimate
 conditional on the two actual order-two atlas bounds, exact tower matching,
 quadratic floors, and travel condition. Those hypotheses are mathematical
 inputs from the selected construction and must be checked there. In particular,
-this section does not prove that a given construction supplies these bounds,
-nor does it upgrade the order-zero quadratic statement to the full hierarchy
-of Wilson observables.
+Subsubsection~\ref{subsec:ex-lattice-c01-selected-application} verifies
+these hypotheses for the selected construction. The observable hierarchy
+is obtained from the centered moment and transfer estimates below.
 \label{rem:ex-lattice-flat-step-inputs}
 \end{remark}

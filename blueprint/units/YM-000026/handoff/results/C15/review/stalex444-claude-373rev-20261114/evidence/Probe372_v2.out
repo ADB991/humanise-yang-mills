@@ -1,0 +1,85 @@
+@YM.Next.Rank.Station.AllowedSky.dilation : ∀ {G : YM.Gauge} {A : YM.RG.Levels G} {b : ℝ} {k : ℕ},
+  YM.Next.Rank.Station.AllowedSky A b k →
+    YM.Next.Rank.Station.mag A b k * A.clock.monitor k ^ 2 ≤ A.S.a (YM.Next.Rank.Station.middleSky A b k) / A.S.a k
+'YM.Next.Rank.Station.AllowedSky.dilation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Next.Rank.Ship.fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Next.Rank.Ship.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Next.Rank.Station.mag_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.Next.Rank.Station.anchored' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[reducible] def YM.Axis : Type :=
+Fin 4
+@YM.Next.Rank.Ship.bank : {G : YM.Gauge} → YM.Next.Rank.HaarBudget G → YM.RG.Levels G → ℕ → Prop
+@YM.Next.Rank.Station.ticket : {G : YM.Gauge} → YM.Next.Rank.HaarBudget G → YM.RG.Stage → ℕ → ℝ
+@YM.PhysicalNext.InteractingRank.Soft.Ferm : {G : YM.Gauge} →
+  {C : YM.Family G} → {N i p k : ℕ} → YM.RG.Rep G (C.side i p) → YM.Next.Rank.Course C N p k → i ≤ N → Prop
+@YM.Next.Rank.Ship.estimateSky : {G : YM.Gauge} →
+  {k : ℕ} →
+    {C : YM.Family G} →
+      {b : ℝ} →
+        {N p n : ℕ} →
+          YM.RG.Rep G (C.side (YM.Next.Rank.Station.widthSky C.path.levels b k) p) →
+            YM.Next.Rank.Course C N p k →
+              k ≤ N →
+                YM.Points n → (YM.Wilson.Config G (C.side N p) → YM.Next.Rank.Glyph.veil (Fin n)) → ℝ → ℝ → ℝ → ℝ → Prop
+@YM.Next.Rank.Ship.AllocatedSky.charge : ∀ {G : YM.Gauge} {A : YM.RG.Levels G} {M k : ℕ} {O : YM.Next.Rank.HaarBudget G}
+  {b : ℝ},
+  YM.Next.Rank.Ship.AllocatedSky A M k O b →
+    YM.Next.Rank.Station.ticket O (A.params (YM.Next.Rank.Station.widthSky A b k)) M ≤ YM.Next.Rank.Ship.pot A M k
+@YM.Next.Rank.Ship.Allocated.charge : ∀ {G : YM.Gauge} {A : YM.RG.Levels G} {M k : ℕ} {O : YM.Next.Rank.HaarBudget G}
+  {b : ℝ},
+  YM.Next.Rank.Ship.Allocated A M k O b → YM.Next.Rank.Station.ticket O (A.params k) M ≤ YM.Next.Rank.Ship.pot A M k
+open_readSky: theorem value found; scanning
+BINDER hv : 1 ≤ YM.Next.Rank.Station.mag V 1 k
+  occurs in body: false
+BINDER hp : 8 * R ≤ YM.Next.Rank.Station.mag V 2 k
+  occurs in body: true
+Probe372_v2.lean:91:8: error: Type mismatch
+  probeUses awaitName
+has type
+  List String → CommandElabM Unit
+but is expected to have type
+  CommandElabM ?m.2
+Probe372_v2.lean:92:2: error: unexpected token '['; expected command
+Probe372_v2.lean:94:8: error: Type mismatch
+  probeUses `YM.MergeProof.East.open_readSky
+has type
+  List String → CommandElabM Unit
+but is expected to have type
+  CommandElabM ?m.2
+Probe372_v2.lean:95:2: error: unexpected token '['; expected command
+Probe372_v2.lean:96:8: error: Type mismatch
+  probeUses `YM.MergeProof.East.boatsSky
+has type
+  List String → CommandElabM Unit
+but is expected to have type
+  CommandElabM ?m.2
+Probe372_v2.lean:97:2: error: unexpected token '['; expected command
+'YM.MergeProof.East.probe_open_readSky_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.MergeProof.East.probe_open_readSky_no_exp1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YM.MergeProof.East.probe_width_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+Probe372_v2.lean:182:35: error: unsolved goals
+G : YM.Gauge
+A : YM.RG.Levels G
+M k : ℕ
+hM : 0 < M
+ε : ℝ
+hε : 0 < ε
+hμ : ε ^ (-(16 * ↑M)) ≤ A.clock.monitor k
+hpos : 0 < ε ^ (-(16 * ↑M))
+hlog : -(16 * ↑M) * Real.log ε ≤ Real.log (A.clock.monitor k)
+this : 0 < ↑M
+⊢ 0 < 16 * ↑M
+Probe372_v2.lean:177:42: error: unsolved goals
+G : YM.Gauge
+A : YM.RG.Levels G
+M k : ℕ
+hM : 0 < M
+ε : ℝ
+hε : 0 < ε
+hμ : ε ^ (-(16 * ↑M)) ≤ A.clock.monitor k
+hpos : 0 < ε ^ (-(16 * ↑M))
+hlog : -(16 * ↑M) * Real.log ε ≤ Real.log (A.clock.monitor k)
+h16 : 0 < 16 * ↑M
+⊢ YM.Next.Rank.Ship.budget A M k ≤ ε
+Probe372_v2.lean:183:40: error: unexpected identifier; expected command
+'probe_cost_explicit' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

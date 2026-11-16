@@ -1,4 +1,4 @@
-\section{The mean and covariance jets in the principal comparison}
+\subsection{The mean and covariance jets in the principal comparison}
 \label{sec:principal-comparison-jets}
 We prove the extra smallness used in
 \eqref{eq:principal-primitive-comparison}. The two means need not
@@ -7,10 +7,10 @@ their values vanish and their first derivatives differ only by the
 local inverse error. This gives one more small factor for their
 difference than for the covariance difference.
 
-\subsection{Uniform derivatives of the two local kernels}
+\subsubsection{Uniform derivatives of the two local kernels}
 We first record why the kernel bounds are uniform in the period.
 All row estimates in this subsection use the maximum of weighted
-row and column sums from Section~\ref{sec:local-covariance}.
+row and column sums from Subsection~\ref{sec:local-covariance}.
 For a fixed derivative order $n$, suppose a family of precisions
 $A(b)$ has uniformly positive lower bound $r>0$, uniform
 exponential row bound, and derivatives through order $n$ with
@@ -18,7 +18,7 @@ weighted row bounds at most $C(x)$, where $C$ has upper exponent
 zero. The logarithmic fields $b$ range over a ball of radius
 $v(x)$, with upper exponent $-1/2$. These hypotheses hold for
 the unmasked local kernels under the fixed path and positive
-precision bounds used in Section~\ref{sec:mean-action-jets}.
+precision bounds used in Subsection~\ref{sec:mean-action-jets}.
 
 The inverse derivative formula, in multilinear notation, is
 \begin{equation}\label{eq:comparison-inverse-derivative}
@@ -31,7 +31,7 @@ nonempty blocks. Differentiate $AA^{-1}=I$ and induct on $|I|$
 to prove this formula: the first differentiated block is the
 nonempty subset falling on $A$, and the induction partitions the
 remaining labels. Submultiplicativity and the inverse decay
-estimate of Section~\ref{sec:local-covariance} bound each term
+estimate of Subsection~\ref{sec:local-covariance} bound each term
 by a fixed power of $C(x)$ and of the inverse row bound.
 The number of terms depends only on $n$. Thus all inverse jets
 have upper exponent zero.
@@ -67,7 +67,7 @@ order $j+1$. The predictor contribution is treated with its
 fixed-ball derivative bound through that order. Purchase these
 bounds through $n+1$ when requesting $n$ coupling derivatives.
 All coefficients are bounded by the absolute path sums already
-used in Section~\ref{sec:mean-action-jets}. Summing their
+used in Subsection~\ref{sec:mean-action-jets}. Summing their
 exponentially weighted rows and columns, and then applying the
 fixed keep and active projections, gives an exponent-zero bound
 for each reference coupling derivative. The product rule gives
@@ -75,7 +75,7 @@ the precision derivative bound, with a finite sum over subsets
 of the derivative labels.
 The flat identity proved below identifies $D(0)^*D(0)$ with the
 active principal block of the completed sector precision; hence
-Section~\ref{sec:sector-gram} gives its lower bound $r$.
+Subsection~\ref{sec:sector-gram} gives its lower bound $r$.
 Its perturbation on the logarithmic ball is bounded by $C(x)v(x)$,
 so it remains at least $r/2$ eventually. Thus the inverse argument
 applies to the reference matrix as well as the completed one.
@@ -99,7 +99,7 @@ read windows and sector indicators fixed. The unmasked matrix
 entries are products of path derivatives and parallel transports.
 Their row costs are finite sums of the absolute path prices
 multiplied by fixed powers of path length. The fixed-ball
-predictor bounds in Section~\ref{sec:mean-action-jets} make those
+predictor bounds in Subsection~\ref{sec:mean-action-jets} make those
 costs exponent zero. On the shrinking ball, the change from the
 flat precision is at most $C(x)v(x)$ in operator norm, by the
 fundamental theorem of calculus. Eventually this is less than
@@ -116,7 +116,7 @@ uses its absolute row sum, not the total number of lattice
 coordinates. The preceding product estimates are consequently
 uniform over all finite periods and all allowed forests and tags.
 
-\subsection{The exact comparison at the flat configuration}
+\subsubsection{The exact comparison at the flat configuration}
 Let $A$ denote the full flat sector precision, padded by the
 identity on inactive coordinates, and let $U$ denote its active
 coordinate set. At a flat field all parallel transports are
@@ -145,7 +145,7 @@ This conclusion uses the actual direct-sum property; it would
 not follow merely by compressing an arbitrary inverse.
 Let $P_6$ be the sector window inverse and $P_9$ the reference
 window inverse at the flat point. The window-error calculation
-of Section~\ref{sec:local-covariance}, applied to their respective
+of Subsection~\ref{sec:local-covariance}, applied to their respective
 windows, gives
 \begin{equation}\label{eq:comparison-flat-window-error}
               \|(P_6)_{UU}-P_9\|_0\le t(x),
@@ -197,7 +197,7 @@ By the row bound and the exponent-zero source derivative bound,
 This proves a first-derivative comparison, not merely an equality
 of quadratic forms.
 
-\subsection{Transferring the estimates along a local variation}
+\subsubsection{Transferring the estimates along a local variation}
 We give the elementary Taylor argument used for this transfer.
 Let $f:E\to F$ be $C^n$, $n\ge2$, on a neighborhood of the
 closed ball of radius $v\le1$, and suppose
@@ -238,18 +238,35 @@ the covariance difference, using
 chart from Sections~\ref{sec:haar-chart} and
 \ref{sec:mean-action-jets} supplies the required $u$.
 For a support anchored at $o$, its radius is at most $D_x$.
-The chart's derivative scale can be chosen as
+The value bound needs the base field as well as the direction bounds.
+Here is a direct local estimate. On the nonwrapping read box of radius
+$R=45(1+B)$, choose the gauge given by parallel transport from its
+anchor along coordinate-ordered paths. A gauged bond is the holonomy
+of the two such paths and that bond. Interchanging adjacent coordinate
+steps reduces this loop to the empty path using at most
+$C(1+R)^2$ plaquettes in the box, with $C$ depending only on dimension.
+Indeed each path has at most $4(2R+2)$ steps; moving each step past
+the earlier steps uses at most the square of this number of swaps.
+Each swap inserts a conjugate of one elementary plaquette.
+The representation norm is invariant under conjugation and satisfies
+$\|UV-1\|\le\|U-1\|+\|V-1\|$. Health therefore bounds the gauged
+bond chord by $C(1+R)^2\theta_c$. The logarithm is Lipschitz on its
+fixed smaller chart, so it obeys the same bound after enlarging $C$.
+The period and chart conditions used below ensure that this box lifts
+and that all these logarithms are defined.
+The positive-order derivatives instead follow from the direction
+bound. A common size and derivative scale is therefore
 \[
- v(x)=C_n\,2\theta_f(x)
-                    (1+\operatorname{reach}(x))^p(1+D_x)^p.
+ v(x)=C_n\left\{(1+R)^2\theta_c(x)+
+ 2\theta_f(x)(1+\operatorname{reach}(x))^p(1+D_x)^p\right\}.
 \]
-This follows by applying the weighted direction bound at $o$
+For the derivative part apply the weighted direction bound at $o$
 to every read site and using the uniform derivatives of the
 logarithm on the fixed chart. An ordered product of $k$ local
 variations contributes the $k$th power of that scale.
 It has upper exponent $-1/2$ and is eventually at most one.
 
-\subsection{Returning from the local logarithm to the physical field}
+\subsubsection{Returning from the local logarithm to the physical field}
 The preceding comparison is made with blank local sector data.
 We must identify its readings with the physical ones; global
 agreement of the fields or of their sector indicators is not
@@ -262,7 +279,7 @@ insertion, with parent anchor $p$, its allocation includes
 \]
 The field is healthy on $Y$, and the period and chart bounds
 ensure that this read region has the local gauge chart of
-Section~\ref{sec:haar-chart}. Fix that gauge $g$ once, at the
+Subsection~\ref{sec:haar-chart}. Fix that gauge $g$ once, at the
 base configuration. For every nearby configuration $W$ define
 \[
  b(W)_e=\begin{cases}

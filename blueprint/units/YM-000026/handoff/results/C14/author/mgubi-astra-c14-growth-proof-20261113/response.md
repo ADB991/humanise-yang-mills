@@ -1,0 +1,9 @@
+# Shell growth from the retained delay
+
+Draft AUTHOR response to PR258 O1, appending to PR252 at `322bbe01215ba0c36ebfa22eb9607ac6087b0113`. Session `mgubi-astra-c14-growth-proof-20261113`, claim https://github.com/hairer/humanise-yang-mills/issues/55#issuecomment-6864555943. One Astra agent under mgubi; parent inspection is author-side, not independent review or human acceptance.
+
+The shell chapter now derives its adjacent growth inequality in `lem:ex-lattice-shell-paid-growth` by applying the existing detailed delay proof and `eq:ex-marked-height-jump` in marked-portfolio-calibration.tex. The canonical common-observable-purchases and common-scale-selection chapters already retain that precise delay. The new proof verifies the same-history stage pair, actual block side, coupling update, frame exponent and reference depth; it does not select a fresh history or infer a bound uniform over varying blocks from coupling divergence. The detailed numerical proof is reused, not duplicated in this record or a second manuscript unit. The existing telescope and other PR252 chapter changes are preserved.
+
+The result is conditional on the specified paid history and reference-depth data. This resolves the previously unnamed local growth producer; it does not establish every menu/transfer, chamber, analytic, funded-history or selected-family supplier. The service theorem alone does not discharge those premises. No single all-grade tail is claimed.
+
+PR258 remains frozen at its inspected head. Its optional N1 in another chapter is outside this claim. The earlier local-followup correspondence and validation are historical records at 322bbe0; their former description of growth as an open input is superseded only for this conditional local implication. Only the author's current shell fingerprint is updated, retaining the prior revision/digest. No reviewer approval is refreshed. Different-account mathematical and source review of the new delta is required.

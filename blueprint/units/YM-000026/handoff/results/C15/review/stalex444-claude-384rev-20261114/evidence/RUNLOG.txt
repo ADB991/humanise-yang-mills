@@ -1,0 +1,25 @@
+Elaborated Lean probes for the renewed review of #384 (trace-rounded-receipt.tex revision), 2026-11-14. Nothing posted.
+Release sources: ~/ym-release/2026-11-11/OpenAI-YM-20261028 @ 3456e5e75cf8d4cd558955a5c7638fba2d68f464 (read only, not on LEAN_PATH).
+Oleans: YM from ~/ym-release/full/tree/lib/lean (compiled release archive); Mathlib and other dependencies from a local Lake package cache, per ~/ym-release/full/checks/LEAN_PATH.txt.
+Toolchain: ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean. No lake, no leanchecker, no build, no download.
+Before each run: pgrep -x lean and pgrep -x lake printed nothing (no Lean or lake process); df -g ~ showed 11 GiB free. One process at a time, strictly sequential.
+
+Command (cwd = this directory):
+  v1:     LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l <lean> -DmaxHeartbeats=0 -DmaxRecDepth=4096 Probe384_v1.lean > Probe384_v1.out 2> Probe384_v1.time
+          (deviation from the binding command: stderr, i.e. the /usr/bin/time report, went to a separate .time file; Lean's own messages go to stdout and are all in .out)
+  v2, v3: LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l <lean> -DmaxHeartbeats=0 -DmaxRecDepth=4096 <f>.lean > <f>.out 2>&1   (binding command exactly; time report at the end of .out)
+
+run  file               exit  real     max RSS (bytes)  notes
+v1   Probe384_v1.lean   0     34.24 s  6,845,841,408    0 errors, no sorryAx; one deprecation warning (push_neg deprecated, .out l.113-119)
+v2   Probe384_v2.lean   0      4.20 s  6,869,630,976    v1 with push_neg replaced by not_le.mp and the trays-d instance of section C added; 0 errors, 0 warnings; .out l.1-112 identical to v1
+v3   Probe384_v3.lean   0      3.12 s  6,872,662,016    v2 plus probe_chamber_depth; 0 errors, 0 warnings
+(later runs fast: imports were in the OS file cache)
+
+SHA-256
+df48d8706c64fc69fd9a9d8365646df6e5b3afb63107d9c745c347d10baafe4d  Probe384_v1.lean
+11afc2756b82f136b9df954363e7f1d8a5d72492480d0618eabe20f8827a4c96  Probe384_v1.out
+17ea5c0909a5e39a021b71458f4a0c11d95ace6441854e51c96df8634bfd2250  Probe384_v1.time
+124069d44292a20e69f89a0ff0906b892705056e4c75baee3dca12e9bfa88414  Probe384_v2.lean
+9ee242afcc5fc130e390b2e90b9b062720a9fb49b1269c8860245a4dfcdc7b68  Probe384_v2.out
+b06da4063bc86faa925db6f10efa9337ca67c9b53d2728502b7f6c4e3c058940  Probe384_v3.lean
+be5e21aa7da05e76b0df2008bf7cdae3be1675518d2aa3d763fdc55926c7b47e  Probe384_v3.out

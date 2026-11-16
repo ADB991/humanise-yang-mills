@@ -1,5 +1,5 @@
 % Quantitative choice of atom budgets and uniform scale thresholds.
-\section{Choosing the local paid budgets}
+\subsection{Choosing the local paid budgets}
 \label{sec:ex-lattice-local-paid-budgets}
 
 The one-step insertion uses two kinds of local input: a finite list of
@@ -7,9 +7,9 @@ coefficient-recovery probes, and positive budgets for the basis, regular,
 and forced atoms. The first choice is elementary once the probe list is
 finite. The eventual threshold can then be made monotone in the scale and
 uniform over all admissible adjacent levels. This section proves those two
-selection steps. The local atom estimates themselves are recorded in the
-source audit; they are the remaining inputs to the one-step recurrence of
-Section~\ref{sec:ex-lattice-trace-price-recurrence}.
+selection steps and then matches their budgets to the actual basis,
+regular and forced insertions. Those estimates supply the one-step
+recurrence of Subsection~\ref{sec:ex-lattice-trace-price-recurrence}.
 
 Fix a finite set \(\mathcal T\) of probes and nonnegative constants
 \(O,H,W,G_d,a,c\), where \(O\) is the motion-average norm factor, \(H\) the local
@@ -31,13 +31,14 @@ The two outputs \(u,v\) are the probe and summability budgets. In the
 Wilson application, at coefficient grade \(d\) and block side \(L\), the
 constants are specialized as follows: \(\mathcal T\) is the finite
 coefficient-recovery probe family \(\mathcal Q_d\) of
-Section~\ref{sec:ex-lattice-trace-price-recurrence} and \(W=T_d\) its
+Subsection~\ref{sec:ex-lattice-trace-price-recurrence} and \(W=T_d\) its
 reconstruction constant; \(G_d\) is the polarization constant \(M_d\) and
 \(\pi_\tau=\pi(\tau)\geq1\) the probe price defined there; \(O\) is the
 orbit-average cost and \(H\) the readout price of the grade-\(d\)
-coefficient frame; \(a=L^d\); and \(c\) is the fixed tail constant
-attached to the support exponent, order and power of the profile of the
-stage called \(j\) below. With
+coefficient frame; \(a=L^d\); and \(c\) is the credibility of the fine profile,
+that is, its uniform mass bound for a normalized frame-column insertion,
+fixed by its support exponent, order and power. This is the constant called $h$ in
+Subsection~\ref{sec:ex-lattice-trace-eve-producer}. With
 these values \(q_\tau\) bounds the local variation coefficient,
 while the other three inequalities pay respectively for regular terms,
 large-support terms, and the primary atom. The same number \(v\) is later
@@ -112,12 +113,135 @@ atom-budget lemma, with \(y=y_{j,i}\), first supplies positive budgets
 \(u,v\); for these fixed budgets, the
 finite-volume local estimates then supply an eventual threshold
 \(E_{j,(i,d)}\) in the scale variable \(x\) for the
-corresponding primary, regular, and forced atom conclusions. In the source
-these local estimates require, in addition, that the smallness parameter
-\(\varepsilon\) recorded for the transition \((j,i)\) is at most \(1/4\). Taking the
+corresponding primary, regular, and forced atom conclusions. These local
+estimates require, in addition, that the smallness parameter
+\(\varepsilon\) attached to the transition \((j,i)\) is at most \(1/4\). Taking the
 finite maximum and then the prefix maximum gives one monotone threshold
 profile that works simultaneously for every adjacent transition and every
 permitted coefficient grade. This is the uniformization step needed before
-the scale induction. It does not prove the local atom estimates: their
-mathematical inputs and exact source route are itemized in the accompanying
-evidence file.
+the scale induction. The atom estimates to which this uniformization applies are established
+and matched below.
+
+
+\subsubsection{The three atom estimates used in the recurrence}
+\label{subsec:trace-paid-atom-suppliers}
+We verify the estimates for the selected transition, with the same
+budget choices $u,v$ as above. Put $\rho=L^{-2/5}$ and
+$\chi=\sqrt{H(x)}$. The selected response package is
+Theorem~\ref{thm:ex-lattice-eve-producer}, with its probe and cloud
+bounds proved in Subsection~\ref{subsec:trace-eve-probe-cloud}.
+In particular, every cloud of fine mass $m$ has charge at most
+$vm/\chi$ on a common tail. The two real/imaginary channel charges
+may be equal; they are nevertheless counted twice.
+
+\subparagraph{Regular atoms.}
+For a regular source of mass $m$, use the actual small- and large-support
+constructions in Subsection~\ref{subsec:trace-regular-chart-construction}.
+In the small case the local probe charge is at most
+$q_\tau vm/\chi\le um/\chi$ for every recovery probe.
+Coefficient recovery costs $W$, and the two cloud readouts cost at most
+$2Havm/\chi$. Including the motion factor $O$ gives
+\[
+ \frac{m}{\chi}O(Wu+2Hav)\le \frac{ym}{\chi}.
+\]
+In the large case each of the two chart terms and each of the two
+cloud terms is at most $vm/\chi$. Hence the total is
+$4OHavm/\chi\le ym/\chi$.
+Proposition~\ref{prop:ex-lattice-regular-source-atom} gives the
+associated presentations, their exact pushed density, and remainder
+cost at most $\rho m$ with the prescribed coarse forced normalization.
+Its derivative and vanishing-jet assumptions hold for the regular
+atoms of the effective-representation certificate; they are not inferred
+from a pointwise bound. Thus the cost pair is $(ym/\chi,\rho m)$.
+
+\subparagraph{Basis atoms.}
+Let $e_\alpha$ be a nonconstant normalized basis column, and insert its
+actual local section with the fine threshold. The cloud mass in its
+primary correction is bounded by the fine-profile credibility $c$. The primary expansion and coefficient extraction
+are those of Subsection~\ref{sec:primary-calibration-producer}.
+Choose the response package at price $v$. For a recovery probe $p$,
+compare the actual principal row first to its Gaussian reference, then
+to its cropped deterministic prediction, then to its full polynomial
+forecast. The first two comparisons, in the two real/imaginary channels,
+have ordered derivative error at most $2(e|u(x)|+\delta_x)$:
+the insertion bound supplies $e|u(x)|$ in each channel, and the cap
+bound supplies $\delta_x$ for the fluctuation-to-prediction comparison.
+Polarization and the derivative prices of the probe curve cost
+$\pi(p)\Lambda$; multiplication by the physical factor costs $L^d$.
+The cropped-to-full comparison costs the additional $\delta_x$ by
+\eqref{eq:trace-eve-probe-envelope}. Thus the actual principal probe
+error is bounded by
+\[
+ \pi(p)\Lambda L^d\,2(e|u(x)|+\delta_x)+\delta_x
+       \le C_x\le v/\chi,
+\]
+exactly the charged expression of
+Theorem~\ref{thm:ex-lattice-eve-producer}. The Gaussian-to-prediction
+comparison is the normalized derivative comparison of
+Subsection~\ref{sec:primary-calibration-producer}; the cap pays its
+Gaussian moment before any probe or column is chosen. Its full predicted coefficient is the leading map of that
+same section, with both the amplitude-degree and spatial-grade factors
+retained. The other rows have summed readout charge at most
+$Ha(\mathcal M+\mathcal M)\le2Havc/\chi$ by the cloud bound.
+The coefficient-extraction identity is linear; the finite recovery
+map costs $W$, and its motionwise norm costs $O$. The error from the
+prescribed leading coefficient is therefore at most
+\[
+ \frac1\chi O(Wv+2Havc)\le \frac y\chi.
+\]
+The graded principal remainder and the local splitting are proved in
+Subsection~\ref{sec:primary-calibration-producer}: for a column of spatial
+grade $g_\alpha$ they cost at most $P L^{d-g_\alpha}$, with the fixed
+frame ledger constant $P$. The splitting preserves the exact density
+by \eqref{eq:local-atom-identity}; it subtracts precisely the extracted
+local section and puts the residual in the regular and forced lists.
+It also preserves order-zero format, since the residual has zero
+identity value and zero nonwrapping test jets. Covariance of extraction
+under each lattice motion gives presentations of the motion of one
+coefficient, rather than unrelated coefficients for different motions.
+The unit column has its exact constant transport and no error.
+By finite linearity, a coefficient $z$ consequently has error at most
+$(y/\chi)\|z^\circ\|_1$ and remainder at most
+$P\|\mathcal V_Lz^\circ\|_1$, where
+$(\mathcal V_Lz)_\alpha=L^{d-g_\alpha}z_\alpha$.
+
+\subparagraph{Forced atoms.}
+Let a forced source have fine mass $m\ge0$, and set
+$g=\sqrt{\operatorname{forcedAllowance}_{\rm fine}}\in(0,1]$.
+We use the localized expansion with its marked profile and
+address-background bounds from Subsection~\ref{sec:leaf-transfer}, with
+the small bills funded as in Subsection~\ref{sec:projection-payment-producer}.
+These are the hypotheses of the projection calculation for the actual
+transition. For a forced insertion the principal cluster is zero: its flag is
+incompatible with the healthy principal term. In the projection
+calculation of Subsection~\ref{sec:leaf-transfer} we may therefore set
+its principal price $V$ to zero. The two remaining bills and the
+hit-width condition are paid in
+Subsection~\ref{sec:projection-payment-producer}. With the notation
+there, $e_0=(\rho/H_d)m$, so the motionwise coefficient cost and
+the normalized coarse remainder cost are both at most
+$H_de_0=\rho m$. The exact density and order-zero format are preserved
+by that same splitting calculation. The flagged profile identity there
+is required; equality of scalar densities alone would not justify it.
+
+Lemma~\ref{lem:ex-lattice-medal-gas-price} gives
+$\rho g\le y/\chi$ eventually. Consequently
+\[
+ \rho m\le\frac y\chi\frac m g,
+ \qquad \rho m\le\rho\frac m g.
+\]
+These are the required forced cost pair, including $m=0$.
+The first inequality uses the fine allowance in $g$; the remainder
+on the left already uses the coarse forced normalization supplied by
+the projection. No identification of those two allowances is made.
+
+All statements concern the actual two effective representations of one
+transition. The finite basis sum and the absolutely summable regular
+and forced lists are combined in the density-summation argument of
+Subsection~\ref{sec:ex-lattice-trace-price-recurrence}; the bounded-density
+and summable-activity estimates there justify the interchange with
+integration. At a fixed stage and grade there are only finitely many
+probe, basis, channel and budget requirements. Their thresholds can
+therefore be included in the finite maximum above, before the period,
+volume or source is chosen. This is the promised source of the eventual
+local estimates, not an additional choice of an atom-dependent threshold.

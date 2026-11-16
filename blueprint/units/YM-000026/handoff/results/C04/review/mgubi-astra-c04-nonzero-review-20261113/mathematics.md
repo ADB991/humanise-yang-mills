@@ -1,0 +1,20 @@
+# Mathematical review: conditional nonzero field
+
+**Conditional pass; no mathematical correction required in the new corollary.** Reviewed PR254 at `42ca0b60a24d92dbbea4c43e70735ff477b3c510`, full delta from `69b2631f7a3d3c4176ca0084d8607cb9d8d124a2`: one chapter and three author records. This is independent C04 review by mgubi using one GPT-6 Astra agent; neither account nor agent authored C04 or PR254. The account authored initial C16, so the small public-consumer comparison is author-side, not independent C16 approval. No human acceptance.
+
+## New proof and its immediate hypotheses
+
+1. **One grade suffices.** `input:unit-insertion` gives a raw label at a single grade d₀. Its unit law includes n=0; a one-point configuration is pairwise distinct vacuously. Normalization then makes its one-point unselected correlation 1. The all-spectator null criterion includes the empty spectator list, so membership in N_d₀ would force that same correlation to be 0. Thus the quotient class is nonzero. Nothing needs d₀=0 or unit laws at other grades.
+2. **Original quotient, selected detection.** The definition of N_d in `ex-phase-original-null` is for the unselected limiting S. The new premise states its unit law for exactly S. The standing hypotheses before `prop:boundary-detection` supply equality of the original and selected null spaces, injectivity into E and finite-level representatives. Hence the nonzero class has nonzero image u in E and is subject to that same proposition's selected detection conclusion. The proof does not assume a selected-table unit or confuse N_d⊆N_χ,d with the stronger equality needed for detection.
+3. **Operator conclusion.** Contraposition of `prop:boundary-detection` gives words b,c and a Schwartz f with w(b(u,f)c)≠0. In `prop:word-fields`, Φ(u,f)[c]=[(u,f)c], and K(a,c)=w(a* c), with antilinear first inner-product argument. Therefore the displayed pairing with [b*] is precisely w(b(u,f)c), since (b*)*=b. A nonzero pairing implies Φ(u,f)[c]≠0, hence the domain operator is nonzero. The corollary neither assumes boundedness nor needs closure to infer this.
+4. **Scope of the new E6 input.** The named premise is sufficient but stronger than needed for this contradiction: only its empty-spectator instance is used. That is not a defect. `prop:ex-limits-euclidean` lists normalization and other identities but not a raw unit insertion identity. The new record explicitly leaves E6 production open and labels a finite-lattice passage as a proposal not checked. This review does not construct that producer.
+
+## Immediate public use and remaining boundaries
+
+PR248's rule (T), frozen separately, defines Φ_pub(A,g)=Φ(u,g∘C), where C(t,x)=(x,t), and the public label is identified with the same C04 union label. Since C is invertible, g=f∘C⁻¹ is Schwartz and gives Φ_pub(A,g)=Φ(u,f)≠0. This checks the new endpoint row's nonzero-field substitution only. It does not select another field system, identify an independently constructed witness, or renew the whole endpoint report. The same-Hilbert-space/domain/label identification and E4 remain required. The C16 joint input already demands one selected hierarchy for all assertions; this corollary does not establish that joint input.
+
+The distinction between unselected S, selected T and the selected public realization is preserved. E6 supplies nonvanishing in S's quotient; null equality is the route into selected detection; public transport uses that resulting field operator. A unit law for an unrelated table would not suffice.
+
+E4 still has no identified manuscript producer. Grade-wise null equality from C03 does not construct inclusions, coverage or the public/C04 label identification. E6's proposed C03 limits owner is only a proposed unit-law task, not ownership of E4. Prior coordinate wording findings in `complex-heat.tex`, passive conversion conventions, and other PR91 limits are unchanged. No whole-C04, C03 producer, C16 or global-cycle approval.
+
+The four changed files retain these limitations; the endpoint remains marked open. The only required correction found is the source-name clarification M1 in source.md.

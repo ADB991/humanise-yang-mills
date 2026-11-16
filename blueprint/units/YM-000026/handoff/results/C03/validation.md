@@ -63,3 +63,48 @@ Final SHA-256 of the changed chapters (the other six C03 chapters are unchanged)
 | manuscript/existence/fullmesh-correlation-cauchy.tex | 19e0825603d24d9f6a8ac2fbc33b62012149f039efb54c243b9034b393f478ee |
 | manuscript/existence/phase-fields.tex | f584cf074ddcd6fceed1c6a65bff5e2613454a20d26831680559c924d58c29ae |
 | manuscript/existence/actual-slab-copy-bounds.tex | c1e553d1cf8278716619a36c27156f1bd3245a2070dab8ad445798a907b201e6 |
+
+## Follow-up to review #125 (issue #122)
+
+- Basis `c560828e62b5168cd9fc51507a5751de2871efe3`; Lean pin
+  `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; unchanged Lean tree
+  `328ad19b404d2db2a578319ea3e4eba4b27e34ef`. The author scope was
+  rechecked after posting the claim on #122. Two isolated Codex Terra
+  sessions revised the disjoint chapter groups and Parent combined the
+  commits and checked the author records. Review #125 remains historical.
+- `python3 scripts/check_blueprint.py` passed for four units. It verifies
+  structure. `python3 -m unittest discover -s tests` passed all 22 tests.
+  `git diff --check c560828e62b5168cd9fc51507a5751de2871efe3` passed.
+- From `manuscript/`, `latexmk -pdf -interaction=nonstopmode -halt-on-error
+  -outdir=/private/tmp/ym-c03-parent-build-20261113 existence.tex` built the
+  968-page monograph. The log has no unresolved references, citations or box
+  warnings. It retains the existing amsmath `atopwithdelims` warning. The
+  build output is outside the checkout.
+- `pdftoppm -f PAGE -l PAGE -singlefile -scale-to 950 -png existence.pdf
+  page-PAGE` rendered pages 133–135, 141–143, 156–157 and 167–168.
+  Parent inspected the revised theorem, threshold argument, merger
+  hypotheses, commutation citation and cutoff-covariance passage.
+- Source inspection is recorded in `correspondence.md`. Fresh Lean
+  elaboration, axiom printing and kernel replay remain unrun. The revised
+  arguments retain the stated quantitative input and same-history assumptions.
+  Renewed independent review concerns the exact follow-up snapshot.
+
+## Source-leakage pass (issue #183, session `ADB991-claude-20261113-0642`)
+
+Base `codex/existence-monograph` @ `5d91534`. Commands run in this pass:
+
+- `python3 scripts/check_blueprint.py`: exit 0, "Blueprint structure OK: 4 units. Lean and mathematics were not verified."
+- `python3 -m unittest discover -s tests`: exit 0, 22 tests OK.
+- `latexmk -g -pdf -interaction=nonstopmode -halt-on-error -outdir=<scratch> existence.tex` (from `manuscript/`):
+  exit 0, 978 pages, 0 undefined references, no `??` in `pdftotext` output. Changed pages rendered with
+  `pdftoppm` and inspected: 136 (rows 48–49), 139–140 (gain definition, row 50), 142 (row 51 remark, row 52),
+  148–150 (rows 53–55), 152 (rows 56–57).
+- `git diff --check`: clean.
+- Lean: source text read with `grep`/`sed` only; no Lean command, elaboration or axiom check was run.
+
+SHA-256 of the changed chapters:
+
+| File | Base `5d91534` | This pass |
+| --- | --- | --- |
+| `manuscript/existence/fullmesh-fixedbounds-producer.tex` | `b41f625235af595ec3b2c5b5f80cc51942842f5eaae1f006b63841fbc9a1b558` | `668889f30e94498f9e9cc03a34241e8c1832e4edf68a51cfce32453b52c43de0` |
+| `manuscript/existence/phase-quantitative-producer.tex` | `0ecef89fe822f61972e9dc16f262aacc8358c36c82b17799be2634f01eba98bd` | `fe27c96006b4762fc99175f50846f1c62ab24d2839e4152caa8dde04a8c11feb` |

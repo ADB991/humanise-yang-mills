@@ -5,6 +5,17 @@ Session: `TrishenGunaratnam-terra-c13-20261112`; issue #54. Source pin
 `9d11cca4644bad07126bfa372cc85fb120dee7ba`. These are author findings,
 not independent review or a claim of global closure.
 
+## #192 source-leakage revision
+
+The [#192 response and source crosswalk](source-leakage-192.md) accounts for
+all 29 audit rows for C13. It states the based-transport proof and the
+replica/relative-response identity under the local reader hypotheses and
+derives the scalar sizing and retimed clearance bounds. The two original J
+rows and the two scalar rows reclassified as J introduce no new outstanding
+input. The same-pose Gaussian, paid chart and row, window and common-history
+premises are retained. The larger-weight and auxiliary-history joins recorded
+in the [#202 continuation](completion-20261113.md) remain open.
+
 ## C09/C11/C13 convergence order and auxiliary histories — open
 
 Consumer: `sec:selected-history-limits`, activity and coupling subsection;
@@ -580,6 +591,24 @@ The remaining editorial check is to identify these fields, order by order,
 with all hypotheses and constants in the separate prose supplier and its
 actual output/dictionary identities; the presence of the zero-order renewal
 alone does not establish that full match.
+
+Update (#323; audit #325, independent check #342, phase 2 by
+`hairer-claude-323p2-20261114`). The "order zero" of `Station.anew` is the
+weight exponent of `Cash.Renewed` (`thinPay k = ours 0 k 0 0 = reward k`),
+not a derivative order, and `anew` is never projected. The derivative order
+is the `Station` parameter `j`. On the C13 route `swaths → bannersL`
+(`he : B.order ≤ j`), the ordered prices come from the same stations
+(`deposits`):
+- D1: `N.conduit`/`Utopia.stream`;
+- D2: `N.permitAverage`;
+- D3: `army.applies` ← `purchases`, consumed in `E6/Bandle.lean`;
+- `fleets`.
+
+The caveat in `selected-history-limits.tex` now states that no value-order
+continuity theorem is needed. The remaining input is the matching statement
+S1: the auxiliary chartlet of `selected-nonlinear-offering.tex` satisfies the
+local hypotheses of `sec:activity-jet-assembly` and
+`sec:parameter-comparison-suppliers`. It is tracked as follow-up #368.
 
 The separate `reviews/parent-mixed-compiler-review.md` independently records
 a bounded conditional pass at the current mixed-compiler hash

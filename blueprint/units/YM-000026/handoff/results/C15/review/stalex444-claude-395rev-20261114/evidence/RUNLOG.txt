@@ -1,0 +1,15 @@
+RUNLOG — Lean probes for the review of #395 (2026-11-14). One Lean process at a time; pgrep -x lean / pgrep -x lake printed nothing before each run; df -g ~ showed 11 GiB free before each run.
+Command (both runs, from this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 <file>.lean > <file>.out 2>&1
+No lake, no leanchecker, no build, no download.
+
+v1  start 16:46:05Z  exit 1  real 32.73 s  max RSS 6950027264 B  peak footprint 1052362984 B
+    FAILED: 4 errors (Lattice.Axis unknown x3 -> the release name is YM.Axis; probe_side_odd placeholder for the depth proof not synthesized). sorryAx appears ONLY in the four probe theorems that failed (probe_key_scale, probe_fit_middle, probe_side_odd, probe_chamber_closed). Kept with its .out.
+v2  start 16:46:54Z  exit 0  real 4.38 s   max RSS 6974586880 B
+    v1 with YM.Axis and the depth proof of probe_side_odd written out; 0 errors, 0 warnings, no sorryAx (output l.1-178).
+
+SHA-256:
+28844fc8cda1dc587f37297f5091c01c2afc882c0f53a7bfad3ca4da043ad26d  Probe395_v1.lean
+1055b1783c8565dd5273042effa59abac30f9cf5e89ecfc205cc4fd46f687693  Probe395_v1.out
+e75caa51a0104a962bc963f53b81d61a620f3d219282ddf25822c0e74e07a259  Probe395_v2.lean
+08970b4d02780a800b4efd31f22e67c277f9fbe2754dcc24b39db0cd792e4d15  Probe395_v2.out

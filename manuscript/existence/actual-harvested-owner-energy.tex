@@ -1,4 +1,4 @@
-\section{Owner energy at the rank threshold}
+\subsection{Owner energy at the rank threshold}
 \label{sec:actual-harvested-owner-energy}
 
 The energy estimate used in the corrected block alphabet concerns
@@ -18,13 +18,13 @@ at $y$. Only the fine energy rows are read at threshold $\tau$;
 the other rows retain their recorded thresholds. In particular,
 this operation does not replace the stored flags by flags at $\tau$.
 
-\subsection{Paying the same seeds after changing the fine threshold}
+\subsubsection{Paying the same seeds after changing the fine threshold}
 
 Let $\mathcal F$ be the original fine seed inventory and
 $r_i$ the fine plaquette chords. For a threshold $s$, write
 $\mathcal F_s=\{i\in\mathcal F:r_i>s\}$. At any
 $s\in[\nu/2,2\nu]$, the argument of
-Section~\ref{sec:seed-energy} gives
+Subsection~\ref{sec:seed-energy} gives
 \begin{equation}\label{eq:owner-reread-fine}
  F_s\ge b s\sum_{i\in\mathcal F_s}r_i
             +d s^2|\mathcal F\setminus\mathcal F_s|,
@@ -109,14 +109,14 @@ The finite-volume, tree-slice and local seed hypotheses are those
 of the cited seed estimates. Their guide, geometry and comparison
 bounds are used on this same store and field.
 
-\subsection{Subtracting the selected affine squares}
+\subsubsection{Subtracting the selected affine squares}
 
 Put $B=\lceil(\log y)^2\rceil$. Let $Q$ be an annular
 window around $O$, and $H$ a subwindow selecting fine and
 predictor rows of $Q$. Use the actual logarithmic signal in
 the local Gaussian coordinates, and denote by
 $\mathcal X_H$ the sum of its selected affine squares.
-Section~\ref{sec:packet-annulus} proves that these are the
+Subsection~\ref{sec:packet-annulus} proves that these are the
 actual rows, with the same forest, tag and coarse field, and
 that
 \begin{equation}\label{eq:owner-annulus-loss}
@@ -157,7 +157,8 @@ This estimate holds for every admitted selected window and
 actual chart signal, uniformly in the finite period. The
 threshold is chosen after its fixed window and chart constants.
 
-\subsection{The harvested ceiling of an actual packet}
+\subsubsection{The harvested ceiling of an actual packet}
+\label{subsec:owner-harvested-ceiling}
 
 We apply \eqref{eq:owner-selected-gain} to the ceiling used in
 the block exponent. Fix the full store $A$, an owner packet
@@ -170,8 +171,12 @@ width $w$. The chart radius is $w\nu$, is positive and is
 smaller than the first logarithmic radius. These hypotheses
 hold before the fine field or its coordinates are varied.
 
-For each signed orientation $\sigma$, turn the owner and full
-store, the fine and coarse fields, the forest and the tag together.
+Let $\mathcal S$ be the set of signed permutations of the four lattice
+axes: a permutation and an independent choice of reflection for each
+axis. Put $\omega_{\mathcal S}=1/|\mathcal S|$ and write
+$\operatorname{Av}_{\sigma}F(\sigma)=\omega_{\mathcal S}
+\sum_{\sigma\in\mathcal S}F(\sigma)$. For each $\sigma$, turn the owner and
+full store, the fine and coarse fields, the forest and the tag together.
 Let $Q_\sigma$ be the annulus between radii $2B$ and $200B$
 of the turned owner. Let $H_\sigma$ consist of the actual
 Gaussian rows selected from this annulus. The span bound keeps
@@ -189,7 +194,7 @@ within the chosen radius. On active bonds the nonzero doors
 bound the actual coordinate by $2w\nu$. Therefore this same
 array reconstructs the turned fine field and has norm at most
 $2w\nu$ throughout every selected stencil. The chart argument
-in Section~\ref{sec:packet-annulus} applies with width $2w$.
+in Subsection~\ref{sec:packet-annulus} applies with width $2w$.
 It proves the hypotheses of \eqref{eq:owner-selected-gain}
 for every $H_\sigma$.
 
@@ -199,7 +204,7 @@ $O$. The definition of the actual ceiling charge gives the exact
 identity
 \begin{equation}\label{eq:owner-ceiling-identity}
 \begin{split}
- \mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+ \omega_{\mathcal S}\sum_{j\in\mathcal C_{200B}(O)}
              \mathrm{levy}_j
  =\operatorname{Av}_{\sigma}\bigl[
        \mathcal W_\tau(\operatorname{anchor}_{200B}(\sigma O))
@@ -210,9 +215,9 @@ identity
 Here $a_\sigma$ is the actual array just described, $m$ is
 the localized Gaussian mean, and $\mathcal C_\sigma(m)$
 is the sum of its charged fine and predictor squares. It is
-nonnegative. The average is the normalized signed average;
-the factor $\mathrm{Aff.weight}$ has already performed this
-normalization.
+nonnegative. Each address on the left already includes its signed orientation, so
+the single factor $\omega_{\mathcal S}$ normalizes the sum over those
+orientations.
 
 For completeness, the identity is a finite reindexing. Partition
 the oriented energy addresses into fine faces, predictor bonds,
@@ -238,11 +243,11 @@ Apply \eqref{eq:owner-selected-gain}, drop the nonnegative
 mean squares, and use $s(\sigma O)=s(O)$. Averaging proves
 \begin{equation}\label{eq:owner-actual-heft}
  \frac{b_0}{8}\tau^2s(O)
- \le\mathrm{Aff.weight}\sum_{j\in\mathcal C_{200B}(O)}
+ \le\omega_{\mathcal S}\sum_{j\in\mathcal C_{200B}(O)}
                \mathrm{levy}_j.
 \end{equation}
 This is the harvested owner-energy estimate required in
-Section~\ref{sec:actual-corrected-body-compiler}. It holds for
+Subsection~\ref{sec:actual-corrected-body-compiler}. It holds for
 all actual compatible packets, forests, tags and coordinates
 with the stated seed, likelihood and door conditions. The
 uniform chart, branch and seed estimates used to obtain those

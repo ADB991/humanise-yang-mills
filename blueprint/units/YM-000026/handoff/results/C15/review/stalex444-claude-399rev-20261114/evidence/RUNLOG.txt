@@ -1,0 +1,30 @@
+Elaborated Lean probe for the renewed review of #399 (commit 817546b7 on 3166276d; hairer/humanise-yang-mills #337), Lean-correspondence role, 2026-11-14. Nothing posted; no network.
+Release sources: ~/ym-release/2026-11-11/OpenAI-YM-20261028 @ 3456e5e75cf8d4cd558955a5c7638fba2d68f464 (read only; git status clean, 0 lines).
+  Newly read for this renewal and hashed equal to the release's own SOURCES.sha256 entries:
+    YM/RG/History.lean                    ab604669cec205cd92020d34e4e672417ab40a0f484621067803548ba7bf81f6 (SOURCES.sha256 l.6194)
+    YM/TraceExtension/Chart/Orr.lean      1b525b2e7d06d3bc3e2fd8f1d16e63f1f84e1b33dd447bae75766ed53af9e96d (SOURCES.sha256 l.7874)
+    YM/TraceExtension/Terrace/Dusk.lean   31021ec31bdb57f0c6f9a2b54ce39189afac2497bdba3e9298c405642a48f837 (SOURCES.sha256 l.8421)
+Oleans: as in the #377 review (PR #388, blueprint/units/YM-000026/handoff/results/C15/review/stalex444-claude-377rev-20261114/evidence/RUNLOG.txt): YM .olean files of 3456e5e7
+  restored from the compiled release archive ym-build-3456e5e.tgz (digest equal to source/build.md l.37 at bdd348cd), dependency .olean
+  files from a local Lake package cache, per ~/ym-release/full/checks/LEAN_PATH.txt. YM sources NOT on LEAN_PATH.
+Toolchain: ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean. No lake, no leanchecker, no build, no download.
+Before the run: pgrep -x lean and pgrep -x lake both empty; df -g ~ : 11 GiB available.
+Command (cwd = this directory):
+  LEAN_PATH="$(cat ~/ym-release/full/checks/LEAN_PATH.txt)" /usr/bin/time -l ~/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean -DmaxHeartbeats=0 -DmaxRecDepth=4096 Probe399_v1.lean > Probe399_v1.out 2>&1
+  (stdout and stderr together: the /usr/bin/time report is the last 18 lines of Probe399_v1.out, l.657-674.)
+
+run  file              start (UTC)            exit  real     max RSS (bytes)  peak footprint (bytes)  notes
+v1   Probe399_v1.lean  2026-11-14T16:00:33Z   0     67.56 s  6,914,228,224    1,067,587,416           0 errors; no "sorryAx"
+No failed runs. One run only.
+
+Probe399_v1.lean = Probe377_v2.lean (272 lines, unchanged, including its header comment naming it Probe377_v2) + 7 appended lines
+  (section F: one comment, #print YM.RG.Calendar.hatBeta, #print YM.RG.Levels, #check @YM.Trace.Over.zoom_BQ). Nothing else changed.
+Output comparison: lines 1-631 of Probe399_v1.out are byte-identical to Probe377_v2.out (631 lines; both SHA-256
+  e9531ab8dcf7a9e97592dd0969c5c8345e46fcc1f56a6cf202f1705470327ab9; cmp clean). Lines 632-656 are the output of section F
+  (hatBeta l.632-633, Levels l.634-642, zoom_BQ l.643-656); lines 657-674 are the /usr/bin/time report.
+SHA-256: Probe399_v1.lean 96962f14ee156b4f1fe57f88e0a1a408c0b0a1b491d6eefd6f5cb0093dbbb0bd
+         Probe399_v1.out  cda60321ec771f6968961d872332533d8861344ed22b60052517da0dd2c1fc59
+What the run establishes: the elaborator, loading the release's compiled declarations, accepts again every statement printed in the
+  #377 probe output (identical text) and the four probe theorems (kernel-checked as elaborated), and prints
+  hatBeta = fun {G} S m => S.bar + G.slopeConstant * S.schedule.scale m and Levels.clock : Calendar G.
+  The release's proofs are loaded from .olean files and were NOT replayed by an independent kernel checker; nothing was built from source.

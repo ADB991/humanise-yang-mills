@@ -1,4 +1,4 @@
-\section{Complex heat time and real-time translations}
+\subsection{Complex heat time and real-time translations}
 \label{sec:complex-heat}
 The complex heat extension used in the boundary argument can be constructed
 from the real Euclidean semigroup alone. This also fixes the sign of the
@@ -10,8 +10,7 @@ We use continuous functional calculus for a bounded self-adjoint operator:
 continuous scalar functions on its spectrum act as a unital isometric
 star homomorphism, with the usual composition rule. This is the
 self-adjoint instance of the continuous calculus in \cite[Theorem 2.19]{Williams}.
-All uses below are for a positive contraction and scalar functions continuous
-at zero; an imaginary power at zero is never inserted into this calculus.
+We use the continuous calculus for positive roots and the bounded Borel calculus for the imaginary powers.
 
 \begin{proposition}\label{prop:complex-heat}
 There is a holomorphic operator-valued function $E(z)$ on
@@ -30,90 +29,57 @@ $V(t)$. If $E_t\Omega=\Omega$ for all $t$, then
 $E(z)\Omega=V(t)\Omega=\Omega$.
 \end{proposition}
 \begin{proof}
-Put $A=E_1$. Its spectrum is contained in $[0,1]$: positivity excludes
-negative spectrum and the contraction bound excludes values above one.
-For $\operatorname{Re}z>0$, define
-\[
- f_z(\lambda)=\begin{cases}\exp(z\log\lambda),&\lambda>0,\\0,&\lambda=0,\end{cases}
- \qquad E(z)=f_z(A).
-\]
-This scalar function is continuous at zero and has magnitude at most one.
-The norm bound, product law, and adjoint identity follow from the calculus.
-Holomorphy holds in the uniform norm on the scalar functions, hence in
-operator norm. Indeed, on a compact neighborhood of any such $z$ choose
-$\delta>0$ with $\operatorname{Re}z\geq2\delta$. The functions
-$\lambda^\delta|\log\lambda|^j$ are bounded on $(0,1]$ and tend to zero at
-zero for each fixed $j$. Taylor's formula for the scalar exponential then
-gives, uniformly in $\lambda\in[0,1]$ and for sufficiently small $h$,
-\[
- |f_{z+h}(\lambda)-f_z(\lambda)-h\lambda^z\log\lambda|
- \leq C_\delta |h|^2.
-\]
-At zero the derivative is defined to be zero. This proves complex
-differentiability into the continuous-function space.
+If $E_tx=0$ for some $t>0$, self-adjointness and the semigroup law
+give $E_{t/2}x=0$. Iterate and use strong continuity at zero to get
+$x=0$. Since $E_t$ is self-adjoint, its range is dense.
 
-For a positive integer $n$, put $B=E_{1/n}$. The semigroup law gives
-$B^n=A$. Functional calculus on the positive operator $B$ yields
-$(B^n)^{1/n}=B$, because $(\lambda^n)^{1/n}=\lambda$ for
-$\lambda\geq0$. The composition rule thus gives
-$E(p/n)=A^{p/n}=B^p=E_{p/n}$ for positive integers $p,n$.
-Approximate any positive real $t$ by positive rationals. Operator-norm
-continuity of $E(z)$ and strong continuity of the original semigroup show,
-after application to each vector, that $E(t)=E_t$.
+Write $A=E_1$. By the bounded Borel functional calculus
+\cite[Theorem~VII.2]{ReedSimonI} the spectral measure of $A$ is
+supported on $[0,1]$ and has zero projection at $0$ by injectivity.
+Define $E(z)=A^z$ and $V(t)=A^{-it}$ using the real logarithm on
+$(0,1]$. The values of the multipliers at zero are immaterial.
+The product, adjoint, norm and edge identities follow from the
+scalar multipliers. Dominated convergence for the vector spectral
+measures makes $V(t)$ strongly continuous. On each compact
+subset of $\operatorname{Re}z>0$, the bound on
+$\lambda^\delta|\log\lambda|^2$ for any $\delta>0$ gives the
+uniform Taylor remainder needed for norm holomorphy.
 
-If $E_tx=0$, then
-$\|E_{t/2}x\|^2=\langle x,E_tx\rangle=0$.
-Iteration gives $E_{t/2^n}x=0$ for every $n$, and strong continuity at zero
-implies $x=0$. Self-adjointness then gives dense range, since the orthogonal
-complement of the range is the kernel of the adjoint.
-For real $t$ and $r>0$, the product and adjoint identities imply
-\[
- E(r-it)^*E(r-it)=E(2r)=E_r^*E_r,
- \qquad \|E(r-it)x\|=\|E_rx\|.
-\]
-Define an isometry initially on the dense range of $A$ by
-$V(t)Ax=E(1-it)x$. Injectivity of $A$ makes the definition unambiguous;
-the displayed norm identity extends it uniquely to an isometry of the
-whole Hilbert space.
-
-For $\operatorname{Re}z>0$, both equalities in
-\eqref{eq:complex-heat-edge} may be checked on $Ax$. For example,
-\[
- V(t)E(z)Ax=V(t)AE(z)x=E(1-it)E(z)x
-            =E(z-it)Ax.
-\]
-The other order is identical. Thus these are bounded-operator identities.
-In particular, on $Ax$,
-\[
- V(t)V(s)Ax=V(t)E(1-is)x=E(1-i(s+t))x=V(t+s)Ax.
-\]
-Density proves the group law. Since $V(0)=I$, each isometry has inverse
-$V(-t)$ and is unitary. For $Ax$, the orbit is continuous by holomorphy
-of $E(1-it)$; approximation by the dense range of $A$, with the unitary
-norm bound on both sides, proves strong continuity for every vector.
-
-Commutation with $A$ implies commutation with every continuous function of
-$A$: approximate such a function uniformly on its real spectrum by
-polynomials. Thus a bounded operator commuting with all $E_t$ commutes
-with $E(z)$. Checking on $Ax$ then gives commutation with $V(t)$.
-Finally $A\Omega=\Omega$ implies $f(A)\Omega=f(1)\Omega$, first for
-polynomials and then for continuous $f$. Apply this to $f_z$ and then the
-definition of $V(t)$ to obtain the vacuum assertions.
+For positive integers $n$, $E_{1/n}$ is the positive $n$th root of
+$A$ by the semigroup law and the continuous calculus. Thus
+$E(p/n)=E_{p/n}$ for positive rational $p/n$. Norm continuity of
+$E(z)$ and strong continuity of the semigroup identify them on
+all positive real times. A bounded operator commuting with the
+semigroup commutes with $A$ and hence its Borel calculus. If
+$A\Omega=\Omega$, the scalar multipliers at $1$ give both vacuum
+identities. Finally, the edge identity on the dense range of $A$
+determines $V(t)$.
 \end{proof}
 
-\paragraph{Coordinate convention in Sections~\ref{sec:complex-heat}--\ref{sec:locality}.}
+\subparagraph{Coordinate convention in Sections~\ref{sec:complex-heat}--\ref{sec:locality}.}
 Section~\ref{ex-statement} writes points of $\mathbb R^4$ as
-$x=(\boldsymbol x,t)$, with time last, as does the formal source. In
+$x=(\boldsymbol x,t)$, with time last. In
 Sections~\ref{sec:complex-heat}--\ref{sec:locality} we write instead
 $a=(a^0,\mathbf a)$ and $X_i=(t_i,x_i)$ with time first, so that index $0$
 is the time coordinate, and matrices such as
 $\eta=\operatorname{diag}(1,-1,-1,-1)$ are written in this order. The two
-descriptions are identified by the coordinate permutation
-$(t,\mathbf x)\leftrightarrow(\mathbf x,t)$. This permutation has absolute
-Jacobian one, carries the Minkowski form $t^2-|\mathbf x|^2$, the forward
-cone and the Lorentz group to themselves, and conjugates the action of each
-Poincar\'e transformation; so every statement in these sections transfers
-verbatim to the time-last convention of Section~\ref{ex-statement}.
+descriptions are related by the linear change of coordinates
+$C(t,\mathbf x)=(\mathbf x,t)$ from time-first to time-last coordinates,
+with $|\det C|=1$ and $C^{-1}=C^{\mathsf T}$. This is a change of
+realization, not a symmetry of either one. The Minkowski matrices satisfy
+$\eta_{\mathrm{last}}=C\eta_{\mathrm{first}}C^{\mathsf T}$; a Lorentz matrix
+$\Lambda$ in time-first coordinates corresponds to $C\Lambda C^{-1}$; the
+time-last translation by $a$ corresponds to the time-first translation by
+$C^{-1}a$; and the forward cone $\{p^0\geq|\mathbf p|\}$ corresponds to
+$\{(\mathbf p,E):|\mathbf p|\leq E\}$. Accordingly, the statements of
+these sections transfer to the time-last convention of
+Section~\ref{ex-statement} under the following substitutions: test
+functions are pulled back, $f\mapsto f\circ C$; the Poincar\'e action is
+conjugated by $C$; and supports, cones and spectral measures are pushed
+forward by $C$. The pullback is a topological linear isomorphism of
+$\mathcal S(\mathbb R^4)$ commuting with complex conjugation. It preserves
+spacelike separation of supports for the corresponding forms, and integrals
+acquire no Jacobian factor.
 
 Suppose now that spatial translations $U(x)$ form a strongly continuous
 unitary representation commuting with the heat semigroup and fixing

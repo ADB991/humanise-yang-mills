@@ -1,9 +1,9 @@
 % Quantitative component bounds used by the dual wire-symbol estimate.
-\section{Component estimates for the dual wire symbol}
+\subsection{Component estimates for the dual wire symbol}
 \label{sec:ex-lattice-free-kernel-components}
 
 This section supplies the factor bounds used in the dual-stencil calculation
-of Section~\ref{sec:ex-lattice-free-kernel-estimates}. All constants below
+of Subsection~\ref{sec:ex-lattice-free-kernel-estimates}. All constants below
 may depend on the fixed smoothing stages, the positive coupling parameter,
 and the four-dimensional cell conventions, but not on the odd side length
 or the alias. Write
@@ -88,11 +88,11 @@ $u\in\mathcal N$, of the feed
       D_{u,a}(q_l^{(u.mass)}(p))D_{u,a}(-q_l^{(u.mass)}(p)),\\
  N_{v,a}(p)&=\sum_{u\in\mathcal N(v)}\operatorname{feed}_{u,a}(p).
 \end{align*}
-In the high-alias term, the divisor side
-is the unit side, as in the source definition of the high part of the
-drain; the port blow-up below uses the indicated train side $M$.
+In the high-alias term the divisor is the unit-side divisor $d_1$,
+evaluated at the rescaled aliases $q_l^{(M)}(p)$ and multiplied by $M^2$;
+the port blow-up below uses the indicated train side $M$.
 
-\subsection{The one-dimensional alias estimate}
+\subsubsection{The one-dimensional alias estimate}
 
 \begin{lemma}[Rail and box decay]
 \label{lem:ex-lattice-rail-alias-decay}
@@ -188,7 +188,7 @@ independently of the number of train steps; this is why its exponential
 loss can be summed by the geometric side-ratio argument.
 \end{proof}
 
-\subsection{Mass, signals, and nonzero-alias denominators}
+\subsubsection{Mass, signals, and nonzero-alias denominators}
 
 \begin{lemma}[Mass and flux weights]
 \label{lem:ex-lattice-mass-flux-weight}
@@ -317,7 +317,7 @@ single-feed noise term uses the constant function one and equals
 The alias drive bound gives a summand at most
 $C\Gamma_M(l)^{-2j}\leq C\Gamma_M(l)^{-2}$, whose sum is at most $81C$;
 the retained factor $M^{-2}$ therefore bounds the feed by $81C M^{-2}$.
-The source noise list is empty for a top train and, for a hop of dilation
+By definition, the noise list is empty for a top train and, for a hop of dilation
 $L$, consists of one top train followed by the hop applied to every entry
 of the previous list. Its total price $T$ obeys
 $T_{\rm top}=0$ and $T_{\rm hop}=1+L^{-2}T_{\rm old}$. As $L\geq3$,
@@ -374,8 +374,8 @@ $j\geq4$.
 
 \begin{proof}
 The bulb and reciprocal bend bounds are those of
-Lemma~\ref{lem:ex-lattice-train-component-bounds}. The blow-up is
-$L^2d_M(q_l^{(L)}(p))$, where $M$ is the wing train's side. Choose a coordinate $a_*$ attaining
+Lemma~\ref{lem:ex-lattice-train-component-bounds}.
+The rescaled kernel is $L^2d_M(q_l^{(L)}(p))$, with side $M$. Choose a coordinate $a_*$ attaining
 $\max_a|\ell_L(l)_a|$; since $l\ne0$, its lift is nonzero. The centered
 alias lower bound gives
 $L|q_l^{(L)}(p)_{a_*}|\geq c(1+|\ell_L(l)_{a_*}|)=cg_L(l)$
@@ -393,7 +393,7 @@ land bend and this reciprocal port normalizer. Since both weights are at
 most one, the levy is uniformly bounded.
 \end{proof}
 
-\subsection{Uniform tails and regular zero-alias factors}
+\subsubsection{Uniform tails and regular zero-alias factors}
 
 \begin{lemma}[Uniform tail and regular factors]
 \label{lem:ex-lattice-tail-notch-weights}
@@ -423,7 +423,52 @@ products of these quantities, so the triangle inequality and the
 finite-dimensional matrix product bound complete the uniform estimate.
 \end{proof}
 
-\subsection{Closing the two wire branches}
+
+\begin{lemma}[Uniform one-form transport bound]
+\label{lem:ex-lattice-primal-entrywise-bound}
+Fix $k>0$ and $4\le t\le j\le t+1$. Over the flights of odd side
+$L\ge3$, the one-form column $\mathcal A_l$ of
+Subsection~\ref{sec:kernel-transport-identities} is holomorphic on one common
+complex cube, with each entry bounded by $C\Gamma_L(l)^{-j}$.
+The constant and cube may depend on the fixed orders and penalty.
+\end{lemma}
+
+\begin{proof}
+Use the notation $s,b_a,b_{l,a},m_l,a,h,B_l,g_{l,a},x_l,\sigma$
+of Subsection~\ref{sec:kernel-transport-identities}. In particular $h$
+is the sum over $l\ne0$ of $m_l(p)m_{-l}(-p)\operatorname{tr}D_l(p)$.
+In analytic expressions an adjoint on real momenta continues by
+reflection and transposition. Lemmas~\ref{lem:ex-lattice-port-denominator-weights}
+and \ref{lem:ex-lattice-tail-notch-weights} bound each summand of $h$
+by $C\Gamma_L(l)^{-2j}g_L(l)^{-2}$. Hence $h$ is uniformly bounded
+by the exponent-two residue sum. The regular denominator
+\[
+ sa=m_0(p)m_0(-p)\sum_b b_{0,b}+sh
+\]
+is uniformly bounded on the common complex cube. On its real slice
+$s\ge0$ and $h\ge0$. The zero-alias mass and the fine bulbs are uniformly
+bounded away from zero there by the component bounds, so the first
+term gives $sa\ge c>0$, also at $p=0$. The uniform continuation
+argument of the train component bounds therefore bounds $(sa)^{-1}$
+on a smaller common cube.
+
+For $l\ne0$, the leading matrix $B_l=sD_l F_{1,l}^*\operatorname{diag}(b^{-1})$
+has weight $\Gamma_L(l)^{-j}g_L(l)^{-2}$ by the port, flux and
+reciprocal bulb bounds. The two summands of $g_{l,a}$ have this same
+weight: each contains a reflected patch mass and a port, and the
+remaining denominators and rail factors are uniformly bounded after
+inversion where needed. The vector $x_l$ has weight $g_L(l)$ and the
+row $\sigma$ has weight one by the signal, bend and bulb bounds.
+Thus the correction $\operatorname{diag}(g_{l,a})x_l\sigma$ has
+weight at most $\Gamma_L(l)^{-j}$, since $g_L(l)\ge1$.
+For $l=0$ the quotient $sD_0$ is the diagonal of fine bulbs, so
+$B_0$ is bounded. The principal gain formula uses only the bounded
+tail and $h$, and the reciprocals of $m_0$, $b_a$ and $sa$ on the
+smaller cube. The principal signal and $\sigma$ are bounded as well.
+These estimates prove the bound on both branches.
+\end{proof}
+
+\subsubsection{Closing the two wire branches}
 
 \begin{proposition}[Entrywise weighted wire bound]
 \label{prop:ex-lattice-wire-entrywise-bound}
@@ -433,13 +478,13 @@ stencil is holomorphic on one common complex cube and satisfies
  |W_{P,0}(p)|\leq C_0,\qquad
  |W_{P,l}(p)|\leq C_1\Gamma_L(l)^{-j}\quad(l\ne0),
 \]
-uniformly in odd $L\geq3$. Hence the unified bound is
+uniformly over all wing train histories and odd $L\geq3$. Hence the unified bound is
 $C\Gamma_L(l)^{-j}$.
 \end{proposition}
 
 \begin{proof}
 Use the zero and nonzero branch formulas in
-Section~\ref{sec:ex-lattice-free-kernel-estimates}. In the zero branch,
+Subsection~\ref{sec:ex-lattice-free-kernel-estimates}. In the zero branch,
 Lemma~\ref{lem:ex-lattice-mass-flux-weight} and
 Lemma~\ref{lem:ex-lattice-tail-notch-weights} show that every factor has
 weight one. In the first nonzero branch product, the scaled signal,

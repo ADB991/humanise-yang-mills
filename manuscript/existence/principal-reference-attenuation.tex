@@ -1,18 +1,21 @@
-\section{Attenuation under the principal Gaussian reference}
+\subsection{Attenuation under the principal Gaussian reference}
 \label{sec:principal-reference-attenuation}
 We apply the polynomial cancellation just proved to the reference
-integral in Section~\ref{sec:principal-gaussian-comparison}.
+integral in Subsection~\ref{sec:principal-gaussian-comparison}.
 The important feature is the order of constants: the coefficient
 of $L^{-d-1}$ is chosen before $L$. Bounds for the nonlinear chart
 and the Gaussian can be chosen after $L$, because their additional
 costs tend to zero as the entrance coupling increases. Throughout,
 $n\ge\max\{2,d+1\}$, the insertion has the fine regularity through
 order $n$ used below, and its polynomial moments through degree $d$ vanish.
-The coarse weight exponent does not exceed the fine one.
+The coarse weight exponent does not exceed the fine one. The stage
+smoothing order $j$ also satisfies $d\le j-2$, so that the installed
+kernel supplies every spatial difference used in the polynomial
+decomposition. In particular degree-four attenuation uses $j\ge6$.
 
-\subsection{The first derivative of the reference mean}
+\subsubsection{The first derivative of the reference mean}
 Let $u$ be a coarse logarithmic field and $v_F(u)$ the stationary
-relative field in tree coordinates from Section~\ref{sec:local-mean}.
+relative field in tree coordinates from Subsection~\ref{sec:local-mean}.
 At the identity the full affine row satisfies
 \[
                      D_\infty v_F(u)+r'_0(u)=0.
@@ -46,7 +49,7 @@ The elementary normal-equation identity therefore gives
        -P_R(0)^*D_R(0)^*(D_R(0)v_F(u)+r'_R(u)).
 \]
 The window and row bounds of
-Section~\ref{sec:principal-comparison-jets}, together with
+Subsection~\ref{sec:principal-comparison-jets}, together with
 \eqref{eq:reference-tangent-tail}, imply
 \begin{equation}\label{eq:reference-mean-tangent}
  \|Dm(0)-v_F\|_{\infty\to\infty}
@@ -61,7 +64,7 @@ at most the coarse small-field threshold $\theta_c$. This proves
 the required first-order approximation for the selected windowed
 mean, without replacing it by the exact inverse mean.
 
-\subsection{The nonlinear local display}
+\subsubsection{The nonlinear local display}
 The tree-straightening potential is a linear site field $\phi(u)$.
 Its discrete gradient corrects the tree response to the actual
 installed $A_0$ response, denoted $\mathcal A u$:
@@ -72,7 +75,7 @@ installed $A_0$ response, denoted $\mathcal A u$:
 This follows by summing the tree potential along a bond: the
 interior terms telescope, leaving its endpoint difference. The
 root correction is included in the same potential, as in the
-response bound of Section~\ref{sec:local-mean}.
+response bound of Subsection~\ref{sec:local-mean}.
 
 For noise $w$ in fine link logarithmic units define the local
 logarithmic display
@@ -118,6 +121,21 @@ with $|\Gamma|\le1$ and
  \quad\Longrightarrow\quad g\|\mathrm{tape}(z)\|
              \le\varepsilon\theta_f\le s.
 \]
+The last inequality is an actual cutoff purchase. For fixed block
+factor the thresholds are
+$\theta_c=P(x)/\sqrt{x}$ and
+$\theta_f=P(x+c_L)/\sqrt{x+c_L}$, where
+$P(x)=\exp((\log\log x)^2)$ and $c_L$ is fixed. Their ratio tends
+to one: the square-root ratio does, and the mean-value theorem gives
+\[
+ \big|(\log\log(x+c_L))^2-(\log\log x)^2\big|
+ \le |c_L|\sup_{\xi\ \text{between }x\text{ and }x+c_L}
+           \frac{2|\log\log\xi|}{\xi\log\xi}\longrightarrow0.
+\]
+Thus $\theta_c/\theta_f\ge1/2$ eventually. Choose the cutoff
+constant $\varepsilon\le1/2$; then
+$\varepsilon\theta_f\le\theta_c\le s$. Increasing the entrance
+coupling achieves this after $L$ is fixed.
 The chart bound gives $s=C\theta_c$ times a fixed polynomial in its
 read radius, with the local-gauge constant $C$ purchased before $L$.
 The nonlinear display constants $Q,r$ are chosen after $L$. Thus the asserted
@@ -142,7 +160,7 @@ The noise term is needed only at $j=0$ but is harmless at all
 orders.
 
 Each $\mathcal A D^ju(0)$ has the graded decomposition of
-Section~\ref{sec:polynomial-moment-attenuation}, with cost $M$
+Subsection~\ref{sec:polynomial-moment-attenuation}, with cost $M$
 chosen before $L$. Put the error in
 \eqref{eq:reference-display-remainder} entirely into its last
 piece. Since the fine direction width is at least $\theta_f$,
@@ -153,12 +171,12 @@ $L^{-1}$ and cost
 \end{equation}
 This operation requires no polynomial property of the error.
 
-\subsection{The common healthy segment}
+\subsubsection{The common healthy segment}
 For a short fine support, meaning that its cover number $q$ obeys
 $q^3<L$, the whole inspected support lies in the read halo of
 one coarse chart. Seed separation, identical local flags, and the
 mean-locality argument of
-Section~\ref{sec:principal-comparison-jets} identify the displayed
+Subsection~\ref{sec:principal-comparison-jets} identify the displayed
 configuration with the physical Gaussian-reference configuration
 on that support, after two gauge transformations. One gauge is
 the fixed coarse chart gauge; the second is the exponential of
@@ -206,7 +224,7 @@ It gives the fine-insertion price
 \end{equation}
 The finite number of partitions is included in $C_{n,d}$.
 
-\subsection{Separate local gauges for a winding support}
+\subsubsection{Separate local gauges for a winding support}
 For a general support $X$, one common logarithm need not exist. We instead
 base the insertion chart at the actual received configuration $W_0$.
 Keep the frozen fine field, the Gaussian coordinates, and every localization
@@ -287,14 +305,14 @@ $s^2/\theta_f$, which can be made small after $L$ is fixed.
 There is no sum of separate insertion derivatives over bonds: the
 entire field $Z$ is inserted into the same regularity estimate.
 
-\subsection{Integrating the density derivatives}
+\subsubsection{Integrating the density derivatives}
 Use the same finite Gaussian coordinates for all derivatives,
 with its positive covariance and the frozen fine field fixed.
 The moment and density differentiation arguments of
 Sections~\ref{sec:gaussian-differentiation} and
 \ref{sec:gaussian-moment-prices} apply to this reference as well:
 its precision floor, inverse jets and local affine source were
-proved in Section~\ref{sec:principal-comparison-jets}. The cutoff
+proved in Subsection~\ref{sec:principal-comparison-jets}. The cutoff
 is held fixed in these coordinates. Only on its support is the
 unmasked regular insertion evaluated; the health conclusion in
 the preceding paragraph applies there.
@@ -342,7 +360,7 @@ linear-response constants.
 The Gaussian moment of $(1+\|z\|)^{4n}$ is bounded by
 $K'_L\{H(1+q)\}^{b_n}$. This follows by expanding the norm
 bound into coordinate moments and using the covariance upper
-bound, exactly as in Section~\ref{sec:gaussian-moment-prices}.
+bound, exactly as in Subsection~\ref{sec:gaussian-moment-prices}.
 Choose $h_n=2na_n+b_n$. For each fixed $L$, increasing the
 entrance coupling makes
 \[
@@ -363,7 +381,7 @@ $g/\theta_f$. The resulting integrated derivative bounds are
 All differentiation under the integral is justified by the same
 polynomial Gaussian majorants on a common parameter neighborhood.
 
-\subsection{Absorbing the enlarged support}
+\subsubsection{Absorbing the enlarged support}
 Let $A>0$ be the fine support exponent, $e\ge0$ the requested
 coarse exponent including its reserve, and $q'$ the coarse
 cover number of the allocated output support. The geometric

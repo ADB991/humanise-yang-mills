@@ -1,0 +1,148 @@
+def YM.Next.Rank.Ship.bank : {G : YM.Gauge} → YM.Next.Rank.HaarBudget G → YM.RG.Levels G → ℕ → Prop :=
+fun {G} O A m =>
+  ∀ (p : ℕ) (P : YM.RG.Rep G (A.S.side m p)) (g Λ δ X : ℝ) (k : ℕ),
+    YM.Next.Rank.Station.Meets A m p P g Λ δ →
+      X ≤ 1 + ↑k →
+        YM.Next.Rank.protection O P (A.params m).paths Λ δ X g -
+            4 * ↑G.lieDim * Real.log g / ↑(Fintype.card (YM.Lattice.Site (A.S.side m p))) ≤
+          YM.Next.Rank.Station.ticket O (A.params m) k
+def YM.Next.Rank.protection : {G : YM.Gauge} →
+  {n : YM.Lattice.Side} → YM.Next.Rank.HaarBudget G → YM.RG.Rep G n → ℝ → ℝ → ℝ → ℝ → ℝ → ℝ :=
+fun {G} {n} O R A Λ δ X g =>
+  2 * R.exCost A Λ δ + ↑(Fintype.card YM.Lattice.PlaqAxes) + R.beta * YM.RG.baseBudget R.clip A g + X +
+      3 * YM.Next.Rank.ent O R.clip -
+    4 * Real.log O.small
+def YM.Next.Rank.Station.ticket : {G : YM.Gauge} → YM.Next.Rank.HaarBudget G → YM.RG.Stage → ℕ → ℝ :=
+fun {G} O s m =>
+  2 * (1 + (8 * s.paths + 1)) + ↑(Fintype.card YM.Lattice.PlaqAxes) +
+            ↑(Fintype.card YM.Lattice.PlaqAxes) * (s.clip.direct + s.paths ^ 2) / 2 +
+          (1 + ↑m) +
+        3 * YM.Next.Rank.ent O s.clip -
+      4 * Real.log O.small +
+    1
+def YM.RG.Rep.exCost : {n : YM.Lattice.Side} → {G : YM.Gauge} → YM.RG.Rep G n → ℝ → ℝ → ℝ → ℝ :=
+fun {n} {G} R A Λ δ => δ + YM.RG.PathData.loopsPrice R.p R.beta A Λ
+def YM.RG.PathData.loopsPrice : YM.RG.BudgetPoint → ℝ → ℝ → ℝ → ℝ :=
+fun p β C Λ => β * (C * p.threshold ^ 3 + C * p.threshold ^ 4) + Λ * p.threshold ^ 2
+def YM.RG.baseBudget : YM.RG.Clip → ℝ → ℝ → ℝ :=
+fun C A s => ↑(Fintype.card YM.Lattice.PlaqAxes) * (C.direct * s ^ 2 / 2 + (A * s) ^ 2 / 2)
+def YM.Next.Rank.ent : {G : YM.Gauge} → YM.Next.Rank.HaarBudget G → YM.RG.Clip → ℝ :=
+fun {G} O p => Real.log O.big - ↑G.lieDim * Real.log (YM.Next.Rank.strength p)
+def YM.Next.Rank.strength : YM.RG.Clip → ℝ :=
+fun p => min 1 p.linear
+structure YM.Next.Rank.HaarBudget (G : YM.Gauge) : Type
+number of parameters: 1
+fields:
+  YM.Next.Rank.HaarBudget.small : ℝ
+  YM.Next.Rank.HaarBudget.big : ℝ
+  YM.Next.Rank.HaarBudget.positive : 0 < self.small
+  YM.Next.Rank.HaarBudget.small_le : self.small ≤ 1
+  YM.Next.Rank.HaarBudget.big_ge : 1 ≤ self.big
+  YM.Next.Rank.HaarBudget.low : ∀ (r : ℝ), 0 < r → r ≤ 1 → self.small * r ^ G.lieDim ≤ G.probHaar.real (G.shell (r / 4))
+  YM.Next.Rank.HaarBudget.high : ∀ (t : ℝ),
+      0 < t → ∫ (u : G.El), Real.exp (-(G.chord u / t)) ∂G.probHaar ≤ self.big * t ^ G.lieDim
+constructor:
+  YM.Next.Rank.HaarBudget.mk {G : YM.Gauge} (small big : ℝ) (positive : 0 < small) (small_le : small ≤ 1)
+    (big_ge : 1 ≤ big) (low : ∀ (r : ℝ), 0 < r → r ≤ 1 → small * r ^ G.lieDim ≤ G.probHaar.real (G.shell (r / 4)))
+    (high : ∀ (t : ℝ), 0 < t → ∫ (u : G.El), Real.exp (-(G.chord u / t)) ∂G.probHaar ≤ big * t ^ G.lieDim) :
+    YM.Next.Rank.HaarBudget G
+structure YM.Next.Rank.Station.Meets {G : YM.Gauge} (A : YM.RG.Levels G) (m p : ℕ) (P : YM.RG.Rep G (A.S.side m p))
+  (g Λ δ : ℝ) : Prop
+number of parameters: 8
+fields:
+  YM.Next.Rank.Station.Meets.same : P.clip = (A.params m).clip
+  YM.Next.Rank.Station.Meets.cap : P.beta ≤ 4 * A.clock.hatBeta m
+  YM.Next.Rank.Station.Meets.assigned : P.beta * g ^ 2 = 1
+  YM.Next.Rank.Station.Meets.positive : 0 < g
+  YM.Next.Rank.Station.Meets.entrance : g ≤ P.p.threshold
+  YM.Next.Rank.Station.Meets.max_threshold : P.p.threshold ≤ A.clock.threshold m
+  YM.Next.Rank.Station.Meets.cap_E : δ ≤ 1
+  YM.Next.Rank.Station.Meets.loopCap : Λ ≤ A.clock.loopCap m
+constructor:
+  YM.Next.Rank.Station.Meets.mk {G : YM.Gauge} {A : YM.RG.Levels G} {m p : ℕ} {P : YM.RG.Rep G (A.S.side m p)}
+    {g Λ δ : ℝ} (same : P.clip = (A.params m).clip) (cap : P.beta ≤ 4 * A.clock.hatBeta m)
+    (assigned : P.beta * g ^ 2 = 1) (positive : 0 < g) (entrance : g ≤ P.p.threshold)
+    (max_threshold : P.p.threshold ≤ A.clock.threshold m) (cap_E : δ ≤ 1) (loopCap : Λ ≤ A.clock.loopCap m) :
+    YM.Next.Rank.Station.Meets A m p P g Λ δ
+@YM.Next.Rank.Station.affordable : ∀ {G : YM.Gauge} (O : YM.Next.Rank.HaarBudget G) (A : YM.RG.Levels G),
+  G.Simple →
+    ∀ᶠ (m : ℕ) in Filter.atTop,
+      ∀ (p : ℕ) (P : YM.RG.Rep G (A.S.side m p)) (g Λ δ X : ℝ) (k : ℕ),
+        YM.Next.Rank.Station.Meets A m p P g Λ δ →
+          X ≤ 1 + ↑k →
+            YM.Next.Rank.protection O P (A.params m).paths Λ δ X g -
+                4 * ↑G.lieDim * Real.log g / ↑(Fintype.card (YM.Lattice.Site (A.S.side m p))) ≤
+              YM.Next.Rank.Station.ticket O (A.params m) k
+'YM.Next.Rank.Station.affordable' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Ship.banking : ∀ {G : YM.Gauge} (A : YM.RG.Levels G) (O : YM.Next.Rank.HaarBudget G),
+  G.Simple → ∀ᶠ (m : ℕ) in Filter.atTop, YM.Next.Rank.Ship.bank O A m
+'YM.Next.Rank.Ship.banking' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Vac.Numbers.uniform_loop : ∀ᶠ (s : ℝ) in Filter.atTop,
+  s * YM.Vac.Numbers.theta s ^ 2 ≤ YM.Vac.Numbers.P s ^ 2 ∧
+    s * YM.Vac.Numbers.theta s ^ 3 ≤ 1 ∧
+      s * YM.Vac.Numbers.theta s ^ 4 ≤ 1 ∧ ∀ v ≤ 1, 2 * YM.Vac.Numbers.P s ^ v * YM.Vac.Numbers.theta s ^ 2 ≤ 1
+def YM.RG.Calendar.monitor : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => Real.exp (Real.log (Real.log (S.hatBeta m)) ^ 2)
+def YM.RG.Calendar.loopCap : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => 2 * S.monitor m ^ S.theta (S.J m)
+def YM.RG.Calendar.threshold : {G : YM.Gauge} → YM.RG.Calendar G → ℕ → ℝ :=
+fun {G} S m => S.hatCoupling m * S.monitor m
+def YM.Next.Rank.Ship.yardSky : {G : YM.Gauge} →
+  (C : YM.Family G) → {k N : ℕ} → ℝ → k ≤ N → (p : ℕ) → YM.Cells.Tiling (C.side N p) :=
+fun {G} C {k N} b hN p =>
+  let A := C.path.levels;
+  YM.Cells.center C.S p ⋯ 0
+@YM.Next.Rank.Station.FitSky.stencils : ∀ {G : YM.Gauge} {F : YM.Family G} {k n : ℕ} {b : ℝ} {x : YM.Points n},
+  YM.Next.Rank.Station.FitSky F.path.levels b k x →
+    F.Makes →
+      ∀ (d : ℕ),
+        ∀ᶠ (N : ℕ) in Filter.atTop,
+          ∃ (hN : k ≤ N),
+            ∀ (p : ℕ) (i : Fin n) (v : F.label d),
+              have a := F.path.levels;
+              have T := YM.Cells.center F.S p ⋯ 0;
+              YM.Cells.Interior (T.chamber 0)
+                (F.O N p v (YM.Cells.location F.S k N p (YM.Next.Rank.Station.choose a b k x i)))
+'YM.Next.Rank.Station.FitSky.stencils' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.Next.Rank.Station.widerSky : ∀ {G : YM.Gauge} (A : YM.RG.Levels G) (b : ℝ) (k : ℕ),
+  YM.Next.Rank.Station.widthSky A b k ≤ YM.Next.Rank.Station.middleSky A b k
+@YM.Next.Rank.Station.beforeSky : ∀ {G : YM.Gauge} (A : YM.RG.Levels G) (b : ℝ) (k : ℕ),
+  YM.Next.Rank.Station.middleSky A b k ≤ k
+'probe_yard_depth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_allowance_of_poised' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_monitor_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_a_le_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'probe_reduced_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+@YM.RG.Calendar.Fits.deep : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G},
+  S.Fits → Filter.Tendsto S.J Filter.atTop Filter.atTop
+@YM.RG.Calendar.Fits.mono : ∀ {G : YM.Gauge} {S : YM.RG.Calendar G}, S.Fits → Monotone S.J
+'probe_bank_at_root_depth' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[reducible] def YM.MergeProof.East.trays : ℕ → ℕ :=
+fun d => d + 2
+@YM.Next.Rank.Ship.AllocatedSky : {G : YM.Gauge} → YM.RG.Levels G → ℕ → ℕ → YM.Next.Rank.HaarBudget G → ℝ → Prop
+@YM.Next.Rank.Peak.ChargeSky.allot : ∀ {G : YM.Gauge} {a : YM.RG.Levels G} {b : ℝ} {k slot : ℕ}
+  {O : YM.Next.Rank.HaarBudget G} {D : YM.Next.Rank.Perch.Era},
+  YM.Next.Rank.Peak.ChargeSky a b k slot O D → YM.Next.Rank.Ship.AllocatedSky a slot k O b
+@YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky.age : ∀ {G : YM.Gauge} {C : YM.Family G}
+  {B : YM.PhysicalNext.RankCovariance.Binding C} {J : YM.Precision.ChartRatio G} {w z : ℝ}
+  {ξ : YM.Next.Rank.Tapes.Purse} {k u D : ℕ} {O : YM.Next.Rank.HaarBudget G} {l r : ℝ},
+  YM.PhysicalNext.InteractingRank.Soft.LegacyCostSky B J w z ξ k u D O l r →
+    YM.Next.Rank.Peak.ChargeSky C.path.levels ξ.band k u O ξ.era
+        4.20 real         1.72 user         1.84 sys
+          6869630976  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              488050  page reclaims
+               15914  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 304  voluntary context switches
+               34183  involuntary context switches
+         39427268719  instructions retired
+         14628212292  cycles elapsed
+          1040144496  peak memory footprint

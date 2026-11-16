@@ -1,6 +1,12 @@
-\section{Connected clusters with repeated labels}
+\subsection{Connected clusters with repeated labels}
 \label{sec:cluster-expansion}
-Section~\ref{sec:ope-grouping} counted connected sets of distinct activity
+
+The abstract polymer expansion and its convergence criterion are
+developed in Koteck\'y and Preiss \cite[the theorem on pp.~492--493]{KoteckyPreiss}.
+The argument here also keeps a geometric bound at each occurrence number
+in the weighted expansion, for the later differentiated estimates.
+
+Subsection~\ref{sec:ope-grouping} counted connected sets of distinct activity
 labels. A logarithmic expansion is different: its vertices are numbered
 occurrences, and the same activity label may occur several times. We now
 prove the bound for this expansion, including its factorials and the
@@ -32,45 +38,22 @@ $R(i_r,i_s)$. Define its connected coefficient and majorant by
 For $m=0$ the graph with no edges is connected and $u(z)=1$.
 Repeated labels are allowed in every tuple sum below.
 
-\subsection{Cancellation before taking absolute values}
+\subsubsection{Cancellation before taking absolute values}
 For any graph $T$ on $\{0,\ldots,m\}$,
 \begin{equation}\label{eq:cluster-tree-graph}
  \left|\sum_{\substack{G\subseteq T\\G\ {\rm connected}}}
                       (-1)^{|E(G)|}\right|
                       \le\#\{\text{spanning trees of }T\}.
 \end{equation}
-Here is the cancellation argument. Fix a total order of the vertices
-and root at zero. For each connected $G$, let $d(v)$ be its distance
-from zero, and choose the least neighbor $p(v)$ at distance $d(v)-1$
-as the parent of each $v\ne0$. The resulting parent edges form a
-spanning tree $P$. They determine $d$ by their path lengths.
+This is the Penrose tree-graph bound
+\cite[Proposition~5, Eq.~(4.3)]{FernandezProcacci}. Apply the identity
+to the finite simple graph on the occurrence indices. The alternating
+sum has absolute value equal to the number of Penrose trees, a subset
+of its spanning trees. For a disconnected graph both counts vanish.
+Repeated activity labels are permitted because different occurrences
+are different vertices, joined when the labels are incompatible.
 
-For a fixed tree $P$, define $U(P)\subseteq T$ to contain the tree
-edges and all further edges satisfying these two rules: their levels
-differ by at most one, and, if they join $v$ at level $r$ to $w$ at
-level $r-1$, then $w\ge p(v)$ in the chosen order. Precisely the graphs
-with
-\[
-                         P\subseteq G\subseteq U(P)
-\]
-have this breadth-first parent tree. One implication follows from
-shortest-path distance and the least-parent rule. Conversely, the tree
-paths show that a graph in this interval reaches every vertex in at
-most $d(v)$ steps. The level restriction implies that no path from
-zero reaches it in fewer steps, so the distances are exactly $d$.
-The second rule makes $p(v)$ its least neighbor at the preceding
-level. This proves the other implication and partitions all connected
-graphs into these intervals.
-
-The alternating sum over one interval is
-$(-1)^m(1-1)^{|U(P)\setminus P|}$, hence has absolute value at most
-one. Equivalently, if there is a free edge, toggling it pairs terms
-with opposite signs. Summing over $P$ proves
-\eqref{eq:cluster-tree-graph}. Taking absolute values separately for
-all connected graphs would lose this cancellation and would not give
-the required estimate.
-
-\subsection{The weighted forest estimate}
+\subsubsection{The weighted forest estimate}
 A parent map $p:\{1,\ldots,m\}\to\{0,\ldots,m\}$ is called rooted
 if iterating it always reaches the external root zero. Place a fixed
 support $Y$ at zero and a support $X_{i_v}$ at vertex $v\ne0$.
@@ -146,7 +129,7 @@ If $\sum_i v_i e^{(a+\delta)c(X_i)}\le b$, multiply
 $v_{i_0}e^{a c(X_{i_0})}$ and sum $i_0$. The result is the rooted
 bound $bq^m$, with denominator $m!$ for the other vertices.
 
-\subsection{A root anywhere in the tuple}
+\subsubsection{A root anywhere in the tuple}
 Let $Q$ be any property of an activity label and assume
 \[
               \sum_{i:Q(i)}w_i e^{(a+\delta)c(X_i)}\le b.
@@ -201,7 +184,7 @@ quantity $t=h_B\gamma/\delta$ of the forest estimate above is unrelated.)
 The reserve $\delta$ pays for tree branching and is distinct from the
 reserve $e$ used later for spatial derivative weights.
 
-\subsection{The exact logarithm identity}
+\subsubsection{The exact logarithm identity}
 Now let $v_i\in\mathbb R$ be possibly signed activities and apply the
 preceding estimates to $w_i=|v_i|$. Define the gas and connected sum
 \[
@@ -279,7 +262,7 @@ the proof, with no assumption of positivity or a choice of a complex
 logarithm branch.
 
 Applied to the uniformly dominated tilted activities of
-Section~\ref{sec:leaf-expansion}, this result constructs their positive
+Subsection~\ref{sec:leaf-expansion}, this result constructs their positive
 normalization and logarithmic cluster series once the vertex site
 bound \eqref{eq:cluster-vertex-input} is established. The joint bounds
 proved there then justify differentiating it. Constructing the actual

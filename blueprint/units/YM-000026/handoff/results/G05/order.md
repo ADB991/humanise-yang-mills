@@ -180,7 +180,7 @@ owners control integration and exact order. This resolves the *editorial*
 cycle caused by treating each entire file as one node, not the open supplier
 or same-history mathematical obligations.
 
-At `ce1b3a4` merged C14 revision 1b restates the shell-node conclusion and adds its scale-note argument; the chamber receipt, cited schedule inputs and renewed independent review remain open. Its two forward references to `def:ex-lattice-shell-receipt` require the definition to precede the proposition and scale note; see the 58-row exception list.
+At `ce1b3a4` merged C14 revision 1b restates the shell-node conclusion and adds its scale-note argument; the chamber receipt, cited schedule inputs and renewed independent review remain open. Its two forward references to `def:ex-lattice-shell-receipt` require the definition to precede the proposition and scale note; see the then-current exception list (59 rows at the revised basis).
 
 ### Operational block placements
 
@@ -192,7 +192,7 @@ hypotheses, followed by its original proof at its owner block. The theorem is
 not converted into an assumed input. This is a deferred-proof plan, not proof
 that its prerequisites have been discharged or that no cycle remains. The two
 finite-dimensional trace receiver and medium lemmas are moved with their
-complete proofs before item 194, where the C14 calibration chapter uses the
+complete proofs before item 197, where the C14 calibration chapter uses the
 receiver. The conditional `trace-small-means.tex` block is moved after item
 218, before the external #33 sensor; #34 comes after both C14 free rank and
 C05 filtration, then the C15 physical trace applications. Its priced-mission

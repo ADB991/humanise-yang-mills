@@ -1,4 +1,4 @@
-\section{Triangular transport and the physical filtration}
+\subsection{Triangular transport and the physical filtration}
 \label{sec:ope-filtration}
 The distance estimate in \eqref{eq:ope-match-distance} concerns the
 physical filtration. A bare coefficient of low engineering degree need
@@ -8,7 +8,7 @@ plane by their correlations. The two parts use different information:
 triangular estimates for the first, and the comparison of local
 observables for the second.
 
-\subsection{Expansion of the low coordinates}
+\subsubsection{Expansion of the low coordinates}
 Fix a degree $d$, its finite coefficient space $F$, and an integer
 $0\leq e<d$. Each coordinate has an engineering weight in $\{0,\ldots,d\}$.
 Write $\mu(v)=\sum_\alpha|v_\alpha|$ and let $P$ retain the coordinates
@@ -39,7 +39,61 @@ conditions are
 \end{equation}
 Here $s_0=\zeta_i$ and $s=\zeta_{i+1}$ are the column allowances.
 These triangular estimates concern the actual readouts, including their
-nonlinear corrections. Their production is still a construction input.
+nonlinear corrections. On the selected family their hypotheses follow
+from the paid heading and the stored backward transfer, as follows.
+
+\begin{lemma}[The triangular step on the selected family]
+\label{lem:ope-selected-triangle}
+Use the reference-normalized transfer of
+Proposition~\ref{prop:ex-c02-selected-record} at grade $d$ and an
+adjacent step above its reference level. Its consecutive readouts
+satisfy the preceding one-step hypotheses and
+\eqref{eq:ope-triangle-numbers} for every $e<d$, with the same
+readouts and heading matrix for all these $e$.
+\end{lemma}
+\begin{proof}
+The matrix $B$ in Subsection~\ref{sec:heading-history-handoff} is the
+heading of this very transition. Its off-diagonal entry $B_{bi}$
+can be nonzero only when $g_i<g_b$; its diagonal entries are nonzero.
+Consequently a vector supported on grades greater than $e$ is sent
+to one supported on grades greater than $e$. This proves preservation
+of $\ker P$. Equation~\ref{eq:heading-both-prices} bounds both $B$
+and its inverse by a stage constant $K\ge1$, which the purchased
+heading price $D$ dominates. The heading is
+$B\operatorname{vowel}_L=BD_L$, because its diagonal grade factor is
+$L^{d-g_i}$ in coordinate $i$.
+
+Proposition~\ref{prop:selected-reprise} constructs the lower coefficient family
+from the upper one using this heading and the common interpolation
+of Proposition~\ref{prop:ex-selected-interpolation}. Its lead error
+is at most $\epsilon\|\operatorname{core}a\|_1$, where
+$\epsilon=\eta(1+s)R_F\ge0$ in
+\eqref{eq:ex-interpolation-buy}. Thus it is at most
+$\epsilon\mu(a)$. Reference normalization precomposes both readouts
+with the same inverse and leaves this inequality valid for every
+bare vector; it does not replace $B$ or either adjacent coefficient family.
+
+Put $s_0=C_i$ and $s=C_{i+1}$ for the two column allowances. The room
+and bank estimates of Proposition~\ref{prop:ex-stored-service-budget},
+as used in Proposition~\ref{prop:selected-reprise}, give
+\[
+ 64D^2\le s_0,s,\qquad
+ 100000D^6(1+s)^2\le L^{1/8}.
+\]
+In particular $K\ge1$, $s_0,s\ge64K^2$, and $s\le L$.
+The interpolation purchase gives $\epsilon\le L^{-3/8}$.
+Put $q=L^{1/8}\ge1$. Its bank bound implies
+$q\ge2K(1+s)$, and hence
+\[
+ 2K\epsilon(1+s)\le2K(1+s)q^{-3}\le q^{-2}\le1.
+\]
+Thus the factor $1+s$ in the actual lead error and the further factor
+$1+s$ in the cone condition have both been paid.
+These are all the numerical conditions in
+\eqref{eq:ope-triangle-numbers}. The construction fixes the heading,
+coefficient families and prices before $e$ is selected, so the same bounds apply
+to each of the finitely many low-coordinate planes.
+\end{proof}
 
 Since $B$ maps the finite-dimensional space $\ker P$ injectively into
 itself, it maps it onto itself. Its inverse therefore also preserves
@@ -69,7 +123,7 @@ and $\mu(a)\leq\mu(D_La)$ give
 The lost power of $L$ distinguishes the transverse estimate from the
 expansion of the low coordinates.
 
-\subsection{Subtracting the transported low plane}
+\subsubsection{Subtracting the transported low plane}
 Fix a finest level $N$, a period, and a reference level $U\leq N$.
 Let $T_k:F\to F$ be the linear readout at level $k$, for $U\leq k\leq N$.
 Thus $T_N=1$ and $T_U=K_N$, where $K_N$ is the invertible map to
@@ -131,7 +185,7 @@ $q_i(x)\leq\zeta_{i+1}L_i^d q_{i+1}(x)$ gives by forward induction
 At $U$ use $q_U(x)=\mu(x)$ and $J_U\geq1$; the recurrence for $J$
 and the mesh identity give each subsequent step.
 
-\subsection{Subpower calibration and smeared discrepancies}
+\subsubsection{Subpower calibration and smeared discrepancies}
 \label{ex-column-subpower}
 The cumulative column factor used above is subpower for a precise
 reason. Put $s_i=\log(1/a_i)\geq0$ and
@@ -208,7 +262,7 @@ the test support is separated in the Euclidean sense, and one
 separating coordinate for each pair suffices to control its periodic
 separation.
 
-\subsection{Identifying the limiting plane by tests}
+\subsubsection{Identifying the limiting plane by tests}
 We spell out the finite-dimensional limit argument, since convergence
 of the moving planes themselves is neither needed nor asserted.
 Let $V$ be a finite-dimensional complex normed space, $p_c$ projections
@@ -239,22 +293,33 @@ the limits for every test pass to its refinement. No extraction indexed
 by the tests is used.
 
 Here is how the required hypotheses arise for the transported plane.
-We make explicit the remaining comparison input. A local trial at degree
-$e$ is a family of observables $Z_N$, indexed along the ordered cutoff
-filter, with the following properties on the late tail of that filter.
-(i) Locality: there is one fixed finite stencil $X$ such that each $Z_N$
+A local trial at degree
+$e$ is a family of observables $Z_{N,p}$, indexed by cutoff and period along the ordered
+cutoff filter, with the following properties on the late tail of that filter.
+(i) Locality: there is one fixed finite stencil $X$ containing the origin such that each $Z_{N,p}$
 is a measurable gauge-invariant function of the link variables in the
 translate of $X$ at its lattice origin, and the observable at any other
 origin is the literal translate of the one at the origin. (ii) Eventual
-continuity: $Z_N$ is continuous for all sufficiently late cutoffs.
-(iii) Two prices: there are nonnegative sequences $c_N$ and $b_N$ of zero
-logarithmic rate such that $a_N^e|Z_N|\le b_N$ everywhere, and such that
-$a_N^eZ_N$ satisfies the prescribed left-derivative bounds with constant
-$c_N$ on the healthy configurations, those at which no site of the
+continuity: $Z_{N,p}$ is continuous for all sufficiently late cutoffs.
+(iii) Two prices: there are nonnegative prices $c_{N,p}$ and $b_{N,p}$ with subpower
+upper bounds along that filter: for every $\epsilon>0$ both are eventually
+at most $a_N^{-\epsilon}$. On a common late tail,
+$a_N^e|Z_{N,p}|\le b_{N,p}$ everywhere, and
+$a_N^eZ_{N,p}$ satisfies the prescribed left-derivative bounds with constant
+$c_{N,p}$ on the healthy configurations, those at which no site of the
 stencil is incident to a plaquette whose chord distance from the identity
 exceeds the health threshold of the cutoff; no derivative
-bound is required on unhealthy configurations. These bounds are uniform in
-the lattice origin. Here the derivative
+bound is required on unhealthy configurations. In addition, at every healthy
+configuration $U$, the scaled trial $u=a_N^eZ_{N,p}$ has a $C^{q_N}$ germ at
+zero in the full real left-increment variables $A$, namely
+$A\mapsto u(\exp(A)U)$, where $q_N$ is the purchased order. This condition
+includes configurations at equality in the health threshold. For every
+ordered list of fewer than $q_N$ directions and every further direction,
+the derivative at zero of the iterated left derivative along that increment
+exists and equals the recursively defined next left derivative. These
+regularity and recursive derivative conditions are separate from the price
+bounds; they are not required at unhealthy configurations. These bounds are
+uniform in the lattice origin. Here the derivative
 order, spatial weight power and direction threshold are the purchased
 cutoff-dependent parameters: the bound holds simultaneously for every
 ordered left derivative of length at most that cutoff's purchased order,
@@ -265,12 +330,12 @@ whose difference from that trial has a centered price tending to zero.
 It also supplies the projections $p_c\to p$ of
 \eqref{eq:ope-test-kernel}. Labels in $\ker p_c$ with subpower bare norm
 have vanishing tested correlations. Bounded reference labels have
-subpower bare norm by \eqref{eq:ope-bounded-bare}. The local comparison
-and projection assertions are substantive inputs still to be proved
-from the construction. All statements use
-the same ordered cutoff filter.
+subpower bare norm by \eqref{eq:ope-bounded-bare}. The local comparison is proved below from the protected local
+construction. The projections come from the equation-kernel and rank
+construction on this same table, as specified in the next paragraph.
+All statements use the same ordered cutoff filter.
 
-Section~\ref{sec:finite-rank-kernel-transport} supplies projections of
+Subsection~\ref{sec:finite-rank-kernel-transport} supplies projections of
 this kind: its idempotents $A_c$ converge to $T$ with
 $\ker T=\bigcap_\theta\ker f_\theta$, by
 \eqref{eq:finite-rank-exact-kernel}, so one may take $p_c=A_c$ and
@@ -283,8 +348,76 @@ here requires that subpower form, for the same projections, tests and
 filter. That section in turn rests on its own inputs: its local
 equation input, the purchased comparison
 \eqref{eq:finite-rank-purchased-matrix} and the equation count
-\eqref{eq:finite-rank-equation-count}. The local trial comparison above
-is a separate input.
+\eqref{eq:finite-rank-equation-count}. The local trial comparison is the following application of the
+protected insertion construction.
+
+
+\begin{proposition}[Comparison of a protected local trial]
+\label{prop:ope-local-trial-comparison}
+On the same funded calibrated family used in
+Subsection~\ref{sec:actual-insertion-derivative-relay}, let $Z_{N,p}$
+be a degree-$e$ local trial satisfying (i)--(iii) above.
+There are grade-$e$ reference labels $u_{N,p}$ with subpower inverse
+terminal coordinates such that, for every fixed opened pair of depths
+eligible at grade $e$, the centered root price of
+$Z_{N,p}-O_e(u_{N,p})$ tends to zero along the ordered cutoff filter.
+The discrepancy tends to zero uniformly on each fixed separated
+configuration region after multiplying by any fixed finite spectator
+list. It also tends to zero after smearing with any compactly supported
+smooth separated test. The same labels serve every such test and all
+refinements of the original order.
+\end{proposition}
+\begin{proof}
+Set $f_{N,p}=a_N^e Z_{N,p}$ at the lattice origin. Conditions (i)--(iii)
+are precisely the two protected prices and the local regularity
+required in Subsection~\ref{sec:actual-insertion-derivative-relay}.
+The regularity is available through the actual purchased order,
+not merely any previously fixed finite order. Enlarge the fixed trial
+stencil by the grade-$e$ section stencil; this set is still finite and
+independent of cutoff and period. On a late tail the purchased order
+is large enough to take the grade-$e$ readout.
+
+Apply the terminal construction
+\eqref{eq:relay-protected-split} to this $f$. It subtracts its own
+leading section so that the regular remainder has zero readout;
+no zero-readout condition is imposed on the original trial. Its exact
+density is $a_N^e R_N Z_{N,p}$, with the actual unmarked top
+representative $R_N$. The total terminal price is
+$E_{N,p}$ of \eqref{eq:relay-protected-total}. That formula is a
+finite sum and product of the trial's two prices, the purchased
+column and threshold prices, the support weight, and the paid
+reserve inverse. Every one of these factors is subpower on this
+family, so $E_{N,p}$ is subpower on the same ordered filter.
+The actual top keeper supplies the off-health attachment. The trial
+itself is eventually continuous, even though individual masked
+pieces need not be; this is the continuity required in the descent.
+
+The descent in Subsection~\ref{sec:actual-insertion-derivative-relay}
+now produces one reference label $u_{N,p}$, with
+\[
+ |X_{N,p}^{-1}u_{N,p}|_1\le2E_{N,p},\qquad
+ \mathcal R_{m,N,p}\{Z_{N,p}-O_e(u_{N,p})\}
+       \le C_{e,m,k}E_{N,p}e^{-s_N/8}
+\]
+for every fixed eligible opened pair $(m,k)$ on its eventual tail.
+The label is defined by the descent before an opened pair or a
+spectator test is chosen. At excluded initial cutoffs take it to be
+zero. To verify decay, use subpower with exponent $1/16$ and
+$s_N\to\infty$: the last bound is eventually at most
+$C_{e,m,k}e^{-s_N/16}\to0$. Constants and mesh thresholds may depend
+on the fixed opened pair and period as prescribed by the ordered
+filter. No period-uniform mesh threshold is being introduced.
+
+Both terms of the discrepancy have one fixed translated stencil.
+The common-tiling argument and
+\eqref{eq:equation-spectator-bound} therefore bound a correlation
+with any fixed separated spectator tuple by the same vanishing
+root price times a constant depending on that tuple and its
+separation. The step-integral estimate proved above gives vanishing
+of its smeared correlations. Choosing a refinement preserves the
+eventual inequalities, the subpower bounds and these limits; it
+does not require a new comparison label.
+\end{proof}
 
 For clarity, these inputs imply the second limit in
 \eqref{eq:ope-normalized-tests} without assuming $u_c$ bounded.
@@ -307,22 +440,38 @@ Taking $k=U$ in \eqref{eq:ope-plane-expansion} gives
  a_N^{-(d-e)}\|x_c\|
  \leq a_U^{-(d-e)}J_N\mu(v_c).
 \]
-Section~\ref{ex-column-subpower} gives zero logarithmic rate for $J_N$. Thus the bare
+Subsubsection~\ref{ex-column-subpower} gives zero logarithmic rate for $J_N$. Thus the bare
 coefficients of $w_c=a_N^{-(d-e)}v_c$ have subpower norm.
-The calibrated local-section bounds give subpower prices for
-$a_N^d\mathcal O_d(w_c)$. By linearity,
+We check all the local-trial conditions for this moving row. Put
+$\xi_c=X_{d,N,p}^{-1}w_c$, so the preceding bound makes $\xi_c$
+subpower. Its unnormalized local function is
+$L_d(\Delta_d(\vartheta_N^{-1})\xi_c)$ on the fixed section stencil.
+The paid column estimate gives derivative price
+$C_N|\xi_c|_1$ through the actual order $q_N$ and at its actual
+spatial power. The global price is
+$A_d|\Delta_d(\vartheta_N^{-1})\xi_c|_1$, where $A_d$ is the
+fixed cylinder bound of
+Subsection~\ref{sec:actual-insertion-derivative-relay}.
+Both are subpower: $C_N$ and every fixed threshold power are
+subpower, and there are finitely many factor degrees at grade $d$.
+This uses the paid column estimate at $q_N$, not a sequence of
+bounds with uncontrolled constants at increasing orders.
+The section is a polynomial in finitely many links. Thus it is
+continuous, literally translates with its anchor, and in all real
+left-increment variables it is smooth on a neighborhood of every
+configuration. In particular the required $C^{q_N}$ germ and the
+recursive ordered-left-derivative identities hold at healthy
+configurations, including their boundary. Gauge invariance is
+preserved by the scalar coefficient row. Finally linearity gives
 \[
  a_N^d\mathcal O_d(w_c)=a_N^e\mathcal O_d(v_c).
 \]
-The same literal observable, with its original finite support, is
-therefore a degree-$e$ trial in the sense above, provided the calibrated
-local-section bounds give for it the two prices of (iii) on the healthy
-configurations, together with literal translation and eventual
-continuity (i)--(ii). We use those bounds in exactly this form; their
-proof is part of the open local comparison input stated above. If $v_c\to v$ along a
-refinement, its tested correlations converge to those of the reference
-label $v$: convergence of linear tests on a fixed basis is convergence
-in operator norm. Apply the preceding comparison and compact argument
+Thus the literal observable $\mathcal O_d(v_c)$, not a replacement
+with different support, is a degree-$e$ trial. Apply
+Proposition~\ref{prop:ope-local-trial-comparison}.
+If $v_c\to v$ along a refinement, its tested correlations converge
+to those of the reference label $v$: convergence of linear tests on
+a fixed basis is convergence in operator norm. Apply the preceding comparison and compact argument
 to obtain a degree-$e$ label having all the same smeared correlations.
 The smooth correlation kernels consequently agree: their difference
 integrates to zero against every compactly supported smooth test on
@@ -336,7 +485,7 @@ membership fails. This modified family is bounded and in the plane
 on the original filter, and equals $v_c$ eventually on the refinement.
 It has the same limit and the same limiting correlations there.
 
-\subsection{The distance estimate after extraction}
+\subsubsection{The distance estimate after extraction}
 Suppose reference labels $v_c\to v$ on a refinement of the ordered
 cutoff filter and $q_k(v_c)\leq V$ eventually, with $k$ fixed.
 Choose $y_c\in K_N\operatorname{ran}P$ by
@@ -351,7 +500,7 @@ The whole-vector bound \eqref{eq:ope-whole-distance} passes to the
 limit directly. Both estimates hold for the same limit $v$; only the
 auxiliary approximant $y$ requires a further extraction.
 
-Finally these finite-scale factors have the advertised rates. By Section~\ref{ex-column-subpower},
+Finally these finite-scale factors have the advertised rates. By Subsubsection~\ref{ex-column-subpower},
 $\log J_k=o(s_k)$ and $\log\zeta_k=o(s_k)$, where
 $s_k=\log(1/a_k)$. The column allowances also satisfy $\zeta_k\geq2$.
 In fact

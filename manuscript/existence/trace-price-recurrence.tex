@@ -1,13 +1,13 @@
 % Finite scale induction behind the endpoint price-duality estimate.
-\section{The finite price recurrence}
+\subsection{The finite price recurrence}
 \label{sec:ex-lattice-trace-price-recurrence}
 
 We give the scale induction that turns the paid direction and the local
 one-step response estimate into the endpoint inequality used in
-Section~\ref{sec:ex-lattice-trace-coffer-supplier}. The one-step response
+Subsection~\ref{sec:ex-lattice-trace-coffer-supplier}. The one-step response
 estimate is derived below from the finite-volume local insertion, local
-uniqueness, and block-size bounds. The exact source declarations and their
-remaining scale inputs are recorded in the accompanying evidence file.
+uniqueness, and block-size bounds. The remaining scale inputs are stated
+as hypotheses of Proposition~\ref{prop:ex-lattice-trace-sharp-read}.
 
 Fix a reference degree \(d\), a selected scale history \(H\), and integers
 \(m\leq k\). Write
@@ -95,7 +95,32 @@ family of coefficient-recovery probes, with probe prices \(\pi(\tau)\) for \(\ta
 \[
  M_d=1+\sum_{q=0}^{d}2^q(q+1)^q .
 \]
-This is the polarization constant: if two functions are of class \(C^d\) near the identity and all ordered directional derivatives of orders \(0,\ldots,d\) of their difference at the identity, along normalized directions, are bounded by \(c\), then for every probe \(\tau\) the two probe values, in which the functions are composed with the logarithmic-link test curve of \(\tau\), differ by at most \(\pi(\tau)M_dc\). The factor \(M_d\) pays for expressing the mixed derivatives that occur in the chain rule through the available ordered derivatives, and \(\pi(\tau)\), defined below, pays for the composition with the test curve. Let \(T_d\) be the finite coefficient reconstruction constant for this probe family. Thus for any
+Here is the derivative comparison paid by this constant. Let $h$ be
+the difference of two $C^d$ functions near the identity, and write $\widetilde h$ for $h$ in
+the exponential link chart at the identity. For a fixed direction $v$,
+the curve with links $\exp(tv_e)$ is the flow of the corresponding
+left-invariant direction. Thus the repeated left-direction derivative
+of order $q$ is
+$D^q\widetilde h(0)[v,\ldots,v]$. This assertion uses a single repeated
+direction; mixed left-invariant derivatives need not commute.
+Suppose its absolute value is at most $c$ for every unit direction,
+for each $q\le d$. The symmetric $q$-linear derivative $A_q=D^q\widetilde h(0)$
+satisfies, for $q\ge1$, the real polarization identity
+\[
+ A_q(v_1,\ldots,v_q)=\frac1{2^q q!}
+ \sum_{\epsilon\in\{-1,1\}^q}
+ \left(\prod_{j=1}^q\epsilon_j\right)
+ A_q\left(\sum_j\epsilon_jv_j,\ldots,\sum_j\epsilon_jv_j\right).
+\]
+For $\|v_j\|\le1$, homogeneity and the triangle inequality bound the
+right side by $cq^q/q!\le c\,2^q(q+1)^q$. The order-zero bound is
+$|h(1)|\le c$. Each of these constants is at most $M_d$.
+The probe price $\pi(\tau)$ includes the absolute chain-rule coefficients
+and the products of the derivatives of its logarithmic-link test curve.
+Applying the chain rule to $\widetilde h$ therefore bounds the difference
+of the two probe values by $\pi(\tau)M_dc$. This proves the asserted
+comparison without identifying mixed chart derivatives with mixed
+left-invariant derivatives. Let \(T_d\) be the finite coefficient reconstruction constant for this probe family. Thus for any
 coefficient difference \(z\),
 \[
  \|z\|\leq T_d\sum_{\tau\in\mathcal Q_d}|R_\tau(z)|.
@@ -363,7 +388,7 @@ and marked sites at the spatial origin for \(m\leq j\leq k\). Assume
 its left coefficient is zero, \(x_m=0\), and that its adjacent pairs
 satisfy the local estimates \eqref{eq:ex-lattice-price-one-step} and
 \eqref{eq:ex-lattice-price-spends}. Assume also the paid direction
-conditions of Section~\ref{sec:reference-cone}, the room and bank
+conditions of Subsection~\ref{sec:reference-cone}, the room and bank
 inequalities \eqref{eq:reference-bank}, and the terminal spread bound
 \eqref{eq:reference-terminal} with endpoint budget \(w\geq0\) and with
 the column allowances \(c_j\). Then,
@@ -418,6 +443,6 @@ threshold works for all of them.
 \end{proof}
 
 Thus the endpoint estimate combines the already proved paid-cone argument
-of Section~\ref{sec:reference-cone} with the one-step quantitative price
+of Subsection~\ref{sec:reference-cone} with the one-step quantitative price
 recurrence proved here. The only new induction is the finite propagation
 from the zero left coefficient to the terminal rung.

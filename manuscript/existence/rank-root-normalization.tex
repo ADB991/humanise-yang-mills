@@ -1,4 +1,4 @@
-\section{The volume cost of the rank tests}
+\subsection{The volume cost of the rank tests}
 \label{sec:rank-root-normalization}
 
 The replicated rank tests require the correct power of the coupling in
@@ -8,7 +8,7 @@ for probability Haar measure, and $\chi(u)$ for the normalized chord of
 $u\in G$ used in the action. Thus $\chi(1)=0$, it is unchanged by
 inversion and conjugation, and $\chi(uv)\le\chi(u)+\chi(v)$.
 
-\subsection{Haar bounds in the physical dimension}
+\subsubsection{Haar bounds in the physical dimension}
 
 There are constants $0<c_-\le1\le c_+<\infty$, depending only on $G$,
 such that
@@ -18,7 +18,7 @@ such that
  \int_G e^{-\chi(u)/t}\,d\mu_G(u)&\le c_+t^D &&(t>0).
        \label{eq:rank-haar-high}
 \end{align}
-To see this, use the actual Haar chart of Section~\ref{sec:haar-chart}.
+To see this, use the actual Haar chart of Subsection~\ref{sec:haar-chart}.
 Its density is bounded above and below by positive constants near zero.
 Differentiability of the represented exponential, together with the
 normalization of the colour norm, gives, after shrinking the chart,
@@ -44,7 +44,7 @@ This proves the upper bound; rescaling the lower bound by $1/4$ proves
 \eqref{eq:rank-haar-low}. The proof also covers $D=0$: powers of positive
 radii are then one. No connectedness of $G$ is needed.
 
-\subsection{An axial tree and the four unintegrated links}
+\subsubsection{An axial tree and the four unintegrated links}
 
 Let $\Lambda=(\mathbb Z/L\mathbb Z)^4$, $L>1$, and $V=|\Lambda|$.
 Represent each coordinate by $0,\ldots,L-1$. For $x\ne0$ let $p(x)$
@@ -109,7 +109,7 @@ integrate the chosen factors in that order. The four edges of a
 plaquette are distinct for $L>1$, including $L=2$; thus each integration
 uses its selected variable exactly once, possibly inverted.
 
-\subsection{The normalized estimate}
+\subsubsection{The normalized estimate}
 
 Consider a lawful representation $R$ on this torus, with gauge-invariant
 path action and activities, and with nonnegative density,
@@ -191,7 +191,7 @@ $-(3V+1)\log c_-\le-4V\log c_-$, since $V\ge1$ and
 $\log c_-\le0$. These are the only enlargements in this division.
 
 The same estimate holds for the auxiliary history of
-Section~\ref{sec:restarted-rank-history}. If its additive terms have
+Subsection~\ref{sec:restarted-rank-history}. If its additive terms have
 value bound $\delta$ per site, delete them temporarily to obtain $R^0$.
 Then $e^{-V\delta}R^0\le R\le e^{V\delta}R^0$ because $R\ge0$,
 and $R^0=e^ER\ge0$. Apply the preceding estimate to $R^0$ with
@@ -201,7 +201,7 @@ expenses total $2V\delta$. This is exactly the contribution of
 $\delta$ to $2r$ in $P_R$. Derivative estimates on those auxiliary
 additive terms are not needed.
 
-\subsection{Taking the replica root}
+\subsubsection{Taking the replica root}
 
 Let a terminal tiling have $q$ cells, and push its full marked density
 to a torus with exactly $q$ sites along the auxiliary history. The
@@ -265,8 +265,167 @@ constant-profile interval and purchase
 where $\mathcal M_k$ is the diverging clock monitor. This is a
 post-block-length scale delay. Set $a=e^{2I_k}$. Since $|I|\ge1$,
 \eqref{eq:rank-root} is at most $e^{I_k}/a=e^{-I_k}\to0$.
+Equivalently $a=\mathcal M_k^{1/(8M)}\ge1$. This is the constant
+marker weight \eqref{eq:allarity-marker-weight} of
+Subsection~\ref{sec:allarity-marked-propagation}, with $u=M$ and monitor
+$\mathcal M_k$. That weight is used from the launch at the middle level
+down to the output torus, so the coefficient price $a^{q|I|}$ above is
+the weight of the replicated coefficient in the norm in which the marked
+density is estimated there. The leading interval above the middle level
+is run at a smaller weight, and the single change of weight at the
+launch is paid in that section.
 For the rank detectors $M=2$. These estimates apply to the one-point
 and corrected two-point coefficients themselves. The local marked
 construction must supply their displayed coefficient price on the
 same auxiliary density; no estimate for a different denominator is
 used here.
+
+\subsubsection{The ticket and the harmonic premise at a chart's output level}
+\label{subsec:rank-root-output-ticket}
+
+The purchase $T_M\le I_k$ above was stated for a comparison depth on a
+constant-profile interval. We now prove it, together with the premise
+\begin{equation}\label{eq:rank-root-premise}
+ P_R(X)-4D\log g/q\le T_M ,
+\end{equation}
+at the output level of a chart of level $k$. That level need not lie on
+the same constant-profile interval as $k$. Here $q$ is the cell count of
+the terminal tiling, as above.
+
+Recall the selected stage clock $J(m)$ and stage profiles $\pi_j$ of
+Subsection~\ref{sec:public-run-binding}. At level $m$ the clip constants,
+the row bound $A$ and the path constants of the clock stage are those of
+$\pi_{J(m)}$. The ticket $T_M$ displayed above is computed from these
+constants, from $N_{\mathcal A}$, and from the Haar data $h,c_-$ of $G$.
+Write $T_M(\pi)$ for the value computed from a profile $\pi$; it is a
+real number fixed once $\pi$ and $M$ are fixed. The clock monitor is
+$\mathcal M_k=\exp((\log\log\widehat\beta_k)^2)$, as in
+Subsection~\ref{sec:ex-lattice-trace-clock-cap}, so
+\[
+ I_k=\frac{\log\mathcal M_k}{16M}=\frac{(\log\log\widehat\beta_k)^2}{16M}.
+\]
+
+\begin{proposition}[Ticket and premise at the output level]
+\label{prop:rank-root-output-ticket}
+Include in the countable family of numerical requests of
+\eqref{eq:common-countable-payment} the requests
+\begin{equation}\label{eq:rank-root-ticket-requests}
+ F_{M,i}=1+\sqrt{16M\,\max\{T_M(\pi_i),0\}}\qquad(M\ge1,\ i\ge0).
+\end{equation}
+Let $w(k)\le k$ be levels with $w(k)\to\infty$. Then for every
+$M\ge1$ there is $K_M$ such that for all $k\ge K_M$:
+\begin{enumerate}
+\item the ticket at the profile of the output level is bought:
+ $T_M(\pi_{J(w(k))})\le I_k$;
+\item \eqref{eq:rank-root-premise} holds at the output level $m=w(k)$,
+ with $T_M=T_M(\pi_{J(w(k))})$. It holds for every period, every
+ lawful representation $R$ on the torus of level $w(k)$ satisfying the
+ suppositions $\theta_R\le\theta_{\rm clock}$, $\Lambda\le\Lambda_{\rm clock}$,
+ $\delta\le1$ and $\beta\le4\widehat\beta_{w(k)}$ of the preceding
+ subsection with the clip and row bound of $\pi_{J(w(k))}$, and every
+ expense $X\le1+M$.
+\end{enumerate}
+Consequently, for every coefficient of the pushed marked density at the
+output level with the coefficient price $a^{q|I|}$, $a=e^{2I_k}$, and
+expense $X\le1+M$, the right side of \eqref{eq:rank-root} is at most
+$e^{-I_k}=\mathcal M_k^{-1/(16M)}$ for $k\ge K_M$.
+\end{proposition}
+\begin{proof}
+\emph{Ticket.} Requests added to the countable family before the
+sequence is constructed are paid in the sense of
+\eqref{eq:common-countable-payment}: for fixed $M$ there is $m_M$ such
+that for every $m\ge m_M$ and every $i\le J(m+1)$,
+\[
+ F_{M,i}\le1+\log\log\widehat\beta_m .
+\]
+The conclusion of that payment uses only a lower bound on the entry
+thresholds actually paid. Enlarging the family therefore preserves the
+earlier purchases of Subsection~\ref{sec:common-scale-selection}. Take
+$K'_M=m_M$ and $k\ge K'_M$. Since $J$ is nondecreasing and $w(k)\le k$,
+the index $i=J(w(k))$ satisfies $i\le J(k)\le J(k+1)$. Hence
+\[
+ \sqrt{16M\max\{T_M(\pi_i),0\}}\le\log\log\widehat\beta_k .
+\]
+The left side is nonnegative, so squaring preserves the inequality:
+\[
+ 16M\,T_M(\pi_i)\le16M\max\{T_M(\pi_i),0\}\le(\log\log\widehat\beta_k)^2.
+\]
+Dividing by $16M>0$ gives $T_M(\pi_i)\le I_k$.
+
+\emph{Premise.} The preceding subsection proves
+\eqref{eq:rank-root-premise} at an output level $m$ for every
+representation satisfying the stated suppositions with the stage's clip
+and row bound. It uses three facts: $\beta\le4\widehat\beta_m$, the
+harmonic bound $8D\widehat\beta_m/q\le1$, and the late-scale purchases
+$\widehat\beta_m\theta_{\rm clock}^3\le1$,
+$\widehat\beta_m\theta_{\rm clock}^4\le1$ and
+$\Lambda_{\rm clock}\theta_{\rm clock}^2\le1$. Together they give
+$r\le1+8A+1$, hence $P_R(X)+1\le T_M$ for $X\le1+M$, and the final $1$ of
+$T_M$ pays $-4D\log g/q\le8D\widehat\beta_m/q\le1$. The harmonic bound and
+the late-scale purchases hold for all $m$ beyond a threshold $m'$ that is
+uniform in the period, because the minimal site count grows at least
+exponentially in the logarithmic scale, as shown there. The threshold
+$m'$ does not depend on $M$, since $M$ enters only through $X\le1+M$
+and the term $1+M$ of $T_M$. Since $w(k)\to\infty$, there is $K''$ with
+$w(k)\ge m'$ for $k\ge K''$.
+
+Put $K_M=\max(K'_M,K'')$. For $k\ge K_M$ both items hold. The
+consequence follows from \eqref{eq:rank-root} and the two items: its
+right side is at most $\exp\{T_M\}/a^{|I|}\le e^{I_k}/a=e^{-I_k}$,
+because $|I|\ge1$ and $a\ge1$.
+\end{proof}
+
+For a funded chart at level $k$ with base arc $b$, the output level
+$w(k)$ is its root depth. Every level $j$ with $w(k)\le j\le k$ lies in
+the current or the previous clock stage: $J(k)-1\le J(j)$. In
+particular $J(w(k))\ge J(k)-1\to\infty$, and since $J$ is nondecreasing
+this forces $w(k)\to\infty$. So the proposition applies at the root
+depth, with $M$ the marker allowance of the chart. This bracket property
+is a field of the chart witness, and it is proved from the clock, for
+every sufficiently large level and uniformly in charts with bounded base
+arc, in Lemma~\ref{lem:ex-lattice-firesky-clock-fields}. The lawful-representation suppositions at the output
+level and the coefficient price are supplied by the output transport of
+the marked density, not here.
+
+\subsubsection{The clock threshold and loop capacity}
+\label{subsec:rank-root-clock-threshold}
+
+The suppositions above use a clock threshold $\theta_{\rm clock}$ and a
+clock loop capacity $\Lambda_{\rm clock}$ at the output level $m$. They
+are the following functions of the clock of
+Subsection~\ref{sec:common-scale-selection}:
+\[
+ \theta_{\rm clock}(m)=\widehat\beta_m^{-1/2}\,\mathcal M_m,\qquad
+ \Lambda_{\rm clock}(m)=2\,\mathcal M_m^{\vartheta_{J(m)}},
+\]
+where $\mathcal M_m=\exp((\log\log\widehat\beta_m)^2)$ and
+$\vartheta_j=\theta_j$ is the protection exponent of stage $j$ selected in
+Subsection~\ref{sec:common-scale-selection}. It is positive, nonincreasing,
+and fixed after the block lengths, in the order of choices made there.
+The proof below uses only $\vartheta_j\ge0$.
+
+\begin{lemma}[The late-scale purchases]
+\label{lem:rank-root-late-scale}
+Include the thresholds $H_j$ below for each stage $j$ in
+the all-stage payment \eqref{eq:common-allstage-payment}. Then at every
+level $m$ with $J(m)>j_*$,
+\[
+ \widehat\beta_m\theta_{\rm clock}(m)^3\le1,\qquad
+ \widehat\beta_m\theta_{\rm clock}(m)^4\le1,\qquad
+ \Lambda_{\rm clock}(m)\theta_{\rm clock}(m)^2\le1 .
+\]
+\end{lemma}
+\begin{proof}
+Write $x=\widehat\beta_m$ and $u=\log\log x$. The three quantities are
+\[
+ x^{-1/2}e^{3u^2},\qquad x^{-1}e^{4u^2}\quad\text{and}\quad
+ 2x^{-1}e^{(\vartheta_{J(m)}+2)u^2}.
+\] Each is at most one as soon as
+\[
+ (\vartheta_{J(m)}+4)u^2+\log2\le\tfrac12\log x=\tfrac12e^{u}.
+\] For fixed
+$j$ this holds for all $x$ beyond a threshold $H'_j$, because
+$u^2e^{-u}\to0$. Put $H_j=\max(H'_j,H'_{j-1})$. The all-stage payment
+gives $H_{J(m+1)}\le\widehat\beta_m$. Since $J(m)\le J(m+1)\le J(m)+1$,
+this covers the stage $J(m)$ of level $m$.
+\end{proof}

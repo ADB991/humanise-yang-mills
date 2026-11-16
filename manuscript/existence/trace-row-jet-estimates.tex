@@ -1,5 +1,5 @@
 % Fourier-tail and multilinear-jet estimates used in the regular-source chart.
-\section{Fourier tails and local jet estimates}
+\subsection{Fourier tails and local jet estimates}
 \label{sec:ex-lattice-trace-row-jet-estimates}
 
 This section proves two quantitative ingredients of the small-support
@@ -19,16 +19,16 @@ For each natural number \(n\), write \(\mathbb Z^4\) for the covering lattice, w
   \quad(\sigma>0).
  \]
 The elementary inequality
-\[
+\begin{equation}
  (1+r)^n\le C_n(\sigma)e^{\sigma r}\qquad(r\ge0)
- \tag{1}\label{eq:ex-lattice-widthcost}
- \]
+ \label{eq:ex-lattice-widthcost}
+ \end{equation}
 follows by setting \(s=\sigma/(n+1)\). Indeed
 \[
  1+r\le\left(1+\frac{n+1}{\sigma}\right)(1+sr)
        \le\left(1+\frac{n+1}{\sigma}\right)e^{sr},
  \]
-and taking the \(n\)-th power gives (1), since \(ns\le\sigma\).
+and taking the \(n\)-th power gives \eqref{eq:ex-lattice-widthcost}, since \(ns\le\sigma\).
 Also \(W_n(x+z)\le W_n(x)W_n(z)\), by the triangle inequality and
 \(1+a+b\le(1+a)(1+b)\).
 
@@ -36,28 +36,28 @@ Also \(W_n(x+z)\le W_n(x)W_n(z)\), by the triangle inequality and
 \label{lem:ex-lattice-row-convolution}
 Suppose a scalar kernel \(q:\mathbb Z^4\to\mathbb R\) and constants
 \(\sigma>0\), \(C\ge0\) satisfy
-\[
+\begin{equation}
  \sum_{z\in\mathbb Z^4}e^{\sigma|z|_1}|q(z)|\le C
- \tag{2}\label{eq:ex-lattice-row-strip}
- \]
+ \label{eq:ex-lattice-row-strip}
+ \end{equation}
 and a Banach-valued array \(b\) satisfies
 \(\|b(x)\|\le M W_n(x)\), where \(M\ge0\). Then the convolution
 \[
  (q*b)(x)=\sum_z q(z)b(x+z)
  \]
 is absolutely convergent and
-\[
+\begin{equation}
  \|(q*b)(x)\|\le
  M C_n(\sigma) C W_n(x).
- \tag{3}\label{eq:ex-lattice-row-convolution}
- \]
+ \label{eq:ex-lattice-row-convolution}
+ \end{equation}
 For a \(4\)-by-\(4\) matrix kernel whose sixteen entries each satisfy
-(2) with the same \(C\), the corresponding vector-row operator obeys
-\[
+\eqref{eq:ex-lattice-row-strip} with the same \(C\), the corresponding vector-row operator obeys
+\begin{equation}
  \|(\mathsf A b)(x)\|\le
  4M C_n(\sigma) C W_n(x),
- \tag{4}\label{eq:ex-lattice-row-matrix-cost}
- \]
+ \label{eq:ex-lattice-row-matrix-cost}
+ \end{equation}
 when the output norm is the maximum of its four component norms.
 \end{lemma}
 \begin{proof}
@@ -67,14 +67,14 @@ For each \(z\),
  \le M W_n(x)|q(z)|W_n(z)
  \le M W_n(x)C_n(\sigma)e^{\sigma|z|_1}|q(z)|,
  \]
-where (1) was applied to \(|z|_1\). Summing proves absolute convergence and
-(3). For a matrix row, apply (3) to each of its four entries and sum the
-four resulting component bounds; this gives (4).
+where \eqref{eq:ex-lattice-widthcost} was applied to \(|z|_1\). Summing proves absolute convergence and
+\eqref{eq:ex-lattice-row-convolution}. For a matrix row, apply \eqref{eq:ex-lattice-row-convolution} to each of its four entries and sum the
+four resulting component bounds; this gives \eqref{eq:ex-lattice-row-matrix-cost}.
 \end{proof}
 
 \begin{lemma}[Agreement on a ball gives an exponential tail]
 \label{lem:ex-lattice-row-tail}
-Assume (2). Let \(A_1,A_2:\mathbb Z^4\to E\), where \(E\) is a Banach
+Assume \eqref{eq:ex-lattice-row-strip}. Let \(A_1,A_2:\mathbb Z^4\to E\), where \(E\) is a Banach
 space, satisfy
 \[
  \|A_1(y)\|\le d_1W_n(y),\qquad
@@ -82,11 +82,11 @@ space, satisfy
  \]
 with \(d_1,d_2\ge0\), and suppose \(A_1(x+z)=A_2(x+z)\) whenever
 \(|z|_1<b\). Then
-\[
+\begin{equation}
  \left\|\sum_z q(z)\bigl(A_1(x+z)-A_2(x+z)\bigr)\right\|
  \le e^{-\sigma b/2}(d_1+d_2)C_n(\sigma/2)C W_n(x).
- \tag{5}\label{eq:ex-lattice-row-tail}
- \]
+ \label{eq:ex-lattice-row-tail}
+ \end{equation}
 \end{lemma}
 \begin{proof}
 The difference vanishes for \(|z|_1<b\), so the triangle inequality and
@@ -94,13 +94,13 @@ submultiplicativity of \(W_n\) give an upper bound
 \[
  (d_1+d_2)W_n(x)\sum_{|z|_1\ge b}|q(z)|W_n(z).
  \]
-Using (1) with \(\sigma/2\), each summand is at most
+Using \eqref{eq:ex-lattice-widthcost} with \(\sigma/2\), each summand is at most
 \[
  C_n(\sigma/2)e^{\sigma|z|_1/2}|q(z)|
  \le C_n(\sigma/2)e^{-\sigma b/2}
        e^{\sigma|z|_1}|q(z)|.
  \]
-Summation and (2) prove (5).
+Summation and \eqref{eq:ex-lattice-row-strip} prove \eqref{eq:ex-lattice-row-tail}.
 \end{proof}
 
 \begin{lemma}[Multilinear jet comparison]
@@ -117,28 +117,28 @@ three estimates for \(a\le N\):
 \begin{enumerate}
 \item for all admissible screened directions \(v_1,\ldots,v_a\), and all
 nonnegative \(\lambda_i\) with \(\|v_i\|\le\lambda_i\),
-\[
+\begin{equation}
  |\mathcal J_a(v_1,\ldots,v_a)|
  \le \Phi w\prod_{i=1}^a\lambda_i;
- \tag{6}\label{eq:ex-lattice-jet-price}
-\]
+ \label{eq:ex-lattice-jet-price}
+\end{equation}
 \item the already-screened reference directions \(A_i=P(\theta y_i)\)
 satisfy \(\|A_i\|\le K\), with \(K\ge1\), and the screened reference jet
 vanishes:
-\[
+\begin{equation}
  \mathcal J_a(P(\theta y_1),\ldots,P(\theta y_a))=0;
- \tag{7}\label{eq:ex-lattice-jet-vanishing}
-\]
+ \label{eq:ex-lattice-jet-vanishing}
+\end{equation}
 \item directions \(x_i\) approximate them with
 \(\|P(\theta x_i)-P(\theta y_i)\|\le\varepsilon\), where
 \(0\le\varepsilon\le K\).
 \end{enumerate}
 Then
-\[
+\begin{equation}
  |\mathcal J_a(P(\theta x_1),\ldots,P(\theta x_a))|
  \le 2^a\varepsilon K^a\Phi w.
- \tag{8}\label{eq:ex-lattice-jet-comparison}
-\]
+ \label{eq:ex-lattice-jet-comparison}
+\end{equation}
 \end{lemma}
 \begin{proof}
 Set \(U_i=P(\theta x_i)\), \(A_i=P(\theta y_i)\), and
@@ -149,10 +149,10 @@ Set \(U_i=P(\theta x_i)\), \(A_i=P(\theta y_i)\), and
  \mathcal J_a(v_1^S,\ldots,v_a^S),
  \]
 where \(v_i^S=E_i\) if \(i\in S\), and \(v_i^S=A_i\) otherwise.
-The empty-set term is zero by (7). In every remaining term at least one
+The empty-set term is zero by \eqref{eq:ex-lattice-jet-vanishing}. In every remaining term at least one
 factor has norm at most \(\varepsilon\); all other factors have norm at
 most \(K\), by the stated bounds on the screened reference directions.
-Applying (6) to each term bounds it by
+Applying \eqref{eq:ex-lattice-jet-price} to each term bounds it by
 \(\varepsilon K^{a-1}\Phi w\le\varepsilon K^a\Phi w\).
 There are \(2^a-1\le2^a\) such terms, proving (8).
 \end{proof}
@@ -163,21 +163,21 @@ Fix natural numbers \(d,N\) with \(d\le N\), a support radius \(b\), a
 chart radius \(m\), and \(\sigma>0\), and let \(L\ge1\) be the integer
 block side. For each
 \(k\le d\), suppose the four-by-four row kernel
-\((q_{\nu j})_{\nu,j=1}^4\) has entries satisfying (2) with constant
+\((q_{\nu j})_{\nu,j=1}^4\) has entries satisfying \eqref{eq:ex-lattice-row-strip} with constant
 \(M\). Suppose the two arrays \(A^{(0)}_j,A^{(1)}_j\) satisfy
-\[
+\begin{equation}
  \|A^{(h)}_j(y)\|\le K W_{dk}(y)\quad(h=0,1),
  \qquad
  A^{(0)}_j(u+z)=A^{(1)}_j(u+z)\ \text{if }|z|_1<b,
- \tag{9a}\label{eq:ex-lattice-local-array-input}
-\]
+ \label{eq:ex-lattice-local-array-input}
+\end{equation}
 where \(K\ge1\), \(M\ge0\), and each kernel base \(u\) has
 \(|u|_1\le4m\). Define the order-\(k\) reference and actual directions \(y_k\) and
 \(x_k\) by
 applying this matrix row to \(A^{(0)}\) and \(A^{(1)}\), respectively.
 The screen \(P\) is coordinate restriction to allowed edges. Let
 \(\theta>0\) be the threshold and \(\omega(e)\ge1\) the spatial weight of
-the budget; the norm in (6) is the normalized edge norm
+the budget; the norm in \eqref{eq:ex-lattice-jet-price} is the normalized edge norm
 \[
  \|v\|=\sup_{e}\frac{\|v(e)\|}{\theta\,\omega(e)},
  \qquad\text{so that}\qquad
@@ -188,11 +188,11 @@ direction on the allowed edges is a bound for the normalized norm of its
 threshold-scaled screen, and no additional screen norm is inserted
 between the row estimate and the priced jet. Then the entrywise
 difference of \(x_k\) and \(y_k\) is at most
-\[
+\begin{equation}
  \delta_k=
   8K e^{-\sigma b/2}(1+4m)^{dk}C_{dk}(\sigma/2)M
- \tag{9}\label{eq:ex-lattice-local-delta}
-\]
+ \label{eq:ex-lattice-local-delta}
+\end{equation}
 and hence so is the normalized norm of \(P(\theta x_k)-P(\theta y_k)\).
 The reference and actual directions satisfy, entrywise,
 \[
@@ -200,23 +200,23 @@ The reference and actual directions satisfy, entrywise,
  \le 4K C_{dk}(\sigma)M(1+4L(m+2))^{dk}\le C_1,
 \]
 where
-\[
+\begin{equation}
  C_1=1+\sum_{k=0}^{d}
  4K C_{dk}(\sigma)M\bigl(1+4L(m+2)\bigr)^{dk},
- \tag{10}\label{eq:ex-lattice-local-C1}
-\]
-Assume the local jet satisfies the price bound (6), that \(F\) depends
+ \label{eq:ex-lattice-local-C1}
+\end{equation}
+Assume the local jet satisfies the price bound \eqref{eq:ex-lattice-jet-price}, that \(F\) depends
 only on the allowed-edge components of the configuration, so that
 \(\mathcal J_a(v_1,\ldots,v_a)=\mathcal J_a(Pv_1,\ldots,Pv_a)\), and also
 that
 \(\varepsilon_d\le C_1\). Assume the weighted vanishing receipt for the
 screened, threshold-scaled reference directions:
-\[
+\begin{equation}
  \mathcal J_a\bigl(P(\theta y_{q_1}),\ldots,P(\theta y_{q_a})\bigr)=0
  \quad\text{whenever }q_i\ge1,\quad \sum_{i=1}^a q_i\le d.
- \tag{10a}\label{eq:ex-lattice-weighted-jet-vanishing}
-\]
-In the application, (10a) holds because each \(P(\theta y_k)\) lies in the
+ \label{eq:ex-lattice-weighted-jet-vanishing}
+\end{equation}
+In the application, \eqref{eq:ex-lattice-weighted-jet-vanishing} holds because each \(P(\theta y_k)\) lies in the
 space \(\mathcal V_k\) of polynomial directions of degree at most \(k-1\)
 on the allowed edges, and the observable has vanishing jets on lists of
 such directions with positive degrees of sum at most \(d\). No such
@@ -230,17 +230,17 @@ evaluated on
 \(\operatorname{inc}_1(\gamma(s))\), so its base point is the identity
 configuration. Then the probe of total derivative order \(\ell\le d\)
 obeys
-\[
+\begin{equation}
  \left|\left.\frac{d^\ell}{ds^\ell}
  F(\operatorname{inc}_1(\gamma(s)))\right|_{s=0}\right|
  \le |\operatorname{Part}^{\mathrm{ord}}(\ell)|\,2^\ell
        \varepsilon_d C_1^\ell\Phi w,\qquad
  \varepsilon_d=\sum_{k=0}^{d}\delta_k.
- \tag{11}\label{eq:ex-lattice-local-probe}
-\]
+ \label{eq:ex-lattice-local-probe}
+\end{equation}
 \end{proposition}
 \begin{proof}
-For each of the four entries in an output row, (5) with
+For each of the four entries in an output row, \eqref{eq:ex-lattice-row-tail} with
 \(d_1=d_2=K\) bounds the tail by
 \[
  2K e^{-\sigma b/2}C_{dk}(\sigma/2)M W_{dk}(u).
@@ -248,7 +248,7 @@ For each of the four entries in an output row, (5) with
 There are four input components, so the row difference is at most
 \(8K e^{-\sigma b/2}C_{dk}(\sigma/2)M W_{dk}(u)\).
 Since \(|u|_1\le4m\), this is (9). Summing over \(k\le d\) gives a
-common error bound \(\varepsilon_d\). For either direction, (4) and the
+common error bound \(\varepsilon_d\). For either direction, \eqref{eq:ex-lattice-row-matrix-cost} and the
 growth bound on its input array give
 \(4K C_{dk}(\sigma)M W_{dk}(u)\). In the chart the lifted base index has
 size at most \(4L(m+2)\), giving the order-\(k\) bound above; the extra
@@ -257,7 +257,7 @@ size at most \(4L(m+2)\), giving the order-\(k\) bound above; the extra
 Here \(\operatorname{Part}^{\mathrm{ord}}(\ell)\) is the finite index set of
 ordered finite partitions of the \(\ell\) differentiation slots into
 nonempty blocks, in the canonical ordering used by the chain rule; it is
-not a sum over arbitrary permutations of each set partition. For (11), use
+not a sum over arbitrary permutations of each set partition. For \eqref{eq:ex-lattice-local-probe}, use
 the repeated chain rule in that ordered-finpartition form. When \(\ell=0\),
 the derivative is \(F(\mathrm{id})=0\) by the separate order-zero receipt.
 For each nonempty-order partition \(\pi\) of the \(\ell\) probe derivatives, the
@@ -272,13 +272,13 @@ vanishing hypothesis applies. In the normalized norm, each screened
 reference direction \(P(\theta y_{|B|})\) is bounded by
 \(C_1\), and each \(P(\theta x_{|B|})\) differs from it by at most
 \(\delta_{|B|}\le\varepsilon_d\). Since \(\varepsilon_d\le C_1\), the multilinear
-comparison lemma (8), with \(K=C_1\), bounds this chain-rule term by
+comparison lemma \eqref{eq:ex-lattice-jet-comparison}, with \(K=C_1\), bounds this chain-rule term by
 \(2^{|\pi|}\varepsilon_d C_1^{|\pi|}\Phi w\), which is at most
 \(2^\ell\varepsilon_d C_1^\ell\Phi w\). Summing over the finite ordered
-finpartition index set proves (11).
+finpartition index set proves \eqref{eq:ex-lattice-local-probe}.
 \end{proof}
 
-\paragraph{The arrays in the selected construction.}
+\subparagraph{The arrays in the selected construction.}
 In the selected construction the probe is the composition of the local
 observable with a routed test path: the logarithmic-link test curve of the
 coefficient probe is cropped to the chart of radius \(m\) and passed
@@ -310,19 +310,19 @@ directions need not agree anywhere. The reference direction is, on the
 allowed edges, a polynomial in the spatial coordinates of degree at most
 \(k-1\) when \(k\ge1\); this polynomial property is established for the
 reference direction only, and is the membership
-\(P(\theta y_k)\in\mathcal V_k\) used for (10a). The strip bound supplies
-(2), while the
+\(P(\theta y_k)\in\mathcal V_k\) used for \eqref{eq:ex-lattice-weighted-jet-vanishing}. The strip bound supplies
+\eqref{eq:ex-lattice-row-strip}, while the
 coefficient-growth receipt supplies \(K W_{dk}\). Thus the difference is
 not estimated term by term without cancellation: all terms inside the
 agreement ball cancel, and only the exponentially weighted exterior tail
 is paid.
 
-The hypotheses under which the source applies
-Proposition~\ref{prop:ex-lattice-strip-to-probe} in this way are the
-following; none of them is proved in this section.
+The hypotheses under which
+Proposition~\ref{prop:ex-lattice-strip-to-probe} is applied in this way are
+the following; none of them is proved in this section.
 \begin{enumerate}
 \item The row operator applied to both arrays is literally the first-order
-row of the actual step. It satisfies the strip bound (2) with constants
+row of the actual step. It satisfies the strip bound \eqref{eq:ex-lattice-row-strip} with constants
 \(\sigma>0\), \(M\ge0\); it is identical to the row of the selected
 kernel, and the patch block side of the step equals that
 kernel's block side \(L\). A strip bound for some other kernel does not
@@ -349,9 +349,9 @@ positive, and \(\varepsilon_d\le C_1\).
 \end{enumerate}
 Under these hypotheses the routed-path identity gives the path \(\gamma=
 \theta R\), the tail lemma gives the entrywise error \(\delta_k\) on the
-allowed edges, the row bound (4) gives \(\|y_k\|\le C_1\) on those edges,
-and the polynomial property of \(y_k\) gives (10a); the proposition then
-yields (11) with \(L\) the common block side.
+allowed edges, the row bound \eqref{eq:ex-lattice-row-matrix-cost} gives \(\|y_k\|\le C_1\) on those edges,
+and the polynomial property of \(y_k\) gives \eqref{eq:ex-lattice-weighted-jet-vanishing}; the proposition then
+yields \eqref{eq:ex-lattice-local-probe} with \(L\) the common block side.
 
 The argument above proves the Fourier-tail and multilinear comparison
 once the three receipts (strip, growth, and vanishing priced jet) are

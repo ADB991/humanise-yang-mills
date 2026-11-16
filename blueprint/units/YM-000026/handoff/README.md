@@ -1,5 +1,18 @@
 # Released agent work-package index
 
+## Current integration, 16 November 2026
+
+The maintainer requested the final pass. The construction-bound draft and its
+scoped dependency-union reviews are delivered in
+[the F01 completion record](results/F01/hairer-codex-whole-20261116/README.md).
+It includes the final source/PDF manifest and links to G06 and C16 evidence.
+The prose remains draft pending independent human acceptance.
+
+## Historical release snapshot, 12 November 2026
+
+The following release and reservation statements describe that earlier
+checkpoint, not the current integration status.
+
 The weekly meter reached **30% remaining on 12 November 2026 at 13:46 UTC**.
 The parent and its subagents have stopped mathematical work. This handoff covers
 all 241 included chapters, existing external suppliers, independent review,

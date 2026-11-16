@@ -1,0 +1,54 @@
+# Renewed independent review of PR #384: revision of the (G3) producer after review #383 (#372)
+
+- **Session:** `stalex444-claude-384rev-20261114`
+- **Contributor:** stalex444, assisted by Claude (Fable 5.2 and Opus 5.5). stalex444 did not author #384 or the files it reviews.
+- **Claim:** <https://github.com/hairer/humanise-yang-mills/issues/372#issuecomment-6878777339>
+- **Reviewed:** PR #384 (commit `6865f2b3`, merged at `6426c0be`): the rewritten `manuscript/existence/trace-rounded-receipt.tex` (`subsec:trace-rounded-receipt`), the changed Status sentence of `manuscript/existence/trace-rounded-comparison.tex`, and the addendum "revision after review #383" to the author record `results/C15/author/hairer-claude-372-20261114/README.md`. The three files are byte-identical at `6426c0be` and at the current head `3166276d` of `codex/existence-monograph`; line numbers are those at `3166276d`.
+- **Earlier review:** PR #383, `results/C15/review/stalex444-claude-373rev-20261114/`, unchanged at `3166276d`. Its labels (M1–M9, L1–L18, C1–C12, N1–N20, N22, N23) are used here unchanged; new items continue the numbering (M10–M12, L19, C13–C16, N24–N28).
+- **Source pin:** `3456e5e`. The 17 Lean files hashed in hashes.json match `Lean/SOURCES.sha256` and the release checkout at that commit. This review elaborated three new probe files with Lean 4.32.0, with the YM `.olean` files from the compiled release archive used by #383 (`ym-build-3456e5e.tgz`, SHA-256 `07c145c3…`, the checksum in `source/build.md` l.37), and Lean's kernel checked the probe's own theorems as they were elaborated. The release's proofs were loaded from compiled files and not re-checked by an independent kernel checker; nothing was built from source, and Mathlib was not rebuilt. Evidence carried from #383 is cited by its path in the repository (see [lean-correspondence.md](lean-correspondence.md)).
+
+Human acceptance is unset. This report is not an approval and changes no unit status or review fingerprint.
+
+## Outcome
+
+- **Mathematics: accepted locally, conditional on stated dependencies ((A), (B), and (G4) at the root depth w); no required change** ([mathematics.md](mathematics.md)). The "changes requested" of #383 is resolved. Both required findings are addressed: the "Moreover" assertion is now proved from facts the gallery and the note state, by calling the producer with a reduced threshold (M1), and the proposition identifies the depth w_i of (G4) with the chart's root depth w and requires (G4) there (M2). The recommended findings M3 and M4 are addressed, as are M5, M7 and C12; M6, M8 and M9 are addressed, with optional notation remarks. No false statement and no wrong step was found in the revised note. The rewrite introduces two minor points: the width lemma no longer states its hypothesis (A) (M10), and the supply paragraph uses letters of other sections that already have meanings in the note (M11). M12 is a follow-up at the head, not a defect of #384: `prop:rank-root-output-ticket`, merged after #384, states results supplying open item 2(c) and the harmonic and late-scale part of item 2(b) of the note (its proof was not checked here, N24), subject to a bracket property that the note's open list does not name and the inclusion of its ticket requests.
+- **Lean correspondence: accepted locally, conditional on stated dependencies; no required change** ([lean-correspondence.md](lean-correspondence.md)). L1 is addressed with a remark: (B) is now stated openly as the chart-uniform form, which remains stronger than `lava_vSky`. L15 is addressed. L12 (a suggestion) is partly addressed and has no row in the response table. No pairing among L2–L11, L13, L14 and L16 changes its verdict. The new probe elaborates the depth identification of L16 (previously text only), the release form of (A) at every witness level, M = `trays d` as the slot argument, `bank` as the premise of the supply paragraph term for term, the reduced-threshold argument over the release definitions, and the harmonic and late-scale part of open item 2(b) with a chart-independent threshold given the `bracket` field. L19 (Minor) concerns the author record only.
+
+The verdicts are conditional on (A), (B) and (G4) at w, which the note lists as open and this review does not establish.
+
+## Response to #383, finding by finding
+
+Line numbers are those of `trace-rounded-receipt.tex` at `3166276d` unless another file is named. Details and checks are in mathematics.md (§1) and lean-correspondence.md.
+
+| Finding (#383) | Where addressed | Status |
+|---|---|---|
+| M1 (Required): "Moreover" proof rested on a late-point property the gallery does not state | l.154–157, l.176–197; Status l.257–258 | Addressed |
+| M2 (Required): bounds at w; (G3) at the w_i of (G4) | l.38–41, l.145–147, l.163–165, l.172; open item 3 l.287–289 | Addressed |
+| M3 (Should): (A) missing from the open list | open item 1 l.264–269; parent l.350–351 | Addressed |
+| M4 (Should): premise of the step from T ≤ I_k omitted | l.208–227; Status l.258–261; open item 2(b) l.279–282 | Addressed |
+| M5 (Minor): allarity route assumes more than the step purchases | l.233–252 | Addressed |
+| M6 (Minor): "arity cap" for d+2 | l.26–32, l.228–229 | Addressed, with remark (trays(d) still has no value in the manuscript) |
+| M7 (Minor): inclusive threshold; hypothesis for every i | l.139–141; l.147, l.174 | Addressed |
+| M8 (Minor): q for two objects | l.202–204 and q_0 throughout | Addressed, with remark (q_0 also names a point in the parent) |
+| M9 (Minor, optional): n with three meanings | whole note | Addressed, with remark (M also names the parent's M(w) and M_{αβ}) |
+| L1 (Should): (B) stronger than `lava_vSky` | l.55–56, l.75–84; open item 2 l.270–272 | Addressed, with remark ((B) remains stronger than the source and is an open input) |
+| L12 (suggestion): name the bank premise and the level of the ticket | premise l.213–224; level not stated (l.216, l.283) | Partly addressed; no row in the response table |
+| L15 (Minor, author record): μ_k ≥ 1 filter unused | author README l.74 | Addressed |
+| C12 (observation): (A) for k ≥ K_A, K_A in K(d,ε) | l.58–63, l.87, l.103, l.136, l.165 | Addressed |
+
+## New findings
+
+Labels: Required / Should / Minor.
+
+- **M10 (Minor; introduced by the revision).** The width lemma (l.86–92) no longer begins "Assume (A).", which it did at `bdd348cd`. Its statement now opens "Let $R>0$. Consider a chart at a level $k\ge K_A$" (l.87), where K_A exists only through (A) (l.58), and the proof uses (A)'s inequality (l.103). The cost lemma keeps "Assume (B)" (l.113). The proposition assumes (A) (l.145), so no step of it is affected. Suggestion: restore "Assume (A)." and write "a chart of the family".
+- **M11 (Minor; introduced by the revision; same class as M8).** The supply paragraph and the allarity list use letters of `sec:rank-root-normalization` and `sec:allarity-marked-propagation` that already mean something else in the note, without saying so. "all at the output level $m$ of the clock" (l.216) and β̂_m (l.217–223) against m = μ_k^b (l.35, l.162); l in (α+2)^{k−l} (l.249) against the cost index l (l.149); ℓ in L, ℓ ≤ 1 (l.251) against a_ℓ (l.38). (The k of G_k and (α+2)^{k−l} is allarity's top comparison depth, which the link ω = a, allarity l.346–349, makes the chart level k; it does not clash.) #383's own M4 and M5 used the same bare letters. No inference is affected. Suggestion: say once that these lists are in the notation of the cited sections, or rename the output level (rank-root now calls it w(k), l.375–376).
+- **M12 (Follow-up at the head; not a defect of #384).** `prop:rank-root-output-ticket` (rank-root l.307–331; commit `413e82ad`, PR #386 for #378, written from `bdd348cd` in parallel with #384 and merged at `3166276d` after `6426c0be`) states T_M(π_{J(w(k))}) ≤ I_k (open item 2(c)) and the harmonic and late-scale part of item 2(b) at the output level w(k), for k ≥ K_M (its proof was not checked here, N24); the #378 author record maps it to these items and names the bracket property as a remaining input (its README l.35–38). It needs w(k) → ∞, which rank-root l.375–383 derives from a bracket property that it calls part of the chart's scale allowance and an input; that property is not the note's (A); the #374 audit report (`results/C15/endpoints/hairer-claude-374-20261114/README.md` l.57, l.156) already lists it beside (A) among the allowance fields the gallery section does not state. Item (1) also needs the requests `eq:rank-root-ticket-requests` to be included in the countable family; the proposition directs this (rank-root l.309–313), and no other manuscript file at `3166276d` lists them. The note at `3166276d` does not cite the proposition. If the proposition holds, item 2(c) and the harmonic and late-scale part of item 2(b) are supplied at the head, apart from the bracket property, which the open list does not name, and the inclusion of the ticket requests; the representation-side suppositions that the note lists under 2(b) remain hypotheses (rank-root l.321–324), assigned by rank-root l.383–385 to the output transport. Suggestion, for the final combination on #372: cite the proposition at items 2(b) and 2(c), and add the bracket property to item 1 beside (A).
+- **L19 (Minor; author record).** The original correspondence table, "Proved" list, "Open" paragraph and l.47 of the author record (README l.20–40, l.47) were left unedited, as an addendum convention allows, but are not marked as superseded: l.28–29, l.36, l.38 and l.40 still use n, l.47 says the manuscript uses n = d+2, and l.37 still describes the level arrangement by late points of a level curve. The addendum gives the current account.
+
+## Not established
+
+This review does not establish (A), (B) or (G4) at w; the bracket property and the representation-side suppositions of open item 2; the proof of `prop:rank-root-output-ticket` (N24); the chart-uniform form of (B) from the source (#383 N14); that `(invoiceSky …).part s` is the note's Φ_s (#383 N11); or that the extracted compiled files and the dependency `.olean` files used for elaboration are byte-for-byte those of the published archive (#383 N10). The manuscript was not built; the author's report of 1039 pages and the inspection of pp. 1011–1013 were not reproduced. The full list is in mathematics.md and lean-correspondence.md.
+
+## Records
+
+Neither revised `.tex` file is in the `manuscript` list of YM-000026, so the unit fingerprint does not cover them; the per-file SHA-256 values in [hashes.json](hashes.json) (3 target, 5 interface and 17 source files, hashed at `3166276d`) are the operative fingerprint of this review. The target hashes recorded by #383 (`44dd8b53…`, `84a5aa4d…`, `65f68f6b…`) describe the files before #384. Validation is recorded in [validation.md](validation.md); the probe outputs and check scripts cited are in [evidence/](evidence/).

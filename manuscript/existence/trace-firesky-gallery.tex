@@ -1,5 +1,5 @@
 % Selected-scale charts and the public gallery handoff.
-\section{From funded chart receipts to a trace gallery}
+\subsection{From funded chart receipts to a trace gallery}
 \label{sec:ex-lattice-firesky-gallery}
 
 This section records the actual selected-run route from one-scale chart data
@@ -7,9 +7,9 @@ to the scale-dependent charts used by the trace calibration. The analytic
 chart receipts are provided by the funded construction and are identified
 below. We prove the subsequent scale selection and finite-dimensional limit
 steps explicitly. The correction and Ward-flux calculations are in
-Section~\ref{sec:ex-lattice-trace-producer}.
+Subsection~\ref{sec:ex-lattice-trace-producer}.
 
-\subsection{The funded chart family and its one-step output}
+\subsubsection{The funded chart family and its one-step output}
 
 Fix a grade $d$, a binding, a gauge-invariant chart budget, and a scale
 parameter $z\geq0$. The funded chart receipt consists of three panels
@@ -22,13 +22,1271 @@ offset. The other fields of this witness are the chart, invoice,
 legacy-cost, actuation, and stamp data used by the quantitative chart
 estimate. The single offset changes only the three arc coordinates.
 
-The funded run constructs these panels from its paid multi-scale request.
-The request gives charts with a common added offset and fixed currency and
-angle. Forward chart estimates supply legacy costs at all large levels;
-the staging estimate at the common angle supplies simultaneous actuation
-and stamp receipts. Clipping the offset to $[0,1]$ preserves the arc lower
-bound, chart factor, currency, and angle. The resulting finite-level data
-are the hypotheses of the one-step chart theorem.
+The simultaneous choice needed here is stronger than choosing a funded
+run separately at every grade. We give its construction next. The local
+analytic inputs are stated separately, so that the choice of a common
+schedule does not hide an estimate.
+
+\begin{lemma}[A quantitative, signed-equivariant reading]
+\label{lem:trace-quantitative-invoice}
+Keep the funded hypotheses and notation of
+Proposition~\ref{prop:rank-selected-tested-readout}. At each fixed grade
+$d$, its reading can be chosen so that, for all sufficiently large levels,
+uniformly in $N,p,u$,
+\begin{equation}\label{eq:trace-quantitative-invoice}
+ |Au-Tu|_1\le H^{-1/2}|Au|_1,\qquad H=\mathcal M_k.
+\end{equation}
+Assume that the calibrated map $A$ intertwines the signed coordinate
+symmetries of its label space. The reading can then also be chosen to
+intertwine those symmetries, preserving its exact unit and real structure.
+\end{lemma}
+\begin{proof}
+The proof of Lemma~\ref{lem:rank-growing-wick-pin} gives, before discarding
+its rate,
+\[
+ |Au-Tu|_1\le c_d\{H^{-1}+D2^DH^{-3/4}
+                 +w_DH^{-1+\alpha(D+1)}\}|Au|_1,
+ \qquad \alpha=\frac1{4(D+2)}.
+\]
+Since $-1+\alpha(D+1)<-3/4$, this is at most
+$C_dH^{-3/4}|Au|_1$, with
+$C_d=c_d(1+D2^D+w_D)$, for $H\ge1$. Thus it is at most
+$H^{-1/2}|Au|_1$ once $H^{1/4}\ge C_d$.
+
+For the symmetry assertion, let $\Sigma$ be the finite signed coordinate
+group, with representation $\rho$ on the grade-$d$ label space, and put
+$a_d=\max(1,\max_{\sigma\in\Sigma}\|\rho(\sigma)\|_{1\to1})$.
+Set
+\[
+ \overline T=\frac1{|\Sigma|}\sum_{\sigma\in\Sigma}
+                \rho(\sigma)T\rho(\sigma)^{-1}.
+\]
+Reindexing this finite sum proves equivariance. Since $A\rho(\sigma)
+=\rho(\sigma)A$, each summand's error on $u$ is bounded by
+$a_d^2 C_dH^{-3/4}|Au|_1$. The triangle inequality gives the same bound
+for the average. Enlarging the common threshold until
+$H^{1/4}\ge a_d^2C_d$ proves \eqref{eq:trace-quantitative-invoice}
+for $\overline T$. Every summand fixes the unit, and signed coordinate
+actions commute with complex conjugation, so these identities survive
+the average. The finite group and constants depend only on the grade,
+not on $k,N,p$. Hence taking the maximum for $0\le d'\le d$ gives
+one finite-cutoff threshold.
+\end{proof}
+
+\subparagraph{Paying and averaging the complete stamp.}
+The symmetry of the covariance used here is a property of the actual
+finite-volume covariance, not a consequence of a bound on its entries.
+We verify it before averaging. On the finite torus let $Q$ be the
+quadratic form of the selected one-form comparison, let $d$ be the
+discrete curl and let $P$ be its chosen solution operator, so that
+\[
+ QP=d^*,\qquad \ker Q\subseteq\ker d,\qquad \kappa=dP.
+\]
+These are the finite comparison identities underlying the actual
+curvature multiplier in
+Subsection~\ref{sec:actual-covariance-fourier-window}. For a signed coordinate
+change $s$, denote its orthogonal actions on bonds and oriented faces
+by $B_s,C_s$. The face action includes the shift of the base point when
+an axis is reversed. The defining quadratic form satisfies
+$B_s^*QB_s=Q$ and $dB_s=C_sd$. Indeed the bond and face actions are
+signed permutations; change the summation variables in the quadratic
+form. The derivative terms retain their orientation signs, while the
+centred block averages and their adjoints are carried to the same
+averages. The scalar penalty is unchanged. These statements persist
+through the finite ancestry by induction, applying the same identity
+to each composed block map.
+
+Consequently $Q(B_sPC_s^*)=d^*$. Subtracting $QP=d^*$ shows that
+each column of $B_sPC_s^*-P$ lies in $\ker Q$, so application of $d$
+annihilates it. Hence
+\begin{equation}\label{eq:trace-stamp-covariance-symmetry}
+ C_s\kappa C_s^*=\kappa.
+\end{equation}
+This argument does not require an inverse on the harmonic sector.
+The actual atlas uses precisely this finite curvature covariance,
+with the same ancestry and period. Restrict its two arguments to all
+oriented faces contained in the centred patch box. This face set is
+stable under the signed face permutations, including their base-point
+shifts; an arbitrary cube of positive-face base points would not suffice. In patch
+coordinates $C_s$ is a signed permutation $P_s$, and the restricted
+matrix $K$ therefore satisfies $P_sKP_s^*=K$.
+
+Let $\mathcal E_s$ denote the corresponding substitution on curvature
+polynomials. Each variable goes to one variable with sign $1$ or $-1$.
+Thus it preserves degree and does not increase the absolute coefficient
+sum. The chain rule and \eqref{eq:trace-stamp-covariance-symmetry} give
+\[
+ \Delta_K\mathcal E_s=\mathcal E_s\Delta_K,
+ \qquad \mathcal W_K\mathcal E_s
+                    =\mathcal E_s\mathcal W_K.
+\]
+The second equality follows by summing the finite exponential series on
+polynomials of bounded degree. Embedding the patch into the larger
+reader chart only renames variables; restricting $K$ before this
+embedding gives the same identity. The radial reading also intertwines
+these substitutions with the signed action on reference labels:
+evaluate it on a formal connection jet, change the coordinates of the
+jet by $s$, and change variables along each radial segment. Curvature
+components acquire exactly the signs in $P_s$. Extracting a fixed
+weighted degree commutes with this change of variables. Equality on
+all formal jets is equality of the resulting label polynomials.
+
+The corresponding physical identities use the same calibrated family.
+Write $A$ for its calibrated coordinate and $F_u^{\rm exp}$ for its
+physical exponential entry. Its terminal label identification commutes
+with the signed action. This property passes to its transported
+coordinates: apply the signed pullback to the defining transfer
+integral and change the integration variables; the kernel and the
+selected representation are carried to themselves, and the terminal
+label is changed by $\rho(s)$. Induction through the finitely many
+transfers gives the coordinate and density identities. On a completely
+healthy configuration the flagged terms vanish and the background
+density is strictly positive. Dividing the density identity by that
+same invariant background gives
+\begin{equation}\label{eq:trace-stamp-physical-symmetry}
+ A\rho(s)=\rho(s)A,\qquad
+ F_{\rho(s)u}^{\rm exp}(U)=F_u^{\rm exp}(s^*U).
+\end{equation}
+Thus the equivariance required in
+Lemma~\ref{lem:trace-quantitative-invoice} holds for this family; no
+equivariance of an arbitrary choice of atlas or calibrated map is being
+asserted.
+
+We now retain the strict margins in the selected-family construction
+of Subsection~\ref{sec:actual-rank-purchases}. For fixed polynomial order
+$D$, set $\gamma=1/(16(D+2))$. Its Taylor proof gives
+$|L_u|_1\le4H^{2\gamma}|Au|_1$, and the axial substitution defining
+the raw polynomial has row cost at most one eventually. Hence
+$|W_u|_1\le4H^{2\gamma}|Au|_1$. For the Wick polynomial one can
+use the stronger coefficient estimate already proved in
+Lemma~\ref{lem:rank-growing-wick-pin},
+\[
+ |\mathcal H u|_1\le(1+H^{-1}w_D)H^\alpha|Au|_1,
+ \qquad \alpha=1/(4(D+2))<1.
+\]
+The raw healthy error, before its margin is discarded in
+\eqref{eq:rank-raw-terminal-paid}, is at most
+$C_DH^{-D-15/16}|Au|_1$, after increasing the common threshold;
+the remaining terms and the wide tail are smaller than every fixed
+negative power of $H$. These are uniform bounds in the volume and
+period at a fixed grade and order.
+
+For $s\in\Sigma$ construct
+\[
+ W^{s}_u=\mathcal E_sW_{\rho(s)^{-1}u},\qquad
+ \mathcal H^{s}_u=\mathcal W_K W^{s}_u,
+ \qquad T^{s}=\rho(s)T\rho(s)^{-1}.
+\]
+The covariance and radial identities above prove that $T^s$ is the
+reading of this very $\mathcal H^s$, with the same coupling dilation
+as before. Let $a_d$ be the finite orbit bound used in the invoice
+lemma. By \eqref{eq:trace-stamp-physical-symmetry},
+$|A\rho(s)^{-1}u|_1\le a_d|Au|_1$. Therefore the raw and Wick
+coefficient bounds for every conjugate are at most respectively
+$4a_dH^{2\gamma}|Au|_1$ and
+$a_d(1+H^{-1}w_D)H^\alpha|Au|_1$. Since $2\gamma,\alpha<1$,
+both are at most $H|Au|_1$ on one later tail.
+
+For the healthy ticket, signed pullback preserves the healthy set and
+the centred halo. The second identity in
+\eqref{eq:trace-stamp-physical-symmetry} was proved only for globally
+healthy configurations, so a local extension is needed. Suppose $U$
+is healthy at the smaller threshold $\tau$ on the patch. Put it in
+the axial gauge of \eqref{eq:rank-axial-terminal-error}; each link
+used by the patch then has chord at most $4b\tau$. Retain those
+links and set every other link equal to the identity, obtaining $Z$.
+Every plaquette of $Z$, including those crossing the boundary of the
+retained links, is a product of at most four such links and inverses.
+The triangle inequality for the bi-invariant chord therefore bounds
+its chord by $16b\tau$. This is at most the background threshold
+$\theta$ eventually, since $b=H^{o(1)}$ and
+$\tau/\theta=H^{-1+o(1)}$. Hence $Z$ and $s^*Z$ are globally
+$\theta$-healthy. The near insertion and the raw polynomial only
+read links retained in the patch, and are gauge invariant, so replacing
+$U$ by $Z$ changes neither of their values.
+
+Apply the raw healthy approximation at $s^*Z$, then the full-entry
+identity at $Z$. The discrepancy is the sum of four terms: the raw
+approximation error at $s^*Z$, the change of based paths between that
+raw evaluation and the signed polynomial at $Z$, and the two wide
+tails at $Z$ and $s^*Z$. This decomposition does not assert that the
+near/wide split itself is equivariant. The wide tails on globally
+healthy fields have the superpolynomially small bounds established in
+Subsection~\ref{sec:actual-rank-purchases}.
+
+Here is the additional path error. In the axial gauge each retained
+link is $O(b\tau)$ from the identity. The two based paths for a
+signed image have length $O(b)$, so their connecting holonomy is
+$O(b^2\tau)$ from the identity. Conjugating a plaquette curvature of
+size $O(\tau)$ changes it by $O(b^2\tau^2)$, by the differential of
+the adjoint action near the identity. Reversing a plaquette gives its
+negative, with at most another quadratic error for chord coordinates.
+Thus the coordinate discrepancy after division by $g$ is at most
+$Cb^2\tau^2/g$, while both coordinate vectors have norm at most
+$C\tau/g$. For $D=0$ the polynomial error is zero. For $D\ge1$, telescoping each monomial bounds the polynomial error by
+\[
+ C_D|W_{\rho(s)^{-1}u}|_1
+       (1+\tau/g)^{D-1}b^2\tau^2/g.
+\]
+Now $\tau/g=H^{o(1)}$ and
+$\tau^2/g=x^{-1/2}H^{o(1)}$, uniformly by the comparison of the
+actual coupling with $x=\widehat\beta_k$. Since
+$\log H=(\log\log x)^2=o(\log x)$, this error is smaller than
+every fixed negative power of $H$. Combining the four terms gives,
+for one constant $C_{d,D}$,
+\[
+ \bigl|F_u^{\rm near}(U)-W^s_u(g^{-1}\mathcal C(U))\bigr|
+       \le C_{d,D}H^{-D-15/16}|Au|_1
+       \le H^{-D}|Au|_1
+\]
+eventually, for every $s$ and every healthy $U$ in the prescribed halo.
+The last inequality follows by imposing $H^{15/16}\ge C_{d,D}$.
+This pays the ticket separately from the invoice's $H^{1/4}$ margin.
+Support, locality, gauge invariance and measurability are preserved by
+these finite coordinate substitutions; the halo radius is unchanged.
+
+Finally set
+\[
+ \overline W=\frac1{|\Sigma|}\sum_sW^s,\qquad
+ \overline{\mathcal H}=\frac1{|\Sigma|}\sum_s\mathcal H^s,
+ \qquad \overline T=\frac1{|\Sigma|}\sum_sT^s.
+\]
+Linearity of Wick transformation and reading identifies the latter two
+maps with the Wick polynomial and reading of $\overline W$. Degree
+does not increase. The triangle inequality and normalized averaging
+preserve each of the raw, Wick and healthy-ticket bounds just proved;
+there is no factor $|\Sigma|$. Unit and reality hold termwise, and
+reindexing the group proves signed covariance of $\overline T$.
+Together with Lemma~\ref{lem:trace-quantitative-invoice}, this is one
+complete signed stamp with the quantitative invoice, at the original
+prices. All the finite constants are paid by one later threshold at
+fixed grade and order, before the volume, period or panel offset is
+chosen.
+
+\subparagraph{Paying the finite moment and cumulant operations.}
+The numerical portion of the local chart purchase can be made before
+the coupling and the finite volume are chosen. We give the argument,
+including its order of choices. Put
+\[
+ H(s)=\exp((\log\log s)^2),\qquad
+ T(s)=3\exp((\log\log s)^{3/2}).
+\]
+For every fixed $q\ge0$ and $\epsilon>0$,
+\begin{equation}\label{eq:trace-submonitor}
+ (1+\lceil(\log s)^2\rceil)^q+T(s)^q
+                      =o(H(s)^\epsilon).
+\end{equation}
+Indeed the logarithms of the two terms are respectively
+$O(\log\log s)$ and $O((\log\log s)^{3/2})$, whereas
+$\log H(s)=(\log\log s)^2$. This also holds uniformly with $s$
+replaced by $x\in[s/2,s]$, by monotonicity on a sufficiently late tail.
+
+Fix an arity cap $u\ge2$, grade cap $d$, and finitely many base arcs
+$b_i\ge d+6$. Set $c=\max_i(b_i+1)$ and $z=cd+d+2$.
+Assign to a moment word of length $n\le u$ the numerical coefficient
+allowance $H^{zn+1}$. This is a price used in the choice of parameters,
+not an assertion about the moment of an arbitrary field. The passage between moments and cumulants is a finite
+polynomial operation in these moment coefficients: the coefficients are
+the fixed integer coefficients in the partition formulas, and their
+absolute values give nonnegative polynomial majorants. Thus every
+moment/cumulant coefficient price at this fixed arity has a bound
+$C_nH^{a_n}$, for some explicitly finite constants $C_n,a_n$ depending
+on $z,n$. For example, the cumulant polynomial is
+\[
+ \kappa_I=\sum_{\pi\in\mathcal P(I)}
+       (-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}m_B;
+\]
+the corresponding absolute majorant is obtained by replacing each
+coefficient by its absolute value. Substitution into another such
+formula again gives a finite polynomial. No estimate here depends on
+the number of lattice sites.
+
+Choose a negative currency $f$ such that
+\[
+ f\le-8-z,\qquad a_n+f+1<-4\quad(1\le n\le u).
+\]
+This is a finite list of strict inequalities. Put $U=1/16-f>0$,
+choose an integer $g\ge uU+10$, and take Taylor order
+$D=g+d+5$. The degree and arity are now fixed before selecting the
+accuracy exponent below. The additional coefficient norms introduced
+by evaluation on a bounded cube, multiplication, truncation and Wick
+ordering are finite polynomial expressions in $H$, the above moment
+prices and $T(s)$. To see this directly, the price of a product is
+bounded by the product of the prices; evaluating a polynomial of
+degree $r$ on a cube of radius $R$ costs at most
+$\max(1,R)^r$ times its absolute coefficient sum. In a fixed degree,
+Wick ordering is a finite sum of contraction maps, so its coefficient
+bound is likewise a finite polynomial in the covariance bound. The
+finite moment and cumulant formulas introduce only finitely many such
+operations. Equation~\eqref{eq:trace-submonitor} therefore supplies
+bounds $C H^A$ for all their prices, with $C,A$ independent of $s$.
+
+The corresponding differences are linear in a common error bound
+$\varepsilon$ after enlarging those polynomial prices. In fact,
+for a product of $r$ factors with absolute values at most $M$ and
+factorwise differences at most $\varepsilon$, the telescoping identity
+gives a difference at most $rM^{r-1}\varepsilon$. Apply this to each
+monomial in the fixed formulas and sum its absolute coefficient.
+For any three fixed finite families of these polynomial difference
+prices there are bounds
+\[
+ C_1H^{A_1}\varepsilon,\qquad
+ C_2H^{A_2}\varepsilon,\qquad C_3H^{A_3}\varepsilon.
+\]
+Choose an accuracy exponent $F>0$ with
+$F>A_1$, $F>A_2+g$ and $F>A_3+3/2$, and use
+$\varepsilon=H^{-F}$. After increasing the coupling threshold, these
+three prices are at most $1$, $H^{-g}$ and $H^{-3/2}$,
+respectively. Any fixed factors, including $2^n$ and the finite
+support-price conversion constants, are absorbed by the strict
+inequalities. Similarly the earlier currency pays the uncorrected
+polynomial price: the evaluation factor has growth at most $H$, so
+$C_nH^{a_n+f+1}\le H^{-4}$ on a tail. These are choices of
+the numerical tolerances for the actual comparison estimates; they do
+not assert that an arbitrary field attains the chosen error.
+
+The arity and room inequalities can be paid simultaneously. Set
+\[
+ M=(6u+3)(3+2u)+30,\qquad Q=M+10.
+\]
+Then $6n+3\le M/(3+2n)$ for $n\le u$, $M\ge10$,
+$M+10\le Q$, and $1-g\le-uU-2$. Taking the block length
+at least $128Q$ pays the remaining fixed geometric floor. If
+$A\ge1$ is any of the finitely many polynomial transport multipliers,
+also require $2\log A\,(b_i+2)\le\log L$. With
+\[
+ h=\left\lceil\frac{(b_i+2)\log H(s)}{\log L}\right\rceil
+\]
+we have $h\log A\le\tfrac12\log H(s)+\log A\le\log H(s)$
+eventually, hence $A^h\le H(s)$. Taking a maximum over the finite
+arities and panels gives one block floor and one coupling threshold.
+The covariance/error estimates themselves must be applied with these
+very numerical choices.
+
+\begin{lemma}[Fixed-stage exponential budgets]
+\label{lem:trace-stage-exponential-budgets}
+Fix a block side $L$, an arity cap $u$, a goal $g\ge6$, and two
+nonnegative support exponents $e_0,e_1$. Write $N_L$ for the number
+of sites in one block (not the number of sites in the ambient torus), and set
+\[
+ C(x)=\lceil(\log x)^2\rceil,\quad B(x)=C(x)^2,\quad
+ Z(B)=(2B+1)^4,\quad W(B)=c_*B^4,
+\]
+where $c_*\ge0$ is fixed. Put
+\[
+ a_i=\exp(15^4(e_i+7)),\quad
+ \alpha\ge8\max(a_0,a_1),\quad
+ \kappa=H(s)^{-1/8},\quad p=H(s)^{-3},\quad
+ \tau=H(s)^{-2g-10}.
+\]
+For fixed $a>0$, put $v(x)=\exp(-a(T(x)/3)^2)$ and
+\[
+ \ell(k)=\max\left(1,\frac{p}{\alpha k+H(s)^{-g}}\right),
+ \qquad m(k)=a_1\ell(k)k+2a_1H(s)^{-4}.
+\]
+All the following inequalities hold uniformly for $x,y\in[s/2,s]$,
+$n\le u$, on a sufficiently late tail. Here $B=B(x)$.
+\begin{enumerate}
+\item The five logarithmic expansion tests hold: with
+ $h=e^\kappa-1$ and $f=e^{2h}-1$,
+ \[
+ Z(B)\kappa,\ Z(B)h,\ Z(B)(2h),\ Z(B)(f+\kappa)\le1,
+ \qquad e^{f+\kappa}-1\le1.
+ \]
+\item For $0\le k\le H^{-4}$,
+ \[
+ \frac\kappa{16}+W(B)N_La_1v(y)+W(B)nm(k)\le\frac\kappa4,
+ \qquad a_1v(y)+m(k)\le p.
+ \]
+ For $0\le k\le H^{-1/2}$ and any $0\le w\le1$,
+ \[
+ \frac\kappa{16}+W(B)N_La_0kw+W(B)na_0k\le\frac\kappa4,
+ \qquad a_0kw+a_0k\le\frac{\alpha k+H^{1/2}k^2}{2}.
+ \]
+ Moreover $Z(B)\kappa/4\le1$,
+ $e^{\kappa/4}-1+\kappa/4\le\kappa$, and $\ell(0)/x\le1$.
+\item The normalization-hole budgets hold:
+ \begin{gather*}
+ W(B)N_L\exp(15^4(e_1+8))v(y)\le\tau,\qquad
+ 2Z(B)\tau\le1,\qquad16Z(B)\tau\le1,\qquad16\tau\le1,\\
+ e^{2\tau}-1\le1-e^{-16\tau},\qquad
+ 32\ell(0)\tau\le\kappa/4,\qquad
+ e^{2\tau}-1+\kappa/4\le\kappa,\qquad \tau\le\kappa/16.
+ \end{gather*}
+\end{enumerate}
+The block floors may additionally be chosen so that
+$10\cdot15^4(e_i+7)\le Le_i$ whenever $e_i>0$;
+these are fixed inequalities, independent of $s$ and the torus.
+For the normalization-hole test also reserve a positive input support
+exponent $a_{\rm in}$ with
+$10\cdot15^4(e_1+8)\le La_{\rm in}$, and an output exponent
+$a_{\rm out}\le e_1+1$. These are the additional fixed support
+requirements of that test.
+\end{lemma}
+\begin{proof}
+Every fixed power of $B(x)$ is $o(H(s)^\epsilon)$ by
+\eqref{eq:trace-submonitor}. Also $v(y)=o(H(s)^{-A})$ for every fixed
+$A$: the negative logarithm of $v(y)$ is
+$a\exp(2(\log\log y)^{3/2})$, whose ratio to $(\log\log s)^2$
+tends uniformly to infinity on the half-band. Thus each fixed multiple
+of $W(B)H^{-1/2}$ is eventually at most $\kappa/16$.
+These statements allow all constants here, including $N_L$, to be
+fixed before the coupling threshold.
+
+For item 1 choose the threshold so that $\kappa\le1/50$ and
+$Z(B)\kappa\le1/100$. The inequality $e^t-1\le2t$ for
+$0\le t\le1$ gives $h\le2\kappa$, $f\le4h\le8\kappa$
+and $e^{f+\kappa}-1\le18\kappa\le1$. Each of the four
+products is at most $9Z(B)\kappa\le1$.
+
+For item 2, $8a_1\ell(k)k\le p$. Indeed, if $\ell(k)>1$,
+use $8a_1k\le\alpha k\le\alpha k+H^{-g}$; if $\ell(k)=1$,
+use $8a_1H^{-4}\le H^{-3}$. Increasing the threshold also gives
+$8a_1H^{-4}\le p$, so $m(k)\le3p/8\le p/2$.
+Likewise $a_1v(y)\le p/2$. Both $v(y)$ and $m(k)$ are at most
+$H^{-1/2}$ eventually. Hence each of the two $W(B)$ terms in the
+first inequality is at most $\kappa/16$; their sum with
+$\kappa/16$ is at most $3\kappa/16\le\kappa/4$.
+The same reasoning applies to $kw\le k\le H^{-1/2}$ and $a_0k$.
+Its second inequality follows from $2a_0k\le\alpha k/2$ and
+$H^{1/2}k^2\ge0$. The remaining exponential bound follows from
+$e^{\kappa/4}-1\le\kappa/2$. Finally
+$\ell(0)=H^{g-3}$, and any fixed power of $H(s)$ is $o(s)$,
+which proves $\ell(0)/x\le1$ uniformly.
+
+For item 3 all the polynomial-radius inequalities follow from the
+first paragraph. In particular take $\tau\le1/16$ and
+$16\tau\le\kappa$. Then $e^{2\tau}-1\le4\tau$, while
+$e^{-16\tau}\le(1+16\tau)^{-1}\le1-4\tau$; the last inequality
+is equivalent to $64\tau^2\le12\tau$. This proves the first
+exponential comparison, and also
+$e^{2\tau}-1+\kappa/4\le\kappa/2\le\kappa$.
+Since $\ell(0)\tau=H^{-g-13}$, the patch budget follows by strict
+power comparison with $H^{-1/8}$. The remaining inequality
+$\tau\le\kappa/16$ follows the same way. Finally the stated block
+floors are finite because the positive exponents have already been fixed.
+\end{proof}
+
+The first item pays the smallness tests needed when taking the local
+marked logarithm. The second pays its two support budgets, respectively
+for the marked and the unmarked energy exponents. The third pays the
+normalization-hole budget on one actual block step. In particular none
+of these tests requires a smallness hypothesis on the total volume:
+$N_L$ counts a single fixed block. The accompanying geometric tests
+are equally uniform: $B(y)\le2B(x)$ on the half-band, since
+$B(s)/B(s/2)\to1$, and a microscopic radius bounded by $4C(x)$
+satisfies $25(4C(x))+30\le C(x)^2$ eventually. Together with the
+fixed support-exponent inequalities these are precisely the radius,
+support and exponential tests used by the local transfer compiler.
+They do not supply that compiler's estimates on the actual amplitudes;
+those estimates must have the coefficients, covariance and normalization
+of the selected history.
+
+\subparagraph{Room and the actual restarted steps.}
+The period-independent room requirement is also a consequence of the
+paid clock. Let $t_i$ be its logarithmic scale, so the denominator of
+the lattice spacing is $e^{t_i}$ and the clock coupling is
+$s_i=\beta_*+s_Gt_i$. For sufficiently large $i$ the retimed microscopic
+radius is at most $4s_i$. Therefore
+\[
+ \frac{100(1+4s_i)}{e^{t_i}}\longrightarrow0.
+\]
+Every physical period is a positive integer multiple of this denominator,
+so $100(1+\operatorname{radius}(r(s_i)))$ fits in every such torus.
+This is uniform over all period indices. It also holds simultaneously
+at every level in a late comparison window: if $s_i\ge s_k/2$ there,
+monotonicity and divergence of $s_k$ force all such $i$ beyond any fixed
+threshold. No threshold depending on the period is required.
+
+The all-level representation needed for actuation is the actual one
+constructed in Proposition~\ref{prop:restart-actual-closure}; an arbitrary
+family with the same density identity would not suffice. To apply that
+proposition here, retain on a step the original fine and coarse paths,
+their clips, the original funded tube and the local chart. The stage pair
+is one of $(j,j)$, $(j,j-1)$ and $(j-1,j-1)$. Its block length and support
+exponents are fixed before the threshold. The radius and exponential
+budgets proved in Lemma~\ref{lem:trace-stage-exponential-budgets}, together
+with the preceding torus room, pay the corresponding local tests at
+that pair. Intersect these three eventual assertions, and the existing
+path, metric and chart requests, before choosing the stage threshold.
+
+Here is the identification with the local compiler, which is essential
+when using its estimates. At the upper endpoint use the re-expression
+of Proposition~\ref{prop:restart-endpoint}, retaining its exact density,
+scalar and coupling. At the next step, the incoming representation is
+this very re-expression. Erase only its additive remainder to form the
+neutral representation used for pricing. Its path, clip, Gaussian law,
+forest, tag and warning sockets are unchanged; the corrected-warning
+argument of Subsection~\ref{sec:actual-local-compiler-handoff} therefore
+applies to the same selected data. The corrected-body and mixed
+compilers choose one alphabet and its scalar loading before the output
+representation. The neutral return estimate and the genuine density
+identity are estimates for that one alphabet. Its positive loading
+fixes the new scalar; its connected masked logarithm fixes the new
+additive remainder. Thus there is no choice of an unrelated coarse
+representation at this point.
+
+Proposition~\ref{prop:restart-actual-closure} proves that the new
+representation satisfies the same inductive bounds: its neutral version
+has the inherited law, its forced allowance is
+$\exp(-a_{\rm coast}\mathrm{hot}(x)^2)$, and its additive allowance is
+$q_{n+1}$. Its proof uses the actual path correction
+\eqref{eq:restart-path-price}, the inflated component estimates and
+reassembly on this corrected alphabet. The step's normalization-hole allowance is $\delta_n=q_nA_s^3$,
+not the preliminary allowance $\tau$. The replacement is justified as
+follows. Equation~\eqref{eq:restart-decay} gives
+$s^{-1/200}\le\delta_n\le s^{-1/400}\le\tau$ uniformly in the
+permitted step count. Since
+$\exp(-a\mathrm{hot}(y)^2)=o(s^{-A})$ for every fixed $A$,
+the first term in item 3 of
+Lemma~\ref{lem:trace-stage-exponential-budgets} is at most
+$s^{-1/200}\le\delta_n$. All its other upper bounds hold with
+$\delta_n$ in place of $\tau$, by monotonicity, except the comparison
+between the two exponentials. That comparison follows directly from
+the same calculation for every $0\le\delta_n\le1/16$.
+Thus the normalization-hole estimates apply at the actual step cost;
+ the two support-price weakenings at the end of
+Subsection~\ref{sec:actual-local-compiler-handoff} preserve its values,
+full supports, loading and hole normalization. They therefore give the
+upper and lower marked transfer estimates on this particular step.
+Install this new representation only at its coarse level and continue
+backwards. Induction preserves all representations already installed,
+the endpoint stamps, the fixed coupling, and the original partition
+denominator. This supplies the actual short comparison family and its
+marked transfers, with the uniformity in fields, cutoff and period
+stated in Proposition~\ref{prop:restart-actual-closure}.
+
+This application uses the original funded path and chart data; it does
+not assume the desired estimates on the restarted representations. The
+finite-reader covariance comparison and its polynomial error prices
+are separate from this actuation argument. In particular, the
+parameter choices above are not a substitute for verifying those
+comparison estimates for the selected covariance.
+
+\subparagraph{Reader comparison across a profile change.}
+The plateau formulation in
+Subsection~\ref{sec:actual-reader-dawn-selection} extends to each of the
+three adjacent profile pairs required here. This does not identify the
+two profiles. For a fine profile $f$ and coarse profile $c$, use the
+common strip rate $\min(\alpha_f,\alpha_c)>0$ and upper price
+$\max(\Omega_f,\Omega_c)$. Decreasing the exponential strip rate
+and increasing the majorant preserve each weighted row estimate.
+Keep the fine metric floor $\eta_f$ in the common-cover construction,
+and keep the coarse metric floor $\eta_c$ in the actual tower transfer.
+Both remain strictly positive; neither metric is replaced by the other.
+The retained tower, its crossing identity and the two actual clips
+identify the transferred covariance with the original coarse covariance,
+exactly as in Subsection~\ref{sec:actual-covariance-transport}.
+
+For completeness, the short-row comparison has the following two cases.
+At an address retained by the short-row rule the prescribed row is the
+actual conditional row, so its error is zero. At a discarded address
+the truncated common-cover row is zero. The cover-tail bound on the
+fine metric, followed by the actual tower transfer to the coarse
+metric, bounds the original row at that address by
+$Ce^{-ch_x}$. The same argument on a transport row gives the mean error.
+The constants $C,c>0$ now depend on the ordered pair of profiles.
+All periodic images are included in the discarded-address test, so
+there is no omitted wraparound term. The local Gaussian and guarded
+curvature estimates use these same paths, clips, tube, forest and tag;
+their coupling drift constant is the fixed one for this pair.
+Consequently the proof of
+\eqref{eq:reader-common-error-budget} applies without change and yields
+any prescribed error $H(s)^{-F}$ on $[s/2,s]$ for each pair. Take the
+maximum of the three thresholds, rather than restricting the comparison
+levels to plateau interiors.
+
+These are errors on one joint Gaussian model for the finite reader
+family, as in Subsection~\ref{sec:ex-lattice-all-arity-reader-gaussian-model}.
+One can see directly that composition preserves this identification.
+For consecutive independent centered conditional noises $Z_i$ and
+actual linear transport maps $A_i$, substitution of
+$X_i=A_iX_{i-1}+Z_i$ gives recursively
+\[
+ \mu_i=A_i\mu_{i-1},\qquad
+ Q_i=A_iQ_{i-1}A_i^*+\operatorname{Cov}(Z_i).
+\]
+The tower transfer identity just used is the identity for these actual
+covariances. It holds step by step at a change of profile as well as
+inside a plateau. Each finite composition is therefore the joint law
+used in the polynomial integration, with all cross-covariances retained.
+No independent samples are chosen for the individual readers.
+
+The numerical polynomial errors can now be stated without an unnamed
+moment bound. Use the coefficient norm $|\cdot|_1$ of
+Subsection~\ref{sec:allarity-cumulant-comparison}. For slot polynomials of
+degree at most $D$, coefficient bounds $A$, and calibrated tails of norm
+at most $\xi$, its dimension-independent estimate is
+\[
+ \left|\mathcal W_{Q,\mu}\prod_{i\in I}H_i
+       -\mathcal W_{\rm free}\prod_{i\in I}F_i\right|
+ \le \{n\xi(A+\xi)^n+A^n\varepsilon\}
+           [2B(nD+1)]^{nD},
+\]
+where $B\ge1$ bounds all mean and covariance entries and
+$\varepsilon$ bounds the actual/free mean and covariance differences.
+The actual/short one-step difference uses exactly the same bound with
+$\xi=0$ and $\varepsilon=H^{-F}$ from the preceding paragraph.
+For the coefficient polynomial of all subset moments, multiplication
+by $2^n$ bounds the coefficient norm of the difference. On a ball
+$|q-1|_1,|q'-1|_1\le M$, taking its finite logarithm costs at most
+$\sum_{a=1}^nM^{a-1}$. These explicit bounds, and the
+product estimate \eqref{eq:allarity-vertex-product} for calibration,
+are the polynomial difference prices referred to above. All their
+parameters are fixed before choosing $F$. Their powers of $H$ can
+therefore be absorbed by that choice, with the required strict margins.
+The low-grade calibration itself is the common selected reading, not
+an independent choice made in this estimate.
+
+The remaining radius and truncation tests also follow from strict
+power comparisons. At arity $n$ and degree $D$, set
+$\lambda_{n,D}=1/[16(nD+D+1)]$ and reserve the reader size
+$H^{\lambda_{n,D}}$. For any fixed halo $Q$,
+\[
+ 16QB(x)T(x)\le H^{\lambda_{n,D}}\le H,
+ \qquad
+ 6\dim(\mathfrak g)(4QB(x))^2
+       \frac{T(x)^2}{3\sqrt{x}}\le H^{-F}
+\]
+uniformly on the half-band, eventually. The first assertion is
+\eqref{eq:trace-submonitor}; the second follows by taking logarithms,
+since its left side is $x^{-1/2+o(1)}$. The truncation defect for a
+polynomial of coefficient norm $w$, degree $r$, entry bound $H$ and
+entry error $\varepsilon$ is at most $wrH^r\varepsilon$, by the
+same product telescoping calculation. For the linear and quadratic
+products of transported insertions, the coefficient discrepancies
+are bounded respectively by
+\[
+ f_1=H^{z+2}\varepsilon,\quad
+ f_2=H^{2z+2}\varepsilon,\quad
+ f_1+f_2+2H^{z+1}f_1.
+\]
+Indeed each insertion has coefficient allowance $H^z$, its transport
+cost is at most $H$, and the difference of the two transports costs
+one further factor $H\varepsilon$. Telescope a product of two such
+insertions to obtain the last term. Multiplying these expressions by
+$[2H(2D+1)]^{2D}$ and adding the truncation defect is another fixed
+power of $H$ times $\varepsilon$. Enlarge $F$ so it is at most
+$H^{-3/2}$. The analogous finite partition sums at arities $n\le u$
+are paid in exactly the same way using their displayed coefficient
+norm bounds; their degrees and numbers of terms are fixed before $F$.
+Finally, with $v=\exp(-a\mathrm{hot}(x)^2)$,
+\[
+ e^{a\mathrm{hot}(x)^2}v^2+C H^{-2}
+       =v+CH^{-2}\le H^{-1}
+\]
+for every fixed support conversion constant $C$ on a tail. Thus neither
+the Gaussian truncation tests nor the quadratic tests introduce a new
+analytic hypothesis after the actual reader comparison is supplied.
+
+There are also fixed covariance-transport and station prices. Let
+$A\ge1$ be the maximum of the transport multipliers of the three
+ordered profile pairs, and let $C_0$ bound their fixed low-order
+covariance and coefficient constants. Put
+$\lambda=\min_{n\le u}1/[16(nD+D+1)]>0$.
+Strengthen the block floor to
+\[
+ 2(b+2)\log A\le\lambda\log L.
+\]
+For the permitted comparison length
+$h\le\lceil(b+2)\log H/\log L\rceil$, this implies
+$2^dA^h\le H^\lambda$ eventually: its logarithm is at most
+$\lambda\log H/2+\log A+d\log2$.
+Also $C_0\le H^\lambda$ and $C_0\le H^{1/4}$ eventually.
+These inequalities pay the finite train of covariance derivatives
+and its two endpoint bounds, with both profiles retained; they are
+not a new covariance identity. If the chosen window includes the
+additional $O(\log\log s)$ cover margin, its contribution to
+$h\log A$ is $o(\log H)$ and is absorbed by the same strict margin.
+The finite Haar station price $c_j$ is paid by
+$c_j\le\log H/(16u)$, because $\log H\to\infty$.
+Likewise every fixed profile column bound is at most $H^\eta$ for
+its prescribed positive exponent $\eta$. The profile-order condition
+$D+1\le p_{j-1}$ is kept explicitly in the active grade menu below.
+
+The remaining elementary readout inequalities use
+$1\le T\le H-1$, $[2T(2D+1)]^{2D}\le H$,
+$C[2T(2)]\le H$ and $C+H^{-F}\le H$ for fixed $C$;
+all follow from \eqref{eq:trace-submonitor}.
+The number of comparison steps is $O(\log H)$, hence at most $H$.
+For the quadratic coefficient allowance take
+$2H^{2z+2}$, which dominates
+$H^{2z+1}+(H^{z+1})^2$. The remaining marked finite-log difference
+has the already proved polynomial price times $H^{-F}$, and the
+support and gas prices are those above. This verifies the scalar
+readout tests together with the fixed covariance and station prices.
+
+The endpoint re-expression also has the following uniform preliminary
+budget. Put $\rho=H/\sqrt s$, $\phi=\mathrm{hot}(s)/\sqrt s$
+and $\delta=s^{-11/10}$. For fixed path rate $\sigma>0$, path
+majorant and support exponent, its lost-support allowance is bounded
+by a fixed multiple of
+\[
+ W(B)\{s e^{-\sigma B/4}+H\rho^2
+                       +s(\rho^3+\rho^4)+\delta\}.
+\]
+Indeed the four summands are respectively the long-path tail, the
+quadratic loop term (whose coefficient is at most $2H$), the cubic
+and quartic path terms, and the inherited additive term. Their fixed
+support factors are absorbed in the constant. This expression is
+$s^{-1/2+o(1)}$, hence at most $H^{-A}$ for every prescribed $A$,
+uniformly for physical couplings in $[s/2,2s]$. Together with the
+already bounded forced and new-flag prices this pays the endpoint
+allowances at $H^{-3}$, and makes their rooted sum times $Z(B)$
+less than one.
+
+The remaining endpoint conditions are direct: $\rho\le1$,
+$2\phi\le\rho$, $C\le B$, $B\ge8$, $\delta\le1$ and
+$\mathrm{hot}(s)\ge4$ eventually. For the fixed clip relaxation
+constant $c>0$, $\phi e^{B/c}\ge2$, since $B$ grows like
+$(\log s)^4$. The fixed support conversion inequalities are paid by
+$B/C\to\infty$. Finally choose
+$0<a_{\rm coast}\le\operatorname{linear}(\mathrm{clip})/20$.
+For $\beta\ge s/2$ this gives the required tail-energy payment
+\[
+ 2a_{\rm coast}\mathrm{hot}(s)^2
+ \le\frac{\beta\operatorname{linear}(\mathrm{clip})}{5}\phi^2.
+\]
+These statements verify the preliminary endpoint budget for the
+actual re-expression, before using its marked change of weights.
+
+\subparagraph{Changing the marked budget at the endpoint.}
+We spell out the old-to-new marked support payment as well. Let the
+old budget radius be $C=C(s)$, the new radius be $B=C^2$, and let
+$\theta>0$ be the original support exponent. Fix $e\ge\theta$,
+an old marker radius $r_0=s^{-a/2}$ with $a\ge0$, a new radius
+$r=H^f$ with $f\le0$, and a desired suppression
+$\Gamma=(g+8)\log H$. Put $u_0=(a/2)\log s$. Then
+\[
+ r\le1=e^{u_0}r_0,\qquad
+ 100000C(e+2)\le B\theta/2,\qquad
+ 64(u_0+\Gamma+100000(e+2))\le C\theta/2
+\]
+eventually. The last two follow from $C\sim(\log s)^2$ and
+$\log H=o(\log s)$. The same argument gives
+$100000C\,2(e+2)\le B\theta$.
+
+Here is the resulting support inequality, rather than just the choice
+of its parameters. Suppose a source support $X$ contains $m\ge2$
+marked sites with pairwise lattice separation at least $C^2$ (the
+old budget's squared separation test). Write $N_C(X)$ for its
+connected cover number at radius $C$. The separated-site counting
+bound gives $Cm\le64N_C(X)$, and the cover enlargement bound gives
+\[
+ (e+2)N_B(X^{+8})\le100000(e+2)+\frac\theta2N_C(X).
+\]
+Using $m\ge1$, the preceding three inequalities imply
+\[
+ m u_0+(e+2)N_B(X^{+8})
+       \le-\Gamma+\theta N_C(X).
+\]
+Exponentiating therefore proves
+\begin{equation}\label{eq:trace-endpoint-marked-budget}
+ r^m e^{(e+2)N_B(X^{+8})}
+ \le e^{-\Gamma}r_0^m e^{\theta N_C(X)}.
+\end{equation}
+Multiplying by each nonnegative original coefficient majorant and
+summing at its original marked root preserves this inequality.
+Absolute summability is preserved by domination. Thus this is a
+change of weights on the actual source alphabet, not the selection
+of a different marked expansion. The separation test is precisely
+where the pair-support payment is used. In the chart application it
+is paid on the same chart census as follows. On a fixed compact
+set of distinct-point configurations, the minimum separation is a
+positive number $c$. For arcs at least $b>0$, convergence of the
+tested coordinates gives lattice separation at least
+$(c/2)H^b$ eventually. Since $C^2=o(H^{b/2})$, this exceeds $C^2$;
+the periodic no-wrap room in the chart geometry gives the same
+bound for periodic distance, uniformly in the permitted periods.
+The original marked expansion is retained in the endpoint
+re-expression; this change of weights does not construct that
+expansion. One-letter terms retain
+their separately paid local ticket.
+
+We also record the resulting error prices. Set $y=H^{-8}$,
+$E=e^{100000(e+2)}$, and $w=e^{-H^{1/5}}$. For a source halo
+$X$ of radius $QB$, the cover numbers of $X$ and $X^{+8}$ are at
+most $(2Q+1)^4$ and $(2Q+3)^4$, respectively. Consequently their
+support weights are bounded by fixed constants $A_0,A_1$. Define
+\[
+ d_s=H^{-g-8}+Ee^{-\theta C/2}H^{-8},\qquad
+ t_s=W(B)(3A_1H^{-8}+d_s),
+\]
+\begin{align*}
+ m_s&=83521e^{100000(e+1)}w
+       +W(B)EH^{-8}\sqrt w+W(B)H^{-g-8},\\
+ b_s&=(8B+1)^4e^{-a_{\rm coast}\mathrm{hot}(s)^2}
+                        e^{(e+1)9^4}.
+\end{align*}
+These are respectively the lost old-support price, the enlarged
+rooted price, the inherited forced price, and the new flag-site
+price. They are obtained by the marked weight change
+\eqref{eq:trace-endpoint-marked-budget}, the cover enlargement, and
+the endpoint re-expression; all use the original coefficient
+majorants. For every fixed $A>0$,
+$Ee^{-\theta C/2}H^{-8}=o(H^{-A})$,
+$w=o(H^{-A})$ and $b_s=o(H^{-A})$.
+Also $W(B)=H^{o(1)}$. Thus, for $D\ge g+4$,
+\[
+ H^{-D-8}A_0+d_s\le H^{-g},\qquad
+ 2H^{-3}+t_s+m_s+b_s\le H^{-1}
+\]
+on a common tail. The first follows from the strict gaps
+$-D-8<-g$ and $-g-8<-g$; the second from $g\ge6$ and
+$-8<-1$. Finally $Z(B)H^{-1}\le1$ and
+$e^{H^{-1}}-1\le1$ follow from the same strict power comparison.
+This pays the endpoint's marked budget, in addition to its
+unmarked re-expression, uniformly in the ambient torus.
+
+\subparagraph{The original mixed-grade marked expansion.}
+The original marked expansion used in the endpoint change of weights
+is supplied on the same public family, not an additional input to the
+chart construction. Retain $C_R$, its transfer family $S_R$ and its
+stored doors $D_R$. Proposition~\ref{prop:ex-c02-selected-record}
+supplies their common service record. For the all-modes assertion used
+below, retain specifically the complete finite-menu push identity of
+Subsection~\ref{sec:finite-menu-history-handoff}, on the actual doors
+of Theorem~\ref{thm:selected-retention-public}. Its exponential and
+forced gas include every coefficient of the finite census algebra.
+Subsection~\ref{sec:local-transfer} therefore applies to that entire
+polynomial; no all-modes identity is inferred from an identity of
+singletons alone. The path and tube data are those
+of Proposition~\ref{prop:ex-lattice-selected-course-binding}; the
+original representations and their lawfulness are those retained in
+Subsection~\ref{sec:public-run-binding}.
+
+Fix a finite census of marked slots $V$, allowing different grades
+$d_a$ and labels $v_a$ at its slots. The census includes the prescribed
+signed copies and conjugates. Choose $k<N$ with $t_R(d_a)\le k$ for
+all $a$. Let $o_i(a)$ be the migrated lattice sites and $g_a$ their fixed
+motions. Require the census occupancy and separated-origin tests at
+$k$, and choose $x>0$ such that
+\begin{equation}\label{eq:trace-original-marked-payment}
+ x\,\operatorname{paid}_{d_a,k,N,p}(v_a)
+                   \le\zeta_{d_a,k}\qquad(a\in V).
+\end{equation}
+These are the original chart census and its label payment, before the
+endpoint change of budgets. In particular they are not inferred from
+an estimate on the new raw polynomial.
+
+Let $q_N$ be the terminal birth polynomial: its coefficient at an
+allowed mode $I$ is the terminal Wilson density times
+$\prod_{a\in I}O_{v_a}(o_N(a))$, with the indicated motions. Define
+$q_i$ by the actual Wilson pushes from $N$ down to $i$. Its terminal
+coefficients are continuous on the compact configuration space,
+hence integrable; the selected transition kernels preserve slice
+integrability and the exact mode integrals. The terminal birth
+identity in Subsection~\ref{ex-selected-birth-receipt} identifies this
+$q_N$ with the polynomial made from the stored initial observables.
+Consequently its backward flow is exactly the polynomial of their
+original density insertions on $C_R$.
+
+The service proof works for these mixed grades without replacing them
+by one common grade. For each slot $a$ use its own transfer sequence from
+Proposition~\ref{prop:selected-music}, its own height bound and its
+own allowance $\zeta_{d_a,i}$. All these transfer sequence families have the same
+background representations and doors. Set $w_k(a)=x$ and
+$w_{i+1}(a)=\phi_iw_i(a)$. The adjacent affordability inequality
+\[
+ \phi_iL_i^{d_a}\Gamma_{i+1}\zeta_{d_a,i}
+                 \le\zeta_{d_a,i+1}
+\]
+propagates \eqref{eq:trace-original-marked-payment} separately for
+each slot. The positive weights, occupancy and separation propagate
+by the common migration argument of
+Subsection~\ref{ex-centered-construction}. Thus the per-label response
+construction there applies to every $a$, with its own degree and the
+same transition at each step. Combine the resulting responses using
+the finite-census backward propagation. Its proof uses only these
+slotwise inequalities and the common support geometry, so it applies
+to this finite family of possibly different grades. At the opening
+level $k$, the marched weight is again $x$, and, since $k<N$, the
+propagated support exponent is the support exponent $\theta_k$ of
+the actual representation there. The resulting ordinary and forced
+multi-marker families have reserve one.
+
+Here is explicitly the local form of that conclusion. There are
+ordinary source terms $A_\nu$ and forced source terms $K_\lambda$,
+with supports $X_\nu,Y_\lambda$, marker inventories
+$I_\nu,J_\lambda$ of cardinality at least two, and nonnegative
+majorants $a_\nu,b_\lambda$, such that for every marked root $a$
+\[
+ \sum_{\nu:a\in I_\nu}a_\nu e^{\theta_k N_{B_k}(X_\nu)}\le1,
+ \qquad
+ \sum_{\lambda:a\in J_\lambda}
+             b_\lambda e^{\theta_k N_{B_k}(Y_\lambda)}\le1.
+\]
+The majorants include the marker tolls $x^{|I_\nu|}$ and
+$x^{|J_\lambda|}$ in the corresponding healthy value or forced
+coefficient norm. These are sums at the marked root, not at an
+arbitrary spatial site. The support terms are obtained by grouping
+the served ordinary and forced coefficients by their full supports
+and marker inventories. At fixed finite volume these address sets
+are finite; if there are countably many original labels at one
+address, sum them absolutely before grouping. The displayed
+majorants justify this operation and retain the reserve one.
+
+Choose the unmarked forced presentation of the actual lawful
+representation at $k$. Insert the singleton coefficients supplied by
+its stored calibrated fields and the grouped multi-marker terms just
+constructed. The ordinary and forced recombination identity of
+Subsection~\ref{sec:allarity-planted-compiler}, applied coefficientwise
+in the finite census algebra, gives exactly $q_k$, with the same
+unmarked forced gas and scalar normalization. Its singleton identity
+is the stored field identity; every higher mode is the corresponding
+coefficient of the served polynomial. Thus this is an expansion of
+the original marked density, not merely a bound on its integral.
+The endpoint re-expression retains that density and its supports;
+\eqref{eq:trace-endpoint-marked-budget} now changes its weights with
+the proved suppression, on precisely these $A_\nu,K_\lambda$.
+No family, door, calibration or partition denominator has been
+reselected.
+
+\subparagraph{Paying the census hypotheses on these charts.}
+We verify the geometry and label payment in the preceding construction;
+they are not additional hypotheses on the selected family. Write
+$s=\widehat\beta_k$, $H=\exp((\log\log s)^2)$ and
+$C=\lceil(\log s)^2\rceil$, the original budget radius. A census
+slot is a pair $(c,a)$ consisting of a replication cell and one of the
+finitely many insertion positions. Its position is
+\[
+ o_k(c,a)=\omega_c z_a+t_c,
+\]
+with the cell's fixed signed isometry $\omega_c$, translation $t_c$,
+and the chart's lattice position $z_a$. Conjugation changes the
+observable, not this position. The signed copies here are the copies
+assigned to their cells; they are not extra slots stacked at the same
+site.
+
+Within one cell, the signed isometry preserves periodic distance.
+On the fixed compact distinct-point test set, the separation argument
+above gives distance at least $C^2$ between different $z_a$, uniformly
+for the admitted arcs and periods. For different cells, let $D$ be
+their lattice spacing and $c_c$ their centers. The actual chart depth
+bound puts every $o_k(c,a)$ within distance $D/8$ of $c_c$, while
+different centers have distance at least $D$. The paid depth surplus
+gives $D\ge C^{10}\ge2C^2$ eventually. The triangle inequality
+therefore gives
+\[
+ \operatorname{dist}(o_k(c,a),o_k(c',a'))
+             \ge D-D/8-D/8=3D/4\ge C^2.
+\]
+These are periodic distances: the chart depth bound places each
+within-cell difference inside the injectivity range, and the cell
+centers are the actual periodic lattice embeddings. Thus the full
+census, including all signed copies, is injectively placed. Every
+site has occupancy at most one, hence at most the purchased
+occupancy $r_k\ge1$. Every allowed census mode inherits the same
+$C^2$ separated-origin test. Migration is the exact parent/embedding
+identity for these cell positions, so it is the migration used by
+the common service.
+
+For the label payment let $g_a$ be the fixed requested label of grade
+$d_a\le d$, and let $v_a$ be its calibrated preimage under the common
+chart reading $T$. Put $\rho=H^b$ for the chart magnification and
+$\lambda=\beta_{N,p,k}^{-1/2}/\theta_k$ for the original shrink
+factor. The exact solving equation is
+\[
+ \Delta(\lambda)Tv_a=\operatorname{weight}_\rho g_a.
+\]
+Here $\Delta$ scales a coordinate by its colour-factor count and
+$\operatorname{weight}_\rho$ scales by its spatial grade. The actual
+coupling bound gives $\lambda^{-1}\le2H$. If $q_a$ is the largest
+colour-factor count in that finite frame, its coordinate formula
+therefore gives
+\[
+ |Tv_a|_1\le(2H)^{q_a}\rho^{d_a}|g_a|_1.
+\]
+For large $k$, the quantitative reading estimate gives
+$\operatorname{paid}(v_a)=|Av_a|_1\le2|Tv_a|_1$.
+Set $S_a=q_a+2\le d_a+2$. Absorbing the fixed number
+$2^{q_a+1}|g_a|_1$ in one factor $H$ proves
+\[
+ H\operatorname{paid}(v_a)\le H^{bd_a+S_a}.
+\]
+The selected profile's column count satisfies $1\le\Gamma_k\le H$
+by the paid column bound. Hence the actual column-weighted price
+$M_a=\Gamma_k\operatorname{paid}(v_a)$ satisfies the same inequality
+$M_a\le H^{bd_a+S_a}$. The fixed panel currency $f$ was chosen with
+$f+bd_a+S_a\le-8$: indeed $b\le c$, $d_a\le d$ and
+$S_a\le d+2$ give $bd_a+S_a\le cd+d+2$, the credit already used
+in its choice. Thus
+\[
+                    H^f M_a\le H^{-8}.
+\]
+This is a payment for the original calibrated coefficient norm,
+not merely the healthy raw-polynomial norm. Fixed signed motions
+and conjugates preserve the corresponding payment; equivalently
+include their finite orbit in the initial finite maximum.
+
+Let $w_a=\deg(F_{d_a})+4$, so the stored grade allowance is
+$\zeta_{d_a,k}=s^{-w_a}$. Choose once
+$z\ge\max_{d'\le d}2(\deg(F_{d'})+5)$ and set
+$x=s^{-z/2}>0$. This is the generator bound through grade $d$
+used in the chart purchase. Since $f$ is fixed,
+$H^{-8-f}\le s$ eventually. The preceding inequality gives
+$M_a\le s$ and consequently
+\[
+ x\operatorname{paid}(v_a)\le xM_a
+       \le s^{-z/2+1}\le s^{-w_a}=\zeta_{d_a,k}.
+\]
+The finite maximum makes the threshold common to all requested
+labels, grades and panels, while the estimates were already uniform
+in $N,p$ and the chart census. Finally $k\ge\max_a t_R(d_a)$ holds
+on a tail. Thus every hypothesis of the mixed-grade marked expansion
+is paid on these very charts and the actual radius $x=s^{-z/2}$
+used by their endpoint budget change.
+
+\subparagraph{The fixed-stage purchase interface.}
+Write $p_j$ for the order of the stage-$j$ profile and assume $p_j\to\infty$.
+For each $d$ choose three base arcs $b_{d,i}\ge d+6$, $i=0,1,2$, satisfying
+\eqref{eq:three-checks}, with arity $n_d=\operatorname{trays}(d)\ge2$.
+The explicit choice after that equation gives such arcs. Purchase the
+three panels initially at the larger arcs $b_{d,i}+1$. Apply the preceding construction to the original funded path, tube and
+chart data, with the common selected stamp and calibration. The local
+panel purchase has the following interface.
+\begin{enumerate}
+\item The panels have one common Taylor order $\vartheta_d\ge d$ and,
+ at each stage $j$, one common polynomial reading order $Q_{d,j}$.
+ Their remaining constants, including currencies, are fixed before
+ choosing a scale schedule. If $\vartheta_d+1\le p_{j-1}$, there is a
+ block floor $\mu_{d,i,j}$ such that the local comparison estimates
+ apply whenever both adjacent block lengths $L_{j-1},L_j$ exceed
+ $\mu_{d,i,j}$. The Coulomb estimates for the same panels also hold.
+\item After those lengths have been fixed, one may decrease the positive
+ local accuracy parameter of each panel, preserving its arc, Taylor
+ order and reading order, so that all its local capacity estimates
+ hold for every sufficiently large coupling. This threshold is chosen
+ at fixed $(d,i,j)$, before the background history and its finite volumes.
+ The estimates are uniform over every reduced arc in
+ $[0,b_{d,i}+1]$. They supply the finite-volume legacy costs whenever
+ the chart window has the dilation, depth and bracket of (F1), with
+ coupling between $3\widehat\beta_k/4$ and $\widehat\beta_k$ throughout
+ that window. They include the adjacent-stage estimates for each pair
+ of stages in $\{j-1,j\}$ that can occur on that window.
+\item On any one resulting background history, at fixed $d$ and common
+ Taylor order $\vartheta_d$, the local chart and stamp construction is
+ valid at every sufficiently large level. Its threshold is uniform
+ over the three panels and over reduced arcs. The stamp consists of its raw polynomial, its Wick polynomial and
+ its linear reading, with degree and coefficient bounds and a local
+ ticket. The representation enters this ticket only through its budget
+ radius and healthy threshold; its halo is $Q_{d,j}$ times that radius.
+ The covariance and the paid label norm are those of the one selected
+ history. These data can therefore be reused in all three panels, as
+ checked below; independently chosen readings need not coincide.
+\end{enumerate}
+The capacity and actuation assertions here are the conclusions of the
+fixed-stage construction above, applied to the named original funded
+data. They are not inferred from the scale-selection argument or from
+existence of three invertible maps. The common half-accuracy reading
+and calibration are those of
+Proposition~\ref{prop:rank-selected-tested-readout}; the quantitative
+invoice is Lemma~\ref{lem:trace-quantitative-invoice}. The signed stamp
+must retain its reserved raw-polynomial and local-ticket constants on
+this same family.
+
+\begin{proposition}[One request for all grades and offsets]
+\label{prop:trace-joint-chart-purchase}
+Use the preceding fixed-stage purchases on the common profiles, together with
+the common paid scale construction of
+Subsection~\ref{sec:common-scale-selection}. There is one enlargement of its
+block floors, entry thresholds and sublinear comparison windows such that
+every history on the resulting common calendar has the following property.
+Here paying the requirements includes the constant-stage comparison
+intervals of \eqref{eq:common-long-plateau}, not merely the block and
+entry inequalities.
+For every fixed $d$, at every sufficiently large level $k$, the three
+panels are available simultaneously at arcs $b_{d,i}+t$ for every
+$t\in[0,1]$, with fixed currency and Taylor order. All their charts use
+one reading at each grade through $d$. The background history and its
+requirements are chosen before any prescribed null sequence of radii.
+\end{proposition}
+\begin{proof}
+\emph{Active grades and block lengths.}
+Set, with the predecessor $0-1$ interpreted as $0$,
+\[
+ K_j=\{d\le j:\vartheta_d+1\le p_{j-1}\},\qquad
+ M_j=\max\bigl(\{0\}\cup
+       \{\mu_{d,i,j}:d\in K_j,\ 0\le i\le2\}\bigr).
+\]
+Each $K_j$ is finite. For every fixed $d$, the convergence $p_j\to\infty$
+shows that $d\in K_j$ for all sufficiently large $j$; no monotonicity of
+$p_j$ is needed for this assertion. Enlarge the block floor at stage $j$
+by $\max(M_j,M_{j+1})$, and take a nondecreasing odd sequence above the
+enlarged floors, as in the common construction. If $d\in K_j$, then
+$L_j\ge M_j\ge\mu_{d,i,j}$ and
+$L_{j-1}\ge M_j\ge\mu_{d,i,j}$, including $j=0$ by convention.
+Thus one choice of block lengths pays the two adjacent lengths for every
+active panel. The maximum with $M_{j+1}$ is essential at a stage change.
+
+\emph{Entry thresholds.}
+Now apply item 2 of the fixed-stage purchase at these actual lengths. Denote by
+$h_{d,i,j}$ a coupling threshold beyond which its conclusion holds for
+the resulting, trimmed panel. The trimming leaves $\vartheta_d$ and
+$Q_{d,j}$ unchanged, so the common-reading condition is retained.
+For inactive triples leave the accuracy parameter unchanged; all these
+choices are made before choosing any history. Let
+$x(s)=\beta_*+s_Gs$. At a fixed stage $j$, increase the scale-entry
+threshold until $x(s)\ge h_{d,i,j+1}$ for every
+$d\in K_{j+1}$ and $i=0,1,2$. This is possible because $s_G>0$ and
+there are finitely many demands. Include also the finitely many local
+capacity and geometric thresholds described below and all the previous
+entry thresholds. Taking their maximum preserves every conclusion.
+
+\emph{Additional trace and shell payments on the same calendar.}
+The following finite-stage requirements are included before this calendar
+is realized. Let $N_j$ be the nondecreasing occupancy bound of
+Subsection~\ref{sec:common-observable-purchases}. Let $\mathfrak C_j\ge1$ be any fixed
+finite maximum of the grade-five column budgets at stages through $j+1$.
+Increase the coupling entry at stage $j$ to include
+\[
+ \exp\!\exp\!\bigl(\max\{N_{j+1},L_{j+1},\mathfrak C_j,1\}\bigr).
+\]
+Such an increase is allowed by \eqref{eq:common-allstage-payment}.
+At a physical level $m$ put $j=J(m+1)$. Since the stage rises by at
+most one per step, this gives
+\begin{equation}\label{eq:trace-extra-stage-payment}
+ N_{J(m+1)},\ N_{J(m+2)},\ L_{J(m+1)},\ \mathfrak C_j
+       \le\log\log\widehat\beta_m.
+\end{equation}
+In particular each of these quantities is at most
+$\log\widehat\beta_m$ eventually. This is a choice of the common
+entry thresholds, not a subsequent change to an extracted history.
+
+For each of the finitely many active shape strengths $\mu>0$ at stage
+$j$, further require, for every $\beta$ beyond that entry,
+\[
+ \frac{\mu\exp(2(\log\log(\beta+s_G\log L_j))^2)}{\log\beta}
+       \ge j.
+\]
+The requirement holds eventually at fixed $j,L_j,\mu$: with
+$u=\log\log\beta$, the logarithm of the ratio is
+$2u^2-u+\log\mu+o(1)$, which tends to infinity. A finite maximum
+pays all active shapes, including the actual shape on the transition
+at that stage. Thus the estimate applies also to its possibly varying
+strength $\mu_m$; since $J(m+1)\to\infty$, its actual flagged price
+\[
+ y_m=2\exp\{-\mu\Delta_{G,L_j}(\widehat\beta_m)^2/16\}
+\]
+is smaller than every negative power of $\widehat\beta_m$ eventually.
+
+Here is the resulting numerical transfer check. Write
+$x=\widehat\beta_m$, $x_+=\widehat\beta_{m+1}$ and
+$B_m=\lceil(\log x)^2\rceil$. By
+\eqref{eq:trace-extra-stage-payment}, $L_j\le\log\log x$, so
+$x_+/x\to1$. Both adjacent occupancies are at most $\log\log x$,
+and $\mathsf S(B)=e(2(16B+9))^4=O((\log x)^8)$ at either
+adjacent radius. Thus, with $d_m=x_+^{-2}$,
+\[
+ T_m=o_m\mathsf S(B_{m+1})d_m+4d_m=o(x_+^{-1}),\qquad
+ (2B_m+1)^4(y_m+o_m\mathsf S(B_m)d_m)=o(1).
+\]
+It follows that $T_m+e^{T_m}T_m\le x_+^{-1}$, the latter
+site sum is at most $1/2$, and
+$\exp(y_m+o_m\mathsf S(B_m)d_m)-1\le1$ eventually. The same
+calculation with the fine occupancy proves the adjacent version.
+These are precisely the coarse and fine numerical duties displayed in
+Subsection~\ref{sec:ex-lattice-actual-stress-shell-nodes}. They do not by
+themselves prove the separate finite-mask or density identities there.
+
+\emph{One comparison window.}
+For a fixed block length $L>1$, nonnegative arc $b$, and sufficiently
+large $x$, put
+\[
+ \mathcal M(x)=\exp((\log\log x)^2),\quad
+ C(x)=\lceil(\log x)^2\rceil,
+ \quad
+ h_{L,b}(x)=
+ \left\lceil\frac{(b+2)\log\mathcal M(x)}{\log L}\right\rceil
+ +\left\lceil\frac{10\log C(x)}{\log L}\right\rceil.
+\]
+Extend this as any nonnegative integer-valued function below its large-$x$
+domain. For fixed $L,b$,
+$h_{L,b}(x)=O(1+(\log\log x)^2)$, hence
+$h_{L,b}(x(s))/s\to0$. Indeed
+$C(x)\le2(\log x)^2$ eventually, so
+$\log C(x)\le\log2+2\log\log x$, and rounding adds at most two.
+If $w_j^0(s)=o(s)$ is the old stage-$j$ window, replace it by
+\begin{equation}\label{eq:trace-joint-window}
+ w_j(s)=w_j^0(s)+
+   \sum_{d\in K_{j+1}}\sum_{i=0}^2
+           h_{L_j,b_{d,i}+1}(x(3s)).
+\end{equation}
+The sum is finite at fixed $j$, so $w_j(s)=o(s)$. No uniform bound in $j$
+is required by the common scale construction. Each summand is bounded
+by the whole nonnegative window, which therefore pays every active
+panel separately. The construction preserves the previous minimum
+physical length and all previous windows and entry thresholds.
+
+For completeness, this window also protects a chart whose level has
+advanced beyond the paid stage-$j$ interval. Take $i_0=k_{j-j_*}$, the center of the constant-stage interval
+\eqref{eq:common-long-plateau}, chosen with the enlarged entry threshold
+and window. Thus $[i_0,i_0+w_j(s_{i_0})]$ has stage $j$.
+Write $s=s_{i_0}$, and let $k$ be a later level with $J(k)=j+1$
+and $t=s_k$. Put $H=h_{L_j,b}(x(t))$, where $b=b_{d,i}+1$.
+Increase the stage-$j$ entry threshold beforehand so that, for every
+later $t$,
+\[
+ h_{L_j,b}(x(t))\log L_{j+1}\le t/2,\qquad
+ s_Gh_{L_j,b}(x(t))\log L_{j+1}\le x(t)/4.
+\]
+These inequalities are possible by the sublinear bound just proved.
+If $t\le3s$, monotonicity of
+$h_{L_j,b}$ on its large-$x$ domain gives
+$H\le h_{L_j,b}(x(3s))\le w_j(s)$, and the end of the paid interval
+lies strictly before $k$. Hence $H\le k-i_0$. If $t>3s$, use the first of these inequalities. Since block lengths are nondecreasing and the stages
+from $i_0$ to $k$ are $j$ or $j+1$,
+$t-s\le(k-i_0)\log L_{j+1}$. Now $t-s>2t/3>t/2$, so again
+$H\le k-i_0$. Thus the backward depth paid by $H$ cannot leave the two
+stages. Write $d_1,d_2$ for its first and second summands. All block
+lengths between $i_0$ and $k$ are at least $L_j$. Hence, for every
+reduced arc $0\le u\le b$,
+\[
+ \frac{a_{k-d_1}}{a_k}\ge L_j^{d_1}\ge\mathcal M(x(t))^{u+2}.
+\]
+The middle level therefore satisfies $\ell\ge k-d_1$. Since
+$k-i_0\ge d_1+d_2$, the level $\ell-d_2$ is still at least $i_0$,
+and
+\[
+ \frac{a_{\ell-d_2}}{a_\ell}\ge L_j^{d_2}\ge C(x(t))^{10}.
+\]
+The root depth consequently satisfies $w\ge\ell-d_2\ge k-H$.
+This proves the dilation, depth and two-stage bracket. Since every block
+length on $[w,k]$ is at most $L_{j+1}$,
+\[
+ \widehat\beta_k-\widehat\beta_w
+   =s_G\log(a_w/a_k)\le s_GH\log L_{j+1}\le x(t)/4.
+\]
+Thus the second displayed entry inequality bounds the coupling decrease
+in both cases. This proves the
+$3/4$ plateau required in item 2 of the fixed-stage purchase, not merely the weaker $1/2$
+plateau used elsewhere. Include also the eventual monitor bound
+$\max(L_j,L_{j+1})\le\mathcal M(x(t))$ in the entry threshold.
+
+\emph{Offsets and common readings.}
+Fix $d$. Since the stage map diverges, $d\in K_{J(k)}$ for all large
+$k$. The preceding construction and item 2 of the fixed-stage purchase therefore give the
+legacy costs for all three panels, uniformly for every smaller
+nonnegative arc. Replace their arcs by $b_{d,i}+t$, $0\le t\le1$.
+Their lower bounds are preserved because $b_{d,i}\ge d+6$; their other
+data are unchanged. Intersect the finitely many eventual level sets
+for the three panels with the set supplied by item 3 of the fixed-stage purchase, and with
+$k\ge\max_{e\le d}\operatorname{ref}(e)$. The resulting tail is
+independent of $t$. Use the reading of panel $0$ for the chart maps.
+For another panel retain exactly the same raw polynomial, Wick
+polynomial and reading. The degree and coefficient bounds are unchanged.
+The halo is unchanged because $Q_{d,j}$ and the budget radius agree;
+the locality and healthy-set estimate are unchanged because the healthy
+threshold also agrees. Finally the covariance and paid label norm belong
+to the same history. Thus every clause of the stamp still holds, now
+for this panel's representation. Its individual actuation witness and
+this transported stamp certify the same chart. This is a reuse of one
+stamp, not an assertion that independently chosen stamps have equal
+readings. This proves
+simultaneous availability, rather than three unrelated chart choices.
+Every choice preceded the null sequence; the later interpolation and
+subsequence selection only query these already constructed panels.
+\end{proof}
 
 That theorem also requires a simple gauge group, the funded chart-control
 estimate, a bound on the generator through grade $d$, an index $l$ with
@@ -75,7 +1333,301 @@ The function $t\mapsto g_{b+t}(k)=a_km_k^{b+t}$ is continuous on
 $[0,1]$. The intermediate value theorem supplies the desired $t$.
 \end{proof}
 
-\subsection{Choosing scales and chart levels}
+\subsubsection{The fields of a chart witness}
+\label{subsec:ex-lattice-firesky-witness}
+
+The producers of the pairwise receipt use several fields of the
+finite-volume chart witness. We list them here, with the two scale
+definitions they require. We then prove three lemmas: the corrected labels
+solve their reading equation, the insertions lie inside the home chamber
+at the root depth, and the clock of
+Subsection~\ref{sec:common-scale-selection} supplies the dilation, depth,
+bracket and plateau. The lawful history (F3) is supplied by
+Corollary~\ref{cor:rank-trace-all-levels}, and the readings and stamps
+of (F5) by Proposition~\ref{prop:rank-selected-tested-readout}, under
+their stated funded construction hypotheses. In this subsection, $k$
+denotes the level of the chart and $\mu_k$ the monitor $m_k$ of
+\eqref{eq:ex-lattice-firesky-gap}. $J$ is the stage clock and $L_j$ are
+the block lengths of Subsection~\ref{sec:common-scale-selection}, and
+$c_k=\lceil(\log\widehat\beta_k)^2\rceil$ is the cover size of the clock
+at level $k$. The monitor is $\mu_k=\mathcal M_k$ of
+Subsection~\ref{sec:rank-root-normalization}, and $\widehat\beta_j$ is the
+clock coupling of Subsection~\ref{sec:common-scale-selection}.
+
+\subparagraph{Two levels attached to a chart.}
+Let the chart have base arc $b$, and put $m=\mu_k^b$. Its \emph{middle
+level} and \emph{root depth} are
+\[
+ \ell=\max\Bigl\{j\le k:\frac{a_j}{a_k}\ge m\mu_k^{2}\Bigr\},\qquad
+ w=\max\Bigl\{j\le\ell:\frac{a_j}{a_\ell}\ge c_k^{10}\Bigr\},
+\]
+with the convention $\max\varnothing=0$. Thus $w\le\ell\le k$. The middle
+cell of the chart is a cell of spacing $a_\ell$. The root tests and the
+chamber condition of the chart are taken on the centered tiling at depth
+$w$, whose cells are indexed by the sites of the level-$w$ torus.
+
+\subparagraph{The witness fields.}
+A chart witness at level $k$ with base arc $b$ supplies the following
+fields. Here $M$ is the marker allowance of the chart, $N>k$ and $p$ are
+arbitrary.
+\begin{enumerate}
+\item[(F1)] \emph{Allowance.} Four conditions hold:
+ \begin{itemize}
+ \item dilation: $m\mu_k^2\le a_\ell/a_k$, so the set defining $\ell$
+  is nonempty;
+ \item depth: $c_k^{10}\le a_w/a_\ell$;
+ \item wheel: $\min(L_{J(k)},L_{J(k)-1})\ge2$, where the clock factor of a
+  stage is its block length;
+ \item bracket: $J(k)-1\le J(j)$ for every $w\le j\le k$.
+ \end{itemize}
+\item[(F2)] \emph{Plateau.} $\widehat\beta_k/2\le\widehat\beta_j\le\widehat\beta_k$
+ for every $w\le j\le k$.
+\item[(F3)] \emph{Lawful history.} For each $N>k$ and $p$ there are
+ representations $P_j$ on the level-$j$ torus, $w\le j\le k$, along the
+ course of the chart. Each $P_j$ satisfies the suppositions of
+ Proposition~\ref{prop:rank-root-output-ticket}(2) at level $j$, with the
+ clip and row bound of the stage $\pi_{J(j)}$. Its budget radius is
+ $\lceil(\log\widehat\beta_j)^2\rceil^2$, and its threshold is
+ \[
+  \theta_{P_j}=\widehat\beta_j^{-1/2}\exp\bigl((\log\log\widehat\beta_j)^{3/2}\bigr),
+ \]
+ the clock's hatted coupling $\widehat\beta_j^{-1/2}$ at $j$ times the
+ healthy allowance $\exp((\log\log\widehat\beta_j)^{3/2})$. This is the
+ threshold of the representation itself. Once $\log\log\widehat\beta_j\ge1$ it is at most the clock
+ threshold $\theta_{\rm clock}(j)=\widehat\beta_j^{-1/2}\mathcal M_j$ of
+ Subsection~\ref{subsec:rank-root-clock-threshold}, in which the healthy
+ allowance is replaced by the monitor $\mathcal M_j$; the numerical
+ late-scale bounds there concern $\theta_{\rm clock}$.
+\item[(F4)] \emph{Ticket.} $T_M(\pi_{J(w)})\le\log\mu_k/(16M)$.
+\item[(F5)] \emph{Readings and stamps.} The level satisfies
+ $\operatorname{ref}(d')\le k$ for every grade $d'\le d$, where
+ $\operatorname{ref}$ is the reference level of
+ Subsection~\ref{sec:actual-rank-purchases}. This holds when the chart is an
+ output of the one-step construction, which covers all reference grades
+ through $d$, and in any case for all large $k$, since only finitely many
+ grades occur. For every grade $d'\le d$ there is a linear reading $T_{d'}$
+ of the grade-$d'$ label space with three properties:
+ \begin{itemize}
+ \item it fixes the reference unit;
+ \item it commutes with the real structure;
+ \item it satisfies the half-accuracy bound
+  $|a(v)-T_{d'}v|_1\le\frac12|a(v)|_1$, where $a=A_{k,N,p}$ is the
+  calibrated entry (primary-coordinate) map at level $k$ for $(N,p)$.
+ \end{itemize}
+ It also carries a stamp duty with the same reading: a bound, in the
+ halo of the readers, on the price of the insertions whose low-grade
+ reading is $T_{d'}$. This clause is supplied for the funded calibrated family by
+ Proposition~\ref{prop:rank-selected-tested-readout}; its hypotheses
+ concern the same raw polynomial and reading, not separate choices.
+\end{enumerate}
+By (F1), every level of $[w,k]$ lies in the stage $J(k)$ or $J(k)-1$. Hence
+$J(w)\ge J(k)-1$, and $w\to\infty$ as $k\to\infty$ because $J$ diverges.
+
+\subparagraph{Corrected labels.}
+Write $\sigma=\sigma_{k,N,p}=(\beta_{N,p,k}^{1/2}\,\theta_k)^{-1}>0$ for
+the shrink factor, where $\beta_{N,p,k}$ is the actual coupling of
+Subsection~\ref{sec:actual-rank-purchases} and $\theta_k=\theta_{\rm clock}(k)$
+is the clock threshold. Write $W_\rho$ for the linear map multiplying each
+coordinate of a label by $\rho$ to its position degree, and $S_\sigma$ for
+multiplication by $\sigma$ to the factor degree. Both act on the
+grade-$d'$ label space $V_{d'}$. By Lemma~\ref{lem:ex-lattice-firesky-solves}
+below, $T_{d'}$ is invertible. The \emph{corrected label} of a basis
+vector $e$ of $V_{d'}$ is
+\[
+ X_{N,p}e=T_{d'}^{-1}\bigl(S_{\sigma}^{-1}W_me\bigr).
+\]
+These are the linear maps $X^{(i)}_{N,p}$ of input (G2) in
+Subsection~\ref{subsec:trace-rounded-comparison}, for the chart selected at index
+$i$.
+
+\begin{lemma}[Corrected labels solve the reading equation]
+\label{lem:ex-lattice-firesky-solves}
+The reading $T_{d'}$ is bijective, and $X_{N,p}e$ is the unique label $v$
+with
+\begin{equation}\label{eq:ex-lattice-firesky-solves}
+ S_\sigma\bigl(T_{d'}v\bigr)=W_me .
+\end{equation}
+\end{lemma}
+\begin{proof}
+Since $\operatorname{ref}(d')\le k<N$ by (F5), the calibrated entry map
+satisfies the reference inverse estimate
+\eqref{eq:rank-reference-inverse} of
+Subsection~\ref{sec:actual-rank-purchases}, $|v|_1\le D_k|a(v)|_1$. With the
+half-accuracy bound of (F5), the argument given there shows that $T_{d'}$
+is injective, hence bijective. Next, $S_\sigma$ is invertible. So the
+equation has the unique solution $X_{N,p}e$; this is
+\eqref{eq:rank-common-lifts} with $\rho=m$.
+\end{proof}
+
+\subparagraph{Status.} Fields (F1)--(F5) are fields of the funded witness.
+For the clock of Subsection~\ref{sec:common-scale-selection} and all
+sufficiently large $k$, with the requests of
+\eqref{eq:rank-root-ticket-requests} included, (F1), (F2) and (F4) are
+proved below: by Lemma~\ref{lem:ex-lattice-firesky-clock-fields}, the
+remark after it, and Proposition~\ref{prop:rank-root-output-ticket}. The
+inputs listed elsewhere that these fields supply are:
+\begin{itemize}
+\item the allowance and the root-depth identification used in
+ Subsection~\ref{subsec:trace-rounded-receipt};
+\item the bracket property used after
+ Proposition~\ref{prop:rank-root-output-ticket};
+\item the ticket at the output level.
+\end{itemize}
+Corollary~\ref{cor:rank-trace-all-levels} supplies (F3) on the entire
+window, while Proposition~\ref{prop:rank-selected-tested-readout}
+supplies (F5), under their stated funded hypotheses. These local results
+do not replace the common all-grade purchase proved above.
+
+\begin{lemma}[Chamber interiority at the root depth]
+\label{lem:ex-lattice-firesky-chamber}
+Consider a chart at level $k$ with base arc $b$, middle level $\ell$ and
+root depth $w$. Let $x$ be fit for the chart: the grid configuration
+$z=a_k\lceil mx\rceil$ is coordinatewise separated and
+$|z_{c,\alpha}|\le a_\ell/8$ for $c=0,1$ and $\alpha=1,\dots,4$. Fix a grade
+$d$, and let $Z_d$ bound the coordinates of the finite stencil $S_d$ of
+the grade-$d$ insertions. Then, for every $N\ge k$ with
+\begin{equation}\label{eq:ex-lattice-firesky-chamber-mesh}
+ a_N(Z_d+2)<\tfrac38\,a_w ,
+\end{equation}
+every period $p$ and every grade-$d$ label, the insertion at the site
+$z_c$ ($c=0,1$) has every link of its stencil, including both endpoints,
+strictly inside the home chamber of the centered tiling at depth $w$. It
+is therefore in the chamber-local domain of that tiling. Condition
+\eqref{eq:ex-lattice-firesky-chamber-mesh} holds for all large $N$, with
+a threshold depending only on $w$ and $d$. In particular (G4) of
+Subsection~\ref{subsec:trace-rounded-comparison} holds with $w_i=w$ for
+the chart selected at index $i$.
+\end{lemma}
+\begin{proof}
+Measure positions in mesh steps of the level-$N$ lattice; since $N\ge k$,
+$a_k/a_N$ is an integer. The depth-$w$
+cell has an odd number $q=a_w/a_N$ of steps along each axis, as in the
+interiority argument of Subsection~\ref{ex-centered-construction}. Its home
+cell consists of the offsets $u$ with $|u_\alpha|\le(q-1)/2$ from the
+centre. Hence the site $z_c$ has integer
+offset $u=z_c/a_N$. By fitness, and because $w\le\ell$ implies
+$a_\ell\le a_w$,
+\[
+ |u_\alpha|\le\frac{a_\ell}{8a_N}\le\frac{q}{8}.
+\]
+A link of the stencil at $z_c$ has endpoints $u+s$ and $u+s+e$, with
+$s\in S_d$ and $e$ a unit vector. Each coordinate of an endpoint is at
+most $q/8+Z_d+1$ in absolute value. By
+\eqref{eq:ex-lattice-firesky-chamber-mesh},
+$Z_d+2<3q/8$. Hence
+\[
+ \frac q8+Z_d+1<\frac q2-1<\frac{q-1}2 ,
+\]
+so both endpoints lie strictly inside the home cell. The insertion is a
+bounded, measurable, gauge-invariant function of these links. It is
+therefore chamber-admissible, exactly as in the argument cited above.
+Finally, $a_N\to0$ while $a_w>0$ and $Z_d$ are fixed, so
+\eqref{eq:ex-lattice-firesky-chamber-mesh} holds for all large $N$. The
+threshold does not depend on $p$, on the label, or on the fit
+configuration.
+\end{proof}
+
+\begin{lemma}[The clock supplies the dilation, depth, bracket and plateau]
+\label{lem:ex-lattice-firesky-clock-fields}
+Let the clock be the one of Subsection~\ref{sec:common-scale-selection}, so
+that $\widehat\beta_m=\beta_*+s_Gs_m$, $a_m=e^{-s_m}$,
+$s_{m+1}=s_m+\log L_{J(m+1)}$, $L_j\ge3$, and $J=j_*+J_0$. Let the
+monitor be $\mu_k=\exp((\log\log\widehat\beta_k)^2)$ and the cover size
+$c_k=\lceil(\log\widehat\beta_k)^2\rceil$. Fix $\bar b>0$. Then for all
+sufficiently large $k$ and every base arc $0<b\le\bar b$, the following
+hold.
+\begin{enumerate}
+\item The sets defining $\ell$ and $w$ are nonempty. Hence
+ $m\mu_k^2\le a_\ell/a_k$ and $c_k^{10}\le a_w/a_\ell$; these are the
+ dilation and depth of (F1).
+\item $J(k)-1\le J(j)$ for every $w\le j\le k$; this is the bracket of
+ (F1).
+\item $\widehat\beta_k/2\le\widehat\beta_j\le\widehat\beta_k$ for every
+ $w\le j\le k$; this is (F2).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Growth of the scale.} At every step $m$ with $J(m+1)>j_*$, the
+entry requirement \eqref{eq:common-stage-entries} gives
+$\log L_{J(m+1)}\le s_m/J(m+1)$, so $s_{m+1}\le2s_m$ at each such step.
+The steps of the first plateau are finitely many. Hence $s_k\le C_02^k$ for a constant $C_0$, and
+\[
+ \log\log\widehat\beta_k\le\log k+C_1
+\]
+for large $k$, with a constant $C_1$. On the other side,
+$s_k\ge k\log3$ by \eqref{eq:common-scale-brackets}.
+
+\emph{Item 1.} The set defining $\ell$ contains $j=0$ as soon as
+$a_0/a_k=e^{s_k}\ge m\mu_k^2=\mu_k^{b+2}$. Now
+$e^{s_k}\ge3^k$, while
+$\mu_k^{b+2}\le\exp\{(\bar b+2)(\log k+C_1)^2\}$, so this holds for large
+$k$. The defining inequality then holds at its maximum $\ell$. If $\ell<k$, maximality gives
+$3^{k-\ell-1}\le a_{\ell+1}/a_k<\mu_k^{b+2}$, because
+$a_{\ell+1}/a_k=\prod_{t=\ell+2}^kL_{J(t)}$ and $L_j\ge3$. Likewise, if
+$w<\ell$, then $3^{\ell-w-1}\le a_{w+1}/a_\ell<c_k^{10}$, once $w$ is
+defined. Hence
+\[
+ k-\ell\le1+\frac{(\bar b+2)(\log k+C_1)^2}{\log3},\qquad
+ \ell-w\le1+\frac{10\log c_k}{\log3}.
+\]
+The first bound gives $k-\ell=O((\log k)^2)$, so $\ell/k\to1$.
+Since $c_k\le2(\log\widehat\beta_k)^2$ for large $k$ and
+$\log\log\widehat\beta_k\le\log k+C_1$, we have
+$\log c_k=O(\log k)$. Thus $10\log c_k=o(\ell)$, and for large $k$,
+$a_0/a_\ell\ge3^\ell\ge c_k^{10}$. The set defining $w$ is therefore
+nonempty. Adding the two bounds gives a constant $C_2$ with
+\[
+ k-w\le C_2(\log k)^2 .
+\]
+
+\emph{Item 2.} Let $j=J_0(k)$, so $A_j\le k<A_{j+1}$ in the notation of
+Subsection~\ref{sec:common-scale-selection}. If $w\ge A_j$, every level of
+$[w,k]$ has $J_0=j$. Otherwise $w<A_j\le k$, and so
+$k-A_j\le k-w\le C_2(\log k)^2$. For large $k$ this forces
+$k\le2A_j$. By the recursion,
+\[
+ A_j-A_{j-1}=b_j+2k_{j-1}+1\ge4A_{j-1}+3 ,
+\]
+so $A_j-A_{j-1}\ge\tfrac45A_j$. For large $k$, and hence large $A_j$,
+\[
+ k-w\le C_2(\log2A_j)^2\le\tfrac45A_j\le A_j-A_{j-1}.
+\]
+Therefore $w\ge k-(A_j-A_{j-1})\ge A_{j-1}$, and every level of $[w,k]$
+has $J_0\ge j-1$.
+
+\emph{Item 3.} Since $s_m$ is increasing, $\widehat\beta_j\le\widehat\beta_k$
+for $j\le k$, and $\widehat\beta_j\ge\widehat\beta_w$ for $j\ge w$. Next,
+$\widehat\beta_k-\widehat\beta_w=s_G\log(a_w/a_k)$. Split $a_w/a_k$ into
+four factors:
+\[
+ \frac{a_w}{a_k}
+ =\frac{a_w}{a_{w+1}}\cdot\frac{a_{w+1}}{a_\ell}\cdot
+  \frac{a_\ell}{a_{\ell+1}}\cdot\frac{a_{\ell+1}}{a_k}.
+\]
+Omit the factors whose indices coincide. By maximality the second and
+fourth factors are below $c_k^{10}$ and $\mu_k^{b+2}$. The first and third
+are block lengths $L_{J(t+1)}$ with $t\ge w$. By the entry requirement
+each is at most $\exp(s_k/J(t+1))\le\exp(s_k/(J(k)-1))$, using item 2.
+Hence
+\[
+ \log\frac{a_w}{a_k}\le\frac{2s_k}{J(k)-1}+10\log c_k
+   +(\bar b+2)(\log k+C_1)^2 .
+\]
+Since $J(k)\to\infty$ and $s_k\ge k\log3$, the right side is at most
+$s_k/2$ for large $k$. Thus
+$\widehat\beta_k-\widehat\beta_w\le s_Gs_k/2\le\widehat\beta_k/2$,
+because $\widehat\beta_k\ge s_Gs_k$.
+\end{proof}
+
+The wheel bound of (F1) is also immediate: the clock factor of a stage
+$j$ is its block length $L_j\ge3$. Consequently, for all sufficiently
+large $k$ and base arcs up to $\bar b$, of the witness fields,
+(F3) and (F5) are supplied by the conditional constructions just cited;
+the remaining issue is to pay their hypotheses on the same selected
+history, as in Proposition~\ref{prop:trace-joint-chart-purchase}. (F4) is replaced by
+Proposition~\ref{prop:rank-root-output-ticket}.
+
+\subsubsection{Choosing scales and chart levels}
 
 \begin{lemma}[Strict scale selection]
 \label{lem:ex-lattice-firesky-selection}
@@ -100,10 +1652,103 @@ $i_d\geq d$ and exact radius $s_{n_d}$. Induction proves the claims;
 $i_d\geq d$ implies $i_d\to\infty$.
 \end{proof}
 
+\begin{proposition}[Actual charts at prescribed radii]
+\label{prop:c14-prescribed-chart-supply}
+Fix the common funded family of
+Proposition~\ref{prop:trace-joint-chart-purchase}, with its rank and
+root-ticket requests included before selecting the history. Fix its
+extracted smooth table and one refining ultrafilter. Then every positive
+null sequence has the one-stage selection property
+\eqref{eq:ex-lattice-trace-one-stage}. Its charts have the bounded lifts,
+unit, reality, signed covariance, dimension and uniform short-test
+receipts of Theorem~\ref{thm:ex-lattice-selected-trace-gallery}.
+The family, table and ultrafilter do not depend on the null sequence.
+\end{proposition}
+\begin{proof}
+Fix a finite request: grades and arities at most $d$, a compact
+configuration window, and positive error $\varepsilon$. Use all three
+panels of Proposition~\ref{prop:trace-joint-chart-purchase}, with the
+same reading through grade $d$. Their available levels contain a tail,
+uniformly in the common offset $t\in[0,1]$. The choices of exponents
+in \eqref{eq:three-checks} give strictly negative error exponents.
+Adding $t$ to all three panel arcs leaves their differences unchanged
+and can only improve the terms with the negative principal arc.
+Thus the estimates of Subsection~\ref{sec:three-panel-weak-comparison}
+are uniform in $t$. We also check the cell widths when the window
+crosses a stage boundary. Write $H=\mathcal M_k$ and let $L_{\max}$
+be the larger of its two adjacent block lengths. The paid monitor bound
+is $L_{\max}\le H$. Maximality of the middle and root levels gives
+\[
+ \frac{a_\ell}{a_k}\le L_{\max}H^{b+t+2},\qquad
+ \frac{a_w}{a_\ell}\le L_{\max}c_k^{10}.
+\]
+At large levels $c_k^{10}\le H$, so $a_w/a_k\le H^{b+t+5}$.
+One predecessor step costs at most another factor $H$, giving
+$a_{w-1}/a_k\le H^{b+t+6}$. The smaller adjacent block length tends
+to infinity, so $6m a_w<a_{w-1}$ eventually for every arity $m\le d$.
+These are precisely the two cell-width estimates used for the bulk
+panel; the same calculation for the derivative panel gives exponent
+$e+t+5$. Thus the three-panel argument applies also across the actual
+two-stage window, without requiring a constant block length there.
+Take the maximum over the finitely many basis
+words of length at most $d$. Its finite-basis extension gives, on a
+single level tail, error at most
+$\varepsilon\|f\|_\infty\prod_j\|v_j\|$ for every test supported in
+the requested window. This does not require a common finite-volume
+tail over all tests: each tested upper limit passes to the same fixed
+ultrafilter, and the resulting bound is uniform in the test.
+
+The finite-volume inputs here are actual inputs on this history.
+The joint purchase supplies the mixed-grade marked comparisons and
+common stamp for the panels; Proposition~\ref{prop:rank-selected-tested-readout}
+supplies their reading. The whole-window lawful history is
+Corollary~\ref{cor:rank-trace-all-levels}. For the additional rounded
+two-point comparison, Corollary~\ref{prop:trace-selected-rounded-receipt}
+supplies the root receipt at this very chart's root depth. Its exponent
+and ticket choices are made in the same finite menu, before realizing
+the calendar. Thus neither the short-test estimate nor the rounded
+comparison selects a second background history.
+
+The lift bound can be checked directly. At a fixed admitted level $k$,
+the reference inverse bound and half-accuracy give
+$|v|_1\le2D_k|T_{d'}v|_1$. Therefore the corrected lift obeys
+\[
+ |X_{N,p}e|_1\le2D_k|S_\sigma^{-1}W_me|_1.
+\]
+Here $m=\mathcal M_k^{b+t}$ lies in a fixed compact interval at
+this fixed $k$. Also
+$\sigma^{-1}=\beta_{N,p,k}^{1/2}\theta_k$ is uniformly bounded by
+the endpoint running estimate at $k$. The two diagonal scalings have
+only finitely many degrees through $d$. Their operator norms are
+therefore bounded independently of the terminal cutoff and period,
+on the admitted late set. There are finitely many grade maps, so their
+tuple has a finite bound in the lift space. No bound uniform in $k$
+is needed for this compactness step.
+The unit and real identities follow from the same identities for the
+reading and the two diagonal scalings. Signed equivariance follows
+from Lemma~\ref{lem:trace-quantitative-invoice} and the signed stamp
+construction. These are identities of the chosen lifts before taking
+their ultralimits. The dimension bound is the quotient identity
+\eqref{eq:finite-rank-quotient-isomorphism}, on the same refined
+extraction; the free separating tests are those of
+Theorem~\ref{thm:ex-lattice-all-grade-free-detector}.
+
+Enlarge the level floor to include all the preceding finite requests
+and any prescribed lower level. Clock-gap interpolation then gives
+$r>0$ such that every $0<s\le r$ is the exact radius of one of these
+charts. Given a positive null sequence and a previous index, choose a
+later term below $\min(r,\theta)$, with strict inequality to $\theta$.
+This is the one-stage property. Repeat with error $(d+1)^{-1}$ and
+expanding compact windows, using the strict-selection lemma. At each
+fixed cutoff the lift tuple has its limit along the already fixed
+ultrafilter; there is no new extraction at this step. This proves all
+the asserted receipts with their stated order of quantifiers.
+\end{proof}
+
 The one-step chart theorem obtains this output by combining the clock-gap
 interpolation with the funded chart family. Its quantitative comparison
 and station estimates are the three-panel weak-comparison result in
-Section~\ref{sec:three-panel-weak-comparison}; we use its conclusion here
+Subsection~\ref{sec:three-panel-weak-comparison}; we use its conclusion here
 without duplicating those estimates.
 
 Here is the finite-level extraction used to pass from the charts to the
@@ -113,10 +1758,10 @@ fix a cutoff $D$. Suppose $X_{N,p}$ is a tuple of linear maps, one for
 each grade $0,\ldots,D$, from the corresponding reference field into the
 common finite-period coefficient space. Assume $A\geq0$ and, on an
 $F$-late set,
-\[
+\begin{equation}
  \|X_{N,p}\|\leq A.
- \tag{1}\label{eq:ex-lattice-firesky-lift-bound}
-\]
+ \label{eq:ex-lattice-firesky-lift-bound}
+\end{equation}
 The finite product of these map spaces is finite-dimensional. The closed
 ball of radius $A$ is compact. Compactness gives a proper subfilter limit
 of the bounded tuple of maps. This subfilter is finer than $\mathcal U$;
@@ -209,13 +1854,13 @@ grade, the unit, reality, and signed symmetry identities hold on its
 eventual isomorphism tail; the arbitrary isomorphisms used earlier need not
 preserve those identities. The reference test-separation input here is the
 all-grade free-detector result of
-Section~\ref{sec:ex-lattice-all-grade-free-detectors}; the separate
+Subsection~\ref{sec:ex-lattice-all-grade-free-detectors}; the separate
 low-grade trace calculation is not enough to justify separation in every
 grade. The reviewed corrected-lift argument in
-Section~\ref{sec:ex-lattice-trace-producer}
+Subsection~\ref{sec:ex-lattice-trace-producer}
 provides the compatible panel maps when required by the trace family.
 
-\subsection{The gallery handoff}
+\subsubsection{The gallery handoff}
 
 The preceding argument proves the scale-selection, finite-cutoff extraction,
 tested-approach, and fixed-grade eventual-isomorphism clauses. It does not
@@ -226,15 +1871,22 @@ $b_i>0$ be the selected arch scale at the $i$th postselected level, so
 that $b_i\to\infty$; let $1$ and $\mathcal O$ be the unit and the
 normalized curvature-square field of the reference grade-four table, and
 $d_2$ the physical coefficient, as in
-Section~\ref{sec:ex-lattice-trace-scribe-producer}. The receipts are:
+Subsection~\ref{sec:ex-lattice-trace-scribe-producer}. For a comparison table
+$T$, write $\Theta_T$ for the scalar trace of the physical stress centered
+by its one-point value in $T$, and $U_{i,4}$ for the grade-four chart from
+the reference table to the selected table on its eventual isomorphism
+tail. The receipts are:
 convergence of the recentered physical stress to its prescribed principal
 material tensor; for every comparison table that obeys the table hierarchy
 laws and respects the selected table, real sequences $d_i,e_i$ such that,
-eventually in $i$, the $r_i^4$-rescaled transformed energy tensor equals
-$e_i\,1+d_i\,(4\mathcal O)$, with the \emph{weighted} coefficients
-converging, $b_id_i\to d_2$ and $b_ie_i\to0$ (so $d_i,e_i\to0$ themselves);
-and, for every comparison table, convergence of the $b_ir_i^4$-rescaled
-transformed scalar observable to $4d_2\,\mathcal O$. The second direction
+eventually in $i$, the centered scalar trace satisfies
+\[
+ r_i^4U_{i,4}^{-1}\Theta_T=e_i\,1+d_i\,(4\mathcal O),
+ \qquad b_id_i\longrightarrow d_2,\qquad b_ie_i\longrightarrow0.
+\]
+Thus $d_i,e_i\to0$ themselves. The final receipt is, for every comparison
+table, convergence of $b_ir_i^4U_{i,4}^{-1}\Theta_T$ to
+$4d_2\,\mathcal O$. The second direction
 $4\mathcal O$ is the trace of the true-branch material tensor; the limit
 of the zoomed observable is a multiple of $\mathcal O$, not of the unit. The arbitrary-null-
 sequence case needs these same receipts after the selected scaling has
@@ -242,7 +1894,7 @@ been constructed above. They are additional physical and field-array
 estimates, not consequences of finite-dimensional compactness or of the
 rank-one solve alone. The correction, one-dimensional
 kernel, stable inverse, flux normalization, and physical/reference shell
-comparison in Section~\ref{sec:ex-lattice-trace-producer} remain conditional
+comparison in Subsection~\ref{sec:ex-lattice-trace-producer} remain conditional
 on their displayed analytic receipts.
 
 In the selected public construction, the one-scale chart family comes from

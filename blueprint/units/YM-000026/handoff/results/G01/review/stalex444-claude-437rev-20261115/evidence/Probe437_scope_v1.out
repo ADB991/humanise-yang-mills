@@ -1,0 +1,430 @@
+YangMills.constructed : ∀ (g : YangMills.GaugeGroup) (hg : g.IsSimple) (b : ℝ),
+  0 < b →
+    ∃ C,
+      C.path.levels.clock.kernel.penalty = b ∧
+        C.Makes ∧
+          YangMills.WilsonRegularity (YangMills.wilsonFamily C) ∧
+            ∀ (p : YM.Extraction.Order),
+              ∃ q S F L Q M X,
+                (YangMills.hierarchy F Q).Properties (p.refine q).per.choose ∧
+                  (YangMills.hierarchy F Q).Contacts ∧
+                    { mesh := YM.Extraction.Sequence.full, per := (p.refine q).per }.Ordered C S ∧
+                      YM.FullVolume.PositionsUV C YM.Extraction.Sequence.full ∧
+                        YM.Spec.Calibrated C ∧
+                          YM.Independent.Core ⋯ F L Q ∧
+                            YM.Nonperturbative.Headline.Reconstruction F L ∧
+                              (∀ (i : F.α.space.X), (YangMills.view (L.actors i)).Axioms) ∧
+                                YM.Nonperturbative.Headline.SeparatedOPE F Q ∧
+                                  YM.Nonperturbative.Headline.NestedOPE F Q ∧
+                                    YM.Nonperturbative.Headline.TraceExclusions F ∧
+                                      M.basis = Q.port ∧
+                                        YM.Contacts.Solstice.MultipleLight F M ∧
+                                          Nonempty (YM.Contacts.Transport.SystemBasis M) ∧
+                                            Nonempty (YM.Contacts.Solstice.Thresholds M) ∧
+                                              YM.Pert.FirstExtension F X ∧ YM.Pert.Position.FourMeters F X
+'YangMills.constructed' depends on axioms: [propext, Classical.choice, Quot.sound]
+YM.Nonperturbative.existence : ∀ (G : YM.Gauge) (hG : G.Simple) (b : ℝ),
+  0 < b → YM.Nonperturbative.Headline.WilsonExistence G hG b
+def YM.Source.Projects : {G : YM.Gauge} →
+  {d : ℕ} → YM.Source.Hol G → YM.Labels.Label G d → (YM.Wilson.CoverConfig G → ℂ) → Prop :=
+fun {G} {d} H p F =>
+  ∀ (J : YM.Labels.Jet G),
+    have f := fun h => F (H.links d J h);
+    have g := fun h => (YM.Labels.read (YM.Source.scaleJet J h)) ↑p;
+    ContDiffAt ℝ (↑↑d) f 0 ∧ ContDiffAt ℝ (↑↑d) g 0 ∧ ∀ k ≤ d, iteratedDeriv k f 0 = iteratedDeriv k g 0
+structure YM.Source.SectionData.Sound {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} (C : YM.Source.SectionData F)
+  (H : YM.Source.Hol G) : Prop
+number of parameters: 5
+fields:
+  YM.Source.SectionData.Sound.anchored : 0 ∈ C.stencil
+  YM.Source.SectionData.Sound.stable : ∀ (s : YM.Signed), Finset.image s.act C.stencil = C.stencil
+  YM.Source.SectionData.Sound.gaugeInvariant : ∀ (c : F.Coeff), YM.Lattice.GaugeInvariant (C.evaluate c)
+  YM.Source.SectionData.Sound.unit : C.evaluate F.e0 = 1
+  YM.Source.SectionData.Sound.Hpart : ∀ (s : YM.Signed) (c : F.Coeff) (U : YM.Lattice.Links ℤ G.El),
+      C.evaluate c (YM.Lattice.pull s 0 U) = C.evaluate ((F.act s.ortho) c) U
+  YM.Source.SectionData.Sound.ordinary_real : ∀ (c : F.Coeff) (U : YM.Wilson.CoverConfig G),
+      C.evaluate (star c) U = star (C.evaluate c U)
+  YM.Source.SectionData.Sound.projects : ∀ (c : F.Coeff), YM.Source.Projects H (F.coords.symm c) (C.evaluate c)
+constructor:
+  YM.Source.SectionData.Sound.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {C : YM.Source.SectionData F}
+    {H : YM.Source.Hol G} (anchored : 0 ∈ C.stencil)
+    (stable : ∀ (s : YM.Signed), Finset.image s.act C.stencil = C.stencil)
+    (gaugeInvariant : ∀ (c : F.Coeff), YM.Lattice.GaugeInvariant (C.evaluate c)) (unit : C.evaluate F.e0 = 1)
+    (Hpart :
+      ∀ (s : YM.Signed) (c : F.Coeff) (U : YM.Lattice.Links ℤ G.El),
+        C.evaluate c (YM.Lattice.pull s 0 U) = C.evaluate ((F.act s.ortho) c) U)
+    (ordinary_real : ∀ (c : F.Coeff) (U : YM.Wilson.CoverConfig G), C.evaluate (star c) U = star (C.evaluate c U))
+    (projects : ∀ (c : F.Coeff), YM.Source.Projects H (F.coords.symm c) (C.evaluate c)) : C.Sound H
+def YM.Family.O : {G : YM.Gauge} →
+  (C : YM.Family G) →
+    (N p : ℕ) →
+      {d : ℕ} → C.label d → YM.Lattice.Site (C.path.S.side N p) → YM.Wilson.Config G (C.path.S.side N p) → ℂ :=
+fun {G} C N p {d} v => (C.factory d N p).cylinder (C.localSection d) v
+structure YM.Family.Makes {G : YM.Gauge} (C : YM.Family G) : Prop
+number of parameters: 2
+fields:
+  YM.Family.Makes.wilson : C.path.Selected
+  YM.Family.Makes.sections : ∀ (d : ℕ), (C.localSection d).Sound C.params
+  YM.Family.Makes.stages : ∀ (d : ℕ),
+      d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+        ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power
+  YM.Family.Makes.places : ∀ (d N p : ℕ),
+      C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p)
+  YM.Family.Makes.priced : ∀ (d N p : ℕ),
+      C.ref d ≤ N →
+        let P := C.path.levels.budget N;
+        let F := C.labels.level d;
+        let D := C.localSection d;
+        ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+          P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+            P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+              ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2)
+  YM.Family.Makes.calibrated : ∀ (d N p : ℕ),
+      C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)
+constructor:
+  YM.Family.Makes.mk {G : YM.Gauge} {C : YM.Family G} (wilson : C.path.Selected)
+    (sections : ∀ (d : ℕ), (C.localSection d).Sound C.params)
+    (stages :
+      ∀ (d : ℕ),
+        d + 3 ≤ C.path.levels.clock.J (C.ref d) ∧
+          ∀ (m : ℕ), C.ref d ≤ m → d + 1 ≤ (C.path.levels.params m).order ∧ d ≤ (C.path.levels.params m).power)
+    (places :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N → ∀ x ∈ (C.localSection d).stencil, ∀ (i : YM.Axis), 20 * ((x i).natAbs + 1) ≤ ↑(C.side N p))
+    (priced :
+      ∀ (d N p : ℕ),
+        C.ref d ≤ N →
+          let P := C.path.levels.budget N;
+          let F := C.labels.level d;
+          let D := C.localSection d;
+          ∀ (o : YM.Lattice.Site (C.side N p)) (i : F.Index),
+            P.Regular (D.footprint o) (D.places (Pi.single i 1) o) ∧
+              P.supBounds o (D.footprint o) (D.places (Pi.single i 1) o)
+                ((C.path.levels.params N).columns * P.threshold ^ (F.grades i).2))
+    (calibrated : ∀ (d N p : ℕ), C.ref d ≤ N → (C.factory d N p).Based C.params (C.localSection d) (C.ref d)) : C.Makes
+@YM.Family.normalized : ∀ {G : YM.Gauge} (C : YM.Family G) {N p d : ℕ},
+  C.Makes →
+    C.ref d ≤ N →
+      ∀ (v : C.label d),
+        have M := C.factory d N p;
+        (M.entries (C.ref d) (M.terminal.symm v)).x = v
+structure YM.Source.TransferData.Based {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {H : YM.RG.History G} {N p : ℕ}
+  (T : YM.Source.TransferData F H N p) (A : YM.Source.Hol G) (C : YM.Source.SectionData F) (r : ℕ) : Prop
+number of parameters: 10
+fields:
+  YM.Source.TransferData.Based.ref : r ≤ N
+  YM.Source.TransferData.Based.format : ∀ (m : ℕ),
+      r ≤ m → m ≤ N → ∀ (v : F.Coeff), (T.entries m v).Format 0 A (H.rep N p m)
+  YM.Source.TransferData.Based.cap : ∀ (m : ℕ),
+      r ≤ m →
+        m ≤ N →
+          ∀ (v : F.Coeff),
+            (T.entries m v).remBound 0 (H.rep N p m) (√(H.levels.clock.forcedAllowance m))
+              ((H.levels.params m).columns * F.coeffSize (F.core (T.entries m v).x))
+  YM.Source.TransferData.Based.back : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            F.coeffSize (T.entries (m + 1) v).x ≤ (H.levels.params (m + 1)).columns * F.coeffSize (T.entries m v).x
+  YM.Source.TransferData.Based.front : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            F.coeffSize (T.entries m v).x ≤
+              (H.levels.params (m + 1)).columns * ↑↑(H.S.block m) ^ d * F.coeffSize (T.entries (m + 1) v).x
+  YM.Source.TransferData.Based.linear : ∀ (m : ℕ),
+      r ≤ m →
+        m ≤ N →
+          (IsLinearMap ℂ fun v => (T.entries m v).x) ∧
+            (IsLinearMap ℂ fun v => (T.entries m v).regular) ∧
+              (IsLinearMap ℂ fun v => (T.entries m v).forced) ∧
+                ∀ (v : F.Coeff), (T.entries m v).support = (T.entries m 0).support
+  YM.Source.TransferData.Based.bare_coord : ∀ (v : F.Coeff), (T.entries N v).x = v
+  YM.Source.TransferData.Based.bare_germ : ∀ (v : F.Coeff), (T.entries N v).regular = 0
+  YM.Source.TransferData.Based.encode : ∀ (v : F.Coeff) (U : YM.Wilson.Config G (H.S.side N p)),
+      (T.entries N v).density 0 C (H.rep N p N) U =
+        ↑(H.S.a N) ^ d * ↑((H.rep N p N).eval U) * YM.Source.initial C H N p v 0 U
+  YM.Source.TransferData.Based.unnormalized : ∀ (m : ℕ),
+      r ≤ m →
+        m < N →
+          ∀ (v : F.Coeff),
+            (T.entries m v).density 0 C (H.rep N p m) =
+              ↑↑(H.S.block m) ^ d •
+                (H.levels.clock.op m p).push (H.β N p (m + 1)) ((T.entries (m + 1) v).density 0 C (H.rep N p (m + 1)))
+  YM.Source.TransferData.Based.reads : ∀ (v : F.Coeff), (T.entries r v).x = T.terminal v
+  YM.Source.TransferData.Based.unit_coord : ∀ (m : ℕ),
+      r ≤ m → m ≤ N → (T.entries m (YM.Source.unitVec F H N)).x = YM.Source.unitVec F H m
+  YM.Source.TransferData.Based.realForm : ∀ (v : F.Coeff), T.terminal (star v) = star (T.terminal v)
+  YM.Source.TransferData.Based.orients : ∀ (k : YM.Signed) (v : F.Coeff),
+      T.terminal ((F.act k.ortho) v) = (F.act k.ortho) (T.terminal v)
+constructor:
+  YM.Source.TransferData.Based.mk {G : YM.Gauge} {d : ℕ} {F : YM.Labels.Frame G d} {H : YM.RG.History G} {N p : ℕ}
+    {T : YM.Source.TransferData F H N p} {A : YM.Source.Hol G} {C : YM.Source.SectionData F} {r : ℕ} (ref : r ≤ N)
+    (format : ∀ (m : ℕ), r ≤ m → m ≤ N → ∀ (v : F.Coeff), (T.entries m v).Format 0 A (H.rep N p m))
+    (cap :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m ≤ N →
+            ∀ (v : F.Coeff),
+              (T.entries m v).remBound 0 (H.rep N p m) (√(H.levels.clock.forcedAllowance m))
+                ((H.levels.params m).columns * F.coeffSize (F.core (T.entries m v).x)))
+    (back :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              F.coeffSize (T.entries (m + 1) v).x ≤ (H.levels.params (m + 1)).columns * F.coeffSize (T.entries m v).x)
+    (front :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              F.coeffSize (T.entries m v).x ≤
+                (H.levels.params (m + 1)).columns * ↑↑(H.S.block m) ^ d * F.coeffSize (T.entries (m + 1) v).x)
+    (linear :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m ≤ N →
+            (IsLinearMap ℂ fun v => (T.entries m v).x) ∧
+              (IsLinearMap ℂ fun v => (T.entries m v).regular) ∧
+                (IsLinearMap ℂ fun v => (T.entries m v).forced) ∧
+                  ∀ (v : F.Coeff), (T.entries m v).support = (T.entries m 0).support)
+    (bare_coord : ∀ (v : F.Coeff), (T.entries N v).x = v) (bare_germ : ∀ (v : F.Coeff), (T.entries N v).regular = 0)
+    (encode :
+      ∀ (v : F.Coeff) (U : YM.Wilson.Config G (H.S.side N p)),
+        (T.entries N v).density 0 C (H.rep N p N) U =
+          ↑(H.S.a N) ^ d * ↑((H.rep N p N).eval U) * YM.Source.initial C H N p v 0 U)
+    (unnormalized :
+      ∀ (m : ℕ),
+        r ≤ m →
+          m < N →
+            ∀ (v : F.Coeff),
+              (T.entries m v).density 0 C (H.rep N p m) =
+                ↑↑(H.S.block m) ^ d •
+                  (H.levels.clock.op m p).push (H.β N p (m + 1))
+                    ((T.entries (m + 1) v).density 0 C (H.rep N p (m + 1))))
+    (reads : ∀ (v : F.Coeff), (T.entries r v).x = T.terminal v)
+    (unit_coord : ∀ (m : ℕ), r ≤ m → m ≤ N → (T.entries m (YM.Source.unitVec F H N)).x = YM.Source.unitVec F H m)
+    (realForm : ∀ (v : F.Coeff), T.terminal (star v) = star (T.terminal v))
+    (orients : ∀ (k : YM.Signed) (v : F.Coeff), T.terminal ((F.act k.ortho) v) = (F.act k.ortho) (T.terminal v)) :
+    T.Based A C r
+@YM.Table.criterion : ∀ {G : YM.Gauge} {L : YM.Register G} (S : YM.Table L) (d : ℕ) (v : L.Ref d),
+  v ∈ S.null d ↔ ∀ (n : ℕ) (B : Fin n → L.Token), ∀ x ∈ YM.conf (n + 1), S.read x (Fin.cons ⟨d, v⟩ B) = 0
+structure YM.Spec.Locals {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} (X : YM.Spec.Algebra S) (h : S.RealSpin) :
+  Prop
+number of parameters: 5
+fields:
+  YM.Spec.Locals.injection : X.derivatives.Inclusions S
+  YM.Spec.Locals.derivatives : X.derivatives.Derivatives S
+  YM.Spec.Locals.rights : X.derivatives.Orientation h
+  YM.Spec.Locals.spots : X.turns.Laws X.derivatives h
+  YM.Spec.Locals.motion : X.turns.Oriented S
+  YM.Spec.Locals.comparator : YM.Maxwell.Ranks S h
+  YM.Spec.Locals.conserved : YM.Table.Conserved X.derivatives h X.energy
+  YM.Spec.Locals.spin : YM.Table.Tensorial X.turns X.energy
+  YM.Spec.Locals.charges : YM.Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie
+constructor:
+  YM.Spec.Locals.mk {G : YM.Gauge} {L : YM.Register G} {S : YM.Table L} {X : YM.Spec.Algebra S} {h : S.RealSpin}
+    (injection : X.derivatives.Inclusions S) (derivatives : X.derivatives.Derivatives S)
+    (rights : X.derivatives.Orientation h) (spots : X.turns.Laws X.derivatives h) (motion : X.turns.Oriented S)
+    (comparator : YM.Maxwell.Ranks S h) (conserved : YM.Table.Conserved X.derivatives h X.energy)
+    (spin : YM.Table.Tensorial X.turns X.energy)
+    (charges : YM.Table.StressLaws S X.energy X.derivatives.deriv X.turns.lie) : YM.Spec.Locals X h
+structure YM.Nonperturbative.Headline.Reconstruction {G : YM.Gauge} {C : YM.Family G} {p : YM.Extraction.Order}
+  {S : YM.Table C.book} (F : YM.Spec.Final C p S) (L : YM.EveryPhase.Almanac F) : Prop
+number of parameters: 6
+fields:
+  YM.Nonperturbative.Headline.Reconstruction.unselected : F.B.From S
+  YM.Nonperturbative.Headline.Reconstruction.selected : F.A.From (F.α.ensemble F.α.atPoint)
+  YM.Nonperturbative.Headline.Reconstruction.chosen : YM.Nonperturbative.Headline.WightmanAxioms F.action F.A.world
+  YM.Nonperturbative.Headline.Reconstruction.characters : ∀ (i : F.α.space.X),
+      YM.Nonperturbative.Headline.WightmanAxioms (L.actors i) (L.contours i).world
+  YM.Nonperturbative.Headline.Reconstruction.average : ∀ (n : ℕ) (v : Fin n → S.Union) (g : YM.Boundary.Joint n),
+      ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g
+constructor:
+  YM.Nonperturbative.Headline.Reconstruction.mk {G : YM.Gauge} {C : YM.Family G} {p : YM.Extraction.Order}
+    {S : YM.Table C.book} {F : YM.Spec.Final C p S} {L : YM.EveryPhase.Almanac F} (unselected : F.B.From S)
+    (selected : F.A.From (F.α.ensemble F.α.atPoint))
+    (chosen : YM.Nonperturbative.Headline.WightmanAxioms F.action F.A.world)
+    (characters : ∀ (i : F.α.space.X), YM.Nonperturbative.Headline.WightmanAxioms (L.actors i) (L.contours i).world)
+    (average :
+      ∀ (n : ℕ) (v : Fin n → S.Union) (g : YM.Boundary.Joint n),
+        ∫ (i : F.α.space.X), (((L.contours i).world.W n) v) g ∂F.α.space.μ = ((F.B.world.W n) v) g) :
+    YM.Nonperturbative.Headline.Reconstruction F L
+structure YM.Nonperturbative.Headline.TraceExclusions.{u, v} {G : YM.Gauge} {C : YM.Family G} {p : YM.Extraction.Order}
+  {S : YM.Table C.book} (F : YM.Spec.Final C p S) : Prop
+number of parameters: 5
+fields:
+  YM.Nonperturbative.Headline.TraceExclusions.centered : ∀ (f : YM.Boundary.Test4),
+      inner ℂ F.action.operators.vacuum
+          (YM.TraceExtension.excitation F.action.operators (YM.TraceExtension.pinned F) f) =
+        0
+  YM.Nonperturbative.Headline.TraceExclusions.identified : ∀ (f : YM.Boundary.Test4),
+      (F.action.operators.field (YM.TraceExtension.pinned F)) f =
+        (F.action.operators.field ((S.pin 4) (YM.TraceExtension.stressTrace F.sector.energy))) f -
+          (YM.TraceExtension.euclideanVEV S (YM.TraceExtension.selected F)
+                (YM.TraceExtension.stressTrace F.sector.energy) *
+              ∫ (x : YM.E4), f x) •
+            LinearMap.id
+  YM.Nonperturbative.Headline.TraceExclusions.shortDistance : Filter.Tendsto
+      (fun s => (s ^ 8 * Real.log s⁻¹ ^ 2) • YM.TraceExtension.euclidean F s) (nhdsWithin 0 (Set.Ioi 0))
+      (nhds ↑(YM.Trace.Verse.award G))
+  YM.Nonperturbative.Headline.TraceExclusions.positive : 0 < YM.Trace.Verse.award G
+  YM.Nonperturbative.Headline.TraceExclusions.wick : ∀ (Color : Type u) (palette : YM.TraceExtension.Wick.Palette Color)
+      (left right : YM.TraceExtension.Wick.PolyField Color),
+      ∃ x y,
+        HasCompactSupport ⇑(YM.TraceExtension.waveTest (YM.TraceExtension.productTest x y)) ∧
+          ((F.A.world.W 2) (YM.TraceExtension.pairV F.action.J (YM.TraceExtension.pinned F)))
+              (YM.TraceExtension.productTest x y) ≠
+            palette.wicks left right ⇑(YM.TraceExtension.waveTest (YM.TraceExtension.productTest x y))
+  YM.Nonperturbative.Headline.TraceExclusions.maxwell : ∀ (n : ℕ)
+      (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(YM.TraceExtension.Photons.Ambient n)),
+      (∀ (w : F.action.operators.H.space), YM.TraceExtension.Photons.PhysicalWave (U w)) →
+        U F.action.operators.vacuum = YM.TraceExtension.Photons.vacuum n →
+          (∀ (w : F.action.operators.H.space) (b : YM.E4),
+              ∀ᵐ (x : YM.TraceExtension.Photons.Wavespace n) ∂YM.TraceExtension.Photons.sumMeasure n,
+                ↑↑(U ((F.action.action.orbit.translation b) w)) x =
+                  YM.Boundary.Probe.plane (YM.TraceExtension.Photons.forward x) b * ↑↑(U w) x) →
+            ∃ f h,
+              HasCompactSupport ⇑f ∧
+                (∀ (i : YM.TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                  (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Probe.bar (h i) = h i) ∧
+                    (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Fields.causal f (h i)) ∧
+                      inner ℂ (YM.TraceExtension.Photons.coherent (-h)) (YM.TraceExtension.Photons.signal F U f) ≠
+                        inner ℂ (YM.TraceExtension.Photons.signal F U (YM.Boundary.Probe.bar f))
+                          (YM.TraceExtension.Photons.coherent h)
+  YM.Nonperturbative.Headline.TraceExclusions.invariant : ∀ (n : ℕ)
+      (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(YM.TraceExtension.Photons.Ambient n)),
+      YM.TraceExtension.Photons.Comparison F U →
+        ∀ (I : Type v) [inst : MeasurableSpace I] (μ : MeasureTheory.Measure I) [MeasureTheory.IsProbabilityMeasure μ]
+          (P : I → ↥(YM.TraceExtension.Photons.Ambient n) → ↥(YM.TraceExtension.Photons.Ambient n)),
+          (∀ (z : I) (x y : ↥(YM.TraceExtension.Photons.Ambient n)),
+              YM.TraceExtension.Photons.PhysicalWave x →
+                YM.TraceExtension.Photons.PhysicalWave y → inner ℂ (P z x) (P z y) = inner ℂ x y) →
+            (∀ (z : I) (x : F.action.operators.H.space), P z (U x) = U x) →
+              ∀ (r : ℝ),
+                0 < r →
+                  ∃ A B,
+                    IsOpen A ∧
+                      IsOpen B ∧
+                        closure A ⊆ Metric.ball 0 r ∧
+                          (∀ x ∈ closure A, ∀ y ∈ closure B, x - y ∈ YM.Mink.spacelike) ∧
+                            ∃ f h,
+                              tsupport ⇑f ⊆ A ∧
+                                HasCompactSupport ⇑f ∧
+                                  (∀ (i : YM.TraceExtension.Photons.Label n), tsupport ⇑(h i) ⊆ B) ∧
+                                    (∀ (i : YM.TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                                      (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Probe.bar (h i) = h i) ∧
+                                        ∫ (z : I),
+                                            inner ℂ (P z (YM.TraceExtension.Photons.coherent (-h)))
+                                              (YM.TraceExtension.Photons.signal F U f) ∂μ ≠
+                                          ∫ (z : I),
+                                            inner ℂ (YM.TraceExtension.Photons.signal F U (YM.Boundary.Probe.bar f))
+                                              (P z (YM.TraceExtension.Photons.coherent h)) ∂μ
+constructor:
+  YM.Nonperturbative.Headline.TraceExclusions.mk.{u, v} {G : YM.Gauge} {C : YM.Family G} {p : YM.Extraction.Order}
+    {S : YM.Table C.book} {F : YM.Spec.Final C p S}
+    (centered :
+      ∀ (f : YM.Boundary.Test4),
+        inner ℂ F.action.operators.vacuum
+            (YM.TraceExtension.excitation F.action.operators (YM.TraceExtension.pinned F) f) =
+          0)
+    (identified :
+      ∀ (f : YM.Boundary.Test4),
+        (F.action.operators.field (YM.TraceExtension.pinned F)) f =
+          (F.action.operators.field ((S.pin 4) (YM.TraceExtension.stressTrace F.sector.energy))) f -
+            (YM.TraceExtension.euclideanVEV S (YM.TraceExtension.selected F)
+                  (YM.TraceExtension.stressTrace F.sector.energy) *
+                ∫ (x : YM.E4), f x) •
+              LinearMap.id)
+    (shortDistance :
+      Filter.Tendsto (fun s => (s ^ 8 * Real.log s⁻¹ ^ 2) • YM.TraceExtension.euclidean F s) (nhdsWithin 0 (Set.Ioi 0))
+        (nhds ↑(YM.Trace.Verse.award G)))
+    (positive : 0 < YM.Trace.Verse.award G)
+    (wick :
+      ∀ (Color : Type u) (palette : YM.TraceExtension.Wick.Palette Color)
+        (left right : YM.TraceExtension.Wick.PolyField Color),
+        ∃ x y,
+          HasCompactSupport ⇑(YM.TraceExtension.waveTest (YM.TraceExtension.productTest x y)) ∧
+            ((F.A.world.W 2) (YM.TraceExtension.pairV F.action.J (YM.TraceExtension.pinned F)))
+                (YM.TraceExtension.productTest x y) ≠
+              palette.wicks left right ⇑(YM.TraceExtension.waveTest (YM.TraceExtension.productTest x y)))
+    (maxwell :
+      ∀ (n : ℕ) (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(YM.TraceExtension.Photons.Ambient n)),
+        (∀ (w : F.action.operators.H.space), YM.TraceExtension.Photons.PhysicalWave (U w)) →
+          U F.action.operators.vacuum = YM.TraceExtension.Photons.vacuum n →
+            (∀ (w : F.action.operators.H.space) (b : YM.E4),
+                ∀ᵐ (x : YM.TraceExtension.Photons.Wavespace n) ∂YM.TraceExtension.Photons.sumMeasure n,
+                  ↑↑(U ((F.action.action.orbit.translation b) w)) x =
+                    YM.Boundary.Probe.plane (YM.TraceExtension.Photons.forward x) b * ↑↑(U w) x) →
+              ∃ f h,
+                HasCompactSupport ⇑f ∧
+                  (∀ (i : YM.TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                    (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Probe.bar (h i) = h i) ∧
+                      (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Fields.causal f (h i)) ∧
+                        inner ℂ (YM.TraceExtension.Photons.coherent (-h)) (YM.TraceExtension.Photons.signal F U f) ≠
+                          inner ℂ (YM.TraceExtension.Photons.signal F U (YM.Boundary.Probe.bar f))
+                            (YM.TraceExtension.Photons.coherent h))
+    (invariant :
+      ∀ (n : ℕ) (U : F.action.operators.H.space →ₗᵢ[ℂ] ↥(YM.TraceExtension.Photons.Ambient n)),
+        YM.TraceExtension.Photons.Comparison F U →
+          ∀ (I : Type v) [inst : MeasurableSpace I] (μ : MeasureTheory.Measure I) [MeasureTheory.IsProbabilityMeasure μ]
+            (P : I → ↥(YM.TraceExtension.Photons.Ambient n) → ↥(YM.TraceExtension.Photons.Ambient n)),
+            (∀ (z : I) (x y : ↥(YM.TraceExtension.Photons.Ambient n)),
+                YM.TraceExtension.Photons.PhysicalWave x →
+                  YM.TraceExtension.Photons.PhysicalWave y → inner ℂ (P z x) (P z y) = inner ℂ x y) →
+              (∀ (z : I) (x : F.action.operators.H.space), P z (U x) = U x) →
+                ∀ (r : ℝ),
+                  0 < r →
+                    ∃ A B,
+                      IsOpen A ∧
+                        IsOpen B ∧
+                          closure A ⊆ Metric.ball 0 r ∧
+                            (∀ x ∈ closure A, ∀ y ∈ closure B, x - y ∈ YM.Mink.spacelike) ∧
+                              ∃ f h,
+                                tsupport ⇑f ⊆ A ∧
+                                  HasCompactSupport ⇑f ∧
+                                    (∀ (i : YM.TraceExtension.Photons.Label n), tsupport ⇑(h i) ⊆ B) ∧
+                                      (∀ (i : YM.TraceExtension.Photons.Label n), HasCompactSupport ⇑(h i)) ∧
+                                        (∀ (i : YM.TraceExtension.Photons.Label n), YM.Boundary.Probe.bar (h i) = h i) ∧
+                                          ∫ (z : I),
+                                              inner ℂ (P z (YM.TraceExtension.Photons.coherent (-h)))
+                                                (YM.TraceExtension.Photons.signal F U f) ∂μ ≠
+                                            ∫ (z : I),
+                                              inner ℂ (YM.TraceExtension.Photons.signal F U (YM.Boundary.Probe.bar f))
+                                                (P z (YM.TraceExtension.Photons.coherent h)) ∂μ) :
+    YM.Nonperturbative.Headline.TraceExclusions F
+def YM.Trace.Verse.award : YM.Gauge → ℝ :=
+fun G => 12 * (YM.Trace.Over.d2 G ^ 2 / YM.Trace.Over.b0 G ^ 2) * ↑G.lieDim / Real.pi ^ 4
+@YangMills.publicTrace : ∀ {g : YangMills.GaugeGroup} {C : YM.Family g.core} {p : YM.Extraction.Order}
+  {S : YM.Table C.book} (F : YM.Spec.Final C p S) (Q : YM.OPE.Orbits.Reader F.sector.derivatives F.sector.turns ⋯),
+  g.IsSimple → YM.Nonperturbative.Headline.TraceExclusions F → (YangMills.hierarchy F Q).TraceTest
+structure YangMills.Hierarchy.TraceTest {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g}
+  (T : YangMills.Hierarchy C) : Prop
+number of parameters: 3
+fields:
+  YangMills.Hierarchy.TraceTest.centered : ∀ (f : YangMills.TestFunction),
+      inner ℂ ↑T.theory.fields.vacuum
+          ↑(((T.theory.fields.field ((T.toLabel 4) T.centeredTrace)) f) T.theory.fields.vacuum) =
+        0
+  YangMills.Hierarchy.TraceTest.amplitudePositive : 0 < 3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4
+  YangMills.Hierarchy.TraceTest.shortDistance : Filter.Tendsto (fun r => (r ^ 8 * Real.log r⁻¹ ^ 2) • T.traceTwo r)
+      (nhdsWithin 0 (Set.Ioi 0)) (nhds ↑(3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4))
+  YangMills.Hierarchy.TraceTest.excludes : ∀ (terms : List (ℂ × YangMills.Hierarchy.Track)),
+      ¬T.traceTwo =ᶠ[nhdsWithin 0 (Set.Ioi 0)] YangMills.Hierarchy.wickProfile terms
+constructor:
+  YangMills.Hierarchy.TraceTest.mk {g : YangMills.GaugeGroup} {C : YangMills.WilsonFamily g} {T : YangMills.Hierarchy C}
+    (centered :
+      ∀ (f : YangMills.TestFunction),
+        inner ℂ ↑T.theory.fields.vacuum
+            ↑(((T.theory.fields.field ((T.toLabel 4) T.centeredTrace)) f) T.theory.fields.vacuum) =
+          0)
+    (amplitudePositive : 0 < 3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4)
+    (shortDistance :
+      Filter.Tendsto (fun r => (r ^ 8 * Real.log r⁻¹ ^ 2) • T.traceTwo r) (nhdsWithin 0 (Set.Ioi 0))
+        (nhds ↑(3 * ↑(Module.finrank ℝ ↥g.lieAlgebra) / Real.pi ^ 4)))
+    (excludes :
+      ∀ (terms : List (ℂ × YangMills.Hierarchy.Track)),
+        ¬T.traceTwo =ᶠ[nhdsWithin 0 (Set.Ioi 0)] YangMills.Hierarchy.wickProfile terms) :
+    T.TraceTest
+Probe437_scope_v1.lean:53:8: error(lean.unknownIdentifier): Unknown identifier `YangMills.award_eq`

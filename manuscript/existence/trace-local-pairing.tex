@@ -1,11 +1,11 @@
 % Separation estimate for the selected finite-volume price test.
-\section{A finite-volume separation estimate}
+\subsection{A finite-volume separation estimate}
 \label{sec:ex-lattice-trace-local-pairing}
 
 We prove the separation estimate that converts a localized probe into a
 small two-site correlation. The proof is a three-term bilinear expansion;
-all source-specific quantitative inputs are written as precise hypotheses
-and audited separately.
+all quantitative inputs specific to the selected construction are written
+as precise hypotheses.
 
 Fix a finite periodic gauge configuration space $\Omega$ with normalized
 Wilson expectation $\mathbb E_\beta$, and a reflection-positive cell
@@ -40,7 +40,8 @@ The local error scale at selected level $i$ is
  \qquad p_i\longrightarrow\infty.
 \]
 It satisfies $t_i(a)t_i(c)=t_i(a+c)$ and is increasing in $a$ once $p_i>1$.
-The source growth estimate gives $t_i(1)\ge4$ for all sufficiently large
+Since $p_i\to\infty$, also $(\log p_i)^{48}\to\infty$ and hence
+$t_i(1)\to\infty$; in particular $t_i(1)\ge4$ for all sufficiently large
 $i$.
 
 \begin{proposition}[Finite-volume two-site error]
@@ -101,7 +102,7 @@ The last inequality uses monotonicity in the exponent. Since $t_i(1)\ge4$,
 again by monotonicity. This proves the conclusion.
 \end{proof}
 
-\subsection{Application to a selected response insertion}
+\subsubsection{Application to a selected response insertion}
 \label{subsec:ex-lattice-mileage-application}
 
 For the selected construction, the proposition applies with $P$ equal to
@@ -111,8 +112,9 @@ grade-four insertion label, which is a separately measured grade-four
 field and is not obtained from the marker; $U$ the pullback of the
 localized coarse witness supplied by the probe's receipt; and $V$ the
 pullback of the bounded coarse approximation supplied, at the same
-finite volume and frame level, for that grade-four insertion. The exact source
-hypotheses have the following mathematical form: both measured markers have
+finite volume and frame level, for that grade-four insertion. The
+hypotheses of the proposition then take the following form: both measured
+markers have
 root bound at most $t_i(5)$; the local approximation satisfies
 $\mathcal R_i(Q-V)\le t_i(-300)$; the probe-to-marker difference satisfies
 $\mathcal R_i(P-U)\le t_i(-200)$; and the distant-site probe correlation
@@ -124,11 +126,774 @@ condition and the room condition required of a test in that estimate.
 With these four receipts, the proposition proves the required two-site
 price bound $t_i(-100)$.
 
-The proof above discharges the finite-volume assembly estimate, including
-its exponent arithmetic. It does not prove production of the four receipts.
-In the selected source, their producers are the coefficient-to-root estimate
-for the two measured markers, the local approximation and window bound for
-the insertion, the probe witness with its distant-site price estimate, and
-the finite-volume reflection-positivity seam. The evidence table records
-these exact source statements and the remaining producer boundaries. No
+The proof above discharges the finite-volume assembly estimate. The
+coefficient-to-root and moving-depth localization arguments are supplied
+below. The probe witness and its separated-site price still require the
+actual Crown construction described at the end of this section. No
 continuum or infinite-volume limit is used in this proposition.
+
+\subsubsection{Production at the moving frame and localization depths}
+\label{subsec:ex-trace-pairing-production}
+
+We now supply the quantitative root and localization bounds used above.
+All coefficient maps and pullbacks in this subsection belong to the one
+history at $(N,p)$; the estimates are uniform in $N>k$ and $p$.
+Write $j$ for the frame depth, $m$ for its first opened depth, and
+$k=\operatorname{summit}(j)$. Put
+\[
+ x=\widehat\beta_j,\quad y=\log x,\quad H=y^{48},\qquad
+ T(a)=\exp(aH/10000),\qquad
+ \Delta(r,s)=\log(a_r/a_s).
+\]
+Thus $T$ is evaluated at the \emph{frame}, not at the summit.
+The summit is the least $k>j$ with $\Delta(j,k)\ge H$.
+The opened depth $m\ge j$ is the least depth with
+$a_j/a_m\ge B_m^2$, where $B_m=\lceil(\log\widehat\beta_m)^2\rceil$
+is the cover size. These choices are made on the common clock, before
+any terminal volume or label is chosen.
+
+Here are the clock bounds needed in the argument, including their
+payment. We choose the numerical stage delays before extracting the
+common history. At a fixed stage, write $r$ for its loop-path price,
+$c_{\rm dir}$ for its direct quadratic-action price, and $D_G$ for the
+fixed real dimension of the matrix coordinate space of the gauge group.
+Let $n_{\rm plaq}$ be the number of plaquette orientations. The vacuum
+majorant at coupling $z>1$ is
+\[
+ F_{\rm stage}(z)
+ =2(1+4r+1)+1+n_{\rm plaq}(c_{\rm dir}+r^2)
+       +4D_G\bigl(\log16+\tfrac12\log z\bigr)
+ =C_{\rm stage}+2D_G\log z.
+\]
+We verify the majorization, rather than assume a bound for the treasury.
+Its terms are twice the ordinary allowance plus twice the loop price,
+the forced allowance, the quadratic action price, and the logarithmic
+small-ball cost. The ordinary and forced allowances are at most one.
+With $\vartheta$ the selected threshold, $\Lambda$ the allowed loop
+cutoff, and $h=z^{-1/2}$, the loop term is
+$2z(r\vartheta^3+r\vartheta^4)+\Lambda\vartheta^2$.
+The clock has $\vartheta\le z^{-1/2}\exp((\log\log z)^2)$ and
+$\Lambda\vartheta^2\le1$ on the late-scale tail of
+Lemma~\ref{lem:rank-root-late-scale}, applied to that same clock.
+The lemma's stage thresholds are among the common entry requests.
+Hence $z\vartheta^3\le1$ and
+$z\vartheta^4\le1$ eventually, independently of the stage constants,
+and the loop price is at most $4r+1$.
+The action term is exactly $n_{\rm plaq}(c_{\rm dir}+r^2)$,
+since $zh^2=1$. Finally $\log(16/h)=\log16+\tfrac12\log z$.
+Adding the four bounds proves $\mathcal T\le F_{\rm stage}(z)$
+on a fixed coupling tail.
+
+Now let $L$ and $c$ be the block and column constants at that stage.
+For all sufficiently large $z$, impose
+\[
+ \log z\ge\max\{1,L,c,C_{\rm stage},2D_G+1\}.
+\]
+Writing $u=\log z$, we have
+$C_{\rm stage}+2D_Gu\le u+2D_Gu\le u^2$.
+Thus these eventual requests give, at every rung $r$ in that stage,
+\[
+ L_r\le\log\widehat\beta_r,\qquad
+ c_r\le\log\widehat\beta_r,\qquad
+ \mathcal T_r\le(\log\widehat\beta_r)^2.
+\]
+At each stage entry there are only finitely many active and next-stage
+requests. Include the displayed bounds and their adjacent-stage versions
+in the finite maximum defining the entry threshold of
+Proposition~\ref{prop:trace-joint-chart-purchase}, and then take prefix
+maxima to preserve earlier entries. Each request holds on an entire
+coupling tail with that stage fixed, so this operation is legitimate even
+though the constants vary from stage to stage. These bounds therefore
+hold on the one history selected with these delays; no history is changed
+after the extraction, and no uniform fixed-stage constant is asserted
+across all stages.
+The block lower bound $L_r\ge1024(J_{r+1}+10)$ is a choice of the
+stage block before its entry threshold is paid. These purchases involve
+no new finite-volume analytic estimate.
+
+\begin{lemma}[Moving-depth bills]
+\label{lem:ex-trace-pair-moving-bills}
+For each fixed grade $d$, eventually
+\begin{gather*}
+ j\le m<k,\qquad H\le\Delta(j,k)\le2H,
+ \qquad \widehat\beta_k\le2x,\\
+ a_j/a_m\le y^6,\qquad
+ (a_j/a_m)^4\mathcal T_m\le y^{27},\qquad
+ \Delta(m,k)\ge H/2.
+\end{gather*}
+Put $S=\exp((a_j/a_m)^4\mathcal T_m+5)$,
+$E_k=4(1+c_k)$ and $G=\exp(\Delta(m,k)/8)$.
+With the fixed-grade height $\zeta_{d,r}=\widehat\beta_r^{-w_d}$,
+where $w_d$ is the fixed exponent of that height schedule, these imply
+\begin{gather}
+ 2E_k/\zeta_{d,m}\le T(100),\qquad
+ 2(a_j/a_m)^d S\le T(99),\qquad G\ge T(500),
+ \label{eq:ex-trace-pair-localizer-bills}\\
+ c_m(a_j/a_m)^d/\zeta_{d,m}\le T(2),\qquad
+ eS\le T(2),\qquad 2(1+c_k)\le T(1).
+ \label{eq:ex-trace-pair-root-bills}
+\end{gather}
+\end{lemma}
+\begin{proof}
+The coupling clock has increments
+$\widehat\beta_s-\widehat\beta_r=\gamma\Delta(r,s)$ with fixed
+$\gamma>0$. Just before the first crossing of $H$, the coupling is
+at most $x+\gamma H\le2x$. The last block adds at most
+$\log L_{k-1}\le\log(2x)\le H$ to the gap. Thus the gap is at
+most $2H$, and $x+2\gamma H\le2x$ eventually gives the stated
+summit coupling bound. In particular
+$\log\widehat\beta_r\le2y$ and $B_r\le5y^2$ for $j\le r\le k$.
+At $k-1$ the gap is at least $H-2y$; hence
+$\exp\Delta(j,k-1)\ge(5y^2)^2$ eventually. This proves $m<k$.
+Eventually $B_j>1$, so $a_j/a_j=1<B_j^2$ and $m>j$.
+By minimality of $m$, the preceding ratio is less than $B_{m-1}^2$;
+the last block is at most $2y$. Consequently
+$a_j/a_m\le2y(5y^2)^2\le y^6$ for large $y$.
+The treasury bill is at most $y^{24}(2y)^2\le y^{27}$.
+Also $\Delta(j,m)\le y^6=o(H)$, which gives the last gap bound.
+
+Every fixed product of $c_m,c_k,(a_j/a_m)^d$ and
+$\zeta_{d,m}^{-1}$ is bounded by a fixed power of $x$ and $y$.
+Its logarithm is $O(y+\log y)=o(H)$. Multiplication by $S$ adds
+at most $y^{27}+5=o(H)$. Thus each such product is eventually
+bounded by $\exp(\epsilon H)$ for every $\epsilon>0$.
+Choosing respectively $\epsilon=100/10000,99/10000,2/10000$
+and $1/10000$ proves the displayed bills. Finally
+$G\ge\exp(H/16)\ge T(500)$.
+\end{proof}
+
+\begin{proposition}[Root and bounded localizer from actual coefficients]
+\label{prop:ex-trace-pair-coefficient-production}
+Let $L$ be a grade-$d$ label in the actual finite-volume history, with
+its measured field in the frame chamber. If
+\[
+ \|\operatorname{col}_m(L)\|_1\le a_j^d T(1),
+\]
+then $\mathcal R_j(O_{N,p}L)\le T(5)$ eventually.
+For localization use the same-door served representation constructed
+below. If
+$\|\operatorname{col}_k(L)\|_1\le a_j^dT(1)$, there is a bounded
+coarse field $B$ at $k$, in the window of radius
+$l_d=R_d+4$, such that
+\[
+ \|B\|_\infty\le T(25000d+10000),\qquad
+ \mathcal R_j(\mathsf B_{k,N}B-O_{N,p}L)\le T(-300).
+\]
+The window has room inside the frame chamber, and its pullback is
+chamber-local. In particular the supremum is at most $T(150000)$
+for $d\le5$.
+\end{proposition}
+\begin{proof}
+For the first assertion use insertion weight $z=T(-3)$.
+The actual exponential insertion money is
+$c_m a_m^{-d}\|\operatorname{col}_m(L)\|_1$; by
+\eqref{eq:ex-trace-pair-root-bills} its product with $z$ is at most
+$\zeta_{d,m}T(-3+1+2)=\zeta_{d,m}$.
+The opened full-census exponential estimate therefore bounds its root by
+\[
+ \frac{\exp((a_j/a_m)^4\mathcal T_m+6)}z
+ =\frac{eS}{T(-3)}\le T(5).
+\]
+The extra factor $e$ accounts for the difference between the single
+insertion price $6$ and the discrepancy price $5$.
+
+For localization use the actual phase-grid construction of
+Subsection~\ref{sec:actual-phase-grid-approximants} with
+$w=a_m^dT(400)$. Its price condition is satisfied, since
+\[
+ \frac{2wa_m^{-d}E_k}{\zeta_{d,m}}
+ \le T(400+100)\le G.
+\]
+The coefficient basis in Lemma~\ref{lem:actual-grid-basis} is within
+$1/4$ of the identity. Inverting that same basis therefore expresses
+$L$ as a linear combination of its terminal labels with
+\[
+ \sum_s|v_s|\le2\|\operatorname{col}_k(L)\|_1.
+\]
+We retain this actual coefficient bound; replacing it by an unspecified
+operator norm times $\|L\|$ would lose the moving-depth estimate.
+Each primary masked field has supremum at most
+$a_k^{-d}(1+c_k)$ and discrepancy root at most $S/w$.
+Linear combination, pullback linearity and the root triangle inequality
+give a field $B$ with error
+\[
+ 2a_j^dT(1)S/(a_m^dT(400))\le T(99+1-400)=T(-300).
+\]
+Its supremum is at most
+\[
+ 2a_j^dT(1)a_k^{-d}(1+c_k)
+ \le T(2+20000d)\le T(25000d+10000),
+\]
+because $a_j/a_k\le\exp(2H)=T(20000)$.
+The same finite combination preserves bounded measurability, gauge
+invariance and the window radius $l_d$.
+
+For completeness, the room inequality is
+$2a_k[l_d+30(J_k+5)]<a_j$.
+The block bounds give $J_k\le2y$, while $a_j/a_k\ge e^H$;
+hence this inequality holds eventually. More generally the same proof
+works for any radius bounded by a fixed power of $\widehat\beta_k$,
+since such a radius and $J_k$ are $o(e^H)$.
+The pullback locality and room inclusion then put $B$ in the required
+frame chamber. All constructions used the same $(N,p)$, transport and
+gauge doors.
+\end{proof}
+
+\subparagraph{The actual labels.}
+For a fixed raw reference label $v$ of grade $d\le5$, the tested
+finite-height lift at frame $j$ has coefficient bound
+\[
+ \|\operatorname{col}_j(Lv)\|_1
+ \le a_j^d\,2(2\mathcal M_j)^2 b^d\|v\|,
+ \qquad1\le b\le\operatorname{tiltcap}(j).
+\]
+Indeed the tested half-accuracy bound gives an inverse cost at most two;
+the frame shrink inverse costs at most $2\mathcal M_j$, the
+nonconstant polynomial components in these grades have degree at most
+two, and the dilation weight costs at most $b^d$.
+For coefficient transport from $j$ to $r\le k$, the paid per-step
+logarithmic column bill divided by the log block is at most $J_s^{-2}$.
+Summing gives a log bill at most
+$\sup_{s\ge j}J_s^{-2}\Delta(j,r)=o(H)$.
+The logarithm of the prefactor above is also $o(H)$, because
+$\log\mathcal M_j=(\log\log x)^2$ and
+$\log\operatorname{tiltcap}(j)=(\log\log x)^3$.
+Allocate half of $H/10000$ to each bill. Uniformly for $j\le r\le k$,
+\[
+ \|\operatorname{col}_r(Lv)\|_1\le a_j^dT(1).
+\]
+This supplies both hypotheses of
+Proposition~\ref{prop:ex-trace-pair-coefficient-production} for the
+selected grade-four insertion, with the same tested map at each
+finite height. Finitely many fixed labels require only a finite
+intersection of the resulting tails.
+
+The measured grade-five marker uses a different argument. Its odd
+axial sector has homogeneous factor two, so its spine coefficients at
+$r$ equal $\vartheta_r^{-2}\operatorname{col}_r(P)$.
+The actual spine transport from $k$ back to $m$ costs at most two.
+Since $\vartheta_m\le1$ and
+$\vartheta_k^{-2}\le\widehat\beta_k$, a summit bound
+$\|\operatorname{col}_k(P)\|_1\le a_j^5\widehat\beta_k^M$
+gives
+\[
+ \|\operatorname{col}_m(P)\|_1
+ \le2a_j^5\widehat\beta_k^{M+1}\le a_j^5T(1).
+\]
+Here the last step follows from $\widehat\beta_k\le2x$ and
+$\log x=o(H)$. Thus its root is also at most $T(5)$.
+This application uses the actual odd-sector spine transport; a summit
+coefficient bound for an unrelated label would not suffice.
+
+
+\subparagraph{The intermediate insertion and the served-representation seam.}
+There is one representation issue in the localization proof that must
+not be hidden by its numerical estimates. At depth $k$ the served
+negative played family is augmented by the positive primary factors.
+For the finite set of cell markers $I$, its coefficient is the sum over
+all subsets $A\subset I$: cells in $A$ carry the local positive primary,
+and the complementary cells carry the marched negative insertion.
+This is the finite product expansion, with no truncation of its higher
+marker coefficients. At singleton level the sum is exactly the
+exponential entry of the backward coefficient family $Z_k$; its forced profile is
+unchanged, because the primary has zero forced profile.
+Below $k$ use that coefficient family and the same sound gauge doors. The two
+transition profiles have prices
+\[
+ 2\tau_{r+1}a_{r+1}^{-d}D_r
+       (g_{r+1}+\|Z_{r+1}.x\|_1)\le1,
+ \qquad \tau_{r+1}a_r^{-d}g_r\le1,
+\]
+as verified in Subsection~\ref{sec:actual-phase-grid-approximants}.
+The centers remain the opened migrating centers, with occupancy one;
+finite linear sums preserve the prescribed finite supports. These are
+precisely the numerical and geometric data for the same-door offer in
+Subsection~\ref{sec:finite-menu-history-handoff}. The latter invokes the
+whole polynomial push, including its flagged part, of
+Subsection~\ref{sec:local-transfer}; it does not permit replacing the
+augmented polynomial by its singleton part.
+
+Here is the representation construction for this augmented family.
+Let $A_N$ be the negative terminal birth polynomial, and let $P_{k,N}$
+be the actual iterated push from $N$ to $k$. The terminal observables are
+continuous on the compact gauge configuration space, so every coefficient
+of $A_N$ is integrable. The actual Markov push preserves integrability.
+The local primary is bounded and measurable. Thus every coefficient of
+\[
+ A_k=(P_{k,N}A_N)\exp_{\mathrm{nil}}
+                  \Bigl(\sum_{v\in I}z_v F_v\Bigr)
+\]
+is integrable: it is a finite sum of an integrable pushed coefficient
+times a bounded product of $F_v$'s. Here the exponential is in the
+finite nilpotent marker algebra, and $F_v$ is the reflected copy of the
+positive primary. This proves integrability for the \emph{whole}
+polynomial, not only for its singleton coefficients.
+
+The negative played insertion service supplies a representation of
+$P_{k,N}A_N$ with regular entries $f_v$, forced entries $\lambda_v$,
+and ordinary and flagged higher arrays $H,K$. Keep $H,K$ unchanged
+and replace $f_v$ by $f_v+F_v$. This represents $A_k$ exactly:
+in the commutative nilpotent algebra,
+$\exp_{\mathrm{nil}}(u+v)=\exp_{\mathrm{nil}}u\,
+\exp_{\mathrm{nil}}v$ for zero-constant polynomials. Consequently all
+higher-array support and price bounds are unchanged, and the forced
+entries are unchanged. The identities for $Z_k$ above identify the new
+regular entries and the old forced entries with the backward coefficient family.
+There is no fresh choice of response, door, or primary coefficient.
+
+At the next step the actual adjacent comparison of that coefficient family supplies
+the finite elementary list: its regular difference is the difference of
+the two exponential entries, and its flagged difference is the
+finite-support forced-profile comparison transported through the same
+sound door. Their two prices are the ones displayed above. Their
+single-insertion identities follow from these exact adjacent identities,
+while their supports and parent centers are the migrated supports and
+centers already used in the negative service. The actual sound-door
+response of Subsection~\ref{sec:finite-menu-history-handoff} applies to
+this prepared list; its whole-polynomial push is the transition of
+$A_k$, with both higher arrays retained. The integrability just proved
+permits that push. Induction from $k$ down to $m$ gives a served
+representation of $P_{m,k}A_k$. The weighted local entry and forced
+prices at $m$ are at most $2$ and $1$, respectively, by the backward
+coefficient family bounds and the purchased height inequality. Together with action
+allowance $1$, the full-census estimate therefore costs $2+1+2=5$
+per cell, yielding exactly $S/w$.
+
+Finally, coefficientwise push preserves the integral, and expansion of
+$A_k$ over subsets of $I$ gives, at its full mode, the product of the
+reflected differences $\mathsf B_{k,N}F_v-O_{N,p}(T_Nb_s)$.
+Pullback locality and the room inequality identify these with copies in
+the same frame tiling. This proves the moment identity needed for the
+root bound. It supplies the intermediate representation omitted from
+the generic phase-grid discussion for the primary insertions used here.
+
+\subparagraph{Assembly of the actual Crown witness.}\label{par:trace-actual-crown}
+The localizer just constructed is the grade-four test of the probe;
+it is not the probe's grade-five Crown witness. The source construction
+of that witness has the following explicit quantitative form. At the
+same summit $k$, let $X_e$ be the actual corrected primary entry minus
+$\beta_{N,p,k}$ times its climate field, and let $Y_e$ be its local
+finite-difference witness. Their common window must have room.
+If the finite lens construction gives each summand root at most
+$T(-1900000)$ and total absolute coefficient mass at most
+$\widehat\beta_k^2\le T(100000)$, the root triangle inequality gives
+$\mathcal R_j(\mathsf B_{k,N}Y_e)\le T(-1800000)$.
+Suppose its actual healthy-region identity gives
+\[
+ |X_e-Y_e+c_e|\le e^{-\operatorname{prism}(\widehat\beta_k)},
+ \qquad |X_e-Y_e|\le\widehat\beta_k^M
+\]
+with a fixed $M$ and a polynomial-size exceptional set.
+Multiply by $q=(a_j/a_k)^5\le T(100000)$ and apply the finite
+signed axial average. This average is contractive for these root and
+supremum bounds and annihilates the constant vector $(c_e)$.
+The polynomial bill is at most $T(1000)$ eventually; the healthy error
+is at most $T(-600000)$ by the prism growth. Thus the averaged
+witness has root at most $T(-1700000)$, global difference at most
+$T(101000)\le T(500000)$, and healthy error at most $T(-500000)$.
+These are the Crown bounds used in
+Proposition~\ref{prop:ex-trace-crown-buffer}.
+
+The paired estimate and healthy identity used here are constructed
+below for the actual local current and the corrected-primary terms.
+The finite summation, scaling and signed-average argument above then
+produces the witness to which the Crown buffer applies.
+
+\subparagraph{Payment of the paired local lens estimate.}
+The moving-depth price of each local lens can also be made explicit.
+Write $t=\widehat\beta_k$, $p=\operatorname{prism}(t)$ and set
+\[
+ w_r=T(1000000)t^{2(r-j)},\qquad j\le r\le k.
+\]
+Since $\widehat\beta_{r+1}\le t$, these weights obey
+$w_r\le\widehat\beta_{r+1}^{-2}w_{r+1}$, exactly the two-marker
+height recurrence. The number of steps is at most $\Delta(j,k)\le2H$,
+so
+$\log w_k\le100H+4H\log t\le p/32$ eventually. The last inequality
+follows from $p=B(t)^{40}+1100$, $B(t)=\lceil(\log t)^2\rceil$,
+whereas $H\le(\log t)^{48}$. In particular $1\le w_k\le e^{p/32}$.
+
+Here is the finite-stage local payment behind this permitted weight.
+Let $q=B(t)^{60}+1100$ be the lens truncation depth, and let $l$ be
+its fixed cover count. Put
+$c_0=\exp((s-3)l)$, where $s$ is the stage support exponent,
+$c=e^{p/2}$ and $\epsilon=e^{-p/8}$. The local lease tariff is at
+most $t^3$ at a late fixed-stage entry. If $u$ is that tariff times
+$e^{-q}$, then
+\[
+ 8e^p u\le\epsilon,\qquad
+ 4c c_0\le e^p,\qquad
+ t c_0e^2w_k^2/c\le\epsilon.
+\]
+Indeed $q\ge4p$ eventually, while every fixed multiple of a fixed
+power of $t$ is at most $e^{p/32}$. The forced allowance also satisfies
+$2e^p b\le\epsilon$ by its selected small-field payment. Consequently
+the local summed activity price is at most $3\epsilon$;
+$(2B(t)+1)^4(3\epsilon)\le1$ and $e^{3\epsilon}-1\le1$.
+These inequalities verify the local paired-marker expense with the
+actual weight $w_k$. The remaining wing tariff is the one already
+paid by the local finite-difference construction, at most one.
+All bounds are uniform in the torus and the actual representation
+within its selected parameter band.
+
+For each reflected cell take two marker slots with the same anchor.
+This has occupancy two, independently of the number of cells; the
+paid occupancy schedule is eventually at least two. The anchor
+separation, after displacement to the lens center, exceeds both the
+lens diameter and $64B(t)p+2B(t)$, since these are polynomial in $t$
+and $a_j/a_k\ge e^H$. The local lens expansion with the expense just
+verified therefore forms the paired marked polynomial. Its full-mode
+coefficient is the product of the reflected lens fields. The same-door
+whole-polynomial transport descends it to $m$ with the recurrence for
+$w_r$ above. Its regular and forced singleton entries vanish, and its
+action allowance is one per marker. The full-census bound consequently
+has per-cell action cost four and weight $w_m^2$, giving
+\[
+ \mathcal R_j(\mathsf B_{k,N}\mathrm{lens})
+ \le\frac{\exp((a_j/a_m)^4\mathcal T_m+4)}{w_m^2}
+ \le\exp(y^{27}+4-200H)
+ \le T(-1900000).
+\]
+The division by a square is essential: the construction uses two
+markers per cell. Thus neither the moving-depth choice nor the large
+negative exponent is an additional lens smallness assumption. The local lens expansion, its wing tariff and the healthy identity
+are derived in the following subsection.
+
+\subsubsection{The local finite-difference witness and its healthy identity}
+\label{subsec:trace-pair-healthy-construction}
+
+We describe the actual fields in the Crown construction, including the
+sign and the finite approximation used there. Write $h=\operatorname{peace}(t)>0$
+for the finite-difference step and $Y_e$ for the localized geometric
+current in direction $e$. Its support is the inner box $\mathcal B$.
+For a link $a$ in this box and a color direction obtained by conjugating
+a unit color by $g\in G$, let $U_{a,g,s}$ denote multiplication of that
+link by the Lie exponential of $s$ times the color. Set
+\[
+ J_a(U,g)=\mathbf1_{\{U\text{ healthy at }a\text{ at threshold }\vartheta/4\}}
+              \langle Y_e(U)_a,\operatorname{Ad}_g v_a\rangle.
+\]
+This is the cutoff used in the actual witness. It is bounded measurable,
+local in the union of the current support and the inspected links at
+$a$, and gauge covariant. Gauge covariance follows by changing $g$ by
+the gauge transformation at the starting vertex; Haar measure is unchanged.
+For a scalar action $F$ define
+\[
+ \mathcal L_{a,s}(F)(U)=\int_G
+ \left[J_a(U_{a,g,s},g)e^{F(U_{a,g,s})-F(U)}-J_a(U,g)\right]dg.
+\]
+The actual finite-difference witness is
+\[
+ W_e(U)=h^{-1}\sum_{a,\nu}\omega_\nu
+                  \mathcal L_{a,\lambda_\nu h}(F_q)(U),
+\]
+where the finite nodes $\lambda_\nu$ and weights $\omega_\nu$ are
+those of the selected order-$m$ derivative formula, and $F_q$ is the
+actual local action with support-cover cutoff $q$.
+
+The change of a link stays within the local healthy chart. Indeed smoothness
+of the Lie exponential on the unit ball gives
+$\operatorname{chord}(\exp v)\le C_G\|v\|$ there. For the finitely
+many nodes take $Z=C_G\max_\nu|\lambda_\nu|$. Since
+$h=\vartheta t^{-1/24}$, eventually $64Zh\le\vartheta$.
+Thus on the support of the cutoff the moved configurations have the
+same large-field flags, and the current and its inspected links remain
+inside the prescribed enlarged box. This is why one may use the same
+local action and the same local response in every term.
+
+To see the precise local expansion, write $F_q$ as its constant plus
+its support activities $f_P$ with cover at most $q$. Activities whose
+support misses $a$ have zero difference under the link change. Hence
+on the support of $J_a(U_{a,g,s},g)$,
+\[
+ e^{F_q(U_{a,g,s})-F_q(U)}
+ =\prod_{P\ni a}\left(1+
+       e^{f_P(U_{a,g,s})-f_P(U)}-1\right).
+\]
+Expanding this product gives the empty-set term and every nonempty
+cluster of changed activities, without discarding any term. The empty
+term is the local directional finite difference; the other terms are
+exactly the finite response corrections used to construct the corrected
+primary. Locality follows by taking the union of the supports in each
+term. The support-weighted sum of their absolute prices is bounded by
+the exponential of the sum of the individual difference prices. This
+is the elementary inequality
+$\sum_{A\ne\varnothing}\prod_{P\in A}b_P
+=\prod_P(1+b_P)-1\le e^{\sum_P b_P}-1$ for $b_P\ge0$.
+It also proves convergence and preserves the supports when the finite
+activity cutoff is enlarged.
+
+The individual action-difference prices follow by the fundamental theorem
+of calculus along the changed link. In the actual selected parameter
+band their weighted sum is bounded, up to fixed stage constants and
+subpower geometric factors, by
+\[
+ t\vartheta\,Zh+t(\vartheta^3+\vartheta^4)
+            +\vartheta^2\operatorname{humble}(t)
+            +\operatorname{hue}(t).
+\]
+Here $\vartheta=t^{-1/2}\mathcal M(t)$, $h=\vartheta t^{-1/24}$,
+and the monitor and the displayed geometric factors are subpowers of
+$t$. The first term is $Z\mathcal M(t)^2t^{-1/24}$;
+the second and third have strictly negative powers as well. Thus this
+sum tends to zero, and is eventually at most one. This is the wing
+tariff used in the paired-lens payment, now for these actual link changes.
+The bound is uniform in the torus because the price is a support-weighted
+sum based at $a$, not a sum over all translated cells.
+The cutoff current is at most $t$ eventually: its derivative bound is a
+fixed subpower current bound. The same expansion bounds each lens by
+$t(e^2+1)$, and therefore the finite weighted sum defining $W_e$ is
+at most $t^2$ after paying its fixed node weights, the subpower number
+of links and $h^{-1}\le t^{2/3}$ eventually. These are the global bounds required above.
+
+Choose a finite activity cabinet $F_{q,K}$ using the very same activities
+as $F_q$. Their uniformly summable prices imply uniform convergence of
+the action differences and hence of their exponentials. More explicitly,
+if the omitted absolute difference price is $\eta_K\to0$ and all full
+difference prices are at most $C$, then the difference of exponentials
+is at most $e^C(e^{\eta_K}-1)$, uniformly in $U$ and $g$.
+Multiplication by the bounded cutoff current and integration over Haar
+measure preserve this convergence. If
+$D_m=\sum_{a,\nu}|\omega_\nu|$, choose the common cabinet sufficiently
+large that each lens error is at most
+$h e^{-p}/(1+D_m)$. Then
+\[
+ \left|W_e-h^{-1}\sum_{a,\nu}\omega_\nu
+              \mathcal L_{a,\lambda_\nu h}(F_{q,K})\right|
+ \le e^{-p}.
+\]
+There are finitely many directions, so one cabinet suffices for all of
+them. Enlarging it to contain the finite action and loop cutoffs used by
+the corrected primary preserves these tail bounds. The cabinet is
+chosen at the given finite volume; no volume-uniform bound on its number
+of terms is needed.
+
+On the common healthy region the cutoff is one for every moved
+configuration. For the healthy identity we refactor the finite cabinet,
+keeping its short main and loop action in the core. Put
+$F=-\beta M-L$, where $M$ and $L$ are the actual finite main-action
+and loop-action sums. The exact local action identity is
+\[
+ F_{q,K}(U_{a,g,s})-F_{q,K}(U)
+ =F(U_{a,g,s})-F(U)+\sum_{P\in\mathcal A_a}\delta_P(U,g,s),
+\]
+where $\mathcal A_a$ contains only the residual changed activities,
+excluding those already placed in $F$. Thus its exponential factors as
+$e^{F(U_{a,g,s})-F(U)}\prod_{P\in\mathcal A_a}(1+(e^{\delta_P}-1))$.
+This differs from the expansion of the whole action used for the lens
+price: here the core exponential stays outside the product. Let $D_Y$
+denote the current directional derivative. The empty residual cluster is
+\[
+ h^{-1}\mathcal D_m(F,Y)=\operatorname{div}Y+D_YF+K_m(F,Y),
+\]
+where $K_m$ is the exact finite-difference remainder (defined by this
+identity). Write $R_{a,A}$ for the nonempty-cluster corrections from the
+product above and put
+$\mathcal C=h^{-1}\sum_{a,\nu,A\ne\varnothing}\omega_\nu R_{a,A}$.
+The corrected primary is precisely the sum
+\[
+ Z_e=\beta(B_e-D_YM)
+       +(\operatorname{div}Y_e-\operatorname{div}Y_e(1))
+       -D_YL+K_m(F,Y_e)+\mathcal C.
+\]
+These are the actual residual, centered divergence, loop, finite-difference
+and nonempty-cluster terms; each is constructed with the same current,
+finite cabinet and finite action sums. Combining the empty and nonempty
+terms and using $D_YF=-\beta D_YM-D_YL$ gives the exact identity
+\[
+ h^{-1}\sum_{a,\nu}\omega_\nu
+       \mathcal L_{a,\lambda_\nu h}(F_{q,K})
+       =Z_e-\beta B_e+\operatorname{div}Y_e(1).
+\]
+Thus for $X_e=Z_e-\beta B_e$ and
+$c_e=\operatorname{div}Y_e(1)$ the cabinet estimate proves
+$|X_e-W_e+c_e|\le e^{-p}$ on the common healthy region.
+This supplies the healthy identity with its actual constant and sign.
+Applying the finite signed axial average kills $(c_e)$, exactly as in
+the Crown assembly above.
+
+\subparagraph{Selecting and localizing the actual geometric current.}
+The current in this construction is selected from the inherited geometric
+fields on the same finite-volume history. The selection uses the four-jet
+bounds and the finite family of quadratic tests, not compactness of all
+smooth fields. At a fixed depth $k$, the inherited finite-height
+construction has error bounds of the form
+$2^{-(r+1)}d_j(\widehat\beta_k)$ for jet orders $2\le j\le4$.
+The history used here is the one bound to its own transfers and doors
+by Proposition~\ref{prop:ex-lattice-selected-course-binding}. We now
+include the geometric purchases in that history's finite-stage ledger.
+Fix a stage profile, kernel choice, and required differentiation order.
+The local adjacent-field estimates give positive allowable analytic
+radius $a_*$, a carrier constant, and an early derivative constant
+$H_*$. Choose the integer block large enough for the inequalities
+below, which involve $H_*$ only; the late derivative estimate then
+gives the finite constant $D_*$ and radius $b_*$. With that block fixed, the coupling increment
+$v=\gamma\log L$ is fixed. Increasing the stage entry ensures
+\[
+ (\log t)^{-1}\le\min(b_*,a_*/2),\quad
+ (\log(t+v))^{-1}\le c_*,\quad
+ \frac{\log(t+v)}{\log t}\le L,\quad
+ \lceil(\log t)^2\rceil\ge R_*.
+\]
+Here $b_*,c_*>0$ are the late derivative and canonical-top radii,
+and $R_*$ is the finite geometric support requirement. The canonical
+path-field jet bill is also bounded by its logarithmic budget after
+increasing this same entry. Each inequality follows respectively from
+inverse-log decay, the log-ratio limit one, cover divergence, or a fixed
+jet bill divided by a positive log power. The bank inequalities below
+are paid at that entry as well. The maximum over the finitely many
+active and next-stage profiles is an admissible common-calendar
+purchase. Consequently every sufficiently late adjacent transition of
+this very history has the required geometric derivative, support and
+bank bounds. No separate history with better estimates is substituted.
+
+Here the inheritance is the geometric pullback through the actual
+selected sound door, followed by the fixed main, flux, leaf and trace
+averages; it is not the coefficient chart's half-accuracy map.
+Concretely a scalar component of engineering degree $d$ is pulled back
+through the selected stationary interpolation and averaged with its
+specified finite sheaf, then multiplied by $L^d$. The vector current
+uses the differentiated interpolation and factor $L^5$. The stress
+uses the flux sheaf, the current and error use the main sheaf, and the
+auxiliary scalar uses the leaf sheaf plus the trace correction of the
+stress. The twist uses its leaf term and the two antisymmetric trace
+corrections. These are the exact discrete product-rule corrections:
+they preserve the trace, symmetry and divergence identities at every
+step. The interpolation, its derivative and the path entering these
+formulas are the ones of the actual selected transition, as bound in
+Proposition~\ref{prop:ex-lattice-selected-course-binding}; there is
+no additional choice of a free interpolating field. Its
+finite-height estimates are obtained as follows. At the top finite
+height use the following explicit fields. Let
+$F_{ab}(z)=\operatorname{curv}(U(\square_{ab}(z)))$ be the oriented
+plaquette curvature, with the curvature map and color inner product
+of the fixed gauge group. Set
+\[
+ J^0_{ab}(z)=\frac{\delta_{ab}}4\sum_{i,l}
+          \langle F_{il}(z),F_{il}(z)\rangle
+        -\sum_i\langle F_{ai}(z),F_{bi}(z)\rangle.
+\]
+The current $Y^0_b(z)$ is supported on links starting at $z$ and has
+color component $F_{ba}(z)$ on the link in direction $a$. Put
+$Q^0=0$, $\mathrm{twist}^0=0$, and
+$E^0_b=\sum_a\nabla_a J^0_{ab}-\mathcal A(Y^0_b)$, where
+$\mathcal A$ is the actual path action's directional variation.
+Trace zero and symmetry of $J^0$ follow by summing its displayed
+formula and symmetry of the inner product; the divergence identity
+holds by the definition of $E^0$. Gauge covariance follows from
+conjugation covariance of plaquette curvature. At the flat field
+$F_{ab}=0$, so the scalar fields have zero constant and first jets.
+Their four-jet bounds follow by differentiating the finite plaquette
+products and the fixed smooth curvature map, together with the actual
+path-action derivative bounds. The quadratic tests are obtained by
+replacing each plaquette curvature by its first derivative, the discrete
+curl. On the fixed polynomial test jets this curl agrees with the free
+curvature as soon as the period contains the test stencil without wrap;
+products give the stress quadratic form and pairing the current's
+linear curl with the test direction gives its mixed grade-five form.
+Thus these tests are eventually exact on the growing-period tail.
+Their
+weighted jets through order four have fixed bounded prices, their
+quadratic tests converge to the prescribed free forms as the period
+grows, and their geometric identities hold exactly. At each adjacent
+step apply the actual inherited derivative estimate, reserving one
+third of the next jet budget for each summand in the stress, auxiliary
+and twist formulas. If $A_*$ is the fixed total averaging debt and
+$H_*$ the derivative constant, choose the stage block $L$ so that
+\[
+ 3A_*2^{13}H_*^2/L<1/2,\qquad
+ 3L^5A_*(2H_*/L^2)^s<1/2\quad(s=3,4).
+\]
+Such an integer block exists because the powers of $L$ are $-1,-1,-3$.
+The second-jet principal contribution is bounded by
+$A_*2^{13}H_*^2(C+(d_2(t')+C)/L)$; dividing by $d_2(t)$,
+with $d_s(t)=(\log t)^s$ and $t'=t+\gamma\log L$, its limit is
+$A_*2^{13}H_*^2/L<1/6$.
+For orders three and four the full majorant, before division by the
+coarse budget, is
+\[
+ L^5A_*\left[(2H_*/L^2)^s d_s(t')+
+   \sum_{\pi\ne\mathrm{atomic}}D_*^{|\pi|}d_{|\pi|}(t')\right].
+\]
+The sum is over the finitely many non-atomic ordered derivative
+partitions, each with $|\pi|<s$; it is retained in the estimate.
+The leading quotient tends to
+$L^5A_*(2H_*/L^2)^s<1/6$. Every other chain-rule term has
+strictly fewer than $s$ derivative factors, so its quotient contains
+$(\log t)^{r-s}$ with $r<s$ and tends to zero. Thus a late stage
+entry pays all three summands and halves the error budget at each
+step. The same exact pullback and averaging identities preserve the
+quadratic tests and the geometric field equations. Induction over the
+finite number of adjacent steps gives the displayed
+$2^{-(r+1)}d_j$ error bounds. Only after fixing that number do we
+pass to the large terminal-depth and large-period tail of the same
+history. These are the stage block and entry purchases already allowed
+by the common selected-history calendar.
+
+Given a positive error $\epsilon$, first choose a finite $r$ making
+these three bounds less than $\epsilon$. The fixed-height convergence
+then gives, on the common $(N,p)$ tail, the inherited fields with jet
+price at most $d_j(\widehat\beta_k)+1$ and quadratic-test error at
+most $\epsilon$. These statements hold uniformly over sites: otherwise
+choose a violating site at each bad volume, contradicting the same
+fixed-height estimate for that sequence of sites. There are only
+finitely many component and quadratic-test indices, so one tail suffices.
+Take $\epsilon=\operatorname{shock}(\widehat\beta_k)$ at this fixed
+$k$, and average over all translations on that same torus.
+The inherited field equations are linear, the price bounds convex,
+and the quadratic tests translate with their base point, so this average retains all bounds
+and gives the required exact symmetry of the geometric family.
+In particular the actual current has the common exponentially weighted
+four-jet price $\operatorname{trophy}(t)$ at decay rate
+$a=\operatorname{east}(t)$.
+
+Localize this current at radius $r=\operatorname{rim}(t)$ using the
+same smooth local extension as the other geometric fields. The
+localization estimate in the charge construction bounds its lost
+four-jet price by
+\[
+ C\,\operatorname{momentPrice}_{P}(a/4)
+                 e^{-ar/4}\operatorname{trophy}(t).
+\]
+The retained current is supported in the box of radius $4(r+2)$.
+For any fixed derivative order $s$ its composition derivative price is
+at most $P_s(r)\operatorname{trophy}(t)$, with a fixed polynomial
+$P_s$. To obtain this last statement, differentiate the local extension:
+at each derivative order there are finitely many product and chain-rule
+terms, each involving a bounded derivative of the fixed extension and
+at most a fixed power of the number of sites in the radius-$r$ box.
+The four-jet coefficient price supplies the coefficients; the extension
+has only these four polynomial jets before composition. Thus neither
+this polynomial nor its constants depend on the ambient torus.
+The clock choices give
+\[
+ C\operatorname{momentPrice}_{P}(a/4)e^{-ar/4}
+                    \operatorname{trophy}(t)\le t^{-70},\qquad
+ P_s(r)\operatorname{trophy}(t)\le\mathcal M(t)^{1/200}
+\]
+eventually, for each fixed $s$. The first is the exponential-tail
+purchase; the second follows by taking logarithms of the fixed
+polynomial bill against the monitor. These are the local current and
+derivative bounds used in the cutoff and finite-difference construction.
+All fixed orders required at an active stage are paid together before
+that stage is used. This fixes the current itself before the finite
+cabinet approximation and before the corrected-primary coefficients
+are chosen.
+
+
+The same localization is applied to the scalar geometric stress, its
+auxiliary scalar field and its first-difference fields. Their local
+extensions use the same cutoff; the finite algebraic identities between
+them are preserved by taking the prescribed shifted linear combinations.
+The product and chain-rule argument just given bounds each fixed-order
+jet by a polynomial in the localization radius times its inherited
+price. Passing to a first difference adds only finitely many translated
+copies and one fixed enlargement of the support. The geometric current,
+stress, auxiliary field, twist fields and divergence therefore have
+common fixed-order analytic bounds at most $\mathcal M(t)^{1/50}$
+after increasing the stage entry. Their zero and first scalar jets are
+preserved by the local extension. The healthy quadratic Taylor
+conversion and the resulting reference-field price in the charge
+construction consequently apply to this complete family, including its
+first differences; they are not inferred from a bound on the current
+alone.

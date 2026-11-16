@@ -1,10 +1,10 @@
 % Scalar price of the finite-volume Bill response and its root receipt.
-\section{The paid-response price bound}
+\subsection{The paid-response price bound}
 \label{sec:ex-lattice-trace-bill-prices}
 
 We compute the quantitative root-price bound attached to a paid finite-volume
 response. This is the numerical input used for the two component errors in
-Section~\ref{sec:ex-lattice-trace-probe-assembly}. The computation has two
+Subsection~\ref{sec:ex-lattice-trace-probe-assembly}. The computation has two
 parts: a coefficient-size estimate from the paid label and its approximation
 receipt, and a negative-rate bound on the native root price.
 
@@ -28,7 +28,7 @@ schedule. Let
 \]
 be the local stake price and the gain from level $K_i$ down to $J_i$,
 where $S_j$ is the scale coordinate. The
-source's native root allowance for a grade-$d$ response has the exact form
+native root allowance for a grade-$d$ response is
 \begin{equation}
  n_{d,i}=\frac{s_i}{t_i^{-1}\left(
      \dfrac{f_i/2}{A_{J_i}^{-d}(t_i^3/\gamma_i)}\right)}.
@@ -57,27 +57,61 @@ requested excess over $\alpha+\alpha'$. Nonnegative sums of equal-rate
 sequences retain that rate by the same argument and the elementary bound
 $u+v\leq2\max(u,v)$.
 
-The following five scale estimates are inputs to this section; they are
-properties of the selected schedule, proved in the source from its
-selection rules and simplicity of the gauge group, and are not derived
-here. Four are rate-zero tickets:
-\[
- s_i,\qquad v_i,\qquad t_i^4,\qquad f_i^{-1};
-\]
-the fifth is the gain estimate $\tau_i(500)\le\gamma_i$ for large $i$
-stated below.
-The first is the stake receipt. The second is the dilation-ratio receipt at
-the selected basin. The third is the scale-at-summit receipt. For the fourth,
-$J_i\leq K_i$ and the inverse-flux receipt applies to the flight scale at
-$J_i$. Multiplication, including the constant factor $2$, therefore gives
-a rate-zero ticket for
-\[
- B_i=\frac{2s_i v_i t_i^4}{f_i}.
-\]
-The gain estimate supplies eventually
-$\tau_i(500)\leq\gamma_i$, where
+\begin{lemma}[The five scale estimates for the paid response]
+\label{lem:trace-bill-scale-tickets}
+For the fixed selected history and each fixed grade $d$, the sequences
+$s_i,v_i,t_i^4,f_i^{-1}$ have rate-zero tickets. Moreover, eventually
+$J_i<K_i$ and $\gamma_i\ge\tau_i(500)$, where
 \[
  \tau_i(q)=\exp\!\left(\frac{q}{10^4}G_i\right).
+\]
+The eventual cutoff may depend on the grade and the requested ticket
+exponent, but not on volume, period, observable or window.
+\end{lemma}
+\begin{proof}
+We apply the moving-depth bounds of
+Lemma~\ref{lem:ex-trace-pair-moving-bills}. Its frame $j$, first opened
+level $m$, and summit $k$ are exactly $i,J_i,K_i$ here: the opening
+condition is $(A_i/A_{J_i})\ge\lceil(\log\widehat\beta_{J_i})^2\rceil^2$,
+and the summit is the first level after $i$ whose scale gap is at least
+$G_i$. Its treasury $\mathcal T_{J_i}$ is the same vacuum treasury in
+$s_i$. No field, paid label, or terminal volume enters those choices.
+Set $x=\widehat\beta_i$ and $y=\log x$, so $G_i=y^{48}$.
+That lemma gives on a common tail
+\[
+ \frac{A_i}{A_{J_i}}\le y^6,\qquad
+ \left(\frac{A_i}{A_{J_i}}\right)^4\operatorname{Treasury}(J_i)
+       \le y^{27},\qquad
+ \widehat\beta_{K_i}\le2x,\qquad
+ S_{K_i}-S_{J_i}\ge\tfrac12 y^{48},\qquad J_i<K_i.
+\]
+These bounds were proved there from the first-opening minimality,
+the summit first-crossing bound, and the stage treasury payment;
+their proof does not use the paid-response estimate of this section.
+The flight at fixed grade is
+$f_i=\widehat\beta_{J_i}^{-w_d}$, where $w_d>0$ is the fixed exponent
+of the selected height schedule. Monotonicity of the hatted coupling
+and $J_i<K_i$ give $f_i^{-1}\le(2x)^{w_d}$.
+Consequently the logarithms of our four positive factors are bounded by
+\[
+ y^{27}+5,\qquad 6d\log y,\qquad 4(y+\log2),\qquad
+ w_d(y+\log2),
+\]
+respectively. Dividing each bound by $y^{48}$ gives zero in the limit.
+For every $\epsilon>0$, each factor is therefore at most
+$\exp(\epsilon G_i)$ eventually. This proves all four tickets.
+Finally
+\[
+ \gamma_i=\exp((S_{K_i}-S_{J_i})/8)
+       \ge\exp(G_i/16)\ge\exp(500G_i/10^4)=\tau_i(500),
+\]
+since $1/16>500/10^4$ and $G_i\ge0$.
+\end{proof}
+
+Taking the product of the four tickets, including the fixed factor $2$,
+gives a rate-zero ticket for
+\[
+ B_i=\frac{2s_i v_i t_i^4}{f_i}.
 \]
 The ticket bound at exponent $70/10^4$ gives $B_i\leq\tau_i(70)$
 eventually. Dividing by the gain and using multiplicativity yields
@@ -119,7 +153,7 @@ Fix the volume index $N$, the period $p$ and the grade $d$, and let
 $K=K_i\le N$. Let $g$ be a scale-$K$ observable, $y$ a grade-$d$
 coefficient and $x$ a public grade-$d$ label, and let
 $\operatorname{Col}(x)=\mathcal C_K(x)$ be the scale-$K$ response column of
-$x$ defined in Section~\ref{sec:ex-lattice-trace-coffer-supplier} for the
+$x$ defined in Subsection~\ref{sec:ex-lattice-trace-coffer-supplier} for the
 same $N,p,d$. Suppose $(y,x)$ satisfies the hypotheses of
 Lemma~\ref{lem:ex-trace-bill-column-size}. Assume its paid root receipt:
 whenever the window of the selected schedule from $i$ to $J_i$ is open,
@@ -164,11 +198,14 @@ then gives the stated $\tau_i(-430)$ bound, uniformly over all allowed
 windows and observables.
 \end{proof}
 
-The label-producing receipt is obtained in the source from a funded atomic
-activity and a scale-dependent resource transfer. The mathematical inputs
-are not just a coefficient bound: the atomic activity carries a bounded
-charge, a paid profile, and a density identity; its finite-volume conversion
-also uses the price-duality estimate against every allowed test. The source
-construction of those atomic and dual-price inputs remains part of the full
-trace supplier. This section discharges the coefficient and rate arithmetic
-once they are available.
+The label-producing receipt is supplied by the Bill specialization in
+Subsection~\ref{sec:ex-lattice-trace-coffer-supplier}. Its label is chosen
+once, before the window tests, from the actual atomic response, density
+identity and two weight payments. For each fixed inflation and grade,
+the scale is first chosen sufficiently late, then the period sufficiently
+large at that scale; the conclusion is uniform over every larger cutoff
+and every permitted window for that one label. The chosen and reference
+atomic certificates used here are constructed in
+Subsection~\ref{sec:ex-lattice-trace-local-charge}. Thus the present
+coefficient and rate arithmetic applies to the same labels, rather than
+to separately selected witnesses for different tests.
