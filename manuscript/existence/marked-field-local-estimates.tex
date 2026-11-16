@@ -1,13 +1,13 @@
-\subsection{The local reserve and marked one-body invitation}
+\subsection{Forced remainder bounds for a marked one-body insertion}
 \label{sec:ex-marked-field-local}
 
 This unit closes two finite estimates used when a marked label is inserted
 at the terminal scale of a selected history. The first is the smallness of
 the forced reserve relative to a fixed section and its finite frame. The
 second converts a paid local section into the exact coefficient and
-remainder data called a \emph{Cream}. It keeps the actual one-body
+remainder data called a \emph{terminal insertion}. It keeps the actual one-body
 insertion, its normalization, and its exponential support bound visible.
-The later recentering of this Cream through all earlier scales is a separate
+The later recentering of this terminal insertion through all earlier scales is a separate
 step and is not claimed here.
 
 \subsubsection{The forced reserve beats every fixed frame bound}
@@ -19,27 +19,27 @@ Let $F_d$ be a finite frame with grades $(r_j,s_j)$, $j\in J_d$, and set
 For a budget threshold $\vartheta_N\in(0,1]$, define the finite seat
 bound
 \[
- \operatorname{Seat}_{d,N}=
+ \operatorname{frameWeight}_{d,N}=
        \sum_{j\in J_d}\vartheta_N^{-s_j}.
 \]
 Assume the scale parameter $\beta_N\to\infty$ and
 $\vartheta_N^{-1}\leq\beta_N$. Define
 \[
- \operatorname{stain}(x)=
+ \operatorname{forcedReserve}(x)=
  \exp\!\left(-\exp\!\left(\frac{(\log\log x)^2}{5}\right)\right)
  \quad(x>1),\qquad
- \mathfrak f_N=\operatorname{stain}(\beta_N),
+ \mathfrak f_N=\operatorname{forcedReserve}(\beta_N),
 \]
 and, for fixed $x,y\geq0$,
 \[
- \operatorname{Storm}_{d,N}(x,y)=(x+2y)\operatorname{Seat}_{d,N}.
+ \operatorname{probeBound}_{d,N}(x,y)=(x+2y)\operatorname{frameWeight}_{d,N}.
 \]
 
 \begin{lemma}[Reserve versus a fixed section]
 \label{lem:ex-marked-sanded}
 For every fixed $d$ and $x,y\geq0$,
 \[
- \sqrt{\mathfrak f_N}\,\operatorname{Storm}_{d,N}(x,y)\leq1
+ \sqrt{\mathfrak f_N}\,\operatorname{probeBound}_{d,N}(x,y)\leq1
 \]
 for all sufficiently large $N$.
 For every fixed finite stencil $X$ on the cover lattice,
@@ -52,11 +52,11 @@ for all sufficiently large $N$ as well.
 Write $M=M_d$, $k=k_d$, and $A=x+2y$. Since each $s_j\leq k$ and
 $\vartheta_N^{-1}\leq\beta_N$,
 \[
- \operatorname{Seat}_{d,N}\leq M\beta_N^k.
+ \operatorname{frameWeight}_{d,N}\leq M\beta_N^k.
 \]
 Choose $N$ large enough that $\beta_N\geq\max\{1,AM\}$. Then
 $A M\beta_N^k\leq\beta_N^{k+1}$, so it suffices that
-$\sqrt{\operatorname{stain}(\beta_N)}\,\beta_N^{k+1}\leq1$.
+$\sqrt{\operatorname{forcedReserve}(\beta_N)}\,\beta_N^{k+1}\leq1$.
 For completeness, put $v=\log\log\beta_N$, which tends to infinity
 with $N$. The logarithm of the left side is
 \[
@@ -97,7 +97,7 @@ same terminal threshold: the regional forced mass is at most one, its
 support cover number is at most $81$, and the square-root reserve times
 the fixed storms bound is at most one.
 
-\subsubsection{From a paid section to a Cream}
+\subsubsection{From a paid section to a terminal insertion}
 
 We record the exact one-body statement. Let $C$ be a selected finite-volume
 family, $N$ its terminal level, $p$ the period, and $d$ a label degree.
@@ -112,7 +112,7 @@ $B_N$ the support radius in the terminal budget point. Put
  X&=\operatorname{stencil}(V)\cup\operatorname{stencil}(T),\\
  D&=\operatorname{regional}(X,0),\qquad
  c_N=\text{column count},\\
- s_N&=\operatorname{Storm}_{d,N}\bigl(\mathcal B(V),
+ s_N&=\operatorname{probeBound}_{d,N}\bigl(\mathcal B(V),
                                        \mathcal B(T)\bigr).
 \end{align*}
 where the two bounds are the global value-norm constants of $V$ and $T$;
@@ -209,7 +209,7 @@ The reserved-mass bound is
  \overline A_N\zeta_{d,N}\leq u_NE_N,
  \qquad 4(1+c_N)Q_N\leq E_N.
 \]
-Equivalently, these are the $\mathrm{Cream}$ fields used by the selected
+Equivalently, these are the terminal insertion fields used by the selected
 field calibration.
 \end{proposition}
 \begin{proof}
@@ -256,9 +256,9 @@ and likewise for $T$. The scaled-coefficient estimate gives the explicit
 envelopes
 \[
  \|V.\mathrm{places}(a,0,U)\|
-       \leq\mathcal B(V)\operatorname{Seat}_{d,N},\qquad
+       \leq\mathcal B(V)\operatorname{frameWeight}_{d,N},\qquad
  \|T.\mathrm{places}(a,0,U)\|
-       \leq\mathcal B(T)\operatorname{Seat}_{d,N}.
+       \leq\mathcal B(T)\operatorname{frameWeight}_{d,N}.
 \]
 These are the uniform pointwise bounds used in the residual estimate. The local insertion
 construction uses this read relation and the terminal Keeper to split the
@@ -283,12 +283,12 @@ $|r-\operatorname{mask}_D(r)|\leq|r|\leq|y|+|g|$ and
 $|\xi-\operatorname{mask}_A(\xi)|\leq|\xi|$. The undilated vectors $e_j$
 and $\operatorname{core}e_j$ have coefficient size at most one; their
 dilations, the coefficient vectors of $g$ and $\xi$, therefore have
-coefficient size at most $\operatorname{Seat}_{d,N}$. The triangle
+coefficient size at most $\operatorname{frameWeight}_{d,N}$. The triangle
 inequality and the two section
 bounds then give the pointwise bound
 \[
- |b_0(U)|\leq \mathcal B(V)\operatorname{Seat}_{d,N}
-   +2\mathcal B(T)\operatorname{Seat}_{d,N}=s_N.
+ |b_0(U)|\leq \mathcal B(V)\operatorname{frameWeight}_{d,N}
+   +2\mathcal B(T)\operatorname{frameWeight}_{d,N}=s_N.
 \]
 This is the exact ``storms'' majorant; the two local-section terms are
 charged separately.
@@ -387,7 +387,7 @@ $\sqrt{w_N}s_N\leq1$,
  1+t_N\leq 2+e^{81\alpha_N}(b_N+c_N+2|X|)=Q_N.
 \]
 Here the extra $1$ is the coefficient size of $e_j$; this proves the
-Cream charge clause. The actual reserved mass is
+terminal insertion charge clause. The actual reserved mass is
 \[
 A_j=e^{(\alpha_N+2)\operatorname{coverNumber}(B_N,D)}s_N,
 \]

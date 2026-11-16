@@ -14,12 +14,12 @@ $0\leq e<d$. Each coordinate has an engineering weight in $\{0,\ldots,d\}$.
 Write $\mu(v)=\sum_\alpha|v_\alpha|$ and let $P$ retain the coordinates
 of weight at most $e$. For a block ratio $L\geq1$, let
 \[
- (\mathsf D_Lv)_\alpha=L^{d-\deg\alpha}v_\alpha.
+ (\mathsf D^{\rm gr}_{d,L}v)_\alpha=L^{d-\deg\alpha}v_\alpha.
 \]
-Thus $P$ commutes with $\mathsf D_L$ and
+Thus $P$ commutes with $\mathsf D^{\rm gr}_{d,L}$ and
 \begin{equation}\label{eq:ope-dilation-split}
- \mu(P\mathsf D_Lv)\geq L^{d-e}\mu(Pv),\qquad
- \mu((1-P)\mathsf D_Lv)\leq L^{d-e-1}\mu(v).
+ \mu(P\mathsf D^{\rm gr}_{d,L}v)\geq L^{d-e}\mu(Pv),\qquad
+ \mu((1-P)\mathsf D^{\rm gr}_{d,L}v)\leq L^{d-e-1}\mu(v).
 \end{equation}
 Both inequalities follow by summing the coordinate inequalities.
 
@@ -28,7 +28,7 @@ At consecutive levels $i+1,i$, the readouts of the same bare vector are
 $a,b$. There is an invertible linear map $B$ preserving $\ker P$, with
 \[
  \mu(Bv),\ \mu(B^{-1}v)\leq K\mu(v),\qquad
- \mu(b-B\mathsf D_La)\leq\epsilon\mu(a).
+ \mu(b-B\mathsf D^{\rm gr}_{d,L}a)\leq\epsilon\mu(a).
 \]
 The last estimate follows in the construction from the stronger bound
 with the nonconstant-coordinate part of $a$ on the right. Its numerical
@@ -40,7 +40,7 @@ conditions are
 Here $s_0=\zeta_i$ and $s=\zeta_{i+1}$ are the column allowances.
 These triangular estimates concern the actual readouts, including their
 nonlinear corrections. On the selected family their hypotheses follow
-from the paid heading and the stored backward transfer, as follows.
+from the linear coefficient map and the stored backward transfer, as follows.
 
 \begin{lemma}[The triangular step on the selected family]
 \label{lem:ope-selected-triangle}
@@ -49,21 +49,21 @@ Proposition~\ref{prop:ex-c02-selected-record} at grade $d$ and an
 adjacent step above its reference level. Its consecutive readouts
 satisfy the preceding one-step hypotheses and
 \eqref{eq:ope-triangle-numbers} for every $e<d$, with the same
-readouts and heading matrix for all these $e$.
+readouts and coefficient matrix for all these $e$.
 \end{lemma}
 \begin{proof}
 The matrix $B$ in Subsection~\ref{sec:heading-history-handoff} is the
-heading of this very transition. Its off-diagonal entry $B_{bi}$
+grade-mixing factor of this transition. Its off-diagonal entry $B_{bi}$
 can be nonzero only when $g_i<g_b$; its diagonal entries are nonzero.
 Consequently a vector supported on grades greater than $e$ is sent
 to one supported on grades greater than $e$. This proves preservation
 of $\ker P$. Equation~\ref{eq:heading-both-prices} bounds both $B$
 and its inverse by a stage constant $K\ge1$, which the purchased
-heading bound $D$ dominates. The heading is
-$B\mathsf D_L$, with the factor $L^{d-g_i}$ in coordinate $i$.
+matrix bound $D$ dominates. The full linear map is
+$B\mathsf D^{\rm gr}_{d,L}$, with the factor $L^{d-g_i}$ in coordinate $i$.
 
 Proposition~\ref{prop:selected-reprise} constructs the lower coefficient family
-from the upper one using this heading and the common interpolation
+from the upper one using this map and the common interpolation
 of Proposition~\ref{prop:ex-selected-interpolation}. Its lead error
 is at most $\epsilon\|\operatorname{core}a\|_1$, where
 $\epsilon=\eta(1+s)R_F\ge0$ in
@@ -100,13 +100,13 @@ $\ker P$. Applying this observation to $Bv-PBv$ gives
 \begin{equation}\label{eq:ope-low-inverse}
  \mu(Pv)=\mu(PB^{-1}PBv)\leq K\mu(PBv).
 \end{equation}
-Suppose now that $\mu(a)\leq s\mu(Pa)$, and set $Y=\mu(P\mathsf D_La)$.
+Suppose now that $\mu(a)\leq s\mu(Pa)$, and set $Y=\mu(P\mathsf D^{\rm gr}_{d,L}a)$.
 By \eqref{eq:ope-dilation-split} and $s\leq L$,
 \[
- \mu(\mathsf D_La)\leq Y+L^{d-e-1}s\mu(Pa)\leq2Y,
+ \mu(\mathsf D^{\rm gr}_{d,L}a)\leq Y+L^{d-e-1}s\mu(Pa)\leq2Y,
  \qquad \mu(a)\leq sY.
 \]
-The error $E=\mu(b-B\mathsf D_La)$ consequently satisfies
+The error $E=\mu(b-B\mathsf D^{\rm gr}_{d,L}a)$ consequently satisfies
 $2KE\leq Y$. On the other hand, \eqref{eq:ope-low-inverse} gives
 $Y\leq K(\mu(Pb)+E)$, so $Y\leq2K\mu(Pb)$. It follows that
 \begin{equation}\label{eq:ope-cone-step}
@@ -114,9 +114,9 @@ $Y\leq K(\mu(Pb)+E)$, so $Y\leq2K\mu(Pb)$. It follows that
  L^{d-e}\mu(Pa)\leq s\mu(Pb).
 \end{equation}
 If instead $Pa=0$, \eqref{eq:ope-dilation-split}, $\epsilon\leq1$,
-and $\mu(a)\leq\mu(\mathsf D_La)$ give
+and $\mu(a)\leq\mu(\mathsf D^{\rm gr}_{d,L}a)$ give
 \begin{equation}\label{eq:ope-transverse-step}
- \mu(b)\leq(K+1)\mu(\mathsf D_La)
+ \mu(b)\leq(K+1)\mu(\mathsf D^{\rm gr}_{d,L}a)
        \leq sL^{d-e-1}\mu(a).
 \end{equation}
 The lost power of $L$ distinguishes the transverse estimate from the

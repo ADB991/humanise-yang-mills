@@ -191,17 +191,17 @@ slope $s_G$, put
  \operatorname{siteFactor}(B)=e\{2(16B+9)\}^4,
 \]
 and, at the selected coupling $\beta_F>1$, define
-\[
- \operatorname{ribbon}(Q,L,\beta)
- =\beta_F^{\rho}\exp\!\left(Q.\mathrm{relative}\,
- \operatorname{preCost}(Q.\mathrm{halo}+5)\right),\qquad
- \Delta_{G,L}(\beta)=\exp\!\left((\log\log\beta_F)^2\right).
-\]
-The shipment tariff is
+\[\begin{aligned}
+ \operatorname{activityBound}(Q,L,\beta)
+ &=\beta_F^{\rho}\exp\!\left(Q.\mathrm{relative}\,
+ \operatorname{preCost}(Q.\mathrm{halo}+5)\right),\\
+ \Delta_{G,L}(\beta)&=\exp\!\left((\log\log\beta_F)^2\right).
+\end{aligned}\]
+The activity constraint is
 \begin{equation}
  N\,\operatorname{siteFactor}(B_0)
  \exp\!\left((Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)\right)a
- \leq \operatorname{ribbon}(Q,L,\beta),
+ \leq \operatorname{activityBound}(Q,L,\beta),
  \label{eq:ex-lattice-volant-tariff}
 \end{equation}
 where $N$ is the occupancy count and $a$ is the available shipment amount.
@@ -252,9 +252,9 @@ higher coefficients are the full products in the field polynomial.
 \label{thm:ex-lattice-volant-supplier}
 Assume the selected history provides the ungrouped paid terms and exact
 identities above, at lower exponent $b$ and upper exponent $e_1\geq100$.
-Assume $Q.\mathrm{relative}\geq4$, $4\varepsilon_Q<e_1$, foam at scale $L$, $B_1\leq2B_0$, and parent-site occupancy at most $N$. Assume positive marker weights and the birth estimate displayed in the proof. The offer is a site-rooted ledger at exponent $e_1-4$ and allowance $a$, with the fine sites of its named origins in the crests, and the shipment tariff \eqref{eq:ex-lattice-volant-tariff} holds. Then, with $c=e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}a$, the birth-region weights $f_i$ defined in the proof satisfy, at every site $z$,
+Assume $Q.\mathrm{relative}\geq4$, $4\varepsilon_Q<e_1$, foam at scale $L$, $B_1\leq2B_0$, and parent-site occupancy at most $N$. Assume positive marker weights and the birth estimate displayed in the proof. The offer is a site-rooted ledger at exponent $e_1-4$ and allowance $a$, with the fine sites of its named origins in the crests, and the activity constraint \eqref{eq:ex-lattice-volant-tariff} holds. Then, with $c=e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}a$, the birth-region weights $f_i$ defined in the proof satisfy, at every site $z$,
 \[
- \sum_{i:z\in\mathrm{birth}_i}f_i e^{Q.\mathrm{relative}\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}\leq N\operatorname{siteFactor}(B_0)c\leq\operatorname{ribbon}(Q,L,\beta).
+ \sum_{i:z\in\mathrm{birth}_i}f_i e^{Q.\mathrm{relative}\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}\leq N\operatorname{siteFactor}(B_0)c\leq\operatorname{activityBound}(Q,L,\beta).
 \]
 Moreover,
 the grouped families
@@ -265,7 +265,7 @@ the grouped families
 have the same rooted budgets as the ungrouped families, retain the support
 and shell conditions, and satisfy the per-box quiet and singleton identities
 and the push identity in \eqref{eq:ex-lattice-volant-quiet}--
-\eqref{eq:ex-lattice-volant-play}. The selected door, tuning, and
+\eqref{eq:ex-lattice-volant-play}. The selected interface, tuning, and
 slot-separation conditions are retained. The producers of the paid
 terms are treated separately in Subsection~\ref{sec:ex-lattice-rg-multisource};
 this theorem proves their tariff conversion and assembly.
@@ -311,7 +311,7 @@ origin in its birth support, then lowering the rooted exponent by one gives
  \sum_{i:z\in\mathrm{birth}_i}f_i
        e^{Q.\mathrm{relative}\,\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}
  \leq N\operatorname{siteFactor}(B_0)c
- \leq\operatorname{ribbon}(Q,L,\beta).
+ \leq\operatorname{activityBound}(Q,L,\beta).
  \label{eq:ex-lattice-volant-root-lift}
 \end{equation}
 The final inequality is exactly the purchased tariff
