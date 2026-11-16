@@ -1,4 +1,4 @@
-\section{Buying the full-mesh finite-difference bounds}
+\subsection{Buying the full-mesh finite-difference bounds}
 \label{sec:ex-fullmesh-fixedbounds}
 
 We prove the finite-volume estimate needed before any continuum extraction. The
@@ -33,34 +33,34 @@ Let $I$ be the mesh-period index set just described, and let $X_i$ be a
 finite-dimensional normed coefficient space. Suppose that for each $i$ there
 are a projection $P_i:X_i\to X_i$, a linear map $L_i:X_i\to Y_i$, and a constant $Z>0$
 such that
-\[
-   \|P_i z\|\le Z\|L_i(P_i z)\|.                         \tag{1}\label{eq:ex-cap-rank}
-\]
+\begin{equation}
+   \|P_i z\|\le Z\|L_i(P_i z)\|.                         \label{eq:ex-cap-rank}
+\end{equation}
 Let $x_i\in X_i$, put $X_i^0=P_i x_i$, and set
 $\lambda_i=(1+\|X_i^0\|)^{-1}$. Assume the following estimates hold
 eventually in $I$:
 \begin{align}
- \|L_i x_i\|&\le c,                                         \tag{2}\label{eq:ex-cap-tested}\\
- \|L_i(\lambda_i(x_i-X_i^0))\|&\le \frac{1}{2Z}.             \tag{3}\label{eq:ex-cap-remainder}
+ \|L_i x_i\|&\le c,                                         \label{eq:ex-cap-tested}\\
+ \|L_i(\lambda_i(x_i-X_i^0))\|&\le \frac{1}{2Z}.             \label{eq:ex-cap-remainder}
 \end{align}
 Then eventually
-\[
-                    \|X_i^0\|\le 2Zc+1.                    \tag{5}\label{eq:ex-cap-conclusion}
-\]
+\begin{equation}
+                    \|X_i^0\|\le 2Zc+1.                    \label{eq:ex-cap-conclusion}
+\end{equation}
 \end{lemma}
 
 \begin{proof}
-Write $R_i=x_i-X_i^0$. By linearity and (2),
+Write $R_i=x_i-X_i^0$. By linearity and \eqref{eq:ex-cap-tested},
 \[
  \|X_i^0\|\le Z\|L_iX_i^0\|
  \le Zc+Z\|L_iR_i\|.
 \]
-Since $\lambda_i=(1+\|X_i^0\|)^{-1}$, (3) implies
+Since $\lambda_i=(1+\|X_i^0\|)^{-1}$, \eqref{eq:ex-cap-remainder} implies
 $Z\|L_iR_i\|\le(1+\|X_i^0\|)/2$. Therefore
 \[
  \|X_i^0\|\le Zc+\tfrac12(1+\|X_i^0\|),
 \]
-and rearranging gives (5). All estimates were eventual, so their two mesh
+and rearranging gives \eqref{eq:ex-cap-conclusion}. All estimates were eventual, so their two mesh
 thresholds can be replaced by their maximum.
 \end{proof}
 
@@ -100,7 +100,7 @@ it belongs to $C$ as well. Therefore $z=\lambda(x-X^0)\in C$ by subtraction,
 and $P_i z_i=0$ because
 $P_i(x_i-P_ix_i)=0$. By item~3,
 for all sufficiently fine meshes $\|L_i z_i\|\le(2Z)^{-1}$. Since
-$L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate (1) gives
+$L_i z_i=\lambda_i L_i(x_i-X_i^0)$, estimate \eqref{eq:ex-cap-rank} gives
 \[
  \|X_i^0\|\le Z\|L_iX_i^0\|
  \le Zc+Z\|L_i(x_i-X_i^0)\|
@@ -163,9 +163,9 @@ distinct slot indices $u\ne u'$ have sites $x_u,x_{u'}$ with
  a_N\,\operatorname{sep}_{N,p}(x_u,x_{u'})\ge r
 \]
 (even if the corresponding insertions agree),
-\[
-                         |K_{N,p;v,l}(x)|\le B.              \tag{7}\label{eq:ex-fullmesh-bound}
-\]
+\begin{equation}
+                         |K_{N,p;v,l}(x)|\le B.              \label{eq:ex-fullmesh-bound}
+\end{equation}
 The threshold is independent of $p$; the bound is independent of both $N$
 and $p$. Here $\operatorname{sep}_{N,p}(y,y')=\max_{\alpha}|y_\alpha-y'_\alpha|_{\rm per}$
 is the periodic maximum-coordinate distance of two sites of the period-$p$
@@ -262,7 +262,7 @@ product is a constant independent of mesh and period. This proves
 \eqref{eq:ex-fullmesh-bound}.
 \end{proof}
 
-\subsection{The uniform supplier on the retained family}
+\subsubsection{The uniform supplier on the retained family}
 
 We now verify the hypotheses above on $C_R$. In this subsection every
 occurrence of ``eventually'' means eventually in $I$, including periods
@@ -275,12 +275,12 @@ Call a row $x=(x_{N,p})$ of grade $d$ \emph{uniformly subpower} if
  \forall p,\qquad |X_{N,p}^{-1}x_{N,p}|_1\le e^{\epsilon s_N}.
 \]
 Here $X$ is the actual terminal calibration of
-Section~\ref{sec:actual-equation-kernel-relay}. Denote this class by
+Subsection~\ref{sec:actual-equation-kernel-relay}. Denote this class by
 $\mathscr C_d$. It is closed under addition, subtraction and scalar
 multiplication by families of modulus at most one: split the target
 exponent between the finitely many prices and absorb their fixed sum
 using $s_N\to\infty$. Every norm-bounded row belongs to it. Indeed the
-reverse-column estimate of Section~\ref{ex-column-subpower} bounds its
+reverse-column estimate of Subsubsection~\ref{ex-column-subpower} bounds its
 inverse coordinates by a constant times $J_N$, and the displayed
 proof $\log J_N=o(s_N)$ involves only the schedule index $N$, not $p$.
 The same observation applies to the prices used below. The threshold
@@ -295,8 +295,8 @@ majorant independent of $p$.
 \label{lem:fullmesh-uniform-sweep}
 Let $\Pi_{N,p}$ be the uniformly bounded finite projection with kernel
 $K_{N,p}$ constructed in
-Section~\ref{sec:actual-equation-kernel-relay}, using
-Section~\ref{sec:finite-rank-kernel-transport}.
+Subsection~\ref{sec:actual-equation-kernel-relay}, using
+Subsection~\ref{sec:finite-rank-kernel-transport}.
 For $z\in\mathscr C_d$ with $\Pi_{N,p}z_{N,p}=0$, the physical insertion
 $O(z)$ has centered root price tending to zero in $I$, at every
 sufficiently fine fixed cell depth, in all its finitely many signed and
@@ -347,7 +347,7 @@ coefficients. The root triangle inequality now gives the claimed sweep.
 No conversion to an ordered spectator limit occurs.
 
 For the second assertion use the terminal construction in
-Section~\ref{sec:actual-insertion-derivative-relay}. Its price
+Subsection~\ref{sec:actual-insertion-derivative-relay}. Its price
 $E_{N,p}$ is a finite sum of products of the two protected prices and
 the same schedule factors. It has a uniform subpower majorant.
 The actual descent gives
@@ -402,7 +402,7 @@ $\operatorname{rank}\Pi_i=r$ at each finite cutoff; this does not use a
 limiting null-space assertion. If $r=0$ the projection vanishes and
 there is nothing to prove. Otherwise choose the $r$ independent free
 columns and finitely many separating rows used in
-Section~\ref{sec:actual-rank-purchases}. Their target matrix $G$ is
+Subsection~\ref{sec:actual-rank-purchases}. Their target matrix $G$ is
 injective. In supremum norms choose $K$ with $|c|\le K|Gc|$.
 If every entry of $Q-G$ is less than $\delta=(2Kr)^{-1}$, then
 $|c|\le K|Qc|+\tfrac12|c|$, hence $|c|\le2K|Qc|$.
@@ -535,7 +535,7 @@ cell depth. No limit of a moving projection is used.
 Finally the periodic difference formula is the definition of these
 trials and is exact also at wrapped sites. The planted-cell product
 inequality is the Wilson reflection-positive inequality of
-Section~\ref{ex-centered-estimates}; its chamber interiority follows
+Subsection~\ref{ex-centered-estimates}; its chamber interiority follows
 from the fixed finite stencils. These verify the remaining hypotheses
 of the full-mesh theorem. Its two-scale packing argument now applies
 to each finite list of actual insertions and difference directions.
@@ -553,5 +553,5 @@ separated positions and their coordinate ties. The estimate does not itself
 give convergence of smeared correlations; that is the separate
 same-history convergence estimate. With both inputs, the positional theorem
 follows by the interpolation, compactness, and dominated-convergence argument
-in Section~\ref{sec:ex-limits}.
+in Subsection~\ref{sec:ex-limits}.
 \end{remark}
