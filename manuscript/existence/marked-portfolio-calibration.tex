@@ -3,7 +3,7 @@
 
 The marked finite-volume route needs a single local section at each label
 degree. That section must be chosen before the volume, cutoff, or derivative
-budget is known. It must also price every later derivative request at that
+budget is known. It must also bound every later derivative request at that
 degree. We construct that section first, then show how the schedule selects
 its budgets and how the approximate field change is made invertible.
 
@@ -168,7 +168,7 @@ $s_j$. Finite sums add their constants, and lowering a rate from a larger
 degree to $s_j$ is valid because $0<\theta\leq1$. Applying this to the
 finite pose expansion of each basis field gives one finite constant
 $c_j(k,P)$ for the exact localized rate above. Summing basis estimates
-with coefficient moduli gives the linear price for arbitrary labels. No
+with coefficient moduli gives the linear bound for arbitrary labels. No
 uniformity in $d,k$, or $P$ is claimed.
 \end{proof}
 
@@ -183,11 +183,11 @@ nonnegative. The section is not rebuilt when these requests change.
 
 For a stage $i$, let $c_i$ be its column count, let $q_d$ be the stencil
 size of the chosen section together with the fixed local section, and let
-$\alpha_i$ be its support exponent. The sphere price is
+$\alpha_i$ be its support exponent. The sphere bound is
 \[
  \mathsf S_i(q_d,a)=2+e^{81\alpha_i}(a+c_i+2q_d).
 \]
-For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere price,
+For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere bound,
 and the coefficient $2(1+c_i)$ are finite. The orbit cost of the
 degree-$d$ frame,
 \[
@@ -360,7 +360,7 @@ sound for the action of the family. At level $N$ write $a_N$ for the
 mesh, $\theta_N$ for the budget threshold, $c_N$ for the column count,
 $\alpha_N$ for the support exponent, $\sigma_N$ for the running scale,
 $L_{N-1}$ for the preceding block side, and
-$\mathsf S_N(q,b)=2+e^{81\alpha_N}(b+c_N+2q)$ for the sphere price. For a
+$\mathsf S_N(q,b)=2+e^{81\alpha_N}(b+c_N+2q)$ for the sphere bound. For a
 section $W\in\{V,T\}$ and a coefficient vector $v\in F$, the normalized
 origin field at $(N,p)$ is
 \[
@@ -408,10 +408,10 @@ where $\mathsf C(W)\geq1$ denotes a fixed value-norm constant of the
 section $W$: $|W(v)(o,U)|\leq\mathsf C(W)\|v\|_1$ for all coefficient
 vectors, sides, anchors and configurations. Such a constant exists
 because the finitely many basis columns of $W$ are continuous functions
-on a compact configuration space. It is not a derivative price, and
+on a compact configuration space. It is not a derivative bound, and
 $\operatorname{Seat}_{d,N}$ is not a number of sites: it bounds the
 $\ell^1$ operator norm of the dilation $\theta_N^{-1}\cdot_F$. The
-price attached to each constructed column is the explicit schedule amount
+bound attached to each constructed column is the explicit schedule amount
 \[
  E_N=4(1+c_N)\mathsf S_N(q_d,b_N)
     +e^{81(\alpha_N+2)}\mathsf Z_N\,\zeta_{d,N}\,u_N^{-1}.

@@ -38,7 +38,7 @@ Fix one selected history $H$, period $p$, terminal volume $N$, label frame
 $F$, action $A$, section $B$, and a transfer sequence $M$ on this history. At scale $i$,
 write $\iota_i:F\to F$ for the transfer sequence index, $\Pi_i(v)$ for its played coefficient,
 and $g_i(v)$ for its charge. A state at scale $i$ consists of a primary
-$\varpi_i\in F$, a residual coefficient $Z_i$, and a bill $b_i$. Its translated
+$\varpi_i\in F$, a residual coefficient $Z_i$, and a bound $b_i$. Its translated
 state at displacement $v$ is
 \[
  \mathcal Z_i(v)=Z_i+\Pi_i(\varpi_i+v),\qquad
@@ -59,33 +59,33 @@ displacement $v$ there is an invertible map $B_{i,v}$ such that
  \|B_{i,v} x\|_1,\ \|B_{i,v}^{-1}x\|_1\leq K_i\|x\|_1,
  \qquad c_i(v),t_{i+1}(v)\geq0,\\
  \operatorname{core}(B_{i,v}x)=B_{i,v}(\operatorname{core}x),\\
- \|x_i(v)-B_{i,v}(\operatorname{vowel}_{L_i}(x_{i+1}(v)))\|_1
+ \|x_i(v)-B_{i,v}(\mathsf D_{L_i}(x_{i+1}(v)))\|_1
    \leq e_i(\|\operatorname{core}(x_{i+1}(v))\|_1+t_{i+1}(v)),\\
- c_i(v)\leq K_i\|\operatorname{core}(\operatorname{vowel}_{L_i}(x_{i+1}(v)))\|_1
+ c_i(v)\leq K_i\|\operatorname{core}(\mathsf D_{L_i}(x_{i+1}(v)))\|_1
        +e_i t_{i+1}(v).
 \end{gathered}
 \]
-Here $W\geq1$ is a fixed nondecreasing price function on stages,
+Here $W\geq1$ is a fixed nondecreasing bound function on stages,
 $\operatorname{barunit}(L)=L^{-3/8}$, $\operatorname{core}x$ is $x$ with
-its unit coordinate deleted, and $\operatorname{vowel}_L$ multiplies the
+its unit coordinate deleted, and $\mathsf D_L$ multiplies the
 coordinate of a basis vector of grade $(r_j,s_j)$ by $L^{d-r_j}\geq1$.
 Further, $x_i(v),x_{i+1}(v)$ are the leading coordinates of the translated
-states, and $t_{i+1}(v)=c_{i+1}(v)$ is the upper state's nonnegative bill. More
+states, and $t_{i+1}(v)=c_{i+1}(v)$ is the upper state's nonnegative bound. More
 explicitly, these coordinates are the corresponding transfer sequence-index values
 $\iota_i(\varpi_i+v)$ and $\iota_{i+1}(\varpi_{i+1}+v)$; the displayed
 direction inequality,
 not an equality, compares them. The maps may depend on $v$, but the
 displayed constants do not. The density identity is
 $\rho_i(v)=L_i^d\,\mathsf P_i\rho_{i+1}(v)$, with $\mathsf P_i$ exactly
-the transition push in the history. The finite Tale witness supplies the
+the transition push in the history. The finite response decomposition supplies the
 weighted support estimate for the specified exponential entries and forced
 profiles. Every bound is required at every displacement, not only at the
 base displacement $v=0$.
 
 For clarity, the paid one-step input has the following content. At scale
-$i$ put $C_i=\operatorname{columns}(i)$. The tuned coupon has a number
+$i$ put $C_i=\operatorname{columns}(i)$. The tuned transfer record has a number
 $\eta_i\geq0$ with $(1+2C_i)\eta_i\leq e_i$. For every keyed upper
-coefficient $U$ with zero leading coordinate, format, and bill $q$, it
+coefficient $U$ with zero leading coordinate, format, and bound $q$, it
 provides a finite wing and a coefficient correction whose leading error
 cost is at most $\eta_i q$, whose remainder cost is at most $\eta_i q$,
 and whose support charge is at most $2q$. The associated Carol witness is
@@ -100,13 +100,13 @@ $h=\iota_i^{-1}V.x$, and uses
 \]
 The leading coordinate of $Z_i$ vanishes because
 $V.x+\iota_i(-h)=0$. The format and remainder bounds follow by adding the
-coupon coefficient to the earned played coefficient. For every $v$, the
+transfer record coefficient to the earned played coefficient. For every $v$, the
 linear density readout cancels the two terms at $h$ and $-h$; the remaining
 density is exactly the transition push of the upper state's density. The
-direction estimate follows from the coupon's paid direction bounds, the
+direction estimate follows from the transfer record's paid direction bounds, the
 transfer sequence cone estimate $g_i(\pm h)\leq C_i\eta_iq$, the Carol charge
 comparison, and $(1+2C_i)\eta_i\leq e_i$. Finally, union the two finite
-wings and add their Tale inequalities; this gives one common finite support
+wings and add their response decomposition inequalities; this gives one common finite support
 for all $v$. This is the precise one-step content used in the finite descent.
 
 \begin{lemma}[Backward propagation of one terminal coefficient]
@@ -115,8 +115,8 @@ Let $0\leq r\leq l\leq m\leq N$. Suppose the history is selected and the
 same transfer sequence is admissible and responds at every level from $r$ through $N$.
 Suppose its one-step response on each door $D_i$, $l\leq i<m$, is the
 response described above: for every keyed input it supplies a keyed output,
-the all-displacement density identity and direction bound, and a finite Tale
-witness, with the tuning and Coupon bounds stated there. At level $m$, let $Z$ be a
+the all-displacement density identity and direction bound, and a finite response decomposition
+witness, with the tuning and transfer record bounds stated there. At level $m$, let $Z$ be a
 coefficient with the required format, remainder bound $t$, and
 \[
              \|Z.x\|_1+t\leq w.
@@ -152,7 +152,7 @@ The terminal state has, for every $v\in F$, exact identities
  \mathcal Z_m(v).\mathrm{density}
        =Z.\mathrm{density}+\Pi_m(v).\mathrm{density},
 \]
-and its terminal bill obeys
+and its terminal bound obeys
 \[
  c_m(v)\leq w+C_m\bigl(w+\|\mathcal Z_m(v).x\|_1\bigr),
        \qquad C_m=\operatorname{columns}(m).
@@ -164,7 +164,7 @@ $m=N$, and the top clause of `Sung` gives
 $(M.\mathrm{tone}\,N).\mathrm{index}=\mathrm{id}$: its played coefficient
 has leading value $v$ at every label $v$. Thus in that application
 $\iota_N(v)=v$. Form the residual
-coefficient by adding to $Z$ the played field $\Pi_m(-a)$, and set its bill
+coefficient by adding to $Z$ the played field $\Pi_m(-a)$, and set its bound
 to $t+g_m(-a)$. Its leading coordinate is zero because
 $\Pi_m(-a).x=\iota_m(-a)=-Z.x$. This proves keyedness. For displacement $v$,
 linearity of the transfer sequence readout gives
@@ -183,13 +183,13 @@ $\iota_m(a+v)=\mathcal Z_m(v).x$, it follows that
  \leq t+C_m\|Z.x\|_1+C_m\|\mathcal Z_m(v).x\|_1
  \leq w+C_m\bigl(w+\|\mathcal Z_m(v).x\|_1\bigr).
 \]
-This is the displayed terminal bill bound.
+This is the displayed terminal bound.
 
 We now descend from $m$ to $l$. At a step $i$, assume a keyed state at
 $i+1$ has been constructed. The same transfer sequence supplies its Heard and
 Responds data at $i$ and $i+1$. Apply the paid one-step response with the
 state's format and remainder bound; its zero leading coordinate is exactly
-the Coupon hypothesis. The output is a keyed state at $i$, its transfer sequence-index
+the transfer record hypothesis. The output is a keyed state at $i$, its transfer sequence-index
 formula, the density push identity, the paid direction inequality, and the
 finite forced-profile witness. Replace only the state
 at $i$ and keep all states at levels above $i$ unchanged. Thus all already
@@ -224,7 +224,7 @@ Also $(4K^2+1)s_ie_i=(4K^2+1)s_i^{-2}\leq1$ because
 $s_i\geq128K^2$. These are the three displayed numerical inequalities.
 The direction inequalities for the translated states imply, with
 $u=\|x_i\|_1$, $u_+=\|x_{i+1}\|_1$, and
-$y=\|\operatorname{vowel}_{L_i}(x_{i+1})\|_1$,
+$y=\|\mathsf D_{L_i}(x_{i+1})\|_1$,
 \[
  y\leq K_i(u+e_i(y+c_{i+1})),\qquad
  c_i\leq K_i y+e_i c_{i+1},\qquad u_+\leq y.
@@ -255,7 +255,7 @@ $s_i c_i\leq c_{i+1}$ gives
 $\prod_{j=i}^{m-1}s_j c_i\leq c_m$. The scale identity is
 $\prod_{j=i}^{m-1}s_j=\exp((\sigma_m-\sigma_i)/8)$.
 
-At the top the terminal bill bound and $A_m\|x_m\|_1\leq c_m$ imply
+At the top the terminal bound and $A_m\|x_m\|_1\leq c_m$ imply
 $2C_m\|x_m\|_1\leq c_m$ and hence
 $c_m\leq2(1+C_m)w$. This completes the last item of the lemma.
 Since $A_i\geq1$, also $\|x_i\|_1\leq c_i$. Therefore
@@ -266,8 +266,8 @@ the room and bank inequalities, on the same finite interval and history.
 
 \subparagraph{Same-history inputs to the lemma.}
 For each step, the response is supplied by a same-history Tone record, a
-paid Coupon for every keyed silent upper coefficient, and the matching
-Carol/Tale witness. The Coupon fixes the input exponential entry, forced
+paid transfer record for every keyed silent upper coefficient, and the matching
+Carol/response decomposition. The transfer record fixes the input exponential entry, forced
 profile, distinguished leading value, and density; its output coefficient
 has the specified exact density identity and paid leading/remainder bounds.
 The Carol witness includes the upper and lower forced profiles and
@@ -275,15 +275,15 @@ exponential entries at every displacement, together with common finite
 support and the charge comparison used above. These are exact inputs, not
 continuity limits.
 
-The local three-card algebra which produces the paid Coupon from a
+The local three-card algebra which produces the paid transfer record from a
 Heading/Stampede record is proved in Subsection~\ref{sec:three-port-history}.
-It uses the common-history identities, waybill and forced-price estimate
+It uses the common-history identities, waybill and forced-estimate
 there, together with the three selected card estimates and the finite
-threshold maximum. This finite descent consumes the resulting Coupon and
+threshold maximum. This finite descent consumes the resulting transfer record and
 Carol records; it does not reprove the card algebra. The common-history attachment of these records is supplied by
 Propositions~\ref{prop:selected-reprise} and~\ref{prop:selected-music},
 under the common selected-history purchases. The zero-coordinate
-Coupon used in this descent is supplied by
+Transfer record used in this descent is supplied by
 Proposition~\ref{prop:selected-zero-coordinate-coupon}, with its
 insertion, soundness and merger hypotheses verified as described in
 Subsection~\ref{sec:selected-centered-service}.
@@ -300,7 +300,7 @@ $\theta_i$ for its threshold, $J_i$ for the clock index, and $T$ for the
 local section of the family at degree $d$, with frame $F$ and maximal
 factor grade $q$. The following notation is used for the root tests:
 \begin{align*}
- \operatorname{puffs}(H_i)&=L_i^{1/8},&
+ \lambda_i&=L_i^{1/8},&
  \operatorname{gain}(N,i)&=e^{(\sigma_N-\sigma_i)/8},\\
  \|\operatorname{alto}(H,i,d)\|&=a_i^{-d},&
  \operatorname{escrow}(N,k,E)&=E/\operatorname{gain}(N,k),\\
@@ -391,13 +391,13 @@ these properties.
   part, charge at most $\|\operatorname{core}v\|_1$, the density identity
   \eqref{eq:terminal-marked-construction-display-T5} of Subsection~\ref{sec:terminal-marked-construction}, and forced
   profile equal to the hook of the singleton response $f_v$. It has a Carol
-witness with price $\psi_i$ at every door
+witness with bound $\psi_i$ at every door
   $D_{N,p,i}$, $\operatorname{ref}(d)\leq i<N$: a finite set of wings
-  and, for every label $v$, a Tale across the door relating the
+  and, for every label $v$, a response decomposition across the door relating the
   exponential entry and forced profile of the upper played coefficient
-  to the forced profile of the lower one, with upper price
-  $\mathcal O_d\|\iota_{i+1}(v)\|_1(\psi_i+2C_{i+1})$ and lower price
-  $g_i(v)$. The full conditions on the wing and Tale witnesses remain
+  to the forced profile of the lower one, with upper bound
+  $\mathcal O_d\|\iota_{i+1}(v)\|_1(\psi_i+2C_{i+1})$ and lower bound
+  $g_i(v)$. The full conditions on the wing and response decompositiones remain
   inputs here. The transfer sequence may depend on
   $(d,N,p)$.
 \item[(R7)] \emph{The paid one-step input.} At every door $D_{N,p,i}$,
@@ -405,10 +405,10 @@ witness with price $\psi_i$ at every door
   $(1+2C_i)\eta_i\leq\operatorname{barunit}(L_i)$, the door is sound,
   $\psi_i\geq0$, and there is a finite set of wings such that every
   upper coefficient with zero leading coordinate, the terminal format
-  and remainder bill $q$ has a Coupon across the door with budgets
+  and remainder bound $q$ has a transfer record across the door with budgets
   $(\eta_iq,\eta_iq,2q)$, as described before
   Lemma~\ref{lem:actual-marked-antilles}. The full conditions on the
-  Coupon beyond that description remain an input here.
+  transfer record beyond that description remain an input here.
 \end{enumerate}
 The multi-marker offer input in (R4) has the following interface. Fix
 one of its doors, its upper and lower representations, and the associated
@@ -435,13 +435,13 @@ mode $A$ in these families vanishes unless $\{b_v:v\in A\}$ is contained in
 its support. An $F_P$ term vanishes unless $P$ is healthy and has zero
 empty-mode coefficient. A $K_{P,I}$ term vanishes unless $I$ is nonempty,
 $I\subseteq P$, and the flags in $P$ are exactly $I$. Each family has
-nonnegative summable support prices. For each support or support--inventory
+nonnegative summable support bounds. For each support or support--inventory
 pair, there is one nonnegative majorant for each mode that bounds the
 absolute value of that mode's coefficient for every configuration. The
 weighted sum of these configuration-independent majorants is at most the
-corresponding support price; the weight of a mode $A$ is
+corresponding support bound; the weight of a mode $A$ is
 $\prod_{v\in A}t_v$. At each lower site the
-support prices, multiplied by the exponential of the support cover
+support bounds, multiplied by the exponential of the support cover
 number, sum to at most $1$ for $F$ with exponent $\alpha_i+1/2$, and at
 most $w$ for $K$ with exponent $\alpha_i+1$.
 
@@ -473,10 +473,10 @@ tests at those indices. Choosing a different history or door field for
 each period or terminal volume is insufficient.
 
 \subparagraph{The terminal Cream.}
-A terminal Cream at $(N,p,d)$ with field $b$, charge $Q$, bill $t$ and
+A terminal Cream at $(N,p,d)$ with field $b$, charge $Q$, bound $t$ and
 budget $E$ is a coefficient $Z$ at level $N$ with the fields of
 Proposition~\ref{prop:ex-marked-invitation}: the terminal format; the
-remainder bound with weight $\sqrt{w_N}$ and bill $t$;
+remainder bound with weight $\sqrt{w_N}$ and bound $t$;
 $\|Z.x\|_1+t\leq Q$; $0<Q$; $4(1+C_N)Q\leq E$; an attainment with reserved
 mass $B_{\rm cream}$ such that $B_{\rm cream}\zeta_{d,N}\leq u_NE$,
 together with the forced-profile hook identity; the density equation
@@ -493,7 +493,7 @@ selected-history record (R1)--(R7) holds. Let $Z$ be a terminal Cream at
 $(N,p,d)$ with field $b$, charge $Q$ and budget $E$. Then there is one
 label $v$ such that
 \[
- \operatorname{puffs}(H_{N-1})
+ L_{N-1}^{1/8}
        \|Z.x-X_N^{-1}v\|_1
        \leq 2(1+C_N)Q,
  \qquad C_N=\operatorname{columns}(N),
@@ -514,7 +514,7 @@ The label $v$ and all bounds use the same $C$, history, and transfer sequence.
 \begin{proof}
 The record (R6) supplies the transfer sequence $M$ and its Heard and Responds fields
 from the bottom reference $r=\operatorname{ref}(d)$. Its Carol witnesses,
-the Coupons (R7), the budgets (R1), and the terminal Cream bounds are the
+the transfer records (R7), the budgets (R1), and the terminal Cream bounds are the
 inputs of Lemma~\ref{lem:actual-marked-antilles} with $l=r$, $m=N$ and
 terminal cone parameter $w=Q$, as specified by the Cream charge bound.
 The larger budget $E$ is reserved for the root-test error estimate. This
@@ -528,7 +528,7 @@ The terminal coordinate identity of the lemma and $\iota_N=\mathrm{id}$ give
 $x_N=Z.x+\iota_N(-a)=Z.x-X_N^{-1}v$. The last item of the lemma gives
 $c_N\leq2(1+C_N)Q$ and, at the step $i=N-1$,
 \[
- \operatorname{puffs}(H_{N-1})\|x_N\|_1\leq c_N.
+ L_{N-1}^{1/8}\|x_N\|_1\leq c_N.
 \]
 Combining these inequalities proves the first displayed estimate. The
 step $N-1$ lies in the range of the lemma because
@@ -551,9 +551,9 @@ recurrence for the physical scale and the gain is
        =L_i^d\|\operatorname{alto}(H,i,d)\|,
  \qquad
  \operatorname{gain}(N,i+1)
-       =\operatorname{gain}(N,i)/\operatorname{puffs}(H_i).
+       =\operatorname{gain}(N,i)/\lambda_i.
 \]
-Since $1\leq\operatorname{puffs}(H_i)\leq L_i$, the adjacent paid bound
+Since $1\leq\lambda_i\leq L_i$, the adjacent paid bound
 implies inductively
 \[
  w_i\|\operatorname{alto}(H,i,d)\|
@@ -568,39 +568,39 @@ every later scale.
 
 For the finite-copy construction, at level $i$ the residual coefficient
 $Z_i$ of the state is keyed; the coefficient used in the construction is the
-translated coefficient family $\mathcal Z_i(-a)=Z_i+\Pi_i(\varpi_i-a)$ with its bill
+translated coefficient family $\mathcal Z_i(-a)=Z_i+\Pi_i(\varpi_i-a)$ with its bound
 $c_i=c_i(-a)$. Keyedness of $Z_i$ and the earned bounds of the transfer sequence
-transfer format and the remainder bound, with bill $c_i$, to this
+transfer format and the remainder bound, with bound $c_i$, to this
 translated coefficient family, which need not have zero leading coordinate. The third
 item of Lemma~\ref{lem:actual-marked-antilles} with $w=Q$, and the Cream
 inequality $4(1+C_N)Q\leq E$, give
 $\mathrm{gain}(N,i)(c_i+\|x_i\|_1)\leq E$. Combined with the
-per-level price inequality for
+per-level bound inequality for
 \[
  \frac{w_i\|\operatorname{alto}(H,i,d)\|E}{\mathrm{gain}(N,i)},
 \]
 this gives the finite-copy rate bound
 $w_i\|\operatorname{alto}(H,i,d)\|(c_i+\|x_i\|_1)\leq\zeta_i$ by
 multiplication. The
-Coupon's density debt is exactly the density transition in the finite-copy transition identity;
-its Carol witness supplies the accompanying finite Tale support and the
+Transfer record's density debt is exactly the density transition in the finite-copy transition identity;
+its Carol witness supplies the accompanying finite response decomposition support and the
 forced-profile/exponential-entry comparison. At the terminal level let
 $c=(M.\mathrm{tone}\,N).\mathrm{index}(-a)$. The top clause of `Sung` gives
 $(M.\mathrm{tone}\,N).\mathrm{index}=\mathrm{id}$, so $c=-a$; the
 terminal spread bound gives $\|c\|_1\leq2E$. Put
-$j=\|\operatorname{alto}(H,N,d)\|$ and let $w_N$ be the terminal price.
+$j=\|\operatorname{alto}(H,N,d)\|$ and let $w_N$ be the terminal bound.
 The height estimate $w_NjE\leq\zeta_N/4$ implies
 \[
  2w_Nj\|c\|_1\leq\zeta_N.
 \]
 The terminal `erected` estimate, applied at this response cost, supplies an
-added price $A_{\rm ins}$ with $w_NjA_{\rm ins}\leq u_N/2$. If
-$B_{\rm cream}$ is the Cream's original attainment price, the Bank
+added bound $A_{\rm ins}$ with $w_NjA_{\rm ins}\leq u_N/2$. If
+$B_{\rm cream}$ is the Cream's original attainment bound, the Bank
 hypothesis
 \[ B_{\rm cream}\zeta_N\leq u_NE, \]
 together with
 $w_NjE\leq\zeta_N/4$, gives
-$w_NjB_{\rm cream}\leq u_N/4\leq u_N/2$. Hence the combined price
+$w_NjB_{\rm cream}\leq u_N/4\leq u_N/2$. Hence the combined bound
 $A_{\rm ins}+B_{\rm cream}$ fits the finite-copy allowance $u_N$. The forced profile is
 preserved by the Cream hook identity and linearity of
 the played forced-profile map. Finally, the finite-copy density identity is the Cream density
@@ -670,7 +670,7 @@ $a_{i+1}^{-d}=L_i^d a_i^{-d}$ give
 \]
 The site migration and the soundness of the same door justify these
 identities after orientation as well. A conjugating orientation conjugates
-all coefficients and responses and preserves their absolute prices.
+all coefficients and responses and preserves their absolute bounds.
 
 The sum of the Cream attainment and the negative played attainment
 constructed above, rescaled and oriented at slot $\nu$, is a response
@@ -718,17 +718,17 @@ than replaced them by products of singleton densities.
 
 For convergence and payment, the anchored estimate
 \eqref{eq:transfer-root-hit} converts the per-slot weighted response
-mass $u_N$ into site price $r_N\mathsf s(B_N)u_N$ at exponent
+mass $u_N$ into site bound $r_N\mathsf s(B_N)u_N$ at exponent
 $\alpha_N$: the reserved mass is measured at exponent $\alpha_N+2$,
 so it pays the one extra exponent in that anchored estimate. The
-background forced price $w_N^{\rm f}$ is measured at $\alpha_N$. With
+background forced bound $w_N^{\rm f}$ is measured at $\alpha_N$. With
 $D_N=w_N^{\rm f}+r_N\mathsf s(B_N)u_N$, (R4) gives
 \[
  (2B_N+1)^4D_N\le3,\qquad e^{D_N}-1\le1.
 \]
 The connected-support bound \eqref{eq:ope-forest-price}, with spare
 exponent three, therefore bounds the flagged array at exponent
-$\alpha_N-3$ by one. Removing modes cannot increase a price. The same
+$\alpha_N-3$ by one. Removing modes cannot increase a bound. The same
 majorants justify the component regrouping for countable background
 addresses by absolute convergence. This proves terminal servedness with
 reserve one at pitch $\pi_N=\alpha_N-3$.
@@ -747,9 +747,9 @@ $\Psi'_{\nu}$, such that
  \end{aligned}
 \]
 Here $\mathcal Q_i$ is the same door's quoted profile map and
-$\mathcal H_{R_i}$ its lower hook. These are the finite Tale identities
+$\mathcal H_{R_i}$ its lower hook. These are the finite response decomposition identities
 in (R6)--(R7). To obtain them for the translated coefficient family, take the union
-of the Coupon wing for the keyed upper residual and the Carol wing
+of the transfer record wing for the keyed upper residual and the Carol wing
 for the played displacement $\varpi_{i+1}-a$, and add the two expansions.
 In the lower state the recentering terms cancel:
 \[
@@ -760,16 +760,16 @@ In the lower state the recentering terms cancel:
 where $V,h$ are the one-step correction and primary defined before
 Lemma~\ref{lem:actual-marked-antilles}. The cancellation holds for the
 ordinary entry, density, and forced profile separately. Thus the lower
-profile in the displayed Tale is exactly the required one. Taking a
+profile in the displayed response decomposition is exactly the required one. Taking a
 union of wings does not change their door, supports or parent map;
-the absolute prices add. Before physical rescaling their upper price
+the absolute bounds add. Before physical rescaling their upper bound
 is at most
 \[
  \mathcal O_d\|x_{i+1}\|_1(\psi_i+2C_{i+1})+2c_{i+1}
  \le\mathcal O_d(\psi_i+2C_{i+1})(c_{i+1}+\|x_{i+1}\|_1),
 \]
 since $\mathcal O_d,C_{i+1}\ge1$ and $\psi_i\ge0$. More precisely the
-Coupon term costs $2b_{i+1}\le2c_{i+1}$. The lower response price at
+Transfer record term costs $2b_{i+1}\le2c_{i+1}$. The lower response bound at
 exponent $\alpha_i+2$ is bounded by
 \[
  \eta_i b_{i+1}+g_i(\varpi_{i+1}-a)
@@ -777,7 +777,7 @@ exponent $\alpha_i+2$ is bounded by
 \]
 by subadditivity of the played charge and the defining formula for $b_i$.
 After rescaling, call
-these prices $s_{i,\nu}$ and $t_{i,\nu}$. The required two payments are
+these bounds $s_{i,\nu}$ and $t_{i,\nu}$. The required two payments are
 \[
  \begin{split}
  2w_{i+1}s_{i,\nu}
@@ -796,7 +796,7 @@ $\pi_i=\alpha_i$ for $i<N$. Suppose $A_{i+1}$ has the constructed
 representation at pitch $\pi_{i+1}$ and reserve one. In particular
 $\pi_{i+1}\ge\alpha_{i+1}-4$, including the terminal step. Apply
 Subsection~\ref{sec:local-transfer} with upper weights $w_{i+1}$ and
-shrinkage $\delta_i$. The Tale just constructed gives singleton cost
+shrinkage $\delta_i$. The response decomposition just constructed gives singleton cost
 $\delta_i$ after real/imaginary compression, while the higher arrays
 cost at most $4\delta_i$. Occupancy gives total prepared site cost
 $T=r_i\mathsf s(B_{i+1})\delta_i+4\delta_i$.
@@ -850,7 +850,7 @@ Here $U_j$ is the $j$th translated/reflected census copy, with the chosen
 motion applied, of the residual field $b-C.O(v)$. Thus $\Omega$ is exactly
 the moment in the definition of the displayed root test.
 For each slot, $x_k$ is the leading coefficient of its translated coefficient family
-$\mathcal Z_k(-a)$ and $c_k$ its bill, as above, and the marched weight
+$\mathcal Z_k(-a)$ and $c_k$ its bound, as above, and the marched weight
 has $w_k=w$. The rate clause at the opened scale $k$ is
 $w_k\|\operatorname{alto}(H,k,d)\|(c_k+\|x_k\|_1)\leq\zeta_{d,k}$, and
 $\zeta_{d,k}C_k\leq1$ by (R5). Hence
@@ -862,10 +862,10 @@ $\zeta_{d,k}C_k\leq1$ by (R5). Hence
 The local hull estimate bounds the magnitude of its exponential entry by
 $(1+C_k)\|x_k\|_1+c_k$: the unit coordinate costs at most $\|x_k\|_1$,
 the masked core section at most $C_k\|x_k\|_1$ by the selected-family
-price clause, and the masked regular part at most the bill $c_k$. Since
-$(1+C_k)\|x_k\|_1+c_k\leq2C_k(c_k+\|x_k\|_1)$, the weighted entry price
+bound clause, and the masked regular part at most the bound $c_k$. Since
+$(1+C_k)\|x_k\|_1+c_k\leq2C_k(c_k+\|x_k\|_1)$, the weighted entry bound
 is at most $2$. The forced profiles have total modulus at most $c_k$, so
-the weighted total forced price is at most $1$. The action allowance is
+the weighted total forced bound is at most $1$. The action allowance is
 $f=1$. Thus the marked estimate \eqref{ex-centered-sail} of
 Subsection~\ref{ex-centered-construction} charges $x+y+2f=5$ per slot (the
 more general choice $x=3,y=1$ gives the $6$-unit bound). The constant
@@ -901,7 +901,7 @@ subsequence or replacement history enters the construction.
 \subparagraph{Boundary of this producer.}
 The proof above expands the terminal recentering, finite backward induction,
 cost conversion, marched-weight calculation, and the final use of the
-finite-copy estimate. It does not derive the selected history's Tone/Coupon
+finite-copy estimate. It does not derive the selected history's Tone/transfer record
 producer, its all-volume height ledger, or the selected-history binding of
 the terminal Cream. Those exact suppliers are listed separately in the
 evidence record; none follows merely from the existence of a portfolio.
@@ -914,9 +914,9 @@ realize the factory entries, which is admissible at every level from
 $\operatorname{ref}(d)$ to $N$, and which responds across each intervening
 door. The same transfer sequence must have Carol witnesses at all those doors and the
 terminal forced-profile hook. For every $i\geq\operatorname{ref}(d)$ it
-must also provide the paid local Coupon and its all-displacement Carol/Tale
+must also provide the paid local transfer record and its all-displacement Carol/response decomposition
 comparison, with the uniform height, room, bank, Brine and monotone
-occupancy prices used above. These are same-family, same-history
+occupancy bounds used above. These are same-family, same-history
 quantifiers: the transfer sequence is chosen for each $(d,N,p)$ and then retained
 through all tests at those indices, whereas choosing a different history
 or door field for each period or terminal volume is insufficient.
@@ -926,7 +926,7 @@ Propositions \ref{prop:selected-terminal-voice},
 \ref{prop:selected-reprise} and \ref{prop:selected-music}; the
 zero-coordinate response is Proposition~\ref{prop:selected-zero-coordinate-coupon}.
 Subsection~\ref{sec:selected-centered-service} identifies the height,
-room, bank and occupancy prices in (R1)--(R7). The terminal Cream
+room, bank and occupancy bounds in (R1)--(R7). The terminal Cream
 attachment uses Proposition~\ref{prop:terminal-marked-voice}, including
 its reserved-address, lawfulness and fee hypotheses. All these applications
 retain the same original funded history as in
