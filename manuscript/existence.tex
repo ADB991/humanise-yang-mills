@@ -1,7 +1,16 @@
 \documentclass[11pt]{article}
-\input{preamble}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
 \usepackage{mathtools}
 \usepackage{mathrsfs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=darkred,citecolor=darkblue]{hyperref}
+
+\newtheorem{proposition}{Proposition}[section]
+
 \makeatletter
 \renewcommand*\l@section{\@dottedtocline{1}{0em}{2.8em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{2.8em}{4.8em}}
@@ -16,6 +25,13 @@
 \newtheorem{assumption}[proposition]{Input}
 \theoremstyle{remark}
 \newtheorem{remark}[proposition]{Remark}
+
+
+\definecolor{darkred}{rgb}{0.7, 0.0, 0.0}
+\definecolor{darkblue}{rgb}{0, 0.0, 0.7}
+
+\numberwithin{equation}{section}
+
 \title{The four-dimensional Yang--Mills construction\\
 \large Foundations and the existence argument}
 \author{Humanise Yang--Mills contributors}
@@ -202,10 +218,7 @@ exposition come from Scott Armstrong's Yang--Mills informalization project,
 \input{existence/selected-nonlinear-offering}
 \input{existence/physical-reset-reorganization}
 \input{existence/coupling-reset-selection}
-\let\SavedSection\section
-\let\section\subsection
-\input{pilots/running-coupling}
-\let\section\SavedSection
+\input{existence/running-coupling}
 \input{existence/surviving-interval-shooting}
 \input{existence/terminal-normalization-transfer}
 \input{existence/wilson-startup-construction}
