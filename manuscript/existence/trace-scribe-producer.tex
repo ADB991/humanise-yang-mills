@@ -531,8 +531,8 @@ is a consequence of rank one or of the field and flux limits.
   stress tensor $H$, the rescaled shell measurement
   $\mathcal L_i(H)=\mathscr F_i(r_i^{-4}U_{i,4}H)$ defined below, in
   which the chart is applied entrywise, converges to the reference shell
-  measurement $\operatorname{shellGrad}(H,\chi,a,x,q,v)$. Both are to
-  be obtained from the comparison-of-jets estimate for the finitely
+  measurement $\operatorname{shellGrad}(H,\chi,a,x,q,v)$. Both are
+  obtained below from the comparison-of-jets estimate for the finitely
   many grades and arities fixed by the observer, on a comparison window
   containing the support of the gradient of $\chi$ together with the
   spectator points. The deduction from that compact comparison is given
@@ -541,8 +541,101 @@ is a consequence of rank one or of the field and flux limits.
 \end{enumerate}
 The physical stress in item 1 is supplied by the following choice of the
 energy in the selected algebra and the centering argument after it.
-The reference laws, detector and chart-comparison statements in items
-2--4 are distinct requirements.
+The reference laws and detector in items 2--3 are verified below for
+the actual Wick comparator used by this gallery.
+For the completed charts of the selected gallery, the comparison
+statements in item 4 follow below from their uniform short-test estimate
+and the derivative laws of the two tables.
+
+\paragraph{Identifying the actual reference fields and their normalization.}
+We verify the reference identifications needed here before using the
+Ward calculation. Keep the frame register of the supplied family fixed.
+Let $c_d$ be its coordinate isomorphism from invariant jet polynomials
+of grade at most $d$ to coordinate labels, let $\pi_d^0$ be projection
+to reference fields, and let $\operatorname{obs}_d$ be passage to the
+on-shell Wick polynomial. The actual reference table is defined by
+\begin{equation}\label{eq:scribe-reference-dictionary}
+ S_0\bigl(\pi_{d_1}^0c_{d_1}p_1,\ldots,
+             \pi_{d_n}^0c_{d_n}p_n;x\bigr)
+ =\operatorname{Wick}_x\bigl(\operatorname{obs}_{d_1}p_1,
+                    \ldots,\operatorname{obs}_{d_n}p_n\bigr).
+\end{equation}
+Indeed its coordinate correlation is the Wick correlation composed in
+each slot with $c_d^{-1}$; projection quotients precisely the labels
+annihilated by all separated spectator correlations. Thus this identity
+uses the reference table of the supplied family, not a replacement
+table. Its Wick covariance is the curvature covariance
+\eqref{eq:maxwell-ward-covariance}, obtained by taking the two curls
+of the potential kernel $(4\pi^2|x|^2)^{-1}$; this normalization is part
+of the defining free table. Write $\Phi_dp=\pi_d^0c_dp$. The on-shell polynomial address of
+$\Phi_dp$ is $\operatorname{obs}_dp$. The free separation result of
+Section~\ref{sec:ex-lattice-all-grade-free-detectors} makes this address an
+isomorphism onto the invariant on-shell sector: its kernel is exactly
+the correlation null space. In particular the reference is faithful.
+
+Its derivative plan is obtained by conjugating polynomial translation
+through this address. On a curvature jet, translation raises the jet
+in the specified direction; on products it obeys the Leibniz rule.
+The rotation action is obtained by conjugating rotation of the same
+jets, including their tensor indices. Consequently, writing
+$\delta_a$ and $\mathscr D_A$ for these polynomial derivations,
+\begin{equation}\label{eq:scribe-reference-derivatives}
+ D_a^0\Phi_dp=\Phi_{d+1}(\delta_ap),\qquad
+ K_A^0\Phi_dp=\Phi_d(\mathscr D_Ap).
+\end{equation}
+These identities follow by applying the injective polynomial address
+to either side. They are compatible with grade inclusions since those
+inclusions preserve the addressed polynomial. They also prove the
+positional derivative identity by differentiating the finite Wick
+sum in \eqref{eq:scribe-reference-dictionary}. The reference data
+installed before the comparison curve have exactly these derivative
+and rotation maps; fixing the stress normalization preserves both maps
+and the vacuum. Even if a derivative plan is specified instead by its
+positional derivative law, it must be this one: subtracting the two
+laws gives zero separated correlations for their difference on every
+label, so faithfulness makes the difference zero. This verifies (R1)
+and (R2) of Section~\ref{sec:free-maxwell-ward-flux} on these same data.
+
+For the stress identification there is a sign to retain. The coordinate
+pair $P_{ab,cd}$ of the external unit YM-000034 (file
+\texttt{trace-branch-moments.tex}, label
+\texttt{eq:ex-branch-material}) is the representative
+of $\langle F_{ab},F_{cd}\rangle$, with no extra factor. The canonical
+positive Maxwell tensor is therefore the image of
+\eqref{eq:maxwell-wick-stress}; this verifies (R3). But the branch
+coefficients $w^0=(-1,1/4,-1)$ in
+that unit (label \texttt{eq:ex-branch-coefficients}) give
+\begin{equation}\label{eq:scribe-reference-stress-sign}
+ (M_0)_{ab}=-\Phi_4\left(
+   \sum_c\langle F_{ac},F_{bc}\rangle
+      -\frac{\delta_{ab}}4\sum_{c,e}
+                         \langle F_{ce},F_{ce}\rangle\right)=-J^0_{ab}.
+\end{equation}
+The products inside $\Phi_4$ are Wick ordered by the defining observable
+map. Hence $M_0$ is centered and conserved. Applying the proved
+polynomial Ward identity \eqref{eq:maxwell-polynomial-ward} and
+\eqref{eq:scribe-reference-derivatives}, the outward collar flux of
+$J^0$ is minus the derivative insertion, and that of $M_0=-J^0$ is
+the derivative insertion with coefficient one. The same sign gives
+coefficient one for rotations. This proves input~2; no choice depending
+on the comparison sequence has entered it.
+
+Finally the definition of the scalar label in the branch table gives
+\begin{equation}\label{eq:scribe-reference-scalar-identification}
+ \mathcal O=\Phi_4\left(\frac14\sum_{a,b}
+                                  \langle F_{ab},F_{ab}\rangle\right).
+\end{equation}
+Here the sum is over ordered pairs, just as in
+\eqref{eq:scribe-reference-stress-sign}. Applying
+\eqref{eq:scribe-reference-dictionary} to two such labels, the explicit
+Wick computation \eqref{eq:trace-free-scalar} proves
+\eqref{eq:trace-reference-normalization} for this actual $\mathcal O$:
+$S_0(\mathcal O,\mathcal O;x,y)=3\dim\mathfrak g/(\pi^4|x-y|^8)$.
+Its expectation is zero by Wick ordering. For $\dim\mathfrak g>0$
+this two-point function is nonzero, so $\mathcal O\ne0$; its zero
+expectation also excludes a nonzero multiple of the unit. The
+differentiated two-point test below now supplies input~3 without an
+additional reference-normalization assumption.
 
 \paragraph{Installing the normalized energy in the selected algebra.}
 Keep the hierarchy, positional derivatives and orthogonal field action
@@ -620,7 +713,7 @@ The detecting derivative in item 3 can also be fixed explicitly.
 Take $v=\mathcal O$, the grade-four curvature-square field defined at
 the start of this section, and choose any coordinate axis $a$. Let $o$
 be the reference observer which tests a grade-five field $g$ by the
-two-point correlation $S_0(g,\mathcal O;0,e_a)$. Under the reference-field normalization
+two-point correlation $S_0(g,\mathcal O;0,e_a)$. By the reference-field normalization
 \eqref{eq:trace-reference-normalization}, the Wick calculation gives, with
 $N=\dim\mathfrak g>0$,
 \[
@@ -633,9 +726,10 @@ $N=\dim\mathfrak g>0$,
 The derivative identity is the reference derivative law; both points
 are separated, so ordinary differentiation is legitimate. This fixes a
 single observer and a single nonzero value before any chart is selected.
-It uses the reference Wick covariance and the stated identification of
-$\mathcal O$ with that normalized Wick field, not the desired interacting
-trace asymptotic. That reference identification is retained as a premise.
+It uses the actual reference Wick covariance and the identification
+\eqref{eq:scribe-reference-scalar-identification} proved above. Thus the
+detector is fixed without using the interacting trace asymptotic or
+retaining an additional reference-identification premise.
 
 \paragraph{From chart comparison to the tested and shell limits.}
 The tested approach property of
@@ -651,9 +745,74 @@ a functional nonzero on the current common kernel strictly decreases
 its dimension until it is zero. The derivative laws (4c) remain the
 laws of the selected and reference tables.
 
-For (4d), use the compact comparison of jets on this same scaling.
-Its order-zero consequence, which is all the shell argument needs, is
-the following precise estimate. For each fixed finite word of reference
+We now check the stronger compact comparison needed in (4d). Use exactly
+the completed corrected maps of
+Theorem~\ref{thm:ex-lattice-selected-trace-gallery} and its
+\hyperref[par:ex-trace-completed-uniform-tests]{completion paragraph}:
+the index $k$ there is the present $i$, the selected table is $S$, the
+reference table is $S_0$, and the radii and every grade map are the
+present $r_i,U_{i,d}$. The raw lifts are those of these same supplied
+charts and use the fixed extraction and ultrafilter. This is the
+choice of chart family throughout the transfer, not a replacement by
+a second curve. Any subsequent subsequence is applied to all these
+data together.
+
+For a fixed word $v$ and compact set $Q$ in its noncoincident
+configuration space, the finite-slot expansion in that theorem gives
+an error bound
+\begin{equation}\label{eq:scribe-uniform-short-tests}
+ \sup_{\substack{f\in C_c^\infty,\ \operatorname{supp}f\subset Q\\
+                    \|f\|_\infty\le M}}
+ \left|\int f(x)\left\{S(U_iv;r_ix)-S_0(v;x)\right\}\,dx\right|
+       \le \frac{M K_v}{i+1}\longrightarrow0
+\end{equation}
+on a tail, where $K_v$ is a finite constant depending on the word.
+Indeed the corrected discrepancy is a finite sum of raw discrepancies
+at fixed words, each bounded by the short-test estimate
+\eqref{eq:ex-lattice-trace-test-error}. Their number and label norms
+do not depend on $f$ or $i$. The expanding cutoff window contains the
+whole compact set $Q$ eventually. Completion changes none of the
+finitely many grade maps on a further tail independent of $f$.
+This proves the supremum estimate, rather than merely convergence for
+each individual test. Along a further subsequence $i\mapsto n_i$,
+the same argument retains the vanishing bound $MK_v/(n_i+1)$.
+
+The compact-jet argument in the subsection ``Derivative transport and
+convergence on compact sets'' of
+Section~\ref{sec:actual-stress-normalization} now applies to these
+very data. Its hypothesis \eqref{eq:stress-uniform-tests} is precisely
+\eqref{eq:scribe-uniform-short-tests}. Its spaces $E_d,F_d$ are the
+reference and selected grade spaces here; their finite dimension,
+smooth multilinear correlations, separating tests, and derivative
+identities are the same hierarchy and derivative laws already used
+in (4a)--(4c). No stress-normalization conclusion of that section is
+used in its compact-jet argument.
+
+To make the application explicit, its transported derivative is
+$r_iU_{i,d+1}^{-1}D_a^S U_{i,d}$. The finitely many separating tests
+in grade $d+1$ give measurement maps $L_i\to L$, with $L$ injective.
+Integration by parts and \eqref{eq:scribe-uniform-short-tests} imply
+$L_i(r_iU_{i,d+1}^{-1}D_a^S U_{i,d})v\to LD_a^0v$.
+The eventual lower bound for $L_i$ therefore gives convergence of
+the transported derivative to $D_a^0$ in operator norm, as proved
+there. Finite-basis multilinearity transfers the uniform test estimate
+to converging moving labels. Position differentiation replaces one
+label by its transported derivative, so this class of discrepancies
+is closed under every fixed number of position derivatives. For a
+compactly supported cutoff $\eta$ in configuration space and any such
+discrepancy $h_i$, the tests $\eta e^{-2\pi\mathrm i\xi\cdot x}$
+have one common supremum bound. The same is true with derivatives of
+$\eta$ and descendants of $h_i$. The integration-by-parts calculation
+in that section consequently bounds
+$|\widehat{\eta h_i}(\xi)|$ by
+$C\epsilon_i(1+|\xi|)^{-b}$, with $\epsilon_i\to0$ and any fixed
+$b>4n$ at arity $n>0$. Fourier inversion yields uniform convergence
+on a compact set where $\eta=1$; applying this to the finitely many
+derivatives of a fixed order gives convergence of that jet. At arity
+zero the assertion is the scalar short-test limit. This also explains
+why no estimate at collision configurations is needed.
+
+Thus, for each fixed finite word of reference
 labels $h_1,\ldots,h_s$, with grades $d_1,\ldots,d_s$, and each compact
 set $K$ of pairwise distinct configurations,
 \begin{equation}\label{eq:scribe-compact-comparison}
@@ -661,9 +820,12 @@ set $K$ of pairwise distinct configurations,
  S(U_{i,d_1}h_1,\ldots,U_{i,d_s}h_s;r_i z)
        -S_0(h_1,\ldots,h_s;z)\right|\longrightarrow0.
 \end{equation}
-The required finite grade and arity bounds must include every label
-in this word. We use this as the compact jet-comparison input, not
-as a consequence of pointwise or tested convergence alone.
+The required finite grade bounds include the finitely many descendants
+used for the desired jet order. They and the fixed arity are eventually
+within the selected chart cutoff. Equation
+\eqref{eq:scribe-compact-comparison} is therefore a proved consequence
+of the uniform short-test estimate and the derivative laws, not an
+independent compact-comparison premise.
 Taking $K$ to be the observer's one configuration gives the first
 assertion of (4d).
 
@@ -963,7 +1125,10 @@ and a scaling whose radii are exactly $r_i=s_{n_i}$
 its one-step chart producer); the same history is then passed to the
 finite-volume chart producer, and the physical transfer above applies
 without another extraction. Thus, under the same paid response, sensor,
-branch, shell-comparison, clock and scale-selection inputs, the output of
+branch, clock and scale-selection inputs, the output of
 the selected-run producer is the full Scribe record, rather than only its
 finite-dimensional chart part. Each of these inputs is conditional on
-its own hypotheses, and this section does not establish them.
+its own hypotheses, and this section does not establish them. The
+compact comparison and the shell limit are consequences of the
+selected gallery's uniform short-test bound and the derivative laws,
+as proved above; they are not additional independent inputs.
