@@ -1,5 +1,11 @@
 \subsection{Connected clusters with repeated labels}
 \label{sec:cluster-expansion}
+
+The abstract polymer expansion and its convergence criterion are
+developed in Koteck\'y and Preiss \cite[the theorem on pp.~492--493]{KoteckyPreiss}.
+The argument here also keeps a geometric bound at each occurrence number
+in the weighted expansion, for the later differentiated estimates.
+
 Subsection~\ref{sec:ope-grouping} counted connected sets of distinct activity
 labels. A logarithmic expansion is different: its vertices are numbered
 occurrences, and the same activity label may occur several times. We now
@@ -39,36 +45,13 @@ For any graph $T$ on $\{0,\ldots,m\}$,
                       (-1)^{|E(G)|}\right|
                       \le\#\{\text{spanning trees of }T\}.
 \end{equation}
-Here is the cancellation argument. Fix a total order of the vertices
-and root at zero. For each connected $G$, let $d(v)$ be its distance
-from zero, and choose the least neighbor $p(v)$ at distance $d(v)-1$
-as the parent of each $v\ne0$. The resulting parent edges form a
-spanning tree $P$. They determine $d$ by their path lengths.
-
-For a fixed tree $P$, define $U(P)\subseteq T$ to contain the tree
-edges and all further edges satisfying these two rules: their levels
-differ by at most one, and, if they join $v$ at level $r$ to $w$ at
-level $r-1$, then $w\ge p(v)$ in the chosen order. Precisely the graphs
-with
-\[
-                         P\subseteq G\subseteq U(P)
-\]
-have this breadth-first parent tree. One implication follows from
-shortest-path distance and the least-parent rule. Conversely, the tree
-paths show that a graph in this interval reaches every vertex in at
-most $d(v)$ steps. The level restriction implies that no path from
-zero reaches it in fewer steps, so the distances are exactly $d$.
-The second rule makes $p(v)$ its least neighbor at the preceding
-level. This proves the other implication and partitions all connected
-graphs into these intervals.
-
-The alternating sum over one interval is
-$(-1)^m(1-1)^{|U(P)\setminus P|}$, hence has absolute value at most
-one. Equivalently, if there is a free edge, toggling it pairs terms
-with opposite signs. Summing over $P$ proves
-\eqref{eq:cluster-tree-graph}. Taking absolute values separately for
-all connected graphs would lose this cancellation and would not give
-the required estimate.
+This is the Penrose tree-graph bound
+\cite[Proposition~5, Eq.~(4.3)]{FernandezProcacci}. Apply the identity
+to the finite simple graph on the occurrence indices. The alternating
+sum has absolute value equal to the number of Penrose trees, a subset
+of its spanning trees. For a disconnected graph both counts vanish.
+Repeated activity labels are permitted because different occurrences
+are different vertices, joined when the labels are incompatible.
 
 \subsubsection{The weighted forest estimate}
 A parent map $p:\{1,\ldots,m\}\to\{0,\ldots,m\}$ is called rooted
