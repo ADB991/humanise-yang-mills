@@ -356,11 +356,11 @@ Each old-box component and response letter has a fixed support. `Towed` gives se
  (2B_k+1)^4\eta\le3,
 \]
 
-the sum of all nonempty connected clusters rooted at any fixed site x, with each polymer weighted by its activity times (e^{d\operatorname{cov}_{B_k}(support)}), is `SumBudget`-bounded by (e^\eta-1). The proof is a finite forest recursion: `stepP` bounds adding a polymer to a proper subforest using `Real.add_one_le_exp`; `all_price` inducts on the forest, and the geometry inequality 
+the sum of all nonempty connected clusters rooted at any fixed site x, with each polymer weighted by its activity times (e^{d\operatorname{cov}_{B_k}(support)}), is `SumBudget`-bounded by (e^\eta-1). The proof is a finite forest recursion: `stepP` bounds adding a polymer to a proper subforest using `Real.add_one_le_exp`; `all_price` inducts on the forest, and the geometry inequality
 \(\operatorname{card}(Y)\le\operatorname{coverNumber}(B_k,Y)(2B_k+1)^4\)
 converts the sitewise Hit budget to the rooted exponential majorant. Subtracting the empty cluster leaves (e^\eta-1). This is the exact reason for the support loss three: the incoming tree charge has exponent (d+3), the geometry toll uses all three units, and the output `Towed` cluster family retains exponent (d=\alpha_k-4\).
 
-In the `Melts` receipt, 
+In the `Melts` receipt,
 
 \[
  (2B_k+1)^4\eta\le3,\qquad e^\eta-1\le1.
