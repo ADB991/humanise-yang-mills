@@ -6,15 +6,17 @@ precise. A completed blueprint and fully proved prerequisites are not required
 before writing. State outstanding inputs exactly and track their status in the
 linked blueprint unit; never conceal a missing argument.
 
-`existence.tex` assembles the monograph with `\input` and defines shared
-notation and theorem environments. `references.bib` holds the bibliography.
-The running-coupling section is owned by
-[YM-000022](../blueprint/units/YM-000022/correspondence.md). Its blueprint records
-the correspondence and review evidence.
+`existence.tex` is the monograph: its preamble defines shared notation and
+theorem environments, and it assembles the section files in `existence/` with
+`\input`. `references.bib` holds conventional references (BibTeX, `alpha` style).
+The running-coefficient section `existence/running-coupling.tex` is owned by
+[YM-000022](../blueprint/units/YM-000022/correspondence.md). Its blueprint contains
+correspondence and review evidence, not a second version of the proof.
 
 ## Build and inspect
 
-From the repository root, with a TeX distribution providing latexmk and BibTeX:
+From the repository root, with a TeX distribution providing latexmk, BibTeX and the scalable T1 fonts
+(`cm-super`):
 
 ```sh
 mkdir -p manuscript/build
@@ -22,8 +24,8 @@ cd manuscript
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build existence.tex
 ```
 
-The result is `manuscript/build/existence.pdf`. The repository also tracks
-`manuscript/existence.pdf`.
+The result is `manuscript/build/existence.pdf`; build products there are ignored
+by Git. The repository also tracks a compiled snapshot `manuscript/existence.pdf`.
 Inspect the rendered pages after changes; resolve missing references and layout
 warnings before submission. CI builds the manuscript as well as checking metadata.
 
