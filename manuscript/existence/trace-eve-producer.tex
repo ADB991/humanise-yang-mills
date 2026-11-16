@@ -262,20 +262,57 @@ observable at the chart origin is bounded by $\tau B_*(x)$, uniformly over
 the choices above. This is the concrete uniform derivative inequality used
 by the response construction.
 
-If the branch patch required by the uniform derivative inequality does not
-exist, the response is zero and that inequality is vacuous. If the patch
-exists, we use as an outstanding input the finite-volume insertion
-estimate: there is a function $f$ of rate $-1/2$ such that the derivative
-bound holds with price $2|f|$. The preceding paragraphs describe the
-comparison and the envelope $B_*\in\mathcal R_{-1/2}$ from which this
-estimate is to be obtained; the identification of $f$ and of the factor
-$2$ is not carried out here. Choosing the response to
-be $u=2|f|$ preserves that rate and bound. Thus, conditional on this
-outstanding insertion estimate, the remaining assembly in this section is
-exactly the finite-test choice and scalar billing proved above. The two
-cited comparison sections supply the comparison and the envelope
-$B_*$ under their explicit hypotheses; they do not by themselves supply the
-insertion estimate with the price $2|f|$, which remains open.
+We can now choose the scalar in the insertion receipt explicitly. The
+polynomial majorant $P_n$ has nonnegative coefficients, and its arguments,
+$\delta$ and the cutoff-tail term are nonnegative. Thus $B_*\ge0$ on
+the common tail where the comparison is applied. Define
+\begin{equation}\label{eq:ex-lattice-eve-concrete-amplitude}
+ f(x)=\tfrac12 B_*(x),\qquad u(x)=2|f(x)|=B_*(x)
+\end{equation}
+on that tail, and set both functions to zero before it. Altering a
+function on an initial interval does not change its eventual rate.
+Multiplication by a fixed positive constant preserves the strict-power
+rate: for each $q>-1/2$, choose $q'\in(-1/2,q)$ and absorb the
+constant using $\beta(x)^{q-q'}\to\infty$. Hence both $f$ and $u$
+belong to $\mathcal R_{-1/2}$.
+
+For every admissible leaf of weight $\tau\ge0$ and every ordered list
+of at most $n$ allowed chart directions, the inequality already proved
+is therefore exactly
+\[
+ \bigl\|D^{\mathbf v}(\mathcal O_{\mathrm{act}}
+                  -\mathcal O_{\mathrm{ref}})(0)\bigr\|
+ \le\tau B_*(x)=\tau\,2|f(x)|=\tau|u(x)|.
+\]
+This includes the zeroth derivative and the case $\tau=0$; no division
+by the leaf weight is made. The density and cutoff derivative bounds
+used in the comparison also give the required differentiability near
+the chart origin, with the masked ingredient fixed. Thus the bound
+applies to the actual response test, not just to a formal coefficient
+of its Taylor expansion.
+
+The function $f$ may depend on the fixed grade, block, stage profiles,
+selected kernel, differentiation order and comparison parameters. It is
+chosen before the period, forest, tags, leaf, mask, read support, base
+configuration and allowed direction list. Its tail is uniform in all
+those latter data, because the envelope $B_*$ and the two integral
+identities were uniform in them. There is no additional normalization,
+positivity or matching condition on the auxiliary scalar $f$: it is a
+price majorant, not one of the local fields. The numerical factor two
+is therefore realized by the definition in
+\eqref{eq:ex-lattice-eve-concrete-amplitude}; it incurs no extra
+analytic loss.
+
+If no branch patch compatible with the fixed selected kernel and block
+exists, take $f=u=0$ everywhere. Any step to which the receipt could
+apply would itself supply such a patch, so the universally quantified
+insertion receipt has no instances in this case. If a compatible patch
+exists, the actual step uses that selected patch and the preceding
+construction applies. In either case this supplies the insertion
+receipt. The finite-test choice and scalar billing of
+Theorem~\ref{thm:ex-lattice-eve-producer} now apply to this concrete
+$u$, on the intersection of its common tail with the geometry, cap,
+probe and cloud tails; no outstanding insertion estimate is assumed.
 
 The package for one transition with block side $L$ and grade $d$ is
 constructed under the following standing conditions, which the scalar
@@ -307,6 +344,83 @@ $P.\mathrm{power}$ is the power of $P_0$; and the cap's cover bound
 is at most one, so the support allowance in
 \eqref{eq:ex-lattice-budget-support} can be chosen to be the constant one.
 The lower coupling bound is the same in both statements. These verify
-all the support and budget conditions of that application. The probe
-receipt and the cloud receipt (4) are separate inputs, not proved in this
-section.
+all the support and budget conditions of that application. The two remaining receipts are proved next for these same local data.
+
+\subsection{The actual probe and cloud bounds}
+\label{subsec:trace-eve-probe-cloud}
+Fix a probe $p$ of order $k$ and a frame column $\alpha$ of
+amplitude degree $\ell_\alpha$. The constants below depend on these
+finite choices and the installed kernel and block, but not on the
+period or on the two thresholds $w,y\in(0,1]$ with
+$1/2\le y/w\le2$. Let $R=\rho(x)=45(1+\lceil(\log x)^2\rceil)$.
+We apply the cropped-probe calculation of
+Section~\ref{sec:primary-calibration-producer} with fine threshold
+$w$ and coarse probe threshold $y$. Its actual curve is exactly the
+one defining $U_\alpha(V_p(s))$: it crops to radius $R$ and applies
+the installed first-order row. The room condition $2R<c$ ensures
+that the crop uses the canonical covering-lattice lifts. The
+full polynomial curve uses the same row. Absolute convergence of
+its Fourier kernel identifies the periodized convolution with the
+covering sum regrouped by residue classes.
+
+In the notation of \eqref{eq:primary-probe-tail}, the jets of the
+two normalized input curves through order $k$ differ by at most
+\[
+ e_R=C\{1+K(1+4R)^{dk}\}\exp(-\sigma R/2),\qquad \sigma>0.
+\]
+Here the polynomial factor bounds the probe's link-log jets outside
+the crop; inside the crop the two arrays agree. The constants are
+uniform in $w,y$: each nonempty chain-rule block contributes a
+threshold factor $y^r/w\le y/w\le2$.
+The full predicted jets have a fixed bound $U$ given by the weighted
+kernel moments. The normalized local-section estimate
+\eqref{eq:primary-stencil-stability} therefore bounds the output
+jet difference, including the physical factor, by
+\begin{equation}\label{eq:trace-eve-probe-envelope}
+ E_{p,\alpha}(x)
+   =L^d C_{k,\alpha,U}(1+e_R)^{\ell_\alpha+k}e_R.
+\end{equation}
+The full polynomial forecast in that section has exactly the
+coefficient transport $\mathcal L\mathsf e_\alpha$: its three
+fine-grade factors multiply to $L^d w^{-\ell_\alpha}$, and its
+coarse scaling inserts $y$ in the probe. Thus its reading is
+$R_p(\mathcal L\mathsf e_\alpha)$, with no change of coefficient
+map. This identifies the difference estimated in
+\eqref{eq:trace-eve-probe-envelope} with the probe-to-run difference
+in Theorem~\ref{thm:ex-lattice-eve-producer}. For the unit column the
+local section is constant and both readings agree exactly.
+
+Since $R\asymp(\log x)^2$, the logarithm of $e_R$ is at most
+$-c_0(\log x)^2+O(\log\log x)$ for some $c_0>0$.
+Also $\log\chi(x)=\tfrac12(\log\log\beta(x))^2$ and
+$\beta(x)=x+c_L$. It follows directly that
+$\chi(x)E_{p,\alpha}(x)\to0$. There are finitely many probes
+and columns. Taking the maximum of their eventual thresholds gives
+$E_{p,\alpha}(x)\le Q/\chi(x)$ simultaneously, uniformly over
+all the steps, periods and thresholds allowed in the receipt.
+This proves the probe estimate with its required order of quantifiers.
+
+For the cloud, let $q_*<0$ be the fixed rate of the selected target
+and $\epsilon_*>0$ its support reserve. The actual cloud response
+is the quantity in Lemma~\ref{lem:ex-lattice-medal-cloud-price}, with
+its coefficient now specified explicitly:
+\begin{equation}\label{eq:trace-eve-cloud-formula}
+ \mathcal M_x(Z_0)
+ =m_0\exp(-\epsilon_*N(Z_0))\,\beta(x)^{q_*/4},
+ \qquad N(Z_0)\ge0.
+\end{equation}
+The coefficient is a negative power of $\beta$, so it has the
+strict-power rate required in that lemma. In particular
+$0\le\mathcal M_x(Z_0)\le m_0\beta(x)^{q_*/4}$ uniformly
+over clouds and representations. Choose one scale threshold with
+$2L^d\beta(x)^{q_*/4}\le S=\nu/(2cTh)$.
+Multiplying by $m_0\ge0$ proves (4), including the case $m_0=0$
+without division. The same formula gives the stronger statement
+\[
+ \mathcal M_x(Z_0)\le (v/\chi(x))m_0
+\]
+for every prescribed $v>0$ on a later common tail, since
+$\chi(x)\beta(x)^{q_*/4}\to0$. This is the cloud estimate
+used for regular and primary atoms. Thus the probe, cap, cloud,
+and insertion estimates are all supplied before their common
+finite intersection is used to construct the response package.

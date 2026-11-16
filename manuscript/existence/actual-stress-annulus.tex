@@ -212,6 +212,104 @@ $f_{k_0}\le a_m$, that is $B_{k_0}^2\le a_m/a_{k_0}$; then $m$ is opened
 at $k_0$.  By persistence it is opened at $k=\max(k_0,k_1)$.
 \end{proof}
 
+\paragraph{A slotwise bound before the physical Ward construction.}
+The derivative bound needed by the annulus argument can be obtained
+without analytic continuation or physical rotations. Retain the
+centered one-field service and the all-copy construction of
+Section~\ref{sec:actual-slab-copy-bounds}. For a fixed list of labels
+$v_1,\ldots,v_n$ of grades $d_1,\ldots,d_n$, put
+$A=\sum_{i=1}^n(d_i+1)$. We claim that for every $\alpha>1$ there is
+$C_{\alpha,\boldsymbol v}$ such that the slab operator of this word,
+with mutual and boundary separation at least $r\in(0,1]$, satisfies
+\begin{equation}\label{eq:scribe-slotwise-slab}
+ \|A_d(w)\|\le C_{\alpha,\boldsymbol v} r^{-\alpha^2 A}.
+\end{equation}
+Constants may depend on the fixed word of labels, but not on its
+positions or the slab width. First the adjacent-increment estimate
+above gives $a_j\ge a_{j-1}^{\alpha}$ on a tail. If $j\ge F$ is the
+first level with $a_j<\epsilon$, then
+\[
+       c_\alpha\epsilon^\alpha\le a_j<\epsilon,
+       \qquad c_\alpha=\min(1,a_F)>0.
+\]
+For $j>F$ this follows from $a_{j-1}\ge\epsilon$; for $j=F$ it follows
+from $\epsilon\le1$. Enlarge $F$ to cover all fixed labels, their
+signed reflections and adjoints. Centered service with slack one
+bounds the price of slot $i$ at level $k$ by
+$J_i a_k^{-(d_i+1)}$. It is important to retain each $d_i$, rather than
+replace all of them by their maximum.
+
+Choose $m$ first with $a_m<r/32$. The lower bound just proved gives
+$a_m\ge b r^\alpha$, with $b=c_\alpha32^{-\alpha}>0$.
+Choose $0<u<\min(1/32,b/21)$, and then choose $k$ first with
+$a_k<u(r/n)^\alpha$. Since $n\ge1$ and $\alpha>1$,
+\[
+ 20na_k<20u r^\alpha n^{1-\alpha}<b r^\alpha\le a_m,
+ \qquad
+ a_k\ge c_\alpha u^\alpha(r/n)^{\alpha^2}.
+\]
+Thus the two-scale placement argument of the all-copy proof applies
+unchanged. Its mixed-cell bound holds with different prices in the
+main slots: apply the planted inequality without replacing the
+individual root prices by a common maximum. In the reflected pairing
+of $2q$ main copies, each slot appears $4q$ times, so its bound is
+\[
+ X^{2|v|}\left(\prod_{i=1}^n
+                   J_i a_k^{-(d_i+1)}\right)^{4q}.
+\]
+The exterior price $X$ remains independent of the replica number $q$,
+exactly as in the existing proof. The train-bound lemma therefore gives
+operator norm at most the product in parentheses. The lower bound for
+$a_k$ proves \eqref{eq:scribe-slotwise-slab}, absorbing the fixed $n$
+and the fixed slot prices in $C_{\alpha,\boldsymbol v}$. Padding to the
+original slab width is a contraction. Uniqueness on the dense positive
+word domain identifies this operator with the already constructed
+operator, so obtaining a sharper estimate makes no new theory choice.
+
+Compression and evaluation at a character are contractions. Translating
+into a slab with fixed positive boundary padding therefore gives the
+same bound for the selected correlations at all configurations with
+mutual sup separation at least $r$. This is the proof of
+Proposition~\ref{ex-phase-caps}, now retaining the slotwise exponents.
+The exact slot derivative identity raises only the differentiated
+slot's grade, one per derivative. Thus for every fixed integer $Q$,
+all derivatives of orders $0\le n\le Q$ in the moving slot satisfy
+\[
+ |\partial^n S_{\boldsymbol v}(x)|
+      \le C_{Q,\alpha} r^{-\alpha^2(A+n)}.
+\]
+The finitely many derivative labels and coordinate directions permit
+one maximum of the constants and thresholds. Choose $\alpha>1$ so
+close to one that $(\alpha^2-1)(A+Q)\le1$. For $0<r\le1$ this gives
+\begin{equation}\label{eq:scribe-linear-derivative-price}
+ |\partial^n S_{\boldsymbol v}(x)|
+                 \le C_Q r^{-(A+n+1)},\qquad 0\le n\le Q.
+\end{equation}
+The exponent has slope one in the derivative order. Choosing $\alpha$
+after the finite derivative request changes only proof constants and
+thresholds, not the selected schedule, labels or correlation table.
+
+For each fixed watch, the stress slot has grade four and the other
+slots include its distinguished field and spectators. At a collar
+point $y$ close to the distinguished origin, the least separation of
+the full word is at least $c|y|$ for a fixed $c>0$: the remaining
+points are fixed and separated, and the only shrinking separation is
+between the stress slot and the origin. Hence
+\eqref{eq:scribe-linear-derivative-price} yields
+$|H_{a,n,m}(y)|\le C_a|y|^{-(A_a+n+1)}$ uniformly over the collar.
+For finitely many watches choose $Q$ so large that
+$Q(t-1)>\max_a(A_a+1)$. Then
+\[
+ a_{j_m}^Q r_m^{-(A_a+Q+1)}\longrightarrow0,
+\]
+because its logarithm divided by $s_m$ tends to
+$-Qt+(A_a+Q+1)<0$. This is exactly the remainder needed by the
+finite-order interpolation in the annular-field argument. Equivalently
+one may use the cloud allowance
+$c_a=\sum_{\mathrm{spectator\ slots}}d_i+
+       (\text{number of spectator slots})$;
+then $4+n+2+c_a=A_a+n+1$.
+
 \subsection{Vanishing against a finite tester annihilator}
 
 \begin{lemma}[shrinking-annulus annihilation]
@@ -238,8 +336,10 @@ and \eqref{eq:ex-lattice-stress-grade} hold, and the shell-node receipt
 holds at $(p_0,k)$ for the finite family of watches
 $I_1,\ldots,I_s$.  Fix its witnessing scale ratio $t>1$.  For each watch
 $I_a$, the moving insertion is a component of the grade-four stress, so its
-initial tag degree is $q_a=4$; let $c_a$ be the total cloud degree of all
-spectators, including the fixed grade-$d$ insertion $v$.  Choose an integer $q_*\geq1$ so large
+initial tag degree is $q_a=4$; let $c_a$ be the sum of grade plus one over all
+spectator slots, including the fixed grade-$d$ insertion $v$.
+The extra one per slot is an allowed enlargement of the spectator
+allowance and pays the centered-service slack.  Choose an integer $q_*\geq1$ so large
 that
 \[
   q_a+q_*+2+c_a<q_*t
@@ -247,7 +347,8 @@ that
 \]
 For $0\leq n\leq q_*$, let $H_{a,n,m}(y)$ denote the scalar insertion with
 the moving stress component of $J$ at $y$ raised $n$ times, with the watch's
-fixed grade-$d$ insertion $v$ and all other spectator labels held fixed.  Assume the quantitative
+fixed grade-$d$ insertion $v$ and all other spectator labels held fixed. The slotwise bound
+\eqref{eq:scribe-linear-derivative-price} supplies the quantitative
 separated-point bounds: for every sufficiently large $m$ and every
 $y\in\mathcal C_{r_m}$,
 \[
