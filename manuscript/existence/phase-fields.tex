@@ -731,3 +731,119 @@ orientation receipts are supplied. Original-null containment alone does
 not assert them. Nor does this algebraic construction prove compatibility
 with derivatives, a calibrated reference identification, continuous
 rotation or Lorentz actions, or any Ward identity.
+
+
+\subsection{Constructing the field derivatives from finite differences}
+\label{subsec:phase-field-derivatives}
+
+\begin{proposition}[Derivative representatives on the same table]
+\label{prop:phase-field-derivatives}
+Retain the finite-volume family, calibrations, ordered extraction and smooth
+mixed table of paragraph~\ref{par:phase-inclusion-attachment}, with the
+insertion and difference comparisons of
+Section~\ref{sec:actual-insertion-derivative-relay}. There are linear maps
+\[
+ \partial_\alpha:E_d\longrightarrow E_{d+1},\qquad \alpha=1,\ldots,4,
+\]
+compatible with the grade inclusions, such that insertion of
+$\partial_\alpha A$ in any slot differentiates the correlation in that
+slot's $\alpha$ coordinate. They commute with one another, kill the unit,
+and commute with conjugation. Under a signed orthogonal coordinate symmetry
+$g$ they obey $\rho(g)\partial_\alpha=
+\sum_\beta g_{\beta\alpha}\partial_\beta\rho(g)$.
+These identities hold in the common field union and in every whole-word
+character correlation. In particular they supply
+\eqref{ex-raw-slot-identity} with any chosen raw representatives.
+\end{proposition}
+\begin{proof}
+Fix a raw label $v$ at grade $d$ and a coordinate $\alpha$. Apply the
+finite-difference comparison to
+\[
+ Z_c(o)=a_N^{-1}\{O_c(v;o+e_\alpha)-O_c(v;o)\},\qquad c=(N,p).
+\]
+It supplies one comparison label $u_c\in A_{d+1}$, independent of
+spectators and tests, with subpower inverse terminal coordinates and
+vanishing tested discrepancy. We identify its tested limit explicitly.
+For a smooth compactly supported separated joint test $f$, the lattice
+sum for $Z_c$ can be reindexed in its distinguished slot. On its compact
+support, the mesh is eventually smaller than the separation margin;
+at every suitable fixed period there is also a positive margin to the
+boundary of the chosen coordinate box. The reindexing is therefore
+legitimate (or equivalently is reindexing of the periodic sum), and gives
+\[
+ a_N^{4n}\sum_{\boldsymbol x} f(\boldsymbol x)
+       \mathbb E[Z_c(x_i)\prod_{j\ne i}O_c(v_j;x_j)]
+ =a_N^{4n}\sum_{\boldsymbol x}
+ \frac{f(\boldsymbol x-a_N e_{i,\alpha})-f(\boldsymbol x)}{a_N}
+       \mathbb E[\prod_jO_c(v_j;x_j)],
+\]
+where $v_i=v$. The test on the right converges in every smooth norm,
+on one fixed compact separated set, to $-\partial_{i,\alpha}f$.
+The zeroth-order compact-uniform bounds of
+Theorem~\ref{thm:ex-fullmesh-fixedbounds-producer} bound the absolute lattice pairing on
+that set by a constant times the supremum norm of its test: the mesh
+weight times the number of sites there is bounded, and the correlations
+are uniformly bounded there on the relevant late tail. Consequently
+replacing that varying test by its limit changes the pairing by a
+quantity tending to zero. First take the mesh limit at each suitable
+period and then the retained volume limit. The resulting functional is
+\[
+ M_\theta=-\int (\partial_{i,\alpha}f)(x)S_{\boldsymbol v}(x)\,dx
+          =\int f(x)\partial_{i,\alpha}S_{\boldsymbol v}(x)\,dx.
+\]
+The last equality is ordinary integration by parts on the open separated
+configuration domain; the support is compactly contained in it. This
+argument does not interchange mesh and volume limits or require a mesh
+threshold uniform in the period.
+
+Use the same finite and limiting grade-$(d+1)$ projectors as in
+paragraph~\ref{par:phase-inclusion-attachment}. Their exact all-test
+kernel identity and the local equation estimate apply to
+$(u_c-P_cu_c)/(1+\|P_cu_c\|)$: the first summand has subpower inverse
+terminal norm by the difference relay, and the second has bounded
+reference norm and hence subpower inverse terminal norm. Thus the two
+limits in \eqref{eq:ope-normalized-tests} hold with the $M_\theta$ just
+computed. That compactness argument supplies a single
+$w\in\operatorname{ran}P_{d+1}$ with $f_\theta(w)=M_\theta$ for
+\emph{all} spectator tuples and separated tests. It does not select a
+different label for each test. Smoothness of both correlation kernels
+turns this distributional identity into their pointwise equality.
+Define $\partial_\alpha[v]_d=[w]_{d+1}$.
+
+Any two such representatives have zero correlations against all
+spectators, and hence differ by the defining null space. In particular,
+any derivative plan on this same table satisfying the all-spectator slot
+identity agrees with these maps on the quotient; previously retained
+derivative fields are thereby identified, not independently reselected. If $v$ is null,
+all its correlations vanish identically, so their derivatives vanish and
+$w$ is null. This proves well-definedness on the quotient. Linearity
+follows by differentiating the linear correlation identities and invoking
+the same null-space criterion. For two representatives of the same field
+at different grades, the inclusion slot identity
+\eqref{eq:phase-inclusion-slot}, differentiated in that slot, shows that
+the resulting derivatives agree after inclusion. Thus the maps define
+operators on the common union.
+
+Apply the slot identity twice. Equality of mixed partial derivatives of
+the smooth table, followed again by the all-spectator null criterion,
+gives $\partial_\alpha\partial_\beta=
+\partial_\beta\partial_\alpha$ in $E_{d+2}$. The unit slot is constant
+in its position, so its derivative is zero. Differentiating the
+conjugation identity at real positions proves commutation with
+conjugation. Differentiating the covariance identity and using the
+ordinary chain rule for $x\mapsto gx$ proves the displayed signed
+symmetry rule. These conclusions concern quotient fields, so no linear
+or equivariant choice of raw representatives is necessary.
+
+Finally fix a slab and exterior word vectors. Their matrix element is
+a mixed correlation with the inserted word in the slab and the
+exterior words strictly outside it. The slot identity just proved holds
+for that correlation with all exterior labels. On a compact neighborhood
+of the insertion positions, the all-copy slab bounds also bound the
+operators with the differentiated labels. The operator remainder
+argument of Lemma~\ref{ex-operator-remainder}, iterated with these labels,
+therefore yields the slot identity in operator norm. Compressing to the
+ground space and applying the bounded character preserves that identity.
+This proves it for every character, with the original derivative fields;
+there is no new choice of derivatives in individual phases.
+\end{proof}

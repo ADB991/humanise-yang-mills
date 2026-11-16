@@ -38,7 +38,10 @@ index $E$, the countable purchase is
  \quad U_{E,j}^{-1}\le 1+\log\log\widehat\beta_m.
 \]
 The same construction keeps $1\le1+\log\log\widehat\beta_m$ for
-all $m$: the countable purchase includes $\exp(\exp E_j)$ with
+all $m$: the countable purchase includes \[
+ \exp(\exp E_j)
+\]
+with
 $E_j\ge1$ in every $d_j$, so
 $\widehat\beta_m\ge\beta_*\ge d_{j_*}\ge e^e$ and
 $\log\log\widehat\beta_m\ge1$. After the lengths are fixed, let $A_j(L)$ and $B_j(L)$
@@ -177,30 +180,88 @@ under the same normalized Wilson law of $C_R$. Neither a limiting
 identification nor a replacement by the reference coupling
 $\widehat\beta_N$ is used.
 
-\paragraph{Conditional running consequence.}
-Suppose the running estimate of
-Section~\ref{sec:surviving-interval-shooting}, with the slope identified
-as $\sigma=2b_0(G)>0$, holds for these actual coefficients: there is one
-fixed intercept $\bar\beta$ such that for every $\eta>0$ there is
-$m_0(\eta)$ with
-\[
- \left|\beta^R_{N,p,m}-(\bar\beta+\sigma s_m)\right|\le\eta s_m
- \quad\text{for all }m\ge m_0(\eta),\ N\ge m,\ p\in\mathbb N.
-\]
-Apply the uniform extraction proposition of the running-coefficient
-pilot to these coefficients, scale $s_m$ and intercept $\bar\beta$.
-It gives a threshold independent of $N,p$ for their ratio to $s_m$.
-Taking $m=N$ and using \eqref{eq:public-family-coordinates} yields
-\[
+\begin{proposition}[The normalized observables of the retained family]
+\label{prop:public-normalized-observables}
+On the retained family $C_R$, the sections and insertions in
+\eqref{eq:public-family-insertion} are the sections and insertions of
+\eqref{eq:headline-jet-normalization}--\eqref{eq:headline-insertion}, with
+$r_d=t_R(d)$, $R_{d,N,p}=A^R_{d,N,p}$ and
+$D_{\theta_N^{-1}}=\Delta_d(\vartheta_N^{-1})$.
+The sections have one fixed finite stencil at each grade, are polynomial,
+linear in the labels, gauge invariant, unit preserving and compatible
+with conjugation and signed lattice symmetries. Their jets obey
+\eqref{eq:headline-jet-normalization}.
+For $N\ge t_R(d)$ the unnormalized inserted density has exact transport
+along the stored block integrations; its reference coefficient is the
+specified label $v$, and its adjacent remainders obey the cone and
+charge bounds of Proposition~\ref{prop:selected-music}.
+At grade $d$ the physical unit is the reference label
+$a_{t_R(d)}^d e_0$, where $e_0$ is the constant polynomial.
+Every assertion uses the same history, not a separately selected
+regular Wilson family.
+\end{proposition}
+\begin{proof}
+The local-section construction in Section~\ref{sec:local-sections}
+chooses one finite jet sampler, one polynomial recovery map and its
+finite signed-symmetry average before the period or threshold is
+chosen. Its Taylor identity proves
+\eqref{eq:headline-jet-normalization} on every radial jet. The finite
+union of the averaged stencils is the required fixed stencil; the
+polynomial and covariance assertions are proved there on that very
+union. The portfolio in the present selection retains these sections
+before choosing its profiles and floors, so its local section
+$\mathcal L^R_d$ is this section, rather than a new right inverse.
+
+The formula for $\mathrm{Init}^R$ and
+\eqref{eq:public-family-insertion} give the headline insertion by
+substitution. The inverse $A^R_{d,N,p}$ is not selected for this
+identity. It is the reference-normalized terminal readout of the
+stored finite transfer. Proposition~\ref{prop:ex-c02-selected-record}
+identifies that transfer with the single backward family of
+Proposition~\ref{prop:selected-music}, normalized once by its
+reference readout. Thus its unnormalized density push, its
+coefficient readout and both remainder bounds all hold for the same
+insertion. At each step the grade factor is the one in its physical
+transport map. Composing the finitely many identities from $N$ to
+$t_R(d)$ gives the exact reference transport, with no division by a
+partition function at an intermediate level.
+
+At the physical unit, the same adjacent maps carry
+$a_{m+1}^de_0$ to $a_m^de_0$ and their error and charge vanish.
+Their finite composition therefore carries the terminal physical
+unit to $a_{t_R(d)}^de_0$. Reference normalization gives its initial
+observable identically one. This also explains why the same
+constant polynomial at two different grades cannot be identified
+without the reference-scale factor. All the constructions in this
+proof were fixed on $R$ before a correlation tuple, period
+subsequence or extraction order was requested.
+\end{proof}
+
+\paragraph{Running of the public bare coefficient.}
+The histories just retained are the histories constructed by
+Section~\ref{sec:surviving-interval-shooting}: their level-zero value is
+$\bar\beta$, their reset shift and stationary scalar obey the adjacent
+estimate with $s_G=2b_0(G)$, and their scale is $s_m$ above.
+The drift floor in Section~\ref{sec:common-scale-selection} gives
+$\varepsilon_{m+1}/\log\ell_m\le J(m+1)^{-2}$ and $J(m)\to\infty$.
+Consequently the running estimate of that section holds uniformly for
+these very coefficients $\beta^R_{N,p,m}$, all $N\ge m$ and all $p$.
+There is no additional running hypothesis on $R$ here.
+
+Both identifications required by
+Proposition~\ref{prop:shoot-public-running} are precisely
+\eqref{eq:public-family-coordinates}. Applying that proposition therefore gives
+\begin{equation}\label{eq:public-family-running}
  \forall\varepsilon>0\ \exists N_0\ \forall N\ge N_0\ \forall p:
  \quad
- \left|\frac{\beta^{\rm pub}_{N,p}}{\log(a_N^{-1})}-\sigma\right|
- <\varepsilon,
-\]
-which is \eqref{ex-running-input}. The denominator is positive on this
-tail because $s_N\ge N\log3$. This is a specialization of the existing
-uniform extraction argument, not a proof of its running-estimate input
-or an identification with a coupling defined by a physical observable.
+ \left|\frac{\beta^{\rm pub}_{N,p}}{\log(a_N^{-1})}-2b_0(G)\right|
+ <\varepsilon.
+\end{equation}
+This is \eqref{ex-running-input}, with the value of the slope fixed by
+\eqref{eq:shoot-slope}. The denominator is positive on the tail because
+$s_N\ge N\log3$. The coefficient used here is the actual terminal bare
+coefficient, not the comparison value $\widehat\beta_N$. No coupling defined
+through a continuum physical observable is being identified with it.
 
 Finally this binding persists through the ordered extractions. Given
 an initial extraction order $f$, first refine it to obtain the coupling
