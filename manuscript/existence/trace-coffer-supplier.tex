@@ -1,15 +1,15 @@
-% Atomic-response to finite-volume Bill transfer and Coffer price conversion.
-\subsection{Atomic responses and the finite-volume root price}
+% Finite-volume transfer of the atomic response and bounds on its components.
+\subsection{Atomic responses and the finite-volume root bound}
 \label{sec:ex-lattice-trace-coffer-supplier}
 
 This section records the actual transfer used by the public trace supplier.
 There are two distinct operations. An atomic response first becomes a
-finite-volume response with a root-price estimate. The price estimate is
-then converted into the two components of a Bill. We give the conversions
-and the quantitative endpoint of the Coffer argument, while keeping the
-upstream response, paid-price, and price-duality receipts explicit.
+finite-volume response with a root-estimate. The estimate is
+then converted into the two components of a finite-volume response record. We give the conversions
+and the final finite-volume bounds, while keeping the
+upstream response, paid-bound, and bound-duality receipts explicit.
 
-\subsubsection{From an atomic response to the Coffer input}
+\subsubsection{Preparing the atomic response for transfer}
 
 Let \(X\) be an order-zero coefficient at scale \(k\), \(g\) its local field,
 and \(Z=\widehat\beta_k\). Write \(x_X\) for its coordinate, \(X^{\rm f}\) for its forced part, and \(D_X\) for its density. The atomic certificate supplies a nonnegative
@@ -37,12 +37,12 @@ the marked origin, and there are numbers \(a_Y\geq0\) with
 \]
 where \(\alpha_k\) is the support exponent and \(\operatorname{cov}_k\)
 the cover number of that budget. Set
-\(u=\operatorname{alto}_{k,d}\), the inverse field dilation, and \(G'=ug\).
+\(u=\operatorname{invDil}_{k,d}\), the inverse field dilation, and \(G'=ug\).
 Multiplying the density identity by \(u\) gives
 \[
  uD_X(U)=\operatorname{eval}(U)G'(U).
 \]
-Thus the atomic response becomes the Coffer input, with unchanged format,
+Thus the atomic response supplies the input to this transfer, with unchanged format,
 remainder and forced-profile data.
 
 The selected atomic charge budget satisfies
@@ -56,11 +56,11 @@ Hence
 \[
  4(1+c_k)(\|x_X\|_{\rm coeff}+s)\leq Z^3.
 \]
-The second needed comparison is \(Z\operatorname{fly}_d(k)\leq Z^2\),
-using \(\operatorname{fly}_d(k)\leq Z\) and \(Z\geq1\). The price construction
+The second needed comparison is \(Z\operatorname{gradeDecay}_d(k)\leq Z^2\),
+using \(\operatorname{gradeDecay}_d(k)\leq Z\) and \(Z\geq1\). The bound construction
 chooses the atomic charge allowance so both comparisons hold.
 
-The endpoint price-duality estimate used below has the following exact
+The endpoint bound-duality estimate used below has the following exact
 meaning. A response duet \(P\) runs from a level \(\ell\) to \(k\leq N\)
 in the same selected history. At each intermediate level its coefficient
 has admissible order-zero format and remainder bound; its marked site is the
@@ -90,14 +90,14 @@ Subsection~\ref{sec:reference-cone}, under its explicit direction, room, bank,
 and endpoint-spread assumptions. None of these bounds follows from the atomic
 response alone.
 
-\subsubsection{The finite Coffer transfer}
+\subsubsection{Transfer of the coefficient field}
 
 We keep the following parameters distinct. As above, \(c_k\geq1\) is the
 selected column allowance at level \(k\). Let \(X\) be the input coefficient, \(S\) its remainder budget,
 \(E\) the paid response and \(e\) its attainment cost, and
 \(\zeta_i>0\) its payment allowance. Let \(a\in(0,1]\) be the mask fraction,
 \(v'\geq0\) the forced-allowance budget, and \(q,B>0\) two coefficient budgets.
-The actual Coffer hypotheses include
+The transfer requires
 \begin{equation}
  \|x_X\|_{\rm coeff}+S\leq q,\qquad
  4(1+c_k)q\leq B,\qquad e\zeta_k\leq v'B.
@@ -120,7 +120,7 @@ For \(J\leq m<k<N\), let \(\operatorname{gain}(k,m)>0\) denote the
 scale gain from \(m\) to \(k\). The output weight is
 \begin{equation}
  w_m=a\,\frac{\zeta_m/2}
- {\|\operatorname{alto}_{m,d}\|(B/\operatorname{gain}(k,m))}.
+ {\|\operatorname{invDil}_{m,d}\|(B/\operatorname{gain}(k,m))}.
  \label{eq:ex-trace-coffer-weight}
 \end{equation}
 
@@ -165,12 +165,12 @@ scale-\(J\)-to-\(m\) window is open, the reference level is no larger than
 \(k\), and \(G'\) is interior to the window of radius \(l\),
 \begin{equation}
  \operatorname{root}_{J,N,p}(\widetilde G'-\mathcal O_{N,p}b)
-   \leq \frac{\operatorname{stakes}(J,m)}{w_m}.
+   \leq \frac{\operatorname{volFac}(J,m)}{w_m}.
  \label{eq:ex-trace-coffer-root}
 \end{equation}
 The order of quantifiers matters: a label depending on the window would
-not give a Bill, whose root estimate is required for all windows with one
-label. Here \(b'\) is the endpoint price-duality constant and
+not give a finite-volume response record, whose root estimate is required for all windows with one
+label. Here \(b'\) is the endpoint bound-duality constant and
 \(\operatorname{root}_{J,N,p}\) is the reflection-positive root functional
 on the volume-\(N\) field, defined using the scale-\(J\) tiling. In this
 application the endpoint constant $b'$ is $\kappa_k$. The column
@@ -192,7 +192,7 @@ primary fields is an identity of the selected hierarchy, used here as part
 of the response data.
 
 For the column estimate, apply the signed reference-difference construction
-of Subsection~\ref{sec:reference-difference} to the Coffer coefficient field
+of Subsection~\ref{sec:reference-difference} to the coefficient field being transferred
 \(X\) at terminal level \(k\), with its remainder bound \(S\) and total
 charge \(q\). The construction assumes one fixed background history and
 calibrated primary fields \(\mathcal P_i(v)\) whose coefficient is
@@ -308,7 +308,7 @@ history supplies the coefficient identities, density pushes, forced
 profiles, support rooms, bank and place bounds, migration, separation,
 and terminal hook. The local response certificate is
 \eqref{eq:coffer-response-coin}; its support and attainment bounds
-are used below at their actual selected doors. The served representation
+are used below at their actual selected interfaces. The served representation
 and both support ledgers will be built from these data.
 
 Write $\tau_i$ for the weight $w_m$ marched from $m$ to $i$, and
@@ -326,18 +326,18 @@ the selected history. The signed comparison constructed above has
 Also $\|I_kv\|_{\rm coeff}\le2B$: the triangle inequality gives
 $q+B\le2B$, since $4(1+c_k)q\le B$. The two starting payments are
 \begin{equation}\label{eq:coffer-double-payment}
- w_m\|\operatorname{alto}_{m,d}\|\frac{B}{\operatorname{gain}(k,m)}
+ w_m\|\operatorname{invDil}_{m,d}\|\frac{B}{\operatorname{gain}(k,m)}
        =\frac{a\zeta_m}{2}\le\frac{\zeta_m}{2},\qquad
- \frac{w_m}{a}\|\operatorname{alto}_{m,d}\|
+ \frac{w_m}{a}\|\operatorname{invDil}_{m,d}\|
        \frac{B}{\operatorname{gain}(k,m)}=\frac{\zeta_m}{2}.
 \end{equation}
 Apply the paid scale induction to both weights. It gives the
 coefficient-plus-remainder payment for the signed comparison at
 weight $\tau_i$, and at level $k$ gives
 \[
- \Omega_k\|\operatorname{alto}_{k,d}\|B\le\zeta_k/2,
+ \Omega_k\|\operatorname{invDil}_{k,d}\|B\le\zeta_k/2,
  \qquad
- \Omega_k\|\operatorname{alto}_{k,d}\|\|I_kv\|_{\rm coeff}
+ \Omega_k\|\operatorname{invDil}_{k,d}\|\|I_kv\|_{\rm coeff}
        \le\zeta_k.
 \]
 The second inequality pays the negative reference label in the
@@ -345,7 +345,7 @@ terminal birth; the label remains $-b$ for every window. The larger
 weight $\Omega_k$ is essential; payment at $\tau_k$ alone would not
 imply it. The first inequality pays the local response because
 \[
- \tau_k\|\operatorname{alto}_{k,d}\|e
+ \tau_k\|\operatorname{invDil}_{k,d}\|e
  \leq a\zeta_k e/(2B)\leq v'.
 \]
 Linearity of the reference hierarchy makes the bond of $-b$ equal to
@@ -369,7 +369,7 @@ number at most one and section budget $t_N\ge1$. The bank inequality is
  e^{\alpha_N+2}\mathfrak c_N(t_N)\zeta_N\le u_N.
 \]
 Together with the paid negative-label bond this gives each terminal
-response its weighted price $u_N$ and its prescribed forced hook.
+response its weighted bound $u_N$ and its prescribed forced hook.
 Writing $n_N$ for the terminal occupancy bound, the terminal budget
 requires
 \[
@@ -385,21 +385,21 @@ bounded, and the selected transition kernels are normalized with
 bounded densities.
 Thus the component construction of \eqref{eq:transfer-closure} and
 \eqref{eq:ope-forest-price}, with spare exponent three, gives a flagged
-higher array of price at most one at exponent $\alpha_N-3$.
+higher array of bound at most one at exponent $\alpha_N-3$.
 The ordinary exponent started linear and remains linear after the
 response shift, so its higher array is zero. The terminal hook and
 singleton coin identities identify the prescribed singletons; the
 higher-degree projection retains the exact birth polynomial.
 At level $k$, the seeded negative polynomial $Q_k$ has the negative
-reference singletons and higher arrays of price one at weights
+reference singletons and higher arrays of bound one at weights
 $\Omega_k$. Reweighting only degrees at least two from $\Omega_k$
-to $\tau_k=a\Omega_k$ reduces those prices to $a$. Multiply by the
+to $\tau_k=a\Omega_k$ reduces those bounds to $a$. Multiply by the
 positive factors $\prod_a(1+\mathsf t_aF_a)$ and insert their local
 response, whose singleton coin and forced profile are
 \eqref{eq:coffer-response-coin}. This forms the mixed polynomial
 $X_k$, with singleton equal to positive primary plus negative reference
 plus response. Before component closure, the ordinary higher array
-still has price at most $a$; the flagged background, forced profiles
+still has bound at most $a$; the flagged background, forced profiles
 and reweighted old boxes are priced explicitly below.
 For each nonzero term, connect its old flagged boxes and response
 supports by support intersection, require an old flagged box, and put
@@ -408,19 +408,19 @@ component regrouping preserves the full polynomial. A component with
 one response contributes exactly its forced hook; components with two
 or more responses have degree at least two. The resulting representation
 of $X_k$ has ordinary and flagged higher arrays $H^0_Y,K^0_P$, each
-with site price at most one at exponent $\alpha_k-4$. The flagged
-price is the component bound proved below; the ordinary higher array
-remains at price $a$.
+with site bound at most one at exponent $\alpha_k-4$. The flagged
+bound is the component bound proved below; the ordinary higher array
+remains at bound $a$.
 
-Here and below a site price $C$ means that the weighted absolute
+Here and below a site bound $C$ means that the weighted absolute
 coefficient sums have nonnegative majorants $h_Y$ satisfying
 $\sum_{Y\ni x}h_Ye^{\alpha c_{B}(Y)}\le C$ for every $x$;
 for boxes use their first, support component. This includes a
 majorant uniform in the configuration. All higher arrays have
 marker degree at least two. Changing their weights from
-$\Omega_k$ to $\tau_k=a\Omega_k$ multiplies the price of a degree
+$\Omega_k$ to $\tau_k=a\Omega_k$ multiplies the bound of a degree
 $j\ge2$ coefficient by $a^j\le a$. Consequently both old higher
-arrays now have site price at most $a$.
+arrays now have site bound at most $a$.
 
 Let $\phi_a$ and $q_a$ denote the negative reference ordinary
 singleton and forced profile, respectively. The actual atomic
@@ -442,7 +442,7 @@ $g_{a,Y}$ with
  \sum_Y\tau_k g_{a,Y}e^{\alpha_k c_{B_k}(Y)}\le v'.
 \]
 Indeed the undilated attainment cost is $e$, and
-$\tau_k\|\operatorname{alto}_{k,d}\|e\le
+$\tau_k\|\operatorname{invDil}_{k,d}\|e\le
  a\zeta_k e/(2B)\le v'$, by
 \eqref{eq:coffer-double-payment} and $e\zeta_k\le v'B$.
 The attainment exponent $\alpha_k+2$ is stronger than the exponent
@@ -450,22 +450,22 @@ used here. Each nonzero response contains its mark and vanishes
 when its support is healthy. The census marks at $k$ are distinct
 by the admitted window separation, so occupancy there is one.
 Equation~\eqref{eq:transfer-root-hit}, with exponent $\alpha_k-1$,
-therefore bounds the combined response site price by $R_k^{\rm site}v'$,
+therefore bounds the combined response site bound by $R_k^{\rm site}v'$,
 where $R_k^{\rm site}=\operatorname{siteFactor}(B_k)$.
 
 To avoid confusing this packing factor with the density, write
 $R^{\rm site}=R_k^{\rm site}$ for the rest of the gluing step.
 The forced profiles $q_a$ of the negative reference field have
-site price at most $R^{\rm site}\sqrt{\gamma_k}$ at exponent
+site bound at most $R^{\rm site}\sqrt{\gamma_k}$ at exponent
 $\alpha_k-1$. Here is the payment check. The reference remainder
 has bound at most $c_k\|I_kv\|_{\rm coeff}$; its forced family
-has cost at most $\|\operatorname{alto}_{k,d}\|\sqrt{\gamma_k}$
+has cost at most $\|\operatorname{invDil}_{k,d}\|\sqrt{\gamma_k}$
 times that remainder. Multiplication by $\tau_k$, the reference
 bond payment, and $\zeta_kc_k\le1$ give the per-mark cost
 $\sqrt{\gamma_k}$. Apply \eqref{eq:transfer-root-hit} again.
-The background box activity has site price $\gamma_k$. Thus the
+The background box activity has site bound $\gamma_k$. Thus the
 full old box array, including its background, its linear forced
-profiles and $K^0$, has site price at most
+profiles and $K^0$, has site bound at most
 \[
  W=\gamma_k+R^{\rm site}\sqrt{\gamma_k}+a
                        \quad\hbox{at exponent }\alpha_k-1.
@@ -495,14 +495,14 @@ $\eta=W+R^{\rm site}v'$. The melting hypotheses say
 $(2B_k+1)^4\eta\le3$ and $e^\eta-1\le1$.
 Apply \eqref{eq:ope-forest-price} with output exponent $d_*$
 and spare exponent $3$. Its incoming exponent is
-$d_*+3=\alpha_k-1$, exactly the exponent just paid. The price
+$d_*+3=\alpha_k-1$, exactly the exponent just paid. The bound
 of a product is at most the product of its coefficient majorants,
 and the union box is uniquely determined by its constituent
 addresses. Restricting the connected-set sum to the admissible
 sets above only decreases its nonnegative majorant. Hence
-$\overline K$ has site price at most $e^\eta-1\le1$ at exponent
+$\overline K$ has site bound at most $e^\eta-1\le1$ at exponent
 $d_*$. The ordinary higher array remains $H^0$, since $J$ and
-all added ordinary terms are linear; its price is at most
+all added ordinary terms are linear; its bound is at most
 $a\le1$ at the same exponent.
 
 The vacuum coefficient of $\overline K$ is the old background.
@@ -519,16 +519,16 @@ density and the singleton uniqueness in
 of the new exponent. Remove degrees zero and one from each
 array; the remaining $H^k,K^k$ give exactly this prescribed
 singleton representation of $X_k$. Degree projection cannot
-increase the absolute coefficient price. Products, finite sums
+increase the absolute coefficient bound. Products, finite sums
 and local flag indicators preserve measurability, gauge
 invariance, locality and containment of each occurring mark in
-its support. Both higher ledgers therefore have price one at
+its support. Both higher ledgers therefore have bound one at
 exponent $\alpha_k-4$.
 
 Now descend from $k$ to $m$ along the same selected history. At each
 step the signed singleton expansion in Subsection~\ref{sec:reference-difference}
 has its exact density push, forced-profile identity and finite support
-witness on the chosen door. Transporting the higher arrays through that
+witness on the chosen interface. Transporting the higher arrays through that
 witness preserves the full polynomial; the newly added response terms
 have degree at least two, and their connected supports are grouped by
 union. Thus the descent transports the representation already
@@ -545,26 +545,26 @@ For specificity the required paid local data are
  \qquad e^{A_i}-1\le1.
 \]
 Here $M_i$ is the available input budget, $u_i$ is the flagged
-response price, and $n_i$ bounds the two adjacent occupancies. These
+response bound, and $n_i$ bounds the two adjacent occupancies. These
 are the one-step payment inequalities of the selected history, not
 additional conclusions of melting at $k$.
 Here is the singleton payment check. Put
 $C_i^{\rm wing}=\operatorname{orb}(d)(\psi_i+2c_{i+1})\ge2$.
 The retained signed expansion has dilated fine cost
 \[
- s_i\le\|\operatorname{alto}_{i+1,d}\|
+ s_i\le\|\operatorname{invDil}_{i+1,d}\|
        \bigl(C_i^{\rm wing}\|Z_{i+1}.x\|_{\rm coeff}
                     +2r_{i+1}\bigr)
- \le \|\operatorname{alto}_{i+1,d}\|C_i^{\rm wing}
+ \le \|\operatorname{invDil}_{i+1,d}\|C_i^{\rm wing}
           (\|Z_{i+1}.x\|_{\rm coeff}+r_{i+1}).
 \]
 The paid orbit inequality of the selected history is
 $2C_i^{\rm wing}\zeta_{i+1}\le1$; hence
 $2\tau_{i+1}s_i\le1$. Its coarse response cost is at most
-$t_i\le\|\operatorname{alto}_{i,d}\|r_i$. Since the march has
+$t_i\le\|\operatorname{invDil}_{i,d}\|r_i$. Since the march has
 $\tau_{i+1}\le\tau_i$ and $\zeta_i\le1$, the same paid comparison
 gives $\tau_{i+1}t_i\le1$. These pay the input and output sides of the actual finite-support
-comparison. The parent-site identity, occupancy and cover-price
+comparison. The parent-site identity, occupancy and cover-bound
 comparison are the same migration and separation data as in the
 centered induction. The adjacent transition preserves the singleton
 entries; every added response term has marker degree at least two.
@@ -590,11 +590,11 @@ absolute coefficient vector and add the remainder bound; the
 constant coordinate contributes the extra $z_m$. The second
 is the absolute forced-profile bound, since
 $\sqrt{\gamma_m}\le1$. Motion preserves absolute values.
-Since $w_m\|\operatorname{alto}_{m,d}\|(r_m+z_m)\le\zeta_m$
+Since $w_m\|\operatorname{invDil}_{m,d}\|(r_m+z_m)\le\zeta_m$
 and $\zeta_mc_m\le1$, the ordinary singleton has weighted
 absolute value at most $2$ and the summed flagged singleton at
 most $1$. These are exactly the two singleton bounds used by the finite-census
-price estimate below. Together with the constructed higher arrays and
+estimate below. Together with the constructed higher arrays and
 their site budgets, they give the required served representation and
 its support bounds at level $m$.
 
@@ -637,25 +637,25 @@ Consequently, summing the anchored bound over the \(K\) marks,
  \qquad\text{for every }U.
  \label{eq:ex-trace-coffer-corrections}
 \end{equation}
-The required support-price structure is a statement about this precise
+The required support-bound structure is a statement about this precise
 polynomial $X_m$. Its full moment identity is
 \eqref{eq:coffer-planted-moment}, already proved independently of those
-price bounds. The support decomposition and its two prices were constructed above,
+estimates. The support decomposition and its two bounds were constructed above,
 using the explicitly stated local-transition inputs.
 
-The polynomial-price calculation behind the finite-gas estimate is as
+The polynomial-bound calculation behind the finite-gas estimate is as
 follows. For a finite census polynomial \(Q\), write
 \[
- \mathcal P_w(Q)=\sum_s\operatorname{toll}(w,s)\|Q_s\|
+ \mathcal P_w(Q)=\sum_s\omega(w,s)\|Q_s\|
 \]
-for its weighted absolute coefficient sum. The price is submultiplicative.
+for its weighted absolute coefficient sum. The bound is submultiplicative.
 For box terms \(K_p\), the finite sum over disjoint-support patterns obeys
 \[
  \mathcal P_w(\operatorname{field}(K))
  \leq\prod_p(1+\mathcal P_w(K_p))
  \leq\exp\!\left(\sum_p\mathcal P_w(K_p)\right),
 \]
-because each pattern's product price is at most the product of its factors
+because each pattern's product bound is at most the product of its factors
 and \(1+x\leq e^x\). The same submultiplicativity, applied term by term to
 the finite truncated exponential, gives
 \(\mathcal P_w(\operatorname{pass}(Q))\leq e^{\mathcal P_w(Q)}\).
@@ -671,7 +671,7 @@ equals the volume-$N$ Wilson partition function times $M$.
 To specify the denominator estimate, let $A_m$ be the lawful local
 representative used in this very expansion, and take
 $\rho=\widehat\beta_m^{-1/2}\le\min\{1,\vartheta_m\}$.
-The numerator estimate just obtained is the coefficient-price estimate
+The numerator estimate just obtained is the coefficient-estimate
 of Subsection~\ref{ex-centered-construction}, with total mark charge $5K$.
 Its small-ball lower bound for $Z_{A_m}=\int\operatorname{eval}(A_m)$,
 followed by division as in \eqref{ex-centered-sail}, bounds the quotient
@@ -681,51 +681,51 @@ by
  \kappa_m+\beta_m\operatorname{baseBudget}_m(\rho)
  +4d_G\log(16/\rho)\right]+5K\right).
 \]
-Here $\kappa_m$ denotes the vacuum price in that estimate, not the
+Here $\kappa_m$ denotes the vacuum bound in that estimate, not the
 coefficient-recovery constant used later. The treasury receipt at this
-same radius bounds the bracket by $\operatorname{Treasury}(m)$.
-The same-history transition-mass identity identifies
+same radius bounds the bracket by $\operatorname{vacuumBound}(m)$.
+The common-trajectory transition-mass identity identifies
 $Z_{A_m}=Z_{N,p}>0$, as in
 Lemma~\ref{lem:ex-selected-birth-denominator}; this is also the partition
 function in the planted moment identity above. No comparison of
 different local representatives or partition functions is needed.
 Consequently
 \begin{equation}
- |M|\,\operatorname{toll}(w,\mathfrak s)
- \leq \exp\!\left(|\Lambda_m|\operatorname{Treasury}(m)
+ |M|\,\omega(w,\mathfrak s)
+ \leq \exp\!\left(|\Lambda_m|\operatorname{vacuumBound}(m)
                          +K(2+1+2)\right).
  \label{eq:ex-trace-spiker}
 \end{equation}
 This is an absolute-value estimate and does not use cancellation. Its hypotheses include the paid local-transition inputs used to construct
 the support ledgers above.
 
-In the Coffer application all site weights equal \(w_m\), so
-\(\operatorname{toll}(w,\mathfrak s)=w_m^K\). The tiling identity is
+In this application all site weights equal \(w_m\), so
+\(\omega(w,\mathfrak s)=w_m^K\). The tiling identity is
 \[
  |\Lambda_m|=K\left(\frac{A_J}{A_m}\right)^4.
 \]
 Taking the positive \(K\)-th root of \eqref{eq:ex-trace-spiker} yields
 \[
  |M|^{1/K}\leq
- \frac{\exp((A_J/A_m)^4\operatorname{Treasury}(m)+5)}{w_m}
- =\frac{\operatorname{stakes}(J,m)}{w_m},
+ \frac{\exp((A_J/A_m)^4\operatorname{vacuumBound}(m)+5)}{w_m}
+ =\frac{\operatorname{volFac}(J,m)}{w_m},
 \]
 which is \eqref{eq:ex-trace-coffer-root}. The moment identity is needed to
 identify this \(M\) with the desired rooted observable.
 
-\subsubsection{Using the output in the Bill}
+\subsubsection{Using the output in the finite-volume response record}
 
-The Bill is evaluated on the inflated field \(G'=u g\). Its root error is
+The finite-volume response record is evaluated on the inflated field \(G'=u g\). Its root error is
 \(\widetilde G'-\mathcal O_{N,p}b\), where
-\(\widetilde G'=\operatorname{back}_{k\to N}G'\). In the Bill specialization, \(a=Z^{-1}\), \(v'=Z^{-1}\), \(B=Z^3\), and \(e=Z\), while \(\zeta_i=\operatorname{fly}_d(i)\) at each scale. Thus the payment condition is \(e\zeta_k=Z\operatorname{fly}_d(k)\leq Z^2=v'B\). The gas weight
+\(\widetilde G'=\operatorname{back}_{k\to N}G'\). In the finite-volume response record specialization, \(a=Z^{-1}\), \(v'=Z^{-1}\), \(B=Z^3\), and \(e=Z\), while \(\zeta_i=\operatorname{gradeDecay}_d(i)\) at each scale. Thus the payment condition is \(e\zeta_k=Z\operatorname{gradeDecay}_d(k)\leq Z^2=v'B\). The gas weight
 from \eqref{eq:ex-trace-coffer-weight} is
 \[
  w_{\rm gas}=Z^{-1}
- \frac{\operatorname{fly}_d(m)/2}
- {\|\operatorname{alto}_{m,d}\|(Z^3/\operatorname{gain}(k,m))}.
+ \frac{\operatorname{gradeDecay}_d(m)/2}
+ {\|\operatorname{invDil}_{m,d}\|(Z^3/\operatorname{gain}(k,m))}.
 \]
-The factor $Z^{-1}$ is the mask fraction $a$ in the Coffer input, so this is
-exactly the native Bill denominator.
+The factor $Z^{-1}$ is the mask fraction $a$ in the input to the transfer, so this is
+exactly the native finite-volume response record denominator.
 
 The melting inequalities also hold eventually for this specialization.
 To see this directly, write $x=\widehat\beta_k$, $B_x=\lceil(\log x)^2\rceil$
@@ -753,7 +753,7 @@ support exponent bound $\alpha_k\ge4$, retained among the scale
 hypotheses. All these tails depend only on the fixed scale data, before
 periods, volumes, atomic certificates and windows are chosen.
 
-The other two entries of the Bill use the specific atomic charge. Fix
+The other two entries of the finite-volume response record use the specific atomic charge. Fix
 \(u>0\) and let the charge in \eqref{eq:ex-trace-atomd-charge} be
 \[
  q=q_k=u\,\vartheta_k^2\operatorname{Age}_k(1/6),
@@ -775,7 +775,7 @@ smaller than any positive multiple of \(\operatorname{Age}_k(1/12)\), and
  4(1+\log\widehat\beta_k)u\leq\operatorname{Age}_k(1/12);
 \]
 the second inequality gives \eqref{eq:ex-trace-coffer-budget}. The norm
-entry of the Bill is \(\|x_X\|_{\rm coeff}\leq1\); it follows from
+entry of the finite-volume response record is \(\|x_X\|_{\rm coeff}\leq1\); it follows from
 \eqref{eq:ex-trace-atomd-charge}, nonnegativity of the remainder allowance
 and \(q_k\leq1\):
 \(\|x_X\|_{\rm coeff}\leq\|x_X\|_{\rm coeff}+s\leq q_k\leq1\). The bias
@@ -795,7 +795,7 @@ paid label; that section does not prove it.
 The resulting statement has the following order of
 choices, under the standing hypotheses on the selected family, which
 include the served response hierarchy and its terminal identification,
-the same-history finite-menu and atomic response receipts, eventual
+the common-trajectory finite-menu and atomic response receipts, eventual
 support exponents at least four, the column bound
 $c_k\le\log\widehat\beta_k$, and the endpoint estimate
 \eqref{eq:ex-trace-sharp-read} with
@@ -805,12 +805,12 @@ large \(k\), for all sufficiently large periods \(p\) (depending on \(k\)),
 for every volume index \(N>k\) and every atomic certificate \((X,g)\) at
 scale \(k\) with charge \(q_k\) and attainment cost at most
 \(Z=\widehat\beta_k\), there is a public label \(b\) such that
-\((g,x_X,b)\) is a Bill, with the root estimate for all windows. The
+\((g,x_X,b)\) is a finite-volume response record, with the root estimate for all windows. The
 period threshold is the one at which the endpoint estimate
 \eqref{eq:ex-trace-sharp-read} holds with \(\ell\) the reference level.
 
 The remaining analytic dependencies are the atomic response, the endpoint
-price-duality recurrence, and the paid elementary integration and singleton
+bound-duality recurrence, and the paid elementary integration and singleton
 transition inputs specified above. The site/box expansion, its two separate
-correction prices, and its singleton envelope are now constructed from
+correction bounds, and its singleton envelope are now constructed from
 those inputs; no additional served polynomial is postulated.

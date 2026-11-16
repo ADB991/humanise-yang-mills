@@ -14,12 +14,12 @@ $0\leq e<d$. Each coordinate has an engineering weight in $\{0,\ldots,d\}$.
 Write $\mu(v)=\sum_\alpha|v_\alpha|$ and let $P$ retain the coordinates
 of weight at most $e$. For a block ratio $L\geq1$, let
 \[
- (D_Lv)_\alpha=L^{d-\deg\alpha}v_\alpha.
+ (\mathsf D^{\rm gr}_{d,L}v)_\alpha=L^{d-\deg\alpha}v_\alpha.
 \]
-Thus $P$ commutes with $D_L$ and
+Thus $P$ commutes with $\mathsf D^{\rm gr}_{d,L}$ and
 \begin{equation}\label{eq:ope-dilation-split}
- \mu(PD_Lv)\geq L^{d-e}\mu(Pv),\qquad
- \mu((1-P)D_Lv)\leq L^{d-e-1}\mu(v).
+ \mu(P\mathsf D^{\rm gr}_{d,L}v)\geq L^{d-e}\mu(Pv),\qquad
+ \mu((1-P)\mathsf D^{\rm gr}_{d,L}v)\leq L^{d-e-1}\mu(v).
 \end{equation}
 Both inequalities follow by summing the coordinate inequalities.
 
@@ -28,7 +28,7 @@ At consecutive levels $i+1,i$, the readouts of the same bare vector are
 $a,b$. There is an invertible linear map $B$ preserving $\ker P$, with
 \[
  \mu(Bv),\ \mu(B^{-1}v)\leq K\mu(v),\qquad
- \mu(b-BD_La)\leq\epsilon\mu(a).
+ \mu(b-B\mathsf D^{\rm gr}_{d,L}a)\leq\epsilon\mu(a).
 \]
 The last estimate follows in the construction from the stronger bound
 with the nonconstant-coordinate part of $a$ on the right. Its numerical
@@ -40,7 +40,7 @@ conditions are
 Here $s_0=\zeta_i$ and $s=\zeta_{i+1}$ are the column allowances.
 These triangular estimates concern the actual readouts, including their
 nonlinear corrections. On the selected family their hypotheses follow
-from the paid heading and the stored backward transfer, as follows.
+from the linear coefficient map and the stored backward transfer, as follows.
 
 \begin{lemma}[The triangular step on the selected family]
 \label{lem:ope-selected-triangle}
@@ -49,22 +49,21 @@ Proposition~\ref{prop:ex-c02-selected-record} at grade $d$ and an
 adjacent step above its reference level. Its consecutive readouts
 satisfy the preceding one-step hypotheses and
 \eqref{eq:ope-triangle-numbers} for every $e<d$, with the same
-readouts and heading matrix for all these $e$.
+readouts and coefficient matrix for all these $e$.
 \end{lemma}
 \begin{proof}
 The matrix $B$ in Subsection~\ref{sec:heading-history-handoff} is the
-heading of this very transition. Its off-diagonal entry $B_{bi}$
+grade-mixing factor of this transition. Its off-diagonal entry $B_{bi}$
 can be nonzero only when $g_i<g_b$; its diagonal entries are nonzero.
 Consequently a vector supported on grades greater than $e$ is sent
 to one supported on grades greater than $e$. This proves preservation
 of $\ker P$. Equation~\ref{eq:heading-both-prices} bounds both $B$
 and its inverse by a stage constant $K\ge1$, which the purchased
-heading price $D$ dominates. The heading is
-$B\operatorname{vowel}_L=BD_L$, because its diagonal grade factor is
-$L^{d-g_i}$ in coordinate $i$.
+matrix bound $D$ dominates. The full linear map is
+$B\mathsf D^{\rm gr}_{d,L}$, with the factor $L^{d-g_i}$ in coordinate $i$.
 
 Proposition~\ref{prop:selected-reprise} constructs the lower coefficient family
-from the upper one using this heading and the common interpolation
+from the upper one using this map and the common interpolation
 of Proposition~\ref{prop:ex-selected-interpolation}. Its lead error
 is at most $\epsilon\|\operatorname{core}a\|_1$, where
 $\epsilon=\eta(1+s)R_F\ge0$ in
@@ -91,7 +90,7 @@ Thus the factor $1+s$ in the actual lead error and the further factor
 $1+s$ in the cone condition have both been paid.
 These are all the numerical conditions in
 \eqref{eq:ope-triangle-numbers}. The construction fixes the heading,
-coefficient families and prices before $e$ is selected, so the same bounds apply
+coefficient families and bounds before $e$ is selected, so the same bounds apply
 to each of the finitely many low-coordinate planes.
 \end{proof}
 
@@ -101,13 +100,13 @@ $\ker P$. Applying this observation to $Bv-PBv$ gives
 \begin{equation}\label{eq:ope-low-inverse}
  \mu(Pv)=\mu(PB^{-1}PBv)\leq K\mu(PBv).
 \end{equation}
-Suppose now that $\mu(a)\leq s\mu(Pa)$, and set $Y=\mu(PD_La)$.
+Suppose now that $\mu(a)\leq s\mu(Pa)$, and set $Y=\mu(P\mathsf D^{\rm gr}_{d,L}a)$.
 By \eqref{eq:ope-dilation-split} and $s\leq L$,
 \[
- \mu(D_La)\leq Y+L^{d-e-1}s\mu(Pa)\leq2Y,
+ \mu(\mathsf D^{\rm gr}_{d,L}a)\leq Y+L^{d-e-1}s\mu(Pa)\leq2Y,
  \qquad \mu(a)\leq sY.
 \]
-The error $E=\mu(b-BD_La)$ consequently satisfies
+The error $E=\mu(b-B\mathsf D^{\rm gr}_{d,L}a)$ consequently satisfies
 $2KE\leq Y$. On the other hand, \eqref{eq:ope-low-inverse} gives
 $Y\leq K(\mu(Pb)+E)$, so $Y\leq2K\mu(Pb)$. It follows that
 \begin{equation}\label{eq:ope-cone-step}
@@ -115,9 +114,9 @@ $Y\leq K(\mu(Pb)+E)$, so $Y\leq2K\mu(Pb)$. It follows that
  L^{d-e}\mu(Pa)\leq s\mu(Pb).
 \end{equation}
 If instead $Pa=0$, \eqref{eq:ope-dilation-split}, $\epsilon\leq1$,
-and $\mu(a)\leq\mu(D_La)$ give
+and $\mu(a)\leq\mu(\mathsf D^{\rm gr}_{d,L}a)$ give
 \begin{equation}\label{eq:ope-transverse-step}
- \mu(b)\leq(K+1)\mu(D_La)
+ \mu(b)\leq(K+1)\mu(\mathsf D^{\rm gr}_{d,L}a)
        \leq sL^{d-e-1}\mu(a).
 \end{equation}
 The lost power of $L$ distinguishes the transverse estimate from the
@@ -301,7 +300,7 @@ is a measurable gauge-invariant function of the link variables in the
 translate of $X$ at its lattice origin, and the observable at any other
 origin is the literal translate of the one at the origin. (ii) Eventual
 continuity: $Z_{N,p}$ is continuous for all sufficiently late cutoffs.
-(iii) Two prices: there are nonnegative prices $c_{N,p}$ and $b_{N,p}$ with subpower
+(iii) Two bounds: there are nonnegative bounds $c_{N,p}$ and $b_{N,p}$ with subpower
 upper bounds along that filter: for every $\epsilon>0$ both are eventually
 at most $a_N^{-\epsilon}$. On a common late tail,
 $a_N^e|Z_{N,p}|\le b_{N,p}$ everywhere, and
@@ -317,7 +316,7 @@ includes configurations at equality in the health threshold. For every
 ordered list of fewer than $q_N$ directions and every further direction,
 the derivative at zero of the iterated left derivative along that increment
 exists and equals the recursively defined next left derivative. These
-regularity and recursive derivative conditions are separate from the price
+regularity and recursive derivative conditions are separate from the bound
 bounds; they are not required at unhealthy configurations. These bounds are
 uniform in the lattice origin. Here the derivative
 order, spatial weight power and direction threshold are the purchased
@@ -326,7 +325,7 @@ ordered left derivative of length at most that cutoff's purchased order,
 with directions satisfying its weighted threshold. Bounds only for each
 fixed derivative order would not suffice. The local comparison
 construction supplies degree-$e$ labels $u_c$ with subpower bare norm,
-whose difference from that trial has a centered price tending to zero.
+whose difference from that trial has a centered bound tending to zero.
 It also supplies the projections $p_c\to p$ of
 \eqref{eq:ope-test-kernel}. Labels in $\ker p_c$ with subpower bare norm
 have vanishing tested correlations. Bounded reference labels have
@@ -359,7 +358,7 @@ Subsection~\ref{sec:actual-insertion-derivative-relay}, let $Z_{N,p}$
 be a degree-$e$ local trial satisfying (i)--(iii) above.
 There are grade-$e$ reference labels $u_{N,p}$ with subpower inverse
 terminal coordinates such that, for every fixed opened pair of depths
-eligible at grade $e$, the centered root price of
+eligible at grade $e$, the centered root bound of
 $Z_{N,p}-O_e(u_{N,p})$ tends to zero along the ordered cutoff filter.
 The discrepancy tends to zero uniformly on each fixed separated
 configuration region after multiplying by any fixed finite spectator
@@ -369,7 +368,7 @@ refinements of the original order.
 \end{proposition}
 \begin{proof}
 Set $f_{N,p}=a_N^e Z_{N,p}$ at the lattice origin. Conditions (i)--(iii)
-are precisely the two protected prices and the local regularity
+are precisely the two protected bounds and the local regularity
 required in Subsection~\ref{sec:actual-insertion-derivative-relay}.
 The regularity is available through the actual purchased order,
 not merely any previously fixed finite order. Enlarge the fixed trial
@@ -382,10 +381,10 @@ Apply the terminal construction
 leading section so that the regular remainder has zero readout;
 no zero-readout condition is imposed on the original trial. Its exact
 density is $a_N^e R_N Z_{N,p}$, with the actual unmarked top
-representative $R_N$. The total terminal price is
+representative $R_N$. The total terminal bound is
 $E_{N,p}$ of \eqref{eq:relay-protected-total}. That formula is a
-finite sum and product of the trial's two prices, the purchased
-column and threshold prices, the support weight, and the paid
+finite sum and product of the trial's two bounds, the purchased
+column and threshold bounds, the support weight, and the paid
 reserve inverse. Every one of these factors is subpower on this
 family, so $E_{N,p}$ is subpower on the same ordered filter.
 The actual top keeper supplies the off-health attachment. The trial
@@ -412,7 +411,7 @@ Both terms of the discrepancy have one fixed translated stencil.
 The common-tiling argument and
 \eqref{eq:equation-spectator-bound} therefore bound a correlation
 with any fixed separated spectator tuple by the same vanishing
-root price times a constant depending on that tuple and its
+root bound times a constant depending on that tuple and its
 separation. The step-integral estimate proved above gives vanishing
 of its smeared correlations. Choosing a refinement preserves the
 eventual inequalities, the subpower bounds and these limits; it
@@ -428,7 +427,7 @@ subpower bare norm and belongs to $\ker p_c$, because $p_c^2=p_c$.
 The vanishing-test assertion gives exactly the normalized residual
 limit. The first limit follows by comparing the trial with $u_c$:
 the centered estimate gives a separated correlation bound by a
-constant times the price, and the step-integral estimate just proved
+constant times the bound, and the step-integral estimate just proved
 sends this bound to zero in every smeared correlation. Linearity here is legitimate at finite cutoff,
 since the trials are bounded measurable functions and the remaining
 fields are continuous on the compact configuration space.
@@ -446,9 +445,9 @@ We check all the local-trial conditions for this moving row. Put
 $\xi_c=X_{d,N,p}^{-1}w_c$, so the preceding bound makes $\xi_c$
 subpower. Its unnormalized local function is
 $L_d(\Delta_d(\vartheta_N^{-1})\xi_c)$ on the fixed section stencil.
-The paid column estimate gives derivative price
+The paid column estimate gives derivative bound
 $C_N|\xi_c|_1$ through the actual order $q_N$ and at its actual
-spatial power. The global price is
+spatial power. The global bound is
 $A_d|\Delta_d(\vartheta_N^{-1})\xi_c|_1$, where $A_d$ is the
 fixed cylinder bound of
 Subsection~\ref{sec:actual-insertion-derivative-relay}.

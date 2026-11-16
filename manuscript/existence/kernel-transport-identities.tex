@@ -3,7 +3,7 @@
 We now identify the kernels estimated in the preceding sections with
 the transports used in the quadratic construction. This also accounts
 for the harmonic mode. Throughout this section $k>0$, the block side
-$L$ is odd and at least three, and the adjacent train orders $j,t$
+$L$ is odd and at least three, and the adjacent kernel history orders $j,t$
 satisfy $4\le t\le j\le t+1$.
 
 \subsubsection{Covariance recursion and exterior algebra}
@@ -45,10 +45,10 @@ by $D$ proves the other two. In particular $Rx=0$ and $x^*R=0$.
 Let $m_l$ be the patch mass filter at $q_l$ and define
 \[
  F_{r,l}=m_l\bigwedge^r\operatorname{diag}
-                 (\operatorname{rail}_L(q_{l,a})).
+                 (\operatorname{avg}_L(q_{l,a})).
 \]
 The geometric-series identity
-$L\operatorname{rail}_L(q_{l,a})(e^{iq_{l,a}}-1)=e^{ip_a}-1$
+$L\operatorname{avg}_L(q_{l,a})(e^{iq_{l,a}}-1)=e^{ip_a}-1$
 gives
 \begin{equation}\label{eq:transport-filter-chain}
  F_{r+1,l}\delta_r=d_rF_{r,l}.
@@ -59,17 +59,17 @@ The covariance recursion is
 \end{equation}
 Here the sum is a sum over all $L^4$ aliases, with no averaging
 factor. To verify the normalization and the recursion, the feed of a
-train of total side $M$ is
+kernel history of total side $M$ is
 \[
  M^{-2}\sum_{u\in\Lambda_M}
- |\operatorname{drive}_{v,a}(q_u)|^2 f(q_u).
+ |\operatorname{filter}_{v,a}(q_u)|^2 f(q_u).
 \]
-On appending a block, its drive is the old drive times the new
+On appending a block, its filter is the old filter times the new
 patch filter evaluated at the old rescaled momentum. Decomposing a
 residue modulo $LM$ into its residues modulo $L$ and $M$ therefore
 turns this feed into the successive two feeds: the factors are
 $(LM)^{-2}=L^{-2}M^{-2}$, and the summands agree by periodicity.
-The noise-prefix list of the new train consists of its new unit
+The noise-prefix list of the new kernel history consists of its new unit
 prefix and the old prefixes with the block appended. Thus its noise
 feed is one plus the patch feed of the old noise. Applying these two
 facts to the free covariance and to each earlier independent noise
@@ -140,15 +140,15 @@ For an alias-indexed factor the reflection is $q_l\mapsto-q_l$,
 equivalently $(p,l)\mapsto(-p,-l)$.
 Thus none of the complex-momentum formulas below uses literal
 complex conjugation of its variable. Let $s$ be the coarse divisor, $b_a$ the
-coarse bulb and $b_{l,a}$ the fine bulb. Write $q_0=p/L$ and
+coarse regularized factor and $b_{l,a}$ the fine regularized factor. Write $q_0=p/L$ and
 $u_a=\operatorname{tail}_a$, including the current noise. Splitting
 the covariance recursion into its principal alias and the other
 aliases gives
 \begin{equation}\label{eq:transport-bulb-split}
- b_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}+su_a.
+ b_a=|m_0\operatorname{avg}_L(q_{0,a})|^2b_{0,a}+su_a.
 \end{equation}
 For $p\ne0$ this follows by multiplying
-$D_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}/s+u_a$
+$D_a=|m_0\operatorname{avg}_L(q_{0,a})|^2b_{0,a}/s+u_a$
 by $s$. Both sides of \eqref{eq:transport-bulb-split} are
 continuous, so it holds at zero as well.
 
@@ -157,7 +157,7 @@ define $r_{l,a}$ by $B_lx=\operatorname{diag}(r_{l,a})x_l$.
 Entrywise,
 \[
  r_{l,a}=\overline{m_l}(D_l)_{aa}
-        |\operatorname{rail}_L(q_{l,a})|^2/D_{aa}.
+        |\operatorname{avg}_L(q_{l,a})|^2/D_{aa}.
 \]
 Using \eqref{eq:transport-rotor} in \eqref{eq:transport-A} gives
 \[
@@ -166,14 +166,14 @@ Using \eqref{eq:transport-rotor} in \eqref{eq:transport-A} gives
 \]
 Now $D^{-1}=s\operatorname{diag}(b_a^{-1})$ and
 $\pi=s^{-1}\sigma$, where
-$\sigma=(\operatorname{bend}_c)^{-1}
+$\sigma=(\operatorname{scalar correction}_c)^{-1}
  x^*\operatorname{diag}(b_a^{-1})$ is analytic.
 For a nonprincipal alias, $D_l$ has the regular port formula;
 thus $e_l-r_{l,a}=s g_{l,a}$ with
 \[
  g_{l,a}=\overline{m_l}
  \left(\frac{\operatorname{tr}D_l}{sa}
-             -\frac{(D_l)_{aa}|\operatorname{rail}_L(q_{l,a})|^2}{b_a}
+             -\frac{(D_l)_{aa}|\operatorname{avg}_L(q_{l,a})|^2}{b_a}
  \right).
 \]
 For the principal alias let $h$ be the sum of the nonprincipal
@@ -192,7 +192,7 @@ the common smaller cube of Lemma~\ref{lem:ex-lattice-primal-entrywise-bound}. Co
 has the weighted bound of that lemma, including at the origin.
 
 For the two-form column, at a nonprincipal alias write
-$\lambda_l=|m_l|^2\operatorname{bend}_c/\operatorname{portR}_l$.
+$\lambda_l=|m_l|^2\operatorname{scalar correction}_c/\operatorname{portR}_l$.
 Then $y_l=s^2\lambda_l$ and
 \[
  s^2(I-C)=s^2I-sHd_1\operatorname{diag}(b_a)d_1^*.
@@ -214,12 +214,12 @@ The cancellation needed for the apparent remaining pole is
                                   -s\bigwedge^2\operatorname{diag}(z_a)\right).
 \end{equation}
 To verify it, put
-$Z_a=|m_0\operatorname{rail}_L(q_{0,a})|^2b_{0,a}/b_a
+$Z_a=|m_0\operatorname{avg}_L(q_{0,a})|^2b_{0,a}/b_a
 =1-sz_a$ by \eqref{eq:transport-bulb-split}.
 The pulse formula shows
 $y_0F_{2,0}^*HF_{2,0}=H_0\bigwedge^2\operatorname{diag}(Z_a)$:
 on a face $\{a,b\}$ both sides have the same product of its two
-diagonal entries and the same scalar bend ratio.
+diagonal entries and the same scalar correction ratio.
 Finally $1-(1-sz_a)(1-sz_b)=s(z_a+z_b-sz_az_b)$ proves
 \eqref{eq:transport-brace-cancellation} entrywise.
 
@@ -236,7 +236,7 @@ analytic bounds already proved. This verifies agreement with the
 principal wire as well as the nonprincipal one.
 
 At $p=0$ the principal analytic columns have values
-$\mathcal A_0=I$ and $\mathcal T_0=I$: the bulbs, bends,
+$\mathcal A_0=I$ and $\mathcal T_0=I$: the regularized factors, scalar corrections,
 rails, and principal filter have value one and the exterior
 symbols vanish. For $l\ne0$ the patch mass filter vanishes at
 $q_l(0)$. Indeed some nonzero alias coordinate has a nontrivial

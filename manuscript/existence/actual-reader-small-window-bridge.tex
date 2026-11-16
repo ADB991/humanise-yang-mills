@@ -1,4 +1,4 @@
-\subsection{The actual reader on its small panel}
+\subsection{Gaussian comparison in the small-field window}
 \label{sec:ex-lattice-actual-reader-small-window}
 
 Fix the outer scale $x$ and let $B$ denote its outer radius.
@@ -96,7 +96,7 @@ For each $x$ under consideration, fix $t$ with
 $0\le t\le\min\{\delta,R\chi(x)\}$.
 Assume the direction $v$ has size at most $t$, its group representative
 agrees with the posed field on the outer ball, and the local chart
-bounds for the replica hold on the same ball with price $t$. The
+bounds for the replica hold on the same ball with bound $t$. The
 center lies outside $\mathcal D_U(11B+1)$. Use the
 actual panels selected by the outer construction and the
 official-address map to the cleared panel. The mean conclusion is for
@@ -108,8 +108,8 @@ vanish, so this also includes those rows.
 Let $\eta>0$ be the minimum decay rate in the short-kernel approximation
 and long-path budget. Put
 \begin{equation}\label{eq:ex-lattice-reader-widening}
- \operatorname{widen}_x(t)=(1+\operatorname{till}(x))t
-                         +e^{-\eta\operatorname{till}(x)}.
+ \operatorname{widen}_x(t)=(1+\operatorname{pathCutoff}(x))t
+                         +e^{-\eta\operatorname{pathCutoff}(x)}.
 \end{equation}
 Since $t\le R\chi(x)$ and $\chi(x)\to0$, $t$ lies below any fixed
 positive chart threshold for all sufficiently large $x$.
@@ -197,9 +197,9 @@ $|B_r(V)-F_r(v)|\le A t\,\operatorname{widen}_x(t)$.
 For the pulse difference, first restrict the direction to the outer
 comparison ball of radius $B$. Finite row dependence makes the row
 insensitive to the discarded part. The pulse construction then cuts
-paths at $\operatorname{till}(x)$: its finite pulse bound is
-$Z(1+\operatorname{till}(x))t\|m\|$ and the weighted omitted-path
-bound is $Z e^{-\sigma\operatorname{till}(x)}\|m\|$. The carry
+paths at $\operatorname{pathCutoff}(x)$: its finite pulse bound is
+$Z(1+\operatorname{pathCutoff}(x))t\|m\|$ and the weighted omitted-path
+bound is $Z e^{-\sigma\operatorname{pathCutoff}(x)}\|m\|$. The carry
 estimate gives $\|m\|\le Xt$. Consequently, with
 $\eta=\min\{\tau,\sigma\}$,
 $|P_r(V,m)-I_r(m)|\le ZXt\,\operatorname{widen}_x(t)$.
@@ -265,7 +265,7 @@ $u=x^{-1/2+1/32}$, the temperature and cutoff bounds give
 $t\le\mathcal B_R(x)u$ and
 $\operatorname{widen}_x(t)\le b_x\mathcal B_R(x)u+u$; both exponential
 tails are at most $x^{-1}$ eventually, since $B=\lceil(\log x)^2\rceil$ and
-$\operatorname{till}(x)$ is a fixed positive fraction of $B$ up to an
+$\operatorname{pathCutoff}(x)$ is a fixed positive fraction of $B$ up to an
 additive constant. Thus fixed
 polynomials in $1+B$ are subpower in $x$.  The
 remaining factors are bounded by the explicit polynomial
@@ -295,7 +295,7 @@ finite index bijection only; it does not identify matrix entries.
 For each matched pair of indices, the local row estimate gives an
 entrywise Gram bound.  For each row constant $A\ge0$, define
 \[
- w_x(A,t)=A(1+\operatorname{till}(x))t,\qquad
+ w_x(A,t)=A(1+\operatorname{pathCutoff}(x))t,\qquad
  \mathfrak m_x(A,t)=D_x\bigl((A+w_x(A,t))w_x(A,t)
                                   +w_x(A,t)A\bigr).
 \]

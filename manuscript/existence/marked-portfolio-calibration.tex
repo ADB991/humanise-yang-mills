@@ -3,7 +3,7 @@
 
 The marked finite-volume route needs a single local section at each label
 degree. That section must be chosen before the volume, cutoff, or derivative
-budget is known. It must also price every later derivative request at that
+budget is known. It must also bound every later derivative request at that
 degree. We construct that section first, then show how the schedule selects
 its budgets and how the approximate field change is made invertible.
 
@@ -23,11 +23,11 @@ $m\geq s$. Thus one factor means one curvature-coordinate slot, even
 though it is itself polynomial in link entries. This is the source
 filtration called $\mathrm{Powered}$.
 
-The input to the section construction is an imprint: linear maps
+The input to the section construction is an equivariant marked lifting: linear maps
 $A_d:E_d\to E_d$ and $B_d:E_d\to\mathcal P_{\geq0}$ with unit normalization
 $A_d1=1$, $B_d1=1$, gauge invariance of $B_dp$,
 $\operatorname{Forms}(H,d,B_dp,A_dp)$, and $B_dp\in\operatorname{Micro}$
-whenever $p$ belongs to the equation ideal, together with the campaign's
+whenever $p$ belongs to the equation ideal, together with the marked lifting's
 exact-action identity. They also have
 the following filtration clauses. The stamp of a grade is
 \[
@@ -47,9 +47,9 @@ the stamp never lowers the factor coordinate, and
 $\mathcal P_{\geq s'}\subseteq\mathcal P_{\geq s}$. In addition, $A_d$ and
 $B_d$ each commute with
 the signed-coordinate action and the real structure; equivariance of only
-$B_d$ would not suffice to pass it through $A_d^{-1}$. A campaign without
-these two equivariances is turned into such an imprint by the finite group
-and conjugation averages recalled next; the campaign producer itself is a
+$B_d$ would not suffice to pass it through $A_d^{-1}$. A marked lifting without
+these two equivariances is turned into such an equivariant marked lifting by the finite group
+and conjugation averages recalled next; the marked lifting producer itself is a
 separate input to this local theorem. It is constructed in
 Subsection~\ref{sec:marked-campaign-producer}.
 
@@ -62,20 +62,20 @@ is the joint real-conjugation involution, put
  F_1=\frac12\bigl(F_0+\mathfrak c F_0\mathfrak c\bigr),
 \]
 where $\mathcal S$ is the signed-coordinate group. Each summand is still a
-campaign: the grade is preserved, the correction remains strictly above
+marked lifting: the grade is preserved, the correction remains strictly above
 its stamp, the field remains in $\mathcal P_{\geq s}$, and the unit
 and exact action identities are preserved. A finite average preserves
 these linear conditions. Reindexing the first sum by left multiplication
 shows that $F_0$ commutes with every signed action; the involution identity
 $\mathfrak c^2=1$ shows $F_1$ commutes with conjugation, and the two
 actions commute, so both equivariances hold for $F_1$. Both averages fix
-the unit. This is the mathematical content of passing from a campaign to
-an imprint; the existence of the unsymmetrized campaign from the action is
+the unit. This is the mathematical content of passing from a marked lifting to
+an equivariant marked lifting; the existence of the unsymmetrized marked lifting from the action is
 not reproved in this section.
 
-\begin{theorem}[Fixed-stencil marked portfolio from an imprint]
+\begin{theorem}[Fixed-stencil family of fixed marked sections from an equivariant marked lifting]
 \label{thm:ex-marked-portfolio-section}
-Given an imprint on $E_d$, there are a finite centered stencil $S_d$, a linear section
+Given an equivariant marked lifting on $E_d$, there are a finite centered stencil $S_d$, a linear section
 \[
        T_d:E_d\longrightarrow\mathbb C[\text{link entries on }S_d],
 \]
@@ -138,7 +138,7 @@ action-projection condition are the corresponding properties of $B_d$.
 Because evaluation agrees on the entire basis, the section has these
 properties on all labels. The basis poses give the common-support and
 degree witnesses. The last item of the theorem is immediate from the
-choice $R_d=A_d$: the two equivariances of $A_d$ are imprint hypotheses,
+choice $R_d=A_d$: the two equivariances of $A_d$ are equivariant marked lifting hypotheses,
 and by the exact evaluation identity the field attached to $R_dp$ is
 $B_dp$, which is microscopic for $p$ in the equation ideal.
 
@@ -168,7 +168,7 @@ $s_j$. Finite sums add their constants, and lowering a rate from a larger
 degree to $s_j$ is valid because $0<\theta\leq1$. Applying this to the
 finite pose expansion of each basis field gives one finite constant
 $c_j(k,P)$ for the exact localized rate above. Summing basis estimates
-with coefficient moduli gives the linear price for arbitrary labels. No
+with coefficient moduli gives the linear bound for arbitrary labels. No
 uniformity in $d,k$, or $P$ is claimed.
 \end{proof}
 
@@ -183,11 +183,11 @@ nonnegative. The section is not rebuilt when these requests change.
 
 For a stage $i$, let $c_i$ be its column count, let $q_d$ be the stencil
 size of the chosen section together with the fixed local section, and let
-$\alpha_i$ be its support exponent. The sphere price is
+$\alpha_i$ be its support exponent. The sphere bound is
 \[
  \mathsf S_i(q_d,a)=2+e^{81\alpha_i}(a+c_i+2q_d).
 \]
-For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere price,
+For each fixed pair $d\leq i$, the chosen credit $a_{di}$, the sphere bound,
 and the coefficient $2(1+c_i)$ are finite. The orbit cost of the
 degree-$d$ frame,
 \[
@@ -211,9 +211,9 @@ for each $j$ choose $v_j$ so that
        (1+2c_j)\,\mathsf D(L)\leq\overline{\mathsf P}(L)
                   \qquad(L\geq v_j),
 \]
-where the door toll and purse are
+where the interface toll and purse are
 $\mathsf D(L)=\mathrm{rate}(L)=L^{-2/5}$ and
-$\overline{\mathsf P}(L)=\mathrm{barunit}(L)=L^{-3/8}$. Their ratio is
+$\overline{\mathsf P}(L)=\mathrm{stepSmall}(L)=L^{-3/8}$. Their ratio is
 $L^{-1/40}$, so the inequality holds once $L^{1/40}\geq1+2c_j$. For a fixed stage $i$, take
 the maximum of the finitely many $n_{di}$ with $d\leq i$ and $v_j$ with
 $j\leq i$. This single threshold $n_i$ proves all clauses required at
@@ -291,7 +291,7 @@ Thus, at every sufficiently late stage for this fixed degree,
 there are simultaneously a valid derivative credit, the allowance bound,
 and the sphere/flight bound. These are exactly the three fields of the
 marked budget package used by the selected field-calibration call. It uses
-the same portfolio section throughout: the delay changes available budget,
+the same fixed marked section throughout: the delay changes available budget,
 not the section or its stencil.
 
 \subsubsection{A small coordinate error gives an invertible calibration}
@@ -347,7 +347,7 @@ $\|D^{-1}y\|_1\leq2\|y\|_1$.
 We now state how the fixed section is compared, at each cutoff, with the
 local section of a selected family. The statement assembles two results
 proved later, the one-body invitation of
-Proposition~\ref{prop:ex-marked-invitation} and the same-history
+Proposition~\ref{prop:ex-marked-invitation} and the common-trajectory
 calibration of Proposition~\ref{prop:actual-marked-figment}; neither of
 them uses the present subsection.
 
@@ -360,7 +360,7 @@ sound for the action of the family. At level $N$ write $a_N$ for the
 mesh, $\theta_N$ for the budget threshold, $c_N$ for the column count,
 $\alpha_N$ for the support exponent, $\sigma_N$ for the running scale,
 $L_{N-1}$ for the preceding block side, and
-$\mathsf S_N(q,b)=2+e^{81\alpha_N}(b+c_N+2q)$ for the sphere price. For a
+$\mathsf S_N(q,b)=2+e^{81\alpha_N}(b+c_N+2q)$ for the sphere bound. For a
 section $W\in\{V,T\}$ and a coefficient vector $v\in F$, the normalized
 origin field at $(N,p)$ is
 \[
@@ -400,18 +400,18 @@ $\theta_N^{-s_j}$. The inputs are the following.
 Put
 \[
  \mathsf Z_N=\bigl(\mathsf C(V)+2\mathsf C(T)\bigr)
-                  \operatorname{Seat}_{d,N},
+                  \operatorname{frameWeight}_{d,N},
  \qquad
- \operatorname{Seat}_{d,N}=\sum_{j\in J_d}\theta_N^{-s_j},
+ \operatorname{frameWeight}_{d,N}=\sum_{j\in J_d}\theta_N^{-s_j},
 \]
 where $\mathsf C(W)\geq1$ denotes a fixed value-norm constant of the
 section $W$: $|W(v)(o,U)|\leq\mathsf C(W)\|v\|_1$ for all coefficient
 vectors, sides, anchors and configurations. Such a constant exists
 because the finitely many basis columns of $W$ are continuous functions
-on a compact configuration space. It is not a derivative price, and
-$\operatorname{Seat}_{d,N}$ is not a number of sites: it bounds the
+on a compact configuration space. It is not a derivative bound, and
+$\operatorname{frameWeight}_{d,N}$ is not a number of sites: it bounds the
 $\ell^1$ operator norm of the dilation $\theta_N^{-1}\cdot_F$. The
-price attached to each constructed column is the explicit schedule amount
+bound attached to each constructed column is the explicit schedule amount
 \[
  E_N=4(1+c_N)\mathsf S_N(q_d,b_N)
     +e^{81(\alpha_N+2)}\mathsf Z_N\,\zeta_{d,N}\,u_N^{-1}.
@@ -438,10 +438,10 @@ period $p$ there are columns $u_j=u_j(N,p)\in F$, $j\in J_d$, such that:
    \operatorname{rootTest}_{m;N,p}\Bigl(
       s\cdot\bigl(\mathcal O^{V}_{N,p}(e_j)
                   -\mathcal O^{T}_{N,p}(u_j)\bigr)\Bigr)
-     \leq\operatorname{cider}(d,m,k)\,E_N\,
+     \leq\operatorname{rootFac}(d,m,k)\,E_N\,
           e^{-\gamma\sigma_N},
   \]
-  with the constant $\operatorname{cider}(d,m,k)$ and the exponent
+  with the constant $\operatorname{rootFac}(d,m,k)$ and the exponent
   $\gamma=1/8$ of Proposition~\ref{prop:actual-marked-figment}. Its
   proof constructs the served representation for this residual, including
   all marker modes, in paragraph~\ref{par:figment-served-residual}.
@@ -467,7 +467,7 @@ Proposition~\ref{prop:ex-marked-invitation}, with the terminal Keeper and local 
 $u_N>0$ and $\zeta_{d,N}\geq0$ from the second input. It supplies a
 terminal coefficient $Z_j$ with leading coordinate $Z_j.x=e_j$, charge
 bound $Q_N=\mathsf S_N(q_d,b_N)$, budget $E_N$, and field
-$\mathcal O^{V}_{N,p}(e_j)$; these are the Cream data. Since
+$\mathcal O^{V}_{N,p}(e_j)$; these are the terminal insertion data. Since
 $\operatorname{ref}(d)<N$, Proposition~\ref{prop:actual-marked-figment}
 applies on the same family and history. It gives one label $v_j$ with
 \[
@@ -496,7 +496,7 @@ $\alpha_N=o(\sigma_N)$, so $e^{81\alpha_N}$ and
 $e^{81(\alpha_N+2)}=e^{162}e^{81\alpha_N}$ are slow. Hence
 $\mathsf S_N(q_d,b_N)$ is slow. The inverse threshold $\theta_N^{-1}$ is
 slow, being bounded by $\widehat\beta_N$; therefore the finite sum
-$\operatorname{Seat}_{d,N}$ of its powers and $\mathsf Z_N$ are slow.
+$\operatorname{frameWeight}_{d,N}$ of its powers and $\mathsf Z_N$ are slow.
 Finally $\zeta_{d,N}$ and $u_N^{-1}$ are slow by the third input. Each
 summand of $E_N$ is a finite product of slow sequences. Omitting either
 of the two reserve bounds of the third input would not justify this
@@ -504,9 +504,9 @@ conclusion.
 \end{proof}
 
 The section theorem and stage/delay arguments above prove the fixed-stencil
-portfolio, all later credit requests, and, for a schedule satisfying the
+family of fixed marked sections, all later credit requests, and, for a schedule satisfying the
 stated floor and delay conditions, the three eventual field-budget
-inputs. The local invitation and the same-history calibration
+inputs. The local invitation and the common-trajectory calibration
 used in Proposition~\ref{prop:ex-marked-solaris} remain separate
 substantive suppliers; they do not follow from existence of the section or
 from the inverse lemma. Their application requires the common-data matching and the remaining

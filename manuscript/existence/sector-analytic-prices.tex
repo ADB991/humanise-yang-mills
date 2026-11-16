@@ -49,13 +49,13 @@ data just listed. Construction of those incoming sectors and of
 their uniform safety estimates is still required; the purpose of
 this section is to prove the analytic output estimates from them.
 
-\subsubsection{Common prices before integration}
+\subsubsection{Common bounds before integration}
 The original optional-activity rooted allowance has upper exponent
-$a\le-7/16$. To obtain one price valid along the parameter family,
-sum the nonnegative prices at the three nodes $-1,0,1$ for each
+$a\le-7/16$. To obtain one bound valid along the parameter family,
+sum the nonnegative bounds at the three nodes $-1,0,1$ for each
 ordinary and forced label. The sum over all such labels through a
 root increases by at most a factor three, and each individual
-price is at most three times the old rooted allowance. This last
+bound is at most three times the old rooted allowance. This last
 assertion uses nonempty supports and nonnegative support weights.
 
 The complete local logarithmic factor is still polynomial of degree
@@ -70,7 +70,7 @@ exponential-minus-one factors. Its smallness conditions are satisfied
 eventually: if $g(x)$ is the incoming allowance, then
 $3g(x)\to0$ and $R^2g(x)$ has negative upper exponent. For a forced factor use
 ordinary degree-two interpolation at the same three nodes; there
-is no logarithm to take. The resulting common prices cost at most
+is no logarithm to take. The resulting common bounds cost at most
 a fixed constant times $1+R^2$. Their upper exponent is at most
 \[
                  a+\frac{2}{256}
@@ -81,7 +81,7 @@ $-2/5$, after increasing the scale threshold. This explains the
 specific reserve in \eqref{eq:sector-radius-choice}.
 
 For seed packets, use the larger-real-node estimate with the full
-stock weight. If a packet contains $s\ge1$ seeds, its real price
+stock weight. If a packet contains $s\ge1$ seeds, its real bound
 has the form
 \[
                     \exp\{(C\mathfrak d^5-\beta\mu\tau^2)s\},
@@ -137,7 +137,7 @@ where $S_l$ is the support of the label $l$ and $d_l\ge0$ its extra
 cost: the purchased fixed multiple of its number of seeds for a
 packet, and the purchased optional cost for an optional label. Let
 $a_l\ge0$ be the common
-primitive price for label $l$, with its warning gain included only
+primitive bound for label $l$, with its warning gain included only
 after Gaussian integration. Put $P_A=1+s_A\ge1$. The estimates
 just proved, the compensated Jacobian estimates, and the product
 rule give a coefficient bound for every derivative through order
@@ -148,7 +148,7 @@ norm is bounded by
        \left(\prod_{l\in A}a_l^{\circ}\right)
        P_A^j\,\mathbf1_{\mathcal E_A}(z)\,F_{I(A)}(z)^{Kj}.
 \end{equation}
-Here $a_l^{\circ}$ is the price before inserting the warning
+Here $a_l^{\circ}$ is the bound before inserting the warning
 probability gain, $\mathcal E_A$ is the joint reduced-margin
 excursion event, $F_{I(A)}\ge1$ is the Gaussian coordinate
 control function on the local read set, and $K$ is the fixed
@@ -180,10 +180,10 @@ Cauchy--Schwarz therefore gives
  \int\mathbf1_{\mathcal E_A}F_{I(A)}^{Kj}\,d\nu
                   \le(1+|V(x)|)P_A^k\rho^{|W_A|}.
 \]
-This is the source of the warning price in $a_l$; no independence
+This is the source of the warning bound in $a_l$; no independence
 of the warning events is assumed. Combining with
 \eqref{eq:sector-integrand-test}, and then averaging the finitely
-many forest and tagging choices, gives the derivative price
+many forest and tagging choices, gives the derivative bound
 \begin{equation}\label{eq:sector-polymer-price}
  p_A=\pi(x)e^{\alpha c_B(S_A)}
                    \left(\prod_{l\in A}a_l\right)P_A^{k+j},
@@ -206,7 +206,7 @@ support dictionary, not a parameter-dependent relabeling.
 
 The mixed connected-set estimate \eqref{eq:mixed-reserved-tail}
 of Subsection~\ref{sec:mixed-activity-prices}, applied to the enlarged
-primitive prices, gives
+primitive bounds, gives
 \begin{equation}\label{eq:sector-first-root}
        \sup_z\sum_{A:z\in S_A}p_Ae^{(E-\alpha)c_B(S_A)}
                                               \le\pi(x)u_{k+j}(x).
@@ -225,13 +225,13 @@ $e^{\alpha c_B(S_A)}e^{(E-\alpha)c_B(S_A)}
 =e^{Ec_B(S_A)}$. Thus the mixed connected-set estimate is applied
 with its original support weight, and its shape moment is exactly
 $k+j$. This invokes the same connected-set and moment bound used
-for the non-parameter sector, with the enlarged primitive prices
+for the non-parameter sector, with the enlarged primitive bounds
 just constructed.
 
 \subsubsection{The second connected expansion}
 Recover an absolute parameter series for each derivative from the
 finite-test estimate with radius $R$. Subsection~\ref{sec:background-ray-estimates}
-gives radius $R/2$ and price $2p_A$, once $R\ge2$.
+gives radius $R/2$ and bound $2p_A$, once $R\ge2$.
 The argument can first be applied to each scalar derivative;
 the fixed-order polarization bound controls the full derivative.
 The derivatives of the outgoing budget are iterated group increments
@@ -248,7 +248,7 @@ A logarithmic cluster with $q$ occurrences is a product of these
 primitive integrated activities times its Ursell coefficient
 and $1/q!$. Derivatives through order $j$ cost at most $q^j$.
 Since $q\le2^q$ for $q\ge1$, this is paid by multiplying each
-vertex price by $2^j$. Consequently the absolute cluster price is
+vertex bound by $2^j$. Consequently the absolute cluster bound is
 \[
        w_\Gamma=\frac{|u(\Gamma)|}{q!}
                            \prod_{r=1}^{q}(2^{j+1}p_{A_r}).
@@ -262,7 +262,7 @@ $\alpha=(E-e)/4>0$. Put
                    Y(x)=(1+2^{j+1}\pi(x))u_{k+j}(x).
 \]
 Equation~\eqref{eq:sector-first-root} pays the enlarged vertex
-prices at exponent $e+2\alpha$, because
+bounds at exponent $e+2\alpha$, because
 $e+2\alpha\le E-\alpha$. The connected-tree degree criterion is
 \[
                          \frac{4b_BY(x)}{\alpha}\le\frac12.
@@ -293,7 +293,7 @@ For example, expand $(1+r)^d$ and bound each $r^l$ by
 $l!\alpha^{-l}e^{\alpha r}$, using the exponential series.
 The extra spatial factor is thus paid by the remaining
 $\alpha$ reserve. Including the fixed polarization factor $C_j'$
-we obtain the final rooted derivative price
+we obtain the final rooted derivative bound
 \begin{equation}\label{eq:sector-ordinary-final}
                        2C_j's_B^{mj}P_{\alpha,mj}Y(x).
 \end{equation}
@@ -304,18 +304,18 @@ at radius $R/2$, on the actual connected-cluster dictionary.
 \subsubsection{The forced common majorant}
 For forced terms no coarse derivatives are required. The same
 finite-test and radius-halving argument gives ordinary constituent
-series prices with rooted allowance $2u_0(x)$ and forced
-constituent prices with rooted allowance
+series bounds with rooted allowance $2u_0(x)$ and forced
+constituent bounds with rooted allowance
 $2u_0(x)e^{-M(x)}$. The nonnegative mark $M(x)$ is the seed mark of
 the enlarged target: the mark per seed which the mixed estimate
 \eqref{eq:mixed-ceiling} extracts once for every seed of a
 component, and which is paid from the seed expense of the packet
-prices. It is available here because every forced
+bounds. It is available here because every forced
 constituent has a nonempty flag inventory, each flag supplies a
 seed in one of its packets, and hence its components contain at
 least one seed. It is distinct from the warning probability gain
 $\rho^{|W_A|}$, which has already been included in the primitive
-prices $a_l$ and is present in ordinary and forced constituents
+bounds $a_l$ and is present in ordinary and forced constituents
 alike. Form the exclusion-correction activities exactly as
 in Subsection~\ref{sec:forced-exclusion}. Each is a finite product
 of forced factors and powers of regular cluster factors, with the
@@ -349,6 +349,6 @@ for the sector output before its finite Taylor and local
 projection operations. They use the uniform local sector estimates,
 the same connected-support sums, and the same Gaussian warning
 bounds as the real one-step construction. The later projection
-prices and the construction of the allowed coupling family are
+bounds and the construction of the allowed coupling family are
 separate inputs when these estimates are applied to the selected
 background history.

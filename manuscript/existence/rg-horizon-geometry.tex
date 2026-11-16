@@ -163,31 +163,31 @@ identity.
 \subsubsection{The selected schedule, its beds, and the tower estimates}
 \label{subsec:ex-lattice-horizon-producer}
 
-The schedule input is a family of priced bed and flight receipts. At each
+The schedule input is a family of priced bed and blocking step receipts. At each
 integer stage $j\geq4$, for every allowed direct precision $p_{\rm direct}
-\leq\gamma_j$ and every train of order $j$, the bottom receipt supplies a
+\leq\gamma_j$ and every kernel history of order $j$, the bottom receipt supplies a
 bed whose four precision rows are fixed as above, whose five rows have the
 stated weighted strip costs, whose floors hold on every torus side, and
 whose real precision is sworn positive. It also makes the top bed's
 diagonal the identity. For every admissible adjacent pair of orders
-$j,t$ (with $t=j$ or $t+1=j$), the flight receipt supplies donated
+$j,t$ (with $t=j$ or $t+1=j$), the blocking step receipt supplies donated
 unmodified primal/two-form transports with the order-$j-2$ difference
 bounds, together with a curvature factor of the stated strip cost and
 positive lower quadratic bound. The block-length credit requires the
 separately selected lower bound on $L$ before its quadratic floor is used.
-These receipts are obtained by the one-flight frontier and the uniform bed
+These receipts are obtained by the one-step kernel estimate and the uniform bed
 pricing; they are construction inputs here, not conclusions of the block
 algebra.
 
-Fix the actual level schedule $A$ and a terminal cutoff $N$. Its train at
-level $N$ is the constant top train. Descending one level, use the flight
-whose wing is the train already constructed at level $i+1$ and whose land
-is the train at level $i$. Thus, for every $i<N$, the level-$i$ train is the landing train of the
-flight whose wing is the already defined train at level $i+1$. This uses
+Fix the actual level schedule $A$ and a terminal cutoff $N$. Its kernel history at
+level $N$ is the constant top kernel history. Descending one level, use the blocking step
+whose input is the kernel history already constructed at level $i+1$ and whose output
+is the kernel history at level $i$. Thus, for every $i<N$, the level-$i$ kernel history is the output kernel history of the
+blocking step whose input is the already defined kernel history at level $i+1$. This uses
 the actual adjacent block at level $i$; no second schedule is selected.
 
-The bed at each $(N,i)$ is first constructed for the corresponding train.
-Its four precision rows are the train's
+The bed at each $(N,i)$ is first constructed for the corresponding kernel history.
+Its four precision rows are the kernel history's
 pulse, dual pulse, amended precision and amended inverse, and its
 remaining root row is a square factor of the positive remainder
 (Subsection~\ref{sec:positive-row-producer}). The
@@ -204,7 +204,7 @@ and includes the zero modes. The floor receipt then gives symmetry,
 inverse identities and the uniform quadratic form bounds required of a
 bed.
 
-For a step $i<N$, the flight's donated primal and two-form transports are
+For a step $i<N$, the blocking step's donated primal and two-form transports are
 the transports $A_0$ and $T$ of its tower. The tangent identities are first obtained for the unamended pulses.
 On both lattices the amended metric agrees with its pulse on exact
 curvatures, $Gd_1=Hd_1$ (Subsection~\ref{sec:positive-row-producer}).
@@ -214,7 +214,7 @@ Thus the tangent identities give
  \qquad TW'D_c=WD_fA_0,
 \]
 where $W,W'$ are the actual adjacent bed metrics and the overline is the
-flight's prescribed conditional mean. The flight's rebase receipt, followed by the positive square root of
+blocking step's prescribed conditional mean. The blocking step's rebase receipt, followed by the positive square root of
 Subsection~\ref{sec:curvature-horizon-producer}, supplies the curvature factorization of the remainder $Z$ in
 \eqref{eq:ex-lattice-horizon-defect}. Therefore the preceding block
 proposition applies to these actual adjacent beds, not just to an abstract
@@ -301,16 +301,16 @@ iterated difference bound through order $X$.
 
 For completeness, the construction has two distinct stages. First, the
 schedule supplies a bed for every $(N,i)$ and the recursively defined
-flight supplies its one-step data. The bed and hop receipts together with
+blocking step supplies its one-step data. The bed and hop receipts together with
 the exact block proposition above give a horizon with row, floor, crossing,
-and roll data. Second, the finite tower-price construction narrows widths
+and roll data. Second, the finite tower-bound construction narrows widths
 and increases costs, while retaining the original $A_0,T$ rows; the new
 rows $M_F,M_N,M_O$ are the block completion just proved. The construction theorem performs this on the actual level object and retains the
 same bed family and the actual primal and two-form transports. In
 particular its retained-horizon equality is equality of the bed families;
 its tower equality preserves the $A_0,T$ rows used by the schedule.
 
-The resulting prices are indexed by the smoothing stage. Write $F$ for the
+The resulting bounds are indexed by the smoothing stage. Write $F$ for the
 finite set of two-form labels, $J_i$ for the stage at level $i$, and
 $\alpha_j>0$, $\Omega_j$ for the corresponding retained strip width and
 cost. For each level $i$, $\Omega_{J_i}\geq0$: the covered bed bounds a
@@ -326,19 +326,19 @@ cost
  |F|^2 e^{4\sigma}\Omega_{J_{i+1}}^2\Omega_{J_i}.
 \]
 The first tower difference exists at the required order because the
-admissible stages are at least four. For a fixed step these prices are
+admissible stages are at least four. For a fixed step these bounds are
 common to all terminal cutoffs $N>i$; they need not be bounded by one
 constant over all stages. Periodization and its uniformity require the
 separate quotient-fibre argument and the same retained data.
 
 The horizon therefore carries explicit numerical data at all $N,i$ and
-on every finite torus side: the stage-indexed prices bound the bed strip
+on every finite torus side: the stage-indexed bounds the bed strip
 widths and costs and the floor constants (by the schedule input described
 at the beginning of this subsection), and the iterated tower costs (by the
 bookkeeping above); the one-step crossing and roll identities hold by
 Proposition~\ref{prop:ex-lattice-horizon-roll}. The top bed is the unit diagonal because the
-top train is constant. These are exactly the data a horizon must carry;
-the prices and floors are inputs of the schedule and do not follow from
+top kernel history is constant. These are exactly the data a horizon must carry;
+the bounds and floors are inputs of the schedule and do not follow from
 the block identity alone. In the public
 construction the level schedule and these receipts are attached to the
 preselected run, as stated next. The public horizon contract alone does
@@ -399,12 +399,12 @@ recipe. That recipe's path is the designated path of the retained bed
 family, and the bed construction attaches its root row to that designated
 path. These two path equalities give the attachment for the actual history;
 no independently selected family is substituted. The same run's planned path data supply weighted row, loop and higher-leg bounds at every such
-cutoff, level and period, with the width and price of that level. This
+cutoff, level and period, with the width and bound of that level. This
 separate bound supplies absolute summability; it is not concluded from
 attachment alone.
 
 The matrix identities prove the block calculation once its displayed
-inputs hold. The selected tower prices, path attachment and absolute bounds
+inputs hold. The selected tower bounds, path attachment and absolute bounds
 come from the separate receipts just described; they are not inferred from
 the block calculation alone.
 
@@ -421,13 +421,13 @@ At each step $i$, put
 \]
 The schedule has $4\le t\le j\le t+1$ and odd $L\ge3$.
 The shape-port identities of the binding identify the two bed pulses,
-their amendments, and the two transport rows with the same flight.
+their amendments, and the two transport rows with the same blocking step.
 The amendment coefficients were fixed by stage before the block lengths;
-the flight floor included in the selected length floor gives
+the blocking step floor included in the selected length floor gives
 $mC_1\le L^2$ for its fine amendment. Thus
 \eqref{eq:curvature-paid-factor} and
-Proposition~\ref{prop:ex-lattice-horizon-roll} apply to this flight.
-The positive direct-precision ceiling and the bed prices are likewise
+Proposition~\ref{prop:ex-lattice-horizon-roll} apply to this blocking step.
+The positive direct-precision ceiling and the bed bounds are likewise
 those fixed before the schedule, so the analytic inverse and root
 constructions apply uniformly in the terminal cutoff and period.
 

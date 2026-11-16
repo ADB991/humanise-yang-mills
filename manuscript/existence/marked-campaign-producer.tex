@@ -1,11 +1,11 @@
-\subsection{Producing and symmetrizing the marked campaign}
+\subsection{Producing and symmetrizing the marked lifting}
 \label{sec:marked-campaign-producer}
 
-This section supplies the campaign used by the fixed-stencil construction.
+This section supplies the marked lifting used by the fixed-stencil construction.
 It has two parts. First, the equation ideal is read by microscopic link
 observables whose Taylor errors lie strictly above the requested grade.
 Second, finite-dimensional linear algebra combines these reads into one
-campaign, and finite group averages impose the signed and real symmetries.
+marked lifting, and finite group averages impose the signed and real symmetries.
 The filtration throughout counts factors that are color coordinates of
 based curvature slots; it is not a count of raw link entries.
 
@@ -64,13 +64,13 @@ $(\varrho,M)$ may be enlarged.
 These are precisely the properties needed for later stencil pricing and
 for the exact equation-ideal payment.
 
-We name the two objects produced in this section. A \emph{campaign} at
+We name the two objects produced in this section. A \emph{marked lifting} at
 cutoff $d$ is a complex-linear map $F:p\mapsto(q_p,f_p)$ from the label
 space into pairs consisting of a label and a function of the cover links,
 such that $F(1)=(1,1)$ and, for every grade
 $m\in\{0,\ldots,d\}^2$ and every label $p$ of pure grade $m$, the pair
 $(f_p,q_p)$ is a marked read of $p$ in the above sense, microscopic
-whenever $p$ lies in the equation ideal. An \emph{imprint} is a campaign
+whenever $p$ lies in the equation ideal. An \emph{equivariant marked lifting} is a marked lifting
 which commutes with the signed coordinate changes and with the real
 structure; both actions are written out in the proof of
 Theorem~\ref{thm:marked-campaign-producer}.
@@ -431,7 +431,7 @@ moment input defining the equation leg. The argument above proves the
 monomial factorization, edge-avoiding spectator assembly, and two-part
 filtration comparison from these facts.
 
-\subsubsection{The all-grade campaign}
+\subsubsection{The all-grade marked lifting}
 
 The previous lemmas give the exact pointwise producer needed for the
 finite-dimensional assembly.
@@ -492,7 +492,7 @@ literal equation factor from the remaining slot coordinates. The
 safe-span annihilator proof handles the edge avoidance needed to multiply
 the spectators. These steps establish the positioned read.
 
-\begin{theorem}[Campaign and imprint at fixed cutoff]
+\begin{theorem}[Marked lifting and equivariant marked lifting at fixed cutoff]
 \label{thm:marked-campaign-producer}
 Assume at cutoff $d$ there is a complex-linear map $S$ from labels to
 link-field functions with unit value one, gauge-invariant values, and exact
@@ -500,19 +500,19 @@ action Taylor forms through order $d$. In addition, for each pure-grade
 basis label of grade $(r,s)$, assume its value has a finite representation
 as a linear combination of products of based curvature-slot color
 coordinates, each product having at least $s$ factors. This is the powered
-slot-degree condition used below. Then there is a campaign $F$ at cutoff
+slot-degree condition used below. Then there is a marked lifting $F$ at cutoff
 $d$ in the sense defined above: $F$ is complex linear, $F(1)=(1,1)$, and
 for every pure-grade label $p$ of grade $m=(r,s)$ with $r,s\le d$ the
 value $F(p)=(q_p,f_p)$ consists of a gauge-invariant function $f_p$ of
 slot degree at least $s$ and a label $q_p$ with the same action Taylor
 forms through order $d$, such that $q_p-p$ has
 strictly larger stamp than $m$, and such that $f_p$ is microscopic
-whenever $p$ lies in the equation ideal. The campaign may be chosen to
-be an imprint, that is, to
+whenever $p$ lies in the equation ideal. The marked lifting may be chosen to
+be an equivariant marked lifting, that is, to
 commute with signed coordinate changes and the real structure.
 \end{theorem}
 \begin{proof}
-We first construct the unsymmetrized campaign. The sound section itself
+We first construct the unsymmetrized marked lifting. The sound section itself
 provides a linear map $X$ with
 \[
  Xp=(p,S(p)),\qquad X1=(1,1).
@@ -559,7 +559,7 @@ Decompose $p=\sum_m p_m$ by its homogeneous grade and define
 $F(p)=\sum_mF_m(p_m)$. On an input of pure grade $m$, every other grade
 component vanishes, so the corresponding payment remains exact. On the
 unit only grade $(0,0)$ contributes, so the start condition holds. This
-is the claimed campaign.
+is the claimed marked lifting.
 
 Now symmetrize. Let $\mathcal S$ be the finite signed coordinate
 permutation group. Its action $\theta_s$ on labels is the substitution
@@ -575,7 +575,7 @@ the signed lattice map $s$ fixing the anchor. Define
 Signed changes preserve grade, the strictly higher-stamp subspace, the
 slot-product filtration, the action-form identity, and the equation ideal.
 They preserve the moment condition by changing variables in the finite
-volume measure. Thus every summand remains a campaign and the average is
+volume measure. Thus every summand remains a marked lifting and the average is
 one. Reindexing by $s\mapsto ts$ shows
 $F^{\mathrm{sgn}}\theta_t=\phi_tF^{\mathrm{sgn}}$.
 
@@ -584,16 +584,16 @@ label/function pairs: on labels it conjugates the coefficients of the
 polynomial in the real jet coordinates, and
 $c(q,f)=(\overline q,\overline f)$. It is conjugate-linear, commutes
 with the signed
-action, and preserves each campaign condition. Set
+action, and preserves each marked lifting condition. Set
 \[
  F^{\mathrm{imp}}=\tfrac12\bigl(F^{\mathrm{sgn}}+
                            cF^{\mathrm{sgn}}c\bigr).
 \]
 The midpoint is complex-linear because the two conjugate-linear actions
-on the source and target cancel. It remains a campaign; $c^2=1$ gives
+on the source and target cancel. It remains a marked lifting; $c^2=1$ gives
 real equivariance, while commutation of $c$ with the signed action retains
 signed equivariance. Both averages fix the unit. This is the required
-imprint.
+equivariant marked lifting.
 \end{proof}
 
 The exact algebraic assembly above uses no limit in volume and no
@@ -603,7 +603,7 @@ generation formula, and the conditional-Haar microscopic identity above.
 The following corollary uses the section construction.
 
 \begin{remark}[Mixed grades]\label{rem:marked-campaign-mixed}
-The campaign conditions are stated for labels of pure grade. For an
+The marked lifting conditions are stated for labels of pure grade. For an
 arbitrary element $z$ of the equation ideal, $F(z)=\sum_mF(z_m)$ over
 its homogeneous components, and every $z_m$ again lies in the ideal,
 because the substitution $\operatorname{changed}(\mathcal E)$ defining
@@ -612,10 +612,10 @@ is a finite sum of microscopic functions. It is microscopic, with the
 largest of the finitely many radii and side thresholds.
 \end{remark}
 
-\begin{corollary}[Actual fixed-cutoff imprint]\label{cor:marked-campaign-actual}
+\begin{corollary}[Actual fixed-cutoff equivariant marked lifting]\label{cor:marked-campaign-actual}
 For every gauge group and every cutoff $d$, and for test holonomies
 fixed as at the beginning of this section, the actual section
-construction yields a campaign and an imprint at that cutoff.
+construction yields a marked lifting and an equivariant marked lifting at that cutoff.
 \end{corollary}
 \begin{proof}
 Use the local-sections construction of
@@ -626,6 +626,6 @@ monomial in the pose polynomial of a grade-$(r,s)$ basis label has total
 factor degree at least $s$. Expanding the finite pose polynomial writes each such basis value as
 a finite sum of slot-coordinate products with at least $s$ factors. Thus
 the powered slot-degree hypothesis of the theorem holds. Applying the
-theorem gives a campaign; its finite signed and real averages give the
-imprint.
+theorem gives a marked lifting; its finite signed and real averages give the
+equivariant marked lifting.
 \end{proof}

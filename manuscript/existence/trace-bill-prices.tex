@@ -1,32 +1,32 @@
-% Scalar price of the finite-volume Bill response and its root receipt.
-\subsection{The paid-response price bound}
+% Bounds on the response column and the error at the root scale.
+\subsection{The response column and its root-scale error}
 \label{sec:ex-lattice-trace-bill-prices}
 
-We compute the quantitative root-price bound attached to a paid finite-volume
+We compute the quantitative root-estimate attached to a paid finite-volume
 response. This is the numerical input used for the two component errors in
 Subsection~\ref{sec:ex-lattice-trace-probe-assembly}. The computation has two
 parts: a coefficient-size estimate from the paid label and its approximation
-receipt, and a negative-rate bound on the native root price.
+receipt, and a negative-rate bound on the native root bound.
 
 For each frame index $i$, set
 \[
  J_i=\operatorname{basin}(i),\qquad K_i=\operatorname{summit}(i),
  \qquad t_i=\widehat\beta_{K_i},\qquad
  v_i=\left(\frac{A_i}{A_{J_i}}\right)^d,
- \qquad f_i=\operatorname{fly}_d(J_i),
+ \qquad f_i=\operatorname{gradeDecay}_d(J_i),
 \]
 where $A_j$ is the field dilation at level $j$, and the basin, the summit
 and all scales belong to one fixed selected family and its selected
 schedule. Let
-\[
- s_i=\operatorname{stakes}(i,J_i)
+\[\begin{aligned}
+ s_i&=\operatorname{volFac}(i,J_i)
     =\exp\!\left(\Bigl(\frac{A_i}{A_{J_i}}\Bigr)^{4}
-        \operatorname{Treasury}(J_i)+5\right),
- \qquad
- \gamma_i=\operatorname{gain}(K_i,J_i)
+        \operatorname{vacuumBound}(J_i)+5\right),
+ \\
+ \gamma_i&=\operatorname{gain}(K_i,J_i)
     =\exp\!\left(\frac{S_{K_i}-S_{J_i}}{8}\right)
-\]
-be the local stake price and the gain from level $K_i$ down to $J_i$,
+\end{aligned}\]
+be the local volume factor and the gain from level $K_i$ down to $J_i$,
 where $S_j$ is the scale coordinate. The
 native root allowance for a grade-$d$ response is
 \begin{equation}
@@ -46,12 +46,12 @@ $f_i\gamma_i A_{J_i}^d/(2t_i^4)$, and $A_i^d/A_{J_i}^d=v_i$.
 Throughout this calculation the scale receipts ensure
 $A_i,A_{J_i},t_i,f_i,\gamma_i>0$ and $G_i\to\infty$.
 
-The scalar rate receipts are expressed by tickets. For a positive sequence
-$F_i$, a rate-zero ticket means that for every $\epsilon>0$, eventually
+We express the estimates using exponential rates. For a positive sequence
+$F_i$, an exponential bound of rate zero means that for every $\epsilon>0$, eventually
 $0\leq F_i\leq\exp(\epsilon G_i)$, where
-$G_i=\operatorname{Gate}(\widehat\beta_i)$. If two sequences have tickets
+$G_i=\operatorname{logScale}(\widehat\beta_i)$. If two sequences satisfy exponential bounds
 of rates $\alpha$ and $\alpha'$, their product has rate $\alpha+\alpha'$:
-choose the two ticket bounds at exponent $\alpha+\eta$ and
+choose the two bounds at exponent $\alpha+\eta$ and
 $\alpha'+\eta$, multiply them, and then let $2\eta$ be smaller than the
 requested excess over $\alpha+\alpha'$. Nonnegative sums of equal-rate
 sequences retain that rate by the same argument and the elementary bound
@@ -60,12 +60,12 @@ $u+v\leq2\max(u,v)$.
 \begin{lemma}[The five scale estimates for the paid response]
 \label{lem:trace-bill-scale-tickets}
 For the fixed selected history and each fixed grade $d$, the sequences
-$s_i,v_i,t_i^4,f_i^{-1}$ have rate-zero tickets. Moreover, eventually
+$s_i,v_i,t_i^4,f_i^{-1}$ satisfy bounds of rate zero. Moreover, eventually
 $J_i<K_i$ and $\gamma_i\ge\tau_i(500)$, where
 \[
  \tau_i(q)=\exp\!\left(\frac{q}{10^4}G_i\right).
 \]
-The eventual cutoff may depend on the grade and the requested ticket
+The eventual cutoff may depend on the grade and the requested
 exponent, but not on volume, period, observable or window.
 \end{lemma}
 \begin{proof}
@@ -74,21 +74,21 @@ Lemma~\ref{lem:ex-trace-pair-moving-bills}. Its frame $j$, first opened
 level $m$, and summit $k$ are exactly $i,J_i,K_i$ here: the opening
 condition is $(A_i/A_{J_i})\ge\lceil(\log\widehat\beta_{J_i})^2\rceil^2$,
 and the summit is the first level after $i$ whose scale gap is at least
-$G_i$. Its treasury $\mathcal T_{J_i}$ is the same vacuum treasury in
+$G_i$. Its vacuum bound $\mathcal T_{J_i}$ is the same vacuum bound in
 $s_i$. No field, paid label, or terminal volume enters those choices.
 Set $x=\widehat\beta_i$ and $y=\log x$, so $G_i=y^{48}$.
 That lemma gives on a common tail
 \[
  \frac{A_i}{A_{J_i}}\le y^6,\qquad
- \left(\frac{A_i}{A_{J_i}}\right)^4\operatorname{Treasury}(J_i)
+ \left(\frac{A_i}{A_{J_i}}\right)^4\operatorname{vacuumBound}(J_i)
        \le y^{27},\qquad
  \widehat\beta_{K_i}\le2x,\qquad
  S_{K_i}-S_{J_i}\ge\tfrac12 y^{48},\qquad J_i<K_i.
 \]
 These bounds were proved there from the first-opening minimality,
-the summit first-crossing bound, and the stage treasury payment;
+the summit first-crossing bound, and the stage vacuum bound payment;
 their proof does not use the paid-response estimate of this section.
-The flight at fixed grade is
+The decay factor at fixed grade is
 $f_i=\widehat\beta_{J_i}^{-w_d}$, where $w_d>0$ is the fixed exponent
 of the selected height schedule. Monotonicity of the hatted coupling
 and $J_i<K_i$ give $f_i^{-1}\le(2x)^{w_d}$.
@@ -99,7 +99,7 @@ Consequently the logarithms of our four positive factors are bounded by
 \]
 respectively. Dividing each bound by $y^{48}$ gives zero in the limit.
 For every $\epsilon>0$, each factor is therefore at most
-$\exp(\epsilon G_i)$ eventually. This proves all four tickets.
+$\exp(\epsilon G_i)$ eventually. This proves all four bounds.
 Finally
 \[
  \gamma_i=\exp((S_{K_i}-S_{J_i})/8)
@@ -108,19 +108,19 @@ Finally
 since $1/16>500/10^4$ and $G_i\ge0$.
 \end{proof}
 
-Taking the product of the four tickets, including the fixed factor $2$,
-gives a rate-zero ticket for
+Taking the product of the four bounds, including the fixed factor $2$,
+gives an exponential bound of rate zero for
 \[
  B_i=\frac{2s_i v_i t_i^4}{f_i}.
 \]
-The ticket bound at exponent $70/10^4$ gives $B_i\leq\tau_i(70)$
+The exponential bound at exponent $70/10^4$ gives $B_i\leq\tau_i(70)$
 eventually. Dividing by the gain and using multiplicativity yields
 \begin{equation}
  A_i^d n_{d,i}=B_i/\gamma_i
    \leq\tau_i(70)/\tau_i(500)=\tau_i(-430).
  \label{eq:ex-trace-native-rate}
 \end{equation}
-This proves the exact negative-rate price needed below for all sufficiently
+This proves the exact negative-rate bound needed below for all sufficiently
 large $i$.
 
 \begin{lemma}[Column size from a paid label]
@@ -147,7 +147,7 @@ The triangle inequality gives
 \]
 \end{proof}
 
-\begin{proposition}[Paid label yields the scaled component price]
+\begin{proposition}[Coefficient approximation and the scaled root error]
 \label{prop:ex-trace-bill-root-price}
 Fix the volume index $N$, the period $p$ and the grade $d$, and let
 $K=K_i\le N$. Let $g$ be a scale-$K$ observable, $y$ a grade-$d$
@@ -198,7 +198,7 @@ then gives the stated $\tau_i(-430)$ bound, uniformly over all allowed
 windows and observables.
 \end{proof}
 
-The label-producing receipt is supplied by the Bill specialization in
+The label-producing receipt is supplied by the finite-volume response record specialization in
 Subsection~\ref{sec:ex-lattice-trace-coffer-supplier}. Its label is chosen
 once, before the window tests, from the actual atomic response, density
 identity and two weight payments. For each fixed inflation and grade,

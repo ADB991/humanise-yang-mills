@@ -24,7 +24,8 @@ cd manuscript
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build existence.tex
 ```
 
-The result is `manuscript/build/existence.pdf`. Build products are ignored by Git.
+The result is `manuscript/build/existence.pdf`; build products there are ignored
+by Git. The repository also tracks a compiled snapshot `manuscript/existence.pdf`.
 Inspect the rendered pages after changes; resolve missing references and layout
 warnings before submission. CI builds the manuscript as well as checking metadata.
 

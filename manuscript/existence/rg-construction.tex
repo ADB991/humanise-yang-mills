@@ -97,7 +97,7 @@ third pays the exact one-step null-packet cost.
 \subsubsection{Production of the funded width and top allowance}
 \label{subsec:ex-lattice-rg-funded-producer}
 
-For a map price $X$, put
+For a map bound $X$, put
 \[
  \omega_j=\min\{1,\alpha_X(j),\alpha_X(j+1)\},\qquad
  A_X(j,u)=m^2e^4\Omega_X(j)^2\Omega_X(u),
@@ -110,7 +110,7 @@ For a map price $X$, put
  E_X(j)=\left\lceil\frac{2}{\omega_j}+b_X(j,j)^2+b_X(j,j-1)^2\right\rceil.
 \]
 We call $E_X(j)$ the entrance ticket at stage $j$; its last two summands
-are the two adjacent row prices. The
+are the two adjacent row bounds. The
 schedule satisfies $J_{i+1}=J_i$ or $J_i+1$. Suppose the selected floors
 give $E_X(J_{i+1})\leq L_i$ and the delay receipt gives
 $\Omega_X(J_i)\leq\log\widehat\beta_i$. Then the world width is
@@ -134,7 +134,7 @@ and neutral coin, is exactly
  =e^{-(t_{i+1}-t_i)/2}.
 \]
 This proves the paid condition and fixes its exponent from the actual
-entrance-price formula.
+entrance-bound formula.
 
 For the top allowance let $s_G>0$ be the gauge slope constant
 \eqref{eq:shoot-slope} and choose
@@ -178,7 +178,7 @@ lower scale, $B_0,B_1$ the lower and upper budget radii, $b,e_1$ the lower
 and upper support exponents, $\mu$ the shape strength, and $Q$ the menu
 target. For a finite set $V$ of markers with positive weights $r_v$, write
 \[
- \operatorname{price}_r(P)=\sum_{I}|P_I|\prod_{v\in I}r_v,
+ \mathcal N_r(P)=\sum_{I}|P_I|\prod_{v\in I}r_v,
 \]
 where $I$ ranges over a downward-closed family of subsets of $V$
 containing the empty set and all singletons, the allowed modes of $P$. The target has a nonnegative integer halo size $Q.\mathrm{halo}$,
@@ -191,17 +191,17 @@ slope $s_G$, put
  \operatorname{siteFactor}(B)=e\{2(16B+9)\}^4,
 \]
 and, at the selected coupling $\beta_F>1$, define
-\[
- \operatorname{ribbon}(Q,L,\beta)
- =\beta_F^{\rho}\exp\!\left(Q.\mathrm{relative}\,
- \operatorname{preCost}(Q.\mathrm{halo}+5)\right),\qquad
- \Delta_{G,L}(\beta)=\exp\!\left((\log\log\beta_F)^2\right).
-\]
-The shipment tariff is
+\[\begin{aligned}
+ \operatorname{activityBound}(Q,L,\beta)
+ &=\beta_F^{\rho}\exp\!\left(Q.\mathrm{relative}\,
+ \operatorname{preCost}(Q.\mathrm{halo}+5)\right),\\
+ \Delta_{G,L}(\beta)&=\exp\!\left((\log\log\beta_F)^2\right).
+\end{aligned}\]
+The activity constraint is
 \begin{equation}
  N\,\operatorname{siteFactor}(B_0)
  \exp\!\left((Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)\right)a
- \leq \operatorname{ribbon}(Q,L,\beta),
+ \leq \operatorname{activityBound}(Q,L,\beta),
  \label{eq:ex-lattice-volant-tariff}
 \end{equation}
 where $N$ is the occupancy count and $a$ is the available shipment amount.
@@ -215,13 +215,13 @@ where $\Delta_{G,L}$ is the fine-scale monitor just defined.
 
 The selected response produces ungrouped terms $A_i(U)$ and $D_i(U)$,
 with support indices $s(i)$ and $p(i)$, respectively. Let $a_i,d_i\geq0$
-be summable majorants for their weighted prices, and let $S_i,T_i$ be
+be summable majorants for their weighted bounds, and let $S_i,T_i$ be
 their support sets. The precise paid inputs are
 \begin{align}
- \operatorname{price}_r(A_i(U))&\leq a_i,&
+ \mathcal N_r(A_i(U))&\leq a_i,&
  \sum_{i:z\in S_i}a_i e^{(b+1/2)\operatorname{coverNumber}(B_0,S_i)}&\leq1,
  \label{eq:ex-lattice-volant-first-ledger}\\
- \operatorname{price}_r(D_i(U))&\leq d_i,&
+ \mathcal N_r(D_i(U))&\leq d_i,&
  \sum_{i:z\in T_i}d_i e^{(b+1)\operatorname{coverNumber}(B_0,T_i)}&\leq
        \mathfrak s(\mu,L,\beta).
  \label{eq:ex-lattice-volant-second-ledger}
@@ -252,9 +252,9 @@ higher coefficients are the full products in the field polynomial.
 \label{thm:ex-lattice-volant-supplier}
 Assume the selected history provides the ungrouped paid terms and exact
 identities above, at lower exponent $b$ and upper exponent $e_1\geq100$.
-Assume $Q.\mathrm{relative}\geq4$, $4\varepsilon_Q<e_1$, foam at scale $L$, $B_1\leq2B_0$, and parent-site occupancy at most $N$. Assume positive marker weights and the birth estimate displayed in the proof. The offer is a site-rooted ledger at exponent $e_1-4$ and allowance $a$, with the fine sites of its named origins in the crests, and the shipment tariff \eqref{eq:ex-lattice-volant-tariff} holds. Then, with $c=e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}a$, the birth-region weights $f_i$ defined in the proof satisfy, at every site $z$,
+Assume $Q.\mathrm{relative}\geq4$, $4\varepsilon_Q<e_1$, foam at scale $L$, $B_1\leq2B_0$, and parent-site occupancy at most $N$. Assume positive marker weights and the birth estimate displayed in the proof. The offer is a site-rooted ledger at exponent $e_1-4$ and allowance $a$, with the fine sites of its named origins in the crests, and the activity constraint \eqref{eq:ex-lattice-volant-tariff} holds. Then, with $c=e^{(Q.\mathrm{relative}+1)\operatorname{preCost}(Q.\mathrm{halo}+5)}a$, the birth-region weights $f_i$ defined in the proof satisfy, at every site $z$,
 \[
- \sum_{i:z\in\mathrm{birth}_i}f_i e^{Q.\mathrm{relative}\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}\leq N\operatorname{siteFactor}(B_0)c\leq\operatorname{ribbon}(Q,L,\beta).
+ \sum_{i:z\in\mathrm{birth}_i}f_i e^{Q.\mathrm{relative}\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}\leq N\operatorname{siteFactor}(B_0)c\leq\operatorname{activityBound}(Q,L,\beta).
 \]
 Moreover,
 the grouped families
@@ -265,7 +265,7 @@ the grouped families
 have the same rooted budgets as the ungrouped families, retain the support
 and shell conditions, and satisfy the per-box quiet and singleton identities
 and the push identity in \eqref{eq:ex-lattice-volant-quiet}--
-\eqref{eq:ex-lattice-volant-play}. The selected door, tuning, and
+\eqref{eq:ex-lattice-volant-play}. The selected interface, tuning, and
 slot-separation conditions are retained. The producers of the paid
 terms are treated separately in Subsection~\ref{sec:ex-lattice-rg-multisource};
 this theorem proves their tariff conversion and assembly.
@@ -311,7 +311,7 @@ origin in its birth support, then lowering the rooted exponent by one gives
  \sum_{i:z\in\mathrm{birth}_i}f_i
        e^{Q.\mathrm{relative}\,\operatorname{coverNumber}(B_0,\mathrm{birth}_i)}
  \leq N\operatorname{siteFactor}(B_0)c
- \leq\operatorname{ribbon}(Q,L,\beta).
+ \leq\operatorname{activityBound}(Q,L,\beta).
  \label{eq:ex-lattice-volant-root-lift}
 \end{equation}
 The final inequality is exactly the purchased tariff
@@ -322,8 +322,8 @@ Now group terms by their support and box indices. The first ledger already
 uses exactly the supports $S_i=s(i)$, and the second uses exactly the box
 supports $T_i=p(i).1$. By the triangle
 inequality,
-$\operatorname{price}_r(F_s(U))\leq\sum_{i:s(i)=s}a_i$ and
-$\operatorname{price}_r(K_p(U))\leq\sum_{i:p(i)=p}d_i$. Summing these
+$\mathcal N_r(F_s(U))\leq\sum_{i:s(i)=s}a_i$ and
+$\mathcal N_r(K_p(U))\leq\sum_{i:p(i)=p}d_i$. Summing these
 bounds over fibers at a fixed site gives exactly the two budgets in
 \eqref{eq:ex-lattice-volant-first-ledger}--
 \eqref{eq:ex-lattice-volant-second-ledger}. Tonelli's theorem applies

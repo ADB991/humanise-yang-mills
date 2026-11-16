@@ -504,30 +504,30 @@ clock. This proves $\beta_Z(j)/\widehat\beta_j\to1$. The running estimate
 and the fixed-scale limit are upstream inputs. The summit clock estimate follows from the first-crossing and
 block-size properties of the selected schedule. Write $g_j$ for the gap
 from level $j$ to its summit and $b$ for the fixed slope constant. Set
-$\operatorname{Gate}(x)=(\log x)^{48}$. For $x\ge1$, the inequality
+$\operatorname{logScale}(x)=(\log x)^{48}$. For $x\ge1$, the inequality
 $t\le e^t$ with $t=(\log x)/96$ gives
 $(\log x)^{48}/x\le96^{48}x^{-1/2}$, so the gate ratio tends to zero.
 The selected clock tends to infinity.
 
 The summit is the first later level at which the scale gap reaches the
 gate. Let $q$ be its preceding level and put $x=\widehat\beta_j$. By the
-first-crossing property, $0\le s_q-s_j\le\operatorname{Gate}(x)$.
+first-crossing property, $0\le s_q-s_j\le\operatorname{logScale}(x)$.
 The affine clock identity then gives
-$\widehat\beta_q\le x+b\operatorname{Gate}(x)\le2x$ eventually. The
+$\widehat\beta_q\le x+b\operatorname{logScale}(x)\le2x$ eventually. The
 selected schedule has $L_q\ge1$ and bounds $L_q$ by
 $\log\widehat\beta_q$; its scale increment is
 $s_{q+1}-s_q=\log L_q$. Since $\log L_q\le L_q$, for large $x$,
 \[
  s_{q+1}-s_q\le\log\widehat\beta_q
- \le\log(2x)\le\operatorname{Gate}(x).
+ \le\log(2x)\le\operatorname{logScale}(x).
 \]
 Adding the pre-crossing gap and this last increment gives
-$0\le g_j\le2\operatorname{Gate}(\widehat\beta_j)$. Consequently,
+$0\le g_j\le2\operatorname{logScale}(\widehat\beta_j)$. Consequently,
 \[
  \widehat\beta_{\mathrm{summit}(j)}
    =\widehat\beta_j+b g_j,\qquad
  0\le\frac{g_j}{\widehat\beta_j}
- \le 2\frac{\operatorname{Gate}(\widehat\beta_j)}{\widehat\beta_j}
+ \le 2\frac{\operatorname{logScale}(\widehat\beta_j)}{\widehat\beta_j}
  \longrightarrow0.
 \]
 The first-crossing definition and block-size schedule bound are the inputs
@@ -760,11 +760,11 @@ The construction supplies these estimates using its local
 recording, selected trace-current localization, field hierarchy and
 point-limit inputs. The estimates, low-grade unit statement and separating
 property use the upstream table and hierarchy inputs just stated; the
-finite-volume price production behind the estimates is not proved in this
+finite-volume bound production behind the estimates is not proved in this
 subsection. They are more primitive than the assertion that either branch
 trace is fast.
 
-The following root-price mechanism identifies a more primitive sufficient
+The following root-bound mechanism identifies a more primitive sufficient
 input for the three recording estimates. Fix one of the finitely many
 insertions above, its grade $d\in\{3,4\}$, and a separated test $\sigma$.
 At scale $k$ and finite-volume parameter $u$, let $A_{k,u}$ be the actual
@@ -790,7 +790,7 @@ $\zeta_{j+1}\ge1$. The previously established column estimate gives
 $\ell_k=o(s_k)$, so $e^{\ell_k}$ is subexponential. The middle bound
 is a convenient weakening of the purchased bias bound
 $\vartheta_k^2\exp[-\tfrac14(\log\log\widehat\beta_k)^2]$, using
-$\vartheta_k\le1$. It is not a replacement for the root-price purchase
+$\vartheta_k\le1$. It is not a replacement for the root-bound purchase
 below. The inverse bound follows by multiplying the calibrated one-step factors
 $\zeta_{j+1}L_j^d$ from the reference level, where the column is the identity.
 All factors are at least one, $\sum_{j<k}\log L_j=s_k$, and the label norm
@@ -812,10 +812,10 @@ $\|x_k\|=O(e^{(d+\epsilon)s_k})$; the bound is grade-dependent and need
 not be subexponential. For an already selected history, retain its original labels and their
 existing ultrafilter limit instead: the compactness construction by itself
 does not identify a newly chosen limit with that history's limit. The
-root-price step below uses the labels and limit from one and the same
+root-bound step below uses the labels and limit from one and the same
 history.
 
-For the root-price step assume:
+For the root-bound step assume:
 \begin{enumerate}
 \item for this test, some $c_\sigma>0$ and $B_\sigma\ge0$ satisfy, for
  every sufficiently large $k$, axis $a\in I$ and integer $\ell$ with
@@ -832,7 +832,7 @@ For the root-price step assume:
  $O_{k,u}(v)$ converges along the same ultrafilter to
  $L^{\sigma}_d(\ell a_ke_a)\pi_d v$.
 \end{enumerate}
-The first assumption applies the rooted price to the actual-minus-local
+The first assumption applies the rooted bound to the actual-minus-local
 insertion, using selected funding, interior and locality estimates. The
 second is the fixed-label point limit in the same table. To apply it to the moving labels,
 choose a basis $(e_j)$ of $E_d$ and write
@@ -851,7 +851,7 @@ choose $j=\max\{\operatorname{basin}(h),\operatorname{ref}(d)\}$. Such a scale e
 $a_{j+1}b_{j+1}^2\le(2/3)a_jb_j^2$. Iterating gives
 $a_jb_j^2\le(2/3)^{j-h}a_hb_h^2\to0$ for $j\ge h$. Opening persists at
 finer scales, so this choice of $j$ is open. At each allowed later level $k>j$, the
-finite-volume purchase gives the actual-minus-local insertion the rooted price
+finite-volume purchase gives the actual-minus-local insertion the rooted bound
 \begin{equation}
  P_{d,h,j}(k)=
  \frac{2\,\operatorname{stake}_{h,j}\,a_j^{-d}}
@@ -864,7 +864,7 @@ Here $\operatorname{stake}_{h,j}=\exp[(a_h/a_j)^4\mathcal T_j+5]$,
 where $\mathcal T_j$ is the selected per-site treasury, and
 $\varphi_{d,j}=\widehat\beta_j^{-\nu_d}$, where $\nu_d$ is the fixed
 reference-label degree bound plus four. Both are positive and fixed once
-$d,h,j$ are chosen. This is the actual purchased price. Since the hatted clock is affine in $s_k$, its
+$d,h,j$ are chosen. This is the actual purchased bound. Since the hatted clock is affine in $s_k$, its
 fourth power is subexponential: for $s\ge0$ and $\epsilon>0$, the
 exponential series gives $s^4\le24\epsilon^{-4}e^{\epsilon s}$. Thus, for
 every $0<\eta<1/8$, $P_{d,h,j}(k)=O(e^{-\eta s_k})$ and is fast. The containing-window radius
@@ -932,12 +932,12 @@ construction; this argument does not establish those purchases.
 
 For each fixed $k$ and displacement, the moving-label limit makes the
 local correlation differ from its limit by at most $a_k$ on an ultrafilter-large
-set. Intersect that set with the root-price set and use the triangle
+set. Intersect that set with the root-bound set and use the triangle
 inequality. The resulting recording error is at most
 $B_\sigma E_k+a_k$, which is fast because $a_k=e^{-s_k}$. This proves
 the corresponding instance of
 \eqref{eq:ex-branch-book-current}--\eqref{eq:ex-branch-book-tensor}
-from the displayed root-price and point-limit inputs. It does not construct
+from the displayed root-bound and point-limit inputs. It does not construct
 the underlying purchased root bound. The radius can be reduced so that all moved
 test configurations remain separated.
 
@@ -1027,7 +1027,7 @@ The detector bound makes the difference fast. The already proved fastness
 of each $w_{d,k}$ and finiteness of $I$ now imply that $y^0_k$ is fast.
 \end{proof}
 
-Under the displayed fixed-scale root-price inputs, the same proof gives the
+Under the displayed fixed-scale root-bound inputs, the same proof gives the
 more explicit bound
 \begin{equation}
  \|y^0_k\|+\|y^-_k\|=O\bigl((1+s_k)^5e^{-s_k/8}\bigr).
@@ -1046,7 +1046,7 @@ the endpoint error divided by $h_k$ is
 $O((1+s_k)^5e^{-s_k/8})$. The moving detectors and finite trace comparisons
 now give \eqref{eq:ex-branch-raw-rate}. In particular, the bound is
 $O(e^{-\kappa s_k})$ for every $0<\kappa<1/8$. Its constants depend on the
-finite tests; the price and point-limit statements remain inputs.
+finite tests; the bound and point-limit statements remain inputs.
 
 For the remaining weighted step, let $S_{k,u}$ be the finite-volume
 transport whose fixed-$k$ separation limit is $B_k$. With the same
@@ -1071,7 +1071,7 @@ $s\le\epsilon^{-1}e^{\epsilon s}$ for $s\ge0$ and $\epsilon>0$,
 $\widehat\beta_k$ and hence $\|B_k\|$ are subexponential as well. The
 finite-volume column calibration and fixed-scale transport limit are upstream
 inputs. The Crown, Eve and weighted-estimate chapters supply parts of the
-selected local prices under their construction hypotheses.
+selected local bounds under their construction hypotheses.
 
 \begin{proposition}[Principal and false trace washout]
 \label{prop:ex-branch-washout}
@@ -1130,7 +1130,7 @@ This proves \eqref{eq:ex-branch-washout}. The estimate is for each fixed
 $p$; it is not a uniform assertion over a growing exponent.
 \end{proof}
 
-With the explicit root-price and point-limit inputs, the quantitative raw
+With the explicit root-bound and point-limit inputs, the quantitative raw
 rate gives more: for each fixed $p\in\mathbb N$ and $b\in\{0,-\}$,
 \[
  \bigl\|\widehat\beta_{k_i}^{\,p}\operatorname{tr}(\mathsf P_i t^b_{k_i})\bigr\|

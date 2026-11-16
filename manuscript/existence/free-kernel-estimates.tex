@@ -229,7 +229,7 @@ proves the formula for every word.
 The preceding estimates apply to the construction's actual dual
 cross-stencil $F(P,p,l)$. Its suppliers give the following exact data. Let
 $j,t\geq4$, $k>0$, let
-$\mathcal I$ be any index set, choose a flight $P_i$ of stages
+$\mathcal I$ be any index set, choose a blocking step $P_i$ of stages
 $(j,t)$ and a site $l_i\in\Lambda_{L_i}$ for each $i\in\mathcal I$.
 There are common $\eta,A>0$ such that every scalar matrix entry of
 $F(P_i,p,l_i)$ is holomorphic on $\mathcal Q_\eta$ and bounded there by
@@ -243,22 +243,22 @@ whenever both momenta lie in the supplier's real enlarged cube. Here
 $\operatorname{wrap}_L(x)$ is the residue characterized by
 $\ell_L(l+\operatorname{wrap}_L(x))\equiv\ell_L(l)+x\pmod{L\mathbb Z^4}$.
 The formal supplier proves these statements for every odd side $L\geq3$,
-every flight with the two stage indices at least $4$, and every $k>0$.
+every blocking step with the two stage indices at least $4$, and every $k>0$.
 Their factor-by-factor proof is recorded in
 Subsection~\ref{sec:ex-lattice-free-kernel-components}; the present section
 proves the quantitative consequences of those exact supplier estimates.
 
 Here is the branch algebra in mathematical notation. Let
 $m_P(p)=\operatorname{area}_{L}(p)^j$ be the patch mass factor (distinct
-from the cumulative smooth factor of the train),
-$b_v(p)$ the vector of four bulb factors for a train $v$, and $\beta_v(p)$
-its bend factor. For a vector $g$ indexed by the four coordinate directions,
+from the cumulative smooth factor of the kernel history),
+$b_v(p)$ the vector of four regularized factors for a kernel history $v$, and $\beta_v(p)$
+its scalar correction factor. For a vector $g$ indexed by the four coordinate directions,
 let $\mathcal M_r(g)$ be the diagonal matrix whose entry on an $r$-face is
 the product of the $g_a$ over its directions. Let
 \[
  \mathcal T_2(x)_{ff}=\sum_{a\in f}x_a,
  \qquad
- \operatorname{yen}(g)(p)=g(p)g(-p).
+ \operatorname{symProd}(g)(p)=g(p)g(-p).
 \]
 For $v\in\mathbb C^4$, let $\mathsf W_r(v)$ denote the map of exterior
 multiplication $\alpha\mapsto v\wedge\alpha$ from $r$-faces to
@@ -269,7 +269,7 @@ $(r+1)$-faces. Put
  \mathcal V_v(p)=\beta_v(p)\mathcal M_2(b_v(p)).
 \]
 Write $q_l=(p+2\pi\ell_L(l))/L$, including $q_0$ at the zero residue.
-Write $r_L(q)_a=\operatorname{rail}_L(q_a)$. The $r$-flux and latch
+Write $r_L(q)_a=\operatorname{avg}_L(q_a)$. The $r$-flux and latch
 matrices are
 \[
  \Phi_{P,r}(p,l)=
@@ -290,13 +290,13 @@ vector is
 \[
  \operatorname{tail}_{P,a}(p)=k^{-1}+
  \sum_{l\in\Lambda_L,\,l\ne0}
- \operatorname{yen}\!\left(m_P(\cdot)r_L(\cdot)_a\right)(q_l)
+ \operatorname{symProd}\!\left(m_P(\cdot)r_L(\cdot)_a\right)(q_l)
                          D_{P,l,a}(p).
 \]
 Further set
 \[
  h_P(p)=\Lambda_{P,2}(p)\Sigma_1^1(p),\quad
- f_P(p)=\frac{\operatorname{yen}(m_P)(q_0)\,\beta_{P_{\rm land}}(p)}
+ f_P(p)=\frac{\operatorname{symProd}(m_P)(q_0)\,\beta_{P_{\rm land}}(p)}
                               {\beta_{P_{\rm wing}}(q_0)},\quad
  M_P(p)=\mathcal M_1(b_{P_{\rm land}}(p)),
 \]
@@ -312,7 +312,7 @@ and, with $x_a(p)=\operatorname{tail}_{P,a}(p)/b_{P_{\rm land}}(p)_a$,
 \]
 For a nonzero alias $l$, let $D_{P,l}$ be the vector with components
 $D_{P,l,a}$ above and set
-$Y_{P,l}(p)=\operatorname{yen}(m_P)(q_l)\beta_{P_{\rm land}}(p)/R_{P,l}(p)$.
+$Y_{P,l}(p)=\operatorname{symProd}(m_P)(q_l)\beta_{P_{\rm land}}(p)/R_{P,l}(p)$.
 The dual stencil is exactly
 \begin{align}
  W_{P,0}(p)
@@ -329,15 +329,15 @@ The dual stencil is exactly
 These identities follow by expanding the definitions of the two branches and
 the listed auxiliary matrices; they are not additional hypotheses.
 
-Write $\operatorname{chip}(z)=e^{iz}-1$ and
-$\operatorname{pullLine}_{P,a}(q)=m_P(q)\operatorname{rail}_L(q_a)$,
-where $\operatorname{rail}_L(z)=(e^{iLz}-1)/(L(e^{iz}-1))$ with its
+Write $\delta_{\rm F}(z)=e^{iz}-1$ and
+$\operatorname{pullLine}_{P,a}(q)=m_P(q)\operatorname{avg}_L(q_a)$,
+where $\operatorname{avg}_L(z)=(e^{iLz}-1)/(L(e^{iz}-1))$ with its
 removable values filled in. The centered scalar factor
 $\operatorname{area}_L(q)$ is the product of the four centered
 one-dimensional block averages. For a scalar symbol $f$, write
-$\operatorname{yen}(f)(q)=f(q)f(-q)$.
+$\operatorname{symProd}(f)(q)=f(q)f(-q)$.
 
-The response-space notation in those formulas is as follows. For a train
+The response-space notation in those formulas is as follows. For a kernel history
 $v$ and side $S$, set
 $\operatorname{fieldD}_{S,v}(p)=\mathcal M_1(S^{-2}\mathscr D_v(p))$,
 where $\mathscr D_v$ is the vector of level responses. The hinge matrix is
@@ -345,7 +345,7 @@ $\operatorname{hinge}_{P,r}(q)=m_P(q)\mathcal M_r(r_L(q))$; the flux is
 $\Phi_{P,r}(p,l)=\operatorname{hinge}_{P,r}(-q_l)^{\mathsf T}$; and
 $\operatorname{mirage}_{1,1}(p)=\Sigma_1^1(-p)^{\mathsf T}$.
 
-Here is the exact reduction behind the branch calculations. For a train $v$
+Here is the exact reduction behind the branch calculations. For a kernel history $v$
 of mass side $M$, direction $a$, and momentum $p$, the level response is
 \begin{align*}
  \mathscr D_{v,a}(p)&=\operatorname{feed}_{v,a}
@@ -354,13 +354,13 @@ of mass side $M$, direction $a$, and momentum $p$, the level response is
  \operatorname{feed}_{v,a}(f)(p)&=M^{-2}\sum_{r\in\Lambda_M}
     D_{v,a}(q_r^{(M)}(p))D_{v,a}(-q_r^{(M)}(p))f(q_r^{(M)}(p)).
 \end{align*}
-The feed is the normalized finite alias sum of the two-sided drive
+The feed is the normalized finite alias sum of the two-sided filter
 $D_{v,a}(q)D_{v,a}(-q)$ times its input, and the noise is the sum of the
-constant-input feeds along the finite nozzle history. Every train drive is
+constant-input feeds along the finite nozzle history. Every kernel history filter is
 reciprocal-periodic. The reciprocal divisor input is periodic because its
 chip factors are invariant under integer reciprocal shifts. A finite alias
 sum of a periodic summand is periodic: a reciprocal shift permutes its alias
-sites. More explicitly, for a hop of side $L$ from a train of mass side $M$,
+sites. More explicitly, for a hop of side $L$ from a kernel history of mass side $M$,
 the mixed-radix alias bijection $\Lambda_{LM}\to\Lambda_L\times\Lambda_M$
 is determined by
 $\ell_{LM}(r)\equiv\ell_L(l)+L\ell_M(v)\pmod{LM}$, with the unique
@@ -376,8 +376,8 @@ $(LM)^{-2}=L^{-2}M^{-2}$ gives
    =\operatorname{slide}_{L}(\operatorname{feed}_{v}(f)),\qquad
  D_{\mathrm{hop},a}(z)=\operatorname{pullLine}_{P,a}(Mz)D_{v,a}(z).
 \]
-The nozzle list has a top entry with constant drive, contributing $1$;
-each earlier entry is the lifted nozzle list of the predecessor train.
+The nozzle list has a top entry with constant filter, contributing $1$;
+each earlier entry is the lifted nozzle list of the predecessor kernel history.
 Reindexing the same aliases gives
 $\operatorname{Noise}_{\mathrm{hop}}=1+\operatorname{slide}_{L}
 \operatorname{Noise}_{v}$. Consequently
@@ -396,15 +396,15 @@ $\operatorname{divisor}_M(p)=4M^2\sum_a\sin^2(p_a/2M)\neq0$, since every
 coordinate satisfies $|p_a|<2\pi\le2\pi M$. For such $p$ we have the level response identity
 $\mathscr D_{v,a}=b_{v,a}/\operatorname{divisor}_M(p)$ and the recovery
 identity $\rho_v=\operatorname{divisor}_M(p)^2\beta_v(p)$, where
-$\operatorname{divisor}_M=d_M$ and $b_{v,a}$, $\beta_v$ are the bulb and
-bend of Subsection~\ref{sec:ex-lattice-free-kernel-components}. Indeed, in the
+$\operatorname{divisor}_M=d_M$ and $b_{v,a}$, $\beta_v$ are the regularized factor and
+scalar correction of Subsection~\ref{sec:ex-lattice-free-kernel-components}. Indeed, in the
 feed of $(\operatorname{divisor}_1)^{-1}$ the zero residue has $q_0^{(M)}(p)=p/M$
 and contributes
 $M^{-2}D_{v,a}(p/M)D_{v,a}(-p/M)/d_1(p/M)=\ell_{v,a}(p)/d_M(p)$, because
 $M^2d_1(p/M)=d_M(p)$; the nonzero residues contribute exactly the
 high-alias term $H_{v,a}(p)$. The noise term is $k^{-1}N_{v,a}(p)$. Hence
 $\mathscr D_{v,a}=\ell_{v,a}/d_M+G_{v,a}=b_{v,a}/d_M$. Summing
-$J_a/\mathscr D_{v,a}=d_MJ_a/b_{v,a}$ over $a$ and using the bend identity
+$J_a/\mathscr D_{v,a}=d_MJ_a/b_{v,a}$ over $a$ and using the scalar correction identity
 $d_M\beta_v=\sum_aJ_a/b_{v,a}$ proved in
 Lemma~\ref{lem:ex-lattice-train-component-bounds} gives
 $\rho_v=d_M^2\beta_v$. Substituting
@@ -469,17 +469,16 @@ This is the stake branch identity, including its order of matrix factors.
 The heel is, by definition,
 \[
  \operatorname{heel}_{P,a}(p)=
-   \operatorname{yen}(\operatorname{pullLine}_{P,a})(q_0)
+   \operatorname{symProd}(\operatorname{pullLine}_{P,a})(q_0)
        b_{P_{\rm wing},a}(q_0).
 \]
 The relevant one-step identity for this response is
-\[
- \mathscr D_{P_{\rm land},a}(p)=\operatorname{slide}_{P,a}
-      \mathscr D_{P_{\rm wing},a}(p)+k^{-1},
- \qquad
- (\operatorname{slide}_{P,a}g)(p)=L^{-2}\sum_{l\in\Lambda_L}
-      \operatorname{yen}(\operatorname{pullLine}_{P,a})(q_l)g(q_l).
-\]
+\[\begin{aligned}
+ \mathscr D_{P_{\rm land},a}(p)&=\operatorname{slide}_{P,a}
+      \mathscr D_{P_{\rm wing},a}(p)+k^{-1},\,\\
+ (\operatorname{slide}_{P,a}g)(p)&=L^{-2}\sum_{l\in\Lambda_L}
+      \operatorname{symProd}(\operatorname{pullLine}_{P,a})(q_l)g(q_l).
+\end{aligned}\]
 Use the port-to-response equality
 $\operatorname{portD}_{P,l,a}=L^{-2}\mathscr D_{P_{\rm wing},a}(q_l)$
 in this finite sum. The zero-residue summand is
@@ -489,7 +488,7 @@ residues sum to the above-alias tail. Adding $k^{-1}$ gives
 $\mathscr D_{P_{\rm land},a}=\operatorname{heel}_{P,a}/s+
 \operatorname{tail}_{P,a}$. Since off the origin
 $\mathscr D_{P_{\rm land},a}=b_{P_{\rm land},a}/s$, multiplication by $s$
-proves the bulb network identity
+proves the regularized factor network identity
 \[
  b_{P_{\rm land},a}(p)=\operatorname{heel}_{P,a}(p)+
              s\operatorname{tail}_{P,a}(p).
@@ -505,11 +504,11 @@ $D=\operatorname{fieldD}_{L,P_{\rm wing}}(q)$,
 $D'=\operatorname{fieldD}_{1,P_{\rm land}}(p)$, and
 $y=f_P(p)$. These symbols will be used in the brace,
 one-form, and cancellation identities below.
-For the brace relation, abbreviate the land and wing bulb vectors at their
+For the brace relation, abbreviate the land and wing regularized factor vectors at their
 respective arguments by $f$ and $g$, the two patch masses by
 $c_0=m_P(q_0)$ and $d_0=m_P(-q_0)$, and the corresponding rails by
-$E_a=\operatorname{rail}_L(q_{0,a})$ and
-$F_a=\operatorname{rail}_L(-q_{0,a})$. Put
+$E_a=\operatorname{avg}_L(q_{0,a})$ and
+$F_a=\operatorname{avg}_L(-q_{0,a})$. Put
 $Z_a=\operatorname{heel}_{P,a}(p)/f_a$ and
 $x_a=\operatorname{tail}_{P,a}(p)/f_a$. The definitions of heel and the
 port-to-response formula give, coordinate by coordinate,
@@ -518,7 +517,7 @@ port-to-response formula give, coordinate by coordinate,
 \]
 Inserting this in the diagonal two-form pulse and multiplying by the land
 pulse, two-form flux, and two-form hinge gives
-$y\,vH'f_2=H\mathcal M_2(Z)$. The bulb network identity gives
+$y\,vH'f_2=H\mathcal M_2(Z)$. The regularized factor network identity gives
 $Z_a=1-sx_a$. On a two-face $\{a,b\}$, direct multiplication yields
 \[
  1-(1-sx_a)(1-sx_b)=s(x_a+x_b-sx_ax_b).
@@ -533,8 +532,8 @@ For the one-form flux, each matrix entry of the hinge-flux product is
 diagonal in the coordinate direction. At the zero alias it equals
 \[
  \bigl(f_1D u\bigr)_{aa}
- =\operatorname{yen}(m_P)(q_0)\operatorname{rail}_L(q_{0,a})
-   \operatorname{rail}_L(-q_{0,a})
+ =\operatorname{symProd}(m_P)(q_0)\operatorname{avg}_L(q_{0,a})
+   \operatorname{avg}_L(-q_{0,a})
    \operatorname{fieldD}_{L,P_{\rm wing}}(q_0)_a.
 \]
 Because $\operatorname{fieldD}_{L,P_{\rm wing}}(q_0)_a=
@@ -552,25 +551,25 @@ identity gives $s=L^2d_w$. Since
 $\operatorname{scaleR}_{1,P_{\rm land}}=\rho_{P_{\rm land}}$ and
 $\operatorname{scaleR}_{L,P_{\rm wing}}=L^4\rho_{P_{\rm wing}}$,
 their ratio is $\beta_{P_{\rm land}}/\beta_{P_{\rm wing}}$. Multiplying by
-$\operatorname{yen}(m_P)(q_0)$ gives both the chain and foot expressions.
+$\operatorname{symProd}(m_P)(q_0)$ gives both the chain and foot expressions.
 
 The bank and land-response identities are
 \[
- \operatorname{mouth}_P=\mathcal M_1(b_{P_{\rm land}}),\qquad
+ \operatorname{landMoment}_P=\mathcal M_1(b_{P_{\rm land}}),\qquad
  s\operatorname{fieldD}_{1,P_{\rm land}}=\mathcal M_1(b_{P_{\rm land}}).
 \]
-Thus $\operatorname{mouth}_P=sD'$.
+Thus $\operatorname{landMoment}_P=sD'$.
 The latch inverse, hinge transport, and the order-one flux calculation give
 the identities
 \begin{align*}
  f_2\lambda=I,\qquad \lambda f_2=I,\\
  f_2\delta&=d f_1,\\
  f_1D u&=D'-R,\\
-sB&=H-y\,vH'f_2,\qquad \operatorname{mouth}_P=sD'.
+sB&=H-y\,vH'f_2,\qquad \operatorname{landMoment}_P=sD'.
 \end{align*}
 The hinge-transport line follows entrywise from the alias relation
-$L\operatorname{rail}_L(q_{0,a})\operatorname{chip}(q_{0,a})
-=\operatorname{chip}(p_a)$, inserted into the definitions of the hinge and
+$L\operatorname{avg}_L(q_{0,a})\delta_{\rm F}(q_{0,a})
+=\delta_{\rm F}(p_a)$, inserted into the definitions of the hinge and
 signal. The third line is the one-form identity obtained by
 multiplying the flux by its hinge; the fourth is the brace identity after
 the two-form flux calculation. The mouth identity was derived just above.
@@ -580,18 +579,18 @@ commutation of noncommuting factors,
  H\delta D u\,m
    &=H\lambda d f_1D u\,m
      =H\lambda d(D'-R)m,\\
- B\lambda d\operatorname{mouth}_P\,m-H\lambda dR\,m
+ B\lambda d\operatorname{landMoment}_P\,m-H\lambda dR\,m
    &=H\lambda dD'm-yvH'dD'm-H\lambda dR\,m.
 \end{align*}
 For the first equality use $\delta=\lambda d f_1$ (which follows from
 $f_2\delta=df_1$ and $\lambda f_2=I$). For the second use
-$\operatorname{mouth}_P=sD'$ and $sB=H-yvH'f_2$, then cancel the adjacent
+$\operatorname{landMoment}_P=sD'$ and $sB=H-yvH'f_2$, then cancel the adjacent
 $f_2\lambda$. Adding $yv$ to the second line yields
 $H\lambda d(D'-R)m+yv(I-H'dD'm)$, and its first term is
 $H\delta D u\,m$. This is precisely the zero-alias script formula and
 proves the copper branch identity. Each displayed identity is an equality
 of the finite matrices defined above; the component chapter supplies the
-scalar divisor, rail, and bend inputs on the common analytic cube.
+scalar divisor, block average, and scalar correction inputs on the common analytic cube.
 
 The reciprocal-shift law used in the Fourier argument also follows from
 the actual wire symbol, rather than being an independent periodicity
@@ -609,7 +608,7 @@ formed from $e^{ip_a}-1$ and its opposite-momentum partner. The patch mass is
 periodic by the plank identity. The scalar factor is exactly
 \[
  \operatorname{chainY}_P(p,q)=
- \operatorname{yen}(m_P)(q)\,
+ \operatorname{symProd}(m_P)(q)\,
  \frac{\rho_{P_{\rm land}}(p)}{L^4\rho_{P_{\rm wing}}(q)}.
 \]
 It is periodic by the patch-mass and level-response identities. Define
@@ -640,7 +639,7 @@ of this cube; this is the separation used above.
 The reality needed to recover the original symbol from the real coefficient
 row is a separate property from this overlap law. Entrywise complex
 conjugation does not transpose a matrix. For real momenta, the patch mass,
-train covariances and their scalar contractions are real and even. The
+kernel history covariances and their scalar contractions are real and even. The
 exterior signal at $-p$ is the entrywise conjugate of the signal at $p$;
 the same holds for its transposed partner and for the flux. The pulse has
 the same conjugation property. These statements follow directly from the
@@ -671,12 +670,13 @@ identities to real finite-torus transport matrices.
 The product estimates use the following weights, all uniform on a common
 complex cube and independent of $L$:
 \begin{center}
-\begin{tabular}{c|c}
+\begin{tabular}{p{.62\linewidth}|c}
 factor & weight in the alias label $l$ \\
 \hline
 mass factor $m_P(q_l)$ & $\Gamma_L(l)^{-j}$ \\
-rail factors and reciprocal rails at the zero alias & $1$ \\
-dual multipliers, bend ratios at zero alias, correction and tail terms & $1$ \\
+Block averages and their reciprocals at the zero alias & $1$ \\
+Dual multipliers, scalar correction ratios,
+ and correction and tail terms & $1$ \\
  scaled signal $\Sigma_L^1(q_l)$ & $g_L(l)$ \\
  port mask $\mathcal M_1(D_{P,l})$ & $g_L(l)^{-2}$ \\
 flux $\Phi_{P,r}(p,l)$ & $\Gamma_L(l)^{-j}$ \\
@@ -700,14 +700,14 @@ derives the component estimates used in that multiplication.
 \begin{theorem}[Wire symbol yields the tower's order-$e$ strip receipt]
 \label{thm:ex-lattice-wire-tower-strip}
 Fix stages $j,t\geq4$ with $t\leq j\leq t+1$, a coupling $k>0$, and
-an integer $e\geq0$. Consider flights with odd coarse side $L\geq3$,
+an integer $e\geq0$. Consider blocking steps with odd coarse side $L\geq3$,
 and suppose the entrywise weighted analytic bound and the reciprocal-shift
 overlap identity \eqref{eq:ex-lattice-wire-overlap} hold with common
-analytic width and cost over this flight family. Then there are $\sigma>0$
-and $C_{e,j}>0$, independent of the flight,
+analytic width and cost over this blocking step family. Then there are $\sigma>0$
+and $C_{e,j}>0$, independent of the blocking step,
 residue, and period, such that for every word $u$ of length $s$ with
 $s\leq j-2$, the cross-kernel row $K_{e,u}$ has strip width $\sigma$ and cost
-$C_{e,j}/L^{e+s}$ for every flight, residue, and fixed type pair.
+$C_{e,j}/L^{e+s}$ for every blocking step, residue, and fixed type pair.
 The width and cost may depend on the fixed stages and coupling, the input
 analytic width and cost, and $e$; no uniformity in these parameters is claimed.
 In particular $e=2$ gives the tower component $T$ the base cost
@@ -727,7 +727,7 @@ suffices there. For the two-form transport take $e=2$.
 First reduce the common analytic width to at most $\mathrm{zone}=\pi/4$.
 Then the real overlaps used below lie in the enlarged cube on which
 \eqref{eq:ex-lattice-wire-overlap} was proved. This reduction preserves all
-upper bounds and is independent of the flight and its side.
+upper bounds and is independent of the blocking step and its side.
 For a fixed word $u$ of length $s$, the finite-residue estimate
 \eqref{eq:ex-lattice-spread-supremum} gives a common analytic bound with
 factor $L^{-(e+s)}$. To check the overlap, let $x\in\mathbb Z^4$ and let
@@ -756,7 +756,7 @@ This is exactly the stated receipt.
 
 \begin{remark}[Remaining local analytic inputs]
 This proof discharges the passage from a uniform alias-weighted analytic
-bound to all required tower strip receipts, with explicit $L^{-2-s}$
+bound to all required tower strip estimates, with explicit $L^{-2-s}$
 scaling and the carry-corrected differences. Its mathematical dependence on
 the actual dual-kernel producer is restricted to the entrywise weighted
 analytic estimate of Proposition~\ref{prop:ex-lattice-wire-entrywise-bound} and the

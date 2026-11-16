@@ -43,7 +43,7 @@ is the torus cardinality times the picture value. The bound is independent
 of the torus side and of the number of atoms.
 
 If the atoms are gauge invariant, the same conclusion holds for their
-orientation-averaged action, with the price multiplied by
+orientation-averaged action, with the bound multiplied by
 \[
        \exp((t+1)^2\eta_{r,t}).
 \]
@@ -70,10 +70,10 @@ atom's stencil. Cauchy's derivative estimate on nested balls of radii
 $R,R/2,\ldots,R/2^{t+1}$ bounds the normalized order-$(t+1)$ derivative by
 \[
  b_{\sigma/2}(a_i)S_G^r
-       \frac{\operatorname{circleTax}(R,t+1)}{(t+1)!}.
+       \frac{\operatorname{Cauchy}(R,t+1)}{(t+1)!}.
 \]
-Here $\operatorname{circleTax}(R,0)=1$ and
-$\operatorname{circleTax}(R,k+1)=\operatorname{circleTax}(R,k)/(R/2^{k+1})$;
+Here $\operatorname{Cauchy}(R,0)=1$ and
+$\operatorname{Cauchy}(R,k+1)=\operatorname{Cauchy}(R,k)/(R/2^{k+1})$;
 the factorial is the Taylor coefficient normalization.
 
 The local coefficient picture inserts one Fourier character for each of
@@ -85,14 +85,14 @@ $(t+1)\eta$. Hence the product of the $t+1$ characters is bounded by
        \exp\bigl(4(t+1)^2\eta d(a_i)\bigr).
 \]
 Choose $\eta=\sigma/(8(t+1)^2)$, so
-$4(t+1)^2\eta=\sigma/2$. The resulting term price is bounded by
+$4(t+1)^2\eta=\sigma/2$. The resulting term bound is at most
 \[
  b_{\sigma/2}(a_i) S_G^r
- \frac{\operatorname{circleTax}(R,t+1)}{(t+1)!}
+ \frac{\operatorname{Cauchy}(R,t+1)}{(t+1)!}
  e^{(\sigma/2)d(a_i)}
  = C_{r,t} b_\sigma(a_i),
 \]
-where $C_{r,t}=S_G^r\operatorname{circleTax}(R,t+1)/(t+1)!$.
+where $C_{r,t}=S_G^r\operatorname{Cauchy}(R,t+1)/(t+1)!$.
 Thus the coefficient pictures form a normally convergent series on every
 smaller strip. The same majorant on the common complex link ball permits
 termwise differentiation of the atom series before extracting any
@@ -111,7 +111,7 @@ the atom sum, derivative, and finite anchor sum.
 For an orientation $s$, the picture transforms by multiplying the $t+1$
 reflected-character fees and evaluating the original picture at the
 inverse-permuted direction labels and transformed independent momenta.
-Each fee has strip price at most $e^{(t+1)\eta}$, because its plotted
+Each fee has strip bound at most $e^{(t+1)\eta}$, because its plotted
 momentum has coordinatewise imaginary parts bounded by $(t+1)\eta$.
 The product therefore costs at most $e^{(t+1)^2\eta}$. The normalized
 finite orientation average preserves this bound by the triangle
@@ -291,7 +291,7 @@ only on $G,\sigma$, such that
         F_k=T_3(m_k)+T_4(m_k)
 \]
 has exact recorded pictures $P_2$ of order $2$ and $P_3$ of order $3$ with
-uniform price at most $A K_*$. The first picture has vanishing order $2$;
+uniform bound at most $A K_*$. The first picture has vanishing order $2$;
 the second has vanishing order $1$. The functions $F_k$ are analytic,
 gauge invariant, and vanish to order at least three at zero.
 \end{proposition}
@@ -303,8 +303,8 @@ choices
        (r,t)=(3,2),(3,3),(4,2),(4,3).
 \]
 For each fixed $t$, add the degree-three and degree-four pictures. Their
-recording identities add exactly, and their prices add. Choose the minimum
-of their four positive widths and the sum of their four finite price
+recording identities add exactly, and their bounds add. Choose the minimum
+of their four positive widths and the sum of their four finite bound
 constants; this yields one $\eta_*$ and one $K_*$, uniform over the stream
 and all periods.
 
@@ -391,7 +391,7 @@ only on $G$ and $\tau$, such that the following holds. If $m_k\to\infty$
 and the cubic and quartic streams are invariant with activity budgets
 at most $A$ at width $\tau$, then for each $j=1,2,3$ the sequence
 $(C_k)_k$ has an exactly recorded picture of order $j$, holomorphic on
-the strip of width $\eta_c$, of ray order at least $4-j$, with price at
+the strip of width $\eta_c$, of ray order at least $4-j$, with bound at
 most $A K_c$.
 \end{proposition}
 
@@ -401,8 +401,8 @@ supplies the order-two and order-three pictures. For order two its
 vanishing order is two, as required. For order three its vanishing order
 is one. The order-one picture is identically zero: $C_k$ vanishes to
 third order, so its second Taylor coefficient is zero. The zero picture
-records it exactly, its price is zero, and it has every ray order.
-Taking the common minimum width and the maximum of the two prices proves
+records it exactly, its bound is zero, and it has every ray order.
+Taking the common minimum width and the maximum of the two bounds proves
 the assertion.
 \end{proof}
 
@@ -588,7 +588,7 @@ $H.\mathrm{strip}(\sigma,C)$ with $\sigma>0$. If
 $E.\mathrm{strip}(\sigma,D)$, then each entry of $\mathsf S[E]$ is
 bounded on the strip of width $\sigma$ by
 \[
- \operatorname{bedCharge}(\sigma,D)
+ \operatorname{quadBound}(\sigma,D)
    =36\cdot\bigl(4(e^\sigma+1)\bigr)^2D ,
 \]
 the product of the two counts of plaquette types and the elementary
@@ -600,10 +600,10 @@ Now impose the selected metric hypotheses: $B$ is attached to $R$; its
 metric satisfies $H.\mathrm{strip}(\sigma,C)$; the floor holds at every
 torus side; and the sworn condition holds at each selected side $m_k$.
 The following are the only uses of these assumptions. The metric-slot
-picture $\mathsf S[H]$ has price
-$b_0=\operatorname{bedCharge}(\sigma,C)$ and records the quadratic
-coefficient of $J_k$ for every $k$. The unit leader has price
-$b_1=\operatorname{bedCharge}(\sigma,1)$ and records the Wilson
+picture $\mathsf S[H]$ has bound
+$b_0=\operatorname{quadBound}(\sigma,C)$ and records the quadratic
+coefficient of $J_k$ for every $k$. The unit leader has bound
+$b_1=\operatorname{quadBound}(\sigma,1)$ and records the Wilson
 coefficient. The floor gives the zero-momentum normalization
 $\widehat H(0)=I$, and analyticity then gives
 $\widehat H(p)-I=O(|p|)$. The difference
@@ -613,7 +613,7 @@ $\widehat H(p)-I=O(|p|)$. The difference
    \bigl[d_1(-p)^{\mathsf T}(\widehat H(p)-I)\,d_1(p)\bigr]
 \]
 therefore has ray order three. This is the order-one picture for
-$J_k-W_k$, with price $b_0+b_1$.
+$J_k-W_k$, with bound $b_0+b_1$.
 
 The higher pictures of $J_k$ are supplied by
 Corollary~\ref{cor:ex-row-controlled-action}, whose averaged kernel
@@ -622,34 +622,34 @@ budget equal to $A$, its width equal to the path width $\tau$, and the
 bound $Z$ for the direct coefficient. For $j=2,3$ it gives one picture
 of order $j$, recording the $(j+1)$st coefficient of $J_k$ on every
 torus, holomorphic on the strip of width
-$\eta_j=\min(1,\tau/(8(j+1)^2))$, with price
+$\eta_j=\min(1,\tau/(8(j+1)^2))$, with bound
 \[
  P_j=e^{(j+1)^2\eta_j}\Bigl(ZX_j
      +\frac{|\mathcal A_{\rm pl}|d_{\rm col}}2A^2S_G^2
-      \frac{\operatorname{circleTax}(R_{\tau/2},j+1)}{(j+1)!}\Bigr),
+      \frac{\operatorname{Cauchy}(R_{\tau/2},j+1)}{(j+1)!}\Bigr),
 \]
 where $|\mathcal A_{\rm pl}|$ is the number of plaquette types,
-$d_{\rm col}$ the number of color coordinates, and $X_j$ the price of
+$d_{\rm col}$ the number of color coordinates, and $X_j$ the bound of
 the Wilson picture of order $j$ in
 Proposition~\ref{prop:ex-wilson-stream}. That proposition supplies the
-Wilson pictures of orders two and three themselves, with prices
+Wilson pictures of orders two and three themselves, with bounds
 $X_2,X_3$ and width one. Subtracting pictures preserves exact
-recording and adds their prices.
+recording and adds their bounds.
 
 \begin{lemma}[Soft Wilson pictures]
 \label{lem:ex-soft-wilson-pictures}
 Let $m_k\to\infty$. For $j=1,2,3$ the Wilson actions $W_{m_k}$ have an
 exactly recorded picture of order $j$, holomorphic and bounded on the
 strip of width one, of ray order at least $3-j$. The sum of the three
-prices is at most
-$P_W=\operatorname{bedCharge}(1,1)+X_2+X_3$, which does not depend on
+bounds is at most
+$P_W=\operatorname{quadBound}(1,1)+X_2+X_3$, which does not depend on
 the sequence.
 \end{lemma}
 
 \begin{proof}
 For $j=1$ take the unit leader $\mathsf S[I]$. It records the second
-coefficient by Lemma~\ref{lem:ex-soft-quadratic-hessian}, has price
-$\operatorname{bedCharge}(1,1)$ at width one, and has ray order two.
+coefficient by Lemma~\ref{lem:ex-soft-quadratic-hessian}, has bound
+$\operatorname{quadBound}(1,1)$ at width one, and has ray order two.
 For $j=2$ take the picture of
 Proposition~\ref{prop:ex-wilson-stream}. The Wilson action is real
 analytic and gauge invariant, and $DW_m(0)=0$ by
@@ -675,15 +675,15 @@ that the sworn condition holds at each $m_k$, and that
                     p.\mathrm{direct}\leq Z.
 \]
 Then $(I_k-W_k)_k$ has exactly recorded pictures of orders $j=1,2,3$,
-each holomorphic on the strip of width $s$ with price at most $M$, and
+each holomorphic on the strip of width $s$ with bound at most $M$, and
 of ray order at least $4-j$.
-One valid price is
+One valid bound is
 \[
- M=\operatorname{bedCharge}(\sigma,C)+\operatorname{bedCharge}(\sigma,1)
+ M=\operatorname{quadBound}(\sigma,C)+\operatorname{quadBound}(\sigma,1)
       +P_2+P_3+X_2+X_3+A K_c,
 \]
-where $P_2,P_3$ are the two row-action prices displayed above, $X_2,X_3$
-the Wilson prices of Proposition~\ref{prop:ex-wilson-stream}, and $K_c$
+where $P_2,P_3$ are the two row-action bounds displayed above, $X_2,X_3$
+the Wilson bounds of Proposition~\ref{prop:ex-wilson-stream}, and $K_c$
 is from Proposition~\ref{prop:ex-veneer} at the width $\tau$. One valid
 width is the minimum of $\sigma$, $1$, the two row widths
 $\eta_2,\eta_3$, and $\eta_c$.
@@ -692,14 +692,14 @@ $\eta_2,\eta_3$, and $\eta_c$.
 \begin{proof}
 Set $F_k=J_k-W_k$. Let $S_1=\mathsf S[H]-\mathsf S[I]$ be the
 metric-slot picture minus the unit leader picture. It records the second
-Taylor coefficient of $F_k$ for every $k$, has price $b_0+b_1$, and has
+Taylor coefficient of $F_k$ for every $k$, has bound $b_0+b_1$, and has
 vanishing order three by the floor normalization $\widehat H(0)=I$. In
 the notation of the Ward lemma it is the lower picture of order one for
 $F_k$. Let $S_2$ be the order-two picture of $J_k$
 from Corollary~\ref{cor:ex-row-controlled-action} minus the order-two
 Wilson picture, and let $S_3$ be the corresponding order-three picture
 minus the order-three Wilson picture. They exactly record the third and
-fourth Taylor coefficients of $F_k$ and have prices at most $P_2+X_2$
+fourth Taylor coefficients of $F_k$ and have bounds at most $P_2+X_2$
 and $P_3+X_3$.
 
 The action $F_k$ is real analytic and has zero first derivative by
@@ -715,14 +715,14 @@ and Lemma~\ref{lem:ex-ward-rays} gives vanishing order two for $S_2$.
 For $t=3$, apply the partition lemma to $S_3$, using $S_1$ and the now
 improved $S_2$ at its two lower block counts. The contraction has
 vanishing order two, so the same recovery lemma gives vanishing order one
-for $S_3$. This supplies the exact three records and prices required for
+for $S_3$. This supplies the exact three records and bounds required for
 $F_k$.
 
 The cubic and quartic terms $C_k$ have the order-one, order-two, and
 order-three pictures of Proposition~\ref{prop:ex-veneer}. Add the
 order-$j$ picture of $C_k$ to the order-$j$ picture of $F_k$ for each
 $j=1,2,3$. The sum records
-$F_k+C_k=I_k-W_k$ exactly. Its price is bounded by the displayed $M$,
+$F_k+C_k=I_k-W_k$ exactly. Its bound is at most the displayed $M$,
 and its vanishing order is at least $4-j$, since the order of a sum is
 at least the minimum order of its summands. Taking the common minimum
 strip width gives $s$.
@@ -878,7 +878,7 @@ bound; summing the at most $|E|^q$ residuals multiplies it by that finite
 factor. This is the coefficient-norm estimate used in the array
 construction.
 
-We now verify the response identity and its price using the actual
+We now verify the response identity and its bound using the actual
 mixed-field composition. Let $D(x)$ be the local map which forms the
 product of the two split fields and then takes its logarithmic link
 coordinate. For a Boolean word $v$ on the external slots, the response
@@ -909,14 +909,14 @@ where $c_{\pi,r}(a_r;w_r)$ is the coordinate coefficient of the derivative
 of $D$ on block $r$. The factorial is the normalization between the
 symmetric derivative picture and the raw $b$th action derivative; it does
 not enumerate permutations of the blocks. If the input pictures are
-bounded by $A$, its absolute price is
+bounded by $A$, its absolute bound is
 bounded by
 \[
  A b!\sum_{a_1,\ldots,a_b}
        \prod_{r=1}^{b}|c_{\pi,r}(a_r;w_r)|.
 \]
 Summing the absolute coefficient multiplier (the displayed sum without
-the input price $A$) over partitions, color basis labels, and phase basis
+the input bound $A$) over partitions, color basis labels, and phase basis
 labels defines the response constant $P_n$.
 These coefficients are uniformly finite: the map $\mathsf D_m$ is the
 same pointwise product-and-log map on each link. On a fixed identity
@@ -934,7 +934,7 @@ $s_n$, and the missing momentum, their negative sum, has coordinates at
 most $(n+1)s_n$. A block sum of at most $n+2$ external momenta therefore
 has imaginary coordinates at most $(n+2)(n+1)s_n<s$. Thus the input
 pictures can be evaluated at every block sum. The mixed picture is
-bounded by $A P_n$ on width $s_n$ when the input picture prices are at
+bounded by $A P_n$ on width $s_n$ when the input picture bounds are at
 most $A$.
 
 For each entry of the mixed picture $\widetilde Q_n$, finite difference
@@ -969,7 +969,7 @@ are a common positive strip
 width $\eta_*$ and a finite constant $C_*$ such that the response arrays
 at levels $n=0,1,2$ satisfy \eqref{eq:soft-curvature-receipts-display-SR1}, the exact finite-period response
 identity, and width at most $C_*$ times the sum of the three input
-picture prices, uniformly in $m$.
+picture bounds, uniformly in $m$.
 \end{proposition}
 
 \begin{proof}
@@ -981,7 +981,7 @@ order $4-|b|\geq2-n$, the mixed picture has ray order $2-n$. Apply the
 finite difference lemma to $\widetilde Q_n$ with $q=2-n$ and assign the
 factors to the prescribed legs; for the two-leg split use the phase
 identity above. The finite character sum proves the response identity.
-The Laurent estimate bounds the width. For each $n=0,1,2$, let $C_n$ be the finite price multiplier from the
+The Laurent estimate bounds the width. For each $n=0,1,2$, let $C_n$ be the finite bound multiplier from the
 ordered-partition and division construction, including the Laurent
 coefficient sum. For the common input strip $s$, the mixed-picture strip at
 level $n$ is $s_n=s/(n+3)^2$, and the residual strip is
@@ -991,7 +991,7 @@ $d_n=s_n/2^{2-n}$. Choose
  C_*=C_0+C_1+C_2.
 \]
 Then all arrays have width at most $C_*$ times the sum of the three input
-picture prices. These finite constants and the positive width are
+picture bounds. These finite constants and the positive width are
 independent of the period and action.
 \end{proof}
 
@@ -1006,13 +1006,13 @@ sequence. Proposition~\ref{prop:ex-greyson} supplies pictures with ray
 orders $3,2,1$ at orders $1,2,3$. By
 Lemma~\ref{lem:ex-soft-wilson-pictures} the Wilson pictures have ray
 orders $2,1,0$, so the sums have the required orders $2,1,0$. Their
-exact records and prices add. The value and first derivative of $I_k$
+exact records and bounds add. The value and first derivative of $I_k$
 vanish at zero by Lemma~\ref{lem:ex-soft-quadratic-hessian} and the
 third-order vanishing of the curvature part $C_k$. We obtain three
 uniformly priced response arrays.
-Let $M_g$ denote the displayed price in Proposition~\ref{prop:ex-greyson},
-and let $P_W$ be the price of Lemma~\ref{lem:ex-soft-wilson-pictures}.
-Each of the three input pictures has price at most $M_g+P_W$ on the
+Let $M_g$ denote the displayed bound in Proposition~\ref{prop:ex-greyson},
+and let $P_W$ be the bound of Lemma~\ref{lem:ex-soft-wilson-pictures}.
+Each of the three input pictures has bound at most $M_g+P_W$ on the
 common strip of width $\min(1,s)$, so the common array width is bounded
 by $K=3C_*(M_g+P_W)$, where $C_*$ is the multiplier of
 Proposition~\ref{prop:ex-three-level-conversion} for that strip.
@@ -1040,9 +1040,9 @@ width at most $K$ at $\eta$, and such that the exact response identity
 \eqref{eq:soft-curvature-receipts-display-SR2} holds for $U_{m_k}$ at every level $n\leq2$ and for every $k$.
 Set $F_n=0$ for $n>2$. By construction the stitched pictures \eqref{eq:soft-curvature-receipts-display-SR1} of
 these arrays are the mixed response pictures of the sequence. One may
-take $K=3C_*(M_g+P_W)$, where $M_g$ is the price displayed in
+take $K=3C_*(M_g+P_W)$, where $M_g$ is the bound displayed in
 Proposition~\ref{prop:ex-greyson} (with $C=M$), $P_W$ is the Wilson
-price of Lemma~\ref{lem:ex-soft-wilson-pictures}, and $C_*$ is the
+bound of Lemma~\ref{lem:ex-soft-wilson-pictures}, and $C_*$ is the
 response-array multiplier above. The constants $\eta,K$ depend only on
 the listed scalar bounds and the fixed gauge and finite coordinate
 sets. The identity \eqref{eq:soft-curvature-receipts-display-SR2} is asserted only on the tori of the selected
@@ -1055,14 +1055,14 @@ of orders $j=1,2,3$ and ray orders $4-j$.
 Lemma~\ref{lem:ex-soft-wilson-pictures} supplies Wilson pictures of
 ray orders $3-j$. Their sums are pictures of $(U_{m_k})_k$ with the
 required ray orders $3-j$, on the common strip of width $\min(1,s)$.
-Prices and exact recording identities add. Each $U_{m_k}$ is real
+Bounds and exact recording identities add. Each $U_{m_k}$ is real
 analytic, and Lemma~\ref{lem:ex-soft-quadratic-hessian} together with
 the third-order vanishing of the curvature part gives $U_{m_k}(0)=0$
 and $DU_{m_k}(0)=0$. Apply
 Proposition~\ref{prop:ex-three-level-conversion} to the sequence
 $(U_{m_k})_k$. Its finite constants depend only on the listed bounds
 and the finite color, phase, and stitch sets, so the common width and
-price are uniform in the path, the bed, the period sequence, and the
+bound are uniform in the path, the bed, the period sequence, and the
 selected action.
 \end{proof}
 

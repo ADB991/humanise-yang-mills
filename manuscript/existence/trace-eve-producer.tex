@@ -4,8 +4,8 @@
 
 We give the quantitative construction behind the local response package used
 by the later trace estimates. The output contains its probe error, chart
-error, price, and cloud allowance; these are built together because the final
-cloud billing uses the same price budget as the probe estimate.
+error, bound, and cloud allowance; these are built together because the final
+cloud billing uses the same bound budget as the probe estimate.
 
 Fix the scale data of the trace construction and write
 \[
@@ -18,9 +18,9 @@ Subsection~\ref{sec:ex-lattice-trace-local-rate-selection}, whose functions
 $\beta(x)$, $b(x)$, $R(x)$ and $\rho(x)$ are also used below; we write
 $b(\beta(x))$ for the radius function evaluated at $\beta(x)$,
 \[
- \operatorname{temp}(x)=x^{-1/2}\exp\bigl((\log\log x)^2\bigr),
+ \operatorname{fieldCut}(x)=x^{-1/2}\exp\bigl((\log\log x)^2\bigr),
  \qquad
- \operatorname{fiery}(x)=\operatorname{temp}(\beta(x))
+ \operatorname{fineCut}(x)=\operatorname{fieldCut}(\beta(x))
                         =\beta(x)^{-1/2}H(x).
 \]
 Further, $P_0$ and $P_1$
@@ -28,27 +28,27 @@ are the two stage profiles of the transition, and $L$ is the block side;
 $e,a,h,\nu$ are positive, $e,a\ge1$, and $\nu=L^{-2/5}$. Let $\mathscr F$ be the grade-$d$ coefficient frame and $F$ its
 finite family of coefficient-recovery probes; $F$ is distinct from the
 finite basis of the frame, whose indices
-are denoted by $\alpha$ below. The prices $\mathrm{testPrice}$,
-$\mathrm{readPrice}$, $\mathrm{errorPrice}$ and $\mathrm{orbitCost}$ below
+are denoted by $\alpha$ below. The bounds $\mathcal B_{\rm test}$,
+$\mathcal B_{\rm read}$, $\mathcal B_{\rm err}$ and $\mathrm{orbitCost}$ below
 are constants of the frame $\mathscr F$ (the second and third also of the
 selected holonomy map), not of the probe family. For $p\in F$, let $w_p=\pi(p)\ge1$ be its
-probe price, and write $\Lambda=M_d$ for the polarization constant
+probe bound, and write $\Lambda=M_d$ for the polarization constant
 in the probe estimate, both as in
 Subsection~\ref{sec:ex-lattice-trace-price-recurrence}. Put
 \[
- Z=\mathrm{testPrice}(\mathscr F),\qquad T=\mathrm{readPrice}(\mathscr F),\qquad
- c=\mathrm{orbitCost}(\mathscr F)\,\mathrm{errorPrice}(\mathscr F)\,\mathrm{corn}(d)\,a.
+ Z=\mathcal B_{\rm test}(\mathscr F),\qquad T=\mathcal B_{\rm read}(\mathscr F),\qquad
+ c=\mathrm{orbitCost}(\mathscr F)\,\mathcal B_{\rm err}(\mathscr F)\,\mathrm{corn}(d)\,a.
 \]
 The coefficient-recovery and readout constants $Z,T$ are chosen at
 least one: the defining finite-dimensional inequalities remain valid
-when their constants are enlarged to one. The error price is the test
-price times one plus a finite sum of nonnegative chain-rule prices;
+when their constants are enlarged to one. The error bound is the test
+bound times one plus a finite sum of nonnegative chain-rule bounds;
 the orbit cost is one plus a finite sum of coefficient sizes; and
 $\mathrm{corn}(d)$ is one plus a finite sum of nonnegative comparison
 constants. All three are at least one. Together with $a\ge1$ this gives
 $c\ge1$, in particular $c>0$. These are elementary properties of the
 chosen frame constants, not additional analytic inputs. For a positive target
-price $\zeta$, define
+bound $\zeta$, define
 \begin{equation}
  \kappa=\min\left\{\frac{\nu}{2cZ},\zeta\right\}>0,
  \qquad
@@ -75,8 +75,8 @@ For each probe, the charged scalar is the continuous function
 Assume the following selected-scale receipts hold on one common eventual
 tail in $x$; the tail is fixed before the probe, the frame index and all
 the other data listed in each receipt are chosen, and each receipt holds
-uniformly in those data. For the threshold $\theta=\operatorname{temp}(x)$
-and the fine threshold $\Theta=\operatorname{fiery}(x)$,
+uniformly in those data. For the threshold $\theta=\operatorname{fieldCut}(x)$
+and the fine threshold $\Theta=\operatorname{fineCut}(x)$,
 \begin{equation}
  \tfrac12\le \frac{\Theta}{\theta}\le2.
  \label{eq:ex-lattice-eve-blend}
@@ -120,7 +120,7 @@ and the local moment $M_x$ (the
 head-count moment of order $4(n+1)$ there) obey
 \begin{equation}
  0\le O_x\le1,\qquad
- \mathrm{clocks}(e)\,O_x\,M_x\le \frac{Q}{\chi(x)}.
+ \mathrm{scaleRate}(e)\,O_x\,M_x\le \frac{Q}{\chi(x)}.
  \label{eq:ex-lattice-eve-cap}
 \end{equation}
 For every cloud $Z_0$ of mass $m_0\le h$, put
@@ -159,10 +159,10 @@ $\chi(x)|u(x)|\le\beta(x)^q\to0$. Thus, eventually,
  \label{eq:ex-lattice-eve-response-bound}
 \end{equation}
 The first two give the asserted response amplitude bound and the desired
-price bound for the amplitude. The first selected geometry estimate gives
+estimate for the amplitude. The first selected geometry estimate gives
 the factor-two threshold comparison.
 
-The selected scale-cap estimate is called at price $Q/e$. Its price bound
+The selected scale-cap estimate is called at bound $Q/e$. Its estimate
 is linear in the allowed scalar multiplier $t$; evaluating it at $t=e$
 gives exactly the second inequality in \eqref{eq:ex-lattice-eve-cap}, while its companion bound gives
 $O_x\le1$. The probe approximation estimate is called at tolerance $Q$,
@@ -238,7 +238,7 @@ Gaussian density and using the protected-support agreement on the
 insertion's read set. Thus the
 response difference is exactly $\Phi_6-\Phi_9$, not a comparison
 of different insertions or different Gaussian spaces. The local finite
-price cutoff makes the integrands vanish outside a common compact coordinate
+bound cutoff makes the integrands vanish outside a common compact coordinate
 ball; the cutoffs are one on the protected smaller ball. Differentiation
 under the integral is justified with the bounded measurable $h$ fixed, by
 the uniform derivative bounds on that compact ball and dominated
@@ -298,7 +298,7 @@ configuration and allowed direction list. Its tail is uniform in all
 those latter data, because the envelope $B_*$ and the two integral
 identities were uniform in them. There is no additional normalization,
 positivity or matching condition on the auxiliary scalar $f$: it is a
-price majorant, not one of the local fields. The numerical factor two
+bound majorant, not one of the local fields. The numerical factor two
 is therefore realized by the definition in
 \eqref{eq:ex-lattice-eve-concrete-amplitude}; it incurs no extra
 analytic loss.
@@ -336,8 +336,8 @@ insertion on one Gaussian space. The cap receipt of
 Theorem~\ref{thm:ex-lattice-eve-producer} follows from the scalar budget
 estimate \eqref{eq:ex-lattice-budget-output} of
 Subsection~\ref{sec:ex-lattice-trace-local-rate-selection}, called
-at price $Q/e$ and with the nonnegative paint term omitted. In fact
-$B.\mathrm{threshold}=\Theta=\operatorname{fiery}(x)$ and
+at bound $Q/e$ and with the nonnegative paint term omitted. In fact
+$B.\mathrm{threshold}=\Theta=\operatorname{fineCut}(x)$ and
 $P.\mathrm{threshold}=\theta\le2\Theta$ by \eqref{eq:ex-lattice-eve-blend};
 $B.B=b(\beta(x))\le2b(x)$ by the comparison proved above;
 $P.\mathrm{power}$ is the power of $P_0$; and the cap's cover bound

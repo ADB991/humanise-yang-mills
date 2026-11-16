@@ -1,4 +1,4 @@
-\subsection{Large entrance scales for the selected service}
+\subsection{Large-coupling conditions for one RG step}
 \label{ex-centered-geyser-scale-estimates}
 
 This section proves the finite-volume scale estimates used by the selected multiscale service. It isolates the elementary large-parameter estimates and then explains how their separate eventual thresholds are made into one monotone delay sequence. All scale, profile, and gauge data below are the actual fixed data of the selected run.
@@ -12,7 +12,7 @@ Write
 \]
 and, for $x>1$ and an integer radius $B$,
 \[
- \operatorname{stain}(x)=\exp\!\left[-\exp\!\left(\tfrac15(\log\log x)^2\right)\right],
+ \operatorname{forcedReserve}(x)=\exp\!\left[-\exp\!\left(\tfrac15(\log\log x)^2\right)\right],
  \qquad \operatorname{siteFactor}(B)=e\{2(16B+9)\}^4.
 \]
 Here $F_d$ is the finite frame at grade $d$. Fix a nonnegative integer occupancy schedule $Q$ and the positive gauge slope constant $c_G=s_G$ of \eqref{eq:shoot-slope}. For a fixed stage $j$, write $L_j$ for its block side, $b_j=c_G\log L_j$, $y_j(x)=x+b_j$, and $p_j=Q(j)$ for its occupancy allowance. At stage $j$ fix the column count $C_j$ and support exponent $E_j$. For each grade fix its finite local-section constant $A_d$. These quantities remain fixed while $x\to\infty$. The stage index is not a finite-volume period index.
@@ -26,8 +26,8 @@ Fix stages $i,j$ satisfying $\mathrm{Step}(j,i)$, meaning $i\leq j\leq i+1$, and
 Then there is $x_0>1$ so that every $x\geq x_0$ satisfies
 \begin{align}
  &8\leq B(x),\qquad y_j(x)^3\leq e^{B(x)/128},\label{eq:ex-geyser-first}\\
- & (2B(x)+1)^4\left(\operatorname{stain}(x)+p_j\,\operatorname{siteFactor}(B(x))s(x)\right)\leq3,\notag\\
- &e^{\operatorname{stain}(x)+p_j\operatorname{siteFactor}(B(x))s(x)}-1\leq1,\label{eq:ex-geyser-second}
+ & (2B(x)+1)^4\left(\operatorname{forcedReserve}(x)+p_j\,\operatorname{siteFactor}(B(x))s(x)\right)\leq3,\notag\\
+ &e^{\operatorname{forcedReserve}(x)+p_j\operatorname{siteFactor}(B(x))s(x)}-1\leq1,\label{eq:ex-geyser-second}
 \end{align}
 and, for every $d\leq i$,
 \begin{align}
@@ -75,9 +75,9 @@ reserve. Consequently, for large $x$,
  0<H\leq\tfrac14,\qquad \operatorname{smallK}(x)\leq H^6,
  \qquad (1+p_j\operatorname{siteFactor}(B(x)))(2B(x)+1)^4H\leq1.
 \]
-The stain is $\operatorname{smallK}(x)^2$. Squaring the small-$K$ bound gives $\operatorname{stain}(x)\leq H^{12}\leq H$ because $0<H\leq1$. Also $s(x)=H/4\leq H$. Therefore
+The forced remainder allowance is $\operatorname{smallK}(x)^2$. Squaring the small-$K$ bound gives $\operatorname{forcedReserve}(x)\leq H^{12}\leq H$ because $0<H\leq1$. Also $s(x)=H/4\leq H$. Therefore
 \[
- \operatorname{stain}(x)+p_j\operatorname{siteFactor}(B(x))s(x)
+ \operatorname{forcedReserve}(x)+p_j\operatorname{siteFactor}(B(x))s(x)
  \leq (1+p_j\operatorname{siteFactor}(B(x)))H,
 \]
 which proves the product bound by the third reserve estimate. Since $(2B+1)^4\geq2$ once $B\geq8$, the exponent in that display is at most $1/2$. It follows from $1/2<\log2$ that its exponential minus one is at most $e^{1/2}-1<1$.
@@ -170,7 +170,7 @@ The shifted reciprocal estimate $x_{m+1}^{-1}\leq1$ gives $\phi_m\leq1$. The fin
  x_{m+1}^{-1}L_m^d\mathrm{columns}_{m+1}x_m^{-(m_d+4)}
  \leq x_{m+1}^{-(m_d+4)};
 \]
-this is the adjacent price inequality with $\phi_m=x_{m+1}^{-1}$ and the adjacent marker prices $\zeta_m,\zeta_{m+1}$.
+this is the adjacent bound inequality with $\phi_m=x_{m+1}^{-1}$ and the adjacent marker bounds $\zeta_m,\zeta_{m+1}$.
 
 The local-section bound satisfies $A_d\geq1$. Its weighted norm cost is
 \[

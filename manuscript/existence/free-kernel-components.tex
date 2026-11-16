@@ -14,13 +14,13 @@ or the alias. Write
 The centered representative satisfies $g_L(l)\leq\Gamma_L(l)$. For
 $z\in\mathbb C$ define
 \[
- \operatorname{rail}_L(z)=\frac1L\sum_{v=0}^{L-1}e^{ivz},\qquad
- \operatorname{plank}_L(z)=e^{-i\lfloor L/2\rfloor z}
-                            \operatorname{rail}_L(z).
+ \operatorname{avg}_L(z)=\frac1L\sum_{v=0}^{L-1}e^{ivz},\qquad
+ \operatorname{cavg}_L(z)=e^{-i\lfloor L/2\rfloor z}
+                            \operatorname{avg}_L(z).
 \]
 For $p\in\mathbb C^4$ set
 \[
- \operatorname{area}_L(p)=\prod_{a=1}^4\operatorname{plank}_L(p_a).
+ \operatorname{area}_L(p)=\prod_{a=1}^4\operatorname{cavg}_L(p_a).
 \]
 Set $\mathrm{zone}=\pi/4$ and $R_0=3\pi/2$. Since
 $(e^{iz}-1)/z$ extends continuously and has no
@@ -30,39 +30,38 @@ $0<\ell\leq h$ such that
  \ell|z|\leq|e^{iz}-1|\leq h|z|\qquad(|z|\leq R_0).
 \]
 Put $p_0=\min(1,\ell/h)$ and $c_0=hR_0/p_0$. These are the uniform
-rail/plank lower and principal-plank constants used below.
+block and centered averages lower and principal-centered average constants used below.
 In the divisor estimates write $\mathrm{low}=\ell$ and $\mathrm{high}=h$;
 for real four-vectors, $|p|$ denotes the Euclidean norm.
-At each stage $j$, a train is built by finite recursion. The top train
+At each stage $j$, a kernel history is built by finite recursion. The top kernel history
 $\mathrm{top}_j$ has mass side $1$ and extra factor $1$. A hop has output
-stage $j$, coarse dilation an odd integer $L\geq3$, and a predecessor train
+stage $j$, coarse dilation an odd integer $L\geq3$, and a predecessor kernel history
 of stage $J\in\{j,j+1\}$; if the predecessor has mass side $M$, the hop has
 mass side $LM$ and extra factor
 $\operatorname{area}_{LM}(p)^{J-j}$ times the predecessor's extra factor.
-Thus every train is a finite history, and no bound on its number of hops is
-assumed.
+The number of blocking steps in the history can be arbitrarily large.
 For a side $M$, set
 \[
  s_M(p)_a=M\bigl(e^{ip_a/M}-1\bigr),\qquad
  d_M(p)=\sum_{a=1}^4s_M(p)_a s_M(-p)_a.
 \]
 Thus $d_M$ is the divisor, and for real $p$ it is the sum of the four
-squared seed magnitudes. A train $v$ of stage $j$ and mass side $M=v.mass$
+squared seed magnitudes. A kernel history $v$ of stage $j$ and mass side $M=v.mass$
 has cumulative filter $S_v(p)=\operatorname{area}_{M}(p)^jv.extra(p)$; this is distinct
 from the patch mass factor $m_P(p)=\operatorname{area}_{P.L}(p)^{P.J}$
-used in the wire branches. A flight with indices $j,t\geq4$ consists of an
-odd coarse side $L\geq3$, a wing train of stage $j$, and indices
-$t\leq j\leq t+1$; its land train is the hop of that wing with output
+used in the wire branches. A blocking step with indices $j,t\geq4$ consists of an
+odd coarse side $L\geq3$, an input kernel history of stage $j$, and indices
+$t\leq j\leq t+1$; its output kernel history is the hop of that input with output
 stage $t$. Its patch mass is the separate factor
 $m_P=\operatorname{area}_L^{\,j}$.
-For a train of side $M$ and direction $a$, define its drive, lid, and halo by
+For a kernel history of side $M$ and direction $a$, define the directional filter and the two products at opposite momenta by
 \[
- D_{v,a}(q)=S_v(q)\operatorname{rail}_M(q_a),\quad
+ D_{v,a}(q)=S_v(q)\operatorname{avg}_M(q_a),\quad
  \ell_{v,a}(p)=D_{v,a}(p/M)D_{v,a}(-p/M),\quad
  h_v(p)=S_v(p/M)S_v(-p/M).
 \]
-For an alias side $L$, write $q_l^{(L)}(p)=(p+2\pi\ell_L(l))/L$. For a train of side $M$, set $\operatorname{blow}_{M,L}(p,l)=L^2d_M(q_l^{(L)}(p))$. The lift bound $|\ell_L(l)_a|\leq(L-1)/2$ gives $q_l^{(L)}(\mathcal Q_\eta)\subset\mathcal Q_\eta$. The feed with constant
-input one, the high-alias term, the noise drain, bulb, and bend are
+For an alias side $L$, write $q_l^{(L)}(p)=(p+2\pi\ell_L(l))/L$. For a kernel history of side $M$, set $\operatorname{blow}_{M,L}(p,l)=L^2d_M(q_l^{(L)}(p))$. The lift bound $|\ell_L(l)_a|\leq(L-1)/2$ gives $q_l^{(L)}(\mathcal Q_\eta)\subset\mathcal Q_\eta$. The feed with constant
+input one, the high-alias term, the noise-corrected alias sum, regularized factor, and scalar correction are
 \[
 \begin{aligned}
  F_{v,a}(p)&=M^{-2}\sum_{l\in\Lambda_M}
@@ -77,8 +76,8 @@ input one, the high-alias term, the noise drain, bulb, and bend are
  \qquad J_a(p)=(e^{ip_a}-1)(e^{-ip_a}-1).
 \end{aligned}
 \]
-The noise is defined from a list: the top train has empty list; a hop of
-coarse side $L$ has as its list one top train of side one followed by the
+The noise is defined from a list: the top kernel history has empty list; a hop of
+coarse side $L$ has as its list one top kernel history of side one followed by the
 images of every entry of the predecessor's list under that same hop.
 For a list $\mathcal N$, its noise at direction $a$ is the sum, over
 $u\in\mathcal N$, of the feed
@@ -90,29 +89,29 @@ $u\in\mathcal N$, of the feed
 \end{align*}
 In the high-alias term the divisor is the unit-side divisor $d_1$,
 evaluated at the rescaled aliases $q_l^{(M)}(p)$ and multiplied by $M^2$;
-the port blow-up below uses the indicated train side $M$.
+the port blow-up below uses the indicated kernel history side $M$.
 
 \subsubsection{The one-dimensional alias estimate}
 
-\begin{lemma}[Rail and box decay]
+\begin{lemma}[Block average and box decay]
 \label{lem:ex-lattice-rail-alias-decay}
 There are constants $B$ and $\eta_0>0$ such that, for every odd $L\geq1$,
 every $0<\eta\leq\eta_0$, every $p\in\mathcal Q_\eta$, and every
 centered residue $l$,
 \[
- |\operatorname{rail}_L(q_l^{(L)}(p)_a)|,
-   |\operatorname{plank}_L(q_l^{(L)}(p)_a)|
+ |\operatorname{avg}_L(q_l^{(L)}(p)_a)|,
+   |\operatorname{cavg}_L(q_l^{(L)}(p)_a)|
  \leq B(1+|\ell_L(l)_a|)^{-1}.
 \]
-At the zero residue the reciprocal rail is also uniformly bounded on a
+At the zero residue the reciprocal block average is also uniformly bounded on a
 common smaller complex cube.
 \end{lemma}
 
 \begin{proof}
 If $\ell_L(l)_a=0$, the imaginary part of $Lq_l^{(L)}(p)_a=p_a$ is bounded by
-$\eta$, and the normalized finite geometric sum defining the rail has
+$\eta$, and the normalized finite geometric sum defining the block average has
 modulus at most $\exp(\eta)$; multiplication by the centered phase defining
-the plank costs at most another fixed exponential factor. If
+the centered average costs at most another fixed exponential factor. If
 $\ell_L(l)_a\ne0$, the centered-lift estimate for aliases gives
 \[
  (\pi/4)(1+|\ell_L(l)_a|)\leq
@@ -124,14 +123,14 @@ disk containing these momenta, the function
 $(e^{iz}-1)/z$ is bounded above and bounded away from zero, with its value at
 zero defined by continuity. The identity
 \[
- L\,\operatorname{rail}_L(z)(e^{iz}-1)=e^{iLz}-1
+ L\,\operatorname{avg}_L(z)(e^{iz}-1)=e^{iLz}-1
 \]
-then bounds the rail by a constant divided by
-$L|e^{iz}-1|$, hence by the stated inverse lift weight. The plank differs
-from the rail by a centered phase whose modulus is bounded on the same
+then bounds the block average by a constant divided by
+$L|e^{iz}-1|$, hence by the stated inverse lift weight. The centered average differs
+from the block average by a centered phase whose modulus is bounded on the same
 complex cube. At the zero alias, for real $p_a$ with $|p_a|\leq R_0$, the same
-identity and the two-sided chip comparison give
-$|\operatorname{rail}_L(p_a/L)|\geq\ell/h$: apply the lower bound to
+identity and the two-sided Fourier difference bound give
+$|\operatorname{avg}_L(p_a/L)|\geq\ell/h$: apply the lower bound to
 $p_a$ and the upper bound to $p_a/L$, with the value at zero obtained by
 continuity. The following quantitative continuation promotes this lower
 bound to a common complex cube, uniformly in the side.
@@ -152,16 +151,16 @@ $r=\min(\eta/4,\theta,c\eta/(8C))$, the radius-$\eta/2$ ball about
 $y$ lies in the original cube, and $y$ lies in the stated real slice.
 Consequently one has
 $|f(p)|\geq(c/2)w$. In particular the reciprocal is holomorphic there and
-bounded by $2/(cw)$. Applying this with $w=1$ to the zero-alias rail proves
+bounded by $2/(cw)$. Applying this with $w=1$ to the zero-alias block average proves
 the asserted uniform reciprocal bound.
 \end{proof}
 
-\begin{lemma}[Principal plank estimate with unit coefficient]
+\begin{lemma}[Principal centered average estimate with unit coefficient]
 \label{lem:ex-lattice-principal-plank}
 If $M$ and $L$ are positive integers with $M\leq L$, $z$ is real, and
 $L|z|\leq R_0$, then
 \[
- |\operatorname{plank}_M(z)|\geq
+ |\operatorname{cavg}_M(z)|\geq
  \exp\bigl(-c_0 M/L\bigr).
 \]
 \end{lemma}
@@ -169,22 +168,22 @@ $L|z|\leq R_0$, then
 \begin{proof}
 The centered-sum formula is
 \[
- \operatorname{plank}_M(z)=\frac1M\sum_{v=0}^{M-1}
+ \operatorname{cavg}_M(z)=\frac1M\sum_{v=0}^{M-1}
    e^{i(v-\lfloor M/2\rfloor)z}.
 \]
-Each centered integer has modulus at most $M$. The chip upper bound
+Each centered integer has modulus at most $M$. The Fourier difference bound
 therefore gives
-$|\operatorname{plank}_M(z)-1|\leq hM|z|\leq hR_0x$, where $x=M/L$.
-The rail-chip quotient and the two-sided chip comparison also give
-$|\operatorname{plank}_M(z)|\geq p_0$ because $M|z|\leq R_0$ and
+$|\operatorname{cavg}_M(z)-1|\leq hM|z|\leq hR_0x$, where $x=M/L$.
+The quotient formula for the block average and the two-sided Fourier difference bound also give
+$|\operatorname{cavg}_M(z)|\geq p_0$ because $M|z|\leq R_0$ and
 $|z|\leq R_0$. Consequently
-$1\leq|\operatorname{plank}_M(z)|+hR_0x$ by the triangle
+$1\leq|\operatorname{cavg}_M(z)|+hR_0x$ by the triangle
 inequality. Since $e^{c_0x}\geq1+c_0x$ and
-$|\operatorname{plank}_M(z)|/p_0\geq1$, it follows that
-$e^{c_0x}|\operatorname{plank}_M(z)|\geq
-|\operatorname{plank}_M(z)|+hR_0x\geq1$.
+$|\operatorname{cavg}_M(z)|/p_0\geq1$, it follows that
+$e^{c_0x}|\operatorname{cavg}_M(z)|\geq
+|\operatorname{cavg}_M(z)|+hR_0x\geq1$.
 Rearranging proves the claimed estimate. The coefficient $c_0$ is fixed
-independently of the number of train steps; this is why its exponential
+independently of the number of kernel history steps; this is why its exponential
 loss can be summed by the geometric side-ratio argument.
 \end{proof}
 
@@ -192,7 +191,7 @@ loss can be summed by the geometric side-ratio argument.
 
 \begin{lemma}[Mass and flux weights]
 \label{lem:ex-lattice-mass-flux-weight}
-For a flight $P$ with patch side $L$ and stage $j$, its patch mass factor
+For a blocking step $P$ with patch side $L$ and stage $j$, its patch mass factor
 $m_P(q)=\operatorname{area}_{L}(q)^j$ obeys, on a common complex cube,
 \[
  |m_P(q_l^{(L)}(p))|\leq C_m^j\Gamma_L(l)^{-j}.
@@ -204,17 +203,17 @@ are bounded independently of $L$ on a common smaller complex cube.
 \end{lemma}
 
 \begin{proof}
-The area is the product of the four one-dimensional plank factors. Apply
+The area is the product of the four one-dimensional centered average factors. Apply
 Lemma~\ref{lem:ex-lattice-rail-alias-decay} in each coordinate and raise
 the result to the $j$th power. The product of the four coordinate weights
 is exactly $\Gamma_L(l)^{-j}$. A flux entry is this mass evaluated at
-$-q_l$ times the corresponding rail factors at $-q_l$, followed by
-transpose; the rail factors have uniformly bounded modulus, so the same
+$-q_l$ times the corresponding block average factors at $-q_l$, followed by
+transpose; the block average factors have uniformly bounded modulus, so the same
 weight remains. At zero alias, the patch mass obeys
 \[
  |m_P(q_0)|\geq \exp(-4j\,c_0)
 \]
-on the real cube: apply the principal one-dimensional plank lower bound
+on the real cube: apply the principal one-dimensional centered average lower bound
 with scale ratio one in each coordinate. Its upper analytic-cube bound
 and this real lower bound give a uniform reciprocal on a smaller complex
 cube by the quantitative continuation estimate above. The zero-alias
@@ -238,23 +237,23 @@ bound this entry by $C(1+|\ell_L(l)_a|)\leq Cg_L(l)$. Thus the cost is one
 grade factor for every $r$.
 \end{proof}
 
-\begin{lemma}[Cumulative train, noise, bulb, and bend bounds]
+\begin{lemma}[Cumulative kernel history, noise, regularized factor, and scalar correction bounds]
 \label{lem:ex-lattice-train-component-bounds}
-Fix a stage $j\geq4$ and $k>0$. Uniformly over every finite train history
+Fix a stage $j\geq4$ and $k>0$. Uniformly over every finite kernel history
 of that stage and its mass side $M$, there is a common complex cube on which
 for every $p$ in the cube and every alias $l$, the cumulative filter
-$S_v(q_l^{(M)}(p))$ and directional drive $D_{v,a}(q_l^{(M)}(p))$ are bounded
+$S_v(q_l^{(M)}(p))$ and directional filter $D_{v,a}(q_l^{(M)}(p))$ are bounded
 by $C\Gamma_M(l)^{-j}$. At the zero alias the real lower bound
 $|S_v(p/M)|\geq c>0$ holds uniformly on the fixed real cube. On a possibly
-smaller common complex cube, the noise drain, bulb, bend, and all
+smaller common complex cube, the noise-corrected alias sum, regularized factor, scalar correction, and all
 reciprocals used in the pulse and vault are bounded. On its real slice there
-are uniform positive lower bounds for each directional lid, bulb, and
-bend. For each nonzero alias $l$, the directional drive therefore has the
+are uniform positive lower bounds for each directional filter product, regularized factor, and
+scalar correction. For each nonzero alias $l$, the directional filter therefore has the
 stated bound $C\Gamma_M(l)^{-j}$, evaluated at the aliased momentum.
 \end{lemma}
 
 \begin{proof}
-For a train $v$ of stage $J$ and side $M$, write
+For a kernel history $v$ of stage $J$ and side $M$, write
 $S_v(p)=\operatorname{area}_M(p)^Jv_{\rm extra}(p)$. A hop with output
 stage $j$ and predecessor of stage $J\in\{j,j+1\}$ has side $LM$ and
 satisfies
@@ -277,7 +276,7 @@ Their sum is at most $8\mathrm{zone}LM/L_0$.
 For the lower bound, the principal one-dimensional estimate with coefficient
 one states that if $M\leq L_0$, $z$ is real, and $L_0|z|\leq
 R_0$, then
-$|\operatorname{plank}_M(z)|\geq
+$|\operatorname{cavg}_M(z)|\geq
 e^{-c_0M/L_0}$. Four coordinates give the same estimate
 with exponent multiplied by four. The same induction proves
 $|v_{\rm extra}(p/L_0)|\geq e^{-8c_0M/L_0}$.
@@ -287,20 +286,20 @@ extra costs at most $(8/3)c_0LM/L_0$; their sum is bounded
 by $8c_0LM/L_0$. This is the geometric mass-ratio estimate
 that keeps the bound independent of the history length.
 
-For $M=1$ the only alias is zero and the top train has $S_v=D_{v,a}=1$. For $M>1$, the alias estimate for each plank gives
+For $M=1$ the only alias is zero and the top kernel history has $S_v=D_{v,a}=1$. For $M>1$, the alias estimate for each centered average gives
 $|\operatorname{area}_M(q_l^{(M)}(p))|\leq B^4\Gamma_M(l)^{-1}$, while the
 upper extra estimate at $L_0=M$ costs at most $e^{8\mathrm{zone}}$.
 Consequently, for the fixed output stage $j$,
 $|S_v(q_l^{(M)}(p))|\leq (B^4)^j e^{8\mathrm{zone}}\Gamma_M(l)^{-j}$.
 At zero alias the lower estimate with $L_0=M$ gives
 $|S_v(p/M)|\geq\exp(-4j\,c_0-8\,c_0)$.
-The zero-root rail is at least $p_0$ and at most a uniform
-constant. Thus every directional drive and its two-sided lid have uniform
-upper and positive lower bounds there. At any alias, the train smooth upper
-bound is $C\Gamma_M(l)^{-j}$ and the rail is bounded, so the drive has that
+The zero-root block average is at least $p_0$ and at most a uniform
+constant. Thus every directional filter and its two-sided directional filter product have uniform
+upper and positive lower bounds there. At any alias, the kernel history smooth upper
+bound is $C\Gamma_M(l)^{-j}$ and the block average is bounded, so the filter has that
 same weight. The same bound holds at $-q_l^{(M)}(p)$: for odd $M$,
 $-q_l^{(M)}(p)=q_{-l}^{(M)}(-p)$, the complex cube is invariant under
-$p\mapsto-p$, and $\Gamma_M(-l)=\Gamma_M(l)$. Thus a two-sided drive
+$p\mapsto-p$, and $\Gamma_M(-l)=\Gamma_M(l)$. Thus a two-sided filter
 product has weight at most $C^2\Gamma_M(l)^{-2j}$.
 
 The divisor $d_M(p)$ satisfies, for real $p$ in the fixed disk,
@@ -314,36 +313,36 @@ single-feed noise term uses the constant function one and equals
  M^{-2}\sum_{l\in\Lambda_M}
   D_{v,a}(q_l^{(M)}(p))D_{v,a}(-q_l^{(M)}(p)).
 \]
-The alias drive bound gives a summand at most
+The alias filter bound gives a summand at most
 $C\Gamma_M(l)^{-2j}\leq C\Gamma_M(l)^{-2}$, whose sum is at most $81C$;
 the retained factor $M^{-2}$ therefore bounds the feed by $81C M^{-2}$.
-By definition, the noise list is empty for a top train and, for a hop of dilation
-$L$, consists of one top train followed by the hop applied to every entry
-of the previous list. Its total price $T$ obeys
+By definition, the noise list is empty for a top kernel history and, for a hop of dilation
+$L$, consists of one top kernel history followed by the hop applied to every entry
+of the previous list. Its total bound $T$ obeys
 $T_{\rm top}=0$ and $T_{\rm hop}=1+L^{-2}T_{\rm old}$. As $L\geq3$,
 induction gives $T\leq 1+2/9<2$. Summing the feed estimates at these actual
-inverse-square side prices bounds the full accumulated noise uniformly.
+inverse-square side bounds controls the full accumulated noise uniformly.
 
-The high-alias drain term is a finite sum of two-sided drive products times
+The high-alias term is a finite sum of two-sided filter products times
 the reciprocal blow-up $[M^2d_1(q_l^{(M)}(p))]^{-1}$. For nonzero $l$, choose a
 coordinate attaining $\max_a|\ell_M(l)_a|$. The centered-alias lower bound
 in that coordinate and the seed lower bound give
 $M^2d_1(q_l^{(M)}(p))\geq c\,g_M(l)^2$ on the real cube. Its complex upper bound
 has the same $g_M(l)^2$ weight. The quantitative continuation argument
 above therefore bounds its reciprocal by $C g_M(l)^{-2}$ on a common
-smaller cube. At $M=1$ the high-alias sum is empty. For $M>1$, the remaining drive product has weight
+smaller cube. At $M=1$ the high-alias sum is empty. For $M>1$, the remaining filter product has weight
 $\Gamma_M(l)^{-2j}$, so this sum is bounded by the exponent-two residue
-sum. Thus the full drain is uniformly bounded. It is nonnegative on the
+sum. Thus the full corrected alias sum is uniformly bounded. It is nonnegative on the
 real slice.
 
-The bulb is the directional lid plus $d_M(p)$ times the drain. The real
-lower bounds for the lid and nonnegativity of both latter factors give a
-positive lower bound for the bulb; the complex upper bound follows from
+The regularized factor is the directional filter product plus $d_M(p)$ times the corrected alias sum. The real
+lower bounds for the directional filter product and nonnegativity of both latter factors give a
+positive lower bound for the regularized factor; the complex upper bound follows from
 the already established bounds. The halo is
 $S_v(p/M)S_v(-p/M)$ and has a positive real lower bound by the same
-cumulative-filter estimate. The exact bend identity follows as follows: the rail-chip relation gives
+cumulative-filter estimate. The exact scalar correction identity follows as follows: the block average identity gives
 $J_a(p)h_v(p)=s_M(p)_a s_M(-p)_a\ell_{v,a}(p)$, where
-$h_v=S_v(p/M)S_v(-p/M)$ and $\ell_{v,a}$ is the directional lid.
+$h_v=S_v(p/M)S_v(-p/M)$ and $\ell_{v,a}$ is the directional filter product.
 Therefore $d_M(p)/h_v(p)=\sum_aJ_a(p)/\ell_{v,a}(p)$. Combining this
 with $b_{v,a}=\ell_{v,a}+d_MG_{v,a}$ yields
 \[
@@ -356,12 +355,12 @@ the corresponding term in $d_M\beta_v$. On the real cube, $J_a\geq0$,
 $\sum_aJ_a\geq\mathrm{low}^2|p|^2$, and $d_M(p)\leq
 \mathrm{high}^2|p|^2$. If $|b_v(p)_a|\leq C_b$, the identity gives
 $\beta_v(p)\geq\mathrm{low}^2/(C_b\mathrm{high}^2)$ for $p\ne0$;
-at zero $\beta_v(0)=1$. The bend's complex-cube upper bound follows from
+at zero $\beta_v(0)=1$. The scalar correction's complex-cube upper bound follows from
 its defining formula: first shrink the cube using the positive real lower bounds for the halo and
-lid, so their reciprocals are bounded. Next the bulb has a positive real
-lower bound and a complex upper bound, so shrink again to bound its reciprocal. With these factors, the displayed bend formula gives a complex
+directional filter product, so their reciprocals are bounded. Next the regularized factor has a positive real
+lower bound and a complex upper bound, so shrink again to bound its reciprocal. With these factors, the displayed scalar correction formula gives a complex
 upper bound. The real identity then gives a positive lower bound for the
-bend; shrink once more to bound its reciprocal for the pulse and vault. This proves all assertions uniformly over train histories.
+scalar correction; shrink once more to bound its reciprocal for the pulse and vault. This proves all assertions uniformly over kernel histories.
 \end{proof}
 
 \begin{lemma}[Port denominator and levy weights]
@@ -373,23 +372,23 @@ $j\geq4$.
 \end{lemma}
 
 \begin{proof}
-The bulb and reciprocal bend bounds are those of
+The regularized factor and reciprocal scalar correction bounds are those of
 Lemma~\ref{lem:ex-lattice-train-component-bounds}.
 The rescaled kernel is $L^2d_M(q_l^{(L)}(p))$, with side $M$. Choose a coordinate $a_*$ attaining
 $\max_a|\ell_L(l)_a|$; since $l\ne0$, its lift is nonzero. The centered
 alias lower bound gives
 $L|q_l^{(L)}(p)_{a_*}|\geq c(1+|\ell_L(l)_{a_*}|)=cg_L(l)$
 on the real cube. The seed lower bound
-$|M\,\operatorname{chip}(q_l^{(L)}(p)_{a_*}/M)|\geq
+$|M\,\delta_{\rm F}(q_l^{(L)}(p)_{a_*}/M)|\geq
 \mathrm{low}|q_l^{(L)}(p)_{a_*}|$ then implies
 $L^2d_M(q_l^{(L)}(p))\geq c' g_L(l)^2$. The analytic-cube upper bound for the
 blow-up has the same weight $g_L(l)^2$, so the quantitative continuation
 argument gives its reciprocal at cost $Cg_L(l)^{-2}$ on a common smaller
-cube. The port vector is the bounded bulb times this reciprocal. The
+cube. The port vector is the bounded regularized factor times this reciprocal. The
 reciprocal port normalizer is the reciprocal of blow-up squared times the
-bend; it therefore costs $Cg_L(l)^{-4}$. Finally, the levy contains two
+scalar correction; it therefore costs $Cg_L(l)^{-4}$. Finally, the levy contains two
 patch mass factors, of total weight $\Gamma_L(l)^{-2j}$, times the bounded
-land bend and this reciprocal port normalizer. Since both weights are at
+land scalar correction and this reciprocal port normalizer. Since both weights are at
 most one, the levy is uniformly bounded.
 \end{proof}
 
@@ -399,16 +398,16 @@ most one, the levy is uniformly bounded.
 \label{lem:ex-lattice-tail-notch-weights}
 The tail vector, the correction matrix, the notch matrix, and every
 zero-alias dual multiplier in the dual-stencil formula are bounded on a
-common complex cube, uniformly in $L$ and the train. The same is true of
-the bulb and bend factors and their reciprocals wherever they occur in the
+common complex cube, uniformly in $L$ and the kernel history. The same is true of
+the regularized factor and scalar correction factors and their reciprocals wherever they occur in the
 wire formula.
 \end{lemma}
 
 \begin{proof}
-The train, bulb, bend, and reciprocal bounds are
+Use the component and reciprocal bounds of
 Lemma~\ref{lem:ex-lattice-train-component-bounds}; the nonzero port bounds
 are Lemma~\ref{lem:ex-lattice-port-denominator-weights}. For each nonzero
-alias, a tail summand is the product of two patch masses, two bounded rail
+alias, a tail summand is the product of two patch masses, two bounded block average
 factors, and a port vector. It is bounded by
 $C\Gamma_L(l)^{-2j}g_L(l)^{-2}\leq C\Gamma_L(l)^{-2}$. Thus the sum is
 uniformly bounded, since
@@ -418,7 +417,7 @@ uniformly bounded, since
 \]
 The extra constant $k^{-1}$ is finite. The divisor, scaled signals, and
 all zero-alias ratios in the correction and notch are bounded by the
-preceding train lemma. Their formulas contain only finitely many sums and
+preceding kernel history lemma. Their formulas contain only finitely many sums and
 products of these quantities, so the triangle inequality and the
 finite-dimensional matrix product bound complete the uniform estimate.
 \end{proof}
@@ -426,7 +425,7 @@ finite-dimensional matrix product bound complete the uniform estimate.
 
 \begin{lemma}[Uniform one-form transport bound]
 \label{lem:ex-lattice-primal-entrywise-bound}
-Fix $k>0$ and $4\le t\le j\le t+1$. Over the flights of odd side
+Fix $k>0$ and $4\le t\le j\le t+1$. Over the blocking steps of odd side
 $L\ge3$, the one-form column $\mathcal A_l$ of
 Subsection~\ref{sec:kernel-transport-identities} is holomorphic on one common
 complex cube, with each entry bounded by $C\Gamma_L(l)^{-j}$.
@@ -446,22 +445,22 @@ by the exponent-two residue sum. The regular denominator
  sa=m_0(p)m_0(-p)\sum_b b_{0,b}+sh
 \]
 is uniformly bounded on the common complex cube. On its real slice
-$s\ge0$ and $h\ge0$. The zero-alias mass and the fine bulbs are uniformly
+$s\ge0$ and $h\ge0$. The zero-alias mass and the fine regularized factors are uniformly
 bounded away from zero there by the component bounds, so the first
 term gives $sa\ge c>0$, also at $p=0$. The uniform continuation
-argument of the train component bounds therefore bounds $(sa)^{-1}$
+argument of the kernel history component bounds therefore bounds $(sa)^{-1}$
 on a smaller common cube.
 
 For $l\ne0$, the leading matrix $B_l=sD_l F_{1,l}^*\operatorname{diag}(b^{-1})$
 has weight $\Gamma_L(l)^{-j}g_L(l)^{-2}$ by the port, flux and
-reciprocal bulb bounds. The two summands of $g_{l,a}$ have this same
+reciprocal regularized factor bounds. The two summands of $g_{l,a}$ have this same
 weight: each contains a reflected patch mass and a port, and the
-remaining denominators and rail factors are uniformly bounded after
+remaining denominators and block average factors are uniformly bounded after
 inversion where needed. The vector $x_l$ has weight $g_L(l)$ and the
-row $\sigma$ has weight one by the signal, bend and bulb bounds.
+row $\sigma$ has weight one by the signal, scalar correction and regularized factor bounds.
 Thus the correction $\operatorname{diag}(g_{l,a})x_l\sigma$ has
 weight at most $\Gamma_L(l)^{-j}$, since $g_L(l)\ge1$.
-For $l=0$ the quotient $sD_0$ is the diagonal of fine bulbs, so
+For $l=0$ the quotient $sD_0$ is the diagonal of fine regularized factors, so
 $B_0$ is bounded. The principal gain formula uses only the bounded
 tail and $h$, and the reciprocals of $m_0$, $b_a$ and $sa$ on the
 smaller cube. The principal signal and $\sigma$ are bounded as well.
@@ -478,7 +477,7 @@ stencil is holomorphic on one common complex cube and satisfies
  |W_{P,0}(p)|\leq C_0,\qquad
  |W_{P,l}(p)|\leq C_1\Gamma_L(l)^{-j}\quad(l\ne0),
 \]
-uniformly over all wing train histories and odd $L\geq3$. Hence the unified bound is
+uniformly over all wing kernel histories and odd $L\geq3$. Hence the unified bound is
 $C\Gamma_L(l)^{-j}$.
 \end{proposition}
 

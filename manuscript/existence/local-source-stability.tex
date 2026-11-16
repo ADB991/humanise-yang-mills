@@ -3,7 +3,7 @@
 The fixed-scale contraction argument needs convergence of a one-step
 map on each fixed input. Its output is a countable list of local
 terms. Pointwise convergence of the terms and boundedness of their
-total price would not be enough: price could escape to later addresses.
+total bound would not be enough: bound could escape to later addresses.
 The needed extra property is uniform smallness of the tails. We prove
 the summation and local-subtraction argument with this property explicit.
 The supports, thresholds and address encodings are fixed throughout.
@@ -43,15 +43,15 @@ gives
  \le e^C\sum_{i\notin I_0}a_{N,i}.
 \]
 Thus the finite collection of subsets of $I_0$ captures all but
-an arbitrarily small price. Compatibility restrictions only
+an arbitrarily small bound. Compatibility restrictions only
 remove nonnegative terms and preserve the conclusion. This is
 the tail estimate for the finite-subset products in the gas.
 
 There is a corresponding assertion for connected clusters, where
-indices may repeat. Suppose the elementary prices $a_{N,i}$ have
+indices may repeat. Suppose the elementary bounds $a_{N,i}$ have
 uniformly small tails and obey the rooted cluster criterion with
 one fixed margin $\rho<1$. The rooted tree bound controls the
-total price of clusters of length at least $k+1$ by
+total bound of clusters of length at least $k+1$ by
 \[
                          V\gamma\frac{\rho^k}{1-\rho},
 \]
@@ -61,8 +61,8 @@ unrooted sum. Choose $k$ making this bound small. At each of
 the finitely many remaining lengths $r\le k$, the absolute
 connected-graph coefficient divided by $r!$ has a finite maximum:
 there are finitely many graphs on $r$ labeled vertices. The
-remaining price is bounded by a constant times a product of
-$r$ elementary prices. The total price of ordered tuples with
+remaining bound is at most a constant times a product of
+$r$ elementary bounds. The total bound of ordered tuples with
 some entry outside $I_0$ is at most
 \[
                  r C^{r-1}\sum_{i\notin I_0}a_{N,i},
@@ -70,25 +70,25 @@ some entry outside $I_0$ is at most
 \]
 Choose $I_0$ to make these finitely many bounds small. The finite
 set of words of length at most $k$ in $I_0$ then captures all
-but an arbitrarily small cluster price. This proves uniform
+but an arbitrarily small cluster bound. This proves uniform
 tails for the connected expansion.
 
 For marked clusters the margin is obtained as follows. Suppose
 the unmarked criterion has margin $1/2$ and rooted allowance
-$\gamma>0$, and the marked elementary prices $v_{N,i}$ have
+$\gamma>0$, and the marked elementary bounds $v_{N,i}$ have
 uniformly small tails and total bound $B$. Let $M$ bound the
 support weight in the rooted criterion on this finite torus.
 Take
 \[
                      \delta=\frac{\gamma}{2(1+MB)}>0.
 \]
-The additional rooted price of $\delta v$ is at most
+The additional rooted bound of $\delta v$ is at most
 $\delta MB\le\gamma/2$. Thus $a+\delta v$ satisfies the
-criterion with allowance $3\gamma/2$. The degree price is linear in
+criterion with allowance $3\gamma/2$. The degree bound is linear in
 this rooted allowance: its original bound is
-$\operatorname{degreePrice}(\gamma)\le1/2$, and hence
-$\operatorname{degreePrice}(3\gamma/2)
-=(3/2)\operatorname{degreePrice}(\gamma)\le3/4$.
+$\mathcal B_{\rm degree}(\gamma)\le1/2$, and hence
+$\mathcal B_{\rm degree}(3\gamma/2)
+=(3/2)\mathcal B_{\rm degree}(\gamma)\le3/4$.
 For each word, expansion of the product gives
 \[
  \sum_{j=1}^r v_{N,i_j}\prod_{h\ne j}a_{N,i_h}
@@ -98,15 +98,15 @@ For each word, expansion of the product gives
 The right side includes all terms with exactly one marked factor
 and has nonnegative remaining terms. At derivative order $j$,
 the product rule costs at most $(r+1)^j\le2^{jr}$; absorb $2^j$
-into each elementary price before this comparison. The paid
-derivative criterion supplies the enlarged unmarked prices. Use the
-total bound for the enlarged marked prices when choosing $B$ and then
+into each elementary bound before this comparison. The paid
+derivative criterion supplies the enlarged unmarked bounds. Use the
+total bound for the enlarged marked bounds when choosing $B$ and then
 $\delta$ above; thus the choice may depend on the fixed order $j$.
 An unmarked
-price may be replaced by the smaller of its uniform-tail majorant
+bound may be replaced by the smaller of its uniform-tail majorant
 and its rooted-criterion majorant, preserving both bounds.
 The cluster argument just proved then gives uniform tails for
-the differentiated logarithm, not only a bound on its total price.
+the differentiated logarithm, not only a bound on its total bound.
 
 Let $u_{N,i},v_{N,i}$ take values in a Banach space, and suppose
 their norms have uniformly small tails. If
@@ -136,15 +136,15 @@ evaluations along normalized local charts. It is this uniform
 form, rather than pointwise convergence at each fixed configuration,
 that is needed for moving field insertions.
 
-\subsubsection{From entrywise convergence to a small remainder price}
+\subsubsection{From entrywise convergence to a small remainder bound}
 At the fixed scale let $X_i$ be the regular supports and $Y_i$
-the forced supports. Write $M(X)t$ for the support price of an
+the forced supports. Write $M(X)t$ for the support bound of an
 amplitude $t\ge0$. Since the torus is finite, it has finitely many
 supports, and
 \[
                          M_*:=\max_X M(X)<\infty.
 \]
-The price is linear in the amplitude. Suppose two regular lists
+The bound is linear in the amplitude. Suppose two regular lists
 $f_{N,i},g_{N,i}$ have derivative majorants with uniformly small
 tails, and for every fixed $i$ the difference has arbitrarily
 small derivative majorant for sufficiently large $N$.
@@ -156,13 +156,13 @@ common eventual majorant
 \]
 Outside $I_0$ use the sum of the original two majorants.
 The resulting majorants bound every difference, and their total
-support price is at most $\epsilon$. No supremum over infinitely
+support bound is at most $\epsilon$. No supremum over infinitely
 many convergence thresholds has been taken.
 
 For forced lists use the identical argument with uniform value
 bounds. If their contribution to the remainder norm is divided
-by $\kappa>0$, make their total unnormalized support price at
-most $\kappa\epsilon/2$, and the regular price at most
+by $\kappa>0$, make their total unnormalized support bound at
+most $\kappa\epsilon/2$, and the regular bound at most
 $\epsilon/2$. Their sum has remainder seminorm at most
 $\epsilon$. This proves smallness in the full remainder space
 of Subsection~\ref{sec:fixed-rung-convergence}. In particular it
@@ -233,14 +233,14 @@ representation. Changing its forced dictionary midway would
 invalidate the product and mask comparisons.
 
 \subsubsection{Summing the fixed input columns}
-For one fixed input remainder, its regular and forced prices
+For one fixed input remainder, its regular and forced bounds
 are summable. The selected one-step expansion has one primary
 column and one column for each regular and forced input entry.
 The primary column has a single fixed bound; the other columns
-have bounds proportional to these summable input prices, with
-the forced price divided by its fine-scale $\kappa$.
+have bounds proportional to these summable input bounds, with
+the forced bound divided by its fine-scale $\kappa$.
 Thus there is a summable sequence $w_i$ bounding, uniformly in
-terminal cutoff, both the coefficient norm and remainder price
+terminal cutoff, both the coefficient norm and remainder bound
 of output column $i$.
 
 Suppose corresponding individual output columns have the same
@@ -249,7 +249,7 @@ remainder differences tending to zero in the preceding sense.
 Choose a finite set of columns outside which $\sum_i2w_i$
 is less than $\epsilon/2$. On that finite set take a common
 convergence threshold and sum the small coefficient and remainder
-prices. Outside it use $2w_i$. This proves convergence after
+bounds. Outside it use $2w_i$. This proves convergence after
 all columns have been merged. The unit column is constant and
 requires no limiting argument. For the nonunit primary column
 the fixed input function is its local-section basis element.
@@ -259,7 +259,7 @@ Hence each column comparison uses the same inserted function
 on the two histories, although its background changes.
 
 Signed motions and complex conjugation are bounded linear or
-real-linear maps on these data, with the fixed motion prices
+real-linear maps on these data, with the fixed motion bounds
 already proved. The finite motion average therefore preserves
 the convergence. Applying the fixed coefficient pencil and
 the common profile capture gives convergence of the actual
@@ -272,7 +272,7 @@ the local stability input used by the fixed-scale graph argument.
 To apply this result to the selected histories one still needs
 the individual marked-column comparisons, with uniformly small
 tails, for their ordinary and forced expansions. Their hypotheses
-are more specific than a uniform total price bound: convergence
+are more specific than a uniform total estimate: convergence
 of the adjacent path and Gaussian kernels, convergence of the
 background activities and coupling, and the common marked input
 are all required. The next analytic comparison must supply these

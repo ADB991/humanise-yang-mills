@@ -8,22 +8,22 @@ required global bounds using the actual sector precision and the selected
 background rows.
 
 Fix the gauge group, a one-step patch with block length $L$, its kernel,
-and its funded tower and path prices. Assume the patch satisfies the
+and its funded tower and path bounds. Assume the patch satisfies the
 predictor branch conditions. All constants below are chosen from these
 fixed data. Put
 \[
- B=\lceil(\log x)^2\rceil,\qquad t=\operatorname{fiery}(x,L),
+ B=\lceil(\log x)^2\rceil,\qquad t=\operatorname{fineCut}(x,L),
  \qquad R=\lfloor B/100000\rfloor.
 \]
 Here $t$ is the fine small-field threshold of
-Subsection~\ref{sec:seed-guides}, while $\operatorname{temp}(x)$ is the
-coarse threshold; eventually $\operatorname{temp}(x)\le2t$.
+Subsection~\ref{sec:seed-guides}, while $\operatorname{fieldCut}(x)$ is the
+coarse threshold; eventually $\operatorname{fieldCut}(x)\le2t$.
 The coarse period satisfies $c\ge100(1+B)$. Use arbitrary stores,
 forest, predictor tags and coarse field $V$ with the stores' flags equal
-to the actual coarse flags at threshold $\operatorname{temp}(x)$.
+to the actual coarse flags at threshold $\operatorname{fieldCut}(x)$.
 No assertion about their fine costs or other noise entries is required.
 The large-$x$ threshold is uniform over all these choices and all funded
-towers having the fixed prices.
+towers having the fixed bounds.
 
 Let $I$ be the active link-color coordinates and $J$ the row-color
 coordinates, with unselected rows set to zero. An input coordinate is
@@ -104,7 +104,7 @@ amplitude constant is supplied by \eqref{eq:global-row-error}.) For each $j\in I
 actual panel. Let $N$ be the matrix whose $j$th column is the inverse
 of $Q_{W_j}$, extended by zero, and let $C=(N+N^*)/2$.
 
-\begin{proposition}[Uniform global prices]
+\begin{proposition}[Uniform global bounds]
 \label{prop:actual-global-row-prices}
 There are $\eta>0$, $K\ge1$, $u,v>0$, and $L_0>0$, depending only
 on the fixed data, such that eventually in $x$, uniformly over the
@@ -315,9 +315,9 @@ identity in the proposition therefore gives the local small plaquette
 condition used by the axial gauge. Denote the fixed box constant by
 $c_*$. Its coarse gauge and the parent-lifted replica gauge obey
 \begin{equation}\label{eq:global-selected-gauge}
- r(V^g_e)\le c_*\operatorname{temp}(x),\qquad
+ r(V^g_e)\le c_*\operatorname{fieldCut}(x),\qquad
  r((V^\uparrow)^{g\circ\mathrm{parent}}_e)
-                          \le c_*\operatorname{temp}(x).
+                          \le c_*\operatorname{fieldCut}(x).
 \end{equation}
 A replica link is either the identity or a coarse link. In a signed
 channel, pull back the gauge; reversal moves an anchor by at most one
@@ -326,8 +326,8 @@ pays this displacement. The period condition makes the boxes nonwrapping.
 
 The cited argument may consequently be applied separately at each path
 target, since only color norms are compared. Four-link curvature costs
-at most $4c_*\operatorname{temp}(x)\le8c_*t$; its absolute path sum
-has a fixed price. The predictor uses its fixed local logarithm chart,
+at most $4c_*\operatorname{fieldCut}(x)\le8c_*t$; its absolute path sum
+has a fixed bound. The predictor uses its fixed local logarithm chart,
 with size $O(t)$, and the same original tags. The subtracted fine and
 predictor guides are precisely those of \eqref{eq:guide-maximum};
 their global bounds do not require flags to vanish at an unselected
