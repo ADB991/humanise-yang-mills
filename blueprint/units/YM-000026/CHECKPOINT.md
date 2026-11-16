@@ -7,7 +7,9 @@ Local agent reviews do not establish whole-proof closure or human acceptance.
 ## Start here
 
 - Parent coordination: <https://github.com/hairer/humanise-yang-mills/issues/26>.
-- Branch: `codex/existence-monograph`; helper PRs target this branch. Record the
+- Branch: `main`; helper PRs target `main`. (The former
+  `codex/existence-monograph` branch was merged into `main` and deleted on
+  16 November 2026; commit hashes recorded against it remain in `main`'s history.) Record the
   actual checkpoint commit in your claim. The maintainer merged PR41; the final handoff draft and exact commit are linked from issue26.
 - Article: `manuscript/existence.tex`; compiled snapshot `manuscript/existence.pdf`
   has872 pages. Page count describes the artifact, not completion.

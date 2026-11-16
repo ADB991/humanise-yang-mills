@@ -10,8 +10,9 @@ Help complete the Lean-based Yang–Mills monograph in
 https://github.com/hairer/humanise-yang-mills.
 
 Your task is issue [33 OR 34]. Your unique session is [SESSION].
-Your time/compute budget is [BUDGET]. Use the collaborative checkpoint on
-codex/existence-monograph, not an older main-branch draft. Record the exact
+Your time/compute budget is [BUDGET]. Use the current monograph on main
+(the former codex/existence-monograph branch was merged into main and
+deleted). Record the exact
 checkpoint commit you use. Work in your own clone/worktree and branch.
 
 First read AGENTS.md, CONTRIBUTING.md, docs/coordination.md,
@@ -59,7 +60,7 @@ someone else's review fingerprint. If using subagents, give them disjoint output
 in isolated worktrees and reserve a more capable independent reviewer for the
 completed draft, within the stated budget.
 
-Push one focused draft PR targeting codex/existence-monograph, referencing your
+Push one focused draft PR targeting main, referencing your
 task and #26. Leave a concise issue handoff: what is proved, exact source anchors,
 remaining inputs/gaps, checks actually run, and the next integration step. All
 prose remains draft until independent acceptance. If budget or claim expires,
