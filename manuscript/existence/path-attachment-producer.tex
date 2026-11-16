@@ -1,4 +1,4 @@
-\section{Attaching finite-cutoff paths on the selected stationary route}
+\subsection{Attaching finite-cutoff paths on the selected stationary route}
 \label{sec:path-attachment-producer}
 
 This section records the selected stationary route from its horizontal
@@ -9,10 +9,13 @@ is a finite induction. The quantitative inputs to the one-step construction
 are stated at their actual interface and are not inferred from that
 induction.
 
-\subsection{The one-step path receipt}
+\subsubsection{Bounds for the one-step stationary path}
 
-A path is a collection of row, loop, cubic, and quartic coefficients. For a
-clip $p$, width $\tau$, row price $A$, and total price $\Lambda$, the
+The background quadratic data $B$ (called a \emph{bed} below) comprise
+the curvature metric and its root coefficient array. The parameter list
+$p$ (the \emph{clip}) specifies the quadratic test action, including its
+direct coefficient $p.\mathrm{direct}$. A path is a collection of row, loop, cubic, and quartic coefficients. For a
+parameter list $p$, strip width $\tau$, coefficient bound $A$, and loop bound $\Lambda$, the
 predicate $R.\mathrm{Bounds}(p,\tau,A,\Lambda)$ is the path budget:
 each exponentially weighted row family has sum at most $A$; the loop
 atom-budget family has sum at most $\Lambda$; and the cubic and quartic
@@ -24,35 +27,39 @@ that the path coefficients at each plaquette and cover offset sum to the
 bed's root entry. In particular, these are simultaneous global summability
 conditions, not merely pointwise bounds.
 
-The precise annulus estimate, denoted $\mathrm{HorizCalc}(G,\sigma,
+The precise annulus estimate, denoted $\mathrm{Ann}(G,\sigma,
 \varepsilon,C,Z,\tau,A)$, has the following quantifiers. It supplies an
 integer $L_{\min}$ and $D_0\geq0$. For every odd side $L\geq L_{\min}$,
 every side sequence $m_i\to\infty$, every bed $B$, clip $p$, path $R$, and
-$\Lambda$, assume
+$\Lambda$, impose the hypotheses of Proposition~\ref{prop:ex-annulus-estimate}:
 \[
  R.\mathrm{Bounds}(p,\tau,A,\Lambda),\quad
  \mathrm{Attached}(B,R),\quad B.\mathrm{metric.strip}(\sigma,C),\quad
  p.\mathrm{direct}\leq Z,
 \]
 along with $\mathrm{Floor}(B,p,n,\varepsilon,C)$ for every $n$ and
-$\mathrm{Sworn}(B,m_i,G)$ for every $i$. Then there are one picture $Y$,
-nonnegative firm constants $v,E$, and a single error sequence $e_i\to0$
+$\mathrm{Match}(B,m_i,G)$ for every $i$. Then there are one Fourier kernel $Y$,
+nonnegative strip constants $v,E$, and a single error sequence $e_i\to0$
 such that
 \[
- \mathrm{Firm}(v,E,Y_{ij})\quad\hbox{for every }i,j,\qquad
- \mathrm{Recorded}\!\left(Y,\mathrm{PoleTest}(p,R,\mathrm{inch}(L)),
-          \mathrm{cents}(m_i)e_i\right)\quad\hbox{for every }i,
+ \mathrm{Strip}(v,E,Y_{ij})\quad\hbox{for every }i,j,\qquad
+ \mathrm{Rec}\!\left(Y,\mathrm{Pole}(p,R,L^{-1}),
+          m_i^4e_i\right)\quad\hbox{for every }i,
 \]
 and $|\alpha^{\mathrm{ann}}_j(Y)+\lambda_G\log L|\leq D_0$ for every color $j$.
-Here $\mathrm{Recorded}$ is the finite-mesh test identity up to its stated
-error; no passage to a limit in $i$ is part of this assertion.
+Here $\mathrm{Strip}$ means a bounded periodic holomorphic extension
+with width $v$ and bound $E$, and $\mathrm{Match}$ denotes the
+finite-volume quadratic matching condition for $B$. The pole Hessian
+$\mathrm{Pole}$ and its finite-mesh recording condition $\mathrm{Rec}$
+are specified in Subsection~\ref{sec:ex-annulus-recording}.
+The latter is a finite-mesh identity up to the stated error; no passage to a limit in $i$ is part of this assertion.
 
 Proposition~\ref{prop:ex-annulus-estimate} supplies this estimate on the
 same fine bed, clip and path. Its Wilson reference and its Wilson-subtracted
 correction are added before any finite-period recording is compared. The
 fee bounds give one common response strip; the recording error is then the
 exponentially small torus-mean error. The face estimates of
-Section~\ref{sec:ex-annulus-fleet-faces} give the two radial inequalities
+Subsection~\ref{sec:ex-annulus-fleet-faces} give the two radial inequalities
 \[
  |g(x)|\leq\frac{A_1}{(\|x\|+\mu)^4},\qquad
  |g(x)-h_G(x)|\leq\frac{A_2}{\|x\|^3}
@@ -119,7 +126,7 @@ $B_\mu\cup I\cup Q$ and using the three absolute bounds proves the
 claim. The radial integrals were evaluated above; the pole identity is a separate hypothesis. No uniformity beyond the displayed radial estimates is used.
 \end{proof}
 
-\subsection{The stationary chart receipts}
+\subsubsection{The stationary chart receipts}
 \label{subsec:path-stationary-chart}
 
 The chart data consumed by the path interpolation is produced at each fixed
@@ -290,7 +297,7 @@ kernel choice, a phase $J$, positive $\varepsilon,w,\delta$, and
 nonnegative $D,Z,C,Z'$. The one-step construction proved in Proposition~\ref{prop:path-one-step-production} chooses a reel $R_1$ satisfying
 $R_1.\mathrm{Price}(s)$, nonnegative $\kappa$, and positive $s$. For every
 $\tau>0$ and $A\geq0$, assume
-$\mathrm{HorizCalc}(G,w,\varepsilon,D,Z,\tau,A)$. It then chooses
+$\mathrm{Ann}(G,w,\varepsilon,D,Z,\tau,A)$. It then chooses
 $d\geq0$, $\gamma>0$, a period threshold $u$, and functions $\beta(L)$,
 $\Lambda_0(L)$. For every patch with phase $J$ and odd side at least $u$,
 every pair of side sequences $m_i,n_i$ with $m_i\to\infty$, every path
@@ -312,7 +319,7 @@ and beds/towers, the following hypotheses are required:
   and the heat identity for the coarse bed $T$;
 \item the local-ratio chart and the specified direct-coefficient cutoffs
   for both clips. The annulus picture is produced inside this proof from
-  $\mathrm{HorizCalc}$; it is not an additional input.
+  $\mathrm{Ann}$; it is not an additional input.
 \end{itemize}
 The remaining scalar hypotheses are $1\leq\Lambda$, $0<\eta$, the phase
 identity, the period threshold, and the two direct clip bounds. The armada
@@ -356,7 +363,7 @@ The reel consists of three coefficient Hilbert spaces with encoding
 widths $\delta_2,\delta_3,\delta_4$, and $R_1.\mathrm{Price}(s)$ means
 that $s$ is strictly smaller than each of them. The canonical subspaces
 are the orthogonal complements constructed in
-Section~\ref{subsec:path-vow-representatives}. The construction also gives
+Subsubsection~\ref{subsec:path-vow-representatives}. The construction also gives
 \[
  |\alpha+\lambda_G\log L|+1\leq d,
 \]
@@ -397,9 +404,9 @@ row and higher-degree coefficients, then applying the sum-budget estimate
 to each degree separately.
 
 The intermediate scalar comparison uses the determinant estimate of
-Section~\ref{sec:ex-stationary-determinant-prices}, the contact cancellation
-of Section~\ref{sec:ex-thermal-contact-cancellation}, and the alias
-comparison of Section~\ref{sec:ex-quadratic-pole-transport}. These estimates
+Subsection~\ref{sec:ex-stationary-determinant-prices}, the contact cancellation
+of Subsection~\ref{sec:ex-thermal-contact-cancellation}, and the alias
+comparison of Subsection~\ref{sec:ex-quadratic-pole-transport}. These estimates
 are applied to the same selected bridge. In particular the transverse
 primal identity allows each nonprincipal nose to be replaced, in the
 annulus pairing, by its horizontal part, which vanishes to second order.
@@ -463,7 +470,7 @@ Taylor step below, additionally use the exact second-bed identity
 ($N_X(0,0)=\mu I$), the transverse primal identity, and the annulus
 picture's second-order profile. The nonprincipal alias estimate uses the
 contractibility, strip bounds and horizontal-nose estimate proved in
-Section~\ref{sec:ex-quadratic-pole-transport}; it does not follow from
+Subsection~\ref{sec:ex-quadratic-pole-transport}; it does not follow from
 the pole recordings alone.
 
 The factor $L^4$ is essential. Here $L$ is the blocking ratio between the two periods, not the coarse physical period. Let $\ell=0$ denote the principal alias.
@@ -617,7 +624,7 @@ $\Gamma\Lambda_1$ and using $\Lambda_1\geq1$ proves the claim. This is the
 rate comparison used to preserve a finite-cutoff tail when the controlling
 rate is weakened.
 
-\subsection{Canonical representatives for all-period path jets}
+\subsubsection{Canonical representatives for all-period path jets}
 \label{subsec:path-vow-representatives}
 
 The path realization uses a closed-subspace projection to choose one
@@ -650,7 +657,7 @@ canonical realization argument: it uses the orthogonal complement of the
 common jet kernel, not an assumed injectivity of the jet map on the original
 space.
 
-\subsection{Changing the forest without changing the stationary action}
+\subsubsection{Changing the forest without changing the stationary action}
 \label{subsec:path-forest-independence}
 
 \begin{lemma}[Forest-independent stationary germs]
@@ -725,7 +732,7 @@ finite-cutoff comparison do not depend on the forest. No identification
 of vectors in the two different forest coordinate spaces has been made.
 \end{proof}
 
-\subsection{Purchasing all components of the one-step path}
+\subsubsection{Purchasing all components of the one-step path}
 \label{subsec:path-one-step-production}
 
 We now supply the one-step construction stated above. All widths in this
@@ -735,15 +742,15 @@ by the coefficient estimates is obtained by dividing them by $L$.
 Fix the kernel, the phase, the two bed bounds, the positive floor, the
 header bound and the two direct-coefficient ceilings in the one-step
 interface. The selected bridge identities of
-Section~\ref{sec:ex-selected-stationary-linear-data} and the weighted frame
+Subsection~\ref{sec:ex-selected-stationary-linear-data} and the weighted frame
 and penalty estimates give one common positive coarse strip and fixed
 bridge and penalty constants. The weighted inverse construction of
-Section~\ref{sec:ex-weighted-stationary-inverses} narrows that strip and
+Subsection~\ref{sec:ex-weighted-stationary-inverses} narrows that strip and
 bounds the needed inverse Hessians there. These choices depend only on
 the listed fixed data, and precede the incoming path width $\tau$ and
 price $A$. The all-period bed floor supplies the real weighted coercivity in that
 inverse construction. The forest gap of
-Section~\ref{subsec:path-stationary-chart} separately gives each critical
+Subsubsection~\ref{subsec:path-stationary-chart} separately gives each critical
 branch; its possibly $L$-dependent numerical lower bound is not substituted
 for the uniform weighted coercivity. Take the minimum of the finitely many
 resulting widths and denote a further smaller positive width by $\sigma_0$.
@@ -828,7 +835,7 @@ amplitude only by $2(4\dim\mathfrak g)^2$; absorb it in $\beta(L)$.
 The resulting classical match and finite-cutoff inequality are exactly
 those of the one-step interface.
 
-\paragraph{One reel and its canonical representatives.}
+\subparagraph{Hilbert space of coefficients and canonical representatives.}
 Here is an explicit Hilbert realization of the coefficient arrays, which
 also fixes its choice before the incoming budgets. For each of the three
 degrees use the canonical displacement arrays of the curvature lift,
@@ -871,7 +878,7 @@ realization map is also continuous: derivatives of a fixed-order product
 of transported plaquettes grow at most polynomially in its walk lengths,
 and that polynomial is absorbed by the same exponential margin. Consequently
 the invisible space for all requested jets at all the chosen periods is
-closed. Project as in Section~\ref{subsec:path-vow-representatives}.
+closed. Project as in Subsubsection~\ref{subsec:path-vow-representatives}.
 The projection preserves the real invariance and moment constraints and
 every recorded jet, and decreases the Hilbert norm. For cubic atoms keep
 both the third and fourth jets in this projection, for quartic atoms the
@@ -882,7 +889,7 @@ included in $D$ and $\kappa$ above before choosing the last block-side
 floor. This supplies the canonical representatives with the exact budgets
 claimed in the one-step interface.
 
-\paragraph{The terminal path.}
+\subparagraph{The terminal path.}
 At a terminal bed the tested quadratic kinetic form is the Wilson kinetic
 form: its unamended diagonal is the identity, and the amendment identity
 \eqref{eq:positive-amendment} gives $Gd_1=Hd_1=d_1$. Thus the amended
@@ -896,7 +903,7 @@ pictures and the row-quadratic pictures supply exact common third- and
 fourth-order pictures of $W-J$, with a width and bound depending only on
 the terminal stage's root bound and direct-coefficient ceiling.
 Apply the leading-removal construction of
-Section~\ref{sec:stationary-output-construction} first at degree three
+Subsection~\ref{sec:stationary-output-construction} first at degree three
 and then at degree four. In the second step subtract the fourth coefficient
 of the cubic atoms as well. It gives cubic and quartic invariant arrays
 with $W-J-S_3-S_4=O(|x|^5)$ at every tested period. Give the path these
@@ -927,7 +934,7 @@ both matching assertions to every other forest, without changing the
 output path or scalar. This proves the proposition.
 \end{proof}
 
-\subsection{The arbitrary-input factor-64 envelope}
+\subsubsection{The arbitrary-input factor-64 envelope}
 \label{subsec:path-factor64-envelope}
 
 The numerical factor used by the selected global caller is an allowance
@@ -991,7 +998,7 @@ arbitrary-input transition itself comes from the pairwise flux calls and the
 two finite extrema operations. Its horizontal receipt and local response
 prices remain the explicit inputs described in the one-step section.
 
-\subsection{From adjacent one-step paths to one finite history}
+\subsubsection{From adjacent one-step paths to one finite history}
 
 Let $a$ be the scale schedule, and write $J_m=a.\mathrm{clock}.J(m)$. Its
 slow-step property gives
@@ -1042,7 +1049,7 @@ conditions, with every cutoff retained on the same horizon. This argument is not
 and does not choose a different horizon at different cutoffs. It is the
 finite descending construction furnished by the transition rule.
 
-\subsection{The stationary plan on the retained horizon}
+\subsubsection{The stationary plan on the retained horizon}
 \label{subsec:path-retained-plan}
 
 The finite descent above is conditional on a branch row and a transition
@@ -1116,11 +1123,11 @@ The proposition below uses the following three constructions. Their
 producers are given explicitly; the quadratic horizon is constructed in
 its own chapter.
 \begin{itemize}
-\item[(A)] \emph{The annulus estimate.} $\mathrm{HorizCalc}(G,\sigma,
+\item[(A)] \emph{The annulus estimate.} $\mathrm{Ann}(G,\sigma,
  \varepsilon,C,Z,\tau,A)$ holds for all $\sigma,\varepsilon,\tau>0$
  and $C,Z,A\ge0$. Its producer is Proposition~\ref{prop:ex-annulus-estimate}.
 \item[(B)] \emph{The one-step construction} with the interface stated
- in Section~\ref{subsec:path-stationary-chart}, for every stage pair
+ in Subsubsection~\ref{subsec:path-stationary-chart}, for every stage pair
  $(j,i)$ with $j=i$ or $j=i+1$, and the terminal base path: for every
  stage, every bed with the root strip bound, the floors and sworn
  conditions of that stage and with diagonal equal to the identity at
@@ -1147,13 +1154,13 @@ its own chapter.
 \end{itemize}
 The conditions on $X$ in (C) are the bed and flight receipts of the
 quadratic construction of
-Section~\ref{subsec:ex-lattice-horizon-producer}. The retained horizon
-is formed from $X$ in Section~\ref{sec:common-funded-history}, where
+Subsubsection~\ref{subsec:ex-lattice-horizon-producer}. The retained horizon
+is formed from $X$ in Subsection~\ref{sec:common-funded-history}, where
 $X$ and $V$ are called $M^0$ and $M^1$. Convergence along the cutoff
 is not a consequence of (C): the conditions there do not determine
 the remaining tower blocks. For the particular horizons constructed
 jointly with their curvature roots it is proved in
-Section~\ref{sec:free-horizon-convergence}; the present proposition
+Subsection~\ref{sec:free-horizon-convergence}; the present proposition
 does not use it.
 
 \begin{proposition}[Stationary plan on the retained horizon]
@@ -1205,7 +1212,7 @@ local-ratio chart $O$, the following hold.
 \end{proposition}
 \begin{proof}
 The stage widths and prices are those of
-Section~\ref{subsec:path-factor64-envelope}. Let $b_i>0$ and
+Subsubsection~\ref{subsec:path-factor64-envelope}. Let $b_i>0$ and
 $E_i\ge0$ be the width ceiling and price floor of the terminal base
 path of \textup{(B)} at stage $i$, and let $w_{j,i},v_{j,i}$ be the
 widths and price thresholds of the one-step constructions for the
@@ -1221,13 +1228,13 @@ The one-step constructions are called with incoming allowance
 $64A_j$, which gives $d_j,u_j$, rates $\gamma'_j>0$ and the functions
 $\beta_j,\Lambda_{0,j}$ of the block side; the rates of the
 statement are $\gamma_j=\gamma'_j/2$. The gaps
-$\eta_j$ are those of Section~\ref{subsec:path-stationary-chart} for
+$\eta_j$ are those of Subsubsection~\ref{subsec:path-stationary-chart} for
 the block side $L_j$, the phase $j$, the kernel and the floor constant
 $\eta^0_j$. The volume threshold at stage $j$ is the maximum of
 $100(j+7)$ and of a coarse side beyond which
 $\beta_j(L_j)e^{-\gamma'_jn}\le e^{-\gamma_jn}$. The entry delays are those beyond which the three
 loop-capacity inequalities of
-Section~\ref{subsec:path-factor64-envelope} hold.
+Subsubsection~\ref{subsec:path-factor64-envelope} hold.
 
 \emph{Terminal rows.} By \textup{(C)} the bed $V.H(N,N)=X.H(N,N)$ has
 the root strip bound, floors, sworn condition and identity diagonal.
@@ -1252,7 +1259,7 @@ those of $X$. The header bounds and the diagonal two-scale trial at
 every period are \textup{(C)} as well, since they involve only the
 beds and the installed and transport columns, which $V$ and $X$ share.
 For every $t$ and every forest $F$, the chart receipts of
-Section~\ref{subsec:path-stationary-chart}, applied to $B$, $T$, the
+Subsubsection~\ref{subsec:path-stationary-chart}, applied to $B$, $T$, the
 tower and $R$, give $\mathrm{PriceGap}(F,p_{m+1},R,\eta_j)$ and a map
 $\rho^{t,F}$ with the critical, guessed and heat properties; their
 hypotheses are the diagonal trial, the floor of $B$, the bounds and
@@ -1306,20 +1313,20 @@ metric strips and clip bounds of that same horizon. It is a statement
 about global path attachment. It does not by itself give the local
 two-bed statement used in the nonlinear step, which also requires the
 roll identities and is constructed from the same horizon and paths in
-Section~\ref{sec:ex-lattice-selected-course-binding}.
+Subsection~\ref{sec:ex-lattice-selected-course-binding}.
 
-\subsection{Selected cutoff limits}
+\subsubsection{Selected cutoff limits}
 The ten retained bed and tower row families must converge on the lattice
-cover along the actual terminal cutoff sequence. Section~\ref{sec:free-horizon-convergence}
+cover along the actual terminal cutoff sequence. Subsection~\ref{sec:free-horizon-convergence}
 proves this for the recursively selected free horizon, using its uniform
 strip bounds, positive root choices and committed transition identities.
 Its proof includes the high-alias and noise limits, the exterior lifts and
 amendments, and recovery of cover coefficients from the unbounded selected
-period sequence. Section~\ref{sec:selected-history-limits} then applies
+period sequence. Subsection~\ref{sec:selected-history-limits} then applies
 these limits to the same stationary construction and shows that the
 terminal Wilson normalization preserves every fixed-scale limit.
 
-\subsection{Dependency order}
+\subsubsection{Dependency order}
 
 The annulus estimate is supplied by the common response and the radial
 Fourier estimates. The one-step construction above then combines the
@@ -1332,4 +1339,4 @@ Sections~\ref{subsec:ex-lattice-horizon-producer} and
 \ref{sec:free-horizon-convergence}. No convergence of the nonlinear paths
 is used to produce their finite-cutoff attachment or bounds. Their later
 limits use the canonical all-period representatives and the separate
-argument of Section~\ref{sec:selected-history-limits}.
+argument of Subsection~\ref{sec:selected-history-limits}.
