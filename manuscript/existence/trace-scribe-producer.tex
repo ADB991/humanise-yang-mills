@@ -535,7 +535,8 @@ is a consequence of rank one or of the field and flux limits.
   be obtained from the comparison-of-jets estimate for the finitely
   many grades and arities fixed by the observer, on a comparison window
   containing the support of the gradient of $\chi$ together with the
-  spectator points; this deduction is not carried out here.
+  spectator points. The deduction from that compact comparison is given
+  below; the comparison must concern these same chart maps.
  \end{enumerate}
 \end{enumerate}
 The physical stress in item 1 is supplied by the following choice of the
@@ -635,6 +636,69 @@ single observer and a single nonzero value before any chart is selected.
 It uses the reference Wick covariance and the stated identification of
 $\mathcal O$ with that normalized Wick field, not the desired interacting
 trace asymptotic. That reference identification is retained as a premise.
+
+\paragraph{From chart comparison to the tested and shell limits.}
+The tested approach property of
+Section~\ref{sec:ex-lattice-firesky-gallery}, on the same scaling,
+supplies (4a): a derivative of a fixed compactly supported smooth test
+is another such test, with support in the same separated window.
+That section's finite separating-test argument, applied in grade five,
+supplies (4b). More explicitly, a nonzero field has a nonzero separated
+reference evaluation. Continuity and a nonnegative smooth bump around
+that evaluation give a nonzero integrated functional. These functionals
+separate the grade-five space; finitely many suffice, since adjoining
+a functional nonzero on the current common kernel strictly decreases
+its dimension until it is zero. The derivative laws (4c) remain the
+laws of the selected and reference tables.
+
+For (4d), use the compact comparison of jets on this same scaling.
+Its order-zero consequence, which is all the shell argument needs, is
+the following precise estimate. For each fixed finite word of reference
+labels $h_1,\ldots,h_s$, with grades $d_1,\ldots,d_s$, and each compact
+set $K$ of pairwise distinct configurations,
+\begin{equation}\label{eq:scribe-compact-comparison}
+ \sup_{z\in K}\left|
+ S(U_{i,d_1}h_1,\ldots,U_{i,d_s}h_s;r_i z)
+       -S_0(h_1,\ldots,h_s;z)\right|\longrightarrow0.
+\end{equation}
+The required finite grade and arity bounds must include every label
+in this word. We use this as the compact jet-comparison input, not
+as a consequence of pointwise or tested convergence alone.
+Taking $K$ to be the observer's one configuration gives the first
+assertion of (4d).
+
+For the shell assertion, let $x$ denote the distinguished and spectator
+points and choose the cutoff $\chi$ so that the compact set
+$\operatorname{supp}\nabla\chi$ avoids all these points. The
+configurations $(z,x)$ with $z\in\operatorname{supp}\nabla\chi$ then
+form a compact subset of the noncoincident configuration space: all
+pair distances have a positive minimum there. Thus one separated
+window contains the entire integration set. Write $C_i^c(z;H)$ for
+the selected correlation with the entry $U_{i,4}H_{ca}$ at $r_i z$,
+the distinguished field $U_{i,4}v$ at its rescaled point, and the
+chart-transformed spectators. Let $C_0^c(z;H)$ be its reference
+counterpart. With the translation-shell convention, the flux is minus
+the sum of these correlations against $\partial_c\chi$.
+Changing variables $y=r_i z$
+in its four-dimensional integral gives exactly
+\begin{equation}\label{eq:scribe-shell-change}
+ \mathcal L_i(H)
+   =-\sum_{c=1}^4\int (\partial_c\chi)(z)C_i^c(z;H)\,dz.
+\end{equation}
+Indeed, the prefactor $r_i$ in $\mathscr F_i$, the stress multiplier
+$r_i^{-4}$, the cutoff derivative $r_i^{-1}$ and the Jacobian $r_i^4$
+multiply to one. The spectator maps are exactly the chart maps used
+in \eqref{eq:scribe-compact-comparison}; no extra scaling of them is
+introduced. That estimate on the compact shell therefore yields
+\[
+ |\mathcal L_i(H)-\operatorname{shellGrad}(H,\chi,a,x,q,v)|
+ \le\sum_{c=1}^4\|\partial_c\chi\|_{L^1}
+       \sup_{z\in\operatorname{supp}\nabla\chi}
+          |C_i^c(z;H)-C_0^c(z;H)|\longrightarrow0.
+\]
+This proves the shell deduction in (4d). Expanding in a finite basis
+of stress arrays also proves operator-norm convergence of these shell
+functionals, which is the form used below for moving tensors.
 
 By input~3 fix an axis $a$, an
 observer $o$, and a reference grade-four field direction $v$ such that
