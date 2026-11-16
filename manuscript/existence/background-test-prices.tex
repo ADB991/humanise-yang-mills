@@ -280,15 +280,40 @@ and $\kappa\ge0$ satisfies
 \end{equation}
 then the final forced array has one common coefficient majorant at
 radius $q/2$ and exponent $b$ with rooted price at most $dK_m$.
-The existence of such a $\kappa$ at every sufficiently late entry,
-uniformly over the coupling band, is a numerical input of this
-section and is not derived here. It is a payment of the same kind
-as \eqref{eq:nonlinear-payment}, but it is not a consequence of that
-statement alone: the hard price $a_{\rm h}$ is the forecast
-allowance reached in Section~\ref{sec:projected-parameter-prices},
-and the payment uses the purchased gap between the exponential rate
-of that forecast and the smaller rate of the output normalization
-$K_m$.
+These inequalities are paid on the selected schedule as follows.
+Write $y=x+c$ for the fixed stage increment and
+$P(x)=\exp((\log\log x)^2)$. Section~\ref{sec:common-funded-history}
+gives $K_m=e^{-P(x)^{1/5}}$ and a hard forecast bound
+$a_{\rm h}\le C e^{-gP(y)^2}$, with fixed $C<\infty$ and $g>0$.
+This also includes the fixed radius and support reserves. For any fixed
+$d>0$, put $\phi=dK_m$ and $p=y^{1/16}$. Since
+$P(y)/P(x)\to1$ and $P(x)\to\infty$,
+\[
+ \frac{a_{\rm h}}{\phi}
+ \leq\frac Cd\exp\{-gP(y)^2+P(x)^{1/5}\}\longrightarrow0.
+\]
+The soft reset cost is a stage constant times a polynomial in
+$\log x$ times $x^{-1/2}P(x)$, plus terms with smaller powers of $x$.
+The factor-two radius loss above is fixed. Thus eventually
+$c_{\rm s}\le y^{-1/8}$. Also $\phi p\le1$ eventually, because
+$P(x)^{1/5}/\log x\to\infty$.
+Choose the mesh-independent stage threshold so that all these bounds
+hold and $a_{\rm h}/\phi\le1/8$. Define
+\[
+ \kappa=-\log(\phi p)\ge0.
+\]
+Then $I\le1/(8p)+2c_{\rm s}\to0$. The block radius $B$ is
+polynomial in $\log x$, so $(2B+1)^4I\le1$ eventually.
+For $0\le I\le1$, $e^I-1\le2I$, whence
+\[
+ e^{-\kappa}(e^I-1)
+ \le\phi p\{1/(4p)+4c_{\rm s}\}
+ =\phi(1/4+4pc_{\rm s})\le\phi=dK_m
+\]
+after one further increase of the threshold. This proves
+\eqref{eq:background-forced-payment}. The constants and bounds are
+uniform throughout the same incoming coupling band; only its entry
+delay has been increased, not its history or parameter line.
 The test inequality follows by applying each finite moment test
 to the absolutely summable coefficient series. This supplies the
 forced clause of \eqref{eq:background-ray-tests} whenever the
